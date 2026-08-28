@@ -21,7 +21,7 @@ const publicStyles = readFileSync(new URL("../index.css", import.meta.url), "utf
 
 describe("Header + Hero presentation contract", () => {
   it("keeps the protected brand artwork and exact Russian headline", () => {
-    expect(appSource).toContain('"Литература - это целый мир!"');
+    expect(appSource).toContain('"Литература – это целый мир!"');
     expect(appSource).toContain("brand/probpera-logo.png");
     expect(appSource).toContain("brand/magazine-hero-wide.avif?v=20260813-literary-nature-final");
     expect(appSource).toContain("brand/magazine-hero-mobile.avif?v=20260813-literary-nature-portrait");

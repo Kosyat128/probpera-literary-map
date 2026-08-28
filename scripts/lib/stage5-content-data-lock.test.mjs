@@ -11,6 +11,7 @@ import {
   governanceFingerprintRegistry,
   ownerCssClasses,
   stage5D1AdditiveI18nAttestation,
+  stage5FinalInterfaceCopyAttestation,
 } from "../stage5-baseline-registry.mjs";
 
 const root = path.resolve(process.cwd());
@@ -265,8 +266,8 @@ const lockedScopes = [
       relativePath.endsWith(".json") &&
       relativePath !== "public/articles/book-mentions.json",
     expected: {
-      files: 319,
-      sha256: "9da44d1c03f109151f54103f2e3b458e938b972d588177ed29da6df9c4097d18",
+      files: 320,
+      sha256: "e1f092a4e14c78a01335662135cc5c47ba2295b05ca1b6c0d5c1dab0ed644ace",
     },
   },
   {
@@ -280,7 +281,7 @@ const lockedScopes = [
     include: () => true,
     expected: {
       files: 4,
-      sha256: "ae6736595b3748224eaac449fd366629498051e087f1c231097b92d17edf3e33",
+      sha256: "3175e13dbf0fc107239568ab94b138773a372f3bd29c0b9126a1983ebda6efa3",
     },
   },
   {
@@ -305,7 +306,7 @@ const lockedScopes = [
     },
     expected: {
       files: 510,
-      sha256: "94257f9da0bc1d522b46290b2c67c7dda49c7ae8efac03f505402970903a55db",
+      sha256: "008055a29f40a52aa9afd04b9b9ceded0b47522c5a3c6e65a8512af96f0620dc",
     },
   },
 ];
@@ -330,7 +331,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     });
   }
 
-  it("allows only the approved additive Stage 5D-1 interface-copy delta", () => {
+  it("preserves the approved Stage 5D-1 delta and pins final interface copy", () => {
     const attestation = stage5D1AdditiveI18nAttestation;
     expect(attestation.allowedPaths).toEqual([
       "src/i18n/InterfaceLanguage.tsx",
@@ -375,23 +376,24 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     expect(interfaceState.codeOutsideInitializerSha256).toBe(
       attestation.interfaceLanguage.codeOutsideInitializerSha256
     );
-    expect(interfaceState.entries.size).toBe(
-      attestation.interfaceLanguage.currentEntries
-    );
-    const baselineEntries = new Map(interfaceState.entries);
     for (const [source, english] of sortedApprovedPairs) {
       expect(interfaceState.entries.get(source)).toBe(english);
-      baselineEntries.delete(source);
     }
-    expect(baselineEntries.size).toBe(
-      attestation.interfaceLanguage.baselineEntries
+    const finalPairs = sortedTranslationPairs(interfaceState.entries);
+    expect(finalPairs).toHaveLength(
+      stage5FinalInterfaceCopyAttestation.interfaceLanguage.entries
     );
-    expect(jsonSha256(sortedTranslationPairs(baselineEntries))).toBe(
-      attestation.interfaceLanguage.baselinePairsSha256
+    expect(jsonSha256(finalPairs.map(([source]) => source))).toBe(
+      stage5FinalInterfaceCopyAttestation.interfaceLanguage.keysSha256
+    );
+    expect(jsonSha256(finalPairs)).toBe(
+      stage5FinalInterfaceCopyAttestation.interfaceLanguage.pairsSha256
     );
 
     const { catalog, byKey } = readInterfaceCopyCatalog();
-    expect(catalog).toHaveLength(attestation.catalog.currentEntries);
+    expect(catalog).toHaveLength(
+      stage5FinalInterfaceCopyAttestation.catalog.entries
+    );
     const approvedCatalogEntries = sortedApprovedPairs.map(
       ([source, english]) => {
         const expected = {
@@ -412,18 +414,11 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     expect(canonicalJsonSha256(approvedCatalogEntries)).toBe(
       attestation.catalog.additions.contentSha256
     );
-    const approvedCatalogKeys = new Set(
-      approvedCatalogEntries.map(({ key }) => key)
+    expect(jsonSha256(catalog.map(({ key }) => key))).toBe(
+      stage5FinalInterfaceCopyAttestation.catalog.keysSha256
     );
-    const baselineCatalog = catalog.filter(
-      (entry) => !approvedCatalogKeys.has(entry.key)
-    );
-    expect(catalog.length - baselineCatalog.length).toBe(
-      attestation.catalog.additions.entries
-    );
-    expect(baselineCatalog).toHaveLength(attestation.catalog.baselineEntries);
-    expect(canonicalJsonSha256(baselineCatalog)).toBe(
-      attestation.catalog.baselineContentSha256
+    expect(canonicalJsonSha256(catalog)).toBe(
+      stage5FinalInterfaceCopyAttestation.catalog.contentSha256
     );
   });
 
@@ -486,6 +481,6 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     const scope = currentIntegrationGovernanceFingerprintRegistry.find(
       (entry) => entry.id === "HEADER-HERO-CSS-OWNER-LOCK"
     );
-    expect(ownerCssFingerprint()).toEqual(scope.expected);
+    expect(ownerCssFingerprint()).toEqual(scope.enforced.expected);
   });
 });

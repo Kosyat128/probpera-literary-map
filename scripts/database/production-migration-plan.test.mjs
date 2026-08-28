@@ -17,15 +17,15 @@ const planner = path.join(
 const helper = readFileSync(
   path.join(root, "scripts/database/supabase-database-safety.sh"),
   "utf8"
-);
+).replace(/\r\n?/gu, "\n");
 const workflowSource = readFileSync(
   path.join(root, ".github/workflows/reconcile-production-database.yml"),
   "utf8"
-);
+).replace(/\r\n?/gu, "\n");
 const backupWorkflow = readFileSync(
   path.join(root, ".github/workflows/backup.yml"),
   "utf8"
-);
+).replace(/\r\n?/gu, "\n");
 const dumpImplementation = helper.slice(
   helper.indexOf("command_dump()"),
   helper.indexOf("command_encrypt_verify()")

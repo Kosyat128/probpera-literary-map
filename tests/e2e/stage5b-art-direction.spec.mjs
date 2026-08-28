@@ -5,7 +5,7 @@ const BASE_PATH = "/probpera-literary-map/";
 const roleSelectors = {
   major: [
     "#featured-journal .section-heading h2",
-    "#journal .article-library-heading h2",
+    ".stage5-deferred-journal[data-loading-status='ready'] .article-library-heading h2",
     "#community .community-copy h2",
   ],
   normal: [
@@ -32,6 +32,11 @@ async function openHomepage(page, { width, height, locale }) {
     await page.locator(".interface-language-control button").nth(1).click();
   }
   await expect(page.locator("html")).toHaveAttribute("lang", locale);
+  const journalSlot = page.locator(".stage5-deferred-journal");
+  await journalSlot.scrollIntoViewIfNeeded();
+  await expect(journalSlot).toHaveAttribute("data-loading-status", "ready", {
+    timeout: 20_000,
+  });
   await page.evaluate(async () => {
     window.scrollTo(0, document.documentElement.scrollHeight);
     await document.fonts.ready;

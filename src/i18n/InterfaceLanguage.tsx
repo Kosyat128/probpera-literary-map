@@ -53,9 +53,12 @@ const englishInterfaceText: Record<string, string> = {
   "Журнал о литературе и искусстве слова":
     "A journal about literature and the art of language",
   "Литература -": "Literature is",
+  "Литература –": "Literature is",
   "это целый мир!": "a world of its own!",
   "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве.":
     "Essays, biographies, rare books and an interactive literary encyclopedia of the world - in one editorial space.",
+  "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.":
+    "Essays, biographies, rare books and an interactive literary encyclopedia of the world — in one editorial space.",
   "Открыть глобус": "Explore the globe",
   "Открыть архив": "Open archive",
   "Развернуть архив полностью": "Expand archive fully",
@@ -676,6 +679,7 @@ const englishInterfaceText: Record<string, string> = {
   Все: "All",
   "Проба Пера": "Proba Pera",
   "Проба Пера - главная": "Proba Pera - home",
+  "Проба Пера — главная": "Proba Pera — home",
   иллюстраций: "illustrations",
   "Продолжено с места остановки": "Resumed where you left off",
   "статьи прочитано": "of article read",
@@ -1281,7 +1285,144 @@ const englishInterfaceText: Record<string, string> = {
   "азербайджанский": "Azerbaijani",
   "казахский": "Kazakh",
   "узбекский": "Uzbek",
+  "Читаю сейчас": "Reading now",
+  "Куратор: редакция «Пробы пера» · проверенные произведения":
+    "Curated by the Proba Pera editors · reviewed works",
+  "Классика архива": "Archive classics",
+  "Куратор: редакция «Пробы пера» · проверенная классика архива":
+    "Curated by the Proba Pera editors · reviewed archive classics",
+  Архив: "Archive",
+  "Редакционные полки": "Editorial shelves",
+  "Мои полки": "My shelves",
+  "Новая полка": "New shelf",
+  "Не удалось создать личную полку": "Could not create the personal shelf",
+  Периоды: "Periods",
+  "Только сохранённые книги": "Saved books only",
+  "Поиск временно недоступен": "Search is temporarily unavailable",
+  "Книги на полке сохранены без изменений.":
+    "The books on this shelf remain unchanged.",
+  "Повторить поиск": "Retry search",
+  "Подсказки всего книжного архива": "Complete book archive suggestions",
+  "Результаты поиска по всему книжному архиву":
+    "Complete book archive search results",
+  "Результаты поиска по текущей полке": "Current shelf search results",
+  "Открыты сведения о книге": "Book details open",
+  "Состояние книжной полки": "Bookshelf status",
+  "Весь книжный архив": "Complete book archive",
+  "Пока нет полок": "No shelves yet",
+  "Подборка обновляется": "Updating selection",
+  "Пока пусто": "Empty for now",
+  "Настроить полку": "Customise shelf",
+  Качество: "Quality",
+  "Качество трёхмерной полки": "3D shelf quality",
+  "Некоторые книги больше недоступны в архиве":
+    "Some books are no longer available in the archive",
+  "Удалить ссылку": "Remove link",
+  "Редакционная ссылка недоступна": "Editorial link unavailable",
+  "Свернуть сведения о книге": "Collapse book details",
+  "Развернуть сведения о книге": "Expand book details",
+  "Сведения о книге": "Book details",
+  "Показать полностью": "Show in full",
+  Свернуть: "Collapse",
+  "Навигация по редакционным страницам": "Editorial page navigation",
+  "Предыдущая страница": "Previous page",
+  "Следующая страница": "Next page",
+  "Управлять полками": "Manage shelves",
+  "Добавить на полку": "Add to shelf",
+  "В избранном": "In favourites",
+  "В избранное": "Add to favourites",
+  "Эта полка ждёт первую книгу": "This shelf is waiting for its first book",
+  "Откройте весь архив, найдите произведение и добавьте его на эту полку.":
+    "Open the complete archive, find a work and add it to this shelf.",
+  "Попробуйте другое название, автора, страну или сбросьте фильтры.":
+    "Try another title, writer or country, or clear the filters.",
+  "Выбрать книгу из архива": "Choose a book from the archive",
+  "Вернуться ко всему архиву": "Return to the complete archive",
+  "Открыть весь архив": "Open the complete archive",
+  "Первая книга": "First book",
+  "Позиция на книжной полке": "Position on the bookshelf",
+  "Последняя книга": "Last book",
+  "Личная библиотека": "Personal library",
+  "Отметьте полки, на которых должна находиться книга.":
+    "Select the shelves where this book should appear.",
+  "Доступные полки": "Available shelves",
+  "Создайте первую личную полку для этой книги.":
+    "Create your first personal shelf for this book.",
+  "Умные и редакционные полки обновляются автоматически.":
+    "Smart and editorial shelves update automatically.",
+  "Новая личная полка": "New personal shelf",
+  "Например, Русская классика": "For example, Russian classics",
+  "Создать и добавить": "Create and add",
+  "Введите корректное название длиной до 120 символов.":
+    "Enter a valid name of up to 120 characters.",
+  "Не удалось сохранить изменение. Попробуйте ещё раз.":
+    "Could not save the change. Please try again.",
+  "Проверьте название и настройки полки.": "Check the shelf name and settings.",
+  "Закрыть настройки полки": "Close shelf settings",
+  "Оформление и порядок этой полки видны только вам.":
+    "Only you can see this shelf's appearance and order.",
+  Название: "Name",
+  Описание: "Description",
+  "(необязательно)": "(optional)",
+  "Знак полки": "Shelf symbol",
+  "Фон полки": "Shelf background",
+  "Подстраивать оформление под выбранную книгу":
+    "Adapt the appearance to the selected book",
+  "Интенсивность оформления": "Styling intensity",
+  "Сохранение…": "Saving…",
+  "Сохранить настройки": "Save settings",
+  "Книги на полке": "Books on this shelf",
+  "Книга недоступна в текущем архиве":
+    "This book is unavailable in the current archive",
+  "Автор не указан": "Writer not specified",
+  Переместить: "Move",
+  "в начало": "to the beginning",
+  "В начало": "To beginning",
+  выше: "up",
+  Выше: "Up",
+  ниже: "down",
+  Ниже: "Down",
+  "в конец": "to the end",
+  "В конец": "To end",
+  Убрать: "Remove",
+  "с полки": "from shelf",
+  "Убрать с полки": "Remove from shelf",
+  "На этой полке пока нет книг.": "There are no books on this shelf yet.",
+  "Состав умной полки формируется автоматически по сохранённым фильтрам.":
+    "This smart shelf is populated automatically from its saved filters.",
+  "Удалить полку": "Delete shelf",
+  "Книги останутся в архиве.": "The books will remain in the archive.",
+  Отмена: "Cancel",
+  "Удаление…": "Deleting…",
+  "Удалить окончательно": "Delete permanently",
+  "Не удалось подключить редакционный архив. Попробуйте ещё раз.":
+    "Could not connect to the editorial archive. Please try again.",
+  "Редакционный архив временно недоступен":
+    "The editorial archive is temporarily unavailable",
+  "Литературную планету не удалось открыть": "Literary Planet could not be opened",
+  "Глобус загрузится при приближении": "The globe will load as you approach",
+  "Повторить загрузку": "Retry loading",
+  "Книжный архив временно недоступен":
+    "The book archive is temporarily unavailable",
+  "Книжный архив загрузится при приближении":
+    "The book archive will load as you approach",
+  "Место полки уже зарезервировано, поэтому страница не сдвинется.":
+    "The shelf space is already reserved, so the page will not shift.",
+  "Авторский архив временно недоступен":
+    "The editorial archive is temporarily unavailable",
+  "Журнал загрузится при приближении": "The journal will load as you approach",
+  "Место журнала зарезервировано до его открытия.":
+    "The journal space is reserved until it opens.",
+  "Архив не удалось подключить": "The archive could not be connected",
+  "Подключаем единый поиск…": "Connecting unified search…",
+  "Проверьте соединение и повторите загрузку.":
+    "Check your connection and retry loading.",
+  "Готовим страны, авторов, книги и публикации.":
+    "Preparing countries, writers, books and publications.",
   "Писатель не найден": "Writer not found",
+  "В моей библиотеке": "In my library",
+  "Сохранённые книги независимо от статуса чтения":
+    "Saved books regardless of reading status",
 };
 
 export type InterfaceTranslationAudit = {

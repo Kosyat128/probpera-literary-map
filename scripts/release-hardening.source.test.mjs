@@ -3,7 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 const root = path.resolve(process.cwd());
-const read = (relativePath) => readFileSync(path.join(root, relativePath), "utf8");
+const read = (relativePath) =>
+  readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n?/gu, "\n");
 
 describe("release workflow hardening", () => {
   it("serializes complete Pages releases without cancelling a code or CMS snapshot", () => {

@@ -12,6 +12,8 @@ const workspaces = [];
 
 async function fixture({
   bookCoverMaximumBytes = 300,
+  domainCname,
+  domainSiteBasePath = "/",
   entryBytes = Buffer.from("export const ready = true;"),
   indexHtml,
   initialAssetGzipBytes = 300 * 1024,
@@ -51,6 +53,8 @@ async function fixture({
     path.join(workspace, "performance-budget.json"),
     JSON.stringify({
       siteBasePath,
+      domainSiteBasePath,
+      domainCname,
       distTotalBytes: 2_000_000,
       distExcludingBookCoversBytes: 2_000_000,
       largestJavaScriptBytes: 1_000_000,
@@ -69,6 +73,9 @@ async function fixture({
       individualImageBytes: 1_000_000,
     })
   );
+  if (domainCname) {
+    await writeFile(path.join(workspace, "dist", "CNAME"), `${domainCname}\n`);
+  }
   return workspace;
 }
 
@@ -133,6 +140,20 @@ describe("performance budget audit", () => {
 
     expect(stdout).toContain("PASS initial asset references: 3 / 3 files");
     expect(stdout).toContain("PASS initial module script/modulepreload/CSS gzip:");
+  });
+
+  it("resolves a root deployment only through its pinned domain marker", async () => {
+    const cwd = await fixture({
+      domainCname: "probpera.ru",
+      indexHtml: [
+        '<link rel="modulepreload" href="/assets/runtime.js">',
+        '<link rel="stylesheet" href="/assets/index.css">',
+        '<script type="module" src="/assets/index-entry.js"></script>',
+      ].join("\n"),
+    });
+    const { stdout } = await execFileAsync(process.execPath, [auditScript], { cwd });
+
+    expect(stdout).toContain("PASS initial asset references: 3 / 3 files");
   });
 
   it("fails closed for a wrong deployment base even when the asset suffix is unique", async () => {

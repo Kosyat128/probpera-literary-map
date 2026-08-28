@@ -1,7 +1,9 @@
 {
   "siteBasePath": "/probpera-literary-map/",
-  "distTotalBytes": 115081216,
-  "distExcludingBookCoversBytes": 75497472,
+  "domainSiteBasePath": "/",
+  "domainCname": "probpera.ru",
+  "distTotalBytes": 115343360,
+  "distExcludingBookCoversBytes": 75759616,
   "largestJavaScriptBytes": 2097152,
   "largestJavaScriptGzipBytes": 409600,
   "mainJavaScriptBytes": 716800,

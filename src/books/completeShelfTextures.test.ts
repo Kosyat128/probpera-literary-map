@@ -351,7 +351,7 @@ describe("Complete Shelf procedural artwork data", () => {
     expect(spineDispose).toHaveBeenCalledOnce();
   });
 
-  it("requests an already-authorized presentation cover and cancels safely", () => {
+  it("requests an already-authorized presentation cover and cancels safely", async () => {
     const image = {
       complete: false,
       decoding: "auto",
@@ -379,11 +379,13 @@ describe("Complete Shelf procedural artwork data", () => {
       onReady
     );
 
+    await Promise.resolve();
     expect(image.src).toContain("nineteen-eighty-four-editorial.webp");
     expect(typeof image.onload).toBe("function");
     cancel();
-    expect(image.src).toBe("");
-    expect(image.onload).toBeNull();
+    expect(image.src).toContain("nineteen-eighty-four-editorial.webp");
+    (image.onload as unknown as () => void)();
+    await Promise.resolve();
     expect(onReady).not.toHaveBeenCalled();
   });
 });

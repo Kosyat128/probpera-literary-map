@@ -259,7 +259,7 @@ describe("Stage 5A governance baseline", () => {
       headerArticlesMenu: canonicalFileHash(headerArticlesMenu),
       interfaceLanguageControl: canonicalFileHash(languageControl),
     }).toEqual({
-      headerArticlesMenu: "b393906862f33d07dc90ce62030c5d2c05c733195f291da9e86087cc9f29c172",
+      headerArticlesMenu: "3dc49bb30962ff80bce8d785eb1cb19a1b0269ef9518799caad74c4db311cbde",
       interfaceLanguageControl: "03819534ee01808676bb1bca4fe13d7f125feab9dabed213d6446fee2098402b",
     });
   });

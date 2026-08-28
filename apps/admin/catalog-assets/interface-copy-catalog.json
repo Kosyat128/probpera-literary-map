@@ -40,6 +40,14 @@
     "multiline": false
   },
   {
+    "key": "interface.(необязательно)",
+    "group": "Весь интерфейс",
+    "label": "(необязательно)",
+    "defaultRu": "(необязательно)",
+    "defaultEn": "(optional)",
+    "multiline": false
+  },
+  {
     "key": "interface.{count} документальный портрет подключён без генерации лиц",
     "group": "Весь интерфейс",
     "label": "{count} документальный портрет подключён без генерации лиц",
@@ -256,6 +264,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Автор не указан",
+    "group": "Весь интерфейс",
+    "label": "Автор не указан",
+    "defaultRu": "Автор не указан",
+    "defaultEn": "Writer not specified",
+    "multiline": false
+  },
+  {
     "key": "interface.автора",
     "group": "Весь интерфейс",
     "label": "автора",
@@ -357,6 +373,14 @@
     "label": "Авторский архив · 167 материалов",
     "defaultRu": "Авторский архив · 167 материалов",
     "defaultEn": "Editorial archive · 167 publications",
+    "multiline": false
+  },
+  {
+    "key": "interface.Авторский архив временно недоступен",
+    "group": "Весь интерфейс",
+    "label": "Авторский архив временно недоступен",
+    "defaultRu": "Авторский архив временно недоступен",
+    "defaultEn": "The editorial archive is temporarily unavailable",
     "multiline": false
   },
   {
@@ -536,11 +560,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Архив",
+    "group": "Весь интерфейс",
+    "label": "Архив",
+    "defaultRu": "Архив",
+    "defaultEn": "Archive",
+    "multiline": false
+  },
+  {
     "key": "interface.Архив мира",
     "group": "Весь интерфейс",
     "label": "Архив мира",
     "defaultRu": "Архив мира",
     "defaultEn": "World archive",
+    "multiline": false
+  },
+  {
+    "key": "interface.Архив не удалось подключить",
+    "group": "Весь интерфейс",
+    "label": "Архив не удалось подключить",
+    "defaultRu": "Архив не удалось подключить",
+    "defaultEn": "The archive could not be connected",
     "multiline": false
   },
   {
@@ -920,6 +960,62 @@
     "multiline": false
   },
   {
+    "key": "interface.В избранное",
+    "group": "Весь интерфейс",
+    "label": "В избранное",
+    "defaultRu": "В избранное",
+    "defaultEn": "Add to favourites",
+    "multiline": false
+  },
+  {
+    "key": "interface.В избранном",
+    "group": "Весь интерфейс",
+    "label": "В избранном",
+    "defaultRu": "В избранном",
+    "defaultEn": "In favourites",
+    "multiline": false
+  },
+  {
+    "key": "interface.в конец",
+    "group": "Весь интерфейс",
+    "label": "в конец",
+    "defaultRu": "в конец",
+    "defaultEn": "to the end",
+    "multiline": false
+  },
+  {
+    "key": "interface.В конец",
+    "group": "Весь интерфейс",
+    "label": "В конец",
+    "defaultRu": "В конец",
+    "defaultEn": "To end",
+    "multiline": false
+  },
+  {
+    "key": "interface.В моей библиотеке",
+    "group": "Весь интерфейс",
+    "label": "В моей библиотеке",
+    "defaultRu": "В моей библиотеке",
+    "defaultEn": "In my library",
+    "multiline": false
+  },
+  {
+    "key": "interface.в начало",
+    "group": "Весь интерфейс",
+    "label": "в начало",
+    "defaultRu": "в начало",
+    "defaultEn": "to the beginning",
+    "multiline": false
+  },
+  {
+    "key": "interface.В начало",
+    "group": "Весь интерфейс",
+    "label": "В начало",
+    "defaultRu": "В начало",
+    "defaultEn": "To beginning",
+    "multiline": false
+  },
+  {
     "key": "interface.в очереди",
     "group": "Весь интерфейс",
     "label": "в очереди",
@@ -1000,6 +1096,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Введите корректное название длиной до 120 символов.",
+    "group": "Весь интерфейс",
+    "label": "Введите корректное название длиной до 120 символов.",
+    "defaultRu": "Введите корректное название длиной до 120 символов.",
+    "defaultEn": "Enter a valid name of up to 120 characters.",
+    "multiline": false
+  },
+  {
     "key": "interface.венгерский",
     "group": "Весь интерфейс",
     "label": "венгерский",
@@ -1048,6 +1152,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Вернуться ко всему архиву",
+    "group": "Весь интерфейс",
+    "label": "Вернуться ко всему архиву",
+    "defaultRu": "Вернуться ко всему архиву",
+    "defaultEn": "Return to the complete archive",
+    "multiline": false
+  },
+  {
     "key": "interface.Вернуться на главную",
     "group": "Весь интерфейс",
     "label": "Вернуться на главную",
@@ -1069,6 +1181,14 @@
     "label": "Весь журнал",
     "defaultRu": "Весь журнал",
     "defaultEn": "Explore the journal",
+    "multiline": false
+  },
+  {
+    "key": "interface.Весь книжный архив",
+    "group": "Весь интерфейс",
+    "label": "Весь книжный архив",
+    "defaultRu": "Весь книжный архив",
+    "defaultEn": "Complete book archive",
     "multiline": false
   },
   {
@@ -1408,6 +1528,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Выбрать книгу из архива",
+    "group": "Весь интерфейс",
+    "label": "Выбрать книгу из архива",
+    "defaultRu": "Выбрать книгу из архива",
+    "defaultEn": "Choose a book from the archive",
+    "multiline": false
+  },
+  {
     "key": "interface.Выбрать случайное произведение из всего архива",
     "group": "Весь интерфейс",
     "label": "Выбрать случайное произведение из всего архива",
@@ -1421,6 +1549,22 @@
     "label": "Выйти",
     "defaultRu": "Выйти",
     "defaultEn": "Sign out",
+    "multiline": false
+  },
+  {
+    "key": "interface.выше",
+    "group": "Весь интерфейс",
+    "label": "выше",
+    "defaultRu": "выше",
+    "defaultEn": "up",
+    "multiline": false
+  },
+  {
+    "key": "interface.Выше",
+    "group": "Весь интерфейс",
+    "label": "Выше",
+    "defaultRu": "Выше",
+    "defaultEn": "Up",
     "multiline": false
   },
   {
@@ -1528,6 +1672,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Глобус загрузится при приближении",
+    "group": "Весь интерфейс",
+    "label": "Глобус загрузится при приближении",
+    "defaultRu": "Глобус загрузится при приближении",
+    "defaultEn": "The globe will load as you approach",
+    "multiline": false
+  },
+  {
     "key": "interface.Говорилка - форум «Проба Пера»",
     "group": "Весь интерфейс",
     "label": "Говорилка - форум «Проба Пера»",
@@ -1581,6 +1733,14 @@
     "label": "Готовим материал к чтению…",
     "defaultRu": "Готовим материал к чтению…",
     "defaultEn": "Preparing the article…",
+    "multiline": false
+  },
+  {
+    "key": "interface.Готовим страны, авторов, книги и публикации.",
+    "group": "Весь интерфейс",
+    "label": "Готовим страны, авторов, книги и публикации.",
+    "defaultRu": "Готовим страны, авторов, книги и публикации.",
+    "defaultEn": "Preparing countries, writers, books and publications.",
     "multiline": false
   },
   {
@@ -1864,6 +2024,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Добавить на полку",
+    "group": "Весь интерфейс",
+    "label": "Добавить на полку",
+    "defaultRu": "Добавить на полку",
+    "defaultEn": "Add to shelf",
+    "multiline": false
+  },
+  {
     "key": "country.DM",
     "group": "Названия стран",
     "label": "Название страны: Доминика",
@@ -1901,6 +2069,14 @@
     "label": "Доступна новая версия журнала",
     "defaultRu": "Доступна новая версия журнала",
     "defaultEn": "A new version of the journal is available",
+    "multiline": false
+  },
+  {
+    "key": "interface.Доступные полки",
+    "group": "Весь интерфейс",
+    "label": "Доступные полки",
+    "defaultRu": "Доступные полки",
+    "defaultEn": "Available shelves",
     "multiline": false
   },
   {
@@ -2056,6 +2232,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Журнал загрузится при приближении",
+    "group": "Весь интерфейс",
+    "label": "Журнал загрузится при приближении",
+    "defaultRu": "Журнал загрузится при приближении",
+    "defaultEn": "The journal will load as you approach",
+    "multiline": false
+  },
+  {
     "key": "interface.Журнал о литературе и искусстве слова",
     "group": "Весь интерфейс",
     "label": "Журнал о литературе и искусстве слова",
@@ -2152,6 +2336,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Закрыть настройки полки",
+    "group": "Весь интерфейс",
+    "label": "Закрыть настройки полки",
+    "defaultRu": "Закрыть настройки полки",
+    "defaultEn": "Close shelf settings",
+    "multiline": false
+  },
+  {
     "key": "interface.Закрыть панель",
     "group": "Весь интерфейс",
     "label": "Закрыть панель",
@@ -2245,6 +2437,14 @@
     "label": "Название страны: Зимбабве",
     "defaultRu": "Зимбабве",
     "defaultEn": "Zimbabwe",
+    "multiline": false
+  },
+  {
+    "key": "interface.Знак полки",
+    "group": "Весь интерфейс",
+    "label": "Знак полки",
+    "defaultRu": "Знак полки",
+    "defaultEn": "Shelf symbol",
     "multiline": false
   },
   {
@@ -2421,6 +2621,14 @@
     "label": "Название страны: Индонезия",
     "defaultRu": "Индонезия",
     "defaultEn": "Indonesia",
+    "multiline": false
+  },
+  {
+    "key": "interface.Интенсивность оформления",
+    "group": "Весь интерфейс",
+    "label": "Интенсивность оформления",
+    "defaultRu": "Интенсивность оформления",
+    "defaultEn": "Styling intensity",
     "multiline": false
   },
   {
@@ -3000,6 +3208,22 @@
     "multiline": false
   },
   {
+    "key": "interface.Качество",
+    "group": "Весь интерфейс",
+    "label": "Качество",
+    "defaultRu": "Качество",
+    "defaultEn": "Quality",
+    "multiline": false
+  },
+  {
+    "key": "interface.Качество трёхмерной полки",
+    "group": "Весь интерфейс",
+    "label": "Качество трёхмерной полки",
+    "defaultRu": "Качество трёхмерной полки",
+    "defaultEn": "3D shelf quality",
+    "multiline": false
+  },
+  {
     "key": "interface.Кем работали классики до литературной славы",
     "group": "Весь интерфейс",
     "label": "Кем работали классики до литературной славы",
@@ -3053,6 +3277,14 @@
     "label": "Классика",
     "defaultRu": "Классика",
     "defaultEn": "Classics",
+    "multiline": false
+  },
+  {
+    "key": "interface.Классика архива",
+    "group": "Весь интерфейс",
+    "label": "Классика архива",
+    "defaultRu": "Классика архива",
+    "defaultEn": "Archive classics",
     "multiline": false
   },
   {
@@ -3168,6 +3400,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Книга недоступна в текущем архиве",
+    "group": "Весь интерфейс",
+    "label": "Книга недоступна в текущем архиве",
+    "defaultRu": "Книга недоступна в текущем архиве",
+    "defaultEn": "This book is unavailable in the current archive",
+    "multiline": false
+  },
+  {
     "key": "interface.Книга упоминается",
     "group": "Весь интерфейс",
     "label": "Книга упоминается",
@@ -3208,6 +3448,30 @@
     "multiline": false
   },
   {
+    "key": "interface.Книги на полке",
+    "group": "Весь интерфейс",
+    "label": "Книги на полке",
+    "defaultRu": "Книги на полке",
+    "defaultEn": "Books on this shelf",
+    "multiline": false
+  },
+  {
+    "key": "interface.Книги на полке сохранены без изменений.",
+    "group": "Весь интерфейс",
+    "label": "Книги на полке сохранены без изменений.",
+    "defaultRu": "Книги на полке сохранены без изменений.",
+    "defaultEn": "The books on this shelf remain unchanged.",
+    "multiline": false
+  },
+  {
+    "key": "interface.Книги останутся в архиве.",
+    "group": "Весь интерфейс",
+    "label": "Книги останутся в архиве.",
+    "defaultRu": "Книги останутся в архиве.",
+    "defaultEn": "The books will remain in the archive.",
+    "multiline": false
+  },
+  {
     "key": "interface.Книги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек.",
     "group": "Весь интерфейс",
     "label": "Книги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек.",
@@ -3237,6 +3501,22 @@
     "label": "Книжный архив",
     "defaultRu": "Книжный архив",
     "defaultEn": "Book archive",
+    "multiline": false
+  },
+  {
+    "key": "interface.Книжный архив временно недоступен",
+    "group": "Весь интерфейс",
+    "label": "Книжный архив временно недоступен",
+    "defaultRu": "Книжный архив временно недоступен",
+    "defaultEn": "The book archive is temporarily unavailable",
+    "multiline": false
+  },
+  {
+    "key": "interface.Книжный архив загрузится при приближении",
+    "group": "Весь интерфейс",
+    "label": "Книжный архив загрузится при приближении",
+    "defaultRu": "Книжный архив загрузится при приближении",
+    "defaultEn": "The book archive will load as you approach",
     "multiline": false
   },
   {
@@ -3464,6 +3744,22 @@
     "multiline": false
   },
   {
+    "key": "interface.Куратор: редакция «Пробы пера» · проверенная классика архива",
+    "group": "Весь интерфейс",
+    "label": "Куратор: редакция «Пробы пера» · проверенная классика архива",
+    "defaultRu": "Куратор: редакция «Пробы пера» · проверенная классика архива",
+    "defaultEn": "Curated by the Proba Pera editors · reviewed archive classics",
+    "multiline": false
+  },
+  {
+    "key": "interface.Куратор: редакция «Пробы пера» · проверенные произведения",
+    "group": "Весь интерфейс",
+    "label": "Куратор: редакция «Пробы пера» · проверенные произведения",
+    "defaultRu": "Куратор: редакция «Пробы пера» · проверенные произведения",
+    "defaultEn": "Curated by the Proba Pera editors · reviewed works",
+    "multiline": false
+  },
+  {
     "key": "country.KG",
     "group": "Названия стран",
     "label": "Название страны: Кыргызстан",
@@ -3640,6 +3936,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Литература –",
+    "group": "Весь интерфейс",
+    "label": "Литература –",
+    "defaultRu": "Литература –",
+    "defaultEn": "Literature is",
+    "multiline": false
+  },
+  {
     "key": "interface.Литература второй половины XX-XXI века",
     "group": "Весь интерфейс",
     "label": "Литература второй половины XX-XXI века",
@@ -3736,6 +4040,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Литературную планету не удалось открыть",
+    "group": "Весь интерфейс",
+    "label": "Литературную планету не удалось открыть",
+    "defaultRu": "Литературную планету не удалось открыть",
+    "defaultEn": "Literary Planet could not be opened",
+    "multiline": false
+  },
+  {
     "key": "interface.Литературные истории",
     "group": "Весь интерфейс",
     "label": "Литературные истории",
@@ -3813,6 +4125,14 @@
     "label": "Лица мировой литературы",
     "defaultRu": "Лица мировой литературы",
     "defaultEn": "Faces of world literature",
+    "multiline": false
+  },
+  {
+    "key": "interface.Личная библиотека",
+    "group": "Весь интерфейс",
+    "label": "Личная библиотека",
+    "defaultRu": "Личная библиотека",
+    "defaultEn": "Personal library",
     "multiline": false
   },
   {
@@ -4096,11 +4416,27 @@
     "multiline": true
   },
   {
+    "key": "interface.Место журнала зарезервировано до его открытия.",
+    "group": "Весь интерфейс",
+    "label": "Место журнала зарезервировано до его открытия.",
+    "defaultRu": "Место журнала зарезервировано до его открытия.",
+    "defaultEn": "The journal space is reserved until it opens.",
+    "multiline": false
+  },
+  {
     "key": "interface.Место писателя на глобусе пока не указано",
     "group": "Весь интерфейс",
     "label": "Место писателя на глобусе пока не указано",
     "defaultRu": "Место писателя на глобусе пока не указано",
     "defaultEn": "This writer's place on the globe is not available yet",
+    "multiline": false
+  },
+  {
+    "key": "interface.Место полки уже зарезервировано, поэтому страница не сдвинется.",
+    "group": "Весь интерфейс",
+    "label": "Место полки уже зарезервировано, поэтому страница не сдвинется.",
+    "defaultRu": "Место полки уже зарезервировано, поэтому страница не сдвинется.",
+    "defaultEn": "The shelf space is already reserved, so the page will not shift.",
     "multiline": false
   },
   {
@@ -4208,6 +4544,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Мои полки",
+    "group": "Весь интерфейс",
+    "label": "Мои полки",
+    "defaultRu": "Мои полки",
+    "defaultEn": "My shelves",
+    "multiline": false
+  },
+  {
     "key": "interface.МОИ ПОЛКИ",
     "group": "Весь интерфейс",
     "label": "МОИ ПОЛКИ",
@@ -4280,6 +4624,14 @@
     "multiline": false
   },
   {
+    "key": "interface.На этой полке пока нет книг.",
+    "group": "Весь интерфейс",
+    "label": "На этой полке пока нет книг.",
+    "defaultRu": "На этой полке пока нет книг.",
+    "defaultEn": "There are no books on this shelf yet.",
+    "multiline": false
+  },
+  {
     "key": "interface.Наведите, чтобы открыть публикации",
     "group": "Весь интерфейс",
     "label": "Наведите, чтобы открыть публикации",
@@ -4309,6 +4661,14 @@
     "label": "Навигация по Литературной планете",
     "defaultRu": "Навигация по Литературной планете",
     "defaultEn": "Literary Planet navigation",
+    "multiline": false
+  },
+  {
+    "key": "interface.Навигация по редакционным страницам",
+    "group": "Весь интерфейс",
+    "label": "Навигация по редакционным страницам",
+    "defaultRu": "Навигация по редакционным страницам",
+    "defaultEn": "Editorial page navigation",
     "multiline": false
   },
   {
@@ -4381,6 +4741,14 @@
     "label": "Назад",
     "defaultRu": "Назад",
     "defaultEn": "Back",
+    "multiline": false
+  },
+  {
+    "key": "interface.Название",
+    "group": "Весь интерфейс",
+    "label": "Название",
+    "defaultRu": "Название",
+    "defaultEn": "Name",
     "multiline": false
   },
   {
@@ -4472,11 +4840,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Например, Русская классика",
+    "group": "Весь интерфейс",
+    "label": "Например, Русская классика",
+    "defaultRu": "Например, Русская классика",
+    "defaultEn": "For example, Russian classics",
+    "multiline": false
+  },
+  {
     "key": "interface.Например, Читатель_ПП",
     "group": "Весь интерфейс",
     "label": "Например, Читатель_ПП",
     "defaultRu": "Например, Читатель_ПП",
     "defaultEn": "For example, Booklover_PP",
+    "multiline": false
+  },
+  {
+    "key": "interface.Настроить полку",
+    "group": "Весь интерфейс",
+    "label": "Настроить полку",
+    "defaultRu": "Настроить полку",
+    "defaultEn": "Customise shelf",
     "multiline": false
   },
   {
@@ -4632,6 +5016,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Не удалось подключить редакционный архив. Попробуйте ещё раз.",
+    "group": "Весь интерфейс",
+    "label": "Не удалось подключить редакционный архив. Попробуйте ещё раз.",
+    "defaultRu": "Не удалось подключить редакционный архив. Попробуйте ещё раз.",
+    "defaultEn": "Could not connect to the editorial archive. Please try again.",
+    "multiline": false
+  },
+  {
     "key": "interface.Не удалось связаться с сервером. Проверьте интернет и повторите попытку.",
     "group": "Весь интерфейс",
     "label": "Не удалось связаться с сервером. Проверьте интернет и повторите попытку.",
@@ -4645,6 +5037,22 @@
     "label": "Не удалось скопировать автоматически - выделите текст вручную.",
     "defaultRu": "Не удалось скопировать автоматически - выделите текст вручную.",
     "defaultEn": "Automatic copying failed. Select and copy the text manually.",
+    "multiline": false
+  },
+  {
+    "key": "interface.Не удалось создать личную полку",
+    "group": "Весь интерфейс",
+    "label": "Не удалось создать личную полку",
+    "defaultRu": "Не удалось создать личную полку",
+    "defaultEn": "Could not create the personal shelf",
+    "multiline": false
+  },
+  {
+    "key": "interface.Не удалось сохранить изменение. Попробуйте ещё раз.",
+    "group": "Весь интерфейс",
+    "label": "Не удалось сохранить изменение. Попробуйте ещё раз.",
+    "defaultRu": "Не удалось сохранить изменение. Попробуйте ещё раз.",
+    "defaultEn": "Could not save the change. Please try again.",
     "multiline": false
   },
   {
@@ -4685,6 +5093,14 @@
     "label": "Неизвестный автор",
     "defaultRu": "Неизвестный автор",
     "defaultEn": "Unknown writer",
+    "multiline": false
+  },
+  {
+    "key": "interface.Некоторые книги больше недоступны в архиве",
+    "group": "Весь интерфейс",
+    "label": "Некоторые книги больше недоступны в архиве",
+    "defaultRu": "Некоторые книги больше недоступны в архиве",
+    "defaultEn": "Some books are no longer available in the archive",
     "multiline": false
   },
   {
@@ -4800,6 +5216,22 @@
     "multiline": false
   },
   {
+    "key": "interface.ниже",
+    "group": "Весь интерфейс",
+    "label": "ниже",
+    "defaultRu": "ниже",
+    "defaultEn": "down",
+    "multiline": false
+  },
+  {
+    "key": "interface.Ниже",
+    "group": "Весь интерфейс",
+    "label": "Ниже",
+    "defaultRu": "Ниже",
+    "defaultEn": "Down",
+    "multiline": false
+  },
+  {
     "key": "country.NI",
     "group": "Названия стран",
     "label": "Название страны: Никарагуа",
@@ -4893,6 +5325,22 @@
     "label": "Подпись на глобусе: Новая Каледония",
     "defaultRu": "Новая Каледония",
     "defaultEn": "New Caledonia",
+    "multiline": false
+  },
+  {
+    "key": "interface.Новая личная полка",
+    "group": "Весь интерфейс",
+    "label": "Новая личная полка",
+    "defaultRu": "Новая личная полка",
+    "defaultEn": "New personal shelf",
+    "multiline": false
+  },
+  {
+    "key": "interface.Новая полка",
+    "group": "Весь интерфейс",
+    "label": "Новая полка",
+    "defaultRu": "Новая полка",
+    "defaultEn": "New shelf",
     "multiline": false
   },
   {
@@ -5152,6 +5600,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Описание",
+    "group": "Весь интерфейс",
+    "label": "Описание",
+    "defaultRu": "Описание",
+    "defaultEn": "Description",
+    "multiline": false
+  },
+  {
     "key": "interface.Опубликованные произведения",
     "group": "Весь интерфейс",
     "label": "Опубликованные произведения",
@@ -5320,6 +5776,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Откройте весь архив, найдите произведение и добавьте его на эту полку.",
+    "group": "Весь интерфейс",
+    "label": "Откройте весь архив, найдите произведение и добавьте его на эту полку.",
+    "defaultRu": "Откройте весь архив, найдите произведение и добавьте его на эту полку.",
+    "defaultEn": "Open the complete archive, find a work and add it to this shelf.",
+    "multiline": false
+  },
+  {
     "key": "interface.Открываем «Литературную планету»…",
     "group": "Весь интерфейс",
     "label": "Открываем «Литературную планету»…",
@@ -5357,6 +5821,14 @@
     "label": "Открытая редакция",
     "defaultRu": "Открытая редакция",
     "defaultEn": "Open editorial process",
+    "multiline": false
+  },
+  {
+    "key": "interface.Открыты сведения о книге",
+    "group": "Весь интерфейс",
+    "label": "Открыты сведения о книге",
+    "defaultRu": "Открыты сведения о книге",
+    "defaultEn": "Book details open",
     "multiline": false
   },
   {
@@ -5421,6 +5893,14 @@
     "label": "Открыть биографию",
     "defaultRu": "Открыть биографию",
     "defaultEn": "Open biography",
+    "multiline": false
+  },
+  {
+    "key": "interface.Открыть весь архив",
+    "group": "Весь интерфейс",
+    "label": "Открыть весь архив",
+    "defaultRu": "Открыть весь архив",
+    "defaultEn": "Open the complete archive",
     "multiline": false
   },
   {
@@ -5544,11 +6024,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Отмена",
+    "group": "Весь интерфейс",
+    "label": "Отмена",
+    "defaultRu": "Отмена",
+    "defaultEn": "Cancel",
+    "multiline": false
+  },
+  {
     "key": "interface.Отменить подписку",
     "group": "Весь интерфейс",
     "label": "Отменить подписку",
     "defaultRu": "Отменить подписку",
     "defaultEn": "Unfollow",
+    "multiline": false
+  },
+  {
+    "key": "interface.Отметьте полки, на которых должна находиться книга.",
+    "group": "Весь интерфейс",
+    "label": "Отметьте полки, на которых должна находиться книга.",
+    "defaultRu": "Отметьте полки, на которых должна находиться книга.",
+    "defaultEn": "Select the shelves where this book should appear.",
     "multiline": false
   },
   {
@@ -5565,6 +6061,14 @@
     "label": "Оформление блока",
     "defaultRu": "Оформление блока",
     "defaultEn": "Block appearance",
+    "multiline": false
+  },
+  {
+    "key": "interface.Оформление и порядок этой полки видны только вам.",
+    "group": "Весь интерфейс",
+    "label": "Оформление и порядок этой полки видны только вам.",
+    "defaultRu": "Оформление и порядок этой полки видны только вам.",
+    "defaultEn": "Only you can see this shelf's appearance and order.",
     "multiline": false
   },
   {
@@ -5752,6 +6256,14 @@
     "multiline": true
   },
   {
+    "key": "interface.Первая книга",
+    "group": "Весь интерфейс",
+    "label": "Первая книга",
+    "defaultRu": "Первая книга",
+    "defaultEn": "First book",
+    "multiline": false
+  },
+  {
     "key": "interface.Первая публикация",
     "group": "Весь интерфейс",
     "label": "Первая публикация",
@@ -5840,6 +6352,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Переместить",
+    "group": "Весь интерфейс",
+    "label": "Переместить",
+    "defaultRu": "Переместить",
+    "defaultEn": "Move",
+    "multiline": false
+  },
+  {
     "key": "interface.Период",
     "group": "Весь интерфейс",
     "label": "Период",
@@ -5869,6 +6389,14 @@
     "label": "Период не подтверждён",
     "defaultRu": "Период не подтверждён",
     "defaultEn": "Period not verified",
+    "multiline": false
+  },
+  {
+    "key": "interface.Периоды",
+    "group": "Весь интерфейс",
+    "label": "Периоды",
+    "defaultRu": "Периоды",
+    "defaultEn": "Periods",
     "multiline": false
   },
   {
@@ -6016,11 +6544,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Повторить загрузку",
+    "group": "Весь интерфейс",
+    "label": "Повторить загрузку",
+    "defaultRu": "Повторить загрузку",
+    "defaultEn": "Retry loading",
+    "multiline": false
+  },
+  {
     "key": "interface.Повторить загрузку глобуса",
     "group": "Весь интерфейс",
     "label": "Повторить загрузку глобуса",
     "defaultRu": "Повторить загрузку глобуса",
     "defaultEn": "Retry loading the globe",
+    "multiline": false
+  },
+  {
+    "key": "interface.Повторить поиск",
+    "group": "Весь интерфейс",
+    "label": "Повторить поиск",
+    "defaultRu": "Повторить поиск",
+    "defaultEn": "Retry search",
     "multiline": false
   },
   {
@@ -6037,6 +6581,14 @@
     "label": "Погрузиться в Литературную планету",
     "defaultRu": "Погрузиться в Литературную планету",
     "defaultEn": "Enter the Literary Planet",
+    "multiline": false
+  },
+  {
+    "key": "interface.Подборка обновляется",
+    "group": "Весь интерфейс",
+    "label": "Подборка обновляется",
+    "defaultRu": "Подборка обновляется",
+    "defaultEn": "Updating selection",
     "multiline": false
   },
   {
@@ -6112,6 +6664,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Подключаем единый поиск…",
+    "group": "Весь интерфейс",
+    "label": "Подключаем единый поиск…",
+    "defaultRu": "Подключаем единый поиск…",
+    "defaultEn": "Connecting unified search…",
+    "multiline": false
+  },
+  {
     "key": "interface.Подключаем редакционный архив…",
     "group": "Весь интерфейс",
     "label": "Подключаем редакционный архив…",
@@ -6176,11 +6736,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Подсказки всего книжного архива",
+    "group": "Весь интерфейс",
+    "label": "Подсказки всего книжного архива",
+    "defaultRu": "Подсказки всего книжного архива",
+    "defaultEn": "Complete book archive suggestions",
+    "multiline": false
+  },
+  {
     "key": "interface.Подсказки единого каталога",
     "group": "Весь интерфейс",
     "label": "Подсказки единого каталога",
     "defaultRu": "Подсказки единого каталога",
     "defaultEn": "Unified catalogue suggestions",
+    "multiline": false
+  },
+  {
+    "key": "interface.Подстраивать оформление под выбранную книгу",
+    "group": "Весь интерфейс",
+    "label": "Подстраивать оформление под выбранную книгу",
+    "defaultRu": "Подстраивать оформление под выбранную книгу",
+    "defaultEn": "Adapt the appearance to the selected book",
     "multiline": false
   },
   {
@@ -6208,11 +6784,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Позиция на книжной полке",
+    "group": "Весь интерфейс",
+    "label": "Позиция на книжной полке",
+    "defaultRu": "Позиция на книжной полке",
+    "defaultEn": "Position on the bookshelf",
+    "multiline": false
+  },
+  {
     "key": "interface.Поиск",
     "group": "Весь интерфейс",
     "label": "Поиск",
     "defaultRu": "Поиск",
     "defaultEn": "Search",
+    "multiline": false
+  },
+  {
+    "key": "interface.Поиск временно недоступен",
+    "group": "Весь интерфейс",
+    "label": "Поиск временно недоступен",
+    "defaultRu": "Поиск временно недоступен",
+    "defaultEn": "Search is temporarily unavailable",
     "multiline": false
   },
   {
@@ -6261,6 +6853,22 @@
     "label": "Пока нет опубликованных переводов на английский язык",
     "defaultRu": "Пока нет опубликованных переводов на английский язык",
     "defaultEn": "No English translations have been published yet",
+    "multiline": false
+  },
+  {
+    "key": "interface.Пока нет полок",
+    "group": "Весь интерфейс",
+    "label": "Пока нет полок",
+    "defaultRu": "Пока нет полок",
+    "defaultEn": "No shelves yet",
+    "multiline": false
+  },
+  {
+    "key": "interface.Пока пусто",
+    "group": "Весь интерфейс",
+    "label": "Пока пусто",
+    "defaultRu": "Пока пусто",
+    "defaultEn": "Empty for now",
     "multiline": false
   },
   {
@@ -6352,6 +6960,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Показать полностью",
+    "group": "Весь интерфейс",
+    "label": "Показать полностью",
+    "defaultRu": "Показать полностью",
+    "defaultEn": "Show in full",
+    "multiline": false
+  },
+  {
     "key": "interface.Полезный ответ",
     "group": "Весь интерфейс",
     "label": "Полезный ответ",
@@ -6440,6 +7056,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Попробуйте другое название, автора, страну или сбросьте фильтры.",
+    "group": "Весь интерфейс",
+    "label": "Попробуйте другое название, автора, страну или сбросьте фильтры.",
+    "defaultRu": "Попробуйте другое название, автора, страну или сбросьте фильтры.",
+    "defaultEn": "Try another title, writer or country, or clear the filters.",
+    "multiline": false
+  },
+  {
     "key": "interface.Попробуйте другое название, автора, страну или фильтр.",
     "group": "Весь интерфейс",
     "label": "Попробуйте другое название, автора, страну или фильтр.",
@@ -6520,6 +7144,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Последняя книга",
+    "group": "Весь интерфейс",
+    "label": "Последняя книга",
+    "defaultRu": "Последняя книга",
+    "defaultEn": "Last book",
+    "multiline": false
+  },
+  {
     "key": "interface.Постоянная ссылка ↗",
     "group": "Весь интерфейс",
     "label": "Постоянная ссылка ↗",
@@ -6589,6 +7221,14 @@
     "label": "Предыдущая книга",
     "defaultRu": "Предыдущая книга",
     "defaultEn": "Previous book",
+    "multiline": false
+  },
+  {
+    "key": "interface.Предыдущая страница",
+    "group": "Весь интерфейс",
+    "label": "Предыдущая страница",
+    "defaultRu": "Предыдущая страница",
+    "defaultEn": "Previous page",
     "multiline": false
   },
   {
@@ -6672,6 +7312,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Проба Пера — главная",
+    "group": "Весь интерфейс",
+    "label": "Проба Пера — главная",
+    "defaultRu": "Проба Пера — главная",
+    "defaultEn": "Proba Pera — home",
+    "multiline": false
+  },
+  {
     "key": "interface.Проба Пера · восстановление",
     "group": "Весь интерфейс",
     "label": "Проба Пера · восстановление",
@@ -6749,6 +7397,22 @@
     "label": "Проверить источник",
     "defaultRu": "Проверить источник",
     "defaultEn": "Check the source",
+    "multiline": false
+  },
+  {
+    "key": "interface.Проверьте название и настройки полки.",
+    "group": "Весь интерфейс",
+    "label": "Проверьте название и настройки полки.",
+    "defaultRu": "Проверьте название и настройки полки.",
+    "defaultEn": "Check the shelf name and settings.",
+    "multiline": false
+  },
+  {
+    "key": "interface.Проверьте соединение и повторите загрузку.",
+    "group": "Весь интерфейс",
+    "label": "Проверьте соединение и повторите загрузку.",
+    "defaultRu": "Проверьте соединение и повторите загрузку.",
+    "defaultEn": "Check your connection and retry loading.",
     "multiline": false
   },
   {
@@ -7064,6 +7728,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Развернуть сведения о книге",
+    "group": "Весь интерфейс",
+    "label": "Развернуть сведения о книге",
+    "defaultRu": "Развернуть сведения о книге",
+    "defaultEn": "Expand book details",
+    "multiline": false
+  },
+  {
     "key": "interface.Разговор о литературе",
     "group": "Весь интерфейс",
     "label": "Разговор о литературе",
@@ -7320,6 +7992,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Редакционная ссылка недоступна",
+    "group": "Весь интерфейс",
+    "label": "Редакционная ссылка недоступна",
+    "defaultRu": "Редакционная ссылка недоступна",
+    "defaultEn": "Editorial link unavailable",
+    "multiline": false
+  },
+  {
     "key": "interface.Редакционная фиксация",
     "group": "Весь интерфейс",
     "label": "Редакционная фиксация",
@@ -7344,6 +8024,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Редакционные полки",
+    "group": "Весь интерфейс",
+    "label": "Редакционные полки",
+    "defaultRu": "Редакционные полки",
+    "defaultEn": "Editorial shelves",
+    "multiline": false
+  },
+  {
     "key": "interface.РЕДАКЦИОННЫЕ ПОЛКИ",
     "group": "Весь интерфейс",
     "label": "РЕДАКЦИОННЫЕ ПОЛКИ",
@@ -7357,6 +8045,14 @@
     "label": "Редакционный архив",
     "defaultRu": "Редакционный архив",
     "defaultEn": "Editorial archive",
+    "multiline": false
+  },
+  {
+    "key": "interface.Редакционный архив временно недоступен",
+    "group": "Весь интерфейс",
+    "label": "Редакционный архив временно недоступен",
+    "defaultRu": "Редакционный архив временно недоступен",
+    "defaultEn": "The editorial archive is temporarily unavailable",
     "multiline": false
   },
   {
@@ -7501,6 +8197,22 @@
     "label": "Результаты поиска по всему журналу",
     "defaultRu": "Результаты поиска по всему журналу",
     "defaultEn": "Journal-wide search results",
+    "multiline": false
+  },
+  {
+    "key": "interface.Результаты поиска по всему книжному архиву",
+    "group": "Весь интерфейс",
+    "label": "Результаты поиска по всему книжному архиву",
+    "defaultRu": "Результаты поиска по всему книжному архиву",
+    "defaultEn": "Complete book archive search results",
+    "multiline": false
+  },
+  {
+    "key": "interface.Результаты поиска по текущей полке",
+    "group": "Весь интерфейс",
+    "label": "Результаты поиска по текущей полке",
+    "defaultRu": "Результаты поиска по текущей полке",
+    "defaultEn": "Current shelf search results",
     "multiline": false
   },
   {
@@ -7680,6 +8392,14 @@
     "multiline": false
   },
   {
+    "key": "interface.с полки",
+    "group": "Весь интерфейс",
+    "label": "с полки",
+    "defaultRu": "с полки",
+    "defaultEn": "from shelf",
+    "multiline": false
+  },
+  {
     "key": "interface.С портретами",
     "group": "Весь интерфейс",
     "label": "С портретами",
@@ -7776,6 +8496,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Сведения о книге",
+    "group": "Весь интерфейс",
+    "label": "Сведения о книге",
+    "defaultRu": "Сведения о книге",
+    "defaultEn": "Book details",
+    "multiline": false
+  },
+  {
     "key": "interface.Свежие публикации",
     "group": "Весь интерфейс",
     "label": "Свежие публикации",
@@ -7792,11 +8520,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Свернуть",
+    "group": "Весь интерфейс",
+    "label": "Свернуть",
+    "defaultRu": "Свернуть",
+    "defaultEn": "Collapse",
+    "multiline": false
+  },
+  {
     "key": "interface.Свернуть архив страны",
     "group": "Весь интерфейс",
     "label": "Свернуть архив страны",
     "defaultRu": "Свернуть архив страны",
     "defaultEn": "Collapse country archive",
+    "multiline": false
+  },
+  {
+    "key": "interface.Свернуть сведения о книге",
+    "group": "Весь интерфейс",
+    "label": "Свернуть сведения о книге",
+    "defaultRu": "Свернуть сведения о книге",
+    "defaultEn": "Collapse book details",
     "multiline": false
   },
   {
@@ -8045,6 +8789,14 @@
     "label": "Следующая книга",
     "defaultRu": "Следующая книга",
     "defaultEn": "Next book",
+    "multiline": false
+  },
+  {
+    "key": "interface.Следующая страница",
+    "group": "Весь интерфейс",
+    "label": "Следующая страница",
+    "defaultRu": "Следующая страница",
+    "defaultEn": "Next page",
     "multiline": false
   },
   {
@@ -8344,6 +9096,22 @@
     "multiline": false
   },
   {
+    "key": "interface.Создайте первую личную полку для этой книги.",
+    "group": "Весь интерфейс",
+    "label": "Создайте первую личную полку для этой книги.",
+    "defaultRu": "Создайте первую личную полку для этой книги.",
+    "defaultEn": "Create your first personal shelf for this book.",
+    "multiline": false
+  },
+  {
+    "key": "interface.Создать и добавить",
+    "group": "Весь интерфейс",
+    "label": "Создать и добавить",
+    "defaultRu": "Создать и добавить",
+    "defaultEn": "Create and add",
+    "multiline": false
+  },
+  {
     "key": "country.SB",
     "group": "Названия стран",
     "label": "Название страны: Соломоновы Острова",
@@ -8408,12 +9176,44 @@
     "multiline": false
   },
   {
+    "key": "interface.Состав умной полки формируется автоматически по сохранённым фильтрам.",
+    "group": "Весь интерфейс",
+    "label": "Состав умной полки формируется автоматически по сохранённым фильтрам.",
+    "defaultRu": "Состав умной полки формируется автоматически по сохранённым фильтрам.",
+    "defaultEn": "This smart shelf is populated automatically from its saved filters.",
+    "multiline": false
+  },
+  {
+    "key": "interface.Состояние книжной полки",
+    "group": "Весь интерфейс",
+    "label": "Состояние книжной полки",
+    "defaultRu": "Состояние книжной полки",
+    "defaultEn": "Bookshelf status",
+    "multiline": false
+  },
+  {
     "key": "interface.Состояние сохранено в журнале редакции. Обновите страницу - публикации и ваша библиотека не пострадали.",
     "group": "Весь интерфейс",
     "label": "Состояние сохранено в журнале редакции. Обновите страницу - публикации и ваша библиотека не пострадали.",
     "defaultRu": "Состояние сохранено в журнале редакции. Обновите страницу - публикации и ваша библиотека не пострадали.",
     "defaultEn": "The error has been recorded in the editorial log. Refresh the page; your publications and library are safe.",
     "multiline": true
+  },
+  {
+    "key": "interface.Сохранение…",
+    "group": "Весь интерфейс",
+    "label": "Сохранение…",
+    "defaultRu": "Сохранение…",
+    "defaultEn": "Saving…",
+    "multiline": false
+  },
+  {
+    "key": "interface.Сохранённые книги независимо от статуса чтения",
+    "group": "Весь интерфейс",
+    "label": "Сохранённые книги независимо от статуса чтения",
+    "defaultRu": "Сохранённые книги независимо от статуса чтения",
+    "defaultEn": "Saved books regardless of reading status",
+    "multiline": false
   },
   {
     "key": "interface.Сохранённые материалы",
@@ -8469,6 +9269,14 @@
     "label": "Сохранить на потом",
     "defaultRu": "Сохранить на потом",
     "defaultEn": "Save for later",
+    "multiline": false
+  },
+  {
+    "key": "interface.Сохранить настройки",
+    "group": "Весь интерфейс",
+    "label": "Сохранить настройки",
+    "defaultRu": "Сохранить настройки",
+    "defaultEn": "Save settings",
     "multiline": false
   },
   {
@@ -8669,6 +9477,14 @@
     "label": "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве.",
     "defaultRu": "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве.",
     "defaultEn": "Essays, biographies, rare books and an interactive literary encyclopedia of the world - in one editorial space.",
+    "multiline": true
+  },
+  {
+    "key": "interface.Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.",
+    "group": "Весь интерфейс",
+    "label": "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.",
+    "defaultRu": "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.",
+    "defaultEn": "Essays, biographies, rare books and an interactive literary encyclopedia of the world — in one editorial space.",
     "multiline": true
   },
   {
@@ -9192,6 +10008,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Только сохранённые книги",
+    "group": "Весь интерфейс",
+    "label": "Только сохранённые книги",
+    "defaultRu": "Только сохранённые книги",
+    "defaultEn": "Saved books only",
+    "multiline": false
+  },
+  {
     "key": "country.TO",
     "group": "Названия стран",
     "label": "Название страны: Тонга",
@@ -9320,11 +10144,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Убрать",
+    "group": "Весь интерфейс",
+    "label": "Убрать",
+    "defaultRu": "Убрать",
+    "defaultEn": "Remove",
+    "multiline": false
+  },
+  {
     "key": "interface.Убрать из подборки",
     "group": "Весь интерфейс",
     "label": "Убрать из подборки",
     "defaultRu": "Убрать из подборки",
     "defaultEn": "Remove from selection",
+    "multiline": false
+  },
+  {
+    "key": "interface.Убрать с полки",
+    "group": "Весь интерфейс",
+    "label": "Убрать с полки",
+    "defaultRu": "Убрать с полки",
+    "defaultEn": "Remove from shelf",
     "multiline": false
   },
   {
@@ -9352,6 +10192,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Удаление…",
+    "group": "Весь интерфейс",
+    "label": "Удаление…",
+    "defaultRu": "Удаление…",
+    "defaultEn": "Deleting…",
+    "multiline": false
+  },
+  {
     "key": "interface.Удалить",
     "group": "Весь интерфейс",
     "label": "Удалить",
@@ -9365,6 +10213,30 @@
     "label": "Удалить из библиотеки",
     "defaultRu": "Удалить из библиотеки",
     "defaultEn": "Remove from library",
+    "multiline": false
+  },
+  {
+    "key": "interface.Удалить окончательно",
+    "group": "Весь интерфейс",
+    "label": "Удалить окончательно",
+    "defaultRu": "Удалить окончательно",
+    "defaultEn": "Delete permanently",
+    "multiline": false
+  },
+  {
+    "key": "interface.Удалить полку",
+    "group": "Весь интерфейс",
+    "label": "Удалить полку",
+    "defaultRu": "Удалить полку",
+    "defaultEn": "Delete shelf",
+    "multiline": false
+  },
+  {
+    "key": "interface.Удалить ссылку",
+    "group": "Весь интерфейс",
+    "label": "Удалить ссылку",
+    "defaultRu": "Удалить ссылку",
+    "defaultEn": "Remove link",
     "multiline": false
   },
   {
@@ -9488,6 +10360,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Умные и редакционные полки обновляются автоматически.",
+    "group": "Весь интерфейс",
+    "label": "Умные и редакционные полки обновляются автоматически.",
+    "defaultRu": "Умные и редакционные полки обновляются автоматически.",
+    "defaultEn": "Smart and editorial shelves update automatically.",
+    "multiline": false
+  },
+  {
     "key": "interface.Упоминание",
     "group": "Весь интерфейс",
     "label": "Упоминание",
@@ -9509,6 +10389,14 @@
     "label": "Управлять глобусом",
     "defaultRu": "Управлять глобусом",
     "defaultEn": "Control globe",
+    "multiline": false
+  },
+  {
+    "key": "interface.Управлять полками",
+    "group": "Весь интерфейс",
+    "label": "Управлять полками",
+    "defaultRu": "Управлять полками",
+    "defaultEn": "Manage shelves",
     "multiline": false
   },
   {
@@ -9653,6 +10541,14 @@
     "label": "Фон",
     "defaultRu": "Фон",
     "defaultEn": "Background",
+    "multiline": false
+  },
+  {
+    "key": "interface.Фон полки",
+    "group": "Весь интерфейс",
+    "label": "Фон полки",
+    "defaultRu": "Фон полки",
+    "defaultEn": "Shelf background",
     "multiline": false
   },
   {
@@ -9960,6 +10856,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Читаю сейчас",
+    "group": "Весь интерфейс",
+    "label": "Читаю сейчас",
+    "defaultRu": "Читаю сейчас",
+    "defaultEn": "Reading now",
+    "multiline": false
+  },
+  {
     "key": "interface.Чтение становится событием, когда мысль продолжается в разговоре.",
     "group": "Весь интерфейс",
     "label": "Чтение становится событием, когда мысль продолжается в разговоре.",
@@ -10125,6 +11029,14 @@
     "label": "Название страны: Эстония",
     "defaultRu": "Эстония",
     "defaultEn": "Estonia",
+    "multiline": false
+  },
+  {
+    "key": "interface.Эта полка ждёт первую книгу",
+    "group": "Весь интерфейс",
+    "label": "Эта полка ждёт первую книгу",
+    "defaultRu": "Эта полка ждёт первую книгу",
+    "defaultEn": "This shelf is waiting for its first book",
     "multiline": false
   },
   {

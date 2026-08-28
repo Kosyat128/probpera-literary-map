@@ -707,6 +707,14 @@ export default function App() {
     setBookRuntimeRequested(true);
   }, [requestArchiveData]);
 
+  const updateAtlasSearch = useCallback(
+    (value: string) => {
+      setSearch(value);
+      if (value.trim()) requestBookRuntime();
+    },
+    [requestBookRuntime]
+  );
+
   const openGlobalSearch = useCallback(() => {
     setGlobalSearchOpen(true);
   }, []);
@@ -2233,14 +2241,14 @@ export default function App() {
                   "atlas",
                   "description",
                   coreAtlas?.description ||
-                    "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.",
+                    "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка.",
                   { kind: "textarea", label: "Описание литературной планеты" }
                 )}
               >
                 {language === "ru" && coreAtlas?.description
                   ? coreAtlas.description
                   : t(
-                      "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка."
+                      "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка."
                     )}
               </p>
             </div>
@@ -2267,13 +2275,20 @@ export default function App() {
               }
               caption={search ? t("Результаты поиска") : t("Избранные архивы")}
               emptyContent={t("Ничего не найдено в выбранной коллекции.")}
+              loading={
+                Boolean(search.trim()) &&
+                (archiveDataStatus === "loading" ||
+                  bookRuntimeStatus === "idle" ||
+                  bookRuntimeStatus === "loading")
+              }
+              loadingContent={t("Ищем во всём архиве…")}
               startAdornment={
                 <span className="search-field-icon" aria-hidden="true">
                   <BrandSearchIcon />
                 </span>
               }
               endAdornment={<kbd>↵</kbd>}
-              onValueChange={setSearch}
+              onValueChange={updateAtlasSearch}
               onOpenChange={(open) => setAtlasSearchVisibility(open)}
               onSelect={(result) => selectAtlasSearchResult(result)}
               renderOption={(result) => (
@@ -3097,7 +3112,7 @@ export default function App() {
           <div className="journal-engagement">
             <div>
               <span className="section-kicker">{t("Обсуждение номера")}</span>
-              <h3>{t("Статья заканчивается, разговор — продолжается")}</h3>
+              <h3>{t("Статья заканчивается, разговор - продолжается")}</h3>
               <p>
                 {t(
                   "Оценки и комментарии привязаны к конкретной публикации. Авторский текст остаётся неизменным, а читательская дискуссия живёт отдельно."
@@ -3442,14 +3457,14 @@ export default function App() {
                 "community",
                 "description",
                 coreCommunity?.description ||
-                  "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.",
+                  "Место для спокойного и содержательного разговора о книгах - без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.",
                 { kind: "textarea", label: "Описание сообщества" }
               )}
             >
               {language === "ru" && coreCommunity?.description
                 ? coreCommunity.description
                 : t(
-                    "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения."
+                    "Место для спокойного и содержательного разговора о книгах - без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения."
                   )}
             </p>
             <p className="community-copy-note">
@@ -3613,7 +3628,7 @@ export default function App() {
           <section className="footer-brand">
             <a
               href={import.meta.env.BASE_URL}
-              aria-label={t("Проба Пера — главная")}
+              aria-label={t("Проба Пера - главная")}
             >
               <img
                 src={assetUrl("brand/probpera-logo.png")}

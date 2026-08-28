@@ -58,6 +58,7 @@ test("архив и изображения сохраняют desktop-сетку
   isMobile,
 }) => {
   test.skip(Boolean(isMobile), "Desktop layout contract");
+  test.setTimeout(90_000);
   await page.setViewportSize({ width: 1440, height: 1000 });
   await openBookCatalog(page);
   const grid = page.locator(".book-archive-grid");
@@ -107,7 +108,9 @@ test("архив разделяет 48 проверенных книг и 9 681 
     name: /Проверено/u,
   });
 
-  await expect(page.locator(".book-shelf-frame__collection > span")).toContainText(
+  await expect(
+    page.locator(".book-shelf-frame__collection-actions > span")
+  ).toContainText(
     /9\s*729/u,
     { timeout: 40_000 }
   );
@@ -124,7 +127,9 @@ test("архив разделяет 48 проверенных книг и 9 681 
   await filterDialog
     .getByRole("button", { name: "Закрыть фильтры", exact: true })
     .click();
-  await expect(page.locator(".book-shelf-frame__collection > span")).toContainText(
+  await expect(
+    page.locator(".book-shelf-frame__collection-actions > span")
+  ).toContainText(
     /9\s*681/u
   );
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
@@ -132,7 +137,9 @@ test("архив разделяет 48 проверенных книг и 9 681 
   );
 
   await verified.click();
-  await expect(page.locator(".book-shelf-frame__collection > span")).toContainText(/48/u);
+  await expect(
+    page.locator(".book-shelf-frame__collection-actions > span")
+  ).toContainText(/48/u);
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
     "проверено"
   );

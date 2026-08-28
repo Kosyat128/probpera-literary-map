@@ -21,9 +21,9 @@ test("globe preloads near the viewport but renders only while visible", async ({
   page,
 }) => {
   await page.goto("/");
-  const loadingGlobe = page.locator(".literary-globe").first();
-  await expect(loadingGlobe).toBeAttached({ timeout: 30_000 });
-  const globeTop = await loadingGlobe.evaluate(
+  const globeShell = page.locator("#atlas .world-map-stage").first();
+  await expect(globeShell).toBeAttached({ timeout: 30_000 });
+  const globeTop = await globeShell.evaluate(
     (element) => element.getBoundingClientRect().top + window.scrollY
   );
 

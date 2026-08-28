@@ -434,13 +434,18 @@ test("atlas filters stay on one line and rich count matches the collection", asy
 
   const rich = filters.locator('[data-atlas-filter="rich"]');
   await expect(rich).toContainText(/10\+ (?:авторов|writers)/iu);
-  const richCount = Number(
-    ((await rich.locator(".atlas-filter-count").textContent()) ?? "").replace(
-      /\D/gu,
-      ""
-    )
-  );
-  expect(richCount).toBeGreaterThan(0);
+  const readRichCount = async () =>
+    Number(
+      ((await rich.locator(".atlas-filter-count").textContent()) ?? "").replace(
+        /\D/gu,
+        ""
+      )
+    );
+  // The interface shell is intentionally available before the demand-loaded
+  // country corpus. Wait on the semantic count owner without coupling this
+  // layout contract to GeoJSON/WebGL renderer readiness.
+  await expect.poll(readRichCount, { timeout: 40_000 }).toBeGreaterThan(0);
+  const richCount = await readRichCount();
   await rich.click();
   await expect(rich).toHaveAttribute("aria-pressed", "true");
   await expect(page).toHaveURL(/[?&]atlas=rich(?:[&#]|$)/u);

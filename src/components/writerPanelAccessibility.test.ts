@@ -65,9 +65,18 @@ describe("writer panel accessible relationships", () => {
     expect(transition).toContain("entry.countryId === countryId");
     expect(transition).toContain("entry.writerId === writerId");
     expect(transition).toContain("entry.id === workId");
-    expect(transition).toContain("openBook(book, returnFocus)");
-    expect(transition).toContain("pendingImmersiveBookFocusRef.current = returnFocus");
-    expect(transition).toContain('atlasExperience.requestExit("programmatic")');
+    expect(transition).toContain("openResolvedWriterWork(book, returnFocus)");
+    const resolvedTransition = appSource.slice(
+      appSource.indexOf("const openResolvedWriterWork"),
+      appSource.indexOf("const openWriterWork")
+    );
+    expect(resolvedTransition).toContain("openBook(book, returnFocus)");
+    expect(resolvedTransition).toContain(
+      "pendingImmersiveBookFocusRef.current = returnFocus"
+    );
+    expect(resolvedTransition).toContain(
+      'atlasExperience.requestExit("programmatic")'
+    );
     expect(appSource).toContain("onWorkSelect={openWriterWork}");
     expect(appSource).toContain(
       "requestedBookReturnFocus={requestedBookReturnFocusRef.current}"

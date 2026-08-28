@@ -220,6 +220,26 @@ export const stage5D1AdditiveI18nAttestation = Object.freeze({
   }),
 });
 
+export const stage5FinalInterfaceCopyAttestation = Object.freeze({
+  id: "STAGE5-FINAL-INTERFACE-COPY",
+  sourceStage5FSha: "d473278a7d0617f14b1d50938fda9bab5c464efa",
+  sourceMainSyncSha: "c1939a632bc4c3d36649e7c4b2076fcc0711d2c4",
+  interfaceLanguage: Object.freeze({
+    entries: 1189,
+    keysSha256:
+      "79edc8b7923dc9eaf3a6859bc988a38edf2d3dcaa0d1bbd5841a259883323cc5",
+    pairsSha256:
+      "1538ec0ee99fc7f4254af02b9765a4f683812aca8bfdaebfd524e2848d6a2f49",
+  }),
+  catalog: Object.freeze({
+    entries: 1403,
+    keysSha256:
+      "164e06ac283059a7949b7894d3d68968df5ac2df8b8d4e985adfdb77f619273c",
+    contentSha256:
+      "99f8b1b753e3c7ea0248c054e53d62851b8611b51d43ffc6d36c5576de417b74",
+  }),
+});
+
 const stage5D1Stage4GlobeStablePaths = Object.freeze(
   stage4ProductionPaths.filter(
     (entry) => entry !== "src/i18n/InterfaceLanguage.tsx"
@@ -238,7 +258,7 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 19,
       sha256:
-        "b61b45afb7a3b50ec4942d873b7a58e46bba2c2f8a7e492b5f8622fa17a77253",
+        "260a808d2a2f97e9d48a8b2262a08d3cf770d3eaf0d8cd9b0306daf1ed143a30",
     }),
   }),
   premiumCurrent: Object.freeze({
@@ -246,7 +266,7 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 45,
       sha256:
-        "961c1326586d54f485c661ce8f97769f0bdc2eb8ff984602ad751a3a6bea79e4",
+        "b701065625ba4cf6ccb94c48562d9438ceee069cd49970262b5df220d4fa5e41",
     }),
   }),
 });
@@ -278,12 +298,32 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
               sourceIntegrationSha:
                 stage5D1AdditiveI18nAttestation.sourceIntegrationSha,
               expected: Object.freeze({
-              files: 9,
-              sha256:
+                files: 9,
+                sha256:
                   "dd720968c269372c4caa3521273d9eea9b1ead231e5733e334c993402da38942",
               }),
+              enforced: Object.freeze({
+                paths: bookArchiveOwnerPaths,
+                expected: Object.freeze({
+                  files: 9,
+                  sha256:
+                    "7b64ee4ff098a8dab2f65d8169612e6438d5f81a98c646069c162bd123e483f5",
+                }),
+              }),
             })
-        : entry
+          : entry.id === "HEADER-HERO-CSS-OWNER-LOCK"
+            ? Object.freeze({
+                ...entry,
+                enforced: Object.freeze({
+                  paths: ["src/index.css"],
+                  expected: Object.freeze({
+                    rules: 211,
+                    sha256:
+                      "abd43284cc25668db3529c3b111b0286dfa616c413cc2d8762ba24ec72403113",
+                  }),
+                }),
+              })
+            : entry
   )
 );
 

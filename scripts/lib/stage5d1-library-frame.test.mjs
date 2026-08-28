@@ -173,12 +173,14 @@ describe("Stage 5D-1 Complete Shelf architecture contract", () => {
         "shelfFailure",
       ])
     );
-    expect(controller.text).toContain('const [query, setQuery] = useState("")');
+    expect(controller.text).toContain(
+      "const [query, setQuery] = useState(\n    initialNavigationContext?.search.query || \"\"\n  )"
+    );
     expect(variableInitializer(controller, "viewMode")).toMatch(
       /forcedColors\s*\?\s*"catalog"\s*:\s*shelfState\.effectiveViewMode/u
     );
     expect(controller.text).toContain("useReducer(");
-    expect(controller.text).toMatch(/\bactiveCollection(?:Id|Key)?\b/u);
+    expect(controller.text).toMatch(/\bcollectionShelfSelection\b/u);
     expect(controller.text).toContain("useReadingLibrary()");
     expect(variableInitializer(controller, "facetResult")).toMatch(
       /filterBookArchiveFacetIndex/u
@@ -362,7 +364,10 @@ describe("Stage 5D-1 Complete Shelf architecture contract", () => {
     expect(focusHandler).not.toContain("openBookDetail");
     expect(
       jsxAttributeText(sceneInstance, "onOpenBook", controller.sourceFile)
-    ).toContain("openBookDetail");
+    ).toContain("handleSceneOpenBook");
+    const openHandler = variableInitializer(controller, "handleSceneOpenBook");
+    expect(openHandler).toContain("openBookDetail");
+    expect(openHandler).toContain("pendingBookSwitchRef.current");
     expect(controller.text).toMatch(
       /const openBookDetail[\s\S]*?setSelectedBook\(book\)[\s\S]*?replaceBookLocation/u
     );
@@ -409,16 +414,19 @@ describe("Stage 5D-1 Complete Shelf architecture contract", () => {
     expect(sceneCanvas.text).toContain("<CompleteShelfRenderer");
     expect(sceneCanvas.text).toContain("items={items}");
     expect(completeShelfModel.text).toContain(
-      "COMPLETE_SHELF_MAX_WORKING_SET = 13"
+      "COMPLETE_SHELF_MAX_WORKING_SET = 21"
     );
     expect(completeShelfModel.text).toContain(
-      "COMPLETE_SHELF_ECONOMICAL_WORKING_SET = 13"
+      "COMPLETE_SHELF_ECONOMICAL_WORKING_SET = 17"
+    );
+    expect(completeShelfModel.text).toContain(
+      "COMPLETE_SHELF_TABLET_WORKING_SET = 13"
     );
     expect(completeShelfModel.text).toContain(
       "Array.from({ length: count }, (_, slotIndex) =>"
     );
     expect(completeShelfModel.text).toContain(
-      "(anchorSourceIndex + slotIndex - anchorSlot + items.length) %"
+      "const sourceIndex = startSourceIndex + slotIndex"
     );
     expect(controller.text).toMatch(/<BookShelfScene[\s\S]*?items=\{sceneItems\}/u);
   });

@@ -145,6 +145,25 @@ function normalizeSiteBasePath(value) {
   return { base: normalized === "/" ? "/" : `${normalized}/` };
 }
 
+async function resolveActiveSiteBasePath() {
+  const cname = measured.find((item) => item.relative === "CNAME");
+  if (!cname) return normalizeSiteBasePath(budget.siteBasePath);
+
+  const expectedDomain = String(budget.domainCname || "")
+    .trim()
+    .toLowerCase();
+  if (!expectedDomain) {
+    return { error: "performance-budget.json requires domainCname for a domain release" };
+  }
+  const actualDomain = (await readFile(cname.file, "utf8")).trim().toLowerCase();
+  if (actualDomain !== expectedDomain) {
+    return {
+      error: `dist/CNAME ${actualDomain || "<empty>"} does not match ${expectedDomain}`,
+    };
+  }
+  return normalizeSiteBasePath(budget.domainSiteBasePath);
+}
+
 function normalizeDistAssetReference(source, siteBasePath) {
   if (!source) return { error: "missing URL" };
   if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/iu.test(source)) {
@@ -287,7 +306,7 @@ async function auditInitialEntry() {
   }
 
   const measuredByRelative = new Map(measured.map((item) => [item.relative, item]));
-  const configuredBase = normalizeSiteBasePath(budget.siteBasePath);
+  const configuredBase = await resolveActiveSiteBasePath();
   if (configuredBase.error) {
     recordFailure("configured site base", configuredBase.error);
   }

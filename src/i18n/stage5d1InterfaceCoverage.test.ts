@@ -201,9 +201,9 @@ describe("Stage 5D-1 English interface coverage", () => {
       ...controlledOptionLabels,
     ]);
 
-    expect(componentPhrases.size).toBe(150);
+    expect(componentPhrases.size).toBe(215);
     expect(controlledOptionLabels.size).toBe(61);
-    expect(inventory.size).toBe(211);
+    expect(inventory.size).toBe(276);
     expect(
       [...IDENTICAL_SYMBOL_ALLOWLIST].filter((phrase) => !inventory.has(phrase))
     ).toEqual([]);
@@ -218,7 +218,7 @@ describe("Stage 5D-1 English interface coverage", () => {
       .filter((phrase) => hasInterfaceTranslation(phrase))
       .filter((phrase) => translateInterfaceText(phrase, "en") === phrase);
 
-    expect(translatable).toHaveLength(209);
+    expect(translatable).toHaveLength(274);
     expect(missing).toEqual([]);
     expect(untranslated).toEqual([]);
   });

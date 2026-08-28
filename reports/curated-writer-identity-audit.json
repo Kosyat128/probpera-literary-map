@@ -2,7 +2,7 @@
   "version": 1,
   "deterministic": true,
   "generatedAt": "2026-08-09T16:25:18.565Z",
-  "sourceFingerprint": "sha256:32e2fdf2774a12fae3f0f0707e9a675aeaaf90a5579d2b130086f57eba572ff7",
+  "sourceFingerprint": "sha256:d9bf1a3aaefad418af47ef9787e4b5cebb8a9da2c22d8743443926efab2a7e61",
   "scope": {
     "corpus": "legacy curated writer-key to Wikidata-QID registry",
     "legacyMappingsAudited": 1278,

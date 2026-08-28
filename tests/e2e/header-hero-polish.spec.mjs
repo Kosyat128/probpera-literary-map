@@ -51,7 +51,7 @@ test("RU and EN hero copy, calls to action and proof stay readable across the ma
 
       expect(result, `${locale}/${width}`).not.toBeNull();
       expect(result.headingText).toBe(
-        locale === "ru" ? "Литература - это целый мир!" : "Literature is a world of its own!"
+        locale === "ru" ? "Литература – это целый мир!" : "Literature is a world of its own!"
       );
       expect(result.overflow, `${locale}/${width}`).toBeLessThanOrEqual(2);
       expect(intersects(result.heading, result.paragraph), `${locale}/${width} heading/paragraph`).toBe(false);

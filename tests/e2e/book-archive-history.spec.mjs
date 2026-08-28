@@ -18,7 +18,7 @@ test("switching book details keeps one history entry and close returns to the ar
   test.skip(Boolean(isMobile), "Desktop history contract");
   await openBookCatalog(page);
   await expect(
-    page.locator(".book-shelf-frame__collection > span")
+    page.locator(".book-shelf-frame__collection-actions > span")
   ).toContainText(/9\s*729/u, { timeout: 60_000 });
   const detailButtons = page.locator(".archive-book-detail");
   await expect(detailButtons.first()).toBeVisible({ timeout: 20_000 });
