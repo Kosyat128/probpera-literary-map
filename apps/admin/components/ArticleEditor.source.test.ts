@@ -14,6 +14,10 @@ const checklistSource = readFileSync(
   new URL("./article-editor/ValidationChecklist.tsx", import.meta.url),
   "utf8"
 );
+const toolbarSource = readFileSync(
+  new URL("./article-editor/ArticleEditorToolbar.tsx", import.meta.url),
+  "utf8"
+);
 
 describe("article editor publication and recovery wiring", () => {
   it("keeps English checks optional until the translation is enabled", () => {
@@ -37,9 +41,9 @@ describe("article editor publication and recovery wiring", () => {
 
   it("uses safe semantic text tones and positions the first illustration logically", () => {
     expect(editorSource).toContain("ArticleTextTone");
-    expect(editorSource).toContain("articleTextTones.map");
-    expect(editorSource).toContain("AAA · от {tone.contrastRatio}:1");
-    expect(editorSource).toContain(
+    expect(toolbarSource).toContain("articleTextTones.map");
+    expect(toolbarSource).toContain("AAA · от {tone.contrastRatio}:1");
+    expect(toolbarSource).toContain(
       "24 редакционных оттенка с контрастом AAA"
     );
     expect(editorSource).toContain("insertImageAtLogicalPosition");
