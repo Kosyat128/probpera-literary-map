@@ -1,8 +1,8 @@
 # Codex Admin Execution State
 
 Audited baseline: `27409c57b51568038a4341f151436f32ec6d87dc`
-Working HEAD: `080565e0` on `codex/admin-2-phase3`; production `main` is `c9bed23e7a4a66ee6ec95d2809d54e1204c1c076`
-Last updated: `2026-08-28T11:56:00Z`
+Working branch: `codex/admin-2-phase3`; production `main` is `c9bed23e7a4a66ee6ec95d2809d54e1204c1c076`
+Last updated: `2026-08-28T13:10:00Z`
 
 ## Completed
 
@@ -19,10 +19,13 @@ Last updated: `2026-08-28T11:56:00Z`
 - [x] Phase 3 typed Article Editor workspace bridge implemented without DOM scraping, `MutationObserver`, heading-text parsing or synthetic clicks; focused tests (`21/21`) and admin TypeScript passed.
 - [x] The first production restoration attempt (`33168427295`) failed closed before mutation because the guard compared the public route segment with the CMS category slug. The CMS contract is now pinned correctly to `book-opinions`; focused restore tests pass (`8/8`).
 - [x] Shared editor media foundation implemented: Article/Page use one typed upload helper, Page has direct upload and exact replacement, media identity survives as `data-media-id`, and both editors use a controlled safe-link dialog instead of link prompts.
+- [x] Shared RichEditor foundation implemented without changing TipTap serialization: ordered extensions, base toolbar and the controlled HTTPS image dialog are reused by Article/Page.
+- [x] Server recovery foundation implemented: actor-only RLS, monotonic per-tab sequences, exact-receipt cleanup, canonical-version conflict detection and explicit manual restore for complete Article/Page snapshots.
+- [x] A bounded `windows-latest` standalone smoke now type-checks, builds, prepares, starts and HTTP-probes the production admin entrypoint without browser E2E.
 
 ## In progress
 
-- Phase 3 — finish safe ArticleEditor decomposition, shared rich-editor controls and server autosave/recovery.
+- Phase 3 — finish safe ArticleEditor module decomposition and the remaining shared structured controls without changing save contracts.
 
 ## Pending
 
@@ -36,9 +39,9 @@ Last updated: `2026-08-28T11:56:00Z`
 - [ ] Phase 10 — final QA.
 - [ ] Final QA, release and production verification.
 
-## Applied migrations
+## Reviewed migrations pending production reconciliation
 
-- None in the Admin 2.0 execution branch yet.
+- `20260828_zz_editor_autosaves.sql` — private staff recovery rows only; no canonical editorial writes and no publication outbox trigger.
 
 ## Tests already green for current relevant code
 
@@ -51,6 +54,8 @@ Last updated: `2026-08-28T11:56:00Z`
 - Typed workspace focused suite: `21/21`; admin TypeScript and `git diff --check` passed.
 - Corrected exact-record restore contract: `8/8` focused tests.
 - Shared media/link parity: `6` focused files, `23/23` tests; admin TypeScript and `git diff --check` passed.
+- Shared RichEditor/autosave/migration/Windows contracts: `6` focused files, `25/25` tests.
+- Recovery integration source contract: `4/4`; admin and Cloudflare TypeScript configurations pass.
 
 ## Known blockers
 
@@ -59,4 +64,4 @@ Last updated: `2026-08-28T11:56:00Z`
 
 ## NEXT STEP
 
-Extract the first safe ArticleEditor module/shared RichEditor control boundary, then implement scoped server autosave/recovery without changing the existing save contract. After Phase 3 is green, rebase its commits onto exact `main`, review and merge once; rerun the corrected exact-record restore against that immutable main SHA, refresh Pages once and verify canonical/legacy routes before Phase 4.
+Finish the remaining safe ArticleEditor module boundaries and structured shared controls without changing canonical save contracts. After Phase 3 is green, rebase its commits onto exact `main`, review and merge once; rerun the corrected exact-record restore against that immutable main SHA, refresh Pages once and verify canonical/legacy routes before Phase 4.
