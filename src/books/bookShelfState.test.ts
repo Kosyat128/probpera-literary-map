@@ -66,6 +66,30 @@ describe("Book Shelf deterministic state machine", () => {
     expect(state.error).toBeNull();
   });
 
+  it("can interrupt every selectable inspection phase to switch books", () => {
+    for (const phase of [
+      "INSPECTION_ENTERING",
+      "INSPECTION_CLOSED",
+      "COVER_CRACKED",
+      "COVER_OPENING",
+      "BOOK_OPEN",
+      "PAGE_DRAGGING",
+      "PAGE_SETTLING",
+    ] as const) {
+      const state: BookShelfState = {
+        ...createInitialBookShelfState(),
+        phase,
+        requestId: 6,
+      };
+      expect(
+        transition(state, {
+          type: "request-inspection-close",
+          requestId: 7,
+        })
+      ).toMatchObject({ phase: "INSPECTION_CLOSING", requestId: 7 });
+    }
+  });
+
   it("ignores stale settlements, duplicate requests and illegal phase jumps", () => {
     const first = transition(createInitialBookShelfState(), {
       type: "request-focus",

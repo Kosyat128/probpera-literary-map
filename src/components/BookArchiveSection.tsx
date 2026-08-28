@@ -1896,30 +1896,26 @@ export default function BookArchiveSection({
     requestedBookReturnFocus,
   ]);
 
+  const centerShelfScene = useCallback(() => {
+    const scene = document
+      .getElementById("books")
+      ?.querySelector<HTMLElement>(".book-shelf-scene");
+    if (!scene) return;
+    scene.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "center",
+      inline: "nearest",
+    });
+    scene.focus({ preventScroll: true });
+  }, []);
+
   useEffect(() => {
     if (!selectedBook) return;
     const frame = window.requestAnimationFrame(() => {
       if (viewMode === "shelf") {
-        const scene = document
-          .getElementById("books")
-          ?.querySelector<HTMLElement>(".book-shelf-scene");
-        if (!scene) return;
-        const bounds = scene.getBoundingClientRect();
-        const viewportInset = 12;
-        if (
-          bounds.top < viewportInset ||
-          bounds.bottom > window.innerHeight - viewportInset
-        ) {
-          scene.scrollIntoView({
-            behavior: window.matchMedia(
-              "(prefers-reduced-motion: reduce)"
-            ).matches
-              ? "auto"
-              : "smooth",
-            block: "center",
-          });
-        }
-        scene.focus({ preventScroll: true });
+        centerShelfScene();
         return;
       }
       const detail = detailRef.current;
@@ -1933,7 +1929,7 @@ export default function BookArchiveSection({
       detail.focus({ preventScroll: true });
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [selectedBook, viewMode]);
+  }, [centerShelfScene, selectedBook, viewMode]);
 
   useEffect(() => {
     let active = true;
@@ -2170,6 +2166,7 @@ export default function BookArchiveSection({
     (key: string) => {
       const item = queueByKey.get(key);
       if (!item) return;
+      centerShelfScene();
       setRandomAnnouncement("");
 
       const currentSelected = selectedBookRef.current;
@@ -2189,7 +2186,7 @@ export default function BookArchiveSection({
       }
 
       openBookDetail(item.book);
-    }, [closeBookDetail, openBookDetail, queueByKey, requestFocusBook]
+    }, [centerShelfScene, closeBookDetail, openBookDetail, queueByKey, requestFocusBook]
   );
   const handleShelfMotionSettled = useCallback(
     (requestId: number) => {
@@ -4473,6 +4470,7 @@ export default function BookArchiveSection({
                   onRequestPreviousPage={requestSelectedPreviousPage}
                   onRequestKeyboardPage={requestSelectedKeyboardPage}
                   onRequestInspectionClose={closeBookDetail}
+                  onRequestSceneCenter={centerShelfScene}
                   onCrackCover={() =>
                     shelfDispatch({
                       type: "crack-cover",

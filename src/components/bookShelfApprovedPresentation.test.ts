@@ -12,6 +12,14 @@ const controls = readFileSync(
   "utf8"
 );
 const scene = readFileSync(new URL("./BookShelfScene.tsx", import.meta.url), "utf8");
+const sceneCanvas = readFileSync(
+  new URL("./BookShelfSceneCanvas.tsx", import.meta.url),
+  "utf8"
+);
+const renderer = readFileSync(
+  new URL("../books/completeShelfRenderer.tsx", import.meta.url),
+  "utf8"
+);
 const qualityController = readFileSync(
   new URL("../books/bookShelfQualityController.ts", import.meta.url),
   "utf8"
@@ -227,10 +235,17 @@ describe("approved Complete Shelf outer presentation", () => {
       /window\.requestAnimationFrame\(\(\) => \{\s*pendingInspectionBookRef\.current = null;\s*openBookDetail\(pendingBook\);/u
     );
     expect(controller).toContain('querySelector<HTMLElement>(".book-shelf-scene")');
-    expect(controller).toContain("scene.getBoundingClientRect()");
     expect(controller).toContain("scene.scrollIntoView({");
     expect(controller).toContain('block: "center"');
     expect(controller).toContain("scene.focus({ preventScroll: true })");
+    expect(controller).toContain("onRequestSceneCenter={centerShelfScene}");
+    expect(sceneCanvas).toContain("onPointerMissed={onRequestSceneCenter}");
+    expect(renderer).toContain(
+      "completeShelfPhaseAllowsSelectionSwitch(phase)"
+    );
+    expect(renderer).toContain(
+      "targetSignatureRef.current === targetSignature"
+    );
   });
 
   it("integrates the deterministic mobile detail sheet without stealing horizontal shelf gestures", () => {

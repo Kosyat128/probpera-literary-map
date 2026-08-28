@@ -50,6 +50,7 @@ export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
   qualitySettings: BookShelfQualitySettings;
   onRequestCoverOpen: (key: string) => void;
   onRequestInspectionClose: () => void;
+  onRequestSceneCenter: () => void;
   onCrackCover: () => void;
   onStartPageDrag: (direction: BookInspectionPageDirection) => void;
   onUpdatePageDrag: (progress: number) => void;
@@ -347,6 +348,7 @@ export default function BookShelfSceneCanvas({
   onOpenBook,
   onRequestCoverOpen,
   onRequestInspectionClose,
+  onRequestSceneCenter,
   onCrackCover,
   onStartPageDrag,
   onUpdatePageDrag,
@@ -419,14 +421,7 @@ export default function BookShelfSceneCanvas({
         pointerEvents: active ? "auto" : "none",
         touchAction: "pan-y",
       }}
-      onPointerMissed={() => {
-        if (
-          completeShelfPhaseHasInspection(phase) &&
-          phase !== "INSPECTION_CLOSING"
-        ) {
-          onRequestInspectionClose();
-        }
-      }}
+      onPointerMissed={onRequestSceneCenter}
     >
       <SceneLifecycle
         dependency={dependency}

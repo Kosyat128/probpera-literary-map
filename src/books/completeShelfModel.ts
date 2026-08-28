@@ -549,7 +549,13 @@ export function completeShelfSettlementForPhase(
 export function completeShelfPhaseAllowsSelectionSwitch(
   phase: BookShelfPhase
 ) {
-  return ["INSPECTION_CLOSED", "COVER_CRACKED", "BOOK_OPEN"].includes(
-    phase
-  );
+  return [
+    "INSPECTION_ENTERING",
+    "INSPECTION_CLOSED",
+    "COVER_CRACKED",
+    "COVER_OPENING",
+    "BOOK_OPEN",
+    "PAGE_DRAGGING",
+    "PAGE_SETTLING",
+  ].includes(phase);
 }
