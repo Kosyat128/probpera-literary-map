@@ -191,14 +191,14 @@ state. `STAGE5-FINAL-INTERFACE-COPY` now pins:
 
 - source Stage 5F SHA: `d473278a7d0617f14b1d50938fda9bab5c464efa`;
 - source main-sync SHA: `c1939a632bc4c3d36649e7c4b2076fcc0711d2c4`;
-- interface registry: `1,189` entries, keys SHA-256
-  `79edc8b7923dc9eaf3a6859bc988a38edf2d3dcaa0d1bbd5841a259883323cc5`,
+- interface registry: `1,186` entries, keys SHA-256
+  `60b2bb015ee8ad6f6f727a314ee7fe9c02438defb93faea8c550a12f3271f74f`,
   pairs SHA-256
-  `1538ec0ee99fc7f4254af02b9765a4f683812aca8bfdaebfd524e2848d6a2f49`;
-- private interface catalogue: `1,403` entries, keys SHA-256
-  `164e06ac283059a7949b7894d3d68968df5ac2df8b8d4e985adfdb77f619273c`,
+  `c18d82c71177cb967e61721e4d3285be2241d1ae6a4747c0d1839017a52cad67`;
+- private interface catalogue: `1,400` entries, keys SHA-256
+  `933287ece7fbbf41edcd5cae84bace76c8b4b80e47ba0789a4f83126cf1bb8b6`,
   content SHA-256
-  `99f8b1b753e3c7ea0248c054e53d62851b8611b51d43ffc6d36c5576de417b74`.
+  `88285b0ec678388b207fd6a236ad97b4aadaf14f2acb36f8fe8ef3ce89218b57`.
 
 This supersedes the old dictionary-count gap only. Final security and release
 PASS claims still belong to their respective final gates, not to this narrow

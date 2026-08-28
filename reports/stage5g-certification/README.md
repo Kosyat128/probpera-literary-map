@@ -67,16 +67,16 @@ data and full search data remain outside the initial graph and load on demand.
 
 ## Final cumulative interface attestation
 
-- Interface registry: `1,189` entries.
+- Interface registry: `1,186` entries.
 - Interface key SHA-256:
-  `79edc8b7923dc9eaf3a6859bc988a38edf2d3dcaa0d1bbd5841a259883323cc5`.
+  `60b2bb015ee8ad6f6f727a314ee7fe9c02438defb93faea8c550a12f3271f74f`.
 - Interface pair SHA-256:
-  `1538ec0ee99fc7f4254af02b9765a4f683812aca8bfdaebfd524e2848d6a2f49`.
-- Private interface catalogue: `1,403` entries.
+  `c18d82c71177cb967e61721e4d3285be2241d1ae6a4747c0d1839017a52cad67`.
+- Private interface catalogue: `1,400` entries.
 - Catalogue key SHA-256:
-  `164e06ac283059a7949b7894d3d68968df5ac2df8b8d4e985adfdb77f619273c`.
+  `933287ece7fbbf41edcd5cae84bace76c8b4b80e47ba0789a4f83126cf1bb8b6`.
 - Catalogue content SHA-256:
-  `99f8b1b753e3c7ea0248c054e53d62851b8611b51d43ffc6d36c5576de417b74`.
+  `88285b0ec678388b207fd6a236ad97b4aadaf14f2acb36f8fe8ef3ce89218b57`.
 
 ## Locked content attestations
 
