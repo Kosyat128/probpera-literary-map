@@ -3,6 +3,7 @@
 import { useEffect, useId, useState } from "react";
 
 import { withClientAdminPath } from "@/lib/admin-path";
+import { useEditorDialogFocus } from "@/components/useEditorDialogFocus";
 
 export type EditorMediaAsset = {
   id: string;
@@ -57,6 +58,10 @@ export default function EditorMediaDialog({
   const [assets, setAssets] = useState<EditorMediaAsset[]>([]);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState("");
+  const { dialogRef, onDialogKeyDown } = useEditorDialogFocus({
+    open,
+    onClose,
+  });
 
   useEffect(() => {
     if (!open) return;
@@ -111,13 +116,13 @@ export default function EditorMediaDialog({
       }}
     >
       <section
+        ref={dialogRef}
         className="editor-media-modal editor-image-dialog"
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        onKeyDown={(event) => {
-          if (event.key === "Escape") onClose();
-        }}
+        tabIndex={-1}
+        onKeyDown={onDialogKeyDown}
       >
         <div className="editor-media-modal-heading">
           <div>
@@ -179,6 +184,7 @@ export default function EditorMediaDialog({
         <label className="field">
           <span>Найти в медиатеке</span>
           <input
+            data-editor-dialog-initial-focus
             type="search"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
