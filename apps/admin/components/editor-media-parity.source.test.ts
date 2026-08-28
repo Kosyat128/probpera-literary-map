@@ -18,13 +18,31 @@ const uploadRouteSource = readFileSync(
   new URL("../app/api/media/upload/route.ts", import.meta.url),
   "utf8"
 );
+const workflowSource = readFileSync(
+  new URL("./useEditorMediaWorkflow.ts", import.meta.url),
+  "utf8"
+);
+const dialogSource = readFileSync(
+  new URL("./EditorMediaDialog.tsx", import.meta.url),
+  "utf8"
+);
+const uploaderSource = readFileSync(
+  new URL("./MediaUploader.tsx", import.meta.url),
+  "utf8"
+);
+const assetsRouteSource = readFileSync(
+  new URL("../app/api/media/assets/route.ts", import.meta.url),
+  "utf8"
+);
 
 describe("shared editor media parity", () => {
   it("uses one typed upload helper and carries the stable media id", () => {
-    expect(articleSource).toContain("uploadEditorImage(file");
-    expect(pageSource).toContain("uploadEditorImage(file");
-    expect(articleSource).toContain("mediaId: result.mediaId");
-    expect(pageSource).toContain("mediaId: result.mediaId");
+    expect(articleSource).toContain("useEditorMediaWorkflow");
+    expect(pageSource).toContain("useEditorMediaWorkflow");
+    expect(workflowSource).toContain("uploadEditorImage(file");
+    expect(workflowSource).toContain("mediaId: result.mediaId");
+    expect(uploaderSource).toContain("uploadEditorImage(sourceFile");
+    expect(uploaderSource).not.toContain('fetch(withClientAdminPath("/api/media/upload")');
     expect(uploadRouteSource).toContain("mediaId: data.id");
     expect(uploadRouteSource).toContain("id: data.id");
   });
@@ -36,13 +54,34 @@ describe("shared editor media parity", () => {
   });
 
   it("gives pages direct upload and exact image replacement without prompts", () => {
-    expect(pageSource).toContain("EDITOR_IMAGE_REPLACE_EVENT");
-    expect(pageSource).toContain("updateEditorialImageAt(");
-    expect(pageSource).toContain("selection.expectedSrc");
+    expect(workflowSource).toContain("EDITOR_IMAGE_REPLACE_EVENT");
+    expect(workflowSource).toContain("updateEditorialImageAt(");
+    expect(workflowSource).toContain("target.expectedSrc");
     expect(pageSource).toContain("Изображение с компьютера");
     expect(pageSource).not.toContain("window.prompt");
-    expect(pageSource).toContain("imageUploadInFlightRef.current");
     expect(pageSource).toContain("disabled={imageUploadPending}");
+  });
+
+  it("keeps ordered multi-file cursor insertion and single exact replacement", () => {
+    expect(articleSource).toContain("onPasteCapture={editorMedia.handlePaste}");
+    expect(pageSource).toContain("onPasteCapture={editorMedia.handlePaste}");
+    expect(workflowSource).toContain('target.kind === "insert" ? supported : supported.slice(0, 1)');
+    expect(workflowSource).toContain("uploaded.map((item) => ({ type: \"image\"");
+    expect(workflowSource).toContain("replaceMediaSlotAt(editor, target.position");
+  });
+
+  it("offers a cancellable retryable stage queue and read-only media library", () => {
+    expect(dialogSource).toContain('prepare: "Подготовка"');
+    expect(dialogSource).toContain('upload: "Загрузка"');
+    expect(dialogSource).toContain('attach: "Вставка в материал"');
+    expect(dialogSource).toContain("onCancelItem(item.id)");
+    expect(dialogSource).toContain("onRetryItem(item.id)");
+    expect(dialogSource).toContain("Автор:");
+    expect(dialogSource).toContain("Источник:");
+    expect(dialogSource).toContain("Лицензия:");
+    expect(assetsRouteSource).toContain('export async function GET(request: Request)');
+    expect(assetsRouteSource).not.toContain("export async function POST");
+    expect(workflowSource).toContain("Изображение из медиатеки вставлено без повторной загрузки");
   });
 
   it("clears a stale media-library identity for manual URL replacement", () => {

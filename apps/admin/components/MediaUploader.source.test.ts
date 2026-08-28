@@ -16,6 +16,8 @@ describe("MediaUploader publication feedback", () => {
     expect(uploader).toContain('result.publication === "queued"');
     expect(uploader).toContain('publication === "queue-error"');
     expect(uploader).toContain("republishMediaAction");
+    expect(uploader).toContain("uploadEditorImage(sourceFile");
+    expect(uploader).not.toContain('fetch(withClientAdminPath("/api/media/upload")');
     expect(actions).toContain('reason: "media.uploaded.retry"');
   });
 });

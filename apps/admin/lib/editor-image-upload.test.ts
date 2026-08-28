@@ -18,6 +18,7 @@ describe("normalizeEditorImageUploadResult", () => {
       mediaId: "media-id",
       width: 1200,
       height: 800,
+      publication: null,
     });
   });
 
@@ -33,6 +34,7 @@ describe("normalizeEditorImageUploadResult", () => {
       mediaId: "legacy-id",
       width: 0,
       height: 0,
+      publication: null,
     });
   });
 

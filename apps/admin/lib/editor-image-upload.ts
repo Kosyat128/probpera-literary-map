@@ -13,6 +13,7 @@ type EditorImageUploadResponse = {
   url?: string;
   width?: number;
   height?: number;
+  publication?: "started" | "queued" | "queue-error";
   error?: string;
 };
 
@@ -21,7 +22,10 @@ export type EditorImageUploadResult = {
   mediaId: string | null;
   width: number;
   height: number;
+  publication: "started" | "queued" | "queue-error" | null;
 };
+
+export type EditorImageUploadStage = "prepare" | "upload";
 
 export type EditorImageUploadOptions = {
   usage?: ClientImageUsage;
@@ -32,6 +36,8 @@ export type EditorImageUploadOptions = {
   sourceUrl?: string;
   licenseName?: string;
   licenseUrl?: string;
+  signal?: AbortSignal;
+  onProgress?: (stage: EditorImageUploadStage, progress: number) => void;
 };
 
 export function normalizeEditorImageUploadResult(
@@ -49,6 +55,12 @@ export function normalizeEditorImageUploadResult(
         : null,
     width: Number.isFinite(value.width) ? Number(value.width) : 0,
     height: Number.isFinite(value.height) ? Number(value.height) : 0,
+    publication:
+      value.publication === "started" ||
+      value.publication === "queued" ||
+      value.publication === "queue-error"
+        ? value.publication
+        : null,
   };
 }
 
@@ -57,7 +69,11 @@ export async function uploadEditorImage(
   options: EditorImageUploadOptions
 ): Promise<EditorImageUploadResult> {
   const usage = options.usage ?? "inline";
+  if (options.signal?.aborted) throw new DOMException("Загрузка отменена.", "AbortError");
+  options.onProgress?.("prepare", 0);
   const prepared = await prepareClientImage(sourceFile, usage);
+  if (options.signal?.aborted) throw new DOMException("Загрузка отменена.", "AbortError");
+  options.onProgress?.("prepare", 100);
   const formData = new FormData();
   formData.set("file", prepared.file);
   formData.set("alt_text", options.altText);
@@ -71,14 +87,17 @@ export async function uploadEditorImage(
   formData.set("client_width", String(prepared.width));
   formData.set("client_height", String(prepared.height));
 
+  options.onProgress?.("upload", 0);
   const response = await fetch(withClientAdminPath("/api/media/upload"), {
     method: "POST",
     body: formData,
+    signal: options.signal,
   });
   const body = (await response.json().catch(() => ({}))) as EditorImageUploadResponse;
   const result = normalizeEditorImageUploadResult(body);
   if (!response.ok || !result) {
     throw new Error(body.error || "Не удалось загрузить изображение.");
   }
+  options.onProgress?.("upload", 100);
   return result;
 }
