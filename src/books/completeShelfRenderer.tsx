@@ -63,7 +63,6 @@ import {
   createCompleteShelfWoodDetailMap,
   createCompleteShelfWoodMap,
   disposeCompleteShelfTextures,
-  loadCompleteShelfCoverTexture,
 } from "./completeShelfTextures";
 
 const HIGH_CLOTH_NORMAL_SCALE = new Vector2(0.42, 0.42);
@@ -660,6 +659,7 @@ function CompleteShelfBook({
     lastX: number;
     startedAt: number;
     lastAt: number;
+    lastVelocity: number;
   } | null>(null);
   const pageSettleFrameRef = useRef<number | null>(null);
   const pageSettleCallbackRef = useRef(onRequestPageSettle);
@@ -906,7 +906,6 @@ function CompleteShelfBook({
     spec.accentColor,
     spec.paperColor,
     spec.foilColor,
-    spec.coverUrl || "",
     spec.motif,
   ].join(":");
   const artworkTextureHeight = renderFullRig
@@ -959,97 +958,6 @@ function CompleteShelfBook({
       ]),
     [artwork]
   );
-  const coverAssignmentSignature = [
-    spec.key,
-    spec.coverUrl || "fallback",
-    spec.baseColor,
-    qualitySettings.profile,
-    qualitySettings.textureResolution.inspection,
-    renderFullRig ? "inspection" : "shelf",
-    coverWidth,
-    height,
-  ].join(":");
-  const coverAssignmentGenerationRef = useRef(0);
-  const loadedCoverTextureRef = useRef<{
-    generation: number;
-    signature: string;
-    texture: CanvasTexture;
-  } | null>(null);
-  const [loadedCoverTexture, setLoadedCoverTexture] = useState<{
-    generation: number;
-    signature: string;
-    texture: CanvasTexture;
-  } | null>(null);
-  useEffect(() => {
-    const assignmentGeneration = ++coverAssignmentGenerationRef.current;
-    const previousAssignment = loadedCoverTextureRef.current;
-    loadedCoverTextureRef.current = null;
-    if (previousAssignment) {
-      previousAssignment.texture.dispose();
-      setLoadedCoverTexture((current) =>
-        current?.generation === previousAssignment.generation ? null : current
-      );
-    }
-    if (!renderFullRig || !spec.coverUrl) return;
-
-    let active = true;
-    const cancelTextureLoad = loadCompleteShelfCoverTexture(
-      {
-        coverUrl: spec.coverUrl,
-        baseColor: spec.baseColor,
-        coverAspectRatio: coverWidth / height,
-        economical,
-        maximumHeight: qualitySettings.textureResolution.inspection,
-        anisotropy: artworkTextureAnisotropy,
-      },
-      (texture) => {
-        if (
-          !active ||
-          assignmentGeneration !== coverAssignmentGenerationRef.current
-        ) {
-          texture.dispose();
-          return;
-        }
-        const assignment = {
-          generation: assignmentGeneration,
-          signature: coverAssignmentSignature,
-          texture,
-        };
-        loadedCoverTextureRef.current?.texture.dispose();
-        loadedCoverTextureRef.current = assignment;
-        setLoadedCoverTexture(assignment);
-        invalidate();
-      },
-      (reason) => onTextureFailure(`${reason}:${spec.key}`)
-    );
-
-    return () => {
-      active = false;
-      cancelTextureLoad();
-      const currentAssignment = loadedCoverTextureRef.current;
-      if (currentAssignment?.generation === assignmentGeneration) {
-        currentAssignment.texture.dispose();
-        loadedCoverTextureRef.current = null;
-      }
-    };
-  }, [
-    coverAssignmentSignature,
-    coverWidth,
-    economical,
-    height,
-    invalidate,
-    artworkTextureAnisotropy,
-    onTextureFailure,
-    qualitySettings.textureResolution.inspection,
-    renderFullRig,
-    spec.baseColor,
-    spec.coverUrl,
-  ]);
-  const coverArtworkTexture =
-    loadedCoverTexture?.signature === coverAssignmentSignature
-      ? loadedCoverTexture.texture
-      : null;
-
   const [editorialPageTextures, setEditorialPageTextures] = useState<{
     signature: string;
     front: ThreeCanvasTexture;
@@ -1586,6 +1494,7 @@ function CompleteShelfBook({
             lastX: event.clientX,
             startedAt: now,
             lastAt: now,
+            lastVelocity: 0,
           };
           (event.target as unknown as {
             setPointerCapture?: (pointerId: number) => void;
@@ -1605,8 +1514,11 @@ function CompleteShelfBook({
           pageDragUpdateCallbackRef.current(
             Math.min(1, Math.max(0, directionalDistance / 180))
           );
+          const now = performance.now();
+          const elapsed = Math.max(1, now - gesture.lastAt);
+          gesture.lastVelocity = -(event.clientX - gesture.lastX) / elapsed;
           gesture.lastX = event.clientX;
-          gesture.lastAt = performance.now();
+          gesture.lastAt = now;
         }}
         onPointerUp={(event) => {
           const gesture = pageGestureStartedRef.current;
@@ -1614,10 +1526,15 @@ function CompleteShelfBook({
             return;
           }
           event.stopPropagation();
-          const elapsed = Math.max(16, performance.now() - gesture.lastAt);
-          const rawVelocity = (event.clientX - gesture.lastX) / elapsed;
+          const elapsed = Math.max(1, performance.now() - gesture.lastAt);
+          const releaseDelta = event.clientX - gesture.lastX;
+          const releaseVelocity = -releaseDelta / elapsed;
           const logicalVelocity =
-            gesture.direction === "forward" ? -rawVelocity : rawVelocity * -1;
+            Math.abs(releaseDelta) >= 0.5
+              ? releaseVelocity
+              : elapsed <= 80
+                ? gesture.lastVelocity
+                : 0;
           (event.target as unknown as {
             releasePointerCapture?: (pointerId: number) => void;
           } | null)?.releasePointerCapture?.(event.pointerId);
@@ -1712,25 +1629,7 @@ function CompleteShelfBook({
         <mesh
           geometry={coverSurfaceGeometry || undefined}
           position={[coverWidth / 2, 0, boardThickness * 0.605]}
-          visible={Boolean(coverArtworkTexture)}
-          renderOrder={5}
-        >
-          <meshPhysicalMaterial
-            color="#ffffff"
-            map={coverArtworkTexture || undefined}
-            roughness={0.58}
-            metalness={0}
-            clearcoat={0.08}
-            clearcoatRoughness={0.64}
-            polygonOffset
-            polygonOffsetFactor={-2}
-            polygonOffsetUnits={-2}
-          />
-        </mesh>
-        <mesh
-          geometry={coverSurfaceGeometry || undefined}
-          position={[coverWidth / 2, 0, boardThickness * 0.605]}
-          visible={!coverArtworkTexture && Boolean(artwork.frontFoil)}
+          visible={Boolean(artwork.frontFoil)}
           renderOrder={5}
         >
           <FoilMaterial
@@ -1957,7 +1856,6 @@ export default function CompleteShelfRenderer(
             baseColor: presentation.baseColor,
             accentColor: presentation.accentColor,
             paperColor: presentation.paperColor,
-            coverUrl: presentation.coverUrl,
             presentationProfile: presentation.presentationProfile,
           },
           sourceIndex
