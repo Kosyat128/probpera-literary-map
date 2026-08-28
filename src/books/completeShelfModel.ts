@@ -155,6 +155,12 @@ export type CompleteShelfBookPose = Readonly<{
   secondLeafAngle: number;
 }>;
 
+export type CompleteShelfVerticalBounds = Readonly<{
+  minY: number;
+  maxY: number;
+  opticalCenterY: number;
+}>;
+
 export type CompleteShelfSettlement =
   | "motion-reached"
   | "motion-settled"
@@ -375,20 +381,44 @@ export function resolveCompleteShelfViewportFraming({
   pixelWidth,
   viewportWidth,
   shelfWidth,
+  verticalBounds = resolveCompleteShelfVerticalBounds(),
 }: {
   pixelWidth: number;
   viewportWidth: number;
   shelfWidth: number;
+  verticalBounds?: CompleteShelfVerticalBounds;
 }) {
   const safePixelWidth = Math.max(1, Number(pixelWidth) || 1);
-  if (safePixelWidth > 640) {
-    return Object.freeze({ scale: 1, positionY: 0 });
-  }
   const safeViewportWidth = Math.max(0.1, Number(viewportWidth) || 0.1);
   const safeShelfWidth = Math.max(0.1, Number(shelfWidth) || 0.1);
+  const scale =
+    safePixelWidth > 640
+      ? 1
+      : round(clamp((safeViewportWidth * 0.9) / safeShelfWidth, 0.3, 0.72));
   return Object.freeze({
-    scale: round(clamp((safeViewportWidth * 0.9) / safeShelfWidth, 0.3, 0.72)),
-    positionY: -0.18,
+    scale,
+    positionY: round(-verticalBounds.opticalCenterY * scale),
+  });
+}
+
+/**
+ * The optical shelf bounds include the wooden slab below the bindings. Keeping
+ * their midpoint at world Y=0 prevents the first rendered frame from drifting
+ * as the camera and viewport finish their layout.
+ */
+export function resolveCompleteShelfVerticalBounds(
+  specs: readonly CompleteShelfBookSpec[] = []
+): CompleteShelfVerticalBounds {
+  const tallestBook = specs.reduce<number>(
+    (height, spec) => Math.max(height, spec.dimensions.height),
+    COMPLETE_SHELF_BOOK_FORMAT.height
+  );
+  const minY = round(COMPLETE_SHELF_TOP - 0.2);
+  const maxY = round(COMPLETE_SHELF_TOP + tallestBook);
+  return Object.freeze({
+    minY,
+    maxY,
+    opticalCenterY: round((minY + maxY) / 2),
   });
 }
 

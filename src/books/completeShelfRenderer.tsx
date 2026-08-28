@@ -46,6 +46,7 @@ import {
   completeShelfPhaseHasInspection,
   completeShelfSettlementForPhase,
   layoutCompleteShelfBooks,
+  resolveCompleteShelfVerticalBounds,
   resolveCompleteShelfViewportFraming,
   selectCompleteShelfWorkingSet,
   type CompleteShelfBookPose,
@@ -1976,10 +1977,12 @@ export default function CompleteShelfRenderer(
       ? layout[layout.length - 1].x - layout[0].x + 1.7
       : 6.5
   );
+  const shelfVerticalBounds = resolveCompleteShelfVerticalBounds(specs);
   const sceneFraming = resolveCompleteShelfViewportFraming({
     pixelWidth: size.width,
     viewportWidth: viewport.width,
     shelfWidth,
+    verticalBounds: shelfVerticalBounds,
   });
   useEffect(() => {
     let firstFrame = 0;

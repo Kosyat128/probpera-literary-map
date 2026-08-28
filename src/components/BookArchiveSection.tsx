@@ -684,6 +684,7 @@ export default function BookArchiveSection({
   } | null>(null);
   const pendingInspectionBookRef = useRef<BookArchiveEntry | null>(null);
   const pendingBookSwitchRef = useRef<BookArchiveEntry | null>(null);
+  const pendingEmptySceneResetRef = useRef(false);
   const pageTurnFrameRef = useRef<number | null>(null);
   const inspectionRequestSequenceRef = useRef(0);
   const [inspectionSession, setInspectionSession] =
@@ -808,6 +809,20 @@ export default function BookArchiveSection({
       requestedBookKey(window.location.search) ? "replace" : "push"
     );
   }, []);
+  const centerShelfScene = useCallback(() => {
+    const scene = document
+      .getElementById("books")
+      ?.querySelector<HTMLElement>(".book-shelf-scene");
+    if (!scene) return;
+    scene.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "center",
+      inline: "nearest",
+    });
+    scene.focus({ preventScroll: true });
+  }, []);
   const restoreBookTriggerFocus = useCallback(
     (returnFocus: HTMLElement | null) => {
       const returnBookKey =
@@ -867,6 +882,8 @@ export default function BookArchiveSection({
   );
   const finalizeBookDetailClose = useCallback(
     (returnFocus: HTMLElement | null) => {
+      const centerAfterClose = pendingEmptySceneResetRef.current;
+      pendingEmptySceneResetRef.current = false;
       pendingBookCloseRef.current = null;
       returnFocusRef.current = null;
       navigationFocusOriginRef.current = null;
@@ -878,6 +895,13 @@ export default function BookArchiveSection({
           ? current
           : filteredItemsRef.current[0]?.key || null
       );
+      const restoreCloseDestination = () => {
+        if (centerAfterClose) {
+          centerShelfScene();
+          return;
+        }
+        restoreBookTriggerFocus(returnFocus);
+      };
       if (
         window.history.state?.[BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY] &&
         !window.history.state?.[bookDetailShelfChangedStateKey]
@@ -885,16 +909,16 @@ export default function BookArchiveSection({
         skipNextBookPopstateRef.current = true;
         window.addEventListener(
           "popstate",
-          () => restoreBookTriggerFocus(returnFocus),
+          restoreCloseDestination,
           { once: true }
         );
         window.history.back();
       } else {
         replaceBookLocation(null);
-        restoreBookTriggerFocus(returnFocus);
+        restoreCloseDestination();
       }
     },
-    [restoreBookTriggerFocus]
+    [centerShelfScene, restoreBookTriggerFocus]
   );
   const closeBookDetail = useCallback(() => {
     if (
@@ -1896,21 +1920,6 @@ export default function BookArchiveSection({
     requestedBookReturnFocus,
   ]);
 
-  const centerShelfScene = useCallback(() => {
-    const scene = document
-      .getElementById("books")
-      ?.querySelector<HTMLElement>(".book-shelf-scene");
-    if (!scene) return;
-    scene.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "auto"
-        : "smooth",
-      block: "center",
-      inline: "nearest",
-    });
-    scene.focus({ preventScroll: true });
-  }, []);
-
   useEffect(() => {
     if (!selectedBook) return;
     const frame = window.requestAnimationFrame(() => {
@@ -2186,8 +2195,25 @@ export default function BookArchiveSection({
       }
 
       openBookDetail(item.book);
-    }, [centerShelfScene, closeBookDetail, openBookDetail, queueByKey, requestFocusBook]
+    },
+    [
+      centerShelfScene,
+      closeBookDetail,
+      openBookDetail,
+      queueByKey,
+      requestFocusBook,
+    ]
   );
+  const resetShelfFromEmptyArea = useCallback(() => {
+    pendingBookSwitchRef.current = null;
+    pendingInspectionBookRef.current = null;
+    if (selectedBookRef.current || pendingBookCloseRef.current) {
+      pendingEmptySceneResetRef.current = true;
+      closeBookDetail();
+      return;
+    }
+    centerShelfScene();
+  }, [centerShelfScene, closeBookDetail]);
   const handleShelfMotionSettled = useCallback(
     (requestId: number) => {
       shelfDispatch({ type: "motion-settled", requestId });
@@ -4470,7 +4496,7 @@ export default function BookArchiveSection({
                   onRequestPreviousPage={requestSelectedPreviousPage}
                   onRequestKeyboardPage={requestSelectedKeyboardPage}
                   onRequestInspectionClose={closeBookDetail}
-                  onRequestSceneCenter={centerShelfScene}
+                  onRequestSceneCenter={resetShelfFromEmptyArea}
                   onCrackCover={() =>
                     shelfDispatch({
                       type: "crack-cover",

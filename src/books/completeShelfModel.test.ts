@@ -20,6 +20,7 @@ import {
   completeShelfWorkingSetLimit,
   layoutCompleteShelfBooks,
   normalizeCompleteShelfCoverUrl,
+  resolveCompleteShelfVerticalBounds,
   resolveCompleteShelfViewportFraming,
   selectCompleteShelfWorkingSet,
   type CompleteShelfItemInput,
@@ -303,29 +304,39 @@ describe("Complete Shelf procedural model", () => {
     ).toBeGreaterThan(COMPLETE_SHELF_GAP);
   });
 
-  it("fits all 13 books and the shelf into a narrow mobile viewport uniformly", () => {
+  it("fits all 13 books and keeps the complete shelf bounds optically centered", () => {
+    const bounds = resolveCompleteShelfVerticalBounds([
+      buildCompleteShelfBookSpec(input("centered", 0)),
+    ]);
     const mobile = resolveCompleteShelfViewportFraming({
       pixelWidth: 390,
       viewportWidth: 2.88,
       shelfWidth: 6.5,
+      verticalBounds: bounds,
     });
     const narrow = resolveCompleteShelfViewportFraming({
       pixelWidth: 320,
       viewportWidth: 2.36,
       shelfWidth: 6.5,
+      verticalBounds: bounds,
     });
     const desktop = resolveCompleteShelfViewportFraming({
       pixelWidth: 1440,
       viewportWidth: 7.2,
       shelfWidth: 6.5,
+      verticalBounds: bounds,
     });
 
     expect(mobile.scale).toBeGreaterThanOrEqual(0.3);
     expect(mobile.scale).toBeLessThan(0.5);
     expect(6.5 * mobile.scale).toBeLessThanOrEqual(2.88 * 0.91);
     expect(6.5 * narrow.scale).toBeLessThanOrEqual(2.36 * 0.91);
-    expect(mobile.positionY).toBeLessThan(0);
-    expect(desktop).toEqual({ scale: 1, positionY: 0 });
+    for (const framing of [mobile, narrow, desktop]) {
+      const transformedMinY = bounds.minY * framing.scale + framing.positionY;
+      const transformedMaxY = bounds.maxY * framing.scale + framing.positionY;
+      expect((transformedMinY + transformedMaxY) / 2).toBeCloseTo(0, 4);
+    }
+    expect(desktop.scale).toBe(1);
   });
 
   it("queues a selected-book switch throughout every interruptible inspection phase", () => {

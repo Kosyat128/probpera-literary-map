@@ -228,8 +228,8 @@ describe("approved Complete Shelf outer presentation", () => {
   it("keeps an opened book in view and switches directly from another spine", () => {
     expect(controller).toContain("pendingBookSwitchRef.current = item.book");
     expect(controller).toContain("const nextBook = pendingBookSwitchRef.current");
-    expect(controller).toContain(
-      "pendingBookCloseRef.current ||\n          pendingBookSwitchRef.current ||\n          pendingInspectionBookRef.current"
+    expect(controller).toMatch(
+      /pendingBookCloseRef\.current\s*\|\|\s*pendingBookSwitchRef\.current\s*\|\|\s*pendingInspectionBookRef\.current/u
     );
     expect(controller).toMatch(
       /window\.requestAnimationFrame\(\(\) => \{\s*pendingInspectionBookRef\.current = null;\s*openBookDetail\(pendingBook\);/u
@@ -238,7 +238,9 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(controller).toContain("scene.scrollIntoView({");
     expect(controller).toContain('block: "center"');
     expect(controller).toContain("scene.focus({ preventScroll: true })");
-    expect(controller).toContain("onRequestSceneCenter={centerShelfScene}");
+    expect(controller).toContain(
+      "onRequestSceneCenter={resetShelfFromEmptyArea}"
+    );
     expect(sceneCanvas).toContain("onPointerMissed={onRequestSceneCenter}");
     expect(renderer).toContain(
       "completeShelfPhaseAllowsSelectionSwitch(phase)"
@@ -246,6 +248,28 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(renderer).toContain(
       "targetSignatureRef.current === targetSignature"
     );
+  });
+
+  it("resets only empty canvas clicks and starts from bounds-centered framing", () => {
+    expect(controller).toContain(
+      "const resetShelfFromEmptyArea = useCallback(() => {"
+    );
+    expect(controller).toContain("pendingBookSwitchRef.current = null");
+    expect(controller).toContain("pendingInspectionBookRef.current = null");
+    expect(controller).toContain("pendingEmptySceneResetRef.current = true");
+    expect(controller).toMatch(
+      /pendingEmptySceneResetRef\.current = true;\s*closeBookDetail\(\);/u
+    );
+    expect(controller).toContain("const centerAfterClose =");
+    expect(controller).toMatch(
+      /if \(centerAfterClose\) \{\s*centerShelfScene\(\);/u
+    );
+    expect(sceneCanvas).toContain("onPointerMissed={onRequestSceneCenter}");
+    expect(sceneCanvas).toContain("BOOK_SHELF_IDLE_CAMERA_TARGET");
+    expect(sceneCanvas).toContain("lookAt: [0, 0, 0] as const");
+    expect(sceneCanvas).toContain("useLayoutEffect(() => {");
+    expect(renderer).toContain("resolveCompleteShelfVerticalBounds(specs)");
+    expect(renderer).toContain("verticalBounds: shelfVerticalBounds");
   });
 
   it("integrates the deterministic mobile detail sheet without stealing horizontal shelf gestures", () => {

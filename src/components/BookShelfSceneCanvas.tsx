@@ -60,6 +60,13 @@ export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
   onTextureFailure: (reason: string) => void;
 };
 
+export const BOOK_SHELF_IDLE_CAMERA_TARGET: BookInspectionCameraTarget =
+  Object.freeze({
+    position: [0, 0.02, 5.15] as const,
+    lookAt: [0, 0, 0] as const,
+    fov: 38,
+  });
+
 function InspectionCameraController({
   detailOpen,
   itemIndex,
@@ -72,11 +79,9 @@ function InspectionCameraController({
   reducedMotion: boolean;
 }) {
   const { camera, gl, invalidate, size } = useThree();
-  const targetRef = useRef<BookInspectionCameraTarget>({
-    position: [0, 0.02, 5.15],
-    lookAt: [0, 0.02, 0],
-    fov: 38,
-  });
+  const targetRef = useRef<BookInspectionCameraTarget>(
+    BOOK_SHELF_IDLE_CAMERA_TARGET
+  );
   const orbitRef = useRef<BookInspectionOrbit>(BOOK_INSPECTION_DEFAULT_ORBIT);
   const dragRef = useRef<{
     pointerId: number;
@@ -91,6 +96,21 @@ function InspectionCameraController({
     }
     invalidate();
   }, [detailOpen, invalidate, itemIndex, itemCount, size.height, size.width]);
+
+  useLayoutEffect(() => {
+    if (detailOpen) return;
+    targetRef.current = BOOK_SHELF_IDLE_CAMERA_TARGET;
+    camera.position.set(...BOOK_SHELF_IDLE_CAMERA_TARGET.position);
+    camera.lookAt(...BOOK_SHELF_IDLE_CAMERA_TARGET.lookAt);
+    if (
+      "fov" in camera &&
+      camera.fov !== BOOK_SHELF_IDLE_CAMERA_TARGET.fov
+    ) {
+      camera.fov = BOOK_SHELF_IDLE_CAMERA_TARGET.fov;
+      camera.updateProjectionMatrix();
+    }
+    invalidate();
+  }, [camera, detailOpen, invalidate, size.height, size.width]);
 
   useEffect(() => {
     const canvas = gl.domElement;
@@ -159,11 +179,7 @@ function InspectionCameraController({
           itemIndex,
           itemCount,
         })
-      : {
-          position: [0, 0.02, 5.15] as const,
-          lookAt: [0, 0, 0] as const,
-          fov: 38,
-        };
+      : BOOK_SHELF_IDLE_CAMERA_TARGET;
     const desired = resolveBookInspectionOrbitCamera(
       desiredFraming,
       orbitRef.current
@@ -179,6 +195,8 @@ function InspectionCameraController({
       Math.abs(next.position[1] - targetRef.current.position[1]) > 0.00002 ||
       Math.abs(next.position[2] - targetRef.current.position[2]) > 0.00002 ||
       Math.abs(next.lookAt[0] - targetRef.current.lookAt[0]) > 0.00002 ||
+      Math.abs(next.lookAt[1] - targetRef.current.lookAt[1]) > 0.00002 ||
+      Math.abs(next.lookAt[2] - targetRef.current.lookAt[2]) > 0.00002 ||
       Math.abs(next.fov - targetRef.current.fov) > 0.00002;
     targetRef.current = next;
     camera.position.set(...next.position);

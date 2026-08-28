@@ -90,6 +90,28 @@ describe("Book Shelf deterministic state machine", () => {
     }
   });
 
+  it("returns an inspected book to the idle shelf after an empty-area reset", () => {
+    let state: BookShelfState = {
+      ...createInitialBookShelfState(),
+      phase: "BOOK_OPEN",
+      requestId: 4,
+    };
+
+    state = transition(state, {
+      type: "request-inspection-close",
+      requestId: 5,
+    });
+    expect(state.phase).toBe("INSPECTION_CLOSING");
+    state = transition(state, { type: "inspection-closed", requestId: 5 });
+    expect(state.phase).toBe("SHELF_RESTORING");
+    state = transition(state, { type: "shelf-restored", requestId: 5 });
+    expect(state).toMatchObject({
+      phase: "SHELF_IDLE",
+      requestId: 5,
+      error: null,
+    });
+  });
+
   it("ignores stale settlements, duplicate requests and illegal phase jumps", () => {
     const first = transition(createInitialBookShelfState(), {
       type: "request-focus",
