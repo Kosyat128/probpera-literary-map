@@ -74,6 +74,7 @@ describe("shared rich editor foundation", () => {
     expect(articleSource).toContain("afterStarterKit: [EditorialBlock]");
     expect(articleSource).toContain("afterImage: [ArticleTextTone]");
     expect(pageSource).toContain("afterStarterKit: [EditorialBlock]");
+    expect(pageSource).toContain("afterImage: [ArticleTextTone]");
   });
 
   it("uses one controlled HTTPS image dialog without article image prompts", () => {

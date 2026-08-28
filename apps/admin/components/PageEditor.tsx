@@ -9,8 +9,14 @@ import { createSlug } from "@/lib/slug";
 import {
   EditorialBlock,
   insertEditorialBlock,
+  insertEditorialGallery,
+  insertEditorialSlider,
   setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
+import { ArticleTextTone } from "@/components/ArticleTextTone";
+import GalleryEditor, {
+  type GalleryEditorKind,
+} from "@/components/article-editor/GalleryEditor";
 import {
   updateEditorialImageAt,
   type EditorialImageLayout,
@@ -24,6 +30,7 @@ import RichEditorToolbar from "@/components/rich-editor/RichEditorToolbar";
 import RecoveryController from "@/components/editor/RecoveryController";
 import EditorMediaDialog from "@/components/EditorMediaDialog";
 import { useEditorMediaWorkflow } from "@/components/useEditorMediaWorkflow";
+import { articleTextTones } from "@/lib/article-content-presentation";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
 
 type PageRecord = {
@@ -141,6 +148,10 @@ export default function PageEditor({
     useState<EditorImageDialogValue>({ src: "", alt: "", caption: "" });
   const [imageUploadMessage, setImageUploadMessage] = useState("");
   const [imageUploadError, setImageUploadError] = useState("");
+  const [mediaComposerKind, setMediaComposerKind] =
+    useState<GalleryEditorKind | null>(null);
+  const [mediaComposerValue, setMediaComposerValue] = useState("");
+  const [mediaComposerError, setMediaComposerError] = useState("");
   const imageSelectionRef = useRef<PageImageSelection>({ attributes: {} });
   const previewParams = new URLSearchParams();
   if (catalogContext.q) previewParams.set("q", catalogContext.q);
@@ -202,6 +213,7 @@ export default function PageEditor({
       placeholder:
         "Напишите содержимое страницы. Подзаголовки, списки и ссылки помогут сделать материал удобным.",
       afterStarterKit: [EditorialBlock],
+      afterImage: [ArticleTextTone],
     }),
     content: page.content_json || page.content_html || "",
     onUpdate({ editor: currentEditor }) {
@@ -406,6 +418,43 @@ export default function PageEditor({
     setIsDirty(true);
   }
 
+  function openMediaCollection(kind: GalleryEditorKind) {
+    setMediaComposerKind(kind);
+    setMediaComposerValue("");
+    setMediaComposerError("");
+  }
+
+  function closeMediaCollection() {
+    setMediaComposerKind(null);
+    setMediaComposerValue("");
+    setMediaComposerError("");
+  }
+
+  function confirmMediaCollection() {
+    if (!mediaComposerKind) return;
+    const urls = mediaComposerValue
+      .split(/\r?\n/u)
+      .map((item) => item.trim())
+      .filter((item) => /^https:\/\//iu.test(item))
+      .slice(0, 8);
+    if (!urls.length) {
+      setMediaComposerError("Добавьте хотя бы один корректный HTTPS-адрес.");
+      return;
+    }
+    if (mediaComposerKind === "slider") {
+      insertEditorialSlider(editor, urls, "странице");
+    } else {
+      insertEditorialGallery(editor, urls, "странице");
+    }
+    setImageUploadError("");
+    setImageUploadMessage(
+      mediaComposerKind === "slider"
+        ? "Слайдер изображений вставлен в страницу."
+        : "Галерея изображений вставлена в страницу."
+    );
+    closeMediaCollection();
+  }
+
   return (
     <form
       action={savePageAction}
@@ -481,6 +530,9 @@ export default function PageEditor({
           <ToolbarButton label="Хронология" onClick={() => insertEditorialBlock(editor, "timeline")} />
           <ToolbarButton label="Цифры" onClick={() => insertEditorialBlock(editor, "metrics")} />
           <ToolbarButton label="Фигура-разделитель" onClick={() => insertEditorialBlock(editor, "ornament")} />
+          <ToolbarButton label="Место для изображения" onClick={() => insertEditorialBlock(editor, "media")} />
+          <ToolbarButton label="Галерея" onClick={() => openMediaCollection("gallery")} />
+          <ToolbarButton label="Слайдер" onClick={() => openMediaCollection("slider")} />
           <ToolbarButton label="Анимация ↑" onClick={() => setEditorialBlockReveal(editor, "fade-up")} />
           <ToolbarButton label="Анимация ←" onClick={() => setEditorialBlockReveal(editor, "slide-left")} />
           <ToolbarButton label="Масштаб" onClick={() => setEditorialBlockReveal(editor, "zoom-in")} />
@@ -495,6 +547,56 @@ export default function PageEditor({
           <ToolbarButton
             label="Изображение по HTTPS-адресу"
             onClick={openImageUrlDialog}
+          />
+          <details className="editor-tool-menu">
+            <summary>Цвет текста</summary>
+            <div className="editor-tool-menu-panel">
+              <div
+                className="editor-text-tone-palette"
+                role="group"
+                aria-label="Безопасная палитра цвета текста"
+              >
+                <button
+                  type="button"
+                  className={!editor?.isActive("textTone") ? "is-active" : undefined}
+                  aria-pressed={!editor?.isActive("textTone")}
+                  onClick={() => editor?.chain().focus().unsetTextTone().run()}
+                >
+                  <span className="editor-text-tone-reset" aria-hidden="true">A</span>
+                  <span><strong>Основной</strong><small>Цвет темы</small></span>
+                </button>
+                {articleTextTones.map((tone) => (
+                  <button
+                    type="button"
+                    key={tone.id}
+                    className={
+                      editor?.isActive("textTone", { tone: tone.id })
+                        ? "is-active"
+                        : undefined
+                    }
+                    data-text-tone={tone.id}
+                    aria-pressed={editor?.isActive("textTone", { tone: tone.id })}
+                    onClick={() => editor?.chain().focus().setTextTone(tone.id).run()}
+                  >
+                    <span className="editor-text-tone-swatch" aria-hidden="true" />
+                    <span>
+                      <strong>{tone.label}</strong>
+                      <small>AAA · от {tone.contrastRatio}:1</small>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </details>
+          <ToolbarButton
+            label="Текст слева"
+            active={editor?.isActive({ textAlign: "left" })}
+            onClick={() => editor?.chain().focus().setTextAlign("left").run()}
+          />
+          <ToolbarButton
+            label="Текст по центру"
+            active={editor?.isActive({ textAlign: "center" })}
+            onClick={() => editor?.chain().focus().setTextAlign("center").run()}
           />
           <ToolbarButton
             label="Без форматирования"
@@ -695,6 +797,15 @@ export default function PageEditor({
         onSelectAsset={editorMedia.selectLibraryAsset}
         onCancelItem={editorMedia.cancelItem}
         onRetryItem={editorMedia.retryItem}
+      />
+      <GalleryEditor
+        kind={mediaComposerKind}
+        value={mediaComposerValue}
+        error={mediaComposerError}
+        contextLabel="страницы"
+        onValueChange={setMediaComposerValue}
+        onCancel={closeMediaCollection}
+        onConfirm={confirmMediaCollection}
       />
     </form>
   );

@@ -12,10 +12,14 @@ const publicStyles = readFileSync(
   new URL("../index.css", import.meta.url),
   "utf8"
 );
-const adminStyles = readFileSync(
-  new URL("../../apps/admin/app/globals.css", import.meta.url),
-  "utf8"
-);
+const adminStyles = ["editors.css", "responsive.css"]
+  .map((file) =>
+    readFileSync(
+      new URL(`../../apps/admin/app/styles/${file}`, import.meta.url),
+      "utf8"
+    )
+  )
+  .join("\n");
 
 function relativeLuminance(hex: string) {
   const channels = hex

@@ -17809,20 +17809,20 @@ html[data-theme="book"] .calendar-heading h3 {
 
 /* Strict public counterparts for the editor's allowlisted inline text tones. */
 
-.article-reader-content .article-text-tone {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone {
   color: var(--article-text-tone);
   font-weight: 600;
 }
 
-.article-reader-content .article-text-tone.is-tone-garnet[data-text-tone="garnet"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-garnet[data-text-tone="garnet"] {
   --article-text-tone: #852744;
 }
 
-.article-reader-content .article-text-tone.is-tone-coral[data-text-tone="coral"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-coral[data-text-tone="coral"] {
   --article-text-tone: #702b25;
 }
 
-.article-reader-content .article-text-tone.is-tone-rose[data-text-tone="rose"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-rose[data-text-tone="rose"] {
   --article-text-tone: #742447;
 }
 
@@ -18624,87 +18624,87 @@ html[data-theme="book"] .calendar-heading h3 {
   display: none;
 }
 
-.article-reader-content .article-text-tone.is-tone-berry[data-text-tone="berry"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-berry[data-text-tone="berry"] {
   --article-text-tone: #682653;
 }
 
-.article-reader-content .article-text-tone.is-tone-plum[data-text-tone="plum"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-plum[data-text-tone="plum"] {
   --article-text-tone: #5d2b60;
 }
 
-.article-reader-content .article-text-tone.is-tone-violet[data-text-tone="violet"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-violet[data-text-tone="violet"] {
   --article-text-tone: #4e3470;
 }
 
-.article-reader-content .article-text-tone.is-tone-indigo[data-text-tone="indigo"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-indigo[data-text-tone="indigo"] {
   --article-text-tone: #48376e;
 }
 
-.article-reader-content .article-text-tone.is-tone-navy[data-text-tone="navy"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-navy[data-text-tone="navy"] {
   --article-text-tone: #263f6a;
 }
 
-.article-reader-content .article-text-tone.is-tone-cobalt[data-text-tone="cobalt"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-cobalt[data-text-tone="cobalt"] {
   --article-text-tone: #164c70;
 }
 
-.article-reader-content .article-text-tone.is-tone-ocean[data-text-tone="ocean"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-ocean[data-text-tone="ocean"] {
   --article-text-tone: #0b4c62;
 }
 
-.article-reader-content .article-text-tone.is-tone-teal[data-text-tone="teal"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-teal[data-text-tone="teal"] {
   --article-text-tone: #074d49;
 }
 
-.article-reader-content .article-text-tone.is-tone-emerald[data-text-tone="emerald"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-emerald[data-text-tone="emerald"] {
   --article-text-tone: #164f35;
 }
 
-.article-reader-content .article-text-tone.is-tone-forest[data-text-tone="forest"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-forest[data-text-tone="forest"] {
   --article-text-tone: #1b5038;
 }
 
-.article-reader-content .article-text-tone.is-tone-olive[data-text-tone="olive"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-olive[data-text-tone="olive"] {
   --article-text-tone: #414b12;
 }
 
-.article-reader-content .article-text-tone.is-tone-moss[data-text-tone="moss"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-moss[data-text-tone="moss"] {
   --article-text-tone: #3a491f;
 }
 
-.article-reader-content .article-text-tone.is-tone-ochre[data-text-tone="ochre"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-ochre[data-text-tone="ochre"] {
   --article-text-tone: #5d3c00;
 }
 
-.article-reader-content .article-text-tone.is-tone-amber[data-text-tone="amber"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-amber[data-text-tone="amber"] {
   --article-text-tone: #674005;
 }
 
-.article-reader-content .article-text-tone.is-tone-bronze[data-text-tone="bronze"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-bronze[data-text-tone="bronze"] {
   --article-text-tone: #65411f;
 }
 
-.article-reader-content .article-text-tone.is-tone-umber[data-text-tone="umber"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-umber[data-text-tone="umber"] {
   --article-text-tone: #593927;
 }
 
-.article-reader-content .article-text-tone.is-tone-cocoa[data-text-tone="cocoa"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-cocoa[data-text-tone="cocoa"] {
   --article-text-tone: #4e362f;
 }
 
-.article-reader-content .article-text-tone.is-tone-slate[data-text-tone="slate"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-slate[data-text-tone="slate"] {
   --article-text-tone: #3e4856;
 }
 
-.article-reader-content .article-text-tone.is-tone-steel[data-text-tone="steel"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-steel[data-text-tone="steel"] {
   --article-text-tone: #3a4a57;
 }
 
-.article-reader-content .article-text-tone.is-tone-graphite[data-text-tone="graphite"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-graphite[data-text-tone="graphite"] {
   --article-text-tone: #41434a;
 }
 
-.article-reader-content .article-text-tone.is-tone-charcoal[data-text-tone="charcoal"] {
+:is(.article-reader-content, .cms-page-prose) .article-text-tone.is-tone-charcoal[data-text-tone="charcoal"] {
   --article-text-tone: #34363b;
 }
 
@@ -18805,7 +18805,7 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (forced-colors: active) {
-  .article-reader-content .article-text-tone {
+  :is(.article-reader-content, .cms-page-prose) .article-text-tone {
     color: CanvasText;
     text-decoration: underline;
     text-decoration-thickness: 0.08em;

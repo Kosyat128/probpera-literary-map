@@ -11,6 +11,7 @@ export default function GalleryEditor({
   kind,
   value,
   error,
+  contextLabel = "статьи",
   onValueChange,
   onCancel,
   onConfirm,
@@ -18,6 +19,7 @@ export default function GalleryEditor({
   kind: GalleryEditorKind | null;
   value: string;
   error: string;
+  contextLabel?: string;
   onValueChange: (value: string) => void;
   onCancel: () => void;
   onConfirm: () => void;
@@ -55,7 +57,7 @@ export default function GalleryEditor({
       >
         <div className="editor-media-modal-heading">
           <div>
-            <span>Изображения статьи</span>
+            <span>Изображения {contextLabel}</span>
             <h2 id={titleId}>
               {kind === "slider" ? "Собрать слайдер" : "Собрать галерею"}
             </h2>
