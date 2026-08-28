@@ -270,18 +270,33 @@ begin
       )
   ) <> 12 or (
     select count(*)
-    from pg_catalog.pg_policies
-    where schemaname = 'public'
-      and tablename in (
+    from pg_catalog.pg_policies policy_view
+    join pg_catalog.pg_class relation
+      on relation.relname = policy_view.tablename
+    join pg_catalog.pg_namespace namespace
+      on namespace.oid = relation.relnamespace
+      and namespace.nspname = policy_view.schemaname
+    join pg_catalog.pg_policy policy
+      on policy.polrelid = relation.oid
+      and policy.polname = policy_view.policyname
+    where policy_view.schemaname = 'public'
+      and policy_view.tablename in (
         'reader_book_collections',
         'reader_book_collection_items',
         'reader_book_favorites'
       )
-      and roles = array['authenticated'::name]
-      and position(
-        'auth.uid'
-        in coalesce(qual, '') || coalesce(with_check, '')
-      ) > 0
+      and policy_view.roles = array['authenticated'::name]
+      and exists (
+        select 1
+        from pg_catalog.pg_depend dependency
+        where dependency.classid = 'pg_catalog.pg_policy'::regclass
+          and dependency.objid = policy.oid
+          and dependency.objsubid = 0
+          and dependency.refclassid = 'pg_catalog.pg_proc'::regclass
+          and dependency.refobjid = 'auth.uid()'::regprocedure
+          and dependency.refobjsubid = 0
+          and dependency.deptype = 'n'
+      )
   ) <> 12 then
     raise exception 'Reader book collection owner-only policies are incomplete';
   end if;

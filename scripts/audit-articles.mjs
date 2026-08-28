@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { mergePublishedArticleCatalog } from "./lib/article-catalog-merge.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
@@ -313,9 +314,11 @@ async function loadPublishedArticles() {
   );
 
   let cmsEntries = [];
+  let withdrawnLegacyArticles = [];
   try {
     const snapshot = await readJson(path.join(cmsDirectory, "published-content.json"));
     cmsEntries = Array.isArray(snapshot.articles) ? snapshot.articles : [];
+    withdrawnLegacyArticles = snapshot.withdrawnLegacyArticles;
   } catch (error) {
     if (error?.code !== "ENOENT") throw error;
   }
@@ -330,21 +333,11 @@ async function loadPublishedArticles() {
       };
     })
   );
-  const replacedLegacyIds = new Set(
-    cmsArticles.map((article) => article.legacyId).filter(Boolean)
+  return mergePublishedArticleCatalog(
+    legacyArticles,
+    cmsArticles,
+    withdrawnLegacyArticles
   );
-  const replacedLegacyPaths = new Set(
-    cmsArticles
-      .map((article) => normalizedPath(article.legacyPath))
-      .filter((value) => value && value !== "/")
-  );
-  const retainedLegacy = legacyArticles.filter(
-    (article) =>
-      !replacedLegacyIds.has(article.id) &&
-      !replacedLegacyPaths.has(normalizedPath(article.legacyPath || article.url))
-  );
-
-  return [...cmsArticles, ...retainedLegacy];
 }
 
 async function main() {

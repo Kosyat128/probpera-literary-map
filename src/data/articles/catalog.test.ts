@@ -59,6 +59,19 @@ describe("mergeArticleCatalog", () => {
     expect(mergeArticleCatalog(legacy, cms)[0]?.id).toBe("cms-1");
   });
 
+  it("does not resurrect a legacy fallback after its CMS publication is withdrawn", () => {
+    const legacy = [article("legacy-1"), article("legacy-2")];
+    expect(
+      mergeArticleCatalog(legacy, [], [
+        {
+          canonicalPath: "/stati/literary-essays/withdrawn",
+          legacyId: "legacy-1",
+          legacyPath: "/read/legacy-1",
+        },
+      ]).map((item) => item.id)
+    ).toEqual(["legacy-2"]);
+  });
+
   it("uses clear current addresses and keeps the old path only as compatibility metadata", () => {
     const migrated = articleCatalog.find((item) => item.legacyPath?.startsWith("/read/"));
 

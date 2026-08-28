@@ -5977,5 +5977,6 @@
       "statusCode": 301
     }
   ],
-  "bookEditionsByWorkId": {}
+  "bookEditionsByWorkId": {},
+  "withdrawnLegacyArticles": []
 }
