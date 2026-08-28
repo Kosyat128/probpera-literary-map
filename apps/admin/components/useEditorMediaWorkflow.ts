@@ -50,7 +50,13 @@ type QueueJob = {
 
 type UploadedItem = {
   id: string;
-  attributes: Record<string, unknown>;
+  attributes: {
+    src: string;
+    mediaId: string | null;
+    alt: string;
+    caption: string;
+    layout: EditorialImageLayout;
+  };
 };
 
 const acceptedImageTypes = new Set([

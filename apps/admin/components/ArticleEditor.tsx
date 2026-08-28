@@ -60,6 +60,12 @@ import EditorImageDialog, {
 import { createRichEditorExtensions } from "@/components/rich-editor/RichEditorExtensions";
 import RichEditorToolbar from "@/components/rich-editor/RichEditorToolbar";
 import RecoveryController from "@/components/editor/RecoveryController";
+import CoverEditor from "@/components/article-editor/CoverEditor";
+import PublishPanel from "@/components/article-editor/PublishPanel";
+import SeoPanel from "@/components/article-editor/SeoPanel";
+import SourceBibliographyEditor from "@/components/article-editor/SourceBibliographyEditor";
+import ValidationChecklist from "@/components/article-editor/ValidationChecklist";
+import { useArticleValidation } from "@/components/article-editor/useArticleValidation";
 import {
   useRegisterArticleEditorWorkspace,
   type ArticleEditorWorkspace,
@@ -987,48 +993,36 @@ export default function ArticleEditor({
     };
   }, [isDirty, recoveryDraftScope, recoveryKey]);
 
-  const countHtmlWords = (html: string) => {
-    const text = html
-      .replace(/<[^>]+>/gu, " ")
-      .replace(/&nbsp;/giu, " ")
-      .replace(/\s+/gu, " ")
-      .trim();
-    return text ? text.split(/\s+/u).length : 0;
-  };
-  const wordCount = countHtmlWords(
-    activeLocale === "en" ? englishContentHtml : contentHtml
-  );
-  const russianWordCount = countHtmlWords(contentHtml);
-  const englishWordCount = countHtmlWords(englishContentHtml);
-
-  const publicationChecks = useMemo(() => {
-    const russianChecks = [
-      { label: "Заголовок и постоянный адрес", ok: title.trim().length >= 3 && slug.length >= 2 },
-      { label: "Рубрика выбрана", ok: Boolean(categoryId) },
-      { label: "Не менее 250 слов", ok: russianWordCount >= 250 },
-      { label: "Есть смысловые подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(contentHtml) },
-      { label: "Описание карточки - от 80 знаков", ok: excerpt.trim().length >= 80 },
-      { label: "Обложка и её описание", ok: /^https:\/\//iu.test(coverUrl) && coverAlt.trim().length >= 10 },
-      { label: "SEO-описание - от 80 знаков", ok: seoDescription.trim().length >= 80 },
-      { label: "Указан хотя бы один источник", ok: sourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
-      { label: "Все места для изображений заменены", ok: !/data-editorial-block=["']media["']/iu.test(contentHtml) },
-    ];
-    if (!englishEnabled) return russianChecks;
-
-    return [
-      ...russianChecks,
-      { label: "English: статус approved/published", ok: englishStatus === "approved" || englishStatus === "published" },
-      { label: "English: заголовок и адрес", ok: englishTitle.trim().length >= 3 && englishSlug.length >= 2 },
-      { label: "English: не менее 250 слов", ok: englishWordCount >= 250 },
-      { label: "English: есть подзаголовки H2", ok: /<h2(?:\s|>)/iu.test(englishContentHtml) },
-      { label: "English: описание карточки - от 80 знаков", ok: englishExcerpt.trim().length >= 80 },
-      { label: "English: alt обложки", ok: englishCoverAlt.trim().length >= 10 },
-      { label: "English: SEO-описание - от 80 знаков", ok: englishSeoDescription.trim().length >= 80 },
-      { label: "English: указан источник", ok: englishSourceText.split(/\r?\n/u).some((item) => item.trim().length >= 5) },
-      { label: "English: перевод сверен с текущим оригиналом", ok: englishConfirmedCurrentSource || (!russianSourceChanged && Boolean(englishTranslation?.source_content_hash)) },
-    ];
-  }, [categoryId, contentHtml, coverAlt, coverUrl, englishConfirmedCurrentSource, englishContentHtml, englishCoverAlt, englishEnabled, englishExcerpt, englishSeoDescription, englishSlug, englishSourceText, englishStatus, englishTitle, englishTranslation?.source_content_hash, englishWordCount, excerpt, russianSourceChanged, russianWordCount, seoDescription, slug, sourceText, title]);
-  const publicationReady = publicationChecks.every((item) => item.ok);
+  const {
+    checks: publicationChecks,
+    ready: publicationReady,
+    russianWordCount,
+    englishWordCount,
+  } = useArticleValidation({
+    title,
+    slug,
+    categoryId,
+    contentHtml,
+    excerpt,
+    coverUrl,
+    coverAlt,
+    seoDescription,
+    sourceText,
+    englishEnabled,
+    englishStatus,
+    englishTitle,
+    englishSlug,
+    englishContentHtml,
+    englishExcerpt,
+    englishCoverAlt,
+    englishSeoDescription,
+    englishSourceText,
+    englishConfirmedCurrentSource,
+    englishSourceContentHash: englishTranslation?.source_content_hash,
+    russianSourceChanged,
+  });
+  const wordCount =
+    activeLocale === "en" ? englishWordCount : russianWordCount;
 
   const workspaceDocument = useMemo(() => {
     const outline: Array<{
@@ -2144,80 +2138,31 @@ export default function ArticleEditor({
         </div>
 
         <aside className="editor-side">
-          <section
-            ref={(element) => registerWorkspaceSection("publish", element)}
-            className="panel settings-stack"
-          >
-            <h2>{activeLocale === "en" ? "English publication" : "Публикация"}</h2>
-            {activeLocale === "ru" ? (
-              <>
-                <label className="field">
-                  <span>Статус</span>
-                  <select value={status} onChange={(event) => setStatus(event.target.value)}>
-                    <option value="draft">Черновик</option>
-                    <option value="review">На проверке</option>
-                    <option value="scheduled">По расписанию</option>
-                    <option value="published">Опубликована</option>
-                    <option value="hidden">Скрыта</option>
-                    <option value="archived">В архиве</option>
-                  </select>
-                </label>
-                <label className="field">
-                  <span>Дата и время публикации</span>
-                  <input
-                    type="datetime-local"
-                    value={scheduledAt}
-                    onChange={(event) => setScheduledAt(event.target.value)}
-                  />
-                </label>
-                <label><input type="checkbox" checked={featured} onChange={(event) => setFeatured(event.target.checked)} /> Выбор редакции</label>
-                <label><input type="checkbox" checked={showOnHomepage} onChange={(event) => setShowOnHomepage(event.target.checked)} /> Показывать на главной</label>
-                <label><input type="checkbox" checked={pinned} onChange={(event) => setPinned(event.target.checked)} /> Закрепить</label>
-              </>
-            ) : (
-              <>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={englishEnabled}
-                    onChange={(event) => setEnglishEnabled(event.target.checked)}
-                  />{" "}
-                  Save the English translation
-                </label>
-                <label className="field">
-                  <span>Translation status</span>
-                  <select
-                    value={englishStatus}
-                    onChange={(event) =>
-                      setEnglishStatus(
-                        event.target.value as ArticleTranslation["status"] & string
-                      )
-                    }
-                  >
-                    <option value="draft">Draft</option>
-                    <option value="review">Ready for review</option>
-                    <option value="approved">Approved</option>
-                    <option value="published">Published</option>
-                    <option value="stale">Stale after Russian edit</option>
-                    <option value="archived">Archived</option>
-                  </select>
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={englishConfirmedCurrentSource}
-                    onChange={(event) =>
-                      setEnglishConfirmedCurrentSource(event.target.checked)
-                    }
-                  />{" "}
-                  I reviewed this translation against the current Russian source
-                </label>
-                {englishTranslation?.approved_at && (
-                  <small>Last approved: {englishTranslation.approved_at}</small>
-                )}
-              </>
-            )}
-          </section>
+          <PublishPanel
+            locale={activeLocale}
+            sectionRef={(element) =>
+              registerWorkspaceSection("publish", element)
+            }
+            status={status}
+            onStatusChange={setStatus}
+            scheduledAt={scheduledAt}
+            onScheduledAtChange={setScheduledAt}
+            featured={featured}
+            onFeaturedChange={setFeatured}
+            showOnHomepage={showOnHomepage}
+            onShowOnHomepageChange={setShowOnHomepage}
+            pinned={pinned}
+            onPinnedChange={setPinned}
+            englishEnabled={englishEnabled}
+            onEnglishEnabledChange={setEnglishEnabled}
+            englishStatus={englishStatus}
+            onEnglishStatusChange={setEnglishStatus}
+            englishConfirmedCurrentSource={englishConfirmedCurrentSource}
+            onEnglishConfirmedCurrentSourceChange={
+              setEnglishConfirmedCurrentSource
+            }
+            englishApprovedAt={englishTranslation?.approved_at}
+          />
 
           <section className="panel settings-stack">
             <h2>Рубрика</h2>
@@ -2236,344 +2181,110 @@ export default function ArticleEditor({
             </label>
           </section>
 
-          <section
-            ref={(element) => registerWorkspaceSection("cover", element)}
-            className="panel settings-stack"
-          >
-            <h2>Обложка</h2>
-            <input
-              ref={coverFileInputRef}
-              className="visually-hidden-file"
-              type="file"
-              accept="image/jpeg,image/png,image/webp,image/avif"
-              onChange={(event) => {
-                const file = event.target.files?.[0];
-                if (file) void uploadCoverImage(file);
-              }}
-            />
-            <button
-              className={
-                imageUploadTarget === "cover"
-                  ? "cover-upload-zone is-uploading"
-                  : "cover-upload-zone"
-              }
-              type="button"
-              onClick={() => openImagePicker("cover")}
-              onDragOver={(event) => event.preventDefault()}
-              onDrop={(event) => {
-                event.preventDefault();
-                const file = event.dataTransfer.files?.[0];
-                if (file) void uploadCoverImage(file);
-              }}
-              disabled={isImageUploadActive}
-            >
-              {coverUrl ? (
-                <img
-                  src={coverUrl}
-                  alt={
-                    activeCoverAlt ||
-                    (activeLocale === "en"
-                      ? "Article cover preview"
-                      : "Предпросмотр обложки статьи")
-                  }
-                />
-              ) : (
-                <span className="cover-upload-mark" aria-hidden="true">＋</span>
-              )}
-              <strong>
-                {imageUploadTarget === "cover"
-                  ? "Загружаем обложку…"
-                  : coverUrl
-                    ? "Нажмите, чтобы заменить обложку"
-                    : "Выбрать обложку с компьютера"}
-              </strong>
-              <small>
-                Автоподгонка без обрезки · JPEG, PNG, WebP или AVIF · исходник до 20 МБ
-              </small>
-            </button>
-            <label className="field">
-              <span>Адрес изображения</span>
-              <input
-                type="url"
-                name="cover_external_url"
-                value={coverUrl}
-                onChange={(event) => setCoverUrl(event.target.value)}
-                placeholder="https://…"
-              />
-            </label>
-            <label className="field">
-              <span>
-                {activeLocale === "en"
-                  ? "Image description (English)"
-                  : "Описание изображения"}
-              </span>
-              <textarea
-                value={activeCoverAlt}
-                onChange={(event) => {
-                  if (activeLocale === "en") setEnglishCoverAlt(event.target.value);
-                  else {
-                    setCoverAlt(event.target.value);
-                    markRussianSourceChanged();
-                  }
-                  setIsDirty(true);
-                }}
-                maxLength={500}
-                placeholder={
-                  activeLocale === "en"
-                    ? "Describe the image for accessibility and search"
-                    : "Что изображено - для доступности и поиска"
-                }
-              />
-            </label>
-          </section>
+          <CoverEditor
+            locale={activeLocale}
+            sectionRef={(element) =>
+              registerWorkspaceSection("cover", element)
+            }
+            fileInputRef={coverFileInputRef}
+            coverUrl={coverUrl}
+            coverAlt={activeCoverAlt}
+            isUploading={imageUploadTarget === "cover"}
+            uploadDisabled={isImageUploadActive}
+            onOpenPicker={() => openImagePicker("cover")}
+            onUploadFile={uploadCoverImage}
+            onCoverUrlChange={setCoverUrl}
+            onCoverAltChange={
+              activeLocale === "en" ? setEnglishCoverAlt : setCoverAlt
+            }
+            markRussianSourceChanged={markRussianSourceChanged}
+            markDirty={() => setIsDirty(true)}
+          />
 
-          <section
-            ref={(element) => registerWorkspaceSection("seo", element)}
-            className="panel settings-stack"
-          >
-            <h2>{activeLocale === "en" ? "English URL and SEO" : "Адрес и SEO"}</h2>
-            <label className="field">
-              <span>{activeLocale === "en" ? "English article slug" : "Адрес статьи"}</span>
-              <input
-                value={activeSlug}
-                onChange={(event) => {
-                  if (activeLocale === "en") {
-                    setEnglishSlugEdited(true);
-                    setEnglishSlug(createSlug(event.target.value));
-                  } else {
-                    setSlugEdited(true);
-                    setSlug(createSlug(event.target.value));
-                    markRussianSourceChanged();
-                  }
-                  setIsDirty(true);
-                }}
-                required={activeLocale === "ru"}
-              />
-              <span className="slug-control-row">
-                <small>
-                  {activeLocale === "en"
-                    ? !englishSlugEdited
-                      ? "The slug follows the English title automatically."
-                      : "The English slug is fixed manually."
-                    : !slugEdited
-                      ? "Адрес автоматически меняется вместе с заголовком."
-                      : "Адрес закреплён вручную и больше не изменится от заголовка."}
-                </small>
-                <button
-                  className="text-button"
-                  type="button"
-                  onClick={() => {
-                    if (activeLocale === "en") {
-                      setEnglishSlugEdited(false);
-                      setEnglishSlug(createSlug(englishTitle));
-                      setEnglishCanonicalEdited(false);
-                    } else {
-                      setSlugEdited(false);
-                      setSlug(createSlug(title));
-                      setCanonicalEdited(false);
-                      markRussianSourceChanged();
-                    }
-                    setIsDirty(true);
-                  }}
-                >
-                  {activeLocale === "en" ? "Generate from title" : "Создавать из заголовка"}
-                </button>
-              </span>
-              <small>
-                {activeLocale === "en"
-                  ? generatedEnglishCanonical
-                  : generatedCanonical}
-              </small>
-            </label>
-            <label className="field">
-              <span>Старый адрес - только совместимость</span>
-              <input
-                name="legacy_path"
-                defaultValue={article.legacy_path || ""}
-                placeholder="/read/page-article/…"
-              />
-              <small>
-                Не показывается читателям и не используется в новых ссылках.
-                Нужен только для бесшовного 301‑перехода со старых публикаций.
-              </small>
-            </label>
-            <label className="field">
-              <span>{activeLocale === "en" ? "SEO title" : "SEO-заголовок"}</span>
-              <input
-                value={activeSeoTitle}
-                onChange={(event) => {
-                  if (activeLocale === "en") setEnglishSeoTitle(event.target.value);
-                  else {
-                    setSeoTitle(event.target.value);
-                    markRussianSourceChanged();
-                  }
-                }}
-                maxLength={180}
-              />
-            </label>
-            <label className="field">
-              <span>{activeLocale === "en" ? "Search description" : "Описание для поиска"}</span>
-              <textarea
-                value={activeSeoDescription}
-                onChange={(event) => {
-                  if (activeLocale === "en") setEnglishSeoDescription(event.target.value);
-                  else {
-                    setSeoDescription(event.target.value);
-                    markRussianSourceChanged();
-                  }
-                }}
-                maxLength={400}
-              />
-            </label>
-            <label className="field">
-              <span>{activeLocale === "en" ? "Keywords" : "Ключевые слова"}</span>
-              <textarea
-                value={activeSeoKeywords}
-                onChange={(event) => {
-                  if (activeLocale === "en") setEnglishSeoKeywords(event.target.value);
-                  else {
-                    setSeoKeywords(event.target.value);
-                    markRussianSourceChanged();
-                  }
-                }}
-                maxLength={1000}
-                placeholder={
-                  activeLocale === "en"
-                    ? "literature, author, book title"
-                    : "литература, автор, название книги"
-                }
-              />
-            </label>
-            <label className="field">
-              <span>{activeLocale === "en" ? "English canonical URL" : "Текущий постоянный адрес"}</span>
-              <input
-                type="url"
-                value={activeCanonicalUrl}
-                readOnly
-                placeholder={
-                  activeLocale === "en"
-                    ? generatedEnglishCanonical
-                    : generatedCanonical
-                }
-              />
-              <small>
-                {activeLocale === "en"
-                  ? "Generated automatically from the English article slug and used as its dedicated public address."
-                  : "Строится автоматически из рубрики и названия. Новые публикации всегда используют этот понятный адрес."}
-              </small>
-            </label>
-            <label className="field">
-              <span>Open Graph - {activeLocale === "en" ? "title" : "заголовок"}</span>
-              <input
-                value={activeOgTitle}
-                onChange={(event) => {
-                  if (activeLocale === "en") setEnglishOgTitle(event.target.value);
-                  else {
-                    setOgTitle(event.target.value);
-                    markRussianSourceChanged();
-                  }
-                }}
-                maxLength={180}
-              />
-            </label>
-            <label className="field">
-              <span>Open Graph - {activeLocale === "en" ? "description" : "описание"}</span>
-              <textarea
-                value={activeOgDescription}
-                onChange={(event) => {
-                  if (activeLocale === "en") setEnglishOgDescription(event.target.value);
-                  else {
-                    setOgDescription(event.target.value);
-                    markRussianSourceChanged();
-                  }
-                }}
-                maxLength={400}
-              />
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="allow_indexing"
-                defaultChecked={article.allow_indexing !== false}
-              />{" "}
-              Разрешить индексацию поисковыми системами
-            </label>
-          </section>
+          <SeoPanel
+            locale={activeLocale}
+            sectionRef={(element) =>
+              registerWorkspaceSection("seo", element)
+            }
+            title={activeLocale === "en" ? englishTitle : title}
+            slug={activeSlug}
+            slugEdited={
+              activeLocale === "en" ? englishSlugEdited : slugEdited
+            }
+            generatedCanonical={
+              activeLocale === "en"
+                ? generatedEnglishCanonical
+                : generatedCanonical
+            }
+            legacyPath={article.legacy_path || ""}
+            seoTitle={activeSeoTitle}
+            seoDescription={activeSeoDescription}
+            seoKeywords={activeSeoKeywords}
+            canonicalUrl={activeCanonicalUrl}
+            ogTitle={activeOgTitle}
+            ogDescription={activeOgDescription}
+            allowIndexing={article.allow_indexing !== false}
+            onSlugChange={
+              activeLocale === "en" ? setEnglishSlug : setSlug
+            }
+            onSlugEditedChange={
+              activeLocale === "en" ? setEnglishSlugEdited : setSlugEdited
+            }
+            onCanonicalEditedChange={
+              activeLocale === "en"
+                ? setEnglishCanonicalEdited
+                : setCanonicalEdited
+            }
+            onSeoTitleChange={
+              activeLocale === "en" ? setEnglishSeoTitle : setSeoTitle
+            }
+            onSeoDescriptionChange={
+              activeLocale === "en"
+                ? setEnglishSeoDescription
+                : setSeoDescription
+            }
+            onSeoKeywordsChange={
+              activeLocale === "en" ? setEnglishSeoKeywords : setSeoKeywords
+            }
+            onOgTitleChange={
+              activeLocale === "en" ? setEnglishOgTitle : setOgTitle
+            }
+            onOgDescriptionChange={
+              activeLocale === "en"
+                ? setEnglishOgDescription
+                : setOgDescription
+            }
+            markRussianSourceChanged={markRussianSourceChanged}
+            markDirty={() => setIsDirty(true)}
+          />
 
-          <section
-            ref={(element) => registerWorkspaceSection("quality", element)}
-            className="panel settings-stack publication-checklist"
-            aria-labelledby="publication-checklist-title"
-          >
-            <h2 id="publication-checklist-title">Контроль перед публикацией</h2>
-            <p>
-              {englishEnabled
-                ? "Проверяется русский оригинал и включённый английский перевод."
-                : "Английский перевод не включён: можно выпустить только русский оригинал."}
-            </p>
-            <ul>
-              {publicationChecks.map((item) => (
-                <li className={item.ok ? "is-ready" : "is-missing"} key={item.label}>
-                  <span aria-hidden="true">{item.ok ? "✓" : "○"}</span>{item.label}
-                </li>
-              ))}
-            </ul>
-            <p>{publicationReady ? "Материал готов к выпуску." : "Черновик можно сохранять. Для выпуска завершите отмеченные пункты."}</p>
-            <input type="hidden" name="publication_ready" value={publicationReady ? "yes" : "no"} />
-          </section>
+          <ValidationChecklist
+            sectionRef={(element) =>
+              registerWorkspaceSection("quality", element)
+            }
+            englishEnabled={englishEnabled}
+            checks={publicationChecks}
+            ready={publicationReady}
+          />
 
-          <section
-            ref={(element) => registerWorkspaceSection("sources", element)}
-            className="panel settings-stack"
-          >
-            <h2>
-              {activeLocale === "en"
-                ? "English sources and bibliography"
-                : "Источники и библиография"}
-            </h2>
-            <label className="field">
-              <span>
-                {activeLocale === "en"
-                  ? "Sources - one per line"
-                  : "Источники - по одному на строку"}
-              </span>
-              <textarea
-                value={activeSourceText}
-                onChange={(event) => {
-                  if (activeLocale === "en") setEnglishSourceText(event.target.value);
-                  else {
-                    setSourceText(event.target.value);
-                    markRussianSourceChanged();
-                  }
-                  setIsDirty(true);
-                }}
-                placeholder={
-                  activeLocale === "en"
-                    ? "Title - https://…"
-                    : "Название - https://…"
-                }
-              />
-            </label>
-            <label className="field">
-              <span>
-                {activeLocale === "en"
-                  ? "Bibliography - one entry per line"
-                  : "Библиография - по одной записи на строку"}
-              </span>
-              <textarea
-                value={activeBibliographyText}
-                onChange={(event) => {
-                  if (activeLocale === "en") {
-                    setEnglishBibliographyText(event.target.value);
-                  } else {
-                    setBibliographyText(event.target.value);
-                    markRussianSourceChanged();
-                  }
-                  setIsDirty(true);
-                }}
-              />
-            </label>
-          </section>
+          <SourceBibliographyEditor
+            locale={activeLocale}
+            sectionRef={(element) =>
+              registerWorkspaceSection("sources", element)
+            }
+            sourceText={activeSourceText}
+            bibliographyText={activeBibliographyText}
+            onSourceTextChange={
+              activeLocale === "en" ? setEnglishSourceText : setSourceText
+            }
+            onBibliographyTextChange={
+              activeLocale === "en"
+                ? setEnglishBibliographyText
+                : setBibliographyText
+            }
+            markRussianSourceChanged={markRussianSourceChanged}
+            markDirty={() => setIsDirty(true)}
+          />
         </aside>
       </div>
 

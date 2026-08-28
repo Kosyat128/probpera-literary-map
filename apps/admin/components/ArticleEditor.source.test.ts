@@ -6,13 +6,22 @@ const editorSource = readFileSync(
   new URL("./ArticleEditor.tsx", import.meta.url),
   "utf8"
 );
+const validationSource = readFileSync(
+  new URL("./article-editor/useArticleValidation.ts", import.meta.url),
+  "utf8"
+);
+const checklistSource = readFileSync(
+  new URL("./article-editor/ValidationChecklist.tsx", import.meta.url),
+  "utf8"
+);
 
 describe("article editor publication and recovery wiring", () => {
   it("keeps English checks optional until the translation is enabled", () => {
-    expect(editorSource).toContain(
-      "if (!englishEnabled) return russianChecks;"
+    expect(editorSource).toContain("useArticleValidation({");
+    expect(validationSource).toContain(
+      "const checks = input.englishEnabled"
     );
-    expect(editorSource).toContain(
+    expect(checklistSource).toContain(
       '"Английский перевод не включён: можно выпустить только русский оригинал."'
     );
   });
