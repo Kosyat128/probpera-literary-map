@@ -34,7 +34,11 @@ export function createRichEditorExtensions({
     ...afterStarterKit,
     TableKit,
     Underline,
-    Link.configure({ openOnClick: false, autolink: true }),
+    Link.configure({
+      openOnClick: false,
+      autolink: true,
+      HTMLAttributes: { target: null, rel: null },
+    }),
     EditorialImage,
     ...afterImage,
     TextAlign.configure({ types: ["heading", "paragraph"] }),

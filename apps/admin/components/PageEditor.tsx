@@ -27,6 +27,7 @@ import {
   type EditorImageReplaceDetail,
 } from "@/components/editorMediaEvents";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
+import type { EditorLinkAttributes } from "@/lib/editor-link";
 
 type PageRecord = {
   id: string;
@@ -135,7 +136,9 @@ export default function PageEditor({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
   const [linkDialogOpen, setLinkDialogOpen] = useState(false);
-  const [linkDialogInitialValue, setLinkDialogInitialValue] = useState("");
+  const [linkDialogInitialValue, setLinkDialogInitialValue] = useState<
+    Record<string, unknown>
+  >({});
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
   const [imageDialogInitialValue, setImageDialogInitialValue] =
     useState<EditorImageDialogValue>({ src: "", alt: "", caption: "" });
@@ -306,8 +309,7 @@ export default function PageEditor({
 
   function setLink() {
     if (!editor) return;
-    const current = editor.getAttributes("link").href || "";
-    setLinkDialogInitialValue(typeof current === "string" ? current : "");
+    setLinkDialogInitialValue(editor.getAttributes("link") || {});
     setLinkDialogOpen(true);
   }
 
@@ -595,16 +597,6 @@ export default function PageEditor({
             onClick={openImageUrlDialog}
           />
           <ToolbarButton
-            label="Таблица"
-            onClick={() =>
-              editor
-                ?.chain()
-                .focus()
-                .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
-                .run()
-            }
-          />
-          <ToolbarButton
             label="Без форматирования"
             onClick={() =>
               editor?.chain().focus().unsetAllMarks().clearNodes().run()
@@ -761,17 +753,17 @@ export default function PageEditor({
         open={linkDialogOpen}
         initialValue={linkDialogInitialValue}
         onCancel={() => setLinkDialogOpen(false)}
-        onApply={(href) => {
+        onApply={(attributes: EditorLinkAttributes) => {
           setLinkDialogOpen(false);
           if (!editor) return;
-          if (!href) {
+          if (!attributes.href) {
             editor.chain().focus().extendMarkRange("link").unsetLink().run();
           } else {
             editor
               .chain()
               .focus()
               .extendMarkRange("link")
-              .setLink({ href })
+              .setLink(attributes)
               .run();
           }
           setIsDirty(true);

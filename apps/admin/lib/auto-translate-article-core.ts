@@ -10,6 +10,7 @@ import {
 } from "./article-translations";
 import { safeTextToneSpanAttributes } from "./article-content-presentation";
 import { adminEnv } from "./env";
+import { sanitizeEditorAnchorAttributes } from "./editor-link";
 import { createSlug } from "./slug";
 
 type SupabaseServerClient = SupabaseClient;
@@ -87,7 +88,10 @@ const allowedArticleHtml = {
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
-    a: sanitizeHtml.simpleTransform("a", { rel: "noopener noreferrer" }),
+    a: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: sanitizeEditorAnchorAttributes(attributes),
+    }),
     span: (tagName: string, attributes: Record<string, string>) => ({
       tagName,
       attribs: safeTextToneSpanAttributes(attributes),

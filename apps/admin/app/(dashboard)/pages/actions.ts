@@ -7,6 +7,7 @@ import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
+import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
 import {
   pageCatalogFromForm,
   pageCatalogHref,
@@ -70,8 +71,9 @@ const allowedPageHtml = {
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
-    a: sanitizeHtml.simpleTransform("a", {
-      rel: "noopener noreferrer",
+    a: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: sanitizeEditorAnchorAttributes(attributes),
     }),
   },
 };

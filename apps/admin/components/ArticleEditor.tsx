@@ -38,6 +38,7 @@ import {
 } from "@/lib/article-recovery";
 import { withClientAdminPath } from "@/lib/admin-path";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
+import type { EditorLinkAttributes } from "@/lib/editor-link";
 import {
   EditorialBlock,
   insertEditorialBlock,
@@ -415,7 +416,9 @@ export default function ArticleEditor({
   const [mediaComposerValue, setMediaComposerValue] = useState("");
   const [mediaComposerError, setMediaComposerError] = useState("");
   const [linkDialogOpen, setLinkDialogOpen] = useState(false);
-  const [linkDialogInitialValue, setLinkDialogInitialValue] = useState("");
+  const [linkDialogInitialValue, setLinkDialogInitialValue] = useState<
+    Record<string, unknown>
+  >({});
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
   const [imageDialogInitialValue, setImageDialogInitialValue] =
     useState<EditorImageDialogValue>({ src: "", alt: "", caption: "" });
@@ -1153,10 +1156,7 @@ export default function ArticleEditor({
   useRegisterArticleEditorWorkspace(articleEditorWorkspace);
 
   const setLink = () => {
-    const previousUrl = editor?.getAttributes("link").href || "";
-    setLinkDialogInitialValue(
-      typeof previousUrl === "string" ? previousUrl : ""
-    );
+    setLinkDialogInitialValue(editor?.getAttributes("link") || {});
     setLinkDialogOpen(true);
   };
 
@@ -2169,8 +2169,6 @@ export default function ArticleEditor({
                 <ToolbarButton label="Цифры" onClick={() => insertEditorialBlock(editor, "metrics")} />
                 <ToolbarButton label="Раздел главы" onClick={() => insertEditorialBlock(editor, "ornament")} />
                 <ToolbarButton label="Квадрат для изображения" onClick={() => insertEditorialBlock(editor, "media")} />
-                <ToolbarButton label="Таблица 3 × 3" onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()} />
-                <ToolbarButton label="Линия-разделитель" onClick={() => editor?.chain().focus().setHorizontalRule().run()} />
               </ToolbarMenu>
 
               <ToolbarMenu label="Фото и галереи">
@@ -2844,17 +2842,17 @@ export default function ArticleEditor({
         open={linkDialogOpen}
         initialValue={linkDialogInitialValue}
         onCancel={() => setLinkDialogOpen(false)}
-        onApply={(href) => {
+        onApply={(attributes: EditorLinkAttributes) => {
           setLinkDialogOpen(false);
           if (!editor) return;
-          if (!href) {
+          if (!attributes.href) {
             editor.chain().focus().extendMarkRange("link").unsetLink().run();
           } else {
             editor
               .chain()
               .focus()
               .extendMarkRange("link")
-              .setLink({ href })
+              .setLink(attributes)
               .run();
           }
           setIsDirty(true);
