@@ -1,0 +1,17 @@
+:root {
+  color-scheme: dark;
+  --ink: #f9f4ee;
+  --muted: #bbaec8;
+  --violet-950: #10061d;
+  --violet-900: #1b092e;
+  --violet-850: #25103a;
+  --violet-700: #55217d;
+  --orange: #ff7619;
+  --orange-soft: #ffb36d;
+  --line: rgba(255, 255, 255, 0.11);
+  --panel: rgba(31, 13, 48, 0.88);
+  --good: #65d7a1;
+  --danger: #ff8d87;
+  font-family: Inter, Manrope, "Segoe UI", Arial, sans-serif;
+}
+
