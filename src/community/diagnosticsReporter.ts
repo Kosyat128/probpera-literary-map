@@ -1,4 +1,5 @@
-import { supabase } from "../lib/supabase";
+import { loadSupabaseClient } from "../lib/loadSupabaseClient";
+import { isCommunityConfigured } from "../lib/supabaseConfig";
 import { getCommunitySessionId } from "./sessionIdentity";
 
 export type ClientErrorSource = "runtime" | "promise" | "react" | "resource" | "manual";
@@ -84,7 +85,7 @@ export function reportClientError(
   source: ClientErrorSource,
   context: Record<string, unknown> = {}
 ) {
-  if (!supabase) return;
+  if (!isCommunityConfigured) return;
   const message = redactDiagnosticText(safeMessage(error), 1000);
   const stack = redactDiagnosticText(
     error instanceof Error ? error.stack || "" : "",
@@ -97,13 +98,16 @@ export function reportClientError(
     viewport: `${window.innerWidth}x${window.innerHeight}`,
     online: navigator.onLine,
   });
-  void supabase.rpc("submit_client_error", {
-    p_session_id: getCommunitySessionId(),
-    p_message: message,
-    p_stack: stack,
-    p_path: path,
-    p_source: source,
-    p_fingerprint: signature,
-    p_context: safeContext,
+  void loadSupabaseClient().then((client) => {
+    if (!client) return;
+    void client.rpc("submit_client_error", {
+      p_session_id: getCommunitySessionId(),
+      p_message: message,
+      p_stack: stack,
+      p_path: path,
+      p_source: source,
+      p_fingerprint: signature,
+      p_context: safeContext,
+    });
   });
 }

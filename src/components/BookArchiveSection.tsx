@@ -40,7 +40,6 @@ import {
   type BookArticleMention,
   type BookMentionIndex,
 } from "../data/articles/bookMentions";
-import { articleCatalog } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import type { Country } from "../data/countries";
 import {
@@ -174,13 +173,22 @@ import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 import {
   BOOKS_GLOBAL_SEARCH_PROFILE,
   BOOKS_LIBRARY_SEARCH_PROFILE,
-  createGlobalSearchIndex,
   loadGlobalSearchArticleCatalog,
   searchGlobalSearchIndex,
   type GlobalSearchActivateAction,
   type GlobalSearchExtensionDocument,
+  type GlobalSearchIndex,
+  type GlobalSearchResponse,
   type GlobalSearchResult,
 } from "../search/globalSearchIndex";
+import {
+  emptyGlobalSearchIndex,
+  ensureSharedGlobalSearchIndex,
+  extendSharedGlobalSearchIndex,
+  globalSearchArchiveVersion,
+  globalSearchRequestCacheKey,
+  peekSharedGlobalSearchIndex,
+} from "../search/globalSearchRuntime";
 import BrandHeartIcon from "./BrandHeartIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
 import BrandArrowIcon from "./BrandArrowIcon";
@@ -655,9 +663,10 @@ export default function BookArchiveSection({
   );
   const [relatedArticlesLoading, setRelatedArticlesLoading] = useState(false);
   const [mentionIndex, setMentionIndex] = useState<BookMentionIndex | null>(null);
-  const [globalSearchArticles, setGlobalSearchArticles] = useState<
-    readonly (typeof articleCatalog)[number][]
-  >([]);
+  const [globalSearchBaseIndexState, setGlobalSearchBaseIndexState] =
+    useState<{ requestKey: string; index: GlobalSearchIndex } | null>(null);
+  const [globalSearchError, setGlobalSearchError] = useState(false);
+  const [globalSearchRetryAttempt, setGlobalSearchRetryAttempt] = useState(0);
   const detailRef = useRef<HTMLElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
   const shelfStateRef = useRef(shelfState);
@@ -1372,45 +1381,91 @@ export default function BookArchiveSection({
     return extensions;
   }, [collectionShelfSelection.options, facetIndex, t]);
 
+  const searchArchiveVersion = useMemo(
+    () => globalSearchArchiveVersion(countries, books),
+    [books, countries]
+  );
+  const globalSearchRuntimeRequest = useMemo(
+    () => ({
+      countries,
+      books,
+      language,
+      translate: t,
+      countryName,
+      archiveVersion: searchArchiveVersion,
+    }),
+    [books, countries, countryName, language, searchArchiveVersion, t]
+  );
+  const globalSearchRequestKey = globalSearchRequestCacheKey(
+    globalSearchRuntimeRequest
+  );
+  const cachedGlobalSearchBaseIndex = peekSharedGlobalSearchIndex(
+    globalSearchRuntimeRequest
+  );
+  const globalSearchBaseIndex =
+    globalSearchBaseIndexState?.requestKey === globalSearchRequestKey
+      ? globalSearchBaseIndexState.index
+      : cachedGlobalSearchBaseIndex;
+  const globalSearchPending =
+    searchScope === "global" &&
+    !globalSearchBaseIndex &&
+    !globalSearchError;
+
   useEffect(() => {
-    if (
-      searchScope !== "global" ||
-      normalizeLiterarySearch(deferredQuery).length < 2
-    ) {
+    if (searchScope !== "global") {
+      setGlobalSearchError(false);
       return;
     }
     let active = true;
-    loadGlobalSearchArticleCatalog()
-      .then((articles) => {
-        if (active) setGlobalSearchArticles(articles);
+    setGlobalSearchError(false);
+    const cachedIndex = peekSharedGlobalSearchIndex(
+      globalSearchRuntimeRequest
+    );
+    setGlobalSearchBaseIndexState(
+      cachedIndex
+        ? { requestKey: globalSearchRequestKey, index: cachedIndex }
+        : null
+    );
+    if (cachedIndex) {
+      return;
+    }
+    ensureSharedGlobalSearchIndex(globalSearchRuntimeRequest)
+      .then((index) => {
+        if (!active) return;
+        setGlobalSearchBaseIndexState({
+          requestKey: globalSearchRequestKey,
+          index,
+        });
       })
       .catch(() => {
-        if (active) setGlobalSearchArticles([]);
+        if (!active) return;
+        setGlobalSearchBaseIndexState(null);
+        setGlobalSearchError(true);
       });
     return () => {
       active = false;
     };
-  }, [deferredQuery, searchScope]);
+  }, [
+    globalSearchRequestKey,
+    globalSearchRetryAttempt,
+    globalSearchRuntimeRequest,
+    searchScope,
+  ]);
 
+  const emptySearchIndex = useMemo(
+    () => emptyGlobalSearchIndex(language),
+    [language]
+  );
   const globalSearchIndex = useMemo(
     () =>
-      createGlobalSearchIndex({
-        countries,
-        books,
-        language,
-        translate: t,
-        countryName,
-        articles: globalSearchArticles,
-        extensions: globalSearchExtensions,
-      }),
+      extendSharedGlobalSearchIndex(
+        globalSearchBaseIndex || emptySearchIndex,
+        globalSearchExtensions
+      ),
     [
-      books,
-      countries,
-      countryName,
-      globalSearchArticles,
+      emptySearchIndex,
       globalSearchExtensions,
-      language,
-      t,
+      globalSearchBaseIndex,
     ]
   );
   const globalSearchResponse = useMemo(
@@ -1422,15 +1477,79 @@ export default function BookArchiveSection({
       ),
     [deferredQuery, globalSearchIndex, searchScope]
   );
-  const librarySearchResponse = useMemo(
+  const localExtensionSearchIndex = useMemo(
+    () =>
+      extendSharedGlobalSearchIndex(
+        emptySearchIndex,
+        globalSearchExtensions
+      ),
+    [emptySearchIndex, globalSearchExtensions]
+  );
+  const localExtensionSearchResponse = useMemo(
     () =>
       searchGlobalSearchIndex(
-        globalSearchIndex,
+        localExtensionSearchIndex,
         searchScope !== "global" ? deferredQuery : "",
         BOOKS_LIBRARY_SEARCH_PROFILE
       ),
-    [deferredQuery, globalSearchIndex, searchScope]
+    [deferredQuery, localExtensionSearchIndex, searchScope]
   );
+  const librarySearchResponse = useMemo<GlobalSearchResponse>(() => {
+    const normalizedQuery = localExtensionSearchResponse.normalizedQuery;
+    if (
+      normalizedQuery.length < BOOKS_LIBRARY_SEARCH_PROFILE.minQueryLength ||
+      searchScope === "global"
+    ) {
+      return localExtensionSearchResponse;
+    }
+
+    // The facet index has already ranked the books for this explicit query.
+    // Reuse that lightweight result instead of eagerly constructing the full
+    // article/country/writer search index before global-search intent.
+    const sourceItems =
+      searchScope === "archive"
+        ? archiveFacetResult.items
+        : facetResult.items;
+    const bookLimit =
+      BOOKS_LIBRARY_SEARCH_PROFILE.groupLimits.books ||
+      BOOKS_LIBRARY_SEARCH_PROFILE.suggestionLimit;
+    const bookResults: Extract<GlobalSearchResult, { kind: "book" }>[] =
+      sourceItems.slice(0, bookLimit).map((item) => ({
+        kind: "book",
+        group: "books",
+        key: `book:${item.key}`,
+        book: item.book,
+        bookKey: item.key,
+        label: presentBookArchiveQueueItem(item, language).title,
+        focusAction: { type: "focus-book", bookKey: item.key },
+        activateAction: { type: "open-book", bookKey: item.key },
+      }));
+    const suggestions = [
+      ...bookResults,
+      ...localExtensionSearchResponse.suggestions,
+    ].slice(0, BOOKS_LIBRARY_SEARCH_PROFILE.suggestionLimit);
+
+    return {
+      normalizedQuery,
+      groups: {
+        ...localExtensionSearchResponse.groups,
+        books: bookResults,
+      },
+      suggestions,
+      allMatches: [
+        ...bookResults,
+        ...localExtensionSearchResponse.allMatches,
+      ],
+      totalMatches:
+        sourceItems.length + localExtensionSearchResponse.totalMatches,
+    };
+  }, [
+    archiveFacetResult.items,
+    facetResult.items,
+    language,
+    localExtensionSearchResponse,
+    searchScope,
+  ]);
   const activeSearchResponse =
     searchScope === "global" ? globalSearchResponse : librarySearchResponse;
   const activeSearchProfile =
@@ -1441,6 +1560,7 @@ export default function BookArchiveSection({
   const filteredItems = useMemo(() => {
     if (searchScope === "library") return facetResult.items;
     if (searchScope === "archive") return archiveFacetResult.items;
+    if (globalSearchPending || globalSearchError) return facetResult.items;
     if (
       globalSearchResponse.normalizedQuery.length <
         BOOKS_GLOBAL_SEARCH_PROFILE.minQueryLength
@@ -1463,6 +1583,8 @@ export default function BookArchiveSection({
   }, [
     archiveFacetResult.items,
     facetResult.items,
+    globalSearchError,
+    globalSearchPending,
     globalSearchResponse,
     queueByKey,
     searchScope,
@@ -1801,8 +1923,11 @@ export default function BookArchiveSection({
 
     setRelatedArticles([]);
     setRelatedArticlesLoading(true);
-    getBookArticleMentions(bookKey(selectedBook))
-      .then((articles) => {
+    Promise.all([
+      getBookArticleMentions(bookKey(selectedBook)),
+      loadGlobalSearchArticleCatalog(),
+    ])
+      .then(([articles, articleCatalog]) => {
         if (!active) return;
         setRelatedArticles(
           articles.flatMap((mention) => {
@@ -3419,6 +3544,46 @@ export default function BookArchiveSection({
       : [];
   });
   const searchSuggestions =
+    searchScope === "global" &&
+    globalSearchPending &&
+    activeSearchResponse.normalizedQuery.length >=
+      activeSearchProfile.minQueryLength ? (
+      <div
+        className="book-shelf-search-results is-loading"
+        role="status"
+        aria-live="polite"
+      >
+        <div className="book-shelf-search-results__summary">
+          <strong>{t("Ищем во всём архиве…")}</strong>
+          <span>{t("Подключаем статьи, книги, писателей и страны.")}</span>
+        </div>
+      </div>
+    ) : searchScope === "global" &&
+      globalSearchError &&
+      activeSearchResponse.normalizedQuery.length >=
+        activeSearchProfile.minQueryLength ? (
+      <div
+        className="book-shelf-search-results is-error"
+        role="alert"
+      >
+        <div className="book-shelf-search-results__summary">
+          <strong>{t("Поиск временно недоступен")}</strong>
+          <span>{t("Книги на полке сохранены без изменений.")}</span>
+        </div>
+        <ul>
+          <li>
+            <button
+              type="button"
+              onClick={() =>
+                setGlobalSearchRetryAttempt((attempt) => attempt + 1)
+              }
+            >
+              <span>{t("Повторить поиск")}</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    ) :
     activeSearchResponse.normalizedQuery.length >=
     activeSearchProfile.minQueryLength ? (
       <div className="book-shelf-search-results">
@@ -3860,15 +4025,6 @@ export default function BookArchiveSection({
           </button>
           <div
             className={`book-detail-cover${selectedCoverUrl ? " has-image" : ""}`}
-            style={
-              selectedCoverUrl
-                ? {
-                    backgroundImage: `url("${resolveCoverUrl(
-                      selectedBook.coverThumbnailUrl || selectedCoverUrl
-                    )}")`,
-                  }
-                : undefined
-            }
           >
             {selectedCoverUrl ? (
               <img
@@ -4405,28 +4561,18 @@ export default function BookArchiveSection({
               className={`archive-book-cover${coverUrl ? " has-image" : ""}`}
             >
               {coverUrl ? (
-                <>
-                  <img
-                    className="archive-book-cover-backdrop"
-                    src={resolveCoverUrl(coverUrl)}
-                    alt=""
-                    aria-hidden="true"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <img
-                    src={resolveCoverUrl(coverUrl)}
-                    srcSet={coverArtworkSrcSet(book, resolveCoverUrl)}
-                    sizes="(max-width: 680px) 42vw, 190px"
-                    alt={
-                      isEditorialCover(book)
-                        ? `${t("Редакционная обложка")} «${localizedBook.title}»`
-                        : `${t("Обложка конкретного издания")} «${localizedBook.title}»`
-                    }
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </>
+                <img
+                  src={resolveCoverUrl(coverUrl)}
+                  srcSet={coverArtworkSrcSet(book, resolveCoverUrl)}
+                  sizes="(max-width: 680px) 42vw, 190px"
+                  alt={
+                    isEditorialCover(book)
+                      ? `${t("Редакционная обложка")} «${localizedBook.title}»`
+                      : `${t("Обложка конкретного издания")} «${localizedBook.title}»`
+                  }
+                  loading="lazy"
+                  decoding="async"
+                />
               ) : (
                 <>
                   <small>

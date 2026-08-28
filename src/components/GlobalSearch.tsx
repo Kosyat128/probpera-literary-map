@@ -14,7 +14,6 @@ import { presentBookArchiveEntry } from "../data/bookArchiveQueue";
 import { isPublicBook } from "../data/bookQuality";
 import { selectBookWriterName } from "../data/bookLocalization";
 import type { Country, Writer } from "../data/countries";
-import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import {
   selectInterfacePlural,
   useInterfaceLanguage,
@@ -24,11 +23,16 @@ import {
   type LiterarySearchValue,
 } from "../utils/literarySearch";
 import {
-  createGlobalSearchIndex,
   HEADER_GLOBAL_SEARCH_PROFILE,
-  loadGlobalSearchArticleCatalog,
   searchGlobalSearchIndex,
 } from "../search/globalSearchIndex";
+import {
+  emptyGlobalSearchIndex,
+  ensureSharedGlobalSearchIndex,
+  globalSearchArchiveVersion,
+  globalSearchRequestCacheKey,
+  peekSharedGlobalSearchIndex,
+} from "../search/globalSearchRuntime";
 import {
   articlePath,
   navigateToArticle,
@@ -76,46 +80,73 @@ export default function GlobalSearch({
   const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
-  const [articles, setArticles] =
-    useState<readonly ArticleCatalogEntry[]>([]);
   const [articlesLoading, setArticlesLoading] = useState(false);
+  const [searchLoadError, setSearchLoadError] = useState(false);
+  const [searchRetryAttempt, setSearchRetryAttempt] = useState(0);
   const { language, t, countryName, number } = useInterfaceLanguage();
   const deferredQuery = useDeferredValue(query);
-  const searchIndex = useMemo(
-    () =>
-      createGlobalSearchIndex({
-        countries,
-        books,
-        articles,
-        language,
-        translate: t,
-        countryName,
-      }),
-    [articles, books, countries, countryName, language, t]
+  const archiveVersion = useMemo(
+    () => globalSearchArchiveVersion(countries, books),
+    [books, countries]
+  );
+  const searchRuntimeRequest = useMemo(
+    () => ({
+      countries,
+      books,
+      language,
+      translate: t,
+      countryName,
+      archiveVersion,
+    }),
+    [archiveVersion, books, countries, countryName, language, t]
+  );
+  const searchRequestKey = globalSearchRequestCacheKey(searchRuntimeRequest);
+  const [searchIndexState, setSearchIndexState] = useState(() => {
+    const index = peekSharedGlobalSearchIndex(searchRuntimeRequest);
+    return index ? { requestKey: searchRequestKey, index } : null;
+  });
+  const searchIndex =
+    searchIndexState?.requestKey === searchRequestKey
+      ? searchIndexState.index
+      : null;
+  const fallbackSearchIndex = useMemo(
+    () => emptyGlobalSearchIndex(language),
+    [language]
   );
 
   useEffect(() => {
-    if (!open || articles.length) return;
+    if (!open) return;
     let active = true;
+    setSearchLoadError(false);
+    const cachedIndex = peekSharedGlobalSearchIndex(searchRuntimeRequest);
+    setSearchIndexState(
+      cachedIndex ? { requestKey: searchRequestKey, index: cachedIndex } : null
+    );
+    if (cachedIndex) {
+      setArticlesLoading(false);
+      return;
+    }
     setArticlesLoading(true);
-    loadGlobalSearchArticleCatalog()
-      .then((articleCatalog) => {
+    ensureSharedGlobalSearchIndex(searchRuntimeRequest)
+      .then((index) => {
         if (!active) return;
-        setArticles(articleCatalog);
+        setSearchIndexState({ requestKey: searchRequestKey, index });
         setArticlesLoading(false);
       })
       .catch(() => {
-        if (active) setArticlesLoading(false);
+        if (!active) return;
+        setSearchIndexState(null);
+        setSearchLoadError(true);
+        setArticlesLoading(false);
       });
     return () => {
       active = false;
     };
-  }, [articles.length, open]);
+  }, [open, searchRequestKey, searchRetryAttempt, searchRuntimeRequest]);
 
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
-    const previouslyFocused = document.activeElement as HTMLElement | null;
     document.body.style.overflow = "hidden";
     window.requestAnimationFrame(() => inputRef.current?.focus());
 
@@ -143,7 +174,6 @@ export default function GlobalSearch({
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeydown);
-      previouslyFocused?.focus();
     };
   }, [onClose, open]);
 
@@ -154,11 +184,11 @@ export default function GlobalSearch({
   const searchResponse = useMemo(
     () =>
       searchGlobalSearchIndex(
-        searchIndex,
+        searchIndex || fallbackSearchIndex,
         deferredQuery,
         HEADER_GLOBAL_SEARCH_PROFILE
       ),
-    [deferredQuery, searchIndex]
+    [deferredQuery, fallbackSearchIndex, searchIndex]
   );
   const normalizedQuery = searchResponse.normalizedQuery;
   const results = useMemo(
@@ -224,7 +254,20 @@ export default function GlobalSearch({
           <kbd>Esc</kbd>
         </label>
 
-        {normalizedQuery.length < 2 ? (
+        {searchLoadError ? (
+          <div className="global-search-empty global-search-intro" role="alert">
+            <strong>{t("Поиск временно недоступен")}</strong>
+            <p>{t("Не удалось подключить редакционный архив. Попробуйте ещё раз.")}</p>
+            <div>
+              <button
+                type="button"
+                onClick={() => setSearchRetryAttempt((attempt) => attempt + 1)}
+              >
+                {t("Повторить поиск")}
+              </button>
+            </div>
+          </div>
+        ) : normalizedQuery.length < 2 ? (
           <div className="global-search-intro">
             <p>
               {t(
@@ -416,7 +459,9 @@ export default function GlobalSearch({
           <span>
             {articlesLoading
               ? t("Подключаем редакционный архив…")
-              : `${number(countries.length)} ${t(selectInterfacePlural(countries.length, language, ["страна", "страны", "стран"]))} · ${number(books.length)} ${t(selectInterfacePlural(books.length, language, ["произведение", "произведения", "произведений"]))} · ${number(language === "en" ? searchIndex.articleCount : articleCount)} ${t(selectInterfacePlural(language === "en" ? searchIndex.articleCount : articleCount, language, ["статья", "статьи", "статей"]))}`}
+              : searchLoadError
+                ? t("Редакционный архив временно недоступен")
+              : `${number(countries.length)} ${t(selectInterfacePlural(countries.length, language, ["страна", "страны", "стран"]))} · ${number(books.length)} ${t(selectInterfacePlural(books.length, language, ["произведение", "произведения", "произведений"]))} · ${number(language === "en" ? (searchIndex?.articleCount || 0) : articleCount)} ${t(selectInterfacePlural(language === "en" ? (searchIndex?.articleCount || 0) : articleCount, language, ["статья", "статьи", "статей"]))}`}
           </span>
           <small>{t("Поиск выполняется внутри сайта")}</small>
         </footer>

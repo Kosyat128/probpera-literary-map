@@ -78,6 +78,161 @@ const distExcludingBookCovers = total - bookCoverTotal;
 const largestScriptGzip = await compressedBytes(largestScript);
 const mainScriptGzip = await compressedBytes(mainScript);
 
+function parseTagAttributes(tag) {
+  const attributes = new Map();
+  const attributePattern = /([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/gu;
+  let match;
+  while ((match = attributePattern.exec(tag))) {
+    const name = match[1].toLowerCase();
+    if (name === "script" || name === "link") continue;
+    attributes.set(name, match[2] ?? match[3] ?? match[4] ?? "");
+  }
+  return attributes;
+}
+
+function initialAssetReferences(html) {
+  const references = [];
+  for (const match of html.matchAll(/<(script|link)\b[^>]*>/giu)) {
+    const tagName = match[1].toLowerCase();
+    const attributes = parseTagAttributes(match[0]);
+    if (tagName === "script") {
+      const source = attributes.get("src")?.trim();
+      const type = attributes.get("type")?.trim().toLowerCase();
+      if (type === "module") {
+        references.push({
+          kind: "module script",
+          source,
+          counted: true,
+        });
+      }
+      continue;
+    }
+
+    const relation = new Set(
+      (attributes.get("rel") || "")
+        .toLowerCase()
+        .split(/\s+/u)
+        .filter(Boolean)
+    );
+    const source = attributes.get("href")?.trim();
+    if (relation.has("modulepreload")) {
+      references.push({ kind: "modulepreload", source, counted: true });
+    } else if (relation.has("stylesheet")) {
+      references.push({ kind: "stylesheet", source, counted: true });
+    } else if (relation.has("preload")) {
+      // Other explicit preloads are checked for existence and forbidden payloads,
+      // but the Stage 5F gzip ceiling is intentionally JS/modulepreload/CSS only.
+      references.push({ kind: "preload", source, counted: false });
+    }
+  }
+  return references;
+}
+
+function normalizeSiteBasePath(value) {
+  if (typeof value !== "string" || !value.trim()) {
+    return { error: "performance-budget.json requires siteBasePath" };
+  }
+  const raw = value.trim();
+  if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/iu.test(raw)) {
+    return { error: "siteBasePath must be a root-relative path" };
+  }
+  if (raw.includes("\\") || raw.includes("?") || raw.includes("#")) {
+    return { error: "siteBasePath contains invalid URL characters" };
+  }
+  const segments = raw.split("/");
+  if (segments.includes("..")) return { error: "siteBasePath escapes the site root" };
+  const normalized = `/${raw.replace(/^\/+|\/+$/gu, "")}`;
+  return { base: normalized === "/" ? "/" : `${normalized}/` };
+}
+
+function normalizeDistAssetReference(source, siteBasePath) {
+  if (!source) return { error: "missing URL" };
+  if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/iu.test(source)) {
+    return { error: "external URLs cannot be measured fail-closed" };
+  }
+  if (source.includes("\\")) return { error: "backslashes are not valid asset URLs" };
+
+  const pathOnly = source.split(/[?#]/u, 1)[0];
+  let decoded;
+  try {
+    decoded = decodeURIComponent(pathOnly);
+  } catch {
+    return { error: "invalid URL encoding" };
+  }
+  if (decoded.startsWith("/")) {
+    if (!siteBasePath) return { error: "configured site base is unavailable" };
+    if (
+      siteBasePath !== "/" &&
+      !decoded.startsWith(siteBasePath)
+    ) {
+      return {
+        error: `URL is outside configured site base ${siteBasePath}`,
+      };
+    }
+    decoded =
+      siteBasePath === "/"
+        ? decoded.replace(/^\/+/, "")
+        : decoded.slice(siteBasePath.length);
+  } else {
+    decoded = decoded.replace(/^\.\//u, "");
+  }
+  const relative = path.posix.normalize(decoded);
+  if (!relative || relative === "." || relative === ".." || relative.startsWith("../")) {
+    return { error: "asset URL escapes dist" };
+  }
+  return { relative };
+}
+
+function resolveMeasuredInitialAsset(relative, measuredByRelative) {
+  const exact = measuredByRelative.get(relative);
+  const suffixMatches = [...measuredByRelative.values()].filter((item) =>
+    item.relative !== relative && relative.endsWith(`/${item.relative}`)
+  );
+  if (exact && suffixMatches.length === 0) return { item: exact };
+  if (suffixMatches.length > 0) {
+    return {
+      error: `ambiguous suffix matches ${[
+        ...(exact ? [exact] : []),
+        ...suffixMatches,
+      ]
+        .map((item) => item.relative)
+        .toSorted()
+        .join(", ")}`,
+    };
+  }
+  return { error: "not found in dist" };
+}
+
+const forbiddenInitialAssets = [
+  {
+    label: "Three",
+    test: (value) =>
+      /(?:^|[./_-])three(?:[./_-]|$)/iu.test(value) ||
+      /three(?:js|module|fiber|drei)/iu.test(value),
+  },
+  {
+    label: "BookArchive",
+    test: (value) => value.toLowerCase().replaceAll(/[^a-z\d]/gu, "").includes("bookarchive"),
+  },
+  {
+    label: "book-catalog",
+    test: (value) => value.toLowerCase().replaceAll(/[^a-z\d]/gu, "").includes("bookcatalog"),
+  },
+  {
+    label: "full search catalog",
+    test: (value) => {
+      const compact = value.toLowerCase().replaceAll(/[^a-z\d]/gu, "");
+      return [
+        "searchcatalog",
+        "fullsearchcatalog",
+        "searchcatalogfull",
+        "globalsearchcatalog",
+        "globalsearchindex",
+      ].some((token) => compact.includes(token));
+    },
+  },
+];
+
 function githubCommandValue(value) {
   return String(value)
     .replaceAll("%", "%25")
@@ -99,6 +254,117 @@ function enforce(label, actual, limit, unit = "bytes") {
     annotateFailure(label, actual, limit, unit);
   }
 }
+
+function recordFailure(label, detail) {
+  failures.push(label);
+  console.error(`FAIL ${label}: ${detail}`);
+  if (process.env.GITHUB_ACTIONS === "true") {
+    console.error(
+      `::error title=Performance budget exceeded::${githubCommandValue(`${label}: ${detail}`)}`
+    );
+  }
+}
+
+async function auditInitialEntry() {
+  const index = measured.find((item) => item.relative === "index.html");
+  if (!index) {
+    recordFailure("dist/index.html", "missing; initial graph cannot be measured");
+    return;
+  }
+
+  let html;
+  try {
+    html = await readFile(index.file, "utf8");
+  } catch (error) {
+    recordFailure("dist/index.html", `unreadable: ${error.message}`);
+    return;
+  }
+
+  const references = initialAssetReferences(html);
+  const moduleScripts = references.filter((reference) => reference.kind === "module script");
+  if (!moduleScripts.length) {
+    recordFailure("initial module script", "dist/index.html has no module entry");
+  }
+
+  const measuredByRelative = new Map(measured.map((item) => [item.relative, item]));
+  const configuredBase = normalizeSiteBasePath(budget.siteBasePath);
+  if (configuredBase.error) {
+    recordFailure("configured site base", configuredBase.error);
+  }
+  const resolved = new Map();
+  let invalidReferences = 0;
+  for (const reference of references) {
+    const normalized = normalizeDistAssetReference(
+      reference.source,
+      configuredBase.base
+    );
+    if (normalized.error) {
+      invalidReferences += 1;
+      recordFailure(
+        `initial ${reference.kind} reference`,
+        `${reference.source || "<empty>"}: ${normalized.error}`
+      );
+      continue;
+    }
+
+    const forbidden = forbiddenInitialAssets.find((candidate) =>
+      candidate.test(normalized.relative)
+    );
+    if (forbidden) {
+      invalidReferences += 1;
+      recordFailure(
+        `forbidden initial asset ${forbidden.label}`,
+        normalized.relative
+      );
+    }
+
+    const resolvedAsset = resolveMeasuredInitialAsset(
+      normalized.relative,
+      measuredByRelative
+    );
+    if (resolvedAsset.error) {
+      invalidReferences += 1;
+      const label = resolvedAsset.error.startsWith("ambiguous")
+        ? `ambiguous initial asset ${normalized.relative}`
+        : `missing initial asset ${normalized.relative}`;
+      recordFailure(label, `${resolvedAsset.error}; referenced as ${reference.kind}`);
+      continue;
+    }
+
+    const item = resolvedAsset.item;
+    const current = resolved.get(item.relative);
+    resolved.set(item.relative, {
+      item,
+      counted: Boolean(current?.counted || reference.counted),
+    });
+  }
+
+  if (!invalidReferences) {
+    console.log(
+      `PASS initial asset references: ${resolved.size} / ${resolved.size} files`
+    );
+  }
+
+  const counted = [...resolved.values()].filter((reference) => reference.counted);
+  const initialAssetGzip = (
+    await Promise.all(counted.map((reference) => compressedBytes(reference.item)))
+  ).reduce((sum, bytes) => sum + bytes, 0);
+  const initialAssetGzipLimit = Number(budget.initialAssetGzipBytes);
+  if (!Number.isFinite(initialAssetGzipLimit) || initialAssetGzipLimit <= 0) {
+    recordFailure(
+      "initial asset gzip budget",
+      "performance-budget.json requires a positive initialAssetGzipBytes"
+    );
+  } else {
+    enforce(
+      "initial module script/modulepreload/CSS gzip",
+      initialAssetGzip,
+      initialAssetGzipLimit
+    );
+  }
+}
+
+await auditInitialEntry();
 
 enforce("dist total", total, budget.distTotalBytes);
 enforce(

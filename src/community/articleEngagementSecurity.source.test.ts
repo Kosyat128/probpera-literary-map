@@ -11,9 +11,19 @@ const schema = readFileSync(path.join(root, "supabase/schema.sql"), "utf8");
 
 describe("public comment submission security", () => {
   it("submits comments only through the protected RPC", () => {
-    expect(component).toContain('supabase.rpc("submit_article_comment"');
+    expect(component).toContain('client.rpc("submit_article_comment"');
     expect(component).not.toContain('.from("article_comments").insert');
     expect(component).not.toContain('error?.code === "42883"');
+  });
+
+  it("rejects stale engagement reads after selection changes or unmount", () => {
+    expect(component).toContain("engagementLoadSequenceRef");
+    expect(component).toContain("activeEngagementIdentityRef");
+    expect(component).toContain("if (!client || !isCurrentRequest()) return");
+    expect(component).toMatch(
+      /await Promise\.all\([\s\S]*?if \(!isCurrentRequest\(\)\) return;/u
+    );
+    expect(component).toContain("engagementLoadSequenceRef.current += 1");
   });
 
   it("keeps the server-side validation and rate limit in the schema", () => {

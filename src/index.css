@@ -5499,17 +5499,6 @@ a.writer-nobel-medal:focus-visible {
   background-size: cover;
 }
 
-.archive-book-cover-backdrop {
-  position: absolute !important;
-  inset: -12px;
-  z-index: 0 !important;
-  width: calc(100% + 24px) !important;
-  height: calc(100% + 24px) !important;
-  object-fit: cover !important;
-  filter: blur(16px) saturate(0.78) brightness(0.64);
-  transform: scale(1.08);
-}
-
 .archive-book-cover img {
   position: relative;
   z-index: 1;
@@ -6190,17 +6179,6 @@ a.writer-nobel-medal:focus-visible {
   aspect-ratio: 4 / 3;
 }
 
-.editorial-grid .article-image-backdrop {
-  position: absolute !important;
-  inset: -16px;
-  z-index: 0 !important;
-  width: calc(100% + 32px) !important;
-  height: calc(100% + 32px) !important;
-  object-fit: cover !important;
-  filter: blur(22px) saturate(0.76) brightness(0.55);
-  transform: scale(1.08);
-}
-
 .editorial-grid .article-image::after {
   position: absolute;
   inset: 0;
@@ -6229,7 +6207,7 @@ a.writer-nobel-medal:focus-visible {
   box-shadow: 0 16px 40px rgba(18, 3, 29, 0.34);
 }
 
-.editorial-grid article:hover .article-image img:not(.article-image-backdrop) {
+.editorial-grid article:hover .article-image > img {
   transform: scale(1.035);
 }
 
@@ -8154,17 +8132,6 @@ a.writer-nobel-medal:focus-visible {
   isolation: isolate;
 }
 
-.library-card-image-backdrop {
-  position: absolute !important;
-  inset: -14px;
-  z-index: 0 !important;
-  width: calc(100% + 28px) !important;
-  height: calc(100% + 28px) !important;
-  object-fit: cover !important;
-  filter: blur(18px) saturate(0.8) brightness(0.62);
-  transform: scale(1.08);
-}
-
 .is-lead .library-card-image {
   aspect-ratio: 2 / 1;
 }
@@ -8186,7 +8153,7 @@ a.writer-nobel-medal:focus-visible {
   transition: transform var(--ui-transition-base);
 }
 
-.article-library-grid article:hover .library-card-image img:not(.library-card-image-backdrop) {
+.article-library-grid article:hover .library-card-image > img {
   transform: scale(1.035);
 }
 

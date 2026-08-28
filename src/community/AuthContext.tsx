@@ -8,7 +8,8 @@ import {
   type ReactNode,
 } from "react";
 
-import { isCommunityConfigured, supabase } from "../lib/supabase";
+import { loadSupabaseClient } from "../lib/loadSupabaseClient";
+import { isCommunityConfigured } from "../lib/supabaseConfig";
 
 type AuthContextValue = {
   configured: boolean;
@@ -36,47 +37,72 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [displayName, setDisplayName] = useState("");
 
   useEffect(() => {
-    if (!supabase) {
+    if (!isCommunityConfigured) {
       setLoading(false);
       return;
     }
 
     let active = true;
-    supabase.auth.getSession().then(({ data }) => {
-      if (!active) return;
-      setSession(data.session);
-      setLoading(false);
-    });
+    let unsubscribe: (() => void) | undefined;
+    void (async () => {
+      try {
+        const client = await loadSupabaseClient();
+        if (!active || !client) {
+          return;
+        }
 
-    const { data } = supabase.auth.onAuthStateChange((_event, nextSession) => {
-      setSession(nextSession);
-      setLoading(false);
-    });
+        const sessionPromise = client.auth.getSession();
+        const { data: listener } = client.auth.onAuthStateChange(
+          (_event, nextSession) => {
+            if (!active) return;
+            setSession(nextSession);
+            setLoading(false);
+          }
+        );
+        unsubscribe = () => listener.subscription.unsubscribe();
+
+        const { data } = await sessionPromise;
+        if (active) {
+          setSession(data.session);
+        }
+      } catch {
+        // Authentication must fail open for reading, never leave the shell busy.
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    })();
 
     return () => {
       active = false;
-      data.subscription.unsubscribe();
+      unsubscribe?.();
     };
   }, []);
 
   useEffect(() => {
-    if (!supabase || !session?.user) {
+    if (!session?.user) {
       setRole("reader");
       setDisplayName("");
       return;
     }
 
     let active = true;
-    supabase
-      .from("profiles")
-      .select("display_name,role")
-      .eq("id", session.user.id)
-      .single()
-      .then(({ data }) => {
-        if (!active || !data) return;
-        setDisplayName(data.display_name || "");
-        setRole(data.role || "reader");
-      });
+    void loadSupabaseClient()
+      .then((client) => {
+        if (!active || !client) return;
+        void client
+          .from("profiles")
+          .select("display_name,role")
+          .eq("id", session.user.id)
+          .single()
+          .then(({ data }) => {
+            if (!active || !data) return;
+            setDisplayName(data.display_name || "");
+            setRole(data.role || "reader");
+          });
+      })
+      .catch(() => undefined);
 
     return () => {
       active = false;

@@ -307,6 +307,38 @@ export type GlobalSearchIndex = {
   readonly documents: readonly IndexedGlobalSearchDocument[];
 };
 
+/**
+ * Adds the small, caller-owned facet/collection layer without rebuilding the
+ * shared countries, writers, books, and articles base index.
+ */
+export function extendGlobalSearchIndex(
+  baseIndex: GlobalSearchIndex,
+  extensions: readonly GlobalSearchExtensionDocument[]
+): GlobalSearchIndex {
+  if (!extensions.length) return baseIndex;
+
+  const extensionDocuments = extensions.flatMap((extension) => {
+    const document = extensionDocument(extension);
+    return document ? [document] : [];
+  });
+  if (!extensionDocuments.length) return baseIndex;
+
+  const documents = [
+    ...new Map(
+      [...baseIndex.documents, ...extensionDocuments].map((document) => [
+        document.result.key,
+        document,
+      ])
+    ).values(),
+  ];
+
+  return {
+    ...baseIndex,
+    entityCount: documents.length,
+    documents,
+  };
+}
+
 export type CreateGlobalSearchIndexOptions = {
   countries: readonly Country[];
   books: readonly BookArchiveEntry[];

@@ -114,6 +114,8 @@ function homepageLandmark(node: ts.JsxChild, sourceFile: ts.SourceFile) {
   if (!ts.isJsxElement(node) && !ts.isJsxSelfClosingElement(node)) return null;
   const tagName = jsxTagName(node, sourceFile);
   if (tagName === "CmsHomepageBanners") return "cms-banners";
+  if (tagName === "DeferredBookArchive") return "book-archive";
+  if (tagName === "DeferredArticleLibrary") return "article-library";
 
   if (tagName === "Suspense") {
     const descendants = descendantTagNames(node, sourceFile);
@@ -225,6 +227,9 @@ const languageControl = parseSource(
   "src/components/InterfaceLanguageControl.tsx"
 );
 const bookArchive = parseSource("src/components/BookArchiveSection.tsx");
+const deferredHomepageArchives = parseSource(
+  "src/loading/DeferredHomepageArchives.tsx"
+);
 const bookArchiveLocation = parseSource("src/books/bookArchiveLocation.ts");
 const literaryGlobe = parseSource("src/components/LiteraryGlobe.tsx");
 
@@ -344,11 +349,22 @@ describe("Stage 5A governance baseline", () => {
     expect(importedNames(bookArchive, "../hooks/useReadingLibrary")).toContain(
       "useReadingLibrary"
     );
-    expect(callCount(app, "buildBookArchive")).toBe(1);
+    expect(callCount(app, "buildBookArchive")).toBe(0);
+    expect(app.text).toContain(
+      "books: runtime.buildBookArchive(bookArchiveCountries)"
+    );
+    expect(deferredHomepageArchives.text).not.toContain(
+      "runtime.buildBookArchive"
+    );
+    expect(deferredHomepageArchives.text).toContain(
+      'import("../components/BookArchiveSection")'
+    );
     expect(callCount(bookArchive, "classifyBookArchiveQueue")).toBe(1);
     expect(
-      jsxNodes(app).filter(
-        (node) => jsxTagName(node, app.sourceFile) === "BookArchiveSection"
+      jsxNodes(deferredHomepageArchives).filter(
+        (node) =>
+          jsxTagName(node, deferredHomepageArchives.sourceFile) ===
+          "BookArchive"
       )
     ).toHaveLength(1);
   });

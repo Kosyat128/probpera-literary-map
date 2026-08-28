@@ -8,6 +8,8 @@ import {
   SRGBColorSpace,
 } from "three";
 
+import { SharedAsyncLru } from "./sharedAsyncLru";
+
 import {
   normalizeCompleteShelfCoverUrl,
   normalizeCompleteShelfText,
@@ -1117,6 +1119,32 @@ export function createCompleteShelfArtworkTextures(
   });
 }
 
+const sharedCompleteShelfCoverImages = new SharedAsyncLru<HTMLImageElement>(32);
+
+function loadSharedCompleteShelfCoverImage(normalizedUrl: string) {
+  return sharedCompleteShelfCoverImages.getOrCreate(
+    normalizedUrl,
+    () =>
+      new Promise<HTMLImageElement>((resolve, reject) => {
+        const image = document.createElement("img");
+        image.decoding = "async";
+        if (/^https?:\/\//iu.test(normalizedUrl)) {
+          image.crossOrigin = "anonymous";
+        }
+        image.onload = () => {
+          const finish = () => resolve(image);
+          if (typeof image.decode !== "function") {
+            finish();
+            return;
+          }
+          void image.decode().then(finish, finish);
+        };
+        image.onerror = () => reject(new Error("cover-image-load"));
+        image.src = normalizedUrl;
+      })
+  );
+}
+
 export function loadCompleteShelfCoverTexture(
   {
     coverUrl,
@@ -1145,11 +1173,8 @@ export function loadCompleteShelfCoverTexture(
     if (typeof document !== "undefined") onError("cover-url-rejected");
     return () => {};
   }
-  const image = document.createElement("img");
   let cancelled = false;
-  image.decoding = "async";
-  if (/^https?:\/\//iu.test(normalizedUrl)) image.crossOrigin = "anonymous";
-  image.onload = () => {
+  void loadSharedCompleteShelfCoverImage(normalizedUrl).then((image) => {
     if (cancelled) return;
     if (!image.naturalWidth || !image.naturalHeight) {
       onError("cover-image-empty");
@@ -1193,16 +1218,11 @@ export function loadCompleteShelfCoverTexture(
       return;
     }
     onReady(texture);
-  };
-  image.onerror = () => {
+  }, () => {
     if (!cancelled) onError("cover-image-load");
-  };
-  image.src = normalizedUrl;
+  });
   return () => {
     cancelled = true;
-    image.onload = null;
-    image.onerror = null;
-    if (!image.complete) image.src = "";
   };
 }
 

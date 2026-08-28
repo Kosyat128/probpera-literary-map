@@ -22,6 +22,7 @@ import './styles/stage5-home-art-direction.css';
 import './styles/stage5-home-layout.css';
 
 import './styles/stage5-book-shelf.css';
+import './styles/stage5f-responsive-accessibility.css';
 installSafeWebStorage();
 
 const cmsPage = currentCmsPage();

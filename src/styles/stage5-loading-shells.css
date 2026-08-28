@@ -1,0 +1,103 @@
+.stage5-deferred-slot {
+  inline-size: 100%;
+  min-block-size: var(--stage5-shell-block-size, 44rem);
+  contain: style;
+}
+
+.stage5-deferred-books {
+  --stage5-shell-block-size: clamp(44rem, 67vw, 64rem);
+}
+
+.stage5-deferred-journal {
+  --stage5-shell-block-size: clamp(38rem, 52vw, 52rem);
+}
+
+.stage5-deferred-slot > .stage5-loading-shell {
+  box-sizing: border-box;
+  min-block-size: var(--stage5-shell-block-size);
+}
+
+.stage5-loading-shell {
+  display: grid;
+  place-items: center;
+}
+
+.stage5-loading-shell__status {
+  display: grid;
+  inline-size: min(34rem, calc(100% - 2rem));
+  min-block-size: 12rem;
+  place-items: center;
+  align-content: center;
+  gap: 0.65rem;
+  margin: auto;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stage5-loading-shell__status > span,
+.stage5-global-search-shell__status > span {
+  color: var(--orange, #f47a24);
+  font-size: 1.45rem;
+}
+
+.stage5-loading-shell__status p,
+.stage5-global-search-shell__status p {
+  max-inline-size: 34rem;
+  margin: 0;
+}
+
+.stage5-loading-shell__status button,
+.stage5-global-search-shell__status button,
+.stage5-loading-shell__close {
+  min-inline-size: 2.75rem;
+  min-block-size: 2.75rem;
+  border: 1px solid color-mix(in srgb, var(--orange, #f47a24) 68%, transparent);
+  border-radius: 999px;
+  color: inherit;
+  background: color-mix(in srgb, var(--orange, #f47a24) 12%, transparent);
+  cursor: pointer;
+}
+
+.stage5-loading-shell__status button,
+.stage5-global-search-shell__status button {
+  padding-inline: 1.25rem;
+}
+
+.stage5-global-search-shell {
+  min-block-size: min(28rem, calc(100dvh - 2rem));
+}
+
+.stage5-global-search-shell__status {
+  display: grid;
+  min-block-size: 16rem;
+  place-items: center;
+  align-content: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.stage5-loading-shell__close {
+  font: 400 1.75rem/1 system-ui, sans-serif;
+}
+
+@media (max-width: 760px), (max-height: 540px) {
+  .stage5-deferred-books {
+    --stage5-shell-block-size: 58rem;
+  }
+
+  .stage5-deferred-journal {
+    --stage5-shell-block-size: 46rem;
+  }
+
+  .stage5-loading-shell__status {
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage5-loading-shell__status *,
+  .stage5-global-search-shell__status * {
+    animation: none !important;
+  }
+}
