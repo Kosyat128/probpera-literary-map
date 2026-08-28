@@ -14,7 +14,7 @@ export const malaysia: Country = {
 
       fullName: "Abdul Samad Said",
 
-      years: "1935–",
+      years: "1935-",
 
       birthDate: "1935-04-09",
 
@@ -71,7 +71,7 @@ export const malaysia: Country = {
 
       fullName: "Shahnon Ahmad",
 
-      years: "1933–2017",
+      years: "1933-2017",
 
       birthDate: "1933-01-13",
 
@@ -126,7 +126,7 @@ export const malaysia: Country = {
 
       fullName: "Abdul Hadi bin Wan Hussain",
 
-      years: "1941–",
+      years: "1941-",
 
       birthDate: "1941-06-02",
 
@@ -180,7 +180,7 @@ export const malaysia: Country = {
 
       fullName: "Tan Twan Eng",
 
-      years: "1972–",
+      years: "1972-",
 
       birthDate: "1972-01-01",
 

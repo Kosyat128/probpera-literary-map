@@ -8,7 +8,7 @@ export const ecuador: Country = {
     {
       id: "juan_bautista_aguirre",
       name: "Хуан Баутиста Агирре",
-      years: "1725–1786",
+      years: "1725-1786",
       birthDate: "1725-04-11",
       deathDate: "1786-06-15",
       birthPlace: "Дауле, Королевская аудиенсия Кито",
@@ -45,7 +45,7 @@ export const ecuador: Country = {
     {
       id: "juan_montalvo",
       name: "Хуан Монтальво",
-      years: "1832–1889",
+      years: "1832-1889",
       birthDate: "1832-04-13",
       deathDate: "1889-01-17",
       birthPlace: "Амбато, Эквадор",
@@ -83,7 +83,7 @@ export const ecuador: Country = {
     {
       id: "juan_leon_mera",
       name: "Хуан Леон Мера",
-      years: "1832–1894",
+      years: "1832-1894",
       birthDate: "1832-06-28",
       deathDate: "1894-12-13",
       birthPlace: "Амбато, Эквадор",
@@ -93,7 +93,7 @@ export const ecuador: Country = {
         lng: -78.6229
       },
       portrait: "",
-      bio: "Эквадорский писатель, политический деятель и художник. Автор романа «Куманда» — одного из первых значительных эквадорских романов, а также текста государственного гимна Эквадора.",
+      bio: "Эквадорский писатель, политический деятель и художник. Автор романа «Куманда» - одного из первых значительных эквадорских романов, а также текста государственного гимна Эквадора.",
       works: [
         "Куманда",
         "Стихи",
@@ -121,7 +121,7 @@ export const ecuador: Country = {
         {
       id: "medardo_angel_silva",
       name: "Медардо Анхель Сильва",
-      years: "1898–1919",
+      years: "1898-1919",
       birthDate: "1898-06-08",
       deathDate: "1919-06-10",
       birthPlace: "Гуаякиль, Эквадор",
@@ -131,7 +131,7 @@ export const ecuador: Country = {
         lng: -79.8891
       },
       portrait: "",
-      bio: "Эквадорский поэт и журналист, один из главных представителей модернизма в Эквадоре. Вошёл в историю как участник «обезглавленного поколения» — группы молодых поэтов начала XX века.",
+      bio: "Эквадорский поэт и журналист, один из главных представителей модернизма в Эквадоре. Вошёл в историю как участник «обезглавленного поколения» - группы молодых поэтов начала XX века.",
       works: [
         "Дерево добра и зла",
         "Меланхолия",
@@ -159,7 +159,7 @@ export const ecuador: Country = {
     {
       id: "ernesto_noboa_caamano",
       name: "Эрнесто Нобоа-и-Кааманьо",
-      years: "1891–1927",
+      years: "1891-1927",
       birthDate: "1891-08-11",
       deathDate: "1927-12-07",
       birthPlace: "Гуаякиль, Эквадор",
@@ -195,7 +195,7 @@ export const ecuador: Country = {
     {
       id: "arturo_borja",
       name: "Артуро Борха",
-      years: "1892–1912",
+      years: "1892-1912",
       birthDate: "1892-09-15",
       deathDate: "1912-11-13",
       birthPlace: "Кито, Эквадор",
@@ -231,7 +231,7 @@ export const ecuador: Country = {
     {
       id: "pablo_palacio",
       name: "Пабло Паласио",
-      years: "1906–1947",
+      years: "1906-1947",
       birthDate: "1906-01-25",
       deathDate: "1947-01-07",
       birthPlace: "Лоха, Эквадор",
@@ -269,7 +269,7 @@ export const ecuador: Country = {
         {
       id: "jorge_icaza",
       name: "Хорхе Икаса",
-      years: "1906–1978",
+      years: "1906-1978",
       birthDate: "1906-06-10",
       deathDate: "1978-05-26",
       birthPlace: "Кито, Эквадор",
@@ -309,7 +309,7 @@ export const ecuador: Country = {
     {
       id: "jorge_carrera_andrade",
       name: "Хорхе Каррера Андраде",
-      years: "1903–1978",
+      years: "1903-1978",
       birthDate: "1903-09-18",
       deathDate: "1978-11-07",
       birthPlace: "Кито, Эквадор",
@@ -349,7 +349,7 @@ export const ecuador: Country = {
     {
       id: "demetrio_aguilera_malta",
       name: "Деметрио Агилар Мальта",
-      years: "1909–1981",
+      years: "1909-1981",
       birthDate: "1909-05-24",
       deathDate: "1981-12-28",
       birthPlace: "Гуаякиль, Эквадор",
@@ -386,7 +386,7 @@ export const ecuador: Country = {
     {
       id: "alfredo_pareja_diezcanseco",
       name: "Альфредо Пареха Дьескансеко",
-      years: "1908–1993",
+      years: "1908-1993",
       birthDate: "1908-11-12",
       deathDate: "1993-05-03",
       birthPlace: "Гуаякиль, Эквадор",
@@ -425,7 +425,7 @@ export const ecuador: Country = {
         {
       id: "abdon_ubidia",
       name: "Абдон Убида",
-      years: "1944–",
+      years: "1944-",
       birthDate: "1944-12-30",
       birthPlace: "Кито, Эквадор",
       coordinates: {
@@ -462,7 +462,7 @@ export const ecuador: Country = {
     {
       id: "maria_fernanda_ampuero",
       name: "Мария Фернанда Ампуэро",
-      years: "1976–",
+      years: "1976-",
       birthDate: "1976-04-14",
       birthPlace: "Гуаякиль, Эквадор",
       coordinates: {
@@ -500,7 +500,7 @@ export const ecuador: Country = {
     {
       id: "monica_ojeda",
       name: "Моника Охеда",
-      years: "1988–",
+      years: "1988-",
       birthDate: "1988-05-17",
       birthPlace: "Гуаякиль, Эквадор",
       coordinates: {
@@ -522,7 +522,7 @@ export const ecuador: Country = {
       language: "испанский",
       nationality: "эквадорка",
       awards: [
-        "Премия Альфагуара — финалист 2018 года"
+        "Премия Альфагуара - финалист 2018 года"
       ],
       relatedWriters: [
         "maria_fernanda_ampuero",
@@ -537,7 +537,7 @@ export const ecuador: Country = {
     {
       id: "santiago_paez",
       name: "Сантьяго Паэс",
-      years: "1958–",
+      years: "1958-",
       birthDate: "1958-12-12",
       birthPlace: "Кито, Эквадор",
       coordinates: {
@@ -572,7 +572,7 @@ export const ecuador: Country = {
         {
       id: "javier_vasconez",
       name: "Хавьер Васконес",
-      years: "1946–",
+      years: "1946-",
       birthDate: "1946-12-06",
       birthPlace: "Кито, Эквадор",
       coordinates: {
@@ -609,7 +609,7 @@ export const ecuador: Country = {
     {
       id: "lupe_rumazo",
       name: "Лупе Румасо",
-      years: "1904–2004",
+      years: "1904-2004",
       birthDate: "1904-10-14",
       deathDate: "2004-01-21",
       birthPlace: "Кито, Эквадор",
@@ -645,7 +645,7 @@ export const ecuador: Country = {
     {
       id: "eliecer_cardenas",
       name: "Элиэсер Карденас",
-      years: "1950–2021",
+      years: "1950-2021",
       birthDate: "1950-12-10",
       deathDate: "2021-09-26",
       birthPlace: "Каньяр, Эквадор",

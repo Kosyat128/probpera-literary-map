@@ -136,7 +136,7 @@ npm run build:domain
 npm run performance:audit
 ```
 
-`tests/e2e/ui-foundation.spec.mjs` — geometry/state contract, а не окончательный screenshot-baseline. Полный deterministic visual baseline остаётся отдельным этапом Final QA.
+`tests/e2e/ui-foundation.spec.mjs` - geometry/state contract, а не окончательный screenshot-baseline. Полный deterministic visual baseline остаётся отдельным этапом Final QA.
 
 ## Baseline и размер production artifact
 

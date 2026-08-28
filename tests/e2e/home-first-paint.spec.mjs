@@ -57,7 +57,7 @@ test("без JavaScript главная сохраняет доступную с�
     await expect(
       page.getByRole("heading", {
         level: 1,
-        name: /Проба Пера — статьи о книгах/iu,
+        name: /Проба Пера - статьи о книгах/iu,
       })
     ).toBeVisible();
   } finally {

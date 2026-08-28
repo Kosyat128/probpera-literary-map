@@ -14,7 +14,7 @@
       "reviewedTextRu": "Ботсванская писательница, автор художественной прозы для взрослых, подростков и детей. Её исторический роман «The Scattering» впервые вышел в 2016 году.",
       "claims": [
         {
-          "textRu": "Лори Кубуитсиле — гражданка Ботсваны, пишущая художественную прозу для взрослых и юных читателей; роман «The Scattering» впервые опубликован в 2016 году.",
+          "textRu": "Лори Кубуитсиле - гражданка Ботсваны, пишущая художественную прозу для взрослых и юных читателей; роман «The Scattering» впервые опубликован в 2016 году.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -34,7 +34,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Исходная формулировка конкретизирована без оценочного ранжирования. Date recommendation: карточка указывает 1963 год, тогда как реестр Botswana Writers Association — 1964-01-15; из-за расхождения с другими публичными биографиями дату нельзя менять автоматически до второй институциональной сверки. Shared country files не изменялись.",
+      "notes": "Исходная формулировка конкретизирована без оценочного ранжирования. Date recommendation: карточка указывает 1963 год, тогда как реестр Botswana Writers Association - 1964-01-15; из-за расхождения с другими публичными биографиями дату нельзя менять автоматически до второй институциональной сверки. Shared country files не изменялись.",
       "applicableTextRu": "Ботсванская писательница, автор художественной прозы для взрослых, подростков и детей. Её исторический роман «The Scattering» впервые вышел в 2016 году."
     },
     {
@@ -53,7 +53,7 @@
               "findingRu": "Поиск по точному имени не выявил authority-записи или библиографического корпуса, совместимого с карточкой."
             },
             {
-              "provider": "WorldCat — OCLC",
+              "provider": "WorldCat - OCLC",
               "url": "https://search.worldcat.org/search?q=%22Moshe%20Motshegwa%22%20Botswana",
               "checkedAt": "2026-08-09",
               "findingRu": "Поиск по имени и стране не выявил изданий, позволяющих установить заявленную идентичность поэта."
@@ -72,7 +72,7 @@
       "reviewedTextRu": "Ботсванская писательница и юрист, автор романа «Far and Beyon’». Она стала первой женщиной-судьёй Высокого суда Ботсваны.",
       "claims": [
         {
-          "textRu": "Юнити Доу — ботсванская писательница и юрист, автор романа Far and Beyon’, ставшая первой женщиной-судьёй Высокого суда страны.",
+          "textRu": "Юнити Доу - ботсванская писательница и юрист, автор романа Far and Beyon’, ставшая первой женщиной-судьёй Высокого суда страны.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -82,7 +82,7 @@
               "findingRu": "Издатель называет Доу автором четырёх романов, включая Far and Beyon’, правозащитным юристом и первой женщиной-судьёй Высокого суда Ботсваны."
             },
             {
-              "provider": "United Nations — WomenWatch",
+              "provider": "United Nations - WomenWatch",
               "url": "https://www.un.org/womenwatch/daw/panel-children/panel-AEK.htm",
               "checkedAt": "2026-08-09",
               "findingRu": "Профиль ООН подтверждает юридическую и судейскую карьеру Доу, её литературную деятельность и роман Far and Beyond."
@@ -92,7 +92,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Расплывчатая тематика заменена конкретной книгой и документированной профессиональной ролью. Рекомендация — сохранить birthDate 1959-04-23: доступные профили не выявили противоречия. Shared country files не изменялись.",
+      "notes": "Расплывчатая тематика заменена конкретной книгой и документированной профессиональной ролью. Рекомендация - сохранить birthDate 1959-04-23: доступные профили не выявили противоречия. Shared country files не изменялись.",
       "applicableTextRu": "Ботсванская писательница и юрист, автор романа «Far and Beyon’». Она стала первой женщиной-судьёй Высокого суда Ботсваны."
     },
     {
@@ -108,10 +108,10 @@
               "provider": "Instituto Moreira Salles",
               "url": "https://ims.com.br/titular-colecao/carlos-drummond-de-andrade/",
               "checkedAt": "2026-08-09",
-              "findingRu": "Литературный архив IMS подтверждает работу Друммонда как поэта и хрониста и даты жизни 1902–1987."
+              "findingRu": "Литературный архив IMS подтверждает работу Друммонда как поэта и хрониста и даты жизни 1902-1987."
             },
             {
-              "provider": "Fundação Biblioteca Nacional — BNDigital",
+              "provider": "Fundação Biblioteca Nacional - BNDigital",
               "url": "https://bndigital.bn.gov.br/carlos-drummond-de-andrade/",
               "checkedAt": "2026-08-09",
               "findingRu": "Национальная библиотека Бразилии описывает поэтическую и журналистскую деятельность Друммонда и атрибутирует ему A Rosa do Povo, изданную в 1945 году."
@@ -121,16 +121,16 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Субъективный суперлатив заменён проверяемыми литературными ролями и конкретной книгой. Рекомендация — сохранить birthDate 1902-10-31 и deathDate 1987-08-17; identity установлена однозначно. Shared country files не изменялись.",
+      "notes": "Субъективный суперлатив заменён проверяемыми литературными ролями и конкретной книгой. Рекомендация - сохранить birthDate 1902-10-31 и deathDate 1987-08-17; identity установлена однозначно. Shared country files не изменялись.",
       "applicableTextRu": "Бразильский поэт и хронист XX века, автор сборника «Роза народа» («A Rosa do Povo»)."
     },
     {
       "key": "brazil:manoel_de_barros",
       "originalSha256": "722d3a2cbf7f84d943d9312129ec353f87913dd76418910ed618257d3dd12bc4",
-      "reviewedTextRu": "Бразильский поэт XX–XXI веков, автор книг «Хранитель вод» («O guardador das águas») и «Книга ни о чём» («Livro sobre nada»).",
+      "reviewedTextRu": "Бразильский поэт XX-XXI веков, автор книг «Хранитель вод» («O guardador das águas») и «Книга ни о чём» («Livro sobre nada»).",
       "claims": [
         {
-          "textRu": "Маноэл де Баррос был бразильским поэтом XX–XXI веков и написал O guardador das águas и Livro sobre nada.",
+          "textRu": "Маноэл де Баррос был бразильским поэтом XX-XXI веков и написал O guardador das águas и Livro sobre nada.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -140,18 +140,18 @@
               "findingRu": "Государственная библиотека Параны представляет Барроса как поэта и перечисляет O guardador das águas и Livro sobre nada среди его книг."
             },
             {
-              "provider": "Fundação Biblioteca Nacional — autoridade",
+              "provider": "Fundação Biblioteca Nacional - autoridade",
               "url": "https://acervo.bn.gov.br/sophia_web/autoridade/detalhe/000631229",
               "checkedAt": "2026-08-09",
-              "findingRu": "Authority-запись Национальной библиотеки Бразилии подтверждает идентичность поэта, годы жизни 1916–2014 и библиографию Livro sobre nada."
+              "findingRu": "Authority-запись Национальной библиотеки Бразилии подтверждает идентичность поэта, годы жизни 1916-2014 и библиографию Livro sobre nada."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Оценочное слово снято; добавлены две атрибутированные книги. Рекомендация — сохранить birthDate 1916-12-19 и deathDate 2014-11-13. Shared country files не изменялись.",
-      "applicableTextRu": "Бразильский поэт XX–XXI веков, автор книг «Хранитель вод» («O guardador das águas») и «Книга ни о чём» («Livro sobre nada»)."
+      "notes": "Оценочное слово снято; добавлены две атрибутированные книги. Рекомендация - сохранить birthDate 1916-12-19 и deathDate 2014-11-13. Shared country files не изменялись.",
+      "applicableTextRu": "Бразильский поэт XX-XXI веков, автор книг «Хранитель вод» («O guardador das águas») и «Книга ни о чём» («Livro sobre nada»)."
     },
     {
       "key": "brunei:awang_mohammad_yassin",
@@ -169,7 +169,7 @@
               "findingRu": "Поиск по точному имени не выявил authority-записи, совместимой с идентичностью брунейского поэта."
             },
             {
-              "provider": "WorldCat — OCLC",
+              "provider": "WorldCat - OCLC",
               "url": "https://search.worldcat.org/search?q=%22Awang%20Mohammad%20Yassin%22%20Brunei",
               "checkedAt": "2026-08-09",
               "findingRu": "Поиск по имени и стране не выявил библиографического корпуса, подтверждающего исходную карточку."
@@ -185,14 +185,14 @@
     {
       "key": "brunei:masuri_masrun",
       "originalSha256": "7e2d4182bdb5765e9948e097603ccc2e9cae2194417f2f6b8cf29579a233f0f5",
-      "reviewedTextRu": "Заявленная карточкой идентичность брунейского автора Масури Масруна не установлена; институциональные источники описывают другого автора — сингапурского поэта Масури С. Н.",
+      "reviewedTextRu": "Заявленная карточкой идентичность брунейского автора Масури Масруна не установлена; институциональные источники описывают другого автора - сингапурского поэта Масури С. Н.",
       "claims": [
         {
           "textRu": "Имя и даты карточки сходны с Масури С. Н. (Масури Саликуном), которого библиотечные источники относят к Сингапуру, а не к Брунею; идентичность Масури Масруна не подтверждена.",
           "verdict": "not-established",
           "evidence": [
             {
-              "provider": "National Library Board Singapore — BiblioAsia",
+              "provider": "National Library Board Singapore - BiblioAsia",
               "url": "https://biblioasia.nlb.gov.sg/all-sections/book-di-sebalik-tabir-masuri-sn-biographi-dan-karya-pilihan-yang-belum-tersiar/",
               "checkedAt": "2026-08-09",
               "findingRu": "Национальная библиотека Сингапура представляет Масури С. Н. как сингапурского поэта и литературного деятеля."
@@ -208,7 +208,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "held",
-      "notes": "Held и identity quarantine recommendation: не подменять карточку сингапурским Масури С. Н. и не публиковать даты 1931–2005; нужна отдельная брунейская authority-запись. Shared country files не изменялись.",
+      "notes": "Held и identity quarantine recommendation: не подменять карточку сингапурским Масури С. Н. и не публиковать даты 1931-2005; нужна отдельная брунейская authority-запись. Shared country files не изменялись.",
       "applicableTextRu": null
     },
     {
@@ -224,10 +224,10 @@
               "provider": "Национальная библиотека Болгарии",
               "url": "https://www.nationallibrary.bg/www/2021/12/26/2-%D1%8F%D0%BD%D1%83%D0%B0%D1%80%D0%B8-%D0%B7%D0%B0%D0%BF%D0%B0%D0%B4%D0%BD%D0%BE-%D1%84%D0%BE%D0%B0%D0%B9%D0%B5-100-%D0%B3-%D0%BE%D1%82-%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D1%82%D0%BE/",
               "checkedAt": "2026-08-09",
-              "findingRu": "Национальная библиотека называет Димитрову болгарской писательницей и поэтессой и фиксирует годы жизни 1922–2003."
+              "findingRu": "Национальная библиотека называет Димитрову болгарской писательницей и поэтессой и фиксирует годы жизни 1922-2003."
             },
             {
-              "provider": "Болгарское национальное радио — архив",
+              "provider": "Болгарское национальное радио - архив",
               "url": "https://archives.bnr.bg/archives/post/13277/blaga-dimitrova",
               "checkedAt": "2026-08-09",
               "findingRu": "Архив БНР документирует её поэтическое, романное и эссеистическое творчество и точные даты жизни."
@@ -237,7 +237,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "unchanged",
-      "notes": "Исходный короткий текст полностью подтверждён и не содержит неподдержанного ранжирования. Рекомендация — сохранить birthDate 1922-01-02 и deathDate 2003-05-02. Shared country files не изменялись.",
+      "notes": "Исходный короткий текст полностью подтверждён и не содержит неподдержанного ранжирования. Рекомендация - сохранить birthDate 1922-01-02 и deathDate 2003-05-02. Shared country files не изменялись.",
       "applicableTextRu": "Болгарская писательница и поэтесса XX века."
     },
     {
@@ -266,7 +266,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Неопределённые оценочные слова «классик» и «мастер» заменены перечислением документированных жанров. Рекомендация — сохранить birthDate 1877-07-08 и deathDate 1949-12-03. Shared country files не изменялись.",
+      "notes": "Неопределённые оценочные слова «классик» и «мастер» заменены перечислением документированных жанров. Рекомендация - сохранить birthDate 1877-07-08 и deathDate 1949-12-03. Shared country files не изменялись.",
       "applicableTextRu": "Болгарский прозаик, автор рассказов, сказок и произведений для детей."
     },
     {
@@ -295,7 +295,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "unchanged",
-      "notes": "Исходная формулировка подтверждена музеем и национальным радио. Рекомендация — сохранить birthDate 1895-01-15; deathDate следует хранить с учётом источниковой неопределённости после 15 мая 1925 года, а не приписывать недоказанный день смерти. Shared country files не изменялись.",
+      "notes": "Исходная формулировка подтверждена музеем и национальным радио. Рекомендация - сохранить birthDate 1895-01-15; deathDate следует хранить с учётом источниковой неопределённости после 15 мая 1925 года, а не приписывать недоказанный день смерти. Shared country files не изменялись.",
       "applicableTextRu": "Болгарский поэт, переводчик и представитель модернизма."
     },
     {
@@ -324,7 +324,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Суперлатив и широкое слово «классик» заменены занятиями и исторической ролью. Рекомендация — сохранить birthDate 1848-01-06; точная deathDate требует календарной оговорки старого/нового стиля. Shared country files не изменялись.",
+      "notes": "Суперлатив и широкое слово «классик» заменены занятиями и исторической ролью. Рекомендация - сохранить birthDate 1848-01-06; точная deathDate требует календарной оговорки старого/нового стиля. Shared country files не изменялись.",
       "applicableTextRu": "Болгарский поэт, публицист и революционер XIX века, участник национально-освободительного движения."
     },
     {
@@ -353,7 +353,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Почётное прозвище заменено нейтральными литературными ролями; авторство романа сохранено. Рекомендация — сохранить birthDate 1850-07-09 и deathDate 1921-09-22. Shared country files не изменялись.",
+      "notes": "Почётное прозвище заменено нейтральными литературными ролями; авторство романа сохранено. Рекомендация - сохранить birthDate 1850-07-09 и deathDate 1921-09-22. Shared country files не изменялись.",
       "applicableTextRu": "Болгарский поэт, прозаик и драматург, автор романа «Под игом»."
     },
     {
@@ -382,7 +382,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Оценка ключевости заменена датируемым фактом; национальная и монашеская идентичность сохранены. Рекомендация: birthDate 1722 и deathDate 1773 считать приблизительными — Национальная библиотека прямо описывает их как гипотезы. Shared country files не изменялись.",
+      "notes": "Оценка ключевости заменена датируемым фактом; национальная и монашеская идентичность сохранены. Рекомендация: birthDate 1722 и deathDate 1773 считать приблизительными - Национальная библиотека прямо описывает их как гипотезы. Shared country files не изменялись.",
       "applicableTextRu": "Болгарский монах и книжник XVIII века, автор «Истории славяноболгарской», завершённой в 1762 году."
     },
     {
@@ -395,7 +395,7 @@
           "verdict": "supported",
           "evidence": [
             {
-              "provider": "Музей Манега — фонд Пасере",
+              "provider": "Музей Манега - фонд Пасере",
               "url": "https://manega.net/index.php/le-fondateur-du-musee/",
               "checkedAt": "2026-08-09",
               "findingRu": "Профиль основателя музея называет Пасере писателем и исследователем культуры и перечисляет его работы об обычаях, обрядах и обществе моси."
@@ -430,7 +430,7 @@
               "findingRu": "Authority-запись BnF идентифицирует Гингане как автора из Буркина-Фасо, драматурга, режиссёра и руководителя Théâtre de la Fraternité."
             },
             {
-              "provider": "UNESCO — International Theatre Institute",
+              "provider": "UNESCO - International Theatre Institute",
               "url": "https://www.unesco.org/creativity/sites/default/files/medias/fichiers/2023/02/1cp_List%20of%20Participants_en_fr.pdf",
               "checkedAt": "2026-08-09",
               "findingRu": "Официальный список UNESCO фиксирует Жан-Пьера Гингане как представителя Международного института театра и руководителя его африканской региональной структуры."
@@ -440,7 +440,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "unchanged",
-      "notes": "Исходная нейтральная формулировка полностью подтверждена. Рекомендация — сохранить birthDate 1947-07-11 и deathDate 2011-01-24 по BnF. Shared country files не изменялись.",
+      "notes": "Исходная нейтральная формулировка полностью подтверждена. Рекомендация - сохранить birthDate 1947-07-11 и deathDate 2011-01-24 по BnF. Shared country files не изменялись.",
       "applicableTextRu": "Буркинийский драматург, писатель и театральный деятель."
     },
     {
@@ -449,7 +449,7 @@
       "reviewedTextRu": "Буркинийская писательница и юрист, автор романа «Le Mal de peau» и эссе «Droit de cité: être femme au Burkina Faso».",
       "claims": [
         {
-          "textRu": "Моник Ильбудо — писательница и юрист из Буркина-Фасо, автор романа Le Mal de peau и эссе Droit de cité: être femme au Burkina Faso.",
+          "textRu": "Моник Ильбудо - писательница и юрист из Буркина-Фасо, автор романа Le Mal de peau и эссе Droit de cité: être femme au Burkina Faso.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -469,7 +469,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Неопределённая сравнительная формула о первых женщинах-авторах снята; добавлены профессия и две документированные книги. Рекомендация — сохранить годовой birthDate 1959: точный день институционально не установлен. Shared country files не изменялись.",
+      "notes": "Неопределённая сравнительная формула о первых женщинах-авторах снята; добавлены профессия и две документированные книги. Рекомендация - сохранить годовой birthDate 1959: точный день институционально не установлен. Shared country files не изменялись.",
       "applicableTextRu": "Буркинийская писательница и юрист, автор романа «Le Mal de peau» и эссе «Droit de cité: être femme au Burkina Faso»."
     },
     {
@@ -488,7 +488,7 @@
               "findingRu": "Authority-запись BnF подтверждает буркинийскую идентичность, работу журналиста и авторство Le Parachutage."
             },
             {
-              "provider": "Université Joseph Ki-Zerbo — ProGRES",
+              "provider": "Université Joseph Ki-Zerbo - ProGRES",
               "url": "https://www.progres.ujkz.gov.bf/publications/8653/afficher",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетская публикация рассматривает Норбера Зонго как буркинийского писателя и атрибутирует ему роман Rougbêinga."
@@ -498,7 +498,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 14",
       "decision": "corrected",
-      "notes": "Общая формулировка уточнена двумя романами. Рекомендация — сохранить deathDate 1998-12-13; birthDate лучше хранить как приблизительный 1949, поскольку authority BnF отмечает год вопросительным знаком. Shared country files не изменялись.",
+      "notes": "Общая формулировка уточнена двумя романами. Рекомендация - сохранить deathDate 1998-12-13; birthDate лучше хранить как приблизительный 1949, поскольку authority BnF отмечает год вопросительным знаком. Shared country files не изменялись.",
       "applicableTextRu": "Буркинийский журналист и писатель, автор романов «Le Parachutage» и «Rougbêinga»."
     },
     {
@@ -575,7 +575,7 @@
               "findingRu": "Поиск по точному имени не выявил authority-записи либо произведений заявленного писателя."
             },
             {
-              "provider": "WorldCat — OCLC",
+              "provider": "WorldCat - OCLC",
               "url": "https://search.worldcat.org/search?q=%22Gaetan%20Muschimyimana%22%20Burundi",
               "checkedAt": "2026-08-09",
               "findingRu": "Поиск по имени и стране не выявил библиографического корпуса, позволяющего установить личность автора."

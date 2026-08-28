@@ -185,7 +185,7 @@ describe("writer biography claim review batch 31", () => {
     const subjectiveSuperlative =
       /(?:крупнейш|величайш|сам(?:ый|ая|ое|ые|ых)|наиболее|великий|ведущ|важнейш|главнейш|известнейш|одн(?:а|о|им|их)?\s+из\s+(?:главн|ведущ|важнейш|заметн))/iu;
     const publicReviewMarker =
-      /(?:^|[\s:—-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;—-])/iu;
+      /(?:^|[\s:-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;-])/iu;
 
     for (const record of writerBiographyFactReviewBatch31) {
       const originalText = sourceTextForKey(record.key);
@@ -361,6 +361,6 @@ describe("writer biography claim review batch 31", () => {
     expect(markdown).toContain("Без изменений: 3");
     expect(markdown).toContain("Исправлено: 35");
     expect(markdown).toContain("Удержано: 2");
-    expect(markdown).toContain("overlap с Batch01–30: 0");
+    expect(markdown).toContain("overlap с Batch01-30: 0");
   });
 });

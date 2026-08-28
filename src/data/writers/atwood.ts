@@ -1,11 +1,11 @@
 export const atwoodProfile = {
  id:"atwood",
  fullName:"Маргарет Этвуд",
- years:"1939–",
+ years:"1939-",
  country:"Канада",
  birthPlace:"Оттава, Канада",
  movement:"Постмодернизм",
- century:"XX–XXI века",
+ century:"XX-XXI века",
  language:"Английский",
  nobel:false,
  portrait:"/images/writers/atwood.jpg",

@@ -24,7 +24,7 @@
               "findingRu": "Поиск по точному имени не выявил авторитетной библиографической записи, которую можно однозначно связать с заявленным бурундийским писателем."
             },
             {
-              "provider": "WorldCat — OCLC",
+              "provider": "WorldCat - OCLC",
               "url": "https://search.worldcat.org/search?q=%22Jean-Pierre%20Hatungimana%22%20Burundi",
               "checkedAt": "2026-08-09",
               "findingRu": "Поиск имени вместе со страной не выявил изданий или authority identity, подтверждающих исходную карточку."
@@ -34,7 +34,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "held",
-      "notes": "Held: отсутствие совпадений в двух независимых каталогах не доказывает несуществование автора, поэтому исходный текст не заменяется догадкой и не применяется публично. Identity registry: not-mapped. Рекомендация по датам — убрать неподтверждённый birthDate 1963 до установления личности. Shared country files не изменялись.",
+      "notes": "Held: отсутствие совпадений в двух независимых каталогах не доказывает несуществование автора, поэтому исходный текст не заменяется догадкой и не применяется публично. Identity registry: not-mapped. Рекомендация по датам - убрать неподтверждённый birthDate 1963 до установления личности. Shared country files не изменялись.",
       "applicableTextRu": null
     },
     {
@@ -43,11 +43,11 @@
       "reviewedTextRu": "Бурундийский писатель и журналист, автор романов «Les Oniriques» и «Baho!». В 2009 году получил бронзовую медаль литературного конкурса Игр Франкофонии.",
       "claims": [
         {
-          "textRu": "Ролан Ружеро — бурундийский писатель и журналист, автор романов «Les Oniriques» и «Baho!», бронзовый призёр литературного конкурса Игр Франкофонии 2009 года.",
+          "textRu": "Ролан Ружеро - бурундийский писатель и журналист, автор романов «Les Oniriques» и «Baho!», бронзовый призёр литературного конкурса Игр Франкофонии 2009 года.",
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "International Writing Program — University of Iowa",
+              "provider": "International Writing Program - University of Iowa",
               "url": "https://iwp.uiowa.edu/writers/2013-resident/rugero-roland",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский профиль называет Ружеро бурундийским прозаиком и журналистом и перечисляет романы Les Oniriques и Baho."
@@ -59,7 +59,7 @@
               "findingRu": "Профиль издателя подтверждает авторство двух романов, журналистскую работу и рождение 22 февраля 1986 года."
             },
             {
-              "provider": "Jeux de la Francophonie — OIF",
+              "provider": "Jeux de la Francophonie - OIF",
               "url": "https://www.jeux.francophonie.org/sites/default/files/public/CV/cv_roland_rugero.pdf",
               "checkedAt": "2026-08-09",
               "findingRu": "Официальная справка Игр Франкофонии фиксирует бронзовую медаль литературного конкурса 2009 года и библиографию автора."
@@ -69,13 +69,13 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Неподтверждённая сравнительная оценка заметности снята и заменена конкретными произведениями и наградой. Identity audit corroborated. Доказанная рекомендация — уточнить birthDate с годового 1986 до 1986-02-22. Shared country files не изменялись.",
+      "notes": "Неподтверждённая сравнительная оценка заметности снята и заменена конкретными произведениями и наградой. Identity audit corroborated. Доказанная рекомендация - уточнить birthDate с годового 1986 до 1986-02-22. Shared country files не изменялись.",
       "applicableTextRu": "Бурундийский писатель и журналист, автор романов «Les Oniriques» и «Baho!». В 2009 году получил бронзовую медаль литературного конкурса Игр Франкофонии."
     },
     {
       "key": "cambodia:ang_duong",
       "originalSha256": "4b838cd15e4e9b3d520981bb48481f904ba401f03f0ac5897d34d77138790a76",
-      "reviewedTextRu": "Король Камбоджи Анг Дуонг — автор кхмерской стихотворной повести «Ка Кей». В середине XIX века он поддерживал восстановление кхмерской буддийской литературы.",
+      "reviewedTextRu": "Король Камбоджи Анг Дуонг - автор кхмерской стихотворной повести «Ка Кей». В середине XIX века он поддерживал восстановление кхмерской буддийской литературы.",
       "claims": [
         {
           "textRu": "Анг Дуонг был королём Камбоджи, написал кхмерскую повесть «Ка Кей» и поддерживал восстановление буддийской письменной культуры.",
@@ -98,8 +98,8 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Расплывчатая формулировка заменена конкретным литературным произведением и документированной культурной деятельностью. Identity audit corroborated. Рекомендация — сохранить годовые birthDate 1796 и deathDate 1860: выбранные главные источники не дают достаточной опоры для искусственной точности дня и месяца. Shared country files не изменялись.",
-      "applicableTextRu": "Король Камбоджи Анг Дуонг — автор кхмерской стихотворной повести «Ка Кей». В середине XIX века он поддерживал восстановление кхмерской буддийской литературы."
+      "notes": "Расплывчатая формулировка заменена конкретным литературным произведением и документированной культурной деятельностью. Identity audit corroborated. Рекомендация - сохранить годовые birthDate 1796 и deathDate 1860: выбранные главные источники не дают достаточной опоры для искусственной точности дня и месяца. Shared country files не изменялись.",
+      "applicableTextRu": "Король Камбоджи Анг Дуонг - автор кхмерской стихотворной повести «Ка Кей». В середине XIX века он поддерживал восстановление кхмерской буддийской литературы."
     },
     {
       "key": "cambodia:nou_hach",
@@ -107,7 +107,7 @@
       "reviewedTextRu": "Камбоджийский писатель, автор романов «Увядший цветок» (Phka Srapoun) и «Гирлянда сердца» (Mealea Doung Chet).",
       "claims": [
         {
-          "textRu": "Ноу Хач — камбоджийский писатель, автор романов Phka Srapoun и Mealea Doung Chet.",
+          "textRu": "Ноу Хач - камбоджийский писатель, автор романов Phka Srapoun и Mealea Doung Chet.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -133,7 +133,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Оценочный ранг «классик» заменён проверяемой библиографией. Identity audit corroborated. Рекомендация — оставить birthDate 1916 и deathDate 1975 на уровне годов; точные дни выбранными источниками не установлены. Shared country files не изменялись.",
+      "notes": "Оценочный ранг «классик» заменён проверяемой библиографией. Identity audit corroborated. Рекомендация - оставить birthDate 1916 и deathDate 1975 на уровне годов; точные дни выбранными источниками не установлены. Shared country files не изменялись.",
       "applicableTextRu": "Камбоджийский писатель, автор романов «Увядший цветок» (Phka Srapoun) и «Гирлянда сердца» (Mealea Doung Chet)."
     },
     {
@@ -142,7 +142,7 @@
       "reviewedTextRu": "Камбоджийский писатель и журналист, автор романов «Бессмысленная жизнь» и «Анархист». В конце 1960-х годов основал газету и издательство Nokor Thom.",
       "claims": [
         {
-          "textRu": "Сот Полин — камбоджийский писатель и журналист, автор романов A Meaningless Life и The Anarchist и основатель газеты и издательства Nokor Thom.",
+          "textRu": "Сот Полин - камбоджийский писатель и журналист, автор романов A Meaningless Life и The Anarchist и основатель газеты и издательства Nokor Thom.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -162,7 +162,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Оценка заметности заменена ролями, произведениями и издательской деятельностью. Identity audit corroborated. Рекомендация — сохранить годовой birthDate 1943: оба источника подтверждают год, но не дают дня и месяца. Shared country files не изменялись.",
+      "notes": "Оценка заметности заменена ролями, произведениями и издательской деятельностью. Identity audit corroborated. Рекомендация - сохранить годовой birthDate 1943: оба источника подтверждают год, но не дают дня и месяца. Shared country files не изменялись.",
       "applicableTextRu": "Камбоджийский писатель и журналист, автор романов «Бессмысленная жизнь» и «Анархист». В конце 1960-х годов основал газету и издательство Nokor Thom."
     },
     {
@@ -171,7 +171,7 @@
       "reviewedTextRu": "Камерунская франкоязычная писательница, автор романов «Assèze l’Africaine» и «Les Honneurs perdus». Роман «Les Honneurs perdus» получил Большую премию Французской академии в 1996 году.",
       "claims": [
         {
-          "textRu": "Каликст Бейяла — родившаяся в Камеруне франкоязычная писательница; её роман Les Honneurs perdus получил Большую премию Французской академии в 1996 году.",
+          "textRu": "Каликст Бейяла - родившаяся в Камеруне франкоязычная писательница; её роман Les Honneurs perdus получил Большую премию Французской академии в 1996 году.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -197,13 +197,13 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Оценка известности снята и заменена конкретными романами и наградой. Identity audit corroborated. Доказанная рекомендация — заменить чрезмерно точный birthDate 1961-10-26 на годовой 1961: Hachette и BnF подтверждают год, но не этот день и месяц. Shared country files не изменялись.",
+      "notes": "Оценка известности снята и заменена конкретными романами и наградой. Identity audit corroborated. Доказанная рекомендация - заменить чрезмерно точный birthDate 1961-10-26 на годовой 1961: Hachette и BnF подтверждают год, но не этот день и месяц. Shared country files не изменялись.",
       "applicableTextRu": "Камерунская франкоязычная писательница, автор романов «Assèze l’Africaine» и «Les Honneurs perdus». Роман «Les Honneurs perdus» получил Большую премию Французской академии в 1996 году."
     },
     {
       "key": "cameroon:emmanuel_dongala",
       "originalSha256": "f59b33e5c4594662437e23c28978f72553682d26e5c3674de2479b5af8a5b050",
-      "reviewedTextRu": "Эмманюэль Донгала — писатель и химик из Республики Конго; его привязка к Камеруну не подтверждается авторитетными источниками.",
+      "reviewedTextRu": "Эмманюэль Донгала - писатель и химик из Республики Конго; его привязка к Камеруну не подтверждается авторитетными источниками.",
       "claims": [
         {
           "textRu": "Эмманюэль Донгала связан с Республикой Конго, а не с Камеруном; камерунская карточка является межстрановым дублем.",
@@ -232,13 +232,13 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "held",
-      "notes": "Held: identity established, but country association is false. Canonical duplicate exists as republic_of_congo:emmanuel_dongala; применять текст к Cameroon нельзя. Рекомендация — удалить или перенаправить камерунский дубль, сохранив year-level birthDate 1941 только в канонической карточке. Shared country files не изменялись.",
+      "notes": "Held: identity established, but country association is false. Canonical duplicate exists as republic_of_congo:emmanuel_dongala; применять текст к Cameroon нельзя. Рекомендация - удалить или перенаправить камерунский дубль, сохранив year-level birthDate 1941 только в канонической карточке. Shared country files не изменялись.",
       "applicableTextRu": null
     },
     {
       "key": "cameroon:etienne_goyemide",
       "originalSha256": "c349a04de5899b004dd0ef07492906037fb127ccc23bc601838fa4d916b5eebd",
-      "reviewedTextRu": "Этьен Гойемиде — писатель и драматург из Центральноафриканской Республики; его привязка к Камеруну не подтверждается авторитетными источниками.",
+      "reviewedTextRu": "Этьен Гойемиде - писатель и драматург из Центральноафриканской Республики; его привязка к Камеруну не подтверждается авторитетными источниками.",
       "claims": [
         {
           "textRu": "Этьен Гойемиде связан с Центральноафриканской Республикой, а не с Камеруном; камерунская карточка является межстрановым дублем.",
@@ -248,13 +248,13 @@
               "provider": "Africultures",
               "url": "https://africultures.com/personnes/?no=3527",
               "checkedAt": "2026-08-09",
-              "findingRu": "Профиль указывает Центральноафриканскую Республику, роли писателя и драматурга, годы жизни 1942–1997 и библиографию."
+              "findingRu": "Профиль указывает Центральноафриканскую Республику, роли писателя и драматурга, годы жизни 1942-1997 и библиографию."
             },
             {
               "provider": "Bibliothèque nationale de France",
               "url": "https://catalogue.bnf.fr/ark%3A/12148/cb37399180n",
               "checkedAt": "2026-08-09",
-              "findingRu": "Национальный каталог подтверждает авторство Étienne Goyémidé, годы 1942–1997 и роман Le dernier survivant de la caravane."
+              "findingRu": "Национальный каталог подтверждает авторство Étienne Goyémidé, годы 1942-1997 и роман Le dernier survivant de la caravane."
             },
             {
               "provider": "Les Francophonies",
@@ -267,7 +267,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "held",
-      "notes": "Held: identity established, but country association is false. Canonical duplicate exists as central_african_republic:etienne_goyemide; применять текст к Cameroon нельзя. Доказанная рекомендация для канонической карточки — birthDate 1942-01-22 и deathDate 1997-03-17 по двум профильным записям; камерунский дубль удалить или перенаправить. Shared country files не изменялись.",
+      "notes": "Held: identity established, but country association is false. Canonical duplicate exists as central_african_republic:etienne_goyemide; применять текст к Cameroon нельзя. Доказанная рекомендация для канонической карточки - birthDate 1942-01-22 и deathDate 1997-03-17 по двум профильным записям; камерунский дубль удалить или перенаправить. Shared country files не изменялись.",
       "applicableTextRu": null
     },
     {
@@ -295,14 +295,14 @@
               "provider": "Bibliothèque nationale de France",
               "url": "https://data.bnf.fr/en/see_all_activities/12170141/page1",
               "checkedAt": "2026-08-09",
-              "findingRu": "Национальная библиотека подтверждает годы жизни 1929–2010 и библиографию Ойоно."
+              "findingRu": "Национальная библиотека подтверждает годы жизни 1929-2010 и библиографию Ойоно."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Оценочный ранг «классик» заменён конкретной библиографией; писательская и дипломатическая роли сохранены. Identity audit corroborated. Рекомендация — сохранить birthDate 1929-09-14 и deathDate 2010-06-10: даты согласуются с авторитетными биографическими и дипломатическими записями. Shared country files не изменялись.",
+      "notes": "Оценочный ранг «классик» заменён конкретной библиографией; писательская и дипломатическая роли сохранены. Identity audit corroborated. Рекомендация - сохранить birthDate 1929-09-14 и deathDate 2010-06-10: даты согласуются с авторитетными биографическими и дипломатическими записями. Shared country files не изменялись.",
       "applicableTextRu": "Камерунский писатель и дипломат, автор романов «Une vie de boy», «Le Vieux Nègre et la Médaille» и «Chemin d’Europe»."
     },
     {
@@ -311,7 +311,7 @@
       "reviewedTextRu": "Камерунский писатель и издатель, автор романов «Le Dernier Gardien de l’arbre» и «Le Paradis du Nord».",
       "claims": [
         {
-          "textRu": "Жан-Роже Эссомба — родившийся в Камеруне писатель и издатель, автор нескольких романов.",
+          "textRu": "Жан-Роже Эссомба - родившийся в Камеруне писатель и издатель, автор нескольких романов.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -331,7 +331,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Общая тавтологичная формула заменена конкретными ролями и произведениями. Identity audit identity-discrepant: речь идёт о Jean-Roger Essomba, а не Jean-Roger Essombe Edimo. Доказанная рекомендация — заменить ошибочный birthDate 1950 на годовой 1962. Shared country files не изменялись.",
+      "notes": "Общая тавтологичная формула заменена конкретными ролями и произведениями. Identity audit identity-discrepant: речь идёт о Jean-Roger Essomba, а не Jean-Roger Essombe Edimo. Доказанная рекомендация - заменить ошибочный birthDate 1950 на годовой 1962. Shared country files не изменялись.",
       "applicableTextRu": "Камерунский писатель и издатель, автор романов «Le Dernier Gardien de l’arbre» и «Le Paradis du Nord»."
     },
     {
@@ -340,7 +340,7 @@
       "reviewedTextRu": "Франкоязычная писательница камерунского происхождения.",
       "claims": [
         {
-          "textRu": "Леонора Миано — франкоязычная писательница, родившаяся в Камеруне.",
+          "textRu": "Леонора Миано - франкоязычная писательница, родившаяся в Камеруне.",
           "verdict": "supported",
           "evidence": [
             {
@@ -360,7 +360,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "unchanged",
-      "notes": "Исходная нейтральная формулировка подтверждена двумя издательскими институциями. Identity audit corroborated. Рекомендация — сохранить birthDate 1973-03-12; год и личность подтверждены, расхождений не обнаружено. Shared country files не изменялись.",
+      "notes": "Исходная нейтральная формулировка подтверждена двумя издательскими институциями. Identity audit corroborated. Рекомендация - сохранить birthDate 1973-03-12; год и личность подтверждены, расхождений не обнаружено. Shared country files не изменялись.",
       "applicableTextRu": "Франкоязычная писательница камерунского происхождения."
     },
     {
@@ -369,11 +369,11 @@
       "reviewedTextRu": "Камерунский писатель и литературовед.",
       "claims": [
         {
-          "textRu": "Патрис Нгананг — родившийся в Камеруне писатель и исследователь литературы и культуры.",
+          "textRu": "Патрис Нгананг - родившийся в Камеруне писатель и исследователь литературы и культуры.",
           "verdict": "supported",
           "evidence": [
             {
-              "provider": "Farrar, Straus and Giroux — Macmillan",
+              "provider": "Farrar, Straus and Giroux - Macmillan",
               "url": "https://us.macmillan.com/author/patricenganang/",
               "checkedAt": "2026-08-09",
               "findingRu": "Профиль издателя подтверждает камерунское происхождение и работу Нгананга как романиста, поэта и эссеиста."
@@ -389,7 +389,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "unchanged",
-      "notes": "Обе исходные роли подтверждены без оценочного ранжирования. Identity audit corroborated. Рекомендация — сохранить годовой birthDate 1970: точный день не нужен для биографии и не подтверждён обоими главными источниками. Shared country files не изменялись.",
+      "notes": "Обе исходные роли подтверждены без оценочного ранжирования. Identity audit corroborated. Рекомендация - сохранить годовой birthDate 1970: точный день не нужен для биографии и не подтверждён обоими главными источниками. Shared country files не изменялись.",
       "applicableTextRu": "Камерунский писатель и литературовед."
     },
     {
@@ -398,7 +398,7 @@
       "reviewedTextRu": "Камерунский поэт и издатель.",
       "claims": [
         {
-          "textRu": "Поль Дакейо — камерунский поэт и издатель.",
+          "textRu": "Поль Дакейо - камерунский поэт и издатель.",
           "verdict": "supported",
           "evidence": [
             {
@@ -408,7 +408,7 @@
               "findingRu": "Профиль прямо называет Поля Дакейо камерунским поэтом и издателем."
             },
             {
-              "provider": "Revue Possibles — Université de Montréal",
+              "provider": "Revue Possibles - Université de Montréal",
               "url": "https://revuepossibles.ojs.umontreal.ca/index.php/revuepossibles/article/download/738/1105/2276",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетское издание подтверждает роли поэта и издателя, рождение 18 февраля 1948 года и основание Éditions Silex."
@@ -418,7 +418,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "unchanged",
-      "notes": "Краткий исходный текст полностью подтверждён. Identity audit corroborated. Доказанная рекомендация — уточнить birthDate с годового 1948 до 1948-02-18. Shared country files не изменялись.",
+      "notes": "Краткий исходный текст полностью подтверждён. Identity audit corroborated. Доказанная рекомендация - уточнить birthDate с годового 1948 до 1948-02-18. Shared country files не изменялись.",
       "applicableTextRu": "Камерунский поэт и издатель."
     },
     {
@@ -431,7 +431,7 @@
           "verdict": "supported",
           "evidence": [
             {
-              "provider": "University of Western Australia — Peuples Noirs Peuples Africains archive",
+              "provider": "University of Western Australia - Peuples Noirs Peuples Africains archive",
               "url": "https://mongobeti.arts.uwa.edu.au/issues/pnpa51/pnpa51_05.html",
               "checkedAt": "2026-08-09",
               "findingRu": "Университетский архив документирует прозу, поэзию, драматургию Филомба, его издательскую работу и руководство Ассоциацией поэтов и писателей Камеруна."
@@ -446,14 +446,14 @@
               "provider": "Bibliothèque nationale de France",
               "url": "https://data.bnf.fr/fr/see_all_activities/11887262/page1",
               "checkedAt": "2026-08-09",
-              "findingRu": "Национальная библиотека подтверждает авторскую идентичность, годы жизни 1930–2001 и корпус произведений."
+              "findingRu": "Национальная библиотека подтверждает авторскую идентичность, годы жизни 1930-2001 и корпус произведений."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "unchanged",
-      "notes": "Исходные роли подтверждены литературным корпусом и организационной деятельностью. Identity audit corroborated. Рекомендация — сохранить birthDate 1930-11-13 и deathDate 2001-10-25; годы подтверждены институционально, а текущая точность не конфликтует с identity mapping. Shared country files не изменялись.",
+      "notes": "Исходные роли подтверждены литературным корпусом и организационной деятельностью. Identity audit corroborated. Рекомендация - сохранить birthDate 1930-11-13 и deathDate 2001-10-25; годы подтверждены институционально, а текущая точность не конфликтует с identity mapping. Shared country files не изменялись.",
       "applicableTextRu": "Камерунский писатель, поэт и общественный деятель."
     },
     {
@@ -462,7 +462,7 @@
       "reviewedTextRu": "Камерунская писательница, поэтесса и драматург.",
       "claims": [
         {
-          "textRu": "Веревер Ликинг — родившаяся в Камеруне писательница, поэтесса и драматург.",
+          "textRu": "Веревер Ликинг - родившаяся в Камеруне писательница, поэтесса и драматург.",
           "verdict": "supported",
           "evidence": [
             {
@@ -482,7 +482,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "unchanged",
-      "notes": "Исходный текст полностью подтверждён и не содержит сравнительной оценки. Identity audit corroborated. Доказанная рекомендация — уточнить birthDate с годового 1950 до 1950-05-01. Shared country files не изменялись.",
+      "notes": "Исходный текст полностью подтверждён и не содержит сравнительной оценки. Identity audit corroborated. Доказанная рекомендация - уточнить birthDate с годового 1950 до 1950-05-01. Shared country files не изменялись.",
       "applicableTextRu": "Камерунская писательница, поэтесса и драматург."
     },
     {
@@ -491,7 +491,7 @@
       "reviewedTextRu": "Канадский астронавт, инженер и лётчик-испытатель, совершивший три космических полёта. Автор книг «Руководство астронавта по жизни на Земле» и «Ты здесь: вокруг света за 92 минуты».",
       "claims": [
         {
-          "textRu": "Крис Хэдфилд — канадский астронавт, инженер и лётчик-испытатель, совершивший три космических полёта и опубликовавший документальные книги о космосе.",
+          "textRu": "Крис Хэдфилд - канадский астронавт, инженер и лётчик-испытатель, совершивший три космических полёта и опубликовавший документальные книги о космосе.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -511,7 +511,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Интерпретация тем книг заменена проверяемыми биографическими и библиографическими фактами. Identity source — articleReferencedBooks; identity established directly. Рекомендация — сохранить birthDate 1959-08-29: расхождений не обнаружено. Shared country files не изменялись.",
+      "notes": "Интерпретация тем книг заменена проверяемыми биографическими и библиографическими фактами. Identity source - articleReferencedBooks; identity established directly. Рекомендация - сохранить birthDate 1959-08-29: расхождений не обнаружено. Shared country files не изменялись.",
       "applicableTextRu": "Канадский астронавт, инженер и лётчик-испытатель, совершивший три космических полёта. Автор книг «Руководство астронавта по жизни на Земле» и «Ты здесь: вокруг света за 92 минуты»."
     },
     {
@@ -533,14 +533,14 @@
               "provider": "McMaster University Archives",
               "url": "https://archives.mcmaster.ca/index.php/margaret-laurence-fonds",
               "checkedAt": "2026-08-09",
-              "findingRu": "Архивный фонд подтверждает даты 18 июля 1926 — 5 января 1987 года, авторскую идентичность и библиографию романов."
+              "findingRu": "Архивный фонд подтверждает даты 18 июля 1926 - 5 января 1987 года, авторскую идентичность и библиографию романов."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Сравнительный статус и обобщённая интерпретация тем заменены конкретными произведениями. Identity audit corroborated. Рекомендация — сохранить birthDate 1926-07-18 и deathDate 1987-01-05: обе даты прямо подтверждены университетским архивом. Shared country files не изменялись.",
+      "notes": "Сравнительный статус и обобщённая интерпретация тем заменены конкретными произведениями. Identity audit corroborated. Рекомендация - сохранить birthDate 1926-07-18 и deathDate 1987-01-05: обе даты прямо подтверждены университетским архивом. Shared country files не изменялись.",
       "applicableTextRu": "Канадская писательница, автор романов «Каменный ангел» (The Stone Angel) и «Прорицатели» (The Diviners)."
     },
     {
@@ -549,7 +549,7 @@
       "reviewedTextRu": "Канадская писательница, автор романов «A Complicated Kindness», «All My Puny Sorrows» и «Women Talking». Роман «A Complicated Kindness» получил Премию генерал-губернатора Канады за художественную прозу.",
       "claims": [
         {
-          "textRu": "Мириам Тейвз — канадская писательница, автор A Complicated Kindness, All My Puny Sorrows и Women Talking; A Complicated Kindness получил Премию генерал-губернатора за художественную прозу.",
+          "textRu": "Мириам Тейвз - канадская писательница, автор A Complicated Kindness, All My Puny Sorrows и Women Talking; A Complicated Kindness получил Премию генерал-губернатора за художественную прозу.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -568,14 +568,14 @@
               "provider": "Canada Council for the Arts",
               "url": "https://canadacouncil.ca/-/media/Files/CCA/Research/2014/10/03/2004-2005/2004-05-MBProvProfile20042005EN.pdf",
               "checkedAt": "2026-08-09",
-              "findingRu": "Официальный отчёт фиксирует награждение Мириам Тейвз за A Complicated Kindness в 2004–2005 годах."
+              "findingRu": "Официальный отчёт фиксирует награждение Мириам Тейвз за A Complicated Kindness в 2004-2005 годах."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Широкая тематическая интерпретация заменена конкретными произведениями и наградой. Identity audit corroborated. Рекомендация — сохранить birthDate 1964-05-21: расхождений identity/date audit не выявил. Shared country files не изменялись.",
+      "notes": "Широкая тематическая интерпретация заменена конкретными произведениями и наградой. Identity audit corroborated. Рекомендация - сохранить birthDate 1964-05-21: расхождений identity/date audit не выявил. Shared country files не изменялись.",
       "applicableTextRu": "Канадская писательница, автор романов «A Complicated Kindness», «All My Puny Sorrows» и «Women Talking». Роман «A Complicated Kindness» получил Премию генерал-губернатора Канады за художественную прозу."
     },
     {
@@ -584,7 +584,7 @@
       "reviewedTextRu": "Канадский писатель, автор романа «Жизнь Пи», удостоенного Букеровской премии в 2002 году.",
       "claims": [
         {
-          "textRu": "Янн Мартел — канадский писатель; его роман Life of Pi получил Букеровскую премию в 2002 году.",
+          "textRu": "Янн Мартел - канадский писатель; его роман Life of Pi получил Букеровскую премию в 2002 году.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -610,7 +610,7 @@
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Недоказанный сравнительный ранг и лишняя семейная характеристика сняты; сохранены авторство и награда. Identity audit corroborated. Рекомендация — сохранить birthDate 1963-06-25: точная дата подтверждена Library and Archives Canada. Shared country files не изменялись.",
+      "notes": "Недоказанный сравнительный ранг и лишняя семейная характеристика сняты; сохранены авторство и награда. Identity audit corroborated. Рекомендация - сохранить birthDate 1963-06-25: точная дата подтверждена Library and Archives Canada. Shared country files не изменялись.",
       "applicableTextRu": "Канадский писатель, автор романа «Жизнь Пи», удостоенного Букеровской премии в 2002 году."
     },
     {
@@ -623,23 +623,23 @@
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "Government of Cabo Verde — Ministry of Culture",
+              "provider": "Government of Cabo Verde - Ministry of Culture",
               "url": "https://www.governo.cv/ministerio-da-cultura-manifesta-pesar-e-consternacao-pela-morte-de-manuel-dnovas/",
               "checkedAt": "2026-08-09",
               "findingRu": "Официальный некролог описывает поэтическую, лирическую и музыкальную работу Мануэла д’Новаша и его сатирическое изображение повседневности Кабо-Верде."
             },
             {
-              "provider": "Inforpress — Agência Cabo-verdiana de Notícias",
+              "provider": "Inforpress - Agência Cabo-verdiana de Notícias",
               "url": "https://inforpress.cv/en/maneldnovasrecebetributoemlisboaparamarcaros15anossobreoseufalecimento",
               "checkedAt": "2026-08-09",
-              "findingRu": "Государственное информационное агентство называет его кабовердианским поэтом и композитором, связывает его с морной и коладейрой и подтверждает годы 1938–2009."
+              "findingRu": "Государственное информационное агентство называет его кабовердианским поэтом и композитором, связывает его с морной и коладейрой и подтверждает годы 1938-2009."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 15",
       "decision": "corrected",
-      "notes": "Оценка известности заменена конкретными ролями, жанрами и тематикой. Identity audit corroborated. Рекомендация — сохранить birthDate 1938-02-24 и deathDate 2009-09-28; официальный некролог и государственная хроника не выявляют конфликта идентичности, а дата смерти соответствует дню поминальной годовщины. Shared country files не изменялись.",
+      "notes": "Оценка известности заменена конкретными ролями, жанрами и тематикой. Identity audit corroborated. Рекомендация - сохранить birthDate 1938-02-24 и deathDate 2009-09-28; официальный некролог и государственная хроника не выявляют конфликта идентичности, а дата смерти соответствует дню поминальной годовщины. Shared country files не изменялись.",
       "applicableTextRu": "Кабовердианский поэт и композитор, автор морн и коладейр о повседневной жизни и общественных темах Кабо-Верде."
     }
   ]

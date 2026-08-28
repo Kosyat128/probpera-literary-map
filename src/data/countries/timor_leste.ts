@@ -13,7 +13,7 @@ export const timorLeste: Country = {
       name: "Франсишку Боржа да Кошта",
       fullName: "Francisco Borja da Costa",
 
-      years: "1946–1975",
+      years: "1946-1975",
 
       birthDate: "1946-10-14",
       deathDate: "1975-12-07",
@@ -62,7 +62,7 @@ export const timorLeste: Country = {
       name: "Фернанду Силван",
       fullName: "Fernando Sylvan",
 
-      years: "1917–1993",
+      years: "1917-1993",
 
       birthDate: "1917-08-26",
       deathDate: "1993-12-21",
@@ -159,7 +159,7 @@ export const timorLeste: Country = {
       name: "Луиш Кардозу",
       fullName: "Luís Cardoso",
 
-      years: "1958–",
+      years: "1958-",
 
       birthDate: "1958-12-07",
       deathDate: "",

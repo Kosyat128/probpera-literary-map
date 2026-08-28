@@ -6,6 +6,7 @@ import {
 } from "../data/articles/catalog";
 import { mediaFocusStyle } from "../utils/mediaFocus";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
+import { PUBLIC_ARCHIVE_ARTICLE_COUNT } from "../data/articles/publicationStats";
 import {
   articleIdFromPath,
   articlePath,
@@ -39,6 +40,7 @@ const sectionOrder = [
   "awards",
   "folklore",
   "author-stories",
+  "miscellaneous",
 ];
 
 const relatedSections: Record<string, readonly string[]> = {
@@ -51,6 +53,7 @@ const relatedSections: Record<string, readonly string[]> = {
   language: ["literary-essays", "folklore"],
   "literary-essays": ["language", "folklore", "writers-world"],
   "author-stories": ["writers-world", "literary-essays"],
+  miscellaneous: ["literary-essays", "writers-world"],
 };
 
 const recommendationStopWords = new Set([
@@ -219,6 +222,10 @@ export default function ArticleLibrarySection({
       }),
     [language]
   );
+  const archiveArticleCount =
+    language === "ru"
+      ? PUBLIC_ARCHIVE_ARTICLE_COUNT
+      : localizedArticleCatalog.length;
   const [sectionId, setSectionId] = useState(sectionFromAddress);
   const [seriesId, setSeriesId] = useState(seriesFromAddress);
   const [search, setSearch] = useState("");
@@ -407,9 +414,9 @@ export default function ArticleLibrarySection({
         <header className="article-library-heading">
           <div>
             <span className="section-kicker">
-              {t("Авторский архив")} · {number(localizedArticleCatalog.length)}{" "}
+              {t("Авторский архив")} · {number(archiveArticleCount)}{" "}
               {t(
-                selectInterfacePlural(localizedArticleCatalog.length, language, [
+                selectInterfacePlural(archiveArticleCount, language, [
                   "публикация",
                   "публикации",
                   "публикаций",
@@ -444,7 +451,7 @@ export default function ArticleLibrarySection({
             aria-pressed={sectionId === "all"}
             onClick={() => changeSection("all")}
           >
-            {t("Все материалы")} <span>{number(localizedArticleCatalog.length)}</span>
+            {t("Все материалы")} <span>{number(archiveArticleCount)}</span>
           </button>
           {sections.map((section) => (
             <button
@@ -531,37 +538,23 @@ export default function ArticleLibrarySection({
                 >
                   <div className="library-card-image">
                     {article.imageUrl ? (
-                      <>
-                        <img
-                          className="library-card-image-backdrop"
-                          src={article.imageUrl}
-                          style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
-                          alt=""
-                          aria-hidden="true"
-                          loading="lazy"
-                          decoding="async"
-                          onError={(event) => {
-                            event.currentTarget.hidden = true;
-                          }}
-                        />
-                        <img
-                          src={article.imageUrl}
-                          style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
-                          alt={
-                            article.imageAlt ||
-                            `${t("Иллюстрация к материалу")} “${article.title}”`
-                          }
-                          loading="lazy"
-                          decoding="async"
-                          onError={(event) =>
-                            applyBrandImageFallback(
-                              event.currentTarget,
-                              article.title,
-                              t("Фирменная обложка материала")
-                            )
-                          }
-                        />
-                      </>
+                      <img
+                        src={article.imageUrl}
+                        style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
+                        alt={
+                          article.imageAlt ||
+                          `${t("Иллюстрация к материалу")} “${article.title}”`
+                        }
+                        loading="lazy"
+                        decoding="async"
+                        onError={(event) =>
+                          applyBrandImageFallback(
+                            event.currentTarget,
+                            article.title,
+                            t("Фирменная обложка материала")
+                          )
+                        }
+                      />
                     ) : (
                       <span aria-hidden="true">
                         <img

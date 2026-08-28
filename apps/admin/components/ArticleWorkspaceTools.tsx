@@ -424,7 +424,7 @@ export default function ArticleWorkspaceTools() {
                 ))
               ) : (
                 <button type="button" disabled>
-                  Добавьте H2/H3 — здесь появится навигация
+                  Добавьте H2/H3 - здесь появится навигация
                 </button>
               )}
             </div>

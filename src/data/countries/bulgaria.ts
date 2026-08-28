@@ -11,7 +11,7 @@ export const bulgaria: Country = {
       name: "Паисий Хилендарский",
       fullName: "Paisius of Hilendar",
 
-      years: "1722–1773",
+      years: "1722-1773",
 
       birthDate: "1722",
       deathDate: "1773",
@@ -58,7 +58,7 @@ export const bulgaria: Country = {
       name: "Христо Ботев",
       fullName: "Hristo Botev",
 
-      years: "1848–1876",
+      years: "1848-1876",
 
       birthDate: "1848-01-06",
       deathDate: "1876-06-01",
@@ -105,7 +105,7 @@ export const bulgaria: Country = {
       name: "Иван Вазов",
       fullName: "Ivan Vazov",
 
-      years: "1850–1921",
+      years: "1850-1921",
 
       birthDate: "1850-07-09",
       deathDate: "1921-09-22",
@@ -154,7 +154,7 @@ export const bulgaria: Country = {
       name: "Элин Пелин",
       fullName: "Elin Pelin",
 
-      years: "1877–1949",
+      years: "1877-1949",
 
       birthDate: "1877-07-18",
       deathDate: "1949-12-03",
@@ -202,7 +202,7 @@ export const bulgaria: Country = {
       name: "Пейо Яворов",
       fullName: "Peyo Yavorov",
 
-      years: "1878–1914",
+      years: "1878-1914",
 
       birthDate: "1878-01-13",
       deathDate: "1914-10-29",
@@ -249,7 +249,7 @@ export const bulgaria: Country = {
       name: "Йордан Йовков",
       fullName: "Yordan Yovkov",
 
-      years: "1880–1937",
+      years: "1880-1937",
 
       birthDate: "1880-11-09",
       deathDate: "1937-10-15",
@@ -296,7 +296,7 @@ export const bulgaria: Country = {
       name: "Гео Милев",
       fullName: "Geo Milev",
 
-      years: "1895–1925",
+      years: "1895-1925",
 
       birthDate: "1895-01-15",
       deathDate: "1925",
@@ -343,7 +343,7 @@ export const bulgaria: Country = {
       name: "Блага Димитрова",
       fullName: "Blaga Dimitrova",
 
-      years: "1922–2003",
+      years: "1922-2003",
 
       birthDate: "1922-01-02",
       deathDate: "2003-05-02",

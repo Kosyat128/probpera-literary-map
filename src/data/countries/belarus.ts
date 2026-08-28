@@ -10,7 +10,7 @@ export const belarus: Country = {
       id: "francysk_skaryna",
       name: "Франциск Скорина",
       fullName: "Francysk Skaryna",
-      years: "ок. 1490–1551",
+      years: "ок. 1490-1551",
 
       birthDate: "ок. 1490",
       deathDate: "ок. 1551",
@@ -57,7 +57,7 @@ export const belarus: Country = {
       name: "Симеон Полоцкий",
       fullName: "Symeon Polotsky",
 
-      years: "1629–1680",
+      years: "1629-1680",
 
       birthDate: "1629-12-12",
       deathDate: "1680-08-25",
@@ -104,7 +104,7 @@ export const belarus: Country = {
       name: "Винцент Дунин-Марцинкевич",
       fullName: "Vintsent Dunin-Martsinkyevich",
 
-      years: "1808–1884",
+      years: "1808-1884",
 
       birthDate: "1808-02-04",
       deathDate: "1884-12-21",
@@ -151,7 +151,7 @@ export const belarus: Country = {
       name: "Франтишек Богушевич",
       fullName: "Francisak Bahushevich",
 
-      years: "1840–1900",
+      years: "1840-1900",
 
       birthDate: "1840-03-21",
       deathDate: "1900-04-28",
@@ -197,7 +197,7 @@ export const belarus: Country = {
       name: "Янка Купала",
       fullName: "Yanka Kupala",
 
-      years: "1882–1942",
+      years: "1882-1942",
 
       birthDate: "1882-07-07",
       deathDate: "1942-06-28",
@@ -244,7 +244,7 @@ export const belarus: Country = {
       name: "Якуб Колас",
       fullName: "Yakub Kolas",
 
-      years: "1882–1956",
+      years: "1882-1956",
 
       birthDate: "1882-11-03",
       deathDate: "1956-08-13",
@@ -291,7 +291,7 @@ export const belarus: Country = {
       name: "Максим Богданович",
       fullName: "Maksim Bahdanovič",
 
-      years: "1891–1917",
+      years: "1891-1917",
 
       birthDate: "1891-12-09",
       deathDate: "1917-05-25",
@@ -337,7 +337,7 @@ export const belarus: Country = {
       name: "Василь Быков",
       fullName: "Vasil Bykau",
 
-      years: "1924–2003",
+      years: "1924-2003",
 
       birthDate: "1924-06-19",
       deathDate: "2003-06-22",
@@ -385,7 +385,7 @@ export const belarus: Country = {
       name: "Алесь Адамович",
       fullName: "Ales Adamovich",
 
-      years: "1927–1994",
+      years: "1927-1994",
 
       birthDate: "1927-09-03",
       deathDate: "1994-01-26",
@@ -431,7 +431,7 @@ export const belarus: Country = {
       name: "Владимир Короткевич",
       fullName: "Uladzimir Karatkievich",
 
-      years: "1930–1984",
+      years: "1930-1984",
 
       birthDate: "1930-11-26",
       deathDate: "1984-07-25",

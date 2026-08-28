@@ -8,7 +8,7 @@ export const japan: Country = {
     {
       id: "murasaki_shikibu",
       name: "Мурасаки Сикибу",
-      years: "ок. 973–ок. 1014",
+      years: "ок. 973-ок. 1014",
       birthDate: "ок. 973",
       deathDate: "ок. 1014",
       birthPlace: "Япония",
@@ -42,7 +42,7 @@ export const japan: Country = {
     {
       id: "sei_shonagon",
       name: "Сэй-Сёнагон",
-      years: "ок. 966–ок. 1025",
+      years: "ок. 966-ок. 1025",
       birthDate: "ок. 966",
       deathDate: "ок. 1025",
       birthPlace: "Япония",
@@ -52,7 +52,7 @@ export const japan: Country = {
         lng: 135.7681
       },
       portrait: "",
-      bio: "Японская писательница и придворная эпохи Хэйан, автор «Записок у изголовья» — одного из главных памятников японской классической литературы.",
+      bio: "Японская писательница и придворная эпохи Хэйан, автор «Записок у изголовья» - одного из главных памятников японской классической литературы.",
       works: [
         "Записки у изголовья"
       ],
@@ -76,7 +76,7 @@ export const japan: Country = {
     {
       id: "kamo_no_chomei",
       name: "Камо-но Тёмэй",
-      years: "1155–1216",
+      years: "1155-1216",
       birthDate: "1155",
       deathDate: "1216",
       birthPlace: "Япония",
@@ -109,7 +109,7 @@ export const japan: Country = {
     {
       id: "yoshida_kenko",
       name: "Ёсида Кэнко",
-      years: "ок. 1283–1352",
+      years: "ок. 1283-1352",
       birthDate: "ок. 1283",
       deathDate: "1352",
       birthPlace: "Япония",
@@ -142,7 +142,7 @@ export const japan: Country = {
     {
       id: "matsuo_basho",
       name: "Мацуо Басё",
-      years: "1644–1694",
+      years: "1644-1694",
       birthDate: "1644",
       deathDate: "1694-11-28",
       birthPlace: "Уэно, Япония",
@@ -180,7 +180,7 @@ export const japan: Country = {
     {
       id: "ihara_saikaku",
       name: "Ихара Сайкаку",
-      years: "1642–1693",
+      years: "1642-1693",
       birthDate: "1642",
       deathDate: "1693-09-09",
       birthPlace: "Осака, Япония",
@@ -216,7 +216,7 @@ export const japan: Country = {
         {
       id: "chikamatsu_monzaemon",
       name: "Тикамацу Мондзаэмон",
-      years: "1653–1725",
+      years: "1653-1725",
       birthDate: "1653",
       deathDate: "1725-01-06",
       birthPlace: "Эхимэ или Киото, Япония",
@@ -252,7 +252,7 @@ export const japan: Country = {
     {
       id: "yosa_buson",
       name: "Ёса Бусон",
-      years: "1716–1784",
+      years: "1716-1784",
       birthDate: "1716",
       deathDate: "1784-01-17",
       birthPlace: "Кэма, Япония",
@@ -287,7 +287,7 @@ export const japan: Country = {
     {
       id: "kobayashi_issa",
       name: "Кобаяси Исса",
-      years: "1763–1828",
+      years: "1763-1828",
       birthDate: "1763-06-15",
       deathDate: "1828-01-05",
       birthPlace: "Касивабара, Япония",
@@ -322,7 +322,7 @@ export const japan: Country = {
     {
       id: "futabatei_shimei",
       name: "Фтабатэй Симмэй",
-      years: "1864–1909",
+      years: "1864-1909",
       birthDate: "1864-04-04",
       deathDate: "1909-05-10",
       birthPlace: "Токио, Япония",
@@ -357,7 +357,7 @@ export const japan: Country = {
     {
       id: "mori_ogai",
       name: "Мори Огай",
-      years: "1862–1922",
+      years: "1862-1922",
       birthDate: "1862-02-17",
       deathDate: "1922-07-09",
       birthPlace: "Цувано, Япония",
@@ -392,7 +392,7 @@ export const japan: Country = {
     {
       id: "natsume_soseki",
       name: "Нацумэ Сосэки",
-      years: "1867–1916",
+      years: "1867-1916",
       birthDate: "1867-02-09",
       deathDate: "1916-12-09",
       birthPlace: "Эдо (Токио), Япония",
@@ -430,7 +430,7 @@ export const japan: Country = {
         {
       id: "yosano_akiko",
       name: "Ёсано Акико",
-      years: "1878–1942",
+      years: "1878-1942",
       birthDate: "1878-12-07",
       deathDate: "1942-05-29",
       birthPlace: "Сакаи, Япония",
@@ -467,7 +467,7 @@ export const japan: Country = {
     {
       id: "ishikawa_takuboku",
       name: "Исикава Такубоку",
-      years: "1886–1912",
+      years: "1886-1912",
       birthDate: "1886-02-20",
       deathDate: "1912-04-13",
       birthPlace: "Иваитэ, Япония",
@@ -501,7 +501,7 @@ export const japan: Country = {
     {
       id: "akutagawa_ryunosuke",
       name: "Акутагава Рюноскэ",
-      years: "1892–1927",
+      years: "1892-1927",
       birthDate: "1892-03-01",
       deathDate: "1927-07-24",
       birthPlace: "Токио, Япония",
@@ -541,7 +541,7 @@ export const japan: Country = {
     {
       id: "tanizaki_junichiro",
       name: "Танидзаки Дзюнъитиро",
-      years: "1886–1965",
+      years: "1886-1965",
       birthDate: "1886-07-24",
       deathDate: "1965-07-30",
       birthPlace: "Токио, Япония",
@@ -579,7 +579,7 @@ export const japan: Country = {
     {
       id: "kawabata_yasunari",
       name: "Кавабата Ясунари",
-      years: "1899–1972",
+      years: "1899-1972",
       birthDate: "1899-06-11",
       deathDate: "1972-04-16",
       birthPlace: "Осака, Япония",
@@ -619,7 +619,7 @@ export const japan: Country = {
     {
       id: "osamu_dazai",
       name: "Осаму Дадзай",
-      years: "1909–1948",
+      years: "1909-1948",
       birthDate: "1909-06-19",
       deathDate: "1948-06-13",
       birthPlace: "Канаги, Япония",
@@ -654,7 +654,7 @@ export const japan: Country = {
         {
       id: "yukio_mishima",
       name: "Юкио Мисима",
-      years: "1925–1970",
+      years: "1925-1970",
       birthDate: "1925-01-14",
       deathDate: "1970-11-25",
       birthPlace: "Токио, Япония",
@@ -692,7 +692,7 @@ export const japan: Country = {
     {
       id: "kobo_abe",
       name: "Кобо Абэ",
-      years: "1924–1993",
+      years: "1924-1993",
       birthDate: "1924-03-07",
       deathDate: "1993-01-22",
       birthPlace: "Токио, Япония",
@@ -728,7 +728,7 @@ export const japan: Country = {
     {
       id: "shusaku_endo",
       name: "Сюсаку Эндо",
-      years: "1923–1996",
+      years: "1923-1996",
       birthDate: "1923-03-27",
       deathDate: "1996-09-29",
       birthPlace: "Токио, Япония",
@@ -764,7 +764,7 @@ export const japan: Country = {
     {
       id: "kenzaburo_oe",
       name: "Кэндзабуро Оэ",
-      years: "1935–2023",
+      years: "1935-2023",
       birthDate: "1935-01-31",
       deathDate: "2023-03-03",
       birthPlace: "Осе, Япония",
@@ -803,7 +803,7 @@ export const japan: Country = {
     {
       id: "shotaro_yasuoka",
       name: "Сётаро Ясуока",
-      years: "1920–2013",
+      years: "1920-2013",
       birthDate: "1920-05-30",
       deathDate: "2013-01-26",
       birthPlace: "Коти, Япония",
@@ -837,7 +837,7 @@ export const japan: Country = {
     {
       id: "ryu_murakami",
       name: "Рю Мураками",
-      years: "1952–",
+      years: "1952-",
       birthDate: "1952-02-19",
       birthPlace: "Сасебо, Япония",
       coordinates: {
@@ -872,7 +872,7 @@ export const japan: Country = {
         {
       id: "haruki_murakami",
       name: "Харуки Мураками",
-      years: "1949–",
+      years: "1949-",
       birthDate: "1949-01-12",
       birthPlace: "Киото, Япония",
       coordinates: {
@@ -939,7 +939,7 @@ export const japan: Country = {
     {
       id: "banana_yoshimoto",
       name: "Банана Ёсимото",
-      years: "1964–",
+      years: "1964-",
       birthDate: "1964-07-24",
       birthPlace: "Токио, Япония",
       coordinates: {
@@ -974,7 +974,7 @@ export const japan: Country = {
     {
       id: "hiromi_kawakami",
       name: "Хироми Каваками",
-      years: "1958–",
+      years: "1958-",
       birthDate: "1958-04-01",
       birthPlace: "Токио, Япония",
       coordinates: {
@@ -1009,7 +1009,7 @@ export const japan: Country = {
     {
       id: "keigo_higashino",
       name: "Кэйго Хигасино",
-      years: "1958–",
+      years: "1958-",
       birthDate: "1958-02-04",
       birthPlace: "Осака, Япония",
       coordinates: {
@@ -1045,7 +1045,7 @@ export const japan: Country = {
     {
       id: "mitsuyo_kakuta",
       name: "Мицуйо Какута",
-      years: "1967–",
+      years: "1967-",
       birthDate: "1967-03-08",
       birthPlace: "Иокогама, Япония",
       coordinates: {
@@ -1080,7 +1080,7 @@ export const japan: Country = {
     {
       id: "kanae_minato",
       name: "Канаэ Минато",
-      years: "1973–",
+      years: "1973-",
       birthDate: "1973-01-01",
       birthPlace: "Хиросима, Япония",
       coordinates: {
@@ -1115,7 +1115,7 @@ export const japan: Country = {
         {
       id: "yasunari_kawabata_additional",
       name: "Катаока Тэцутаро",
-      years: "1894–1981",
+      years: "1894-1981",
       birthDate: "1894-01-01",
       deathDate: "1981-01-01",
       birthPlace: "Япония",
@@ -1146,7 +1146,7 @@ export const japan: Country = {
     {
       id: "yasushi_inoue",
       name: "Ясуси Иноуэ",
-      years: "1907–1991",
+      years: "1907-1991",
       birthDate: "1907-05-06",
       deathDate: "1991-01-29",
       birthPlace: "Асахикава, Япония",
@@ -1183,7 +1183,7 @@ export const japan: Country = {
     {
       id: "sachio_ito",
       name: "Сатио Ито",
-      years: "1864–1913",
+      years: "1864-1913",
       birthDate: "1864",
       deathDate: "1913",
       birthPlace: "Япония",
@@ -1216,7 +1216,7 @@ export const japan: Country = {
     {
       id: "makoto_ooga",
       name: "Макото Оока",
-      years: "1931–2017",
+      years: "1931-2017",
       birthDate: "1931-02-16",
       deathDate: "2017-04-05",
       birthPlace: "Токио, Япония",
@@ -1250,7 +1250,7 @@ export const japan: Country = {
     {
       id: "hirano_keichiro",
       name: "Кэйтиро Хирано",
-      years: "1975–",
+      years: "1975-",
       birthDate: "1975-06-22",
       birthPlace: "Камакура, Япония",
       coordinates: {

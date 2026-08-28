@@ -114,6 +114,8 @@ function homepageLandmark(node: ts.JsxChild, sourceFile: ts.SourceFile) {
   if (!ts.isJsxElement(node) && !ts.isJsxSelfClosingElement(node)) return null;
   const tagName = jsxTagName(node, sourceFile);
   if (tagName === "CmsHomepageBanners") return "cms-banners";
+  if (tagName === "DeferredBookArchive") return "book-archive";
+  if (tagName === "DeferredArticleLibrary") return "article-library";
 
   if (tagName === "Suspense") {
     const descendants = descendantTagNames(node, sourceFile);
@@ -225,6 +227,10 @@ const languageControl = parseSource(
   "src/components/InterfaceLanguageControl.tsx"
 );
 const bookArchive = parseSource("src/components/BookArchiveSection.tsx");
+const deferredHomepageArchives = parseSource(
+  "src/loading/DeferredHomepageArchives.tsx"
+);
+const bookArchiveLocation = parseSource("src/books/bookArchiveLocation.ts");
 const literaryGlobe = parseSource("src/components/LiteraryGlobe.tsx");
 
 describe("Stage 5A governance baseline", () => {
@@ -253,7 +259,7 @@ describe("Stage 5A governance baseline", () => {
       headerArticlesMenu: canonicalFileHash(headerArticlesMenu),
       interfaceLanguageControl: canonicalFileHash(languageControl),
     }).toEqual({
-      headerArticlesMenu: "b393906862f33d07dc90ce62030c5d2c05c733195f291da9e86087cc9f29c172",
+      headerArticlesMenu: "3dc49bb30962ff80bce8d785eb1cb19a1b0269ef9518799caad74c4db311cbde",
       interfaceLanguageControl: "03819534ee01808676bb1bca4fe13d7f125feab9dabed213d6446fee2098402b",
     });
   });
@@ -308,13 +314,23 @@ describe("Stage 5A governance baseline", () => {
   it("keeps BookArchiveSection as the canonical controller", () => {
     expect([...stateOwnerNames(bookArchive)]).toEqual(
       expect.arrayContaining([
+        "filterState",
         "query",
-        "filter",
+        "activeShelfId",
         "visibleCount",
+        "searchScope",
+        "focusedBookKey",
         "selectedBook",
         "relatedArticles",
         "relatedArticlesLoading",
       ])
+    );
+    expect(bookArchive.text).toContain("const [query, setQuery] = useState(");
+    expect(bookArchive.text).toContain(
+      'initialNavigationContext?.search.query || ""'
+    );
+    expect(bookArchive.text).toContain(
+      "const viewMode = shelfState.effectiveViewMode"
     );
     expect([...importedNames(bookArchive, "../data/bookArchive")]).toEqual(
       expect.arrayContaining([
@@ -333,17 +349,31 @@ describe("Stage 5A governance baseline", () => {
     expect(importedNames(bookArchive, "../hooks/useReadingLibrary")).toContain(
       "useReadingLibrary"
     );
-    expect(callCount(app, "buildBookArchive")).toBe(1);
+    expect(callCount(app, "buildBookArchive")).toBe(0);
+    expect(app.text).toContain(
+      "books: runtime.buildBookArchive(bookArchiveCountries)"
+    );
+    expect(deferredHomepageArchives.text).not.toContain(
+      "runtime.buildBookArchive"
+    );
+    expect(deferredHomepageArchives.text).toContain(
+      'import("../components/BookArchiveSection")'
+    );
     expect(callCount(bookArchive, "classifyBookArchiveQueue")).toBe(1);
     expect(
-      jsxNodes(app).filter(
-        (node) => jsxTagName(node, app.sourceFile) === "BookArchiveSection"
+      jsxNodes(deferredHomepageArchives).filter(
+        (node) =>
+          jsxTagName(node, deferredHomepageArchives.sourceFile) ===
+          "BookArchive"
       )
     ).toHaveLength(1);
   });
 
   it("keeps one Book Archive URL/history owner and the canonical RU/EN path", () => {
-    const archiveStrings = stringLiterals(bookArchive.sourceFile);
+    const archiveStrings = new Set([
+      ...stringLiterals(bookArchive.sourceFile),
+      ...stringLiterals(bookArchiveLocation.sourceFile),
+    ]);
     expect([...archiveStrings]).toEqual(
       expect.arrayContaining([
         "book",
@@ -358,8 +388,8 @@ describe("Stage 5A governance baseline", () => {
         "en",
       ])
     );
-    expect(bookArchive.text.match(/searchParams\.set\(\s*["']book["']/gu)).toHaveLength(1);
-    expect(bookArchive.text.match(/searchParams\.delete\(\s*["']book["']/gu)).toHaveLength(1);
+    expect(bookArchiveLocation.text).toContain("params.set(name, safeValue)");
+    expect(bookArchiveLocation.text).toContain("params.delete(name)");
     expect(bookArchive.text.match(/addEventListener\(\s*["']popstate["']/gu)).toHaveLength(2);
     expect(bookArchive.text).toContain("window.history.back()");
 

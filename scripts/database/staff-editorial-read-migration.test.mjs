@@ -20,7 +20,7 @@ const expectedDigest =
 const migration = readFileSync(
   path.join(root, "supabase", "migrations", migrationFilename),
   "utf8"
-);
+).replace(/\r\n?/gu, "\n");
 
 describe("canonical staff editorial read migration", () => {
   it("creates only authenticated staff read paths and refreshes schema health", () => {

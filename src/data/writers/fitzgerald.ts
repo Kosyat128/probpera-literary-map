@@ -1,7 +1,7 @@
 export const fitzgeraldProfile = {
  id:"fitzgerald",
  fullName:"Фрэнсис Скотт Фицджеральд",
- years:"1896–1940",
+ years:"1896-1940",
  country:"США",
  birthPlace:"Сент-Пол, США",
  movement:"Модернизм",

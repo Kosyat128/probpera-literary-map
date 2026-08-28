@@ -5,7 +5,7 @@ import { articleFromSitemap } from "./helpers/article-route.mjs";
 const preferredArticlePath =
   "/15-krylatyh-vyrazheniy-prishedshih-k-nam-iz-drevnegrecheskoy-mifologii/";
 
-test("ArticleReader keeps its controls and long title inside 320–1720px", async ({
+test("ArticleReader keeps its controls and long title inside 320-1720px", async ({
   page,
   request,
   baseURL,
@@ -370,7 +370,7 @@ test("ArticleReader lower panels stay readable in light and book modes", async (
   }
 });
 
-test("globe search metadata and instructions stay readable inside 320–1720px", async ({
+test("globe search metadata and instructions stay readable inside 320-1720px", async ({
   page,
 }) => {
   await page.goto("/");

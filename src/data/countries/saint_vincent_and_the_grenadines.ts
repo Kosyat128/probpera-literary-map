@@ -8,7 +8,7 @@ export const saintVincentAndTheGrenadines: Country = {
     {
       id: "michael_anthony",
       name: "Майкл Энтони",
-      years: "1930–2019",
+      years: "1930-2019",
       birthDate: "1930-02-10",
       deathDate: "2019-01-01",
       birthPlace: "Сент-Винсент",

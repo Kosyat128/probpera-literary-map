@@ -12,7 +12,7 @@ export const kyrgyzstan: Country = {
       name: "Тоголок Молдо",
       fullName: "Baiymbet Abdyrahmanov",
 
-      years: "1860–1942",
+      years: "1860-1942",
 
       birthDate: "1860-06-10",
       deathDate: "1942-01-04",
@@ -62,7 +62,7 @@ export const kyrgyzstan: Country = {
       name: "Касым Тыныстанов",
       fullName: "Kasym Tynystanov",
 
-      years: "1901–1938",
+      years: "1901-1938",
 
       birthDate: "1901-09-10",
       deathDate: "1938-11-06",
@@ -111,7 +111,7 @@ export const kyrgyzstan: Country = {
       name: "Калык Акиев",
       fullName: "Kalyk Akiev",
 
-      years: "1883–1953",
+      years: "1883-1953",
 
       birthDate: "1883-09-21",
       deathDate: "1953-11-03",
@@ -160,7 +160,7 @@ export const kyrgyzstan: Country = {
       name: "Аалы Токомбаев",
       fullName: "Aaly Tokombaev",
 
-      years: "1904–1988",
+      years: "1904-1988",
 
       birthDate: "1904-11-07",
       deathDate: "1988-06-27",
@@ -209,7 +209,7 @@ export const kyrgyzstan: Country = {
       name: "Тугельбай Сыдыкбеков",
       fullName: "Tügölbai Sydykbekov",
 
-      years: "1912–1997",
+      years: "1912-1997",
 
       birthDate: "1912-05-14",
       deathDate: "1997-07-19",
@@ -257,7 +257,7 @@ export const kyrgyzstan: Country = {
       name: "Чингиз Айтматов",
       fullName: "Chyngyz Aitmatov",
 
-      years: "1928–2008",
+      years: "1928-2008",
 
       birthDate: "1928-12-12",
       deathDate: "2008-06-10",
@@ -309,7 +309,7 @@ export const kyrgyzstan: Country = {
       name: "Муса Джангазиев",
       fullName: "Musa Jangaziev",
 
-      years: "1930–2010",
+      years: "1930-2010",
 
       birthDate: "1930-01-01",
       deathDate: "2010-01-01",
@@ -358,7 +358,7 @@ export const kyrgyzstan: Country = {
       name: "Суранбай Эралиев",
       fullName: "Suranbay Eraliev",
 
-      years: "1921–2016",
+      years: "1921-2016",
 
       birthDate: "1921-01-01",
       deathDate: "2016-04-01",
@@ -406,7 +406,7 @@ export const kyrgyzstan: Country = {
       name: "Төлөгөн Касымбеков",
       fullName: "Tölögön Kasymbekov",
 
-      years: "1931–2011",
+      years: "1931-2011",
 
       birthDate: "1931-01-15",
       deathDate: "2011-06-16",

@@ -35,7 +35,7 @@ function sha256(value: Buffer) {
   return createHash("sha256").update(value).digest("hex");
 }
 
-describe("пользовательские редакционные обложки — batch 2026-08-20", () => {
+describe("пользовательские редакционные обложки - batch 2026-08-20", () => {
   it("подключает все 43 artwork третьим манифестом и сохраняет прежние primary", () => {
     const entries = userSuppliedBookCoverBatch20260820Manifest.entries;
     const primaryEntries = entries.filter((entry) => entry.isPrimary);

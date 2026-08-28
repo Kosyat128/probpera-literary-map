@@ -38,18 +38,18 @@ const expectedOriginalSha256 = new Map<string, string>([
   ["england:h_g_wells", "4355ae6552ab168b5c9f77d15737eb545122ed715dfcebf9153dd7143173b6ad"],
   ["england:harold_pinter", "a421a1b2e924c68c25a2555025a74495c2e207be8c68db2c15741495cefa7dd9"],
   ["england:henry_fielding", "6b1514fbb3f50bb123dae06e3ed779bcfed2148276ab77fa3a1e3f194344c40d"],
-  ["england:hilary_mantel", "21ee178593bbefa613e81495daa875bc3d35089f3ba81feeee9a751bf2f36622"],
-  ["england:ian_mcewan", "62554679df32c1b3efa63d39c2e40f4fec9398503cfbbad422ff4834a5d8ab5a"],
+  ["england:hilary_mantel", "e71b83463302aaade8d7bbb9bf4da920b9819f0b523cc18c91ee2cc2b298db2e"],
+  ["england:ian_mcewan", "e415b4a9a22ee958a8d3935136c74443639947e07920086b14604710f2fcd4d6"],
   ["england:j_r_r_tolkien", "598ed7c7e6c8844fbd844884acd38514f3991761268b50d6643b8591d4b9378d"],
   ["england:jane_austen", "a81f6cbd0e51cdec54fc0cc5e656578409ff0111e5294306fea10f34ee705585"],
-  ["england:joanne_harris", "6512e8afc7f32ee6f1aef52f22d3ab58d13ee3771d618ebbc93d141a08734ebf"],
+  ["england:joanne_harris", "6d5605fd1291769a8c23a88f475bc32d1bc5a9591f4cb0da0491b9cfc6e9488b"],
   ["england:john_bunyan", "ed6cbd0879af358c6f5d892381e4d263d94fb292be6b0280b777ec6c728e4377"],
   ["england:john_donne", "ef0eaf0f13c3ad4f5f119d71582ca416a81b3a1430313296a25bb909e7c22250"],
-  ["england:john_fowles", "5d0e636a5159f470588fcdcf67ea7e75b786dc47e1a6be1e5dff60078acdd001"],
+  ["england:john_fowles", "9eb8c4ff190db88661df8ec1684c69e49b2b421217f3c3839aac70e5b901fc49"],
   ["england:john_galsworthy", "36106e63dc5cef10dcb80abcce232ed084c049c9c84d5b62014b652a8d847604"],
   ["england:john_keats", "9417e3caafdedcc1c277bcdd58c0b8d17d755f254d0a0485484d398380b1401d"],
-  ["england:john_le_carre", "8e434b6d90717234085d0729213da24d77aab8ee0d970c5fcd255108628a0b61"],
-  ["england:john_marrs", "cfed816004cecc2425d0ad0bbd205c6155d15cf2ad895f66cd4077bbe1dc013b"],
+  ["england:john_le_carre", "1906e3ce1368143ce299525059538d9b0de03f27844a458cc9eb2e4917cae086"],
+  ["england:john_marrs", "fb8ea4eba3bb3df9832b30b06b8e8f6aa43ebd0374fcd1c4e7f3a7887e2faea7"],
   ["england:john_milton", "398a5e2d7ab9fe6ce4354c548f93156fcb871bf47a463f959abb580cd2bfc09e"],
   ["england:jonathan_swift", "550400efd5e8b850acb16a031254b7ad76ee373ae64a694918bab321a4f70446"],
 ]);
@@ -112,7 +112,7 @@ describe("writer biography claim review batch 24", () => {
     const subjectiveSuperlative =
       /(?:крупнейш|величайш|сам(?:ый|ая|ое|ые|ых)|наиболее|великий|ведущ|важнейш|главнейш|известнейш)/iu;
     const publicReviewMarker =
-      /(?:^|[\s:—-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;—-])/iu;
+      /(?:^|[\s:-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;-])/iu;
 
     for (const record of writerBiographyFactReviewBatch24) {
       const sentenceText = record.reviewedTextRu

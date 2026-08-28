@@ -8,7 +8,7 @@ export const honduras: Country = {
     {
       id: "ramon_amaya_amador",
       name: "Рамон Амайя Амадор",
-      years: "1916–1966",
+      years: "1916-1966",
       birthDate: "1916-04-29",
       deathDate: "1966-11-24",
       birthPlace: "Оланчито, Гондурас",
@@ -46,7 +46,7 @@ export const honduras: Country = {
     {
       id: "juan_ramon_molina",
       name: "Хуан Рамон Молина",
-      years: "1875–1908",
+      years: "1875-1908",
       birthDate: "1875-04-17",
       deathDate: "1908-11-02",
       birthPlace: "Комаягуа, Гондурас",
@@ -56,7 +56,7 @@ export const honduras: Country = {
         lng: -87.6393
       },
       portrait: "",
-      bio: "Гондурасский поэт и журналист, один из наиболее значительных представителей испаноязычной поэзии Центральной Америки конца XIX — начала XX века.",
+      bio: "Гондурасский поэт и журналист, один из наиболее значительных представителей испаноязычной поэзии Центральной Америки конца XIX - начала XX века.",
       works: [
         "Поэтические сборники",
         "Избранные стихи"
@@ -82,7 +82,7 @@ export const honduras: Country = {
     {
       id: "roberto_sosa",
       name: "Роберто Соса",
-      years: "1930–2011",
+      years: "1930-2011",
       birthDate: "1930-04-18",
       deathDate: "2011-05-23",
       birthPlace: "Йоро, Гондурас",
@@ -119,7 +119,7 @@ export const honduras: Country = {
     {
       id: "julio_escoto",
       name: "Хулио Эското",
-      years: "1944–",
+      years: "1944-",
       birthDate: "1944-02-28",
       birthPlace: "Сан-Педро-Сула, Гондурас",
       coordinates: {

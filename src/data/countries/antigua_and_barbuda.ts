@@ -8,7 +8,7 @@ export const antiguaAndBarbuda: Country = {
     {
       id: "jamaica_kincaid",
       name: "Джамейка Кинкейд",
-      years: "1949–",
+      years: "1949-",
       birthDate: "1949-05-25",
       birthPlace: "Сент-Джонс, Антигуа",
       coordinates: {
@@ -46,7 +46,7 @@ export const antiguaAndBarbuda: Country = {
     {
       id: "alison_hughes",
       name: "Элисон Хьюз",
-      years: "1962–",
+      years: "1962-",
       birthDate: "1962-01-01",
       birthPlace: "Антигуа и Барбуда",
       coordinates: {

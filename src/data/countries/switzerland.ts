@@ -10,7 +10,7 @@ export const switzerland: Country = {
       id: "carl_spitteler",
       name: "Карл Фридрих Георг Шпиттелер",
       fullName: "Carl Friedrich Georg Spitteler",
-      years: "1845–1924",
+      years: "1845-1924",
       nobelYear: 1919,
       birthDate: "1845-04-24",
       deathDate: "1924-12-29",
@@ -42,7 +42,7 @@ export const switzerland: Country = {
       id: "johann_kaspar_lavater",
       name: "Иоганн Каспар Лафатер",
       fullName: "Johann Kaspar Lavater",
-      years: "1741–1801",
+      years: "1741-1801",
 
       birthDate: "1741-11-15",
       deathDate: "1801-01-02",
@@ -89,7 +89,7 @@ export const switzerland: Country = {
       name: "Готфрид Келлер",
       fullName: "Gottfried Keller",
 
-      years: "1819–1890",
+      years: "1819-1890",
 
       birthDate: "1819-07-19",
       deathDate: "1890-07-15",
@@ -136,7 +136,7 @@ export const switzerland: Country = {
       name: "Конрад Фердинанд Майер",
       fullName: "Conrad Ferdinand Meyer",
 
-      years: "1825–1898",
+      years: "1825-1898",
 
       birthDate: "1825-10-11",
       deathDate: "1898-11-28",
@@ -183,7 +183,7 @@ export const switzerland: Country = {
       name: "Герман Гессе",
       fullName: "Hermann Hesse",
 
-      years: "1877–1962",
+      years: "1877-1962",
 
       birthDate: "1877-07-02",
       deathDate: "1962-08-09",
@@ -232,7 +232,7 @@ export const switzerland: Country = {
       name: "Роберт Вальзер",
       fullName: "Robert Walser",
 
-      years: "1878–1956",
+      years: "1878-1956",
 
       birthDate: "1878-04-15",
       deathDate: "1956-12-25",
@@ -278,7 +278,7 @@ export const switzerland: Country = {
       name: "Макс Фриш",
       fullName: "Max Frisch",
 
-      years: "1911–1991",
+      years: "1911-1991",
 
       birthDate: "1911-05-15",
       deathDate: "1991-04-04",
@@ -326,7 +326,7 @@ export const switzerland: Country = {
       name: "Фридрих Дюрренматт",
       fullName: "Friedrich Dürrenmatt",
 
-      years: "1921–1990",
+      years: "1921-1990",
 
       birthDate: "1921-01-05",
       deathDate: "1990-12-14",

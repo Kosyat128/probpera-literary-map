@@ -1,7 +1,7 @@
 export const balzacProfile = {
  id:"balzac",
  fullName:"Оноре де Бальзак",
- years:"1799–1850",
+ years:"1799-1850",
  country:"Франция",
  birthPlace:"Тур, Франция",
  movement:"Реализм",

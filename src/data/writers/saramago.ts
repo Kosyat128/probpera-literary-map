@@ -1,7 +1,7 @@
 export const saramagoProfile = {
  id:"saramago",
  fullName:"Жозе Сарамаго",
- years:"1922–2010",
+ years:"1922-2010",
  country:"Португалия",
  birthPlace:"Азиньяга, Португалия",
  movement:"Постмодернизм",

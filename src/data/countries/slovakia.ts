@@ -11,7 +11,7 @@ export const slovakia: Country = {
       name: "Людовит Штур",
       fullName: "Ľudovít Štúr",
 
-      years: "1815–1856",
+      years: "1815-1856",
 
       birthDate: "1815-10-28",
       deathDate: "1856-01-12",
@@ -59,7 +59,7 @@ export const slovakia: Country = {
       name: "Янко Краль",
       fullName: "Janko Kráľ",
 
-      years: "1822–1876",
+      years: "1822-1876",
 
       birthDate: "1822-04-24",
       deathDate: "1876-05-23",
@@ -107,7 +107,7 @@ export const slovakia: Country = {
       name: "Павол Орсаг Гвездослав",
       fullName: "Pavol Országh Hviezdoslav",
 
-      years: "1849–1921",
+      years: "1849-1921",
 
       birthDate: "1849-02-02",
       deathDate: "1921-11-08",
@@ -121,7 +121,7 @@ export const slovakia: Country = {
 
       portrait: "",
 
-      bio: "Крупнейший словацкий поэт и драматург XIX–XX веков.",
+      bio: "Крупнейший словацкий поэт и драматург XIX-XX веков.",
 
       works: [
         "Кровавые сонеты"
@@ -157,7 +157,7 @@ export const slovakia: Country = {
       name: "Мартин Кукучин",
       fullName: "Martin Kukučín",
 
-      years: "1860–1928",
+      years: "1860-1928",
 
       birthDate: "1860-05-17",
       deathDate: "1928-05-21",
@@ -207,7 +207,7 @@ export const slovakia: Country = {
       name: "Божена Сланчикова-Тимрава",
       fullName: "Božena Slančíková-Timrava",
 
-      years: "1867–1951",
+      years: "1867-1951",
 
       birthDate: "1867-10-02",
       deathDate: "1951-11-27",
@@ -256,7 +256,7 @@ export const slovakia: Country = {
       name: "Доминик Татарка",
       fullName: "Dominik Tatarka",
 
-      years: "1913–1989",
+      years: "1913-1989",
 
       birthDate: "1913-03-14",
       deathDate: "1989-05-10",
@@ -305,7 +305,7 @@ export const slovakia: Country = {
       name: "Павол Ранков",
       fullName: "Pavol Rankov",
 
-      years: "1964–",
+      years: "1964-",
 
       birthDate: "1964-09-16",
       deathDate: "",

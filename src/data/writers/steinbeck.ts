@@ -1,7 +1,7 @@
 export const steinbeckProfile = {
  id:"steinbeck",
  fullName:"Джон Эрнст Стейнбек",
- years:"1902–1968",
+ years:"1902-1968",
  country:"США",
  birthPlace:"Салинас, США",
  movement:"Реализм",

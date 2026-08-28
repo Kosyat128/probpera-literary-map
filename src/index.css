@@ -32,8 +32,20 @@
   --ui-space-3: 12px;
   --ui-space-4: 16px;
   --ui-space-5: 20px;
-  --ui-transition-fast: 160ms ease;
-  --ui-transition-base: 180ms ease;
+  /* Stage 5E common UI motion tiers. 3D scenes retain their own contracts. */
+  --ui-motion-micro-min: 80ms;
+  --ui-motion-micro: 120ms;
+  --ui-motion-micro-max: 160ms;
+  --ui-motion-standard-min: 160ms;
+  --ui-motion-standard: 200ms;
+  --ui-motion-standard-max: 240ms;
+  --ui-motion-panel-min: 220ms;
+  --ui-motion-panel: 280ms;
+  --ui-motion-panel-max: 320ms;
+  --ui-motion-ease: cubic-bezier(0.2, 0.72, 0.22, 1);
+  --ui-transition-fast: var(--ui-motion-micro-max) var(--ui-motion-ease);
+  --ui-transition-base: var(--ui-motion-standard) var(--ui-motion-ease);
+  --ui-transition-panel: var(--ui-motion-panel) var(--ui-motion-ease);
   --ui-focus-color: #ff9b45;
   --ui-focus-ring: 0 0 0 3px rgba(246, 117, 24, 0.24);
   --ui-primary: var(--orange);
@@ -1028,7 +1040,7 @@ main [id] {
   height: 100%;
   object-fit: contain;
   object-position: center;
-  transition: transform 400ms ease;
+  transition: transform var(--ui-transition-base);
 }
 
 .articles-mega-lead::after {
@@ -1331,18 +1343,16 @@ main [id] {
   width: 55%;
   height: 180%;
   content: "";
+  opacity: 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
   transform: rotate(22deg);
-  transition: left 420ms ease;
+  transition:
+    left var(--ui-transition-base),
+    opacity var(--ui-transition-fast);
   pointer-events: none;
 }
 
-.header-socials a::before {
-  animation: social-glint 5.2s ease-in-out infinite;
-}
-
 .header-socials a:hover {
-  animation: none;
   color: #fff;
   background: var(--orange-deep);
   border-color: var(--orange);
@@ -1354,6 +1364,7 @@ main [id] {
 .share-links a:hover::before,
 .share-links button:hover::before {
   left: 130%;
+  opacity: 0.86;
 }
 
 .header-socials svg {
@@ -1368,80 +1379,6 @@ main [id] {
   overflow: visible;
   fill: currentColor;
   transform-origin: 50% 50%;
-}
-
-.header-socials a {
-  animation: social-invite 5.2s ease-in-out infinite;
-}
-
-.header-socials a:nth-child(2) {
-  animation-delay: 180ms;
-}
-
-.header-socials a:nth-child(2)::before {
-  animation-delay: 180ms;
-}
-
-.header-socials a:nth-child(3) {
-  animation-delay: 360ms;
-}
-
-.header-socials a:nth-child(3)::before {
-  animation-delay: 360ms;
-}
-
-.header-socials a:nth-child(4) {
-  animation-delay: 540ms;
-}
-
-.header-socials a:nth-child(4)::before {
-  animation-delay: 540ms;
-}
-
-.header-socials a:nth-child(5) {
-  animation-delay: 720ms;
-}
-
-.header-socials a:nth-child(5)::before {
-  animation-delay: 720ms;
-}
-
-@keyframes social-invite {
-  0%,
-  72%,
-  100% {
-    transform: translateY(0);
-    box-shadow: 0 0 0 rgba(246, 117, 24, 0);
-  }
-
-  78% {
-    transform: translateY(-1px);
-    box-shadow:
-      0 0 18px rgba(246, 117, 24, 0.24),
-      0 0 0 2px rgba(246, 117, 24, 0.07);
-  }
-
-  84% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes social-glint {
-  0%,
-  69%,
-  100% {
-    left: -85%;
-    opacity: 0;
-  }
-
-  72% {
-    opacity: 0.86;
-  }
-
-  84% {
-    left: 135%;
-    opacity: 0;
-  }
 }
 
 .header-socials .is-vk svg,
@@ -3782,9 +3719,12 @@ main [id] {
   z-index: -1;
   width: 34%;
   content: "";
+  opacity: 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
   transform: skewX(-18deg);
-  animation: archive-subscribe-shine 4.8s ease-in-out infinite;
+  transition:
+    left var(--ui-transition-base),
+    opacity var(--ui-transition-fast);
 }
 
 .archive-subscribe-icon {
@@ -3839,26 +3779,14 @@ main [id] {
   transform: translateY(-2px);
 }
 
-.archive-subscribe.is-writer {
-  margin: 12px 0 18px;
+.archive-subscribe:hover::before,
+.archive-subscribe:focus-visible::before {
+  left: 120%;
+  opacity: 0.74;
 }
 
-@keyframes archive-subscribe-shine {
-  0%,
-  62% {
-    left: -45%;
-    opacity: 0;
-  }
-
-  72% {
-    opacity: 0.74;
-  }
-
-  88%,
-  100% {
-    left: 120%;
-    opacity: 0;
-  }
+.archive-subscribe.is-writer {
+  margin: 12px 0 18px;
 }
 
 .country-metrics > :last-child {
@@ -3982,10 +3910,10 @@ main [id] {
 
 .writer-list {
   display: grid;
-  max-height: 330px;
-  overflow-y: auto;
+  max-height: none;
+  overflow-y: visible;
   border-top: 1px solid var(--line);
-  overscroll-behavior: contain;
+  overscroll-behavior: auto;
   scrollbar-width: thin;
 }
 
@@ -4177,9 +4105,13 @@ main [id] {
 
 .writer-detail {
   scroll-margin-top: 18px;
-  padding: 19px;
-  background: rgba(255, 255, 255, 0.52);
+  width: 100%;
+  padding: 22px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.72), rgba(255, 250, 244, 0.5)),
+    rgba(255, 255, 255, 0.52);
   border: 1px solid var(--line);
+  border-radius: 12px;
 }
 
 .writer-detail:focus {
@@ -4188,8 +4120,8 @@ main [id] {
 
 .writer-detail-heading {
   display: grid;
-  grid-template-columns: 82px minmax(0, 1fr);
-  gap: 14px;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 16px;
   align-items: start;
 }
 
@@ -4199,11 +4131,11 @@ main [id] {
 
 .writer-verification-status {
   display: grid;
-  grid-template-columns: 29px minmax(0, 1fr);
-  gap: 9px;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: 10px;
   align-items: center;
-  margin-top: 15px;
-  padding: 9px 11px;
+  margin-top: 16px;
+  padding: 10px 12px;
   background: rgba(95, 70, 104, 0.05);
   border: 1px solid rgba(79, 53, 87, 0.14);
   border-radius: 8px;
@@ -4211,8 +4143,8 @@ main [id] {
 
 .writer-verification-status > span {
   display: grid;
-  width: 29px;
-  height: 29px;
+  width: 32px;
+  height: 32px;
   place-items: center;
   color: #fff;
   font-size: 11px;
@@ -4230,14 +4162,14 @@ main [id] {
 .writer-verification-status strong {
   color: #59405f;
   font-family: var(--serif);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
 }
 
 .writer-verification-status small {
   margin-top: 3px;
   color: #8e7c94;
-  font-size: 9px;
+  font-size: 9.5px;
   font-weight: 800;
   line-height: 1.35;
   letter-spacing: 0.035em;
@@ -4270,9 +4202,9 @@ main [id] {
 .writer-detail-tabs {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 3px;
-  margin-top: 15px;
-  padding: 3px;
+  gap: 4px;
+  margin-top: 18px;
+  padding: 4px;
   background: rgba(78, 46, 89, 0.055);
   border: 1px solid var(--line);
   border-radius: 9px;
@@ -4280,10 +4212,10 @@ main [id] {
 
 .writer-detail-tabs button {
   min-width: 0;
-  min-height: 48px;
-  padding: 6px 5px;
+  min-height: 46px;
+  padding: 7px 6px;
   color: #7c6684;
-  font-size: 8.5px;
+  font-size: 9.5px;
   font-weight: 850;
   line-height: 1.3;
   letter-spacing: 0.025em;
@@ -4293,9 +4225,10 @@ main [id] {
   border: 1px solid transparent;
   border-radius: 7px;
   transition:
-    color 160ms ease,
-    background-color 160ms ease,
-    border-color 160ms ease;
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    border-color var(--ui-transition-fast),
+    transform var(--ui-transition-fast);
 }
 
 .writer-detail-tabs button:hover,
@@ -4311,6 +4244,7 @@ main [id] {
   background: linear-gradient(135deg, #69228a, #4b105f);
   border-color: rgba(94, 25, 120, 0.4);
   box-shadow: 0 6px 16px rgba(62, 15, 80, 0.16);
+  transform: translateY(-1px);
 }
 
 .writer-detail-tabs button:disabled {
@@ -4320,7 +4254,15 @@ main [id] {
 
 .writer-detail-tab-panel {
   min-height: 72px;
-  animation: reveal 180ms ease-out both;
+  animation: writer-detail-tab-in var(--ui-motion-standard)
+    var(--ui-motion-ease) both;
+}
+
+@keyframes writer-detail-tab-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 }
 
 .writer-source-empty {
@@ -4335,11 +4277,13 @@ main [id] {
 }
 
 .writer-detail-portrait {
-  width: 82px;
-  height: 104px;
-  border: 1px solid rgba(102, 18, 167, 0.19);
-  border-radius: 3px;
-  box-shadow: 0 12px 28px rgba(48, 16, 66, 0.15);
+  width: 92px;
+  height: 116px;
+  border: 1px solid rgba(102, 18, 167, 0.24);
+  border-radius: 8px;
+  box-shadow:
+    0 14px 32px rgba(48, 16, 66, 0.16),
+    0 0 0 3px rgba(255, 255, 255, 0.5);
   font-size: 20px;
 }
 
@@ -4378,12 +4322,12 @@ main [id] {
 }
 
 .writer-detail h4 {
-  margin: 10px 0 2px;
+  margin: 9px 0 2px;
   color: #30103f;
   font-family: var(--serif);
-  font-size: 25px;
+  font-size: 27px;
   font-weight: 500;
-  line-height: 1.12;
+  line-height: 1.1;
   overflow-wrap: anywhere;
 }
 
@@ -4391,16 +4335,25 @@ main [id] {
   margin: 6px 0 0;
   color: #967d9f;
   font-family: var(--serif);
-  font-size: 12px;
+  font-size: 13px;
   font-style: italic;
 }
 
 .writer-bio {
+  max-width: 62ch;
   margin: 15px 0 0;
   color: #66536d;
   font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.72;
+  font-size: 15px;
+  line-height: 1.74;
+}
+
+.writer-bio p {
+  margin: 0;
+}
+
+.writer-bio p + p {
+  margin-top: 1em;
 }
 
 .globe-laureate-portrait {
@@ -4417,11 +4370,11 @@ main [id] {
 
 .writer-nobel-feature {
   display: grid;
-  grid-template-columns: 42px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 13px;
   align-items: center;
   margin-top: 18px;
-  padding: 14px;
+  padding: 15px;
   background:
     radial-gradient(circle at 10% 20%, rgba(246, 117, 24, 0.14), transparent 42%),
     linear-gradient(135deg, rgba(61, 16, 78, 0.98), rgba(31, 7, 42, 0.98));
@@ -4431,8 +4384,8 @@ main [id] {
 
 .writer-nobel-medal {
   display: block;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   padding: 0;
   overflow: hidden;
   border: 1px solid rgba(255, 210, 132, 0.72);
@@ -4479,7 +4432,7 @@ a.writer-nobel-medal:focus-visible {
   margin-top: 4px;
   color: #fff4e7;
   font-family: var(--serif);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.35;
 }
@@ -4786,7 +4739,8 @@ a.writer-nobel-medal:focus-visible {
   line-height: 1.35;
 }
 
-.writer-detail .writer-record-meta a {
+.writer-detail .writer-record-meta a,
+.writer-detail .writer-record-open-book {
   display: inline-flex;
   gap: 4px;
   align-items: center;
@@ -4794,6 +4748,7 @@ a.writer-nobel-medal:focus-visible {
   margin-left: auto;
   padding: 7px 10px;
   color: #672080;
+  font-family: var(--sans);
   font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.045em;
@@ -4802,17 +4757,71 @@ a.writer-nobel-medal:focus-visible {
   background: rgba(104, 16, 201, 0.05);
   border: 1px solid rgba(104, 16, 201, 0.14);
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .writer-detail .writer-record-meta a:hover,
-.writer-detail .writer-record-meta a:focus-visible {
+.writer-detail .writer-record-meta a:focus-visible,
+.writer-detail .writer-record-open-book:hover,
+.writer-detail .writer-record-open-book:focus-visible {
   color: #fff;
   background: #672080;
   border-color: #672080;
   outline: none;
 }
 
+.writer-detail .writer-record-open-book + a {
+  margin-left: 0;
+}
+
 @media (max-width: 480px) {
+  .writer-detail {
+    padding: 15px;
+  }
+
+  .writer-detail-heading {
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .writer-detail-portrait {
+    width: 72px;
+    height: 92px;
+  }
+
+  .writer-detail h4 {
+    margin-top: 7px;
+    font-size: 22px;
+  }
+
+  .writer-detail-tabs {
+    gap: 2px;
+    padding: 3px;
+  }
+
+  .writer-detail-tabs button {
+    min-height: 44px;
+    padding: 6px 3px;
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+
+  .writer-bio {
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  .writer-nobel-feature {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .writer-nobel-medal {
+    width: 40px;
+    height: 40px;
+  }
+
   .writer-detail .writer-record-section {
     padding: 12px;
   }
@@ -4842,6 +4851,12 @@ a.writer-nobel-medal:focus-visible {
 
   .writer-detail .writer-record-meta a {
     margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .writer-detail-tab-panel {
+    animation: none !important;
   }
 }
 
@@ -5482,17 +5497,6 @@ a.writer-nobel-medal:focus-visible {
   background: #d9d2bb;
   background-position: center;
   background-size: cover;
-}
-
-.archive-book-cover-backdrop {
-  position: absolute !important;
-  inset: -12px;
-  z-index: 0 !important;
-  width: calc(100% + 24px) !important;
-  height: calc(100% + 24px) !important;
-  object-fit: cover !important;
-  filter: blur(16px) saturate(0.78) brightness(0.64);
-  transform: scale(1.08);
 }
 
 .archive-book-cover img {
@@ -6175,17 +6179,6 @@ a.writer-nobel-medal:focus-visible {
   aspect-ratio: 4 / 3;
 }
 
-.editorial-grid .article-image-backdrop {
-  position: absolute !important;
-  inset: -16px;
-  z-index: 0 !important;
-  width: calc(100% + 32px) !important;
-  height: calc(100% + 32px) !important;
-  object-fit: cover !important;
-  filter: blur(22px) saturate(0.76) brightness(0.55);
-  transform: scale(1.08);
-}
-
 .editorial-grid .article-image::after {
   position: absolute;
   inset: 0;
@@ -6200,7 +6193,7 @@ a.writer-nobel-medal:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 500ms ease;
+  transition: transform var(--ui-transition-base);
 }
 
 .editorial-grid .article-image img.is-fallback,
@@ -6214,7 +6207,7 @@ a.writer-nobel-medal:focus-visible {
   box-shadow: 0 16px 40px rgba(18, 3, 29, 0.34);
 }
 
-.editorial-grid article:hover .article-image img:not(.article-image-backdrop) {
+.editorial-grid article:hover .article-image > img {
   transform: scale(1.035);
 }
 
@@ -6356,27 +6349,6 @@ a.writer-nobel-medal:focus-visible {
     border-color 160ms ease,
     transform 160ms ease,
     box-shadow 160ms ease;
-  animation: social-invite 5.2s ease-in-out infinite;
-}
-
-.share-links a::before,
-.share-links button::before {
-  animation: social-glint 5.2s ease-in-out infinite;
-}
-
-.share-links a:nth-of-type(2),
-.share-links a:nth-of-type(2)::before {
-  animation-delay: 180ms;
-}
-
-.share-links a:nth-of-type(3),
-.share-links a:nth-of-type(3)::before {
-  animation-delay: 360ms;
-}
-
-.share-links button,
-.share-links button::before {
-  animation-delay: 540ms;
 }
 
 .share-links svg {
@@ -7042,8 +7014,8 @@ a.writer-nobel-medal:focus-visible {
   object-position: 50% 18%;
   filter: sepia(0.44) hue-rotate(325deg) saturate(0.72) contrast(1.08);
   transition:
-    filter 350ms ease,
-    transform 600ms ease;
+    filter var(--ui-transition-base),
+    transform var(--ui-transition-base);
 }
 
 .author-showcase button:hover .author-showcase-portrait img {
@@ -8160,17 +8132,6 @@ a.writer-nobel-medal:focus-visible {
   isolation: isolate;
 }
 
-.library-card-image-backdrop {
-  position: absolute !important;
-  inset: -14px;
-  z-index: 0 !important;
-  width: calc(100% + 28px) !important;
-  height: calc(100% + 28px) !important;
-  object-fit: cover !important;
-  filter: blur(18px) saturate(0.8) brightness(0.62);
-  transform: scale(1.08);
-}
-
 .is-lead .library-card-image {
   aspect-ratio: 2 / 1;
 }
@@ -8189,10 +8150,10 @@ a.writer-nobel-medal:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform var(--ui-transition-base);
 }
 
-.article-library-grid article:hover .library-card-image img:not(.library-card-image-backdrop) {
+.article-library-grid article:hover .library-card-image > img {
   transform: scale(1.035);
 }
 
@@ -8520,8 +8481,8 @@ a.writer-nobel-medal:focus-visible {
   position: sticky;
   top: 38px;
   align-self: start;
-  max-height: calc(100vh - 150px);
-  overflow-y: auto;
+  max-height: none;
+  overflow-y: visible;
 }
 
 .article-reader-toc > span,
@@ -8881,7 +8842,7 @@ a.writer-nobel-medal:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: transform var(--ui-transition-base);
 }
 
 .article-reader-cover img.is-fallback {
@@ -9396,7 +9357,9 @@ a.writer-nobel-medal:focus-visible {
   border: 1px solid rgba(74, 26, 90, 0.16);
   border-left: 4px solid var(--orange);
   border-radius: 5px;
-  transition: opacity 600ms ease, transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition:
+    opacity var(--ui-transition-base),
+    transform var(--ui-transition-panel);
 }
 
 .article-reader-content .article-design-block h3,
@@ -9486,9 +9449,9 @@ a.writer-nobel-medal:focus-visible {
   background: color-mix(in srgb, var(--reader-bg) 16%, var(--reader-paper));
   transform: translateX(18px) scale(0.985);
   transition:
-    opacity 360ms ease,
-    transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    visibility 0s linear 520ms;
+    opacity var(--ui-transition-base),
+    transform var(--ui-transition-panel),
+    visibility 0s linear var(--ui-motion-panel);
 }
 
 .article-reader-content .article-design-block.is-slider > img.is-active {
@@ -10163,7 +10126,7 @@ a.writer-nobel-medal:focus-visible {
   opacity: 0.96;
   transition:
     opacity 220ms ease,
-    transform 520ms ease;
+    transform var(--ui-transition-base);
 }
 
 .article-reader-more-image i {
@@ -10267,7 +10230,7 @@ a.writer-nobel-medal:focus-visible {
   opacity: 0.94;
   transition:
     opacity 240ms ease,
-    transform 500ms ease;
+    transform var(--ui-transition-base);
 }
 
 .article-reader-related a:hover .article-related-image img,
@@ -11399,6 +11362,7 @@ a.writer-nobel-medal:focus-visible {
   min-height: 0;
   flex: 1;
   margin: 0;
+  overflow: hidden;
   padding: 0;
 }
 
@@ -12358,6 +12322,8 @@ a.writer-nobel-medal:focus-visible {
 
   .community-hub.is-account .account-view {
     grid-template-columns: 1fr;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .account-story {
@@ -13314,6 +13280,13 @@ html[data-theme="book"] .calendar-heading h3 {
   gap: 3px;
 }
 
+.calendar-agenda-event {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(86px, auto);
+  gap: 6px;
+  align-items: stretch;
+}
+
 .calendar-agenda-day button {
   display: grid;
   grid-template-columns: 9px minmax(0, 1fr);
@@ -13376,6 +13349,43 @@ html[data-theme="book"] .calendar-heading h3 {
   grid-column: 2;
   line-height: 1.45;
 }
+
+.calendar-agenda-day .calendar-agenda-country {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width: 132px;
+  min-height: 44px;
+  padding: 7px 9px;
+  color: #5c226f;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
+  background: rgba(104, 16, 201, 0.055);
+  border-color: rgba(76, 8, 124, 0.16);
+}
+
+.calendar-agenda-day .calendar-agenda-country > span {
+  color: #a05725;
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.calendar-agenda-day .calendar-agenda-country:hover,
+.calendar-agenda-day .calendar-agenda-country:focus-visible {
+  color: #421353;
+  background: rgba(104, 16, 201, 0.11);
+  border-color: rgba(76, 8, 124, 0.3);
+  transform: none;
+}
+
 .calendar-agenda-day > div > span {
   padding: 5px 8px;
   color: #927e99;
@@ -13558,11 +13568,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .account-library > div {
   display: grid;
   gap: 10px;
-  max-height: 330px;
   margin-top: 20px;
-  overflow-y: auto;
-  padding-right: 7px;
-  scrollbar-color: rgba(246, 117, 24, 0.45) transparent;
 }
 
 .account-library article {
@@ -14269,7 +14275,7 @@ html[data-theme="book"] .calendar-heading h3 {
     var(--violet-850);
   border-left: 1px solid rgba(255, 169, 84, 0.35);
   box-shadow: -30px 0 100px rgba(0, 0, 0, 0.35);
-  animation: panel-in 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: panel-in var(--ui-motion-panel) var(--ui-motion-ease) both;
 }
 
 .reader-close {
@@ -14386,7 +14392,7 @@ html[data-theme="book"] .calendar-heading h3 {
   flex-direction: column;
   width: min(100%, 1020px);
   max-height: min(900px, calc(100vh - 40px));
-  overflow: hidden auto;
+  overflow: hidden;
   color: #fff;
   background:
     radial-gradient(circle at 94% 5%, rgba(246, 117, 24, 0.16), transparent 21rem),
@@ -14508,6 +14514,15 @@ html[data-theme="book"] .calendar-heading h3 {
 .forum-view,
 .admin-view {
   padding: clamp(28px, 5vw, 68px);
+}
+
+.community-setup,
+.forum-view,
+.admin-view {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .community-setup {

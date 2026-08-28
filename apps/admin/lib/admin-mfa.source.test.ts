@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 
 const root = process.cwd();
 const read = (relativePath: string) =>
-  readFileSync(path.join(root, relativePath), "utf8");
+  readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n?/gu, "\n");
 
 const authSource = read("apps/admin/lib/auth.ts");
 const policySource = read("apps/admin/lib/admin-mfa-policy.ts");

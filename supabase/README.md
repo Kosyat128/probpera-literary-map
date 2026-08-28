@@ -30,11 +30,11 @@ VITE_SUPABASE_PUBLISHABLE_KEY=ВАШ-ПУБЛИЧНЫЙ-ANON-KEY
 
 Защита включается только атомарно: публичный site key и соответствующий ему
 секрет должны относиться к одному Turnstile-виджету. Нельзя включать только
-одну сторону — иначе Supabase отклонит вход или сайт продолжит работать без
+одну сторону - иначе Supabase отклонит вход или сайт продолжит работать без
 проверки.
 
 1. В Cloudflare Turnstile создайте виджет для `probpera.ru` и нужных preview-
-   доменов. Site key является публичным, secret key — только серверным.
+   доменов. Site key является публичным, secret key - только серверным.
 2. В Supabase откройте `Authentication → Bot and Abuse Protection`, выберите
    Cloudflare Turnstile и сохраните secret key. Секрет нельзя помещать в
    `.env.example`, Vite, GitHub Pages или Actions Variable.

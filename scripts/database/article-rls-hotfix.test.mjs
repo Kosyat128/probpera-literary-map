@@ -27,7 +27,7 @@ function hotfixSource(filename) {
   return readFileSync(
     path.join(root, "supabase", "hotfixes", filename),
     "utf8"
-  );
+  ).replace(/\r\n?/gu, "\n");
 }
 
 describe("staff read RLS hotfixes", () => {

@@ -6,7 +6,7 @@
 
 | Поле | Значение |
 |---|---|
-| Stage | `4 — Premium Globe Exploration UX` |
+| Stage | `4 - Premium Globe Exploration UX` |
 | Branch | `codex/premium-globe-exploration` |
 | Base `main` | `6e4380582ecc47cd82eb428148fb6a90fdcc3d70` |
 | Merged Stage 3 | `546fb441e9929a54de5dd87b1f63e133871af8df` (PR #83) |
@@ -45,13 +45,13 @@ Evidence:
 
 - `src/components/LiteraryWorldMap.tsx` и `src/components/LiteraryGlobe.tsx`;
 - `src/atlas/useAtlasExperience.ts`;
-- `src/components/globeAccessibility.test.ts` — single R3F Canvas owner;
-- `tests/e2e/literary-planet-immersion.spec.mjs` — same-Canvas enter/exit/history;
-- `tests/e2e/premium-globe-exploration.spec.mjs` — Canvas identity при keyboard, Random, panel, Nobel, writer и rapid selection.
+- `src/components/globeAccessibility.test.ts` - single R3F Canvas owner;
+- `tests/e2e/literary-planet-immersion.spec.mjs` - same-Canvas enter/exit/history;
+- `tests/e2e/premium-globe-exploration.spec.mjs` - Canvas identity при keyboard, Random, panel, Nobel, writer и rapid selection.
 
 ## Единый camera controller
 
-`GlobeCameraRig` — единственный imperative owner позиции камеры, `OrbitControls.target`, zoom/rotate commands и programmatic flights. React хранит semantic phase/source; frame position, quaternion, target, flight token и settling samples живут в refs/Three objects.
+`GlobeCameraRig` - единственный imperative owner позиции камеры, `OrbitControls.target`, zoom/rotate commands и programmatic flights. React хранит semantic phase/source; frame position, quaternion, target, flight token и settling samples живут в refs/Three objects.
 
 Поддержаны semantic intents:
 
@@ -66,12 +66,12 @@ Evidence:
 
 ### Траектория, timing и безопасность
 
-Direction интерполируется `stableSphericalDirection`, radius — отдельно. Для exact-opposite используется детерминированная ортогональная ось; прямой XYZ chord lerp не применяется. Каждый sample ограничен `GLOBE_SAFE_CAMERA_RADIUS = 2.25`, максимальный country focus — `4.45`; `camera.up` возвращается к `(0, 1, 0)`, roll не накапливается.
+Direction интерполируется `stableSphericalDirection`, radius - отдельно. Для exact-opposite используется детерминированная ортогональная ось; прямой XYZ chord lerp не применяется. Каждый sample ограничен `GLOBE_SAFE_CAMERA_RADIUS = 2.25`, максимальный country focus - `4.45`; `camera.up` возвращается к `(0, 1, 0)`, roll не накапливается.
 
 | Сценарий | Реализованный timing contract |
 |---|---|
-| Desktop near → extreme | `320–830 ms`, distance-aware cubic ease-out |
-| Mobile near → extreme | `280–580 ms` |
+| Desktop near → extreme | `320-830 ms`, distance-aware cubic ease-out |
+| Mobile near → extreme | `280-580 ms` |
 | Reduced motion | `0 ms`, final sample применяется сразу |
 | Manual cancellation | синхронное обнуление flight token на OrbitControls `onStart`/command |
 | Rapid targets | новый intent отменяет прежний; queue отсутствует |
@@ -105,7 +105,7 @@ Priority состояний:
 idle < keyboard candidate < hover < selected
 ```
 
-Candidate имеет холодный контур, hover — warm orange/bronze, selected — restrained ivory/gold. Selected подавляет конфликтующий hover/candidate outline. Microstates используют маленький видимый marker и отдельную увеличенную прозрачную hit geometry.
+Candidate имеет холодный контур, hover - warm orange/bronze, selected - restrained ivory/gold. Selected подавляет конфликтующий hover/candidate outline. Microstates используют маленький видимый marker и отдельную увеличенную прозрачную hit geometry.
 
 Static map/relief textures сохраняют mipmaps, `LinearMipmapLinearFilter` и anisotropy `8`. Dynamic highlight ограничен `1024×512`, имеет anisotropy `1`, `generateMipmaps=false` и Linear min/mag filters. Flag SVG загружается low-priority только для фактически candidate/hovered/selected country; mass preload отсутствует.
 
@@ -121,7 +121,7 @@ Evidence: `globeKeyboardNavigation.ts`, `GlobeViewObserver.tsx`, соответ�
 
 ## Touch
 
-Для embedded coarse pointer default policy — `page-pan`, controls disabled, `touch-action: pan-y pinch-zoom`. Чистый tap по surface по-прежнему может выбрать страну, а drag/scroll отсеивается общим distance-aware gesture detector.
+Для embedded coarse pointer default policy - `page-pan`, controls disabled, `touch-action: pan-y pinch-zoom`. Чистый tap по surface по-прежнему может выбрать страну, а drag/scroll отсеивается общим distance-aware gesture detector.
 
 Явная кнопка «Управлять глобусом» включает `globe-control`/`touch-action:none`, one-finger rotate и two-finger globe zoom. «Вернуться к прокрутке» всегда доступно; Escape сначала выключает embedded full-control. Immersive coarse-pointer view получает full gestures сразу. Offscreen возвращает passive/suspended policy.
 
@@ -155,7 +155,7 @@ Evidence: `useGlobeStyleState.ts`, `useGlobeStyleState.test.ts`, `globeAtlas.ts`
 
 ## Country presentation и breadcrumbs
 
-Desktop embedded и immersive country context — overlay drawer над стабильной сценой. При compact layout selection немедленно показывает bottom-sheet peek с flag, country, writer count и явным «Открыть архив». State machine поддерживает `collapsed → half → expanded → collapsed`; collapsed content получает `aria-hidden` и `inert`, panel scroll остаётся внутри content.
+Desktop embedded и immersive country context - overlay drawer над стабильной сценой. При compact layout selection немедленно показывает bottom-sheet peek с flag, country, writer count и явным «Открыть архив». State machine поддерживает `collapsed → half → expanded → collapsed`; collapsed content получает `aria-hidden` и `inert`, panel scroll остаётся внутри content.
 
 Keyboard/search presentation переносит focus на видимый sheet toggle или `.country-panel`; reduced-motion выбирает `behavior:auto`. Pointer selection сохраняет direct-manipulation focus, но peek остаётся виден поверх globe. Close context и World различны.
 
@@ -171,8 +171,8 @@ Evidence: `atlasExperienceState.ts`, `App.tsx`, `WriterPanel.tsx`, state/accessi
 
 `NobelMarkerLayer` использует deterministic `buildNobelMarkerPlan`:
 
-- far view — максимум один country-level marker/cluster, selected writer выделяется отдельно;
-- near view — individual markers;
+- far view - максимум один country-level marker/cluster, selected writer выделяется отдельно;
+- near view - individual markers;
 - zoom hysteresis `3.05/3.35` предотвращает churn;
 - coincident coordinates разводятся presentation-only spherical offsets без изменения source data;
 - cluster показывает count/year range;
@@ -197,15 +197,15 @@ Evidence: `WriterPanel.tsx`, `App.tsx`, `writerPanelAccessibility.test.ts` и wr
 explicit writer focus → selected country → hover country → view centre
 ```
 
-View centre приходит из actual optical centre ray. Sampling ограничен минимум 80 ms (`10–12 Hz`), а settle принудительно публикует финальный sample. DMS formatter переносит округлённые `60′` в следующий градус, ограничивает poles/antimeridian и выдаёт формат `35°41′ N · 139°41′ E`.
+View centre приходит из actual optical centre ray. Sampling ограничен минимум 80 ms (`10-12 Hz`), а settle принудительно публикует финальный sample. DMS formatter переносит округлённые `60′` в следующий градус, ограничивает poles/antimeridian и выдаёт формат `35°41′ N · 139°41′ E`.
 
 Evidence: `globeCoordinates.ts`, `GlobeViewObserver.tsx` и их unit tests.
 
 ## Random Literary Journey и filters
 
-`chooseRandomLiteraryDestination` — pure deterministic helper. Он работает только по текущей filtered collection, исключает current country и последние 3 session destinations, ослабляя history только для маленького набора. Result использует обычный `random-focus`, обновляет URL и открывает тот же country context без roulette animation.
+`chooseRandomLiteraryDestination` - pure deterministic helper. Он работает только по текущей filtered collection, исключает current country и последние 3 session destinations, ослабляя history только для маленького набора. Result использует обычный `random-focus`, обновляет URL и открывает тот же country context без roulette animation.
 
-Семантика фильтров сохраняется; `10+ авторов` остаётся отдельным filter. `Крупнейшие архивы` — отдельная кнопка, открывающая компактный список пяти крупнейших архивов и не меняющая активный filter сама по себе. Invalidated selection очищается, сохранив camera без бессмысленного reset.
+Семантика фильтров сохраняется; `10+ авторов` остаётся отдельным filter. `Крупнейшие архивы` - отдельная кнопка, открывающая компактный список пяти крупнейших архивов и не меняющая активный filter сама по себе. Invalidated selection очищается, сохранив camera без бессмысленного reset.
 
 Evidence: `globeDiscovery.ts`, `globeDiscovery.test.ts`, `App.tsx` и Random/filter E2E.
 
@@ -250,14 +250,14 @@ Final run registry:
 
 | Gate | Final result |
 |---|---|
-| TypeScript / lint | **PASS — public `tsc` and admin `tsc`; interface catalog 1130 entries; i18n 916 phrases / 55 surfaces / 5 approved exceptions** |
-| Targeted Stage 4 unit/component | **PASS — 19 files / 121 tests** |
-| Full unit/component | **LOCAL WINDOWS LIMITATION — 258 files passed / 2 skipped / 1 failed; 1362 tests passed / 2 skipped / 1 failed.** The sole failure is the pre-existing CRLF-sensitive `scripts/database/atomic-article-bundle.test.mjs`; the tracked migration/test is unchanged. Green Linux CI is required before merge. |
-| Premium + regression E2E | **PASS — premium 22/22; full suite 126 passed / 18 intentional skips / 0 failed, 2 workers, 6.4 min; regression subset 31 passed / 9 intentional skips** |
-| Globe asset QA | **PASS — full textures 4096×2048 and mobile textures 2048×1024 for the antique/earth/modern RU/EN set** |
-| Production/domain/release gates | **Build/domain/SEO subgates PASS — domain 11319/11319; SEO 5262 ready; 161 pages; 2097 redirects; sitemap 172 URLs; visual runtime console errors 0.** The aggregate Windows release check retains only the documented CRLF-sensitive Vitest failure; Linux CI is required before merge. |
-| Performance/artifact budget | **PASS — 114,079,331 / 114,819,072 bytes, headroom 739,741; excluding covers 74,504,165 / 75,497,472, headroom 993,307; 4323 files** |
-| Full-tree `git diff --check` | **PASS — final working tree, exit 0; cached-tree verification is repeated immediately before commit.** |
+| TypeScript / lint | **PASS - public `tsc` and admin `tsc`; interface catalog 1130 entries; i18n 916 phrases / 55 surfaces / 5 approved exceptions** |
+| Targeted Stage 4 unit/component | **PASS - 19 files / 121 tests** |
+| Full unit/component | **LOCAL WINDOWS LIMITATION - 258 files passed / 2 skipped / 1 failed; 1362 tests passed / 2 skipped / 1 failed.** The sole failure is the pre-existing CRLF-sensitive `scripts/database/atomic-article-bundle.test.mjs`; the tracked migration/test is unchanged. Green Linux CI is required before merge. |
+| Premium + regression E2E | **PASS - premium 22/22; full suite 126 passed / 18 intentional skips / 0 failed, 2 workers, 6.4 min; regression subset 31 passed / 9 intentional skips** |
+| Globe asset QA | **PASS - full textures 4096×2048 and mobile textures 2048×1024 for the antique/earth/modern RU/EN set** |
+| Production/domain/release gates | **Build/domain/SEO subgates PASS - domain 11319/11319; SEO 5262 ready; 161 pages; 2097 redirects; sitemap 172 URLs; visual runtime console errors 0.** The aggregate Windows release check retains only the documented CRLF-sensitive Vitest failure; Linux CI is required before merge. |
+| Performance/artifact budget | **PASS - 114,079,331 / 114,819,072 bytes, headroom 739,741; excluding covers 74,504,165 / 75,497,472, headroom 993,307; 4323 files** |
+| Full-tree `git diff --check` | **PASS - final working tree, exit 0; cached-tree verification is repeated immediately before commit.** |
 | Head SHA | The final PR head is pinned by the PR/CI after the documentation commit; a commit cannot truthfully embed its own SHA. |
 
 CI fidelity: the Quality workflow installs the browser binary for the Playwright version already frozen by `package-lock.json`; it no longer performs an inline package downgrade. The overall job ceiling is `30` minutes for the expanded 144-case browser matrix, while worker count, per-test timeout, retries and assertions remain unchanged.
@@ -266,8 +266,8 @@ CI fidelity: the Quality workflow installs the browser binary for the Playwright
 
 Required visual/motion matrix остаётся: `320×800`, `360×800`, `390×844`, `430×932`, `768×1024`, `1024×768`, `1280×800`, `1366×700`, `1366×768`, `1440×900`, `1920×1080`; representative RU/EN; три styles; near/medium/far/opposite/high-latitude/microstate; cancel/latest-wins/Home/writer/Random; compact sheet; reduced motion, forced colors, 200% zoom и weak-mobile/economical profile.
 
-- Visual evidence: **PASS — 16 PNG, all 11 required viewports**, RU/EN, embedded/immersive, all three public styles and selected-country/filter/archive/writer/Nobel/brush states. Registry: [`reports/stage4-visual-evidence/README.md`](../reports/stage4-visual-evidence/README.md), SHA-256 `2e6659e1122ebc8b5b2a9f60630d73d7951410f755f4f569b2e440aa0ece8a90`; remaining P0/P1: `0`; console errors: `0`.
-- SVG/flag focused evidence: **PASS — 360×800 and 390×844, antique/earth/modern**; exactly one Canvas and one rendered style, crisp Japan outline/marker/control SVGs, mobile country-sheet duplication absent, and on-demand flags limited to the selected/hovered countries (`jp.svg`, then `kp.svg` on deliberate hover). All `204/204` local flag SVG assets respond successfully; console warnings/errors: `0`.
+- Visual evidence: **PASS - 16 PNG, all 11 required viewports**, RU/EN, embedded/immersive, all three public styles and selected-country/filter/archive/writer/Nobel/brush states. Registry: [`reports/stage4-visual-evidence/README.md`](../reports/stage4-visual-evidence/README.md), SHA-256 `2e6659e1122ebc8b5b2a9f60630d73d7951410f755f4f569b2e440aa0ece8a90`; remaining P0/P1: `0`; console errors: `0`.
+- SVG/flag focused evidence: **PASS - 360×800 and 390×844, antique/earth/modern**; exactly one Canvas and one rendered style, crisp Japan outline/marker/control SVGs, mobile country-sheet duplication absent, and on-demand flags limited to the selected/hovered countries (`jp.svg`, then `kp.svg` on deliberate hover). All `204/204` local flag SVG assets respond successfully; console warnings/errors: `0`.
 - Motion/runtime evidence: passive texture uploads `0`, offscreen frames `0`, Auto OFF frame counter plateau; premium E2E `22/22`, full E2E `126 passed / 18 intentional skips / 0 failed`, regression subset `31 passed / 9 intentional skips`.
 - Premium performance: total artifact `114,079,331 / 114,819,072` bytes (headroom `739,741`), excluding covers `74,504,165 / 75,497,472` (headroom `993,307`), `4323` files. Retina DPR `1.5` retained the full 4096×2048 tier; compact mobile used the dedicated 2048×1024 tier.
 - Final post-CI-fix build artifacts: main JS `index-CakQm7Rv.js`, `629,468` bytes, SHA-256 `5efa0c417538cd1c9ae440394b010860530922dfed2edbe209e305927c6625be`; CSS `index-Cvad-RPW.css`, `324,296` bytes, SHA-256 `2317e1bb6354395808e7fe4570783a50232ddac0950b4d75b3675620fcb343ef`; globe chunk `LiteraryWorldMap-D8Tss8bM.js`, `92,507` bytes, SHA-256 `f321edf85e8e51fde2b426b741c27cc5f31c83aea162f3cc179afefaaa8005f7`.
@@ -276,4 +276,4 @@ Required visual/motion matrix остаётся: `320×800`, `360×800`, `390×84
 
 Не входят historical literary timeline, writer travel routes, literary cities, novel-action places, historical borders, worldwide book layer, heatmaps, large author network и era reconstruction. Это будущий отдельный Atlas Expansion.
 
-Stage 4 создаётся отдельным PR. Merge — только ручной после зелёного CI и review. Stage 5 автоматически не начинается.
+Stage 4 создаётся отдельным PR. Merge - только ручной после зелёного CI и review. Stage 5 автоматически не начинается.

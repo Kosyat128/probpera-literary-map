@@ -8,7 +8,7 @@ export const uruguay: Country = {
     {
       id: "jose_enrique_rodo",
       name: "Хосе Энрике Родó",
-      years: "1871–1917",
+      years: "1871-1917",
       birthDate: "1871-07-15",
       deathDate: "1917-05-01",
       birthPlace: "Монтевидео, Уругвай",
@@ -47,7 +47,7 @@ export const uruguay: Country = {
     {
       id: "javier_de_viana",
       name: "Хавьер де Виана",
-      years: "1868–1926",
+      years: "1868-1926",
       birthDate: "1868-08-05",
       deathDate: "1926-10-05",
       birthPlace: "Канелонес, Уругвай",
@@ -86,7 +86,7 @@ export const uruguay: Country = {
     {
       id: "carlos_reyles",
       name: "Карлос Рейлес",
-      years: "1868–1938",
+      years: "1868-1938",
       birthDate: "1868-03-30",
       deathDate: "1938-07-24",
       birthPlace: "Монтевидео, Уругвай",
@@ -96,7 +96,7 @@ export const uruguay: Country = {
         lng: -56.1645
       },
       portrait: "",
-      bio: "Уругвайский писатель, один из крупнейших романистов страны конца XIX — начала XX века. Его творчество соединяет реализм, психологический анализ и исследование социальных изменений.",
+      bio: "Уругвайский писатель, один из крупнейших романистов страны конца XIX - начала XX века. Его творчество соединяет реализм, психологический анализ и исследование социальных изменений.",
       works: [
         "Бебе",
         "Примитивный грех",
@@ -124,7 +124,7 @@ export const uruguay: Country = {
         {
       id: "horacio_quiroga",
       name: "Хорасио Кирога",
-      years: "1878–1937",
+      years: "1878-1937",
       birthDate: "1878-12-31",
       deathDate: "1937-02-19",
       birthPlace: "Сальто, Уругвай",
@@ -164,7 +164,7 @@ export const uruguay: Country = {
     {
       id: "felisberto_hernandez",
       name: "Фелисберто Эрнандес",
-      years: "1902–1964",
+      years: "1902-1964",
       birthDate: "1902-10-20",
       deathDate: "1964-01-13",
       birthPlace: "Монтевидео, Уругвай",
@@ -203,7 +203,7 @@ export const uruguay: Country = {
     {
       id: "emilio_frugoni",
       name: "Эмилио Фругонь",
-      years: "1880–1969",
+      years: "1880-1969",
       birthDate: "1880-03-30",
       deathDate: "1969-08-28",
       birthPlace: "Монтевидео, Уругвай",
@@ -240,7 +240,7 @@ export const uruguay: Country = {
         {
       id: "juan_carlos_onetti",
       name: "Хуан Карлос Онетти",
-      years: "1909–1994",
+      years: "1909-1994",
       birthDate: "1909-07-01",
       deathDate: "1994-05-30",
       birthPlace: "Монтевидео, Уругвай",
@@ -282,7 +282,7 @@ export const uruguay: Country = {
     {
       id: "mario_benedetti",
       name: "Марио Бенедетти",
-      years: "1920–2009",
+      years: "1920-2009",
       birthDate: "1920-09-14",
       deathDate: "2009-05-17",
       birthPlace: "Пасо-де-лос-Торос, Уругвай",
@@ -325,7 +325,7 @@ export const uruguay: Country = {
     {
       id: "idea_vilarino",
       name: "Идеа Вилариньо",
-      years: "1920–2009",
+      years: "1920-2009",
       birthDate: "1920-08-18",
       deathDate: "2009-04-28",
       birthPlace: "Монтевидео, Уругвай",
@@ -363,7 +363,7 @@ export const uruguay: Country = {
         {
       id: "eduardo_galeano",
       name: "Эдуардо Галеано",
-      years: "1940–2015",
+      years: "1940-2015",
       birthDate: "1940-09-03",
       deathDate: "2015-04-13",
       birthPlace: "Монтевидео, Уругвай",
@@ -405,7 +405,7 @@ export const uruguay: Country = {
     {
       id: "mario_levrero",
       name: "Марио Левреро",
-      years: "1940–2004",
+      years: "1940-2004",
       birthDate: "1940-01-23",
       deathDate: "2004-08-30",
       birthPlace: "Монтевидео, Уругвай",
@@ -444,7 +444,7 @@ export const uruguay: Country = {
     {
       id: "mauricio_rosencof",
       name: "Маурисио Росенкоф",
-      years: "1933–",
+      years: "1933-",
       birthDate: "1933-06-30",
       birthPlace: "Флореста, Уругвай",
       coordinates: {
@@ -480,7 +480,7 @@ export const uruguay: Country = {
         {
       id: "juan_jose_moron",
       name: "Хуан Хосе Морон",
-      years: "1950–",
+      years: "1950-",
       birthDate: "1950-01-01",
       birthPlace: "Монтевидео, Уругвай",
       coordinates: {
@@ -514,7 +514,7 @@ export const uruguay: Country = {
     {
       id: "silvia_lago",
       name: "Сильвия Лаго",
-      years: "1932–",
+      years: "1932-",
       birthDate: "1932-01-01",
       birthPlace: "Монтевидео, Уругвай",
       coordinates: {
@@ -550,7 +550,7 @@ export const uruguay: Country = {
     {
       id: "maria_ester_vazquez",
       name: "Мария Эстер Васкес",
-      years: "1937–",
+      years: "1937-",
       birthDate: "1937-08-04",
       birthPlace: "Буэнос-Айрес, Аргентина",
       coordinates: {
@@ -573,7 +573,7 @@ export const uruguay: Country = {
         {
       id: "claudia_amenedo",
       name: "Клаудия Аменьо",
-      years: "1969–",
+      years: "1969-",
       birthDate: "1969-01-01",
       birthPlace: "Сан-Хосе, Уругвай",
       coordinates: {

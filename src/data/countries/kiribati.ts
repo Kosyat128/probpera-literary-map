@@ -14,7 +14,7 @@ export const kiribati: Country = {
 
       fullName: "Teresia Kieuea Teaiwa",
 
-      years: "1968–2017",
+      years: "1968-2017",
 
       birthDate: "1968-08-12",
 

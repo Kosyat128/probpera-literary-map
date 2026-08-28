@@ -37,7 +37,7 @@ const writerBiographyFactReviewBatch13Base = [
   {
     key: "belgium:michel_de_ghelderode",
     originalSha256: "945cfdea7c25a0f542501890c6d2125e5adaa1506c32e602e0f4952ce36b771f",
-    reviewedTextRu: "Бельгийский франкоязычный драматург и прозаик, публиковавшийся под именем Мишель де Гельдерод. Среди его произведений — пьеса «Magie rouge».",
+    reviewedTextRu: "Бельгийский франкоязычный драматург и прозаик, публиковавшийся под именем Мишель де Гельдерод. Среди его произведений - пьеса «Magie rouge».",
     claims: [{
       textRu: "Мишель де Гельдерод был бельгийским франкоязычным драматургом и прозаиком; пьеса «Magie rouge» входит в его библиографию.",
       verdict: "corrected",
@@ -53,9 +53,9 @@ const writerBiographyFactReviewBatch13Base = [
   {
     key: "belize:colville_young",
     originalSha256: "b40fffe6be50b7b10c1e7a37df9a18c05757e00e71f573b362d179ae671f083b",
-    reviewedTextRu: "Белизский писатель, музыкант и педагог, занимавший пост генерал-губернатора Белиза в 1993–2021 годах. Автор сборника рассказов «Pataki Full».",
+    reviewedTextRu: "Белизский писатель, музыкант и педагог, занимавший пост генерал-губернатора Белиза в 1993-2021 годах. Автор сборника рассказов «Pataki Full».",
     claims: [{
-      textRu: "Колвилл Янг — белизский писатель, музыкант и педагог, бывший генерал-губернатор страны и автор сборника рассказов «Pataki Full».",
+      textRu: "Колвилл Янг - белизский писатель, музыкант и педагог, бывший генерал-губернатор страны и автор сборника рассказов «Pataki Full».",
       verdict: "corrected",
       evidence: [
         { provider: "Belize National Library Service and Information System", url: "https://www.bnlsis.org/belizeanbiographies", checkedAt, findingRu: "Национальная библиотека Белиза подтверждает литературную, музыкальную и педагогическую деятельность Янга, его государственную должность и включает Pataki Full в список публикаций." },
@@ -72,7 +72,7 @@ const writerBiographyFactReviewBatch13Base = [
     originalSha256: "f8e4e741a8fe263638e35f7270dd8cf7efff6cd8c28ecfcd0533109f000ec682",
     reviewedTextRu: "Белизский юрист, государственный деятель и писатель Гленн Д. Годфри. Автор романа «The Sinner’s Bossanova»; в 1969 году его радиопьеса победила в белизском конкурсе.",
     claims: [{
-      textRu: "Установленный автор карточки — белизский юрист и писатель Гленн Д. Годфри, автор «The Sinner’s Bossanova» и победитель конкурса радиопьес 1969 года.",
+      textRu: "Установленный автор карточки - белизский юрист и писатель Гленн Д. Годфри, автор «The Sinner’s Bossanova» и победитель конкурса радиопьес 1969 года.",
       verdict: "corrected",
       evidence: [
         { provider: "Glenn D. Godfrey & Company LLP", url: "https://godfreylaw.net/team/glenn-d-godfrey/", checkedAt, findingRu: "Официальная профессиональная биография подтверждает полное имя Гленн Д. Годфри, его юридическую и государственную карьеру и литературную работу." },
@@ -92,7 +92,7 @@ const writerBiographyFactReviewBatch13Base = [
       textRu: "Зи Эджелл была белизской писательницей и преподавательницей, автором четырёх названных романов; Beka Lamb получил премию Fawcett Society 1983 года.",
       verdict: "corrected",
       evidence: [
-        { provider: "The University of the West Indies Global Campus", url: "https://global.uwi.edu/news/uwi-expresses-condolences-passing-professor-zee-edgell", checkedAt, findingRu: "Университетский некролог подтверждает профессию, преподавательскую работу, полную романную библиографию, премию Beka Lamb и точные даты жизни 21 октября 1940 — 20 декабря 2020." },
+        { provider: "The University of the West Indies Global Campus", url: "https://global.uwi.edu/news/uwi-expresses-condolences-passing-professor-zee-edgell", checkedAt, findingRu: "Университетский некролог подтверждает профессию, преподавательскую работу, полную романную библиографию, премию Beka Lamb и точные даты жизни 21 октября 1940 - 20 декабря 2020." },
         { provider: "Belize National Library Service and Information System", url: "https://www.bnlsis.org/belizeanbiographies", checkedAt, findingRu: "Национальная библиотека Белиза независимо документирует биографию и литературную деятельность Зи Эджелл." },
       ],
     }],
@@ -121,7 +121,7 @@ const writerBiographyFactReviewBatch13Base = [
     originalSha256: "feb9cdc87e04cba714c710604196f222dd3e66807e9f9c9f667e54b7749a5618",
     reviewedTextRu: "Бутанская писательница, родившаяся в 1952 году в Бумтанге. Её «The Circle of Karma» стал первым англоязычным романом, написанным женщиной из Бутана.",
     claims: [{
-      textRu: "Кунзанг Чоден родилась в Бумтанге в 1952 году; The Circle of Karma — первый англоязычный роман, написанный женщиной из Бутана.",
+      textRu: "Кунзанг Чоден родилась в Бумтанге в 1952 году; The Circle of Karma - первый англоязычный роман, написанный женщиной из Бутана.",
       verdict: "corrected",
       evidence: [
         { provider: "The University of Chicago Press", url: "https://press.uchicago.edu/ucp/books/author/C/K/au16937173.html", checkedAt, findingRu: "Университетское издательство фиксирует место и год рождения, называет Чоден первой бутанской женщиной, написавшей роман на английском, и атрибутирует The Circle of Karma." },
@@ -135,9 +135,9 @@ const writerBiographyFactReviewBatch13Base = [
   {
     key: "bhutan:pema_lingpa",
     originalSha256: "8dcb4f4983dad0991f403964a3bf256b04cfcec7b8d59035ffbe591a9b83d31f",
-    reviewedTextRu: "Бутанский буддийский учитель Пема Лингпа (1450–1521), связанный со школой ньингма, был тертоном — открывателем религиозных «сокровищ» терма. Его наследие включает учения, религиозные тексты и художественные работы.",
+    reviewedTextRu: "Бутанский буддийский учитель Пема Лингпа (1450-1521), связанный со школой ньингма, был тертоном - открывателем религиозных «сокровищ» терма. Его наследие включает учения, религиозные тексты и художественные работы.",
     claims: [{
-      textRu: "Пема Лингпа был бутанским буддийским учителем школы ньингма и тертоном 1450–1521 годов; его наследие включает тексты, учения и художественные работы.",
+      textRu: "Пема Лингпа был бутанским буддийским учителем школы ньингма и тертоном 1450-1521 годов; его наследие включает тексты, учения и художественные работы.",
       verdict: "corrected",
       evidence: [
         { provider: "University of Cambridge, Mongolia and Inner Asia Studies Unit", url: "https://www.miasu.socanth.cam.ac.uk/projects/padgling", checkedAt, findingRu: "Университетский исследовательский проект подтверждает даты, бутанский контекст, связь Пема Лингпы с ньингма и его наследие как открывателя терма, учителя и художника." },
@@ -151,12 +151,12 @@ const writerBiographyFactReviewBatch13Base = [
   {
     key: "bolivia:bartolome_arsans_de_orsua_y_vela",
     originalSha256: "5599580d2426c727997be7713336a8b2656e8e725fcdc3af00de190499457d82",
-    reviewedTextRu: "Бартоломе Арсанс де Орсуа-и-Вела (1676–1736) — хронист из Потоси. Его «Historia de la Villa Imperial de Potosí» охватывает события 1545–1735 годов и служит источником по истории колониального Потоси.",
+    reviewedTextRu: "Бартоломе Арсанс де Орсуа-и-Вела (1676-1736) - хронист из Потоси. Его «Historia de la Villa Imperial de Potosí» охватывает события 1545-1735 годов и служит источником по истории колониального Потоси.",
     claims: [{
-      textRu: "Бартоломе Арсанс де Орсуа-и-Вела жил в 1676–1736 годах, был хронистом из Потоси и написал историю города, охватывающую 1545–1735 годы.",
+      textRu: "Бартоломе Арсанс де Орсуа-и-Вела жил в 1676-1736 годах, был хронистом из Потоси и написал историю города, охватывающую 1545-1735 годы.",
       verdict: "corrected",
       evidence: [
-        { provider: "Universidad Mayor de San Andrés", url: "https://ojs.umsa.bo/index.php/estudiosbolivianos/article/download/1286/986", checkedAt, findingRu: "Университетское исследование приводит даты 1676–1736, идентифицирует Арсанса как хрониста Потоси и описывает его Historia de la Villa Imperial de Potosí." },
+        { provider: "Universidad Mayor de San Andrés", url: "https://ojs.umsa.bo/index.php/estudiosbolivianos/article/download/1286/986", checkedAt, findingRu: "Университетское исследование приводит даты 1676-1736, идентифицирует Арсанса как хрониста Потоси и описывает его Historia de la Villa Imperial de Potosí." },
         { provider: "Biblioteca Virtual Miguel de Cervantes", url: "https://www.cervantesvirtual.com/portales/portal_nacional_bolivia/presentacion/", checkedAt, findingRu: "Национальный портал Боливии в библиотеке Сервантеса включает хронику Арсанса в канон документальных источников по колониальному Потоси." },
       ],
     }],
@@ -183,9 +183,9 @@ const writerBiographyFactReviewBatch13Base = [
   {
     key: "bolivia:hilda_mundy",
     originalSha256: "54edf695407cb3efda26391a20f26111f6f128bf127a89616147506403d12ed8",
-    reviewedTextRu: "Хильда Мунди — псевдоним боливийской писательницы, поэтессы и журналистки Лауры Вильянуэвы Рокабадо. Её книга «Pirotecnia» (1936) и газетные тексты относятся к боливийскому авангарду периода Чакской войны и послевоенных лет.",
+    reviewedTextRu: "Хильда Мунди - псевдоним боливийской писательницы, поэтессы и журналистки Лауры Вильянуэвы Рокабадо. Её книга «Pirotecnia» (1936) и газетные тексты относятся к боливийскому авангарду периода Чакской войны и послевоенных лет.",
     claims: [{
-      textRu: "Хильда Мунди — псевдоним Лауры Вильянуэвы Рокабадо, боливийской писательницы, поэтессы и журналистки; Pirotecnia 1936 года относится к её авангардному наследию.",
+      textRu: "Хильда Мунди - псевдоним Лауры Вильянуэвы Рокабадо, боливийской писательницы, поэтессы и журналистки; Pirotecnia 1936 года относится к её авангардному наследию.",
       verdict: "corrected",
       evidence: [
         { provider: "Universidad Mayor de San Andrés", url: "https://ojs.umsa.bo/index.php/estudiosbolivianos/article/view/1169", checkedAt, findingRu: "Университетское исследование подтверждает настоящее имя, профессии, даты и место Pirotecnia в боливийском авангарде." },
@@ -264,13 +264,13 @@ const writerBiographyFactReviewBatch13Base = [
   {
     key: "bolivia:vilma_tapia_anda",
     originalSha256: "2971cf401233e44f5a1bee3f3efaa37be482d4805b0ac7fab117364a5658a492",
-    reviewedTextRu: "Боливийская поэтесса и автор прозы Вильма Тапиа Анайя, родившаяся в Ла-Пасе в 1960 году. Среди её книг — «La fiesta de mi boda», «El agua más cercana» и «La hierba es un niño».",
+    reviewedTextRu: "Боливийская поэтесса и автор прозы Вильма Тапиа Анайя, родившаяся в Ла-Пасе в 1960 году. Среди её книг - «La fiesta de mi boda», «El agua más cercana» и «La hierba es un niño».",
     claims: [{
-      textRu: "Вильма Тапиа Анайя — боливийская поэтесса и прозаик, родившаяся в Ла-Пасе в 1960 году, автор трёх названных книг.",
+      textRu: "Вильма Тапиа Анайя - боливийская поэтесса и прозаик, родившаяся в Ла-Пасе в 1960 году, автор трёх названных книг.",
       verdict: "corrected",
       evidence: [
         { provider: "Goethe-Institut Bolivia", url: "https://www.goethe.de/ins/bo/es/kul/kui/bol/aut/vta.html", checkedAt, findingRu: "Институциональная авторская страница подтверждает полное имя Vilma Tapia Anaya, рождение в Ла-Пасе в 1960 году, литературные роли и библиографию." },
-        { provider: "Archivo y Biblioteca Nacionales de Bolivia", url: "https://www.archivoybibliotecanacionales.org.bo/images/Contenido/biblioteca/bibliografia-boliviana/BibliografiaBoliviana2006.pdf", checkedAt, findingRu: "Национальная библиография фиксирует Vilma Tapia Anaya (1960–) и её книгу La fiesta de mi boda." },
+        { provider: "Archivo y Biblioteca Nacionales de Bolivia", url: "https://www.archivoybibliotecanacionales.org.bo/images/Contenido/biblioteca/bibliografia-boliviana/BibliografiaBoliviana2006.pdf", checkedAt, findingRu: "Национальная библиография фиксирует Vilma Tapia Anaya (1960-) и её книгу La fiesta de mi boda." },
       ],
     }],
     reviewer,
@@ -287,7 +287,7 @@ const writerBiographyFactReviewBatch13Base = [
       evidence: [
         { provider: "Library of Congress", url: "https://www.loc.gov/item/93842419/", checkedAt, findingRu: "Запись Библиотеки Конгресса подтверждает боливийскую литературную идентичность Бедрегаль, годы жизни и перечисленные произведения." },
         { provider: "Servicio Estatal de Autonomías de Bolivia", url: "https://upload.wikimedia.org/wikipedia/commons/4/48/Mujeres_en_nuestra_historia.pdf", checkedAt, findingRu: "Официальное государственное издание о женщинах в истории Боливии подтверждает роли Бедрегаль и точную дату рождения 21 сентября 1913 года." },
-        { provider: "Universidad Mayor de San Andrés", url: "https://ojs.umsa.bo/index.php/soc_idis_ts/article/view/132/114", checkedAt, findingRu: "Университетское исследование независимо подтверждает биографию 1913–1999 и литературное наследие Бедрегаль." },
+        { provider: "Universidad Mayor de San Andrés", url: "https://ojs.umsa.bo/index.php/soc_idis_ts/article/view/132/114", checkedAt, findingRu: "Университетское исследование независимо подтверждает биографию 1913-1999 и литературное наследие Бедрегаль." },
       ],
     }],
     reviewer,

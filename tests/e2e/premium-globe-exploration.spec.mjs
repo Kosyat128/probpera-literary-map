@@ -234,7 +234,7 @@ test("keyboard candidate selects the optical-centre country without replacing Ca
   await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
 
   const coordinateReadout = page.locator(".atlas-coordinate strong");
-  await expect(coordinateReadout).not.toHaveText("—");
+  await expect(coordinateReadout).not.toHaveText("-");
   let previousCoordinates = await coordinateReadout.textContent();
   let candidateId = "inactive";
   for (let attempt = 0; attempt < 6; attempt += 1) {
@@ -434,13 +434,18 @@ test("atlas filters stay on one line and rich count matches the collection", asy
 
   const rich = filters.locator('[data-atlas-filter="rich"]');
   await expect(rich).toContainText(/10\+ (?:авторов|writers)/iu);
-  const richCount = Number(
-    ((await rich.locator(".atlas-filter-count").textContent()) ?? "").replace(
-      /\D/gu,
-      ""
-    )
-  );
-  expect(richCount).toBeGreaterThan(0);
+  const readRichCount = async () =>
+    Number(
+      ((await rich.locator(".atlas-filter-count").textContent()) ?? "").replace(
+        /\D/gu,
+        ""
+      )
+    );
+  // The interface shell is intentionally available before the demand-loaded
+  // country corpus. Wait on the semantic count owner without coupling this
+  // layout contract to GeoJSON/WebGL renderer readiness.
+  await expect.poll(readRichCount, { timeout: 40_000 }).toBeGreaterThan(0);
+  const richCount = await readRichCount();
   await rich.click();
   await expect(rich).toHaveAttribute("aria-pressed", "true");
   await expect(page).toHaveURL(/[?&]atlas=rich(?:[&#]|$)/u);
@@ -689,7 +694,7 @@ test("coarse embedded globe preserves page pan until explicit full control", asy
   const activeEndX = activeLeft + (activeRight - activeLeft) * 0.8;
   const scrollBeforeDrag = await page.evaluate(() => window.scrollY);
   const coordinateReadout = page.locator(".atlas-coordinate strong");
-  await expect(coordinateReadout).not.toHaveText("—");
+  await expect(coordinateReadout).not.toHaveText("-");
   const coordinatesBeforeDrag = await coordinateReadout.textContent();
   const revisionBeforeDrag = Number(
     await globe.getAttribute("data-globe-view-revision")
@@ -989,6 +994,9 @@ test("writer selection stays still until explicit Show on globe", async ({
 test("manual drag cancels a country flight before the next frame and never snaps back", async ({
   page,
 }) => {
+  // Cold mobile SwiftShader startup varies on shared CI runners. Assertions
+  // remain unchanged; this ceiling only prevents setup time from ending them.
+  test.setTimeout(90_000);
   await page.setViewportSize({ width: 1024, height: 768 });
   const { globe, canvas } = await openAtlas(page);
   await page.locator('[data-atlas-action="enter-immersive"]').click();

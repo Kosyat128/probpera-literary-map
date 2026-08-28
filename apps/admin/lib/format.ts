@@ -8,9 +8,9 @@ export const articleStatusLabels: Record<string, string> = {
 };
 
 export function formatDate(value?: string | null, withTime = false) {
-  if (!value) return "—";
+  if (!value) return "-";
   const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return "—";
+  if (Number.isNaN(parsed.getTime())) return "-";
   return new Intl.DateTimeFormat("ru-RU", {
     day: "2-digit",
     month: "short",

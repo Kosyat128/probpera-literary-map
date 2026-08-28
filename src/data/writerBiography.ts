@@ -84,10 +84,10 @@ export function writerBiographyQualityIssues(
   const text = normalizeBiographyText(translation.text);
   const sentenceCount = countBiographySentences(text);
   if (sentenceCount < 2 || sentenceCount > 4) {
-    issues.push(`биография ${locale} должна содержать 2–4 предложения`);
+    issues.push(`биография ${locale} должна содержать 2-4 предложения`);
   }
   if (text.length < 120 || text.length > 1_600) {
-    issues.push(`биография ${locale} должна содержать 120–1600 знаков`);
+    issues.push(`биография ${locale} должна содержать 120-1600 знаков`);
   }
   if (locale === "ru" && !/[А-Яа-яЁё]/u.test(text)) {
     issues.push("русская биография не содержит кириллицы");

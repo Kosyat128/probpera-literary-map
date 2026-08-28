@@ -14,7 +14,7 @@ export const indonesia: Country = {
 
       fullName: "Pramoedya Ananta Toer",
 
-      years: "1925–2006",
+      years: "1925-2006",
 
       birthDate: "1925-02-06",
 
@@ -74,7 +74,7 @@ export const indonesia: Country = {
 
       fullName: "Haji Abdul Malik Karim Amrullah",
 
-      years: "1908–1981",
+      years: "1908-1981",
 
       birthDate: "1908-02-17",
 
@@ -127,7 +127,7 @@ export const indonesia: Country = {
 
       fullName: "Achdiat Karta Mihardja",
 
-      years: "1911–2010",
+      years: "1911-2010",
 
       birthDate: "1911-03-06",
 
@@ -180,7 +180,7 @@ export const indonesia: Country = {
 
       fullName: "Ayu Utami",
 
-      years: "1968–",
+      years: "1968-",
 
       birthDate: "1968-11-21",
 
@@ -235,7 +235,7 @@ export const indonesia: Country = {
 
       fullName: "Goenawan Mohamad",
 
-      years: "1941–",
+      years: "1941-",
 
       birthDate: "1941-07-29",
 

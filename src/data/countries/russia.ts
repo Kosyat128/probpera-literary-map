@@ -8,7 +8,7 @@ export const russia: Country = {
     {
       id: "nestor",
       name: "Нестор Летописец",
-      years: "ок. 1056–1114",
+      years: "ок. 1056-1114",
       birthDate: "1056",
       deathDate: "1114",
       birthPlace: "Киевская Русь",
@@ -18,7 +18,7 @@ export const russia: Country = {
         lng: 30.5234
       },
       portrait: "",
-      bio: "Монах Киево-Печерского монастыря, традиционно считающийся автором или одним из составителей «Повести временных лет» — важнейшего памятника древнерусской литературы.",
+      bio: "Монах Киево-Печерского монастыря, традиционно считающийся автором или одним из составителей «Повести временных лет» - важнейшего памятника древнерусской литературы.",
       works: [
         "Повесть временных лет"
       ],
@@ -39,7 +39,7 @@ export const russia: Country = {
     {
       id: "kirill-turovsky",
       name: "Кирилл Туровский",
-      years: "ок. 1130–1182",
+      years: "ок. 1130-1182",
       birthDate: "1130",
       deathDate: "1182",
       birthPlace: "Туров, Киевская Русь",
@@ -72,7 +72,7 @@ export const russia: Country = {
     {
       id: "avvakum",
       name: "Протопоп Аввакум Петров",
-      years: "1620/1621–1682",
+      years: "1620/1621-1682",
       birthDate: "1620",
       deathDate: "1682",
       birthPlace: "Григорово, Нижегородский край",
@@ -103,7 +103,7 @@ export const russia: Country = {
     {
       id: "kantemir",
       name: "Антиох Дмитриевич Кантемир",
-      years: "1708–1744",
+      years: "1708-1744",
       birthDate: "1708-09-10",
       deathDate: "1744-03-31",
       birthPlace: "Константинополь",
@@ -134,7 +134,7 @@ export const russia: Country = {
     {
       id: "trediakovsky",
       name: "Василий Кириллович Тредиаковский",
-      years: "1703–1769",
+      years: "1703-1769",
       birthDate: "1703-03-22",
       deathDate: "1769-08-06",
       birthPlace: "Астрахань",
@@ -166,7 +166,7 @@ export const russia: Country = {
     {
       id: "lomonosov",
       name: "Михаил Васильевич Ломоносов",
-      years: "1711–1765",
+      years: "1711-1765",
       birthDate: "1711-11-19",
       deathDate: "1765-04-15",
       birthPlace: "Мишанинская, Архангелогородская губерния",
@@ -199,7 +199,7 @@ export const russia: Country = {
         {
       id: "derzhavin",
       name: "Гавриил Романович Державин",
-      years: "1743–1816",
+      years: "1743-1816",
       birthDate: "1743-07-14",
       deathDate: "1816-07-20",
       birthPlace: "Казань, Российская империя",
@@ -232,7 +232,7 @@ export const russia: Country = {
     {
       id: "fonvizin",
       name: "Денис Иванович Фонвизин",
-      years: "1745–1792",
+      years: "1745-1792",
       birthDate: "1745-04-14",
       deathDate: "1792-12-01",
       birthPlace: "Москва, Российская империя",
@@ -264,7 +264,7 @@ export const russia: Country = {
     {
       id: "karamzin",
       name: "Николай Михайлович Карамзин",
-      years: "1766–1826",
+      years: "1766-1826",
       birthDate: "1766-12-12",
       deathDate: "1826-06-03",
       birthPlace: "Михайловка, Симбирская губерния",
@@ -297,7 +297,7 @@ export const russia: Country = {
     {
       id: "zhukovsky",
       name: "Василий Андреевич Жуковский",
-      years: "1783–1852",
+      years: "1783-1852",
       birthDate: "1783-02-09",
       deathDate: "1852-04-24",
       birthPlace: "Мишенское, Тульская губерния",
@@ -333,7 +333,7 @@ export const russia: Country = {
     {
       id: "batushkov",
       name: "Константин Николаевич Батюшков",
-      years: "1787–1855",
+      years: "1787-1855",
       birthDate: "1787-05-29",
       deathDate: "1855-07-19",
       birthPlace: "Вологда, Российская империя",
@@ -368,7 +368,7 @@ export const russia: Country = {
     {
       id: "krylov",
       name: "Иван Андреевич Крылов",
-      years: "1769–1844",
+      years: "1769-1844",
       birthDate: "1769-02-13",
       deathDate: "1844-11-21",
       birthPlace: "Москва, Российская империя",
@@ -401,7 +401,7 @@ export const russia: Country = {
     {
       id: "griboedov",
       name: "Александр Сергеевич Грибоедов",
-      years: "1795–1829",
+      years: "1795-1829",
       birthDate: "1795-01-15",
       deathDate: "1829-02-11",
       birthPlace: "Москва, Российская империя",
@@ -434,7 +434,7 @@ export const russia: Country = {
     {
       id: "pushkin",
       name: "Александр Сергеевич Пушкин",
-      years: "1799–1837",
+      years: "1799-1837",
       birthDate: "1799-06-06",
       deathDate: "1837-02-10",
       birthPlace: "Москва, Российская империя",
@@ -511,7 +511,7 @@ export const russia: Country = {
         {
       id: "lermontov",
       name: "Михаил Юрьевич Лермонтов",
-      years: "1814–1841",
+      years: "1814-1841",
       birthDate: "1814-10-15",
       deathDate: "1841-07-27",
       birthPlace: "Москва, Российская империя",
@@ -568,7 +568,7 @@ export const russia: Country = {
     {
       id: "gogol",
       name: "Николай Васильевич Гоголь",
-      years: "1809–1852",
+      years: "1809-1852",
       birthDate: "1809-04-01",
       deathDate: "1852-02-21",
       birthPlace: "Великие Сорочинцы, Полтавская губерния",
@@ -605,7 +605,7 @@ export const russia: Country = {
     {
       id: "turgenev",
       name: "Иван Сергеевич Тургенев",
-      years: "1818–1883",
+      years: "1818-1883",
       birthDate: "1818-11-09",
       deathDate: "1883-09-03",
       birthPlace: "Орел, Российская империя",
@@ -637,7 +637,7 @@ export const russia: Country = {
             "семья",
             "Россия XIX века"
           ],
-          description: "Роман о столкновении поколений и мировоззрений в России накануне великих общественных перемен. В центре повествования — Евгений Базаров, чья уверенность в отрицании всех авторитетов проходит испытание дружбой, любовью и самой жизнью.",
+          description: "Роман о столкновении поколений и мировоззрений в России накануне великих общественных перемен. В центре повествования - Евгений Базаров, чья уверенность в отрицании всех авторитетов проходит испытание дружбой, любовью и самой жизнью.",
           coverUrl: "brand/book-covers/fathers-and-sons-editorial.webp",
           coverThumbnailUrl: "brand/book-covers/thumbs/fathers-and-sons-editorial.webp",
           coverSourceUrl: "brand/book-covers/fathers-and-sons-editorial.webp",
@@ -675,7 +675,7 @@ export const russia: Country = {
     {
       id: "goncharov",
       name: "Иван Александрович Гончаров",
-      years: "1812–1891",
+      years: "1812-1891",
       birthDate: "1812-06-18",
       deathDate: "1891-09-27",
       birthPlace: "Симбирск, Российская империя",
@@ -728,7 +728,7 @@ export const russia: Country = {
     {
       id: "ostrovsky",
       name: "Александр Николаевич Островский",
-      years: "1823–1886",
+      years: "1823-1886",
       birthDate: "1823-04-12",
       deathDate: "1886-06-14",
       birthPlace: "Москва, Российская империя",
@@ -742,7 +742,7 @@ export const russia: Country = {
       works: [
         "Гроза",
         "Бесприданница",
-        "Свои люди — сочтёмся!"
+        "Свои люди - сочтёмся!"
       ],
       genres: [
         "драма",
@@ -761,7 +761,7 @@ export const russia: Country = {
     {
       id: "nekrasov",
       name: "Николай Алексеевич Некрасов",
-      years: "1821–1878",
+      years: "1821-1878",
       birthDate: "1821-12-10",
       deathDate: "1878-01-08",
       birthPlace: "Немиров, Подольская губерния",
@@ -794,7 +794,7 @@ export const russia: Country = {
     {
       id: "dostoevsky",
       name: "Фёдор Михайлович Достоевский",
-      years: "1821–1881",
+      years: "1821-1881",
       birthDate: "1821-11-11",
       deathDate: "1881-02-09",
       birthPlace: "Москва, Российская империя",
@@ -814,7 +814,7 @@ export const russia: Country = {
         sourceUrl: "https://commons.wikimedia.org/wiki/File:Fyodor_Dostoyevsky_(Laufert,_1872).jpg",
         checkedAt: "2026-08-02"
       },
-      bio: "Фёдор Достоевский пришёл в литературу как внимательный исследователь человека, оказавшегося перед нравственным выбором. После ареста по делу петрашевцев, инсценировки казни, каторги и ссылки его проза стала особенно напряжённым разговором о свободе, вере, вине и сострадании. В больших романах писателя сталкиваются не готовые ответы, а самостоятельные голоса героев — поэтому «Преступление и наказание», «Идиот» и «Братья Карамазовы» продолжают звучать современно и влиять на литературу, театр, философию и психологию.",
+      bio: "Фёдор Достоевский пришёл в литературу как внимательный исследователь человека, оказавшегося перед нравственным выбором. После ареста по делу петрашевцев, инсценировки казни, каторги и ссылки его проза стала особенно напряжённым разговором о свободе, вере, вине и сострадании. В больших романах писателя сталкиваются не готовые ответы, а самостоятельные голоса героев - поэтому «Преступление и наказание», «Идиот» и «Братья Карамазовы» продолжают звучать современно и влиять на литературу, театр, философию и психологию.",
       works: [
         "Идиот",
       ],
@@ -915,7 +915,7 @@ export const russia: Country = {
     {
       id: "tolstoy",
       name: "Лев Николаевич Толстой",
-      years: "1828–1910",
+      years: "1828-1910",
       birthDate: "1828-09-09",
       deathDate: "1910-11-20",
       birthPlace: "Ясная Поляна, Тульская губерния",
@@ -949,7 +949,7 @@ export const russia: Country = {
           originalLanguage: "русский",
           genres: ["роман-эпопея", "исторический роман"],
           tags: ["наполеоновские войны", "семья", "история", "реализм"],
-          description: "Роман-эпопея, в котором судьбы семей Ростовых, Болконских, Курагиных и Безухова разворачиваются на фоне войн с Наполеоном. Толстой соединяет семейную хронику, историческое повествование и философские размышления о свободе, необходимости и роли личности в истории. Отдельное книжное издание в шести томах вышло в 1868–1869 годах.",
+          description: "Роман-эпопея, в котором судьбы семей Ростовых, Болконских, Курагиных и Безухова разворачиваются на фоне войн с Наполеоном. Толстой соединяет семейную хронику, историческое повествование и философские размышления о свободе, необходимости и роли личности в истории. Отдельное книжное издание в шести томах вышло в 1868-1869 годах.",
           coverUrl: "brand/book-covers/war-and-peace-editorial.webp",
           coverThumbnailUrl: "brand/book-covers/thumbs/war-and-peace-editorial.webp",
           coverSourceUrl: "brand/book-covers/war-and-peace-editorial.webp",
@@ -1019,7 +1019,7 @@ export const russia: Country = {
         {
       id: "chekhov",
       name: "Антон Павлович Чехов",
-      years: "1860–1904",
+      years: "1860-1904",
       birthDate: "1860-01-29",
       deathDate: "1904-07-15",
       birthPlace: "Таганрог, Российская империя",
@@ -1100,7 +1100,7 @@ export const russia: Country = {
         reviewedAt: "2026-07-26",
         sources: [
           {
-            title: "Чеховское Мелихово — история и музейные материалы",
+            title: "Чеховское Мелихово - история и музейные материалы",
             url: "https://chekhovmuseum.com/museum/about/history",
             publisher: "Музей-заповедник А. П. Чехова «Мелихово»"
           }
@@ -1111,7 +1111,7 @@ export const russia: Country = {
     {
       id: "leskov",
       name: "Николай Семёнович Лесков",
-      years: "1831–1895",
+      years: "1831-1895",
       birthDate: "1831-02-04",
       deathDate: "1895-03-05",
       birthPlace: "Орловская губерния",
@@ -1145,7 +1145,7 @@ export const russia: Country = {
     {
       id: "saltykov-shchedrin",
       name: "Михаил Евграфович Салтыков-Щедрин",
-      years: "1826–1889",
+      years: "1826-1889",
       birthDate: "1826-01-27",
       deathDate: "1889-05-10",
       birthPlace: "Спас-Угол, Тверская губерния",
@@ -1179,7 +1179,7 @@ export const russia: Country = {
     {
       id: "buninin",
       name: "Иван Алексеевич Бунин",
-      years: "1870–1953",
+      years: "1870-1953",
       birthDate: "1870-10-22",
       deathDate: "1953-11-08",
       birthPlace: "Воронеж, Российская империя",
@@ -1215,7 +1215,7 @@ export const russia: Country = {
     {
       id: "blok",
       name: "Александр Александрович Блок",
-      years: "1880–1921",
+      years: "1880-1921",
       birthDate: "1880-11-28",
       deathDate: "1921-08-07",
       birthPlace: "Санкт-Петербург",
@@ -1248,7 +1248,7 @@ export const russia: Country = {
     {
       id: "akhmatova",
       name: "Анна Андреевна Ахматова",
-      years: "1889–1966",
+      years: "1889-1966",
       birthDate: "1889-06-23",
       deathDate: "1966-03-05",
       birthPlace: "Большой Фонтан, Российская империя",
@@ -1281,7 +1281,7 @@ export const russia: Country = {
     {
       id: "bulgakov",
       name: "Михаил Афанасьевич Булгаков",
-      years: "1891–1940",
+      years: "1891-1940",
       birthDate: "1891-05-15",
       deathDate: "1940-03-10",
       birthPlace: "Киев, Российская империя",
@@ -1303,7 +1303,7 @@ export const russia: Country = {
           originalLanguage: "русский",
           genres: ["роман", "фантастика", "сатира"],
           tags: ["Москва", "Понтий Пилат", "творчество", "свобода"],
-          description: "Главный роман Михаила Булгакова, над которым писатель работал в 1928–1940 годах. Первая журнальная публикация состоялась посмертно, с купюрами, в 1966–1967 годах.",
+          description: "Главный роман Михаила Булгакова, над которым писатель работал в 1928-1940 годах. Первая журнальная публикация состоялась посмертно, с купюрами, в 1966-1967 годах.",
           coverUrl: "https://covers.openlibrary.org/b/id/15013644-L.jpg",
           coverSourceUrl: "https://openlibrary.org/works/OL36999384W",
           coverRights: {
@@ -1376,7 +1376,7 @@ export const russia: Country = {
     {
       id: "solzhenitsyn",
       name: "Александр Исаевич Солженицын",
-      years: "1918–2008",
+      years: "1918-2008",
       birthDate: "1918-12-11",
       deathDate: "2008-08-03",
       birthPlace: "Кисловодск, Россия",
@@ -1411,7 +1411,7 @@ export const russia: Country = {
     {
   id: "esenin",
   name: "Сергей Александрович Есенин",
-      years: "1895–1925",
+      years: "1895-1925",
       birthDate: "1895-09-21",
       deathDate: "1925-12-28",
       birthPlace: "Константиново, Рязанская губерния",
@@ -1444,7 +1444,7 @@ export const russia: Country = {
     {
       id: "tsvetaeva",
       name: "Марина Ивановна Цветаева",
-      years: "1892–1941",
+      years: "1892-1941",
       birthDate: "1892-10-08",
       deathDate: "1941-08-31",
       birthPlace: "Москва, Российская империя",
@@ -1477,7 +1477,7 @@ export const russia: Country = {
     {
       id: "mandelstam",
       name: "Осип Эмильевич Мандельштам",
-      years: "1891–1938",
+      years: "1891-1938",
       birthDate: "1891-01-15",
       deathDate: "1938-12-27",
       birthPlace: "Варшава, Российская империя",
@@ -1509,7 +1509,7 @@ export const russia: Country = {
     {
       id: "pasternak",
       name: "Борис Леонидович Пастернак",
-      years: "1890–1960",
+      years: "1890-1960",
       birthDate: "1890-01-29",
       deathDate: "1960-05-30",
       birthPlace: "Москва, Российская империя",
@@ -1542,7 +1542,7 @@ export const russia: Country = {
         }
       ],
       works: [
-        "Сестра моя — жизнь"
+        "Сестра моя - жизнь"
       ],
       genres: [
         "роман",
@@ -1563,7 +1563,7 @@ export const russia: Country = {
     {
       id: "nabrakov",
       name: "Владимир Владимирович Набоков",
-      years: "1899–1977",
+      years: "1899-1977",
       birthDate: "1899-04-22",
       deathDate: "1977-07-02",
       birthPlace: "Санкт-Петербург, Российская империя",
@@ -1596,7 +1596,7 @@ export const russia: Country = {
     {
       id: "sholokhov",
       name: "Михаил Александрович Шолохов",
-      years: "1905–1984",
+      years: "1905-1984",
       birthDate: "1905-05-24",
       deathDate: "1984-02-21",
       birthPlace: "Кружилинский, Российская империя",
@@ -1650,7 +1650,7 @@ export const russia: Country = {
     {
       id: "brodsky",
       name: "Иосиф Александрович Бродский",
-      years: "1940–1996",
+      years: "1940-1996",
       birthDate: "1940-05-24",
       deathDate: "1996-01-28",
       birthPlace: "Ленинград, СССР",
@@ -1684,7 +1684,7 @@ export const russia: Country = {
     {
       id: "pelevin",
       name: "Виктор Олегович Пелевин",
-      years: "1962–",
+      years: "1962-",
       birthDate: "1962-11-22",
       birthPlace: "Москва, СССР",
       coordinates: {

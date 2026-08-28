@@ -59,6 +59,6 @@ describe("literary work editorial artwork", () => {
     expect(editorialArtworkDigest("a".repeat(64))).toBe(
       `${"a".repeat(12)}…${"a".repeat(8)}`
     );
-    expect(editorialArtworkDigest("not-a-digest")).toBe("—");
+    expect(editorialArtworkDigest("not-a-digest")).toBe("-");
   });
 });

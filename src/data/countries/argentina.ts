@@ -8,7 +8,7 @@ export const argentina: Country = {
     {
       id: "domingo_faustino_sarmiento",
       name: "Доминго Фаустино Сармьенто",
-      years: "1811–1888",
+      years: "1811-1888",
       birthDate: "1811-02-15",
       deathDate: "1888-09-11",
       birthPlace: "Сан-Хуан, Аргентина",
@@ -44,7 +44,7 @@ export const argentina: Country = {
     {
       id: "esteban_echeverria",
       name: "Эстебан Эчеверрия",
-      years: "1805–1851",
+      years: "1805-1851",
       birthDate: "1805-09-02",
       deathDate: "1851-01-19",
       birthPlace: "Буэнос-Айрес, Аргентина",
@@ -80,7 +80,7 @@ export const argentina: Country = {
     {
       id: "jose_hernandez",
       name: "Хосе Эрнандес",
-      years: "1834–1886",
+      years: "1834-1886",
       birthDate: "1834-11-10",
       deathDate: "1886-10-21",
       birthPlace: "Чакабуко, Аргентина",
@@ -116,7 +116,7 @@ export const argentina: Country = {
     {
       id: "leopoldo_lugones",
       name: "Леопольдо Лугонес",
-      years: "1874–1938",
+      years: "1874-1938",
       birthDate: "1874-06-13",
       deathDate: "1938-02-18",
       birthPlace: "Вилья-Мария-дель-Рио-Секо, Аргентина",
@@ -153,7 +153,7 @@ export const argentina: Country = {
         {
       id: "ricardo_guiraldes",
       name: "Рикардо Гуиральдес",
-      years: "1886–1927",
+      years: "1886-1927",
       birthDate: "1886-02-13",
       deathDate: "1927-10-08",
       birthPlace: "Буэнос-Айрес, Аргентина",
@@ -190,7 +190,7 @@ export const argentina: Country = {
     {
       id: "victoria_ocampo",
       name: "Виктория Окампо",
-      years: "1890–1979",
+      years: "1890-1979",
       birthDate: "1890-04-07",
       deathDate: "1979-01-27",
       birthPlace: "Буэнос-Айрес, Аргентина",
@@ -229,7 +229,7 @@ export const argentina: Country = {
     {
       id: "jorge_luis_borges",
       name: "Хорхе Луис Борхес",
-      years: "1899–1986",
+      years: "1899-1986",
       birthDate: "1899-08-24",
       deathDate: "1986-06-14",
       birthPlace: "Буэнос-Айрес, Аргентина",
@@ -272,7 +272,7 @@ export const argentina: Country = {
     {
       id: "adolfo_bioy_casares",
       name: "Адольфо Биой Касарес",
-      years: "1914–1999",
+      years: "1914-1999",
       birthDate: "1914-09-15",
       deathDate: "1999-03-08",
       birthPlace: "Буэнос-Айрес, Аргентина",
@@ -311,7 +311,7 @@ export const argentina: Country = {
         {
       id: "ernesto_sabato",
       name: "Эрнесто Сабато",
-      years: "1911–2011",
+      years: "1911-2011",
       birthDate: "1911-06-24",
       deathDate: "2011-04-30",
       birthPlace: "Рохас, Аргентина",
@@ -350,7 +350,7 @@ export const argentina: Country = {
     {
       id: "julio_cortazar",
       name: "Хулио Кортасар",
-      years: "1914–1984",
+      years: "1914-1984",
       birthDate: "1914-08-26",
       deathDate: "1984-02-12",
       birthPlace: "Иксель, Бельгия",
@@ -365,7 +365,7 @@ export const argentina: Country = {
         "Игра в классики",
         "Рассказ о хронопах и фамах",
         "Тайное оружие",
-        "Все огни — огонь"
+        "Все огни - огонь"
       ],
       genres: [
         "роман",
@@ -391,7 +391,7 @@ export const argentina: Country = {
     {
       id: "manuel_puig",
       name: "Мануэль Пуиг",
-      years: "1932–1990",
+      years: "1932-1990",
       birthDate: "1932-12-28",
       deathDate: "1990-07-22",
       birthPlace: "Хенераль-Вильегас, Аргентина",
@@ -428,7 +428,7 @@ export const argentina: Country = {
     {
       id: "cesar_aira",
       name: "Сесар Айра",
-      years: "1949–",
+      years: "1949-",
       birthDate: "1949-02-23",
       birthPlace: "Коронель-Принглес, Аргентина",
       coordinates: {
@@ -464,7 +464,7 @@ export const argentina: Country = {
     {
       id: "rodrigo_fresan",
       name: "Родриго Фресан",
-      years: "1963–",
+      years: "1963-",
       birthDate: "1963-07-18",
       birthPlace: "Буэнос-Айрес, Аргентина",
       coordinates: {
@@ -499,7 +499,7 @@ export const argentina: Country = {
         {
       id: "samanta_schweblin",
       name: "Саманта Швеблин",
-      years: "1978–",
+      years: "1978-",
       birthDate: "1978-03-08",
       birthPlace: "Буэнос-Айрес, Аргентина",
       coordinates: {
@@ -539,7 +539,7 @@ export const argentina: Country = {
     {
       id: "andres_neuman",
       name: "Андрес Нейман",
-      years: "1977–",
+      years: "1977-",
       birthDate: "1977-01-28",
       birthPlace: "Буэнос-Айрес, Аргентина",
       coordinates: {
@@ -576,7 +576,7 @@ export const argentina: Country = {
     {
       id: "alberto_manguel",
       name: "Альберто Мангель",
-      years: "1948–",
+      years: "1948-",
       birthDate: "1948-03-13",
       birthPlace: "Буэнос-Айрес, Аргентина",
       coordinates: {
@@ -612,7 +612,7 @@ export const argentina: Country = {
     {
       id: "mariana_enriquez",
       name: "Мариана Энрикес",
-      years: "1973–",
+      years: "1973-",
       birthDate: "1973-12-06",
       birthPlace: "Буэнос-Айрес, Аргентина",
       coordinates: {
@@ -649,7 +649,7 @@ export const argentina: Country = {
     {
       id: "claudia_pineiro",
       name: "Клаудия Пиньейро",
-      years: "1960–",
+      years: "1960-",
       birthDate: "1960-04-10",
       birthPlace: "Бурсака, Аргентина",
       coordinates: {
@@ -686,7 +686,7 @@ export const argentina: Country = {
         {
       id: "adolfo_perez_zelas",
       name: "Адельфо Биой Касарес (дополнительная связь)",
-      years: "1914–1999",
+      years: "1914-1999",
       birthDate: "1914-09-15",
       deathDate: "1999-03-08",
       birthPlace: "Буэнос-Айрес, Аргентина",
@@ -719,7 +719,7 @@ export const argentina: Country = {
     {
       id: "leopoldo_marechal",
       name: "Леопольдо Маречаль",
-      years: "1900–1970",
+      years: "1900-1970",
       birthDate: "1900-06-11",
       deathDate: "1970-06-26",
       birthPlace: "Буэнос-Айрес, Аргентина",
@@ -755,7 +755,7 @@ export const argentina: Country = {
     {
       id: "juan_gelman",
       name: "Хуан Хельман",
-      years: "1930–2014",
+      years: "1930-2014",
       birthDate: "1930-05-03",
       deathDate: "2014-01-14",
       birthPlace: "Буэнос-Айрес, Аргентина",
@@ -793,7 +793,7 @@ export const argentina: Country = {
     {
       id: "alfredo_bryce_echenique",
       name: "Альфредо Брис Эченике",
-      years: "1939–",
+      years: "1939-",
       birthDate: "1939-02-19",
       birthPlace: "Лима, Перу",
       coordinates: {

@@ -1,7 +1,7 @@
 export const kawabataProfile = {
  id:"kawabata",
  fullName:"Ясунари Кавабата",
- years:"1899–1972",
+ years:"1899-1972",
  country:"Япония",
  birthPlace:"Осака, Япония",
  movement:"Модернизм",
@@ -13,8 +13,8 @@ export const kawabataProfile = {
  profession:["Писатель"],
  biography:"Японский писатель, лауреат Нобелевской премии по литературе 1968 года.",
  works:[
-  {title:"Страна снега",year:"1934–1947",genre:"Роман"},
-  {title:"Тысяча журавлей",year:"1949–1952",genre:"Роман"}
+  {title:"Страна снега",year:"1934-1947",genre:"Роман"},
+  {title:"Тысяча журавлей",year:"1949-1952",genre:"Роман"}
  ],
  places:["Киото","Камакура"],
  connections:["Юкио Мисима"],

@@ -13,7 +13,7 @@ export const bahrain: Country = {
       name: "Ибрахим аль-Урайд",
       fullName: "Ibrahim Al-Arrayed",
 
-      years: "1908–2002",
+      years: "1908-2002",
 
       birthDate: "1908-03-08",
       deathDate: "2002-05-01",
@@ -61,7 +61,7 @@ export const bahrain: Country = {
       name: "Али Абдулла Халифа",
       fullName: "Ali Abdullah Khalifa",
 
-      years: "1944–2026",
+      years: "1944-2026",
 
       birthDate: "1944-03-04",
       deathDate: "2026-06-22",
@@ -110,7 +110,7 @@ export const bahrain: Country = {
       name: "Касим Хаддад",
       fullName: "Qassim Haddad",
 
-      years: "1948–",
+      years: "1948-",
 
       birthDate: "1948",
       deathDate: "",
@@ -159,7 +159,7 @@ export const bahrain: Country = {
       name: "Амин Салих",
       fullName: "Amin Saleh",
 
-      years: "1949–",
+      years: "1949-",
 
       birthDate: "1949",
       deathDate: "",

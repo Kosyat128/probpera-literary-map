@@ -1,11 +1,11 @@
 export const schillerProfile = {
  id:"schiller",
  fullName:"Фридрих Шиллер",
- years:"1759–1805",
+ years:"1759-1805",
  country:"Германия",
  birthPlace:"Марбах-на-Неккаре, Германия",
  movement:"Веймарский классицизм",
- century:"XVIII–XIX века",
+ century:"XVIII-XIX века",
  language:"Немецкий",
  nobel:false,
  portrait:"/images/writers/schiller.jpg",

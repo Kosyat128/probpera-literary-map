@@ -10,7 +10,7 @@ export const iceland: Country = {
       id: "snorri_sturluson",
       name: "Снорри Стурлусон",
       fullName: "Snorri Sturluson",
-      years: "1179–1241",
+      years: "1179-1241",
 
       birthDate: "1179",
       deathDate: "1241-09-23",
@@ -58,7 +58,7 @@ export const iceland: Country = {
       name: "Йоун Арнасон",
       fullName: "Jón Árnason",
 
-      years: "1819–1888",
+      years: "1819-1888",
 
       birthDate: "1819-08-17",
       deathDate: "1888-09-04",
@@ -104,7 +104,7 @@ export const iceland: Country = {
       name: "Гримур Томсен",
       fullName: "Grímur Thomsen",
 
-      years: "1820–1896",
+      years: "1820-1896",
 
       birthDate: "1820-05-15",
       deathDate: "1896-11-27",
@@ -150,7 +150,7 @@ export const iceland: Country = {
       name: "Гуннар Гуннарссон",
       fullName: "Gunnar Gunnarsson",
 
-      years: "1889–1975",
+      years: "1889-1975",
 
       birthDate: "1889-05-18",
       deathDate: "1975-11-21",
@@ -196,7 +196,7 @@ export const iceland: Country = {
       name: "Гвюдмюндюр Камбан",
       fullName: "Guðmundur Kamban",
 
-      years: "1888–1945",
+      years: "1888-1945",
 
       birthDate: "1888-06-08",
       deathDate: "1945-05-05",
@@ -243,7 +243,7 @@ export const iceland: Country = {
       name: "Халлдор Лакснесс",
       fullName: "Halldór Laxness",
 
-      years: "1902–1998",
+      years: "1902-1998",
 
       birthDate: "1902-04-23",
       deathDate: "1998-02-08",
@@ -292,7 +292,7 @@ export const iceland: Country = {
       name: "Стейнн Стейннар",
       fullName: "Steinn Steinarr",
 
-      years: "1908–1958",
+      years: "1908-1958",
 
       birthDate: "1908-10-13",
       deathDate: "1958-05-25",
@@ -338,7 +338,7 @@ export const iceland: Country = {
       name: "Арнальдур Индридасон",
       fullName: "Arnaldur Indriðason",
 
-      years: "1961–",
+      years: "1961-",
 
       birthDate: "1961-01-28",
       deathDate: "",

@@ -38,7 +38,7 @@ class VkApiError extends Error {
       ? Number(error.error_subcode)
       : null;
     const message = String(error.error_msg || "VK API request failed").trim();
-    super(`${method}: ${code === null ? "VK API" : `VK ${code}`} — ${message}`);
+    super(`${method}: ${code === null ? "VK API" : `VK ${code}`} - ${message}`);
     this.name = "VkApiError";
     this.method = method;
     this.code = code;

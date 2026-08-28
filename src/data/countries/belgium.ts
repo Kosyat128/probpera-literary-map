@@ -10,7 +10,7 @@ export const belgium: Country = {
       id: "charles_de_coster",
       name: "Шарль де Костер",
       fullName: "Charles De Coster",
-      years: "1827–1879",
+      years: "1827-1879",
 
       birthDate: "1827-08-20",
       deathDate: "1879-05-07",
@@ -54,7 +54,7 @@ export const belgium: Country = {
       id: "emile_verhaeren",
       name: "Эмиль Верхарн",
       fullName: "Émile Verhaeren",
-      years: "1855–1916",
+      years: "1855-1916",
 
       birthDate: "1855-05-21",
       deathDate: "1916-11-27",
@@ -100,7 +100,7 @@ export const belgium: Country = {
       name: "Жорж Роденбах",
       fullName: "Georges Rodenbach",
 
-      years: "1855–1898",
+      years: "1855-1898",
 
       birthDate: "1855-07-16",
       deathDate: "1898-12-25",
@@ -147,7 +147,7 @@ export const belgium: Country = {
       name: "Морис Метерлинк",
       fullName: "Maurice Maeterlinck",
 
-      years: "1862–1949",
+      years: "1862-1949",
 
       birthDate: "1862-08-29",
       deathDate: "1949-05-06",
@@ -196,7 +196,7 @@ export const belgium: Country = {
       name: "Феликс Тиммерманс",
       fullName: "Felix Timmermans",
 
-      years: "1886–1947",
+      years: "1886-1947",
 
       birthDate: "1886-07-05",
       deathDate: "1947-01-24",
@@ -242,7 +242,7 @@ export const belgium: Country = {
       name: "Мишель де Гельдерод",
       fullName: "Michel de Ghelderode",
 
-      years: "1898–1962",
+      years: "1898-1962",
 
       birthDate: "1898-04-03",
       deathDate: "1962-04-01",
@@ -287,7 +287,7 @@ export const belgium: Country = {
       name: "Жорж Сименон",
       fullName: "Georges Simenon",
 
-      years: "1903–1989",
+      years: "1903-1989",
 
       birthDate: "1903-02-13",
       deathDate: "1989-09-04",
@@ -334,7 +334,7 @@ export const belgium: Country = {
       name: "Хуго Клаус",
       fullName: "Hugo Claus",
 
-      years: "1929–2008",
+      years: "1929-2008",
 
       birthDate: "1929-04-05",
       deathDate: "2008-03-19",
@@ -381,7 +381,7 @@ export const belgium: Country = {
       name: "Амели Нотомб",
       fullName: "Amélie Nothomb",
 
-      years: "1966–",
+      years: "1966-",
 
       birthDate: "1966-07-09",
       deathDate: "",

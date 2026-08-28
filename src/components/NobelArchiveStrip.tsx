@@ -96,7 +96,7 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
         </span>
         <div>
           <small>{t("Редакционная серия")}</small>
-          <strong>{t("Лауреаты Нобелевской премии · 1901–2025")}</strong>
+          <strong>{t("Лауреаты Нобелевской премии · 1901-2025")}</strong>
           <p>
             {language === "en"
               ? `${number(laureates.length)} ${

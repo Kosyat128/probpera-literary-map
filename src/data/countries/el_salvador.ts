@@ -8,7 +8,7 @@ export const elSalvador: Country = {
     {
       id: "salvador_salarre",
       name: "Сальвадор Саласар Арруэ (Саларруэ)",
-      years: "1899–1975",
+      years: "1899-1975",
       birthDate: "1899-10-22",
       deathDate: "1975-11-27",
       birthPlace: "Сонсонате, Сальвадор",
@@ -47,7 +47,7 @@ export const elSalvador: Country = {
     {
       id: "roque_dalton",
       name: "Роке Дальтон",
-      years: "1935–1975",
+      years: "1935-1975",
       birthDate: "1935-05-14",
       deathDate: "1975-05-10",
       birthPlace: "Сан-Сальвадор, Сальвадор",
@@ -84,7 +84,7 @@ export const elSalvador: Country = {
     {
       id: "alvaro_menen_desleal",
       name: "Альваро Менен Деслеаль",
-      years: "1931–2000",
+      years: "1931-2000",
       birthDate: "1931-03-13",
       deathDate: "2000-04-06",
       birthPlace: "Санта-Ана, Сальвадор",
@@ -120,7 +120,7 @@ export const elSalvador: Country = {
     {
       id: "claribel_alegria",
       name: "Кларибель Алегрия",
-      years: "1924–2018",
+      years: "1924-2018",
       birthDate: "1924-05-12",
       deathDate: "2018-01-25",
       birthPlace: "Эстели, Никарагуа",

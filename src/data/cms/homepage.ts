@@ -9,6 +9,7 @@ export type CoreHomepageSectionKey =
   | "atlas"
   | "book-month"
   | "editorial-standard"
+  | "book-archive"
   | "featured-journal"
   | "community"
   | "authors"

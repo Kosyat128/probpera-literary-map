@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 1,
+  "id": "STAGE5-D1-INTERFACE-COPY",
+  "sourceIntegrationSha": "fdd981381e859ab0ceaa44b48e9236af70c43db7",
+  "entries": [
+    {
+      "source": "XIX век",
+      "english": "19th century"
+    },
+    {
+      "source": "XXI век",
+      "english": "21st century"
+    },
+    {
+      "source": "АВТОРЫ",
+      "english": "WRITERS"
+    },
+    {
+      "source": "АУДИТОРИИ",
+      "english": "AUDIENCES"
+    },
+    {
+      "source": "Активные фильтры",
+      "english": "Active filters"
+    },
+    {
+      "source": "Аудитория",
+      "english": "Audience"
+    },
+    {
+      "source": "Без связанной статьи",
+      "english": "No linked article"
+    },
+    {
+      "source": "В архиве нет книг по выбранным условиям",
+      "english": "No books in the archive match the selected filters"
+    },
+    {
+      "source": "В библиотеке",
+      "english": "In library"
+    },
+    {
+      "source": "Взрослые",
+      "english": "Adults"
+    },
+    {
+      "source": "Во всём журнале",
+      "english": "Across the journal"
+    },
+    {
+      "source": "Все авторы",
+      "english": "All writers"
+    },
+    {
+      "source": "Выберите книгу",
+      "english": "Choose a book"
+    },
+    {
+      "source": "Выбрать случайное произведение из всего архива",
+      "english": "Choose a random work from the entire archive"
+    },
+    {
+      "source": "Главный материал",
+      "english": "Featured article"
+    },
+    {
+      "source": "Далее",
+      "english": "Next"
+    },
+    {
+      "source": "Дети",
+      "english": "Children"
+    },
+    {
+      "source": "Для всех возрастов",
+      "english": "All ages"
+    },
+    {
+      "source": "Для детей",
+      "english": "For children"
+    },
+    {
+      "source": "До 1800 года",
+      "english": "Before 1800"
+    },
+    {
+      "source": "Есть связь со статьёй",
+      "english": "Linked to an article"
+    },
+    {
+      "source": "ЖАНРЫ",
+      "english": "GENRES"
+    },
+    {
+      "source": "Жанр",
+      "english": "Genre"
+    },
+    {
+      "source": "Жанры",
+      "english": "Genres"
+    },
+    {
+      "source": "Загруженная обложка",
+      "english": "Uploaded cover"
+    },
+    {
+      "source": "Закрыть фильтры",
+      "english": "Close filters"
+    },
+    {
+      "source": "Избранное",
+      "english": "Favourites"
+    },
+    {
+      "source": "Индекс связей пока недоступен",
+      "english": "Related-content index unavailable"
+    },
+    {
+      "source": "Используется редакционный индекс связей",
+      "english": "Using the editorial related-content index"
+    },
+    {
+      "source": "Используются только проверенные профили аудитории",
+      "english": "Only verified audience profiles are used"
+    },
+    {
+      "source": "КАТАЛОГ",
+      "english": "CATALOGUE"
+    },
+    {
+      "source": "КНИГИ",
+      "english": "BOOKS"
+    },
+    {
+      "source": "Книги из личной полки",
+      "english": "Books from your personal shelf"
+    },
+    {
+      "source": "МАТЕРИАЛЫ ЖУРНАЛА",
+      "english": "JOURNAL ARTICLES"
+    },
+    {
+      "source": "МОИ ПОЛКИ",
+      "english": "MY SHELVES"
+    },
+    {
+      "source": "Моя умная полка",
+      "english": "My smart shelf"
+    },
+    {
+      "source": "На этой полке пока нет книг",
+      "english": "There are no books on this shelf yet"
+    },
+    {
+      "source": "Нажмите на корешок — книга выйдет вперёд, а справа откроются описание и сведения.",
+      "english": "Select a spine to bring the book forward and open its description and details."
+    },
+    {
+      "source": "Назад",
+      "english": "Back"
+    },
+    {
+      "source": "Не удалось сохранить умную полку",
+      "english": "Could not save the smart shelf"
+    },
+    {
+      "source": "Недавно проверенные",
+      "english": "Recently reviewed"
+    },
+    {
+      "source": "Недоступно: проверенные профили аудитории отсутствуют",
+      "english": "Unavailable: no verified audience profiles"
+    },
+    {
+      "source": "Открыть книгу",
+      "english": "Open book"
+    },
+    {
+      "source": "Открыть полку автора",
+      "english": "Open writer shelf"
+    },
+    {
+      "source": "ПЕРИОДЫ",
+      "english": "PERIODS"
+    },
+    {
+      "source": "ПОЛКА",
+      "english": "SHELF"
+    },
+    {
+      "source": "Перелистнуть страницу",
+      "english": "Turn page"
+    },
+    {
+      "source": "Период",
+      "english": "Period"
+    },
+    {
+      "source": "Период не подтверждён",
+      "english": "Period not verified"
+    },
+    {
+      "source": "По автору",
+      "english": "By writer"
+    },
+    {
+      "source": "По названию",
+      "english": "By title"
+    },
+    {
+      "source": "Подростки",
+      "english": "Teenagers"
+    },
+    {
+      "source": "Подсказки библиотеки",
+      "english": "Library suggestions"
+    },
+    {
+      "source": "Подсказки единого каталога",
+      "english": "Unified catalogue suggestions"
+    },
+    {
+      "source": "Показать ещё 13",
+      "english": "Show 13 more"
+    },
+    {
+      "source": "Полка пуста",
+      "english": "The shelf is empty"
+    },
+    {
+      "source": "Предыдущая книга",
+      "english": "Previous book"
+    },
+    {
+      "source": "Предыдущие 13 произведений",
+      "english": "Previous 13 works"
+    },
+    {
+      "source": "РЕДАКЦИОННЫЕ ПОЛКИ",
+      "english": "EDITORIAL SHELVES"
+    },
+    {
+      "source": "Расширенные фильтры",
+      "english": "Advanced filters"
+    },
+    {
+      "source": "Расширенные фильтры книжного архива",
+      "english": "Advanced book archive filters"
+    },
+    {
+      "source": "Редакционная релевантность",
+      "english": "Editorial relevance"
+    },
+    {
+      "source": "Редакционный порядок",
+      "english": "Editorial order"
+    },
+    {
+      "source": "Редакционный статус",
+      "english": "Editorial status"
+    },
+    {
+      "source": "Результаты поиска по библиотеке",
+      "english": "Library search results"
+    },
+    {
+      "source": "Результаты поиска по всему журналу",
+      "english": "Journal-wide search results"
+    },
+    {
+      "source": "Рецензия",
+      "english": "Review"
+    },
+    {
+      "source": "С обложкой",
+      "english": "With a cover"
+    },
+    {
+      "source": "СТРАНЫ",
+      "english": "COUNTRIES"
+    },
+    {
+      "source": "Сбросить",
+      "english": "Clear"
+    },
+    {
+      "source": "Сбросить фильтры",
+      "english": "Clear filters"
+    },
+    {
+      "source": "Свой точный отбор",
+      "english": "Your custom selection"
+    },
+    {
+      "source": "Связь со статьями",
+      "english": "Article links"
+    },
+    {
+      "source": "Следующая книга",
+      "english": "Next book"
+    },
+    {
+      "source": "Следующие 13 произведений",
+      "english": "Next 13 works"
+    },
+    {
+      "source": "Случайное произведение",
+      "english": "Random work"
+    },
+    {
+      "source": "Случайный выбор",
+      "english": "Random pick"
+    },
+    {
+      "source": "Сначала ранние",
+      "english": "Oldest first"
+    },
+    {
+      "source": "Сначала с обложкой",
+      "english": "Covers first"
+    },
+    {
+      "source": "Собираем виртуальную полку…",
+      "english": "Building the virtual shelf…"
+    },
+    {
+      "source": "Сортировка",
+      "english": "Sort"
+    },
+    {
+      "source": "Сохранить как умную полку",
+      "english": "Save as a smart shelf"
+    },
+    {
+      "source": "Текущая полка",
+      "english": "Current shelf"
+    },
+    {
+      "source": "Тип обложки",
+      "english": "Cover type"
+    },
+    {
+      "source": "Типографическая обложка",
+      "english": "Typographic cover"
+    },
+    {
+      "source": "Только книги из личной полки",
+      "english": "Only books from your personal shelf"
+    },
+    {
+      "source": "Только обложки с разрешёнными правами",
+      "english": "Only covers cleared for use"
+    },
+    {
+      "source": "Только подтверждённая аудитория",
+      "english": "Verified audience only"
+    },
+    {
+      "source": "Точный отбор",
+      "english": "Custom selection"
+    },
+    {
+      "source": "Трёхмерная полка недоступна. Открыт безопасный каталог.",
+      "english": "The 3D shelf is unavailable. The safe catalogue is open."
+    },
+    {
+      "source": "Удалить фильтр",
+      "english": "Remove filter"
+    },
+    {
+      "source": "Умная полка",
+      "english": "Smart shelf"
+    },
+    {
+      "source": "Умная полка сохранена",
+      "english": "Smart shelf saved"
+    },
+    {
+      "source": "Упоминание",
+      "english": "Mention"
+    },
+    {
+      "source": "Фильтры применяются по правилу И между категориями и ИЛИ внутри категории. Непроверенные метаданные не угадываются.",
+      "english": "Filter categories use AND, while options within a category use OR. Unverified metadata is never inferred."
+    },
+    {
+      "source": "Язык",
+      "english": "Language"
+    },
+    {
+      "source": "азербайджанский",
+      "english": "Azerbaijani"
+    },
+    {
+      "source": "английский",
+      "english": "English"
+    },
+    {
+      "source": "арабский",
+      "english": "Arabic"
+    },
+    {
+      "source": "армянский",
+      "english": "Armenian"
+    },
+    {
+      "source": "басня",
+      "english": "fable"
+    },
+    {
+      "source": "белорусский",
+      "english": "Belarusian"
+    },
+    {
+      "source": "бенгальский",
+      "english": "Bengali"
+    },
+    {
+      "source": "биография",
+      "english": "biography"
+    },
+    {
+      "source": "болгарский",
+      "english": "Bulgarian"
+    },
+    {
+      "source": "венгерский",
+      "english": "Hungarian"
+    },
+    {
+      "source": "греческий",
+      "english": "Greek"
+    },
+    {
+      "source": "грузинский",
+      "english": "Georgian"
+    },
+    {
+      "source": "датский",
+      "english": "Danish"
+    },
+    {
+      "source": "детектив",
+      "english": "detective fiction"
+    },
+    {
+      "source": "детская литература",
+      "english": "children's literature"
+    },
+    {
+      "source": "драма",
+      "english": "drama"
+    },
+    {
+      "source": "древнегреческий",
+      "english": "Ancient Greek"
+    },
+    {
+      "source": "журналистика",
+      "english": "journalism"
+    },
+    {
+      "source": "иврит",
+      "english": "Hebrew"
+    },
+    {
+      "source": "исландский",
+      "english": "Icelandic"
+    },
+    {
+      "source": "испанский",
+      "english": "Spanish"
+    },
+    {
+      "source": "историческая проза",
+      "english": "historical fiction"
+    },
+    {
+      "source": "итальянский",
+      "english": "Italian"
+    },
+    {
+      "source": "казахский",
+      "english": "Kazakh"
+    },
+    {
+      "source": "китайский",
+      "english": "Chinese"
+    },
+    {
+      "source": "корейский",
+      "english": "Korean"
+    },
+    {
+      "source": "латинский",
+      "english": "Latin"
+    },
+    {
+      "source": "литературная критика",
+      "english": "literary criticism"
+    },
+    {
+      "source": "мемуары",
+      "english": "memoir"
+    },
+    {
+      "source": "научная фантастика",
+      "english": "science fiction"
+    },
+    {
+      "source": "немецкий",
+      "english": "German"
+    },
+    {
+      "source": "нидерландский",
+      "english": "Dutch"
+    },
+    {
+      "source": "норвежский",
+      "english": "Norwegian"
+    },
+    {
+      "source": "персидский",
+      "english": "Persian"
+    },
+    {
+      "source": "повесть",
+      "english": "novella"
+    },
+    {
+      "source": "подростковая литература",
+      "english": "young adult literature"
+    },
+    {
+      "source": "польский",
+      "english": "Polish"
+    },
+    {
+      "source": "португальский",
+      "english": "Portuguese"
+    },
+    {
+      "source": "поэзия",
+      "english": "poetry"
+    },
+    {
+      "source": "приключенческая проза",
+      "english": "adventure fiction"
+    },
+    {
+      "source": "рассказ",
+      "english": "short story"
+    },
+    {
+      "source": "роман",
+      "english": "novel"
+    },
+    {
+      "source": "румынский",
+      "english": "Romanian"
+    },
+    {
+      "source": "русский",
+      "english": "Russian"
+    },
+    {
+      "source": "сатира",
+      "english": "satire"
+    },
+    {
+      "source": "сербский",
+      "english": "Serbian"
+    },
+    {
+      "source": "сказка",
+      "english": "fairy tale"
+    },
+    {
+      "source": "совпадений",
+      "english": "matches"
+    },
+    {
+      "source": "турецкий",
+      "english": "Turkish"
+    },
+    {
+      "source": "узбекский",
+      "english": "Uzbek"
+    },
+    {
+      "source": "украинский",
+      "english": "Ukrainian"
+    },
+    {
+      "source": "философия",
+      "english": "philosophy"
+    },
+    {
+      "source": "финский",
+      "english": "Finnish"
+    },
+    {
+      "source": "фольклор",
+      "english": "folklore"
+    },
+    {
+      "source": "французский",
+      "english": "French"
+    },
+    {
+      "source": "фэнтези",
+      "english": "fantasy"
+    },
+    {
+      "source": "хорватский",
+      "english": "Croatian"
+    },
+    {
+      "source": "чешский",
+      "english": "Czech"
+    },
+    {
+      "source": "шведский",
+      "english": "Swedish"
+    },
+    {
+      "source": "эпос",
+      "english": "epic"
+    },
+    {
+      "source": "эссе",
+      "english": "essay"
+    },
+    {
+      "source": "японский",
+      "english": "Japanese"
+    }
+  ]
+}

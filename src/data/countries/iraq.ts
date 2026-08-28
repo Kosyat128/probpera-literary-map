@@ -12,7 +12,7 @@ export const iraq: Country = {
       name: "Абу Нувас",
       fullName: "Abu Nuwas",
 
-      years: "ок. 756–814",
+      years: "ок. 756-814",
 
       birthDate: "756",
       deathDate: "814",
@@ -60,7 +60,7 @@ export const iraq: Country = {
       name: "Аль-Мутанабби",
       fullName: "Al-Mutanabbi",
 
-      years: "915–965",
+      years: "915-965",
 
       birthDate: "915",
       deathDate: "965",
@@ -108,7 +108,7 @@ export const iraq: Country = {
       name: "Назик аль-Малаика",
       fullName: "Nazik Al-Malaika",
 
-      years: "1923–2007",
+      years: "1923-2007",
 
       birthDate: "1923-08-23",
       deathDate: "2007-06-20",
@@ -156,7 +156,7 @@ export const iraq: Country = {
       name: "Бадр Шакир ас-Сайяб",
       fullName: "Badr Shakir al-Sayyab",
 
-      years: "1926–1964",
+      years: "1926-1964",
 
       birthDate: "1926-12-24",
       deathDate: "1964-12-24",
@@ -204,7 +204,7 @@ export const iraq: Country = {
       name: "Фуад ат-Тикерли",
       fullName: "Fuad al-Takarli",
 
-      years: "1927–2008",
+      years: "1927-2008",
 
       birthDate: "1927-08-22",
       deathDate: "2008-02-11",
@@ -253,7 +253,7 @@ export const iraq: Country = {
       name: "Абдель Ваххаб аль-Баяти",
       fullName: "Abd al-Wahhab Al-Bayati",
 
-      years: "1926–1999",
+      years: "1926-1999",
 
       birthDate: "1926-12-19",
       deathDate: "1999-08-03",

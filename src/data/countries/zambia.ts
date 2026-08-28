@@ -28,7 +28,7 @@ export const zambia: Country = {
       id: "dominic_mulaisho",
       name: "Доминик Мулаишо",
       fullName: "Dominic Mulaisho",
-      years: "1933–2013",
+      years: "1933-2013",
       birthDate: "1933-08-15",
       deathDate: "2013-07-01",
       birthPlace: "Фейра, Северная Родезия",
@@ -59,7 +59,7 @@ export const zambia: Country = {
       id: "ellen_banda_aaku",
       name: "Эллен Банда-Ааку",
       fullName: "Ellen Banda-Aaku",
-      years: "1965–",
+      years: "1965-",
       birthDate: "1965-05-06",
       birthPlace: "Уокинг, Великобритания",
       bio:

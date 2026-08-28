@@ -39,6 +39,12 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks(id) {
             const moduleId = id.replaceAll("\\\\", "/");
+            // Keep Vite's tiny dynamic-import helper out of heavy lazy vendor
+            // chunks; otherwise Rollup makes the entry preload Three.js merely
+            // to obtain the helper that starts the later dynamic import.
+            if (moduleId.includes("vite/preload-helper")) {
+              return "vite-preload-helper";
+            }
             if (moduleId.includes("/books.generated.json")) return "book-catalog";
             if (moduleId.includes("/writerPortraits.generated.json")) {
               return "writer-portraits-data";

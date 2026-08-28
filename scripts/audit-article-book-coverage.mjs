@@ -34,7 +34,7 @@ function stripHeading(value = "") {
 
 function parseNovelHeading(value) {
   const heading = stripHeading(value);
-  let match = heading.match(/^(.+?)\s+[—–-]\s+(.+)$/u);
+  let match = heading.match(/^(.+?)\s+[-]\s+(.+)$/u);
   if (match) {
     const [, first, second] = match;
     if (/^[«“"]/.test(first)) {
@@ -67,13 +67,13 @@ function parseCatalogHeading(value) {
     /\s*\([^)]*(?:18|19|20)\d{2}[^)]*\)\s*$/u,
     ""
   );
-  let match = heading.match(/^[«“"](.+?)[»”"]\s*[—–-]\s*(.+)$/u);
+  let match = heading.match(/^[«“"](.+?)[»”"]\s*[-]\s*(.+)$/u);
   if (match) return { title: match[1].trim(), author: match[2].trim() };
   match = heading.match(/^[«“"](.+?)[»”"]\s*,\s*(.+)$/u);
   if (match) return { title: match[1].trim(), author: match[2].trim() };
-  match = heading.match(/^(.+?)\s*[—–-]\s*[«“"](.+?)[»”"]$/u);
+  match = heading.match(/^(.+?)\s*[-]\s*[«“"](.+?)[»”"]$/u);
   if (match) return { title: match[2].trim(), author: match[1].trim() };
-  match = heading.match(/^(.+?)\s*[—–-]\s*(.+)$/u);
+  match = heading.match(/^(.+?)\s*[-]\s*(.+)$/u);
   if (match && !/\d{4}/u.test(match[1])) {
     return { title: match[1].trim(), author: match[2].trim() };
   }
@@ -203,7 +203,7 @@ for (const article of articles) {
     for (const heading of headings) {
       if (/^(предисловие|заключение)$/iu.test(heading)) continue;
       const pirateMatch = article.id?.includes("--knigniy--gid--")
-        ? stripHeading(heading).match(/^(.+?)\s*[—–-]\s*[«“"](.+?)[»”"]/u)
+        ? stripHeading(heading).match(/^(.+?)\s*[-]\s*[«“"](.+?)[»”"]/u)
         : null;
       const jackLondonTitle = article.id?.includes(
         "--luchshie--knigi--pisateley--"
@@ -313,7 +313,7 @@ const markdown = [
   "",
   ...missing.map(
     (result) =>
-      `- ${result.author} — «${result.title}» · ${result.countryId || "страна не найдена"}/${result.writerId || "автор не найден"} · ${result.articleUrl}`
+      `- ${result.author} - «${result.title}» · ${result.countryId || "страна не найдена"}/${result.writerId || "автор не найден"} · ${result.articleUrl}`
   ),
   "",
 ].join("\n").trimEnd() + "\n";

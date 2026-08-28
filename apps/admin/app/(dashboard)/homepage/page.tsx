@@ -7,7 +7,17 @@ import HomepageVisualPreview from "@/components/HomepageVisualPreview";
 import type { HomepagePreviewSection } from "@/components/HomepageVisualPreview";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { adminEnv } from "@/lib/env";
-import { readHomepageVisualSettings } from "@/lib/homepage-visual-settings";
+import {
+  homepageImagePositions,
+  readHomepageVisualSettings,
+} from "@/lib/homepage-visual-settings";
+import {
+  bookArchiveSceneAmbientTints,
+  bookArchiveScenePresetIds,
+  bookArchiveSceneShelfMaterials,
+  readBookArchiveSceneSettings,
+} from "@/lib/book-archive-scene-settings";
+import { isBookArchiveBackgroundMediaSafe } from "@/lib/book-archive-media-policy";
 import {
   createHomepageBlockAction,
   deleteHomepageBlockAction,
@@ -48,9 +58,9 @@ const coreSectionDefaults = [
     key: "hero",
     label: "Первый экран",
     eyebrow: "Журнал о литературе и искусстве слова",
-    title: "Литература – это целый мир!",
+    title: "Литература - это целый мир!",
     description:
-      "Статьи, биографии, редкие книги и интерактивная литературная энциклопедия стран — в одном редакционном пространстве.",
+      "Статьи, биографии, редкие книги и интерактивная литературная энциклопедия стран - в одном редакционном пространстве.",
     buttonText: "Открыть глобус",
     buttonUrl: "#atlas",
     backgroundStyle: "violet",
@@ -61,7 +71,7 @@ const coreSectionDefaults = [
     eyebrow: "Интерактивная энциклопедия",
     title: "Литературная планета",
     description:
-      "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.",
+      "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка.",
     buttonText: "",
     buttonUrl: "#atlas",
     backgroundStyle: "violet",
@@ -87,6 +97,17 @@ const coreSectionDefaults = [
     buttonText: "",
     buttonUrl: "#editorial-policy",
     backgroundStyle: "paper",
+  },
+  {
+    key: "book-archive",
+    label: "Книжный архив",
+    eyebrow: "Книги, авторы, страны",
+    title: "Книжный архив",
+    description:
+      "Произведения, авторы и страны связаны в единую проверенную редакционную коллекцию.",
+    buttonText: "",
+    buttonUrl: "#books",
+    backgroundStyle: "violet",
   },
   {
     key: "featured-journal",
@@ -193,6 +214,266 @@ function BackgroundSelect({ value }: { value: string }) {
   );
 }
 
+const scenePresetLabels: Record<
+  (typeof bookArchiveScenePresetIds)[number],
+  string
+> = {
+  dynamic: "Автоматически по книге",
+  "violet-library": "Violet Library",
+  "warm-paper": "Warm Paper",
+  "museum-ivory": "Museum Ivory",
+  "midnight-archive": "Midnight Archive",
+  "amber-reading-room": "Amber Reading Room",
+  "orange-violet-twilight": "Orange Violet Twilight",
+  "ink-room": "Ink Room",
+  "deep-blue-study": "Deep Blue Study",
+  "muted-green-library": "Muted Green Library",
+  "burgundy-edition": "Burgundy Edition",
+  "charcoal-gallery": "Charcoal Gallery",
+  "cream-publishing-room": "Cream Publishing Room",
+};
+
+const sceneAmbientTintLabels: Record<
+  (typeof bookArchiveSceneAmbientTints)[number],
+  string
+> = {
+  theme: "Из палитры книги",
+  "probpera-violet": "Фирменный фиолетовый",
+  "warm-amber": "Тёплый янтарный",
+  "deep-blue": "Глубокий синий",
+  "muted-green": "Приглушённый зелёный",
+  burgundy: "Бордовый",
+  "neutral-ivory": "Нейтральная слоновая кость",
+};
+
+const sceneShelfMaterialLabels: Record<
+  (typeof bookArchiveSceneShelfMaterials)[number],
+  string
+> = {
+  "dark-walnut": "Тёмный орех",
+  "smoked-oak": "Копчёный дуб",
+  "ink-lacquer": "Чернильный лак",
+  "museum-brass": "Музейная латунь",
+};
+
+const imagePositionLabels: Record<
+  (typeof homepageImagePositions)[number],
+  string
+> = {
+  "top-left": "Сверху слева",
+  top: "Сверху",
+  "top-right": "Сверху справа",
+  left: "Слева",
+  center: "По центру",
+  right: "Справа",
+  "bottom-left": "Снизу слева",
+  bottom: "Снизу",
+  "bottom-right": "Снизу справа",
+};
+
+function BookArchiveSceneControls({
+  settings,
+  visualSettings,
+}: {
+  settings: ReturnType<typeof readBookArchiveSceneSettings>;
+  visualSettings: ReturnType<typeof readHomepageVisualSettings>;
+}) {
+  return (
+    <fieldset className="settings-stack">
+      <legend>Сцена книжного архива</legend>
+      <p>
+        Доступны только проверенные пресеты и числовые параметры. Произвольные
+        CSS, HTML, JavaScript и шейдеры не сохраняются.
+      </p>
+      <div className="dashboard-grid">
+        <label className="field">
+          <span>Пресет</span>
+          <select name="bookScenePreset" defaultValue={settings.bookScenePreset}>
+            {bookArchiveScenePresetIds.map((preset) => (
+              <option key={preset} value={preset}>
+                {scenePresetLabels[preset]}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="field">
+          <span>Динамическая тема по книге</span>
+          <select
+            name="bookSceneDynamicThemes"
+            defaultValue={String(settings.bookSceneDynamicThemes)}
+          >
+            <option value="true">Включена</option>
+            <option value="false">Выключена</option>
+          </select>
+        </label>
+      </div>
+      <div className="dashboard-grid">
+        <label className="field">
+          <span>Затемнение сцены, %</span>
+          <input
+            type="number"
+            name="bookSceneDarkness"
+            min={0}
+            max={90}
+            step={1}
+            defaultValue={settings.bookSceneDarkness}
+          />
+        </label>
+        <label className="field">
+          <span>Интенсивность темы, %</span>
+          <input
+            type="number"
+            name="bookSceneIntensity"
+            min={0}
+            max={100}
+            step={1}
+            defaultValue={settings.bookSceneIntensity}
+          />
+        </label>
+      </div>
+      <div className="dashboard-grid">
+        <label className="field">
+          <span>Оттенок окружения</span>
+          <select
+            name="bookSceneAmbientTint"
+            defaultValue={settings.bookSceneAmbientTint}
+          >
+            {bookArchiveSceneAmbientTints.map((tint) => (
+              <option key={tint} value={tint}>
+                {sceneAmbientTintLabels[tint]}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="field">
+          <span>Материал полки</span>
+          <select
+            name="bookSceneShelfMaterial"
+            defaultValue={settings.bookSceneShelfMaterial}
+          >
+            {bookArchiveSceneShelfMaterials.map((material) => (
+              <option key={material} value={material}>
+                {sceneShelfMaterialLabels[material]}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div className="dashboard-grid">
+        <label className="field">
+          <span>Заполнение фонового изображения</span>
+          <select name="imageFit" defaultValue={visualSettings.imageFit}>
+            <option value="cover">Заполнить</option>
+            <option value="contain">Вписать целиком</option>
+            <option value="fill">Растянуть</option>
+          </select>
+        </label>
+        <label className="field">
+          <span>Фокус изображения</span>
+          <select
+            name="imagePosition"
+            defaultValue={visualSettings.imagePosition}
+          >
+            {homepageImagePositions.map((position) => (
+              <option key={position} value={position}>
+                {imagePositionLabels[position]}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <div className="dashboard-grid">
+        <label className="field">
+          <span>Масштаб изображения, %</span>
+          <input
+            type="number"
+            name="imageZoom"
+            min={50}
+            max={200}
+            step={1}
+            defaultValue={visualSettings.imageZoom}
+          />
+        </label>
+        <label className="field">
+          <span>Яркость изображения, %</span>
+          <input
+            type="number"
+            name="imageBrightness"
+            min={0}
+            max={200}
+            step={1}
+            defaultValue={visualSettings.imageBrightness}
+          />
+        </label>
+      </div>
+      <div className="dashboard-grid">
+        <label className="field">
+          <span>Контраст изображения, %</span>
+          <input
+            type="number"
+            name="imageContrast"
+            min={0}
+            max={200}
+            step={1}
+            defaultValue={visualSettings.imageContrast}
+          />
+        </label>
+        <label className="field">
+          <span>Насыщенность изображения, %</span>
+          <input
+            type="number"
+            name="imageSaturation"
+            min={0}
+            max={200}
+            step={1}
+            defaultValue={visualSettings.imageSaturation}
+          />
+        </label>
+      </div>
+      <div className="dashboard-grid">
+        <label className="field">
+          <span>Размытие изображения, px</span>
+          <input
+            type="number"
+            name="imageBlur"
+            min={0}
+            max={20}
+            step={0.1}
+            defaultValue={visualSettings.imageBlur}
+          />
+        </label>
+        <label className="field">
+          <span>Затемняющая накладка, %</span>
+          <input
+            type="number"
+            name="imageOverlay"
+            min={0}
+            max={90}
+            step={1}
+            defaultValue={visualSettings.imageOverlay}
+          />
+        </label>
+      </div>
+      <input type="hidden" name="titleFontSize" value={visualSettings.titleFontSize} />
+      <input type="hidden" name="titleAlign" value={visualSettings.titleAlign} />
+      <input type="hidden" name="titleWeight" value={visualSettings.titleWeight} />
+      <input type="hidden" name="titleLineHeight" value={visualSettings.titleLineHeight} />
+      <input type="hidden" name="bodyFontSize" value={visualSettings.bodyFontSize} />
+      <input type="hidden" name="bodyAlign" value={visualSettings.bodyAlign} />
+      <input type="hidden" name="bodyWeight" value={visualSettings.bodyWeight} />
+      <input type="hidden" name="bodyLineHeight" value={visualSettings.bodyLineHeight} />
+      <button
+        className="button-secondary"
+        type="submit"
+        name="reset_book_scene_settings"
+        value="1"
+      >
+        Сбросить сцену и фон
+      </button>
+    </fieldset>
+  );
+}
+
 export default async function HomepagePage({
   searchParams,
 }: {
@@ -221,7 +502,8 @@ export default async function HomepagePage({
         .filter((id): id is string => Boolean(id))
     )
   );
-  const baseMediaSelect = "id,bucket,object_path,alt_text,collection_name";
+  const baseMediaSelect =
+    "id,bucket,object_path,alt_text,collection_name,mime_type,creator,source_url,license_name,license_url";
   const mediaRequests = [
     supabase
       .from("media_assets")
@@ -287,6 +569,12 @@ export default async function HomepagePage({
     publicUrl: supabase.storage.from(asset.bucket).getPublicUrl(asset.object_path).data.publicUrl,
   }));
   const mediaById = new Map(media.map((asset) => [asset.id, asset]));
+  const bookArchiveMediaIds = new Set(
+    mediaResult
+      .filter((asset) => isBookArchiveBackgroundMediaSafe(asset))
+      .map((asset) => asset.id)
+  );
+  const bookArchiveMedia = media.filter((asset) => bookArchiveMediaIds.has(asset.id));
   const previewSections: HomepagePreviewSection[] = coreSectionDefaults.map(
     (section) => {
       const block = coreBlockByKey.get(section.key);
@@ -366,7 +654,7 @@ export default async function HomepagePage({
       {query.published === "queued" && (
         <p className="form-message form-success">
           Изменения поставлены в резервную очередь публикации. Обычно сайт
-          обновляется в течение 5–10 минут.
+          обновляется в течение 5-10 минут.
         </p>
       )}
       {query.published === "queue-error" && (
@@ -520,9 +808,30 @@ export default async function HomepagePage({
                     </label>
                     <div className="field">
                       <span>Фоновое изображение</span>
-                      <HomepageMediaField value={backgroundMediaId} media={media} />
+                      <HomepageMediaField
+                        value={backgroundMediaId}
+                        media={
+                          section.key === "book-archive"
+                            ? bookArchiveMedia
+                            : media
+                        }
+                        allowUpload={section.key !== "book-archive"}
+                      />
+                      {section.key === "book-archive" && (
+                        <small>
+                          Для сцены доступны только растровые изображения с
+                          заполненными автором, лицензией и HTTPS-источниками.
+                          Новые фоны сначала оформите в медиатеке.
+                        </small>
+                      )}
                     </div>
                   </div>
+                  {section.key === "book-archive" && (
+                    <BookArchiveSceneControls
+                      settings={readBookArchiveSceneSettings(settings)}
+                      visualSettings={readHomepageVisualSettings(settings)}
+                    />
+                  )}
                   <button className="button" type="submit">
                     Сохранить и опубликовать
                   </button>

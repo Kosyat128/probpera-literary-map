@@ -1,7 +1,7 @@
 export const marquezProfile = {
  id:"marquez",
  fullName:"Габриэль Гарсиа Маркес",
- years:"1927–2014",
+ years:"1927-2014",
  country:"Колумбия",
  birthPlace:"Аракатака, Колумбия",
  movement:"Магический реализм",

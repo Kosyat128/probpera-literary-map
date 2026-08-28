@@ -26,6 +26,9 @@ export default defineConfig({
   timeout: 45_000,
   expect: { timeout: 10_000 },
   fullyParallel: true,
+  // Multiple WebGL globes can starve the shared GitHub runner and turn
+  // otherwise healthy interaction checks into unrelated 45-second timeouts.
+  workers: process.env.CI && suite === "premium-globe" ? 1 : undefined,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [["html", { open: "never" }], ["github"]] : "list",
@@ -42,7 +45,7 @@ export default defineConfig({
   webServer: {
     command: "npm run preview -- --host 127.0.0.1 --port 4173",
     url: "http://127.0.0.1:4173",
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: process.env.PLAYWRIGHT_REUSE_SERVER === "true",
     timeout: 60_000,
     env: {
       ...process.env,

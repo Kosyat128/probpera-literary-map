@@ -17,7 +17,7 @@ const accessibilityAttributes = new Set([
 // inside an explicit Russian-only branch or are intentional brand/control glyphs;
 // everything else in reachable JSX and accessibility attributes must be localized.
 const intentionalCyrillicLiterals = [
-  ["src/App.tsx", "В выбранной коллекции —"],
+  ["src/App.tsx", "В выбранной коллекции -"],
   ["src/App.tsx", "уже"],
   ["src/App.tsx", "проверку по открытым музейным источникам"],
   ["src/App.tsx", "без генерации лиц"],

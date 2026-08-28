@@ -66,7 +66,7 @@ function researchDraft(input: BatchInput): WriterBiographyResearchDraft {
   const sources: WriterBiographySourceProfile[] = [
     {
       provider: "Nobel Prize Outreach",
-      title: `The Nobel Prize in Literature ${input.nobelYear} — facts`,
+      title: `The Nobel Prize in Literature ${input.nobelYear} - facts`,
       url: nobelUrl,
       fields: ["identity", "life-dates", "biography-facts", "awards"],
       usage: "fact-check",
@@ -74,7 +74,7 @@ function researchDraft(input: BatchInput): WriterBiographyResearchDraft {
     },
     {
       provider: "Nobel Prize Outreach",
-      title: `Laureate biographical record — ${input.nobelYear}`,
+      title: `Laureate biographical record - ${input.nobelYear}`,
       url: nobelBiographicalUrl,
       fields: input.worksOnBiographicalPage
         ? ["biography-facts", "works"]
@@ -86,7 +86,7 @@ function researchDraft(input: BatchInput): WriterBiographyResearchDraft {
       ? [
           {
             provider: "Nobel Prize Outreach",
-            title: `Laureate bibliography — ${input.nobelYear}`,
+            title: `Laureate bibliography - ${input.nobelYear}`,
             url: nobelBibliographyUrl,
             fields: ["works"],
             usage: "fact-check",
@@ -234,8 +234,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
       "A leading writer of Symbolist theatre whose drama emphasized suggestion, silence and interior states.",
     notableWorks:
       "La Princesse Maleine; Les Aveugles (The Blind); Pelléas et Mélisande; L'Oiseau bleu (The Blue Bird).",
-    ru: "Морис Метерлинк (1862–1949) — бельгийский франкоязычный драматург, поэт и эссеист, одна из центральных фигур европейского символизма. В пьесах «Слепые» и «Пеллеас и Мелизанда» он строил действие вокруг недосказанности, ожидания и скрытых движений сознания, а сказочная драма «Синяя птица» принесла ему широкую международную известность. В 1911 году Метерлинк получил Нобелевскую премию по литературе.",
-    en: "Maurice Maeterlinck (1862–1949) was a Belgian French-language playwright, poet and essayist and a central figure in European Symbolism. In The Blind and Pelléas and Mélisande, he built drama from suggestion, expectancy and concealed states of mind, while the fairy play The Blue Bird brought him a broad international readership. He received the Nobel Prize in Literature in 1911.",
+    ru: "Морис Метерлинк (1862-1949) - бельгийский франкоязычный драматург, поэт и эссеист, одна из центральных фигур европейского символизма. В пьесах «Слепые» и «Пеллеас и Мелизанда» он строил действие вокруг недосказанности, ожидания и скрытых движений сознания, а сказочная драма «Синяя птица» принесла ему широкую международную известность. В 1911 году Метерлинк получил Нобелевскую премию по литературе.",
+    en: "Maurice Maeterlinck (1862-1949) was a Belgian French-language playwright, poet and essayist and a central figure in European Symbolism. In The Blind and Pelléas and Mélisande, he built drama from suggestion, expectancy and concealed states of mind, while the fairy play The Blue Bird brought him a broad international readership. He received the Nobel Prize in Literature in 1911.",
   }),
   researchDraft({
     countryId: "denmark",
@@ -248,8 +248,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "He moved from naturalism and religious criticism toward German idealism and Buddhist thought, and later wrote in German as well as Danish.",
     notableWorks: "En Idealist; Minna; Der Pilger Kamanita (The Pilgrim Kamanita).",
-    ru: "Карл Адольф Гьеллеруп (1857–1919) — датский писатель и поэт, который после переезда в Германию создавал произведения также на немецком языке. Его творческий путь прошёл от натуралистической прозы и критики религии к интересу к немецкому идеализму и буддийской философии; этот поворот особенно заметен в романах «Минна» и «Паломник Каманита». В 1917 году он разделил Нобелевскую премию по литературе с Хенриком Понтоппиданом.",
-    en: "Karl Adolph Gjellerup (1857–1919) was a Danish novelist and poet who also wrote in German after settling in Germany. His career moved from naturalist fiction and criticism of religion toward German idealism and Buddhist philosophy, a development especially visible in Minna and The Pilgrim Kamanita. In 1917 he shared the Nobel Prize in Literature with Henrik Pontoppidan.",
+    ru: "Карл Адольф Гьеллеруп (1857-1919) - датский писатель и поэт, который после переезда в Германию создавал произведения также на немецком языке. Его творческий путь прошёл от натуралистической прозы и критики религии к интересу к немецкому идеализму и буддийской философии; этот поворот особенно заметен в романах «Минна» и «Паломник Каманита». В 1917 году он разделил Нобелевскую премию по литературе с Хенриком Понтоппиданом.",
+    en: "Karl Adolph Gjellerup (1857-1919) was a Danish novelist and poet who also wrote in German after settling in Germany. His career moved from naturalist fiction and criticism of religion toward German idealism and Buddhist philosophy, a development especially visible in Minna and The Pilgrim Kamanita. In 1917 he shared the Nobel Prize in Literature with Henrik Pontoppidan.",
   }),
   researchDraft({
     countryId: "denmark",
@@ -263,8 +263,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
       "His realist fiction examined Denmark's social, religious and political transformation around industrialization and constitutional change.",
     notableWorks:
       "Det forjættede Land (The Promised Land); Lykke-Per (Lucky Per); De Dødes Rige (The Realm of the Dead).",
-    ru: "Хенрик Понтоппидан (1857–1943) — датский прозаик-реалист, проследивший в романах и рассказах общественные перемены эпохи индустриализации и становления парламентской Дании. Трилогии «Земля обетованная» и «Царство мёртвых», а также роман «Счастливчик Пер» исследуют конфликт личных стремлений с религиозной средой, семьёй и устройством общества. В 1917 году Понтоппидан разделил Нобелевскую премию по литературе с Карлом Гьеллерупом.",
-    en: "Henrik Pontoppidan (1857–1943) was a Danish realist whose novels and short stories traced the social changes brought by industrialization and parliamentary government. The Promised Land, The Realm of the Dead and Lucky Per examine how individual ambition collides with religion, family and social institutions. In 1917 Pontoppidan shared the Nobel Prize in Literature with Karl Gjellerup.",
+    ru: "Хенрик Понтоппидан (1857-1943) - датский прозаик-реалист, проследивший в романах и рассказах общественные перемены эпохи индустриализации и становления парламентской Дании. Трилогии «Земля обетованная» и «Царство мёртвых», а также роман «Счастливчик Пер» исследуют конфликт личных стремлений с религиозной средой, семьёй и устройством общества. В 1917 году Понтоппидан разделил Нобелевскую премию по литературе с Карлом Гьеллерупом.",
+    en: "Henrik Pontoppidan (1857-1943) was a Danish realist whose novels and short stories traced the social changes brought by industrialization and parliamentary government. The Promised Land, The Realm of the Dead and Lucky Per examine how individual ambition collides with religion, family and social institutions. In 1917 Pontoppidan shared the Nobel Prize in Literature with Karl Gjellerup.",
   }),
   researchDraft({
     countryId: "england",
@@ -277,8 +277,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "Born in Bombay, he made British India central to much of his fiction and poetry; his imperial outlook remains a subject of critical debate.",
     notableWorks: "Plain Tales from the Hills; The Jungle Book; Kim.",
-    ru: "Редьярд Киплинг (1865–1936) — английский поэт и прозаик, родившийся в Бомбее и работавший в Индии в англоязычной прессе. Сборник «Простые рассказы с гор», «Книга джунглей» и роман «Ким» относятся к главным произведениям его индийского периода и принесли автору международную известность. В 1907 году Киплинг получил Нобелевскую премию по литературе.",
-    en: "Rudyard Kipling (1865–1936) was an English poet and fiction writer who was born in Bombay and worked for English-language newspapers in India. Plain Tales from the Hills, The Jungle Book and Kim are among the major works associated with his Indian experience and brought him an international readership. Kipling received the Nobel Prize in Literature in 1907.",
+    ru: "Редьярд Киплинг (1865-1936) - английский поэт и прозаик, родившийся в Бомбее и работавший в Индии в англоязычной прессе. Сборник «Простые рассказы с гор», «Книга джунглей» и роман «Ким» относятся к главным произведениям его индийского периода и принесли автору международную известность. В 1907 году Киплинг получил Нобелевскую премию по литературе.",
+    en: "Rudyard Kipling (1865-1936) was an English poet and fiction writer who was born in Bombay and worked for English-language newspapers in India. Plain Tales from the Hills, The Jungle Book and Kim are among the major works associated with his Indian experience and brought him an international readership. Kipling received the Nobel Prize in Literature in 1907.",
   }),
   researchDraft({
     countryId: "france",
@@ -293,8 +293,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "Associated with the Parnassian movement, he combined formal control with philosophical and scientific questions.",
     notableWorks: "Stances et Poèmes; Les Solitudes; Le Bonheur.",
-    ru: "Рене Франсуа Арман Прюдом, публиковавшийся как Сюлли-Прюдом (1839–1907), — французский поэт, связанный с парнасской школой. В сборниках «Стансы и стихотворения» и «Одиночества» он сочетал строгую форму с размышлениями о любви, знании и противоречии между чувством и разумом, а поздняя поэма «Счастье» развивает этические и философские темы. В 1901 году он стал первым лауреатом Нобелевской премии по литературе.",
-    en: "René François Armand Prudhomme, who published as Sully Prudhomme (1839–1907), was a French poet associated with the Parnassian movement. In Stances et Poèmes and Les Solitudes, he joined formal discipline to questions of love, knowledge and the tension between feeling and reason, while the later poem Le Bonheur developed ethical and philosophical themes. In 1901 he became the first recipient of the Nobel Prize in Literature.",
+    ru: "Рене Франсуа Арман Прюдом, публиковавшийся как Сюлли-Прюдом (1839-1907), - французский поэт, связанный с парнасской школой. В сборниках «Стансы и стихотворения» и «Одиночества» он сочетал строгую форму с размышлениями о любви, знании и противоречии между чувством и разумом, а поздняя поэма «Счастье» развивает этические и философские темы. В 1901 году он стал первым лауреатом Нобелевской премии по литературе.",
+    en: "René François Armand Prudhomme, who published as Sully Prudhomme (1839-1907), was a French poet associated with the Parnassian movement. In Stances et Poèmes and Les Solitudes, he joined formal discipline to questions of love, knowledge and the tension between feeling and reason, while the later poem Le Bonheur developed ethical and philosophical themes. In 1901 he became the first recipient of the Nobel Prize in Literature.",
   }),
   researchDraft({
     countryId: "france",
@@ -307,8 +307,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "He wrote in Occitan and co-founded the Félibrige movement to renew Provençal language and literature.",
     notableWorks: "Mirèio; Lou Tresor dóu Felibrige.",
-    ru: "Фредерик Мистраль (1830–1914) — провансальский поэт и лексикограф, писавший на окситанском языке и участвовавший в возрождении его литературной традиции. В 1854 году он стал одним из основателей движения «Фелибриж», а поэма «Мирейо» и многолетний словарь «Сокровище фелибрижа» закрепили культурную программу этого круга. Нобелевскую премию по литературе 1904 года Мистраль разделил с Хосе Эчегараем.",
-    en: "Frédéric Mistral (1830–1914) was a Provençal poet and lexicographer who wrote in Occitan and worked to renew its literary tradition. In 1854 he helped found the Félibrige movement, while the poem Mirèio and his long-term lexicographical project Lou Tresor dóu Felibrige gave that cultural program its defining works. Mistral shared the 1904 Nobel Prize in Literature with José Echegaray.",
+    ru: "Фредерик Мистраль (1830-1914) - провансальский поэт и лексикограф, писавший на окситанском языке и участвовавший в возрождении его литературной традиции. В 1854 году он стал одним из основателей движения «Фелибриж», а поэма «Мирейо» и многолетний словарь «Сокровище фелибрижа» закрепили культурную программу этого круга. Нобелевскую премию по литературе 1904 года Мистраль разделил с Хосе Эчегараем.",
+    en: "Frédéric Mistral (1830-1914) was a Provençal poet and lexicographer who wrote in Occitan and worked to renew its literary tradition. In 1854 he helped found the Félibrige movement, while the poem Mirèio and his long-term lexicographical project Lou Tresor dóu Felibrige gave that cultural program its defining works. Mistral shared the 1904 Nobel Prize in Literature with José Echegaray.",
   }),
   researchDraft({
     countryId: "france",
@@ -321,8 +321,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "A humanist and internationalist, he used the long-form roman-fleuve and advocated a theatre addressed to a broad public.",
     notableWorks: "Jean-Christophe; L'Âme enchantée (The Enchanted Soul).",
-    ru: "Ромен Роллан (1866–1944) — французский романист, драматург, эссеист и исследователь музыки, отстаивавший гуманистические и интернационалистские взгляды. Десятитомный «Жан-Кристоф» и цикл «Очарованная душа» развивают форму романа-потока, в которой судьба героя раскрывается на фоне духовной и политической истории Европы. Нобелевская премия по литературе за 1915 год была присуждена Роллану в 1916 году.",
-    en: "Romain Rolland (1866–1944) was a French novelist, playwright, essayist and music scholar committed to humanist and internationalist ideals. The ten-volume Jean-Christophe and the cycle The Enchanted Soul develop the roman-fleuve, following individual lives across the intellectual and political history of Europe. Rolland was awarded the 1915 Nobel Prize in Literature in 1916.",
+    ru: "Ромен Роллан (1866-1944) - французский романист, драматург, эссеист и исследователь музыки, отстаивавший гуманистические и интернационалистские взгляды. Десятитомный «Жан-Кристоф» и цикл «Очарованная душа» развивают форму романа-потока, в которой судьба героя раскрывается на фоне духовной и политической истории Европы. Нобелевская премия по литературе за 1915 год была присуждена Роллану в 1916 году.",
+    en: "Romain Rolland (1866-1944) was a French novelist, playwright, essayist and music scholar committed to humanist and internationalist ideals. The ten-volume Jean-Christophe and the cycle The Enchanted Soul develop the roman-fleuve, following individual lives across the intellectual and political history of Europe. Rolland was awarded the 1915 Nobel Prize in Literature in 1916.",
   }),
   researchDraft({
     countryId: "france",
@@ -337,8 +337,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
       "His urbane, skeptical fiction and criticism addressed French political and religious life, and he publicly supported Alfred Dreyfus.",
     notableWorks:
       "Le Crime de Sylvestre Bonnard; Thaïs; L'Île des Pingouins (Penguin Island); Les Dieux ont soif (The Gods Are Athirst).",
-    ru: "Анатоль Франс, литературное имя Жака Анатоля Франсуа Тибо (1844–1924), — французский романист, критик и публицист. Его ироническая, скептическая проза обращена к истории, религии и политической жизни Франции; среди ключевых книг — «Преступление Сильвестра Боннара», «Таис», «Остров пингвинов» и «Боги жаждут». Писатель открыто поддержал Альфреда Дрейфуса, а в 1921 году получил Нобелевскую премию по литературе.",
-    en: "Anatole France, the pen name of Jacques Anatole François Thibault (1844–1924), was a French novelist, critic and public intellectual. His ironic, skeptical fiction examines history, religion and French political life; major works include The Crime of Sylvestre Bonnard, Thaïs, Penguin Island and The Gods Are Athirst. He publicly supported Alfred Dreyfus and received the Nobel Prize in Literature in 1921.",
+    ru: "Анатоль Франс, литературное имя Жака Анатоля Франсуа Тибо (1844-1924), - французский романист, критик и публицист. Его ироническая, скептическая проза обращена к истории, религии и политической жизни Франции; среди ключевых книг - «Преступление Сильвестра Боннара», «Таис», «Остров пингвинов» и «Боги жаждут». Писатель открыто поддержал Альфреда Дрейфуса, а в 1921 году получил Нобелевскую премию по литературе.",
+    en: "Anatole France, the pen name of Jacques Anatole François Thibault (1844-1924), was a French novelist, critic and public intellectual. His ironic, skeptical fiction examines history, religion and French political life; major works include The Crime of Sylvestre Bonnard, Thaïs, Penguin Island and The Gods Are Athirst. He publicly supported Alfred Dreyfus and received the Nobel Prize in Literature in 1921.",
   }),
   researchDraft({
     countryId: "germany",
@@ -351,8 +351,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "His scholarship joined political narrative to legal, economic and institutional analysis of the Roman world.",
     notableWorks: "Römische Geschichte (History of Rome); Römisches Staatsrecht (Roman Constitutional Law).",
-    ru: "Теодор Моммзен (1817–1903) — немецкий историк античности, эпиграфист и правовед, посвятивший основные исследования Древнему Риму. В многотомной «Истории Рима» он соединил политическое повествование с анализом права, экономики и общественных институтов, а «Римское государственное право» систематизировало устройство римской власти. В 1902 году Моммзен получил Нобелевскую премию по литературе, прежде всего за историческое письмо.",
-    en: "Theodor Mommsen (1817–1903) was a German historian of antiquity, epigraphist and jurist whose principal subject was ancient Rome. His multi-volume History of Rome combined political narrative with legal, economic and institutional analysis, while Roman Constitutional Law offered a systematic account of Roman government. Mommsen received the Nobel Prize in Literature in 1902, chiefly in recognition of his historical writing.",
+    ru: "Теодор Моммзен (1817-1903) - немецкий историк античности, эпиграфист и правовед, посвятивший основные исследования Древнему Риму. В многотомной «Истории Рима» он соединил политическое повествование с анализом права, экономики и общественных институтов, а «Римское государственное право» систематизировало устройство римской власти. В 1902 году Моммзен получил Нобелевскую премию по литературе, прежде всего за историческое письмо.",
+    en: "Theodor Mommsen (1817-1903) was a German historian of antiquity, epigraphist and jurist whose principal subject was ancient Rome. His multi-volume History of Rome combined political narrative with legal, economic and institutional analysis, while Roman Constitutional Law offered a systematic account of Roman government. Mommsen received the Nobel Prize in Literature in 1902, chiefly in recognition of his historical writing.",
   }),
   researchDraft({
     countryId: "germany",
@@ -366,8 +366,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "He was a formative dramatist of German naturalism and later expanded his theatre beyond a single movement.",
     notableWorks: "Vor Sonnenaufgang (Before Sunrise); Die Weber (The Weavers).",
-    ru: "Герхарт Гауптман (1862–1946) — немецкий драматург и прозаик, чьи ранние пьесы стали важной частью немецкого натурализма. «Перед восходом солнца» показывает разрушительное действие наследственности и социальной среды, а «Ткачи» превращают восстание силезских рабочих в коллективную драму без единственного героя. В 1912 году Гауптман получил Нобелевскую премию по литературе; его позднее творчество вышло за рамки натуралистической эстетики.",
-    en: "Gerhart Hauptmann (1862–1946) was a German playwright and novelist whose early plays helped establish German naturalism. Before Sunrise examines the destructive force of heredity and social environment, while The Weavers turns the Silesian workers' uprising into a collective drama without a single protagonist. Hauptmann received the Nobel Prize in Literature in 1912, and his later writing moved beyond a strictly naturalist aesthetic.",
+    ru: "Герхарт Гауптман (1862-1946) - немецкий драматург и прозаик, чьи ранние пьесы стали важной частью немецкого натурализма. «Перед восходом солнца» показывает разрушительное действие наследственности и социальной среды, а «Ткачи» превращают восстание силезских рабочих в коллективную драму без единственного героя. В 1912 году Гауптман получил Нобелевскую премию по литературе; его позднее творчество вышло за рамки натуралистической эстетики.",
+    en: "Gerhart Hauptmann (1862-1946) was a German playwright and novelist whose early plays helped establish German naturalism. Before Sunrise examines the destructive force of heredity and social environment, while The Weavers turns the Silesian workers' uprising into a collective drama without a single protagonist. Hauptmann received the Nobel Prize in Literature in 1912, and his later writing moved beyond a strictly naturalist aesthetic.",
   }),
   researchDraft({
     countryId: "india",
@@ -381,8 +381,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "He reshaped modern Bengali literature, wrote in Bengali and English, and founded an experimental school at Santiniketan.",
     notableWorks: "Gitanjali; Gora; Ghare-Baire (The Home and the World).",
-    ru: "Рабиндранат Тагор (1861–1941) — бенгальский поэт, прозаик, драматург, композитор и педагог, существенно обновивший язык современной бенгальской литературы. В книгах «Гитанджали», «Гора» и «Дом и мир» он соединял лирическую сосредоточенность с размышлениями о религии, общественной реформе и национальной идентичности; основанная им школа в Шантиникетане воплощала его педагогические идеи. В 1913 году Тагор стал первым азиатским лауреатом Нобелевской премии по литературе.",
-    en: "Rabindranath Tagore (1861–1941) was a Bengali poet, fiction writer, playwright, composer and educator who reshaped the language of modern Bengali literature. Gitanjali, Gora and The Home and the World join lyric reflection to questions of religion, social reform and national identity; the school he founded at Santiniketan put his educational ideas into practice. In 1913 Tagore became the first Asian recipient of the Nobel Prize in Literature.",
+    ru: "Рабиндранат Тагор (1861-1941) - бенгальский поэт, прозаик, драматург, композитор и педагог, существенно обновивший язык современной бенгальской литературы. В книгах «Гитанджали», «Гора» и «Дом и мир» он соединял лирическую сосредоточенность с размышлениями о религии, общественной реформе и национальной идентичности; основанная им школа в Шантиникетане воплощала его педагогические идеи. В 1913 году Тагор стал первым азиатским лауреатом Нобелевской премии по литературе.",
+    en: "Rabindranath Tagore (1861-1941) was a Bengali poet, fiction writer, playwright, composer and educator who reshaped the language of modern Bengali literature. Gitanjali, Gora and The Home and the World join lyric reflection to questions of religion, social reform and national identity; the school he founded at Santiniketan put his educational ideas into practice. In 1913 Tagore became the first Asian recipient of the Nobel Prize in Literature.",
   }),
   researchDraft({
     countryId: "ireland",
@@ -395,8 +395,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "A major figure in the Irish Literary Revival, he helped establish the Irish Literary Theatre that developed into the Abbey Theatre.",
     notableWorks: "The Celtic Twilight; The Tower; plays written for the Irish theatre.",
-    ru: "Уильям Батлер Йейтс (1865–1939) — ирландский поэт и драматург, одна из ключевых фигур Ирландского литературного возрождения. Вместе с леди Грегори и другими единомышленниками он создавал национальный театр, из которого вырос дублинский Театр Аббатства, а в книгах «Кельтские сумерки» и «Башня» переосмысливал фольклор, историю и современность Ирландии. В 1923 году Йейтс получил Нобелевскую премию по литературе.",
-    en: "William Butler Yeats (1865–1939) was an Irish poet and playwright and a central figure in the Irish Literary Revival. With Lady Gregory and other collaborators, he built the national theatre movement that developed into Dublin's Abbey Theatre, while The Celtic Twilight and The Tower reworked Irish folklore, history and modern experience. Yeats received the Nobel Prize in Literature in 1923.",
+    ru: "Уильям Батлер Йейтс (1865-1939) - ирландский поэт и драматург, одна из ключевых фигур Ирландского литературного возрождения. Вместе с леди Грегори и другими единомышленниками он создавал национальный театр, из которого вырос дублинский Театр Аббатства, а в книгах «Кельтские сумерки» и «Башня» переосмысливал фольклор, историю и современность Ирландии. В 1923 году Йейтс получил Нобелевскую премию по литературе.",
+    en: "William Butler Yeats (1865-1939) was an Irish poet and playwright and a central figure in the Irish Literary Revival. With Lady Gregory and other collaborators, he built the national theatre movement that developed into Dublin's Abbey Theatre, while The Celtic Twilight and The Tower reworked Irish folklore, history and modern experience. Yeats received the Nobel Prize in Literature in 1923.",
   }),
   researchDraft({
     countryId: "italy",
@@ -409,8 +409,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "As professor at Bologna, he brought classical meters and Italy's civic history into modern Italian poetry.",
     notableWorks: "Rime nuove; Odi barbare; Rime e ritmi.",
-    ru: "Джозуэ Кардуччи (1835–1907) — итальянский поэт, критик и историк литературы, много лет преподававший в Болонском университете. В сборниках «Новые рифмы», «Варварские оды» и «Рифмы и ритмы» он переносил античные метрические модели в современный итальянский стих и обращался к гражданской истории страны. В 1906 году Кардуччи стал первым итальянским лауреатом Нобелевской премии по литературе.",
-    en: "Giosuè Carducci (1835–1907) was an Italian poet, critic and literary historian who taught for many years at the University of Bologna. In New Rhymes, Barbarian Odes and Rhymes and Rhythms, he adapted classical metrical models to modern Italian verse and engaged with the country's civic history. Carducci became the first Italian recipient of the Nobel Prize in Literature in 1906.",
+    ru: "Джозуэ Кардуччи (1835-1907) - итальянский поэт, критик и историк литературы, много лет преподававший в Болонском университете. В сборниках «Новые рифмы», «Варварские оды» и «Рифмы и ритмы» он переносил античные метрические модели в современный итальянский стих и обращался к гражданской истории страны. В 1906 году Кардуччи стал первым итальянским лауреатом Нобелевской премии по литературе.",
+    en: "Giosuè Carducci (1835-1907) was an Italian poet, critic and literary historian who taught for many years at the University of Bologna. In New Rhymes, Barbarian Odes and Rhymes and Rhythms, he adapted classical metrical models to modern Italian verse and engaged with the country's civic history. Carducci became the first Italian recipient of the Nobel Prize in Literature in 1906.",
   }),
   researchDraft({
     countryId: "norway",
@@ -423,8 +423,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "His peasant tales contributed to Norwegian national literature, while his later plays engaged social and political questions.",
     notableWorks: "Synnøve Solbakken; Arne; lyrics of Ja, vi elsker dette landet.",
-    ru: "Бьёрнстьерне Бьёрнсон (1832–1910) — норвежский прозаик, драматург, поэт и журналист, участвовавший в формировании национальной литературы XIX века. Повести «Сюннёве Сульбаккен» и «Арне» придали крестьянской жизни эпический и психологический масштаб, а поздние пьесы обращались к общественным конфликтам; его стихотворение «Да, мы любим этот край» стало текстом национального гимна Норвегии. В 1903 году Бьёрнсон получил Нобелевскую премию по литературе.",
-    en: "Bjørnstjerne Bjørnson (1832–1910) was a Norwegian novelist, playwright, poet and journalist who helped shape the country's nineteenth-century national literature. Synnøve Solbakken and Arne gave rural life epic and psychological scope, while his later plays addressed social conflict; his poem Ja, vi elsker dette landet became the text of Norway's national anthem. Bjørnson received the Nobel Prize in Literature in 1903.",
+    ru: "Бьёрнстьерне Бьёрнсон (1832-1910) - норвежский прозаик, драматург, поэт и журналист, участвовавший в формировании национальной литературы XIX века. Повести «Сюннёве Сульбаккен» и «Арне» придали крестьянской жизни эпический и психологический масштаб, а поздние пьесы обращались к общественным конфликтам; его стихотворение «Да, мы любим этот край» стало текстом национального гимна Норвегии. В 1903 году Бьёрнсон получил Нобелевскую премию по литературе.",
+    en: "Bjørnstjerne Bjørnson (1832-1910) was a Norwegian novelist, playwright, poet and journalist who helped shape the country's nineteenth-century national literature. Synnøve Solbakken and Arne gave rural life epic and psychological scope, while his later plays addressed social conflict; his poem Ja, vi elsker dette landet became the text of Norway's national anthem. Bjørnson received the Nobel Prize in Literature in 1903.",
   }),
   researchDraft({
     countryId: "norway",
@@ -437,8 +437,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
     nationalLiteraryContext:
       "His fiction introduced an intensely subjective modern narrative voice and later explored agrarian life; his support for Nazi Germany and the occupation of Norway is essential historical context.",
     notableWorks: "Sult (Hunger); Pan; Markens Grøde (Growth of the Soil).",
-    ru: "Кнут Гамсун (1859–1952) — норвежский романист, получивший известность благодаря книгам «Голод» и «Пан». Нобелевская премия по литературе 1920 года была присуждена ему за роман «Плоды земли», посвящённый труду и связи человека с природой. Гамсун сочувственно отнёсся к нацистскому вторжению в Норвегию; после Второй мировой войны он лишился имущества и некоторое время находился под психиатрическим наблюдением.",
-    en: "Knut Hamsun (1859–1952) was a Norwegian novelist who established his reputation with Hunger and Pan. He received the 1920 Nobel Prize in Literature for Growth of the Soil, a novel centred on work and the relationship between human beings and nature. Hamsun sympathized with the Nazi invasion of Norway; after the Second World War he lost his property and was placed under psychiatric observation for a period.",
+    ru: "Кнут Гамсун (1859-1952) - норвежский романист, получивший известность благодаря книгам «Голод» и «Пан». Нобелевская премия по литературе 1920 года была присуждена ему за роман «Плоды земли», посвящённый труду и связи человека с природой. Гамсун сочувственно отнёсся к нацистскому вторжению в Норвегию; после Второй мировой войны он лишился имущества и некоторое время находился под психиатрическим наблюдением.",
+    en: "Knut Hamsun (1859-1952) was a Norwegian novelist who established his reputation with Hunger and Pan. He received the 1920 Nobel Prize in Literature for Growth of the Soil, a novel centred on work and the relationship between human beings and nature. Hamsun sympathized with the Nazi invasion of Norway; after the Second World War he lost his property and was placed under psychiatric observation for a period.",
   }),
   researchDraft({
     countryId: "poland",
@@ -452,8 +452,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
       "His historical fiction revisited the Polish-Lithuanian Commonwealth for readers living under the partitions of Poland.",
     notableWorks:
       "Ogniem i mieczem (With Fire and Sword); Potop (The Deluge); Pan Wołodyjowski; Quo Vadis.",
-    ru: "Генрик Сенкевич (1846–1916) — польский романист и новеллист, обратившийся к национальной истории в эпоху, когда Польша оставалась разделённой между империями. Трилогия «Огнём и мечом», «Потоп» и «Пан Володыёвский» воссоздаёт конфликты Речи Посполитой XVII века, а роман «Камо грядеши» перенёс историческое действие в Рим времён Нерона и получил международную известность. В 1905 году Сенкевич был удостоен Нобелевской премии по литературе.",
-    en: "Henryk Sienkiewicz (1846–1916) was a Polish novelist and short-story writer who turned to national history while Poland remained partitioned among empires. His trilogy With Fire and Sword, The Deluge and Pan Wołodyjowski recreates conflicts of the seventeenth-century Polish-Lithuanian Commonwealth, while Quo Vadis moved the historical setting to Nero's Rome and gained an international readership. Sienkiewicz received the Nobel Prize in Literature in 1905.",
+    ru: "Генрик Сенкевич (1846-1916) - польский романист и новеллист, обратившийся к национальной истории в эпоху, когда Польша оставалась разделённой между империями. Трилогия «Огнём и мечом», «Потоп» и «Пан Володыёвский» воссоздаёт конфликты Речи Посполитой XVII века, а роман «Камо грядеши» перенёс историческое действие в Рим времён Нерона и получил международную известность. В 1905 году Сенкевич был удостоен Нобелевской премии по литературе.",
+    en: "Henryk Sienkiewicz (1846-1916) was a Polish novelist and short-story writer who turned to national history while Poland remained partitioned among empires. His trilogy With Fire and Sword, The Deluge and Pan Wołodyjowski recreates conflicts of the seventeenth-century Polish-Lithuanian Commonwealth, while Quo Vadis moved the historical setting to Nero's Rome and gained an international readership. Sienkiewicz received the Nobel Prize in Literature in 1905.",
   }),
   researchDraft({
     countryId: "spain",
@@ -470,8 +470,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
       "His theatre used romantic melodrama to stage conflicts of duty, honor and conscience in late nineteenth-century Spain.",
     notableWorks:
       "O locura o santidad (Madness or Sanctity); El gran Galeoto (The Great Galeoto); Conflicto entre dos deberes (Conflict of Duties).",
-    ru: "Хосе Эчегарай-и-Эйсагирре (1832–1916) — испанский драматург, математик, инженер и государственный деятель. В пьесах «Безумие или святость», «Великий Галеото» и «Конфликт обязанностей» он использовал романтическую мелодраму для исследования долга, чести, общественного давления и нравственного выбора. В 1904 году Эчегарай разделил Нобелевскую премию по литературе с Фредериком Мистралем.",
-    en: "José Echegaray y Eizaguirre (1832–1916) was a Spanish playwright, mathematician, engineer and statesman. In Madness or Sanctity, The Great Galeoto and Conflict of Duties, he used romantic melodrama to examine duty, honor, social pressure and moral choice. Echegaray shared the 1904 Nobel Prize in Literature with Frédéric Mistral.",
+    ru: "Хосе Эчегарай-и-Эйсагирре (1832-1916) - испанский драматург, математик, инженер и государственный деятель. В пьесах «Безумие или святость», «Великий Галеото» и «Конфликт обязанностей» он использовал романтическую мелодраму для исследования долга, чести, общественного давления и нравственного выбора. В 1904 году Эчегарай разделил Нобелевскую премию по литературе с Фредериком Мистралем.",
+    en: "José Echegaray y Eizaguirre (1832-1916) was a Spanish playwright, mathematician, engineer and statesman. In Madness or Sanctity, The Great Galeoto and Conflict of Duties, he used romantic melodrama to examine duty, honor, social pressure and moral choice. Echegaray shared the 1904 Nobel Prize in Literature with Frédéric Mistral.",
   }),
   researchDraft({
     countryId: "spain",
@@ -486,8 +486,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
       "He moved Spanish theatre away from declamatory melodrama toward conversational comedy, social observation and satire.",
     notableWorks:
       "Los intereses creados (The Bonds of Interest); La malquerida (The Unloved Woman).",
-    ru: "Хасинто Бенавенте-и-Мартинес (1866–1954) — испанский драматург, стремившийся к достоверному изображению современной ему жизни. Он прославился комедиями нравов и сатирическими пьесами; среди наиболее известных произведений автора — «Игра интересов» и психологическая драма «Нелюбимая». В 1922 году Бенавенте получил Нобелевскую премию по литературе.",
-    en: "Jacinto Benavente y Martínez (1866–1954) was a Spanish playwright who sought a credible portrayal of contemporary life on stage. He became known for comedies of manners and social satire; The Bonds of Interest and the psychological drama The Unloved Woman are among his best-known plays. Benavente received the Nobel Prize in Literature in 1922.",
+    ru: "Хасинто Бенавенте-и-Мартинес (1866-1954) - испанский драматург, стремившийся к достоверному изображению современной ему жизни. Он прославился комедиями нравов и сатирическими пьесами; среди наиболее известных произведений автора - «Игра интересов» и психологическая драма «Нелюбимая». В 1922 году Бенавенте получил Нобелевскую премию по литературе.",
+    en: "Jacinto Benavente y Martínez (1866-1954) was a Spanish playwright who sought a credible portrayal of contemporary life on stage. He became known for comedies of manners and social satire; The Bonds of Interest and the psychological drama The Unloved Woman are among his best-known plays. Benavente received the Nobel Prize in Literature in 1922.",
   }),
   researchDraft({
     countryId: "sweden",
@@ -501,8 +501,8 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
       "Her fiction joined Värmland storytelling and legend to social observation and modern narrative craft.",
     notableWorks:
       "Gösta Berlings saga; Nils Holgerssons underbara resa genom Sverige (The Wonderful Adventures of Nils).",
-    ru: "Сельма Лагерлёф (1858–1940) — шведская романистка, соединившая устные предания и пейзажи Вермланда с современным повествованием и вниманием к общественной жизни. Роман «Сага о Йёсте Берлинге» принёс ей известность, а «Чудесное путешествие Нильса с дикими гусями по Швеции», задуманное как учебная книга, стало классикой детской литературы. В 1909 году Лагерлёф первой среди женщин получила Нобелевскую премию по литературе.",
-    en: "Selma Lagerlöf (1858–1940) was a Swedish novelist who combined the oral traditions and landscapes of Värmland with modern narrative craft and close attention to social life. Gösta Berling's Saga established her reputation, while The Wonderful Adventures of Nils, conceived as a school reader, became a classic of children's literature. In 1909 Lagerlöf became the first woman to receive the Nobel Prize in Literature.",
+    ru: "Сельма Лагерлёф (1858-1940) - шведская романистка, соединившая устные предания и пейзажи Вермланда с современным повествованием и вниманием к общественной жизни. Роман «Сага о Йёсте Берлинге» принёс ей известность, а «Чудесное путешествие Нильса с дикими гусями по Швеции», задуманное как учебная книга, стало классикой детской литературы. В 1909 году Лагерлёф первой среди женщин получила Нобелевскую премию по литературе.",
+    en: "Selma Lagerlöf (1858-1940) was a Swedish novelist who combined the oral traditions and landscapes of Värmland with modern narrative craft and close attention to social life. Gösta Berling's Saga established her reputation, while The Wonderful Adventures of Nils, conceived as a school reader, became a classic of children's literature. In 1909 Lagerlöf became the first woman to receive the Nobel Prize in Literature.",
   }),
   researchDraft({
     countryId: "switzerland",
@@ -516,7 +516,7 @@ export const writerBiographyResearchBatch01: WriterBiographyResearchDraft[] = [
       "He reworked classical myth in modern epic poetry and wrote prose concerned with imagination, identity and artistic vocation.",
     notableWorks:
       "Prometheus und Epimetheus; Olympischer Frühling (Olympian Spring); Imago.",
-    ru: "Карл Шпиттелер (1845–1924) — швейцарский немецкоязычный поэт, прозаик и эссеист, переосмысливавший античный миф в современной литературе. Аллегорическая поэма «Прометей и Эпиметей» и эпический цикл «Олимпийская весна» исследуют свободу, власть и конфликт личности с коллективом, а название романа «Имаго» позднее вошло в терминологию аналитической психологии. Шпиттелер был удостоен Нобелевской премии по литературе за 1919 год.",
-    en: "Carl Spitteler (1845–1924) was a Swiss German-language poet, novelist and essayist who recast classical myth for modern literature. Prometheus and Epimetheus and the epic cycle Olympian Spring examine freedom, authority and the individual's conflict with the group, while the title of his novel Imago later entered the vocabulary of analytical psychology. Spitteler was awarded the 1919 Nobel Prize in Literature.",
+    ru: "Карл Шпиттелер (1845-1924) - швейцарский немецкоязычный поэт, прозаик и эссеист, переосмысливавший античный миф в современной литературе. Аллегорическая поэма «Прометей и Эпиметей» и эпический цикл «Олимпийская весна» исследуют свободу, власть и конфликт личности с коллективом, а название романа «Имаго» позднее вошло в терминологию аналитической психологии. Шпиттелер был удостоен Нобелевской премии по литературе за 1919 год.",
+    en: "Carl Spitteler (1845-1924) was a Swiss German-language poet, novelist and essayist who recast classical myth for modern literature. Prometheus and Epimetheus and the epic cycle Olympian Spring examine freedom, authority and the individual's conflict with the group, while the title of his novel Imago later entered the vocabulary of analytical psychology. Spitteler was awarded the 1919 Nobel Prize in Literature.",
   }),
 ];

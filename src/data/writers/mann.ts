@@ -1,7 +1,7 @@
 export const mannProfile = {
  id:"mann",
  fullName:"Томас Манн",
- years:"1875–1955",
+ years:"1875-1955",
  country:"Германия",
  birthPlace:"Любек, Германия",
  movement:"Модернизм",

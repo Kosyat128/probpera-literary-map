@@ -16,7 +16,7 @@ export const northMacedonia: Country = {
   literaryPeriods: [
     "Фольклорная и средневековая традиция",
     "Национальное возрождение",
-    "Литература XX–XXI веков",
+    "Литература XX-XXI веков",
   ],
   literaryMovements: ["социальная поэзия", "модернизм", "балканская проза"],
   facts: [
@@ -28,7 +28,7 @@ export const northMacedonia: Country = {
       id: "blazhe_koneski",
       name: "Блаже Конески",
       fullName: "Blaže Koneski",
-      years: "1921–1993",
+      years: "1921-1993",
       birthDate: "1921-12-19",
       deathDate: "1993-12-07",
       birthPlace: "Небрегово, близ Прилепа",
@@ -67,7 +67,7 @@ export const northMacedonia: Country = {
       id: "kocho_racin",
       name: "Кочо Рацин",
       fullName: "Kočo Racin",
-      years: "1908–1943",
+      years: "1908-1943",
       birthDate: "1908-12-22",
       deathDate: "1943-06-13",
       birthPlace: "Велес",

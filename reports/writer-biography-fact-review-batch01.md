@@ -1,4 +1,4 @@
-# Проверка биографий писателей — партия 01
+# Проверка биографий писателей - партия 01
 
 Дата проверки: 9 августа 2026 года. Проверяющий: `OpenAI Codex / writer_claim_review_batch01`.
 
@@ -10,7 +10,7 @@
 - Решение `unchanged`: **3**.
 - Решение `corrected`: **17**.
 - Решение `held`: **0**.
-- Причины удержания: **отсутствуют** — все итоговые формулировки подтверждены выбранными источниками.
+- Причины удержания: **отсутствуют** - все итоговые формулировки подтверждены выбранными источниками.
 - Пересечений с `wikidataIdentityReviewQueue`: **0**.
 - Пересечений с `wikidataDateDiscrepancyQueue`: **0**; рекомендаций по исправлению отображаемых дат в этой партии нет.
 
@@ -36,7 +36,7 @@ Exact-набор ключей закреплён в тесте и не пере�
 | 1 | `afghanistan:atiq_rahimi` | `unchanged` | `91a4302d3b48159b170cacd20e61bf559d110b5c572fa2039cfae8178075f307` |
 | 2 | `afghanistan:khalilullah_khalili` | `corrected` | `bde202fe9e4bd8ea9808604fa535faaa6099461b2b4fc0b66048e05bb7ecc841` |
 | 3 | `afghanistan:mahmud_tarzi` | `unchanged` | `3b6e67133b6d9a09116b62b6b04801a114981aeac62de2a84a374cd6ee84107e` |
-| 4 | `albania:ismail_kadare` | `corrected` | `349b44b054dcf21e80a5dd73324ba89ddccc9b5c7d5bf72fb4cb39eb413acb74` |
+| 4 | `albania:ismail_kadare` | `corrected` | `9c490a561c0d40181e1a30c4324b06272c2c58e9bba1fe629d24918ed0a76fff` |
 | 5 | `albania:jeronim_de_rada` | `corrected` | `0357849bd0cc91a6da0beaa5aed9a45f77b162aed3436a632b0eeade60fc2101` |
 | 6 | `albania:mitrush_kuteli` | `corrected` | `31cba6ce2ff25f56b3e08a4d35158da2d4ee02adfa1761353302f81bcf772395` |
 | 7 | `albania:naim_frasheri` | `corrected` | `3d6927567079d32257cee2438403075eef1b38880c6c9628f1460704dbc9318d` |
@@ -142,7 +142,7 @@ Exact-набор ключей закреплён в тесте и не пере�
 
 ### `angola:pepetela`
 
-> Ангольский романист, лауреат премии Камоэнса. Среди его произведений — «Майомбе» и «Поколение утопии».
+> Ангольский романист, лауреат премии Камоэнса. Среди его произведений - «Майомбе» и «Поколение утопии».
 
 Субъективный суперлатив заменён официально подтверждённой премией и произведениями из образовательного реестра Анголы.
 

@@ -10,7 +10,7 @@ export const croatia: Country = {
       id: "marko_marulic",
       name: "Марко Марулич",
       fullName: "Marko Marulić",
-      years: "1450–1524",
+      years: "1450-1524",
 
       birthDate: "1450-08-18",
       deathDate: "1524-01-05",
@@ -58,7 +58,7 @@ export const croatia: Country = {
       name: "Иван Гундулич",
       fullName: "Ivan Gundulić",
 
-      years: "1589–1638",
+      years: "1589-1638",
 
       birthDate: "1589-01-08",
       deathDate: "1638-12-08",
@@ -106,7 +106,7 @@ export const croatia: Country = {
       name: "Август Шеноа",
       fullName: "August Šenoa",
 
-      years: "1838–1881",
+      years: "1838-1881",
 
       birthDate: "1838-11-14",
       deathDate: "1881-12-13",
@@ -152,7 +152,7 @@ export const croatia: Country = {
       name: "Антун Густав Матош",
       fullName: "Antun Gustav Matoš",
 
-      years: "1873–1914",
+      years: "1873-1914",
 
       birthDate: "1873-06-13",
       deathDate: "1914-03-17",
@@ -199,7 +199,7 @@ export const croatia: Country = {
       name: "Ивана Брлич-Мажуранич",
       fullName: "Ivana Brlić-Mažuranić",
 
-      years: "1874–1938",
+      years: "1874-1938",
 
       birthDate: "1874-04-18",
       deathDate: "1938-09-21",
@@ -246,7 +246,7 @@ export const croatia: Country = {
       name: "Мирослав Крлежа",
       fullName: "Miroslav Krleža",
 
-      years: "1893–1981",
+      years: "1893-1981",
 
       birthDate: "1893-07-07",
       deathDate: "1981-12-29",
@@ -293,7 +293,7 @@ export const croatia: Country = {
       name: "Весна Парун",
       fullName: "Vesna Parun",
 
-      years: "1922–2010",
+      years: "1922-2010",
 
       birthDate: "1922-04-10",
       deathDate: "2010-10-25",
@@ -339,7 +339,7 @@ export const croatia: Country = {
       name: "Дубравка Угрешич",
       fullName: "Dubravka Ugrešić",
 
-      years: "1949–2023",
+      years: "1949-2023",
 
       birthDate: "1949-03-27",
       deathDate: "2023-03-17",

@@ -5,7 +5,7 @@ import { articleReaderSourceItems } from "./ArticleReader";
 describe("ArticleReader source presentation", () => {
   it("keeps the citation but removes a repeated raw URL from visible text", () => {
     const fullText =
-      "ФЭБ: В. Я. Пропп. Русский героический эпос — https://feb-web.ru/feb/classics/critics/propp/rge/rge-001-.htm?cmd=p";
+      "ФЭБ: В. Я. Пропп. Русский героический эпос - https://feb-web.ru/feb/classics/critics/propp/rge/rge-001-.htm?cmd=p";
 
     expect(articleReaderSourceItems([fullText])).toEqual([
       {
@@ -19,7 +19,7 @@ describe("ArticleReader source presentation", () => {
 
   it("separates Wikimedia file credits from the main bibliography", () => {
     const fullText =
-      "Wikimedia Commons: К. В. Лебедев. «Алёша Попович и Тугарин Змеевич», 1889 — https://commons.wikimedia.org/wiki/File:Alyosha_Popovich_and_Tugarin_Zmeyevich.jpg";
+      "Wikimedia Commons: К. В. Лебедев. «Алёша Попович и Тугарин Змеевич», 1889 - https://commons.wikimedia.org/wiki/File:Alyosha_Popovich_and_Tugarin_Zmeyevich.jpg";
     const [item] = articleReaderSourceItems([fullText]);
 
     expect(item.kind).toBe("image-credit");
@@ -36,7 +36,7 @@ describe("ArticleReader source presentation", () => {
     const [item] = articleReaderSourceItems([url]);
 
     expect(item).toMatchObject({
-      text: "Wikimedia Commons — Alyosha Popovich & Tugarin.jpg",
+      text: "Wikimedia Commons - Alyosha Popovich & Tugarin.jpg",
       fullText: url,
       url,
       kind: "image-credit",

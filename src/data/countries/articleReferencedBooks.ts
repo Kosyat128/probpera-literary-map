@@ -24,7 +24,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "alexandre_olivier_exquemelin",
       name: "Александер Оливье Эксквемелин",
       fullName: "Alexandre Olivier Exquemelin",
-      years: "ок. 1645 — после 1707",
+      years: "ок. 1645 - после 1707",
       portrait: "",
       bio: "Врач, путешественник и автор одного из важнейших свидетельств о карибском пиратстве XVII века. Биографические сведения об Эксквемелине фрагментарны, а ранние издания его книги заметно расходятся между собой, поэтому спорные детали редакция обозначает отдельно.",
       works: ["Пираты Америки"],
@@ -55,7 +55,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "chris_hadfield",
       name: "Крис Остин Хэдфилд",
       fullName: "Chris Austin Hadfield",
-      years: "1959–",
+      years: "1959-",
       birthDate: "1959-08-29",
       birthPlace: "Сарния, Онтарио, Канада",
       portrait: "",
@@ -142,12 +142,12 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "david_mitchell",
       name: "Дэвид Стивен Митчелл",
       fullName: "David Stephen Mitchell",
-      years: "1969–",
+      years: "1969-",
       birthDate: "1969-01-12",
       birthPlace: "Саутпорт, Англия",
       portrait: "",
       bio: "Британский писатель, чьи романы соединяют разные эпохи, жанры и повествовательные голоса. Его проза исследует память, взаимозависимость людей и повторяющиеся формы власти.",
-      works: ["Облачный атлас", "Под знаком чёрного лебедя", "Утопия — Авеню"],
+      works: ["Облачный атлас", "Под знаком чёрного лебедя", "Утопия - Авеню"],
       workDetails: [
         articleWork(
           "cloud-atlas",
@@ -177,7 +177,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
         ),
         articleWork(
           "utopia-avenue",
-          "Утопия — Авеню",
+          "Утопия - Авеню",
           "https://probpera.ru/read/page-article/page-books/18",
           {
             originalTitle: "Utopia Avenue",
@@ -201,7 +201,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "henri_barbusse",
       name: "Анри Барбюс",
       fullName: "Henri Barbusse",
-      years: "1873–1935",
+      years: "1873-1935",
       birthDate: "1873-05-17",
       deathDate: "1935-08-30",
       birthPlace: "Аньер-сюр-Сен, Франция",
@@ -228,7 +228,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "laurent_gounelle",
       name: "Лоран Гунель",
       fullName: "Laurent Gounelle",
-      years: "1966–",
+      years: "1966-",
       birthDate: "1966-08-10",
       birthPlace: "Л’Э-ле-Роз, Франция",
       portrait: "",
@@ -261,7 +261,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "sergey_ivanovich_ozhegov",
       name: "Сергей Иванович Ожегов",
       fullName: "Сергей Иванович Ожегов",
-      years: "1900–1964",
+      years: "1900-1964",
       birthDate: "1900-09-22",
       deathDate: "1964-12-15",
       birthPlace: "Кувшиново, Тверская губерния, Российская империя",
@@ -343,15 +343,15 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "richard_matheson",
       name: "Ричард Бёртон Матесон",
       fullName: "Richard Burton Matheson",
-      years: "1926–2013",
+      years: "1926-2013",
       birthDate: "1926-02-20",
       deathDate: "2013-06-23",
       birthPlace: "Аллендейл, Нью-Джерси, США",
       portrait: "",
       bio: "Американский писатель и сценарист, оказавший заметное влияние на фантастику, хоррор и популярную культуру второй половины XX века.",
-      works: ["Я — легенда", "Куда приводят мечты"],
+      works: ["Я - легенда", "Куда приводят мечты"],
       workDetails: [
-        articleWork("i-am-legend", "Я — легенда", "https://probpera.ru/read/page-article/page-bookvsmovie/4", {
+        articleWork("i-am-legend", "Я - легенда", "https://probpera.ru/read/page-article/page-bookvsmovie/4", {
           originalTitle: "I Am Legend",
           firstPublished: 1954,
           originalLanguage: "английский",
@@ -383,7 +383,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "hunter_s_thompson",
       name: "Хантер Стоктон Томпсон",
       fullName: "Hunter Stockton Thompson",
-      years: "1937–2005",
+      years: "1937-2005",
       birthDate: "1937-07-18",
       deathDate: "2005-02-20",
       birthPlace: "Луисвилл, Кентукки, США",
@@ -423,7 +423,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "mario_puzo",
       name: "Марио Джанлуиджи Пьюзо",
       fullName: "Mario Gianluigi Puzo",
-      years: "1920–1999",
+      years: "1920-1999",
       birthDate: "1920-10-15",
       deathDate: "1999-07-02",
       birthPlace: "Нью-Йорк, США",
@@ -455,7 +455,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "michael_crichton",
       name: "Джон Майкл Крайтон",
       fullName: "John Michael Crichton",
-      years: "1942–2008",
+      years: "1942-2008",
       birthDate: "1942-10-23",
       deathDate: "2008-11-04",
       birthPlace: "Чикаго, США",
@@ -482,7 +482,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "chuck_palahniuk",
       name: "Чарльз Майкл Паланик",
       fullName: "Charles Michael Palahniuk",
-      years: "1962–",
+      years: "1962-",
       birthDate: "1962-02-21",
       birthPlace: "Паско, штат Вашингтон, США",
       portrait: "",
@@ -508,7 +508,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "dr_seuss",
       name: "Теодор Сьюз Гайзель",
       fullName: "Theodor Seuss Geisel",
-      years: "1904–1991",
+      years: "1904-1991",
       birthDate: "1904-03-02",
       deathDate: "1991-09-24",
       birthPlace: "Спрингфилд, Массачусетс, США",
@@ -518,7 +518,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       workDetails: [
         articleWork(
           "how-the-grinch-stole-christmas",
-          "Гринч — похититель Рождества",
+          "Гринч - похититель Рождества",
           "https://probpera.ru/read/page-article/page-bookvsmovie/7",
           {
             originalTitle: "How the Grinch Stole Christmas!",
@@ -540,7 +540,7 @@ const articleReferencedWriters: Record<string, WriterProfile[]> = {
       id: "winston_groom",
       name: "Уинстон Фрэнсис Грум",
       fullName: "Winston Francis Groom",
-      years: "1943–2020",
+      years: "1943-2020",
       birthDate: "1943-03-23",
       deathDate: "2020-09-17",
       birthPlace: "Вашингтон, США",
@@ -671,7 +671,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
       {
         name: "Ивлин Во",
         fullName: "Артур Ивлин Сент-Джон Во",
-        years: "1903–1966",
+        years: "1903-1966",
         birthDate: "1903-10-28",
         deathDate: "1966-04-10",
         portrait: "",
@@ -684,7 +684,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
           reviewedAt,
           sources: [
             {
-              title: "Evelyn Waugh — biographical record",
+              title: "Evelyn Waugh - biographical record",
               url: "https://www.britannica.com/biography/Evelyn-Waugh",
               publisher: "Encyclopaedia Britannica",
             },
@@ -698,7 +698,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
       {
         name: "Энтони Троллоп",
         fullName: "Энтони Троллоп",
-        years: "1815–1882",
+        years: "1815-1882",
         birthDate: "1815-04-24",
         deathDate: "1882-12-06",
         portrait: "",
@@ -711,7 +711,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
           reviewedAt,
           sources: [
             {
-              title: "Anthony Trollope — biographical record",
+              title: "Anthony Trollope - biographical record",
               url: "https://www.britannica.com/biography/Anthony-Trollope",
               publisher: "Encyclopaedia Britannica",
             },
@@ -725,7 +725,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
       {
         name: "Уилки Коллинз",
         fullName: "Уильям Уилки Коллинз",
-        years: "1824–1889",
+        years: "1824-1889",
         birthDate: "1824-01-08",
         deathDate: "1889-09-23",
         portrait: "",
@@ -760,7 +760,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
       {
         name: "Роальд Даль",
         fullName: "Роальд Даль",
-        years: "1916–1990",
+        years: "1916-1990",
         birthDate: "1916-09-13",
         deathDate: "1990-11-23",
         portrait: "",
@@ -773,7 +773,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
           reviewedAt,
           sources: [
             {
-              title: "Roald Dahl — biographical record",
+              title: "Roald Dahl - biographical record",
               url: "https://www.britannica.com/biography/Roald-Dahl",
               publisher: "Encyclopaedia Britannica",
             },
@@ -801,7 +801,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
       {
         name: "Луи-Фердинанд Селин",
         fullName: "Луи-Фердинанд Селин (Луи Фердинанд Огюст Детуш)",
-        years: "1894–1961",
+        years: "1894-1961",
         birthDate: "1894-05-27",
         deathDate: "1961-07-01",
         portrait: "",
@@ -814,7 +814,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
           reviewedAt,
           sources: [
             {
-              title: "Louis-Ferdinand Céline — biographical record",
+              title: "Louis-Ferdinand Céline - biographical record",
               url: "https://www.britannica.com/biography/Louis-Ferdinand-Celine",
               publisher: "Encyclopaedia Britannica",
             },
@@ -836,12 +836,12 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
       {
         name: "Айрис Мёрдок",
         fullName: "Джин Айрис Мёрдок",
-        years: "1919–1999",
+        years: "1919-1999",
         birthDate: "1919-07-15",
         deathDate: "1999-02-08",
         birthPlace: "Дублин, Ирландия",
         portrait: "",
-        bio: "Ирландско-британская писательница и философ, исследовавшая в романах свободу, нравственный выбор, любовь и самообман. Её проза соединяет интеллектуальную проблематику с драматической интригой; «Под сетью» стало первым романом Мёрдок, а «Чёрный принц» — одной из её наиболее известных книг.",
+        bio: "Ирландско-британская писательница и философ, исследовавшая в романах свободу, нравственный выбор, любовь и самообман. Её проза соединяет интеллектуальную проблематику с драматической интригой; «Под сетью» стало первым романом Мёрдок, а «Чёрный принц» - одной из её наиболее известных книг.",
         genres: ["роман", "философская проза"],
         language: "английский",
         nationality: "ирландско-британская писательница",
@@ -850,7 +850,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
           reviewedAt,
           sources: [
             {
-              title: "Iris Murdoch — biographical record",
+              title: "Iris Murdoch - biographical record",
               url: "https://en.wikipedia.org/wiki/Iris_Murdoch",
               publisher: "Wikipedia",
             },
@@ -869,7 +869,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
       {
         name: "Джозеф Конрад",
         fullName: "Юзеф Теодор Конрад Коженёвский",
-        years: "1857–1924",
+        years: "1857-1924",
         birthDate: "1857-12-03",
         deathDate: "1924-08-03",
         portrait: "",
@@ -882,7 +882,7 @@ const articleSeriesWriters: Record<string, WriterProfile[]> = {
           reviewedAt,
           sources: [
             {
-              title: "Joseph Conrad — biographical record",
+              title: "Joseph Conrad - biographical record",
               url: "https://en.wikipedia.org/wiki/Joseph_Conrad",
               publisher: "Wikipedia",
             },

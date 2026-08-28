@@ -52,8 +52,11 @@ const englishInterfaceText: Record<string, string> = {
   Книги: "Books",
   "Журнал о литературе и искусстве слова":
     "A journal about literature and the art of language",
+  "Литература -": "Literature is",
   "Литература –": "Literature is",
   "это целый мир!": "a world of its own!",
+  "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве.":
+    "Essays, biographies, rare books and an interactive literary encyclopedia of the world - in one editorial space.",
   "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.":
     "Essays, biographies, rare books and an interactive literary encyclopedia of the world — in one editorial space.",
   "Открыть глобус": "Explore the globe",
@@ -74,7 +77,7 @@ const englishInterfaceText: Record<string, string> = {
   "Литературный журнал · с 2025 года": "Literary journal · since 2025",
   "Интерактивная энциклопедия": "Interactive encyclopedia",
   "Литературная планета": "Literary Planet",
-  "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.":
+  "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка.":
     "Choose a country on the interactive globe to discover its writers, works, periods and editor-reviewed literary history.",
   "Найти страну": "Find a country",
   "Найти страну, писателя или книгу": "Find a country, writer or book",
@@ -150,6 +153,7 @@ const englishInterfaceText: Record<string, string> = {
   "Литературные премии": "Literary prizes",
   "Биографии и судьбы писателей": "Writers: lives and biographies",
   "О литературе и культуре": "Literature and culture",
+  "Разное": "Miscellaneous",
   "Фольклор и мифология": "Folklore and mythology",
   "Язык и редкие слова": "Language and rare words",
   "Литературные истории": "Literary stories",
@@ -173,8 +177,8 @@ const englishInterfaceText: Record<string, string> = {
   "Профиль и личная библиотека": "Profile and personal library",
   "Редакция, источники и правила": "Editors, sources and standards",
   авторов: "writers",
-  "Редкие издания, классика и современная литература — с контекстом и без лишних спойлеров.":
-    "Rare editions, classics and contemporary books — with context and without unnecessary spoilers.",
+  "Редкие издания, классика и современная литература - с контекстом и без лишних спойлеров.":
+    "Rare editions, classics and contemporary books - with context and without unnecessary spoilers.",
   "Сравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее.":
     "Comparing the written work and its screen adaptation: what changed, what was lost and what became stronger.",
   "Тематические маршруты для чтения: классика, современная проза и книги, к которым хочется вернуться.":
@@ -185,7 +189,7 @@ const englishInterfaceText: Record<string, string> = {
     "Carefully researched biographies: a writer’s life, time, character and defining works.",
   "Большие редакционные эссе о чтении, библиотеках, культурной памяти и будущем книги.":
     "Long-form essays on reading, libraries, cultural memory and the future of books.",
-  "Персонажи, сюжеты и образы устной традиции — от славянского фольклора до мировых мифологий.":
+  "Персонажи, сюжеты и образы устной традиции - от славянского фольклора до мировых мифологий.":
     "Characters, stories and imagery from oral traditions, from Slavic folklore to world mythology.",
   "История слов, точные значения и выразительные возможности русского языка без сухой словарной подачи.":
     "Word histories, precise meanings and the expressive possibilities of Russian, presented as living language.",
@@ -193,7 +197,7 @@ const englishInterfaceText: Record<string, string> = {
     "The unusual lives of books, writers’ ideas and professions, and cultural discoveries.",
   "Страны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами.":
     "Countries, national traditions and the writers who give world literature its many voices.",
-  "Книги связаны с авторами, странами, эпохами и статьями журнала — с фильтрами и редакционной проверкой обложек.":
+  "Книги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек.":
     "Books connected to writers, countries, periods and journal articles, with filters and editorial cover review.",
   "Дни рождения и памяти писателей с точными датами и быстрым переходом к карточке автора.":
     "Writers’ birthdays and memorial dates, with verified dates and direct links to their profiles.",
@@ -261,11 +265,11 @@ const englishInterfaceText: Record<string, string> = {
   "Ранние издания и классика": "Early works and classics",
   "После 1945 года": "After 1945",
   "Опубликовано после 1945": "Published after 1945",
-  "Литература второй половины XX–XXI века": "Literature from the late 20th and 21st centuries",
+  "Литература второй половины XX-XXI века": "Literature from the late 20th and 21st centuries",
   "Классика до середины XX века": "Classics through the mid-20th century",
-  "Первое издание — не позднее 1945 года": "First published no later than 1945",
+  "Первое издание - не позднее 1945 года": "First published no later than 1945",
   "Послевоенная и современная литература": "Postwar and contemporary literature",
-  "Первое издание — с 1946 года по настоящее время": "First published from 1946 to the present",
+  "Первое издание - с 1946 года по настоящее время": "First published from 1946 to the present",
   "Закрыть карточку книги": "Close book details",
   "Редакционная обложка": "Editorial cover for",
   "Редакционная обложка «Пробы Пера»": "Proba Pera editorial cover",
@@ -281,7 +285,7 @@ const englishInterfaceText: Record<string, string> = {
   Страна: "Country",
   "Первая публикация": "First published",
   "Язык оригинала": "Original language",
-  "Произведение уже связано с автором и страной. Расширенная аннотация, история публикации и библиография находятся в редакционной очереди — неподтверждённые сведения здесь не публикуются.":
+  "Произведение уже связано с автором и страной. Расширенная аннотация, история публикации и библиография находятся в редакционной очереди - неподтверждённые сведения здесь не публикуются.":
     "This work is already linked to its writer and country. The extended summary, publication history and bibliography remain in editorial review; unverified information is not published here.",
   "Темы и жанры книги": "Book subjects and genres",
   "Добавить в мою библиотеку": "Add to my library",
@@ -309,6 +313,7 @@ const englishInterfaceText: Record<string, string> = {
   "Попробуйте другое название, автора, страну или фильтр.":
     "Try another title, writer, country or filter.",
   "Показать ещё 12": "Show 12 more",
+  "Показать ещё 13": "Show 13 more",
   "Единый каталог": "Unified catalogue",
   "Найти в «Пробе Пера»": "Search Proba Pera",
   "Закрыть поиск": "Close search",
@@ -332,7 +337,7 @@ const englishInterfaceText: Record<string, string> = {
   Страны: "Countries",
   страна: "country",
   страны: "countries",
-  "В выбранной коллекции —": "In this collection:",
+  "В выбранной коллекции -": "In this collection:",
   С: "N",
   Ю: "S",
   Писатели: "Writers",
@@ -348,9 +353,9 @@ const englishInterfaceText: Record<string, string> = {
   "Используйте текстовый указатель стран ниже":
     "Use the country text index below",
   "Тяните, чтобы вращать": "Drag to rotate",
-  "Колесо — масштаб": "Scroll to zoom",
+  "Колесо - масштаб": "Scroll to zoom",
   "Тяните или используйте стрелки": "Drag or use the arrow keys",
-  "Колесо или ± — масштаб": "Scroll or use ± to zoom",
+  "Колесо или ± - масштаб": "Scroll or use ± to zoom",
   "Нажмите, чтобы открыть архив страны": "Select to open the country archive",
   "Страна выбрана · карточка архива открыта":
     "Country selected · archive card open",
@@ -454,7 +459,7 @@ const englishInterfaceText: Record<string, string> = {
     "The discussion could not be refreshed. Please try again.",
   "Оценку не удалось сохранить. Попробуйте ещё раз.":
     "Your rating could not be saved. Please try again.",
-  "Спасибо — ваша оценка сохранена.": "Thank you — your rating has been saved.",
+  "Спасибо - ваша оценка сохранена.": "Thank you - your rating has been saved.",
   "Слишком много сообщений подряд. Подождите несколько минут.":
     "Too many messages were sent in a short time. Please wait a few minutes.",
   "Комментарий не удалось опубликовать. Проверьте текст и повторите.":
@@ -557,7 +562,7 @@ const englishInterfaceText: Record<string, string> = {
   "Читать статью": "Read article",
   "Все материалы рубрики": "All articles in this section",
   "Обсуждение номера": "Issue discussion",
-  "Статья заканчивается, разговор — продолжается":
+  "Статья заканчивается, разговор - продолжается":
     "The article ends, the conversation continues",
   "Оценки и комментарии привязаны к конкретной публикации. Авторский текст остаётся неизменным, а читательская дискуссия живёт отдельно.":
     "Ratings and comments belong to a specific publication. The author’s text remains unchanged while reader discussion lives alongside it.",
@@ -619,7 +624,7 @@ const englishInterfaceText: Record<string, string> = {
   Контакты: "Contacts",
   "Независимый литературный журнал": "Independent literary journal",
   "«Проба Пера»": "Proba Pera",
-  "Авторский архив · 157 материалов": "Editorial archive · 157 publications",
+  "Авторский архив · 167 материалов": "Editorial archive · 167 publications",
   "Журнал, выстроенный для чтения": "A journal designed for reading",
   "Мнения о книгах, литературные эссе, биографии, экранизации и языковые наблюдения собраны в единую редакционную библиотеку.":
     "Book reviews, literary essays, biographies, adaptations and observations on language form one editorial library.",
@@ -658,7 +663,7 @@ const englishInterfaceText: Record<string, string> = {
   "авторов в энциклопедии": "writers in the encyclopedia",
   "произведений в архиве": "works in the archive",
   "стран на карте": "countries on the map",
-  "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.":
+  "Место для спокойного и содержательного разговора о книгах - без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.":
     "A place for calm, substantive conversation about books, without noise or random recommendations. Continue an idea from an article, discuss a translation, build a reading route and preserve the history of your reading.",
   "Читать обсуждения можно сразу. Профиль нужен только для участия в разговоре, оценок и личной библиотеки.":
     "Anyone can read the discussions. A profile is needed only to join the conversation, rate publications and use a personal library.",
@@ -673,6 +678,7 @@ const englishInterfaceText: Record<string, string> = {
   Серии: "Series",
   Все: "All",
   "Проба Пера": "Proba Pera",
+  "Проба Пера - главная": "Proba Pera - home",
   "Проба Пера — главная": "Proba Pera — home",
   иллюстраций: "illustrations",
   "Продолжено с места остановки": "Resumed where you left off",
@@ -695,9 +701,9 @@ const englishInterfaceText: Record<string, string> = {
   "Подключаем статьи, книги, писателей и страны.":
     "Loading articles, books, writers and countries.",
   "Нобелевский лауреат": "Nobel laureate",
-  "Нажмите на метку — откроется карточка лауреата":
+  "Нажмите на метку - откроется карточка лауреата":
     "Select the marker to open the laureate’s profile",
-  "Нажмите на кластер — откроется Нобелевский контекст страны":
+  "Нажмите на кластер - откроется Нобелевский контекст страны":
     "Select the cluster to open the country’s Nobel context",
   "Статья о лауреате": "Article about the laureate",
   "лауреат страны": "country laureate",
@@ -705,8 +711,8 @@ const englishInterfaceText: Record<string, string> = {
   "лауреатов страны": "country laureates",
   "Нобелевский архив": "Nobel archive",
   "Редакционная серия": "Editorial series",
-  "Лауреаты Нобелевской премии · 1901–2025":
-    "Nobel Prize laureates · 1901–2025",
+  "Лауреаты Нобелевской премии · 1901-2025":
+    "Nobel Prize laureates · 1901-2025",
   "История премии": "History of the prize",
   "Период архива": "Archive period",
   "Все годы": "All years",
@@ -752,7 +758,7 @@ const englishInterfaceText: Record<string, string> = {
   "Первая большая работа основателя гонзо-журналистики: история создания, контекст и честное мнение после прочтения.":
     "The first major work by the founder of gonzo journalism: its origins, context and an honest response after reading.",
   "Семь знаковых писателей Японии": "Seven landmark writers from Japan",
-  "От классической традиции до современной прозы — маршрут по авторам, прославившим японскую литературу.":
+  "От классической традиции до современной прозы - маршрут по авторам, прославившим японскую литературу.":
     "A route from the classical tradition to contemporary fiction through the writers who brought Japanese literature worldwide recognition.",
   "Редкие слова, которые помогут вам расширить словарный запас":
     "Rare words to expand your vocabulary",
@@ -771,11 +777,11 @@ const englishInterfaceText: Record<string, string> = {
     "The 1865 first edition was recalled because of the printing quality of John Tenniel’s illustrations. Only about fifty of the two thousand copies had been distributed.",
   "Библиотека Конгресса": "Library of Congress",
   "«Разум и чувства»": "Sense and Sensibility",
-  "Первый роман Джейн Остин вышел в 1811 году без имени писательницы: на титульном листе было указано только «By a Lady» — «Написано леди».":
+  "Первый роман Джейн Остин вышел в 1811 году без имени писательницы: на титульном листе было указано только «By a Lady» - «Написано леди».":
     "Jane Austen’s first novel was published in 1811 without her name: the title page identified its author only as “By a Lady.”",
   "Британская библиотека": "British Library",
   "«Маленький принц»": "The Little Prince",
-  "Повесть впервые издали в Нью-Йорке 6 апреля 1943 года сразу на французском и английском языках. Французское издание появилось уже после войны — в 1946 году.":
+  "Повесть впервые издали в Нью-Йорке 6 апреля 1943 года сразу на французском и английском языках. Французское издание появилось уже после войны - в 1946 году.":
     "The novella was first published in New York on 6 April 1943 in French and English at the same time. A French edition appeared after the war, in 1946.",
   "Национальная библиотека Франции": "National Library of France",
   "«Замок Отранто»": "The Castle of Otranto",
@@ -806,7 +812,7 @@ const englishInterfaceText: Record<string, string> = {
   "Сервер сообщества ещё не подключён к этой сборке сайта.":
     "The community server is not connected to this site build yet.",
   "Никнейм должен содержать от 2 до 32 букв или цифр; допустимы пробел, точка, дефис и подчёркивание.":
-    "Your nickname must be 2–32 letters or digits long; spaces, full stops, hyphens and underscores are allowed.",
+    "Your nickname must be 2-32 letters or digits long; spaces, full stops, hyphens and underscores are allowed.",
   "Введите действующий адрес электронной почты.": "Enter a valid email address.",
   "Пароль должен содержать не менее 10 символов.":
     "Your password must contain at least 10 characters.",
@@ -821,7 +827,7 @@ const englishInterfaceText: Record<string, string> = {
   "Пароль не соответствует требованиям безопасности.":
     "The password does not meet the security requirements.",
   "Не удалось выполнить запрос": "The request could not be completed",
-  "Регистрация принята. Проверьте почту и подтвердите адрес — после этого можно войти.":
+  "Регистрация принята. Проверьте почту и подтвердите адрес - после этого можно войти.":
     "Your registration has been received. Check your email and confirm the address before signing in.",
   "Вы вошли в клуб читателей.": "You are now signed in to the readers’ club.",
   "Не удалось связаться с сервером. Проверьте интернет и повторите попытку.":
@@ -861,7 +867,7 @@ const englishInterfaceText: Record<string, string> = {
   Читаю: "Reading",
   Прочитано: "Finished",
   "Удалить из библиотеки": "Remove from library",
-  "Нажмите оранжевое сердце у статьи или книги — материал появится здесь.":
+  "Нажмите оранжевое сердце у статьи или книги - материал появится здесь.":
     "Select the orange heart beside an article or book to save it here.",
   "Литературная траектория": "Your literary journey",
   "Страны и писатели, новые материалы о которых вы хотите отслеживать.":
@@ -871,7 +877,7 @@ const englishInterfaceText: Record<string, string> = {
   "Подписки добавляются в карточках стран и писателей.":
     "Follow countries and writers from their profile cards.",
   "Клуб читателей": "Readers’ club",
-  "Говорилка — форум «Проба Пера»": "The Proba Pera forum",
+  "Говорилка - форум «Проба Пера»": "The Proba Pera forum",
   "Редакция «Пробы Пера»": "Proba Pera editorial team",
   "Личный кабинет «Пробы Пера»": "Your Proba Pera account",
   "Разделы сообщества": "Community sections",
@@ -955,8 +961,8 @@ const englishInterfaceText: Record<string, string> = {
     "The form is ready. Registration will be enabled after the project’s server keys are connected in GitHub Actions.",
   "Подождите…": "Please wait…",
   Зарегистрироваться: "Register",
-  "Уже есть аккаунт — войти": "Already have an account? Sign in",
-  "Нет аккаунта — зарегистрироваться": "No account yet? Register",
+  "Уже есть аккаунт - войти": "Already have an account? Sign in",
+  "Нет аккаунта - зарегистрироваться": "No account yet? Register",
   "Разговор о литературе": "A conversation about literature",
   "Все темы": "All topics",
   "Войдите, чтобы открыть новую тему.": "Sign in to start a new topic.",
@@ -1019,7 +1025,7 @@ const englishInterfaceText: Record<string, string> = {
   "Черновик сохранён на этом устройстве.": "Draft saved on this device.",
   "Редакционный JSON подготовлен.": "Editorial JSON prepared.",
   "Анонс для социальных сетей скопирован.": "Social-media summary copied.",
-  "Не удалось скопировать автоматически — выделите текст вручную.":
+  "Не удалось скопировать автоматически - выделите текст вручную.":
     "Automatic copying failed. Select and copy the text manually.",
   "Редакционная мастерская": "Editorial workspace",
   "Черновик новой публикации": "New publication draft",
@@ -1048,7 +1054,7 @@ const englishInterfaceText: Record<string, string> = {
   "Скопировать анонс": "Copy summary",
   "Проба Пера · восстановление": "Proba Pera · recovery",
   "Страница столкнулась с ошибкой": "This page encountered an error",
-  "Состояние сохранено в журнале редакции. Обновите страницу — публикации и ваша библиотека не пострадали.":
+  "Состояние сохранено в журнале редакции. Обновите страницу - публикации и ваша библиотека не пострадали.":
     "The error has been recorded in the editorial log. Refresh the page; your publications and library are safe.",
   "Обновить страницу": "Refresh page",
   "Пока нет опубликованных переводов на английский язык": "No English translations have been published yet",
@@ -1095,7 +1101,7 @@ const englishInterfaceText: Record<string, string> = {
   Поделиться: "Share",
   "Ссылка скопирована": "Link copied",
   "Копировать ссылку": "Copy link",
-  "Нет сети — доступны уже открытые материалы": "Offline — previously opened publications remain available",
+  "Нет сети - доступны уже открытые материалы": "Offline - previously opened publications remain available",
   "Доступна новая версия журнала": "A new version of the journal is available",
   "Дата рождения": "Date of birth",
   "Дата смерти": "Date of death",
@@ -1120,7 +1126,303 @@ const englishInterfaceText: Record<string, string> = {
   "Статьи ПРОБА ПЕРА": "PROBA PERA articles",
   "Есть статья": "Article available",
   Готовится: "In preparation",
+  "XIX век": "19th century",
+  "XXI век": "21st century",
+  "АВТОРЫ": "WRITERS",
+  "АУДИТОРИИ": "AUDIENCES",
+  "Активные фильтры": "Active filters",
+  "Аудитория": "Audience",
+  "Без связанной статьи": "No linked article",
+  "В архиве нет книг по выбранным условиям": "No books in the archive match the selected filters",
+  "В библиотеке": "In library",
+  "Взрослые": "Adults",
+  "Во всём журнале": "Across the journal",
+  "Все авторы": "All writers",
+  "Главный материал": "Featured article",
+  "Далее": "Next",
+  "Дети": "Children",
+  "Для всех возрастов": "All ages",
+  "Для детей": "For children",
+  "До 1800 года": "Before 1800",
+  "Есть связь со статьёй": "Linked to an article",
+  "ЖАНРЫ": "GENRES",
+  "Жанр": "Genre",
+  "Жанры": "Genres",
+  "Загруженная обложка": "Uploaded cover",
+  "Закрыть фильтры": "Close filters",
+  "Выберите книгу": "Choose a book",
+  "Выбрать случайное произведение из всего архива":
+    "Choose a random work from the entire archive",
+  "Избранное": "Favourites",
+  "Индекс связей пока недоступен": "Related-content index unavailable",
+  "Используется редакционный индекс связей": "Using the editorial related-content index",
+  "Используются только проверенные профили аудитории": "Only verified audience profiles are used",
+  "КАТАЛОГ": "CATALOGUE",
+  "КНИГИ": "BOOKS",
+  "Книги из личной полки": "Books from your personal shelf",
+  "МАТЕРИАЛЫ ЖУРНАЛА": "JOURNAL ARTICLES",
+  "МОИ ПОЛКИ": "MY SHELVES",
+  "Моя умная полка": "My smart shelf",
+  "На этой полке пока нет книг": "There are no books on this shelf yet",
+  "Назад": "Back",
+  "Не удалось сохранить умную полку": "Could not save the smart shelf",
+  "Недавно проверенные": "Recently reviewed",
+  "Недоступно: проверенные профили аудитории отсутствуют": "Unavailable: no verified audience profiles",
+  "Открыть книгу": "Open book",
+  "Нажмите на корешок — книга выйдет вперёд, а справа откроются описание и сведения.":
+    "Select a spine to bring the book forward and open its description and details.",
+  "Перелистнуть страницу": "Turn page",
+  "Открыть полку автора": "Open writer shelf",
+  "ПЕРИОДЫ": "PERIODS",
+  "ПОЛКА": "SHELF",
+  "Период": "Period",
+  "Период не подтверждён": "Period not verified",
+  "По автору": "By writer",
+  "По названию": "By title",
+  "Подростки": "Teenagers",
+  "Подсказки библиотеки": "Library suggestions",
+  "Подсказки единого каталога": "Unified catalogue suggestions",
+  "Полка пуста": "The shelf is empty",
+  "Предыдущая книга": "Previous book",
+  "Предыдущие 13 произведений": "Previous 13 works",
+  "РЕДАКЦИОННЫЕ ПОЛКИ": "EDITORIAL SHELVES",
+  "Расширенные фильтры": "Advanced filters",
+  "Расширенные фильтры книжного архива": "Advanced book archive filters",
+  "Редакционная релевантность": "Editorial relevance",
+  "Редакционный порядок": "Editorial order",
+  "Редакционный статус": "Editorial status",
+  "Результаты поиска по библиотеке": "Library search results",
+  "Результаты поиска по всему журналу": "Journal-wide search results",
+  "Рецензия": "Review",
+  "С обложкой": "With a cover",
+  "СТРАНЫ": "COUNTRIES",
+  "Сбросить": "Clear",
+  "Сбросить фильтры": "Clear filters",
+  "Свой точный отбор": "Your custom selection",
+  "Связь со статьями": "Article links",
+  "Следующая книга": "Next book",
+  "Следующие 13 произведений": "Next 13 works",
+  "Случайное произведение": "Random work",
+  "Случайный выбор": "Random pick",
+  "Сначала ранние": "Oldest first",
+  "Сначала с обложкой": "Covers first",
+  "Собираем виртуальную полку…": "Building the virtual shelf…",
+  "Сортировка": "Sort",
+  "Сохранить как умную полку": "Save as a smart shelf",
+  "Текущая полка": "Current shelf",
+  "Тип обложки": "Cover type",
+  "Типографическая обложка": "Typographic cover",
+  "Только книги из личной полки": "Only books from your personal shelf",
+  "Только обложки с разрешёнными правами": "Only covers cleared for use",
+  "Только подтверждённая аудитория": "Verified audience only",
+  "Точный отбор": "Custom selection",
+  "Трёхмерная полка недоступна. Открыт безопасный каталог.": "The 3D shelf is unavailable. The safe catalogue is open.",
+  "Удалить фильтр": "Remove filter",
+  "Умная полка": "Smart shelf",
+  "Умная полка сохранена": "Smart shelf saved",
+  "Упоминание": "Mention",
+  "Фильтры применяются по правилу И между категориями и ИЛИ внутри категории. Непроверенные метаданные не угадываются.": "Filter categories use AND, while options within a category use OR. Unverified metadata is never inferred.",
+  "Язык": "Language",
+  "совпадений": "matches",
+  "роман": "novel",
+  "повесть": "novella",
+  "рассказ": "short story",
+  "поэзия": "poetry",
+  "драма": "drama",
+  "эссе": "essay",
+  "мемуары": "memoir",
+  "биография": "biography",
+  "эпос": "epic",
+  "сатира": "satire",
+  "басня": "fable",
+  "сказка": "fairy tale",
+  "фольклор": "folklore",
+  "научная фантастика": "science fiction",
+  "фэнтези": "fantasy",
+  "детектив": "detective fiction",
+  "приключенческая проза": "adventure fiction",
+  "историческая проза": "historical fiction",
+  "философия": "philosophy",
+  "детская литература": "children's literature",
+  "подростковая литература": "young adult literature",
+  "литературная критика": "literary criticism",
+  "журналистика": "journalism",
+  "русский": "Russian",
+  "английский": "English",
+  "французский": "French",
+  "немецкий": "German",
+  "испанский": "Spanish",
+  "итальянский": "Italian",
+  "португальский": "Portuguese",
+  "арабский": "Arabic",
+  "китайский": "Chinese",
+  "японский": "Japanese",
+  "польский": "Polish",
+  "чешский": "Czech",
+  "шведский": "Swedish",
+  "норвежский": "Norwegian",
+  "датский": "Danish",
+  "нидерландский": "Dutch",
+  "венгерский": "Hungarian",
+  "турецкий": "Turkish",
+  "бенгальский": "Bengali",
+  "латинский": "Latin",
+  "древнегреческий": "Ancient Greek",
+  "греческий": "Greek",
+  "украинский": "Ukrainian",
+  "белорусский": "Belarusian",
+  "армянский": "Armenian",
+  "грузинский": "Georgian",
+  "персидский": "Persian",
+  "иврит": "Hebrew",
+  "корейский": "Korean",
+  "финский": "Finnish",
+  "исландский": "Icelandic",
+  "румынский": "Romanian",
+  "сербский": "Serbian",
+  "хорватский": "Croatian",
+  "болгарский": "Bulgarian",
+  "азербайджанский": "Azerbaijani",
+  "казахский": "Kazakh",
+  "узбекский": "Uzbek",
+  "Читаю сейчас": "Reading now",
+  "Куратор: редакция «Пробы пера» · проверенные произведения":
+    "Curated by the Proba Pera editors · reviewed works",
+  "Классика архива": "Archive classics",
+  "Куратор: редакция «Пробы пера» · проверенная классика архива":
+    "Curated by the Proba Pera editors · reviewed archive classics",
+  Архив: "Archive",
+  "Редакционные полки": "Editorial shelves",
+  "Мои полки": "My shelves",
+  "Новая полка": "New shelf",
+  "Не удалось создать личную полку": "Could not create the personal shelf",
+  Периоды: "Periods",
+  "Только сохранённые книги": "Saved books only",
+  "Поиск временно недоступен": "Search is temporarily unavailable",
+  "Книги на полке сохранены без изменений.":
+    "The books on this shelf remain unchanged.",
+  "Повторить поиск": "Retry search",
+  "Подсказки всего книжного архива": "Complete book archive suggestions",
+  "Результаты поиска по всему книжному архиву":
+    "Complete book archive search results",
+  "Результаты поиска по текущей полке": "Current shelf search results",
+  "Открыты сведения о книге": "Book details open",
+  "Состояние книжной полки": "Bookshelf status",
+  "Весь книжный архив": "Complete book archive",
+  "Пока нет полок": "No shelves yet",
+  "Подборка обновляется": "Updating selection",
+  "Пока пусто": "Empty for now",
+  "Настроить полку": "Customise shelf",
+  Качество: "Quality",
+  "Качество трёхмерной полки": "3D shelf quality",
+  "Некоторые книги больше недоступны в архиве":
+    "Some books are no longer available in the archive",
+  "Удалить ссылку": "Remove link",
+  "Редакционная ссылка недоступна": "Editorial link unavailable",
+  "Свернуть сведения о книге": "Collapse book details",
+  "Развернуть сведения о книге": "Expand book details",
+  "Сведения о книге": "Book details",
+  "Показать полностью": "Show in full",
+  Свернуть: "Collapse",
+  "Навигация по редакционным страницам": "Editorial page navigation",
+  "Предыдущая страница": "Previous page",
+  "Следующая страница": "Next page",
+  "Управлять полками": "Manage shelves",
+  "Добавить на полку": "Add to shelf",
+  "В избранном": "In favourites",
+  "В избранное": "Add to favourites",
+  "Эта полка ждёт первую книгу": "This shelf is waiting for its first book",
+  "Откройте весь архив, найдите произведение и добавьте его на эту полку.":
+    "Open the complete archive, find a work and add it to this shelf.",
+  "Попробуйте другое название, автора, страну или сбросьте фильтры.":
+    "Try another title, writer or country, or clear the filters.",
+  "Выбрать книгу из архива": "Choose a book from the archive",
+  "Вернуться ко всему архиву": "Return to the complete archive",
+  "Открыть весь архив": "Open the complete archive",
+  "Первая книга": "First book",
+  "Позиция на книжной полке": "Position on the bookshelf",
+  "Последняя книга": "Last book",
+  "Личная библиотека": "Personal library",
+  "Отметьте полки, на которых должна находиться книга.":
+    "Select the shelves where this book should appear.",
+  "Доступные полки": "Available shelves",
+  "Создайте первую личную полку для этой книги.":
+    "Create your first personal shelf for this book.",
+  "Умные и редакционные полки обновляются автоматически.":
+    "Smart and editorial shelves update automatically.",
+  "Новая личная полка": "New personal shelf",
+  "Например, Русская классика": "For example, Russian classics",
+  "Создать и добавить": "Create and add",
+  "Введите корректное название длиной до 120 символов.":
+    "Enter a valid name of up to 120 characters.",
+  "Не удалось сохранить изменение. Попробуйте ещё раз.":
+    "Could not save the change. Please try again.",
+  "Проверьте название и настройки полки.": "Check the shelf name and settings.",
+  "Закрыть настройки полки": "Close shelf settings",
+  "Оформление и порядок этой полки видны только вам.":
+    "Only you can see this shelf's appearance and order.",
+  Название: "Name",
+  Описание: "Description",
+  "(необязательно)": "(optional)",
+  "Знак полки": "Shelf symbol",
+  "Фон полки": "Shelf background",
+  "Подстраивать оформление под выбранную книгу":
+    "Adapt the appearance to the selected book",
+  "Интенсивность оформления": "Styling intensity",
+  "Сохранение…": "Saving…",
+  "Сохранить настройки": "Save settings",
+  "Книги на полке": "Books on this shelf",
+  "Книга недоступна в текущем архиве":
+    "This book is unavailable in the current archive",
+  "Автор не указан": "Writer not specified",
+  Переместить: "Move",
+  "в начало": "to the beginning",
+  "В начало": "To beginning",
+  выше: "up",
+  Выше: "Up",
+  ниже: "down",
+  Ниже: "Down",
+  "в конец": "to the end",
+  "В конец": "To end",
+  Убрать: "Remove",
+  "с полки": "from shelf",
+  "Убрать с полки": "Remove from shelf",
+  "На этой полке пока нет книг.": "There are no books on this shelf yet.",
+  "Состав умной полки формируется автоматически по сохранённым фильтрам.":
+    "This smart shelf is populated automatically from its saved filters.",
+  "Удалить полку": "Delete shelf",
+  "Книги останутся в архиве.": "The books will remain in the archive.",
+  Отмена: "Cancel",
+  "Удаление…": "Deleting…",
+  "Удалить окончательно": "Delete permanently",
+  "Не удалось подключить редакционный архив. Попробуйте ещё раз.":
+    "Could not connect to the editorial archive. Please try again.",
+  "Редакционный архив временно недоступен":
+    "The editorial archive is temporarily unavailable",
+  "Литературную планету не удалось открыть": "Literary Planet could not be opened",
+  "Глобус загрузится при приближении": "The globe will load as you approach",
+  "Повторить загрузку": "Retry loading",
+  "Книжный архив временно недоступен":
+    "The book archive is temporarily unavailable",
+  "Книжный архив загрузится при приближении":
+    "The book archive will load as you approach",
+  "Место полки уже зарезервировано, поэтому страница не сдвинется.":
+    "The shelf space is already reserved, so the page will not shift.",
+  "Авторский архив временно недоступен":
+    "The editorial archive is temporarily unavailable",
+  "Журнал загрузится при приближении": "The journal will load as you approach",
+  "Место журнала зарезервировано до его открытия.":
+    "The journal space is reserved until it opens.",
+  "Архив не удалось подключить": "The archive could not be connected",
+  "Подключаем единый поиск…": "Connecting unified search…",
+  "Проверьте соединение и повторите загрузку.":
+    "Check your connection and retry loading.",
+  "Готовим страны, авторов, книги и публикации.":
+    "Preparing countries, writers, books and publications.",
   "Писатель не найден": "Writer not found",
+  "В моей библиотеке": "In my library",
+  "Сохранённые книги независимо от статуса чтения":
+    "Saved books regardless of reading status",
 };
 
 export type InterfaceTranslationAudit = {

@@ -13,7 +13,7 @@ export const yemen: Country = {
       name: "Абдулла аль-Бардуни",
       fullName: "Abdullah Al-Baradouni",
 
-      years: "1929–1999",
+      years: "1929-1999",
 
       birthDate: "1929-01-01",
       deathDate: "1999-08-30",
@@ -61,7 +61,7 @@ export const yemen: Country = {
       name: "Али Ахмад Бакасир",
       fullName: "Ali Ahmad Bakathir",
 
-      years: "1910–1969",
+      years: "1910-1969",
 
       birthDate: "1910-12-21",
       deathDate: "1969-11-10",
@@ -110,7 +110,7 @@ export const yemen: Country = {
       name: "Мухаммад Абдулвали",
       fullName: "Mohammed Abdul-Wali",
 
-      years: "1939–1973",
+      years: "1939-1973",
 
       birthDate: "1939",
       deathDate: "1973",
@@ -159,7 +159,7 @@ export const yemen: Country = {
       name: "Хабиб Абдул Раб Сарори",
       fullName: "Habib Abdulrab Sarori",
 
-      years: "1956–",
+      years: "1956-",
 
       birthDate: "1956",
       deathDate: "",
@@ -209,7 +209,7 @@ export const yemen: Country = {
       name: "Ваджди аль-Ахдал",
       fullName: "Wajdi al-Ahdal",
 
-      years: "1973–",
+      years: "1973-",
 
       birthDate: "1973",
       deathDate: "",

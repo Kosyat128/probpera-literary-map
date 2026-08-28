@@ -12,7 +12,7 @@ export const iran: Country = {
       name: "Фирдоуси",
       fullName: "Abu'l-Qasim Ferdowsi",
 
-      years: "ок. 940–1020",
+      years: "ок. 940-1020",
 
       birthDate: "0940-01-01",
       deathDate: "1020-01-01",
@@ -63,7 +63,7 @@ export const iran: Country = {
       name: "Омар Хайям",
       fullName: "Omar Khayyam",
 
-      years: "1048–1131",
+      years: "1048-1131",
 
       birthDate: "1048-05-18",
       deathDate: "1131-12-04",
@@ -77,7 +77,7 @@ export const iran: Country = {
 
       portrait: "",
 
-      bio: "Персидский поэт, философ и учёный. Всемирную известность получили его четверостишия — рубаи.",
+      bio: "Персидский поэт, философ и учёный. Всемирную известность получили его четверостишия - рубаи.",
 
       works: [
         "Рубаи"
@@ -113,7 +113,7 @@ export const iran: Country = {
       name: "Саади Ширази",
       fullName: "Saadi Shirazi",
 
-      years: "ок. 1210–1292",
+      years: "ок. 1210-1292",
 
       birthDate: "1210-01-01",
       deathDate: "1292-01-01",
@@ -164,7 +164,7 @@ export const iran: Country = {
       name: "Хафиз Ширази",
       fullName: "Hafez",
 
-      years: "ок. 1315–1390",
+      years: "ок. 1315-1390",
 
       birthDate: "1315-01-01",
       deathDate: "1390-01-01",
@@ -214,7 +214,7 @@ export const iran: Country = {
       name: "Садек Хедаят",
       fullName: "Sadegh Hedayat",
 
-      years: "1903–1951",
+      years: "1903-1951",
 
       birthDate: "1903-02-17",
       deathDate: "1951-04-09",
@@ -264,7 +264,7 @@ export const iran: Country = {
       name: "Симин Данешвар",
       fullName: "Simin Daneshvar",
 
-      years: "1921–2012",
+      years: "1921-2012",
 
       birthDate: "1921-04-28",
       deathDate: "2012-03-08",
@@ -312,7 +312,7 @@ export const iran: Country = {
       name: "Махмуд Доулатабади",
       fullName: "Mahmoud Dowlatabadi",
 
-      years: "1940–",
+      years: "1940-",
 
       birthDate: "1940-08-01",
       deathDate: "",
@@ -362,7 +362,7 @@ export const iran: Country = {
       name: "Шахрнуш Парсипур",
       fullName: "Shahrnush Parsipur",
 
-      years: "1946–",
+      years: "1946-",
 
       birthDate: "1946-02-17",
       deathDate: "",
@@ -412,7 +412,7 @@ export const iran: Country = {
       name: "Форуг Фаррохзад",
       fullName: "Forugh Farrokhzad",
 
-      years: "1934–1967",
+      years: "1934-1967",
 
       birthDate: "1934-01-05",
       deathDate: "1967-02-13",

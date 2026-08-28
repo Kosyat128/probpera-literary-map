@@ -26,7 +26,7 @@
       "key": "england:t_s_eliot",
       "oldQid": "Q3261882",
       "newQid": "Q37767",
-      "reason": "The old item is Louis Favre (1910–1944); the corrected item is the poet T. S. Eliot (1888–1965)."
+      "reason": "The old item is Louis Favre (1910-1944); the corrected item is the poet T. S. Eliot (1888-1965)."
     },
     {
       "key": "myanmar:ma_ma_lay",
@@ -44,7 +44,7 @@
       "key": "finland:fredrika_bremer",
       "oldQid": "Q465687",
       "newQid": "Q262145",
-      "reason": "The old item describes Fredrika Runeberg (1807–1879); the corrected item describes Swedish writer Fredrika Bremer (1801–1865)."
+      "reason": "The old item describes Fredrika Runeberg (1807-1879); the corrected item describes Swedish writer Fredrika Bremer (1801-1865)."
     }
   ],
   "removedMappings": [

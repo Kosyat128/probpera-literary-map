@@ -12,7 +12,7 @@ export const uzbekistan: Country = {
       name: "Алишер Навои",
       fullName: "Alisher Navoi",
 
-      years: "1441–1501",
+      years: "1441-1501",
 
       birthDate: "1441-02-09",
       deathDate: "1501-01-03",
@@ -64,7 +64,7 @@ export const uzbekistan: Country = {
       name: "Захириддин Мухаммад Бабур",
       fullName: "Zahiriddin Muhammad Babur",
 
-      years: "1483–1530",
+      years: "1483-1530",
 
       birthDate: "1483-02-14",
       deathDate: "1530-12-26",
@@ -114,7 +114,7 @@ export const uzbekistan: Country = {
       name: "Махмудходжа Бехбуди",
       fullName: "Mahmudhoja Behbudi",
 
-      years: "1875–1919",
+      years: "1875-1919",
 
       birthDate: "1875-01-19",
       deathDate: "1919-03-25",
@@ -163,7 +163,7 @@ export const uzbekistan: Country = {
       name: "Абдулла Кадыри",
       fullName: "Abdulla Qodiriy",
 
-      years: "1894–1938",
+      years: "1894-1938",
 
       birthDate: "1894-04-10",
       deathDate: "1938-10-04",
@@ -213,7 +213,7 @@ export const uzbekistan: Country = {
       name: "Чулпан",
       fullName: "Abdulhamid Sulaymon o‘g‘li Cho‘lpon",
 
-      years: "1897–1938",
+      years: "1897-1938",
 
       birthDate: "1897-05-14",
       deathDate: "1938-10-04",
@@ -262,7 +262,7 @@ export const uzbekistan: Country = {
       name: "Абдулла Каххар",
       fullName: "Abdulla Qahhor",
 
-      years: "1907–1968",
+      years: "1907-1968",
 
       birthDate: "1907-09-17",
       deathDate: "1968-05-25",
@@ -312,7 +312,7 @@ export const uzbekistan: Country = {
       name: "Гафур Гулям",
       fullName: "G‘afur G‘ulom",
 
-      years: "1903–1966",
+      years: "1903-1966",
 
       birthDate: "1903-05-10",
       deathDate: "1966-07-10",
@@ -361,7 +361,7 @@ export const uzbekistan: Country = {
       name: "Одил Якубов",
       fullName: "Odil Yoqubov",
 
-      years: "1926–2009",
+      years: "1926-2009",
 
       birthDate: "1926-10-20",
       deathDate: "2009-12-21",
@@ -410,7 +410,7 @@ export const uzbekistan: Country = {
       name: "Эркин Вахидов",
       fullName: "Erkin Vohidov",
 
-      years: "1936–2016",
+      years: "1936-2016",
 
       birthDate: "1936-12-28",
       deathDate: "2016-05-30",
@@ -459,7 +459,7 @@ export const uzbekistan: Country = {
       name: "Хамид Исмаилов",
       fullName: "Hamid Ismailov",
 
-      years: "1954–",
+      years: "1954-",
 
       birthDate: "1954-05-05",
       deathDate: "",

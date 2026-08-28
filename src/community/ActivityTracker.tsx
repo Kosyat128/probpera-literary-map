@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { readAnalyticsConsent } from "../analytics/yandexMetrika";
-import { supabase } from "../lib/supabase";
+import { loadSupabaseClient } from "../lib/loadSupabaseClient";
 import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 import { useAuth } from "./AuthContext";
 import { getCommunitySessionId } from "./sessionIdentity";
@@ -46,14 +46,16 @@ export default function ActivityTracker() {
   const { configured, user } = useAuth();
 
   useEffect(() => {
-    if (!configured || !supabase) return;
-    const client = supabase;
+    if (!configured) return;
+    const clientPromise = loadSupabaseClient();
     const requestController = new AbortController();
     let active = true;
 
     const track = async () => {
       if (!active || readAnalyticsConsent() !== "granted") return;
       if ((document as Document & { prerendering?: boolean }).prerendering) return;
+      const client = await clientPromise;
+      if (!active || !client) return;
       const path = currentViewPath();
       let viewed: Record<string, number> = {};
       try {

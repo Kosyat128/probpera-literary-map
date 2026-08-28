@@ -65,7 +65,7 @@ export default function ArticleViewCount({ currentPath, legacyPath }: Props) {
 
   return (
     <span className="article-view-metric">
-      <strong>{views === null ? "—" : number(views)}</strong>
+      <strong>{views === null ? "-" : number(views)}</strong>
       {t("просмотров")}
     </span>
   );

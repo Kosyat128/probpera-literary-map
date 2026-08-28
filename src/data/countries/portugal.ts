@@ -8,7 +8,7 @@ export const portugal: Country = {
     {
       id: "gil_vicente",
       name: "Жил Висенте",
-      years: "ок. 1465–1536",
+      years: "ок. 1465-1536",
       birthDate: "ок. 1465",
       deathDate: "1536",
       birthPlace: "Португалия",
@@ -44,7 +44,7 @@ export const portugal: Country = {
     {
       id: "luis_de_camoes",
       name: "Луиш де Камоэнс",
-      years: "ок. 1524–1580",
+      years: "ок. 1524-1580",
       birthDate: "ок. 1524",
       deathDate: "1580",
       birthPlace: "Лиссабон или Коимбра, Португалия",
@@ -81,7 +81,7 @@ export const portugal: Country = {
     {
       id: "almeida_garrett",
       name: "Алмейда Гарретт",
-      years: "1799–1854",
+      years: "1799-1854",
       birthDate: "1799-02-04",
       deathDate: "1854-12-09",
       birthPlace: "Порту, Португалия",
@@ -118,7 +118,7 @@ export const portugal: Country = {
     {
       id: "alexandre_herculano",
       name: "Александре Эркулану",
-      years: "1810–1877",
+      years: "1810-1877",
       birthDate: "1810-03-28",
       deathDate: "1877-09-13",
       birthPlace: "Лиссабон, Португалия",
@@ -154,7 +154,7 @@ export const portugal: Country = {
     {
       id: "eca_de_queiros",
       name: "Эса де Кейрош",
-      years: "1845–1900",
+      years: "1845-1900",
       birthDate: "1845-11-25",
       deathDate: "1900-08-16",
       birthPlace: "Повуа-ди-Варзин, Португалия",
@@ -192,7 +192,7 @@ export const portugal: Country = {
         {
       id: "fernando_pessoa",
       name: "Фернанду Пессоа",
-      years: "1888–1935",
+      years: "1888-1935",
       birthDate: "1888-06-13",
       deathDate: "1935-11-30",
       birthPlace: "Лиссабон, Португалия",
@@ -202,7 +202,7 @@ export const portugal: Country = {
         lng: -9.1393
       },
       portrait: "",
-      bio: "Великий португальский поэт и писатель XX века, один из крупнейших представителей европейского модернизма. Известен использованием литературных гетеронимов — самостоятельных авторских личностей.",
+      bio: "Великий португальский поэт и писатель XX века, один из крупнейших представителей европейского модернизма. Известен использованием литературных гетеронимов - самостоятельных авторских личностей.",
       works: [
         "Книга непокоя",
         "Послание",
@@ -232,7 +232,7 @@ export const portugal: Country = {
     {
       id: "mario_de_sa_carneiro",
       name: "Мариу де Са-Карнейру",
-      years: "1890–1916",
+      years: "1890-1916",
       birthDate: "1890-05-19",
       deathDate: "1916-04-26",
       birthPlace: "Лиссабон, Португалия",
@@ -268,7 +268,7 @@ export const portugal: Country = {
     {
       id: "jose_saramago",
       name: "Жозе Сарамаго",
-      years: "1922–2010",
+      years: "1922-2010",
       birthDate: "1922-11-16",
       deathDate: "2010-06-18",
       birthPlace: "Азиньяга, Португалия",
@@ -310,7 +310,7 @@ export const portugal: Country = {
     {
       id: "sofia_de_mello_breyner",
       name: "София де Мелло Брейнер Андресен",
-      years: "1919–2004",
+      years: "1919-2004",
       birthDate: "1919-11-06",
       deathDate: "2004-07-02",
       birthPlace: "Порту, Португалия",
@@ -349,7 +349,7 @@ export const portugal: Country = {
         {
       id: "antonio_lobo_antunes",
       name: "Антониу Лобу Антунеш",
-      years: "1942–",
+      years: "1942-",
       birthDate: "1942-09-01",
       birthPlace: "Лиссабон, Португалия",
       coordinates: {
@@ -388,7 +388,7 @@ export const portugal: Country = {
     {
       id: "jose_luis_peixoto",
       name: "Жозе Луиш Пейшоту",
-      years: "1974–",
+      years: "1974-",
       birthDate: "1974-09-04",
       birthPlace: "Галвейаш, Португалия",
       coordinates: {
@@ -425,7 +425,7 @@ export const portugal: Country = {
     {
       id: "goncalo_m_tavares",
       name: "Гонсалу М. Тавареш",
-      years: "1970–",
+      years: "1970-",
       birthDate: "1970-08-29",
       birthPlace: "Луанда, Ангола",
       coordinates: {
@@ -463,7 +463,7 @@ export const portugal: Country = {
       id: "walter_hugo_mae",
       name: "Валтер Угу Маи",
       fullName: "Валтер Угу Лемуш",
-      years: "1971–",
+      years: "1971-",
       birthDate: "1971-09-25",
       birthPlace: "Сауримо (тогда Энрике-ди-Карвалью), Ангола",
       coordinates: {
@@ -501,12 +501,12 @@ export const portugal: Country = {
         reviewedAt: "2026-08-03",
         sources: [
           {
-            title: "Valter Hugo Mãe — лауреат Премии Жозе Сарамаго 2007 года",
+            title: "Valter Hugo Mãe - лауреат Премии Жозе Сарамаго 2007 года",
             url: "https://www.premiojosesaramago.pt/vencedores/2007/valter-hugo-mae",
             publisher: "Prémio Literário José Saramago"
           },
           {
-            title: "Valter Hugo Mãe — биография",
+            title: "Valter Hugo Mãe - биография",
             url: "https://livro.dglab.gov.pt/sites/DGLB/Portugues/autores/Paginas/PesquisaAutores1.aspx?AutorId=10976",
             publisher: "Direção-Geral do Livro, dos Arquivos e das Bibliotecas"
           }
@@ -516,7 +516,7 @@ export const portugal: Country = {
     {
       id: "lidia_jorge",
       name: "Лидия Жоржи",
-      years: "1946–",
+      years: "1946-",
       birthDate: "1946-06-18",
       birthPlace: "Алгарви, Португалия",
       coordinates: {
@@ -553,7 +553,7 @@ export const portugal: Country = {
         {
       id: "miguel_torga",
       name: "Мигел Торга",
-      years: "1907–1995",
+      years: "1907-1995",
       birthDate: "1907-08-12",
       deathDate: "1995-01-17",
       birthPlace: "Саброза, Португалия",
@@ -592,7 +592,7 @@ export const portugal: Country = {
     {
       id: "vergilio_ferreira",
       name: "Вержилиу Феррейра",
-      years: "1916–1996",
+      years: "1916-1996",
       birthDate: "1916-01-28",
       deathDate: "1996-03-01",
       birthPlace: "Мелас, Португалия",
@@ -629,7 +629,7 @@ export const portugal: Country = {
     {
       id: "manuel_de_aranha",
       name: "Мануэл де Арриага",
-      years: "1840–1917",
+      years: "1840-1917",
       birthDate: "1840-07-08",
       deathDate: "1917-03-05",
       birthPlace: "Орта, Азорские острова",
@@ -664,7 +664,7 @@ export const portugal: Country = {
     {
       id: "branquinho_da_fonseca",
       name: "Бранкинью да Фонсека",
-      years: "1905–1974",
+      years: "1905-1974",
       birthDate: "1905-05-04",
       deathDate: "1974-05-07",
       birthPlace: "Лейрия, Португалия",
@@ -700,7 +700,7 @@ export const portugal: Country = {
     {
       id: "herberto_helder",
       name: "Эрберту Элдер",
-      years: "1930–2015",
+      years: "1930-2015",
       birthDate: "1930-11-23",
       deathDate: "2015-03-23",
       birthPlace: "Фуншал, Португалия",
@@ -734,7 +734,7 @@ export const portugal: Country = {
         {
       id: "augusto_abreu",
       name: "Аугушту Абреу",
-      years: "1927–2011",
+      years: "1927-2011",
       birthDate: "1927",
       deathDate: "2011",
       birthPlace: "Португалия",
@@ -769,7 +769,7 @@ export const portugal: Country = {
     {
       id: "helia_correa",
       name: "Элия Коррея",
-      years: "1949–",
+      years: "1949-",
       birthDate: "1949-02-16",
       birthPlace: "Лиссабон, Португалия",
       coordinates: {
@@ -805,7 +805,7 @@ export const portugal: Country = {
     {
       id: "jose_rodrigues_dos_santos",
       name: "Жозе Родригеш душ Сантуш",
-      years: "1964–",
+      years: "1964-",
       birthDate: "1964-04-01",
       birthPlace: "Бейра, Мозамбик",
       coordinates: {
@@ -841,7 +841,7 @@ export const portugal: Country = {
         reviewedAt: "2026-08-03",
         sources: [
           {
-            title: "José Rodrigues dos Santos — биография",
+            title: "José Rodrigues dos Santos - биография",
             url: "https://joserodriguesdossantos.com/o-autor/",
             publisher: "Официальный сайт писателя"
           }

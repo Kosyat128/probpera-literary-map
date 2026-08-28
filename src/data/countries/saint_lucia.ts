@@ -8,7 +8,7 @@ export const saintLucia: Country = {
     {
       id: "derek_walcott",
       name: "Дерек Уолкотт",
-      years: "1930–2017",
+      years: "1930-2017",
       birthDate: "1930-01-23",
       deathDate: "2017-03-17",
       birthPlace: "Кастри, Сент-Люсия",
@@ -48,7 +48,7 @@ export const saintLucia: Country = {
     {
       id: "john_robert_lee",
       name: "Джон Роберт Ли",
-      years: "1948–",
+      years: "1948-",
       birthDate: "1948-01-01",
       birthPlace: "Сент-Люсия",
       coordinates: {

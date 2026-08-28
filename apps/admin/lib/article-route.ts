@@ -8,6 +8,7 @@ const categoryRouteSlugs: Record<string, string> = {
   language: "russkiy-yazyk",
   "literary-essays": "o-literature",
   "author-stories": "literaturnye-istorii",
+  miscellaneous: "raznoe",
 };
 
 export function articleSectionSlug(categorySlug?: string | null) {

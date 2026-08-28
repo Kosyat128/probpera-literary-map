@@ -14,7 +14,7 @@ export const vanuatu: Country = {
 
       fullName: "Grace Mera Molisa",
 
-      years: "1946–2002",
+      years: "1946-2002",
 
       birthDate: "1946-01-17",
 
@@ -69,7 +69,7 @@ export const vanuatu: Country = {
 
       fullName: "Nicolas Tewes",
 
-      years: "1950–",
+      years: "1950-",
 
       birthDate: "1950-01-01",
 

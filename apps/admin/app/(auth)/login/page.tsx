@@ -20,10 +20,10 @@ export default async function LoginPage({
       <section className="auth-story">
         <span className="brand-mark" aria-hidden="true">П</span>
         <span className="eyebrow">Редакция литературного журнала</span>
-        <h1>Всё издание — в одном кабинете</h1>
+        <h1>Всё издание - в одном кабинете</h1>
         <p>
           Статьи, рубрики, иллюстрации, главная страница, комментарии и
-          статистика — с безопасными ролями и историей каждого изменения.
+          статистика - с безопасными ролями и историей каждого изменения.
         </p>
         <div className="auth-points" aria-label="Возможности кабинета">
           <span>Визуальный редактор без работы с кодом</span>

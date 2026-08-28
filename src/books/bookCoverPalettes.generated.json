@@ -1,0 +1,2130 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-20T00:00:00.000Z",
+  "source": {
+    "audit": "reports/cover-rights-audit.json",
+    "auditSha256": "456a8a539f02bfb7ada42f286fbd22764b7f8c5526ad03878fe05452f1b11038"
+  },
+  "entries": [
+    {
+      "coverUrl": "brand/book-covers/1q84-20260820-editorial.webp",
+      "coverSha256": "8b1c4925789d6a3a8e4467bc1b046b37c4434551cae1be536ac0301479f7261b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#040718",
+      "darkColor": "#05081A",
+      "lightColor": "#E2D4C6",
+      "accentColor": "#6E388A",
+      "warmColor": "#CEBAA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/a-clockwork-orange-editorial.webp",
+      "coverSha256": "48fb85fa2eea7ecaaf39908408e853e1863a30654ca9617c7323016605fd17b4",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0E100E",
+      "darkColor": "#0E110E",
+      "lightColor": "#DBC094",
+      "accentColor": "#B84915",
+      "warmColor": "#C14C16"
+    },
+    {
+      "coverUrl": "brand/book-covers/a-common-story-editorial.webp",
+      "coverSha256": "274f742d52c0e2db4e03517cc3ae86eb9bb678a76ccb6c50fdc56820d1af5c51",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F5EAD2",
+      "darkColor": "#484828",
+      "lightColor": "#F3E9D4",
+      "accentColor": "#D0C08B",
+      "warmColor": "#D8C597"
+    },
+    {
+      "coverUrl": "brand/book-covers/a-dolls-house-editorial.webp",
+      "coverSha256": "1f6b6768bc75b3ada0295858e423fedd61dd089810cfe7b76b8a46aba57d48a0",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E3D9C7",
+      "darkColor": "#463927",
+      "lightColor": "#E3D9C7",
+      "accentColor": "#D0B48B",
+      "warmColor": "#CEBCA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/a-farewell-to-arms-editorial.webp",
+      "coverSha256": "e15c641b51c5217dff41e30cc53a0263558782c384e523481e490ea3edd5d29c",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1C232A",
+      "darkColor": "#1C232A",
+      "lightColor": "#C8BBA7",
+      "accentColor": "#D0B38B",
+      "warmColor": "#B4996D"
+    },
+    {
+      "coverUrl": "brand/book-covers/a-hero-of-our-time-editorial.webp",
+      "coverSha256": "f9137fe6a6e83c05111529cbefeee8f252736f5b510ca3bf13093adca3d6fc23",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#172524",
+      "darkColor": "#172524",
+      "lightColor": "#DABE95",
+      "accentColor": "#8A6D38",
+      "warmColor": "#8D7849"
+    },
+    {
+      "coverUrl": "brand/book-covers/a-sportsmans-sketches-editorial.webp",
+      "coverSha256": "1810cb312383f1bd4dfd2f1b4cd3081274b48b092ed63c12042a0539be96403d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#353727",
+      "darkColor": "#353727",
+      "lightColor": "#D6BD99",
+      "accentColor": "#8A7138",
+      "warmColor": "#917A46"
+    },
+    {
+      "coverUrl": "brand/book-covers/after-dark-murakami-20260820-editorial.webp",
+      "coverSha256": "f17532dbbf563dbcd1ac66157f10c735a8572fbd554a88cf96cfdbd96db0fea7",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#030B16",
+      "darkColor": "#040E1B",
+      "lightColor": "#CBBBA4",
+      "accentColor": "#8A3872",
+      "warmColor": "#CAB598"
+    },
+    {
+      "coverUrl": "brand/book-covers/after-the-ball-editorial.webp",
+      "coverSha256": "df64b4f6143841448c85a64dc5f12e51c3a961a481c7eb38313430b644060d72",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E8D9BA",
+      "darkColor": "#645235",
+      "lightColor": "#E8D9BA",
+      "accentColor": "#9E7940",
+      "warmColor": "#987746"
+    },
+    {
+      "coverUrl": "brand/book-covers/all-quiet-on-the-western-front-editorial.webp",
+      "coverSha256": "2eae151168203dcd870d82df9169b2530d803e25dc8947eff226fa8f61912e85",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#494337",
+      "darkColor": "#494337",
+      "lightColor": "#C5BCAA",
+      "accentColor": "#8A6538",
+      "warmColor": "#94784C"
+    },
+    {
+      "coverUrl": "brand/book-covers/an-american-tragedy-editorial.webp",
+      "coverSha256": "b46c99e5a363ed615dbbf3ab3abb431dd1573042df7039a42cf8050109bebf42",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#25323C",
+      "darkColor": "#25323C",
+      "lightColor": "#D0BC9F",
+      "accentColor": "#38698A",
+      "warmColor": "#C3AA85"
+    },
+    {
+      "coverUrl": "brand/book-covers/and-quiet-flows-the-don-editorial.webp",
+      "coverSha256": "d1b76649bfe8cf406aea1c4ad442b087665d4961a2285744c5b356fe60031351",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E5D9B8",
+      "darkColor": "#6A5E2F",
+      "lightColor": "#E5D9B8",
+      "accentColor": "#D0C18B",
+      "warmColor": "#D9C696"
+    },
+    {
+      "coverUrl": "brand/book-covers/animal-farm-editorial.webp",
+      "coverSha256": "64d0b8be9e1822742029079b3167ac71ff4ea3faf245988f13bb7910d690c561",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E9D3AC",
+      "darkColor": "#1B1B15",
+      "lightColor": "#E9D3AC",
+      "accentColor": "#DDBA7E",
+      "warmColor": "#E1C38E"
+    },
+    {
+      "coverUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "coverSha256": "b4fc87654fd8041ee554b70eb10aa08cdc50f7a75f84cd3057b63f329e812e18",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E1D6C4",
+      "darkColor": "#5B4E3E",
+      "lightColor": "#E1D6C4",
+      "accentColor": "#D0B48B",
+      "warmColor": "#CEBCA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/anna-karenina-editorial.webp",
+      "coverSha256": "7dd786aa1be71d8bd948d1188efb91b4daa657edc2d518663c177b5b640cf622",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EDE5D2",
+      "darkColor": "#0D1011",
+      "lightColor": "#EDE5D2",
+      "accentColor": "#D0B48B",
+      "warmColor": "#CEBCA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/arch-of-triumph-editorial.webp",
+      "coverSha256": "ca33f85c8461167a14b45f8ebda9c36e932b59f7504b701b17007fbc78ed2bd9",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#C8B695",
+      "darkColor": "#393528",
+      "lightColor": "#CEBEA1",
+      "accentColor": "#D0B78B",
+      "warmColor": "#C8B695"
+    },
+    {
+      "coverUrl": "brand/book-covers/around-the-world-in-eighty-days-editorial.webp",
+      "coverSha256": "5d9a4bfc0711cc8ac0d0cac6f22f42fe6410720af12ccd14a695de28a4763a2a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#FBE5B6",
+      "darkColor": "#1A2838",
+      "lightColor": "#EFE0C2",
+      "accentColor": "#F1C26A",
+      "warmColor": "#F2CA7D"
+    },
+    {
+      "coverUrl": "brand/book-covers/arthur-gordon-pym-editorial.webp",
+      "coverSha256": "b26711beb3423e679136c68f1c1b57f7e0d76de828c8ca26aa43be33e0a24d9b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0A1419",
+      "darkColor": "#0A1419",
+      "lightColor": "#BEBAB2",
+      "accentColor": "#386C8A",
+      "warmColor": "#CEBDA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/asya-editorial.webp",
+      "coverSha256": "01a8fe6ded05556ed31f7e14b2de3e2a67bb6f18acb54dc4b705b7dc7853b326",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F3E4CA",
+      "darkColor": "#605339",
+      "lightColor": "#F1E4CC",
+      "accentColor": "#D1B68A",
+      "warmColor": "#DEC091"
+    },
+    {
+      "coverUrl": "brand/book-covers/barchester-towers-editorial.webp",
+      "coverSha256": "73ccef438858f79912047edd45c79fc44503506019e3c790d715eccdb30f1be8",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E7DCC5",
+      "darkColor": "#605339",
+      "lightColor": "#E7DCC5",
+      "accentColor": "#D0B88B",
+      "warmColor": "#D6C199"
+    },
+    {
+      "coverUrl": "brand/book-covers/bel-ami-editorial.webp",
+      "coverSha256": "4ff1a8bbce302324ce8e06b930a92e633a1954af90a10e57b24ca4172501294d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EBDAB4",
+      "darkColor": "#171B14",
+      "lightColor": "#EBDAB4",
+      "accentColor": "#DCBE7F",
+      "warmColor": "#E1C78F"
+    },
+    {
+      "coverUrl": "brand/book-covers/beloved-editorial.webp",
+      "coverSha256": "8100ffcc47ab6c14d760ceb684685268927a3c34adbe41db1d22394ba4214946",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F2D79A",
+      "darkColor": "#181A16",
+      "lightColor": "#E7D3A5",
+      "accentColor": "#ECC66E",
+      "warmColor": "#EFCD80"
+    },
+    {
+      "coverUrl": "brand/book-covers/between-the-acts-editorial.webp",
+      "coverSha256": "b1994bfbbe4cfc35c67392e99119af1b269823ed445859ae1d0ef222953807a2",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#46442C",
+      "darkColor": "#46442C",
+      "lightColor": "#D9B898",
+      "accentColor": "#8A6E38",
+      "warmColor": "#8D7649"
+    },
+    {
+      "coverUrl": "brand/book-covers/black-arrow-editorial.webp",
+      "coverSha256": "a55c059a8bb292b25a279b0a11b5755542a3a41446c3157ee6a44a864a61ce41",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#181708",
+      "darkColor": "#181708",
+      "lightColor": "#CABFA5",
+      "accentColor": "#98782A",
+      "warmColor": "#B39F6C"
+    },
+    {
+      "coverUrl": "brand/book-covers/black-swan-green-20260820-editorial.webp",
+      "coverSha256": "d693867b945de0c298d4915c5ef5d7c672f460e6960c012dbeeecea737cab714",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E9DAB7",
+      "darkColor": "#27281B",
+      "lightColor": "#E9DAB7",
+      "accentColor": "#D9C082",
+      "warmColor": "#DEC792"
+    },
+    {
+      "coverUrl": "brand/book-covers/bleak-house-editorial.webp",
+      "coverSha256": "a9a0fe1e1d8daaac2550aef904180e936ab6d25bf385eadd282b47e2bbe9d23d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#464948",
+      "darkColor": "#171919",
+      "lightColor": "#C8BBA7",
+      "accentColor": "#CFB48A",
+      "warmColor": "#C3AD8A"
+    },
+    {
+      "coverUrl": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+      "coverSha256": "331e12aa75737f56294962bb2790a14593fa448d8ece6ac0692de3c64694e8f2",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#162329",
+      "darkColor": "#162329",
+      "lightColor": "#BCBCB3",
+      "accentColor": "#38758A",
+      "warmColor": "#CEC2A1"
+    },
+    {
+      "coverUrl": "brand/book-covers/brave-new-world-editorial.webp",
+      "coverSha256": "81c3e253221525d5450ee87749fe8ad8a1113382030be902f2048550f656d634",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E6DDC4",
+      "darkColor": "#3D5C4B",
+      "lightColor": "#E6DDC4",
+      "accentColor": "#D0C48B",
+      "warmColor": "#CEC7A1"
+    },
+    {
+      "coverUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+      "coverSha256": "b259ecaeb5f2670c173c80f789468417260cd91c4359961855c85d4110f1a59f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#242819",
+      "darkColor": "#242819",
+      "lightColor": "#C8BEA7",
+      "accentColor": "#8A7838",
+      "warmColor": "#8D7E49"
+    },
+    {
+      "coverUrl": "brand/book-covers/captain-blood-odyssey-editorial.webp",
+      "coverSha256": "a6d8f79707858fe3135332ad46d3bd878e8ec18fb0ac0a6c548a0fbc5ad66492",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#162626",
+      "darkColor": "#162626",
+      "lightColor": "#E1C38E",
+      "accentColor": "#D89747",
+      "warmColor": "#D89747"
+    },
+    {
+      "coverUrl": "brand/book-covers/captain-singleton-editorial.webp",
+      "coverSha256": "4fb01e96a7400c1ad0366b2135b9cf5cad9f8ab080e8e6cc42a3e4d028fa6d3f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#192726",
+      "darkColor": "#192726",
+      "lightColor": "#E7DBB7",
+      "accentColor": "#D1BE8A",
+      "warmColor": "#DCC894"
+    },
+    {
+      "coverUrl": "brand/book-covers/cherry-orchard-chekhov-20260820-alternate.webp",
+      "coverSha256": "a014f4e1d6846775604489d80f2a78bc6b97b5a00f29df0f25e887298596a9ca",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D4CCB9",
+      "darkColor": "#48452A",
+      "lightColor": "#D4CCB9",
+      "accentColor": "#D0BD8B",
+      "warmColor": "#CEC1A1"
+    },
+    {
+      "coverUrl": "brand/book-covers/cherry-orchard-editorial.webp",
+      "coverSha256": "012486edab477641dc207f5687f4c2e8d947aeb9645e1140d7a2e089c69f3327",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F5D698",
+      "darkColor": "#473917",
+      "lightColor": "#E7D2A5",
+      "accentColor": "#F0C56B",
+      "warmColor": "#F2CC7D"
+    },
+    {
+      "coverUrl": "brand/book-covers/children-of-captain-grant-editorial.webp",
+      "coverSha256": "ffd9684abe88022025f81f509edf2a6336fffd45a746e578447a19eaf164171e",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#DAC59A",
+      "darkColor": "#383727",
+      "lightColor": "#DAC59A",
+      "accentColor": "#D4BA87",
+      "warmColor": "#D9C396"
+    },
+    {
+      "coverUrl": "brand/book-covers/christmas-eve-gogol-editorial.webp",
+      "coverSha256": "718095da2ef4e6012b9e8f33e83447a924e274da614f1073baac2f23cb3ffd62",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#021A47",
+      "darkColor": "#091C41",
+      "lightColor": "#E1C88E",
+      "accentColor": "#0A52B8",
+      "warmColor": "#E5C989"
+    },
+    {
+      "coverUrl": "brand/book-covers/cloud-atlas-20260820-editorial.webp",
+      "coverSha256": "2b7994efa46f937580fd8664b49704c79822bda98d72cb50568d6e74b6bb7a90",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#4B6775",
+      "darkColor": "#3C525D",
+      "lightColor": "#CABEA5",
+      "accentColor": "#C7AC76",
+      "warmColor": "#BDA97F"
+    },
+    {
+      "coverUrl": "brand/book-covers/colorless-tsukuru-tazaki-20260820-editorial.webp",
+      "coverSha256": "9f8062bfb6c361308098c48bbf592c789c3214a00ae89a181fdee7dbd646f341",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E4DBCB",
+      "darkColor": "#394649",
+      "lightColor": "#E4DBCB",
+      "accentColor": "#D0B58B",
+      "warmColor": "#CEBFA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "coverSha256": "696100d523bc12c6ccb0002de685a55572ef214d5278fcc7a2f338d7a1c61bec",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E7D3AA",
+      "darkColor": "#181914",
+      "lightColor": "#E7D3AA",
+      "accentColor": "#DBBC7F",
+      "warmColor": "#E0C58F"
+    },
+    {
+      "coverUrl": "brand/book-covers/dandelion-wine-editorial.webp",
+      "coverSha256": "2e53ba4fa60a8ca8e7b5ac7ba09bc8058bf29cab6d797c36b1428ba25e04e39d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F8E8BB",
+      "darkColor": "#685827",
+      "lightColor": "#EFE3C4",
+      "accentColor": "#F0CA6B",
+      "warmColor": "#F2D27D"
+    },
+    {
+      "coverUrl": "brand/book-covers/dark-avenues-editorial.webp",
+      "coverSha256": "45422a176d85603da788897b4163a1008e611ca764f54b363192c5c52f80f1be",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#271807",
+      "darkColor": "#271807",
+      "lightColor": "#EADAB3",
+      "accentColor": "#9C6526",
+      "warmColor": "#AB702B"
+    },
+    {
+      "coverUrl": "brand/book-covers/david-copperfield-editorial.webp",
+      "coverSha256": "6e823d2b01c5cd0940414cdba45ababaeb74a7b74ddb40e6bd3284a1c0607244",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E9D4A9",
+      "darkColor": "#35434B",
+      "lightColor": "#E8D4AA",
+      "accentColor": "#DDBE7E",
+      "warmColor": "#E1C78E"
+    },
+    {
+      "coverUrl": "brand/book-covers/death-of-ivan-ilyich-editorial.webp",
+      "coverSha256": "0f2d2b7d982e258cd6fc7e02da5b0ef2c23659ecd9dd0046c7cfe15960eaf3d2",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#19140B",
+      "darkColor": "#19140B",
+      "lightColor": "#E1C28E",
+      "accentColor": "#9B6827",
+      "warmColor": "#AC762A"
+    },
+    {
+      "coverUrl": "brand/book-covers/demons-editorial.webp",
+      "coverSha256": "d978ddda7c0c2d13497062a264643eab59850b9228fa60c018dd5cff9e5ee99b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#161618",
+      "darkColor": "#161618",
+      "lightColor": "#DBC9AC",
+      "accentColor": "#8A4738",
+      "warmColor": "#915646"
+    },
+    {
+      "coverUrl": "brand/book-covers/diary-of-a-madman-editorial.webp",
+      "coverSha256": "b495cc9fe73dd568d7304224d12c51cee3f90a10f8e722d34d67bc60725ab1b3",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#16160C",
+      "darkColor": "#16160C",
+      "lightColor": "#CBCCA3",
+      "accentColor": "#8A6F38",
+      "warmColor": "#947942"
+    },
+    {
+      "coverUrl": "brand/book-covers/divine-comedy-editorial.webp",
+      "coverSha256": "1264a5c0f819d84910c967a708e154a797d168ad4449e5bc159eb210bfd7d6a8",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#160C06",
+      "darkColor": "#180D06",
+      "lightColor": "#E1C38E",
+      "accentColor": "#8F6532",
+      "warmColor": "#9F6F38"
+    },
+    {
+      "coverUrl": "brand/book-covers/doctor-zhivago-editorial.webp",
+      "coverSha256": "aa03416dfc07daa3b635a00e3aaf1f6df477c5d3a4d4cb992a2ce67505e2489a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E8DCC6",
+      "darkColor": "#3F4E5A",
+      "lightColor": "#E8DCC6",
+      "accentColor": "#D0B48B",
+      "warmColor": "#D6C099"
+    },
+    {
+      "coverUrl": "brand/book-covers/dubrovsky-editorial.webp",
+      "coverSha256": "c3f58dd12932b9a56759e7ac74fc7169d776d03769921528df8a3b879265e62f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#381913",
+      "darkColor": "#381913",
+      "lightColor": "#E0C290",
+      "accentColor": "#985F2A",
+      "warmColor": "#9B6D3B"
+    },
+    {
+      "coverUrl": "brand/book-covers/emma-editorial.webp",
+      "coverSha256": "3658013b020242139a27506aadd2ff373c8fe849a840b4042bfe85e67d108119",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F4EBD7",
+      "darkColor": "#645735",
+      "lightColor": "#F4EBD7",
+      "accentColor": "#D0B88B",
+      "warmColor": "#D5C19A"
+    },
+    {
+      "coverUrl": "brand/book-covers/enchanted-wanderer-editorial.webp",
+      "coverSha256": "a51a63b60f11a9bbce5df5cb688acfae7e755dc5de31ed4feba1cdf068512eb3",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#483617",
+      "darkColor": "#483617",
+      "lightColor": "#E0C58F",
+      "accentColor": "#9B6F27",
+      "warmColor": "#AC7A2B"
+    },
+    {
+      "coverUrl": "brand/book-covers/end-of-the-affair-editorial.webp",
+      "coverSha256": "415f142725a03ff6e7068fad45711dff022a37770a2224d5af933e8cbd99cfe9",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#281814",
+      "darkColor": "#281814",
+      "lightColor": "#D3BF9C",
+      "accentColor": "#98602A",
+      "warmColor": "#CBB38A"
+    },
+    {
+      "coverUrl": "brand/book-covers/eugene-onegin-editorial.webp",
+      "coverSha256": "7d47c0a8a9565489d6e4f6a81cfad59e2904c41a4f63322d786dd3e216b83d65",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F5ECDB",
+      "darkColor": "#5A4C3F",
+      "lightColor": "#F5ECDB",
+      "accentColor": "#D0AB8B",
+      "warmColor": "#DCAF93"
+    },
+    {
+      "coverUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+      "coverSha256": "a9b09e036ac1d3b3dc730bb779f98174be87e910811949eb04698ceb00ed92f2",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D8C7A8",
+      "darkColor": "#16130D",
+      "lightColor": "#D8C7A8",
+      "accentColor": "#D0B68B",
+      "warmColor": "#D3BF9C"
+    },
+    {
+      "coverUrl": "brand/book-covers/far-from-the-madding-crowd-editorial.webp",
+      "coverSha256": "ca1c508fa47a4bdf8b9bc1bb4cdb7245365abb0ddc7c79a2f8b24aa920e4909e",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F5DCA7",
+      "darkColor": "#674917",
+      "lightColor": "#EAD8B1",
+      "accentColor": "#EDC36E",
+      "warmColor": "#F0CC7F"
+    },
+    {
+      "coverUrl": "brand/book-covers/father-sergius-editorial.webp",
+      "coverSha256": "66670d19ba6e778dc40e8b3b734568b9ad4760cfdff2b8a955f0946a5d896190",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#C8B798",
+      "darkColor": "#525147",
+      "lightColor": "#CDBEA2",
+      "accentColor": "#D0B88B",
+      "warmColor": "#DFC490"
+    },
+    {
+      "coverUrl": "brand/book-covers/fathers-and-sons-editorial.webp",
+      "coverSha256": "607979fb5195e31e00e4541be44c711fd08ccc4d4eb711500aff1cfe538bd62d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F4D996",
+      "darkColor": "#16160C",
+      "lightColor": "#E7D3A3",
+      "accentColor": "#F0CA6B",
+      "warmColor": "#F1D07E"
+    },
+    {
+      "coverUrl": "brand/book-covers/faust-editorial.webp",
+      "coverSha256": "f16b70012d45502703307ae4b861ebd5118925baa85b4a5c88de1b03cfd1d819",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0B0A08",
+      "darkColor": "#160D09",
+      "lightColor": "#D4C09B",
+      "accentColor": "#B06712",
+      "warmColor": "#C7AC7A"
+    },
+    {
+      "coverUrl": "brand/book-covers/first-love-turgenev-editorial.webp",
+      "coverSha256": "e7c5095edeb815e97ba8f23579be54de996f49711d3913f7ca0e26d57bbd8b29",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F4D3A8",
+      "darkColor": "#735326",
+      "lightColor": "#EAD2B1",
+      "accentColor": "#F1B46A",
+      "warmColor": "#EFBF80"
+    },
+    {
+      "coverUrl": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+      "coverSha256": "4db4ca9911ff861f9d7e3b6b511f1304af90c28a271847ac3b890f676892026a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1B2A34",
+      "darkColor": "#1B2A34",
+      "lightColor": "#BCBAB3",
+      "accentColor": "#38688A",
+      "warmColor": "#49708D"
+    },
+    {
+      "coverUrl": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+      "coverSha256": "1c421c6d39fca78e25d74b30406c1ef34a8d709764305fdeac2dce2a38c5985b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#182617",
+      "darkColor": "#182617",
+      "lightColor": "#CCC0A3",
+      "accentColor": "#9A8528",
+      "warmColor": "#AE9328"
+    },
+    {
+      "coverUrl": "brand/book-covers/for-whom-the-bell-tolls-editorial.webp",
+      "coverSha256": "08dbecf181781de0f63b7770e9168da366a80001854594bf6b7156ea56f2d924",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#2B2717",
+      "darkColor": "#2B2717",
+      "lightColor": "#D0BD9F",
+      "accentColor": "#8A6938",
+      "warmColor": "#8F7047"
+    },
+    {
+      "coverUrl": "brand/book-covers/gentleman-from-san-francisco-editorial.webp",
+      "coverSha256": "1bd165f12789b1b755e6b68cef761befecb0c71ecdf1e74c09b9bf3754c53edd",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#262A29",
+      "darkColor": "#262B29",
+      "lightColor": "#E1C38E",
+      "accentColor": "#8A6738",
+      "warmColor": "#917345"
+    },
+    {
+      "coverUrl": "brand/book-covers/germinal-editorial.webp",
+      "coverSha256": "3c24467931019c36283158ba0e342cf8598ee3f6b76a663a2097ccf7d8df29c6",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1B1B19",
+      "darkColor": "#1C1B18",
+      "lightColor": "#DFC090",
+      "accentColor": "#8A6838",
+      "warmColor": "#95764D"
+    },
+    {
+      "coverUrl": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+      "coverSha256": "c3750b654af96c340e034fb57e5b361e1be0f94b9e1829628526e85e2f061190",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#061625",
+      "darkColor": "#061625",
+      "lightColor": "#CBBCA5",
+      "accentColor": "#8A6138",
+      "warmColor": "#8D6D49"
+    },
+    {
+      "coverUrl": "brand/book-covers/great-expectations-editorial.webp",
+      "coverSha256": "65733d3b4a2fc676a7c4202ebe59c1221c8216ffff44e92b60ba8f0ed617428b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#252A19",
+      "darkColor": "#252A19",
+      "lightColor": "#D1C29F",
+      "accentColor": "#C4AC6E",
+      "warmColor": "#BAA878"
+    },
+    {
+      "coverUrl": "brand/book-covers/hadji-murad-editorial.webp",
+      "coverSha256": "d18ef35893106c95e7cbe8f890fda45314f33eae1cf6a23055a579c99398a49c",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#272B28",
+      "darkColor": "#262B28",
+      "lightColor": "#D3C19D",
+      "accentColor": "#8A6C38",
+      "warmColor": "#937643"
+    },
+    {
+      "coverUrl": "brand/book-covers/hamlet-editorial.webp",
+      "coverSha256": "83c50513dee3ec402b522b7f370ee969586151f863a8f86c09183e705cebcc04",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F2D699",
+      "darkColor": "#161816",
+      "lightColor": "#E7D2A4",
+      "accentColor": "#EDC56E",
+      "warmColor": "#EFCC80"
+    },
+    {
+      "coverUrl": "brand/book-covers/hard-boiled-wonderland-20260820-editorial.webp",
+      "coverSha256": "37a16971056be3072b36692e5778115fab5abe1425dc8bd58f1594fd892f5de2",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E3D4B8",
+      "darkColor": "#1A2724",
+      "lightColor": "#E3D4B8",
+      "accentColor": "#D0B88A",
+      "warmColor": "#D6C299"
+    },
+    {
+      "coverUrl": "brand/book-covers/heart-of-a-dog-editorial.webp",
+      "coverSha256": "46561dd36ae050400de610240f6e9a9d14f3937b28070cd6c771e1e29d3cc16b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E3D4B9",
+      "darkColor": "#28241A",
+      "lightColor": "#E3D4B9",
+      "accentColor": "#D0B68B",
+      "warmColor": "#D6C099"
+    },
+    {
+      "coverUrl": "brand/book-covers/heart-of-darkness-editorial.webp",
+      "coverSha256": "a15d4ed1b4680e3a67128666c7f2e6ad561f7a77401ebac5b498b746e9280658",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0A0C08",
+      "darkColor": "#272519",
+      "lightColor": "#D9C296",
+      "accentColor": "#8A6F38",
+      "warmColor": "#957641"
+    },
+    {
+      "coverUrl": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+      "coverSha256": "746b0ca2792415c46a167c2ba3ec3ac86b38a85eb536e1560ee1b2ba2967fa5d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#4A4527",
+      "darkColor": "#4A4527",
+      "lightColor": "#CAC0A5",
+      "accentColor": "#8A7D38",
+      "warmColor": "#8D8349"
+    },
+    {
+      "coverUrl": "brand/book-covers/hobbit-editorial.webp",
+      "coverSha256": "6f950eda49c1cb44cc9d31c3de449a5ec8a3658675d797e1fba271978f63405d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D6CCB5",
+      "darkColor": "#262A19",
+      "lightColor": "#D6CCB5",
+      "accentColor": "#D0BC8B",
+      "warmColor": "#CEC1A1"
+    },
+    {
+      "coverUrl": "brand/book-covers/home-of-the-gentry-editorial.webp",
+      "coverSha256": "f936ed82519be82ae3a53bc42117dae1ef12f58845a8dc7c182f8b0a892dfb88",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F4CAA3",
+      "darkColor": "#393527",
+      "lightColor": "#E9CBAE",
+      "accentColor": "#F3AC68",
+      "warmColor": "#F2B77D"
+    },
+    {
+      "coverUrl": "brand/book-covers/in-search-of-lost-time-editorial.webp",
+      "coverSha256": "27ae9a11318b113dd54ab94d077638f835325724906871ca154e7233e5258c2f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E7DBC6",
+      "darkColor": "#5A503F",
+      "lightColor": "#E7DBC6",
+      "accentColor": "#D0B78B",
+      "warmColor": "#D1BE9E"
+    },
+    {
+      "coverUrl": "brand/book-covers/invisible-man-editorial.webp",
+      "coverSha256": "4c2dfbdf86e6d2391477c9cc2f618021566b525e8f1bbad8db01e1780451cbd3",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#ECE9E8",
+      "darkColor": "#28333A",
+      "lightColor": "#ECE9E8",
+      "accentColor": "#8A5F38",
+      "warmColor": "#8D6A49"
+    },
+    {
+      "coverUrl": "brand/book-covers/invisible-man-wells-20260820-alternate.webp",
+      "coverSha256": "b47af8c63fc3025dd72d7cdaf55496ac4d911709d47c0165bb2e18375a5d078b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E4DCCB",
+      "darkColor": "#1C2325",
+      "lightColor": "#E4DCCB",
+      "accentColor": "#D0BA8B",
+      "warmColor": "#CEC0A1"
+    },
+    {
+      "coverUrl": "brand/book-covers/invitation-to-a-beheading-editorial.webp",
+      "coverSha256": "8f62008d28acc26e59104614590be2637a598b5116d91e79f81625d403f1225c",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E8DBC5",
+      "darkColor": "#545841",
+      "lightColor": "#E8DBC5",
+      "accentColor": "#D0B78B",
+      "warmColor": "#D6C09A"
+    },
+    {
+      "coverUrl": "brand/book-covers/island-doctor-moreau-wells-20260820-alternate.webp",
+      "coverSha256": "766fdd63ba33659908d50da0791b6ba80f2056be83c4e02b593f49d6310b89cc",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0C1A13",
+      "darkColor": "#0C1A13",
+      "lightColor": "#DDC692",
+      "accentColor": "#C6AA6A",
+      "warmColor": "#878D49"
+    },
+    {
+      "coverUrl": "brand/book-covers/island-huxley-editorial.webp",
+      "coverSha256": "09ffc84933b2a83504e4419f3323bf93c5c2d8e161918ef0238b75e7dc2f3d0a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D8D7C7",
+      "darkColor": "#5B5B3E",
+      "lightColor": "#D8D7C7",
+      "accentColor": "#D2BC88",
+      "warmColor": "#DCC794"
+    },
+    {
+      "coverUrl": "brand/book-covers/island-of-doctor-moreau-editorial.webp",
+      "coverSha256": "e98655343ee96e18146f7ed7f595e2f56b4b8c913dc5cbefb153efb367fa6f00",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#051918",
+      "darkColor": "#051A19",
+      "lightColor": "#8EE1DE",
+      "accentColor": "#8A6E38",
+      "warmColor": "#937843"
+    },
+    {
+      "coverUrl": "brand/book-covers/ivanhoe-editorial.webp",
+      "coverSha256": "7385cdac4d133fae77d54163521e48c64df7bea1a78f50a57e2e6b4701abf803",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1B2526",
+      "darkColor": "#1B2526",
+      "lightColor": "#E1C58E",
+      "accentColor": "#E8C173",
+      "warmColor": "#E6C787"
+    },
+    {
+      "coverUrl": "brand/book-covers/jane-eyre-editorial.webp",
+      "coverSha256": "23489323d4dff4e5eefe4a4b3df0df88d2b7eab07d495a9b48aa6cb490b191a6",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#C5BABA",
+      "darkColor": "#534946",
+      "lightColor": "#C5BABA",
+      "accentColor": "#D09C8B",
+      "warmColor": "#8D7349"
+    },
+    {
+      "coverUrl": "brand/book-covers/kafka-on-the-shore-20260820-editorial.webp",
+      "coverSha256": "5c12de9468ed26942ef6496f00525b2111edac9e3572aca6f650af3f7ba4c786",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#052A39",
+      "darkColor": "#072937",
+      "lightColor": "#CDBDA3",
+      "accentColor": "#2B8297",
+      "warmColor": "#937F4C"
+    },
+    {
+      "coverUrl": "brand/book-covers/keep-the-aspidistra-flying-editorial.webp",
+      "coverSha256": "4c31e4f5a465e6d1ea35e9488b91cc40c06d11a15df91fef592cb009d65af18a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#36361A",
+      "darkColor": "#36361A",
+      "lightColor": "#EBDAB6",
+      "accentColor": "#DBBF80",
+      "warmColor": "#E0C78F"
+    },
+    {
+      "coverUrl": "brand/book-covers/killing-commendatore-20260820-editorial.webp",
+      "coverSha256": "3917f9f4ee57c9c02c18d0ae7aae601e76d643880517d41fefe8c5ab3941534d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1B2821",
+      "darkColor": "#1B2821",
+      "lightColor": "#CCBDA4",
+      "accentColor": "#8A6B38",
+      "warmColor": "#8D7349"
+    },
+    {
+      "coverUrl": "brand/book-covers/lady-macbeth-of-mtsensk-editorial.webp",
+      "coverSha256": "eb0cec62eabaaaacdc8d9ba159f46a1162ba4b857fb1a73e0c69d7488f973087",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1A1314",
+      "darkColor": "#1A1314",
+      "lightColor": "#C7BEA9",
+      "accentColor": "#8A6738",
+      "warmColor": "#917145"
+    },
+    {
+      "coverUrl": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+      "coverSha256": "3358276fc60294079e1e1834aeb92ef58111e2f351d4243d791c27c84a3081ff",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#C3CCC7",
+      "darkColor": "#252B26",
+      "lightColor": "#C3CCC7",
+      "accentColor": "#8A7E38",
+      "warmColor": "#8D8449"
+    },
+    {
+      "coverUrl": "brand/book-covers/last-of-the-mohicans-editorial.webp",
+      "coverSha256": "1bb85d4cd38ab370dfc7659f56f4cd1a88656dbfa11709ff97ea3b12efea27e3",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#282618",
+      "darkColor": "#282618",
+      "lightColor": "#E4C99A",
+      "accentColor": "#E5BD76",
+      "warmColor": "#E8C587"
+    },
+    {
+      "coverUrl": "brand/book-covers/lefty-editorial.webp",
+      "coverSha256": "766ff746cf6b5962b5ca412c17f9744d6c39bba3482a7ea983374e3deb886ffd",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#262924",
+      "darkColor": "#262924",
+      "lightColor": "#E1C48E",
+      "accentColor": "#8A6B38",
+      "warmColor": "#947542"
+    },
+    {
+      "coverUrl": "brand/book-covers/les-miserables-editorial.webp",
+      "coverSha256": "894eaf2023a9005a8e48fcd7d54abda485489f844f3f02b8afbf1e7760767c13",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EBD6A8",
+      "darkColor": "#171815",
+      "lightColor": "#E9D5AA",
+      "accentColor": "#E1C07A",
+      "warmColor": "#E4C88B"
+    },
+    {
+      "coverUrl": "brand/book-covers/light-in-august-editorial.webp",
+      "coverSha256": "45a14ee94210d36d75cf6d6b0cee6712edcd624ec6ed43da210228f3ebc3ab33",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E8CB96",
+      "darkColor": "#735526",
+      "lightColor": "#E4CA9A",
+      "accentColor": "#E2BD79",
+      "warmColor": "#EFCB80"
+    },
+    {
+      "coverUrl": "brand/book-covers/lolita-editorial.webp",
+      "coverSha256": "6633d3327c9e42472bf7275e077ca09437d4bb364182b811215d9112eb933faf",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F1E4CA",
+      "darkColor": "#5A593F",
+      "lightColor": "#F1E4CA",
+      "accentColor": "#D0B88B",
+      "warmColor": "#C9CEA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/lord-jim-editorial.webp",
+      "coverSha256": "b923c981400408789ea26a499f141551b40bbde6f40d753048011f9cb2b824e2",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#080C0A",
+      "darkColor": "#18130A",
+      "lightColor": "#E1C28E",
+      "accentColor": "#D9A759",
+      "warmColor": "#8D7149"
+    },
+    {
+      "coverUrl": "brand/book-covers/lord-of-the-flies-editorial.webp",
+      "coverSha256": "950787f19f989b7b9f487a5aafd09c58053891a88580870b9cc2b407a9fc845c",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F1E3C6",
+      "darkColor": "#18241B",
+      "lightColor": "#F0E2C6",
+      "accentColor": "#DBB580",
+      "warmColor": "#E0BE90"
+    },
+    {
+      "coverUrl": "brand/book-covers/love-in-the-time-of-cholera-editorial.webp",
+      "coverSha256": "d63383afa49e90582762ed4152fd1a5fb6ff506fa8262903e85463026ab66eb6",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F7DB97",
+      "darkColor": "#282817",
+      "lightColor": "#E8D4A7",
+      "accentColor": "#F4CA67",
+      "warmColor": "#F2CF7D"
+    },
+    {
+      "coverUrl": "brand/book-covers/madame-bovary-editorial.webp",
+      "coverSha256": "009cb92e27aa697f1ae966404b336ca746715c7e628de2db1783ebf277280aff",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F1E8D7",
+      "darkColor": "#161916",
+      "lightColor": "#F1E8D7",
+      "accentColor": "#D0B68B",
+      "warmColor": "#CEBDA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/martin-chuzzlewit-editorial.webp",
+      "coverSha256": "a5ec19e0bba935fb59bd5fa7a4bffeb95862f4e2e2c417ecc45d20cd1d7efbdf",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1A1507",
+      "darkColor": "#1A1507",
+      "lightColor": "#E1C18E",
+      "accentColor": "#C69958",
+      "warmColor": "#C69958"
+    },
+    {
+      "coverUrl": "brand/book-covers/martin-eden-editorial.webp",
+      "coverSha256": "0c9818f21618d2f67d4c77afa371e98541b984d5fd94d80d194f2e0eae61d4fa",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#2A3438",
+      "darkColor": "#18242B",
+      "lightColor": "#CBBEA4",
+      "accentColor": "#9D7940",
+      "warmColor": "#977846"
+    },
+    {
+      "coverUrl": "brand/book-covers/mayor-of-casterbridge-editorial.webp",
+      "coverSha256": "372ee9a7d49a25742bfd70c0e55f8ee25a841ccf7187a11d468f34c47fe8eceb",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#272717",
+      "darkColor": "#272717",
+      "lightColor": "#E1C58E",
+      "accentColor": "#E2BE79",
+      "warmColor": "#E5C689"
+    },
+    {
+      "coverUrl": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+      "coverSha256": "df604f197afe8a22a159843a7e3ab2a23af4a049c519577a153bfc5279d1ff0b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F3E7C9",
+      "darkColor": "#565A36",
+      "lightColor": "#F1E6CB",
+      "accentColor": "#DBC080",
+      "warmColor": "#DCC993"
+    },
+    {
+      "coverUrl": "brand/book-covers/moonstone-editorial.webp",
+      "coverSha256": "a5846a2ec339126c2c0e3f2658f58146cd9bd41f4d5f4b5cd88562b5f9aecfb9",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#141A17",
+      "darkColor": "#141A17",
+      "lightColor": "#CAD3CB",
+      "accentColor": "#386F8A",
+      "warmColor": "#8D8249"
+    },
+    {
+      "coverUrl": "brand/book-covers/mrs-dalloway-editorial.webp",
+      "coverSha256": "884a4091fadc6aa3f038d67a18e701341e37c44947659b864be3ed6650ab9b82",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E5D7C9",
+      "darkColor": "#37343B",
+      "lightColor": "#E5D7C9",
+      "accentColor": "#D0AA8B",
+      "warmColor": "#CEB5A1"
+    },
+    {
+      "coverUrl": "brand/book-covers/mtsyri-editorial.webp",
+      "coverSha256": "558f01d98949e176235b2cda3340fa51a5f12b56a6dc4c95e3d2cde96661dd0d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#17282A",
+      "darkColor": "#17282A",
+      "lightColor": "#CDC1A2",
+      "accentColor": "#D0BC8B",
+      "warmColor": "#C9BA96"
+    },
+    {
+      "coverUrl": "brand/book-covers/mumu-editorial.webp",
+      "coverSha256": "0ecca78fdabb2af309b2b544032f3ba45ba12c2aa5459c3985b033505b95d764",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E7D7B5",
+      "darkColor": "#585537",
+      "lightColor": "#E7D7B5",
+      "accentColor": "#D0BB8B",
+      "warmColor": "#DBC494"
+    },
+    {
+      "coverUrl": "brand/book-covers/nana-editorial.webp",
+      "coverSha256": "b5b90dda07d8c5db65556926139ce7bfe7a9ca44f41e4fdc622ff4ff3f290d21",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#090603",
+      "darkColor": "#1B0B04",
+      "lightColor": "#DFC690",
+      "accentColor": "#A16221",
+      "warmColor": "#B56B21"
+    },
+    {
+      "coverUrl": "brand/book-covers/nausea-editorial.webp",
+      "coverSha256": "01a2af477d84bf0e9a98431a60bec9d9539bea99fc9fac26ccbfb5c1fb06e245",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#DAC9A6",
+      "darkColor": "#373728",
+      "lightColor": "#DAC9A6",
+      "accentColor": "#D0BA8B",
+      "warmColor": "#D5C29A"
+    },
+    {
+      "coverUrl": "brand/book-covers/night-flight-editorial.webp",
+      "coverSha256": "cd8925ef8da6efc0b2456763c76e9e354fc137e3e51da66bb037463324e6cd2b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0A1622",
+      "darkColor": "#0A1622",
+      "lightColor": "#C5BAAB",
+      "accentColor": "#385E8A",
+      "warmColor": "#947043"
+    },
+    {
+      "coverUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "coverSha256": "cca8d3f684191027c40a1664d05c0939aebf82ffc7d72cb21b9159d0ee559d01",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F5D897",
+      "darkColor": "#181914",
+      "lightColor": "#E7D3A5",
+      "accentColor": "#F0C86A",
+      "warmColor": "#F2CE7D"
+    },
+    {
+      "coverUrl": "brand/book-covers/norwegian-wood-20260820-alternate.webp",
+      "coverSha256": "a6355905083ecb40dfeb591c68645fe35b68f51641364e36d3db32fdc7d02e86",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E4D4B7",
+      "darkColor": "#373426",
+      "lightColor": "#E4D4B7",
+      "accentColor": "#D0B78B",
+      "warmColor": "#D9C197"
+    },
+    {
+      "coverUrl": "brand/book-covers/norwegian-wood-editorial.webp",
+      "coverSha256": "216b70e71789e68ab3adf0a2f55241a45f8c0c13d058bef4bccfc71b3c40264e",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EED7A4",
+      "darkColor": "#181A15",
+      "lightColor": "#E8D5A9",
+      "accentColor": "#E5C376",
+      "warmColor": "#E8CA87"
+    },
+    {
+      "coverUrl": "brand/book-covers/notes-from-underground-editorial.webp",
+      "coverSha256": "3c95b19b80053e687f12dd21d742eeac562302117dd059b65f372753363accdb",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#151714",
+      "darkColor": "#151714",
+      "lightColor": "#CBBEA4",
+      "accentColor": "#8A6A38",
+      "warmColor": "#947442"
+    },
+    {
+      "coverUrl": "brand/book-covers/number9dream-20260820-editorial.webp",
+      "coverSha256": "bb24dbdbb32db897793e85e3b6aca3750ab49e8154842bd6af404ed0e64b1c1a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#07131D",
+      "darkColor": "#07131D",
+      "lightColor": "#E1B08E",
+      "accentColor": "#385C8A",
+      "warmColor": "#8D494B"
+    },
+    {
+      "coverUrl": "brand/book-covers/oblomov-editorial.webp",
+      "coverSha256": "9e33e7b5a11f4fd244adba50579308f7dfbe659796532924162fb5cca25d5ab8",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F4E2BB",
+      "darkColor": "#362A19",
+      "lightColor": "#EEE0C1",
+      "accentColor": "#E1BE79",
+      "warmColor": "#E5C68A"
+    },
+    {
+      "coverUrl": "brand/book-covers/of-mice-and-men-editorial.webp",
+      "coverSha256": "c59b8c5bf2c8756d5f91519925dc077945703d4605ccbf7d31ee84e6492d929a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#C6BC96",
+      "darkColor": "#473618",
+      "lightColor": "#CDC4A2",
+      "accentColor": "#D0C18B",
+      "warmColor": "#C8BD94"
+    },
+    {
+      "coverUrl": "brand/book-covers/oliver-twist-editorial.webp",
+      "coverSha256": "e9cf7a5a4c53a63a143ea2efec493a430f95bc9196d439897a5c71a0951c16c8",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#C6AB86",
+      "darkColor": "#2A2418",
+      "lightColor": "#D1BC9E",
+      "accentColor": "#CBAC80",
+      "warmColor": "#C6AB86"
+    },
+    {
+      "coverUrl": "brand/book-covers/one-day-ivan-denisovich-editorial.webp",
+      "coverSha256": "939ae9b94200d415ecd674e3433d40c4098cc08ac8eb71a60b69b7a4e070e923",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#2A3435",
+      "darkColor": "#2A3435",
+      "lightColor": "#DAC395",
+      "accentColor": "#D5BA86",
+      "warmColor": "#D6BB87"
+    },
+    {
+      "coverUrl": "brand/book-covers/one-hundred-years-of-solitude-editorial.webp",
+      "coverSha256": "85b0c45aa42ef4b075db3b7cc874056be481ef414f2e251bb3681785a9016499",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E6DDC4",
+      "darkColor": "#262816",
+      "lightColor": "#E6DDC4",
+      "accentColor": "#D0BB8B",
+      "warmColor": "#D6C499"
+    },
+    {
+      "coverUrl": "brand/book-covers/our-mutual-friend-editorial.webp",
+      "coverSha256": "57fd88e59b9876e7217a361885aad46641363d1237fde4872d9e45e40c684ccc",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1A2425",
+      "darkColor": "#1A2425",
+      "lightColor": "#E1BC8E",
+      "accentColor": "#8A6938",
+      "warmColor": "#8D7349"
+    },
+    {
+      "coverUrl": "brand/book-covers/perfume-editorial.webp",
+      "coverSha256": "94c1d4c50139910f526ec43c315d367f3b0b33b30c31f61abc0a26ace5a3fb0e",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#160C05",
+      "darkColor": "#190D06",
+      "lightColor": "#D7BE98",
+      "accentColor": "#975E2B",
+      "warmColor": "#A7682F"
+    },
+    {
+      "coverUrl": "brand/book-covers/persuasion-editorial.webp",
+      "coverSha256": "7002bb29acd000583ed12bb06ea48c6c1b1b832822d03ab438c24041ba4cf69f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F4EBD9",
+      "darkColor": "#635536",
+      "lightColor": "#F4EBD9",
+      "accentColor": "#D0B78B",
+      "warmColor": "#DAC195"
+    },
+    {
+      "coverUrl": "brand/book-covers/poor-liza-editorial.webp",
+      "coverSha256": "a6c621b22f5274c47c0722a619312b73bd4c410cb9a6b40cfc2dd6656d3ba842",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EADBC6",
+      "darkColor": "#605639",
+      "lightColor": "#EADBC6",
+      "accentColor": "#C7A876",
+      "warmColor": "#D4BE9B"
+    },
+    {
+      "coverUrl": "brand/book-covers/queen-of-spades-editorial.webp",
+      "coverSha256": "511eebe4125d3801dbc722c183df66329562cd52a501ba6eee65e463317d2776",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#070906",
+      "darkColor": "#16140A",
+      "lightColor": "#D7C399",
+      "accentColor": "#8A6E38",
+      "warmColor": "#97793F"
+    },
+    {
+      "coverUrl": "brand/book-covers/resurrection-editorial.webp",
+      "coverSha256": "0cda30053d0c8d7f33fbff80df7f6e7e54cc7470c673f2738b022240eacfedd0",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E6CB99",
+      "darkColor": "#494438",
+      "lightColor": "#E4CB9A",
+      "accentColor": "#DEBD7C",
+      "warmColor": "#E3C58D"
+    },
+    {
+      "coverUrl": "brand/book-covers/robinson-crusoe-editorial.webp",
+      "coverSha256": "3afdac4277a3f29f090d75a38b4da26f76c1c17a9562a93143adf4fe10efaa53",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E4CDA4",
+      "darkColor": "#253339",
+      "lightColor": "#E4CDA4",
+      "accentColor": "#D9BA81",
+      "warmColor": "#DEC391"
+    },
+    {
+      "coverUrl": "brand/book-covers/salammbo-editorial.webp",
+      "coverSha256": "980326bbf07ccd99a8a136dad3ecd0f082eba55054e331b62dcba6400692c257",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0C1A27",
+      "darkColor": "#0C1A27",
+      "lightColor": "#E1C28E",
+      "accentColor": "#996229",
+      "warmColor": "#B06A26"
+    },
+    {
+      "coverUrl": "brand/book-covers/sea-hawk-editorial.webp",
+      "coverSha256": "9f2ed1afd2ec200c121196244ac410037cf5dff1a6977b919418fb752fba8521",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#263536",
+      "darkColor": "#263536",
+      "lightColor": "#D9C598",
+      "accentColor": "#D3BB87",
+      "warmColor": "#D9C496"
+    },
+    {
+      "coverUrl": "brand/book-covers/sea-wolf-editorial.webp",
+      "coverSha256": "53419b8c005fa0a62e6a4854f5e7ef3d466597045cfb946f203f4ff7403caa96",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F8D699",
+      "darkColor": "#171915",
+      "lightColor": "#E8D1A9",
+      "accentColor": "#F4C267",
+      "warmColor": "#F2C97D"
+    },
+    {
+      "coverUrl": "brand/book-covers/seagull-chekhov-20260820-alternate.webp",
+      "coverSha256": "ea95b37982422f6bf1a32568ea6316d98bc3eff6f8e2fa1c35da982bc28c5005",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D3DBDA",
+      "darkColor": "#343C3A",
+      "lightColor": "#D3DBDA",
+      "accentColor": "#387A8A",
+      "warmColor": "#A1CEC9"
+    },
+    {
+      "coverUrl": "brand/book-covers/sense-and-sensibility-editorial.webp",
+      "coverSha256": "b22bfcd9838872b2347d2046f6f50ba055b9e1a4509e4616ba0e90a2b62274c3",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F5ECD9",
+      "darkColor": "#675932",
+      "lightColor": "#F5ECD9",
+      "accentColor": "#D0B48A",
+      "warmColor": "#DAC195"
+    },
+    {
+      "coverUrl": "brand/book-covers/sentimental-education-editorial.webp",
+      "coverSha256": "a7ea06d11e764df8cfd9f6943635bfbaf7ab935d5ed99f462a15c716bf6d7ff8",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#ECDDC5",
+      "darkColor": "#39352A",
+      "lightColor": "#ECDDC5",
+      "accentColor": "#DAB381",
+      "warmColor": "#DFBD90"
+    },
+    {
+      "coverUrl": "brand/book-covers/simple-mortals-bone-clocks-20260820-alternate.webp",
+      "coverSha256": "5b95fd207fd2ac1d47973b5084b506df785928fff617430bf5c5dd3e6a3d6c00",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#051625",
+      "darkColor": "#051625",
+      "lightColor": "#C4BBAB",
+      "accentColor": "#385E8A",
+      "warmColor": "#9E7552"
+    },
+    {
+      "coverUrl": "brand/book-covers/sister-carrie-editorial.webp",
+      "coverSha256": "80c3cfb5605adda410fa2324f420f3a2775ef9e5c59167ff71240d608efc4848",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#071819",
+      "darkColor": "#071819",
+      "lightColor": "#D6BE99",
+      "accentColor": "#8A6638",
+      "warmColor": "#957042"
+    },
+    {
+      "coverUrl": "brand/book-covers/slade-house-20260820-editorial.webp",
+      "coverSha256": "9508fca6b8877a81608c5fa196dc9d0ed591412071c068115bd017c25712776f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#150A08",
+      "darkColor": "#160A08",
+      "lightColor": "#C8BAA7",
+      "accentColor": "#A06422",
+      "warmColor": "#8D5F49"
+    },
+    {
+      "coverUrl": "brand/book-covers/slade-house-russian-title-20260820-alternate.webp",
+      "coverSha256": "25e50d17e1545a968a4c462273d700222b2b92d02946b4cf6482db5d0bd024f4",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#141913",
+      "darkColor": "#141913",
+      "lightColor": "#C7BCA8",
+      "accentColor": "#97672B",
+      "warmColor": "#A47432"
+    },
+    {
+      "coverUrl": "brand/book-covers/slaughterhouse-five-editorial.webp",
+      "coverSha256": "a5b0cc1912fabaf263c397fd93e110e71e68e05b43663a8ebf460c0b33c9b96b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#040E16",
+      "darkColor": "#05101A",
+      "lightColor": "#C4BCAB",
+      "accentColor": "#8A6B38",
+      "warmColor": "#8D7549"
+    },
+    {
+      "coverUrl": "brand/book-covers/smoke-turgenev-editorial.webp",
+      "coverSha256": "21a8c1ef6ba026ee137be759e89e2c0663968d4bc2171bcb7cb370ad3bbea71e",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#252C29",
+      "darkColor": "#252C29",
+      "lightColor": "#D1C09E",
+      "accentColor": "#8A6B38",
+      "warmColor": "#947543"
+    },
+    {
+      "coverUrl": "brand/book-covers/solaris-editorial.webp",
+      "coverSha256": "831dd7c3b1a80b4cd3d60ed16e9bd485c97fbb9bb45a60c1ea4149db79c71680",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0B222A",
+      "darkColor": "#0B222A",
+      "lightColor": "#AFC0BB",
+      "accentColor": "#38808A",
+      "warmColor": "#2D89A9"
+    },
+    {
+      "coverUrl": "brand/book-covers/south-of-border-west-of-sun-20260820-editorial.webp",
+      "coverSha256": "249e61f6a4c686791b7e07e16bab79c8099a65b0ade534a87223c74bf71751e5",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#150D06",
+      "darkColor": "#180E07",
+      "lightColor": "#C9BDA6",
+      "accentColor": "#B84C0A",
+      "warmColor": "#C36113"
+    },
+    {
+      "coverUrl": "brand/book-covers/spring-torrents-editorial.webp",
+      "coverSha256": "992134eaa16ca6acfb3b0cf2052794861dc692cbca81265f9a21fdf9a55c6c4f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E8DCC6",
+      "darkColor": "#605439",
+      "lightColor": "#E8DCC6",
+      "accentColor": "#CDB585",
+      "warmColor": "#DCC293"
+    },
+    {
+      "coverUrl": "brand/book-covers/steppe-chekhov-20260820-alternate.webp",
+      "coverSha256": "95d4a82df6dc6f6a9fd504ca30a0b82c73abce08429e1e831aa8e0044fe091ba",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#C7BA97",
+      "darkColor": "#685728",
+      "lightColor": "#CDC1A2",
+      "accentColor": "#D0BC8B",
+      "warmColor": "#C9BA95"
+    },
+    {
+      "coverUrl": "brand/book-covers/strange-orchid-editorial.webp",
+      "coverSha256": "1ad510c632dc338a701ee89ccd4b2dee820e44e76d6f3ba09de932cfc93ac030",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#16170B",
+      "darkColor": "#16170B",
+      "lightColor": "#D9C499",
+      "accentColor": "#D3BB88",
+      "warmColor": "#D8C397"
+    },
+    {
+      "coverUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+      "coverSha256": "a3498dbe0033956ac2237ce0385f5d117afa37c3dcc7d3a89f6eb53a8897b77b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1A2829",
+      "darkColor": "#1A2829",
+      "lightColor": "#DBC094",
+      "accentColor": "#D6B785",
+      "warmColor": "#D7B988"
+    },
+    {
+      "coverUrl": "brand/book-covers/taras-bulba-editorial.webp",
+      "coverSha256": "4ca99e0fb960af10ba80c748ae67e4eb0c8326593dd765a78bf076dd49091d2f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#563A17",
+      "darkColor": "#563A17",
+      "lightColor": "#DFC490",
+      "accentColor": "#9A6728",
+      "warmColor": "#957541"
+    },
+    {
+      "coverUrl": "brand/book-covers/tender-is-the-night-editorial.webp",
+      "coverSha256": "1bbebac543c4044b47ca881a088f30b015a11fc5f44ddbeb4c52514c7a1697fe",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EADCC7",
+      "darkColor": "#161A19",
+      "lightColor": "#EADCC7",
+      "accentColor": "#D0B58B",
+      "warmColor": "#D7BE98"
+    },
+    {
+      "coverUrl": "brand/book-covers/tess-of-the-durbervilles-editorial.webp",
+      "coverSha256": "95a602c025d7a264e8129f0e8fe98c7b188d220776ed0f0e4fd8d6128e9a0eb2",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E1C6A5",
+      "darkColor": "#462B15",
+      "lightColor": "#E1C6A5",
+      "accentColor": "#D5AF86",
+      "warmColor": "#DCBA94"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-adolescent-editorial.webp",
+      "coverSha256": "3e9675845d3cb319a9ce231b3d13502d29cfcec81e3ebd764876ac6490ffc459",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EAD4AA",
+      "darkColor": "#292925",
+      "lightColor": "#E9D3AB",
+      "accentColor": "#DFBD7C",
+      "warmColor": "#E3C58C"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-age-of-innocence-editorial.webp",
+      "coverSha256": "6bb00a23c9419ebc9ebbfa1a0a24475466392d7f5eeeb4f621340354e3eb351f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E5D4B9",
+      "darkColor": "#5A4D3F",
+      "lightColor": "#E5D4B9",
+      "accentColor": "#D0B48B",
+      "warmColor": "#D9BF96"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+      "coverSha256": "e1c2f19a2243532b8c089313f47f5e08f24b236316bf22af81d0526f69e5cd96",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#14231C",
+      "darkColor": "#14231C",
+      "lightColor": "#C5C2AA",
+      "accentColor": "#8A8738",
+      "warmColor": "#8D8B49"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-black-obelisk-editorial.webp",
+      "coverSha256": "9be82de3b43627e52125c9892902480a8859a8be5e54d9ea242ab13d995e059e",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#282928",
+      "darkColor": "#262B26",
+      "lightColor": "#D7CBB3",
+      "accentColor": "#8A6638",
+      "warmColor": "#92674B"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-brothers-karamazov-editorial.webp",
+      "coverSha256": "2c200163e25b0a13f168502d2d20a0b7a68843962622839311074ecf79be2d93",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#13212D",
+      "darkColor": "#13212D",
+      "lightColor": "#9ABBD5",
+      "accentColor": "#38638A",
+      "warmColor": "#AF7127"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-call-of-the-wild-editorial.webp",
+      "coverSha256": "3f2311ddf3899da28fd0f1bdfbff0468866044fe2025881f6cfae772f9be808b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#192835",
+      "darkColor": "#192835",
+      "lightColor": "#CABCA5",
+      "accentColor": "#8A6938",
+      "warmColor": "#8D7349"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-captains-daughter-editorial.webp",
+      "coverSha256": "61b62dad9870b5b5502dff57a5a87073d31d858a892e302a5bae7314619ef139",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F5EAD2",
+      "darkColor": "#3C4E5D",
+      "lightColor": "#F3E9D4",
+      "accentColor": "#D0B78B",
+      "warmColor": "#D9C296"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-castle-editorial.webp",
+      "coverSha256": "5795dd0ef0f3ced8ce311c437f32eb599922d90d680aeac508e13dd248291f4d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#161A1D",
+      "darkColor": "#161A1D",
+      "lightColor": "#B1BBBE",
+      "accentColor": "#C39E6B",
+      "warmColor": "#B5986F"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "coverSha256": "5c9a7cc530e829c16e384ff5536d24bddac4bfccfb8b809b59b998e9aa00f1bb",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F9EEDB",
+      "darkColor": "#574629",
+      "lightColor": "#F6EDDE",
+      "accentColor": "#8A6C38",
+      "warmColor": "#927644"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-clown-editorial.webp",
+      "coverSha256": "2e577a8edabcdd8abcb3ee4132a36e5d773161a0743dde62f3cda1fe2473b624",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#223433",
+      "darkColor": "#223433",
+      "lightColor": "#CEC1A1",
+      "accentColor": "#8A7038",
+      "warmColor": "#937A43"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-collector-editorial.webp",
+      "coverSha256": "3619a74fbbd7a26d11419624f35586e92694ca18b587e02b81b0e5ce73c4160f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#15150D",
+      "darkColor": "#15150D",
+      "lightColor": "#D4C39B",
+      "accentColor": "#CCB682",
+      "warmColor": "#CAB584"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+      "coverSha256": "38570b3cf9a76070f9bfec5f3024a6189c7541f5c40a2dd69c6e79d1f695f63b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#294347",
+      "darkColor": "#294347",
+      "lightColor": "#C4C0AC",
+      "accentColor": "#38808A",
+      "warmColor": "#8D7B49"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-fall-of-the-house-of-usher-editorial.webp",
+      "coverSha256": "74e690108e5d45cf7ae84b393480b8afc25b11b9a84e1df756012b8eedfc3950",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#09080B",
+      "darkColor": "#171318",
+      "lightColor": "#C0AFB4",
+      "accentColor": "#8A5D38",
+      "warmColor": "#8E6A48"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-financier-editorial.webp",
+      "coverSha256": "25729c6a6d0a35e8e8e9ebd364fddae4125d44d03169d3e53eafbe176ac66f45",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#141719",
+      "darkColor": "#141719",
+      "lightColor": "#E3C9A3",
+      "accentColor": "#9B5D27",
+      "warmColor": "#C36413"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-gambler-editorial.webp",
+      "coverSha256": "76778c3e34d42e9e51469b89304bf5d0a49dab34eaf4179409b861c7860322eb",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0D150C",
+      "darkColor": "#0D150C",
+      "lightColor": "#D2BF9D",
+      "accentColor": "#95782D",
+      "warmColor": "#987C3E"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-grapes-of-wrath-editorial.webp",
+      "coverSha256": "31ab66fc46d3149e20669cb4e9e3675aa6ed137e87428d4021f5a9bb2a29ba13",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#2C3538",
+      "darkColor": "#2C3538",
+      "lightColor": "#D9CAAC",
+      "accentColor": "#98642A",
+      "warmColor": "#A96F2D"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-hound-of-the-baskervilles-editorial.webp",
+      "coverSha256": "4c3ad2c11537f8b82132b47c461f019f4794d1213a52b9a12dc934b822527ced",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#141B28",
+      "darkColor": "#141B28",
+      "lightColor": "#B5B9BA",
+      "accentColor": "#8A6B38",
+      "warmColor": "#8D7449"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-hunchback-of-notre-dame-editorial.webp",
+      "coverSha256": "3169a8cde7a07b5c3b64bedaad93060a578d216be588447f18216f8ca9f84769",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#373737",
+      "darkColor": "#34363A",
+      "lightColor": "#BFBBB0",
+      "accentColor": "#8A6938",
+      "warmColor": "#8D7149"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+      "coverSha256": "9dde84d733eeee5a61877a510a45e10703b30847b0c70ec2c92c7756b8190eb0",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#433D47",
+      "darkColor": "#433D47",
+      "lightColor": "#C0BBAF",
+      "accentColor": "#8A5838",
+      "warmColor": "#8D6449"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-man-who-laughs-editorial.webp",
+      "coverSha256": "7cab8d251bd36592149fc293b6d60c1eced5c8c0c54bed2224b1ec43d6a2248b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#161818",
+      "darkColor": "#151818",
+      "lightColor": "#CCBBA3",
+      "accentColor": "#8A6738",
+      "warmColor": "#8D7049"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-minor-editorial.webp",
+      "coverSha256": "e9f2f2238d48d6539b646466a948bcbc88b634921211202ffc45ba151f868710",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#DCC9A6",
+      "darkColor": "#564928",
+      "lightColor": "#DCC9A6",
+      "accentColor": "#D1B98A",
+      "warmColor": "#D6C199"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-mysterious-island-editorial.webp",
+      "coverSha256": "83d94c8c328a85a67a283d39ee5a251827bcb35f44574e185b5e229f358cc72d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EDE3CB",
+      "darkColor": "#473618",
+      "lightColor": "#EDE3CB",
+      "accentColor": "#D0B98B",
+      "warmColor": "#DAC595"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-name-of-the-rose-editorial.webp",
+      "coverSha256": "09fe639adea8972fb7504e98c993658981d674482e8281c230135b44be2fc0dd",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#130D05",
+      "darkColor": "#181107",
+      "lightColor": "#E0BD8F",
+      "accentColor": "#9B6427",
+      "warmColor": "#9D6F3A"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-nose-editorial.webp",
+      "coverSha256": "2b405db35308fccd72fd33c0bc1eadb77539b61a4f02b56651e6646f8b798d53",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#161A17",
+      "darkColor": "#161A17",
+      "lightColor": "#D4C09B",
+      "accentColor": "#38788A",
+      "warmColor": "#B39F6B"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+      "coverSha256": "9013e677f5d20163ef1b4745f62e51aee6bbddbbcda1e478a2425ef694633819",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0A243A",
+      "darkColor": "#0A243A",
+      "lightColor": "#CABFA5",
+      "accentColor": "#2A6998",
+      "warmColor": "#BEAB80"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-plague-editorial.webp",
+      "coverSha256": "134bae941d7878463c012517c109885a425f00ecc949c3f18a3593c52a3dc640",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EDD5A7",
+      "darkColor": "#674927",
+      "lightColor": "#E9D4AB",
+      "accentColor": "#E3BE78",
+      "warmColor": "#E7C689"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-portrait-editorial.webp",
+      "coverSha256": "61cf930605394501e7359c79d610aa82d8205d07ca7940a845ff3552b008f2d3",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#181509",
+      "darkColor": "#181509",
+      "lightColor": "#D7CC98",
+      "accentColor": "#94732E",
+      "warmColor": "#A48032"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-portrait-of-a-lady-editorial.webp",
+      "coverSha256": "767c7f171515b4addf665dd835205de0dd39d0cec9b41b3e7411c583df0abd59",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E4DAC4",
+      "darkColor": "#5F553A",
+      "lightColor": "#E4DAC4",
+      "accentColor": "#D0BB8B",
+      "warmColor": "#D2C29D"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-red-and-the-black-editorial.webp",
+      "coverSha256": "5ebf2d0977c515e8a06d3ed12d0baefeabdde16c940b729b579f3eeb56aef847",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E4D5B8",
+      "darkColor": "#17140C",
+      "lightColor": "#E4D5B8",
+      "accentColor": "#AB1C17",
+      "warmColor": "#D7C298"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-seagull-editorial.webp",
+      "coverSha256": "4a60c0b4c3c952604ebc095ed1876eaa6e68246e9dd29b9878a8dcc2e9768b0c",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#C7C8BA",
+      "darkColor": "#363C35",
+      "lightColor": "#C7C8BA",
+      "accentColor": "#D0C28B",
+      "warmColor": "#D9C696"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-sound-and-the-fury-editorial.webp",
+      "coverSha256": "7b66df56d98a8b37c5579a1c2a9064ad396943028e708744c3be8058c6609c66",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#151619",
+      "darkColor": "#151619",
+      "lightColor": "#C9BCA6",
+      "accentColor": "#8A5B38",
+      "warmColor": "#8F6547"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-steppe-editorial.webp",
+      "coverSha256": "53cfa662acb2f0e0fdfbf32ca880ca1aa64c15e8ef118fbbdd5d6c0b90ccce4a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F6EDD6",
+      "darkColor": "#736226",
+      "lightColor": "#F5ECD8",
+      "accentColor": "#D5B886",
+      "warmColor": "#DDC493"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-storm-ostrovsky-editorial.webp",
+      "coverSha256": "6a051919c37ac563bf5882feabb352f4be5e2d2fe7bb48a6e547c88f216a1603",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#192428",
+      "darkColor": "#192428",
+      "lightColor": "#DCBD93",
+      "accentColor": "#8A6938",
+      "warmColor": "#937643"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-stranger-editorial.webp",
+      "coverSha256": "24a7f4315b93622cf0ae16761f750f7f05e262f656d246ea564dbc523c0eceb8",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E9D9B4",
+      "darkColor": "#404E59",
+      "lightColor": "#E9D9B4",
+      "accentColor": "#D9BE82",
+      "warmColor": "#DFC790"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-turn-of-the-screw-editorial.webp",
+      "coverSha256": "6daa9890af79720518767269258a18b44397edffcb4bab9156ce320b0167b643",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#CAC5A9",
+      "darkColor": "#383626",
+      "lightColor": "#CAC5A9",
+      "accentColor": "#D0C38B",
+      "warmColor": "#CEC7A1"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-village-bunin-editorial.webp",
+      "coverSha256": "a75de62ba6a544355a9c7c97e7c9ef530dcaadcb011ad94860f89ea363975a6a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#242B28",
+      "darkColor": "#242B28",
+      "lightColor": "#DBC195",
+      "accentColor": "#D5B885",
+      "warmColor": "#957441"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-white-guard-editorial.webp",
+      "coverSha256": "fd21a040041686a03f8977cf263b251ae098da429bc24b089e4e2d957449cd49",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D6CCB7",
+      "darkColor": "#1A2529",
+      "lightColor": "#D6CCB7",
+      "accentColor": "#D0B98B",
+      "warmColor": "#CEBFA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/the-winter-of-our-discontent-editorial.webp",
+      "coverSha256": "e290f1858d5e5dd2797f205fc307ba886259b213117ff25ea99a0b801637a10c",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#283743",
+      "darkColor": "#283743",
+      "lightColor": "#D9C598",
+      "accentColor": "#D3BB88",
+      "warmColor": "#D9C496"
+    },
+    {
+      "coverUrl": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "coverSha256": "1d7eed4bf3bf4e33779b3268b26ce12fb9da7bab3a05dd8e6a7ed2a576572dcb",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#162A2A",
+      "darkColor": "#162A2A",
+      "lightColor": "#C8BEA7",
+      "accentColor": "#B58A4B",
+      "warmColor": "#A98857"
+    },
+    {
+      "coverUrl": "brand/book-covers/three-musketeers-editorial.webp",
+      "coverSha256": "8734b89c890598a22b0f433079f9f6fd8374e5f04f36c181cf7096f168166724",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F6DCA4",
+      "darkColor": "#19140A",
+      "lightColor": "#EAD8B0",
+      "accentColor": "#EFC56C",
+      "warmColor": "#F2CD7D"
+    },
+    {
+      "coverUrl": "brand/book-covers/three-sisters-chekhov-20260820-alternate.webp",
+      "coverSha256": "945cd6778ed2d8b3d9409d63e6edb31b9c6091fe5a39bda60082fc92dd095e1b",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#242827",
+      "darkColor": "#232827",
+      "lightColor": "#BBC5C4",
+      "accentColor": "#8A7F38",
+      "warmColor": "#8D8449"
+    },
+    {
+      "coverUrl": "brand/book-covers/three-sisters-editorial.webp",
+      "coverSha256": "09dc9ecf8bfc84340d75e1d1b6fe8dbf76b9d970c23f99334f3a003ccde8ce74",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E8D6B7",
+      "darkColor": "#615338",
+      "lightColor": "#E8D6B7",
+      "accentColor": "#D1B78A",
+      "warmColor": "#DCC293"
+    },
+    {
+      "coverUrl": "brand/book-covers/time-machine-wells-20260820-editorial.webp",
+      "coverSha256": "6086d87affd3eb6124ebe7406f3d74a207793b4920cff7c7d23f1cff2ffe273e",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#0C2729",
+      "darkColor": "#0C2729",
+      "lightColor": "#CDBEA2",
+      "accentColor": "#388A73",
+      "warmColor": "#937B43"
+    },
+    {
+      "coverUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+      "coverSha256": "ee4b31b50d02de73e9cc7f2b5e790bb64c7bf3d1277b3c2a764234add8b093aa",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#EBD8A6",
+      "darkColor": "#47381A",
+      "lightColor": "#E8D7A9",
+      "accentColor": "#E2C479",
+      "warmColor": "#E5CC8A"
+    },
+    {
+      "coverUrl": "brand/book-covers/to-the-lighthouse-editorial.webp",
+      "coverSha256": "7168ef51aaa146ec88309bc3f0b287595a2400eddc072d40a7d9c23c7773b5a2",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E7E5D8",
+      "darkColor": "#535246",
+      "lightColor": "#E7E5D8",
+      "accentColor": "#38608A",
+      "warmColor": "#8D7E49"
+    },
+    {
+      "coverUrl": "brand/book-covers/tono-bungay-editorial.webp",
+      "coverSha256": "dc597e9fcb74cf6e7260a5f7835050d14394dfcca32a35d621d8938879c9c3b6",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#191A17",
+      "darkColor": "#191A17",
+      "lightColor": "#E1C48E",
+      "accentColor": "#C8A668",
+      "warmColor": "#DAB674"
+    },
+    {
+      "coverUrl": "brand/book-covers/tono-bungay-wells-20260820-alternate.webp",
+      "coverSha256": "4113df91e4d0867515a62df42deae0977eafcf03c203c649858bd3d6e1093273",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#280C09",
+      "darkColor": "#280C09",
+      "lightColor": "#DAC195",
+      "accentColor": "#975C2B",
+      "warmColor": "#AC632A"
+    },
+    {
+      "coverUrl": "brand/book-covers/tristram-shandy-editorial.webp",
+      "coverSha256": "b4841c5071b01d4e07808461b86a6fea6a2bff8d0747f5779e0aeb89946fe5e1",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1A2726",
+      "darkColor": "#1A2726",
+      "lightColor": "#E4C999",
+      "accentColor": "#DDBB7D",
+      "warmColor": "#E2C38E"
+    },
+    {
+      "coverUrl": "brand/book-covers/ulysses-editorial.webp",
+      "coverSha256": "5832a3737c3359b0148612d02f74c6da48400798dbf9825166942559413ba54d",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E8D9BB",
+      "darkColor": "#475248",
+      "lightColor": "#E8D9BB",
+      "accentColor": "#D0BB8B",
+      "warmColor": "#D4C29C"
+    },
+    {
+      "coverUrl": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+      "coverSha256": "2922b2efd6b52223b1b6e059b29847cffd5e8e45706d08939344e33e882167b9",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#372519",
+      "darkColor": "#372519",
+      "lightColor": "#C5BAAB",
+      "accentColor": "#9C6126",
+      "warmColor": "#8D6B49"
+    },
+    {
+      "coverUrl": "brand/book-covers/utopia-avenue-20260820-editorial.webp",
+      "coverSha256": "480f1cc6daf682ed6c4cfcac478c0e9a39a0f2a21b6011f0cd9482107a770a07",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E6D6B8",
+      "darkColor": "#172925",
+      "lightColor": "#E6D6B8",
+      "accentColor": "#D6BB85",
+      "warmColor": "#DAC296"
+    },
+    {
+      "coverUrl": "brand/book-covers/vanity-fair-editorial.webp",
+      "coverSha256": "859912297338032bc834e79e9f057b6f6887a6830bf6b0e394b8ca0370049185",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F1E8D5",
+      "darkColor": "#272B25",
+      "lightColor": "#F1E8D5",
+      "accentColor": "#D0B98B",
+      "warmColor": "#D8C197"
+    },
+    {
+      "coverUrl": "brand/book-covers/virgin-soil-upturned-editorial.webp",
+      "coverSha256": "82fd527da7b56b41ef069cd98cb05fcd21433b2e733834d2822e1d71582eca59",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D9C599",
+      "darkColor": "#674617",
+      "lightColor": "#D9C599",
+      "accentColor": "#D3BC88",
+      "warmColor": "#D8C497"
+    },
+    {
+      "coverUrl": "brand/book-covers/war-and-peace-editorial.webp",
+      "coverSha256": "7e461b1522e83e5bde243649a20992d254b06dead948e6ce9af751722db093bb",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#ECDAB6",
+      "darkColor": "#17130B",
+      "lightColor": "#ECDAB7",
+      "accentColor": "#DBBB7F",
+      "warmColor": "#E0C48F"
+    },
+    {
+      "coverUrl": "brand/book-covers/war-in-air-wells-20260820-alternate.webp",
+      "coverSha256": "114ad38294c7b5663ad29047eb9b1cd9faa344c962e008beb8c091f93ce67552",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#272723",
+      "darkColor": "#272723",
+      "lightColor": "#C6BCA9",
+      "accentColor": "#8A6238",
+      "warmColor": "#A46432"
+    },
+    {
+      "coverUrl": "brand/book-covers/war-in-the-air-editorial.webp",
+      "coverSha256": "273e3336e17561150b78f315d9081dfe4260e70508bc46292ccafbab4966b558",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#162B35",
+      "darkColor": "#162B35",
+      "lightColor": "#D9C497",
+      "accentColor": "#D3BB87",
+      "warmColor": "#917745"
+    },
+    {
+      "coverUrl": "brand/book-covers/war-of-worlds-wells-20260820-editorial.webp",
+      "coverSha256": "2d26333821892024e674142fe42335434942f6ad58862bf57f07f8adb7e9bc4f",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#161917",
+      "darkColor": "#161917",
+      "lightColor": "#C9BBA6",
+      "accentColor": "#8A6238",
+      "warmColor": "#946A42"
+    },
+    {
+      "coverUrl": "brand/book-covers/ward-no-6-chekhov-20260820-alternate.webp",
+      "coverSha256": "7d50af0dcc2ff4ae5ef63c6af7b0e2fd40fefa2c03faf582835a586688a18ed3",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#171919",
+      "darkColor": "#171A19",
+      "lightColor": "#C5C1AA",
+      "accentColor": "#8A6F38",
+      "warmColor": "#8D7849"
+    },
+    {
+      "coverUrl": "brand/book-covers/ward-no-6-editorial.webp",
+      "coverSha256": "45f8b271b043445f490b47604dfb1e0e2a018214b3979fcf62641dd0acade06a",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#373B37",
+      "darkColor": "#292A24",
+      "lightColor": "#D3C09C",
+      "accentColor": "#8A6C38",
+      "warmColor": "#8D7549"
+    },
+    {
+      "coverUrl": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+      "coverSha256": "07d083672febcfcef70fe77de2f6f228e48d0150978819bb3cf3fc4d32e9c5d9",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#181737",
+      "darkColor": "#181737",
+      "lightColor": "#CBA4A7",
+      "accentColor": "#3D388A",
+      "warmColor": "#B97784"
+    },
+    {
+      "coverUrl": "brand/book-covers/white-company-editorial.webp",
+      "coverSha256": "c16a8c24e0e66829e02ebf62eddb406eeaf0a2d0b7a8449ed130bab53f27e6e7",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#584826",
+      "darkColor": "#584826",
+      "lightColor": "#E1C58E",
+      "accentColor": "#E2BE79",
+      "warmColor": "#E5C688"
+    },
+    {
+      "coverUrl": "brand/book-covers/white-fang-editorial.webp",
+      "coverSha256": "181307f735e5f8631c7203eafacbbee833d417a5e73aed13bf5b6d982fccf439",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#E5E2DA",
+      "darkColor": "#394A55",
+      "lightColor": "#E5E2DA",
+      "accentColor": "#38698A",
+      "warmColor": "#CEC2A1"
+    },
+    {
+      "coverUrl": "brand/book-covers/white-nights-editorial.webp",
+      "coverSha256": "33336db4c3c9339ace79307d84fcb7c0aee9d5a21b2f0bc866a640d23393c172",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#F5ECD9",
+      "darkColor": "#4B5148",
+      "lightColor": "#F5ECD9",
+      "accentColor": "#D0B68B",
+      "warmColor": "#CEBDA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/who-is-happy-in-russia-editorial.webp",
+      "coverSha256": "29d985070619b7a85d346f74636fbf38cdf8bf8b5256df7c0633b9ab155fed28",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D9D7C5",
+      "darkColor": "#473817",
+      "lightColor": "#D9D7C5",
+      "accentColor": "#906B31",
+      "warmColor": "#A07737"
+    },
+    {
+      "coverUrl": "brand/book-covers/wild-sheep-chase-20260820-editorial.webp",
+      "coverSha256": "593f73728711f8fc999878e44eea2e25d6483b4d3c0046980411daa6ba051d76",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D8D7D5",
+      "darkColor": "#4E5148",
+      "lightColor": "#D8D7D5",
+      "accentColor": "#38688A",
+      "warmColor": "#CEC3A1"
+    },
+    {
+      "coverUrl": "brand/book-covers/wind-up-bird-chronicle-20260820-editorial.webp",
+      "coverSha256": "235320aae1c6ca19c1367967571e980c62ebdfa1a8acf0af1a88afa5d9b4dd43",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#1A1B14",
+      "darkColor": "#1A1B14",
+      "lightColor": "#D2BF9D",
+      "accentColor": "#957B3D",
+      "warmColor": "#8D7949"
+    },
+    {
+      "coverUrl": "brand/book-covers/without-a-dowry-editorial.webp",
+      "coverSha256": "64114820315c752b14ec6c0a6a292ffef389e22432c12efea5c19b776bd5b758",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#D7D3CC",
+      "darkColor": "#34393B",
+      "lightColor": "#D7D3CC",
+      "accentColor": "#D0B38B",
+      "warmColor": "#CEBBA1"
+    },
+    {
+      "coverUrl": "brand/book-covers/world-set-free-20260820-editorial.webp",
+      "coverSha256": "3825d661da0f43d67d82d21c66b797f6e30b364b36503b918ecb60ec2b7ab168",
+      "rightsStatus": "editorial-original",
+      "dominantColor": "#251B15",
+      "darkColor": "#251B15",
+      "lightColor": "#E1BA8E",
+      "accentColor": "#8E4E33",
+      "warmColor": "#9D5639"
+    }
+  ]
+}

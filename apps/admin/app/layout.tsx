@@ -11,8 +11,8 @@ export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: {
-    default: "Редакция — Проба Пера",
-    template: "%s — Редакция «Пробы Пера»",
+    default: "Редакция - Проба Пера",
+    template: "%s - Редакция «Пробы Пера»",
   },
   description:
     "Защищённый редакционный кабинет литературного журнала «Проба Пера».",

@@ -8,7 +8,7 @@ export const usa: Country = {
     {
       id: "william_bradford",
       name: "Уильям Брэдфорд",
-      years: "1590–1657",
+      years: "1590-1657",
       birthDate: "1590",
       deathDate: "1657-05-09",
       birthPlace: "Олдхэм, Англия",
@@ -40,7 +40,7 @@ export const usa: Country = {
     {
       id: "anne_bradstreet",
       name: "Энн Брэдстрит",
-      years: "1612–1672",
+      years: "1612-1672",
       birthDate: "1612-03-20",
       deathDate: "1672-09-16",
       birthPlace: "Нортгемптон, Англия",
@@ -71,7 +71,7 @@ export const usa: Country = {
     {
       id: "benjamin_franklin",
       name: "Бенджамин Франклин",
-      years: "1706–1790",
+      years: "1706-1790",
       birthDate: "1706-01-17",
       deathDate: "1790-04-17",
       birthPlace: "Бостон, Британская Америка",
@@ -104,7 +104,7 @@ export const usa: Country = {
     {
       id: "thomas_paine",
       name: "Томас Пейн",
-      years: "1737–1809",
+      years: "1737-1809",
       birthDate: "1737-02-09",
       deathDate: "1809-06-08",
       birthPlace: "Тетфорд, Англия",
@@ -139,7 +139,7 @@ export const usa: Country = {
     {
       id: "thomas_jefferson",
       name: "Томас Джефферсон",
-      years: "1743–1826",
+      years: "1743-1826",
       birthDate: "1743-04-13",
       deathDate: "1826-07-04",
       birthPlace: "Шадуэлл, Виргиния",
@@ -171,7 +171,7 @@ export const usa: Country = {
     {
       id: "washington_irving",
       name: "Вашингтон Ирвинг",
-      years: "1783–1859",
+      years: "1783-1859",
       birthDate: "1783-04-03",
       deathDate: "1859-11-28",
       birthPlace: "Нью-Йорк, США",
@@ -205,7 +205,7 @@ export const usa: Country = {
         {
       id: "james_fenimore_cooper",
       name: "Джеймс Фенимор Купер",
-      years: "1789–1851",
+      years: "1789-1851",
       birthDate: "1789-09-15",
       deathDate: "1851-09-14",
       birthPlace: "Берлингтон, США",
@@ -241,7 +241,7 @@ export const usa: Country = {
     {
       id: "edgar_allan_poe",
       name: "Эдгар Аллан По",
-      years: "1809–1849",
+      years: "1809-1849",
       birthDate: "1809-01-19",
       deathDate: "1849-10-07",
       birthPlace: "Бостон, США",
@@ -298,7 +298,7 @@ export const usa: Country = {
     {
       id: "ralph_waldo_emerson",
       name: "Ральф Уолдо Эмерсон",
-      years: "1803–1882",
+      years: "1803-1882",
       birthDate: "1803-05-25",
       deathDate: "1882-04-27",
       birthPlace: "Бостон, США",
@@ -334,7 +334,7 @@ export const usa: Country = {
     {
       id: "henry_david_thoreau",
       name: "Генри Дэвид Торо",
-      years: "1817–1862",
+      years: "1817-1862",
       birthDate: "1817-07-12",
       deathDate: "1862-05-06",
       birthPlace: "Конкорд, США",
@@ -368,7 +368,7 @@ export const usa: Country = {
     {
       id: "nathaniel_hawthorne",
       name: "Натаниэль Готорн",
-      years: "1804–1864",
+      years: "1804-1864",
       birthDate: "1804-07-04",
       deathDate: "1864-05-19",
       birthPlace: "Салем, США",
@@ -404,7 +404,7 @@ export const usa: Country = {
     {
       id: "herman_melville",
       name: "Герман Мелвилл",
-      years: "1819–1891",
+      years: "1819-1891",
       birthDate: "1819-08-01",
       deathDate: "1891-09-28",
       birthPlace: "Нью-Йорк, США",
@@ -440,7 +440,7 @@ export const usa: Country = {
         {
       id: "walt_whitman",
       name: "Уолт Уитмен",
-      years: "1819–1892",
+      years: "1819-1892",
       birthDate: "1819-05-31",
       deathDate: "1892-03-26",
       birthPlace: "Уэст-Хиллс, США",
@@ -473,7 +473,7 @@ export const usa: Country = {
     {
       id: "emily_dickinson",
       name: "Эмили Дикинсон",
-      years: "1830–1886",
+      years: "1830-1886",
       birthDate: "1830-12-10",
       deathDate: "1886-05-15",
       birthPlace: "Амхерст, США",
@@ -506,7 +506,7 @@ export const usa: Country = {
     {
       id: "mark_twain",
       name: "Марк Твен",
-      years: "1835–1910",
+      years: "1835-1910",
       birthDate: "1835-11-30",
       deathDate: "1910-04-21",
       birthPlace: "Флорида, США",
@@ -540,7 +540,7 @@ export const usa: Country = {
     {
       id: "henry_james",
       name: "Генри Джеймс",
-      years: "1843–1916",
+      years: "1843-1916",
       birthDate: "1843-04-15",
       deathDate: "1916-02-28",
       birthPlace: "Нью-Йорк, США",
@@ -593,7 +593,7 @@ export const usa: Country = {
     {
       id: "jack_london",
       name: "Джек Лондон",
-      years: "1876–1916",
+      years: "1876-1916",
       birthDate: "1876-01-12",
       deathDate: "1916-11-22",
       birthPlace: "Сан-Франциско, США",
@@ -682,7 +682,7 @@ export const usa: Country = {
     {
       id: "edith_wharton",
       name: "Эдит Уортон",
-      years: "1862–1937",
+      years: "1862-1937",
       birthDate: "1862-01-24",
       deathDate: "1937-08-11",
       birthPlace: "Нью-Йорк, США",
@@ -692,7 +692,7 @@ export const usa: Country = {
         lng: -74.006
       },
       portrait: "",
-      bio: "Американская писательница и первая женщина — лауреат Пулитцеровской премии за художественное произведение.",
+      bio: "Американская писательница и первая женщина - лауреат Пулитцеровской премии за художественное произведение.",
       works: [
         "Эпоха невинности",
         "Дом веселья",
@@ -717,7 +717,7 @@ export const usa: Country = {
     {
       id: "theodore_dreiser",
       name: "Теодор Драйзер",
-      years: "1871–1945",
+      years: "1871-1945",
       birthDate: "1871-08-27",
       deathDate: "1945-12-28",
       birthPlace: "Терре-Хот, США",
@@ -770,7 +770,7 @@ export const usa: Country = {
         {
       id: "francis_scott_fitzgerald",
       name: "Фрэнсис Скотт Фицджеральд",
-      years: "1896–1940",
+      years: "1896-1940",
       birthDate: "1896-09-24",
       deathDate: "1940-12-21",
       birthPlace: "Сент-Пол, США",
@@ -826,7 +826,7 @@ export const usa: Country = {
     {
       id: "ernest_hemingway",
       name: "Эрнест Хемингуэй",
-      years: "1899–1961",
+      years: "1899-1961",
       birthDate: "1899-07-21",
       deathDate: "1961-07-02",
       birthPlace: "Оук-Парк, США",
@@ -887,7 +887,7 @@ export const usa: Country = {
     {
       id: "william_faulkner",
       name: "Уильям Фолкнер",
-      years: "1897–1962",
+      years: "1897-1962",
       birthDate: "1897-09-25",
       deathDate: "1962-07-06",
       birthPlace: "Нью-Олбани, США",
@@ -944,7 +944,7 @@ export const usa: Country = {
     {
       id: "eugene_oneill",
       name: "Юджин О’Нил",
-      years: "1888–1953",
+      years: "1888-1953",
       birthDate: "1888-10-16",
       deathDate: "1953-11-27",
       birthPlace: "Нью-Йорк, США",
@@ -979,7 +979,7 @@ export const usa: Country = {
     {
       id: "john_steinbeck",
       name: "Джон Стейнбек",
-      years: "1902–1968",
+      years: "1902-1968",
       birthDate: "1902-02-27",
       deathDate: "1968-12-20",
       birthPlace: "Салинас, США",
@@ -1034,7 +1034,7 @@ export const usa: Country = {
     {
       id: "sinclair_lewis",
       name: "Синклер Льюис",
-      years: "1885–1951",
+      years: "1885-1951",
       birthDate: "1885-02-07",
       deathDate: "1951-01-10",
       birthPlace: "Саук-Сентер, США",
@@ -1069,7 +1069,7 @@ export const usa: Country = {
     {
       id: "john_dos_passos",
       name: "Джон Дос Пассос",
-      years: "1896–1970",
+      years: "1896-1970",
       birthDate: "1896-01-14",
       deathDate: "1970-09-28",
       birthPlace: "Чикаго, США",
@@ -1103,7 +1103,7 @@ export const usa: Country = {
         {
       id: "henry_miller",
       name: "Генри Миллер",
-      years: "1891–1980",
+      years: "1891-1980",
       birthDate: "1891-12-26",
       deathDate: "1980-06-07",
       birthPlace: "Нью-Йорк, США",
@@ -1136,7 +1136,7 @@ export const usa: Country = {
     {
       id: "ray_bradbury",
       name: "Рэй Брэдбери",
-      years: "1920–2012",
+      years: "1920-2012",
       birthDate: "1920-08-22",
       deathDate: "2012-06-05",
       birthPlace: "Уокиган, США",
@@ -1210,7 +1210,7 @@ export const usa: Country = {
     {
       id: "isaac_asimov",
       name: "Айзек Азимов",
-      years: "1920–1992",
+      years: "1920-1992",
       birthDate: "1920-01-02",
       deathDate: "1992-04-06",
       birthPlace: "Петровичи, СССР",
@@ -1245,7 +1245,7 @@ export const usa: Country = {
     {
       id: "kurt_vonnegut",
       name: "Курт Воннегут",
-      years: "1922–2007",
+      years: "1922-2007",
       birthDate: "1922-11-11",
       deathDate: "2007-04-11",
       birthPlace: "Индианаполис, США",
@@ -1301,7 +1301,7 @@ export const usa: Country = {
     {
       id: "jerome_david_salinger",
       name: "Джером Дэвид Сэлинджер",
-      years: "1919–2010",
+      years: "1919-2010",
       birthDate: "1919-01-01",
       deathDate: "2010-01-27",
       birthPlace: "Нью-Йорк, США",
@@ -1353,7 +1353,7 @@ export const usa: Country = {
     {
       id: "ralph_ellison",
       name: "Ральф Эллисон",
-      years: "1913–1994",
+      years: "1913-1994",
       birthDate: "1913-03-01",
       deathDate: "1994-04-16",
       birthPlace: "Оклахома-Сити, США",
@@ -1386,7 +1386,7 @@ export const usa: Country = {
     {
       id: "harper_lee",
       name: "Харпер Ли",
-      years: "1926–2016",
+      years: "1926-2016",
       birthDate: "1926-04-28",
       deathDate: "2016-02-19",
       birthPlace: "Монровилл, США",
@@ -1440,7 +1440,7 @@ export const usa: Country = {
     {
       id: "jack_kerouac",
       name: "Джек Керуак",
-      years: "1922–1969",
+      years: "1922-1969",
       birthDate: "1922-03-12",
       deathDate: "1969-10-21",
       birthPlace: "Лоуэлл, США",
@@ -1472,7 +1472,7 @@ export const usa: Country = {
         {
       id: "vladimir_nabokov",
       name: "Владимир Набоков",
-      years: "1899–1977",
+      years: "1899-1977",
       birthDate: "1899-04-22",
       deathDate: "1977-07-02",
       birthPlace: "Санкт-Петербург, Российская империя",
@@ -1527,7 +1527,7 @@ export const usa: Country = {
     {
       id: "tony_morrison",
       name: "Тони Моррисон",
-      years: "1931–2019",
+      years: "1931-2019",
       birthDate: "1931-02-18",
       deathDate: "2019-08-05",
       birthPlace: "Лорейн, США",
@@ -1551,7 +1551,7 @@ export const usa: Country = {
           originalLanguage: "английский",
           genres: ["роман", "историческая проза"],
           tags: ["память", "рабство", "семья", "травма"],
-          description: "В центре романа — Сэти, бывшая рабыня, и травматическая память, преследующая её семью. Книга вышла в 1987 году и получила Пулитцеровскую премию за художественную литературу в 1988 году.",
+          description: "В центре романа - Сэти, бывшая рабыня, и травматическая память, преследующая её семью. Книга вышла в 1987 году и получила Пулитцеровскую премию за художественную литературу в 1988 году.",
           coverUrl: "brand/book-covers/beloved-editorial.webp",
           coverThumbnailUrl: "brand/book-covers/thumbs/beloved-editorial.webp",
           coverSourceUrl: "brand/book-covers/beloved-editorial.webp",
@@ -1593,7 +1593,7 @@ export const usa: Country = {
     {
       id: "philip_roth",
       name: "Филип Рот",
-      years: "1933–2018",
+      years: "1933-2018",
       birthDate: "1933-03-19",
       deathDate: "2018-05-22",
       birthPlace: "Ньюарк, США",
@@ -1628,7 +1628,7 @@ export const usa: Country = {
     {
       id: "cormac_mccarthy",
       name: "Кормак Маккарти",
-      years: "1933–2023",
+      years: "1933-2023",
       birthDate: "1933-07-20",
       deathDate: "2023-06-13",
       birthPlace: "Провиденс, США",
@@ -1664,7 +1664,7 @@ export const usa: Country = {
     {
       id: "don_delillo",
       name: "Дон Делилло",
-      years: "1936–",
+      years: "1936-",
       birthDate: "1936-11-20",
       birthPlace: "Нью-Йорк, США",
       coordinates: {
@@ -1697,7 +1697,7 @@ export const usa: Country = {
     {
       id: "paul_auster",
       name: "Пол Остер",
-      years: "1947–2024",
+      years: "1947-2024",
       birthDate: "1947-02-03",
       deathDate: "2024-04-30",
       birthPlace: "Ньюарк, США",
@@ -1729,7 +1729,7 @@ export const usa: Country = {
     {
       id: "stephen_king",
       name: "Стивен Кинг",
-      years: "1947–",
+      years: "1947-",
       birthDate: "1947-09-21",
       birthPlace: "Портленд, США",
       coordinates: {
@@ -1764,7 +1764,7 @@ export const usa: Country = {
     {
       id: "bob_dylan",
       name: "Боб Дилан",
-      years: "1941–",
+      years: "1941-",
       birthDate: "1941-05-24",
       birthPlace: "Дулут, США",
       coordinates: {
@@ -1796,7 +1796,7 @@ export const usa: Country = {
     {
       id: "colson_whitehead",
       name: "Колсон Уайтхед",
-      years: "1969–",
+      years: "1969-",
       birthDate: "1969-11-06",
       birthPlace: "Нью-Йорк, США",
       coordinates: {

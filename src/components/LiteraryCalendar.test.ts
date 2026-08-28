@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 import type { Writer } from "../data/countries";
@@ -6,6 +7,12 @@ import {
   dateParts,
   visibleCalendarAgendaDays,
 } from "./LiteraryCalendar";
+
+const calendarSource = readFileSync(
+  new URL("./LiteraryCalendar.tsx", import.meta.url),
+  "utf8"
+);
+const appSource = readFileSync(new URL("../App.tsx", import.meta.url), "utf8");
 
 describe("литературный календарь", () => {
   it("не превращает год без точной даты в событие 1 января", () => {
@@ -82,7 +89,7 @@ describe("литературный календарь", () => {
     );
   });
 
-  it("сначала показывает компактную повестку, а по запросу — все дни с событиями", () => {
+  it("сначала показывает компактную повестку, а по запросу - все дни с событиями", () => {
     const days = Array.from({ length: 9 }, (_, index) =>
       [index + 1, [`event-${index + 1}`]] as const
     );
@@ -91,5 +98,27 @@ describe("литературный календарь", () => {
       1, 2, 3, 4, 5, 6,
     ]);
     expect(visibleCalendarAgendaDays(days, true)).toEqual(days);
+  });
+
+  it("разделяет переход к писателю и переход только к стране", () => {
+    expect(calendarSource).toContain("calendar-agenda-writer is-");
+    expect(calendarSource).toContain('className="calendar-agenda-country"');
+    expect(calendarSource).toContain(
+      "onCountrySelect?.(event.country, event.writer)"
+    );
+    expect(calendarSource).toContain("onCountrySelect?.(event.country)");
+    expect(calendarSource).toContain('aria-label={`${t("Страна")}:');
+
+    const countryOnlyTransition = appSource.slice(
+      appSource.indexOf("const selectCalendarCountryOnly"),
+      appSource.indexOf("const selectGlobeCountry")
+    );
+    expect(countryOnlyTransition).toContain("selectCountry(country, true)");
+    expect(countryOnlyTransition).toContain("setSelectedWriter(null)");
+    expect(countryOnlyTransition).toContain("setWriterFocusRequest(null)");
+    expect(countryOnlyTransition).toContain("writerId: null");
+    expect(countryOnlyTransition).toContain('"replace"');
+    expect(countryOnlyTransition).toContain("focusCountryPresentation()");
+    expect(appSource).toContain(": selectCalendarCountryOnly(country)");
   });
 });

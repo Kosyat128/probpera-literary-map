@@ -1,11 +1,11 @@
 export const ecoProfile = {
  id:"eco",
  fullName:"Умберто Эко",
- years:"1932–2016",
+ years:"1932-2016",
  country:"Италия",
  birthPlace:"Алессандрия, Италия",
  movement:"Постмодернизм",
- century:"XX–XXI века",
+ century:"XX-XXI века",
  language:"Итальянский",
  nobel:false,
  portrait:"/images/writers/eco.jpg",

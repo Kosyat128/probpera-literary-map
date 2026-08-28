@@ -525,7 +525,7 @@ const markdown = [
   `- ${report.provenance.legacyOnlyWithoutAnyWriterLevelSourceCandidate} из ${summary.russianWithheldByStrictGate} legacy-текстов не имеют даже writer-level source candidate; у ${report.provenance.legacyOnlyWithWriterLevelSourceCandidates} такой кандидат есть, но он не является per-text provenance.`,
   `- У всех ${summary.russianWithheldByStrictGate} legacy-текстов не записаны способ создания и правовое происхождение. Это отсутствие доказательства в репозитории, а не вывод о нарушении.`,
   `- ${report.automatedQualitySignals.belowCurrentLengthOrSentenceGate} текстов не достигают текущего норматива по длине или числу предложений.`,
-  `- ${report.automatedQualitySignals.genericOrServiceTextRecords} текст — служебный/шаблонный; ${report.automatedQualitySignals.operationalCopyRecords} содержат редакционные фразы вместо биографии.`,
+  `- ${report.automatedQualitySignals.genericOrServiceTextRecords} текст - служебный/шаблонный; ${report.automatedQualitySignals.operationalCopyRecords} содержат редакционные фразы вместо биографии.`,
   `- ${report.automatedQualitySignals.unsupportedSuperlativeCandidates} содержат суперлативы вроде «крупнейший» или «один из ведущих», которые требуют отдельного источника или нейтральной переписи.`,
   `- Дословные повторы: ${report.automatedQualitySignals.exactDuplicateBiographyRecords} карточек в ${report.automatedQualitySignals.exactDuplicateBiographyGroups} группах. Повторяющиеся ID: ${report.automatedQualitySignals.repeatedWriterIdRecords} карточки в ${report.automatedQualitySignals.repeatedWriterIdGroups} группах.`,
   `- У ${report.automatedQualitySignals.reviewedOrVerifiedWriterStatusButBiographyWithheld} карточек есть внутренний общий статус reviewed/verified, хотя сама биография не проходит gate. Этот статус не переносится на legacy-текст и не показывается рядом с описанием.`,
@@ -539,7 +539,7 @@ const markdown = [
   "",
   "- Gate-passing биография остаётся `published` со своими sources/status.",
   "- Русский legacy получает только внутреннюю QA-классификацию; публично выводится сам текст без маркера статуса.",
-  "- В результате явно записано: fact check — `not-recorded`, provenance — `not-recorded`, rights — `not-recorded`.",
+  "- В результате явно записано: fact check - `not-recorded`, provenance - `not-recorded`, rights - `not-recorded`.",
   `- После ${summary.serviceBiographyCorrectionsWithRecordedEvidence} точечных замен и карантина ${summary.identityRiskRecordsQuarantined} identity-risk карточек публичных generic/service placeholder осталось ${summary.knownGenericLegacyBlockedFromDisplay}.`,
   "- Английского fallback нет.",
   "",
@@ -547,7 +547,7 @@ const markdown = [
   "",
   "## Контрольная ручная сверка методики",
   "",
-  "Проверены только отдельные поля двух записей, а не весь корпус: сведения о Редьярде Киплинге сопоставлены с [официальной страницей Nobel Prize Outreach](https://www.nobelprize.org/prizes/literature/1907/kipling/facts/), а сведения о театральной карьере Шекспира — со [страницей Folger Shakespeare Library](https://www.folger.edu/explore/shakespeares-life/). Для Киплинга выбранные поля согласуются с источником. Шекспировская legacy-биография автоматически не promoted: writer-level источник не заменяет per-text provenance и запись способа создания текста.",
+  "Проверены только отдельные поля двух записей, а не весь корпус: сведения о Редьярде Киплинге сопоставлены с [официальной страницей Nobel Prize Outreach](https://www.nobelprize.org/prizes/literature/1907/kipling/facts/), а сведения о театральной карьере Шекспира - со [страницей Folger Shakespeare Library](https://www.folger.edu/explore/shakespeares-life/). Для Киплинга выбранные поля согласуются с источником. Шекспировская legacy-биография автоматически не promoted: writer-level источник не заменяет per-text provenance и запись способа создания текста.",
   "",
   `> Эта выборка из двух записей подтверждает пригодность процесса, но не является проверкой остальных ${Math.max(summary.writerCardRecords - 2, 0)} карточек и не доказывает каждое предложение в двух выбранных текстах.`,
   "",
@@ -557,14 +557,14 @@ const markdown = [
   "",
   ...legacyCorrections.map(
     (item) =>
-      `- \`${item.countryId}:${item.writerId}\` — ${item.text} Источник: [${item.evidence[0].provider}](${item.evidence[0].url}).`
+      `- \`${item.countryId}:${item.writerId}\` - ${item.text} Источник: [${item.evidence[0].provider}](${item.evidence[0].url}).`
   ),
   "",
   "## Исправления личности и метаданных",
   "",
   ...identityCorrections.map(
     (item) =>
-      `- \`${item.countryId}:${item.writerId}\` → \`${item.countryId}:${item.replacement.id}\` — ${item.replacement.bio} Источники: ${item.evidence.map((sourceItem) => `[${sourceItem.provider}](${sourceItem.url})`).join(", ")}.`
+      `- \`${item.countryId}:${item.writerId}\` → \`${item.countryId}:${item.replacement.id}\` - ${item.replacement.bio} Источники: ${item.evidence.map((sourceItem) => `[${sourceItem.provider}](${sourceItem.url})`).join(", ")}.`
   ),
   "",
   "## Карантин сомнительных личностей",
@@ -572,16 +572,16 @@ const markdown = [
   `Из публичной базы временно исключены ${quarantinedIdentities.length} записи с неверным/дублирующим ID, явной межстрановой служебной связью или без подтверждённого соответствия личности и произведения. Исходные файлы стран не удалены: записи можно вернуть после документированной сверки.`,
   "",
   ...quarantinedIdentities.map(
-    (item) => `- \`${item.countryId}:${item.writerId}\` — ${item.note}`
+    (item) => `- \`${item.countryId}:${item.writerId}\` - ${item.note}`
   ),
   "",
   "## Реалистичный план",
   "",
-  `Начальная очередь — ${report.researchPlan.initialWorkItems} уникальных legacy \`writerId\`, минимум ${report.researchPlan.estimatedBatches} партий по ${report.researchPlan.batchSize}. До подсчёта реальных людей нужно разрешить cross-country дубли и несовпадающие ID.`,
+  `Начальная очередь - ${report.researchPlan.initialWorkItems} уникальных legacy \`writerId\`, минимум ${report.researchPlan.estimatedBatches} партий по ${report.researchPlan.batchSize}. До подсчёта реальных людей нужно разрешить cross-country дубли и несовпадающие ID.`,
   "",
   ...report.researchPlan.stages.map((stage, index) => `${index + 1}. ${stage}.`),
   "",
-  `Оценка: ${report.researchPlan.effortEstimate.personHours.minimum}–${report.researchPlan.effortEstimate.personHours.maximum} человеко-часов, или ${report.researchPlan.effortEstimate.sixHourEditorDays.minimum}–${report.researchPlan.effortEstimate.sixHourEditorDays.maximum} редакционных дней по 6 продуктивных часов. Команда из четырёх редакторов — ориентировочно ${report.researchPlan.effortEstimate.fourPersonFiveDayWeeks.minimum}–${report.researchPlan.effortEstimate.fourPersonFiveDayWeeks.maximum} рабочих недель.`,
+  `Оценка: ${report.researchPlan.effortEstimate.personHours.minimum}-${report.researchPlan.effortEstimate.personHours.maximum} человеко-часов, или ${report.researchPlan.effortEstimate.sixHourEditorDays.minimum}-${report.researchPlan.effortEstimate.sixHourEditorDays.maximum} редакционных дней по 6 продуктивных часов. Команда из четырёх редакторов - ориентировочно ${report.researchPlan.effortEstimate.fourPersonFiveDayWeeks.minimum}-${report.researchPlan.effortEstimate.fourPersonFiveDayWeeks.maximum} рабочих недель.`,
   "",
   "Авторитетные точки входа: [Library of Congress Name Authority](https://id.loc.gov/authorities/names.html), [VIAF/OCLC](https://viaf.org/), [BnF](https://catalogue.bnf.fr/), [Nobel Prize Outreach](https://www.nobelprize.org/prizes/literature/). Они используются по назначению: authority-запись подтверждает identity/имя/даты, но не заменяет источник литературной интерпретации.",
   "",

@@ -14,7 +14,7 @@ export const palau: Country = {
 
       fullName: "Emelihter Kihleng",
 
-      years: "1970–",
+      years: "1970-",
 
       birthDate: "1970-01-01",
 

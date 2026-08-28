@@ -12,7 +12,7 @@ export const brunei: Country = {
       name: "Масури Масруни",
       fullName: "Masuri Masrun",
 
-      years: "1931–2005",
+      years: "1931-2005",
 
       birthDate: "1931",
       deathDate: "2005",
@@ -61,7 +61,7 @@ export const brunei: Country = {
       name: "Аванг Мохаммад Яссин",
       fullName: "Awang Mohammad Yassin",
 
-      years: "1935–2010",
+      years: "1935-2010",
 
       birthDate: "1935",
       deathDate: "2010",

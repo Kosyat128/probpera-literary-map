@@ -8,7 +8,7 @@ export const belize: Country = {
     {
       id: "zee_edgell",
       name: "Зи Эдгелл",
-      years: "1940–2020",
+      years: "1940-2020",
       birthDate: "1940-10-21",
       deathDate: "2020-12-20",
       birthPlace: "Белиз",
@@ -46,7 +46,7 @@ export const belize: Country = {
     {
       id: "colville_young",
       name: "Колвилл Янг",
-      years: "1932–",
+      years: "1932-",
       birthDate: "1932-11-20",
       birthPlace: "Белиз",
       coordinates: {

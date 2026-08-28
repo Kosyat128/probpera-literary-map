@@ -51,8 +51,8 @@ const curatedSiteCopyDefinitions = [
   { key: "globe.classic_badge", group: "Глобус", label: "Плашка классического атласа", defaultRu: "Классический атлас · 2026" },
   { key: "globe.classic_badge_title", group: "Глобус", label: "Описание классического атласа", defaultRu: "Классический картографический атлас, редакция 2026 года. Картография: Natural Earth.", multiline: true },
   { key: "globe.instruction.rotate", group: "Глобус", label: "Подсказка вращения", defaultRu: "Тяните или используйте стрелки" },
-  { key: "globe.instruction.zoom", group: "Глобус", label: "Подсказка масштаба", defaultRu: "Колесо или ± — масштаб" },
-  { key: "globe.laureate.open_card", group: "Глобус", label: "Подсказка карточки лауреата", defaultRu: "Нажмите на метку — откроется карточка лауреата", multiline: true },
+  { key: "globe.instruction.zoom", group: "Глобус", label: "Подсказка масштаба", defaultRu: "Колесо или ± - масштаб" },
+  { key: "globe.laureate.open_card", group: "Глобус", label: "Подсказка карточки лауреата", defaultRu: "Нажмите на метку - откроется карточка лауреата", multiline: true },
 
   { key: "popup.search.eyebrow", group: "Всплывающие панели", label: "Надзаголовок общего поиска", defaultRu: "Единый каталог" },
   { key: "popup.search.title", group: "Всплывающие панели", label: "Заголовок общего поиска", defaultRu: "Найти в «Пробе Пера»" },

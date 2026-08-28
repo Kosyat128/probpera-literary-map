@@ -6,11 +6,11 @@
 
 ## Итог
 
-- Официальных лауреатов 1901–2025: 122; лет вручения: 118.
+- Официальных лауреатов 1901-2025: 122; лет вручения: 118.
 - Локальных карточек: 125; уникальных official laureate ID: 122.
 - Прежних пробелов `nobelYear`/award metadata закрыто: 77 из 77.
-- Bio с упоминанием Nobel: 111; с явным годом: 108; без года: 3; неверных годов: 0.
-- Официальных карточек без Nobel в bio: 14. Это допустимо: архив использует metadata.
+- Bio с упоминанием Nobel: 112; с явным годом: 109; без года: 3; неверных годов: 0.
+- Официальных карточек без Nobel в bio: 13. Это допустимо: архив использует metadata.
 - Production-записей, которым понадобился prose fallback: 0.
 - Ложных/непривязанных bio-упоминаний: 0; непривязанных structured signals: 0.
 - Блокирующих ошибок: 0.
@@ -33,8 +33,8 @@
 
 ## Особые случаи
 
-- Erik Axel Karlfeldt (604): `posthumous` — `sweden:erik_axel_karlfeldt`.
-- Boris Pasternak (629): `accepted-then-forced-to-decline` — `russia:pasternak`.
-- Jean-Paul Sartre (637): `declined` — `france:jean_paul_sartre`.
+- Erik Axel Karlfeldt (604): `posthumous` - `sweden:erik_axel_karlfeldt`.
+- Boris Pasternak (629): `accepted-then-forced-to-decline` - `russia:pasternak`.
+- Jean-Paul Sartre (637): `declined` - `france:jean_paul_sartre`.
 
 Четыре совместных премии представлены восемью official records с `portion=1/2`: 1904, 1917, 1966 и 1974.

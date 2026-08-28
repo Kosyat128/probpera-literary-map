@@ -10,7 +10,7 @@ export const zimbabwe: Country = {
       id: "doris_lessing",
       name: "Дорис Лессинг",
       fullName: "Doris Lessing",
-      years: "1919–2013",
+      years: "1919-2013",
 
       birthDate: "1919-10-22",
       deathDate: "2013-11-17",
@@ -59,7 +59,7 @@ export const zimbabwe: Country = {
       id: "solomon_mutswairo",
       name: "Соломон Мутсвайро",
       fullName: "Solomon Mutswairo",
-      years: "1924–2005",
+      years: "1924-2005",
 
       birthDate: "1924-04-26",
       deathDate: "2005-11-16",
@@ -105,7 +105,7 @@ export const zimbabwe: Country = {
       id: "charles_mungoshi",
       name: "Чарльз Мунгоши",
       fullName: "Charles Mungoshi",
-      years: "1947–2019",
+      years: "1947-2019",
 
       birthDate: "1947-12-02",
       deathDate: "2019-02-16",
@@ -151,7 +151,7 @@ export const zimbabwe: Country = {
       id: "chenjerai_hove",
       name: "Ченджераи Хове",
       fullName: "Chenjerai Hove",
-      years: "1956–2015",
+      years: "1956-2015",
 
       birthDate: "1956-02-09",
       deathDate: "2015-07-12",
@@ -197,7 +197,7 @@ export const zimbabwe: Country = {
       id: "peter_godwin",
       name: "Питер Годвин",
       fullName: "Peter Godwin",
-      years: "1957–",
+      years: "1957-",
 
       birthDate: "1957-12-04",
       deathDate: "",
@@ -244,7 +244,7 @@ export const zimbabwe: Country = {
       id: "tsitsi_dangarembga",
       name: "Цици Дангарембга",
       fullName: "Tsitsi Dangarembga",
-      years: "1959–",
+      years: "1959-",
 
       birthDate: "1959-02-04",
       deathDate: "",
@@ -291,7 +291,7 @@ export const zimbabwe: Country = {
       id: "yvonne_vera",
       name: "Ивон Вера",
       fullName: "Yvonne Vera",
-      years: "1964–2005",
+      years: "1964-2005",
 
       birthDate: "1964-09-19",
       deathDate: "2005-04-07",

@@ -12,7 +12,7 @@ export const uae: Country = {
       name: "Султан аль-Овайс",
       fullName: "Sultan Al Owais",
 
-      years: "1925–2000",
+      years: "1925-2000",
 
       birthDate: "1925",
       deathDate: "2000-01-04",
@@ -59,7 +59,7 @@ export const uae: Country = {
       name: "Оша бинт Халифа аль-Сувайди",
       fullName: "Ousha bint Khalifa Al Suwaidi",
 
-      years: "1920–2018",
+      years: "1920-2018",
 
       birthDate: "1920",
       deathDate: "2018-07-27",
@@ -107,7 +107,7 @@ export const uae: Country = {
       name: "Хабиб Юсеф аль-Сайех",
       fullName: "Habib Yousuf Al Sayegh",
 
-      years: "1955–2019",
+      years: "1955-2019",
 
       birthDate: "1955",
       deathDate: "2019-08-20",
@@ -156,7 +156,7 @@ export const uae: Country = {
       name: "Мохаммед аль-Мурр",
       fullName: "Mohammed Al Murr",
 
-      years: "1955–",
+      years: "1955-",
 
       birthDate: "1955",
       deathDate: "",
@@ -206,7 +206,7 @@ export const uae: Country = {
       name: "Ахмад Рашид Тани",
       fullName: "Ahmed Rashid Thani",
 
-      years: "1962–2019",
+      years: "1962-2019",
 
       birthDate: "1962",
       deathDate: "2019",

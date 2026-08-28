@@ -1,7 +1,7 @@
 export const hugoProfile = {
  id:"hugo",
  fullName:"Виктор Мари Гюго",
- years:"1802–1885",
+ years:"1802-1885",
  country:"Франция",
  birthPlace:"Безансон, Франция",
  movement:"Романтизм",

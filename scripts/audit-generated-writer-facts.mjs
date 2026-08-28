@@ -99,7 +99,7 @@ function dateYear(value) {
 function yearsLabel(birthDate, deathDate) {
   const birthYear = dateYear(birthDate);
   const deathYear = dateYear(deathDate);
-  if (birthYear && deathYear) return `${birthYear}–${deathYear}`;
+  if (birthYear && deathYear) return `${birthYear}-${deathYear}`;
   if (birthYear) return `род. ${birthYear}`;
   if (deathYear) return `ум. ${deathYear}`;
   return "";

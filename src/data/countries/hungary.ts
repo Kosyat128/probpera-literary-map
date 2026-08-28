@@ -11,7 +11,7 @@ export const hungary: Country = {
       name: "Шандор Петефи",
       fullName: "Sándor Petőfi",
 
-      years: "1823–1849",
+      years: "1823-1849",
 
       birthDate: "1823-01-01",
       deathDate: "1849-07-31",
@@ -59,7 +59,7 @@ export const hungary: Country = {
       name: "Имре Мадач",
       fullName: "Imre Madách",
 
-      years: "1823–1864",
+      years: "1823-1864",
 
       birthDate: "1823-01-21",
       deathDate: "1864-10-05",
@@ -107,7 +107,7 @@ export const hungary: Country = {
       name: "Мор Йокаи",
       fullName: "Mór Jókai",
 
-      years: "1825–1904",
+      years: "1825-1904",
 
       birthDate: "1825-02-18",
       deathDate: "1904-05-05",
@@ -155,7 +155,7 @@ export const hungary: Country = {
       name: "Эндре Ади",
       fullName: "Endre Ady",
 
-      years: "1877–1919",
+      years: "1877-1919",
 
       birthDate: "1877-11-22",
       deathDate: "1919-01-27",
@@ -203,7 +203,7 @@ export const hungary: Country = {
       name: "Жигмонд Мориц",
       fullName: "Zsigmond Móricz",
 
-      years: "1879–1942",
+      years: "1879-1942",
 
       birthDate: "1879-06-29",
       deathDate: "1942-09-05",
@@ -251,7 +251,7 @@ export const hungary: Country = {
       name: "Антал Серб",
       fullName: "Antal Szerb",
 
-      years: "1901–1945",
+      years: "1901-1945",
 
       birthDate: "1901-05-01",
       deathDate: "1945-01-27",
@@ -300,7 +300,7 @@ export const hungary: Country = {
       name: "Миклош Радноти",
       fullName: "Miklós Radnóti",
 
-      years: "1909–1944",
+      years: "1909-1944",
 
       birthDate: "1909-05-05",
       deathDate: "1944-11-09",
@@ -348,7 +348,7 @@ export const hungary: Country = {
       name: "Имре Кертес",
       fullName: "Imre Kertész",
 
-      years: "1929–2016",
+      years: "1929-2016",
 
       birthDate: "1929-11-09",
       deathDate: "2016-03-31",

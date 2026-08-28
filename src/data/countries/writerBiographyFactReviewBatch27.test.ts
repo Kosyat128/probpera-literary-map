@@ -130,7 +130,7 @@ describe("writer biography claim review batch 27", () => {
     const subjectiveSuperlative =
       /(?:крупнейш|величайш|сам(?:ый|ая|ое|ые|ых)|наиболее|великий|ведущ|важнейш|главнейш|известнейш|одн(?:а|о|им|их)?\s+из\s+(?:главн|ведущ|важней|заметн))/iu;
     const publicReviewMarker =
-      /(?:^|[\s:—-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;—-])/iu;
+      /(?:^|[\s:-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;-])/iu;
 
     for (const record of writerBiographyFactReviewBatch27) {
       const originalText = sourceTextForKey(record.key);
@@ -248,7 +248,7 @@ describe("writer biography claim review batch 27", () => {
     expect(byKey.get("finland:fredrika_bremer")?.notes).toContain("1801-08-17");
     expect(byKey.get("finland:fredrika_bremer")?.notes).toContain("1865-12-31");
     expect(byKey.get("ethiopia:bealu_girma")?.notes).toContain("1939");
-    expect(byKey.get("finland:mikael_agricola")?.notes).toContain("1508–1510");
+    expect(byKey.get("finland:mikael_agricola")?.notes).toContain("1508-1510");
     expect(runtimeIndex).not.toContain("writerBiographyFactReviewBatch27");
     expect(runtimeReviewAggregator).not.toContain(
       "writerBiographyFactReviewBatch27"
@@ -324,7 +324,7 @@ describe("writer biography claim review batch 27", () => {
     expect(markdown).toContain("Без изменений: 5");
     expect(markdown).toContain("Исправлено: 27");
     expect(markdown).toContain("Удержано в карантине: 8");
-    expect(markdown).toContain("overlap с Batch01–26: 0");
+    expect(markdown).toContain("overlap с Batch01-26: 0");
     expect(markdown).toContain("1798-12-31");
     expect(markdown).toContain("1801-08-17");
     expect(markdown).toContain("Q55991620");

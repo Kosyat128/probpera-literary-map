@@ -8,7 +8,7 @@ export const guatemala: Country = {
     {
       id: "miguel_angel_asturias",
       name: "Мигель Анхель Астуриас",
-      years: "1899–1974",
+      years: "1899-1974",
       birthDate: "1899-10-19",
       deathDate: "1974-06-09",
       birthPlace: "Гватемала, Гватемала",
@@ -48,7 +48,7 @@ export const guatemala: Country = {
     {
       id: "augusto_monterroso",
       name: "Аугусто Монтерросо",
-      years: "1921–2003",
+      years: "1921-2003",
       birthDate: "1921-12-21",
       deathDate: "2003-02-07",
       birthPlace: "Тегусигальпа, Гондурас",
@@ -87,7 +87,7 @@ export const guatemala: Country = {
         {
       id: "enrique_gomez_carrillo",
       name: "Энрике Гомес Каррильо",
-      years: "1873–1927",
+      years: "1873-1927",
       birthDate: "1873-02-27",
       deathDate: "1927-11-29",
       birthPlace: "Гватемала, Гватемала",
@@ -97,7 +97,7 @@ export const guatemala: Country = {
         lng: -90.5069
       },
       portrait: "",
-      bio: "Гватемальский писатель, журналист и литературный критик. Один из наиболее известных представителей модернизма в испаноязычной литературе конца XIX — начала XX века. Работал в Европе и сыграл важную роль в распространении новых литературных направлений.",
+      bio: "Гватемальский писатель, журналист и литературный критик. Один из наиболее известных представителей модернизма в испаноязычной литературе конца XIX - начала XX века. Работал в Европе и сыграл важную роль в распространении новых литературных направлений.",
       works: [
         "Парижские впечатления",
         "Япония и её искусство",
@@ -126,7 +126,7 @@ export const guatemala: Country = {
     {
       id: "luis_cardoza_y_aragon",
       name: "Луис Кардоса-и-Арагон",
-      years: "1901–1992",
+      years: "1901-1992",
       birthDate: "1901-06-21",
       deathDate: "1992-09-04",
       birthPlace: "Гватемала, Гватемала",
@@ -164,7 +164,7 @@ export const guatemala: Country = {
         {
       id: "francisco_alejandro_mendez",
       name: "Франциско Алехандро Мендес",
-      years: "1964–",
+      years: "1964-",
       birthDate: "1964-11-27",
       birthPlace: "Гватемала, Гватемала",
       coordinates: {
@@ -199,7 +199,7 @@ export const guatemala: Country = {
     {
       id: "rodrigo_rey_rosa",
       name: "Родриго Рей Роса",
-      years: "1958–",
+      years: "1958-",
       birthDate: "1958-02-04",
       birthPlace: "Гватемала, Гватемала",
       coordinates: {

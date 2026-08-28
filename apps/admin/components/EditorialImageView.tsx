@@ -132,7 +132,7 @@ export default function EditorialImageView({
               onChange={(event) =>
                 updateAttributes({ alt: event.target.value })
               }
-              placeholder="Что изображено — для доступности и поиска"
+              placeholder="Что изображено - для доступности и поиска"
             />
           </label>
           <label>

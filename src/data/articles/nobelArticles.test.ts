@@ -35,7 +35,7 @@ describe("Nobel article links", () => {
     expect(nobelYearArticles.some((entry) => entry.year === 1914)).toBe(false);
   });
 
-  it("connects every laureate represented by the 1901–1923 series", () => {
+  it("connects every laureate represented by the 1901-1923 series", () => {
     const earlyLaureates = countries
       .flatMap((country) => country.writers)
       .filter(

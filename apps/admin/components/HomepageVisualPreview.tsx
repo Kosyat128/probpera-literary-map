@@ -906,7 +906,7 @@ export default function HomepageVisualPreview({
                     <option value="">Без изображения</option>
                     {inlineValue && !media.some((asset) => asset.id === inlineValue) && (
                       <option value={inlineValue}>
-                        Текущее изображение — выберите замену
+                        Текущее изображение - выберите замену
                       </option>
                     )}
                     {media.map((asset) => (
@@ -992,7 +992,7 @@ export default function HomepageVisualPreview({
                   <h3>Оформление всего блока</h3>
                   <p>
                     Настройки изображения применяются к фону блока, а размеры и
-                    интервалы текста — отдельно к заголовку и описанию.
+                    интервалы текста - отдельно к заголовку и описанию.
                   </p>
                   <VisualSettingsControls
                     value={visualSettings}

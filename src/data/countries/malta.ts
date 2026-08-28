@@ -10,7 +10,7 @@ export const malta: Country = {
       id: "anton_manuel_caruana",
       name: "Антон Мануэль Каруана",
       fullName: "Anton Manuel Caruana",
-      years: "1838–1905",
+      years: "1838-1905",
 
       birthDate: "1838",
       deathDate: "1905-03-26",
@@ -57,7 +57,7 @@ export const malta: Country = {
       name: "Мануэль Димех",
       fullName: "Manwel Dimech",
 
-      years: "1860–1921",
+      years: "1860-1921",
 
       birthDate: "1860-12-25",
       deathDate: "1921-04-17",
@@ -105,7 +105,7 @@ export const malta: Country = {
       name: "Дун Карм Псайла",
       fullName: "Dun Karm Psaila",
 
-      years: "1871–1961",
+      years: "1871-1961",
 
       birthDate: "1871-10-18",
       deathDate: "1961-10-13",
@@ -152,7 +152,7 @@ export const malta: Country = {
       name: "Ружар Бриффа",
       fullName: "Ružar Briffa",
 
-      years: "1906–1963",
+      years: "1906-1963",
 
       birthDate: "1906-01-22",
       deathDate: "1963-02-22",
@@ -198,7 +198,7 @@ export const malta: Country = {
       name: "Оливер Фридрих",
       fullName: "Oliver Friggieri",
 
-      years: "1947–2020",
+      years: "1947-2020",
 
       birthDate: "1947-03-27",
       deathDate: "2020-11-21",

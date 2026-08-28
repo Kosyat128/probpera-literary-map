@@ -46,7 +46,7 @@ const seeds = [
   {
     key: "england:virginia_woolf",
     originalSha256: "336f1f9dbd32b09069c80e73bb25ad02cc535120eb6fc5cf9d6eb1e41eab1850",
-    reviewedTextRu: "Вирджиния Вулф (1882–1941) — английская писательница и литературный критик, участница Блумсберийской группы. Среди её романов — «Миссис Дэллоуэй» и «На маяк».",
+    reviewedTextRu: "Вирджиния Вулф (1882-1941) - английская писательница и литературный критик, участница Блумсберийской группы. Среди её романов - «Миссис Дэллоуэй» и «На маяк».",
     evidence: [
       ["Virginia Woolf Society of Great Britain", "https://virginiawoolfsociety.org.uk/resources/virginia-woolf-a-short-biography/", "Профильное общество подтверждает годы жизни, литературную деятельность, связь с Блумсберийской группой и авторство названных романов."],
       ["National Portrait Gallery, London", "https://www.npg.org.uk/collections/search/person/mp04923/virginia-woolf-nee-stephen", "Национальная портретная галерея независимо фиксирует годы жизни Вулф и характеризует её как романиста, эссеиста и критика Блумсберийской группы."],
@@ -57,7 +57,7 @@ const seeds = [
   {
     key: "england:walter_scott",
     originalSha256: "28980ea8a5afce13ea9611afc012b21d0ffce63942ac9ad7446b32fb762e2c39",
-    reviewedTextRu: "Вальтер Скотт (1771–1832) — шотландский поэт, романист и критик. Он написал исторические романы «Уэверли» и «Айвенго».",
+    reviewedTextRu: "Вальтер Скотт (1771-1832) - шотландский поэт, романист и критик. Он написал исторические романы «Уэверли» и «Айвенго».",
     evidence: [
       ["National Library of Scotland", "https://www.nls.uk/collections/stories/literature-and-poetry/sir-walter-scott-and-his-historical-influences/", "Национальная библиотека Шотландии подтверждает литературные роли Скотта и связывает его историческую прозу с «Уэверли» и «Айвенго»."],
       ["National Portrait Gallery, London", "https://www.npg.org.uk/collections/search/person/mp04014/sir-walter-scott-1st-bt", "Национальная портретная галерея независимо подтверждает годы жизни и деятельность шотландского романиста и поэта."],
@@ -68,7 +68,7 @@ const seeds = [
   {
     key: "england:wilkie_collins",
     originalSha256: "45fccbc12b42da40047167bb5958ea81d75762a0bdc4467e54f236505961d68d",
-    reviewedTextRu: "Уилки Коллинз (1824–1889) — английский романист и драматург. Он написал романы «Женщина в белом» и «Лунный камень», построенные вокруг преступлений и тайн.",
+    reviewedTextRu: "Уилки Коллинз (1824-1889) - английский романист и драматург. Он написал романы «Женщина в белом» и «Лунный камень», построенные вокруг преступлений и тайн.",
     evidence: [
       ["National Portrait Gallery, London", "https://www.npg.org.uk/assets/uploads/files/large-print-guide_Room_21.pdf", "Материал национальной галереи подтверждает годы жизни Коллинза, его литературную деятельность и связь с романами «Женщина в белом» и «Лунный камень»."],
       ["Bodleian Libraries, University of Oxford", "https://www.bodleian.ox.ac.uk/sites/default/files/bodreader/documents/media/bodleian-library-publishing-catalogue-spring26.pdf", "Издательский каталог Бодлианской библиотеки независимо атрибутирует Коллинзу оба романа и описывает их сюжеты как тайны и расследования."],
@@ -89,8 +89,8 @@ const seeds = [
   },
   {
     key: "england:william_shakespeare",
-    originalSha256: "14f8e013cc3ae653eabe51cf711fc8ebc13c382bc1d14191fbdb4fe72a3e23dd",
-    reviewedTextRu: "Уильям Шекспир (1564–1616) — английский драматург, поэт и актёр. Он был пайщиком труппы «Слуги лорда-камергера», позднее получившей название «Слуги короля».",
+    originalSha256: "429cbc98608db12be2f300fe90fdb9f20fabead9624ebb980c9757de10d03c3d",
+    reviewedTextRu: "Уильям Шекспир (1564-1616) - английский драматург, поэт и актёр. Он был пайщиком труппы «Слуги лорда-камергера», позднее получившей название «Слуги короля».",
     evidence: [
       ["Shakespeare Birthplace Trust", "https://www.shakespeare.org.uk/explore-shakespeare/shakespedia/william-shakespeare/william-shakespeare-biography/", "Музейно-архивная биография подтверждает годы жизни, профессии Шекспира и его участие в названной театральной труппе."],
       ["Folger Shakespeare Library", "https://www.folger.edu/explore/shakespeares-life/", "Фолджеровская библиотека независимо подтверждает деятельность Шекспира как драматурга, поэта, актёра и пайщика, а также переименование труппы."],
@@ -101,7 +101,7 @@ const seeds = [
   {
     key: "england:william_thackeray",
     originalSha256: "b6ab8541142b3bec2960c5244101908abbc3d585279edd765d4c99c09742c3b3",
-    reviewedTextRu: "Уильям Мейкпис Теккерей (1811–1863) — английский романист и журналист викторианской эпохи. Он написал роман «Ярмарка тщеславия».",
+    reviewedTextRu: "Уильям Мейкпис Теккерей (1811-1863) - английский романист и журналист викторианской эпохи. Он написал роман «Ярмарка тщеславия».",
     evidence: [
       ["National Portrait Gallery, London", "https://www.npg.org.uk/collections/search/person/mp04460/william-makepeace-thackeray", "Национальная портретная галерея подтверждает годы жизни, работу романиста и журналиста и авторство Vanity Fair."],
       ["Poetry Foundation", "https://www.poetryfoundation.org/poets/william-makepeace-thackeray", "Литературная организация независимо подтверждает биографические даты, писательскую деятельность и авторство «Ярмарки тщеславия»."],
@@ -112,9 +112,9 @@ const seeds = [
   {
     key: "equatorial_guinea:maria_nsue_angue",
     originalSha256: "b44307ca8a8e5746baadc8de20c70f34a613b0b0c495a71cea57d1779a2e63bf",
-    reviewedTextRu: "Мария Нсуэ Ангье (1945–2017) — экватогвинейская писательница, автор романа «Экомо», опубликованного в 1985 году. Это первый роман, опубликованный женщиной из Экваториальной Гвинеи.",
+    reviewedTextRu: "Мария Нсуэ Ангье (1945-2017) - экватогвинейская писательница, автор романа «Экомо», опубликованного в 1985 году. Это первый роман, опубликованный женщиной из Экваториальной Гвинеи.",
     evidence: [
-      ["Université d’Angers — EcoLitt", "https://ecolitt.univ-angers.fr/fr/ressources-pour-tous/fiches-de-lecture/maria-nsue-angue-ekomo.html", "Университетская справка подтверждает авторство, дату публикации «Экомо» и его статус первого романа женщины из Экваториальной Гвинеи."],
+      ["Université d’Angers - EcoLitt", "https://ecolitt.univ-angers.fr/fr/ressources-pour-tous/fiches-de-lecture/maria-nsue-angue-ekomo.html", "Университетская справка подтверждает авторство, дату публикации «Экомо» и его статус первого романа женщины из Экваториальной Гвинеи."],
       ["Casa África", "https://www.casafrica.es/es/persona/maria-nsue-angue", "Государственный культурный институт Испании независимо подтверждает биографию Нсуэ Ангье и сведения о романе «Экомо»."],
     ],
     decision: "corrected",
@@ -123,7 +123,7 @@ const seeds = [
   {
     key: "eritrea:alemseged_tesfai",
     originalSha256: "28ba8cc5afb12360af1d379b130052b2dc1165098af768411e3276b7f7b4d822",
-    reviewedTextRu: "Алемсегед Тесфай (род. 1944) — эритрейский драматург и историк. Он написал пьесу «The Other War» и исследование «An African People’s Quest for Freedom and Justice».",
+    reviewedTextRu: "Алемсегед Тесфай (род. 1944) - эритрейский драматург и историк. Он написал пьесу «The Other War» и исследование «An African People’s Quest for Freedom and Justice».",
     evidence: [
       ["Bloomsbury Publishing", "https://www.bloomsbury.com/us/author/alemseged-tesfai/", "Издательский профиль подтверждает рождение в 1944 году, эритрейскую принадлежность, работу драматурга и историка и названные труды."],
       ["C. Hurst & Co. Publishers", "https://www.hurstpublishers.com/wp-content/uploads/2024/03/LBF24-Hurst-catalogue-lo-res-RGB.pdf", "Независимый издательский каталог подтверждает биографический профиль Тесфая и его историческое исследование об Эритрее."],
@@ -167,7 +167,7 @@ const seeds = [
   {
     key: "estonia:arvo_valton",
     originalSha256: "989ff4424903cfaae7ef657657818c3e22f1de544452532802d13208418dfcd8",
-    reviewedTextRu: "Арво Валтон (1935–2024), настоящее имя Арво Валликиви, — эстонский прозаик, поэт, драматург, сценарист и переводчик. С 1968 года он работал профессиональным писателем.",
+    reviewedTextRu: "Арво Валтон (1935-2024), настоящее имя Арво Валликиви, - эстонский прозаик, поэт, драматург, сценарист и переводчик. С 1968 года он работал профессиональным писателем.",
     evidence: [
       ["Estonian Writers’ Online Dictionary, University of Tartu", "https://ewod.ut.ee/et/v/arvo-valton/", "Университетский словарь подтверждает настоящее имя, годы жизни, жанровые роли и начало профессиональной писательской работы в 1968 году."],
       ["Tallinn University", "https://www.tlu.ee/arvo-valton", "Таллиннский университет независимо подтверждает биографические сведения и многожанровую литературную и переводческую деятельность Валтона."],
@@ -178,7 +178,7 @@ const seeds = [
   {
     key: "estonia:betti_alver",
     originalSha256: "75f8eb4f48207c7ce8c9ee088ebf84b06029d360e084edaf54cde2cee1c9425c",
-    reviewedTextRu: "Бетти Алвер (1906–1989) — эстонская поэтесса и прозаик. Она входила в литературную группу «Арбуяд» и опубликовала сборник «Пыль и огонь» в 1936 году.",
+    reviewedTextRu: "Бетти Алвер (1906-1989) - эстонская поэтесса и прозаик. Она входила в литературную группу «Арбуяд» и опубликовала сборник «Пыль и огонь» в 1936 году.",
     evidence: [
       ["Betti Alver Museum", "https://bettimuuseum.ee/betti-alver/", "Музейная биография подтверждает годы жизни, жанровую деятельность, связь с «Арбуяд» и публикацию сборника «Пыль и огонь»."],
       ["Estonian Literary Museum", "https://www.kirmus.ee/et/sundmuste-kalender/betti-alver-bibliograafia-1927-2022-raamatuesitlus", "Литературный музей независимо подтверждает поэтическое и прозаическое наследие Алвер и библиографические данные её публикаций."],
@@ -189,7 +189,7 @@ const seeds = [
   {
     key: "estonia:friedrich_robert_faehlmann",
     originalSha256: "fd2cfbcf0ecb0427ff4e15042353b733fd7c260dc39347e0c3cc45bdcb722b8e",
-    reviewedTextRu: "Фридрих Роберт Фельман (1798–1850) — эстонский врач, писатель, исследователь языка и фольклора. Он участвовал в основании Учёного эстонского общества и возглавлял его в 1843–1850 годах.",
+    reviewedTextRu: "Фридрих Роберт Фельман (1798-1850) - эстонский врач, писатель, исследователь языка и фольклора. Он участвовал в основании Учёного эстонского общества и возглавлял его в 1843-1850 годах.",
     evidence: [
       ["Estonian Writers’ Online Dictionary, University of Tartu", "https://ewod.ut.ee/f/faehlmann/", "Университетский словарь подтверждает профессии Фельмана, его исследования языка и фольклора и работу в Учёном эстонском обществе."],
       ["Estonian Literary Museum", "https://galerii.kirmus.ee/biblioserver/isik/index.php?id=407", "Литературный музей независимо фиксирует биографические даты и роль Фельмана в основании и руководстве обществом."],
@@ -244,20 +244,20 @@ const seeds = [
   {
     key: "ethiopia:bealu_girma",
     originalSha256: "3703b11af4fdb7f1b5a101bff997e3a0ccb91d913c2e0ace8baa050c6b5236fe",
-    reviewedTextRu: "Беалу Гирма — эфиопский журналист и писатель. Он написал роман «Оромай», впервые опубликованный на амхарском языке в 1983 году.",
+    reviewedTextRu: "Беалу Гирма - эфиопский журналист и писатель. Он написал роман «Оромай», впервые опубликованный на амхарском языке в 1983 году.",
     evidence: [
       ["Soho Press", "https://sohopress.com/authors/baalu-girma/", "Издательский профиль подтверждает работу Гирмы журналистом и романистом, авторство «Оромая» и первое амхарское издание 1983 года."],
       ["Hachette UK", "https://www.hachette.co.uk/contributor/baalu-girma/", "Независимый издатель подтверждает эфиопское происхождение, журналистскую деятельность и авторство романа Oromay."],
     ],
     decision: "corrected",
-    notes: "Оценочное слово «знаменитого» удалено, добавлена проверяемая дата первой публикации. Date recommendation: издательские биографии указывают рождение в 1939 году, а карточка — 1937; рекомендована отдельная правка на 1939 после общей date-очереди. Shared country files не изменялись.",
+    notes: "Оценочное слово «знаменитого» удалено, добавлена проверяемая дата первой публикации. Date recommendation: издательские биографии указывают рождение в 1939 году, а карточка - 1937; рекомендована отдельная правка на 1939 после общей date-очереди. Shared country files не изменялись.",
   },
   {
     key: "ethiopia:daniachew_worku",
     originalSha256: "deb2d26ac59946d291593826dbd5ec44a626708868ff2dd8f0dbb69af9e0e630",
-    reviewedTextRu: "Даниячев Ворку — эфиопский писатель, создававший романы и пьесы на амхарском и английском языках. Среди его произведений — роман «The Thirteenth Sun».",
+    reviewedTextRu: "Даниячев Ворку - эфиопский писатель, создававший романы и пьесы на амхарском и английском языках. Среди его произведений - роман «The Thirteenth Sun».",
     evidence: [
-      ["University of Iowa — International Writing Program", "https://iwp.uiowa.edu/writers/1967/daniachew-worku", "Университетский архив подтверждает эфиопскую принадлежность Ворку, его романы и пьесы и участие в программе 1967 года."],
+      ["University of Iowa - International Writing Program", "https://iwp.uiowa.edu/writers/1967/daniachew-worku", "Университетский архив подтверждает эфиопскую принадлежность Ворку, его романы и пьесы и участие в программе 1967 года."],
       ["Addis Ababa University", "https://etd.aau.edu.et/items/9d709493-23dd-4e99-8224-787f47c2cd97", "Университетское исследование независимо рассматривает романы и пьесы Ворку, включая The Thirteenth Sun, на амхарском и английском языках."],
     ],
     decision: "corrected",
@@ -277,7 +277,7 @@ const seeds = [
   {
     key: "ethiopia:kebede_michael",
     originalSha256: "342440e48511673af92d67e7dbdfb76631f867a7dc41a6555c7705dba09fa4f8",
-    reviewedTextRu: "Кебеде Микаэль — эфиопский поэт и драматург, писавший на амхарском языке. Его творчество включает стихи, пьесы и учебные материалы.",
+    reviewedTextRu: "Кебеде Микаэль - эфиопский поэт и драматург, писавший на амхарском языке. Его творчество включает стихи, пьесы и учебные материалы.",
     evidence: [
       ["Addis Ababa University", "https://etd.aau.edu.et/items/37232115-78bb-4f31-bb15-1aaecd5aaeef", "Университетское исследование называет Кебеде Микаэля амхарским поэтом и драматургом и рассматривает его стихи, пьесы и учебные материалы."],
       ["WorldCat", "https://search.worldcat.org/search?q=%22Kebede%20Mikael%22", "Сводный библиотечный каталог независимо фиксирует произведения Кебеде Микаэля и их амхарскую языковую принадлежность."],
@@ -288,7 +288,7 @@ const seeds = [
   {
     key: "ethiopia:maaza_mengiste",
     originalSha256: "cae08a3f8550afb58d35558f3db3b718a93dad0da55d8e89a7eef7753e8c15c6",
-    reviewedTextRu: "Мааза Менгисте — родившаяся в Аддис-Абебе эфиопско-американская писательница. Она написала романы «Beneath the Lion’s Gaze» и «The Shadow King»; второй вошёл в шорт-лист Букеровской премии 2020 года.",
+    reviewedTextRu: "Мааза Менгисте - родившаяся в Аддис-Абебе эфиопско-американская писательница. Она написала романы «Beneath the Lion’s Gaze» и «The Shadow King»; второй вошёл в шорт-лист Букеровской премии 2020 года.",
     evidence: [
       ["Penguin Random House", "https://www.penguinrandomhouse.com/authors/2050634/maaza-mengiste/", "Издательский профиль подтверждает происхождение Менгисте и авторство обоих романов."],
       ["The Booker Prizes", "https://thebookerprizes.com/sites/default/files/2021-09/200915%20The%202020%20Booker%20Prize%20shortlist%20press%20release%20-%20FOR%20IMMEDIATE%20RELEASE.pdf", "Официальный пресс-релиз Букеровской премии подтверждает включение The Shadow King в шорт-лист 2020 года и биографический профиль автора."],
@@ -299,9 +299,9 @@ const seeds = [
   {
     key: "ethiopia:solomon_deressa",
     originalSha256: "7a7c5d5bbe459c6be4d1761a58c0b009bd35e1bae492f1824c551bc016ea8b49",
-    reviewedTextRu: "Соломон Дересса — эфиопский автор, участвовавший в Международной писательской программе Университета Айовы в 1972 году. Его текст «Letter from Addis Ababa» опубликован на английском языке в 1969 году.",
+    reviewedTextRu: "Соломон Дересса - эфиопский автор, участвовавший в Международной писательской программе Университета Айовы в 1972 году. Его текст «Letter from Addis Ababa» опубликован на английском языке в 1969 году.",
     evidence: [
-      ["University of Iowa — International Writing Program", "https://iwp.uiowa.edu/writers/1972/solomon-deressa", "Архив программы подтверждает личность, эфиопскую принадлежность и участие Дерессы в 1972 году."],
+      ["University of Iowa - International Writing Program", "https://iwp.uiowa.edu/writers/1972/solomon-deressa", "Архив программы подтверждает личность, эфиопскую принадлежность и участие Дерессы в 1972 году."],
       ["WorldCat", "https://search.worldcat.org/title/Letter-from-Addis-Ababa/oclc/40983767", "Библиотечная запись независимо атрибутирует Дерессе англоязычный текст Letter from Addis Ababa и фиксирует публикацию 1969 года."],
     ],
     decision: "corrected",
@@ -310,7 +310,7 @@ const seeds = [
   {
     key: "ethiopia:tsegaye_gebre_medhin",
     originalSha256: "3db8f44e15cfc8a36cedf1e8f2bfd1fb9fc21ec7d13556611ada7bc265d04cfd",
-    reviewedTextRu: "Цегайе Гебре-Медхин (1936–2006) — эфиопский поэт и драматург. Его литературная и театральная деятельность связана с амхарской поэзией и эфиопской сценой.",
+    reviewedTextRu: "Цегайе Гебре-Медхин (1936-2006) - эфиопский поэт и драматург. Его литературная и театральная деятельность связана с амхарской поэзией и эфиопской сценой.",
     evidence: [
       ["Aethiopica, Hamburg University Press", "https://journals.sub.uni-hamburg.de/aethiopica/article/view/767", "Академическая публикация подтверждает годы жизни, поэтическую и драматургическую работу Гебре-Медхина и амхарский контекст."],
       ["Fulbright Scholar Program", "https://fulbrightscholars.org/grantee/gebre-medhin-tsegaye", "Официальный профиль программы независимо подтверждает эфиопскую театральную и литературную деятельность автора."],
@@ -332,7 +332,7 @@ const seeds = [
   {
     key: "fiji:teresia_teaiwa",
     originalSha256: "808cb2d762da7ca0ff4439dad96c5eaf87686b067fa7b449a20944e47478280c",
-    reviewedTextRu: "Терезия Теайва (1968–2017) — поэтесса и исследовательница тихоокеанских культур, выросшая на Фиджи. Она преподавала в Университете Южного Тихого океана и Университете Виктории в Веллингтоне.",
+    reviewedTextRu: "Терезия Теайва (1968-2017) - поэтесса и исследовательница тихоокеанских культур, выросшая на Фиджи. Она преподавала в Университете Южного Тихого океана и Университете Виктории в Веллингтоне.",
     evidence: [
       ["Victoria University of Wellington", "https://tapuaka.wgtn.ac.nz/nodes/view/5359", "Университетский архив подтверждает годы жизни, поэзию, исследования Тихого океана, детство на Фиджи и преподавание в двух университетах."],
       ["UBC Press", "https://www.ubcpress.ca/teresia-kieuea-teaiwa", "Независимый университетский издатель подтверждает поэтическую и академическую деятельность Теайвы и её связи с Фиджи и Веллингтоном."],
@@ -343,7 +343,7 @@ const seeds = [
   {
     key: "fiji:vijay_mishra",
     originalSha256: "128c9ea090ee91d6b6ab2e2adf026c9b68b42a1c8715bd22cb06c4ac53766f60",
-    reviewedTextRu: "Виджай Мишра — родившийся на Фиджи литературовед и исследователь культуры. Его книги посвящены постколониальной литературе, индийской диаспоре, кино и литературной теории.",
+    reviewedTextRu: "Виджай Мишра - родившийся на Фиджи литературовед и исследователь культуры. Его книги посвящены постколониальной литературе, индийской диаспоре, кино и литературной теории.",
     evidence: [
       ["Bloomsbury Publishing", "https://www.bloomsbury.com/au/author/vijay-mishra/", "Издательский профиль подтверждает место рождения, литературоведческую работу и темы книг Мишры."],
       ["Murdoch University", "https://researchportal.murdoch.edu.au/esploro/profile/vijay_mishra/output/all?institution=61MUN_INST", "Университетский исследовательский портал независимо фиксирует публикации о постколониальной литературе, диаспоре, кино и теории."],
@@ -354,7 +354,7 @@ const seeds = [
   {
     key: "finland:frans_sillanpaa",
     originalSha256: "5f9d10102cb78a53faf200d899484296a6b00c9a38d7c4feacdd0f014c090fcc",
-    reviewedTextRu: "Франс Эмиль Силланпяя (1888–1964) — финский писатель, получивший Нобелевскую премию по литературе в 1939 году. Среди его романов — «Nuorena nukkunut».",
+    reviewedTextRu: "Франс Эмиль Силланпяя (1888-1964) - финский писатель, получивший Нобелевскую премию по литературе в 1939 году. Среди его романов - «Nuorena nukkunut».",
     evidence: [
       ["Nobel Prize", "https://www.nobelprize.org/prizes/literature/1939/sillanpaa/facts/", "Официальная страница премии подтверждает полное имя, годы жизни, финское происхождение и награду 1939 года."],
       ["National Biography of Finland", "https://kansallisbiografia.fi/english/person/700", "Национальный биографический справочник независимо подтверждает биографию Силланпяя и авторство романа Nuorena nukkunut."],
@@ -365,7 +365,7 @@ const seeds = [
   {
     key: "finland:fredrika_bremer",
     originalSha256: "ae3751ae456a5ef904588a3763c2d8f3b3fdf26105caac2a7487f6104acc1086",
-    reviewedTextRu: "Фредрика Бремер (1801–1865) — шведская писательница и общественная деятельница, родившаяся в Финляндии. Она написала романы «Соседи» и «Херта».",
+    reviewedTextRu: "Фредрика Бремер (1801-1865) - шведская писательница и общественная деятельница, родившаяся в Финляндии. Она написала романы «Соседи» и «Херта».",
     evidence: [
       ["Nationalmuseum Sweden", "https://collection.nationalmuseum.se/sv/artists/artist/8980/", "Национальный музей подтверждает годы жизни, рождение Бремер в Финляндии и её шведскую писательскую деятельность."],
       ["Svenskt kvinnobiografiskt lexikon, University of Gothenburg", "https://skbl.se/en/article/FredrikaBremer", "Университетский биографический словарь независимо подтверждает даты, национальную принадлежность, общественную деятельность и романы «Соседи» и «Херта»."],
@@ -376,7 +376,7 @@ const seeds = [
   {
     key: "finland:johan_ludvig_runeberg",
     originalSha256: "dd195aa1edc86cf793687da4f6c76cabd5d78f51425536cde5c18c774174f871",
-    reviewedTextRu: "Юхан Людвиг Рунеберг (1804–1877) — финляндский поэт, писавший по-шведски. Его стихотворение «Наш край» стало текстовой основой национального гимна Финляндии.",
+    reviewedTextRu: "Юхан Людвиг Рунеберг (1804-1877) - финляндский поэт, писавший по-шведски. Его стихотворение «Наш край» стало текстовой основой национального гимна Финляндии.",
     evidence: [
       ["Finland.fi, Ministry for Foreign Affairs of Finland", "https://finland.fi/facts-stats-and-info/the-finnish-national-anthem/", "Официальный государственный портал подтверждает авторство Рунебергом стихотворения Vårt land и его использование как текста национального гимна."],
       ["Porvoo Museum", "https://www.porvoonmuseo.fi/en/nayttely/the-nations-runeberg/", "Музейная биография независимо подтверждает годы жизни, шведский язык поэзии и связь «Нашего края» с гимном Финляндии."],
@@ -387,18 +387,18 @@ const seeds = [
   {
     key: "finland:mikael_agricola",
     originalSha256: "38a602ac06aff10d87d0b91f667f931292f8c0e2ad10e66e1eb0a9df940fbec1",
-    reviewedTextRu: "Микаэль Агрикола (ок. 1510–1557) — финский реформатор, переводчик и создатель ранних печатных книг на финском языке. Его труды заложили основу финского литературного языка.",
+    reviewedTextRu: "Микаэль Агрикола (ок. 1510-1557) - финский реформатор, переводчик и создатель ранних печатных книг на финском языке. Его труды заложили основу финского литературного языка.",
     evidence: [
       ["National Library of Finland", "https://kansalliskirjasto.finna.fi/Record/doria.10024_130474", "Национальная библиотека подтверждает ранние финские печатные труды Агриколы, включая букварь и переводческие издания."],
       ["Finnish Literature Society", "https://www.finna.fi/Record/sks_doabooks.19784", "Национальное научное общество независимо подтверждает роль Агриколы в Реформации и формировании финского литературного языка."],
     ],
     decision: "corrected",
-    notes: "Категоричное «создатель письменности» заменено точным описанием печатных книг и литературного языка. Identity recommendation: Q215346 подтверждает нужную личность. Date recommendation: год рождения в источниках приблизителен и варьирует около 1508–1510; сохранять «ок. 1510», не выдавая точный день. Shared country files не изменялись.",
+    notes: "Категоричное «создатель письменности» заменено точным описанием печатных книг и литературного языка. Identity recommendation: Q215346 подтверждает нужную личность. Date recommendation: год рождения в источниках приблизителен и варьирует около 1508-1510; сохранять «ок. 1510», не выдавая точный день. Shared country files не изменялись.",
   },
   {
     key: "finland:minna_canth",
     originalSha256: "733d94ba5c9a682ec872b4442d4591b0229c448f36ac6f589dbea223e6267212",
-    reviewedTextRu: "Минна Кант (1844–1897) — финская писательница, драматург и переводчица, связанная с развитием финского реализма. Она также работала журналисткой и участвовала в общественной дискуссии.",
+    reviewedTextRu: "Минна Кант (1844-1897) - финская писательница, драматург и переводчица, связанная с развитием финского реализма. Она также работала журналисткой и участвовала в общественной дискуссии.",
     evidence: [
       ["Kanttila cultural heritage site", "https://kanttila.fi/en/history/minna-canth/", "Музейно-культурная биография подтверждает даты, литературные роли, журналистику, общественную деятельность и вклад Кант в финский реализм."],
       ["National Library of Finland", "https://kansalliskirjasto.finna.fi/AuthorityRecord/melinda.%28FI-ASTERI-N%29000149842/AuthorityRecordsAuthor?lng=en-gb", "Национальная библиотека независимо подтверждает годы жизни и профессии писательницы, драматурга и переводчицы и связывает её с финской литературой."],
@@ -409,7 +409,7 @@ const seeds = [
   {
     key: "finland:tove_jansson",
     originalSha256: "411a7181ef5fae636b7ca9fd250abffbc54fd739d889227171a6cfd1ad14f85c",
-    reviewedTextRu: "Туве Янссон (1914–2001) — финская писательница и художница, писавшая по-шведски. Она создала книги и комиксы о муми-троллях и также публиковала прозу для взрослых.",
+    reviewedTextRu: "Туве Янссон (1914-2001) - финская писательница и художница, писавшая по-шведски. Она создала книги и комиксы о муми-троллях и также публиковала прозу для взрослых.",
     evidence: [
       ["Tove Jansson estate", "https://tovejansson.com/biography/", "Официальная биография наследия подтверждает годы жизни, шведский язык, работу писательницы и художницы, книги и комиксы о муми-троллях и взрослую прозу."],
       ["National Library of Finland", "https://kansalliskirjasto.finna.fi/AuthorityRecord/melinda.%28FI-ASTERI-N%29000045590", "Национальная библиотека независимо фиксирует биографические даты, профессии и шведоязычные произведения Янссон."],
@@ -420,7 +420,7 @@ const seeds = [
   {
     key: "finland:vaino_linna",
     originalSha256: "46b32a9fcb2fc83e5a9c610dad3cf74dd0c881dcb9dfbed3677c2ef48e5258ca",
-    reviewedTextRu: "Вяйнё Линна (1920–1992) — финский писатель. Он написал романы «Неизвестный солдат» и трилогию «Здесь, под Полярной звездой».",
+    reviewedTextRu: "Вяйнё Линна (1920-1992) - финский писатель. Он написал романы «Неизвестный солдат» и трилогию «Здесь, под Полярной звездой».",
     evidence: [
       ["Bonnier Rights Finland", "https://www.bonnierrights.fi/authors/vaino-linna/", "Правообладатель подтверждает годы жизни, финскую писательскую деятельность и авторство двух названных произведений."],
       ["National Library of Finland", "https://kansalliskirjasto.finna.fi/kansalliskirjastofikka/AuthorityRecord/melinda.%28FI-ASTERI-N%29000067929", "Национальная библиотека независимо подтверждает биографические данные Линны и атрибуцию его произведений."],
@@ -431,7 +431,7 @@ const seeds = [
   {
     key: "france:albert_camus",
     originalSha256: "3365feb91bcad0b0276fe9e3000dcf8e2c8b600cbfb3cdba150a7c822c423ccf",
-    reviewedTextRu: "Альбер Камю (1913–1960) — французский писатель, драматург, эссеист и журналист, родившийся в Алжире. В 1957 году он получил Нобелевскую премию по литературе.",
+    reviewedTextRu: "Альбер Камю (1913-1960) - французский писатель, драматург, эссеист и журналист, родившийся в Алжире. В 1957 году он получил Нобелевскую премию по литературе.",
     evidence: [
       ["Nobel Prize", "https://www.nobelprize.org/prizes/literature/1957/camus/facts/", "Официальная страница премии подтверждает годы жизни, место рождения, литературные роли и Нобелевскую премию 1957 года."],
       ["Bibliothèque nationale de France", "https://www.bnf.fr/fr/albert-camus-1913-1960-bibliographie", "Национальная библиотека Франции независимо подтверждает биографию Камю и его деятельность писателя, драматурга, эссеиста и журналиста."],
@@ -442,7 +442,7 @@ const seeds = [
   {
     key: "france:alexandre_dumas",
     originalSha256: "cc3a27b1aeabcd83116122d7749d560aa8255915f497669f53415cbee93e07c2",
-    reviewedTextRu: "Александр Дюма (1802–1870) — французский писатель и драматург. Он написал приключенческие романы «Три мушкетёра» и «Граф Монте-Кристо».",
+    reviewedTextRu: "Александр Дюма (1802-1870) - французский писатель и драматург. Он написал приключенческие романы «Три мушкетёра» и «Граф Монте-Кристо».",
     evidence: [
       ["Hachette BnF", "https://www.hachettebnf.fr/auteur/alexandre-dumas/", "Издательский профиль подтверждает годы жизни, французскую литературную и драматургическую деятельность и авторство названных романов."],
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/rechercher.do?critereRecherche=0&depart=0&motRecherche=Alexandre+Dumas+%281802-1870%29", "Каталог национальной библиотеки независимо фиксирует годы жизни Дюма и записи «Трёх мушкетёров» и «Графа Монте-Кристо» под его авторством."],

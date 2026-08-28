@@ -3,6 +3,7 @@ import {
   Suspense,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -22,6 +23,7 @@ import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
 import BrandSearchIcon from "./components/BrandSearchIcon";
 import AtlasSearchCombobox from "./components/AtlasSearchCombobox";
 import AtlasExperienceChrome from "./components/AtlasExperienceChrome";
+import LiteraryWorldMap from "./components/LiteraryWorldMap";
 import type { GlobeViewSample } from "./components/GlobeViewObserver";
 import type {
   GlobeCountrySelectionFocusKind,
@@ -45,15 +47,7 @@ import {
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
-import {
-  buildBookArchive,
-  coverArtworkSrcSet,
-  isEditorialCover,
-  isCoverArtworkDisplayAllowed,
-  resolveBookArchivePublicTarget,
-  type BookArchiveEntry,
-} from "./data/bookArchive";
-import { presentBookArchiveEntry } from "./data/bookArchiveQueue";
+import type { BookArchiveEntry } from "./data/bookArchive";
 import { isPublicBook } from "./data/bookQuality";
 import {
   selectBookMetadataLabels,
@@ -61,8 +55,6 @@ import {
   selectBookWriterName,
   selectWriterDisplayName,
 } from "./data/bookLocalization";
-import { calculateArchiveStatistics } from "./data/archiveStatistics";
-import { articleCatalogEntryForLanguage } from "./data/articles/localization";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import {
   coreHomepageSectionClass,
@@ -102,16 +94,28 @@ import {
 import { writerSearchLabel } from "./utils/writerSearchLabel";
 import ActionLink from "./ui/ActionLink";
 import Button from "./ui/Button";
+import { calculateLightweightArchiveOverview } from "./loading/archiveOverview";
+import {
+  loadBookArchiveRuntime,
+  type BookArchiveRuntime,
+} from "./loading/bookArchiveRuntime";
+import {
+  DeferredArticleLibrary,
+  DeferredBookArchive,
+  GlobalSearchLoadingDialog,
+} from "./loading/DeferredHomepageArchives";
+import {
+  hashTargetsSection,
+  useNearViewportActivation,
+  type DeferredLoadStatus,
+} from "./loading/nearViewportActivation";
+import "./styles/stage5-loading-shells.css";
 
 const GlobalSearch = lazy(() => import("./components/GlobalSearch"));
-const LiteraryWorldMap = lazy(() => import("./components/LiteraryWorldMap"));
 const CommunityHub = lazy(() => import("./community/CommunityHub"));
 const NobelArchiveStrip = lazy(() => import("./components/NobelArchiveStrip"));
 const WriterPanel = lazy(() => import("./components/WriterPanel"));
 const LiteraryCalendar = lazy(() => import("./components/LiteraryCalendar"));
-const BookArchiveSection = lazy(
-  () => import("./components/BookArchiveSection")
-);
 const ArticleLibrarySection = lazy(
   () => import("./components/ArticleLibrarySection")
 );
@@ -139,6 +143,38 @@ type WriterFocusRequest = {
   writerId: string;
   token: number;
 };
+
+type PendingWriterWork = {
+  countryId: string;
+  writerId: string;
+  workId: string;
+  returnFocus: HTMLElement;
+};
+
+const ARCHIVE_DATA_HASH_TARGETS = [
+  "atlas",
+  "books",
+  "book-day",
+  "authors",
+  "calendar",
+  "sections",
+] as const;
+
+const BOOK_DATA_HASH_TARGETS = ["books", "book-day"] as const;
+const BOOK_SHELF_HASH_TARGETS = ["books"] as const;
+const BOOK_DAY_HASH_TARGETS = ["book-day"] as const;
+
+function initialHashIntent(targets: readonly string[]) {
+  return (
+    typeof window !== "undefined" &&
+    hashTargetsSection(window.location.hash, targets)
+  );
+}
+
+function addressRequestsBook() {
+  if (typeof window === "undefined") return false;
+  return new URLSearchParams(window.location.search).has("book");
+}
 
 type AtlasSearchResult =
   | { type: "country"; key: string; country: Country; label: string; searchText: string }
@@ -498,6 +534,27 @@ export default function App() {
   const [bookArchiveCountries, setBookArchiveCountries] = useState<Country[]>(
     []
   );
+  const [archiveDataRequested, setArchiveDataRequested] = useState(() =>
+    initialHashIntent(ARCHIVE_DATA_HASH_TARGETS) || addressRequestsBook()
+  );
+  const [archiveDataAttempt, setArchiveDataAttempt] = useState(0);
+  const [archiveDataStatus, setArchiveDataStatus] =
+    useState<DeferredLoadStatus>("idle");
+  const [bookArchive, setBookArchive] = useState<BookArchiveEntry[]>([]);
+  const [bookArchiveRuntime, setBookArchiveRuntime] =
+    useState<BookArchiveRuntime | null>(null);
+  const [bookRuntimeRequested, setBookRuntimeRequested] = useState(() =>
+    initialHashIntent(BOOK_DATA_HASH_TARGETS) || addressRequestsBook()
+  );
+  const [bookRuntimeAttempt, setBookRuntimeAttempt] = useState(0);
+  const [bookRuntimeStatus, setBookRuntimeStatus] =
+    useState<DeferredLoadStatus>("idle");
+  const [bookLoadRequested, setBookLoadRequested] = useState(() =>
+    initialHashIntent(BOOK_SHELF_HASH_TARGETS) || addressRequestsBook()
+  );
+  const [bookArchiveRetryToken, setBookArchiveRetryToken] = useState(0);
+  const [pendingWriterWork, setPendingWriterWork] =
+    useState<PendingWriterWork | null>(null);
   const [articleCount, setArticleCount] = useState(0);
   const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);
   const [search, setSearch] = useState("");
@@ -510,9 +567,13 @@ export default function App() {
   const [nobelSpotlightCountryId, setNobelSpotlightCountryId] = useState<string | null>(null);
   const [communityOpen, setCommunityOpen] = useState(false);
   const [globalSearchOpen, setGlobalSearchOpen] = useState(false);
+  const globalSearchReturnFocusRef = useRef<HTMLElement | null>(null);
+  const globalSearchWasOpenRef = useRef(false);
   const [requestedBook, setRequestedBook] =
     useState<BookArchiveEntry | null>(null);
+  const requestedBookReturnFocusRef = useRef<HTMLElement | null>(null);
   const pendingImmersiveBookRef = useRef<BookArchiveEntry | null>(null);
+  const pendingImmersiveBookFocusRef = useRef<HTMLElement | null>(null);
   const [communityView, setCommunityView] =
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
@@ -637,23 +698,147 @@ export default function App() {
     return () => document.removeEventListener("pointerdown", closeFromOutside, true);
   }, []);
 
+  const requestArchiveData = useCallback(() => {
+    setArchiveDataRequested(true);
+  }, []);
+
+  const requestBookRuntime = useCallback(() => {
+    requestArchiveData();
+    setBookRuntimeRequested(true);
+  }, [requestArchiveData]);
+
+  const updateAtlasSearch = useCallback(
+    (value: string) => {
+      setSearch(value);
+      if (value.trim()) requestBookRuntime();
+    },
+    [requestBookRuntime]
+  );
+
+  const openGlobalSearch = useCallback(() => {
+    setGlobalSearchOpen(true);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (globalSearchOpen && !globalSearchWasOpenRef.current) {
+      globalSearchReturnFocusRef.current =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
+    }
+    globalSearchWasOpenRef.current = globalSearchOpen;
+  }, [globalSearchOpen]);
+
+  const closeGlobalSearch = useCallback(() => {
+    const returnFocus = globalSearchReturnFocusRef.current;
+    globalSearchReturnFocusRef.current = null;
+    setGlobalSearchOpen(false);
+    window.requestAnimationFrame(() => {
+      if (returnFocus?.isConnected) {
+        returnFocus.focus({ preventScroll: true });
+      }
+    });
+  }, []);
+
+  const { setActivationNode: setBookDayActivationNode } =
+    useNearViewportActivation({
+      hashTargets: BOOK_DAY_HASH_TARGETS,
+      rootMargin: "420px 0px",
+      onActivate: requestBookRuntime,
+    });
+
+  const retryArchiveData = useCallback(() => {
+    setArchiveDataRequested(true);
+    setArchiveDataStatus("idle");
+    setArchiveDataAttempt((value) => value + 1);
+  }, []);
+
   useEffect(() => {
-    if (directArticleRoute) return undefined;
+    const requestBookFromAddress = () => {
+      if (!addressRequestsBook()) return;
+      requestBookRuntime();
+      setBookLoadRequested(true);
+      window.requestAnimationFrame(() =>
+        document.getElementById("books")?.scrollIntoView({
+          behavior: "auto",
+          block: "start",
+        })
+      );
+    };
+    requestBookFromAddress();
+    window.addEventListener("popstate", requestBookFromAddress);
+    window.addEventListener("probpera:navigation", requestBookFromAddress);
+    return () => {
+      window.removeEventListener("popstate", requestBookFromAddress);
+      window.removeEventListener("probpera:navigation", requestBookFromAddress);
+    };
+  }, [requestBookRuntime]);
+
+  useEffect(() => {
+    if (directArticleRoute || !archiveDataRequested) return undefined;
     let active = true;
-    const timer = window.setTimeout(() => {
-      import("./data/countries").then((module) => {
-        if (active) {
-          setCountryArchive(module.countries);
-          setBookArchiveCountries(module.bookArchiveCountries);
-          setGeneratedEditorialQueue(module.generatedWriterDraftCount);
-        }
-      });
-    }, 240);
+    setArchiveDataStatus("loading");
+    import("./data/countries").then(
+      (module) => {
+        if (!active) return;
+        setCountryArchive(module.countries);
+        setBookArchiveCountries(module.bookArchiveCountries);
+        setGeneratedEditorialQueue(module.generatedWriterDraftCount);
+        setArchiveDataStatus("ready");
+      },
+      () => {
+        if (active) setArchiveDataStatus("error");
+      }
+    );
     return () => {
       active = false;
-      window.clearTimeout(timer);
     };
-  }, [directArticleRoute]);
+  }, [archiveDataAttempt, archiveDataRequested, directArticleRoute]);
+
+  useEffect(() => {
+    if (!bookRuntimeRequested || directArticleRoute) return undefined;
+    if (archiveDataStatus === "error") {
+      setBookRuntimeStatus("error");
+      return undefined;
+    }
+    if (archiveDataStatus !== "ready") {
+      setBookRuntimeStatus("loading");
+      return undefined;
+    }
+
+    let active = true;
+    setBookRuntimeStatus("loading");
+    loadBookArchiveRuntime()
+      .then((runtime) => ({
+        runtime,
+        books: runtime.buildBookArchive(bookArchiveCountries),
+      }))
+      .then(
+        ({ runtime, books }) => {
+          if (!active) return;
+          setBookArchiveRuntime(runtime);
+          setBookArchive(books);
+          setBookRuntimeStatus("ready");
+        },
+        () => {
+          if (active) setBookRuntimeStatus("error");
+        }
+      );
+    return () => {
+      active = false;
+    };
+  }, [
+    archiveDataStatus,
+    bookArchiveCountries,
+    bookRuntimeAttempt,
+    bookRuntimeRequested,
+    directArticleRoute,
+  ]);
+
+  useEffect(() => {
+    if (!globalSearchOpen) return;
+    requestBookRuntime();
+  }, [globalSearchOpen, requestBookRuntime]);
 
   useEffect(() => {
     const openSearch = (event: KeyboardEvent) => {
@@ -671,22 +856,18 @@ export default function App() {
           atlasSearchInputRef.current?.focus({ preventScroll: true })
         );
       } else {
-        setGlobalSearchOpen(true);
+        openGlobalSearch();
       }
     };
     window.addEventListener("keydown", openSearch);
     return () => window.removeEventListener("keydown", openSearch);
-  }, [atlasExperienceDispatch, atlasImmersive]);
+  }, [atlasExperienceDispatch, atlasImmersive, openGlobalSearch]);
 
   const archiveStatistics = useMemo(
-    () => calculateArchiveStatistics(countryArchive),
+    () => calculateLightweightArchiveOverview(countryArchive),
     [countryArchive]
   );
   const totalWriters = archiveStatistics.uniqueWriters;
-  const bookArchive = useMemo(
-    () => buildBookArchive(bookArchiveCountries),
-    [bookArchiveCountries]
-  );
   const verifiedBookArchive = useMemo(
     () => bookArchive.filter(isPublicBook),
     [bookArchive]
@@ -918,38 +1099,41 @@ export default function App() {
       }
     }
 
-    for (const book of bookArchive) {
-      const displayedBook = presentBookArchiveEntry(book, language);
-      const verified = isPublicBook(book);
-      results.push({
-        type: "book",
-        key: `book:${book.countryId}:${book.writerId}:${book.id}`,
-        country: book.country,
-        writer: book.writer,
-        book,
-        label: displayedBook.title,
-        searchText: normalizeLiterarySearch(
-          [
-            displayedBook.title,
-            book.originalTitle,
-            ...(book.alternateTitles || []),
-            selectBookWriterName(book, language, t("Автор")),
-            countryName(book.country.code, book.countryName),
-            ...(verified
-              ? [
-                  displayedBook.description,
-                  ...selectBookMetadataLabels(book, language, t),
-                ]
-              : []),
-          ]
-            .filter(Boolean)
-            .join(" ")
-        ),
-      });
+    if (bookArchiveRuntime) {
+      for (const book of bookArchive) {
+        const displayedBook =
+          bookArchiveRuntime.presentBookArchiveEntry(book, language);
+        const verified = isPublicBook(book);
+        results.push({
+          type: "book",
+          key: `book:${book.countryId}:${book.writerId}:${book.id}`,
+          country: book.country,
+          writer: book.writer,
+          book,
+          label: displayedBook.title,
+          searchText: normalizeLiterarySearch(
+            [
+              displayedBook.title,
+              book.originalTitle,
+              ...(book.alternateTitles || []),
+              selectBookWriterName(book, language, t("Автор")),
+              countryName(book.country.code, book.countryName),
+              ...(verified
+                ? [
+                    displayedBook.description,
+                    ...selectBookMetadataLabels(book, language, t),
+                  ]
+                : []),
+            ]
+              .filter(Boolean)
+              .join(" ")
+          ),
+        });
+      }
     }
 
     return results;
-  }, [bookArchive, countryArchive, countryName, language, t]);
+  }, [bookArchive, bookArchiveRuntime, countryArchive, countryName, language, t]);
 
   useEffect(() => {
     if (
@@ -1034,27 +1218,12 @@ export default function App() {
     return () => window.clearInterval(intervalId);
   }, []);
 
-  useEffect(() => {
-    if (directArticleRoute) return undefined;
-    let active = true;
-    import("./data/articles/catalog").then(({ articleCatalog }) => {
-      if (active) {
-        setArticleCount(
-          articleCatalog.filter((article) =>
-            articleCatalogEntryForLanguage(article, language)
-          ).length
-        );
-      }
-    });
-    return () => {
-      active = false;
-    };
-  }, [directArticleRoute, language]);
-
   const bookOfMonth = useMemo(() => {
     const premiumBooks = verifiedBookArchive.filter(
       (book) =>
-        isCoverArtworkDisplayAllowed(book) &&
+        Boolean(
+          bookArchiveRuntime?.isCoverArtworkDisplayAllowed(book)
+        ) &&
         Boolean(selectBookText(book, language).description) &&
         ["verified", "reviewed"].includes(book.editorial?.status || "")
     );
@@ -1079,21 +1248,96 @@ export default function App() {
     );
     if (!books.length) return null;
     return books[getMonthlySelectionIndex(books.length, selectionMonthKey)];
-  }, [language, selectionMonthKey, verifiedBookArchive]);
+  }, [bookArchiveRuntime, language, selectionMonthKey, verifiedBookArchive]);
   const bookOfMonthText = bookOfMonth
     ? selectBookText(bookOfMonth, language)
     : null;
   const bookOfMonthHasCover = Boolean(
-    bookOfMonth && isCoverArtworkDisplayAllowed(bookOfMonth)
+    bookOfMonth &&
+      bookArchiveRuntime?.isCoverArtworkDisplayAllowed(bookOfMonth)
   );
   const factOfDay = useMemo(() => {
     const dayNumber = Math.floor(Date.now() / 86_400_000);
     return verifiedBookFacts[dayNumber % verifiedBookFacts.length];
   }, []);
 
-  const openBook = useCallback((book: BookArchiveEntry) => {
+  const openBook = useCallback((
+    book: BookArchiveEntry,
+    returnFocus: HTMLElement | null = null
+  ) => {
+    requestBookRuntime();
+    setBookLoadRequested(true);
+    requestedBookReturnFocusRef.current = returnFocus;
     setRequestedBook(book);
+  }, [requestBookRuntime]);
+
+  const retryBookArchive = useCallback(() => {
+    requestBookRuntime();
+    if (archiveDataStatus === "error") retryArchiveData();
+    setBookRuntimeStatus("idle");
+    setBookRuntimeAttempt((value) => value + 1);
+    setBookArchiveRetryToken((value) => value + 1);
+  }, [archiveDataStatus, requestBookRuntime, retryArchiveData]);
+
+  const handleRequestedBookHandled = useCallback(() => {
+    requestedBookReturnFocusRef.current = null;
+    setRequestedBook(null);
   }, []);
+
+  const openResolvedWriterWork = useCallback(
+    (book: BookArchiveEntry, returnFocus: HTMLElement | null) => {
+      if (atlasImmersive) {
+        pendingImmersiveBookRef.current = book;
+        pendingImmersiveBookFocusRef.current = returnFocus;
+        atlasExperience.requestExit("programmatic");
+        return;
+      }
+      openBook(book, returnFocus);
+    },
+    [atlasExperience, atlasImmersive, openBook]
+  );
+
+  const openWriterWork = useCallback(
+    (
+      countryId: string,
+      writerId: string,
+      workId: string,
+      returnFocus: HTMLElement
+    ) => {
+      const book = bookArchive.find(
+        (entry) =>
+          entry.countryId === countryId &&
+          entry.writerId === writerId &&
+          entry.id === workId
+      );
+      if (!book) {
+        setPendingWriterWork({ countryId, writerId, workId, returnFocus });
+        requestBookRuntime();
+        setBookLoadRequested(true);
+        return;
+      }
+      openResolvedWriterWork(book, returnFocus);
+    },
+    [bookArchive, openResolvedWriterWork, requestBookRuntime]
+  );
+
+  useEffect(() => {
+    if (!pendingWriterWork || bookRuntimeStatus !== "ready") return;
+    const book = bookArchive.find(
+      (entry) =>
+        entry.countryId === pendingWriterWork.countryId &&
+        entry.writerId === pendingWriterWork.writerId &&
+        entry.id === pendingWriterWork.workId
+    );
+    const returnFocus = pendingWriterWork.returnFocus;
+    setPendingWriterWork(null);
+    if (book) openResolvedWriterWork(book, returnFocus);
+  }, [
+    bookArchive,
+    bookRuntimeStatus,
+    openResolvedWriterWork,
+    pendingWriterWork,
+  ]);
 
   const selectCountry = useCallback(
     (
@@ -1200,6 +1444,29 @@ export default function App() {
     atlasImmersive,
   ]);
 
+  const selectCalendarCountryOnly = useCallback(
+    (country: Country) => {
+      selectCountry(country, true);
+      setSelectedWriter(null);
+      setWriterFocusRequest(null);
+      commitAtlasExperienceUrlSelection(
+        {
+          filter: atlasFilter,
+          countryId: country.id,
+          writerId: null,
+        },
+        "replace"
+      );
+      focusCountryPresentation();
+    },
+    [
+      atlasFilter,
+      commitAtlasExperienceUrlSelection,
+      focusCountryPresentation,
+      selectCountry,
+    ]
+  );
+
   const selectGlobeCountry = useCallback(
     (country: Country, source?: GlobeCountrySelectionSource) => {
       selectCountry(country);
@@ -1222,9 +1489,14 @@ export default function App() {
 
   const selectBookWriterAndCountry = useCallback(
     (book: BookArchiveEntry, focusAtlas = true) => {
-      const target = resolveBookArchivePublicTarget(countryArchive, book);
-      if (!target) return;
-      selectCountry(target.country, focusAtlas, target.writer);
+      const country = countryArchive.find(
+        (item) => item.id === book.countryId
+      );
+      const writer = country?.writers.find(
+        (item) => item.id === book.writerId
+      );
+      if (!country || !writer) return;
+      selectCountry(country, focusAtlas, writer);
     },
     [countryArchive, selectCountry]
   );
@@ -1235,6 +1507,7 @@ export default function App() {
         selectBookWriterAndCountry(result.book, false);
         if (atlasImmersive) {
           pendingImmersiveBookRef.current = result.book;
+          pendingImmersiveBookFocusRef.current = null;
           atlasExperience.requestExit("programmatic");
           return;
         }
@@ -1268,8 +1541,12 @@ export default function App() {
       return undefined;
     }
     const book = pendingImmersiveBookRef.current;
+    const returnFocus = pendingImmersiveBookFocusRef.current;
     pendingImmersiveBookRef.current = null;
-    const frame = window.requestAnimationFrame(() => openBook(book));
+    pendingImmersiveBookFocusRef.current = null;
+    const frame = window.requestAnimationFrame(() =>
+      openBook(book, returnFocus)
+    );
     return () => window.cancelAnimationFrame(frame);
   }, [atlasExperience.state.transition, atlasImmersive, openBook]);
 
@@ -1446,9 +1723,10 @@ export default function App() {
   );
 
   const openCommunity = useCallback((view: CommunityView) => {
+    requestArchiveData();
     setCommunityView(view);
     setCommunityOpen(true);
-  }, []);
+  }, [requestArchiveData]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
@@ -1496,6 +1774,10 @@ export default function App() {
     coreSections?.buttonUrl || journalPath(),
     journalPath()
   );
+  const globalSearchArchiveReady =
+    archiveDataStatus === "ready" && bookRuntimeStatus === "ready";
+  const globalSearchArchiveError =
+    archiveDataStatus === "error" || bookRuntimeStatus === "error";
 
   if (directArticleRoute) {
     return (
@@ -1959,14 +2241,14 @@ export default function App() {
                   "atlas",
                   "description",
                   coreAtlas?.description ||
-                    "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.",
+                    "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка.",
                   { kind: "textarea", label: "Описание литературной планеты" }
                 )}
               >
                 {language === "ru" && coreAtlas?.description
                   ? coreAtlas.description
                   : t(
-                      "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка."
+                      "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка."
                     )}
               </p>
             </div>
@@ -1993,13 +2275,20 @@ export default function App() {
               }
               caption={search ? t("Результаты поиска") : t("Избранные архивы")}
               emptyContent={t("Ничего не найдено в выбранной коллекции.")}
+              loading={
+                Boolean(search.trim()) &&
+                (archiveDataStatus === "loading" ||
+                  bookRuntimeStatus === "idle" ||
+                  bookRuntimeStatus === "loading")
+              }
+              loadingContent={t("Ищем во всём архиве…")}
               startAdornment={
                 <span className="search-field-icon" aria-hidden="true">
                   <BrandSearchIcon />
                 </span>
               }
               endAdornment={<kbd>↵</kbd>}
-              onValueChange={setSearch}
+              onValueChange={updateAtlasSearch}
               onOpenChange={(open) => setAtlasSearchVisibility(open)}
               onSelect={(result) => selectAtlasSearchResult(result)}
               renderOption={(result) => (
@@ -2190,7 +2479,7 @@ export default function App() {
               <div className="globe-copy">
                 <span>{t("Интерактивный глобус · ручная навигация")}</span>
                 <p>
-                  {t("В выбранной коллекции —")} {number(filteredCountries.length)}{" "}
+                  {t("В выбранной коллекции -")} {archiveDataStatus === "ready" ? number(filteredCountries.length) : "…"}{" "}
                   {t(
                     selectInterfacePlural(filteredCountries.length, language, [
                       "страна",
@@ -2212,37 +2501,32 @@ export default function App() {
                 </span>
               </div>
 
-              <Suspense
-                fallback={
-                  <div className="globe-loading" role="status">
-                    <span aria-hidden="true">✦</span>
-                    <p>{t("Открываем «Литературную планету»…")}</p>
-                  </div>
+              <LiteraryWorldMap
+                countries={filteredCountries}
+                atlasCountries={countryArchive}
+                dataStatus={archiveDataStatus}
+                forceLoad={atlasImmersive}
+                onLoadIntent={requestArchiveData}
+                onRetryData={retryArchiveData}
+                mode={atlasImmersive ? "immersive" : "embedded"}
+                rootRef={atlasExperience.stageRef}
+                selectedCountry={selectedCountry}
+                selectedWriter={selectedWriter}
+                onCountrySelect={selectGlobeCountry}
+                onWriterSelect={selectGlobeWriter}
+                onViewSample={setGlobeViewSample}
+                onHoverCountryChange={setGlobeHoveredCountry}
+                focusRequest={globeFocusRequest}
+                economical={atlasExperience.economical}
+                showNobelLaureates={
+                  atlasFilter === "nobel" ||
+                  nobelSpotlightCountryId === selectedCountry?.id
                 }
-              >
-                <LiteraryWorldMap
-                  countries={filteredCountries}
-                  atlasCountries={countryArchive}
-                  mode={atlasImmersive ? "immersive" : "embedded"}
-                  rootRef={atlasExperience.stageRef}
-                  selectedCountry={selectedCountry}
-                  selectedWriter={selectedWriter}
-                  onCountrySelect={selectGlobeCountry}
-                  onWriterSelect={selectGlobeWriter}
-                  onViewSample={setGlobeViewSample}
-                  onHoverCountryChange={setGlobeHoveredCountry}
-                  focusRequest={globeFocusRequest}
-                  economical={atlasExperience.economical}
-                  showNobelLaureates={
-                    atlasFilter === "nobel" ||
-                    nobelSpotlightCountryId === selectedCountry?.id
-                  }
-                  nobelCountryId={
-                    atlasFilter === "nobel" ? null : nobelSpotlightCountryId
-                  }
-                />
-              </Suspense>
-              {filteredCountries.length === 0 && (
+                nobelCountryId={
+                  atlasFilter === "nobel" ? null : nobelSpotlightCountryId
+                }
+              />
+              {archiveDataStatus === "ready" && filteredCountries.length === 0 && (
                 <div className="globe-loading globe-empty-state" role="status">
                   <span aria-hidden="true">✦</span>
                   <p>{t("В этой коллекции пока нет стран")}</p>
@@ -2343,6 +2627,7 @@ export default function App() {
                           : undefined
                       }
                       onWriterSelect={selectPanelWriter}
+                      onWorkSelect={openWriterWork}
                       onNavigateWorld={navigateWriterBreadcrumbWorld}
                       onNavigateCountry={navigateWriterBreadcrumbCountry}
                       onShowWriterOnGlobe={showWriterOnGlobe}
@@ -2415,6 +2700,7 @@ export default function App() {
         </section>
 
         <section
+          ref={setBookDayActivationNode}
           className={`daily-grid painted-paper-section${coreHomepageSectionClass(coreBookMonth)}`}
           id="book-day"
           style={coreHomepageSectionStyle(coreBookMonth)}
@@ -2445,11 +2731,11 @@ export default function App() {
               }
             >
               {bookOfMonth && bookOfMonthHasCover ? (
-                isEditorialCover(bookOfMonth) ? (
+                bookArchiveRuntime?.isEditorialCover(bookOfMonth) ? (
                   <div className="book-cover-art">
                     <img
                       src={bookOfMonth.coverUrl}
-                      srcSet={coverArtworkSrcSet(bookOfMonth)}
+                      srcSet={bookArchiveRuntime.coverArtworkSrcSet(bookOfMonth)}
                       sizes="210px"
                       alt={`${t("Обложка книги")} «${bookOfMonthText?.title}»`}
                       loading="lazy"
@@ -2465,7 +2751,7 @@ export default function App() {
                   >
                   <img
                     src={bookOfMonth.coverUrl}
-                    srcSet={coverArtworkSrcSet(bookOfMonth)}
+                    srcSet={bookArchiveRuntime?.coverArtworkSrcSet(bookOfMonth)}
                     sizes="210px"
                     alt={`${t("Обложка книги")} “${bookOfMonthText?.title}”`}
                     loading="lazy"
@@ -2703,22 +2989,22 @@ export default function App() {
           </div>
         </section>
 
-        <Suspense
-          fallback={
-            <section className="book-archive-section">
-              <div className="book-archive-empty">
-                <strong>{t("Собираем книжный архив…")}</strong>
-              </div>
-            </section>
+        <DeferredBookArchive
+          books={bookArchive}
+          countries={countryArchive}
+          archiveStatus={bookRuntimeStatus}
+          forceLoad={
+            bookLoadRequested ||
+            Boolean(requestedBook || pendingWriterWork)
           }
-        >
-          <BookArchiveSection
-            books={bookArchive}
-            requestedBook={requestedBook}
-            onRequestedBookHandled={() => setRequestedBook(null)}
-            onBookSelect={selectBookWriterAndCountry}
-          />
-        </Suspense>
+          retryToken={bookArchiveRetryToken}
+          onLoadIntent={requestBookRuntime}
+          onRetryArchive={retryBookArchive}
+          requestedBook={requestedBook}
+          requestedBookReturnFocus={requestedBookReturnFocusRef.current}
+          onRequestedBookHandled={handleRequestedBookHandled}
+          onBookSelect={selectBookWriterAndCountry}
+        />
 
         <section
           className={`editorial-section${coreHomepageSectionClass(coreFeaturedJournal)}`}
@@ -2790,17 +3076,6 @@ export default function App() {
                 <a href={feature.articleUrl}>
                   <div className="article-image">
                     <img
-                      className="article-image-backdrop"
-                      src={mediaUrl(feature.image)}
-                      alt=""
-                      aria-hidden="true"
-                      loading="lazy"
-                      decoding="async"
-                      onError={(event) => {
-                        event.currentTarget.hidden = true;
-                      }}
-                    />
-                    <img
                       src={mediaUrl(feature.image)}
                       alt={`${t("Иллюстрация к материалу")} “${t(feature.title)}”`}
                       loading="lazy"
@@ -2837,7 +3112,7 @@ export default function App() {
           <div className="journal-engagement">
             <div>
               <span className="section-kicker">{t("Обсуждение номера")}</span>
-              <h3>{t("Статья заканчивается, разговор — продолжается")}</h3>
+              <h3>{t("Статья заканчивается, разговор - продолжается")}</h3>
               <p>
                 {t(
                   "Оценки и комментарии привязаны к конкретной публикации. Авторский текст остаётся неизменным, а читательская дискуссия живёт отдельно."
@@ -2851,17 +3126,7 @@ export default function App() {
           </div>
         </section>
 
-        <Suspense
-          fallback={
-            <section className="article-library is-loading">
-              <div className="article-library-empty">
-                {t("Собираем авторский архив…")}
-              </div>
-            </section>
-          }
-        >
-          <ArticleLibrarySection />
-        </Suspense>
+        <DeferredArticleLibrary onArticleCountReady={setArticleCount} />
 
         <section
           className={`authors-section painted-paper-section${coreHomepageSectionClass(coreAuthors)}`}
@@ -3076,7 +3341,7 @@ export default function App() {
               onCountrySelect={(country, writer) =>
                 writer
                   ? selectWriterAndFocus(country, writer)
-                  : selectCountry(country, true)
+                  : selectCalendarCountryOnly(country)
               }
             />
           </Suspense>
@@ -3192,14 +3457,14 @@ export default function App() {
                 "community",
                 "description",
                 coreCommunity?.description ||
-                  "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.",
+                  "Место для спокойного и содержательного разговора о книгах - без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения.",
                 { kind: "textarea", label: "Описание сообщества" }
               )}
             >
               {language === "ru" && coreCommunity?.description
                 ? coreCommunity.description
                 : t(
-                    "Место для спокойного и содержательного разговора о книгах — без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения."
+                    "Место для спокойного и содержательного разговора о книгах - без шума и случайных рекомендаций. Здесь можно продолжить мысль из статьи, обсудить перевод, собрать читательский маршрут и сохранить историю собственного чтения."
                   )}
             </p>
             <p className="community-copy-note">
@@ -3363,7 +3628,7 @@ export default function App() {
           <section className="footer-brand">
             <a
               href={import.meta.env.BASE_URL}
-              aria-label={t("Проба Пера — главная")}
+              aria-label={t("Проба Пера - главная")}
             >
               <img
                 src={assetUrl("brand/probpera-logo.png")}
@@ -3451,21 +3716,36 @@ export default function App() {
       ) : null}
 
       {globalSearchOpen ? (
-        <Suspense fallback={null}>
-          <GlobalSearch
-            open
-            countries={countryArchive}
-            books={bookArchive}
-            articleCount={articleCount}
-            onClose={() => setGlobalSearchOpen(false)}
-            onCountrySelect={(country, writer) =>
-              writer
-                ? selectWriterAndFocus(country, writer)
-                : selectCountry(country, true)
+        globalSearchArchiveReady ? (
+          <Suspense
+            fallback={
+              <GlobalSearchLoadingDialog
+                onClose={closeGlobalSearch}
+                onRetry={retryBookArchive}
+              />
             }
-            onBookSelect={openBook}
+          >
+            <GlobalSearch
+              open
+              countries={countryArchive}
+              books={bookArchive}
+              articleCount={articleCount}
+              onClose={closeGlobalSearch}
+              onCountrySelect={(country, writer) =>
+                writer
+                  ? selectWriterAndFocus(country, writer)
+                  : selectCountry(country, true)
+              }
+              onBookSelect={openBook}
+            />
+          </Suspense>
+        ) : (
+          <GlobalSearchLoadingDialog
+            error={globalSearchArchiveError}
+            onClose={closeGlobalSearch}
+            onRetry={retryBookArchive}
           />
-        </Suspense>
+        )
       ) : null}
     </div>
   );

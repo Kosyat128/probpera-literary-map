@@ -181,19 +181,149 @@ export const currentIntegrationPremiumTranslationAndHealthPaths = Object.freeze(
   "apps/admin/lib/translation-backfill-cursor.ts",
 ]);
 
+export const stage5D1AdditiveI18nAttestation = Object.freeze({
+  id: "STAGE5-D1-INTERFACE-COPY",
+  sourceIntegrationSha: "fdd981381e859ab0ceaa44b48e9236af70c43db7",
+  fixturePath: "scripts/fixtures/stage5d1-interface-additions.json",
+  allowedPaths: Object.freeze([
+    "src/i18n/InterfaceLanguage.tsx",
+    "apps/admin/catalog-assets/interface-copy-catalog.json",
+  ]),
+  interfaceLanguage: Object.freeze({
+    declaration: "englishInterfaceText",
+    baselineEntries: 916,
+    baselinePairsSha256:
+      "7053755a7c46865d1c8f1c795c595b08d96d031bfeb0a9653c1cc1f6dc395c93",
+    codeOutsideInitializerSha256:
+      "96a330622dd3b14b98f4215fc8392e7af7160c8ff74b8e33df2d2e99efb55802",
+    currentEntries: 1074,
+    additions: Object.freeze({
+      entries: 158,
+      keysSha256:
+        "1a594d47059a6ebe35d6db178d05ad8077c4852b3f7a8b278774961388a96de9",
+      pairsSha256:
+        "454c5e5ff1ac4b3b4f1d9d8f9876a057c844c75a4ed521e3431d9bfca23ecaa4",
+    }),
+  }),
+  catalog: Object.freeze({
+    baselineEntries: 1130,
+    baselineContentSha256:
+      "280bb7704a34921fdbb2c95c51bb5264ecaab1c210dfbdb5b0a37d62a29caa5d",
+    currentEntries: 1288,
+    additions: Object.freeze({
+      entries: 158,
+      keysSha256:
+        "b1ef658d8c0e23ea6cc50eb63c177cdab20d364e3659d0c2d6c597654112ee78",
+      contentSha256:
+        "24815d91de6943a0903654cbcaf571dba0479af86ec99e0be8dde0be3b47a52c",
+    }),
+  }),
+});
+
+export const stage5FinalInterfaceCopyAttestation = Object.freeze({
+  id: "STAGE5-FINAL-INTERFACE-COPY",
+  sourceStage5FSha: "d473278a7d0617f14b1d50938fda9bab5c464efa",
+  sourceMainSyncSha: "c1939a632bc4c3d36649e7c4b2076fcc0711d2c4",
+  interfaceLanguage: Object.freeze({
+    entries: 1189,
+    keysSha256:
+      "79edc8b7923dc9eaf3a6859bc988a38edf2d3dcaa0d1bbd5841a259883323cc5",
+    pairsSha256:
+      "1538ec0ee99fc7f4254af02b9765a4f683812aca8bfdaebfd524e2848d6a2f49",
+  }),
+  catalog: Object.freeze({
+    entries: 1403,
+    keysSha256:
+      "164e06ac283059a7949b7894d3d68968df5ac2df8b8d4e985adfdb77f619273c",
+    contentSha256:
+      "99f8b1b753e3c7ea0248c054e53d62851b8611b51d43ffc6d36c5576de417b74",
+  }),
+});
+
+const stage5D1Stage4GlobeStablePaths = Object.freeze(
+  stage4ProductionPaths.filter(
+    (entry) => entry !== "src/i18n/InterfaceLanguage.tsx"
+  )
+);
+
+const stage5D1PremiumCurrentStablePaths = Object.freeze(
+  currentIntegrationPremiumTranslationAndHealthPaths.filter(
+    (entry) => !stage5D1AdditiveI18nAttestation.allowedPaths.includes(entry)
+  )
+);
+
+export const stage5D1EnforcedGovernanceScopes = Object.freeze({
+  stage4Globe: Object.freeze({
+    paths: stage5D1Stage4GlobeStablePaths,
+    expected: Object.freeze({
+      files: 19,
+      sha256:
+        "260a808d2a2f97e9d48a8b2262a08d3cf770d3eaf0d8cd9b0306daf1ed143a30",
+    }),
+  }),
+  premiumCurrent: Object.freeze({
+    paths: stage5D1PremiumCurrentStablePaths,
+    expected: Object.freeze({
+      files: 45,
+      sha256:
+        "b701065625ba4cf6ccb94c48562d9438ceee069cd49970262b5df220d4fa5e41",
+    }),
+  }),
+});
+
 export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
   governanceFingerprintRegistry.map((entry) =>
-    entry.id === "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE"
+    entry.id === "STAGE4-PRODUCTION-SURFACE"
       ? Object.freeze({
           ...entry,
-          sourceMainSha: "97f4a8d191989f454b5625caae0bafc6a22b47d6",
-          paths: currentIntegrationPremiumTranslationAndHealthPaths,
-          expected: Object.freeze({
-            files: 47,
-            sha256: "8fe4558f9539ecc52b67421e8208661ce5e25f44e1b759f4a27d476c0218d6f3",
-          }),
+          enforced: stage5D1EnforcedGovernanceScopes.stage4Globe,
+          additiveAttestationId: stage5D1AdditiveI18nAttestation.id,
         })
-      : entry
+      : entry.id === "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE"
+        ? Object.freeze({
+            ...entry,
+            sourceMainSha: "97f4a8d191989f454b5625caae0bafc6a22b47d6",
+            paths: currentIntegrationPremiumTranslationAndHealthPaths,
+            expected: Object.freeze({
+              files: 47,
+              sha256:
+                "8fe4558f9539ecc52b67421e8208661ce5e25f44e1b759f4a27d476c0218d6f3",
+            }),
+            enforced: stage5D1EnforcedGovernanceScopes.premiumCurrent,
+            additiveAttestationId: stage5D1AdditiveI18nAttestation.id,
+          })
+        : entry.id === "BOOK-ARCHIVE-OWNER-LOCK"
+          ? Object.freeze({
+              ...entry,
+              sourceIntegrationSha:
+                stage5D1AdditiveI18nAttestation.sourceIntegrationSha,
+              expected: Object.freeze({
+                files: 9,
+                sha256:
+                  "dd720968c269372c4caa3521273d9eea9b1ead231e5733e334c993402da38942",
+              }),
+              enforced: Object.freeze({
+                paths: bookArchiveOwnerPaths,
+                expected: Object.freeze({
+                  files: 9,
+                  sha256:
+                    "7b64ee4ff098a8dab2f65d8169612e6438d5f81a98c646069c162bd123e483f5",
+                }),
+              }),
+            })
+          : entry.id === "HEADER-HERO-CSS-OWNER-LOCK"
+            ? Object.freeze({
+                ...entry,
+                enforced: Object.freeze({
+                  paths: ["src/index.css"],
+                  expected: Object.freeze({
+                    rules: 211,
+                    sha256:
+                      "abd43284cc25668db3529c3b111b0286dfa616c413cc2d8762ba24ec72403113",
+                  }),
+                }),
+              })
+            : entry
   )
 );
 
