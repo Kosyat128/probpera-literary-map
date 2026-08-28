@@ -3,6 +3,7 @@ import {
   type ArticleCatalogEntry as LegacyArticleCatalogEntry,
 } from "./catalog.generated";
 import { cmsArticleCatalog } from "./cms.generated";
+import { cmsWithdrawnLegacyArticles } from "./cms-withdrawals.generated";
 import { articlePublicPath } from "../../utils/articleRoutes";
 import { normalizeArticleMetadataRecord } from "../../utils/articleMetadata";
 
@@ -60,6 +61,12 @@ export type ArticleCatalogEntry = LegacyArticleCatalogEntry & {
   }>;
 };
 
+export type WithdrawnLegacyArticle = {
+  readonly canonicalPath?: string;
+  readonly legacyId?: string;
+  readonly legacyPath?: string;
+};
+
 function normalizedPath(value?: string | null) {
   if (!value) return "";
   try {
@@ -78,7 +85,8 @@ function publishedTime(article: ArticleCatalogEntry) {
 
 export function mergeArticleCatalog(
   legacyEntries: readonly ArticleCatalogEntry[],
-  cmsEntries: readonly ArticleCatalogEntry[]
+  cmsEntries: readonly ArticleCatalogEntry[],
+  withdrawnLegacyEntries: readonly WithdrawnLegacyArticle[] = []
 ) {
   const normalizedCms = [...cmsEntries].sort(
     (first, second) =>
@@ -87,16 +95,22 @@ export function mergeArticleCatalog(
       publishedTime(second) - publishedTime(first)
   );
 
-  const replacedLegacyIds = new Set(
-    normalizedCms
+  const replacedLegacyIds = new Set([
+    ...normalizedCms
       .map((article) => article.legacyId)
-      .filter((value): value is string => Boolean(value))
-  );
-  const replacedLegacyPaths = new Set(
-    normalizedCms
+      .filter((value): value is string => Boolean(value)),
+    ...withdrawnLegacyEntries
+      .map((article) => article.legacyId)
+      .filter((value): value is string => Boolean(value)),
+  ]);
+  const replacedLegacyPaths = new Set([
+    ...normalizedCms
       .map((article) => normalizedPath(article.legacyPath))
-      .filter(Boolean)
-  );
+      .filter(Boolean),
+    ...withdrawnLegacyEntries
+      .map((article) => normalizedPath(article.legacyPath))
+      .filter(Boolean),
+  ]);
 
   const retainedLegacy = legacyEntries.filter(
     (article) =>
@@ -152,5 +166,6 @@ const cmsEntries = (cmsArticleCatalog as unknown as readonly ArticleCatalogEntry
 
 export const articleCatalog = mergeArticleCatalog(
   legacyEntries,
-  cmsEntries
+  cmsEntries,
+  cmsWithdrawnLegacyArticles
 );

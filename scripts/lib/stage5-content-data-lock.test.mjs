@@ -281,7 +281,7 @@ const lockedScopes = [
     include: () => true,
     expected: {
       files: 4,
-      sha256: "3175e13dbf0fc107239568ab94b138773a372f3bd29c0b9126a1983ebda6efa3",
+      sha256: "9184bc4a1dc07222ca1a1e2fdac0adda6d957dfcbf39786eff4b8a767f10b36c",
     },
   },
   {

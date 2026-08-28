@@ -112,6 +112,10 @@ describe("guarded production database reconciliation", () => {
       expect(plan).toContain("public.premium_machine_translation_ready");
       expect(plan).toContain("public.reader_book_collections");
       expect(plan).toContain("Reader book collection owner-only policies are incomplete");
+      expect(plan).toContain("from pg_catalog.pg_depend dependency");
+      expect(plan).toContain("'pg_catalog.pg_policy'::regclass");
+      expect(plan).toContain("'auth.uid()'::regprocedure");
+      expect(plan).not.toContain("position(\n        'auth.uid'");
       expect(plan).not.toMatch(/^\s*(?:begin|commit|rollback)\s*;/gimu);
       expect(verification).toContain("public.get_editorial_schema_health()");
       expect(verification).toContain("ledger_entries=");

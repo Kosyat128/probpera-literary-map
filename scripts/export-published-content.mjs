@@ -26,6 +26,10 @@ import {
   publicationMetadata,
 } from "./lib/cms-publication-state.mjs";
 import { fetchCmsPublicationHead } from "./lib/cms-publication-head.mjs";
+import {
+  buildLegacyArticleWithdrawals,
+  partitionRedirectsByWithdrawnDestination,
+} from "./lib/cms-legacy-withdrawals.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCmsDirectory = path.join(projectRoot, "public", "cms");
@@ -36,6 +40,13 @@ const articleCatalogModule = path.join(
   "data",
   "articles",
   "cms.generated.ts"
+);
+const articleWithdrawalsModule = path.join(
+  projectRoot,
+  "src",
+  "data",
+  "articles",
+  "cms-withdrawals.generated.ts"
 );
 const siteContentModule = path.join(
   projectRoot,
@@ -921,7 +932,7 @@ const pages = rawPages.map((page) => ({
   updatedAt: page.updated_at,
 }));
 
-const redirects = rawRedirects.map((redirect) => ({
+const allRedirects = rawRedirects.map((redirect) => ({
   sourcePath: redirect.source_path,
   destinationPath: redirect.destination_path,
   statusCode: redirect.status_code,
@@ -1009,17 +1020,16 @@ try {
 }
 
 const generatedAt = new Date().toISOString();
-const siteContent = {
+const siteContentBase = {
   generatedAt,
   homepageBlocks,
   siteCopy,
   banners,
   navigationMenus,
   pages,
-  redirects,
   bookEditionsByWorkId,
 };
-const snapshotContent = {
+const snapshotBaseContent = {
   version: 1,
   generatedAt,
   source: "Supabase CMS",
@@ -1027,15 +1037,10 @@ const snapshotContent = {
   countryProfileOverrides,
   writerProfileOverrides,
   literaryWorksByLegacyId,
-  ...siteContent,
-};
-const snapshot = {
-  ...snapshotContent,
-  publication: publicationMetadata(snapshotContent, stablePublicationHead),
 };
 
 const baseline = await publicationBaseline();
-const candidateIds = articleIdSet(snapshot.articles, "candidate snapshot");
+const candidateIds = articleIdSet(articles, "candidate snapshot");
 const baselineIds = baseline?.articles
   ? articleIdSet(baseline.articles, "deployed baseline")
   : new Set();
@@ -1043,11 +1048,42 @@ const removedSourceIds = [...baselineIds]
   .filter((id) => !candidateIds.has(id))
   .map(cmsSourceArticleId);
 const withdrawalStates = await authoritativeArticleStates(removedSourceIds);
+const removedIds = [...baselineIds]
+  .filter((id) => !candidateIds.has(id))
+  .sort();
+const withdrawnLegacyArticles = buildLegacyArticleWithdrawals({
+  candidateArticles: articles,
+  baseline,
+  removedIds,
+});
+const redirectPartition = partitionRedirectsByWithdrawnDestination(
+  allRedirects,
+  withdrawnLegacyArticles
+);
+const redirects = redirectPartition.allowed;
+const siteContent = {
+  ...siteContentBase,
+  redirects,
+};
+const snapshotContent = {
+  ...snapshotBaseContent,
+  ...siteContent,
+  withdrawnLegacyArticles,
+};
+const snapshot = {
+  ...snapshotContent,
+  publication: publicationMetadata(snapshotContent, stablePublicationHead),
+};
 const replacement = assertCandidateCanReplaceBaseline({
   candidate: snapshot,
   baseline,
   authoritativeStates: withdrawalStates,
 });
+if (redirectPartition.blocked.length) {
+  console.warn(
+    `Excluded ${redirectPartition.blocked.length} redirect(s) targeting withdrawn article canonicals.`
+  );
+}
 
 if (serviceRoleKey) {
   try {
@@ -1093,6 +1129,7 @@ await commitAtomicFileSet({
           source: "Supabase CMS",
           publication: snapshot.publication,
           articles,
+          withdrawnLegacyArticles,
         },
         null,
         2
@@ -1112,6 +1149,14 @@ await commitAtomicFileSet({
         "cmsArticleCatalog",
         articles,
         "Public article metadata exported through read-only RLS policies."
+      ),
+    },
+    {
+      path: articleWithdrawalsModule,
+      content: asGeneratedModule(
+        "cmsWithdrawnLegacyArticles",
+        withdrawnLegacyArticles,
+        "Verified CMS withdrawals that suppress retired static article fallbacks."
       ),
     },
     {

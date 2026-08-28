@@ -11,6 +11,8 @@ import {
   normalizeArticlePublicMetadata,
   normalizedPath,
 } from "./lib/article-route-policy.mjs";
+import { mergePublishedArticleCatalog } from "./lib/article-catalog-merge.mjs";
+import { partitionRedirectsByWithdrawnDestination } from "./lib/cms-legacy-withdrawals.mjs";
 import {
   dzenCoverForArticle,
   positionDzenLeadIllustration,
@@ -274,23 +276,6 @@ async function readJsonIfExists(filePath, fallback) {
   }
 }
 
-function mergeCatalogs(legacyArticles, cmsArticles) {
-  const replacedIds = new Set(
-    cmsArticles.map((article) => article.legacyId).filter(Boolean)
-  );
-  const replacedPaths = new Set(
-    cmsArticles.map((article) => normalizedPath(article.legacyPath)).filter(Boolean)
-  );
-  return [
-    ...cmsArticles,
-    ...legacyArticles.filter(
-      (article) =>
-        !replacedIds.has(article.id) &&
-        !replacedPaths.has(normalizedPath(article.url))
-    ),
-  ];
-}
-
 async function writeRedirectPage(sourcePath, targetUrl) {
   const normalized = normalizedPath(sourcePath);
   const segments = normalized
@@ -324,9 +309,20 @@ const cmsSnapshot = await readJsonIfExists(
   path.join(publicDirectory, "cms", "published-content.json"),
   { articles: [], pages: [], redirects: [] }
 );
-const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []).map(
-  applyEditorialPublicationFix
+const catalog = mergePublishedArticleCatalog(
+  legacyCatalog,
+  cmsSnapshot.articles || [],
+  cmsSnapshot.withdrawnLegacyArticles
+).map(applyEditorialPublicationFix);
+const redirectPartition = partitionRedirectsByWithdrawnDestination(
+  cmsSnapshot.redirects || [],
+  cmsSnapshot.withdrawnLegacyArticles
 );
+if (redirectPartition.blocked.length) {
+  throw new Error(
+    `${redirectPartition.blocked.length} CMS redirect(s) target withdrawn article canonicals.`
+  );
+}
 const canonicalArticlePaths = new Set(
   catalog.map((article) => normalizedPath(articlePublicPath(article)))
 );
@@ -1250,7 +1246,7 @@ for (const page of cmsSnapshot.pages || []) {
   }
 }
 
-for (const redirect of cmsSnapshot.redirects || []) {
+for (const redirect of redirectPartition.allowed) {
   const sourcePath = normalizedPath(redirect.sourcePath);
   const destinationPath = normalizedPath(redirect.destinationPath);
   if (sourcePath === destinationPath) continue;

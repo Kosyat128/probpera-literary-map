@@ -8,6 +8,8 @@ import {
   articleSectionSlugs,
   normalizedPath,
 } from "./lib/article-route-policy.mjs";
+import { mergePublishedArticleCatalog } from "./lib/article-catalog-merge.mjs";
+import { partitionRedirectsByWithdrawnDestination } from "./lib/cms-legacy-withdrawals.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const distDirectory = path.join(projectRoot, "dist");
@@ -38,25 +40,6 @@ async function exists(relativePath) {
   } catch {
     return false;
   }
-}
-
-function mergeCatalogs(legacyArticles, cmsArticles) {
-  const replacedIds = new Set(
-    cmsArticles.map((article) => article.legacyId).filter(Boolean)
-  );
-  const replacedPaths = new Set(
-    cmsArticles
-      .map((article) => normalizedPath(article.legacyPath))
-      .filter(Boolean)
-  );
-  return [
-    ...cmsArticles,
-    ...legacyArticles.filter(
-      (article) =>
-        !replacedIds.has(article.id) &&
-        !replacedPaths.has(normalizedPath(article.url))
-    ),
-  ];
 }
 
 const [
@@ -90,7 +73,19 @@ const [
 
 const legacyCatalog = JSON.parse(catalogText);
 const cmsSnapshot = JSON.parse(cmsSnapshotText);
-const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []);
+const catalog = mergePublishedArticleCatalog(
+  legacyCatalog,
+  cmsSnapshot.articles || [],
+  cmsSnapshot.withdrawnLegacyArticles
+);
+const cmsRedirectPartition = partitionRedirectsByWithdrawnDestination(
+  cmsSnapshot.redirects || [],
+  cmsSnapshot.withdrawnLegacyArticles
+);
+check(
+  cmsRedirectPartition.blocked.length === 0,
+  "CMS redirects do not target withdrawn article canonicals"
+);
 const redirects = JSON.parse(redirectsText);
 const redirectBySource = new Map();
 for (const redirect of redirects) {

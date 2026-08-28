@@ -12,6 +12,8 @@ import {
   normalizedPath,
   publicMetadataArtifacts,
 } from "./lib/article-route-policy.mjs";
+import { mergePublishedArticleCatalog } from "./lib/article-catalog-merge.mjs";
+import { partitionRedirectsByWithdrawnDestination } from "./lib/cms-legacy-withdrawals.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicDirectory = path.join(projectRoot, "public");
@@ -30,21 +32,6 @@ async function readJson(relativePath, fallback) {
     if (error?.code === "ENOENT" && fallback !== undefined) return fallback;
     throw error;
   }
-}
-
-function mergeCatalogs(legacyArticles, cmsArticles) {
-  const replacedIds = new Set(cmsArticles.map((article) => article.legacyId).filter(Boolean));
-  const replacedPaths = new Set(
-    cmsArticles.map((article) => normalizedPath(article.legacyPath)).filter(Boolean)
-  );
-  return [
-    ...cmsArticles,
-    ...legacyArticles.filter(
-      (article) =>
-        !replacedIds.has(article.id) &&
-        !replacedPaths.has(normalizedPath(article.url))
-    ),
-  ];
 }
 
 function addRedirectSource(redirects, sourceValue, destinationValue, label) {
@@ -83,7 +70,20 @@ const legacyCatalog = await readJson("public/articles/index.json", []);
 const cmsSnapshot = await readJson("public/cms/published-content.json", {
   articles: [], pages: [], redirects: [],
 });
-const catalog = mergeCatalogs(legacyCatalog, cmsSnapshot.articles || []);
+const catalog = mergePublishedArticleCatalog(
+  legacyCatalog,
+  cmsSnapshot.articles || [],
+  cmsSnapshot.withdrawnLegacyArticles
+);
+const redirectPartition = partitionRedirectsByWithdrawnDestination(
+  cmsSnapshot.redirects || [],
+  cmsSnapshot.withdrawnLegacyArticles
+);
+for (const redirect of redirectPartition.blocked) {
+  errors.push(
+    `Redirect ${redirect.sourcePath || "(пусто)"} ведёт на снятую с публикации статью: ${redirect.destinationPath}`
+  );
+}
 const ids = new Set();
 const canonicalPaths = new Map();
 const routeSlugOwners = new Map();
@@ -211,7 +211,7 @@ for (const [slug, owners] of routeSlugOwners) {
 for (const [legacyPath, owners] of legacyPathOwners) {
   if (owners.size > 1) errors.push(`Старый путь ${legacyPath} принадлежит: ${[...owners].join(", ")}`);
 }
-for (const redirect of cmsSnapshot.redirects || []) {
+for (const redirect of redirectPartition.allowed) {
   addRedirectSource(redirectSources, redirect.sourcePath, redirect.destinationPath, `cms:${redirect.id || redirect.sourcePath}`);
 }
 for (const [source, entry] of redirectSources) {

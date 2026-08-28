@@ -10,6 +10,14 @@ import {
 import { bookArchiveCountries } from "../src/data/countries";
 import { articleCatalog as legacyArticleCatalog } from "../src/data/articles/catalog.generated";
 import { cmsArticleCatalog } from "../src/data/articles/cms.generated";
+import { cmsWithdrawnLegacyArticles } from "../src/data/articles/cms-withdrawals.generated";
+
+const withdrawnLegacyArticles = cmsWithdrawnLegacyArticles as readonly {
+  readonly cmsId: string;
+  readonly canonicalPath?: string;
+  readonly legacyId?: string;
+  readonly legacyPath?: string;
+}[];
 
 function normalizedArticlePath(value?: string | null) {
   if (!value) return "";
@@ -21,12 +29,13 @@ function normalizedArticlePath(value?: string | null) {
 }
 
 const replacedLegacyIds = new Set(
-  cmsArticleCatalog
-    .map((article) => article.legacyId)
-    .filter((value): value is string => Boolean(value))
+  [
+    ...cmsArticleCatalog.map((article) => article.legacyId),
+    ...withdrawnLegacyArticles.map((article) => article.legacyId),
+  ].filter((value): value is string => Boolean(value))
 );
 const replacedLegacyPaths = new Set(
-  cmsArticleCatalog
+  [...cmsArticleCatalog, ...withdrawnLegacyArticles]
     .map((article) => normalizedArticlePath(article.legacyPath))
     .filter(Boolean)
 );
