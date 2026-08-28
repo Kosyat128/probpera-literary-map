@@ -50,6 +50,14 @@ const restoreImplementation = helper.slice(
   helper.indexOf("command_restore_drill()"),
   helper.indexOf("command_apply_plan()")
 );
+const imagePreparationStep = workflowSource.slice(
+  workflowSource.indexOf("- name: Pre-pull and pin the database image for this runner"),
+  workflowSource.indexOf("- name: Verify production secrets")
+);
+const imageVerificationImplementation = helper.slice(
+  helper.indexOf("pull_database_image()"),
+  helper.indexOf("cleanup_restore()")
+);
 
 describe("guarded production database reconciliation", () => {
   it("builds only the reviewed ordered migration plan", () => {
@@ -153,6 +161,39 @@ describe("guarded production database reconciliation", () => {
     ).toHaveLength(5);
     expect(helper).not.toContain("PGDATABASE");
     expect(helper).not.toMatch(/(?:echo|printf)[^\n]*SUPABASE_DB_URL/iu);
+  });
+
+  it("pre-pulls once with bounded backoff and pins every later client to that local image", () => {
+    expect(imagePreparationStep).toContain(
+      "for retry_delay in 0 15 30 60 120 240"
+    );
+    expect(imagePreparationStep.match(/docker pull "\$DATABASE_IMAGE"/gu)).toHaveLength(1);
+    expect(imagePreparationStep).toContain(
+      "Unable to pull the pinned database image within the bounded retry policy."
+    );
+    expect(imagePreparationStep).not.toMatch(/(?:ghcr|docker\.io|quay\.io)/iu);
+    expect(imagePreparationStep).toContain("DATABASE_IMAGE_LOCAL_ID=$database_image_id");
+    expect(imagePreparationStep).toContain(
+      "DATABASE_IMAGE_LOCAL_DIGEST=$database_image_digest"
+    );
+    expect(imagePreparationStep).toContain('>> "$GITHUB_ENV"');
+    expect(workflowSource.indexOf("Pre-pull and pin the database image"))
+      .toBeLessThan(workflowSource.indexOf("Verify production database identity"));
+
+    expect(imageVerificationImplementation).toContain(
+      "require_env DATABASE_IMAGE_LOCAL_ID"
+    );
+    expect(imageVerificationImplementation).toContain(
+      "require_env DATABASE_IMAGE_LOCAL_DIGEST"
+    );
+    expect(imageVerificationImplementation).toContain(
+      '[[ "$actual_id" == "$DATABASE_IMAGE_LOCAL_ID" ]]'
+    );
+    expect(imageVerificationImplementation).toContain(
+      '[[ "$digest" == "$DATABASE_IMAGE_LOCAL_DIGEST" ]]'
+    );
+    expect(imageVerificationImplementation.indexOf("return"))
+      .toBeLessThan(imageVerificationImplementation.indexOf("docker pull"));
   });
 
   it("waits for the final base server and verifies initialized platform Vault", () => {
