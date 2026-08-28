@@ -11,12 +11,16 @@ describe("editor template HTML", () => {
         alt="Портрет писателя"
         data-image-layout="left"
         data-caption="Архивный портрет"
+        data-media-id="5f21359e-097b-46f0-b838-7ce948fd3cd1"
       >
     `);
 
     expect(html).toContain('class="article-image is-left"');
     expect(html).toContain('data-image-layout="left"');
     expect(html).toContain('data-caption="Архивный портрет"');
+    expect(html).toContain(
+      'data-media-id="5f21359e-097b-46f0-b838-7ce948fd3cd1"'
+    );
   });
 
   it("still removes executable attributes and unsafe image URLs", () => {

@@ -56,6 +56,7 @@ const allowedPageHtml = {
         "loading",
         "data-image-layout",
         "data-caption",
+        "data-media-id",
       ],
       "*": [
         "class",
@@ -64,6 +65,7 @@ const allowedPageHtml = {
         "data-reveal",
         "data-image-layout",
         "data-caption",
+        "data-media-id",
       ],
   },
   allowedSchemes: ["http", "https", "mailto"],

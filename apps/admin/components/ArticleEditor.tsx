@@ -43,7 +43,7 @@ import {
   resolveArticleDraftRecoverySource,
 } from "@/lib/article-recovery";
 import { withClientAdminPath } from "@/lib/admin-path";
-import { prepareClientImage } from "@/lib/client-image-upload";
+import { uploadEditorImage } from "@/lib/editor-image-upload";
 import {
   EditorialBlock,
   insertEditorialBlock,
@@ -65,6 +65,7 @@ import {
   type EditorMediaSlotDetail,
 } from "@/components/editorMediaEvents";
 import { ArticleTextTone } from "@/components/ArticleTextTone";
+import EditorLinkDialog from "@/components/EditorLinkDialog";
 import {
   useRegisterArticleEditorWorkspace,
   type ArticleEditorWorkspace,
@@ -414,6 +415,8 @@ export default function ArticleEditor({
   >(null);
   const [mediaComposerValue, setMediaComposerValue] = useState("");
   const [mediaComposerError, setMediaComposerError] = useState("");
+  const [linkDialogOpen, setLinkDialogOpen] = useState(false);
+  const [linkDialogInitialValue, setLinkDialogInitialValue] = useState("");
   const [templatePending, startTemplateTransition] = useTransition();
   const [excerpt, setExcerpt] = useState(article.excerpt || "");
   const [status, setStatus] = useState(article.status || "draft");
@@ -1160,10 +1163,10 @@ export default function ArticleEditor({
 
   const setLink = () => {
     const previousUrl = editor?.getAttributes("link").href || "";
-    const url = window.prompt("Адрес ссылки", previousUrl);
-    if (url === null || !editor) return;
-    if (!url) editor.chain().focus().extendMarkRange("link").unsetLink().run();
-    else editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
+    setLinkDialogInitialValue(
+      typeof previousUrl === "string" ? previousUrl : ""
+    );
+    setLinkDialogOpen(true);
   };
 
   const addImage = () => {
@@ -1190,6 +1193,9 @@ export default function ArticleEditor({
     if (caption === null) return;
     const attributes = {
       src: url,
+      // A manually supplied URL is no longer tied to the previously selected
+      // media-library record.
+      mediaId: null,
       alt: alt.trim(),
       caption: caption.trim(),
       layout:
@@ -1219,6 +1225,7 @@ export default function ArticleEditor({
 
   const insertImageAtLogicalPosition = (attributes: {
     src: string;
+    mediaId: string | null;
     alt: string;
     caption: string;
     layout: EditorialImageLayout;
@@ -1363,36 +1370,13 @@ export default function ArticleEditor({
     setImageUploadError("");
     setImageUploadMessage("Подготавливаем изображение без обрезки…");
     try {
-      const prepared = await prepareClientImage(
-        file,
-        target === "cover" ? "cover" : "inline"
-      );
-      const formData = new FormData();
-      formData.set("file", prepared.file);
-      formData.set("alt_text", altText);
-      formData.set("caption", caption);
-      formData.set("creator", "");
-      formData.set("source_url", "");
-      formData.set("license_name", "");
-      formData.set("license_url", "");
-      formData.set("collection_name", target === "cover" ? "Обложки статей" : "Статьи");
-      formData.set("image_usage", target === "cover" ? "cover" : "inline");
-      formData.set("client_width", String(prepared.width));
-      formData.set("client_height", String(prepared.height));
       setImageUploadMessage("Загружаем подготовленное изображение…");
-
-      const response = await fetch(withClientAdminPath("/api/media/upload"), {
-        method: "POST",
-        body: formData,
+      const result = await uploadEditorImage(file, {
+        usage: target === "cover" ? "cover" : "inline",
+        altText,
+        caption,
+        collectionName: target === "cover" ? "Обложки статей" : "Статьи",
       });
-      const result = (await response.json().catch(() => ({}))) as {
-        ok?: boolean;
-        url?: string;
-        error?: string;
-      };
-      if (!response.ok || !result.ok || !result.url) {
-        throw new Error(result.error || "Не удалось загрузить изображение.");
-      }
 
       if (target === "cover") {
         setCoverUrl(result.url);
@@ -1413,6 +1397,7 @@ export default function ArticleEditor({
       }
       const attributes = {
         src: result.url,
+        mediaId: result.mediaId,
         alt: altText,
         caption,
         layout:
@@ -2847,6 +2832,27 @@ export default function ArticleEditor({
           </section>
         </div>
       )}
+
+      <EditorLinkDialog
+        open={linkDialogOpen}
+        initialValue={linkDialogInitialValue}
+        onCancel={() => setLinkDialogOpen(false)}
+        onApply={(href) => {
+          setLinkDialogOpen(false);
+          if (!editor) return;
+          if (!href) {
+            editor.chain().focus().extendMarkRange("link").unsetLink().run();
+          } else {
+            editor
+              .chain()
+              .focus()
+              .extendMarkRange("link")
+              .setLink({ href })
+              .run();
+          }
+          setIsDirty(true);
+        }}
+      />
 
       <footer className="editor-footer">
         <div className="editor-save-state" aria-live="polite">

@@ -39,6 +39,10 @@ export default function EditorialImageView({
   const alt = typeof node.attrs.alt === "string" ? node.attrs.alt : "";
   const caption =
     typeof node.attrs.caption === "string" ? node.attrs.caption : "";
+  const mediaId =
+    typeof node.attrs.mediaId === "string" && node.attrs.mediaId.trim()
+      ? node.attrs.mediaId.trim()
+      : undefined;
 
   const selectImage = () => {
     if (typeof position === "number") {
@@ -72,6 +76,7 @@ export default function EditorialImageView({
       as="figure"
       className={`editorial-image-node is-${layout}${selected ? " is-selected" : ""}`}
       data-image-layout={layout}
+      data-media-id={mediaId}
       tabIndex={0}
       aria-label={alt ? `Изображение: ${alt}` : "Изображение в статье"}
       onClick={selectImage}

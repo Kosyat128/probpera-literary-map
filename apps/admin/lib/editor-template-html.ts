@@ -21,6 +21,7 @@ const safeEditorTemplateHtml = {
       "data-reveal",
       "data-image-layout",
       "data-caption",
+      "data-media-id",
     ],
   },
   allowedSchemes: ["http", "https", "mailto"],
