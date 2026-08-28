@@ -52,15 +52,27 @@ describe("release workflow hardening", () => {
     const firstExport = source.indexOf(
       "- name: Export current CMS snapshot for release verification"
     );
+    const releaseGate = source.indexOf("- name: Decide whether a release is needed");
+    const immutableLocks = source.indexOf(
+      "- name: Verify immutable repository content locks"
+    );
     const derivedLinks = source.indexOf(
       "- name: Regenerate CMS-derived article and book links"
     );
     const fullVerification = source.indexOf(
       "- name: Verify public site and editorial archive"
     );
-    expect(firstExport).toBeGreaterThanOrEqual(0);
+    expect(releaseGate).toBeGreaterThanOrEqual(0);
+    expect(immutableLocks).toBeGreaterThan(releaseGate);
+    expect(firstExport).toBeGreaterThan(immutableLocks);
     expect(derivedLinks).toBeGreaterThan(firstExport);
     expect(fullVerification).toBeGreaterThan(derivedLinks);
+    expect(source).toContain(
+      "run: npx vitest run scripts/lib/stage5-content-data-lock.test.mjs"
+    );
+    expect(source).toContain(
+      "npm test -- --exclude scripts/lib/stage5-content-data-lock.test.mjs"
+    );
     expect(source).toContain("run: npm run content:link-books");
     expect(read("scripts/check-public-build-requests.mjs")).toContain(
       "BigInt(deployedId) >= BigInt(maxId)"

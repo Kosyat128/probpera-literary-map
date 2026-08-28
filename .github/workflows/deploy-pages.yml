@@ -101,6 +101,10 @@ jobs:
             echo "should_deploy=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Verify immutable repository content locks
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npx vitest run scripts/lib/stage5-content-data-lock.test.mjs
+
       - name: Normalize public article addresses and editorial corrections
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run content:normalize:cms
@@ -126,7 +130,7 @@ jobs:
 
       - name: Verify public site and editorial archive
         if: steps.release_gate.outputs.should_deploy == 'true' && !(github.event_name == 'workflow_dispatch' && inputs.mode == 'cms')
-        run: npm run lint && npm test && npm run content:audit && npm run links:audit && npm run media:audit && npm run books:audit && npm run countries:audit && npm run covers:audit && npm run assets:globe:qa && npm run admin:build
+        run: npm run lint && npm test -- --exclude scripts/lib/stage5-content-data-lock.test.mjs && npm run content:audit && npm run links:audit && npm run media:audit && npm run books:audit && npm run countries:audit && npm run covers:audit && npm run assets:globe:qa && npm run admin:build
 
       - name: Verify fast CMS publication
         if: steps.release_gate.outputs.should_deploy == 'true' && github.event_name == 'workflow_dispatch' && inputs.mode == 'cms'

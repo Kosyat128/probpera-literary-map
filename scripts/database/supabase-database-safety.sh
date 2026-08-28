@@ -40,6 +40,38 @@ absolute_path() {
 
 pull_database_image() {
   require_command docker
+
+  if [[ -n "${DATABASE_IMAGE_LOCAL_ID:-}" \
+    || -n "${DATABASE_IMAGE_LOCAL_DIGEST:-}" ]]; then
+    require_env DATABASE_IMAGE_LOCAL_ID
+    require_env DATABASE_IMAGE_LOCAL_DIGEST
+    [[ "$DATABASE_IMAGE_LOCAL_ID" =~ ^sha256:[0-9a-f]{64}$ ]] \
+      || die "Pre-pulled database image ID is not canonical."
+    [[ "$DATABASE_IMAGE_LOCAL_DIGEST" =~ ^public\.ecr\.aws/supabase/postgres@sha256:[0-9a-f]{64}$ ]] \
+      || die "Pre-pulled database image digest is not allowlisted."
+
+    local actual_id digest digest_found=false
+    actual_id="$(
+      docker image inspect --format '{{.Id}}' "$DATABASE_IMAGE" 2>/dev/null
+    )" || die "Pre-pulled database image is unavailable on this runner."
+    [[ "$actual_id" == "$DATABASE_IMAGE_LOCAL_ID" ]] \
+      || die "Local database image ID changed after the guarded pre-pull."
+
+    while IFS= read -r digest; do
+      if [[ "$digest" == "$DATABASE_IMAGE_LOCAL_DIGEST" ]]; then
+        digest_found=true
+        break
+      fi
+    done < <(
+      docker image inspect \
+        --format '{{range .RepoDigests}}{{println .}}{{end}}' \
+        "$DATABASE_IMAGE" 2>/dev/null
+    )
+    [[ "$digest_found" == true ]] \
+      || die "Local database image digest changed after the guarded pre-pull."
+    return
+  fi
+
   docker pull "$DATABASE_IMAGE" >/dev/null
 }
 

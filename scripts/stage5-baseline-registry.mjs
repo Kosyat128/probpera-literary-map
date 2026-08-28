@@ -266,7 +266,7 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 45,
       sha256:
-        "b701065625ba4cf6ccb94c48562d9438ceee069cd49970262b5df220d4fa5e41",
+        "687602aec5bd69770ca053ebe5759c42943cdf26875f637834280f9226739bb4",
     }),
   }),
 });
