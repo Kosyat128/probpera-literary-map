@@ -220,6 +220,12 @@ describe("approved Complete Shelf outer presentation", () => {
   it("keeps an opened book in view and switches directly from another spine", () => {
     expect(controller).toContain("pendingBookSwitchRef.current = item.book");
     expect(controller).toContain("const nextBook = pendingBookSwitchRef.current");
+    expect(controller).toContain(
+      "pendingBookCloseRef.current ||\n          pendingBookSwitchRef.current ||\n          pendingInspectionBookRef.current"
+    );
+    expect(controller).toMatch(
+      /window\.requestAnimationFrame\(\(\) => \{\s*pendingInspectionBookRef\.current = null;\s*openBookDetail\(pendingBook\);/u
+    );
     expect(controller).toContain('querySelector<HTMLElement>(".book-shelf-scene")');
     expect(controller).toContain("scene.getBoundingClientRect()");
     expect(controller).toContain("scene.scrollIntoView({");
