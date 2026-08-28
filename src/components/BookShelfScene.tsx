@@ -63,6 +63,7 @@ export type BookShelfSceneProps = {
   onRequestPreviousPage: () => void;
   onRequestKeyboardPage: (key: string, shiftKey?: boolean) => boolean;
   onRequestInspectionClose: () => void;
+  onRequestSceneCenter: () => void;
   onCrackCover: () => void;
   onStartPageDrag: (direction: BookInspectionPageDirection) => void;
   onUpdatePageDrag: (progress: number) => void;
@@ -279,6 +280,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
               onOpenBook={props.onOpenBook}
               onRequestCoverOpen={props.onRequestCoverOpen}
               onRequestInspectionClose={props.onRequestInspectionClose}
+              onRequestSceneCenter={props.onRequestSceneCenter}
               onCrackCover={props.onCrackCover}
               onStartPageDrag={props.onStartPageDrag}
               onUpdatePageDrag={props.onUpdatePageDrag}

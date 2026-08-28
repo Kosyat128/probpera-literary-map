@@ -647,6 +647,7 @@ function CompleteShelfBook({
   const firstLeafRef = useRef<Group>(null);
   const secondLeafRef = useRef<Group>(null);
   const settledSignatureRef = useRef("");
+  const targetSignatureRef = useRef("");
   const exactTransitionRef = useRef<{
     signature: string;
     elapsedMs: number;
@@ -1129,6 +1130,14 @@ function CompleteShelfBook({
     const firstLeaf = firstLeafRef.current;
     const secondLeaf = secondLeafRef.current;
     if (!group || !cover || !firstLeaf || !secondLeaf) return;
+    if (
+      group.userData.completeShelfReady &&
+      targetSignatureRef.current === targetSignature
+    ) {
+      invalidate();
+      return;
+    }
+    targetSignatureRef.current = targetSignature;
     if (!group.userData.completeShelfReady) {
       applyPoseImmediately(group, cover, firstLeaf, secondLeaf, pose);
       group.userData.completeShelfReady = true;

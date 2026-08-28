@@ -328,22 +328,24 @@ describe("Complete Shelf procedural model", () => {
     expect(desktop).toEqual({ scale: 1, positionY: 0 });
   });
 
-  it("switches a selected book only from stable inspection phases", () => {
+  it("queues a selected-book switch throughout every interruptible inspection phase", () => {
     for (const phase of [
+      "INSPECTION_ENTERING",
       "INSPECTION_CLOSED",
       "COVER_CRACKED",
+      "COVER_OPENING",
       "BOOK_OPEN",
+      "PAGE_DRAGGING",
+      "PAGE_SETTLING",
     ] as const) {
       expect(completeShelfPhaseAllowsSelectionSwitch(phase)).toBe(true);
     }
     for (const phase of [
-      "INSPECTION_ENTERING",
-      "COVER_OPENING",
-      "PAGE_DRAGGING",
-      "PAGE_SETTLING",
       "INSPECTION_CLOSING",
       "SHELF_RESTORING",
+      "SHELF_IDLE",
       "SHELF_MOVING",
+      "SHELF_SETTLING",
     ] as const) {
       expect(completeShelfPhaseAllowsSelectionSwitch(phase)).toBe(false);
     }
