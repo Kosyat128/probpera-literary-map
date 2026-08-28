@@ -11,7 +11,15 @@ const auditScript = path.resolve("scripts/audit-performance-budget.mjs");
 const workspaces = [];
 
 async function fixture({
+  aggregatePayloadBytes = 0,
   bookCoverMaximumBytes = 300,
+  cmsArticleBaselineCount = 162,
+  cmsArticleCount = 162,
+  cmsArticleSnapshot,
+  cmsArticleSnapshotPath = "cms/published-content.json",
+  cmsArticleGrowthBytesPerArticle = 256 * 1024,
+  distExcludingBookCoversBytes = 2_000_000,
+  distTotalBytes = 2_000_000,
   domainCname,
   domainSiteBasePath = "/",
   entryBytes = Buffer.from("export const ready = true;"),
@@ -25,6 +33,12 @@ async function fixture({
     recursive: true,
   });
   await mkdir(path.join(workspace, "dist", "assets"), { recursive: true });
+  if (aggregatePayloadBytes > 0) {
+    await writeFile(
+      path.join(workspace, "dist", "assets", "aggregate-payload.bin"),
+      Buffer.alloc(aggregatePayloadBytes)
+    );
+  }
   await writeFile(path.join(workspace, "dist", "assets", "index-entry.js"), entryBytes);
   await writeFile(
     path.join(workspace, "dist", "assets", "runtime.js"),
@@ -49,14 +63,41 @@ async function fixture({
     Buffer.alloc(100)
   );
   await writeFile(path.join(workspace, "dist", "assets", "site.png"), Buffer.alloc(200));
+  if (cmsArticleSnapshot !== null) {
+    const snapshotTarget = path.join(
+      workspace,
+      "dist",
+      ...cmsArticleSnapshotPath.split("/")
+    );
+    await mkdir(path.dirname(snapshotTarget), { recursive: true });
+    const snapshot =
+      cmsArticleSnapshot === undefined
+        ? {
+            articles: Array.from({ length: cmsArticleCount }, (_, index) => ({
+              id: `cms-00000000-0000-4000-8000-${index
+                .toString(16)
+                .padStart(12, "0")}`,
+            })),
+          }
+        : cmsArticleSnapshot;
+    await writeFile(
+      snapshotTarget,
+      typeof snapshot === "string" ? snapshot : JSON.stringify(snapshot)
+    );
+  }
   await writeFile(
     path.join(workspace, "performance-budget.json"),
     JSON.stringify({
       siteBasePath,
       domainSiteBasePath,
       domainCname,
-      distTotalBytes: 2_000_000,
-      distExcludingBookCoversBytes: 2_000_000,
+      cmsArticleGrowthAllowance: {
+        snapshotPath: cmsArticleSnapshotPath,
+        baselineCount: cmsArticleBaselineCount,
+        bytesPerAdditionalArticle: cmsArticleGrowthBytesPerArticle,
+      },
+      distTotalBytes,
+      distExcludingBookCoversBytes,
       largestJavaScriptBytes: 1_000_000,
       largestJavaScriptGzipBytes: 1_000_000,
       mainJavaScriptBytes: 1_000_000,
@@ -86,6 +127,49 @@ afterEach(async () => {
 });
 
 describe("performance budget audit", () => {
+  it("allows bounded aggregate growth for articles above the pinned CMS baseline", async () => {
+    const cwd = await fixture({
+      aggregatePayloadBytes: 200 * 1024,
+      cmsArticleCount: 163,
+      distExcludingBookCoversBytes: 16 * 1024,
+      distTotalBytes: 16 * 1024,
+    });
+    const { stdout } = await execFileAsync(process.execPath, [auditScript], { cwd });
+
+    expect(stdout).toContain(
+      "PASS CMS article growth allowance: 163 / 162 baseline articles; 262144 bytes"
+    );
+    expect(stdout).toContain("PASS dist total:");
+    expect(stdout).toContain("PASS dist excluding book covers:");
+  });
+
+  it("still rejects aggregate growth above the per-article allowance", async () => {
+    const cwd = await fixture({
+      aggregatePayloadBytes: 280 * 1024,
+      cmsArticleCount: 163,
+      distExcludingBookCoversBytes: 16 * 1024,
+      distTotalBytes: 16 * 1024,
+    });
+
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
+      stdout: expect.stringContaining("FAIL dist total:"),
+      stderr: expect.stringContaining(
+        "Performance budget exceeded: dist total, dist excluding book covers"
+      ),
+    });
+  });
+
+  it.each([
+    ["missing", null, "configured snapshot cms/published-content.json is missing"],
+    ["malformed", "{", "configured snapshot cms/published-content.json is not valid JSON"],
+  ])("fails closed when the configured CMS snapshot is %s", async (_label, snapshot, detail) => {
+    const cwd = await fixture({ cmsArticleSnapshot: snapshot });
+
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
+      stderr: expect.stringContaining(`FAIL CMS article growth allowance: ${detail}`),
+    });
+  });
+
   it("measures book covers separately from the rest of dist", async () => {
     const cwd = await fixture({ bookCoverMaximumBytes: 300 });
     const { stdout } = await execFileAsync(process.execPath, [auditScript], { cwd });

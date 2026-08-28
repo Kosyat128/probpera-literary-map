@@ -2,6 +2,8 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import { gzipSync } from "node:zlib";
 
+import { articleIdSet } from "./lib/cms-publication-state.mjs";
+
 const root = process.cwd();
 const dist = path.join(root, "dist");
 const budget = JSON.parse(
@@ -284,6 +286,90 @@ function recordFailure(label, detail) {
   }
 }
 
+function configuredSnapshotRelativePath(value) {
+  if (typeof value !== "string" || !value.trim()) {
+    return { error: "cmsArticleGrowthAllowance.snapshotPath is missing" };
+  }
+  const raw = value.trim();
+  if (
+    path.posix.isAbsolute(raw) ||
+    path.win32.isAbsolute(raw) ||
+    raw.includes("\\") ||
+    raw.includes("?") ||
+    raw.includes("#")
+  ) {
+    return { error: "cmsArticleGrowthAllowance.snapshotPath must be dist-relative" };
+  }
+  const relative = path.posix.normalize(raw.replace(/^\.\//u, ""));
+  if (!relative || relative === "." || relative === ".." || relative.startsWith("../")) {
+    return { error: "cmsArticleGrowthAllowance.snapshotPath escapes dist" };
+  }
+  return { relative };
+}
+
+async function resolveCmsArticleGrowthAllowance() {
+  const configuration = budget.cmsArticleGrowthAllowance;
+  if (!configuration || typeof configuration !== "object" || Array.isArray(configuration)) {
+    return { error: "performance-budget.json requires cmsArticleGrowthAllowance" };
+  }
+  const baselineCount = Number(configuration.baselineCount);
+  const bytesPerAdditionalArticle = Number(configuration.bytesPerAdditionalArticle);
+  if (!Number.isSafeInteger(baselineCount) || baselineCount < 0) {
+    return { error: "cmsArticleGrowthAllowance.baselineCount must be a non-negative safe integer" };
+  }
+  if (!Number.isSafeInteger(bytesPerAdditionalArticle) || bytesPerAdditionalArticle <= 0) {
+    return {
+      error:
+        "cmsArticleGrowthAllowance.bytesPerAdditionalArticle must be a positive safe integer",
+    };
+  }
+
+  const configuredPath = configuredSnapshotRelativePath(configuration.snapshotPath);
+  if (configuredPath.error) return configuredPath;
+  const snapshotPath = path.join(dist, ...configuredPath.relative.split("/"));
+  let snapshotText;
+  try {
+    snapshotText = await readFile(snapshotPath, "utf8");
+  } catch (error) {
+    return {
+      error:
+        error?.code === "ENOENT"
+          ? `configured snapshot ${configuredPath.relative} is missing`
+          : `configured snapshot ${configuredPath.relative} is unreadable: ${error.message}`,
+    };
+  }
+
+  let snapshot;
+  try {
+    snapshot = JSON.parse(snapshotText);
+  } catch {
+    return { error: `configured snapshot ${configuredPath.relative} is not valid JSON` };
+  }
+
+  let articleCount;
+  try {
+    articleCount = articleIdSet(
+      snapshot?.articles,
+      `configured snapshot ${configuredPath.relative}`
+    ).size;
+  } catch (error) {
+    return { error: error.message };
+  }
+  const additionalArticleCount = Math.max(0, articleCount - baselineCount);
+  const allowanceBytes = additionalArticleCount * bytesPerAdditionalArticle;
+  if (!Number.isSafeInteger(allowanceBytes)) {
+    return { error: "CMS article growth allowance exceeds the safe integer range" };
+  }
+  return {
+    additionalArticleCount,
+    allowanceBytes,
+    articleCount,
+    baselineCount,
+    bytesPerAdditionalArticle,
+    snapshotPath: configuredPath.relative,
+  };
+}
+
 async function auditInitialEntry() {
   const index = measured.find((item) => item.relative === "index.html");
   if (!index) {
@@ -385,11 +471,23 @@ async function auditInitialEntry() {
 
 await auditInitialEntry();
 
-enforce("dist total", total, budget.distTotalBytes);
+const cmsArticleGrowth = await resolveCmsArticleGrowthAllowance();
+if (cmsArticleGrowth.error) {
+  recordFailure("CMS article growth allowance", cmsArticleGrowth.error);
+} else {
+  console.log(
+    `PASS CMS article growth allowance: ${cmsArticleGrowth.articleCount} / ` +
+      `${cmsArticleGrowth.baselineCount} baseline articles; ` +
+      `${cmsArticleGrowth.allowanceBytes} bytes ` +
+      `(${cmsArticleGrowth.bytesPerAdditionalArticle} per additional article)`
+  );
+}
+const cmsArticleAllowanceBytes = cmsArticleGrowth.allowanceBytes || 0;
+enforce("dist total", total, budget.distTotalBytes + cmsArticleAllowanceBytes);
 enforce(
   "dist excluding book covers",
   distExcludingBookCovers,
-  budget.distExcludingBookCoversBytes
+  budget.distExcludingBookCoversBytes + cmsArticleAllowanceBytes
 );
 if (largestScript) enforce(`largest JS (${largestScript.relative})`, largestScript.bytes, budget.largestJavaScriptBytes);
 if (largestScript) enforce(`largest JS gzip (${largestScript.relative})`, largestScriptGzip, budget.largestJavaScriptGzipBytes);
