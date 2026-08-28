@@ -246,9 +246,16 @@ const stage5D1Stage4GlobeStablePaths = Object.freeze(
   )
 );
 
+const retiredPremiumCompatibilityPaths = Object.freeze([
+  "apps/admin/app/(dashboard)/articles/actions-legacy.ts",
+  "apps/admin/app/(dashboard)/articles/atomic-auto-publish-action.ts",
+]);
+
 const stage5D1PremiumCurrentStablePaths = Object.freeze(
   currentIntegrationPremiumTranslationAndHealthPaths.filter(
-    (entry) => !stage5D1AdditiveI18nAttestation.allowedPaths.includes(entry)
+    (entry) =>
+      !stage5D1AdditiveI18nAttestation.allowedPaths.includes(entry) &&
+      !retiredPremiumCompatibilityPaths.includes(entry)
   )
 );
 
@@ -264,9 +271,9 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
   premiumCurrent: Object.freeze({
     paths: stage5D1PremiumCurrentStablePaths,
     expected: Object.freeze({
-      files: 45,
+      files: 43,
       sha256:
-        "ff8bb89f2bc8ba5dd45ea017784665e8e9419c820315e930aadc4c36a00f610c",
+        "a0a0a419bfee7421bd862759c9bbd5dc9dc5399c4745a509f46afd1ca7e52407",
     }),
   }),
 });

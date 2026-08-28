@@ -30,11 +30,7 @@ import { requestPublicBuild } from "@/lib/publication";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
-import { saveArticleAction as legacySaveArticleAction } from "./actions-legacy";
-import {
-  isArticleBundleRpcAvailable,
-  saveArticleBundleRpc,
-} from "./article-bundle-rpc";
+import { saveArticleBundleRpc } from "./article-bundle-rpc";
 
 const articleSchema = z.object({
   id: z.string().uuid().optional(),
@@ -431,9 +427,6 @@ export async function saveStandardArticleAtomically(formData: FormData) {
 
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/articles/new?error=База данных не подключена");
-  if (!(await isArticleBundleRpcAvailable(supabase))) {
-    return legacySaveArticleAction(formData);
-  }
 
   const now = new Date().toISOString();
   const articleId = parsed.data.id;

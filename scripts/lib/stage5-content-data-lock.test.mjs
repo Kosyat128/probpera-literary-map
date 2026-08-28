@@ -443,6 +443,13 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       files: 47,
       sha256: "8fe4558f9539ecc52b67421e8208661ce5e25f44e1b759f4a27d476c0218d6f3",
     });
+    expect(premium.enforced.paths).not.toContain(
+      "apps/admin/app/(dashboard)/articles/actions-legacy.ts"
+    );
+    expect(premium.enforced.paths).not.toContain(
+      "apps/admin/app/(dashboard)/articles/atomic-auto-publish-action.ts"
+    );
+    expect(premium.enforced.expected.files).toBe(43);
   });
 
   it("preserves the historical Stage 5A premium-pipeline evidence", () => {

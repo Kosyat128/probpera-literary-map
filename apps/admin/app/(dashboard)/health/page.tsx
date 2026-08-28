@@ -61,12 +61,12 @@ export default async function HealthPage() {
   );
   const atomicArticleSaveLabel = atomicArticleSaveReady
     ? "Атомарно"
-    : "Legacy fallback";
+    : "Недоступно";
   const atomicArticleSaveDetail = atomicArticleSaveReady
     ? "RU + EN сохраняются одной транзакцией"
     : schemaCheckAvailable
-      ? "save_article_bundle ещё не подтверждён production-схемой"
-      : "ожидается доступный schema health-check";
+      ? "Требуется актуальная production-схема с save_article_bundle"
+      : "Проверка production-схемы недоступна; сохранение закрыто безопасно";
   const translationConfigured = adminEnv.premiumTranslationConfigured;
   const translationEnabled = adminEnv.openAiAutoTranslateArticles;
   const workersAi = adminEnv.premiumTranslationProvider === "cloudflare";

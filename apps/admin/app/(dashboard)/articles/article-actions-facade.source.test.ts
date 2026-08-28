@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
@@ -6,7 +6,6 @@ const read = (url: URL) =>
   readFileSync(url, "utf8").replace(/\r\n?/gu, "\n");
 
 const facade = read(new URL("./actions.ts", import.meta.url));
-const legacySave = read(new URL("./actions-legacy.ts", import.meta.url));
 const listPage = read(new URL("./page.tsx", import.meta.url));
 const detailPage = read(new URL("./[id]/page.tsx", import.meta.url));
 const articleCopyPicker = read(
@@ -15,8 +14,10 @@ const articleCopyPicker = read(
 const atomicStandardSave = read(
   new URL("./atomic-standard-save-action.ts", import.meta.url)
 );
-const atomicAutoPublish = read(
-  new URL("./atomic-auto-publish-action.ts", import.meta.url)
+const legacySaveUrl = new URL("./actions-legacy.ts", import.meta.url);
+const atomicAutoPublishUrl = new URL(
+  "./atomic-auto-publish-action.ts",
+  import.meta.url
 );
 
 describe("article actions facade", () => {
@@ -47,24 +48,11 @@ describe("article actions facade", () => {
     );
   });
 
-  it("keeps only the production-guarded save fallback in the legacy module", () => {
-    expect(legacySave).toContain(
-      "export async function saveArticleAction(formData: FormData)"
-    );
-    for (const movedAction of [
-      "importLegacyArticlesAction",
-      "requestSocialPublicationAction",
-      "duplicateArticleAction",
-      "changeArticleStatusAction",
-      "softDeleteArticleAction",
-      "restoreArticleRevisionAction",
-    ]) {
-      expect(legacySave).not.toContain(`function ${movedAction}`);
-    }
-    for (const guardedSave of [atomicStandardSave, atomicAutoPublish]) {
-      expect(guardedSave).toContain(
-        'saveArticleAction as legacySaveArticleAction } from "./actions-legacy"'
-      );
-    }
+  it("removes the reconciled compatibility actions and keeps one atomic save", () => {
+    expect(existsSync(legacySaveUrl)).toBe(false);
+    expect(existsSync(atomicAutoPublishUrl)).toBe(false);
+    expect(atomicStandardSave).toContain("saveArticleBundleRpc(supabase");
+    expect(atomicStandardSave).not.toContain("legacySaveArticleAction");
+    expect(atomicStandardSave).not.toContain("isArticleBundleRpcAvailable");
   });
 });
