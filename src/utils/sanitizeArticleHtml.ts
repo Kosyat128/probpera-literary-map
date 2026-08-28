@@ -1,3 +1,5 @@
+import { normalizeShortHyphens } from "./shortHyphens";
+
 const blockedElements =
   "script,style,iframe,object,embed,form,input,button,textarea,select,link,meta";
 const allowedTextTones = new Set([
@@ -58,7 +60,10 @@ function isSafeUrl(value: string) {
 }
 
 export function sanitizeArticleHtml(source: string) {
-  const document = new DOMParser().parseFromString(source, "text/html");
+  const document = new DOMParser().parseFromString(
+    normalizeShortHyphens(source),
+    "text/html"
+  );
   document.querySelectorAll(blockedElements).forEach((element) => element.remove());
 
   document.body.querySelectorAll<HTMLElement>("*").forEach((element) => {

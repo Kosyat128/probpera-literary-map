@@ -4,7 +4,7 @@
 
 Pinned baseline: `8c24038510324d00086afe05b8de78b0f09ae52e`.
 
-Production dist: **MEASURED** — 4383 files / 115067016 bytes; manifest SHA-256 `5cfcdf9e48c6377398dc62bad7aac89d163bda811a3e5a7d3b3d49a963a58ef8`.
+Production dist: **MEASURED** - 4383 files / 115067016 bytes; manifest SHA-256 `5cfcdf9e48c6377398dc62bad7aac89d163bda811a3e5a7d3b3d49a963a58ef8`.
 
 | Metric | Actual | Limit | Headroom | Result |
 | --- | ---: | ---: | ---: | --- |
@@ -26,7 +26,7 @@ Production dist: **MEASURED** — 4383 files / 115067016 bytes; manifest SHA-256
 
 ## Verified production-build gate
 
-Status: **PASS** — Official GitHub Pages artifact 9517505146 from workflow run 32719497676.
+Status: **PASS** - Official GitHub Pages artifact 9517505146 from workflow run 32719497676.
 Classification: EXACT_GITHUB_PAGES_ARTIFACT; workflow run 32719497676; artifact 9517505146; release SHA 8c24038510324d00086afe05b8de78b0f09ae52e.
 
 | Artifact | Raw bytes | Gzip bytes |
@@ -45,9 +45,9 @@ These measurements come from the recursively inventoried official GitHub Pages a
 
 - Dist assets: 1420 files / 42856810 bytes.
 - CSS: 1 files / 324296 raw bytes / 58361 gzip bytes.
-- Largest CSS: `assets/index-Cvad-RPW.css` — 324296 raw / 58361 gzip bytes.
-- Main JavaScript: `assets/index-ko5WhBaQ.js` — 682305 raw / 156780 gzip bytes.
-- Largest JavaScript: `assets/book-catalog-BjkkkIIQ.js` — 2054001 raw / 183810 gzip bytes.
+- Largest CSS: `assets/index-Cvad-RPW.css` - 324296 raw / 58361 gzip bytes.
+- Main JavaScript: `assets/index-ko5WhBaQ.js` - 682305 raw / 156780 gzip bytes.
+- Largest JavaScript: `assets/book-catalog-BjkkkIIQ.js` - 2054001 raw / 183810 gzip bytes.
 
 ### Globe chunks
 

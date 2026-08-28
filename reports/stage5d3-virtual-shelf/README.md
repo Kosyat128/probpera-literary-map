@@ -1,4 +1,4 @@
-# Stage 5D-3 — virtual shelf and spatial library
+# Stage 5D-3 - virtual shelf and spatial library
 
 Status: **PASS / READY FOR NEXT SUBLEVEL**.
 

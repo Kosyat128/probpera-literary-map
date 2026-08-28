@@ -5,6 +5,10 @@ import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
 import { sanitizeEditorTemplateHtml } from "@/lib/editor-template-html";
+import {
+  normalizeShortHyphens,
+  normalizeShortHyphensDeep,
+} from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const templateSchema = z.object({
@@ -25,9 +29,11 @@ export async function saveEditorTemplateAction(input: unknown) {
     .from("editor_templates")
     .upsert({
       owner_id: session.user.id,
-      label: parsed.data.label,
-      content_html: sanitizeEditorTemplateHtml(parsed.data.html),
-      content_json: parsed.data.json,
+      label: normalizeShortHyphens(parsed.data.label),
+      content_html: sanitizeEditorTemplateHtml(
+        normalizeShortHyphens(parsed.data.html)
+      ),
+      content_json: normalizeShortHyphensDeep(parsed.data.json),
       visibility: parsed.data.visibility,
     }, { onConflict: "owner_id,label" })
     .select("id,label,content_html,visibility,owner_id")

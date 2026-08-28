@@ -269,8 +269,8 @@ const archiveFilters: Array<{
 const periodLabels: Record<BookArchivePeriod, string> = {
   "pre-1800": "До 1800 года",
   xix: "XIX век",
-  "1900-1945": "1900–1945",
-  "1946-1999": "1946–1999",
+  "1900-1945": "1900-1945",
+  "1946-1999": "1946-1999",
   xxi: "XXI век",
   unknown: "Период не подтверждён",
 };
@@ -4594,7 +4594,7 @@ export default function BookArchiveSection({
                     openBookDetail(item.book, event.currentTarget);
                   }}
                   aria-label={`${t("Выберите книгу")}. ${t(
-                    "Нажмите на корешок — книга выйдет вперёд, а справа откроются описание и сведения."
+                    "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения."
                   )}`}
                 >
                   <BrandBookIcon />
@@ -4602,7 +4602,7 @@ export default function BookArchiveSection({
                     <strong>{t("Выберите книгу")}</strong>
                     <small>
                       {t(
-                        "Нажмите на корешок — книга выйдет вперёд, а справа откроются описание и сведения."
+                        "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения."
                       )}
                     </small>
                   </span>
@@ -4968,7 +4968,7 @@ export default function BookArchiveSection({
                     <option value="">{t("Все авторы")}</option>
                     {authorOptions.map((option) => (
                       <option key={option.key} value={option.key}>
-                        {option.label} — {option.countryLabel} (
+                        {option.label} - {option.countryLabel} (
                         {number(option.count)})
                       </option>
                     ))}

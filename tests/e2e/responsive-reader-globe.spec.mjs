@@ -188,7 +188,7 @@ test("mobile header keeps search and 44px actions in two compact sticky rows", a
       expect(target.width).toBeGreaterThanOrEqual(44);
       expect(target.height).toBeGreaterThanOrEqual(44);
     }
-    expect(geometry.heroText).toBe("Литература – это целый мир!");
+    expect(geometry.heroText).toBe("Литература - это целый мир!");
 
     await search.click();
     await expect(page.locator(".global-search")).toBeVisible();

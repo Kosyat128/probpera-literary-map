@@ -22,7 +22,7 @@ export default function GlobalError({
           standalone
           eyebrow="Системная ошибка"
           title="Кабинет временно недоступен"
-          description="Интерфейс не смог завершить загрузку. Повторите попытку — сохранённые материалы останутся в редакционной базе."
+          description="Интерфейс не смог завершить загрузку. Повторите попытку - сохранённые материалы останутся в редакционной базе."
           action={
             <button className="primary-button" type="button" onClick={reset}>
               Повторить загрузку

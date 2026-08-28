@@ -27,6 +27,7 @@ import { adminEnv } from "@/lib/env";
 import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
 import { redirect } from "@/lib/navigation";
 import { requestPublicBuild } from "@/lib/publication";
+import { normalizeShortHyphensFormData } from "@/lib/short-hyphens";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -191,6 +192,7 @@ function saveErrorPath(articleId: string | undefined, message: string) {
 }
 
 export async function saveStandardArticleAtomically(formData: FormData) {
+  normalizeShortHyphensFormData(formData);
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const actorId = session.user.id;

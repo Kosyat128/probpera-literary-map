@@ -244,7 +244,7 @@ const editorialFeatures = [
     tag: "Литературная планета",
     title: "Семь знаковых писателей Японии",
     description:
-      "От классической традиции до современной прозы — маршрут по авторам, прославившим японскую литературу.",
+      "От классической традиции до современной прозы - маршрут по авторам, прославившим японскую литературу.",
     image:
       "https://static.tildacdn.com/tild3564-6330-4630-b434-383662326664/213421.jpg",
     articleUrl: articlePath(
@@ -297,7 +297,7 @@ const sectionLinks = [
     id: "book-opinions",
     group: "Читать",
     title: "Мнение о книге",
-    copy: "Редкие издания, классика и современная литература — с контекстом и без лишних спойлеров.",
+    copy: "Редкие издания, классика и современная литература - с контекстом и без лишних спойлеров.",
     href: journalPath("book-opinions"),
     image:
       "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
@@ -351,7 +351,7 @@ const sectionLinks = [
     id: "folklore",
     group: "Культура и язык",
     title: "Фольклор и мифология",
-    copy: "Персонажи, сюжеты и образы устной традиции — от славянского фольклора до мировых мифологий.",
+    copy: "Персонажи, сюжеты и образы устной традиции - от славянского фольклора до мировых мифологий.",
     href: journalPath("folklore"),
     image:
       "https://static.tildacdn.com/tild6262-3936-4061-b465-623133623265/image.png",
@@ -388,7 +388,7 @@ const sectionLinks = [
     id: "books",
     group: "Энциклопедия",
     title: "Книжный архив",
-    copy: "Книги связаны с авторами, странами, эпохами и статьями журнала — с фильтрами и редакционной проверкой обложек.",
+    copy: "Книги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек.",
     href: "#books",
     image:
       "https://static.tildacdn.com/tild6239-6339-4864-b864-333636623730/Dj.webp",
@@ -467,7 +467,7 @@ const verifiedBookFacts = [
   {
     book: "«Разум и чувства»",
     fact:
-      "Первый роман Джейн Остин вышел в 1811 году без имени писательницы: на титульном листе было указано только «By a Lady» — «Написано леди».",
+      "Первый роман Джейн Остин вышел в 1811 году без имени писательницы: на титульном листе было указано только «By a Lady» - «Написано леди».",
     sourceLabel: "Британская библиотека",
     sourceUrl:
       "https://www.bl.uk/stories/blogs/posts/jane-austen-names-and-notability",
@@ -475,7 +475,7 @@ const verifiedBookFacts = [
   {
     book: "«Маленький принц»",
     fact:
-      "Повесть впервые издали в Нью-Йорке 6 апреля 1943 года сразу на французском и английском языках. Французское издание появилось уже после войны — в 1946 году.",
+      "Повесть впервые издали в Нью-Йорке 6 апреля 1943 года сразу на французском и английском языках. Французское издание появилось уже после войны - в 1946 году.",
     sourceLabel: "Национальная библиотека Франции",
     sourceUrl: "https://catalogue.bnf.fr/ark:/12148/cb11962706k",
   },
@@ -982,7 +982,7 @@ export default function App() {
     t,
   ]);
   const globeCoordinateReadout =
-    formatGlobeCoordinatesDms(globeCoordinateContext) || "—";
+    formatGlobeCoordinatesDms(globeCoordinateContext) || "-";
 
   const applyAtlasUrlSelection = useCallback(() => {
     const urlState = syncAtlasExperienceFromUrl();
@@ -1739,23 +1739,23 @@ export default function App() {
       ? coreHero.title
           .trim()
           .replace(
-            /^Литература\s+[—–-]\s+это целый мир[.!]?$/iu,
-            "Литература – это целый мир!"
+            /^Литература\s+-\s+это целый мир[.!]?$/iu,
+            "Литература - это целый мир!"
           )
       : "";
   const customHeroTitleParts = customHeroTitle.match(
-    /^(.+?)\s+[—–-]\s+(.+)$/u
+    /^(.+?)\s+-\s+(.+)$/u
   );
   const structuredHeroLead = customHeroTitleParts
     ? customHeroTitleParts[1].trim()
-    : t("Литература –").replace(/\s*[—–-]\s*$/u, "").trim();
+    : t("Литература -").replace(/\s*-\s*$/u, "").trim();
   const structuredHeroAccent = customHeroTitleParts
     ? customHeroTitleParts[2].trim()
     : t("это целый мир!").trim();
   const structuredHeroAccentParts = structuredHeroAccent.match(
     /^(.+\S)\s+(\S+)$/u
   );
-  const structuredHeroDash = language === "ru" ? "– " : "";
+  const structuredHeroDash = language === "ru" ? "- " : "";
   const coreAtlas = getCoreHomepageSection("atlas");
   const coreBookMonth = getCoreHomepageSection("book-month");
   const cmsBookMonthEyebrow = coreBookMonth?.eyebrow?.trim();
@@ -1813,7 +1813,7 @@ export default function App() {
         <a
           className="brand"
           href={import.meta.env.BASE_URL}
-          aria-label={t("Проба Пера — главная")}
+          aria-label={t("Проба Пера - главная")}
         >
           <img
             src={assetUrl("brand/probpera-logo.png")}
@@ -2002,7 +2002,7 @@ export default function App() {
               {...cmsCoreFieldMarker(
                 "hero",
                 "title",
-                coreHero?.title || "Литература – это целый мир!",
+                coreHero?.title || "Литература - это целый мир!",
                 { label: "Заголовок первого экрана" }
               )}
             >
@@ -2039,14 +2039,14 @@ export default function App() {
                 "hero",
                 "description",
                 coreHero?.description ||
-                  "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.",
+                  "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве.",
                 { kind: "textarea", label: "Описание первого экрана" }
               )}
             >
               {language === "ru" && coreHero?.description
                 ? coreHero.description
                 : t(
-                    "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве."
+                    "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве."
                   )}
             </p>
             <div className="hero-actions">
@@ -2435,7 +2435,7 @@ export default function App() {
                       size="md"
                       surface="dark"
                       variant="text"
-                      aria-label={`${countryName(country.code, country.name)} — ${number(country.writers.length)} ${t("авторов")}`}
+                      aria-label={`${countryName(country.code, country.name)} - ${number(country.writers.length)} ${t("авторов")}`}
                       onClick={() => {
                         selectCountry(country);
                         focusCountryPresentation();
@@ -3406,13 +3406,13 @@ export default function App() {
             >
               <span>
                 <strong>
-                  {totalWriters ? number(totalWriters) : "—"}
+                  {totalWriters ? number(totalWriters) : "-"}
                 </strong>
                 <small>{t("авторов в энциклопедии")}</small>
               </span>
               <span>
                 <strong>
-                  {totalWorks ? number(totalWorks) : "—"}
+                  {totalWorks ? number(totalWorks) : "-"}
                 </strong>
                 <small>{t("произведений в архиве")}</small>
               </span>
@@ -3420,7 +3420,7 @@ export default function App() {
                 <strong>
                   {archiveStatistics.countries
                     ? number(archiveStatistics.countries)
-                    : "—"}
+                    : "-"}
                 </strong>
                 <small>{t("стран на карте")}</small>
               </span>
@@ -3696,7 +3696,7 @@ export default function App() {
         </div>
         <div className="footer-bottom">
           <p>
-            © 2025–2026 {t("«Проба Пера»")}.{" "}
+            © 2025-2026 {t("«Проба Пера»")}.{" "}
             {t("Авторские публикации защищены законом.")}
           </p>
           <a href="mailto:probperasite@yandex.ru">probperasite@yandex.ru</a>

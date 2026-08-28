@@ -239,7 +239,7 @@ export default function RecoveryController({
     <div className="editor-recovery-controller">
       <p className={`editor-autosave-status is-${status}`} aria-live="polite">
         {editorAutosaveStatusLabel(status)}
-        {statusDetail ? ` — ${statusDetail}` : ""}
+        {statusDetail ? ` - ${statusDetail}` : ""}
       </p>
       {recovery ? (
         <EditorRecoveryPanel

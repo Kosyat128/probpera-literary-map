@@ -44,7 +44,7 @@ test("обложка и заголовок героя сохраняют ред�
   await expect(lead).not.toContainText("-");
   await expect(accent).toBeVisible();
   await expect(accentLines).toHaveCount(2);
-  await expect(accentLines.first()).toContainText("–");
+  await expect(accentLines.first()).toContainText("-");
   await expect(accent).toHaveCSS("color", "rgb(255, 181, 118)");
   await expect
     .poll(() => cover.evaluate((image) => image.currentSrc))

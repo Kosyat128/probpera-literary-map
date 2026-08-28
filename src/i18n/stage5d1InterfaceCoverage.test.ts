@@ -26,7 +26,7 @@ const D1_DYNAMIC_LABEL_CONSTANTS = new Set([
   "searchGroupLabels",
 ]);
 
-const IDENTICAL_SYMBOL_ALLOWLIST = new Set(["1900–1945", "1946–1999"]);
+const IDENTICAL_SYMBOL_ALLOWLIST = new Set(["1900-1945", "1946-1999"]);
 const CYRILLIC_TEXT = /[\u0400-\u04ff]/u;
 
 function sourceFile(filePath: string) {

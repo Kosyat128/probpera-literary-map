@@ -1,4 +1,4 @@
-# Stage 5G — visual and interaction matrix
+# Stage 5G - visual and interaction matrix
 
 ## Certified baseline
 
@@ -7,7 +7,7 @@
 - Current generated main-sync marker: `c1939a632bc4c3d36649e7c4b2076fcc0711d2c4`
 - Artifact: existing `dist/` (no rebuild was performed by this audit)
 - Browser: Playwright Chrome, one worker
-- Result: **PASS — 12/12 applicable scenarios**
+- Result: **PASS - 12/12 applicable scenarios**
 
 ## Matrix coverage
 

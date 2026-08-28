@@ -1,3 +1,5 @@
+import { normalizeShortHyphens } from "./short-hyphens";
+
 export type SiteCopyValues = {
   ru: Record<string, string>;
   en: Record<string, string>;
@@ -19,7 +21,9 @@ function storedLocale(value: unknown) {
   const result: Record<string, string> = {};
   for (const [key, candidate] of Object.entries(objectValue(value))) {
     if (typeof candidate === "string" && candidate.trim()) {
-      result[key] = candidate.trim();
+      result[normalizeShortHyphens(key)] = normalizeShortHyphens(
+        candidate.trim()
+      );
     }
   }
   return result;

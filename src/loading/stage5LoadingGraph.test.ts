@@ -50,7 +50,7 @@ describe("Stage 5F demand-owned loading graph", () => {
         name: "First",
         writers: [
           { id: "one", name: "Ada Author", wikidataId: "Q10" },
-          { id: "fallback", name: "No Id", years: "1900–1980" },
+          { id: "fallback", name: "No Id", years: "1900-1980" },
         ],
       },
       {

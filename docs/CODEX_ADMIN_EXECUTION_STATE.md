@@ -15,7 +15,7 @@ Last updated: `2026-08-28T17:47:27Z`
 - [x] Next.js upgraded from `16.3.0` to patched `16.3.3` without unrelated dependency upgrades.
 - [x] Root/global error boundaries and graceful Russian dependency states added; all 18 nullable Supabase pages no longer render blank screens.
 - [x] Admin OpenNext Worker built successfully and size gate passed at `2862.20 / 2900 KiB` gzip.
-- [x] Phase 1–2 PR `#132` merged by the repository-required rebase strategy; deploy-admin and Quality are green (`114` browser checks passed, `18` skipped).
+- [x] Phase 1-2 PR `#132` merged by the repository-required rebase strategy; deploy-admin and Quality are green (`114` browser checks passed, `18` skipped).
 - [x] Phase 3 typed Article Editor workspace bridge implemented without DOM scraping, `MutationObserver`, heading-text parsing or synthetic clicks; focused tests (`21/21`) and admin TypeScript passed.
 - [x] The first production restoration attempt (`33168427295`) failed closed before mutation because the guard compared the public route segment with the CMS category slug. The CMS contract is now pinned correctly to `book-opinions`; focused restore tests pass (`8/8`).
 - [x] Shared editor media workflow extracted and reused by Article/Page: ordered multi-file upload, exact single-file replacement, drag/paste handling, cancel/retry and the read-only media library preserve authoritative `mediaId` metadata.
@@ -35,14 +35,14 @@ Last updated: `2026-08-28T17:47:27Z`
 
 ## Pending
 
-- [ ] Phase 4 — media and gallery.
+- [ ] Phase 4 - media and gallery.
   - [ ] Add shared Article/Page inline-image resizing: width presets plus a bounded custom width, aspect ratio preserved by default, responsive max-width 100%, and typed sanitized round-trip attributes rendered identically in editor preview and the public reader.
-- [ ] Phase 5 — Style Engine and Site Studio.
-- [ ] Phase 6 — Data Studio.
-- [ ] Phase 7 — translation runtime and durable jobs.
-- [ ] Phase 8 — site copy, SEO and operations.
-- [ ] Phase 9 — route/module coverage closure.
-- [ ] Phase 10 — final QA.
+- [ ] Phase 5 - Style Engine and Site Studio.
+- [ ] Phase 6 - Data Studio.
+- [ ] Phase 7 - translation runtime and durable jobs.
+- [ ] Phase 8 - site copy, SEO and operations.
+- [ ] Phase 9 - route/module coverage closure.
+- [ ] Phase 10 - final QA.
 - [ ] Final QA, release and production verification.
 
 ## Production reconciliation evidence
@@ -52,9 +52,9 @@ Last updated: `2026-08-28T17:47:27Z`
 
 ## Tests already green for current relevant code
 
-- Exact-main Quality run `33159539777` — `fd683994`.
-- Pages run `33159539789` and live-security run `33160046572` — `fd683994`.
-- Exact-record restoration and resilience source contracts — 2 files, 11 tests.
+- Exact-main Quality run `33159539777` - `fd683994`.
+- Pages run `33159539789` and live-security run `33160046572` - `fd683994`.
+- Exact-record restoration and resilience source contracts - 2 files, 11 tests.
 - Admin TypeScript and Cloudflare TypeScript configurations.
 - OpenNext production build on Next `16.3.3` and Worker gzip size gate.
 - PR `#132` deploy-admin run `33166448296` and Quality run `33166448257`.

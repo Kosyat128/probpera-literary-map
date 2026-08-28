@@ -167,7 +167,7 @@ describe("approved Complete Shelf outer presentation", () => {
     );
     expect(controller).toContain('className="book-shelf-scene-hint"');
     expect(controller).toContain('t("Выберите книгу")');
-    expect(controller).toContain("Нажмите на корешок — книга выйдет вперёд");
+    expect(controller).toContain("Нажмите на корешок - книга выйдет вперёд");
     expect(cssRule(".book-shelf-scene-hint")).toContain("z-index: 4");
   });
 

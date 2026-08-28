@@ -4,6 +4,10 @@ import { revalidatePath } from "next/cache";
 
 import { requireStaff } from "@/lib/auth";
 import { requestPublicBuild, type PublicationState } from "@/lib/publication";
+import {
+  normalizeShortHyphens,
+  normalizeShortHyphensDeep,
+} from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
   mergeInlineRussianSiteCopy,
@@ -41,8 +45,8 @@ export async function saveInlineSiteCopyAction(input: {
   const session = await requireStaff();
   if (!session?.user) return { ok: false, error: "Требуется вход в редакцию." };
 
-  const key = String(input.key || "").trim();
-  const value = String(input.value || "").trim();
+  const key = normalizeShortHyphens(String(input.key || "").trim());
+  const value = normalizeShortHyphens(String(input.value || "").trim());
   if (!validInterfaceKey(key)) {
     return { ok: false, error: "Некорректный ключ текста." };
   }
@@ -78,7 +82,7 @@ export async function saveInlineSiteCopyAction(input: {
       ...existingSettings,
       systemKey: SITE_COPY_SYSTEM_KEY,
       version: 1,
-      siteCopy,
+      siteCopy: normalizeShortHyphensDeep(siteCopy),
     },
     display_order: SITE_COPY_DISPLAY_ORDER,
     is_enabled: true,

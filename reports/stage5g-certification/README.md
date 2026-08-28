@@ -1,4 +1,4 @@
-# Stage 5G — final local certification
+# Stage 5G - final local certification
 
 - Tested product commit: `00043d57ad43208e5cff9e9da13345d308dd52d0`
 - Main synchronization commit: `c1939a632bc4c3d36649e7c4b2076fcc0711d2c4`
@@ -6,7 +6,7 @@
 - Environment: Windows, bundled Node.js runtime, Playwright Chrome
 - Certification date: 2026-08-28 (Europe/Moscow)
 
-The tested commit is a linear continuation of the completed Stage 5A–5F work.
+The tested commit is a linear continuation of the completed Stage 5A-5F work.
 The Bookshelf implementation was not restarted or replaced. The final block
 closes cumulative interface-language coverage, checkout-portable security and
 database source contracts, current owner locks, root-domain performance
@@ -42,11 +42,11 @@ changed surface was limited to the eight diagnosed expectations/timeouts.
   expectations were then corrected and their focused owner/governance suites
   passed.
 - Admin Next.js production build: **PASS**.
-- Root-domain production build: **PASS** — `162` static article pages and
+- Root-domain production build: **PASS** - `162` static article pages and
   `2,271` legacy redirects.
-- Domain audit: **PASS** — `12,524 / 12,524` checks.
-- SEO audit: **PASS** — `5,317 / 5,317` checks.
-- CMS publication metadata: **PASS** — `162` ready, `0` mismatches.
+- Domain audit: **PASS** - `12,524 / 12,524` checks.
+- SEO audit: **PASS** - `5,317 / 5,317` checks.
+- CMS publication metadata: **PASS** - `162` ready, `0` mismatches.
 - Content, editorial, media, country, biography, identity, Nobel, book-cover
   and Globe deterministic audits: **PASS**.
 

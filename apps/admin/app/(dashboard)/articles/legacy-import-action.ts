@@ -11,6 +11,7 @@ import { positionLeadingIllustrationHtml } from "@/lib/article-leading-illustrat
 import { adminEnv } from "@/lib/env";
 import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
 import { createSlug } from "@/lib/slug";
+import { normalizeShortHyphensDeep } from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const allowedArticleHtml = {
@@ -153,7 +154,7 @@ export async function importLegacyArticlesAction() {
       const categorySlug = legacyCategoryBySection[article.sectionId || ""];
       const slug = createSlug(article.title) || "material";
       const path = legacyPath(article.url);
-      return {
+      return normalizeShortHyphensDeep({
         legacy_id: article.id,
         title: article.title.trim(),
         excerpt: String(article.description || "").trim().slice(0, 700),
@@ -179,7 +180,7 @@ export async function importLegacyArticlesAction() {
         allow_indexing: false,
         created_by: userId,
         updated_by: userId,
-      };
+      });
     });
     const { error } = await supabase.from("articles").insert(payload);
     if (error) {

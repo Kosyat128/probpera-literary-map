@@ -19,15 +19,15 @@
 
 ## Owner locks
 
-- **HEADER-001/002 — KEEP:** `.topline`, `.site-header`, `.mobile-nav`.
-- **HERO-001/002 — KEEP:** `.magazine-hero`, `.hero-editorial`, `.hero-cover`, `.primary-action`.
-- **STAGE4-GLOBE — KEEP:** `.atlas-section`, `.atlas-experience-surface`, `.literary-globe`.
-- **AUTHOR-TEXT — KEEP:** `.article-reader-content`.
-- **BOOK-ARCHIVE-5A-5C — KEEP:** `.book-archive-section`.
+- **HEADER-001/002 - KEEP:** `.topline`, `.site-header`, `.mobile-nav`.
+- **HERO-001/002 - KEEP:** `.magazine-hero`, `.hero-editorial`, `.hero-cover`, `.primary-action`.
+- **STAGE4-GLOBE - KEEP:** `.atlas-section`, `.atlas-experience-surface`, `.literary-globe`.
+- **AUTHOR-TEXT - KEEP:** `.article-reader-content`.
+- **BOOK-ARCHIVE-5A-5C - KEEP:** `.book-archive-section`.
 
 ## Measured runtime findings
 
-- **A11Y-FORCED-COLORS-GLOBAL-SEARCH-FOCUS — FIX / Stage 5F:** `.global-search-trigger` keeps focus in forced-colors: active, but computed `outlineStyle=none` and `boxShadow=none` on desktop + mobile. HEADER-001/002 geometry remains locked.
+- **A11Y-FORCED-COLORS-GLOBAL-SEARCH-FOCUS - FIX / Stage 5F:** `.global-search-trigger` keeps focus in forced-colors: active, but computed `outlineStyle=none` and `boxShadow=none` on desktop + mobile. HEADER-001/002 geometry remains locked.
 
 ## Reproduction
 

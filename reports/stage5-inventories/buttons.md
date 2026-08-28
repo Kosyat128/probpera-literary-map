@@ -26,34 +26,34 @@ Runtime computed values are **NOT MEASURED** unless an explicit measured observa
 | `.sections-all-button` | **TUNE** | 3 | all viewports; @media (max-width: 680px) | RU+EN | NOT MEASURED | Normalize directory expansion action with shared controls. |
 | `.calendar-navigation button` | **FIX** | 7 | all viewports; @media (hover: none); @media (prefers-reduced-motion: reduce) | RU+EN | NOT MEASURED | Legacy circular buttons need shared focus/size verification. |
 
-## KEEP — `.primary-action`
+## KEEP - `.primary-action`
 
 Open Globe button is part of the Hero owner lock.
 
-- `.primary-action` — `src/index.css:1588`; viewport: all viewports; locale: RU+EN.
+- `.primary-action` - `src/index.css:1588`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
   - `background: var(--orange)`
   - `box-shadow: 0 13px 30px rgba(209, 65, 5, 0.27)`
-- `.primary-action:hover` — `src/index.css:1594`; viewport: all viewports; locale: RU+EN.
+- `.primary-action:hover` - `src/index.css:1594`; viewport: all viewports; locale: RU+EN.
   - `background: #ff8935`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.secondary-action`
+## KEEP - `.secondary-action`
 
 Hero secondary action is part of the Hero owner lock.
 
-- `.secondary-action` — `src/index.css:1598`; viewport: all viewports; locale: RU+EN.
+- `.secondary-action` - `src/index.css:1598`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
   - `border: 1px solid rgba(255, 255, 255, 0.3)`
-- `.secondary-action:hover` — `src/index.css:1603`; viewport: all viewports; locale: RU+EN.
+- `.secondary-action:hover` - `src/index.css:1603`; viewport: all viewports; locale: RU+EN.
   - `background: rgba(255, 255, 255, 0.09)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## FIX — `.global-search-trigger`
+## FIX - `.global-search-trigger`
 
 Header geometry remains owner locked, but the measured forced-colors focus indicator requires a scoped Stage 5F accessibility fix.
 
-- `.global-search-trigger` — `src/index.css:12567`; viewport: all viewports; locale: RU+EN.
+- `.global-search-trigger` - `src/index.css:12567`; viewport: all viewports; locale: RU+EN.
   - `display: inline-flex`
   - `gap: 8px`
   - `align-items: center`
@@ -64,16 +64,16 @@ Header geometry remains owner locked, but the measured forced-colors focus indic
   - `border: 1px solid rgba(255, 255, 255, 0.16)`
   - `border-radius: 999px`
   - `cursor: pointer`
-- `.global-search-trigger > span` — `src/index.css:12580`; viewport: all viewports; locale: RU+EN.
+- `.global-search-trigger > span` - `src/index.css:12580`; viewport: all viewports; locale: RU+EN.
   - `color: var(--orange-soft)`
   - `font-family: var(--serif)`
   - `font-size: 21px`
-- `.global-search-trigger small` — `src/index.css:12586`; viewport: all viewports; locale: RU+EN.
+- `.global-search-trigger small` - `src/index.css:12586`; viewport: all viewports; locale: RU+EN.
   - `font-size: 8px`
   - `font-weight: 900`
   - `letter-spacing: 0.08em`
   - `text-transform: uppercase`
-- `.global-search-trigger kbd` — `src/index.css:12593`; viewport: all viewports; locale: RU+EN.
+- `.global-search-trigger kbd` - `src/index.css:12593`; viewport: all viewports; locale: RU+EN.
   - `padding: 2px 5px`
   - `color: rgba(255, 255, 255, 0.45)`
   - `font: inherit`
@@ -81,13 +81,13 @@ Header geometry remains owner locked, but the measured forced-colors focus indic
   - `background: rgba(255, 255, 255, 0.08)`
   - `border: 1px solid rgba(255, 255, 255, 0.12)`
   - `border-radius: 4px`
-- `.global-search-trigger` — `src/index.css:13877`; viewport: @media (max-width: 1520px); locale: RU+EN.
+- `.global-search-trigger` - `src/index.css:13877`; viewport: @media (max-width: 1520px); locale: RU+EN.
   - `width: 38px`
   - `justify-content: center`
   - `padding: 0`
-- `.global-search-trigger small` — `src/index.css:13883`; viewport: @media (max-width: 1520px); locale: RU+EN.
+- `.global-search-trigger small` - `src/index.css:13883`; viewport: @media (max-width: 1520px); locale: RU+EN.
   - `display: none`
-- `.global-search-trigger kbd` — `src/index.css:13883`; viewport: @media (max-width: 1520px); locale: RU+EN.
+- `.global-search-trigger kbd` - `src/index.css:13883`; viewport: @media (max-width: 1520px); locale: RU+EN.
   - `display: none`
 - Runtime observation `A11Y-FORCED-COLORS-GLOBAL-SEARCH-FOCUS`: **MEASURED / FIX**; forced-colors: active; desktop + mobile; locale: NOT REPORTED; state: focus retained.
   - `outlineStyle: none`
@@ -96,11 +96,11 @@ Header geometry remains owner locked, but the measured forced-colors focus indic
   - Target: **Stage 5F**; owner lock: `HEADER-001/002` (geometry remains locked).
   - Evidence: Runtime forced-colors baseline reported by the Stage 5A browser audit.
 
-## KEEP — `.reader-button`
+## KEEP - `.reader-button`
 
 Header action geometry is owner locked.
 
-- `.reader-button` — `src/index.css:1168`; viewport: all viewports; locale: RU+EN.
+- `.reader-button` - `src/index.css:1168`; viewport: all viewports; locale: RU+EN.
   - `display: inline-flex`
   - `gap: 10px`
   - `align-items: center`
@@ -114,7 +114,7 @@ Header action geometry is owner locked.
   - `border-radius: 999px`
   - `cursor: pointer`
   - `transition: background 180ms ease, border-color 180ms ease, transform 180ms ease`
-- `.reader-button span` — `src/index.css:1188`; viewport: all viewports; locale: RU+EN.
+- `.reader-button span` - `src/index.css:1188`; viewport: all viewports; locale: RU+EN.
   - `display: grid`
   - `place-items: center`
   - `width: 28px`
@@ -124,32 +124,32 @@ Header action geometry is owner locked.
   - `font-size: 14px`
   - `background: var(--orange)`
   - `border-radius: 50%`
-- `.reader-button svg` — `src/index.css:1200`; viewport: all viewports; locale: RU+EN.
+- `.reader-button svg` - `src/index.css:1200`; viewport: all viewports; locale: RU+EN.
   - `width: 16px`
   - `height: 16px`
-- `.reader-button:hover` — `src/index.css:1210`; viewport: all viewports; locale: RU+EN.
+- `.reader-button:hover` - `src/index.css:1210`; viewport: all viewports; locale: RU+EN.
   - `background: rgba(255, 255, 255, 0.12)`
   - `border-color: rgba(255, 255, 255, 0.45)`
   - `transform: translateY(-1px)`
-- `.reader-button` — `src/index.css:15704`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.reader-button` - `src/index.css:15704`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `width: 42px`
   - `min-height: 42px`
   - `padding: 6px`
   - `color: transparent`
-- `.reader-button span` — `src/index.css:15712`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.reader-button span` - `src/index.css:15712`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `color: var(--violet-800)`
-- `.reader-button` — `src/index.css:17347`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.reader-button` - `src/index.css:17347`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `width: 44px`
   - `min-width: 44px`
   - `height: 44px`
   - `min-height: 44px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.atlas-filters button`
+## KEEP - `.atlas-filters button`
 
 Stage 4 Globe controls are locked.
 
-- `.atlas-filters button` — `src/index.css:1959`; viewport: all viewports; locale: RU+EN.
+- `.atlas-filters button` - `src/index.css:1959`; viewport: all viewports; locale: RU+EN.
   - `display: inline-flex`
   - `gap: 9px`
   - `align-items: center`
@@ -163,26 +163,26 @@ Stage 4 Globe controls are locked.
   - `border-radius: 999px`
   - `cursor: pointer`
   - `transition: color 160ms ease, background 160ms ease, border-color 160ms ease`
-- `.atlas-filters button .ui-action__label > span` — `src/index.css:1980`; viewport: all viewports; locale: RU+EN.
+- `.atlas-filters button .ui-action__label > span` - `src/index.css:1980`; viewport: all viewports; locale: RU+EN.
   - `color: var(--ui-text-muted-dark)`
   - `font-size: 10px`
-- `.atlas-filters button:hover` — `src/index.css:1985`; viewport: all viewports; locale: RU+EN.
+- `.atlas-filters button:hover` - `src/index.css:1985`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
   - `background: rgba(246, 117, 24, 0.14)`
   - `border-color: rgba(255, 154, 69, 0.55)`
-- `.atlas-filters button.is-active` — `src/index.css:1985`; viewport: all viewports; locale: RU+EN.
+- `.atlas-filters button.is-active` - `src/index.css:1985`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
   - `background: rgba(246, 117, 24, 0.14)`
   - `border-color: rgba(255, 154, 69, 0.55)`
-- `.atlas-filters button.is-active .ui-action__label > span` — `src/index.css:1992`; viewport: all viewports; locale: RU+EN.
+- `.atlas-filters button.is-active .ui-action__label > span` - `src/index.css:1992`; viewport: all viewports; locale: RU+EN.
   - `color: var(--orange-soft)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.ui-action`
+## KEEP - `.ui-action`
 
 Canonical accessible shared action primitive.
 
-- `.ui-action` — `src/index.css:18802`; viewport: all viewports; locale: RU+EN.
+- `.ui-action` - `src/index.css:18802`; viewport: all viewports; locale: RU+EN.
   - `display: inline-flex`
   - `align-items: center`
   - `justify-content: center`
@@ -195,36 +195,36 @@ Canonical accessible shared action primitive.
   - `border: 1px solid transparent`
   - `border-radius: var(--ui-radius-control)`
   - `transition: color var(--ui-transition-fast), background-color var(--ui-transition-fast), border-color var(--ui-transition-fast), box-shadow var(--ui-transition-fast), transform var(--ui-transition-fast)`
-- `.ui-action` — `src/index.css:18825`; viewport: all viewports; locale: RU+EN.
+- `.ui-action` - `src/index.css:18825`; viewport: all viewports; locale: RU+EN.
   - `gap: var(--ui-space-2)`
   - `padding-inline: var(--ui-space-4)`
-- `.ui-action:focus-visible` — `src/index.css:18920`; viewport: all viewports; locale: RU+EN.
+- `.ui-action:focus-visible` - `src/index.css:18920`; viewport: all viewports; locale: RU+EN.
   - `outline: 2px solid var(--ui-focus-color)`
   - `outline-offset: 3px`
   - `box-shadow: var(--ui-focus-ring)`
-- `.ui-action:disabled` — `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
+- `.ui-action:disabled` - `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
   - `cursor: not-allowed`
   - `opacity: 0.52`
   - `transform: none`
-- `.ui-action[aria-disabled="true"]` — `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
+- `.ui-action[aria-disabled="true"]` - `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
   - `cursor: not-allowed`
   - `opacity: 0.52`
   - `transform: none`
-- `.ui-action.is-loading > :not(.ui-action__spinner)` — `src/index.css:18973`; viewport: all viewports; locale: RU+EN.
+- `.ui-action.is-loading > :not(.ui-action__spinner)` - `src/index.css:18973`; viewport: all viewports; locale: RU+EN.
   - `visibility: hidden`
-- `.ui-action` — `src/index.css:18985`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.ui-action` - `src/index.css:18985`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `transition: none !important`
-- `.ui-action` — `src/index.css:18996`; viewport: @media (forced-colors: active); locale: RU+EN.
+- `.ui-action` - `src/index.css:18996`; viewport: @media (forced-colors: active); locale: RU+EN.
   - `border-color: ButtonText`
-- `.ui-action:focus-visible` — `src/index.css:19001`; viewport: @media (forced-colors: active); locale: RU+EN.
+- `.ui-action:focus-visible` - `src/index.css:19001`; viewport: @media (forced-colors: active); locale: RU+EN.
   - `outline-color: Highlight`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.ui-icon-button`
+## KEEP - `.ui-icon-button`
 
 Canonical accessible icon-button primitive.
 
-- `.ui-icon-button` — `src/index.css:18802`; viewport: all viewports; locale: RU+EN.
+- `.ui-icon-button` - `src/index.css:18802`; viewport: all viewports; locale: RU+EN.
   - `display: inline-flex`
   - `align-items: center`
   - `justify-content: center`
@@ -237,112 +237,112 @@ Canonical accessible icon-button primitive.
   - `border: 1px solid transparent`
   - `border-radius: var(--ui-radius-control)`
   - `transition: color var(--ui-transition-fast), background-color var(--ui-transition-fast), border-color var(--ui-transition-fast), box-shadow var(--ui-transition-fast), transform var(--ui-transition-fast)`
-- `.ui-icon-button` — `src/index.css:18845`; viewport: all viewports; locale: RU+EN.
+- `.ui-icon-button` - `src/index.css:18845`; viewport: all viewports; locale: RU+EN.
   - `width: var(--ui-control-md)`
   - `min-width: var(--ui-control-md)`
   - `height: var(--ui-control-md)`
   - `padding: 0`
-- `.ui-icon-button:not(:disabled):hover` — `src/index.css:18895`; viewport: all viewports; locale: RU+EN.
+- `.ui-icon-button:not(:disabled):hover` - `src/index.css:18895`; viewport: all viewports; locale: RU+EN.
   - `color: var(--orange-deep)`
   - `background: rgba(246, 117, 24, 0.09)`
   - `border-color: rgba(213, 82, 8, 0.5)`
-- `.ui-icon-button:focus-visible` — `src/index.css:18920`; viewport: all viewports; locale: RU+EN.
+- `.ui-icon-button:focus-visible` - `src/index.css:18920`; viewport: all viewports; locale: RU+EN.
   - `outline: 2px solid var(--ui-focus-color)`
   - `outline-offset: 3px`
   - `box-shadow: var(--ui-focus-ring)`
-- `.ui-icon-button:disabled` — `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
+- `.ui-icon-button:disabled` - `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
   - `cursor: not-allowed`
   - `opacity: 0.52`
   - `transform: none`
-- `.ui-icon-button.is-loading > :not(.ui-action__spinner)` — `src/index.css:18973`; viewport: all viewports; locale: RU+EN.
+- `.ui-icon-button.is-loading > :not(.ui-action__spinner)` - `src/index.css:18973`; viewport: all viewports; locale: RU+EN.
   - `visibility: hidden`
-- `.ui-icon-button` — `src/index.css:18985`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.ui-icon-button` - `src/index.css:18985`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `transition: none !important`
-- `.ui-icon-button` — `src/index.css:18996`; viewport: @media (forced-colors: active); locale: RU+EN.
+- `.ui-icon-button` - `src/index.css:18996`; viewport: @media (forced-colors: active); locale: RU+EN.
   - `border-color: ButtonText`
-- `.ui-icon-button:focus-visible` — `src/index.css:19001`; viewport: @media (forced-colors: active); locale: RU+EN.
+- `.ui-icon-button:focus-visible` - `src/index.css:19001`; viewport: @media (forced-colors: active); locale: RU+EN.
   - `outline-color: Highlight`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.ui-action--primary`
+## KEEP - `.ui-action--primary`
 
 Canonical brand action states.
 
-- `.ui-action--primary` — `src/index.css:18864`; viewport: all viewports; locale: RU+EN.
+- `.ui-action--primary` - `src/index.css:18864`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
   - `background: var(--ui-primary)`
   - `border-color: var(--ui-primary)`
-- `.ui-action--primary:not(:disabled):hover` — `src/index.css:18870`; viewport: all viewports; locale: RU+EN.
+- `.ui-action--primary:not(:disabled):hover` - `src/index.css:18870`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
   - `background: var(--ui-primary-hover)`
   - `border-color: var(--ui-primary-hover)`
-- `.ui-action--primary:not(:disabled):active` — `src/index.css:18876`; viewport: all viewports; locale: RU+EN.
+- `.ui-action--primary:not(:disabled):active` - `src/index.css:18876`; viewport: all viewports; locale: RU+EN.
   - `background: var(--ui-primary-active)`
   - `border-color: var(--ui-primary-active)`
   - `transform: translateY(1px)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.ui-action--secondary`
+## KEEP - `.ui-action--secondary`
 
 Canonical secondary action states.
 
-- `.ui-action--secondary` — `src/index.css:18882`; viewport: all viewports; locale: RU+EN.
+- `.ui-action--secondary` - `src/index.css:18882`; viewport: all viewports; locale: RU+EN.
   - `color: var(--violet-800)`
   - `background: transparent`
   - `border-color: rgba(75, 8, 124, 0.3)`
-- `.ui-action--secondary.ui-action--dark` — `src/index.css:18888`; viewport: all viewports; locale: RU+EN.
+- `.ui-action--secondary.ui-action--dark` - `src/index.css:18888`; viewport: all viewports; locale: RU+EN.
   - `color: rgba(255, 255, 255, 0.9)`
   - `background: rgba(19, 2, 32, 0.2)`
   - `border-color: rgba(255, 255, 255, 0.26)`
-- `.ui-action--secondary:not(:disabled):hover` — `src/index.css:18895`; viewport: all viewports; locale: RU+EN.
+- `.ui-action--secondary:not(:disabled):hover` - `src/index.css:18895`; viewport: all viewports; locale: RU+EN.
   - `color: var(--orange-deep)`
   - `background: rgba(246, 117, 24, 0.09)`
   - `border-color: rgba(213, 82, 8, 0.5)`
-- `.ui-action--secondary.ui-action--dark:not(:disabled):hover` — `src/index.css:18902`; viewport: all viewports; locale: RU+EN.
+- `.ui-action--secondary.ui-action--dark:not(:disabled):hover` - `src/index.css:18902`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
   - `background: rgba(255, 255, 255, 0.1)`
   - `border-color: rgba(255, 183, 111, 0.58)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.ui-action--text`
+## KEEP - `.ui-action--text`
 
 Canonical text-action states.
 
-- `.ui-action--text` — `src/index.css:18909`; viewport: all viewports; locale: RU+EN.
+- `.ui-action--text` - `src/index.css:18909`; viewport: all viewports; locale: RU+EN.
   - `padding-inline: var(--ui-space-3)`
   - `background: transparent`
   - `border-color: transparent`
-- `.ui-action--text:not(:disabled):hover` — `src/index.css:18915`; viewport: all viewports; locale: RU+EN.
+- `.ui-action--text:not(:disabled):hover` - `src/index.css:18915`; viewport: all viewports; locale: RU+EN.
   - `color: var(--orange-deep)`
   - `background: rgba(246, 117, 24, 0.08)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.book-of-day .book-action-primary`
+## TUNE - `.book-of-day .book-action-primary`
 
 Align scoped Book Month action with the foundation.
 
-- `.book-of-day .book-action-primary` — `src/index.css:17542`; viewport: all viewports; locale: RU+EN.
+- `.book-of-day .book-action-primary` - `src/index.css:17542`; viewport: all viewports; locale: RU+EN.
   - `color: #fff9f1`
   - `background: linear-gradient(135deg, #a73105, #b94309)`
   - `border-color: rgba(255, 213, 174, 0.66)`
   - `box-shadow: 0 12px 28px rgba(11, 1, 19, 0.26)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.book-of-day .book-action-secondary`
+## TUNE - `.book-of-day .book-action-secondary`
 
 Align scoped Book Month action with the foundation.
 
-- `.book-of-day .book-action-secondary` — `src/index.css:17549`; viewport: all viewports; locale: RU+EN.
+- `.book-of-day .book-action-secondary` - `src/index.css:17549`; viewport: all viewports; locale: RU+EN.
   - `color: rgba(255, 255, 255, 0.84)`
   - `background: rgba(255, 255, 255, 0.055)`
   - `border-color: rgba(255, 255, 255, 0.2)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.section-link`
+## TUNE - `.section-link`
 
 Normalize small editorial CTA type and focus treatment.
 
-- `.section-link` — `src/index.css:6297`; viewport: all viewports; locale: RU+EN.
+- `.section-link` - `src/index.css:6297`; viewport: all viewports; locale: RU+EN.
   - `padding: 12px 22px`
   - `color: rgba(255, 255, 255, 0.42)`
   - `font-size: 8px`
@@ -351,25 +351,25 @@ Normalize small editorial CTA type and focus treatment.
   - `text-decoration: none`
   - `text-transform: uppercase`
   - `border-top: 1px solid rgba(255, 255, 255, 0.08)`
-- `.section-link:hover` — `src/index.css:6308`; viewport: all viewports; locale: RU+EN.
+- `.section-link:hover` - `src/index.css:6308`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
-- `.section-link` — `src/index.css:16708`; viewport: all viewports; locale: RU+EN.
+- `.section-link` - `src/index.css:16708`; viewport: all viewports; locale: RU+EN.
   - `font-size: 10px`
   - `line-height: 1.4`
-- `.section-link` — `src/index.css:16714`; viewport: all viewports; locale: RU+EN.
+- `.section-link` - `src/index.css:16714`; viewport: all viewports; locale: RU+EN.
   - `display: flex`
   - `align-items: center`
   - `min-height: 44px`
   - `color: rgba(255, 255, 255, 0.68)`
-- `.section-link:focus-visible` — `src/index.css:16721`; viewport: all viewports; locale: RU+EN.
+- `.section-link:focus-visible` - `src/index.css:16721`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.sections-all-button`
+## TUNE - `.sections-all-button`
 
 Normalize directory expansion action with shared controls.
 
-- `.sections-all-button` — `src/index.css:11357`; viewport: all viewports; locale: RU+EN.
+- `.sections-all-button` - `src/index.css:11357`; viewport: all viewports; locale: RU+EN.
   - `display: inline-flex`
   - `gap: 12px`
   - `align-items: center`
@@ -382,19 +382,19 @@ Normalize directory expansion action with shared controls.
   - `text-decoration: none`
   - `text-transform: uppercase`
   - `border: 1px solid rgba(255, 255, 255, 0.2)`
-- `.sections-all-button:hover` — `src/index.css:11372`; viewport: all viewports; locale: RU+EN.
+- `.sections-all-button:hover` - `src/index.css:11372`; viewport: all viewports; locale: RU+EN.
   - `background: rgba(246, 117, 24, 0.14)`
   - `border-color: rgba(246, 117, 24, 0.6)`
-- `.sections-all-button` — `src/index.css:12438`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.sections-all-button` - `src/index.css:12438`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `width: 100%`
   - `justify-content: space-between`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## FIX — `.calendar-navigation button`
+## FIX - `.calendar-navigation button`
 
 Legacy circular buttons need shared focus/size verification.
 
-- `.calendar-navigation button` — `src/index.css:7566`; viewport: all viewports; locale: RU+EN.
+- `.calendar-navigation button` - `src/index.css:7566`; viewport: all viewports; locale: RU+EN.
   - `display: grid`
   - `place-items: center`
   - `width: 34px`
@@ -405,24 +405,24 @@ Legacy circular buttons need shared focus/size verification.
   - `border-radius: 50%`
   - `cursor: pointer`
   - `transition: color 160ms ease, background 160ms ease, border-color 160ms ease, transform 160ms ease`
-- `.calendar-navigation button svg` — `src/index.css:7583`; viewport: all viewports; locale: RU+EN.
+- `.calendar-navigation button svg` - `src/index.css:7583`; viewport: all viewports; locale: RU+EN.
   - `display: block`
   - `width: 15px`
   - `height: 15px`
-- `.calendar-navigation button:hover` — `src/index.css:7594`; viewport: all viewports; locale: RU+EN.
+- `.calendar-navigation button:hover` - `src/index.css:7594`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
   - `background: var(--violet-700)`
   - `border-color: var(--violet-700)`
   - `transform: translateY(-1px)`
-- `.calendar-navigation button` — `src/index.css:16866`; viewport: all viewports; locale: RU+EN.
+- `.calendar-navigation button` - `src/index.css:16866`; viewport: all viewports; locale: RU+EN.
   - `min-width: 44px`
   - `height: 44px`
-- `.calendar-navigation button:focus-visible` — `src/index.css:16876`; viewport: all viewports; locale: RU+EN.
+- `.calendar-navigation button:focus-visible` - `src/index.css:16876`; viewport: all viewports; locale: RU+EN.
   - `color: #fff`
   - `background: var(--violet-700)`
   - `border-color: var(--violet-700)`
-- `.calendar-navigation button:hover` — `src/index.css:17151`; viewport: @media (hover: none); locale: RU+EN.
+- `.calendar-navigation button:hover` - `src/index.css:17151`; viewport: @media (hover: none); locale: RU+EN.
   - `transform: none`
-- `.calendar-navigation button:hover` — `src/index.css:17180`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.calendar-navigation button:hover` - `src/index.css:17180`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `transform: none !important`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.

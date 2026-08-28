@@ -765,10 +765,10 @@ function renderInventory(category, definition, entries) {
     );
   }
   for (const entry of entries) {
-    lines.push("", `## ${entry.decision} — \`${entry.selector}\``, "", entry.reason, "");
+    lines.push("", `## ${entry.decision} - \`${entry.selector}\``, "", entry.reason, "");
     for (const rule of entry.declaredRules) {
       lines.push(
-        `- \`${rule.selector}\` — \`${rule.file}:${rule.line}\`; viewport: ${markdownCell(rule.viewport)}; locale: ${rule.locale}.`
+        `- \`${rule.selector}\` - \`${rule.file}:${rule.line}\`; viewport: ${markdownCell(rule.viewport)}; locale: ${rule.locale}.`
       );
       for (const declaration of rule.declarations) {
         lines.push(`  - \`${declaration.property}: ${declaration.value}\``);
@@ -786,7 +786,7 @@ function renderInventory(category, definition, entries) {
         );
       }
     } else {
-      lines.push(`- Computed: **${NOT_MEASURED}** — ${COMPUTED_REASON}`);
+      lines.push(`- Computed: **${NOT_MEASURED}** - ${COMPUTED_REASON}`);
     }
   }
   lines.push("");
@@ -826,7 +826,7 @@ function renderPerformance(performance) {
     "",
     `Pinned baseline: \`${stage5BaselineProvenance.baseMainSha}\`.`,
     "",
-    `Production dist: **${artifact.status}** — ${artifactSummary}`,
+    `Production dist: **${artifact.status}** - ${artifactSummary}`,
     "",
     "| Metric | Actual | Limit | Headroom | Result |",
     "| --- | ---: | ---: | ---: | --- |",
@@ -841,7 +841,7 @@ function renderPerformance(performance) {
     "",
     "## Verified production-build gate",
     "",
-    `Status: **${verified.status}** — ${verified.evidence}.`,
+    `Status: **${verified.status}** - ${verified.evidence}.`,
     `Classification: ${verified.classification}; workflow run ${verified.workflowRunId}; artifact ${verified.artifactId}; release SHA ${verified.releaseSha}.`,
     "",
     "| Artifact | Raw bytes | Gzip bytes |",
@@ -864,9 +864,9 @@ function renderPerformance(performance) {
       "",
       `- Dist assets: ${production.assets.files} files / ${production.assets.bytes} bytes.`,
       `- CSS: ${production.css.files} files / ${production.css.bytes} raw bytes / ${production.css.gzipBytes} gzip bytes.`,
-      `- Largest CSS: \`${production.css.largest.path}\` — ${production.css.largest.bytes} raw / ${production.css.largest.gzipBytes} gzip bytes.`,
-      `- Main JavaScript: \`${production.mainJavaScript.path}\` — ${production.mainJavaScript.bytes} raw / ${production.mainJavaScript.gzipBytes} gzip bytes.`,
-      `- Largest JavaScript: \`${production.largestJavaScript.path}\` — ${production.largestJavaScript.bytes} raw / ${production.largestJavaScript.gzipBytes} gzip bytes.`,
+      `- Largest CSS: \`${production.css.largest.path}\` - ${production.css.largest.bytes} raw / ${production.css.largest.gzipBytes} gzip bytes.`,
+      `- Main JavaScript: \`${production.mainJavaScript.path}\` - ${production.mainJavaScript.bytes} raw / ${production.mainJavaScript.gzipBytes} gzip bytes.`,
+      `- Largest JavaScript: \`${production.largestJavaScript.path}\` - ${production.largestJavaScript.bytes} raw / ${production.largestJavaScript.gzipBytes} gzip bytes.`,
       "",
       "### Globe chunks",
       "",
@@ -991,14 +991,14 @@ function renderBaselineReadme(baseline) {
     "## Owner locks",
     "",
     ...ownerLocks.map(
-      (lock) => `- **${lock.id} — ${lock.decision}:** ${lock.selectors.map((selector) => `\`${selector}\``).join(", ")}.`
+      (lock) => `- **${lock.id} - ${lock.decision}:** ${lock.selectors.map((selector) => `\`${selector}\``).join(", ")}.`
     ),
     "",
     "## Measured runtime findings",
     "",
     ...runtimeObservedFindings.map(
       (finding) =>
-        `- **${finding.id} — ${finding.decision} / ${finding.targetStage}:** \`${finding.selector}\` keeps focus in ${finding.environment}, but computed \`outlineStyle=${finding.computed.outlineStyle}\` and \`boxShadow=${finding.computed.boxShadow}\` on desktop + mobile. ${finding.ownerLock} geometry remains locked.`
+        `- **${finding.id} - ${finding.decision} / ${finding.targetStage}:** \`${finding.selector}\` keeps focus in ${finding.environment}, but computed \`outlineStyle=${finding.computed.outlineStyle}\` and \`boxShadow=${finding.computed.boxShadow}\` on desktop + mobile. ${finding.ownerLock} geometry remains locked.`
     ),
     "",
     "## Reproduction",

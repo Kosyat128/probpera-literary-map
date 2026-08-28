@@ -1,6 +1,6 @@
 # Stage 5D-2 collection data and private sync
 
-Status: **COMPLETE IN SOURCE — ready for the next Stage 5 sublevel**.
+Status: **COMPLETE IN SOURCE - ready for the next Stage 5 sublevel**.
 
 ## Result
 

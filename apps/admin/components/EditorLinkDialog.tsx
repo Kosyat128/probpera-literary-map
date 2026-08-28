@@ -236,10 +236,10 @@ export default function EditorLinkDialog({
               />
               <span>
                 {flag === "nofollow"
-                  ? "nofollow — не передавать поисковый вес"
+                  ? "nofollow - не передавать поисковый вес"
                   : flag === "sponsored"
-                    ? "sponsored — рекламная или партнёрская ссылка"
-                    : "ugc — ссылка из пользовательского материала"}
+                    ? "sponsored - рекламная или партнёрская ссылка"
+                    : "ugc - ссылка из пользовательского материала"}
               </span>
             </label>
           ))}
