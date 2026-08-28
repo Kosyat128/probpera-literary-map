@@ -9,12 +9,14 @@ describe("article editor chrome module boundaries", () => {
   it("keeps toolbar state and handlers owned by ArticleEditor", () => {
     const article = source("../ArticleEditor.tsx");
     const toolbar = source("./ArticleEditorToolbar.tsx");
+    const core = source("./EditorCore.tsx");
 
-    expect(article).toContain("<ArticleEditorToolbar");
-    expect(article).toContain("disabled: isImageUploadActive");
+    expect(article).toContain("<EditorCore");
+    expect(article).toContain("imageUploadActive: isImageUploadActive");
     expect(article).toContain("imageUploadBusy: editorMedia.busy");
     expect(article).toContain('addGallery: () => addMediaCollection("gallery")');
     expect(article).toContain('addSlider: () => addMediaCollection("slider")');
+    expect(core).toContain("<ArticleEditorToolbar");
     expect(toolbar).toContain("<RichEditorToolbar");
     expect(toolbar).toContain('ToolbarMenu label="＋ Блок"');
     expect(toolbar).toContain('ToolbarMenu label="Фото и галереи"');
@@ -24,6 +26,8 @@ describe("article editor chrome module boundaries", () => {
     expect(toolbar).toContain("setEditorialBlockReveal(editor");
     expect(toolbar).not.toContain("useState");
     expect(toolbar).not.toContain("useReducer");
+    expect(core).not.toContain("useState");
+    expect(core).not.toContain("useReducer");
   });
 
   it("keeps the legacy URL-only gallery parser and eight-item cap unchanged", () => {

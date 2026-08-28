@@ -26,6 +26,10 @@ const articleToolbarSource = readFileSync(
   new URL("../article-editor/ArticleEditorToolbar.tsx", import.meta.url),
   "utf8"
 );
+const articleCoreSource = readFileSync(
+  new URL("../article-editor/EditorCore.tsx", import.meta.url),
+  "utf8"
+);
 
 describe("shared rich editor foundation", () => {
   it("keeps one ordered extension and base-toolbar contract in both editors", () => {
@@ -63,7 +67,8 @@ describe("shared rich editor foundation", () => {
     for (const editorSource of [articleSource, pageSource]) {
       expect(editorSource).toContain("createRichEditorExtensions({");
     }
-    expect(articleSource).toContain("<ArticleEditorToolbar");
+    expect(articleSource).toContain("<EditorCore");
+    expect(articleCoreSource).toContain("<ArticleEditorToolbar");
     expect(articleToolbarSource).toContain("<RichEditorToolbar");
     expect(pageSource).toContain("<RichEditorToolbar");
     expect(articleSource).toContain("afterStarterKit: [EditorialBlock]");
