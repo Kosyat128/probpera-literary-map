@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
+import { ArticleEditorWorkspaceProvider } from "@/components/ArticleEditorContext";
 import ArticleWorkspaceTools from "@/components/ArticleWorkspaceTools";
 import type { StaffSession } from "@/lib/auth";
 import { adminBasePath, withAdminBasePath } from "@/lib/navigation";
@@ -102,9 +103,21 @@ export default function AdminShell({
             Открыть сайт ↗
           </a>
         </header>
-        <main className="admin-content">
-          {showArticleWorkspace && <ArticleWorkspaceTools />}
-          {children}
+        <main
+          className={
+            showArticleWorkspace
+              ? "admin-content article-workspace-page"
+              : "admin-content"
+          }
+        >
+          {showArticleWorkspace ? (
+            <ArticleEditorWorkspaceProvider>
+              <ArticleWorkspaceTools />
+              {children}
+            </ArticleEditorWorkspaceProvider>
+          ) : (
+            children
+          )}
         </main>
       </div>
     </div>
