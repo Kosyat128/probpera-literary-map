@@ -19,7 +19,9 @@ describe("site health atomic article persistence card", () => {
   it("makes the active persistence mode visible to editors", () => {
     expect(source).toContain("Сохранение RU+EN");
     expect(source).toContain("Атомарно");
-    expect(source).toContain("Legacy fallback");
+    expect(source).toContain("Недоступно");
+    expect(source).not.toContain("Legacy fallback");
     expect(source).toContain("RU + EN сохраняются одной транзакцией");
+    expect(source).toContain("сохранение закрыто безопасно");
   });
 });

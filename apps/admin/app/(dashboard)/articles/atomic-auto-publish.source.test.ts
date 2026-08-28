@@ -25,9 +25,10 @@ describe("canonical atomic article save", () => {
     expect(wrapperSource).not.toContain("atomicPersistenceAvailable");
   });
 
-  it("keeps the legacy action only as a schema-health fallback", () => {
-    expect(actionSource).toContain("isArticleBundleRpcAvailable");
-    expect(actionSource).toContain("return legacySaveArticleAction(formData)");
+  it("uses the reconciled atomic RPC as the only persistence path", () => {
+    expect(actionSource).toContain("saveArticleBundleRpc(supabase");
+    expect(actionSource).not.toContain("isArticleBundleRpcAvailable");
+    expect(actionSource).not.toContain("legacySaveArticleAction");
     expect(actionSource).toContain("articleSchema.safeParse");
     expect(actionSource).toContain("articleTranslationSchema.safeParse");
   });

@@ -5,9 +5,11 @@ import { describe, expect, it } from "vitest";
 const read = (url: URL) =>
   readFileSync(url, "utf8").replace(/\r\n?/gu, "\n");
 const actionsFacade = read(new URL("./actions.ts", import.meta.url));
-const legacySave = read(new URL("./actions-legacy.ts", import.meta.url));
 const socialPublicationAction = read(
   new URL("./social-publication-action.ts", import.meta.url)
+);
+const atomicStandardSave = read(
+  new URL("./atomic-standard-save-action.ts", import.meta.url)
 );
 const automaticSave = read(new URL("./save-article-action.ts", import.meta.url));
 const articlePage = read(new URL("./[id]/page.tsx", import.meta.url));
@@ -15,7 +17,7 @@ const preview = read(new URL("./[id]/preview/page.tsx", import.meta.url));
 
 describe("article publication presentation policy", () => {
   it("queues Dzen without automatic VK publication", () => {
-    const publicationActions = `${legacySave}\n${socialPublicationAction}`;
+    const publicationActions = `${atomicStandardSave}\n${socialPublicationAction}`;
     expect(publicationActions.match(/platforms: \["dzen"\]/gu)).toHaveLength(2);
     expect(publicationActions).not.toContain('platforms: ["vk", "dzen"]');
     expect(articlePage).toContain("Автопубликация отключена");

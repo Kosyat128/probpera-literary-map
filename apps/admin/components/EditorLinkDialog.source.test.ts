@@ -12,9 +12,8 @@ const pageEditorSource = source("./PageEditor.tsx");
 const extensionsSource = source("./rich-editor/RichEditorExtensions.ts");
 
 const persistedHtmlSanitizers = [
-  source("../app/(dashboard)/articles/actions-legacy.ts"),
+  source("../app/(dashboard)/articles/legacy-import-action.ts"),
   source("../app/(dashboard)/articles/atomic-standard-save-action.ts"),
-  source("../app/(dashboard)/articles/atomic-auto-publish-action.ts"),
   source("../app/(dashboard)/pages/actions.ts"),
   source("../lib/auto-translate-article-core.ts"),
   source("../lib/auto-translate-article-premium.ts"),

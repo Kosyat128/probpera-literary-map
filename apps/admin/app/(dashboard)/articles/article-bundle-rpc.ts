@@ -43,19 +43,6 @@ function rpcErrorMessage(error: { message?: string } | null | undefined) {
   return message || "Не удалось атомарно сохранить статью и английскую версию.";
 }
 
-export async function isArticleBundleRpcAvailable(
-  supabase: ServerSupabaseClient
-): Promise<boolean> {
-  const { data, error } = await supabase.rpc("get_editorial_schema_health");
-  if (error || !data || typeof data !== "object") return false;
-
-  const health = data as Record<string, unknown>;
-  return (
-    health.version === "20260822_zz_atomic_article_bundle" &&
-    health.articleBundleRpc === true
-  );
-}
-
 export async function saveArticleBundleRpc(
   supabase: ServerSupabaseClient,
   input: ArticleBundleRpcInput
