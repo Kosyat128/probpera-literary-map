@@ -4,7 +4,6 @@ import type { JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
 import NextLink from "next/link";
 import type {
-  DragEvent as ReactDragEvent,
   FormEvent as ReactFormEvent,
   ReactNode,
 } from "react";
@@ -44,7 +43,6 @@ import {
   insertEditorialBlock,
   insertEditorialGallery,
   insertEditorialSlider,
-  replaceMediaSlotAt,
   replaceSelectedMediaSlot,
   setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
@@ -52,14 +50,10 @@ import {
   updateEditorialImageAt,
   type EditorialImageLayout,
 } from "@/components/EditorialImage";
-import {
-  EDITOR_IMAGE_REPLACE_EVENT,
-  EDITOR_MEDIA_SLOT_EVENT,
-  type EditorImageReplaceDetail,
-  type EditorMediaSlotDetail,
-} from "@/components/editorMediaEvents";
 import { ArticleTextTone } from "@/components/ArticleTextTone";
 import EditorLinkDialog from "@/components/EditorLinkDialog";
+import EditorMediaDialog from "@/components/EditorMediaDialog";
+import { useEditorMediaWorkflow } from "@/components/useEditorMediaWorkflow";
 import EditorImageDialog, {
   type EditorImageDialogValue,
 } from "@/components/rich-editor/EditorImageDialog";
@@ -445,7 +439,6 @@ export default function ArticleEditor({
   const formRef = useRef<HTMLFormElement>(null);
   const saveSubmitButtonRef = useRef<HTMLButtonElement>(null);
   const publishSubmitButtonRef = useRef<HTMLButtonElement>(null);
-  const articleFileInputRef = useRef<HTMLInputElement>(null);
   const coverFileInputRef = useRef<HTMLInputElement>(null);
   const workspaceSectionRefs = useRef<
     Record<ArticleWorkspaceSection, HTMLElement | null>
@@ -562,12 +555,35 @@ export default function ArticleEditor({
     },
   });
 
+  const editorMedia = useEditorMediaWorkflow({
+    editor,
+    collectionName: "Статьи",
+    contextKey: activeLocale,
+    suggestedAltText,
+    onChanged: () => {
+      setTemplateMessage(
+        "Изображение готово. При необходимости выберите его и измените расположение."
+      );
+      setIsDirty(true);
+    },
+    onMessage: (message) => {
+      setImageUploadError("");
+      setImageUploadMessage(message);
+    },
+    onError: (message) => {
+      setImageUploadMessage("");
+      setImageUploadError(message);
+    },
+  });
+
   useEffect(() => {
-    editor?.setEditable(imageUploadTarget === null);
-  }, [editor, imageUploadTarget]);
+    editor?.setEditable(imageUploadTarget === null && !editorMedia.busy);
+  }, [editor, editorMedia.busy, imageUploadTarget]);
 
   const isImageUploadActive =
-    imageUploadTarget !== null || imageUploadInFlightRef.current;
+    imageUploadTarget !== null ||
+    imageUploadInFlightRef.current ||
+    editorMedia.busy;
 
   useEffect(() => {
     if (!slugEdited) setSlug(createSlug(title));
@@ -1278,65 +1294,17 @@ export default function ArticleEditor({
     };
   };
 
-  const handleEditorImageDrop = (event: ReactDragEvent<HTMLDivElement>) => {
-    if (
-      event.target instanceof Element &&
-      event.target.closest(".editor-media-slot-control")
-    ) {
-      // The square placeholder owns this drop and needs the bubbling event to
-      // preserve its exact block position.
-      setIsImageDraggingOverEditor(false);
-      return;
-    }
-
-    const droppedFiles = Array.from(event.dataTransfer.files || []);
-    const file = droppedFiles.find((item) =>
-      item.type.startsWith("image/")
-    );
-    if (!file) {
-      if (droppedFiles.length > 0) {
-        event.preventDefault();
-        event.stopPropagation();
-        setIsImageDraggingOverEditor(false);
-        setImageUploadError("Перетащите файл изображения в формате JPEG, PNG, WebP или GIF.");
-      }
-      return;
-    }
-
-    event.preventDefault();
-    event.stopPropagation();
-    setIsImageDraggingOverEditor(false);
-    if (!editor) {
-      setImageUploadError("Редактор ещё загружается. Повторите действие через секунду.");
-      return;
-    }
-    const coordinates = editor.view.posAtCoords({
-      left: event.clientX,
-      top: event.clientY,
-    });
-    imageSelectionRef.current = {
-      selectedImage: false,
-      attributes: {},
-      locale: activeLocaleRef.current,
-      insertionPos: coordinates?.pos,
-      nodePos: undefined,
-      mediaSlotPos: undefined,
-    };
-    void uploadImageFile(file, "article");
-  };
-
   const openImagePicker = (target: ImageUploadTarget) => {
     setImageUploadError("");
     setImageUploadMessage("");
     if (target === "article") {
-      rememberImageSelection();
-      articleFileInputRef.current?.click();
+      editorMedia.openPicker();
       return;
     }
     coverFileInputRef.current?.click();
   };
 
-  const uploadImageFile = async (file: File, target: ImageUploadTarget) => {
+  const uploadCoverImage = async (file: File) => {
     if (imageUploadInFlightRef.current) {
       setImageUploadError(
         "Одно изображение уже загружается. Дождитесь завершения и повторите действие."
@@ -1344,108 +1312,29 @@ export default function ArticleEditor({
       return;
     }
     imageUploadInFlightRef.current = true;
-    const selection = imageSelectionRef.current;
-    const uploadLocale =
-      target === "article"
-        ? selection.locale || activeLocaleRef.current
-        : activeLocaleRef.current;
-    const currentAlt =
-      target === "cover"
-        ? activeCoverAlt.trim()
-        : typeof selection.attributes.alt === "string"
-          ? selection.attributes.alt.trim()
-          : "";
+    const uploadLocale = activeLocaleRef.current;
+    const currentAlt = activeCoverAlt.trim();
     const altText = currentAlt.length >= 3 ? currentAlt : suggestedAltText(file);
-    const caption =
-      target === "article" && typeof selection.attributes.caption === "string"
-        ? selection.attributes.caption.trim()
-        : "";
 
-    setImageUploadTarget(target);
+    setImageUploadTarget("cover");
     setImageUploadError("");
     setImageUploadMessage("Подготавливаем изображение без обрезки…");
     try {
       setImageUploadMessage("Загружаем подготовленное изображение…");
       const result = await uploadEditorImage(file, {
-        usage: target === "cover" ? "cover" : "inline",
+        usage: "cover",
         altText,
-        caption,
-        collectionName: target === "cover" ? "Обложки статей" : "Статьи",
+        collectionName: "Обложки статей",
       });
 
-      if (target === "cover") {
-        setCoverUrl(result.url);
-        if (!activeCoverAlt.trim()) {
-          if (uploadLocale === "en") setEnglishCoverAlt(altText);
-          else setCoverAlt(altText);
-        }
-        setImageUploadMessage("Обложка загружена, оптимизирована в WebP и установлена.");
-        setIsDirty(true);
-        return;
+      setCoverUrl(result.url);
+      if (!activeCoverAlt.trim()) {
+        if (uploadLocale === "en") setEnglishCoverAlt(altText);
+        else setCoverAlt(altText);
       }
-
-      if (!editor) throw new Error("Редактор ещё не готов. Повторите загрузку.");
-      if (uploadLocale !== activeLocaleRef.current) {
-        throw new Error(
-          "Язык статьи изменился во время загрузки. Изображение сохранено в медиатеке, но текст статьи не изменён. Повторите замену в нужной вкладке."
-        );
-      }
-      const attributes = {
-        src: result.url,
-        mediaId: result.mediaId,
-        alt: altText,
-        caption,
-        layout:
-          typeof selection.attributes.layout === "string"
-            ? (selection.attributes.layout as EditorialImageLayout)
-            : "wide",
-      };
-      if (typeof selection.nodePos === "number") {
-        if (
-          !updateEditorialImageAt(
-            editor,
-            selection.nodePos,
-            attributes,
-            selection.expectedSrc
-          )
-        ) {
-          throw new Error(
-            "Выбранное изображение изменилось во время загрузки. Новый файл сохранён в медиатеке, но статья не изменена. Выберите изображение ещё раз."
-          );
-        }
-        setImageUploadMessage("Выбранное изображение заменено файлом с компьютера.");
-      } else if (typeof selection.mediaSlotPos === "number") {
-        if (!replaceMediaSlotAt(editor, selection.mediaSlotPos, attributes)) {
-          throw new Error(
-            "Место для изображения изменилось во время загрузки. Новый файл сохранён в медиатеке, но статья не изменена. Выберите квадрат ещё раз."
-          );
-        }
-        setImageUploadMessage("Квадрат шаблона заполнен изображением.");
-      } else if (selection.selectedImage) {
-        editor.chain().focus().updateAttributes("image", attributes).run();
-        setImageUploadMessage("Выбранное изображение заменено файлом с компьютера.");
-      } else if (typeof selection.insertionPos === "number") {
-        const insertionPos = Math.max(
-          0,
-          Math.min(selection.insertionPos, editor.state.doc.content.size)
-        );
-        editor
-          .chain()
-          .focus()
-          .insertContentAt(insertionPos, { type: "image", attrs: attributes })
-          .run();
-        setImageUploadMessage("Изображение вставлено точно в выбранное место текста.");
-      } else if (replaceSelectedMediaSlot(editor, attributes)) {
-        setImageUploadMessage("Место для фотографии заполнено загруженным изображением.");
-      } else {
-        const insertedAsLead = insertImageAtLogicalPosition(attributes);
-        setImageUploadMessage(
-          insertedAsLead
-            ? "Изображение загружено и автоматически размещено после вступления, перед первым разделом."
-            : "Изображение загружено и вставлено в статью."
-        );
-      }
-      setTemplateMessage("Изображение готово. При необходимости выберите его и измените расположение.");
+      setImageUploadMessage(
+        "Обложка загружена, оптимизирована в WebP и установлена."
+      );
       setIsDirty(true);
     } catch (error) {
       setImageUploadMessage("");
@@ -1455,75 +1344,9 @@ export default function ArticleEditor({
     } finally {
       imageUploadInFlightRef.current = false;
       setImageUploadTarget(null);
-      if (articleFileInputRef.current) articleFileInputRef.current.value = "";
       if (coverFileInputRef.current) coverFileInputRef.current.value = "";
     }
   };
-
-  useEffect(() => {
-    const replaceImage = (event: Event) => {
-      if (!editor) return;
-      if (imageUploadTarget !== null || imageUploadInFlightRef.current) {
-        setImageUploadError(
-          "Дождитесь завершения текущей загрузки изображения."
-        );
-        return;
-      }
-      const detail = (event as CustomEvent<EditorImageReplaceDetail>).detail;
-      if (!detail || typeof detail.position !== "number") return;
-      imageSelectionRef.current = {
-        selectedImage: true,
-        attributes: detail.attributes || {},
-        locale: activeLocaleRef.current,
-        expectedSrc:
-          typeof detail.attributes?.src === "string"
-            ? detail.attributes.src
-            : undefined,
-        nodePos: detail.position,
-        insertionPos: undefined,
-        mediaSlotPos: undefined,
-      };
-      editor.commands.setNodeSelection(detail.position);
-      setImageUploadError("");
-      setImageUploadMessage("");
-      articleFileInputRef.current?.click();
-    };
-
-    const fillMediaSlot = (event: Event) => {
-      if (!editor) return;
-      if (imageUploadTarget !== null || imageUploadInFlightRef.current) {
-        setImageUploadError(
-          "Дождитесь завершения текущей загрузки изображения."
-        );
-        return;
-      }
-      const detail = (event as CustomEvent<EditorMediaSlotDetail>).detail;
-      if (!detail || typeof detail.position !== "number") return;
-      imageSelectionRef.current = {
-        selectedImage: false,
-        attributes: {},
-        locale: activeLocaleRef.current,
-        nodePos: undefined,
-        insertionPos: undefined,
-        mediaSlotPos: detail.position,
-      };
-      editor.commands.setNodeSelection(detail.position);
-      setImageUploadError("");
-      setImageUploadMessage("");
-      if (detail.file) {
-        void uploadImageFile(detail.file, "article");
-      } else {
-        articleFileInputRef.current?.click();
-      }
-    };
-
-    window.addEventListener(EDITOR_IMAGE_REPLACE_EVENT, replaceImage);
-    window.addEventListener(EDITOR_MEDIA_SLOT_EVENT, fillMediaSlot);
-    return () => {
-      window.removeEventListener(EDITOR_IMAGE_REPLACE_EVENT, replaceImage);
-      window.removeEventListener(EDITOR_MEDIA_SLOT_EVENT, fillMediaSlot);
-    };
-  });
 
   const addMediaCollection = (kind: "gallery" | "slider") => {
     setMediaComposerKind(kind);
@@ -1794,7 +1617,7 @@ export default function ArticleEditor({
       ref={formRef}
       action={saveArticleAction}
       onSubmit={(event: ReactFormEvent<HTMLFormElement>) => {
-        if (imageUploadTarget !== null || imageUploadInFlightRef.current) {
+        if (isImageUploadActive) {
           event.preventDefault();
           setImageUploadError(
             "Дождитесь завершения загрузки изображения перед сохранением статьи."
@@ -2086,9 +1909,9 @@ export default function ArticleEditor({
 
           <section
             className={`panel editor-surface${
-              imageUploadTarget !== null ? " is-media-uploading" : ""
+              isImageUploadActive ? " is-media-uploading" : ""
             }`}
-            aria-busy={imageUploadTarget !== null}
+            aria-busy={isImageUploadActive}
           >
             {activeLocale === "ru" ? (
               <div className="editor-template-bar">
@@ -2151,14 +1974,14 @@ export default function ArticleEditor({
               className="editor-toolbar"
               role="toolbar"
               aria-label="Панель форматирования"
-              aria-busy={imageUploadTarget !== null}
-              aria-disabled={imageUploadTarget !== null}
-              inert={imageUploadTarget !== null ? true : undefined}
+              aria-busy={isImageUploadActive}
+              aria-disabled={isImageUploadActive}
+              inert={isImageUploadActive ? true : undefined}
             >
               <RichEditorToolbar
                 editor={editor}
                 onLink={setLink}
-                disabled={imageUploadTarget !== null}
+                disabled={isImageUploadActive}
               />
 
               <ToolbarMenu label="＋ Блок">
@@ -2173,10 +1996,15 @@ export default function ArticleEditor({
 
               <ToolbarMenu label="Фото и галереи">
                 <ToolbarButton
-                  label={imageUploadTarget === "article" ? "Загрузка…" : "Загрузить фото с компьютера"}
-                  active={imageUploadTarget === "article"}
-                  disabled={imageUploadTarget !== null}
+                  label={editorMedia.busy ? "Загрузка…" : "Загрузить фото с компьютера"}
+                  active={editorMedia.busy}
+                  disabled={isImageUploadActive}
                   onClick={() => openImagePicker("article")}
+                />
+                <ToolbarButton
+                  label="Выбрать из медиатеки"
+                  disabled={isImageUploadActive}
+                  onClick={editorMedia.openLibrary}
                 />
                 <ToolbarButton label="Фото по HTTPS-адресу" active={editor?.isActive("image")} onClick={addImage} />
                 <ToolbarButton label="Галерея" onClick={() => addMediaCollection("gallery")} />
@@ -2230,35 +2058,33 @@ export default function ArticleEditor({
               </ToolbarMenu>
             </div>
             <input
-              ref={articleFileInputRef}
+              ref={editorMedia.fileInputRef}
               className="visually-hidden-file"
               type="file"
+              multiple
               accept="image/jpeg,image/png,image/webp,image/avif"
-              onChange={(event) => {
-                const file = event.target.files?.[0];
-                if (file) void uploadImageFile(file, "article");
-              }}
+              onChange={(event) => editorMedia.handleFileInput(event.target.files)}
             />
             <button
               ref={(element) => registerWorkspaceSection("media", element)}
               className={
-                imageUploadTarget === "article"
+                editorMedia.busy
                   ? "editor-direct-upload is-uploading"
                   : "editor-direct-upload"
               }
               type="button"
               onClick={() => openImagePicker("article")}
-              onDragEnter={rememberImageSelection}
+              onDragEnter={editorMedia.rememberSelection}
               onDragOver={(event) => event.preventDefault()}
               onDrop={(event) => {
                 event.preventDefault();
-                const file = event.dataTransfer.files?.[0];
-                if (file) void uploadImageFile(file, "article");
+                editorMedia.rememberSelection();
+                editorMedia.enqueueFiles(Array.from(event.dataTransfer.files || []));
               }}
-              disabled={imageUploadTarget !== null}
+              disabled={isImageUploadActive}
             >
               <strong>
-                {imageUploadTarget === "article"
+                {editorMedia.busy
                   ? "Оптимизируем изображение…"
                   : "Нажмите или перетащите фотографию сюда"}
               </strong>
@@ -2280,7 +2106,7 @@ export default function ArticleEditor({
                   ? "editor-content-drop-target is-dragging"
                   : "editor-content-drop-target"
               }
-              inert={imageUploadTarget !== null ? true : undefined}
+              inert={isImageUploadActive ? true : undefined}
               onDragEnterCapture={(event) => {
                 if (Array.from(event.dataTransfer.items || []).some(
                   (item) => item.kind === "file" && item.type.startsWith("image/")
@@ -2301,7 +2127,11 @@ export default function ArticleEditor({
                   setIsImageDraggingOverEditor(false);
                 }
               }}
-              onDropCapture={handleEditorImageDrop}
+              onDropCapture={(event) => {
+                setIsImageDraggingOverEditor(false);
+                editorMedia.handleDrop(event);
+              }}
+              onPasteCapture={editorMedia.handlePaste}
             >
               <EditorContent editor={editor} />
               {isImageDraggingOverEditor && (
@@ -2418,7 +2248,7 @@ export default function ArticleEditor({
               accept="image/jpeg,image/png,image/webp,image/avif"
               onChange={(event) => {
                 const file = event.target.files?.[0];
-                if (file) void uploadImageFile(file, "cover");
+                if (file) void uploadCoverImage(file);
               }}
             />
             <button
@@ -2433,9 +2263,9 @@ export default function ArticleEditor({
               onDrop={(event) => {
                 event.preventDefault();
                 const file = event.dataTransfer.files?.[0];
-                if (file) void uploadImageFile(file, "cover");
+                if (file) void uploadCoverImage(file);
               }}
-              disabled={imageUploadTarget !== null}
+              disabled={isImageUploadActive}
             >
               {coverUrl ? (
                 <img
@@ -2864,6 +2694,16 @@ export default function ArticleEditor({
         initialValue={imageDialogInitialValue}
         onCancel={() => setImageDialogOpen(false)}
         onApply={applyImageUrl}
+      />
+
+      <EditorMediaDialog
+        open={editorMedia.dialogOpen}
+        queue={editorMedia.queue}
+        onClose={editorMedia.closeDialog}
+        onPickFiles={editorMedia.pickForCurrentTarget}
+        onSelectAsset={editorMedia.selectLibraryAsset}
+        onCancelItem={editorMedia.cancelItem}
+        onRetryItem={editorMedia.retryItem}
       />
 
       <footer className="editor-footer">

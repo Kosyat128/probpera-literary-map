@@ -39,10 +39,10 @@ export default function EditorialBlockView({
     );
   }
 
-  const requestFile = (file?: File) => {
+  const requestFiles = (files?: File[]) => {
     const position = editorPosition(getPos);
     if (typeof position !== "number") return;
-    requestEditorMediaSlot({ position, file });
+    requestEditorMediaSlot({ position, files });
   };
 
   const handleDrop = (event: ReactDragEvent<HTMLDivElement>) => {
@@ -53,17 +53,15 @@ export default function EditorialBlockView({
       event.preventDefault();
       event.stopPropagation();
     }
-    const file = droppedFiles.find((item) =>
-      item.type.startsWith("image/")
-    );
-    if (!file) return;
-    requestFile(file);
+    const files = droppedFiles.filter((item) => item.type.startsWith("image/"));
+    if (!files.length) return;
+    requestFiles(files);
   };
 
   const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     if (event.key !== "Enter" && event.key !== " ") return;
     event.preventDefault();
-    requestFile();
+    requestFiles();
   };
 
   return (
@@ -78,7 +76,7 @@ export default function EditorialBlockView({
         role="button"
         tabIndex={0}
         contentEditable={false}
-        onClick={() => requestFile()}
+        onClick={() => requestFiles()}
         onKeyDown={handleKeyDown}
         onDragOver={(event) => {
           event.preventDefault();

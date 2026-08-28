@@ -9,6 +9,8 @@ export type EditorImageReplaceDetail = {
 
 export type EditorMediaSlotDetail = {
   position: number;
+  files?: File[];
+  /** @deprecated Rolling compatibility for callers created before multi-file input. */
   file?: File;
 };
 

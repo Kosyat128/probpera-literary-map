@@ -22,11 +22,8 @@ import EditorImageDialog, {
 import { createRichEditorExtensions } from "@/components/rich-editor/RichEditorExtensions";
 import RichEditorToolbar from "@/components/rich-editor/RichEditorToolbar";
 import RecoveryController from "@/components/editor/RecoveryController";
-import {
-  EDITOR_IMAGE_REPLACE_EVENT,
-  type EditorImageReplaceDetail,
-} from "@/components/editorMediaEvents";
-import { uploadEditorImage } from "@/lib/editor-image-upload";
+import EditorMediaDialog from "@/components/EditorMediaDialog";
+import { useEditorMediaWorkflow } from "@/components/useEditorMediaWorkflow";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
 
 type PageRecord = {
@@ -142,11 +139,8 @@ export default function PageEditor({
   const [imageDialogOpen, setImageDialogOpen] = useState(false);
   const [imageDialogInitialValue, setImageDialogInitialValue] =
     useState<EditorImageDialogValue>({ src: "", alt: "", caption: "" });
-  const [imageUploadPending, setImageUploadPending] = useState(false);
   const [imageUploadMessage, setImageUploadMessage] = useState("");
   const [imageUploadError, setImageUploadError] = useState("");
-  const imageFileInputRef = useRef<HTMLInputElement>(null);
-  const imageUploadInFlightRef = useRef(false);
   const imageSelectionRef = useRef<PageImageSelection>({ attributes: {} });
   const previewParams = new URLSearchParams();
   if (catalogContext.q) previewParams.set("q", catalogContext.q);
@@ -216,6 +210,21 @@ export default function PageEditor({
       setIsDirty(true);
     },
   });
+  const editorMedia = useEditorMediaWorkflow({
+    editor,
+    collectionName: "Страницы сайта",
+    suggestedAltText: suggestedPageImageAlt,
+    onChanged: () => setIsDirty(true),
+    onMessage: (message) => {
+      setImageUploadError("");
+      setImageUploadMessage(message);
+    },
+    onError: (message) => {
+      setImageUploadMessage("");
+      setImageUploadError(message);
+    },
+  });
+  const imageUploadPending = editorMedia.busy;
 
   useEffect(() => {
     if (!slugEdited) setSlug(createSlug(title));
@@ -329,15 +338,13 @@ export default function PageEditor({
   }
 
   function openImagePicker() {
-    if (imageUploadInFlightRef.current) return;
     setImageUploadError("");
     setImageUploadMessage("");
-    rememberImageSelection();
-    imageFileInputRef.current?.click();
+    editorMedia.openPicker();
   }
 
   function openImageUrlDialog() {
-    if (!editor || imageUploadInFlightRef.current) return;
+    if (!editor || editorMedia.busy) return;
     setImageUploadError("");
     setImageUploadMessage("");
     rememberImageSelection();
@@ -399,123 +406,12 @@ export default function PageEditor({
     setIsDirty(true);
   }
 
-  async function uploadImageFile(file: File) {
-    if (imageUploadInFlightRef.current) {
-      setImageUploadError(
-        "Одно изображение уже загружается. Дождитесь завершения."
-      );
-      return;
-    }
-    if (!editor) {
-      setImageUploadError("Редактор ещё загружается. Повторите через секунду.");
-      return;
-    }
-
-    const selection = imageSelectionRef.current;
-    const currentAlt =
-      typeof selection.attributes.alt === "string"
-        ? selection.attributes.alt.trim()
-        : "";
-    const altText =
-      currentAlt.length >= 3 ? currentAlt : suggestedPageImageAlt(file);
-    const caption =
-      typeof selection.attributes.caption === "string"
-        ? selection.attributes.caption.trim()
-        : "";
-
-    imageUploadInFlightRef.current = true;
-    setImageUploadPending(true);
-    setImageUploadError("");
-    setImageUploadMessage("Подготавливаем изображение без обрезки…");
-    try {
-      const result = await uploadEditorImage(file, {
-        usage: "inline",
-        altText,
-        caption,
-        collectionName: "Страницы сайта",
-      });
-      setImageUploadMessage("Изображение загружено. Добавляем его в страницу…");
-      const attributes = {
-        src: result.url,
-        mediaId: result.mediaId,
-        alt: altText,
-        caption,
-        layout:
-          typeof selection.attributes.layout === "string"
-            ? (selection.attributes.layout as EditorialImageLayout)
-            : "wide",
-      };
-      if (typeof selection.nodePos === "number") {
-        if (
-          !updateEditorialImageAt(
-            editor,
-            selection.nodePos,
-            attributes,
-            selection.expectedSrc
-          )
-        ) {
-          throw new Error(
-            "Выбранное изображение изменилось во время загрузки. Файл сохранён в медиатеке, но страница не изменена. Выберите изображение ещё раз."
-          );
-        }
-        setImageUploadMessage("Выбранное изображение точно заменено новым файлом.");
-      } else {
-        const insertionPos = Math.max(
-          0,
-          Math.min(
-            selection.insertionPos ?? editor.state.selection.from,
-            editor.state.doc.content.size
-          )
-        );
-        editor
-          .chain()
-          .focus()
-          .insertContentAt(insertionPos, { type: "image", attrs: attributes })
-          .run();
-        setImageUploadMessage("Изображение загружено и вставлено в место курсора.");
-      }
-      setIsDirty(true);
-    } catch (error) {
-      setImageUploadMessage("");
-      setImageUploadError(
-        error instanceof Error ? error.message : "Не удалось загрузить изображение."
-      );
-    } finally {
-      imageUploadInFlightRef.current = false;
-      setImageUploadPending(false);
-      if (imageFileInputRef.current) imageFileInputRef.current.value = "";
-    }
-  }
-
-  useEffect(() => {
-    const replaceImage = (event: Event) => {
-      if (!editor || imageUploadInFlightRef.current) return;
-      const detail = (event as CustomEvent<EditorImageReplaceDetail>).detail;
-      if (!detail || typeof detail.position !== "number") return;
-      imageSelectionRef.current = {
-        attributes: detail.attributes || {},
-        expectedSrc:
-          typeof detail.attributes?.src === "string"
-            ? detail.attributes.src
-            : undefined,
-        nodePos: detail.position,
-      };
-      editor.commands.setNodeSelection(detail.position);
-      setImageUploadError("");
-      setImageUploadMessage("");
-      imageFileInputRef.current?.click();
-    };
-
-    window.addEventListener(EDITOR_IMAGE_REPLACE_EVENT, replaceImage);
-    return () => window.removeEventListener(EDITOR_IMAGE_REPLACE_EVENT, replaceImage);
-  }, [editor]);
-
   return (
     <form
       action={savePageAction}
       className={`article-editor${isFullscreen ? " is-fullscreen" : ""}`}
       onSubmit={(event) => {
-        if (imageUploadInFlightRef.current) {
+        if (editorMedia.busy) {
           event.preventDefault();
           setImageUploadError(
             "Дождитесь завершения загрузки изображения перед сохранением страницы."
@@ -593,6 +489,10 @@ export default function PageEditor({
             onClick={openImagePicker}
           />
           <ToolbarButton
+            label="Изображение из медиатеки"
+            onClick={editorMedia.openLibrary}
+          />
+          <ToolbarButton
             label="Изображение по HTTPS-адресу"
             onClick={openImageUrlDialog}
           />
@@ -604,14 +504,12 @@ export default function PageEditor({
           />
         </div>
         <input
-          ref={imageFileInputRef}
+          ref={editorMedia.fileInputRef}
           className="visually-hidden-file"
           type="file"
+          multiple
           accept="image/jpeg,image/png,image/webp,image/avif"
-          onChange={(event) => {
-            const file = event.target.files?.[0];
-            if (file) void uploadImageFile(file);
-          }}
+          onChange={(event) => editorMedia.handleFileInput(event.target.files)}
         />
         {imageUploadMessage && (
           <p className="upload-feedback is-success" role="status">
@@ -623,7 +521,21 @@ export default function PageEditor({
             {imageUploadError}
           </p>
         )}
-        <EditorContent className="editor-canvas" editor={editor} />
+        <div
+          className="editor-content-drop-target"
+          onDragOverCapture={(event) => {
+            if (Array.from(event.dataTransfer.items || []).some(
+              (item) => item.kind === "file" && item.type.startsWith("image/")
+            )) {
+              event.preventDefault();
+              event.dataTransfer.dropEffect = "copy";
+            }
+          }}
+          onDropCapture={editorMedia.handleDrop}
+          onPasteCapture={editorMedia.handlePaste}
+        >
+          <EditorContent className="editor-canvas" editor={editor} />
+        </div>
       </section>
       <aside className="editor-side">
         <section className="panel settings-stack">
@@ -774,6 +686,15 @@ export default function PageEditor({
         initialValue={imageDialogInitialValue}
         onCancel={() => setImageDialogOpen(false)}
         onApply={applyImageUrl}
+      />
+      <EditorMediaDialog
+        open={editorMedia.dialogOpen}
+        queue={editorMedia.queue}
+        onClose={editorMedia.closeDialog}
+        onPickFiles={editorMedia.pickForCurrentTarget}
+        onSelectAsset={editorMedia.selectLibraryAsset}
+        onCancelItem={editorMedia.cancelItem}
+        onRetryItem={editorMedia.retryItem}
       />
     </form>
   );

@@ -3,8 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { republishMediaAction } from "@/app/(dashboard)/media/actions";
-import { withClientAdminPath } from "@/lib/admin-path";
-import { prepareClientImage } from "@/lib/client-image-upload";
+import { uploadEditorImage } from "@/lib/editor-image-upload";
 
 type UploadPublicationState = "started" | "queued" | "queue-error";
 
@@ -28,27 +27,27 @@ export default function MediaUploader() {
       if (!(sourceFile instanceof File)) {
         throw new Error("Выберите изображение для загрузки.");
       }
-      const prepared = await prepareClientImage(sourceFile, usage);
-      formData.set("file", prepared.file);
-      formData.set("image_usage", usage);
-      formData.set("client_width", String(prepared.width));
-      formData.set("client_height", String(prepared.height));
-      setMessage("Загружаем подготовленное изображение…");
-
-      const response = await fetch(withClientAdminPath("/api/media/upload"), {
-        method: "POST",
-        body: formData,
+      const result = await uploadEditorImage(sourceFile, {
+        usage,
+        altText: String(formData.get("alt_text") || ""),
+        caption: String(formData.get("caption") || ""),
+        creator: String(formData.get("creator") || ""),
+        sourceUrl: String(formData.get("source_url") || ""),
+        licenseName: String(formData.get("license_name") || ""),
+        licenseUrl: String(formData.get("license_url") || ""),
+        collectionName: String(formData.get("collection_name") || "Общее"),
+        onProgress(stage) {
+          setMessage(
+            stage === "prepare"
+              ? "Подготавливаем изображение без обрезки…"
+              : "Загружаем подготовленное изображение…"
+          );
+        },
       });
-      const result = (await response.json().catch(() => ({}))) as {
-        error?: string;
-        id?: string;
-        publication?: UploadPublicationState;
-      };
-      if (!response.ok) throw new Error(result.error || "Файл не загружен.");
-      if (!result.id || !result.publication) {
+      if (!result.mediaId || !result.publication) {
         throw new Error("Изображение загружено, но сервер вернул неполный статус публикации. Обновите медиатеку.");
       }
-      setUploadedMediaId(result.id);
+      setUploadedMediaId(result.mediaId);
       setPublication(result.publication);
       if (result.publication === "started") {
         setMessageKind("success");
