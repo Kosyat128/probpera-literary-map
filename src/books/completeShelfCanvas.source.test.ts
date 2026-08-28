@@ -26,6 +26,7 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(canvasSource.match(/<Canvas\b/gu)).toHaveLength(1);
     expect(canvasSource).toContain('frameloop="demand"');
     expect(canvasSource).toContain("preserveDrawingBuffer: false");
+    expect(canvasSource).toContain('touchAction: "pan-y"');
     expect(combinedSource).not.toMatch(
       /new\s+Audio\b|<audio\b|AudioContext|TextureLoader|useLoader/iu
     );
@@ -65,6 +66,8 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(rendererSource).toContain('phase === "INSPECTION_CLOSED"');
     expect(rendererSource).toContain('phase !== "BOOK_OPEN"');
     expect(rendererSource).toContain("pageGestureStartedRef");
+    expect(rendererSource).toContain("lastVelocity: number");
+    expect(rendererSource).toContain("elapsed <= 80");
   });
 
   it("builds a low premium walnut shelf instead of a black podium", () => {
@@ -128,15 +131,11 @@ describe("Complete Shelf Canvas source contract", () => {
       "isCompleteShelfCoverTextureUrlAllowed(normalizedUrl)"
     );
     expect(textureSource).toContain("resolveCompleteShelfCoverContainRect");
-    expect(rendererSource).toContain("coverUrl: presentation.coverUrl");
-    expect(rendererSource).toContain("loadCompleteShelfCoverTexture");
-    expect(rendererSource).toContain("coverArtworkTexture");
+    expect(rendererSource).not.toContain("coverUrl: presentation.coverUrl");
+    expect(rendererSource).not.toContain("loadCompleteShelfCoverTexture");
+    expect(rendererSource).not.toContain("coverArtworkTexture");
     expect(rendererSource).toContain(
-      "map={coverArtworkTexture || undefined}"
-    );
-    expect(rendererSource).toContain('color="#ffffff"');
-    expect(rendererSource).toContain(
-      "visible={!coverArtworkTexture && Boolean(artwork.frontFoil)}"
+      "visible={Boolean(artwork.frontFoil)}"
     );
     expect(rendererSource).toContain(
       "const renderFullRig = selected && completeShelfPhaseHasInspection(phase)"
@@ -187,11 +186,7 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(rendererSource).toContain("qualitySettings.pageSegments.width");
     expect(rendererSource).toContain("qualitySettings.pageSegments.height");
     expect(rendererSource).toContain("key={entry.slotIndex}");
-    expect(rendererSource).toContain("coverAssignmentGenerationRef");
-    expect(rendererSource).toContain(
-      "assignmentGeneration !== coverAssignmentGenerationRef.current"
-    );
-    expect(rendererSource).toContain("cancelTextureLoad()");
+    expect(rendererSource).not.toContain("coverAssignmentGenerationRef");
     expect(rendererSource).toContain("const scheduleStableFrame = () =>");
     expect(rendererSource).toContain(
       'window.addEventListener("scroll", scheduleStableFrame, true)'

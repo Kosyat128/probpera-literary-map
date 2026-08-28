@@ -1892,10 +1892,26 @@ export default function BookArchiveSection({
     if (!selectedBook) return;
     const frame = window.requestAnimationFrame(() => {
       if (viewMode === "shelf") {
-        document
+        const scene = document
           .getElementById("books")
-          ?.querySelector<HTMLElement>(".book-shelf-scene")
-          ?.focus({ preventScroll: true });
+          ?.querySelector<HTMLElement>(".book-shelf-scene");
+        if (!scene) return;
+        const bounds = scene.getBoundingClientRect();
+        const viewportInset = 12;
+        if (
+          bounds.top < viewportInset ||
+          bounds.bottom > window.innerHeight - viewportInset
+        ) {
+          scene.scrollIntoView({
+            behavior: window.matchMedia(
+              "(prefers-reduced-motion: reduce)"
+            ).matches
+              ? "auto"
+              : "smooth",
+            block: "center",
+          });
+        }
+        scene.focus({ preventScroll: true });
         return;
       }
       const detail = detailRef.current;
@@ -2648,6 +2664,12 @@ export default function BookArchiveSection({
       ? selectedBook.coverUrl
       : undefined
     : undefined;
+  const pageNavigationActive =
+    viewMode === "shelf" &&
+    ["BOOK_OPEN", "PAGE_DRAGGING", "PAGE_SETTLING"].includes(
+      shelfState.phase
+    );
+  const pageNavigationBusy = shelfState.phase !== "BOOK_OPEN";
   const selectedBookText = selectedItem
     ? presentBookArchiveQueueItem(selectedItem, language)
     : null;
@@ -4189,16 +4211,19 @@ export default function BookArchiveSection({
                   {t("Открыть книгу")}
                 </button>
               ) : null}
-              {viewMode === "shelf" && shelfState.phase === "BOOK_OPEN" ? (
+              {pageNavigationActive ? (
                 <div
                   className="book-detail-page-navigation"
                   aria-label={t("Навигация по редакционным страницам")}
+                  aria-busy={pageNavigationBusy}
                 >
                   <button
                     type="button"
                     className="book-detail-page-turn is-previous"
                     onClick={requestSelectedPreviousPage}
-                    disabled={!inspectionSession?.pageIndex}
+                    disabled={
+                      pageNavigationBusy || !inspectionSession?.pageIndex
+                    }
                     aria-label={t("Предыдущая страница")}
                   >
                     <span aria-hidden="true">←</span>
@@ -4213,6 +4238,7 @@ export default function BookArchiveSection({
                     className="book-detail-page-turn is-next"
                     onClick={requestSelectedPageTurn}
                     disabled={
+                      pageNavigationBusy ||
                       !inspectionSession ||
                       inspectionSession.pageIndex >=
                         inspectionSession.pageCount - 1

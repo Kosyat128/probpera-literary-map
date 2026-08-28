@@ -233,6 +233,11 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
     props.phase === "INSPECTION_CLOSING";
   const coverCanOpen =
     props.phase === "INSPECTION_CLOSED" || props.phase === "COVER_CRACKED";
+  const pageNavigationActive =
+    props.phase === "BOOK_OPEN" ||
+    props.phase === "PAGE_DRAGGING" ||
+    props.phase === "PAGE_SETTLING";
+  const pageNavigationBusy = props.phase !== "BOOK_OPEN";
   const requestCoverOpen = () => {
     if (props.selectedBookKey) {
       props.onRequestCoverOpen(props.selectedBookKey);
@@ -301,12 +306,14 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
               {props.openBookLabel}
             </button>
           ) : null}
-          {props.phase === "BOOK_OPEN" && props.pageTurnLabel ? (
-            <>
+          {pageNavigationActive && props.pageTurnLabel ? (
+            <div aria-busy={pageNavigationBusy}>
               <button
                 type="button"
                 onClick={props.onRequestPreviousPage}
-                disabled={!props.inspectionSession?.pageIndex}
+                disabled={
+                  pageNavigationBusy || !props.inspectionSession?.pageIndex
+                }
               >
                 {"←"} {props.pageTurnLabel}
               </button>
@@ -319,6 +326,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
                 type="button"
                 onClick={props.onRequestPageTurn}
                 disabled={
+                  pageNavigationBusy ||
                   !props.inspectionSession ||
                   props.inspectionSession.pageIndex >=
                     props.inspectionSession.pageCount - 1
@@ -326,7 +334,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
               >
                 {props.pageTurnLabel} {"→"}
               </button>
-            </>
+            </div>
           ) : null}
           {props.closeInspectionLabel &&
           props.phase !== "INSPECTION_CLOSING" &&

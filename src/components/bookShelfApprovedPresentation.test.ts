@@ -217,6 +217,16 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(controller).toContain("handleSceneOpenBook(focusedKey)");
   });
 
+  it("keeps an opened book in view and switches directly from another spine", () => {
+    expect(controller).toContain("pendingBookSwitchRef.current = item.book");
+    expect(controller).toContain("const nextBook = pendingBookSwitchRef.current");
+    expect(controller).toContain('querySelector<HTMLElement>(".book-shelf-scene")');
+    expect(controller).toContain("scene.getBoundingClientRect()");
+    expect(controller).toContain("scene.scrollIntoView({");
+    expect(controller).toContain('block: "center"');
+    expect(controller).toContain("scene.focus({ preventScroll: true })");
+  });
+
   it("integrates the deterministic mobile detail sheet without stealing horizontal shelf gestures", () => {
     expect(mobileDetailController).toContain(
       "bookShelfMobileDetailReducer"
@@ -291,6 +301,9 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(scene).toContain("onRequestPageTurn: () => void");
     expect(scene).toContain("pageTurnLabel?: string");
     expect(scene).toContain('props.phase === "BOOK_OPEN"');
+    expect(scene).toContain('props.phase === "PAGE_DRAGGING"');
+    expect(scene).toContain('props.phase === "PAGE_SETTLING"');
+    expect(scene).toContain("aria-busy={pageNavigationBusy}");
     expect(controller).toContain('event.key !== "Escape"');
     expect(controller).toContain("advancedFiltersOpen");
     expect(controller).toContain("pendingBookCloseRef.current");
@@ -306,6 +319,7 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(controller).toMatch(
       /className="book-detail-page-turn is-(?:previous|next)"/u
     );
+    expect(controller).toContain("pageNavigationActive");
     expect(scene).toContain('type="button"');
   });
 

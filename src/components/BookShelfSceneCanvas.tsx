@@ -415,7 +415,10 @@ export default function BookShelfSceneCanvas({
       performance={{
         min: qualitySettings.profile === "ECONOMY" ? 0.65 : 0.8,
       }}
-      style={{ pointerEvents: active ? "auto" : "none" }}
+      style={{
+        pointerEvents: active ? "auto" : "none",
+        touchAction: "pan-y",
+      }}
       onPointerMissed={() => {
         if (
           completeShelfPhaseHasInspection(phase) &&

@@ -1281,6 +1281,10 @@
   max-width: calc(100% - 28px);
 }
 
+.book-shelf-scene__accessible-actions > div {
+  display: contents;
+}
+
 .book-shelf-scene__accessible-actions button {
   min-height: 42px;
   padding: 9px 14px;
