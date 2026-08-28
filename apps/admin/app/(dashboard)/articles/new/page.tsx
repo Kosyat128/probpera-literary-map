@@ -8,6 +8,7 @@ import ArticleCopyPicker, {
 import { INITIAL_ARTICLE_COPY_OPTIONS_LIMIT } from "@/lib/article-copy-search";
 import { adminEnv } from "@/lib/env";
 import { createSlug } from "@/lib/slug";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export const metadata = { title: "Новая статья" };
@@ -25,7 +26,7 @@ export default async function NewArticlePage({
 }) {
   const { error, copyFrom } = await searchParams;
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
 
   const copyFromId =
     copyFrom && /^[0-9a-f-]{36}$/iu.test(copyFrom) ? copyFrom : null;

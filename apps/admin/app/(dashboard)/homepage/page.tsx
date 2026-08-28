@@ -5,6 +5,7 @@ import HomepageMediaField, {
 } from "@/components/HomepageMediaField";
 import HomepageVisualPreview from "@/components/HomepageVisualPreview";
 import type { HomepagePreviewSection } from "@/components/HomepageVisualPreview";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { adminEnv } from "@/lib/env";
 import {
@@ -487,7 +488,7 @@ export default async function HomepagePage({
 }) {
   const query = await searchParams;
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
   const { data: blocksResult } = await supabase
     .from("homepage_blocks")
     .select("*")

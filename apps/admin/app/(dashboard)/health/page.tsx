@@ -6,6 +6,7 @@ import {
 } from "@/lib/editorial-schema-health";
 import { adminEnv } from "@/lib/env";
 import { formatDate } from "@/lib/format";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { setDiagnosticStatusAction } from "./actions";
 
@@ -23,7 +24,7 @@ type Diagnostic = {
 
 export default async function HealthPage() {
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
   const since = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
   const [{ data }, { count: openCount }, { count: recentCount }] = await Promise.all([
     supabase.from("client_errors").select("id,fingerprint,message,path,source,status,created_at").order("created_at", { ascending: false }).limit(500),

@@ -7,6 +7,7 @@ import {
 import {
   readSiteCopyValues,
 } from "@/lib/site-copy-storage";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export const metadata = { title: "Тексты сайта" };
@@ -33,7 +34,7 @@ export default async function SiteCopyPage({
     loadAllSiteCopyCatalog(),
   ]);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
   const { data, error } = await supabase
     .from("homepage_blocks")
     .select("id,settings,updated_at")

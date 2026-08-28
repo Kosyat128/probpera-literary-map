@@ -1,4 +1,5 @@
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
   deleteNavigationItemAction,
@@ -98,7 +99,7 @@ export default async function MenusPage({
     ? query.location
     : "";
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
   const [{ data: menusResult }, { data: itemsResult }] = await Promise.all([
     supabase.from("navigation_menus").select("*").order("location").order("id"),
     supabase

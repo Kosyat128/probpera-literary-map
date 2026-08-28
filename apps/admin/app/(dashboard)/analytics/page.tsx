@@ -1,5 +1,6 @@
 import { articlePublicPath } from "@/lib/article-route";
 import { adminEnv } from "@/lib/env";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { normalizeViewPath } from "@/lib/view-path";
 
@@ -25,7 +26,7 @@ function topEntries(map: Map<string, number>, limit: number) {
 
 export default async function AnalyticsPage() {
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
 
   const metrikaCounterId = /^\d{1,15}$/u.test(adminEnv.metrikaCounterId)
     ? adminEnv.metrikaCounterId

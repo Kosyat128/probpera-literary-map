@@ -9,6 +9,7 @@ import {
   seoRedirectCodes,
   seoRedirectStatuses,
 } from "@/lib/seo-catalog-query";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
   createRedirectAction,
@@ -75,7 +76,7 @@ export default async function SeoPage({
   const query = await searchParams;
   const catalog = parseSeoCatalogQuery(query);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
 
   let redirectsRequest = supabase
     .from("redirects")

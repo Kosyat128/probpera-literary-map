@@ -180,6 +180,13 @@ textarea:focus-visible,
   padding: 32px;
 }
 
+.admin-state-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 32px;
+}
+
 .auth-screen {
   grid-template-columns: minmax(320px, 0.8fr) minmax(460px, 1.2fr);
   gap: clamp(30px, 6vw, 100px);
@@ -266,6 +273,46 @@ textarea:focus-visible,
   backdrop-filter: blur(28px);
 }
 
+.state-card {
+  width: min(100%, 620px);
+  padding: clamp(30px, 5vw, 60px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.055), transparent 45%),
+    rgba(27, 9, 46, 0.94);
+  box-shadow: 0 35px 100px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(28px);
+}
+
+.state-card-embedded {
+  width: 100%;
+  min-height: 260px;
+}
+
+.state-card h1 {
+  margin: 14px 0 18px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 500;
+  line-height: 1.02;
+}
+
+.state-card > p {
+  max-width: 600px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
 .auth-card h2 {
   margin: 12px 0 10px;
   font-family: Georgia, serif;
@@ -320,6 +367,7 @@ textarea:focus-visible,
 }
 
 .button,
+.primary-button,
 .button-secondary,
 .icon-button {
   display: inline-flex;
@@ -334,13 +382,15 @@ textarea:focus-visible,
   font-weight: 800;
 }
 
-.button {
+.button,
+.primary-button {
   background: linear-gradient(135deg, #ff8b28, #f05b00);
   box-shadow: 0 10px 30px rgba(240, 91, 0, 0.22);
   color: white;
 }
 
-.button:hover {
+.button:hover,
+.primary-button:hover {
   filter: brightness(1.08);
 }
 

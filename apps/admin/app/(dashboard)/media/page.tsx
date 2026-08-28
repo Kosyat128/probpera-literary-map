@@ -11,6 +11,7 @@ import {
   parseMediaCatalogQuery,
 } from "@/lib/media-catalog-query";
 import { redirect } from "@/lib/navigation";
+import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { updateMediaMetadataAction } from "./actions";
 
@@ -47,7 +48,7 @@ export default async function MediaPage({
   const query = await searchParams;
   const catalog = parseMediaCatalogQuery(query);
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return null;
+  if (!supabase) return <AdminDependencyState />;
 
   let assetsRequest = supabase
     .from("media_assets")
