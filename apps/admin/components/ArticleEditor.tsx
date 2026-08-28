@@ -1,7 +1,7 @@
 "use client";
 
 import type { JSONContent } from "@tiptap/core";
-import { EditorContent, useEditor } from "@tiptap/react";
+import { useEditor } from "@tiptap/react";
 import NextLink from "next/link";
 import type { FormEvent as ReactFormEvent } from "react";
 import {
@@ -54,7 +54,8 @@ import EditorImageDialog, {
 } from "@/components/rich-editor/EditorImageDialog";
 import { createRichEditorExtensions } from "@/components/rich-editor/RichEditorExtensions";
 import RecoveryController from "@/components/editor/RecoveryController";
-import ArticleEditorToolbar from "@/components/article-editor/ArticleEditorToolbar";
+import EditorCore from "@/components/article-editor/EditorCore";
+import TranslationPanel from "@/components/article-editor/TranslationPanel";
 import CoverEditor from "@/components/article-editor/CoverEditor";
 import GalleryEditor, {
   type GalleryEditorKind,
@@ -1726,34 +1727,19 @@ export default function ArticleEditor({
         }
       />
 
-      <nav className="article-language-tabs" aria-label="Язык статьи">
-        <button
-          type="button"
-          className={activeLocale === "ru" ? "is-active" : undefined}
-          aria-pressed={activeLocale === "ru"}
-          disabled={!editor || isImageUploadActive}
-          onClick={() => switchEditorLocale("ru")}
-        >
-          RU · авторский оригинал
-        </button>
-        <button
-          type="button"
-          className={activeLocale === "en" ? "is-active" : undefined}
-          aria-pressed={activeLocale === "en"}
-          disabled={!editor || isImageUploadActive}
-          onClick={() => switchEditorLocale("en")}
-        >
-          EN · необязательный перевод
-        </button>
-        <span>
-          {englishEnabled ? `EN: ${englishStatus}` : "EN: не используется"}
-          {englishEnabled && englishTranslation?.source_article_updated_at && !russianSourceChanged
-            ? " · есть привязка к оригиналу"
-            : englishEnabled && russianSourceChanged
-              ? " · нужна повторная сверка"
-              : ""}
-        </span>
-      </nav>
+      <TranslationPanel
+        model={{
+          activeLocale,
+          switchingDisabled: !editor || isImageUploadActive,
+          englishEnabled,
+          englishStatus,
+          englishLinkedToOriginal: Boolean(
+            englishTranslation?.source_article_updated_at
+          ),
+          russianSourceChanged,
+        }}
+        actions={{ switchLocale: switchEditorLocale }}
+      />
 
       <div className="article-editor">
         <div className="editor-main">
@@ -1856,170 +1842,47 @@ export default function ArticleEditor({
             </label>
           </section>
 
-          <section
-            className={`panel editor-surface${
-              isImageUploadActive ? " is-media-uploading" : ""
-            }`}
-            aria-busy={isImageUploadActive}
-          >
-            {activeLocale === "ru" ? (
-              <div className="editor-template-bar">
-              <span>Или начать с готовой структуры</span>
-              <small>
-                Заголовки разделов и квадратные места под изображения уже
-                расставлены. Выберите основу и замените только содержимое.
-              </small>
-              <div>
-                {articleTemplates.map((template) => (
-                  <button
-                    type="button"
-                    className="editor-template-card"
-                    key={template.label}
-                    onClick={() => applyTemplate(template.html, template.label)}
-                  >
-                    <strong>{template.label}</strong>
-                    <small>{template.description}</small>
-                  </button>
-                ))}
-                {customTemplates.map((template) => (
-                  <button
-                    type="button"
-                    key={template.id}
-                    onClick={() => applyTemplate(template.html, template.label)}
-                    title={template.localOnly ? "Локальный шаблон - сохраните его заново, чтобы перенести в базу" : template.visibility === "shared" ? "Общий шаблон редакции" : "Личный шаблон"}
-                  >
-                    {template.visibility === "shared" ? "◆" : "★"} {template.label}{template.localOnly ? " · локальный" : ""}
-                  </button>
-                ))}
-                <button type="button" onClick={saveCustomTemplate} disabled={templatePending}>
-                  ＋ Сохранить как шаблон
-                </button>
-                <NextLink
-                  className="editor-template-link"
-                  href="/media"
-                  target="_blank"
-                >
-                  Медиатека ↗
-                </NextLink>
-                {customTemplates.length > 0 && (
-                  <button type="button" onClick={clearCustomTemplates} disabled={templatePending}>
-                    Удалить мои шаблоны
-                  </button>
-                )}
-              </div>
-                {templateMessage && <small role="status">{templateMessage}</small>}
-              </div>
-            ) : (
-              <div className="editor-template-bar">
-                <span>English translation</span>
-                <small>
-                  Translate the author&apos;s current Russian version. The English
-                  text is stored and reviewed independently; Russian text is never
-                  inserted as an English fallback.
-                </small>
-              </div>
-            )}
-            <ArticleEditorToolbar
-              editor={editor}
-              state={{
-                disabled: isImageUploadActive,
-                imageUploadBusy: editorMedia.busy,
-                fullscreen: isFullscreen,
-              }}
-              actions={{
-                openLink: setLink,
-                uploadImage: () => openImagePicker("article"),
-                openMediaLibrary: editorMedia.openLibrary,
-                addImageByUrl: addImage,
-                addGallery: () => addMediaCollection("gallery"),
-                addSlider: () => addMediaCollection("slider"),
-                toggleFullscreen: () => setIsFullscreen((value) => !value),
-              }}
-            />
-            <input
-              ref={editorMedia.fileInputRef}
-              className="visually-hidden-file"
-              type="file"
-              multiple
-              accept="image/jpeg,image/png,image/webp,image/avif"
-              onChange={(event) => editorMedia.handleFileInput(event.target.files)}
-            />
-            <button
-              ref={(element) => registerWorkspaceSection("media", element)}
-              className={
-                editorMedia.busy
-                  ? "editor-direct-upload is-uploading"
-                  : "editor-direct-upload"
-              }
-              type="button"
-              onClick={() => openImagePicker("article")}
-              onDragEnter={editorMedia.rememberSelection}
-              onDragOver={(event) => event.preventDefault()}
-              onDrop={(event) => {
-                event.preventDefault();
-                editorMedia.rememberSelection();
-                editorMedia.enqueueFiles(Array.from(event.dataTransfer.files || []));
-              }}
-              disabled={isImageUploadActive}
-            >
-              <strong>
-                {editorMedia.busy
-                  ? "Оптимизируем изображение…"
-                  : "Нажмите или перетащите фотографию сюда"}
-              </strong>
-              <span>
-                Она загрузится с компьютера, преобразуется в WebP и появится в месте курсора.
-                Если выбрана старая фотография, новая заменит её.
-              </span>
-            </button>
-            {imageUploadMessage && (
-              <p className="upload-feedback is-success" role="status">{imageUploadMessage}</p>
-            )}
-            {imageUploadError && (
-              <p className="upload-feedback is-error" role="alert">{imageUploadError}</p>
-            )}
-            <div
-              ref={(element) => registerWorkspaceSection("text", element)}
-              className={
-                isImageDraggingOverEditor
-                  ? "editor-content-drop-target is-dragging"
-                  : "editor-content-drop-target"
-              }
-              inert={isImageUploadActive ? true : undefined}
-              onDragEnterCapture={(event) => {
-                if (Array.from(event.dataTransfer.items || []).some(
-                  (item) => item.kind === "file" && item.type.startsWith("image/")
-                )) {
-                  setIsImageDraggingOverEditor(true);
-                }
-              }}
-              onDragOverCapture={(event) => {
-                if (Array.from(event.dataTransfer.items || []).some(
-                  (item) => item.kind === "file" && item.type.startsWith("image/")
-                )) {
-                  event.preventDefault();
-                  event.dataTransfer.dropEffect = "copy";
-                }
-              }}
-              onDragLeave={(event) => {
-                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-                  setIsImageDraggingOverEditor(false);
-                }
-              }}
-              onDropCapture={(event) => {
-                setIsImageDraggingOverEditor(false);
-                editorMedia.handleDrop(event);
-              }}
-              onPasteCapture={editorMedia.handlePaste}
-            >
-              <EditorContent editor={editor} />
-              {isImageDraggingOverEditor && (
-                <span className="editor-drop-hint" aria-hidden="true">
-                  Отпустите изображение - оно появится в этом месте статьи
-                </span>
-              )}
-            </div>
-          </section>
+          <EditorCore
+            model={{
+              activeLocale,
+              editor,
+              templates: articleTemplates,
+              customTemplates,
+              templatePending,
+              templateMessage,
+              imageUploadActive: isImageUploadActive,
+              imageUploadBusy: editorMedia.busy,
+              imageUploadMessage,
+              imageUploadError,
+              fullscreen: isFullscreen,
+              imageDraggingOverEditor: isImageDraggingOverEditor,
+            }}
+            actions={{
+              applyTemplate,
+              saveCustomTemplate,
+              clearCustomTemplates,
+              openLink: setLink,
+              uploadImage: () => openImagePicker("article"),
+              openMediaLibrary: editorMedia.openLibrary,
+              addImageByUrl: addImage,
+              addGallery: () => addMediaCollection("gallery"),
+              addSlider: () => addMediaCollection("slider"),
+              toggleFullscreen: () => setIsFullscreen((value) => !value),
+              handleFileInput: editorMedia.handleFileInput,
+              rememberMediaSelection: editorMedia.rememberSelection,
+              enqueueFiles: editorMedia.enqueueFiles,
+              handleEditorDrop: editorMedia.handleDrop,
+              handleEditorPaste: editorMedia.handlePaste,
+              setImageDraggingOverEditor,
+            }}
+            refs={{
+              fileInputRef: editorMedia.fileInputRef,
+              mediaSectionRef: (element) =>
+                registerWorkspaceSection("media", element),
+              textSectionRef: (element) =>
+                registerWorkspaceSection("text", element),
+            }}
+          />
         </div>
 
         <aside className="editor-side">

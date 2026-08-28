@@ -23,7 +23,7 @@ describe("article editor panel source contracts", () => {
       'activeLocale === "en" ? englishWordCount : russianWordCount'
     );
     expect(articleEditor).not.toContain("const countHtmlWords =");
-    expect(articleEditor).toContain("editorMedia.handleDrop(event)");
+    expect(articleEditor).toContain("handleEditorDrop: editorMedia.handleDrop");
     expect(articleEditor).toContain("<EditorMediaDialog");
     expect(articleEditor).toContain('name="cover_alt"');
     expect(articleEditor).toContain('name="seo_title"');

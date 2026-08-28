@@ -10,6 +10,10 @@ const pageSource = readFileSync(
   new URL("./PageEditor.tsx", import.meta.url),
   "utf8"
 );
+const articleCoreSource = readFileSync(
+  new URL("./article-editor/EditorCore.tsx", import.meta.url),
+  "utf8"
+);
 const imageExtensionSource = readFileSync(
   new URL("./EditorialImage.ts", import.meta.url),
   "utf8"
@@ -63,7 +67,12 @@ describe("shared editor media parity", () => {
   });
 
   it("keeps ordered multi-file cursor insertion and single exact replacement", () => {
-    expect(articleSource).toContain("onPasteCapture={editorMedia.handlePaste}");
+    expect(articleSource).toContain(
+      "handleEditorPaste: editorMedia.handlePaste"
+    );
+    expect(articleCoreSource).toContain(
+      "onPasteCapture={actions.handleEditorPaste}"
+    );
     expect(pageSource).toContain("onPasteCapture={editorMedia.handlePaste}");
     expect(workflowSource).toContain('target.kind === "insert" ? supported : supported.slice(0, 1)');
     expect(workflowSource).toContain("uploaded.map((item) => ({ type: \"image\"");
