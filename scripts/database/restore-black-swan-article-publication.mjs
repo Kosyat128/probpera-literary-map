@@ -7,7 +7,9 @@ export const BLACK_SWAN_ARTICLE_LEGACY_ID =
   "page--article--page--books--14";
 export const BLACK_SWAN_ARTICLE_TITLE =
   "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»";
-export const BLACK_SWAN_ARTICLE_CATEGORY_SLUG = "mnenie-o-knige";
+// The CMS relation stores the editorial slug. `mnenie-o-knige` is only the
+// mapped public route segment and must never be used as the database guard.
+export const BLACK_SWAN_ARTICLE_CATEGORY_SLUG = "book-opinions";
 export const BLACK_SWAN_ARTICLE_CONTENT_SHA256 =
   "85646997f27307f053793b99776572f3133a08a24949f4660ddd1f87e6945078";
 export const BLACK_SWAN_ARTICLE_SLUG =
