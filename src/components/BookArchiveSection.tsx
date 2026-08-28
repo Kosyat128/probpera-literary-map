@@ -1834,6 +1834,14 @@ export default function BookArchiveSection({
         skipNextBookPopstateRef.current = false;
         return;
       }
+      if (
+        !event &&
+        (pendingBookCloseRef.current ||
+          pendingBookSwitchRef.current ||
+          pendingInspectionBookRef.current)
+      ) {
+        return;
+      }
       const location = parseBookArchiveLocation(window.location.search);
       setActiveShelfId(
         location.shelfId ||
@@ -2196,8 +2204,10 @@ export default function BookArchiveSection({
       ) {
         return;
       }
-      pendingInspectionBookRef.current = null;
-      window.requestAnimationFrame(() => openBookDetail(pendingBook));
+      window.requestAnimationFrame(() => {
+        pendingInspectionBookRef.current = null;
+        openBookDetail(pendingBook);
+      });
     }, [openBookDetail]
   );
   const handleShelfKeyDown = useCallback(
