@@ -98,6 +98,7 @@ const allowedArticleHtml = {
       "data-reveal",
       "data-image-layout",
       "data-caption",
+      "data-media-id",
       "data-text-tone",
     ],
   },
@@ -239,7 +240,7 @@ export async function translateArticleSourceToEnglish(
     domainInstructions: [
       "This material is a literary magazine article. Preserve every paragraph, heading, list item, quotation, caption and editorial qualification in the original order.",
       "For content_html preserve complete HTML element order and nesting.",
-      "Preserve href, src, id, class, name, target, rel, width, height, loading, data-editorial-block, data-reveal, data-image-layout and data-text-tone values exactly.",
+      "Preserve href, src, id, class, name, target, rel, width, height, loading, data-editorial-block, data-reveal, data-image-layout, data-media-id and data-text-tone values exactly.",
       "Translate visible text plus human-facing alt, title, figcaption and data-caption text. Do not create or remove links, images or structural elements.",
       "Translate source and bibliography strings without inventing bibliographic data. Preserve every URL, ISBN, DOI, year, volume/issue number, publisher identity and identifier exactly.",
       "SEO and Open Graph fields must sound native, remain faithful to the article and avoid clickbait.",

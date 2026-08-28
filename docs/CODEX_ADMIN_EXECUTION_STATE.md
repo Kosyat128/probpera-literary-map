@@ -1,8 +1,8 @@
 # Codex Admin Execution State
 
 Audited baseline: `27409c57b51568038a4341f151436f32ec6d87dc`
-Working HEAD: `fd68399497bca7c667afd5c3bf0ec045aba66860`
-Last updated: `2026-08-28T11:11:04Z`
+Working HEAD: `080565e0` on `codex/admin-2-phase3`; production `main` is `c9bed23e7a4a66ee6ec95d2809d54e1204c1c076`
+Last updated: `2026-08-28T11:56:00Z`
 
 ## Completed
 
@@ -15,14 +15,18 @@ Last updated: `2026-08-28T11:11:04Z`
 - [x] Next.js upgraded from `16.3.0` to patched `16.3.3` without unrelated dependency upgrades.
 - [x] Root/global error boundaries and graceful Russian dependency states added; all 18 nullable Supabase pages no longer render blank screens.
 - [x] Admin OpenNext Worker built successfully and size gate passed at `2862.20 / 2900 KiB` gzip.
+- [x] Phase 1–2 PR `#132` merged by the repository-required rebase strategy; deploy-admin and Quality are green (`114` browser checks passed, `18` skipped).
+- [x] Phase 3 typed Article Editor workspace bridge implemented without DOM scraping, `MutationObserver`, heading-text parsing or synthetic clicks; focused tests (`21/21`) and admin TypeScript passed.
+- [x] The first production restoration attempt (`33168427295`) failed closed before mutation because the guard compared the public route segment with the CMS category slug. The CMS contract is now pinned correctly to `book-opinions`; focused restore tests pass (`8/8`).
+- [x] Shared editor media foundation implemented: Article/Page use one typed upload helper, Page has direct upload and exact replacement, media identity survives as `data-media-id`, and both editors use a controlled safe-link dialog instead of link prompts.
 
 ## In progress
 
-- Phase 1 — release and execute the prepared exact-record production repair, refresh Pages and verify the restored route.
+- Phase 3 — finish safe ArticleEditor decomposition, shared rich-editor controls and server autosave/recovery.
 
 ## Pending
 
-- [ ] Phase 3 — shared editor foundation.
+- [ ] Complete and merge the remaining Phase 3 shared-editor/decomposition/recovery work.
 - [ ] Phase 4 — media and gallery.
 - [ ] Phase 5 — Style Engine and Site Studio.
 - [ ] Phase 6 — Data Studio.
@@ -43,12 +47,16 @@ Last updated: `2026-08-28T11:11:04Z`
 - Exact-record restoration and resilience source contracts — 2 files, 11 tests.
 - Admin TypeScript and Cloudflare TypeScript configurations.
 - OpenNext production build on Next `16.3.3` and Worker gzip size gate.
+- PR `#132` deploy-admin run `33166448296` and Quality run `33166448257`.
+- Typed workspace focused suite: `21/21`; admin TypeScript and `git diff --check` passed.
+- Corrected exact-record restore contract: `8/8` focused tests.
+- Shared media/link parity: `6` focused files, `23/23` tests; admin TypeScript and `git diff --check` passed.
 
 ## Known blockers
 
-- `page--article--page--books--14` is absent from the live artifact because production export records CMS UUID `7ad1ab89-8a77-407d-b59a-6147c0e2a7a6` in `withdrawnLegacyArticles`. The master prompt explicitly requires this one release-blocking record to be restored. Repair must validate the exact record and content before republishing; the general withdrawal guard must remain intact.
-- The absolute current outbox pending count above high-water `281` still needs one final read-only health query. No known backlog remains through the deployed high-water.
+- `page--article--page--books--14` remains withdrawn until the corrected fail-closed guard is merged to `main` and the fixed-purpose workflow is rerun. The failed run made no mutation.
+- Production outbox is currently empty: run `33168427295` reported `No pending public build requests (outbox).` before the guarded mutation step.
 
 ## NEXT STEP
 
-Commit, review and merge the Phase 1–2 block; run the fail-closed exact-record republish for `page--article--page--books--14`, dispatch one CMS Pages refresh, then verify the canonical route and live publication head before starting the typed Article Editor workspace bridge.
+Extract the first safe ArticleEditor module/shared RichEditor control boundary, then implement scoped server autosave/recovery without changing the existing save contract. After Phase 3 is green, rebase its commits onto exact `main`, review and merge once; rerun the corrected exact-record restore against that immutable main SHA, refresh Pages once and verify canonical/legacy routes before Phase 4.

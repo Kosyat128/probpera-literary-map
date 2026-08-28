@@ -8,7 +8,7 @@ import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import NextLink from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { savePageAction } from "@/app/(dashboard)/pages/actions";
 import { createSlug } from "@/lib/slug";
@@ -17,7 +17,17 @@ import {
   insertEditorialBlock,
   setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
-import { EditorialImage } from "@/components/EditorialImage";
+import {
+  EditorialImage,
+  updateEditorialImageAt,
+  type EditorialImageLayout,
+} from "@/components/EditorialImage";
+import EditorLinkDialog from "@/components/EditorLinkDialog";
+import {
+  EDITOR_IMAGE_REPLACE_EVENT,
+  type EditorImageReplaceDetail,
+} from "@/components/editorMediaEvents";
+import { uploadEditorImage } from "@/lib/editor-image-upload";
 
 type PageRecord = {
   id: string;
@@ -33,6 +43,22 @@ type PageRecord = {
   canonical_url?: string | null;
   allow_indexing?: boolean;
 };
+
+type PageImageSelection = {
+  attributes: Record<string, unknown>;
+  expectedSrc?: string;
+  nodePos?: number;
+  insertionPos?: number;
+};
+
+function suggestedPageImageAlt(file: File) {
+  const label = file.name
+    .replace(/\.[^.]+$/u, "")
+    .replace(/[_-]+/gu, " ")
+    .replace(/\s+/gu, " ")
+    .trim();
+  return label.length >= 3 ? label.slice(0, 500) : "Иллюстрация к странице";
+}
 
 function ToolbarButton({
   label,
@@ -84,6 +110,14 @@ export default function PageEditor({
   const [isDirty, setIsDirty] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasRecoveryCopy, setHasRecoveryCopy] = useState(false);
+  const [linkDialogOpen, setLinkDialogOpen] = useState(false);
+  const [linkDialogInitialValue, setLinkDialogInitialValue] = useState("");
+  const [imageUploadPending, setImageUploadPending] = useState(false);
+  const [imageUploadMessage, setImageUploadMessage] = useState("");
+  const [imageUploadError, setImageUploadError] = useState("");
+  const imageFileInputRef = useRef<HTMLInputElement>(null);
+  const imageUploadInFlightRef = useRef(false);
+  const imageSelectionRef = useRef<PageImageSelection>({ attributes: {} });
   const previewParams = new URLSearchParams();
   if (catalogContext.q) previewParams.set("q", catalogContext.q);
   if (catalogContext.status) previewParams.set("status", catalogContext.status);
@@ -191,28 +225,156 @@ export default function PageEditor({
   function setLink() {
     if (!editor) return;
     const current = editor.getAttributes("link").href || "";
-    const href = window.prompt("Адрес ссылки", current);
-    if (href === null) return;
-    if (!href.trim()) {
-      editor.chain().focus().unsetLink().run();
-      return;
-    }
-    editor.chain().focus().extendMarkRange("link").setLink({ href }).run();
+    setLinkDialogInitialValue(typeof current === "string" ? current : "");
+    setLinkDialogOpen(true);
   }
 
-  function addImage() {
+  function rememberImageSelection() {
     if (!editor) return;
-    const src = window.prompt("HTTPS-адрес изображения");
-    if (!src?.startsWith("https://")) return;
-    const alt = window.prompt("Описание изображения для читателей", "") || "";
-    editor.chain().focus().setImage({ src, alt }).run();
+    const selectedImage = editor.isActive("image");
+    const attributes = selectedImage ? editor.getAttributes("image") || {} : {};
+    imageSelectionRef.current = {
+      attributes,
+      expectedSrc:
+        selectedImage && typeof attributes.src === "string"
+          ? attributes.src
+          : undefined,
+      nodePos: selectedImage ? editor.state.selection.from : undefined,
+      insertionPos: selectedImage ? undefined : editor.state.selection.from,
+    };
   }
+
+  function openImagePicker() {
+    if (imageUploadInFlightRef.current) return;
+    setImageUploadError("");
+    setImageUploadMessage("");
+    rememberImageSelection();
+    imageFileInputRef.current?.click();
+  }
+
+  async function uploadImageFile(file: File) {
+    if (imageUploadInFlightRef.current) {
+      setImageUploadError(
+        "Одно изображение уже загружается. Дождитесь завершения."
+      );
+      return;
+    }
+    if (!editor) {
+      setImageUploadError("Редактор ещё загружается. Повторите через секунду.");
+      return;
+    }
+
+    const selection = imageSelectionRef.current;
+    const currentAlt =
+      typeof selection.attributes.alt === "string"
+        ? selection.attributes.alt.trim()
+        : "";
+    const altText =
+      currentAlt.length >= 3 ? currentAlt : suggestedPageImageAlt(file);
+    const caption =
+      typeof selection.attributes.caption === "string"
+        ? selection.attributes.caption.trim()
+        : "";
+
+    imageUploadInFlightRef.current = true;
+    setImageUploadPending(true);
+    setImageUploadError("");
+    setImageUploadMessage("Подготавливаем изображение без обрезки…");
+    try {
+      const result = await uploadEditorImage(file, {
+        usage: "inline",
+        altText,
+        caption,
+        collectionName: "Страницы сайта",
+      });
+      setImageUploadMessage("Изображение загружено. Добавляем его в страницу…");
+      const attributes = {
+        src: result.url,
+        mediaId: result.mediaId,
+        alt: altText,
+        caption,
+        layout:
+          typeof selection.attributes.layout === "string"
+            ? (selection.attributes.layout as EditorialImageLayout)
+            : "wide",
+      };
+      if (typeof selection.nodePos === "number") {
+        if (
+          !updateEditorialImageAt(
+            editor,
+            selection.nodePos,
+            attributes,
+            selection.expectedSrc
+          )
+        ) {
+          throw new Error(
+            "Выбранное изображение изменилось во время загрузки. Файл сохранён в медиатеке, но страница не изменена. Выберите изображение ещё раз."
+          );
+        }
+        setImageUploadMessage("Выбранное изображение точно заменено новым файлом.");
+      } else {
+        const insertionPos = Math.max(
+          0,
+          Math.min(
+            selection.insertionPos ?? editor.state.selection.from,
+            editor.state.doc.content.size
+          )
+        );
+        editor
+          .chain()
+          .focus()
+          .insertContentAt(insertionPos, { type: "image", attrs: attributes })
+          .run();
+        setImageUploadMessage("Изображение загружено и вставлено в место курсора.");
+      }
+      setIsDirty(true);
+    } catch (error) {
+      setImageUploadMessage("");
+      setImageUploadError(
+        error instanceof Error ? error.message : "Не удалось загрузить изображение."
+      );
+    } finally {
+      imageUploadInFlightRef.current = false;
+      setImageUploadPending(false);
+      if (imageFileInputRef.current) imageFileInputRef.current.value = "";
+    }
+  }
+
+  useEffect(() => {
+    const replaceImage = (event: Event) => {
+      if (!editor || imageUploadInFlightRef.current) return;
+      const detail = (event as CustomEvent<EditorImageReplaceDetail>).detail;
+      if (!detail || typeof detail.position !== "number") return;
+      imageSelectionRef.current = {
+        attributes: detail.attributes || {},
+        expectedSrc:
+          typeof detail.attributes?.src === "string"
+            ? detail.attributes.src
+            : undefined,
+        nodePos: detail.position,
+      };
+      editor.commands.setNodeSelection(detail.position);
+      setImageUploadError("");
+      setImageUploadMessage("");
+      imageFileInputRef.current?.click();
+    };
+
+    window.addEventListener(EDITOR_IMAGE_REPLACE_EVENT, replaceImage);
+    return () => window.removeEventListener(EDITOR_IMAGE_REPLACE_EVENT, replaceImage);
+  }, [editor]);
 
   return (
     <form
       action={savePageAction}
       className={`article-editor${isFullscreen ? " is-fullscreen" : ""}`}
-      onSubmit={() => {
+      onSubmit={(event) => {
+        if (imageUploadInFlightRef.current) {
+          event.preventDefault();
+          setImageUploadError(
+            "Дождитесь завершения загрузки изображения перед сохранением страницы."
+          );
+          return;
+        }
         window.localStorage.setItem(
           `probpera-page-editor-${page.id}`,
           JSON.stringify({
@@ -308,7 +470,10 @@ export default function PageEditor({
           <ToolbarButton label="Анимация ←" onClick={() => setEditorialBlockReveal(editor, "slide-left")} />
           <ToolbarButton label="Масштаб" onClick={() => setEditorialBlockReveal(editor, "zoom-in")} />
           <ToolbarButton label="Ссылка" onClick={setLink} />
-          <ToolbarButton label="Изображение" onClick={addImage} />
+          <ToolbarButton
+            label={imageUploadPending ? "Загрузка изображения…" : "Изображение с компьютера"}
+            onClick={openImagePicker}
+          />
           <ToolbarButton
             label="Таблица"
             onClick={() =>
@@ -326,6 +491,26 @@ export default function PageEditor({
             }
           />
         </div>
+        <input
+          ref={imageFileInputRef}
+          className="visually-hidden-file"
+          type="file"
+          accept="image/jpeg,image/png,image/webp,image/avif"
+          onChange={(event) => {
+            const file = event.target.files?.[0];
+            if (file) void uploadImageFile(file);
+          }}
+        />
+        {imageUploadMessage && (
+          <p className="upload-feedback is-success" role="status">
+            {imageUploadMessage}
+          </p>
+        )}
+        {imageUploadError && (
+          <p className="upload-feedback is-error" role="alert">
+            {imageUploadError}
+          </p>
+        )}
         <EditorContent className="editor-canvas" editor={editor} />
       </section>
       <aside className="editor-side">
@@ -353,10 +538,20 @@ export default function PageEditor({
             />
           </label>
           <div className="editor-actions">
-            <button className="button-secondary" name="intent" value="save">
+            <button
+              className="button-secondary"
+              disabled={imageUploadPending}
+              name="intent"
+              value="save"
+            >
               Сохранить
             </button>
-            <button className="button" name="intent" value="publish">
+            <button
+              className="button"
+              disabled={imageUploadPending}
+              name="intent"
+              value="publish"
+            >
               Опубликовать
             </button>
           </div>
@@ -419,6 +614,26 @@ export default function PageEditor({
           </label>
         </section>
       </aside>
+      <EditorLinkDialog
+        open={linkDialogOpen}
+        initialValue={linkDialogInitialValue}
+        onCancel={() => setLinkDialogOpen(false)}
+        onApply={(href) => {
+          setLinkDialogOpen(false);
+          if (!editor) return;
+          if (!href) {
+            editor.chain().focus().extendMarkRange("link").unsetLink().run();
+          } else {
+            editor
+              .chain()
+              .focus()
+              .extendMarkRange("link")
+              .setLink({ href })
+              .run();
+          }
+          setIsDirty(true);
+        }}
+      />
     </form>
   );
 }

@@ -39,6 +39,17 @@ export const EditorialImage = Image.extend({
             ? { "data-caption": caption.trim().slice(0, 600) }
             : {},
       },
+      mediaId: {
+        default: null,
+        parseHTML: (element) => {
+          const value = element.getAttribute("data-media-id")?.trim();
+          return value || null;
+        },
+        renderHTML: ({ mediaId }) =>
+          typeof mediaId === "string" && mediaId.trim()
+            ? { "data-media-id": mediaId.trim() }
+            : {},
+      },
     };
   },
 

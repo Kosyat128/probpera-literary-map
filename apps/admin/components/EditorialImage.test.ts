@@ -46,6 +46,7 @@ describe("updateEditorialImageAt", () => {
         alt: "Old alt",
         caption: "Old caption",
         layout: "left",
+        mediaId: "media-asset-id",
         title: "Keep this title",
       },
     });
@@ -72,6 +73,7 @@ describe("updateEditorialImageAt", () => {
         alt: "Old alt",
         caption: "Old caption",
         layout: "left",
+        mediaId: "media-asset-id",
         title: "Keep this title",
       }
     );

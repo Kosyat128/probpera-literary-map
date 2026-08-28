@@ -139,6 +139,7 @@ const allowedArticleHtml = {
       "data-reveal",
       "data-image-layout",
       "data-caption",
+      "data-media-id",
       "data-text-tone",
     ],
   },
