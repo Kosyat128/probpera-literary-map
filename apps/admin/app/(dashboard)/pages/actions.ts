@@ -6,6 +6,10 @@ import sanitizeHtml from "sanitize-html";
 import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
+import {
+  safeTextToneSpanAttributes,
+  sanitizeArticleTextToneJson,
+} from "@/lib/article-content-presentation";
 import { adminEnv } from "@/lib/env";
 import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
 import {
@@ -48,32 +52,37 @@ const allowedPageHtml = {
   allowedAttributes: {
     ...sanitizeHtml.defaults.allowedAttributes,
     a: ["href", "name", "target", "rel"],
-      img: [
-        "src",
-        "alt",
-        "title",
-        "width",
-        "height",
-        "loading",
-        "data-image-layout",
-        "data-caption",
-        "data-media-id",
-      ],
-      "*": [
-        "class",
-        "id",
-        "data-editorial-block",
-        "data-reveal",
-        "data-image-layout",
-        "data-caption",
-        "data-media-id",
-      ],
+    img: [
+      "src",
+      "alt",
+      "title",
+      "width",
+      "height",
+      "loading",
+      "data-image-layout",
+      "data-caption",
+      "data-media-id",
+    ],
+    "*": [
+      "class",
+      "id",
+      "data-editorial-block",
+      "data-reveal",
+      "data-image-layout",
+      "data-caption",
+      "data-media-id",
+      "data-text-tone",
+    ],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
     a: (tagName: string, attributes: Record<string, string>) => ({
       tagName,
       attribs: sanitizeEditorAnchorAttributes(attributes),
+    }),
+    span: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeTextToneSpanAttributes(attributes),
     }),
   },
 };
@@ -214,7 +223,9 @@ export async function savePageAction(formData: FormData) {
 
   let contentJson: unknown;
   try {
-    contentJson = JSON.parse(parsed.data.contentJson);
+    contentJson = sanitizeArticleTextToneJson(
+      JSON.parse(parsed.data.contentJson)
+    );
   } catch {
     contentJson = { type: "doc", content: [] };
   }

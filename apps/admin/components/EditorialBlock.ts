@@ -117,18 +117,27 @@ export function setEditorialBlockReveal(
   editor?.chain().focus().updateAttributes("editorialBlock", { reveal }).run();
 }
 
-export function insertEditorialGallery(editor: Editor | null, urls: string[]) {
-  insertEditorialMediaCollection(editor, urls, "gallery");
+export function insertEditorialGallery(
+  editor: Editor | null,
+  urls: string[],
+  altContext = "статье"
+) {
+  insertEditorialMediaCollection(editor, urls, "gallery", altContext);
 }
 
-export function insertEditorialSlider(editor: Editor | null, urls: string[]) {
-  insertEditorialMediaCollection(editor, urls, "slider");
+export function insertEditorialSlider(
+  editor: Editor | null,
+  urls: string[],
+  altContext = "статье"
+) {
+  insertEditorialMediaCollection(editor, urls, "slider", altContext);
 }
 
 function insertEditorialMediaCollection(
   editor: Editor | null,
   urls: string[],
-  kind: "gallery" | "slider"
+  kind: "gallery" | "slider",
+  altContext: string
 ) {
   if (!editor || !urls.length) return;
   editor
@@ -152,7 +161,7 @@ function insertEditorialMediaCollection(
           type: "image",
           attrs: {
             src,
-            alt: `Иллюстрация к статье - изображение ${index + 1}`,
+            alt: `Иллюстрация к ${altContext} - изображение ${index + 1}`,
           },
         })),
       ],
