@@ -3,10 +3,7 @@
 import type { JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
 import NextLink from "next/link";
-import type {
-  FormEvent as ReactFormEvent,
-  ReactNode,
-} from "react";
+import type { FormEvent as ReactFormEvent } from "react";
 import {
   useCallback,
   useEffect,
@@ -40,11 +37,9 @@ import { uploadEditorImage } from "@/lib/editor-image-upload";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
 import {
   EditorialBlock,
-  insertEditorialBlock,
   insertEditorialGallery,
   insertEditorialSlider,
   replaceSelectedMediaSlot,
-  setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
 import {
   updateEditorialImageAt,
@@ -58,9 +53,12 @@ import EditorImageDialog, {
   type EditorImageDialogValue,
 } from "@/components/rich-editor/EditorImageDialog";
 import { createRichEditorExtensions } from "@/components/rich-editor/RichEditorExtensions";
-import RichEditorToolbar from "@/components/rich-editor/RichEditorToolbar";
 import RecoveryController from "@/components/editor/RecoveryController";
+import ArticleEditorToolbar from "@/components/article-editor/ArticleEditorToolbar";
 import CoverEditor from "@/components/article-editor/CoverEditor";
+import GalleryEditor, {
+  type GalleryEditorKind,
+} from "@/components/article-editor/GalleryEditor";
 import PublishPanel from "@/components/article-editor/PublishPanel";
 import SeoPanel from "@/components/article-editor/SeoPanel";
 import SourceBibliographyEditor from "@/components/article-editor/SourceBibliographyEditor";
@@ -71,7 +69,6 @@ import {
   type ArticleEditorWorkspace,
   type ArticleWorkspaceGuidanceItem,
 } from "@/components/ArticleEditorContext";
-import { articleTextTones } from "@/lib/article-content-presentation";
 import {
   articleWorkspaceAnchor,
   articleWorkspaceCheckLocale,
@@ -272,47 +269,6 @@ function hasStructuredContent(value: unknown): value is JSONContent {
   return Array.isArray(value.content) && value.content.length > 0;
 }
 
-function ToolbarButton({
-  label,
-  active,
-  disabled = false,
-  onClick,
-}: {
-  label: string;
-  active?: boolean;
-  disabled?: boolean;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      className={active ? "is-active" : undefined}
-      onClick={onClick}
-      disabled={disabled}
-      title={label}
-      aria-label={label}
-      aria-pressed={typeof active === "boolean" ? active : undefined}
-    >
-      {label}
-    </button>
-  );
-}
-
-function ToolbarMenu({
-  label,
-  children,
-}: {
-  label: string;
-  children: ReactNode;
-}) {
-  return (
-    <details className="editor-tool-menu">
-      <summary>{label}</summary>
-      <div className="editor-tool-menu-panel">{children}</div>
-    </details>
-  );
-}
-
 export default function ArticleEditor({
   article,
   englishTranslation,
@@ -410,9 +366,8 @@ export default function ArticleEditor({
   const latestRecoverySnapshotRef = useRef<ArticleRecoverySnapshot | null>(null);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>(templates);
   const [templateMessage, setTemplateMessage] = useState("");
-  const [mediaComposerKind, setMediaComposerKind] = useState<
-    "gallery" | "slider" | null
-  >(null);
+  const [mediaComposerKind, setMediaComposerKind] =
+    useState<GalleryEditorKind | null>(null);
   const [mediaComposerValue, setMediaComposerValue] = useState("");
   const [mediaComposerError, setMediaComposerError] = useState("");
   const [linkDialogOpen, setLinkDialogOpen] = useState(false);
@@ -1964,93 +1919,23 @@ export default function ArticleEditor({
                 </small>
               </div>
             )}
-            <div
-              className="editor-toolbar"
-              role="toolbar"
-              aria-label="Панель форматирования"
-              aria-busy={isImageUploadActive}
-              aria-disabled={isImageUploadActive}
-              inert={isImageUploadActive ? true : undefined}
-            >
-              <RichEditorToolbar
-                editor={editor}
-                onLink={setLink}
-                disabled={isImageUploadActive}
-              />
-
-              <ToolbarMenu label="＋ Блок">
-                <ToolbarButton label="Факт" onClick={() => insertEditorialBlock(editor, "fact")} />
-                <ToolbarButton label="Акцент" onClick={() => insertEditorialBlock(editor, "accent")} />
-                <ToolbarButton label="2 колонки" onClick={() => insertEditorialBlock(editor, "columns")} />
-                <ToolbarButton label="Хронология" onClick={() => insertEditorialBlock(editor, "timeline")} />
-                <ToolbarButton label="Цифры" onClick={() => insertEditorialBlock(editor, "metrics")} />
-                <ToolbarButton label="Раздел главы" onClick={() => insertEditorialBlock(editor, "ornament")} />
-                <ToolbarButton label="Квадрат для изображения" onClick={() => insertEditorialBlock(editor, "media")} />
-              </ToolbarMenu>
-
-              <ToolbarMenu label="Фото и галереи">
-                <ToolbarButton
-                  label={editorMedia.busy ? "Загрузка…" : "Загрузить фото с компьютера"}
-                  active={editorMedia.busy}
-                  disabled={isImageUploadActive}
-                  onClick={() => openImagePicker("article")}
-                />
-                <ToolbarButton
-                  label="Выбрать из медиатеки"
-                  disabled={isImageUploadActive}
-                  onClick={editorMedia.openLibrary}
-                />
-                <ToolbarButton label="Фото по HTTPS-адресу" active={editor?.isActive("image")} onClick={addImage} />
-                <ToolbarButton label="Галерея" onClick={() => addMediaCollection("gallery")} />
-                <ToolbarButton label="Слайдер" onClick={() => addMediaCollection("slider")} />
-              </ToolbarMenu>
-
-              <ToolbarMenu label="Цвет текста">
-                <div className="editor-text-tone-palette" role="group" aria-label="Безопасная палитра цвета текста">
-                  <button
-                    type="button"
-                    className={!editor?.isActive("textTone") ? "is-active" : undefined}
-                    aria-pressed={!editor?.isActive("textTone")}
-                    onClick={() => editor?.chain().focus().unsetTextTone().run()}
-                  >
-                    <span className="editor-text-tone-reset" aria-hidden="true">A</span>
-                    <span><strong>Основной</strong><small>Цвет темы</small></span>
-                  </button>
-                  {articleTextTones.map((tone) => (
-                    <button
-                      type="button"
-                      key={tone.id}
-                      className={editor?.isActive("textTone", { tone: tone.id }) ? "is-active" : undefined}
-                      data-text-tone={tone.id}
-                      aria-pressed={editor?.isActive("textTone", { tone: tone.id })}
-                      onClick={() => editor?.chain().focus().setTextTone(tone.id).run()}
-                    >
-                      <span className="editor-text-tone-swatch" aria-hidden="true" />
-                      <span><strong>{tone.label}</strong><small>AAA · от {tone.contrastRatio}:1</small></span>
-                    </button>
-                  ))}
-                </div>
-                <small className="editor-text-tone-note">
-                  24 редакционных оттенка с контрастом AAA на светлой и тёмной теме. Произвольный CSS не сохраняется.
-                </small>
-              </ToolbarMenu>
-
-              <ToolbarMenu label="Ещё">
-                <ToolbarButton label="Зачёркнутый" active={editor?.isActive("strike")} onClick={() => editor?.chain().focus().toggleStrike().run()} />
-                <ToolbarButton label="Текст слева" active={editor?.isActive({ textAlign: "left" })} onClick={() => editor?.chain().focus().setTextAlign("left").run()} />
-                <ToolbarButton label="Текст по центру" active={editor?.isActive({ textAlign: "center" })} onClick={() => editor?.chain().focus().setTextAlign("center").run()} />
-                <ToolbarButton label="Появление снизу" onClick={() => setEditorialBlockReveal(editor, "fade-up")} />
-                <ToolbarButton label="Появление слева" onClick={() => setEditorialBlockReveal(editor, "slide-left")} />
-                <ToolbarButton label="Появление с масштабом" onClick={() => setEditorialBlockReveal(editor, "zoom-in")} />
-                <ToolbarButton label="Без анимации" onClick={() => setEditorialBlockReveal(editor, "none")} />
-                <ToolbarButton label="Очистить формат" onClick={() => editor?.chain().focus().unsetAllMarks().clearNodes().run()} />
-                <ToolbarButton
-                  label={isFullscreen ? "Свернуть редактор" : "На весь экран"}
-                  active={isFullscreen}
-                  onClick={() => setIsFullscreen((value) => !value)}
-                />
-              </ToolbarMenu>
-            </div>
+            <ArticleEditorToolbar
+              editor={editor}
+              state={{
+                disabled: isImageUploadActive,
+                imageUploadBusy: editorMedia.busy,
+                fullscreen: isFullscreen,
+              }}
+              actions={{
+                openLink: setLink,
+                uploadImage: () => openImagePicker("article"),
+                openMediaLibrary: editorMedia.openLibrary,
+                addImageByUrl: addImage,
+                addGallery: () => addMediaCollection("gallery"),
+                addSlider: () => addMediaCollection("slider"),
+                toggleFullscreen: () => setIsFullscreen((value) => !value),
+              }}
+            />
             <input
               ref={editorMedia.fileInputRef}
               className="visually-hidden-file"
@@ -2288,96 +2173,17 @@ export default function ArticleEditor({
         </aside>
       </div>
 
-      {mediaComposerKind && (
-        <div
-          className="editor-media-modal-backdrop"
-          role="presentation"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) setMediaComposerKind(null);
-          }}
-        >
-          <section
-            className="editor-media-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="editor-media-modal-title"
-          >
-            <div className="editor-media-modal-heading">
-              <div>
-                <span>Изображения статьи</span>
-                <h2 id="editor-media-modal-title">
-                  {mediaComposerKind === "slider"
-                    ? "Собрать слайдер"
-                    : "Собрать галерею"}
-                </h2>
-              </div>
-              <button
-                type="button"
-                aria-label="Закрыть окно"
-                onClick={() => setMediaComposerKind(null)}
-              >
-                ×
-              </button>
-            </div>
-            <p>
-              Вставьте до восьми HTTPS-адресов - по одному в строке. Изображения
-              останутся одним блоком; порядок строк станет порядком кадров.
-              После вставки выберите каждый кадр и уточните его описание через
-              «Фото / заменить».
-            </p>
-            <textarea
-              autoFocus
-              value={mediaComposerValue}
-              onChange={(event) => {
-                setMediaComposerValue(event.target.value);
-                setMediaComposerError("");
-              }}
-              rows={9}
-              placeholder={
-                "https://…/image-1.webp\nhttps://…/image-2.webp\nhttps://…/image-3.webp"
-              }
-              aria-label="Адреса изображений"
-            />
-            <div className="editor-media-modal-summary">
-              <span>
-                {
-                  mediaComposerValue
-                    .split(/\r?\n/u)
-                    .map((item) => item.trim())
-                    .filter((item) => /^https:\/\//iu.test(item))
-                    .slice(0, 8).length
-                }{" "}
-                из 8 изображений
-              </span>
-            <NextLink
-              href="/media"
-              target="_blank"
-            >
-              Открыть медиатеку ↗
-            </NextLink>
-            </div>
-            {mediaComposerError && (
-              <p className="editor-media-modal-error" role="alert">
-                {mediaComposerError}
-              </p>
-            )}
-            <div className="editor-media-modal-actions">
-              <button
-                className="button-secondary"
-                type="button"
-                onClick={() => setMediaComposerKind(null)}
-              >
-                Отмена
-              </button>
-              <button className="button" type="button" onClick={confirmMediaCollection}>
-                {mediaComposerKind === "slider"
-                  ? "Вставить слайдер"
-                  : "Вставить галерею"}
-              </button>
-            </div>
-          </section>
-        </div>
-      )}
+      <GalleryEditor
+        kind={mediaComposerKind}
+        value={mediaComposerValue}
+        error={mediaComposerError}
+        onValueChange={(value) => {
+          setMediaComposerValue(value);
+          setMediaComposerError("");
+        }}
+        onCancel={() => setMediaComposerKind(null)}
+        onConfirm={confirmMediaCollection}
+      />
 
       <EditorLinkDialog
         open={linkDialogOpen}

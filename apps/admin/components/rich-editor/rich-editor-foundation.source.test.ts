@@ -22,6 +22,10 @@ const pageSource = readFileSync(
   new URL("../PageEditor.tsx", import.meta.url),
   "utf8"
 );
+const articleToolbarSource = readFileSync(
+  new URL("../article-editor/ArticleEditorToolbar.tsx", import.meta.url),
+  "utf8"
+);
 
 describe("shared rich editor foundation", () => {
   it("keeps one ordered extension and base-toolbar contract in both editors", () => {
@@ -58,8 +62,10 @@ describe("shared rich editor foundation", () => {
 
     for (const editorSource of [articleSource, pageSource]) {
       expect(editorSource).toContain("createRichEditorExtensions({");
-      expect(editorSource).toContain("<RichEditorToolbar");
     }
+    expect(articleSource).toContain("<ArticleEditorToolbar");
+    expect(articleToolbarSource).toContain("<RichEditorToolbar");
+    expect(pageSource).toContain("<RichEditorToolbar");
     expect(articleSource).toContain("afterStarterKit: [EditorialBlock]");
     expect(articleSource).toContain("afterImage: [ArticleTextTone]");
     expect(pageSource).toContain("afterStarterKit: [EditorialBlock]");
