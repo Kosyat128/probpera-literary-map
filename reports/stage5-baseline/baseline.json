@@ -1,0 +1,1729 @@
+{
+  "provenance": {
+    "schemaVersion": 3,
+    "capturedOn": "2026-08-24",
+    "baseMainSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+    "integrationStartSha": "5992b3b53a76446910d8c4ec10d5fc517fb874bb",
+    "sourceTreeSha": "83985c6446af670cbc2e9b409851e8f5bceda7f5",
+    "repositoryManifest": {
+      "algorithm": "sha256",
+      "recordFormat": "path\\0blob-object\\0bytes\\0",
+      "files": 4002,
+      "bytes": 254639669,
+      "sha256": "daa16b84f3c1d3553e9e55ec079d6a581ee756eff31a77241cc9070fe1510cfb"
+    },
+    "verifiedProductionEvidencePath": "reports/stage5-baseline/verified-production-build.json",
+    "verifiedProduction": {
+      "classification": "EXACT_GITHUB_PAGES_ARTIFACT",
+      "workflowRunId": 32719497676,
+      "artifactId": 9517505146,
+      "releaseSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+      "files": 4383,
+      "bytes": 115067016,
+      "manifestSha256": "5cfcdf9e48c6377398dc62bad7aac89d163bda811a3e5a7d3b3d49a963a58ef8"
+    },
+    "stylesheetPaths": [
+      "src/index.css",
+      "src/analytics/analyticsConsent.css",
+      "src/community/community-accessibility.css"
+    ],
+    "evidenceSource": "git object database at BASE_MAIN_SHA + exact official GitHub Pages artifact 9517505146 from workflow run 32719497676"
+  },
+  "ownerLocks": [
+    {
+      "id": "HEADER-001/002",
+      "decision": "KEEP",
+      "selectors": [
+        ".topline",
+        ".site-header",
+        ".mobile-nav"
+      ],
+      "source": "src/App.tsx + src/index.css"
+    },
+    {
+      "id": "HERO-001/002",
+      "decision": "KEEP",
+      "selectors": [
+        ".magazine-hero",
+        ".hero-editorial",
+        ".hero-cover",
+        ".primary-action"
+      ],
+      "source": "src/App.tsx + src/index.css"
+    },
+    {
+      "id": "STAGE4-GLOBE",
+      "decision": "KEEP",
+      "selectors": [
+        ".atlas-section",
+        ".atlas-experience-surface",
+        ".literary-globe"
+      ],
+      "source": "Stage 4 Globe components + src/index.css"
+    },
+    {
+      "id": "AUTHOR-TEXT",
+      "decision": "KEEP",
+      "selectors": [
+        ".article-reader-content"
+      ],
+      "source": "article data/CMS + ArticleReader"
+    },
+    {
+      "id": "BOOK-ARCHIVE-5A-5C",
+      "decision": "KEEP",
+      "selectors": [
+        ".book-archive-section"
+      ],
+      "source": "BookArchiveSection"
+    }
+  ],
+  "governanceFingerprints": [
+    {
+      "id": "STAGE4-PRODUCTION-SURFACE",
+      "paths": [
+        "src/atlas/atlasExperienceState.ts",
+        "src/atlas/useAtlasExperience.ts",
+        "src/components/AtlasExperienceChrome.tsx",
+        "src/components/GlobeCameraRig.tsx",
+        "src/components/GlobeViewObserver.tsx",
+        "src/components/LiteraryGlobe.tsx",
+        "src/components/LiteraryWorldMap.tsx",
+        "src/components/NobelMarkerLayer.tsx",
+        "src/components/WriterPanel.tsx",
+        "src/components/globeAtlas.ts",
+        "src/components/globeCoordinates.ts",
+        "src/components/globeDiscovery.ts",
+        "src/components/globeFocusMath.ts",
+        "src/components/globeKeyboardNavigation.ts",
+        "src/components/globePerformance.ts",
+        "src/components/globeProjection.ts",
+        "src/components/globeTouchActivation.ts",
+        "src/components/nobelMarkerPolicy.ts",
+        "src/components/useGlobeStyleState.ts",
+        "src/i18n/InterfaceLanguage.tsx"
+      ],
+      "expected": {
+        "files": 20,
+        "sha256": "bdf233f3996f069798908abc42e21f13e620a88c2fe293b3aa633004f7f23f60"
+      }
+    },
+    {
+      "id": "BOOK-ARCHIVE-OWNER-LOCK",
+      "paths": [
+        "src/components/BookArchiveSection.tsx",
+        "src/hooks/useReadingLibrary.ts",
+        "src/data/bookArchive.ts",
+        "src/data/bookArchiveQueue.ts",
+        "src/data/bookLocalization.ts",
+        "src/data/bookQuality.ts",
+        "src/data/cms/bookEditions.generated.ts",
+        "src/data/cms/bookEditions.ts",
+        "src/data/userSuppliedBookCovers.ts"
+      ],
+      "expected": {
+        "files": 9,
+        "sha256": "0cc93c1437b7829a9657557b4f26038d2e0d79df41b7791160316c168411cd41"
+      }
+    },
+    {
+      "id": "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE",
+      "paths": [
+        ".github/workflows/deploy-admin.yml",
+        ".github/workflows/dispatch-premium-database-reconciliation.yml",
+        ".github/workflows/reconcile-production-database.yml",
+        "apps/admin/app/(dashboard)/articles/actions-legacy.ts",
+        "apps/admin/app/(dashboard)/articles/atomic-auto-publish-action.ts",
+        "apps/admin/app/(dashboard)/articles/atomic-standard-save-action.ts",
+        "apps/admin/app/(dashboard)/articles/save-article-action.ts",
+        "apps/admin/app/(dashboard)/library/premium-translation-actions.ts",
+        "apps/admin/app/(dashboard)/site-copy/actions.ts",
+        "apps/admin/app/(dashboard)/translations/actions.ts",
+        "apps/admin/app/(dashboard)/translations/article-actions.ts",
+        "apps/admin/app/(dashboard)/translations/country-actions.ts",
+        "apps/admin/catalog-assets/editorial-catalog.json",
+        "apps/admin/catalog-assets/interface-copy-catalog.json",
+        "apps/admin/lib/admin-catalog-assets.ts",
+        "apps/admin/lib/article-translations.ts",
+        "apps/admin/lib/auto-translate-article-core.ts",
+        "apps/admin/lib/auto-translate-article-premium.ts",
+        "apps/admin/lib/auto-translate-article.ts",
+        "apps/admin/lib/auto-translate-country-profile.ts",
+        "apps/admin/lib/auto-translate-literary-work-safe.ts",
+        "apps/admin/lib/auto-translate-literary-work.ts",
+        "apps/admin/lib/auto-translate-published-article-premium.ts",
+        "apps/admin/lib/auto-translate-site-copy.ts",
+        "apps/admin/lib/auto-translate-writer-biography.ts",
+        "apps/admin/lib/editorial-schema-health.ts",
+        "apps/admin/lib/env.ts",
+        "apps/admin/lib/premium-english-translation.ts",
+        "apps/admin/lib/publication.ts",
+        "apps/admin/scripts/sync-private-catalogs.mjs",
+        "scripts/audit-editorial-language.mjs",
+        "scripts/database/build-production-migration-plan.mjs",
+        "scripts/export-interface-copy-catalog.mjs",
+        "scripts/export-premium-translations.mjs",
+        "src/data/articles/localization.ts",
+        "src/data/bookLocalization.ts",
+        "src/data/countryLocalization.ts",
+        "src/i18n/InterfaceLanguage.tsx",
+        "supabase/migrations/20260808_article_translations.sql",
+        "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+        "supabase/migrations/20260813_unified_revision_history.sql",
+        "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+        "supabase/migrations/20260822_zz_atomic_article_bundle.sql",
+        "supabase/migrations/20260823_premium_machine_translation.sql"
+      ],
+      "expected": {
+        "files": 44,
+        "sha256": "2b4bdaa25e526d7839297330befe68f121539443ba68634e3bf036dbae7afe9f"
+      }
+    },
+    {
+      "id": "HEADER-HERO-CSS-OWNER-LOCK",
+      "paths": [
+        "src/index.css"
+      ],
+      "classTokens": [
+        "topline",
+        "site-header",
+        "brand",
+        "sections-menu",
+        "sections-mega-menu",
+        "sections-mega-groups",
+        "header-actions",
+        "global-search-trigger",
+        "interface-language-control",
+        "header-socials",
+        "reader-button",
+        "mobile-nav",
+        "magazine-hero",
+        "hero-editorial",
+        "hero-title-lead",
+        "hero-title-accent",
+        "hero-title-accent-line",
+        "hero-mobile-break",
+        "hero-actions",
+        "primary-action",
+        "secondary-action",
+        "hero-proof",
+        "hero-cover"
+      ],
+      "expected": {
+        "rules": 221,
+        "sha256": "952a62f4118a962af3d47fd7e8f614d864c655e08e86148e95681d034d6a2a96"
+      }
+    }
+  ],
+  "runtimeObservedFindings": [
+    {
+      "id": "A11Y-FORCED-COLORS-GLOBAL-SEARCH-FOCUS",
+      "selector": ".global-search-trigger",
+      "decision": "FIX",
+      "targetStage": "Stage 5F",
+      "ownerLock": "HEADER-001/002",
+      "environment": "forced-colors: active",
+      "state": "focus retained",
+      "viewport": "desktop + mobile",
+      "locale": "NOT REPORTED",
+      "computed": {
+        "outlineStyle": "none",
+        "boxShadow": "none"
+      },
+      "finding": "The control keeps focus, but neither an outline nor a box shadow supplies a visible forced-colors focus indicator.",
+      "evidence": "Runtime forced-colors baseline reported by the Stage 5A browser audit."
+    }
+  ],
+  "sourceReview": [
+    {
+      "area": "governance",
+      "file": "docs/UI_FOUNDATION.md",
+      "bytes": 7888,
+      "lines": 165,
+      "sha256": "ee486bcf337c230070e1dcc7a7610b3977158359d00fd1e39d4bd409fc604ac5"
+    },
+    {
+      "area": "governance",
+      "file": "docs/GLOBE_EXPLORATION_UX.md",
+      "bytes": 25899,
+      "lines": 280,
+      "sha256": "93330755ab0da159ba34e65ca35375e777a2fbe7aa18e9036f8a6e3cefbc7087"
+    },
+    {
+      "area": "governance",
+      "file": "reports/ui-ux-audit.md",
+      "bytes": 37210,
+      "lines": 200,
+      "sha256": "a92d149ab674765e92218948d58196953bfdaa73b8cbc2b603a563599e1f6261"
+    },
+    {
+      "area": "stage4",
+      "file": "reports/stage4-premium-globe-exploration-pr.md",
+      "bytes": 26171,
+      "lines": 314,
+      "sha256": "68b7dbe32ac48d5448ae8fc01baf3dd2f8831e201fc8dea7bd040dded8dbdecf"
+    },
+    {
+      "area": "stage4",
+      "file": "reports/stage4-visual-evidence/README.md",
+      "bytes": 11856,
+      "lines": 108,
+      "sha256": "2e6659e1122ebc8b5b2a9f60630d73d7951410f755f4f569b2e440aa0ece8a90"
+    },
+    {
+      "area": "app",
+      "file": "src/App.tsx",
+      "bytes": 138424,
+      "lines": 3471,
+      "sha256": "4df1bcbb501964fe956294e24cd7bee7a053313df22c214227891065ff92667a"
+    },
+    {
+      "area": "app",
+      "file": "src/index.css",
+      "bytes": 401074,
+      "lines": 19007,
+      "sha256": "95c7f7bd5e34932d16ef2da0fdbe579618bf9921c1da9e5583ef1ed109dab794"
+    },
+    {
+      "area": "ui",
+      "file": "src/ui/Button.tsx",
+      "bytes": 1810,
+      "lines": 72,
+      "sha256": "4e75ed8ffe9f5a719308859901d1d74442e48584f29828161820df53cbdf33dc"
+    },
+    {
+      "area": "ui",
+      "file": "src/ui/IconButton.tsx",
+      "bytes": 1212,
+      "lines": 47,
+      "sha256": "a3b9a8288377b24b8ccc64fc4510a8e1b6606196fd1b447dac26c9a7ce1faa90"
+    },
+    {
+      "area": "ui",
+      "file": "src/ui/ActionLink.tsx",
+      "bytes": 940,
+      "lines": 39,
+      "sha256": "edc700082470151c219d202230b3e9dff73898f02116f7d1e0ffec4eda4db4e4"
+    },
+    {
+      "area": "globe",
+      "file": "src/components/LiteraryGlobe.tsx",
+      "bytes": 90228,
+      "lines": 2849,
+      "sha256": "bf562a6d72fe180a26cb7a53523fde096aa3149b0e29c1a353dfafa9556ac456"
+    },
+    {
+      "area": "globe",
+      "file": "src/components/AtlasExperienceChrome.tsx",
+      "bytes": 4146,
+      "lines": 126,
+      "sha256": "0bc7a2efcc6e63225b0efb5882214cdc9bb12c1cb5c2470a3a400008f2208650"
+    },
+    {
+      "area": "globe",
+      "file": "src/components/AtlasSearchCombobox.tsx",
+      "bytes": 11092,
+      "lines": 390,
+      "sha256": "c84128a93d92c422e0f0471ad9c033816cc71834997762aac7705ece0700ba53"
+    },
+    {
+      "area": "globe-state",
+      "file": "src/atlas/atlasExperienceState.ts",
+      "bytes": 7387,
+      "lines": 287,
+      "sha256": "d75d2696248e6851fa25e059de8cdc435926142f1a7cd021ea2ed114245038cf"
+    },
+    {
+      "area": "globe-state",
+      "file": "src/atlas/useAtlasExperience.ts",
+      "bytes": 37137,
+      "lines": 1120,
+      "sha256": "b7ea4ab19041f88879947ffe62fa0c109fe953e58aee512f23e3ab2d958e2da0"
+    },
+    {
+      "area": "globe-camera",
+      "file": "src/components/GlobeCameraRig.tsx",
+      "bytes": 20539,
+      "lines": 702,
+      "sha256": "9e5d20f4a0cdede9c0b52214914e23f16c16ea8338aafcfed5bdac38cae49d47"
+    },
+    {
+      "area": "globe-camera",
+      "file": "src/components/GlobeViewObserver.tsx",
+      "bytes": 4658,
+      "lines": 156,
+      "sha256": "db81cb8f7a6f969cceb45ac177acbea9ee1e7aff220de9f768639ab2d6676c43"
+    },
+    {
+      "area": "globe-map",
+      "file": "src/components/LiteraryWorldMap.tsx",
+      "bytes": 2266,
+      "lines": 77,
+      "sha256": "affe4b419d9073d6188f78d34a85af80dcf3f12f34f40540f03a207a4eed1213"
+    },
+    {
+      "area": "globe-map",
+      "file": "src/components/WorldMap.tsx",
+      "bytes": 2784,
+      "lines": 124,
+      "sha256": "f6741853a307a96239e1dc0d4c29cba729a36d17f4ed6e9a8861860b1b306e27"
+    },
+    {
+      "area": "globe-map",
+      "file": "src/components/GlobeCountryFocus.tsx",
+      "bytes": 914,
+      "lines": 37,
+      "sha256": "d781147123003011866aaf7b8b65efe54074eeabd5bad0a7d41423420c121aaf"
+    },
+    {
+      "area": "globe-nobel",
+      "file": "src/components/NobelMarkerLayer.tsx",
+      "bytes": 10362,
+      "lines": 374,
+      "sha256": "885b6c7732dedbeab539958e36ed02dadd626a7b3697ec9e5ccbc5b0ab2f14e1"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeAtlas.ts",
+      "bytes": 39654,
+      "lines": 1375,
+      "sha256": "b6fb422267b8f6578732292c416182429e38705138dea96f48599db63a3a08f6"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeAssetCache.ts",
+      "bytes": 3050,
+      "lines": 92,
+      "sha256": "99c0c47d26662ff071c2f7fd2437db7f44da93b0a6e650b5fc49ea0d229add46"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeCoordinates.ts",
+      "bytes": 6951,
+      "lines": 214,
+      "sha256": "85d1ba1ffd5a6ca0e8fca3f3d329c93e456674426e060962f259185ec29476ac"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeDiscovery.ts",
+      "bytes": 2532,
+      "lines": 77,
+      "sha256": "b7d4d013e68bd69fec2acac135b98cbb93969cfa80d7aaa4ae6cb8ba580e0385"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeFocusMath.ts",
+      "bytes": 12035,
+      "lines": 369,
+      "sha256": "faab746f09e048c74d4039eb861a2e043885a4df411d39e9eaeb4eb8e1d4d428"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeGeography.ts",
+      "bytes": 8504,
+      "lines": 286,
+      "sha256": "31be4859d2d4eb521b26727d9eb84f63007460f081322021d37d184310420d69"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeInteraction.ts",
+      "bytes": 3758,
+      "lines": 151,
+      "sha256": "67e511b4c7e5c59ec21a95076584476c8601b900b101082a0bf5ab9bd567fd15"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeKeyboardNavigation.ts",
+      "bytes": 4501,
+      "lines": 141,
+      "sha256": "0c01b817b767ae35a7b93b86394ac069e31c5da20435086bdc8e7bc91278b0f5"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globePerformance.ts",
+      "bytes": 8751,
+      "lines": 306,
+      "sha256": "99fb3913d8e71057e2ae13104797ad295906f0a015128cf5527cb12a31939b23"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeProjection.ts",
+      "bytes": 3153,
+      "lines": 116,
+      "sha256": "37e6067c48c4b72b26b3e7afa10ecdbdd107a477894fa4851df2f29bf9257d2c"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/globeTouchActivation.ts",
+      "bytes": 4530,
+      "lines": 162,
+      "sha256": "e0f69e13f5849e9a2b7bfc281834f6ba389642476f1381cd7ca3145526399cc6"
+    },
+    {
+      "area": "globe-policy",
+      "file": "src/components/nobelMarkerPolicy.ts",
+      "bytes": 16176,
+      "lines": 520,
+      "sha256": "958551ed4b014c812bb8f4e4a421a38e20b31d7e1fc2f4a40b2b898ad1204844"
+    },
+    {
+      "area": "globe-style",
+      "file": "src/components/useGlobeStyleState.ts",
+      "bytes": 9606,
+      "lines": 364,
+      "sha256": "ea192f8e065485823cbfe6a7730e09fa4756011e8e8fb47574ba3440115d5e3a"
+    },
+    {
+      "area": "sections",
+      "file": "src/components/SectionsDirectory.tsx",
+      "bytes": 11990,
+      "lines": 358,
+      "sha256": "cd0450a3f176903a741afa70df6fdd5603a3487910d92b5252b8abc3b07e7aa7"
+    },
+    {
+      "area": "writers",
+      "file": "src/components/WriterPanel.tsx",
+      "bytes": 48340,
+      "lines": 1299,
+      "sha256": "faae00acb93b3c334e43c4aeccf2a53e0ad424ccff1bee344050f99220be239c"
+    },
+    {
+      "area": "reader",
+      "file": "src/components/ArticleReader.tsx",
+      "bytes": 58217,
+      "lines": 1616,
+      "sha256": "47ef158cea7a1bb7ebee63d17e313fae67df14cc6729d909bdb602dfca1a0ce1"
+    },
+    {
+      "area": "reader",
+      "file": "src/components/ArticleLibrarySection.tsx",
+      "bytes": 21724,
+      "lines": 651,
+      "sha256": "23e4509db2e4d53d2c50a4c6e21b2a4815dd71b02a9efc52f2addfee680d3817"
+    },
+    {
+      "area": "books",
+      "file": "src/components/BookArchiveSection.tsx",
+      "bytes": 36258,
+      "lines": 1009,
+      "sha256": "e3277506acdd5a3c63f1d17238836f5916911333fd7025d9c48a87ca8787da8a"
+    },
+    {
+      "area": "calendar",
+      "file": "src/components/LiteraryCalendar.tsx",
+      "bytes": 17383,
+      "lines": 488,
+      "sha256": "c803888bea3d4a1347452281f1541cbcd228c9725bcc6a337e512a2989276190"
+    },
+    {
+      "area": "search",
+      "file": "src/components/GlobalSearch.tsx",
+      "bytes": 19315,
+      "lines": 573,
+      "sha256": "e28bee692aa320af14b5c2f07f3d9a00b0b179b79ef5c6f0bf39f90c92993de3"
+    },
+    {
+      "area": "cms",
+      "file": "src/components/CmsHomepageContent.tsx",
+      "bytes": 16177,
+      "lines": 515,
+      "sha256": "ee35fa94eed666977811aba400da5c5144ef77d16b3b1d9fd91239006f4ec52c"
+    },
+    {
+      "area": "community",
+      "file": "src/community/CommunityHub.tsx",
+      "bytes": 75675,
+      "lines": 2002,
+      "sha256": "f1e421623cf495eb2ad6490fe21bc1f8daf28af1d4db98845e3c817b587d5e58"
+    },
+    {
+      "area": "reading-library",
+      "file": "src/hooks/useReadingLibrary.ts",
+      "bytes": 7313,
+      "lines": 238,
+      "sha256": "21ca438cdff93901fbceeac6a7cff0b475660e4435f109410eb38b27c55d489f"
+    },
+    {
+      "area": "i18n",
+      "file": "src/i18n/InterfaceLanguage.tsx",
+      "bytes": 96751,
+      "lines": 1350,
+      "sha256": "18327a89d513a31de4bd3ac98f25dbd98c776931e558301a2ceec8ba15b2e95d"
+    },
+    {
+      "area": "build",
+      "file": "package.json",
+      "bytes": 11194,
+      "lines": 158,
+      "sha256": "40914c7cf15a273273581e6fc21ebefd22ab77adb9c5843ae5ab296c91533269"
+    },
+    {
+      "area": "performance",
+      "file": "performance-budget.json",
+      "bytes": 541,
+      "lines": 18,
+      "sha256": "7bcc97e3a9809bf7646ec9f8e671aeaef50c0ec24825ad8947fa2fe944cf2467"
+    },
+    {
+      "area": "performance",
+      "file": "scripts/audit-performance-budget.mjs",
+      "bytes": 4585,
+      "lines": 115,
+      "sha256": "ffec1d03aa04678950c47353bfad71949c63e823d3822131bc6452d8bbfc77d5"
+    },
+    {
+      "area": "service-worker",
+      "file": "public/sw.js",
+      "bytes": 3760,
+      "lines": 134,
+      "sha256": "52e4f410295981846694dad956007681778b7e46a666c5b3b19f8e84208840f3"
+    },
+    {
+      "area": "service-worker",
+      "file": "src/mobile/registerServiceWorker.ts",
+      "bytes": 981,
+      "lines": 27,
+      "sha256": "0f299fc76e250bda78b892f68241181c3ab9c7085c9635442390257594a1e91a"
+    },
+    {
+      "area": "database",
+      "file": "scripts/database/build-production-migration-plan.mjs",
+      "bytes": 17746,
+      "lines": 487,
+      "sha256": "d76cfb444be4de0a4d742ee18e5ac0455da2e186f22e65dc7bb96370a443f666"
+    },
+    {
+      "area": "database",
+      "file": "scripts/database/production-migration-plan.test.mjs",
+      "bytes": 23236,
+      "lines": 543,
+      "sha256": "e2762cd80ddcb47e7977ccd668f5db4d0255a27e07591707ecbbb0493fd0d5cc"
+    },
+    {
+      "area": "database",
+      "file": "supabase/migrations/20260728_reader_favorites.sql",
+      "bytes": 1904,
+      "lines": 51,
+      "sha256": "825830eb025bfedede1c6f8e20ee05889c72940a337156720fc7827310b86387"
+    },
+    {
+      "area": "database",
+      "file": "supabase/migrations/20260801_reader_profiles_and_forum_votes.sql",
+      "bytes": 6075,
+      "lines": 203,
+      "sha256": "573f8e6ed8202f9498f87ce6aeef7f8347342b5a6671cad71ef889bf491f6f65"
+    },
+    {
+      "area": "database",
+      "file": "supabase/migrations/20260802_reader_journey.sql",
+      "bytes": 5408,
+      "lines": 119,
+      "sha256": "542cd407fe37aab86d81604d757340bbf0d4c5c28c48de1444a56bbf7503eb4c"
+    },
+    {
+      "area": "database",
+      "file": "supabase/migrations/20260808_article_translations.sql",
+      "bytes": 13519,
+      "lines": 450,
+      "sha256": "37915d5aa77a4d647ea8bc9b84923b8c07fe148e7c6f301cabf5bb685909d372"
+    },
+    {
+      "area": "database",
+      "file": "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+      "bytes": 12279,
+      "lines": 295,
+      "sha256": "2f7896316307c678c9139f8849ca4cb9930baea5bfc86c3441f281b17203b744"
+    },
+    {
+      "area": "database",
+      "file": "supabase/migrations/20260813_homepage_atomic_move.sql",
+      "bytes": 2647,
+      "lines": 88,
+      "sha256": "34cd8a00b8ae55c0a3126226a597c06c6d0f1d653b8095806d4372496905a185"
+    },
+    {
+      "area": "database",
+      "file": "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+      "bytes": 12582,
+      "lines": 393,
+      "sha256": "795274d300104dcf41edb43fb5fd8e7079badb14bf5747f9d0190021a914456e"
+    },
+    {
+      "area": "database",
+      "file": "supabase/migrations/20260820_homepage_book_month_editorial_choice.sql",
+      "bytes": 523,
+      "lines": 15,
+      "sha256": "436bb25b4513ed451320489278fda8670a1e4ada9f66b065fd6b734ba84c729f"
+    },
+    {
+      "area": "schema-health",
+      "file": "apps/admin/lib/editorial-schema-health.ts",
+      "bytes": 2536,
+      "lines": 79,
+      "sha256": "b3b5320b602ac535482d1a3d93659ab1c5078d325aff9ce746c733303e4f8342"
+    },
+    {
+      "area": "production-workflow",
+      "file": ".github/workflows/reconcile-production-database.yml",
+      "bytes": 10830,
+      "lines": 254,
+      "sha256": "3b7e503d333224d26dc139a1c12b08720852d5c76dc59f22556ee63bd43c2b0e"
+    },
+    {
+      "area": "production-workflow",
+      "file": ".github/workflows/dispatch-premium-database-reconciliation.yml",
+      "bytes": 1752,
+      "lines": 58,
+      "sha256": "f13cbdc736e47f82420d4f5e05fdf417ca528333178263db98bef34673e7061b"
+    },
+    {
+      "area": "production-workflow",
+      "file": ".github/workflows/deploy-pages.yml",
+      "bytes": 13973,
+      "lines": 351,
+      "sha256": "95949f4d363464873ad14535d3f6bc90aa469e66f7fbca1a9713d755f3c93b2d"
+    },
+    {
+      "area": "production-workflow",
+      "file": ".github/workflows/quality.yml",
+      "bytes": 2322,
+      "lines": 92,
+      "sha256": "9d7164cc068741b31412e99507a3c35235a8658c81ab539c218801c666581f15"
+    },
+    {
+      "area": "translation",
+      "file": "supabase/migrations/20260823_premium_machine_translation.sql",
+      "bytes": 1496,
+      "lines": 45,
+      "sha256": "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6"
+    },
+    {
+      "area": "translation",
+      "file": "scripts/export-premium-translations.mjs",
+      "bytes": 20390,
+      "lines": 698,
+      "sha256": "d3965e87f1a408ccc55d57d053547f8e088cc39d09f6fa2f93cd01e900da5378"
+    },
+    {
+      "area": "translation",
+      "file": "scripts/export-premium-translations.source.test.mjs",
+      "bytes": 877,
+      "lines": 28,
+      "sha256": "4e9f5b867aaeab302ceeb0a6095ad7cdc5ca9d4534979b5c2defbc9ae50583ca"
+    },
+    {
+      "area": "translation",
+      "file": "apps/admin/lib/premium-english-translation.ts",
+      "bytes": 11099,
+      "lines": 298,
+      "sha256": "037674ca152117736c5525b8c87db32071407e5097fe1102471f9babe7cfd5fa"
+    },
+    {
+      "area": "translation",
+      "file": "apps/admin/lib/auto-translate-article-premium.ts",
+      "bytes": 11289,
+      "lines": 356,
+      "sha256": "33109459d6cc75fa9ac9dc8184a5d5561d56bf2ac52a9733586dec81510bf255"
+    },
+    {
+      "area": "translation",
+      "file": "apps/admin/lib/auto-translate-published-article-premium.ts",
+      "bytes": 8853,
+      "lines": 270,
+      "sha256": "6de62488976fb7e6ed732f6179c8e7c12afa25c8e9688533c093ceeeb522aa7f"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/atlas/atlasExperienceState.ts",
+      "bytes": 7387,
+      "lines": 287,
+      "sha256": "d75d2696248e6851fa25e059de8cdc435926142f1a7cd021ea2ed114245038cf"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/atlas/useAtlasExperience.ts",
+      "bytes": 37137,
+      "lines": 1120,
+      "sha256": "b7ea4ab19041f88879947ffe62fa0c109fe953e58aee512f23e3ab2d958e2da0"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/AtlasExperienceChrome.tsx",
+      "bytes": 4146,
+      "lines": 126,
+      "sha256": "0bc7a2efcc6e63225b0efb5882214cdc9bb12c1cb5c2470a3a400008f2208650"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/GlobeCameraRig.tsx",
+      "bytes": 20539,
+      "lines": 702,
+      "sha256": "9e5d20f4a0cdede9c0b52214914e23f16c16ea8338aafcfed5bdac38cae49d47"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/GlobeViewObserver.tsx",
+      "bytes": 4658,
+      "lines": 156,
+      "sha256": "db81cb8f7a6f969cceb45ac177acbea9ee1e7aff220de9f768639ab2d6676c43"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/LiteraryGlobe.tsx",
+      "bytes": 90228,
+      "lines": 2849,
+      "sha256": "bf562a6d72fe180a26cb7a53523fde096aa3149b0e29c1a353dfafa9556ac456"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/LiteraryWorldMap.tsx",
+      "bytes": 2266,
+      "lines": 77,
+      "sha256": "affe4b419d9073d6188f78d34a85af80dcf3f12f34f40540f03a207a4eed1213"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/NobelMarkerLayer.tsx",
+      "bytes": 10362,
+      "lines": 374,
+      "sha256": "885b6c7732dedbeab539958e36ed02dadd626a7b3697ec9e5ccbc5b0ab2f14e1"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/WriterPanel.tsx",
+      "bytes": 48340,
+      "lines": 1299,
+      "sha256": "faae00acb93b3c334e43c4aeccf2a53e0ad424ccff1bee344050f99220be239c"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/globeAtlas.ts",
+      "bytes": 39654,
+      "lines": 1375,
+      "sha256": "b6fb422267b8f6578732292c416182429e38705138dea96f48599db63a3a08f6"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/globeCoordinates.ts",
+      "bytes": 6951,
+      "lines": 214,
+      "sha256": "85d1ba1ffd5a6ca0e8fca3f3d329c93e456674426e060962f259185ec29476ac"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/globeDiscovery.ts",
+      "bytes": 2532,
+      "lines": 77,
+      "sha256": "b7d4d013e68bd69fec2acac135b98cbb93969cfa80d7aaa4ae6cb8ba580e0385"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/globeFocusMath.ts",
+      "bytes": 12035,
+      "lines": 369,
+      "sha256": "faab746f09e048c74d4039eb861a2e043885a4df411d39e9eaeb4eb8e1d4d428"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/globeKeyboardNavigation.ts",
+      "bytes": 4501,
+      "lines": 141,
+      "sha256": "0c01b817b767ae35a7b93b86394ac069e31c5da20435086bdc8e7bc91278b0f5"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/globePerformance.ts",
+      "bytes": 8751,
+      "lines": 306,
+      "sha256": "99fb3913d8e71057e2ae13104797ad295906f0a015128cf5527cb12a31939b23"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/globeProjection.ts",
+      "bytes": 3153,
+      "lines": 116,
+      "sha256": "37e6067c48c4b72b26b3e7afa10ecdbdd107a477894fa4851df2f29bf9257d2c"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/globeTouchActivation.ts",
+      "bytes": 4530,
+      "lines": 162,
+      "sha256": "e0f69e13f5849e9a2b7bfc281834f6ba389642476f1381cd7ca3145526399cc6"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/nobelMarkerPolicy.ts",
+      "bytes": 16176,
+      "lines": 520,
+      "sha256": "958551ed4b014c812bb8f4e4a421a38e20b31d7e1fc2f4a40b2b898ad1204844"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/components/useGlobeStyleState.ts",
+      "bytes": 9606,
+      "lines": 364,
+      "sha256": "ea192f8e065485823cbfe6a7730e09fa4756011e8e8fb47574ba3440115d5e3a"
+    },
+    {
+      "area": "stage4-owner-lock",
+      "file": "src/i18n/InterfaceLanguage.tsx",
+      "bytes": 96751,
+      "lines": 1350,
+      "sha256": "18327a89d513a31de4bd3ac98f25dbd98c776931e558301a2ceec8ba15b2e95d"
+    },
+    {
+      "area": "book-archive-owner-lock",
+      "file": "src/components/BookArchiveSection.tsx",
+      "bytes": 36258,
+      "lines": 1009,
+      "sha256": "e3277506acdd5a3c63f1d17238836f5916911333fd7025d9c48a87ca8787da8a"
+    },
+    {
+      "area": "book-archive-owner-lock",
+      "file": "src/hooks/useReadingLibrary.ts",
+      "bytes": 7313,
+      "lines": 238,
+      "sha256": "21ca438cdff93901fbceeac6a7cff0b475660e4435f109410eb38b27c55d489f"
+    },
+    {
+      "area": "book-archive-owner-lock",
+      "file": "src/data/bookArchive.ts",
+      "bytes": 14039,
+      "lines": 452,
+      "sha256": "04b9ee5aaa961fb249b1057de5727c34fd081cf594b27e2dce219d4e9601db10"
+    },
+    {
+      "area": "book-archive-owner-lock",
+      "file": "src/data/bookArchiveQueue.ts",
+      "bytes": 4596,
+      "lines": 171,
+      "sha256": "3f5e787aa17aff19b551422a6c9a9baef94ef3e56527e074818196a3b7f4e71a"
+    },
+    {
+      "area": "book-archive-owner-lock",
+      "file": "src/data/bookLocalization.ts",
+      "bytes": 6309,
+      "lines": 215,
+      "sha256": "2d362dd6fd07b8077e06fbd0dc0fea09a86b8cb0acf7af2f174c28c5ce2e3073"
+    },
+    {
+      "area": "book-archive-owner-lock",
+      "file": "src/data/bookQuality.ts",
+      "bytes": 5099,
+      "lines": 137,
+      "sha256": "07c852adeaf127d85ab24d6ce5a8385de08bc249900aa6325ae45904a0aa2ce2"
+    },
+    {
+      "area": "book-archive-owner-lock",
+      "file": "src/data/cms/bookEditions.generated.ts",
+      "bytes": 198,
+      "lines": 4,
+      "sha256": "17f27aeaf7535a08492d2085125478c451be194cbf01622fdae7fb17f0a89e05"
+    },
+    {
+      "area": "book-archive-owner-lock",
+      "file": "src/data/cms/bookEditions.ts",
+      "bytes": 659,
+      "lines": 29,
+      "sha256": "445ff7a2dd93f9d71395f9c1f3fa85982d05563f94d4c6d89bd2f0f04c708ab6"
+    },
+    {
+      "area": "book-archive-owner-lock",
+      "file": "src/data/userSuppliedBookCovers.ts",
+      "bytes": 3524,
+      "lines": 120,
+      "sha256": "ed57f7bec016719d455bdf90dce284e42999b00b5ac0d97b57d3f607eb75fa68"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": ".github/workflows/deploy-admin.yml",
+      "bytes": 7841,
+      "lines": 209,
+      "sha256": "68e74aed7cd8328547afb61094fcd4f7fd10525e850836e7191193eff724d668"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": ".github/workflows/dispatch-premium-database-reconciliation.yml",
+      "bytes": 1752,
+      "lines": 58,
+      "sha256": "f13cbdc736e47f82420d4f5e05fdf417ca528333178263db98bef34673e7061b"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": ".github/workflows/reconcile-production-database.yml",
+      "bytes": 10830,
+      "lines": 254,
+      "sha256": "3b7e503d333224d26dc139a1c12b08720852d5c76dc59f22556ee63bd43c2b0e"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/app/(dashboard)/articles/actions-legacy.ts",
+      "bytes": 61111,
+      "lines": 1667,
+      "sha256": "a1c7f9d652138f5e8648b2b22dc33b8d3a069851e224a49778dbe385b7e14bea"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/app/(dashboard)/articles/atomic-auto-publish-action.ts",
+      "bytes": 16874,
+      "lines": 516,
+      "sha256": "953908ffed90ae215c2d61f3bac3eff603f562a1fd75648f266e3f89c894e593"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/app/(dashboard)/articles/atomic-standard-save-action.ts",
+      "bytes": 31163,
+      "lines": 842,
+      "sha256": "d60cd087bef7171a767a65cc323b08196a9201b2385fd957c347115967f6b842"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/app/(dashboard)/articles/save-article-action.ts",
+      "bytes": 7715,
+      "lines": 211,
+      "sha256": "904845292b2b72a6ef63fde83fc915bd749612bd71d36995b879437510d16080"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/app/(dashboard)/library/premium-translation-actions.ts",
+      "bytes": 5153,
+      "lines": 156,
+      "sha256": "d16966452c9de754761170a06974508bbe3e3fe2f2435751b3374fa4abc0f4eb"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/app/(dashboard)/site-copy/actions.ts",
+      "bytes": 11147,
+      "lines": 336,
+      "sha256": "b74cc5c56649f11a09ceb9be2d44dea502bf414f0b7d94d1e3e3605e645bca3e"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/app/(dashboard)/translations/actions.ts",
+      "bytes": 12158,
+      "lines": 355,
+      "sha256": "b615d2cc7e8632000fd9ddd3f2665a7cd323281cbf40210ff53766021cda029a"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/app/(dashboard)/translations/article-actions.ts",
+      "bytes": 3066,
+      "lines": 92,
+      "sha256": "326a6f3509895fee2353e29e80ed007d8ccc94e915f36b6b00e8044c4d40bfcb"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/app/(dashboard)/translations/country-actions.ts",
+      "bytes": 3052,
+      "lines": 89,
+      "sha256": "e29a0de9587ce99dbd7813291577eddb89eaaedc2fcce3ba7dbd76eea0d5fb47"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/catalog-assets/editorial-catalog.json",
+      "bytes": 2470553,
+      "lines": 58702,
+      "sha256": "984e0fbf9458ead0f1dda177a4705d9a35eedfa4e3b55c772e58eb649c16f209"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "bytes": 381130,
+      "lines": 9043,
+      "sha256": "4298a5a8f113cd1cb995232684365ec339073380398425f4dcc4ad6b6a252e2b"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/admin-catalog-assets.ts",
+      "bytes": 1923,
+      "lines": 70,
+      "sha256": "bc2ffbde198c8aa44ce450308ac740f792490ea84acd71dcdf6882e372f8d943"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/article-translations.ts",
+      "bytes": 5953,
+      "lines": 229,
+      "sha256": "aed7c4a9ca2c7e5fcea556e0da662639708d2863860722d8e60b6142d5be8b42"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/auto-translate-article-core.ts",
+      "bytes": 20121,
+      "lines": 628,
+      "sha256": "320da5614b1d1ccd892eb2ef2d700291ef949ad9db59b1d91117edcd4c12be09"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/auto-translate-article-premium.ts",
+      "bytes": 11289,
+      "lines": 356,
+      "sha256": "33109459d6cc75fa9ac9dc8184a5d5561d56bf2ac52a9733586dec81510bf255"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/auto-translate-article.ts",
+      "bytes": 220,
+      "lines": 4,
+      "sha256": "e25e87570a75e73d0b8b792942c4ae446fa4db46a2c074a0bb50d9936daaa3ba"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/auto-translate-country-profile.ts",
+      "bytes": 13074,
+      "lines": 400,
+      "sha256": "490dc147d85c0b08f5203c299a1d2ea19c1626c2c1c4758bfa1598ab9d5bdd2a"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/auto-translate-literary-work-safe.ts",
+      "bytes": 906,
+      "lines": 31,
+      "sha256": "e238d409ef45a76b76359e481ae6c803467cc197902d13dd13906963baa1909f"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/auto-translate-literary-work.ts",
+      "bytes": 9951,
+      "lines": 287,
+      "sha256": "104a6e825270d19df1f7239471fe029bfc16b876a72476a4499a4b65f30405c7"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/auto-translate-published-article-premium.ts",
+      "bytes": 8853,
+      "lines": 270,
+      "sha256": "6de62488976fb7e6ed732f6179c8e7c12afa25c8e9688533c093ceeeb522aa7f"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/auto-translate-site-copy.ts",
+      "bytes": 3342,
+      "lines": 110,
+      "sha256": "ed5024c4ec40d8d441e682865621dca7cf0e1855d2babad8768976616985d85d"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/auto-translate-writer-biography.ts",
+      "bytes": 12137,
+      "lines": 382,
+      "sha256": "fbcda4dbc07632dc8c75ef7fdad8d10be29ea68947d3beacfe2b59392374601a"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/editorial-schema-health.ts",
+      "bytes": 2536,
+      "lines": 79,
+      "sha256": "b3b5320b602ac535482d1a3d93659ab1c5078d325aff9ce746c733303e4f8342"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/env.ts",
+      "bytes": 4437,
+      "lines": 149,
+      "sha256": "b8998ab03b3f4b9889069f9be98a947ec3f3f3a8552ea07af31bc2aa9fbd0630"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/premium-english-translation.ts",
+      "bytes": 11099,
+      "lines": 298,
+      "sha256": "037674ca152117736c5525b8c87db32071407e5097fe1102471f9babe7cfd5fa"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/lib/publication.ts",
+      "bytes": 4666,
+      "lines": 147,
+      "sha256": "3610f62a3b23949e2f2a6d8cd04edc84da2fc0e2f8adb961d9300c5d838ffa01"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "apps/admin/scripts/sync-private-catalogs.mjs",
+      "bytes": 2621,
+      "lines": 106,
+      "sha256": "2a3b096d0456fced4ad824b55b565dcfd28d8c02cad30f9ee63ee5b354977809"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "scripts/audit-editorial-language.mjs",
+      "bytes": 7635,
+      "lines": 178,
+      "sha256": "b2926ba2de3c9a5b028ed7c6c2831ea8fe8771c977559958481d0445dba46482"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "scripts/database/build-production-migration-plan.mjs",
+      "bytes": 17746,
+      "lines": 487,
+      "sha256": "d76cfb444be4de0a4d742ee18e5ac0455da2e186f22e65dc7bb96370a443f666"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "scripts/export-interface-copy-catalog.mjs",
+      "bytes": 6139,
+      "lines": 207,
+      "sha256": "4534ba4b4995703edae6dd6389876583dc0d0e1e9d28334984b6ea2c5c8db151"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "scripts/export-premium-translations.mjs",
+      "bytes": 20390,
+      "lines": 698,
+      "sha256": "d3965e87f1a408ccc55d57d053547f8e088cc39d09f6fa2f93cd01e900da5378"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "src/data/articles/localization.ts",
+      "bytes": 4925,
+      "lines": 173,
+      "sha256": "455ec4f3747556669fdf492342135e3b494218923c7a4b460fb052b77cfb8e93"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "src/data/bookLocalization.ts",
+      "bytes": 6309,
+      "lines": 215,
+      "sha256": "2d362dd6fd07b8077e06fbd0dc0fea09a86b8cb0acf7af2f174c28c5ce2e3073"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "src/data/countryLocalization.ts",
+      "bytes": 4902,
+      "lines": 147,
+      "sha256": "5612895d6d14851ca91d685e5b72557966e92123d82873a729e92538a14d1dd4"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "src/i18n/InterfaceLanguage.tsx",
+      "bytes": 96751,
+      "lines": 1350,
+      "sha256": "18327a89d513a31de4bd3ac98f25dbd98c776931e558301a2ceec8ba15b2e95d"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "supabase/migrations/20260808_article_translations.sql",
+      "bytes": 13519,
+      "lines": 450,
+      "sha256": "37915d5aa77a4d647ea8bc9b84923b8c07fe148e7c6f301cabf5bb685909d372"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+      "bytes": 12279,
+      "lines": 295,
+      "sha256": "2f7896316307c678c9139f8849ca4cb9930baea5bfc86c3441f281b17203b744"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "supabase/migrations/20260813_unified_revision_history.sql",
+      "bytes": 4923,
+      "lines": 94,
+      "sha256": "e851c9e2a8d4a4af2760be2798de40a59dcc2ce4ada35e8ca49209f87b81c42e"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+      "bytes": 12582,
+      "lines": 393,
+      "sha256": "795274d300104dcf41edb43fb5fd8e7079badb14bf5747f9d0190021a914456e"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "supabase/migrations/20260822_zz_atomic_article_bundle.sql",
+      "bytes": 20081,
+      "lines": 589,
+      "sha256": "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc"
+    },
+    {
+      "area": "premium-pipeline-lock",
+      "file": "supabase/migrations/20260823_premium_machine_translation.sql",
+      "bytes": 1496,
+      "lines": 45,
+      "sha256": "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6"
+    }
+  ],
+  "performance": {
+    "budgetSource": "performance-budget.json",
+    "productionEvidence": {
+      "status": "PASS",
+      "classification": "EXACT_GITHUB_PAGES_ARTIFACT",
+      "source": {
+        "provider": "GitHub Actions / GitHub Pages",
+        "workflow": "Deploy Vite site to GitHub Pages",
+        "runId": 32719497676,
+        "artifactId": 9517505146,
+        "releaseHead": {
+          "schemaVersion": 1,
+          "commitSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+          "generatedAt": "2026-08-24T11:09:25.987Z"
+        }
+      },
+      "acceptanceEvidence": true
+    },
+    "verifiedBuildGate": {
+      "status": "PASS",
+      "classification": "EXACT_GITHUB_PAGES_ARTIFACT",
+      "evidence": "Official GitHub Pages artifact 9517505146 from workflow run 32719497676",
+      "workflowRunId": 32719497676,
+      "artifactId": 9517505146,
+      "releaseSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+      "totalDistBytes": 115067016,
+      "distLimitBytes": 115081216,
+      "distExcludingCoversBytes": 75491850,
+      "distExcludingCoversLimitBytes": 75497472,
+      "fileCount": 4383,
+      "mainJavaScript": {
+        "rawBytes": 682305,
+        "gzipBytes": 156780
+      },
+      "css": {
+        "rawBytes": 324296,
+        "gzipBytes": 58361
+      },
+      "globeLazyChunk": {
+        "rawBytes": 92507,
+        "gzipBytes": 30583
+      }
+    },
+    "production": {
+      "artifact": {
+        "status": "MEASURED",
+        "source": "Official GitHub Pages artifact 9517505146 from workflow run 32719497676",
+        "files": 4383,
+        "bytes": 115067016,
+        "manifestAlgorithm": "path\\0bytes\\0content\\0 (SHA-256)",
+        "manifestSha256": "5cfcdf9e48c6377398dc62bad7aac89d163bda811a3e5a7d3b3d49a963a58ef8"
+      },
+      "metrics": {
+        "distTotalBytes": {
+          "actual": 115067016,
+          "limit": 115081216,
+          "headroom": 14200,
+          "result": "PASS"
+        },
+        "distExcludingBookCoversBytes": {
+          "actual": 75491850,
+          "limit": 75497472,
+          "headroom": 5622,
+          "result": "PASS"
+        },
+        "largestJavaScriptBytes": {
+          "actual": 2054001,
+          "limit": 2097152,
+          "headroom": 43151,
+          "result": "PASS"
+        },
+        "largestJavaScriptGzipBytes": {
+          "actual": 183810,
+          "limit": 409600,
+          "headroom": 225790,
+          "result": "PASS"
+        },
+        "mainJavaScriptBytes": {
+          "actual": 682305,
+          "limit": 716800,
+          "headroom": 34495,
+          "result": "PASS"
+        },
+        "mainJavaScriptGzipBytes": {
+          "actual": 156780,
+          "limit": 225280,
+          "headroom": 68500,
+          "result": "PASS"
+        },
+        "globeTextureBytes": {
+          "actual": 2901792,
+          "limit": 3355443,
+          "headroom": 453651,
+          "result": "PASS"
+        },
+        "writerPortraitTotalBytes": {
+          "actual": 32543526,
+          "limit": 37748736,
+          "headroom": 5205210,
+          "result": "PASS"
+        },
+        "writerPortraitAverageBytes": {
+          "actual": 27603,
+          "limit": 36864,
+          "headroom": 9261,
+          "result": "PASS"
+        },
+        "writerPortraitMaximumBytes": {
+          "actual": 123952,
+          "limit": 153600,
+          "headroom": 29648,
+          "result": "PASS"
+        },
+        "bookCoverCount": {
+          "actual": 424,
+          "limit": 424,
+          "headroom": 0,
+          "result": "PASS"
+        },
+        "bookCoverTotalBytes": {
+          "actual": 39575166,
+          "limit": 40108032,
+          "headroom": 532866,
+          "result": "PASS"
+        },
+        "bookCoverAverageBytes": {
+          "actual": 93338,
+          "limit": 153600,
+          "headroom": 60262,
+          "result": "PASS"
+        },
+        "bookCoverMaximumBytes": {
+          "actual": 462894,
+          "limit": 491520,
+          "headroom": 28626,
+          "result": "PASS"
+        },
+        "individualImageBytes": {
+          "actual": 2262628,
+          "limit": 2621440,
+          "headroom": 358812,
+          "result": "PASS"
+        }
+      },
+      "assets": {
+        "status": "MEASURED",
+        "files": 1420,
+        "bytes": 42856810
+      },
+      "css": {
+        "status": "MEASURED",
+        "files": 1,
+        "bytes": 324296,
+        "gzipBytes": 58361,
+        "largest": {
+          "path": "assets/index-Cvad-RPW.css",
+          "bytes": 324296,
+          "gzipBytes": 58361,
+          "sha256": "2317e1bb6354395808e7fe4570783a50232ddac0950b4d75b3675620fcb343ef"
+        }
+      },
+      "globeChunks": {
+        "status": "MEASURED",
+        "files": 2,
+        "bytes": 937775,
+        "entries": [
+          {
+            "path": "assets/LiteraryWorldMap-YU6jkJmJ.js",
+            "bytes": 92507,
+            "gzipBytes": 30583,
+            "sha256": "5cef86ef838dea77848177ff72a90ce5c291387f013073403f87f1e48e417879"
+          },
+          {
+            "path": "assets/three-vendor-Cordk6yS.js",
+            "bytes": 845268,
+            "gzipBytes": 226551,
+            "sha256": "0403f5ea0c3aa6ef0a0a7910ac10c333f06b8c67e6be348b56907fab07ce70a2"
+          }
+        ]
+      },
+      "largestJavaScript": {
+        "path": "assets/book-catalog-BjkkkIIQ.js",
+        "bytes": 2054001,
+        "gzipBytes": 183810,
+        "sha256": "c598b7d5d0bfa588f5814220a79ac8eb3b210760fa60baa6051ca479db07f75a"
+      },
+      "mainJavaScript": {
+        "path": "assets/index-ko5WhBaQ.js",
+        "bytes": 682305,
+        "gzipBytes": 156780,
+        "sha256": "6e843844b8b929ca1200d51a6647406bc169c4ded6333766e3cce02d4023cea4"
+      },
+      "globeTexture": {
+        "path": "textures/antique-world-1887.webp",
+        "bytes": 2901792,
+        "sha256": "b498488cba930c48c5c68564ab8f355a50fe620f5aec15353225edcdf592a175"
+      },
+      "bookCovers": {
+        "status": "MEASURED",
+        "files": 424,
+        "bytes": 39575166
+      },
+      "writerPortraits": {
+        "status": "MEASURED",
+        "files": 1179,
+        "bytes": 32543526
+      },
+      "initialRequests": {
+        "status": "NOT MEASURED",
+        "reason": "Requires a browser/network trace of the exact production artifact."
+      }
+    },
+    "localDistDiagnostic": {
+      "status": "NOT RUN",
+      "classification": "LOCAL_INTEGRATION_WORKTREE_DIAGNOSTIC_NOT_PRODUCTION_ARTIFACT",
+      "acceptanceEvidence": false,
+      "command": "npm run stage5:baseline:verify-dist"
+    },
+    "sourceArtifacts": {
+      "public/assets": {
+        "status": "MEASURED",
+        "files": 1385,
+        "bytes": 33860244
+      },
+      "src/assets": {
+        "status": "MEASURED",
+        "files": 9,
+        "bytes": 860033
+      },
+      "book-cover assets": {
+        "status": "MEASURED",
+        "files": 424,
+        "bytes": 39575166
+      },
+      "globe/map assets": {
+        "status": "MEASURED",
+        "files": 58,
+        "bytes": 8186566
+      }
+    },
+    "sourceCss": {
+      "status": "MEASURED",
+      "files": 3,
+      "bytes": 403593
+    },
+    "serviceWorker": {
+      "source": "public/sw.js",
+      "cacheVersion": "probpera-v3",
+      "staticCacheLimit": 160,
+      "pageCacheLimit": 40,
+      "runtimeCacheContents": {
+        "status": "NOT MEASURED",
+        "reason": "Requires a live browser service-worker inspection."
+      }
+    }
+  },
+  "sectionLandmarks": {
+    "entries": [
+      {
+        "landmark": "card",
+        "selector": ".section-directory-card",
+        "sourceRuleCount": 6,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "content",
+        "selector": ".section-directory-card > div",
+        "sourceRuleCount": 4,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "eyebrow",
+        "selector": ".sections-directory .section-card-eyebrow",
+        "sourceRuleCount": 1,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "title",
+        "selector": ".sections-directory h3",
+        "sourceRuleCount": 5,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "description",
+        "selector": ".sections-directory > div:last-child p",
+        "sourceRuleCount": 4,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "series-slot",
+        "selector": ".section-card-series-slot",
+        "sourceRuleCount": 2,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "series",
+        "selector": ".section-card-series",
+        "sourceRuleCount": 1,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "latest-slot",
+        "selector": ".section-card-latest-slot",
+        "sourceRuleCount": 2,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "latest",
+        "selector": ".section-card-latest",
+        "sourceRuleCount": 2,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "divider",
+        "selector": ".section-card-latest::before",
+        "sourceRuleCount": 1,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "footer",
+        "selector": ".section-card-action",
+        "sourceRuleCount": 2,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "CTA",
+        "selector": ".section-card-action > a",
+        "sourceRuleCount": 2,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "arrow",
+        "selector": ".section-card-action i",
+        "sourceRuleCount": 2,
+        "computedCoordinates": "NOT MEASURED"
+      },
+      {
+        "landmark": "bottom",
+        "selector": ".section-card-action",
+        "sourceRuleCount": 2,
+        "computedCoordinates": "NOT MEASURED"
+      }
+    ],
+    "currentHomepageOrder": [
+      "Hero",
+      "Globe",
+      "Book Month",
+      "Book Archive",
+      "Featured Journal",
+      "Article Library",
+      "Community",
+      "Authors",
+      "Sections",
+      "Trust",
+      "Calendar",
+      "Footer"
+    ],
+    "targetStage5cOrder": [
+      "Article Library",
+      "Authors",
+      "Sections",
+      "Calendar",
+      "Community",
+      "Trust",
+      "Footer"
+    ]
+  },
+  "visualEvidence": {
+    "screenshots": "NOT CAPTURED",
+    "computedStyles": {
+      "default": "NOT MEASURED",
+      "measuredFindings": [
+        "A11Y-FORCED-COLORS-GLOBAL-SEARCH-FOCUS"
+      ]
+    },
+    "reason": "No reliable browser screenshot capture was available for the production build.",
+    "viewports": [
+      {
+        "locale": "RU",
+        "viewport": "320px"
+      },
+      {
+        "locale": "RU",
+        "viewport": "360px"
+      },
+      {
+        "locale": "RU",
+        "viewport": "390px"
+      },
+      {
+        "locale": "RU",
+        "viewport": "430px"
+      },
+      {
+        "locale": "RU",
+        "viewport": "768px"
+      },
+      {
+        "locale": "RU",
+        "viewport": "1024px"
+      },
+      {
+        "locale": "RU",
+        "viewport": "1280px"
+      },
+      {
+        "locale": "RU",
+        "viewport": "1440px"
+      },
+      {
+        "locale": "RU",
+        "viewport": "1920px"
+      },
+      {
+        "locale": "RU",
+        "viewport": "1366x700"
+      },
+      {
+        "locale": "RU",
+        "viewport": "1366x768"
+      },
+      {
+        "locale": "EN",
+        "viewport": "360px"
+      },
+      {
+        "locale": "EN",
+        "viewport": "768px"
+      },
+      {
+        "locale": "EN",
+        "viewport": "1440px"
+      },
+      {
+        "locale": "EN",
+        "viewport": "1920px"
+      }
+    ],
+    "closeups": [
+      "Header",
+      "Hero",
+      "Globe",
+      "Book area",
+      "Book Archive",
+      "Article Library",
+      "Community",
+      "Authors",
+      "Sections",
+      "Calendar",
+      "Trust",
+      "Footer",
+      "WriterPanel",
+      "ArticleReader",
+      "GlobalSearch",
+      "Follow Writer",
+      "RU/EN book detail",
+      "Reading library"
+    ],
+    "states": [
+      "default",
+      "hover",
+      "focus",
+      "active",
+      "loading",
+      "empty",
+      "error",
+      "expanded",
+      "selected",
+      "disabled",
+      "mobile sheet",
+      "reduced motion",
+      "200% zoom",
+      "forced colors"
+    ]
+  },
+  "inventories": {
+    "summary": {
+      "KEEP": 46,
+      "TUNE": 38,
+      "FIX": 6
+    }
+  }
+}

@@ -1,0 +1,23 @@
+Asset provenance: Stage 5 premium library background
+====================================================
+
+Generated specifically for the Proba Pera project.
+Date: 2026-08-26
+Tool: OpenAI built-in image generation
+Reference role: owner-approved Stage 5 concept used only for composition, mood, and lighting.
+Rights note: original generated project asset; no Complete Shelf embedded atlases, audio, artwork, or branded example books were copied.
+
+Generation constraints:
+- Premium warm two-storey library interior, straight-on and symmetrical.
+- Background-only composition with a clean central WebGL stage.
+- No foreground books, UI, text, logo, people, or watermark.
+
+Original generated PNG SHA-256: 9D2523DF0F207710B9E59FFDE81FD5951ECB7C237A602D6A458F422063DD1209
+
+Published derivatives:
+- library-archive-background-v1.avif: 75754066540434399FAAFD31256B39009914E7B1870B3E338E70A2698235CA0E
+- library-archive-background-v1.webp: 295D8B3459897DF91F3727A6E811E6D6101D3E7D41904C59EFB5C7E3A0D4F532
+- library-archive-background-mobile-v1.avif: 51B19D485CF67A6BDF4D375AEFADA5DD4DC4F12D711A632E1E7401A651D220F8
+- library-archive-background-mobile-v1.webp: CC1E4F7328D05CB237778572B0CDC862B9D5CA59BADFDEA89EBDD9C9EE7A10A1
+
+Optimized with Sharp into AVIF/WebP responsive variants; the generated PNG is not shipped.

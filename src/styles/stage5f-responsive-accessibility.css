@@ -1,0 +1,163 @@
+/*
+ * Stage 5F responsive/accessibility guardrails.
+ *
+ * These rules deliberately stay below Header, Hero, Globe and Book Shelf. They
+ * improve established control families without enlarging prose links or SVG
+ * artwork and keep the document itself available for normal page reflow.
+ */
+
+@media (any-pointer: coarse) {
+  :where(
+    .ui-action,
+    .ui-icon-button,
+    .global-search,
+    .country-panel,
+    .calendar-card,
+    .community-hub,
+    .article-reader,
+    .analytics-consent
+  ) :where(
+    button,
+    input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]),
+    select,
+    textarea,
+    summary
+  ),
+  :where(
+    button.ui-action,
+    a.ui-action,
+    button.ui-icon-button,
+    .trust-center summary,
+    .footer-map button
+  ) {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+
+  /* Anchors need a non-inline box before logical minimum sizes can apply. */
+  .footer-map a {
+    display: inline-flex;
+    align-items: center;
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+
+  /* These compact reader controls otherwise retain their 26–29px min-width. */
+  .article-reader-bar .interface-language-control button,
+  .article-reader-bar .display-mode-control.is-compact button {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+  }
+
+  /* Navigation/CTA links are controls; ordinary links inside prose are not. */
+  :where(
+    .sections-all-button,
+    .section-card-action > a,
+    .footer-map a
+  ) {
+    min-block-size: 44px;
+  }
+}
+
+/*
+ * Only deep, predominantly static landmarks are paint-contained. The elements
+ * stay mounted and semantic, so direct hashes, Find-in-page and focus can still
+ * reveal their real layout. `auto` retains the last measured intrinsic size.
+ */
+@supports (content-visibility: auto) {
+  :where(
+    #sections.sections-directory,
+    #editorial-policy.trust-center,
+    .site-footer
+  ) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 760px;
+  }
+
+  .site-footer {
+    contain-intrinsic-size: auto 520px;
+  }
+}
+
+/* Tablet and narrow-window containment: 768px and every smaller phone width. */
+@media (max-width: 768px) {
+  :where(
+    #authors,
+    #sections,
+    #community,
+    #editorial-policy
+  ),
+  :where(
+    #authors .author-showcase,
+    #sections > .sections-directory-grid,
+    #community > *,
+    #editorial-policy > *
+  ) {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+  }
+}
+
+/*
+ * Phone author cards use their width to establish a stable portrait ratio.
+ * 64svh * 5/4 guarantees a card no taller than 80svh; 336px * 5/4 caps it at
+ * 420px. This replaces the historical fixed mobile height.
+ */
+@media (max-width: 680px) {
+  #authors .author-showcase article {
+    inline-size: min(100%, 336px, 64svh);
+    margin-inline: auto;
+  }
+
+  #authors .author-showcase button {
+    block-size: auto;
+    min-block-size: 0;
+    max-block-size: min(80svh, 420px);
+    aspect-ratio: 4 / 5;
+  }
+
+  #authors .author-showcase .author-showcase-portrait {
+    block-size: 100%;
+    min-block-size: 0;
+    max-block-size: 100%;
+    aspect-ratio: inherit;
+  }
+}
+
+/* 640 CSS px is the 200%-zoom reflow boundary on a typical 1280px viewport. */
+@media (max-width: 640px) {
+  :where(
+    #authors .section-heading,
+    #sections .section-heading,
+    #community .community-copy,
+    #editorial-policy .section-heading
+  ) {
+    min-inline-size: 0;
+    max-inline-size: 100%;
+  }
+
+  :where(
+    #authors .section-heading,
+    #sections .section-heading,
+    #community .community-copy,
+    #editorial-policy .section-heading
+  ) :where(h2, h3, p, strong) {
+    overflow-wrap: anywhere;
+  }
+
+  #sections .sections-all-button {
+    max-inline-size: 100%;
+    white-space: normal;
+  }
+}
+
+/* One rule covers the required 320 / 360 / 390 / 430px phone matrix. */
+@media (max-width: 430px) {
+  :where(
+    #authors,
+    #sections,
+    #editorial-policy
+  ) {
+    padding-inline: clamp(16px, 5vw, 22px);
+  }
+}

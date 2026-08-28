@@ -1,18 +1,19 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 import { consumeAuthTurnstileToken } from "../community/authTurnstileToken";
+import {
+  isAuthTurnstileConfigured,
+  isCommunityConfigured,
+  supabaseConnection,
+} from "./supabaseConfig";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL?.trim();
-const supabasePublishableKey =
-  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.trim();
-const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY?.trim();
+export {
+  isAuthTurnstileConfigured,
+  isCommunityConfigured,
+} from "./supabaseConfig";
+
 const authTurnstileInstallationMarker =
   "__probperaAuthTurnstileInstalled__";
-
-export const isCommunityConfigured = Boolean(
-  supabaseUrl && supabasePublishableKey
-);
-export const isAuthTurnstileConfigured = Boolean(turnstileSiteKey);
 
 type CaptchaCredentials = {
   options?: Record<string, unknown>;
@@ -72,12 +73,16 @@ export function installAuthTurnstile(
 
 export const supabase = isCommunityConfigured
   ? installAuthTurnstile(
-      createClient(supabaseUrl!, supabasePublishableKey!, {
-        auth: {
-          persistSession: true,
-          autoRefreshToken: true,
-          detectSessionInUrl: true,
-        },
-      })
+      createClient(
+        supabaseConnection.url!,
+        supabaseConnection.publishableKey!,
+        {
+          auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true,
+          },
+        }
+      )
     )
   : null;

@@ -12,7 +12,13 @@ import {
 import {
   homepageVisualSettingsInputFromForm,
   mergeHomepageVisualSettings,
+  resetHomepageImageVisualSettings,
 } from "@/lib/homepage-visual-settings";
+import {
+  bookArchiveSceneSettingsInputFromForm,
+  mergeBookArchiveSceneSettings,
+} from "@/lib/book-archive-scene-settings";
+import { bookArchiveBackgroundMediaIssue } from "@/lib/book-archive-media-policy";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -42,6 +48,7 @@ const coreSectionTypes: Record<string, string> = {
   atlas: "literary-map",
   "book-month": "book-vs-screen",
   "editorial-standard": "text",
+  "book-archive": "carousel",
   "featured-journal": "article-grid",
   community: "subscription",
   authors: "carousel",
@@ -401,17 +408,60 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
     !Array.isArray(existing.settings)
       ? (existing.settings as Record<string, unknown>)
       : {};
+  const resetBookScene =
+    coreSectionKey === "book-archive" &&
+    formData.get("reset_book_scene_settings") === "1";
+  let nextSettings = mergedSettingsFromForm(existingSettings, formData);
+  if (resetBookScene) {
+    nextSettings = resetHomepageImageVisualSettings(nextSettings);
+  }
+  if (
+    coreSectionKey === "book-archive" &&
+    (formData.has("bookScenePreset") || resetBookScene)
+  ) {
+    try {
+      nextSettings = mergeBookArchiveSceneSettings(
+        nextSettings,
+        bookArchiveSceneSettingsInputFromForm(formData),
+        resetBookScene
+      );
+    } catch (error) {
+      redirect(
+        `/homepage?error=${encodeURIComponent(
+          error instanceof Error ? error.message : "Invalid book scene settings"
+        )}`
+      );
+    }
+  }
+  const backgroundMediaId = resetBookScene
+    ? null
+    : optionalUuid(formData, "background_media_id");
+  if (coreSectionKey === "book-archive" && backgroundMediaId) {
+    const { data: sceneMedia, error: sceneMediaError } = await supabase
+      .from("media_assets")
+      .select("mime_type,alt_text,creator,source_url,license_name,license_url")
+      .eq("id", backgroundMediaId)
+      .is("deleted_at", null)
+      .maybeSingle();
+    if (sceneMediaError) {
+      redirect(`/homepage?error=${encodeURIComponent(sceneMediaError.message)}`);
+    }
+    const mediaIssue = bookArchiveBackgroundMediaIssue(sceneMedia);
+    if (mediaIssue) {
+      redirect(`/homepage?error=${encodeURIComponent(mediaIssue)}`);
+    }
+  }
   const payload = {
     block_type: blockType,
     title: text(formData, "title", 240),
     settings: {
-      ...mergedSettingsFromForm(existingSettings, formData),
+      ...nextSettings,
       coreSectionKey,
     },
     display_order: (coreSectionOrder.indexOf(coreSectionKey) + 1) * 10,
     is_enabled: true,
     background_style: backgroundStyle,
-    background_media_id: optionalUuid(formData, "background_media_id"),
+    background_media_id: backgroundMediaId,
     updated_by: session.user.id,
   };
 

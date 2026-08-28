@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "baselineIdentity": {
+    "baseMainSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+    "integrationStartSha": "5992b3b53a76446910d8c4ec10d5fc517fb874bb",
+    "sourceTreeSha": "83985c6446af670cbc2e9b409851e8f5bceda7f5",
+    "repositoryManifest": {
+      "algorithm": "sha256",
+      "recordFormat": "path\\0blob-object\\0bytes\\0",
+      "files": 4002,
+      "bytes": 254639669,
+      "sha256": "daa16b84f3c1d3553e9e55ec079d6a581ee756eff31a77241cc9070fe1510cfb"
+    }
+  },
+  "productionArtifact": {
+    "status": "PASS",
+    "classification": "EXACT_GITHUB_PAGES_ARTIFACT",
+    "source": {
+      "provider": "GitHub Actions / GitHub Pages",
+      "workflow": "Deploy Vite site to GitHub Pages",
+      "runId": 32719497676,
+      "artifactId": 9517505146,
+      "releaseHead": {
+        "schemaVersion": 1,
+        "commitSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+        "generatedAt": "2026-08-24T11:09:25.987Z"
+      }
+    },
+    "measurement": {
+      "recordedOn": "2026-08-24",
+      "method": "Direct recursive byte and SHA-256 inventory of the extracted official Pages artifact; gzip values use node:zlib level 9; limits come from performance-budget.json at BASE_MAIN_SHA.",
+      "environment": {
+        "os": "Microsoft Windows NT 10.0.22631.0",
+        "node": "v24.19.0",
+        "npm": "NOT RECORDED",
+        "browser": "NOT USED FOR ARTIFACT BYTE MEASUREMENT"
+      },
+      "budgetSource": {
+        "path": "performance-budget.json",
+        "sha256": "7bcc97e3a9809bf7646ec9f8e671aeaef50c0ec24825ad8947fa2fe944cf2467"
+      }
+    },
+    "archive": {
+      "bytes": 120709120,
+      "sha256": "7f15829bf3c70573b8dab46df90075b256fb75644e3db14875c651648f2d385f"
+    },
+    "performance": {
+      "artifact": {
+        "status": "MEASURED",
+        "source": "Official GitHub Pages artifact 9517505146 from workflow run 32719497676",
+        "files": 4383,
+        "bytes": 115067016,
+        "manifestAlgorithm": "path\\0bytes\\0content\\0 (SHA-256)",
+        "manifestSha256": "5cfcdf9e48c6377398dc62bad7aac89d163bda811a3e5a7d3b3d49a963a58ef8"
+      },
+      "metrics": {
+        "distTotalBytes": { "actual": 115067016, "limit": 115081216, "headroom": 14200, "result": "PASS" },
+        "distExcludingBookCoversBytes": { "actual": 75491850, "limit": 75497472, "headroom": 5622, "result": "PASS" },
+        "largestJavaScriptBytes": { "actual": 2054001, "limit": 2097152, "headroom": 43151, "result": "PASS" },
+        "largestJavaScriptGzipBytes": { "actual": 183810, "limit": 409600, "headroom": 225790, "result": "PASS" },
+        "mainJavaScriptBytes": { "actual": 682305, "limit": 716800, "headroom": 34495, "result": "PASS" },
+        "mainJavaScriptGzipBytes": { "actual": 156780, "limit": 225280, "headroom": 68500, "result": "PASS" },
+        "globeTextureBytes": { "actual": 2901792, "limit": 3355443, "headroom": 453651, "result": "PASS" },
+        "writerPortraitTotalBytes": { "actual": 32543526, "limit": 37748736, "headroom": 5205210, "result": "PASS" },
+        "writerPortraitAverageBytes": { "actual": 27603, "limit": 36864, "headroom": 9261, "result": "PASS" },
+        "writerPortraitMaximumBytes": { "actual": 123952, "limit": 153600, "headroom": 29648, "result": "PASS" },
+        "bookCoverCount": { "actual": 424, "limit": 424, "headroom": 0, "result": "PASS" },
+        "bookCoverTotalBytes": { "actual": 39575166, "limit": 40108032, "headroom": 532866, "result": "PASS" },
+        "bookCoverAverageBytes": { "actual": 93338, "limit": 153600, "headroom": 60262, "result": "PASS" },
+        "bookCoverMaximumBytes": { "actual": 462894, "limit": 491520, "headroom": 28626, "result": "PASS" },
+        "individualImageBytes": { "actual": 2262628, "limit": 2621440, "headroom": 358812, "result": "PASS" }
+      },
+      "assets": { "status": "MEASURED", "files": 1420, "bytes": 42856810 },
+      "css": {
+        "status": "MEASURED",
+        "files": 1,
+        "bytes": 324296,
+        "gzipBytes": 58361,
+        "largest": {
+          "path": "assets/index-Cvad-RPW.css",
+          "bytes": 324296,
+          "gzipBytes": 58361,
+          "sha256": "2317e1bb6354395808e7fe4570783a50232ddac0950b4d75b3675620fcb343ef"
+        }
+      },
+      "globeChunks": {
+        "status": "MEASURED",
+        "files": 2,
+        "bytes": 937775,
+        "entries": [
+          {
+            "path": "assets/LiteraryWorldMap-YU6jkJmJ.js",
+            "bytes": 92507,
+            "gzipBytes": 30583,
+            "sha256": "5cef86ef838dea77848177ff72a90ce5c291387f013073403f87f1e48e417879"
+          },
+          {
+            "path": "assets/three-vendor-Cordk6yS.js",
+            "bytes": 845268,
+            "gzipBytes": 226551,
+            "sha256": "0403f5ea0c3aa6ef0a0a7910ac10c333f06b8c67e6be348b56907fab07ce70a2"
+          }
+        ]
+      },
+      "largestJavaScript": {
+        "path": "assets/book-catalog-BjkkkIIQ.js",
+        "bytes": 2054001,
+        "gzipBytes": 183810,
+        "sha256": "c598b7d5d0bfa588f5814220a79ac8eb3b210760fa60baa6051ca479db07f75a"
+      },
+      "mainJavaScript": {
+        "path": "assets/index-ko5WhBaQ.js",
+        "bytes": 682305,
+        "gzipBytes": 156780,
+        "sha256": "6e843844b8b929ca1200d51a6647406bc169c4ded6333766e3cce02d4023cea4"
+      },
+      "globeTexture": {
+        "path": "textures/antique-world-1887.webp",
+        "bytes": 2901792,
+        "sha256": "b498488cba930c48c5c68564ab8f355a50fe620f5aec15353225edcdf592a175"
+      },
+      "bookCovers": { "status": "MEASURED", "files": 424, "bytes": 39575166 },
+      "writerPortraits": { "status": "MEASURED", "files": 1179, "bytes": 32543526 },
+      "initialRequests": {
+        "status": "NOT MEASURED",
+        "reason": "Requires a browser/network trace of the exact production artifact."
+      }
+    }
+  },
+  "integrationBuildDiagnostic": {
+    "status": "PASS",
+    "classification": "LOCAL_INTEGRATION_WORKTREE_DIAGNOSTIC_NOT_PRODUCTION_ARTIFACT",
+    "acceptanceEvidence": false,
+    "source": {
+      "baseMainSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+      "headSha": "5992b3b53a76446910d8c4ec10d5fc517fb874bb",
+      "recordedOn": "2026-08-24",
+      "worktree": "Stage 5A integration worktree with uncommitted report/test changes; not a deploy identity",
+      "environment": {
+        "os": "Microsoft Windows NT 10.0.22631.0",
+        "node": "v24.19.0",
+        "npm": "NOT RECORDED"
+      }
+    },
+    "buildGate": {
+      "evidence": "Stage 5A integration-worktree production build and performance audit",
+      "totalDistBytes": 114199673,
+      "distLimitBytes": 115081216,
+      "distExcludingCoversBytes": 74624507,
+      "distExcludingCoversLimitBytes": 75497472,
+      "fileCount": 4320,
+      "mainJavaScript": { "rawBytes": 630182, "gzipBytes": 146637 },
+      "css": { "rawBytes": 324630, "gzipBytes": 59120 },
+      "globeLazyChunk": { "rawBytes": 92640, "gzipBytes": 30670 }
+    },
+    "filesystemSnapshot": {
+      "artifact": {
+        "files": 4320,
+        "bytes": 114199673,
+        "manifestSha256": "200b990324f98c8f2e22d4eb7cdcbff8ef7498c8c5b8923c4431d21c8147995c"
+      },
+      "note": "Filesystem and zlib accounting is recorded separately from the build gate and from the exact deployed artifact.",
+      "assets": { "files": 1420, "bytes": 42751498 },
+      "css": { "path": "assets/index-CtwI6HRP.css", "rawBytes": 324626, "gzipBytes": 58433 },
+      "mainJavaScript": { "path": "assets/index-CV5WJfRJ.js", "rawBytes": 630182, "gzipBytes": 146637 },
+      "largestJavaScript": { "path": "assets/book-catalog-BjkkkIIQ.js", "rawBytes": 2054001, "gzipBytes": 183810 },
+      "globeChunks": [
+        { "path": "assets/LiteraryWorldMap-DJsTCgLz.js", "rawBytes": 92639, "gzipBytes": 30622 },
+        { "path": "assets/three-vendor-lNCeJLP6.js", "rawBytes": 845290, "gzipBytes": 226575 }
+      ]
+    }
+  }
+}

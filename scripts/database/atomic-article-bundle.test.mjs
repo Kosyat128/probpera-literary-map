@@ -8,7 +8,7 @@ const migrationPath = path.join(
   root,
   "supabase/migrations/20260822_zz_atomic_article_bundle.sql"
 );
-const migration = readFileSync(migrationPath, "utf8");
+const migration = readFileSync(migrationPath, "utf8").replace(/\r\n?/gu, "\n");
 const digest = createHash("sha256").update(migration).digest("hex");
 
 describe("atomic article bundle migration", () => {

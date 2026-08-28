@@ -22,9 +22,11 @@ function fileLabel(file: File) {
 export default function HomepageMediaField({
   value,
   media,
+  allowUpload = true,
 }: {
   value?: string | null;
   media: HomepageMediaOption[];
+  allowUpload?: boolean;
 }) {
   const [selectedId, setSelectedId] = useState(value || "");
   const [options, setOptions] = useState(media);
@@ -102,38 +104,58 @@ export default function HomepageMediaField({
           <option value={asset.id} key={asset.id}>{asset.label}</option>
         ))}
       </select>
-      <input
-        ref={inputRef}
-        className="visually-hidden-file"
-        type="file"
-        accept="image/jpeg,image/png,image/webp,image/avif"
-        onChange={(event) => {
-          const file = event.target.files?.[0];
-          if (file) void upload(file);
-        }}
-      />
-      <button
-        className={uploading ? "homepage-media-drop is-uploading" : "homepage-media-drop"}
-        type="button"
-        onClick={() => inputRef.current?.click()}
-        onDragOver={(event) => event.preventDefault()}
-        onDrop={(event) => {
-          event.preventDefault();
-          const file = event.dataTransfer.files?.[0];
-          if (file) void upload(file);
-        }}
-        disabled={uploading}
-      >
-        {selected?.publicUrl ? (
-          <img src={selected.publicUrl} alt={selected.label} />
-        ) : (
-          <span aria-hidden="true">＋</span>
-        )}
-        <strong>{uploading ? "Оптимизируем…" : "Загрузить фон с компьютера"}</strong>
-        <small>Нажмите или перетащите изображение · исходник до 20 МБ</small>
-      </button>
-      {message && <small className="is-success" role="status">{message}</small>}
-      {error && <small className="is-error" role="alert">{error}</small>}
+      {allowUpload && (
+        <>
+          <input
+            ref={inputRef}
+            className="visually-hidden-file"
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/avif"
+            onChange={(event) => {
+              const file = event.target.files?.[0];
+              if (file) void upload(file);
+            }}
+          />
+          <button
+            className={
+              uploading
+                ? "homepage-media-drop is-uploading"
+                : "homepage-media-drop"
+            }
+            type="button"
+            onClick={() => inputRef.current?.click()}
+            onDragOver={(event) => event.preventDefault()}
+            onDrop={(event) => {
+              event.preventDefault();
+              const file = event.dataTransfer.files?.[0];
+              if (file) void upload(file);
+            }}
+            disabled={uploading}
+          >
+            {selected?.publicUrl ? (
+              <img src={selected.publicUrl} alt={selected.label} />
+            ) : (
+              <span aria-hidden="true">＋</span>
+            )}
+            <strong>
+              {uploading ? "Оптимизируем…" : "Загрузить фон с компьютера"}
+            </strong>
+            <small>
+              Нажмите или перетащите изображение · исходник до 20 МБ
+            </small>
+          </button>
+          {message && (
+            <small className="is-success" role="status">
+              {message}
+            </small>
+          )}
+          {error && (
+            <small className="is-error" role="alert">
+              {error}
+            </small>
+          )}
+        </>
+      )}
     </div>
   );
 }

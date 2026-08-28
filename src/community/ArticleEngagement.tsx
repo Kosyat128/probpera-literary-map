@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import type { RealtimeChannel, SupabaseClient } from "@supabase/supabase-js";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import { supabase } from "../lib/supabase";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { loadSupabaseClient } from "../lib/loadSupabaseClient";
 import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
 import { useAuth } from "./AuthContext";
 import { getCommunitySessionId } from "./sessionIdentity";
@@ -55,23 +56,35 @@ export default function ArticleEngagement({
   const [userRating, setUserRating] = useState(0);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
+  const engagementIdentity = `${subjectType}:${articleSlug}:${compact ? "compact" : "full"}`;
+  const activeEngagementIdentityRef = useRef<string | null>(engagementIdentity);
+  const engagementLoadSequenceRef = useRef(0);
+  activeEngagementIdentityRef.current = engagementIdentity;
 
   const loadEngagement = useCallback(async () => {
-    if (!supabase) return;
+    const requestIdentity = engagementIdentity;
+    if (activeEngagementIdentityRef.current !== requestIdentity) return;
+    const requestSequence = ++engagementLoadSequenceRef.current;
+    const isCurrentRequest = () =>
+      activeEngagementIdentityRef.current === requestIdentity &&
+      engagementLoadSequenceRef.current === requestSequence;
+    const client = await loadSupabaseClient();
+    if (!client || !isCurrentRequest()) return;
     const [commentsResult, ratingResult] = await Promise.all([
-      supabase
+      client
         .from("article_comments")
         .select("id,body,created_at,guest_name,profiles(display_name)")
         .eq("article_slug", articleSlug)
         .eq("status", "published")
         .order("created_at", { ascending: false })
         .limit(compact ? 3 : 50),
-      supabase.rpc("get_rating_summary", {
+      client.rpc("get_rating_summary", {
         p_subject_type: subjectType,
         p_subject_id: articleSlug,
         p_session_id: getCommunitySessionId(),
       }),
     ]);
+    if (!isCurrentRequest()) return;
 
     if (commentsResult.error || ratingResult.error) {
       setMessage(t("Не удалось обновить обсуждение. Попробуйте ещё раз."));
@@ -83,40 +96,58 @@ export default function ArticleEngagement({
     setRatingCount(Number(summary?.rating_count || 0));
     setAverage(Number(summary?.average_score || 0));
     setUserRating(Number(summary?.my_score || 0));
-  }, [articleSlug, compact, subjectType, t]);
+  }, [articleSlug, compact, engagementIdentity, subjectType, t]);
 
   useEffect(() => {
     if (!configured) return;
+    activeEngagementIdentityRef.current = engagementIdentity;
+    let active = true;
+    let client: SupabaseClient | null = null;
+    let channel: RealtimeChannel | null = null;
     void loadEngagement();
-    const channel = supabase
-      ?.channel(`article-engagement-${articleSlug}`)
-      .on(
-        "postgres_changes",
-        {
-          event: "*",
-          schema: "public",
-          table: "article_comments",
-          filter: `article_slug=eq.${articleSlug}`,
-        },
-        () => void loadEngagement()
-      )
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "ratings" },
-        () => void loadEngagement()
-      )
-      .subscribe();
+    void loadSupabaseClient().then((loadedClient) => {
+      if (!active || !loadedClient) return;
+      client = loadedClient;
+      channel = client
+        .channel(`article-engagement-${articleSlug}`)
+        .on(
+          "postgres_changes",
+          {
+            event: "*",
+            schema: "public",
+            table: "article_comments",
+            filter: `article_slug=eq.${articleSlug}`,
+          },
+          () => {
+            if (active) void loadEngagement();
+          }
+        )
+        .on(
+          "postgres_changes",
+          { event: "*", schema: "public", table: "ratings" },
+          () => {
+            if (active) void loadEngagement();
+          }
+        )
+        .subscribe();
+    });
 
     return () => {
-      if (channel && supabase) void supabase.removeChannel(channel);
+      active = false;
+      engagementLoadSequenceRef.current += 1;
+      if (activeEngagementIdentityRef.current === engagementIdentity) {
+        activeEngagementIdentityRef.current = null;
+      }
+      if (channel && client) void client.removeChannel(channel);
     };
-  }, [configured, loadEngagement]);
+  }, [configured, engagementIdentity, loadEngagement]);
 
   const rate = async (score: number) => {
-    if (!supabase) return;
+    const client = await loadSupabaseClient();
+    if (!client) return;
     setBusy(true);
     setMessage("");
-    const { error } = await supabase.rpc("rate_content", {
+    const { error } = await client.rpc("rate_content", {
       p_subject_type: subjectType,
       p_subject_id: articleSlug,
       p_score: score,
@@ -132,11 +163,13 @@ export default function ArticleEngagement({
   };
 
   const submitComment = async () => {
-    if (!supabase || !commentBody.trim()) return;
+    if (!commentBody.trim()) return;
+    const client = await loadSupabaseClient();
+    if (!client) return;
     if (!user && guestName.trim().length < 2) return;
     setBusy(true);
     setMessage("");
-    const { error } = await supabase.rpc("submit_article_comment", {
+    const { error } = await client.rpc("submit_article_comment", {
       p_article_slug: articleSlug,
       p_session_id: getCommunitySessionId(),
       p_body: commentBody.trim(),
@@ -169,9 +202,10 @@ export default function ArticleEngagement({
   }, [guestName, user]);
 
   const reportComment = async (commentId: string) => {
-    if (!supabase) return;
+    const client = await loadSupabaseClient();
+    if (!client) return;
     setMessage("");
-    const { error } = await supabase.rpc("report_article_comment", {
+    const { error } = await client.rpc("report_article_comment", {
       p_comment_id: commentId,
       p_session_id: getCommunitySessionId(),
       p_reason: "Проверить содержание комментария",

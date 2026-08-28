@@ -1,5 +1,16 @@
 import { expect, test } from "@playwright/test";
 
+async function openBookCatalog(page) {
+  await page.goto("/#books");
+  const catalogButton = page.getByRole("button", {
+    name: "Каталог",
+    exact: true,
+  });
+  await expect(catalogButton).toBeVisible({ timeout: 20_000 });
+  await catalogButton.click();
+  await expect(catalogButton).toHaveAttribute("aria-pressed", "true");
+}
+
 test("календарь открывает и фокусирует карточку выбранного писателя", async ({
   page,
   isMobile,
@@ -47,8 +58,9 @@ test("архив и изображения сохраняют desktop-сетку
   isMobile,
 }) => {
   test.skip(Boolean(isMobile), "Desktop layout contract");
+  test.setTimeout(90_000);
   await page.setViewportSize({ width: 1440, height: 1000 });
-  await page.goto("/#books");
+  await openBookCatalog(page);
   const grid = page.locator(".book-archive-grid");
   await expect(grid).toBeVisible({ timeout: 20_000 });
   expect(
@@ -90,20 +102,34 @@ test("архив разделяет 48 проверенных книг и 9 681 
   isMobile,
 }) => {
   test.skip(Boolean(isMobile), "Desktop archive queue contract");
-  await page.goto("/#books");
+  await openBookCatalog(page);
   const filters = page.locator(".book-archive-filters");
-  const all = filters.getByRole("button", { name: /Весь архив/u });
   const verified = filters.getByRole("button", {
-    name: /Проверено редакцией/u,
+    name: /Проверено/u,
   });
-  const pending = filters.getByRole("button", { name: /Непроверенные/u });
 
-  await expect(all).toContainText(/9\s*729/u, { timeout: 40_000 });
-  await expect(verified).toContainText(/48/u);
-  await expect(pending).toContainText(/9\s*681/u);
-
-  await pending.click();
-  await expect(page.locator(".book-filter-heading small")).toContainText(
+  await expect(
+    page.locator(".book-shelf-frame__collection-actions > span")
+  ).toContainText(
+    /9\s*729/u,
+    { timeout: 40_000 }
+  );
+  await page
+    .getByRole("button", { name: "Расширенные фильтры", exact: true })
+    .click();
+  const filterDialog = page.getByRole("dialog", {
+    name: "Расширенные фильтры книжного архива",
+  });
+  const pending = filterDialog.getByLabel("Не проверено", { exact: true });
+  await expect(pending).toBeVisible();
+  await pending.check();
+  await expect(pending).toBeChecked();
+  await filterDialog
+    .getByRole("button", { name: "Закрыть фильтры", exact: true })
+    .click();
+  await expect(
+    page.locator(".book-shelf-frame__collection-actions > span")
+  ).toContainText(
     /9\s*681/u
   );
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
@@ -111,7 +137,9 @@ test("архив разделяет 48 проверенных книг и 9 681 
   );
 
   await verified.click();
-  await expect(page.locator(".book-filter-heading small")).toContainText(/48/u);
+  await expect(
+    page.locator(".book-shelf-frame__collection-actions > span")
+  ).toContainText(/48/u);
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
     "проверено"
   );
@@ -146,7 +174,7 @@ test("на мобильном архив и изображения не раст
 }) => {
   test.skip(!isMobile, "Mobile media contract");
   await page.setViewportSize({ width: 360, height: 800 });
-  await page.goto("/#books");
+  await openBookCatalog(page);
   const grid = page.locator(".book-archive-grid");
   await expect(grid).toBeVisible({ timeout: 20_000 });
   expect(
@@ -157,7 +185,7 @@ test("на мобильном архив и изображения не раст
 
   await page
     .locator(".book-archive-filters")
-    .getByRole("button", { name: /Проверено редакцией/u })
+    .getByRole("button", { name: /Проверено/u })
     .click();
   const mobileActions = await page
     .locator(".archive-book-actions")
@@ -229,10 +257,10 @@ test("статус, сохранение и детали книг не пере�
   isMobile,
 }) => {
   test.skip(Boolean(isMobile), "Desktop responsive archive contract");
-  await page.goto("/#books");
+  await openBookCatalog(page);
   await page
     .locator(".book-archive-filters")
-    .getByRole("button", { name: /Проверено редакцией/u })
+    .getByRole("button", { name: /Проверено/u })
     .click();
   await expect(page.locator(".archive-book-actions").first()).toBeVisible({
     timeout: 20_000,

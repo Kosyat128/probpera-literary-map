@@ -18,7 +18,11 @@ import { registerServiceWorker } from './mobile/registerServiceWorker';
 import { installSafeWebStorage } from './utils/safeWebStorage';
 import './index.css';
 import './community/community-accessibility.css';
+import './styles/stage5-home-art-direction.css';
+import './styles/stage5-home-layout.css';
 
+import './styles/stage5-book-shelf.css';
+import './styles/stage5f-responsive-accessibility.css';
 installSafeWebStorage();
 
 const cmsPage = currentCmsPage();

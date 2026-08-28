@@ -538,37 +538,23 @@ export default function ArticleLibrarySection({
                 >
                   <div className="library-card-image">
                     {article.imageUrl ? (
-                      <>
-                        <img
-                          className="library-card-image-backdrop"
-                          src={article.imageUrl}
-                          style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
-                          alt=""
-                          aria-hidden="true"
-                          loading="lazy"
-                          decoding="async"
-                          onError={(event) => {
-                            event.currentTarget.hidden = true;
-                          }}
-                        />
-                        <img
-                          src={article.imageUrl}
-                          style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
-                          alt={
-                            article.imageAlt ||
-                            `${t("Иллюстрация к материалу")} “${article.title}”`
-                          }
-                          loading="lazy"
-                          decoding="async"
-                          onError={(event) =>
-                            applyBrandImageFallback(
-                              event.currentTarget,
-                              article.title,
-                              t("Фирменная обложка материала")
-                            )
-                          }
-                        />
-                      </>
+                      <img
+                        src={article.imageUrl}
+                        style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
+                        alt={
+                          article.imageAlt ||
+                          `${t("Иллюстрация к материалу")} “${article.title}”`
+                        }
+                        loading="lazy"
+                        decoding="async"
+                        onError={(event) =>
+                          applyBrandImageFallback(
+                            event.currentTarget,
+                            article.title,
+                            t("Фирменная обложка материала")
+                          )
+                        }
+                      />
                     ) : (
                       <span aria-hidden="true">
                         <img

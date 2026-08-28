@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 const source = readFileSync(
   path.resolve(process.cwd(), "scripts/export-premium-translations.mjs"),
   "utf8"
-);
+).replace(/\r\n?/gu, "\n");
 
 describe("premium translation public export", () => {
   it("uses the complete literary-work source identity", () => {

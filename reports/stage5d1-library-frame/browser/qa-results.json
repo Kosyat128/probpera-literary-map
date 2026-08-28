@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-08-26T13:40:20.832Z",
+  "scope": "Stage 5D-1 final production-build visual evidence",
+  "source": {
+    "url": "http://127.0.0.1:4173/#books",
+    "server": "local Vite preview"
+  },
+  "checks": [
+    {
+      "case": "ru-desktop-1440x900",
+      "state": "idle",
+      "evidence": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 0,
+        "phase": "SHELF_IDLE",
+        "brandCount": 0,
+        "audioElements": 0
+      }
+    },
+    {
+      "case": "ru-desktop-1440x900",
+      "state": "selected",
+      "evidence": {
+        "frame": {
+          "width": 1325,
+          "height": 795
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 1,
+        "phase": "INSPECTION_CLOSED",
+        "brandCount": 0,
+        "audioElements": 0
+      }
+    },
+    {
+      "case": "ru-mobile-390x844",
+      "state": "idle",
+      "evidence": {
+        "frame": {
+          "width": 370,
+          "height": 868
+        },
+        "documentOverflow": 0,
+        "frameOverflow": 0,
+        "canvasCount": 1,
+        "detailCount": 0,
+        "phase": "SHELF_IDLE",
+        "brandCount": 0,
+        "audioElements": 0
+      }
+    }
+  ],
+  "screenshots": [
+    "ru-desktop-1440x900-shelf.png",
+    "ru-desktop-1440x900-selected.png",
+    "ru-mobile-390x844-shelf.png"
+  ],
+  "screenshotSha256": {
+    "ru-desktop-1440x900-shelf.png": "42DEEB0ABE57D7EB9F8098D1D242FA92AD9853942C9C1063123E13BEB57CB118",
+    "ru-desktop-1440x900-selected.png": "5BCBB7532091323107C2B5876E2215DB4C9323BE6918B35FF48455D867FD8EEF",
+    "ru-mobile-390x844-shelf.png": "4A07B86835855B472CCB2258C78F8312C0EFCBDD2871DF9D73FDD41905759BB4"
+  }
+}

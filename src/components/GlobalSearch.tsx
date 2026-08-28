@@ -7,31 +7,32 @@ import {
 } from "react";
 
 import {
-  getPublicWriterWorkTitles,
   isCoverArtworkDisplayAllowed,
   type BookArchiveEntry,
 } from "../data/bookArchive";
 import { presentBookArchiveEntry } from "../data/bookArchiveQueue";
 import { isPublicBook } from "../data/bookQuality";
-import {
-  selectBookMetadataLabels,
-  selectBookOriginalLanguage,
-  selectBookWriterName,
-} from "../data/bookLocalization";
+import { selectBookWriterName } from "../data/bookLocalization";
 import type { Country, Writer } from "../data/countries";
-import type { ArticleCatalogEntry } from "../data/articles/catalog";
-import { articleCatalogEntryForLanguage } from "../data/articles/localization";
-import { writerBiographyText } from "../data/writerBiography";
 import {
   selectInterfacePlural,
   useInterfaceLanguage,
 } from "../i18n/InterfaceLanguage";
 import {
   literarySearchMatches,
-  literarySearchMatchScore,
-  normalizeLiterarySearch,
   type LiterarySearchValue,
 } from "../utils/literarySearch";
+import {
+  HEADER_GLOBAL_SEARCH_PROFILE,
+  searchGlobalSearchIndex,
+} from "../search/globalSearchIndex";
+import {
+  emptyGlobalSearchIndex,
+  ensureSharedGlobalSearchIndex,
+  globalSearchArchiveVersion,
+  globalSearchRequestCacheKey,
+  peekSharedGlobalSearchIndex,
+} from "../search/globalSearchRuntime";
 import {
   articlePath,
   navigateToArticle,
@@ -55,11 +56,6 @@ type Props = {
   onBookSelect: (book: BookArchiveEntry) => void;
 };
 
-type WriterMatch = {
-  country: Country;
-  writer: Writer;
-};
-
 export { writerSearchLabel } from "../utils/writerSearchLabel";
 
 export function matches(query: string, values: LiterarySearchValue[]) {
@@ -70,37 +66,6 @@ function resolvePublicAsset(url?: string) {
   if (!url) return "";
   if (/^(?:https?:|data:|blob:)/iu.test(url)) return url;
   return `${import.meta.env.BASE_URL}${url.replace(/^\/+/, "")}`;
-}
-
-function matchScore(
-  query: string,
-  primaryValues: LiterarySearchValue[],
-  secondaryValues: LiterarySearchValue[]
-) {
-  return literarySearchMatchScore(query, primaryValues, secondaryValues);
-}
-
-function rankMatches<T>(
-  items: T[],
-  query: string,
-  primaryValues: (item: T) => LiterarySearchValue[],
-  secondaryValues: (item: T) => LiterarySearchValue[],
-  label: (item: T) => string
-) {
-  return items
-    .map((item) => ({
-      item,
-      score: matchScore(query, primaryValues(item), secondaryValues(item)),
-    }))
-    .filter(
-      (entry): entry is { item: T; score: number } => entry.score !== null
-    )
-    .sort(
-      (first, second) =>
-        first.score - second.score ||
-        label(first.item).localeCompare(label(second.item), "ru")
-    )
-    .map((entry) => entry.item);
 }
 
 export default function GlobalSearch({
@@ -115,70 +80,73 @@ export default function GlobalSearch({
   const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
-  const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);
   const [articlesLoading, setArticlesLoading] = useState(false);
+  const [searchLoadError, setSearchLoadError] = useState(false);
+  const [searchRetryAttempt, setSearchRetryAttempt] = useState(0);
   const { language, t, countryName, number } = useInterfaceLanguage();
   const deferredQuery = useDeferredValue(query);
-  const normalizedQuery = normalizeLiterarySearch(deferredQuery);
-  const localizedArticles = useMemo(
-    () =>
-      articles.flatMap((article) => {
-        const localized = articleCatalogEntryForLanguage(article, language);
-        return localized ? [localized] : [];
-      }),
-    [articles, language]
+  const archiveVersion = useMemo(
+    () => globalSearchArchiveVersion(countries, books),
+    [books, countries]
   );
-  const bookSearchDocuments = useMemo(
-    () =>
-      books.map((book) => {
-        const displayedBook = presentBookArchiveEntry(book, language);
-        const verified = isPublicBook(book);
-        return {
-          book,
-          label: displayedBook.title,
-          primaryValues: [
-            displayedBook.title,
-            book.originalTitle,
-            selectBookWriterName(book, language, t("Автор")),
-          ],
-          secondaryValues: [
-            countryName(book.country.code, book.countryName),
-            ...(book.alternateTitles || []),
-            ...(verified
-              ? [
-                  displayedBook.description,
-                  selectBookOriginalLanguage(book, language),
-                  ...selectBookMetadataLabels(book, language, t),
-                ]
-              : []),
-          ],
-        };
-      }),
-    [books, countryName, language, t]
+  const searchRuntimeRequest = useMemo(
+    () => ({
+      countries,
+      books,
+      language,
+      translate: t,
+      countryName,
+      archiveVersion,
+    }),
+    [archiveVersion, books, countries, countryName, language, t]
+  );
+  const searchRequestKey = globalSearchRequestCacheKey(searchRuntimeRequest);
+  const [searchIndexState, setSearchIndexState] = useState(() => {
+    const index = peekSharedGlobalSearchIndex(searchRuntimeRequest);
+    return index ? { requestKey: searchRequestKey, index } : null;
+  });
+  const searchIndex =
+    searchIndexState?.requestKey === searchRequestKey
+      ? searchIndexState.index
+      : null;
+  const fallbackSearchIndex = useMemo(
+    () => emptyGlobalSearchIndex(language),
+    [language]
   );
 
   useEffect(() => {
-    if (!open || articles.length) return;
+    if (!open) return;
     let active = true;
+    setSearchLoadError(false);
+    const cachedIndex = peekSharedGlobalSearchIndex(searchRuntimeRequest);
+    setSearchIndexState(
+      cachedIndex ? { requestKey: searchRequestKey, index: cachedIndex } : null
+    );
+    if (cachedIndex) {
+      setArticlesLoading(false);
+      return;
+    }
     setArticlesLoading(true);
-    import("../data/articles/catalog")
-      .then(({ articleCatalog }) => {
+    ensureSharedGlobalSearchIndex(searchRuntimeRequest)
+      .then((index) => {
         if (!active) return;
-        setArticles(articleCatalog);
+        setSearchIndexState({ requestKey: searchRequestKey, index });
         setArticlesLoading(false);
       })
       .catch(() => {
-        if (active) setArticlesLoading(false);
+        if (!active) return;
+        setSearchIndexState(null);
+        setSearchLoadError(true);
+        setArticlesLoading(false);
       });
     return () => {
       active = false;
     };
-  }, [articles.length, open]);
+  }, [open, searchRequestKey, searchRetryAttempt, searchRuntimeRequest]);
 
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
-    const previouslyFocused = document.activeElement as HTMLElement | null;
     document.body.style.overflow = "hidden";
     window.requestAnimationFrame(() => inputRef.current?.focus());
 
@@ -206,7 +174,6 @@ export default function GlobalSearch({
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeydown);
-      previouslyFocused?.focus();
     };
   }, [onClose, open]);
 
@@ -214,116 +181,33 @@ export default function GlobalSearch({
     if (!open) setQuery("");
   }, [open]);
 
-  const results = useMemo(() => {
-    if (normalizedQuery.length < 2) {
-      return {
-        countries: [] as Country[],
-        writers: [] as WriterMatch[],
-        books: [] as BookArchiveEntry[],
-        articles: [] as ArticleCatalogEntry[],
-      };
-    }
-
-    const countryMatches = rankMatches(
-      countries,
-      normalizedQuery,
-      (country) => [
-          country.name,
-          countryName(country.code, country.name),
-          country.code,
-          country.capital,
-      ],
-      (country) => [
-          country.region,
-          country.continent,
-          country.officialLanguage,
-          country.description,
-          country.history,
-          country.historicalNote,
-          ...(country.facts || []),
-          ...(country.literaryPlaces || []),
-          ...(country.literaryPeriods || []),
-          ...(country.periods || []),
-          ...(country.literaryMovements || []),
-      ],
-      (country) => countryName(country.code, country.name)
-    ).slice(0, 5);
-
-    const writerCandidates = countries.flatMap((country) =>
-      country.writers.flatMap((writer) =>
-        writerSearchLabel(writer, language) ? [{ country, writer }] : []
-      )
-    );
-    const writerMatches = rankMatches(
-      writerCandidates,
-      normalizedQuery,
-      ({ writer }) => [
-          writerSearchLabel(writer, language),
-          writer.name,
-          writer.fullName,
-          ...getPublicWriterWorkTitles(writer, language),
-      ],
-      ({ country, writer }) => [
-          writer.years,
-          writer.literaryEra,
-          writer.literaryEra ? t(writer.literaryEra) : "",
-          writer.movement,
-          writer.movement ? t(writer.movement) : "",
-          writerBiographyText(writer, language),
-          ...(writer.genres || []),
-          ...(writer.genres || []).map((genre) => t(genre)),
-          ...(writer.tags || []),
-          ...(writer.tags || []).map((tag) => t(tag)),
-          ...(writer.awards || []),
-          ...(writer.languages || []),
-          ...(writer.places || []),
-          country.name,
-          countryName(country.code, country.name),
-          country.code,
-      ],
-      ({ writer }) => writerSearchLabel(writer, language) || ""
-    ).slice(0, 7);
-
-    const bookMatches = rankMatches(
-      bookSearchDocuments,
-      normalizedQuery,
-      (document) => document.primaryValues,
-      (document) => document.secondaryValues,
-      (document) => document.label
-    )
-      .slice(0, 6)
-      .map((document) => document.book);
-
-    const articleMatches = rankMatches(
-      localizedArticles,
-      normalizedQuery,
-      (article) => [article.title],
-      (article) => [
-          article.title,
-          article.description,
-          article.sectionLabel,
-          article.seoTitle,
-          article.seoDescription,
-          ...(article.seoKeywords || []),
-      ],
-      (article) => article.title
-    ).slice(0, 7);
-
-    return {
-      countries: countryMatches,
-      writers: writerMatches,
-      books: bookMatches,
-      articles: articleMatches,
-    };
-  }, [
-    bookSearchDocuments,
-    countries,
-    countryName,
-    language,
-    localizedArticles,
-    normalizedQuery,
-    t,
-  ]);
+  const searchResponse = useMemo(
+    () =>
+      searchGlobalSearchIndex(
+        searchIndex || fallbackSearchIndex,
+        deferredQuery,
+        HEADER_GLOBAL_SEARCH_PROFILE
+      ),
+    [deferredQuery, fallbackSearchIndex, searchIndex]
+  );
+  const normalizedQuery = searchResponse.normalizedQuery;
+  const results = useMemo(
+    () => ({
+      countries: searchResponse.groups.countries.map(
+        ({ country }) => country
+      ),
+      writers: searchResponse.groups.writers.map(
+        ({ country, writer }) => ({ country, writer })
+      ),
+      books: searchResponse.groups.books.map(
+        ({ book }) => book
+      ),
+      articles: searchResponse.groups.articles.map(
+        ({ article }) => article
+      ),
+    }),
+    [searchResponse]
+  );
 
   if (!open) return null;
 
@@ -370,7 +254,20 @@ export default function GlobalSearch({
           <kbd>Esc</kbd>
         </label>
 
-        {normalizedQuery.length < 2 ? (
+        {searchLoadError ? (
+          <div className="global-search-empty global-search-intro" role="alert">
+            <strong>{t("Поиск временно недоступен")}</strong>
+            <p>{t("Не удалось подключить редакционный архив. Попробуйте ещё раз.")}</p>
+            <div>
+              <button
+                type="button"
+                onClick={() => setSearchRetryAttempt((attempt) => attempt + 1)}
+              >
+                {t("Повторить поиск")}
+              </button>
+            </div>
+          </div>
+        ) : normalizedQuery.length < 2 ? (
           <div className="global-search-intro">
             <p>
               {t(
@@ -562,7 +459,9 @@ export default function GlobalSearch({
           <span>
             {articlesLoading
               ? t("Подключаем редакционный архив…")
-              : `${number(countries.length)} ${t(selectInterfacePlural(countries.length, language, ["страна", "страны", "стран"]))} · ${number(books.length)} ${t(selectInterfacePlural(books.length, language, ["произведение", "произведения", "произведений"]))} · ${number(language === "en" ? localizedArticles.length : articleCount)} ${t(selectInterfacePlural(language === "en" ? localizedArticles.length : articleCount, language, ["статья", "статьи", "статей"]))}`}
+              : searchLoadError
+                ? t("Редакционный архив временно недоступен")
+              : `${number(countries.length)} ${t(selectInterfacePlural(countries.length, language, ["страна", "страны", "стран"]))} · ${number(books.length)} ${t(selectInterfacePlural(books.length, language, ["произведение", "произведения", "произведений"]))} · ${number(language === "en" ? (searchIndex?.articleCount || 0) : articleCount)} ${t(selectInterfacePlural(language === "en" ? (searchIndex?.articleCount || 0) : articleCount, language, ["статья", "статьи", "статей"]))}`}
           </span>
           <small>{t("Поиск выполняется внутри сайта")}</small>
         </footer>

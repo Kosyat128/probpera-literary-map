@@ -2,23 +2,13 @@ import { readFileSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
-const actionsFacade = readFileSync(new URL("./actions.ts", import.meta.url), "utf8");
-const legacyActions = readFileSync(
-  new URL("./actions-legacy.ts", import.meta.url),
-  "utf8"
-);
-const automaticSave = readFileSync(
-  new URL("./save-article-action.ts", import.meta.url),
-  "utf8"
-);
-const articlePage = readFileSync(
-  new URL("./[id]/page.tsx", import.meta.url),
-  "utf8"
-);
-const preview = readFileSync(
-  new URL("./[id]/preview/page.tsx", import.meta.url),
-  "utf8"
-);
+const read = (url: URL) =>
+  readFileSync(url, "utf8").replace(/\r\n?/gu, "\n");
+const actionsFacade = read(new URL("./actions.ts", import.meta.url));
+const legacyActions = read(new URL("./actions-legacy.ts", import.meta.url));
+const automaticSave = read(new URL("./save-article-action.ts", import.meta.url));
+const articlePage = read(new URL("./[id]/page.tsx", import.meta.url));
+const preview = read(new URL("./[id]/preview/page.tsx", import.meta.url));
 
 describe("article publication presentation policy", () => {
   it("queues Dzen without automatic VK publication", () => {

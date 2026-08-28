@@ -88,7 +88,11 @@ describe("literary globe accessible interaction wiring", () => {
     expect(globeSource).toContain('mode = "embedded"');
     expect(globeSource).toContain("data-globe-mode={mode}");
     expect(worldMapSource).toContain("rootRef?: Ref<HTMLElement>");
-    expect(worldMapSource).toContain("ref={rootRef}");
+    expect(worldMapSource).toContain("ref={setRootNode}");
+    expect(worldMapSource).toContain("setActivationNode(node)");
+    expect(worldMapSource).toContain(
+      'if (typeof rootRef === "function") rootRef(node)'
+    );
     expect(worldMapSource).toContain("data-globe-mode={mode}");
     expect(worldMapSource).toContain("mode={mode}");
   });

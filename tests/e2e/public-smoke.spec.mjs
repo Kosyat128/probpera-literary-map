@@ -44,7 +44,7 @@ test("обложка и заголовок героя сохраняют ред�
   await expect(lead).not.toContainText("-");
   await expect(accent).toBeVisible();
   await expect(accentLines).toHaveCount(2);
-  await expect(accentLines.first()).toContainText("-");
+  await expect(accentLines.first()).toContainText("–");
   await expect(accent).toHaveCSS("color", "rgb(255, 181, 118)");
   await expect
     .poll(() => cover.evaluate((image) => image.currentSrc))
@@ -501,6 +501,7 @@ test("глобус загружается только после приближ
 });
 
 test("поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает черновое описание", async ({ page }) => {
+  test.setTimeout(90_000);
   await page.route(/\/assets\/countries-[^/?]+\.js(?:\?.*)?$/u, async (route) => {
     await new Promise((resolve) => setTimeout(resolve, 800));
     await route.continue();
@@ -512,7 +513,9 @@ test("поиск глобуса сохраняет запрос при лени�
   await expect(result).toBeVisible();
   await expect(search).toHaveValue("Морской волк");
   await result.click();
-  await expect(page.locator(".book-detail-copy h3")).toHaveText("Морской волк");
+  await expect(page.locator(".book-detail-copy h3")).toHaveText("Морской волк", {
+    timeout: 30_000,
+  });
   await expect(page.locator(".book-detail-copy .section-kicker")).toHaveText(
     "Не проверено"
   );

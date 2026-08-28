@@ -5,6 +5,7 @@ import {
   mergeHomepageVisualSettings,
   parseHomepageVisualSettings,
   readHomepageVisualSettings,
+  resetHomepageImageVisualSettings,
 } from "./homepage-visual-settings";
 
 describe("homepage visual settings policy", () => {
@@ -115,6 +116,26 @@ describe("homepage visual settings policy", () => {
       imagePosition: "bottom-left",
       imageBlur: defaultHomepageVisualSettings.imageBlur,
       titleAlign: defaultHomepageVisualSettings.titleAlign,
+    });
+  });
+
+  it("resets scene image controls without deleting stored typography", () => {
+    expect(
+      resetHomepageImageVisualSettings({
+        coreSectionKey: "book-archive",
+        imageZoom: 140,
+        imageBlur: 2,
+        titleFontSize: 72,
+        titleWeight: 800,
+        bodyFontSize: 20,
+        bodyLineHeight: 1.7,
+      })
+    ).toEqual({
+      coreSectionKey: "book-archive",
+      titleFontSize: 72,
+      titleWeight: 800,
+      bodyFontSize: 20,
+      bodyLineHeight: 1.7,
     });
   });
 });

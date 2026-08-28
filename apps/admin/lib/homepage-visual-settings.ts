@@ -34,7 +34,7 @@ export type HomepageVisualSettings = {
   bodyLineHeight: number;
 };
 
-export const homepageVisualSettingKeys = [
+export const homepageImageVisualSettingKeys = [
   "imageFit",
   "imagePosition",
   "imageZoom",
@@ -43,6 +43,10 @@ export const homepageVisualSettingKeys = [
   "imageSaturation",
   "imageBlur",
   "imageOverlay",
+] as const satisfies readonly (keyof HomepageVisualSettings)[];
+
+export const homepageVisualSettingKeys = [
+  ...homepageImageVisualSettingKeys,
   "titleFontSize",
   "titleAlign",
   "titleWeight",
@@ -209,6 +213,12 @@ export function mergeHomepageVisualSettings(
   for (const key of homepageVisualSettingKeys) delete merged[key];
   if (reset) return merged;
   return { ...merged, ...parseHomepageVisualSettings(input) };
+}
+
+export function resetHomepageImageVisualSettings(existing: unknown) {
+  const merged = plainRecord(existing) ? { ...existing } : {};
+  for (const key of homepageImageVisualSettingKeys) delete merged[key];
+  return merged;
 }
 
 export function homepageVisualSettingsInputFromForm(formData: FormData) {

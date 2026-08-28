@@ -1,0 +1,1380 @@
+{
+  "schemaVersion": 1,
+  "baseline": "stage5a-visual",
+  "finalizedOn": "2026-08-25",
+  "status": "PASS",
+  "release": {
+    "sha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+    "pagesRunId": 32719497676,
+    "pagesArtifactId": 9517505146,
+    "embeddedReleaseHead": {
+      "schemaVersion": 1,
+      "commitSha": "8c24038510324d00086afe05b8de78b0f09ae52e",
+      "generatedAt": "2026-08-24T11:09:25.987Z"
+    },
+    "identityMatch": true,
+    "renderSource": "exact official production artifact served read-only over loopback",
+    "browser": "Chrome 151.0.7922.170",
+    "exactAssets": {
+      "js": {
+        "path": "assets/index-ko5WhBaQ.js",
+        "bytes": 682305,
+        "sha256": "6e843844b8b929ca1200d51a6647406bc169c4ded6333766e3cce02d4023cea4"
+      },
+      "css": {
+        "path": "assets/index-Cvad-RPW.css",
+        "bytes": 324296,
+        "sha256": "2317e1bb6354395808e7fe4570783a50232ddac0950b4d75b3675620fcb343ef"
+      }
+    }
+  },
+  "networkResolution": {
+    "status": "PASS",
+    "checkedOn": "2026-08-24",
+    "exactWallClock": "NOT RECORDED",
+    "tls": {
+      "authorized": true,
+      "commonName": "probpera.ru",
+      "subjectAlternativeNames": [
+        "probpera.ru",
+        "www.probpera.ru"
+      ],
+      "validFrom": "2026-08-24T11:34:37Z",
+      "validTo": "2026-11-22T11:34:36Z",
+      "fingerprint256": "49:69:0C:C3:52:1B:B9:07:BB:14:96:70:71:47:62:F6:F0:92:E1:22:F1:A6:8B:DA:5D:E0:25:C9:C8:04:FA:CF"
+    },
+    "rangeGets": [
+      {
+        "path": "assets/index-ko5WhBaQ.js",
+        "httpStatus": 206,
+        "receivedBytes": 1024,
+        "elapsedMs": 752,
+        "fullBytes": 682305
+      },
+      {
+        "path": "assets/index-Cvad-RPW.css",
+        "httpStatus": 206,
+        "receivedBytes": 1024,
+        "elapsedMs": 718,
+        "fullBytes": 324296
+      }
+    ],
+    "transientEvent": {
+      "earlierAssetStallAndCertificateMismatch": "RESOLVED",
+      "remainingP1": 0
+    }
+  },
+  "inventory": {
+    "rasters": 47,
+    "groups": {
+      "matrix": 15,
+      "closeups": 19,
+      "states": 13
+    },
+    "locales": {
+      "matrixRu": 11,
+      "matrixEn": 4
+    }
+  },
+  "validation": {
+    "fullDecode": {
+      "status": "PASS",
+      "decoder": "sharp 0.35.3",
+      "decodedFiles": 47
+    },
+    "matrixDimensions": {
+      "status": "PASS",
+      "rule": "width = viewport width; height = 11 * viewport height + 40 px (ten 4 px gutters)"
+    },
+    "matrixRuntime": {
+      "status": "PASS",
+      "measuredViewports": 15,
+      "horizontalOverflowFailures": 0,
+      "failedImages": 0,
+      "anchorCountPerViewport": 11
+    },
+    "artifactMisses": 0,
+    "blockedExternalRequests": 0
+  },
+  "runtimeLogs": {
+    "recordedSessions": 32,
+    "pageErrors": 0,
+    "responseErrors": 0,
+    "consoleErrors": 38,
+    "uniqueConsoleErrors": [
+      "Failed to load resource: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+    ],
+    "consoleWarnings": 32,
+    "uniqueConsoleWarnings": [
+      "Service Worker registration blocked by Playwright"
+    ],
+    "requestFailures": 18,
+    "uniqueRequestFailures": [
+      "POST https://sjqejjmwpzfsczxdghvw.supabase.co/rest/v1/rpc/get_rating_summary :: net::ERR_BLOCKED_BY_CLIENT.Inspector"
+    ],
+    "classification": {
+      "blockedRpcAndServiceWorkerNoise": "HARNESS",
+      "productRuntimeErrors": 0
+    }
+  },
+  "coverage": {
+    "measured": [
+      "default",
+      "hover",
+      "active",
+      "keyboard-focus",
+      "expanded-menu",
+      "empty-search",
+      "selected-search-results",
+      "article-reader-loading",
+      "article-reader-open",
+      "mobile",
+      "mobile-sheet-expanded",
+      "reduced-motion",
+      "forced-colors-focus",
+      "zoom-200pct-equivalent",
+      "public-book-detail-ru",
+      "public-book-detail-en"
+    ],
+    "notMeasured": [
+      {
+        "area": "error-state content",
+        "status": "NOT MEASURED"
+      },
+      {
+        "area": "disabled-state content",
+        "status": "NOT MEASURED",
+        "reason": "no visible disabled control in captured contexts"
+      },
+      {
+        "area": "authenticated Reading Library content",
+        "status": "NOT MEASURED",
+        "reason": "only unauthenticated account gate captured"
+      }
+    ]
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "checksumFile": "checksums.sha256",
+    "checksumScope": "every file under this directory except checksums.sha256"
+  },
+  "artifacts": [
+    {
+      "path": "matrix/en-1440x900-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 753184,
+      "sha256": "098d1f3ea1bc89e3d58e32300b3687a28022cae0c0e87c36377a04546d8baf5b",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 9940,
+        "channels": 3,
+        "decodedBytes": 42940800
+      },
+      "locale": "en",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 9940,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/en-1920x1080-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 979000,
+      "sha256": "fb8681e1f2f55f1fe0fb47122e96c958133eed60e5f4f121f9213921fe3d8327",
+      "image": {
+        "format": "webp",
+        "width": 1920,
+        "height": 11920,
+        "channels": 3,
+        "decodedBytes": 68659200
+      },
+      "locale": "en",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 11920,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/en-360x800-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 293936,
+      "sha256": "b9db81978a59ea4eec7ee215113c052373d63a29ebb0ac7f981ded0df70eaf0c",
+      "image": {
+        "format": "webp",
+        "width": 360,
+        "height": 8840,
+        "channels": 3,
+        "decodedBytes": 9547200
+      },
+      "locale": "en",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 8840,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/en-768x1024-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 602356,
+      "sha256": "9cb410a2f69ede96ee9dd1498cbcd48c4d3c8d3c60a9b2c6e79bc5db2cb5300f",
+      "image": {
+        "format": "webp",
+        "width": 768,
+        "height": 11304,
+        "channels": 3,
+        "decodedBytes": 26044416
+      },
+      "locale": "en",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 11304,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-1024x768-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 610518,
+      "sha256": "cf0ba37100ef66dfa4913a2c884dfcc1085e0c7666d5a008e40c8969b9f15527",
+      "image": {
+        "format": "webp",
+        "width": 1024,
+        "height": 8488,
+        "channels": 3,
+        "decodedBytes": 26075136
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 8488,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-1280x800-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 708180,
+      "sha256": "aa29141029a33f53d780e5a5186531da8ffcd5ef4fc5fdb4fea804e4e5b905ae",
+      "image": {
+        "format": "webp",
+        "width": 1280,
+        "height": 8840,
+        "channels": 3,
+        "decodedBytes": 33945600
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 8840,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-1366x700-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 667670,
+      "sha256": "04c5de561c5419dbf516e1205a0ce5c6e53a7f5e350c4ffcb2b7624181914b7a",
+      "image": {
+        "format": "webp",
+        "width": 1366,
+        "height": 7740,
+        "channels": 3,
+        "decodedBytes": 31718520
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 1366,
+        "height": 700
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 7740,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-1366x768-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 709860,
+      "sha256": "e37f223caffe1f7a62a4d2db2612fa3000895ec988befacdbaa2f4a63743d4ed",
+      "image": {
+        "format": "webp",
+        "width": 1366,
+        "height": 8488,
+        "channels": 3,
+        "decodedBytes": 34783824
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 8488,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-1440x900-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 811562,
+      "sha256": "9c2dd9e9ec20233584a1b9e73f69401d7f0d661c5d2538c780b530adb11f5dbe",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 9940,
+        "channels": 3,
+        "decodedBytes": 42940800
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 9940,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-1920x1080-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 1120848,
+      "sha256": "ff2fea384cb6c8f28e14992f7f720fbd264738bcf7ff7cffdec87de1baf57966",
+      "image": {
+        "format": "webp",
+        "width": 1920,
+        "height": 11920,
+        "channels": 3,
+        "decodedBytes": 68659200
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 11920,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-320x800-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 293518,
+      "sha256": "da4853d593be3fe34aa7530d5ac3547ffd2df3be3080a7987e12771d20d138af",
+      "image": {
+        "format": "webp",
+        "width": 320,
+        "height": 8840,
+        "channels": 3,
+        "decodedBytes": 8486400
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 8840,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-360x800-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 313306,
+      "sha256": "b69270eba25d153cddeee0880ccc955277c77926704c57790e7bf79679e86e94",
+      "image": {
+        "format": "webp",
+        "width": 360,
+        "height": 8840,
+        "channels": 3,
+        "decodedBytes": 9547200
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 8840,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-390x844-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 336704,
+      "sha256": "607fee5d7c5957deaf12e6d2f67034783a0c85faa9706dee116f16f746687ce8",
+      "image": {
+        "format": "webp",
+        "width": 390,
+        "height": 9324,
+        "channels": 3,
+        "decodedBytes": 10909080
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 9324,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-430x932-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 385112,
+      "sha256": "4043fc96a1f677ba73c43b14549c6c0ddec38226ca798146ee3db28867e0ca87",
+      "image": {
+        "format": "webp",
+        "width": 430,
+        "height": 10292,
+        "channels": 3,
+        "decodedBytes": 13276680
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 10292,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "matrix/ru-768x1024-anchor-matrix.webp",
+      "group": "matrix",
+      "bytes": 690462,
+      "sha256": "b84b44343eb0b211282a4f440af77b35a83c34f47b9f5d597801271a0d67ae2f",
+      "image": {
+        "format": "webp",
+        "width": 768,
+        "height": 11304,
+        "channels": 3,
+        "decodedBytes": 26044416
+      },
+      "locale": "ru",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "matrix": {
+        "anchorFrames": 11,
+        "gutterPx": 4,
+        "gutterCount": 10,
+        "expectedEncodedHeight": 11304,
+        "dimensionsMatch": true,
+        "horizontalOverflowPx": 0,
+        "failedImages": 0
+      }
+    },
+    {
+      "path": "closeups/article-library.webp",
+      "group": "closeups",
+      "bytes": 317290,
+      "sha256": "b90f6ea486bd740dcf2d1c1e33d63efc375cc98d13b4947ecbc91d7041c91b02",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 2786,
+        "channels": 3,
+        "decodedBytes": 12035520
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": "#journal",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": -894.65625,
+          "width": 1440,
+          "height": 2784.765625
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/article-reader.webp",
+      "group": "closeups",
+      "bytes": 54696,
+      "sha256": "564f6d1d4b0a31f7732be5cea91d2a30096f5a2fbf044cd6f3851fa4b305849c",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": "first public article opened",
+        "selector": ".article-reader",
+        "viewport": null,
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/authors.webp",
+      "group": "closeups",
+      "bytes": 114870,
+      "sha256": "8a28eccef5fb734b9ffd115b0452537297bc74412c38479312f97d9d536b10a5",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 822,
+        "channels": 3,
+        "decodedBytes": 3551040
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": "#authors",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": 87.625,
+          "width": 1440,
+          "height": 820.390625
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/book-archive.webp",
+      "group": "closeups",
+      "bytes": 129834,
+      "sha256": "952595cf1ddb2374f47b55e6df05a974dd5a3cff6fecd0b22fb829baf64746a1",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 1520,
+        "channels": 3,
+        "decodedBytes": 6566400
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": "#books",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": -261.78125,
+          "width": 1440,
+          "height": 1519.21875
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/book-area.webp",
+      "group": "closeups",
+      "bytes": 97520,
+      "sha256": "c27b5b845160287202ea82ada6f623a82e37b1884f8fa4a86cc76c23b0e49a36",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 1380,
+        "channels": 3,
+        "decodedBytes": 5961600
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": "#book-day",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": -191.9375,
+          "width": 1440,
+          "height": 1379.15625
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/book-detail-en.webp",
+      "group": "closeups",
+      "bytes": 52734,
+      "sha256": "23f9da7bdd0cf784e491cdc21c560a82333ff0453eb759b7f03ea4b085ee38d3",
+      "image": {
+        "format": "webp",
+        "width": 1326,
+        "height": 748,
+        "channels": 3,
+        "decodedBytes": 2975544
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": "en",
+        "state": "first public archive book expanded; save/follow controls not activated",
+        "selector": "#book-archive-detail",
+        "viewport": null,
+        "boundingBox": {
+          "x": 57.59375,
+          "y": 95.78125,
+          "width": 1324.8125,
+          "height": 747
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/book-detail-ru.webp",
+      "group": "closeups",
+      "bytes": 58702,
+      "sha256": "0f775b293f41cdc7f15c74e4c4e6aafdfe49ce8a3f3b7bd3bef61cd5eaf4a8ac",
+      "image": {
+        "format": "webp",
+        "width": 1326,
+        "height": 825,
+        "channels": 3,
+        "decodedBytes": 3281850
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": "ru",
+        "state": "first public archive book expanded; save/follow controls not activated",
+        "selector": "#book-archive-detail",
+        "viewport": null,
+        "boundingBox": {
+          "x": 57.59375,
+          "y": 96.4375,
+          "width": 1324.8125,
+          "height": 824
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/calendar.webp",
+      "group": "closeups",
+      "bytes": 69812,
+      "sha256": "0179755a96a51a6d8029be1b85ee15b8c4754f96a47b59703786af930f179b36",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 2065,
+        "channels": 3,
+        "decodedBytes": 8920800
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": "#calendar",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": -533.359375,
+          "width": 1440,
+          "height": 2063.40625
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/community.webp",
+      "group": "closeups",
+      "bytes": 77974,
+      "sha256": "1308861c7bdc294b59e16dc8c7966874b6c554ebe4523082e540177979a6cc27",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 932,
+        "channels": 3,
+        "decodedBytes": 4026240
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": "#community",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": 32.109375,
+          "width": 1440,
+          "height": 931.515625
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/follow-writer.webp",
+      "group": "closeups",
+      "bytes": 15348,
+      "sha256": "eb6604b5c2315b2666d7b46685ce78eebcf739ecc125b0a634b0a0fca8c93352",
+      "image": {
+        "format": "webp",
+        "width": 374,
+        "height": 524,
+        "channels": 3,
+        "decodedBytes": 587928
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": "ru",
+        "state": "first listed country and writer selected; follow button not activated",
+        "selector": ".writer-detail",
+        "viewport": null,
+        "boundingBox": {
+          "x": 971.40625,
+          "y": 96.046875,
+          "width": 373,
+          "height": 523.875
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/footer.webp",
+      "group": "closeups",
+      "bytes": 33506,
+      "sha256": "0b8fa008cf4de92600c8fc49edfdcb3f081311f5b3cf0ddf251e516c9f61a676",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 509,
+        "channels": 3,
+        "decodedBytes": 2198880
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": ".site-footer",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": 392.046875,
+          "width": 1440,
+          "height": 508.1875
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/global-search.webp",
+      "group": "closeups",
+      "bytes": 17036,
+      "sha256": "b175a1954a99975937c6d51b3f0347b85d3b752d61648e5557081dacb856ef20",
+      "image": {
+        "format": "webp",
+        "width": 1040,
+        "height": 403,
+        "channels": 3,
+        "decodedBytes": 1257360
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": ".global-search",
+        "viewport": null,
+        "boundingBox": {
+          "x": 200,
+          "y": 63,
+          "width": 1040,
+          "height": 402.1875
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/globe.webp",
+      "group": "closeups",
+      "bytes": 83280,
+      "sha256": "9eefa631fb4c2eb37a50a3ae5a71127cd1538fdc7bd9ec3e55ea7b2a88f0eace",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 1206,
+        "channels": 3,
+        "decodedBytes": 5209920
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": "#atlas",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": 96,
+          "width": 1440,
+          "height": 1205.0625
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/header.webp",
+      "group": "closeups",
+      "bytes": 7370,
+      "sha256": "982be8311cb7f34c39e414912bc715cc3a3b58dbaf2165cec7139f84ca37952f",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 80,
+        "channels": 3,
+        "decodedBytes": 345600
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": ".site-header",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": 34,
+          "width": 1440,
+          "height": 80
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/hero.webp",
+      "group": "closeups",
+      "bytes": 87974,
+      "sha256": "30364bbe21cfbd02e1e1af27f7c9ebb3d79ace5980329362cd069b2aac1b8b7e",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 720,
+        "channels": 3,
+        "decodedBytes": 3110400
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": ".magazine-hero",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": 114,
+          "width": 1440,
+          "height": 720
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/reading-library-auth-gate.webp",
+      "group": "closeups",
+      "bytes": 46502,
+      "sha256": "d356c12f86a7824f15f87003fa1841347cc6efa3320bb8f82b820d40d77109ff",
+      "image": {
+        "format": "webp",
+        "width": 1404,
+        "height": 864,
+        "channels": 3,
+        "decodedBytes": 3639168
+      },
+      "capture": {
+        "kind": "availability-evidence",
+        "locale": null,
+        "state": "unauthenticated account gate; actual reading-library content NOT MEASURED",
+        "selector": ".community-hub.is-account",
+        "viewport": null,
+        "boundingBox": {
+          "x": 42,
+          "y": 42,
+          "width": 1404,
+          "height": 864
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/sections.webp",
+      "group": "closeups",
+      "bytes": 155870,
+      "sha256": "c05fb7bdae8c46f8cd29c7d8e5fec44907177c2a9ec4c30c939ca35e2cda6aa3",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 1196,
+        "channels": 3,
+        "decodedBytes": 5166720
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": "#sections",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": -99.984375,
+          "width": 1440,
+          "height": 1195.515625
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/trust.webp",
+      "group": "closeups",
+      "bytes": 31896,
+      "sha256": "cf0c83c7aa606f1d9ccfb6865ebf87141fe6f14f217835fc8f703eb8bd33d047",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 691,
+        "channels": 3,
+        "decodedBytes": 2985120
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": null,
+        "selector": "#editorial-policy",
+        "viewport": null,
+        "boundingBox": {
+          "x": 0,
+          "y": 152.53125,
+          "width": 1440,
+          "height": 690.109375
+        },
+        "method": null
+      }
+    },
+    {
+      "path": "closeups/writer-panel.webp",
+      "group": "closeups",
+      "bytes": 127778,
+      "sha256": "d9dc481db2ed906631336a233d216cddc40a9999986f24a0f34b3b676e7dd559",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "closeup",
+        "locale": null,
+        "state": "first country and writer selected",
+        "selector": ".country-panel",
+        "viewport": null,
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/active-global-search-1440x900.webp",
+      "group": "states",
+      "bytes": 106120,
+      "sha256": "ae1127ff2ab6e192fd0d54103d4968b633de831af3cb404040fe01796f2dcf05",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": null,
+        "state": "active",
+        "selector": null,
+        "viewport": null,
+        "boundingBox": null,
+        "method": "real pointer down held during raster; released without click"
+      }
+    },
+    {
+      "path": "states/default-home-1440x900.webp",
+      "group": "states",
+      "bytes": 106120,
+      "sha256": "ae1127ff2ab6e192fd0d54103d4968b633de831af3cb404040fe01796f2dcf05",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": "ru",
+        "state": "default",
+        "selector": null,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/empty-search-results.webp",
+      "group": "states",
+      "bytes": 15728,
+      "sha256": "46ae5e885105e7c30040375fe59626623edaddc5da57514df6d3026acf82df2a",
+      "image": {
+        "format": "webp",
+        "width": 1040,
+        "height": 359,
+        "channels": 3,
+        "decodedBytes": 1120080
+      },
+      "capture": {
+        "kind": "state",
+        "locale": null,
+        "state": "empty",
+        "selector": ".global-search",
+        "viewport": null,
+        "boundingBox": {
+          "x": 200,
+          "y": 63,
+          "width": 1040,
+          "height": 358.59375
+        },
+        "method": "real read-only search with deterministic no-match query"
+      }
+    },
+    {
+      "path": "states/expanded-articles-menu-1440x900.webp",
+      "group": "states",
+      "bytes": 112108,
+      "sha256": "827f6591d3a3a39291de66f11712ddc5f5fa273f53955956fe619ac7606b1d2d",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": null,
+        "state": "expanded",
+        "selector": null,
+        "viewport": null,
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/focus-header.webp",
+      "group": "states",
+      "bytes": 102984,
+      "sha256": "bbd959ebe262cc59230600f0bddeeb92f52eaedb939c44ff432fca0b5420f651",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": null,
+        "state": "keyboard focus on global search trigger",
+        "selector": null,
+        "viewport": null,
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/forced-colors-focus-1440x900.webp",
+      "group": "states",
+      "bytes": 136342,
+      "sha256": "62bb59ccc0f419a48756edb63b710259d0c871b8198fc081eebdab65311a8aee",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": "en",
+        "state": null,
+        "selector": null,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/hover-global-search-1440x900.webp",
+      "group": "states",
+      "bytes": 106120,
+      "sha256": "ae1127ff2ab6e192fd0d54103d4968b633de831af3cb404040fe01796f2dcf05",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": null,
+        "state": "hover",
+        "selector": null,
+        "viewport": null,
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/loading-article-reader.webp",
+      "group": "states",
+      "bytes": 5496,
+      "sha256": "12b66909172dbb44c19c2905bb5db987762aa263ff2b9fa16a7ab56d42ec6de5",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": null,
+        "state": "real suspense UI under 2500ms exact chunk delay",
+        "selector": null,
+        "viewport": null,
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/mobile-360x800.webp",
+      "group": "states",
+      "bytes": 33840,
+      "sha256": "fe1205a370dfeff5d0e0f5f9b6627a4f21ca0279a9e6417fb59fe6f3c760b79a",
+      "image": {
+        "format": "webp",
+        "width": 360,
+        "height": 800,
+        "channels": 3,
+        "decodedBytes": 864000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": "ru",
+        "state": null,
+        "selector": null,
+        "viewport": {
+          "width": 360,
+          "height": 800
+        },
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/mobile-sheet-expanded-390x844.webp",
+      "group": "states",
+      "bytes": 33738,
+      "sha256": "935ee8cdccf79548bf0869faa58b9496d1d407f732eeafc642655ee517e9baa2",
+      "image": {
+        "format": "webp",
+        "width": 390,
+        "height": 844,
+        "channels": 3,
+        "decodedBytes": 987480
+      },
+      "capture": {
+        "kind": "state",
+        "locale": "ru",
+        "state": "mobile sheet expanded",
+        "selector": null,
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/reduced-motion-globe-1440x900.webp",
+      "group": "states",
+      "bytes": 46072,
+      "sha256": "4a265b46e9e72ae033d0969cd3b2bbbe2216435d4c438dec1454797899bdfd8c",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": "ru",
+        "state": null,
+        "selector": null,
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/selected-search-results.webp",
+      "group": "states",
+      "bytes": 35858,
+      "sha256": "20474a7a370e2864ff5160b77c8432ae09797fed851f6e3bc5faa32ef5c96a1c",
+      "image": {
+        "format": "webp",
+        "width": 1440,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 3888000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": null,
+        "state": "read-only Tolstoy search results",
+        "selector": null,
+        "viewport": null,
+        "boundingBox": null,
+        "method": null
+      }
+    },
+    {
+      "path": "states/zoom-200pct-equivalent-640x900.webp",
+      "group": "states",
+      "bytes": 47438,
+      "sha256": "4f75265d5dcc5797e02b6465e66b35023fb3d1c238a8ba205fb002fdc3fe487e",
+      "image": {
+        "format": "webp",
+        "width": 640,
+        "height": 900,
+        "channels": 3,
+        "decodedBytes": 1728000
+      },
+      "capture": {
+        "kind": "state",
+        "locale": "ru",
+        "state": null,
+        "selector": null,
+        "viewport": {
+          "width": 640,
+          "height": 900
+        },
+        "boundingBox": null,
+        "method": null
+      }
+    }
+  ]
+}

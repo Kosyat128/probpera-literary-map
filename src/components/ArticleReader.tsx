@@ -29,6 +29,14 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useReadingProgress } from "../hooks/useReadingProgress";
 import {
+  BOOK_ARCHIVE_ARTICLE_FOCUS_HISTORY_STATE_KEY,
+  BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY,
+  normalizeBookArchiveBookKey,
+  readBookArchiveNavigationContext,
+  serializeBookArchiveLocation,
+  type BookArchiveNavigationContext,
+} from "../books/bookArchiveLocation";
+import {
   articlePath,
   journalPath,
   shouldUseClientNavigation,
@@ -209,9 +217,34 @@ function publicMediaUrl(value: string) {
   return `${import.meta.env.BASE_URL}${value.replace(/^\/+/, "")}`;
 }
 
-function bookArchivePath(bookKey: string) {
+function readArticleBookNavigationContext() {
+  if (typeof window === "undefined") return null;
+  try {
+    return readBookArchiveNavigationContext(window.sessionStorage);
+  } catch {
+    return null;
+  }
+}
+
+function bookArchivePath(
+  bookKey: string,
+  context: BookArchiveNavigationContext | null
+) {
   const basePath = import.meta.env.BASE_URL.replace(/\/+$/, "");
-  return `${basePath || ""}/?book=${encodeURIComponent(bookKey)}#books`;
+  return serializeBookArchiveLocation(
+    {
+      pathname: `${basePath || ""}/`,
+      hash: context ? "" : "#books",
+    },
+    { bookKey, shelfId: context?.shelfId }
+  );
+}
+
+function readArticleBookFocusKey() {
+  if (typeof window === "undefined") return null;
+  return normalizeBookArchiveBookKey(
+    window.history.state?.[BOOK_ARCHIVE_ARTICLE_FOCUS_HISTORY_STATE_KEY]
+  );
 }
 
 function applyBrandImageFallback(
@@ -245,6 +278,11 @@ export default function ArticleReader({
   const scrollRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const restoredArticleRef = useRef("");
+  const returnedBookFocusKey = readArticleBookFocusKey();
+  const bookNavigationContext = useMemo(
+    readArticleBookNavigationContext,
+    [article.id]
+  );
   const [articleDocument, setArticleDocument] = useState<ArticleDocument | null>(null);
   const [error, setError] = useState(false);
   const [documentTranslationUnavailable, setDocumentTranslationUnavailable] =
@@ -376,16 +414,18 @@ export default function ArticleReader({
       }
     };
     window.addEventListener("keydown", handleKeydown);
-    window.requestAnimationFrame(() => closeButtonRef.current?.focus());
+    const focusFrame = returnedBookFocusKey
+      ? 0
+      : window.requestAnimationFrame(() => closeButtonRef.current?.focus());
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeydown);
+      if (focusFrame) window.cancelAnimationFrame(focusFrame);
       previouslyFocused?.focus();
     };
-  }, [onClose]);
+  }, [article.id, onClose, returnedBookFocusKey]);
 
   useEffect(() => {
-    scrollRef.current?.scrollTo({ top: 0 });
     setProgress(0);
     setActiveHeadingId("");
     setActiveMediaIndex(null);
@@ -760,28 +800,32 @@ export default function ArticleReader({
 
   useEffect(() => {
     const element = scrollRef.current;
+    if (!element || !articleDocument) return;
+    const progressToRestore =
+      restoredProgress !== null &&
+      restoredProgress >= 3 &&
+      restoredProgress < 96
+        ? restoredProgress
+        : 0;
+    const resumable = progressToRestore > 0;
+    const restoreMarker = `${resumable ? "resume" : "top"}:${article.id}`;
     if (
-      !element ||
-      !articleDocument ||
-      restoredProgress === null ||
-      restoredProgress < 3 ||
-      restoredProgress >= 96 ||
-      restoredArticleRef.current === article.id
-    ) {
-      return;
-    }
-
-    restoredArticleRef.current = article.id;
+      restoredArticleRef.current === restoreMarker ||
+      restoredArticleRef.current === `resume:${article.id}`
+    ) return;
+    restoredArticleRef.current = restoreMarker;
     const frame = window.requestAnimationFrame(() => {
       const available = element.scrollHeight - element.clientHeight;
-      if (available <= 0) return;
       element.scrollTo({
-        top: available * (restoredProgress / 100),
+        top:
+          resumable && available > 0
+            ? available * (progressToRestore / 100)
+            : 0,
         behavior: "auto",
       });
-      setProgress(restoredProgress);
-      setResumedFrom(restoredProgress);
-      if (savedArticle?.status === "saved") {
+      setProgress(progressToRestore);
+      setResumedFrom(resumable ? progressToRestore : null);
+      if (resumable && savedArticle?.status === "saved") {
         setReadingStatus(article.id, "article", "reading");
       }
     });
@@ -830,6 +874,29 @@ export default function ArticleReader({
     onOpen(originalTarget || target);
   };
 
+  const openMentionedBook = (bookKey: string, href: string) => {
+    const safeBookKey = normalizeBookArchiveBookKey(bookKey);
+    if (!safeBookKey) return;
+    const articleState = {
+      ...(window.history.state || {}),
+      [BOOK_ARCHIVE_ARTICLE_FOCUS_HISTORY_STATE_KEY]: safeBookKey,
+    };
+    window.history.replaceState(
+      articleState,
+      "",
+      `${window.location.pathname}${window.location.search}${window.location.hash}`
+    );
+    window.history.pushState(
+      {
+        ...articleState,
+        [BOOK_ARCHIVE_DETAIL_HISTORY_STATE_KEY]: safeBookKey,
+      },
+      "",
+      href
+    );
+    window.dispatchEvent(new Event("probpera:navigation"));
+  };
+
   const openContentImage = (target: EventTarget | null) => {
     const image = target instanceof Element ? target.closest<HTMLImageElement>("img") : null;
     if (!image || !contentRef.current?.contains(image)) return;
@@ -853,17 +920,37 @@ export default function ArticleReader({
   const localizedNext = next
     ? articleCatalogEntryForLanguage(next, language)
     : null;
-  const localizedMentionedBooks = mentionedBooks.flatMap((book) => {
-    const copy = book.localizations?.[language];
-    if (!copy?.title.trim()) return [];
-    if (
-      language === "en" &&
-      /\p{Script=Cyrillic}/u.test(`${copy.title} ${copy.writerName}`)
-    ) {
-      return [];
-    }
-    return [{ ...book, ...copy }];
-  });
+  const localizedMentionedBooks = useMemo(
+    () =>
+      mentionedBooks.flatMap((book) => {
+        const copy = book.localizations?.[language];
+        if (!copy?.title.trim()) return [];
+        if (
+          language === "en" &&
+          /\p{Script=Cyrillic}/u.test(`${copy.title} ${copy.writerName}`)
+        ) {
+          return [];
+        }
+        return [{ ...book, ...copy }];
+      }),
+    [language, mentionedBooks]
+  );
+
+  useEffect(() => {
+    if (!returnedBookFocusKey) return;
+    const frame = window.requestAnimationFrame(() => {
+      const target = [
+        ...(dialogRef.current?.querySelectorAll<HTMLElement>(
+          "[data-article-book-origin]"
+        ) || []),
+      ].find(
+        (element) =>
+          element.dataset.articleBookOrigin === returnedBookFocusKey
+      );
+      (target || closeButtonRef.current)?.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [localizedMentionedBooks, returnedBookFocusKey]);
 
   return (
     <div
@@ -1294,8 +1381,17 @@ export default function ArticleReader({
                   {localizedMentionedBooks.map((book) => (
                     <a
                       className="article-reader-related-book"
-                      href={bookArchivePath(book.key)}
+                      href={bookArchivePath(book.key, bookNavigationContext)}
                       key={book.key}
+                      data-article-book-origin={book.key}
+                      onClick={(event) => {
+                        if (!shouldUseClientNavigation(event)) return;
+                        event.preventDefault();
+                        openMentionedBook(
+                          book.key,
+                          bookArchivePath(book.key, bookNavigationContext)
+                        );
+                      }}
                     >
                       <span className="article-reader-related-book-cover" aria-hidden="true">
                         <i>ПП</i>
