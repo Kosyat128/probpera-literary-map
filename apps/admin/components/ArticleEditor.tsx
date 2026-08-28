@@ -14,7 +14,14 @@ import type {
   FormEvent as ReactFormEvent,
   ReactNode,
 } from "react";
-import { useEffect, useMemo, useRef, useState, useTransition } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useTransition,
+} from "react";
 
 import { createSlug } from "@/lib/slug";
 import { saveArticleAction } from "@/app/(dashboard)/articles/actions";
@@ -58,7 +65,19 @@ import {
   type EditorMediaSlotDetail,
 } from "@/components/editorMediaEvents";
 import { ArticleTextTone } from "@/components/ArticleTextTone";
+import {
+  useRegisterArticleEditorWorkspace,
+  type ArticleEditorWorkspace,
+  type ArticleWorkspaceGuidanceItem,
+} from "@/components/ArticleEditorContext";
 import { articleTextTones } from "@/lib/article-content-presentation";
+import {
+  articleWorkspaceAnchor,
+  articleWorkspaceCheckLocale,
+  articleWorkspaceCheckSection,
+  articleWorkspaceDocumentMetrics,
+  type ArticleWorkspaceSection,
+} from "@/lib/article-workspace-utils";
 
 type Category = { id: string; name: string; slug: string };
 type ImageUploadTarget = "article" | "cover";
@@ -415,8 +434,23 @@ export default function ArticleEditor({
   const [imageUploadMessage, setImageUploadMessage] = useState("");
   const [imageUploadError, setImageUploadError] = useState("");
   const [isImageDraggingOverEditor, setIsImageDraggingOverEditor] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const saveSubmitButtonRef = useRef<HTMLButtonElement>(null);
+  const publishSubmitButtonRef = useRef<HTMLButtonElement>(null);
   const articleFileInputRef = useRef<HTMLInputElement>(null);
   const coverFileInputRef = useRef<HTMLInputElement>(null);
+  const workspaceSectionRefs = useRef<
+    Record<ArticleWorkspaceSection, HTMLElement | null>
+  >({
+    basics: null,
+    text: null,
+    media: null,
+    publish: null,
+    cover: null,
+    seo: null,
+    sources: null,
+    quality: null,
+  });
   const imageUploadInFlightRef = useRef(false);
   const imageSelectionRef = useRef<ImageSelectionContext>({
     selectedImage: false,
@@ -469,6 +503,21 @@ export default function ArticleEditor({
   const [englishConfirmedCurrentSource, setEnglishConfirmedCurrentSource] =
     useState(false);
   const [russianSourceChanged, setRussianSourceChanged] = useState(false);
+  const registerWorkspaceSection = useCallback(
+    (section: ArticleWorkspaceSection, element: HTMLElement | null) => {
+      workspaceSectionRefs.current[section] = element;
+    },
+    []
+  );
+  const scrollToWorkspaceSection = useCallback(
+    (section: ArticleWorkspaceSection) => {
+      workspaceSectionRefs.current[section]?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    },
+    []
+  );
   const initialEditorContent = hasStructuredContent(article.content_json)
     ? article.content_json
     : article.content_html || "";
@@ -556,7 +605,7 @@ export default function ArticleEditor({
     }
   }, [englishCanonicalEdited, generatedEnglishCanonical]);
 
-  const switchEditorLocale = (nextLocale: "ru" | "en") => {
+  const switchEditorLocale = useCallback((nextLocale: "ru" | "en") => {
     if (!editor) {
       setImageUploadError("Редактор ещё загружается. Повторите переключение через секунду.");
       return;
@@ -585,7 +634,15 @@ export default function ArticleEditor({
     editor.commands.setContent(nextContent);
     switchingLocaleRef.current = false;
     editor.commands.focus("start");
-  };
+  }, [
+    activeLocale,
+    contentHtml,
+    contentJson,
+    editor,
+    englishContentHtml,
+    englishContentJson,
+    isImageUploadActive,
+  ]);
 
   const activeTitle = activeLocale === "en" ? englishTitle : title;
   const activeSubtitle = activeLocale === "en" ? englishSubtitle : subtitle;
@@ -959,6 +1016,147 @@ export default function ArticleEditor({
     ];
   }, [categoryId, contentHtml, coverAlt, coverUrl, englishConfirmedCurrentSource, englishContentHtml, englishCoverAlt, englishEnabled, englishExcerpt, englishSeoDescription, englishSlug, englishSourceText, englishStatus, englishTitle, englishTranslation?.source_content_hash, englishWordCount, excerpt, russianSourceChanged, russianWordCount, seoDescription, slug, sourceText, title]);
   const publicationReady = publicationChecks.every((item) => item.ok);
+
+  const workspaceDocument = useMemo(() => {
+    const outline: Array<{
+      id: string;
+      label: string;
+      level: 2 | 3;
+      position: number;
+    }> = [];
+    let imageCount = 0;
+    const documentNode = editor?.state.doc;
+
+    documentNode?.descendants((node, position) => {
+      if (node.type.name === "image") imageCount += 1;
+      if (node.type.name !== "heading") return;
+      const level = Number(node.attrs.level);
+      if (level !== 2 && level !== 3) return;
+      const label = node.textContent.replace(/\s+/gu, " ").trim();
+      if (!label) return;
+      outline.push({
+        id: articleWorkspaceAnchor(label, outline.length),
+        label,
+        level,
+        position: position + 1,
+      });
+    });
+
+    const text = documentNode
+      ? documentNode.textBetween(0, documentNode.content.size, " ", " ")
+      : "";
+    return {
+      outline,
+      metrics: articleWorkspaceDocumentMetrics(
+        text,
+        outline.length,
+        imageCount
+      ),
+    };
+  }, [activeLocale, contentJson, editor, englishContentJson]);
+  const workspaceSaveState = `${wordCount.toLocaleString(
+    activeLocale === "en" ? "en-US" : "ru-RU"
+  )} ${activeLocale === "en" ? "words" : "слов"}${
+    savedLocallyAt ? ` · автокопия ${savedLocallyAt}` : ""
+  }${isDirty ? " · изменения ещё не отправлены в редакционную базу" : ""}`;
+  const workspaceSnapshot = useMemo<ArticleEditorWorkspace["snapshot"]>(() => {
+    const ready = publicationChecks.filter((item) => item.ok).length;
+    return {
+      locale: activeLocale,
+      outline: workspaceDocument.outline.map(({ position: _position, ...item }) => item),
+      missing: publicationChecks
+        .filter((item) => !item.ok)
+        .map((item) => ({
+          label: item.label,
+          locale: articleWorkspaceCheckLocale(item.label),
+          section: articleWorkspaceCheckSection(item.label),
+        })),
+      metrics: workspaceDocument.metrics,
+      ready,
+      total: publicationChecks.length,
+      saveState: workspaceSaveState,
+      canSave: !isImageUploadActive,
+      canPreview: Boolean(article.id),
+      canPublish: publicationReady && !isImageUploadActive,
+    };
+  }, [
+    activeLocale,
+    article.id,
+    isImageUploadActive,
+    publicationChecks,
+    publicationReady,
+    workspaceDocument,
+    workspaceSaveState,
+  ]);
+  const submitWorkspaceSave = useCallback(() => {
+    const submitter = saveSubmitButtonRef.current;
+    if (!submitter || submitter.disabled) return;
+    formRef.current?.requestSubmit(submitter);
+  }, []);
+  const submitWorkspacePublish = useCallback(() => {
+    const submitter = publishSubmitButtonRef.current;
+    if (!submitter || submitter.disabled) return;
+    formRef.current?.requestSubmit(submitter);
+  }, []);
+  const previewWorkspaceArticle = useCallback(() => {
+    if (!article.id) return;
+    window.open(
+      withClientAdminPath(`/articles/${article.id}/preview?locale=${activeLocale}`),
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }, [activeLocale, article.id]);
+  const toggleWorkspaceFullscreen = useCallback(() => {
+    setIsFullscreen((value) => !value);
+  }, []);
+  const goToWorkspaceHeading = useCallback(
+    (id: string) => {
+      const heading = workspaceDocument.outline.find((item) => item.id === id);
+      if (!editor || !heading) return;
+      editor
+        .chain()
+        .setTextSelection(heading.position)
+        .scrollIntoView()
+        .run();
+    },
+    [editor, workspaceDocument.outline]
+  );
+  const goToWorkspaceIssue = useCallback(
+    (issue: ArticleWorkspaceGuidanceItem) => {
+      if (issue.locale !== activeLocale) switchEditorLocale(issue.locale);
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() =>
+          scrollToWorkspaceSection(issue.section)
+        );
+      });
+    },
+    [activeLocale, scrollToWorkspaceSection, switchEditorLocale]
+  );
+  const workspaceActions = useMemo<ArticleEditorWorkspace["actions"]>(
+    () => ({
+      save: submitWorkspaceSave,
+      preview: previewWorkspaceArticle,
+      toggleFullscreen: toggleWorkspaceFullscreen,
+      publish: submitWorkspacePublish,
+      goToSection: scrollToWorkspaceSection,
+      goToIssue: goToWorkspaceIssue,
+      goToHeading: goToWorkspaceHeading,
+    }),
+    [
+      goToWorkspaceHeading,
+      goToWorkspaceIssue,
+      previewWorkspaceArticle,
+      scrollToWorkspaceSection,
+      submitWorkspacePublish,
+      submitWorkspaceSave,
+      toggleWorkspaceFullscreen,
+    ]
+  );
+  const articleEditorWorkspace = useMemo<ArticleEditorWorkspace>(
+    () => ({ snapshot: workspaceSnapshot, actions: workspaceActions }),
+    [workspaceActions, workspaceSnapshot]
+  );
+  useRegisterArticleEditorWorkspace(articleEditorWorkspace);
 
   const setLink = () => {
     const previousUrl = editor?.getAttributes("link").href || "";
@@ -1609,6 +1807,7 @@ export default function ArticleEditor({
 
   return (
     <form
+      ref={formRef}
       action={saveArticleAction}
       onSubmit={(event: ReactFormEvent<HTMLFormElement>) => {
         if (imageUploadTarget !== null || imageUploadInFlightRef.current) {
@@ -1654,7 +1853,11 @@ export default function ArticleEditor({
         }
         setIsDirty(false);
       }}
-      className={isFullscreen ? "article-form is-fullscreen" : "article-form"}
+      className={
+        isFullscreen
+          ? "article-form article-workspace-enabled is-fullscreen"
+          : "article-form article-workspace-enabled"
+      }
     >
       {article.id && <input type="hidden" name="id" value={article.id} />}
       {article.id && (
@@ -1809,7 +2012,10 @@ export default function ArticleEditor({
               </ol>
             </aside>
           )}
-          <section className="panel">
+          <section
+            ref={(element) => registerWorkspaceSection("basics", element)}
+            className="panel"
+          >
             <label className="field">
               <span>{activeLocale === "en" ? "Title" : "Заголовок"}</span>
               <input
@@ -2044,6 +2250,7 @@ export default function ArticleEditor({
               }}
             />
             <button
+              ref={(element) => registerWorkspaceSection("media", element)}
               className={
                 imageUploadTarget === "article"
                   ? "editor-direct-upload is-uploading"
@@ -2077,6 +2284,7 @@ export default function ArticleEditor({
               <p className="upload-feedback is-error" role="alert">{imageUploadError}</p>
             )}
             <div
+              ref={(element) => registerWorkspaceSection("text", element)}
               className={
                 isImageDraggingOverEditor
                   ? "editor-content-drop-target is-dragging"
@@ -2116,7 +2324,10 @@ export default function ArticleEditor({
         </div>
 
         <aside className="editor-side">
-          <section className="panel settings-stack">
+          <section
+            ref={(element) => registerWorkspaceSection("publish", element)}
+            className="panel settings-stack"
+          >
             <h2>{activeLocale === "en" ? "English publication" : "Публикация"}</h2>
             {activeLocale === "ru" ? (
               <>
@@ -2205,7 +2416,10 @@ export default function ArticleEditor({
             </label>
           </section>
 
-          <section className="panel settings-stack">
+          <section
+            ref={(element) => registerWorkspaceSection("cover", element)}
+            className="panel settings-stack"
+          >
             <h2>Обложка</h2>
             <input
               ref={coverFileInputRef}
@@ -2293,7 +2507,10 @@ export default function ArticleEditor({
             </label>
           </section>
 
-          <section className="panel settings-stack">
+          <section
+            ref={(element) => registerWorkspaceSection("seo", element)}
+            className="panel settings-stack"
+          >
             <h2>{activeLocale === "en" ? "English URL and SEO" : "Адрес и SEO"}</h2>
             <label className="field">
               <span>{activeLocale === "en" ? "English article slug" : "Адрес статьи"}</span>
@@ -2463,7 +2680,11 @@ export default function ArticleEditor({
             </label>
           </section>
 
-          <section className="panel settings-stack publication-checklist" aria-labelledby="publication-checklist-title">
+          <section
+            ref={(element) => registerWorkspaceSection("quality", element)}
+            className="panel settings-stack publication-checklist"
+            aria-labelledby="publication-checklist-title"
+          >
             <h2 id="publication-checklist-title">Контроль перед публикацией</h2>
             <p>
               {englishEnabled
@@ -2481,7 +2702,10 @@ export default function ArticleEditor({
             <input type="hidden" name="publication_ready" value={publicationReady ? "yes" : "no"} />
           </section>
 
-          <section className="panel settings-stack">
+          <section
+            ref={(element) => registerWorkspaceSection("sources", element)}
+            className="panel settings-stack"
+          >
             <h2>
               {activeLocale === "en"
                 ? "English sources and bibliography"
@@ -2626,12 +2850,7 @@ export default function ArticleEditor({
 
       <footer className="editor-footer">
         <div className="editor-save-state" aria-live="polite">
-          <small>
-            {wordCount.toLocaleString(activeLocale === "en" ? "en-US" : "ru-RU")}{" "}
-            {activeLocale === "en" ? "words" : "слов"}
-            {savedLocallyAt ? ` · автокопия ${savedLocallyAt}` : ""}
-            {isDirty ? " · изменения ещё не отправлены в редакционную базу" : ""}
-          </small>
+          <small>{workspaceSaveState}</small>
           {draftStorageError && (
             <small className="editor-save-error" role="alert">
               {draftStorageError}
@@ -2659,6 +2878,7 @@ export default function ArticleEditor({
             </NextLink>
           )}
           <button
+            ref={saveSubmitButtonRef}
             className="button-secondary"
             type="submit"
             name="intent"
@@ -2668,6 +2888,7 @@ export default function ArticleEditor({
             Сохранить
           </button>
           <button
+            ref={publishSubmitButtonRef}
             className="button"
             type="submit"
             name="intent"
