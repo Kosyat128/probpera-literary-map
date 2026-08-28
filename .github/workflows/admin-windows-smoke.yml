@@ -1,0 +1,172 @@
+name: Admin Windows standalone smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "apps/admin/**"
+      - "scripts/admin-windows-smoke.source.test.mjs"
+      - "scripts/export-editorial-catalog.mjs"
+      - "scripts/export-interface-copy-catalog.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/admin-windows-smoke.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/admin/**"
+      - "scripts/admin-windows-smoke.source.test.mjs"
+      - "scripts/export-editorial-catalog.mjs"
+      - "scripts/export-interface-copy-catalog.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/admin-windows-smoke.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: admin-windows-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: windows-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Verify Windows smoke contract
+        run: npm test -- scripts/admin-windows-smoke.source.test.mjs
+
+      - name: Type-check admin
+        run: npm run typecheck --workspace @probpera/admin
+
+      - name: Build admin standalone output
+        env:
+          ADMIN_BASE_PATH: /
+          ADMIN_ALLOWED_ORIGINS: 127.0.0.1:3210
+          NEXT_PUBLIC_ADMIN_URL: http://127.0.0.1:3210
+          NEXT_PUBLIC_SITE_URL: https://probpera.ru
+          NEXT_PUBLIC_SUPABASE_URL: https://ci-placeholder.supabase.co
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: sb_publishable_ci_placeholder
+          YANDEX_METRIKA_COUNTER_ID: "12345678"
+        run: npm run admin:build
+
+      - name: Prepare, start and probe standalone admin
+        shell: pwsh
+        env:
+          ADMIN_BASE_PATH: /
+          ADMIN_ALLOWED_ORIGINS: 127.0.0.1:3210
+          HOSTNAME: 127.0.0.1
+          NEXT_PUBLIC_ADMIN_URL: http://127.0.0.1:3210
+          NEXT_PUBLIC_SITE_URL: https://probpera.ru
+          NODE_ENV: production
+          PORT: "3210"
+        run: |
+          $ErrorActionPreference = "Stop"
+          $adminRoot = Join-Path $env:GITHUB_WORKSPACE "apps\admin"
+          $stdoutPath = Join-Path $env:RUNNER_TEMP "admin-windows-smoke.stdout.log"
+          $stderrPath = Join-Path $env:RUNNER_TEMP "admin-windows-smoke.stderr.log"
+          $server = $null
+
+          Push-Location $adminRoot
+          try {
+            & node "scripts\prepare-standalone.mjs"
+            if ($LASTEXITCODE -ne 0) {
+              throw "prepare-standalone.mjs exited with code $LASTEXITCODE."
+            }
+          } finally {
+            Pop-Location
+          }
+
+          $standaloneRoot = Join-Path $adminRoot ".next\standalone"
+          $serverCandidates = @(
+            (Join-Path $standaloneRoot "apps\admin\server.js"),
+            (Join-Path $standaloneRoot "server.js"),
+            (Join-Path $standaloneRoot "apps\admin\.next\server.js")
+          )
+          if (-not ($serverCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1)) {
+            throw "The admin standalone server entrypoint was not prepared."
+          }
+
+          foreach ($runtimeFile in @(
+            "@supabase\supabase-js\package.json",
+            "@supabase\ssr\package.json"
+          )) {
+            $runtimePath = Join-Path (Join-Path $standaloneRoot "node_modules") $runtimeFile
+            if (-not (Test-Path -LiteralPath $runtimePath)) {
+              throw "Missing standalone runtime dependency: $runtimeFile"
+            }
+          }
+
+          try {
+            $nodePath = (Get-Command node).Source
+            $server = Start-Process `
+              -FilePath $nodePath `
+              -ArgumentList "scripts\start-admin.mjs" `
+              -WorkingDirectory $adminRoot `
+              -RedirectStandardOutput $stdoutPath `
+              -RedirectStandardError $stderrPath `
+              -WindowStyle Hidden `
+              -PassThru
+
+            $healthUrl = "http://127.0.0.1:3210/login"
+            $deadline = (Get-Date).AddSeconds(90)
+            $lastProbeError = "server did not answer"
+            $healthy = $false
+
+            while ((Get-Date) -lt $deadline) {
+              if ($server.HasExited) {
+                throw "Admin server exited before the HTTP health check (code $($server.ExitCode))."
+              }
+
+              try {
+                $response = Invoke-WebRequest -Uri $healthUrl -TimeoutSec 5 -UseBasicParsing
+                if ($response.StatusCode -eq 200) {
+                  $healthy = $true
+                  break
+                }
+                $lastProbeError = "HTTP $($response.StatusCode)"
+              } catch {
+                $lastProbeError = $_.Exception.Message
+              }
+
+              Start-Sleep -Seconds 2
+            }
+
+            if (-not $healthy) {
+              throw "Admin HTTP health check failed: $lastProbeError"
+            }
+
+            Write-Host "Admin standalone health check passed: $healthUrl"
+          } finally {
+            if ($null -ne $server -and -not $server.HasExited) {
+              try {
+                & taskkill.exe /PID $server.Id /T /F | Out-Null
+              } catch {
+                Write-Warning "Could not stop the admin process tree: $($_.Exception.Message)"
+              }
+            }
+
+            foreach ($logPath in @($stdoutPath, $stderrPath)) {
+              if (Test-Path -LiteralPath $logPath) {
+                Write-Host "--- $([System.IO.Path]::GetFileName($logPath)) ---"
+                Get-Content -LiteralPath $logPath
+              }
+            }
+          }
