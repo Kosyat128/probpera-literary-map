@@ -28,7 +28,7 @@ const sourceDocument = JSON.parse(
   readFileSync(
     path.join(
       process.cwd(),
-      "public/cms/articles/cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6.json"
+      "scripts/database/fixtures/black-swan-article-source.json"
     ),
     "utf8"
   )
@@ -83,7 +83,7 @@ function queuedFetch(responses) {
 }
 
 describe("guarded Black Swan article publication restore", () => {
-  it("pins the reviewed article identity and exported content digest", () => {
+  it("pins the reviewed article identity and immutable content digest", () => {
     expect(sourceDocument.id).toBe(`cms-${BLACK_SWAN_ARTICLE_ID}`);
     expect(sourceDocument.legacyId).toBe(BLACK_SWAN_ARTICLE_LEGACY_ID);
     expect(sourceDocument.title).toBe(BLACK_SWAN_ARTICLE_TITLE);
