@@ -86,7 +86,8 @@ describe("localized static article pages", () => {
       wordCount: 220,
       headingCount: 1,
       slug: "a-reviewed-english-article",
-      canonicalUrl: null,
+      canonicalUrl:
+        "https://example.test/stati/pisateli-mira/a-reviewed-english-article",
       translationStatus: "approved",
       approvedAt: "2026-08-08T10:00:00.000Z",
     };
@@ -165,11 +166,39 @@ describe("localized static article pages", () => {
     );
     expect(existsSync(englishFile)).toBe(true);
     const englishHtml = readFileSync(englishFile, "utf8");
+    const $english = load(englishHtml);
+    const englishCanonicalUrl =
+      "https://example.test/stati/pisateli-mira/a-reviewed-english-article/";
     expect(englishHtml).toContain('lang="en"');
     expect(englishHtml).toContain('data-route-language="en"');
     expect(englishHtml).toContain("Editor-approved English text.");
     expect(englishHtml).not.toContain("Русский текст.");
     expect(englishHtml).not.toContain("stale.example");
+    expect($english('link[rel="canonical"]').attr("href")).toBe(
+      englishCanonicalUrl
+    );
+    expect($english('meta[property="og:url"]').attr("content")).toBe(
+      englishCanonicalUrl
+    );
+    const englishSchemaNodes = $english('script[type="application/ld+json"]')
+      .toArray()
+      .flatMap((element) => {
+        const value = JSON.parse($english(element).text());
+        return value["@graph"] || [value];
+      });
+    const englishSchemaTypes = new Set(
+      englishSchemaNodes.map((node) => node["@type"])
+    );
+    expect(englishSchemaTypes.has("WebPage")).toBe(true);
+    expect(englishSchemaTypes.has("Article")).toBe(true);
+    expect(englishSchemaTypes.has("ImageObject")).toBe(true);
+    expect(englishSchemaTypes.has("Organization")).toBe(true);
+    expect(englishSchemaTypes.has("BreadcrumbList")).toBe(true);
+    expect(
+      englishSchemaNodes.find((node) => node["@type"] === "Article")
+        ?.mainEntityOfPage
+    ).toEqual({ "@id": englishCanonicalUrl });
+    expect($english('a[href*="/stati/"]').length).toBeGreaterThanOrEqual(3);
     expect(
       readFileSync(path.join(fixtureRoot, "dist", "index.html"), "utf8")
     ).not.toContain("stale.example");
@@ -184,6 +213,7 @@ describe("localized static article pages", () => {
     );
     const russianHtml = readFileSync(russianFile, "utf8");
     const $russian = load(russianHtml);
+    expect(russianHtml).toContain(`href="${englishCanonicalUrl}"`);
     const schemaTypes = new Set(
       $russian('script[type="application/ld+json"]')
         .toArray()
