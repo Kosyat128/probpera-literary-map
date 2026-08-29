@@ -24,279 +24,279 @@ Runtime computed values are **NOT MEASURED** unless an explicit measured observa
 | `.article-reader-paper` | **KEEP** | 2 | all viewports | RU+EN | NOT MEASURED | Reader measure is intentionally isolated. |
 | `.site-footer` | **KEEP** | 1 | all viewports | RU+EN | NOT MEASURED | Footer is a terminal landmark; no Stage 5A redesign. |
 
-## KEEP — `.site-header`
+## KEEP - `.site-header`
 
 Header geometry is owner locked.
 
-- `.site-header` — `src/index.css:148`; viewport: all viewports; locale: RU+EN.
+- `.site-header` - `src/index.css:148`; viewport: all viewports; locale: RU+EN.
   - `top: 0`
   - `grid-template-columns: minmax(250px, 1fr) max-content max-content`
   - `gap: clamp(18px, 1.7vw, 30px)`
   - `align-items: center`
   - `min-height: 80px`
   - `padding: 9px clamp(20px, 4vw, 68px)`
-- `.site-header::after` — `src/index.css:11032`; viewport: all viewports; locale: RU+EN.
+- `.site-header::after` - `src/index.css:11032`; viewport: all viewports; locale: RU+EN.
   - `right: 7%`
   - `bottom: -29px`
   - `left: 7%`
   - `height: 32px`
-- `.site-header` — `src/index.css:15385`; viewport: @media (max-width: 1260px); locale: RU+EN.
+- `.site-header` - `src/index.css:15385`; viewport: @media (max-width: 1260px); locale: RU+EN.
   - `grid-template-columns: minmax(220px, 1fr) auto`
-- `.site-header` — `src/index.css:15653`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.site-header` - `src/index.css:15653`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `gap: 10px`
   - `justify-content: space-between`
   - `width: 100vw`
   - `max-width: 100vw`
   - `min-height: 66px`
   - `padding: 7px 13px`
-- `.site-header` — `src/index.css:17294`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.site-header` - `src/index.css:17294`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `min-height: 58px`
   - `height: 58px`
   - `padding: 5px 10px`
-- `.site-header` — `src/index.css:17741`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.site-header` - `src/index.css:17741`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `width: 100%`
   - `max-width: 100%`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.magazine-hero`
+## KEEP - `.magazine-hero`
 
 Hero composition is owner locked.
 
-- `.magazine-hero` — `src/index.css:1486`; viewport: all viewports; locale: RU+EN.
+- `.magazine-hero` - `src/index.css:1486`; viewport: all viewports; locale: RU+EN.
   - `grid-template-columns: minmax(0, 1fr)`
   - `min-height: 0`
-- `.magazine-hero::before` — `src/index.css:1497`; viewport: all viewports; locale: RU+EN.
+- `.magazine-hero::before` - `src/index.css:1497`; viewport: all viewports; locale: RU+EN.
   - `inset: 0`
-- `.magazine-hero::after` — `src/index.css:11054`; viewport: all viewports; locale: RU+EN.
+- `.magazine-hero::after` - `src/index.css:11054`; viewport: all viewports; locale: RU+EN.
   - `top: -24px`
   - `right: -8%`
   - `left: -8%`
   - `height: 110px`
-- `.magazine-hero` — `src/index.css:15476`; viewport: @media (max-width: 1260px); locale: RU+EN.
+- `.magazine-hero` - `src/index.css:15476`; viewport: @media (max-width: 1260px); locale: RU+EN.
   - `grid-template-columns: minmax(0, 1fr)`
-- `.magazine-hero` — `src/index.css:15520`; viewport: @media (max-width: 980px); locale: RU+EN.
+- `.magazine-hero` - `src/index.css:15520`; viewport: @media (max-width: 980px); locale: RU+EN.
   - `grid-template-columns: minmax(0, 1fr)`
   - `min-height: clamp(680px, 82vw, 820px)`
-- `.magazine-hero` — `src/index.css:15725`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.magazine-hero` - `src/index.css:15725`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `width: 100%`
   - `max-width: 100vw`
   - `min-height: calc(100svh - 66px)`
-- `.magazine-hero.cms-core-editable .hero-cover::after` — `src/index.css:16424`; viewport: all viewports; locale: RU+EN.
+- `.magazine-hero.cms-core-editable .hero-cover::after` - `src/index.css:16424`; viewport: all viewports; locale: RU+EN.
   - `inset: 0`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.atlas-section`
+## KEEP - `.atlas-section`
 
 Stage 4 Globe architecture and geometry are locked.
 
-- `.atlas-section` — `src/index.css:1709`; viewport: all viewports; locale: RU+EN.
+- `.atlas-section` - `src/index.css:1709`; viewport: all viewports; locale: RU+EN.
   - `padding: 86px clamp(18px, 4vw, 68px) 68px`
-- `.atlas-section::before` — `src/index.css:1722`; viewport: all viewports; locale: RU+EN.
+- `.atlas-section::before` - `src/index.css:1722`; viewport: all viewports; locale: RU+EN.
   - `inset: 0`
-- `.atlas-section::after` — `src/index.css:1735`; viewport: all viewports; locale: RU+EN.
+- `.atlas-section::after` - `src/index.css:1735`; viewport: all viewports; locale: RU+EN.
   - `right: 0`
   - `bottom: 0`
   - `left: 0`
   - `height: clamp(220px, 24vw, 390px)`
-- `.atlas-section` — `src/index.css:15811`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.atlas-section` - `src/index.css:15811`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `padding-top: 65px`
-- `.atlas-section::after` — `src/index.css:15815`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.atlas-section::after` - `src/index.css:15815`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `height: 250px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.daily-grid`
+## TUNE - `.daily-grid`
 
 Book Month group is explicitly in Stage 5B/5C polish scope.
 
-- `.daily-grid` — `src/index.css:4923`; viewport: all viewports; locale: RU+EN.
+- `.daily-grid` - `src/index.css:4923`; viewport: all viewports; locale: RU+EN.
   - `grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.75fr)`
   - `gap: 22px`
   - `max-width: 1530px`
   - `margin: 0 auto`
   - `padding: 76px clamp(18px, 4vw, 68px)`
-- `.daily-grid.painted-paper-section` — `src/index.css:11143`; viewport: all viewports; locale: RU+EN.
+- `.daily-grid.painted-paper-section` - `src/index.css:11143`; viewport: all viewports; locale: RU+EN.
   - `max-width: none`
   - `padding-right: max(clamp(18px, 4vw, 68px), calc((100vw - 1530px) / 2))`
   - `padding-left: max(clamp(18px, 4vw, 68px), calc((100vw - 1530px) / 2))`
-- `.daily-grid` — `src/index.css:13159`; viewport: all viewports; locale: RU+EN.
+- `.daily-grid` - `src/index.css:13159`; viewport: all viewports; locale: RU+EN.
   - `grid-template-rows: auto auto`
-- `.daily-grid` — `src/index.css:13899`; viewport: @media (max-width: 1100px); locale: RU+EN.
+- `.daily-grid` - `src/index.css:13899`; viewport: @media (max-width: 1100px); locale: RU+EN.
   - `grid-template-columns: 1fr`
-- `.daily-grid` — `src/index.css:15555`; viewport: @media (max-width: 980px); locale: RU+EN.
+- `.daily-grid` - `src/index.css:15555`; viewport: @media (max-width: 980px); locale: RU+EN.
   - `grid-template-columns: 1fr`
-- `.daily-grid` — `src/index.css:15871`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.daily-grid` - `src/index.css:15871`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `padding-top: 60px`
   - `padding-bottom: 60px`
-- `.daily-grid` — `src/index.css:17643`; viewport: @media (max-width: 1499px); locale: RU+EN.
+- `.daily-grid` - `src/index.css:17643`; viewport: @media (max-width: 1499px); locale: RU+EN.
   - `grid-template-columns: minmax(0, 1fr)`
   - `grid-template-rows: auto`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.editorial-section`
+## TUNE - `.editorial-section`
 
 Audit excessive gaps while preserving editorial whitespace.
 
-- `.editorial-section` — `src/index.css:6081`; viewport: all viewports; locale: RU+EN.
+- `.editorial-section` - `src/index.css:6081`; viewport: all viewports; locale: RU+EN.
   - `padding: 82px clamp(18px, 4vw, 68px)`
-- `.editorial-section` — `src/index.css:15871`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.editorial-section` - `src/index.css:15871`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `padding-top: 60px`
   - `padding-bottom: 60px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.community-section`
+## TUNE - `.community-section`
 
 Community grid rhythm is Stage 5C scope.
 
-- `.community-section` — `src/index.css:6476`; viewport: all viewports; locale: RU+EN.
+- `.community-section` - `src/index.css:6476`; viewport: all viewports; locale: RU+EN.
   - `grid-template-columns: repeat(2, minmax(0, 1fr))`
   - `min-height: 660px`
-- `.community-section::before` — `src/index.css:6490`; viewport: all viewports; locale: RU+EN.
+- `.community-section::before` - `src/index.css:6490`; viewport: all viewports; locale: RU+EN.
   - `top: 0`
   - `right: 0`
   - `left: 0`
   - `height: 9px`
-- `.community-section::after` — `src/index.css:6505`; viewport: all viewports; locale: RU+EN.
+- `.community-section::after` - `src/index.css:6505`; viewport: all viewports; locale: RU+EN.
   - `top: 9%`
   - `bottom: 9%`
   - `left: 50%`
   - `width: 1px`
-- `.community-section` — `src/index.css:15580`; viewport: @media (max-width: 980px); locale: RU+EN.
+- `.community-section` - `src/index.css:15580`; viewport: @media (max-width: 980px); locale: RU+EN.
   - `grid-template-columns: 1fr`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## FIX — `.author-showcase article`
+## FIX - `.author-showcase article`
 
 Stage 5C requires overly tall author cards to be corrected.
 
-- `.author-showcase article` — `src/index.css:7003`; viewport: all viewports; locale: RU+EN.
+- `.author-showcase article` - `src/index.css:7003`; viewport: all viewports; locale: RU+EN.
   - `min-width: 0`
-- `.author-showcase article > a` — `src/index.css:7091`; viewport: all viewports; locale: RU+EN.
+- `.author-showcase article > a` - `src/index.css:7091`; viewport: all viewports; locale: RU+EN.
   - `margin: 9px 0 0 2px`
-- `.author-showcase article > a` — `src/index.css:16798`; viewport: all viewports; locale: RU+EN.
+- `.author-showcase article > a` - `src/index.css:16798`; viewport: all viewports; locale: RU+EN.
   - `align-items: center`
   - `min-height: 40px`
-- `.author-showcase article > a` — `src/index.css:17089`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.author-showcase article > a` - `src/index.css:17089`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `min-height: 40px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## FIX — `.section-directory-card`
+## FIX - `.section-directory-card`
 
 Section landmarks require a shared row baseline.
 
-- `.section-directory-card` — `src/index.css:7176`; viewport: all viewports; locale: RU+EN.
+- `.section-directory-card` - `src/index.css:7176`; viewport: all viewports; locale: RU+EN.
   - `align-items: end`
   - `min-height: 310px`
-- `.section-directory-card > div` — `src/index.css:7197`; viewport: all viewports; locale: RU+EN.
+- `.section-directory-card > div` - `src/index.css:7197`; viewport: all viewports; locale: RU+EN.
   - `grid-template-rows: auto minmax(3.12em, auto) minmax(4.74em, auto) 96px 72px auto`
   - `min-height: 100%`
   - `padding: 30px 62px 30px 30px`
-- `.section-directory-card` — `src/index.css:11377`; viewport: all viewports; locale: RU+EN.
+- `.section-directory-card` - `src/index.css:11377`; viewport: all viewports; locale: RU+EN.
   - `min-height: 370px`
-- `.section-directory-card` — `src/index.css:12443`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.section-directory-card` - `src/index.css:12443`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `min-height: 320px`
-- `.section-directory-card` — `src/index.css:16045`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.section-directory-card` - `src/index.css:16045`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `min-height: 245px`
-- `.section-directory-card > div` — `src/index.css:16049`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.section-directory-card > div` - `src/index.css:16049`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `grid-template-rows: repeat(6, auto)`
   - `padding: 26px 24px`
-- `.section-directory-card > div` — `src/index.css:16811`; viewport: all viewports; locale: RU+EN.
+- `.section-directory-card > div` - `src/index.css:16811`; viewport: all viewports; locale: RU+EN.
   - `grid-template-rows: repeat(6, auto)`
-- `.section-directory-card` — `src/index.css:17021`; viewport: @media (max-width: 980px); locale: RU+EN.
+- `.section-directory-card` - `src/index.css:17021`; viewport: @media (max-width: 980px); locale: RU+EN.
   - `min-height: 330px`
-- `.section-directory-card > div` — `src/index.css:17025`; viewport: @media (max-width: 980px); locale: RU+EN.
+- `.section-directory-card > div` - `src/index.css:17025`; viewport: @media (max-width: 980px); locale: RU+EN.
   - `grid-template-rows: repeat(6, auto)`
-- `.section-directory-card` — `src/index.css:17096`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.section-directory-card` - `src/index.css:17096`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `min-height: 280px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.calendar-card`
+## TUNE - `.calendar-card`
 
 Calendar padding and empty space need cross-viewport review.
 
-- `.calendar-card` — `src/index.css:7493`; viewport: all viewports; locale: RU+EN.
+- `.calendar-card` - `src/index.css:7493`; viewport: all viewports; locale: RU+EN.
   - `max-width: 1530px`
   - `margin: 0 auto`
   - `padding: clamp(28px, 4vw, 60px)`
-- `.calendar-card::after` — `src/index.css:7510`; viewport: all viewports; locale: RU+EN.
+- `.calendar-card::after` - `src/index.css:7510`; viewport: all viewports; locale: RU+EN.
   - `top: -62px`
   - `right: -55px`
   - `width: 210px`
   - `height: 150px`
-- `.calendar-card` — `src/index.css:16064`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.calendar-card` - `src/index.css:16064`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `padding: 24px 16px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.trust-center`
+## TUNE - `.trust-center`
 
 Align Trust spacing with the final homepage sequence.
 
-- `.trust-center` — `src/index.css:13396`; viewport: all viewports; locale: RU+EN.
+- `.trust-center` - `src/index.css:13396`; viewport: all viewports; locale: RU+EN.
   - `padding: clamp(75px, 9vw, 130px) clamp(20px, 5vw, 82px)`
-- `.trust-center > header` — `src/index.css:13405`; viewport: all viewports; locale: RU+EN.
+- `.trust-center > header` - `src/index.css:13405`; viewport: all viewports; locale: RU+EN.
   - `max-width: 1510px`
   - `margin-right: auto`
   - `margin-left: auto`
-- `.trust-center > div` — `src/index.css:13405`; viewport: all viewports; locale: RU+EN.
+- `.trust-center > div` - `src/index.css:13405`; viewport: all viewports; locale: RU+EN.
   - `max-width: 1510px`
   - `margin-right: auto`
   - `margin-left: auto`
-- `.trust-center .section-heading p` — `src/index.css:13412`; viewport: all viewports; locale: RU+EN.
+- `.trust-center .section-heading p` - `src/index.css:13412`; viewport: all viewports; locale: RU+EN.
   - `max-width: 720px`
   - `margin: 15px 0 0`
-- `.trust-center > div` — `src/index.css:13421`; viewport: all viewports; locale: RU+EN.
+- `.trust-center > div` - `src/index.css:13421`; viewport: all viewports; locale: RU+EN.
   - `grid-template-columns: repeat(4, minmax(0, 1fr))`
   - `gap: 10px`
   - `margin-top: 45px`
-- `.trust-center details` — `src/index.css:13428`; viewport: all viewports; locale: RU+EN.
+- `.trust-center details` - `src/index.css:13428`; viewport: all viewports; locale: RU+EN.
   - `min-height: 220px`
   - `padding: 25px`
-- `.trust-center summary span` — `src/index.css:13447`; viewport: all viewports; locale: RU+EN.
+- `.trust-center summary span` - `src/index.css:13447`; viewport: all viewports; locale: RU+EN.
   - `margin-bottom: 18px`
-- `.trust-center details p` — `src/index.css:13456`; viewport: all viewports; locale: RU+EN.
+- `.trust-center details p` - `src/index.css:13456`; viewport: all viewports; locale: RU+EN.
   - `margin: 20px 0 0`
-- `.trust-center > div` — `src/index.css:13903`; viewport: @media (max-width: 1100px); locale: RU+EN.
+- `.trust-center > div` - `src/index.css:13903`; viewport: @media (max-width: 1100px); locale: RU+EN.
   - `grid-template-columns: repeat(2, minmax(0, 1fr))`
-- `.trust-center > div` — `src/index.css:13999`; viewport: @media (max-width: 800px); locale: RU+EN.
+- `.trust-center > div` - `src/index.css:13999`; viewport: @media (max-width: 800px); locale: RU+EN.
   - `grid-template-columns: 1fr`
-- `.trust-center details` — `src/index.css:14003`; viewport: @media (max-width: 800px); locale: RU+EN.
+- `.trust-center details` - `src/index.css:14003`; viewport: @media (max-width: 800px); locale: RU+EN.
   - `min-height: auto`
-- `.trust-center summary` — `src/index.css:16966`; viewport: all viewports; locale: RU+EN.
+- `.trust-center summary` - `src/index.css:16966`; viewport: all viewports; locale: RU+EN.
   - `min-height: 44px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.book-archive-section`
+## KEEP - `.book-archive-section`
 
 Book Archive is measure-only through Stage 5C.
 
-- `.book-archive-section` — `src/index.css:5193`; viewport: all viewports; locale: RU+EN.
+- `.book-archive-section` - `src/index.css:5193`; viewport: all viewports; locale: RU+EN.
   - `padding: 90px clamp(18px, 4vw, 68px) 105px`
-- `.book-archive-section::before` — `src/index.css:5203`; viewport: all viewports; locale: RU+EN.
+- `.book-archive-section::before` - `src/index.css:5203`; viewport: all viewports; locale: RU+EN.
   - `top: 0`
   - `left: clamp(18px, 4vw, 68px)`
   - `width: 96px`
   - `height: 6px`
-- `.book-archive-section` — `src/index.css:15889`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.book-archive-section` - `src/index.css:15889`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `padding-top: 70px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.article-reader-paper`
+## KEEP - `.article-reader-paper`
 
 Reader measure is intentionally isolated.
 
-- `.article-reader-paper` — `src/index.css:8592`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-paper` - `src/index.css:8592`; viewport: all viewports; locale: RU+EN.
   - `min-width: 0`
-- `.article-reader-paper` — `src/index.css:17211`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-paper` - `src/index.css:17211`; viewport: all viewports; locale: RU+EN.
   - `min-width: 0`
   - `max-width: 100%`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.site-footer`
+## KEEP - `.site-footer`
 
 Footer is a terminal landmark; no Stage 5A redesign.
 
-- `.site-footer::before` — `src/index.css:14095`; viewport: all viewports; locale: RU+EN.
+- `.site-footer::before` - `src/index.css:14095`; viewport: all viewports; locale: RU+EN.
   - `top: 0`
   - `right: -5%`
   - `left: -5%`
   - `height: 92px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.

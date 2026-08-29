@@ -7,14 +7,14 @@ an evidence map, not a new product claim; the first SHA remains the historical
 Stage 5F baseline, while the second is the synchronized artifact source.
 
 The current cumulative interface-copy attestation records both source SHAs and
-pins `1,189` interface entries (`keysSha256`
-`79edc8b7923dc9eaf3a6859bc988a38edf2d3dcaa0d1bbd5841a259883323cc5`,
+pins `1,186` interface entries (`keysSha256`
+`60b2bb015ee8ad6f6f727a314ee7fe9c02438defb93faea8c550a12f3271f74f`,
 `pairsSha256`
-`1538ec0ee99fc7f4254af02b9765a4f683812aca8bfdaebfd524e2848d6a2f49`)
-plus `1,403` private catalogue entries (`keysSha256`
-`164e06ac283059a7949b7894d3d68968df5ac2df8b8d4e985adfdb77f619273c`,
+`c18d82c71177cb967e61721e4d3285be2241d1ae6a4747c0d1839017a52cad67`)
+plus `1,400` private catalogue entries (`keysSha256`
+`933287ece7fbbf41edcd5cae84bace76c8b4b80e47ba0789a4f83126cf1bb8b6`,
 `contentSha256`
-`99f8b1b753e3c7ea0248c054e53d62851b8611b51d43ffc6d36c5576de417b74`).
+`88285b0ec678388b207fd6a236ad97b4aadaf14f2acb36f8fe8ef3ce89218b57`).
 
 ## Repository continuity
 

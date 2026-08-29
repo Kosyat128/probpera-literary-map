@@ -17,6 +17,7 @@ import { collectPostgrestPages } from "./lib/postgrest-pagination.mjs";
 import { dzenCoverForArticle } from "./lib/article-publication-images.mjs";
 import { extractSiteCopyFromHomepageBlocks } from "./site-copy-overrides.mjs";
 import { commitAtomicFileSet } from "./lib/atomic-file-set.mjs";
+import { normalizeShortHyphensDeep } from "./lib/short-hyphens.mjs";
 import {
   articleIdSet,
   assertCandidateCanReplaceBaseline,
@@ -1020,6 +1021,21 @@ try {
 }
 
 const generatedAt = new Date().toISOString();
+for (const exportedContent of [
+  articleDocuments,
+  articles,
+  homepageBlocks,
+  siteCopy,
+  banners,
+  navigationMenus,
+  pages,
+  countryProfileOverrides,
+  writerProfileOverrides,
+  literaryWorksByLegacyId,
+  bookEditionsByWorkId,
+]) {
+  normalizeShortHyphensDeep(exportedContent);
+}
 const siteContentBase = {
   generatedAt,
   homepageBlocks,

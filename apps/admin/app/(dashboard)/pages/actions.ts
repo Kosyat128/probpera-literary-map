@@ -19,6 +19,10 @@ import {
   pageEditorHref,
 } from "@/lib/page-catalog-query";
 import { requestPublicBuild } from "@/lib/publication";
+import {
+  normalizeShortHyphensDeep,
+  normalizeShortHyphensFormData,
+} from "@/lib/short-hyphens";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -119,6 +123,7 @@ async function auditPage(
 }
 
 export async function createPageAction(formData: FormData) {
+  normalizeShortHyphensFormData(formData);
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const catalog = pageCatalogFromForm(formData);
@@ -181,6 +186,7 @@ export async function createPageAction(formData: FormData) {
 }
 
 export async function savePageAction(formData: FormData) {
+  normalizeShortHyphensFormData(formData);
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const catalog = pageCatalogFromForm(formData);
@@ -234,7 +240,7 @@ export async function savePageAction(formData: FormData) {
   if (!supabase) redirect(editorTarget(id, { error: "База данных не подключена" }));
   const { data: updated, error } = await supabase
     .from("pages")
-    .update({
+    .update(normalizeShortHyphensDeep({
       title: parsed.data.title,
       slug: parsed.data.slug,
       excerpt: parsed.data.excerpt,
@@ -248,7 +254,7 @@ export async function savePageAction(formData: FormData) {
         `${adminEnv.publicSiteUrl}/stranitsy/${parsed.data.slug}/`,
       allow_indexing: parsed.data.allowIndexing,
       updated_by: session.user.id,
-    })
+    }))
     .eq("id", id)
     .eq("updated_at", parsed.data.expectedUpdatedAt)
     .select("id")

@@ -251,9 +251,9 @@ describe("Stage 5A governance baseline", () => {
       )
     ).toEqual({
       topline: "58b2e1ed1ca35df0476f111f06f38561567b223b5f8c3b8a53e5362affbd4751",
-      desktopHeader: "cc60acde8dec73134c1d04897090c66cb795b5fe8b3129bc6d37e16490a66dc6",
+      desktopHeader: "7eaae1b0ffd97a67ab8d6d457077340d95646f839e636a93d0444fd9cd18dbe0",
       mobileHeader: "ccd21a739db9e39102af399f4edbe68f1c424738ab3e600de498f798c4ba01d2",
-      hero: "2da49ef26c856737aa8e4bcecef67652609bd220adc797ee64010a7cf416625b",
+      hero: "939b3cb12c6e07dd1590e3481da52fb80fa18a753de250795b1ab116f190ad1f",
     });
     expect({
       headerArticlesMenu: canonicalFileHash(headerArticlesMenu),
@@ -276,7 +276,7 @@ describe("Stage 5A governance baseline", () => {
         "brand/magazine-hero-wide.avif?v=20260813-literary-nature-final",
         "brand/magazine-hero-mobile.avif?v=20260813-literary-nature-portrait",
         "(max-width: 680px)",
-        "Литература – это целый мир!",
+        "Литература - это целый мир!",
         "Открыть глобус",
       ])
     );

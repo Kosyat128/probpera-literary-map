@@ -1,4 +1,4 @@
-# Stage 5F — responsive, loading, performance and accessibility
+# Stage 5F - responsive, loading, performance and accessibility
 
 ## Checkpoint
 
@@ -43,7 +43,7 @@ Fresh production build: PASS (`1082` modules).
 - `git diff --check`: PASS.
 - Production build: PASS.
 - Performance audit: PASS.
-- Desktop browser smoke: homepage/no horizontal break, shared Global Search, lazy Globe/WebGL — `3 / 3`, PASS.
+- Desktop browser smoke: homepage/no horizontal break, shared Global Search, lazy Globe/WebGL - `3 / 3`, PASS.
 
 The full RU/EN, 360/768/1440/1920, zoom, reduced-motion, Shelf/Catalog/collections/inspection and owner-lock matrix remains the dedicated Stage 5G certification block, not an unmeasured claim in this checkpoint.
 

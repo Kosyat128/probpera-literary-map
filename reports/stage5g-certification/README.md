@@ -1,4 +1,4 @@
-# Stage 5G — final local certification
+# Stage 5G - final local certification
 
 - Tested product commit: `00043d57ad43208e5cff9e9da13345d308dd52d0`
 - Main synchronization commit: `c1939a632bc4c3d36649e7c4b2076fcc0711d2c4`
@@ -6,7 +6,7 @@
 - Environment: Windows, bundled Node.js runtime, Playwright Chrome
 - Certification date: 2026-08-28 (Europe/Moscow)
 
-The tested commit is a linear continuation of the completed Stage 5A–5F work.
+The tested commit is a linear continuation of the completed Stage 5A-5F work.
 The Bookshelf implementation was not restarted or replaced. The final block
 closes cumulative interface-language coverage, checkout-portable security and
 database source contracts, current owner locks, root-domain performance
@@ -42,11 +42,11 @@ changed surface was limited to the eight diagnosed expectations/timeouts.
   expectations were then corrected and their focused owner/governance suites
   passed.
 - Admin Next.js production build: **PASS**.
-- Root-domain production build: **PASS** — `162` static article pages and
+- Root-domain production build: **PASS** - `162` static article pages and
   `2,271` legacy redirects.
-- Domain audit: **PASS** — `12,524 / 12,524` checks.
-- SEO audit: **PASS** — `5,317 / 5,317` checks.
-- CMS publication metadata: **PASS** — `162` ready, `0` mismatches.
+- Domain audit: **PASS** - `12,524 / 12,524` checks.
+- SEO audit: **PASS** - `5,317 / 5,317` checks.
+- CMS publication metadata: **PASS** - `162` ready, `0` mismatches.
 - Content, editorial, media, country, biography, identity, Nobel, book-cover
   and Globe deterministic audits: **PASS**.
 
@@ -67,16 +67,16 @@ data and full search data remain outside the initial graph and load on demand.
 
 ## Final cumulative interface attestation
 
-- Interface registry: `1,189` entries.
+- Interface registry: `1,186` entries.
 - Interface key SHA-256:
-  `79edc8b7923dc9eaf3a6859bc988a38edf2d3dcaa0d1bbd5841a259883323cc5`.
+  `60b2bb015ee8ad6f6f727a314ee7fe9c02438defb93faea8c550a12f3271f74f`.
 - Interface pair SHA-256:
-  `1538ec0ee99fc7f4254af02b9765a4f683812aca8bfdaebfd524e2848d6a2f49`.
-- Private interface catalogue: `1,403` entries.
+  `c18d82c71177cb967e61721e4d3285be2241d1ae6a4747c0d1839017a52cad67`.
+- Private interface catalogue: `1,400` entries.
 - Catalogue key SHA-256:
-  `164e06ac283059a7949b7894d3d68968df5ac2df8b8d4e985adfdb77f619273c`.
+  `933287ece7fbbf41edcd5cae84bace76c8b4b80e47ba0789a4f83126cf1bb8b6`.
 - Catalogue content SHA-256:
-  `99f8b1b753e3c7ea0248c054e53d62851b8611b51d43ffc6d36c5576de417b74`.
+  `88285b0ec678388b207fd6a236ad97b4aadaf14f2acb36f8fe8ef3ce89218b57`.
 
 ## Locked content attestations
 

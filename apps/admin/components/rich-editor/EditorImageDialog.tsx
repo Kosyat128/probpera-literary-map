@@ -118,7 +118,7 @@ export default function EditorImageDialog({
             value={alt}
             maxLength={500}
             onChange={(event) => setAlt(event.target.value)}
-            placeholder="Что изображено — для доступности и поиска"
+            placeholder="Что изображено - для доступности и поиска"
           />
         </label>
         <label className="field">

@@ -20,6 +20,10 @@ import {
 } from "@/lib/book-archive-scene-settings";
 import { bookArchiveBackgroundMediaIssue } from "@/lib/book-archive-media-policy";
 import { requestPublicBuild } from "@/lib/publication";
+import {
+  normalizeShortHyphens,
+  normalizeShortHyphensDeep,
+} from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 const blockTypes = new Set([
@@ -60,7 +64,9 @@ const coreSectionOrder = Object.keys(coreSectionTypes);
 const SITE_COPY_SYSTEM_KEY = "site-copy-overrides";
 
 function text(formData: FormData, key: string, maxLength: number) {
-  return String(formData.get(key) || "").trim().slice(0, maxLength);
+  return normalizeShortHyphens(
+    String(formData.get(key) || "").trim().slice(0, maxLength)
+  );
 }
 
 function objectValue(value: unknown): Record<string, unknown> {
@@ -159,7 +165,7 @@ export async function createHomepageBlockAction(formData: FormData) {
     .insert({
       block_type: blockType,
       title: text(formData, "title", 240),
-      settings: settingsFromForm(formData),
+      settings: normalizeShortHyphensDeep(settingsFromForm(formData)),
       display_order: lastDisplayOrder + 10,
       background_style: backgroundStyle,
       background_media_id: optionalUuid(formData, "background_media_id"),
@@ -223,7 +229,9 @@ export async function updateHomepageBlockAction(formData: FormData) {
     .from("homepage_blocks")
     .update({
       title: text(formData, "title", 240),
-      settings: mergedSettingsFromForm(existingSettings, formData),
+      settings: normalizeShortHyphensDeep(
+        mergedSettingsFromForm(existingSettings, formData)
+      ),
       background_style: backgroundStyle,
       background_media_id: optionalUuid(formData, "background_media_id"),
       updated_by: session.user.id,
@@ -454,10 +462,10 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
   const payload = {
     block_type: blockType,
     title: text(formData, "title", 240),
-    settings: {
+    settings: normalizeShortHyphensDeep({
       ...nextSettings,
       coreSectionKey,
-    },
+    }),
     display_order: (coreSectionOrder.indexOf(coreSectionKey) + 1) * 10,
     is_enabled: true,
     background_style: backgroundStyle,

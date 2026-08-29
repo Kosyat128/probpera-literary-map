@@ -53,12 +53,9 @@ const englishInterfaceText: Record<string, string> = {
   "Журнал о литературе и искусстве слова":
     "A journal about literature and the art of language",
   "Литература -": "Literature is",
-  "Литература –": "Literature is",
   "это целый мир!": "a world of its own!",
   "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве.":
     "Essays, biographies, rare books and an interactive literary encyclopedia of the world - in one editorial space.",
-  "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран — в одном редакционном пространстве.":
-    "Essays, biographies, rare books and an interactive literary encyclopedia of the world — in one editorial space.",
   "Открыть глобус": "Explore the globe",
   "Открыть архив": "Open archive",
   "Развернуть архив полностью": "Expand archive fully",
@@ -679,7 +676,6 @@ const englishInterfaceText: Record<string, string> = {
   Все: "All",
   "Проба Пера": "Proba Pera",
   "Проба Пера - главная": "Proba Pera - home",
-  "Проба Пера — главная": "Proba Pera — home",
   иллюстраций: "illustrations",
   "Продолжено с места остановки": "Resumed where you left off",
   "статьи прочитано": "of article read",
@@ -1169,7 +1165,7 @@ const englishInterfaceText: Record<string, string> = {
   "Недавно проверенные": "Recently reviewed",
   "Недоступно: проверенные профили аудитории отсутствуют": "Unavailable: no verified audience profiles",
   "Открыть книгу": "Open book",
-  "Нажмите на корешок — книга выйдет вперёд, а справа откроются описание и сведения.":
+  "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.":
     "Select a spine to bring the book forward and open its description and details.",
   "Перелистнуть страницу": "Turn page",
   "Открыть полку автора": "Open writer shelf",

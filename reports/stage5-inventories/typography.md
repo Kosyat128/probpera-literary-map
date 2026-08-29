@@ -25,293 +25,293 @@ Runtime computed values are **NOT MEASURED** unless an explicit measured observa
 | `.article-reader-lead h1` | **KEEP** | 6 | all viewports; @media (max-width: 800px) | RU+EN | NOT MEASURED | Reader hierarchy is a separate, already scoped surface. |
 | `.article-reader-content` | **KEEP** | 29 | all viewports; @media (max-width: 560px); @media (forced-colors: active) | RU+EN | NOT MEASURED | Author text and reader measure must not be mutated. |
 
-## KEEP — `body`
+## KEEP - `body`
 
 Stable public-app base; change only through scoped roles.
 
-- `body` — `src/index.css:66`; viewport: all viewports; locale: RU+EN.
+- `body` - `src/index.css:66`; viewport: all viewports; locale: RU+EN.
   - `font: inherit`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.brand`
+## KEEP - `.brand`
 
 Header owner lock (HEADER-001/002).
 
-- `.brand` — `src/index.css:165`; viewport: all viewports; locale: RU+EN.
+- `.brand` - `src/index.css:165`; viewport: all viewports; locale: RU+EN.
   - `text-decoration: none`
-- `.brand strong` — `src/index.css:188`; viewport: all viewports; locale: RU+EN.
+- `.brand strong` - `src/index.css:188`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: 23px`
   - `font-weight: 500`
   - `letter-spacing: 0.02em`
-- `.brand small` — `src/index.css:195`; viewport: all viewports; locale: RU+EN.
+- `.brand small` - `src/index.css:195`; viewport: all viewports; locale: RU+EN.
   - `font-size: 8px`
   - `font-weight: 800`
   - `letter-spacing: 0.18em`
   - `text-transform: uppercase`
-- `.brand strong` — `src/index.css:15696`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.brand strong` - `src/index.css:15696`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `font-size: 18px`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.site-header > nav > a`
+## KEEP - `.site-header > nav > a`
 
 Header navigation owner lock.
 
-- `.site-header > nav > a` — `src/index.css:320`; viewport: all viewports; locale: RU+EN.
+- `.site-header > nav > a` - `src/index.css:320`; viewport: all viewports; locale: RU+EN.
   - `font-size: 11px`
   - `font-weight: 800`
   - `letter-spacing: 0.07em`
   - `text-decoration: none`
   - `text-transform: uppercase`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.hero-editorial h1`
+## KEEP - `.hero-editorial h1`
 
 Hero typography owner lock (HERO-001/002).
 
-- `.hero-editorial h1` — `src/index.css:1524`; viewport: all viewports; locale: RU+EN.
+- `.hero-editorial h1` - `src/index.css:1524`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: clamp(53px, 6vw, 94px)`
   - `font-weight: 400`
   - `line-height: 1`
   - `letter-spacing: -0.025em`
-- `.hero-editorial h1 .hero-title-accent-line:first-child` — `src/index.css:1542`; viewport: all viewports; locale: RU+EN.
+- `.hero-editorial h1 .hero-title-accent-line:first-child` - `src/index.css:1542`; viewport: all viewports; locale: RU+EN.
   - `font-size: 0.92em`
   - `white-space: nowrap`
-- `.hero-editorial h1 em` — `src/index.css:1547`; viewport: all viewports; locale: RU+EN.
+- `.hero-editorial h1 em` - `src/index.css:1547`; viewport: all viewports; locale: RU+EN.
   - `font-style: normal`
   - `font-weight: 400`
-- `.hero-editorial h1` — `src/index.css:1695`; viewport: @media (min-width: 981px) and (max-width: 1399px); locale: RU+EN.
+- `.hero-editorial h1` - `src/index.css:1695`; viewport: @media (min-width: 981px) and (max-width: 1399px); locale: RU+EN.
   - `font-size: clamp(53px, 5.6vw, 78px)`
-- `.hero-editorial h1` — `src/index.css:15752`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.hero-editorial h1` - `src/index.css:15752`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `font-size: clamp(36px, 10vw, 48px)`
   - `letter-spacing: -0.02em`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.section-kicker`
+## TUNE - `.section-kicker`
 
 Normalize the shared kicker role without global element overrides.
 
-- `.section-kicker` — `src/index.css:1477`; viewport: all viewports; locale: RU+EN.
+- `.section-kicker` - `src/index.css:1477`; viewport: all viewports; locale: RU+EN.
   - `font-size: 10px`
   - `font-weight: 900`
   - `letter-spacing: 0.18em`
   - `text-transform: uppercase`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.section-heading h2`
+## TUNE - `.section-heading h2`
 
 Normalize major section title role in Stage 5B.
 
-- `.section-heading h2` — `src/index.css:1767`; viewport: all viewports; locale: RU+EN.
+- `.section-heading h2` - `src/index.css:1767`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: clamp(42px, 5vw, 70px)`
   - `font-weight: 400`
   - `line-height: 0.96`
   - `letter-spacing: -0.045em`
-- `.section-heading h2` — `src/index.css:6104`; viewport: all viewports; locale: RU+EN.
+- `.section-heading h2` - `src/index.css:6104`; viewport: all viewports; locale: RU+EN.
   - `font-size: clamp(40px, 4.6vw, 65px)`
-- `.section-heading h2` — `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
+- `.section-heading h2` - `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
   - `text-wrap: balance`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.book-of-day h3`
+## TUNE - `.book-of-day h3`
 
 Book Month title is a scoped card-title role.
 
-- `.book-of-day h3` — `src/index.css:5060`; viewport: all viewports; locale: RU+EN.
+- `.book-of-day h3` - `src/index.css:5060`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: clamp(36px, 4vw, 56px)`
   - `font-weight: 400`
   - `line-height: 0.98`
   - `letter-spacing: -0.04em`
-- `.book-of-day h3` — `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
+- `.book-of-day h3` - `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
   - `text-wrap: balance`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.article-copy h3`
+## TUNE - `.article-copy h3`
 
 Editorial card title currently has family-specific sizing.
 
-- `.article-copy h3` — `src/index.css:6250`; viewport: all viewports; locale: RU+EN.
+- `.article-copy h3` - `src/index.css:6250`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: 25px`
   - `font-weight: 400`
   - `line-height: 1.08`
-- `.article-copy h3` — `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
+- `.article-copy h3` - `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
   - `text-wrap: balance`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.community-copy h2`
+## TUNE - `.community-copy h2`
 
 Bring Community title into the major-title scale.
 
-- `.community-copy h2` — `src/index.css:6781`; viewport: all viewports; locale: RU+EN.
+- `.community-copy h2` - `src/index.css:6781`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: clamp(48px, 5vw, 78px)`
   - `font-weight: 400`
   - `line-height: 0.98`
-- `.community-copy h2` — `src/index.css:16022`; viewport: @media (max-width: 680px); locale: RU+EN.
+- `.community-copy h2` - `src/index.css:16022`; viewport: @media (max-width: 680px); locale: RU+EN.
   - `font-size: 45px`
-- `.community-copy h2` — `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
+- `.community-copy h2` - `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
   - `text-wrap: balance`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.author-showcase strong`
+## TUNE - `.author-showcase strong`
 
 Author-card title rhythm belongs to Stage 5B/5C.
 
-- `.author-showcase strong` — `src/index.css:7076`; viewport: all viewports; locale: RU+EN.
+- `.author-showcase strong` - `src/index.css:7076`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: clamp(23px, 2.4vw, 35px)`
   - `font-weight: 400`
   - `line-height: 0.98`
-- `.author-showcase strong` — `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
+- `.author-showcase strong` - `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
   - `text-wrap: balance`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.sections-directory h3`
+## TUNE - `.sections-directory h3`
 
 Unify directory card-title baseline in Stage 5B/5C.
 
-- `.sections-directory h3` — `src/index.css:7234`; viewport: all viewports; locale: RU+EN.
+- `.sections-directory h3` - `src/index.css:7234`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: 29px`
   - `font-weight: 400`
   - `line-height: 1.04`
-- `.sections-directory h3` — `src/index.css:11381`; viewport: all viewports; locale: RU+EN.
+- `.sections-directory h3` - `src/index.css:11381`; viewport: all viewports; locale: RU+EN.
   - `font-size: 31px`
-- `.sections-directory h3` — `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
+- `.sections-directory h3` - `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
   - `text-wrap: balance`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.calendar-heading h3`
+## TUNE - `.calendar-heading h3`
 
 Bring Calendar title into the normal section scale.
 
-- `.calendar-heading h3` — `src/index.css:7534`; viewport: all viewports; locale: RU+EN.
+- `.calendar-heading h3` - `src/index.css:7534`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: clamp(36px, 4vw, 55px)`
   - `font-weight: 400`
   - `line-height: 1`
   - `letter-spacing: -0.04em`
-- `.calendar-heading h3` — `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
+- `.calendar-heading h3` - `src/index.css:16525`; viewport: all viewports; locale: RU+EN.
   - `text-wrap: balance`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.article-reader-lead h1`
+## KEEP - `.article-reader-lead h1`
 
 Reader hierarchy is a separate, already scoped surface.
 
-- `.article-reader-lead h1` — `src/index.css:8640`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-lead h1` - `src/index.css:8640`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: clamp(44px, 5.5vw, 82px)`
   - `font-weight: 500`
   - `line-height: 0.98`
   - `letter-spacing: -0.035em`
-- `.article-reader-lead h1.is-medium-title` — `src/index.css:8980`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-lead h1.is-medium-title` - `src/index.css:8980`; viewport: all viewports; locale: RU+EN.
   - `font-size: clamp(40px, 4.6vw, 68px)`
   - `line-height: 1.01`
-- `.article-reader-lead h1.is-long-title` — `src/index.css:8985`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-lead h1.is-long-title` - `src/index.css:8985`; viewport: all viewports; locale: RU+EN.
   - `font-size: clamp(35px, 4vw, 54px)`
   - `line-height: 1.04`
   - `letter-spacing: -0.025em`
-- `.article-reader-lead h1` — `src/index.css:10458`; viewport: @media (max-width: 800px); locale: RU+EN.
+- `.article-reader-lead h1` - `src/index.css:10458`; viewport: @media (max-width: 800px); locale: RU+EN.
   - `font-size: clamp(38px, 11vw, 64px)`
-- `.article-reader-lead h1.is-medium-title` — `src/index.css:10462`; viewport: @media (max-width: 800px); locale: RU+EN.
+- `.article-reader-lead h1.is-medium-title` - `src/index.css:10462`; viewport: @media (max-width: 800px); locale: RU+EN.
   - `font-size: clamp(34px, 9.5vw, 54px)`
-- `.article-reader-lead h1.is-long-title` — `src/index.css:10466`; viewport: @media (max-width: 800px); locale: RU+EN.
+- `.article-reader-lead h1.is-long-title` - `src/index.css:10466`; viewport: @media (max-width: 800px); locale: RU+EN.
   - `font-size: clamp(30px, 8.2vw, 46px)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.article-reader-content`
+## KEEP - `.article-reader-content`
 
 Author text and reader measure must not be mutated.
 
-- `.article-reader-content` — `src/index.css:8969`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content` - `src/index.css:8969`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: calc(19px * var(--reader-scale, 1))`
   - `line-height: 1.82`
   - `text-wrap: pretty`
-- `.article-reader-content > p:first-of-type:not(.article-leading-label)::first-letter` — `src/index.css:9016`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content > p:first-of-type:not(.article-leading-label)::first-letter` - `src/index.css:9016`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: 3.6em`
   - `line-height: 0.78`
-- `.article-reader-content > div:first-child > p:first-of-type:not(.article-leading-label)::first-letter` — `src/index.css:9016`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content > div:first-child > p:first-of-type:not(.article-leading-label)::first-letter` - `src/index.css:9016`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: 3.6em`
   - `line-height: 0.78`
-- `.article-reader-content .article-leading-label > strong:first-child` — `src/index.css:9026`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content .article-leading-label > strong:first-child` - `src/index.css:9026`; viewport: all viewports; locale: RU+EN.
   - `font-size: calc(27px * var(--reader-scale, 1))`
   - `font-weight: 600`
   - `line-height: 1.12`
-- `.article-reader-content h2` — `src/index.css:9037`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content h2` - `src/index.css:9037`; viewport: all viewports; locale: RU+EN.
   - `font-weight: 500`
   - `line-height: 1.08`
   - `text-wrap: balance`
-- `.article-reader-content h3` — `src/index.css:9037`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content h3` - `src/index.css:9037`; viewport: all viewports; locale: RU+EN.
   - `font-weight: 500`
   - `line-height: 1.08`
   - `text-wrap: balance`
-- `.article-reader-content h4` — `src/index.css:9037`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content h4` - `src/index.css:9037`; viewport: all viewports; locale: RU+EN.
   - `font-weight: 500`
   - `line-height: 1.08`
   - `text-wrap: balance`
-- `.article-reader-content h2` — `src/index.css:9047`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content h2` - `src/index.css:9047`; viewport: all viewports; locale: RU+EN.
   - `font-size: calc(39px * var(--reader-scale, 1))`
-- `.article-reader-content h3` — `src/index.css:9054`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content h3` - `src/index.css:9054`; viewport: all viewports; locale: RU+EN.
   - `font-size: calc(29px * var(--reader-scale, 1))`
-- `.article-reader-content figcaption` — `src/index.css:9096`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content figcaption` - `src/index.css:9096`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--sans)`
   - `font-size: 11px`
   - `line-height: 1.5`
   - `text-align: center`
-- `.article-reader-content li::marker` — `src/index.css:9157`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content li::marker` - `src/index.css:9157`; viewport: all viewports; locale: RU+EN.
   - `font-weight: 700`
-- `.article-reader-content a` — `src/index.css:9167`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content a` - `src/index.css:9167`; viewport: all viewports; locale: RU+EN.
   - `text-decoration: underline`
-- `.article-reader-content table` — `src/index.css:9186`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content table` - `src/index.css:9186`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--sans)`
   - `font-size: calc(13px * var(--reader-scale, 1))`
   - `line-height: 1.55`
-- `.article-reader-content th` — `src/index.css:9197`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content th` - `src/index.css:9197`; viewport: all viewports; locale: RU+EN.
   - `text-align: left`
-- `.article-reader-content td` — `src/index.css:9197`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content td` - `src/index.css:9197`; viewport: all viewports; locale: RU+EN.
   - `text-align: left`
-- `.article-reader-content pre` — `src/index.css:9210`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content pre` - `src/index.css:9210`; viewport: all viewports; locale: RU+EN.
   - `font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", monospace`
-- `.article-reader-content code` — `src/index.css:9210`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content code` - `src/index.css:9210`; viewport: all viewports; locale: RU+EN.
   - `font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", monospace`
-- `.article-reader-content pre` — `src/index.css:9215`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content pre` - `src/index.css:9215`; viewport: all viewports; locale: RU+EN.
   - `font-size: calc(13px * var(--reader-scale, 1))`
   - `line-height: 1.65`
-- `.article-reader-content blockquote` — `src/index.css:9226`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content blockquote` - `src/index.css:9226`; viewport: all viewports; locale: RU+EN.
   - `font-size: calc(21px * var(--reader-scale, 1))`
   - `line-height: 1.58`
-- `.article-reader-content blockquote::before` — `src/index.css:9238`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content blockquote::before` - `src/index.css:9238`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--serif)`
   - `font-size: 46px`
   - `line-height: 1`
-- `.article-reader-content .article-design-block.is-metrics p` — `src/index.css:9417`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content .article-design-block.is-metrics p` - `src/index.css:9417`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--sans)`
   - `font-weight: 800`
-- `.article-reader-content .article-design-block.is-ornament` — `src/index.css:9429`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content .article-design-block.is-ornament` - `src/index.css:9429`; viewport: all viewports; locale: RU+EN.
   - `text-align: center`
-- `.article-reader-content .article-slider-arrow` — `src/index.css:9529`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content .article-slider-arrow` - `src/index.css:9529`; viewport: all viewports; locale: RU+EN.
   - `font-family: var(--sans)`
   - `font-size: 20px`
-- `.article-reader-content .article-media-split > div` — `src/index.css:9793`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content .article-media-split > div` - `src/index.css:9793`; viewport: all viewports; locale: RU+EN.
   - `font-size: calc(16px * var(--reader-scale, 1))`
   - `line-height: 1.72`
-- `.article-reader-content` — `src/index.css:10594`; viewport: @media (max-width: 560px); locale: RU+EN.
+- `.article-reader-content` - `src/index.css:10594`; viewport: @media (max-width: 560px); locale: RU+EN.
   - `font-size: calc(17px * var(--reader-scale, 1))`
   - `line-height: 1.75`
-- `.article-reader-content h2` — `src/index.css:10599`; viewport: @media (max-width: 560px); locale: RU+EN.
+- `.article-reader-content h2` - `src/index.css:10599`; viewport: @media (max-width: 560px); locale: RU+EN.
   - `font-size: calc(32px * var(--reader-scale, 1))`
-- `.article-reader-content blockquote` — `src/index.css:10623`; viewport: @media (max-width: 560px); locale: RU+EN.
+- `.article-reader-content blockquote` - `src/index.css:10623`; viewport: @media (max-width: 560px); locale: RU+EN.
   - `font-size: calc(18px * var(--reader-scale, 1))`
-- `.article-reader-content .article-text-tone` — `src/index.css:17797`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-content .article-text-tone` - `src/index.css:17797`; viewport: all viewports; locale: RU+EN.
   - `font-weight: 600`
-- `.article-reader-content .article-text-tone` — `src/index.css:18793`; viewport: @media (forced-colors: active); locale: RU+EN.
+- `.article-reader-content .article-text-tone` - `src/index.css:18793`; viewport: @media (forced-colors: active); locale: RU+EN.
   - `text-decoration: underline`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.

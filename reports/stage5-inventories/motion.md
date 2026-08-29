@@ -22,190 +22,190 @@ Runtime computed values are **NOT MEASURED** unless an explicit measured observa
 | `.article-reader-loading span` | **KEEP** | 1 | all viewports | RU+EN | NOT MEASURED | Loading indicator is functional, not idle decoration. |
 | `.ui-action__spinner` | **KEEP** | 2 | all viewports; @media (prefers-reduced-motion: reduce) | RU+EN | NOT MEASURED | Functional loading state has an explicit reduced-motion override. |
 
-## KEEP — `.site-header`
+## KEEP - `.site-header`
 
 Header owner lock.
 
-- `.site-header > nav > a::after` — `src/index.css:711`; viewport: all viewports; locale: RU+EN.
+- `.site-header > nav > a::after` - `src/index.css:711`; viewport: all viewports; locale: RU+EN.
   - `transform: scaleX(0)`
   - `transform-origin: right`
   - `transition: transform 180ms ease`
-- `.site-header > nav > button::after` — `src/index.css:711`; viewport: all viewports; locale: RU+EN.
+- `.site-header > nav > button::after` - `src/index.css:711`; viewport: all viewports; locale: RU+EN.
   - `transform: scaleX(0)`
   - `transform-origin: right`
   - `transition: transform 180ms ease`
-- `.site-header > nav > a:hover::after` — `src/index.css:734`; viewport: all viewports; locale: RU+EN.
+- `.site-header > nav > a:hover::after` - `src/index.css:734`; viewport: all viewports; locale: RU+EN.
   - `transform: scaleX(1)`
   - `transform-origin: left`
-- `.site-header > nav > button:hover::after` — `src/index.css:734`; viewport: all viewports; locale: RU+EN.
+- `.site-header > nav > button:hover::after` - `src/index.css:734`; viewport: all viewports; locale: RU+EN.
   - `transform: scaleX(1)`
   - `transform-origin: left`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.magazine-hero`
+## KEEP - `.magazine-hero`
 
 Hero owner lock.
 
-- `.magazine-hero.cms-core-editable .hero-cover img` — `src/index.css:16412`; viewport: all viewports; locale: RU+EN.
+- `.magazine-hero.cms-core-editable .hero-cover img` - `src/index.css:16412`; viewport: all viewports; locale: RU+EN.
   - `transform: scale(var(--cms-image-zoom, 1))`
   - `transform-origin: var(--cms-image-position, center top)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.atlas-experience-surface`
+## KEEP - `.atlas-experience-surface`
 
 Stage 4 transition architecture is locked.
 
-- `.atlas-experience-surface[data-atlas-view="immersive"] .atlas-heading` — `src/index.css:18138`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-view="immersive"] .atlas-heading` - `src/index.css:18138`; viewport: all viewports; locale: RU+EN.
   - `transform: translateY(-8px)`
   - `transition: opacity 160ms ease, transform 160ms ease, visibility 0s linear 160ms`
-- `.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-search-open="true"] .atlas-heading` — `src/index.css:18160`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-search-open="true"] .atlas-heading` - `src/index.css:18160`; viewport: all viewports; locale: RU+EN.
   - `transform: none`
   - `transition-delay: 0s`
-- `.atlas-experience-surface[data-atlas-view="immersive"] .atlas-toolbar` — `src/index.css:18168`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-view="immersive"] .atlas-toolbar` - `src/index.css:18168`; viewport: all viewports; locale: RU+EN.
   - `transform: translateY(-8px)`
   - `transition: opacity 160ms ease, transform 160ms ease, visibility 0s linear 160ms`
-- `.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-filters-open="true"] .atlas-toolbar` — `src/index.css:18192`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-filters-open="true"] .atlas-toolbar` - `src/index.css:18192`; viewport: all viewports; locale: RU+EN.
   - `transform: none`
   - `transition-delay: 0s`
-- `.atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch` — `src/index.css:18207`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch` - `src/index.css:18207`; viewport: all viewports; locale: RU+EN.
   - `transform: translateX(-50%)`
   - `transition: opacity 160ms ease, visibility 0s linear 0s`
-- `.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-search-open="true"] .globe-style-switch` — `src/index.css:18218`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-search-open="true"] .globe-style-switch` - `src/index.css:18218`; viewport: all viewports; locale: RU+EN.
   - `transition-delay: 0s, 160ms`
-- `.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-filters-open="true"] .globe-style-switch` — `src/index.css:18218`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-filters-open="true"] .globe-style-switch` - `src/index.css:18218`; viewport: all viewports; locale: RU+EN.
   - `transition-delay: 0s, 160ms`
-- `.atlas-experience-surface[data-atlas-transition="entering"][data-atlas-entry-source="url"]` — `src/index.css:18266`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-transition="entering"][data-atlas-entry-source="url"]` - `src/index.css:18266`; viewport: all viewports; locale: RU+EN.
   - `animation: atlas-direct-reveal 180ms ease-out both`
-- `.atlas-experience-surface[data-atlas-transition="exiting"][data-atlas-entry-source="url"]` — `src/index.css:18270`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-transition="exiting"][data-atlas-entry-source="url"]` - `src/index.css:18270`; viewport: all viewports; locale: RU+EN.
   - `animation: atlas-space-expand 180ms cubic-bezier(0.55, 0, 0.78, 0) reverse both`
-- `.atlas-experience-surface[data-atlas-transition="entering"][data-atlas-entry-source="hero"]` — `src/index.css:18274`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-transition="entering"][data-atlas-entry-source="hero"]` - `src/index.css:18274`; viewport: all viewports; locale: RU+EN.
   - `animation: atlas-hero-reveal 440ms cubic-bezier(0.22, 1, 0.36, 1) both`
-- `.atlas-experience-surface[data-atlas-transition="exiting"][data-atlas-entry-source="hero"]` — `src/index.css:18278`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-transition="exiting"][data-atlas-entry-source="hero"]` - `src/index.css:18278`; viewport: all viewports; locale: RU+EN.
   - `animation: atlas-space-expand 440ms cubic-bezier(0.55, 0, 0.78, 0) reverse both`
-- `.atlas-experience-surface[data-atlas-transition="entering"][data-atlas-entry-source="embedded"]` — `src/index.css:18282`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-transition="entering"][data-atlas-entry-source="embedded"]` - `src/index.css:18282`; viewport: all viewports; locale: RU+EN.
   - `animation: atlas-space-expand 440ms cubic-bezier(0.22, 1, 0.36, 1) both`
-- `.atlas-experience-surface[data-atlas-transition="exiting"][data-atlas-entry-source="embedded"]` — `src/index.css:18286`; viewport: all viewports; locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-transition="exiting"][data-atlas-entry-source="embedded"]` - `src/index.css:18286`; viewport: all viewports; locale: RU+EN.
   - `animation: atlas-space-expand 440ms cubic-bezier(0.55, 0, 0.78, 0) reverse both`
-- `.atlas-experience-surface .atlas-country-presentation` — `src/index.css:18335`; viewport: @media (max-width: 980px); locale: RU+EN.
+- `.atlas-experience-surface .atlas-country-presentation` - `src/index.css:18335`; viewport: @media (max-width: 980px); locale: RU+EN.
   - `transition: max-height 260ms cubic-bezier(0.22, 1, 0.36, 1)`
-- `.atlas-experience-surface .atlas-country-sheet-handle` — `src/index.css:18421`; viewport: @media (max-width: 980px); locale: RU+EN.
+- `.atlas-experience-surface .atlas-country-sheet-handle` - `src/index.css:18421`; viewport: @media (max-width: 980px); locale: RU+EN.
   - `transform: translateX(-50%)`
-- `.atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch` — `src/index.css:18506`; viewport: @media (max-width: 980px); locale: RU+EN.
+- `.atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch` - `src/index.css:18506`; viewport: @media (max-width: 980px); locale: RU+EN.
   - `transform: translateX(-50%)`
-- `.atlas-experience-surface` — `src/index.css:18592`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.atlas-experience-surface` - `src/index.css:18592`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `animation: none !important`
   - `transition: none !important`
   - `transform: none !important`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.literary-globe`
+## KEEP - `.literary-globe`
 
 Stage 4 Canvas interaction is locked.
 
-- `.literary-globe::before` — `src/index.css:2526`; viewport: all viewports; locale: RU+EN.
+- `.literary-globe::before` - `src/index.css:2526`; viewport: all viewports; locale: RU+EN.
   - `transform: translateX(-50%)`
-- `.literary-globe .globe-controls button` — `src/index.css:2600`; viewport: all viewports; locale: RU+EN.
+- `.literary-globe .globe-controls button` - `src/index.css:2600`; viewport: all viewports; locale: RU+EN.
   - `transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease`
-- `.literary-globe .globe-controls button:active` — `src/index.css:2631`; viewport: all viewports; locale: RU+EN.
+- `.literary-globe .globe-controls button:active` - `src/index.css:2631`; viewport: all viewports; locale: RU+EN.
   - `transform: translateY(1px)`
-- `.literary-globe .globe-controls button:disabled` — `src/index.css:2655`; viewport: all viewports; locale: RU+EN.
+- `.literary-globe .globe-controls button:disabled` - `src/index.css:2655`; viewport: all viewports; locale: RU+EN.
   - `transform: none`
-- `.literary-globe .globe-style-switch button` — `src/index.css:2727`; viewport: all viewports; locale: RU+EN.
+- `.literary-globe .globe-style-switch button` - `src/index.css:2727`; viewport: all viewports; locale: RU+EN.
   - `transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease`
-- `.literary-globe[data-globe-style="modern"] .globe-nobel-status` — `src/index.css:2977`; viewport: @media (max-width: 1024px); locale: RU+EN.
+- `.literary-globe[data-globe-style="modern"] .globe-nobel-status` - `src/index.css:2977`; viewport: @media (max-width: 1024px); locale: RU+EN.
   - `transform: scale(0.84)`
   - `transform-origin: top right`
-- `.literary-globe .globe-style-switch button` — `src/index.css:3023`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.literary-globe .globe-style-switch button` - `src/index.css:3023`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `transition: none`
-- `.literary-globe .globe-controls button` — `src/index.css:3023`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.literary-globe .globe-controls button` - `src/index.css:3023`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `transition: none`
-- `.literary-globe .globe-nobel-status` — `src/index.css:18363`; viewport: @media (max-width: 980px); locale: RU+EN.
+- `.literary-globe .globe-nobel-status` - `src/index.css:18363`; viewport: @media (max-width: 980px); locale: RU+EN.
   - `transform: scale(0.84)`
   - `transform-origin: top right`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.ui-action`
+## KEEP - `.ui-action`
 
 Shared micro-interaction contract uses motion tokens.
 
-- `.ui-action` — `src/index.css:18802`; viewport: all viewports; locale: RU+EN.
+- `.ui-action` - `src/index.css:18802`; viewport: all viewports; locale: RU+EN.
   - `transition: color var(--ui-transition-fast), background-color var(--ui-transition-fast), border-color var(--ui-transition-fast), box-shadow var(--ui-transition-fast), transform var(--ui-transition-fast)`
-- `.ui-action:disabled` — `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
+- `.ui-action:disabled` - `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
   - `transform: none`
-- `.ui-action[aria-disabled="true"]` — `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
+- `.ui-action[aria-disabled="true"]` - `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
   - `transform: none`
-- `.ui-action` — `src/index.css:18985`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.ui-action` - `src/index.css:18985`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `transition: none !important`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.ui-icon-button`
+## KEEP - `.ui-icon-button`
 
 Shared micro-interaction contract uses motion tokens.
 
-- `.ui-icon-button` — `src/index.css:18802`; viewport: all viewports; locale: RU+EN.
+- `.ui-icon-button` - `src/index.css:18802`; viewport: all viewports; locale: RU+EN.
   - `transition: color var(--ui-transition-fast), background-color var(--ui-transition-fast), border-color var(--ui-transition-fast), box-shadow var(--ui-transition-fast), transform var(--ui-transition-fast)`
-- `.ui-icon-button:disabled` — `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
+- `.ui-icon-button:disabled` - `src/index.css:18927`; viewport: all viewports; locale: RU+EN.
   - `transform: none`
-- `.ui-icon-button` — `src/index.css:18985`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.ui-icon-button` - `src/index.css:18985`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `transition: none !important`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.editorial-grid article`
+## TUNE - `.editorial-grid article`
 
 500 ms media hover exceeds the future standard UI tier.
 
-- `.editorial-grid article` — `src/index.css:6131`; viewport: all viewports; locale: RU+EN.
+- `.editorial-grid article` - `src/index.css:6131`; viewport: all viewports; locale: RU+EN.
   - `transition: border-color 180ms ease, transform 180ms ease`
-- `.editorial-grid article:hover` — `src/index.css:6148`; viewport: all viewports; locale: RU+EN.
+- `.editorial-grid article:hover` - `src/index.css:6148`; viewport: all viewports; locale: RU+EN.
   - `transform: translateY(-3px)`
-- `.editorial-grid article:hover .article-image img:not(.article-image-backdrop)` — `src/index.css:6217`; viewport: all viewports; locale: RU+EN.
+- `.editorial-grid article:hover .article-image img:not(.article-image-backdrop)` - `src/index.css:6217`; viewport: all viewports; locale: RU+EN.
   - `transform: scale(1.035)`
-- `.editorial-grid article:hover` — `src/index.css:17151`; viewport: @media (hover: none); locale: RU+EN.
+- `.editorial-grid article:hover` - `src/index.css:17151`; viewport: @media (hover: none); locale: RU+EN.
   - `transform: none`
-- `.editorial-grid article:hover` — `src/index.css:17180`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.editorial-grid article:hover` - `src/index.css:17180`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `transform: none !important`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.community-reading-notes button`
+## TUNE - `.community-reading-notes button`
 
 Review decorative hover motion with quiet-idle policy.
 
-- `.community-reading-notes button` — `src/index.css:6609`; viewport: all viewports; locale: RU+EN.
+- `.community-reading-notes button` - `src/index.css:6609`; viewport: all viewports; locale: RU+EN.
   - `transition: transform 180ms ease, border-color 180ms ease, background 180ms ease`
-- `.community-reading-notes button:hover` — `src/index.css:6659`; viewport: all viewports; locale: RU+EN.
+- `.community-reading-notes button:hover` - `src/index.css:6659`; viewport: all viewports; locale: RU+EN.
   - `transform: translateX(-5px)`
-- `.community-reading-notes button:hover` — `src/index.css:17151`; viewport: @media (hover: none); locale: RU+EN.
+- `.community-reading-notes button:hover` - `src/index.css:17151`; viewport: @media (hover: none); locale: RU+EN.
   - `transform: none`
-- `.community-reading-notes button:hover` — `src/index.css:17180`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.community-reading-notes button:hover` - `src/index.css:17180`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `transform: none !important`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## TUNE — `.article-reader-cover`
+## TUNE - `.article-reader-cover`
 
 Reader media motion is longer than standard UI motion.
 
-- `.article-reader-cover::before` — `src/index.css:8869`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-cover::before` - `src/index.css:8869`; viewport: all viewports; locale: RU+EN.
   - `transform: scale(1.08)`
-- `.article-reader-cover img` — `src/index.css:8878`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-cover img` - `src/index.css:8878`; viewport: all viewports; locale: RU+EN.
   - `transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1)`
-- `.article-reader-cover:hover img` — `src/index.css:8965`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-cover:hover img` - `src/index.css:8965`; viewport: all viewports; locale: RU+EN.
   - `transform: scale(1.015)`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.article-reader-loading span`
+## KEEP - `.article-reader-loading span`
 
 Loading indicator is functional, not idle decoration.
 
-- `.article-reader-loading span` — `src/index.css:9874`; viewport: all viewports; locale: RU+EN.
+- `.article-reader-loading span` - `src/index.css:9874`; viewport: all viewports; locale: RU+EN.
   - `animation: reader-star 1.8s ease-in-out infinite`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.
 
-## KEEP — `.ui-action__spinner`
+## KEEP - `.ui-action__spinner`
 
 Functional loading state has an explicit reduced-motion override.
 
-- `.ui-action__spinner` — `src/index.css:18963`; viewport: all viewports; locale: RU+EN.
+- `.ui-action__spinner` - `src/index.css:18963`; viewport: all viewports; locale: RU+EN.
   - `animation: ui-action-spin 700ms linear infinite`
-- `.ui-action__spinner` — `src/index.css:18990`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
+- `.ui-action__spinner` - `src/index.css:18990`; viewport: @media (prefers-reduced-motion: reduce); locale: RU+EN.
   - `animation: none !important`
-- Computed: **NOT MEASURED** — A browser computed-style capture from the exact production build was not available.
+- Computed: **NOT MEASURED** - A browser computed-style capture from the exact production build was not available.

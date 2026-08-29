@@ -42,7 +42,7 @@
     min-block-size: 44px;
   }
 
-  /* These compact reader controls otherwise retain their 26–29px min-width. */
+  /* These compact reader controls otherwise retain their 26-29px min-width. */
   .article-reader-bar .interface-language-control button,
   .article-reader-bar .display-mode-control.is-compact button {
     min-inline-size: 44px;

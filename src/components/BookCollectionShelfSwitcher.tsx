@@ -74,7 +74,7 @@ export function formatBookCollectionShelfOptionLabel(
   option: BookCollectionShelfOption,
   labels: BookCollectionShelfSwitcherLabels = defaultLabels
 ) {
-  return `${option.title} — ${describeBookCollectionShelfOption(option, labels)}`;
+  return `${option.title} - ${describeBookCollectionShelfOption(option, labels)}`;
 }
 
 export default function BookCollectionShelfSwitcher({

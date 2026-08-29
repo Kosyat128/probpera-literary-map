@@ -1,4 +1,4 @@
-# Stage 5D-4 — book inspection
+# Stage 5D-4 - book inspection
 
 Status: PASS (local production build, 2026-08-28).
 

@@ -14,6 +14,10 @@ import {
   premiumTranslationRuntimeMetadata,
 } from "@/lib/premium-translation-runtime";
 import { requestPublicBuild } from "@/lib/publication";
+import {
+  normalizeShortHyphens,
+  normalizeShortHyphensDeep,
+} from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { loadAllSiteCopyKeys } from "@/lib/site-copy-catalog";
 import {
@@ -72,9 +76,15 @@ function submittedRows(
   formData: FormData,
   allowedKeys: ReadonlySet<string>
 ) {
-  const keys = formData.getAll("copy_key").map(String);
-  const russianValues = formData.getAll("copy_ru").map(String);
-  const englishValues = formData.getAll("copy_en").map(String);
+  const keys = formData
+    .getAll("copy_key")
+    .map((value) => normalizeShortHyphens(String(value)));
+  const russianValues = formData
+    .getAll("copy_ru")
+    .map((value) => normalizeShortHyphens(String(value)));
+  const englishValues = formData
+    .getAll("copy_en")
+    .map((value) => normalizeShortHyphens(String(value)));
   if (
     keys.length !== russianValues.length ||
     keys.length !== englishValues.length ||
@@ -88,12 +98,18 @@ function submittedRows(
     ru: russianValues[index]?.trim() || "",
     en: englishValues[index]?.trim() || "",
   }));
-  const customSource = String(formData.get("custom_source") || "").trim();
+  const customSource = normalizeShortHyphens(
+    String(formData.get("custom_source") || "").trim()
+  );
   if (customSource) {
     rows.push({
       key: `interface.${customSource}`,
-      ru: String(formData.get("custom_ru") || "").trim(),
-      en: String(formData.get("custom_en") || "").trim(),
+      ru: normalizeShortHyphens(
+        String(formData.get("custom_ru") || "").trim()
+      ),
+      en: normalizeShortHyphens(
+        String(formData.get("custom_en") || "").trim()
+      ),
     });
   }
 
@@ -270,7 +286,7 @@ export async function saveSiteCopyAction(formData: FormData) {
       ...existingSettings,
       systemKey: SITE_COPY_SYSTEM_KEY,
       version: 1,
-      siteCopy: { ru, en },
+      siteCopy: normalizeShortHyphensDeep({ ru, en }),
       premiumTranslation: {
         ...existingPremium,
         siteCopyEn: translationResult.machine,

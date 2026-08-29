@@ -1,6 +1,6 @@
 # Stage 5D-1 Complete Shelf integration
 
-Status: **READY FOR REVIEW — paused before the next sublevel**.
+Status: **READY FOR REVIEW - paused before the next sublevel**.
 
 ## Final result
 

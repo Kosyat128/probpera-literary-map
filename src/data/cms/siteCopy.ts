@@ -1,4 +1,5 @@
 import { cmsSiteContent } from "./site.generated";
+import { normalizeShortHyphens } from "../../utils/shortHyphens";
 
 export type SiteCopyLocale = "ru" | "en";
 
@@ -20,9 +21,11 @@ export function resolveSiteCopy(
 ) {
   const localized = objectValue(objectValue(snapshot)[locale]);
   const candidate = localized[key];
-  return typeof candidate === "string" && candidate.trim()
-    ? candidate.trim()
-    : fallback;
+  return normalizeShortHyphens(
+    typeof candidate === "string" && candidate.trim()
+      ? candidate.trim()
+      : fallback
+  );
 }
 
 const siteCopySnapshot = (

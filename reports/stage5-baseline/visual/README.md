@@ -59,8 +59,8 @@ overflow, zero failed images, and all 11 expected anchors.
 | Reduced motion, forced colors, and 200%-equivalent reflow | MEASURED |
 | RU and EN public book details | MEASURED |
 | Error-state content | NOT MEASURED |
-| Disabled-state content | NOT MEASURED — no visible disabled control was available in the captured contexts |
-| Authenticated Reading Library content | NOT MEASURED — only the unauthenticated account gate is captured |
+| Disabled-state content | NOT MEASURED - no visible disabled control was available in the captured contexts |
+| Authenticated Reading Library content | NOT MEASURED - only the unauthenticated account gate is captured |
 
 No write-capable control (save, follow, rating, or account mutation) was
 activated. Read-only rating-summary RPC requests were deliberately blocked by

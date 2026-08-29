@@ -67,7 +67,7 @@ describe("BookCollectionShelfSwitcher", () => {
     expect(markup).toContain('<optgroup label="Моя библиотека">');
     expect(markup).toContain('<optgroup label="Мои полки">');
     expect(markup).toContain(
-      'value="manual:modern" selected="">Современная проза — 1 книга, 1 недоступно'
+      'value="manual:modern" selected="">Современная проза - 1 книга, 1 недоступно'
     );
   });
 
@@ -91,7 +91,7 @@ describe("BookCollectionShelfSwitcher", () => {
       "1 книга, 1 недоступно"
     );
     expect(formatBookCollectionShelfOptionLabel(selection.options[0])).toBe(
-      "Весь архив — 2 книги"
+      "Весь архив - 2 книги"
     );
 
     const smart: BookCollection = {

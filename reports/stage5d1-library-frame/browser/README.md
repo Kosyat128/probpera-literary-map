@@ -18,9 +18,9 @@ SHA-256 values are in `qa-results.json`.
 
 ## Screenshot SHA-256
 
-- `ru-desktop-1440x900-shelf.png` —
+- `ru-desktop-1440x900-shelf.png` -
   `42DEEB0ABE57D7EB9F8098D1D242FA92AD9853942C9C1063123E13BEB57CB118`
-- `ru-desktop-1440x900-selected.png` —
+- `ru-desktop-1440x900-selected.png` -
   `5BCBB7532091323107C2B5876E2215DB4C9323BE6918B35FF48455D867FD8EEF`
-- `ru-mobile-390x844-shelf.png` —
+- `ru-mobile-390x844-shelf.png` -
   `4A07B86835855B472CCB2258C78F8312C0EFCBDD2871DF9D73FDD41905759BB4`

@@ -11,6 +11,7 @@ import { articleTranslationSourceHash } from "@/lib/article-translations";
 import { translateArticleSourceToEnglish } from "@/lib/auto-translate-article";
 import { adminEnv } from "@/lib/env";
 import { redirect } from "@/lib/navigation";
+import { normalizeShortHyphensFormData } from "@/lib/short-hyphens";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -219,6 +220,7 @@ async function saveStandardRespectingEnglishOwnership(
 }
 
 export async function saveArticleAction(formData: FormData) {
+  normalizeShortHyphensFormData(formData);
   const intent = String(formData.get("intent") || "save");
   const autoTranslationEnabled =
     adminEnv.openAiAutoTranslateArticles && Boolean(adminEnv.openAiApiKey);
