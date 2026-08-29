@@ -867,9 +867,14 @@ for (const rawArticle of catalog) {
   const englishRouteUrl = englishPublicPath
     ? `${siteUrl}${englishPublicPath}/`
     : "";
-  const englishCanonicalUrl = englishRouteUrl
-    ? englishTranslation.canonicalUrl || englishRouteUrl
+  const englishCanonicalCandidate = englishRouteUrl
+    ? String(englishTranslation.canonicalUrl || englishRouteUrl).trim()
     : "";
+  const englishCanonicalUrl =
+    englishRouteUrl &&
+    normalizedPath(englishCanonicalCandidate) === normalizedPath(englishPublicPath)
+      ? englishRouteUrl
+      : englishCanonicalCandidate;
 
   if (englishRouteUrl && englishSlug !== slug) {
     $("head").append(
@@ -880,6 +885,9 @@ for (const rawArticle of catalog) {
     );
     $("head").append(
       `<link rel="alternate" hreflang="x-default" href="${canonicalUrl}">`
+    );
+    $("#root > main").append(
+      `<nav aria-label="Language"><a href="${xmlEscape(englishCanonicalUrl)}" lang="en">Read in English</a></nav>`
     );
   }
 
@@ -1022,38 +1030,116 @@ for (const rawArticle of catalog) {
       englishDocumentPage("head").append(
         `<script type="application/ld+json">${JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Article",
-          headline: englishTranslation.title,
-          description: englishDescription,
-          image: [englishImageUrl],
-          mainEntityOfPage: englishCanonicalUrl,
-          inLanguage: "en",
-          datePublished: englishTranslation.publishedAt || article.publishedAt || undefined,
-          dateModified:
-            englishTranslation.updatedAt ||
-            englishTranslation.translationPublishedAt ||
-            englishTranslation.approvedAt ||
-            englishTranslation.publishedAt ||
-            article.publishedAt ||
-            undefined,
-          wordCount: englishTranslation.wordCount,
-          articleSection: englishTranslation.sectionLabel,
-          isPartOf: {
-            "@type": "Periodical",
-            name: "PROBA PERA",
-            url: `${siteUrl}/`,
-          },
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": `${siteUrl}/#organization`,
+              name: "PROBA PERA",
+              url: `${siteUrl}/`,
+              logo: {
+                "@type": "ImageObject",
+                url: `${siteUrl}/brand/probpera-logo.png`,
+                width: 500,
+                height: 500,
+              },
+            },
+            {
+              "@type": "WebPage",
+              "@id": englishCanonicalUrl,
+              url: englishCanonicalUrl,
+              name: englishTranslation.title,
+              inLanguage: "en",
+              breadcrumb: { "@id": `${englishCanonicalUrl}#breadcrumb` },
+              primaryImageOfPage: {
+                "@id": `${englishCanonicalUrl}#primaryimage`,
+              },
+              mainEntity: { "@id": `${englishCanonicalUrl}#article` },
+            },
+            {
+              "@type": "Article",
+              "@id": `${englishCanonicalUrl}#article`,
+              headline: englishTranslation.title,
+              description: englishDescription,
+              image: [{ "@id": `${englishCanonicalUrl}#primaryimage` }],
+              mainEntityOfPage: { "@id": englishCanonicalUrl },
+              inLanguage: "en",
+              datePublished:
+                englishTranslation.publishedAt || article.publishedAt || undefined,
+              dateModified:
+                englishTranslation.updatedAt ||
+                englishTranslation.translationPublishedAt ||
+                englishTranslation.approvedAt ||
+                englishTranslation.publishedAt ||
+                article.publishedAt ||
+                undefined,
+              wordCount: englishTranslation.wordCount,
+              articleSection: englishTranslation.sectionLabel,
+              author: { "@id": `${siteUrl}/#organization` },
+              publisher: { "@id": `${siteUrl}/#organization` },
+            },
+            {
+              "@type": "ImageObject",
+              "@id": `${englishCanonicalUrl}#primaryimage`,
+              url: englishImageUrl,
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": `${englishCanonicalUrl}#breadcrumb`,
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "PROBA PERA",
+                  item: `${siteUrl}/`,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Journal",
+                  item: `${siteUrl}${articleSectionArchivePath()}/`,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: englishTranslation.sectionLabel || "Articles",
+                  item: sectionArchiveUrl,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 4,
+                  name: englishTranslation.title,
+                  item: englishCanonicalUrl,
+                },
+              ],
+            },
+          ],
         }).replaceAll("<", "\\u003c")}</script>`
       );
       englishDocumentPage("#root").html(`
         <main class="static-article-fallback">
-          <a href="${siteBasePath || ""}/#journal">← PROBA PERA journal</a>
+          <nav aria-label="Breadcrumbs">
+            <a href="${siteBasePath || ""}/">PROBA PERA</a> ·
+            <a href="${siteBasePath || ""}/stati/">Journal</a> ·
+            <a href="${siteBasePath || ""}${articleSectionArchivePath(article.sectionId)}/">${xmlEscape(englishTranslation.sectionLabel || "Articles")}</a> ·
+            <a href="${xmlEscape(canonicalUrl)}" lang="ru">Russian edition</a>
+          </nav>
           <article>
             <span>${xmlEscape(englishTranslation.sectionLabel || "Article")}</span>
             <h1>${xmlEscape(englishTranslation.title)}</h1>
             <p>${xmlEscape(englishDescription)}</p>
             ${safeArticleHtml(englishDocument.contentHtml)}
           </article>
+          <nav aria-label="Read also">
+            <h2>Read also</h2>
+            <ul>
+              ${relatedArticles.map((candidate) => {
+                const href =
+                  candidate.canonicalUrl ||
+                  `${siteUrl}${articlePublicPath(candidate)}/`;
+                return `<li><a href="${xmlEscape(href)}">${xmlEscape(candidate.title)}</a></li>`;
+              }).join("\n")}
+            </ul>
+          </nav>
         </main>
       `);
 
