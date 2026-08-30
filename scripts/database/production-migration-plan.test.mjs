@@ -125,6 +125,9 @@ describe("guarded production database reconciliation", () => {
       expect(plan).toContain("public.list_media_studio_assets");
       expect(plan).toContain("public.preview_media_asset_replacement");
       expect(plan).toContain("public.replace_media_asset_current_usages");
+      expect(plan).toMatch(
+        /do \$storage_policy_guard\$[\s\S]*if to_regclass\('storage\.objects'\) is not null then[\s\S]*\$storage_policy_guard\$;/u
+      );
       expect(plan).toContain("Editor autosave actor-only RLS is incomplete");
       expect(plan).toContain("Reader book collection owner-only policies are incomplete");
       expect(plan).toContain("from pg_catalog.pg_depend dependency");

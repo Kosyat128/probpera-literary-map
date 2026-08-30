@@ -2602,49 +2602,70 @@ using (public.is_staff());
 
 -- Immutable object paths: authenticated users may upload a new version but
 -- cannot overwrite or physically remove any historical Storage object.
-drop policy if exists "Staff update editorial media" on storage.objects;
-drop policy if exists "Owners and admins delete editorial media"
-  on storage.objects;
-drop policy if exists "Owner delete prepared editorial media"
-  on storage.objects;
-create policy "Owner delete prepared editorial media"
-on storage.objects for delete
-to authenticated
-using (
-  bucket_id = 'editorial-media'
-  and public.is_staff(array['owner'::public.staff_role])
-  and exists (
-    select 1
-    from public.media_assets asset
-    where asset.bucket = storage.objects.bucket_id
-      and asset.object_path = storage.objects.name
-      and asset.purge_token is not null
-      and asset.purge_requested_at is not null
-      and asset.purge_requested_by = (select auth.uid())
-  )
-);
+-- The isolated public-schema restore drill intentionally omits Supabase's
+-- storage schema. Keep its application-schema replay valid, while production
+-- remains fail-closed through the schema-health policy checks below.
+do $storage_policy_guard$
+begin
+  if to_regclass('storage.objects') is not null then
+    execute $policy$
+      drop policy if exists "Staff update editorial media" on storage.objects
+    $policy$;
+    execute $policy$
+      drop policy if exists "Owners and admins delete editorial media"
+        on storage.objects
+    $policy$;
+    execute $policy$
+      drop policy if exists "Owner delete prepared editorial media"
+        on storage.objects
+    $policy$;
+    execute $policy$
+      create policy "Owner delete prepared editorial media"
+      on storage.objects for delete
+      to authenticated
+      using (
+        bucket_id = 'editorial-media'
+        and public.is_staff(array['owner'::public.staff_role])
+        and exists (
+          select 1
+          from public.media_assets asset
+          where asset.bucket = storage.objects.bucket_id
+            and asset.object_path = storage.objects.name
+            and asset.purge_token is not null
+            and asset.purge_requested_at is not null
+            and asset.purge_requested_by = (select auth.uid())
+        )
+      )
+    $policy$;
 
--- The upload route stores the immutable object before inserting metadata. If
--- that insert fails, permit only the same authenticated uploader to remove the
--- fresh, canonical orphan. Any object with a media_assets row is excluded.
-drop policy if exists "Uploader delete fresh orphan editorial media"
-  on storage.objects;
-create policy "Uploader delete fresh orphan editorial media"
-on storage.objects for delete
-to authenticated
-using (
-  bucket_id = 'editorial-media'
-  and public.is_staff()
-  and owner_id = (select auth.uid())::text
-  and created_at >= now() - interval '10 minutes'
-  and name ~ '^[0-9]{4}/(0[1-9]|1[0-2])/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.webp$'
-  and not exists (
-    select 1
-    from public.media_assets asset
-    where asset.bucket = storage.objects.bucket_id
-      and asset.object_path = storage.objects.name
-  )
-);
+    -- The upload route stores the immutable object before inserting metadata.
+    -- If that insert fails, permit only the same authenticated uploader to
+    -- remove the fresh, canonical orphan. Metadata-backed objects are excluded.
+    execute $policy$
+      drop policy if exists "Uploader delete fresh orphan editorial media"
+        on storage.objects
+    $policy$;
+    execute $policy$
+      create policy "Uploader delete fresh orphan editorial media"
+      on storage.objects for delete
+      to authenticated
+      using (
+        bucket_id = 'editorial-media'
+        and public.is_staff()
+        and owner_id = (select auth.uid())::text
+        and created_at >= now() - interval '10 minutes'
+        and name ~ '^[0-9]{4}/(0[1-9]|1[0-2])/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.webp$'
+        and not exists (
+          select 1
+          from public.media_assets asset
+          where asset.bucket = storage.objects.bucket_id
+            and asset.object_path = storage.objects.name
+        )
+      )
+    $policy$;
+  end if;
+end;
+$storage_policy_guard$;
 
 -- Keep the fail-closed admin health contract synchronized with the Media
 -- Studio lifecycle. A partial migration must never look production-ready.
