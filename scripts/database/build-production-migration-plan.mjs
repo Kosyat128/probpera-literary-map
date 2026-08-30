@@ -46,7 +46,7 @@ const reviewedMigrations = [
   ],
   [
     "20260830_media_studio_lifecycle.sql",
-    "19eb3edca753f02824357eabf8280b6aeb1ebbacb889dcfe95e46d1b7b866370",
+    "3cb8717f0cf4f4b6a718591d2759c0c73008e35eaf9c3c09a1e0fd19f65ef837",
   ],
 ];
 
@@ -232,6 +232,7 @@ function buildInvariants(migrations) {
 do $probpera_reconciliation_invariants$
 declare
   health jsonb;
+  failed_health_keys text;
   staff_user uuid;
   recorded_migrations integer;
   invalid_indexes integer;
@@ -418,25 +419,40 @@ ${values}
     true
   );
   health := public.get_editorial_schema_health();
-  if health is null
-    or health ->> 'version' <> '20260830_media_studio_lifecycle'
-    or not coalesce((health ->> 'outbox')::boolean, false)
-    or not coalesce((health ->> 'outboxRpc')::boolean, false)
-    or not coalesce((health ->> 'articleBundleRpc')::boolean, false)
-    or not coalesce((health ->> 'migrationLedger')::boolean, false)
-    or not coalesce((health ->> 'publicationTriggers')::boolean, false)
-    or not coalesce((health ->> 'staffEditorialReadPolicies')::boolean, false)
-    or not coalesce((health ->> 'revisionHistory')::boolean, false)
-    or not coalesce((health ->> 'workTranslations')::boolean, false)
-    or not coalesce((health ->> 'workCoverArtworks')::boolean, false)
-    or not coalesce((health ->> 'countryOverrides')::boolean, false)
-    or not coalesce((health ->> 'writerOverrides')::boolean, false)
-    or not coalesce((health ->> 'homepageMove')::boolean, false)
-    or not coalesce((health ->> 'tagsUpdatedAt')::boolean, false)
-    or not coalesce((health ->> 'mediaStudioLifecycle')::boolean, false)
-    or not coalesce((health ->> 'mediaUsageGraph')::boolean, false)
-    or not coalesce((health ->> 'mediaSafeReplaceRpc')::boolean, false) then
-    raise exception 'Editorial schema health RPC did not report a current schema';
+  select string_agg(check_name, ', ' order by check_name)
+  into failed_health_keys
+  from (
+    select
+      'version'::text as check_name,
+      health is not null
+        and health ->> 'version' = '20260830_media_studio_lifecycle' as ok
+    union all
+    select
+      required_key,
+      health ->> required_key = 'true'
+    from unnest(array[
+      'outbox',
+      'outboxRpc',
+      'articleBundleRpc',
+      'migrationLedger',
+      'publicationTriggers',
+      'staffEditorialReadPolicies',
+      'revisionHistory',
+      'workTranslations',
+      'workCoverArtworks',
+      'countryOverrides',
+      'writerOverrides',
+      'homepageMove',
+      'tagsUpdatedAt',
+      'mediaStudioLifecycle',
+      'mediaUsageGraph',
+      'mediaSafeReplaceRpc'
+    ]::text[]) as required(required_key)
+  ) as checks
+  where ok is distinct from true;
+  if failed_health_keys is not null then
+    raise exception 'Editorial schema health RPC false keys: %',
+      failed_health_keys;
   end if;
 
   if not public.premium_machine_translation_ready() then

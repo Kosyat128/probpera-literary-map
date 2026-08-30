@@ -119,7 +119,42 @@ describe("guarded production database reconciliation", () => {
       expect(plan).not.toContain("\r\n");
       expect(plan).toContain("Historical migration checksum mismatch");
       expect(plan).toContain("Database ledger contains migrations outside this plan");
-      expect(plan).toContain("Editorial schema health RPC did not report a current schema");
+      expect(plan).toContain("Editorial schema health RPC false keys: %");
+      expect(plan).toContain("string_agg(check_name, ', ' order by check_name)");
+      expect(plan).toContain("where ok is distinct from true");
+      expect(plan).toContain("failed_health_keys;");
+      const healthFailureDiagnostic = plan.slice(
+        plan.indexOf("select string_agg(check_name"),
+        plan.indexOf("if not public.premium_machine_translation_ready()")
+      );
+      const requiredHealthKeyArray = healthFailureDiagnostic.match(
+        /from unnest\(array\[([\s\S]*?)\]::text\[\]\)/u
+      )?.[1] ?? "";
+      expect(
+        [...requiredHealthKeyArray.matchAll(/'([^']+)'/gu)].map(
+          (match) => match[1]
+        )
+      ).toEqual([
+        "outbox",
+        "outboxRpc",
+        "articleBundleRpc",
+        "migrationLedger",
+        "publicationTriggers",
+        "staffEditorialReadPolicies",
+        "revisionHistory",
+        "workTranslations",
+        "workCoverArtworks",
+        "countryOverrides",
+        "writerOverrides",
+        "homepageMove",
+        "tagsUpdatedAt",
+        "mediaStudioLifecycle",
+        "mediaUsageGraph",
+        "mediaSafeReplaceRpc",
+      ]);
+      expect(healthFailureDiagnostic).not.toContain("jsonb_each");
+      expect(healthFailureDiagnostic).not.toContain("pendingPublicBuilds");
+      expect(healthFailureDiagnostic).not.toContain("checkedAt");
       expect(plan).toContain("pg_advisory_xact_lock");
       expect(plan).toContain("public.save_article_bundle");
       expect(plan).toContain("public.premium_machine_translation_ready");

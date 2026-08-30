@@ -58,7 +58,10 @@ describe("editorial schema health", () => {
       `'version', '${CURRENT_EDITORIAL_SCHEMA_VERSION}'`
     );
     expect(productionMigrationPlanner).toContain(
-      `health ->> 'version' <> '${CURRENT_EDITORIAL_SCHEMA_VERSION}'`
+      `health ->> 'version' = '${CURRENT_EDITORIAL_SCHEMA_VERSION}'`
+    );
+    expect(productionMigrationPlanner).toContain(
+      "Editorial schema health RPC false keys: %"
     );
     expect(productionMigrationPlanner).toContain("health ->> 'articleBundleRpc'");
     expect(productionMigrationPlanner).toContain("health ->> 'mediaStudioLifecycle'");
