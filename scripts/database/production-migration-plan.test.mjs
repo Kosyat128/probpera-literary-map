@@ -367,7 +367,22 @@ describe("guarded production database reconciliation", () => {
       "container-local stub contains no production Storage data"
     );
     expect(storageStubImplementation).toContain(
-      "create schema storage authorization supabase_storage_admin;"
+      "if to_regnamespace('storage') is null then"
+    );
+    expect(storageStubImplementation).toMatch(
+      /select owner\.rolname\s+from pg_catalog\.pg_namespace namespace\s+join pg_catalog\.pg_roles owner on owner\.oid = namespace\.nspowner\s+where namespace\.nspname = 'storage'\s+\) is distinct from 'supabase_storage_admin' then/u
+    );
+    expect(storageStubImplementation).toContain(
+      "if to_regclass('storage.objects') is not null then"
+    );
+    expect(storageStubImplementation).toContain(
+      "isolated platform storage schema is missing"
+    );
+    expect(storageStubImplementation).toContain(
+      "isolated platform storage schema owner is invalid"
+    );
+    expect(storageStubImplementation).toContain(
+      "isolated platform storage.objects must be absent"
     );
     expect(storageStubImplementation).toContain(
       "set local role supabase_storage_admin;"
@@ -385,6 +400,7 @@ describe("guarded production database reconciliation", () => {
     expect(storageStubImplementation).toContain("--set=ON_ERROR_STOP=1");
     expect(storageStubImplementation).toContain("--single-transaction");
     expect(storageStubImplementation.match(/create\s+table/giu)).toHaveLength(1);
+    expect(storageStubImplementation).not.toMatch(/create\s+schema/iu);
     expect(storageStubImplementation).not.toMatch(/if\s+not\s+exists/iu);
     expect(storageStubImplementation).not.toMatch(/\b(?:grant|insert|copy)\b/iu);
     expect(storageStubImplementation).not.toContain("storage.buckets");

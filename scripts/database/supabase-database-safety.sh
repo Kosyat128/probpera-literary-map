@@ -606,7 +606,24 @@ prepare_isolated_storage_policy_stub() {
     --quiet \
     --set=ON_ERROR_STOP=1 \
     --single-transaction <<'SQL'
-create schema storage authorization supabase_storage_admin;
+do $isolated_storage_schema_guard$
+begin
+  if to_regnamespace('storage') is null then
+    raise exception 'isolated platform storage schema is missing';
+  end if;
+  if (
+    select owner.rolname
+    from pg_catalog.pg_namespace namespace
+    join pg_catalog.pg_roles owner on owner.oid = namespace.nspowner
+    where namespace.nspname = 'storage'
+  ) is distinct from 'supabase_storage_admin' then
+    raise exception 'isolated platform storage schema owner is invalid';
+  end if;
+  if to_regclass('storage.objects') is not null then
+    raise exception 'isolated platform storage.objects must be absent';
+  end if;
+end;
+$isolated_storage_schema_guard$;
 set local role supabase_storage_admin;
 create table storage.objects (
   bucket_id text not null,
