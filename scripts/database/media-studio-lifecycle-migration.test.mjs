@@ -343,6 +343,27 @@ describe("Phase 4 Media Studio lifecycle", () => {
     }
   });
 
+  it("skips Storage policy DDL only when the isolated schema has no storage.objects", () => {
+    const storagePolicyGuard = migration.match(
+      /do \$storage_policy_guard\$[\s\S]*?\$storage_policy_guard\$;/u
+    )?.[0] ?? "";
+
+    expect(storagePolicyGuard).not.toBe("");
+    expect(storagePolicyGuard).toContain(
+      "if to_regclass('storage.objects') is not null then"
+    );
+    expect(storagePolicyGuard.match(/execute \$policy\$/gu)).toHaveLength(6);
+    expect(storagePolicyGuard).toContain(
+      'create policy "Owner delete prepared editorial media"'
+    );
+    expect(storagePolicyGuard).toContain(
+      'create policy "Uploader delete fresh orphan editorial media"'
+    );
+    expect(migration.match(/\bon storage\.objects\b/gu)).toEqual(
+      storagePolicyGuard.match(/\bon storage\.objects\b/gu)
+    );
+  });
+
   it("exposes Russian lifecycle filters and server-guarded actions in Media Studio", () => {
     expect(page).toContain('supabase.rpc("list_media_studio_assets"');
     expect(page).toContain('supabase.rpc("list_media_asset_usages"');
