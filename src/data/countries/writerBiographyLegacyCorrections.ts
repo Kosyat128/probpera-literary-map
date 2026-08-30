@@ -56,6 +56,15 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch50,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch50";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch51,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch51";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch52,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch52";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch53,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch53";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1700,6 +1709,9 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch48,
   ...writerBiographyPublicProfileFactCorrectionsBatch49,
   ...writerBiographyPublicProfileFactCorrectionsBatch50,
+  ...writerBiographyPublicProfileFactCorrectionsBatch51,
+  ...writerBiographyPublicProfileFactCorrectionsBatch52,
+  ...writerBiographyPublicProfileFactCorrectionsBatch53,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {

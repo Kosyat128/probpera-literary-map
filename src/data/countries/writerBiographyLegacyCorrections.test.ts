@@ -72,6 +72,15 @@ import {
   writerBiographyPublicProfileFactCorrectionsBatch50,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch50";
 import {
+  writerBiographyPublicProfileFactCorrectionsBatch51,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch51";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch52,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch52";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch53,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch53";
+import {
   mergeWriterBiographyLegacyCorrections,
   quarantinedWriterIdentities,
   writerBiographyLegacyCorrections,
@@ -105,13 +114,16 @@ describe("legacy writer biography curation", () => {
       "writerBiographyPublicProfileFactCorrectionsBatch48.ts",
       "writerBiographyPublicProfileFactCorrectionsBatch49.ts",
       "writerBiographyPublicProfileFactCorrectionsBatch50.ts",
+      "writerBiographyPublicProfileFactCorrectionsBatch51.ts",
+      "writerBiographyPublicProfileFactCorrectionsBatch52.ts",
+      "writerBiographyPublicProfileFactCorrectionsBatch53.ts",
       "writerBiographyLegacyCorrections.ts",
     ].map((fileName) =>
       readFileSync(new URL(fileName, import.meta.url), "utf8")
     );
 
     for (const source of runtimeSources) {
-      expect(source).not.toMatch(/writerBiographyFactReviewBatch(?:32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50)/);
+      expect(source).not.toMatch(/writerBiographyFactReviewBatch(?:32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53)/);
     }
   });
 
@@ -119,7 +131,7 @@ describe("legacy writer biography curation", () => {
     expect(writerBiographyLegacyCorrections).toHaveLength(55);
     expect(quarantinedWriterIdentities).toHaveLength(97);
     expect(writerIdentityCorrections).toHaveLength(2);
-    expect(writerPublicProfileFactCorrections).toHaveLength(576);
+    expect(writerPublicProfileFactCorrections).toHaveLength(646);
     expect(writerBiographyPublicProfileFactCorrectionsBatch32).toHaveLength(34);
     expect(writerBiographyPublicProfileFactCorrectionsBatch33).toHaveLength(14);
     expect(writerBiographyPublicProfileFactCorrectionsBatch34).toHaveLength(17);
@@ -139,6 +151,9 @@ describe("legacy writer biography curation", () => {
     expect(writerBiographyPublicProfileFactCorrectionsBatch48).toHaveLength(12);
     expect(writerBiographyPublicProfileFactCorrectionsBatch49).toHaveLength(14);
     expect(writerBiographyPublicProfileFactCorrectionsBatch50).toHaveLength(31);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch51).toHaveLength(11);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch52).toHaveLength(30);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch53).toHaveLength(29);
 
     const correctionKeys = writerBiographyLegacyCorrections.map((item) =>
       key(item.countryId, item.writerId)
@@ -603,6 +618,18 @@ describe("legacy writer biography curation", () => {
       },
       {
         corrections: writerBiographyPublicProfileFactCorrectionsBatch50,
+        checkedAt: "2026-08-30",
+      },
+      {
+        corrections: writerBiographyPublicProfileFactCorrectionsBatch51,
+        checkedAt: "2026-08-30",
+      },
+      {
+        corrections: writerBiographyPublicProfileFactCorrectionsBatch52,
+        checkedAt: "2026-08-30",
+      },
+      {
+        corrections: writerBiographyPublicProfileFactCorrectionsBatch53,
         checkedAt: "2026-08-30",
       },
     ] as const;
