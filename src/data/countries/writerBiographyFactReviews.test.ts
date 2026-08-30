@@ -22,15 +22,15 @@ function writerByKey(
 describe("writer biography fact-review overlay", () => {
   it("publishes only the compact proven correction set", () => {
     expect(writerBiographyFactReviewCounts).toEqual({
-      reviewed: 1280,
-      corrected: 1134,
+      reviewed: 1740,
+      corrected: 1573,
     });
-    expect(Object.keys(reviewOverlay.corrections)).toHaveLength(1134);
+    expect(Object.keys(reviewOverlay.corrections)).toHaveLength(1573);
     expect(reviewRollup.summary).toEqual({
-      records: 1280,
-      unchanged: 88,
-      corrected: 1134,
-      held: 58,
+      records: 1740,
+      unchanged: 103,
+      corrected: 1573,
+      held: 64,
     });
   });
 

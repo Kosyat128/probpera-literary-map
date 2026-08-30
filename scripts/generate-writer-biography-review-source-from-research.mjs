@@ -29,6 +29,13 @@ function q(value) {
   return JSON.stringify(value);
 }
 
+function renderProfilePatch(value) {
+  return JSON.stringify(value, null, 2)
+    .split("\n")
+    .map((line) => line.replace(/: null(,?)$/u, ": undefined$1"))
+    .join("\n");
+}
+
 function renderReviewModule(batch, checkedAt, records) {
   const suffix = String(batch).padStart(2, "0");
   const lines = [
@@ -184,7 +191,7 @@ function renderProfileCorrections(batch, checkedAt, records) {
     lines.push("  correction(");
     lines.push(`    ${q(countryId)},`);
     lines.push(`    ${q(writerId)},`);
-    lines.push(`    ${JSON.stringify(record.profileCorrections, null, 2).replaceAll("\n", "\n    ")},`);
+    lines.push(`    ${renderProfilePatch(record.profileCorrections).replaceAll("\n", "\n    ")},`);
     lines.push("    sources(");
     for (const evidence of record.evidence) {
       lines.push(`      [${q(evidence.provider)}, ${q(evidence.url)}],`);

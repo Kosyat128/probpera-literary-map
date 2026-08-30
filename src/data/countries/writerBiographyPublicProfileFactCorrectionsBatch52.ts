@@ -29,6 +29,21 @@ function correction(
 export const writerBiographyPublicProfileFactCorrectionsBatch52 = [
   correction(
     "syria",
+    "hanna_mina",
+    {
+      "works": [
+        "Blue Lamps",
+        "The Sail and the Storm"
+      ]
+    },
+    sources(
+      ["Banipal", "https://www.banipal.co.uk/contributors/1215/hanna-mina-1924%E2%80%932018/"],
+      ["Larousse", "https://www.larousse.fr/encyclopedie/litterature/Hanna_Mina/175358"],
+    ),
+    "Оценочная формула об «основателе» романа исключена. Исходное русское название «Конец одного человека» не подтверждается как точное название произведения Мины; в профиль внесены два независимо документированных романа."
+  ),
+  correction(
+    "syria",
     "salim_barakat",
     {
       "name": "Салим Баракат",
@@ -92,9 +107,10 @@ export const writerBiographyPublicProfileFactCorrectionsBatch52 = [
     },
     sources(
       ["Books from Taiwan", "https://booksfromtaiwan.moc.gov.tw/authors_info.php?id=68"],
-      ["National Dong Hwa University", "https://sys.ndhu.edu.tw/RD/TeacherTreasury/TcherData/research.aspx?tcher=10129"],
+      ["National Dong Hwa University", "https://sys.ndhu.edu.tw/RD/TeacherTreasury/TList.aspx?tcher=10129"],
+      ["Penguin Random House", "https://www.penguinrandomhouse.com/books/221242/the-man-with-the-compound-eyes-by-wu-ming-yi/"],
     ),
-    "Нейтральная справка дополнена проверяемыми названиями произведений и академической деятельностью."
+    "Привязанная ко времени общая формула заменена проверяемыми сведениями о профессии и книгах; оценочные характеристики и ранжирование не используются."
   ),
   correction(
     "taiwan",

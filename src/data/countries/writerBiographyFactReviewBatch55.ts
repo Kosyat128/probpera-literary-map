@@ -1,0 +1,523 @@
+export const WRITER_BIOGRAPHY_FACT_REVIEW_BATCH55_REVIEWER =
+  "Codex independent claim-by-claim factual review, batch 55";
+
+export type WriterBiographyFactReviewDecision = "unchanged" | "corrected" | "held";
+export type WriterBiographyClaimVerdict = "supported" | "corrected" | "not-established";
+
+export interface WriterBiographyClaimEvidence {
+  readonly provider: string;
+  readonly url: string;
+  readonly checkedAt: string;
+  readonly findingRu: string;
+}
+
+export interface WriterBiographyFactReviewClaim {
+  readonly textRu: string;
+  readonly verdict: WriterBiographyClaimVerdict;
+  readonly evidence: readonly WriterBiographyClaimEvidence[];
+}
+
+export interface WriterBiographyFactReviewRecord {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly applicableTextRu: string | null;
+  readonly claims: readonly WriterBiographyFactReviewClaim[];
+  readonly reviewer: string;
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH55_REVIEWER;
+const checkedAt = "2026-08-30";
+
+type EvidenceSeed = readonly [provider: string, url: string, findingRu: string];
+
+interface ReviewSeed {
+  readonly key: string;
+  readonly originalSha256: string;
+  readonly reviewedTextRu: string;
+  readonly evidence: readonly EvidenceSeed[];
+  readonly decision: WriterBiographyFactReviewDecision;
+  readonly notes: string;
+}
+
+function e(provider: string, url: string, findingRu: string): EvidenceSeed {
+  return [provider, url, findingRu];
+}
+
+const seeds: readonly ReviewSeed[] = [
+  {
+    key: "usa:george_saunders",
+    originalSha256: "edd2615a1702af1fa4b20c25257e7f5c956e16b735bfbafc5c7cd0c38cfbb25b",
+    reviewedTextRu: "Джордж Сондерс - американский писатель и эссеист. Его первый роман «Линкольн в бардо» получил Букеровскую премию.",
+    evidence: [
+      e("Syracuse University", "https://artsandsciences.syracuse.edu/people/faculty/saunders-george/", "Университетский профиль подтверждает личность Джорджа Сондерса, его работу профессором английского языка и библиографию, включая «Lincoln in the Bardo»."),
+      e("The Booker Prizes", "https://thebookerprizes.com/the-booker-library/prize-years/2017", "Официальный архив премии называет «Lincoln in the Bardo» первым романом Сондерса и победителем Букеровской премии 2017 года."),
+    ],
+    decision: "unchanged",
+    notes: "Исходные два предложения нейтральны и точны: премиальный архив подтверждает, что «Линкольн в бардо» был первым романом Сондерса и победил в 2017 году.",
+  },
+  {
+    key: "usa:gillian_flynn",
+    originalSha256: "0dae93a5b5b8b96898e441073e77f072b2141290df86aeb3b6dfef02f1902c13",
+    reviewedTextRu: "Гиллиан Флинн — американская писательница и сценаристка, автор романов «Исчезнувшая», «Острые предметы» и «Тёмные тайны». Она также написала сценарий экранизации «Исчезнувшей».",
+    evidence: [
+      e("Penguin Random House", "https://www.penguinrandomhouse.com/authors/70462/gillian-flynn/", "Издательский профиль перечисляет романы Флинн «Gone Girl», «Sharp Objects» и «Dark Places» и подтверждает её авторство."),
+      e("Hachette UK", "https://www.hachette.co.uk/contributor/gillian-flynn/", "Независимый издательский профиль называет Флинн писательницей и сценаристкой и подтверждает, что она написала сценарий фильма «Gone Girl»."),
+    ],
+    decision: "corrected",
+    notes: "Исправлено согласование рода у слова «сценаристка» и добавлены проверяемые сведения о других романах и работе над сценарием экранизации.",
+  },
+  {
+    key: "usa:harper_lee",
+    originalSha256: "d4683d0b02b26827be8b3c9ce26a6287463e42fc6724f6f203c51346a61c0dc0",
+    reviewedTextRu: "Нелл Харпер Ли (1926–2016) — американская писательница, автор романа «Убить пересмешника», удостоенного Пулитцеровской премии за художественную литературу в 1961 году. В 2015 году был опубликован её роман «Пойди, поставь сторожа».",
+    evidence: [
+      e("National Endowment for the Arts", "https://www.arts.gov/initiatives/nea-big-read/kill-mockingbird", "Материал NEA подтверждает биографию Нелл Харпер Ли, публикацию «To Kill a Mockingbird» в 1960 году и «Go Set a Watchman» в 2015 году."),
+      e("The Pulitzer Prizes", "https://www.pulitzer.org/winners/harper-lee", "Официальная страница фиксирует победу романа «To Kill a Mockingbird» в категории Fiction — «за художественную литературу» — за 1961 год."),
+    ],
+    decision: "corrected",
+    notes: "Оценочная формула заменена датами, названиями и документированным решением Пулитцеровского комитета; категория Fiction передана как «за художественную литературу», в профиль возвращено главное произведение и добавлено полное имя.",
+  },
+  {
+    key: "usa:henry_david_thoreau",
+    originalSha256: "a01280e7d4ec9741d3fbd3b072c157164c1a1442a81d06935c34903f2c90e26e",
+    reviewedTextRu: "Генри Дэвид Торо (1817–1862) — американский писатель, философ и натуралист, автор книги «Уолден, или Жизнь в лесу». Его отказ платить подушный налог во время войны США с Мексикой связан с эссе «Гражданское неповиновение».",
+    evidence: [
+      e("Walden Woods Project", "https://www.walden.org/what-we-do/library/thoreau/a-brief-chronology/", "Хронология подтверждает годы 1817–1862, жизнь в Конкорде, работу натуралиста и публикации «Walden» и эссе о гражданском неповиновении."),
+      e("U.S. National Park Service", "https://home.nps.gov/articles/000/the-lands-of-the-overland-trails-protests-against-the-mexican-american-war.htm", "NPS называет Торо философом и эссеистом и связывает его отказ платить налог с эссе «Civil Disobedience»."),
+    ],
+    decision: "corrected",
+    notes: "Общий литературный ярлык заменён датами, двумя конкретными произведениями и документированным обстоятельством, связанным с эссе о гражданском неповиновении; профильные сведения точны.",
+  },
+  {
+    key: "usa:henry_james",
+    originalSha256: "9a4b7b203ca96e825bb82aadb90b330122b0e0b619095cfdf292711c1d085913",
+    reviewedTextRu: "Генри Джеймс (1843–1916) — родившийся в США романист, который в 1915 году принял британское подданство. В произведениях «Портрет леди» и «Дейзи Миллер» он обращался к встрече американского и европейского общества.",
+    evidence: [
+      e("Smithsonian National Portrait Gallery", "https://npg.si.edu/object/npg_NPG.68.13", "Смитсоновский профиль подтверждает даты, рождение в Нью-Йорке, принятие британского подданства и американско-европейскую тему «Daisy Miller» и «The Portrait of a Lady»."),
+      e("National Portrait Gallery, London", "https://www.npg.org.uk/collections/search/person/mp02396/henry-james", "Британская Национальная портретная галерея независимо подтверждает годы 1843–1916, американское происхождение и получение британского гражданства в 1915 году."),
+    ],
+    decision: "corrected",
+    notes: "Субъективное ранжирование заменено гражданской биографией и конкретными произведениями; уточнено позднее британское подданство.",
+  },
+  {
+    key: "usa:henry_miller",
+    originalSha256: "641f7c4c86afb243f3c3cb925827f6dd1e98adf2d4a7009666d1bd066934ab27",
+    reviewedTextRu: "Генри Миллер (1891–1980) — американский писатель и художник. К его произведениям относятся «Тропик Рака», «Тропик Козерога» и «Чёрная весна»; публикация «Тропика Рака» в США стала предметом разбирательств о цензуре и непристойности.",
+    evidence: [
+      e("Ohio University Libraries", "https://www.ohio.edu/library/physical-collections/archives-special-collections/rare-books/author-collections/henry-miller", "Университетская библиотека подтверждает годы 1891–1980, нью-йоркское происхождение, занятия литературой и живописью, произведения и цензурную историю «Tropic of Cancer»."),
+      e("University of Kansas Libraries", "https://archives.lib.ku.edu/repositories/3/resources/4526", "Архивный фонд независимо идентифицирует Генри Миллера как американского писателя и художника и документирует его литературное наследие."),
+    ],
+    decision: "corrected",
+    notes: "Оценочные слова об экспериментальности и новаторстве заменены библиографическими фактами и документированной историей цензуры.",
+  },
+  {
+    key: "usa:herman_melville",
+    originalSha256: "cf27af4fb73b76c4b891b95f343ea9a80637f30eba164e3c4e8647b4e635d845",
+    reviewedTextRu: "Герман Мелвилл (1819–1891) — американский писатель и поэт, автор романа «Моби Дик, или Белый кит» 1851 года. Его опыт морских плаваний отразился также в ранних книгах, включая «Тайпи».",
+    evidence: [
+      e("U.S. National Park Service", "https://www.nps.gov/nebe/learn/historyculture/hermanmelville.htm", "NPS подтверждает годы жизни Мелвилла, его морской опыт и литературную карьеру, включая «Typee» и «Moby-Dick»."),
+      e("Library of Congress", "https://www.loc.gov/exhibits/america-reads/1750-to-1899.html#obj006", "Выставка Библиотеки Конгресса атрибутирует Мелвиллу роман «Moby-Dick; or, The Whale» и датирует его 1851 годом."),
+    ],
+    decision: "corrected",
+    notes: "Неизмеримая оценка романа заменена датами, названием и связью произведений с морским опытом; «Моби Дик» добавлен в список работ профиля.",
+  },
+  {
+    key: "usa:howard_pyle",
+    originalSha256: "53ccae23860a629d6f9594b7d61b8028b9780b245a8ba73224d656da28367379",
+    reviewedTextRu: "Говард Пайл (1853–1911) — американский художник, иллюстратор, писатель и преподаватель, родившийся в Уилмингтоне и умерший во Флоренции. Он создавал книги и иллюстрации о Робин Гуде, пиратах и легендах о короле Артуре.",
+    evidence: [
+      e("Delaware Art Museum", "https://emuseum.delart.org/people/75/howard-pyle", "Музейный профиль подтверждает годы 1853–1911, Уилмингтон, смерть во Флоренции и деятельность Пайла как художника, автора и преподавателя."),
+      e("Smithsonian American Art Museum", "https://americanart.si.edu/artist/howard-pyle-6495", "Смитсоновский музей независимо подтверждает идентичность и годы Пайла и связывает его иллюстрации с пиратами, Робин Гудом и артуровскими сюжетами."),
+    ],
+    decision: "corrected",
+    notes: "Добавлены подтверждённые годы, места жизни и более точный диапазон тем; годовые данные и произведения внесены в ранее пустые поля профиля без вымышленных дня и месяца.",
+  },
+  {
+    key: "usa:hunter_s_thompson",
+    originalSha256: "b69b9a65edbd6461d663d28305dbbee6bda5e4fae12cc6ceb7a8ef2ed7d089c4",
+    reviewedTextRu: "Американский журналист и писатель, один из создателей гонзо-журналистики. Его книги соединяют репортаж, автобиографическую прозу, сатиру и намеренно субъективный взгляд рассказчика.",
+    evidence: [
+      e("EBSCO Research Starters", "https://www.ebsco.com/research-starters/biography/hunter-s-thompson", "Биографическая справка подтверждает годы 1937–2005, литературную деятельность Томпсона и его ключевую роль в становлении гонзо-журналистики."),
+      e("Associated Press", "https://apnews.com/article/822157ef1079bbcd8419254a5c03ea73", "AP подтверждает работу Томпсона в субъективной форме гонзо-журналистики, книгу «Fear and Loathing in Las Vegas» и смерть в Вуди-Крик в 2005 году."),
+    ],
+    decision: "unchanged",
+    notes: "Исходная характеристика нейтрально и точно описывает документированную роль Томпсона в гонзо-журналистике и её форму; в профиль добавлены место смерти и ключевая книга.",
+  },
+  {
+    key: "usa:isaac_asimov",
+    originalSha256: "8ab4fab27dd81cceee2c6b2009b38e65cef6a907161ba6f486efb18365fcc4a5",
+    reviewedTextRu: "Айзек Азимов (родился между 4 октября 1919 и 2 января 1920 года; умер в 1992 году) — американский писатель-фантаст, биохимик и популяризатор науки. Он создавал циклы об Основании и роботах и написал многочисленные научно-популярные книги.",
+    evidence: [
+      e("Asimov's Science Fiction", "https://www.asimovs.com/wp-content/uploads/2022/09/Editorial_Happy_Birthday_Isaac_Asimov_JanFeb2020.pdf", "Редакционная статья журнала, сооснованного Азимовым, сообщает, что фактическая дата неизвестна и находится между 4 октября 1919 и 2 января 1920 года; 2 января он выбрал для празднования."),
+      e("Boston University", "https://www.bu.edu/articles/2020/pov-why-isaac-asimovs-novels-speak-to-us-today/", "Университет подтверждает биохимическую кафедру Азимова, годы 1920–1992 в принятой справочной форме и объём его художественного и научно-популярного наследия."),
+    ],
+    decision: "corrected",
+    notes: "Убрано оценочное ранжирование и раскрыта принципиальная неопределённость даты рождения: 2 января было выбранным днём празднования, а не доказанной датой. Точное поле рождения очищено fail-closed.",
+  },
+  {
+    key: "usa:isaac_bashevis_singer",
+    originalSha256: "73970ab05cdf3b9d96fb91597abe2ff1f262cb8a317cb894f4b5336793809a70",
+    reviewedTextRu: "Исаак Башевис-Зингер, умерший в 1991 году, — родившийся в Польше американский писатель, создававший прозу на идише и переехавший в США в 1935 году. В 1978 году он получил Нобелевскую премию по литературе; год его рождения в авторитетных источниках расходится.",
+    evidence: [
+      e("Isaac Bashevis Singer Estate", "https://www.bashevissinger.com/biography", "Официальная биография наследия указывает рождение в 1903 году в Леончине, варшавский период, идиш и последующую эмиграцию."),
+      e("Nobel Prize Outreach", "https://www.nobelprize.org/prizes/literature/1978/singer/biographical/", "Нобелевский архив подтверждает польско-еврейскую культурную среду, творчество на идише и премию 1978 года, но в лауреатской записи использует отличную дату рождения — 14 июля 1904 года."),
+    ],
+    decision: "corrected",
+    notes: "Поэтическая интерпретация заменена проверяемой биографией. Точная дата 21 ноября 1903 года очищена: официальный сайт наследия указывает 1903 год, а Нобелевский архив — 14 июля 1904 года; год оставлен приблизительным.",
+  },
+  {
+    key: "usa:jack_kerouac",
+    originalSha256: "b4a3bc264bb9233227da686332c6560c3de7c9f7ecff088372cbaf41abd14110",
+    reviewedTextRu: "Джек Керуак (1922–1969) — американский писатель и поэт, автор романов «On the Road» и «The Town and the City». Его проза и поэзия связаны с поколением битников.",
+    evidence: [
+      e("U.S. National Park Service", "https://home.nps.gov/lowe/learn/historyculture/jackkerouac.htm", "NPS подтверждает даты 12 марта 1922 — 21 октября 1969, деятельность писателя и поэта и центральную роль Керуака в поколении битников."),
+      e("Poetry Foundation", "https://www.poetryfoundation.org/poets/jack-kerouac", "Литературная биография независимо подтверждает годы 1922–1969, «On the Road» и принадлежность к ядру движения битников."),
+    ],
+    decision: "corrected",
+    notes: "Оценочная формула «один из главных» заменена датами, конкретными произведениями и нейтральным указанием на связь с поколением битников; профильные даты точны.",
+  },
+  {
+    key: "usa:jack_london",
+    originalSha256: "1867d5341f394f9d3a44295d01ca2db4acabc9d9dd719cce5258fe22a98e7489",
+    reviewedTextRu: "Джек Лондон (1876–1916) — американский писатель и журналист, автор книг «Зов предков» и «Морской волк». Его поездка на Клондайк дала материал для произведений о северной жизни.",
+    evidence: [
+      e("California State Parks", "https://www.parks.ca.gov/pages/478/files/JL.pdf", "Официальный парковый материал подтверждает рождение 12 января 1876 года, литературную и журналистскую деятельность и произведения «The Call of the Wild» и «The Sea-Wolf»."),
+      e("U.S. National Park Service", "https://www.nps.gov/klgo/learn/historyculture/writers.htm", "NPS независимо описывает Джека Лондона как писателя и журналиста и связывает его опыт Клондайка с приключенческой прозой."),
+    ],
+    decision: "corrected",
+    notes: "Общая жанровая характеристика заменена датами, конкретными книгами и подтверждённой связью литературного материала с поездкой на Клондайк; профильные сведения точны.",
+  },
+  {
+    key: "usa:james_fenimore_cooper",
+    originalSha256: "4be9ff1344b4df7efa44b1c97ff8e192849971fd159c2fe9f0ab4afbcd8499f8",
+    reviewedTextRu: "Джеймс Фенимор Купер (1789–1851) — американский романист, служивший в молодости на море и во флоте. В его цикл о Кожаном Чулке входят «Пионеры», «Последний из могикан», «Следопыт» и «Зверобой».",
+    evidence: [
+      e("Northern Illinois University Libraries", "https://ulib.niu.edu/badndp/cooper_james.html", "Университетская справка подтверждает даты 1789–1851, службу на море и во флоте и раннюю литературную карьеру Купера."),
+      e("University of Pennsylvania Libraries", "https://onlinebooks.library.upenn.edu/webbin/book/lookupname?key=Cooper%2C%20James%20Fenimore%2C%201789-1851", "Университетский каталог независимо подтверждает авторство Купера и библиографию романов цикла о Кожаном Чулке."),
+    ],
+    decision: "corrected",
+    notes: "Широкая формула об «основателе» жанров заменена проверяемыми биографическими и библиографическими фактами.",
+  },
+  {
+    key: "usa:james_rollins",
+    originalSha256: "83e2d4797310485561c0b30841780ed8aded94893b6855ee2d11afe7a0aaf56c",
+    reviewedTextRu: "Джеймс Роллинс — литературный псевдоним американского ветеринара и автора приключенческих триллеров Джима Чайковски. Он пишет цикл «Сигма», к которому относится роман «Царство костей».",
+    evidence: [
+      e("Veterinary Practice News", "https://www.veterinarypracticenews.com/a-veterinarian-with-write-stuff-james-rollins-dvm/", "Профессиональное издание прямо указывает, что настоящее имя Роллинса — Jim Czajkowski, DVM, и описывает его двадцатилетнюю ветеринарную карьеру и триллеры."),
+      e("James Rollins official site", "https://jamesrollins.com/bio/", "Официальная биография подтверждает ветеринарное образование, карьеру автора приключенческих триллеров и цикл Sigma Force."),
+    ],
+    decision: "corrected",
+    notes: "Имя приведено в форме, подтверждённой профессиональным источником, и добавлена документированная ветеринарная специальность; существующая атрибуция личности подтверждена, held не требуется.",
+  },
+  {
+    key: "usa:jerome_david_salinger",
+    originalSha256: "eb8b687a3d53e1c3cf3dd743487b2c867663351f535a2efbca584cb52471de9a",
+    reviewedTextRu: "Джером Дэвид Сэлинджер (1919–2010) — американский писатель, автор романа «Над пропастью во ржи» и сборника «Девять рассказов». Книга «Фрэнни и Зуи» посвящена персонажам семьи Гласс.",
+    evidence: [
+      e("The New York Public Library", "https://www.nypl.org/blog/2010/01/28/jd-salinger-1919-2010", "NYPL подтверждает годы 1919–2010, «The Catcher in the Rye», рассказы о семье Гласс и «Franny and Zooey»."),
+      e("The Morgan Library & Museum", "https://www.themorgan.org/exhibitions/letters-by-salinger", "Музейная запись независимо подтверждает годы Сэлинджера, его авторство «The Catcher in the Rye» и документированный литературный архив."),
+    ],
+    decision: "corrected",
+    notes: "Вместо описательного намёка названы точно атрибутированные произведения; неточная единая жанровая маркировка «Фрэнни» и «Зуи» убрана, в профиль внесены полное имя и отсутствующие ключевые работы.",
+  },
+  {
+    key: "usa:john_dos_passos",
+    originalSha256: "7b26a00b4bae26c6c5ee356c524c2cb45692ab4a6bcb6315733d77176bccff3a",
+    reviewedTextRu: "Джон Дос Пассос (1896–1970) — американский романист, автор «Манхэттенского трансфера» и трилогии «США». В трилогию входят романы «42-я параллель», «1919» и «Большие деньги».",
+    evidence: [
+      e("Library of America", "https://www.loa.org/writers/241-john-dos-passos/", "Профиль подтверждает годы 1896–1970, «Manhattan Transfer» и экспериментальную трилогию «U.S.A.» о Соединённых Штатах первой трети XX века."),
+      e("Johns Hopkins University Libraries", "https://aspace.library.jhu.edu/repositories/3/resources/1160", "Архивная справка независимо называет Дос Пассоса американским романистом, перечисляет состав трилогии «U.S.A.» и фиксирует «Manhattan Transfer»."),
+    ],
+    decision: "corrected",
+    notes: "Общие ярлыки модернизма и экспериментальности заменены датами и конкретной библиографией; исправлен неполный заголовок «Манхэттен» на «Манхэттенский трансфер».",
+  },
+  {
+    key: "usa:john_irving",
+    originalSha256: "4b4ef881d2055d521acb4783dc320db14b79a18c4879fc2d264edfeb43df21c2",
+    reviewedTextRu: "Джон Ирвинг - американский писатель и сценарист. Он написал роман «Правила виноделов».",
+    evidence: [
+      e("John Irving official site", "https://john-irving.com/john-irving-bio/", "Официальная биография указывает рождение в Эксетере в 1942 году, романы и получение премии «Оскар» за сценарий «The Cider House Rules»."),
+      e("Penguin Random House", "https://www.penguinrandomhouse.com/authors/14109/john-irving/", "Независимый издательский профиль подтверждает те же год и место рождения, литературную карьеру и авторство «The Cider House Rules»."),
+    ],
+    decision: "unchanged",
+    notes: "Оба исходных утверждения точны и нейтральны; в профиль добавлены подтверждённые год и место рождения и основные произведения без неподтверждённого дня рождения.",
+  },
+  {
+    key: "usa:john_steinbeck",
+    originalSha256: "d5c76a7ab4c51a58206c46f55694b7c2530fe09581491a162e96a660f4fb1692",
+    reviewedTextRu: "Джон Стейнбек (1902–1968) — американский писатель, автор романов «Гроздья гнева», «О мышах и людях» и «К востоку от Эдема». В 1962 году он получил Нобелевскую премию по литературе.",
+    evidence: [
+      e("Nobel Prize Outreach", "https://www.nobelprize.org/prizes/literature/1962/steinbeck/biographical/", "Официальная биография подтверждает годы 1902–1968, Салинас, Нобелевскую премию 1962 года и социальную направленность прозы о сельском труде."),
+      e("National Steinbeck Center", "https://steinbeck.org/learn/", "Музейно-исследовательский центр независимо подтверждает литературную биографию Стейнбека, его произведения и Нобелевскую премию 1962 года."),
+    ],
+    decision: "corrected",
+    notes: "Расплывчатая формула «известный произведениями» и тематическое обобщение заменены датами, конкретными романами и подтверждённой Нобелевской премией; список произведений дополнен.",
+  },
+  {
+    key: "usa:kurt_vonnegut",
+    originalSha256: "d655068077ef8cd6664c3d443984407b8c6c523aba3495e9426ba52b4c506212",
+    reviewedTextRu: "Курт Воннегут (1922–2007) — американский писатель, автор романов «Бойня номер пять», «Колыбель для кошки» и «Сирены Титана».",
+    evidence: [
+      e("Kurt Vonnegut Museum and Library", "https://www.vonnegutlibrary.org/biography/", "Музейная биография подтверждает годы, сатирическую манеру, антиутопические произведения и связь опыта Дрездена с «Slaughterhouse-Five»."),
+      e("Library of America", "https://www.loa.org/writers/249-kurt-vonnegut", "Независимый литературный профиль подтверждает годы 1922–2007 и основные произведения, включая «Cat's Cradle», «The Sirens of Titan» и «Slaughterhouse-Five»."),
+    ],
+    decision: "corrected",
+    notes: "Расплывчатая оценочная формула «известный» заменена датами и конкретными романами; список произведений дополнен романом «Бойня номер пять».",
+  },
+  {
+    key: "usa:louise_gluck",
+    originalSha256: "0345a2b3546762846f88ef87dbf8881c9d717d0a22d8a4521c9fc8ba2cbae401",
+    reviewedTextRu: "Луиза Глик (1943–2023) — американская поэтесса, в чьих произведениях личный опыт и семейная жизнь сочетаются с мифологическими мотивами. Она получила Пулитцеровскую премию за сборник «Дикий ирис» и Нобелевскую премию по литературе 2020 года.",
+    evidence: [
+      e("Nobel Prize Outreach", "https://www.nobelprize.org/prizes/literature/2020/gluck/", "Официальная страница подтверждает даты 22 апреля 1943 — 13 октября 2023, смерть в Кембридже, премию 2020 года и темы личного опыта, семьи и мифа."),
+      e("Yale University", "https://news.yale.edu/2020/10/08/louise-gluck-awarded-2020-nobel-prize-literature", "Йельский университет независимо подтверждает литературную биографию Глик, Нобелевскую премию, Пулитцеровскую премию за «The Wild Iris» и основные поэтические темы."),
+    ],
+    decision: "corrected",
+    notes: "Цитатно-оценочная формулировка мотивации Нобелевской премии заменена нейтральными фактами о темах, книгах и наградах; добавлено подтверждённое место смерти.",
+  },
+  {
+    key: "usa:mario_puzo",
+    originalSha256: "3bec4061c93f3765cdab409e136069dbc47cfb46ec06c4bd68348e9dae89e050",
+    reviewedTextRu: "Марио Пьюзо (1920–1999) — американский романист и сценарист. Он написал роман «Крёстный отец» и вместе с Фрэнсисом Фордом Копполой работал над сценариями первых двух фильмов этой серии, получившими премии «Оскар».",
+    evidence: [
+      e("Mario Puzo official library", "https://www.mariopuzo.com/", "Официальная библиотека подтверждает годы 1920–1999, авторство «The Godfather» и библиографию Пьюзо."),
+      e("Academy of Motion Picture Arts and Sciences", "https://www.oscars.org/collection-highlights/godfather?fid=57041", "Архив Киноакадемии подтверждает, что фильм основан на романе Пьюзо, и документирует его совместную с Копполой сценарную работу и победы."),
+    ],
+    decision: "corrected",
+    notes: "Обобщённая тематическая интерпретация заменена конкретными произведениями и документированными сценарными наградами; в пустой список работ добавлен роман.",
+  },
+  {
+    key: "usa:mark_danielewski",
+    originalSha256: "b817ccd819fa416693dfd12eb4508e3eaf152501dcc3adab818d3bb89fc934c1",
+    reviewedTextRu: "Марк Данилевский - американский писатель, экспериментирующий с композицией и оформлением текста. Его дебютный роман - «Дом листьев».",
+    evidence: [
+      e("Penguin Random House", "https://www.penguinrandomhouse.com/books/36526/house-of-leaves-by-mark-z-danielewski/", "Официальная страница издателя называет Данилевского автором «House of Leaves», датирует издание 2000 годом и описывает многоуровневую композицию и необычную верстку романа."),
+      e("Mark Z. Danielewski official site", "https://www.markzdanielewski.com/books-new", "Официальная библиография независимо атрибутирует «House of Leaves» Марку З. Данилевскому и перечисляет его последующие книги."),
+    ],
+    decision: "unchanged",
+    notes: "Исходные утверждения нейтральны и точно подтверждаются издательским описанием необычной верстки и официальной библиографией; произведение добавлено в пустой профильный список.",
+  },
+  {
+    key: "usa:mark_twain",
+    originalSha256: "ad03243d97e2efa0ec6d67fcabd45eac11598b0867324c93b318daa37b6b27b1",
+    reviewedTextRu: "Марк Твен — псевдоним американского писателя и сатирика Сэмюэла Лэнгхорна Клеменса (1835–1910). Среди его произведений — «Приключения Тома Сойера» и «Приключения Гекльберри Финна».",
+    evidence: [
+      e("Library of Congress", "https://guides.loc.gov/world-of-1898/mark-twain", "Библиотека Конгресса подтверждает настоящее имя Samuel Langhorne Clemens, литературный псевдоним Mark Twain и деятельность писателя-сатирика."),
+      e("National Endowment for the Arts", "https://www.arts.gov/sites/default/files/Reader-Resources-AdventuresofTomSawyer.pdf", "Материал NEA независимо подтверждает биографию Твена, происхождение псевдонима и авторство «The Adventures of Tom Sawyer» и «Adventures of Huckleberry Finn»."),
+    ],
+    decision: "corrected",
+    notes: "Оценочное ранжирование заменено настоящим именем, датами и произведениями; полное имя добавлено в профиль.",
+  },
+  {
+    key: "usa:michael_connelly",
+    originalSha256: "d6f88a8ee1d2233f3144dc51668965867c7b935677c5b598f67cacfc035de17b",
+    reviewedTextRu: "Майкл Коннелли - американский писатель и журналист, автор криминальных романов. «Пятый свидетель» входит в цикл об адвокате Микки Холлере.",
+    evidence: [
+      e("Penguin Random House", "https://www.penguinrandomhouse.com/authors/5522/michael-connelly/", "Профиль подтверждает работу Коннелли журналистом и криминальным репортёром, авторство книг о Гарри Босхе и юридических триллеров."),
+      e("Hachette Book Group", "https://www.hachettebookgroup.com/contributor/michael-connelly/?lens=mulholland-books", "Независимый издатель подтверждает серии о Гарри Босхе и Микки Холлере, журналистскую биографию и литературное авторство Коннелли."),
+    ],
+    decision: "unchanged",
+    notes: "Исходные факты точны и нейтральны: издатели подтверждают прежнюю журналистскую работу, криминальные циклы и принадлежность «The Fifth Witness» к серии о Микки Холлере.",
+  },
+  {
+    key: "usa:michael_crichton",
+    originalSha256: "04fe3cb31fc381a478d15f978e1767c30d5372885ddf42168eb3ce9bb1f998ca",
+    reviewedTextRu: "Майкл Крайтон (1942–2008) — американский писатель, сценарист и режиссёр, получивший медицинское образование в Гарварде. Он написал роман «Парк юрского периода» и создал телевизионный сериал «Скорая помощь».",
+    evidence: [
+      e("Michael Crichton official site", "https://michaelcrichton.com/biography/", "Официальная биография подтверждает годы 1942–2008, работу писателя и режиссёра, авторство «Jurassic Park» и создание «ER»."),
+      e("Harvard Gazette", "https://news.harvard.edu/gazette/story/2002/04/crichton-informative-and-candid-at-hms/", "Гарвард подтверждает обучение Крайтона в колледже и медицинской школе, а также связь его медицинского опыта с «ER» и работу над «Jurassic Park»."),
+    ],
+    decision: "corrected",
+    notes: "Общая жанровая формула заменена биографическим фактом и конкретными произведениями, подтверждёнными официальным архивом и Гарвардом.",
+  },
+  {
+    key: "usa:min_jin_lee",
+    originalSha256: "19d78f6e9396bbdc7dea97d425f8cd0ca97ede9ce88dae584304a6d70e572937",
+    reviewedTextRu: "Мин Джин Ли — американская писательница корейского происхождения, родившаяся в Сеуле и выросшая в Нью-Йорке. Она написала романы «Патинко» и «Бесплатная еда для миллионеров».",
+    evidence: [
+      e("Min Jin Lee official site", "https://www.minjinlee.com/about", "Официальная биография атрибутирует Мин Джин Ли романы «Free Food for Millionaires» и «Pachinko» и описывает её американскую литературную карьеру."),
+      e("Columbia University", "https://weai.columbia.edu/sites/default/files/content/pics/75th%20Anniversary/Min%20Jin%20Lee%20Bio.pdf", "Университетская справка независимо подтверждает авторство двух романов и корейско-американскую биографию писательницы."),
+    ],
+    decision: "corrected",
+    notes: "Убрано непроверенное в использованных источниках утверждение о конкретном русском издательском названии и добавлены подтверждённые происхождение и второй роман.",
+  },
+  {
+    key: "usa:n_k_jemisin",
+    originalSha256: "1c7cc4c7a4f57b3713cf88dd7dff10d5b4577a1be87569d6d2674b90f61e360e",
+    reviewedTextRu: "Нора Кейта Джемисин — американская писательница, работающая в жанрах научной фантастики и фэнтези. Роман «Пятое время года» открывает трилогию «Расколотая Земля» и получил премию «Хьюго» за лучший роман в 2016 году.",
+    evidence: [
+      e("MacArthur Foundation", "https://www.macfound.org/fellows/class-of-2020/n-k-jemisin", "Фонд называет Джемисин автором спекулятивной прозы и подробно описывает трилогию «The Broken Earth», начатую романом «The Fifth Season»."),
+      e("The Hugo Awards", "https://www.thehugoawards.org/2016/08/2016-hugo-awards-announced/", "Официальный архив «Хьюго» фиксирует победу «The Fifth Season» Н. К. Джемисин в категории лучшего романа в 2016 году."),
+      e("Science Fiction and Fantasy Writers Association", "https://nebulas.sfwa.org/grand-masters/n-k-jemisin/", "Профессиональная ассоциация подтверждает публичное имя N. K. Jemisin и раскрывает инициалы как Nora Keita."),
+    ],
+    decision: "corrected",
+    notes: "Исправлено ошибочное раскрытие имени «Нора Кейт»: профессиональная ассоциация приводит Nora Keita, а публичная форма — N. K. Jemisin. Добавлено точное жанровое и премиальное описание; в профиль внесены имя и три романа цикла.",
+  },
+  {
+    key: "usa:nathaniel_hawthorne",
+    originalSha256: "39d8572177461191e2e9d170e56988b86ca6d3a01b40be1695f8ca66902e7f90",
+    reviewedTextRu: "Натаниел Готорн (1804–1864) — американский писатель, родившийся в Салеме. Он написал романы «Алая буква», «Дом о семи фронтонах» и «Мраморный фавн».",
+    evidence: [
+      e("U.S. National Park Service", "https://www.nps.gov/sama/learn/historyculture/hawthorne.htm", "NPS подтверждает рождение Готорна 4 июля 1804 года в Салеме и создание «The Scarlet Letter» после работы в таможне."),
+      e("Library of Congress", "https://tile.loc.gov/storage-services/public/gdcmassbookdig/portraitsbiograp00scud/portraitsbiograp00scud.pdf", "Биографический материал Библиотеки Конгресса независимо подтверждает годы 1804–1864 и романы «The Scarlet Letter», «The House of the Seven Gables» и «The Marble Faun»."),
+    ],
+    decision: "corrected",
+    notes: "Оценочное ранжирование заменено датами, местом рождения и произведениями; существующие профильные данные подтверждены.",
+  },
+  {
+    key: "usa:patricia_highsmith",
+    originalSha256: "826a9b2846fefaf9d70f85b8fccaf64f0e8d638e2157e666dd06d90027582dad",
+    reviewedTextRu: "Патриция Хайсмит (1921–1995) — американская писательница, автор романов «Незнакомцы в поезде» и «Талантливый мистер Рипли». Том Рипли стал персонажем пяти её романов.",
+    evidence: [
+      e("Penguin Random House", "https://www.penguinrandomhouse.com/authors/12941/patricia-highsmith/", "Издательский профиль подтверждает годы 1921–1995, рождение в Форт-Уэрте, криминальную прозу и пять романов о Томе Рипли."),
+      e("Library of America", "https://womencrime.loa.org/writers/patricia-highsmith/", "Литературный архив независимо приводит полное имя Mary Patricia Plangman, точные даты, «The Talented Mr. Ripley» и смерть в Локарно."),
+    ],
+    decision: "corrected",
+    notes: "Расплывчатая формула «известная» заменена датами, конкретными романами и проверяемым числом книг о Томе Рипли; ранее пустые профильные поля заполнены документированными данными.",
+  },
+  {
+    key: "usa:paul_auster",
+    originalSha256: "afafe056bf543245221519e482c3d74cf29f0851c7432fc7bbfed5fc2ae2eabb",
+    reviewedTextRu: "Пол Остер (1947–2024) — американский писатель, поэт, переводчик и сценарист. К его произведениям относятся «Нью-Йоркская трилогия», «Левиафан» и «Книга иллюзий».",
+    evidence: [
+      e("The New York Public Library", "https://nyplorg-data-archives.s3.amazonaws.com/uploads/collection/pdf_finding_aid/final_PAUL_AUSTER_ARCHIVE_Bulk_1995-99__1_.pdf", "Архивная справка описывает Остера как романиста, сценариста, поэта, эссеиста и переводчика и перечисляет «New York Trilogy» и «The Book of Illusions»."),
+      e("Associated Press", "https://apnews.com/article/08814333f6c40a53ea5acd9c0e019c3e", "AP независимо подтверждает годы 1947–2024, смерть в доме в Бруклине и произведения «The New York Trilogy», «Leviathan» и «The Book of Illusions»."),
+    ],
+    decision: "corrected",
+    notes: "Расплывчатая характеристика «интеллектуальная проза» заменена видами деятельности и конкретными произведениями; профильные даты и место смерти подтверждены.",
+  },
+  {
+    key: "usa:pearl_s_buck",
+    originalSha256: "d5a0c45214728add317da4fadd61cdae2e4d0582cd18292e4b3ba506cb69cd28",
+    reviewedTextRu: "Перл Бак (1892–1973) — американская писательница, выросшая в Китае. Роман «Земля» входит в трилогию вместе с книгами «Сыновья» и «Разделённый дом»; в 1938 году Бак получила Нобелевскую премию по литературе.",
+    evidence: [
+      e("Nobel Prize Outreach", "https://www.nobelprize.org/prizes/literature/1938/buck/biographical/", "Нобелевская биография подтверждает годы 1892–1973, детство и жизнь в Китае, трилогию «The Good Earth» — «Sons» — «A House Divided» и премию 1938 года."),
+      e("West Virginia University", "https://pearlsbuck.lib.wvu.edu/biography", "Университетский архив независимо подтверждает биографию Перл Бак, произведения о Китае и её Нобелевскую премию."),
+    ],
+    decision: "corrected",
+    notes: "Субъективная формула о способе изображения Китая заменена проверяемыми сведениями о биографии, трилогии и Нобелевской премии; добавлено место смерти.",
+  },
+  {
+    key: "usa:philip_roth",
+    originalSha256: "776cef6af5481e6da6ba6d681d137e700dbb109251e3f1e7a7e0291e55e39744",
+    reviewedTextRu: "Филип Рот (1933–2018) — американский писатель, автор романов «Американская пастораль», «Людское клеймо» и «Заговор против Америки». За «Американскую пастораль» он получил Пулитцеровскую премию 1997 года.",
+    evidence: [
+      e("Library of Congress", "https://www.loc.gov/programs/poetry-and-literature/prizes/fiction-prize/item/n79125808/philip-roth/", "Библиотека Конгресса подтверждает литературную карьеру Рота и Пулитцеровскую премию 1997 года за «American Pastoral»."),
+      e("Library of America", "https://www.loa.org/writers/260-philip-roth/", "Независимый профиль подтверждает годы 1933–2018 и перечисляет «American Pastoral», «The Human Stain» и «The Plot Against America»."),
+    ],
+    decision: "corrected",
+    notes: "Оценочное ранжирование заменено произведениями и официально зафиксированной наградой; существующие даты профиля подтверждены.",
+  },
+  {
+    key: "usa:ralph_ellison",
+    originalSha256: "9933b503748a04573d7a12b6fe30ad0ef0819e79847e6e5010faeb1cc6b2f0d9",
+    reviewedTextRu: "Ральф Эллисон — американский писатель, эссеист и литературный критик. Его роман 1952 года «Человек-невидимка» получил Национальную книжную премию в 1953 году.",
+    evidence: [
+      e("Library of Congress", "https://www.loc.gov/item/n50010027/ralph-ellison/", "Библиотека Конгресса называет Эллисона писателем и эссеистом, датирует «Invisible Man» 1952 годом и использует 1914 год рождения."),
+      e("Library of America", "https://www.loa.org/writers/681-ralph-ellison/", "Library of America независимо подтверждает произведения и смерть в 1994 году, но приводит 1913 год рождения, документируя расхождение."),
+    ],
+    decision: "corrected",
+    notes: "Оценочная формула заменена датой романа и наградой. Точная дата рождения очищена fail-closed: Библиотека Конгресса использует 1914 год, а Library of America — 1913 год; диапазон отражён в поле years.",
+  },
+  {
+    key: "usa:ralph_waldo_emerson",
+    originalSha256: "be6013b3e1908312a3543cd2d14b013d97735ea461cf4171ab39dc2d89b1dc81",
+    reviewedTextRu: "Американский философ, эссеист и поэт, один из основателей американского трансцендентализма.",
+    evidence: [
+      e("Library of Congress", "https://www.loc.gov/item/2021669466/", "Библиотека Конгресса характеризует Эмерсона как американского эссеиста, философа и поэта 1803–1882 годов и участника трансценденталистского движения."),
+      e("U.S. National Park Service", "https://home.nps.gov/places/ralph-waldo-emerson-house.htm", "NPS независимо называет Эмерсона философом-трансценденталистом, поэтом и лектором и связывает его с эссе «Nature»."),
+    ],
+    decision: "unchanged",
+    notes: "Исходное предложение нейтрально и подтверждается федеральными культурными источниками; даты, места и произведения профиля согласуются с ними.",
+  },
+  {
+    key: "usa:ransom_riggs",
+    originalSha256: "972e61358565bd13d17ba958720a2c33593f86abf3bd759502e295cb70a64d3b",
+    reviewedTextRu: "Рэнсом Риггз - американский писатель и режиссёр. Он создал цикл, начавшийся романом «Дом странных детей мисс Перегрин».",
+    evidence: [
+      e("Penguin Random House", "https://www.penguinrandomhouse.com/authors/130726/ransom-riggs/", "Издательский профиль подтверждает литературную и кинематографическую подготовку Риггза и серию «Miss Peregrine's Peculiar Children»."),
+      e("Simon & Schuster", "https://www.simonandschuster.com/books/Miss-Peregrines-Home-for-Peculiar-Children/Ransom-Riggs/Miss-Peregrines-Peculiar-Children/9781594744761", "Независимый издатель называет «Miss Peregrine's Home for Peculiar Children» первым романом одноимённого цикла Риггза."),
+    ],
+    decision: "unchanged",
+    notes: "Исходные два предложения точны и нейтральны; год рождения намеренно не добавляется, поскольку использованные официальные профили его не приводят.",
+  },
+  {
+    key: "usa:ray_bradbury",
+    originalSha256: "11261bb5161c7a4a68dad0e33d2de604c24bc8c63485fe0a27b9ccef261cd7b4",
+    reviewedTextRu: "Рэй Брэдбери (1920–2012) — американский писатель, автор романа «451° по Фаренгейту» и сборника связанных рассказов «Марсианские хроники». Он также писал фэнтези, пьесы и сценарии для телевидения.",
+    evidence: [
+      e("Library of Congress", "https://www.loc.gov/item/n79139258/ray-bradbury/", "Библиотека Конгресса подтверждает годы 1920–2012, «Fahrenheit 451», «The Martian Chronicles», рассказы и телевизионные адаптации Брэдбери."),
+      e("Library of America", "https://www.loa.org/writers/770-ray-bradbury/", "Независимый профиль подтверждает годы и основные произведения Брэдбери в научной фантастике, фэнтези и хорроре."),
+    ],
+    decision: "corrected",
+    notes: "Оценочное ранжирование заменено произведениями и документированными видами литературной работы; ключевые книги добавлены в неполный список профиля.",
+  },
+  {
+    key: "usa:richard_matheson",
+    originalSha256: "9a880d893a12f3ad0f262a2f0885a3a350c04c4b49bcba04e84006a81533843a",
+    reviewedTextRu: "Ричард Матесон (1926–2013) — американский писатель и сценарист. Он написал романы «Я — легенда» и «Куда приводят мечты», а также сценарии для сериала «Сумеречная зона».",
+    evidence: [
+      e("Penguin Random House", "https://www.penguinrandomhouse.com/books/812138/i-am-legend-by-richard-matheson-foreword-by-joe-r-lansdale/", "Издатель подтверждает годы 1926–2013 и авторство «I Am Legend», «What Dreams May Come» и других романов Матесона."),
+      e("Science Fiction and Fantasy Writers Association", "https://sfwa.org/2013/06/25/in-memoriam-richard-matheson/", "SFWA независимо подтверждает даты, романы и многочисленные сценарии Матесона для «The Twilight Zone» и других экранных проектов."),
+    ],
+    decision: "corrected",
+    notes: "Неизмеримая характеристика влияния заменена произведениями и сценарными работами; русское имя и список книг приведены к согласованной форме.",
+  },
+  {
+    key: "usa:robert_ludlum",
+    originalSha256: "3616a7c514f9db674ccd7d2fb103ee34b881e9a46d5be44ef2555403bc3f08c9",
+    reviewedTextRu: "Роберт Ладлэм - американский писатель, автор шпионских триллеров. Роман «Идентификация Борна» положил начало циклу о Джейсоне Борне.",
+    evidence: [
+      e("Macmillan", "https://us.macmillan.com/author/robertludlum/", "Издатель подтверждает годы 1927–2001, рождение в Нью-Йорке, карьеру автора триллеров и три исходных романа о Борне."),
+      e("Robert Ludlum official site", "https://robertludlum.com/allbooks/bourne-series/", "Официальная библиография указывает «The Bourne Identity» как первую книгу цикла о Джейсоне Борне."),
+    ],
+    decision: "unchanged",
+    notes: "Исходные утверждения нейтральны и подтверждены двумя издательскими источниками; в ранее пустые поля внесены только годовые и библиографические данные.",
+  },
+  {
+    key: "usa:saul_bellow",
+    originalSha256: "bea6613559afcb8e136465b15c4288e87d9243183dd9f85bf2cfd43324538089",
+    reviewedTextRu: "Сол Беллоу (1915–2005) — родившийся в Канаде американский романист, выросший в Чикаго. Он написал романы «Приключения Оги Марча», «Герцог» и «Дар Гумбольдта» и получил Нобелевскую премию по литературе 1976 года.",
+    evidence: [
+      e("Nobel Prize Outreach", "https://www.nobelprize.org/laureate/652", "Официальная запись подтверждает даты 10 июня 1915 — 5 апреля 2005, рождение в Лашине, смерть в Бруклайне, чикагское взросление, романы и премию 1976 года."),
+      e("University of Chicago Library", "https://www.lib.uchicago.edu/e/scrc/findingaids/view.php?eadid=ICU.SPCL.BELLOWS", "Архив Чикагского университета независимо подтверждает биографию Беллоу, связь с Чикаго, «Humboldt's Gift», Пулитцеровскую и Нобелевскую премии."),
+    ],
+    decision: "corrected",
+    notes: "Литературно-критическая интерпретация заменена местами жизни, произведениями и наградой; добавлено официально указанное место смерти.",
+  },
+];
+
+export const writerBiographyFactReviewBatch55: readonly WriterBiographyFactReviewRecord[] = seeds.map(
+  (seed) => {
+    const verdict: WriterBiographyClaimVerdict =
+      seed.decision === "held"
+        ? "not-established"
+        : seed.decision === "unchanged"
+          ? "supported"
+          : "corrected";
+    return {
+      key: seed.key,
+      originalSha256: seed.originalSha256,
+      reviewedTextRu: seed.reviewedTextRu,
+      applicableTextRu: seed.decision === "held" ? null : seed.reviewedTextRu,
+      claims: [
+        {
+          textRu: seed.reviewedTextRu,
+          verdict,
+          evidence: seed.evidence.map(([provider, url, findingRu]) => ({
+            provider,
+            url,
+            checkedAt,
+            findingRu,
+          })),
+        },
+      ],
+      reviewer,
+      decision: seed.decision,
+      notes: seed.notes,
+    };
+  }
+);

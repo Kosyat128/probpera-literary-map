@@ -51,6 +51,10 @@ import { writerBiographyFactReviewBatch50 } from "../src/data/countries/writerBi
 import { writerBiographyFactReviewBatch51 } from "../src/data/countries/writerBiographyFactReviewBatch51";
 import { writerBiographyFactReviewBatch52 } from "../src/data/countries/writerBiographyFactReviewBatch52";
 import { writerBiographyFactReviewBatch53 } from "../src/data/countries/writerBiographyFactReviewBatch53";
+import { writerBiographyFactReviewBatch54 } from "../src/data/countries/writerBiographyFactReviewBatch54";
+import { writerBiographyFactReviewBatch55 } from "../src/data/countries/writerBiographyFactReviewBatch55";
+import { writerBiographyFactReviewBatch56 } from "../src/data/countries/writerBiographyFactReviewBatch56";
+import { writerBiographyFactReviewBatch57 } from "../src/data/countries/writerBiographyFactReviewBatch57";
 
 /**
  * Build-only registry. Detailed evidence stays outside the public bundle; the
@@ -110,4 +114,8 @@ export const writerBiographyFactReviews = [
   ...writerBiographyFactReviewBatch51,
   ...writerBiographyFactReviewBatch52,
   ...writerBiographyFactReviewBatch53,
+  ...writerBiographyFactReviewBatch54,
+  ...writerBiographyFactReviewBatch55,
+  ...writerBiographyFactReviewBatch56,
+  ...writerBiographyFactReviewBatch57,
 ];
