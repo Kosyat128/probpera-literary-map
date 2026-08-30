@@ -232,11 +232,11 @@ export const stage5FinalInterfaceCopyAttestation = Object.freeze({
       "2153ede98400e11faf5c73cd5ee15427394c62be6b05543886b7efa0a1f3f92d",
   }),
   catalog: Object.freeze({
-    entries: 1400,
+    entries: 1403,
     keysSha256:
-      "933287ece7fbbf41edcd5cae84bace76c8b4b80e47ba0789a4f83126cf1bb8b6",
+      "a2c49b3f52525047d62484be28ff06867c0c5617340752bce8a9fd1574cc46fd",
     contentSha256:
-      "88285b0ec678388b207fd6a236ad97b4aadaf14f2acb36f8fe8ef3ce89218b57",
+      "87492117cb62bdfa216dc5ca8f7c4bf32fce926c24ee2847fa968f5e7aff03f3",
   }),
 });
 
