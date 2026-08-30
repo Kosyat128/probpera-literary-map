@@ -23,6 +23,7 @@ import {
   type EditorMediaSlotDetail,
 } from "@/components/editorMediaEvents";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
+import type { EditorialGalleryItemInput } from "@/lib/editorial-gallery";
 
 type EditorMediaTarget =
   | {
@@ -41,6 +42,11 @@ type EditorMediaTarget =
       kind: "slot";
       position: number;
       contextKey: string;
+    }
+  | {
+      kind: "collection";
+      contextKey: string;
+      onCollect: (items: EditorialGalleryItemInput[]) => void;
     };
 
 type QueueJob = {
@@ -73,7 +79,7 @@ function queueId() {
 
 function imageLayout(attributes: Record<string, unknown>): EditorialImageLayout {
   const value = attributes.layout;
-  return value === "normal" || value === "left" || value === "right"
+  return value === "normal" || value === "full" || value === "left" || value === "right"
     ? value
     : "wide";
 }
@@ -150,6 +156,18 @@ export function useEditorMediaWorkflow({
         );
       }
 
+      if (target.kind === "collection") {
+        target.onCollect(
+          uploaded.map((item) => ({
+            src: item.attributes.src,
+            mediaId: item.attributes.mediaId,
+            alt: item.attributes.alt,
+            caption: item.attributes.caption,
+          }))
+        );
+        return;
+      }
+
       if (target.kind === "replace") {
         const first = uploaded[0];
         if (
@@ -210,8 +228,14 @@ export function useEditorMediaWorkflow({
       }
       if (!supported.length) return;
       const orderedFiles =
-        target.kind === "insert" ? supported : supported.slice(0, 1);
-      if (target.kind !== "insert" && supported.length > 1) {
+        target.kind === "insert" || target.kind === "collection"
+          ? supported
+          : supported.slice(0, 1);
+      if (
+        target.kind !== "insert" &&
+        target.kind !== "collection" &&
+        supported.length > 1
+      ) {
         callbacksRef.current.onError?.(
           "Для замены изображения или заполнения квадрата используется только первый файл."
         );
@@ -321,7 +345,11 @@ export function useEditorMediaWorkflow({
           callbacksRef.current.onChanged();
           callbacksRef.current.onMessage?.(
             readyToAttach.length > 1
-              ? `${readyToAttach.length} изображения загружены и вставлены рядом в исходном порядке.`
+              ? target.kind === "collection"
+                ? `${readyToAttach.length} изображения загружены и добавлены в подборку.`
+                : `${readyToAttach.length} изображения загружены и вставлены рядом в исходном порядке.`
+              : target.kind === "collection"
+                ? "Изображение загружено и добавлено в подборку."
               : target.kind === "replace"
                 ? "Выбранное изображение точно заменено."
                 : target.kind === "slot"
@@ -358,7 +386,8 @@ export function useEditorMediaWorkflow({
       if (!nextTarget) return;
       targetRef.current = nextTarget;
       if (fileInputRef.current) {
-        fileInputRef.current.multiple = nextTarget.kind === "insert";
+        fileInputRef.current.multiple =
+          nextTarget.kind === "insert" || nextTarget.kind === "collection";
         fileInputRef.current.click();
       }
     },
@@ -371,6 +400,30 @@ export function useEditorMediaWorkflow({
     targetRef.current = nextTarget;
     setDialogOpen(true);
   }, [captureTarget]);
+
+  const collectionTarget = useCallback(
+    (onCollect: (items: EditorialGalleryItemInput[]) => void): EditorMediaTarget => ({
+      kind: "collection",
+      contextKey: contextKeyRef.current,
+      onCollect,
+    }),
+    []
+  );
+
+  const openCollectionLibrary = useCallback(
+    (onCollect: (items: EditorialGalleryItemInput[]) => void) => {
+      targetRef.current = collectionTarget(onCollect);
+      setDialogOpen(true);
+    },
+    [collectionTarget]
+  );
+
+  const openCollectionPicker = useCallback(
+    (onCollect: (items: EditorialGalleryItemInput[]) => void) => {
+      openPicker(collectionTarget(onCollect));
+    },
+    [collectionTarget, openPicker]
+  );
 
   const pickForCurrentTarget = useCallback(() => {
     const target = targetRef.current ?? captureTarget();
@@ -448,6 +501,25 @@ export function useEditorMediaWorkflow({
       const target = targetRef.current ?? captureTarget();
       if (!target) return;
       try {
+        if (target.kind === "collection") {
+          target.onCollect([
+            {
+              src: asset.src,
+              mediaId: asset.id,
+              alt: asset.alt,
+              caption: asset.caption,
+              credit: asset.creator,
+              source: asset.sourceUrl,
+              license: asset.licenseName,
+              licenseUrl: asset.licenseUrl,
+            },
+          ]);
+          callbacksRef.current.onChanged();
+          callbacksRef.current.onMessage?.(
+            "Изображение из медиатеки добавлено в подборку."
+          );
+          return;
+        }
         attachUploaded(target, [
           {
             id: asset.id,
@@ -552,11 +624,14 @@ export function useEditorMediaWorkflow({
     openPicker,
     pickForCurrentTarget,
     openLibrary,
+    openCollectionLibrary,
+    openCollectionPicker,
     enqueueFiles,
     handleFileInput,
     handleDrop,
     handlePaste,
     closeDialog: () => setDialogOpen(false),
+    collectionMode: targetRef.current?.kind === "collection",
     selectLibraryAsset,
     cancelItem,
     retryItem,

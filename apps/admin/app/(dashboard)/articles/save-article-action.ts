@@ -5,11 +5,16 @@ import { articleCanonicalUrl } from "@/lib/article-route";
 import {
   isMachineOwnedEnglishArticleTranslation,
   premiumArticleMachineContentJson,
+  refreshArticleMachineMediaReferences,
   stripPremiumArticleMachineMetadata,
 } from "@/lib/article-translation-machine-ownership";
 import { articleTranslationSourceHash } from "@/lib/article-translations";
 import { translateArticleSourceToEnglish } from "@/lib/auto-translate-article";
 import { adminEnv } from "@/lib/env";
+import {
+  assertEditorialMediaIdentityParity,
+  parseEditorialContentJson,
+} from "@/lib/editorial-media-identity";
 import { redirect } from "@/lib/navigation";
 import { normalizeShortHyphensFormData } from "@/lib/short-hyphens";
 import { createSlug } from "@/lib/slug";
@@ -37,14 +42,6 @@ function lineItems(value: FormDataEntryValue | null) {
     .filter(Boolean)
     .slice(0, 100)
     .map((text) => ({ text }));
-}
-
-function parsedContentJson(value: FormDataEntryValue | null) {
-  try {
-    return JSON.parse(String(value || "{}")) as unknown;
-  } catch {
-    return { type: "doc", content: [] };
-  }
 }
 
 function publicationErrorPath(articleId: string | null, message: string) {
@@ -163,7 +160,12 @@ function preserveMachineOwnershipInFormData(
 ) {
   formData.set(
     "english_content_json",
-    JSON.stringify(existing.content_json || { type: "doc", content: [] })
+    JSON.stringify(
+      refreshArticleMachineMediaReferences(
+        existing.content_json,
+        existing.content_html || ""
+      )
+    )
   );
 }
 
@@ -250,7 +252,27 @@ export async function saveArticleAction(formData: FormData) {
   const rawSlug = String(formData.get("slug") || "").trim();
   const slug = createSlug(rawSlug || title) || `material-${Date.now()}`;
   const contentHtml = String(formData.get("content_html") || "");
-  const contentJson = parsedContentJson(formData.get("content_json"));
+  let contentJson: unknown;
+  try {
+    contentJson = parseEditorialContentJson(
+      String(formData.get("content_json") || ""),
+      "Русская версия статьи"
+    );
+    assertEditorialMediaIdentityParity(
+      contentJson,
+      contentHtml,
+      "Русская версия статьи"
+    );
+  } catch (error) {
+    redirect(
+      publicationErrorPath(
+        articleId,
+        error instanceof Error
+          ? error.message
+          : "Сохранение остановлено: JSON редактора повреждён."
+      )
+    );
+  }
   const coverAlt = String(formData.get("cover_alt") || "").trim();
   const sources = lineItems(formData.get("sources"));
   const bibliography = lineItems(formData.get("bibliography"));
@@ -391,13 +413,16 @@ export async function saveArticleAction(formData: FormData) {
     formData.set(
       "english_content_json",
       JSON.stringify(
-        premiumArticleMachineContentJson({
-          sourceHash,
-          model: translated.model,
-          reviewerModel: translated.reviewModel,
-          translatorRequestId: translated.requestId,
-          reviewerRequestId: translated.reviewRequestId,
-        })
+        premiumArticleMachineContentJson(
+          {
+            sourceHash,
+            model: translated.model,
+            reviewerModel: translated.reviewModel,
+            translatorRequestId: translated.requestId,
+            reviewerRequestId: translated.reviewRequestId,
+          },
+          translated.content_html
+        )
       )
     );
     formData.set("english_cover_alt", translated.cover_alt);

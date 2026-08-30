@@ -13,13 +13,17 @@ const schema = {
 } as const;
 
 function response(text: string, id: string, requestId: string) {
+  return responseValue({ text }, id, requestId);
+}
+
+function responseValue(value: unknown, id: string, requestId: string) {
   return new Response(
     JSON.stringify({
       id,
       output: [
         {
           type: "message",
-          content: [{ type: "output_text", text: JSON.stringify({ text }) }],
+          content: [{ type: "output_text", text: JSON.stringify(value) }],
         },
       ],
       usage: { input_tokens: 100, output_tokens: 40 },
@@ -177,6 +181,58 @@ describe("premium English translation", () => {
       String((fetchImpl as ReturnType<typeof vi.fn>).mock.calls[0]?.[1]?.body)
     );
     expect(body.reasoning).toEqual({ effort: "high", mode: "standard" });
+  });
+
+  it("repairs one schema-invalid translation instead of stopping the batch", async () => {
+    const fetchImpl = vi
+      .fn()
+      .mockResolvedValueOnce(
+        responseValue({ text: null }, "resp_invalid", "req_invalid")
+      )
+      .mockResolvedValueOnce(
+        response("Repaired complete translation", "resp_repair", "req_repair")
+      )
+      .mockResolvedValueOnce(
+        response("Reviewed repaired translation", "resp_review", "req_review")
+      ) as unknown as typeof fetch;
+
+    const result = await premiumTranslateToEnglish({
+      source: { text: "Русский исходник" },
+      schema,
+      schemaName: "test_repair",
+      validate: validateText,
+      provider: "openai",
+      apiKey: "test-key",
+      model: "gpt-5.6-sol",
+      reviewerModel: "gpt-5.6-sol",
+      reasoningEffort: "high",
+      reasoningMode: "standard",
+      reviewerReasoningEffort: "high",
+      reviewerReasoningMode: "standard",
+      review: true,
+      fetchImpl,
+    });
+
+    expect(fetchImpl).toHaveBeenCalledTimes(3);
+    expect(result.value.text).toBe("Reviewed repaired translation");
+    expect(result.reviewerRequestId).toBe("req_review");
+    expect(result.reviewInputTokens).toBe(200);
+    expect(result.reviewOutputTokens).toBe(80);
+
+    const repairBody = JSON.parse(
+      String((fetchImpl as ReturnType<typeof vi.fn>).mock.calls[1]?.[1]?.body)
+    );
+    expect(repairBody.text.format.name).toBe("test_repair_repair");
+    expect(repairBody.instructions).toContain("VALIDATION_FAILURE");
+    expect(repairBody.input).toContain("INVALID_DRAFT_TRANSLATION");
+    expect(repairBody.input).toContain("VALIDATION_FAILURE");
+
+    const reviewBody = JSON.parse(
+      String((fetchImpl as ReturnType<typeof vi.fn>).mock.calls[2]?.[1]?.body)
+    );
+    expect(reviewBody.text.format.name).toBe("test_repair_final");
+    expect(reviewBody.input).toContain("DRAFT_TRANSLATION");
+    expect(reviewBody.input).toContain("Repaired complete translation");
   });
 
   it("never calls OpenAI without a server API key", async () => {

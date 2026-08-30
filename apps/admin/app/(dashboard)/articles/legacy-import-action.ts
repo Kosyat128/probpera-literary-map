@@ -8,8 +8,17 @@ import { requireStaff } from "@/lib/auth";
 import { articlePublicPath } from "@/lib/article-route";
 import { safeTextToneSpanAttributes } from "@/lib/article-content-presentation";
 import { positionLeadingIllustrationHtml } from "@/lib/article-leading-illustration";
+import { machineArticleContentJsonFromHtml } from "@/lib/article-translation-machine-ownership";
 import { adminEnv } from "@/lib/env";
 import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
+import {
+  editorialGalleryAttributeNames,
+  safeEditorialGalleryHtmlAttributes,
+} from "@/lib/editorial-gallery";
+import {
+  editorialImageDataAttributes,
+  safeEditorialImageHtmlAttributes,
+} from "@/lib/editorial-media-content";
 import { createSlug } from "@/lib/slug";
 import { normalizeShortHyphensDeep } from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -36,11 +45,21 @@ const allowedArticleHtml = {
       "data-image-layout",
       "data-caption",
       "data-media-id",
+      ...editorialImageDataAttributes,
+      ...editorialGalleryAttributeNames,
       "data-text-tone",
     ],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
+    img: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialImageHtmlAttributes(attributes),
+    }),
+    section: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialGalleryHtmlAttributes(attributes),
+    }),
     a: (tagName: string, attributes: Record<string, string>) => ({
       tagName,
       attribs: sanitizeEditorAnchorAttributes(attributes),
@@ -154,14 +173,15 @@ export async function importLegacyArticlesAction() {
       const categorySlug = legacyCategoryBySection[article.sectionId || ""];
       const slug = createSlug(article.title) || "material";
       const path = legacyPath(article.url);
+      const contentHtml = positionLeadingIllustrationHtml(
+        sanitizeHtml(documents[index]?.contentHtml || "", allowedArticleHtml)
+      );
       return normalizeShortHyphensDeep({
         legacy_id: article.id,
         title: article.title.trim(),
         excerpt: String(article.description || "").trim().slice(0, 700),
-        content_json: { type: "doc", content: [] },
-        content_html: positionLeadingIllustrationHtml(
-          sanitizeHtml(documents[index]?.contentHtml || "", allowedArticleHtml)
-        ),
+        content_json: machineArticleContentJsonFromHtml(contentHtml),
+        content_html: contentHtml,
         cover_external_url: article.imageUrl || null,
         cover_alt:
           article.imageAlt ||

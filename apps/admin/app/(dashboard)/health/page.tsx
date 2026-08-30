@@ -67,6 +67,18 @@ export default async function HealthPage() {
     : schemaCheckAvailable
       ? "Требуется актуальная production-схема с save_article_bundle"
       : "Проверка production-схемы недоступна; сохранение закрыто безопасно";
+  const mediaStudioReady = Boolean(
+    schemaCheckAvailable
+      && schemaHealth?.version === CURRENT_EDITORIAL_SCHEMA_VERSION
+      && schemaHealth?.mediaStudioLifecycle === true
+      && schemaHealth?.mediaUsageGraph === true
+      && schemaHealth?.mediaSafeReplaceRpc === true
+  );
+  const mediaStudioDetail = mediaStudioReady
+    ? "граф связей, корзина и атомарная замена готовы"
+    : schemaCheckAvailable
+      ? "нужна актуальная lifecycle-миграция Media Studio"
+      : "проверка схемы недоступна; опасные операции закрыты";
   const translationConfigured = adminEnv.premiumTranslationConfigured;
   const translationEnabled = adminEnv.openAiAutoTranslateArticles;
   const workersAi = adminEnv.premiumTranslationProvider === "cloudflare";
@@ -101,6 +113,7 @@ export default async function HealthPage() {
       <article className="stat-card"><span>Групп</span><strong>{diagnostics.length}</strong><small>уникальных причин</small></article>
       <article className="stat-card"><span>Схема CMS</span><strong>{schemaStatusLabel}</strong><small>{schemaStatusDetail}</small></article>
       <article className="stat-card"><span>Сохранение RU+EN</span><strong>{atomicArticleSaveLabel}</strong><small>{atomicArticleSaveDetail}</small></article>
+      <article className="stat-card"><span>Media Studio</span><strong>{mediaStudioReady ? "Готова" : "Закрыта"}</strong><small>{mediaStudioDetail}</small></article>
       <article className="stat-card"><span>Публикация</span><strong>{schemaHealth?.pendingPublicBuilds ?? "-"}</strong><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : "ожидают подтверждения deploy"}</small></article>
       <article className="stat-card"><span>Автоперевод EN</span><strong>{translationStatusLabel}</strong><small>{translationStatusDetail}</small></article>
     </section>

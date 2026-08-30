@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -186,6 +187,7 @@ export async function POST(request: Request) {
 
   try {
     const bytes = new Uint8Array(await file.arrayBuffer());
+    const sha256Hex = createHash("sha256").update(bytes).digest("hex");
     const imageDimensions = readWebpDimensions(bytes);
     if (!imageDimensions) {
       return NextResponse.json(
@@ -240,6 +242,7 @@ export async function POST(request: Request) {
         byte_size: bytes.byteLength,
         width: imageDimensions.width,
         height: imageDimensions.height,
+        sha256_hex: sha256Hex,
         alt_text: parsed.data.altText,
         caption: parsed.data.caption,
         creator: parsed.data.creator,
@@ -272,6 +275,7 @@ export async function POST(request: Request) {
           width: imageDimensions.width,
           height: imageDimensions.height,
         },
+        sha256: sha256Hex,
       },
     });
 
@@ -291,6 +295,7 @@ export async function POST(request: Request) {
       url: publicUrlData.publicUrl,
       width: imageDimensions.width,
       height: imageDimensions.height,
+      sha256: sha256Hex,
       publication: publication.state,
     });
   } catch (error) {

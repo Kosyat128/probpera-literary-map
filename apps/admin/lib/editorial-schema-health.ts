@@ -1,5 +1,5 @@
 export const CURRENT_EDITORIAL_SCHEMA_VERSION =
-  "20260822_zz_atomic_article_bundle";
+  "20260830_media_studio_lifecycle";
 
 export type EditorialSchemaHealth = {
   version?: string;
@@ -17,6 +17,9 @@ export type EditorialSchemaHealth = {
   writerOverrides?: boolean;
   homepageMove?: boolean;
   tagsUpdatedAt?: boolean;
+  mediaStudioLifecycle?: boolean;
+  mediaUsageGraph?: boolean;
+  mediaSafeReplaceRpc?: boolean;
 };
 
 export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
@@ -33,6 +36,9 @@ export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
   "writerOverrides",
   "homepageMove",
   "tagsUpdatedAt",
+  "mediaStudioLifecycle",
+  "mediaUsageGraph",
+  "mediaSafeReplaceRpc",
 ] as const;
 
 export type EditorialSchemaRequiredFlag =
@@ -55,6 +61,9 @@ const editorialSchemaCapabilityLabels: Record<
   writerOverrides: "исправления писателей",
   homepageMove: "перемещение блоков главной",
   tagsUpdatedAt: "метки времени тегов",
+  mediaStudioLifecycle: "жизненный цикл медиатеки",
+  mediaUsageGraph: "граф использования изображений",
+  mediaSafeReplaceRpc: "безопасная атомарная замена изображений",
 };
 
 export function getMissingEditorialSchemaCapabilities(

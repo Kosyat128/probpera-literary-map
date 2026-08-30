@@ -6,6 +6,14 @@ import { safeTextToneSpanAttributes } from "./article-content-presentation";
 import { englishTranslationReleaseIssues } from "./article-translations";
 import { sanitizeEditorAnchorAttributes } from "./editor-link";
 import {
+  editorialImageDataAttributes,
+  safeEditorialImageHtmlAttributes,
+} from "./editorial-media-content";
+import {
+  editorialGalleryAttributeNames,
+  safeEditorialGalleryHtmlAttributes,
+} from "./editorial-gallery";
+import {
   protectedArticleHtmlSignature,
   type AutoTranslationSource,
 } from "./auto-translate-article-core";
@@ -100,11 +108,21 @@ const allowedArticleHtml = {
       "data-image-layout",
       "data-caption",
       "data-media-id",
+      ...editorialImageDataAttributes,
+      ...editorialGalleryAttributeNames,
       "data-text-tone",
     ],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
+    img: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialImageHtmlAttributes(attributes),
+    }),
+    section: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialGalleryHtmlAttributes(attributes),
+    }),
     a: (tagName: string, attributes: Record<string, string>) => ({
       tagName,
       attribs: sanitizeEditorAnchorAttributes(attributes),
@@ -185,10 +203,15 @@ function visibleEnglishPayload(value: TranslatedArticle) {
 function validateArticleTranslation(value: unknown) {
   const parsed = translatedArticleSchema.safeParse(value);
   if (!parsed.success) {
+    const issues = parsed.error.issues
+      .slice(0, 4)
+      .map((issue) => {
+        const path = issue.path.length ? issue.path.join(".") : "$";
+        return `${path}: ${issue.message} (${issue.code})`;
+      })
+      .join("; ");
     throw new Error(
-      `OpenAI translation did not match the editorial schema: ${
-        parsed.error.issues[0]?.message || "invalid result"
-      }`
+      `OpenAI translation did not match the editorial schema: ${issues || "invalid result"}`
     );
   }
   return parsed.data;
@@ -225,12 +248,27 @@ export async function translateArticleSourceToEnglish(
 ): Promise<PremiumArticleTranslationResult> {
   const sourceHtml = sanitizeHtml(source.contentHtml, allowedArticleHtml);
   const sourceSignature = protectedArticleHtmlSignature(sourceHtml);
+  const validateTranslatedArticle = (value: unknown) => {
+    const parsed = validateArticleTranslation(value);
+    const canonicalHtml = sanitizeHtml(parsed.content_html, allowedArticleHtml);
+    if (
+      !sameStringArray(
+        sourceSignature,
+        protectedArticleHtmlSignature(canonicalHtml)
+      )
+    ) {
+      throw new Error(
+        "OpenAI translation changed protected HTML structure or link/image attributes"
+      );
+    }
+    return { ...parsed, content_html: canonicalHtml };
+  };
 
   const translated = await premiumTranslateToEnglish({
     source: { ...source, contentHtml: sourceHtml },
     schema: translationJsonSchema,
     schemaName: "probpera_article_translation",
-    validate: validateArticleTranslation,
+    validate: validateTranslatedArticle,
     maxOutputTokens: 60_000,
     apiKey: options.apiKey,
     model: options.model,
@@ -244,7 +282,7 @@ export async function translateArticleSourceToEnglish(
     domainInstructions: [
       "This material is a literary magazine article. Preserve every paragraph, heading, list item, quotation, caption and editorial qualification in the original order.",
       "For content_html preserve complete HTML element order and nesting.",
-      "Preserve href, src, id, class, name, target, rel, width, height, loading, data-editorial-block, data-reveal, data-image-layout, data-media-id and data-text-tone values exactly.",
+      "Preserve href, src, id, class, name, target, rel, width, height, loading, data-editorial-block, data-reveal, data-image-*, data-focus-*, data-media-id, data-credit, data-source, data-license, data-license-url, data-link, data-lightbox, data-decorative, data-gallery-* and data-slider-* values exactly.",
       "Translate visible text plus human-facing alt, title, figcaption and data-caption text. Do not create or remove links, images or structural elements.",
       "Translate source and bibliography strings without inventing bibliographic data. Preserve every URL, ISBN, DOI, year, volume/issue number, publisher identity and identifier exactly.",
       "SEO and Open Graph fields must sound native, remain faithful to the article and avoid clickbait.",

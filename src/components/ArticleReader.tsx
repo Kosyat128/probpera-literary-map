@@ -42,6 +42,7 @@ import {
   shouldUseClientNavigation,
 } from "../utils/articleRoutes";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
+import { initializeEditorialSliders } from "../utils/initializeEditorialSliders";
 import BrandHeartIcon from "./BrandHeartIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
 import BrandArrowIcon from "./BrandArrowIcon";
@@ -167,11 +168,24 @@ export function articleReaderSourceItems(value?: ArticleContentSource[]) {
     .filter((item) => item.text && item.fullText);
 }
 
+function imageAllowsLightbox(image: HTMLImageElement) {
+  const collection = image.closest<HTMLElement>(
+    ".article-design-block.is-gallery, .article-design-block.is-slider"
+  );
+  return (
+    image.dataset.decorative !== "true" &&
+    image.dataset.lightbox !== "false" &&
+    !image.closest("a[href]") &&
+    collection?.dataset.galleryLightbox !== "false"
+  );
+}
+
 function contentMediaItems(html: string, baseUrl: string): ArticleMediaItem[] {
   if (!html || typeof DOMParser === "undefined") return [];
   const documentNode = new DOMParser().parseFromString(html, "text/html");
   return [...documentNode.querySelectorAll<HTMLImageElement>("img")]
     .map((image) => {
+      if (!imageAllowsLightbox(image)) return null;
       const rawSource =
         image.getAttribute("data-original") ||
         image.getAttribute("data-src") ||
@@ -187,7 +201,10 @@ function contentMediaItems(html: string, baseUrl: string): ArticleMediaItem[] {
         // The browser will still attempt to resolve the original source.
       }
       const figure = image.closest("figure");
-      const caption = figure?.querySelector("figcaption")?.textContent?.trim() || "";
+      const caption =
+        figure?.querySelector("figcaption")?.textContent?.trim() ||
+        image.dataset.caption?.trim() ||
+        "";
       return {
         src,
         alt: image.alt.trim(),
@@ -490,12 +507,17 @@ export default function ArticleReader({
     const root = contentRef.current;
     if (!root || !safeContentHtml) return;
     const heroOffset = displayArticle.imageUrl ? 1 : 0;
+    let eligibleImageIndex = 0;
     root.querySelectorAll<HTMLImageElement>("img").forEach((image, index) => {
       const caption = image
         .closest("figure")
         ?.querySelector("figcaption")
         ?.textContent?.trim();
-      if (!image.alt.trim()) {
+      const decorative = image.dataset.decorative === "true";
+      if (decorative) {
+        image.alt = "";
+        image.setAttribute("role", "presentation");
+      } else if (!image.alt.trim()) {
         image.alt =
           caption ||
           articleIllustrationAlt(language, displayArticle.title, index + 1);
@@ -503,15 +525,27 @@ export default function ArticleReader({
       image.loading = "lazy";
       image.decoding = "async";
       image.setAttribute("fetchpriority", "low");
-      image.tabIndex = 0;
-      image.setAttribute("role", "button");
-      image.setAttribute(
-        "aria-label",
-        image.alt
-          ? `${t("Открыть изображение")}: ${image.alt}`
-          : `${t("Открыть иллюстрацию")} ${number(index + 1)}`
-      );
-      image.dataset.articleMediaIndex = String(index + heroOffset);
+      if (imageAllowsLightbox(image)) {
+        image.tabIndex = 0;
+        image.setAttribute("role", "button");
+        image.setAttribute(
+          "aria-label",
+          image.alt
+            ? `${t("Открыть изображение")}: ${image.alt}`
+            : `${t("Открыть иллюстрацию")} ${number(index + 1)}`
+        );
+        image.dataset.articleMediaIndex = String(
+          eligibleImageIndex + heroOffset
+        );
+        eligibleImageIndex += 1;
+      } else {
+        image.removeAttribute("tabindex");
+        image.removeAttribute("data-article-media-index");
+        if (!decorative) {
+          image.removeAttribute("role");
+          image.removeAttribute("aria-label");
+        }
+      }
     });
   }, [
     displayArticle.imageUrl,
@@ -526,141 +560,23 @@ export default function ArticleReader({
     const root = contentRef.current;
     if (!root || !safeContentHtml) return;
 
-    const cleanups: Array<() => void> = [];
-    root
-      .querySelectorAll<HTMLElement>(".article-design-block.is-slider")
-      .forEach((slider, sliderIndex) => {
-        const images = Array.from(
-          slider.querySelectorAll<HTMLImageElement>(":scope > img")
-        );
-        if (!images.length) return;
-
-        slider.classList.add("is-interactive");
-        slider.tabIndex = 0;
-        slider.setAttribute("role", "region");
-        slider.setAttribute(
-          "aria-label",
-          `${t("Галерея статьи")} ${number(sliderIndex + 1)}: ${number(
-            images.length
-          )} ${t("изображений")}`
-        );
-
-        let activeIndex = 0;
-        let touchStartX: number | null = null;
-        const controls = document.createElement("div");
-        controls.className = "article-slider-controls";
-
-        const previousButton = document.createElement("button");
-        previousButton.type = "button";
-        previousButton.className = "article-slider-arrow is-previous";
-        previousButton.setAttribute("aria-label", t("Предыдущее изображение"));
-        previousButton.textContent = "←";
-
-        const dots = document.createElement("div");
-        dots.className = "article-slider-dots";
-        dots.setAttribute("role", "group");
-        dots.setAttribute("aria-label", t("Выбор изображения"));
-
-        const nextButton = document.createElement("button");
-        nextButton.type = "button";
-        nextButton.className = "article-slider-arrow is-next";
-        nextButton.setAttribute("aria-label", t("Следующее изображение"));
-        nextButton.textContent = "→";
-
-        const dotButtons = images.map((_, imageIndex) => {
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = "article-slider-dot";
-          button.setAttribute(
-            "aria-label",
-            `${t("Показать изображение")} ${number(
-              imageIndex + 1
-            )} ${t("из")} ${number(images.length)}`
-          );
-          dots.append(button);
-          return button;
-        });
-
-        controls.append(previousButton, dots, nextButton);
-        slider.append(controls);
-
-        const update = (nextIndex: number) => {
-          activeIndex = (nextIndex + images.length) % images.length;
-          images.forEach((image, imageIndex) => {
-            const isActive = imageIndex === activeIndex;
-            image.classList.toggle("is-active", isActive);
-            image.setAttribute("aria-hidden", String(!isActive));
-            image.tabIndex = isActive ? 0 : -1;
-          });
-          dotButtons.forEach((button, imageIndex) => {
-            const isActive = imageIndex === activeIndex;
-            button.classList.toggle("is-active", isActive);
-            button.setAttribute("aria-current", isActive ? "true" : "false");
-          });
-        };
-
-        const showPrevious = (event?: Event) => {
-          event?.preventDefault();
-          event?.stopPropagation();
-          update(activeIndex - 1);
-        };
-        const showNext = (event?: Event) => {
-          event?.preventDefault();
-          event?.stopPropagation();
-          update(activeIndex + 1);
-        };
-        const handleKeydown = (event: KeyboardEvent) => {
-          if (event.key === "ArrowLeft") showPrevious(event);
-          if (event.key === "ArrowRight") showNext(event);
-        };
-        const handleTouchStart = (event: TouchEvent) => {
-          touchStartX = event.changedTouches[0]?.clientX ?? null;
-        };
-        const handleTouchEnd = (event: TouchEvent) => {
-          const touchEndX = event.changedTouches[0]?.clientX;
-          if (touchStartX === null || touchEndX === undefined) return;
-          const distance = touchEndX - touchStartX;
-          touchStartX = null;
-          if (Math.abs(distance) < 42) return;
-          if (distance > 0) showPrevious(event);
-          else showNext(event);
-        };
-
-        previousButton.addEventListener("click", showPrevious);
-        nextButton.addEventListener("click", showNext);
-        dotButtons.forEach((button, imageIndex) => {
-          const handler = (event: MouseEvent) => {
-            event.preventDefault();
-            event.stopPropagation();
-            update(imageIndex);
-          };
-          button.addEventListener("click", handler);
-          cleanups.push(() => button.removeEventListener("click", handler));
-        });
-        slider.addEventListener("keydown", handleKeydown);
-        slider.addEventListener("touchstart", handleTouchStart, { passive: true });
-        slider.addEventListener("touchend", handleTouchEnd, { passive: false });
-        update(0);
-
-        cleanups.push(() => {
-          previousButton.removeEventListener("click", showPrevious);
-          nextButton.removeEventListener("click", showNext);
-          slider.removeEventListener("keydown", handleKeydown);
-          slider.removeEventListener("touchstart", handleTouchStart);
-          slider.removeEventListener("touchend", handleTouchEnd);
-          controls.remove();
-          slider.classList.remove("is-interactive");
-          slider.removeAttribute("role");
-          slider.removeAttribute("aria-label");
-          slider.removeAttribute("tabindex");
-          images.forEach((image) => {
-            image.classList.remove("is-active");
-            image.removeAttribute("aria-hidden");
-          });
-        });
-      });
-
-    return () => cleanups.forEach((cleanup) => cleanup());
+    return initializeEditorialSliders(root, {
+      region: (sliderIndex, imageCount) =>
+        `${t("Галерея статьи")} ${number(sliderIndex)}: ${number(
+          imageCount
+        )} ${t("изображений")}`,
+      previous: t("Предыдущее изображение"),
+      next: t("Следующее изображение"),
+      pause: t("Остановить автоматическую прокрутку"),
+      resume: t("Продолжить автоматическую прокрутку"),
+      selection: t("Выбор изображения"),
+      show: (imageIndex, imageCount) =>
+        `${t("Показать изображение")} ${number(imageIndex)} ${t("из")} ${number(
+          imageCount
+        )}`,
+      status: (imageIndex, imageCount) =>
+        `${number(imageIndex)} ${t("из")} ${number(imageCount)}`,
+    });
   }, [language, number, safeContentHtml, t]);
 
   useEffect(() => {
@@ -899,12 +815,20 @@ export default function ArticleReader({
 
   const openContentImage = (target: EventTarget | null) => {
     const image = target instanceof Element ? target.closest<HTMLImageElement>("img") : null;
-    if (!image || !contentRef.current?.contains(image)) return;
+    if (
+      !image ||
+      !contentRef.current?.contains(image) ||
+      !imageAllowsLightbox(image)
+    ) {
+      return false;
+    }
     const index = Number(image.dataset.articleMediaIndex);
     if (Number.isInteger(index) && mediaItems[index]) {
       lightboxTriggerRef.current = image;
       setActiveMediaIndex(index);
+      return true;
     }
+    return false;
   };
 
   const activeMedia =
@@ -1283,8 +1207,7 @@ export default function ArticleReader({
                       ? event.target.closest<HTMLImageElement>("img")
                       : null;
                   if (!image) return;
-                  event.preventDefault();
-                  openContentImage(image);
+                  if (openContentImage(image)) event.preventDefault();
                 }}
                 dangerouslySetInnerHTML={{ __html: safeContentHtml }}
               />

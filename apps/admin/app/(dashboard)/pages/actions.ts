@@ -13,6 +13,21 @@ import {
 import { adminEnv } from "@/lib/env";
 import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
 import {
+  editorialGalleryAttributeNames,
+  safeEditorialGalleryHtmlAttributes,
+  sanitizeEditorialGalleryJson,
+} from "@/lib/editorial-gallery";
+import {
+  editorialImageDataAttributes,
+  safeEditorialImageHtmlAttributes,
+  sanitizeEditorialMediaJson,
+} from "@/lib/editorial-media-content";
+import {
+  assertEditorialMediaIdentityParity,
+  editorialMediaHtmlAccessibilityIssues,
+  parseEditorialContentJson,
+} from "@/lib/editorial-media-identity";
+import {
   pageCatalogFromForm,
   pageCatalogHref,
   pageCatalogPageNumber,
@@ -75,11 +90,21 @@ const allowedPageHtml = {
       "data-image-layout",
       "data-caption",
       "data-media-id",
+      ...editorialImageDataAttributes,
+      ...editorialGalleryAttributeNames,
       "data-text-tone",
     ],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
+    img: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialImageHtmlAttributes(attributes),
+    }),
+    section: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialGalleryHtmlAttributes(attributes),
+    }),
     a: (tagName: string, attributes: Record<string, string>) => ({
       tagName,
       attribs: sanitizeEditorAnchorAttributes(attributes),
@@ -94,6 +119,43 @@ const allowedPageHtml = {
 function optionalText(value: FormDataEntryValue | null) {
   const text = String(value || "").trim();
   return text || null;
+}
+
+function sanitizeStoredPageContent(
+  contentJsonValue: unknown,
+  contentHtmlValue: unknown,
+  label: string
+) {
+  const serializedJson =
+    typeof contentJsonValue === "string"
+      ? contentJsonValue
+      : JSON.stringify(contentJsonValue);
+  if (typeof serializedJson !== "string" || serializedJson.length > 2_000_000) {
+    throw new Error(`${label}: JSON редактора отсутствует или слишком велик.`);
+  }
+  if (
+    typeof contentHtmlValue !== "string" ||
+    contentHtmlValue.length > 2_000_000
+  ) {
+    throw new Error(`${label}: HTML редактора отсутствует или слишком велик.`);
+  }
+  const contentJson = sanitizeEditorialGalleryJson(
+    sanitizeEditorialMediaJson(
+      sanitizeArticleTextToneJson(
+        parseEditorialContentJson(serializedJson, label)
+      )
+    )
+  );
+  const contentHtml = sanitizeHtml(contentHtmlValue, allowedPageHtml);
+  assertEditorialMediaIdentityParity(contentJson, contentHtml, label);
+  return { contentJson, contentHtml };
+}
+
+function assertPagePublicationMedia(contentHtml: string) {
+  const issues = editorialMediaHtmlAccessibilityIssues(contentHtml);
+  if (issues.length) {
+    throw new Error(`Публикация остановлена: ${issues.join("; ")}.`);
+  }
 }
 
 async function auditPage(
@@ -229,11 +291,42 @@ export async function savePageAction(formData: FormData) {
 
   let contentJson: unknown;
   try {
-    contentJson = sanitizeArticleTextToneJson(
-      JSON.parse(parsed.data.contentJson)
+    contentJson = sanitizeEditorialGalleryJson(
+      sanitizeEditorialMediaJson(
+        sanitizeArticleTextToneJson(
+          parseEditorialContentJson(parsed.data.contentJson, "Страница")
+        )
+      )
     );
-  } catch {
-    contentJson = { type: "doc", content: [] };
+  } catch (error) {
+    redirect(editorTarget(id, {
+      error:
+        error instanceof Error
+          ? error.message
+          : "Страница: JSON редактора повреждён. Обновите страницу и повторите сохранение.",
+    }));
+  }
+
+  const contentHtml = sanitizeHtml(parsed.data.contentHtml, allowedPageHtml);
+  try {
+    assertEditorialMediaIdentityParity(contentJson, contentHtml, "Страница");
+  } catch (error) {
+    redirect(editorTarget(id, {
+      error:
+        error instanceof Error
+          ? error.message
+          : "Сохранение остановлено: данные изображений в редакторе расходятся.",
+    }));
+  }
+
+  if (parsed.data.status === "published") {
+    try {
+      assertPagePublicationMedia(contentHtml);
+    } catch (error) {
+      redirect(editorTarget(id, {
+        error: error instanceof Error ? error.message : "Проверьте alt-тексты изображений.",
+      }));
+    }
   }
 
   const supabase = await createServerSupabaseClient();
@@ -244,7 +337,7 @@ export async function savePageAction(formData: FormData) {
       title: parsed.data.title,
       slug: parsed.data.slug,
       excerpt: parsed.data.excerpt,
-      content_html: sanitizeHtml(parsed.data.contentHtml, allowedPageHtml),
+      content_html: contentHtml,
       content_json: contentJson,
       status: parsed.data.status,
       seo_title: parsed.data.seoTitle || parsed.data.title,
@@ -292,11 +385,47 @@ export async function changePageStatusAction(formData: FormData) {
   }
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect(target({ error: "База данных не подключена" }));
+  let checkedPublicationContent: ReturnType<typeof sanitizeStoredPageContent> | null = null;
+  if (status.data === "published") {
+    const { data: currentPage, error: currentPageError } = await supabase
+      .from("pages")
+      .select("content_json,content_html")
+      .eq("id", id.data)
+      .eq("updated_at", expectedUpdatedAt.data)
+      .maybeSingle();
+    if (currentPageError) redirect(target({ error: currentPageError.message }));
+    if (!currentPage) {
+      redirect(target({
+        error: "Страницу уже изменили в другой вкладке. Обновите список и повторите действие.",
+      }));
+    }
+    try {
+      checkedPublicationContent = sanitizeStoredPageContent(
+        currentPage.content_json,
+        currentPage.content_html,
+        "Страница"
+      );
+      assertPagePublicationMedia(checkedPublicationContent.contentHtml);
+    } catch (error) {
+      redirect(target({
+        error:
+          error instanceof Error
+            ? error.message
+            : "Публикация остановлена: проверьте изображения страницы.",
+      }));
+    }
+  }
   const { data: updated, error } = await supabase
     .from("pages")
     .update({
       status: status.data,
       updated_by: session.user.id,
+      ...(checkedPublicationContent
+        ? {
+            content_json: checkedPublicationContent.contentJson,
+            content_html: checkedPublicationContent.contentHtml,
+          }
+        : {}),
     })
     .eq("id", id.data)
     .eq("updated_at", expectedUpdatedAt.data)
@@ -379,21 +508,47 @@ export async function restorePageRevisionAction(formData: FormData) {
     redirect(editorTarget(id.data, { error: "Версия не найдена" }));
   }
   const snapshot = revision.snapshot as Record<string, unknown>;
+  const restoredStatus = z
+    .enum(["draft", "published", "hidden"])
+    .safeParse(snapshot.status);
+  if (!restoredStatus.success) {
+    redirect(editorTarget(id.data, {
+      error: "Версия содержит некорректный статус страницы.",
+    }));
+  }
+  let restoredContent: ReturnType<typeof sanitizeStoredPageContent>;
+  try {
+    restoredContent = sanitizeStoredPageContent(
+      snapshot.content_json,
+      snapshot.content_html,
+      "Восстанавливаемая версия страницы"
+    );
+    if (restoredStatus.data === "published") {
+      assertPagePublicationMedia(restoredContent.contentHtml);
+    }
+  } catch (error) {
+    redirect(editorTarget(id.data, {
+      error:
+        error instanceof Error
+          ? error.message
+          : "Версия не прошла проверку содержимого и изображений.",
+    }));
+  }
   const { data: restored, error } = await supabase
     .from("pages")
-    .update({
+    .update(normalizeShortHyphensDeep({
       title: snapshot.title,
       slug: snapshot.slug,
       excerpt: snapshot.excerpt,
-      content_html: snapshot.content_html,
-      content_json: snapshot.content_json,
-      status: snapshot.status,
+      content_html: restoredContent.contentHtml,
+      content_json: restoredContent.contentJson,
+      status: restoredStatus.data,
       seo_title: snapshot.seo_title,
       seo_description: snapshot.seo_description,
       canonical_url: snapshot.canonical_url,
       allow_indexing: snapshot.allow_indexing,
       updated_by: session.user.id,
-    })
+    }))
     .eq("id", id.data)
     .eq("updated_at", expectedUpdatedAt.data)
     .select("id")

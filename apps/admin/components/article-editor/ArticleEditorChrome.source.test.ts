@@ -30,20 +30,32 @@ describe("article editor chrome module boundaries", () => {
     expect(core).not.toContain("useReducer");
   });
 
-  it("keeps the legacy URL-only gallery parser and eight-item cap unchanged", () => {
+  it("uses the shared structured gallery model with a one-hundred-item cap", () => {
     const article = source("../ArticleEditor.tsx");
     const gallery = source("./GalleryEditor.tsx");
+    const blockView = source("../EditorialBlockView.tsx");
+    const editorStyles = source("../../app/styles/editors.css");
 
     expect(article).toContain("<GalleryEditor");
-    expect(article).toContain("const confirmMediaCollection = () =>");
-    expect(article).toContain(".filter((item) => /^https:\\/\\//iu.test(item))");
-    expect(article).toContain(".slice(0, 8)");
-    expect(article).toContain("insertEditorialSlider(editor, urls)");
-    expect(article).toContain("insertEditorialGallery(editor, urls)");
-    expect(gallery).toContain(".slice(0, 8).length");
-    expect(gallery).toContain("Вставьте до восьми HTTPS-адресов");
-    expect(gallery).toContain("Открыть медиатеку ↗");
-    expect(gallery).not.toContain("useState");
-    expect(gallery).not.toContain("useReducer");
+    expect(article).toContain(
+      "const confirmMediaCollection = (settings: EditorialGallerySettings) =>"
+    );
+    expect(article).toContain("parseEditorialGalleryUrls(mediaComposerValue)");
+    expect(article).toContain("mergeEditorialGalleryItems(");
+    expect(article).not.toContain(".slice(0, 8)");
+    expect(article).toContain('insertEditorialSlider(editor, items, "статье", settings)');
+    expect(article).toContain('insertEditorialGallery(editor, items, "статье", settings)');
+    expect(article).toContain("openCollectionLibrary(appendMediaComposerItems)");
+    expect(article).toContain("openCollectionPicker(appendMediaComposerItems)");
+    expect(gallery).toContain("EDITORIAL_GALLERY_MAX_ITEMS");
+    expect(gallery).toContain("settings.columnsDesktop");
+    expect(gallery).toContain("settings.autoplay");
+    expect(gallery).toContain("Выбрать в медиатеке");
+    expect(gallery).toContain("Загрузить с компьютера");
+    expect(gallery).not.toContain(".slice(0, 8)");
+    expect(blockView).toContain('event.target.closest(".editorial-image-node")');
+    expect(blockView).toContain("onClick={handleCollectionClick}");
+    expect(editorStyles).toContain("content-visibility: auto");
+    expect(editorStyles).toContain("contain-intrinsic-size: 280px 220px");
   });
 });

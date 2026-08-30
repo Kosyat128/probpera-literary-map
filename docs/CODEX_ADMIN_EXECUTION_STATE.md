@@ -1,8 +1,8 @@
 # Codex Admin Execution State
 
-Audited baseline: `27409c57b51568038a4341f151436f32ec6d87dc`
-Phase 3 pre-reconcile main: `ae5e02e5fdac929e03cff2729202c201651f39d1`; cleanup branch: `codex/admin-phase3-fallback-cleanup`
-Last updated: `2026-08-28T17:47:27Z`
+Audited Phase 4 baseline: `7a189e173d9efebafdd6077b9c36ff1af8f8ad3e`
+Phase 4 branch: `codex/admin-phase4-media-gallery`
+Last updated: `2026-08-30`
 
 ## Completed
 
@@ -31,12 +31,15 @@ Last updated: `2026-08-28T17:47:27Z`
 
 ## In progress
 
-- No feature phase is active. Phase 3 is complete; work pauses before Phase 4 as requested.
+- Phase 4 implementation is complete in the release branch: shared typed responsive
+  images, structured galleries/sliders, Media Studio lifecycle and usage graph,
+  Safe Replace, bulk metadata, orphan cleanup, staged owner-only permanent purge,
+  and one-pass repair for invalid structured translations.
+- Final combined verification, PR/CI, production reconciliation and deployment are
+  in progress. Phase 5 must start only after the exact Phase 4 release is verified.
 
 ## Pending
 
-- [ ] Phase 4 - media and gallery.
-  - [ ] Add shared Article/Page inline-image resizing: width presets plus a bounded custom width, aspect ratio preserved by default, responsive max-width 100%, and typed sanitized round-trip attributes rendered identically in editor preview and the public reader.
 - [ ] Phase 5 - Style Engine and Site Studio.
 - [ ] Phase 6 - Data Studio.
 - [ ] Phase 7 - translation runtime and durable jobs.
@@ -66,11 +69,23 @@ Last updated: `2026-08-28T17:47:27Z`
 - ArticleEditor panel extraction: `15/15` focused tests; toolbar/gallery extraction: `10/10`; EditorCore/translation extraction: `17/17`; Shell extraction: `7/7`.
 - Direct media parity: `11/11` focused tests; production reconciliation contract: `10/10`; shared dialog focus: focused source and hook tests are committed.
 - Phase 3 fallback cleanup: all `36/36` focused source, governance and atomic-bundle tests pass; admin TypeScript and `git diff --check` pass.
+- Phase 4 media lifecycle migration and production planner contracts: `16/16`.
+- Phase 4 bulk metadata, orphan cleanup and staged permanent purge contracts: `13/13`.
+- Phase 4 editor/gallery/public/translation focused result: `97/97` relevant tests
+  green (one combined `93/97`, followed only by the four corrected files: `18/18`).
+- Admin, Cloudflare Worker and public-site TypeScript configurations pass. The
+  Cloudflare check reused the exact already-installed locked type package
+  `@cloudflare/workers-types@5.20260823.1`; dependencies were not reinstalled.
+- Independent final audit: no P0 or P1 findings; migration/planner checksum is
+  `ace78c21a0b5b7b36ed2ebce7e840dfed0d0f2fb1f1798ff84e13209de7c0e7f`.
 
 ## Known blockers
 
-- None for Phase 3. Phase 4 remains intentionally unstarted.
+- No known Phase 4 blocker. Local implementation verification and independent
+  audit are complete; PR/CI and production release verification remain.
 
 ## NEXT STEP
 
-Pause after the Phase 3 cleanup is merged to `main`. Do not start Phase 4 until the user explicitly resumes it; the inline-image resizing requirement is already recorded in its backlog.
+Complete the single combined Phase 4 verification, merge the reviewed PR, reconcile
+the production database on the exact merged SHA, deploy and verify. Then continue
+from the first unfinished Phase 5 item without reopening completed phases.

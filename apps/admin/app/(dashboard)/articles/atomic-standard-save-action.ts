@@ -23,8 +23,24 @@ import {
   positionLeadingIllustrationHtml,
   positionLeadingIllustrationJson,
 } from "@/lib/article-leading-illustration";
+import { rebindPremiumArticleMachineSourceHash } from "@/lib/article-translation-machine-ownership";
 import { adminEnv } from "@/lib/env";
 import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
+import {
+  editorialGalleryAttributeNames,
+  safeEditorialGalleryHtmlAttributes,
+  sanitizeEditorialGalleryJson,
+} from "@/lib/editorial-gallery";
+import {
+  editorialImageDataAttributes,
+  safeEditorialImageHtmlAttributes,
+  sanitizeEditorialMediaJson,
+} from "@/lib/editorial-media-content";
+import {
+  assertEditorialMediaIdentityParity,
+  editorialMediaHtmlAccessibilityIssues,
+  parseEditorialContentJson,
+} from "@/lib/editorial-media-identity";
 import { redirect } from "@/lib/navigation";
 import { requestPublicBuild } from "@/lib/publication";
 import { normalizeShortHyphensFormData } from "@/lib/short-hyphens";
@@ -147,11 +163,21 @@ const allowedArticleHtml = {
       "data-image-layout",
       "data-caption",
       "data-media-id",
+      ...editorialImageDataAttributes,
+      ...editorialGalleryAttributeNames,
       "data-text-tone",
     ],
   },
   allowedSchemes: ["http", "https", "mailto"],
   transformTags: {
+    img: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialImageHtmlAttributes(attributes),
+    }),
+    section: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialGalleryHtmlAttributes(attributes),
+    }),
     a: (tagName: string, attributes: Record<string, string>) => ({
       tagName,
       attribs: sanitizeEditorAnchorAttributes(attributes),
@@ -291,6 +317,51 @@ export async function saveStandardArticleAtomically(formData: FormData) {
   }
 
   const englishData = parsedEnglish?.success ? parsedEnglish.data : null;
+  let submittedContentJson: unknown;
+  try {
+    submittedContentJson = sanitizeEditorialGalleryJson(
+      sanitizeEditorialMediaJson(
+        sanitizeArticleTextToneJson(
+          parseEditorialContentJson(parsed.data.contentJson, "Русская версия статьи")
+        )
+      )
+    );
+  } catch (error) {
+    const failedArticleId = optionalText(formData.get("id")) || undefined;
+    redirect(
+      saveErrorPath(
+        failedArticleId,
+        error instanceof Error
+          ? error.message
+          : "Русская версия статьи: JSON редактора повреждён."
+      )
+    );
+  }
+  let submittedEnglishContentJson: unknown = null;
+  if (englishData) {
+    try {
+      submittedEnglishContentJson = sanitizeEditorialGalleryJson(
+        sanitizeEditorialMediaJson(
+          sanitizeArticleTextToneJson(
+            parseEditorialContentJson(
+              englishData.contentJson,
+              "Английская версия статьи"
+            )
+          )
+        )
+      );
+    } catch (error) {
+      const failedArticleId = optionalText(formData.get("id")) || undefined;
+      redirect(
+        saveErrorPath(
+          failedArticleId,
+          error instanceof Error
+            ? error.message
+            : "Английская версия статьи: JSON редактора повреждён."
+        )
+      );
+    }
+  }
   const isNewRelease =
     intent === "publish" ||
     requestedStatus === "scheduled" ||
@@ -330,6 +401,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       parsed.data.sources.length === 0 && "укажите хотя бы один источник",
       /data-editorial-block=["']media["']/iu.test(releaseContentHtml) &&
         "замените все места для изображений настоящими файлами",
+      ...editorialMediaHtmlAccessibilityIssues(releaseContentHtml),
       !publicationOverride &&
         formData.get("publication_ready") !== "yes" &&
         "завершите контроль перед публикацией",
@@ -374,19 +446,17 @@ export async function saveStandardArticleAtomically(formData: FormData) {
                 }
           ).map((issue) => `English: ${issue}`)
         : []),
+      ...(englishData && isReleasedTranslationStatus(englishData.status)
+        ? editorialMediaHtmlAccessibilityIssues(releaseEnglishContentHtml).map(
+            (issue) => `English: ${issue}`
+          )
+        : []),
     ].filter(Boolean) as string[];
     releaseIssues.forEach((issue) => publicationIssues.add(issue));
   }
 
   const savedSlug = parsed.data.slug || generatedSlug;
-  let contentJson: unknown;
-  try {
-    contentJson = positionLeadingIllustrationJson(
-      sanitizeArticleTextToneJson(JSON.parse(parsed.data.contentJson))
-    );
-  } catch {
-    contentJson = { type: "doc", content: [] };
-  }
+  const contentJson = positionLeadingIllustrationJson(submittedContentJson);
   const sanitizedContentHtml = positionLeadingIllustrationHtml(
     sanitizeHtml(parsed.data.contentHtml, allowedArticleHtml)
   );
@@ -398,13 +468,34 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       )
     : "";
   if (englishData) {
-    try {
-      englishContentJson = positionLeadingIllustrationJson(
-        sanitizeArticleTextToneJson(JSON.parse(englishData.contentJson))
+    englishContentJson = positionLeadingIllustrationJson(
+      submittedEnglishContentJson
+    );
+  }
+
+  try {
+    assertEditorialMediaIdentityParity(
+      contentJson,
+      sanitizedContentHtml,
+      "Русская версия статьи"
+    );
+    if (englishData && englishContentJson) {
+      assertEditorialMediaIdentityParity(
+        englishContentJson,
+        sanitizedEnglishContentHtml,
+        "Английская версия статьи"
       );
-    } catch {
-      englishContentJson = { type: "doc", content: [] };
     }
+  } catch (error) {
+    const failedArticleId = optionalText(formData.get("id")) || undefined;
+    redirect(
+      saveErrorPath(
+        failedArticleId,
+        error instanceof Error
+          ? error.message
+          : "Сохранение остановлено: данные изображений в редакторе расходятся."
+      )
+    );
   }
 
   const currentSourceHash = articleTranslationSourceHash({
@@ -426,6 +517,12 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       parsed.data.seoDescription ||
       parsed.data.excerpt,
   });
+  if (englishContentJson) {
+    englishContentJson = rebindPremiumArticleMachineSourceHash(
+      englishContentJson,
+      currentSourceHash
+    );
+  }
 
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect("/articles/new?error=База данных не подключена");

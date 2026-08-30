@@ -29,7 +29,7 @@ describe("PageEditor Phase 3 parity", () => {
     expect(pageEditorSource).toContain('setTextAlign("center").run()');
   });
 
-  it("offers the shared media placeholder and legacy collection foundation", () => {
+  it("offers the shared media placeholder and structured collection foundation", () => {
     expect(pageEditorSource).toContain(
       'insertEditorialBlock(editor, "media")'
     );
@@ -38,14 +38,23 @@ describe("PageEditor Phase 3 parity", () => {
     expect(pageEditorSource).toContain("<GalleryEditor");
     expect(pageEditorSource).toContain('contextLabel="страницы"');
     expect(pageEditorSource).toContain(
-      'insertEditorialGallery(editor, urls, "странице")'
+      'insertEditorialGallery(editor, items, "странице", settings)'
     );
     expect(pageEditorSource).toContain(
-      'insertEditorialSlider(editor, urls, "странице")'
+      'insertEditorialSlider(editor, items, "странице", settings)'
+    );
+    expect(pageEditorSource).toContain(
+      "openCollectionLibrary(appendMediaComposerItems)"
+    );
+    expect(pageEditorSource).toContain(
+      "openCollectionPicker(appendMediaComposerItems)"
     );
     expect(galleryEditorSource).toContain("contextLabel = \"статьи\"");
-    expect(galleryEditorSource).toContain(".slice(0, 8).length");
-    expect(editorialBlockSource).toContain("...urls.slice(0, 8).map");
+    expect(galleryEditorSource).toContain("EDITORIAL_GALLERY_MAX_ITEMS");
+    expect(galleryEditorSource).toContain("settings.columnsDesktop");
+    expect(editorialBlockSource).toContain("normalizeEditorialGalleryItems");
+    expect(editorialBlockSource).toContain("galleryColumnsDesktop");
+    expect(editorialBlockSource).not.toContain("slice(0, 8)");
     expect(editorialBlockSource).not.toContain("mediaInspector");
   });
 
@@ -56,6 +65,30 @@ describe("PageEditor Phase 3 parity", () => {
     expect(pageActionsSource).toContain("span: (tagName");
     expect(pageActionsSource).toContain(
       "attribs: safeTextToneSpanAttributes(attributes)"
+    );
+  });
+
+  it("keeps every page publication and revision restore behind media guards", () => {
+    expect(pageActionsSource).toContain("sanitizeStoredPageContent(");
+    expect(pageActionsSource).toContain("assertPagePublicationMedia(");
+    expect(pageActionsSource).toContain("editorialMediaHtmlAccessibilityIssues(");
+    expect(pageActionsSource).toContain(
+      '.select("content_json,content_html")'
+    );
+    expect(pageActionsSource).toContain(
+      "Восстанавливаемая версия страницы"
+    );
+    expect(pageActionsSource).toContain(
+      "content_html: restoredContent.contentHtml"
+    );
+    expect(pageActionsSource).toContain(
+      "content_json: restoredContent.contentJson"
+    );
+    expect(pageActionsSource).toContain(
+      "content_json: checkedPublicationContent.contentJson"
+    );
+    expect(pageActionsSource).toContain(
+      "content_html: checkedPublicationContent.contentHtml"
     );
   });
 });

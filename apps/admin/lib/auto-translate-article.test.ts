@@ -104,6 +104,9 @@ describe("automatic literary article translation", () => {
     expect(
       protectedArticleHtmlSignature(result.content_html)
     ).toEqual(protectedArticleHtmlSignature(source.contentHtml));
+    const imageSignature = protectedArticleHtmlSignature(result.content_html)
+      .find((entry) => entry.startsWith("img|"));
+    expect(imageSignature?.match(/data-image-layout=/g)).toHaveLength(1);
 
     const requestBody = JSON.parse(
       String((fetchImpl as ReturnType<typeof vi.fn>).mock.calls[0]?.[1]?.body)

@@ -13,22 +13,28 @@ export default function MediaUploader() {
   const [message, setMessage] = useState("");
   const [messageKind, setMessageKind] = useState<"info" | "success" | "error">("info");
   const [publication, setPublication] = useState<UploadPublicationState | null>(null);
-  const [uploadedMediaId, setUploadedMediaId] = useState("");
+  const [uploadedMediaIds, setUploadedMediaIds] = useState<string[]>([]);
   const [usage, setUsage] = useState<"cover" | "hero" | "gallery" | "inline">("inline");
 
   async function upload(formData: FormData) {
     setPending(true);
     setPublication(null);
-    setUploadedMediaId("");
+    setUploadedMediaIds([]);
     setMessageKind("info");
-    setMessage("Подготавливаем изображение без обрезки…");
+    setMessage("Проверяем выбранные изображения…");
+    let completed = 0;
+    const queueErrorIds: string[] = [];
     try {
-      const sourceFile = formData.get("file");
-      if (!(sourceFile instanceof File)) {
-        throw new Error("Выберите изображение для загрузки.");
+      const sourceFiles = formData
+        .getAll("file")
+        .filter((value): value is File => value instanceof File && value.size > 0);
+      if (!sourceFiles.length) {
+        throw new Error("Выберите хотя бы одно изображение для загрузки.");
       }
-      const result = await uploadEditorImage(sourceFile, {
-        usage,
+      if (sourceFiles.length > 20) {
+        throw new Error("За один раз можно безопасно загрузить не более 20 изображений.");
+      }
+      const sharedMetadata = {
         altText: String(formData.get("alt_text") || ""),
         caption: String(formData.get("caption") || ""),
         creator: String(formData.get("creator") || ""),
@@ -36,33 +42,57 @@ export default function MediaUploader() {
         licenseName: String(formData.get("license_name") || ""),
         licenseUrl: String(formData.get("license_url") || ""),
         collectionName: String(formData.get("collection_name") || "Общее"),
-        onProgress(stage) {
-          setMessage(
-            stage === "prepare"
-              ? "Подготавливаем изображение без обрезки…"
-              : "Загружаем подготовленное изображение…"
-          );
-        },
-      });
-      if (!result.mediaId || !result.publication) {
-        throw new Error("Изображение загружено, но сервер вернул неполный статус публикации. Обновите медиатеку.");
+      };
+      let startedCount = 0;
+      let queuedCount = 0;
+      for (const [index, sourceFile] of sourceFiles.entries()) {
+        const position = `${index + 1} из ${sourceFiles.length}`;
+        const result = await uploadEditorImage(sourceFile, {
+          usage,
+          ...sharedMetadata,
+          onProgress(stage) {
+            setMessage(
+              stage === "prepare"
+                ? `Подготавливаем файл ${position} без обрезки…`
+                : `Загружаем файл ${position}…`
+            );
+          },
+        });
+        if (!result.mediaId || !result.publication) {
+          throw new Error("Файл загружен, но сервер вернул неполный статус публикации. Обновите медиатеку.");
+        }
+        completed += 1;
+        if (result.publication === "started") startedCount += 1;
+        if (result.publication === "queued") queuedCount += 1;
+        if (result.publication === "queue-error") {
+          queueErrorIds.push(result.mediaId);
+          setUploadedMediaIds([...queueErrorIds]);
+        }
       }
-      setUploadedMediaId(result.mediaId);
-      setPublication(result.publication);
-      if (result.publication === "started") {
-        setMessageKind("success");
-        setMessage("Изображение оптимизировано, добавлено в медиатеку, публичная сборка запущена.");
-      } else if (result.publication === "queued") {
-        setMessageKind("success");
-        setMessage("Изображение добавлено в медиатеку и сохранено в резервной очереди публикации.");
-      } else {
+      setUploadedMediaIds(queueErrorIds);
+      if (queueErrorIds.length) {
+        setPublication("queue-error");
         setMessageKind("error");
-        setMessage("Изображение сохранено, но запрос публикации записать не удалось. Повторите публикацию.");
+        setMessage(
+          `Загружено ${completed} файлов, но для ${queueErrorIds.length} не удалось записать запрос публикации. Файлы сохранены; повторите публикацию ниже.`
+        );
+      } else if (queuedCount > 0) {
+        setPublication("queued");
+        setMessageKind("success");
+        setMessage(`Загружено ${completed} файлов. Обновления сохранены в резервной очереди публикации.`);
+      } else {
+        setPublication("started");
+        setMessageKind("success");
+        setMessage(`Оптимизировано и загружено ${startedCount} файлов. Публичная сборка запущена.`);
       }
       router.refresh();
     } catch (error) {
+      if (queueErrorIds.length) setPublication("queue-error");
       setMessageKind("error");
-      setMessage(error instanceof Error ? error.message : "Файл не загружен.");
+      const reason = error instanceof Error ? error.message : "Файл не загружен.";
+      setMessage(completed > 0
+        ? `Загружено ${completed} файлов, затем операция остановилась: ${reason}`
+        : reason);
     } finally {
       setPending(false);
     }
@@ -82,13 +112,14 @@ export default function MediaUploader() {
         <small>Пропорции сохраняются; кадрирование настраивается позже фокусом и эффектами.</small>
       </label>
       <label className="upload-zone">
-        <input name="file" type="file" accept="image/jpeg,image/png,image/webp,image/avif" required />
+        <input name="file" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple required />
         <strong>JPEG, PNG, WebP или AVIF</strong>
-        <p>Исходник до 20 МБ. Он будет подогнан без обрезки, очищен от метаданных и сохранён в WebP.</p>
+        <p>До 20 файлов за операцию. Каждый исходник будет подогнан без обрезки, очищен от метаданных и сохранён отдельным неизменяемым WebP.</p>
       </label>
       <label className="field">
-        <span>Описание для незрячих читателей *</span>
+        <span>Общее описание для выбранных файлов *</span>
         <input name="alt_text" required minLength={3} maxLength={500} />
+        <small>При массовой загрузке эти метаданные применяются ко всем файлам; затем каждый файл можно уточнить отдельно.</small>
       </label>
       <label className="field">
         <span>Подпись</span>
@@ -126,16 +157,16 @@ export default function MediaUploader() {
         {pending ? "Обрабатываем…" : "Оптимизировать и загрузить"}
       </button>
     </form>
-    {publication === "queue-error" && uploadedMediaId && (
-      <form className="panel settings-stack" action={republishMediaAction}>
-        <input type="hidden" name="id" value={uploadedMediaId} />
+    {publication === "queue-error" && uploadedMediaIds.map((mediaId) => (
+      <form className="panel settings-stack" action={republishMediaAction} key={mediaId}>
+        <input type="hidden" name="id" value={mediaId} />
         <p className="form-message form-error" role="alert">
-          Файл уже в медиатеке. Повторная отправка не загрузит его второй раз.
+          Файл {mediaId} уже в медиатеке. Повторная отправка не загрузит его второй раз.
         </p>
         <button className="button button-secondary" type="submit">
-          Повторить публикацию
+          Повторить публикацию этого файла
         </button>
       </form>
-    )}
+    ))}
   </>;
 }

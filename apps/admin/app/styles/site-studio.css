@@ -421,3 +421,224 @@
   border: 0;
 }
 
+.media-catalog .media-catalog-search {
+  grid-template-columns: minmax(220px, 1fr) minmax(150px, 190px) minmax(110px, 140px) auto;
+  width: min(100%, 940px);
+}
+
+.media-grid.is-list {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.media-grid.is-list .media-card {
+  display: grid;
+  grid-template-columns: minmax(160px, 240px) minmax(0, 1fr);
+}
+
+.media-grid.is-list .media-card > img {
+  height: 100%;
+  min-height: 220px;
+  aspect-ratio: auto;
+}
+
+.media-replacement-editor {
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.media-replacement-editor > summary {
+  color: var(--orange-soft);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.media-replacement-editor > .settings-stack,
+.media-replacement-editor > form {
+  margin-top: 14px;
+}
+
+.media-replacement-summary,
+.media-replacement-usages {
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgba(255, 145, 64, 0.22);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(8, 2, 14, 0.26);
+}
+
+.media-replacement-summary small,
+.media-replacement-usages small {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.media-replacement-all,
+.media-replacement-usages label {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.media-replacement-all input,
+.media-replacement-usages input {
+  flex: 0 0 auto;
+  margin-top: 3px;
+}
+
+.media-replacement-usages {
+  max-height: 320px;
+  overflow: auto;
+}
+
+.media-replacement-usages legend {
+  padding: 0 6px;
+  color: var(--muted);
+}
+
+.media-replacement-warning {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.media-replacement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.media-bulk-editor,
+.media-orphan-cleanup {
+  margin: 16px 0;
+  border: 1px solid rgba(255, 145, 64, 0.2);
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(8, 2, 14, 0.22);
+}
+
+.media-bulk-editor > summary,
+.media-orphan-cleanup > summary {
+  cursor: pointer;
+  color: var(--orange-soft);
+  font-weight: 800;
+}
+
+.media-bulk-editor > form,
+.media-orphan-cleanup > form,
+.media-orphan-cleanup > .settings-stack {
+  margin-top: 14px;
+}
+
+.media-bulk-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.media-bulk-field > span,
+.media-card-selection,
+.media-orphan-confirmation,
+.media-orphan-list label {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.media-bulk-field > span input,
+.media-card-selection input,
+.media-orphan-confirmation input,
+.media-orphan-list input {
+  flex: 0 0 auto;
+  width: auto;
+  margin-top: 3px;
+}
+
+.media-card-selection {
+  margin-bottom: 10px;
+  color: var(--orange-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.media-orphan-list {
+  display: grid;
+  gap: 10px;
+  max-height: 360px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.media-orphan-list legend {
+  padding: 0 6px;
+  color: var(--muted);
+}
+
+.media-orphan-list span,
+.media-orphan-list strong,
+.media-orphan-list small {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.media-orphan-confirmation {
+  border: 1px solid rgba(255, 145, 64, 0.28);
+  border-radius: 12px;
+  padding: 12px;
+  line-height: 1.5;
+}
+
+.media-purge-editor {
+  margin-top: 14px;
+  border-top: 1px solid rgba(255, 109, 109, 0.32);
+  padding-top: 12px;
+}
+
+.media-purge-editor > summary {
+  cursor: pointer;
+  color: #ff9f9f;
+  font-weight: 800;
+}
+
+.media-purge-editor > .settings-stack {
+  margin-top: 12px;
+}
+
+.media-purge-warning {
+  margin: 0;
+  border: 1px solid rgba(255, 109, 109, 0.26);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(95, 14, 26, 0.2);
+  color: #ffd5d5;
+  line-height: 1.55;
+}
+
+.media-purge-button:not(:disabled) {
+  border-color: rgba(255, 109, 109, 0.62);
+  color: #ffd5d5;
+}
+
+@media (max-width: 820px) {
+  .media-catalog .media-catalog-search {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .media-grid.is-list .media-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .media-grid.is-list .media-card > img {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .media-bulk-fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+

@@ -90,7 +90,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(17);
+      expect(manifest.migrations).toHaveLength(18);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -109,6 +109,7 @@ describe("guarded production database reconciliation", () => {
         "20260827_reader_book_collections.sql",
         "20260828_reader_book_collection_icons.sql",
         "20260828_zz_editor_autosaves.sql",
+        "20260830_media_studio_lifecycle.sql",
       ]);
       expect(manifest.migrations.every((migration) => /^[0-9a-f]{64}$/u.test(migration.sha256))).toBe(true);
       expect(plan).not.toContain("\r\n");
@@ -121,6 +122,9 @@ describe("guarded production database reconciliation", () => {
       expect(plan).toContain("public.reader_book_collections");
       expect(plan).toContain("public.editor_autosaves");
       expect(plan).toContain("public.save_editor_autosave");
+      expect(plan).toContain("public.list_media_studio_assets");
+      expect(plan).toContain("public.preview_media_asset_replacement");
+      expect(plan).toContain("public.replace_media_asset_current_usages");
       expect(plan).toContain("Editor autosave actor-only RLS is incomplete");
       expect(plan).toContain("Reader book collection owner-only policies are incomplete");
       expect(plan).toContain("from pg_catalog.pg_depend dependency");
@@ -136,6 +140,9 @@ describe("guarded production database reconciliation", () => {
       expect(verification).toContain("premium_machine_translation=");
       expect(verification).toContain("editor_autosaves=");
       expect(verification).toContain("editor_autosave_rpc=");
+      expect(verification).toContain("media_studio_lifecycle=");
+      expect(verification).toContain("media_usage_graph=");
+      expect(verification).toContain("media_safe_replace_rpc=");
       expect(verification).toContain("then 'true' else 'false' end");
     } finally {
       rmSync(temporaryDirectory, { recursive: true, force: true });
@@ -522,13 +529,16 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "Migration range: 20260808_article_translations through 20260828_zz_editor_autosaves"
+      "Migration range: 20260808_article_translations through 20260830_media_studio_lifecycle"
     );
     expect(workflowSource).toContain(
-      "schema_health=20260822_zz_atomic_article_bundle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=17;invalid_indexes=0"
+      "schema_health=20260830_media_studio_lifecycle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=18;invalid_indexes=0"
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260828_zz_editor_autosaves.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260830_media_studio_lifecycle.sql"'
     );
     expect(workflowSource).toContain(
       "reconciliation/production-verification-expected.txt"

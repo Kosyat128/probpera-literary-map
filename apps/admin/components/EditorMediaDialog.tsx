@@ -39,6 +39,7 @@ const statusLabels: Record<EditorMediaQueueItem["status"], string> = {
 export default function EditorMediaDialog({
   open,
   queue,
+  collectionMode = false,
   onClose,
   onPickFiles,
   onSelectAsset,
@@ -47,6 +48,7 @@ export default function EditorMediaDialog({
 }: {
   open: boolean;
   queue: EditorMediaQueueItem[];
+  collectionMode?: boolean;
   onClose: () => void;
   onPickFiles: () => void;
   onSelectAsset: (asset: EditorMediaAsset) => void;
@@ -126,8 +128,14 @@ export default function EditorMediaDialog({
       >
         <div className="editor-media-modal-heading">
           <div>
-            <span>Изображение в тексте</span>
-            <h2 id={titleId}>Загрузить или выбрать из медиатеки</h2>
+            <span>
+              {collectionMode ? "Подборка изображений" : "Изображение в тексте"}
+            </span>
+            <h2 id={titleId}>
+              {collectionMode
+                ? "Добавить изображения в галерею"
+                : "Загрузить или выбрать из медиатеки"}
+            </h2>
           </div>
           <button type="button" aria-label="Закрыть окно" onClick={onClose}>
             ×
@@ -136,9 +144,18 @@ export default function EditorMediaDialog({
 
         <div className="editor-media-modal-actions">
           <button className="button" type="button" onClick={onPickFiles}>
-            Выбрать файлы с компьютера
+            {collectionMode
+              ? "Загрузить несколько изображений"
+              : "Выбрать файлы с компьютера"}
           </button>
         </div>
+
+        {collectionMode && (
+          <p className="editor-media-modal-note">
+            Можно добавить несколько файлов сразу или выбрать несколько карточек
+            по очереди. Окно останется открытым, пока подборка не будет готова.
+          </p>
+        )}
 
         {queue.length > 0 && (
           <section aria-label="Очередь изображений" aria-live="polite">
@@ -212,7 +229,7 @@ export default function EditorMediaDialog({
                     type="button"
                     onClick={() => onSelectAsset(asset)}
                   >
-                    Вставить
+                    {collectionMode ? "Добавить" : "Вставить"}
                   </button>
                 </div>
               </article>
@@ -222,7 +239,7 @@ export default function EditorMediaDialog({
 
         <div className="editor-media-modal-actions">
           <button className="button-secondary" type="button" onClick={onClose}>
-            Закрыть
+            {collectionMode ? "Вернуться к галерее" : "Закрыть"}
           </button>
         </div>
       </section>

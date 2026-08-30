@@ -40,11 +40,32 @@ describe("media catalog search and pagination", () => {
     const query = parseMediaCatalogQuery({
       q: "обложка",
       search_field: "collection",
+      state: "unused",
+      view: "list",
       page: 2,
     });
     expect(mediaCatalogPageHref(query, 3)).toBe(
-      "/media?q=%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0&search_field=collection&page=3"
+      "/media?q=%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0&search_field=collection&state=unused&view=list&page=3"
     );
     expect(mediaCatalogPageHref(query, 2, { saved: "1" })).toContain("saved=1");
+    expect(mediaCatalogPageHref(query, 2, {
+      saved: "bulk",
+      bulkCount: 4,
+      skippedCount: 1,
+      orphanCount: 2,
+    })).toContain("bulk_count=4&skipped_count=1&orphan_count=2");
+  });
+
+  it("allowlists the Media Studio lifecycle state", () => {
+    expect(parseMediaCatalogQuery({ state: "trash" }).state).toBe("trash");
+    expect(parseMediaCatalogQuery({ state: "unused" }).state).toBe("unused");
+    expect(parseMediaCatalogQuery({ state: "trash;drop table" }).state).toBe("active");
+  });
+
+  it("allowlists and preserves the list/grid presentation", () => {
+    expect(parseMediaCatalogQuery({ view: "list" }).view).toBe("list");
+    expect(parseMediaCatalogQuery({ view: "cards;drop table" }).view).toBe("grid");
+    expect(mediaCatalogPageHref(parseMediaCatalogQuery({ view: "list" }), 1))
+      .toBe("/media?view=list");
   });
 });

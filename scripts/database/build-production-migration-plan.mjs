@@ -44,6 +44,10 @@ const reviewedMigrations = [
     "20260828_zz_editor_autosaves.sql",
     "353ee5e767850c4818d60f9a957d5991689bf2886c41b21599f69678e7b041af",
   ],
+  [
+    "20260830_media_studio_lifecycle.sql",
+    "ace78c21a0b5b7b36ed2ebce7e840dfed0d0f2fb1f1798ff84e13209de7c0e7f",
+  ],
 ];
 
 const reviewedHotfixes = [
@@ -329,6 +333,12 @@ begin
     or to_regprocedure('public.move_homepage_block(uuid,text)') is null
     or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null
     or to_regprocedure('public.save_editor_autosave(text,uuid,text,text,timestamptz,uuid,bigint,text,jsonb,timestamptz)') is null
+    or to_regprocedure('public.list_media_studio_assets(text,text,text,integer,integer)') is null
+    or to_regprocedure('public.list_media_asset_usages(uuid[])') is null
+    or to_regprocedure('public.preview_media_asset_replacement(uuid,uuid)') is null
+    or to_regprocedure('public.replace_media_asset_current_usages(uuid,uuid,timestamptz,timestamptz,jsonb,jsonb,boolean,text,text)') is null
+    or to_regprocedure('public.trash_media_asset(uuid,timestamptz)') is null
+    or to_regprocedure('public.restore_media_asset(uuid,timestamptz)') is null
     or to_regprocedure('public.premium_machine_translation_ready()') is null then
     raise exception 'Required editorial RPC is missing after reconciliation';
   end if;
@@ -409,7 +419,7 @@ ${values}
   );
   health := public.get_editorial_schema_health();
   if health is null
-    or health ->> 'version' <> '20260822_zz_atomic_article_bundle'
+    or health ->> 'version' <> '20260830_media_studio_lifecycle'
     or not coalesce((health ->> 'outbox')::boolean, false)
     or not coalesce((health ->> 'outboxRpc')::boolean, false)
     or not coalesce((health ->> 'articleBundleRpc')::boolean, false)
@@ -422,7 +432,10 @@ ${values}
     or not coalesce((health ->> 'countryOverrides')::boolean, false)
     or not coalesce((health ->> 'writerOverrides')::boolean, false)
     or not coalesce((health ->> 'homepageMove')::boolean, false)
-    or not coalesce((health ->> 'tagsUpdatedAt')::boolean, false) then
+    or not coalesce((health ->> 'tagsUpdatedAt')::boolean, false)
+    or not coalesce((health ->> 'mediaStudioLifecycle')::boolean, false)
+    or not coalesce((health ->> 'mediaUsageGraph')::boolean, false)
+    or not coalesce((health ->> 'mediaSafeReplaceRpc')::boolean, false) then
     raise exception 'Editorial schema health RPC did not report a current schema';
   end if;
 
@@ -472,6 +485,9 @@ select concat(
   ';writer_overrides=', health ->> 'writerOverrides',
   ';homepage_move=', health ->> 'homepageMove',
   ';tags_updated_at=', health ->> 'tagsUpdatedAt',
+  ';media_studio_lifecycle=', health ->> 'mediaStudioLifecycle',
+  ';media_usage_graph=', health ->> 'mediaUsageGraph',
+  ';media_safe_replace_rpc=', health ->> 'mediaSafeReplaceRpc',
   ';migration_ledger=', health ->> 'migrationLedger',
   ';premium_machine_translation=', case when public.premium_machine_translation_ready() then 'true' else 'false' end,
   ';editor_autosaves=', case when to_regclass('public.editor_autosaves') is not null then 'true' else 'false' end,

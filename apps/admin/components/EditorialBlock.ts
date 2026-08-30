@@ -1,6 +1,16 @@
 import { mergeAttributes, Node, type Editor } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 
+import {
+  editorialGalleryHtmlAttributes,
+  normalizeEditorialGalleryItems,
+  normalizeEditorialGallerySettings,
+  parseEditorialGalleryElement,
+  type EditorialGalleryItemInput,
+  type EditorialGalleryKind,
+  type EditorialGallerySettings,
+} from "../lib/editorial-gallery";
+
 import EditorialBlockView from "./EditorialBlockView";
 
 const blockKinds = new Set([
@@ -19,6 +29,28 @@ const revealKinds = new Set(["none", "fade-up", "slide-left", "zoom-in"]);
 function safeValue(value: unknown, allowed: Set<string>, fallback: string) {
   return typeof value === "string" && allowed.has(value) ? value : fallback;
 }
+
+function collectionKind(element: HTMLElement): EditorialGalleryKind {
+  return element.getAttribute("data-editorial-block") === "slider"
+    ? "slider"
+    : "gallery";
+}
+
+function parsedGallerySetting(
+  element: HTMLElement,
+  key: keyof EditorialGallerySettings
+) {
+  return parseEditorialGalleryElement(element, collectionKind(element))[key];
+}
+
+const hiddenGalleryAttribute = (
+  key: keyof EditorialGallerySettings,
+  defaultValue: unknown
+) => ({
+  default: defaultValue,
+  parseHTML: (element: HTMLElement) => parsedGallerySetting(element, key),
+  renderHTML: () => ({}),
+});
 
 export const EditorialBlock = Node.create({
   name: "editorialBlock",
@@ -45,6 +77,21 @@ export const EditorialBlock = Node.create({
           "data-reveal": safeValue(reveal, revealKinds, "none"),
         }),
       },
+      galleryVersion: hiddenGalleryAttribute("version", 1),
+      galleryId: hiddenGalleryAttribute("id", ""),
+      galleryColumnsDesktop: hiddenGalleryAttribute("columnsDesktop", 2),
+      galleryColumnsTablet: hiddenGalleryAttribute("columnsTablet", 2),
+      galleryColumnsMobile: hiddenGalleryAttribute("columnsMobile", 1),
+      galleryGap: hiddenGalleryAttribute("gap", "normal"),
+      galleryAspect: hiddenGalleryAttribute("aspect", "auto"),
+      galleryFit: hiddenGalleryAttribute("fit", "contain"),
+      galleryCaptions: hiddenGalleryAttribute("captions", true),
+      galleryLightbox: hiddenGalleryAttribute("lightbox", true),
+      sliderArrows: hiddenGalleryAttribute("arrows", true),
+      sliderDots: hiddenGalleryAttribute("dots", true),
+      sliderAutoplay: hiddenGalleryAttribute("autoplay", false),
+      sliderInterval: hiddenGalleryAttribute("interval", 5000),
+      sliderLoop: hiddenGalleryAttribute("loop", true),
     };
   },
 
@@ -55,12 +102,36 @@ export const EditorialBlock = Node.create({
   renderHTML({ node, HTMLAttributes }) {
     const kind = safeValue(node.attrs.kind, blockKinds, "fact");
     const reveal = safeValue(node.attrs.reveal, revealKinds, "none");
+    const galleryAttributes =
+      kind === "gallery" || kind === "slider"
+        ? editorialGalleryHtmlAttributes(
+            {
+              version: node.attrs.galleryVersion,
+              id: node.attrs.galleryId,
+              columnsDesktop: node.attrs.galleryColumnsDesktop,
+              columnsTablet: node.attrs.galleryColumnsTablet,
+              columnsMobile: node.attrs.galleryColumnsMobile,
+              gap: node.attrs.galleryGap,
+              aspect: node.attrs.galleryAspect,
+              fit: node.attrs.galleryFit,
+              captions: node.attrs.galleryCaptions,
+              lightbox: node.attrs.galleryLightbox,
+              arrows: node.attrs.sliderArrows,
+              dots: node.attrs.sliderDots,
+              autoplay: node.attrs.sliderAutoplay,
+              interval: node.attrs.sliderInterval,
+              loop: node.attrs.sliderLoop,
+            },
+            kind
+          )
+        : {};
     return [
       "section",
       mergeAttributes(HTMLAttributes, {
         class: `article-design-block is-${kind}`,
         "data-editorial-block": kind,
         "data-reveal": reveal,
+        ...galleryAttributes,
       }),
       0,
     ];
@@ -119,33 +190,60 @@ export function setEditorialBlockReveal(
 
 export function insertEditorialGallery(
   editor: Editor | null,
-  urls: string[],
-  altContext = "статье"
+  items: ReadonlyArray<string | EditorialGalleryItemInput>,
+  altContext = "статье",
+  settings?: Partial<EditorialGallerySettings>
 ) {
-  insertEditorialMediaCollection(editor, urls, "gallery", altContext);
+  insertEditorialMediaCollection(editor, items, "gallery", altContext, settings);
 }
 
 export function insertEditorialSlider(
   editor: Editor | null,
-  urls: string[],
-  altContext = "статье"
+  items: ReadonlyArray<string | EditorialGalleryItemInput>,
+  altContext = "статье",
+  settings?: Partial<EditorialGallerySettings>
 ) {
-  insertEditorialMediaCollection(editor, urls, "slider", altContext);
+  insertEditorialMediaCollection(editor, items, "slider", altContext, settings);
 }
 
 function insertEditorialMediaCollection(
   editor: Editor | null,
-  urls: string[],
-  kind: "gallery" | "slider",
-  altContext: string
+  inputItems: ReadonlyArray<string | EditorialGalleryItemInput>,
+  kind: EditorialGalleryKind,
+  altContext: string,
+  inputSettings?: Partial<EditorialGallerySettings>
 ) {
-  if (!editor || !urls.length) return;
+  const items = normalizeEditorialGalleryItems(inputItems);
+  if (!editor || !items.length) return;
+  const settings = normalizeEditorialGallerySettings(
+    inputSettings || {},
+    kind,
+    { createId: true }
+  );
   editor
     .chain()
     .focus()
     .insertContent({
       type: "editorialBlock",
-      attrs: { kind, reveal: "fade-up" },
+      attrs: {
+        kind,
+        reveal: "fade-up",
+        galleryVersion: settings.version,
+        galleryId: settings.id,
+        galleryColumnsDesktop: settings.columnsDesktop,
+        galleryColumnsTablet: settings.columnsTablet,
+        galleryColumnsMobile: settings.columnsMobile,
+        galleryGap: settings.gap,
+        galleryAspect: settings.aspect,
+        galleryFit: settings.fit,
+        galleryCaptions: settings.captions,
+        galleryLightbox: settings.lightbox,
+        sliderArrows: settings.arrows,
+        sliderDots: settings.dots,
+        sliderAutoplay: settings.autoplay,
+        sliderInterval: settings.interval,
+        sliderLoop: settings.loop,
+      },
       content: [
         {
           type: "heading",
@@ -157,11 +255,20 @@ function insertEditorialMediaCollection(
             },
           ],
         },
-        ...urls.slice(0, 8).map((src, index) => ({
+        ...items.map((item, index) => ({
           type: "image",
           attrs: {
-            src,
-            alt: `Иллюстрация к ${altContext} - изображение ${index + 1}`,
+            src: item.src,
+            mediaId: item.mediaId,
+            alt:
+              item.alt ||
+              `Иллюстрация к ${altContext} - изображение ${index + 1}`,
+            caption: item.caption,
+            credit: item.credit,
+            source: item.source,
+            license: item.license,
+            licenseUrl: item.licenseUrl,
+            link: item.link,
           },
         })),
       ],
@@ -175,7 +282,7 @@ export function replaceSelectedMediaSlot(
     src: string;
     alt: string;
     caption?: string;
-    layout?: "wide" | "normal" | "left" | "right";
+    layout?: "wide" | "normal" | "full" | "left" | "right";
   }
 ) {
   if (!editor) return false;
@@ -202,7 +309,7 @@ export function replaceMediaSlotAt(
     src: string;
     alt: string;
     caption?: string;
-    layout?: "wide" | "normal" | "left" | "right";
+    layout?: "wide" | "normal" | "full" | "left" | "right";
   }
 ) {
   if (!editor || !Number.isInteger(position) || position < 0) return false;

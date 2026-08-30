@@ -193,14 +193,17 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
       title: translated.title,
       subtitle: translated.subtitle,
       excerpt: translated.excerpt,
-      content_json: premiumArticleMachineContentJson({
-        sourceHash,
-        model: translated.model,
-        reviewerModel: translated.reviewModel,
-        translatorRequestId: translated.requestId,
-        reviewerRequestId: translated.reviewRequestId,
-        generatedAt: now,
-      }),
+      content_json: premiumArticleMachineContentJson(
+        {
+          sourceHash,
+          model: translated.model,
+          reviewerModel: translated.reviewModel,
+          translatorRequestId: translated.requestId,
+          reviewerRequestId: translated.reviewRequestId,
+          generatedAt: now,
+        },
+        translated.content_html
+      ),
       content_html: translated.content_html,
       cover_alt: translated.cover_alt,
       slug: englishSlug,
