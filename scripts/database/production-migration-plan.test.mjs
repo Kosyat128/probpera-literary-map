@@ -379,7 +379,8 @@ describe("guarded production database reconciliation", () => {
       "alter table storage.objects enable row level security;"
     );
     expect(storageStubImplementation).toContain("reset role;");
-    expect(storageStubImplementation).toContain("--username=postgres");
+    expect(storageStubImplementation).toContain("--username=supabase_admin");
+    expect(storageStubImplementation).not.toContain("--username=postgres");
     expect(storageStubImplementation).toContain("--dbname=probpera_restore");
     expect(storageStubImplementation).toContain("--set=ON_ERROR_STOP=1");
     expect(storageStubImplementation).toContain("--single-transaction");
@@ -400,6 +401,10 @@ describe("guarded production database reconciliation", () => {
       restoreImplementation.match(/prepare_isolated_storage_policy_stub/gu)
     ).toHaveLength(1);
     expect(planBranch).toContain("prepare_isolated_storage_policy_stub");
+    expect(restoreImplementation.indexOf("verify_isolated_application_owner"))
+      .toBeLessThan(
+        restoreImplementation.indexOf("prepare_isolated_storage_policy_stub")
+      );
     expect(restoreImplementation.lastIndexOf("verify_seeded_identity_ids"))
       .toBeLessThan(planBranchStart);
     expect(planBranch.indexOf('[[ -s "$plan_absolute" ]]'))
@@ -437,7 +442,7 @@ describe("guarded production database reconciliation", () => {
     expect(helper).not.toMatch(/^\s*(?:grant|revoke)\b/gimu);
     expect(
       helper.match(/--username=supabase_admin/gu)
-    ).toHaveLength(2);
+    ).toHaveLength(3);
 
     const restoreClient = restoreImplementation.slice(
       restoreImplementation.indexOf(
