@@ -46,7 +46,7 @@ const reviewedMigrations = [
   ],
   [
     "20260830_media_studio_lifecycle.sql",
-    "ace78c21a0b5b7b36ed2ebce7e840dfed0d0f2fb1f1798ff84e13209de7c0e7f",
+    "74827a9e7f3c753e028cc27e31c7db6e914b31b546ded2f2a389e680905dbf8b",
   ],
 ];
 

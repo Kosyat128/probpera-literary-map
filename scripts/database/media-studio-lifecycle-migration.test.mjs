@@ -142,7 +142,10 @@ describe("Phase 4 Media Studio lifecycle", () => {
       expect(migration).toContain(trigger);
     }
     expect(migration).toMatch(
-      /revoke insert, update, delete on table public\.media_usages\s+from public, anon, authenticated/u
+      /revoke insert, update, delete on table public\.media_usages\s+from authenticated/u
+    );
+    expect(migration).toMatch(
+      /grant select on table public\.media_usages to authenticated;[\s\S]*create policy "Staff read media usage"[\s\S]*on public\.media_usages for select[\s\S]*to authenticated[\s\S]*using \(public\.is_staff\(\)\)/u
     );
     expect(migration).not.toMatch(
       /grant execute on function public\.sync_media_usages[\s\S]*to authenticated/u
@@ -254,6 +257,12 @@ describe("Phase 4 Media Studio lifecycle", () => {
     );
     expect(migration).toContain(
       "'authenticated', 'public.media_usages', 'DELETE'"
+    );
+    expect(migration).toContain(
+      "'authenticated', 'public.media_usages', 'SELECT'"
+    );
+    expect(migration).toContain(
+      "usage_policy.policyname = 'Staff read media usage'"
     );
     expect(migration).toContain("select count(*) = 6");
   });

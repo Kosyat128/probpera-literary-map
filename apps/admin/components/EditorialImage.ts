@@ -5,11 +5,11 @@ import { ReactNodeViewRenderer } from "@tiptap/react";
 import {
   editorialImageHtmlAttributes,
   normalizeEditorialImageAttributes,
-} from "@/lib/editorial-media-content";
+} from "../lib/editorial-media-content";
 
 import EditorialImageView from "./EditorialImageView";
 
-export type { EditorialImageLayout } from "@/lib/editorial-media-content";
+export type { EditorialImageLayout } from "../lib/editorial-media-content";
 
 export const EditorialImage = Image.extend({
   addAttributes() {

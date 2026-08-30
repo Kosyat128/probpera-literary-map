@@ -206,6 +206,8 @@ const englishInterfaceText: Record<string, string> = {
   "Настройки чтения": "Reading settings",
   "Уменьшить шрифт": "Decrease font size",
   "Увеличить шрифт": "Increase font size",
+  "Остановить автоматическую прокрутку": "Pause automatic scrolling",
+  "Продолжить автоматическую прокрутку": "Resume automatic scrolling",
   "В этом материале": "In this article",
   "Закрыть": "Close",
   "Материал читается как единое эссе.":
@@ -271,6 +273,7 @@ const englishInterfaceText: Record<string, string> = {
   "Редакционная обложка": "Editorial cover for",
   "Редакционная обложка «Пробы Пера»": "Proba Pera editorial cover",
   "Редакционная обложка произведения": "Editorial cover for",
+  Иллюстрация: "Illustration",
   "Иллюстрация из статьи о произведении": "Illustration from an article about",
   "Редакционная иллюстрация из связанной статьи · не является обложкой конкретного издания":
     "Editorial image from a related article · not the cover of a specific edition",

@@ -27,7 +27,9 @@ describe("scalable and concurrency-safe pages admin", () => {
     expect(editorSource).toContain('name="expected_updated_at"');
     expect(pageSource.match(/name="expected_updated_at"/gu)?.length).toBeGreaterThanOrEqual(2);
     expect(editPageSource.match(/name="expected_updated_at"/gu)?.length).toBeGreaterThanOrEqual(2);
-    expect(actionsSource.match(/\.eq\("updated_at",/gu)?.length).toBe(4);
+    // Publishing first CAS-reads the exact content version it validates, then
+    // CAS-writes that same version. The other three guards cover save/delete/restore.
+    expect(actionsSource.match(/\.eq\("updated_at",/gu)?.length).toBe(5);
     expect(actionsSource.match(/\.select\("id"\)\s*\.maybeSingle\(\)/gu)?.length).toBeGreaterThanOrEqual(4);
   });
 
