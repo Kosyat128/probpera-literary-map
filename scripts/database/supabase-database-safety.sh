@@ -600,7 +600,7 @@ prepare_isolated_storage_policy_stub() {
   # Storage API behavior and is removed with the isolated database.
   docker exec --interactive "$RESTORE_CONTAINER" psql \
     --host="$ISOLATED_DATABASE_HOST" \
-    --username=postgres \
+    --username=supabase_admin \
     --dbname=probpera_restore \
     --no-psqlrc \
     --quiet \
