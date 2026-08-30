@@ -259,6 +259,9 @@ for (const record of records) {
   if (!Array.isArray(record.evidence) || record.evidence.length < 2) fail(`insufficient evidence: ${record.key}`);
   const hostnames = new Set();
   for (const evidence of record.evidence) {
+    if (typeof evidence.provider !== "string" || evidence.provider.trim() === "") {
+      fail(`missing evidence provider: ${record.key}`);
+    }
     const parsed = new URL(evidence.url);
     if (parsed.protocol !== "https:") fail(`non-HTTPS evidence: ${record.key}`);
     if (/(^|\.)(?:wikipedia|wikidata)\.org$/i.test(parsed.hostname)) fail(`blocked evidence: ${record.key}`);
@@ -266,6 +269,19 @@ for (const record of records) {
     hostnames.add(parsed.hostname);
   }
   if (hostnames.size < 2) fail(`evidence domains are not independent: ${record.key}`);
+  if (
+    record.profileCorrections !== undefined &&
+    (record.profileCorrections === null ||
+      typeof record.profileCorrections !== "object" ||
+      Array.isArray(record.profileCorrections))
+  ) {
+    fail(`invalid profile corrections: ${record.key}`);
+  }
+  for (const obsoleteField of ["birthYear", "deathYear"]) {
+    if (Object.hasOwn(record.profileCorrections ?? {}, obsoleteField)) {
+      fail(`unsupported profile correction ${obsoleteField}: ${record.key}`);
+    }
+  }
   const reviewedHash = sha256(record.reviewedTextRu);
   if (record.decision === "unchanged" && reviewedHash !== record.originalSha256) {
     fail(`unchanged text differs from source: ${record.key}`);

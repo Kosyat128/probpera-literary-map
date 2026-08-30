@@ -44,6 +44,18 @@ import {
 import {
   writerBiographyPublicProfileFactCorrectionsBatch46,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch46";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch47,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch47";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch48,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch48";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch49,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch49";
+import {
+  writerBiographyPublicProfileFactCorrectionsBatch50,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch50";
 
 export type WriterBiographyLegacyEvidence = {
   provider: string;
@@ -1684,6 +1696,10 @@ export const writerPublicProfileFactCorrections = [
   ...writerBiographyPublicProfileFactCorrectionsBatch44,
   ...writerBiographyPublicProfileFactCorrectionsBatch45,
   ...writerBiographyPublicProfileFactCorrectionsBatch46,
+  ...writerBiographyPublicProfileFactCorrectionsBatch47,
+  ...writerBiographyPublicProfileFactCorrectionsBatch48,
+  ...writerBiographyPublicProfileFactCorrectionsBatch49,
+  ...writerBiographyPublicProfileFactCorrectionsBatch50,
 ] as const satisfies readonly WriterPublicProfileFactCorrection[];
 
 export type QuarantinedWriterIdentity = {
@@ -1796,6 +1812,12 @@ export const quarantinedWriterIdentities = [
   ["oman", "zahir_al_ghazali", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Omani writer; the card must not be conflated with poet Zahir al-Ghafri."],
   ["panama", "demetrio_kalleyas", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Panamanian writer; the card must not be conflated with poet Demetrio Korsi."],
   ["papua_new_guinea", "siri_gising", "identity-not-established", "No authoritative identity record or attributable bibliography establishes the claimed Papua New Guinean writer or the work attributed to the card."],
+  ["saint_vincent_and_the_grenadines", "michael_anthony", "cross-country-identity-conflict", "Authoritative national-library and university sources identify Michael Anthony as a Trinidad and Tobago writer born in Mayaro, Trinidad; the card must not remain published under Saint Vincent and the Grenadines."],
+  ["seychelles", "gladyse_adele", "identity-not-established", "No authoritative library identity or attributable bibliography establishes the claimed Seychellois writer Gladyse Adele or the asserted 1951 birth year."],
+  ["sierra_leone", "augustine_bangura", "identity-not-established", "No authoritative library identity or attributable bibliography establishes the claimed Sierra Leonean writer and researcher Augustine Bangura or the asserted 1965 birth year."],
+  ["south_korea", "byun_hyung_jun", "identity-not-established", "No authoritative library identity or attributable bibliography establishes the claimed South Korean writer Byun Hyung-jun, the asserted 1962 birth year or the attributed Hwang Sun-won literary prize."],
+  ["south_sudan", "atuok_mayen", "identity-not-established", "No authoritative library identity or attributable bibliography establishes the claimed South Sudanese writer Atuok Mayen, the asserted 1970 birth year or a documented literary work."],
+  ["spain", "juan_ruiz", "identity-not-established", "Libro de buen amor is traditionally attributed to Juan Ruiz, Archpriest of Hita, but the checked institutional sources do not establish an independently documented identity or reliable life dates for the public profile."],
 ].map(([countryId, writerId, reason, note]) => ({
   countryId,
   writerId,
