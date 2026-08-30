@@ -15,7 +15,9 @@ describe("editor template HTML", () => {
       >
     `);
 
-    expect(html).toContain('class="article-image is-left"');
+    expect(html).toContain(
+      'class="article-image is-left is-aspect-auto is-fit-contain"'
+    );
     expect(html).toContain('data-image-layout="left"');
     expect(html).toContain('data-caption="Архивный портрет"');
     expect(html).toContain(

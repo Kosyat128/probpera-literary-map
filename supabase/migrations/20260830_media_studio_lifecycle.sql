@@ -2587,9 +2587,18 @@ drop policy if exists "Staff delete media metadata" on public.media_assets;
 
 -- Usage rows are maintained only by trusted triggers. The former broad staff
 -- policy allowed a caller to delete a dependency immediately before trash.
+-- Staff retain a read-only inspection path; Media Studio normally reads the
+-- authoritative graph through its bounded RPC.
+revoke all on table public.media_usages from public, anon;
 revoke insert, update, delete on table public.media_usages
-  from public, anon, authenticated;
+  from authenticated;
+grant select on table public.media_usages to authenticated;
 drop policy if exists "Staff manage media usage" on public.media_usages;
+drop policy if exists "Staff read media usage" on public.media_usages;
+create policy "Staff read media usage"
+on public.media_usages for select
+to authenticated
+using (public.is_staff());
 
 -- Immutable object paths: authenticated users may upload a new version but
 -- cannot overwrite or physically remove any historical Storage object.
@@ -2931,6 +2940,19 @@ as $$
         )
         and not has_table_privilege(
           'authenticated', 'public.media_usages', 'DELETE'
+        )
+        and has_table_privilege(
+          'authenticated', 'public.media_usages', 'SELECT'
+        )
+        and exists (
+          select 1
+          from pg_catalog.pg_policies usage_policy
+          where usage_policy.schemaname = 'public'
+            and usage_policy.tablename = 'media_usages'
+            and usage_policy.policyname = 'Staff read media usage'
+            and usage_policy.cmd = 'SELECT'
+            and usage_policy.roles = array['authenticated'::name]
+            and position('is_staff' in coalesce(usage_policy.qual, '')) > 0
         )
         and not has_function_privilege(
           'authenticated',
