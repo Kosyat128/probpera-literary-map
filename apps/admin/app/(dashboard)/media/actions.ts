@@ -539,7 +539,7 @@ export async function permanentlyPurgeMediaAction(formData: FormData) {
       metadata: { error: finalizeError.message.slice(0, 500) },
     });
     redirect(catalogTarget({
-      error: "Storage-объект удалён, но финализация записи не подтверждена. Обновите страницу и повторите действие — подготовленный токен будет продолжен безопасно.",
+      error: "Storage-объект удалён, но финализация записи не подтверждена. Обновите страницу и повторите действие - подготовленный токен будет продолжен безопасно.",
     }));
   }
 
