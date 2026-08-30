@@ -72,7 +72,7 @@ function validateRecord(record, index) {
     // One legacy Madagascar id contains an embedded soft hyphen. Preserve the
     // exact source key here so the review overlay can address the existing
     // record without silently renaming a public identity in a fact-review job.
-    !/^[\p{Ll}\p{Lo}\p{M}\p{N}_\u00ad]+:[\p{Ll}\p{Lo}\p{M}\p{N}_\u00ad]+$/u.test(
+    !/^[\p{Ll}\p{Lo}\p{M}\p{N}_\u00ad-]+:[\p{Ll}\p{Lo}\p{M}\p{N}_\u00ad-]+$/u.test(
       record.key || ""
     )
   ) {

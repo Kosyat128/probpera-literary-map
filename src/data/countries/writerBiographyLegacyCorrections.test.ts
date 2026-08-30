@@ -57,6 +57,9 @@ import {
   writerBiographyPublicProfileFactCorrectionsBatch45,
 } from "./writerBiographyPublicProfileFactCorrectionsBatch45";
 import {
+  writerBiographyPublicProfileFactCorrectionsBatch46,
+} from "./writerBiographyPublicProfileFactCorrectionsBatch46";
+import {
   mergeWriterBiographyLegacyCorrections,
   quarantinedWriterIdentities,
   writerBiographyLegacyCorrections,
@@ -85,13 +88,14 @@ describe("legacy writer biography curation", () => {
       "writerBiographyPublicProfileFactCorrectionsBatch43.ts",
       "writerBiographyPublicProfileFactCorrectionsBatch44.ts",
       "writerBiographyPublicProfileFactCorrectionsBatch45.ts",
+      "writerBiographyPublicProfileFactCorrectionsBatch46.ts",
       "writerBiographyLegacyCorrections.ts",
     ].map((fileName) =>
       readFileSync(new URL(fileName, import.meta.url), "utf8")
     );
 
     for (const source of runtimeSources) {
-      expect(source).not.toMatch(/writerBiographyFactReviewBatch(?:32|33|34|35|36|37|38|39|40|41|42|43|44|45)/);
+      expect(source).not.toMatch(/writerBiographyFactReviewBatch(?:32|33|34|35|36|37|38|39|40|41|42|43|44|45|46)/);
     }
   });
 
@@ -99,7 +103,7 @@ describe("legacy writer biography curation", () => {
     expect(writerBiographyLegacyCorrections).toHaveLength(55);
     expect(quarantinedWriterIdentities).toHaveLength(91);
     expect(writerIdentityCorrections).toHaveLength(2);
-    expect(writerPublicProfileFactCorrections).toHaveLength(500);
+    expect(writerPublicProfileFactCorrections).toHaveLength(505);
     expect(writerBiographyPublicProfileFactCorrectionsBatch32).toHaveLength(34);
     expect(writerBiographyPublicProfileFactCorrectionsBatch33).toHaveLength(14);
     expect(writerBiographyPublicProfileFactCorrectionsBatch34).toHaveLength(17);
@@ -114,6 +118,7 @@ describe("legacy writer biography curation", () => {
     expect(writerBiographyPublicProfileFactCorrectionsBatch43).toHaveLength(37);
     expect(writerBiographyPublicProfileFactCorrectionsBatch44).toHaveLength(40);
     expect(writerBiographyPublicProfileFactCorrectionsBatch45).toHaveLength(37);
+    expect(writerBiographyPublicProfileFactCorrectionsBatch46).toHaveLength(5);
 
     const correctionKeys = writerBiographyLegacyCorrections.map((item) =>
       key(item.countryId, item.writerId)
@@ -559,6 +564,10 @@ describe("legacy writer biography curation", () => {
       {
         corrections: writerBiographyPublicProfileFactCorrectionsBatch45,
         checkedAt: "2026-08-21",
+      },
+      {
+        corrections: writerBiographyPublicProfileFactCorrectionsBatch46,
+        checkedAt: "2026-08-30",
       },
     ] as const;
 
