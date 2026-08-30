@@ -2866,7 +2866,7 @@ as $$
             and cmd = 'DELETE'
             and roles = array['authenticated'::name]
             and position('owner_id' in coalesce(qual, '')) > 0
-            and position('10 minutes' in coalesce(qual, '')) > 0
+            and position('00:10:00' in coalesce(qual, '')) > 0
             and position('media_assets' in coalesce(qual, '')) > 0
             and position('.webp' in coalesce(qual, '')) > 0
         ),

@@ -77,7 +77,7 @@ Last updated: `2026-08-30`
   Cloudflare check reused the exact already-installed locked type package
   `@cloudflare/workers-types@5.20260823.1`; dependencies were not reinstalled.
 - Independent final audit: no P0 or P1 findings; migration/planner checksum is
-  `19eb3edca753f02824357eabf8280b6aeb1ebbacb889dcfe95e46d1b7b866370`.
+  `3cb8717f0cf4f4b6a718591d2759c0c73008e35eaf9c3c09a1e0fd19f65ef837`.
 
 ## Known blockers
 

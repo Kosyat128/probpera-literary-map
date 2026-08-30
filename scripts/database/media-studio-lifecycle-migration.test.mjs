@@ -223,6 +223,12 @@ describe("Phase 4 Media Studio lifecycle", () => {
     expect(migration).toContain('create policy "Uploader delete fresh orphan editorial media"');
     expect(migration).toContain("owner_id = (select auth.uid())::text");
     expect(migration).toContain("created_at >= now() - interval '10 minutes'");
+    expect(migration).toContain(
+      "position('00:10:00' in coalesce(qual, '')) > 0"
+    );
+    expect(migration).not.toContain(
+      "position('10 minutes' in coalesce(qual, '')) > 0"
+    );
     expect(migration).toContain("and not exists (");
     expect(migration).toContain("asset.object_path = storage.objects.name");
     expect(migration).toMatch(
