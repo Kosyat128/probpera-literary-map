@@ -57,6 +57,10 @@ const restoreImplementation = helper.slice(
   helper.indexOf("command_restore_drill()"),
   helper.indexOf("command_apply_plan()")
 );
+const storageStubImplementation = helper.slice(
+  helper.indexOf("prepare_isolated_storage_policy_stub()"),
+  helper.indexOf("command_restore_drill()")
+);
 const imagePreparationStep = workflowSource.slice(
   workflowSource.indexOf("- name: Pre-pull and pin the database image for this runner"),
   workflowSource.indexOf("- name: Verify production secrets")
@@ -258,12 +262,12 @@ describe("guarded production database reconciliation", () => {
     );
     expect(
       helper.match(/--host="\$ISOLATED_DATABASE_HOST"/gu)
-    ).toHaveLength(13);
+    ).toHaveLength(14);
     expect(
       helper.match(
         /docker exec(?: --interactive)? "\$RESTORE_CONTAINER" (?:psql|pg_isready|pg_restore) \\/gu
       )
-    ).toHaveLength(13);
+    ).toHaveLength(14);
     expect(helper).not.toContain("--env PGHOST=");
     expect(readinessImplementation).not.toContain("supabase_vault");
     expect(readinessImplementation).not.toContain("vault.secrets");
@@ -285,7 +289,7 @@ describe("guarded production database reconciliation", () => {
     expect(readinessImplementation).not.toContain(
       "to_regnamespace('storage')"
     );
-    expect(helper).not.toMatch(/create\s+schema\s+storage/iu);
+    expect(readinessImplementation).not.toMatch(/create\s+schema\s+storage/iu);
     expect(readinessImplementation).toContain(
       "Isolated base vector (database|auth_users|auth_schema|roles|auth_id_contract)"
     );
@@ -356,6 +360,58 @@ describe("guarded production database reconciliation", () => {
       .toBeLessThan(restoreImplementation.indexOf("verify_initialized_restore_vault"));
     expect(restoreImplementation.indexOf("verify_initialized_restore_vault"))
       .toBeLessThan(restoreImplementation.indexOf("assert_empty_application_schema"));
+  });
+
+  it("seeds only an empty platform-owned Storage policy stub for a requested plan", () => {
+    expect(storageStubImplementation).toContain(
+      "container-local stub contains no production Storage data"
+    );
+    expect(storageStubImplementation).toContain(
+      "create schema storage authorization supabase_storage_admin;"
+    );
+    expect(storageStubImplementation).toContain(
+      "set local role supabase_storage_admin;"
+    );
+    expect(storageStubImplementation).toMatch(
+      /create table storage\.objects \(\s*bucket_id text not null,\s*name text not null,\s*owner_id text,\s*created_at timestamptz not null default now\(\),\s*primary key \(bucket_id, name\)\s*\);/u
+    );
+    expect(storageStubImplementation).toContain(
+      "alter table storage.objects enable row level security;"
+    );
+    expect(storageStubImplementation).toContain("reset role;");
+    expect(storageStubImplementation).toContain("--username=postgres");
+    expect(storageStubImplementation).toContain("--dbname=probpera_restore");
+    expect(storageStubImplementation).toContain("--set=ON_ERROR_STOP=1");
+    expect(storageStubImplementation).toContain("--single-transaction");
+    expect(storageStubImplementation.match(/create\s+table/giu)).toHaveLength(1);
+    expect(storageStubImplementation).not.toMatch(/if\s+not\s+exists/iu);
+    expect(storageStubImplementation).not.toMatch(/\b(?:grant|insert|copy)\b/iu);
+    expect(storageStubImplementation).not.toContain("storage.buckets");
+
+    const planBranchStart = restoreImplementation.indexOf(
+      'if [[ -n "$plan" ]]'
+    );
+    const planBranchEnd = restoreImplementation.indexOf(
+      "restored_articles=",
+      planBranchStart
+    );
+    const planBranch = restoreImplementation.slice(planBranchStart, planBranchEnd);
+    expect(
+      restoreImplementation.match(/prepare_isolated_storage_policy_stub/gu)
+    ).toHaveLength(1);
+    expect(planBranch).toContain("prepare_isolated_storage_policy_stub");
+    expect(restoreImplementation.lastIndexOf("verify_seeded_identity_ids"))
+      .toBeLessThan(planBranchStart);
+    expect(planBranch.indexOf('[[ -s "$plan_absolute" ]]'))
+      .toBeLessThan(planBranch.indexOf("prepare_isolated_storage_policy_stub"));
+    expect(planBranch.indexOf("prepare_isolated_storage_policy_stub"))
+      .toBeLessThan(
+        planBranch.indexOf(
+          'docker cp "$plan_absolute" "$RESTORE_CONTAINER:/tmp/reconciliation.sql"'
+        )
+      );
+    expect(planBranch.indexOf("prepare_isolated_storage_policy_stub"))
+      .toBeLessThan(planBranch.indexOf("--file=/tmp/reconciliation.sql"));
   });
 
   it("preflights and uses the pinned application owner only for application writes", () => {

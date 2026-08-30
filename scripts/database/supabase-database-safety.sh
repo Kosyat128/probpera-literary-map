@@ -593,6 +593,33 @@ command_encrypt_verify() {
   )
 }
 
+prepare_isolated_storage_policy_stub() {
+  # Restore drills replay only the portable public application schema. Seed the
+  # smallest platform-owned Storage relation needed to compile and verify its
+  # policies; this container-local stub contains no production Storage data or
+  # Storage API behavior and is removed with the isolated database.
+  docker exec --interactive "$RESTORE_CONTAINER" psql \
+    --host="$ISOLATED_DATABASE_HOST" \
+    --username=postgres \
+    --dbname=probpera_restore \
+    --no-psqlrc \
+    --quiet \
+    --set=ON_ERROR_STOP=1 \
+    --single-transaction <<'SQL'
+create schema storage authorization supabase_storage_admin;
+set local role supabase_storage_admin;
+create table storage.objects (
+  bucket_id text not null,
+  name text not null,
+  owner_id text,
+  created_at timestamptz not null default now(),
+  primary key (bucket_id, name)
+);
+alter table storage.objects enable row level security;
+reset role;
+SQL
+}
+
 command_restore_drill() {
   local dump identity_sidecar plan result
   dump="$(absolute_path "$1")"
@@ -669,6 +696,7 @@ command_restore_drill() {
     local plan_absolute
     plan_absolute="$(absolute_path "$plan")"
     [[ -s "$plan_absolute" ]] || die "Migration plan is missing or empty."
+    prepare_isolated_storage_policy_stub
     docker cp "$plan_absolute" "$RESTORE_CONTAINER:/tmp/reconciliation.sql"
     docker exec "$RESTORE_CONTAINER" psql \
       --host="$ISOLATED_DATABASE_HOST" \
