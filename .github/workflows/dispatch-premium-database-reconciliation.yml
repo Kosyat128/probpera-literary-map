@@ -7,6 +7,7 @@ on:
     paths:
       - "supabase/migrations/20260823_premium_machine_translation.sql"
       - "supabase/migrations/20260828_zz_editor_autosaves.sql"
+      - "supabase/migrations/20260830_media_studio_lifecycle.sql"
       - "scripts/database/build-production-migration-plan.mjs"
       - ".github/workflows/reconcile-production-database.yml"
 

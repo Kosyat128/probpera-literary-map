@@ -9,10 +9,23 @@ export const mediaCatalogSearchFields = {
 } as const;
 
 export type MediaCatalogSearchField = keyof typeof mediaCatalogSearchFields;
+export const mediaCatalogStates = {
+  active: "Активные",
+  unused: "Не используются",
+  trash: "Корзина",
+} as const;
+export type MediaCatalogState = keyof typeof mediaCatalogStates;
+export const mediaCatalogViews = {
+  grid: "Плитка",
+  list: "Список",
+} as const;
+export type MediaCatalogView = keyof typeof mediaCatalogViews;
 
 type MediaCatalogQueryInput = {
   q?: unknown;
   search_field?: unknown;
+  state?: unknown;
+  view?: unknown;
   page?: unknown;
 };
 
@@ -37,6 +50,17 @@ export function parseMediaCatalogQuery(input: MediaCatalogQueryInput) {
   )
     ? (requestedField as MediaCatalogSearchField)
     : "alt";
+  const requestedState = String(input.state || "active");
+  const state: MediaCatalogState = Object.hasOwn(
+    mediaCatalogStates,
+    requestedState
+  )
+    ? (requestedState as MediaCatalogState)
+    : "active";
+  const requestedView = String(input.view || "grid");
+  const view: MediaCatalogView = Object.hasOwn(mediaCatalogViews, requestedView)
+    ? (requestedView as MediaCatalogView)
+    : "grid";
   const pageCandidate = Number(String(input.page || "1"));
   const page = Number.isSafeInteger(pageCandidate)
     ? Math.min(Math.max(pageCandidate, 1), 10_000)
@@ -46,6 +70,8 @@ export function parseMediaCatalogQuery(input: MediaCatalogQueryInput) {
   return {
     term,
     field,
+    state,
+    view,
     column: mediaCatalogSearchFields[field].column,
     pattern: term ? `%${escapedLikePattern(term)}%` : "",
     page,
@@ -57,15 +83,48 @@ export function parseMediaCatalogQuery(input: MediaCatalogQueryInput) {
 export function mediaCatalogPageHref(
   query: ReturnType<typeof parseMediaCatalogQuery>,
   page: number,
-  notice?: { saved?: string; error?: string; published?: string }
+  notice?: {
+    saved?: string;
+    error?: string;
+    published?: string;
+    replacementCount?: number;
+    bulkCount?: number;
+    skippedCount?: number;
+    orphanCount?: number;
+    orphanPreview?: boolean;
+  }
 ) {
   const params = new URLSearchParams();
   if (query.term) params.set("q", query.term);
   if (query.field !== "alt") params.set("search_field", query.field);
+  if (query.state !== "active") params.set("state", query.state);
+  if (query.view !== "grid") params.set("view", query.view);
   if (page > 1) params.set("page", String(page));
   if (notice?.saved) params.set("saved", notice.saved);
   if (notice?.error) params.set("error", notice.error);
   if (notice?.published) params.set("published", notice.published);
+  if (
+    typeof notice?.replacementCount === "number"
+    && Number.isSafeInteger(notice.replacementCount)
+  ) {
+    params.set("replacement_count", String(notice.replacementCount));
+  }
+  if (typeof notice?.bulkCount === "number" && Number.isSafeInteger(notice.bulkCount)) {
+    params.set("bulk_count", String(notice.bulkCount));
+  }
+  if (
+    typeof notice?.skippedCount === "number"
+    && Number.isSafeInteger(notice.skippedCount)
+  ) {
+    params.set("skipped_count", String(notice.skippedCount));
+  }
+  if (
+    typeof notice?.orphanCount === "number"
+    && Number.isSafeInteger(notice.orphanCount)
+  ) {
+    params.set("orphan_count", String(notice.orphanCount));
+  }
+  if (notice?.orphanPreview) params.set("orphan_cleanup", "preview");
   const search = params.toString();
   return `/media${search ? `?${search}` : ""}`;
 }

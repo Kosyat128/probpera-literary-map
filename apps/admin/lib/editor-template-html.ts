@@ -1,5 +1,14 @@
 import sanitizeHtml from "sanitize-html";
 
+import {
+  editorialImageDataAttributes,
+  safeEditorialImageHtmlAttributes,
+} from "./editorial-media-content";
+import {
+  editorialGalleryAttributeNames,
+  safeEditorialGalleryHtmlAttributes,
+} from "./editorial-gallery";
+
 const safeEditorTemplateHtml = {
   allowedTags: [
     ...sanitizeHtml.defaults.allowedTags,
@@ -22,9 +31,21 @@ const safeEditorTemplateHtml = {
       "data-image-layout",
       "data-caption",
       "data-media-id",
+      ...editorialImageDataAttributes,
+      ...editorialGalleryAttributeNames,
     ],
   },
   allowedSchemes: ["http", "https", "mailto"],
+  transformTags: {
+    img: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialImageHtmlAttributes(attributes),
+    }),
+    section: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeEditorialGalleryHtmlAttributes(attributes),
+    }),
+  },
 };
 
 export function sanitizeEditorTemplateHtml(source: string) {

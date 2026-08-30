@@ -36,6 +36,13 @@ import { withClientAdminPath } from "@/lib/admin-path";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
 import {
+  defaultEditorialGallerySettings,
+  mergeEditorialGalleryItems,
+  parseEditorialGalleryUrls,
+  type EditorialGalleryItemInput,
+  type EditorialGallerySettings,
+} from "@/lib/editorial-gallery";
+import {
   EditorialBlock,
   insertEditorialGallery,
   insertEditorialSlider,
@@ -371,7 +378,14 @@ export default function ArticleEditor({
   const [mediaComposerKind, setMediaComposerKind] =
     useState<GalleryEditorKind | null>(null);
   const [mediaComposerValue, setMediaComposerValue] = useState("");
+  const [mediaComposerItems, setMediaComposerItems] = useState<
+    EditorialGalleryItemInput[]
+  >([]);
   const [mediaComposerError, setMediaComposerError] = useState("");
+  const [mediaComposerSettings, setMediaComposerSettings] =
+    useState<EditorialGallerySettings>(() =>
+      defaultEditorialGallerySettings("gallery")
+    );
   const [linkDialogOpen, setLinkDialogOpen] = useState(false);
   const [linkDialogInitialValue, setLinkDialogInitialValue] = useState<
     Record<string, unknown>
@@ -538,6 +552,16 @@ export default function ArticleEditor({
       setImageUploadError(message);
     },
   });
+
+  const appendMediaComposerItems = useCallback(
+    (items: EditorialGalleryItemInput[]) => {
+      setMediaComposerItems((current) =>
+        mergeEditorialGalleryItems(current, items)
+      );
+      setMediaComposerError("");
+    },
+    []
+  );
 
   useEffect(() => {
     editor?.setEditable(imageUploadTarget === null && !editorMedia.busy);
@@ -1302,30 +1326,39 @@ export default function ArticleEditor({
   const addMediaCollection = (kind: "gallery" | "slider") => {
     setMediaComposerKind(kind);
     setMediaComposerValue("");
+    setMediaComposerItems([]);
+    setMediaComposerError("");
+    setMediaComposerSettings(defaultEditorialGallerySettings(kind));
+  };
+
+  const closeMediaCollection = () => {
+    setMediaComposerKind(null);
+    setMediaComposerValue("");
+    setMediaComposerItems([]);
     setMediaComposerError("");
   };
 
-  const confirmMediaCollection = () => {
+  const confirmMediaCollection = (settings: EditorialGallerySettings) => {
     if (!mediaComposerKind) return;
-    const urls = mediaComposerValue
-      .split(/\r?\n/u)
-      .map((item) => item.trim())
-      .filter((item) => /^https:\/\//iu.test(item))
-      .slice(0, 8);
-    if (!urls.length) {
-      setMediaComposerError("Добавьте хотя бы один корректный HTTPS-адрес.");
+    const items = mergeEditorialGalleryItems(
+      mediaComposerItems,
+      parseEditorialGalleryUrls(mediaComposerValue)
+    );
+    if (!items.length) {
+      setMediaComposerError("Загрузите или выберите хотя бы одно изображение.");
       return;
     }
-    if (mediaComposerKind === "slider") insertEditorialSlider(editor, urls);
-    else insertEditorialGallery(editor, urls);
+    if (mediaComposerKind === "slider") {
+      insertEditorialSlider(editor, items, "статье", settings);
+    } else {
+      insertEditorialGallery(editor, items, "статье", settings);
+    }
     setTemplateMessage(
       mediaComposerKind === "slider"
         ? "Слайдер вставлен: на сайте появятся стрелки, точки и свайп."
         : "Галерея вставлена в материал."
     );
-    setMediaComposerKind(null);
-    setMediaComposerValue("");
-    setMediaComposerError("");
+    closeMediaCollection();
   };
 
   const applyTemplate = (html: string, label: string) => {
@@ -1993,14 +2026,28 @@ export default function ArticleEditor({
       </div>
 
       <GalleryEditor
-        kind={mediaComposerKind}
+        kind={editorMedia.dialogOpen ? null : mediaComposerKind}
         value={mediaComposerValue}
         error={mediaComposerError}
+        settings={mediaComposerSettings}
+        items={mediaComposerItems}
         onValueChange={(value) => {
           setMediaComposerValue(value);
           setMediaComposerError("");
         }}
-        onCancel={() => setMediaComposerKind(null)}
+        onSettingsChange={setMediaComposerSettings}
+        onOpenMediaLibrary={() =>
+          editorMedia.openCollectionLibrary(appendMediaComposerItems)
+        }
+        onUploadFiles={() =>
+          editorMedia.openCollectionPicker(appendMediaComposerItems)
+        }
+        onRemoveItem={(index) =>
+          setMediaComposerItems((current) =>
+            current.filter((_, itemIndex) => itemIndex !== index)
+          )
+        }
+        onCancel={closeMediaCollection}
         onConfirm={confirmMediaCollection}
       />
 
@@ -2035,6 +2082,7 @@ export default function ArticleEditor({
       <EditorMediaDialog
         open={editorMedia.dialogOpen}
         queue={editorMedia.queue}
+        collectionMode={editorMedia.collectionMode}
         onClose={editorMedia.closeDialog}
         onPickFiles={editorMedia.pickForCurrentTarget}
         onSelectAsset={editorMedia.selectLibraryAsset}

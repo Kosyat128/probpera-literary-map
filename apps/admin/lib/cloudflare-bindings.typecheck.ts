@@ -1,13 +1,14 @@
-type CatalogNamespaceContract = {
-  get(key: string, type: "text"): Promise<string | null>;
-};
+// KVNamespace exposes overloaded get signatures. Checking the actual text call
+// keeps the loader contract pinned without relying on brittle structural
+// assignability between an overload set and a one-signature mock interface.
+function assertCatalogTextBinding(
+  namespace: AdminCloudflareBindings["ADMIN_CATALOGS"]
+) {
+  const result: Promise<string | null> = namespace.get(
+    "editorial-catalog.json",
+    "text"
+  );
+  void result;
+}
 
-type Assert<T extends true> = T;
-type KvBindingMatchesCatalogLoader = Assert<
-  AdminCloudflareBindings["ADMIN_CATALOGS"] extends CatalogNamespaceContract
-    ? true
-    : false
->;
-
-const kvBindingMatchesCatalogLoader: KvBindingMatchesCatalogLoader = true;
-void kvBindingMatchesCatalogLoader;
+void assertCatalogTextBinding;

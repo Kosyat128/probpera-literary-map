@@ -74,7 +74,12 @@ describe("shared editor media parity", () => {
       "onPasteCapture={actions.handleEditorPaste}"
     );
     expect(pageSource).toContain("onPasteCapture={editorMedia.handlePaste}");
-    expect(workflowSource).toContain('target.kind === "insert" ? supported : supported.slice(0, 1)');
+    expect(workflowSource).toContain(
+      'target.kind === "insert" || target.kind === "collection"'
+    );
+    expect(workflowSource).toContain(
+      'nextTarget.kind === "insert" || nextTarget.kind === "collection"'
+    );
     expect(workflowSource).toContain("uploaded.map((item) => ({ type: \"image\"");
     expect(workflowSource).toContain("replaceMediaSlotAt(editor, target.position");
   });
@@ -91,6 +96,23 @@ describe("shared editor media parity", () => {
     expect(assetsRouteSource).toContain('export async function GET(request: Request)');
     expect(assetsRouteSource).not.toContain("export async function POST");
     expect(workflowSource).toContain("Изображение из медиатеки вставлено без повторной загрузки");
+  });
+
+  it("collects multiple secure media assets for article and page galleries", () => {
+    expect(workflowSource).toContain('kind: "collection"');
+    expect(workflowSource).toContain("target.onCollect(");
+    expect(workflowSource).toContain("openCollectionLibrary");
+    expect(workflowSource).toContain("openCollectionPicker");
+    expect(workflowSource).toContain("source: asset.sourceUrl");
+    expect(workflowSource).toContain("license: asset.licenseName");
+    expect(workflowSource).toContain("licenseUrl: asset.licenseUrl");
+    expect(workflowSource).not.toContain("link: asset.sourceUrl");
+    expect(dialogSource).toContain("collectionMode");
+    expect(dialogSource).toContain("Загрузить несколько изображений");
+    expect(articleSource).toContain("openCollectionLibrary(appendMediaComposerItems)");
+    expect(articleSource).toContain("openCollectionPicker(appendMediaComposerItems)");
+    expect(pageSource).toContain("openCollectionLibrary(appendMediaComposerItems)");
+    expect(pageSource).toContain("openCollectionPicker(appendMediaComposerItems)");
   });
 
   it("clears a stale media-library identity for manual URL replacement", () => {

@@ -2,22 +2,14 @@ import Image from "@tiptap/extension-image";
 import type { Editor } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 
+import {
+  editorialImageHtmlAttributes,
+  normalizeEditorialImageAttributes,
+} from "@/lib/editorial-media-content";
+
 import EditorialImageView from "./EditorialImageView";
 
-export type EditorialImageLayout = "wide" | "normal" | "left" | "right";
-
-const layouts = new Set<EditorialImageLayout>([
-  "wide",
-  "normal",
-  "left",
-  "right",
-]);
-
-function imageLayout(value: unknown): EditorialImageLayout {
-  return typeof value === "string" && layouts.has(value as EditorialImageLayout)
-    ? (value as EditorialImageLayout)
-    : "wide";
-}
+export type { EditorialImageLayout } from "@/lib/editorial-media-content";
 
 export const EditorialImage = Image.extend({
   addAttributes() {
@@ -25,11 +17,115 @@ export const EditorialImage = Image.extend({
       ...this.parent?.(),
       layout: {
         default: "wide",
-        parseHTML: (element) => imageLayout(element.getAttribute("data-image-layout")),
-        renderHTML: ({ layout }) => ({
-          class: `article-image is-${imageLayout(layout)}`,
-          "data-image-layout": imageLayout(layout),
-        }),
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            layout: element.getAttribute("data-image-layout"),
+          }).layout,
+        renderHTML: (attributes) => editorialImageHtmlAttributes(attributes),
+      },
+      width: {
+        default: 100,
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            width: element.getAttribute("data-image-width"),
+          }).width,
+        renderHTML: () => ({}),
+      },
+      maxWidth: {
+        default: 0,
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            maxWidth: element.getAttribute("data-image-max-width"),
+          }).maxWidth,
+        renderHTML: () => ({}),
+      },
+      aspect: {
+        default: "auto",
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            aspect: element.getAttribute("data-image-aspect"),
+          }).aspect,
+        renderHTML: () => ({}),
+      },
+      fit: {
+        default: "contain",
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            fit: element.getAttribute("data-image-fit"),
+          }).fit,
+        renderHTML: () => ({}),
+      },
+      focusX: {
+        default: 0.5,
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            focusX: element.getAttribute("data-focus-x"),
+          }).focusX,
+        renderHTML: () => ({}),
+      },
+      focusY: {
+        default: 0.5,
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            focusY: element.getAttribute("data-focus-y"),
+          }).focusY,
+        renderHTML: () => ({}),
+      },
+      credit: {
+        default: "",
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            credit: element.getAttribute("data-credit"),
+          }).credit,
+        renderHTML: () => ({}),
+      },
+      source: {
+        default: "",
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            source: element.getAttribute("data-source"),
+          }).source,
+        renderHTML: () => ({}),
+      },
+      license: {
+        default: "",
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            license: element.getAttribute("data-license"),
+          }).license,
+        renderHTML: () => ({}),
+      },
+      licenseUrl: {
+        default: "",
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            licenseUrl: element.getAttribute("data-license-url"),
+          }).licenseUrl,
+        renderHTML: () => ({}),
+      },
+      link: {
+        default: "",
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            link: element.getAttribute("data-link"),
+          }).link,
+        renderHTML: () => ({}),
+      },
+      lightbox: {
+        default: true,
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            lightbox: element.getAttribute("data-lightbox"),
+          }).lightbox,
+        renderHTML: () => ({}),
+      },
+      decorative: {
+        default: false,
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            decorative: element.getAttribute("data-decorative"),
+          }).decorative,
+        renderHTML: () => ({}),
       },
       caption: {
         default: "",

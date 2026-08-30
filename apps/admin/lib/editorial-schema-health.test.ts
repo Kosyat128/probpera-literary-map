@@ -13,12 +13,16 @@ const root = path.resolve(process.cwd());
 const latestSchemaMigration = readFileSync(
   path.join(
     root,
-    "supabase/migrations/20260822_zz_atomic_article_bundle.sql"
+    "supabase/migrations/20260830_media_studio_lifecycle.sql"
   ),
   "utf8"
 );
 const productionMigrationPlanner = readFileSync(
   path.join(root, "scripts/database/build-production-migration-plan.mjs"),
+  "utf8"
+);
+const healthPageSource = readFileSync(
+  path.join(root, "apps/admin/app/(dashboard)/health/page.tsx"),
   "utf8"
 );
 
@@ -38,6 +42,9 @@ const completeHealth: EditorialSchemaHealth = {
   writerOverrides: true,
   homepageMove: true,
   tagsUpdatedAt: true,
+  mediaStudioLifecycle: true,
+  mediaUsageGraph: true,
+  mediaSafeReplaceRpc: true,
 };
 
 describe("editorial schema health", () => {
@@ -54,6 +61,16 @@ describe("editorial schema health", () => {
       `health ->> 'version' <> '${CURRENT_EDITORIAL_SCHEMA_VERSION}'`
     );
     expect(productionMigrationPlanner).toContain("health ->> 'articleBundleRpc'");
+    expect(productionMigrationPlanner).toContain("health ->> 'mediaStudioLifecycle'");
+    expect(productionMigrationPlanner).toContain("health ->> 'mediaUsageGraph'");
+    expect(productionMigrationPlanner).toContain("health ->> 'mediaSafeReplaceRpc'");
+  });
+
+  it("fails the Media Studio diagnostic closed unless all lifecycle contracts are ready", () => {
+    expect(healthPageSource).toContain("schemaHealth?.mediaStudioLifecycle === true");
+    expect(healthPageSource).toContain("schemaHealth?.mediaUsageGraph === true");
+    expect(healthPageSource).toContain("schemaHealth?.mediaSafeReplaceRpc === true");
+    expect(healthPageSource).toContain('mediaStudioReady ? "Готова" : "Закрыта"');
   });
 
   it("rejects every missing or false required database capability", () => {

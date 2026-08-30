@@ -1,7 +1,7 @@
 import type { Editor } from "@tiptap/core";
 import { describe, expect, it, vi } from "vitest";
 
-import { replaceMediaSlotAt } from "./EditorialBlock";
+import { insertEditorialGallery, replaceMediaSlotAt } from "./EditorialBlock";
 
 vi.mock("./EditorialBlockView", () => ({ default: () => null }));
 
@@ -105,5 +105,71 @@ describe("replaceMediaSlotAt", () => {
     expect(replaced).toBe(false);
     expect(harness.nodeAt).not.toHaveBeenCalled();
     expect(harness.dispatch).not.toHaveBeenCalled();
+  });
+});
+
+describe("insertEditorialGallery", () => {
+  it("inserts twelve ordered items with stable structured settings", () => {
+    const insertContent = vi.fn();
+    const chain = {
+      focus: vi.fn(),
+      insertContent,
+      run: vi.fn(),
+    };
+    chain.focus.mockReturnValue(chain);
+    insertContent.mockReturnValue(chain);
+    chain.run.mockReturnValue(true);
+    const editor = { chain: vi.fn(() => chain) } as unknown as Editor;
+    const mediaId = (index: number) =>
+      `00000000-0000-4000-8000-${String(index + 1).padStart(12, "0")}`;
+    const items = Array.from({ length: 12 }, (_, index) => ({
+      mediaId: mediaId(index),
+      src: `https://cdn.example.test/${index + 1}.webp`,
+      alt: `Кадр ${index + 1}`,
+      caption: `Подпись ${index + 1}`,
+      credit: `Архив ${index + 1}`,
+      source: `https://archive.example.test/${index + 1}`,
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    }));
+
+    insertEditorialGallery(editor, items, "статье", {
+      id: "gallery-stable-01",
+      columnsDesktop: 4,
+      columnsTablet: 3,
+      columnsMobile: 2,
+      gap: "spacious",
+      aspect: "16-9",
+      fit: "cover",
+    });
+
+    const document = insertContent.mock.calls[0]?.[0] as {
+      attrs: Record<string, unknown>;
+      content: Array<{ type: string; attrs?: Record<string, unknown> }>;
+    };
+    expect(document.attrs).toMatchObject({
+      kind: "gallery",
+      galleryVersion: 1,
+      galleryId: "gallery-stable-01",
+      galleryColumnsDesktop: 4,
+      galleryColumnsTablet: 3,
+      galleryColumnsMobile: 2,
+      galleryGap: "spacious",
+      galleryAspect: "16-9",
+      galleryFit: "cover",
+    });
+    expect(document.content).toHaveLength(13);
+    expect(document.content.slice(1).map((item) => item.attrs?.src)).toEqual(
+      items.map((item) => item.src)
+    );
+    expect(document.content[12]?.attrs).toMatchObject({
+      mediaId: mediaId(11),
+      alt: "Кадр 12",
+      caption: "Подпись 12",
+      credit: "Архив 12",
+      source: "https://archive.example.test/12",
+      license: "CC BY 4.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/4.0/",
+    });
   });
 });

@@ -26,12 +26,12 @@ describe("visual media focal-point editor", () => {
   });
 
   it("reads actual usage rows for only the visible catalog page", () => {
-    expect(page).toContain('.from("media_usages")');
-    expect(page).toContain('.in("media_id", assets.map((asset) => asset.id))');
+    expect(page).toContain('supabase.rpc("list_media_studio_assets"');
+    expect(page).toContain('supabase.rpc("list_media_asset_usages"');
+    expect(page).toContain("p_media_ids: assets.map((asset) => asset.id)");
     expect(page).toContain("usagesByMedia");
-    expect(page).toContain('.in("cover_media_id", assetIds)');
-    expect(page).toContain('.in("background_media_id", assetIds)');
-    expect(page).toContain('.in("mobile_media_id", assetIds)');
+    expect(page).toContain("mediaCatalogStates");
+    expect(page).toContain("asset.usage_count");
     expect(page).toContain("<MediaFocalEditor");
   });
 });

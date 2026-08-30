@@ -32,6 +32,13 @@ import EditorMediaDialog from "@/components/EditorMediaDialog";
 import { useEditorMediaWorkflow } from "@/components/useEditorMediaWorkflow";
 import { articleTextTones } from "@/lib/article-content-presentation";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
+import {
+  defaultEditorialGallerySettings,
+  mergeEditorialGalleryItems,
+  parseEditorialGalleryUrls,
+  type EditorialGalleryItemInput,
+  type EditorialGallerySettings,
+} from "@/lib/editorial-gallery";
 
 type PageRecord = {
   id: string;
@@ -151,7 +158,14 @@ export default function PageEditor({
   const [mediaComposerKind, setMediaComposerKind] =
     useState<GalleryEditorKind | null>(null);
   const [mediaComposerValue, setMediaComposerValue] = useState("");
+  const [mediaComposerItems, setMediaComposerItems] = useState<
+    EditorialGalleryItemInput[]
+  >([]);
   const [mediaComposerError, setMediaComposerError] = useState("");
+  const [mediaComposerSettings, setMediaComposerSettings] =
+    useState<EditorialGallerySettings>(() =>
+      defaultEditorialGallerySettings("gallery")
+    );
   const imageSelectionRef = useRef<PageImageSelection>({ attributes: {} });
   const previewParams = new URLSearchParams();
   if (catalogContext.q) previewParams.set("q", catalogContext.q);
@@ -236,6 +250,15 @@ export default function PageEditor({
       setImageUploadError(message);
     },
   });
+  const appendMediaComposerItems = useCallback(
+    (items: EditorialGalleryItemInput[]) => {
+      setMediaComposerItems((current) =>
+        mergeEditorialGalleryItems(current, items)
+      );
+      setMediaComposerError("");
+    },
+    []
+  );
   const imageUploadPending = editorMedia.busy;
 
   useEffect(() => {
@@ -421,30 +444,32 @@ export default function PageEditor({
   function openMediaCollection(kind: GalleryEditorKind) {
     setMediaComposerKind(kind);
     setMediaComposerValue("");
+    setMediaComposerItems([]);
     setMediaComposerError("");
+    setMediaComposerSettings(defaultEditorialGallerySettings(kind));
   }
 
   function closeMediaCollection() {
     setMediaComposerKind(null);
     setMediaComposerValue("");
+    setMediaComposerItems([]);
     setMediaComposerError("");
   }
 
-  function confirmMediaCollection() {
+  function confirmMediaCollection(settings: EditorialGallerySettings) {
     if (!mediaComposerKind) return;
-    const urls = mediaComposerValue
-      .split(/\r?\n/u)
-      .map((item) => item.trim())
-      .filter((item) => /^https:\/\//iu.test(item))
-      .slice(0, 8);
-    if (!urls.length) {
-      setMediaComposerError("Добавьте хотя бы один корректный HTTPS-адрес.");
+    const items = mergeEditorialGalleryItems(
+      mediaComposerItems,
+      parseEditorialGalleryUrls(mediaComposerValue)
+    );
+    if (!items.length) {
+      setMediaComposerError("Загрузите или выберите хотя бы одно изображение.");
       return;
     }
     if (mediaComposerKind === "slider") {
-      insertEditorialSlider(editor, urls, "странице");
+      insertEditorialSlider(editor, items, "странице", settings);
     } else {
-      insertEditorialGallery(editor, urls, "странице");
+      insertEditorialGallery(editor, items, "странице", settings);
     }
     setImageUploadError("");
     setImageUploadMessage(
@@ -792,6 +817,7 @@ export default function PageEditor({
       <EditorMediaDialog
         open={editorMedia.dialogOpen}
         queue={editorMedia.queue}
+        collectionMode={editorMedia.collectionMode}
         onClose={editorMedia.closeDialog}
         onPickFiles={editorMedia.pickForCurrentTarget}
         onSelectAsset={editorMedia.selectLibraryAsset}
@@ -799,11 +825,25 @@ export default function PageEditor({
         onRetryItem={editorMedia.retryItem}
       />
       <GalleryEditor
-        kind={mediaComposerKind}
+        kind={editorMedia.dialogOpen ? null : mediaComposerKind}
         value={mediaComposerValue}
         error={mediaComposerError}
         contextLabel="страницы"
+        settings={mediaComposerSettings}
+        items={mediaComposerItems}
         onValueChange={setMediaComposerValue}
+        onSettingsChange={setMediaComposerSettings}
+        onOpenMediaLibrary={() =>
+          editorMedia.openCollectionLibrary(appendMediaComposerItems)
+        }
+        onUploadFiles={() =>
+          editorMedia.openCollectionPicker(appendMediaComposerItems)
+        }
+        onRemoveItem={(index) =>
+          setMediaComposerItems((current) =>
+            current.filter((_, itemIndex) => itemIndex !== index)
+          )
+        }
         onCancel={closeMediaCollection}
         onConfirm={confirmMediaCollection}
       />
