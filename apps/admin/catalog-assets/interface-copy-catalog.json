@@ -2568,6 +2568,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Иллюстрация",
+    "group": "Весь интерфейс",
+    "label": "Иллюстрация",
+    "defaultRu": "Иллюстрация",
+    "defaultEn": "Illustration",
+    "multiline": false
+  },
+  {
     "key": "interface.Иллюстрация из статьи о произведении",
     "group": "Весь интерфейс",
     "label": "Иллюстрация из статьи о произведении",
@@ -5704,6 +5712,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Остановить автоматическую прокрутку",
+    "group": "Весь интерфейс",
+    "label": "Остановить автоматическую прокрутку",
+    "defaultRu": "Остановить автоматическую прокрутку",
+    "defaultEn": "Pause automatic scrolling",
+    "multiline": false
+  },
+  {
     "key": "country.CK",
     "group": "Названия стран",
     "label": "Название страны: Острова Кука",
@@ -7421,6 +7437,14 @@
     "label": "Продолжено с места остановки",
     "defaultRu": "Продолжено с места остановки",
     "defaultEn": "Resumed where you left off",
+    "multiline": false
+  },
+  {
+    "key": "interface.Продолжить автоматическую прокрутку",
+    "group": "Весь интерфейс",
+    "label": "Продолжить автоматическую прокрутку",
+    "defaultRu": "Продолжить автоматическую прокрутку",
+    "defaultEn": "Resume automatic scrolling",
     "multiline": false
   },
   {
