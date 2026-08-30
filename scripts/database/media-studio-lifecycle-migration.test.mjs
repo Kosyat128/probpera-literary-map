@@ -309,6 +309,8 @@ describe("Phase 4 Media Studio lifecycle", () => {
     expect(migration).toContain(
       "$media_id_regex$(^|[[:space:]])data-media-id"
     );
+    expect(migration.match(/!~ E'\^https:\/\//gu)).toHaveLength(3);
+    expect(migration).not.toContain("$safe_media_url$");
     expect(migration).not.toMatch(
       /content_html\s*=\s*replace\([\s\S]*?p_old_public_url[\s\S]*?p_new_public_url/u
     );

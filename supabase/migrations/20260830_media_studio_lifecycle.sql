@@ -1855,7 +1855,7 @@ begin
   if p_html is null then
     return null;
   end if;
-  if p_new_public_url !~ $safe_media_url$^https://[^[:space:]<>"'\\]+$$safe_media_url$ then
+  if p_new_public_url !~ E'^https://[^[:space:]<>"''\\\\]+$' then
     raise exception 'replacement public URL is unsafe for an HTML attribute'
       using errcode = '22023';
   end if;
@@ -2077,8 +2077,8 @@ begin
     raise exception 'replacement usage references must be arrays of at most 500 rows'
       using errcode = '22023';
   end if;
-  if p_old_public_url !~ $safe_media_url$^https://[^[:space:]<>"'\\]+$$safe_media_url$
-    or p_new_public_url !~ $safe_media_url$^https://[^[:space:]<>"'\\]+$$safe_media_url$ then
+  if p_old_public_url !~ E'^https://[^[:space:]<>"''\\\\]+$'
+    or p_new_public_url !~ E'^https://[^[:space:]<>"''\\\\]+$' then
     raise exception 'replacement public URLs must be HTTPS'
       using errcode = '22023';
   end if;
