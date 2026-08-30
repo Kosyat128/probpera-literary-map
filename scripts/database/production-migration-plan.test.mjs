@@ -370,7 +370,10 @@ describe("guarded production database reconciliation", () => {
       "if to_regnamespace('storage') is null then"
     );
     expect(storageStubImplementation).toMatch(
-      /select owner\.rolname\s+from pg_catalog\.pg_namespace namespace\s+join pg_catalog\.pg_roles owner on owner\.oid = namespace\.nspowner\s+where namespace\.nspname = 'storage'\s+\) is distinct from 'supabase_storage_admin' then/u
+      /select owner\.rolname\s+from pg_catalog\.pg_namespace namespace\s+join pg_catalog\.pg_roles owner on owner\.oid = namespace\.nspowner\s+where namespace\.nspname = 'storage'\s+\) is distinct from 'supabase_admin' then/u
+    );
+    expect(storageStubImplementation).not.toMatch(
+      /\) is distinct from 'supabase_storage_admin' then/u
     );
     expect(storageStubImplementation).toContain(
       "if to_regclass('storage.objects') is not null then"
@@ -390,6 +393,10 @@ describe("guarded production database reconciliation", () => {
     expect(storageStubImplementation).toMatch(
       /create table storage\.objects \(\s*bucket_id text not null,\s*name text not null,\s*owner_id text,\s*created_at timestamptz not null default now\(\),\s*primary key \(bucket_id, name\)\s*\);/u
     );
+    expect(storageStubImplementation.indexOf("set local role supabase_storage_admin;"))
+      .toBeLessThan(storageStubImplementation.indexOf("create table storage.objects"));
+    expect(storageStubImplementation.indexOf("create table storage.objects"))
+      .toBeLessThan(storageStubImplementation.indexOf("reset role;"));
     expect(storageStubImplementation).toContain(
       "alter table storage.objects enable row level security;"
     );

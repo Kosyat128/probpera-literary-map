@@ -616,7 +616,7 @@ begin
     from pg_catalog.pg_namespace namespace
     join pg_catalog.pg_roles owner on owner.oid = namespace.nspowner
     where namespace.nspname = 'storage'
-  ) is distinct from 'supabase_storage_admin' then
+  ) is distinct from 'supabase_admin' then
     raise exception 'isolated platform storage schema owner is invalid';
   end if;
   if to_regclass('storage.objects') is not null then
