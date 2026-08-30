@@ -121,7 +121,7 @@ export default function CmsPageReader({ page }: { page: CmsPage }) {
       if (editorialImageElementAllowsLightbox(image) && mediaItem) {
         const accessibleAlt =
           image.alt.trim() ||
-          `${t("Иллюстрация")} ${number(index + 1)} — ${page.title}`;
+          `${t("Иллюстрация")} ${number(index + 1)} - ${page.title}`;
         image.tabIndex = 0;
         image.setAttribute("role", "button");
         image.setAttribute(
@@ -390,7 +390,7 @@ export default function CmsPageReader({ page }: { page: CmsPage }) {
               src={activeMedia.src}
               alt={
                 activeMedia.alt ||
-                `${t("Иллюстрация")} ${number(activeMediaIndex + 1)} — ${
+                `${t("Иллюстрация")} ${number(activeMediaIndex + 1)} - ${
                   page.title
                 }`
               }
