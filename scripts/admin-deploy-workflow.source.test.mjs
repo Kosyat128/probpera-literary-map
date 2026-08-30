@@ -17,6 +17,10 @@ const catalogSync = readFileSync(
   path.join(root, "apps", "admin", "scripts", "sync-private-catalogs.mjs"),
   "utf8"
 );
+const workerSizeGate = readFileSync(
+  path.join(root, "scripts", "check-admin-worker-size.mjs"),
+  "utf8"
+);
 
 function stepSource(name) {
   const marker = `      - name: ${name}`;
@@ -57,6 +61,15 @@ describe("editorial admin deployment workflow", () => {
     expect(build).toContain("npm run cf:size --workspace @probpera/admin");
     expect(adminPackage.scripts["cf:size"]).toBe(
       "node ../../scripts/check-admin-worker-size.mjs"
+    );
+    expect(workerSizeGate).toContain(
+      "const CLOUDFLARE_FREE_GZIP_KIB = 3_072;"
+    );
+    expect(workerSizeGate).toContain(
+      "const RELEASE_SAFETY_MARGIN_KIB = 160;"
+    );
+    expect(workerSizeGate).toContain(
+      "CLOUDFLARE_FREE_GZIP_KIB - RELEASE_SAFETY_MARGIN_KIB"
     );
     expect(build).not.toContain("if:");
     expect(build).not.toContain("secrets.");
