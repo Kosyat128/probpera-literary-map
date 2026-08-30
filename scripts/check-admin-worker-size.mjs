@@ -3,7 +3,10 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
-const MAX_GZIP_KIB = 2_900;
+const CLOUDFLARE_FREE_GZIP_KIB = 3_072;
+const RELEASE_SAFETY_MARGIN_KIB = 160;
+const MAX_GZIP_KIB =
+  CLOUDFLARE_FREE_GZIP_KIB - RELEASE_SAFETY_MARGIN_KIB;
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   ".."
