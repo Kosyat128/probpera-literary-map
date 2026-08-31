@@ -4,6 +4,15 @@ import { describe, expect, it } from "vitest";
 
 const actionsSource = readFileSync(new URL("./actions.ts", import.meta.url), "utf8");
 const pageSource = readFileSync(new URL("./page.tsx", import.meta.url), "utf8");
+const workspaceSource = readFileSync(
+  new URL("./TypographyWorkspace.tsx", import.meta.url),
+  "utf8"
+);
+const loaderSource = readFileSync(
+  new URL("./TypographyWorkspaceLoader.tsx", import.meta.url),
+  "utf8"
+);
+const renderSource = `${pageSource}\n${workspaceSource}`;
 const uploadSource = readFileSync(
   new URL("./FontUploadForm.tsx", import.meta.url),
   "utf8"
@@ -31,11 +40,11 @@ describe("Site Studio typography admin contract", () => {
   it("authorizes every mutation and renders its expected version", () => {
     expect(actionsSource).toContain('requireStaff(["owner", "admin"])');
     expect(actionsSource).toContain("expectedTypographyVersionFromForm(formData)");
-    expect(pageSource.match(/name="expected_version"/gu)?.length).toBeGreaterThanOrEqual(3);
-    expect(pageSource).toContain('name="override_id"');
-    expect(pageSource).toContain('name="revision_id"');
-    expect(pageSource).toContain('name="font_id"');
-    expect(pageSource).toContain(
+    expect(renderSource.match(/name="expected_version"/gu)?.length).toBeGreaterThanOrEqual(3);
+    expect(renderSource).toContain('name="override_id"');
+    expect(renderSource).toContain('name="revision_id"');
+    expect(renderSource).toContain('name="font_id"');
+    expect(renderSource).toContain(
       'key={selected ? `${selected.id}:${selected.casVersion}` : "new"}'
     );
   });
@@ -45,26 +54,28 @@ describe("Site Studio typography admin contract", () => {
     expect(uploadSource).toContain('accept=".woff2,.woff,font/woff2,font/woff"');
     expect(uploadSource).toMatch(/name="licenseName"[\s\S]{0,180}required/u);
     expect(uploadSource).toContain('aria-live="polite"');
-    expect(pageSource).toContain('rel="noreferrer"');
+    expect(renderSource).toContain('rel="noreferrer"');
     expect(uploadSource).not.toMatch(/name="(?:cssUrl|fontUrl|importUrl|remoteUrl)"/u);
   });
 
   it("uses a scoped responsive CSS module and one AdminShell entry", () => {
-    expect(pageSource).toContain('import styles from "./page.module.css"');
+    expect(renderSource).toContain('import styles from "./page.module.css"');
+    expect(loaderSource).toContain('ssr: false');
+    expect(loaderSource).toContain('aria-live="polite"');
     expect(cssSource).toContain("@media (max-width: 760px)");
     expect(cssSource).toContain(".workspace");
     expect(shellSource.match(/"Шрифты", "\/site-studio\/fonts"/gu)).toHaveLength(1);
   });
 
   it("shows Russian workflow copy and never accepts a raw style payload", () => {
-    expect(pageSource).toContain("Сохранить черновик");
-    expect(pageSource).toContain("Сбросить и опубликовать");
-    expect(pageSource).toContain("Восстановить");
-    expect(pageSource).toContain("Произвольный CSS");
-    expect(pageSource).toContain('normal: "Обычное"');
-    expect(pageSource).toContain('publish: "Публикация"');
+    expect(renderSource).toContain("Сохранить черновик");
+    expect(renderSource).toContain("Сбросить и опубликовать");
+    expect(renderSource).toContain("Восстановить");
+    expect(renderSource).toContain("Произвольный CSS");
+    expect(renderSource).toContain('normal: "Обычное"');
+    expect(renderSource).toContain('publish: "Публикация"');
     expect(actionsSource).not.toContain("return error?.message");
-    expect(pageSource).not.toContain('name="style"');
-    expect(pageSource).not.toContain('name="css"');
+    expect(renderSource).not.toContain('name="style"');
+    expect(renderSource).not.toContain('name="css"');
   });
 });
