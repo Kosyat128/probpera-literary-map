@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-import type { GlobeVisualStyle } from "./globeAtlas";
+import type { GlobeEditionId } from "./globeEditions";
 import {
   createInitialGlobeStyleState,
   describeGlobeStyleStatus,
@@ -13,7 +13,7 @@ import {
 
 function request(
   state: ReturnType<typeof createInitialGlobeStyleState>,
-  style: GlobeVisualStyle,
+  style: GlobeEditionId,
   requestId: number
 ) {
   return globeStyleStateReducer(state, { type: "request", style, requestId });
@@ -30,27 +30,29 @@ function deferred() {
 }
 
 describe("globe style state", () => {
-  it("defaults invalid storage to Antique and accepts each public stored style", () => {
-    expect(resolveInitialGlobeStyle(undefined)).toBe("antique");
-    expect(resolveInitialGlobeStyle("satellite")).toBe("antique");
-    expect(resolveInitialGlobeStyle("earth")).toBe("earth");
-    expect(resolveInitialGlobeStyle("modern")).toBe("modern");
+  it("defaults invalid storage to 1887 and migrates legacy surface values", () => {
+    expect(resolveInitialGlobeStyle(undefined)).toBe("rand-mcnally-1887");
+    expect(resolveInitialGlobeStyle("satellite")).toBe("rand-mcnally-1887");
+    expect(resolveInitialGlobeStyle("earth")).toBe("nasa-blue-marble");
+    expect(resolveInitialGlobeStyle("modern")).toBe("natural-earth-2026");
+    expect(resolveInitialGlobeStyle("constructor")).toBe("rand-mcnally-1887");
+    expect(resolveInitialGlobeStyle("toString")).toBe("rand-mcnally-1887");
   });
 
   it("keeps the old rendered texture and aria state until success", () => {
-    const initial = createInitialGlobeStyleState("antique");
-    const pending = request(initial, "earth", 1);
+    const initial = createInitialGlobeStyleState("rand-mcnally-1887");
+    const pending = request(initial, "nasa-blue-marble", 1);
 
     expect(pending).toMatchObject({
-      requestedStyle: "earth",
-      pendingStyle: "earth",
-      renderedStyle: "antique",
+      requestedStyle: "nasa-blue-marble",
+      pendingStyle: "nasa-blue-marble",
+      renderedStyle: "rand-mcnally-1887",
     });
-    expect(isGlobeStyleRendered(pending, "antique")).toBe(true);
-    expect(isGlobeStyleRendered(pending, "earth")).toBe(false);
+    expect(isGlobeStyleRendered(pending, "rand-mcnally-1887")).toBe(true);
+    expect(isGlobeStyleRendered(pending, "nasa-blue-marble")).toBe(false);
     expect(describeGlobeStyleStatus(pending)).toEqual({
       kind: "loading",
-      style: "earth",
+      style: "nasa-blue-marble",
       role: "status",
       live: "polite",
       retryable: false,
@@ -58,36 +60,40 @@ describe("globe style state", () => {
 
     const resolved = globeStyleStateReducer(pending, {
       type: "resolve",
-      style: "earth",
+      style: "nasa-blue-marble",
       requestId: 1,
     });
     expect(resolved).toMatchObject({
-      requestedStyle: "earth",
+      requestedStyle: "nasa-blue-marble",
       pendingStyle: null,
-      renderedStyle: "earth",
+      renderedStyle: "nasa-blue-marble",
       error: null,
     });
   });
 
   it("preserves the rendered style on failure and exposes a safe retry status", () => {
-    const pending = request(createInitialGlobeStyleState("antique"), "modern", 4);
+    const pending = request(
+      createInitialGlobeStyleState("rand-mcnally-1887"),
+      "natural-earth-2026",
+      4
+    );
     const failed = globeStyleStateReducer(pending, {
       type: "reject",
-      style: "modern",
+      style: "natural-earth-2026",
       requestId: 4,
     });
 
-    expect(failed.renderedStyle).toBe("antique");
+    expect(failed.renderedStyle).toBe("rand-mcnally-1887");
     expect(failed.pendingStyle).toBeNull();
     expect(failed.error).toEqual({
       code: "texture-load-failed",
-      style: "modern",
+      style: "natural-earth-2026",
       requestId: 4,
       retryable: true,
     });
     expect(describeGlobeStyleStatus(failed)).toEqual({
       kind: "error",
-      style: "modern",
+      style: "natural-earth-2026",
       role: "alert",
       live: "assertive",
       retryable: true,
@@ -95,27 +101,27 @@ describe("globe style state", () => {
   });
 
   it("ignores stale and mismatched settlements", () => {
-    const first = request(createInitialGlobeStyleState(), "earth", 1);
-    const latest = request(first, "modern", 2);
+    const first = request(createInitialGlobeStyleState(), "nasa-blue-marble", 1);
+    const latest = request(first, "natural-earth-2026", 2);
 
     expect(
       globeStyleStateReducer(latest, {
         type: "resolve",
-        style: "earth",
+        style: "nasa-blue-marble",
         requestId: 1,
       })
     ).toBe(latest);
     expect(
       globeStyleStateReducer(latest, {
         type: "reject",
-        style: "earth",
+        style: "nasa-blue-marble",
         requestId: 1,
       })
     ).toBe(latest);
     expect(
       globeStyleStateReducer(latest, {
         type: "resolve",
-        style: "earth",
+        style: "nasa-blue-marble",
         requestId: 2,
       })
     ).toBe(latest);
@@ -127,9 +133,9 @@ describe("globe style async coordinator", () => {
     const earth = deferred();
     const modern = deferred();
     let latestRequestId = 1;
-    const resolved: GlobeVisualStyle[] = [];
-    const rejected: GlobeVisualStyle[] = [];
-    const committed: GlobeVisualStyle[] = [];
+    const resolved: GlobeEditionId[] = [];
+    const rejected: GlobeEditionId[] = [];
+    const committed: GlobeEditionId[] = [];
     const makeRun = (
       token: GlobeStyleRequestToken,
       pending: ReturnType<typeof deferred>
@@ -143,9 +149,12 @@ describe("globe style async coordinator", () => {
         onCommit: (style) => committed.push(style),
       });
 
-    const first = makeRun({ requestId: 1, style: "earth" }, earth);
+    const first = makeRun({ requestId: 1, style: "nasa-blue-marble" }, earth);
     latestRequestId = 2;
-    const second = makeRun({ requestId: 2, style: "modern" }, modern);
+    const second = makeRun(
+      { requestId: 2, style: "natural-earth-2026" },
+      modern
+    );
 
     earth.resolve();
     await expect(first).resolves.toBe("stale");
@@ -154,13 +163,13 @@ describe("globe style async coordinator", () => {
 
     modern.resolve();
     await expect(second).resolves.toBe("committed");
-    expect(resolved).toEqual(["modern"]);
+    expect(resolved).toEqual(["natural-earth-2026"]);
     expect(rejected).toEqual([]);
-    expect(committed).toEqual(["modern"]);
+    expect(committed).toEqual(["natural-earth-2026"]);
   });
 
   it("reports only the current failure and never persists it", async () => {
-    const token = { requestId: 7, style: "earth" } as const;
+    const token = { requestId: 7, style: "nasa-blue-marble" } as const;
     const onResolve = vi.fn();
     const onReject = vi.fn();
     const onCommit = vi.fn();
@@ -186,7 +195,7 @@ describe("globe style async coordinator", () => {
     const onResolve = vi.fn();
     await expect(
       executeGlobeStyleRequest({
-        token: { requestId: 3, style: "modern" },
+        token: { requestId: 3, style: "natural-earth-2026" },
         applyStyle: async () => undefined,
         isLatest: () => true,
         onResolve,

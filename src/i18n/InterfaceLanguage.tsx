@@ -522,6 +522,21 @@ const englishInterfaceText: Record<string, string> = {
   "Ещё {count} записей остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки":
     "{count} records remain in editorial review; automatically assembled drafts are not published before manual verification",
   "Стиль глобуса": "Globe style",
+  "Издание глобуса": "Globe edition",
+  "Источник и права текущего издания глобуса":
+    "Source and rights for the current globe edition",
+  "Источник и права": "Source and rights",
+  "Издание не загрузилось. Предыдущее издание сохранено.":
+    "The edition could not load. The previous edition is still active.",
+  "Загружается издание": "Loading edition",
+  "Источник издания": "Edition source",
+  "Автор / составитель": "Author / compiler",
+  Оригинал: "Original",
+  Хранилище: "Holding institution",
+  "Каталожная запись": "Catalog record",
+  "Права и указание источника": "Rights and attribution",
+  "Совмещение карты": "Map alignment",
+  "Открыть запись источника": "Open source record",
   "Стиль не загрузился. Предыдущий стиль сохранён.":
     "The style could not load. The previous style is still active.",
   Повторить: "Retry",

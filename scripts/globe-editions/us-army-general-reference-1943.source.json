@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "us-army-general-reference-1943",
+  "title": "General Reference Map No. 1",
+  "publication": {
+    "manual": "M-101, Atlas of World Maps",
+    "editionDate": "1943-11",
+    "sheetNumber": "1057-G",
+    "scale": "1:80,000,000",
+    "preparedBy": "American Geographical Society for the Department of State",
+    "publisher": "U.S. Army Service Forces, Army Specialized Training Division",
+    "printer": "A. Hoen & Co., Inc.",
+    "gpoClass": "W 109.12:101"
+  },
+  "acquisition": {
+    "pageUrl": "https://commons.wikimedia.org/wiki/File:General_Reference_Map_1.jpg",
+    "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/34/General_Reference_Map_1.jpg",
+    "localPath": "scripts/.cache/globe-editions/us-army-general-reference-1943/general-reference-map-1.jpg",
+    "scanRepository": "Wikimedia Commons",
+    "scanRepositoryDate": "2026-08-31"
+  },
+  "rights": {
+    "status": "public-domain-us",
+    "commonsTemplate": "PD-USGov-Military",
+    "commonsCopyrighted": false,
+    "commonsAttributionRequired": false,
+    "federalRecordGroupEvidenceUrl": "https://www.archives.gov/research/guide-fed-records/groups/160.html#160.4.3",
+    "federalCatalogEvidenceUrl": "https://www.govinfo.gov/content/pkg/GOVPUB-GP3-810401451330211ed3630245334346fd/pdf/GOVPUB-GP3-810401451330211ed3630245334346fd.pdf",
+    "note": "The sheet was published in the United States in 1943 without a copyright notice. Commons also applies the PD-USGov-Military tag; the sheet credits the American Geographical Society as preparer for the Department of State and Army Service Forces as publisher. Preserve this complete provenance with redistributed derivatives."
+  },
+  "source": {
+    "width": 5491,
+    "height": 2641,
+    "bytes": 1858194,
+    "sha256": "60cd9e6057f9cb334cf93c9d1394c76754aca7297f7709836bc8dee13deeb6a1",
+    "mediaWikiSha1": "72ff2287a393b4e67d08f19409d6a8b2594113ac",
+    "colorPolicy": "Preserve source RGB. No recoloring, inpainting, generative detail, or modern geography."
+  },
+  "projection": {
+    "printedName": "Sinusoidal equal-area projection",
+    "targetName": "equirectangular",
+    "targetLongitudeRange": [-180, 180],
+    "targetLatitudeRange": [90, -90],
+    "graticuleIntervalDegrees": 15,
+    "method": "Analytical inverse of three interrupted sinusoidal panels with hemisphere-specific central meridians and a calibrated page-tilt correction.",
+    "noSyntheticPolarCaps": true,
+    "polarPolicy": "Every target pixel, including the polar rows, is sampled from the printed map. Longitude naturally collapses toward each printed pole apex; the source is never extended with a synthetic cap.",
+    "canonicalSeamFeather": {
+      "cutLongitudes": [-180, -30, 60],
+      "toneBandPixelsAt4096": 32,
+      "coreBlendPixelsAt4096": 6,
+      "verticalSmoothingRadiusAt2048": 16,
+      "maxToneAdjustment": 32,
+      "policy": "Source-derived multiband feather only: preserve high-frequency scan detail, balance the low-frequency paper tone on both sides, and crossfade only the six central 4K columns. No paint, inpainting, generated pixels, or modern geography."
+    }
+  },
+  "registration": {
+    "unwrappedLongitudeRange": [60, 420],
+    "equator": {
+      "xIntercept": -286.24,
+      "pixelsPerDegree": 13.344,
+      "yAtReferenceX": 1331.0,
+      "referenceX": 3116.0,
+      "ySlopePerPixelX": -0.00232
+    },
+    "xPoleCorrectionExponent": 2.0,
+    "panels": [
+      {
+        "name": "asia-pacific",
+        "longitudeMin": 60,
+        "longitudeMax": 180,
+        "northCentralMeridian": 110,
+        "southCentralMeridian": 140,
+        "northPole": [1183, 133],
+        "southPole": [1581, 2541]
+      },
+      {
+        "name": "americas-atlantic",
+        "longitudeMin": 180,
+        "longitudeMax": 330,
+        "northCentralMeridian": 260,
+        "southCentralMeridian": 300,
+        "northPole": [3183, 133],
+        "southPole": [3710, 2530]
+      },
+      {
+        "name": "europe-africa",
+        "longitudeMin": 330,
+        "longitudeMax": 420,
+        "northCentralMeridian": 380,
+        "southCentralMeridian": 380,
+        "northPole": [4782, 134],
+        "southPole": [4791, 2530]
+      }
+    ],
+    "digitizedEquatorAnchors": {
+      "longitudes": [60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240, 255, 270, 285, 300, 315, 330, 345, 360, 375, 390, 405, 420],
+      "sourceX": [514, 715, 916, 1116, 1316, 1515, 1715, 1915, 2115, 2315, 2514, 2716, 2915, 3116, 3316, 3516, 3718, 3917, 4118, 4320, 4520, 4720, 4916, 5117, 5317]
+    },
+    "digitizedParallelAnchors": {
+      "latitudes": [75, 60, 45, 30, 15, 0, -15, -30, -45, -60, -75],
+      "sourceY": [330, 530, 731, 932, 1132, 1331, 1534, 1734, 1931, 2133, 2334],
+      "note": "Representative page-wide readings; local page tilt is modeled separately."
+    }
+  },
+  "outputs": {
+    "desktop": {
+      "path": "public/textures/us-army-general-reference-1943.webp",
+      "width": 4096,
+      "height": 2048,
+      "webpQuality": 94
+    },
+    "mobile": {
+      "path": "public/textures/us-army-general-reference-1943-mobile.webp",
+      "width": 2048,
+      "height": 1024,
+      "webpQuality": 92
+    },
+    "qaDirectory": "reports/globe-editions/us-army-general-reference-1943",
+    "overlayProfile": "STANDARD_GLOBE_OVERLAY_PROFILE",
+    "modernCoastlineBaked": false
+  }
+}
