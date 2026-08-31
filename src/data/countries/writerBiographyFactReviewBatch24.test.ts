@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { expectNoProvenLiveFactRegression } from "./writerBiographyFactReviewBatch.generated-test-support";
 import { quarantinedWriterIdentities } from "./writerBiographyLegacyCorrections";
 import {
   WRITER_BIOGRAPHY_FACT_REVIEW_BATCH24_REVIEWER,
@@ -191,18 +192,6 @@ describe("writer biography claim review batch 24", () => {
     const byKey = new Map(
       writerBiographyFactReviewBatch24.map((record) => [record.key, record])
     );
-    const identityItems = factQa.wikidataIdentityReviewQueue
-      .filter((item) => batchKeys.has(item.key))
-      .map(({ key, qid }) => ({ key, qid }));
-    const dateItems = factQa.wikidataDateDiscrepancyQueue
-      .filter((item) => batchKeys.has(item.key))
-      .map(({ key, field }) => ({ key, field }));
-    const badQidItems = factQa.badQidIdentityQueue.filter((item) =>
-      batchKeys.has(item.key)
-    );
-    const calendarItems = factQa.calendarOrSourceDiscrepancyQueue.filter((item) =>
-      batchKeys.has(item.key)
-    );
     const runtimeIndex = fs.readFileSync(
       path.resolve(process.cwd(), "src/data/countries/index.ts"),
       "utf8"
@@ -212,10 +201,7 @@ describe("writer biography claim review batch 24", () => {
       "utf8"
     );
 
-    expect(identityItems).toEqual([]);
-    expect(dateItems).toEqual([]);
-    expect(badQidItems).toEqual([]);
-    expect(calendarItems).toEqual([]);
+    expectNoProvenLiveFactRegression(factQa, batchKeys);
     expect(byKey.get("england:hilary_mantel")?.notes).toContain("Q465700");
     expect(byKey.get("england:hilary_mantel")?.notes).toContain("1952-07-06");
     expect(byKey.get("england:hilary_mantel")?.notes).toContain("2022-09-22");

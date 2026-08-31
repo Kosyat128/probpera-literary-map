@@ -25,8 +25,6 @@ const writerFieldRules = {
   deathDate: { kind: "text", maxLength: 80 },
   birthPlace: { kind: "text", maxLength: 300 },
   deathPlace: { kind: "text", maxLength: 300 },
-  portrait: { kind: "image", maxLength: 2_000 },
-  portraitAlt: { kind: "text", maxLength: 500 },
   awards: { kind: "list", maxItems: 120, maxLength: 500 },
   genres: { kind: "list", maxItems: 80, maxLength: 240 },
   languages: { kind: "list", maxItems: 40, maxLength: 120 },
@@ -49,6 +47,13 @@ export const visualWriterFields = Object.freeze(
   Object.keys(writerFieldRules)
 );
 export const visualBookFields = Object.freeze(Object.keys(bookFieldRules));
+
+const protectedWriterPortraitFields = new Set([
+  "portrait",
+  "portraitAlt",
+  "portraitSourceUrl",
+  "portraitRights",
+]);
 
 const workColumnByField = {
   title: "title",
@@ -225,7 +230,11 @@ export function mergeWriterOverrideFields(
   }
   const source = plainRecord(existing) ? existing : {};
   const merged = Object.fromEntries(
-    Object.entries(source).filter(([, current]) => !isEmptyWriterOverride(current))
+    Object.entries(source).filter(
+      ([fieldName, current]) =>
+        !protectedWriterPortraitFields.has(fieldName) &&
+        !isEmptyWriterOverride(current)
+    )
   );
   if (isEmptyWriterOverride(value)) {
     delete merged[field];

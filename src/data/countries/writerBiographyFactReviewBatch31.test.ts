@@ -293,6 +293,54 @@ describe("writer biography claim review batch 31", () => {
     expect(buildSource).toContain("writerBiographyFactReviewBatch31");
   });
 
+  it("keeps the official 1901 Cardoza date without quarantining the correct QID", () => {
+    const factQa = JSON.parse(fs.readFileSync(factQaPath, "utf8")) as {
+      records: Array<{
+        key: string;
+        wikidataEvidence: {
+          identityValidationStatus: string;
+          manualIdentityConfirmation: { qid: string; sources: unknown[] } | null;
+        };
+        manualResolutions: Array<{
+          field: string;
+          cardValue: string;
+          decision: string;
+          sources: unknown[];
+        }>;
+      }>;
+      badQidIdentityQueue: Array<{ key: string }>;
+      wikidataDateDiscrepancyQueue: Array<{ key: string; field: string }>;
+    };
+    const key = "guatemala:luis_cardoza_y_aragon";
+    const record = factQa.records.find((item) => item.key === key);
+
+    expect(record?.wikidataEvidence.identityValidationStatus).toBe(
+      "identity-corroborated"
+    );
+    expect(record?.wikidataEvidence.manualIdentityConfirmation).toMatchObject({
+      qid: "Q6700406",
+    });
+    expect(
+      record?.wikidataEvidence.manualIdentityConfirmation?.sources
+    ).toHaveLength(2);
+    expect(record?.manualResolutions).toEqual([
+      expect.objectContaining({
+        field: "birthDate",
+        cardValue: "1901-06-21",
+        decision: "retain-current-card",
+        sources: expect.any(Array),
+      }),
+    ]);
+    expect(
+      factQa.badQidIdentityQueue.some((item) => item.key === key)
+    ).toBe(false);
+    expect(
+      factQa.wikidataDateDiscrepancyQueue.some(
+        (item) => item.key === key && item.field === "birthDate"
+      )
+    ).toBe(false);
+  });
+
   it("keeps strict UTF-8 and JSON/Markdown reports synchronized", () => {
     const sourcePaths = [
       path.resolve(

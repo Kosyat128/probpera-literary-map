@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
 
-import { parseEditorialProfileOverride } from "./editorial-profile-edit";
+import {
+  parseEditorialProfileOverride,
+  protectedWriterPortraitFields,
+  preserveProtectedEditorialField,
+  preserveUneditedEditorialFields,
+  resolveEditorialSourceFields,
+  writerProfileFields,
+} from "./editorial-profile-edit";
 
 describe("full editorial profile editing", () => {
   it("keeps only allowlisted and explicitly enabled country fields", () => {
@@ -44,7 +51,73 @@ describe("full editorial profile editing", () => {
     });
   });
 
-  it("rejects unsafe identifiers, coordinates and image protocols", () => {
+  it("reverts an unchecked override to the catalog value for translation", () => {
+    const submittedValues = {
+      name: "Старое снятое переопределение",
+      bio: "Активная редакционная биография.",
+    };
+    const edit = parseEditorialProfileOverride({
+      entityType: "writer",
+      countryId: "russia",
+      writerId: "tolstoy",
+      enabledFields: ["bio"],
+      values: submittedValues,
+    });
+
+    expect(
+      resolveEditorialSourceFields(
+        { name: "Лев Толстой", bio: "Каталожная биография." },
+        edit.fields
+      )
+    ).toEqual({
+      name: "Лев Толстой",
+      bio: "Активная редакционная биография.",
+    });
+  });
+
+  it("preserves an explicit empty or null protected locale-map tombstone", () => {
+    expect(
+      preserveProtectedEditorialField(
+        { name: "Лев Толстой" },
+        { biographyTranslations: {} },
+        "biographyTranslations"
+      )
+    ).toEqual({ name: "Лев Толстой", biographyTranslations: {} });
+    expect(
+      preserveProtectedEditorialField(
+        { name: "Лев Толстой" },
+        { biographyTranslations: null },
+        "biographyTranslations"
+      )
+    ).toEqual({ name: "Лев Толстой", biographyTranslations: null });
+  });
+
+  it("does not erase hidden legacy biographies on an unrelated profile edit", () => {
+    expect(
+      preserveUneditedEditorialFields(
+        { name: "Новое имя" },
+        {
+          name: "Старое имя",
+          bio: "Существующий краткий текст.",
+          biography: "Существующая полная биография.",
+        },
+        ["bio", "biography"]
+      )
+    ).toEqual({
+      name: "Новое имя",
+      bio: "Существующий краткий текст.",
+      biography: "Существующая полная биография.",
+    });
+    expect(
+      preserveUneditedEditorialFields(
+        { biography: "Явно обновлённая биография." },
+        { biography: "Старая биография." },
+        ["bio", "biography"]
+      )
+    ).toEqual({ biography: "Явно обновлённая биография." });
+  });
+
+  it("rejects unsafe identifiers and coordinates", () => {
     expect(() =>
       parseEditorialProfileOverride({
         entityType: "country",
@@ -53,14 +126,27 @@ describe("full editorial profile editing", () => {
         values: {},
       })
     ).toThrow("идентификатор");
-    expect(() =>
-      parseEditorialProfileOverride({
-        entityType: "writer",
-        countryId: "russia",
-        writerId: "tolstoy",
-        enabledFields: ["portrait"],
-        values: { portrait: "javascript:alert(1)" },
-      })
-    ).toThrow("HTTPS");
+  });
+
+  it("keeps the complete portrait provenance bundle outside CMS overrides", () => {
+    expect(writerProfileFields).not.toEqual(
+      expect.arrayContaining([...protectedWriterPortraitFields])
+    );
+    for (const field of protectedWriterPortraitFields) {
+      expect(() =>
+        parseEditorialProfileOverride({
+          entityType: "writer",
+          countryId: "russia",
+          writerId: "tolstoy",
+          enabledFields: [field],
+          values: {
+            [field]:
+              field === "portraitRights"
+                ? { status: "licensed" }
+                : "https://example.org/portrait.jpg",
+          },
+        })
+      ).toThrow("только в проверенном каталоге");
+    }
   });
 });

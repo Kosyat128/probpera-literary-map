@@ -104,6 +104,18 @@ function key(countryId: string, writerId: string) {
   return `${countryId}:${writerId}`;
 }
 
+function expectProfilePatch(
+  actual: Country["writers"][number] | undefined,
+  patch: Partial<Country["writers"][number]>,
+  label: string
+) {
+  const { works, ...scalarPatch } = patch;
+  expect(actual, label).toMatchObject(scalarPatch);
+  if (works) {
+    expect(actual?.works, label).toEqual(expect.arrayContaining([...works]));
+  }
+}
+
 describe("legacy writer biography curation", () => {
   it("keeps detailed fact reviews outside the public profile runtime boundary", () => {
     const runtimeSources = [
@@ -464,9 +476,8 @@ describe("legacy writer biography curation", () => {
     }
 
     for (const item of writerBiographyPublicProfileFactCorrectionsBatch32) {
-      expect(publicWriters.get(key(item.countryId, item.writerId))).toMatchObject(
-        item.patch
-      );
+      const itemKey = key(item.countryId, item.writerId);
+      expectProfilePatch(publicWriters.get(itemKey), item.patch, itemKey);
     }
 
     expect(publicWriters.get("india:anil_menon")).toMatchObject({
@@ -560,7 +571,7 @@ describe("legacy writer biography curation", () => {
         ),
         itemKey
       ).toBe(true);
-      expect(publicWriters.get(itemKey), itemKey).toMatchObject(item.patch);
+      expectProfilePatch(publicWriters.get(itemKey), item.patch, itemKey);
     }
 
     expect(publicWriters.get("iran:shahrnush_parsipur")).toMatchObject({
@@ -690,7 +701,7 @@ describe("legacy writer biography curation", () => {
           ),
           itemKey
         ).toBe(true);
-        expect(publicWriters.get(itemKey), itemKey).toMatchObject(item.patch);
+        expectProfilePatch(publicWriters.get(itemKey), item.patch, itemKey);
       }
     }
   });
@@ -817,9 +828,17 @@ describe("legacy writer biography curation", () => {
       resolveBookArchivePublicTarget(countries, book)
     );
 
-    expect(archive).toHaveLength(9_767);
+    expect(archive).toHaveLength(9_768);
     expect(publicArchive).toHaveLength(48);
-    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_719);
+    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_720);
+    const bremerBooks = archive
+      .filter(
+        (book) =>
+          book.countryId === "finland" && book.writerId === "fredrika_bremer"
+      )
+      .map((book) => book.title);
+    expect(bremerBooks).toEqual(["Соседи", "Герта"]);
+    expect(bremerBooks).not.toContain("Герцогиня Финляндская");
     expect(booksWhoseWriterCardIsQuarantined).toHaveLength(63);
     expect(booksWhoseWriterCardIsQuarantined.every((book) => !isPublicBook(book))).toBe(
       true

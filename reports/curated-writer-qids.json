@@ -1,3430 +1,2855 @@
 {
-  "generatedAt": "2026-08-04T05:18:34.684Z",
+  "generatedAt": "2026-08-31T19:50:00.726Z",
   "summary": {
-    "writerRecords": 1766,
-    "uniqueLabels": 2765,
-    "resolved": 1278,
-    "resolvedWithPortrait": 1074,
-    "manualReview": 488,
-    "cachedLabels": 2765,
-    "failedBatches": 0
+    "writerRecords": 1684,
+    "uniqueLabels": 2671,
+    "freshResolved": 1337,
+    "eligibleFreshResolved": 1336,
+    "exactLabelResolved": 1224,
+    "exactAliasResolved": 113,
+    "manualIdentityOverrides": 1,
+    "candidateMappings": 1337,
+    "freshResolvedWithPortrait": 1138,
+    "newlyAdded": 149,
+    "preservedExisting": 1270,
+    "conflicts": 1,
+    "evidenceBackedReplacements": 1,
+    "blockedFreshMappings": 1,
+    "removedExisting": 0,
+    "publishedMappings": 1420,
+    "publishedWithPortrait": 1194,
+    "manualReview": 349,
+    "cachedLabels": 2671,
+    "cachedAliases": 722,
+    "failedBatches": 0,
+    "failedAliasBatches": 0,
+    "manualReviewReasonCounts": {
+      "birth-year-mismatch-or-missing": 11,
+      "blocked-remediated-qid": 1,
+      "exact-alias-not-found": 332,
+      "existing-qid-conflict": 1,
+      "literary-identity-not-established": 4
+    }
   },
-  "manualReview": [
+  "blockedFreshMappings": [
     {
-      "countryId": "afghanistan",
-      "writerId": "rabia_balkhi",
-      "name": "Рабия Балхи",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
+      "key": "cameroon:jean_roger_essomba",
+      "wikidataId": "Q95950701",
+      "reason": "The item describes Jean-Roger Essombe Edimo, not the Cameroonian writer and publisher Jean-Roger Essomba born in 1962; no safe replacement item was established.",
+      "resolution": "blocked-by-identity-remediation"
+    }
+  ],
+  "conflicts": [
+    {
+      "key": "angola:ana_paula_tavares",
+      "existingWikidataId": "Q59186426",
+      "freshWikidataId": "Q460121",
+      "resolution": "evidence-backed-replacement",
+      "remediation": {
+        "previousWikidataId": "Q59186426",
+        "replacementWikidataId": "Q460121",
+        "reason": "Q59186426 identifies a different ORCID-linked researcher; Q460121 identifies the Angolan writer and poet born 1952-10-30.",
+        "evidenceUrls": [
+          "https://www.wikidata.org/wiki/Q59186426",
+          "https://www.wikidata.org/wiki/Q460121"
+        ],
+        "checkedAt": "2026-08-31"
+      }
+    }
+  ],
+  "manualReview": [
     {
       "countryId": "afghanistan",
       "writerId": "bahauddin_majrooh",
       "name": "Сайед Бахауддин Маджрух",
       "birthYear": "1928",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
-      "countryId": "albania",
-      "writerId": "jeronim_de_rada",
-      "name": "Иероним де Рада",
-      "birthYear": "1814",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "albania",
-      "writerId": "fan_noli",
-      "name": "Фан Ноли",
-      "birthYear": "1882",
-      "reason": "exact-label-not-found"
+      "countryId": "algeria",
+      "writerId": "boualem_sansal",
+      "name": "Буалем Сансаль",
+      "birthYear": "1949",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "andorra",
       "writerId": "antoni_morell_i_mora",
       "name": "Антони Морель и Мора",
       "birthYear": "1941",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "andorra",
-      "writerId": "josep_fonbernat",
-      "name": "Жозеп Фонбернат",
-      "birthYear": "1955",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "angola",
-      "writerId": "ondjaki",
-      "name": "Онжани",
-      "birthYear": "1977",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "antigua_and_barbuda",
       "writerId": "jamaica_kincaid",
       "name": "Джамейка Кинкейд",
       "birthYear": "1949",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "argentina",
       "writerId": "esteban_echeverria",
       "name": "Эстебан Эчеверрия",
       "birthYear": "1805",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "argentina",
       "writerId": "andres_neuman",
       "name": "Андрес Нейман",
       "birthYear": "1977",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "argentina",
       "writerId": "claudia_pineiro",
       "name": "Клаудия Пиньейро",
       "birthYear": "1960",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "argentina",
-      "writerId": "adolfo_perez_zelas",
-      "name": "Адельфо Биой Касарес (дополнительная связь)",
-      "birthYear": "1914",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "argentina",
-      "writerId": "alfredo_bryce_echenique",
-      "name": "Альфредо Брис Эченике",
-      "birthYear": "1939",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "australia",
       "writerId": "kate_grenville",
       "name": "Кейт Гренвилл",
       "birthYear": "1950",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "australia",
-      "writerId": "markus_zusak",
-      "name": "Маркос Зусак",
-      "birthYear": "1975",
-      "reason": "exact-label-not-found"
+      "writerId": "les_murray",
+      "name": "Лес Мюррей",
+      "birthYear": "1938",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "australia",
       "writerId": "oodgeroo_noonuccal",
       "name": "Уджеру Нунонуккал",
       "birthYear": "1920",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "azerbaijan",
-      "writerId": "imadaddin_nasimi",
-      "name": "Имадеддин Насими",
-      "birthYear": "1369",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "azerbaijan",
-      "writerId": "muhammad_fuzuli",
-      "name": "Мухаммед Физули",
-      "birthYear": "1483",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "bahamas",
-      "writerId": "cyril_bray",
-      "name": "Сирил Д. Б. Брей",
-      "birthYear": "1922",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "bahamas",
-      "writerId": "wallace_whitfield",
-      "name": "Уоллес Уитфилд",
-      "birthYear": "1930",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bahrain",
       "writerId": "ibrahim_al_arrayed",
       "name": "Ибрахим аль-Урайд",
       "birthYear": "1908",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bahrain",
       "writerId": "ali_abdullah_khalifa",
       "name": "Али Абдулла Халифа",
       "birthYear": "1944",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bahrain",
-      "writerId": "qassim_haddad",
-      "name": "Касим Хаддад",
-      "birthYear": "1948",
-      "reason": "exact-label-not-found"
+      "writerId": "amin_saleh",
+      "name": "Амин Салих",
+      "birthYear": "1949",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "barbados",
       "writerId": "george_lamming",
       "name": "Джордж Лэмминг",
       "birthYear": "1927",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "barbados",
       "writerId": "kamau_brathwaite",
       "name": "Камау Брэтуэйт",
       "birthYear": "1930",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "belarus",
-      "writerId": "vintsent_dunin_martsinkevich",
-      "name": "Винцент Дунин-Марцинкевич",
-      "birthYear": "1808",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "belarus",
-      "writerId": "francisak_bahushevich",
-      "name": "Франтишек Богушевич",
-      "birthYear": "1840",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "belarus",
-      "writerId": "vasil_bykau",
-      "name": "Василь Быков",
-      "birthYear": "1924",
-      "reason": "exact-label-not-found"
+      "writerId": "francysk_skaryna",
+      "name": "Франциск Скорина",
+      "birthYear": "1490",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "belize",
       "writerId": "zee_edgell",
       "name": "Зи Эдгелл",
       "birthYear": "1940",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "belize",
       "writerId": "glen_godfrey",
-      "name": "Глен Годфри",
-      "birthYear": "1954",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "bhutan",
-      "writerId": "ngawang_namgyal",
-      "name": "Жабдрунг Нгаванг Намгьял",
-      "birthYear": "1594",
-      "reason": "ambiguous-or-date-mismatch"
-    },
-    {
-      "countryId": "bhutan",
-      "writerId": "dzongsar_khyentse",
-      "name": "Дзонгсар Кхьенце Ринпоче",
-      "birthYear": "1961",
-      "reason": "exact-label-not-found"
+      "name": "Гленн Д. Годфри",
+      "birthYear": "",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "bartolome_arsans_de_orsua_y_vela",
       "name": "Бартоломе Арсанс де Орсуа и Вела",
-      "birthYear": "1579",
-      "reason": "exact-label-not-found"
+      "birthYear": "1676",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "adela_zamudio",
       "name": "Адэла Самудио",
       "birthYear": "1854",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "gabriel_rene_moreno",
       "name": "Габриэль Рене Морено",
       "birthYear": "1836",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "francisco_javier_del_granado",
       "name": "Франсиско Хавьер дель Гранадо",
       "birthYear": "1913",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "marcelo_quiroga_santa_cruz",
       "name": "Марсело Кирога Санта-Крус",
       "birthYear": "1931",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "hilda_mundy",
       "name": "Хильда Мунди",
       "birthYear": "1912",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "vilma_tapia_anda",
-      "name": "Вильма Тапиа Анда",
-      "birthYear": "1950",
-      "reason": "exact-label-not-found"
+      "name": "Вильма Тапиа Анайя",
+      "birthYear": "1960",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "edmundo_paz_soldan",
       "name": "Эдмундо Пас Солдан",
       "birthYear": "1967",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "gaston_suarez",
       "name": "Гастон Суарес",
       "birthYear": "1929",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "bolivia",
       "writerId": "yolanda_bedregal",
       "name": "Йоланда Бедрегаль",
-      "birthYear": "1916",
-      "reason": "exact-label-not-found"
+      "birthYear": "1913",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "botswana",
       "writerId": "laurie_kubuitsile",
       "name": "Лори Кубуитсиле",
       "birthYear": "1963",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "botswana",
-      "writerId": "moshe_motshegwa",
-      "name": "Моше Моше",
-      "birthYear": "1960",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "brazil",
-      "writerId": "goncalves_dias",
-      "name": "Гонсалвес Диас",
-      "birthYear": "1823",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "brazil",
       "writerId": "machado_de_assis",
       "name": "Машаду де Ассис",
       "birthYear": "1839",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "brazil",
-      "writerId": "joao_guimaraes_rosa",
-      "name": "Жуан Гимарайнс Роза",
-      "birthYear": "1908",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "brunei",
-      "writerId": "masuri_masrun",
-      "name": "Масури Масруни",
-      "birthYear": "1931",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "brunei",
-      "writerId": "awang_mohammad_yassin",
-      "name": "Аванг Мохаммад Яссин",
-      "birthYear": "1935",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "brunei",
-      "writerId": "ali_haji_ahmad",
-      "name": "Али Хаджи Ахмад",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "brunei",
-      "writerId": "haji_muhammad_jaafar",
-      "name": "Хаджи Мухаммад Джафар",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "burkina_faso",
       "writerId": "frederic_titinga_pacere",
       "name": "Фредерик Титинга Пакере",
       "birthYear": "1943",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "burkina_faso",
       "writerId": "patrick_ilboudo",
-      "name": "Патрик-Ив Ильбудо",
-      "birthYear": "1959",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "burundi",
-      "writerId": "jean_pierre_hatungimana",
-      "name": "Жан-Пьер Хатунгимана",
-      "birthYear": "1963",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "burundi",
-      "writerId": "christophe_nkezabahizi",
-      "name": "Кристоф Нкезабахизи",
-      "birthYear": "1955",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "burundi",
-      "writerId": "gaetan_muschimyimana",
-      "name": "Гаэтан Мушимиимана",
-      "birthYear": "1975",
-      "reason": "exact-label-not-found"
+      "name": "Патрик Гомдаого Ильбудо",
+      "birthYear": "1951",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "cambodia",
       "writerId": "kram_ngoy",
       "name": "Крам Нгэ",
       "birthYear": "1865",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "cambodia",
-      "writerId": "mae_khem",
-      "name": "Маэ Кхем",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "cambodia",
-      "writerId": "keo_na",
-      "name": "Кео На",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "cambodia",
-      "writerId": "kambo_vong",
-      "name": "Камбо Вонг",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "canada",
       "writerId": "chris_hadfield",
       "name": "Крис Остин Хэдфилд",
       "birthYear": "1959",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "cape_verde",
       "writerId": "baltasar_lopes",
       "name": "Бальтазар Лопеш",
       "birthYear": "1907",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "central_african_republic",
-      "writerId": "benoit_ndemba",
-      "name": "Бенуа Ньимба",
-      "birthYear": "1950",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "chad",
-      "writerId": "felix_tchikaya",
-      "name": "Феликс Тчикáя",
-      "birthYear": "1955",
-      "reason": "exact-label-not-found"
+      "writerId": "ahmat_taboye",
+      "name": "Ахмад Табойе",
+      "birthYear": "1959",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "chile",
       "writerId": "gabriela_mistral",
       "name": "Габриэла Мистраль",
       "birthYear": "1889",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "chile",
+      "writerId": "diamela_eltit",
+      "name": "Диамела Эльтит",
+      "birthYear": "1949",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "chile",
       "writerId": "alejandra_costamagna",
       "name": "Алехандра Костаманья",
       "birthYear": "1970",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "chile",
-      "writerId": "carmen_martin_gaite_chile_relation",
-      "name": "Марта Брун",
-      "birthYear": "1897",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "chile",
       "writerId": "jose_miguel_varas",
       "name": "Хосе Мигель Варас",
       "birthYear": "1928",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "chile",
       "writerId": "marcela_serrano",
       "name": "Марцела Серрано",
       "birthYear": "1951",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "chile",
       "writerId": "alejandro_jodorowsky_chile",
       "name": "Алехандро Ходоровский",
       "birthYear": "1929",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
-      "countryId": "chile",
-      "writerId": "paul_auster_chile_connection",
-      "name": "Эстебан Яньес",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "countryId": "china",
+      "writerId": "confucius",
+      "name": "Конфуций",
+      "birthYear": "551",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "china",
+      "writerId": "zhuangzi",
+      "name": "Чжуан-цзы",
+      "birthYear": "369",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "china",
+      "writerId": "sima_qian",
+      "name": "Сыма Цянь",
+      "birthYear": "145",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "china",
+      "writerId": "tao_yuanming",
+      "name": "Тао Юаньмин",
+      "birthYear": "365",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "china",
+      "writerId": "li_bai",
+      "name": "Ли Бо",
+      "birthYear": "701",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "china",
+      "writerId": "du_fu",
+      "name": "Ду Фу",
+      "birthYear": "712",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "china",
       "writerId": "bai_juyi",
       "name": "Бо Цзюй-и",
       "birthYear": "772",
-      "reason": "exact-label-not-found"
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "china",
       "writerId": "wang_wei",
       "name": "Ван Вэй",
       "birthYear": "701",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "china",
+      "writerId": "cao_xueqin",
+      "name": "Цао Сюэцинь",
+      "birthYear": "1715",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "china",
       "writerId": "yan_lianke",
       "name": "Янь Лянкэ",
       "birthYear": "1958",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "china",
-      "writerId": "chi_ziqiang",
-      "name": "Чи Цзыцянь",
-      "birthYear": "1948",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "china",
       "writerId": "zhang_ling",
       "name": "Чжан Лин",
       "birthYear": "1957",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "jorge_isaacs",
       "name": "Хорхе Айзекс",
       "birthYear": "1837",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "manuel_mejia_vallejo",
       "name": "Мануэль Мехия Вальехо",
       "birthYear": "1923",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "german_espinosa",
       "name": "Герман Эспиноса",
       "birthYear": "1938",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "gabriel_garcia_marquez",
       "name": "Габриэль Гарсиа Маркес",
       "birthYear": "1927",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "pilar_quintana",
       "name": "Пилар Кинтана",
       "birthYear": "1972",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "colombia",
+      "writerId": "santiago_gamboa",
+      "name": "Сантьяго Гамбоа",
+      "birthYear": "1965",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "colombia",
       "writerId": "hector_abad_faciolince",
       "name": "Эктор Абад Фасьолинсе",
       "birthYear": "1958",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "german_castro_caycedo",
       "name": "Херман Кастро Кайседо",
       "birthYear": "1940",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "hector_rojas_herazo",
       "name": "Эктор Рохас Эрасо",
       "birthYear": "1921",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "jairo_anibal_nino",
       "name": "Хайро Анибаль Ниньо",
       "birthYear": "1941",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "santiago_mutis_duran",
       "name": "Сантьяго Мутис Дуран",
       "birthYear": "1951",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "mario_mendoza",
       "name": "Марио Мендоса",
       "birthYear": "1964",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "colombia",
       "writerId": "juan_carlos_botero",
       "name": "Хуан Карлос Ботеро",
       "birthYear": "1960",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "colombia",
       "writerId": "ricardo_silva_romero",
       "name": "Рикардо Сильва Ромеро",
       "birthYear": "1975",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "comoros",
-      "writerId": "mahmoud_said_ahmed",
-      "name": "Махамуд Саид Ахмед",
-      "birthYear": "1956",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "cook_islands",
       "writerId": "sir_thomas_davis",
       "name": "Сэр Томас Дэвис",
       "birthYear": "1917",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "costa_rica",
+      "writerId": "carmen_lyra",
+      "name": "Кармен Лира",
+      "birthYear": "1888",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "costa_rica",
       "writerId": "ana_istarus",
       "name": "Ана Истару",
       "birthYear": "1960",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "cyprus",
-      "writerId": "nikos_nikolaidis",
-      "name": "Никос Николаидис",
-      "birthYear": "1884",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "cyprus",
       "writerId": "tefkros_anthias",
       "name": "Тефкрос Анфияс",
       "birthYear": "1903",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "cyprus",
-      "writerId": "kyriakos_charalambous",
-      "name": "Кириакос Хариламбус",
-      "birthYear": "1940",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "czechia",
-      "writerId": "karel_capek",
-      "name": "Карел Чапек",
-      "birthYear": "1890",
-      "reason": "ambiguous-or-date-mismatch"
-    },
-    {
-      "countryId": "democratic_republic_of_congo",
-      "writerId": "v_y_mudimbe",
-      "name": "Венцеслас Мудимбе",
-      "birthYear": "1941",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "democratic_republic_of_congo",
-      "writerId": "tshibumba_kanda_matulu",
-      "name": "Тшибумба Канда-Матулу",
-      "birthYear": "1947",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "denmark",
       "writerId": "johannes_v_jensen",
       "name": "Йоханнес Вильгельм Йенсен",
       "birthYear": "1873",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "djibouti",
-      "writerId": "abdourahman_waberi",
-      "name": "Абдурахман Али Варсама",
-      "birthYear": "1965",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "djibouti",
-      "writerId": "abdourahman_h_yama",
-      "name": "Абдулкадир Хирси Яма",
-      "birthYear": "1958",
-      "reason": "exact-label-not-found"
+      "writerId": "aden_robleh_awaleh",
+      "name": "Аден Робле Авале",
+      "birthYear": "1941",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "dominica",
       "writerId": "jean_rhys",
       "name": "Жан Рис",
       "birthYear": "1890",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "dominican_republic",
       "writerId": "junot_diaz",
       "name": "Джуно Диас",
       "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ecuador",
       "writerId": "juan_bautista_aguirre",
       "name": "Хуан Баутиста Агирре",
       "birthYear": "1725",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ecuador",
       "writerId": "ernesto_noboa_caamano",
       "name": "Эрнесто Нобоа-и-Кааманьо",
       "birthYear": "1891",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "ecuador",
-      "writerId": "jorge_icaza",
-      "name": "Хорхе Икаса",
-      "birthYear": "1906",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "ecuador",
-      "writerId": "demetrio_aguilera_malta",
-      "name": "Деметрио Агилар Мальта",
-      "birthYear": "1909",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ecuador",
       "writerId": "alfredo_pareja_diezcanseco",
       "name": "Альфредо Пареха Дьескансеко",
       "birthYear": "1908",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ecuador",
       "writerId": "abdon_ubidia",
       "name": "Абдон Убида",
       "birthYear": "1944",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ecuador",
       "writerId": "maria_fernanda_ampuero",
       "name": "Мария Фернанда Ампуэро",
       "birthYear": "1976",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ecuador",
       "writerId": "santiago_paez",
       "name": "Сантьяго Паэс",
       "birthYear": "1958",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ecuador",
       "writerId": "javier_vasconez",
       "name": "Хавьер Васконес",
       "birthYear": "1946",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "ecuador",
-      "writerId": "lupe_rumazo",
-      "name": "Лупе Румасо",
-      "birthYear": "1904",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ecuador",
       "writerId": "eliecer_cardenas",
       "name": "Элиэсер Карденас",
       "birthYear": "1950",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "egypt",
       "writerId": "edward_al_kharrat",
       "name": "Эдвард аль-Харрат",
       "birthYear": "1926",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "el_salvador",
       "writerId": "salvador_salarre",
       "name": "Сальвадор Саласар Арруэ (Саларруэ)",
       "birthYear": "1899",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "el_salvador",
       "writerId": "alvaro_menen_desleal",
       "name": "Альваро Менен Деслеаль",
       "birthYear": "1931",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "el_salvador",
       "writerId": "claribel_alegria",
       "name": "Кларибель Алегрия",
       "birthYear": "1924",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "england",
-      "writerId": "rudyard_kipling",
-      "name": "Джозеф Редьярд Киплинг",
-      "birthYear": "1865",
-      "reason": "exact-label-not-found"
+      "writerId": "bede",
+      "name": "Беда Достопочтенный",
+      "birthYear": "672",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "england",
       "writerId": "william_langland",
       "name": "Уильям Ленгленд",
       "birthYear": "1330",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "england",
-      "writerId": "percy_shelley",
-      "name": "Перси Биши Шелли",
-      "birthYear": "1792",
-      "reason": "exact-label-not-found"
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "england",
       "writerId": "george_eliot",
       "name": "Джордж Элиот (Мэри Энн Эванс)",
       "birthYear": "1819",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "england",
-      "writerId": "h_g_wells",
-      "name": "Герберт Джордж Уэллс",
-      "birthYear": "1866",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "england",
-      "writerId": "bertrand_russell",
-      "name": "Бертран Артур Уильям Рассел",
-      "birthYear": "1872",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "england",
       "writerId": "winston_churchill",
       "name": "Уинстон Леонард Спенсер Черчилль",
       "birthYear": "1874",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "england",
-      "writerId": "david_mitchell",
-      "name": "Дэвид Стивен Митчелл",
-      "birthYear": "1969",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "england",
       "writerId": "celia_rees",
       "name": "Селия Рис",
       "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "england",
       "writerId": "ronald_delderfield",
       "name": "Рональд Делдерфилд",
       "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "england",
       "writerId": "liz_jensen",
       "name": "Лиз Дженсен",
       "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "england",
-      "writerId": "john_fowles",
-      "name": "Джон Фаулз",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "equatorial_guinea",
       "writerId": "maria_nsue_angue",
       "name": "Мария Нсуэ Ангюэ",
       "birthYear": "1945",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "eritrea",
-      "writerId": "sebhat_gebregziabher",
-      "name": "Себхат Эфрем",
-      "birthYear": "1936",
-      "reason": "exact-label-not-found"
+      "writerId": "alemseged_tesfai",
+      "name": "Алемсегед Тесфай",
+      "birthYear": "1944",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
-      "countryId": "eritrea",
-      "writerId": "rebkah_haile",
-      "name": "Ребках Хайле",
-      "birthYear": "1964",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "eritrea",
-      "writerId": "hadish_haile",
-      "name": "Хадиш Хайле",
-      "birthYear": "1950",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "eswatini",
-      "writerId": "sarah_mlotshwa",
-      "name": "Сара Млотшва",
-      "birthYear": "1974",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "eswatini",
-      "writerId": "stanley_madwe",
-      "name": "Стенли Мадуве",
-      "birthYear": "1955",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "eswatini",
-      "writerId": "gladys_lobola",
-      "name": "Глэдис Лобола",
-      "birthYear": "1970",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "eswatini",
-      "writerId": "albert_ncube",
-      "name": "Альберт Нкубэ",
-      "birthYear": "1948",
-      "reason": "exact-label-not-found"
+      "countryId": "ethiopia",
+      "writerId": "haddis_alemayehu",
+      "name": "Хаддис Алемайеху",
+      "birthYear": "1910",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "ethiopia",
       "writerId": "tsegaye_gebre_medhin",
       "name": "Цегайе Гебре-Медхин",
       "birthYear": "1936",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ethiopia",
       "writerId": "bealu_girma",
       "name": "Беалу Гирма",
-      "birthYear": "1937",
-      "reason": "exact-label-not-found"
+      "birthYear": "1939",
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ethiopia",
       "writerId": "solomon_deressa",
       "name": "Соломон Дересса",
       "birthYear": "1937",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "ethiopia",
-      "writerId": "kebede_michael",
-      "name": "Кебеде Михаэль",
-      "birthYear": "1916",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "ethiopia",
-      "writerId": "hirut_kefele",
-      "name": "Хируит Кефеле",
-      "birthYear": "1960",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "fiji",
-      "writerId": "subramani",
-      "name": "Субрамани",
-      "birthYear": "1949",
-      "reason": "exact-label-not-found"
+      "writerId": "satendra_nandan",
+      "name": "Сатендра Нандан",
+      "birthYear": "",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "fiji",
       "writerId": "vijay_mishra",
       "name": "Виджай Мишра",
       "birthYear": "1940",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "fiji",
+      "writerId": "brij_lal",
+      "name": "Бридж Лал",
+      "birthYear": "1952",
+      "reason": "literary-identity-not-established",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "fiji",
       "writerId": "teresia_teaiwa",
       "name": "Терезия Теаива",
       "birthYear": "1968",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "fiji",
       "writerId": "epeli_hauofa",
       "name": "Эпели Хау'офа",
       "birthYear": "1939",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "france",
       "writerId": "sully_prudhomme",
       "name": "Рене Франсуа Арман Сюлли-Прюдом",
       "birthYear": "1839",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "france",
-      "writerId": "marie_de_france",
-      "name": "Мария Французская",
-      "birthYear": "",
-      "reason": "ambiguous-or-date-mismatch"
+      "writerId": "francois_rabelais",
+      "name": "Франсуа Рабле",
+      "birthYear": "1483",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "france",
+      "writerId": "racine",
+      "name": "Жан Расин",
+      "birthYear": "1639",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "france",
       "writerId": "moliere",
       "name": "Жан-Батист Мольер",
       "birthYear": "1622",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "france",
-      "writerId": "montesquieu",
-      "name": "Шарль Луи де Монтескьё",
-      "birthYear": "1689",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "france",
-      "writerId": "beaumarchais",
-      "name": "Пьер Огюстен Карон де Бомарше",
-      "birthYear": "1732",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "france",
       "writerId": "stendhal",
       "name": "Стендаль (Анри Мари Бейль)",
       "birthYear": "1783",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "france",
       "writerId": "alexandre_dumas",
       "name": "Александр Дюма (отец)",
       "birthYear": "1802",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "france",
       "writerId": "george_sand",
       "name": "Жорж Санд (Амандин Аврора Дюпен)",
       "birthYear": "1804",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "france",
       "writerId": "henri_bergson",
       "name": "Анри-Луи Бергсон",
       "birthYear": "1859",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "france",
-      "writerId": "francois_mauriac",
-      "name": "Франсуа Шарль Мориак",
-      "birthYear": "1885",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "france",
       "writerId": "saint_john_perse",
       "name": "Сен-Жон Перс (Алексис Леже)",
       "birthYear": "1887",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "france",
-      "writerId": "louis_ferdinand_celine",
-      "name": "Луи-Фердинанд Селин",
-      "birthYear": "1894",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "french_guiana",
-      "writerId": "leon_gontran_damas",
-      "name": "Леон-Гонтан Дамас",
-      "birthYear": "1912",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "gabon",
       "writerId": "angele_rawiri",
       "name": "Анжель Равири",
       "birthYear": "1954",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "gabon",
-      "writerId": "juste_auguste_kotto",
-      "name": "Жюстен-Огюст Котти",
-      "birthYear": "1945",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "gabon",
-      "writerId": "florentin_moussavou_nzigu",
-      "name": "Флорентин Мвуэ Нзигу",
-      "birthYear": "1965",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "gambia",
-      "writerId": "baaba_jobarteh",
-      "name": "Бааба Джобе",
-      "birthYear": "1960",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "georgia",
       "writerId": "konstantine_gamsakhurdia",
       "name": "Константин Гамсахурдия",
       "birthYear": "1893",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "germany",
       "writerId": "theodor_mommsen",
       "name": "Кристиан Маттиас Теодор Моммзен",
       "birthYear": "1817",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "germany",
-      "writerId": "paul_heyse",
-      "name": "Пауль Йохан Людвиг фон Хейзе",
-      "birthYear": "1830",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "germany",
       "writerId": "grimmelshausen",
       "name": "Ганс Якоб Кристоф Гриммельсгаузен",
       "birthYear": "1621",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "germany",
       "writerId": "johann_wolfgang_goethe",
       "name": "Иоганн Вольфганг Гёте",
       "birthYear": "1749",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "ghana",
-      "writerId": "joseph_casely_hayford",
-      "name": "Джозеф Эфуа Кейсели Хейфорд",
-      "birthYear": "1866",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ghana",
       "writerId": "martin_egblewogbe",
       "name": "Мартин Эгбевогбе",
       "birthYear": "1975",
-      "reason": "exact-label-not-found"
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "greece",
       "writerId": "homer",
       "name": "Гомер",
       "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "literary-identity-not-established",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "greece",
       "writerId": "sappho",
       "name": "Сапфо",
       "birthYear": "630",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "grenada",
       "writerId": "george_brizan",
       "name": "Джордж Бризан",
       "birthYear": "1942",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
-      "countryId": "grenada",
-      "writerId": "julian_fedon",
-      "name": "Джулиан Федон",
-      "birthYear": "1940",
-      "reason": "exact-label-not-found"
+      "countryId": "guatemala",
+      "writerId": "luis_cardoza_y_aragon",
+      "name": "Луис Кардоса-и-Арагон",
+      "birthYear": "1901",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "guatemala",
       "writerId": "francisco_alejandro_mendez",
       "name": "Франциско Алехандро Мендес",
       "birthYear": "1964",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "guinea_bissau",
-      "writerId": "antonio_aurelio_gomes",
-      "name": "Антониу Аурелиу Гомеш",
-      "birthYear": "1960",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "guyana",
       "writerId": "cyril_dabydeen",
       "name": "Сирил Дабидин",
       "birthYear": "1945",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "guyana",
-      "writerId": "roshni_kempadoo",
-      "name": "Рошини Кемпадоо",
-      "birthYear": "1969",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "haiti",
       "writerId": "jacques_stephen_alexis",
       "name": "Жак Стивен Алексис",
       "birthYear": "1922",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "haiti",
       "writerId": "edwidge_danticat",
       "name": "Эдвидж Дантикат",
       "birthYear": "1969",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "honduras",
       "writerId": "julio_escoto",
       "name": "Хулио Эското",
       "birthYear": "1944",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "india",
       "writerId": "vyasa",
       "name": "Вьяса",
       "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "india",
-      "writerId": "mirabai",
-      "name": "Мирабаи",
-      "birthYear": "1498",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "india",
       "writerId": "bankim_chandra_chatterjee",
-      "name": "Банким Чандра Чаттерджи",
+      "name": "Банким Чандра Чаттопадхьяй",
       "birthYear": "1838",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "india",
-      "writerId": "munshi_premchand",
-      "name": "Мунши Премчанд",
-      "birthYear": "1880",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "india",
       "writerId": "subramania_bharati",
-      "name": "Субраманья Бхарати",
+      "name": "Субрамания Бхарати",
       "birthYear": "1882",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "india",
-      "writerId": "r_k_narayan",
-      "name": "Р. К. Нараян",
-      "birthYear": "1906",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "india",
       "writerId": "anil_menon",
       "name": "Анил Менон",
-      "birthYear": "1970",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "india",
-      "writerId": "amit_chaudhuri",
-      "name": "Амита Чоудхури",
-      "birthYear": "1962",
-      "reason": "exact-label-not-found"
+      "birthYear": "",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "india",
       "writerId": "ruskin_bond",
       "name": "Раскин Бонд",
       "birthYear": "1934",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "india",
       "writerId": "perumal_murugan",
       "name": "Перумал Муруган",
       "birthYear": "1966",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "india",
       "writerId": "jeet_thayil",
       "name": "Джит Тхайил",
       "birthYear": "1959",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "indonesia",
       "writerId": "hamka",
       "name": "Хамка",
       "birthYear": "1908",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "iran",
+      "writerId": "ferdowsi",
+      "name": "Фирдоуси",
+      "birthYear": "940",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "iran",
       "writerId": "saadi_shirazi",
       "name": "Саади Ширази",
       "birthYear": "1210",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "iran",
+      "writerId": "hafez",
+      "name": "Хафиз Ширази",
+      "birthYear": "1315",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "iran",
+      "writerId": "forugh_farrokhzad",
+      "name": "Форуг Фаррохзад",
+      "birthYear": "1934",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "iraq",
+      "writerId": "abu_nuwas",
+      "name": "Абу Нувас",
+      "birthYear": "756",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "iraq",
+      "writerId": "al_mutanabbi",
+      "name": "Аль-Мутанабби",
+      "birthYear": "915",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "iraq",
+      "writerId": "nazik_al_malaika",
+      "name": "Назик аль-Малаика",
+      "birthYear": "1923",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "iraq",
       "writerId": "fuad_al_takarli",
       "name": "Фуад ат-Тикерли",
       "birthYear": "1927",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "ireland",
-      "writerId": "james_joyce",
-      "name": "Джеймс Джойс",
-      "birthYear": "1882",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "israel",
-      "writerId": "david_grossman",
-      "name": "Давид Гроссман",
-      "birthYear": "1954",
-      "reason": "ambiguous-or-date-mismatch"
+      "writerId": "s_y_agnon",
+      "name": "Шмуэль Йосеф Агнон",
+      "birthYear": "1888",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "italy",
+      "writerId": "cesare_beccaria",
+      "name": "Чезаре Беккариа",
+      "birthYear": "1738",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
+    },
+    {
+      "countryId": "italy",
+      "writerId": "roberto_saviano",
+      "name": "Роберто Савьяно",
+      "birthYear": "1979",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "jamaica",
       "writerId": "claude_mckay",
       "name": "Клод Маккей",
       "birthYear": "1890",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "jamaica",
       "writerId": "roger_mais",
       "name": "Роджер Майс",
       "birthYear": "1905",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "jamaica",
       "writerId": "andrew_salky",
       "name": "Эндрю Салкей",
       "birthYear": "1928",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "jamaica",
       "writerId": "kerry_yang",
       "name": "Керри Янг",
       "birthYear": "1955",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "japan",
+      "writerId": "sei_shonagon",
+      "name": "Сэй-Сёнагон",
+      "birthYear": "966",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "japan",
+      "writerId": "kamo_no_chomei",
+      "name": "Камо-но Тёмэй",
+      "birthYear": "1153",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "japan",
       "writerId": "futabatei_shimei",
       "name": "Фтабатэй Симмэй",
       "birthYear": "1864",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "yosano_akiko",
-      "name": "Ёсано Акико",
-      "birthYear": "1878",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "ishikawa_takuboku",
-      "name": "Исикава Такубоку",
-      "birthYear": "1886",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "akutagawa_ryunosuke",
-      "name": "Акутагава Рюноскэ",
-      "birthYear": "1892",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "tanizaki_junichiro",
-      "name": "Танидзаки Дзюнъитиро",
-      "birthYear": "1886",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "kawabata_yasunari",
-      "name": "Кавабата Ясунари",
-      "birthYear": "1899",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "japan",
       "writerId": "mitsuyo_kakuta",
       "name": "Мицуйо Какута",
       "birthYear": "1967",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "yasunari_kawabata_additional",
-      "name": "Катаока Тэцутаро",
-      "birthYear": "1894",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "japan",
       "writerId": "sachio_ito",
       "name": "Сатио Ито",
       "birthYear": "1864",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "japan",
       "writerId": "hirano_keichiro",
       "name": "Кэйтиро Хирано",
       "birthYear": "1975",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "jordan",
       "writerId": "mustafa_wahbi_al_tal_arar",
       "name": "Мустафа Вахби ат-Таль (Арар)",
       "birthYear": "1899",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "jordan",
-      "writerId": "ghalib_halasa",
-      "name": "Галиб Халса",
-      "birthYear": "1932",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "jordan",
       "writerId": "zuleikha_abu_risha",
       "name": "Зулайха Абу Риша",
       "birthYear": "1942",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "jordan",
+      "writerId": "munif_al_razzaz",
+      "name": "Муниф ар-Раззаз",
+      "birthYear": "1919",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "kazakhstan",
-      "writerId": "ybyrai_altynsarin",
-      "name": "Ыбырай Алтынсарин",
-      "birthYear": "1841",
-      "reason": "exact-label-not-found"
+      "writerId": "abai_qunanbaiuly",
+      "name": "Абай Кунанбайулы",
+      "birthYear": "1845",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "kazakhstan",
       "writerId": "zhussipbek_aimauytov",
       "name": "Жусупбек Аймауытов",
       "birthYear": "1889",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "kazakhstan",
-      "writerId": "olzhas_suleimenov",
-      "name": "Олжас Сулейменов",
-      "birthYear": "1936",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "kazakhstan",
       "writerId": "abdizhamil_nurpeisov",
       "name": "Абдижамил Нурпеисов",
       "birthYear": "1924",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "kenya",
-      "writerId": "grace_ogot",
-      "name": "Грейс Огот",
-      "birthYear": "1930",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "kenya",
       "writerId": "peter_kimani",
       "name": "Питер Кимани",
       "birthYear": "1971",
-      "reason": "exact-label-not-found"
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "kiribati",
       "writerId": "teresia_teaiwa",
       "name": "Терезия Теаива",
       "birthYear": "1968",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "kuwait",
       "writerId": "fahad_al_askar",
       "name": "Фахд аль-Аскар",
       "birthYear": "1917",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "kuwait",
       "writerId": "ahmad_al_adwani",
       "name": "Ахмад аль-Адваний",
       "birthYear": "1922",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "kuwait",
       "writerId": "ismail_fahd_ismail",
       "name": "Исмаил Фахд Исмаил",
       "birthYear": "1940",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "kuwait",
+      "writerId": "laila_al_othman",
+      "name": "Лейла аль-Осман",
+      "birthYear": "1943",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "kuwait",
       "writerId": "taleb_al_refai",
       "name": "Тальиб ар-Рифаи",
       "birthYear": "1958",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "kyrgyzstan",
-      "writerId": "chyngyz_aitmatov",
-      "name": "Чингиз Айтматов",
-      "birthYear": "1928",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "kyrgyzstan",
       "writerId": "suranbay_eraliev",
-      "name": "Суранбай Эралиев",
+      "name": "Сүйүнбай Эралиев",
       "birthYear": "1921",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "kyrgyzstan",
       "writerId": "tologon_kasymbekov",
       "name": "Төлөгөн Касымбеков",
       "birthYear": "1931",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "laos",
-      "writerId": "sotheara_soth",
-      "name": "Сотхеара Сот",
-      "birthYear": "1954",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "laos",
-      "writerId": "douangchandra_souphanouvong",
-      "name": "Доуангчандра Суваннафум",
-      "birthYear": "1930",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "laos",
-      "writerId": "visuth_phommasane",
-      "name": "Висутх Пхомсаван",
-      "birthYear": "1945",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "laos",
-      "writerId": "bountheng_thongsavanh",
-      "name": "Боунтенг Тхонгсаван",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "lebanon",
-      "writerId": "khalil_gibran",
-      "name": "Халиль Джебран",
-      "birthYear": "1883",
-      "reason": "exact-label-not-found"
+      "writerId": "phoumi_vongvichit",
+      "name": "Пхуми Вонгвичит",
+      "birthYear": "1909",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "lesotho",
       "writerId": "masechele_khaketla",
-      "name": "Масило Мацела Хакетла",
+      "name": "Нтселисенг «Масечеле» Хакетла",
       "birthYear": "1918",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "lesotho",
-      "writerId": "letuka_molati",
-      "name": "Летука Молати",
-      "birthYear": "1938",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "lesotho",
-      "writerId": "leapo_motsapi",
-      "name": "Леапо Мацеле",
-      "birthYear": "1950",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "lesotho",
-      "writerId": "coleman_motsapi",
-      "name": "Коулман Мотсепе",
-      "birthYear": "1928",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "liberia",
-      "writerId": "wilton_sankawulo",
-      "name": "Уилтон Санкайуло",
-      "birthYear": "1937",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "liberia",
-      "writerId": "marvin_colley",
-      "name": "Марва Колли",
-      "birthYear": "1950",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "liberia",
-      "writerId": "varney_bangura",
-      "name": "Варни Бэнгура",
-      "birthYear": "1960",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "libya",
-      "writerId": "ahmed_rafiq_al_mahdaoui",
-      "name": "Ахмед Рафик аль-Махдави",
-      "birthYear": "1898",
-      "reason": "exact-label-not-found"
+      "writerId": "bai_t_moore",
+      "name": "Бай Тамиа Мур",
+      "birthYear": "1916",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "libya",
       "writerId": "hassan_al_faqih_hassan",
-      "name": "Хасан аль-Фких Хасан",
-      "birthYear": "1901",
-      "reason": "exact-label-not-found"
+      "name": "Хасан аль-Факих Хасан",
+      "birthYear": "1783",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "libya",
       "writerId": "ali_mustafa_al_misrati",
       "name": "Али Мустафа аль-Мисрати",
       "birthYear": "1926",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "libya",
       "writerId": "khalifa_al_tillisi",
       "name": "Халифа ат-Тиллиси",
       "birthYear": "1930",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "libya",
       "writerId": "sadeq_al_neihum",
       "name": "Садек аль-Найхум",
       "birthYear": "1937",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "libya",
       "writerId": "ibrahim_al_koni",
       "name": "Ибрагим аль-Куни",
       "birthYear": "1948",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "liechtenstein",
-      "writerId": "maria_von_burg",
-      "name": "Мария фон Бург",
-      "birthYear": "1893",
-      "reason": "exact-label-not-found"
+      "writerId": "hansjorg_quaderer",
+      "name": "Хансйорг Квадерер",
+      "birthYear": "1958",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
-      "countryId": "macau",
-      "writerId": "hou_jingming",
-      "name": "Хоу Цзюньмин",
-      "birthYear": "1955",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "macau",
-      "writerId": "hou_chio_jan",
-      "name": "Хо Чхоу Ин",
-      "birthYear": "1950",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "macau",
-      "writerId": "lo_i_cheng",
-      "name": "Ло Ичэн",
-      "birthYear": "1962",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "madagascar",
-      "writerId": "jean_joseph_rabearivelo",
-      "name": "Жан-Жозеф Рабеаривело",
-      "birthYear": "1901",
-      "reason": "exact-label-not-found"
+      "countryId": "liechtenstein",
+      "writerId": "jurg_hanselmann",
+      "name": "Юрг Ханзельман",
+      "birthYear": "1960",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "madagascar",
       "writerId": "regis_rajemisa_raolison",
-      "name": "Режи Раймиса-Раолисон",
+      "name": "Режис Радземиса-Раулизон",
       "birthYear": "1913",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "madagascar",
-      "writerId": "elie_charles_abraham",
-      "name": "Эли-Шарль Абрахам",
-      "birthYear": "1919",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "madagascar",
       "writerId": "charlotte_rafe­nomanjato",
       "name": "Шарлотта Рафеномананджато",
       "birthYear": "1936",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "madagascar",
-      "writerId": "nirina_lua",
-      "name": "Нирина Луйз",
-      "birthYear": "1936",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "malaysia",
-      "writerId": "kemala",
-      "name": "Кемала",
-      "birthYear": "1941",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "maldives",
       "writerId": "muhammad_jameel_didi",
       "name": "Мухаммад Джамиль Диди",
       "birthYear": "1915",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "maldives",
-      "writerId": "amin_jameel",
-      "name": "Амин Джамиль",
-      "birthYear": "1923",
-      "reason": "exact-label-not-found"
+      "writerId": "abdulla_sodiq",
+      "name": "Абдулла Содик",
+      "birthYear": "1935",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "mali",
+      "writerId": "amadou_hampate_ba",
+      "name": "Амаду Хампате Ба",
+      "birthYear": "1901",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "mali",
+      "writerId": "modibo_sounkalo_keita",
+      "name": "Модибо Сункало Кейта",
+      "birthYear": "1948",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "malta",
       "writerId": "anton_manuel_caruana",
-      "name": "Антон Мануэль Каруана",
-      "birthYear": "1838",
-      "reason": "exact-label-not-found"
+      "name": "Антонио Эмануэле Каруана",
+      "birthYear": "1839",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "malta",
       "writerId": "ruzar_briffa",
       "name": "Ружар Бриффа",
       "birthYear": "1906",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "marshall_islands",
-      "writerId": "kathy_jetnil_kijiner",
-      "name": "Кэти Джетнил-Кидд",
-      "birthYear": "1989",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "mauritania",
       "writerId": "ahmedou_ould_abdel_kader",
       "name": "Ахмеду Ульд Абдель Кадер",
       "birthYear": "1941",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "mauritania",
       "writerId": "mokhtar_ould_hamidoun",
       "name": "Мухтар Ульд Хамидун",
       "birthYear": "1898",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "mauritania",
-      "writerId": "hamed_ould_hamdane",
-      "name": "Хамед Ульд Хамдани",
-      "birthYear": "1957",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "mexico",
       "writerId": "sor_juana_ines_de_la_cruz",
       "name": "Сор Хуана Инес де ла Крус",
       "birthYear": "1648",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "mexico",
-      "writerId": "elena_poniatowska",
-      "name": "Елена Понятовска",
-      "birthYear": "1932",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "mexico",
       "writerId": "javier_velasco",
       "name": "Хавьер Веласко",
-      "birthYear": "1964",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "mexico",
-      "writerId": "guadalupe_nettel",
-      "name": "Гваделупе Неттель",
-      "birthYear": "1973",
-      "reason": "exact-label-not-found"
+      "birthYear": "1958",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "mexico",
       "writerId": "amparo_davila",
       "name": "Ампаро Давила",
       "birthYear": "1928",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "mexico",
       "writerId": "yuri_herrera",
-      "name": "Юрий Эррера",
+      "name": "Юри Эррера",
       "birthYear": "1970",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "mexico",
-      "writerId": "maria_fernanda_ampuero",
-      "name": "Мария Фернанда Ампуэро",
-      "birthYear": "1976",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "micronesia",
-      "writerId": "peter_sigeo",
-      "name": "Питер Сигео",
-      "birthYear": "1950",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "micronesia",
-      "writerId": "marcel_mares",
-      "name": "Марсель Лоус",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "mongolia",
       "writerId": "inzhannashi",
-      "name": "Инжаннаши",
+      "name": "Ванчинбалын Инжаннаши",
       "birthYear": "1837",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "mongolia",
       "writerId": "uriankhai",
       "name": "Дамдинсурэнгийн Урианхай",
       "birthYear": "1940",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "mongolia",
       "writerId": "mend_ooyo",
       "name": "Гомбожавын Мэнд-Ооёо",
       "birthYear": "1952",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "montenegro",
       "writerId": "stefan_ljubisa",
       "name": "Стефан Митров Любиша",
       "birthYear": "1824",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "montenegro",
-      "writerId": "nikola_i_petrovic",
-      "name": "Никола I Петрович Негош",
-      "birthYear": "1841",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "morocco",
-      "writerId": "fatima_mernissi",
-      "name": "Фатима Мернисси",
-      "birthYear": "1940",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "myanmar",
       "writerId": "dagon_taryar",
-      "name": "Дагон Тхаяр",
+      "name": "Дагон Тая",
       "birthYear": "1919",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
-      "countryId": "namibia",
-      "writerId": "ndapewaoshali_shikongo",
-      "name": "Ндандулениао Шиконго",
-      "birthYear": "1993",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "namibia",
-      "writerId": "gabi_stolz",
-      "name": "Габи Штольц",
-      "birthYear": "1956",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "nauru",
-      "writerId": "michael_francis",
-      "name": "Майкл Фрэнсис",
-      "birthYear": "1960",
-      "reason": "ambiguous-or-date-mismatch"
+      "countryId": "myanmar",
+      "writerId": "theippan_maung_wa",
+      "name": "Тейппан Маун Ва",
+      "birthYear": "1899",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "nepal",
-      "writerId": "bp_koirala",
-      "name": "Б. П. Коирала",
-      "birthYear": "1914",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "netherlands",
-      "writerId": "betje_wolff",
-      "name": "Бетје Вольф",
-      "birthYear": "1738",
-      "reason": "exact-label-not-found"
+      "writerId": "krishna_dharabasi",
+      "name": "Кришна Дхараваси",
+      "birthYear": "1959",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "netherlands",
       "writerId": "multatuli",
       "name": "Мултатули",
       "birthYear": "1820",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "netherlands",
       "writerId": "alexandre_olivier_exquemelin",
       "name": "Александер Оливье Эксквемелин",
       "birthYear": "1645",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "jane_mander",
-      "name": "Джейн Мандер",
-      "birthYear": "1877",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "allen_curnow",
-      "name": "Аллен Карноу",
-      "birthYear": "1911",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "c_k_stead",
-      "name": "К. К. Стед",
-      "birthYear": "1932",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "patricia_grace",
-      "name": "Патриция Грейс",
-      "birthYear": "1937",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "bruce_mason",
-      "name": "Брюс Мейсон",
-      "birthYear": "1921",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "elizabeth_knox",
-      "name": "Элизабет Нокс",
-      "birthYear": "1959",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "fiona_kidman",
-      "name": "Фиона Кидман",
-      "birthYear": "1940",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "new_zealand",
       "writerId": "robin_hyde",
       "name": "Робин Хайд",
       "birthYear": "1906",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "bill_manhire",
-      "name": "Билл Манхайр",
-      "birthYear": "1946",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "new_zealand",
       "writerId": "janet_frame",
       "name": "Джанет Фрейм",
       "birthYear": "1924",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
-      "countryId": "nicaragua",
-      "writerId": "gioconda_belli",
-      "name": "Джоконда Белли",
-      "birthYear": "1948",
-      "reason": "exact-label-not-found"
+      "countryId": "niger",
+      "writerId": "mariama_hima",
+      "name": "Мариама Хима",
+      "birthYear": "1951",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "nigeria",
-      "writerId": "d_o_fagunwa",
-      "name": "Д. О. Фагунва",
-      "birthYear": "1903",
-      "reason": "exact-label-not-found"
+      "writerId": "christopher_okigbo",
+      "name": "Кристофер Окигбо",
+      "birthYear": "1932",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
-      "countryId": "niue",
-      "writerId": "john_pule",
-      "name": "Джон Пуле",
-      "birthYear": "1962",
-      "reason": "exact-label-not-found"
+      "countryId": "north_korea",
+      "writerId": "ri_ki_yong",
+      "name": "Ли Ги Ён",
+      "birthYear": "1895",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "north_korea",
       "writerId": "choe_myong_ik",
       "name": "Чхве Мён Ик",
       "birthYear": "1903",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "north_korea",
-      "writerId": "paek_nam_nyong",
-      "name": "Пэк Нам Рён",
-      "birthYear": "1949",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "norway",
-      "writerId": "jon_fosse",
-      "name": "Юн Улав Фоссе",
-      "birthYear": "1959",
-      "reason": "exact-label-not-found"
+      "writerId": "amalie_skram",
+      "name": "Амали Скрам",
+      "birthYear": "1846",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "norway",
+      "writerId": "olav_duun",
+      "name": "Олав Дуун",
+      "birthYear": "1876",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "oman",
+      "writerId": "abu_muslim_al_bahlani",
+      "name": "Абу Муслим аль-Бахляни",
+      "birthYear": "1860",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "oman",
       "writerId": "abdullah_bin_mohammed_al_taie",
       "name": "Абдулла бин Мухаммад ат-Таи",
       "birthYear": "1924",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "oman",
       "writerId": "saif_al_rahbi",
       "name": "Саиф ар-Рахби",
       "birthYear": "1956",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "oman",
-      "writerId": "jokha_alharthi",
-      "name": "Джоха аль-Харси",
-      "birthYear": "1978",
-      "reason": "exact-label-not-found"
+      "writerId": "abdullah_habib",
+      "name": "Абдулла Хабиб",
+      "birthYear": "1962",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
-      "countryId": "oman",
-      "writerId": "zahir_al_ghazali",
-      "name": "Захир аль-Газали",
-      "birthYear": "1957",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "panama",
-      "writerId": "rogelio_sinan",
-      "name": "Рохелио Синиан",
-      "birthYear": "1904",
-      "reason": "exact-label-not-found"
+      "countryId": "palau",
+      "writerId": "emelihter_kihleng",
+      "name": "Эмелихтер Килэнг",
+      "birthYear": "",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "panama",
-      "writerId": "demetrio_kalleyas",
-      "name": "Деметрио Кальехас",
-      "birthYear": "1875",
-      "reason": "exact-label-not-found"
+      "writerId": "ricardo_miro",
+      "name": "Рикардо Миро",
+      "birthYear": "1883",
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "panama",
       "writerId": "juan_david_morgan",
       "name": "Хуан Давид Морган",
       "birthYear": "1942",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "papua_new_guinea",
-      "writerId": "siri_gising",
-      "name": "Сири Гисинг",
-      "birthYear": "1939",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "papua_new_guinea",
-      "writerId": "kati_thambe",
-      "name": "Кати Тэмб",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "paraguay",
       "writerId": "natalicio_gonzalez",
       "name": "Наталисио Гонсалес",
       "birthYear": "1897",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "paraguay",
-      "writerId": "gabriel_casaccia",
-      "name": "Габриэль Касаксиа",
-      "birthYear": "1907",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "paraguay",
       "writerId": "juan_manuel_marcos",
       "name": "Хуан Мануэль Маркос",
       "birthYear": "1950",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "paraguay",
       "writerId": "lisandro_diaz_leon",
       "name": "Лисандро Диас Леон",
-      "birthYear": "1929",
-      "reason": "exact-label-not-found"
+      "birthYear": "1889",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "paraguay",
       "writerId": "mario_ruben_alvarez",
       "name": "Марио Рубен Альварес",
       "birthYear": "1954",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "paraguay",
       "writerId": "liza_haedo",
-      "name": "Лис Хаун",
-      "birthYear": "1928",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "paraguay",
-      "writerId": "susana_galeano",
-      "name": "Сусана Гальеано",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "paraguay",
-      "writerId": "maida_victoria_melgar",
-      "name": "Майда Виктория Мельгар",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "name": "Лиз Мария Аэдо",
+      "birthYear": "1986",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "paraguay",
       "writerId": "elvio_romero",
       "name": "Эльвио Ромеро",
       "birthYear": "1926",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "paraguay",
       "writerId": "rubén_bareiro_saguier",
-      "name": "Рубен Барейро Сагье",
+      "name": "Рубен Барейро Сагьер",
       "birthYear": "1930",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "peru",
       "writerId": "juan_espinosa_medrano",
       "name": "Хуан Эспиноса Медрано",
-      "birthYear": "1629",
-      "reason": "exact-label-not-found"
+      "birthYear": "1632",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "peru",
       "writerId": "manuel_gonzalez_prada",
       "name": "Мануэль Гонсалес Прада",
       "birthYear": "1844",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "peru",
       "writerId": "alfredo_bryce_echenique",
       "name": "Альфредо Брис Эченике",
       "birthYear": "1939",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "peru",
       "writerId": "claudia_salazar_jimenez",
       "name": "Клаудия Салазар Хименес",
       "birthYear": "1976",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "peru",
       "writerId": "eduardo_gonzalez_viana",
       "name": "Эдуардо Гонсалес Вьяна",
       "birthYear": "1941",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "peru",
       "writerId": "julio_ortega",
       "name": "Хулио Ортега",
       "birthYear": "1942",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "peru",
-      "writerId": "oscar_malpica",
-      "name": "Оскар Мальпика",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "peru",
-      "writerId": "karina_sainz_borgo_peru_relation",
-      "name": "Карина Сайнс Борго",
-      "birthYear": "1982",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "peru",
       "writerId": "oscar_colchado_lucio",
       "name": "Оскар Колчадо Лусио",
       "birthYear": "1947",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "peru",
-      "writerId": "mario_bellatin",
-      "name": "Марио Беллатин",
-      "birthYear": "1960",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "peru",
       "writerId": "jose_watanabe",
       "name": "Хосе Ватанабе",
-      "birthYear": "1946",
-      "reason": "exact-label-not-found"
+      "birthYear": "1945",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "philippines",
       "writerId": "f_sionil_jose",
       "name": "Ф. Сионил Хосе",
       "birthYear": "1924",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "philippines",
-      "writerId": "edith_tiempo",
-      "name": "Эдит Тиампо",
-      "birthYear": "1919",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "poland",
-      "writerId": "wladyslaw_reymont",
-      "name": "Владислав Станислав Реймонт",
-      "birthYear": "1867",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "luis_de_camoes",
       "name": "Луиш де Камоэнс",
       "birthYear": "1524",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "almeida_garrett",
       "name": "Алмейда Гарретт",
       "birthYear": "1799",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "alexandre_herculano",
       "name": "Александре Эркулану",
       "birthYear": "1810",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "portugal",
-      "writerId": "eca_de_queiros",
-      "name": "Эса де Кейрош",
-      "birthYear": "1845",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "fernando_pessoa",
       "name": "Фернанду Пессоа",
       "birthYear": "1888",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "sofia_de_mello_breyner",
       "name": "София де Мелло Брейнер Андресен",
       "birthYear": "1919",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "goncalo_m_tavares",
       "name": "Гонсалу М. Тавареш",
       "birthYear": "1970",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "walter_hugo_mae",
-      "name": "Валтер Угу Маи",
+      "name": "Валтер Угу Маэ",
       "birthYear": "1971",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "vergilio_ferreira",
       "name": "Вержилиу Феррейра",
       "birthYear": "1916",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "manuel_de_aranha",
       "name": "Мануэл де Арриага",
       "birthYear": "1840",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "branquinho_da_fonseca",
       "name": "Бранкинью да Фонсека",
       "birthYear": "1905",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "portugal",
-      "writerId": "augusto_abreu",
-      "name": "Аугушту Абреу",
-      "birthYear": "1927",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "portugal",
       "writerId": "jose_rodrigues_dos_santos",
       "name": "Жозе Родригеш душ Сантуш",
       "birthYear": "1964",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "puerto_rico",
       "writerId": "rene_marques",
       "name": "Рене Маркес",
       "birthYear": "1919",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "puerto_rico",
       "writerId": "jose_luis_gonzalez",
       "name": "Хосе Луис Гонсалес",
       "birthYear": "1926",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "puerto_rico",
       "writerId": "manuel_ramos_otero",
       "name": "Мануэль Рамос Отеро",
       "birthYear": "1948",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "qatar",
       "writerId": "abdulaziz_al_mahmoud",
-      "name": "Абдель Азиз аль-Махмуд",
-      "birthYear": "1965",
-      "reason": "exact-label-not-found"
+      "name": "Абдулазиз Аль-Махмуд",
+      "birthYear": "1961",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "qatar",
       "writerId": "kulthum_jaber",
-      "name": "Кулсум Джабер",
+      "name": "Кульсум Джабр аль-Кувари",
       "birthYear": "1958",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "qatar",
-      "writerId": "ahmad_al_mahmoud",
-      "name": "Ахмад аль-Махмуд",
-      "birthYear": "1957",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "qatar",
-      "writerId": "jamal_fayiz_al_maliki",
-      "name": "Джамаль Файз аль-Малики",
-      "birthYear": "1953",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "republic_of_congo",
-      "writerId": "jean_baptiste_tati_loutard",
-      "name": "Жан-Батист Тати Лутард",
-      "birthYear": "1938",
-      "reason": "exact-label-not-found"
+      "writerId": "guy_menga",
+      "name": "Ги Менга",
+      "birthYear": "1935",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "russia",
       "writerId": "avvakum",
       "name": "Протопоп Аввакум Петров",
       "birthYear": "1620",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "russia",
-      "writerId": "pelevin",
-      "name": "Виктор Олегович Пелевин",
-      "birthYear": "1962",
-      "reason": "exact-label-not-found"
+      "writerId": "karamzin",
+      "name": "Николай Михайлович Карамзин",
+      "birthYear": "1765",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "russia",
       "writerId": "sergey_ivanovich_ozhegov",
       "name": "Сергей Иванович Ожегов",
       "birthYear": "1900",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "russia",
-      "writerId": "robert_shtilmark",
-      "name": "Роберт Александрович Штильмарк",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "literary-identity-not-established",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "rwanda",
       "writerId": "saverio_naigiziki",
       "name": "Саверио Найгизики",
       "birthYear": "1915",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "saint_kitts_and_nevis",
       "writerId": "caryl_phillips",
       "name": "Кэрил Филлипс",
       "birthYear": "1958",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "saint_lucia",
       "writerId": "john_robert_lee",
       "name": "Джон Роберт Ли",
       "birthYear": "1948",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "sao_tome_and_principe",
-      "writerId": "alda_do_espirito_santo",
-      "name": "Алда ду Эшпириту Санту",
-      "birthYear": "1926",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "senegal",
       "writerId": "cheikh_hamidou_kane",
       "name": "Шейх Хамиду Кан",
       "birthYear": "1928",
-      "reason": "exact-label-not-found"
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "serbia",
+      "writerId": "dositej_obradovic",
+      "name": "Доситей Обрадович",
+      "birthYear": "1739",
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "seychelles",
-      "writerId": "gladyse_adele",
-      "name": "Глэдис Адель",
-      "birthYear": "1951",
-      "reason": "exact-label-not-found"
+      "writerId": "guy_lionnet",
+      "name": "Ги Лионне",
+      "birthYear": "1922",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "literary-identity-not-established"
     },
     {
       "countryId": "sierra_leone",
       "writerId": "william_conton",
       "name": "Уильям Контон",
       "birthYear": "1925",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
-      "countryId": "sierra_leone",
-      "writerId": "augustine_bangura",
-      "name": "Огастин Бэнгура",
-      "birthYear": "1965",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "singapore",
-      "writerId": "edwin_thumboo",
-      "name": "Эдвин Тамбу",
-      "birthYear": "1933",
-      "reason": "exact-label-not-found"
+      "countryId": "solomon_islands",
+      "writerId": "john_saunana",
+      "name": "Джон Саунана",
+      "birthYear": "1945",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "solomon_islands",
       "writerId": "rex_horoi",
-      "name": "Рекс Хэтчинс",
-      "birthYear": "1944",
-      "reason": "exact-label-not-found"
+      "name": "Рекс Стивен Хорои",
+      "birthYear": "",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "somalia",
       "writerId": "mohamed_ibrahim_warsame_hadraawi",
       "name": "Мохамед Ибрагим Варсаме «Хадрави»",
       "birthYear": "1943",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "somalia",
       "writerId": "abdullahi_diiriye_guuleed",
-      "name": "Абдуллахи Диирие Гулам",
-      "birthYear": "1928",
-      "reason": "exact-label-not-found"
+      "name": "Абдуллахи Диирие Гулед",
+      "birthYear": "",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "somalia",
       "writerId": "sayyid_mohammed_abdullah_hassan",
       "name": "Сайид Мохамед Абдулле Хасан",
       "birthYear": "1856",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_africa",
       "writerId": "cj_langenhoven",
       "name": "Корнелис Якоб Лангенховен",
       "birthYear": "1873",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "south_africa",
-      "writerId": "sol_plaatje",
-      "name": "Сол Платже",
-      "birthYear": "1876",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "south_africa",
-      "writerId": "eskia_mphahlele",
-      "name": "Эскиа Мпахлеле",
-      "birthYear": "1919",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "south_africa",
-      "writerId": "jm_coetzee",
-      "name": "Дж. М. Кутзее",
-      "birthYear": "1940",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "south_korea",
-      "writerId": "il_yeon",
-      "name": "Иль Ён",
-      "birthYear": "1206",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "yi_kwangsu",
       "name": "И Квансу",
       "birthYear": "1892",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "south_korea",
+      "writerId": "kim_so_wol",
+      "name": "Ким Соволь",
+      "birthYear": "1902",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "han_yong_un",
       "name": "Хан Ён Ун",
       "birthYear": "1879",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "yi_sang",
       "name": "Ли Сан",
       "birthYear": "1910",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "kim_young_ha",
       "name": "Ким Ён Ха",
       "birthYear": "1968",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "park_min_gyu",
       "name": "Пак Мин Гю",
       "birthYear": "1968",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "jeong_yoo_jung",
       "name": "Чон Юджон",
       "birthYear": "1966",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "kim_hun",
       "name": "Ким Хун",
       "birthYear": "1948",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "south_korea",
-      "writerId": "byun_hyung_jun",
-      "name": "Пён Хёнджун",
-      "birthYear": "1962",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "shin_kyung_sook",
       "name": "Син Гён Сук",
       "birthYear": "1963",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "gong_ji_young",
       "name": "Кон Джи Ён",
       "birthYear": "1963",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "kim_aeran",
       "name": "Ким Э Ран",
       "birthYear": "1980",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_korea",
       "writerId": "bae_su_a",
       "name": "Пэ Су А",
       "birthYear": "1965",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "south_sudan",
-      "writerId": "atuok_mayen",
-      "name": "Атуок Мейен",
-      "birthYear": "1970",
-      "reason": "exact-label-not-found"
+      "writerId": "taban_lo_liyong",
+      "name": "Табан Ло Лийонг",
+      "birthYear": "1939",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "spain",
-      "writerId": "jose_echegaray",
-      "name": "Хосе Эчегарай-и-Эйсагирре",
-      "birthYear": "1832",
-      "reason": "exact-label-not-found"
+      "writerId": "garcilaso_de_la_vega",
+      "name": "Гарсиласо де ла Вега",
+      "birthYear": "1501",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "spain",
       "writerId": "teresa_de_avila",
       "name": "Тереса Авильская",
       "birthYear": "1515",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "spain",
       "writerId": "juan_de_la_cruz",
       "name": "Хуан де ла Крус",
       "birthYear": "1542",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "spain",
+      "writerId": "francisco_de_quevedo",
+      "name": "Франсиско де Кеведо",
+      "birthYear": "1580",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "spain",
       "writerId": "benito_jeronimo_feijoo",
       "name": "Бенито Херонимо Фейхоо",
       "birthYear": "1676",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "spain",
       "writerId": "leopoldo_alas_clarin",
       "name": "Леопольдо Алас «Кларин»",
       "birthYear": "1852",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "spain",
       "writerId": "pío_baroja",
       "name": "Пио Бароха",
       "birthYear": "1872",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "spain",
-      "writerId": "vicente_aleixandre",
-      "name": "Висенте Алейксандре",
-      "birthYear": "1898",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "sri_lanka",
       "writerId": "shobasakthi",
       "name": "Шобашакти",
-      "birthYear": "1964",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "sudan",
-      "writerId": "tayeb_salih",
-      "name": "Аль-Тайиб Салих",
-      "birthYear": "1929",
-      "reason": "exact-label-not-found"
+      "birthYear": "1967",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "sudan",
       "writerId": "mohammed_al_fayturi",
       "name": "Мухаммед аль-Фейтури",
-      "birthYear": "1936",
-      "reason": "exact-label-not-found"
+      "birthYear": "",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "sudan",
       "writerId": "al_saddiq_al_raddi",
       "name": "Аль-Саддик Аль-Радди",
       "birthYear": "1969",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "sudan",
-      "writerId": "taj_el_sir",
-      "name": "Тадж Эль-Сир",
-      "birthYear": "1965",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "suriname",
       "writerId": "dobru",
-      "name": "Добру (Робин Равалес)",
+      "name": "Добру (Робин Эвалд Равелес)",
       "birthYear": "1935",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "suriname",
       "writerId": "albert_helman",
       "name": "Альберт Хелман",
       "birthYear": "1903",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "suriname",
       "writerId": "cynthia_mccleod",
       "name": "Синтия Маклеод",
       "birthYear": "1936",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "suriname",
-      "writerId": "clarrisa_lispenard",
-      "name": "Кларисса Лиспенард",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "sweden",
-      "writerId": "august_strindberg",
-      "name": "Август Стриндберг",
-      "birthYear": "1849",
-      "reason": "exact-label-not-found"
+      "writerId": "hjalmar_soderberg",
+      "name": "Хьялмар Сёдерберг",
+      "birthYear": "1869",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "sweden",
       "writerId": "nelly_sachs",
       "name": "Нелли Леони Закс",
       "birthYear": "1891",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "sweden",
-      "writerId": "harry_martinson",
-      "name": "Харри Эдмунд Мартинсон",
-      "birthYear": "1904",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "sweden",
-      "writerId": "tomas_transtromer",
-      "name": "Тумас Йоста Транстрёмер",
-      "birthYear": "1931",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "sweden",
-      "writerId": "stieg_larsson",
-      "name": "Стиг Ларссон",
-      "birthYear": "",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "sweden",
       "writerId": "lars_kepler",
       "name": "Ларс Кеплер",
       "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "switzerland",
-      "writerId": "carl_spitteler",
-      "name": "Карл Фридрих Георг Шпиттелер",
-      "birthYear": "1845",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "syria",
       "writerId": "abu_al_ala_al_maarri",
       "name": "Абу аль-Ала аль-Маарри",
       "birthYear": "973",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "taiwan",
-      "writerId": "zhong_lihe",
-      "name": "Чжун Ли-хэ",
-      "birthYear": "1915",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "taiwan",
       "writerId": "wu_ming_yi",
       "name": "У Мин-И",
       "birthYear": "1971",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "tajikistan",
+      "writerId": "rudaki",
+      "name": "Рудаки",
+      "birthYear": "0858",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "tajikistan",
       "writerId": "abulqasim_lahuti",
       "name": "Абулькасим Лахути",
       "birthYear": "1887",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "tajikistan",
-      "writerId": "fazliddin_muhammadiev",
-      "name": "Фазлиддин Мухаммадиев",
-      "birthYear": "1928",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "tajikistan",
       "writerId": "sattor_tursun",
       "name": "Саттор Турсун",
       "birthYear": "1946",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
-      "countryId": "timor_leste",
-      "writerId": "jorge_barretto_xavier",
-      "name": "Хорхе Баррету Ксавьер",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "countryId": "thailand",
+      "writerId": "kulap_saipradit",
+      "name": "Кулап Сайпрадит (Сибурапа)",
+      "birthYear": "1905",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "tonga",
       "writerId": "epeli_hauofa",
-      "name": "Эпели Хау'офа",
+      "name": "Эпели Хауʻофа",
       "birthYear": "1939",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "tunisia",
-      "writerId": "aboul_qacem_echebbi",
-      "name": "Абу-ль-Касем аш-Шабби",
-      "birthYear": "1909",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "turkey",
       "writerId": "yunus_emre",
       "name": "Юнус Эмре",
-      "birthYear": "1238",
-      "reason": "ambiguous-or-date-mismatch"
+      "birthYear": "1240",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "turkey",
       "writerId": "fuzuli",
-      "name": "Фузули",
+      "name": "Физули",
       "birthYear": "1483",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "turkmenistan",
-      "writerId": "mollanepes",
-      "name": "Молланепес",
-      "birthYear": "1810",
-      "reason": "ambiguous-or-date-mismatch"
+      "writerId": "magtymguly_pyragy",
+      "name": "Махтумкули Фраги",
+      "birthYear": "1724",
+      "reason": "birth-year-mismatch-or-missing",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "turkmenistan",
+      "writerId": "kemine",
+      "name": "Мехметвели Кемине",
+      "birthYear": "1770",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "turkmenistan",
       "writerId": "chary_ashyrov",
       "name": "Чары Ашыров",
       "birthYear": "1910",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "turkmenistan",
       "writerId": "atajan_tagan",
       "name": "Атаджан Таган",
-      "birthYear": "1951",
-      "reason": "exact-label-not-found"
+      "birthYear": "1940",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uae",
       "writerId": "sultan_al_owais",
-      "name": "Султан аль-Овайс",
+      "name": "Султан бин Али аль-Овайс",
       "birthYear": "1925",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uae",
-      "writerId": "ousha_al_suwaidi",
-      "name": "Оша бинт Халифа аль-Сувайди",
-      "birthYear": "1920",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uae",
-      "writerId": "habib_al_sayegh",
-      "name": "Хабиб Юсеф аль-Сайех",
-      "birthYear": "1955",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uae",
       "writerId": "mohammed_al_murr",
-      "name": "Мохаммед аль-Мурр",
+      "name": "Мохаммед Ахмед аль-Мурр",
       "birthYear": "1955",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uae",
       "writerId": "ahmad_rashid_thani",
       "name": "Ахмад Рашид Тани",
       "birthYear": "1962",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uganda",
       "writerId": "jennifer_nansubuga_makumbi",
-      "name": "Дженифер Нансубуга Макаумби",
+      "name": "Дженнифер Нансубуга Макумби",
       "birthYear": "1967",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
-      "countryId": "ukraine",
-      "writerId": "ivan_kotliarevsky",
-      "name": "Иван Котляревский",
-      "birthYear": "1769",
-      "reason": "exact-label-not-found"
+      "countryId": "uganda",
+      "writerId": "byron_kawadwa",
+      "name": "Байрон Кавадва",
+      "birthYear": "1940",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "ukraine",
       "writerId": "mykhailo_kotsiubynsky",
       "name": "Михаил Коцюбинский",
       "birthYear": "1864",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "ukraine",
       "writerId": "valerii_shevchuk",
       "name": "Валерий Шевчук",
       "birthYear": "1939",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "jose_enrique_rodo",
-      "name": "Хосе Энрике Родó",
-      "birthYear": "1871",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uruguay",
       "writerId": "javier_de_viana",
       "name": "Хавьер де Виана",
       "birthYear": "1868",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uruguay",
       "writerId": "carlos_reyles",
       "name": "Карлос Рейлес",
       "birthYear": "1868",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uruguay",
       "writerId": "horacio_quiroga",
       "name": "Хорасио Кирога",
       "birthYear": "1878",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "emilio_frugoni",
-      "name": "Эмилио Фругонь",
-      "birthYear": "1880",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "mario_levrero",
-      "name": "Марио Левреро",
-      "birthYear": "1940",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uruguay",
       "writerId": "mauricio_rosencof",
       "name": "Маурисио Росенкоф",
       "birthYear": "1933",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "juan_jose_moron",
-      "name": "Хуан Хосе Морон",
-      "birthYear": "1950",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "silvia_lago",
-      "name": "Сильвия Лаго",
-      "birthYear": "1932",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "maria_ester_vazquez",
-      "name": "Мария Эстер Васкес",
-      "birthYear": "1937",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "claudia_amenedo",
-      "name": "Клаудия Аменьо",
-      "birthYear": "1969",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "maria_morena",
-      "name": "Мария Морейра",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "usa",
       "writerId": "anne_bradstreet",
       "name": "Энн Брэдстрит",
       "birthYear": "1612",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "usa",
-      "writerId": "vladimir_nabokov",
-      "name": "Владимир Набоков",
-      "birthYear": "1899",
-      "reason": "exact-label-not-found"
+      "writerId": "isaac_asimov",
+      "name": "Айзек Азимов",
+      "birthYear": "1919",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "usa",
-      "writerId": "paul_auster",
-      "name": "Пол Остер",
-      "birthYear": "1947",
-      "reason": "exact-label-not-found"
+      "writerId": "ralph_ellison",
+      "name": "Ральф Эллисон",
+      "birthYear": "1913",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "usa",
-      "writerId": "pearl_s_buck",
-      "name": "Перл Сайденстрикер Бак",
-      "birthYear": "1892",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "louise_gluck",
-      "name": "Луиза Элизабет Глюк",
-      "birthYear": "1943",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "richard_matheson",
-      "name": "Ричард Бёртон Матесон",
-      "birthYear": "1926",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "mario_puzo",
-      "name": "Марио Джанлуиджи Пьюзо",
-      "birthYear": "1920",
-      "reason": "exact-label-not-found"
+      "writerId": "isaac_bashevis_singer",
+      "name": "Исаак Башевис-Зингер",
+      "birthYear": "1903",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "usa",
       "writerId": "michael_crichton",
       "name": "Джон Майкл Крайтон",
       "birthYear": "1942",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "chuck_palahniuk",
-      "name": "Чарльз Майкл Паланик",
-      "birthYear": "1962",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "dr_seuss",
-      "name": "Теодор Сьюз Гайзель",
-      "birthYear": "1904",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "usa",
       "writerId": "winston_groom",
       "name": "Уинстон Фрэнсис Грум",
       "birthYear": "1943",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "usa",
       "writerId": "george_saunders",
       "name": "Джордж Сондерс",
       "birthYear": "",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "ambiguous-identity"
     },
     {
       "countryId": "usa",
       "writerId": "dan_brown",
       "name": "Дэн Браун",
       "birthYear": "",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "literary-identity-not-established",
+      "exactLabelReason": "ambiguous-identity"
     },
     {
       "countryId": "usa",
       "writerId": "andy_weir",
       "name": "Энди Вейр",
       "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "dennis_lehane",
-      "name": "Деннис Лихэйн",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "thomas_harris",
-      "name": "Томас Харрис",
-      "birthYear": "",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "usa",
       "writerId": "blaine_harden",
       "name": "Блейн Харден",
       "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "usa",
       "writerId": "ransom_riggs",
       "name": "Рэнсом Риггз",
       "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "usa",
       "writerId": "n_k_jemisin",
-      "name": "Нора Кейт Джемисин",
+      "name": "Н. К. Джемисин",
       "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "usa",
       "writerId": "mark_danielewski",
       "name": "Марк Данилевский",
       "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "usa",
       "writerId": "douglas_preston_lincoln_child",
       "name": "Дуглас Престон и Линкольн Чайлд",
       "birthYear": "",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "michael_connelly",
-      "name": "Майкл Коннелли",
-      "birthYear": "",
-      "reason": "ambiguous-or-date-mismatch"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "john_irving",
-      "name": "Джон Ирвинг",
-      "birthYear": "",
-      "reason": "ambiguous-or-date-mismatch"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "tom_clancy",
-      "name": "Том Клэнси",
-      "birthYear": "",
-      "reason": "ambiguous-or-date-mismatch"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uzbekistan",
       "writerId": "babur",
       "name": "Захириддин Мухаммад Бабур",
       "birthYear": "1483",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "uzbekistan",
-      "writerId": "mahmudhoja_behbudi",
-      "name": "Махмудходжа Бехбуди",
-      "birthYear": "1875",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "uzbekistan",
       "writerId": "cholpon",
-      "name": "Чулпан",
+      "name": "Абдулхамид Чулпан",
       "birthYear": "1897",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "vanuatu",
-      "writerId": "nicolas_tewes",
-      "name": "Николас Теве",
-      "birthYear": "1950",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "venezuela",
       "writerId": "juan_vicente_gonzalez",
       "name": "Хуан Висенте Гонсалес",
       "birthYear": "1810",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "venezuela",
       "writerId": "teresa_de_la_parra",
       "name": "Тереса де ла Парра",
       "birthYear": "1889",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "venezuela",
       "writerId": "manuel_diaz_rodriguez",
       "name": "Мануэль Диас Родригес",
-      "birthYear": "1868",
-      "reason": "exact-label-not-found"
+      "birthYear": "1871",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "venezuela",
       "writerId": "adriano_gonzalez_leon",
       "name": "Адриано Гонсалес Леон",
       "birthYear": "1931",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "venezuela",
-      "writerId": "eugenio_montejo",
-      "name": "Эугенио Монтехо",
-      "birthYear": "1938",
-      "reason": "exact-label-not-found"
-    },
-    {
-      "countryId": "venezuela",
-      "writerId": "krishna_viveros",
-      "name": "Кристьян Виверос",
-      "birthYear": "",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "vietnam",
-      "writerId": "vu_trong_phung",
-      "name": "Ву Чонг Фунг",
-      "birthYear": "1912",
-      "reason": "exact-label-not-found"
+      "writerId": "nguyen_du",
+      "name": "Нгуен Зу",
+      "birthYear": "1765",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
     },
     {
       "countryId": "vietnam",
       "writerId": "bao_ninh",
       "name": "Бао Нинь",
       "birthYear": "1952",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
     },
     {
       "countryId": "yemen",
       "writerId": "mohammed_abdul_wali",
       "name": "Мухаммад Абдулвали",
       "birthYear": "1939",
-      "reason": "exact-label-not-found"
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "exact-label-not-found"
+    },
+    {
+      "countryId": "zimbabwe",
+      "writerId": "chenjerai_hove",
+      "name": "Ченджераи Хове",
+      "birthYear": "1954",
+      "reason": "exact-alias-not-found",
+      "exactLabelReason": "birth-year-mismatch-or-missing"
+    },
+    {
+      "countryId": "cameroon",
+      "writerId": "jean_roger_essomba",
+      "name": "Жан-Роже Эссомба",
+      "reason": "blocked-remediated-qid",
+      "blockedWikidataId": "Q95950701",
+      "resolution": "blocked-by-identity-remediation"
+    },
+    {
+      "countryId": "angola",
+      "writerId": "ana_paula_tavares",
+      "name": "Ана Паулина Тавареш",
+      "reason": "existing-qid-conflict",
+      "existingWikidataId": "Q59186426",
+      "freshWikidataId": "Q460121",
+      "resolution": "evidence-backed-replacement"
     }
   ]
 }

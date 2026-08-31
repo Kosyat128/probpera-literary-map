@@ -160,11 +160,21 @@ function parseJsonText(value: string, label: TranslationPassLabel) {
     .replace(/^```(?:json)?\s*/iu, "")
     .replace(/\s*```$/u, "")
     .trim();
-  try {
-    return JSON.parse(unfenced) as unknown;
-  } catch {
-    throw new Error(`Machine translation returned invalid ${label} JSON`);
+  const candidates = [unfenced];
+  const objectStart = unfenced.indexOf("{");
+  const objectEnd = unfenced.lastIndexOf("}");
+  if (objectStart >= 0 && objectEnd > objectStart) {
+    candidates.push(unfenced.slice(objectStart, objectEnd + 1));
   }
+  for (const candidate of [...new Set(candidates)]) {
+    try {
+      return JSON.parse(candidate) as unknown;
+    } catch {
+      // Some Workers AI models occasionally wrap an otherwise valid JSON
+      // object in a short natural-language preamble despite JSON Mode.
+    }
+  }
+  throw new Error(`Machine translation returned invalid ${label} JSON`);
 }
 
 function workersAiValue(payload: unknown, label: TranslationPassLabel) {
@@ -193,6 +203,18 @@ function workersAiValue(payload: unknown, label: TranslationPassLabel) {
   }
 
   throw new Error(`Cloudflare Workers AI returned no ${label} output`);
+}
+
+function workersAiRawText(payload: unknown) {
+  if (!payload || typeof payload !== "object") return "";
+  const record = payload as Record<string, unknown>;
+  if (typeof record.response === "string") return record.response.trim();
+  const first = Array.isArray(record.choices) ? record.choices[0] : null;
+  if (!first || typeof first !== "object") return "";
+  const message = (first as Record<string, unknown>).message;
+  if (!message || typeof message !== "object") return "";
+  const content = (message as Record<string, unknown>).content;
+  return typeof content === "string" ? content.trim() : "";
 }
 
 async function openAiStructuredPass(input: {
@@ -275,6 +297,15 @@ function workersAiTokenLimit(model: string, maxOutputTokens: number) {
     : { max_completion_tokens: maxOutputTokens };
 }
 
+function workersAiReasoningEffort(model: string): OpenAiReasoningEffort {
+  return model === "@cf/google/gemma-4-26b-a4b-it" ? "low" : "none";
+}
+
+function workersAiReasoningBudget(model: string) {
+  const effort = workersAiReasoningEffort(model);
+  return effort === "none" ? {} : { reasoning_effort: effort };
+}
+
 async function workersAiStructuredPass(input: {
   ai: WorkersAiBinding;
   model: string;
@@ -293,7 +324,8 @@ async function workersAiStructuredPass(input: {
       ],
       stream: false,
       ...workersAiTokenLimit(input.model, input.maxOutputTokens),
-      temperature: 0.15,
+      ...workersAiReasoningBudget(input.model),
+      temperature: 0,
       response_format: {
         type: "json_schema",
         json_schema: input.schema,
@@ -312,9 +344,24 @@ async function workersAiStructuredPass(input: {
     payload && typeof payload === "object"
       ? (payload as Record<string, unknown>)
       : {};
+  let value: unknown;
+  try {
+    value = workersAiValue(payload, input.label);
+  } catch (error) {
+    const rawText = workersAiRawText(payload);
+    if (input.label !== "translation") throw error;
+    // Preserve a malformed first draft as untrusted repair input. The caller's
+    // validator will reject it and route it through the independent reviewer.
+    // An empty model output is represented as null so the reviewer can rebuild
+    // the translation from SOURCE_DATA without inventing missing context.
+    value = rawText || null;
+  }
+
   return {
-    value: workersAiValue(payload, input.label),
-    model: typeof record.model === "string" ? record.model : input.model,
+    value,
+    // Record the exact requested model. Cloudflare response metadata is not
+    // guaranteed to use the canonical binding identifier on every backend.
+    model: input.model,
     requestId: typeof record.id === "string" ? record.id : null,
     ...usageFromRecord(payload),
   };
@@ -431,7 +478,7 @@ export async function premiumTranslateToEnglish<T>(
       value: finalValue,
       translatorModel: first.model,
       reviewerModel: finalEditorialPass?.model ?? null,
-      translatorReasoningEffort: "none",
+      translatorReasoningEffort: workersAiReasoningEffort(first.model),
       translatorReasoningMode: "standard",
       reviewerReasoningEffort: finalEditorialPass ? "none" : null,
       reviewerReasoningMode: finalEditorialPass ? "standard" : null,

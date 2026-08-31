@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 6,
   "deterministic": true,
-  "sourceFingerprint": "sha256:0675309bc9078ada934613fdfde0b6adbf0a8ca01154e7483b3b44480972510e",
+  "sourceFingerprint": "sha256:e7b1f43413b80305f6715312780020dfa90dc883971d6e07c02f0fd541a3136d",
   "summary": {
     "records": 1740,
     "unchanged": 99,
@@ -11,6 +11,8 @@
   "publication": {
     "corrections": 1573,
     "russianBiographies": 41,
+    "structuredRussianBiographies": 1672,
+    "structuredWorkTitles": 929,
     "excludedQuarantinedCorrectionKeys": [
       "cape_verde:virgilio_de_lemos",
       "comoros:said_ahmed_mohamed",
@@ -18,6 +20,328 @@
       "democratic_republic_of_congo:tshibumba_kanda_matulu"
     ]
   },
+  "workTitleReviewExceptions": [
+    {
+      "key": "armenia:grigor_narekatsi",
+      "title": "Книга скорбных песнопений",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "australia:peter_carey",
+      "title": "Оскар и Люсинда",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "barbados:george_lamming",
+      "title": "В замке моей кожи",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "belgium:amelie_nothomb",
+      "title": "Гигиена убийцы",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "belgium:charles_de_coster",
+      "title": "Легенда об Уленшпигеле",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "belgium:georges_rodenbach",
+      "title": "Мёртвый Брюгге",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "brazil:carlos_drummond_de_andrade",
+      "title": "Роза народа",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "canada:chris_hadfield",
+      "title": "Руководство астронавта по жизни на Земле",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "canada:lucy_maud_montgomery",
+      "title": "Энн из Зелёных крыш",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "canada:margaret_atwood",
+      "title": "Слепой убийца",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "canada:margaret_laurence",
+      "title": "Каменный ангел",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "canada:mordecai_richler",
+      "title": "Ученичество Дадди Кравица",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "canada:northrop_frye",
+      "title": "Анатомия критики",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "canada:yann_martel",
+      "title": "Жизнь Пи",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "cape_verde:jorge_barbosa",
+      "title": "Архипелаг",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "chile:roberto_bolano",
+      "title": "Дикие детективы",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "chile:vicente_huidobro",
+      "title": "Альтазор",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "china:ba_jin",
+      "title": "Семья",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "china:cao_xueqin",
+      "title": "Сон в красном тереме",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "china:chi_ziqiang",
+      "title": "Правый берег Аргуни",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "ecuador:jorge_icaza",
+      "title": "Уасипунго",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "ecuador:juan_leon_mera",
+      "title": "Куманда",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "ecuador:pablo_palacio",
+      "title": "Дебора",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "egypt:bahaa_taher",
+      "title": "Любовь в изгнании",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "egypt:salah_abdel_sabour",
+      "title": "Трагедия аль-Халладжа",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "egypt:sonallah_ibrahim",
+      "title": "Комитет",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:celia_rees",
+      "title": "Пираты",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:graham_greene",
+      "title": "Сила и слава",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:john_milton",
+      "title": "Самсон-борец",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:laurence_sterne",
+      "title": "Жизнь и мнения Тристрама Шенди, джентльмена",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:lee_child",
+      "title": "Этаж смерти",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:lord_byron",
+      "title": "Паломничество Чайльд-Гарольда",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:thomas_more",
+      "title": "Утопия",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "estonia:jaan_kross",
+      "title": "Императорский безумец",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "finland:aleksis_kivi",
+      "title": "Семеро братьев",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "ireland:samuel_beckett",
+      "title": "В ожидании Годо",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "ireland:seamus_heaney",
+      "title": "Смерть натуралиста",
+      "reason": "no-title-specific-supported-claim-evidence"
+    }
+  ],
+  "workTitleEvidenceAliases": [
+    {
+      "key": "bangladesh:jibanananda_das",
+      "russianTitle": "Баналата Сен",
+      "evidenceTitle": "Banalata Sen",
+      "evidenceUrl": "https://en.banglapedia.org/index.php?title=Das%2C_Jibanananda",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "bangladesh:tahmima_anam",
+      "russianTitle": "Золотой век",
+      "evidenceTitle": "A Golden Age",
+      "evidenceUrl": "https://canongate.co.uk/books/1273-a-golden-age/",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "bolivia:nataniel_aguirre",
+      "russianTitle": "Juan de la Rosa: memorias del último soldado de la Independencia",
+      "evidenceTitle": "Juan de la Rosa",
+      "evidenceUrl": "https://www.cervantesvirtual.com/obras/autor/aguirre-nataniel-1843-1888-2794/",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "brazil:manoel_de_barros",
+      "russianTitle": "Хранитель вод",
+      "evidenceTitle": "O guardador das águas",
+      "evidenceUrl": "https://www.bpp.pr.gov.br/Candido/Pagina/Retrato-de-Um-Artista-Manoel-de-Barros",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "cambodia:kram_ngoy",
+      "russianTitle": "Венок новых наставлений",
+      "evidenceTitle": "A Garland of New Advice",
+      "evidenceUrl": "https://www.degruyterbrill.com/document/doi/10.1515/9780824896843-004/pdf?licenseType=free",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "cambodia:nou_hach",
+      "russianTitle": "Увядший цветок",
+      "evidenceTitle": "Phka Srapoun",
+      "evidenceUrl": "https://library.khmerstudies.org/bib/8993",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "cambodia:soth_polin",
+      "russianTitle": "Бессмысленная жизнь",
+      "evidenceTitle": "A Meaningless Life",
+      "evidenceUrl": "https://wordswithoutborders.org/contributors/view/soth-polin/",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "cameroon:ferdinand_oyono",
+      "russianTitle": "Une vie de boy",
+      "evidenceTitle": "Une vie de boy",
+      "evidenceUrl": "https://data.bnf.fr/en/see_all_activities/12170141/page1",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "china:ai_qing",
+      "russianTitle": "К солнцу",
+      "evidenceTitle": "向太阳",
+      "evidenceUrl": "https://www.chinawriter.com.cn/fwzj/wxds/8.shtml",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "dominican_republic:junot_diaz",
+      "russianTitle": "Короткая фантастическая жизнь Оскара Вау",
+      "evidenceTitle": "The Brief Wondrous Life of Oscar Wao",
+      "evidenceUrl": "https://www.pulitzer.org/winners/junot-diaz",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "ecuador:arturo_borja",
+      "russianTitle": "Ониксовая флейта",
+      "evidenceTitle": "La flauta de ónix",
+      "evidenceUrl": "https://casadelacultura.gob.ec/wp-content/uploads/2020/11/casapalabras42.pdf",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "ecuador:eliecer_cardenas",
+      "russianTitle": "Прах и пепел",
+      "evidenceTitle": "Polvo y ceniza",
+      "evidenceUrl": "https://casadelacultura.gob.ec/2025.php/postpublicaciones/trilogia-bandolera/",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "ecuador:pablo_palacio",
+      "russianTitle": "Человек, убитый пинками",
+      "evidenceTitle": "Un hombre muerto a puntapiés",
+      "evidenceUrl": "https://www.uasb.edu.ec/alicia-ortega-participa-en-edicion-de-cuentos-de-pablo-palacio/",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "egypt:salah_abdel_sabour",
+      "russianTitle": "Люди моей страны",
+      "evidenceTitle": "People in My Country",
+      "evidenceUrl": "https://www.bibalex.org/libraries/Presentation/Static/Abdelsabur_eng_1105_ed2.pdf",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "el_salvador:roque_dalton",
+      "russianTitle": "Таверна и другие места",
+      "evidenceTitle": "Taberna y otros lugares",
+      "evidenceUrl": "https://eluniversitario.ues.edu.sv/escritores-salvadorenos-roque-dalton/",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "england:john_galsworthy",
+      "russianTitle": "Серебряная коробка",
+      "evidenceTitle": "Серебряную коробку",
+      "evidenceUrl": "https://www.npg.org.uk/collections/search/person/mp01713/john-galsworthy",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "england:john_le_carre",
+      "russianTitle": "Шпион, пришедший с холода",
+      "evidenceTitle": "The Spy Who Came in from the Cold",
+      "evidenceUrl": "https://johnlecarre.com/biography/",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "estonia:eduard_vilde",
+      "russianTitle": "Молочник из Мяэкюла",
+      "evidenceTitle": "Mäeküla piimamees",
+      "evidenceUrl": "https://ewod.ut.ee/v/eduardvilde/",
+      "checkedAt": "2026-08-09"
+    },
+    {
+      "key": "estonia:friedebert_tuglas",
+      "russianTitle": "Феликс Ормуссон",
+      "evidenceTitle": "Felix Ormusson",
+      "evidenceUrl": "https://ewod.ut.ee/t/friedeberttuglas/",
+      "checkedAt": "2026-08-09"
+    }
+  ],
   "reviewedKeys": [
     "afghanistan:atiq_rahimi",
     "afghanistan:bahauddin_majrooh",

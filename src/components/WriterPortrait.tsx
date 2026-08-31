@@ -21,30 +21,53 @@ export function writerDisplayName(
   return selectWriterDisplayName(writer, language);
 }
 
-export function writerInitials(
-  writer: WriterProfile,
-  language: "ru" | "en" = "ru"
-) {
-  const parts = writerDisplayName(writer, language)
-    .replace(/[^\p{L}\p{N}\s-]/gu, " ")
-    .split(/\s+/u)
-    .filter(Boolean);
-  const selected = parts.length > 1 ? [parts[0], parts[parts.length - 1]] : parts;
-  return (
-    selected
-      .filter((part): part is string => Boolean(part))
-      .slice(0, 2)
-      .map((part) => part[0])
-      .join("")
-      .toLocaleUpperCase("ru") || "ПП"
-  );
-}
-
 function portraitUrl(source?: string) {
   const normalized = source?.trim();
   if (!normalized) return "";
   if (/^(https?:|data:|blob:)/u.test(normalized)) return normalized;
   return `${import.meta.env.BASE_URL}${normalized.replace(/^\/+/, "")}`;
+}
+
+const approvedPortraitRightsStatuses = new Set([
+  "public-domain",
+  "licensed",
+  "permission",
+]);
+
+/**
+ * Runtime publication remains fail-closed even if a partial CMS override
+ * reaches WriterProfile. A portrait is displayable only as a complete,
+ * reviewed rights bundle; a bare URL is never treated as an image approval.
+ */
+export function writerHasApprovedPortrait(writer: WriterProfile): boolean {
+  const rights = writer.portraitRights;
+  const sourceUrl = writer.portraitSourceUrl?.trim() || "";
+
+  if (
+    !writer.portrait?.trim() ||
+    !writer.portraitAlt?.trim() ||
+    !sourceUrl ||
+    !rights ||
+    !approvedPortraitRightsStatuses.has(rights.status) ||
+    !rights.licenseName?.trim() ||
+    !/^\d{4}-\d{2}-\d{2}$/u.test(rights.checkedAt || "") ||
+    rights.sourceUrl?.trim() !== sourceUrl
+  ) {
+    return false;
+  }
+
+  if (
+    rights.status === "licensed" &&
+    (!rights.licenseUrl?.trim() || !rights.creator?.trim())
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+export function approvedWriterPortraitUrl(writer: WriterProfile): string {
+  return writerHasApprovedPortrait(writer) ? portraitUrl(writer.portrait) : "";
 }
 
 export default function WriterPortrait({
@@ -56,7 +79,7 @@ export default function WriterPortrait({
   cmsMarker,
 }: WriterPortraitProps) {
   const { language, t } = useInterfaceLanguage();
-  const source = portraitUrl(writer.portrait);
+  const source = approvedWriterPortraitUrl(writer);
   const [failed, setFailed] = useState(false);
   const name = writerDisplayName(writer, language);
   const hasPortrait = Boolean(source && !failed);
@@ -71,21 +94,12 @@ export default function WriterPortrait({
   return (
     <span
       {...cmsMarker}
-      className={`writer-portrait-media${hasPortrait ? " has-image" : " is-placeholder"}${
+      className={`writer-portrait-media${hasPortrait ? " has-image" : " is-empty"}${
         className ? ` ${className}` : ""
       }`}
       style={style}
-      aria-hidden={decorative || undefined}
-      role={!decorative && !hasPortrait ? "img" : undefined}
-      aria-label={
-        !decorative && !hasPortrait
-          ? `${t("Фирменная заглушка портрета")}: ${name}`
-          : undefined
-      }
+      aria-hidden={decorative || !hasPortrait || undefined}
     >
-      <span className="writer-portrait-initials" aria-hidden="true">
-        {writerInitials(writer, language)}
-      </span>
       {hasPortrait && (
         <img
           src={source}

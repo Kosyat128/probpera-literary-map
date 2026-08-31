@@ -59,6 +59,15 @@ describe("release workflow hardening", () => {
     const derivedLinks = source.indexOf(
       "- name: Regenerate CMS-derived article and book links"
     );
+    const biographyVerification = source.indexOf(
+      "- name: Verify complete writer biography release artifacts"
+    );
+    const finalExport = source.indexOf(
+      "- name: Re-export and freeze the complete CMS publication head"
+    );
+    const frozenVerification = source.indexOf(
+      "- name: Verify the frozen CMS publication snapshot"
+    );
     const fullVerification = source.indexOf(
       "- name: Verify public site and editorial archive"
     );
@@ -67,6 +76,9 @@ describe("release workflow hardening", () => {
     expect(firstExport).toBeGreaterThan(immutableLocks);
     expect(derivedLinks).toBeGreaterThan(firstExport);
     expect(fullVerification).toBeGreaterThan(derivedLinks);
+    expect(finalExport).toBeGreaterThan(fullVerification);
+    expect(biographyVerification).toBeGreaterThan(finalExport);
+    expect(frozenVerification).toBeGreaterThan(biographyVerification);
     expect(source).toContain(
       "run: npx vitest run scripts/lib/stage5-content-data-lock.test.mjs"
     );
@@ -74,6 +86,29 @@ describe("release workflow hardening", () => {
       "npm test -- --exclude scripts/lib/stage5-content-data-lock.test.mjs"
     );
     expect(source).toContain("run: npm run content:link-books");
+    expect(source).toContain("npm run writers:biographies:reviews:check");
+    expect(source).toContain(
+      "npm run writers:biographies:russian:editorial:check"
+    );
+    expect(source).toContain(
+      "npm run writers:biographies:english:paused:check"
+    );
+    expect(source).not.toContain(
+      "npm run writers:biographies:english:check"
+    );
+    const packageScripts = JSON.parse(read("package.json")).scripts;
+    expect(packageScripts["writers:biographies:english:paused:check"]).toContain(
+      "node scripts/check-writer-biography-english-pause.mjs"
+    );
+    expect(packageScripts["release:check"]).toContain(
+      "npm run writers:biographies:english:paused:check"
+    );
+    expect(packageScripts["release:check"]).not.toContain(
+      "npm run writers:biographies:english:check"
+    );
+    expect(packageScripts["writers:biographies:english:check"]).toContain(
+      "node scripts/generate-writer-biography-english-translations.mjs --check"
+    );
     expect(read("scripts/check-public-build-requests.mjs")).toContain(
       "BigInt(deployedId) >= BigInt(maxId)"
     );

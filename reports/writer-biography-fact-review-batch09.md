@@ -275,7 +275,7 @@ Shared country files в партии 09 не изменялись.
 
 1. **corrected** - Сравнительный ранг Роке Дальтона заменён конкретной книгой и наградой; исходная социальная характеристика уточнена через документированные черты его поэзии.
 
-   - [Universidad de El Salvador - El Universitario](https://eluniversitario.ues.edu.sv/escritores-salvadorenos-roque-dalton/), проверено 2026-08-09: Университетская биография называет Дальтона поэтом и эссеистом, фиксирует даты 14 мая 1935 года - 10 мая 1975 года, премию Casa de las Américas 1969 года и сочетание протеста, разговорной речи и иронии в его поэзии.
+   - [Universidad de El Salvador - El Universitario](https://eluniversitario.ues.edu.sv/escritores-salvadorenos-roque-dalton/), проверено 2026-08-09: Университетская биография называет Дальтона поэтом и эссеистом, фиксирует даты 14 мая 1935 года - 10 мая 1975 года, перечисляет книгу Taberna y otros lugares и описывает сочетание протеста, разговорной речи и иронии в его поэзии.
    - [Museo de la Palabra y la Imagen](https://museo.com.sv/wp-content/uploads/2022/04/Trasmallo_8-Roque-Dalton.pdf), проверено 2026-08-09: Музейное издание подтверждает занятия поэта, журналиста и эссеиста, даты жизни и получение премии Casa de las Américas в 1969 году.
    - [Министерство культуры Сальвадора](https://www.cultura.gob.sv/ministerio-de-cultura-celebro-el-dia-nacional-de-la-poesia/), проверено 2026-08-09: Официальный материал подтверждает рождение 14 мая 1935 года и национальное признание литературной работы Дальтона.
 

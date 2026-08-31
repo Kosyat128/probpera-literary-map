@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-09T11:30:33.491Z",
+  "generatedAt": "2026-08-31T19:50:00.726Z",
   "legacyMappingCount": 1278,
   "source": {
     "name": "Wikidata",
     "endpoint": "https://www.wikidata.org/w/api.php",
     "license": "CC0-1.0",
     "licenseUrl": "https://www.wikidata.org/wiki/Wikidata:Licensing",
-    "checkedAt": "2026-08-09"
+    "checkedAt": "2026-08-31"
   },
   "repairedMappings": [
     {
@@ -82,6 +82,1200 @@
       "key": "fiji:satendra_nandan",
       "oldQid": "Q7426104",
       "reason": "The item has an unsupported 1939 birth year and no literary occupation; institutional sources establish the writer Satendra Nandan with a 1944 birth date, but do not safely establish this Wikidata item as the same person."
+    }
+  ],
+  "addedMappings": [
+    {
+      "key": "afghanistan:rabia_balkhi",
+      "wikidataId": "Q469377",
+      "identityRule": "exact-alias-and-literary-role",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q469377",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-literary-role)."
+    },
+    {
+      "key": "albania:fan_noli",
+      "wikidataId": "Q366307",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q366307",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "albania:jeronim_de_rada",
+      "wikidataId": "Q1527077",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1527077",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "angola:ondjaki",
+      "wikidataId": "Q573151",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q573151",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "australia:markus_zusak",
+      "wikidataId": "Q61522",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q61522",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "azerbaijan:imadaddin_nasimi",
+      "wikidataId": "Q982506",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q982506",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "azerbaijan:muhammad_fuzuli",
+      "wikidataId": "Q178379",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q178379",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "bahrain:qassim_haddad",
+      "wikidataId": "Q6829735",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q6829735",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "belarus:francisak_bahushevich",
+      "wikidataId": "Q2996666",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2996666",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "belarus:vasil_bykau",
+      "wikidataId": "Q335794",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q335794",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity registry entry for the already published Vasil Bykaŭ portrait."
+    },
+    {
+      "key": "belarus:vintsent_dunin_martsinkevich",
+      "wikidataId": "Q3008609",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3008609",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "bhutan:dzongsar_khyentse",
+      "wikidataId": "Q730984",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q730984",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "bhutan:ngawang_namgyal",
+      "wikidataId": "Q337583",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q337583",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "brazil:goncalves_dias",
+      "wikidataId": "Q611997",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q611997",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "brazil:joao_guimaraes_rosa",
+      "wikidataId": "Q13012",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q13012",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "chile:marta_brunet",
+      "wikidataId": "Q275648",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q275648",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "china:chi_ziqiang",
+      "wikidataId": "Q8939649",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q8939649",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "cyprus:kyriakos_charalambous",
+      "wikidataId": "Q1362794",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1362794",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "cyprus:nikos_nikolaidis",
+      "wikidataId": "Q7030511",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q7030511",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "czechia:karel_capek",
+      "wikidataId": "Q155855",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q155855",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "democratic_republic_of_congo:v_y_mudimbe",
+      "wikidataId": "Q3056528",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3056528",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "djibouti:abdourahman_waberi",
+      "wikidataId": "Q308454",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q308454",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "ecuador:demetrio_aguilera_malta",
+      "wikidataId": "Q1185444",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1185444",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "ecuador:jorge_icaza",
+      "wikidataId": "Q961263",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q961263",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "ecuador:lupe_rumazo",
+      "wikidataId": "Q16094140",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q16094140",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "england:bertrand_russell",
+      "wikidataId": "Q33760",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q33760",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "england:david_mitchell",
+      "wikidataId": "Q40479",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q40479",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "england:h_g_wells",
+      "wikidataId": "Q42511",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q42511",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "england:john_fowles",
+      "wikidataId": "Q214660",
+      "identityRule": "exact-alias-and-literary-role",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q214660",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-literary-role)."
+    },
+    {
+      "key": "england:percy_shelley",
+      "wikidataId": "Q93343",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q93343",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "england:rudyard_kipling",
+      "wikidataId": "Q34743",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q34743",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "ethiopia:kebede_michael",
+      "wikidataId": "Q3194578",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3194578",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "fiji:subramani",
+      "wikidataId": "Q104141417",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q104141417",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "france:beaumarchais",
+      "wikidataId": "Q70326",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q70326",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "france:francois_mauriac",
+      "wikidataId": "Q81685",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q81685",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "france:louis_ferdinand_celine",
+      "wikidataId": "Q151820",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q151820",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "france:marie_de_france",
+      "wikidataId": "Q5617",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q5617",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "france:montesquieu",
+      "wikidataId": "Q15975",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q15975",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "french_guiana:leon_gontran_damas",
+      "wikidataId": "Q983363",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q983363",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "germany:paul_heyse",
+      "wikidataId": "Q76487",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q76487",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "ghana:joseph_casely_hayford",
+      "wikidataId": "Q327522",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q327522",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "india:amit_chaudhuri",
+      "wikidataId": "Q472352",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q472352",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "india:mirabai",
+      "wikidataId": "Q466330",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q466330",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "india:munshi_premchand",
+      "wikidataId": "Q174152",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q174152",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "india:r_k_narayan",
+      "wikidataId": "Q334252",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q334252",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "ireland:james_joyce",
+      "wikidataId": "Q6882",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q6882",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity registry entry for the already published James Joyce portrait."
+    },
+    {
+      "key": "israel:david_grossman",
+      "wikidataId": "Q160263",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q160263",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "japan:akutagawa_ryunosuke",
+      "wikidataId": "Q186326",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q186326",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "japan:ishikawa_takuboku",
+      "wikidataId": "Q467747",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q467747",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "japan:kataoka_teppei",
+      "wikidataId": "Q1735602",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1735602",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "japan:kawabata_yasunari",
+      "wikidataId": "Q43736",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q43736",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity registry entry for the already published Yasunari Kawabata portrait."
+    },
+    {
+      "key": "japan:tanizaki_junichiro",
+      "wikidataId": "Q316213",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q316213",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "japan:yosano_akiko",
+      "wikidataId": "Q464104",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q464104",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "jordan:ghalib_halasa",
+      "wikidataId": "Q1521332",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1521332",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "kazakhstan:olzhas_suleimenov",
+      "wikidataId": "Q2628409",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2628409",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "kazakhstan:ybyrai_altynsarin",
+      "wikidataId": "Q2628401",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2628401",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "kenya:grace_ogot",
+      "wikidataId": "Q469641",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q469641",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "kyrgyzstan:chyngyz_aitmatov",
+      "wikidataId": "Q484292",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q484292",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "lebanon:khalil_gibran",
+      "wikidataId": "Q47737",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q47737",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "liberia:wilton_sankawulo",
+      "wikidataId": "Q888828",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q888828",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "libya:ahmed_rafiq_al_mahdaoui",
+      "wikidataId": "Q4695975",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q4695975",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "madagascar:jean_joseph_rabearivelo",
+      "wikidataId": "Q671601",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q671601",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "malaysia:kemala",
+      "wikidataId": "Q4072987",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q4072987",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "marshall_islands:kathy_jetnil_kijiner",
+      "wikidataId": "Q42883452",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q42883452",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "mexico:elena_poniatowska",
+      "wikidataId": "Q261397",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q261397",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "mexico:guadalupe_nettel",
+      "wikidataId": "Q3118678",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3118678",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "montenegro:nikola_i_petrovic",
+      "wikidataId": "Q283255",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q283255",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "morocco:fatima_mernissi",
+      "wikidataId": "Q242376",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q242376",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "nepal:bp_koirala",
+      "wikidataId": "Q560515",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q560515",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "netherlands:betje_wolff",
+      "wikidataId": "Q183007",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q183007",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "new_zealand:allen_curnow",
+      "wikidataId": "Q1463635",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1463635",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "new_zealand:bill_manhire",
+      "wikidataId": "Q4910026",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q4910026",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "new_zealand:bruce_mason",
+      "wikidataId": "Q4977964",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q4977964",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "new_zealand:c_k_stead",
+      "wikidataId": "Q559631",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q559631",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "new_zealand:elizabeth_knox",
+      "wikidataId": "Q5363083",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q5363083",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "new_zealand:fiona_kidman",
+      "wikidataId": "Q3072714",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3072714",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "new_zealand:jane_mander",
+      "wikidataId": "Q6152520",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q6152520",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "new_zealand:patricia_grace",
+      "wikidataId": "Q138882",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q138882",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "nicaragua:gioconda_belli",
+      "wikidataId": "Q290491",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q290491",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "nigeria:d_o_fagunwa",
+      "wikidataId": "Q382128",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q382128",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "niue:john_pule",
+      "wikidataId": "Q1222678",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1222678",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "north_korea:paek_nam_nyong",
+      "wikidataId": "Q2878832",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2878832",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "norway:jon_fosse",
+      "wikidataId": "Q443868",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q443868",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "oman:jokha_alharthi",
+      "wikidataId": "Q6269767",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q6269767",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "panama:rogelio_sinan",
+      "wikidataId": "Q9070378",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q9070378",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "paraguay:gabriel_casaccia",
+      "wikidataId": "Q2639230",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2639230",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "peru:mario_bellatin",
+      "wikidataId": "Q2156253",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2156253",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "philippines:edith_tiempo",
+      "wikidataId": "Q2577431",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2577431",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "poland:wladyslaw_reymont",
+      "wikidataId": "Q121180",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q121180",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "portugal:eca_de_queiros",
+      "wikidataId": "Q316327",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q316327",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "republic_of_congo:jean_baptiste_tati_loutard",
+      "wikidataId": "Q1541759",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1541759",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "russia:afanasiy_fet",
+      "wikidataId": "Q314212",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q314212",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Afanasy Fet portrait."
+    },
+    {
+      "key": "russia:alexander_kuprin",
+      "wikidataId": "Q271457",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q271457",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Alexander Kuprin portrait."
+    },
+    {
+      "key": "russia:alexander_tvardovsky",
+      "wikidataId": "Q362828",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q362828",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Alexander Tvardovsky portrait."
+    },
+    {
+      "key": "russia:andrei_bely",
+      "wikidataId": "Q212632",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q212632",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Andrei Bely portrait."
+    },
+    {
+      "key": "russia:andrei_platonov",
+      "wikidataId": "Q315147",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q315147",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Andrei Platonov portrait."
+    },
+    {
+      "key": "russia:avvakum",
+      "wikidataId": "Q318473",
+      "identityRule": "curated-authoritative-source-and-wikidata",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q318473",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Avvakum portrait."
+    },
+    {
+      "key": "russia:fyodor_tyutchev",
+      "wikidataId": "Q37217",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q37217",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Fyodor Tyutchev portrait."
+    },
+    {
+      "key": "russia:maxim_gorky",
+      "wikidataId": "Q12706",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q12706",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Maxim Gorky portrait."
+    },
+    {
+      "key": "russia:mikhail_zoshchenko",
+      "wikidataId": "Q360507",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q360507",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "russia:pelevin",
+      "wikidataId": "Q246722",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q246722",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "russia:robert_shtilmark",
+      "wikidataId": "Q4526879",
+      "identityRule": "exact-alias-and-literary-role",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q4526879",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-literary-role)."
+    },
+    {
+      "key": "russia:varlam_shalamov",
+      "wikidataId": "Q220816",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q220816",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Varlam Shalamov portrait."
+    },
+    {
+      "key": "russia:vasily_grossman",
+      "wikidataId": "Q313767",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q313767",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Vasily Grossman portrait."
+    },
+    {
+      "key": "russia:vladimir_mayakovsky",
+      "wikidataId": "Q132964",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q132964",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Vladimir Mayakovsky portrait."
+    },
+    {
+      "key": "russia:yevgeny_zamyatin",
+      "wikidataId": "Q204868",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q204868",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity mapping for a rights-checked Yevgeny Zamyatin portrait."
+    },
+    {
+      "key": "sao_tome_and_principe:alda_do_espirito_santo",
+      "wikidataId": "Q457401",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q457401",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "singapore:edwin_thumboo",
+      "wikidataId": "Q3048818",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3048818",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "south_africa:eskia_mphahlele",
+      "wikidataId": "Q1372674",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1372674",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "south_africa:jm_coetzee",
+      "wikidataId": "Q43293",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q43293",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "south_africa:sol_plaatje",
+      "wikidataId": "Q2143151",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2143151",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "south_korea:il_yeon",
+      "wikidataId": "Q484286",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q484286",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "spain:jose_echegaray",
+      "wikidataId": "Q127349",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q127349",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "spain:vicente_aleixandre",
+      "wikidataId": "Q134644",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q134644",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "sudan:taj_el_sir",
+      "wikidataId": "Q4746645",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q4746645",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "sudan:tayeb_salih",
+      "wikidataId": "Q561434",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q561434",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "sweden:august_strindberg",
+      "wikidataId": "Q7724",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q7724",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity registry entry for the already published August Strindberg portrait."
+    },
+    {
+      "key": "sweden:harry_martinson",
+      "wikidataId": "Q132695",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q132695",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "sweden:stieg_larsson",
+      "wikidataId": "Q186317",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q186317",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "sweden:tomas_transtromer",
+      "wikidataId": "Q42122",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q42122",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "switzerland:carl_spitteler",
+      "wikidataId": "Q226525",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q226525",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "taiwan:zhong_lihe",
+      "wikidataId": "Q700821",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q700821",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "tajikistan:fazliddin_muhammadiev",
+      "wikidataId": "Q94409975",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q94409975",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "tunisia:aboul_qacem_echebbi",
+      "wikidataId": "Q335543",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q335543",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "turkmenistan:mollanepes",
+      "wikidataId": "Q12554314",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q12554314",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the verified identity registry entry for the already published Mollanepes portrait."
+    },
+    {
+      "key": "uae:habib_al_sayegh",
+      "wikidataId": "Q12207054",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q12207054",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "uae:ousha_al_suwaidi",
+      "wikidataId": "Q7111346",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q7111346",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "ukraine:ivan_kotliarevsky",
+      "wikidataId": "Q455246",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q455246",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "uruguay:claudia_amenedo",
+      "wikidataId": "Q1532132",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1532132",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "uruguay:emilio_frugoni",
+      "wikidataId": "Q166298",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q166298",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "uruguay:jose_enrique_rodo",
+      "wikidataId": "Q734054",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q734054",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "uruguay:mario_levrero",
+      "wikidataId": "Q3293478",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q3293478",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "uruguay:silvia_lago",
+      "wikidataId": "Q1324172",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1324172",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "usa:chuck_palahniuk",
+      "wikidataId": "Q268181",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q268181",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "usa:dennis_lehane",
+      "wikidataId": "Q311744",
+      "identityRule": "exact-alias-and-literary-role",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q311744",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-literary-role)."
+    },
+    {
+      "key": "usa:dr_seuss",
+      "wikidataId": "Q298685",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q298685",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "usa:john_irving",
+      "wikidataId": "Q310379",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q310379",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "usa:louise_gluck",
+      "wikidataId": "Q2344210",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q2344210",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "usa:mario_puzo",
+      "wikidataId": "Q182870",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q182870",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "usa:michael_connelly",
+      "wikidataId": "Q313193",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q313193",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "usa:paul_auster",
+      "wikidataId": "Q214642",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q214642",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "usa:pearl_s_buck",
+      "wikidataId": "Q80900",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q80900",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "usa:richard_matheson",
+      "wikidataId": "Q325130",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q325130",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "usa:thomas_harris",
+      "wikidataId": "Q313377",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q313377",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "usa:tom_clancy",
+      "wikidataId": "Q105167",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q105167",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "usa:vladimir_nabokov",
+      "wikidataId": "Q36591",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q36591",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "uzbekistan:mahmudhoja_behbudi",
+      "wikidataId": "Q1884979",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1884979",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
+    },
+    {
+      "key": "venezuela:eugenio_montejo",
+      "wikidataId": "Q336535",
+      "identityRule": "exact-label-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q336535",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-label-and-birth-year)."
+    },
+    {
+      "key": "vietnam:vu_trong_phung",
+      "wikidataId": "Q1611010",
+      "identityRule": "exact-alias-and-birth-year",
+      "sourceUrl": "https://www.wikidata.org/wiki/Q1611010",
+      "checkedAt": "2026-08-31",
+      "reason": "Adds the resolver-confirmed Wikidata identity mapping from the fail-closed 2026-08-31 refresh (exact-alias-and-birth-year)."
     }
   ],
   "stalePortraitKeys": [

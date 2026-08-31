@@ -18,6 +18,17 @@ const country = {
       id: "writer",
       name: "Исходное имя",
       bio: "Исходная биография",
+      portrait: "assets/writer-portraits/q1.webp",
+      portraitAlt: "Проверенный портрет писателя",
+      portraitSourceUrl: "https://commons.wikimedia.org/wiki/File:Writer.jpg",
+      portraitRights: {
+        status: "public-domain",
+        licenseName: "Public Domain Mark 1.0",
+        licenseUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+        creator: "Проверенный автор",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Writer.jpg",
+        checkedAt: "2026-08-31",
+      },
     },
   ],
 } as Country;
@@ -103,6 +114,30 @@ describe("CMS editorial overrides", () => {
       updated.writers[0].biographyTranslations?.en?.method
     ).toBe("machine-translation");
     expect(country.writers[0].name).toBe("Исходное имя");
+  });
+
+  it("ignores legacy CMS portrait fields and keeps the audited bundle intact", () => {
+    const unsafeOverride = {
+      "test-country:writer": {
+        portrait: "https://example.org/replacement.jpg",
+        portraitAlt: "Непроверенная подпись",
+        portraitSourceUrl: "https://example.org/source",
+        portraitRights: {
+          status: "licensed",
+          sourceUrl: "https://example.org/different-source",
+        },
+      },
+    } as unknown as Parameters<typeof applyCmsWriterProfileOverrides>[1];
+
+    const [updated] = applyCmsWriterProfileOverrides([country], unsafeOverride);
+    expect(updated.writers[0].portrait).toBe(country.writers[0].portrait);
+    expect(updated.writers[0].portraitAlt).toBe(country.writers[0].portraitAlt);
+    expect(updated.writers[0].portraitSourceUrl).toBe(
+      country.writers[0].portraitSourceUrl
+    );
+    expect(updated.writers[0].portraitRights).toEqual(
+      country.writers[0].portraitRights
+    );
   });
 
   it("converts a published bilingual CMS work into the canonical archive shape", () => {

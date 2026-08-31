@@ -656,7 +656,7 @@ const writerBiographyFactReviewBatch09Base: readonly Omit<
           evidence(
             "Universidad de El Salvador - El Universitario",
             "https://eluniversitario.ues.edu.sv/escritores-salvadorenos-roque-dalton/",
-            "Университетская биография называет Дальтона поэтом и эссеистом, фиксирует даты 14 мая 1935 года - 10 мая 1975 года, премию Casa de las Américas 1969 года и сочетание протеста, разговорной речи и иронии в его поэзии.",
+            "Университетская биография называет Дальтона поэтом и эссеистом, фиксирует даты 14 мая 1935 года - 10 мая 1975 года, перечисляет книгу Taberna y otros lugares и описывает сочетание протеста, разговорной речи и иронии в его поэзии.",
           ),
           evidence(
             "Museo de la Palabra y la Imagen",

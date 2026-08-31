@@ -9,6 +9,7 @@ interface __BaseEnv_AdminCloudflareBindings {
 	NEXT_PUBLIC_SITE_URL: "https://probpera.ru";
 	ADMIN_ALLOWED_ORIGINS: "admin.probpera.ru";
 	PREMIUM_TRANSLATION_PROVIDER: "cloudflare";
+	OPENAI_AUTO_TRANSLATE_PROFILES: "false";
 }
 declare namespace Cloudflare {
 	interface Env extends __BaseEnv_AdminCloudflareBindings {}
@@ -18,5 +19,5 @@ type StringifyValues<EnvType extends Record<string, unknown>> = {
 	[Binding in keyof EnvType]: EnvType[Binding] extends string ? EnvType[Binding] : string;
 };
 declare namespace NodeJS {
-	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "ADMIN_BASE_PATH" | "NEXT_PUBLIC_ADMIN_URL" | "NEXT_PUBLIC_SITE_URL" | "ADMIN_ALLOWED_ORIGINS" | "PREMIUM_TRANSLATION_PROVIDER">> {}
+	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "ADMIN_BASE_PATH" | "NEXT_PUBLIC_ADMIN_URL" | "NEXT_PUBLIC_SITE_URL" | "ADMIN_ALLOWED_ORIGINS" | "PREMIUM_TRANSLATION_PROVIDER" | "OPENAI_AUTO_TRANSLATE_PROFILES">> {}
 }

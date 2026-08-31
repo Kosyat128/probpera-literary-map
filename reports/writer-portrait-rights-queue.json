@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-08-31T22:54:30.627Z",
+  "source": "src/data/countries/index.ts#countries",
+  "queue": "data/writer-portrait-rights-queue.json",
+  "policy": {
+    "finalStatus": "licensed",
+    "allowedStatuses": [
+      "commons-search",
+      "permission-needed",
+      "permission-received",
+      "licensed"
+    ],
+    "worldwideRightsRequired": true,
+    "immutableEvidenceRequired": true,
+    "identityEvidenceRequired": true,
+    "stagedAssetSha256Required": true,
+    "aiGeneratedLikenessesAllowed": false,
+    "acceptedMediaKind": "photograph",
+    "unlicensedPresentation": "photo-not-published"
+  },
+  "summary": {
+    "queueEntries": 699,
+    "expectedNoPortraitWriters": 663,
+    "statusCounts": {
+      "commons-search": 663,
+      "permission-needed": 0,
+      "permission-received": 0,
+      "licensed": 36
+    },
+    "completeRightsBundles": 36,
+    "readyForPublication": 36,
+    "approvalLedgerEntries": 36,
+    "invalidEntries": 0
+  },
+  "issues": []
+}

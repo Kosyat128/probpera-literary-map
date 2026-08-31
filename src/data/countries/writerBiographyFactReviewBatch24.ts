@@ -299,7 +299,7 @@ const writerBiographyFactReviewBatch24Base = [
       textRu: "Джон ле Карре - псевдоним британского писателя и бывшего сотрудника спецслужб Дэвида Джона Мура Корнуэлла; он написал два названных шпионских романа и цикл произведений с Джорджем Смайли.",
       verdict: "corrected",
       evidence: [
-        { provider: "John le Carré - official website", url: "https://johnlecarre.com/biography/", checkedAt, findingRu: "Официальная биография подтверждает настоящее имя, псевдоним, службу Корнуэлла в MI5 и MI6, а также авторство романов о Джордже Смайли." },
+        { provider: "John le Carré - official website", url: "https://johnlecarre.com/biography/", checkedAt, findingRu: "Официальная биография подтверждает настоящее имя, псевдоним и службу Корнуэлла в британском МИД, а также прямо перечисляет роман The Spy Who Came in from the Cold (1963)." },
         { provider: "Bodleian Libraries, University of Oxford", url: "https://archives.bodleian.ox.ac.uk/repositories/2/resources/14397", checkedAt, findingRu: "Архивное описание Бодлианской библиотеки независимо подтверждает идентичность автора, годы жизни, карьеру и состав рукописного наследия." },
       ],
     }],

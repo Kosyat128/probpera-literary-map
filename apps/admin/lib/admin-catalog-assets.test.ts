@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 
+import { archiveEditorialCatalogCountries } from "../../../scripts/archive-source";
+
 import {
   readAdminCatalogText,
   type AdminCatalogNamespace,
@@ -44,6 +46,102 @@ describe("private admin catalog assets", () => {
         0
       )
     ).toBe(1_684);
+  });
+
+  it("exports every structured writer biography without catalog loss", async () => {
+    const catalog = await loadEditorialCatalog({ namespace: null });
+    const expected = new Map(
+      archiveEditorialCatalogCountries.flatMap((country) =>
+        country.writers.map((writer) => [
+          `${country.id}:${writer.id}`,
+          writer.biographyTranslations,
+        ] as const)
+      )
+    );
+    const actual = new Map(
+      catalog.countries.flatMap((country) =>
+        country.writers.map((writer) => [
+          `${country.id}:${writer.id}`,
+          writer.fields.biographyTranslations,
+        ] as const)
+      )
+    );
+
+    expect(expected.size).toBe(1_684);
+    expect(actual.size).toBe(expected.size);
+    for (const [key, translations] of expected) {
+      expect(translations, `${key} must have structured biographies`).toBeTruthy();
+      expect(translations?.ru, `${key} must have structured RU`).toBeTruthy();
+      expect(actual.get(key), `${key} must be present in the closed catalog`).toEqual(
+        translations
+      );
+    }
+  });
+
+  it("rejects a catalog that drops its required structured Russian biography", async () => {
+    const source = JSON.parse(
+      await readAdminCatalogText("editorial-catalog.json", { namespace: null })
+    );
+    const target = source.countries
+      .flatMap((country: { writers?: unknown[] }) => country.writers ?? [])
+      .find(
+        (writer: unknown): writer is {
+          fields: { biographyTranslations: { ru: unknown; en?: unknown } };
+        } =>
+          typeof writer === "object" &&
+          writer !== null &&
+          "fields" in writer &&
+          typeof writer.fields === "object" &&
+          writer.fields !== null &&
+          "biographyTranslations" in writer.fields &&
+          typeof writer.fields.biographyTranslations === "object" &&
+          writer.fields.biographyTranslations !== null &&
+          "ru" in writer.fields.biographyTranslations &&
+          Boolean(writer.fields.biographyTranslations.ru)
+      );
+    expect(
+      target,
+      "checked-in catalog must contain a writer with structured RU before mutation"
+    ).toBeDefined();
+    if (!target) return;
+
+    delete target.fields.biographyTranslations.ru;
+    expect(() => parseEditorialCatalog(JSON.stringify(source))).toThrow(
+      "missing structured RU"
+    );
+  });
+
+  it("accepts RU-only biographies and preserves optional valid English", async () => {
+    const source = JSON.parse(
+      await readAdminCatalogText("editorial-catalog.json", { namespace: null })
+    );
+    const writers = source.countries.flatMap(
+      (country: { writers?: unknown[] }) => country.writers ?? []
+    ) as Array<{
+      id: string;
+      fields: { biographyTranslations?: { ru?: unknown; en?: unknown } };
+    }>;
+    const withEnglish = writers.find(
+      (writer) => writer.fields.biographyTranslations?.en
+    );
+    const russianOnly = writers.find(
+      (writer) =>
+        writer.fields.biographyTranslations?.ru &&
+        !writer.fields.biographyTranslations?.en
+    );
+
+    expect(withEnglish).toBeDefined();
+    expect(russianOnly).toBeDefined();
+    const parsed = parseEditorialCatalog(JSON.stringify(source));
+    const parsedWriters = parsed.countries.flatMap((country) => country.writers);
+    expect(
+      parsedWriters.find((writer) => writer.id === withEnglish?.id)?.fields
+        .biographyTranslations
+    ).toEqual(withEnglish?.fields.biographyTranslations);
+    expect(
+      parsedWriters.find((writer) => writer.id === russianOnly?.id)?.fields
+        .biographyTranslations
+    ).toEqual(russianOnly?.fields.biographyTranslations);
   });
 
   it("rejects duplicate editorial country ids", () => {

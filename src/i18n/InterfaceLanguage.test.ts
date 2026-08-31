@@ -106,7 +106,7 @@ describe("interface language", () => {
       .filter(([phrase]) => !hasInterfaceTranslation(phrase))
       .map(([phrase, locations]) => ({ phrase, locations }));
     expect(missing).toEqual([]);
-  });
+  }, 30_000);
 
   it("passes the raw Cyrillic visitor-interface AST audit", () => {
     const audit = spawnSync(

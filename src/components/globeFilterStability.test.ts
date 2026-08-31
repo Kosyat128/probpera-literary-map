@@ -31,6 +31,12 @@ describe("globe filter stability wiring", () => {
     expect(appSource).toContain("data-atlas-archives-toggle");
     expect(appSource).toContain("largestArchiveCountries.map");
     expect(appSource).not.toContain('className="atlas-ranking"');
+    expect(appSource).toContain(
+      'selectWriterBiography(writer, "ru")?.status === "verified"'
+    );
+    expect(appSource).not.toContain(
+      'writer.editorial?.status === "verified"'
+    );
   });
 
   it("keeps filters and the archive disclosure in one overflow-safe row", () => {

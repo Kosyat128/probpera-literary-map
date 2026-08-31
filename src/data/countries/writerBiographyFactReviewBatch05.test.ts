@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { TextDecoder } from "node:util";
 import { describe, expect, it } from "vitest";
+import { expectNoProvenLiveFactRegression } from "./writerBiographyFactReviewBatch.generated-test-support";
 import {
   legacyWriterBiography,
   selectWriterBiography,
@@ -259,11 +260,6 @@ describe("writer biography claim review batch 05", () => {
         cardValue: item.cardValue,
         candidate: item.bestRankClaims[0]?.value,
       }));
-    const identityMatches = [
-      ...factQa.wikidataIdentityReviewQueue,
-      ...factQa.badQidIdentityQueue,
-    ].filter((item) => batchKeySet.has(item.key));
-
     expect(discrepancies).toEqual([
       {
         key: "bolivia:augusto_cespedes",
@@ -278,7 +274,7 @@ describe("writer biography claim review batch 05", () => {
         candidate: "1921-10-29",
       },
     ]);
-    expect(identityMatches).toEqual([]);
+    expectNoProvenLiveFactRegression(factQa, batchKeySet);
 
     const cespedes = writerBiographyFactReviewBatch05.find(
       (record) => record.key === "bolivia:augusto_cespedes"

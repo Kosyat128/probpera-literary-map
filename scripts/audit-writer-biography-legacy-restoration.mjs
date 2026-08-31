@@ -14,6 +14,10 @@ const bundlePath = path.join(
   "writer-biography-legacy-restoration-source.mjs"
 );
 const reportDirectory = path.join(projectRoot, "reports");
+const factQaReportPath = path.join(
+  reportDirectory,
+  "writer-biography-fact-qa.json"
+);
 const stagingPath = path.join(
   projectRoot,
   "src",
@@ -237,6 +241,7 @@ const distinctLegacyWriterIds = new Set(
   legacyWithheld.map((record) => record.writer.id)
 ).size;
 const staging = await stagingSummary(records);
+const factQaReport = JSON.parse(await readFile(factQaReportPath, "utf8"));
 const legacyCorrections = source.writerBiographyLegacyCorrections;
 const quarantinedIdentities = source.quarantinedWriterIdentities;
 const identityCorrections = source.writerIdentityCorrections;
@@ -265,19 +270,42 @@ const summary = {
   identityRecordsRepairedFromAuthoritativeSources:
     identityCorrections.length,
   newlyPromotedToReviewedOrVerified: 0,
+  legacyMigrationClosed:
+    records.length > 0 &&
+    gatePassingRussian.length === records.length &&
+    legacyWithheld.length === 0,
+  safeToDescribeLegacyMigrationAsComplete:
+    records.length > 0 &&
+    gatePassingRussian.length === records.length &&
+    legacyWithheld.length === 0,
   safeToDescribeAsAllFactChecked: false,
+  safeToDescribeAsAllFactCheckedFromThisAuditAlone: false,
 };
 
 const report = {
-  version: 2,
+  version: 3,
   generatedAt: new Date().toISOString(),
   scope: {
     booksTouched: false,
     strictPublicationGateChanged: false,
     purpose:
-      `Inventory and risk classification of stored Russian writer biographies; this is not factual verification of ${records.length} public cards.`,
+      `Closure audit for legacy Russian biography fallback and strict RU publication coverage across ${records.length} public cards. It does not independently verify every prose claim.`,
   },
   summary,
+  relatedFactQa: {
+    report: "reports/writer-biography-fact-qa.json",
+    sourceFingerprint: factQaReport.sourceFingerprint,
+    writerCards: factQaReport.summary?.writerCards ?? null,
+    biographiesPresent: factQaReport.summary?.biographiesPresent ?? null,
+    concreteContradictionIssues:
+      factQaReport.summary?.concreteContradictionIssues ?? null,
+    calendarOrSourceDiscrepancyIssues:
+      factQaReport.summary?.calendarOrSourceDiscrepancyIssues ?? null,
+    recordsNeedingHumanClaimSources:
+      factQaReport.summary?.recordsNeedingHumanClaimSources ?? null,
+    boundary: factQaReport.scope?.statement ?? null,
+    safeConclusion: factQaReport.automationBoundary?.safeConclusion ?? null,
+  },
   provenance: {
     structuredRussianBiographyRecords: gatePassingRussian.length,
     gatePassingRussianWithNamedReviewer: gatePassingRussian.filter(
@@ -293,7 +321,9 @@ const report = {
       legacyWithheld.length - legacyWithWriterLevelSources.length,
     legacyOnlyWithRecordedCreationMethod: 0,
     rightsStatus:
-      "Unproven for every withheld legacy text. This means the repository lacks a sufficient record; it is not a legal finding of infringement.",
+      legacyWithheld.length === 0
+        ? "Not applicable to the current public corpus: no biography is withheld behind the legacy-only fallback."
+        : "Unproven for every withheld legacy text. This means the repository lacks a sufficient record; it is not a legal finding of infringement.",
     staging,
   },
   automatedQualitySignals: {
@@ -375,8 +405,11 @@ const report = {
     ],
     gatePassingBehavior:
       "Published locale-exact translation remains first choice and keeps its recorded status and sources.",
+    currentLegacyRecordsDisplayed: qualityScreenedLegacy.length,
     legacyBehavior:
-      "Russian-only, non-generic legacy text is internally classified for QA with factCheck/provenance/rights all explicitly not recorded. Public views render the prose without any status marker.",
+      legacyWithheld.length === 0
+        ? "Dormant safety fallback only: every current public card passes the strict RU gate, so no legacy-only biography is displayed."
+        : "Russian-only, non-generic legacy text is internally classified for QA with factCheck/provenance/rights all explicitly not recorded. Public views render the prose without any status marker.",
     englishFallback: false,
     knownGenericDisplayed: false,
     verifiedBadgeReuseForLegacy: false,
@@ -444,7 +477,7 @@ const report = {
       },
     ],
     warning:
-      "These two field-level spot checks validate the workflow, not the remaining corpus and not every sentence in either biography.",
+      "Historical method sample only. Current corpus-wide contradiction triage is tracked separately in reports/writer-biography-fact-qa.json; neither report alone is a claim-by-claim factual certification.",
   },
   researchPlan: {
     initialWorkItems: distinctLegacyWriterIds,
@@ -483,9 +516,18 @@ const report = {
     sourceRule:
       "Authority records establish identity and dates, not literary interpretation. National libraries, literary museums, estates, academies and official prize archives are selected claim by claim. Source prose is not copied.",
     effortEstimate: {
-      personHours: { minimum: 1450, maximum: 2100 },
-      sixHourEditorDays: { minimum: 242, maximum: 350 },
-      fourPersonFiveDayWeeks: { minimum: 13, maximum: 18 },
+      personHours:
+        distinctLegacyWriterIds === 0
+          ? { minimum: 0, maximum: 0 }
+          : { minimum: 1450, maximum: 2100 },
+      sixHourEditorDays:
+        distinctLegacyWriterIds === 0
+          ? { minimum: 0, maximum: 0 }
+          : { minimum: 242, maximum: 350 },
+      fourPersonFiveDayWeeks:
+        distinctLegacyWriterIds === 0
+          ? { minimum: 0, maximum: 0 }
+          : { minimum: 13, maximum: 18 },
       includedWork:
         "Identity resolution, claim-by-claim source checking, minimal factual/Russian-language corrections, independent review and provenance entry.",
       excludedWork:

@@ -2,6 +2,10 @@ import {
   readAdminCatalogText,
   type AdminCatalogReadOptions,
 } from "./admin-catalog-assets";
+import { parseStoredWriterBiographyTranslations } from "./writer-biography-edit";
+
+const EXPECTED_COUNTRY_COUNT = 200;
+const EXPECTED_WRITER_COUNT = 1_684;
 
 export type EditorialCatalogWriter = {
   id: string;
@@ -85,6 +89,26 @@ export function parseEditorialCatalog(source: string): EditorialCatalog {
           `Editorial catalog writer has invalid fields: ${id}/${writerId}`
         );
       }
+      const biographyTranslations = objectValue(
+        writerFields.biographyTranslations
+      );
+      const biographies = parseStoredWriterBiographyTranslations(
+        writerFields.biographyTranslations
+      );
+      if (!biographies.ru) {
+        throw new Error(
+          `Editorial catalog writer is missing structured RU: ${id}/${writerId}`
+        );
+      }
+      if (
+        biographyTranslations?.en !== undefined &&
+        biographyTranslations.en !== null &&
+        !biographies.en
+      ) {
+        throw new Error(
+          `Editorial catalog writer has invalid structured EN: ${id}/${writerId}`
+        );
+      }
       return {
         id: writerId,
         label: requiredText(writer.label, "writer label"),
@@ -99,8 +123,19 @@ export function parseEditorialCatalog(source: string): EditorialCatalog {
     };
   });
 
-  if (countries.length < 100) {
-    throw new Error("Editorial catalog is unexpectedly incomplete");
+  if (countries.length !== EXPECTED_COUNTRY_COUNT) {
+    throw new Error(
+      `Editorial catalog has ${countries.length} countries; expected ${EXPECTED_COUNTRY_COUNT}`
+    );
+  }
+  const writerCount = countries.reduce(
+    (total, country) => total + country.writers.length,
+    0
+  );
+  if (writerCount !== EXPECTED_WRITER_COUNT) {
+    throw new Error(
+      `Editorial catalog has ${writerCount} writers; expected ${EXPECTED_WRITER_COUNT}`
+    );
   }
   return { version: 1, countries };
 }

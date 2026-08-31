@@ -1,7 +1,7 @@
 {
   "version": 1,
   "deterministic": true,
-  "sourceFingerprint": "sha256:6bb662c62ad07d61d34ce73dfce876be845659f9b9e1173f8377ecbdf33f283a",
+  "sourceFingerprint": "sha256:46efa941b25cf7c8835c621754c75a273bebd16d89d45ee4af6bd4196edbb905",
   "officialSource": {
     "retrievedAt": "2026-08-09",
     "throughYear": 2025,
@@ -20,11 +20,11 @@
     "localCardRepresentations": 125,
     "uniqueStructuredOfficialIds": 122,
     "duplicatePeopleWithCountryCards": 3,
-    "biographyNobelMentions": 112,
-    "biographyClaimsWithExplicitYear": 109,
-    "biographyClaimsWithoutExplicitYear": 3,
+    "biographyNobelMentions": 124,
+    "biographyClaimsWithExplicitYear": 119,
+    "biographyClaimsWithoutExplicitYear": 5,
     "biographyYearContradictions": 0,
-    "officialCardsWithoutBiographyMention": 13,
+    "officialCardsWithoutBiographyMention": 1,
     "previouslyUnstructuredCards": 77,
     "previouslyUnstructuredCardsResolved": 77,
     "productionArchiveEntriesUsingProseFallback": 0,
@@ -136,22 +136,34 @@
   ],
   "biographyClaimsWithoutYear": [
     {
+      "key": "austria:elfriede_jelinek",
+      "name": "Эльфрида Елинек",
+      "years": [],
+      "officialYear": 2004
+    },
+    {
+      "key": "austria:peter_handke",
+      "name": "Петер Хандке",
+      "years": [],
+      "officialYear": 2019
+    },
+    {
+      "key": "belgium:maurice_maeterlinck",
+      "name": "Морис Метерлинк",
+      "years": [],
+      "officialYear": 1911
+    },
+    {
+      "key": "egypt:naguib_mahfouz",
+      "name": "Нагиб Махфуз",
+      "years": [],
+      "officialYear": 1988
+    },
+    {
       "key": "india:rabindranath_tagore",
       "name": "Рабиндранат Тагор",
       "years": [],
       "officialYear": 1913
-    },
-    {
-      "key": "sweden:selma_lagerlof",
-      "name": "Сельма Лагерлёф",
-      "years": [],
-      "officialYear": 1909
-    },
-    {
-      "key": "usa:sinclair_lewis",
-      "name": "Синклер Льюис",
-      "years": [],
-      "officialYear": 1930
     }
   ],
   "unresolvedFormerGaps": [],

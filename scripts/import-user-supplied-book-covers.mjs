@@ -411,7 +411,7 @@ function validateDecisionInventory() {
 async function validateCanonicalArchive() {
   const archiveModule = await sourceArchive();
   const { baseline, current, baselinePublicCount, currentPublicCount } = archiveModule;
-  if (baseline.length !== 9_767 || current.length !== 9_767) {
+  if (baseline.length !== 9_768 || current.length !== 9_768) {
     throw new Error(
       `Размер архива изменился: baseline=${baseline.length}, current=${current.length}.`
     );
@@ -419,8 +419,8 @@ async function validateCanonicalArchive() {
   if (
     baselinePublicCount !== 48 ||
     currentPublicCount !== 48 ||
-    baseline.length - baselinePublicCount !== 9_719 ||
-    current.length - currentPublicCount !== 9_719
+    baseline.length - baselinePublicCount !== 9_720 ||
+    current.length - currentPublicCount !== 9_720
   ) {
     throw new Error(
       `Публичные/ожидающие карточки изменились: baseline=${baselinePublicCount}/${baseline.length - baselinePublicCount}, current=${currentPublicCount}/${current.length - currentPublicCount}.`

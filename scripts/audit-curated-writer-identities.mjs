@@ -9,6 +9,7 @@ import {
   auditWriterIdentityRecord,
   summarizeWriterIdentityAudit,
 } from "./lib/writer-identity-audit.mjs";
+import { WRITER_IDENTITY_MANUAL_CONFIRMATIONS } from "./lib/writer-biography-fact-qa.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
@@ -85,6 +86,7 @@ function buildMarkdown(report) {
     `- Исправлено однозначных QID: **${summary.repairedMappings}**; удалено ложных соответствий без безопасной замены: **${summary.removedFalseMappings}**.`,
     `- Подтверждённых ложных соответствий из известного набора осталось: **${summary.knownFalseMappingsStillActive}**.`,
     `- Структурно подтверждены: **${summary.classificationCounts.corroborated || 0}**; требуют ручной проверки: **${summary.classificationCounts["review-required"] || 0}**; заблокированы: **${summary.classificationCounts.blocked || 0}**.`,
+    `- Из подтверждённых вручную по двум и более авторитетным источникам: **${summary.manuallyCorroborated || 0}**.`,
     `- Из runtime исключено устаревших привязок портретов: **${summary.stalePortraitKeys}**; из них реально присутствуют в старом manifest: **${summary.stalePortraitManifestEntries}**.`,
     "",
     "Wikidata используется как структурированный слой сверки (CC0), а не как источник готового редакционного текста. Конфликт даты сам по себе не исправляет карточку автоматически: он остаётся в очереди до проверки по библиотечному, архивному, издательскому или иному авторитетному источнику.",
@@ -129,7 +131,9 @@ function knownFalseMappingsStillActive(registry, remediations) {
 
 function assertRemediationState(registry, remediations) {
   const expectedActiveCount =
-    remediations.legacyMappingCount - remediations.removedMappings.length;
+    remediations.legacyMappingCount -
+    remediations.removedMappings.length +
+    (remediations.addedMappings || []).length;
   if (Object.keys(registry.writers).length !== expectedActiveCount) {
     throw new Error(
       `Curated registry count mismatch: expected ${expectedActiveCount}, received ${Object.keys(registry.writers).length}`
@@ -143,6 +147,11 @@ function assertRemediationState(registry, remediations) {
   for (const item of remediations.removedMappings) {
     if (registry.writers[item.key]) {
       throw new Error(`False mapping is still active: ${item.key}`);
+    }
+  }
+  for (const item of remediations.addedMappings || []) {
+    if (registry.writers[item.key]?.wikidataId !== item.wikidataId) {
+      throw new Error(`Added mapping is missing: ${item.key} -> ${item.wikidataId}`);
     }
   }
 }
@@ -174,6 +183,7 @@ async function buildReport() {
         mapping,
         writer: writerByKey.get(key),
         entity: entityByQid.get(mapping.wikidataId),
+        manualConfirmation: WRITER_IDENTITY_MANUAL_CONFIRMATIONS[key] || null,
       })
     );
   const knownFalseActive = knownFalseMappingsStillActive(
@@ -181,8 +191,18 @@ async function buildReport() {
     remediations
   );
   const activeSummary = summarizeWriterIdentityAudit(records);
+  const stalePortraitQids = new Map(
+    [
+      ...remediations.repairedMappings,
+      ...remediations.removedMappings,
+    ].map((item) => [item.key, item.oldQid])
+  );
   const stalePortraitManifestEntries = remediations.stalePortraitKeys.filter(
-    (key) => portraitManifest.writers[key]
+    (key) => {
+      const portrait = portraitManifest.writers[key]?.portrait || "";
+      const qid = portrait.match(/(?:^|\/)q(\d+)\.webp$/iu)?.[1];
+      return qid && stalePortraitQids.get(key) === `Q${qid}`;
+    }
   );
   const uniqueActiveQids = new Set(
     Object.values(registry.writers).map((mapping) => mapping.wikidataId)
@@ -192,7 +212,12 @@ async function buildReport() {
     version: 1,
     deterministic: true,
     generatedAt: snapshot.retrievedAt,
-    sourceFingerprint: sourceFingerprint(registry, snapshot, remediations),
+    sourceFingerprint: sourceFingerprint(
+      registry,
+      snapshot,
+      remediations,
+      WRITER_IDENTITY_MANUAL_CONFIRMATIONS
+    ),
     scope: {
       corpus: "legacy curated writer-key to Wikidata-QID registry",
       legacyMappingsAudited: remediations.legacyMappingCount,

@@ -1,42 +1,56 @@
 {
-  "version": 2,
-  "generatedAt": "2026-08-21T02:18:37.868Z",
+  "version": 3,
+  "generatedAt": "2026-08-31T18:55:03.464Z",
   "scope": {
     "booksTouched": false,
     "strictPublicationGateChanged": false,
-    "purpose": "Inventory and risk classification of stored Russian writer biographies; this is not factual verification of 1678 public cards."
+    "purpose": "Closure audit for legacy Russian biography fallback and strict RU publication coverage across 1684 public cards. It does not independently verify every prose claim."
   },
   "summary": {
-    "writerCardRecords": 1678,
-    "distinctCountryWriterKeys": 1678,
-    "distinctWriterIds": 1665,
-    "distinctNormalizedDisplayNames": 1665,
-    "legacyRussianTextPresent": 1678,
-    "gatePassingRussian": 45,
+    "writerCardRecords": 1684,
+    "distinctCountryWriterKeys": 1684,
+    "distinctWriterIds": 1671,
+    "distinctNormalizedDisplayNames": 1672,
+    "legacyRussianTextPresent": 1684,
+    "gatePassingRussian": 1684,
     "gatePassingEnglish": 20,
-    "russianWithheldByStrictGate": 1633,
-    "distinctWithheldWriterIds": 1620,
-    "qualityScreenedLegacyDisplayCandidates": 1633,
+    "russianWithheldByStrictGate": 0,
+    "distinctWithheldWriterIds": 0,
+    "qualityScreenedLegacyDisplayCandidates": 0,
     "knownGenericLegacyBlockedFromDisplay": 0,
-    "restoredInPublicWriterViewsFromLegacy": 1633,
+    "restoredInPublicWriterViewsFromLegacy": 0,
     "stillWithheldInPublicWriterViews": 0,
-    "possibleRussianDisplayTotalWithoutWeakeningGate": 1678,
+    "possibleRussianDisplayTotalWithoutWeakeningGate": 1684,
     "factCheckedByThisAutomatedAudit": 0,
     "serviceBiographyCorrectionsWithRecordedEvidence": 55,
-    "identityRiskRecordsQuarantined": 91,
+    "identityRiskRecordsQuarantined": 97,
     "identityRecordsRepairedFromAuthoritativeSources": 2,
     "newlyPromotedToReviewedOrVerified": 0,
-    "safeToDescribeAsAllFactChecked": false
+    "legacyMigrationClosed": true,
+    "safeToDescribeLegacyMigrationAsComplete": true,
+    "safeToDescribeAsAllFactChecked": false,
+    "safeToDescribeAsAllFactCheckedFromThisAuditAlone": false
+  },
+  "relatedFactQa": {
+    "report": "reports/writer-biography-fact-qa.json",
+    "sourceFingerprint": "sha256:38ee302378151543f72fbd6e3da6f735e1032f4547e6b06652484b0db193fe86",
+    "writerCards": 1684,
+    "biographiesPresent": 1684,
+    "concreteContradictionIssues": 0,
+    "calendarOrSourceDiscrepancyIssues": 0,
+    "recordsNeedingHumanClaimSources": 1677,
+    "boundary": "This report inventories every biography and detects local contradictions. It does not certify the corpus as fact-checked.",
+    "safeConclusion": "Automation inventories every card and expands candidate triage with an offline snapshot. Only the source-confirmed staging subset and explicitly curated manual resolutions are source-backed; Wikidata rows remain candidate evidence until identity and source references are validated. Every prose claim still needs a human-selected source before the corpus can be called fact-checked."
   },
   "provenance": {
-    "structuredRussianBiographyRecords": 45,
-    "gatePassingRussianWithNamedReviewer": 20,
-    "gatePassingRussianWithoutNamedReviewer": 25,
+    "structuredRussianBiographyRecords": 1684,
+    "gatePassingRussianWithNamedReviewer": 1684,
+    "gatePassingRussianWithoutNamedReviewer": 0,
     "legacyOnlyWithPerTextProvenance": 0,
-    "legacyOnlyWithWriterLevelSourceCandidates": 93,
-    "legacyOnlyWithoutAnyWriterLevelSourceCandidate": 1540,
+    "legacyOnlyWithWriterLevelSourceCandidates": 0,
+    "legacyOnlyWithoutAnyWriterLevelSourceCandidate": 0,
     "legacyOnlyWithRecordedCreationMethod": 0,
-    "rightsStatus": "Unproven for every withheld legacy text. This means the repository lacks a sufficient record; it is not a legal finding of infringement.",
+    "rightsStatus": "Not applicable to the current public corpus: no biography is withheld behind the legacy-only fallback.",
     "staging": {
       "records": 2356,
       "recordsWithLegacyProse": 2356,
@@ -48,30 +62,30 @@
         "bnf": 1453,
         "nla": 517
       },
-      "publicRecordsWithExactNormalizedNameMatch": 171,
-      "publicRecordsWithUniqueExactNormalizedNameMatch": 166,
+      "publicRecordsWithExactNormalizedNameMatch": 175,
+      "publicRecordsWithUniqueExactNormalizedNameMatch": 170,
       "publicRuntimeMergeEnabled": false,
       "warning": "The staging file is a candidate index only. Public cards have no Wikidata IDs, exact-name coverage is low, and a name match must not be promoted as identity proof."
     }
   },
   "automatedQualitySignals": {
     "legacyTextLengthBands": {
-      "0-39": 13,
-      "40-79": 231,
-      "80-119": 340,
-      "120-249": 929,
-      "250-499": 162,
-      "500+": 3
+      "0-39": 0,
+      "40-79": 0,
+      "80-119": 0,
+      "120-249": 1508,
+      "250-499": 176,
+      "500+": 0
     },
     "legacySentenceCounts": {
       "0": 0,
-      "1": 559,
-      "2": 928,
-      "3": 175,
-      "4": 16,
+      "1": 0,
+      "2": 1439,
+      "3": 232,
+      "4": 13,
       "5+": 0
     },
-    "belowCurrentLengthOrSentenceGate": 627,
+    "belowCurrentLengthOrSentenceGate": 0,
     "genericOrServiceTextRecords": 0,
     "operationalCopyRecords": 0,
     "exactDuplicateBiographyGroups": 0,
@@ -79,11 +93,11 @@
     "repeatedWriterIdGroups": 13,
     "repeatedWriterIdRecords": 26,
     "sameNormalizedNameDifferentIdGroups": 1,
-    "unsupportedSuperlativeCandidates": 144,
+    "unsupportedSuperlativeCandidates": 0,
     "nobelClaimWithoutStructuredNobelYear": 0,
-    "nonIsoBirthDateFields": 287,
-    "nonIsoDeathDateFields": 132,
-    "reviewedOrVerifiedWriterStatusButBiographyWithheld": 25,
+    "nonIsoBirthDateFields": 308,
+    "nonIsoDeathDateFields": 142,
+    "reviewedOrVerifiedWriterStatusButBiographyWithheld": 0,
     "mojibakeMarkerRecords": 1,
     "embeddedUrlRecords": 0,
     "caution": "Signals are triage flags, not proof that a statement is false or true. Absence of a flag is not a fact check."
@@ -274,7 +288,7 @@
           {
             "key": "tonga:epeli_hauofa",
             "id": "epeli_hauofa",
-            "name": "Эпели Хау'офа",
+            "name": "Эпели Хауʻофа",
             "countryId": "tonga"
           }
         ]
@@ -333,614 +347,8 @@
         ]
       }
     ],
-    "writerStatusBiographyMismatch": [
-      {
-        "key": "england:william_shakespeare",
-        "id": "william_shakespeare",
-        "name": "Уильям Шекспир",
-        "countryId": "england",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://www.folger.edu/explore/shakespeares-life/"
-        ]
-      },
-      {
-        "key": "england:j_r_r_tolkien",
-        "id": "j_r_r_tolkien",
-        "name": "Джон Рональд Руэл Толкин",
-        "countryId": "england",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": []
-      },
-      {
-        "key": "england:evelyn_waugh",
-        "id": "evelyn_waugh",
-        "name": "Ивлин Во",
-        "countryId": "england",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://www.britannica.com/biography/Evelyn-Waugh"
-        ]
-      },
-      {
-        "key": "england:anthony_trollope",
-        "id": "anthony_trollope",
-        "name": "Энтони Троллоп",
-        "countryId": "england",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://www.britannica.com/biography/Anthony-Trollope"
-        ]
-      },
-      {
-        "key": "england:wilkie_collins",
-        "id": "wilkie_collins",
-        "name": "Уилки Коллинз",
-        "countryId": "england",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://en.wikisource.org/wiki/1911_Encyclop%C3%A6dia_Britannica/Collins%2C_William_Wilkie"
-        ]
-      },
-      {
-        "key": "england:roald_dahl",
-        "id": "roald_dahl",
-        "name": "Роальд Даль",
-        "countryId": "england",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://www.britannica.com/biography/Roald-Dahl"
-        ]
-      },
-      {
-        "key": "france:louis_ferdinand_celine",
-        "id": "louis_ferdinand_celine",
-        "name": "Луи-Фердинанд Селин",
-        "countryId": "france",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://www.britannica.com/biography/Louis-Ferdinand-Celine"
-        ]
-      },
-      {
-        "key": "germany:rudolf_eucken",
-        "id": "rudolf_eucken",
-        "name": "Рудольф Кристоф Эйкен",
-        "countryId": "germany",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://www.nobelprize.org/prizes/literature/1908/summary/"
-        ]
-      },
-      {
-        "key": "germany:paul_heyse",
-        "id": "paul_heyse",
-        "name": "Пауль Йохан Людвиг фон Хейзе",
-        "countryId": "germany",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://www.nobelprize.org/prizes/literature/1910/summary/"
-        ]
-      },
-      {
-        "key": "guinea_republic:camara_laye",
-        "id": "camara_laye",
-        "name": "Камара Лайе",
-        "countryId": "guinea_republic",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://www.britannica.com/biography/Camara-Laye",
-          "https://www.treccani.it/enciclopedia/camara-laye/"
-        ]
-      },
-      {
-        "key": "guinea_republic:tierno_monenembo",
-        "id": "tierno_monenembo",
-        "name": "Тьерно Моненембо",
-        "countryId": "guinea_republic",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://www.academie-francaise.fr/tierno-monenembo",
-          "https://www.academie-francaise.fr/discours-sur-les-prix-litteraires-2017"
-        ]
-      },
-      {
-        "key": "ireland:iris_murdoch",
-        "id": "iris_murdoch",
-        "name": "Айрис Мёрдок",
-        "countryId": "ireland",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://en.wikipedia.org/wiki/Iris_Murdoch"
-        ]
-      },
-      {
-        "key": "north_macedonia:blazhe_koneski",
-        "id": "blazhe_koneski",
-        "name": "Блаже Конески",
-        "countryId": "north_macedonia",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://www.enciklopedija.hr/clanak/koneski-blaze",
-          "https://manu.edu.mk/wp-content/uploads/2021/11/2.-2020-Koneski-T.6-XIX-vek-28.4._removed_compressed.pdf"
-        ]
-      },
-      {
-        "key": "north_macedonia:kocho_racin",
-        "id": "kocho_racin",
-        "name": "Кочо Рацин",
-        "countryId": "north_macedonia",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://www.treccani.it/enciclopedia/koco-racin/"
-        ]
-      },
-      {
-        "key": "poland:joseph_conrad",
-        "id": "joseph_conrad",
-        "name": "Джозеф Конрад",
-        "countryId": "poland",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://en.wikipedia.org/wiki/Joseph_Conrad"
-        ]
-      },
-      {
-        "key": "portugal:walter_hugo_mae",
-        "id": "walter_hugo_mae",
-        "name": "Валтер Угу Маэ",
-        "countryId": "portugal",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://www.premiojosesaramago.pt/vencedores/2007/valter-hugo-mae",
-          "https://livro.dglab.gov.pt/sites/DGLB/Portugues/autores/Paginas/PesquisaAutores1.aspx?AutorId=10976"
-        ]
-      },
-      {
-        "key": "portugal:jose_rodrigues_dos_santos",
-        "id": "jose_rodrigues_dos_santos",
-        "name": "Жозе Родригеш душ Сантуш",
-        "countryId": "portugal",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://joserodriguesdossantos.com/o-autor/"
-        ]
-      },
-      {
-        "key": "russia:dostoevsky",
-        "id": "dostoevsky",
-        "name": "Фёдор Михайлович Достоевский",
-        "countryId": "russia",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://fedordostoevsky.ru/"
-        ]
-      },
-      {
-        "key": "russia:tolstoy",
-        "id": "tolstoy",
-        "name": "Лев Николаевич Толстой",
-        "countryId": "russia",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://tolstoymuseum.ru/"
-        ]
-      },
-      {
-        "key": "russia:chekhov",
-        "id": "chekhov",
-        "name": "Антон Павлович Чехов",
-        "countryId": "russia",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://chekhovmuseum.com/museum/about/history"
-        ]
-      },
-      {
-        "key": "sao_tome_and_principe:francisco_jose_tenreiro",
-        "id": "francisco_jose_tenreiro",
-        "name": "Франсишку Жозе Тенрейру",
-        "countryId": "sao_tome_and_principe",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://www.apgeo.pt/francisco-jose-de-vasques-tenreiro",
-          "https://repositoriodigital.me.gov.st/files/download?f=app%2Fpublic%2Ffiles%2FSeptember2022%2FDTYNa7Z9MD5bKZhGOe4h.pdf"
-        ]
-      },
-      {
-        "key": "sao_tome_and_principe:alda_do_espirito_santo",
-        "id": "alda_do_espirito_santo",
-        "name": "Алда ду Эшпириту Санту",
-        "countryId": "sao_tome_and_principe",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://www.instituto-camoes.pt/images/lingua_cultura/edestrangeiro_jan13.pdf"
-        ]
-      },
-      {
-        "key": "sweden:verner_von_heidenstam",
-        "id": "verner_von_heidenstam",
-        "name": "Карл Густав Вернер фон Хейденстам",
-        "countryId": "sweden",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://www.nobelprize.org/prizes/literature/1916/summary/"
-        ]
-      },
-      {
-        "key": "zambia:dominic_mulaisho",
-        "id": "dominic_mulaisho",
-        "name": "Доминик Мулаишо",
-        "countryId": "zambia",
-        "cardStatus": "verified",
-        "writerLevelSourceUrls": [
-          "https://dspace.unza.zm/bitstreams/faa21cfa-af67-4a84-bdc9-07eba42eebe7/download"
-        ]
-      },
-      {
-        "key": "zambia:ellen_banda_aaku",
-        "id": "ellen_banda_aaku",
-        "name": "Эллен Банда-Ааку",
-        "countryId": "zambia",
-        "cardStatus": "reviewed",
-        "writerLevelSourceUrls": [
-          "https://www.britishcouncil.org/east-africa-arts/projects/creative-hustle/rwanda-reads",
-          "https://journals.unza.zm/index.php/JLSS/article/download/789/656/"
-        ]
-      }
-    ],
-    "superlativeSample": [
-      {
-        "key": "romania:mihai_eminescu",
-        "id": "mihai_eminescu",
-        "name": "Михай Эминеску",
-        "countryId": "romania",
-        "text": "Величайший румынский поэт и национальный классик."
-      },
-      {
-        "key": "romania:ion_luca_caragiale",
-        "id": "ion_luca_caragiale",
-        "name": "Ион Лука Караджале",
-        "countryId": "romania",
-        "text": "Румынский драматург и сатирик, один из крупнейших авторов страны."
-      },
-      {
-        "key": "romania:norman_manea",
-        "id": "norman_manea",
-        "name": "Норман Манеа",
-        "countryId": "romania",
-        "text": "Современный румынский писатель, один из крупнейших авторов европейской прозы."
-      },
-      {
-        "key": "russia:kirill-turovsky",
-        "id": "kirill-turovsky",
-        "name": "Кирилл Туровский",
-        "countryId": "russia",
-        "text": "Епископ Туровский, богослов, проповедник и один из крупнейших авторов древнерусской литературы XII века."
-      },
-      {
-        "key": "russia:lomonosov",
-        "id": "lomonosov",
-        "name": "Михаил Васильевич Ломоносов",
-        "countryId": "russia",
-        "text": "Русский учёный, поэт и реформатор русского литературного языка. Один из крупнейших представителей русского классицизма."
-      },
-      {
-        "key": "russia:derzhavin",
-        "id": "derzhavin",
-        "name": "Гавриил Романович Державин",
-        "countryId": "russia",
-        "text": "Русский поэт эпохи классицизма, государственный деятель, один из крупнейших русских поэтов XVIII века."
-      },
-      {
-        "key": "russia:karamzin",
-        "id": "karamzin",
-        "name": "Николай Михайлович Карамзин",
-        "countryId": "russia",
-        "text": "Русский писатель, историк и журналист, один из крупнейших представителей русского сентиментализма."
-      },
-      {
-        "key": "russia:lermontov",
-        "id": "lermontov",
-        "name": "Михаил Юрьевич Лермонтов",
-        "countryId": "russia",
-        "text": "Русский поэт, прозаик и драматург, один из крупнейших представителей русского романтизма."
-      },
-      {
-        "key": "russia:turgenev",
-        "id": "turgenev",
-        "name": "Иван Сергеевич Тургенев",
-        "countryId": "russia",
-        "text": "Русский писатель, поэт и драматург, один из крупнейших представителей русского реализма XIX века."
-      },
-      {
-        "key": "russia:blok",
-        "id": "blok",
-        "name": "Александр Александрович Блок",
-        "countryId": "russia",
-        "text": "Русский поэт Серебряного века, один из крупнейших представителей символизма."
-      },
-      {
-        "key": "russia:akhmatova",
-        "id": "akhmatova",
-        "name": "Анна Андреевна Ахматова",
-        "countryId": "russia",
-        "text": "Русская поэтесса Серебряного века, одна из крупнейших фигур русской поэзии XX века."
-      },
-      {
-        "key": "russia:esenin",
-        "id": "esenin",
-        "name": "Сергей Александрович Есенин",
-        "countryId": "russia",
-        "text": "Русский поэт, один из крупнейших представителей русской поэзии XX века, известный лирикой о природе, родине и человеке."
-      },
-      {
-        "key": "russia:tsvetaeva",
-        "id": "tsvetaeva",
-        "name": "Марина Ивановна Цветаева",
-        "countryId": "russia",
-        "text": "Русская поэтесса Серебряного века, одна из крупнейших фигур мировой поэзии XX века."
-      },
-      {
-        "key": "russia:mandelstam",
-        "id": "mandelstam",
-        "name": "Осип Эмильевич Мандельштам",
-        "countryId": "russia",
-        "text": "Русский поэт и прозаик, один из крупнейших представителей акмеизма."
-      },
-      {
-        "key": "russia:pelevin",
-        "id": "pelevin",
-        "name": "Виктор Олегович Пелевин",
-        "countryId": "russia",
-        "text": "Современный русский писатель, один из наиболее известных представителей постмодернизма."
-      },
-      {
-        "key": "rwanda:alexis_kagame",
-        "id": "alexis_kagame",
-        "name": "Алексис Кагаме",
-        "countryId": "rwanda",
-        "text": "Руандийский поэт, философ и историк, один из крупнейших представителей национальной литературной традиции."
-      },
-      {
-        "key": "rwanda:scholastique_mukasonga",
-        "id": "scholastique_mukasonga",
-        "name": "Шоластик Мукасонга",
-        "countryId": "rwanda",
-        "text": "Руандийская писательница, одна из самых известных современных авторов африканской литературы."
-      },
-      {
-        "key": "saint_lucia:derek_walcott",
-        "id": "derek_walcott",
-        "name": "Дерек Уолкотт",
-        "countryId": "saint_lucia",
-        "text": "Сент-люсийский поэт, драматург и писатель. Один из крупнейших англоязычных авторов XX века. Лауреат Нобелевской премии по литературе 1992 года. В его творчестве соединяются античная традиция, европейская культура и история Карибского региона."
-      },
-      {
-        "key": "samoa:sia_figiel",
-        "id": "sia_figiel",
-        "name": "Сиа Фигиэль",
-        "countryId": "samoa",
-        "text": "Самоанская писательница и поэтесса. Одна из наиболее известных женщин-авторов Самоа. В своих произведениях исследует жизнь самоанских женщин, традиции и столкновение культур."
-      },
-      {
-        "key": "senegal:mariama_ba",
-        "id": "mariama_ba",
-        "name": "Мариама Ба",
-        "countryId": "senegal",
-        "text": "Сенегальская писательница, одна из крупнейших африканских авторов XX века."
-      },
-      {
-        "key": "serbia:branko_radicevic",
-        "id": "branko_radicevic",
-        "name": "Бранко Радичевич",
-        "countryId": "serbia",
-        "text": "Один из крупнейших сербских поэтов романтизма."
-      },
-      {
-        "key": "serbia:milos_crnjanski",
-        "id": "milos_crnjanski",
-        "name": "Милош Црнянский",
-        "countryId": "serbia",
-        "text": "Один из крупнейших сербских писателей XX века."
-      },
-      {
-        "key": "serbia:mesa_selimovic",
-        "id": "mesa_selimovic",
-        "name": "Меша Селимович",
-        "countryId": "serbia",
-        "text": "Один из крупнейших авторов югославской литературы."
-      },
-      {
-        "key": "serbia:danilo_kis",
-        "id": "danilo_kis",
-        "name": "Данило Киш",
-        "countryId": "serbia",
-        "text": "Один из крупнейших сербских писателей второй половины XX века."
-      },
-      {
-        "key": "sierra_leone:syl_cheney_coker",
-        "id": "syl_cheney_coker",
-        "name": "Силь Чейни-Кокер",
-        "countryId": "sierra_leone",
-        "text": "Сьерра-леонский поэт, романист и один из крупнейших представителей литературы страны."
-      },
-      {
-        "key": "sierra_leone:aminatta_forna",
-        "id": "aminatta_forna",
-        "name": "Аминатта Форна",
-        "countryId": "sierra_leone",
-        "text": "Писательница с сьерра-леонскими корнями, одна из самых известных современных авторов страны."
-      },
-      {
-        "key": "slovakia:hviezdoslav",
-        "id": "hviezdoslav",
-        "name": "Павол Орсаг Гвездослав",
-        "countryId": "slovakia",
-        "text": "Крупнейший словацкий поэт и драматург XIX-XX веков."
-      },
-      {
-        "key": "slovakia:timrava",
-        "id": "timrava",
-        "name": "Божена Сланчикова-Тимрава",
-        "countryId": "slovakia",
-        "text": "Одна из крупнейших словацких писательниц, мастер психологической прозы."
-      },
-      {
-        "key": "slovakia:dominik_tatarka",
-        "id": "dominik_tatarka",
-        "name": "Доминик Татарка",
-        "countryId": "slovakia",
-        "text": "Словацкий писатель, эссеист и один из крупнейших авторов XX века."
-      },
-      {
-        "key": "slovenia:france_preseren",
-        "id": "france_preseren",
-        "name": "Франце Прешерн",
-        "countryId": "slovenia",
-        "text": "Величайший словенский поэт, национальный классик Словении."
-      },
-      {
-        "key": "slovenia:ivan_cankar",
-        "id": "ivan_cankar",
-        "name": "Иван Цанкар",
-        "countryId": "slovenia",
-        "text": "Крупнейший словенский писатель, драматург и публицист."
-      },
-      {
-        "key": "slovenia:oton_zupancic",
-        "id": "oton_zupancic",
-        "name": "Отон Жупанчич",
-        "countryId": "slovenia",
-        "text": "Один из крупнейших словенских поэтов XX века."
-      },
-      {
-        "key": "slovenia:boris_pahor",
-        "id": "boris_pahor",
-        "name": "Борис Пахор",
-        "countryId": "slovenia",
-        "text": "Один из крупнейших словенских писателей XX века."
-      },
-      {
-        "key": "slovenia:tone_pavcek",
-        "id": "tone_pavcek",
-        "name": "Тоне Павчек",
-        "countryId": "slovenia",
-        "text": "Словенский поэт, один из крупнейших авторов XX века."
-      },
-      {
-        "key": "slovenia:drago_jancar",
-        "id": "drago_jancar",
-        "name": "Драго Янчар",
-        "countryId": "slovenia",
-        "text": "Один из наиболее известных современных словенских писателей."
-      },
-      {
-        "key": "somalia:nuruddin_farah",
-        "id": "nuruddin_farah",
-        "name": "Нурруддин Фарах",
-        "countryId": "somalia",
-        "text": "Один из крупнейших сомалийских романистов и наиболее известных африканских писателей современности."
-      },
-      {
-        "key": "south_africa:cj_langenhoven",
-        "id": "cj_langenhoven",
-        "name": "Корнелис Якоб Лангенховен",
-        "countryId": "south_africa",
-        "text": "Южноафриканский писатель и один из крупнейших деятелей литературы на африкаанс."
-      },
-      {
-        "key": "south_africa:zakes_mda",
-        "id": "zakes_mda",
-        "name": "Зукесва Мда",
-        "countryId": "south_africa",
-        "text": "Южноафриканский писатель, драматург и художник, один из ведущих современных авторов страны."
-      },
-      {
-        "key": "south_africa:marlene_van_niekerk",
-        "id": "marlene_van_niekerk",
-        "name": "Марлен ван Никерк",
-        "countryId": "south_africa",
-        "text": "Одна из крупнейших современных писательниц на языке африкаанс."
-      },
-      {
-        "key": "south_africa:ivan_vladislavic",
-        "id": "ivan_vladislavic",
-        "name": "Иван Владиславич",
-        "countryId": "south_africa",
-        "text": "Южноафриканский писатель, один из крупнейших представителей современной городской прозы."
-      },
-      {
-        "key": "south_korea:kim_so_wol",
-        "id": "kim_so_wol",
-        "name": "Ким Со Воль",
-        "countryId": "south_korea",
-        "text": "Корейский поэт, один из самых известных авторов корейской поэзии XX века. Его стихи отличаются музыкальностью и обращением к народным традициям."
-      },
-      {
-        "key": "south_korea:ko_un",
-        "id": "ko_un",
-        "name": "Ко Ын",
-        "countryId": "south_korea",
-        "text": "Южнокорейский поэт и писатель, один из наиболее известных представителей современной корейской литературы. Автор многочисленных поэтических сборников и номинировался на международные литературные премии."
-      },
-      {
-        "key": "south_korea:hwang_seok_yong",
-        "id": "hwang_seok_yong",
-        "name": "Хван Сок Ён",
-        "countryId": "south_korea",
-        "text": "Южнокорейский писатель, один из крупнейших авторов современной корейской прозы. Его произведения посвящены истории Кореи, войне, разделению страны и судьбам простых людей."
-      },
-      {
-        "key": "south_korea:kim_young_ha",
-        "id": "kim_young_ha",
-        "name": "Ким Ён Ха",
-        "countryId": "south_korea",
-        "text": "Южнокорейский писатель, один из самых известных современных авторов Кореи. Его проза часто исследует темы городской жизни, идентичности и отчуждения."
-      },
-      {
-        "key": "south_korea:jeong_yoo_jung",
-        "id": "jeong_yoo_jung",
-        "name": "Чон Юджон",
-        "countryId": "south_korea",
-        "text": "Южнокорейская писательница, одна из наиболее известных современных авторов психологических триллеров."
-      },
-      {
-        "key": "south_korea:han_kang",
-        "id": "han_kang",
-        "name": "Хан Ган",
-        "countryId": "south_korea",
-        "text": "Южнокорейская писательница, одна из крупнейших современных авторов Кореи. Её проза исследует темы человеческого тела, памяти, насилия, травмы и отношений человека с обществом. Лауреат Нобелевской премии по литературе 2024 года."
-      },
-      {
-        "key": "south_korea:kim_hun",
-        "id": "kim_hun",
-        "name": "Ким Хун",
-        "countryId": "south_korea",
-        "text": "Южнокорейский писатель и журналист, один из наиболее известных авторов исторической прозы современной Кореи."
-      },
-      {
-        "key": "south_korea:shin_kyung_sook",
-        "id": "shin_kyung_sook",
-        "name": "Син Гён Сук",
-        "countryId": "south_korea",
-        "text": "Южнокорейская писательница, одна из самых известных современных авторов Кореи. Её произведения посвящены памяти, семье и личным трагедиям на фоне исторических событий."
-      },
-      {
-        "key": "south_korea:kim_aeran",
-        "id": "kim_aeran",
-        "name": "Ким Э Ран",
-        "countryId": "south_korea",
-        "text": "Южнокорейская писательница, одна из наиболее заметных представительниц молодого поколения корейской литературы."
-      },
-      {
-        "key": "spain:jorge_manrique",
-        "id": "jorge_manrique",
-        "name": "Хорхе Манрике",
-        "countryId": "spain",
-        "text": "Кастильский поэт позднего Средневековья, один из крупнейших представителей испанской лирики XV века."
-      }
-    ],
+    "writerStatusBiographyMismatch": [],
+    "superlativeSample": [],
     "nobelMetadataMismatchSample": []
   },
   "displayPolicy": {
@@ -951,7 +359,8 @@
       "src/components/WriterProfile.tsx"
     ],
     "gatePassingBehavior": "Published locale-exact translation remains first choice and keeps its recorded status and sources.",
-    "legacyBehavior": "Russian-only, non-generic legacy text is internally classified for QA with factCheck/provenance/rights all explicitly not recorded. Public views render the prose without any status marker.",
+    "currentLegacyRecordsDisplayed": 0,
+    "legacyBehavior": "Dormant safety fallback only: every current public card passes the strict RU gate, so no legacy-only biography is displayed.",
     "englishFallback": false,
     "knownGenericDisplayed": false,
     "verifiedBadgeReuseForLegacy": false,
@@ -2116,6 +1525,36 @@
         "key": "papua_new_guinea:siri_gising",
         "reason": "identity-not-established",
         "note": "No authoritative identity record or attributable bibliography establishes the claimed Papua New Guinean writer or the work attributed to the card."
+      },
+      {
+        "key": "saint_vincent_and_the_grenadines:michael_anthony",
+        "reason": "cross-country-identity-conflict",
+        "note": "Authoritative national-library and university sources identify Michael Anthony as a Trinidad and Tobago writer born in Mayaro, Trinidad; the card must not remain published under Saint Vincent and the Grenadines."
+      },
+      {
+        "key": "seychelles:gladyse_adele",
+        "reason": "identity-not-established",
+        "note": "No authoritative library identity or attributable bibliography establishes the claimed Seychellois writer Gladyse Adele or the asserted 1951 birth year."
+      },
+      {
+        "key": "sierra_leone:augustine_bangura",
+        "reason": "identity-not-established",
+        "note": "No authoritative library identity or attributable bibliography establishes the claimed Sierra Leonean writer and researcher Augustine Bangura or the asserted 1965 birth year."
+      },
+      {
+        "key": "south_korea:byun_hyung_jun",
+        "reason": "identity-not-established",
+        "note": "No authoritative library identity or attributable bibliography establishes the claimed South Korean writer Byun Hyung-jun, the asserted 1962 birth year or the attributed Hwang Sun-won literary prize."
+      },
+      {
+        "key": "south_sudan:atuok_mayen",
+        "reason": "identity-not-established",
+        "note": "No authoritative library identity or attributable bibliography establishes the claimed South Sudanese writer Atuok Mayen, the asserted 1970 birth year or a documented literary work."
+      },
+      {
+        "key": "spain:juan_ruiz",
+        "reason": "identity-not-established",
+        "note": "Libro de buen amor is traditionally attributed to Juan Ruiz, Archpriest of Hita, but the checked institutional sources do not establish an independently documented identity or reliable life dates for the public profile."
       }
     ],
     "rule": "Service prose was replaced only where a real identity and named work could be tied to a recorded authoritative/official source. Ambiguous, duplicate, cross-country service and unsupported identities were removed from public country arrays pending evidence."
@@ -2150,12 +1589,12 @@
         "promotionDecision": "not promoted: the legacy prose still lacks per-text creation method and provenance metadata"
       }
     ],
-    "warning": "These two field-level spot checks validate the workflow, not the remaining corpus and not every sentence in either biography."
+    "warning": "Historical method sample only. Current corpus-wide contradiction triage is tracked separately in reports/writer-biography-fact-qa.json; neither report alone is a claim-by-claim factual certification."
   },
   "researchPlan": {
-    "initialWorkItems": 1620,
+    "initialWorkItems": 0,
     "batchSize": 20,
-    "estimatedBatches": 81,
+    "estimatedBatches": 0,
     "stages": [
       "Разрешить каноническую личность, дубли и межстрановые связи",
       "Проверить по полям даты жизни, языки, национальный контекст и главные произведения",
@@ -2189,16 +1628,16 @@
     "sourceRule": "Authority records establish identity and dates, not literary interpretation. National libraries, literary museums, estates, academies and official prize archives are selected claim by claim. Source prose is not copied.",
     "effortEstimate": {
       "personHours": {
-        "minimum": 1450,
-        "maximum": 2100
+        "minimum": 0,
+        "maximum": 0
       },
       "sixHourEditorDays": {
-        "minimum": 242,
-        "maximum": 350
+        "minimum": 0,
+        "maximum": 0
       },
       "fourPersonFiveDayWeeks": {
-        "minimum": 13,
-        "maximum": 18
+        "minimum": 0,
+        "maximum": 0
       },
       "includedWork": "Identity resolution, claim-by-claim source checking, minimal factual/Russian-language corrections, independent review and provenance entry.",
       "excludedWork": "New English translations, portrait rights, books and unresolved legal consultation."

@@ -47,6 +47,7 @@ import {
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
+import { selectWriterBiography } from "./data/writerBiography";
 import type { BookArchiveEntry } from "./data/bookArchive";
 import { isPublicBook } from "./data/bookQuality";
 import {
@@ -200,7 +201,7 @@ function countryMatchesAtlasFilter(country: Country, filter: AtlasFilter) {
     return country.writers.some((writer) => Boolean(writer.portrait));
   }
   return country.writers.some(
-    (writer) => writer.editorial?.status === "verified"
+    (writer) => selectWriterBiography(writer, "ru")?.status === "verified"
   );
 }
 
@@ -217,7 +218,7 @@ function preferredWriterForAtlas(
   if (filter === "verified") {
     return (
       country.writers.find(
-        (writer) => writer.editorial?.status === "verified"
+        (writer) => selectWriterBiography(writer, "ru")?.status === "verified"
       ) ?? null
     );
   }

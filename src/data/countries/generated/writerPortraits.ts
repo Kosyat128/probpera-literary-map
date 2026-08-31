@@ -9,11 +9,28 @@ type PortraitMetadata = Pick<
 
 const portraits = manifest.writers as Record<string, PortraitMetadata>;
 
-// These manifest entries were generated from QIDs that resolved to different
-// people. Keep the stale assets out of the public archive until the portrait
-// synchronizer has rebuilt them from the corrected curated QIDs.
+const stalePortraitQids = new Map(
+  [
+    ...identityRemediations.repairedMappings,
+    ...identityRemediations.removedMappings,
+  ].map((item) => [item.key, item.oldQid])
+);
+
+function portraitQid(value: string | undefined): string {
+  const qid = String(value || "").match(/(?:^|\/)q(\d+)\.webp$/iu)?.[1];
+  return qid ? `Q${qid}` : "";
+}
+
+// Quarantine only a manifest entry that still points to the old, disproven
+// QID. Once the synchronizer replaces it with the corrected QID, the same
+// writer key becomes safe automatically.
 export const quarantinedWriterPortraitKeys = new Set(
-  identityRemediations.stalePortraitKeys
+  Object.entries(portraits)
+    .filter(
+      ([key, portrait]) =>
+        stalePortraitQids.get(key) === portraitQid(portrait.portrait)
+    )
+    .map(([key]) => key)
 );
 
 export function mergeWriterPortraits(countries: Country[]): Country[] {

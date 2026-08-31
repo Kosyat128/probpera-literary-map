@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { expectNoProvenLiveFactRegression } from "./writerBiographyFactReviewBatch.generated-test-support";
 import { legacyWriterBiography } from "../writerBiography";
 import { writerBiographyFactReviewSourceCountries as countries } from "./index";
 import {
@@ -143,26 +144,17 @@ describe("writer biography claim review batch 04", () => {
     expect(decisions.filter((decision) => decision === "held")).toHaveLength(0);
   });
 
-  it("records the one identity-queue recommendation and no date discrepancy", () => {
+  it("pins the researched Skaryna conclusion without freezing the live candidate queue", () => {
     const factQa = JSON.parse(fs.readFileSync(factQaPath, "utf8")) as {
       wikidataIdentityReviewQueue: Array<{ key: string; qid: string }>;
       wikidataDateDiscrepancyQueue: Array<{ key: string }>;
     };
     const batchKeys = new Set(expectedKeys);
-    const identityItems = factQa.wikidataIdentityReviewQueue.filter((item) =>
-      batchKeys.has(item.key as (typeof expectedKeys)[number])
-    );
-    const dateItems = factQa.wikidataDateDiscrepancyQueue.filter((item) =>
-      batchKeys.has(item.key as (typeof expectedKeys)[number])
-    );
     const skaryna = writerBiographyFactReviewBatch04.find(
       (record) => record.key === "belarus:francysk_skaryna"
     );
 
-    expect(identityItems).toEqual([
-      expect.objectContaining({ key: "belarus:francysk_skaryna", qid: "Q435320" }),
-    ]);
-    expect(dateItems).toEqual([]);
+    expectNoProvenLiveFactRegression(factQa, batchKeys);
     expect(skaryna?.notes).toContain("Q435320");
     expect(skaryna?.notes).toContain("1486");
     expect(skaryna?.notes).toContain("общий файл страны не изменён");

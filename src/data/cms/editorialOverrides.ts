@@ -14,8 +14,6 @@ export type CmsWriterProfileOverride = Partial<
     | "birthPlace"
     | "deathPlace"
     | "bio"
-    | "portrait"
-    | "portraitAlt"
     | "works"
     | "awards"
     | "genres"
@@ -95,6 +93,13 @@ export function cmsWriterKey(countryId: string, writerId: string) {
   return `${countryId}:${writerId}`;
 }
 
+const protectedWriterPortraitFields = new Set([
+  "portrait",
+  "portraitAlt",
+  "portraitSourceUrl",
+  "portraitRights",
+]);
+
 export function applyCmsCountryProfileOverrides(
   countries: Country[],
   overrides: Record<string, CmsCountryProfileOverride> =
@@ -123,7 +128,13 @@ export function applyCmsWriterProfileOverrides(
     writers: country.writers.map((writer) => {
       const override =
         overrides[cmsWriterKey(country.id, writer.id)];
-      return override ? { ...writer, ...override } : writer;
+      if (!override) return writer;
+      const safeOverride = Object.fromEntries(
+        Object.entries(override).filter(
+          ([field]) => !protectedWriterPortraitFields.has(field)
+        )
+      ) as CmsWriterProfileOverride;
+      return { ...writer, ...safeOverride };
     }),
   }));
 }
