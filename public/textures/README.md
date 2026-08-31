@@ -21,6 +21,72 @@ place names and hachured relief survive the reprojection.
 - `antique-world-1887.webp`: 4096 × 2048 desktop texture.
 - `antique-world-1887-mobile.webp`: 2048 × 1024 compact texture.
 
+## Additional historical editions
+
+Five optional editions are served as local 2:1 WebP textures and fetched only
+after the visitor selects one. Their period coastlines are preserved rather
+than silently warped to present-day geography. Because those historical shapes
+cannot truthfully match the modern country polygons everywhere, runtime country
+selection uses a centroid marker instead of a misleading filled boundary.
+
+Sources and rights:
+
+- Martin Behaim, 1492: E. G. Ravenstein's 1908 facsimile sheets from
+  [Universitätsbibliothek Freiburg](https://dl.ub.uni-freiburg.de/diglit/ravenstein1908),
+  Public Domain Mark 1.0. No GNM/FAU surface binary is used.
+- Jodocus Hondius / Giuseppe di Rossi, 1615:
+  [Library of Congress item 2008627640](https://www.loc.gov/item/2008627640/).
+- Vincenzo Coronelli, 1697:
+  [Stanford University Libraries](https://purl.stanford.edu/fw438kx8748),
+  Public Domain Mark 1.0.
+- Heinrich Scherer, 1700:
+  [University of Illinois Urbana-Champaign Library](https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9),
+  No Copyright — United States.
+- Giovanni Maria Cassini, 1790:
+  [Library of Congress item 2004626115](https://www.loc.gov/item/2004626115/),
+  resources `g3201b.ct001065a` through `g3201b.ct001065e`.
+
+Runtime files:
+
+- `behaim-1492-ravenstein-1908.webp`: 4096 × 2048, 2,031,414 bytes;
+  `behaim-1492-ravenstein-1908-mobile.webp`: 2048 × 1024, 511,208 bytes.
+- `hondius-rossi-1615.webp`: 4096 × 2048, 1,929,066 bytes;
+  `hondius-rossi-1615-mobile.webp`: 2048 × 1024, 537,158 bytes.
+- `coronelli-1697.webp`: 4096 × 2048, 1,429,020 bytes;
+  `coronelli-1697-mobile.webp`: 2048 × 1024, 499,562 bytes.
+- `scherer-1700.webp`: 4096 × 2048, 1,104,598 bytes;
+  `scherer-1700-mobile.webp`: 2048 × 1024, 407,040 bytes.
+- `cassini-globo-terrestre-1790.webp`: 4096 × 2048, 2,619,370 bytes;
+  `cassini-globo-terrestre-1790-mobile.webp`: 2048 × 1024, 609,440 bytes.
+
+## U.S. Army M-101 edition (November 1943)
+
+The wartime alternative is *General Reference Map No. 1*, sheet 1057-G from
+Manual M-101. It was prepared by the American Geographical Society for the
+U.S. Department of State and published by the U.S. Army Service Forces. The
+pinned 5491 × 2641 original comes from
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:General_Reference_Map_1.jpg),
+where it is marked `PD-USGov-Military`; the 1943 U.S. publication has no
+copyright notice. Federal provenance is cross-checked against
+[NARA Record Group 160](https://www.archives.gov/research/guide-fed-records/groups/160.html#160.4.3)
+and the [Government Printing Office catalog](https://www.govinfo.gov/content/pkg/GOVPUB-GP3-810401451330211ed3630245334346fd/pdf/GOVPUB-GP3-810401451330211ed3630245334346fd.pdf).
+
+The three interrupted sinusoidal sections are analytically reprojected through
+their printed 15-degree graticule into a canonical 2:1 texture. A six-column,
+source-only feather removes the mathematical panel cuts while preserving
+high-frequency linework. No current coastline, generated detail, recoloring,
+or synthetic polar cap is baked into the bitmap. The runtime applies the same
+Natural Earth border, country-selection, flag-fill, and SVG-outline geometry
+used by the 1887 edition.
+
+- `us-army-general-reference-1943.webp`: 4096 × 2048, 1,971,264 bytes,
+  SHA-256 `09418203D87AA85A465E3694E53D33B9893387796DB798966197DD19193E36D6`.
+- `us-army-general-reference-1943-mobile.webp`: 2048 × 1024, 525,424 bytes,
+  SHA-256 `020F0808C4C1E0671C05124E836349884D6A204FD635057226106A9B9268D38A`.
+- Combined runtime cache version: `sha256-eca2ae835ef2d061`.
+- Machine-readable calibration and seam metrics:
+  `reports/globe-editions/us-army-general-reference-1943/manifest.json`.
+
 ## Real Earth surface
 
 The real-Earth option uses NASA's *Blue Marble: Next Generation* July image:
@@ -99,9 +165,9 @@ after the modern style is selected. A live RU/EN switch replaces the texture
 without recreating the globe. The procedural surface remains the local fallback.
 
 - `modern-atlas-2026-ru.webp`: 4096 × 2048 Russian desktop texture, SHA-256
-  `2EB0A86AEA6D1ADFF08C1AACE8FBD89149F432AEBC4001F1B97AEC637321D82B`.
+  `26A04A83536B6CEB7A3DB37C2FF67C083CD1699C4DD4543292E43C8D694FC4FC`.
 - `modern-atlas-2026-ru-mobile.webp`: 2048 × 1024 Russian compact texture,
-  SHA-256 `DAB618C766250D9DF340868366A987F2A402864DC8B717482255E470F92C39AB`.
+  SHA-256 `8817B45F53A9CAA9592A711E52ED83004265F36DD98DE777776A2CB6143BD58B`.
 - `modern-atlas-2026-en.webp`: 4096 × 2048 English desktop texture, SHA-256
   `8DF82C055820B44B178EFA7321888E9049821859CA0408BBC77B64B2D9219399`.
 - `modern-atlas-2026-en-mobile.webp`: 2048 × 1024 English compact texture,

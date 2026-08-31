@@ -286,7 +286,7 @@ test("keyboard candidate selects the optical-centre country without replacing Ca
   expect(Math.abs((after?.height ?? 0) - (before?.height ?? 0))).toBeLessThan(2);
 });
 
-test("style buttons commit only the texture that actually rendered", async ({
+test("edition buttons commit only the texture that actually rendered", async ({
   page,
 }) => {
   let releaseEarthTexture;
@@ -298,7 +298,7 @@ test("style buttons commit only the texture that actually rendered", async ({
     releaseEarthTexture = resolve;
   });
   await page.addInitScript(() => {
-    localStorage.setItem("probpera.globe-style.v1", "antique");
+    localStorage.setItem("probpera.globe-edition.v2", "rand-mcnally-1887");
   });
   await page.route(/earth-blue-marble/u, async (route) => {
     markEarthTextureRequested();
@@ -306,27 +306,36 @@ test("style buttons commit only the texture that actually rendered", async ({
     await route.continue();
   });
   const { globe } = await openAtlas(page);
-  const antique = globe.locator('[data-globe-style-option="antique"]');
-  const earth = globe.locator('[data-globe-style-option="earth"]');
-  await expect(antique).toHaveAttribute("aria-pressed", "true");
+  const randMcNally = globe.locator(
+    '[data-globe-edition-option="rand-mcnally-1887"]'
+  );
+  const nasa = globe.locator(
+    '[data-globe-edition-option="nasa-blue-marble"]'
+  );
+  await expect(globe).toHaveAttribute("data-globe-edition", "rand-mcnally-1887");
+  await expect(randMcNally).toHaveAttribute("aria-pressed", "true");
 
   // DOM click intentionally skips pointer-hover preloading so the pending
   // lifecycle remains observable while the texture request is held.
-  await earth.evaluate((element) => element.click());
+  await nasa.evaluate((element) => element.click());
   await earthTextureRequested;
   await expect(globe.locator(".globe-style-switch")).toHaveAttribute(
     "aria-busy",
     "true"
   );
-  await expect(antique).toHaveAttribute("aria-pressed", "true");
-  await expect(earth).toHaveAttribute("aria-pressed", "false");
+  await expect(globe).toHaveAttribute("data-globe-edition", "rand-mcnally-1887");
+  await expect(randMcNally).toHaveAttribute("aria-pressed", "true");
+  await expect(nasa).toHaveAttribute("aria-pressed", "false");
 
   releaseEarthTexture();
+  await expect(globe).toHaveAttribute("data-globe-edition", "nasa-blue-marble", {
+    timeout: 15_000,
+  });
   await expect(globe).toHaveAttribute("data-globe-style", "earth", {
     timeout: 15_000,
   });
-  await expect(earth).toHaveAttribute("aria-pressed", "true");
-  await expect(antique).toHaveAttribute("aria-pressed", "false");
+  await expect(nasa).toHaveAttribute("aria-pressed", "true");
+  await expect(randMcNally).toHaveAttribute("aria-pressed", "false");
 });
 
 test("idle atlas does not bulk-load country flags and Auto Off becomes demand", async ({

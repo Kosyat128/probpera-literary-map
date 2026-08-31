@@ -1,9 +1,14 @@
 import { useCallback, useEffect, useReducer, useRef } from "react";
 
 import {
-  isGlobeVisualStyle,
-  type GlobeVisualStyle,
-} from "./globeAtlas";
+  DEFAULT_GLOBE_EDITION_ID,
+  parseStoredGlobeEdition,
+  type GlobeEditionId,
+} from "./globeEditions";
+
+// Keep the established state-machine API names while its values now identify
+// concrete editions rather than the former three generic surfaces.
+type GlobeVisualStyle = GlobeEditionId;
 
 export type GlobeStyleFailure = Readonly<{
   code: "texture-load-failed";
@@ -85,7 +90,7 @@ export type ExecuteGlobeStyleRequestOptions = Readonly<{
 }>;
 
 export type UseGlobeStyleStateOptions = Readonly<{
-  /** Invalid or absent stored values deliberately fall back to Antique. */
+  /** Invalid or absent stored values fall back to Rand McNally 1887. */
   initialStyle?: unknown;
   applyStyle: (style: GlobeVisualStyle) => Promise<void>;
   /** Called only after the latest request has rendered successfully. */
@@ -115,11 +120,11 @@ export type UseGlobeStyleStateResult = Readonly<{
 }>;
 
 export function resolveInitialGlobeStyle(value: unknown): GlobeVisualStyle {
-  return isGlobeVisualStyle(value) ? value : "antique";
+  return parseStoredGlobeEdition(value);
 }
 
 export function createInitialGlobeStyleState(
-  initialStyle: unknown = "antique"
+  initialStyle: unknown = DEFAULT_GLOBE_EDITION_ID
 ): GlobeStyleState {
   const style = resolveInitialGlobeStyle(initialStyle);
   return {
