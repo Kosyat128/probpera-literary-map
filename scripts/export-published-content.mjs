@@ -233,13 +233,10 @@ async function fetchPublishedTypographyInputs() {
   const response = await fetch(
     `${supabaseUrl}/rest/v1/rpc/get_published_site_typography`,
     {
-      method: "POST",
       headers: {
         apikey: publicSnapshotKey,
         Authorization: `Bearer ${publicSnapshotKey}`,
-        "Content-Type": "application/json",
       },
-      body: "{}",
     }
   );
   if (!response.ok) {
