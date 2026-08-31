@@ -8,7 +8,10 @@ import {
   setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
 import RichEditorToolbar from "@/components/rich-editor/RichEditorToolbar";
-import { articleTextTones } from "@/lib/article-content-presentation";
+import {
+  articleTextTones,
+  articleTypographyScopes,
+} from "@/lib/article-content-presentation";
 
 type ArticleEditorToolbarState = {
   disabled: boolean;
@@ -99,6 +102,22 @@ export default function ArticleEditorToolbar({
         <ToolbarButton label="Цифры" onClick={() => insertEditorialBlock(editor, "metrics")} />
         <ToolbarButton label="Раздел главы" onClick={() => insertEditorialBlock(editor, "ornament")} />
         <ToolbarButton label="Квадрат для изображения" onClick={() => insertEditorialBlock(editor, "media")} />
+      </ToolbarMenu>
+
+      <ToolbarMenu label="Роль текста">
+        <ToolbarButton
+          label="Обычный текст"
+          active={!editor?.isActive("typographyScope")}
+          onClick={() => editor?.chain().focus().unsetTypographyScope().run()}
+        />
+        {articleTypographyScopes.map((scope) => (
+          <ToolbarButton
+            key={scope.id}
+            label={scope.label}
+            active={editor?.isActive("typographyScope", { scope: scope.id })}
+            onClick={() => editor?.chain().focus().setTypographyScope(scope.id).run()}
+          />
+        ))}
       </ToolbarMenu>
 
       <ToolbarMenu label="Фото и галереи">

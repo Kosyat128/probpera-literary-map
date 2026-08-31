@@ -13,7 +13,7 @@ const root = path.resolve(process.cwd());
 const latestSchemaMigration = readFileSync(
   path.join(
     root,
-    "supabase/migrations/20260830_media_studio_lifecycle.sql"
+    "supabase/migrations/20260830_zz_site_typography_engine.sql"
   ),
   "utf8"
 );
@@ -45,6 +45,7 @@ const completeHealth: EditorialSchemaHealth = {
   mediaStudioLifecycle: true,
   mediaUsageGraph: true,
   mediaSafeReplaceRpc: true,
+  siteTypographyEngine: true,
 };
 
 describe("editorial schema health", () => {
@@ -67,6 +68,7 @@ describe("editorial schema health", () => {
     expect(productionMigrationPlanner).toContain("health ->> 'mediaStudioLifecycle'");
     expect(productionMigrationPlanner).toContain("health ->> 'mediaUsageGraph'");
     expect(productionMigrationPlanner).toContain("health ->> 'mediaSafeReplaceRpc'");
+    expect(productionMigrationPlanner).toContain("health ->> 'siteTypographyEngine'");
   });
 
   it("fails the Media Studio diagnostic closed unless all lifecycle contracts are ready", () => {

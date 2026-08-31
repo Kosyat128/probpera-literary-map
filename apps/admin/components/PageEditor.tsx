@@ -14,6 +14,7 @@ import {
   setEditorialBlockReveal,
 } from "@/components/EditorialBlock";
 import { ArticleTextTone } from "@/components/ArticleTextTone";
+import { ArticleTypographyScope } from "@/components/ArticleTypographyScope";
 import GalleryEditor, {
   type GalleryEditorKind,
 } from "@/components/article-editor/GalleryEditor";
@@ -30,7 +31,10 @@ import RichEditorToolbar from "@/components/rich-editor/RichEditorToolbar";
 import RecoveryController from "@/components/editor/RecoveryController";
 import EditorMediaDialog from "@/components/EditorMediaDialog";
 import { useEditorMediaWorkflow } from "@/components/useEditorMediaWorkflow";
-import { articleTextTones } from "@/lib/article-content-presentation";
+import {
+  articleTextTones,
+  articleTypographyScopes,
+} from "@/lib/article-content-presentation";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
 import {
   defaultEditorialGallerySettings,
@@ -227,7 +231,7 @@ export default function PageEditor({
       placeholder:
         "Напишите содержимое страницы. Подзаголовки, списки и ссылки помогут сделать материал удобным.",
       afterStarterKit: [EditorialBlock],
-      afterImage: [ArticleTextTone],
+      afterImage: [ArticleTextTone, ArticleTypographyScope],
     }),
     content: page.content_json || page.content_html || "",
     onUpdate({ editor: currentEditor }) {
@@ -611,6 +615,24 @@ export default function PageEditor({
                   </button>
                 ))}
               </div>
+            </div>
+          </details>
+          <details className="editor-tool-menu">
+            <summary>Роль текста</summary>
+            <div className="editor-tool-menu-panel">
+              <ToolbarButton
+                label="Обычный текст"
+                active={!editor?.isActive("typographyScope")}
+                onClick={() => editor?.chain().focus().unsetTypographyScope().run()}
+              />
+              {articleTypographyScopes.map((scope) => (
+                <ToolbarButton
+                  key={scope.id}
+                  label={scope.label}
+                  active={editor?.isActive("typographyScope", { scope: scope.id })}
+                  onClick={() => editor?.chain().focus().setTypographyScope(scope.id).run()}
+                />
+              ))}
             </div>
           </details>
           <ToolbarButton

@@ -43,13 +43,15 @@
    `20260814_publication_outbox_and_schema_health.sql` и
    `20260820_homepage_book_month_editorial_choice.sql`,
    `20260820_literary_work_cover_artworks.sql`,
-   `20260822_staff_editorial_read_rls.sql` и
-   `20260830_media_studio_lifecycle.sql` в порядке имени файла.
+   `20260822_staff_editorial_read_rls.sql`,
+   `20260830_media_studio_lifecycle.sql` и
+   `20260830_zz_site_typography_engine.sql` в порядке имени файла.
    Перед применением обязательно должен успешно завершиться workflow
    `Encrypted Supabase backup` с реальным восстановлением dump в изолированную
    PostgreSQL. После применения проверьте в разделе «Состояние сайта» версию
-   схемы `20260830_media_studio_lifecycle`, три staff-only политики чтения,
-   контракты Media Studio и отсутствие необработанных запросов публикации.
+   схемы `20260830_zz_site_typography_engine`, staff-only политики чтения,
+   контракты Media Studio и Typography Engine, приватный bucket `site-fonts`
+   и отсутствие необработанных запросов публикации.
 3. Скопировать `apps/admin/.env.example` в локальный `.env.local` панели и
    заполнить публичные параметры Supabase. Ключ `service_role` нельзя добавлять
    в переменные `NEXT_PUBLIC_*` и нельзя передавать браузеру.

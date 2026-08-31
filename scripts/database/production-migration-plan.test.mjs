@@ -94,7 +94,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(18);
+      expect(manifest.migrations).toHaveLength(19);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -114,6 +114,7 @@ describe("guarded production database reconciliation", () => {
         "20260828_reader_book_collection_icons.sql",
         "20260828_zz_editor_autosaves.sql",
         "20260830_media_studio_lifecycle.sql",
+        "20260830_zz_site_typography_engine.sql",
       ]);
       expect(manifest.migrations.every((migration) => /^[0-9a-f]{64}$/u.test(migration.sha256))).toBe(true);
       expect(plan).not.toContain("\r\n");
@@ -151,6 +152,7 @@ describe("guarded production database reconciliation", () => {
         "mediaStudioLifecycle",
         "mediaUsageGraph",
         "mediaSafeReplaceRpc",
+        "siteTypographyEngine",
       ]);
       expect(healthFailureDiagnostic).not.toContain("jsonb_each");
       expect(healthFailureDiagnostic).not.toContain("pendingPublicBuilds");
@@ -164,6 +166,13 @@ describe("guarded production database reconciliation", () => {
       expect(plan).toContain("public.list_media_studio_assets");
       expect(plan).toContain("public.preview_media_asset_replacement");
       expect(plan).toContain("public.replace_media_asset_current_usages");
+      expect(plan).toContain("public.font_assets");
+      expect(plan).toContain("public.site_typography_overrides");
+      expect(plan).toContain("public.site_typography_revisions");
+      expect(plan).toContain("public.archive_font_asset");
+      expect(plan).toContain("public.save_site_typography_override");
+      expect(plan).toContain("public.publish_site_typography_override");
+      expect(plan).toContain("public.restore_site_typography_revision");
       expect(plan).toMatch(
         /do \$storage_policy_guard\$[\s\S]*if to_regclass\('storage\.objects'\) is not null then[\s\S]*\$storage_policy_guard\$;/u
       );
@@ -185,6 +194,7 @@ describe("guarded production database reconciliation", () => {
       expect(verification).toContain("media_studio_lifecycle=");
       expect(verification).toContain("media_usage_graph=");
       expect(verification).toContain("media_safe_replace_rpc=");
+      expect(verification).toContain("site_typography_engine=");
       expect(verification).toContain("then 'true' else 'false' end");
     } finally {
       rmSync(temporaryDirectory, { recursive: true, force: true });
@@ -414,6 +424,9 @@ describe("guarded production database reconciliation", () => {
       "if to_regclass('storage.objects') is not null then"
     );
     expect(storageStubImplementation).toContain(
+      "if to_regclass('storage.buckets') is not null then"
+    );
+    expect(storageStubImplementation).toContain(
       "isolated platform storage schema is missing"
     );
     expect(storageStubImplementation).toContain(
@@ -423,15 +436,26 @@ describe("guarded production database reconciliation", () => {
       "isolated platform storage.objects must be absent"
     );
     expect(storageStubImplementation).toContain(
+      "isolated platform storage.buckets must be absent"
+    );
+    expect(storageStubImplementation).toContain(
       "set local role supabase_storage_admin;"
+    );
+    expect(storageStubImplementation).toMatch(
+      /create table storage\.buckets \(\s*id text primary key,\s*name text not null unique,\s*public boolean not null default false,\s*file_size_limit bigint,\s*allowed_mime_types text\[\]\s*\);/u
     );
     expect(storageStubImplementation).toMatch(
       /create table storage\.objects \(\s*bucket_id text not null,\s*name text not null,\s*owner_id text,\s*created_at timestamptz not null default now\(\),\s*primary key \(bucket_id, name\)\s*\);/u
     );
     expect(storageStubImplementation.indexOf("set local role supabase_storage_admin;"))
+      .toBeLessThan(storageStubImplementation.indexOf("create table storage.buckets"));
+    expect(storageStubImplementation.indexOf("create table storage.buckets"))
       .toBeLessThan(storageStubImplementation.indexOf("create table storage.objects"));
     expect(storageStubImplementation.indexOf("create table storage.objects"))
       .toBeLessThan(storageStubImplementation.indexOf("reset role;"));
+    expect(storageStubImplementation).toContain(
+      "alter table storage.buckets enable row level security;"
+    );
     expect(storageStubImplementation).toContain(
       "alter table storage.objects enable row level security;"
     );
@@ -441,11 +465,13 @@ describe("guarded production database reconciliation", () => {
     expect(storageStubImplementation).toContain("--dbname=probpera_restore");
     expect(storageStubImplementation).toContain("--set=ON_ERROR_STOP=1");
     expect(storageStubImplementation).toContain("--single-transaction");
-    expect(storageStubImplementation.match(/create\s+table/giu)).toHaveLength(1);
+    expect(storageStubImplementation.match(/create\s+table/giu)).toHaveLength(2);
     expect(storageStubImplementation).not.toMatch(/create\s+schema/iu);
     expect(storageStubImplementation).not.toMatch(/if\s+not\s+exists/iu);
     expect(storageStubImplementation).not.toMatch(/\b(?:grant|insert|copy)\b/iu);
-    expect(storageStubImplementation).not.toContain("storage.buckets");
+    expect(storageStubImplementation).not.toMatch(
+      /(?:insert|copy)\s+(?:into\s+)?storage\.buckets/iu
+    );
 
     const planBranchStart = restoreImplementation.indexOf(
       'if [[ -n "$plan" ]]'
@@ -651,16 +677,19 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "Migration range: 20260808_article_translations through 20260830_media_studio_lifecycle"
+      "Migration range: 20260808_article_translations through 20260830_zz_site_typography_engine"
     );
     expect(workflowSource).toContain(
-      "schema_health=20260830_media_studio_lifecycle;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=18;invalid_indexes=0"
+      "schema_health=20260830_zz_site_typography_engine;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=19;invalid_indexes=0"
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260828_zz_editor_autosaves.sql"'
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260830_media_studio_lifecycle.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260830_zz_site_typography_engine.sql"'
     );
     expect(workflowSource).toContain(
       "reconciliation/production-verification-expected.txt"

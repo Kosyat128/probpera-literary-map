@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   articleTextTones,
   articleTextTone,
+  articleTypographyScope,
   safeTextToneSpanAttributes,
   sanitizeArticleTextToneJson,
 } from "./article-content-presentation";
@@ -14,6 +15,12 @@ describe("safe article presentation tokens", () => {
     expect(articleTextTone("charcoal")).toBe("charcoal");
     expect(articleTextTone("expression(alert(1))")).toBeNull();
     expect(articleTextTone("#00ff00")).toBeNull();
+  });
+
+  it("accepts only controlled semantic typography roles", () => {
+    expect(articleTypographyScope("lead")).toBe("lead");
+    expect(articleTypographyScope("caption")).toBe("caption");
+    expect(articleTypographyScope("body{position:fixed}")).toBeNull();
   });
 
   it("removes an untrusted tone mark from Tiptap JSON", () => {
@@ -31,6 +38,8 @@ describe("safe article presentation tokens", () => {
               injected: true,
             },
             { type: "textTone", attrs: { tone: "url(javascript:alert(1))" } },
+            { type: "typographyScope", attrs: { scope: "lead", style: "position:fixed" } },
+            { type: "typographyScope", attrs: { scope: "script" } },
           ],
         },
       ],
@@ -39,6 +48,7 @@ describe("safe article presentation tokens", () => {
     expect(result.content[0].marks).toEqual([
       { type: "bold" },
       { type: "textTone", attrs: { tone: "forest" } },
+      { type: "typographyScope", attrs: { scope: "lead" } },
     ]);
   });
 
@@ -58,5 +68,14 @@ describe("safe article presentation tokens", () => {
         "data-text-tone": "red;position:fixed",
       })
     ).toEqual({});
+    expect(
+      safeTextToneSpanAttributes({
+        class: "legacy article-typography-scope is-scope-old",
+        "data-typography-scope": "caption",
+      })
+    ).toEqual({
+      class: "article-typography-scope is-scope-caption",
+      "data-typography-scope": "caption",
+    });
   });
 });
