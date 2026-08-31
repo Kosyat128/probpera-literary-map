@@ -46,13 +46,19 @@
               "url": "https://www.cervantes.es/bibliotecas_documentacion_espanol/creadores/neuman_andres.htm",
               "checkedAt": "2026-08-09",
               "findingRu": "Биографическая справка фиксирует присуждение премии «Альфагуара» за роман «Путешественник века» в 2009 году."
+            },
+            {
+              "provider": "Премия «Альфагуара»",
+              "url": "https://premioalfaguara.com/documentos/1721818671_dosier_prensa.pdf",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Официальное досье премии называет Андреса Неймана лауреатом 2009 года за роман «Путешественник века»."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 02",
       "decision": "corrected",
-      "notes": "Оценочный рейтинг заменён датированным фактом о литературной премии.",
+      "notes": "Оценочный рейтинг заменён датированным фактом о литературной премии; награда независимо сверена с официальным досье «Альфагуары».",
       "applicableTextRu": "Аргентинско-испанский писатель и поэт, лауреат премии «Альфагуара» 2009 года."
     },
     {
@@ -239,6 +245,12 @@
               "url": "https://www.bn.gov.ar/noticias/2-de-septiembre-de-1805-nace-esteban-echeverria",
               "checkedAt": "2026-08-09",
               "findingRu": "Национальная библиотека характеризует Эчеверрию как поэта и прозаика аргентинской традиции."
+            },
+            {
+              "provider": "Biblioteca Virtual Miguel de Cervantes",
+              "url": "https://www.cervantesvirtual.com/portales/esteban_echeverria/autor_vida_obra/",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Авторский портал документирует жизненный и литературный путь Эчеверрии, его поэзию и прозу как основополагающей фигуры аргентинской литературы."
             }
           ]
         },
@@ -251,13 +263,19 @@
               "url": "https://www.bn.gov.ar/noticias/2-de-septiembre-de-1805-nace-esteban-echeverria",
               "checkedAt": "2026-08-09",
               "findingRu": "Библиотечная справка связывает с ним введение романтизма в Аргентине и начало современной национальной литературы."
+            },
+            {
+              "provider": "Biblioteca Virtual Miguel de Cervantes",
+              "url": "https://www.cervantesvirtual.com/portales/esteban_echeverria/autor_vida_obra/",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Авторский портал характеризует Эчеверрию как фигуру, стоявшую у истоков аргентинской литературы, и подробно связывает его творчество с романтизмом Рио-де-ла-Платы."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 02",
       "decision": "unchanged",
-      "notes": "Короткая формулировка полностью подтверждена национальной библиотекой.",
+      "notes": "Короткая формулировка подтверждена Национальной библиотекой Аргентины и независимо сверена с авторским порталом Biblioteca Virtual Miguel de Cervantes.",
       "applicableTextRu": "Аргентинский писатель и поэт, один из основателей романтизма в аргентинской литературе."
     },
     {
@@ -356,11 +374,17 @@
               "url": "https://www.bn.gov.ar/noticias/28-de-diciembre-de-1932-nace-manuel-puig",
               "checkedAt": "2026-08-09",
               "findingRu": "Национальная библиотека называет Пуига центральной и оригинальной фигурой аргентинской литературы его времени."
+            },
+            {
+              "provider": "Universidad Nacional de La Plata — ARCAS",
+              "url": "https://arcas.fahce.unlp.edu.ar/arcas/portada/colecciones/manuel-puig/juan-manuel-puig-delledonne",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Университетский архив подтверждает годы 1932–1990, аргентинское происхождение и писательскую деятельность Мануэля Пуига."
             }
           ]
         },
         {
-          "textRu": "В прозе Пуига соединены массовая культура, кино и разговорная речь.",
+          "textRu": "В прозе Пуига соединены массовая культура и приёмы кино.",
           "verdict": "supported",
           "evidence": [
             {
@@ -368,13 +392,31 @@
               "url": "https://www.bn.gov.ar/noticias/la-biblioteca-nacional-recuerda-a-manuel-puig-1932-1990",
               "checkedAt": "2026-08-09",
               "findingRu": "Библиотечная публикация подтверждает использование кино, радиосериалов, популярной культуры и разговорных голосов."
+            },
+            {
+              "provider": "Oxford Academic — The Oxford Handbook of the Latin American Novel",
+              "url": "https://academic.oup.com/edited-volume/41985/chapter/371787015",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Академическая глава анализирует использование Пуигом кино, массовой культуры, массовых медиа и популярных жанров."
+            }
+          ]
+        },
+        {
+          "textRu": "В прозе Пуига используются разговорные голоса.",
+          "verdict": "supported",
+          "evidence": [
+            {
+              "provider": "Национальная библиотека Аргентины",
+              "url": "https://www.bn.gov.ar/noticias/la-biblioteca-nacional-recuerda-a-manuel-puig-1932-1990",
+              "checkedAt": "2026-08-09",
+              "findingRu": "Библиотечная публикация отдельно описывает многоголосие и разговорные голоса в прозе Пуига."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 02",
       "decision": "corrected",
-      "notes": "Субъективный рейтинг снят; подтверждённые художественные приёмы сохранены.",
+      "notes": "Субъективный рейтинг снят; биография независимо сверена с университетским архивом UNLP, влияние кино и массовой культуры — с Oxford Academic, а разговорная речь оставлена только по прямому свидетельству Национальной библиотеки Аргентины.",
       "applicableTextRu": "Аргентинский писатель второй половины XX века. В прозе соединял элементы массовой культуры, кино и разговорной речи."
     },
     {
@@ -550,13 +592,19 @@
               "url": "https://isahakyanmuseum.am/htmls_eng/isahakyan_about.html",
               "checkedAt": "2026-08-09",
               "findingRu": "Официальный музейный профиль датирует жизнь поэта 1875-1957 годами и характеризует его как выдающегося армянского поэта и писателя."
+            },
+            {
+              "provider": "Центральный банк Армении",
+              "url": "https://www.cba.am/en/collector-coins/357/",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Официальное описание памятной монеты подтверждает годы жизни 1875-1957 и роли армянского поэта, прозаика и общественного деятеля."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 02",
       "decision": "corrected",
-      "notes": "Сравнительный рейтинг заменён нейтральной ролью и датами жизни.",
+      "notes": "Сравнительный рейтинг заменён нейтральной ролью и датами жизни; все элементы независимо подтверждены Центральным банком Армении.",
       "applicableTextRu": "Армянский поэт, писатель и общественный деятель, живший в 1875-1957 годах."
     },
     {
@@ -760,6 +808,12 @@
               "url": "https://www.textpublishing.com.au/news/1681-articles/gerald-murnane-receives-2026-kings-birthday-honour",
               "checkedAt": "2026-08-09",
               "findingRu": "Издатель подтверждает австралийскую писательскую карьеру Мёрнейна."
+            },
+            {
+              "provider": "State Library Victoria",
+              "url": "https://www.slv.vic.gov.au/sites/default/files/World-of-the-book-2019-exhibition-labels_0.pdf",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Выставочный каталог государственной библиотеки прямо называет Джеральда Мёрнейна австралийским писателем."
             }
           ]
         },
@@ -772,13 +826,19 @@
               "url": "https://www.textpublishing.com.au/news/1681-articles/gerald-murnane-receives-2026-kings-birthday-honour",
               "checkedAt": "2026-08-09",
               "findingRu": "Издатель перечисляет обе награды наряду с другими национальными литературными премиями."
+            },
+            {
+              "provider": "Генерал-губернатор Австралии",
+              "url": "https://www.gg.gov.au/sites/default/files/2026-06/KB26%20-%20Honours%20List%20Media%20Notes%20-%20Order%20of%20Australia%20-%20AO%20Officer_0.pdf",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Официальный биографический список фиксирует Премию Патрика Уайта 1999 года и награду Аделаидского фестиваля за литературные инновации 2010 года."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 02",
       "decision": "corrected",
-      "notes": "Суперлатив и субъективная характеристика стиля заменены двумя проверяемыми наградами.",
+      "notes": "Суперлатив и субъективная характеристика стиля заменены двумя проверяемыми наградами; обе независимо подтверждены официальным списком Генерал-губернатора Австралии.",
       "applicableTextRu": "Австралийский писатель, лауреат национальных литературных премий, в том числе Премии Патрика Уайта и награды Аделаидского фестиваля за литературные инновации."
     },
     {

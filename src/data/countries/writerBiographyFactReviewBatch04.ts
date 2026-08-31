@@ -30,6 +30,7 @@ export interface WriterBiographyFactReviewRecord {
 
 const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH04_REVIEWER;
 const checkedAt = "2026-08-09";
+const supplementalCheckedAt = "2026-08-31";
 
 type ReviewBase = Omit<WriterBiographyFactReviewRecord, "applicableTextRu">;
 
@@ -61,11 +62,13 @@ const writerBiographyFactReviewBatch04Base = [
       evidence: [
         { provider: "Президентская библиотека Азербайджана", url: "https://www.preslib.az/en/historical/page/yq1KTCc", checkedAt, findingRu: "Официальная биография называет Вургуна поэтом, народным поэтом Азербайджана и сообщает о создании стихотворной драмы «Вагиф» в 1937 году." },
         { provider: "Президентская библиотека Азербайджана", url: "https://www.preslib.az/en/virtual/books/NsAGoHq", checkedAt, findingRu: "Виртуальная выставка документирует биографию и литературное наследие Вургуна, включая драму «Вагиф»." },
+        { provider: "Национальная академия наук Азербайджана", url: "https://science.gov.az/az/news/open/35226", checkedAt: supplementalCheckedAt, findingRu: "Официальный материал называет Вургуна драматургом и первым народным поэтом Азербайджана и упоминает его драму «Вагиф»." },
+        { provider: "Государственный портал Azerbaijan.az", url: "https://azerbaijan.az/en/related-information/94", checkedAt: supplementalCheckedAt, findingRu: "Государственный обзор независимо называет Вургуна азербайджанским поэтом-драматургом и относит «Вагиф» к его стихотворным драмам." },
       ],
     }],
     reviewer,
     decision: "corrected",
-    notes: "Субъективная известность заменена официальным званием и конкретным произведением; два подтверждения принадлежат одной институциональной семье.",
+    notes: "Субъективная известность заменена официальным званием и конкретным произведением; формулировка дополнительно подтверждена независимыми материалами Академии наук и государственного портала Азербайджана.",
   },
   {
     key: "bahrain:ibrahim_al_arrayed",
@@ -142,11 +145,13 @@ const writerBiographyFactReviewBatch04Base = [
       evidence: [
         { provider: "Banglapedia, Asiatic Society of Bangladesh", url: "https://en.banglapedia.org/index.php?title=Waliullah%2C_Syed", checkedAt, findingRu: "Национальная энциклопедия определяет Валиуллу как романиста, автора рассказов и драматурга и датирует первый роман Lalsalu 1948 годом." },
         { provider: "Banglapedia, статья «Novel»", url: "https://en.banglapedia.org/index.php?title=Novel", checkedAt, findingRu: "Обзор истории бенгальского романа фиксирует Lalsalu Валиуллы и дату 1948." },
+        { provider: "Архив наследников Сайеда Валиуллы", url: "https://www.syedwaliullah.com/books", checkedAt: supplementalCheckedAt, findingRu: "Библиографический архив, который ведут дети и наследники писателя, отдельно перечисляет его романы, пьесы и рассказы." },
+        { provider: "Архив наследников Сайеда Валиуллы", url: "https://www.syedwaliullah.com/novels", checkedAt: supplementalCheckedAt, findingRu: "Архив наследников независимо указывает, что «Лалсалу» был первым романом Валиуллы и вышел в 1948 году." },
       ],
     }],
     reviewer,
     decision: "corrected",
-    notes: "Субъективный литературный ранг заменён жанровыми ролями и первым романом. Два подтверждения получены из разных статей одной национальной энциклопедии.",
+    notes: "Субъективный литературный ранг заменён жанровыми ролями и первым романом. Сведения национальной энциклопедии независимо сверены с библиографическим архивом детей и наследников писателя.",
   },
   {
     key: "barbados:kamau_brathwaite",

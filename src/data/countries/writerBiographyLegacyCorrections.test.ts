@@ -802,7 +802,7 @@ describe("legacy writer biography curation", () => {
     });
   });
 
-  it("keeps the canonical book queue unchanged while risky writers stay hidden", () => {
+  it("keeps the canonical book queue consistent while risky writers stay hidden", () => {
     const archive = buildBookArchive(bookArchiveCountries);
     const publicArchive = buildPublicBookArchive(bookArchiveCountries);
     const publicWriterKeys = new Set(
@@ -817,9 +817,9 @@ describe("legacy writer biography curation", () => {
       resolveBookArchivePublicTarget(countries, book)
     );
 
-    expect(archive).toHaveLength(9_729);
+    expect(archive).toHaveLength(9_767);
     expect(publicArchive).toHaveLength(48);
-    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_681);
+    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_719);
     expect(booksWhoseWriterCardIsQuarantined).toHaveLength(63);
     expect(booksWhoseWriterCardIsQuarantined.every((book) => !isPublicBook(book))).toBe(
       true

@@ -7,5 +7,5 @@ export type CountryProfile={
 };
 
 export const countryProfiles:CountryProfile[]=[
- {id:"russia",name:"Россия",description:"Литературная традиция с богатой школой романа и поэзии",famousGenres:["роман","поэзия"],writers:44}
+ {id:"russia",name:"Россия",description:"Литературная традиция с богатой школой романа и поэзии",famousGenres:["роман","поэзия"],writers:53}
 ];

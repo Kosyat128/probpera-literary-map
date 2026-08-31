@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-26T00:00:00.000Z",
-  "sourceManifestFingerprint": "9a5bf4627dfb6c23e6174611ece32bcf0480ad9b5f91ceb7713e0f1ed9b2e8a9",
+  "generatedAt": "2026-08-31T00:00:00.000Z",
+  "sourceManifestFingerprint": "d5f48b1599ba21d966d76de9a08963523116ae6b08f4f7f620ff029f7bde46e0",
   "source": "Deterministic reject/merge decisions from book enrichment manifest",
   "rejects": [
     {

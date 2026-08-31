@@ -295,6 +295,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch53 = [
     "uae",
     "ahmad_rashid_thani",
     {
+      "years": "1962/1963-2012",
       "birthDate": "",
       "deathDate": "2012-02-20",
       "works": [

@@ -55,6 +55,7 @@ import { writerBiographyFactReviewBatch54 } from "../src/data/countries/writerBi
 import { writerBiographyFactReviewBatch55 } from "../src/data/countries/writerBiographyFactReviewBatch55";
 import { writerBiographyFactReviewBatch56 } from "../src/data/countries/writerBiographyFactReviewBatch56";
 import { writerBiographyFactReviewBatch57 } from "../src/data/countries/writerBiographyFactReviewBatch57";
+import { quarantinedWriterIdentities } from "../src/data/countries/writerBiographyLegacyCorrections";
 
 /**
  * Build-only registry. Detailed evidence stays outside the public bundle; the
@@ -119,3 +120,8 @@ export const writerBiographyFactReviews = [
   ...writerBiographyFactReviewBatch56,
   ...writerBiographyFactReviewBatch57,
 ];
+
+export const writerBiographyFactReviewQuarantinedKeys =
+  quarantinedWriterIdentities.map(
+    ({ countryId, writerId }) => `${countryId}:${writerId}`
+  );

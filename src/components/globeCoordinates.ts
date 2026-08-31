@@ -64,6 +64,7 @@ export const COUNTRY_MARKER_COORDINATE_FALLBACKS: Readonly<
   SM: { latitude: 43.9424, longitude: 12.4578 },
   TV: { latitude: -8.5211, longitude: 179.1983 },
   VA: { latitude: 41.9029, longitude: 12.4534 },
+  VC: { latitude: 13.1600, longitude: -61.2248 },
 };
 
 function isFiniteInRange(value: number, minimum: number, maximum: number) {

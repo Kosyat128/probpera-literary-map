@@ -265,7 +265,7 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 19,
       sha256:
-        "260a808d2a2f97e9d48a8b2262a08d3cf770d3eaf0d8cd9b0306daf1ed143a30",
+        "67d9f0757f5dba3d0e1ae45787310f6ee8a7d4d1e1ba1e62e0213400e6e2e874",
     }),
   }),
   premiumCurrent: Object.freeze({
@@ -273,7 +273,7 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 43,
       sha256:
-        "b8a4187126e01b45faaf00e6ef379a73ed64ddda491c8ec09cc9b7fe334ac6f9",
+        "f11b03090de1d711d8b7bae0fab49a6d8d9118b68689f19844d6e3b2ecacb95f",
     }),
   }),
 });

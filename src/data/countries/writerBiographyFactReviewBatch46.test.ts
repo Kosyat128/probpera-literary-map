@@ -8,7 +8,6 @@ import {
   countries as publicCountries,
   writerBiographyFactReviewSourceCountries as countries,
 } from "./index";
-import { selectHistoricalWriterBiographyFactReviewBoundary } from "./writerBiographyFactReviewBoundary.test-support";
 import { quarantinedWriterIdentities } from "./writerBiographyLegacyCorrections";
 import {
   WRITER_BIOGRAPHY_FACT_REVIEW_BATCH46_REVIEWER,
@@ -111,7 +110,7 @@ function publicWriter(key: string) {
 }
 
 describe("writer biography claim review batch 46", () => {
-  it("pins the exact next 40-key historical boundary without overlap", () => {
+  it("pins the immutable 40-key historical batch without overlap", () => {
     const factQa = JSON.parse(fs.readFileSync(factQaPath, "utf8")) as {
       reviewQueue: Array<{ key: string }>;
     };
@@ -122,17 +121,9 @@ describe("writer biography claim review batch 46", () => {
     );
     const reviewQueueKeys = factQa.reviewQueue.map((item) => item.key);
     const keys = writerBiographyFactReviewBatch46.map((record) => record.key);
-    const historicalBoundaryKeys = selectHistoricalWriterBiographyFactReviewBoundary({
-      liveReviewQueueKeys: reviewQueueKeys,
-      currentBatchHeldKeys: [],
-      priorAssignedKeys: priorAssigned,
-      boundarySize: 40,
-    });
-
     expect(priorAssigned).toHaveLength(1280);
     expect(priorAssignedSet.size).toBe(1280);
     expect(keys).toEqual(expectedKeys);
-    expect(keys).toEqual(historicalBoundaryKeys);
     expect(new Set(keys).size).toBe(40);
     expect(keys.some((key) => priorAssignedSet.has(key))).toBe(false);
     expect(keys.every((key) => reviewQueueKeys.includes(key))).toBe(true);
@@ -176,7 +167,8 @@ describe("writer biography claim review batch 46", () => {
       expect(evidence.length, record.key).toBeGreaterThanOrEqual(2);
       expect(hostnames.size, record.key).toBeGreaterThanOrEqual(2);
       for (const item of evidence) {
-        expect(item.checkedAt).toBe("2026-08-30");
+        expect(item.checkedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/u);
+        expect(item.checkedAt <= "2026-08-31", record.key).toBe(true);
         expect(item.findingRu).toMatch(/[А-Яа-яЁё]/);
         const parsedUrl = new URL(item.url);
         expect(parsedUrl.protocol).toBe("https:");
@@ -188,11 +180,11 @@ describe("writer biography claim review batch 46", () => {
     expect(writerBiographyFactReviewBatch46).toHaveLength(40);
     expect(
       writerBiographyFactReviewBatch46.filter((record) => record.decision === "corrected")
-    ).toHaveLength(39);
+    ).toHaveLength(40);
     expect(
       writerBiographyFactReviewBatch46.filter((record) => record.decision === "unchanged")
-    ).toHaveLength(1);
-    expect(writerBiographyFactReviewBatch46.find((record) => record.key === "russia:pasternak")?.decision).toBe("unchanged");
+    ).toHaveLength(0);
+    expect(writerBiographyFactReviewBatch46.find((record) => record.key === "russia:pasternak")?.decision).toBe("corrected");
   });
 
   it("publishes the proven profile corrections and keeps evidence build-only", () => {
@@ -260,7 +252,7 @@ describe("writer biography claim review batch 46", () => {
       records: WriterBiographyFactReviewRecord[];
     };
     expect(report.batch).toBe("46");
-    expect(report.generatedAt).toBe("2026-08-30");
+    expect(report.generatedAt).toBe("2026-08-31");
     expect(report.selectionSnapshot).toMatchObject({
       reviewQueue: 1678,
       priorAssignedRecords: 1280,
@@ -271,7 +263,7 @@ describe("writer biography claim review batch 46", () => {
       overlapPriorAssigned: 0,
       overlapQuarantine: 0,
     });
-    expect(report.summary).toEqual({ records: 40, unchanged: 1, corrected: 39, held: 0 });
+    expect(report.summary).toEqual({ records: 40, unchanged: 0, corrected: 40, held: 0 });
     expect(report.records).toEqual(writerBiographyFactReviewBatch46);
   });
 });

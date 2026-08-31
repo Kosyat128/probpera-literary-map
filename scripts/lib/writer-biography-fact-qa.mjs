@@ -1926,6 +1926,25 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
       ],
     },
   ],
+  "uganda:timothy_wangusa": [
+    {
+      field: "birthDate",
+      cardValue: "1942-05-20",
+      stagingValue: "1942-01-01",
+      decision: "retain-current-card",
+      note: "Makerere University's official eightieth-birthday profile explicitly records 20 May 1942; the staging value represents only year-level authority precision and is not promoted over the university biography.",
+      sources: [
+        {
+          title: "Timothy Wangusa at 80 - Makerere University",
+          url: "https://news.mak.ac.ug/2022/07/makerere-university-celebrates-prof-timothy-wangusa80/",
+        },
+        {
+          title: "Timothy Wangusa - Bibliothèque nationale de France",
+          url: "https://catalogue.bnf.fr/ark:/12148/cb122319918",
+        },
+      ],
+    },
+  ],
 });
 
 const CLAIM_PATTERNS = {

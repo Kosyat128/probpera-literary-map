@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { legacyWriterBiography } from "../writerBiography";
+import {
+  legacyWriterBiography,
+  selectWriterBiography,
+} from "../writerBiography";
 import {
   countries,
   writerBiographyFactReviewSourceCountries,
@@ -23,15 +26,55 @@ describe("writer biography fact-review overlay", () => {
   it("publishes only the compact proven correction set", () => {
     expect(writerBiographyFactReviewCounts).toEqual({
       reviewed: 1740,
-      corrected: 1573,
+      corrected: 1577,
+      published: 1573,
+      russianPublished: 41,
     });
     expect(Object.keys(reviewOverlay.corrections)).toHaveLength(1573);
+    expect(Object.keys(reviewOverlay.russianBiographies)).toHaveLength(41);
     expect(reviewRollup.summary).toEqual({
       records: 1740,
-      unchanged: 103,
-      corrected: 1573,
+      unchanged: 99,
+      corrected: 1577,
       held: 64,
     });
+    expect(reviewRollup.publication).toEqual({
+      corrections: 1573,
+      russianBiographies: 41,
+      excludedQuarantinedCorrectionKeys: [
+        "cape_verde:virgilio_de_lemos",
+        "comoros:said_ahmed_mohamed",
+        "democratic_republic_of_congo:sylvain_bemba",
+        "democratic_republic_of_congo:tshibumba_kanda_matulu",
+      ],
+    });
+  });
+
+  it("publishes every Russian writer through the strict gate with a primary Russian source", () => {
+    const russianCountry = countries.find((country) => country.id === "russia");
+    expect(russianCountry?.writers).toHaveLength(53);
+
+    for (const writer of russianCountry?.writers || []) {
+      const translation = selectWriterBiography(writer, "ru");
+      expect(translation, writer.id).not.toBeNull();
+      expect(translation?.sources, writer.id).toHaveLength(1);
+      expect(translation?.sourceLanguage, writer.id).toBe("ru");
+      expect(translation?.method, writer.id).toBe("editorial-original");
+      expect(translation?.status, writer.id).toBe("verified");
+      expect(
+        new URL(translation!.sources[0]!.url).hostname,
+        writer.id
+      ).toMatch(
+        /(?:^|\.)(?:ru|chekhovmuseum\.com)$/iu
+      );
+    }
+  });
+
+  it("never ships corrections for identities removed from the public corpus", () => {
+    for (const key of reviewRollup.publication.excludedQuarantinedCorrectionKeys) {
+      expect(reviewOverlay.corrections).not.toHaveProperty(key);
+      expect(writerByKey(countries, key)).toBeUndefined();
+    }
   });
 
   it("changes a corrected text and preserves an unchanged one", () => {

@@ -43,7 +43,7 @@ describe("private admin catalog assets", () => {
         (total, country) => total + country.writers.length,
         0
       )
-    ).toBe(1_678);
+    ).toBe(1_684);
   });
 
   it("rejects duplicate editorial country ids", () => {

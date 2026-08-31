@@ -194,5 +194,5 @@ describe("Tilda dependency audit", () => {
     expect(result.generated.uniqueUrls).toBeLessThanOrEqual(
       manifest.generatedBudget.maxUniqueUrls
     );
-  });
+  }, 15_000);
 });

@@ -468,7 +468,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "spain:vicente_aleixandre",
     originalSha256: "2f7e86ce82ff98d351ad7ade0de91abd62d3e6e48942f8f3d98d69f19f56c4ad",
-    reviewedTextRu: "Висенте Алейксандре (1898–1984) — испанский поэт поколения 1927 года, получивший Нобелевскую премию по литературе в 1977 году.",
+    reviewedTextRu: "Висенте Алейксандре (1898–1984) — испанский поэт, один из участников литературного объединения, известного как «Поколение двадцать седьмого года». В 1977 году он получил Нобелевскую премию по литературе.",
     evidence: [
       e("Nobel Prize", "https://www.nobelprize.org/prizes/literature/1977/aleixandre/facts/", "Нобелевский фонд подтверждает даты 1898–1984 и премию по литературе 1977 года."),
       e("Biblioteca Nacional de España", "https://datos.bne.es/persona/XX1719402.html", "BNE независимо подтверждает биографические даты, занятие поэта и связь Алейксандре с поколением 27 года."),

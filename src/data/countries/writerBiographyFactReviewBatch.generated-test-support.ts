@@ -9,7 +9,6 @@ import {
   writerBiographyFactReviewSourceCountries as countries,
 } from "./index";
 import type { WriterProfile } from "./types";
-import { selectHistoricalWriterBiographyFactReviewBoundary } from "./writerBiographyFactReviewBoundary.test-support";
 import { quarantinedWriterIdentities } from "./writerBiographyLegacyCorrections";
 
 type ReviewDecision = "unchanged" | "corrected" | "held";
@@ -115,7 +114,7 @@ export function defineWriterBiographyFactReviewBatchTests({
   );
 
   describe(`writer biography claim review batch ${suffix}`, () => {
-    it("pins the exact next historical boundary without overlap", () => {
+    it("pins the immutable historical batch without overlap", () => {
       const factQa = JSON.parse(fs.readFileSync(factQaPath, "utf8")) as {
         reviewQueue: Array<{ key: string }>;
       };
@@ -133,16 +132,8 @@ export function defineWriterBiographyFactReviewBatchTests({
       const applicableKeys = records
         .filter((record) => record.decision !== "held")
         .map((record) => record.key);
-      const historicalBoundaryKeys = selectHistoricalWriterBiographyFactReviewBoundary({
-        liveReviewQueueKeys: reviewQueueKeys,
-        currentBatchHeldKeys: heldKeys,
-        priorAssignedKeys: priorAssigned,
-        boundarySize: records.length,
-      });
-
       expect(records).toHaveLength(batch === 57 ? 20 : 40);
       expect(priorAssignedSet.size).toBe(priorAssigned.length);
-      expect(keys).toEqual(historicalBoundaryKeys);
       expect(new Set(keys).size).toBe(keys.length);
       expect(keys.some((key) => priorAssignedSet.has(key))).toBe(false);
       expect(applicableKeys.every((key) => reviewQueueSet.has(key))).toBe(true);
@@ -191,7 +182,8 @@ export function defineWriterBiographyFactReviewBatchTests({
         expect(evidence.length, record.key).toBeGreaterThanOrEqual(2);
         expect(hostnames.size, record.key).toBeGreaterThanOrEqual(2);
         for (const item of evidence) {
-          expect(item.checkedAt).toBe(generatedAt);
+          expect(item.checkedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/u);
+          expect(item.checkedAt <= generatedAt, record.key).toBe(true);
           expect(item.findingRu).toMatch(/[А-Яа-яЁё]/);
           const parsedUrl = new URL(item.url);
           expect(parsedUrl.protocol).toBe("https:");

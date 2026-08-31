@@ -25,7 +25,9 @@ describe("book scene palette manifest", () => {
   it("is deterministic, local-only and SHA-bound to rights-approved covers", async () => {
     const manifest = await buildBookSceneThemeManifest(projectRoot);
     const current = await readFile(generatedPath, "utf8");
-    expect(serializeBookSceneThemeManifest(manifest)).toBe(current);
+    expect(serializeBookSceneThemeManifest(manifest)).toBe(
+      current.replace(/\r\n?/gu, "\n")
+    );
     expect(manifest.entries.length).toBeGreaterThan(100);
     expect(new Set(manifest.entries.map((entry) => entry.coverUrl)).size).toBe(
       manifest.entries.length

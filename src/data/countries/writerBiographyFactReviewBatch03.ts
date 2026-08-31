@@ -37,13 +37,15 @@ export interface WriterBiographyFactReviewRecord {
 
 const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH03_REVIEWER;
 const checkedAt = "2026-08-09";
+const supplementalCheckedAt = "2026-08-31";
 
 function evidence(
   provider: string,
   url: string,
-  findingRu: string
+  findingRu: string,
+  evidenceCheckedAt = checkedAt
 ): WriterBiographyClaimEvidence {
-  return { provider, url, checkedAt, findingRu };
+  return { provider, url, checkedAt: evidenceCheckedAt, findingRu };
 }
 
 const writerBiographyFactReviewBatch03Base: readonly Omit<
@@ -403,6 +405,12 @@ const writerBiographyFactReviewBatch03Base: readonly Omit<
             "https://www.nobelprize.org/prizes/literature/1973/white/press-release/",
             "Официальное сообщение подтверждает присуждение премии Уайту в 1973 году."
           ),
+          evidence(
+            "Australian Dictionary of Biography, Australian National University",
+            "https://adb.anu.edu.au/biography/white-patrick-victor-paddy-14925",
+            "Академическая биография независимо представляет Уайта как автора, связанного с Австралией, и фиксирует Нобелевскую премию по литературе 1973 года.",
+            supplementalCheckedAt
+          ),
         ],
       },
       {
@@ -419,6 +427,12 @@ const writerBiographyFactReviewBatch03Base: readonly Omit<
             "Nobel Prize Outreach",
             "https://www.nobelprize.org/prizes/literature/1973/white/article/",
             "Нобелевский очерк рассматривает психологическое измерение и эпический масштаб его романов."
+          ),
+          evidence(
+            "Australian Dictionary of Biography, Australian National University",
+            "https://adb.anu.edu.au/biography/white-patrick-victor-paddy-14925",
+            "Академическая биография независимо приводит наградную характеристику эпического и психологического повествовательного искусства Уайта.",
+            supplementalCheckedAt
           ),
         ],
       },
@@ -595,12 +609,25 @@ const writerBiographyFactReviewBatch03Base: readonly Omit<
             "https://www.nobelprize.org/prizes/literature/2004/bio-bibliography/",
             "Официальная биобиблиография подтверждает происхождение и литературную деятельность."
           ),
+          evidence(
+            "Федеральное канцлерство Австрии",
+            "https://www.bundeskanzleramt.gv.at/bundeskanzleramt/nachrichten-der-bundesregierung/2019/bierlein-und-schallenberg-gratulieren-peter-handke-zum-literaturnobelpreis-2019.html",
+            "Официальное сообщение называет Елинек австрийской лауреаткой Нобелевской премии по литературе 2004 года.",
+            supplementalCheckedAt
+          ),
+          evidence(
+            "Австрийская национальная библиотека",
+            "https://www.onb.ac.at/museen/literaturmuseum/kalender/die-klavierspielerin-zum-80-geburtstag-von-elfriede-jelinek",
+            "Литературный музей Австрийской национальной библиотеки независимо называет Елинек писательницей и нобелевской лауреаткой.",
+            supplementalCheckedAt
+          ),
         ],
       },
     ],
     reviewer,
     decision: "unchanged",
-    notes: "Краткая исходная формулировка полностью подтверждена Нобелевским комитетом.",
+    notes:
+      "Краткая исходная формулировка подтверждена Нобелевской премией и двумя независимыми австрийскими государственными институциями.",
   },
   {
     key: "austria:franz_kafka",
@@ -714,12 +741,19 @@ const writerBiographyFactReviewBatch03Base: readonly Omit<
             "https://www.nobelprize.org/uploads/2019/10/biobibliography-literatureprize2019.pdf",
             "Официальная биобиблиография подтверждает рождение Хандке в Каринтии и его литературную карьеру."
           ),
+          evidence(
+            "Федеральное канцлерство Австрии",
+            "https://www.bundeskanzleramt.gv.at/bundeskanzleramt/nachrichten-der-bundesregierung/2019/bierlein-und-schallenberg-gratulieren-peter-handke-zum-literaturnobelpreis-2019.html",
+            "Правительство Австрии независимо называет Хандке австрийским писателем и лауреатом Нобелевской премии по литературе 2019 года.",
+            supplementalCheckedAt
+          ),
         ],
       },
     ],
     reviewer,
     decision: "unchanged",
-    notes: "Краткая исходная формулировка подтверждена официальными материалами Нобелевской премии.",
+    notes:
+      "Краткая исходная формулировка подтверждена официальными материалами Нобелевской премии и Федерального канцлерства Австрии.",
   },
   {
     key: "azerbaijan:anar_rzayev",

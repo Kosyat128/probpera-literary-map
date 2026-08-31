@@ -1,12 +1,22 @@
 {
-  "version": 1,
+  "version": 3,
   "deterministic": true,
-  "sourceFingerprint": "sha256:e9ce0d72f649dba34b212f8e078c100176dd6fbf4cd44819ce4ac0e5c8ca8b9a",
+  "sourceFingerprint": "sha256:8853a8cdb40d2e8a5b1d7762a0d00c386b84786968dda8d852b03f475c99f25c",
   "summary": {
     "records": 1740,
-    "unchanged": 103,
-    "corrected": 1573,
+    "unchanged": 99,
+    "corrected": 1577,
     "held": 64
+  },
+  "publication": {
+    "corrections": 1573,
+    "russianBiographies": 41,
+    "excludedQuarantinedCorrectionKeys": [
+      "cape_verde:virgilio_de_lemos",
+      "comoros:said_ahmed_mohamed",
+      "democratic_republic_of_congo:sylvain_bemba",
+      "democratic_republic_of_congo:tshibumba_kanda_matulu"
+    ]
   },
   "reviewedKeys": [
     "afghanistan:atiq_rahimi",

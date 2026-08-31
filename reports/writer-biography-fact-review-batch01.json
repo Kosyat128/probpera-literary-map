@@ -3,8 +3,8 @@
   "scope": "Isolated claim-by-claim review; no runtime wiring",
   "summary": {
     "total": 20,
-    "unchanged": 3,
-    "corrected": 17,
+    "unchanged": 2,
+    "corrected": 18,
     "held": 0
   },
   "queueCrossCheck": {
@@ -176,12 +176,12 @@
       "key": "afghanistan:mahmud_tarzi",
       "originalSha256": "3b6e67133b6d9a09116b62b6b04801a114981aeac62de2a84a374cd6ee84107e",
       "originalTextRu": "Афганский писатель, журналист и мыслитель. Один из основателей современной афганской публицистики и литературы.",
-      "reviewedTextRu": "Афганский писатель, журналист и мыслитель. Один из основателей современной афганской публицистики и литературы.",
+      "reviewedTextRu": "Махмуд Тарзи (1865–1933) — афганский писатель, журналист, переводчик и политический деятель. В 1911–1918 годах он руководил газетой «Сирадж аль-ахбар», переводил западную художественную прозу и участвовал в становлении современной афганской журналистики и прозы.",
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Махмуд Тарзи - писатель, журналист и мыслитель.",
-          "finding": "confirmed",
+          "claimRu": "Махмуд Тарзи (1865–1933) — афганский писатель, журналист, переводчик и политический деятель.",
+          "finding": "corrected",
           "sources": [
             {
               "provider": "Encyclopaedia Iranica",
@@ -201,12 +201,18 @@
               "sourceFamily": "academic-encyclopedia",
               "url": "https://www.iranicaonline.org/articles/tarzi-mahmud/",
               "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "UNESCO",
+              "sourceFamily": "international-organization",
+              "url": "https://whc.unesco.org/document/106139",
+              "checkedAt": "2026-08-31"
             }
           ]
         },
         {
-          "field": "priority-claim",
-          "claimRu": "Тарзи стоял у истоков современной афганской журналистики и новых литературных форм.",
+          "field": "works",
+          "claimRu": "Тарзи руководил газетой «Сирадж аль-ахбар» в 1911–1918 годах.",
           "finding": "confirmed",
           "sources": [
             {
@@ -216,12 +222,50 @@
               "checkedAt": "2026-08-09"
             }
           ]
+        },
+        {
+          "field": "works",
+          "claimRu": "Тарзи переводил западную художественную прозу.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/tarzi-mahmud/",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Monash University",
+              "sourceFamily": "university-research",
+              "url": "https://research.monash.edu/en/publications/mahmud-tarzi-and-the-translation-of-western-fiction-in-afghanista",
+              "checkedAt": "2026-08-31"
+            }
+          ]
+        },
+        {
+          "field": "priority-claim",
+          "claimRu": "Современная афганская журналистика и проза формировались при непосредственном участии Тарзи.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/tarzi-mahmud/",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "UNESCO",
+              "sourceFamily": "international-organization",
+              "url": "https://whc.unesco.org/document/106139",
+              "checkedAt": "2026-08-31"
+            }
+          ]
         }
       ],
       "reviewer": "OpenAI Codex / writer_claim_review_batch01",
-      "decision": "unchanged",
+      "decision": "corrected",
       "notes": [
-        "Iranica прямо называет Тарзи отцом журналистики и описывает введённые им новые жанры прозы."
+        "Расплывчатое слово «мыслитель» заменено документированными ролями и датированным эпизодом редакторской работы; журналистика и проза независимо сверены по UNESCO, а переводы западной художественной прозы — по исследованию Monash."
       ]
     },
     {
@@ -445,6 +489,12 @@
               "sourceFamily": "national-academy",
               "url": "https://akad.gov.al/wp-content/uploads/2025/11/Buletini-tetor-2025.pdf",
               "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Diaspora Agency of Albania",
+              "sourceFamily": "government-cultural-agency",
+              "url": "https://akd.gov.al/en/naim-frasheri-25-maj-1846-20-tetor-1900/",
+              "checkedAt": "2026-08-31"
             }
           ]
         },
@@ -464,6 +514,12 @@
               "sourceFamily": "national-academy",
               "url": "https://akad.gov.al/wp-content/uploads/2025/11/Buletini-tetor-2025.pdf",
               "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Diaspora Agency of Albania",
+              "sourceFamily": "government-cultural-agency",
+              "url": "https://akd.gov.al/en/naim-frasheri-25-maj-1846-20-tetor-1900/",
+              "checkedAt": "2026-08-31"
             }
           ]
         },
@@ -477,6 +533,12 @@
               "sourceFamily": "national-academy",
               "url": "https://akad.gov.al/wp-content/uploads/2026/06/Maj-2026-Final_compressed.pdf",
               "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "National Diaspora Agency of Albania",
+              "sourceFamily": "government-cultural-agency",
+              "url": "https://akd.gov.al/en/naim-frasheri-25-maj-1846-20-tetor-1900/",
+              "checkedAt": "2026-08-31"
             }
           ]
         }
@@ -484,7 +546,7 @@
       "reviewer": "OpenAI Codex / writer_claim_review_batch01",
       "decision": "corrected",
       "notes": [
-        "Абсолютный суперлатив заменён точными институциональными определениями: национальный поэт и один из основоположников современной албанской литературы."
+        "Абсолютный суперлатив заменён точными институциональными определениями: национальный поэт и один из основоположников современной албанской литературы; формулировка независимо подтверждена государственным агентством Албании."
       ]
     },
     {
@@ -988,8 +1050,27 @@
       "claimEvidence": [
         {
           "field": "identity-role",
-          "claimRu": "Антони Морель-и-Мора - андоррский писатель и гуманист.",
+          "claimRu": "Антони Морель-и-Мора - андоррский писатель.",
           "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Government of Andorra",
+              "sourceFamily": "government-publication",
+              "url": "https://www.govern.ad/documents/d/guest/2019_el_soler_antoni_morell_lhumanista_andorra",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Gran Enciclopèdia Catalana",
+              "sourceFamily": "scholarly-encyclopedia",
+              "url": "https://www.enciclopedia.cat/gran-enciclopedia-catalana/antoni-morell-i-mora",
+              "checkedAt": "2026-08-31"
+            }
+          ]
+        },
+        {
+          "field": "identity-role",
+          "claimRu": "Правительственная публикация характеризует Мореля как гуманиста.",
+          "finding": "confirmed",
           "sources": [
             {
               "provider": "Government of Andorra",
@@ -1022,6 +1103,12 @@
               "sourceFamily": "government-publication",
               "url": "https://www.govern.ad/documents/d/guest/2019_el_soler_antoni_morell_lhumanista_andorra",
               "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Gran Enciclopèdia Catalana",
+              "sourceFamily": "scholarly-encyclopedia",
+              "url": "https://www.enciclopedia.cat/gran-enciclopedia-catalana/antoni-morell-i-mora",
+              "checkedAt": "2026-08-31"
             }
           ]
         }
@@ -1029,7 +1116,7 @@
       "reviewer": "OpenAI Codex / writer_claim_review_batch01",
       "decision": "corrected",
       "notes": [
-        "Расплывчатая известность заменена содержательной характеристикой из официального правительственного издания."
+        "Расплывчатая известность заменена содержательной характеристикой; сведения о писательской работе и андоррской тематике независимо подтверждены Gran Enciclopèdia Catalana."
       ]
     },
     {
@@ -1054,6 +1141,12 @@
               "sourceFamily": "government-publication",
               "url": "https://governo.gov.ao/noticias/92/sociedade/executivo-lanca-programa-do-centenario-de-agostinho-neto/o-ministro-de-estado-e-chefe-da-casa-civil-do-presidente-da-republica-adao-de-almeida-considerou-justo-merecido-e-necessario-celebrar-o-centenario-de-agostinho-neto",
               "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Poetry Foundation",
+              "sourceFamily": "literary-foundation",
+              "url": "https://www.poetryfoundation.org/poets/agostinho-neto",
+              "checkedAt": "2026-08-31"
             }
           ]
         },
@@ -1073,6 +1166,12 @@
               "sourceFamily": "government-publication",
               "url": "https://governo.gov.ao/noticias/92/sociedade/executivo-lanca-programa-do-centenario-de-agostinho-neto/o-ministro-de-estado-e-chefe-da-casa-civil-do-presidente-da-republica-adao-de-almeida-considerou-justo-merecido-e-necessario-celebrar-o-centenario-de-agostinho-neto",
               "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Ministry of National Defence of Portugal",
+              "sourceFamily": "government-historical-publication",
+              "url": "https://www.defesa.gov.pt/pt/defesa/organizacao/comissoes/cphm/rphm/edicoes/ano1/n12021/bios/lidpolitica/neto",
+              "checkedAt": "2026-08-31"
             }
           ]
         }
@@ -1080,7 +1179,7 @@
       "reviewer": "OpenAI Codex / writer_claim_review_batch01",
       "decision": "unchanged",
       "notes": [
-        "Обе части биографии прямо подтверждены официальными публикациями правительства Анголы."
+        "Обе части биографии подтверждены публикациями правительства Анголы; поэтическая и общественно-политическая деятельность независимо сверена с Poetry Foundation, а первенство на посту президента - с исторической справкой Министерства национальной обороны Португалии."
       ]
     },
     {

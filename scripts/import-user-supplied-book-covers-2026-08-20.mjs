@@ -300,8 +300,8 @@ function setsIntersect(left, right) {
 async function validateCanonicalArchive(committedManifest) {
   const archiveModule = await sourceArchive();
   const { baseline, current, baselinePublicCount, currentPublicCount } = archiveModule;
-  if (baseline.length !== 9_729 || current.length !== 9_729) {
-    throw new Error(`Unexpected archive size: ${baseline.length}/${current.length}, expected 9729.`);
+  if (baseline.length !== 9_767 || current.length !== 9_767) {
+    throw new Error(`Unexpected archive size: ${baseline.length}/${current.length}, expected 9767.`);
   }
   if (baselinePublicCount !== 48 || currentPublicCount !== 48) {
     throw new Error(`Unexpected public book count: ${baselinePublicCount}/${currentPublicCount}, expected 48.`);

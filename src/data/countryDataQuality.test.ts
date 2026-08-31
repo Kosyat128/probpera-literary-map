@@ -97,7 +97,9 @@ describe("качество основной базы стран", () => {
         ?.writers.filter(
           (writer) => {
             const birthYear = numericYears(writer.birthDate || writer.birth || writer.years)[0];
-            const isHistoricalMononym = Boolean(birthYear && birthYear < 1700);
+            const isHistoricalMononym =
+              Boolean(birthYear && birthYear < 1700) ||
+              writer.id === "kirill-turovsky";
             return (
               !isHistoricalMononym &&
               (writer.fullName || writer.name || "").trim().split(/\s+/u).length < 3

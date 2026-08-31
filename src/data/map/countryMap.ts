@@ -6,7 +6,7 @@ export type CountryMapItem = {
 };
 
 export const countryMap:CountryMapItem[]=[
- {id:"russia",name:"Россия",svgId:"RU",writersCount:44},
+ {id:"russia",name:"Россия",svgId:"RU",writersCount:53},
  {id:"france",name:"Франция",svgId:"FR",writersCount:0},
  {id:"uk",name:"Великобритания",svgId:"GB",writersCount:0},
  {id:"usa",name:"США",svgId:"US",writersCount:0},

@@ -7,7 +7,7 @@ import { writerBiographyPublicProfileFactCorrectionsBatch52 } from "./writerBiog
 
 defineWriterBiographyFactReviewBatchTests({
   batch: 52,
-  generatedAt: "2026-08-30",
+  generatedAt: "2026-08-31",
   reviewer: WRITER_BIOGRAPHY_FACT_REVIEW_BATCH52_REVIEWER,
   records: writerBiographyFactReviewBatch52,
   profileCorrections: writerBiographyPublicProfileFactCorrectionsBatch52,
