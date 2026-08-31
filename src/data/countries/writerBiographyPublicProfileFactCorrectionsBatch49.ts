@@ -63,7 +63,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch49 = [
     },
     sources(
       ["South African History Online", "https://sahistory.org.za/people/olive-schreiner"],
-      ["University of Wisconsin–Madison", "https://dept.english.wisc.edu/amcclintock/schreiner.htm"],
+      ["University of Wisconsin-Madison", "https://dept.english.wisc.edu/amcclintock/schreiner.htm"],
     ),
     "Недоказанное первенство в современной литературе заменено подтверждёнными ролями и произведением. Место рождения в профиле исправлено с Винбурга на Виттеберген."
   ),
@@ -178,7 +178,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch49 = [
     "ko_un",
     {
       "awards": [
-        "Griffin Trust for Excellence in Poetry — Lifetime Recognition Award (2008)"
+        "Griffin Trust for Excellence in Poetry - Lifetime Recognition Award (2008)"
       ]
     },
     sources(

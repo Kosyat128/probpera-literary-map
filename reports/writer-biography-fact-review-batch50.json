@@ -21,24 +21,24 @@
     {
       "key": "south_korea:yi_sang",
       "originalSha256": "6626387f2e991413ed874850c246bf7a8a209a147034060b6aaf0974acc7841e",
-      "reviewedTextRu": "Ли Сан — литературный псевдоним Ким Хэ Гёна (1910–1937), корейского поэта и прозаика, получившего архитектурное образование и работавшего чертёжником. Он написал рассказ «Крылья» и цикл стихотворений «Птичий глаз» (Ogamdo).",
-      "applicableTextRu": "Ли Сан — литературный псевдоним Ким Хэ Гёна (1910–1937), корейского поэта и прозаика, получившего архитектурное образование и работавшего чертёжником. Он написал рассказ «Крылья» и цикл стихотворений «Птичий глаз» (Ogamdo).",
+      "reviewedTextRu": "Ли Сан - литературный псевдоним Ким Хэ Гёна (1910-1937), корейского поэта и прозаика, получившего архитектурное образование и работавшего чертёжником. Он написал рассказ «Крылья» и цикл стихотворений «Птичий глаз» (Ogamdo).",
+      "applicableTextRu": "Ли Сан - литературный псевдоним Ким Хэ Гёна (1910-1937), корейского поэта и прозаика, получившего архитектурное образование и работавшего чертёжником. Он написал рассказ «Крылья» и цикл стихотворений «Птичий глаз» (Ogamdo).",
       "claims": [
         {
-          "textRu": "Ли Сан — литературный псевдоним Ким Хэ Гёна (1910–1937), корейского поэта и прозаика, получившего архитектурное образование и работавшего чертёжником. Он написал рассказ «Крылья» и цикл стихотворений «Птичий глаз» (Ogamdo).",
+          "textRu": "Ли Сан - литературный псевдоним Ким Хэ Гёна (1910-1937), корейского поэта и прозаика, получившего архитектурное образование и работавшего чертёжником. Он написал рассказ «Крылья» и цикл стихотворений «Птичий глаз» (Ogamdo).",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Literature Translation Institute of Korea",
               "url": "https://library.ltikorea.or.kr/writer/200095",
               "checkedAt": "2026-08-30",
-              "findingRu": "Государственный институт подтверждает настоящее имя, даты 23 сентября 1910 — 17 апреля 1937, архитектурное образование, работу чертёжником и произведения Wings и Crow's-Eye View."
+              "findingRu": "Государственный институт подтверждает настоящее имя, даты 23 сентября 1910 - 17 апреля 1937, архитектурное образование, работу чертёжником и произведения Wings и Crow's-Eye View."
             },
             {
-              "provider": "Академия корееведения — Энциклопедия корейской культуры",
+              "provider": "Академия корееведения - Энциклопедия корейской культуры",
               "url": "https://encykorea.aks.ac.kr/Article/E0044568",
               "checkedAt": "2026-08-30",
-              "findingRu": "Академическая энциклопедия независимо называет Ли Сана поэтом и прозаиком, указывает настоящее имя Ким Хэ Гён, годы 1910–1937, обучение архитектуре и работу в архитектурном отделе."
+              "findingRu": "Академическая энциклопедия независимо называет Ли Сана поэтом и прозаиком, указывает настоящее имя Ким Хэ Гён, годы 1910-1937, обучение архитектуре и работу в архитектурном отделе."
             }
           ]
         }
@@ -58,13 +58,13 @@
           "verdict": "not-established",
           "evidence": [
             {
-              "provider": "Library of Congress — поиск каталога",
+              "provider": "Library of Congress - поиск каталога",
               "url": "https://catalog.loc.gov/vwebv/search?searchArg=Atuok+Mayen&searchCode=GKEY%5E*&searchType=0&recCount=25",
               "checkedAt": "2026-08-30",
               "findingRu": "Поиск по точному латинскому написанию имени не выявляет однозначной авторской записи южносуданского писателя."
             },
             {
-              "provider": "Bibliothèque nationale de France — поиск каталога",
+              "provider": "Bibliothèque nationale de France - поиск каталога",
               "url": "https://catalogue.bnf.fr/rechercher.do?motRecherche=Atuok+Mayen&critereRecherche=0&depart=0&facetteModifiee=ok",
               "checkedAt": "2026-08-30",
               "findingRu": "Поиск по точному имени не даёт авторитетной записи, подтверждающей заявленные личность, происхождение или год рождения."
@@ -79,11 +79,11 @@
     {
       "key": "south_sudan:taban_lo_liyong",
       "originalSha256": "159c37540316bf162101f043bf57974d41336c669eb754a66a09311c2a11539e",
-      "reviewedTextRu": "Табан Ло Лийонг (родился в 1939 году в южной части тогдашнего Судана) — поэт, прозаик, эссеист и университетский преподаватель. Среди его книг — «The Last Word» и сборник рассказов «Fixions and Other Stories».",
-      "applicableTextRu": "Табан Ло Лийонг (родился в 1939 году в южной части тогдашнего Судана) — поэт, прозаик, эссеист и университетский преподаватель. Среди его книг — «The Last Word» и сборник рассказов «Fixions and Other Stories».",
+      "reviewedTextRu": "Табан Ло Лийонг (родился в 1939 году в южной части тогдашнего Судана) - поэт, прозаик, эссеист и университетский преподаватель. Среди его книг - «The Last Word» и сборник рассказов «Fixions and Other Stories».",
+      "applicableTextRu": "Табан Ло Лийонг (родился в 1939 году в южной части тогдашнего Судана) - поэт, прозаик, эссеист и университетский преподаватель. Среди его книг - «The Last Word» и сборник рассказов «Fixions and Other Stories».",
       "claims": [
         {
-          "textRu": "Табан Ло Лийонг (родился в 1939 году в южной части тогдашнего Судана) — поэт, прозаик, эссеист и университетский преподаватель. Среди его книг — «The Last Word» и сборник рассказов «Fixions and Other Stories».",
+          "textRu": "Табан Ло Лийонг (родился в 1939 году в южной части тогдашнего Судана) - поэт, прозаик, эссеист и университетский преподаватель. Среди его книг - «The Last Word» и сборник рассказов «Fixions and Other Stories».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -108,18 +108,18 @@
     {
       "key": "spain:alfonso_x_el_sabio",
       "originalSha256": "fc8e50fe878b1fb22b7d1e9522cfcaf77e7c513858edee1153d9a0a9cab3f2d2",
-      "reviewedTextRu": "Альфонсо X Мудрый (1221–1284) правил Кастилией и Леоном с 1252 года и руководил обширной придворной программой создания книг на кастильском и галисийско-португальском языках. С этой программой связаны «Cantigas de Santa María», «Siete Partidas» и «General estoria».",
-      "applicableTextRu": "Альфонсо X Мудрый (1221–1284) правил Кастилией и Леоном с 1252 года и руководил обширной придворной программой создания книг на кастильском и галисийско-португальском языках. С этой программой связаны «Cantigas de Santa María», «Siete Partidas» и «General estoria».",
+      "reviewedTextRu": "Альфонсо X Мудрый (1221-1284) правил Кастилией и Леоном с 1252 года и руководил обширной придворной программой создания книг на кастильском и галисийско-португальском языках. С этой программой связаны «Cantigas de Santa María», «Siete Partidas» и «General estoria».",
+      "applicableTextRu": "Альфонсо X Мудрый (1221-1284) правил Кастилией и Леоном с 1252 года и руководил обширной придворной программой создания книг на кастильском и галисийско-португальском языках. С этой программой связаны «Cantigas de Santa María», «Siete Partidas» и «General estoria».",
       "claims": [
         {
-          "textRu": "Альфонсо X Мудрый (1221–1284) правил Кастилией и Леоном с 1252 года и руководил обширной придворной программой создания книг на кастильском и галисийско-португальском языках. С этой программой связаны «Cantigas de Santa María», «Siete Partidas» и «General estoria».",
+          "textRu": "Альфонсо X Мудрый (1221-1284) правил Кастилией и Леоном с 1252 года и руководил обширной придворной программой создания книг на кастильском и галисийско-португальском языках. С этой программой связаны «Cantigas de Santa María», «Siete Partidas» и «General estoria».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://www.bne.es/es/agenda-eventos-actividades/exposicion-libros-rey-sabio-viii-centenario-del-nacimiento-alfonso-x",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает годы 1221–1284, королевский статус, придворное производство книг и называет Cantigas de Santa María, Grande e general estoria и Siete Partidas."
+              "findingRu": "BNE подтверждает годы 1221-1284, королевский статус, придворное производство книг и называет Cantigas de Santa María, Grande e general estoria и Siete Partidas."
             },
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
@@ -137,18 +137,18 @@
     {
       "key": "spain:antonio_machado",
       "originalSha256": "b92f3d319d97fae0bd18b25104ec437dcfb48299cf4634e3158b217513a449c8",
-      "reviewedTextRu": "Антонио Мачадо (1875–1939) — испанский поэт, прозаик и драматург, связанный с поколением 1898 года. Он написал «Soledades, galerías y otros poemas», «Campos de Castilla» и прозаический цикл «Juan de Mairena».",
-      "applicableTextRu": "Антонио Мачадо (1875–1939) — испанский поэт, прозаик и драматург, связанный с поколением 1898 года. Он написал «Soledades, galerías y otros poemas», «Campos de Castilla» и прозаический цикл «Juan de Mairena».",
+      "reviewedTextRu": "Антонио Мачадо (1875-1939) - испанский поэт, прозаик и драматург, связанный с поколением 1898 года. Он написал «Soledades, galerías y otros poemas», «Campos de Castilla» и прозаический цикл «Juan de Mairena».",
+      "applicableTextRu": "Антонио Мачадо (1875-1939) - испанский поэт, прозаик и драматург, связанный с поколением 1898 года. Он написал «Soledades, galerías y otros poemas», «Campos de Castilla» и прозаический цикл «Juan de Mairena».",
       "claims": [
         {
-          "textRu": "Антонио Мачадо (1875–1939) — испанский поэт, прозаик и драматург, связанный с поколением 1898 года. Он написал «Soledades, galerías y otros poemas», «Campos de Castilla» и прозаический цикл «Juan de Mairena».",
+          "textRu": "Антонио Мачадо (1875-1939) - испанский поэт, прозаик и драматург, связанный с поколением 1898 года. Он написал «Soledades, galerías y otros poemas», «Campos de Castilla» и прозаический цикл «Juan de Mairena».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://datos.bne.es/persona/XX991518.html",
               "checkedAt": "2026-08-30",
-              "findingRu": "Авторитетная запись BNE подтверждает годы 1875–1939, занятия поэта, писателя и драматурга, связь с поколением 98 года и перечисленные произведения."
+              "findingRu": "Авторитетная запись BNE подтверждает годы 1875-1939, занятия поэта, писателя и драматурга, связь с поколением 98 года и перечисленные произведения."
             },
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
@@ -166,11 +166,11 @@
     {
       "key": "spain:arturo_perez_reverte",
       "originalSha256": "05892cafeb1941621e16cf01cd068271de1e90818dab6ea916b602463174e943",
-      "reviewedTextRu": "Артуро Перес-Реверте (родился в 1951 году) — испанский писатель и бывший военный корреспондент. Он автор романов «El club Dumas», «La carta esférica» и цикла о капитане Алатристе.",
-      "applicableTextRu": "Артуро Перес-Реверте (родился в 1951 году) — испанский писатель и бывший военный корреспондент. Он автор романов «El club Dumas», «La carta esférica» и цикла о капитане Алатристе.",
+      "reviewedTextRu": "Артуро Перес-Реверте (родился в 1951 году) - испанский писатель и бывший военный корреспондент. Он автор романов «El club Dumas», «La carta esférica» и цикла о капитане Алатристе.",
+      "applicableTextRu": "Артуро Перес-Реверте (родился в 1951 году) - испанский писатель и бывший военный корреспондент. Он автор романов «El club Dumas», «La carta esférica» и цикла о капитане Алатристе.",
       "claims": [
         {
-          "textRu": "Артуро Перес-Реверте (родился в 1951 году) — испанский писатель и бывший военный корреспондент. Он автор романов «El club Dumas», «La carta esférica» и цикла о капитане Алатристе.",
+          "textRu": "Артуро Перес-Реверте (родился в 1951 году) - испанский писатель и бывший военный корреспондент. Он автор романов «El club Dumas», «La carta esférica» и цикла о капитане Алатристе.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -195,21 +195,21 @@
     {
       "key": "spain:benito_jeronimo_feijoo",
       "originalSha256": "eaa9e6a6ace2e35c744d87c3d87a3004085d0d535d676a7be5eb91d70ae41da5",
-      "reviewedTextRu": "Бенито Херонимо Фейхоо (1676–1764) — испанский бенедиктинец, профессор богословия и автор просветительских эссе. Его основные многотомные собрания — «Teatro crítico universal» и «Cartas eruditas y curiosas».",
-      "applicableTextRu": "Бенито Херонимо Фейхоо (1676–1764) — испанский бенедиктинец, профессор богословия и автор просветительских эссе. Его основные многотомные собрания — «Teatro crítico universal» и «Cartas eruditas y curiosas».",
+      "reviewedTextRu": "Бенито Херонимо Фейхоо (1676-1764) - испанский бенедиктинец, профессор богословия и автор просветительских эссе. Его основные многотомные собрания - «Teatro crítico universal» и «Cartas eruditas y curiosas».",
+      "applicableTextRu": "Бенито Херонимо Фейхоо (1676-1764) - испанский бенедиктинец, профессор богословия и автор просветительских эссе. Его основные многотомные собрания - «Teatro crítico universal» и «Cartas eruditas y curiosas».",
       "claims": [
         {
-          "textRu": "Бенито Херонимо Фейхоо (1676–1764) — испанский бенедиктинец, профессор богословия и автор просветительских эссе. Его основные многотомные собрания — «Teatro crítico universal» и «Cartas eruditas y curiosas».",
+          "textRu": "Бенито Херонимо Фейхоо (1676-1764) - испанский бенедиктинец, профессор богословия и автор просветительских эссе. Его основные многотомные собрания - «Teatro crítico universal» и «Cartas eruditas y curiosas».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
               "url": "https://www.cervantesvirtual.com/portales/benito_jeronimo_feijoo/autor_biografia/",
               "checkedAt": "2026-08-30",
-              "findingRu": "Академическая биография подтверждает даты 8 октября 1676 — 26 сентября 1764, принадлежность к бенедиктинцам, преподавание и издания Teatro crítico universal и Cartas eruditas y curiosas."
+              "findingRu": "Академическая биография подтверждает даты 8 октября 1676 - 26 сентября 1764, принадлежность к бенедиктинцам, преподавание и издания Teatro crítico universal и Cartas eruditas y curiosas."
             },
             {
-              "provider": "Universidad de Oviedo — Instituto Feijoo",
+              "provider": "Universidad de Oviedo - Instituto Feijoo",
               "url": "https://www.unioviedo.es/IFESXVIII_digital/wp-content/uploads/2024/11/2014_Trea_Lidiando-con-sombras.pdf",
               "checkedAt": "2026-08-30",
               "findingRu": "Университетское издание независимо приводит хронологию Фейхоо и подтверждает названия двух главных собраний эссе."
@@ -224,18 +224,18 @@
     {
       "key": "spain:benito_perez_galdos",
       "originalSha256": "0d50f830fc5d077161a71f0e5250ae7a4026eb08dff58bbf2eda7adf6288a9cd",
-      "reviewedTextRu": "Бенито Перес Гальдос (1843–1920) — испанский романист, драматург и журналист. Он написал цикл «Episodios nacionales», а также романы «Doña Perfecta» и «Fortunata y Jacinta».",
-      "applicableTextRu": "Бенито Перес Гальдос (1843–1920) — испанский романист, драматург и журналист. Он написал цикл «Episodios nacionales», а также романы «Doña Perfecta» и «Fortunata y Jacinta».",
+      "reviewedTextRu": "Бенито Перес Гальдос (1843-1920) - испанский романист, драматург и журналист. Он написал цикл «Episodios nacionales», а также романы «Doña Perfecta» и «Fortunata y Jacinta».",
+      "applicableTextRu": "Бенито Перес Гальдос (1843-1920) - испанский романист, драматург и журналист. Он написал цикл «Episodios nacionales», а также романы «Doña Perfecta» и «Fortunata y Jacinta».",
       "claims": [
         {
-          "textRu": "Бенито Перес Гальдос (1843–1920) — испанский романист, драматург и журналист. Он написал цикл «Episodios nacionales», а также романы «Doña Perfecta» и «Fortunata y Jacinta».",
+          "textRu": "Бенито Перес Гальдос (1843-1920) - испанский романист, драматург и журналист. Он написал цикл «Episodios nacionales», а также романы «Doña Perfecta» и «Fortunata y Jacinta».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://www.bne.es/autores/perez-galdos-benito",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает даты 10 мая 1843 — 4 января 1920, работу романиста и драматурга и публикацию Episodios nacionales, Doña Perfecta и Fortunata y Jacinta."
+              "findingRu": "BNE подтверждает даты 10 мая 1843 - 4 января 1920, работу романиста и драматурга и публикацию Episodios nacionales, Doña Perfecta и Fortunata y Jacinta."
             },
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
@@ -253,11 +253,11 @@
     {
       "key": "spain:calderon_de_la_barca",
       "originalSha256": "e45597efd6f3fbc736d37ea981a12e7e523ab2988b4f7c6b709cdc74c6ae5942",
-      "reviewedTextRu": "Педро Кальдерон де ла Барка (1600–1681) — испанский драматург и поэт Золотого века, позднее принявший священный сан. Среди его пьес — «La vida es sueño», «El alcalde de Zalamea» и «El médico de su honra».",
-      "applicableTextRu": "Педро Кальдерон де ла Барка (1600–1681) — испанский драматург и поэт Золотого века, позднее принявший священный сан. Среди его пьес — «La vida es sueño», «El alcalde de Zalamea» и «El médico de su honra».",
+      "reviewedTextRu": "Педро Кальдерон де ла Барка (1600-1681) - испанский драматург и поэт Золотого века, позднее принявший священный сан. Среди его пьес - «La vida es sueño», «El alcalde de Zalamea» и «El médico de su honra».",
+      "applicableTextRu": "Педро Кальдерон де ла Барка (1600-1681) - испанский драматург и поэт Золотого века, позднее принявший священный сан. Среди его пьес - «La vida es sueño», «El alcalde de Zalamea» и «El médico de su honra».",
       "claims": [
         {
-          "textRu": "Педро Кальдерон де ла Барка (1600–1681) — испанский драматург и поэт Золотого века, позднее принявший священный сан. Среди его пьес — «La vida es sueño», «El alcalde de Zalamea» и «El médico de su honra».",
+          "textRu": "Педро Кальдерон де ла Барка (1600-1681) - испанский драматург и поэт Золотого века, позднее принявший священный сан. Среди его пьес - «La vida es sueño», «El alcalde de Zalamea» и «El médico de su honra».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -282,11 +282,11 @@
     {
       "key": "spain:camilo_jose_cela",
       "originalSha256": "ff5c582b897a49b62c0c80fb736664a573c37c438a3201f82ba9165e7d740188",
-      "reviewedTextRu": "Камило Хосе Села (1916–2002) — испанский прозаик, эссеист и редактор, получивший Нобелевскую премию по литературе в 1989 году. К его романам относятся «La familia de Pascual Duarte» и «La colmena».",
-      "applicableTextRu": "Камило Хосе Села (1916–2002) — испанский прозаик, эссеист и редактор, получивший Нобелевскую премию по литературе в 1989 году. К его романам относятся «La familia de Pascual Duarte» и «La colmena».",
+      "reviewedTextRu": "Камило Хосе Села (1916-2002) - испанский прозаик, эссеист и редактор, получивший Нобелевскую премию по литературе в 1989 году. К его романам относятся «La familia de Pascual Duarte» и «La colmena».",
+      "applicableTextRu": "Камило Хосе Села (1916-2002) - испанский прозаик, эссеист и редактор, получивший Нобелевскую премию по литературе в 1989 году. К его романам относятся «La familia de Pascual Duarte» и «La colmena».",
       "claims": [
         {
-          "textRu": "Камило Хосе Села (1916–2002) — испанский прозаик, эссеист и редактор, получивший Нобелевскую премию по литературе в 1989 году. К его романам относятся «La familia de Pascual Duarte» и «La colmena».",
+          "textRu": "Камило Хосе Села (1916-2002) - испанский прозаик, эссеист и редактор, получивший Нобелевскую премию по литературе в 1989 году. К его романам относятся «La familia de Pascual Duarte» и «La colmena».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -299,7 +299,7 @@
               "provider": "Biblioteca Nacional de España",
               "url": "https://datos.bne.es/resource/XX829232",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE независимо подтверждает годы 1916–2002, занятия писателя, журналиста и редактора и каталогизирует названные романы."
+              "findingRu": "BNE независимо подтверждает годы 1916-2002, занятия писателя, журналиста и редактора и каталогизирует названные романы."
             }
           ]
         }
@@ -311,18 +311,18 @@
     {
       "key": "spain:carlos_ruiz_zafon",
       "originalSha256": "e1e017bf51fdf23c61122ee865422fd525dee729dd8133aa2998f7501f7dfc72",
-      "reviewedTextRu": "Карлос Руис Сафон (1964–2020) — испанский писатель, автор романов «La sombra del viento», «El juego del ángel» и «El prisionero del cielo».",
-      "applicableTextRu": "Карлос Руис Сафон (1964–2020) — испанский писатель, автор романов «La sombra del viento», «El juego del ángel» и «El prisionero del cielo».",
+      "reviewedTextRu": "Карлос Руис Сафон (1964-2020) - испанский писатель, автор романов «La sombra del viento», «El juego del ángel» и «El prisionero del cielo».",
+      "applicableTextRu": "Карлос Руис Сафон (1964-2020) - испанский писатель, автор романов «La sombra del viento», «El juego del ángel» и «El prisionero del cielo».",
       "claims": [
         {
-          "textRu": "Карлос Руис Сафон (1964–2020) — испанский писатель, автор романов «La sombra del viento», «El juego del ángel» и «El prisionero del cielo».",
+          "textRu": "Карлос Руис Сафон (1964-2020) - испанский писатель, автор романов «La sombra del viento», «El juego del ángel» и «El prisionero del cielo».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://www.bne.es/es/noticias/0619-fallece-ruiz-zafon",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает даты 25 сентября 1964 — 19 июня 2020, литературную деятельность и известность романа La sombra del viento."
+              "findingRu": "BNE подтверждает даты 25 сентября 1964 - 19 июня 2020, литературную деятельность и известность романа La sombra del viento."
             },
             {
               "provider": "Официальный сайт Карлоса Руиса Сафона",
@@ -340,11 +340,11 @@
     {
       "key": "spain:carmen_laforet",
       "originalSha256": "110b31fdbf90418f835ea97d023afad91ff3ec0cbe93a6af9e19c482eb61dccc",
-      "reviewedTextRu": "Кармен Лафорет (1921–2004) — испанская писательница. Её первый роман «Nada» получил первую премию Надаля; позднее она опубликовала роман «La isla y los demonios».",
-      "applicableTextRu": "Кармен Лафорет (1921–2004) — испанская писательница. Её первый роман «Nada» получил первую премию Надаля; позднее она опубликовала роман «La isla y los demonios».",
+      "reviewedTextRu": "Кармен Лафорет (1921-2004) - испанская писательница. Её первый роман «Nada» получил первую премию Надаля; позднее она опубликовала роман «La isla y los demonios».",
+      "applicableTextRu": "Кармен Лафорет (1921-2004) - испанская писательница. Её первый роман «Nada» получил первую премию Надаля; позднее она опубликовала роман «La isla y los demonios».",
       "claims": [
         {
-          "textRu": "Кармен Лафорет (1921–2004) — испанская писательница. Её первый роман «Nada» получил первую премию Надаля; позднее она опубликовала роман «La isla y los demonios».",
+          "textRu": "Кармен Лафорет (1921-2004) - испанская писательница. Её первый роман «Nada» получил первую премию Надаля; позднее она опубликовала роман «La isla y los demonios».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -357,7 +357,7 @@
               "provider": "Indiana University Libraries",
               "url": "https://collections.libraries.indiana.edu/iulibraries/s/iberoamericancentennials/page/carmenlaforet",
               "checkedAt": "2026-08-30",
-              "findingRu": "Университетская библиотека независимо приводит даты 1921–2004 и библиографию, включая Nada и La isla y los demonios."
+              "findingRu": "Университетская библиотека независимо приводит даты 1921-2004 и библиографию, включая Nada и La isla y los demonios."
             }
           ]
         }
@@ -369,11 +369,11 @@
     {
       "key": "spain:emilia_pardo_bazan",
       "originalSha256": "39036879ad58531bd5f69772c28f082d6f4b9716e62717fba2b8e0a061eb803d",
-      "reviewedTextRu": "Эмилия Пардо Басан (1851–1921) — испанская писательница, литературный критик и автор исследований о натурализме. Среди её романов — «Los pazos de Ulloa», «La madre naturaleza» и «La Tribuna».",
-      "applicableTextRu": "Эмилия Пардо Басан (1851–1921) — испанская писательница, литературный критик и автор исследований о натурализме. Среди её романов — «Los pazos de Ulloa», «La madre naturaleza» и «La Tribuna».",
+      "reviewedTextRu": "Эмилия Пардо Басан (1851-1921) - испанская писательница, литературный критик и автор исследований о натурализме. Среди её романов - «Los pazos de Ulloa», «La madre naturaleza» и «La Tribuna».",
+      "applicableTextRu": "Эмилия Пардо Басан (1851-1921) - испанская писательница, литературный критик и автор исследований о натурализме. Среди её романов - «Los pazos de Ulloa», «La madre naturaleza» и «La Tribuna».",
       "claims": [
         {
-          "textRu": "Эмилия Пардо Басан (1851–1921) — испанская писательница, литературный критик и автор исследований о натурализме. Среди её романов — «Los pazos de Ulloa», «La madre naturaleza» и «La Tribuna».",
+          "textRu": "Эмилия Пардо Басан (1851-1921) - испанская писательница, литературный критик и автор исследований о натурализме. Среди её романов - «Los pazos de Ulloa», «La madre naturaleza» и «La Tribuna».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -398,18 +398,18 @@
     {
       "key": "spain:federico_garcia_lorca",
       "originalSha256": "133412b9e6c20547c8f73f7fe4e73233f7801a34514d83aa01820b505330522b",
-      "reviewedTextRu": "Федерико Гарсиа Лорка (1898–1936) — испанский поэт и драматург поколения 1927 года. Он написал «Romancero gitano», «Bodas de sangre», «Yerma» и «La casa de Bernarda Alba».",
-      "applicableTextRu": "Федерико Гарсиа Лорка (1898–1936) — испанский поэт и драматург поколения 1927 года. Он написал «Romancero gitano», «Bodas de sangre», «Yerma» и «La casa de Bernarda Alba».",
+      "reviewedTextRu": "Федерико Гарсиа Лорка (1898-1936) - испанский поэт и драматург поколения 1927 года. Он написал «Romancero gitano», «Bodas de sangre», «Yerma» и «La casa de Bernarda Alba».",
+      "applicableTextRu": "Федерико Гарсиа Лорка (1898-1936) - испанский поэт и драматург поколения 1927 года. Он написал «Romancero gitano», «Bodas de sangre», «Yerma» и «La casa de Bernarda Alba».",
       "claims": [
         {
-          "textRu": "Федерико Гарсиа Лорка (1898–1936) — испанский поэт и драматург поколения 1927 года. Он написал «Romancero gitano», «Bodas de sangre», «Yerma» и «La casa de Bernarda Alba».",
+          "textRu": "Федерико Гарсиа Лорка (1898-1936) - испанский поэт и драматург поколения 1927 года. Он написал «Romancero gitano», «Bodas de sangre», «Yerma» и «La casa de Bernarda Alba».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://www.bne.es/es/autores/garcia-lorca-federico",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает годы 1898–1936, занятия поэта и драматурга и каталогизирует основные произведения Лорки."
+              "findingRu": "BNE подтверждает годы 1898-1936, занятия поэта и драматурга и каталогизирует основные произведения Лорки."
             },
             {
               "provider": "Centro Federico García Lorca",
@@ -427,11 +427,11 @@
     {
       "key": "spain:francisco_de_quevedo",
       "originalSha256": "f1ad688bdaf27c75eb523a6c4f4f93721a7b3ef0adee8bf8d9cb50c032a4c43f",
-      "reviewedTextRu": "Франсиско де Кеведо (1580–1645) — испанский поэт и прозаик Золотого века, писавший сатирические и нравственно-философские тексты. К его произведениям относятся «Historia de la vida del Buscón» и цикл «Sueños y discursos».",
-      "applicableTextRu": "Франсиско де Кеведо (1580–1645) — испанский поэт и прозаик Золотого века, писавший сатирические и нравственно-философские тексты. К его произведениям относятся «Historia de la vida del Buscón» и цикл «Sueños y discursos».",
+      "reviewedTextRu": "Франсиско де Кеведо (1580-1645) - испанский поэт и прозаик Золотого века, писавший сатирические и нравственно-философские тексты. К его произведениям относятся «Historia de la vida del Buscón» и цикл «Sueños y discursos».",
+      "applicableTextRu": "Франсиско де Кеведо (1580-1645) - испанский поэт и прозаик Золотого века, писавший сатирические и нравственно-философские тексты. К его произведениям относятся «Historia de la vida del Buscón» и цикл «Sueños y discursos».",
       "claims": [
         {
-          "textRu": "Франсиско де Кеведо (1580–1645) — испанский поэт и прозаик Золотого века, писавший сатирические и нравственно-философские тексты. К его произведениям относятся «Historia de la vida del Buscón» и цикл «Sueños y discursos».",
+          "textRu": "Франсиско де Кеведо (1580-1645) - испанский поэт и прозаик Золотого века, писавший сатирические и нравственно-философские тексты. К его произведениям относятся «Historia de la vida del Buscón» и цикл «Sueños y discursos».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -456,11 +456,11 @@
     {
       "key": "spain:garcilaso_de_la_vega",
       "originalSha256": "fb3bb42b1458d62234e974191f3e41a206b33aa78b2687d831ed50b55eea7772",
-      "reviewedTextRu": "Гарсиласо де ла Вега (родился около 1501 года, умер в 1536 году) — испанский поэт и военный эпохи Возрождения. Его сохранившееся поэтическое наследие включает сонеты, эклоги и элегии.",
-      "applicableTextRu": "Гарсиласо де ла Вега (родился около 1501 года, умер в 1536 году) — испанский поэт и военный эпохи Возрождения. Его сохранившееся поэтическое наследие включает сонеты, эклоги и элегии.",
+      "reviewedTextRu": "Гарсиласо де ла Вега (родился около 1501 года, умер в 1536 году) - испанский поэт и военный эпохи Возрождения. Его сохранившееся поэтическое наследие включает сонеты, эклоги и элегии.",
+      "applicableTextRu": "Гарсиласо де ла Вега (родился около 1501 года, умер в 1536 году) - испанский поэт и военный эпохи Возрождения. Его сохранившееся поэтическое наследие включает сонеты, эклоги и элегии.",
       "claims": [
         {
-          "textRu": "Гарсиласо де ла Вега (родился около 1501 года, умер в 1536 году) — испанский поэт и военный эпохи Возрождения. Его сохранившееся поэтическое наследие включает сонеты, эклоги и элегии.",
+          "textRu": "Гарсиласо де ла Вега (родился около 1501 года, умер в 1536 году) - испанский поэт и военный эпохи Возрождения. Его сохранившееся поэтическое наследие включает сонеты, эклоги и элегии.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -485,18 +485,18 @@
     {
       "key": "spain:gustavo_adolfo_becquer",
       "originalSha256": "30807e58c6159f8ac71e475f1ceb2b314884cfb7d49801922dd5fab39c8d9784",
-      "reviewedTextRu": "Густаво Адольфо Беккер (1836–1870) — испанский поэт и прозаик, чьи тексты связаны с поздним романтизмом. Его основные сборники известны как «Rimas» и «Leyendas».",
-      "applicableTextRu": "Густаво Адольфо Беккер (1836–1870) — испанский поэт и прозаик, чьи тексты связаны с поздним романтизмом. Его основные сборники известны как «Rimas» и «Leyendas».",
+      "reviewedTextRu": "Густаво Адольфо Беккер (1836-1870) - испанский поэт и прозаик, чьи тексты связаны с поздним романтизмом. Его основные сборники известны как «Rimas» и «Leyendas».",
+      "applicableTextRu": "Густаво Адольфо Беккер (1836-1870) - испанский поэт и прозаик, чьи тексты связаны с поздним романтизмом. Его основные сборники известны как «Rimas» и «Leyendas».",
       "claims": [
         {
-          "textRu": "Густаво Адольфо Беккер (1836–1870) — испанский поэт и прозаик, чьи тексты связаны с поздним романтизмом. Его основные сборники известны как «Rimas» и «Leyendas».",
+          "textRu": "Густаво Адольфо Беккер (1836-1870) - испанский поэт и прозаик, чьи тексты связаны с поздним романтизмом. Его основные сборники известны как «Rimas» и «Leyendas».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
               "url": "https://www.cervantesvirtual.com/portales/gustavo_adolfo_becquer/autor_biografia/",
               "checkedAt": "2026-08-30",
-              "findingRu": "Академическая биография подтверждает даты 1836–1870, занятия поэта и прозаика и публикационную историю Rimas и Leyendas."
+              "findingRu": "Академическая биография подтверждает даты 1836-1870, занятия поэта и прозаика и публикационную историю Rimas и Leyendas."
             },
             {
               "provider": "Biblioteca Nacional de España",
@@ -514,11 +514,11 @@
     {
       "key": "spain:jacinto_benavente",
       "originalSha256": "e797d72442ddbcdac1544a8c06adc9f7c2979139572b4ec5c0b58474903ea74e",
-      "reviewedTextRu": "Хасинто Бенавенте-и-Мартинес (1866–1954) — испанский драматург, получивший Нобелевскую премию по литературе в 1922 году. Среди его пьес — «Los intereses creados», «La malquerida» и «La noche del sábado».",
-      "applicableTextRu": "Хасинто Бенавенте-и-Мартинес (1866–1954) — испанский драматург, получивший Нобелевскую премию по литературе в 1922 году. Среди его пьес — «Los intereses creados», «La malquerida» и «La noche del sábado».",
+      "reviewedTextRu": "Хасинто Бенавенте-и-Мартинес (1866-1954) - испанский драматург, получивший Нобелевскую премию по литературе в 1922 году. Среди его пьес - «Los intereses creados», «La malquerida» и «La noche del sábado».",
+      "applicableTextRu": "Хасинто Бенавенте-и-Мартинес (1866-1954) - испанский драматург, получивший Нобелевскую премию по литературе в 1922 году. Среди его пьес - «Los intereses creados», «La malquerida» и «La noche del sábado».",
       "claims": [
         {
-          "textRu": "Хасинто Бенавенте-и-Мартинес (1866–1954) — испанский драматург, получивший Нобелевскую премию по литературе в 1922 году. Среди его пьес — «Los intereses creados», «La malquerida» и «La noche del sábado».",
+          "textRu": "Хасинто Бенавенте-и-Мартинес (1866-1954) - испанский драматург, получивший Нобелевскую премию по литературе в 1922 году. Среди его пьес - «Los intereses creados», «La malquerida» и «La noche del sábado».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -543,18 +543,18 @@
     {
       "key": "spain:javier_marias",
       "originalSha256": "2029c4e1f00679ca296f0e01764fa4ff825e54bc94ffebfcc5bd665474f01111",
-      "reviewedTextRu": "Хавьер Мариас (1951–2022) — испанский писатель, переводчик и член Королевской академии испанского языка. Он автор романов «Corazón tan blanco», «Todas las almas» и трилогии «Tu rostro mañana».",
-      "applicableTextRu": "Хавьер Мариас (1951–2022) — испанский писатель, переводчик и член Королевской академии испанского языка. Он автор романов «Corazón tan blanco», «Todas las almas» и трилогии «Tu rostro mañana».",
+      "reviewedTextRu": "Хавьер Мариас (1951-2022) - испанский писатель, переводчик и член Королевской академии испанского языка. Он автор романов «Corazón tan blanco», «Todas las almas» и трилогии «Tu rostro mañana».",
+      "applicableTextRu": "Хавьер Мариас (1951-2022) - испанский писатель, переводчик и член Королевской академии испанского языка. Он автор романов «Corazón tan blanco», «Todas las almas» и трилогии «Tu rostro mañana».",
       "claims": [
         {
-          "textRu": "Хавьер Мариас (1951–2022) — испанский писатель, переводчик и член Королевской академии испанского языка. Он автор романов «Corazón tan blanco», «Todas las almas» и трилогии «Tu rostro mañana».",
+          "textRu": "Хавьер Мариас (1951-2022) - испанский писатель, переводчик и член Королевской академии испанского языка. Он автор романов «Corazón tan blanco», «Todas las almas» и трилогии «Tu rostro mañana».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://datos.bne.es/resource/XX1720979",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает даты 20 сентября 1951 — 11 сентября 2022, занятия писателя и переводчика и библиографию романов."
+              "findingRu": "BNE подтверждает даты 20 сентября 1951 - 11 сентября 2022, занятия писателя и переводчика и библиографию романов."
             },
             {
               "provider": "Real Academia Española",
@@ -572,11 +572,11 @@
     {
       "key": "spain:jorge_manrique",
       "originalSha256": "82bd29590e7fedd8c4981680f7dc4ca101dc998910cafd777bdea8458cd0afb0",
-      "reviewedTextRu": "Хорхе Манрике (около 1440–1479) — кастильский поэт и военный. К его сохранившимся произведениям относится элегия «Coplas por la muerte de su padre».",
-      "applicableTextRu": "Хорхе Манрике (около 1440–1479) — кастильский поэт и военный. К его сохранившимся произведениям относится элегия «Coplas por la muerte de su padre».",
+      "reviewedTextRu": "Хорхе Манрике (около 1440-1479) - кастильский поэт и военный. К его сохранившимся произведениям относится элегия «Coplas por la muerte de su padre».",
+      "applicableTextRu": "Хорхе Манрике (около 1440-1479) - кастильский поэт и военный. К его сохранившимся произведениям относится элегия «Coplas por la muerte de su padre».",
       "claims": [
         {
-          "textRu": "Хорхе Манрике (около 1440–1479) — кастильский поэт и военный. К его сохранившимся произведениям относится элегия «Coplas por la muerte de su padre».",
+          "textRu": "Хорхе Манрике (около 1440-1479) - кастильский поэт и военный. К его сохранившимся произведениям относится элегия «Coplas por la muerte de su padre».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -601,18 +601,18 @@
     {
       "key": "spain:jose_de_espronceda",
       "originalSha256": "74e133d8f29ae884b05c26a277964ca627ea1894bcb4983144b4944eca93e718",
-      "reviewedTextRu": "Хосе де Эспронседа (1808–1842) — испанский поэт и прозаик эпохи романтизма. Он написал поэму «El estudiante de Salamanca», стихотворение «Canción del pirata» и незавершённую поэму «El diablo mundo».",
-      "applicableTextRu": "Хосе де Эспронседа (1808–1842) — испанский поэт и прозаик эпохи романтизма. Он написал поэму «El estudiante de Salamanca», стихотворение «Canción del pirata» и незавершённую поэму «El diablo mundo».",
+      "reviewedTextRu": "Хосе де Эспронседа (1808-1842) - испанский поэт и прозаик эпохи романтизма. Он написал поэму «El estudiante de Salamanca», стихотворение «Canción del pirata» и незавершённую поэму «El diablo mundo».",
+      "applicableTextRu": "Хосе де Эспронседа (1808-1842) - испанский поэт и прозаик эпохи романтизма. Он написал поэму «El estudiante de Salamanca», стихотворение «Canción del pirata» и незавершённую поэму «El diablo mundo».",
       "claims": [
         {
-          "textRu": "Хосе де Эспронседа (1808–1842) — испанский поэт и прозаик эпохи романтизма. Он написал поэму «El estudiante de Salamanca», стихотворение «Canción del pirata» и незавершённую поэму «El diablo mundo».",
+          "textRu": "Хосе де Эспронседа (1808-1842) - испанский поэт и прозаик эпохи романтизма. Он написал поэму «El estudiante de Salamanca», стихотворение «Canción del pirata» и незавершённую поэму «El diablo mundo».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
               "url": "https://cervantesvirtual.com/portales/jose_de_espronceda/autor_biografia/",
               "checkedAt": "2026-08-30",
-              "findingRu": "Академическая биография подтверждает даты 1808–1842, связь с романтизмом и литературную деятельность Эспронседы."
+              "findingRu": "Академическая биография подтверждает даты 1808-1842, связь с романтизмом и литературную деятельность Эспронседы."
             },
             {
               "provider": "Biblioteca Nacional de España",
@@ -630,18 +630,18 @@
     {
       "key": "spain:jose_echegaray",
       "originalSha256": "e974383f913252d2efa0da7849580c5701b4329a62351d27503c038f209cda56",
-      "reviewedTextRu": "Хосе Эчегарай-и-Эйсагирре (1832–1916) — испанский драматург, математик, инженер и политический деятель. В 1904 году он разделил Нобелевскую премию по литературе с Фредериком Мистралем; среди его пьес — «El gran Galeoto» и «O locura o santidad».",
-      "applicableTextRu": "Хосе Эчегарай-и-Эйсагирре (1832–1916) — испанский драматург, математик, инженер и политический деятель. В 1904 году он разделил Нобелевскую премию по литературе с Фредериком Мистралем; среди его пьес — «El gran Galeoto» и «O locura o santidad».",
+      "reviewedTextRu": "Хосе Эчегарай-и-Эйсагирре (1832-1916) - испанский драматург, математик, инженер и политический деятель. В 1904 году он разделил Нобелевскую премию по литературе с Фредериком Мистралем; среди его пьес - «El gran Galeoto» и «O locura o santidad».",
+      "applicableTextRu": "Хосе Эчегарай-и-Эйсагирре (1832-1916) - испанский драматург, математик, инженер и политический деятель. В 1904 году он разделил Нобелевскую премию по литературе с Фредериком Мистралем; среди его пьес - «El gran Galeoto» и «O locura o santidad».",
       "claims": [
         {
-          "textRu": "Хосе Эчегарай-и-Эйсагирре (1832–1916) — испанский драматург, математик, инженер и политический деятель. В 1904 году он разделил Нобелевскую премию по литературе с Фредериком Мистралем; среди его пьес — «El gran Galeoto» и «O locura o santidad».",
+          "textRu": "Хосе Эчегарай-и-Эйсагирре (1832-1916) - испанский драматург, математик, инженер и политический деятель. В 1904 году он разделил Нобелевскую премию по литературе с Фредериком Мистралем; среди его пьес - «El gran Galeoto» и «O locura o santidad».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://www.bne.es/es/autores/echegaray-jose",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает даты 19 апреля 1832 — 14 сентября 1916, научную, инженерную, политическую и драматургическую деятельность Эчегарая."
+              "findingRu": "BNE подтверждает даты 19 апреля 1832 - 14 сентября 1916, научную, инженерную, политическую и драматургическую деятельность Эчегарая."
             },
             {
               "provider": "Nobel Prize",
@@ -659,18 +659,18 @@
     {
       "key": "spain:jose_ortega_y_gasset",
       "originalSha256": "d39f75efebfc934db3d97b990c99e39a8dee03cd17624d90c6149f4a2af9493c",
-      "reviewedTextRu": "Хосе Ортега-и-Гассет (1883–1955) — испанский философ, эссеист и профессор метафизики. Он написал «Meditaciones del Quijote», «La deshumanización del arte» и «La rebelión de las masas».",
-      "applicableTextRu": "Хосе Ортега-и-Гассет (1883–1955) — испанский философ, эссеист и профессор метафизики. Он написал «Meditaciones del Quijote», «La deshumanización del arte» и «La rebelión de las masas».",
+      "reviewedTextRu": "Хосе Ортега-и-Гассет (1883-1955) - испанский философ, эссеист и профессор метафизики. Он написал «Meditaciones del Quijote», «La deshumanización del arte» и «La rebelión de las masas».",
+      "applicableTextRu": "Хосе Ортега-и-Гассет (1883-1955) - испанский философ, эссеист и профессор метафизики. Он написал «Meditaciones del Quijote», «La deshumanización del arte» и «La rebelión de las masas».",
       "claims": [
         {
-          "textRu": "Хосе Ортега-и-Гассет (1883–1955) — испанский философ, эссеист и профессор метафизики. Он написал «Meditaciones del Quijote», «La deshumanización del arte» и «La rebelión de las masas».",
+          "textRu": "Хосе Ортега-и-Гассет (1883-1955) - испанский философ, эссеист и профессор метафизики. Он написал «Meditaciones del Quijote», «La deshumanización del arte» и «La rebelión de las masas».",
           "verdict": "corrected",
           "evidence": [
             {
-              "provider": "Fundación José Ortega y Gasset–Gregorio Marañón",
+              "provider": "Fundación José Ortega y Gasset-Gregorio Marañón",
               "url": "https://ortegaygasset.edu/legados/jose-ortega-y-gasset/",
               "checkedAt": "2026-08-30",
-              "findingRu": "Официальный фонд подтверждает даты 1883–1955, философскую и преподавательскую деятельность и основные этапы биографии Ортеги."
+              "findingRu": "Официальный фонд подтверждает даты 1883-1955, философскую и преподавательскую деятельность и основные этапы биографии Ортеги."
             },
             {
               "provider": "Biblioteca Nacional de España",
@@ -688,11 +688,11 @@
     {
       "key": "spain:juan_de_la_cruz",
       "originalSha256": "88c154c8c856ffac0e41dec8038710c7dc8ad8deac7d50140d39bbc0d06888cc",
-      "reviewedTextRu": "Хуан де ла Крус (1542–1591) — испанский кармелит, поэт и автор мистических трактатов. Ему принадлежат «Noche oscura», «Cántico espiritual» и «Subida del Monte Carmelo».",
-      "applicableTextRu": "Хуан де ла Крус (1542–1591) — испанский кармелит, поэт и автор мистических трактатов. Ему принадлежат «Noche oscura», «Cántico espiritual» и «Subida del Monte Carmelo».",
+      "reviewedTextRu": "Хуан де ла Крус (1542-1591) - испанский кармелит, поэт и автор мистических трактатов. Ему принадлежат «Noche oscura», «Cántico espiritual» и «Subida del Monte Carmelo».",
+      "applicableTextRu": "Хуан де ла Крус (1542-1591) - испанский кармелит, поэт и автор мистических трактатов. Ему принадлежат «Noche oscura», «Cántico espiritual» и «Subida del Monte Carmelo».",
       "claims": [
         {
-          "textRu": "Хуан де ла Крус (1542–1591) — испанский кармелит, поэт и автор мистических трактатов. Ему принадлежат «Noche oscura», «Cántico espiritual» и «Subida del Monte Carmelo».",
+          "textRu": "Хуан де ла Крус (1542-1591) - испанский кармелит, поэт и автор мистических трактатов. Ему принадлежат «Noche oscura», «Cántico espiritual» и «Subida del Monte Carmelo».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -702,7 +702,7 @@
               "findingRu": "Академическая биография подтверждает рождение в 1542 году, смерть 14 декабря 1591 года, принадлежность к кармелитам и литературную деятельность."
             },
             {
-              "provider": "Biblioteca Nacional de España — каталог",
+              "provider": "Biblioteca Nacional de España - каталог",
               "url": "https://catalogo.bne.es/discovery/search?query=any,contains,Juan%20de%20la%20Cruz&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO",
               "checkedAt": "2026-08-30",
               "findingRu": "Национальный каталог независимо идентифицирует автора и фиксирует издания Noche oscura, Cántico espiritual и Subida del Monte Carmelo."
@@ -717,11 +717,11 @@
     {
       "key": "spain:juan_marse",
       "originalSha256": "1574903094e407f6aac01088d4f83ab06c6f70be8cf647c576e3abad80070249",
-      "reviewedTextRu": "Хуан Марсе (1933–2020) — испанский романист, родившийся в Барселоне. Он написал «Últimas tardes con Teresa» и «El amante bilingüe» и получил премию Сервантеса в 2008 году.",
-      "applicableTextRu": "Хуан Марсе (1933–2020) — испанский романист, родившийся в Барселоне. Он написал «Últimas tardes con Teresa» и «El amante bilingüe» и получил премию Сервантеса в 2008 году.",
+      "reviewedTextRu": "Хуан Марсе (1933-2020) - испанский романист, родившийся в Барселоне. Он написал «Últimas tardes con Teresa» и «El amante bilingüe» и получил премию Сервантеса в 2008 году.",
+      "applicableTextRu": "Хуан Марсе (1933-2020) - испанский романист, родившийся в Барселоне. Он написал «Últimas tardes con Teresa» и «El amante bilingüe» и получил премию Сервантеса в 2008 году.",
       "claims": [
         {
-          "textRu": "Хуан Марсе (1933–2020) — испанский романист, родившийся в Барселоне. Он написал «Últimas tardes con Teresa» и «El amante bilingüe» и получил премию Сервантеса в 2008 году.",
+          "textRu": "Хуан Марсе (1933-2020) - испанский романист, родившийся в Барселоне. Он написал «Últimas tardes con Teresa» и «El amante bilingüe» и получил премию Сервантеса в 2008 году.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -746,11 +746,11 @@
     {
       "key": "spain:juan_ramon_jimenez",
       "originalSha256": "bb6109ac3c6560957fa6eb25a48a773390dc6b5ce85b9910db2241c4d428c7d7",
-      "reviewedTextRu": "Хуан Рамон Хименес (1881–1958) — испанский поэт и автор лирической прозы «Platero y yo». В 1956 году он получил Нобелевскую премию по литературе.",
-      "applicableTextRu": "Хуан Рамон Хименес (1881–1958) — испанский поэт и автор лирической прозы «Platero y yo». В 1956 году он получил Нобелевскую премию по литературе.",
+      "reviewedTextRu": "Хуан Рамон Хименес (1881-1958) - испанский поэт и автор лирической прозы «Platero y yo». В 1956 году он получил Нобелевскую премию по литературе.",
+      "applicableTextRu": "Хуан Рамон Хименес (1881-1958) - испанский поэт и автор лирической прозы «Platero y yo». В 1956 году он получил Нобелевскую премию по литературе.",
       "claims": [
         {
-          "textRu": "Хуан Рамон Хименес (1881–1958) — испанский поэт и автор лирической прозы «Platero y yo». В 1956 году он получил Нобелевскую премию по литературе.",
+          "textRu": "Хуан Рамон Хименес (1881-1958) - испанский поэт и автор лирической прозы «Platero y yo». В 1956 году он получил Нобелевскую премию по литературе.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -789,7 +789,7 @@
               "findingRu": "Академический портал прямо отмечает скудость и спорность биографических сведений и связывает имя Хуана Руиса с Libro de buen amor главным образом по самому тексту."
             },
             {
-              "provider": "Biblioteca Nacional de España — каталог",
+              "provider": "Biblioteca Nacional de España - каталог",
               "url": "https://catalogo.bne.es/discovery/search?query=any,contains,Juan%20Ruiz%20Arcipreste%20de%20Hita&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO",
               "checkedAt": "2026-08-30",
               "findingRu": "Национальный каталог отражает традиционную авторскую атрибуцию и издания Libro de buen amor, но не предоставляет документированных точных дат жизни."
@@ -804,21 +804,21 @@
     {
       "key": "spain:leopoldo_alas_clarin",
       "originalSha256": "38ad5513396cdde1b30c4e1728b7d8f8a0afdcbe61c867fc5f8e46ebfb23e922",
-      "reviewedTextRu": "Леопольдо Алас «Кларин» (1852–1901) — испанский писатель, литературный критик и университетский профессор. Он автор романов «La Regenta» и «Su único hijo», а также сборника «Cuentos morales».",
-      "applicableTextRu": "Леопольдо Алас «Кларин» (1852–1901) — испанский писатель, литературный критик и университетский профессор. Он автор романов «La Regenta» и «Su único hijo», а также сборника «Cuentos morales».",
+      "reviewedTextRu": "Леопольдо Алас «Кларин» (1852-1901) - испанский писатель, литературный критик и университетский профессор. Он автор романов «La Regenta» и «Su único hijo», а также сборника «Cuentos morales».",
+      "applicableTextRu": "Леопольдо Алас «Кларин» (1852-1901) - испанский писатель, литературный критик и университетский профессор. Он автор романов «La Regenta» и «Su único hijo», а также сборника «Cuentos morales».",
       "claims": [
         {
-          "textRu": "Леопольдо Алас «Кларин» (1852–1901) — испанский писатель, литературный критик и университетский профессор. Он автор романов «La Regenta» и «Su único hijo», а также сборника «Cuentos morales».",
+          "textRu": "Леопольдо Алас «Кларин» (1852-1901) - испанский писатель, литературный критик и университетский профессор. Он автор романов «La Regenta» и «Su único hijo», а также сборника «Cuentos morales».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
               "url": "https://www.cervantesvirtual.com/portales/leopoldo_alas_clarin/autor_biografia/",
               "checkedAt": "2026-08-30",
-              "findingRu": "Академическая биография подтверждает даты 1852–1901, преподавание, критику и литературное творчество Кларина."
+              "findingRu": "Академическая биография подтверждает даты 1852-1901, преподавание, критику и литературное творчество Кларина."
             },
             {
-              "provider": "Biblioteca Nacional de España — каталог",
+              "provider": "Biblioteca Nacional de España - каталог",
               "url": "https://catalogo.bne.es/discovery/search?query=any,contains,Leopoldo%20Alas%20Clarin&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO",
               "checkedAt": "2026-08-30",
               "findingRu": "BNE независимо идентифицирует автора и каталогизирует La Regenta, Su único hijo и Cuentos morales."
@@ -833,11 +833,11 @@
     {
       "key": "spain:lope_de_vega",
       "originalSha256": "254ad4a2bed664feb19a346a75a0277d005dacf807f4d6c0ba83d84b89da6a2f",
-      "reviewedTextRu": "Лопе де Вега (1562–1635) — испанский драматург и поэт Золотого века. Среди надёжно атрибутируемых ему пьес — «Fuenteovejuna», «El perro del hortelano» и «El caballero de Olmedo».",
-      "applicableTextRu": "Лопе де Вега (1562–1635) — испанский драматург и поэт Золотого века. Среди надёжно атрибутируемых ему пьес — «Fuenteovejuna», «El perro del hortelano» и «El caballero de Olmedo».",
+      "reviewedTextRu": "Лопе де Вега (1562-1635) - испанский драматург и поэт Золотого века. Среди надёжно атрибутируемых ему пьес - «Fuenteovejuna», «El perro del hortelano» и «El caballero de Olmedo».",
+      "applicableTextRu": "Лопе де Вега (1562-1635) - испанский драматург и поэт Золотого века. Среди надёжно атрибутируемых ему пьес - «Fuenteovejuna», «El perro del hortelano» и «El caballero de Olmedo».",
       "claims": [
         {
-          "textRu": "Лопе де Вега (1562–1635) — испанский драматург и поэт Золотого века. Среди надёжно атрибутируемых ему пьес — «Fuenteovejuna», «El perro del hortelano» и «El caballero de Olmedo».",
+          "textRu": "Лопе де Вега (1562-1635) - испанский драматург и поэт Золотого века. Среди надёжно атрибутируемых ему пьес - «Fuenteovejuna», «El perro del hortelano» и «El caballero de Olmedo».",
           "verdict": "corrected",
           "evidence": [
             {
@@ -847,7 +847,7 @@
               "findingRu": "Академическая биобиблиография подтверждает даты жизни, занятия драматурга и поэта и корпус пьес Лопе де Веги."
             },
             {
-              "provider": "Biblioteca Nacional de España — каталог",
+              "provider": "Biblioteca Nacional de España - каталог",
               "url": "https://catalogo.bne.es/discovery/search?query=any,contains,Lope%20de%20Vega&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO",
               "checkedAt": "2026-08-30",
               "findingRu": "Национальный каталог документирует издания Fuenteovejuna, El perro del hortelano и El caballero de Olmedo; атрибуция La Estrella de Sevilla в научной традиции не считается бесспорной."
@@ -862,21 +862,21 @@
     {
       "key": "spain:luis_de_gongora",
       "originalSha256": "c55f4447d712af2e14269d56bd2d898d35c37ea136b7d3e0d6886e6e49b61e82",
-      "reviewedTextRu": "Луис де Гонгора (1561–1627) — испанский поэт барокко, чья поэтика связана с культизмом. Его основные произведения включают «Fábula de Polifemo y Galatea», «Soledades» и сонеты.",
-      "applicableTextRu": "Луис де Гонгора (1561–1627) — испанский поэт барокко, чья поэтика связана с культизмом. Его основные произведения включают «Fábula de Polifemo y Galatea», «Soledades» и сонеты.",
+      "reviewedTextRu": "Луис де Гонгора (1561-1627) - испанский поэт барокко, чья поэтика связана с культизмом. Его основные произведения включают «Fábula de Polifemo y Galatea», «Soledades» и сонеты.",
+      "applicableTextRu": "Луис де Гонгора (1561-1627) - испанский поэт барокко, чья поэтика связана с культизмом. Его основные произведения включают «Fábula de Polifemo y Galatea», «Soledades» и сонеты.",
       "claims": [
         {
-          "textRu": "Луис де Гонгора (1561–1627) — испанский поэт барокко, чья поэтика связана с культизмом. Его основные произведения включают «Fábula de Polifemo y Galatea», «Soledades» и сонеты.",
+          "textRu": "Луис де Гонгора (1561-1627) - испанский поэт барокко, чья поэтика связана с культизмом. Его основные произведения включают «Fábula de Polifemo y Galatea», «Soledades» и сонеты.",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
               "url": "https://cervantesvirtual.com/portales/luis_de_gongora/autor_biografia/",
               "checkedAt": "2026-08-30",
-              "findingRu": "Академическая биография подтверждает даты 1561–1627, барочную поэтику Гонгоры и его связь с культизмом."
+              "findingRu": "Академическая биография подтверждает даты 1561-1627, барочную поэтику Гонгоры и его связь с культизмом."
             },
             {
-              "provider": "Biblioteca Nacional de España — каталог",
+              "provider": "Biblioteca Nacional de España - каталог",
               "url": "https://catalogo.bne.es/discovery/search?query=any,contains,Luis%20de%20Gongora&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO",
               "checkedAt": "2026-08-30",
               "findingRu": "Национальный каталог документирует Fábula de Polifemo y Galatea, Soledades и собрания сонетов Гонгоры."
@@ -891,21 +891,21 @@
     {
       "key": "spain:mariano_jose_de_larra",
       "originalSha256": "16e4178806ee3a343073175457d63809a4329e64fce6332c32b857b6535203df",
-      "reviewedTextRu": "Мариано Хосе де Ларра (1809–1837) — испанский журналист, эссеист и драматург, публиковавшийся под псевдонимами, включая «Fígaro». Среди его сатирических статей — «El castellano viejo» и «Vuelva usted mañana».",
-      "applicableTextRu": "Мариано Хосе де Ларра (1809–1837) — испанский журналист, эссеист и драматург, публиковавшийся под псевдонимами, включая «Fígaro». Среди его сатирических статей — «El castellano viejo» и «Vuelva usted mañana».",
+      "reviewedTextRu": "Мариано Хосе де Ларра (1809-1837) - испанский журналист, эссеист и драматург, публиковавшийся под псевдонимами, включая «Fígaro». Среди его сатирических статей - «El castellano viejo» и «Vuelva usted mañana».",
+      "applicableTextRu": "Мариано Хосе де Ларра (1809-1837) - испанский журналист, эссеист и драматург, публиковавшийся под псевдонимами, включая «Fígaro». Среди его сатирических статей - «El castellano viejo» и «Vuelva usted mañana».",
       "claims": [
         {
-          "textRu": "Мариано Хосе де Ларра (1809–1837) — испанский журналист, эссеист и драматург, публиковавшийся под псевдонимами, включая «Fígaro». Среди его сатирических статей — «El castellano viejo» и «Vuelva usted mañana».",
+          "textRu": "Мариано Хосе де Ларра (1809-1837) - испанский журналист, эссеист и драматург, публиковавшийся под псевдонимами, включая «Fígaro». Среди его сатирических статей - «El castellano viejo» и «Vuelva usted mañana».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
               "url": "https://www.cervantesvirtual.com/portales/mariano_jose_de_larra/autor_biografia/",
               "checkedAt": "2026-08-30",
-              "findingRu": "Академическая биография подтверждает даты 1809–1837, журналистскую, эссеистическую и драматургическую работу Ларры и использование псевдонима Fígaro."
+              "findingRu": "Академическая биография подтверждает даты 1809-1837, журналистскую, эссеистическую и драматургическую работу Ларры и использование псевдонима Fígaro."
             },
             {
-              "provider": "Biblioteca Nacional de España — каталог",
+              "provider": "Biblioteca Nacional de España - каталог",
               "url": "https://catalogo.bne.es/discovery/search?query=any,contains,Mariano%20Jose%20de%20Larra&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO",
               "checkedAt": "2026-08-30",
               "findingRu": "Национальный каталог независимо идентифицирует автора и документирует статьи El castellano viejo и Vuelva usted mañana."
@@ -931,7 +931,7 @@
               "provider": "Biblioteca Nacional de España",
               "url": "https://cervantes.bne.es/ficheros/exposicion/ESTUDIOS/01_Una_vida_tras_la_sombra_de_un_mito.pdf",
               "checkedAt": "2026-08-30",
-              "findingRu": "Исследование BNE подтверждает запись о крещении 9 октября 1547 года и объясняет, что 29 сентября — традиционное предположение, а не установленная запись о рождении."
+              "findingRu": "Исследование BNE подтверждает запись о крещении 9 октября 1547 года и объясняет, что 29 сентября - традиционное предположение, а не установленная запись о рождении."
             },
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
@@ -949,18 +949,18 @@
     {
       "key": "spain:miguel_de_unamuno",
       "originalSha256": "b9acbd576bd4a9c0cf836a3a15775cd0b08a1fe4b54875d6cbe56379255e6505",
-      "reviewedTextRu": "Мигель де Унамуно (1864–1936) — испанский писатель, философ и профессор, связанный с поколением 1898 года. Он написал «Niebla», «Abel Sánchez» и «San Manuel Bueno, mártir».",
-      "applicableTextRu": "Мигель де Унамуно (1864–1936) — испанский писатель, философ и профессор, связанный с поколением 1898 года. Он написал «Niebla», «Abel Sánchez» и «San Manuel Bueno, mártir».",
+      "reviewedTextRu": "Мигель де Унамуно (1864-1936) - испанский писатель, философ и профессор, связанный с поколением 1898 года. Он написал «Niebla», «Abel Sánchez» и «San Manuel Bueno, mártir».",
+      "applicableTextRu": "Мигель де Унамуно (1864-1936) - испанский писатель, философ и профессор, связанный с поколением 1898 года. Он написал «Niebla», «Abel Sánchez» и «San Manuel Bueno, mártir».",
       "claims": [
         {
-          "textRu": "Мигель де Унамуно (1864–1936) — испанский писатель, философ и профессор, связанный с поколением 1898 года. Он написал «Niebla», «Abel Sánchez» и «San Manuel Bueno, mártir».",
+          "textRu": "Мигель де Унамуно (1864-1936) - испанский писатель, философ и профессор, связанный с поколением 1898 года. Он написал «Niebla», «Abel Sánchez» и «San Manuel Bueno, mártir».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://www.bne.es/es/autores/unamuno-miguel",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает даты 29 сентября 1864 — 31 декабря 1936, занятия писателя и философа и библиографию Унамуно."
+              "findingRu": "BNE подтверждает даты 29 сентября 1864 - 31 декабря 1936, занятия писателя и философа и библиографию Унамуно."
             },
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
@@ -978,11 +978,11 @@
     {
       "key": "spain:miguel_delibes",
       "originalSha256": "66842a9797cbb3b2f0eeb071d34ddbd422ffd7657935b2b8448fd265501a39a9",
-      "reviewedTextRu": "Мигель Делибес (1920–2010) — испанский романист, журналист и член Королевской академии испанского языка. Он написал «El camino», «Cinco horas con Mario» и «Los santos inocentes» и получил премию Сервантеса в 1993 году.",
-      "applicableTextRu": "Мигель Делибес (1920–2010) — испанский романист, журналист и член Королевской академии испанского языка. Он написал «El camino», «Cinco horas con Mario» и «Los santos inocentes» и получил премию Сервантеса в 1993 году.",
+      "reviewedTextRu": "Мигель Делибес (1920-2010) - испанский романист, журналист и член Королевской академии испанского языка. Он написал «El camino», «Cinco horas con Mario» и «Los santos inocentes» и получил премию Сервантеса в 1993 году.",
+      "applicableTextRu": "Мигель Делибес (1920-2010) - испанский романист, журналист и член Королевской академии испанского языка. Он написал «El camino», «Cinco horas con Mario» и «Los santos inocentes» и получил премию Сервантеса в 1993 году.",
       "claims": [
         {
-          "textRu": "Мигель Делибес (1920–2010) — испанский романист, журналист и член Королевской академии испанского языка. Он написал «El camino», «Cinco horas con Mario» и «Los santos inocentes» и получил премию Сервантеса в 1993 году.",
+          "textRu": "Мигель Делибес (1920-2010) - испанский романист, журналист и член Королевской академии испанского языка. Он написал «El camino», «Cinco horas con Mario» и «Los santos inocentes» и получил премию Сервантеса в 1993 году.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -1007,18 +1007,18 @@
     {
       "key": "spain:pío_baroja",
       "originalSha256": "7089ba183b1ed499cae45e31c123e12f083aa68ac734dcc22aea39b4a9b76b0e",
-      "reviewedTextRu": "Пио Бароха (1872–1956) — испанский романист, связанный с поколением 1898 года. Среди его романов — «El árbol de la ciencia», «Zalacaín el aventurero» и «Las inquietudes de Shanti Andía».",
-      "applicableTextRu": "Пио Бароха (1872–1956) — испанский романист, связанный с поколением 1898 года. Среди его романов — «El árbol de la ciencia», «Zalacaín el aventurero» и «Las inquietudes de Shanti Andía».",
+      "reviewedTextRu": "Пио Бароха (1872-1956) - испанский романист, связанный с поколением 1898 года. Среди его романов - «El árbol de la ciencia», «Zalacaín el aventurero» и «Las inquietudes de Shanti Andía».",
+      "applicableTextRu": "Пио Бароха (1872-1956) - испанский романист, связанный с поколением 1898 года. Среди его романов - «El árbol de la ciencia», «Zalacaín el aventurero» и «Las inquietudes de Shanti Andía».",
       "claims": [
         {
-          "textRu": "Пио Бароха (1872–1956) — испанский романист, связанный с поколением 1898 года. Среди его романов — «El árbol de la ciencia», «Zalacaín el aventurero» и «Las inquietudes de Shanti Andía».",
+          "textRu": "Пио Бароха (1872-1956) - испанский романист, связанный с поколением 1898 года. Среди его романов - «El árbol de la ciencia», «Zalacaín el aventurero» и «Las inquietudes de Shanti Andía».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://datos.bne.es/resource/XX842743",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает даты 1872–1956, профессию писателя и каталогизирует El árbol de la ciencia, Zalacaín el aventurero и Las inquietudes de Shanti Andía."
+              "findingRu": "BNE подтверждает даты 1872-1956, профессию писателя и каталогизирует El árbol de la ciencia, Zalacaín el aventurero и Las inquietudes de Shanti Andía."
             },
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
@@ -1036,11 +1036,11 @@
     {
       "key": "spain:rafael_alberti",
       "originalSha256": "be64cf0b411d198687b7678169d6997c68e699c6420c367fce1b7a7d74b6e6a8",
-      "reviewedTextRu": "Рафаэль Альберти (1902–1999) — испанский поэт и драматург поколения 1927 года. Он написал «Marinero en tierra» и «Sobre los ángeles», а также мемуарную книгу «La arboleda perdida»; в 1983 году получил премию Сервантеса.",
-      "applicableTextRu": "Рафаэль Альберти (1902–1999) — испанский поэт и драматург поколения 1927 года. Он написал «Marinero en tierra» и «Sobre los ángeles», а также мемуарную книгу «La arboleda perdida»; в 1983 году получил премию Сервантеса.",
+      "reviewedTextRu": "Рафаэль Альберти (1902-1999) - испанский поэт и драматург поколения 1927 года. Он написал «Marinero en tierra» и «Sobre los ángeles», а также мемуарную книгу «La arboleda perdida»; в 1983 году получил премию Сервантеса.",
+      "applicableTextRu": "Рафаэль Альберти (1902-1999) - испанский поэт и драматург поколения 1927 года. Он написал «Marinero en tierra» и «Sobre los ángeles», а также мемуарную книгу «La arboleda perdida»; в 1983 году получил премию Сервантеса.",
       "claims": [
         {
-          "textRu": "Рафаэль Альберти (1902–1999) — испанский поэт и драматург поколения 1927 года. Он написал «Marinero en tierra» и «Sobre los ángeles», а также мемуарную книгу «La arboleda perdida»; в 1983 году получил премию Сервантеса.",
+          "textRu": "Рафаэль Альберти (1902-1999) - испанский поэт и драматург поколения 1927 года. Он написал «Marinero en tierra» и «Sobre los ángeles», а также мемуарную книгу «La arboleda perdida»; в 1983 году получил премию Сервантеса.",
           "verdict": "corrected",
           "evidence": [
             {
@@ -1065,21 +1065,21 @@
     {
       "key": "spain:ramon_del_valle_inclan",
       "originalSha256": "3dff925788922bb26b3678431373a70875ca9e23e9899144b9b0aafead12d483",
-      "reviewedTextRu": "Рамон Мария дель Валье-Инклан (1866–1936) — испанский прозаик и драматург, связанный с модернизмом. В пьесе «Luces de bohemia» он сформулировал эстетику эсперпенто; к его произведениям также относятся цикл «Sonatas» и роман «Tirano Banderas».",
-      "applicableTextRu": "Рамон Мария дель Валье-Инклан (1866–1936) — испанский прозаик и драматург, связанный с модернизмом. В пьесе «Luces de bohemia» он сформулировал эстетику эсперпенто; к его произведениям также относятся цикл «Sonatas» и роман «Tirano Banderas».",
+      "reviewedTextRu": "Рамон Мария дель Валье-Инклан (1866-1936) - испанский прозаик и драматург, связанный с модернизмом. В пьесе «Luces de bohemia» он сформулировал эстетику эсперпенто; к его произведениям также относятся цикл «Sonatas» и роман «Tirano Banderas».",
+      "applicableTextRu": "Рамон Мария дель Валье-Инклан (1866-1936) - испанский прозаик и драматург, связанный с модернизмом. В пьесе «Luces de bohemia» он сформулировал эстетику эсперпенто; к его произведениям также относятся цикл «Sonatas» и роман «Tirano Banderas».",
       "claims": [
         {
-          "textRu": "Рамон Мария дель Валье-Инклан (1866–1936) — испанский прозаик и драматург, связанный с модернизмом. В пьесе «Luces de bohemia» он сформулировал эстетику эсперпенто; к его произведениям также относятся цикл «Sonatas» и роман «Tirano Banderas».",
+          "textRu": "Рамон Мария дель Валье-Инклан (1866-1936) - испанский прозаик и драматург, связанный с модернизмом. В пьесе «Luces de bohemia» он сформулировал эстетику эсперпенто; к его произведениям также относятся цикл «Sonatas» и роман «Tirano Banderas».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://www.bne.es/es/autores/valle-inclan-ramon",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает даты 28 октября 1866 — 5 января 1936, литературную деятельность и произведения Валье-Инклана."
+              "findingRu": "BNE подтверждает даты 28 октября 1866 - 5 января 1936, литературную деятельность и произведения Валье-Инклана."
             },
             {
-              "provider": "Cátedra Valle-Inclán — Biblioteca Virtual Miguel de Cervantes",
+              "provider": "Cátedra Valle-Inclán - Biblioteca Virtual Miguel de Cervantes",
               "url": "https://www.cervantesvirtual.com/portales/catedra_valle_inclan/vida_ramon_valle/",
               "checkedAt": "2026-08-30",
               "findingRu": "Академическая кафедра независимо документирует биографию, модернистский контекст и разработку эстетики эсперпенто в Luces de bohemia."
@@ -1094,18 +1094,18 @@
     {
       "key": "spain:teresa_de_avila",
       "originalSha256": "65208af639fcdc2aa1337b95262088c249e953859ec043d24223dc4516bce220",
-      "reviewedTextRu": "Тереса Авильская (1515–1582) — испанская кармелитка, писательница и автор мистических произведений «Libro de la vida», «Camino de perfección» и «Las moradas». Она умерла в ночь 4 октября 1582 года в Альба-де-Тормес; при календарной реформе в Испании следующим гражданским днём стало 15 октября.",
-      "applicableTextRu": "Тереса Авильская (1515–1582) — испанская кармелитка, писательница и автор мистических произведений «Libro de la vida», «Camino de perfección» и «Las moradas». Она умерла в ночь 4 октября 1582 года в Альба-де-Тормес; при календарной реформе в Испании следующим гражданским днём стало 15 октября.",
+      "reviewedTextRu": "Тереса Авильская (1515-1582) - испанская кармелитка, писательница и автор мистических произведений «Libro de la vida», «Camino de perfección» и «Las moradas». Она умерла в ночь 4 октября 1582 года в Альба-де-Тормес; при календарной реформе в Испании следующим гражданским днём стало 15 октября.",
+      "applicableTextRu": "Тереса Авильская (1515-1582) - испанская кармелитка, писательница и автор мистических произведений «Libro de la vida», «Camino de perfección» и «Las moradas». Она умерла в ночь 4 октября 1582 года в Альба-де-Тормес; при календарной реформе в Испании следующим гражданским днём стало 15 октября.",
       "claims": [
         {
-          "textRu": "Тереса Авильская (1515–1582) — испанская кармелитка, писательница и автор мистических произведений «Libro de la vida», «Camino de perfección» и «Las moradas». Она умерла в ночь 4 октября 1582 года в Альба-де-Тормес; при календарной реформе в Испании следующим гражданским днём стало 15 октября.",
+          "textRu": "Тереса Авильская (1515-1582) - испанская кармелитка, писательница и автор мистических произведений «Libro de la vida», «Camino de perfección» и «Las moradas». Она умерла в ночь 4 октября 1582 года в Альба-де-Тормес; при календарной реформе в Испании следующим гражданским днём стало 15 октября.",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Biblioteca Nacional de España",
               "url": "https://www.bne.es/es/autores/teresa-jesus-santa",
               "checkedAt": "2026-08-30",
-              "findingRu": "BNE подтверждает даты 28 марта 1515 — 4 октября 1582, принадлежность к кармелитам и авторство основных произведений."
+              "findingRu": "BNE подтверждает даты 28 марта 1515 - 4 октября 1582, принадлежность к кармелитам и авторство основных произведений."
             },
             {
               "provider": "Biblioteca Virtual Miguel de Cervantes",
@@ -1123,18 +1123,18 @@
     {
       "key": "spain:vicente_aleixandre",
       "originalSha256": "2f7e86ce82ff98d351ad7ade0de91abd62d3e6e48942f8f3d98d69f19f56c4ad",
-      "reviewedTextRu": "Висенте Алейксандре (1898–1984) — испанский поэт, один из участников литературного объединения, известного как «Поколение двадцать седьмого года». В 1977 году он получил Нобелевскую премию по литературе.",
-      "applicableTextRu": "Висенте Алейксандре (1898–1984) — испанский поэт, один из участников литературного объединения, известного как «Поколение двадцать седьмого года». В 1977 году он получил Нобелевскую премию по литературе.",
+      "reviewedTextRu": "Висенте Алейксандре (1898-1984) - испанский поэт, один из участников литературного объединения, известного как «Поколение двадцать седьмого года». В 1977 году он получил Нобелевскую премию по литературе.",
+      "applicableTextRu": "Висенте Алейксандре (1898-1984) - испанский поэт, один из участников литературного объединения, известного как «Поколение двадцать седьмого года». В 1977 году он получил Нобелевскую премию по литературе.",
       "claims": [
         {
-          "textRu": "Висенте Алейксандре (1898–1984) — испанский поэт, один из участников литературного объединения, известного как «Поколение двадцать седьмого года». В 1977 году он получил Нобелевскую премию по литературе.",
+          "textRu": "Висенте Алейксандре (1898-1984) - испанский поэт, один из участников литературного объединения, известного как «Поколение двадцать седьмого года». В 1977 году он получил Нобелевскую премию по литературе.",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Nobel Prize",
               "url": "https://www.nobelprize.org/prizes/literature/1977/aleixandre/facts/",
               "checkedAt": "2026-08-30",
-              "findingRu": "Нобелевский фонд подтверждает даты 1898–1984 и премию по литературе 1977 года."
+              "findingRu": "Нобелевский фонд подтверждает даты 1898-1984 и премию по литературе 1977 года."
             },
             {
               "provider": "Biblioteca Nacional de España",
@@ -1152,18 +1152,18 @@
     {
       "key": "sri_lanka:anne_ranasinghe",
       "originalSha256": "51bbe0efa85d459c6b8b9c824982e99f5bdfa9b61cb4f204eda73eeb234b33ce",
-      "reviewedTextRu": "Анн Ранасингхе (урождённая Аннелизе Кац; 1925–2016) родилась в Эссене, покинула нацистскую Германию и позднее стала англоязычной поэтессой Шри-Ланки. Её поэзия обращается к памяти о Холокосте и опыту жизни на Шри-Ланке; среди сборников — «And the Sun That Sucks the Earth to Dry», «Against Eternity and Darkness» и «Not Even Shadows».",
-      "applicableTextRu": "Анн Ранасингхе (урождённая Аннелизе Кац; 1925–2016) родилась в Эссене, покинула нацистскую Германию и позднее стала англоязычной поэтессой Шри-Ланки. Её поэзия обращается к памяти о Холокосте и опыту жизни на Шри-Ланке; среди сборников — «And the Sun That Sucks the Earth to Dry», «Against Eternity and Darkness» и «Not Even Shadows».",
+      "reviewedTextRu": "Анн Ранасингхе (урождённая Аннелизе Кац; 1925-2016) родилась в Эссене, покинула нацистскую Германию и позднее стала англоязычной поэтессой Шри-Ланки. Её поэзия обращается к памяти о Холокосте и опыту жизни на Шри-Ланке; среди сборников - «And the Sun That Sucks the Earth to Dry», «Against Eternity and Darkness» и «Not Even Shadows».",
+      "applicableTextRu": "Анн Ранасингхе (урождённая Аннелизе Кац; 1925-2016) родилась в Эссене, покинула нацистскую Германию и позднее стала англоязычной поэтессой Шри-Ланки. Её поэзия обращается к памяти о Холокосте и опыту жизни на Шри-Ланке; среди сборников - «And the Sun That Sucks the Earth to Dry», «Against Eternity and Darkness» и «Not Even Shadows».",
       "claims": [
         {
-          "textRu": "Анн Ранасингхе (урождённая Аннелизе Кац; 1925–2016) родилась в Эссене, покинула нацистскую Германию и позднее стала англоязычной поэтессой Шри-Ланки. Её поэзия обращается к памяти о Холокосте и опыту жизни на Шри-Ланке; среди сборников — «And the Sun That Sucks the Earth to Dry», «Against Eternity and Darkness» и «Not Even Shadows».",
+          "textRu": "Анн Ранасингхе (урождённая Аннелизе Кац; 1925-2016) родилась в Эссене, покинула нацистскую Германию и позднее стала англоязычной поэтессой Шри-Ланки. Её поэзия обращается к памяти о Холокосте и опыту жизни на Шри-Ланке; среди сборников - «And the Sun That Sucks the Earth to Dry», «Against Eternity and Darkness» и «Not Even Shadows».",
           "verdict": "corrected",
           "evidence": [
             {
               "provider": "Library of Congress",
               "url": "https://www.loc.gov/acq/overseas-offices/delhi/salrp/anneranasinghe.html",
               "checkedAt": "2026-08-30",
-              "findingRu": "Библиотека Конгресса подтверждает имя при рождении Anneliese Katz, даты 1925–2016, рождение в Эссене, бегство из Германии, жизнь на Шри-Ланке и основные книги."
+              "findingRu": "Библиотека Конгресса подтверждает имя при рождении Anneliese Katz, даты 1925-2016, рождение в Эссене, бегство из Германии, жизнь на Шри-Ланке и основные книги."
             },
             {
               "provider": "New Ceylon Writing",

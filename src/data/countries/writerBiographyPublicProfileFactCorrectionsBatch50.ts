@@ -70,7 +70,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch50 = [
     },
     sources(
       ["Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/portales/benito_jeronimo_feijoo/autor_biografia/"],
-      ["Universidad de Oviedo — Instituto Feijoo", "https://www.unioviedo.es/IFESXVIII_digital/wp-content/uploads/2024/11/2014_Trea_Lidiando-con-sombras.pdf"],
+      ["Universidad de Oviedo - Instituto Feijoo", "https://www.unioviedo.es/IFESXVIII_digital/wp-content/uploads/2024/11/2014_Trea_Lidiando-con-sombras.pdf"],
     ),
     "Оценочное ранжирование заменено монашеским и академическим статусом и точными названиями основных трудов."
   ),
@@ -277,7 +277,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch50 = [
       ]
     },
     sources(
-      ["Fundación José Ortega y Gasset–Gregorio Marañón", "https://ortegaygasset.edu/legados/jose-ortega-y-gasset/"],
+      ["Fundación José Ortega y Gasset-Gregorio Marañón", "https://ortegaygasset.edu/legados/jose-ortega-y-gasset/"],
       ["Biblioteca Nacional de España", "https://datos.bne.es/persona/XX947193.html"],
     ),
     "Субъективное общеевропейское ранжирование заменено профессией и конкретными трудами."
@@ -295,7 +295,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch50 = [
     },
     sources(
       ["Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/portales/san_juan_de_la_cruz/autor_biografia/"],
-      ["Biblioteca Nacional de España — каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Juan%20de%20la%20Cruz&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
+      ["Biblioteca Nacional de España - каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Juan%20de%20la%20Cruz&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
     ),
     "Оценочное ранжирование снято; точный день рождения не подтверждён ранним документом и заменён надёжно установленным годом."
   ),
@@ -342,7 +342,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch50 = [
     },
     sources(
       ["Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/portales/leopoldo_alas_clarin/autor_biografia/"],
-      ["Biblioteca Nacional de España — каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Leopoldo%20Alas%20Clarin&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
+      ["Biblioteca Nacional de España - каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Leopoldo%20Alas%20Clarin&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
     ),
     "Субъективное ранжирование заменено профессиями и конкретными библиографическими позициями."
   ),
@@ -358,7 +358,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch50 = [
     },
     sources(
       ["Biblioteca Virtual Miguel de Cervantes", "https://cervantesvirtual.com/portales/lope_de_vega/autor_biobibliografia/"],
-      ["Biblioteca Nacional de España — каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Lope%20de%20Vega&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
+      ["Biblioteca Nacional de España - каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Lope%20de%20Vega&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
     ),
     "Гиперболы удалены; «La Estrella de Sevilla» исключена из профиля из-за спорной атрибуции, а перечень заменён бесспорными пьесами."
   ),
@@ -374,7 +374,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch50 = [
     },
     sources(
       ["Biblioteca Virtual Miguel de Cervantes", "https://cervantesvirtual.com/portales/luis_de_gongora/autor_biografia/"],
-      ["Biblioteca Nacional de España — каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Luis%20de%20Gongora&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
+      ["Biblioteca Nacional de España - каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Luis%20de%20Gongora&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
     ),
     "Недоказанная формула единоличного «создателя» направления заменена проверяемой связью с культизмом; неопределённые «Оды» заменены точными категориями и названиями."
   ),
@@ -390,7 +390,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch50 = [
     },
     sources(
       ["Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/portales/mariano_jose_de_larra/autor_biografia/"],
-      ["Biblioteca Nacional de España — каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Mariano%20Jose%20de%20Larra&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
+      ["Biblioteca Nacional de España - каталог", "https://catalogo.bne.es/discovery/search?query=any,contains,Mariano%20Jose%20de%20Larra&tab=LibraryCatalog&search_scope=MyInstitution&vid=34BNE_INST:CATALOGO"],
     ),
     "Субъективное ранжирование заменено жанрами, псевдонимом и конкретными статьями; расплывчатое «Статьи Фигаро» заменено библиографическими названиями."
   ),
@@ -487,7 +487,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch50 = [
     },
     sources(
       ["Biblioteca Nacional de España", "https://www.bne.es/es/autores/valle-inclan-ramon"],
-      ["Cátedra Valle-Inclán — Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/portales/catedra_valle_inclan/vida_ramon_valle/"],
+      ["Cátedra Valle-Inclán - Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/portales/catedra_valle_inclan/vida_ramon_valle/"],
     ),
     "Оценочная формула заменена конкретной ролью Luces de bohemia в оформлении эсперпенто и точными названиями произведений."
   ),

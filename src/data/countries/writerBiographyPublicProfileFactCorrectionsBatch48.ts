@@ -41,7 +41,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch48 = [
       ["Seychelles Nation", "https://www.nation.sc/archive/218214/guy-lionnet-nest-plus-une-lumiere-du-pays-sest-eteinte"],
       ["Seychelles Islands Foundation", "https://www.sif.sc/sites/default/files/downloads/SIF%20Annual%20Report%202007.pdf"],
     ),
-    "Исходные годы 1933–2015 и место рождения на Сейшелах не относятся к Ги Лионне. Они исправлены на подтверждённые годы 1922–2007 и Маврикий; характеристика конкретизирована занятиями и книгами."
+    "Исходные годы 1933-2015 и место рождения на Сейшелах не относятся к Ги Лионне. Они исправлены на подтверждённые годы 1922-2007 и Маврикий; характеристика конкретизирована занятиями и книгами."
   ),
   correction(
     "sierra_leone",
@@ -78,7 +78,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch48 = [
       "birthDate": ""
     },
     sources(
-      ["National Library Board Singapore — BiblioAsia", "https://biblioasia.nlb.gov.sg/vol-10/issue-1/apr-jun-2014/claire-tham-opinion/"],
+      ["National Library Board Singapore - BiblioAsia", "https://biblioasia.nlb.gov.sg/vol-10/issue-1/apr-jun-2014/claire-tham-opinion/"],
       ["Singapore Writers Festival", "https://www.singaporewritersfestival.com/images/past-festivals/SWF-2013-Programme-Booklet.pdf"],
     ),
     "Неподтверждённые год и искусственная точная дата 1967-01-01 удалены; оставлены профессии и произведения."
@@ -105,8 +105,8 @@ export const writerBiographyPublicProfileFactCorrectionsBatch48 = [
       "birthPlace": "Хэбэй, Китай"
     },
     sources(
-      ["Esplanade — Theatres on the Bay", "https://www.esplanade.com/offstage/arts/kuo-pao-kun"],
-      ["RootsSG — National Heritage Board Singapore", "https://www.roots.gov.sg/places/places-landing/Places/surveyed-sites/the-substation"],
+      ["Esplanade - Theatres on the Bay", "https://www.esplanade.com/offstage/arts/kuo-pao-kun"],
+      ["RootsSG - National Heritage Board Singapore", "https://www.roots.gov.sg/places/places-landing/Places/surveyed-sites/the-substation"],
     ),
     "Исправлены ошибочные русское имя «Куо Пайк Шан», дата 1939-11-12 и место рождения в Малайзии. Официальная биография указывает 27 июня 1939 года и провинцию Хэбэй в Китае."
   ),
@@ -137,10 +137,10 @@ export const writerBiographyPublicProfileFactCorrectionsBatch48 = [
     },
     sources(
       ["University of the South Pacific", "https://www.usp.ac.fj/alumni/wp-content/uploads/sites/4/2021/08/USPAlumniNewsletter_201706_en.pdf"],
-      ["ERIC — U.S. Department of Education", "https://eric.ed.gov/?id=ED205042"],
+      ["ERIC - U.S. Department of Education", "https://eric.ed.gov/?id=ED205042"],
       ["United Nations Digital Library", "https://digitallibrary.un.org/record/398061"],
     ),
-    "Профиль ошибочно называет человека «Рексом Хэтчинсом» и приписывает ему годы 1944–2014. Ключ однозначно относится к Рексу Стивену Хорои; надёжные источники расходятся в годе рождения, поэтому годы удалены, а литературная атрибуция заменена документированными занятиями."
+    "Профиль ошибочно называет человека «Рексом Хэтчинсом» и приписывает ему годы 1944-2014. Ключ однозначно относится к Рексу Стивену Хорои; надёжные источники расходятся в годе рождения, поэтому годы удалены, а литературная атрибуция заменена документированными занятиями."
   ),
   correction(
     "somalia",
@@ -153,9 +153,9 @@ export const writerBiographyPublicProfileFactCorrectionsBatch48 = [
     },
     sources(
       ["SOAS University of London", "https://soas-repository.worktribe.com/OutputFile/395247"],
-      ["Roma Tre University — ArcAdiA", "https://arcadia.sba.uniroma3.it/bitstream/2307/1528/1/Somali%20Literature%20-%20B.W.%20Andrzejewski.pdf"],
+      ["Roma Tre University - ArcAdiA", "https://arcadia.sba.uniroma3.it/bitstream/2307/1528/1/Somali%20Literature%20-%20B.W.%20Andrzejewski.pdf"],
     ),
-    "Имя «Абдуллахи Диирие Гулам» исправлено по ключу и академическим публикациям. Профильные годы 1928–1973 несовместимы с документированной работой начиная с 1978 года и поэтому удалены из текста; точные годы жизни не установлены."
+    "Имя «Абдуллахи Диирие Гулам» исправлено по ключу и академическим публикациям. Профильные годы 1928-1973 несовместимы с документированной работой начиная с 1978 года и поэтому удалены из текста; точные годы жизни не установлены."
   ),
   correction(
     "somalia",
@@ -166,7 +166,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch48 = [
     },
     sources(
       ["Indiana University Libraries", "https://iucat.iu.edu/iuk/662083"],
-      ["Roma Tre University — ArcAdiA", "https://arcadia.sba.uniroma3.it/handle/2307/5613?locale=en"],
+      ["Roma Tre University - ArcAdiA", "https://arcadia.sba.uniroma3.it/handle/2307/5613?locale=en"],
     ),
     "Неподтверждённая роль историка удалена; добавлены два библиографически зафиксированных романа. Интервал лет жизни и год смерти очищены, поскольку надёжные справочные источники расходятся в годе смерти."
   ),
@@ -178,7 +178,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch48 = [
       "deathDate": ""
     },
     sources(
-      ["Roma Tre University — ArcAdiA", "https://arcadia.sba.uniroma3.it/handle/2307/2575?mode=full"],
+      ["Roma Tre University - ArcAdiA", "https://arcadia.sba.uniroma3.it/handle/2307/2575?mode=full"],
       ["SOAS University of London", "https://eprints.soas.ac.uk/20911/1/Orwin_Oral_Traditon.pdf"],
     ),
     "Расплывчатая характеристика религиозно-патриотических произведений заменена документированными ролями и историей публикации стихов. Интервал лет жизни и год смерти очищены из-за расхождения 1920/1921 в академических изданиях."

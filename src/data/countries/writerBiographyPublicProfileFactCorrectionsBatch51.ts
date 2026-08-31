@@ -47,8 +47,8 @@ export const writerBiographyPublicProfileFactCorrectionsBatch51 = [
       "birthDate": "1967"
     },
     sources(
-      ["Musée national des arts asiatiques — Guimet", "https://www.guimet.fr/sites/default/files/2026-06/cp_9e-prix_emile-guimet-de-litterature-asiatique.pdf"],
-      ["University of Alberta — Canadian Review of Comparative Literature", "https://journals.library.ualberta.ca/crcl/index.php/crcl/article/download/29970/21629"],
+      ["Musée national des arts asiatiques - Guimet", "https://www.guimet.fr/sites/default/files/2026-06/cp_9e-prix_emile-guimet-de-litterature-asiatique.pdf"],
+      ["University of Alberta - Canadian Review of Comparative Literature", "https://journals.library.ualberta.ca/crcl/index.php/crcl/article/download/29970/21629"],
     ),
     "Установлено настоящее имя; неверные 1964 год и искусственная дата 1 января исправлены на подтверждённый 1967 год."
   ),
@@ -76,7 +76,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch51 = [
     },
     sources(
       ["Al Arabi, National Council for Culture, Arts and Letters of Kuwait", "https://alarabi.nccal.gov.kw/Home/Article/19193"],
-      ["Université d'Alger 2 — ASJP", "https://asjp.cerist.dz/en/downArticle/20/18/1/286668"],
+      ["Université d'Alger 2 - ASJP", "https://asjp.cerist.dz/en/downArticle/20/18/1/286668"],
       ["Al Arabi, National Council for Culture, Arts and Letters of Kuwait", "https://alarabi.nccal.gov.kw/Home/Article/17027"],
     ),
     "Оценочное ранжирование заменено произведениями; точная дата рождения и диапазон лет очищены, поскольку институциональные источники расходятся между 1930 и 1936 годами."
@@ -95,7 +95,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch51 = [
     },
     sources(
       ["International Prize for Arabic Fiction", "https://archive.arabicfiction.org/ar/amir-tag-elsir"],
-      ["University of Rochester — Three Percent", "https://www.rochester.edu/College/translation/threepercent/2010/12/09/2011-arab-booker-shortlist/"],
+      ["University of Rochester - Three Percent", "https://www.rochester.edu/College/translation/threepercent/2010/12/09/2011-arab-booker-shortlist/"],
     ),
     "Карточка идентифицирована как профиль Amir Taj al-Sir: исправлены имя и год рождения 1965→1960; неподтверждённое произведение «Реки и деревья» не перенесено."
   ),

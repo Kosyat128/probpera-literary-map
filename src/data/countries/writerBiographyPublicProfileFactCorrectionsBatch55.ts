@@ -77,7 +77,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch55 = [
     "usa",
     "henry_james",
     {
-      "nationality": "американец; с 1915 года — британский подданный"
+      "nationality": "американец; с 1915 года - британский подданный"
     },
     sources(
       ["Smithsonian National Portrait Gallery", "https://npg.si.edu/object/npg_NPG.68.13"],
@@ -159,7 +159,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch55 = [
       ["Isaac Bashevis Singer Estate", "https://www.bashevissinger.com/biography"],
       ["Nobel Prize Outreach", "https://www.nobelprize.org/prizes/literature/1978/singer/biographical/"],
     ),
-    "Поэтическая интерпретация заменена проверяемой биографией. Точная дата 21 ноября 1903 года очищена: официальный сайт наследия указывает 1903 год, а Нобелевский архив — 14 июля 1904 года; год оставлен приблизительным."
+    "Поэтическая интерпретация заменена проверяемой биографией. Точная дата 21 ноября 1903 года очищена: официальный сайт наследия указывает 1903 год, а Нобелевский архив - 14 июля 1904 года; год оставлен приблизительным."
   ),
   correction(
     "usa",
@@ -370,7 +370,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch55 = [
       ["The Hugo Awards", "https://www.thehugoawards.org/2016/08/2016-hugo-awards-announced/"],
       ["Science Fiction and Fantasy Writers Association", "https://nebulas.sfwa.org/grand-masters/n-k-jemisin/"],
     ),
-    "Исправлено ошибочное раскрытие имени «Нора Кейт»: профессиональная ассоциация приводит Nora Keita, а публичная форма — N. K. Jemisin. Добавлено точное жанровое и премиальное описание; в профиль внесены имя и три романа цикла."
+    "Исправлено ошибочное раскрытие имени «Нора Кейт»: профессиональная ассоциация приводит Nora Keita, а публичная форма - N. K. Jemisin. Добавлено точное жанровое и премиальное описание; в профиль внесены имя и три романа цикла."
   ),
   correction(
     "usa",
@@ -432,7 +432,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch55 = [
       ["Library of Congress", "https://www.loc.gov/item/n50010027/ralph-ellison/"],
       ["Library of America", "https://www.loa.org/writers/681-ralph-ellison/"],
     ),
-    "Оценочная формула заменена датой романа и наградой. Точная дата рождения очищена fail-closed: Библиотека Конгресса использует 1914 год, а Library of America — 1913 год; диапазон отражён в поле years."
+    "Оценочная формула заменена датой романа и наградой. Точная дата рождения очищена fail-closed: Библиотека Конгресса использует 1914 год, а Library of America - 1913 год; диапазон отражён в поле years."
   ),
   correction(
     "usa",
@@ -470,7 +470,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch55 = [
     {
       "name": "Ричард Матесон",
       "works": [
-        "Я — легенда",
+        "Я - легенда",
         "Куда приводят мечты"
       ]
     },

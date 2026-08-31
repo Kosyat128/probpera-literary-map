@@ -394,7 +394,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch52 = [
     {
       "name": "Эпели Хауʻофа",
       "birthDate": "1939",
-      "birthPlace": "Папуа — Новая Гвинея"
+      "birthPlace": "Папуа - Новая Гвинея"
     },
     sources(
       ["University of the South Pacific", "https://www.usp.ac.fj/news/remembering-the-legacy-of-the-late-epeli-hauofa/"],

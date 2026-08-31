@@ -306,7 +306,7 @@ const lockedScopes = [
     },
     expected: {
       files: 536,
-      sha256: "a2bac34b72e0cc92bf46300cd6cc701628eac11611124626bb3f27a12eb1d3c9",
+      sha256: "700845bbe6a1f126932e57e789a687a5e1dc5642ac18fa5124eee649d69c865e",
     },
   },
 ];

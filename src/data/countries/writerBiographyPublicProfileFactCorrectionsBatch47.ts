@@ -39,7 +39,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch47 = [
       ["Президентская библиотека имени Б. Н. Ельцина", "https://www.prlib.ru/Great_Russia/cultural_XVIII/Trediakovsky"],
       ["Большая российская энциклопедия", "https://bigenc.ru/wiki/%D0%A2%D1%80%D0%B5%D0%B4%D0%B8%D0%B0%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D0%B9_%D0%9A%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%BE%D0%B2%D0%B8%D1%87"],
     ),
-    "Исправлен ошибочный год смерти 1769 на 1768 и субъективное ранжирование заменено конкретным трактатом. Даты профиля приведены к новому стилю: БРЭ даёт 22 февраля/5 марта 1703 года и 6/17 августа 1768 года; Президентская библиотека независимо подтверждает 1703–1768."
+    "Исправлен ошибочный год смерти 1769 на 1768 и субъективное ранжирование заменено конкретным трактатом. Даты профиля приведены к новому стилю: БРЭ даёт 22 февраля/5 марта 1703 года и 6/17 августа 1768 года; Президентская библиотека независимо подтверждает 1703-1768."
   ),
   correction(
     "rwanda",
@@ -60,7 +60,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch47 = [
       "birthDate": "1948"
     },
     sources(
-      ["The University of the West Indies — Caribbean Literary Journal", "https://journals.sta.uwi.edu/ojs/index.php/clj/article/download/8862/7284/14112"],
+      ["The University of the West Indies - Caribbean Literary Journal", "https://journals.sta.uwi.edu/ojs/index.php/clj/article/download/8862/7284/14112"],
       ["Brinkerhoff Poetry Foundation", "https://www.brinkerhoffpoetry.org/poets/john-robert-lee"],
     ),
     "Общие тематические оценки заменены годом рождения, профессиями и библиографическими фактами; искусственная точная дата 1948-01-01 сокращена до подтверждённого года."
@@ -123,7 +123,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch47 = [
     },
     sources(
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb11900243p"],
-      ["Université Cheikh Anta Diop de Dakar — Revue d’Études Africaines", "https://rea.ucad.sn/index.php/rea/article/download/16/15/61"],
+      ["Université Cheikh Anta Diop de Dakar - Revue d’Études Africaines", "https://rea.ucad.sn/index.php/rea/article/download/16/15/61"],
     ),
     "Общее утверждение об известности конкретизировано профессиями и двумя книгами; написание имени приведено к форме «Бираго». Текущие даты профиля подтверждены BnF."
   ),
@@ -160,7 +160,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch47 = [
       "birthPlace": "Ниодиор, Сенегал"
     },
     sources(
-      ["Duke University — Forum for Scholars and Publics", "https://fsp.duke.edu/speakers/felwine-sarr/"],
+      ["Duke University - Forum for Scholars and Publics", "https://fsp.duke.edu/speakers/felwine-sarr/"],
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb475687112"],
       ["Réseau français des instituts d’études avancées", "https://rfiea.fr/sites/default/files/newsletters/rfiea-fellows-annuaire2018_web.pdf"],
     ),
@@ -176,7 +176,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch47 = [
       "birthPlace": ""
     },
     sources(
-      ["University of Iowa — International Writing Program", "https://iwp.uiowa.edu/writers/2006-resident/ken-bugul"],
+      ["University of Iowa - International Writing Program", "https://iwp.uiowa.edu/writers/2006-resident/ken-bugul"],
       ["Harvard University Center for African Studies", "https://africa.harvard.edu/event/panel-african-literatures-bridging-languages-places-and-times"],
     ),
     "Общее утверждение об известности заменено документированными настоящим именем, характером псевдонима и двумя романами. Спорные дата и место рождения очищены, русское написание псевдонима исправлено."
@@ -190,8 +190,8 @@ export const writerBiographyPublicProfileFactCorrectionsBatch47 = [
       "deathDate": ""
     },
     sources(
-      ["National Museum of Serbia — Museum of Vuk and Dositej", "https://www.narodnimuzej.rs/about-museum/locations-of-the-national-museum/museum-of-vuk-and-dositej/?lang=en"],
-      ["Serbian Academy of Sciences and Arts — Virtual Museum", "https://www.mi.sanu.ac.rs/muzej.beograd/d/eng/sad/znaml_21.htm"],
+      ["National Museum of Serbia - Museum of Vuk and Dositej", "https://www.narodnimuzej.rs/about-museum/locations-of-the-national-museum/museum-of-vuk-and-dositej/?lang=en"],
+      ["Serbian Academy of Sciences and Arts - Virtual Museum", "https://www.mi.sanu.ac.rs/muzej.beograd/d/eng/sad/znaml_21.htm"],
     ),
     "Общая оценочная формула заменена государственным постом, участием в создании Великой школы и произведением. Национальный музей приводит варианты 1739/1742, поэтому профильный год рождения и неустойчивая точная дата смерти очищены, а интервал лет передаёт разночтение."
   ),
@@ -204,8 +204,8 @@ export const writerBiographyPublicProfileFactCorrectionsBatch47 = [
     },
     sources(
       ["Serbian Academy of Sciences and Arts", "https://www.sanu.ac.rs/en/member/kostic-laza/"],
-      ["National Library of Serbia — DOI Serbia", "https://doiserbia.nb.rs/Article.aspx?id=0350-66732288051V"],
-      ["National Library of Serbia — DOI Serbia", "https://doiserbia.nb.rs/Article.aspx?id=1450-98140808151M"],
+      ["National Library of Serbia - DOI Serbia", "https://doiserbia.nb.rs/Article.aspx?id=0350-66732288051V"],
+      ["National Library of Serbia - DOI Serbia", "https://doiserbia.nb.rs/Article.aspx?id=1450-98140808151M"],
     ),
     "Исходные роли подтверждены и дополнены двумя произведениями. САНУ приводит рождение 31 января/12 февраля 1841 года; для профиля выбран новый стиль 12 февраля. Дата смерти в карточке 9 декабря соответствует новому стилю для указанного САНУ 26 ноября 1910 года."
   ),

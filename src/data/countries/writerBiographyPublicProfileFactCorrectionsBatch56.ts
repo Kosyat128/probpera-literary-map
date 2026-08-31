@@ -39,7 +39,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch56 = [
       ]
     },
     sources(
-      ["Stephen King — официальный сайт", "https://stephenking.com/the-author/"],
+      ["Stephen King - официальный сайт", "https://stephenking.com/the-author/"],
       ["National Endowment for the Arts", "https://www.arts.gov/honors/medals/stephen-king"],
     ),
     "Сняты непроверяемые оценки популярности и мастерства; жанры и примеры произведений приведены по институциональным источникам. Уточнено полное русское название повести о Рите Хейуорт."
@@ -314,10 +314,10 @@ export const writerBiographyPublicProfileFactCorrectionsBatch56 = [
       ]
     },
     sources(
-      ["Fundación Empresas Polar — Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/b/blanco-eduardo/"],
+      ["Fundación Empresas Polar - Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/b/blanco-eduardo/"],
       ["Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/descargaPdf/quienes-escriben-en-venezuela-diccionario-abreviado-de-escritores-venezolanos-siglos-xviii-a-xxi--0/021555_7.pdf"],
     ),
-    "Удалены ранговая оценка, недоказанное обобщение тематики и не подтверждённое источниками определение «Venezuela heroica» как цикла; неверная дата смерти 30 июня заменена на 30 января 1912 года, а ошибочное произведение — на доказанный роман."
+    "Удалены ранговая оценка, недоказанное обобщение тематики и не подтверждённое источниками определение «Venezuela heroica» как цикла; неверная дата смерти 30 июня заменена на 30 января 1912 года, а ошибочное произведение - на доказанный роман."
   ),
   correction(
     "venezuela",
@@ -351,7 +351,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch56 = [
       ]
     },
     sources(
-      ["Fundación Empresas Polar — Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/t/toro-fermin/"],
+      ["Fundación Empresas Polar - Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/t/toro-fermin/"],
       ["Biblioteca Abierta Venezolana", "https://bibav.org/books/los-martires-toro-2017-6sduxnsc.html"],
     ),
     "Удалены оценочные и жанрово-исторические обобщения; три неатрибутируемых названия профиля заменены документированными произведениями."
@@ -367,7 +367,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch56 = [
       ]
     },
     sources(
-      ["Fundación Empresas Polar — Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/g/gonzalez-juan-vicente/"],
+      ["Fundación Empresas Polar - Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/g/gonzalez-juan-vicente/"],
       ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark%3A/12148/cb32180515w"],
     ),
     "Непроверяемое утверждение об основании национальной исторической прозы удалено; профессии и конкретные труды подтверждены."
@@ -387,11 +387,11 @@ export const writerBiographyPublicProfileFactCorrectionsBatch56 = [
       ]
     },
     sources(
-      ["Fundación Empresas Polar — Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/d/diaz-rodriguez-manuel/"],
+      ["Fundación Empresas Polar - Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/d/diaz-rodriguez-manuel/"],
       ["Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/portales/ruben_dario/obra/el-movimiento-de-los-nombres-en-idolos-rotos-de-manuel-diaz-rodriguez/"],
       ["National Library of Spain", "https://datos.bne.es/resource/XX881051"],
     ),
-    "Удалена ранговая оценка; год и дата рождения исправлены с 1868 на 1871 год, место рождения — на Чакао, а неверные переводные названия заменены оригинальными. Авторитетная историческая энциклопедия указывает 23 августа 1927 года вместо 24 августа в исходном профиле; при отсутствии второго независимого подтверждения дневная точность очищена fail-closed."
+    "Удалена ранговая оценка; год и дата рождения исправлены с 1868 на 1871 год, место рождения - на Чакао, а неверные переводные названия заменены оригинальными. Авторитетная историческая энциклопедия указывает 23 августа 1927 года вместо 24 августа в исходном профиле; при отсутствии второго независимого подтверждения дневная точность очищена fail-closed."
   ),
   correction(
     "venezuela",
@@ -404,7 +404,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch56 = [
       ]
     },
     sources(
-      ["Fundación Empresas Polar — Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/o/otero-silva-miguel/"],
+      ["Fundación Empresas Polar - Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/o/otero-silva-miguel/"],
       ["Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/descargaPdf/quienes-escriben-en-venezuela-diccionario-abreviado-de-escritores-venezolanos-siglos-xviii-a-xxi--0/021555_7.pdf"],
     ),
     "Удалены субъективная оценка и неподтверждённое обобщение тематики; «Путь к Эльдорадо», принадлежащий Артуро Услару Пьетри, заменён романом самого Отеро Сильвы."
@@ -437,7 +437,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch56 = [
       ]
     },
     sources(
-      ["Fundación Empresas Polar — Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/g/gallegos-romulo/"],
+      ["Fundación Empresas Polar - Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/g/gallegos-romulo/"],
       ["Biblioteca Virtual Miguel de Cervantes", "https://www.cervantesvirtual.com/portales/portal_nacional_venezuela/obra/dona-barbara--1/"],
     ),
     "Удалены ранговая и каноническая оценки; добавлена проверяемая президентская должность. Ошибочное «Поднимающийся ветер» заменено доказанным романом «Cantaclaro»."
@@ -453,7 +453,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch56 = [
       ]
     },
     sources(
-      ["Fundación Empresas Polar — Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/r/rodriguez-simon/"],
+      ["Fundación Empresas Polar - Diccionario de Historia de Venezuela", "https://bibliofep.fundacionempresaspolar.org/dhv/entradas/r/rodriguez-simon/"],
       ["Real Academia de la Historia", "https://historia-hispanica.rah.es/biografias/39456-simon-rodriguez"],
     ),
     "Расплывчатое тематическое резюме заменено двумя конкретными трудами; характеристика наставничества уточнена до документированного учительства. Опечатка в месте смерти «Амота» исправлена на подтверждённое источниками «Амотапе»."

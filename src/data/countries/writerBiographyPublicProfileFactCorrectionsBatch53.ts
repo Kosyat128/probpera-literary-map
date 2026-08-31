@@ -191,7 +191,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch53 = [
       ["Министерство культуры Туркменистана", "https://medeniyet.gov.tm/app/tk/art-world/16"],
       ["Государственное информационное агентство Туркменистана", "https://turkmenistan.gov.tm/en/post/83045/"],
     ),
-    "Оценочная формулировка заменена фактами; 3 марта в исходном профиле — дата старого стиля, для современного поля указано 15 марта по григорианскому календарю."
+    "Оценочная формулировка заменена фактами; 3 марта в исходном профиле - дата старого стиля, для современного поля указано 15 марта по григорианскому календарю."
   ),
   correction(
     "turkmenistan",
@@ -304,7 +304,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch53 = [
     },
     sources(
       ["Центр арабского языка Абу-Даби", "https://alc.ae/media/news/abu-dhabi-arabic-language-centre-s-esdarat-releases-new-edition-of-the-late-emirati-poet-ahmed-rashid-thani-s-a-wave-at-the-door/"],
-      ["Департамент культуры и туризма Абу-Даби — Энциклопедия поэзии", "https://poetry.dct.gov.ae/poets/3185-"],
+      ["Департамент культуры и туризма Абу-Даби - Энциклопедия поэзии", "https://poetry.dct.gov.ae/poets/3185-"],
     ),
     "Исправлен ошибочный 2019 год смерти. Два официальных культурных источника расходятся в годе рождения (1962/1963), поэтому поле очищено."
   ),
@@ -320,7 +320,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch53 = [
       ]
     },
     sources(
-      ["Департамент культуры и туризма Абу-Даби — Энциклопедия поэзии", "https://poetry.dct.gov.ae/poets/3219-"],
+      ["Департамент культуры и туризма Абу-Даби - Энциклопедия поэзии", "https://poetry.dct.gov.ae/poets/3219-"],
       ["Информационное агентство ОАЭ WAM", "https://www.wam.ae/en/article/hszr902i-emirati-poet-writer-habib-sayegh-dies"],
     ),
     "Оценочная характеристика удалена; уточнены русская передача фамилии, дата рождения и конкретные названия сборников."
@@ -496,6 +496,6 @@ export const writerBiographyPublicProfileFactCorrectionsBatch53 = [
       ["Internet Encyclopedia of Ukraine, Canadian Institute of Ukrainian Studies", "https://www.encyclopediaofukraine.com/display.asp?linkpath=pages%5CK%5CO%5CKotliarevskyIvan.htm"],
       ["Украинский институт национальной памяти", "https://old.uinp.gov.ua/publication/kotlyarevskii-ivan-petrovich"],
     ),
-    "Историографическое определение «один из основателей» заменено конкретными жанрами и произведениями. Даты профиля уже даны по новому стилю; старый стиль — 29 августа и 29 октября."
+    "Историографическое определение «один из основателей» заменено конкретными жанрами и произведениями. Даты профиля уже даны по новому стилю; старый стиль - 29 августа и 29 октября."
   ),
 ] satisfies readonly WriterPublicProfileFactCorrectionBatch53[];

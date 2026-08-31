@@ -450,11 +450,11 @@ const writerBiographyFactReviewBatch02Base = [
               "Национальная библиотека называет Пуига центральной и оригинальной фигурой аргентинской литературы его времени.",
           },
           {
-            provider: "Universidad Nacional de La Plata — ARCAS",
+            provider: "Universidad Nacional de La Plata - ARCAS",
             url: "https://arcas.fahce.unlp.edu.ar/arcas/portada/colecciones/manuel-puig/juan-manuel-puig-delledonne",
             checkedAt: followUpCheckedAt,
             findingRu:
-              "Университетский архив подтверждает годы 1932–1990, аргентинское происхождение и писательскую деятельность Мануэля Пуига.",
+              "Университетский архив подтверждает годы 1932-1990, аргентинское происхождение и писательскую деятельность Мануэля Пуига.",
           },
         ],
       },
@@ -471,7 +471,7 @@ const writerBiographyFactReviewBatch02Base = [
               "Библиотечная публикация подтверждает использование кино, радиосериалов, популярной культуры и разговорных голосов.",
           },
           {
-            provider: "Oxford Academic — The Oxford Handbook of the Latin American Novel",
+            provider: "Oxford Academic - The Oxford Handbook of the Latin American Novel",
             url: "https://academic.oup.com/edited-volume/41985/chapter/371787015",
             checkedAt: followUpCheckedAt,
             findingRu:
@@ -496,7 +496,7 @@ const writerBiographyFactReviewBatch02Base = [
     reviewer,
     decision: "corrected",
     notes:
-      "Субъективный рейтинг снят; биография независимо сверена с университетским архивом UNLP, влияние кино и массовой культуры — с Oxford Academic, а разговорная речь оставлена только по прямому свидетельству Национальной библиотеки Аргентины.",
+      "Субъективный рейтинг снят; биография независимо сверена с университетским архивом UNLP, влияние кино и массовой культуры - с Oxford Academic, а разговорная речь оставлена только по прямому свидетельству Национальной библиотеки Аргентины.",
   },
   {
     key: "argentina:mariana_enriquez",

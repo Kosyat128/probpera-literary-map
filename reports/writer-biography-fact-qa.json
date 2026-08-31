@@ -13609,7 +13609,7 @@
       "severity": "metadata-gap",
       "field": "biography/works",
       "values": {
-        "biographyTitle": "Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955–1965"
+        "biographyTitle": "Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955-1965"
       },
       "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
       "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
@@ -198254,7 +198254,7 @@
         "quotedTitleCount": 2,
         "namedWorkTitles": [
           "Доктор Живаго",
-          "Сестра моя — жизнь"
+          "Сестра моя - жизнь"
         ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
@@ -205527,7 +205527,7 @@
         "nobelYears": [],
         "quotedTitleCount": 1,
         "namedWorkTitles": [
-          "Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955–1965"
+          "Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955-1965"
         ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],
@@ -205609,7 +205609,7 @@
           "severity": "metadata-gap",
           "field": "biography/works",
           "values": {
-            "biographyTitle": "Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955–1965"
+            "biographyTitle": "Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955-1965"
           },
           "note": "Название, поданное в bio как произведение, отсутствует в структурированном списке works.",
           "safeFixCandidate": "Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio."
@@ -240678,7 +240678,7 @@
         "nobelYears": [],
         "quotedTitleCount": 3,
         "namedWorkTitles": [
-          "Я — легенда"
+          "Я - легенда"
         ],
         "lifeYearPairs": [],
         "locallyCorroboratedTypes": [],

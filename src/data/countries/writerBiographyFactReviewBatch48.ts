@@ -50,10 +50,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "serbia:mesa_selimovic",
     originalSha256: "3490ad0b9d96a82d3811e5c8c86b03c9c3cb8c1bbbdd4c861a19ec3487f43fb1",
-    reviewedTextRu: "Мехмед «Меша» Селимович (1910–1982) — югославский прозаик, работавший также преподавателем и редактором. Среди его произведений — романы «Дервиш и смерть» и «Крепость».",
+    reviewedTextRu: "Мехмед «Меша» Селимович (1910-1982) - югославский прозаик, работавший также преподавателем и редактором. Среди его произведений - романы «Дервиш и смерть» и «Крепость».",
     evidence: [
       e("Академия наук и искусств Боснии и Герцеговины", "https://www.anubih.ba/mesa-selimovic/", "Академия подтверждает годы жизни, литературную, преподавательскую и редакторскую работу Селимовича, а также романы Derviš i smrt и Tvrđava."),
-      e("Сербская академия наук и искусств", "https://www.sanu.ac.rs/clan/selimovic-mesa/", "Академическая справка независимо подтверждает годы 1910–1982, писательскую профессию и членство Селимовича в академии."),
+      e("Сербская академия наук и искусств", "https://www.sanu.ac.rs/clan/selimovic-mesa/", "Академическая справка независимо подтверждает годы 1910-1982, писательскую профессию и членство Селимовича в академии."),
     ],
     decision: "corrected",
     notes: "Субъективное ранжирование удалено; добавлены документированные занятия и произведения.",
@@ -61,10 +61,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "serbia:milos_crnjanski",
     originalSha256: "02c876ef71f0b5c8a83a9bb1de8bcbe478374d783ba3d6de61aa9670499b8537",
-    reviewedTextRu: "Милош Црнянский (1893–1977) — сербский поэт, прозаик и дипломат. Среди его книг — «Дневник о Чарноевиче» и роман «Переселения» (Seobe).",
+    reviewedTextRu: "Милош Црнянский (1893-1977) - сербский поэт, прозаик и дипломат. Среди его книг - «Дневник о Чарноевиче» и роман «Переселения» (Seobe).",
     evidence: [
       e("Задужбина Милоша Црнянского", "https://www.mcrnjanski.rs/index.php?lang=lat&sir=sira&str=all.php&sub1=5&sub2=11", "Официальная биография фонда подтверждает даты жизни, литературную и дипломатическую деятельность Црнянского и основные произведения."),
-      e("Музей поэзии Сербии", "https://www.muzejpoezije.rs/sr/author/milos-crnjanski/", "Музей независимо указывает годы 1893–1977, называет Црнянского поэтом и прозаиком и документирует «Дневник о Чарноевиче» и Seobe."),
+      e("Музей поэзии Сербии", "https://www.muzejpoezije.rs/sr/author/milos-crnjanski/", "Музей независимо указывает годы 1893-1977, называет Црнянского поэтом и прозаиком и документирует «Дневник о Чарноевиче» и Seobe."),
     ],
     decision: "corrected",
     notes: "Оценочное определение «один из крупнейших» заменено проверяемыми занятиями и произведениями.",
@@ -72,7 +72,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "serbia:vuk_karadzic",
     originalSha256: "d0dec3129697a862f58a35f1203446e52a4fc9da951a6d59706b21fdfe6a8685",
-    reviewedTextRu: "Вук Стефанович Караджич (1787–1864) — сербский филолог, реформатор литературного языка и собиратель фольклора. Он составил первое издание «Сербского словаря», вышедшее в 1818 году.",
+    reviewedTextRu: "Вук Стефанович Караджич (1787-1864) - сербский филолог, реформатор литературного языка и собиратель фольклора. Он составил первое издание «Сербского словаря», вышедшее в 1818 году.",
     evidence: [
       e("Сербская академия наук и искусств", "https://www.sanu.ac.rs/en/member/karadzic-vuk/", "Академия подтверждает годы жизни, работу Караджича по реформированию языка и собиранию народных сказок и пословиц."),
       e("Ведомство интеллектуальной собственности Республики Сербия", "https://www.zis.gov.rs/vesti/6-novembar-dan-rodjenja-vuka-karadzica/", "Государственное ведомство подтверждает дату рождения, характеризует Караджича как филолога, реформатора и собирателя фольклора и связывает с ним первый сербский словарь 1818 года."),
@@ -83,10 +83,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "seychelles:antoine_abel",
     originalSha256: "a39db6d2bf846e56281076100d061114f37193e32ebfab7099fd2858be662a0c",
-    reviewedTextRu: "Антуан Абель (1934–2004) — сейшельский поэт, прозаик и педагог, писавший на французском, английском и сейшельском креольском языках. В 1979 году он получил Prix des Mascareignes.",
+    reviewedTextRu: "Антуан Абель (1934-2004) - сейшельский поэт, прозаик и педагог, писавший на французском, английском и сейшельском креольском языках. В 1979 году он получил Prix des Mascareignes.",
     evidence: [
       e("Seychelles Nation", "https://www.nation.sc/archive/208659/antoine-abel-nest-plus", "Национальная газета подтверждает даты жизни, занятия писателя, поэта и преподавателя и получение Prix des Mascareignes в 1979 году."),
-      e("Seychelles Cultural Foundation", "https://seychellesculturalfoundation.com/seychellesliterature/history", "Государственный культурный фонд подтверждает годы 1934–2004, работу в поэзии, прозе и драматургии и использование французского, английского и креольского языков."),
+      e("Seychelles Cultural Foundation", "https://seychellesculturalfoundation.com/seychellesliterature/history", "Государственный культурный фонд подтверждает годы 1934-2004, работу в поэзии, прозе и драматургии и использование французского, английского и креольского языков."),
     ],
     decision: "corrected",
     notes: "Расплывчатая формула об основании современной литературы заменена документированными жанрами, языками и премией.",
@@ -96,8 +96,8 @@ const seeds: readonly ReviewSeed[] = [
     originalSha256: "b82e5f4e74e9d1868c08a37329dd4ed8e0b12a4f32b43649cd763ff874dfbeb1",
     reviewedTextRu: "Личность сейшельской писательницы «Глэдис Адель» (Gladyse Adele), которой в профиле приписан 1951 год рождения, не удалось однозначно установить по проверенным авторитетным каталогам.",
     evidence: [
-      e("Library of Congress — поиск каталога", "https://catalog.loc.gov/vwebv/search?searchArg=Gladyse+Adele&searchCode=GKEY%5E*&searchType=0&recCount=25", "Поиск по точному латинскому написанию имени не выявляет однозначной записи сейшельской писательницы."),
-      e("Bibliothèque nationale de France — поиск каталога", "https://catalogue.bnf.fr/rechercher.do?motRecherche=Gladyse+Adele&critereRecherche=0&depart=0&facetteModifiee=ok", "Поиск по точному имени не даёт авторитетной записи, подтверждающей заявленные личность, год рождения или литературные работы."),
+      e("Library of Congress - поиск каталога", "https://catalog.loc.gov/vwebv/search?searchArg=Gladyse+Adele&searchCode=GKEY%5E*&searchType=0&recCount=25", "Поиск по точному латинскому написанию имени не выявляет однозначной записи сейшельской писательницы."),
+      e("Bibliothèque nationale de France - поиск каталога", "https://catalogue.bnf.fr/rechercher.do?motRecherche=Gladyse+Adele&critereRecherche=0&depart=0&facetteModifiee=ok", "Поиск по точному имени не даёт авторитетной записи, подтверждающей заявленные личность, год рождения или литературные работы."),
     ],
     decision: "held",
     notes: "Fail-closed: в авторитетных библиотечных каталогах не найден однозначный авторский профиль или произведение, позволяющие подтвердить личность и исходную биографию.",
@@ -105,18 +105,18 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "seychelles:guy_lionnet",
     originalSha256: "784e2bb17df395db3a1cfe6ce5082ef7d3d582e56b3f8ada4ae76bb5c12e7e86",
-    reviewedTextRu: "Ги Лионне (1922–2007) — родившийся на Маврикии сейшельский агроном, натуралист, историк и автор книг о Сейшелах. Среди его работ — «A Short History of Seychelles» и «The Seychelles».",
+    reviewedTextRu: "Ги Лионне (1922-2007) - родившийся на Маврикии сейшельский агроном, натуралист, историк и автор книг о Сейшелах. Среди его работ - «A Short History of Seychelles» и «The Seychelles».",
     evidence: [
       e("Seychelles Nation", "https://www.nation.sc/archive/218214/guy-lionnet-nest-plus-une-lumiere-du-pays-sest-eteinte", "Некролог подтверждает рождение Лионне в мае 1922 года на Маврикии, смерть в 2007 году, его работу агрономом, натуралистом и историком и названия книг."),
       e("Seychelles Islands Foundation", "https://www.sif.sc/sites/default/files/downloads/SIF%20Annual%20Report%202007.pdf", "Годовой отчёт природоохранного фонда независимо подтверждает смерть Ги Лионне в 2007 году и его многолетнюю работу в изучении и охране природы Сейшел."),
     ],
     decision: "corrected",
-    notes: "Исходные годы 1933–2015 и место рождения на Сейшелах не относятся к Ги Лионне. Они исправлены на подтверждённые годы 1922–2007 и Маврикий; характеристика конкретизирована занятиями и книгами.",
+    notes: "Исходные годы 1933-2015 и место рождения на Сейшелах не относятся к Ги Лионне. Они исправлены на подтверждённые годы 1922-2007 и Маврикий; характеристика конкретизирована занятиями и книгами.",
   },
   {
     key: "sierra_leone:aminatta_forna",
     originalSha256: "623911d0f412acb9d40eba1b1410560e754e784884de521bc4cf67eb9584279e",
-    reviewedTextRu: "Аминатта Форна (родилась в 1964 году) — британская писательница с сьерра-леонскими корнями и профессор Джорджтаунского университета. Среди её романов — «The Memory of Love» и «Happiness».",
+    reviewedTextRu: "Аминатта Форна (родилась в 1964 году) - британская писательница с сьерра-леонскими корнями и профессор Джорджтаунского университета. Среди её романов - «The Memory of Love» и «Happiness».",
     evidence: [
       e("Georgetown University", "https://medicalhumanities.georgetown.edu/profiles/aminatta-satha-forna/", "Университет подтверждает писательскую и профессорскую работу Форны и перечисляет романы The Memory of Love и Happiness."),
       e("Royal Society of Literature", "https://rsliterature.org/fellows/aminatta-forna/", "Королевское литературное общество подтверждает 1964 год рождения, сьерра-леонское происхождение и избрание Форны в члены общества."),
@@ -129,8 +129,8 @@ const seeds: readonly ReviewSeed[] = [
     originalSha256: "56cd21874f9655c53fff24ca4449cded80de78637733fab264bd8d4d40a0fa06",
     reviewedTextRu: "Личность писателя и исследователя «Огастина Бэнгуры» (Augustine Bangura), которому в профиле приписан 1965 год рождения, не удалось однозначно установить по проверенным авторитетным каталогам.",
     evidence: [
-      e("Library of Congress — поиск каталога", "https://catalog.loc.gov/vwebv/search?searchArg=Augustine+Bangura&searchCode=GKEY%5E*&searchType=0&recCount=25", "Поиск не выявляет однозначного авторского профиля исследователя литературы Сьерра-Леоне с заявленным годом рождения."),
-      e("Bibliothèque nationale de France — поиск каталога", "https://catalogue.bnf.fr/rechercher.do?motRecherche=Augustine+Bangura&critereRecherche=0&depart=0&facetteModifiee=ok", "Каталог не даёт авторитетной записи, связывающей это точное имя с заявленной литературной биографией."),
+      e("Library of Congress - поиск каталога", "https://catalog.loc.gov/vwebv/search?searchArg=Augustine+Bangura&searchCode=GKEY%5E*&searchType=0&recCount=25", "Поиск не выявляет однозначного авторского профиля исследователя литературы Сьерра-Леоне с заявленным годом рождения."),
+      e("Bibliothèque nationale de France - поиск каталога", "https://catalogue.bnf.fr/rechercher.do?motRecherche=Augustine+Bangura&critereRecherche=0&depart=0&facetteModifiee=ok", "Каталог не даёт авторитетной записи, связывающей это точное имя с заявленной литературной биографией."),
     ],
     decision: "held",
     notes: "Fail-closed: имя широко распространено, а найденные совпадения относятся к другим людям; надёжной библиографической записи с заявленной специализацией нет.",
@@ -138,7 +138,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "sierra_leone:delia_jarrett_macauley",
     originalSha256: "8e387bdc5dd63b1e20e373d62917b0d2e2ba36449ad7d5226ffb62e6df599353",
-    reviewedTextRu: "Делия Джарретт-Маколи — британская писательница, биограф и исследовательница из семьи выходцев из Сьерра-Леоне. Её роман «Moses, Citizen & Me» получил премию Оруэлла в 2005 году.",
+    reviewedTextRu: "Делия Джарретт-Маколи - британская писательница, биограф и исследовательница из семьи выходцев из Сьерра-Леоне. Её роман «Moses, Citizen & Me» получил премию Оруэлла в 2005 году.",
     evidence: [
       e("The Orwell Foundation", "https://www.orwellfoundation.com/the-orwell-youth-prize/for-young-writers/future-orwell-youth-prize-2020-2-2-2/", "Фонд подтверждает происхождение из семьи выходцев из Сьерра-Леоне, занятия романиста, биографа, исследователя и радиоведущей и премию за Moses, Citizen & Me."),
       e("University of Warwick", "https://warwick.ac.uk/fac/arts/english/research/currentprojects/multiculturalshakespeare/thehistory/stories/", "Университетский проект независимо подтверждает исследовательскую работу доктора Делии Джарретт-Маколи и её участие в академическом проекте по истории театра."),
@@ -149,7 +149,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "sierra_leone:syl_cheney_coker",
     originalSha256: "8df4e4bda30d9741cb099b398d192cbd13d1668ef27cc97824f4f02d1353b5b2",
-    reviewedTextRu: "Силь Чейни-Кокер (родился в 1945 году) — сьерра-леонский поэт и романист. Его роман «The Last Harmattan of Alusine Dunbar» получил региональную премию Commonwealth Writers’ Prize в 1991 году.",
+    reviewedTextRu: "Силь Чейни-Кокер (родился в 1945 году) - сьерра-леонский поэт и романист. Его роман «The Last Harmattan of Alusine Dunbar» получил региональную премию Commonwealth Writers’ Prize в 1991 году.",
     evidence: [
       e("Poetry Foundation", "https://www.poetryfoundation.org/poets/syl-cheney-coker", "Фонд подтверждает рождение в 1945 году во Фритауне, работу поэта и романиста и премию за The Last Harmattan of Alusine Dunbar."),
       e("University of California eScholarship", "https://escholarship.org/content/qt79r869xv/qt79r869xv_noSplash_14dc862fafc164163d4bd813b5af6ab7.pdf", "Университетская публикация независимо подтверждает 1945 год рождения, сьерра-леонскую принадлежность и поэтическое и прозаическое творчество."),
@@ -160,9 +160,9 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "sierra_leone:william_conton",
     originalSha256: "20c5f8d8dba3ba903d23b212e1804bf3f96f1e7d8bfd8fd40bd8b1abcb86ffec",
-    reviewedTextRu: "Уильям Фаркуар Контон (1925–2003) — сьерра-леонский писатель, историк и педагог. Он написал роман «The African» (1960) и книгу «West Africa in History» (1961).",
+    reviewedTextRu: "Уильям Фаркуар Контон (1925-2003) - сьерра-леонский писатель, историк и педагог. Он написал роман «The African» (1960) и книгу «West Africa in History» (1961).",
     evidence: [
-      e("Store norske leksikon", "https://snl.no/William_Conton", "Экспертная энциклопедия указывает 5 сентября 1925 — 23 июня 2003 года, называет Контона писателем и подтверждает The African и West Africa in History."),
+      e("Store norske leksikon", "https://snl.no/William_Conton", "Экспертная энциклопедия указывает 5 сентября 1925 - 23 июня 2003 года, называет Контона писателем и подтверждает The African и West Africa in History."),
       e("University of Reading Special Collections", "https://collections.reading.ac.uk/special-collections/wp-content/uploads/sites/5/2020/01/African-Writers-Series-Part-1-min.pdf", "Университетский архив издательства Heinemann документирует Уильяма Контона и рукописные и издательские материалы романа The African."),
     ],
     decision: "corrected",
@@ -171,9 +171,9 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "singapore:claire_tham",
     originalSha256: "37238a7fcc272fd19765500b798dfaf755a57386c2ec415f68b0b5bbd9572c5f",
-    reviewedTextRu: "Клэр Тхэм — сингапурская писательница и юрист, автор сборников рассказов «Fascist Rock» и «The Gunpowder Trail & Other Stories» и романа «The Inlet».",
+    reviewedTextRu: "Клэр Тхэм - сингапурская писательница и юрист, автор сборников рассказов «Fascist Rock» и «The Gunpowder Trail & Other Stories» и романа «The Inlet».",
     evidence: [
-      e("National Library Board Singapore — BiblioAsia", "https://biblioasia.nlb.gov.sg/vol-10/issue-1/apr-jun-2014/claire-tham-opinion/", "Национальная библиотека подтверждает, что Клэр Тхэм — сингапурская писательница и выпускница юридического факультета Оксфорда, и называет The Inlet."),
+      e("National Library Board Singapore - BiblioAsia", "https://biblioasia.nlb.gov.sg/vol-10/issue-1/apr-jun-2014/claire-tham-opinion/", "Национальная библиотека подтверждает, что Клэр Тхэм - сингапурская писательница и выпускница юридического факультета Оксфорда, и называет The Inlet."),
       e("Singapore Writers Festival", "https://www.singaporewritersfestival.com/images/past-festivals/SWF-2013-Programme-Booklet.pdf", "Официальная программа фестиваля подтверждает её работу юристом и писательницей и перечисляет Fascist Rock и The Gunpowder Trail & Other Stories."),
     ],
     decision: "corrected",
@@ -182,9 +182,9 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "singapore:edwin_thumboo",
     originalSha256: "9d41ff93331169db8939d99c4db5136b86e0364c664e1279226b8b90d634f18f",
-    reviewedTextRu: "Эдвин Тамбу (родился в 1933 году) — сингапурский поэт, литературовед и профессор-эмерит Национального университета Сингапура. Среди его сборников — «Gods Can Die» и «Ulysses by the Merlion».",
+    reviewedTextRu: "Эдвин Тамбу (родился в 1933 году) - сингапурский поэт, литературовед и профессор-эмерит Национального университета Сингапура. Среди его сборников - «Gods Can Die» и «Ulysses by the Merlion».",
     evidence: [
-      e("National Library Board Singapore — BiblioAsia", "https://biblioasia.nlb.gov.sg/all-sections/vol-8-issue-4-jan-mar-2013-edwin-thumboo-poetry/", "Национальная библиотека подтверждает дату рождения, занятия поэта, академика и критика и сборники Gods Can Die и Ulysses by the Merlion."),
+      e("National Library Board Singapore - BiblioAsia", "https://biblioasia.nlb.gov.sg/all-sections/vol-8-issue-4-jan-mar-2013-edwin-thumboo-poetry/", "Национальная библиотека подтверждает дату рождения, занятия поэта, академика и критика и сборники Gods Can Die и Ulysses by the Merlion."),
       e("National University of Singapore Libraries", "https://nus.edu.sg/nuslibraries/whats-on-listing/news/2020/04/08/edwin-thumboo-private-papers-collection", "Университет подтверждает статус профессора-эмерита, поэтическое наследие и формулировку «неофициальный поэт-лауреат», опровергающую исходное утверждение об официальном первенстве."),
     ],
     decision: "corrected",
@@ -193,7 +193,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "singapore:josephine_chia",
     originalSha256: "0b25a2c71fea29a670c204b063928ba4b874e2b0d95050c8f960554fed4e4715",
-    reviewedTextRu: "Джозефин Чиа — сингапурская перанаканская писательница, автор художественной и документальной прозы. Её книга «Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955–1965» получила Singapore Literature Prize за документальную прозу в 2014 году.",
+    reviewedTextRu: "Джозефин Чиа - сингапурская перанаканская писательница, автор художественной и документальной прозы. Её книга «Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955-1965» получила Singapore Literature Prize за документальную прозу в 2014 году.",
     evidence: [
       e("National Library Board Singapore", "https://www.nlb.gov.sg/main/article-detail?cmsuuid=A-cc6f0faa-6936-495e-9feb-6c5cdad3d33c", "Национальная библиотека публикует авторский рассказ Чиа о её сингапурском происхождении и писательской работе и подтверждает раннюю литературную награду."),
       e("Singapore Book Council", "https://www.bookcouncil.sg/images/uploads/awards/SLP_Commemorative_Book_Digital.pdf", "Совет книги характеризует Чиа как перанаканскую писательницу художественной и документальной прозы и подтверждает Singapore Literature Prize 2014 за Kampong Spirit."),
@@ -204,10 +204,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "singapore:kuo_pao_kun",
     originalSha256: "1def57fad44e257844db1421e245cf7425f5fe4e70b20e232732264713dceb29",
-    reviewedTextRu: "Куо Пао Кун (1939–2002) — сингапурский драматург, режиссёр и театральный педагог, писавший на английском и китайском языках. Он основал The Theatre Practice и The Substation; среди его пьес — «The Coffin Is Too Big for the Hole» и «Lao Jiu».",
+    reviewedTextRu: "Куо Пао Кун (1939-2002) - сингапурский драматург, режиссёр и театральный педагог, писавший на английском и китайском языках. Он основал The Theatre Practice и The Substation; среди его пьес - «The Coffin Is Too Big for the Hole» и «Lao Jiu».",
     evidence: [
-      e("Esplanade — Theatres on the Bay", "https://www.esplanade.com/offstage/arts/kuo-pao-kun", "Национальный центр исполнительских искусств указывает 27 июня 1939 — 10 сентября 2002 года, роли драматурга, режиссёра и педагога, основанные организации и пьесы."),
-      e("RootsSG — National Heritage Board Singapore", "https://www.roots.gov.sg/places/places-landing/Places/surveyed-sites/the-substation", "Государственный портал наследия независимо подтверждает имя Kuo Pao Kun, профессию драматурга и основание им The Substation."),
+      e("Esplanade - Theatres on the Bay", "https://www.esplanade.com/offstage/arts/kuo-pao-kun", "Национальный центр исполнительских искусств указывает 27 июня 1939 - 10 сентября 2002 года, роли драматурга, режиссёра и педагога, основанные организации и пьесы."),
+      e("RootsSG - National Heritage Board Singapore", "https://www.roots.gov.sg/places/places-landing/Places/surveyed-sites/the-substation", "Государственный портал наследия независимо подтверждает имя Kuo Pao Kun, профессию драматурга и основание им The Substation."),
     ],
     decision: "corrected",
     notes: "Исправлены ошибочные русское имя «Куо Пайк Шан», дата 1939-11-12 и место рождения в Малайзии. Официальная биография указывает 27 июня 1939 года и провинцию Хэбэй в Китае.",
@@ -215,10 +215,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovakia:dominik_tatarka",
     originalSha256: "ca7e32bedad75428f878a7cf949396d417ed5a6d15a8766239b40fd9ddb81e20",
-    reviewedTextRu: "Доминик Татарка (1913–1989) — словацкий прозаик, эссеист и сценарист. Среди его книг — «Демон согласия» (Démon súhlasu) и «Плетёные кресла» (Prútené kreslá).",
+    reviewedTextRu: "Доминик Татарка (1913-1989) - словацкий прозаик, эссеист и сценарист. Среди его книг - «Демон согласия» (Démon súhlasu) и «Плетёные кресла» (Prútené kreslá).",
     evidence: [
       e("Slovenské literárne centrum", "https://www.litcentrum.sk/en/node/176409/briefly-about-production", "Словацкий литературный центр подтверждает годы жизни, работу в прозе, эссеистике и сценаристике и произведения Démon súhlasu и Prútené kreslá."),
-      e("Slovenská národná knižnica", "https://sk.snk.sk/vufind/Record/MASK2OKRA.383116/Details?lng=sk", "Национальная библиотека независимо фиксирует авторитетную форму имени Dominik Tatarka, годы 1913–1989 и его авторство."),
+      e("Slovenská národná knižnica", "https://sk.snk.sk/vufind/Record/MASK2OKRA.383116/Details?lng=sk", "Национальная библиотека независимо фиксирует авторитетную форму имени Dominik Tatarka, годы 1913-1989 и его авторство."),
     ],
     decision: "corrected",
     notes: "Субъективная оценка места в словацкой прозе заменена жанрами и двумя произведениями.",
@@ -226,10 +226,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovakia:hviezdoslav",
     originalSha256: "56ad8c6aaf1e25bca1abe6031124ccb45eca3d3749c929933d268b03586808fc",
-    reviewedTextRu: "Павол Орсаг Гвездослав (1849–1921) — словацкий поэт, драматург и переводчик. Среди его произведений — поэма «Hájnikova žena» и цикл «Krvavé sonety».",
+    reviewedTextRu: "Павол Орсаг Гвездослав (1849-1921) - словацкий поэт, драматург и переводчик. Среди его произведений - поэма «Hájnikova žena» и цикл «Krvavé sonety».",
     evidence: [
       e("Slovenské literárne centrum", "https://www.litcentrum.sk/autor/pavol-orszagh-hviezdoslav", "Литературный центр подтверждает годы жизни, поэтическую, драматургическую и переводческую работу и библиографию Гвездослава."),
-      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/krvave-sonety/", "Цифровой кабинет Института словацкой литературы подтверждает авторство цикла Krvavé sonety, годы 1849–1921 и публикацию цикла в 1919 году."),
+      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/krvave-sonety/", "Цифровой кабинет Института словацкой литературы подтверждает авторство цикла Krvavé sonety, годы 1849-1921 и публикацию цикла в 1919 году."),
     ],
     decision: "corrected",
     notes: "Субъективное ранжирование удалено; оставлены документированные занятия и произведения.",
@@ -237,10 +237,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovakia:janko_kral",
     originalSha256: "b531cd079e76531557ee552bf7385ea9c78540a98ee4365c4281bda35d27b5d2",
-    reviewedTextRu: "Янко Краль (1822–1876) — словацкий поэт романтического поколения и участник революционных событий 1848 года. Он написал балладу «Заколдованная дева в Ваге и чудной Янко».",
+    reviewedTextRu: "Янко Краль (1822-1876) - словацкий поэт романтического поколения и участник революционных событий 1848 года. Он написал балладу «Заколдованная дева в Ваге и чудной Янко».",
     evidence: [
       e("Slovenské literárne centrum", "https://www.litcentrum.sk/autor/janko-kral", "Литературный центр подтверждает годы жизни, принадлежность к романтическому поколению, революционную деятельность и поэтическое наследие Краля."),
-      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/zakliata-panna-vo-vahu-a-divny-janko/", "Институт независимо подтверждает годы 1822–1876, авторство и публикацию баллады Zakliata panna vo Váhu a divný Janko в 1844 году."),
+      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/zakliata-panna-vo-vahu-a-divny-janko/", "Институт независимо подтверждает годы 1822-1876, авторство и публикацию баллады Zakliata panna vo Váhu a divný Janko в 1844 году."),
     ],
     decision: "corrected",
     notes: "Оценка «один из главных» заменена литературным направлением, участием в событиях 1848 года и конкретным произведением.",
@@ -248,10 +248,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovakia:ludovit_stur",
     originalSha256: "5a084b6418ca3c4f79afbee6d281e5dab391eff59285406e356954a8697fa832",
-    reviewedTextRu: "Людовит Штур (1815–1856) — словацкий языковед, журналист, поэт и политический деятель, связанный с кодификацией словацкого литературного языка. Он также издал поэтический сборник «Spevy a piesne».",
+    reviewedTextRu: "Людовит Штур (1815-1856) - словацкий языковед, журналист, поэт и политический деятель, связанный с кодификацией словацкого литературного языка. Он также издал поэтический сборник «Spevy a piesne».",
     evidence: [
       e("Slovenské literárne centrum", "https://www.litcentrum.sk/autor/ludovit-stur-0/zivotopis-autora", "Центр подтверждает годы жизни, работу языковеда, поэта, журналиста и политика и роль Штура в кодификации литературного языка."),
-      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/spevy-a-piesne/", "Институт независимо подтверждает годы 1815–1856 и авторство сборника Spevy a piesne, изданного в 1853 году."),
+      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/spevy-a-piesne/", "Институт независимо подтверждает годы 1815-1856 и авторство сборника Spevy a piesne, изданного в 1853 году."),
     ],
     decision: "corrected",
     notes: "Исходное утверждение уточнено проверяемыми занятиями и конкретным поэтическим изданием.",
@@ -259,10 +259,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovakia:martin_kukucin",
     originalSha256: "0e328c7407600eab52a888c4731aa19aff46f99f5b090f44def1225741ebb5f4",
-    reviewedTextRu: "Мартин Кукучин (1860–1928) — словацкий прозаик и врач, представитель литературного реализма. Среди его произведений — рассказ «Рыжая тёлка» (Rysavá jalovica) и роман «Дом на откосе» (Dom v stráni).",
+    reviewedTextRu: "Мартин Кукучин (1860-1928) - словацкий прозаик и врач, представитель литературного реализма. Среди его произведений - рассказ «Рыжая тёлка» (Rysavá jalovica) и роман «Дом на откосе» (Dom v stráni).",
     evidence: [
       e("Slovenské literárne centrum", "https://www.litcentrum.sk/autor/martin-kukucin/diela", "Литературный центр подтверждает годы жизни и библиографию Кукучина, включая Rysavá jalovica и Dom v stráni."),
-      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/dom-v-strani-2/", "Институт подтверждает настоящее имя Матей Бенцур, годы 1860–1928, медицинское образование, реалистическую прозу и роман Dom v stráni."),
+      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/dom-v-strani-2/", "Институт подтверждает настоящее имя Матей Бенцур, годы 1860-1928, медицинское образование, реалистическую прозу и роман Dom v stráni."),
     ],
     decision: "corrected",
     notes: "Оценочное слово «классик» заменено профессиями, литературным направлением и произведениями.",
@@ -270,7 +270,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovakia:pavol_rankov",
     originalSha256: "353d95883066eb72de35ae1cc82a5ef7101f2bb2f3cea540d2a652190ce55385",
-    reviewedTextRu: "Павол Ранков (родился в 1964 году) — словацкий прозаик и преподаватель Университета Коменского. Его роман «Это случилось первого сентября (или когда-нибудь ещё)» получил Литературную премию Европейского союза в 2009 году.",
+    reviewedTextRu: "Павол Ранков (родился в 1964 году) - словацкий прозаик и преподаватель Университета Коменского. Его роман «Это случилось первого сентября (или когда-нибудь ещё)» получил Литературную премию Европейского союза в 2009 году.",
     evidence: [
       e("Slovenské literárne centrum", "https://www.litcentrum.sk/en/author/pavol-rankov", "Литературный центр указывает дату рождения 16 сентября 1964 года, писательскую и преподавательскую работу Ранкова, роман и премию 2009 года."),
       e("European Union Prize for Literature", "https://euprizeliterature.eu/en/prize-author/pavol-rankov/", "Официальный сайт премии независимо подтверждает 1964 год рождения, работу прозаика и университетского преподавателя и победу романа Stalo sa prvého septembra в 2009 году."),
@@ -281,10 +281,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovakia:timrava",
     originalSha256: "ce2cd3c8d50f40045ad331c1ee7e218baaf4159bd0e00d3af47f0d90a2ec11fd",
-    reviewedTextRu: "Божена Сланчикова-Тимрава (1867–1951) — словацкая прозаик и драматург, публиковавшаяся под псевдонимом Тимрава. Среди её произведений — повести «Ťapákovci» и «Bez hrdosti».",
+    reviewedTextRu: "Божена Сланчикова-Тимрава (1867-1951) - словацкая прозаик и драматург, публиковавшаяся под псевдонимом Тимрава. Среди её произведений - повести «Ťapákovci» и «Bez hrdosti».",
     evidence: [
       e("Slovenské literárne centrum", "https://www.litcentrum.sk/autor/bozena-slancikova-timrava/diela", "Литературный центр подтверждает годы жизни, настоящее имя и псевдоним, работу в прозе и драматургии и библиографию Тимравы."),
-      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/bez-hrdosti/", "Институт независимо указывает настоящее имя Божена Сланчикова, годы 1867–1951 и авторство повести Bez hrdosti 1905 года."),
+      e("Ústav slovenskej literatúry SAV", "https://studovnaliteratury.sav.sk/bez-hrdosti/", "Институт независимо указывает настоящее имя Божена Сланчикова, годы 1867-1951 и авторство повести Bez hrdosti 1905 года."),
     ],
     decision: "corrected",
     notes: "Субъективное ранжирование удалено; имя, псевдоним, жанры и произведения подтверждены.",
@@ -292,7 +292,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovenia:boris_pahor",
     originalSha256: "b16ae42536f0b69e1edcd3d1134dd4a02fd95ec7e2895081addf2b545b103d26",
-    reviewedTextRu: "Борис Пахор (1913–2022) — словенский писатель из Триеста, переживший заключение в нацистских концлагерях. Этот опыт отражён в его романе «Некрополь» (Nekropola).",
+    reviewedTextRu: "Борис Пахор (1913-2022) - словенский писатель из Триеста, переживший заключение в нацистских концлагерях. Этот опыт отражён в его романе «Некрополь» (Nekropola).",
     evidence: [
       e("Slovenska biografija", "https://www.slovenska-biografija.si/oseba/sbi940140/", "Академический биографический словарь подтверждает даты жизни, триестское происхождение, заключение Пахора в нескольких концлагерях и роман Nekropola."),
       e("Правительство Республики Словения", "https://www.gov.si/assets/vladne-sluzbe/UKOM/Promocija-Slovenije/Sinfo/Sinfo-arhiv/Sinfo-12-2008.pdf", "Государственное издание независимо подтверждает рождение в Триесте в 1913 году, лагерный опыт и известность романа Nekropola."),
@@ -303,7 +303,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovenia:drago_jancar",
     originalSha256: "36f439104022aa2967c4e0acf76e8900f6b30f558032e3458e1838995ce5bded",
-    reviewedTextRu: "Драго Янчар (родился в 1948 году) — словенский прозаик, драматург и эссеист. Среди его романов — «Этой ночью я её видел» и «И любовь тоже»; за четыре романа он получил премию Kresnik.",
+    reviewedTextRu: "Драго Янчар (родился в 1948 году) - словенский прозаик, драматург и эссеист. Среди его романов - «Этой ночью я её видел» и «И любовь тоже»; за четыре романа он получил премию Kresnik.",
     evidence: [
       e("Словенская академия наук и искусств", "https://www.sazu.si/en/members/drago-jancar", "Академия указывает дату рождения 13 апреля 1948 года, писательскую деятельность Янчара и подробную библиографию."),
       e("Правительство Республики Словения", "https://www.gov.si/en/news/2021-02-01-drago-jancar-a-european-storyteller-in-the-slovenian-language/", "Государственный культурный очерк подтверждает занятия прозаика, драматурга и эссеиста, романы I Saw Her That Night и And Love Itself и четыре премии Kresnik."),
@@ -314,10 +314,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovenia:france_preseren",
     originalSha256: "78acb6c4090d1d8354af44569457eb3927fc6aa387479db1a7024cecb841e48a",
-    reviewedTextRu: "Франце Прешерен (1800–1849) — словенский поэт и юрист эпохи романтизма. Он написал «Венок сонетов» и стихотворение «Здравица», седьмая строфа которого стала текстом гимна Словении.",
+    reviewedTextRu: "Франце Прешерен (1800-1849) - словенский поэт и юрист эпохи романтизма. Он написал «Венок сонетов» и стихотворение «Здравица», седьмая строфа которого стала текстом гимна Словении.",
     evidence: [
       e("Slovenska biografija", "https://www.slovenska-biografija.si/oseba/sbi463215/", "Академический словарь подтверждает точные даты жизни, занятия поэта и юриста и произведение Sonetni venec."),
-      e("Culture of Slovenia — Ministry of Culture", "https://culture.gov.si/en/A_Short_Overview_of_Slovene_Literature_from_Romanticism_to_Modernism", "Государственный культурный портал связывает Прешерена с европейским романтизмом и подтверждает авторство Zdravljica и её статус гимна Словении."),
+      e("Culture of Slovenia - Ministry of Culture", "https://culture.gov.si/en/A_Short_Overview_of_Slovene_Literature_from_Romanticism_to_Modernism", "Государственный культурный портал связывает Прешерена с европейским романтизмом и подтверждает авторство Zdravljica и её статус гимна Словении."),
     ],
     decision: "corrected",
     notes: "Субъективные определения «величайший» и «национальный классик» заменены профессиями, направлением и конкретными произведениями.",
@@ -325,10 +325,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovenia:ivan_cankar",
     originalSha256: "ad90a6b8b6afdd6a6022b54c78be0d74bd7f771ac023105f8703b550ef9bf23a",
-    reviewedTextRu: "Иван Цанкар (1876–1918) — словенский прозаик, драматург, эссеист и поэт, представитель словенского модернизма. Среди его произведений — повесть «Батрак Ерней и его право» и пьеса «Слуги» (Hlapci).",
+    reviewedTextRu: "Иван Цанкар (1876-1918) - словенский прозаик, драматург, эссеист и поэт, представитель словенского модернизма. Среди его произведений - повесть «Батрак Ерней и его право» и пьеса «Слуги» (Hlapci).",
     evidence: [
       e("Slovenska biografija", "https://www.slovenska-biografija.si/oseba/sbi155071/", "Академический словарь подтверждает точные даты жизни и занятия Цанкара как писателя, драматурга, эссеиста и поэта."),
-      e("Culture of Slovenia — Ministry of Culture", "https://culture.gov.si/en/A_Short_Overview_of_Slovene_Literature_from_Romanticism_to_Modernism", "Государственный портал относит Цанкара к модернизму и документирует повесть Hlapec Jernej in njegova pravica и его драматургию."),
+      e("Culture of Slovenia - Ministry of Culture", "https://culture.gov.si/en/A_Short_Overview_of_Slovene_Literature_from_Romanticism_to_Modernism", "Государственный портал относит Цанкара к модернизму и документирует повесть Hlapec Jernej in njegova pravica и его драматургию."),
     ],
     decision: "corrected",
     notes: "Субъективное определение «крупнейший» удалено; оставлены жанры, направление и произведения.",
@@ -336,10 +336,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovenia:oton_zupancic",
     originalSha256: "b915961579b28069b5666ae26fd14f004264d3ca8477107f4a2e2503b85d9b8d",
-    reviewedTextRu: "Отон Жупанчич (1878–1949) — словенский поэт, драматург, эссеист и переводчик, связанный со словенской модернистской поэзией. Он переводил на словенский язык произведения Шекспира.",
+    reviewedTextRu: "Отон Жупанчич (1878-1949) - словенский поэт, драматург, эссеист и переводчик, связанный со словенской модернистской поэзией. Он переводил на словенский язык произведения Шекспира.",
     evidence: [
       e("Slovenska biografija", "https://www.slovenska-biografija.si/oseba/sbi913178/", "Академический словарь подтверждает даты жизни, занятия поэта, драматурга, эссеиста и переводчика и переводы Шекспира."),
-      e("Poetry International", "https://www.poetryinternational.com/en/poets-poems/article/104-5027_Slovenian-poetry-between-elegy-and-serenity", "Международная поэтическая организация независимо указывает годы 1878–1949 и связывает Жупанчича с символизмом и словенской модернистской поэзией."),
+      e("Poetry International", "https://www.poetryinternational.com/en/poets-poems/article/104-5027_Slovenian-poetry-between-elegy-and-serenity", "Международная поэтическая организация независимо указывает годы 1878-1949 и связывает Жупанчича с символизмом и словенской модернистской поэзией."),
     ],
     decision: "corrected",
     notes: "Субъективное ранжирование заменено документированными жанрами, направлением и переводческой работой.",
@@ -347,7 +347,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovenia:srecko_kosovel",
     originalSha256: "7fd5cd457aef4e14bfd9a963a03304faa1d60c4aaa4287ab4ca8dcb5f203aeff",
-    reviewedTextRu: "Сречко Косовел (1904–1926) — словенский поэт, в творчестве которого представлены экспрессионистские и конструктивистские элементы. Первый сборник его стихов был издан посмертно в 1927 году.",
+    reviewedTextRu: "Сречко Косовел (1904-1926) - словенский поэт, в творчестве которого представлены экспрессионистские и конструктивистские элементы. Первый сборник его стихов был издан посмертно в 1927 году.",
     evidence: [
       e("Slovenska biografija", "https://www.slovenska-biografija.si/oseba/sbi293661/", "Академический словарь подтверждает даты жизни, поэтическую деятельность и первое посмертное издание сборника стихов в 1927 году."),
       e("Правительство Республики Словения", "https://www.gov.si/zbirke/projekti-in-programi/leto-2026-je-leto-pesnika-srecka-kosovela/", "Министерство культуры подтверждает точные даты жизни, экспрессионистские и конструктивистские элементы и посмертную публикацию сборника Pesmi в 1927 году."),
@@ -358,10 +358,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovenia:tone_pavcek",
     originalSha256: "2196203ad654e9abe0686607505bca85153b9606e4e9f1132463e29dd8e878a8",
-    reviewedTextRu: "Тоне Павчек (1928–2011) — словенский поэт, эссеист и переводчик, один из авторов коллективного сборника «Pesmi štirih». В 2001 году он стал членом Словенской академии наук и искусств.",
+    reviewedTextRu: "Тоне Павчек (1928-2011) - словенский поэт, эссеист и переводчик, один из авторов коллективного сборника «Pesmi štirih». В 2001 году он стал членом Словенской академии наук и искусств.",
     evidence: [
-      e("Словенская академия наук и искусств", "https://www.sazu.si/uploads/files/5d71065c65d3e9a94a8bcdb9/SAZU_ob_80_letnici-Biografski_zbornik_pokojnih_%C4%8Dlanov_2018-highres2.pdf", "Академический биографический сборник подтверждает годы 1928–2011, литературную и переводческую работу и избрание членом академии в 2001 году."),
-      e("Culture of Slovenia — Ministry of Culture", "https://culture.gov.si/en/A_Short_Overview_of_Slovene_Literature_from_Romanticism_to_Modernism", "Государственный культурный портал независимо подтверждает годы жизни и участие Павчека в коллективном сборнике Pesmi štirih."),
+      e("Словенская академия наук и искусств", "https://www.sazu.si/uploads/files/5d71065c65d3e9a94a8bcdb9/SAZU_ob_80_letnici-Biografski_zbornik_pokojnih_%C4%8Dlanov_2018-highres2.pdf", "Академический биографический сборник подтверждает годы 1928-2011, литературную и переводческую работу и избрание членом академии в 2001 году."),
+      e("Culture of Slovenia - Ministry of Culture", "https://culture.gov.si/en/A_Short_Overview_of_Slovene_Literature_from_Romanticism_to_Modernism", "Государственный культурный портал независимо подтверждает годы жизни и участие Павчека в коллективном сборнике Pesmi štirih."),
     ],
     decision: "corrected",
     notes: "Субъективное ранжирование удалено; добавлены жанры, конкретное издание и академический статус.",
@@ -369,7 +369,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "slovenia:vladimir_bartol",
     originalSha256: "86c728cd17926c2df407a4bb0011c21ceb25707272da9603c9c34be4c27de2ae",
-    reviewedTextRu: "Владимир Бартол (1903–1967) — словенский писатель, драматург, критик и публицист. В 1938 году он опубликовал роман «Аламут».",
+    reviewedTextRu: "Владимир Бартол (1903-1967) - словенский писатель, драматург, критик и публицист. В 1938 году он опубликовал роман «Аламут».",
     evidence: [
       e("Slovenska biografija", "https://www.slovenska-biografija.si/oseba/sbi1001580/", "Академический словарь подтверждает точные даты жизни, занятия писателя, драматурга, критика и публициста и публикацию Alamut в 1938 году."),
       e("Slovenian Book Agency", "https://www.jakrs.si/en/international-cooperation/database-of-translations?author=12", "Государственная книжная агенция независимо документирует авторство Бартола и многочисленные переводы романа Alamut."),
@@ -380,9 +380,9 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "solomon_islands:john_saunana",
     originalSha256: "0d541a5b4f4d42bff5783241dffaa35b2af65ade8491a853db273abce95be71e",
-    reviewedTextRu: "Джон Селвин Саунана (1945–2013) — писатель и государственный деятель Соломоновых Островов. Его роман «The Alternative», опубликованный в 1980 году, стал первым изданным романом автора с Соломоновых Островов.",
+    reviewedTextRu: "Джон Селвин Саунана (1945-2013) - писатель и государственный деятель Соломоновых Островов. Его роман «The Alternative», опубликованный в 1980 году, стал первым изданным романом автора с Соломоновых Островов.",
     evidence: [
-      e("Solomon Islands Historical Encyclopaedia", "https://www.solomonencyclopaedia.net/biogs/E000675b.htm", "Университетская историческая энциклопедия указывает 1945 — 30 апреля 2013 года, писательскую и государственную работу и статус The Alternative как первого романа, опубликованного автором с Соломоновых Островов."),
+      e("Solomon Islands Historical Encyclopaedia", "https://www.solomonencyclopaedia.net/biogs/E000675b.htm", "Университетская историческая энциклопедия указывает 1945 - 30 апреля 2013 года, писательскую и государственную работу и статус The Alternative как первого романа, опубликованного автором с Соломоновых Островов."),
       e("University of Canterbury Library", "https://libcat.canterbury.ac.nz/Record/527728", "Университетский каталог независимо подтверждает авторство Саунаны, название The Alternative, издателя University of the South Pacific и 1980 год издания."),
     ],
     decision: "corrected",
@@ -391,33 +391,33 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "solomon_islands:rex_horoi",
     originalSha256: "28d89d75361def003cc933adb493c5e7eb788f431806a93a5aa4d85147bacdff",
-    reviewedTextRu: "Рекс Стивен Хорои — педагог, лингвист и дипломат Соломоновых Островов. Он был соавтором учебных пособий по соломонову пиджину и в 1990-е годы представлял страну при ООН.",
+    reviewedTextRu: "Рекс Стивен Хорои - педагог, лингвист и дипломат Соломоновых Островов. Он был соавтором учебных пособий по соломонову пиджину и в 1990-е годы представлял страну при ООН.",
     evidence: [
       e("University of the South Pacific", "https://www.usp.ac.fj/alumni/wp-content/uploads/sites/4/2021/08/USPAlumniNewsletter_201706_en.pdf", "Университет подтверждает имя Rex Horoi, диплом педагога, последующее образование и работу в образовательных учреждениях Соломоновых Островов."),
-      e("ERIC — U.S. Department of Education", "https://eric.ed.gov/?id=ED205042", "Государственная образовательная база документирует Stephen Rex Horoi как соавтора пособия Solomon Islands Pijin: Culture and Communication Handbook 1979 года."),
+      e("ERIC - U.S. Department of Education", "https://eric.ed.gov/?id=ED205042", "Государственная образовательная база документирует Stephen Rex Horoi как соавтора пособия Solomon Islands Pijin: Culture and Communication Handbook 1979 года."),
       e("United Nations Digital Library", "https://digitallibrary.un.org/record/398061", "Цифровая библиотека ООН подтверждает имя Rex S. Horoi и его выступление в качестве представителя Соломоновых Островов в 1998 году."),
     ],
     decision: "corrected",
-    notes: "Профиль ошибочно называет человека «Рексом Хэтчинсом» и приписывает ему годы 1944–2014. Ключ однозначно относится к Рексу Стивену Хорои; надёжные источники расходятся в годе рождения, поэтому годы удалены, а литературная атрибуция заменена документированными занятиями.",
+    notes: "Профиль ошибочно называет человека «Рексом Хэтчинсом» и приписывает ему годы 1944-2014. Ключ однозначно относится к Рексу Стивену Хорои; надёжные источники расходятся в годе рождения, поэтому годы удалены, а литературная атрибуция заменена документированными занятиями.",
   },
   {
     key: "somalia:abdullahi_diiriye_guuleed",
     originalSha256: "81da63fa8d25881ea5589044ace57080fecade4f2113802cc2d53db0b897b790",
-    reviewedTextRu: "Абдуллахи Диирие Гулед, также известный как Арале, — сомалийский исследователь литературы и стиховедения. С 1978 года он преподавал на кафедре сомалийского языка и литературы Сомалийского национального университета и публиковал исследования метрики сомалийской поэзии.",
+    reviewedTextRu: "Абдуллахи Диирие Гулед, также известный как Арале, - сомалийский исследователь литературы и стиховедения. С 1978 года он преподавал на кафедре сомалийского языка и литературы Сомалийского национального университета и публиковал исследования метрики сомалийской поэзии.",
     evidence: [
       e("SOAS University of London", "https://soas-repository.worktribe.com/OutputFile/395247", "Академическая работа называет Cabdullaahi Diiriye Guuleed исследователем сомалийской метрики и подтверждает его вклад 1978 года."),
-      e("Roma Tre University — ArcAdiA", "https://arcadia.sba.uniroma3.it/bitstream/2307/1528/1/Somali%20Literature%20-%20B.W.%20Andrzejewski.pdf", "Университетское издание даёт биографическую справку: литературовед, выпускник Сомалийского национального университета, с 1978 года преподаватель и автор серии исследований стихосложения."),
+      e("Roma Tre University - ArcAdiA", "https://arcadia.sba.uniroma3.it/bitstream/2307/1528/1/Somali%20Literature%20-%20B.W.%20Andrzejewski.pdf", "Университетское издание даёт биографическую справку: литературовед, выпускник Сомалийского национального университета, с 1978 года преподаватель и автор серии исследований стихосложения."),
     ],
     decision: "corrected",
-    notes: "Имя «Абдуллахи Диирие Гулам» исправлено по ключу и академическим публикациям. Профильные годы 1928–1973 несовместимы с документированной работой начиная с 1978 года и поэтому удалены из текста; точные годы жизни не установлены.",
+    notes: "Имя «Абдуллахи Диирие Гулам» исправлено по ключу и академическим публикациям. Профильные годы 1928-1973 несовместимы с документированной работой начиная с 1978 года и поэтому удалены из текста; точные годы жизни не установлены.",
   },
   {
     key: "somalia:farah_mohamed_jama_awl",
     originalSha256: "7bf0060452f1bb033bb4ff3a2bcc2ebef62b26df722f41f64d989d7a46c839be",
-    reviewedTextRu: "Фарах Мохамед Джама Аул — сомалийский прозаик. Он написал романы «Aqoondarro waa u Nacab Jacayl» (1974) и «Dhibbanaha aan dhalan» (1989).",
+    reviewedTextRu: "Фарах Мохамед Джама Аул - сомалийский прозаик. Он написал романы «Aqoondarro waa u Nacab Jacayl» (1974) и «Dhibbanaha aan dhalan» (1989).",
     evidence: [
       e("Indiana University Libraries", "https://iucat.iu.edu/iuk/662083", "Университетский каталог подтверждает авторитетную форму имени Faarax Maxamed Jaamac и авторство Aqoondarro waa u nacab jacayl; рядом фиксирует Dhibbanaha aan dhalan."),
-      e("Roma Tre University — ArcAdiA", "https://arcadia.sba.uniroma3.it/handle/2307/5613?locale=en", "Университетский архив независимо подтверждает авторство Фараха М. Дж. Аула и анализирует его роман Aqoondarro waa u Nacab Jacayl."),
+      e("Roma Tre University - ArcAdiA", "https://arcadia.sba.uniroma3.it/handle/2307/5613?locale=en", "Университетский архив независимо подтверждает авторство Фараха М. Дж. Аула и анализирует его роман Aqoondarro waa u Nacab Jacayl."),
     ],
     decision: "corrected",
     notes: "Неподтверждённая роль историка удалена; добавлены два библиографически зафиксированных романа. Интервал лет жизни и год смерти очищены, поскольку надёжные справочные источники расходятся в годе смерти.",
@@ -425,9 +425,9 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "somalia:mohamed_ibrahim_warsame_hadraawi",
     originalSha256: "c429f17dc452c3fbc8d1648d5f33f0d5991b8588acda6f1a7a619d71b5a6402b",
-    reviewedTextRu: "Мохамед Ибрахим Варсаме, известный как Хадраави (1943–2022), — сомалийский поэт и автор песенных текстов. Среди его произведений — поэмы «Sirta Nolosha» и «Gudgude»; в 2012 году он получил премию Prince Claus Fund.",
+    reviewedTextRu: "Мохамед Ибрахим Варсаме, известный как Хадраави (1943-2022), - сомалийский поэт и автор песенных текстов. Среди его произведений - поэмы «Sirta Nolosha» и «Gudgude»; в 2012 году он получил премию Prince Claus Fund.",
     evidence: [
-      e("Poetry Translation Centre", "https://www.poetrytranslation.org/poet/maxamed-ibraahin-warsame-hadraawi/", "Центр подтверждает годы 1943–2022, имя и псевдоним, поэтическое и песенное творчество, произведения Sirta Nolosha и Gudgude и премию 2012 года."),
+      e("Poetry Translation Centre", "https://www.poetrytranslation.org/poet/maxamed-ibraahin-warsame-hadraawi/", "Центр подтверждает годы 1943-2022, имя и псевдоним, поэтическое и песенное творчество, произведения Sirta Nolosha и Gudgude и премию 2012 года."),
       e("SOAS University of London", "https://eprints.soas.ac.uk/20911/1/Orwin_Oral_Traditon.pdf", "Академическое исследование независимо подтверждает полное имя Maxamed Ibraahim Warsame «Hadraawi», его статус сомалийского поэта и особенности создания его стихов."),
     ],
     decision: "corrected",
@@ -436,7 +436,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "somalia:nuruddin_farah",
     originalSha256: "12a6ee8111cdd52ce34ba87198839e7e3f06d24b459b91aa329b4d6f50b59688",
-    reviewedTextRu: "Нуруддин Фарах (родился в 1945 году) — сомалийский романист, эссеист и драматург, пишущий на английском языке. Среди его книг — «From a Crooked Rib», «Maps» и «Secrets»; в 1998 году он получил Международную литературную премию Нойштадта.",
+    reviewedTextRu: "Нуруддин Фарах (родился в 1945 году) - сомалийский романист, эссеист и драматург, пишущий на английском языке. Среди его книг - «From a Crooked Rib», «Maps» и «Secrets»; в 1998 году он получил Международную литературную премию Нойштадта.",
     evidence: [
       e("Bard College", "https://www.bard.edu/faculty/nuruddin-farah", "Колледж подтверждает занятия сомалийского романиста, эссеиста, драматурга и сценариста, основные циклы произведений и премию Нойштадта."),
       e("Neustadt Prizes", "https://www.neustadtprize.org/1998-neustadt-prize-laureate-nuruddin-farah/", "Официальный сайт премии указывает рождение в Байдоа в 1945 году, англоязычное творчество, романы From a Crooked Rib, Maps и Secrets и лауреатство 1998 года."),
@@ -447,9 +447,9 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "somalia:sayyid_mohammed_abdullah_hassan",
     originalSha256: "6b8d4eacbbde10743edd87a95503086a189d7fc4f9b112c16f43c870ed11af4e",
-    reviewedTextRu: "Сайид Мохаммед Абдулла Хасан — сомалийский поэт, религиозный деятель и руководитель антиколониального движения дервишей. Его политические стихи распространялись в устной форме; собрание текстов было издано в 1974 году.",
+    reviewedTextRu: "Сайид Мохаммед Абдулла Хасан - сомалийский поэт, религиозный деятель и руководитель антиколониального движения дервишей. Его политические стихи распространялись в устной форме; собрание текстов было издано в 1974 году.",
     evidence: [
-      e("Roma Tre University — ArcAdiA", "https://arcadia.sba.uniroma3.it/handle/2307/2575?mode=full", "Университетский архив описывает Хасана как поэта, религиозного деятеля и военного руководителя сомалийского антиколониального движения."),
+      e("Roma Tre University - ArcAdiA", "https://arcadia.sba.uniroma3.it/handle/2307/2575?mode=full", "Университетский архив описывает Хасана как поэта, религиозного деятеля и военного руководителя сомалийского антиколониального движения."),
       e("SOAS University of London", "https://eprints.soas.ac.uk/20911/1/Orwin_Oral_Traditon.pdf", "Исследование подтверждает устную передачу стихов Сайида и публикацию собранного корпуса его поэзии в 1974 году."),
     ],
     decision: "corrected",
@@ -458,10 +458,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "south_africa:achmat_dangor",
     originalSha256: "2aafb28113963c94e6bedcc9fe46af0fd9ace0cbaa21337dcdf9611479ee9b42",
-    reviewedTextRu: "Ахмат Дангор (1948–2020) — южноафриканский поэт, прозаик и общественный деятель. Его роман «Bitter Fruit» вошёл в короткий список Букеровской премии 2004 года.",
+    reviewedTextRu: "Ахмат Дангор (1948-2020) - южноафриканский поэт, прозаик и общественный деятель. Его роман «Bitter Fruit» вошёл в короткий список Букеровской премии 2004 года.",
     evidence: [
-      e("University of Cape Town Libraries", "https://lib.uct.ac.za/articles/2020-09-07-achmat-dangor-memoriam-1948-2020", "Университетский некролог подтверждает годы 1948–2020, поэтические и прозаические книги, общественную деятельность и номинации Bitter Fruit."),
-      e("Tydskrif vir Letterkunde", "https://letterkunde.africa/article/view/8905", "Рецензируемый литературоведческий журнал независимо подтверждает годы жизни Ахмата Дангора 1948–2020."),
+      e("University of Cape Town Libraries", "https://lib.uct.ac.za/articles/2020-09-07-achmat-dangor-memoriam-1948-2020", "Университетский некролог подтверждает годы 1948-2020, поэтические и прозаические книги, общественную деятельность и номинации Bitter Fruit."),
+      e("Tydskrif vir Letterkunde", "https://letterkunde.africa/article/view/8905", "Рецензируемый литературоведческий журнал независимо подтверждает годы жизни Ахмата Дангора 1948-2020."),
     ],
     decision: "corrected",
     notes: "Ошибочный год смерти 2021 исправлен на 2020; общее описание литературы после апартеида заменено жанрами и конкретным произведением.",
@@ -469,10 +469,10 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "south_africa:alan_paton",
     originalSha256: "355fbd1bead5757a41edd5a94d53f2bbc39dfb0a107a3dc8d6fb4e4b8319a4c4",
-    reviewedTextRu: "Алан Пейтон (1903–1988) — южноафриканский писатель, педагог и противник апартеида. Он написал романы «Плачь, любимая страна» (1948) и «Too Late the Phalarope» (1953) и был одним из руководителей Либеральной партии Южной Африки.",
+    reviewedTextRu: "Алан Пейтон (1903-1988) - южноафриканский писатель, педагог и противник апартеида. Он написал романы «Плачь, любимая страна» (1948) и «Too Late the Phalarope» (1953) и был одним из руководителей Либеральной партии Южной Африки.",
     evidence: [
-      e("Alan Paton Centre — University of KwaZulu-Natal", "https://paton.ukzn.ac.za/internal-links/alan-patons-biography/", "Университетский архив подтверждает точные даты жизни, педагогическую работу, публикации Cry, the Beloved Country и Too Late the Phalarope и руководство Либеральной партией."),
-      e("South African History Online", "https://sahistory.org.za/people/alan-stewart-paton", "Национальный исторический архив независимо подтверждает даты 11 января 1903 — 12 апреля 1988 года, авторство Cry, the Beloved Country и основание Либеральной партии."),
+      e("Alan Paton Centre - University of KwaZulu-Natal", "https://paton.ukzn.ac.za/internal-links/alan-patons-biography/", "Университетский архив подтверждает точные даты жизни, педагогическую работу, публикации Cry, the Beloved Country и Too Late the Phalarope и руководство Либеральной партией."),
+      e("South African History Online", "https://sahistory.org.za/people/alan-stewart-paton", "Национальный исторический архив независимо подтверждает даты 11 января 1903 - 12 апреля 1988 года, авторство Cry, the Beloved Country и основание Либеральной партии."),
     ],
     decision: "corrected",
     notes: "Субъективная оценка значения удалена; добавлены профессии, два романа и проверяемая политическая деятельность.",
@@ -480,7 +480,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "south_africa:alex_la_guma",
     originalSha256: "857892bf665134b47d3ba19286fa86df50988a81614c0c6a2dad6c69037965e5",
-    reviewedTextRu: "Алекс Ла Гума (1925–1985) — южноафриканский прозаик и политический деятель, участвовавший в борьбе против апартеида. Среди его книг — «A Walk in the Night», «The Stone Country» и «Time of the Butcherbird».",
+    reviewedTextRu: "Алекс Ла Гума (1925-1985) - южноафриканский прозаик и политический деятель, участвовавший в борьбе против апартеида. Среди его книг - «A Walk in the Night», «The Stone Country» и «Time of the Butcherbird».",
     evidence: [
       e("The Presidency of the Republic of South Africa", "https://thepresidency.gov.za/sites/default/files/2022-07/National%20Orders%20Booklet%202003_0.pdf", "Официальный сборник национальных наград подтверждает годы жизни, литературную и антиапартеидную деятельность и книги A Walk in the Night, The Stone Country и Time of the Butcherbird."),
       e("South African History Online", "https://sahistory.org.za/dated-event/justin-alexander-alex-la-guma-sa-novelist-short-story-writer-and-political-activist", "Исторический архив независимо подтверждает дату рождения 20 февраля 1925 года, работу прозаика и политического активиста, эмиграцию и смерть в 1985 году."),
