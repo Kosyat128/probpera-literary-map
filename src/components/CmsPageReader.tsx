@@ -13,6 +13,7 @@ import { CmsNavigationLinks, CmsPageBanners } from "./CmsSiteChrome";
 import { cmsPageFieldMarker } from "../cms/directEditBridge";
 import BrandArrowIcon from "./BrandArrowIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
+import { cmsTypographyTargetKey } from "../data/cms/siteTypography";
 
 export type CmsPage = {
   id: string;
@@ -265,7 +266,12 @@ export default function CmsPageReader({ page }: { page: CmsPage }) {
     activeMediaIndex === null ? undefined : mediaItems[activeMediaIndex];
 
   return (
-    <div ref={shellRef} className="cms-page-shell">
+    <div
+      ref={shellRef}
+      className="cms-page-shell"
+      data-typography-component="cms-page-reader"
+      data-typography-instance={cmsTypographyTargetKey(`page-${page.slug}`)}
+    >
       <header className="cms-page-header">
         <a className="cms-page-brand" href={publicPath("")}>
           <img

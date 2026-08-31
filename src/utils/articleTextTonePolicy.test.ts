@@ -77,8 +77,10 @@ describe("public article text-tone policy", () => {
     expect(sanitizerSource).toContain("allowedTextTones.has(textTone)");
     expect(sanitizerSource).toContain('`is-tone-${textTone}`');
     expect(sanitizerSource).toContain(
-      "element.className = `article-text-tone ${expectedToneClass}`"
+      'canonicalPresentationClasses.push("article-text-tone", expectedToneClass)'
     );
+    expect(sanitizerSource).toContain('"data-typography-scope"');
+    expect(sanitizerSource).toContain("allowedTypographyScopes.has(typographyScope)");
     expect(adminStyles).toContain("max-height: min(620px, 68vh)");
     expect(adminStyles).toContain("overflow-y: auto");
     expect(adminStyles).toContain("max-height: 56vh");

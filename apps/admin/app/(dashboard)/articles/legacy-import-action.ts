@@ -48,6 +48,7 @@ const allowedArticleHtml = {
       ...editorialImageDataAttributes,
       ...editorialGalleryAttributeNames,
       "data-text-tone",
+      "data-typography-scope",
     ],
   },
   allowedSchemes: ["http", "https", "mailto"],

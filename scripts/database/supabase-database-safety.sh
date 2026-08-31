@@ -622,9 +622,20 @@ begin
   if to_regclass('storage.objects') is not null then
     raise exception 'isolated platform storage.objects must be absent';
   end if;
+  if to_regclass('storage.buckets') is not null then
+    raise exception 'isolated platform storage.buckets must be absent';
+  end if;
 end;
 $isolated_storage_schema_guard$;
 set local role supabase_storage_admin;
+create table storage.buckets (
+  id text primary key,
+  name text not null unique,
+  public boolean not null default false,
+  file_size_limit bigint,
+  allowed_mime_types text[]
+);
+alter table storage.buckets enable row level security;
 create table storage.objects (
   bucket_id text not null,
   name text not null,

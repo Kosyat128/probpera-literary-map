@@ -48,6 +48,10 @@ const reviewedMigrations = [
     "20260830_media_studio_lifecycle.sql",
     "3cb8717f0cf4f4b6a718591d2759c0c73008e35eaf9c3c09a1e0fd19f65ef837",
   ],
+  [
+    "20260830_zz_site_typography_engine.sql",
+    "c44596b1217ef19b8490c794e01568e5b036219719a2d2da00452486e91667fc",
+  ],
 ];
 
 const reviewedHotfixes = [
@@ -425,7 +429,7 @@ ${values}
     select
       'version'::text as check_name,
       health is not null
-        and health ->> 'version' = '20260830_media_studio_lifecycle' as ok
+        and health ->> 'version' = '20260830_zz_site_typography_engine' as ok
     union all
     select
       required_key,
@@ -446,7 +450,8 @@ ${values}
       'tagsUpdatedAt',
       'mediaStudioLifecycle',
       'mediaUsageGraph',
-      'mediaSafeReplaceRpc'
+      'mediaSafeReplaceRpc',
+      'siteTypographyEngine'
     ]::text[]) as required(required_key)
   ) as checks
   where ok is distinct from true;
@@ -504,6 +509,7 @@ select concat(
   ';media_studio_lifecycle=', health ->> 'mediaStudioLifecycle',
   ';media_usage_graph=', health ->> 'mediaUsageGraph',
   ';media_safe_replace_rpc=', health ->> 'mediaSafeReplaceRpc',
+  ';site_typography_engine=', health ->> 'siteTypographyEngine',
   ';migration_ledger=', health ->> 'migrationLedger',
   ';premium_machine_translation=', case when public.premium_machine_translation_ready() then 'true' else 'false' end,
   ';editor_autosaves=', case when to_regclass('public.editor_autosaves') is not null then 'true' else 'false' end,

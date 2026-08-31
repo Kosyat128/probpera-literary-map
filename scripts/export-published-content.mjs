@@ -19,6 +19,11 @@ import { extractSiteCopyFromHomepageBlocks } from "./site-copy-overrides.mjs";
 import { commitAtomicFileSet } from "./lib/atomic-file-set.mjs";
 import { normalizeShortHyphensDeep } from "./lib/short-hyphens.mjs";
 import {
+  assertPublishedFontBytes,
+  normalizePublishedTypography,
+  publicFontMetadata,
+} from "./lib/site-typography-publication.mjs";
+import {
   articleIdSet,
   assertCandidateCanReplaceBaseline,
   assertStablePublicationHeadWindow,
@@ -35,6 +40,7 @@ import {
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCmsDirectory = path.join(projectRoot, "public", "cms");
 const publicCmsArticlesDirectory = path.join(publicCmsDirectory, "articles");
+const publicCmsFontsDirectory = path.join(publicCmsDirectory, "fonts");
 const articleCatalogModule = path.join(
   projectRoot,
   "src",
@@ -157,6 +163,9 @@ const rowIdentity = {
   writer_profile_overrides: (row) => `${row.country_id}:${row.writer_id}`,
   literary_works: (row) => row.id,
   book_editions: (row) => row.id,
+  font_assets: (row) => row.id,
+  site_typography_overrides: (row) =>
+    `${row.layer}:${row.target_key}:${row.semantic_scope}:${row.breakpoint}`,
 };
 
 async function fetchTableRows(table, query, accessKey, optional) {
@@ -200,6 +209,59 @@ async function fetchRows(table, query) {
 
 async function fetchOptionalRows(table, query, accessKey = apiKey) {
   return fetchTableRows(table, query, accessKey, true);
+}
+
+async function fetchPublishedTypographyInputs() {
+  if (serviceRoleKey) {
+    const [overrides, fonts] = await Promise.all([
+      fetchOptionalRows("site_typography_overrides", {
+        select:
+          "layer,target_key,semantic_scope,breakpoint,published_settings,published_at,updated_at",
+        published_settings: "not.is.null",
+        order: "layer.asc,target_key.asc,semantic_scope.asc,breakpoint.asc",
+      }, serviceRoleKey),
+      fetchOptionalRows("font_assets", {
+        select:
+          "id,family_name,source_type,format,font_style,is_variable,weight_min,weight_max,sha256_hex,storage_bucket,object_path,byte_size,deleted_at",
+        deleted_at: "is.null",
+        order: "id.asc",
+      }, serviceRoleKey),
+    ]);
+    return { overrides, fonts };
+  }
+
+  const response = await fetch(
+    `${supabaseUrl}/rest/v1/rpc/get_published_site_typography`,
+    {
+      method: "POST",
+      headers: {
+        apikey: publicSnapshotKey,
+        Authorization: `Bearer ${publicSnapshotKey}`,
+        "Content-Type": "application/json",
+      },
+      body: "{}",
+    }
+  );
+  if (!response.ok) {
+    const body = await response.text();
+    if (response.status === 404 && /(?:PGRST202|get_published_site_typography)/iu.test(body)) {
+      return { overrides: [], fonts: [] };
+    }
+    throw new Error(
+      `CMS typography export failed: ${response.status} ${body}`
+    );
+  }
+  const snapshot = await response.json();
+  const fonts = Array.isArray(snapshot?.fonts) ? snapshot.fonts : [];
+  if (fonts.length) {
+    throw new Error(
+      "Published self-hosted fonts require SUPABASE_SERVICE_ROLE_KEY so the exporter can verify and copy private font bytes."
+    );
+  }
+  return {
+    overrides: Array.isArray(snapshot?.overrides) ? snapshot.overrides : [],
+    fonts: [],
+  };
 }
 
 async function readJsonIfExists(target) {
@@ -276,6 +338,34 @@ function storageUrl(media) {
     .split("/")
     .map((segment) => encodeURIComponent(segment))
     .join("/")}`;
+}
+
+function privateStorageUrl(bucket, objectPath) {
+  return `${supabaseUrl}/storage/v1/object/authenticated/${encodeURIComponent(
+    bucket
+  )}/${String(objectPath)
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/")}`;
+}
+
+async function downloadPublishedFont(font) {
+  if (!serviceRoleKey) {
+    throw new Error("Published self-hosted fonts require the service-role export key.");
+  }
+  const response = await fetch(privateStorageUrl(font.bucket, font.objectPath), {
+    headers: {
+      apikey: serviceRoleKey,
+      Authorization: `Bearer ${serviceRoleKey}`,
+    },
+  });
+  if (!response.ok) {
+    throw new Error(
+      `Published font download failed for ${font.id}: ${response.status}.`
+    );
+  }
+  const bytes = Buffer.from(await response.arrayBuffer());
+  return assertPublishedFontBytes(font, bytes);
 }
 
 function headingSlug(value) {
@@ -607,6 +697,7 @@ const [
   rawWriterProfileOverrides,
   rawLiteraryWorks,
   rawBookEditions,
+  rawTypographyInputs,
 ] = await Promise.all([
   fetchRows("articles", {
     select:
@@ -688,7 +779,26 @@ const [
     cover_rights_status: "in.(public-domain,licensed,permission,external-preview)",
     order: "is_primary.desc,updated_at.desc,id.asc",
   }, publicSnapshotKey),
+  fetchPublishedTypographyInputs(),
 ]);
+
+const rawTypographyOverrides = rawTypographyInputs.overrides;
+const rawFontAssets = rawTypographyInputs.fonts;
+
+const normalizedTypography = normalizePublishedTypography(
+  rawTypographyOverrides,
+  rawFontAssets
+);
+const downloadedTypographyFonts = await Promise.all(
+  normalizedTypography.fonts.map(async (font) => ({
+    font,
+    bytes: await downloadPublishedFont(font),
+  }))
+);
+const typography = {
+  fonts: normalizedTypography.fonts.map(publicFontMetadata),
+  overrides: normalizedTypography.overrides,
+};
 
 const mediaLookup = new Map(mediaAssets.map((media) => [media.id, media]));
 const englishTranslationByArticleId = new Map();
@@ -1033,6 +1143,7 @@ for (const exportedContent of [
   writerProfileOverrides,
   literaryWorksByLegacyId,
   bookEditionsByWorkId,
+  typography,
 ]) {
   normalizeShortHyphensDeep(exportedContent);
 }
@@ -1044,6 +1155,7 @@ const siteContentBase = {
   navigationMenus,
   pages,
   bookEditionsByWorkId,
+  typography,
 };
 const snapshotBaseContent = {
   version: 1,
@@ -1125,6 +1237,18 @@ const staleArticleDocumentNames = staleManagedCmsArticleSnapshotNames(
   existingArticleDocumentNames,
   expectedArticleDocumentNames
 );
+let existingFontDocumentNames = [];
+try {
+  existingFontDocumentNames = await fs.readdir(publicCmsFontsDirectory);
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+}
+const expectedFontDocumentNames = new Set(
+  normalizedTypography.fonts.map((font) => path.basename(font.publicPath))
+);
+const staleFontDocumentNames = existingFontDocumentNames.filter(
+  (name) => /^[0-9a-f]{64}\.woff2?$/u.test(name) && !expectedFontDocumentNames.has(name)
+);
 
 // Generated article documents, secondary indexes and TypeScript catalogs are
 // staged first. The canonical published-content manifest is promoted last and
@@ -1133,6 +1257,10 @@ const staleArticleDocumentNames = staleManagedCmsArticleSnapshotNames(
 await commitAtomicFileSet({
   root: projectRoot,
   writes: [
+    ...downloadedTypographyFonts.map(({ font, bytes }) => ({
+      path: path.join(projectRoot, "public", font.publicPath),
+      content: bytes,
+    })),
     ...articleDocuments.map(({ path: outputPath, payload }) => ({
       path: outputPath,
       content: `${JSON.stringify(payload, null, 2)}\n`,
@@ -1220,9 +1348,14 @@ await commitAtomicFileSet({
       content: `${JSON.stringify(snapshot, null, 2)}\n`,
     },
   ],
-  deletes: staleArticleDocumentNames.map((name) =>
-    path.join(publicCmsArticlesDirectory, name)
-  ),
+  deletes: [
+    ...staleArticleDocumentNames.map((name) =>
+      path.join(publicCmsArticlesDirectory, name)
+    ),
+    ...staleFontDocumentNames.map((name) =>
+      path.join(publicCmsFontsDirectory, name)
+    ),
+  ],
 });
 
 if (process.env.GITHUB_OUTPUT) {
@@ -1242,5 +1375,5 @@ if (process.env.GITHUB_OUTPUT) {
 }
 
 console.log(
-  `Exported stable CMS snapshot ${snapshot.publication.contentSha256.slice(0, 12)} at publication head ${publicationHeadMarker(stablePublicationHead) || `${stablePublicationHead.source}:0`}: ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${Object.keys(siteCopy.ru).length + Object.keys(siteCopy.en).length} site-copy overrides, ${Object.keys(countryProfileOverrides).length} country overrides, ${Object.keys(writerProfileOverrides).length} writer overrides, ${Object.keys(literaryWorksByLegacyId).length} literary works, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus and ${Object.keys(bookEditionsByWorkId).length} exact book covers; ${replacement.removedIds.length} authoritative withdrawal(s), ${staleArticleDocumentNames.length} stale article snapshot(s) removed.`
+  `Exported stable CMS snapshot ${snapshot.publication.contentSha256.slice(0, 12)} at publication head ${publicationHeadMarker(stablePublicationHead) || `${stablePublicationHead.source}:0`}: ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${Object.keys(siteCopy.ru).length + Object.keys(siteCopy.en).length} site-copy overrides, ${Object.keys(countryProfileOverrides).length} country overrides, ${Object.keys(writerProfileOverrides).length} writer overrides, ${Object.keys(literaryWorksByLegacyId).length} literary works, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus, ${Object.keys(bookEditionsByWorkId).length} exact book covers and ${typography.fonts.length} self-hosted fonts; ${replacement.removedIds.length} authoritative withdrawal(s), ${staleArticleDocumentNames.length} stale article snapshot(s) and ${staleFontDocumentNames.length} stale font file(s) removed.`
 );

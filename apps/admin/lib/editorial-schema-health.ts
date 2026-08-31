@@ -1,5 +1,5 @@
 export const CURRENT_EDITORIAL_SCHEMA_VERSION =
-  "20260830_media_studio_lifecycle";
+  "20260830_zz_site_typography_engine";
 
 export type EditorialSchemaHealth = {
   version?: string;
@@ -20,6 +20,7 @@ export type EditorialSchemaHealth = {
   mediaStudioLifecycle?: boolean;
   mediaUsageGraph?: boolean;
   mediaSafeReplaceRpc?: boolean;
+  siteTypographyEngine?: boolean;
 };
 
 export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
@@ -39,6 +40,7 @@ export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
   "mediaStudioLifecycle",
   "mediaUsageGraph",
   "mediaSafeReplaceRpc",
+  "siteTypographyEngine",
 ] as const;
 
 export type EditorialSchemaRequiredFlag =
@@ -64,6 +66,7 @@ const editorialSchemaCapabilityLabels: Record<
   mediaStudioLifecycle: "жизненный цикл медиатеки",
   mediaUsageGraph: "граф использования изображений",
   mediaSafeReplaceRpc: "безопасная атомарная замена изображений",
+  siteTypographyEngine: "шрифты и типографика сайта",
 };
 
 export function getMissingEditorialSchemaCapabilities(

@@ -53,6 +53,7 @@ import {
   type EditorialImageLayout,
 } from "@/components/EditorialImage";
 import { ArticleTextTone } from "@/components/ArticleTextTone";
+import { ArticleTypographyScope } from "@/components/ArticleTypographyScope";
 import EditorLinkDialog from "@/components/EditorLinkDialog";
 import EditorMediaDialog from "@/components/EditorMediaDialog";
 import { useEditorMediaWorkflow } from "@/components/useEditorMediaWorkflow";
@@ -514,7 +515,7 @@ export default function ArticleEditor({
       placeholder:
         "Начните писать. Для большого материала используйте подзаголовки - из них автоматически соберётся оглавление.",
       afterStarterKit: [EditorialBlock],
-      afterImage: [ArticleTextTone],
+      afterImage: [ArticleTextTone, ArticleTypographyScope],
     }),
     content: initialEditorContent,
     onUpdate({ editor: currentEditor }) {
