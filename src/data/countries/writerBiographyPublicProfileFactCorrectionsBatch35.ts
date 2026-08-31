@@ -420,16 +420,16 @@ export const writerBiographyPublicProfileFactCorrectionsBatch35 = [
     writerId: "dulat_isabekov",
     patch: {
       years: "1942-2025",
-      deathDate: "2025-02-22",
+      deathDate: "2025-02-21",
       birthPlace: "село Ленинский путь, Арысский район, Южно-Казахстанская область",
       works: ["Гаухартас","Дермене","Каргын","Старшая сестра"],
     },
     evidence: [
-      { provider: "Qazaqstan Tarihy", url: "https://e-history.kz/kz/news/show/50000084", checkedAt },
+      { provider: "Qazaq Culture", url: "https://qazaqculture.com/ru/cultural-objects/50a75ad5-837e-49c0-8bee-6019331f4efd", checkedAt },
       { provider: "Министерство культуры и информации Республики Казахстан", url: "https://www.gov.kz/memleket/entities/mam/press/news/details/912063?lang=ru", checkedAt },
       { provider: "Cambridge University Press", url: "https://www.cambridge.org/sites/default/files/media/documents/Kazakh_Prose_Book_PRINT-no-crops-1.pdf", checkedAt },
     ],
-    note: "Карточка устарела: писатель умер в феврале 2025 года. Краткое описание расширено проверяемой библиографией без оценочных формул.",
+    note: "Карточка устарела: по государственному культурному порталу Казахстана писатель умер 21 февраля 2025 года. Краткое описание расширено проверяемой библиографией без оценочных формул.",
   },
   {
     countryId: "kazakhstan",

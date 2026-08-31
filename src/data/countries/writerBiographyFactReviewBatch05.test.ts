@@ -42,6 +42,17 @@ const expectedKeys = [
   "brazil:machado_de_assis",
 ] as const;
 
+const supplementalEvidenceUrls = new Set([
+  "https://mujer.sea.gob.bo/src/personajeResultado.php?variable=34",
+  "https://catalogue.bnf.fr/ark:/12148/cb12165329m",
+  "https://cienciaycultura.ucb.edu.bo/a/article/view/1391",
+  "https://www.treccani.it/enciclopedia/paz-soldan-avila-jose-edmundo/",
+  "https://biblio.fcet.uagrm.edu.bo/uPublicaciones/1.Tecnobiblio/Folletos/Anterior/Biografia%20de%20Gabriel%20Rene%20Moreno/assets/downloads/page0004.pdf",
+  "https://fmks.gov.ba/en/in-memoriam-abdulah-sidran-a-writer-poet-and-screenwriter-passed-away/",
+  "https://teatroslov.mpus.org.rs/licnost.php?id=6263&jezik=lat",
+  "https://www.enciklopedija.hr/clanak/copic-branko",
+]);
+
 const reportPath = path.resolve(
   process.cwd(),
   "reports/writer-biography-fact-review-batch05.json"
@@ -190,7 +201,11 @@ describe("writer biography claim review batch 05", () => {
         expect(claim.evidence.length).toBeGreaterThan(0);
         for (const evidence of claim.evidence) {
           expect(evidence.provider.trim()).not.toBe("");
-          expect(evidence.checkedAt).toBe("2026-08-09");
+          expect(evidence.checkedAt).toBe(
+            supplementalEvidenceUrls.has(evidence.url)
+              ? "2026-08-31"
+              : "2026-08-09"
+          );
           expect(evidence.findingRu.trim()).not.toBe("");
           const parsedUrl = new URL(evidence.url);
           expect(parsedUrl.protocol).toBe("https:");

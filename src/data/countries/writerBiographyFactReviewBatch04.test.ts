@@ -77,6 +77,11 @@ describe("writer biography claim review batch 04", () => {
 
     for (const record of writerBiographyFactReviewBatch04) {
       const originalText = sourceTextForKey(record.key);
+      const distinctHostnames = new Set(
+        record.claims.flatMap((claim) =>
+          claim.evidence.map((item) => new URL(item.url).hostname)
+        )
+      );
       expect(record.originalSha256).toMatch(/^[a-f0-9]{64}$/);
       expect(record.originalSha256).toBe(sha256(originalText));
       expect(Buffer.from(originalText, "utf8").toString("utf8")).toBe(originalText);
@@ -90,6 +95,7 @@ describe("writer biography claim review batch 04", () => {
       );
       expect(record.notes.trim()).not.toBe("");
       expect(record.claims.length).toBeGreaterThan(0);
+      expect(distinctHostnames.size).toBeGreaterThanOrEqual(2);
 
       if (record.decision === "unchanged") {
         expect(record.reviewedTextRu).toBe(originalText);
@@ -109,9 +115,19 @@ describe("writer biography claim review batch 04", () => {
         expect(claim.evidence.length).toBeGreaterThan(0);
         for (const evidence of claim.evidence) {
           expect(evidence.provider.trim()).not.toBe("");
-          expect(evidence.checkedAt).toBe("2026-08-09");
           expect(evidence.findingRu.trim()).not.toBe("");
           const parsedUrl = new URL(evidence.url);
+          const supplementalEvidenceUrls = new Set([
+            "https://science.gov.az/az/news/open/35226",
+            "https://azerbaijan.az/en/related-information/94",
+            "https://www.syedwaliullah.com/books",
+            "https://www.syedwaliullah.com/novels",
+          ]);
+          expect(evidence.checkedAt).toBe(
+            supplementalEvidenceUrls.has(evidence.url)
+              ? "2026-08-31"
+              : "2026-08-09"
+          );
           expect(parsedUrl.protocol).toBe("https:");
           expect(parsedUrl.hostname).not.toMatch(/(^|\.)wikidata\.org$/);
           expect(parsedUrl.hostname).not.toMatch(/(^|\.)wikipedia\.org$/);
@@ -161,7 +177,7 @@ describe("writer biography claim review batch 04", () => {
     };
     const markdown = fs.readFileSync(markdownReportPath, "utf8");
     expect(report.batch).toBe("04");
-    expect(report.generatedAt).toBe("2026-08-09");
+    expect(report.generatedAt).toBe("2026-08-31");
     expect(report.summary).toEqual({ records: 20, unchanged: 1, corrected: 19, held: 0 });
     expect(report.records).toEqual(writerBiographyFactReviewBatch04);
     for (const key of expectedKeys) expect(markdown).toContain(`\`${key}\``);

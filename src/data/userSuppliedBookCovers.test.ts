@@ -162,11 +162,11 @@ describe("пользовательские редакционные обложк
   });
 
   it("не изменяет названия, тексты, статусы и количество книг", () => {
-    expect(archive).toHaveLength(9_729);
-    expect(baseline).toHaveLength(9_729);
+    expect(archive).toHaveLength(9_767);
+    expect(baseline).toHaveLength(9_767);
     expect(archive.filter(isPublicBook)).toHaveLength(48);
     expect(baseline.filter(isPublicBook)).toHaveLength(48);
-    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_681);
+    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_719);
 
     for (const entry of userSuppliedBookCoverManifest.entries) {
       const before = baselineByKey.get(entry.workKey)!;

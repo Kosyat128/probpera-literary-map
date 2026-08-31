@@ -146,7 +146,7 @@ describe("curated writer fact resolutions", () => {
       "1937-07-13"
     );
     expect(writerByKey("senegal:birago_diop")?.birthDate).toBe("1906-12-11");
-    expect(writerByKey("uzbekistan:odil_yoqubov")?.birthDate).toBe("1926-10-20");
+    expect(writerByKey("uzbekistan:odil_yoqubov")?.birthDate).toBe("");
     expect(writerByKey("uzbekistan:odil_yoqubov")?.deathDate).toBe("2009-12-21");
   });
 
@@ -187,7 +187,7 @@ describe("curated writer fact resolutions", () => {
     expect(writerByKey("comoros:mahmoud_said_ahmed")).toBeUndefined();
     expect(writerByKey("comoros:said_ahmed_mohamed")).toBeUndefined();
     expect(writerByKey("tanzania:said_ahmed_mohamed")).toMatchObject({
-      name: "Саид Ахмед Мохамед Хамис",
+      name: "Саид Ахмед Мохамед",
       fullName: "Said Ahmed Mohamed Khamis",
       years: "1947-",
       birthPlace: "Занзибар, Танзания",

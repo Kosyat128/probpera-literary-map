@@ -110,6 +110,11 @@ describe("writer biography claim review batch 03", () => {
           claim.evidence.map((item) => item.url)
         )
       );
+      const distinctHostnames = new Set(
+        record.claims.flatMap((claim) =>
+          claim.evidence.map((item) => new URL(item.url).hostname)
+        )
+      );
 
       expect(record.originalSha256).toMatch(/^[a-f0-9]{64}$/);
       expect(record.originalSha256).toBe(sha256(originalText));
@@ -128,6 +133,7 @@ describe("writer biography claim review batch 03", () => {
       expect(record.notes.trim()).not.toBe("");
       expect(record.claims.length).toBeGreaterThan(0);
       expect(distinctUrls.size).toBeGreaterThanOrEqual(2);
+      expect(distinctHostnames.size).toBeGreaterThanOrEqual(2);
 
       if (record.decision === "unchanged") {
         expect(record.reviewedTextRu).toBe(originalText);
@@ -158,9 +164,18 @@ describe("writer biography claim review batch 03", () => {
         expect(claim.evidence.length).toBeGreaterThan(0);
         for (const item of claim.evidence) {
           expect(item.provider.trim()).not.toBe("");
-          expect(item.checkedAt).toBe("2026-08-09");
           expect(item.findingRu.trim()).not.toBe("");
           const parsedUrl = new URL(item.url);
+          const supplementalEvidenceUrls = new Set([
+            "https://adb.anu.edu.au/biography/white-patrick-victor-paddy-14925",
+            "https://www.bundeskanzleramt.gv.at/bundeskanzleramt/nachrichten-der-bundesregierung/2019/bierlein-und-schallenberg-gratulieren-peter-handke-zum-literaturnobelpreis-2019.html",
+            "https://www.onb.ac.at/museen/literaturmuseum/kalender/die-klavierspielerin-zum-80-geburtstag-von-elfriede-jelinek",
+          ]);
+          expect(item.checkedAt).toBe(
+            supplementalEvidenceUrls.has(item.url)
+              ? "2026-08-31"
+              : "2026-08-09"
+          );
           expect(parsedUrl.protocol).toBe("https:");
           expect(parsedUrl.hostname).not.toMatch(/(^|\.)wikidata\.org$/);
           expect(parsedUrl.hostname).not.toMatch(/(^|\.)wikipedia\.org$/);
@@ -212,7 +227,7 @@ describe("writer biography claim review batch 03", () => {
     );
 
     expect(report.batch).toBe("03");
-    expect(report.generatedAt).toBe("2026-08-09");
+    expect(report.generatedAt).toBe("2026-08-31");
     expect(report.records).toEqual(writerBiographyFactReviewBatch03);
     expect(report.summary).toEqual({
       records: 20,

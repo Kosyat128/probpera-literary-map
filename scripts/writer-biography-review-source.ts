@@ -43,6 +43,19 @@ import { writerBiographyFactReviewBatch42 } from "../src/data/countries/writerBi
 import { writerBiographyFactReviewBatch43 } from "../src/data/countries/writerBiographyFactReviewBatch43";
 import { writerBiographyFactReviewBatch44 } from "../src/data/countries/writerBiographyFactReviewBatch44";
 import { writerBiographyFactReviewBatch45 } from "../src/data/countries/writerBiographyFactReviewBatch45";
+import { writerBiographyFactReviewBatch46 } from "../src/data/countries/writerBiographyFactReviewBatch46";
+import { writerBiographyFactReviewBatch47 } from "../src/data/countries/writerBiographyFactReviewBatch47";
+import { writerBiographyFactReviewBatch48 } from "../src/data/countries/writerBiographyFactReviewBatch48";
+import { writerBiographyFactReviewBatch49 } from "../src/data/countries/writerBiographyFactReviewBatch49";
+import { writerBiographyFactReviewBatch50 } from "../src/data/countries/writerBiographyFactReviewBatch50";
+import { writerBiographyFactReviewBatch51 } from "../src/data/countries/writerBiographyFactReviewBatch51";
+import { writerBiographyFactReviewBatch52 } from "../src/data/countries/writerBiographyFactReviewBatch52";
+import { writerBiographyFactReviewBatch53 } from "../src/data/countries/writerBiographyFactReviewBatch53";
+import { writerBiographyFactReviewBatch54 } from "../src/data/countries/writerBiographyFactReviewBatch54";
+import { writerBiographyFactReviewBatch55 } from "../src/data/countries/writerBiographyFactReviewBatch55";
+import { writerBiographyFactReviewBatch56 } from "../src/data/countries/writerBiographyFactReviewBatch56";
+import { writerBiographyFactReviewBatch57 } from "../src/data/countries/writerBiographyFactReviewBatch57";
+import { quarantinedWriterIdentities } from "../src/data/countries/writerBiographyLegacyCorrections";
 
 /**
  * Build-only registry. Detailed evidence stays outside the public bundle; the
@@ -94,4 +107,21 @@ export const writerBiographyFactReviews = [
   ...writerBiographyFactReviewBatch43,
   ...writerBiographyFactReviewBatch44,
   ...writerBiographyFactReviewBatch45,
+  ...writerBiographyFactReviewBatch46,
+  ...writerBiographyFactReviewBatch47,
+  ...writerBiographyFactReviewBatch48,
+  ...writerBiographyFactReviewBatch49,
+  ...writerBiographyFactReviewBatch50,
+  ...writerBiographyFactReviewBatch51,
+  ...writerBiographyFactReviewBatch52,
+  ...writerBiographyFactReviewBatch53,
+  ...writerBiographyFactReviewBatch54,
+  ...writerBiographyFactReviewBatch55,
+  ...writerBiographyFactReviewBatch56,
+  ...writerBiographyFactReviewBatch57,
 ];
+
+export const writerBiographyFactReviewQuarantinedKeys =
+  quarantinedWriterIdentities.map(
+    ({ countryId, writerId }) => `${countryId}:${writerId}`
+  );

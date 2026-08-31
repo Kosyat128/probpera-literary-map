@@ -360,7 +360,7 @@ describe("writer biography claim review batch 35", () => {
     const markdown = fs.readFileSync(markdownReportPath, "utf8");
 
     expect(report.batch).toBe("35");
-    expect(report.generatedAt).toBe("2026-08-11");
+    expect(report.generatedAt).toBe("2026-08-31");
     expect(report.selectionSnapshot).toEqual({
       reviewQueue: 1705,
       priorAssignedRecords: 840,

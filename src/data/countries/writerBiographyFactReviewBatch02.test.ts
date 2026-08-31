@@ -220,6 +220,12 @@ describe("writer biography claim review batch 02", () => {
           expect(parsedUrl.hostname).not.toMatch(/(^|\.)wikipedia\.org$/);
         }
       }
+      const independentHosts = new Set(
+        record.claims.flatMap((claim) =>
+          claim.evidence.map((evidence) => new URL(evidence.url).hostname)
+        )
+      );
+      expect(independentHosts.size, record.key).toBeGreaterThanOrEqual(2);
     }
   });
 

@@ -1,6 +1,6 @@
 {
   "batch": "03",
-  "generatedAt": "2026-08-09",
+  "generatedAt": "2026-08-31",
   "summary": {
     "records": 20,
     "unchanged": 3,
@@ -363,6 +363,12 @@
               "url": "https://www.nobelprize.org/prizes/literature/1973/white/press-release/",
               "checkedAt": "2026-08-09",
               "findingRu": "Официальное сообщение подтверждает присуждение премии Уайту в 1973 году."
+            },
+            {
+              "provider": "Australian Dictionary of Biography, Australian National University",
+              "url": "https://adb.anu.edu.au/biography/white-patrick-victor-paddy-14925",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Академическая биография независимо представляет Уайта как автора, связанного с Австралией, и фиксирует Нобелевскую премию по литературе 1973 года."
             }
           ]
         },
@@ -381,6 +387,12 @@
               "url": "https://www.nobelprize.org/prizes/literature/1973/white/article/",
               "checkedAt": "2026-08-09",
               "findingRu": "Нобелевский очерк рассматривает психологическое измерение и эпический масштаб его романов."
+            },
+            {
+              "provider": "Australian Dictionary of Biography, Australian National University",
+              "url": "https://adb.anu.edu.au/biography/white-patrick-victor-paddy-14925",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Академическая биография независимо приводит наградную характеристику эпического и психологического повествовательного искусства Уайта."
             }
           ]
         }
@@ -557,13 +569,25 @@
               "url": "https://www.nobelprize.org/prizes/literature/2004/bio-bibliography/",
               "checkedAt": "2026-08-09",
               "findingRu": "Официальная биобиблиография подтверждает происхождение и литературную деятельность."
+            },
+            {
+              "provider": "Федеральное канцлерство Австрии",
+              "url": "https://www.bundeskanzleramt.gv.at/bundeskanzleramt/nachrichten-der-bundesregierung/2019/bierlein-und-schallenberg-gratulieren-peter-handke-zum-literaturnobelpreis-2019.html",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Официальное сообщение называет Елинек австрийской лауреаткой Нобелевской премии по литературе 2004 года."
+            },
+            {
+              "provider": "Австрийская национальная библиотека",
+              "url": "https://www.onb.ac.at/museen/literaturmuseum/kalender/die-klavierspielerin-zum-80-geburtstag-von-elfriede-jelinek",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Литературный музей Австрийской национальной библиотеки независимо называет Елинек писательницей и нобелевской лауреаткой."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 03",
       "decision": "unchanged",
-      "notes": "Краткая исходная формулировка полностью подтверждена Нобелевским комитетом.",
+      "notes": "Краткая исходная формулировка подтверждена Нобелевской премией и двумя независимыми австрийскими государственными институциями.",
       "applicableTextRu": "Австрийская писательница, лауреат Нобелевской премии по литературе 2004 года."
     },
     {
@@ -680,13 +704,19 @@
               "url": "https://www.nobelprize.org/uploads/2019/10/biobibliography-literatureprize2019.pdf",
               "checkedAt": "2026-08-09",
               "findingRu": "Официальная биобиблиография подтверждает рождение Хандке в Каринтии и его литературную карьеру."
+            },
+            {
+              "provider": "Федеральное канцлерство Австрии",
+              "url": "https://www.bundeskanzleramt.gv.at/bundeskanzleramt/nachrichten-der-bundesregierung/2019/bierlein-und-schallenberg-gratulieren-peter-handke-zum-literaturnobelpreis-2019.html",
+              "checkedAt": "2026-08-31",
+              "findingRu": "Правительство Австрии независимо называет Хандке австрийским писателем и лауреатом Нобелевской премии по литературе 2019 года."
             }
           ]
         }
       ],
       "reviewer": "Codex independent claim-by-claim factual review, batch 03",
       "decision": "unchanged",
-      "notes": "Краткая исходная формулировка подтверждена официальными материалами Нобелевской премии.",
+      "notes": "Краткая исходная формулировка подтверждена официальными материалами Нобелевской премии и Федерального канцлерства Австрии.",
       "applicableTextRu": "Австрийский писатель, лауреат Нобелевской премии по литературе 2019 года."
     },
     {

@@ -111,8 +111,8 @@ describe("пользовательские редакционные обложк
       expect(isCoverArtworkDisplayAllowed(after!)).toBe(true);
     }
 
-    expect(archive).toHaveLength(9_729);
-    expect(baseline).toHaveLength(9_729);
+    expect(archive).toHaveLength(9_767);
+    expect(baseline).toHaveLength(9_767);
     expect(archive.filter(isPublicBook)).toHaveLength(48);
     expect(baseline.filter(isPublicBook)).toHaveLength(48);
   });

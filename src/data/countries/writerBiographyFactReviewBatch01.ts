@@ -75,9 +75,10 @@ const reviewer = "OpenAI Codex / writer_claim_review_batch01";
 function source(
   provider: string,
   sourceFamily: string,
-  url: string
+  url: string,
+  sourceCheckedAt = checkedAt
 ): WriterBiographyEvidenceSource {
-  return { provider, sourceFamily, url, checkedAt };
+  return { provider, sourceFamily, url, checkedAt: sourceCheckedAt };
 }
 
 function claim(
@@ -129,6 +130,18 @@ const iranicaTarzi = source(
   "academic-encyclopedia",
   "https://www.iranicaonline.org/articles/tarzi-mahmud/"
 );
+const monashTarzi = source(
+  "Monash University",
+  "university-research",
+  "https://research.monash.edu/en/publications/mahmud-tarzi-and-the-translation-of-western-fiction-in-afghanista",
+  "2026-08-31"
+);
+const unescoTarzi = source(
+  "UNESCO",
+  "international-organization",
+  "https://whc.unesco.org/document/106139",
+  "2026-08-31"
+);
 const bookerKadare = source(
   "Booker Prize Foundation",
   "official-prize-body",
@@ -168,6 +181,12 @@ const albanianAcademyNaimOctober = source(
   "Academy of Sciences of Albania",
   "national-academy",
   "https://akad.gov.al/wp-content/uploads/2025/11/Buletini-tetor-2025.pdf"
+);
+const albaniaDiasporaNaim = source(
+  "National Diaspora Agency of Albania",
+  "government-cultural-agency",
+  "https://akd.gov.al/en/naim-frasheri-25-maj-1846-20-tetor-1900/",
+  "2026-08-31"
 );
 const academieDjebar = source(
   "Académie française",
@@ -244,6 +263,12 @@ const andorraMorell = source(
   "government-publication",
   "https://www.govern.ad/documents/d/guest/2019_el_soler_antoni_morell_lhumanista_andorra"
 );
+const catalanEncyclopediaMorell = source(
+  "Gran Enciclopèdia Catalana",
+  "scholarly-encyclopedia",
+  "https://www.enciclopedia.cat/gran-enciclopedia-catalana/antoni-morell-i-mora",
+  "2026-08-31"
+);
 const angolaNeto = source(
   "Government of Angola",
   "government-publication",
@@ -253,6 +278,18 @@ const angolaNetoCentenary = source(
   "Government of Angola",
   "government-publication",
   "https://governo.gov.ao/noticias/92/sociedade/executivo-lanca-programa-do-centenario-de-agostinho-neto/o-ministro-de-estado-e-chefe-da-casa-civil-do-presidente-da-republica-adao-de-almeida-considerou-justo-merecido-e-necessario-celebrar-o-centenario-de-agostinho-neto"
+);
+const portugalDefenceNeto = source(
+  "Ministry of National Defence of Portugal",
+  "government-historical-publication",
+  "https://www.defesa.gov.pt/pt/defesa/organizacao/comissoes/cphm/rphm/edicoes/ano1/n12021/bios/lidpolitica/neto",
+  "2026-08-31"
+);
+const poetryFoundationNeto = source(
+  "Poetry Foundation",
+  "literary-foundation",
+  "https://www.poetryfoundation.org/poets/agostinho-neto",
+  "2026-08-31"
 );
 const ucclaLuandino = source(
   "UCCLA",
@@ -392,31 +429,43 @@ export const writerBiographyFactReviewBatch01 = [
     originalTextRu:
       "Афганский писатель, журналист и мыслитель. Один из основателей современной афганской публицистики и литературы.",
     reviewedTextRu:
-      "Афганский писатель, журналист и мыслитель. Один из основателей современной афганской публицистики и литературы.",
+      "Махмуд Тарзи (1865-1933) - афганский писатель, журналист, переводчик и политический деятель. В 1911-1918 годах он руководил газетой «Сирадж аль-ахбар», переводил западную художественную прозу и участвовал в становлении современной афганской журналистики и прозы.",
     claimEvidence: [
       claim(
         "identity-role",
-        "Махмуд Тарзи - писатель, журналист и мыслитель.",
-        "confirmed",
+        "Махмуд Тарзи (1865-1933) - афганский писатель, журналист, переводчик и политический деятель.",
+        "corrected",
         [iranicaTarzi]
       ),
       claim(
         "national-cultural-affiliation",
         "Его деятельность относится к Афганистану.",
         "confirmed",
-        [iranicaTarzi]
+        [iranicaTarzi, unescoTarzi]
       ),
       claim(
-        "priority-claim",
-        "Тарзи стоял у истоков современной афганской журналистики и новых литературных форм.",
+        "works",
+        "Тарзи руководил газетой «Сирадж аль-ахбар» в 1911-1918 годах.",
         "confirmed",
         [iranicaTarzi]
       ),
+      claim(
+        "works",
+        "Тарзи переводил западную художественную прозу.",
+        "confirmed",
+        [iranicaTarzi, monashTarzi]
+      ),
+      claim(
+        "priority-claim",
+        "Современная афганская журналистика и проза формировались при непосредственном участии Тарзи.",
+        "confirmed",
+        [iranicaTarzi, unescoTarzi]
+      ),
     ],
     reviewer,
-    decision: "unchanged",
+    decision: "corrected",
     notes: [
-      "Iranica прямо называет Тарзи отцом журналистики и описывает введённые им новые жанры прозы.",
+      "Расплывчатое слово «мыслитель» заменено документированными ролями и датированным эпизодом редакторской работы; журналистика и проза независимо сверены по UNESCO, а переводы западной художественной прозы - по исследованию Monash.",
     ],
   },
   {
@@ -539,25 +588,25 @@ export const writerBiographyFactReviewBatch01 = [
         "identity-role",
         "Наим Фрашери - поэт албанского национального Возрождения.",
         "confirmed",
-        [albanianAcademyNaim, albanianAcademyNaimOctober]
+        [albanianAcademyNaim, albanianAcademyNaimOctober, albaniaDiasporaNaim]
       ),
       claim(
         "national-cultural-affiliation",
         "Он является национальным поэтом Албании.",
         "confirmed",
-        [albanianAcademyNaim, albanianAcademyNaimOctober]
+        [albanianAcademyNaim, albanianAcademyNaimOctober, albaniaDiasporaNaim]
       ),
       claim(
         "critical-ranking",
         "Он относится к основоположникам современной албанской литературы.",
         "corrected",
-        [albanianAcademyNaim]
+        [albanianAcademyNaim, albaniaDiasporaNaim]
       ),
     ],
     reviewer,
     decision: "corrected",
     notes: [
-      "Абсолютный суперлатив заменён точными институциональными определениями: национальный поэт и один из основоположников современной албанской литературы.",
+      "Абсолютный суперлатив заменён точными институциональными определениями: национальный поэт и один из основоположников современной албанской литературы; формулировка независимо подтверждена государственным агентством Албании.",
     ],
   },
   {
@@ -817,8 +866,14 @@ export const writerBiographyFactReviewBatch01 = [
     claimEvidence: [
       claim(
         "identity-role",
-        "Антони Морель-и-Мора - андоррский писатель и гуманист.",
+        "Антони Морель-и-Мора - андоррский писатель.",
         "corrected",
+        [andorraMorell, catalanEncyclopediaMorell]
+      ),
+      claim(
+        "identity-role",
+        "Правительственная публикация характеризует Мореля как гуманиста.",
+        "confirmed",
         [andorraMorell]
       ),
       claim(
@@ -831,13 +886,13 @@ export const writerBiographyFactReviewBatch01 = [
         "themes-style",
         "Его романы, эссе, исторические и журналистские тексты размышляют об Андорре и её жителях.",
         "confirmed",
-        [andorraMorell]
+        [andorraMorell, catalanEncyclopediaMorell]
       ),
     ],
     reviewer,
     decision: "corrected",
     notes: [
-      "Расплывчатая известность заменена содержательной характеристикой из официального правительственного издания.",
+      "Расплывчатая известность заменена содержательной характеристикой; сведения о писательской работе и андоррской тематике независимо подтверждены Gran Enciclopèdia Catalana.",
     ],
   },
   {
@@ -853,19 +908,19 @@ export const writerBiographyFactReviewBatch01 = [
         "identity-role",
         "Агостиньо Нето - ангольский поэт и общественный деятель.",
         "confirmed",
-        [angolaNeto, angolaNetoCentenary]
+        [angolaNeto, angolaNetoCentenary, poetryFoundationNeto]
       ),
       claim(
         "priority-claim",
         "Он был первым президентом Республики Ангола после провозглашения независимости.",
         "confirmed",
-        [angolaNeto, angolaNetoCentenary]
+        [angolaNeto, angolaNetoCentenary, portugalDefenceNeto]
       ),
     ],
     reviewer,
     decision: "unchanged",
     notes: [
-      "Обе части биографии прямо подтверждены официальными публикациями правительства Анголы.",
+      "Обе части биографии подтверждены публикациями правительства Анголы; поэтическая и общественно-политическая деятельность независимо сверена с Poetry Foundation, а первенство на посту президента - с исторической справкой Министерства национальной обороны Португалии.",
     ],
   },
   {

@@ -206,9 +206,17 @@ describe("writer biography claim review batch 01", () => {
           );
           expect(evidence.provider.length).toBeGreaterThan(0);
           expect(evidence.sourceFamily.length).toBeGreaterThan(0);
-          expect(evidence.checkedAt).toBe("2026-08-09");
+          expect(["2026-08-09", "2026-08-31"]).toContain(
+            evidence.checkedAt
+          );
         }
       }
+      const independentHosts = new Set(
+        record.claimEvidence.flatMap((item) =>
+          item.sources.map((evidence) => new URL(evidence.url).hostname)
+        )
+      );
+      expect(independentHosts.size, record.key).toBeGreaterThanOrEqual(2);
     }
   });
 
@@ -223,7 +231,7 @@ describe("writer biography claim review batch 01", () => {
     const forbiddenMarker =
       /(?:^|[\s:-])(?:проверено|непроверено|verified|unverified)(?:$|[\s.!,:;-])/iu;
 
-    expect(decisionCounts).toEqual({ unchanged: 3, corrected: 17, held: 0 });
+    expect(decisionCounts).toEqual({ unchanged: 2, corrected: 18, held: 0 });
     for (const record of writerBiographyFactReviewBatch01) {
       expect(record.reviewedTextRu, record.key).toMatch(/[А-Яа-яЁё]/u);
       expect(record.reviewedTextRu, record.key).not.toMatch(forbiddenMarker);
@@ -280,8 +288,8 @@ describe("writer biography claim review batch 01", () => {
 
     expect(jsonReport.summary).toEqual({
       total: 20,
-      unchanged: 3,
-      corrected: 17,
+      unchanged: 2,
+      corrected: 18,
       held: 0,
     });
     expect(jsonReport.records).toEqual(writerBiographyFactReviewBatch01);

@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "bookCount": 9729,
+  "bookCount": 9767,
   "articleCount": 162,
-  "linkedBookCount": 517,
+  "linkedBookCount": 519,
   "linkedArticleCount": 27,
-  "relationCount": 657,
+  "relationCount": 661,
   "articleBookRelationCount": 35,
   "byBook": {
     "afghanistan:khaled_hosseini:article-catalog-gxmx58": [
@@ -4833,6 +4833,38 @@
         "kind": "mention"
       }
     ],
+    "russia:maxim_gorky:legacy-maxim_gorky-на-дне": [
+      {
+        "id": "cms-cd982a45-4204-4783-83e4-7b37d26541e7",
+        "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «Д»",
+        "sectionId": "language",
+        "sectionLabel": "Русский язык",
+        "readingMinutes": 3,
+        "slug": "popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-d",
+        "imageUrl": "https://static.tildacdn.com/tild3430-6335-4862-b437-386166626331/image.png",
+        "kind": "mention"
+      },
+      {
+        "id": "cms-67892186-c9dd-49f2-895e-ee6e4cfcca88",
+        "title": "Водяной",
+        "sectionId": "folklore",
+        "sectionLabel": "Фольклор и мифология",
+        "readingMinutes": 5,
+        "slug": "vodyanoy",
+        "imageUrl": "https://static.tildacdn.com/tild3232-6136-4937-b339-346431366631/_5.png",
+        "kind": "mention"
+      },
+      {
+        "id": "cms-6e8f5f8d-bb53-4c6e-b2e8-9bb8e0a7e2d1",
+        "title": "Десять романов, которые читаются на одном дыхании (Часть 2)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 7,
+        "slug": "desyat-romanov-kotorye-chitayutsya-na-odnom-dyhanii-chast-2",
+        "imageUrl": "https://static.tildacdn.com/tild3430-3266-4365-b538-633165663064/068be666-6d9d-402c-b.png",
+        "kind": "mention"
+      }
+    ],
     "russia:bulgakov:master-and-margarita": [
       {
         "id": "cms-d37e5f07-4733-4e3c-a42e-2c5728484b21",
@@ -4876,6 +4908,18 @@
         "readingMinutes": 13,
         "slug": "15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-2",
         "imageUrl": "https://static.tildacdn.com/tild3166-6636-4831-b063-383762656532/image.png",
+        "kind": "mention"
+      }
+    ],
+    "russia:mikhail_zoshchenko:legacy-mikhail_zoshchenko-перед-восходом-солнца": [
+      {
+        "id": "cms-4027fa55-2fe1-47e6-9ba7-25d989d35773",
+        "title": "1912 год. Герхарт Гауптман - лауреат Нобелевской премии",
+        "sectionId": "awards",
+        "sectionLabel": "Литературные премии",
+        "readingMinutes": 5,
+        "slug": "1912-god-gerhart-gauptman-laureat-nobelevskoy-premii",
+        "imageUrl": "https://static.tildacdn.com/tild6537-3932-4331-b761-663530613639/425678ac-9cbb-4b08-8.png",
         "kind": "mention"
       }
     ],

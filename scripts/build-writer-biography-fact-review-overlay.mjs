@@ -33,6 +33,32 @@ const markdownPath = path.join(
   "writer-biography-fact-review-rollup.md"
 );
 const writeMode = process.argv.includes("--write");
+const russianBiographyReviewedAt = "2026-08-31";
+const russianInstitutionalHosts = new Set([
+  "bigenc.ru",
+  "prlib.ru",
+  "nlr.ru",
+  "rsl.ru",
+  "rusneb.ru",
+  "ras.ru",
+  "ruslang.ru",
+  "pushkinskijdom.ru",
+  "culture.ru",
+  "goslitmuz.ru",
+  "bulgakovmuseum.ru",
+  "md.spb.ru",
+  "museum-esenin.ru",
+  "museumpushkin.ru",
+  "pravenc.ru",
+  "pushkinmuseum.ru",
+  "kraslib.ru",
+  "sholokhov.ru",
+  "solzhenitsyn.ru",
+  "tolstoymuseum.ru",
+  "dommuseum.ru",
+  "turgenevmus.ru",
+  "chekhovmuseum.com",
+]);
 
 async function loadReviews() {
   await mkdir(cacheDirectory, { recursive: true });
@@ -53,7 +79,12 @@ async function loadReviews() {
     const module = await import(
       `${pathToFileURL(bundlePath).href}?v=${Date.now()}`
     );
-    return module.writerBiographyFactReviews;
+    return {
+      records: module.writerBiographyFactReviews,
+      quarantinedKeys: new Set(
+        module.writerBiographyFactReviewQuarantinedKeys || []
+      ),
+    };
   } finally {
     await rm(bundlePath, { force: true });
   }
@@ -61,6 +92,23 @@ async function loadReviews() {
 
 function stableJson(value) {
   return `${JSON.stringify(value, null, 2)}\n`;
+}
+
+function biographySentenceCount(value) {
+  return value.trim().match(/[.!?…]+(?=\s|$)/gu)?.length || 0;
+}
+
+function isRussianInstitutionalEvidence(evidence) {
+  const hostname = new URL(evidence.url).hostname.toLowerCase();
+  return [...russianInstitutionalHosts].some(
+    (allowed) => hostname === allowed || hostname.endsWith(`.${allowed}`)
+  );
+}
+
+function russianInstitutionalEvidence(record) {
+  return record.claims
+    .flatMap((claim) => claim.evidence)
+    .find(isRussianInstitutionalEvidence);
 }
 
 function validateRecord(record, index) {
@@ -72,7 +120,7 @@ function validateRecord(record, index) {
     // One legacy Madagascar id contains an embedded soft hyphen. Preserve the
     // exact source key here so the review overlay can address the existing
     // record without silently renaming a public identity in a fact-review job.
-    !/^[\p{Ll}\p{Lo}\p{M}\p{N}_\u00ad]+:[\p{Ll}\p{Lo}\p{M}\p{N}_\u00ad]+$/u.test(
+    !/^[\p{Ll}\p{Lo}\p{M}\p{N}_\u00ad-]+:[\p{Ll}\p{Lo}\p{M}\p{N}_\u00ad-]+$/u.test(
       record.key || ""
     )
   ) {
@@ -109,7 +157,7 @@ function validateRecord(record, index) {
   }
 }
 
-function buildOutputs(records) {
+function buildOutputs(records, quarantinedKeys) {
   records.forEach(validateRecord);
   const sorted = [...records].sort((left, right) =>
     left.key.localeCompare(right.key, "en")
@@ -121,40 +169,91 @@ function buildOutputs(records) {
 
   const decisionCounts = { unchanged: 0, corrected: 0, held: 0 };
   const corrections = {};
+  const russianBiographies = {};
+  const excludedQuarantinedCorrectionKeys = [];
   for (const record of sorted) {
     decisionCounts[record.decision] += 1;
     if (record.decision === "corrected") {
-      corrections[record.key] = record.applicableTextRu;
+      if (quarantinedKeys.has(record.key)) {
+        excludedQuarantinedCorrectionKeys.push(record.key);
+      } else {
+        corrections[record.key] = record.applicableTextRu;
+      }
+    }
+    if (
+      record.key.startsWith("russia:") &&
+      record.decision !== "held" &&
+      !quarantinedKeys.has(record.key)
+    ) {
+      const text = record.applicableTextRu.trim();
+      const sentenceCount = biographySentenceCount(text);
+      if (sentenceCount < 2 || sentenceCount > 4) {
+        throw new Error(
+          `${record.key}: publishable Russian biography must contain 2-4 sentences`
+        );
+      }
+      if (text.length < 120 || text.length > 1_600) {
+        throw new Error(
+          `${record.key}: publishable Russian biography must contain 120-1600 characters`
+        );
+      }
+      const source = russianInstitutionalEvidence(record);
+      if (!source) {
+        throw new Error(
+          `${record.key}: authoritative Russian-language institutional source is required`
+        );
+      }
+      russianBiographies[record.key] = {
+        text,
+        reviewedAt: russianBiographyReviewedAt,
+        source: {
+          provider: source.provider,
+          url: source.url,
+          retrievedAt: source.checkedAt,
+        },
+      };
     }
   }
   const fingerprint = createHash("sha256")
     .update(
       JSON.stringify(
-        sorted.map((record) => [
-          record.key,
-          record.originalSha256,
-          record.decision,
-          record.applicableTextRu,
-        ])
+        {
+          records: sorted.map((record) => [
+            record.key,
+            record.originalSha256,
+            record.decision,
+            record.applicableTextRu,
+          ]),
+          excludedQuarantinedCorrectionKeys,
+          russianBiographies,
+        }
       ),
       "utf8"
     )
     .digest("hex");
 
   const runtime = {
-    version: 1,
+    version: 3,
     reviewedCount: sorted.length,
     correctedCount: decisionCounts.corrected,
+    publishedCorrectionCount: Object.keys(corrections).length,
+    publishedRussianBiographyCount: Object.keys(russianBiographies).length,
     sourceFingerprint: `sha256:${fingerprint}`,
     corrections,
+    russianBiographies,
   };
   const rollup = {
-    version: 1,
+    version: 3,
     deterministic: true,
     sourceFingerprint: runtime.sourceFingerprint,
     summary: {
       records: sorted.length,
       ...decisionCounts,
+    },
+    publication: {
+      corrections: runtime.publishedCorrectionCount,
+      russianBiographies: runtime.publishedRussianBiographyCount,
+      excludedQuarantinedCorrectionKeys,
     },
     reviewedKeys: keys,
   };
@@ -165,9 +264,12 @@ function buildOutputs(records) {
     `- Без изменения текста: **${decisionCounts.unchanged}**`,
     `- Исправлено: **${decisionCounts.corrected}**`,
     `- Удержано: **${decisionCounts.held}**`,
+    `- Опубликовано исправлений: **${runtime.publishedCorrectionCount}**`,
+    `- Опубликовано проверенных биографий российских авторов: **${runtime.publishedRussianBiographyCount}**`,
+    `- Исключено карантинных ключей: **${excludedQuarantinedCorrectionKeys.length}**`,
     `- Отпечаток: \`${runtime.sourceFingerprint}\``,
     "",
-    "Полные доказательства находятся в изолированных отчётах партий. Публичная сборка получает только компактный слой исправленного русского текста и не показывает редакционные статусы.",
+    "Полные доказательства находятся в изолированных отчётах партий. Публичная сборка получает компактный слой исправленного русского текста; для российских авторов дополнительно публикуется одна основная русскоязычная институциональная ссылка с редакционной provenance.",
     "",
   ].join("\n");
 
@@ -188,8 +290,8 @@ async function verifyOrWrite(filePath, content) {
   }
 }
 
-const records = await loadReviews();
-const { runtime, rollup, markdown } = buildOutputs(records);
+const { records, quarantinedKeys } = await loadReviews();
+const { runtime, rollup, markdown } = buildOutputs(records, quarantinedKeys);
 await verifyOrWrite(runtimePath, stableJson(runtime));
 await verifyOrWrite(rollupPath, stableJson(rollup));
 await verifyOrWrite(markdownPath, markdown);
@@ -200,6 +302,7 @@ console.log(
       mode: writeMode ? "write" : "check",
       ...rollup.summary,
       corrections: Object.keys(runtime.corrections).length,
+      russianBiographies: Object.keys(runtime.russianBiographies).length,
       sourceFingerprint: runtime.sourceFingerprint,
     },
     null,

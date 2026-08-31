@@ -19,7 +19,7 @@ test("switching book details keeps one history entry and close returns to the ar
   await openBookCatalog(page);
   await expect(page.locator(".book-archive-filters")).toHaveAttribute(
     "aria-label",
-    /9\s*729/u,
+    /9\s*767/u,
     { timeout: 60_000 }
   );
   const detailButtons = page.locator(".archive-book-detail");

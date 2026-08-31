@@ -7,8 +7,8 @@
     "baselineCount": 162,
     "bytesPerAdditionalArticle": 262144
   },
-  "distTotalBytes": 115343360,
-  "distExcludingBookCoversBytes": 75759616,
+  "distTotalBytes": 115605504,
+  "distExcludingBookCoversBytes": 76021760,
   "largestJavaScriptBytes": 2097152,
   "largestJavaScriptGzipBytes": 409600,
   "mainJavaScriptBytes": 716800,

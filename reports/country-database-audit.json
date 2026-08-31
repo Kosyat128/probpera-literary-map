@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-26T14:20:20.998Z",
+  "generatedAt": "2026-08-31T08:08:38.670Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
     "uniqueCountryCodes": 200,
-    "cardsWithWriters": 191,
+    "cardsWithWriters": 190,
     "cardsWithCoordinates": 5,
     "cardsWithDescription": 5,
     "cardsWithHistory": 5,
@@ -12,18 +12,18 @@
     "cardsWithTimeline": 0,
     "cardsWithFacts": 4,
     "cardsWithLiteraryPlaces": 0,
-    "writerRecords": 1678,
-    "uniqueWriters": 1665,
-    "workRecords": 3666,
-    "uniqueWorks": 3648,
-    "verifiedWriters": 49,
-    "sourcedWriters": 129,
-    "expandedBiographies": 63,
-    "russianBiographiesReady": 45,
-    "russianBiographiesWithheld": 1633,
+    "writerRecords": 1684,
+    "uniqueWriters": 1672,
+    "workRecords": 3821,
+    "uniqueWorks": 3802,
+    "verifiedWriters": 61,
+    "sourcedWriters": 141,
+    "expandedBiographies": 67,
+    "russianBiographiesReady": 98,
+    "russianBiographiesWithheld": 1586,
     "englishBiographiesReady": 20,
-    "englishBiographiesWithheld": 1658,
-    "portraitedWriters": 1058,
+    "englishBiographiesWithheld": 1664,
+    "portraitedWriters": 1057,
     "duplicateWriterLinks": 0,
     "criticalIssues": 0,
     "cardsInEditorialQueue": 200
@@ -2558,7 +2558,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 41
+      "writers": 53
     },
     {
       "id": "rwanda",
@@ -2626,7 +2626,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 1
+      "writers": 0
     },
     {
       "id": "samoa",
@@ -2720,7 +2720,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 3
+      "writers": 2
     },
     {
       "id": "sierra_leone",
@@ -2737,7 +2737,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 5
+      "writers": 4
     },
     {
       "id": "singapore",
@@ -2856,7 +2856,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 24
+      "writers": 23
     },
     {
       "id": "south_sudan",
@@ -2873,7 +2873,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 2
+      "writers": 1
     },
     {
       "id": "spain",
@@ -2890,7 +2890,7 @@
         "факты",
         "литературные места"
       ],
-      "writers": 36
+      "writers": 35
     },
     {
       "id": "sri_lanka",

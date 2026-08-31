@@ -1,38 +1,37 @@
 # QA фактов в коротких русских биографиях писателей
 
-Источник данных: `sha256:d4934955bb630e4f76c2fddb6423c4e12f4470441056ac73617dd4ec390deaae`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
+Источник данных: `sha256:a104bad078aa469f503f2015945d4d23c206e22eb14129f540a84d5201ac64e0`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
 
 > Этот аудит не маркирует карточки, не меняет тексты и не утверждает, что весь корпус фактологически проверен. Он выполняет полную автоматическую инвентаризацию, находит внутренние противоречия и строит очередь ручной сверки.
 
 ## Покрытие
 
-- Карточек и русских bio проверено алгоритмом: 1678; bio присутствует: 1678.
-- Надёжных identity-match с локальным staging: 232.
-- Из них source-confirmed structured cross-check: 231 (13.8%).
-- Offline Wikidata snapshot содержит candidate QID для 1263 карточек, но label+birth-year identity corroborated только у 1164 (69.4% корпуса); identity-discrepant: 7, требуют дополнительной identity-проверки: 92.
-- Сопоставлено полей дат со snapshot: 2072; exact Gregorian: 1633; совместимы при общей precision: 176; несовместимых строк после curated resolutions: 68. Из них 20 сначала требуют identity repair, а 30 - современные referenced-противоречия для проверки по авторитетному источнику.
-- Ручных source-resolution с сохранёнными доказательствами: 71 в 58 карточках.
+- Карточек и русских bio проверено алгоритмом: 1684; bio присутствует: 1684.
+- Надёжных identity-match с локальным staging: 233.
+- Из них source-confirmed structured cross-check: 232 (13.8%).
+- Offline Wikidata snapshot содержит candidate QID для 1261 карточек, но label+birth-year identity corroborated только у 1154 (68.5% корпуса); identity-discrepant: 1, требуют дополнительной identity-проверки: 106.
+- Сопоставлено полей дат со snapshot: 2056; exact Gregorian: 1656; совместимы при общей precision: 176; несовместимых строк после curated resolutions: 38. Из них 9 сначала требуют identity repair, а 21 - современные referenced-противоречия для проверки по авторитетному источнику.
+- Ручных source-resolution с сохранёнными доказательствами: 71 в 59 карточках.
 - Карточек с high-confidence противоречиями: 0; отдельных противоречий: 0.
-- Отдельно допустимые календарные/precision/source расхождения: 1 карточек, 1 полей.
-- Metadata gaps (это не доказанные ошибки): 248.
-- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1658.
+- Отдельно допустимые календарные/precision/source расхождения: 0 карточек, 0 полей.
+- Metadata gaps (это не доказанные ошибки): 332.
+- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1676.
 - Статусов `reviewed`/`verified`, UI-плашек и текстов изменено: 0.
 
 ## Типы утверждений во всём корпусе
 
-- `awards`: 137
-- `critical-ranking`: 144
-- `identity-role`: 1628
-- `language`: 183
-- `life-dates`: 422
-- `movement-era`: 82
-- `national-cultural-affiliation`: 1062
-- `nobel`: 112
-- `places`: 26
-- `priority-claim`: 125
-- `reception-influence`: 36
-- `themes-style`: 334
-- `works`: 1201
+- `awards`: 124
+- `identity-role`: 1630
+- `language`: 192
+- `life-dates`: 457
+- `movement-era`: 61
+- `national-cultural-affiliation`: 1079
+- `nobel`: 124
+- `places`: 48
+- `priority-claim`: 95
+- `reception-influence`: 20
+- `themes-style`: 364
+- `works`: 1476
 
 ## High-confidence противоречия
 
@@ -48,7 +47,7 @@
 
 | Ключ | Писатель | Поле | Код | Значения | Безопасный кандидат исправления |
 | --- | --- | --- | --- | --- | --- |
-| `kazakhstan:dulat_isabekov` | Дулат Исабеков | `deathDate` | `card-deathDate-staging-conflict` | {"card":"2025-02-22","staging":"2025-02-21"} | Сопоставить исходные authority-источники и календарную систему; сохранить текущее значение, пока одна дата не получит более сильного подтверждения. |
+| - | - | - | - | Не найдено | Исправление не требуется |
 
 ## Разрешённые расхождения с более сильным источником
 
@@ -125,12 +124,12 @@
 | `taiwan:li_ang` | `birthDate` | `1952-04-07` | `1952-04-07` | corrected-card | Li Ang - Ministry of Culture, Taiwan: https://www.moc.gov.tw/en/News_Content2.aspx?n=491&s=17978; Li Ang - National Chung Hsing University: https://taiwan.nchu.edu.tw/content.php?a=%E9%A7%90%E6%A0%A1%E4%BD%9C%E5%AE%B6&b=%E7%B3%BB%E6%89%80%E6%88%90%E5%93%A1&c=ut&id=50d652d4-bc15-4b9d-9b54-f4e52c8fd393 |
 | `tajikistan:muhammadjon_shakuri` | `birthDate` | `1925-02` | `1925-02` | corrected-card | Таджикский национальный университет - диссертация Т. Х. Каримовой: https://tnu.tj/Dissertatsii/KarimovaTKh/KarimovaTKh.pdf; ŠOKUROV, MOḤAMMADJĀN - Encyclopaedia Iranica: https://www.iranicaonline.org/articles/shokurov-mohammadjan/ |
 | `tanzania:said_ahmed_mohamed` | `birthDate` | `1947-12-12` | `` | corrected-card-and-country | Said Ahmed Mohamed Khamis - Universität Bayreuth: https://www.presse.uni-bayreuth.de/de/archiv/2012/194-Swahili-Kolloquium.pdf; Said Ahmed Mohamed Khamis - University of Nairobi: https://erepository.uonbi.ac.ke/server/api/core/bitstreams/1a972ff5-f647-4f39-9791-4f705e98abdf/content |
-| `uzbekistan:odil_yoqubov` | `birthDate` | `1926-10-20` | `1926-10-26` | retain-current-card | Одил Ёқубов - Tarix.uz: https://www.tarix.uz/site/report?id=238 |
+| `uganda:timothy_wangusa` | `birthDate` | `1942-05-20` | `1942-01-01` | retain-current-card | Timothy Wangusa at 80 - Makerere University: https://news.mak.ac.ug/2022/07/makerere-university-celebrates-prof-timothy-wangusa80/; Timothy Wangusa - Bibliothèque nationale de France: https://catalogue.bnf.fr/ark:/12148/cb122319918 |
 | `uzbekistan:odil_yoqubov` | `deathDate` | `2009-12-21` | `2009-12-22` | retain-current-card | Одил Ёқубов - Muzaffar.uz: https://muzaffar.uz/mashhurlar-hayotidan/2644-odil-yoqubov.html |
 
 ## Offline Wikidata snapshot: структурированная очередь сверки
 
-Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1263 candidate-сопоставлений, но identity corroborated только у 1164. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
+Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` содержит 1257 сущностей и даёт 1261 candidate-сопоставлений, но identity corroborated только у 1154. Сравнение сохраняет RU/EN labels, rank, precision, calendar model и наличие ссылок. Совпадение с Wikidata не означает, что русский текст проверен; расхождение не исправляется автоматически.
 
 | Ключ | Писатель | QID | Класс | Поле | Карточка | Лучшие Wikidata claims | Источник |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -145,7 +144,6 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `hungary:imre_madach` | Имре Мадач | `Q366331` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1823-01-20` | 1823-01-21 (day, Q1985727, preferred, refs:4) | https://www.wikidata.org/wiki/Q366331 |
 | `italy:cesare_beccaria` | Чезаре Беккариа | `Q223723` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1794-11-28` | 1794-11-20 (day, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q223723 |
 | `kazakhstan:akhmet_baitursynov` | Ахмет Байтурсынулы | `Q1047477` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1872-09-05` | 1872-01-28 (day, Q1985727, preferred, refs:1) | https://www.wikidata.org/wiki/Q1047477 |
-| `kazakhstan:dulat_isabekov` | Дулат Исабеков | `Q115204` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `2025-02-22` | 2025-02-21 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q115204 |
 | `latvia:karlis_skalbe` | Карлис Скалбе | `Q1069984` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1945-04-15` | 1945-04-14 (day, Q1985727, normal, refs:1); 1945-04-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1069984 |
 | `lithuania:vincas_putinas` | Винцас Миколайтис-Путинас | `Q1124485` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1893-01-06` | 1893-05-20 (day, Q1985786, normal, refs:1) | https://www.wikidata.org/wiki/Q1124485 |
 | `mongolia:byambyn_rinchen` | Бямбын Ринчен | `Q879330` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1905-11-21` | 1905-12-25 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q879330 |
@@ -157,51 +155,22 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `pakistan:intizar_husain` | Интизар Хусейн | `Q6057750` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1923-12-21` | 1925-12-21 (day, Q1985727, normal, refs:2); 1923-12-07 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q6057750 |
 | `panama:ricardo_miro` | Рикардо Миро | `Q5573605` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1883-11-05` | 1882-11-05 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q5573605 |
 | `romania:mircea_eliade` | Мирча Элиаде | `Q41590` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1907-03-13` | 1907-03-09 (day, Q1985786, normal, refs:7) | https://www.wikidata.org/wiki/Q41590 |
-| `russia:kantemir` | Антиох Дмитриевич Кантемир | `Q372115` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1708-09-10` | 1708-09-21 (day, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q372115 |
 | `russia:mandelstam` | Осип Эмильевич Мандельштам | `Q189950` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1891-01-15` | 1891-01-02 (day, Q1985786, normal, refs:1) | https://www.wikidata.org/wiki/Q189950 |
-| `russia:trediakovsky` | Василий Кириллович Тредиаковский | `Q557575` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1703-03-22` | 1703-02-22 (day, Q1985786, preferred, refs:3) | https://www.wikidata.org/wiki/Q557575 |
-| `saint_vincent_and_the_grenadines:michael_anthony` | Майкл Энтони | `Q6828231` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `2019-01-01` | 2023-08-24 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q6828231 |
-| `samoa:lani_wendt_young` | Лани Вендт Янг | `Q44217961` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1968-01-01` | 1973 (year, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q44217961 |
-| `samoa:selina_tusitala_marsh` | Селина Тусиата Марш | `Q38082917` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1971-06-04` | 1971-04-21 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q38082917 |
-| `samoa:sia_figiel` | Сиа Фигиэль | `Q1217640` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1967-01-01` | 1967-01-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1217640 |
-| `samoa:tusiata_avia` | Тусиата Авиа | `Q7856776` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1969-09-01` | 1966 (year, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q7856776 |
-| `senegal:felwine_sarr` | Фелвин Сар | `Q16635979` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1972-09-12` | 1972-09-11 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q16635979 |
-| `serbia:dositej_obradovic` | Доситей Обрадович | `Q347659` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1739` | 1742-02-17 (day, Q1985727, normal, refs:3) | https://www.wikidata.org/wiki/Q347659 |
-| `serbia:dositej_obradovic` | Доситей Обрадович | `Q347659` | c: likely-bad-qid-mapping-or-identity | `deathDate` | `1811-03-28` | 1811-04-07 (day, Q1985727, preferred, refs:1) | https://www.wikidata.org/wiki/Q347659 |
-| `serbia:laza_kostic` | Лаза Костич | `Q938402` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1841-01-31` | 1841-02-12 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q938402 |
-| `seychelles:guy_lionnet` | Ги Лионнет | `Q5622424` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1933` | 1922-05-31 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q5622424 |
-| `seychelles:guy_lionnet` | Ги Лионнет | `Q5622424` | c: likely-bad-qid-mapping-or-identity | `deathDate` | `2015` | 2007-11-30 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q5622424 |
 | `slovenia:tone_pavcek` | Тоне Павчек | `Q5243720` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1928-01-29` | 1928-09-29 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q5243720 |
 | `slovenia:tone_pavcek` | Тоне Павчек | `Q5243720` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `2011-10-21` | 2011-10-20 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q5243720 |
-| `solomon_islands:john_saunana` | Джон Саунана | `Q124165122` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1947-01-01` | 1945 (year, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q124165122 |
-| `south_africa:achmat_dangor` | Ахмат Дангор | `Q2033816` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `2021` | 2020-09-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q2033816 |
 | `south_korea:jeong_cheol` | Чон Чхоль | `Q484978` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1536-12-18` | 1536-12-06 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q484978 |
 | `south_korea:jeong_cheol` | Чон Чхоль | `Q484978` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1593-02-07` | 1593-12 (month, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q484978 |
-| `south_korea:kim_so_wol` | Ким Со Воль | `Q496828` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1902-09-07` | 1902-08-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q496828 |
+| `south_korea:kim_so_wol` | Ким Соволь | `Q496828` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1902-09-07` | 1902-08-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q496828 |
 | `south_korea:park_kyung_ni` | Пак Кённи | `Q39963` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1926-12-02` | 1926-10-28 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q39963 |
-| `spain:garcilaso_de_la_vega` | Гарсиласо де ла Вега | `Q311405` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1501` | 1503 (year, Q1985786, normal, refs:10) | https://www.wikidata.org/wiki/Q311405 |
-| `tajikistan:rudaki` | Рудаки | `Q312954` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `0858-01-01` | 0859 (year, Q1985786, normal, refs:1) | https://www.wikidata.org/wiki/Q312954 |
-| `thailand:kulap_saipradit` | Сибурапа | `Q6442803` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1905-03-31` | 1906-03-31 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q6442803 |
-| `timor_leste:fernando_sylvan` | Фернанду Силван | `Q937355` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1993-12-21` | 1993-12-25 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q937355 |
+| `tajikistan:rudaki` | Рудаки | `Q312954` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `0858` | 0859 (year, Q1985786, normal, refs:1) | https://www.wikidata.org/wiki/Q312954 |
+| `thailand:kulap_saipradit` | Кулап Сайпрадит (Сибурапа) | `Q6442803` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1905-03-31` | 1906-03-31 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q6442803 |
 | `timor_leste:francisco_borja_da_costa` | Франсишку Боржа да Кошта | `Q1441897` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1975-12-07` | 1975-12-08 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q1441897 |
-| `timor_leste:luis_cardoso` | Луиш Кардозу | `Q3840963` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1958-12-07` | 1958-12-08 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q3840963 |
-| `trinidad_and_tobago:samuel_selvon` | Сэмюэл Селвон | `Q7412589` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1994-04-15` | 1994-04-16 (day, Q1985727, normal, refs:4) | https://www.wikidata.org/wiki/Q7412589 |
 | `tunisia:abdelwahab_meddeb` | Абдельвахаб Меддеб | `Q308021` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `2014-11-05` | 2014-11-06 (day, Q1985727, normal, refs:4) | https://www.wikidata.org/wiki/Q308021 |
 | `tunisia:ali_douagi` | Али Дуаги | `Q2836198` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1909-01-04` | 1909-01-06 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q2836198 |
-| `tunisia:ali_douagi` | Али Дуаги | `Q2836198` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1949-11-27` | 1949-05-27 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q2836198 |
-| `turkmenistan:aman_kekilov` | Аман Кекилов | `Q2349508` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1912-04-15` | 1912-10-09 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q2349508 |
-| `turkmenistan:aman_kekilov` | Аман Кекилов | `Q2349508` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1974-03-12` | 1974-12-13 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q2349508 |
-| `turkmenistan:berdy_kerbabayev` | Берди Кербабаев | `Q2080832` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1894-03-03` | 1894-03-15 (day, Q1985786, normal, refs:1) | https://www.wikidata.org/wiki/Q2080832 |
-| `turkmenistan:kerim_kurbannepesov` | Керим Курбаннепесов | `Q4247871` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1988-01-01` | 1988-09-01 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q4247871 |
-| `turkmenistan:magtymguly_pyragy` | Махтумкули Фраги | `Q2355095` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1724-01-01` | 1733 (year, Q1985727, preferred, refs:2) | https://www.wikidata.org/wiki/Q2355095 |
-| `uganda:byron_kawadwa` | Байрон Каваду | `Q134561593` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1940` | 1937 (year, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q134561593 |
-| `usa:ralph_ellison` | Ральф Эллисон | `Q299965` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1913-03-01` | 1914-03-01 (day, Q1985727, normal, refs:9) | https://www.wikidata.org/wiki/Q299965 |
+| `turkmenistan:aman_kekilov` | Аман Кекилов | `Q2349508` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1912-05-09` | 1912-10-09 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q2349508 |
 | `uzbekistan:abdulla_qahhor` | Абдулла Каххар | `Q4217805` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1968-05-25` | 1968-05-24 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q4217805 |
-| `vanuatu:grace_mera_molisa` | Грейс Мера Молиса | `Q3113009` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1946-01-17` | 1946-02-17 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q3113009 |
-| `vanuatu:grace_mera_molisa` | Грейс Мера Молиса | `Q3113009` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `2002-01-20` | 2002-01-04 (day, Q1985727, normal, refs:0) | https://www.wikidata.org/wiki/Q3113009 |
+| `venezuela:eduardo_blanco` | Эдуардо Бланко | `Q5340538` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1912-01-30` | 1912-06-30 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q5340538 |
 | `venezuela:simon_rodriguez` | Симон Родригес | `Q1358685` | d: date-contradiction-requiring-authoritative-source | `deathDate` | `1854-02-28` | 1853-02-28 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q1358685 |
-| `vietnam:nam_cao` | Нам Као | `Q6961060` | c: likely-bad-qid-mapping-or-identity | `birthDate` | `1915-10-29` | 1917-10-29 (day, Q1985727, normal, refs:1) | https://www.wikidata.org/wiki/Q6961060 |
-| `zimbabwe:tsitsi_dangarembga` | Цици Дангарембга | `Q270837` | d: date-contradiction-requiring-authoritative-source | `birthDate` | `1959-02-04` | 1959-02-14 (day, Q1985727, normal, refs:2) | https://www.wikidata.org/wiki/Q270837 |
 
 ### QID identity discrepancies
 
@@ -210,12 +179,6 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | Ключ | Писатель | QID | Labels | Год карточки | Годы Wikidata | Риск портрета |
 | --- | --- | --- | --- | --- | --- | --- |
 | `guatemala:luis_cardoza_y_aragon` | Луис Кардоса-и-Арагон | `Q6700406` | {"en":"Luis Cardoza y Aragón","ru":"Луис Кардоса-и-Арагон"} | 1901 | [1904] | да |
-| `samoa:lani_wendt_young` | Лани Вендт Янг | `Q44217961` | {"en":"Lani Wendt Young"} | 1968 | [1973] | нет |
-| `samoa:tusiata_avia` | Тусиата Авиа | `Q7856776` | {"en":"Tusiata Avia"} | 1969 | [1966] | да |
-| `serbia:dositej_obradovic` | Доситей Обрадович | `Q347659` | {"en":"Dositej Obradović","ru":"Доситей Обрадович"} | 1739 | [1742] | да |
-| `seychelles:guy_lionnet` | Ги Лионнет | `Q5622424` | {"en":"Guy Lionnet","ru":"Ги Льонне"} | 1933 | [1922] | нет |
-| `turkmenistan:magtymguly_pyragy` | Махтумкули Фраги | `Q2355095` | {"en":"Magtymguly Pyragy","ru":"Махтумкули"} | 1724 | [1733] | да |
-| `uganda:byron_kawadwa` | Байрон Каваду | `Q134561593` | {"en":"Byron Kawadwa"} | 1940 | [1937] | нет |
 
 ## Пробелы metadata: не доказанные ошибки
 
@@ -467,10 +430,94 @@ Snapshot `6ff7ad5ae04383c264871a1404e3a4289d66911657a9c2efee5675db26a01e9c` со
 | `madagascar:jacques_rabemananjara` | Жак Рабеманандзара | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Antsa"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `madagascar:jacques_rabemananjara` | Жак Рабеманандзара | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Les dieux malgaches"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 | `qatar:abdulaziz_al_mahmoud` | Абдулазиз Аль-Махмуд | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Al Qursan"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
-| `south_korea:il_yeon` | Иль Ён | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Самгук Юса"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
-| `spain:miguel_de_cervantes` | Мигель де Сервантес | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Дон Кихот"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
-| `ukraine:ivan_kotliarevsky` | Иван Котляревский | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Энеиды"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
-| `usa:daniel_keyes` | Дэниел Киз | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Множественные умы Билли Миллигана"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `romania:ion_creanga` | Ион Крянгэ | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Воспоминаний детства"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `romania:mihai_eminescu` | Михай Эминеску | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Poezii"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `russia:blok` | Александр Александрович Блок | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Роза и Крест"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `russia:bulgakov` | Михаил Афанасьевич Булгаков | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Дни Турбиных"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `russia:tsvetaeva` | Марина Ивановна Цветаева | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Вёрсты"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `russia:tsvetaeva` | Марина Ивановна Цветаева | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Вечерний альбом"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `rwanda:scholastique_mukasonga` | Шоластик Мукасонга | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Notre-Dame du Nil"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `saint_kitts_and_nevis:caryl_phillips` | Кэрил Филлипс | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Crossing the River"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `saint_lucia:derek_walcott` | Дерек Уолкотт | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Dream on Monkey Mountain"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `saint_lucia:derek_walcott` | Дерек Уолкотт | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Omeros"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `samoa:lani_wendt_young` | Лани Вендт Янг | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Pacific Tsunami “Galu Afi”"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `san_marino:marino_fattori` | Марино Фаттори | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Ricordi storici della Repubblica di San Marino"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `sao_tome_and_principe:francisco_jose_tenreiro` | Франсишку Жозе Тенрейру | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Ilha de Nome Santo"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `senegal:birago_diop` | Бираго Диоп | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Les Contes d’Amadou Koumba"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `senegal:cheikh_hamidou_kane` | Шейх Хамиду Кан | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"L’Aventure ambiguë"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `senegal:fatou_diome` | Фату Диом | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"La Préférence nationale"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `senegal:fatou_diome` | Фату Диом | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Le Ventre de l’Atlantique"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `senegal:ken_bugul` | Кен Бугул | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Le Baobab fou"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `senegal:mariama_ba` | Мариама Ба | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Une si longue lettre"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `senegal:ousmane_sembene` | Усман Сембен | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Les Bouts de bois de Dieu"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `serbia:branko_radicevic` | Бранко Радичевич | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Pesme"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `serbia:danilo_kis` | Данило Киш | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Bašta, pepeo"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `serbia:dositej_obradovic` | Доситей Обрадович | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Život i priključenija"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `serbia:milos_crnjanski` | Милош Црнянский | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Переселения"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `sierra_leone:william_conton` | Уильям Контон | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"West Africa in History"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `singapore:josephine_chia` | Джозефин Чиа | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955-1965"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `slovakia:hviezdoslav` | Павол Орсаг Гвездослав | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Hájnikova žena"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `slovakia:ludovit_stur` | Людовит Штур | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Spevy a piesne"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `slovakia:martin_kukucin` | Мартин Кукучин | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Дом на откосе"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `slovakia:pavol_rankov` | Павол Ранков | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Это случилось первого сентября (или когда-нибудь ещё)"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `slovenia:ivan_cankar` | Иван Цанкар | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Слуги"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `slovenia:tone_pavcek` | Тоне Павчек | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Pesmi štirih"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `somalia:farah_mohamed_jama_awl` | Фарах Мохамед Джама Аул | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Aqoondarro waa u Nacab Jacayl"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `somalia:mohamed_ibrahim_warsame_hadraawi` | Мохамед Ибрагим Варсаме «Хадрави» | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Sirta Nolosha"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_africa:achmat_dangor` | Ахмат Дангор | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Bitter Fruit"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_africa:alan_paton` | Алан Пейтон | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Плачь, любимая страна"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_africa:andre_brink` | Андре Бринк | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"A Dry White Season"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_africa:breyten_breytenbach` | Брейтен Брейтенбах | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The True Confessions of an Albino Terrorist"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_africa:damon_galgut` | Деймон Гэлгут | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Promise"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_africa:olive_schreiner` | Олив Шрайнер | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Story of an African Farm"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_africa:sol_plaatje` | Сол Платже | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Native Life in South Africa"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:cho_nam_joo` | Чо Нам Джу | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Kim Jiyoung, Born 1982"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:choi_in_hun` | Чхве Ин Хун | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Square"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:han_kang` | Хан Ган | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Vegetarian"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:han_yong_un` | Хан Ён Ун | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Silence of Love"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:jeong_cheol` | Чон Чхоль | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Gwandong byeolgok"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:kim_hun` | Ким Хун | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Song of the Sword"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:kim_man_jung` | Ким Ман Джун | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Nine Cloud Dream"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:kim_so_wol` | Ким Соволь | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Azaleas"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:park_wan_suh` | Пак Вансо | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Naked Tree"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `south_korea:yi_kwangsu` | И Квансу | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Heartless"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `spain:benito_perez_galdos` | Бенито Перес Гальдос | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Doña Perfecta"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `spain:javier_marias` | Хавьер Мариас | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Corazón tan blanco"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `sri_lanka:michael_ondaatje` | Майкл Ондатже | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Английский пациент"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `sudan:tayeb_salih` | Аль-Тайиб Салих | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Сезон миграции на Север"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `sweden:gunnar_ekelof` | Гуннар Эклёф | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"sent på jorden"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `sweden:harry_martinson` | Харри Эдмунд Мартинсон | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Aniara"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `sweden:kerstin_ekman` | Керстин Экман | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"События у воды"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `sweden:selma_lagerlof` | Сельма Лагерлёф | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Саги о Йёсте Берлинге"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `sweden:tomas_transtromer` | Тумас Йоста Транстрёмер | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"17 стихотворений"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `switzerland:conrad_ferdinand_meyer` | Конрад Фердинанд Майер | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Юрг Енач"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `switzerland:max_frisch` | Макс Фриш | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Андорра"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `switzerland:robert_walser` | Роберт Вальзер | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Семейство Таннер"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `taiwan:wang_wenxing` | Ван Вэньсин | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Семейная катастрофа"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `tunisia:aboul_qacem_echebbi` | Абу-ль-Касем аш-Шабби | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Aghānī al-ḥayāh"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `tunisia:mahmoud_messadi` | Махмуд Мессади | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Al-Sudd"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `turkey:elif_shafak` | Элиф Шафак | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Bastard of Istanbul"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `turkey:namik_kemal` | Намык Кемаль | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"İntibah"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `turkey:namik_kemal` | Намык Кемаль | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Vatan Yahut Silistre"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `uganda:okot_pbitek` | Окот п’Битек | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Song of Lawino"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ukraine:ivan_franko` | Иван Франко | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Моисей"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:anne_bradstreet` | Энн Брэдстрит | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Tenth Muse Lately Sprung Up in America"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:colson_whitehead` | Колсон Уайтхед | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Underground Railroad"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:cormac_mccarthy` | Кормак Маккарти | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Blood Meridian"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:cormac_mccarthy` | Кормак Маккарти | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Road"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:ernest_hemingway` | Эрнест Хемингуэй | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Sun Also Rises"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:eugene_oneill` | Юджин О’Нил | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Iceman Cometh"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:jack_kerouac` | Джек Керуак | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"On the Road"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:john_dos_passos` | Джон Дос Пассос | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"42-я параллель"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:john_dos_passos` | Джон Дос Пассос | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Манхэттенского трансфера"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `usa:patricia_highsmith` | Патриция Хайсмит | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Незнакомцы в поезде"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `vietnam:nguyen_du` | Нгуен Зу | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Truyện Kiều"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `yemen:abdullah_al_baradouni` | Абдулла аль-Бардуни | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"مدينة الغد"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `yemen:habib_abdulrab_sarori` | Хабиб Абдул Раб Сарори | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Suslov's Daughter"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `zambia:dominic_mulaisho` | Доминик Мулаишо | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Tongue of the Dumb"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `zambia:ellen_banda_aaku` | Эллен Банда-Ааку | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Patchwork"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `zambia:ellen_banda_aaku` | Эллен Банда-Ааку | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Wandi's Little Voice"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `zimbabwe:chenjerai_hove` | Ченджераи Хове | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Bones"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 
 ## Что реально автоматизируется
 

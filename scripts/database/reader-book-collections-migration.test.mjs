@@ -3,21 +3,25 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 const root = path.resolve(process.cwd());
-const migration = readFileSync(
+const normalizeLineEndings = (value) => value.replace(/\r\n?/gu, "\n");
+
+const migration = normalizeLineEndings(readFileSync(
   path.join(
     root,
     "supabase/migrations/20260827_reader_book_collections.sql",
   ),
   "utf8",
-);
-const iconMigration = readFileSync(
+));
+const iconMigration = normalizeLineEndings(readFileSync(
   path.join(
     root,
     "supabase/migrations/20260828_reader_book_collection_icons.sql",
   ),
   "utf8",
+));
+const schema = normalizeLineEndings(
+  readFileSync(path.join(root, "supabase/schema.sql"), "utf8"),
 );
-const schema = readFileSync(path.join(root, "supabase/schema.sql"), "utf8");
 
 const tables = [
   "reader_book_collections",

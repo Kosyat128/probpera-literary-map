@@ -37,6 +37,7 @@ export interface WriterBiographyFactReviewRecord {
 
 const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH05_REVIEWER;
 const checkedAt = "2026-08-09";
+const supplementalCheckedAt = "2026-08-31";
 
 const writerBiographyFactReviewBatch05Base = [
   {
@@ -153,6 +154,13 @@ const writerBiographyFactReviewBatch05Base = [
             findingRu:
               "Государственный культурный фонд подтверждает литературную, поэтическую и педагогическую деятельность Самудио.",
           },
+          {
+            provider: "Служба государственных автономий Боливии",
+            url: "https://mujer.sea.gob.bo/src/personajeResultado.php?variable=34",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Государственная хронология называет Самудио поэтессой, художницей и педагогом, защитницей прав женщин и одной из основных предшественниц боливийского феминизма.",
+          },
         ],
       },
       {
@@ -173,6 +181,13 @@ const writerBiographyFactReviewBatch05Base = [
             checkedAt,
             findingRu:
               "Второй выпуск фонда документирует значение наследия Самудио для борьбы за права женщин в Боливии.",
+          },
+          {
+            provider: "Служба государственных автономий Боливии",
+            url: "https://mujer.sea.gob.bo/src/personajeResultado.php?variable=34",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Государственная хронология называет Самудио поэтессой, художницей и педагогом, защитницей прав женщин и одной из основных предшественниц боливийского феминизма.",
           },
         ],
       },
@@ -201,6 +216,13 @@ const writerBiographyFactReviewBatch05Base = [
             findingRu:
               "Институциональная авторская справка перечисляет его работу романиста, историка, журналиста и дипломата.",
           },
+          {
+            provider: "Национальная библиотека Франции",
+            url: "https://catalogue.bnf.fr/ark:/12148/cb12165329m",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Авторитетная запись подтверждает боливийскую принадлежность, работу писателя и дипломата, годы жизни и авторство романа «Raza de bronce».",
+          },
         ],
       },
       {
@@ -214,6 +236,13 @@ const writerBiographyFactReviewBatch05Base = [
             checkedAt,
             findingRu:
               "Библиография фиксирует роман «Raza de bronce» и многотомные исследования истории Боливии.",
+          },
+          {
+            provider: "Национальная библиотека Франции",
+            url: "https://catalogue.bnf.fr/ark:/12148/cb12165329m",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Авторитетная запись подтверждает боливийскую принадлежность, работу писателя и дипломата, годы жизни и авторство романа «Raza de bronce».",
           },
         ],
       },
@@ -241,6 +270,13 @@ const writerBiographyFactReviewBatch05Base = [
             findingRu:
               "Авторская справка подтверждает писательскую и журналистскую деятельность Сеспедеса.",
           },
+          {
+            provider: "Revista Ciencia y Cultura, Католический университет Боливии",
+            url: "https://cienciaycultura.ucb.edu.bo/a/article/view/1391",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Рецензируемая университетская статья связывает журналистские хроники Сеспедеса о войне в Чако с рассказами «Sangre de mestizos» и рассматривает их как критическую память о войне.",
+          },
         ],
       },
       {
@@ -254,6 +290,13 @@ const writerBiographyFactReviewBatch05Base = [
             checkedAt,
             findingRu:
               "Справка связывает рассказы сборника с личным опытом войны в Чако и перечисляет историко-политические произведения автора.",
+          },
+          {
+            provider: "Revista Ciencia y Cultura, Католический университет Боливии",
+            url: "https://cienciaycultura.ucb.edu.bo/a/article/view/1391",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Рецензируемая университетская статья связывает журналистские хроники Сеспедеса о войне в Чако с рассказами «Sangre de mestizos» и рассматривает их как критическую память о войне.",
           },
         ],
       },
@@ -296,6 +339,13 @@ const writerBiographyFactReviewBatch05Base = [
             findingRu:
               "Официальный профиль подтверждает боливийское происхождение, литературную работу, исследования и преподавательскую должность.",
           },
+          {
+            provider: "Итальянская энциклопедия Treccani",
+            url: "https://www.treccani.it/enciclopedia/paz-soldan-avila-jose-edmundo/",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Энциклопедия идентифицирует Пас Сольдана как боливийского писателя и преподавателя латиноамериканской литературы в Корнелле и связывает его прозу с политикой, массовой коммуникацией и новыми технологиями.",
+          },
         ],
       },
       {
@@ -316,6 +366,13 @@ const writerBiographyFactReviewBatch05Base = [
             checkedAt,
             findingRu:
               "Профиль перечисляет книги и исследования автора, в которых рассматриваются технологии и цифровая культура.",
+          },
+          {
+            provider: "Итальянская энциклопедия Treccani",
+            url: "https://www.treccani.it/enciclopedia/paz-soldan-avila-jose-edmundo/",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Энциклопедия идентифицирует Пас Сольдана как боливийского писателя и преподавателя латиноамериканской литературы в Корнелле и связывает его прозу с политикой, массовой коммуникацией и новыми технологиями.",
           },
         ],
       },
@@ -377,7 +434,7 @@ const writerBiographyFactReviewBatch05Base = [
     originalSha256:
       "781643f1c3e20c653b3925ca3b9cee96e19472e6f8639ba78d514e2c10237547",
     reviewedTextRu:
-      "Боливийский историк, литературный критик и библиограф. Собрал и систематизировал «Библиотеку Боливиана», которая хранится в Архиве и Национальной библиотеке Боливии.",
+      "Боливийский историк, литературный критик и библиограф. Он собрал и систематизировал «Biblioteca Boliviana»; позднее коллекция перешла государству и хранится в Архиве и Национальной библиотеке Боливии.",
     claims: [
       {
         textRu:
@@ -391,11 +448,18 @@ const writerBiographyFactReviewBatch05Base = [
             findingRu:
               "Национальное учреждение характеризует Морено как историка, исследователя литературы и библиографа.",
           },
+          {
+            provider: "Автономный университет имени Габриэля Рене Морено",
+            url: "https://biblio.fcet.uagrm.edu.bo/uPublicaciones/1.Tecnobiblio/Folletos/Anterior/Biografia%20de%20Gabriel%20Rene%20Moreno/assets/downloads/page0004.pdf",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Университетская биография называет Морено боливийским историком и литературным критиком, перечисляет «Biblioteca Boliviana» среди библиографических трудов и описывает его личную библиотеку о Боливии.",
+          },
         ],
       },
       {
         textRu:
-          "Расплывчатая формула об основании научного изучения заменена документированной работой над «Библиотекой Боливиана».",
+          "Расплывчатая формула об основании научного изучения заменена документированной работой над «Biblioteca Boliviana».",
         verdict: "corrected",
         evidence: [
           {
@@ -405,13 +469,20 @@ const writerBiographyFactReviewBatch05Base = [
             findingRu:
               "Учреждение сообщает, что Морено собрал, классифицировал и организовал коллекцию, позднее приобретённую государством и хранящуюся в национальном архиве и библиотеке.",
           },
+          {
+            provider: "Автономный университет имени Габриэля Рене Морено",
+            url: "https://biblio.fcet.uagrm.edu.bo/uPublicaciones/1.Tecnobiblio/Folletos/Anterior/Biografia%20de%20Gabriel%20Rene%20Moreno/assets/downloads/page0004.pdf",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Университетская биография называет Морено боливийским историком и литературным критиком, перечисляет «Biblioteca Boliviana» среди библиографических трудов и описывает его личную библиотеку о Боливии.",
+          },
         ],
       },
     ],
     reviewer,
     decision: "corrected",
     notes:
-      "Неизмеримое утверждение об «одном из основателей» заменено конкретным вкладом в национальную библиотечную коллекцию.",
+      "Расплывчатая формула об основании научного изучения заменена документированной работой над «Biblioteca Boliviana»; название приведено в точной испанской форме.",
   },
   {
     key: "bolivia:jaime_saenz",
@@ -499,6 +570,13 @@ const writerBiographyFactReviewBatch05Base = [
             findingRu:
               "Официальный некролог академии подтверждает его поэзию, прозу и работу над киносценариями.",
           },
+          {
+            provider: "Федеральное министерство культуры и спорта Боснии и Герцеговины",
+            url: "https://fmks.gov.ba/en/in-memoriam-abdulah-sidran-a-writer-poet-and-screenwriter-passed-away/",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Федеральное министерство независимо называет Сидрана писателем, поэтом и сценаристом из Сараево.",
+          },
         ],
       },
       {
@@ -539,6 +617,13 @@ const writerBiographyFactReviewBatch05Base = [
             findingRu:
               "Музейная биографическая справка подтверждает его деятельность как поэта, драматурга и переводчика.",
           },
+          {
+            provider: "Музей театрального искусства Сербии",
+            url: "https://teatroslov.mpus.org.rs/licnost.php?id=6263&jezik=lat",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Институциональная театральная база подтверждает, что Шантич был поэтом из Мостара, прожил там большую часть жизни и переводил Генриха Гейне.",
+          },
         ],
       },
       {
@@ -559,6 +644,13 @@ const writerBiographyFactReviewBatch05Base = [
             checkedAt,
             findingRu:
               "Постоянная экспозиция музея в Мостаре посвящена жизни и творчеству Алексы Шантича.",
+          },
+          {
+            provider: "Музей театрального искусства Сербии",
+            url: "https://teatroslov.mpus.org.rs/licnost.php?id=6263&jezik=lat",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Институциональная театральная база подтверждает, что Шантич был поэтом из Мостара, прожил там большую часть жизни и переводил Генриха Гейне.",
           },
         ],
       },
@@ -586,6 +678,13 @@ const writerBiographyFactReviewBatch05Base = [
             findingRu:
               "Официальная академическая биография указывает профессию писателя и рождение в Хашани в Боснийской Краине.",
           },
+          {
+            provider: "Хорватская энциклопедия, Лексикографический институт Мирослава Крлежи",
+            url: "https://www.enciklopedija.hr/clanak/copic-branko",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Национальная энциклопедия подтверждает рождение Чопича в Хашани близ Боснийской-Крупы и перечисляет его стихи, рассказы, романы, пьесы и произведения для детей.",
+          },
         ],
       },
       {
@@ -599,6 +698,13 @@ const writerBiographyFactReviewBatch05Base = [
             checkedAt,
             findingRu:
               "Профиль перечисляет романы, рассказы, стихи и книги для детей и фиксирует избрание действительным членом академии в 1968 году.",
+          },
+          {
+            provider: "Хорватская энциклопедия, Лексикографический институт Мирослава Крлежи",
+            url: "https://www.enciklopedija.hr/clanak/copic-branko",
+            checkedAt: supplementalCheckedAt,
+            findingRu:
+              "Национальная энциклопедия подтверждает рождение Чопича в Хашани близ Боснийской-Крупы и перечисляет его стихи, рассказы, романы, пьесы и произведения для детей.",
           },
         ],
       },

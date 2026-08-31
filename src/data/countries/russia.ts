@@ -1,10 +1,11 @@
 import type { Country } from "./types";
+import { mergeRussianWriterExpansion } from "./russianWriterExpansion";
 
 export const russia: Country = {
   id: "russia",
   name: "Россия",
   code: "ru",
-  writers: [
+  writers: mergeRussianWriterExpansion([
     {
       id: "nestor",
       name: "Нестор Летописец",
@@ -1712,5 +1713,5 @@ export const russia: Country = {
       ],
       articleUrl: ""
     }
-  ]
+  ])
 };
