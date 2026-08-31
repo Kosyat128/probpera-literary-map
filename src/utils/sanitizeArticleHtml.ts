@@ -41,6 +41,11 @@ const allowedTextToneClasses = new Set([
   "article-text-tone",
   ...[...allowedTextTones].map((tone) => `is-tone-${tone}`),
 ]);
+const allowedTypographyScopes = new Set(["lead", "quote", "caption"]);
+const allowedTypographyScopeClasses = new Set([
+  "article-typography-scope",
+  ...[...allowedTypographyScopes].map((scope) => `is-scope-${scope}`),
+]);
 const galleryAttributeNames = [
   "data-gallery-version",
   "data-gallery-id",
@@ -73,6 +78,7 @@ const allowedAttributes = new Set([
   "data-editorial-block",
   "data-reveal",
   "data-text-tone",
+  "data-typography-scope",
   ...editorialImageDataAttributes,
   ...galleryAttributeNames,
 ]);
@@ -414,6 +420,7 @@ export function sanitizeArticleHtml(source: string) {
       const safeClasses = [...element.classList].filter(
         (className) =>
           allowedTextToneClasses.has(className) ||
+          allowedTypographyScopeClasses.has(className) ||
           [
             "article-media-split",
             "article-gallery",
@@ -454,22 +461,41 @@ export function sanitizeArticleHtml(source: string) {
 
     const textTone = element.dataset.textTone || "";
     const expectedToneClass = `is-tone-${textTone}`;
+    const typographyScope = element.dataset.typographyScope || "";
+    const expectedScopeClass = `is-scope-${typographyScope}`;
     const hasSafeTextTone =
       element.tagName === "SPAN" &&
       allowedTextTones.has(textTone) &&
       element.classList.contains("article-text-tone") &&
       element.classList.contains(expectedToneClass);
+    const hasSafeTypographyScope =
+      element.tagName === "SPAN" &&
+      allowedTypographyScopes.has(typographyScope) &&
+      element.classList.contains("article-typography-scope") &&
+      element.classList.contains(expectedScopeClass);
+    const canonicalPresentationClasses: string[] = [];
     if (hasSafeTextTone) {
-      // A valid tone span has one canonical class pair. Even other otherwise
-      // safe presentation classes must not change an inline tone's behavior.
-      element.className = `article-text-tone ${expectedToneClass}`;
+      canonicalPresentationClasses.push("article-text-tone", expectedToneClass);
     } else {
       element.removeAttribute("data-text-tone");
-      allowedTextToneClasses.forEach((className) =>
+    }
+    if (hasSafeTypographyScope) {
+      canonicalPresentationClasses.push(
+        "article-typography-scope",
+        expectedScopeClass
+      );
+    } else {
+      element.removeAttribute("data-typography-scope");
+    }
+    if (canonicalPresentationClasses.length) {
+      element.className = canonicalPresentationClasses.join(" ");
+    } else {
+      allowedTextToneClasses.forEach((className) => element.classList.remove(className));
+      allowedTypographyScopeClasses.forEach((className) =>
         element.classList.remove(className)
       );
-      if (!element.classList.length) element.removeAttribute("class");
     }
+    if (!element.classList.length) element.removeAttribute("class");
 
     for (const attributeName of ["href", "src"]) {
       const value = element.getAttribute(attributeName);

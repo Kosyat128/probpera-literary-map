@@ -33,6 +33,8 @@ const editorialTables = [
   "writer_profile_overrides",
   "country_profile_overrides",
   "literary_work_cover_artworks",
+  "font_assets",
+  "site_typography_overrides",
 ];
 const adminOperationalTables = [
   "admin_audit_log",
@@ -47,6 +49,7 @@ const adminOperationalTables = [
   "publication_jobs",
   "site_chrome_revisions",
   "staff_memberships",
+  "site_typography_revisions",
   "writer_profile_override_revisions",
 ];
 
@@ -137,7 +140,7 @@ const policies = finalPolicyState(sources);
 
 describe("editorial RLS contract", () => {
   it("keeps RLS enabled on every publication-bearing editorial table", () => {
-    expect(editorialTables).toHaveLength(21);
+    expect(editorialTables).toHaveLength(23);
     for (const table of editorialTables) {
       expect(rlsState.get(table), `${table} must finish with RLS enabled`).toBe(
         true
@@ -178,7 +181,7 @@ describe("editorial RLS contract", () => {
 
 describe("admin operational RLS contract", () => {
   it("keeps RLS enabled on private operational tables", () => {
-    expect(adminOperationalTables).toHaveLength(13);
+    expect(adminOperationalTables).toHaveLength(14);
     for (const table of adminOperationalTables) {
       expect(rlsState.get(table), `${table} must finish with RLS enabled`).toBe(
         true

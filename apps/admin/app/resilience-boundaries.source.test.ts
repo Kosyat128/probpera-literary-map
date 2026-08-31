@@ -35,7 +35,7 @@ describe("admin resilience boundaries", () => {
       readFileSync(file, "utf8").includes("<AdminDependencyState />")
     );
 
-    expect(dependencyPages).toHaveLength(18);
+    expect(dependencyPages).toHaveLength(19);
     for (const file of dashboardPages) {
       const source = readFileSync(file, "utf8");
       expect(source).not.toContain("if (!supabase) return null;");

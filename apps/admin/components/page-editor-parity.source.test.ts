@@ -21,7 +21,9 @@ const editorialBlockSource = readFileSync(
 
 describe("PageEditor Phase 3 parity", () => {
   it("reuses the safe semantic text foundation and block alignment", () => {
-    expect(pageEditorSource).toContain("afterImage: [ArticleTextTone]");
+    expect(pageEditorSource).toContain(
+      "afterImage: [ArticleTextTone, ArticleTypographyScope]"
+    );
     expect(pageEditorSource).toContain("articleTextTones.map");
     expect(pageEditorSource).toContain("unsetTextTone().run()");
     expect(pageEditorSource).toContain("setTextTone(tone.id).run()");
@@ -62,6 +64,7 @@ describe("PageEditor Phase 3 parity", () => {
     expect(pageActionsSource).toContain("safeTextToneSpanAttributes");
     expect(pageActionsSource).toContain("sanitizeArticleTextToneJson(");
     expect(pageActionsSource).toContain('"data-text-tone"');
+    expect(pageActionsSource).toContain('"data-typography-scope"');
     expect(pageActionsSource).toContain("span: (tagName");
     expect(pageActionsSource).toContain(
       "attribs: safeTextToneSpanAttributes(attributes)"

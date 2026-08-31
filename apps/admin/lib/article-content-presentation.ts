@@ -181,11 +181,28 @@ export function articleTextTone(value: unknown): ArticleTextTone | null {
     : null;
 }
 
+export const articleTypographyScopes = [
+  { id: "lead", label: "Лид" },
+  { id: "quote", label: "Цитата" },
+  { id: "caption", label: "Подпись" },
+] as const;
+
+export type ArticleTypographyScope = (typeof articleTypographyScopes)[number]["id"];
+const articleTypographyScopeIds = new Set<string>(
+  articleTypographyScopes.map((scope) => scope.id)
+);
+
+export function articleTypographyScope(value: unknown): ArticleTypographyScope | null {
+  return typeof value === "string" && articleTypographyScopeIds.has(value)
+    ? (value as ArticleTypographyScope)
+    : null;
+}
+
 /**
  * Treat the JSON submitted by the browser as untrusted. Unknown Tiptap nodes
- * are intentionally preserved for backwards compatibility, but an invalid
- * text-tone mark is removed so it can never become an arbitrary CSS escape
- * hatch when the document is opened by a newer renderer.
+ * are intentionally preserved for backwards compatibility, but invalid
+ * text-tone and semantic typography marks are removed so they can never become
+ * arbitrary CSS escape hatches when a newer renderer opens the document.
  */
 export function sanitizeArticleTextToneJson(value: unknown): unknown {
   if (Array.isArray(value)) {
@@ -201,6 +218,13 @@ export function sanitizeArticleTextToneJson(value: unknown): unknown {
         const sanitized = sanitizeArticleTextToneJson(mark);
         if (!sanitized || typeof sanitized !== "object") return [sanitized];
         const candidate = sanitized as Record<string, unknown>;
+        if (candidate.type === "typographyScope") {
+          const attrs = candidate.attrs;
+          const scope = attrs && typeof attrs === "object"
+            ? articleTypographyScope((attrs as Record<string, unknown>).scope)
+            : null;
+          return scope ? [{ type: "typographyScope", attrs: { scope } }] : [];
+        }
         if (candidate.type !== "textTone") return [sanitized];
         const attrs = candidate.attrs;
         const tone =
@@ -220,21 +244,39 @@ export function safeTextToneSpanAttributes(
   attributes: Record<string, string>
 ) {
   const tone = articleTextTone(attributes["data-text-tone"]);
+  const typographyScope = articleTypographyScope(
+    attributes["data-typography-scope"]
+  );
   const classNames = String(attributes.class || "")
     .split(/\s+/u)
     .filter(Boolean)
     .filter(
       (className) =>
-        className !== "article-text-tone" && !className.startsWith("is-tone-")
+        className !== "article-text-tone" &&
+        !className.startsWith("is-tone-") &&
+        className !== "article-typography-scope" &&
+        !className.startsWith("is-scope-")
     );
   const next = { ...attributes };
   delete next["data-text-tone"];
-  if (!tone) {
+  delete next["data-typography-scope"];
+  if (!tone && !typographyScope) {
     if (classNames.length) next.class = classNames.join(" ");
     else delete next.class;
     return next;
   }
-  next["data-text-tone"] = tone;
-  next.class = `article-text-tone is-tone-${tone}`;
+  const presentationClasses: string[] = [];
+  if (tone) {
+    next["data-text-tone"] = tone;
+    presentationClasses.push("article-text-tone", `is-tone-${tone}`);
+  }
+  if (typographyScope) {
+    next["data-typography-scope"] = typographyScope;
+    presentationClasses.push(
+      "article-typography-scope",
+      `is-scope-${typographyScope}`
+    );
+  }
+  next.class = presentationClasses.join(" ");
   return next;
 }

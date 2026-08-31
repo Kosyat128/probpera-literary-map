@@ -12,6 +12,7 @@ import AnalyticsConsent from './analytics/AnalyticsConsent';
 import { useAnalyticsConsent } from './analytics/useAnalyticsConsent';
 import CmsPageReader, { currentCmsPage } from './components/CmsPageReader';
 import CmsDirectEditBridge, { prepareCmsEditDocument } from './cms/directEditBridge';
+import SiteTypographyRuntime from './cms/SiteTypographyRuntime';
 import { InterfaceLanguageProvider } from './i18n/InterfaceLanguage';
 import ConnectivityStatus from './mobile/ConnectivityStatus';
 import { registerServiceWorker } from './mobile/registerServiceWorker';
@@ -44,6 +45,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BootstrapErrorBoundary>
       <InterfaceLanguageProvider>
         <AuthProvider>
+          <SiteTypographyRuntime />
           <CmsDirectEditBridge />
           {!cmsEditMode && <AuthTurnstileGate />}
           {!cmsEditMode && <ConsentAwareActivityTracker />}

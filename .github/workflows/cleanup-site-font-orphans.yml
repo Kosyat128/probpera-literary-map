@@ -1,0 +1,44 @@
+name: Cleanup orphaned site fonts
+
+on:
+  schedule:
+    - cron: "41 3 * * 0"
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: Delete eligible orphaned font objects after the dry-run checks
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-font-orphan-cleanup
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Plan orphan cleanup
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.apply != true }}
+        run: node scripts/cleanup-site-font-orphans.mjs
+
+      - name: Apply bounded orphan cleanup
+        if: ${{ github.event_name == 'schedule' || inputs.apply == true }}
+        run: node scripts/cleanup-site-font-orphans.mjs --apply

@@ -72,9 +72,13 @@ describe("shared rich editor foundation", () => {
     expect(articleToolbarSource).toContain("<RichEditorToolbar");
     expect(pageSource).toContain("<RichEditorToolbar");
     expect(articleSource).toContain("afterStarterKit: [EditorialBlock]");
-    expect(articleSource).toContain("afterImage: [ArticleTextTone]");
+    expect(articleSource).toContain(
+      "afterImage: [ArticleTextTone, ArticleTypographyScope]"
+    );
     expect(pageSource).toContain("afterStarterKit: [EditorialBlock]");
-    expect(pageSource).toContain("afterImage: [ArticleTextTone]");
+    expect(pageSource).toContain(
+      "afterImage: [ArticleTextTone, ArticleTypographyScope]"
+    );
   });
 
   it("uses one controlled HTTPS image dialog without article image prompts", () => {

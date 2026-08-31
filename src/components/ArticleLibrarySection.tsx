@@ -410,7 +410,11 @@ export default function ArticleLibrarySection({
 
   return (
     <>
-      <section className="article-library" id="journal">
+      <section
+        className="article-library"
+        id="journal"
+        data-typography-component="journal"
+      >
         <header className="article-library-heading">
           <div>
             <span className="section-kicker">

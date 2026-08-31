@@ -34,4 +34,17 @@ describe("editor template HTML", () => {
     expect(html).not.toContain("onerror");
     expect(html).toContain('data-image-layout="wide"');
   });
+
+  it("round-trips canonical semantic typography roles and rejects arbitrary values", () => {
+    const html = sanitizeEditorTemplateHtml(`
+      <p><span class="wrong is-scope-lead" data-typography-scope="lead">Лид</span></p>
+      <p><span class="article-typography-scope is-scope-fixed" data-typography-scope="fixed">Опасный</span></p>
+    `);
+
+    expect(html).toContain(
+      'class="article-typography-scope is-scope-lead" data-typography-scope="lead"'
+    );
+    expect(html).not.toContain("is-scope-fixed");
+    expect(html).not.toContain('data-typography-scope="fixed"');
+  });
 });

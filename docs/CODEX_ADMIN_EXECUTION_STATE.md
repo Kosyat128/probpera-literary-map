@@ -1,7 +1,8 @@
 # Codex Admin Execution State
 
 Audited Phase 4 baseline: `7a189e173d9efebafdd6077b9c36ff1af8f8ad3e`
-Phase 4 branch: `codex/admin-phase4-media-gallery`
+Phase 4 release: `ff9f4853684208f37ac9deba8e14f4944f1fef51`
+Current Phase 5 branch: `codex/admin-phase5-font-manager`
 Last updated: `2026-08-30`
 
 ## Completed
@@ -28,19 +29,33 @@ Last updated: `2026-08-30`
 - [x] Phase 3 PR `#137` merged to exact main SHA `ae5e02e5fdac929e03cff2729202c201651f39d1` with Quality/security, deploy-admin and Windows smoke green.
 - [x] Production reconciliation run `33194740075` succeeded on that exact SHA with `article_bundle_rpc=true`, `editor_autosaves=true`, `editor_autosave_rpc=true`, `ledger_entries=17` and `invalid_indexes=0`.
 - [x] The post-reconciliation compatibility probe, legacy atomic-save fallback and dead auto-publish compatibility action are removed; saves now fail closed through the canonical transactional RPC.
+- [x] Phase 4 completed: shared responsive media, structured galleries/sliders,
+  Media Studio lifecycle and usage graph, Safe Replace, bulk metadata, orphan
+  cleanup, staged owner-only permanent purge and one-pass repair for invalid
+  structured translations.
+- [x] Phase 4 PRs `#146`-`#149` were merged and released from exact `main` SHA
+  `ff9f4853684208f37ac9deba8e14f4944f1fef51`.
+- [x] Phase 4 production reconciliation `33324161053` committed successfully:
+  `181` articles reconciled, `2` UUID stubs retained, backup created, all schema
+  health checks passed, `18` ledger entries and `0` invalid indexes confirmed.
+- [x] Exact-main admin deployment `33326732598`, Pages `33326732600`, Quality
+  `33326732594` and live-security verification are green. Deployed admin Worker
+  version: `56c0795e-8288-4e56-9be2-cf8163826f71`; direct-root gzip size:
+  `2891.86 / 2912 KiB`.
 
 ## In progress
 
-- Phase 4 implementation is complete in the release branch: shared typed responsive
-  images, structured galleries/sliders, Media Studio lifecycle and usage graph,
-  Safe Replace, bulk metadata, orphan cleanup, staged owner-only permanent purge,
-  and one-pass repair for invalid structured translations.
-- Final combined verification, PR/CI, production reconciliation and deployment are
-  in progress. Phase 5 must start only after the exact Phase 4 release is verified.
+- Phase 5 Style Engine, section 15, is implemented locally: private WOFF/WOFF2 font
+  ingestion, content-addressed storage, audited CAS publication and revisions,
+  layered responsive typography rules, Font Manager UI, trusted same-origin public
+  font export, runtime typography and semantic text roles in the editors.
+- Section 15 is pending final combined validation, review, merge, production
+  reconciliation and exact-main release. It is not yet deployed.
 
 ## Pending
 
-- [ ] Phase 5 - Style Engine and Site Studio.
+- [ ] Release Phase 5 Style Engine section 15, then continue with the first
+  unfinished Site Studio item without reopening completed work.
 - [ ] Phase 6 - Data Studio.
 - [ ] Phase 7 - translation runtime and durable jobs.
 - [ ] Phase 8 - site copy, SEO and operations.
@@ -50,8 +65,15 @@ Last updated: `2026-08-30`
 
 ## Production reconciliation evidence
 
-- `20260828_zz_editor_autosaves.sql` is applied in production; it stores private staff recovery rows only and does not perform canonical editorial writes or trigger the publication outbox.
-- Reconciliation run `33194740075` passed the immutable invocation, exact-main recheck, backup, isolated validation, production apply and exact schema-health comparison on `ae5e02e5fdac929e03cff2729202c201651f39d1`.
+- Phase 4 reconciliation run `33324161053` passed immutable invocation,
+  exact-main recheck, backup, isolated validation, production apply and exact
+  schema-health comparison.
+- The reconciliation committed successfully for `181` articles with `2` UUID
+  compatibility stubs, `18` ledger entries and `0` invalid indexes; every recorded
+  health check is true.
+- Production deployment and verification used exact merged Phase 4 SHA
+  `ff9f4853684208f37ac9deba8e14f4944f1fef51`; admin, Pages, Quality and
+  live-security checks are green.
 
 ## Tests already green for current relevant code
 
@@ -78,14 +100,20 @@ Last updated: `2026-08-30`
   `@cloudflare/workers-types@5.20260823.1`; dependencies were not reinstalled.
 - Independent final audit: no P0 or P1 findings; migration/planner checksum is
   `3cb8717f0cf4f4b6a718591d2759c0c73008e35eaf9c3c09a1e0fd19f65ef837`.
+- Phase 4 production reconciliation `33324161053`, exact-main admin deployment
+  `33326732598`, Pages `33326732600` and Quality `33326732594` are green.
+- Phase 5 section 15 has focused local coverage for upload validation, migration
+  governance, public font publication/runtime and editor semantic-role contracts;
+  its final combined validation has not yet been recorded.
 
 ## Known blockers
 
-- No known Phase 4 blocker. Local implementation verification and independent
-  audit are complete; PR/CI and production release verification remain.
+- No known Phase 4 blocker; Phase 4 is fully released and verified.
+- No known section 15 implementation blocker. Final combined validation and release
+  remain before it can be marked complete.
 
 ## NEXT STEP
 
-Complete the single combined Phase 4 verification, merge the reviewed PR, reconcile
-the production database on the exact merged SHA, deploy and verify. Then continue
-from the first unfinished Phase 5 item without reopening completed phases.
+Complete the single final validation for Phase 5 section 15, review the diff, merge
+one logical commit, reconcile production on the exact merged SHA, deploy and verify.
+Then continue from the first unfinished Site Studio item without reopening Phase 4.

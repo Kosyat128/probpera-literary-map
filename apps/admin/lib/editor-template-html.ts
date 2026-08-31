@@ -8,6 +8,7 @@ import {
   editorialGalleryAttributeNames,
   safeEditorialGalleryHtmlAttributes,
 } from "./editorial-gallery";
+import { safeTextToneSpanAttributes } from "./article-content-presentation";
 
 const safeEditorTemplateHtml = {
   allowedTags: [
@@ -28,6 +29,8 @@ const safeEditorTemplateHtml = {
       "id",
       "data-editorial-block",
       "data-reveal",
+      "data-text-tone",
+      "data-typography-scope",
       "data-image-layout",
       "data-caption",
       "data-media-id",
@@ -44,6 +47,10 @@ const safeEditorTemplateHtml = {
     section: (tagName: string, attributes: Record<string, string>) => ({
       tagName,
       attribs: safeEditorialGalleryHtmlAttributes(attributes),
+    }),
+    span: (tagName: string, attributes: Record<string, string>) => ({
+      tagName,
+      attribs: safeTextToneSpanAttributes(attributes),
     }),
   },
 };

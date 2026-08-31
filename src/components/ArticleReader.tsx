@@ -48,6 +48,7 @@ import BrandCloseIcon from "./BrandCloseIcon";
 import BrandArrowIcon from "./BrandArrowIcon";
 import { cmsEntityMarker } from "../cms/directEditBridge";
 import { CmsPageBanners } from "./CmsSiteChrome";
+import { cmsTypographyTargetKey } from "../data/cms/siteTypography";
 
 type ArticleMediaItem = {
   src: string;
@@ -880,6 +881,8 @@ export default function ArticleReader({
     <div
       ref={dialogRef}
       className={`article-reader is-${mode}`}
+      data-typography-component="article-reader"
+      data-typography-instance={cmsTypographyTargetKey(`article-${article.id}`)}
       role="dialog"
       aria-modal="true"
       aria-labelledby="article-reader-title"

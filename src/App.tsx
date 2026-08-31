@@ -1781,7 +1781,10 @@ export default function App() {
 
   if (directArticleRoute) {
     return (
-      <div className="magazine-app article-route-shell">
+      <div
+        className="magazine-app article-route-shell"
+        data-typography-component="article-reader"
+      >
         <Suspense
           fallback={
             <div className="article-reader-suspense" role="status">
@@ -1796,7 +1799,7 @@ export default function App() {
   }
 
   return (
-    <div className="magazine-app">
+    <div className="magazine-app" data-typography-component="magazine">
       <div className="topline">
         <span>{t("Литературный журнал и энциклопедия")}</span>
         <p>{t("Архив пополняется ежедневно")}</p>
