@@ -21,6 +21,7 @@ import BrandArrowIcon from "./components/BrandArrowIcon";
 import BrandBookIcon from "./components/BrandBookIcon";
 import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
 import BrandSearchIcon from "./components/BrandSearchIcon";
+import BrandWidescreenIcon from "./components/BrandWidescreenIcon";
 import AtlasSearchCombobox from "./components/AtlasSearchCombobox";
 import AtlasExperienceChrome from "./components/AtlasExperienceChrome";
 import LiteraryWorldMap from "./components/LiteraryWorldMap";
@@ -94,6 +95,7 @@ import {
 import { writerSearchLabel } from "./utils/writerSearchLabel";
 import ActionLink from "./ui/ActionLink";
 import Button from "./ui/Button";
+import IconButton from "./ui/IconButton";
 import { calculateLightweightArchiveOverview } from "./loading/archiveOverview";
 import {
   loadBookArchiveRuntime,
@@ -2466,19 +2468,19 @@ export default function App() {
 
           <div className={`atlas-layout${selectedCountry ? " has-country" : ""}`}>
             <section className="globe-column" id="globe-stage">
-              <Button
+              <IconButton
                 ref={atlasExperience.launchButtonRef}
                 className="atlas-immersion-launch"
+                icon={<BrandWidescreenIcon />}
                 size="md"
                 surface="dark"
-                variant="primary"
                 data-atlas-action="enter-immersive"
+                aria-label={t("Погрузиться в Литературную планету")}
+                title={t("Погрузиться в Литературную планету")}
                 onClick={(event) =>
                   atlasExperience.enter("embedded", event.currentTarget)
                 }
-              >
-                <span aria-hidden="true">✦</span> {t("Погрузиться")}
-              </Button>
+              />
               <div className="globe-copy">
                 <span>{t("Интерактивный глобус · ручная навигация")}</span>
                 <p>

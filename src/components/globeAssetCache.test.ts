@@ -32,10 +32,11 @@ class FakeImage {
   }
 }
 
-function createHarness(maxEntries = 2) {
+function createHarness(maxEntries = 2, maxPendingEntries = 1) {
   const images: FakeImage[] = [];
   const cache = new GlobeTextureImageCache({
     maxEntries,
+    maxPendingEntries,
     createImage: () => {
       const image = new FakeImage();
       images.push(image);
@@ -102,5 +103,54 @@ describe("globe texture image cache", () => {
     expect(harness.images).toHaveLength(4);
     harness.images[3].finishLoad();
     await expect(antiqueReload).resolves.not.toBe(antique);
+  });
+
+  it("allows only one speculative preload and admits another after settlement", async () => {
+    const harness = createHarness();
+    const first = harness.cache.preload("first.webp", "/textures/first.webp");
+
+    await expect(
+      harness.cache.preload("second.webp", "/textures/second.webp")
+    ).resolves.toBeNull();
+    expect(harness.images).toHaveLength(1);
+    expect(harness.images[0].fetchPriority).toBe("low");
+
+    harness.images[0].finishLoad();
+    await expect(first).resolves.toBe(harness.images[0]);
+
+    const second = harness.cache.preload(
+      "second.webp",
+      "/textures/second.webp"
+    );
+    expect(harness.images).toHaveLength(2);
+    harness.images[1].finishLoad();
+    await expect(second).resolves.toBe(harness.images[1]);
+  });
+
+  it("never drops a required switch and upgrades a matching preload", async () => {
+    const harness = createHarness(2, 1);
+    const speculative = harness.cache.preload(
+      "preview.webp",
+      "/textures/preview.webp"
+    );
+    const requiredPreview = harness.cache.load(
+      "preview.webp",
+      "/textures/preview.webp"
+    );
+
+    expect(requiredPreview).toBe(speculative);
+    expect(harness.images[0].fetchPriority).toBe("high");
+
+    const requiredSwitch = harness.cache.load(
+      "selected.webp",
+      "/textures/selected.webp"
+    );
+    expect(harness.images).toHaveLength(2);
+    expect(harness.images[1].fetchPriority).toBe("high");
+
+    harness.images[0].finishLoad();
+    harness.images[1].finishLoad();
+    await expect(requiredPreview).resolves.toBe(harness.images[0]);
+    await expect(requiredSwitch).resolves.toBe(harness.images[1]);
   });
 });

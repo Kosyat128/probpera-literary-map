@@ -23,11 +23,12 @@ place names and hachured relief survive the reprojection.
 
 ## Additional historical editions
 
-Five optional editions are served as local 2:1 WebP textures and fetched only
-after the visitor selects one. Their period coastlines are preserved rather
-than silently warped to present-day geography. Because those historical shapes
-cannot truthfully match the modern country polygons everywhere, runtime country
-selection uses a centroid marker instead of a misleading filled boundary.
+Five optional editions are served as local 2:1 WebP textures. The runtime loads
+the active edition and may keep at most one low-priority intent preload started
+by hover, focus, or pointer interaction. Their period coastlines are preserved
+rather than silently warped to present-day geography. Because those historical
+shapes cannot truthfully match the modern country polygons everywhere, runtime
+country selection uses a centroid marker instead of a misleading filled boundary.
 
 Sources and rights:
 
@@ -64,10 +65,15 @@ Runtime files:
 The wartime alternative is *General Reference Map No. 1*, sheet 1057-G from
 Manual M-101. It was prepared by the American Geographical Society for the
 U.S. Department of State and published by the U.S. Army Service Forces. The
-pinned 5491 × 2641 original comes from
+pinned 5491 × 2641 digital scan is David Rumsey Map Collection List No.
+6351.015 and comes through
 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:General_Reference_Map_1.jpg),
-where it is marked `PD-USGov-Military`; the 1943 U.S. publication has no
-copyright notice. Federal provenance is cross-checked against
+where the underlying 1943 federal map is marked `PD-USGov-Military`. That
+underlying-map status is kept separate from the terms for the digitized scan:
+the [David Rumsey copyright and permissions page](https://www.davidrumsey.com/about/copyright-and-permissions)
+permits publication use with the required credit **David Rumsey Map Collection,
+David Rumsey Map Center, Stanford University Libraries**. Federal provenance
+is cross-checked against
 [NARA Record Group 160](https://www.archives.gov/research/guide-fed-records/groups/160.html#160.4.3)
 and the [Government Printing Office catalog](https://www.govinfo.gov/content/pkg/GOVPUB-GP3-810401451330211ed3630245334346fd/pdf/GOVPUB-GP3-810401451330211ed3630245334346fd.pdf).
 
@@ -115,8 +121,9 @@ and 3D texture-map content is generally not subject to copyright in the United
 States when used factually without implying endorsement, and asks that NASA be
 acknowledged. This asset contains no NASA insignia and no identifiable person.
 
-The Earth files are loaded only after the globe enters the viewport and that
-style is selected (including a previously saved visitor preference).
+The Earth files are loaded after the globe enters the viewport when that style
+is active (including a saved preference), or as the single bounded low-priority
+intent preload before selection.
 
 ## Modern surface
 
@@ -160,9 +167,11 @@ renderer preserves the reviewed geometry, label coordinates, dimensions,
 density thresholds, and file-size budgets; release QA fails before deployment
 if an edited label violates localization, coverage, or performance rules.
 
-The runtime requests only the active interface language and viewport density,
-after the modern style is selected. A live RU/EN switch replaces the texture
-without recreating the globe. The procedural surface remains the local fallback.
+The runtime requests only the current interface language and viewport density.
+It loads the active modern texture after selection, or may use the single bounded
+low-priority intent preload before selection. A live RU/EN switch replaces the
+texture without recreating the globe. The procedural surface remains the local
+fallback.
 
 - `modern-atlas-2026-ru.webp`: 4096 × 2048 Russian desktop texture, SHA-256
   `26A04A83536B6CEB7A3DB37C2FF67C083CD1699C4DD4543292E43C8D694FC4FC`.

@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "scherer-authoritative-preservation-source-audit",
+  "editionId": "scherer-1700",
+  "checkedAt": "2026-08-31",
+  "sourceInputsOnly": true,
+  "runtimeEligible": false,
+  "productionTextureReplaced": false,
+  "decision": {
+    "authoritativeHigherResolutionFound": true,
+    "status": "pinned-candidate-blocked-on-geometry-registration",
+    "reason": "The official UIUC preservation master is higher resolution than the 3000 x 2000 access derivative, but it has a different crop, includes a color target, reports two TIFF pages and has not passed source-to-gore geometry registration. It must not replace the current production input automatically.",
+    "commonsReferenceOnly": true,
+    "commonsReason": "The Commons/RareMaps image is a different physical impression with different hand coloring and crop; it is useful for visual comparison, not as an automatic replacement for the UIUC production source."
+  },
+  "institution": {
+    "name": "University of Illinois Urbana-Champaign Library",
+    "repository": "Rare Book & Manuscript Library",
+    "collection": "Maps of Africa to 1900",
+    "itemId": "17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
+    "mapId": "afm0003392",
+    "oai": {
+      "identifierCandidate": "oai:digital.library.illinois.edu:17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
+      "harvestEndpoint": null,
+      "status": "identifier-pattern-seen-in-external-uiuc-harvests-but-item-endpoint-not-confirmed"
+    },
+    "catalogUrl": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
+    "itemJsonUrl": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9.json",
+    "contact": "digitalcollections@lists.illinois.edu",
+    "rights": {
+      "label": "No Copyright - United States",
+      "uri": "https://rightsstatements.org/page/NoC-US/1.0/",
+      "publicDomain": true,
+      "credit": "University of Illinois Urbana-Champaign Library, Rare Book & Manuscript Library"
+    }
+  },
+  "accessDerivative": {
+    "role": "current-production-source-input",
+    "binaryId": "e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0",
+    "iiifServiceId": "https://images.digital.library.illinois.edu/iiif/2/e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0",
+    "iiifInfoUrl": "https://images.digital.library.illinois.edu/iiif/2/e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0/info.json",
+    "fullImageUrl": "https://images.digital.library.illinois.edu/iiif/2/e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0/full/full/0/default.jpg",
+    "width": 3000,
+    "height": 2000,
+    "bytes": 1304625,
+    "sha256": "7F462DCE31DE5ED1B78AAFE3ECC7BEBF34152B520696E68D7B9881F57417BA64",
+    "format": "jpeg",
+    "note": "The 3000 x 2000 limit applies to this public access binary, not to the preservation master."
+  },
+  "preservationMaster": {
+    "binaryId": "e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8",
+    "binaryMetadataUrl": "https://digital.library.illinois.edu/binaries/e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8.json",
+    "contentUrl": "https://digital.library.illinois.edu/binaries/e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8/object",
+    "objectKey": "59/2257/afm0003392/preservation/afm0003392.tif",
+    "objectUri": "s3://medusa-main/59/2257/afm0003392/preservation/afm0003392.tif",
+    "masterType": "Preservation Master",
+    "mediaType": "image/tiff",
+    "byteSize": 448825264,
+    "width": 10147,
+    "height": 7371,
+    "pageCount": 2,
+    "bitsPerSample": 16,
+    "samplesPerPixel": 3,
+    "compression": "uncompressed",
+    "xResolutionDpi": 600,
+    "yResolutionDpi": 600,
+    "cameraModel": "Phase One IQ280",
+    "software": "Capture One 11 Windows",
+    "digitizedAt": "2019-07-16",
+    "iiifServiceId": "https://images.digital.library.illinois.edu/iiif/2/e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8",
+    "iiifInfoUrl": "https://images.digital.library.illinois.edu/iiif/2/e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8/info.json",
+    "availableSizes": [
+      [159, 115],
+      [317, 230],
+      [634, 461],
+      [1268, 921],
+      [2537, 1843],
+      [5074, 3686],
+      [10147, 7371]
+    ],
+    "maxArea": 74793537,
+    "originalSha256": null,
+    "originalChecksumStatus": "not-exposed-by-public-binary-or-iiif-metadata"
+  },
+  "acquisition": {
+    "originalTiff": {
+      "status": "not-downloaded-size-limit",
+      "reason": "The 448825264-byte original would exceed the user's requested small acquisition footprint. The stable UIUC content route redirects to a short-lived signed object URL after the site WAF challenge; no ephemeral signed URL or cookie is recorded.",
+      "requestMethod": "Open the catalog item in a normal browser session, choose Original File (TIFF), or issue GET to preservationMaster.contentUrl in that authenticated WAF session."
+    },
+    "singleImageDerivativeAttempt": {
+      "checkedAt": "2026-08-31",
+      "url": "https://images.digital.library.illinois.edu/iiif/2/e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8/full/5074,/0/default.jpg",
+      "httpStatus": 500,
+      "serverError": "Java heap space",
+      "result": "The public IIIF server could not render the requested full-image derivative in one request."
+    },
+    "tiledQaDerivative": {
+      "status": "acquired",
+      "tracked": false,
+      "runtimeEligible": false,
+      "localPath": "scripts/.cache/globe-editions/historical-runtime/source-candidates/scherer-1700-uiuc-preservation-5074.jpg",
+      "sourceIiifServiceId": "https://images.digital.library.illinois.edu/iiif/2/e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8",
+      "sourceWidth": 10147,
+      "sourceHeight": 7371,
+      "targetWidth": 5074,
+      "targetHeight": 3686,
+      "tileCount": 20,
+      "sourceChunkWidth": 2048,
+      "sourceChunkHeight": 2048,
+      "requestTemplate": "{iiifServiceId}/{x},{y},{sourceWidth},{sourceHeight}/{targetWidth},{targetHeight}/0/default.jpg",
+      "gridAlgorithm": "Traverse row-major at x,y increments of 2048. Interior 2048-pixel source spans request 1024 output pixels. Right and bottom edge spans request the remaining target dimensions: 978 pixels wide and 614 pixels high. Composite at left=x/2 and top=y/2 on a 5074 x 3686 white RGB canvas.",
+      "encoding": {
+        "library": "sharp 0.35.3",
+        "format": "jpeg",
+        "quality": 98,
+        "chromaSubsampling": "4:4:4"
+      },
+      "bytes": 5804534,
+      "sha256": "1843BAB357743690188279D616F1A9364714D3A27752DDB60E7E02AF919EEFEE",
+      "visualCheck": "pass-complete-map-and-color-target-visible",
+      "geometryRegistration": "not-run"
+    }
+  },
+  "productionSnapshot": {
+    "sourceConfigPath": "scripts/globe-editions/historical-runtime-sources.json",
+    "cachedAccessInputPath": "scripts/.cache/globe-editions/historical-runtime/production-inputs/scherer-1700.jpg",
+    "desktop": {
+      "path": "public/textures/scherer-1700.webp",
+      "width": 4096,
+      "height": 2048,
+      "bytes": 1104598,
+      "sha256": "B844CC59C075E03873C137DAA761431DDB1F9F97676FAC1C33B0EC28679CFF64"
+    },
+    "mobile": {
+      "path": "public/textures/scherer-1700-mobile.webp",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 407040,
+      "sha256": "573B03CAD23A9C626B13BE4169B3089F6281A1E75049CB92D081E5EE1A7E6035"
+    }
+  },
+  "secondaryReferences": [
+    {
+      "id": "wikimedia-raremaps-1702",
+      "role": "comparison-only-different-impression-and-coloring",
+      "catalogUrl": "https://commons.wikimedia.org/wiki/File:Heinrich_Scherer,_Typus_Totius_Orbis_Terraquei_Geographice_Delineatus,_Et_Ad_Usum_Globo_Materiali_Superinducendus.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Heinrich_Scherer%2C_Typus_Totius_Orbis_Terraquei_Geographice_Delineatus%2C_Et_Ad_Usum_Globo_Materiali_Superinducendus.jpg",
+      "localPath": "scripts/.cache/globe-editions/historical-runtime/source-candidates/scherer-1702-wikimedia-raremaps.jpg",
+      "width": 8407,
+      "height": 5274,
+      "bytes": 8680156,
+      "sha256": "3D6BD4442305E803198E629C84B6C111865182B0E0B4E513118A76850CC65EF8",
+      "wikimediaSha1": "91b24cf4b1b176267ff4f7f626ce1ddefec8d3ab",
+      "rights": "public-domain",
+      "runtimeEligible": false
+    },
+    {
+      "id": "mdz-bsb11212284-page-332",
+      "role": "geometry-reference-only-split-uncolored-copy",
+      "manifestUrl": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb11212284/manifest",
+      "catalogUrl": "https://www.digitale-sammlungen.de/en/view/bsb11212284?page=332",
+      "url": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb11212284_00332/full/full/0/default.jpg",
+      "localPath": "scripts/.cache/globe-editions/historical-runtime/source-candidates/scherer-1703-mdz-bsb11212284_00332.jpg",
+      "width": 2281,
+      "height": 3158,
+      "bytes": 1055417,
+      "sha256": "D188439141BAA7126F6FD474092489D6403DFA9A3AC7F5068DF9707064174D35",
+      "rights": "https://rightsstatements.org/vocab/NoC-NC/1.0/",
+      "runtimeEligible": false
+    },
+    {
+      "id": "mdz-bsb11212284-page-333",
+      "role": "geometry-reference-only-split-uncolored-copy",
+      "manifestUrl": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb11212284/manifest",
+      "catalogUrl": "https://www.digitale-sammlungen.de/en/view/bsb11212284?page=333",
+      "url": "https://api.digitale-sammlungen.de/iiif/image/v2/bsb11212284_00333/full/full/0/default.jpg",
+      "localPath": "scripts/.cache/globe-editions/historical-runtime/source-candidates/scherer-1703-mdz-bsb11212284_00333.jpg",
+      "width": 2289,
+      "height": 3158,
+      "bytes": 1072289,
+      "sha256": "9E38E77DEDF6998CA64DA7A4D3931B42EA477E64FC3873B26B26BB2356CFF435",
+      "rights": "https://rightsstatements.org/vocab/NoC-NC/1.0/",
+      "runtimeEligible": false
+    }
+  ],
+  "institutionRequest": {
+    "status": "prepared-not-sent",
+    "to": "digitalcollections@lists.illinois.edu",
+    "subject": "Scherer afm0003392 preservation master download/checksum request",
+    "body": "Please provide a reusable download or checksum for preservation master e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8 (Map ID afm0003392; 448825264-byte TIFF; IIIF reports 10147 x 7371, 16-bit, 600 dpi). The public full-image 5074-pixel IIIF request returned HTTP 500 Java heap space. Please also confirm which TIFF page contains the catalog image and whether an institution-generated 5074 x 3686 derivative is available."
+  },
+  "requiredBeforeProduction": [
+    "Confirm the intended TIFF page and crop against the current 3000 x 2000 access image.",
+    "Re-measure all twelve gore tips, equator centers and latitude control rows on the preservation image.",
+    "Run source-to-canonical geometry registration and residual QA; do not reuse 3000 x 2000 pixel coordinates by scaling alone.",
+    "Compare the generated desktop/mobile textures at seams and coastline overlays before changing the production manifest.",
+    "Pin an institution-provided original checksum if the raw TIFF is promoted into the source pipeline."
+  ]
+}

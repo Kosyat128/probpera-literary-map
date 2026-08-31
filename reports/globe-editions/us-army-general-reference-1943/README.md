@@ -12,7 +12,9 @@ The 1943 federal world map was analytically reprojected from its three interrupt
 
 ## Provenance and rights
 
-The sheet is *General Reference Map No. 1*, Manual M-101, November 1943, sheet 1057-G, prepared by the American Geographical Society for the Department of State and published by the U.S. Army Service Forces. The pinned original was acquired from Wikimedia Commons, where the file is marked `PD-USGov-Military`; the source page and federal catalog evidence are preserved in the manifest and source configuration.
+The sheet is *General Reference Map No. 1*, Manual M-101, November 1943, sheet 1057-G, prepared by the American Geographical Society for the Department of State and published by the U.S. Army Service Forces. The pinned digital scan is David Rumsey Map Collection List No. 6351.015, acquired through Wikimedia Commons. Commons marks the underlying 1943 federal map `PD-USGov-Military`; that status is recorded separately and is not treated as waiving the terms for this particular scan.
+
+The [David Rumsey copyright and permissions page](https://www.davidrumsey.com/about/copyright-and-permissions) permits publication use with the required credit: **David Rumsey Map Collection, David Rumsey Map Center, Stanford University Libraries**. The source page, federal catalog evidence, scan-use evidence, and exact credit are preserved in the manifest and source configuration.
 
 Source: 5491×2641, 1,858,194 bytes, SHA-256 `60cd9e6057f9cb334cf93c9d1394c76754aca7297f7709836bc8dee13deeb6a1`.
 

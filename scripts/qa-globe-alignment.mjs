@@ -216,8 +216,14 @@ assert(
   ),
   "globe runtime must load the reviewed countries.geojson"
 );
+const normalizedGlobeAtlasSource = globeAtlasSource.replace(/\s+/gu, " ");
 assert(
-  globeAtlasSource.includes("drawMapCanvas(mapCanvas, worldGeoJson.features") &&
+  normalizedGlobeAtlasSource.includes(
+    "const mapCanvas = makeMapCanvas( worldGeoJson.features,"
+  ) &&
+    normalizedGlobeAtlasSource.includes(
+      "drawMapCanvas(canvas, features, style, sourceMap, overlayProfile);"
+    ) &&
     globeAtlasSource.includes("worldGeoJson.features.forEach((feature)"),
   "globe drawing and hit testing must use the same country feature collection"
 );

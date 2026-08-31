@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "editionId": "rand-mcnally-1887",
+  "artifactKind": "globe-edition-production-source",
+  "verifiedAt": "2026-09-01",
+  "institution": "Library of Congress Geography and Map Division",
+  "catalogId": "g3201b.ct001417",
+  "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001417/",
+  "rights": {
+    "status": "accepted-loc-free-use-reuse",
+    "basis": "The Library of Congress item is described as free to use and reuse.",
+    "credit": "Library of Congress Geography and Map Division"
+  },
+  "source": {
+    "path": "scripts/assets/rand-mcnally-globe-gores-1887-hires.jpg",
+    "url": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001417/full/full/0/default.jpg",
+    "width": 6152,
+    "height": 3006,
+    "bytes": 2664229,
+    "sha256": "0BFC9135A25A1BF48C19E05268D1171F4F1C1D9C82D8D48E400CB398412BE3B5"
+  },
+  "builder": {
+    "path": "scripts/build-antique-globe-texture.mjs",
+    "projection": "measured-twelve-gore-to-equirectangular",
+    "routineNetworkAccess": false
+  },
+  "outputs": [
+    {
+      "profile": "desktop",
+      "path": "public/textures/antique-world-1887.webp",
+      "width": 4096,
+      "height": 2048,
+      "bytes": 2901792,
+      "sha256": "B498488CBA930C48C5C68564AB8F355A50FE620F5AEC15353225EDCDF592A175"
+    },
+    {
+      "profile": "mobile",
+      "path": "public/textures/antique-world-1887-mobile.webp",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 687972,
+      "sha256": "65EA5F03A43B6583DD95B456F42B1D184C48DC0449EABA25C5D23269B1E5974D"
+    }
+  ],
+  "history": [
+    {
+      "commit": "abcf1ef948e9ff631333e23abbd5ec830e066b1a",
+      "role": "initial museum globe integration"
+    },
+    {
+      "commit": "675bd01d689a1e63d5e162d564def780882a57f4",
+      "role": "gore orientation correction"
+    },
+    {
+      "commit": "5b1f4da9cd19c70604444195ada30ff3f65661ee",
+      "role": "current high-resolution source and production outputs"
+    }
+  ],
+  "alignment": {
+    "runtimeOverlayProfile": "standard-canonical-overlay-v1",
+    "canonicalVectorPlacement": "pass-by-shared-runtime-geometry",
+    "historicalArtworkToCanonicalHardGate": "not-independently-measured",
+    "caveat": "A correct gore orientation and a shared canonical SVG overlay do not establish that every engraved coastline is a 1 px match to current country geometry."
+  }
+}

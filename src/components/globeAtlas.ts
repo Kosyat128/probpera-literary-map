@@ -223,6 +223,19 @@ function loadGlobeMap(
   );
 }
 
+function preloadGlobeMap(
+  editionId: GlobeEditionId,
+  compact: boolean,
+  language: InterfaceLanguage
+) {
+  const assetUrl = resolveGlobeEditionTextureUrl(editionId, compact, language);
+  if (!assetUrl) return Promise.resolve<HTMLImageElement | null>(null);
+  return globeMapCache.preload(
+    `${editionId}:${compact ? "compact" : "desktop"}:${language}:${assetUrl}`,
+    `${import.meta.env.BASE_URL}${assetUrl}`
+  );
+}
+
 function getPolygons(feature: GeoFeature): MultiPolygonCoordinates {
   if (feature.geometry.type === "Polygon") {
     return [feature.geometry.coordinates as PolygonCoordinates];
@@ -1396,7 +1409,7 @@ export async function createGlobeAtlas(
     language: InterfaceLanguage = activeLanguage
   ) => {
     if (disposed) return;
-    await loadEditionMap(editionId, compact, language);
+    await preloadGlobeMap(editionId, compact, language);
   };
 
   const setVisualStyle = (

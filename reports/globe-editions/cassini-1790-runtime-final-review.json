@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "editionId": "cassini-1790",
+  "artifactKind": "cassini-runtime-final-review",
+  "trackedRecord": true,
+  "status": "reviewed",
+  "review": {
+    "independent": true,
+    "reviewedBy": "Codex independent final runtime and visual gate",
+    "reviewedAt": "2026-08-31",
+    "method": "The exact staged 4096x2048 WebP was inspected as a complete equirectangular frame. The exact staged desktop and mobile bytes were then placed at their production texture paths in the generated build and exercised on the WebGL2 sphere by the targeted Playwright globe test in Chrome. The test cycled all eight visible editions, verified each edition's overlay profile and single texture assignment, and checked panel containment, equal selector widths, text overflow, and pairwise overlay intersections at desktop, compact-desktop, wide-desktop, and Pixel 7 layouts."
+  },
+  "candidateRuntimeSidecar": {
+    "path": "reports/globe-editions/cassini-1790-runtime-polar-fix-candidate.json",
+    "bytes": 4187,
+    "sha256": "63FBAC0C61C199F04DD5F5ED0D3B953E328E40EA15BA54B18C3CA7D68F2CAFA8"
+  },
+  "outputs": [
+    {
+      "profile": "desktop",
+      "path": "public/textures/cassini-globo-terrestre-1790.webp",
+      "bytes": 2619370,
+      "sha256": "D62718455EA9A04605AC1694ABE20BF551A93BF7B5C2C688DF579B6EB4398018",
+      "width": 4096,
+      "height": 2048
+    },
+    {
+      "profile": "mobile",
+      "path": "public/textures/cassini-globo-terrestre-1790-mobile.webp",
+      "bytes": 609440,
+      "sha256": "2E0EFDD36E682D20BE5B8DB0875A71C47EF33D3D810BE45596B6E4E1D99E83F0",
+      "width": 2048,
+      "height": 1024
+    }
+  ],
+  "visualReview": {
+    "desktop": {
+      "result": "pass",
+      "quality": 92,
+      "notes": "Fine engraving remains legible. The synthetic gold Antarctica smear and blocky polar bands are gone; the poles use a continuous source-derived neutral tone. The baked canonical union coastline is a single thin registration contour, with no duplicate modern country-border layer."
+    },
+    "mobile": {
+      "result": "pass",
+      "quality": 86,
+      "notes": "The 2048x1024 profile preserves the engraving hierarchy and continuous polar treatment without a second selection outline, seam regression, ringing, or chroma smear at the permitted zoom."
+    },
+    "networkBudget": {
+      "desktopBytes": 2619370,
+      "mobileBytes": 609440,
+      "randMcNally1887DesktopBytes": 2901792,
+      "randMcNally1887MobileBytes": 687972,
+      "result": "pass-below-current-historical-baseline"
+    }
+  },
+  "runtimeReview": {
+    "result": "pass",
+    "browser": "Chrome / Playwright / WebGL 2.0",
+    "servedArtifacts": {
+      "method": "The generated build served the exact staged bytes at the intended production URLs; SHA-256 identities matched before the browser run.",
+      "desktopSha256": "D62718455EA9A04605AC1694ABE20BF551A93BF7B5C2C688DF579B6EB4398018",
+      "mobileSha256": "2E0EFDD36E682D20BE5B8DB0875A71C47EF33D3D810BE45596B6E4E1D99E83F0"
+    },
+    "editionCycle": [
+      "behaim-1492",
+      "hondius-1615",
+      "coronelli-1697",
+      "scherer-1700",
+      "cassini-1790",
+      "rand-mcnally-1887",
+      "natural-earth-2026",
+      "nasa-blue-marble"
+    ],
+    "layout": {
+      "viewports": [
+        "1280x720",
+        "1600x900",
+        "1024x900",
+        "Pixel 7 / 412x915"
+      ],
+      "buttonCount": 8,
+      "wrappedRows": false,
+      "selectorOverlayIntersections": 0,
+      "textOverflowViolations": 0,
+      "mobileHorizontalScroll": true
+    }
+  },
+  "portAttestation": {
+    "portedAt": "2026-09-01",
+    "runtimeTexturesReverifiedOnPort": true,
+    "browserCycleRerunOnPort": false,
+    "reviewedEditionCycleWasEightEditions": true,
+    "currentNinthEditionM101EvidencePath": "reports/globe-editions/us-army-general-reference-1943/manifest.json"
+  },
+  "gates": {
+    "independentAlignmentReview": "pass",
+    "independentAlignmentReviewScope": "runtime-chain-and-source-fidelity",
+    "historicalArtworkToCanonicalAlignment": "not-passed",
+    "fourKAndTwoKVisualReview": "pass",
+    "runtimeReview": "pass"
+  }
+}

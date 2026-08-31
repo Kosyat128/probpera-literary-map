@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "historical-artwork-registration-pilot",
+  "productionEligible": false,
+  "editionId": "scherer-1700",
+  "historicalProjectionConfigPath": "scripts/globe-editions/historical-runtime-sources.json",
+  "algorithm": {
+    "version": "spherical-regularized-displacement-pilot-v2",
+    "model": "inverse-spherical-normalized-gaussian-displacement",
+    "deterministic": true,
+    "nonlinearWarpApplied": true,
+    "generativeModelUsed": false,
+    "sigmaDegrees": 34,
+    "baseLongitudeOffsetDegrees": 15.12109375,
+    "baseLatitudeOffsetDegrees": -2.47265625,
+    "backgroundWeight": 0.35,
+    "chunkRows": 64
+  },
+  "segmentation": {
+    "version": "scherer-chroma-mask-v1",
+    "method": "blurred-rgb-chroma-threshold-with-binary-opening-and-closing",
+    "blurRadiusPxAt1024": 2.2,
+    "minimumChroma": 22,
+    "maximumLuminance": 242,
+    "maximumForegroundRowFraction": 0.82,
+    "denseRowClearHalfWidthPxAt1024": 3,
+    "openingKernelPxAt1024": 5,
+    "closingKernelPxAt1024": 11
+  },
+  "controlDiscoveryMaximumRadiusPixelsAt1024": 48,
+  "controlDiscoveryTargets": [
+    { "id": "north-america-west", "canonicalLongitudeDeg": -124, "canonicalLatitudeDeg": 39, "historicalSearchLongitudeDeg": -119, "historicalSearchLatitudeDeg": 39 },
+    { "id": "florida", "canonicalLongitudeDeg": -81, "canonicalLatitudeDeg": 26, "historicalSearchLongitudeDeg": -62, "historicalSearchLatitudeDeg": 22 },
+    { "id": "panama", "canonicalLongitudeDeg": -79.5, "canonicalLatitudeDeg": 9, "historicalSearchLongitudeDeg": -57, "historicalSearchLatitudeDeg": 5 },
+    { "id": "brazil-east", "canonicalLongitudeDeg": -35, "canonicalLatitudeDeg": -8, "historicalSearchLongitudeDeg": -26, "historicalSearchLatitudeDeg": 0 },
+    { "id": "cape-horn", "canonicalLongitudeDeg": -68, "canonicalLatitudeDeg": -55, "historicalSearchLongitudeDeg": -52, "historicalSearchLatitudeDeg": -57 },
+    { "id": "iberia-west", "canonicalLongitudeDeg": -9, "canonicalLatitudeDeg": 40, "historicalSearchLongitudeDeg": 4, "historicalSearchLatitudeDeg": 35 },
+    { "id": "west-africa", "canonicalLongitudeDeg": -17, "canonicalLatitudeDeg": 15, "historicalSearchLongitudeDeg": 3, "historicalSearchLatitudeDeg": 14 },
+    { "id": "cape-good-hope", "canonicalLongitudeDeg": 18, "canonicalLatitudeDeg": -34, "historicalSearchLongitudeDeg": 40, "historicalSearchLatitudeDeg": -34 },
+    { "id": "horn-of-africa", "canonicalLongitudeDeg": 51, "canonicalLatitudeDeg": 11, "historicalSearchLongitudeDeg": 53, "historicalSearchLatitudeDeg": 1 },
+    { "id": "india-west", "canonicalLongitudeDeg": 72, "canonicalLatitudeDeg": 20, "historicalSearchLongitudeDeg": 77, "historicalSearchLatitudeDeg": 17 },
+    { "id": "malaya", "canonicalLongitudeDeg": 103, "canonicalLatitudeDeg": 3, "historicalSearchLongitudeDeg": 104, "historicalSearchLatitudeDeg": 3 },
+    { "id": "japan", "canonicalLongitudeDeg": 140, "canonicalLatitudeDeg": 36, "historicalSearchLongitudeDeg": 145, "historicalSearchLatitudeDeg": 34 },
+    { "id": "australia-west", "canonicalLongitudeDeg": 114, "canonicalLatitudeDeg": -22, "historicalSearchLongitudeDeg": 134, "historicalSearchLatitudeDeg": -22 },
+    { "id": "australia-east", "canonicalLongitudeDeg": 152, "canonicalLatitudeDeg": -28, "historicalSearchLongitudeDeg": 172, "historicalSearchLatitudeDeg": -32 }
+  ],
+  "controls": [
+    { "id": "north-america-west", "canonicalLongitudeDeg": -124, "canonicalLatitudeDeg": 39, "historicalLongitudeDeg": -120.05859375, "historicalLatitudeDeg": 38.84765625, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "florida", "canonicalLongitudeDeg": -81, "canonicalLatitudeDeg": 26, "historicalLongitudeDeg": -60.29296875, "historicalLatitudeDeg": 21.26953125, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "panama", "canonicalLongitudeDeg": -79.5, "canonicalLatitudeDeg": 9, "historicalLongitudeDeg": -57.12890625, "historicalLatitudeDeg": 2.63671875, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "brazil-east", "canonicalLongitudeDeg": -35, "canonicalLatitudeDeg": -8, "historicalLongitudeDeg": -25.83984375, "historicalLatitudeDeg": -2.28515625, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "cape-horn", "canonicalLongitudeDeg": -68, "canonicalLatitudeDeg": -55, "historicalLongitudeDeg": -53.61328125, "historicalLatitudeDeg": -55.72265625, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "iberia-west", "canonicalLongitudeDeg": -9, "canonicalLatitudeDeg": 40, "historicalLongitudeDeg": 6.85546875, "historicalLatitudeDeg": 32.16796875, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "west-africa", "canonicalLongitudeDeg": -17, "canonicalLatitudeDeg": 15, "historicalLongitudeDeg": 1.23046875, "historicalLatitudeDeg": 12.12890625, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "cape-good-hope", "canonicalLongitudeDeg": 18, "canonicalLatitudeDeg": -34, "historicalLongitudeDeg": 39.90234375, "historicalLatitudeDeg": -35.68359375, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "horn-of-africa", "canonicalLongitudeDeg": 51, "canonicalLatitudeDeg": 11, "historicalLongitudeDeg": 52.91015625, "historicalLatitudeDeg": 2.28515625, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "india-west", "canonicalLongitudeDeg": 72, "canonicalLatitudeDeg": 20, "historicalLongitudeDeg": 77.16796875, "historicalLatitudeDeg": 17.05078125, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "malaya", "canonicalLongitudeDeg": 103, "canonicalLatitudeDeg": 3, "historicalLongitudeDeg": 103.88671875, "historicalLatitudeDeg": 6.85546875, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "japan", "canonicalLongitudeDeg": 140, "canonicalLatitudeDeg": 36, "historicalLongitudeDeg": 145.01953125, "historicalLatitudeDeg": 33.92578125, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "australia-west", "canonicalLongitudeDeg": 114, "canonicalLatitudeDeg": -22, "historicalLongitudeDeg": 137.98828125, "historicalLatitudeDeg": -21.62109375, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" },
+    { "id": "australia-east", "canonicalLongitudeDeg": 152, "canonicalLatitudeDeg": -28, "historicalLongitudeDeg": 172.08984375, "historicalLatitudeDeg": -34.27734375, "evidence": "manual-review-of-1024x512-source-and-segmentation-overlay" }
+  ],
+  "qa": {
+    "northLatitudeLimitDeg": 70,
+    "southLatitudeLimitDeg": -58,
+    "maximumSamplesPerDirection": 1600,
+    "edgeSearchRadiusPixelsAt1024": 96
+  },
+  "result": {
+    "evaluationCanvas": {
+      "width": 1024,
+      "height": 512
+    },
+    "historicalArtworkEdgeResidualPixels": {
+      "before": {
+        "median": 12.0,
+        "p95": 68.13
+      },
+      "after": {
+        "median": 7.81,
+        "p95": 57.456
+      },
+      "thresholdResolution": {
+        "width": 1024,
+        "height": 512
+      },
+      "requiredForProduction": {
+        "medianMaximum": 0.5,
+        "p95Maximum": 1,
+        "maximumMaximum": 3
+      }
+    },
+    "regularizedControlMismatchPixels": {
+      "median": 15.585,
+      "p95": 28.598
+    },
+    "sampledJacobian": {
+      "minimum": 0.823449,
+      "median": 0.994043,
+      "maximum": 1.127076,
+      "foldoverDetected": false
+    },
+    "visualReview": "Smoother than the exact-RBF pilot, but the canonical coastline still diverges strongly in North America, northern Asia and Australia, while the historical graticule and local scale visibly change.",
+    "productionGate": "fail",
+    "productionDecision": "Do not promote. Production 4K/2K textures remain unchanged."
+  }
+}

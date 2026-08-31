@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "editionId": "cassini-1790",
+  "stage": "interactive-adapted-master",
+  "artifactKind": "interactive-adapted-master",
+  "trackedSidecar": true,
+  "productionReady": false,
+  "reviewState": "generated-awaiting-independent-qa",
+  "algorithm": {
+    "version": "cassini-interactive-adaptation-v1",
+    "deterministic": true,
+    "networkAccessUsed": false,
+    "nonlinearWarpApplied": false,
+    "randomTextureUsed": false,
+    "genericModernMapFillUsed": false,
+    "labelsOrInventedDetailsAdded": false
+  },
+  "alignmentConfig": {
+    "path": "scripts/globe-editions/cassini-1790-alignment.json",
+    "sha256": "E8C663CA7DCBC9BCC0FD35A515B36B6A13206DC92876C1997374679A37709163",
+    "transformVersion": "cassini-natural-earth-identity-v1",
+    "evidenceStatus": "visual-overlay-only",
+    "evidence": "A reduced 1024×512 canonical-coastline overlay was visually reviewed. Named geography and the conventional antimeridian were broadly coincident; no independently measured landmark residual set exists yet, so a non-identity warp would be invented.",
+    "reviewerNote": "These points constrain the transform to identity and document review coverage. Their configured zero displacement is not an observed alignment PASS.",
+    "controlPoints": [
+      {
+        "id": "newfoundland",
+        "canonicalLongitudeDeg": -55,
+        "canonicalLatitudeDeg": 48,
+        "historicalLongitudeDeg": -55,
+        "historicalLatitudeDeg": 48,
+        "evidence": "visual-overlay-only"
+      },
+      {
+        "id": "caribbean",
+        "canonicalLongitudeDeg": -78,
+        "canonicalLatitudeDeg": 21,
+        "historicalLongitudeDeg": -78,
+        "historicalLatitudeDeg": 21,
+        "evidence": "visual-overlay-only"
+      },
+      {
+        "id": "cape-horn",
+        "canonicalLongitudeDeg": -68,
+        "canonicalLatitudeDeg": -55,
+        "historicalLongitudeDeg": -68,
+        "historicalLatitudeDeg": -55,
+        "evidence": "visual-overlay-only"
+      },
+      {
+        "id": "gibraltar",
+        "canonicalLongitudeDeg": -5.5,
+        "canonicalLatitudeDeg": 36,
+        "historicalLongitudeDeg": -5.5,
+        "historicalLatitudeDeg": 36,
+        "evidence": "visual-overlay-only"
+      },
+      {
+        "id": "cape-town",
+        "canonicalLongitudeDeg": 18.4,
+        "canonicalLatitudeDeg": -34,
+        "historicalLongitudeDeg": 18.4,
+        "historicalLatitudeDeg": -34,
+        "evidence": "visual-overlay-only"
+      },
+      {
+        "id": "india",
+        "canonicalLongitudeDeg": 78,
+        "canonicalLatitudeDeg": 22,
+        "historicalLongitudeDeg": 78,
+        "historicalLatitudeDeg": 22,
+        "evidence": "visual-overlay-only"
+      },
+      {
+        "id": "japan",
+        "canonicalLongitudeDeg": 138,
+        "canonicalLatitudeDeg": 36,
+        "historicalLongitudeDeg": 138,
+        "historicalLatitudeDeg": 36,
+        "evidence": "visual-overlay-only"
+      },
+      {
+        "id": "southeast-australia",
+        "canonicalLongitudeDeg": 148,
+        "canonicalLatitudeDeg": -35,
+        "historicalLongitudeDeg": 148,
+        "historicalLatitudeDeg": -35,
+        "evidence": "visual-overlay-only"
+      }
+    ]
+  },
+  "historicalMasterInput": {
+    "sidecarPath": "reports/globe-editions/cassini-1790-historical-master.json",
+    "sidecarSha256": "733432C13BC8EF73080566A730258A6EE762F0704BDB4AACB59A2C6A7DD28D72",
+    "path": "scripts/.cache/globe-editions/cassini-1790/masters/cassini-1790-historical-master-8192x4096.png",
+    "bytes": 66326924,
+    "sha256": "BC28D0781C0FAA69D9044B44091C6A96C283EF45AE06BB40233EC9B4D5952609",
+    "width": 8192,
+    "height": 4096,
+    "modifiedInPlace": false
+  },
+  "canonicalAtlas": {
+    "path": "src/data/geo/countries.geojson",
+    "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
+    "provenancePath": "src/data/geo/countries.provenance.json",
+    "provenanceSha256": "591E50F5211C36DE2044BEF0E26AE290418E1FA75E99219AC5F6D26CFF5C7853",
+    "dataset": "Natural Earth Admin 0 - Countries",
+    "repositoryVersion": "5.1.2",
+    "featureCount": 177,
+    "mask": "union-of-all-canonical-land-polygons",
+    "internalCountryBordersRendered": false
+  },
+  "portAttestation": {
+    "portedAt": "2026-09-01",
+    "adaptedMasterBinaryRebuiltOnPort": false,
+    "runtimeOutputHashesReverifiedOnPort": true,
+    "parsedCanonicalFeatureGeometryUnchanged": true,
+    "hardArtworkAlignmentClaimed": false
+  },
+  "protectedHistoricalContent": {
+    "regions": [
+      {
+        "id": "atlantic-title-cartouche",
+        "shape": "lon-lat-rectangle",
+        "westLongitudeDeg": -45,
+        "eastLongitudeDeg": -25,
+        "southLatitudeDeg": 15,
+        "northLatitudeDeg": 35,
+        "treatment": "preserve-input-rgb-exactly",
+        "reviewerNote": "Tight open-ocean rectangle around the decorated Atlantic title cartouche; it does not intersect the canonical union coastline. The rectangle remains byte-preserved as a conservative content guard. Antarctica raster synthesis is disabled globally, independently of this region."
+      }
+    ],
+    "treatment": "input RGB copied byte-for-byte inside every protected region"
+  },
+  "processing": {
+    "canonicalCoastline": {
+      "mask": "union-of-all-canonical-land-polygons",
+      "internalBorders": false,
+      "treatment": "source-derived-rgb-darkening",
+      "canonicalUnionCoastlineRegistered": true,
+      "maximumDarkeningOpacity": 0.36,
+      "edgeSampleRadiusPixelsAt8192Width": 2,
+      "registeredWidthPixelsAt4096Width": 2,
+      "registeredWidthPixelsAt2048Width": 1,
+      "edgeModel": "native-antialiased-union-mask-gradient",
+      "reviewerNote": "The output retains the Historical Master except for the source-derived polar join cleanup and a thin multiplicative darkening at the canonical union coastline. Antarctica raster synthesis is disabled globally; no generic modern-map color fill or country boundary is rendered."
+    },
+    "antarctica": {
+      "canonicalFeatureProperty": "ADM0_A3",
+      "canonicalFeatureValue": "ATA",
+      "historicalStatus": "absent-from-source",
+      "treatment": "historical-source-rgb-preserved-no-raster-land-synthesis",
+      "enabled": false,
+      "sourceStrip": {
+        "northLatitudeDeg": -57,
+        "southLatitudeDeg": -62,
+        "lowFrequencyColumns": 1,
+        "lowFrequencyRows": 6
+      },
+      "labelsOrInventedDetailsAllowed": false,
+      "reviewerNote": "Antarctica is absent from the 1790 source, so no raster land is synthesized. Historical Master RGB remains unchanged there except for the thin canonical union-coastline registration line; interaction/selection stays vector-only.",
+      "derivedField": {
+        "enabled": false,
+        "derivation": null,
+        "historicalSourceRgbPreserved": true,
+        "labelsOrInventedDetailsAdded": false
+      }
+    },
+    "polarJoin": {
+      "source": "historical-master-real-cassini-gores-and-polar-caps",
+      "joinLatitudeDeg": 80,
+      "smoothstepHalfWidthDeg": 1.25,
+      "paletteNormalizationStartLatitudeDeg": 67,
+      "neutralToneSourceSouthLatitudeDeg": 76,
+      "neutralToneSourceNorthLatitudeDeg": 78,
+      "neutralToneBlendStartLatitudeDeg": 80,
+      "neutralToneSolidLatitudeDeg": 88,
+      "internalLineworkPreservedOutsideJoinBand": true,
+      "canonicalCoastlinePreserved": true,
+      "method": "neutral-low-frequency-gore-normalization-plus-real-cap-smoothstep-and-longitude-neutral-polar-tone",
+      "inventedLandOrLabelsAdded": false,
+      "hemispheres": [
+        {
+          "hemisphere": "north",
+          "capTargetRgb": [
+            129.9349994410424,
+            130.21595637646416,
+            76.48426844870632
+          ],
+          "neutralToneRgb": [
+            202.80143301757823,
+            187.61804942844122,
+            155.45677192914417
+          ]
+        },
+        {
+          "hemisphere": "south",
+          "capTargetRgb": [
+            133.0479961802348,
+            132.82083432806385,
+            78.18853862841365
+          ],
+          "neutralToneRgb": [
+            141.0681325487767,
+            126.37705171879838,
+            88.09755342211211
+          ]
+        }
+      ],
+      "labelsOrInventedDetailsAdded": false
+    }
+  },
+  "provenance": {
+    "totalPixelCount": 33554432,
+    "classes": [
+      {
+        "provenanceClass": "historicalSourceUnmodified",
+        "pixelCount": 24257017,
+        "percentage": 72.291544
+      },
+      {
+        "provenanceClass": "protectedHistoricalSourceUnmodified",
+        "pixelCount": 207025,
+        "percentage": 0.616983
+      },
+      {
+        "provenanceClass": "sourceDerivedCoastlineDarkening",
+        "pixelCount": 521558,
+        "percentage": 1.554364
+      },
+      {
+        "provenanceClass": "sourceDerivedPolarJoin",
+        "pixelCount": 8325002,
+        "percentage": 24.810439
+      },
+      {
+        "provenanceClass": "sourceDerivedPolarJoinWithCoastlineDarkening",
+        "pixelCount": 243830,
+        "percentage": 0.72667
+      },
+      {
+        "provenanceClass": "sourceDerivedAntarcticaParchment",
+        "pixelCount": 0,
+        "percentage": 0
+      },
+      {
+        "provenanceClass": "sourceDerivedAntarcticaParchmentWithCoastlineDarkening",
+        "pixelCount": 0,
+        "percentage": 0
+      }
+    ],
+    "coastlineDarkenedPixelCount": 765388,
+    "antarcticaAffectedPixelCount": 0,
+    "polarJoinAffectedPixelCount": 8585216,
+    "note": "Classes are mutually exclusive and cover the output. Antarctica raster synthesis is disabled; only the source-derived polar join cleanup and canonical union-coastline darkening modify Historical Master RGB."
+  },
+  "output": {
+    "path": "scripts/.cache/globe-editions/cassini-1790/masters/cassini-1790-interactive-adapted-master-8192x4096.png",
+    "width": 8192,
+    "height": 4096,
+    "format": "png",
+    "bytes": 64825773,
+    "sha256": "0E0F8FD6A54882663725434B3E422990D22976DA6DFEB90F699D12DA6525BAF2",
+    "lossless": true,
+    "colorSpace": "srgb",
+    "depth": "uchar",
+    "bitsPerChannel": 8,
+    "channels": 3,
+    "hasAlpha": false,
+    "hasIccProfile": false
+  },
+  "qa": {
+    "configuredTransform": {
+      "metricClass": "configured-transform-displacement-not-observed-residual",
+      "controlPointCount": 8,
+      "medianDisplacementPixels": 0,
+      "rootMeanSquareDisplacementPixels": 0,
+      "maximumDisplacementPixels": 0,
+      "nonlinearWarpApplied": false,
+      "interpretation": "Zero values prove that the configured transform is identity; they do not prove geographic alignment.",
+      "pass": null
+    },
+    "canonicalCoastlineRegistration": {
+      "status": "diagnostic-no-pass-threshold",
+      "method": "At sampled non-Antarctic canonical union-coastline pixels, locate the strongest Historical Master luminance gradient in a bounded neighborhood. Graticules, lettering and relief can influence this diagnostic; it is not a landmark residual PASS.",
+      "eligibleCanonicalEdgePixelCount": 393804,
+      "sampleCount": 11934,
+      "samplingStride": 33,
+      "searchRadiusPixels": 8,
+      "meanStrongestGradientOffsetPixels": 7.356073,
+      "medianStrongestGradientOffsetPixels": 8,
+      "p95StrongestGradientOffsetPixels": 11.313708498984761,
+      "maximumStrongestGradientOffsetPixels": 11.313708498984761,
+      "normalizedMedianOffsetPercentOfWidth": 0.097656,
+      "pass": null
+    },
+    "independentLandmarkResiduals": null,
+    "requiredReviewBeforeProduction": [
+      "independent landmark residual measurement",
+      "4K and 2K seam and pole inspection",
+      "Atlantic cartouche mask review",
+      "source-versus-adapted round-trip review",
+      "runtime globe and responsive overlay review"
+    ]
+  },
+  "gates": {
+    "historicalMaster": "verified",
+    "historicalSeamPaperRuns": "pass",
+    "canonicalAtlasChecksum": "verified",
+    "unionLandMask": "generated",
+    "identityTransform": "applied",
+    "historicalArtworkToCanonicalAlignment": "not-passed",
+    "independentAlignmentReview": "pending",
+    "fourKAndTwoKVisualReview": "pending",
+    "runtimeReview": "pending",
+    "productionReady": false
+  },
+  "runtime": {
+    "node": "24.19.0",
+    "sharp": "0.35.3",
+    "vips": "8.18.3"
+  }
+}
