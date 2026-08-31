@@ -256,6 +256,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Автор / составитель",
+    "group": "Весь интерфейс",
+    "label": "Автор / составитель",
+    "defaultRu": "Автор / составитель",
+    "defaultEn": "Author / compiler",
+    "multiline": false
+  },
+  {
     "key": "interface.автор в архиве",
     "group": "Весь интерфейс",
     "label": "автор в архиве",
@@ -2280,6 +2288,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Загружается издание",
+    "group": "Весь интерфейс",
+    "label": "Загружается издание",
+    "defaultRu": "Загружается издание",
+    "defaultEn": "Loading edition",
+    "multiline": false
+  },
+  {
     "key": "interface.Загружается стиль",
     "group": "Весь интерфейс",
     "label": "Загружается стиль",
@@ -2488,11 +2504,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Издание глобуса",
+    "group": "Весь интерфейс",
+    "label": "Издание глобуса",
+    "defaultRu": "Издание глобуса",
+    "defaultEn": "Globe edition",
+    "multiline": false
+  },
+  {
     "key": "interface.Издание на обложке",
     "group": "Весь интерфейс",
     "label": "Издание на обложке",
     "defaultRu": "Издание на обложке",
     "defaultEn": "Edition shown on the cover",
+    "multiline": false
+  },
+  {
+    "key": "interface.Издание не загрузилось. Предыдущее издание сохранено.",
+    "group": "Весь интерфейс",
+    "label": "Издание не загрузилось. Предыдущее издание сохранено.",
+    "defaultRu": "Издание не загрузилось. Предыдущее издание сохранено.",
+    "defaultEn": "The edition could not load. The previous edition is still active.",
     "multiline": false
   },
   {
@@ -2904,6 +2936,30 @@
     "multiline": false
   },
   {
+    "key": "interface.Источник и права",
+    "group": "Весь интерфейс",
+    "label": "Источник и права",
+    "defaultRu": "Источник и права",
+    "defaultEn": "Source and rights",
+    "multiline": false
+  },
+  {
+    "key": "interface.Источник и права текущего издания глобуса",
+    "group": "Весь интерфейс",
+    "label": "Источник и права текущего издания глобуса",
+    "defaultRu": "Источник и права текущего издания глобуса",
+    "defaultEn": "Source and rights for the current globe edition",
+    "multiline": false
+  },
+  {
+    "key": "interface.Источник издания",
+    "group": "Весь интерфейс",
+    "label": "Источник издания",
+    "defaultRu": "Источник издания",
+    "defaultEn": "Edition source",
+    "multiline": false
+  },
+  {
     "key": "interface.Источник изображения",
     "group": "Весь интерфейс",
     "label": "Источник изображения",
@@ -3205,6 +3261,14 @@
     "label": "КАТАЛОГ",
     "defaultRu": "КАТАЛОГ",
     "defaultEn": "CATALOGUE",
+    "multiline": false
+  },
+  {
+    "key": "interface.Каталожная запись",
+    "group": "Весь интерфейс",
+    "label": "Каталожная запись",
+    "defaultRu": "Каталожная запись",
+    "defaultEn": "Catalog record",
     "multiline": false
   },
   {
@@ -5648,6 +5712,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Оригинал",
+    "group": "Весь интерфейс",
+    "label": "Оригинал",
+    "defaultRu": "Оригинал",
+    "defaultEn": "Original",
+    "multiline": false
+  },
+  {
     "key": "interface.Оригинал на русском языке",
     "group": "Весь интерфейс",
     "label": "Оригинал на русском языке",
@@ -5933,6 +6005,14 @@
     "label": "Открыть единый поиск",
     "defaultRu": "Открыть единый поиск",
     "defaultEn": "Open site search",
+    "multiline": false
+  },
+  {
+    "key": "interface.Открыть запись источника",
+    "group": "Весь интерфейс",
+    "label": "Открыть запись источника",
+    "defaultRu": "Открыть запись источника",
+    "defaultEn": "Open source record",
     "multiline": false
   },
   {
@@ -7197,6 +7277,14 @@
     "label": "Поэзия",
     "defaultRu": "Поэзия",
     "defaultEn": "Poetry",
+    "multiline": false
+  },
+  {
+    "key": "interface.Права и указание источника",
+    "group": "Весь интерфейс",
+    "label": "Права и указание источника",
+    "defaultRu": "Права и указание источника",
+    "defaultEn": "Rights and attribution",
     "multiline": false
   },
   {
@@ -9048,6 +9136,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Совмещение карты",
+    "group": "Весь интерфейс",
+    "label": "Совмещение карты",
+    "defaultRu": "Совмещение карты",
+    "defaultEn": "Map alignment",
+    "multiline": false
+  },
+  {
     "key": "interface.совпадений",
     "group": "Весь интерфейс",
     "label": "совпадений",
@@ -10669,6 +10765,14 @@
     "label": "Хочу прочитать",
     "defaultRu": "Хочу прочитать",
     "defaultEn": "Want to read",
+    "multiline": false
+  },
+  {
+    "key": "interface.Хранилище",
+    "group": "Весь интерфейс",
+    "label": "Хранилище",
+    "defaultRu": "Хранилище",
+    "defaultEn": "Holding institution",
     "multiline": false
   },
   {

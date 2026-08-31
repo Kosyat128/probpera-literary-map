@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "editionId": "cassini-1790",
+  "artifactKind": "independent-adapted-master-alignment-review",
+  "trackedRecord": true,
+  "status": "reviewed",
+  "review": {
+    "independent": true,
+    "reviewedBy": "Codex independent final visual gate",
+    "reviewedAt": "2026-08-31",
+    "method": "The exact 8192x4096 Adapted Master was downsampled once with Lanczos3 to 2048x1024 for whole-frame review. The complete north and south polar joins, removal of the former synthetic Antarctic band, seam continuity, historical cartouche, and the single canonical Natural Earth union-coastline registration line were inspected together."
+  },
+  "adaptedMaster": {
+    "sidecar": {
+      "path": "reports/globe-editions/cassini-1790-interactive-adapted-master.json",
+      "bytes": 12187,
+      "sha256": "63E597362F58CE220EF347A912BC8AA3BDFF0527D18E39EF0197E56EDDD79BC9"
+    },
+    "output": {
+      "path": "scripts/.cache/globe-editions/cassini-1790/masters/cassini-1790-interactive-adapted-master-8192x4096.png",
+      "bytes": 64825773,
+      "sha256": "0E0F8FD6A54882663725434B3E422990D22976DA6DFEB90F699D12DA6525BAF2",
+      "width": 8192,
+      "height": 4096
+    }
+  },
+  "alignment": {
+    "configuredTransform": "identity",
+    "nonlinearWarpApplied": false,
+    "canonicalEdgeResidual": {
+      "metricClass": "rendered-vector-mask-placement",
+      "medianPixelsAt4096Width": 0,
+      "p95PixelsAt4096Width": 0,
+      "maximumPixelsAt4096Width": 0,
+      "interpretation": "The source-derived coastline darkening is sampled directly from the pinned canonical union mask, so its rendered placement is exact by construction. These zeros are not claimed as measured residuals for the underlying eighteenth-century engraving."
+    },
+    "historicalArtworkReview": {
+      "metricClass": "qualitative-multi-region-overlay-review",
+      "landmarks": [
+        "Newfoundland and the Gulf of St Lawrence",
+        "Caribbean island arc",
+        "Cape Horn",
+        "Gibraltar and western Mediterranean",
+        "Cape of Good Hope",
+        "India",
+        "Japan",
+        "southeast Australia and New Zealand"
+      ],
+      "result": "not-passed-no-independent-numeric-residuals",
+      "note": "The canonical interaction edge is a single stable contour, but it is baked from the canonical mask. Local differences from the engraved coastline remain visible, and no independent fit/holdout landmark set proves artwork alignment."
+    }
+  },
+  "protectedContentReview": {
+    "regionId": "atlantic-title-cartouche",
+    "result": "pass",
+    "note": "The declared rectangle remains byte-preserved. Antarctica raster synthesis is disabled globally and independently of this protected region."
+  },
+  "sourceVersusAdaptedReview": {
+    "result": "pass",
+    "note": "Changes are confined to the thin canonical union-coastline treatment and source-derived polar join cleanup. The polar tone is longitude-neutral and contains no invented land or labels; no Antarctic raster land, country borders, modern labels, random texture, or generic modern-map fill is introduced."
+  },
+  "knownLimitations": [
+    "The strongest-gradient diagnostic in the Adapted Master sidecar is descriptive only because historical graticules, lettering, and relief can dominate it.",
+    "Underlying historical-artwork landmark residuals are not reported as numeric measurements; the identity transform is accepted on multi-region overlay evidence and the exact canonical edge placement.",
+    "Antarctica is absent from the 1790 source. Its source RGB is retained without synthesized raster land; interaction remains vector-only."
+  ],
+  "gates": {
+    "independentAlignmentReview": "pass",
+    "independentAlignmentReviewScope": "record-and-source-fidelity-only",
+    "historicalArtworkToCanonicalAlignment": "not-passed",
+    "protectedHistoricalContentReview": "pass",
+    "sourceVersusAdaptedReview": "pass"
+  }
+}

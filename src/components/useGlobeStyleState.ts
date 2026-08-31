@@ -42,6 +42,12 @@ export type GlobeStyleAction =
       requestId: number;
     }>
   | Readonly<{
+      type: "fallback";
+      failedStyle: GlobeVisualStyle;
+      fallbackStyle: GlobeVisualStyle;
+      requestId: number;
+    }>
+  | Readonly<{
       type: "clear-error";
       requestId: number;
     }>;
@@ -113,6 +119,11 @@ export type UseGlobeStyleStateResult = Readonly<{
     style: GlobeVisualStyle,
     options?: GlobeStyleRequestOptions
   ) => Promise<GlobeStyleRequestOutcome>;
+  /** Records an already-rendered bootstrap fallback without persisting it. */
+  reportFallback: (
+    failedStyle: GlobeVisualStyle,
+    fallbackStyle: GlobeVisualStyle
+  ) => void;
   retryStyle: () => Promise<GlobeStyleRequestOutcome>;
   clearError: () => void;
   /** Use this value for both `aria-pressed` and the visual active class. */
@@ -151,6 +162,22 @@ export function globeStyleStateReducer(
       requestedStyle: action.style,
       pendingStyle: action.style,
       error: null,
+      requestId: action.requestId,
+    };
+  }
+
+  if (action.type === "fallback") {
+    if (action.requestId <= state.requestId) return state;
+    return {
+      requestedStyle: action.failedStyle,
+      pendingStyle: null,
+      renderedStyle: action.fallbackStyle,
+      error: {
+        code: "texture-load-failed",
+        style: action.failedStyle,
+        requestId: action.requestId,
+        retryable: true,
+      },
       requestId: action.requestId,
     };
   }
@@ -344,6 +371,18 @@ export function useGlobeStyleState({
       : Promise.resolve<GlobeStyleRequestOutcome>("unchanged");
   }, [requestStyle]);
 
+  const reportFallback = useCallback(
+    (failedStyle: GlobeVisualStyle, fallbackStyle: GlobeVisualStyle) => {
+      transition({
+        type: "fallback",
+        failedStyle,
+        fallbackStyle,
+        requestId: ++requestIdRef.current,
+      });
+    },
+    [transition]
+  );
+
   const clearError = useCallback(() => {
     transition({ type: "clear-error", requestId: stateRef.current.requestId });
   }, [transition]);
@@ -361,6 +400,7 @@ export function useGlobeStyleState({
     error: state.error,
     status: describeGlobeStyleStatus(state),
     requestStyle,
+    reportFallback,
     retryStyle,
     clearError,
     ariaPressedFor,

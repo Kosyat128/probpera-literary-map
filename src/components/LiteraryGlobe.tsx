@@ -2,11 +2,13 @@ import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber"
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useReducer,
   useRef,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
   type Ref,
   type RefObject,
 } from "react";
@@ -1987,7 +1989,11 @@ export default function LiteraryGlobe({
   const visualStyleError = Boolean(globeStyle.error);
   const sourceDialogRef = useRef<HTMLDialogElement>(null);
   const editionRailRef = useRef<HTMLDivElement>(null);
+  const editionRailToggleRef = useRef<HTMLButtonElement>(null);
   const editionPreloadTimerRef = useRef<number | null>(null);
+  const editionRailHideTimerRef = useRef<number | null>(null);
+  const editionRailRevealArmedRef = useRef(false);
+  const editionRailRestoreFocusRef = useRef(false);
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [atlasLoadRequest, setAtlasLoadRequest] = useState(0);
@@ -2001,6 +2007,7 @@ export default function LiteraryGlobe({
     revision: 0,
   });
   const [keyboardCandidateActive, setKeyboardCandidateActive] = useState(false);
+  const [editionRailVisible, setEditionRailVisible] = useState(true);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [globeVisible, setGlobeVisible] = useState(false);
   const [documentVisible, setDocumentVisible] = useState(
@@ -2175,6 +2182,69 @@ export default function LiteraryGlobe({
     const dialog = sourceDialogRef.current;
     if (dialog && !dialog.open) dialog.showModal();
   };
+  const clearEditionRailHideTimer = useCallback(() => {
+    if (editionRailHideTimerRef.current === null) return;
+    window.clearTimeout(editionRailHideTimerRef.current);
+    editionRailHideTimerRef.current = null;
+  }, []);
+  const revealEditionRail = useCallback(() => {
+    clearEditionRailHideTimer();
+    editionRailRevealArmedRef.current = false;
+    setEditionRailVisible(true);
+  }, [clearEditionRailHideTimer]);
+  const hideEditionRail = useCallback(() => {
+    const rail = editionRailRef.current;
+    const shouldRestoreFocus =
+      editionRailRestoreFocusRef.current ||
+      Boolean(rail && rail.contains(document.activeElement));
+    editionRailRestoreFocusRef.current = false;
+    editionRailRevealArmedRef.current = false;
+    setEditionRailVisible(false);
+    if (shouldRestoreFocus) {
+      window.requestAnimationFrame(() => {
+        editionRailToggleRef.current?.focus({ preventScroll: true });
+      });
+    }
+  }, []);
+  const scheduleEditionRailHide = useCallback(() => {
+    clearEditionRailHideTimer();
+    editionRailHideTimerRef.current = window.setTimeout(() => {
+      editionRailHideTimerRef.current = null;
+      hideEditionRail();
+    }, 650);
+  }, [clearEditionRailHideTimer, hideEditionRail]);
+  const openEditionRailFromToggle = useCallback(() => {
+    editionRailRestoreFocusRef.current = false;
+    revealEditionRail();
+    window.requestAnimationFrame(() => {
+      const rail = editionRailRef.current;
+      const renderedButton = rail?.querySelector<HTMLButtonElement>(
+        `button[data-globe-edition-option="${renderedEditionId}"]`
+      );
+      const target = renderedButton ?? rail?.querySelector<HTMLButtonElement>("button");
+      target?.focus({ preventScroll: true });
+      target?.scrollIntoView({
+        behavior: "auto",
+        block: "nearest",
+        inline: "center",
+      });
+    });
+  }, [renderedEditionId, revealEditionRail]);
+  const requestEdition = useCallback(
+    async (editionId: GlobeEditionId) => {
+      editionRailRestoreFocusRef.current = Boolean(
+        editionRailRef.current?.contains(document.activeElement)
+      );
+      revealEditionRail();
+      const outcome = await globeStyle.requestStyle(editionId);
+      if (outcome === "committed" || outcome === "unchanged") {
+        scheduleEditionRailHide();
+      } else {
+        editionRailRestoreFocusRef.current = false;
+      }
+    },
+    [globeStyle.requestStyle, revealEditionRail, scheduleEditionRailHide]
+  );
   const clearEditionPreload = useCallback(() => {
     if (editionPreloadTimerRef.current === null) return;
     window.clearTimeout(editionPreloadTimerRef.current);
@@ -2198,6 +2268,78 @@ export default function LiteraryGlobe({
   );
 
   useEffect(() => clearEditionPreload, [clearEditionPreload]);
+  useEffect(() => clearEditionRailHideTimer, [clearEditionRailHideTimer]);
+
+  useEffect(() => {
+    revealEditionRail();
+  }, [mode, revealEditionRail]);
+
+  useEffect(() => {
+    if (pendingEditionId || visualStyleError) revealEditionRail();
+  }, [pendingEditionId, revealEditionRail, visualStyleError]);
+
+  useLayoutEffect(() => {
+    editionRailRef.current?.toggleAttribute("inert", !editionRailVisible);
+  }, [editionRailVisible]);
+
+  const handleEditionRailKeyDown = useCallback(
+    (event: ReactKeyboardEvent<HTMLDivElement>) => {
+      const navigationKeys = [
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Home",
+        "End",
+      ];
+      if (!navigationKeys.includes(event.key)) return;
+
+      const rail = event.currentTarget;
+      const buttons = Array.from(
+        rail.querySelectorAll<HTMLButtonElement>(
+          "button[data-globe-edition-option]:not(:disabled)"
+        )
+      );
+      if (buttons.length === 0) return;
+
+      const focusedButton = (event.target as Element | null)?.closest(
+        "button[data-globe-edition-option]"
+      );
+      const focusedIndex = focusedButton
+        ? buttons.indexOf(focusedButton as HTMLButtonElement)
+        : -1;
+      const currentIndex =
+        focusedIndex >= 0
+          ? focusedIndex
+          : Math.max(
+              0,
+              buttons.findIndex(
+                (button) =>
+                  button.dataset.globeEditionOption === renderedEditionId
+              )
+            );
+
+      let nextIndex = currentIndex;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = buttons.length - 1;
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      }
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        nextIndex = (currentIndex + 1) % buttons.length;
+      }
+
+      event.preventDefault();
+      const nextButton = buttons[nextIndex];
+      nextButton.focus({ preventScroll: true });
+      nextButton.scrollIntoView({
+        behavior: "auto",
+        block: "nearest",
+        inline: "center",
+      });
+    },
+    [renderedEditionId]
+  );
 
   const clearAutoRotateResumeTimer = useCallback(() => {
     if (autoRotateResumeTimer.current === null) return;
@@ -2211,6 +2353,27 @@ export default function LiteraryGlobe({
       performance.now() + cooldownMs
     );
   }, []);
+
+  const handleGlobePointerMoveCapture = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      markPrewarmInputActivity();
+      if (editionRailVisible || event.pointerType === "touch") return;
+
+      const offsetFromTop =
+        event.clientY - event.currentTarget.getBoundingClientRect().top;
+      const revealBoundary = mode === "immersive" ? 96 : 84;
+      if (offsetFromTop > revealBoundary + 36) {
+        editionRailRevealArmedRef.current = true;
+        return;
+      }
+      if (
+        editionRailRevealArmedRef.current &&
+        offsetFromTop <= revealBoundary
+      ) {
+        revealEditionRail();
+      }
+    }, [editionRailVisible, markPrewarmInputActivity, mode, revealEditionRail]
+  );
 
   const shouldPauseFocusPrewarm = useCallback(() => {
     const runtime = prewarmRuntimeRef.current;
@@ -2376,7 +2539,7 @@ export default function LiteraryGlobe({
     if (!atlasRequested) return;
     let disposed = false;
     let createdAtlas: GlobeAtlas | null = null;
-    let loadedEditionId = initialEditionId.current;
+    let failedInitialEditionId: GlobeEditionId | null = null;
     const controller = new AbortController();
     const requestedInitialEditionId = initialEditionId.current;
     setAtlas(null);
@@ -2398,8 +2561,7 @@ export default function LiteraryGlobe({
           initialLanguage.current,
           { signal: controller.signal }
         );
-        initialEditionId.current = DEFAULT_GLOBE_EDITION_ID;
-        loadedEditionId = DEFAULT_GLOBE_EDITION_ID;
+        failedInitialEditionId = requestedInitialEditionId;
         return fallbackAtlas;
       })
       .then((nextAtlas) => {
@@ -2408,7 +2570,16 @@ export default function LiteraryGlobe({
         else {
           atlasInstanceRef.current = nextAtlas;
           setAtlas(nextAtlas);
-          void globeStyle.requestStyle(loadedEditionId, { force: true });
+          if (failedInitialEditionId) {
+            globeStyle.reportFallback(
+              failedInitialEditionId,
+              DEFAULT_GLOBE_EDITION_ID
+            );
+          } else {
+            void globeStyle.requestStyle(requestedInitialEditionId, {
+              force: true,
+            });
+          }
         }
       })
       .catch(() => {
@@ -2427,6 +2598,7 @@ export default function LiteraryGlobe({
     atlasLoadRequest,
     atlasRequested,
     atlasSourceCountries,
+    globeStyle.reportFallback,
     globeStyle.requestStyle,
   ]);
 
@@ -2524,7 +2696,10 @@ export default function LiteraryGlobe({
       aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown + - Home Enter"
       onKeyDown={handleGlobeKeyDown}
       onPointerDownCapture={() => markPrewarmInputActivity(420)}
-      onPointerMoveCapture={() => markPrewarmInputActivity()}
+      onPointerMoveCapture={handleGlobePointerMoveCapture}
+      onPointerLeave={() => {
+        if (!editionRailVisible) editionRailRevealArmedRef.current = true;
+      }}
       onTouchStartCapture={() => markPrewarmInputActivity(420)}
       onTouchMoveCapture={() => markPrewarmInputActivity(320)}
       onWheelCapture={() => markPrewarmInputActivity(420)}
@@ -2540,6 +2715,7 @@ export default function LiteraryGlobe({
       }}
       data-globe-style={renderedVisualStyle}
       data-globe-edition={renderedEditionId}
+      data-globe-edition-rail={editionRailVisible ? "visible" : "hidden"}
       data-globe-overlay-profile={renderedEdition.overlayProfile.profileId}
       data-globe-render-loop={globeActive ? "active" : "paused"}
       data-globe-frame-mode={frameMode}
@@ -2734,12 +2910,33 @@ export default function LiteraryGlobe({
         </Button>
       </div>
 
+      <IconButton
+        ref={editionRailToggleRef}
+        className="globe-style-switch-toggle"
+        icon={
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m7.5 9.5 4.5 4.5 4.5-4.5" />
+          </svg>
+        }
+        surface="dark"
+        data-globe-control="edition-rail-toggle"
+        aria-label={t("Издание глобуса")}
+        aria-controls="globe-edition-rail"
+        aria-expanded={editionRailVisible}
+        title={t("Издание глобуса")}
+        onClick={openEditionRailFromToggle}
+      />
+
       <div
         ref={editionRailRef}
+        id="globe-edition-rail"
         className="globe-style-switch"
         role="group"
         aria-label={t("Издание глобуса")}
         aria-busy={Boolean(pendingEditionId)}
+        aria-hidden={!editionRailVisible}
+        onFocusCapture={revealEditionRail}
+        onKeyDown={handleEditionRailKeyDown}
       >
         {AVAILABLE_GLOBE_EDITIONS.map((edition) => {
           const fullLabel = edition.fullLabel[language];
@@ -2767,7 +2964,7 @@ export default function LiteraryGlobe({
               preloadEdition(edition.id);
             }}
             onClick={() => {
-              void globeStyle.requestStyle(edition.id);
+              void requestEdition(edition.id);
             }}
           >
             <span className="globe-style-label-full">

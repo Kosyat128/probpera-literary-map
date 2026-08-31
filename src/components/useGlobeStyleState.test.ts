@@ -100,6 +100,44 @@ describe("globe style state", () => {
     });
   });
 
+  it("records an initial Rand fallback without losing the failed stored choice", () => {
+    const stored = createInitialGlobeStyleState("cassini-1790");
+    const fallback = globeStyleStateReducer(stored, {
+      type: "fallback",
+      failedStyle: "cassini-1790",
+      fallbackStyle: "rand-mcnally-1887",
+      requestId: 1,
+    });
+
+    expect(fallback).toMatchObject({
+      requestedStyle: "cassini-1790",
+      pendingStyle: null,
+      renderedStyle: "rand-mcnally-1887",
+      requestId: 1,
+    });
+    expect(fallback.error).toEqual({
+      code: "texture-load-failed",
+      style: "cassini-1790",
+      requestId: 1,
+      retryable: true,
+    });
+    expect(isGlobeStyleRendered(fallback, "rand-mcnally-1887")).toBe(true);
+    expect(isGlobeStyleRendered(fallback, "cassini-1790")).toBe(false);
+
+    const retrying = request(fallback, "cassini-1790", 2);
+    const recovered = globeStyleStateReducer(retrying, {
+      type: "resolve",
+      style: "cassini-1790",
+      requestId: 2,
+    });
+    expect(recovered).toMatchObject({
+      requestedStyle: "cassini-1790",
+      pendingStyle: null,
+      renderedStyle: "cassini-1790",
+      error: null,
+    });
+  });
+
   it("ignores stale and mismatched settlements", () => {
     const first = request(createInitialGlobeStyleState(), "nasa-blue-marble", 1);
     const latest = request(first, "natural-earth-2026", 2);

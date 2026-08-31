@@ -288,14 +288,14 @@ export const GLOBE_EDITIONS = [
       en: "General Reference Map No. 1 from Atlas of World Maps for the Study of Geography in the Army Specialized Training Program",
     },
     sourceInstitution: {
-      ru: "Историческая картографическая коллекция Дэвида Рамси / Викисклад",
-      en: "David Rumsey Historical Map Collection / Wikimedia Commons",
+      ru: "David Rumsey Map Collection, David Rumsey Map Center, Stanford University Libraries / зеркало Викисклада",
+      en: "David Rumsey Map Collection, David Rumsey Map Center, Stanford University Libraries / Wikimedia Commons mirror",
     },
-    sourceCatalogId: "M-101 · 1057-G · Rumsey 6351.015 · Wikimedia 113387121",
+    sourceCatalogId: "M-101 · 1057-G · Rumsey List No. 6351.015 · Wikimedia 113387121",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:General_Reference_Map_1.jpg",
     rightsSummary: {
-      ru: "Опубликована Службами снабжения Армии США в 1943 году без уведомления об авторском праве. Викисклад отмечает карту как общественное достояние в США (PD-USGov-Military); цифровая копия происходит из коллекции Дэвида Рамси.",
-      en: "Published by the U.S. Army Service Forces in 1943 without a copyright notice. Wikimedia Commons marks the map public domain (PD US Military); the digital copy derives from the David Rumsey collection.",
+      ru: "Оригинальная федеральная карта 1943 года отдельно отмечена Викискладом как общественное достояние в США (PD-USGov-Military). Используемый цифровой скан — Rumsey List No. 6351.015; правила коллекции разрешают публикацию при обязательном указании: “David Rumsey Map Collection, David Rumsey Map Center, Stanford University Libraries”. Статус оригинальной карты не отменяет условия использования скана.",
+      en: "Wikimedia Commons separately marks the underlying 1943 federal map public domain in the United States (PD-USGov-Military). The digital scan used here is Rumsey List No. 6351.015; the collection permits publication with the required credit: “David Rumsey Map Collection, David Rumsey Map Center, Stanford University Libraries”. The underlying map's status does not waive the scan-use terms.",
     },
     alignmentDisclosure: {
       ru: "Три фрагмента исходной карты преобразованы по её печатной координатной сетке в стандартную прямоугольную развёртку глобуса. Контуры стран, выбор и заливка флагом совмещены с той же геометрией, что и у глобуса 1887 года.",

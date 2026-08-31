@@ -48,6 +48,29 @@ describe("literary globe accessible interaction wiring", () => {
     expect(identitySource).not.toContain("✦");
   });
 
+  it("uses an icon-only immersive launch and an accessible collapsible edition rail", () => {
+    const launchSource = appSource.slice(
+      appSource.indexOf('className="atlas-immersion-launch"') - 120,
+      appSource.indexOf('className="globe-copy"')
+    );
+
+    expect(launchSource).toContain("<IconButton");
+    expect(launchSource).toContain("<BrandWidescreenIcon />");
+    expect(launchSource).toContain('data-atlas-action="enter-immersive"');
+    expect(launchSource).toContain(
+      'aria-label={t("Погрузиться в Литературную планету")}'
+    );
+    expect(launchSource).not.toContain('t("Погрузиться")');
+
+    expect(globeSource).toContain('data-globe-control="edition-rail-toggle"');
+    expect(globeSource).toContain('aria-controls="globe-edition-rail"');
+    expect(globeSource).toContain("aria-expanded={editionRailVisible}");
+    expect(globeSource).toContain("aria-hidden={!editionRailVisible}");
+    expect(globeSource).toContain(
+      'toggleAttribute("inert", !editionRailVisible)'
+    );
+  });
+
   it("uses the shared click-versus-drag gesture for surfaces and markers", () => {
     const interactionSources = `${globeSource}\n${nobelLayerSource}`;
     expect(interactionSources).toContain("beginGlobePointerGesture");

@@ -2701,6 +2701,9 @@ main [id] {
 
 .literary-globe .globe-style-switch button.is-active {
   color: #fff5df;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
   background: rgba(246, 117, 24, 0.18);
   border-color: rgba(255, 177, 99, 0.52);
   box-shadow: inset 0 0 18px rgba(246, 117, 24, 0.11);
@@ -18252,9 +18255,33 @@ html[data-theme="book"] .calendar-heading h3 {
   z-index: 28;
   top: 74px;
   left: 22px;
-  min-width: 0;
-  min-height: 44px;
-  box-shadow: 0 14px 34px rgba(10, 0, 17, 0.3);
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  min-height: 48px;
+  padding: 0;
+  color: rgba(255, 246, 231, 0.92);
+  background:
+    linear-gradient(145deg, rgba(67, 25, 72, 0.88), rgba(20, 5, 32, 0.9));
+  border-color: rgba(255, 193, 130, 0.52);
+  border-radius: 14px;
+  box-shadow:
+    0 14px 34px rgba(10, 0, 17, 0.34),
+    inset 0 1px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.atlas-experience-surface .atlas-immersion-launch:hover {
+  color: #fff8ec;
+  background:
+    linear-gradient(145deg, rgba(94, 39, 91, 0.94), rgba(35, 9, 48, 0.94));
+  border-color: rgba(255, 203, 147, 0.78);
+}
+
+.atlas-experience-surface .atlas-immersion-launch .ui-action__icon,
+.atlas-experience-surface .atlas-immersion-launch .ui-action__icon > svg {
+  width: 22px;
+  height: 22px;
 }
 
 .atlas-experience-surface .atlas-layout.has-country {
@@ -19063,20 +19090,38 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .literary-globe .globe-style-switch {
-  right: 20px;
-  left: auto;
+  right: auto;
+  left: 50%;
   grid-template-columns: none;
-  grid-auto-columns: 136px;
+  grid-auto-columns: 128px;
   grid-auto-flow: column;
-  width: min(1136px, calc(100% - 40px));
+  width: min(1040px, calc(100% - 160px));
   max-width: none;
+  padding: 5px;
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
-  scroll-padding-inline: 4px;
+  scroll-padding-inline: 5px;
   scroll-snap-type: x proximity;
-  scrollbar-color: rgba(246, 117, 24, 0.55) transparent;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  background:
+    linear-gradient(180deg, rgba(41, 12, 52, 0.91), rgba(17, 4, 28, 0.9));
+  border-color: rgba(255, 191, 126, 0.34);
+  border-radius: 16px;
+  box-shadow:
+    0 18px 50px rgba(5, 0, 10, 0.38),
+    inset 0 1px rgba(255, 255, 255, 0.055);
+  transform: translateX(-50%);
+  translate: 0 0;
+  transition:
+    opacity 180ms ease,
+    translate 180ms ease,
+    visibility 0s linear 0s;
+}
+
+.literary-globe .globe-style-switch::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .literary-globe .globe-style-switch button {
@@ -19084,10 +19129,67 @@ html[data-theme="book"] .calendar-heading h3 {
   padding-inline: 10px;
   font-family: var(--sans);
   font-size: 11px;
+  font-weight: 720;
   line-height: 1.2;
   letter-spacing: 0.015em;
   text-transform: none;
   scroll-snap-align: center;
+}
+
+.literary-globe .globe-style-switch-toggle {
+  position: absolute;
+  z-index: 23;
+  top: 69px;
+  right: 20px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  color: rgba(255, 241, 220, 0.88);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(24, 6, 36, 0.88);
+  border-color: rgba(255, 190, 124, 0.42);
+  border-radius: 13px;
+  box-shadow:
+    0 14px 34px rgba(5, 0, 10, 0.34),
+    inset 0 1px rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  translate: 0 -8px;
+  transition:
+    opacity 180ms ease,
+    translate 180ms ease,
+    visibility 0s linear 180ms;
+}
+
+.literary-globe .globe-style-switch-toggle .ui-action__icon,
+.literary-globe .globe-style-switch-toggle .ui-action__icon > svg {
+  width: 20px;
+  height: 20px;
+}
+
+.literary-globe .globe-style-switch-toggle svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.literary-globe[data-globe-edition-rail="hidden"] .globe-style-switch {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  translate: 0 -10px;
+  transition-delay: 0s, 0s, 180ms;
+}
+
+.literary-globe[data-globe-edition-rail="hidden"] .globe-style-switch-toggle {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  translate: 0 0;
+  transition-delay: 0s;
 }
 
 .literary-globe .globe-style-switch button[data-globe-edition-option="us-army-general-reference-1943"].is-active {
@@ -19143,17 +19245,55 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .literary-globe .globe-controls {
   bottom: 104px;
-  grid-template-columns: repeat(5, minmax(44px, auto));
+  grid-template-columns: 48px 48px repeat(3, minmax(82px, auto));
+  gap: 5px;
+  padding: 5px;
+  border-radius: 15px;
 }
 
 .literary-globe .globe-controls button {
+  box-sizing: border-box;
+  height: 48px;
+  min-height: 48px;
+  padding-block: 0;
   font-family: var(--sans);
 }
 
+.literary-globe .globe-controls .ui-action__icon {
+  display: grid;
+  align-self: center;
+  place-items: center;
+}
+
+.literary-globe .globe-controls .ui-action__label {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
 .literary-globe .globe-controls button small {
+  display: block;
+  margin: 0;
   font-size: 11px;
-  line-height: 1.2;
+  font-weight: 720;
+  line-height: 1;
   letter-spacing: 0.015em;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.literary-globe .globe-instruction {
+  max-width: calc(100% - 32px);
+  gap: 8px;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-align: center;
   text-transform: none;
   white-space: nowrap;
 }
@@ -19167,7 +19307,7 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch {
-  width: min(1136px, calc(100% - 160px));
+  width: min(1040px, calc(100% - 160px));
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-nobel-status {
@@ -19184,14 +19324,17 @@ html[data-theme="book"] .calendar-heading h3 {
 
 @media (min-width: 981px) {
   .atlas-experience-surface[data-atlas-view="embedded"] .globe-style-switch {
-    right: 20px;
-    left: auto;
-    width: min(1136px, calc(100% - 240px));
+    right: auto;
+    left: 50%;
+    width: min(1040px, calc(100% - 160px));
+    transform: translateX(-50%);
   }
 
   .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-panel-state="open"] .globe-style-switch {
     right: 445px;
-    width: min(1136px, calc(100% - 665px));
+    left: 80px;
+    width: auto;
+    transform: none;
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .globe-style-switch {
@@ -19199,6 +19342,10 @@ html[data-theme="book"] .calendar-heading h3 {
     left: max(80px, calc(env(safe-area-inset-left) + 12px));
     width: auto;
     transform: none;
+  }
+
+  .atlas-experience-surface[data-atlas-panel-state="open"] .globe-style-switch-toggle {
+    right: 445px;
   }
 
   .atlas-experience-surface[data-atlas-panel-state="open"] .literary-globe .globe-style-status.is-error {
@@ -19319,6 +19466,12 @@ html[data-theme="book"] .calendar-heading h3 {
     grid-template-columns: none;
     grid-auto-columns: 138px;
     width: auto;
+    transform: none;
+  }
+
+  .literary-globe .globe-style-switch-toggle {
+    top: 61px;
+    right: 14px;
   }
 
   .literary-globe .globe-style-switch button {
@@ -19341,6 +19494,16 @@ html[data-theme="book"] .calendar-heading h3 {
     width: auto;
     transform: none;
   }
+
+  .atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch-toggle {
+    top: calc(max(14px, env(safe-area-inset-top)) + 63px);
+    right: max(14px, env(safe-area-inset-right));
+  }
+
+  .atlas-experience-surface[data-atlas-view="embedded"] .globe-copy {
+    top: 120px;
+    left: 16px;
+  }
 }
 
 @media (max-width: 680px) {
@@ -19350,18 +19513,43 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .literary-globe .globe-controls {
     bottom: 112px;
-    grid-template-columns: repeat(3, minmax(44px, 1fr));
-    width: min(218px, calc(100% - 28px));
+    grid-template-columns: 44px 44px repeat(3, minmax(0, 1fr));
+    width: min(356px, calc(100% - 20px));
   }
 
   .literary-globe .globe-controls button {
     min-width: 0;
-    padding-inline: 5px;
+    padding-inline: 4px;
   }
 
   .literary-globe .globe-controls button small {
     font-size: 10px;
-    white-space: normal;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .literary-globe .globe-instruction {
+    max-width: calc(100% - 24px);
+    gap: 6px;
+    font-size: 9.5px;
+    white-space: nowrap;
+  }
+
+  .atlas-experience-surface[data-atlas-view="embedded"] .globe-copy {
+    display: none;
+  }
+
+  .literary-globe .globe-country-label {
+    right: 14px;
+    bottom: 184px;
+    width: min(260px, calc(100% - 28px));
+    min-width: 0;
+  }
+
+  .literary-globe .globe-country-label span,
+  .literary-globe .globe-country-label small,
+  .literary-globe .globe-country-label em {
+    overflow-wrap: anywhere;
   }
 
   .literary-globe .globe-touch-activation {
@@ -19381,6 +19569,10 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (max-width: 980px) {
+  .atlas-experience-surface[data-atlas-panel-state="open"] .globe-style-switch-toggle {
+    right: 14px;
+  }
+
   .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .literary-globe .globe-controls {
     bottom: calc(142px + max(24px, env(safe-area-inset-bottom)));
   }
@@ -19428,10 +19620,20 @@ html[data-theme="book"] .calendar-heading h3 {
     top: 72px;
   }
 
+  .literary-globe .globe-style-switch-toggle {
+    top: 77px;
+    right: 6px;
+  }
+
   .atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch {
     top: calc(max(14px, env(safe-area-inset-top)) + 58px);
     right: max(6px, env(safe-area-inset-right));
     left: max(6px, env(safe-area-inset-left));
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch-toggle {
+    top: calc(max(14px, env(safe-area-inset-top)) + 63px);
+    right: max(6px, env(safe-area-inset-right));
   }
 
   .literary-globe .globe-style-switch button,
@@ -19447,8 +19649,16 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .literary-globe .globe-style-switch,
+  .literary-globe .globe-style-switch-toggle {
+    transition: none !important;
+  }
+}
+
 @media (forced-colors: active) {
   .literary-globe .globe-style-switch,
+  .literary-globe .globe-style-switch-toggle,
   .literary-globe .globe-controls,
   .globe-edition-info-dialog {
     color: CanvasText;
@@ -19780,6 +19990,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .brand-minus-icon,
 .brand-rotate-icon,
 .brand-reset-icon,
+.brand-widescreen-icon,
 .brand-external-link-icon,
 .brand-book-icon {
   fill: none;
