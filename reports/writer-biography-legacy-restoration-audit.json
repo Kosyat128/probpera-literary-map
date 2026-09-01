@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "generatedAt": "2026-08-31T18:55:03.464Z",
+  "generatedAt": "2026-09-01T13:44:15.015Z",
   "scope": {
     "booksTouched": false,
     "strictPublicationGateChanged": false,
@@ -33,7 +33,7 @@
   },
   "relatedFactQa": {
     "report": "reports/writer-biography-fact-qa.json",
-    "sourceFingerprint": "sha256:38ee302378151543f72fbd6e3da6f735e1032f4547e6b06652484b0db193fe86",
+    "sourceFingerprint": "sha256:0a2d1f86ebb6003c2215b8f71304c1b552aa8a5b33abec06161fa682f512a80d",
     "writerCards": 1684,
     "biographiesPresent": 1684,
     "concreteContradictionIssues": 0,
@@ -73,15 +73,15 @@
       "0-39": 0,
       "40-79": 0,
       "80-119": 0,
-      "120-249": 1508,
-      "250-499": 176,
+      "120-249": 1510,
+      "250-499": 174,
       "500+": 0
     },
     "legacySentenceCounts": {
       "0": 0,
       "1": 0,
-      "2": 1439,
-      "3": 232,
+      "2": 1434,
+      "3": 237,
       "4": 13,
       "5+": 0
     },
