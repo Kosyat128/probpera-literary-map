@@ -91,7 +91,7 @@
     "writers:biographies:check": "node scripts/audit-writer-biographies.mjs && vitest run src/data/writerBiography.test.ts src/data/countries/writerBiographyResearchBatch01.test.ts src/writerImportSafety.test.ts",
     "writers:biographies:facts:qa": "node scripts/audit-writer-biography-facts.mjs && vitest run scripts/lib/writer-biography-fact-qa.test.mjs scripts/lib/wikidata-writer-facts.test.mjs src/data/countries/writerFactCorrections.test.ts",
     "writers:biographies:reviews:build": "node scripts/build-writer-biography-fact-review-overlay.mjs --write",
-    "writers:biographies:reviews:check": "node scripts/build-writer-biography-fact-review-overlay.mjs --check && vitest run src/data/countries/writerBiographyFactReviews.test.ts",
+    "writers:biographies:reviews:check": "node scripts/build-writer-biography-fact-review-overlay.mjs --check && vitest run scripts/lib/writer-biography-work-titles.test.mjs scripts/lib/writer-biography-russian-publication-titles.test.mjs src/data/countries/writerBiographyFactReviews.test.ts",
     "writers:biographies:reviews:report": "node --experimental-strip-types scripts/generate-writer-biography-fact-review-report.ts",
     "writers:biographies:english:translate": "node scripts/generate-writer-biography-english-translations.mjs --write",
     "writers:biographies:russian:editorial": "node scripts/generate-writer-biography-russian-editorial-refinements.mjs --write",

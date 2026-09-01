@@ -135,7 +135,7 @@ describe("контроль публичного книжного текста", 
     expect(bookPublicationIssues(unsafe)).toEqual(
       expect.arrayContaining([
         "не указан допустимый метод создания текста en",
-        "источники текста en не описаны в provenance",
+        "источники текста en не описаны в структурированном виде",
       ])
     );
     expect(isPublicBook(unsafe)).toBe(false);

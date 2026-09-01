@@ -235,12 +235,12 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
   {
     countryId: "mali",
     writerId: "adame_ba_konare",
-    patch: { birthPlace: "Сегу, Мали", works: ["Le Wassa ou les secrets d’une reine"] },
+    patch: { birthPlace: "Сегу, Мали", works: ["Quand l'ail se frotte à l'encens"] },
     evidence: [
-      { provider: "Institut des Sciences Humaines du Mali", url: "https://www.ish-mali.ml/ish-web/storage/app/public/fichiers/a9tuwbTz6BoJJIRHG1GgcIlpk4xuc68PQGOMmBqS.pdf", checkedAt },
       { provider: "University of Western Australia - African Literature", url: "https://aflit.arts.uwa.edu.au/BaKonareAdameEng.html", checkedAt },
+      { provider: "Bibliothèque nationale de France", url: "https://catalogue.bnf.fr/ark:/12148/cb402157187", checkedAt },
     ],
-    note: "Место рождения Бамако исправлено на Сегу; добавлен роман.",
+    note: "Место рождения Бамако исправлено на Сегу; ошибочная атрибуция Le Wassa удалена, добавлен подтверждённый роман Quand l'ail se frotte à l'encens.",
   },
   {
     countryId: "mali",

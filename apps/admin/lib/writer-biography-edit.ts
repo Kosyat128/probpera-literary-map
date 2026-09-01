@@ -782,7 +782,7 @@ function normalizedEditorProfile(
       JSON.stringify(stored.sources) !== JSON.stringify(sources))
   ) {
     throw new Error(
-      "EN: изменённый вручную машинный текст нужно сохранить как human-translation."
+      "EN: изменённый вручную машинный текст нужно сохранить с методом human-translation («Ручной перевод»)."
     );
   }
 

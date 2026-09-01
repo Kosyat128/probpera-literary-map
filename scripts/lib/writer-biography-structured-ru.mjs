@@ -9,9 +9,11 @@ const nonBiographicalEvidence =
 const implicitSourceVerb =
   /^(?:Подтверждает|Фиксирует|Документирует|Называет|Характеризует|Описывает|Атрибутирует|Указывает|Сообщает|Перечисляет|Связывает)(?![\p{L}\p{N}_])/u;
 export const structuredRussianBiographySourceNarrationPattern =
-  /(?:подтверждает|фиксирует|документирует|называет|характеризует|описывает|атрибутирует|идентифицирует|перечисляет|указывает|сообщает|связывает|представляет|определяет|профиль (?:автора|издателя)|архивная страница|официальная страница|цифровой каталог|университетск(?:ая публикация|ое издательство|ое исследование)|национальная библиотека|литературный музей|институциональн(?:ая справка|ый материал)|авторитетная запись|библиографическая запись|(?:архив|каталог|издание|справка|библиотека|музей|профиль|страница)[^.]{0,100}(?:включает|содержит))/iu;
+  /(?:\bBnF\b|каталогизир[а-яё]*|подтверждает|фиксирует|документирует|называет|характеризует|описывает|атрибутирует|идентифицирует|перечисляет|указывает|сообщает|связывает|представляет|определяет|профиль (?:автора|издателя)|архивная страница|официальная страница|цифровой каталог|университетск(?:ая публикация|ое издательство|ое исследование)|национальная библиотека|литературный музей|институциональн(?:ая справка|ый материал)|авторитетная запись|библиографическая запись|(?:архив|каталог|издание|справка|библиотека|музей|профиль|страница)[^.]{0,100}(?:включает|содержит))/iu;
 export const structuredRussianBiographyTechnicalPattern =
   /(?:review|fact[- ]?check|sha-?256|source hash|проверено|не проверено|верифицирован|редакционн(?:ая|ое|ый) проверк|служебн(?:ая|ое|ый) пометк|источник недоступен|данные источника|согласно источнику|по данным (?:архива|каталога|профиля|страницы|источника))/iu;
+export const structuredRussianBiographyGenderAgreementPattern =
+  /(?:^|[^\p{L}])[А-ЯЁа-яё-]+(?:ская|цкая)\s+(?:антрополог|врач|дипломат|драматург|историк|исследователь|кинорежиссёр(?:-документалист)?|критик|литературовед|педагог|переводчик|писатель|поэт|прозаик|редактор|режиссёр|сценарист|филолог|этнолог|юрист)(?![\p{L}-])/iu;
 const genericBiographyPatterns = [
   /автор, связанный с литературной традицией/iu,
   /представител[ьница]* современной .*литературной сцены/iu,
@@ -24,7 +26,9 @@ const genericBiographyPatterns = [
 ];
 
 export function normalizeStructuredRussianBiographyText(value) {
-  return String(value || "").replace(/\s+/gu, " ").trim();
+  return String(value || "")
+    .replace(/\s+/gu, " ")
+    .trim();
 }
 
 function sentenceBoundaryText(value) {
@@ -38,11 +42,7 @@ function sentenceBoundaryText(value) {
 }
 
 export function structuredRussianBiographySentenceCount(value) {
-  return (
-    sentenceBoundaryText(value).match(
-      /[.!?…]+(?=\s|$)/gu
-    )?.length || 0
-  );
+  return sentenceBoundaryText(value).match(/[.!?…]+(?=\s|$)/gu)?.length || 0;
 }
 
 const semanticStopWords = new Set([
@@ -65,11 +65,11 @@ function semanticStem(word) {
   const normalized = word.toLocaleLowerCase("ru").replace(/ё/gu, "е");
   const adjectiveStem = normalized.replace(
     /(?:ского|скому|скими|ский|ская|ское|ские|ской|ским|скую)$/u,
-    ""
+    "",
   );
   const nounStem = adjectiveStem.replace(
     /(?:иями|ами|ями|ого|ому|ыми|ими|иях|ах|ях|ью|ою|ею|ом|ем|ой|ей|а|я|у|ю|ы|и|е)$/u,
-    ""
+    "",
   );
   const stem = nounStem.replace(/[ьъ]$/u, "");
   return stem.length >= 4 ? stem : normalized;
@@ -77,19 +77,71 @@ function semanticStem(word) {
 
 function biographySentences(value) {
   return (
-    sentenceBoundaryText(value).match(
-      /[^.!?…]+(?:[.!?…]+|$)/gu
-    ) || []
+    sentenceBoundaryText(value).match(/[^.!?…]+(?:[.!?…]+|$)/gu) || []
   ).map((sentence) => sentence.trim());
+}
+
+export function structuredRussianBiographyAwardRestatementIssues(value) {
+  const sentences = biographySentences(value);
+  const issues = [];
+  for (let leftIndex = 0; leftIndex < sentences.length; leftIndex += 1) {
+    if (
+      !/лауреат[а-яё]*[^.!?…]{0,140}(?:преми[а-яё]*|наград[а-яё]*)/iu.test(
+        sentences[leftIndex],
+      )
+    ) {
+      continue;
+    }
+    for (
+      let rightIndex = leftIndex + 1;
+      rightIndex < sentences.length;
+      rightIndex += 1
+    ) {
+      if (
+        /^(?:Эта|Данная)\s+(?:литературная\s+)?(?:награда|премия)\s+(?:была\s+)?присуждена/iu.test(
+          sentences[rightIndex],
+        )
+      ) {
+        issues.push([leftIndex, rightIndex]);
+      }
+    }
+  }
+  return issues;
+}
+
+export function structuredRussianBiographyLifespanRestatementIssues(value) {
+  const sentences = biographySentences(value);
+  const issues = [];
+  for (let leftIndex = 0; leftIndex < sentences.length; leftIndex += 1) {
+    const range = sentences[leftIndex].match(/\((\d{3,4})-(\d{3,4})\)/u);
+    if (!range) continue;
+    const [, birthYear, deathYear] = range;
+    const restatementPattern = new RegExp(
+      `родил(?:ся|ась)[^.]*${birthYear}[^.]*умер(?:ла)?[^.]*${deathYear}`,
+      "iu",
+    );
+    for (
+      let rightIndex = leftIndex + 1;
+      rightIndex < sentences.length;
+      rightIndex += 1
+    ) {
+      if (restatementPattern.test(sentences[rightIndex])) {
+        issues.push([leftIndex, rightIndex]);
+      }
+    }
+  }
+  return issues;
 }
 
 function semanticWords(value) {
   return new Set(
-    (normalizeStructuredRussianBiographyText(value)
-      .toLocaleLowerCase("ru")
-      .match(/[\p{L}\p{N}]{4,}/gu) || [])
+    (
+      normalizeStructuredRussianBiographyText(value)
+        .toLocaleLowerCase("ru")
+        .match(/[\p{L}\p{N}]{4,}/gu) || []
+    )
       .filter((word) => !semanticStopWords.has(word))
-      .map(semanticStem)
+      .map(semanticStem),
   );
 }
 
@@ -114,7 +166,7 @@ export function structuredRussianBiographyTautologyIssues(value) {
       const rightWords = semanticWords(right);
       const smallerSize = Math.min(leftWords.size, rightWords.size);
       const intersection = [...leftWords].filter((word) =>
-        rightWords.has(word)
+        rightWords.has(word),
       ).length;
       const overlap = smallerSize ? intersection / smallerSize : 0;
       const leftCanonical = [...leftWords].sort().join(" ");
@@ -147,9 +199,9 @@ function numericFacts(value) {
 }
 
 function quotedFacts(value) {
-  return [
-    ...String(value || "").matchAll(/[«“"]([^»”"]{2,})[»”"]/gu),
-  ].map((match) => canonicalFactText(match[1]));
+  return [...String(value || "").matchAll(/[«“"]([^»”"]{2,})[»”"]/gu)].map(
+    (match) => canonicalFactText(match[1]),
+  );
 }
 
 const sentenceLeadWords = new Set([
@@ -212,14 +264,11 @@ function entityTokenAllowed(token, allowedTokens) {
   return [...allowedTokens].some(
     (allowed) =>
       allowed.length >= 4 &&
-      (allowed.startsWith(prefix) || token.startsWith(allowed.slice(0, 4)))
+      (allowed.startsWith(prefix) || token.startsWith(allowed.slice(0, 4))),
   );
 }
 
-export function structuredRussianBiographyRefinementIssues(
-  input,
-  refinement
-) {
+export function structuredRussianBiographyRefinementIssues(input, refinement) {
   const issues = [];
   if (!refinement || typeof refinement !== "object") {
     return ["missing-refinement"];
@@ -232,7 +281,7 @@ export function structuredRussianBiographyRefinementIssues(
     issues.push("structured-text-gate");
   }
   const publishableClaims = input.claims.filter((claim) =>
-    new Set(["supported", "corrected"]).has(claim.verdict)
+    new Set(["supported", "corrected"]).has(claim.verdict),
   );
   const allowedSource = [
     input.writerName,
@@ -243,20 +292,20 @@ export function structuredRussianBiographyRefinementIssues(
   const allowedCanonical = canonicalFactText(allowedSource);
   const allowedNumbers = numericFacts(allowedSource);
   const unexpectedNumbers = [...numericFacts(text)].filter(
-    (number) => !allowedNumbers.has(number)
+    (number) => !allowedNumbers.has(number),
   );
   if (unexpectedNumbers.length > 0) {
     issues.push(`new-numbers:${unexpectedNumbers.join(",")}`);
   }
   const unexpectedWorks = quotedFacts(text).filter(
-    (work) => work.length >= 3 && !allowedCanonical.includes(work)
+    (work) => work.length >= 3 && !allowedCanonical.includes(work),
   );
   if (unexpectedWorks.length > 0) {
     issues.push(`new-works:${unexpectedWorks.join("|")}`);
   }
   const allowedEntities = new Set(entityTokens(allowedSource));
   const unexpectedEntities = entityTokens(text).filter(
-    (token) => !entityTokenAllowed(token, allowedEntities)
+    (token) => !entityTokenAllowed(token, allowedEntities),
   );
   if (unexpectedEntities.length > 0) {
     issues.push(`new-names:${[...new Set(unexpectedEntities)].join(",")}`);
@@ -285,6 +334,9 @@ export function isStructuredRussianBiographyText(value) {
     !genericBiographyPatterns.some((pattern) => pattern.test(text)) &&
     !structuredRussianBiographySourceNarrationPattern.test(text) &&
     !structuredRussianBiographyTechnicalPattern.test(text) &&
+    !structuredRussianBiographyGenderAgreementPattern.test(text) &&
+    structuredRussianBiographyAwardRestatementIssues(text).length === 0 &&
+    structuredRussianBiographyLifespanRestatementIssues(text).length === 0 &&
     structuredRussianBiographyTautologyIssues(text).length === 0
   );
 }
@@ -298,7 +350,7 @@ function canonicalWords(value) {
   return new Set(
     normalizeStructuredRussianBiographyText(value)
       .toLocaleLowerCase("ru")
-      .match(/[\p{L}\p{N}]{4,}/gu) || []
+      .match(/[\p{L}\p{N}]{4,}/gu) || [],
   );
 }
 
@@ -316,7 +368,7 @@ function claimSupplement(value) {
   const text = ensureSentence(
     normalizeStructuredRussianBiographyText(value)
       .replace(editorialPrefix, "")
-      .replace(normalizedBatchPrefix, "")
+      .replace(normalizedBatchPrefix, ""),
   );
   return text &&
     /^[А-ЯЁA-Z«]/u.test(text) &&
@@ -330,9 +382,9 @@ export function isPublishableRussianBiographyClaim(value) {
   const text = normalizeStructuredRussianBiographyText(value);
   return Boolean(
     text &&
-      !nonBiographicalClaim.test(text) &&
-      !structuredRussianBiographySourceNarrationPattern.test(text) &&
-      !structuredRussianBiographyTechnicalPattern.test(text)
+    !nonBiographicalClaim.test(text) &&
+    !structuredRussianBiographySourceNarrationPattern.test(text) &&
+    !structuredRussianBiographyTechnicalPattern.test(text),
   );
 }
 
@@ -342,12 +394,12 @@ function evidenceSupplement(evidence) {
       .replace(normalizedBatchPrefix, "")
       .replace(editorialPrefix, "")
       .replace(/Authority-запись/gu, "Авторитетная запись")
-      .replace(/(^|\s)независимо\s+/giu, "$1")
+      .replace(/(^|\s)независимо\s+/giu, "$1"),
   );
   if (implicitSourceVerb.test(text)) {
-    text = `${evidence.provider} ${
-      text.charAt(0).toLocaleLowerCase("ru")
-    }${text.slice(1)}`;
+    text = `${evidence.provider} ${text
+      .charAt(0)
+      .toLocaleLowerCase("ru")}${text.slice(1)}`;
   }
   return text &&
     !nonBiographicalEvidence.test(text) &&
@@ -360,8 +412,8 @@ export function isPublishableRussianBiographyEvidence(value) {
   const text = normalizeStructuredRussianBiographyText(value);
   return Boolean(
     text &&
-      !nonBiographicalEvidence.test(text) &&
-      !structuredRussianBiographyTechnicalPattern.test(text)
+    !nonBiographicalEvidence.test(text) &&
+    !structuredRussianBiographyTechnicalPattern.test(text),
   );
 }
 
@@ -370,7 +422,7 @@ function firstReadyCombination(seed, candidates, limit) {
   for (const candidate of candidates) {
     for (const current of [...frontier]) {
       const combined = normalizeStructuredRussianBiographyText(
-        `${current} ${candidate}`
+        `${current} ${candidate}`,
       );
       if (!current && /^(?:Он|Она|Его|Её|Их|Этот|Эта|Эти)\s/u.test(combined)) {
         continue;
@@ -399,7 +451,7 @@ export function structuredRussianBiographyFromReview(
   record,
   editorialText,
   refinement,
-  editorialInput
+  editorialInput,
 ) {
   if (editorialText !== undefined) {
     const curated = ensureSentence(editorialText);
@@ -410,7 +462,7 @@ export function structuredRussianBiographyFromReview(
   if (editorialInput && refinement) {
     const refinementIssues = structuredRussianBiographyRefinementIssues(
       editorialInput,
-      refinement
+      refinement,
     );
     if (refinementIssues.length === 0) {
       return {
@@ -429,8 +481,7 @@ export function structuredRussianBiographyFromReview(
     return { text: base, derivation: "reviewed-text" };
   }
   return {
-    text:
-      editorialText === undefined ? base : ensureSentence(editorialText),
+    text: editorialText === undefined ? base : ensureSentence(editorialText),
     derivation:
       editorialText === undefined ? "blocked" : "blocked-curated-editorial",
   };

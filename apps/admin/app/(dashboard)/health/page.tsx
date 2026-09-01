@@ -114,8 +114,8 @@ export default async function HealthPage() {
       <article className="stat-card"><span>Схема CMS</span><strong>{schemaStatusLabel}</strong><small>{schemaStatusDetail}</small></article>
       <article className="stat-card"><span>Сохранение RU+EN</span><strong>{atomicArticleSaveLabel}</strong><small>{atomicArticleSaveDetail}</small></article>
       <article className="stat-card"><span>Media Studio</span><strong>{mediaStudioReady ? "Готова" : "Закрыта"}</strong><small>{mediaStudioDetail}</small></article>
-      <article className="stat-card"><span>Публикация</span><strong>{schemaHealth?.pendingPublicBuilds ?? "-"}</strong><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : "ожидают подтверждения deploy"}</small></article>
-      <article className="stat-card"><span>Автоперевод EN</span><strong>{translationStatusLabel}</strong><small>{translationStatusDetail}</small></article>
+      <article className="stat-card"><span>Публикация</span><strong>{schemaHealth?.pendingPublicBuilds ?? "-"}</strong><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : "ожидают подтверждения развёртывания"}</small></article>
+      <article className="stat-card"><span>Перевод на английский</span><strong>{translationStatusLabel}</strong><small>{translationStatusDetail}</small></article>
     </section>
     <section className="panel">
       {diagnostics.length === 0 ? <div className="empty-state"><p>Клиентских ошибок пока не зарегистрировано.</p></div> :

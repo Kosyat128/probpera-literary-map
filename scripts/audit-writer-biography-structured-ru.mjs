@@ -10,7 +10,10 @@ import {
   isPublishableRussianBiographyClaim,
   isPublishableRussianBiographyEvidence,
   normalizeStructuredRussianBiographyText,
+  structuredRussianBiographyAwardRestatementIssues,
   structuredRussianBiographyFromReview,
+  structuredRussianBiographyGenderAgreementPattern,
+  structuredRussianBiographyLifespanRestatementIssues,
   structuredRussianBiographyRefinementIssues,
   structuredRussianBiographySentenceCount,
   structuredRussianBiographySourceNarrationPattern,
@@ -22,11 +25,11 @@ const projectRoot = path.resolve(import.meta.dirname, "..");
 const cacheDirectory = path.join(projectRoot, "scripts", ".cache");
 const editorialInputPath = path.join(
   projectRoot,
-  "reports/writer-biography-russian-editorial-input.json"
+  "reports/writer-biography-russian-editorial-input.json",
 );
 const editorialRefinementPath = path.join(
   projectRoot,
-  "src/data/countries/generated/writerBiographyRussianEditorialRefinements.generated.json"
+  "src/data/countries/generated/writerBiographyRussianEditorialRefinements.generated.json",
 );
 const writeEditorialInput = process.argv.includes("--write-editorial-input");
 
@@ -42,7 +45,7 @@ async function loadBundledModule(entryPoint, label) {
   await mkdir(cacheDirectory, { recursive: true });
   const bundlePath = path.join(
     cacheDirectory,
-    `writer-biography-structured-ru-${label}-${process.pid}.mjs`
+    `writer-biography-structured-ru-${label}-${process.pid}.mjs`,
   );
   await build({
     absWorkingDir: projectRoot,
@@ -64,55 +67,53 @@ async function loadBundledModule(entryPoint, label) {
 
 const reviewModule = await loadBundledModule(
   "scripts/writer-biography-review-source.ts",
-  "reviews"
+  "reviews",
 );
 const countryModule = await loadBundledModule(
   "src/data/countries/index.ts",
-  "countries"
+  "countries",
 );
 const editorialOverrides = JSON.parse(
   await readFile(
     path.join(
       projectRoot,
-      "src/data/countries/writerBiographyStructuredRuEditorial.json"
+      "src/data/countries/writerBiographyStructuredRuEditorial.json",
     ),
-    "utf8"
-  )
+    "utf8",
+  ),
 );
 
 const records = reviewModule.writerBiographyFactReviews;
 const quarantinedKeys = new Set(
-  reviewModule.writerBiographyFactReviewQuarantinedKeys
+  reviewModule.writerBiographyFactReviewQuarantinedKeys,
 );
 const publicKeys = new Set(
   countryModule.countries.flatMap((country) =>
-    country.writers.map((writer) => `${country.id}:${writer.id}`)
-  )
+    country.writers.map((writer) => `${country.id}:${writer.id}`),
+  ),
 );
 const publicWriterByKey = new Map(
   countryModule.countries.flatMap((country) =>
-    country.writers.map((writer) => [
-      `${country.id}:${writer.id}`,
-      writer,
-    ])
-  )
+    country.writers.map((writer) => [`${country.id}:${writer.id}`, writer]),
+  ),
 );
 const applicable = records.filter(
   (record) =>
     record.decision !== "held" &&
     !quarantinedKeys.has(record.key) &&
-    publicKeys.has(record.key)
+    publicKeys.has(record.key),
 );
 const reviewedKeys = new Set(applicable.map((record) => record.key));
 const outsideFactReviewOverlayKeys = [...publicKeys].filter(
-  (key) => !reviewedKeys.has(key)
+  (key) => !reviewedKeys.has(key),
 );
 const supplementalVerifiedPublicKeys = outsideFactReviewOverlayKeys.filter(
   (key) =>
-    publicWriterByKey.get(key)?.biographyTranslations?.ru?.status === "verified"
+    publicWriterByKey.get(key)?.biographyTranslations?.ru?.status ===
+    "verified",
 );
 const publicMissingRecord = outsideFactReviewOverlayKeys.filter(
-  (key) => !supplementalVerifiedPublicKeys.includes(key)
+  (key) => !supplementalVerifiedPublicKeys.includes(key),
 );
 const supplementalEvidenceByRecord = supplementalVerifiedPublicKeys.map(
   (key) => {
@@ -121,19 +122,18 @@ const supplementalEvidenceByRecord = supplementalVerifiedPublicKeys.map(
     return {
       key,
       sources: new Set(urls).size,
-      hostnames: new Set(
-        urls.map((url) => new URL(url).hostname.toLowerCase())
-      ).size,
+      hostnames: new Set(urls.map((url) => new URL(url).hostname.toLowerCase()))
+        .size,
       nonHttps: urls.filter((url) => !String(url).startsWith("https://"))
         .length,
       missingPublisher: sources.filter(
-        (source) => !String(source.publisher || "").trim()
+        (source) => !String(source.publisher || "").trim(),
       ).length,
     };
-  }
+  },
 );
 const sourceEvidence = applicable.flatMap((record) =>
-  record.claims.flatMap((claim) => claim.evidence)
+  record.claims.flatMap((claim) => claim.evidence),
 );
 const evidenceByRecord = applicable.map((record) => {
   const evidence = record.claims.flatMap((claim) => claim.evidence);
@@ -141,39 +141,37 @@ const evidenceByRecord = applicable.map((record) => {
     key: record.key,
     sources: new Set(evidence.map((item) => item.url)).size,
     hostnames: new Set(
-      evidence.map((item) => new URL(item.url).hostname.toLowerCase())
+      evidence.map((item) => new URL(item.url).hostname.toLowerCase()),
     ).size,
   };
 });
 const publicationEvidenceByRecord = applicable.map((record) => {
   const evidence = record.claims
-    .filter((claim) =>
-      new Set(["supported", "corrected"]).has(claim.verdict)
-    )
+    .filter((claim) => new Set(["supported", "corrected"]).has(claim.verdict))
     .flatMap((claim) => claim.evidence);
   return {
     key: record.key,
     sources: new Set(evidence.map((item) => item.url)).size,
     hostnames: new Set(
-      evidence.map((item) => new URL(item.url).hostname.toLowerCase())
+      evidence.map((item) => new URL(item.url).hostname.toLowerCase()),
     ).size,
   };
 });
 const preRefinementStructured = applicable.map((record) => ({
   key: record.key,
   reviewedTextRu: normalizeStructuredRussianBiographyText(
-    record.applicableTextRu
+    record.applicableTextRu,
   ),
   ...structuredRussianBiographyFromReview(
     record,
     Object.hasOwn(editorialOverrides, record.key)
       ? editorialOverrides[record.key]
-      : undefined
+      : undefined,
   ),
 }));
 const recordByKey = new Map(applicable.map((record) => [record.key, record]));
 const orphanEditorialKeys = Object.keys(editorialOverrides).filter(
-  (key) => !recordByKey.has(key)
+  (key) => !recordByKey.has(key),
 );
 const curatedSemanticIssues = Object.entries(editorialOverrides)
   .map(([key, text]) => {
@@ -181,17 +179,13 @@ const curatedSemanticIssues = Object.entries(editorialOverrides)
     const writer = publicWriterByKey.get(key);
     if (!record || !writer) return { key, issues: ["orphan-curated-key"] };
     const claims = record.claims
-      .filter((claim) =>
-        new Set(["supported", "corrected"]).has(claim.verdict)
-      )
+      .filter((claim) => new Set(["supported", "corrected"]).has(claim.verdict))
       .map((claim) => ({
         textRu: normalizeStructuredRussianBiographyText(claim.textRu),
         verdict: claim.verdict,
       }));
     const evidence = record.claims
-      .filter((claim) =>
-        new Set(["supported", "corrected"]).has(claim.verdict)
-      )
+      .filter((claim) => new Set(["supported", "corrected"]).has(claim.verdict))
       .flatMap((claim) => claim.evidence)
       .map((source) => ({
         provider: source.provider,
@@ -211,7 +205,7 @@ const curatedSemanticIssues = Object.entries(editorialOverrides)
           ...(Array.isArray(writer.works) ? writer.works : []),
         ]
           .filter(Boolean)
-          .join(" ")
+          .join(" "),
       ),
       claims,
       evidence,
@@ -230,7 +224,7 @@ const editorialInputRecords = preRefinementStructured
   .filter(
     (item) =>
       item.derivation !== "reviewed-text" &&
-      item.derivation !== "curated-editorial"
+      item.derivation !== "curated-editorial",
   )
   .map((item) => {
     const record = recordByKey.get(item.key);
@@ -238,7 +232,7 @@ const editorialInputRecords = preRefinementStructured
     const publishableClaims = record.claims.filter(
       (claim) =>
         new Set(["supported", "corrected"]).has(claim.verdict) &&
-        isPublishableRussianBiographyClaim(claim.textRu)
+        isPublishableRussianBiographyClaim(claim.textRu),
     );
     const claims = publishableClaims.map((claim) => ({
       textRu: normalizeStructuredRussianBiographyText(claim.textRu),
@@ -247,7 +241,7 @@ const editorialInputRecords = preRefinementStructured
     const evidence = publishableClaims
       .flatMap((claim) => claim.evidence)
       .filter((source) =>
-        isPublishableRussianBiographyEvidence(source.findingRu)
+        isPublishableRussianBiographyEvidence(source.findingRu),
       )
       .map((source) => ({
         provider: normalizeStructuredRussianBiographyText(source.provider),
@@ -276,30 +270,28 @@ const editorialInput = {
         total +
         record.claims.filter((claim) => claim.verdict === "not-established")
           .length,
-      0
+      0,
     ),
     editorialServiceClaims: editorialInputRecords.reduce(
       (total, record) =>
         total +
         record.claims.filter(
-          (claim) => !isPublishableRussianBiographyClaim(claim.textRu)
+          (claim) => !isPublishableRussianBiographyClaim(claim.textRu),
         ).length,
-      0
+      0,
     ),
     editorialServiceEvidence: editorialInputRecords.reduce(
       (total, record) =>
         total +
         record.evidence.filter(
           (evidence) =>
-            !isPublishableRussianBiographyEvidence(evidence.findingRu)
+            !isPublishableRussianBiographyEvidence(evidence.findingRu),
         ).length,
-      0
+      0,
     ),
     rawSourcePageTextIncluded: false,
   },
-  sourceFingerprint: `sha256:${sha256(
-    JSON.stringify(editorialInputRecords)
-  )}`,
+  sourceFingerprint: `sha256:${sha256(JSON.stringify(editorialInputRecords))}`,
   records: editorialInputRecords,
 };
 const editorialInputContent = stableJson(editorialInput);
@@ -310,26 +302,27 @@ if (writeEditorialInput) {
 const existingEditorialInput = writeEditorialInput
   ? editorialInputContent
   : await readFile(editorialInputPath, "utf8").catch(() => null);
-const editorialInputIsCurrent = existingEditorialInput === editorialInputContent;
+const editorialInputIsCurrent =
+  existingEditorialInput === editorialInputContent;
 const refinementOverlay = JSON.parse(
   await readFile(editorialRefinementPath, "utf8").catch(() =>
     JSON.stringify({
       version: 1,
       inputFingerprint: null,
       refinements: {},
-    })
-  )
+    }),
+  ),
 );
 const refinements = refinementOverlay.refinements || {};
 const editorialInputByKey = new Map(
-  editorialInput.records.map((record) => [record.key, record])
+  editorialInput.records.map((record) => [record.key, record]),
 );
 const localOnlyEditorialState =
   editorialInput.records.length === 0 && Object.keys(refinements).length === 0;
 const structured = applicable.map((record) => ({
   key: record.key,
   reviewedTextRu: normalizeStructuredRussianBiographyText(
-    record.applicableTextRu
+    record.applicableTextRu,
   ),
   ...structuredRussianBiographyFromReview(
     record,
@@ -337,11 +330,11 @@ const structured = applicable.map((record) => ({
       ? editorialOverrides[record.key]
       : undefined,
     refinements[record.key],
-    editorialInputByKey.get(record.key)
+    editorialInputByKey.get(record.key),
   ),
 }));
 const orphanRefinementKeys = Object.keys(refinements).filter(
-  (key) => !editorialInputByKey.has(key)
+  (key) => !editorialInputByKey.has(key),
 );
 const missingRefinementKeys = editorialInput.records
   .filter((record) => !Object.hasOwn(refinements, record.key))
@@ -355,18 +348,17 @@ const rejectedRefinements = structured
 const blockedOffset = Number(
   process.argv
     .find((argument) => argument.startsWith("--offset="))
-    ?.slice("--offset=".length) || 0
+    ?.slice("--offset=".length) || 0,
 );
 const blockedLimit = Number(
   process.argv
     .find((argument) => argument.startsWith("--limit="))
-    ?.slice("--limit=".length) || 25
+    ?.slice("--limit=".length) || 25,
 );
 const duplicateTextGroups = Object.values(
-  Object.groupBy(
-    applicable,
-    (record) => record.applicableTextRu.trim().toLocaleLowerCase("ru")
-  )
+  Object.groupBy(applicable, (record) =>
+    record.applicableTextRu.trim().toLocaleLowerCase("ru"),
+  ),
 ).filter((group) => group.length > 1);
 
 const output = {
@@ -379,7 +371,7 @@ const output = {
   supplementalEvidence: {
     records: supplementalEvidenceByRecord.reduce(
       (total, record) => total + record.sources,
-      0
+      0,
     ),
     recordsWithFewerThanTwoUrls: supplementalEvidenceByRecord
       .filter((record) => record.sources < 2)
@@ -402,18 +394,18 @@ const output = {
     uniqueProviders: new Set(sourceEvidence.map((item) => item.provider)).size,
     uniqueUrls: new Set(sourceEvidence.map((item) => item.url)).size,
     nonHttps: sourceEvidence.filter(
-      (item) => !String(item.url).startsWith("https://")
+      (item) => !String(item.url).startsWith("https://"),
     ).length,
     missingProvider: sourceEvidence.filter((item) => !item.provider?.trim())
       .length,
     missingCheckedAt: sourceEvidence.filter((item) => !item.checkedAt?.trim())
       .length,
-    recordsWithFewerThanTwoUrls: evidenceByRecord.filter(
-      (record) => record.sources < 2
-    ).map((record) => record.key),
-    recordsWithFewerThanTwoHosts: evidenceByRecord.filter(
-      (record) => record.hostnames < 2
-    ).map((record) => record.key),
+    recordsWithFewerThanTwoUrls: evidenceByRecord
+      .filter((record) => record.sources < 2)
+      .map((record) => record.key),
+    recordsWithFewerThanTwoHosts: evidenceByRecord
+      .filter((record) => record.hostnames < 2)
+      .map((record) => record.key),
     publicationRecordsWithFewerThanTwoUrls: publicationEvidenceByRecord
       .filter((record) => record.sources < 2)
       .map((record) => record.key),
@@ -423,19 +415,19 @@ const output = {
   },
   textGate: {
     below120: applicable.filter(
-      (record) => record.applicableTextRu.trim().length < 120
+      (record) => record.applicableTextRu.trim().length < 120,
     ).length,
     above1600: applicable.filter(
-      (record) => record.applicableTextRu.trim().length > 1_600
+      (record) => record.applicableTextRu.trim().length > 1_600,
     ).length,
     outsideTwoToFourSentences: applicable.filter((record) => {
       const count = structuredRussianBiographySentenceCount(
-        record.applicableTextRu
+        record.applicableTextRu,
       );
       return count < 2 || count > 4;
     }).length,
     duplicateGroups: duplicateTextGroups.map((group) =>
-      group.map((record) => record.key)
+      group.map((record) => record.key),
     ),
   },
   editorialInput: {
@@ -455,38 +447,56 @@ const output = {
   },
   structuredText: {
     ready: structured.filter((record) =>
-      isStructuredRussianBiographyText(record.text)
+      isStructuredRussianBiographyText(record.text),
     ).length,
     blocked: structured
       .filter((record) => !isStructuredRussianBiographyText(record.text))
       .map((record) => record.key),
     derivations: Object.fromEntries(
-      Object.entries(Object.groupBy(structured, (record) => record.derivation)).map(
-        ([key, values]) => [key, values.length]
-      )
+      Object.entries(
+        Object.groupBy(structured, (record) => record.derivation),
+      ).map(([key, values]) => [key, values.length]),
     ),
     duplicateGroups: Object.values(
-      Object.groupBy(
-        structured,
-        (record) => record.text.toLocaleLowerCase("ru")
-      )
+      Object.groupBy(structured, (record) =>
+        record.text.toLocaleLowerCase("ru"),
+      ),
     )
       .filter((group) => group.length > 1)
       .map((group) => group.map((record) => record.key)),
     sourceNarration: structured
       .filter((record) =>
-        structuredRussianBiographySourceNarrationPattern.test(record.text)
+        structuredRussianBiographySourceNarrationPattern.test(record.text),
       )
       .map((record) => record.key),
     technicalNarration: structured
       .filter((record) =>
-        structuredRussianBiographyTechnicalPattern.test(record.text)
+        structuredRussianBiographyTechnicalPattern.test(record.text),
       )
       .map((record) => record.key),
     tautology: structured
       .filter(
         (record) =>
-          structuredRussianBiographyTautologyIssues(record.text).length > 0
+          structuredRussianBiographyTautologyIssues(record.text).length > 0,
+      )
+      .map((record) => record.key),
+    awardRestatement: structured
+      .filter(
+        (record) =>
+          structuredRussianBiographyAwardRestatementIssues(record.text).length >
+          0,
+      )
+      .map((record) => record.key),
+    lifespanRestatement: structured
+      .filter(
+        (record) =>
+          structuredRussianBiographyLifespanRestatementIssues(record.text)
+            .length > 0,
+      )
+      .map((record) => record.key),
+    genderAgreement: structured
+      .filter((record) =>
+        structuredRussianBiographyGenderAgreementPattern.test(record.text),
       )
       .map((record) => record.key),
     orphanEditorialKeys,
@@ -497,12 +507,12 @@ const output = {
             .filter((record) =>
               process.argv.includes("--claim-samples")
                 ? record.derivation === "reviewed-claims"
-                : record.derivation !== "reviewed-text"
+                : record.derivation !== "reviewed-text",
             )
             .sort(
               (left, right) =>
                 left.reviewedTextRu.length - right.reviewedTextRu.length ||
-                left.key.localeCompare(right.key, "en")
+                left.key.localeCompare(right.key, "en"),
             )
             .slice(0, 60),
         }
@@ -520,7 +530,10 @@ const output = {
                 name: writer?.name || writer?.fullName || writer?.id,
                 years:
                   writer?.years ||
-                  [writer?.birthDate || writer?.birth, writer?.deathDate || writer?.death]
+                  [
+                    writer?.birthDate || writer?.birth,
+                    writer?.deathDate || writer?.death,
+                  ]
                     .filter(Boolean)
                     .join("-"),
                 reviewedTextRu: blocked.reviewedTextRu,
@@ -559,6 +572,9 @@ if (
   output.structuredText.sourceNarration.length > 0 ||
   output.structuredText.technicalNarration.length > 0 ||
   output.structuredText.tautology.length > 0 ||
+  output.structuredText.awardRestatement.length > 0 ||
+  output.structuredText.lifespanRestatement.length > 0 ||
+  output.structuredText.genderAgreement.length > 0 ||
   output.structuredText.orphanEditorialKeys.length > 0 ||
   output.structuredText.curatedSemanticIssues.length > 0 ||
   output.editorialInput.invariants?.notEstablishedClaims > 0 ||

@@ -96,7 +96,7 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
       translationsUrl({
         ...cursorParams,
         error:
-          "Книжный premium EN подготовлен, но DB-миграция machine-translation ещё не применена.",
+          "Улучшенный английский перевод книги подготовлен, но миграция базы данных для машинных переводов ещё не применена.",
       })
     );
   }
