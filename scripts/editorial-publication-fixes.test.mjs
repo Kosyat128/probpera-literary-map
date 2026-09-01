@@ -80,7 +80,7 @@ describe("confirmed editorial publication fixes", () => {
     );
   });
 
-  it("keeps every confirmed replacement anchored to the exported CMS corpus", () => {
+  it("keeps every confirmed replacement anchored before and after normalization", () => {
     const projectRoot = path.resolve(
       path.dirname(fileURLToPath(import.meta.url)),
       "..",
@@ -95,18 +95,30 @@ describe("confirmed editorial publication fixes", () => {
         `cms-${articleId}.json`,
       );
       const article = JSON.parse(readFileSync(articlePath, "utf8"));
-      const source = `${article.contentHtml || ""}\n${article.plainText || ""}`;
-      const corrected = applyEditorialPublicationFix(article);
-      const output = `${corrected.contentHtml || ""}\n${corrected.plainText || ""}`;
+      const normalizedArticle = applyEditorialPublicationFix(article);
 
-      for (const [before, after] of CONFIRMED_RUSSIAN_COPY_REPLACEMENTS[
-        articleId
-      ]) {
-        expect(source, `${articleId}: ${before}`).toContain(before);
-        if (!after.includes(before)) {
-          expect(output, `${articleId}: ${before}`).not.toContain(before);
+      for (const sourceArticle of [article, normalizedArticle]) {
+        const source = `${sourceArticle.contentHtml || ""}\n${sourceArticle.plainText || ""}`;
+        const corrected = applyEditorialPublicationFix(sourceArticle);
+        const output = `${corrected.contentHtml || ""}\n${corrected.plainText || ""}`;
+
+        for (const [before, after] of CONFIRMED_RUSSIAN_COPY_REPLACEMENTS[
+          articleId
+        ]) {
+          expect(
+            source.includes(before) || source.includes(after),
+            `${articleId}: ${before} -> ${after}`,
+          ).toBe(true);
+          if (!after.includes(before)) {
+            expect(output, `${articleId}: ${before}`).not.toContain(before);
+          }
+          expect(output, `${articleId}: ${after}`).toContain(after);
         }
-        expect(output, `${articleId}: ${after}`).toContain(after);
+
+        expect(
+          applyEditorialPublicationFix(corrected),
+          `${articleId}: repeated editorial normalization`,
+        ).toEqual(corrected);
       }
     }
   });
