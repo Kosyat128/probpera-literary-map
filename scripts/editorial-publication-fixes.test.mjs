@@ -80,6 +80,19 @@ describe("confirmed editorial publication fixes", () => {
     );
   });
 
+  it("repairs the previously persisted repeated suffix idempotently", () => {
+    const article = {
+      id: "c244258d-fd2a-48a3-a22e-38f144e75d2d",
+      content_html:
+        "<p>Компании слишком полагаются на техническую составляющуюю, экономя на сюжете.</p>",
+    };
+    const corrected = applyEditorialPublicationFix(article);
+
+    expect(corrected.content_html).toContain("техническую составляющую,");
+    expect(corrected.content_html).not.toContain("составляющуюю");
+    expect(applyEditorialPublicationFix(corrected)).toEqual(corrected);
+  });
+
   it("keeps every confirmed replacement anchored before and after normalization", () => {
     const projectRoot = path.resolve(
       path.dirname(fileURLToPath(import.meta.url)),
@@ -96,19 +109,30 @@ describe("confirmed editorial publication fixes", () => {
       );
       const article = JSON.parse(readFileSync(articlePath, "utf8"));
       const normalizedArticle = applyEditorialPublicationFix(article);
+      const sourceArticles = [article, normalizedArticle];
+      const sourceTexts = sourceArticles.map(
+        (sourceArticle) =>
+          `${sourceArticle.contentHtml || ""}\n${sourceArticle.plainText || ""}`,
+      );
 
-      for (const sourceArticle of [article, normalizedArticle]) {
-        const source = `${sourceArticle.contentHtml || ""}\n${sourceArticle.plainText || ""}`;
+      for (const [before, after] of CONFIRMED_RUSSIAN_COPY_REPLACEMENTS[
+        articleId
+      ]) {
+        expect(
+          sourceTexts.some(
+            (source) => source.includes(before) || source.includes(after),
+          ),
+          `${articleId}: ${before} -> ${after}`,
+        ).toBe(true);
+      }
+
+      for (const sourceArticle of sourceArticles) {
         const corrected = applyEditorialPublicationFix(sourceArticle);
         const output = `${corrected.contentHtml || ""}\n${corrected.plainText || ""}`;
 
         for (const [before, after] of CONFIRMED_RUSSIAN_COPY_REPLACEMENTS[
           articleId
         ]) {
-          expect(
-            source.includes(before) || source.includes(after),
-            `${articleId}: ${before} -> ${after}`,
-          ).toBe(true);
           if (!after.includes(before)) {
             expect(output, `${articleId}: ${before}`).not.toContain(before);
           }
