@@ -64,7 +64,9 @@ describe("globe filter stability wiring", () => {
       cssSource.indexOf("/* Literary Planet: lightweight, centered premium controls")
     );
 
-    expect(premiumCss).toContain("width: min(820px, calc(100% - 32px))");
+    expect(premiumCss).toContain("width: auto;");
+    expect(premiumCss).toContain("max-width: none;");
+    expect(premiumCss).toContain("width: min(820px, 100%);");
     expect(premiumCss).toContain(
       "grid-template-columns: repeat(3, minmax(0, 1fr)) 92px 48px"
     );
@@ -87,6 +89,13 @@ describe("globe filter stability wiring", () => {
       /\.literary-globe \.globe-controls\s*\{[\s\S]*?left:\s*50%;[\s\S]*?transform:\s*translateX\(-50%\);/u
     );
     expect(premiumCss).toContain("grid-auto-columns: calc((100% - 16px) / 9)");
+    expect(premiumCss).toContain("width: min(1080px, calc(100% - 96px))");
+    expect(premiumCss).toContain("grid-auto-columns: 136px;");
+    expect(premiumCss).toContain("width: min(760px, calc(100% - 24px))");
+    expect(premiumCss).toContain("width: min(360px, calc(100% - 24px))");
+    expect(premiumCss).toContain(
+      "grid-template-columns: 48px 48px repeat(3, minmax(0, 1fr))"
+    );
     expect(premiumCss).toContain("@media (prefers-reduced-motion: reduce)");
   });
 

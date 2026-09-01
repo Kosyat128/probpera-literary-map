@@ -484,9 +484,10 @@ test("premium globe controls stay balanced and inside every viewport", async ({
         if (!target) throw new Error(`Missing ${selector}`);
         return rect(target);
       };
-      const controlButtons = Array.from(
+      const controlButtonElements = Array.from(
         element.querySelectorAll(".globe-controls button")
-      ).map(rect);
+      );
+      const controlButtons = controlButtonElements.map(rect);
       return {
         chrome: select(".atlas-immersive-chrome"),
         search: select(".atlas-immersive-search-toggle"),
@@ -498,7 +499,16 @@ test("premium globe controls stay balanced and inside every viewport", async ({
         close: select(".atlas-immersive-close"),
         styleSwitch: select(".globe-style-switch"),
         controls: select(".globe-controls"),
+        instruction: select(".globe-instruction"),
         controlButtons,
+        controlLabelsFit: controlButtonElements.every((button) => {
+          const label = button.querySelector(".ui-action__label");
+          return (
+            !label ||
+            (label.scrollWidth <= label.clientWidth + 1 &&
+              label.scrollHeight <= label.clientHeight + 1)
+          );
+        }),
         identityDisplay: getComputedStyle(
           element.querySelector(".atlas-immersive-identity")
         ).display,
@@ -512,6 +522,10 @@ test("premium globe controls stay balanced and inside every viewport", async ({
     expect(
       Math.abs(geometry.chrome.x + geometry.chrome.width / 2 - viewport.width / 2)
     ).toBeLessThanOrEqual(1);
+    if (viewport.width >= 981) {
+      expect(geometry.chrome.x).toBeLessThanOrEqual(17);
+      expect(viewport.width - geometry.chrome.right).toBeLessThanOrEqual(17);
+    }
     expect(
       Math.abs(
         geometry.controls.x + geometry.controls.width / 2 - viewport.width / 2
@@ -534,6 +548,21 @@ test("premium globe controls stay balanced and inside every viewport", async ({
       expect(control.right).toBeLessThanOrEqual(viewport.width);
     }
     expect(geometry.chrome.bottom).toBeLessThanOrEqual(geometry.styleSwitch.y);
+    expect(
+      Math.max(...geometry.controlButtons.map((button) => button.y)) -
+        Math.min(...geometry.controlButtons.map((button) => button.y))
+    ).toBeLessThanOrEqual(1);
+    const controlsInstructionGap = geometry.instruction.y - geometry.controls.bottom;
+    expect(controlsInstructionGap).toBeGreaterThanOrEqual(0);
+    expect(controlsInstructionGap).toBeLessThanOrEqual(20);
+    expect(
+      Math.abs(geometry.controlButtons[0].width - geometry.controlButtons[1].width)
+    ).toBeLessThanOrEqual(1);
+    expect(
+      Math.max(...geometry.controlButtons.slice(2).map((button) => button.width)) -
+        Math.min(...geometry.controlButtons.slice(2).map((button) => button.width))
+    ).toBeLessThanOrEqual(1);
+    expect(geometry.controlLabelsFit).toBe(true);
     expect(geometry.identityDisplay).toBe(viewport.width <= 980 ? "none" : "grid");
 
   }
