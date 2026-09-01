@@ -2919,14 +2919,6 @@ export default function LiteraryGlobe({
         </Button>
       </div>
 
-      <div
-        className="globe-style-switch-reveal-zone"
-        aria-hidden="true"
-        onPointerEnter={(event) => {
-          if (event.pointerType !== "touch") revealEditionRail();
-        }}
-      />
-
       <IconButton
         ref={editionRailToggleRef}
         className="globe-style-switch-toggle"

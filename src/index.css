@@ -19151,22 +19151,6 @@ html[data-theme="book"] .calendar-heading h3 {
   line-height: 1;
 }
 
-.literary-globe .globe-style-switch-reveal-zone {
-  position: absolute;
-  z-index: 19;
-  top: 0;
-  right: 72px;
-  left: 72px;
-  height: 96px;
-  pointer-events: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .literary-globe[data-globe-edition-rail="hidden"] .globe-style-switch-reveal-zone {
-    pointer-events: auto;
-  }
-}
-
 .literary-globe .globe-style-switch-toggle {
   position: absolute;
   z-index: 23;
@@ -20760,14 +20744,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .literary-globe .globe-controls .ui-action {
     gap: 3px;
-  }
-
-  .literary-globe .globe-controls :is(
-    button[data-globe-control="auto-rotate"],
-    button[data-globe-control="reset"]
-  ) {
-    flex-direction: column;
-    gap: 2px;
   }
 
   .literary-globe .globe-controls button small {
