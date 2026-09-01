@@ -2247,14 +2247,14 @@ export default function App() {
                   "atlas",
                   "description",
                   coreAtlas?.description ||
-                    "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка.",
+                    "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.",
                   { kind: "textarea", label: "Описание литературной планеты" }
                 )}
               >
                 {language === "ru" && coreAtlas?.description
                   ? coreAtlas.description
                   : t(
-                      "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка."
+                      "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка."
                     )}
               </p>
             </div>
@@ -2339,7 +2339,7 @@ export default function App() {
                           )} · ${
                             isPublicBook(result.book)
                               ? t("проверено")
-                              : t("Не проверено")
+                              : t("не проверено")
                           }`}
                   </small>
                 </>
@@ -2441,7 +2441,13 @@ export default function App() {
                       size="md"
                       surface="dark"
                       variant="text"
-                      aria-label={`${countryName(country.code, country.name)} - ${number(country.writers.length)} ${t("авторов")}`}
+                      aria-label={`${countryName(country.code, country.name)} — ${number(country.writers.length)} ${t(
+                        selectInterfacePlural(country.writers.length, language, [
+                          "автор",
+                          "автора",
+                          "авторов",
+                        ])
+                      )}`}
                       onClick={() => {
                         selectCountry(country);
                         focusCountryPresentation();
@@ -2482,19 +2488,6 @@ export default function App() {
                   atlasExperience.enter("embedded", event.currentTarget)
                 }
               />
-              <div className="globe-copy">
-                <span>{t("Интерактивный глобус · ручная навигация")}</span>
-                <p>
-                  {t("В выбранной коллекции -")} {archiveDataStatus === "ready" ? number(filteredCountries.length) : "…"}{" "}
-                  {t(
-                    selectInterfacePlural(filteredCountries.length, language, [
-                      "страна",
-                      "страны",
-                      "стран",
-                    ])
-                  )}
-                </p>
-              </div>
               <div className="atlas-ornaments" aria-hidden="true">
                 <span className="atlas-coordinate">
                   <small>{globeCoordinateContext?.label || t("Архив мира")}</small>

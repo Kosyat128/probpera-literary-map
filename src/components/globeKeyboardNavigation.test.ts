@@ -83,7 +83,7 @@ describe("globe keyboard aria copy", () => {
     expect(
       globeKeyboardCandidateAriaCopy({ countryName: "Франция" })
     ).toBe(
-      "В центре глобуса: Франция. Нажмите Enter, чтобы открыть страну."
+      "В центре глобуса: Франция. Нажмите Enter, чтобы открыть архив страны."
     );
     expect(
       globeKeyboardCandidateAriaCopy({

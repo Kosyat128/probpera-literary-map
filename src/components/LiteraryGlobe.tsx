@@ -2917,6 +2917,9 @@ export default function LiteraryGlobe({
         >
           <small>{t("Источник")}</small>
         </Button>
+        <span className="globe-navigation-label" aria-hidden="true">
+          {t("Интерактивный глобус · ручная навигация")}
+        </span>
       </div>
 
       <IconButton
@@ -3159,7 +3162,7 @@ export default function LiteraryGlobe({
               )}`}
             </small>
             <em>
-              {t("Нажмите на метку - откроется карточка лауреата")}
+              {t("Нажмите на метку — откроется карточка лауреата")}
             </em>
           </div>
         </div>
@@ -3188,12 +3191,12 @@ export default function LiteraryGlobe({
                 ])
               )}
               {hoveredLaureate.yearRange
-                ? ` · ${hoveredLaureate.yearRange.first}-${hoveredLaureate.yearRange.last}`
+                ? ` · ${hoveredLaureate.yearRange.first}–${hoveredLaureate.yearRange.last}`
                 : ""}
             </small>
             <em>
               {t(
-                "Нажмите на кластер - откроется Нобелевский контекст страны"
+                "Нажмите на группу — откроется список лауреатов страны"
               )}
             </em>
           </div>
@@ -3240,7 +3243,7 @@ export default function LiteraryGlobe({
       <div className="globe-instruction" aria-hidden="true">
         <span>{t("Тяните или используйте стрелки")}</span>
         <i aria-hidden="true" />
-        <span>{t("Колесо или ± - масштаб")}</span>
+        <span>{t("Колесо или кнопки ± — масштаб")}</span>
       </div>
     </div>
   );

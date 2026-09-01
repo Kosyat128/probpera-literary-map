@@ -215,7 +215,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch38 = [
   {
     countryId: "maldives",
     writerId: "abdulla_sodiq",
-    patch: { years: "ок. 1935-", birthDate: "1935", coordinates: undefined },
+    patch: { years: "ок. 1935–", birthDate: "1935", coordinates: undefined },
     evidence: [
       { provider: "SunOnline International", url: "https://english.sun.mv/94453", checkedAt },
       { provider: "Maldives National University Repository", url: "https://saruna.mnu.edu.mv/items/46fe73c3-d96a-4151-803c-86bb204fefb9", checkedAt },

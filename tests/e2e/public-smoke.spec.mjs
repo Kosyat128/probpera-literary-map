@@ -411,7 +411,7 @@ test("глобус загружается только после приближ
   await expect(naturalEarthButton).toBeVisible({ timeout: 30_000 });
   await expect(nasaButton).toBeVisible({ timeout: 30_000 });
   await expect(naturalEarthButton).toHaveAccessibleName(
-    "Natural Earth - литературный атлас, 2026"
+    "Natural Earth — литературный атлас, 2026"
   );
   const initialViewport = page.viewportSize();
   const checkedWidths = isMobile ? [320, 360] : [initialViewport?.width ?? 1280, 700];

@@ -73,6 +73,41 @@ describe("globe edition registry", () => {
     }
   });
 
+  it("keeps Russian source metadata typographically normalized", () => {
+    for (const edition of GLOBE_EDITIONS) {
+      const russianMetadata = [
+        edition.fullLabel.ru,
+        edition.creator.ru,
+        edition.sourceTitle.ru,
+        edition.sourceInstitution.ru,
+        edition.rightsSummary.ru,
+        edition.alignmentDisclosure?.ru,
+        edition.reconstructionNote?.ru,
+      ].filter((value): value is string => Boolean(value));
+
+      for (const value of russianMetadata) {
+        expect(value).not.toMatch(/\s-\s/u);
+        expect(value).not.toMatch(/[“”]/u);
+      }
+    }
+
+    expect(GLOBE_EDITION_BY_ID["behaim-1492"].fullLabel.ru).toContain(
+      "1492–1494"
+    );
+    expect(GLOBE_EDITION_BY_ID["hondius-1615"].creator.ru).toBe(
+      "Йодокус Хондиус и Джузеппе де Росси"
+    );
+    expect(GLOBE_EDITION_BY_ID["cassini-1790"].creator.ru).toBe(
+      "Джованни Мария Кассини; Calcografia camerale"
+    );
+    expect(
+      GLOBE_EDITION_BY_ID["us-army-general-reference-1943"].sourceInstitution.ru
+    ).toContain("; зеркало Викисклада");
+    expect(GLOBE_EDITION_BY_ID["nasa-blue-marble"].creator.ru).toBe(
+      "NASA · Центр Годдарда · Студия научной визуализации"
+    );
+  });
+
   it("migrates the old three-style preference without retaining old ids", () => {
     expect(parseStoredGlobeEdition("antique")).toBe("rand-mcnally-1887");
     expect(parseStoredGlobeEdition("earth")).toBe("nasa-blue-marble");

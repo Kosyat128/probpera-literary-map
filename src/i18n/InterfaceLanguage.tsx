@@ -74,7 +74,7 @@ const englishInterfaceText: Record<string, string> = {
   "Литературный журнал · с 2025 года": "Literary journal · since 2025",
   "Интерактивная энциклопедия": "Interactive encyclopedia",
   "Литературная планета": "Literary Planet",
-  "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка.":
+  "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.":
     "Choose a country on the interactive globe to discover its writers, works, periods and editor-reviewed literary history.",
   "Найти страну": "Find a country",
   "Найти страну, писателя или книгу": "Find a country, writer or book",
@@ -279,6 +279,7 @@ const englishInterfaceText: Record<string, string> = {
     "Editorial image from a related article · not the cover of a specific edition",
   "Проверено редакцией": "Editorially verified",
   "Не проверено": "Not verified",
+  "не проверено": "not verified",
   "Редакционная карточка": "Editorial record",
   "Архивная запись": "Archive record",
   Автор: "Writer",
@@ -355,7 +356,7 @@ const englishInterfaceText: Record<string, string> = {
   "Тяните, чтобы вращать": "Drag to rotate",
   "Колесо - масштаб": "Scroll to zoom",
   "Тяните или используйте стрелки": "Drag or use the arrow keys",
-  "Колесо или ± - масштаб": "Scroll or use ± to zoom",
+  "Колесо или кнопки ± — масштаб": "Scroll or use the ± buttons to zoom",
   "Нажмите, чтобы открыть архив страны": "Select to open the country archive",
   "Страна выбрана · карточка архива открыта":
     "Country selected · archive card open",
@@ -383,14 +384,15 @@ const englishInterfaceText: Record<string, string> = {
   "Литературное наследие страны": "The country’s literary heritage",
   "Эпохи и направления": "Periods and movements",
   "Биография в архиве": "Biography in the archive",
-  "Для каждой биографии показан её фактический статус":
-    "Each biography shows its actual review status",
+  "У каждой биографии указан статус проверки":
+    "Each biography shows its review status",
   "Подтверждено источниками": "Source-verified",
   "Архивная справка · не проверена": "Archive note · not verified",
   "В редакционной очереди": "In editorial review",
   "Источники зафиксированы": "Sources recorded",
   "Источники ещё не зафиксированы": "Sources are not recorded yet",
-  "Проверенная биография готовится": "A verified biography is in preparation",
+  "Биография готовится к редакционной проверке":
+    "The biography is being prepared for editorial review",
   "Разделы карточки автора": "Writer card sections",
   "Произведения и награды": "Works and awards",
   "Источники и материалы": "Sources and related reading",
@@ -714,18 +716,18 @@ const englishInterfaceText: Record<string, string> = {
   "Подключаем статьи, книги, писателей и страны.":
     "Loading articles, books, writers and countries.",
   "Нобелевский лауреат": "Nobel laureate",
-  "Нажмите на метку - откроется карточка лауреата":
+  "Нажмите на метку — откроется карточка лауреата":
     "Select the marker to open the laureate’s profile",
-  "Нажмите на кластер - откроется Нобелевский контекст страны":
-    "Select the cluster to open the country’s Nobel context",
+  "Нажмите на группу — откроется список лауреатов страны":
+    "Select the group to open the country’s laureate list",
   "Статья о лауреате": "Article about the laureate",
   "лауреат страны": "country laureate",
   "лауреата страны": "country laureates",
   "лауреатов страны": "country laureates",
   "Нобелевский архив": "Nobel archive",
   "Редакционная серия": "Editorial series",
-  "Лауреаты Нобелевской премии · 1901-2025":
-    "Nobel Prize laureates · 1901-2025",
+  "Лауреаты Нобелевской премии · 1901–2025":
+    "Nobel Prize laureates · 1901–2025",
   "История премии": "History of the prize",
   "Период архива": "Archive period",
   "Все годы": "All years",
@@ -735,22 +737,23 @@ const englishInterfaceText: Record<string, string> = {
   "Сверено с официальным архивом": "Verified against the official archive",
   Рубрики: "Sections",
   "Вы следите за архивом страны": "You follow this country archive",
-  "Следить за новыми материалами страны":
+  "Следить за новыми материалами об этой стране":
     "Follow new publications about this country",
-  "Скрыть метки Нобелевских лауреатов этой страны":
+  "Скрыть метки нобелевских лауреатов этой страны":
     "Hide this country’s Nobel laureate markers",
-  "Показать всех Нобелевских лауреатов этой страны на глобусе":
+  "Показать всех нобелевских лауреатов этой страны на глобусе":
     "Show all of this country’s Nobel laureates on the globe",
   "Открыть биографию": "Open biography",
   "Вы следите за автором": "You follow this writer",
-  "Следить за новыми материалами автора":
+  "Следить за новыми материалами об авторе":
     "Follow new publications about this writer",
   "Открыть статью о лауреате": "Open the article about this laureate",
   "Лауреат Нобелевской премии по литературе":
     "Nobel Prize laureate in Literature",
-  "Читать редакционный материал года": "Read the editorial article for this year",
-  "Годовая статья готовится редакцией":
-    "The editorial article for this year is in preparation",
+  "Читать материал о премии этого года":
+    "Read the feature on this year’s prize",
+  "Редакция готовит материал о премии этого года":
+    "The editorial team is preparing a feature on this year’s prize",
   "Неизвестный автор": "Unknown writer",
   Лауреат: "Laureate",
   "Архив объединяет авторов и ключевые произведения литературной традиции страны.":

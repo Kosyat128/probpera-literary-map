@@ -96,14 +96,14 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
         </span>
         <div>
           <small>{t("Редакционная серия")}</small>
-          <strong>{t("Лауреаты Нобелевской премии · 1901-2025")}</strong>
+          <strong>{t("Лауреаты Нобелевской премии · 1901–2025")}</strong>
           <p>
             {language === "en"
               ? `${number(laureates.length)} ${
                   laureates.length === 1 ? "laureate" : "laureates"
                 }, ${number(archiveYears.length)} ${
                   archiveYears.length === 1 ? "award" : "awards"
-                }. Years with completed features link to a magazine article; all other names open a biography in the encyclopedia.`
+                }. A year with a completed feature opens a magazine article; a laureate’s name opens their biography in the encyclopedia.`
               : `${number(laureates.length)} ${pluralRu(laureates.length, [
                   "лауреат",
                   "лауреата",
@@ -111,7 +111,7 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
                 ])}, ${number(archiveYears.length)} ${pluralRu(
                   archiveYears.length,
                   ["присуждение", "присуждения", "присуждений"]
-                )}. Годы с готовыми материалами ведут к статье журнала; остальные имена открывают биографию в энциклопедии.`}
+                )}. Год с готовым материалом открывает статью журнала; имя лауреата — его биографию в энциклопедии.`}
           </p>
         </div>
         {introduction && (

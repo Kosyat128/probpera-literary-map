@@ -17,6 +17,43 @@ async function meanPixelDifference(firstPng, secondPng) {
   return difference / (info.width * info.height * 3);
 }
 
+async function selectGlobeEdition(page, edition) {
+  const globe = page.locator(".literary-globe:not(.is-loading)");
+  const rail = globe.locator("#globe-edition-rail");
+  const railToggle = globe.locator(
+    '[data-globe-control="edition-rail-toggle"]'
+  );
+
+  await expect(rail).toBeAttached();
+  if ((await rail.getAttribute("aria-hidden")) === "true") {
+    await expect(railToggle).toHaveAttribute("aria-expanded", "false");
+    await railToggle.click();
+  }
+  await expect(rail).toHaveAttribute("aria-hidden", "false");
+  await expect(railToggle).toHaveAttribute("aria-expanded", "true");
+
+  const option = rail.locator(
+    `button[data-globe-edition-option="${edition}"]`
+  );
+  await expect(option).toBeEnabled();
+  // Focusing the accessible option also cancels the rail's pending auto-hide.
+  // Explicit scrolling keeps the compact nine-edition rail usable when the
+  // requested skin begins outside its horizontal viewport.
+  await option.focus();
+  await expect(option).toBeFocused();
+  await option.scrollIntoViewIfNeeded();
+  await expect(option).toBeInViewport();
+  // Activate from the keyboard so scrolling a compact rail cannot dispatch
+  // incidental hover preloads for intermediate skins and evict the two-entry
+  // decoded-texture cache this test is explicitly verifying.
+  await option.press("Enter");
+  await expect(globe).toHaveAttribute("data-globe-edition", edition);
+  // Let the public auto-hide cycle complete. The following selection then
+  // exercises the same reveal toggle a visitor uses instead of racing a
+  // pending 650 ms hide timer with a synthetic click.
+  await expect(rail).toHaveAttribute("aria-hidden", "true");
+}
+
 test("globe preloads near the viewport but renders only while visible", async ({
   page,
 }) => {
@@ -73,7 +110,7 @@ test("globe edition preview reuses decoded texture assets", async ({
     ["nasa-blue-marble", "earth"],
     ["natural-earth-2026", "modern"],
   ]) {
-    await page.locator(`[data-globe-edition-option="${edition}"]`).click();
+    await selectGlobeEdition(page, edition);
     await expect(page.locator(".literary-globe")).toHaveAttribute(
       "data-globe-edition",
       edition
@@ -112,10 +149,7 @@ test("all globe surfaces use the same seamless star background", async ({
   const globe = page.locator(".literary-globe:not(.is-loading)");
   await expect(globe).toBeVisible({ timeout: 30_000 });
 
-  const nasa = page.locator(
-    '[data-globe-edition-option="nasa-blue-marble"]'
-  );
-  await nasa.click();
+  await selectGlobeEdition(page, "nasa-blue-marble");
   await expect(globe).toHaveAttribute("data-globe-edition", "nasa-blue-marble");
   await expect(globe).toHaveAttribute("data-globe-style", "earth");
   const activeNasaButton = page.locator(
@@ -126,11 +160,11 @@ test("all globe surfaces use the same seamless star background", async ({
   // assert the same semantic color in both serializations.
   await expect(activeNasaButton).toHaveCSS(
     "color",
-    /^rgba?\(156,\s*240,\s*207(?:,\s*1)?\)$/u
+    /^rgba?\(228,\s*247,\s*255(?:,\s*1)?\)$/u
   );
   await expect(activeNasaButton).toHaveCSS(
     "border-top-color",
-    "rgba(128, 211, 255, 0.72)"
+    "rgba(83, 183, 241, 0.84)"
   );
   const nasaPresentation = await globe.evaluate((element) => ({
       scene: getComputedStyle(element).getPropertyValue("--globe-scene-theme").trim(),
@@ -152,10 +186,7 @@ test("all globe surfaces use the same seamless star background", async ({
   });
   expect(nasaPresentation.background).toContain("radial-gradient");
 
-  const naturalEarth = page.locator(
-    '[data-globe-edition-option="natural-earth-2026"]'
-  );
-  await naturalEarth.click();
+  await selectGlobeEdition(page, "natural-earth-2026");
   await expect(globe).toHaveAttribute(
     "data-globe-edition",
     "natural-earth-2026"
@@ -180,10 +211,7 @@ test("all globe surfaces use the same seamless star background", async ({
     vignette: nasaPresentation.vignette,
   });
 
-  const randMcNally = page.locator(
-    '[data-globe-edition-option="rand-mcnally-1887"]'
-  );
-  await randMcNally.click();
+  await selectGlobeEdition(page, "rand-mcnally-1887");
   await expect(globe).toHaveAttribute(
     "data-globe-edition",
     "rand-mcnally-1887"
@@ -321,9 +349,7 @@ test("selected Indonesia remains centered after the focus animation", async ({
   await expect(canvas).toHaveCount(1);
   await expect(canvas).toBeVisible();
 
-  await page
-    .locator('[data-globe-edition-option="natural-earth-2026"]')
-    .click();
+  await selectGlobeEdition(page, "natural-earth-2026");
   await expect(page.locator(".literary-globe")).toHaveAttribute(
     "data-globe-edition",
     "natural-earth-2026"
