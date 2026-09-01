@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "current-globe-edition-source-manifest",
+  "generatedAt": "2026-09-01",
+  "baselineCommit": "47771ea84d1bc0d38b5b60dcd218b3a3949c384e",
+  "editionCount": 9,
+  "visitorVisibleEditionCount": 9,
+  "routineGlobeBuildFromSnapshotNetworkFree": true,
+  "canonicalAtlas": {
+    "path": "src/data/geo/countries.geojson",
+    "featureCount": 177,
+    "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279"
+  },
+  "alignmentGate": {
+    "metricClass": "historical-artwork-to-canonical-visible-coastline",
+    "measurementResolution": {
+      "width": 2048,
+      "height": 1024,
+      "medianMaximumPixels": 1,
+      "p95MaximumPixels": 2,
+      "maximumMaximumPixels": 6
+    },
+    "canonicalVectorToBakedLineZeroResidualCountsAsArtworkEvidence": false
+  },
+  "editions": [
+    {
+      "id": "behaim-1492",
+      "sourceConfig": "scripts/globe-editions/historical-runtime-sources.json",
+      "institution": "Universitätsbibliothek Freiburg",
+      "catalogUrl": "https://dl.ub.uni-freiburg.de/diglit/ravenstein1908",
+      "sourceSet": "Ravenstein 1908 plates 124-127",
+      "rights": "Public Domain Mark 1.0; restricted modern GNM/FAU surface is not used",
+      "builder": "scripts/build-historical-globe-textures.py",
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "artworkAlignment": "not-passed-global-modern-match-would-invent-absent-geography",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/behaim-1492-ravenstein-1908.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 2031414,
+          "sha256": "A06342CFAF146FDD4D72C0CBC870AB85946199A977D8C6366EF918BDAD19C0B8"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/behaim-1492-ravenstein-1908-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 511208,
+          "sha256": "324301CF0724C337D34C1D370DC66FA8EA3F0ABAA0AFCB34713D2DD2A469D2B5"
+        }
+      ]
+    },
+    {
+      "id": "hondius-1615",
+      "sourceConfig": "scripts/globe-editions/historical-runtime-sources.json",
+      "institution": "Library of Congress Geography and Map Division",
+      "catalogId": "2008627640 / g3201b.ct000726",
+      "catalogUrl": "https://www.loc.gov/item/2008627640/",
+      "rights": "LOC free-use/reuse route recorded",
+      "builder": "scripts/build-historical-globe-textures.py",
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "artworkAlignment": "not-passed-no-independent-fit-and-holdout-residuals",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/hondius-rossi-1615.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1929066,
+          "sha256": "4D9B6926768FC6AC91EAFA4A1586AB3FC70DFDD2D66D9A35243DC7A897E1B7B1"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/hondius-rossi-1615-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 537158,
+          "sha256": "5CE58CB1B6B3CFC102D0F012911E4A590AA6572302E8FA0B52F3BEFFB0F7687B"
+        }
+      ]
+    },
+    {
+      "id": "coronelli-1697",
+      "sourceConfig": "scripts/globe-editions/historical-runtime-sources.json",
+      "institution": "Stanford University Libraries, David Rumsey Map Center",
+      "catalogId": "fw438kx8748",
+      "catalogUrl": "https://purl.stanford.edu/fw438kx8748",
+      "rights": "Public Domain Mark 1.0",
+      "builder": "scripts/build-historical-globe-textures.py",
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "artworkAlignment": "not-passed-no-independent-fit-and-holdout-residuals",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/coronelli-1697.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1429020,
+          "sha256": "1654E3E04EE14CCDEC7CFBF7A640B212EBDE0C96949558BCF0EDEECE1DD9A012"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/coronelli-1697-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 499562,
+          "sha256": "B03C5F23F84DDAEF6DA942A64F6AC5B37FF7481E90681D5E98AB7EEFF48AEACF"
+        }
+      ]
+    },
+    {
+      "id": "scherer-1700",
+      "sourceConfig": "scripts/globe-editions/historical-runtime-sources.json",
+      "preservationAudit": "scripts/globe-editions/scherer-preservation-source.json",
+      "institution": "University of Illinois Urbana-Champaign Library",
+      "catalogId": "17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
+      "catalogUrl": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
+      "rights": "No Copyright - United States",
+      "builder": "scripts/build-historical-globe-textures.py",
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "artworkAlignment": "fail-vector-pilot-p95-41.817404-at-1024",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/scherer-1700.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1104598,
+          "sha256": "B844CC59C075E03873C137DAA761431DDB1F9F97676FAC1C33B0EC28679CFF64"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/scherer-1700-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 407040,
+          "sha256": "573B03CAD23A9C626B13BE4169B3089F6281A1E75049CB92D081E5EE1A7E6035"
+        }
+      ]
+    },
+    {
+      "id": "cassini-1790",
+      "sourceConfig": "scripts/globe-editions/cassini-1790-production-sources.json",
+      "alignmentConfig": "scripts/globe-editions/cassini-1790-alignment.json",
+      "institution": "Library of Congress Geography and Map Division",
+      "catalogId": "2004626115 / g3201b.ct001065a-e",
+      "catalogUrl": "https://www.loc.gov/item/2004626115/",
+      "rights": "LOC free-use/reuse route recorded",
+      "builder": "scripts/build-historical-globe-proof.mjs and scripts/build-cassini-adapted-master.mjs",
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "artworkAlignment": "not-passed-canonical-line-is-not-artwork-residual",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/cassini-globo-terrestre-1790.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 2619370,
+          "sha256": "D62718455EA9A04605AC1694ABE20BF551A93BF7B5C2C688DF579B6EB4398018"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/cassini-globo-terrestre-1790-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 609440,
+          "sha256": "2E0EFDD36E682D20BE5B8DB0875A71C47EF33D3D810BE45596B6E4E1D99E83F0"
+        }
+      ]
+    },
+    {
+      "id": "rand-mcnally-1887",
+      "sourceConfig": "scripts/globe-editions/rand-mcnally-1887.source.json",
+      "institution": "Library of Congress Geography and Map Division",
+      "catalogId": "g3201b.ct001417",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001417/",
+      "rights": "LOC free-use/reuse route recorded",
+      "builder": "scripts/build-antique-globe-texture.mjs",
+      "overlayProfile": "standard-canonical-overlay-v1",
+      "artworkAlignment": "user-accepted-legacy-baseline-hard-residual-not-independently-recorded",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/antique-world-1887.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 2901792,
+          "sha256": "B498488CBA930C48C5C68564AB8F355A50FE620F5AEC15353225EDCDF592A175"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/antique-world-1887-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 687972,
+          "sha256": "65EA5F03A43B6583DD95B456F42B1D184C48DC0449EABA25C5D23269B1E5974D"
+        }
+      ]
+    },
+    {
+      "id": "us-army-general-reference-1943",
+      "sourceConfig": "scripts/globe-editions/us-army-general-reference-1943.source.json",
+      "institution": "David Rumsey Map Collection, via Wikimedia Commons",
+      "catalogId": "List No. 6351.015 / sheet 1057-G",
+      "catalogUrl": "https://commons.wikimedia.org/wiki/File:General_Reference_Map_1.jpg",
+      "rights": "Underlying federal map is public domain in the United States; digital scan publication is permitted with David Rumsey credit",
+      "builder": "scripts/build-us-army-general-reference-1943.py",
+      "overlayProfile": "standard-canonical-overlay-v1",
+      "artworkAlignment": "fail-current-proxy-p95-4-at-2048-target-is-2",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/us-army-general-reference-1943.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1971264,
+          "sha256": "09418203D87AA85A465E3694E53D33B9893387796DB798966197DD19193E36D6"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/us-army-general-reference-1943-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 525424,
+          "sha256": "020F0808C4C1E0671C05124E836349884D6A204FD635057226106A9B9268D38A"
+        }
+      ]
+    },
+    {
+      "id": "nasa-blue-marble",
+      "sourceConfig": "public/textures/README.md",
+      "institution": "NASA Goddard Space Flight Center Scientific Visualization Studio",
+      "catalogId": "SVS 3487",
+      "catalogUrl": "https://svs.gsfc.nasa.gov/3487",
+      "sourceSha256": "4174334687BA05969E2F99AA2CFAF8B1847995EB525E3C1AFFCA877EAE1E2176",
+      "rights": "NASA Images and Media Usage Guidelines with credit",
+      "overlayProfile": "standard-canonical-overlay-v1",
+      "artworkAlignment": "not-applicable-modern-photographic-edition",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/earth-blue-marble.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 434610,
+          "sha256": "CC2B9B11FB1CCD4194C612C84320F0EF1AB991F6B247473BE7B51A66F3328C41"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/earth-blue-marble-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 126246,
+          "sha256": "7E7DCFFF082C0E1EFE909E6D64EE815BC1B9D17F782B802A8FD4E4B2E7A65397"
+        }
+      ]
+    },
+    {
+      "id": "natural-earth-2026",
+      "sourceConfig": "src/data/geo/countries.provenance.json",
+      "institution": "Natural Earth",
+      "catalogId": "Natural Earth I 3.2.0 / Admin 0 repository 5.1.2",
+      "catalogUrl": "https://www.naturalearthdata.com/",
+      "rights": "Public domain",
+      "builder": "scripts/build-modern-globe-texture.mjs",
+      "overlayProfile": "standard-canonical-overlay-v1",
+      "artworkAlignment": "not-applicable-canonical-modern-edition",
+      "outputs": [
+        {
+          "profile": "desktop-ru",
+          "path": "public/textures/modern-atlas-2026-ru.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1477124,
+          "sha256": "26A04A83536B6CEB7A3DB37C2FF67C083CD1699C4DD4543292E43C8D694FC4FC"
+        },
+        {
+          "profile": "mobile-ru",
+          "path": "public/textures/modern-atlas-2026-ru-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 395324,
+          "sha256": "8817B45F53A9CAA9592A711E52ED83004265F36DD98DE777776A2CB6143BD58B"
+        },
+        {
+          "profile": "desktop-en",
+          "path": "public/textures/modern-atlas-2026-en.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1461376,
+          "sha256": "8DF82C055820B44B178EFA7321888E9049821859CA0408BBC77B64B2D9219399"
+        },
+        {
+          "profile": "mobile-en",
+          "path": "public/textures/modern-atlas-2026-en-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 390810,
+          "sha256": "B897E3722909FFBEFA25013851AD2BDF605711A069E5C552129B6E470BB3C957"
+        }
+      ]
+    }
+  ]
+}

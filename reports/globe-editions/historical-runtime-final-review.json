@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "historical-runtime-final-review",
+  "trackedRecord": true,
+  "status": "runtime-assets-reviewed-artwork-alignment-not-passed",
+  "review": {
+    "independent": true,
+    "reviewedBy": "Codex independent final production-asset gate",
+    "reviewedAt": "2026-08-31",
+    "method": "The exact committed 4096x2048 production WebP for each edition was opened read-only and inspected as a complete equirectangular frame. The inspection tool presented each full frame at 2048x1024 without generating or modifying an asset. Existing production sidecar checks were used for exact desktop/mobile identity, dimensions, byte budgets, complete mapped coverage, and canonical registration metrics. Existing runtime-cycle evidence was reused; no texture rebuild, globe render, or duplicate browser run was performed for this review.",
+    "scope": [
+      "behaim-1492",
+      "hondius-1615",
+      "coronelli-1697",
+      "scherer-1700"
+    ]
+  },
+  "evidence": {
+    "productionSidecarPath": "reports/globe-editions/historical-runtime-textures.json",
+    "sourceConfigPath": "scripts/globe-editions/historical-runtime-sources.json",
+    "sourceConfigSha256": "33595DF76BB81633F978F2C43E2410C9A46EDE0BF4CC2B4AF67FFE8CE39A9904",
+    "canonicalAtlas": {
+      "path": "src/data/geo/countries.geojson",
+      "dataset": "Natural Earth Admin 0 - Countries",
+      "repositoryVersion": "5.1.2",
+      "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279"
+    },
+    "existingRuntimeCycleRecordPath": "reports/globe-editions/cassini-1790-runtime-final-review.json",
+    "runtimeEvidenceReuse": "The existing Chrome/Playwright/WebGL2 record already cycles all four reviewed editions among the eight visible editions, verifies one texture assignment per edition, and checks selector/panel containment. This review does not claim a new runtime execution."
+  },
+  "metricInterpretation": {
+    "canonicalRegistrationResidual": "The reported 0 px median, p95, and maximum residuals compare the runtime SVG interaction outline with the baked registration line generated from the same pinned canonical union coastline. They prove placement consistency between those two layers only.",
+    "notMeasured": "The 0 px values do not measure a modern coastline against the historical engraved or painted coastline and must not be presented as historical-geography accuracy.",
+    "historicalDifferences": "Early-modern omissions, false or generalized landforms, scale and longitude distortions, engraved gore curvature, sheet joins, period lettering, and source tonal variation are intentional source characteristics and remain visible. No nonlinear warp was introduced to make the historical artwork silently imitate modern geography."
+  },
+  "editions": [
+    {
+      "id": "behaim-1492",
+      "title": "Martin Behaim 1492 - Ravenstein facsimile 1908",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/behaim-1492-ravenstein-1908.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 2031414,
+          "sha256": "A06342CFAF146FDD4D72C0CBC870AB85946199A977D8C6366EF918BDAD19C0B8"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/behaim-1492-ravenstein-1908-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 511208,
+          "sha256": "324301CF0724C337D34C1D370DC66FA8EA3F0ABAA0AFCB34713D2DD2A469D2B5"
+        }
+      ],
+      "visualReview": {
+        "result": "pass-with-declared-historical-differences",
+        "notes": "The complete facsimile-derived world surface is present with legible period illustration and text, stable east-west ordering, and no unmapped band. Facsimile sheet and polar-join transitions remain visible as source/construction evidence. The thin canonical registration contour remains a single layer; large differences around historically absent or conjectural geography are expected and are not alignment defects."
+      }
+    },
+    {
+      "id": "hondius-1615",
+      "title": "Jodocus Hondius / Giuseppe di Rossi - Terrestrial Globe Gores, 1615",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/hondius-rossi-1615.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1929066,
+          "sha256": "4D9B6926768FC6AC91EAFA4A1586AB3FC70DFDD2D66D9A35243DC7A897E1B7B1"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/hondius-rossi-1615-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 537158,
+          "sha256": "5CE58CB1B6B3CFC102D0F012911E4A590AA6572302E8FA0B52F3BEFFB0F7687B"
+        }
+      ],
+      "visualReview": {
+        "result": "pass-with-declared-historical-differences",
+        "notes": "The twelve-gore sequence forms a complete north-up world frame without a 180-degree reversal, missing gore, or blank pole-to-pole strip. Engraving, cartouches, meridians, and source-paper variation remain readable. The single faint canonical registration contour is correctly separated from the dense historical coast and does not add modern country borders."
+      }
+    },
+    {
+      "id": "coronelli-1697",
+      "title": "Vincenzo Coronelli - Globe Gores, 1697",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/coronelli-1697.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1429020,
+          "sha256": "1654E3E04EE14CCDEC7CFBF7A640B212EBDE0C96949558BCF0EDEECE1DD9A012"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/coronelli-1697-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 499562,
+          "sha256": "B03C5F23F84DDAEF6DA942A64F6AC5B37FF7481E90681D5E98AB7EEFF48AEACF"
+        }
+      ],
+      "visualReview": {
+        "result": "pass-with-declared-historical-differences",
+        "notes": "All twelve terrestrial gores are present in a continuous north-up sequence; the celestial source panel is absent as intended. Dense engraved linework remains visible through the adaptation, with expected tip stretching and tonal seams near the poles. The canonical interaction contour is one restrained line without a second modern boundary layer."
+      }
+    },
+    {
+      "id": "scherer-1700",
+      "title": "Heinrich Scherer - Typus Totius Orbis Terraquei, 1700",
+      "outputs": [
+        {
+          "profile": "desktop",
+          "path": "public/textures/scherer-1700.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1104598,
+          "sha256": "B844CC59C075E03873C137DAA761431DDB1F9F97676FAC1C33B0EC28679CFF64"
+        },
+        {
+          "profile": "mobile",
+          "path": "public/textures/scherer-1700-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 407040,
+          "sha256": "573B03CAD23A9C626B13BE4169B3089F6281A1E75049CB92D081E5EE1A7E6035"
+        }
+      ],
+      "visualReview": {
+        "result": "pass-with-declared-historical-differences",
+        "notes": "The colored twelve-gore map is complete, north-up, and correctly ordered, with no missing strip or gross hemisphere swap. Period color, lettering, and visible gore-to-gore source transitions are retained. The faint single canonical contour can diverge locally from Scherer's historical coastlines by design and is not evidence that those coastlines were modernized."
+      }
+    }
+  ],
+  "sharedQa": {
+    "mappedPixelCoveragePercent": 100,
+    "desktopMobileNormalizedRegistrationDriftPixelsAtMobile": 0,
+    "canonicalRegistrationGate": {
+      "metricClass": "canonical-vector-to-rendered-registration-line",
+      "controlPointCountPerEdition": 12,
+      "renderWidth": 2048,
+      "renderHeight": 1024,
+      "medianResidualPixels": 0,
+      "p95ResidualPixels": 0,
+      "maximumResidualPixels": 0,
+      "pass": true
+    },
+    "historicalArtworkAlignmentGate": {
+      "metricClass": "historical-artwork-edge-to-canonical-coastline",
+      "productionRequirementPixels": {
+        "medianMaximum": 1,
+        "p95Maximum": 2
+      },
+      "productionEditionsMeasured": [],
+      "schererPilotAt1024": {
+        "medianResidualPixels": 7.81,
+        "p95ResidualPixels": 57.456,
+        "productionEligible": false
+      },
+      "pass": false
+    },
+    "modernCountryBoundariesRasterized": false,
+    "canonicalUnionCoastlineRasterized": true
+  },
+  "knownLimitations": [
+    "Only the exact desktop production textures were newly inspected visually in this review; the mobile artifacts are covered by their exact identities, dimensions, budget checks, normalized registration-drift gate, and existing runtime-cycle evidence.",
+    "Whole-frame inspection can reject gross ordering, coverage, duplication, and seam failures but does not convert historical artwork into a geodetic control dataset.",
+    "Visible historical-to-canonical coastline separation is expected where the source omits, conjectures, generalizes, or distorts geography.",
+    "Gore-tip stretching, paper/facsimile joins, and restrained tonal discontinuities are retained when removing them would invent source content."
+  ],
+  "gates": {
+    "exactProductionAssetIdentity": "pass",
+    "wholeFrameDesktopVisualReview": "pass-with-declared-historical-differences",
+    "canonicalRegistrationPlacement": "pass",
+    "historicalArtworkToCanonicalAlignment": "not-passed",
+    "historicalGeographyAccuracyClaimed": false,
+    "duplicateModernBoundaryLayerDetected": false,
+    "runtimeAssetReview": "pass"
+  }
+}

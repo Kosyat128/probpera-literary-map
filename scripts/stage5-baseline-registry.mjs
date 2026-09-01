@@ -225,18 +225,18 @@ export const stage5FinalInterfaceCopyAttestation = Object.freeze({
   sourceStage5FSha: "d473278a7d0617f14b1d50938fda9bab5c464efa",
   sourceMainSyncSha: "c1939a632bc4c3d36649e7c4b2076fcc0711d2c4",
   interfaceLanguage: Object.freeze({
-    entries: 1189,
+    entries: 1203,
     keysSha256:
-      "f014859939322308d717a0d4245c8b1ef846a66076a34f8757f8901fbb1bd471",
+      "72042fd7f579032c1836f87174d8a2267852702e988b42507b0b1baf082a722a",
     pairsSha256:
-      "2153ede98400e11faf5c73cd5ee15427394c62be6b05543886b7efa0a1f3f92d",
+      "91bbe2a9c8a5e8108f5d64f71d0915d803a6860f7a757009a6660647838ca75b",
   }),
   catalog: Object.freeze({
-    entries: 1403,
+    entries: 1417,
     keysSha256:
-      "a2c49b3f52525047d62484be28ff06867c0c5617340752bce8a9fd1574cc46fd",
+      "dcf84a74db6063b7524173c7498d4b6a5b0e1fc0533524a2118e6949c0911198",
     contentSha256:
-      "87492117cb62bdfa216dc5ca8f7c4bf32fce926c24ee2847fa968f5e7aff03f3",
+      "76230bb1aab9ff01544bec4a66a4b317b37cad01ec18d162dd3b64d8e4a0a29a",
   }),
 });
 
@@ -304,7 +304,7 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 19,
       sha256:
-        "67d9f0757f5dba3d0e1ae45787310f6ee8a7d4d1e1ba1e62e0213400e6e2e874",
+        "e15efbe454406893afb0d1de0b9efc6abb692b309848d92e69e0f234523f4134",
     }),
   }),
   premiumCurrent: Object.freeze({
@@ -313,7 +313,7 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 72,
       sha256:
-        "48c5fe1c85c135b365b7ec5e71c2e11fe621e424effb8602b32c617fbd0512fc",
+        "4b42e0650d0936bd3d90dff8f5fc90bf49904178001e28a4bdff9af02043a7ea",
     }),
   }),
 });
@@ -366,9 +366,9 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
                 enforced: Object.freeze({
                   paths: ["src/index.css"],
                   expected: Object.freeze({
-                    rules: 211,
+                    rules: 225,
                     sha256:
-                      "abd43284cc25668db3529c3b111b0286dfa616c413cc2d8762ba24ec72403113",
+                      "576898463bc2f981e3ddfdbb283ac82b961d2eaeb5a5fb316d35f89fd528d743",
                   }),
                 }),
               })

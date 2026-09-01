@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "editionId": "cassini-1790",
+  "stage": "runtime-texture-staged-candidate",
+  "artifactKind": "cassini-runtime-polar-fix-staged-export",
+  "trackedSidecar": true,
+  "productionReady": false,
+  "reviewState": "staged-awaiting-exact-4k-2k-review",
+  "deterministic": true,
+  "supersedes": {
+    "path": "reports/globe-editions/cassini-1790-runtime-textures.json",
+    "bytes": 3236,
+    "sha256": "C5E2360C88CE8E067F8D95EDF16D24FC964DFE2084AA0EDE30625A9ECF95247B",
+    "productionReady": true,
+    "outputs": [
+      {
+        "profile": "desktop",
+        "path": "public/textures/cassini-globo-terrestre-1790.webp",
+        "bytes": 2655672,
+        "sha256": "F552FB3D760B3F2F113EDF0C21EA5836D97888AB250E109B27F5BF3A8AD13C54"
+      },
+      {
+        "profile": "mobile",
+        "path": "public/textures/cassini-globo-terrestre-1790-mobile.webp",
+        "bytes": 609300,
+        "sha256": "D00BDDA7853C292C9501D3B6D7C9E17F35AA81E3F3B4CD43C7AF1312A28AFDC3"
+      }
+    ],
+    "reason": "replace-synthetic-polar-artifacts-with-source-derived-longitude-neutral-treatment"
+  },
+  "source": {
+    "adaptedMasterSidecar": {
+      "path": "reports/globe-editions/cassini-1790-interactive-adapted-master.json",
+      "bytes": 12187,
+      "sha256": "63E597362F58CE220EF347A912BC8AA3BDFF0527D18E39EF0197E56EDDD79BC9"
+    },
+    "adaptedMaster": {
+      "path": "scripts/.cache/globe-editions/cassini-1790/masters/cassini-1790-interactive-adapted-master-8192x4096.png",
+      "bytes": 64825773,
+      "sha256": "0E0F8FD6A54882663725434B3E422990D22976DA6DFEB90F699D12DA6525BAF2",
+      "width": 8192,
+      "height": 4096
+    },
+    "modifiedInPlace": false
+  },
+  "alignmentReviewRecord": {
+    "path": "reports/globe-editions/cassini-1790-independent-alignment-review.json",
+    "bytes": 3911,
+    "sha256": "3E510B39BE116480771BF9EAE7FF6B3B75F115E57E023A74773C9389FF5C3235",
+    "status": "reviewed",
+    "reviewedBy": "Codex independent final visual gate",
+    "reviewedAt": "2026-08-31"
+  },
+  "portAttestation": {
+    "portedAt": "2026-09-01",
+    "candidateWebpHashesReverifiedOnPort": true,
+    "candidateReencodedOnPort": false,
+    "historicalArtworkToCanonicalAlignment": "not-passed"
+  },
+  "encoding": {
+    "format": "webp",
+    "lossless": false,
+    "effort": 6,
+    "smartSubsample": true,
+    "resizeKernel": "lanczos3",
+    "baseline": "current-rand-mcnally-1887-runtime-profile"
+  },
+  "outputs": [
+    {
+      "profile": "desktop",
+      "path": "scripts/.cache/globe-editions/cassini-1790/runtime-polar-fix-candidate/cassini-globo-terrestre-1790.webp",
+      "width": 4096,
+      "height": 2048,
+      "format": "webp",
+      "bytes": 2619370,
+      "sha256": "D62718455EA9A04605AC1694ABE20BF551A93BF7B5C2C688DF579B6EB4398018",
+      "lossless": false,
+      "quality": 92,
+      "effort": 6,
+      "resizeKernel": "lanczos3",
+      "upscaled": false,
+      "colorSpace": "srgb",
+      "depth": "uchar",
+      "bitsPerChannel": 8,
+      "channels": 3,
+      "hasAlpha": false,
+      "hasIccProfile": false,
+      "intendedProductionPath": "public/textures/cassini-globo-terrestre-1790.webp"
+    },
+    {
+      "profile": "mobile",
+      "path": "scripts/.cache/globe-editions/cassini-1790/runtime-polar-fix-candidate/cassini-globo-terrestre-1790-mobile.webp",
+      "width": 2048,
+      "height": 1024,
+      "format": "webp",
+      "bytes": 609440,
+      "sha256": "2E0EFDD36E682D20BE5B8DB0875A71C47EF33D3D810BE45596B6E4E1D99E83F0",
+      "lossless": false,
+      "quality": 86,
+      "effort": 6,
+      "resizeKernel": "lanczos3",
+      "upscaled": false,
+      "colorSpace": "srgb",
+      "depth": "uchar",
+      "bitsPerChannel": 8,
+      "channels": 3,
+      "hasAlpha": false,
+      "hasIccProfile": false,
+      "intendedProductionPath": "public/textures/cassini-globo-terrestre-1790-mobile.webp"
+    }
+  ],
+  "gates": {
+    "predecessorChecksum": "verified",
+    "adaptedMasterChecksum": "verified",
+    "independentAlignmentReview": "pass",
+    "fourKAndTwoKVisualReview": "pending",
+    "runtimeReview": "pending",
+    "productionReady": false
+  },
+  "runtime": {
+    "node": "24.19.0",
+    "sharp": "0.35.3",
+    "vips": "8.18.3"
+  }
+}

@@ -5,6 +5,14 @@ import type { Country } from "../data/countries/types";
 import type { InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { GlobeTextureImageCache } from "./globeAssetCache";
 import {
+  DEFAULT_GLOBE_EDITION_ID,
+  GLOBE_EDITION_BY_ID,
+  editionIdForLegacySurfaceProfile,
+  resolveGlobeEditionTextureUrl,
+  type GlobeEditionId,
+  type GlobeOverlayProfile,
+} from "./globeEditions";
+import {
   countryFocusMetricsFromGeometries,
   type CountryFocusMetrics,
 } from "./globeFocusMath";
@@ -107,6 +115,15 @@ export type GlobeAtlas = {
     hoveredCountryId?: string | null,
     candidateCountryId?: string | null
   ) => void;
+  setEdition: (
+    editionId: GlobeEditionId,
+    language?: InterfaceLanguage
+  ) => Promise<void>;
+  preloadEdition: (
+    editionId: GlobeEditionId,
+    language?: InterfaceLanguage
+  ) => Promise<void>;
+  /** Compatibility bridge for callers and tests that still use three surfaces. */
   setVisualStyle: (
     style: GlobeVisualStyle,
     language?: InterfaceLanguage
@@ -194,15 +211,28 @@ function loadWorldGeoJson() {
 }
 
 function loadGlobeMap(
-  style: GlobeVisualStyle,
+  editionId: GlobeEditionId,
   compact: boolean,
   language: InterfaceLanguage
 ) {
-  const assetName = globeTextureAssetName(style, compact, language);
-  if (!assetName) return Promise.resolve<HTMLImageElement | null>(null);
+  const assetUrl = resolveGlobeEditionTextureUrl(editionId, compact, language);
+  if (!assetUrl) return Promise.resolve<HTMLImageElement | null>(null);
   return globeMapCache.load(
-    assetName,
-    `${import.meta.env.BASE_URL}${assetName}`
+    `${editionId}:${compact ? "compact" : "desktop"}:${language}:${assetUrl}`,
+    `${import.meta.env.BASE_URL}${assetUrl}`
+  );
+}
+
+function preloadGlobeMap(
+  editionId: GlobeEditionId,
+  compact: boolean,
+  language: InterfaceLanguage
+) {
+  const assetUrl = resolveGlobeEditionTextureUrl(editionId, compact, language);
+  if (!assetUrl) return Promise.resolve<HTMLImageElement | null>(null);
+  return globeMapCache.preload(
+    `${editionId}:${compact ? "compact" : "desktop"}:${language}:${assetUrl}`,
+    `${import.meta.env.BASE_URL}${assetUrl}`
   );
 }
 
@@ -611,7 +641,8 @@ function drawMapCanvas(
   canvas: HTMLCanvasElement,
   features: GeoFeature[],
   style: GlobeVisualStyle,
-  sourceMap: HTMLImageElement | null
+  sourceMap: HTMLImageElement | null,
+  overlayProfile: GlobeOverlayProfile
 ) {
   const { width, height } = canvas;
   const context = canvas.getContext("2d");
@@ -677,17 +708,19 @@ function drawMapCanvas(
   }
 
   const isEarth = style === "earth";
-  features.forEach((feature) => {
-    drawFeature(
-      context,
-      feature,
-      width,
-      height,
-      "rgba(0, 0, 0, 0)",
-      isEarth ? "rgba(145, 207, 232, 0.14)" : "rgba(62, 30, 13, 0.24)",
-      isEarth ? 0.68 : 0.86
-    );
-  });
+  if (overlayProfile.permanentCountryBorders) {
+    features.forEach((feature) => {
+      drawFeature(
+        context,
+        feature,
+        width,
+        height,
+        "rgba(0, 0, 0, 0)",
+        isEarth ? "rgba(145, 207, 232, 0.14)" : "rgba(62, 30, 13, 0.24)",
+        isEarth ? 0.68 : 0.86
+      );
+    });
+  }
 
   const glaze = context.createRadialGradient(
     width * 0.46,
@@ -715,12 +748,13 @@ function makeMapCanvas(
   style: GlobeVisualStyle,
   sourceMap: HTMLImageElement | null,
   width: number,
-  height: number
+  height: number,
+  overlayProfile: GlobeOverlayProfile
 ) {
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
-  drawMapCanvas(canvas, features, style, sourceMap);
+  drawMapCanvas(canvas, features, style, sourceMap, overlayProfile);
   return canvas;
 }
 
@@ -901,18 +935,24 @@ function configureDynamicHighlightTexture(texture: THREE.CanvasTexture) {
   return texture;
 }
 
-async function loadVisualStyleMap(
-  style: GlobeVisualStyle,
+async function loadEditionMap(
+  editionId: GlobeEditionId,
   compact: boolean,
   language: InterfaceLanguage
 ) {
   try {
-    return await loadGlobeMap(style, compact, language);
+    const image = await loadGlobeMap(editionId, compact, language);
+    if (!image && editionId !== "rand-mcnally-1887" && editionId !== "natural-earth-2026") {
+      throw new Error(`Globe edition has no runtime texture: ${editionId}`);
+    }
+    return image;
   } catch (error) {
-    // Antique and Modern both have deterministic procedural fallbacks. Earth
-    // must never silently masquerade as another surface when its NASA asset is
-    // missing.
-    if (style === "antique" || style === "modern") return null;
+    // Only the two canonical legacy anchors have deterministic procedural
+    // fallbacks. A missing historical image must never masquerade as another
+    // edition.
+    if (editionId === "rand-mcnally-1887" || editionId === "natural-earth-2026") {
+      return null;
+    }
     throw error;
   }
 }
@@ -927,16 +967,21 @@ function throwIfAtlasCreationAborted(signal?: AbortSignal) {
 
 export async function createGlobeAtlas(
   countries: Country[],
-  initialVisualStyle: GlobeVisualStyle = "antique",
+  initialEditionOrStyle: GlobeEditionId | GlobeVisualStyle = DEFAULT_GLOBE_EDITION_ID,
   initialLanguage: InterfaceLanguage = "ru",
   options: CreateGlobeAtlasOptions = {}
 ): Promise<GlobeAtlas> {
   const { signal } = options;
   throwIfAtlasCreationAborted(signal);
   const compact = options.compact ?? window.innerWidth <= 900;
+  const initialEditionId = isGlobeVisualStyle(initialEditionOrStyle)
+    ? editionIdForLegacySurfaceProfile(initialEditionOrStyle)
+    : initialEditionOrStyle;
+  const initialEdition = GLOBE_EDITION_BY_ID[initialEditionId];
+  const initialVisualStyle = initialEdition.legacySurfaceProfile;
   const [worldGeoJson, sourceMap] = await Promise.all([
     loadWorldGeoJson(),
-    loadVisualStyleMap(initialVisualStyle, compact, initialLanguage),
+    loadEditionMap(initialEditionId, compact, initialLanguage),
   ]);
   // React StrictMode intentionally cancels the first effect. Stop before the
   // three large 2D canvases are allocated and painted for that stale mount.
@@ -1020,7 +1065,8 @@ export async function createGlobeAtlas(
     initialVisualStyle,
     sourceMap,
     mapWidth,
-    mapHeight
+    mapHeight,
+    initialEdition.overlayProfile
   );
   const mapTexture = configureTexture(new THREE.CanvasTexture(mapCanvas));
   const reliefWidth = Math.min(mapWidth, COMPACT_MAP_WIDTH);
@@ -1049,6 +1095,8 @@ export async function createGlobeAtlas(
   let activeHoveredCountryId: string | null = null;
   let activeCandidateCountryId: string | null = null;
   let disposed = false;
+  let activeEditionId = initialEditionId;
+  let activeOverlayProfile = initialEdition.overlayProfile;
   let activeVisualStyle = initialVisualStyle;
   let activeLanguage = initialLanguage;
   let visualStyleRequest = 0;
@@ -1238,6 +1286,14 @@ export async function createGlobeAtlas(
     highlightContext.clearRect(0, 0, highlightWidth, highlightHeight);
 
     if (
+      !activeOverlayProfile.selectionRasterFill &&
+      !activeOverlayProfile.selectionRasterOutline
+    ) {
+      highlightTexture.needsUpdate = true;
+      return;
+    }
+
+    if (
       activeCandidateCountryId &&
       activeCandidateCountryId !== activeHoveredCountryId &&
       activeCandidateCountryId !== activeSelectedCountryId
@@ -1316,35 +1372,55 @@ export async function createGlobeAtlas(
     );
   };
 
-  const setVisualStyle = async (
-    style: GlobeVisualStyle,
+  const setEdition = async (
+    editionId: GlobeEditionId,
     language: InterfaceLanguage = activeLanguage
   ) => {
     const request = ++visualStyleRequest;
+    const edition = GLOBE_EDITION_BY_ID[editionId];
+    const style = edition.legacySurfaceProfile;
     if (
-      style === activeVisualStyle &&
-      (style !== "modern" || language === activeLanguage)
+      editionId === activeEditionId &&
+      (editionId !== "natural-earth-2026" || language === activeLanguage)
     ) {
       return;
     }
 
-    const nextMap = await loadVisualStyleMap(style, compact, language);
+    const nextMap = await loadEditionMap(editionId, compact, language);
     if (disposed || request !== visualStyleRequest) return;
 
-    drawMapCanvas(mapCanvas, worldGeoJson.features, style, nextMap);
+    drawMapCanvas(
+      mapCanvas,
+      worldGeoJson.features,
+      style,
+      nextMap,
+      edition.overlayProfile
+    );
+    activeEditionId = editionId;
+    activeOverlayProfile = edition.overlayProfile;
     activeVisualStyle = style;
     activeLanguage = language;
     mapTexture.needsUpdate = true;
     redrawHighlights();
   };
 
-  const preloadVisualStyle = async (
-    style: GlobeVisualStyle,
+  const preloadEdition = async (
+    editionId: GlobeEditionId,
     language: InterfaceLanguage = activeLanguage
   ) => {
     if (disposed) return;
-    await loadVisualStyleMap(style, compact, language);
+    await preloadGlobeMap(editionId, compact, language);
   };
+
+  const setVisualStyle = (
+    style: GlobeVisualStyle,
+    language: InterfaceLanguage = activeLanguage
+  ) => setEdition(editionIdForLegacySurfaceProfile(style), language);
+
+  const preloadVisualStyle = (
+    style: GlobeVisualStyle,
+    language: InterfaceLanguage = activeLanguage
+  ) => preloadEdition(editionIdForLegacySurfaceProfile(style), language);
 
   return {
     mapTexture,
@@ -1358,6 +1434,8 @@ export async function createGlobeAtlas(
     prewarmFocusMetrics,
     outlineGeometryForCountry,
     updateHighlight,
+    setEdition,
+    preloadEdition,
     setVisualStyle,
     preloadVisualStyle,
     dispose: () => {

@@ -402,27 +402,32 @@ test("глобус загружается только после приближ
   if (isMobile) await page.setViewportSize({ width: 320, height: 820 });
   await page.goto("/");
   await page.locator("#atlas").scrollIntoViewIfNeeded();
-  const classicButton = page
-    .locator(".globe-style-switch")
-    .getByRole("button", { name: "Классический" });
-  const modernButton = page
-    .locator(".globe-style-switch")
-    .getByRole("button", { name: "Современный" });
-  await expect(classicButton).toBeVisible({ timeout: 30_000 });
-  await expect(modernButton).toBeVisible({ timeout: 30_000 });
-  await expect(classicButton).toHaveAttribute("data-globe-style-option", "modern");
-  await expect(modernButton).toHaveAttribute("data-globe-style-option", "earth");
+  const naturalEarthButton = page.locator(
+    '[data-globe-edition-option="natural-earth-2026"]'
+  );
+  const nasaButton = page.locator(
+    '[data-globe-edition-option="nasa-blue-marble"]'
+  );
+  await expect(naturalEarthButton).toBeVisible({ timeout: 30_000 });
+  await expect(nasaButton).toBeVisible({ timeout: 30_000 });
+  await expect(naturalEarthButton).toHaveAccessibleName(
+    "Natural Earth: литературный атлас, 2026"
+  );
   const initialViewport = page.viewportSize();
   const checkedWidths = isMobile ? [320, 360] : [initialViewport?.width ?? 1280, 700];
   for (const width of checkedWidths) {
     await page.setViewportSize({ width, height: isMobile ? 820 : 900 });
     const styleButtons = page.locator(".globe-style-switch button");
     for (let index = 0; index < (await styleButtons.count()); index += 1) {
+      const buttonMetrics = await styleButtons.nth(index).evaluate((element) => ({
+        clientWidth: element.clientWidth,
+        label: element.getAttribute("data-globe-edition-option") || element.textContent,
+        scrollWidth: element.scrollWidth,
+      }));
       expect(
-        await styleButtons.nth(index).evaluate(
-          (element) => element.scrollWidth <= element.clientWidth
-        )
-      ).toBe(true);
+        buttonMetrics.scrollWidth,
+        `${width}px ${buttonMetrics.label} edition label must fit its button`
+      ).toBeLessThanOrEqual(buttonMetrics.clientWidth);
     }
   }
   if (initialViewport) await page.setViewportSize(initialViewport);
@@ -433,14 +438,16 @@ test("глобус загружается только после приближ
     : "modern-atlas-2026-ru.webp";
   const russianTextureResponse = page.waitForResponse(
     (response) =>
-      response.url().endsWith(`/textures/${russianFilename}`) &&
+      new URL(response.url()).pathname.endsWith(`/textures/${russianFilename}`) &&
       response.status() === 200
   );
-  // The Natural Earth cartographic texture is the public "Classic" mode;
-  // "Modern" is the photographic Blue Marble surface.
-  await classicButton.click();
+  await naturalEarthButton.click();
   const loadedRussianTexture = await russianTextureResponse;
   expect(loadedRussianTexture.ok()).toBe(true);
+  await expect(page.locator(".literary-globe")).toHaveAttribute(
+    "data-globe-edition",
+    "natural-earth-2026"
+  );
   await expect(page.locator(".literary-globe")).toHaveAttribute(
     "data-globe-style",
     "modern"
@@ -464,7 +471,7 @@ test("глобус загружается только после приближ
     : "modern-atlas-2026-en.webp";
   const englishTextureResponse = page.waitForResponse(
     (response) =>
-      response.url().endsWith(`/textures/${englishFilename}`) &&
+      new URL(response.url()).pathname.endsWith(`/textures/${englishFilename}`) &&
       response.status() === 200
   );
   await page
@@ -474,8 +481,15 @@ test("глобус загружается только после приближ
   const loadedEnglishTexture = await englishTextureResponse;
   expect(loadedEnglishTexture.ok()).toBe(true);
   await expect(page.locator(".literary-globe")).toHaveAttribute(
+    "data-globe-edition",
+    "natural-earth-2026"
+  );
+  await expect(page.locator(".literary-globe")).toHaveAttribute(
     "data-globe-style",
     "modern"
+  );
+  await expect(naturalEarthButton).toHaveAccessibleName(
+    "Natural Earth - Literary Atlas, 2026"
   );
   await expect(page.locator(".globe-modern-badge")).toContainText(
     "Classic atlas · 2026"

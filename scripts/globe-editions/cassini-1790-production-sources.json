@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "editionId": "cassini-1790",
+  "artifactKind": "official-full-resolution-production-source-inputs",
+  "sourceInputsOnly": true,
+  "masterArtifact": false,
+  "runtimeEligible": false,
+  "tracked": false,
+  "acquisitionDate": "2026-08-30",
+  "cacheDirectory": "scripts/.cache/globe-editions/cassini-1790/production-inputs",
+  "institution": "Library of Congress Geography and Map Division",
+  "catalogId": "2004626115",
+  "catalogUrl": "https://www.loc.gov/item/2004626115/",
+  "rights": {
+    "status": "accepted_for_acquisition",
+    "basis": "No item-specific Rights Advisory was found; acquisition follows the Library of Congress Geography and Map Division free-use/reuse guidance for items without an advisory.",
+    "credit": "Library of Congress Geography and Map Division"
+  },
+  "sources": [
+    {
+      "id": "a",
+      "resourceId": "g3201b.ct001065a",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065a/",
+      "role": "terrestrial_gores_1_3",
+      "productionSourceInput": {
+        "filename": "cassini-1790-a-full.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065a/full/full/0/default.jpg",
+        "width": 5267,
+        "height": 6988,
+        "bytes": 4024731,
+        "sha256": "15B056546A1A82713EBC86C9E172B5003D3CC555B3BB88C2A886D75BB099354A",
+        "format": "jpeg",
+        "colorSpace": "srgb",
+        "depth": "uchar",
+        "channels": 3,
+        "hasIccProfile": false,
+        "tracked": false,
+        "masterArtifact": false
+      }
+    },
+    {
+      "id": "b",
+      "resourceId": "g3201b.ct001065b",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065b/",
+      "role": "terrestrial_gores_4_6",
+      "productionSourceInput": {
+        "filename": "cassini-1790-b-full.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065b/full/full/0/default.jpg",
+        "width": 5254,
+        "height": 6944,
+        "bytes": 3905296,
+        "sha256": "CBD709798614A98EA54EA42B06FD58CDC5E4E74CF4F7B8310AB97A5920932805",
+        "format": "jpeg",
+        "colorSpace": "srgb",
+        "depth": "uchar",
+        "channels": 3,
+        "hasIccProfile": false,
+        "tracked": false,
+        "masterArtifact": false
+      }
+    },
+    {
+      "id": "c",
+      "resourceId": "g3201b.ct001065c",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065c/",
+      "role": "terrestrial_gores_7_9",
+      "productionSourceInput": {
+        "filename": "cassini-1790-c-full.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065c/full/full/0/default.jpg",
+        "width": 5250,
+        "height": 7016,
+        "bytes": 3714867,
+        "sha256": "7D390424444D94AD18CD86480D668F22080677B4B4CBB5B12415FE3B6EACBC42",
+        "format": "jpeg",
+        "colorSpace": "srgb",
+        "depth": "uchar",
+        "channels": 3,
+        "hasIccProfile": false,
+        "tracked": false,
+        "masterArtifact": false
+      }
+    },
+    {
+      "id": "d",
+      "resourceId": "g3201b.ct001065d",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065d/",
+      "role": "terrestrial_gores_10_12",
+      "productionSourceInput": {
+        "filename": "cassini-1790-d-full.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065d/full/full/0/default.jpg",
+        "width": 5296,
+        "height": 6959,
+        "bytes": 3907727,
+        "sha256": "DB2ABF280DEF8AAFB088FD011303DA9A99D012227324434FAEE05034570BA776",
+        "format": "jpeg",
+        "colorSpace": "srgb",
+        "depth": "uchar",
+        "channels": 3,
+        "hasIccProfile": false,
+        "tracked": false,
+        "masterArtifact": false
+      }
+    },
+    {
+      "id": "e",
+      "resourceId": "g3201b.ct001065e",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065e/",
+      "role": "polar_caps_and_zodiac_assembly",
+      "productionSourceInput": {
+        "filename": "cassini-1790-e-full.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065e/full/full/0/default.jpg",
+        "width": 7056,
+        "height": 5261,
+        "bytes": 3860780,
+        "sha256": "A0D014984E1ED9AAD727B93DCF4D93A0641072EA90EEFBFBADFE6F76508E26A8",
+        "format": "jpeg",
+        "colorSpace": "srgb",
+        "depth": "uchar",
+        "channels": 3,
+        "hasIccProfile": false,
+        "tracked": false,
+        "masterArtifact": false
+      }
+    }
+  ]
+}

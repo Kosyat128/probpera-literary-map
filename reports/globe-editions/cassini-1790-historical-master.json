@@ -1,0 +1,395 @@
+{
+  "schemaVersion": 1,
+  "editionId": "cassini-1790",
+  "stage": "historical-master",
+  "artifactKind": "historical-master",
+  "trackedSidecar": true,
+  "proofOnly": false,
+  "productionEligible": true,
+  "inputKind": "official-full-resolution-production-sources",
+  "configPath": "scripts/globe-editions/cassini-1790-proof.json",
+  "configSha256": "88E71F50221307BDD3E9DDEC491FD44EC999B9904A860843AC7E36F277EDCA76",
+  "sourceConfigPath": "scripts/globe-editions/cassini-1790-production-sources.json",
+  "sourceConfigSha256": "8A42EB669C43EDBA91E03DCAAB89BACB0CCC58651DF45B36C2FF86CDEF347E39",
+  "portAttestation": {
+    "portedAt": "2026-09-01",
+    "masterBinaryRebuiltOnPort": false,
+    "runtimeOutputHashesReverifiedOnPort": true,
+    "configHashesUpdatedForTrackedLineEndings": true
+  },
+  "provenanceHashes": {
+    "geometryConfigSha256": "88E71F50221307BDD3E9DDEC491FD44EC999B9904A860843AC7E36F277EDCA76",
+    "productionSourceConfigSha256": "8A42EB669C43EDBA91E03DCAAB89BACB0CCC58651DF45B36C2FF86CDEF347E39",
+    "productionSourceSetSha256": "D48F39FB6565C1B69F267F7B5619D34F07863E3051944E279C995FEF1163D221",
+    "sourceInputs": [
+      {
+        "id": "a",
+        "sha256": "15B056546A1A82713EBC86C9E172B5003D3CC555B3BB88C2A886D75BB099354A"
+      },
+      {
+        "id": "b",
+        "sha256": "CBD709798614A98EA54EA42B06FD58CDC5E4E74CF4F7B8310AB97A5920932805"
+      },
+      {
+        "id": "c",
+        "sha256": "7D390424444D94AD18CD86480D668F22080677B4B4CBB5B12415FE3B6EACBC42"
+      },
+      {
+        "id": "d",
+        "sha256": "DB2ABF280DEF8AAFB088FD011303DA9A99D012227324434FAEE05034570BA776"
+      },
+      {
+        "id": "e",
+        "sha256": "A0D014984E1ED9AAD727B93DCF4D93A0641072EA90EEFBFBADFE6F76508E26A8"
+      }
+    ]
+  },
+  "output": {
+    "path": "scripts/.cache/globe-editions/cassini-1790/masters/cassini-1790-historical-master-8192x4096.png",
+    "width": 8192,
+    "height": 4096,
+    "format": "png",
+    "bytes": 66326924,
+    "sha256": "BC28D0781C0FAA69D9044B44091C6A96C283EF45AE06BB40233EC9B4D5952609",
+    "lossless": true,
+    "colorSpace": "srgb",
+    "depth": "uchar",
+    "bitsPerChannel": 8,
+    "channels": 3,
+    "hasAlpha": false,
+    "hasIccProfile": false
+  },
+  "inputs": [
+    {
+      "id": "a",
+      "localPath": "scripts/.cache/globe-editions/cassini-1790/production-inputs/cassini-1790-a-full.jpg",
+      "width": 5267,
+      "height": 6988,
+      "bytes": 4024731,
+      "sha256": "15B056546A1A82713EBC86C9E172B5003D3CC555B3BB88C2A886D75BB099354A",
+      "format": "jpeg",
+      "colorSpace": "srgb",
+      "depth": "uchar",
+      "bitsPerChannel": 8,
+      "channels": 3,
+      "hasIccProfile": false
+    },
+    {
+      "id": "b",
+      "localPath": "scripts/.cache/globe-editions/cassini-1790/production-inputs/cassini-1790-b-full.jpg",
+      "width": 5254,
+      "height": 6944,
+      "bytes": 3905296,
+      "sha256": "CBD709798614A98EA54EA42B06FD58CDC5E4E74CF4F7B8310AB97A5920932805",
+      "format": "jpeg",
+      "colorSpace": "srgb",
+      "depth": "uchar",
+      "bitsPerChannel": 8,
+      "channels": 3,
+      "hasIccProfile": false
+    },
+    {
+      "id": "c",
+      "localPath": "scripts/.cache/globe-editions/cassini-1790/production-inputs/cassini-1790-c-full.jpg",
+      "width": 5250,
+      "height": 7016,
+      "bytes": 3714867,
+      "sha256": "7D390424444D94AD18CD86480D668F22080677B4B4CBB5B12415FE3B6EACBC42",
+      "format": "jpeg",
+      "colorSpace": "srgb",
+      "depth": "uchar",
+      "bitsPerChannel": 8,
+      "channels": 3,
+      "hasIccProfile": false
+    },
+    {
+      "id": "d",
+      "localPath": "scripts/.cache/globe-editions/cassini-1790/production-inputs/cassini-1790-d-full.jpg",
+      "width": 5296,
+      "height": 6959,
+      "bytes": 3907727,
+      "sha256": "DB2ABF280DEF8AAFB088FD011303DA9A99D012227324434FAEE05034570BA776",
+      "format": "jpeg",
+      "colorSpace": "srgb",
+      "depth": "uchar",
+      "bitsPerChannel": 8,
+      "channels": 3,
+      "hasIccProfile": false
+    },
+    {
+      "id": "e",
+      "localPath": "scripts/.cache/globe-editions/cassini-1790/production-inputs/cassini-1790-e-full.jpg",
+      "width": 7056,
+      "height": 5261,
+      "bytes": 3860780,
+      "sha256": "A0D014984E1ED9AAD727B93DCF4D93A0641072EA90EEFBFBADFE6F76508E26A8",
+      "format": "jpeg",
+      "colorSpace": "srgb",
+      "depth": "uchar",
+      "bitsPerChannel": 8,
+      "channels": 3,
+      "hasIccProfile": false
+    }
+  ],
+  "coverage": {
+    "method": "output-pixel assignment bitmap",
+    "mappedPixelCount": 33554432,
+    "totalPixelCount": 33554432,
+    "unmappedPixelCount": 0,
+    "mappedPixelCoveragePercent": 100,
+    "verifiedGeographicCoveragePercent": null
+  },
+  "geometry": {
+    "joinLatitudeDeg": 80,
+    "geometryScaledFromReferenceInputs": true,
+    "goreOrderDirection": "eastward",
+    "longitudeConvention": {
+      "gore1ApproxCentralLongitudeDeg": 0,
+      "incrementEastDeg": 30,
+      "status": "verified_named_geography"
+    },
+    "orientationStatus": {
+      "longitudeConvention": "verified_named_geography",
+      "caps": [
+        {
+          "hemisphere": "north",
+          "orientationStatus": "verified_prime_meridian_and_spitsbergen_label"
+        },
+        {
+          "hemisphere": "south",
+          "orientationStatus": "verified_prime_meridian_and_hemisphere_handedness"
+        }
+      ]
+    },
+    "zodiacCalendarBandsUsed": false,
+    "seamTreatment": "none",
+    "destructiveBlendingUsed": false
+  },
+  "qa": {
+    "goreBoundaryRgbAbsoluteDifference": {
+      "sampleCount": 131040,
+      "median": 28,
+      "p95": 145,
+      "max": 223
+    },
+    "capJoinRgbAbsoluteDifference": {
+      "sampleCount": 49152,
+      "median": 44,
+      "p95": 127,
+      "max": 203
+    },
+    "mappedPixelCoveragePercent": 100,
+    "seamPaperRuns": {
+      "method": "Vertical light/low-chroma support around configured gore boundaries; geometry is measured without seam blending or content replacement.",
+      "thresholds": {
+        "luminanceMinimum": 198,
+        "chromaMaximum": 48,
+        "verticalSupportMinimumRatio": 0.4,
+        "maximumAbsoluteLatitudeDeg": 70,
+        "boundaryAdjacencyTolerancePixels": 1,
+        "requiredMaximumSolidContinuousRunWidthPixels": 0,
+        "searchRadiusPixels": 48
+      },
+      "perBoundary": [
+        {
+          "longitudeDeg": -165,
+          "outputBoundaryColumn": 341,
+          "leftGoreNumber": 7,
+          "rightGoreNumber": 8,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": 3,
+            "ratio": 0.034212,
+            "percent": 3.421
+          }
+        },
+        {
+          "longitudeDeg": -135,
+          "outputBoundaryColumn": 1024,
+          "leftGoreNumber": 8,
+          "rightGoreNumber": 9,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": -1,
+            "ratio": 0.112367,
+            "percent": 11.237
+          }
+        },
+        {
+          "longitudeDeg": -105,
+          "outputBoundaryColumn": 1707,
+          "leftGoreNumber": 9,
+          "rightGoreNumber": 10,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": 46,
+            "ratio": 0.092593,
+            "percent": 9.259
+          }
+        },
+        {
+          "longitudeDeg": -75,
+          "outputBoundaryColumn": 2389,
+          "leftGoreNumber": 10,
+          "rightGoreNumber": 11,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": 0,
+            "ratio": 0.031701,
+            "percent": 3.17
+          }
+        },
+        {
+          "longitudeDeg": -45,
+          "outputBoundaryColumn": 3072,
+          "leftGoreNumber": 11,
+          "rightGoreNumber": 12,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": 38,
+            "ratio": 0.0543,
+            "percent": 5.43
+          }
+        },
+        {
+          "longitudeDeg": -15,
+          "outputBoundaryColumn": 3755,
+          "leftGoreNumber": 12,
+          "rightGoreNumber": 1,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": 38,
+            "ratio": 0.001569,
+            "percent": 0.157
+          }
+        },
+        {
+          "longitudeDeg": 15,
+          "outputBoundaryColumn": 4437,
+          "leftGoreNumber": 1,
+          "rightGoreNumber": 2,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": -3,
+            "ratio": 0.024168,
+            "percent": 2.417
+          }
+        },
+        {
+          "longitudeDeg": 45,
+          "outputBoundaryColumn": 5120,
+          "leftGoreNumber": 2,
+          "rightGoreNumber": 3,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": 0,
+            "ratio": 0.049278,
+            "percent": 4.928
+          }
+        },
+        {
+          "longitudeDeg": 75,
+          "outputBoundaryColumn": 5803,
+          "leftGoreNumber": 3,
+          "rightGoreNumber": 4,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": 18,
+            "ratio": 0.06811,
+            "percent": 6.811
+          }
+        },
+        {
+          "longitudeDeg": 105,
+          "outputBoundaryColumn": 6485,
+          "leftGoreNumber": 4,
+          "rightGoreNumber": 5,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": -1,
+            "ratio": 0.222222,
+            "percent": 22.222
+          }
+        },
+        {
+          "longitudeDeg": 135,
+          "outputBoundaryColumn": 7168,
+          "leftGoreNumber": 5,
+          "rightGoreNumber": 6,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": 47,
+            "ratio": 0.053045,
+            "percent": 5.304
+          }
+        },
+        {
+          "longitudeDeg": 165,
+          "outputBoundaryColumn": 7851,
+          "leftGoreNumber": 6,
+          "rightGoreNumber": 7,
+          "evaluatedRowCount": 3186,
+          "solidColumnOffsets": [],
+          "solidRuns": [],
+          "solidContinuousPaperRunWidthPixels": 0,
+          "maximumColumnPaperSupport": {
+            "offset": -37,
+            "ratio": 0.025424,
+            "percent": 2.542
+          }
+        }
+      ],
+      "maximumSolidContinuousPaperRunWidthPixels": 0,
+      "gate": {
+        "requiredMaximumSolidContinuousPaperRunWidthPixels": 0,
+        "passed": true
+      }
+    },
+    "verifiedGeographicCoveragePercent": null,
+    "canonicalAlignmentMetrics": null
+  },
+  "gates": {
+    "fullResolutionProductionSources": "verified",
+    "seamPaperRuns": "pass",
+    "historicalMaster": "generated",
+    "interactiveAdaptedMaster": "not_started",
+    "productionReady": false
+  },
+  "runtime": {
+    "sharp": "0.35.3",
+    "vips": "8.18.3"
+  }
+}

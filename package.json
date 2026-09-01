@@ -133,7 +133,15 @@
     "assets:globe:modern:source": "node scripts/prepare-modern-globe-source.mjs",
     "assets:globe:modern:labels": "node scripts/sync-modern-globe-labels.mjs",
     "assets:globe:modern": "node scripts/build-modern-globe-texture.mjs",
-    "assets:globe:qa": "node scripts/qa-globe-alignment.mjs"
+    "assets:globe:qa": "node scripts/qa-globe-alignment.mjs",
+    "assets:globe:historical:sources": "node scripts/acquire-historical-globe-sources.mjs",
+    "assets:globe:historical:candidate": "node scripts/run-historical-globe-builder.mjs",
+    "assets:globe:historical:check": "node scripts/check-historical-globe-runtime.mjs",
+    "assets:globe:historical:registration:check": "node scripts/check-historical-artwork-registration.mjs",
+    "assets:globe:cassini:sources": "node scripts/acquire-globe-production-sources.mjs --config scripts/globe-editions/cassini-1790-production-sources.json",
+    "assets:globe:cassini:runtime:check": "node scripts/export-cassini-runtime-textures.mjs --check",
+    "assets:globe:scherer:source:check": "node scripts/check-scherer-preservation-source.mjs",
+    "assets:globe:evidence:check": "npm run assets:globe:historical:check && npm run assets:globe:historical:registration:check && npm run assets:globe:cassini:runtime:check && npm run assets:globe:scherer:source:check"
   },
   "dependencies": {
     "@react-three/drei": "9.122.0",

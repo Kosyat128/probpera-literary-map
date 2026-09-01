@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "editionId": "cassini-1790",
+  "proofOnly": true,
+  "productionEligible": false,
+  "proofDate": "2026-08-30",
+  "output": {
+    "width": 1024,
+    "height": 512,
+    "format": "png"
+  },
+  "fullResolutionProductionSource": {
+    "status": "verified",
+    "configPath": "scripts/globe-editions/cassini-1790-production-sources.json"
+  },
+  "sources": [
+    {
+      "id": "a",
+      "resourceId": "g3201b.ct001065a",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065a/",
+      "role": "terrestrial_gores_1_3",
+      "proofDerivative": {
+        "filename": "cassini-1790-a.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065a/full/1600,/0/default.jpg",
+        "width": 1600,
+        "height": 2122,
+        "bytes": 544213,
+        "sha256": "DC61DDE510E3FC11DBB037FB0ACD66C07AD02A052BB44CB4CCE0B79CCE3FE617",
+        "requestedWidth": 1600,
+        "tracked": false,
+        "productionEligible": false
+      },
+      "catalogDimensions": { "width": 5267, "height": 6988 },
+      "productionSourceBinary": { "status": "verified_in_external_config", "configPath": "scripts/globe-editions/cassini-1790-production-sources.json" }
+    },
+    {
+      "id": "b",
+      "resourceId": "g3201b.ct001065b",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065b/",
+      "role": "terrestrial_gores_4_6",
+      "proofDerivative": {
+        "filename": "cassini-1790-b.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065b/full/1600,/0/default.jpg",
+        "width": 1600,
+        "height": 2114,
+        "bytes": 520981,
+        "sha256": "3B0ADEDFC1405156ADD4D1910F9ED26C301D12A48C0D63DA22581AADDAB855BB",
+        "requestedWidth": 1600,
+        "tracked": false,
+        "productionEligible": false
+      },
+      "catalogDimensions": { "width": 5254, "height": 6944 },
+      "productionSourceBinary": { "status": "verified_in_external_config", "configPath": "scripts/globe-editions/cassini-1790-production-sources.json" }
+    },
+    {
+      "id": "c",
+      "resourceId": "g3201b.ct001065c",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065c/",
+      "role": "terrestrial_gores_7_9",
+      "proofDerivative": {
+        "filename": "cassini-1790-c.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065c/full/1600,/0/default.jpg",
+        "width": 1600,
+        "height": 2138,
+        "bytes": 483531,
+        "sha256": "C78B85ECEE23B87BAD43BF5D62B22054FD12CF09E0CDF6564550B2DEB2B35997",
+        "requestedWidth": 1600,
+        "tracked": false,
+        "productionEligible": false
+      },
+      "catalogDimensions": { "width": 5250, "height": 7016 },
+      "productionSourceBinary": { "status": "verified_in_external_config", "configPath": "scripts/globe-editions/cassini-1790-production-sources.json" }
+    },
+    {
+      "id": "d",
+      "resourceId": "g3201b.ct001065d",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065d/",
+      "role": "terrestrial_gores_10_12",
+      "proofDerivative": {
+        "filename": "cassini-1790-d.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065d/full/1600,/0/default.jpg",
+        "width": 1600,
+        "height": 2102,
+        "bytes": 515236,
+        "sha256": "5017A10CCE2759099C45DE48D31A9D02177B9BFB8F006940A7D15B4894E2CF56",
+        "requestedWidth": 1600,
+        "tracked": false,
+        "productionEligible": false
+      },
+      "catalogDimensions": { "width": 5296, "height": 6959 },
+      "productionSourceBinary": { "status": "verified_in_external_config", "configPath": "scripts/globe-editions/cassini-1790-production-sources.json" }
+    },
+    {
+      "id": "e",
+      "resourceId": "g3201b.ct001065e",
+      "catalogUrl": "https://www.loc.gov/resource/g3201b.ct001065e/",
+      "role": "polar_caps_and_zodiac_assembly",
+      "proofDerivative": {
+        "filename": "cassini-1790-e.jpg",
+        "iiifUrl": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct001065e/full/1600,/0/default.jpg",
+        "width": 1600,
+        "height": 1192,
+        "bytes": 295974,
+        "sha256": "F4369356B2E68B60F53567B82381D2B10579590D1A24E5B62F27D5C15E87FCFD",
+        "requestedWidth": 1600,
+        "tracked": false,
+        "productionEligible": false
+      },
+      "catalogDimensions": { "width": 7056, "height": 5261 },
+      "productionSourceBinary": { "status": "verified_in_external_config", "configPath": "scripts/globe-editions/cassini-1790-production-sources.json" }
+    }
+  ],
+  "surface": {
+    "joinLatitudeDeg": 80,
+    "goreAngularWidthDeg": 30,
+    "goreOrderDirection": "eastward",
+    "measurementMethod": {
+      "referenceInputs": "official 1600px IIIF derivatives",
+      "equator": "continuous printed equatorial graticule interval, measured after closing gaps of at most 7 pixels",
+      "polarJoinRows": "manually measured printed gore outlines at +80 and -80 degrees"
+    },
+    "longitudeConvention": {
+      "gore1ApproxCentralLongitudeDeg": 0,
+      "incrementEastDeg": 30,
+      "status": "verified_named_geography"
+    },
+    "gores": [
+      {
+        "number": 1,
+        "sourceId": "a",
+        "approxCentralLongitudeDeg": 0,
+        "rows": [
+          { "latitudeDeg": 80, "y": 332, "leftX": 424, "centerX": 451, "rightX": 478 },
+          { "latitudeDeg": 0, "y": 1062, "leftX": 295, "centerX": 450.5, "rightX": 606 },
+          { "latitudeDeg": -80, "y": 1794, "leftX": 424, "centerX": 451, "rightX": 478 }
+        ]
+      },
+      {
+        "number": 2,
+        "sourceId": "a",
+        "approxCentralLongitudeDeg": 30,
+        "rows": [
+          { "latitudeDeg": 80, "y": 332, "leftX": 766.6, "centerX": 794, "rightX": 821.4 },
+          { "latitudeDeg": 0, "y": 1062, "leftX": 638, "centerX": 796, "rightX": 954 },
+          { "latitudeDeg": -80, "y": 1794, "leftX": 766.6, "centerX": 794, "rightX": 821.4 }
+        ]
+      },
+      {
+        "number": 3,
+        "sourceId": "a",
+        "approxCentralLongitudeDeg": 60,
+        "rows": [
+          { "latitudeDeg": 80, "y": 332, "leftX": 1104.6, "centerX": 1132, "rightX": 1159.4 },
+          { "latitudeDeg": 0, "y": 1062, "leftX": 987, "centerX": 1145, "rightX": 1303 },
+          { "latitudeDeg": -80, "y": 1794, "leftX": 1104.6, "centerX": 1132, "rightX": 1159.4 }
+        ]
+      },
+      {
+        "number": 4,
+        "sourceId": "b",
+        "approxCentralLongitudeDeg": 90,
+        "rows": [
+          { "latitudeDeg": 80, "y": 328, "leftX": 415.8, "centerX": 443, "rightX": 470.2 },
+          { "latitudeDeg": 0, "y": 1057, "leftX": 278, "centerX": 434.5, "rightX": 591 },
+          { "latitudeDeg": -80, "y": 1784, "leftX": 414.8, "centerX": 442, "rightX": 469.2 }
+        ]
+      },
+      {
+        "number": 5,
+        "sourceId": "b",
+        "approxCentralLongitudeDeg": 120,
+        "rows": [
+          { "latitudeDeg": 80, "y": 328, "leftX": 764.7, "centerX": 792, "rightX": 819.3 },
+          { "latitudeDeg": 0, "y": 1057, "leftX": 623, "centerX": 780, "rightX": 937 },
+          { "latitudeDeg": -80, "y": 1784, "leftX": 763.7, "centerX": 791, "rightX": 818.3 }
+        ]
+      },
+      {
+        "number": 6,
+        "sourceId": "b",
+        "approxCentralLongitudeDeg": 150,
+        "rows": [
+          { "latitudeDeg": 80, "y": 328, "leftX": 1109.7, "centerX": 1137, "rightX": 1164.3 },
+          { "latitudeDeg": 0, "y": 1057, "leftX": 970, "centerX": 1127.5, "rightX": 1285 },
+          { "latitudeDeg": -80, "y": 1784, "leftX": 1109.7, "centerX": 1137, "rightX": 1164.3 }
+        ]
+      },
+      {
+        "number": 7,
+        "sourceId": "c",
+        "approxCentralLongitudeDeg": 180,
+        "rows": [
+          { "latitudeDeg": 80, "y": 332, "leftX": 393.7, "centerX": 421, "rightX": 448.3 },
+          { "latitudeDeg": 0, "y": 1069, "leftX": 260, "centerX": 417, "rightX": 574 },
+          { "latitudeDeg": -80, "y": 1805, "leftX": 393.7, "centerX": 421, "rightX": 448.3 }
+        ]
+      },
+      {
+        "number": 8,
+        "sourceId": "c",
+        "approxCentralLongitudeDeg": -150,
+        "rows": [
+          { "latitudeDeg": 80, "y": 332, "leftX": 748.7, "centerX": 776, "rightX": 803.3 },
+          { "latitudeDeg": 0, "y": 1069, "leftX": 607, "centerX": 764, "rightX": 921 },
+          { "latitudeDeg": -80, "y": 1805, "leftX": 748.7, "centerX": 776, "rightX": 803.3 }
+        ]
+      },
+      {
+        "number": 9,
+        "sourceId": "c",
+        "approxCentralLongitudeDeg": -120,
+        "rows": [
+          { "latitudeDeg": 80, "y": 332, "leftX": 1090.8, "centerX": 1118, "rightX": 1145.2 },
+          { "latitudeDeg": 0, "y": 1069, "leftX": 957, "centerX": 1113.5, "rightX": 1270 },
+          { "latitudeDeg": -80, "y": 1805, "leftX": 1090.8, "centerX": 1118, "rightX": 1145.2 }
+        ]
+      },
+      {
+        "number": 10,
+        "sourceId": "d",
+        "approxCentralLongitudeDeg": -90,
+        "rows": [
+          { "latitudeDeg": 80, "y": 326, "leftX": 410.8, "centerX": 438, "rightX": 465.2 },
+          { "latitudeDeg": 0, "y": 1051, "leftX": 280, "centerX": 436.5, "rightX": 593 },
+          { "latitudeDeg": -80, "y": 1778, "leftX": 410.8, "centerX": 438, "rightX": 465.2 }
+        ]
+      },
+      {
+        "number": 11,
+        "sourceId": "d",
+        "approxCentralLongitudeDeg": -60,
+        "rows": [
+          { "latitudeDeg": 80, "y": 326, "leftX": 762.9, "centerX": 790, "rightX": 817.1 },
+          { "latitudeDeg": 0, "y": 1051, "leftX": 627, "centerX": 783, "rightX": 939 },
+          { "latitudeDeg": -80, "y": 1778, "leftX": 762.9, "centerX": 790, "rightX": 817.1 }
+        ]
+      },
+      {
+        "number": 12,
+        "sourceId": "d",
+        "approxCentralLongitudeDeg": -30,
+        "rows": [
+          { "latitudeDeg": 80, "y": 326, "leftX": 1110.9, "centerX": 1138, "rightX": 1165.1 },
+          { "latitudeDeg": 0, "y": 1051, "leftX": 973, "centerX": 1129, "rightX": 1285 },
+          { "latitudeDeg": -80, "y": 1778, "leftX": 1110.9, "centerX": 1138, "rightX": 1165.1 }
+        ]
+      }
+    ],
+    "caps": [
+      {
+        "hemisphere": "north",
+        "sourceId": "e",
+        "centerX": 810,
+        "centerY": 483,
+        "radiusPx": 78,
+        "cutlineMeasurement": {
+          "printedOuterRadiusPx": 80,
+          "outerPaperRingRemovedPx": 2,
+          "method": "full-source radial lightness profile"
+        },
+        "zeroAngleDeg": 90,
+        "direction": -1,
+        "orientationStatus": "verified_prime_meridian_and_spitsbergen_label"
+      },
+      {
+        "hemisphere": "south",
+        "sourceId": "e",
+        "centerX": 809,
+        "centerY": 894,
+        "radiusPx": 78,
+        "cutlineMeasurement": {
+          "printedOuterRadiusPx": 80,
+          "outerPaperRingRemovedPx": 2,
+          "method": "full-source radial lightness profile"
+        },
+        "zeroAngleDeg": -90,
+        "direction": 1,
+        "orientationStatus": "verified_prime_meridian_and_hemisphere_handedness"
+      }
+    ],
+    "excludedSheetElements": [
+      {
+        "sourceId": "e",
+        "element": "zodiac_calendar_horizon_bands",
+        "status": "excluded",
+        "reason": "assembly ornament outside the terrestrial texture surface"
+      }
+    ]
+  }
+}

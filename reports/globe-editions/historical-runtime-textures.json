@@ -1,0 +1,612 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "historical-globe-runtime-textures",
+  "generatedDate": "2026-08-31",
+  "productionReady": true,
+  "sourceConfigPath": "scripts/globe-editions/historical-runtime-sources.json",
+  "sourceConfigSha256": "33595DF76BB81633F978F2C43E2410C9A46EDE0BF4CC2B4AF67FFE8CE39A9904",
+  "builderPath": "scripts/build-historical-globe-textures.py",
+  "requirementsPath": "scripts/globe-editions/historical-runtime-requirements.txt",
+  "requirementsSha256": "C3C86A2C97EA6DC768B59056F909E3AD6A87D596B628C1009EFB04FAC91AC00B",
+  "portAttestation": {
+    "portedAt": "2026-09-01",
+    "originalCanonicalAtlasSha256": "1390263ABE434B8A30321230D79D10A12693BE465E8F2CDBAC711C7BBA7838AC",
+    "currentCanonicalAtlasSha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
+    "parsedFeatureGeometryUnchanged": true,
+    "metadataOnlyDelta": "PNG NAME_RU punctuation: em dash to spaced hyphen",
+    "runtimeOutputHashesReverifiedOnPort": true,
+    "texturesRebuiltOnPort": false
+  },
+  "buildRuntime": {
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.22631-SP0",
+    "numpy": "2.3.5",
+    "pillow": "12.3.0",
+    "webp": "1.6.0",
+    "littlecms2": "2.19"
+  },
+  "editions": [
+    {
+      "id": "behaim-1492",
+      "displayTitle": "Martin Behaim 1492 - Ravenstein facsimile 1908",
+      "catalogUrl": "https://dl.ub.uni-freiburg.de/diglit/ravenstein1908",
+      "rights": {
+        "status": "accepted-public-domain-mark-1.0",
+        "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "credit": "Universitätsbibliothek Freiburg; E. G. Ravenstein, Martin Behaim: His Life and His Globe, 1908",
+        "note": "Production uses only the four complete 1908 Ravenstein facsimile sheets published by UB Freiburg with Public Domain Mark 1.0; it does not use the restricted modern GNM/FAU 3D surface."
+      },
+      "sources": [
+        {
+          "id": "a-d",
+          "filename": "behaim-1908-a-d.jpg",
+          "bytes": 5204276,
+          "sha256": "4BC83B19B792BC893E9B7ECF617822D5589ECA788CB4D9400E56A4E3FC234414",
+          "width": 5271,
+          "height": 6965,
+          "url": "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/124.jpg"
+        },
+        {
+          "id": "e-g",
+          "filename": "behaim-1908-e-g.jpg",
+          "bytes": 5205526,
+          "sha256": "A7AB75040DE15E0A92A29BC9D0689D74BF6D1E9F364BD81583BBAFDF7FF50440",
+          "width": 5271,
+          "height": 6965,
+          "url": "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/125.jpg"
+        },
+        {
+          "id": "h-j",
+          "filename": "behaim-1908-h-j.jpg",
+          "bytes": 5116201,
+          "sha256": "82CC5C3FBCD44FDA1F4AF4AEDB7B851126B1E5E2FEBE29C7BDDE1B28BDC9ABD6",
+          "width": 5271,
+          "height": 6965,
+          "url": "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/126.jpg"
+        },
+        {
+          "id": "k-m-caps",
+          "filename": "behaim-1908-k-m-caps.jpg",
+          "bytes": 5613741,
+          "sha256": "94F0BC3C3CB5DE40518C827B4FA4425F78F91978B47FA489C44F2EFA8FB1A0A3",
+          "width": 5895,
+          "height": 7010,
+          "url": "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/127.jpg"
+        }
+      ],
+      "projection": {
+        "type": "equirectangular",
+        "aspectRatio": "2:1",
+        "northUp": true,
+        "longitudeAtLeftEdgeDeg": -180,
+        "longitudeAtCenterDeg": 0,
+        "longitudeAtRightEdgeDeg": 180,
+        "registryTextureAlignment": "identity",
+        "geographicAnchor": "Segment D is centered on Greenwich; early-modern geographic distortion is preserved rather than silently warped.",
+        "historicalGeographyPreserved": true,
+        "modernCountryBoundariesRasterized": false,
+        "canonicalUnionCoastlineRasterized": true,
+        "canonicalUnionCoastlinePurpose": "registration target for the runtime interaction outline; not a claim of modern source accuracy"
+      },
+      "canonicalRegistration": {
+        "path": "src/data/geo/countries.geojson",
+        "dataset": "Natural Earth Admin 0 - Countries",
+        "repositoryVersion": "5.1.2",
+        "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
+        "featureCount": 177,
+        "canonicalUnionCoastlineRegistered": true,
+        "internalBorders": false,
+        "treatment": "source-derived-rgb-darkening",
+        "desktopWidthPx": 2,
+        "mobileWidthPxApprox": 1,
+        "maximumDarkeningOpacity": 0.36,
+        "edgePixelCountAtDesktop": 108017
+      },
+      "qa": {
+        "mappedPixelCoveragePercent": 100,
+        "edgeInsetPx": 24,
+        "edgeInsetRows": [
+          {
+            "latitudeDeg": 60,
+            "insetPx": 125
+          },
+          {
+            "latitudeDeg": 0,
+            "insetPx": 24
+          },
+          {
+            "latitudeDeg": -60,
+            "insetPx": 125
+          }
+        ],
+        "goreOverlapDeg": 1.2,
+        "postColumnFeatherApplied": false,
+        "paletteNormalization": {
+          "applied": true,
+          "method": "periodic-per-gore-polar-neutral-median-correction",
+          "preservesDarkLineworkAndText": true,
+          "maximumAppliedRgbAdjustment": 7.92,
+          "strength": 0.55
+        },
+        "preNormalizationGoreBoundaryRgbAbsoluteDifference": {
+          "sampleCount": 24576,
+          "median": 5.0,
+          "p95": 30.0,
+          "max": 110.0,
+          "interpretation": "Diagnostic source-edge continuity only; not a claim that historical coastlines equal modern canonical coastlines."
+        },
+        "postRegistrationGoreBoundaryRgbAbsoluteDifference": {
+          "sampleCount": 24576,
+          "median": 5.0,
+          "p95": 32.0,
+          "max": 111.0,
+          "interpretation": "Diagnostic source-edge continuity only; not a claim that historical coastlines equal modern canonical coastlines."
+        },
+        "canonicalRegistrationGate": {
+          "metricClass": "canonical-vector-to-rendered-registration-line",
+          "controlPointCount": 12,
+          "renderWidth": 2048,
+          "renderHeight": 1024,
+          "medianResidualPixels": 0,
+          "p95ResidualPixels": 0,
+          "maximumResidualPixels": 0,
+          "thresholdMedianPixels": 6,
+          "thresholdP95Pixels": 14,
+          "thresholdMaximumPixels": 24,
+          "pass": true,
+          "interpretation": "The registered line and runtime vector share the pinned canonical atlas. This gate does not measure historical-source coastline accuracy."
+        },
+        "desktopMobileNormalizedRegistrationDriftPixelsAtMobile": 0,
+        "desktopMobileDriftThresholdPixelsAtMobile": 1
+      },
+      "encoding": {
+        "desktopQuality": 74,
+        "mobileQuality": 77
+      },
+      "outputs": [
+        {
+          "kind": "desktop",
+          "path": "public/textures/behaim-1492-ravenstein-1908.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 2031414,
+          "sha256": "A06342CFAF146FDD4D72C0CBC870AB85946199A977D8C6366EF918BDAD19C0B8",
+          "budgetBytes": 2200000,
+          "withinBudget": true
+        },
+        {
+          "kind": "mobile",
+          "path": "public/textures/behaim-1492-ravenstein-1908-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 511208,
+          "sha256": "324301CF0724C337D34C1D370DC66FA8EA3F0ABAA0AFCB34713D2DD2A469D2B5",
+          "budgetBytes": 550000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "id": "hondius-1615",
+      "displayTitle": "Jodocus Hondius / Giuseppe di Rossi - Terrestrial Globe Gores, 1615",
+      "catalogUrl": "https://www.loc.gov/item/2008627640/",
+      "rights": {
+        "status": "accepted-loc-free-use-reuse",
+        "credit": "Library of Congress Geography and Map Division",
+        "note": "LOC states that Geography and Map Division digitized content is free to use and reuse unless an item-specific Rights Advisory says otherwise; none is present for this item."
+      },
+      "sources": [
+        {
+          "id": "gores",
+          "filename": "hondius-1615.jpg",
+          "bytes": 5344246,
+          "sha256": "DEA176294A641A601A045244102D763E47ECA5269E72D5F83A599077FB1900C4",
+          "width": 9318,
+          "height": 4384,
+          "url": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct000726/full/full/0/default.jpg"
+        }
+      ],
+      "projection": {
+        "type": "equirectangular",
+        "aspectRatio": "2:1",
+        "northUp": true,
+        "longitudeAtLeftEdgeDeg": -180,
+        "longitudeAtCenterDeg": 0,
+        "longitudeAtRightEdgeDeg": 180,
+        "registryTextureAlignment": "identity",
+        "geographicAnchor": "Named geography fixes the second gore on the right sheet on Greenwich; source order then runs eastward in 30-degree steps.",
+        "historicalGeographyPreserved": true,
+        "modernCountryBoundariesRasterized": false,
+        "canonicalUnionCoastlineRasterized": true,
+        "canonicalUnionCoastlinePurpose": "registration target for the runtime interaction outline; not a claim of modern source accuracy"
+      },
+      "canonicalRegistration": {
+        "path": "src/data/geo/countries.geojson",
+        "dataset": "Natural Earth Admin 0 - Countries",
+        "repositoryVersion": "5.1.2",
+        "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
+        "featureCount": 177,
+        "canonicalUnionCoastlineRegistered": true,
+        "internalBorders": false,
+        "treatment": "source-derived-rgb-darkening",
+        "desktopWidthPx": 2,
+        "mobileWidthPxApprox": 1,
+        "maximumDarkeningOpacity": 0.36,
+        "edgePixelCountAtDesktop": 108017
+      },
+      "qa": {
+        "mappedPixelCoveragePercent": 100,
+        "edgeInsetPx": 6,
+        "edgeInsetRows": [
+          {
+            "latitudeDeg": 90,
+            "insetPx": 0
+          },
+          {
+            "latitudeDeg": 80,
+            "insetPx": 6
+          },
+          {
+            "latitudeDeg": 0,
+            "insetPx": 6
+          },
+          {
+            "latitudeDeg": -80,
+            "insetPx": 6
+          },
+          {
+            "latitudeDeg": -90,
+            "insetPx": 0
+          }
+        ],
+        "goreOverlapDeg": 1.0,
+        "postColumnFeatherApplied": false,
+        "paletteNormalization": {
+          "applied": true,
+          "method": "periodic-per-gore-polar-neutral-median-correction",
+          "preservesDarkLineworkAndText": true,
+          "maximumAppliedRgbAdjustment": 7.133,
+          "strength": 0.85
+        },
+        "preNormalizationGoreBoundaryRgbAbsoluteDifference": {
+          "sampleCount": 24576,
+          "median": 3.0,
+          "p95": 24.0,
+          "max": 63.0,
+          "interpretation": "Diagnostic source-edge continuity only; not a claim that historical coastlines equal modern canonical coastlines."
+        },
+        "postRegistrationGoreBoundaryRgbAbsoluteDifference": {
+          "sampleCount": 24576,
+          "median": 3.0,
+          "p95": 25.0,
+          "max": 91.0,
+          "interpretation": "Diagnostic source-edge continuity only; not a claim that historical coastlines equal modern canonical coastlines."
+        },
+        "canonicalRegistrationGate": {
+          "metricClass": "canonical-vector-to-rendered-registration-line",
+          "controlPointCount": 12,
+          "renderWidth": 2048,
+          "renderHeight": 1024,
+          "medianResidualPixels": 0,
+          "p95ResidualPixels": 0,
+          "maximumResidualPixels": 0,
+          "thresholdMedianPixels": 6,
+          "thresholdP95Pixels": 14,
+          "thresholdMaximumPixels": 24,
+          "pass": true,
+          "interpretation": "The registered line and runtime vector share the pinned canonical atlas. This gate does not measure historical-source coastline accuracy."
+        },
+        "desktopMobileNormalizedRegistrationDriftPixelsAtMobile": 0,
+        "desktopMobileDriftThresholdPixelsAtMobile": 1
+      },
+      "encoding": {
+        "desktopQuality": 84,
+        "mobileQuality": 76
+      },
+      "outputs": [
+        {
+          "kind": "desktop",
+          "path": "public/textures/hondius-rossi-1615.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1929066,
+          "sha256": "4D9B6926768FC6AC91EAFA4A1586AB3FC70DFDD2D66D9A35243DC7A897E1B7B1",
+          "budgetBytes": 2200000,
+          "withinBudget": true
+        },
+        {
+          "kind": "mobile",
+          "path": "public/textures/hondius-rossi-1615-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 537158,
+          "sha256": "5CE58CB1B6B3CFC102D0F012911E4A590AA6572302E8FA0B52F3BEFFB0F7687B",
+          "budgetBytes": 550000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "id": "coronelli-1697",
+      "displayTitle": "Vincenzo Coronelli - Globe Gores, 1697",
+      "catalogUrl": "https://purl.stanford.edu/fw438kx8748",
+      "rights": {
+        "status": "accepted-public-domain-mark-1.0",
+        "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "credit": "Image from the Glen McLaughlin Map Collection of California as an Island courtesy Stanford University Libraries",
+        "note": "Stanford states that the item may be copied, modified, distributed, and used commercially without permission."
+      },
+      "sources": [
+        {
+          "id": "sheet",
+          "filename": "coronelli-1697.jp2",
+          "bytes": 11818985,
+          "sha256": "9062923B37840A927CF2399AB5B9F18EF85C015DB2BBDE20250E45083BFC88AF",
+          "width": 7766,
+          "height": 8101,
+          "url": "https://stacks.stanford.edu/file/druid:fw438kx8748/fw438kx8748_05_0001.jp2"
+        }
+      ],
+      "projection": {
+        "type": "equirectangular",
+        "aspectRatio": "2:1",
+        "northUp": true,
+        "longitudeAtLeftEdgeDeg": -180,
+        "longitudeAtCenterDeg": 0,
+        "longitudeAtRightEdgeDeg": 180,
+        "registryTextureAlignment": "identity",
+        "geographicAnchor": "Europe/Africa on gore 11 fixes Greenwich; the sequence runs eastward from the first gore centered at 60°E.",
+        "historicalGeographyPreserved": true,
+        "modernCountryBoundariesRasterized": false,
+        "canonicalUnionCoastlineRasterized": true,
+        "canonicalUnionCoastlinePurpose": "registration target for the runtime interaction outline; not a claim of modern source accuracy"
+      },
+      "canonicalRegistration": {
+        "path": "src/data/geo/countries.geojson",
+        "dataset": "Natural Earth Admin 0 - Countries",
+        "repositoryVersion": "5.1.2",
+        "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
+        "featureCount": 177,
+        "canonicalUnionCoastlineRegistered": true,
+        "internalBorders": false,
+        "treatment": "source-derived-rgb-darkening",
+        "desktopWidthPx": 2,
+        "mobileWidthPxApprox": 1,
+        "maximumDarkeningOpacity": 0.36,
+        "edgePixelCountAtDesktop": 108017
+      },
+      "qa": {
+        "mappedPixelCoveragePercent": 100,
+        "edgeInsetPx": 5,
+        "edgeInsetRows": [
+          {
+            "latitudeDeg": 90,
+            "insetPx": 0
+          },
+          {
+            "latitudeDeg": 80,
+            "insetPx": 5
+          },
+          {
+            "latitudeDeg": 0,
+            "insetPx": 5
+          },
+          {
+            "latitudeDeg": -80,
+            "insetPx": 5
+          },
+          {
+            "latitudeDeg": -90,
+            "insetPx": 0
+          }
+        ],
+        "goreOverlapDeg": 1.0,
+        "postColumnFeatherApplied": false,
+        "paletteNormalization": {
+          "applied": true,
+          "method": "periodic-per-gore-polar-neutral-median-correction",
+          "preservesDarkLineworkAndText": true,
+          "maximumAppliedRgbAdjustment": 5.433,
+          "strength": 0.85
+        },
+        "preNormalizationGoreBoundaryRgbAbsoluteDifference": {
+          "sampleCount": 24576,
+          "median": 2.0,
+          "p95": 18.0,
+          "max": 34.0,
+          "interpretation": "Diagnostic source-edge continuity only; not a claim that historical coastlines equal modern canonical coastlines."
+        },
+        "postRegistrationGoreBoundaryRgbAbsoluteDifference": {
+          "sampleCount": 24576,
+          "median": 2.0,
+          "p95": 18.0,
+          "max": 80.0,
+          "interpretation": "Diagnostic source-edge continuity only; not a claim that historical coastlines equal modern canonical coastlines."
+        },
+        "canonicalRegistrationGate": {
+          "metricClass": "canonical-vector-to-rendered-registration-line",
+          "controlPointCount": 12,
+          "renderWidth": 2048,
+          "renderHeight": 1024,
+          "medianResidualPixels": 0,
+          "p95ResidualPixels": 0,
+          "maximumResidualPixels": 0,
+          "thresholdMedianPixels": 6,
+          "thresholdP95Pixels": 14,
+          "thresholdMaximumPixels": 24,
+          "pass": true,
+          "interpretation": "The registered line and runtime vector share the pinned canonical atlas. This gate does not measure historical-source coastline accuracy."
+        },
+        "desktopMobileNormalizedRegistrationDriftPixelsAtMobile": 0,
+        "desktopMobileDriftThresholdPixelsAtMobile": 1
+      },
+      "encoding": {
+        "desktopQuality": 84,
+        "mobileQuality": 80
+      },
+      "outputs": [
+        {
+          "kind": "desktop",
+          "path": "public/textures/coronelli-1697.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1429020,
+          "sha256": "1654E3E04EE14CCDEC7CFBF7A640B212EBDE0C96949558BCF0EDEECE1DD9A012",
+          "budgetBytes": 2200000,
+          "withinBudget": true
+        },
+        {
+          "kind": "mobile",
+          "path": "public/textures/coronelli-1697-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 499562,
+          "sha256": "B03C5F23F84DDAEF6DA942A64F6AC5B37FF7481E90681D5E98AB7EEFF48AEACF",
+          "budgetBytes": 550000,
+          "withinBudget": true
+        }
+      ]
+    },
+    {
+      "id": "scherer-1700",
+      "displayTitle": "Heinrich Scherer - Typus Totius Orbis Terraquei, 1700",
+      "catalogUrl": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
+      "rights": {
+        "status": "accepted-no-copyright-united-states",
+        "url": "https://rightsstatements.org/page/NoC-US/1.0/",
+        "credit": "University of Illinois Urbana-Champaign Library, Rare Book & Manuscript Library",
+        "note": "The item page labels the scan No Copyright - United States and describes it as public domain."
+      },
+      "sources": [
+        {
+          "id": "gores",
+          "filename": "scherer-1700.jpg",
+          "bytes": 1304625,
+          "sha256": "7F462DCE31DE5ED1B78AAFE3ECC7BEBF34152B520696E68D7B9881F57417BA64",
+          "width": 3000,
+          "height": 2000,
+          "url": "https://images.digital.library.illinois.edu/iiif/2/e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0/full/full/0/default.jpg"
+        }
+      ],
+      "projection": {
+        "type": "equirectangular",
+        "aspectRatio": "2:1",
+        "northUp": true,
+        "longitudeAtLeftEdgeDeg": -180,
+        "longitudeAtCenterDeg": 0,
+        "longitudeAtRightEdgeDeg": 180,
+        "registryTextureAlignment": "identity",
+        "geographicAnchor": "Printed equatorial meridians place the twelve gore centers at 225°, 255° … 195° east; normalized here to -135° … -165° and checked against the Europe/Africa and Atlantic sequence.",
+        "historicalGeographyPreserved": true,
+        "modernCountryBoundariesRasterized": false,
+        "canonicalUnionCoastlineRasterized": true,
+        "canonicalUnionCoastlinePurpose": "registration target for the runtime interaction outline; not a claim of modern source accuracy"
+      },
+      "canonicalRegistration": {
+        "path": "src/data/geo/countries.geojson",
+        "dataset": "Natural Earth Admin 0 - Countries",
+        "repositoryVersion": "5.1.2",
+        "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
+        "featureCount": 177,
+        "canonicalUnionCoastlineRegistered": true,
+        "internalBorders": false,
+        "treatment": "source-derived-rgb-darkening",
+        "desktopWidthPx": 2,
+        "mobileWidthPxApprox": 1,
+        "maximumDarkeningOpacity": 0.36,
+        "edgePixelCountAtDesktop": 108017
+      },
+      "qa": {
+        "mappedPixelCoveragePercent": 100,
+        "edgeInsetPx": 5,
+        "edgeInsetRows": [
+          {
+            "latitudeDeg": 90,
+            "insetPx": 0
+          },
+          {
+            "latitudeDeg": 80,
+            "insetPx": 5
+          },
+          {
+            "latitudeDeg": 0,
+            "insetPx": 5
+          },
+          {
+            "latitudeDeg": -80,
+            "insetPx": 5
+          },
+          {
+            "latitudeDeg": -90,
+            "insetPx": 0
+          }
+        ],
+        "goreOverlapDeg": 1.0,
+        "postColumnFeatherApplied": false,
+        "paletteNormalization": {
+          "applied": true,
+          "method": "periodic-per-gore-polar-neutral-median-correction",
+          "preservesDarkLineworkAndText": true,
+          "maximumAppliedRgbAdjustment": 7.56,
+          "strength": 0.9
+        },
+        "preNormalizationGoreBoundaryRgbAbsoluteDifference": {
+          "sampleCount": 24576,
+          "median": 1.0,
+          "p95": 7.0,
+          "max": 30.0,
+          "interpretation": "Diagnostic source-edge continuity only; not a claim that historical coastlines equal modern canonical coastlines."
+        },
+        "postRegistrationGoreBoundaryRgbAbsoluteDifference": {
+          "sampleCount": 24576,
+          "median": 1.0,
+          "p95": 7.0,
+          "max": 83.0,
+          "interpretation": "Diagnostic source-edge continuity only; not a claim that historical coastlines equal modern canonical coastlines."
+        },
+        "canonicalRegistrationGate": {
+          "metricClass": "canonical-vector-to-rendered-registration-line",
+          "controlPointCount": 12,
+          "renderWidth": 2048,
+          "renderHeight": 1024,
+          "medianResidualPixels": 0,
+          "p95ResidualPixels": 0,
+          "maximumResidualPixels": 0,
+          "thresholdMedianPixels": 6,
+          "thresholdP95Pixels": 14,
+          "thresholdMaximumPixels": 24,
+          "pass": true,
+          "interpretation": "The registered line and runtime vector share the pinned canonical atlas. This gate does not measure historical-source coastline accuracy."
+        },
+        "desktopMobileNormalizedRegistrationDriftPixelsAtMobile": 0,
+        "desktopMobileDriftThresholdPixelsAtMobile": 1
+      },
+      "encoding": {
+        "desktopQuality": 84,
+        "mobileQuality": 80
+      },
+      "outputs": [
+        {
+          "kind": "desktop",
+          "path": "public/textures/scherer-1700.webp",
+          "width": 4096,
+          "height": 2048,
+          "bytes": 1104598,
+          "sha256": "B844CC59C075E03873C137DAA761431DDB1F9F97676FAC1C33B0EC28679CFF64",
+          "budgetBytes": 2200000,
+          "withinBudget": true
+        },
+        {
+          "kind": "mobile",
+          "path": "public/textures/scherer-1700-mobile.webp",
+          "width": 2048,
+          "height": 1024,
+          "bytes": 407040,
+          "sha256": "573B03CAD23A9C626B13BE4169B3089F6281A1E75049CB92D081E5EE1A7E6035",
+          "budgetBytes": 550000,
+          "withinBudget": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "historical-artwork-registration-acceptance",
+  "reviewedDate": "2026-08-31",
+  "productionEligible": false,
+  "overallStatus": "blocked-no-historical-edition-passes-artwork-alignment-and-fidelity-together",
+  "invariants": {
+    "historicalMasterRemainsImmutable": true,
+    "canonicalGeoJsonCameraMarkersAndHitTestingRemainUnchanged": true,
+    "generativeOrInventedGeographyAllowed": false,
+    "modernMapColourFillAllowed": false,
+    "missingHistoricalGeographyMayBeSynthesized": false,
+    "productionTextureMayChangeBeforeAllGatesPass": false
+  },
+  "acceptanceGates": {
+    "independentControlPoints": {
+      "minimumTotal": 24,
+      "minimumHoldout": 8,
+      "minimumGeographicRegions": 6,
+      "fitAndHoldoutMustBeDisjoint": true
+    },
+    "holdoutLandmarkResidualPixelsAt2048x1024": {
+      "medianMaximum": 1,
+      "p95Maximum": 2,
+      "maximumMaximum": 6
+    },
+    "historicalArtworkEdgeResidualPixelsAt2048x1024": {
+      "medianMaximum": 1,
+      "p95Maximum": 2,
+      "maximumMaximum": 6,
+      "requiresSourceSpecificReviewedLandMask": true
+    },
+    "protectedHistoricalContent": {
+      "minimumReviewedRegions": 8,
+      "requiredClasses": [
+        "cartouche",
+        "continent-label",
+        "dense-place-labels",
+        "miniature-or-decoration",
+        "graticule",
+        "gore-seam"
+      ],
+      "maximumP95GraticuleStraightnessDriftPixelsAt2048": 1,
+      "minimumLocalScale": 0.98,
+      "maximumLocalScale": 1.02,
+      "maximumAnisotropyRatio": 1.03,
+      "foldoverAllowed": false,
+      "independentVisualReviewRequired": true
+    },
+    "topologyAndOutput": {
+      "periodicAntimeridian": true,
+      "noUnmappedPixels": true,
+      "singleSourceDerivedResamplingPassMaximum": true,
+      "desktopMobileNormalizedDriftMaximumPixelsAtMobile": 1
+    }
+  },
+  "transformSafety": {
+    "zeroLocalShapeDistortionClass": "cyclic-longitude-rotation-only",
+    "explanation": "A cyclic longitude rotation translates the complete equirectangular source without changing local scale, graticule straightness, lettering shape, seams or pixel relationships. Any spatially varying or piecewise displacement necessarily has a non-identity Jacobian in a transition region and therefore cannot be called distortion-free.",
+    "piecewiseOrNonlinearPolicy": "Allowed only as a separately versioned Adapted Master after the protected-content, holdout, topology and edge gates all pass. A lower coastline residual alone is insufficient."
+  },
+  "evidence": {
+    "historicalSourceConfigPath": "scripts/globe-editions/historical-runtime-sources.json",
+    "historicalSourceConfigSha256": "33595DF76BB81633F978F2C43E2410C9A46EDE0BF4CC2B4AF67FFE8CE39A9904",
+    "canonicalAtlasPath": "src/data/geo/countries.geojson",
+    "canonicalAtlasSha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
+    "productionReviewPath": "reports/globe-editions/historical-runtime-final-review.json",
+    "pilotScriptPath": "scripts/pilot-historical-artwork-warp.py",
+    "pilotConfigPath": "scripts/globe-editions/historical-artwork-registration-pilot.json",
+    "vectorPilotScriptPath": "scripts/evaluate-historical-vector-registration.py",
+    "vectorPilotScriptSha256": "F54CCB8206D7372527C8B9BF4C4F7EE840E8873B462A312B58A9D737F8F040F0",
+    "vectorPilotReportPath": "reports/globe-editions/historical-vector-registration-pilot.json",
+    "vectorPilotReportSha256": "4767CE26EDECC6D68A0E78F3F5F1565FEDD22633873148BA30112C6D4B386411",
+    "ephemeralPilotReportPath": ".tmp/globe-registration-pilot/scherer-1700/1024x512/pilot-report.json",
+    "ephemeralArtifacts": [
+      ".tmp/globe-registration-pilot/scherer-1700/1024x512/historical-projection-no-canonical-line.png",
+      ".tmp/globe-registration-pilot/scherer-1700/1024x512/segmented-historical-land-mask.png",
+      ".tmp/globe-registration-pilot/scherer-1700/1024x512/adapted-artwork-pilot.png",
+      ".tmp/globe-registration-pilot/scherer-1700/1024x512/adapted-artwork-overlay.png"
+    ]
+  },
+  "portAttestation": {
+    "portedAt": "2026-09-01",
+    "originalCanonicalAtlasSha256": "1390263ABE434B8A30321230D79D10A12693BE465E8F2CDBAC711C7BBA7838AC",
+    "parsedFeatureGeometryUnchanged": true,
+    "hardGateOutcomeChanged": false,
+    "testsOrPilotRerunOnPort": false
+  },
+  "schererPilotAt1024x512": {
+    "sourceSpecificMask": "versioned-chroma-proxy-not-independently-reviewed",
+    "eligibleLatitudeRangeDegrees": [-58, 70],
+    "historicalProjectionMappedPixelCoveragePercent": 100,
+    "geographicCoverageVerified": false,
+    "before": {
+      "medianResidualPixels": 12,
+      "p95ResidualPixels": 68.130387,
+      "maximumCappedResidualPixels": 135.764502
+    },
+    "nonlinearV2": {
+      "model": "inverse-spherical-normalized-gaussian-displacement",
+      "controlPointCount": 14,
+      "holdoutControlPointCount": 0,
+      "medianResidualPixels": 7.81025,
+      "p95ResidualPixels": 57.456043,
+      "maximumCappedResidualPixels": 133.660016,
+      "regularizedControlMismatchMedianPixels": 15.584674,
+      "regularizedControlMismatchP95Pixels": 28.597716,
+      "minimumSampledJacobianDeterminant": 0.823449,
+      "medianSampledJacobianDeterminant": 0.994043,
+      "maximumSampledJacobianDeterminant": 1.127076,
+      "foldoverDetected": false,
+      "protectedFeatureReview": "not-performed",
+      "decision": "rejected-visible-graticule-and-local-scale-deformation"
+    },
+    "rigidLongitudeCandidate": {
+      "status": "research-candidate-not-source-datum-verified",
+      "sourceSamplingLongitudeOffsetDegrees": 17.9296875,
+      "integerPilotColumnShift": -51,
+      "latitudeOffsetDegrees": 0,
+      "medianResidualPixels": 7,
+      "p95ResidualPixels": 50.422552,
+      "maximumCappedResidualPixels": 105.550936,
+      "localShapeAndGraticuleDeformationPixels": 0,
+      "sourcePixelRelationshipsChanged": false,
+      "interpretation": "This rigid candidate outperforms nonlinear v2 on all three proxy residual summaries while preserving local historical artwork exactly at the integer pilot resolution. The historical prime meridian/datum has not been independently established, and the residual still fails the production gate by a wide margin."
+    },
+    "productionGate": "fail"
+  },
+  "schererVectorPilotAt1024x512": {
+    "algorithm": "historical-vector-inverse-map-pilot-v1",
+    "direction": "canonical-longitude-latitude-to-historical-longitude-latitude",
+    "historicalRgbModified": false,
+    "runtimeHitTestingModified": false,
+    "controlPointCount": 14,
+    "holdoutControlPointCount": 0,
+    "sourceSpecificMask": "versioned-chroma-proxy-not-independently-reviewed",
+    "baselineUnwarpedCanonicalVector": {
+      "medianResidualPixels": 9.433981,
+      "p95ResidualPixels": 48.414765,
+      "maximumResidualPixels": 79.15807
+    },
+    "inverseMappedHistoricalVector": {
+      "medianResidualPixels": 5.9515,
+      "p95ResidualPixels": 41.817404,
+      "maximumResidualPixels": 84.932597,
+      "coverageWithinOnePixelPercent": 12.649007,
+      "coverageWithinTwoPixelsPercent": 20.794702,
+      "coverageWithinFourPixelsPercent": 38.211921
+    },
+    "canonicalHitTargetToDisplayedVectorDisplacement": {
+      "medianPixels": 38.386149,
+      "p95Pixels": 49.084804,
+      "maximumPixels": 52.157805
+    },
+    "historicalFidelity": "pass-source-artwork-unchanged",
+    "interactiveAlignment": "fail-residual-coverage-and-hit-target-displacement",
+    "productionGate": "fail",
+    "decision": "Do not draw the warped fill or outline at runtime."
+  },
+  "runtimeFailSafe": {
+    "profileId": "source-only-centroid-selection-v2",
+    "implementationPath": "src/components/globeEditions.ts",
+    "renderingPaths": [
+      "src/components/globeAtlas.ts",
+      "src/components/LiteraryGlobe.tsx"
+    ],
+    "semanticTestPath": "src/components/globeEditions.test.ts",
+    "visitorEditionIds": [
+      "behaim-1492",
+      "hondius-1615",
+      "coronelli-1697",
+      "scherer-1700",
+      "cassini-1790"
+    ],
+    "productionTextureModified": false,
+    "historicalRgbModified": false,
+    "canonicalHitTestingModified": false,
+    "permanentRuntimeCountryBorders": false,
+    "selectionRasterFill": false,
+    "selectionRasterOutline": false,
+    "selectionVectorOutline": false,
+    "selectionCentroidMarker": true,
+    "countryPanelRemainsAvailable": true,
+    "existingBakedReferenceCoastlineRemoved": false,
+    "interpretation": "The fail-safe prevents a new misregistered flag fill or exact modern country outline from claiming artwork alignment. It does not make the historical artwork or its existing baked reference coastline align to the canonical atlas."
+  },
+  "editions": [
+    {
+      "id": "behaim-1492",
+      "homologousGeography": "partial",
+      "knownNonHomologousOrAbsentGeography": ["Americas as modern continental geography"],
+      "globalCanonicalArtworkWarpAllowed": false,
+      "permittedFutureScope": "explicitly masked partial adaptation of homologous Old World regions only",
+      "controlSetStatus": "absent",
+      "sourceSpecificLandMaskStatus": "absent",
+      "protectedFeatureStatus": "not-reviewed",
+      "productionEligible": false,
+      "blocker": "A global match would require inventing historically absent geography."
+    },
+    {
+      "id": "hondius-1615",
+      "homologousGeography": "substantial-with-period-generalization-and-conjecture",
+      "globalCanonicalArtworkWarpAllowed": "gate-dependent",
+      "controlSetStatus": "absent",
+      "sourceSpecificLandMaskStatus": "absent-monochrome-engraving-requires-reviewed-method",
+      "protectedFeatureStatus": "not-reviewed",
+      "productionEligible": false,
+      "blocker": "No independent fit/holdout landmarks, reviewed coastline mask or protected engraving regions."
+    },
+    {
+      "id": "coronelli-1697",
+      "homologousGeography": "substantial-with-period-generalization-and-conjecture",
+      "globalCanonicalArtworkWarpAllowed": "gate-dependent",
+      "controlSetStatus": "absent",
+      "sourceSpecificLandMaskStatus": "absent-dense-monochrome-engraving-requires-reviewed-method",
+      "protectedFeatureStatus": "not-reviewed",
+      "productionEligible": false,
+      "blocker": "No independent fit/holdout landmarks, reviewed coastline mask or protected engraving regions."
+    },
+    {
+      "id": "scherer-1700",
+      "homologousGeography": "substantial-with-period-generalization-and-conjecture",
+      "globalCanonicalArtworkWarpAllowed": "gate-dependent",
+      "controlSetStatus": "fourteen-fit-controls-no-holdout-not-independent",
+      "sourceSpecificLandMaskStatus": "pilot-chroma-proxy-not-independent",
+      "protectedFeatureStatus": "nonlinear-v2-not-reviewed-and-visually-failed; rigid-candidate-preserves-shape-but-fails-alignment",
+      "productionEligible": false,
+      "blocker": "Neither the nonlinear nor rigid candidate passes alignment and protected-content gates together."
+    },
+    {
+      "id": "cassini-1790",
+      "homologousGeography": "substantial-except-source-absent-antarctica-and-period-differences",
+      "globalCanonicalArtworkWarpAllowed": "gate-dependent-no-antarctica-synthesis",
+      "controlSetStatus": "identity-overlay-evidence-only-no-independent-artwork-residual-holdout",
+      "sourceSpecificLandMaskStatus": "absent",
+      "protectedFeatureStatus": "historical-features-reviewed-for-current-identity-master-not-for-nonlinear-warp",
+      "productionEligible": false,
+      "blocker": "Current Adapted Master registers a canonical line but does not prove or perform genuine historical-artwork coastline alignment."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "globe-editions-implementation-status",
+  "updatedAt": "2026-09-01",
+  "baselineCommit": "47771ea84d1bc0d38b5b60dcd218b3a3949c384e",
+  "releaseDeltaIncludesRuntimeFixes": true,
+  "registeredEditionCount": 9,
+  "visitorVisibleEditionCount": 9,
+  "selectedWartimeAlternative": "us-army-general-reference-1943",
+  "completedToday": [
+    "ported candidate-only historical builders and pinned configs without changing runtime textures",
+    "ported Cassini Historical/Adapted Master and runtime evidence chain",
+    "ported rejected Scherer artwork/vector alignment evidence",
+    "added manual checksum-pinned source acquisition commands",
+    "added Rand McNally machine-readable source manifest",
+    "added current nine-edition source and A-D comparison reports",
+    "added explicit network-free evidence check targets"
+  ],
+  "binaryFilesAddedByThisPackage": 0,
+  "routineBuildNetworkAccessAdded": false,
+  "historicalBuilderWritesTrackedProduction": false,
+  "checks": {
+    "historicalRuntimeIdentity": "pass-4-editions-8-webp",
+    "historicalArtworkHardGate": "pass-checker-confirms-five-editions-not-production-eligible",
+    "cassiniRuntimeChain": "pass-2-webp-and-review-chains",
+    "schererPreservationSource": "pass-production-unchanged",
+    "sourceManifestOutputIdentity": "pass-20-runtime-files",
+    "jsonSyntax": "pass-22-files",
+    "packageTargetPaths": "pass-13-globe-targets"
+  },
+  "alignment": {
+    "sourceOnlyEditionIds": [
+      "behaim-1492",
+      "hondius-1615",
+      "coronelli-1697",
+      "scherer-1700",
+      "cassini-1790"
+    ],
+    "sourceOnlyHardGate": "not-passed",
+    "m101HardGate": "fail-proxy-p95-4",
+    "randMcNallyHardGate": "accepted-legacy-baseline-unmeasured",
+    "canonicalBakedLineZeroPixelsCountsAsArtworkPass": false
+  },
+  "remaining": [
+    "independent historical-artwork Gate C datasets and acceptance for five source-only editions",
+    "M-101 artwork residual improvement to the hard threshold without quality loss",
+    "fresh full end-to-end suite",
+    "deployment and post-deploy verification"
+  ],
+  "definitionOfDone": "not-complete"
+}

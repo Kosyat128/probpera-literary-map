@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "historical-vector-registration-pilot-result",
+  "editionId": "scherer-1700",
+  "productionEligible": false,
+  "reviewState": "rejected-offline-vector-pilot",
+  "inputs": {
+    "pilotConfigPath": "scripts/globe-editions/historical-artwork-registration-pilot.json",
+    "pilotConfigSha256": "36ADAFC075AB61101AA6CE55E21AD62049C748E3D4A832CAEA2351054FCDF31A",
+    "historicalProjectionConfigPath": "scripts/globe-editions/historical-runtime-sources.json",
+    "historicalProjectionConfigSha256": "33595DF76BB81633F978F2C43E2410C9A46EDE0BF4CC2B4AF67FFE8CE39A9904",
+    "canonicalAtlasPath": "src/data/geo/countries.geojson",
+    "canonicalAtlasSha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
+    "historicalMaskPath": ".tmp/globe-registration-pilot/scherer-1700/1024x512/segmented-historical-land-mask.png",
+    "historicalMaskSha256": "C78E0F81F97A540BD979A11E249F283CB5FD858A9D2E3CA947A0EC61E213FC38"
+  },
+  "portAttestation": {
+    "portedAt": "2026-09-01",
+    "originalCanonicalAtlasSha256": "1390263ABE434B8A30321230D79D10A12693BE465E8F2CDBAC711C7BBA7838AC",
+    "parsedFeatureGeometryUnchanged": true,
+    "metricsRecomputedOnPort": false,
+    "reasonMetricsRemainApplicable": "The only canonical file delta is NAME_RU punctuation; no feature geometry changed."
+  },
+  "evaluationCanvas": {
+    "width": 1024,
+    "height": 512
+  },
+  "algorithm": {
+    "version": "historical-vector-inverse-map-pilot-v1",
+    "fieldVersion": "spherical-regularized-displacement-pilot-v2",
+    "direction": "canonical-longitude-latitude-to-historical-longitude-latitude",
+    "deterministic": true,
+    "historicalRgbModified": false,
+    "runtimeHitTestingModified": false,
+    "controlPointCount": 14,
+    "holdoutControlPointCount": 0
+  },
+  "edgeResidual": {
+    "metricClass": "one-way-sampled-canonical-vector-to-segmented-historical-artwork-edge-distance",
+    "eligibleLatitudeRangeDegrees": [
+      -58.0,
+      70.0
+    ],
+    "sampleStrideCanonicalEdgePixels": 10,
+    "searchRadiusPixels": 96,
+    "baselineUnwarpedCanonicalVector": {
+      "sampleCount": 1510,
+      "medianPixels": 9.433981,
+      "p95Pixels": 48.414765,
+      "maximumPixels": 79.15807
+    },
+    "inverseMappedHistoricalVector": {
+      "sampleCount": 1510,
+      "medianPixels": 5.9515,
+      "p95Pixels": 41.817404,
+      "maximumPixels": 84.932597
+    },
+    "inverseMappedCoverage": {
+      "within1PixelsPercent": 12.649007,
+      "within2PixelsPercent": 20.794702,
+      "within4PixelsPercent": 38.211921,
+      "within6PixelsPercent": 50.264901,
+      "within8PixelsPercent": 60.198675,
+      "within12PixelsPercent": 74.834437,
+      "within24PixelsPercent": 89.006623
+    },
+    "improvesMedianAndP95": true,
+    "maximumDoesNotRegress": false,
+    "sourceMaskStatus": "versioned-chroma-proxy-not-independently-reviewed"
+  },
+  "canonicalHitTargetToDisplayedVectorDisplacement": {
+    "sampleCount": 1510,
+    "medianPixels": 38.386149,
+    "p95Pixels": 49.084804,
+    "maximumPixels": 52.157805,
+    "interpretation": "A warped outline would no longer coincide with unchanged canonical pointer hit-testing."
+  },
+  "acceptanceGate": {
+    "medianMaximumPixelsAt1024": 0.5,
+    "p95MaximumPixelsAt1024": 1,
+    "maximumMaximumPixelsAt1024": 3,
+    "minimumCoverageWithinOnePixelPercent": 95,
+    "requiresIndependentHoldoutControls": true,
+    "numericGatePass": false,
+    "independentHoldoutGatePass": false,
+    "completeProductCoveragePass": false,
+    "productionGate": "fail"
+  },
+  "historicalFidelity": {
+    "sourceArtworkChanged": false,
+    "labelsGraticuleAndDecorationsChanged": false,
+    "geographyInvented": false,
+    "interpretation": "Vector-only evaluation preserves source artwork, but does not prove accurate or complete interactive alignment."
+  },
+  "decision": {
+    "warpedRuntimeFillAllowed": false,
+    "warpedRuntimeOutlineAllowed": false,
+    "reason": "Residuals remain far above the gate, the maximum regresses, controls have no holdout, and a displaced outline would conflict with canonical hit-testing.",
+    "safeFallback": "source-only-centroid-selection-v2"
+  }
+}

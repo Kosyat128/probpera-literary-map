@@ -1,9 +1,14 @@
 import { useCallback, useEffect, useReducer, useRef } from "react";
 
 import {
-  isGlobeVisualStyle,
-  type GlobeVisualStyle,
-} from "./globeAtlas";
+  DEFAULT_GLOBE_EDITION_ID,
+  parseStoredGlobeEdition,
+  type GlobeEditionId,
+} from "./globeEditions";
+
+// Keep the established state-machine API names while its values now identify
+// concrete editions rather than the former three generic surfaces.
+type GlobeVisualStyle = GlobeEditionId;
 
 export type GlobeStyleFailure = Readonly<{
   code: "texture-load-failed";
@@ -34,6 +39,12 @@ export type GlobeStyleAction =
   | Readonly<{
       type: "reject";
       style: GlobeVisualStyle;
+      requestId: number;
+    }>
+  | Readonly<{
+      type: "fallback";
+      failedStyle: GlobeVisualStyle;
+      fallbackStyle: GlobeVisualStyle;
       requestId: number;
     }>
   | Readonly<{
@@ -85,7 +96,7 @@ export type ExecuteGlobeStyleRequestOptions = Readonly<{
 }>;
 
 export type UseGlobeStyleStateOptions = Readonly<{
-  /** Invalid or absent stored values deliberately fall back to Antique. */
+  /** Invalid or absent stored values fall back to Rand McNally 1887. */
   initialStyle?: unknown;
   applyStyle: (style: GlobeVisualStyle) => Promise<void>;
   /** Called only after the latest request has rendered successfully. */
@@ -108,6 +119,11 @@ export type UseGlobeStyleStateResult = Readonly<{
     style: GlobeVisualStyle,
     options?: GlobeStyleRequestOptions
   ) => Promise<GlobeStyleRequestOutcome>;
+  /** Records an already-rendered bootstrap fallback without persisting it. */
+  reportFallback: (
+    failedStyle: GlobeVisualStyle,
+    fallbackStyle: GlobeVisualStyle
+  ) => void;
   retryStyle: () => Promise<GlobeStyleRequestOutcome>;
   clearError: () => void;
   /** Use this value for both `aria-pressed` and the visual active class. */
@@ -115,11 +131,11 @@ export type UseGlobeStyleStateResult = Readonly<{
 }>;
 
 export function resolveInitialGlobeStyle(value: unknown): GlobeVisualStyle {
-  return isGlobeVisualStyle(value) ? value : "antique";
+  return parseStoredGlobeEdition(value);
 }
 
 export function createInitialGlobeStyleState(
-  initialStyle: unknown = "antique"
+  initialStyle: unknown = DEFAULT_GLOBE_EDITION_ID
 ): GlobeStyleState {
   const style = resolveInitialGlobeStyle(initialStyle);
   return {
@@ -146,6 +162,22 @@ export function globeStyleStateReducer(
       requestedStyle: action.style,
       pendingStyle: action.style,
       error: null,
+      requestId: action.requestId,
+    };
+  }
+
+  if (action.type === "fallback") {
+    if (action.requestId <= state.requestId) return state;
+    return {
+      requestedStyle: action.failedStyle,
+      pendingStyle: null,
+      renderedStyle: action.fallbackStyle,
+      error: {
+        code: "texture-load-failed",
+        style: action.failedStyle,
+        requestId: action.requestId,
+        retryable: true,
+      },
       requestId: action.requestId,
     };
   }
@@ -339,6 +371,18 @@ export function useGlobeStyleState({
       : Promise.resolve<GlobeStyleRequestOutcome>("unchanged");
   }, [requestStyle]);
 
+  const reportFallback = useCallback(
+    (failedStyle: GlobeVisualStyle, fallbackStyle: GlobeVisualStyle) => {
+      transition({
+        type: "fallback",
+        failedStyle,
+        fallbackStyle,
+        requestId: ++requestIdRef.current,
+      });
+    },
+    [transition]
+  );
+
   const clearError = useCallback(() => {
     transition({ type: "clear-error", requestId: stateRef.current.requestId });
   }, [transition]);
@@ -356,6 +400,7 @@ export function useGlobeStyleState({
     error: state.error,
     status: describeGlobeStyleStatus(state),
     requestStyle,
+    reportFallback,
     retryStyle,
     clearError,
     ariaPressedFor,

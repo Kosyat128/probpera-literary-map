@@ -433,7 +433,12 @@ test("globe search metadata and instructions stay readable inside 320-1720px", a
 
   for (const width of [320, 360, 1440, 1720]) {
     await page.setViewportSize({ width, height: width < 500 ? 800 : 1000 });
-    const instruction = await page.locator(".globe-instruction").evaluate((element) => {
+    const navigationLabel = page.locator(".globe-navigation-label");
+    await expect(navigationLabel).toBeVisible();
+    await expect(navigationLabel).toHaveText(
+      "Интерактивный глобус · ручная навигация"
+    );
+    const instruction = await navigationLabel.evaluate((element) => {
       const box = element.getBoundingClientRect();
       const globeBox = element.closest(".literary-globe")?.getBoundingClientRect();
       const style = getComputedStyle(element);

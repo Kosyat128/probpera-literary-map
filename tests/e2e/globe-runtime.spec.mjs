@@ -17,6 +17,43 @@ async function meanPixelDifference(firstPng, secondPng) {
   return difference / (info.width * info.height * 3);
 }
 
+async function selectGlobeEdition(page, edition) {
+  const globe = page.locator(".literary-globe:not(.is-loading)");
+  const rail = globe.locator("#globe-edition-rail");
+  const railToggle = globe.locator(
+    '[data-globe-control="edition-rail-toggle"]'
+  );
+
+  await expect(rail).toBeAttached();
+  if ((await rail.getAttribute("aria-hidden")) === "true") {
+    await expect(railToggle).toHaveAttribute("aria-expanded", "false");
+    await railToggle.click();
+  }
+  await expect(rail).toHaveAttribute("aria-hidden", "false");
+  await expect(railToggle).toHaveAttribute("aria-expanded", "true");
+
+  const option = rail.locator(
+    `button[data-globe-edition-option="${edition}"]`
+  );
+  await expect(option).toBeEnabled();
+  // Focusing the accessible option also cancels the rail's pending auto-hide.
+  // Explicit scrolling keeps the compact nine-edition rail usable when the
+  // requested skin begins outside its horizontal viewport.
+  await option.focus();
+  await expect(option).toBeFocused();
+  await option.scrollIntoViewIfNeeded();
+  await expect(option).toBeInViewport();
+  // Activate from the keyboard so scrolling a compact rail cannot dispatch
+  // incidental hover preloads for intermediate skins and evict the two-entry
+  // decoded-texture cache this test is explicitly verifying.
+  await option.press("Enter");
+  await expect(globe).toHaveAttribute("data-globe-edition", edition);
+  // Let the public auto-hide cycle complete. The following selection then
+  // exercises the same reveal toggle a visitor uses instead of racing a
+  // pending 650 ms hide timer with a synthetic click.
+  await expect(rail).toHaveAttribute("aria-hidden", "true");
+}
+
 test("globe preloads near the viewport but renders only while visible", async ({
   page,
 }) => {
@@ -39,10 +76,13 @@ test("globe preloads near the viewport but renders only while visible", async ({
   await expect(globe).toHaveAttribute("data-globe-render-loop", "active");
 });
 
-test("globe style preview reuses decoded texture assets", async ({
+test("globe edition preview reuses decoded texture assets", async ({
   page,
   isMobile,
 }) => {
+  // This deliberately decodes and swaps multiple full-resolution textures.
+  // Cold two-worker CI runs can exceed the global timeout without a cache fault.
+  test.setTimeout(120_000);
   await page.addInitScript(() => {
     window.__globeTextureAssignments = [];
     const descriptor = Object.getOwnPropertyDescriptor(
@@ -68,16 +108,27 @@ test("globe style preview reuses decoded texture assets", async ({
   await page.locator("#atlas").scrollIntoViewIfNeeded();
   await expect(page.locator("#atlas canvas")).toHaveCount(1, { timeout: 30_000 });
 
-  for (const style of ["modern", "earth", "modern"]) {
-    await page.locator(`[data-globe-style-option="${style}"]`).click();
+  for (const [edition, surface] of [
+    ["natural-earth-2026", "modern"],
+    ["nasa-blue-marble", "earth"],
+    ["natural-earth-2026", "modern"],
+  ]) {
+    await selectGlobeEdition(page, edition);
+    await expect(page.locator(".literary-globe")).toHaveAttribute(
+      "data-globe-edition",
+      edition
+    );
     await expect(page.locator(".literary-globe")).toHaveAttribute(
       "data-globe-style",
-      style
+      surface
     );
   }
 
   const textureAssignments = await page.evaluate(
     () => window.__globeTextureAssignments
+  );
+  const texturePathnames = textureAssignments.map(
+    (source) => new URL(source, "http://local.test").pathname
   );
   const modernAsset = isMobile
     ? "/textures/modern-atlas-2026-ru-mobile.webp"
@@ -86,39 +137,42 @@ test("globe style preview reuses decoded texture assets", async ({
     ? "/textures/earth-blue-marble-mobile.webp"
     : "/textures/earth-blue-marble.webp";
   expect(
-    textureAssignments.filter((source) => source.endsWith(modernAsset))
+    texturePathnames.filter((source) => source.endsWith(modernAsset))
   ).toHaveLength(1);
   expect(
-    textureAssignments.filter((source) => source.endsWith(earthAsset))
+    texturePathnames.filter((source) => source.endsWith(earthAsset))
   ).toHaveLength(1);
 });
 
 test("all globe surfaces use the same seamless star background", async ({
   page,
 }) => {
+  // Switching several full-resolution globe textures can exceed the suite's
+  // default timeout on a cold CI runner without indicating a rendering fault.
+  test.setTimeout(120_000);
   await page.goto("/");
   await page.locator("#atlas").scrollIntoViewIfNeeded();
   const globe = page.locator(".literary-globe:not(.is-loading)");
   await expect(globe).toBeVisible({ timeout: 30_000 });
 
-  const modern = page.getByRole("button", { name: "Современный", exact: true });
-  await modern.click();
+  await selectGlobeEdition(page, "nasa-blue-marble");
+  await expect(globe).toHaveAttribute("data-globe-edition", "nasa-blue-marble");
   await expect(globe).toHaveAttribute("data-globe-style", "earth");
-  const activeModernButton = page.locator(
-    '.globe-style-switch button[data-globe-style-option="earth"].is-active'
+  const activeNasaButton = page.locator(
+    '.globe-style-switch button[data-globe-edition-option="nasa-blue-marble"].is-active'
   );
   // Chrome serializes an opaque color as either rgb() or rgba(..., 1),
   // depending on the browser build. Wait for the CSS transition to settle and
   // assert the same semantic color in both serializations.
-  await expect(activeModernButton).toHaveCSS(
+  await expect(activeNasaButton).toHaveCSS(
     "color",
-    /^rgba?\(156,\s*240,\s*207(?:,\s*1)?\)$/u
+    /^rgba?\(228,\s*247,\s*255(?:,\s*1)?\)$/u
   );
-  await expect(activeModernButton).toHaveCSS(
+  await expect(activeNasaButton).toHaveCSS(
     "border-top-color",
-    "rgba(128, 211, 255, 0.72)"
+    "rgba(83, 183, 241, 0.84)"
   );
-  const modernPresentation = await globe.evaluate((element) => ({
+  const nasaPresentation = await globe.evaluate((element) => ({
       scene: getComputedStyle(element).getPropertyValue("--globe-scene-theme").trim(),
       background: getComputedStyle(element).backgroundImage,
       controls: getComputedStyle(
@@ -131,15 +185,18 @@ test("all globe surfaces use the same seamless star background", async ({
         element.querySelector(".globe-vignette")
       ).boxShadow,
     }));
-  expect(modernPresentation).toMatchObject({
+  expect(nasaPresentation).toMatchObject({
     scene: "shared-starry",
     controls: "rgba(30, 9, 45, 0.9)",
     switcher: "rgba(32, 10, 48, 0.92)",
   });
-  expect(modernPresentation.background).toContain("radial-gradient");
+  expect(nasaPresentation.background).toContain("radial-gradient");
 
-  const classic = page.getByRole("button", { name: "Классический", exact: true });
-  await classic.click();
+  await selectGlobeEdition(page, "natural-earth-2026");
+  await expect(globe).toHaveAttribute(
+    "data-globe-edition",
+    "natural-earth-2026"
+  );
   await expect(globe).toHaveAttribute("data-globe-style", "modern");
   await expect
     .poll(() =>
@@ -156,12 +213,15 @@ test("all globe surfaces use the same seamless star background", async ({
       ).boxShadow,
     }))
   ).toMatchObject({
-    background: modernPresentation.background,
-    vignette: modernPresentation.vignette,
+    background: nasaPresentation.background,
+    vignette: nasaPresentation.vignette,
   });
 
-  const antique = page.getByRole("button", { name: "Старинный", exact: true });
-  await antique.click();
+  await selectGlobeEdition(page, "rand-mcnally-1887");
+  await expect(globe).toHaveAttribute(
+    "data-globe-edition",
+    "rand-mcnally-1887"
+  );
   await expect(globe).toHaveAttribute("data-globe-style", "antique");
   expect(
     await globe.evaluate((element) => ({
@@ -171,8 +231,8 @@ test("all globe surfaces use the same seamless star background", async ({
       ).boxShadow,
     }))
   ).toMatchObject({
-    background: modernPresentation.background,
-    vignette: modernPresentation.vignette,
+    background: nasaPresentation.background,
+    vignette: nasaPresentation.vignette,
   });
 });
 
@@ -295,7 +355,11 @@ test("selected Indonesia remains centered after the focus animation", async ({
   await expect(canvas).toHaveCount(1);
   await expect(canvas).toBeVisible();
 
-  await page.locator('[data-globe-style-option="modern"]').click();
+  await selectGlobeEdition(page, "natural-earth-2026");
+  await expect(page.locator(".literary-globe")).toHaveAttribute(
+    "data-globe-edition",
+    "natural-earth-2026"
+  );
   await expect(page.locator(".literary-globe")).toHaveAttribute(
     "data-globe-style",
     "modern"

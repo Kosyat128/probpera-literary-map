@@ -10,6 +10,7 @@ const worldMapSource = readFileSync(
   new URL("./LiteraryWorldMap.tsx", import.meta.url),
   "utf8"
 );
+const cssSource = readFileSync(new URL("../index.css", import.meta.url), "utf8");
 
 describe("globe filter stability wiring", () => {
   it("builds the atlas from the stable full archive", () => {
@@ -40,7 +41,6 @@ describe("globe filter stability wiring", () => {
   });
 
   it("keeps filters and the archive disclosure in one overflow-safe row", () => {
-    const cssSource = readFileSync(new URL("../index.css", import.meta.url), "utf8");
     const filtersRule =
       cssSource.match(/\.atlas-filters\s*\{([\s\S]*?)\}/u)?.[1] ?? "";
     const buttonRule =
@@ -57,6 +57,79 @@ describe("globe filter stability wiring", () => {
     expect(filtersRule).toContain("scrollbar-width: none");
     expect(buttonRule).toContain("flex: 0 0 auto");
     expect(buttonRule).toContain("scroll-snap-align: start");
+  });
+
+  it("keeps the premium globe controls balanced and touch-safe", () => {
+    const premiumCss = cssSource.slice(
+      cssSource.indexOf("/* Literary Planet: lightweight, aligned premium controls")
+    );
+
+    expect(premiumCss).toContain("width: auto;");
+    expect(premiumCss).toContain("max-width: none;");
+    expect(premiumCss).toContain("width: min(820px, 100%);");
+    expect(premiumCss).toContain("pointer-events: none;");
+    expect(premiumCss).toContain("pointer-events: auto;");
+    expect(premiumCss).toContain(
+      "grid-template-columns: repeat(3, minmax(0, 1fr)) 92px 48px"
+    );
+    expect(premiumCss).toContain(
+      "grid-template-columns: repeat(3, 48px) 92px 48px"
+    );
+    expect(premiumCss).toMatch(
+      /atlas-immersive-search-toggle,[\s\S]*?height:\s*48px;[\s\S]*?min-height:\s*48px;/u
+    );
+    expect(premiumCss).toMatch(
+      /interface-language-control button\s*\{[\s\S]*?height:\s*44px;/u
+    );
+    expect(premiumCss).toMatch(
+      /data-atlas-panel-state="open"\] \.globe-style-switch\s*\{[\s\S]*?visibility:\s*hidden;[\s\S]*?pointer-events:\s*none;/u
+    );
+    expect(cssSource).toMatch(
+      /\.literary-globe \.globe-style-switch\s*\{[\s\S]*?grid-auto-flow:\s*column;[\s\S]*?overflow-x:\s*auto;/u
+    );
+    expect(cssSource).toMatch(
+      /\.literary-globe \.globe-controls\s*\{[\s\S]*?left:\s*50%;[\s\S]*?transform:\s*translateX\(-50%\);/u
+    );
+    expect(premiumCss).toContain("grid-auto-columns: calc((100% - 16px) / 9)");
+    expect(premiumCss).toContain("width: min(1080px, calc(100% - 96px))");
+    expect(premiumCss).toContain("grid-auto-columns: 136px;");
+    expect(premiumCss).toContain("width: min(760px, calc(100% - 24px))");
+    expect(premiumCss).toContain("width: min(360px, calc(100% - 24px))");
+    expect(premiumCss).toContain("--atlas-mobile-dock-gutter: 12px;");
+    expect(premiumCss).toContain("--atlas-left-ornament-edge:");
+    expect(premiumCss).toContain("--atlas-coordinate-bottom:");
+    expect(premiumCss).toContain(
+      "grid-template-columns: 48px 48px repeat(3, minmax(0, 1fr))"
+    );
+    expect(premiumCss).toContain("@media (prefers-reduced-motion: reduce)");
+  });
+
+  it("keeps country archive cards readable, aligned, and overflow-safe", () => {
+    const archiveCss = cssSource.slice(
+      cssSource.indexOf(
+        "/* Literary Planet: premium, overflow-safe country archive composition. */"
+      ),
+      cssSource.indexOf("/* Public editorial-image contract")
+    );
+
+    expect(archiveCss).toContain("overscroll-behavior: contain;");
+    expect(archiveCss).toContain("touch-action: pan-y;");
+    expect(archiveCss).toContain(
+      "grid-template-rows: 30px minmax(34px, auto);"
+    );
+    expect(archiveCss).toMatch(
+      /\.archive-subscribe\s*\{[\s\S]*?width:\s*100%;[\s\S]*?max-width:\s*none;[\s\S]*?min-height:\s*48px;/u
+    );
+    expect(archiveCss).toMatch(
+      /\.country-metrics span\s*\{[\s\S]*?font-size:\s*11\.5px;[\s\S]*?text-transform:\s*none;/u
+    );
+    expect(archiveCss).toMatch(
+      /\.source-block a\s*\{[\s\S]*?max-width:\s*100%;[\s\S]*?min-height:\s*44px;/u
+    );
+    expect(archiveCss).toContain(
+      ".writer-detail .writer-record-meta :is(a, .writer-record-open-book)"
+    );
+    expect(archiveCss).toContain("@media (max-width: 360px)");
   });
 
   it("mounts the 200-country fallback only after visitors open it", () => {
