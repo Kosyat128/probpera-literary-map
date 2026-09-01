@@ -76,7 +76,7 @@ function readToken(value: unknown): SiteDesignToken | null {
   ) return null;
   if (
     layer === "component" &&
-    !Object.hasOwn(siteStudioComponentRegistry, source.targetKey)
+    !Object.prototype.hasOwnProperty.call(siteStudioComponentRegistry, source.targetKey)
   ) return null;
   try {
     return {
@@ -107,14 +107,18 @@ export function readCmsSiteDesignSnapshot(value: unknown): CmsSiteDesignSnapshot
     return emptySnapshot;
   }
   const releaseSource = record(source.release);
+  const releaseAction = enumValue(
+    releaseSource?.action,
+    ["publish", "rollback"] as const
+  );
   const release = releaseSource &&
     typeof releaseSource.id === "string" && uuidPattern.test(releaseSource.id) &&
     Number.isSafeInteger(releaseSource.number) && Number(releaseSource.number) > 0 &&
-    (releaseSource.action === "publish" || releaseSource.action === "rollback")
+    releaseAction
       ? {
           id: releaseSource.id.toLowerCase(),
           number: Number(releaseSource.number),
-          action: releaseSource.action,
+          action: releaseAction,
         }
       : null;
   if (source.release !== null && !release) return emptySnapshot;
@@ -182,7 +186,7 @@ function scalar(valueType: SiteStudioTokenValueType, value: SiteStudioTokenValue
 }
 
 function declarations(token: SiteDesignToken) {
-  const cssKey = token.key.replaceAll(".", "-");
+  const cssKey = token.key.split(".").join("-");
   if (token.valueType === "layout") {
     const value = token.value as {
       display: string; columns?: number; gap?: unknown; padding?: unknown;
