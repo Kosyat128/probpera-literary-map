@@ -1312,6 +1312,22 @@
     "multiline": false
   },
   {
+    "key": "interface.Восстанавливаем отображение глобуса…",
+    "group": "Весь интерфейс",
+    "label": "Восстанавливаем отображение глобуса…",
+    "defaultRu": "Восстанавливаем отображение глобуса…",
+    "defaultEn": "Restoring the globe display…",
+    "multiline": false
+  },
+  {
+    "key": "interface.Восстановить глобус",
+    "group": "Весь интерфейс",
+    "label": "Восстановить глобус",
+    "defaultRu": "Восстановить глобус",
+    "defaultEn": "Restore globe",
+    "multiline": false
+  },
+  {
     "key": "country.TL",
     "group": "Названия стран",
     "label": "Название страны: Восточный Тимор",
@@ -4352,6 +4368,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Масштаб",
+    "group": "Весь интерфейс",
+    "label": "Масштаб",
+    "defaultRu": "Масштаб",
+    "defaultEn": "Zoom",
+    "multiline": false
+  },
+  {
     "key": "interface.Масштаб: колесо или кнопки ±",
     "group": "Весь интерфейс",
     "label": "Масштаб: колесо или кнопки ±",
@@ -6136,6 +6160,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Отображение глобуса было прервано",
+    "group": "Весь интерфейс",
+    "label": "Отображение глобуса было прервано",
+    "defaultRu": "Отображение глобуса было прервано",
+    "defaultEn": "The globe display was interrupted",
+    "multiline": false
+  },
+  {
     "key": "interface.Отправить ответ",
     "group": "Весь интерфейс",
     "label": "Отправить ответ",
@@ -6332,7 +6364,7 @@
     "group": "Весь интерфейс",
     "label": "Пауза",
     "defaultRu": "Пауза",
-    "defaultEn": "Paused",
+    "defaultEn": "Pause",
     "multiline": false
   },
   {
@@ -7341,6 +7373,14 @@
     "label": "Предыдущие 13 произведений",
     "defaultRu": "Предыдущие 13 произведений",
     "defaultEn": "Previous 13 works",
+    "multiline": false
+  },
+  {
+    "key": "interface.Предыдущие издания глобуса",
+    "group": "Весь интерфейс",
+    "label": "Предыдущие издания глобуса",
+    "defaultRu": "Предыдущие издания глобуса",
+    "defaultEn": "Previous globe editions",
     "multiline": false
   },
   {
@@ -8920,6 +8960,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Следующие издания глобуса",
+    "group": "Весь интерфейс",
+    "label": "Следующие издания глобуса",
+    "defaultRu": "Следующие издания глобуса",
+    "defaultEn": "Next globe editions",
+    "multiline": false
+  },
+  {
     "key": "interface.Следующий материал",
     "group": "Весь интерфейс",
     "label": "Следующий материал",
@@ -9933,6 +9981,22 @@
     "label": "Текущая полка",
     "defaultRu": "Текущая полка",
     "defaultEn": "Current shelf",
+    "multiline": false
+  },
+  {
+    "key": "interface.Текущее издание глобуса",
+    "group": "Весь интерфейс",
+    "label": "Текущее издание глобуса",
+    "defaultRu": "Текущее издание глобуса",
+    "defaultEn": "Current globe edition",
+    "multiline": false
+  },
+  {
+    "key": "interface.Текущий масштаб",
+    "group": "Весь интерфейс",
+    "label": "Текущий масштаб",
+    "defaultRu": "Текущий масштаб",
+    "defaultEn": "Current zoom",
     "multiline": false
   },
   {
