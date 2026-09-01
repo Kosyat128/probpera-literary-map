@@ -104,6 +104,34 @@ describe("globe filter stability wiring", () => {
     expect(premiumCss).toContain("@media (prefers-reduced-motion: reduce)");
   });
 
+  it("keeps country archive cards readable, aligned, and overflow-safe", () => {
+    const archiveCss = cssSource.slice(
+      cssSource.indexOf(
+        "/* Literary Planet: premium, overflow-safe country archive composition. */"
+      ),
+      cssSource.indexOf("/* Public editorial-image contract")
+    );
+
+    expect(archiveCss).toContain("overscroll-behavior: contain;");
+    expect(archiveCss).toContain("touch-action: pan-y;");
+    expect(archiveCss).toContain(
+      "grid-template-rows: 30px minmax(34px, auto);"
+    );
+    expect(archiveCss).toMatch(
+      /\.archive-subscribe\s*\{[\s\S]*?width:\s*100%;[\s\S]*?max-width:\s*none;[\s\S]*?min-height:\s*48px;/u
+    );
+    expect(archiveCss).toMatch(
+      /\.country-metrics span\s*\{[\s\S]*?font-size:\s*11\.5px;[\s\S]*?text-transform:\s*none;/u
+    );
+    expect(archiveCss).toMatch(
+      /\.source-block a\s*\{[\s\S]*?max-width:\s*100%;[\s\S]*?min-height:\s*44px;/u
+    );
+    expect(archiveCss).toContain(
+      ".writer-detail .writer-record-meta :is(a, .writer-record-open-book)"
+    );
+    expect(archiveCss).toContain("@media (max-width: 360px)");
+  });
+
   it("mounts the 200-country fallback only after visitors open it", () => {
     expect(appSource).toContain("const [countryIndexOpen, setCountryIndexOpen]");
     expect(appSource).toContain(
