@@ -22492,7 +22492,7 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-coordinate {
-    bottom: calc(var(--atlas-coordinate-bottom) + 70px);
+    bottom: var(--atlas-coordinate-bottom);
   }
 }
 
@@ -22538,6 +22538,41 @@ html[data-theme="book"] .calendar-heading h3 {
     text-align: right;
     white-space: nowrap;
     transform: translateY(-50%);
+  }
+}
+
+/* Keep the contextual readouts on the lower reading line, separate from the
+   primary control dock. */
+@media (min-width: 681px) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="closed"] .literary-globe .globe-navigation-label,
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-navigation-label {
+    top: calc(100% + var(--atlas-coordinate-bottom) + 38px);
+  }
+}
+
+@media (min-width: 681px) and (max-width: 960px) {
+  .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-navigation-label {
+    width: min(360px, calc(100vw - 362px));
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 681px) and (max-width: 980px) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-navigation-label {
+    top: calc(100% + 12px);
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1325px) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-navigation-label {
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1325px) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-instruction {
+    display: none;
   }
 }
 
