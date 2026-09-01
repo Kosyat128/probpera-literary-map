@@ -61,12 +61,14 @@ describe("globe filter stability wiring", () => {
 
   it("keeps the premium globe controls balanced and touch-safe", () => {
     const premiumCss = cssSource.slice(
-      cssSource.indexOf("/* Literary Planet: lightweight, centered premium controls")
+      cssSource.indexOf("/* Literary Planet: lightweight, aligned premium controls")
     );
 
     expect(premiumCss).toContain("width: auto;");
     expect(premiumCss).toContain("max-width: none;");
     expect(premiumCss).toContain("width: min(820px, 100%);");
+    expect(premiumCss).toContain("pointer-events: none;");
+    expect(premiumCss).toContain("pointer-events: auto;");
     expect(premiumCss).toContain(
       "grid-template-columns: repeat(3, minmax(0, 1fr)) 92px 48px"
     );
@@ -93,6 +95,9 @@ describe("globe filter stability wiring", () => {
     expect(premiumCss).toContain("grid-auto-columns: 136px;");
     expect(premiumCss).toContain("width: min(760px, calc(100% - 24px))");
     expect(premiumCss).toContain("width: min(360px, calc(100% - 24px))");
+    expect(premiumCss).toContain("--atlas-mobile-dock-gutter: 12px;");
+    expect(premiumCss).toContain("--atlas-left-ornament-edge:");
+    expect(premiumCss).toContain("--atlas-coordinate-bottom:");
     expect(premiumCss).toContain(
       "grid-template-columns: 48px 48px repeat(3, minmax(0, 1fr))"
     );

@@ -484,12 +484,18 @@ test("premium globe controls stay balanced and inside every viewport", async ({
         if (!target) throw new Error(`Missing ${selector}`);
         return rect(target);
       };
+      const selectOptional = (selector) => {
+        const target = element.querySelector(selector);
+        return target ? rect(target) : null;
+      };
       const controlButtonElements = Array.from(
         element.querySelectorAll(".globe-controls button")
       );
       const controlButtons = controlButtonElements.map(rect);
       return {
         chrome: select(".atlas-immersive-chrome"),
+        chromeNav: select(".atlas-immersive-chrome nav"),
+        identity: select(".atlas-immersive-identity"),
         search: select(".atlas-immersive-search-toggle"),
         filters: select(".atlas-immersive-filter-toggle"),
         random: select(".atlas-immersive-random"),
@@ -500,6 +506,7 @@ test("premium globe controls stay balanced and inside every viewport", async ({
         styleSwitch: select(".globe-style-switch"),
         controls: select(".globe-controls"),
         instruction: select(".globe-instruction"),
+        coordinate: selectOptional(".atlas-coordinate"),
         controlButtons,
         controlLabelsFit: controlButtonElements.every((button) => {
           const label = button.querySelector(".ui-action__label");
@@ -526,11 +533,8 @@ test("premium globe controls stay balanced and inside every viewport", async ({
       expect(geometry.chrome.x).toBeLessThanOrEqual(17);
       expect(viewport.width - geometry.chrome.right).toBeLessThanOrEqual(17);
     }
-    expect(
-      Math.abs(
-        geometry.controls.x + geometry.controls.width / 2 - viewport.width / 2
-      )
-    ).toBeLessThanOrEqual(1);
+    expect(geometry.chromeNav.x).toBeGreaterThanOrEqual(geometry.chrome.x - 1);
+    expect(geometry.chromeNav.right).toBeLessThanOrEqual(geometry.chrome.right + 1);
     expect(
       Math.max(geometry.search.width, geometry.filters.width, geometry.random.width) -
         Math.min(geometry.search.width, geometry.filters.width, geometry.random.width)
@@ -552,9 +556,21 @@ test("premium globe controls stay balanced and inside every viewport", async ({
       Math.max(...geometry.controlButtons.map((button) => button.y)) -
         Math.min(...geometry.controlButtons.map((button) => button.y))
     ).toBeLessThanOrEqual(1);
-    const controlsInstructionGap = geometry.instruction.y - geometry.controls.bottom;
-    expect(controlsInstructionGap).toBeGreaterThanOrEqual(0);
-    expect(controlsInstructionGap).toBeLessThanOrEqual(20);
+    if (viewport.width <= 680) {
+      for (const dock of [geometry.styleSwitch, geometry.controls]) {
+        expect(Math.abs(dock.x - geometry.chrome.x)).toBeLessThanOrEqual(1);
+        expect(Math.abs(dock.right - geometry.chrome.right)).toBeLessThanOrEqual(1);
+      }
+      const controlsInstructionGap = geometry.instruction.y - geometry.controls.bottom;
+      expect(controlsInstructionGap).toBeGreaterThanOrEqual(0);
+      expect(controlsInstructionGap).toBeLessThanOrEqual(20);
+    } else {
+      expect(geometry.coordinate).not.toBeNull();
+      expect(Math.abs(geometry.controls.x - geometry.coordinate.x)).toBeLessThanOrEqual(1);
+      const controlsCoordinateGap = geometry.coordinate.y - geometry.controls.bottom;
+      expect(controlsCoordinateGap).toBeGreaterThanOrEqual(4);
+      expect(controlsCoordinateGap).toBeLessThanOrEqual(20);
+    }
     expect(
       Math.abs(geometry.controlButtons[0].width - geometry.controlButtons[1].width)
     ).toBeLessThanOrEqual(1);
@@ -564,6 +580,10 @@ test("premium globe controls stay balanced and inside every viewport", async ({
     ).toBeLessThanOrEqual(1);
     expect(geometry.controlLabelsFit).toBe(true);
     expect(geometry.identityDisplay).toBe(viewport.width <= 980 ? "none" : "grid");
+    if (viewport.width > 980) {
+      expect(Math.abs(geometry.identity.width - geometry.identity.height)).toBeLessThanOrEqual(1);
+      expect(geometry.identity.width).toBeGreaterThanOrEqual(48);
+    }
 
   }
 });
