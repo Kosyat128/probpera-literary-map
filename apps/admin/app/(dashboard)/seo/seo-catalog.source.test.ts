@@ -26,7 +26,16 @@ describe("complete SEO redirect catalog wiring", () => {
 
   it("provides full-form CAS editing and CAS deletion", () => {
     expect(actionsSource).toContain("export async function updateRedirectAction");
-    expect(actionsSource.split('.eq("updated_at",').length - 1).toBe(2);
+    expect(actionsSource).toContain('supabase.rpc("update_seo_redirect_guarded"');
+    expect(actionsSource).toContain('supabase.rpc("delete_seo_redirect_guarded"');
+    expect(actionsSource.split("p_expected_updated_at:").length - 1).toBe(2);
+    expect(actionsSource).toContain("p_id: identity.data.id");
+    expect(actionsSource).toContain(
+      "p_expected_updated_at: identity.data.expectedUpdatedAt"
+    );
+    expect(actionsSource).not.toMatch(
+      /\.from\("seo_redirects"\)\s*\.(?:update|delete)\(/u
+    );
     expect(pageSource).toContain("action={updateRedirectAction}");
     expect(pageSource).toContain('name="source_path"');
     expect(pageSource).toContain('name="destination_path"');

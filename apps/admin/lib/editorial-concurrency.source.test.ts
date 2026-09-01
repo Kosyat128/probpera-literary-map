@@ -9,8 +9,6 @@ const source = (relativePath: string) =>
 describe("optimistic protection for JSON-backed admin edits", () => {
   it.each([
     "apps/admin/app/(dashboard)/visual-entity-actions.ts",
-    "apps/admin/app/(dashboard)/site-copy/actions.ts",
-    "apps/admin/app/(dashboard)/site-copy/inline-actions.ts",
     "apps/admin/app/(dashboard)/editorial-database/actions.ts",
     "apps/admin/app/(dashboard)/homepage/actions.ts",
     "apps/admin/app/(dashboard)/media/actions.ts",
@@ -19,6 +17,24 @@ describe("optimistic protection for JSON-backed admin edits", () => {
     const code = source(filename);
     expect(code).toContain("updated_at");
     expect(code).toContain('.eq("updated_at",');
+  });
+
+  it.each([
+    "apps/admin/app/(dashboard)/site-copy/actions.ts",
+    "apps/admin/app/(dashboard)/site-copy/inline-actions.ts",
+  ])("guards Site Copy in %s through the atomic CAS RPC", (filename) => {
+    const code = source(filename);
+    const migration = source(
+      "supabase/migrations/20260901_zzz_admin_mutation_guards.sql"
+    );
+    expect(code).toContain('"save_site_copy_block"');
+    expect(code).toContain("p_expected_updated_at:");
+    expect(code).not.toMatch(
+      /\.from\("homepage_blocks"\)[\s\S]*?\.(?:update|upsert|insert)\(/u
+    );
+    expect(migration).toContain("current_updated_at <> p_expected_updated_at");
+    expect(migration).toContain("SITE_COPY_WRITE_CONFLICT");
+    expect(migration).toContain("insert into public.admin_audit_log");
   });
 
   it("guards Direct Edit v2 inside its atomic database RPC", () => {

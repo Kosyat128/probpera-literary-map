@@ -1,6 +1,6 @@
 import type { DragEvent } from "react";
 
-import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/client-image-upload";
+import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE } from "../../lib/client-image-upload";
 
 import type {
   ArticleEditorLocale,

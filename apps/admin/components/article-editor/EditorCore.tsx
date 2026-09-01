@@ -10,7 +10,7 @@ import type {
   RefCallback,
 } from "react";
 
-import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/client-image-upload";
+import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE } from "../../lib/client-image-upload";
 
 import ArticleEditorToolbar from "./ArticleEditorToolbar";
 import { EnglishTranslationNotice } from "./TranslationPanel";

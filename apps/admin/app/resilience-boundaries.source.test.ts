@@ -31,11 +31,19 @@ const layoutStylesSource = readFileSync(
 
 describe("admin resilience boundaries", () => {
   it("replaces every nullable Supabase page with one shared dependency state", () => {
+    const nullableSupabasePages = dashboardPages.filter((file) => {
+      const source = readFileSync(file, "utf8");
+      return (
+        source.includes("createServerSupabaseClient") &&
+        /if\s*\(\s*!supabase\s*\)\s*return\b/u.test(source)
+      );
+    });
     const dependencyPages = dashboardPages.filter((file) =>
       readFileSync(file, "utf8").includes("<AdminDependencyState />")
     );
 
-    expect(dependencyPages).toHaveLength(19);
+    expect(dependencyPages.sort()).toEqual(nullableSupabasePages.sort());
+    expect(nullableSupabasePages.length).toBeGreaterThan(0);
     for (const file of dashboardPages) {
       const source = readFileSync(file, "utf8");
       expect(source).not.toContain("if (!supabase) return null;");
