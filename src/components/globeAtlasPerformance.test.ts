@@ -47,6 +47,30 @@ describe("globe atlas performance contracts", () => {
     expect(prewarmSource).not.toContain("setTimeout");
   });
 
+  it("uses the exact spatial index instead of scanning every country on pointer hits", () => {
+    expect(atlasSource).toContain("createGlobeCountrySpatialIndex(");
+    const pickingSource = atlasSource.slice(
+      atlasSource.indexOf("const countryAtGeographicCoordinates"),
+      atlasSource.indexOf("const geographicCoordinatesAtUv")
+    );
+    expect(pickingSource).toContain("countrySpatialIndex.find");
+    expect(pickingSource).not.toContain("selectableFeatures");
+  });
+
+  it("releases atlas-owned CPU and GPU resources idempotently", () => {
+    const disposeSource = atlasSource.slice(
+      atlasSource.lastIndexOf("dispose: () =>"),
+      atlasSource.lastIndexOf("};")
+    );
+    expect(disposeSource).toContain("if (disposed) return");
+    expect(disposeSource).toContain("mapTexture.dispose()");
+    expect(disposeSource).toContain("countrySpatialIndex.clear()");
+    expect(disposeSource).toContain("pendingFlagImages.forEach");
+    expect(disposeSource).toContain("releaseGlobeCanvas(mapCanvas)");
+    expect(disposeSource).toContain("releaseGlobeCanvas(reliefCanvas)");
+    expect(disposeSource).toContain("releaseGlobeCanvas(highlightCanvas)");
+  });
+
   it("pauses prewarm for camera and every globe input family", () => {
     expect(globeSource).toContain("shouldPause: shouldPauseFocusPrewarm");
     expect(globeSource).toContain("if (!atlas || !globeActive) return");

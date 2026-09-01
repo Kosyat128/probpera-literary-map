@@ -366,6 +366,8 @@ const englishInterfaceText: Record<string, string> = {
   "Управление глобусом": "Globe controls",
   "Уменьшить масштаб глобуса": "Zoom out of the globe",
   "Увеличить масштаб глобуса": "Zoom in on the globe",
+  "Текущий масштаб": "Current zoom",
+  Масштаб: "Zoom",
   "Остановить автоматическое вращение": "Stop automatic rotation",
   "Включить автоматическое вращение": "Start automatic rotation",
   "Автовращение приостановлено, пока выбрана страна":
@@ -376,7 +378,7 @@ const englishInterfaceText: Record<string, string> = {
     "Automatic rotation is disabled by reduced-motion preferences",
   "Вернуть исходный вид глобуса": "Restore the globe's initial view",
   Авто: "Auto",
-  Пауза: "Paused",
+  Пауза: "Pause",
   Сброс: "Reset",
   "Повторить загрузку глобуса": "Retry loading the globe",
   "Литературный архив": "Literary archive",
@@ -525,6 +527,14 @@ const englishInterfaceText: Record<string, string> = {
   "Ещё {count} записей остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки":
     "{count} records remain in editorial review; automatically assembled drafts are not published before manual verification",
   "Издание глобуса": "Globe edition",
+  "Предыдущие издания глобуса": "Previous globe editions",
+  "Следующие издания глобуса": "Next globe editions",
+  "Текущее издание глобуса": "Current globe edition",
+  "Отображение глобуса было прервано":
+    "The globe display was interrupted",
+  "Восстанавливаем отображение глобуса…":
+    "Restoring the globe display…",
+  "Восстановить глобус": "Restore globe",
   "Источник и права текущего издания глобуса":
     "Source and rights for the current globe edition",
   "Источник и права": "Source and rights",

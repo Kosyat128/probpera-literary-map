@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  installGlobeWebGlContextLifecycle,
+  readGlobeRendererResourceSnapshot,
+  releaseGlobeCanvas,
   resolveGlobeAutoRotationPolicy,
   resolveGlobeFrameMode,
   resolveGlobeResize,
@@ -8,6 +11,33 @@ import {
   type GlobeIdleDeadline,
   type GlobeIdleWorkScheduler,
 } from "./globePerformance";
+
+class FakeWebGlCanvas {
+  private readonly listeners = new Map<string, Set<EventListener>>();
+
+  addEventListener(type: string, listener: EventListener) {
+    const listeners = this.listeners.get(type) ?? new Set<EventListener>();
+    listeners.add(listener);
+    this.listeners.set(type, listeners);
+  }
+
+  removeEventListener(type: string, listener: EventListener) {
+    this.listeners.get(type)?.delete(listener);
+  }
+
+  dispatch(type: "webglcontextlost" | "webglcontextrestored") {
+    const event = new Event(type, { cancelable: true });
+    this.listeners.get(type)?.forEach((listener) => listener(event));
+    return event;
+  }
+
+  listenerCount() {
+    return [...this.listeners.values()].reduce(
+      (count, listeners) => count + listeners.size,
+      0
+    );
+  }
+}
 
 function createFakeIdleScheduler({
   idle = true,
@@ -255,5 +285,83 @@ describe("globe focus-metric idle prewarm", () => {
 
     cancel();
     expect(fake.frames.size + fake.idles.size + fake.timers.size).toBe(0);
+  });
+});
+
+describe("globe WebGL resource lifecycle", () => {
+  it("permits context restoration, reports transitions and removes listeners", () => {
+    const canvas = new FakeWebGlCanvas();
+    const transitions: string[] = [];
+    let clock = 100;
+    let renderRequests = 0;
+    const lifecycle = installGlobeWebGlContextLifecycle(
+      canvas as unknown as Pick<
+        HTMLCanvasElement,
+        "addEventListener" | "removeEventListener"
+      >,
+      {
+        now: () => clock,
+        onContextLost: (snapshot) =>
+          transitions.push(`lost:${snapshot.lossCount}`),
+        onContextRestored: (snapshot) =>
+          transitions.push(`restored:${snapshot.restorationCount}`),
+        requestRender: () => {
+          renderRequests += 1;
+        },
+      }
+    );
+
+    const lossEvent = canvas.dispatch("webglcontextlost");
+    expect(lossEvent.defaultPrevented).toBe(true);
+    expect(lifecycle.snapshot()).toEqual({
+      contextLost: true,
+      lossCount: 1,
+      restorationCount: 0,
+      lastLossAt: 100,
+      lastRestorationAt: null,
+    });
+
+    clock = 140;
+    canvas.dispatch("webglcontextrestored");
+    expect(lifecycle.snapshot()).toEqual({
+      contextLost: false,
+      lossCount: 1,
+      restorationCount: 1,
+      lastLossAt: 100,
+      lastRestorationAt: 140,
+    });
+    expect(transitions).toEqual(["lost:1", "restored:1"]);
+    expect(renderRequests).toBe(1);
+
+    lifecycle.dispose();
+    expect(canvas.listenerCount()).toBe(0);
+    canvas.dispatch("webglcontextlost");
+    expect(lifecycle.snapshot().lossCount).toBe(1);
+  });
+
+  it("returns detached numeric renderer diagnostics", () => {
+    const snapshot = readGlobeRendererResourceSnapshot({
+      info: {
+        memory: { geometries: 18, textures: 7 },
+        render: { calls: 24, triangles: 1024, points: Number.NaN, lines: -3 },
+        programs: [{}, {}, {}],
+      },
+    });
+
+    expect(snapshot).toEqual({
+      geometries: 18,
+      textures: 7,
+      programs: 3,
+      calls: 24,
+      triangles: 1024,
+      points: 0,
+      lines: 0,
+    });
+  });
+
+  it("releases detached canvas backing stores", () => {
+    const canvas = { width: 4096, height: 2048 };
+    releaseGlobeCanvas(canvas);
+    expect(canvas).toEqual({ width: 1, height: 1 });
   });
 });

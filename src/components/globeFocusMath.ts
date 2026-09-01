@@ -48,6 +48,8 @@ export const HOME_ORBIT_TARGET = Object.freeze({ x: 0, y: -0.2, z: 0 });
 export const HOME_CAMERA_POSITION = Object.freeze({ x: 0, y: 0.08, z: 4.9 });
 export const GLOBE_SAFE_CAMERA_RADIUS = 2.25;
 export const GLOBE_MAX_FOCUS_RADIUS = 4.45;
+/** Furthest distance accepted by every globe camera control. */
+export const GLOBE_MAX_CAMERA_RADIUS = 5.15;
 
 const EPSILON = 1e-8;
 const OPPOSITE_THRESHOLD = -0.9995;

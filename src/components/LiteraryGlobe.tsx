@@ -47,7 +47,12 @@ import GlobeCameraRig, {
   type GlobeCameraView,
   type GlobeCountryCameraIntentKind,
 } from "./GlobeCameraRig";
-import type { CountryFocusMetrics, ViewInsets } from "./globeFocusMath";
+import {
+  GLOBE_MAX_CAMERA_RADIUS,
+  GLOBE_SAFE_CAMERA_RADIUS,
+  type CountryFocusMetrics,
+  type ViewInsets,
+} from "./globeFocusMath";
 import { useGlobeStyleState } from "./useGlobeStyleState";
 import GlobeViewObserver, { type GlobeViewSample } from "./GlobeViewObserver";
 import { resolveCountryGlobeCoordinates } from "./globeCoordinates";
@@ -80,6 +85,8 @@ import {
   globeKeyboardCandidateAriaCopy,
 } from "./globeKeyboardNavigation";
 import {
+  installGlobeWebGlContextLifecycle,
+  readGlobeRendererResourceSnapshot,
   resolveGlobeAutoRotationPolicy,
   resolveGlobeFrameMode,
 } from "./globePerformance";
@@ -141,6 +148,7 @@ interface Props {
 
 const GLOBE_EDITION_STORAGE_KEY = "probpera.globe-edition.v2";
 const LEGACY_GLOBE_STYLE_STORAGE_KEY = "probpera.globe-style.v1";
+const GLOBE_ZOOM_LIMIT_EPSILON = 0.035;
 const GLOBE_CAMERA_CONFIG = {
   position: [0, 0.08, 4.9] as [number, number, number],
   fov: 43,
@@ -1994,6 +2002,11 @@ export default function LiteraryGlobe({
   const editionRailHideTimerRef = useRef<number | null>(null);
   const editionRailRestoreFocusRef = useRef(false);
   const editionRailFocusToggleAfterHideRef = useRef(false);
+  const editionTransitionTimerRef = useRef<number | null>(null);
+  const previousPendingEditionRef = useRef<GlobeEditionId | null>(null);
+  const globeTopRef = useRef(0);
+  const webglListenerCleanupRef = useRef<(() => void) | null>(null);
+  const webglDiagnosticsRefreshRef = useRef<(() => void) | null>(null);
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [atlasLoadRequest, setAtlasLoadRequest] = useState(0);
@@ -2008,6 +2021,24 @@ export default function LiteraryGlobe({
   });
   const [keyboardCandidateActive, setKeyboardCandidateActive] = useState(false);
   const [editionRailVisible, setEditionRailVisible] = useState(true);
+  const [editionRailScroll, setEditionRailScroll] = useState({
+    canScrollLeft: false,
+    canScrollRight: false,
+  });
+  const [editionTransitionState, setEditionTransitionState] = useState<
+    "idle" | "loading" | "settling"
+  >("idle");
+  const [webglContextState, setWebglContextState] = useState<
+    "ready" | "lost" | "restoring"
+  >("ready");
+  const [webglRecoveryGeneration, setWebglRecoveryGeneration] = useState(0);
+  const [webglDiagnostics, setWebglDiagnostics] = useState({
+    api: "pending",
+    maxTextureSize: 0,
+    geometries: 0,
+    textures: 0,
+    programs: 0,
+  });
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [globeVisible, setGlobeVisible] = useState(false);
   const [documentVisible, setDocumentVisible] = useState(
@@ -2034,6 +2065,7 @@ export default function LiteraryGlobe({
   const setContainerRef = useCallback(
     (node: HTMLDivElement | null) => {
       containerRef.current = node;
+      globeTopRef.current = node?.getBoundingClientRect().top ?? 0;
       assignRef(rootRef, node);
     },
     [rootRef]
@@ -2080,6 +2112,33 @@ export default function LiteraryGlobe({
     width: window.innerWidth,
     height: window.innerHeight,
   }));
+  const updateEditionRailScroll = useCallback(() => {
+    const rail = editionRailRef.current;
+    if (!rail) return;
+    const maximumLeft = Math.max(0, rail.scrollWidth - rail.clientWidth);
+    const next = {
+      canScrollLeft: rail.scrollLeft > 2,
+      canScrollRight: rail.scrollLeft < maximumLeft - 2,
+    };
+    setEditionRailScroll((current) =>
+      current.canScrollLeft === next.canScrollLeft &&
+      current.canScrollRight === next.canScrollRight
+        ? current
+        : next
+    );
+  }, []);
+  const scrollEditionRail = useCallback(
+    (direction: "previous" | "next") => {
+      const rail = editionRailRef.current;
+      if (!rail) return;
+      const distance = Math.min(360, Math.max(176, rail.clientWidth * 0.66));
+      rail.scrollBy({
+        left: direction === "previous" ? -distance : distance,
+        behavior: reducedMotion ? "auto" : "smooth",
+      });
+    },
+    [reducedMotion]
+  );
   useEffect(() => {
     const rail = editionRailRef.current;
     if (!rail) return;
@@ -2113,7 +2172,44 @@ export default function LiteraryGlobe({
       left: Math.min(maximumLeft, alignedLeft),
       behavior: "auto",
     });
-  }, [atlas, renderedEditionId, selectedCountry?.id, viewportSize.width]);
+    window.requestAnimationFrame(updateEditionRailScroll);
+  }, [
+    atlas,
+    renderedEditionId,
+    selectedCountry?.id,
+    updateEditionRailScroll,
+    viewportSize.width,
+  ]);
+  useLayoutEffect(() => {
+    const rail = editionRailRef.current;
+    if (!rail) return;
+    updateEditionRailScroll();
+    const resizeObserver = new ResizeObserver(updateEditionRailScroll);
+    resizeObserver.observe(rail);
+    return () => resizeObserver.disconnect();
+  }, [updateEditionRailScroll]);
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    let frame = 0;
+    const updateTop = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        globeTopRef.current = container.getBoundingClientRect().top;
+      });
+    };
+    const resizeObserver = new ResizeObserver(updateTop);
+    resizeObserver.observe(container);
+    window.addEventListener("resize", updateTop, { passive: true });
+    window.addEventListener("scroll", updateTop, { passive: true });
+    updateTop();
+    return () => {
+      window.cancelAnimationFrame(frame);
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateTop);
+      window.removeEventListener("scroll", updateTop);
+    };
+  }, [atlas]);
   useEffect(() => {
     let frame = 0;
     const updateViewport = () => {
@@ -2177,15 +2273,7 @@ export default function LiteraryGlobe({
           : !globeActive
             ? t("Автовращение приостановлено вне экрана")
           : t("Остановить автоматическое вращение");
-  const autoRotateControlCaption = [
-    "selection",
-    "hover",
-    "interaction",
-    "camera-flight",
-    "reduced-motion",
-    "document-hidden",
-    "offscreen",
-  ].includes(autoRotateStatus)
+  const autoRotateControlCaption = autoRotateRequested
     ? t("Пауза")
     : t("Авто");
   const frameMode = resolveGlobeFrameMode({
@@ -2195,6 +2283,20 @@ export default function LiteraryGlobe({
     cameraFlightActive,
     controlsDampingActive: cameraControlsActive,
   });
+  const cameraRadius = viewSample.cameraRadius;
+  const homeCameraRadius = Math.hypot(...GLOBE_CAMERA_CONFIG.position);
+  const globeScalePercent = Math.round(
+    THREE.MathUtils.clamp(
+      (homeCameraRadius / Math.max(GLOBE_SAFE_CAMERA_RADIUS, cameraRadius)) *
+        100,
+      95,
+      220
+    )
+  );
+  const zoomInDisabled =
+    cameraRadius <= GLOBE_SAFE_CAMERA_RADIUS + GLOBE_ZOOM_LIMIT_EPSILON;
+  const zoomOutDisabled =
+    cameraRadius >= GLOBE_MAX_CAMERA_RADIUS - GLOBE_ZOOM_LIMIT_EPSILON;
   const sourceEdition = renderedEdition;
   const openSourceDialog = () => {
     const dialog = sourceDialogRef.current;
@@ -2290,6 +2392,42 @@ export default function LiteraryGlobe({
     if (pendingEditionId || visualStyleError) revealEditionRail();
   }, [pendingEditionId, revealEditionRail, visualStyleError]);
 
+  useEffect(() => {
+    if (editionTransitionTimerRef.current !== null) {
+      window.clearTimeout(editionTransitionTimerRef.current);
+      editionTransitionTimerRef.current = null;
+    }
+    if (pendingEditionId) {
+      previousPendingEditionRef.current = pendingEditionId;
+      setEditionTransitionState("loading");
+      return;
+    }
+    if (previousPendingEditionRef.current && !visualStyleError) {
+      previousPendingEditionRef.current = null;
+      if (reducedMotion) {
+        setEditionTransitionState("idle");
+        return;
+      }
+      setEditionTransitionState("settling");
+      editionTransitionTimerRef.current = window.setTimeout(() => {
+        editionTransitionTimerRef.current = null;
+        setEditionTransitionState("idle");
+      }, 420);
+      return;
+    }
+    previousPendingEditionRef.current = null;
+    setEditionTransitionState("idle");
+  }, [pendingEditionId, reducedMotion, visualStyleError]);
+
+  useEffect(
+    () => () => {
+      if (editionTransitionTimerRef.current !== null) {
+        window.clearTimeout(editionTransitionTimerRef.current);
+      }
+    },
+    []
+  );
+
   useLayoutEffect(() => {
     editionRailRef.current?.toggleAttribute("inert", !editionRailVisible);
     if (
@@ -2378,8 +2516,7 @@ export default function LiteraryGlobe({
       markPrewarmInputActivity();
       if (editionRailVisible || event.pointerType === "touch") return;
 
-      const offsetFromTop =
-        event.clientY - event.currentTarget.getBoundingClientRect().top;
+      const offsetFromTop = event.clientY - globeTopRef.current;
       const revealBoundary = mode === "immersive" ? 96 : 84;
       if (offsetFromTop <= revealBoundary) {
         revealEditionRail();
@@ -2450,6 +2587,83 @@ export default function LiteraryGlobe({
     [onViewSample]
   );
 
+  const handleWebglCreated = useCallback(
+    ({
+      gl,
+      invalidate,
+    }: {
+      gl: THREE.WebGLRenderer;
+      invalidate: () => void;
+    }) => {
+      webglListenerCleanupRef.current?.();
+      const canvas = gl.domElement;
+      let diagnosticFrame = 0;
+      const captureDiagnostics = () => {
+        const resources = readGlobeRendererResourceSnapshot(gl);
+        const next = {
+          api: gl.capabilities.isWebGL2 ? "webgl2" : "webgl1",
+          maxTextureSize: gl.capabilities.maxTextureSize,
+          geometries: resources.geometries,
+          textures: resources.textures,
+          programs: resources.programs,
+        };
+        setWebglDiagnostics((current) =>
+          current.api === next.api &&
+          current.maxTextureSize === next.maxTextureSize &&
+          current.geometries === next.geometries &&
+          current.textures === next.textures &&
+          current.programs === next.programs
+            ? current
+            : next
+        );
+      };
+      const lifecycle = installGlobeWebGlContextLifecycle(canvas, {
+        onContextLost: () => {
+          window.cancelAnimationFrame(diagnosticFrame);
+          setWebglContextState("lost");
+        },
+        onContextRestored: () => {
+          setWebglContextState("restoring");
+          window.cancelAnimationFrame(diagnosticFrame);
+          diagnosticFrame = window.requestAnimationFrame(() => {
+            captureDiagnostics();
+            setWebglContextState("ready");
+          });
+        },
+        requestRender: invalidate,
+      });
+      captureDiagnostics();
+      webglDiagnosticsRefreshRef.current = captureDiagnostics;
+      diagnosticFrame = window.requestAnimationFrame(captureDiagnostics);
+      setWebglContextState("ready");
+      webglListenerCleanupRef.current = () => {
+        window.cancelAnimationFrame(diagnosticFrame);
+        lifecycle.dispose();
+        if (webglDiagnosticsRefreshRef.current === captureDiagnostics) {
+          webglDiagnosticsRefreshRef.current = null;
+        }
+      };
+    },
+    []
+  );
+
+  const recoverWebglContext = useCallback(() => {
+    webglListenerCleanupRef.current?.();
+    webglListenerCleanupRef.current = null;
+    // A remounted camera rig must not replay the last one-shot zoom/reset.
+    setControlRequest(null);
+    setWebglContextState("restoring");
+    setWebglRecoveryGeneration((generation) => generation + 1);
+  }, []);
+
+  useEffect(() => {
+    if (webglContextState !== "ready") return;
+    const frame = window.requestAnimationFrame(() => {
+      webglDiagnosticsRefreshRef.current?.();
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [cameraPhase, renderedEditionId, selectedCountry?.id, webglContextState]);
+
   const toggleAutoRotate = useCallback(() => {
     clearAutoRotateResumeTimer();
     setInteractionPaused(false);
@@ -2485,6 +2699,7 @@ export default function LiteraryGlobe({
   useEffect(
     () => () => {
       clearAutoRotateResumeTimer();
+      webglListenerCleanupRef.current?.();
     },
     [clearAutoRotateResumeTimer]
   );
@@ -2725,10 +2940,19 @@ export default function LiteraryGlobe({
       data-globe-style={renderedVisualStyle}
       data-globe-edition={renderedEditionId}
       data-globe-edition-rail={editionRailVisible ? "visible" : "hidden"}
+      data-can-scroll-left={editionRailScroll.canScrollLeft}
+      data-can-scroll-right={editionRailScroll.canScrollRight}
+      data-globe-edition-transition={editionTransitionState}
       data-globe-overlay-profile={renderedEdition.overlayProfile.profileId}
       data-globe-render-loop={globeActive ? "active" : "paused"}
       data-globe-frame-mode={frameMode}
       data-globe-auto-rotate={autoRotateStatus}
+      data-globe-webgl-context={webglContextState}
+      data-globe-webgl-api={webglDiagnostics.api}
+      data-globe-webgl-max-texture-size={webglDiagnostics.maxTextureSize}
+      data-globe-webgl-geometries={webglDiagnostics.geometries}
+      data-globe-webgl-textures={webglDiagnostics.textures}
+      data-globe-webgl-programs={webglDiagnostics.programs}
       data-globe-mode={mode}
       data-globe-touch-mode={touchActivationPolicy.mode}
       data-globe-camera-phase={cameraPhase}
@@ -2761,6 +2985,7 @@ export default function LiteraryGlobe({
       style={{ touchAction: touchActivationPolicy.touchAction }}
     >
       <Canvas
+        key={webglRecoveryGeneration}
         camera={GLOBE_CAMERA_CONFIG}
         dpr={[1, economical ? 1.1 : 1.5]}
         frameloop={frameMode}
@@ -2776,6 +3001,7 @@ export default function LiteraryGlobe({
           alpha: true,
           powerPreference: "high-performance",
         }}
+        onCreated={handleWebglCreated}
       >
         <GlobeScene
           atlas={atlas}
@@ -2810,6 +3036,28 @@ export default function LiteraryGlobe({
           touchInteractionEnabled={touchActivationPolicy.controlsEnabled}
         />
       </Canvas>
+
+      <div className="globe-edition-transition" aria-hidden="true">
+        <span />
+      </div>
+
+      {webglContextState !== "ready" && (
+        <div
+          className="globe-webgl-recovery"
+          role={webglContextState === "lost" ? "alert" : "status"}
+        >
+          <p>
+            {webglContextState === "lost"
+              ? t("Отображение глобуса было прервано")
+              : t("Восстанавливаем отображение глобуса…")}
+          </p>
+          {webglContextState === "lost" && (
+            <button type="button" onClick={recoverWebglContext}>
+              {t("Восстановить глобус")}
+            </button>
+          )}
+        </div>
+      )}
 
       {touchActivationPolicy.activationControl && (
         <Button
@@ -2856,9 +3104,11 @@ export default function LiteraryGlobe({
           icon={<BrandPlusIcon />}
           surface="dark"
           data-globe-control="zoom-in"
-          aria-label={t("Увеличить масштаб глобуса")}
+          aria-label={`${t("Увеличить масштаб глобуса")}. ${t("Текущий масштаб")} ${number(globeScalePercent)}%`}
+          aria-describedby="globe-scale-feedback"
           aria-keyshortcuts="+"
           title={t("Увеличить масштаб глобуса")}
+          disabled={zoomInDisabled}
           onClick={() =>
             requestGlobeControl({ type: "zoom", direction: "in" })
           }
@@ -2867,9 +3117,11 @@ export default function LiteraryGlobe({
           icon={<BrandMinusIcon />}
           surface="dark"
           data-globe-control="zoom-out"
-          aria-label={t("Уменьшить масштаб глобуса")}
+          aria-label={`${t("Уменьшить масштаб глобуса")}. ${t("Текущий масштаб")} ${number(globeScalePercent)}%`}
+          aria-describedby="globe-scale-feedback"
           aria-keyshortcuts="-"
           title={t("Уменьшить масштаб глобуса")}
+          disabled={zoomOutDisabled}
           onClick={() =>
             requestGlobeControl({ type: "zoom", direction: "out" })
           }
@@ -2920,6 +3172,9 @@ export default function LiteraryGlobe({
         <span className="globe-navigation-label" aria-hidden="true">
           {t("Интерактивный глобус · ручная навигация")}
         </span>
+        <output id="globe-scale-feedback" className="globe-scale-feedback">
+          {t("Масштаб")} {number(globeScalePercent)}%
+        </output>
       </div>
 
       <IconButton
@@ -2940,6 +3195,23 @@ export default function LiteraryGlobe({
       />
 
       <div
+        className="globe-edition-scroll-cue is-previous"
+        data-visible={editionRailScroll.canScrollLeft}
+      >
+        <button
+          type="button"
+          aria-label={t("Предыдущие издания глобуса")}
+          aria-controls="globe-edition-rail"
+          disabled={!editionRailScroll.canScrollLeft}
+          onClick={() => scrollEditionRail("previous")}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m14.5 6.5-5.5 5.5 5.5 5.5" />
+          </svg>
+        </button>
+      </div>
+
+      <div
         ref={editionRailRef}
         id="globe-edition-rail"
         className="globe-style-switch"
@@ -2947,7 +3219,10 @@ export default function LiteraryGlobe({
         aria-label={t("Издание глобуса")}
         aria-busy={Boolean(pendingEditionId)}
         aria-hidden={!editionRailVisible}
+        data-can-scroll-left={editionRailScroll.canScrollLeft}
+        data-can-scroll-right={editionRailScroll.canScrollRight}
         onFocusCapture={revealEditionRail}
+        onScroll={updateEditionRailScroll}
         onKeyDown={handleEditionRailKeyDown}
       >
         {AVAILABLE_GLOBE_EDITIONS.map((edition) => {
@@ -2990,6 +3265,41 @@ export default function LiteraryGlobe({
         })}
       </div>
 
+      <div
+        className="globe-edition-scroll-cue is-next"
+        data-visible={editionRailScroll.canScrollRight}
+      >
+        <button
+          type="button"
+          aria-label={t("Следующие издания глобуса")}
+          aria-controls="globe-edition-rail"
+          disabled={!editionRailScroll.canScrollRight}
+          onClick={() => scrollEditionRail("next")}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m9.5 6.5 5.5 5.5-5.5 5.5" />
+          </svg>
+        </button>
+      </div>
+
+      <label className="globe-edition-compact-select">
+        <span>{t("Текущее издание глобуса")}</span>
+        <select
+          value={pendingEditionId ?? renderedEditionId}
+          disabled={Boolean(pendingEditionId)}
+          aria-busy={Boolean(pendingEditionId)}
+          onChange={(event) => {
+            void requestEdition(event.currentTarget.value as GlobeEditionId);
+          }}
+        >
+          {AVAILABLE_GLOBE_EDITIONS.map((edition) => (
+            <option key={edition.id} value={edition.id}>
+              {edition.compactLabel[language]}
+            </option>
+          ))}
+        </select>
+      </label>
+
       <span
         className={`globe-style-status${visualStyleError ? " is-error" : ""}`}
         role={visualStyleError ? "alert" : "status"}
@@ -3004,6 +3314,9 @@ export default function LiteraryGlobe({
           <button type="button" onClick={() => void globeStyle.retryStyle()}>
             {t("Повторить")}
           </button>
+        )}
+        {pendingEditionId && (
+          <i className="globe-style-status-progress" aria-hidden="true" />
         )}
       </span>
 

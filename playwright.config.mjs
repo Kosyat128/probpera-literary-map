@@ -12,28 +12,57 @@ function builtPreviewBasePath() {
 }
 
 const previewBasePath = builtPreviewBasePath();
+const previewPort = Number.parseInt(process.env.PLAYWRIGHT_PORT ?? "4173", 10);
+const previewOrigin = `http://127.0.0.1:${previewPort}`;
 const suite = process.env.PLAYWRIGHT_SUITE;
-const suiteSelection =
-  suite === "premium-globe"
-    ? { testMatch: "**/premium-globe-exploration.spec.mjs" }
-    : suite === "regression"
-      ? { testIgnore: "**/premium-globe-exploration.spec.mjs" }
-      : {};
+const premiumGlobeSpec = "**/premium-globe-exploration.spec.mjs";
+const webglRegressionSpecs = [
+  "**/globe-runtime.spec.mjs",
+  "**/globe-visual-regression.spec.mjs",
+  "**/literary-planet-immersion.spec.mjs",
+  "**/public-doc-refinements.spec.mjs",
+  "**/public-smoke.spec.mjs",
+  "**/responsive-reader-globe.spec.mjs",
+  "**/ui-foundation.spec.mjs",
+];
+
+function suiteSelectionFor(name) {
+  if (name === "premium-globe") return { testMatch: premiumGlobeSpec };
+  if (name === "globe-visual") {
+    return { testMatch: "**/globe-visual-regression.spec.mjs" };
+  }
+  if (name === "webgl-regression") return { testMatch: webglRegressionSpecs };
+  if (name === "regression") {
+    return { testIgnore: [premiumGlobeSpec, ...webglRegressionSpecs] };
+  }
+  return {};
+}
+
+const suiteSelection = suiteSelectionFor(suite);
 
 export default defineConfig({
   testDir: "tests/e2e",
+  // Visual baselines use explicit desktop/mobile names, so keeping the path
+  // platform-neutral lets the same approved PNGs run on Windows and Linux CI.
+  snapshotPathTemplate: "{testDir}/{testFilePath}-snapshots/{arg}{ext}",
   ...suiteSelection,
   timeout: 45_000,
   expect: { timeout: 10_000 },
   fullyParallel: true,
   // Multiple WebGL globes can starve the shared GitHub runner and turn
   // otherwise healthy interaction checks into unrelated 45-second timeouts.
-  workers: process.env.CI && suite === "premium-globe" ? 1 : undefined,
+  workers:
+    process.env.CI &&
+    (suite === "premium-globe" ||
+      suite === "webgl-regression" ||
+      suite === "globe-visual")
+      ? 1
+      : undefined,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? [["html", { open: "never" }], ["github"]] : "list",
   use: {
-    baseURL: "http://127.0.0.1:4173",
+    baseURL: previewOrigin,
     channel: "chrome",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
@@ -43,8 +72,8 @@ export default defineConfig({
     { name: "mobile-chromium", use: { ...devices["Pixel 7"] } },
   ],
   webServer: {
-    command: "npm run preview -- --host 127.0.0.1 --port 4173",
-    url: "http://127.0.0.1:4173",
+    command: `npm run preview -- --host 127.0.0.1 --port ${previewPort}`,
+    url: previewOrigin,
     reuseExistingServer: process.env.PLAYWRIGHT_REUSE_SERVER === "true",
     timeout: 60_000,
     env: {

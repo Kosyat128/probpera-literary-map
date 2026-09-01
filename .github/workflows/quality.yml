@@ -74,7 +74,12 @@ jobs:
             echo "::endgroup::"
           done
 
-      - name: Run remaining browser, mobile and accessibility checks
+      - name: Run WebGL-heavy regression checks serially
+        env:
+          PLAYWRIGHT_SUITE: webgl-regression
+        run: npm run test:e2e -- --workers=1
+
+      - name: Run remaining browser, mobile and accessibility checks in parallel
         env:
           PLAYWRIGHT_SUITE: regression
         run: npm run test:e2e

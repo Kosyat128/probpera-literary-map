@@ -581,7 +581,7 @@ export default function WriterPanel({
       )}
 
       <div className="country-metrics">
-        <div>
+        <div className="country-metric country-metric--static">
           <strong>{number(writers.length)}</strong>
           <span>
             {language === "en"
@@ -592,11 +592,16 @@ export default function WriterPanel({
           </span>
         </div>
         <button
-          className={`country-metric-button${nobelSpotlightActive ? " is-active" : ""}`}
+          className={`country-metric country-metric--action${nobelSpotlightActive ? " is-active" : ""}`}
           type="button"
           disabled={!nobelWriters.length}
           onClick={onNobelSpotlightToggle}
           aria-pressed={nobelSpotlightActive}
+          aria-label={t(
+            nobelSpotlightActive
+              ? "Скрыть метки нобелевских лауреатов этой страны"
+              : "Показать всех нобелевских лауреатов этой страны на глобусе"
+          )}
           title={t(
             nobelSpotlightActive
               ? "Скрыть метки нобелевских лауреатов этой страны"
@@ -616,7 +621,7 @@ export default function WriterPanel({
                 ])}
           </span>
         </button>
-        <div>
+        <div className="country-metric country-metric--static">
           {(() => {
             const worksCount = uniqueValues(
               writers.flatMap((writer) =>

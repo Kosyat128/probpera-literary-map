@@ -1,0 +1,37 @@
+/*
+ * Screenshot-only stabilization. The visual contract covers responsive
+ * chrome and compact writer cards, while the independently tested WebGL scene
+ * and star layers are removed from pixel comparison noise.
+ */
+[data-atlas-experience] *,
+[data-atlas-experience] *::before,
+[data-atlas-experience] *::after {
+  animation: none !important;
+  caret-color: transparent !important;
+  transition: none !important;
+}
+
+[data-atlas-experience] canvas,
+[data-atlas-experience] .atlas-cosmic-field,
+[data-atlas-experience] .atlas-celestial-engraving,
+[data-atlas-experience] .atlas-coordinate strong,
+[data-atlas-experience] .globe-country-label,
+[data-atlas-experience] .globe-keyboard-status,
+[data-atlas-experience] .globe-loading,
+[data-atlas-experience] .globe-style-status {
+  visibility: hidden !important;
+}
+
+/* Keep each baseline scoped to the component contract instead of storing the
+ * masked globe area or the long biography content in every PNG. */
+[data-atlas-visual-contract="top"] .atlas-country-presentation {
+  visibility: hidden !important;
+}
+
+[data-atlas-visual-contract="writer"] .country-panel-header {
+  visibility: hidden !important;
+}
+
+[data-atlas-visual-contract="writer"] .writer-detail-tab-panel {
+  display: none !important;
+}
