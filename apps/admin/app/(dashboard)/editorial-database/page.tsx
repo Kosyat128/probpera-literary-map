@@ -150,8 +150,8 @@ function timelineText(value: unknown) {
       const row = plainRecord(item);
       return [row.year, row.title, row.description]
         .map((part) => String(part ?? "").trim())
-        .join(" | ")
-        .replace(/(?:\s*\|\s*)+$/u, "");
+        .filter(Boolean)
+        .join(" | ");
     })
     .filter(Boolean)
     .join("\n");

@@ -8,6 +8,7 @@ import type { HomepagePreviewSection } from "@/components/HomepageVisualPreview"
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { adminEnv } from "@/lib/env";
+import { safePublicSiteHref, safePublicSiteOrigin } from "@/lib/public-link-boundary";
 import {
   homepageImagePositions,
   readHomepageVisualSettings,
@@ -632,7 +633,7 @@ export default async function HomepagePage({
           </form>
           <a
             className="button"
-            href={adminEnv.publicSiteUrl}
+            href={safePublicSiteOrigin(adminEnv.publicSiteUrl)}
             target="_blank"
             rel="noreferrer"
           >
@@ -695,7 +696,7 @@ export default async function HomepagePage({
       </form>
 
       <HomepageVisualPreview
-        url={adminEnv.publicSiteUrl}
+        url={safePublicSiteOrigin(adminEnv.publicSiteUrl)}
         sections={previewSections}
         media={media}
         blockVisualSettings={blockVisualSettings}
@@ -735,7 +736,7 @@ export default async function HomepagePage({
                       {block ? "Подключён к редактору" : "Исходный текст сайта"}
                     </strong>
                   </div>
-                  <a href={`${adminEnv.publicSiteUrl}${section.buttonUrl}`} target="_blank" rel="noreferrer">
+                  <a href={safePublicSiteHref(adminEnv.publicSiteUrl, section.buttonUrl)} target="_blank" rel="noreferrer">
                     На сайте ↗
                   </a>
                 </header>

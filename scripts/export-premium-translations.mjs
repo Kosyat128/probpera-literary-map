@@ -14,6 +14,7 @@ import {
 } from "./lib/cms-publication-state.mjs";
 import { fetchCmsPublicationHead } from "./lib/cms-publication-head.mjs";
 import { collectPostgrestPages } from "./lib/postgrest-pagination.mjs";
+import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 import { applyPublishedWriterBiographyOverrides } from "./lib/writer-biography-public-overrides.mjs";
 import { normalizePublicWriterBiographyTranslations } from "./lib/writer-biography-public-profile.mjs";
 
@@ -53,11 +54,12 @@ const literaryWorksModule = path.join(
   "literaryWorks.generated.ts"
 );
 
-const supabaseUrl = (
+const rawSupabaseUrl = (
   process.env.SUPABASE_URL ||
   process.env.VITE_SUPABASE_URL ||
   ""
 ).replace(/\/+$/, "");
+const supabaseUrl = rawSupabaseUrl ? trustedSupabaseOrigin(rawSupabaseUrl) : "";
 const { apiKey, publicKey } = resolveCmsExportKeys(process.env);
 const serviceRoleKey = String(
   process.env.SUPABASE_SERVICE_ROLE_KEY || ""

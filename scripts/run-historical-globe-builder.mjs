@@ -1,4 +1,3 @@
-import { existsSync } from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 
@@ -13,19 +12,7 @@ const expectedRuntime = Object.freeze({
 
 function candidateInterpreters() {
   const candidates = [];
-  if (process.env.PROBPERA_PYTHON) {
-    candidates.push({ command: process.env.PROBPERA_PYTHON, prefix: [] });
-  }
   if (process.platform === "win32") {
-    const codexRuntime = process.env.USERPROFILE
-      ? path.join(
-          process.env.USERPROFILE,
-          ".cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe"
-        )
-      : null;
-    if (codexRuntime && existsSync(codexRuntime)) {
-      candidates.push({ command: codexRuntime, prefix: [] });
-    }
     candidates.push({ command: "py", prefix: ["-3.12"] });
   }
   candidates.push(
@@ -87,7 +74,7 @@ if (!selected) {
     "Historical globe rebuild requires Python 3.12.13, NumPy 2.3.5, " +
       "Pillow 12.3.0, libwebp 1.6.0 and LittleCMS 2.19. " +
       "Install scripts/globe-editions/historical-runtime-requirements.txt " +
-      "into that runtime or set PROBPERA_PYTHON to its executable."
+      "into one of the supported Python runtimes."
   );
 }
 

@@ -124,21 +124,27 @@ describe("release workflow hardening", () => {
     );
   });
 
-  it("grants Actions write only to the single-purpose post-deploy coalescer", () => {
+  it("grants Actions write only to single-purpose post-deploy jobs", () => {
     const source = read(".github/workflows/deploy-pages.yml");
     const deployStart = source.indexOf("\n  deploy:");
+    const securityAuditStart = source.indexOf("\n  post_deploy_security_audit:");
     const followUpStart = source.indexOf("\n  publication_followup:");
     const finalizeStart = source.indexOf("\n  finalize_publication:");
     const distributeStart = source.indexOf("\n  distribute:");
     const globalAndBuild = source.slice(0, deployStart);
-    const deploy = source.slice(deployStart, followUpStart);
+    const deploy = source.slice(deployStart, securityAuditStart);
+    const securityAudit = source.slice(securityAuditStart, followUpStart);
     const followUp = source.slice(followUpStart, finalizeStart);
     const finalize = source.slice(finalizeStart, distributeStart);
 
-    expect(source.match(/^\s+actions: write$/gmu)).toHaveLength(1);
+    expect(source.match(/^\s+actions: write$/gmu)).toHaveLength(2);
     expect(globalAndBuild).not.toContain("actions: write");
     expect(deploy).not.toContain("actions: write");
     expect(finalize).not.toContain("actions: write");
+    expect(securityAudit).toContain("permissions:\n      actions: write\n      contents: read");
+    expect(securityAudit).toContain("gh workflow run audit-live-security.yml --ref main");
+    expect(securityAudit).not.toContain("pages: write");
+    expect(securityAudit).not.toContain("id-token: write");
     expect(followUp).toContain("permissions:\n      contents: read\n      actions: write");
     expect(followUp).not.toContain("pages: write");
     expect(followUp).not.toContain("id-token: write");
@@ -195,13 +201,22 @@ describe("release workflow hardening", () => {
 
   it("keeps the live audit independent from code deployment", () => {
     const source = read(".github/workflows/audit-live-security.yml");
-    expect(source).toContain("workflow_run:");
-    expect(source).toContain("github.event.workflow_run.conclusion == 'success'");
-    expect(source).toContain("github.event.workflow_run.head_sha || 'main'");
+    expect(source).not.toContain("workflow_run:");
+    expect(source).toContain("workflow_dispatch:");
+    expect(source).toContain('cron: "17 2 * * *"');
+    expect(source).toContain("ref: refs/heads/main");
+    expect(source).not.toContain("github.event.workflow_run");
     expect(source).toContain("persist-credentials: false");
     expect(source).toContain("npm run release:smoke:live");
-    expect(read(".github/workflows/deploy-pages.yml")).not.toContain("release:smoke:live");
-    expect(read(".github/workflows/deploy-admin.yml")).not.toContain("release:smoke:live");
+    for (const workflow of ["deploy-pages.yml", "deploy-admin.yml"]) {
+      const deploySource = read(`.github/workflows/${workflow}`);
+      expect(deploySource).not.toContain("release:smoke:live");
+      expect(deploySource).toContain("post_deploy_security_audit:");
+      expect(deploySource).toContain("actions: write");
+      expect(deploySource).toContain(
+        "gh workflow run audit-live-security.yml --ref main"
+      );
+    }
   });
 
   it("ships security.txt for both the public site and admin", () => {

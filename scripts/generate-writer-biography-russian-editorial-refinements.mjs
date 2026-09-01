@@ -14,6 +14,7 @@ import {
   russianEditorialRefinementProvenanceIssues,
   russianEditorialSourcePayload,
 } from "./lib/writer-biography-russian-editorial-contract.mjs";
+import { trustedLoopbackOrigin } from "./lib/trusted-server-url.mjs";
 
 const EXPECTED_REFINEMENT_COUNT = 0;
 
@@ -69,7 +70,8 @@ const writeMode = process.argv.includes("--write");
 const transferConfirmed = process.argv.includes(
   "--confirm-cloudflare-public-data-transfer"
 );
-const endpoint = String(argumentValue("endpoint") || "").replace(/\/$/u, "");
+const endpointArgument = String(argumentValue("endpoint") || "").replace(/\/$/u, "");
+const endpoint = endpointArgument ? trustedLoopbackOrigin(endpointArgument) : "";
 const concurrency = integerArgument("concurrency", 4, 1, 8);
 const sampleSize = integerArgument("sample", 0, 0, 100);
 const maxAttempts = integerArgument("attempts", 3, 1, 5);

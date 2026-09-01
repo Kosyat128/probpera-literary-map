@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdir, readFile, rename, stat, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { trustedHttpsUrl } from "./lib/trusted-server-url.mjs";
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const configPath = path.resolve(
@@ -69,7 +70,8 @@ for (const source of sources) {
     "user-agent": "ProbPeraHistoricalGlobeSources/1.0",
     ...(source.referer ? { referer: source.referer } : {}),
   };
-  const response = await fetch(source.url, { headers, redirect: "error" });
+  const sourceUrl = trustedHttpsUrl(source.url, ["dl.ub.uni-freiburg.de"], "Historical source URL");
+  const response = await fetch(sourceUrl, { headers, redirect: "error" });
   if (!response.ok || response.redirected || response.url !== source.url) {
     throw new Error(`${source.filename}: source request failed or redirected (${response.status}).`);
   }

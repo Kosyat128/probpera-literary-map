@@ -22,6 +22,7 @@ import {
   RUSSIAN_EDITORIAL_REVIEWER_MODEL,
   RUSSIAN_EDITORIAL_TRANSLATOR_MODEL,
 } from "./lib/writer-biography-russian-editorial-contract.mjs";
+import { trustedLoopbackOrigin } from "./lib/trusted-server-url.mjs";
 
 const EXPECTED_WRITER_COUNT = 1_684;
 const projectRoot = path.resolve(
@@ -72,7 +73,8 @@ const checkMode = process.argv.includes("--check");
 const checkpointCheckMode = process.argv.includes("--checkpoint-check");
 const sourceCheckMode = process.argv.includes("--source-check");
 const writeMode = process.argv.includes("--write");
-const endpoint = String(argumentValue("endpoint") || "").replace(/\/$/u, "");
+const endpointArgument = String(argumentValue("endpoint") || "").replace(/\/$/u, "");
+const endpoint = endpointArgument ? trustedLoopbackOrigin(endpointArgument) : "";
 const concurrency = integerArgument("concurrency", 6, 1, 10);
 const sampleSize = integerArgument("sample", 0, 0, 100);
 const limit = integerArgument("limit", 0, 0, EXPECTED_WRITER_COUNT);

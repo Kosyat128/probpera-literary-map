@@ -1,3 +1,5 @@
+import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
+
 const DAY_MS = 86_400_000;
 
 export const operationalRetentionRules = [
@@ -50,7 +52,7 @@ export async function purgeOperationalData({
   now = new Date(),
   apply = false,
 } = {}) {
-  const supabaseUrl = String(
+  const rawSupabaseUrl = String(
     environment.SUPABASE_URL || environment.VITE_SUPABASE_URL || ""
   )
     .trim()
@@ -63,7 +65,7 @@ export async function purgeOperationalData({
     path: retentionDeletePath(rule, now),
   }));
 
-  if (!supabaseUrl || !serviceKey) {
+  if (!rawSupabaseUrl || !serviceKey) {
     if (environment.GITHUB_ACTIONS === "true") {
       throw new Error(
         "Operational retention requires SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY."
@@ -72,9 +74,7 @@ export async function purgeOperationalData({
     return { applied: false, configured: false, operations };
   }
 
-  if (!/^https:\/\//u.test(supabaseUrl)) {
-    throw new Error("SUPABASE_URL must use HTTPS.");
-  }
+  const supabaseUrl = trustedSupabaseOrigin(rawSupabaseUrl);
 
   if (!apply) return { applied: false, configured: true, operations };
 

@@ -72,6 +72,20 @@ describe("site-copy admin storage", () => {
     ).toEqual({ ru: { good: "Текст" }, en: {} });
   });
 
+  it("rejects prototype keys at both database and mutation boundaries", () => {
+    const stored = readSiteCopyValues(
+      JSON.parse('{"ru":{"__proto__":"polluted","safe":"Текст"},"en":{}}')
+    );
+
+    expect(stored).toEqual({ ru: { safe: "Текст" }, en: {} });
+    expect(Object.prototype).not.toHaveProperty("polluted");
+    expect(() =>
+      mergeSiteCopyRows(stored, [
+        { key: "interface.__proto__.polluted", ru: "Нет", en: "No" },
+      ])
+    ).toThrow("Invalid site-copy storage key.");
+  });
+
   it("preserves the English translation during an inline Russian edit", () => {
     const next = mergeInlineRussianSiteCopy(
       {

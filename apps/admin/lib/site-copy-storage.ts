@@ -11,6 +11,32 @@ export type SiteCopyRow = {
   en: string;
 };
 
+const MAX_SITE_COPY_KEY_LENGTH = 1_200;
+const forbiddenKeySegment = /(?:^|\.)(?:__proto__|prototype|constructor)(?:\.|$)/iu;
+
+function safeStorageKey(value: string) {
+  const key = normalizeShortHyphens(value).trim();
+  return key &&
+    key.length <= MAX_SITE_COPY_KEY_LENGTH &&
+    !/[\u0000-\u001f\u007f]/u.test(key) &&
+    !forbiddenKeySegment.test(key)
+    ? key
+    : null;
+}
+
+function localeMap(value: Record<string, string>) {
+  const result = new Map<string, string>();
+  for (const [rawKey, candidate] of Object.entries(value)) {
+    const key = safeStorageKey(rawKey);
+    if (key) result.set(key, candidate);
+  }
+  return result;
+}
+
+function localeRecord(value: ReadonlyMap<string, string>) {
+  return Object.fromEntries(value) as Record<string, string>;
+}
+
 function objectValue(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value)
     ? (value as Record<string, unknown>)
@@ -18,15 +44,17 @@ function objectValue(value: unknown): Record<string, unknown> {
 }
 
 function storedLocale(value: unknown) {
-  const result: Record<string, string> = {};
-  for (const [key, candidate] of Object.entries(objectValue(value))) {
+  const result = new Map<string, string>();
+  for (const [rawKey, candidate] of Object.entries(objectValue(value))) {
+    const key = safeStorageKey(rawKey);
     if (typeof candidate === "string" && candidate.trim()) {
-      result[normalizeShortHyphens(key)] = normalizeShortHyphens(
+      if (!key) continue;
+      result.set(key, normalizeShortHyphens(
         candidate.trim()
-      );
+      ));
     }
   }
-  return result;
+  return localeRecord(result);
 }
 
 export function readSiteCopyValues(value: unknown): SiteCopyValues {
@@ -42,20 +70,22 @@ export function mergeSiteCopyRows(
   rows: readonly SiteCopyRow[],
   interfaceMirrorByKey: ReadonlyMap<string, string> = new Map()
 ): SiteCopyValues {
-  const ru = { ...current.ru };
-  const en = { ...current.en };
+  const ru = localeMap(current.ru);
+  const en = localeMap(current.en);
   for (const row of rows) {
     const targetKeys = [row.key];
     const interfaceMirror = interfaceMirrorByKey.get(row.key);
     if (interfaceMirror) targetKeys.push(interfaceMirror);
-    for (const targetKey of targetKeys) {
-      if (row.ru) ru[targetKey] = row.ru;
-      else delete ru[targetKey];
-      if (row.en) en[targetKey] = row.en;
-      else delete en[targetKey];
+    for (const rawTargetKey of targetKeys) {
+      const targetKey = safeStorageKey(rawTargetKey);
+      if (!targetKey) throw new Error("Invalid site-copy storage key.");
+      if (row.ru) ru.set(targetKey, row.ru);
+      else ru.delete(targetKey);
+      if (row.en) en.set(targetKey, row.en);
+      else en.delete(targetKey);
     }
   }
-  return { ru, en };
+  return { ru: localeRecord(ru), en: localeRecord(en) };
 }
 
 /**
@@ -68,7 +98,8 @@ export function mergeInlineRussianSiteCopy(
   key: string,
   value: string
 ): SiteCopyValues {
+  const currentEnglish = localeMap(current.en).get(key) || "";
   return mergeSiteCopyRows(current, [
-    { key, ru: value, en: current.en[key] || "" },
+    { key, ru: value, en: currentEnglish },
   ]);
 }

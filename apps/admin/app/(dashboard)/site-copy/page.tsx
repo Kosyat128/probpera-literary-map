@@ -10,6 +10,7 @@ import {
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { translationErrorMessage } from "@/lib/translation-errors";
+import { safePublicSiteOrigin } from "@/lib/public-link-boundary";
 
 export const metadata = { title: "Тексты сайта" };
 
@@ -73,7 +74,7 @@ export default async function SiteCopyPage({
             поля необязательна.
           </p>
         </div>
-        <a className="button" href={adminEnv.publicSiteUrl} target="_blank" rel="noreferrer">
+        <a className="button" href={safePublicSiteOrigin(adminEnv.publicSiteUrl)} target="_blank" rel="noreferrer">
           Посмотреть сайт ↗
         </a>
       </header>

@@ -7,12 +7,14 @@ import {
   drakePublicationCategory,
 } from "./fixtures/drake-publication.mjs";
 import { articleSectionSlug } from "./lib/article-route-policy.mjs";
+import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 
-const supabaseUrl = (
+const rawSupabaseUrl = (
   process.env.SUPABASE_URL ||
   process.env.VITE_SUPABASE_URL ||
   ""
 ).replace(/\/+$/u, "");
+const supabaseUrl = rawSupabaseUrl ? trustedSupabaseOrigin(rawSupabaseUrl) : "";
 const serviceKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
 const siteOrigin = (
   process.env.PUBLIC_SITE_URL || "https://probpera.ru"

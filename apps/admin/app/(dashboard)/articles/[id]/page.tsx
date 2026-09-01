@@ -6,6 +6,7 @@ import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { adminEnv } from "@/lib/env";
 import { articlePublicPath } from "@/lib/article-route";
 import { formatDate } from "@/lib/format";
+import { safePublicSiteHref } from "@/lib/public-link-boundary";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
   duplicateArticleAction,
@@ -151,10 +152,10 @@ export default async function EditArticlePage({
   const categorySlug = categories.find(
     (category) => category.id === article.category_id
   )?.slug;
-  const publicArticleUrl = `${adminEnv.publicSiteUrl}${articlePublicPath(
-    article.slug,
-    categorySlug
-  )}`;
+  const publicArticleUrl = safePublicSiteHref(
+    adminEnv.publicSiteUrl,
+    articlePublicPath(article.slug, categorySlug)
+  );
 
   return (
     <>

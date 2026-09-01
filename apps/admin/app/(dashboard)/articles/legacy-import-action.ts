@@ -23,6 +23,7 @@ import { createSlug } from "@/lib/slug";
 import { normalizeShortHyphensDeep } from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { operatorDataError } from "@/lib/operator-data-error";
+import { trustedAdminOutboundUrl } from "@/lib/trusted-server-url";
 
 const allowedArticleHtml = {
   allowedTags: [
@@ -113,7 +114,11 @@ function legacyPath(value?: string) {
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url, {
+  const trustedUrl = trustedAdminOutboundUrl(url, "Legacy archive URL");
+  if (trustedUrl.hostname !== "probpera.ru") {
+    throw new Error("Legacy archive URL must use probpera.ru.");
+  }
+  const response = await fetch(trustedUrl, {
     cache: "no-store",
     headers: { Accept: "application/json" },
   });

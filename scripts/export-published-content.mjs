@@ -18,6 +18,7 @@ import { dzenCoverForArticle } from "./lib/article-publication-images.mjs";
 import { extractSiteCopyFromHomepageBlocks } from "./site-copy-overrides.mjs";
 import { commitAtomicFileSet } from "./lib/atomic-file-set.mjs";
 import { normalizeShortHyphensDeep } from "./lib/short-hyphens.mjs";
+import { trustedProbperaOrigin, trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 import {
   assertPublishedFontBytes,
   normalizePublishedTypography,
@@ -92,22 +93,23 @@ const literaryWorksModule = path.join(
   "literaryWorks.generated.ts"
 );
 
-const supabaseUrl = (
+const rawSupabaseUrl = (
   process.env.SUPABASE_URL ||
   process.env.VITE_SUPABASE_URL ||
   ""
 ).replace(/\/+$/, "");
+const supabaseUrl = rawSupabaseUrl ? trustedSupabaseOrigin(rawSupabaseUrl) : "";
 const { apiKey, publicKey } = resolveCmsExportKeys(process.env);
 const serviceRoleKey = String(process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
 const requireStableSnapshot = process.env.CMS_EXPORT_REQUIRE_STABLE === "true";
 const publicationBaselineUrl = String(
   process.env.CMS_PUBLICATION_BASELINE_URL || ""
 ).trim();
-const siteOrigin = (
+const siteOrigin = trustedProbperaOrigin((
   process.env.PUBLIC_SITE_URL ||
   process.env.VITE_PUBLIC_SITE_URL ||
   "https://probpera.ru"
-).replace(/\/+$/, "");
+).replace(/\/+$/, ""));
 
 if (!supabaseUrl || !apiKey) {
   if (requireStableSnapshot) {
@@ -298,7 +300,8 @@ async function publicationBaseline() {
   if (!publicationBaselineUrl) {
     return readJsonIfExists(path.join(publicCmsDirectory, "published-content.json"));
   }
-  const url = new URL(publicationBaselineUrl);
+  const url = new URL(publicationBaselineUrl, siteOrigin);
+  if (url.origin !== siteOrigin) throw new Error("CMS publication baseline must use probpera.ru.");
   url.searchParams.set(
     "publication_guard",
     `${process.env.GITHUB_RUN_ID || "local"}-${
