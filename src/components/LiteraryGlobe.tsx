@@ -2,11 +2,13 @@ import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber"
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useReducer,
   useRef,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
   type Ref,
   type RefObject,
 } from "react";
@@ -51,12 +53,18 @@ import GlobeViewObserver, { type GlobeViewSample } from "./GlobeViewObserver";
 import { resolveCountryGlobeCoordinates } from "./globeCoordinates";
 import {
   createGlobeAtlas,
-  GLOBE_VISUAL_STYLE_LABELS,
-  GLOBE_VISUAL_STYLES,
-  isGlobeVisualStyle,
   type GlobeAtlas,
   type GlobeVisualStyle,
 } from "./globeAtlas";
+import {
+  DEFAULT_GLOBE_EDITION_ID,
+  AVAILABLE_GLOBE_EDITIONS,
+  GLOBE_EDITION_BY_ID,
+  legacySurfaceProfileForEdition,
+  parseStoredGlobeEdition,
+  type GlobeEditionId,
+  type GlobeOverlayProfile,
+} from "./globeEditions";
 import { geographicToSphere } from "./globeGeography";
 import { raycastGlobeAtNdc } from "./globeProjection";
 import {
@@ -131,7 +139,8 @@ interface Props {
   economical?: boolean;
 }
 
-const GLOBE_STYLE_STORAGE_KEY = "probpera.globe-style.v1";
+const GLOBE_EDITION_STORAGE_KEY = "probpera.globe-edition.v2";
+const LEGACY_GLOBE_STYLE_STORAGE_KEY = "probpera.globe-style.v1";
 const GLOBE_CAMERA_CONFIG = {
   position: [0, 0.08, 4.9] as [number, number, number],
   fov: 43,
@@ -270,14 +279,16 @@ const globeSurfaceMaterials: Record<
   },
 };
 
-function storedGlobeVisualStyle(): GlobeVisualStyle {
-  if (typeof window === "undefined") return "antique";
+function storedGlobeEdition(): GlobeEditionId {
+  if (typeof window === "undefined") return DEFAULT_GLOBE_EDITION_ID;
 
   try {
-    const stored = window.localStorage.getItem(GLOBE_STYLE_STORAGE_KEY);
-    return isGlobeVisualStyle(stored) ? stored : "antique";
+    const stored =
+      window.localStorage.getItem(GLOBE_EDITION_STORAGE_KEY) ??
+      window.localStorage.getItem(LEGACY_GLOBE_STYLE_STORAGE_KEY);
+    return parseStoredGlobeEdition(stored);
   } catch {
-    return "antique";
+    return DEFAULT_GLOBE_EDITION_ID;
   }
 }
 
@@ -1181,9 +1192,49 @@ function CountrySphericalOutline({
   );
 }
 
+function CountryCentroidSelectionMarker({
+  atlas,
+  country,
+}: {
+  atlas: GlobeAtlas;
+  country?: Country | null;
+}) {
+  // Countries without atlas geometry already use MicrostateMarkers below, so
+  // only canonical atlas centroids are rendered here to avoid duplicate dots.
+  const coordinates = country ? atlas.centroidForCountry(country.id) : null;
+  if (!coordinates) return null;
+
+  const position = geographicToSphere(coordinates[1], coordinates[0], 1.018);
+  return (
+    <group position={position} name={`edition-selection-${country?.id ?? "none"}`}>
+      <mesh raycast={() => null}>
+        <sphereGeometry args={[0.022, 20, 16]} />
+        <meshStandardMaterial
+          color="#fff0c4"
+          emissive="#f67518"
+          emissiveIntensity={4.4}
+          roughness={0.32}
+          metalness={0.3}
+        />
+      </mesh>
+      <mesh scale={2.15} raycast={() => null}>
+        <sphereGeometry args={[0.022, 20, 16]} />
+        <meshBasicMaterial
+          color="#ff9a38"
+          transparent
+          opacity={0.2}
+          depthWrite={false}
+          blending={THREE.AdditiveBlending}
+        />
+      </mesh>
+    </group>
+  );
+}
+
 function GlobeSurface({
   atlas,
   visualStyle,
+  overlayProfile,
   selectedCountry,
   candidateCountry,
   hoveredCountry,
@@ -1195,6 +1246,7 @@ function GlobeSurface({
 }: {
   atlas: GlobeAtlas;
   visualStyle: GlobeVisualStyle;
+  overlayProfile: GlobeOverlayProfile;
   selectedCountry?: Country | null;
   candidateCountry?: Country | null;
   hoveredCountry?: Country | null;
@@ -1275,32 +1327,41 @@ function GlobeSurface({
           emissiveIntensity={surfaceMaterial.emissiveIntensity}
         />
 
-        <mesh raycast={() => null}>
-          <sphereGeometry args={[1.006, economical ? 96 : 112, economical ? 64 : 72]} />
-          <meshBasicMaterial
-            map={atlas.highlightTexture}
-            transparent
-            depthWrite={false}
-            toneMapped={false}
-            blending={THREE.NormalBlending}
-          />
-        </mesh>
+        {(overlayProfile.selectionRasterFill ||
+          overlayProfile.selectionRasterOutline) && (
+          <mesh raycast={() => null}>
+            <sphereGeometry args={[1.006, economical ? 96 : 112, economical ? 64 : 72]} />
+            <meshBasicMaterial
+              map={atlas.highlightTexture}
+              transparent
+              depthWrite={false}
+              toneMapped={false}
+              blending={THREE.NormalBlending}
+            />
+          </mesh>
+        )}
 
-        <CountrySphericalOutline
-          atlas={atlas}
-          country={
-            candidateCountry?.id === selectedCountry?.id ||
-            candidateCountry?.id === hoveredCountry?.id
-              ? null
-              : candidateCountry
-          }
-          candidate
-        />
-        <CountrySphericalOutline
-          atlas={atlas}
-          country={hoveredCountry?.id === selectedCountry?.id ? null : hoveredCountry}
-        />
-        <CountrySphericalOutline atlas={atlas} country={selectedCountry} selected />
+        {overlayProfile.selectionVectorOutline && (
+          <>
+            <CountrySphericalOutline
+              atlas={atlas}
+              country={
+                candidateCountry?.id === selectedCountry?.id ||
+                candidateCountry?.id === hoveredCountry?.id
+                  ? null
+                  : candidateCountry
+              }
+              candidate
+            />
+            <CountrySphericalOutline
+              atlas={atlas}
+              country={
+                hoveredCountry?.id === selectedCountry?.id ? null : hoveredCountry
+              }
+            />
+            <CountrySphericalOutline atlas={atlas} country={selectedCountry} selected />
+          </>
+        )}
 
         <mesh rotation={[Math.PI / 2, 0, 0]} raycast={() => null}>
           <torusGeometry args={[1.009, 0.0022, 8, economical ? 144 : 192]} />
@@ -1312,6 +1373,10 @@ function GlobeSurface({
           />
         </mesh>
       </mesh>
+
+      {overlayProfile.selectionCentroidMarker && (
+        <CountryCentroidSelectionMarker atlas={atlas} country={selectedCountry} />
+      )}
 
       <MuseumAtmosphere visualStyle={visualStyle} />
     </group>
@@ -1600,6 +1665,7 @@ function SelectedWriterLocationMarker({
 function GlobeScene({
   atlas,
   visualStyle,
+  overlayProfile,
   countries,
   selectedCountry,
   selectedWriter,
@@ -1630,6 +1696,7 @@ function GlobeScene({
 }: {
   atlas: GlobeAtlas;
   visualStyle: GlobeVisualStyle;
+  overlayProfile: GlobeOverlayProfile;
   countries: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: Writer | null;
@@ -1788,6 +1855,7 @@ function GlobeScene({
       <GlobeSurface
         atlas={atlas}
         visualStyle={visualStyle}
+        overlayProfile={overlayProfile}
         selectedCountry={selectedCountry}
         candidateCountry={candidateCountry}
         hoveredCountry={hoveredCountry}
@@ -1893,25 +1961,39 @@ export default function LiteraryGlobe({
   economical = false,
 }: Props) {
   const { language, t, countryName, number } = useInterfaceLanguage();
-  const initialVisualStyle = useRef(storedGlobeVisualStyle());
+  const initialEditionId = useRef(storedGlobeEdition());
   const initialLanguage = useRef(language);
   const languageRef = useRef(language);
+  const renderedNaturalEarthLanguageRef = useRef(initialLanguage.current);
   languageRef.current = language;
   const atlasInstanceRef = useRef<GlobeAtlas | null>(null);
   const globeStyle = useGlobeStyleState({
-    initialStyle: initialVisualStyle.current,
-    applyStyle: async (style) => {
+    initialStyle: initialEditionId.current,
+    applyStyle: async (editionId) => {
       const currentAtlas = atlasInstanceRef.current;
       if (!currentAtlas) throw new Error("globe-atlas-unavailable");
-      await currentAtlas.setVisualStyle(style, languageRef.current);
+      const requestedLanguage = languageRef.current;
+      await currentAtlas.setEdition(editionId, requestedLanguage);
+      if (editionId === "natural-earth-2026") {
+        renderedNaturalEarthLanguageRef.current = requestedLanguage;
+      }
     },
-    onCommit: (style) => {
-      window.localStorage.setItem(GLOBE_STYLE_STORAGE_KEY, style);
+    onCommit: (editionId) => {
+      window.localStorage.setItem(GLOBE_EDITION_STORAGE_KEY, editionId);
     },
   });
-  const renderedVisualStyle = globeStyle.renderedStyle;
-  const pendingVisualStyle = globeStyle.pendingStyle;
+  const renderedEditionId = globeStyle.renderedStyle;
+  const pendingEditionId = globeStyle.pendingStyle;
+  const renderedEdition = GLOBE_EDITION_BY_ID[renderedEditionId];
+  const renderedVisualStyle = legacySurfaceProfileForEdition(renderedEditionId);
   const visualStyleError = Boolean(globeStyle.error);
+  const sourceDialogRef = useRef<HTMLDialogElement>(null);
+  const editionRailRef = useRef<HTMLDivElement>(null);
+  const editionRailToggleRef = useRef<HTMLButtonElement>(null);
+  const editionPreloadTimerRef = useRef<number | null>(null);
+  const editionRailHideTimerRef = useRef<number | null>(null);
+  const editionRailRestoreFocusRef = useRef(false);
+  const editionRailFocusToggleAfterHideRef = useRef(false);
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [atlasLoadRequest, setAtlasLoadRequest] = useState(0);
@@ -1925,6 +2007,7 @@ export default function LiteraryGlobe({
     revision: 0,
   });
   const [keyboardCandidateActive, setKeyboardCandidateActive] = useState(false);
+  const [editionRailVisible, setEditionRailVisible] = useState(true);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [globeVisible, setGlobeVisible] = useState(false);
   const [documentVisible, setDocumentVisible] = useState(
@@ -1997,6 +2080,40 @@ export default function LiteraryGlobe({
     width: window.innerWidth,
     height: window.innerHeight,
   }));
+  useEffect(() => {
+    const rail = editionRailRef.current;
+    if (!rail) return;
+    const activeEdition = Array.from(
+      rail.querySelectorAll<HTMLElement>("[data-globe-edition-option]")
+    ).find(
+      (element) => element.dataset.globeEditionOption === renderedEditionId
+    );
+    if (!activeEdition) return;
+    const centeredLeft =
+      activeEdition.offsetLeft - (rail.clientWidth - activeEdition.offsetWidth) / 2;
+    const maximumLeft = Math.max(0, rail.scrollWidth - rail.clientWidth);
+    const boundedLeft = Math.min(maximumLeft, Math.max(0, centeredLeft));
+    const editionButtons = Array.from(
+      rail.querySelectorAll<HTMLElement>("[data-globe-edition-option]")
+    );
+    const originLeft = editionButtons[0]?.offsetLeft ?? 0;
+    const alignedLeft = editionButtons
+      .map((editionButton) =>
+        Math.max(0, editionButton.offsetLeft - originLeft)
+      )
+      .filter((candidate) => candidate <= maximumLeft)
+      .reduce(
+        (closest, candidate) =>
+          Math.abs(candidate - boundedLeft) < Math.abs(closest - boundedLeft)
+            ? candidate
+            : closest,
+        0
+      );
+    rail.scrollTo({
+      left: Math.min(maximumLeft, alignedLeft),
+      behavior: "auto",
+    });
+  }, [atlas, renderedEditionId, selectedCountry?.id, viewportSize.width]);
   useEffect(() => {
     let frame = 0;
     const updateViewport = () => {
@@ -2078,16 +2195,170 @@ export default function LiteraryGlobe({
     cameraFlightActive,
     controlsDampingActive: cameraControlsActive,
   });
-  const visualStyleLabels: Record<GlobeVisualStyle, string> = {
-    antique: t(GLOBE_VISUAL_STYLE_LABELS.antique.full),
-    earth: t(GLOBE_VISUAL_STYLE_LABELS.earth.full),
-    modern: t(GLOBE_VISUAL_STYLE_LABELS.modern.full),
+  const sourceEdition = renderedEdition;
+  const openSourceDialog = () => {
+    const dialog = sourceDialogRef.current;
+    if (dialog && !dialog.open) dialog.showModal();
   };
-  const compactVisualStyleLabels: Record<GlobeVisualStyle, string> = {
-    antique: t(GLOBE_VISUAL_STYLE_LABELS.antique.compact),
-    earth: t(GLOBE_VISUAL_STYLE_LABELS.earth.compact),
-    modern: t(GLOBE_VISUAL_STYLE_LABELS.modern.compact),
-  };
+  const clearEditionRailHideTimer = useCallback(() => {
+    if (editionRailHideTimerRef.current === null) return;
+    window.clearTimeout(editionRailHideTimerRef.current);
+    editionRailHideTimerRef.current = null;
+  }, []);
+  const revealEditionRail = useCallback(() => {
+    clearEditionRailHideTimer();
+    setEditionRailVisible(true);
+  }, [clearEditionRailHideTimer]);
+  const hideEditionRail = useCallback(() => {
+    const rail = editionRailRef.current;
+    const shouldRestoreFocus =
+      editionRailRestoreFocusRef.current ||
+      Boolean(rail && rail.contains(document.activeElement));
+    editionRailRestoreFocusRef.current = false;
+    editionRailFocusToggleAfterHideRef.current = shouldRestoreFocus;
+    setEditionRailVisible(false);
+  }, []);
+  const scheduleEditionRailHide = useCallback(() => {
+    clearEditionRailHideTimer();
+    editionRailHideTimerRef.current = window.setTimeout(() => {
+      editionRailHideTimerRef.current = null;
+      hideEditionRail();
+    }, 650);
+  }, [clearEditionRailHideTimer, hideEditionRail]);
+  const openEditionRailFromToggle = useCallback(() => {
+    editionRailRestoreFocusRef.current = false;
+    revealEditionRail();
+    window.requestAnimationFrame(() => {
+      const rail = editionRailRef.current;
+      const renderedButton = rail?.querySelector<HTMLButtonElement>(
+        `button[data-globe-edition-option="${renderedEditionId}"]`
+      );
+      const target = renderedButton ?? rail?.querySelector<HTMLButtonElement>("button");
+      target?.focus({ preventScroll: true });
+      target?.scrollIntoView({
+        behavior: "auto",
+        block: "nearest",
+        inline: "nearest",
+      });
+    });
+  }, [renderedEditionId, revealEditionRail]);
+  const requestEdition = useCallback(
+    async (editionId: GlobeEditionId) => {
+      editionRailRestoreFocusRef.current = Boolean(
+        editionRailRef.current?.contains(document.activeElement)
+      );
+      revealEditionRail();
+      const outcome = await globeStyle.requestStyle(editionId);
+      if (outcome === "committed" || outcome === "unchanged") {
+        scheduleEditionRailHide();
+      } else {
+        editionRailRestoreFocusRef.current = false;
+      }
+    },
+    [globeStyle.requestStyle, revealEditionRail, scheduleEditionRailHide]
+  );
+  const clearEditionPreload = useCallback(() => {
+    if (editionPreloadTimerRef.current === null) return;
+    window.clearTimeout(editionPreloadTimerRef.current);
+    editionPreloadTimerRef.current = null;
+  }, []);
+  const preloadEdition = useCallback(
+    (editionId: GlobeEditionId, delayMs = 0) => {
+      clearEditionPreload();
+      if (!atlas || editionId === renderedEditionId) return;
+      const start = () => {
+        editionPreloadTimerRef.current = null;
+        void atlas.preloadEdition(editionId, language).catch(() => undefined);
+      };
+      if (delayMs > 0) {
+        editionPreloadTimerRef.current = window.setTimeout(start, delayMs);
+      } else {
+        start();
+      }
+    },
+    [atlas, clearEditionPreload, language, renderedEditionId]
+  );
+
+  useEffect(() => clearEditionPreload, [clearEditionPreload]);
+  useEffect(() => clearEditionRailHideTimer, [clearEditionRailHideTimer]);
+
+  useEffect(() => {
+    revealEditionRail();
+  }, [mode, revealEditionRail]);
+
+  useEffect(() => {
+    if (pendingEditionId || visualStyleError) revealEditionRail();
+  }, [pendingEditionId, revealEditionRail, visualStyleError]);
+
+  useLayoutEffect(() => {
+    editionRailRef.current?.toggleAttribute("inert", !editionRailVisible);
+    if (
+      !editionRailVisible &&
+      editionRailFocusToggleAfterHideRef.current
+    ) {
+      editionRailFocusToggleAfterHideRef.current = false;
+      editionRailToggleRef.current?.focus({ preventScroll: true });
+    }
+  }, [editionRailVisible]);
+
+  const handleEditionRailKeyDown = useCallback(
+    (event: ReactKeyboardEvent<HTMLDivElement>) => {
+      const navigationKeys = [
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Home",
+        "End",
+      ];
+      if (!navigationKeys.includes(event.key)) return;
+
+      const rail = event.currentTarget;
+      const buttons = Array.from(
+        rail.querySelectorAll<HTMLButtonElement>(
+          "button[data-globe-edition-option]:not(:disabled)"
+        )
+      );
+      if (buttons.length === 0) return;
+
+      const focusedButton = (event.target as Element | null)?.closest(
+        "button[data-globe-edition-option]"
+      );
+      const focusedIndex = focusedButton
+        ? buttons.indexOf(focusedButton as HTMLButtonElement)
+        : -1;
+      const currentIndex =
+        focusedIndex >= 0
+          ? focusedIndex
+          : Math.max(
+              0,
+              buttons.findIndex(
+                (button) =>
+                  button.dataset.globeEditionOption === renderedEditionId
+              )
+            );
+
+      let nextIndex = currentIndex;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = buttons.length - 1;
+      if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      }
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        nextIndex = (currentIndex + 1) % buttons.length;
+      }
+
+      event.preventDefault();
+      const nextButton = buttons[nextIndex];
+      nextButton.focus({ preventScroll: true });
+      nextButton.scrollIntoView({
+        behavior: "auto",
+        block: "nearest",
+        inline: "nearest",
+      });
+    },
+    [renderedEditionId]
+  );
 
   const clearAutoRotateResumeTimer = useCallback(() => {
     if (autoRotateResumeTimer.current === null) return;
@@ -2101,6 +2372,20 @@ export default function LiteraryGlobe({
       performance.now() + cooldownMs
     );
   }, []);
+
+  const handleGlobePointerMoveCapture = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      markPrewarmInputActivity();
+      if (editionRailVisible || event.pointerType === "touch") return;
+
+      const offsetFromTop =
+        event.clientY - event.currentTarget.getBoundingClientRect().top;
+      const revealBoundary = mode === "immersive" ? 96 : 84;
+      if (offsetFromTop <= revealBoundary) {
+        revealEditionRail();
+      }
+    }, [editionRailVisible, markPrewarmInputActivity, mode, revealEditionRail]
+  );
 
   const shouldPauseFocusPrewarm = useCallback(() => {
     const runtime = prewarmRuntimeRef.current;
@@ -2266,30 +2551,29 @@ export default function LiteraryGlobe({
     if (!atlasRequested) return;
     let disposed = false;
     let createdAtlas: GlobeAtlas | null = null;
-    let loadedStyle = initialVisualStyle.current;
+    let failedInitialEditionId: GlobeEditionId | null = null;
     const controller = new AbortController();
-    const requestedInitialStyle = initialVisualStyle.current;
+    const requestedInitialEditionId = initialEditionId.current;
     setAtlas(null);
     setAtlasError(false);
 
     createGlobeAtlas(
       atlasSourceCountries,
-      requestedInitialStyle,
+      requestedInitialEditionId,
       initialLanguage.current,
       { signal: controller.signal }
     )
       .catch(async (error: unknown) => {
         if (controller.signal.aborted) throw error;
-        if (requestedInitialStyle === "antique") throw error;
+        if (requestedInitialEditionId === DEFAULT_GLOBE_EDITION_ID) throw error;
 
         const fallbackAtlas = await createGlobeAtlas(
           atlasSourceCountries,
-          "antique",
+          DEFAULT_GLOBE_EDITION_ID,
           initialLanguage.current,
           { signal: controller.signal }
         );
-        initialVisualStyle.current = "antique";
-        loadedStyle = "antique";
+        failedInitialEditionId = requestedInitialEditionId;
         return fallbackAtlas;
       })
       .then((nextAtlas) => {
@@ -2298,7 +2582,16 @@ export default function LiteraryGlobe({
         else {
           atlasInstanceRef.current = nextAtlas;
           setAtlas(nextAtlas);
-          void globeStyle.requestStyle(loadedStyle, { force: true });
+          if (failedInitialEditionId) {
+            globeStyle.reportFallback(
+              failedInitialEditionId,
+              DEFAULT_GLOBE_EDITION_ID
+            );
+          } else {
+            void globeStyle.requestStyle(requestedInitialEditionId, {
+              force: true,
+            });
+          }
         }
       })
       .catch(() => {
@@ -2317,6 +2610,7 @@ export default function LiteraryGlobe({
     atlasLoadRequest,
     atlasRequested,
     atlasSourceCountries,
+    globeStyle.reportFallback,
     globeStyle.requestStyle,
   ]);
 
@@ -2350,9 +2644,24 @@ export default function LiteraryGlobe({
   }, [atlas, atlasSourceCountries, globeActive, shouldPauseFocusPrewarm]);
 
   useEffect(() => {
-    if (!atlas || renderedVisualStyle !== "modern") return;
-    void globeStyle.requestStyle(renderedVisualStyle, { force: true });
-  }, [atlas, globeStyle.requestStyle, language, renderedVisualStyle]);
+    if (
+      !atlas ||
+      pendingEditionId ||
+      visualStyleError ||
+      renderedEditionId !== "natural-earth-2026" ||
+      renderedNaturalEarthLanguageRef.current === language
+    ) {
+      return;
+    }
+    void globeStyle.requestStyle(renderedEditionId, { force: true });
+  }, [
+    atlas,
+    globeStyle.requestStyle,
+    language,
+    pendingEditionId,
+    renderedEditionId,
+    visualStyleError,
+  ]);
 
   if (!atlas) {
     return (
@@ -2399,12 +2708,13 @@ export default function LiteraryGlobe({
       aria-keyshortcuts="ArrowLeft ArrowRight ArrowUp ArrowDown + - Home Enter"
       onKeyDown={handleGlobeKeyDown}
       onPointerDownCapture={() => markPrewarmInputActivity(420)}
-      onPointerMoveCapture={() => markPrewarmInputActivity()}
+      onPointerMoveCapture={handleGlobePointerMoveCapture}
       onTouchStartCapture={() => markPrewarmInputActivity(420)}
       onTouchMoveCapture={() => markPrewarmInputActivity(320)}
       onWheelCapture={() => markPrewarmInputActivity(420)}
       onKeyDownCapture={(event) => {
         markPrewarmInputActivity(420);
+        if (sourceDialogRef.current?.open) return;
         if (event.key !== "Escape" || !touchActivationPolicy.escapeDeactivates) {
           return;
         }
@@ -2413,6 +2723,9 @@ export default function LiteraryGlobe({
         touchActivationDispatch({ type: "ESCAPE" });
       }}
       data-globe-style={renderedVisualStyle}
+      data-globe-edition={renderedEditionId}
+      data-globe-edition-rail={editionRailVisible ? "visible" : "hidden"}
+      data-globe-overlay-profile={renderedEdition.overlayProfile.profileId}
       data-globe-render-loop={globeActive ? "active" : "paused"}
       data-globe-frame-mode={frameMode}
       data-globe-auto-rotate={autoRotateStatus}
@@ -2467,6 +2780,7 @@ export default function LiteraryGlobe({
         <GlobeScene
           atlas={atlas}
           visualStyle={renderedVisualStyle}
+          overlayProfile={renderedEdition.overlayProfile}
           countries={countries}
           selectedCountry={selectedCountry}
           selectedWriter={selectedWriter}
@@ -2593,68 +2907,156 @@ export default function LiteraryGlobe({
         >
           <small>{t("Сброс")}</small>
         </Button>
+        <Button
+          surface="dark"
+          variant="text"
+          data-globe-control="edition-info"
+          aria-label={t("Источник и права текущего издания глобуса")}
+          title={t("Источник и права")}
+          onClick={() => openSourceDialog()}
+        >
+          <small>{t("Источник")}</small>
+        </Button>
+        <span className="globe-navigation-label" aria-hidden="true">
+          {t("Интерактивный глобус · ручная навигация")}
+        </span>
       </div>
 
+      <IconButton
+        ref={editionRailToggleRef}
+        className="globe-style-switch-toggle"
+        icon={
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m7.5 9.5 4.5 4.5 4.5-4.5" />
+          </svg>
+        }
+        surface="dark"
+        data-globe-control="edition-rail-toggle"
+        aria-label={t("Издание глобуса")}
+        aria-controls="globe-edition-rail"
+        aria-expanded={editionRailVisible}
+        title={t("Издание глобуса")}
+        onClick={openEditionRailFromToggle}
+      />
+
       <div
+        ref={editionRailRef}
+        id="globe-edition-rail"
         className="globe-style-switch"
         role="group"
-        aria-label={t("Стиль глобуса")}
-        aria-busy={Boolean(pendingVisualStyle)}
+        aria-label={t("Издание глобуса")}
+        aria-busy={Boolean(pendingEditionId)}
+        aria-hidden={!editionRailVisible}
+        onFocusCapture={revealEditionRail}
+        onKeyDown={handleEditionRailKeyDown}
       >
-        {GLOBE_VISUAL_STYLES.map((style) => (
+        {AVAILABLE_GLOBE_EDITIONS.map((edition) => {
+          const fullLabel = edition.fullLabel[language];
+          const compactLabel = edition.compactLabel[language];
+          const legacyStyle = edition.legacySurfaceProfile;
+          return (
           <Button
-            key={style}
+            key={edition.id}
             surface="dark"
             variant="text"
-            className={globeStyle.ariaPressedFor(style) ? "is-active" : undefined}
-            data-globe-style-option={style}
-            aria-pressed={globeStyle.ariaPressedFor(style)}
-            loading={pendingVisualStyle === style}
-            aria-label={visualStyleLabels[style]}
+            className={
+              globeStyle.ariaPressedFor(edition.id) ? "is-active" : undefined
+            }
+            data-globe-style-option={legacyStyle}
+            data-globe-edition-option={edition.id}
+            aria-pressed={globeStyle.ariaPressedFor(edition.id)}
+            loading={pendingEditionId === edition.id}
+            aria-label={fullLabel}
+            title={fullLabel}
             onPointerEnter={() => {
-              if (style !== renderedVisualStyle) {
-                void atlas.preloadVisualStyle(style, language).catch(() => undefined);
-              }
+              preloadEdition(edition.id, 140);
             }}
-            onFocus={() => {
-              if (style !== renderedVisualStyle) {
-                void atlas.preloadVisualStyle(style, language).catch(() => undefined);
-              }
-            }}
+            onPointerLeave={clearEditionPreload}
             onPointerDown={() => {
-              if (style !== renderedVisualStyle) {
-                void atlas.preloadVisualStyle(style, language).catch(() => undefined);
-              }
+              preloadEdition(edition.id);
             }}
             onClick={() => {
-              void globeStyle.requestStyle(style);
+              void requestEdition(edition.id);
             }}
           >
             <span className="globe-style-label-full">
-              {visualStyleLabels[style]}
+              {compactLabel}
             </span>
             <span className="globe-style-label-compact" aria-hidden="true">
-              {compactVisualStyleLabels[style]}
+              {compactLabel}
             </span>
           </Button>
-        ))}
-        <span
-          className="globe-style-status"
-          role={visualStyleError ? "alert" : "status"}
-          aria-live={visualStyleError ? "assertive" : "polite"}
-        >
-          {visualStyleError
-            ? t("Стиль не загрузился. Предыдущий стиль сохранён.")
-            : pendingVisualStyle
-              ? `${t("Загружается стиль")} «${visualStyleLabels[pendingVisualStyle]}»`
-              : ""}
-          {visualStyleError && (
-            <button type="button" onClick={() => void globeStyle.retryStyle()}>
-              {t("Повторить")}
-            </button>
-          )}
-        </span>
+          );
+        })}
       </div>
+
+      <span
+        className={`globe-style-status${visualStyleError ? " is-error" : ""}`}
+        role={visualStyleError ? "alert" : "status"}
+        aria-live={visualStyleError ? "assertive" : "polite"}
+      >
+        {visualStyleError
+          ? t("Издание не загрузилось. Предыдущее издание сохранено.")
+          : pendingEditionId
+            ? `${t("Загружается издание")} «${GLOBE_EDITION_BY_ID[pendingEditionId].compactLabel[language]}»`
+            : ""}
+        {visualStyleError && (
+          <button type="button" onClick={() => void globeStyle.retryStyle()}>
+            {t("Повторить")}
+          </button>
+        )}
+      </span>
+
+      <dialog
+        ref={sourceDialogRef}
+        className="globe-edition-info-dialog"
+        aria-labelledby="globe-edition-info-title"
+        onClick={(event) => {
+          if (event.target === event.currentTarget) event.currentTarget.close();
+        }}
+      >
+        <article>
+          <header>
+            <p>{t("Источник издания")}</p>
+            <h2 id="globe-edition-info-title">
+              {sourceEdition.fullLabel[language]}
+            </h2>
+          </header>
+          {sourceEdition.reconstructionNote && (
+            <p>{sourceEdition.reconstructionNote[language]}</p>
+          )}
+          <dl>
+            <dt>{t("Автор / составитель")}</dt>
+            <dd>{sourceEdition.creator[language]}</dd>
+            <dt>{t("Оригинал")}</dt>
+            <dd>{sourceEdition.sourceTitle[language]}</dd>
+            <dt>{t("Хранилище")}</dt>
+            <dd>{sourceEdition.sourceInstitution[language]}</dd>
+            {sourceEdition.sourceCatalogId && (
+              <>
+                <dt>{t("Каталожная запись")}</dt>
+                <dd>{sourceEdition.sourceCatalogId}</dd>
+              </>
+            )}
+            <dt>{t("Права и указание источника")}</dt>
+            <dd>{sourceEdition.rightsSummary[language]}</dd>
+            {sourceEdition.alignmentDisclosure && (
+              <>
+                <dt>{t("Совмещение карты")}</dt>
+                <dd>{sourceEdition.alignmentDisclosure[language]}</dd>
+              </>
+            )}
+          </dl>
+          <p>
+            <a href={sourceEdition.sourceUrl} target="_blank" rel="noreferrer">
+              {t("Открыть запись источника")}
+            </a>
+          </p>
+          <form method="dialog">
+            <Button type="submit">{t("Закрыть")}</Button>
+          </form>
+        </article>
+      </dialog>
 
       {renderedVisualStyle === "modern" && (
         <div
@@ -2794,7 +3196,7 @@ export default function LiteraryGlobe({
             </small>
             <em>
               {t(
-                "Нажмите на кластер - откроется Нобелевский контекст страны"
+                "Нажмите на группу - откроется список лауреатов страны"
               )}
             </em>
           </div>
@@ -2841,7 +3243,7 @@ export default function LiteraryGlobe({
       <div className="globe-instruction" aria-hidden="true">
         <span>{t("Тяните или используйте стрелки")}</span>
         <i aria-hidden="true" />
-        <span>{t("Колесо или ± - масштаб")}</span>
+        <span>{t("Масштаб: колесо или кнопки ±")}</span>
       </div>
     </div>
   );

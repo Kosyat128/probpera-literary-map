@@ -1,0 +1,745 @@
+{
+  "version": 1,
+  "checkedAt": "2026-08-31",
+  "rejections": {
+    "ecuador:demetrio_aguilera_malta": {
+      "wikidataId": "Q1185444",
+      "filename": "Velia marquez demetrio aguilera malta.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Velia_marquez_demetrio_aguilera_malta.jpg",
+      "reasonCode": "identity-crop-and-attribution-risk",
+      "reason": "The source is a two-person personal-archive photograph with an unknown author; the automatic attention crop centers the other person and does not produce a reliable portrait of Demetrio Aguilera Malta."
+    },
+    "armenia:avetik_isahakyan": {
+      "wikidataId": "Q254988",
+      "filename": "Stamp of Armenia m194.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stamp_of_Armenia_m194.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The previous source is a postage-stamp design. It is replaced by an authenticated 1909 gendarmerie photograph from the National Archives of Georgia under CC BY-SA 4.0."
+    },
+    "australia:judith_wright": {
+      "wikidataId": "Q469885",
+      "filename": "Judith Wright bust, Garema Place.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Judith_Wright_bust,_Garema_Place.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source depicts a bust rather than a real photograph of Judith Wright. Commons category and exact-name searches did not identify a worldwide-cleared real photograph; the similarly named Judith Sewell Wright image depicts a different person."
+    },
+    "bolivia:jaime_saenz": {
+      "wikidataId": "Q706773",
+      "filename": "Mural de Jaime Saenz.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mural_de_Jaime_Saenz.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a mural rather than a real photograph of Jaime Saenz. Commons category, alias and exact-name searches found no worldwide-cleared real photograph."
+    },
+    "bolivia:jesus_lara": {
+      "wikidataId": "Q5814633",
+      "filename": "Monumento al escritor Jesus Lara.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monumento_al_escritor_Jesus_Lara.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source depicts a monument rather than a real photograph of Jesus Lara. Commons category, alias and exact-name searches found no worldwide-cleared real photograph."
+    },
+    "burkina_faso:norbert_zongo": {
+      "wikidataId": "Q339733",
+      "filename": "Memorial Norbert Zongo2.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Memorial_Norbert_Zongo2.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source depicts a memorial rather than a real photograph of Norbert Zongo. Commons category and exact-name searches found only memorial or statue imagery, not a worldwide-cleared real photograph."
+    },
+    "cape_verde:manuel_de_novas": {
+      "wikidataId": "Q2611473",
+      "filename": "Monument to Manuel D Novas in Mindelo.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monument_to_Manuel_D_Novas_in_Mindelo.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source depicts a monument rather than a real photograph of Manuel de Novas. Commons category, alias and exact-name searches found no worldwide-cleared real photograph."
+    },
+    "lesotho:thomas_mofolo": {
+      "wikidataId": "Q1452076",
+      "filename": "Sketch of Thomas Mofolo by Frédéric Christol 1911.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sketch_of_Thomas_Mofolo_by_Fr%C3%A9d%C3%A9ric_Christol_1911.png",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a sketch rather than a real photograph of Thomas Mofolo. Commons category and exact-name searches found only the sketch and busts, not a worldwide-cleared real photograph."
+    },
+    "serbia:mesa_selimovic": {
+      "wikidataId": "Q315677",
+      "filename": "MesaSelimovic Serbian Literature Great Men Stamps.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:MesaSelimovic_Serbian_Literature_Great_Men_Stamps.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a postage-stamp design rather than a real photograph of Mesa Selimovic. Commons category and exact-name searches found stamps, murals, monuments and book-related imagery but no worldwide-cleared real photograph."
+    },
+    "uzbekistan:abdulla_qahhor": {
+      "wikidataId": "Q4217805",
+      "filename": "Stamps of Uzbekistan, 2007-06.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stamps_of_Uzbekistan,_2007-06.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a postage-stamp design rather than a real photograph of Abdulla Qahhor. Commons category and exact-name searches found no worldwide-cleared real photograph."
+    },
+    "uzbekistan:abdulla_qodiriy": {
+      "wikidataId": "Q2427335",
+      "filename": "Stamps of Uzbekistan, 2004-07.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stamps_of_Uzbekistan,_2004-07.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a postage-stamp design rather than a real photograph of Abdulla Qodiriy. The available historical Commons photograph has an unknown photographer and an explicit missing-US-public-domain warning, so it is not worldwide-safe."
+    },
+    "canada:northrop_frye": {
+      "wikidataId": "Q354256",
+      "filename": "Northrop Frye statue.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Northrop_Frye_statue.JPG",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source depicts a statue of Northrop Frye rather than a real photograph of the writer."
+    },
+    "georgia:nodar_dumbadze": {
+      "wikidataId": "Q447367",
+      "filename": "Nodar Dumbadze 2018 stamp.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nodar_Dumbadze_2018_stamp.png",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a postage-stamp design rather than an independently licensed real photograph of Nodar Dumbadze."
+    },
+    "georgia:otar_chiladze": {
+      "wikidataId": "Q983226",
+      "filename": "Otar Chiladze 2022 stamp of Georgia.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Otar_Chiladze_2022_stamp_of_Georgia.png",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a postage-stamp design rather than an independently licensed real photograph of Otar Chiladze."
+    },
+    "kazakhstan:magzhan_zhumabayev": {
+      "wikidataId": "Q1046216",
+      "filename": "Magzhan Zhumabai 2018 stamp of Kazakhstan.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Magzhan_Zhumabai_2018_stamp_of_Kazakhstan.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a postage-stamp design rather than an independently licensed real photograph of Magzhan Zhumabayev."
+    },
+    "philippines:nick_joaquin": {
+      "wikidataId": "Q1977234",
+      "filename": "Nick Joaquin 2010 stamp of the Philippines.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nick_Joaquin_2010_stamp_of_the_Philippines.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a postage-stamp design rather than an independently licensed real photograph of Nick Joaquin."
+    },
+    "senegal:birago_diop": {
+      "wikidataId": "Q716541",
+      "filename": "Birago sketch tik.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Birago_sketch_tik.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a modern drawing rather than a real photograph of Birago Diop."
+    },
+    "serbia:danilo_kis": {
+      "wikidataId": "Q310562",
+      "filename": "Danilo Kiš 2010 Montenegro stamp.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Danilo_Ki%C5%A1_2010_Montenegro_stamp.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a postage-stamp design rather than an independently licensed real photograph of Danilo Kiš."
+    },
+    "russia:yevgeny_zamyatin": {
+      "wikidataId": "Q204868",
+      "filename": "Kustodiev Zamyatin.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kustodiev_Zamyatin.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is Boris Kustodiev's painted portrait of Yevgeny Zamyatin, not a photograph.",
+      "blockedSources": [
+        {
+          "filename": "Zamjatin.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zamjatin.jpg",
+          "reasonCode": "insufficient-worldwide-public-domain-evidence",
+          "reason": "This is a real circa-1919 photograph, but the photographer is undocumented and the Commons page explicitly lacks a United States public-domain tag and warns that protection may continue in longer-term jurisdictions. It remains unpublished until a worldwide-safe rights basis is documented."
+        }
+      ]
+    },
+    "russia:goncharov": {
+      "wikidataId": "Q189665",
+      "filename": "Ivan Goncharov.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ivan_Goncharov.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The previous source is a painted portrait. It is replaced by Constantin Shapiro's documented 1880 photograph from the Russian State Library."
+    },
+    "russia:leskov": {
+      "wikidataId": "Q209004",
+      "filename": "Serov Leskov.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Serov_Leskov.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The previous source is Valentin Serov's painted portrait. It is replaced by a documented circa-1880 photograph by Vezenberg & Co. from the Library of Congress."
+    },
+    "russia:ostrovsky": {
+      "wikidataId": "Q171976",
+      "filename": "Alexander Ostrovsky by Vasily Perov.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alexander_Ostrovsky_by_Vasily_Perov.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The previous source is Vasily Perov's painted portrait. It is replaced by a documented 1880 photograph by Vezenberg & Co. from the Library of Congress."
+    },
+    "russia:saltykov-shchedrin": {
+      "wikidataId": "Q211785",
+      "filename": "Kramskoj - saltykov-schedrin.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kramskoj_-_saltykov-schedrin.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The previous source is Ivan Kramskoi's painted portrait. It is replaced by a documented 1880 photograph by Vezenberg & Co. from the Library of Congress."
+    },
+    "russia:turgenev": {
+      "wikidataId": "Q42831",
+      "filename": "Turgenev by Repin.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turgenev_by_Repin.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The previous source is Ilya Repin's painted portrait. It is replaced by Andrey Denier's documented 1859 photograph under CC0 1.0."
+    },
+    "russia:sergey_ivanovich_ozhegov": {
+      "wikidataId": "Q2626393",
+      "filename": "Sergey Ozhegov 2025 postal cover of Russia cr.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sergey_Ozhegov_2025_postal_cover_of_Russia_cr.jpg",
+      "reasonCode": "non-photographic-postal-artwork",
+      "reason": "The source is a cropped 2025 postal-cover design, not an independently licensed original photograph."
+    },
+    "russia:andrei_platonov": {
+      "wikidataId": "Q315147",
+      "filename": "Andrei Platonov 1973.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Andrei_Platonov_1973.png",
+      "reasonCode": "territorial-photo-copyright-risk-and-unknown-photographer",
+      "reason": "The image is a real photograph, but its photographer is unknown and the only stated public-domain basis is a 1973 United States publication without notice. Commons warns that the photograph may remain copyrighted in other jurisdictions, so global reuse is not sufficiently cleared."
+    },
+    "russia:fyodor_tyutchev": {
+      "wikidataId": "Q37217",
+      "filename": "Fedor Tutchev.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fedor_Tutchev.jpg",
+      "reasonCode": "missing-united-states-public-domain-rationale",
+      "reason": "The previous Commons page explicitly required an additional United States public-domain tag. It is replaced by Sergey Levitsky's documented 1860-1861 photograph with explicit source-country and pre-1931 United States public-domain evidence."
+    },
+    "russia:afanasiy_fet": {
+      "wikidataId": "Q314212",
+      "filename": "Afanasy Fet.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Afanasy_Fet.jpg",
+      "reasonCode": "missing-united-states-public-domain-rationale",
+      "reason": "The previous Commons page explicitly required an additional United States public-domain tag. It is replaced by Andrey Denyer's documented 1860s photograph with explicit source-country and pre-1931 United States public-domain evidence."
+    },
+    "russia:alexander_kuprin": {
+      "wikidataId": "Q271457",
+      "filename": "Alexander Ivanovich Kuprin 7.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alexander_Ivanovich_Kuprin_7.jpg",
+      "reasonCode": "photographer-not-identified",
+      "reason": "The previous record named the 1912 publisher rather than the photographer. It is replaced by a 1914 portrait credited to P. Glybovskaya with explicit Russian Empire and United States pre-1931 public-domain evidence."
+    },
+    "russia:vasily_grossman": {
+      "wikidataId": "Q313767",
+      "filename": "Grossman V.S.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grossman_V.S.jpg",
+      "reasonCode": "missing-united-states-public-domain-rationale-and-unknown-photographer",
+      "reason": "The 1941 Ogonyok photograph has an unknown photographer and the Commons page states only a Russian public-domain basis without an explicit United States rationale, so worldwide reuse is not sufficiently cleared."
+    },
+    "russia:varlam_shalamov": {
+      "wikidataId": "Q220816",
+      "filename": "Varlam Shalamov-NKVD crooped.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Varlam_Shalamov-NKVD_crooped.jpg",
+      "reasonCode": "insufficient-united-states-public-domain-evidence",
+      "reason": "The previous crop did not expose a sufficiently explicit United States rationale. It is replaced by the newer Commons crop whose PD-Russia-1996 statement explicitly covers both Russia and the United States."
+    },
+    "russia:akhmatova": {
+      "wikidataId": "Q80440",
+      "filename": "Kuzma Petrov-Vodkin. Portrait of Anna Akhmatova. 1922.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kuzma_Petrov-Vodkin._Portrait_of_Anna_Akhmatova._1922.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is Kuzma Petrov-Vodkin's painting, not a real photograph. It is replaced by the documented 1906 Russian Empire photograph of Anna Akhmatova."
+    },
+    "south_africa:alan_paton": {
+      "wikidataId": "Q361623",
+      "filename": "Alan Paton.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alan_Paton.jpg",
+      "reasonCode": "territorial-copyright-risk",
+      "reason": "Commons marks the work as public domain in South Africa but also categorizes it as copyrighted in the United States; it is not suitable for automatic global publication."
+    },
+    "australia:les_murray": {
+      "wikidataId": "Q259841",
+      "filename": "Lesmurray.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lesmurray.jpg",
+      "reasonCode": "insufficient-source-resolution",
+      "reason": "The 158 by 181 pixel source is unnecessarily weak because a verified CC0 portrait of the same writer is available at substantially higher resolution."
+    },
+    "japan:shusaku_endo": {
+      "wikidataId": "Q316217",
+      "filename": "Shusaku-Endo-1.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shusaku-Endo-1.jpg",
+      "reasonCode": "territorial-copyright-risk",
+      "reason": "Commons categorizes the file as copyrighted in the United States; a lower-resolution portrait with compatible Japan and 1996 public-domain evidence is used instead."
+    },
+    "uzbekistan:gafur_gulyam": {
+      "wikidataId": "Q2583148",
+      "filename": "Гафур Гулям (портрет).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%93%D0%B0%D1%84%D1%83%D1%80_%D0%93%D1%83%D0%BB%D1%8F%D0%BC_(%D0%BF%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82).jpg",
+      "reasonCode": "territorial-copyright-risk",
+      "reason": "Commons categorizes the photograph as copyrighted in the United States; the previously selected replacement was a postage stamp rather than a real photograph.",
+      "blockedSources": [
+        {
+          "filename": "Stamps of Uzbekistan, 2003-24.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stamps_of_Uzbekistan,_2003-24.jpg",
+          "reasonCode": "non-photographic-postage-stamp",
+          "reason": "The source is a postage stamp rather than a real photograph."
+        }
+      ]
+    },
+    "usa:john_dos_passos": {
+      "wikidataId": "Q312407",
+      "filename": "John dos Passos.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_dos_Passos.jpg",
+      "reasonCode": "licensed-file-missing-reliable-attribution",
+      "reason": "The migrated GFDL/CC source does not identify a reliable original author or source. The portrait remains unpublished until attribution can be verified."
+    },
+    "ecuador:medardo_angel_silva": {
+      "wikidataId": "Q6805151",
+      "filename": "Medardo angel silva foto.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Medardo_angel_silva_foto.jpg",
+      "reasonCode": "disputed-copyright-and-wrong-license",
+      "reason": "The live Commons page is marked Wrong license and Items with disputed copyright information; publication is blocked pending a verified replacement."
+    },
+    "kazakhstan:mukhtar_auyezov": {
+      "wikidataId": "Q557348",
+      "filename": "Auezov Mukhtar.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Auezov_Mukhtar.jpg",
+      "reasonCode": "commons-deletion-request",
+      "reason": "The live Commons page has an unresolved deletion request, so the file is not treated as publication-safe."
+    },
+    "nigeria:chinua_achebe": {
+      "wikidataId": "Q155845",
+      "filename": "Chinua Achebe, 1966 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chinua_Achebe,_1966_(cropped).jpg",
+      "reasonCode": "commons-deletion-request-and-us-copyright-risk",
+      "reason": "The live Commons page has an unresolved deletion request that specifically raises likely United States copyright protection."
+    },
+    "egypt:sonallah_ibrahim": {
+      "wikidataId": "Q3053937",
+      "filename": "Sonallah Ibrahim, Imagination on Trial - Mar 2, 2016.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sonallah_Ibrahim,_Imagination_on_Trial_-_Mar_2,_2016.jpg",
+      "reasonCode": "youtube-license-review-needed",
+      "reason": "The source is a YouTube-derived frame whose Commons license review remains unresolved."
+    },
+    "ghana:ama_ata_aidoo": {
+      "wikidataId": "Q298224",
+      "filename": "Ama Ata Aidoo (2016).png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ama_Ata_Aidoo_(2016).png",
+      "reasonCode": "youtube-license-review-needed",
+      "reason": "The source is a YouTube-derived frame whose Commons license review remains unresolved."
+    },
+    "mauritius:nathacha_appanah": {
+      "wikidataId": "Q467796",
+      "filename": "Nathacha Appanah (2021) - 2.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nathacha_Appanah_(2021)_-_2.png",
+      "reasonCode": "youtube-license-review-needed",
+      "reason": "The source is a YouTube-derived frame whose Commons license review remains unresolved."
+    },
+    "yemen:habib_abdulrab_sarori": {
+      "wikidataId": "Q5636754",
+      "filename": "Habib Abdulrab Sarori, Belqees TV - Feb 29, 2020.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Habib_Abdulrab_Sarori,_Belqees_TV_-_Feb_29,_2020.jpg",
+      "reasonCode": "youtube-license-review-needed",
+      "reason": "The source is a YouTube-derived frame whose Commons license review remains unresolved."
+    },
+    "spain:camilo_jose_cela": {
+      "wikidataId": "Q132589",
+      "filename": "Camilo José Cela. Fototeca. Biblioteca Virtual del Patrimonio Bibliográfico.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Camilo_Jos%C3%A9_Cela._Fototeca._Biblioteca_Virtual_del_Patrimonio_Bibliogr%C3%A1fico.jpg",
+      "reasonCode": "license-review-and-unknown-photographer",
+      "reason": "The CC BY file still has an unresolved Commons license review and does not identify the photographer required for reliable attribution."
+    },
+    "belarus:ales_adamovich": {
+      "wikidataId": "Q52488",
+      "filename": "АДАМОВИЧ.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%94%D0%90%D0%9C%D0%9E%D0%92%D0%98%D0%A7.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a digitally drawn portrait, not a real photograph of Ales Adamovich."
+    },
+    "belgium:emile_verhaeren": {
+      "wikidataId": "Q193680",
+      "filename": "Emile Verhaeren01.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Emile_Verhaeren01.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a painted portrait, not a real photograph of Emile Verhaeren."
+    },
+    "cape_verde:jorge_barbosa": {
+      "wikidataId": "Q1984024",
+      "filename": "500 Eschudos Cabo Verde Jorge Barbosa front (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:500_Eschudos_Cabo_Verde_Jorge_Barbosa_front_(cropped).jpg",
+      "reasonCode": "non-photographic-banknote-artwork",
+      "reason": "The source is a portrait printed on a banknote, not an independently licensed real photograph."
+    },
+    "cape_verde:manuel_lopes": {
+      "wikidataId": "Q2636281",
+      "filename": "Claridade.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Claridade.jpg",
+      "reasonCode": "no-writer-face",
+      "reason": "The source is a periodical page and does not show Manuel Lopes's face."
+    },
+    "chile:roberto_bolano": {
+      "wikidataId": "Q297532",
+      "filename": "Roberto Bolaño Ávalos.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roberto_Bola%C3%B1o_%C3%81valos.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a pencil drawing, not a real photograph of Roberto Bolaño."
+    },
+    "colombia:leon_de_greiff": {
+      "wikidataId": "Q2494262",
+      "filename": "Leon de Greiff.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Leon_de_Greiff.jpg",
+      "reasonCode": "wrong-subject-no-face",
+      "reason": "The source is a line drawing of a lion and does not depict León de Greiff."
+    },
+    "colombia:rafael_pombo": {
+      "wikidataId": "Q1661285",
+      "filename": "Rafael Pombo Rebolledo.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rafael_Pombo_Rebolledo.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a painted portrait, not a real photograph of Rafael Pombo."
+    },
+    "cuba:guillermo_cabrera_infante": {
+      "wikidataId": "Q302675",
+      "filename": "Guillermo cabrera infante.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Guillermo_cabrera_infante.png",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a pencil drawing, not a real photograph of Guillermo Cabrera Infante."
+    },
+    "cyprus:kostas_montis": {
+      "wikidataId": "Q3561025",
+      "filename": "Costas Montis.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Costas_Montis.jpg",
+      "reasonCode": "non-photographic-monument",
+      "reason": "The source depicts a commemorative bust rather than the living writer."
+    },
+    "cyprus:vasilis_michaelides": {
+      "wikidataId": "Q331256",
+      "filename": "Vasilis Michailides.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vasilis_Michailides.jpg",
+      "reasonCode": "non-photographic-monument",
+      "reason": "The source depicts a commemorative bust rather than a real photograph of Vasilis Michaelides."
+    },
+    "england:wilkie_collins": {
+      "wikidataId": "Q210740",
+      "filename": "(William) Wilkie Collins by Rudolph Lehmann.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:(William)_Wilkie_Collins_by_Rudolph_Lehmann.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is Rudolph Lehmann's painted portrait. Wilkie Collins lived in the photographic era and requires a documented photograph."
+    },
+    "finland:minna_canth": {
+      "wikidataId": "Q298027",
+      "filename": "MinnaCanth.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:MinnaCanth.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a painted portrait, not a real photograph of Minna Canth."
+    },
+    "france:henri_barbusse": {
+      "wikidataId": "Q18404",
+      "filename": "Анри Барбюс (1928).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D1%80%D0%B8_%D0%91%D0%B0%D1%80%D0%B1%D1%8E%D1%81_(1928).jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a drawn portrait, not a real photograph of Henri Barbusse."
+    },
+    "germany:theodor_fontane": {
+      "wikidataId": "Q76632",
+      "filename": "Theodor Fontane.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Theodor_Fontane.png",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a painted portrait, not a real photograph of Theodor Fontane."
+    },
+    "hungary:mor_jokai": {
+      "wikidataId": "Q379621",
+      "filename": "Mór Jókai.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:M%C3%B3r_J%C3%B3kai.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a painted portrait, not a real photograph of Mór Jókai."
+    },
+    "iceland:jon_arnason": {
+      "wikidataId": "Q975791",
+      "filename": "Jón Árnason.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:J%C3%B3n_%C3%81rnason.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is an engraving, not a real photograph of Jón Árnason."
+    },
+    "iraq:nazik_al_malaika": {
+      "wikidataId": "Q446761",
+      "filename": "تمثال الشاعرة نازك الملائكة 02.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D8%AA%D9%85%D8%AB%D8%A7%D9%84_%D8%A7%D9%84%D8%B4%D8%A7%D8%B9%D8%B1%D8%A9_%D9%86%D8%A7%D8%B2%D9%83_%D8%A7%D9%84%D9%85%D9%84%D8%A7%D8%A6%D9%83%D8%A9_02.jpg",
+      "reasonCode": "non-photographic-monument",
+      "reason": "The source depicts a statue rather than a real photograph of Nazik al-Malaika."
+    },
+    "kyrgyzstan:kasym_tynystanov": {
+      "wikidataId": "Q6374915",
+      "filename": "Kasym Tynystanov on 10 som note.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kasym_Tynystanov_on_10_som_note.jpg",
+      "reasonCode": "non-photographic-banknote-artwork",
+      "reason": "The source is a portrait printed on a banknote, not an independently licensed real photograph.",
+      "blockedSources": [
+        {
+          "filename": "Kasym Tynystanov (1926) cropped.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kasym_Tynystanov_(1926)_cropped.jpg",
+          "reasonCode": "missing-united-states-public-domain-rationale-and-unknown-photographer",
+          "reason": "This is a genuine face-visible crop from a circa-1926 committee group photograph, but the photographer is unknown and the Commons page explicitly says that a United States public-domain tag must also be supplied; the PDM/PD-old claim does not establish worldwide and United States clearance."
+        }
+      ]
+    },
+    "latvia:andrejs_upits": {
+      "wikidataId": "Q572629",
+      "filename": "Упит Андрей Мартынович (конверт) (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%A3%D0%BF%D0%B8%D1%82_%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%9C%D0%B0%D1%80%D1%82%D1%8B%D0%BD%D0%BE%D0%B2%D0%B8%D1%87_(%D0%BA%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82)_(cropped).jpg",
+      "reasonCode": "non-photographic-postal-artwork",
+      "reason": "The source is a color illustration reproduced on a postal envelope, not an independently licensed photograph."
+    },
+    "latvia:janis_jaunsudrabins": {
+      "wikidataId": "Q583967",
+      "filename": "Jaunsudrabins0001.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jaunsudrabins0001.jpg",
+      "reasonCode": "non-photographic-monument",
+      "reason": "The source depicts a gravestone relief rather than a real photograph of Jānis Jaunsudrabiņš."
+    },
+    "latvia:rudolfs_blaumanis": {
+      "wikidataId": "Q1082044",
+      "filename": "Rozentals Blaumana portrets.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rozentals_Blaumana_portrets.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a painted portrait, not a real photograph of Rūdolfs Blaumanis.",
+      "blockedSources": [
+        {
+          "filename": "R Blaumanis.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:R_Blaumanis.jpg",
+          "reasonCode": "disputed-copyright-and-wrong-license",
+          "reason": "This is a genuine historical portrait, but Commons lists the author as unknown and relies on PD-RusEmpire/PD-US-expired without proof of qualifying publication; matching institutional sources attribute the portrait to Jānis Rieksts (1881-1970), whose ordinary Latvian life-plus-70 term runs through 2040."
+        }
+      ]
+    },
+    "lebanon:mikhail_naimy": {
+      "wikidataId": "Q2311487",
+      "filename": "Mausolée de MIkhail Naïmy.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mausol%C3%A9e_de_MIkhail_Na%C3%AFmy.jpg",
+      "reasonCode": "non-photographic-monument",
+      "reason": "The source depicts a monument at Mikhail Naimy's mausoleum rather than the writer.",
+      "blockedSources": [
+        {
+          "filename": "Mikhael-Neaimy-Algunos miembros de Al-Rabita al-Qalamiyya (cropped).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mikhael-Neaimy-Algunos_miembros_de_Al-Rabita_al-Qalamiyya_(cropped).jpg",
+          "reasonCode": "license-review-and-unknown-photographer",
+          "reason": "This is a genuine face-visible crop of the 1920 Pen League group photograph, with Naimy at right, but the photographer is unknown. The Commons attribution to Robin Waterfield cannot be the photographer attribution, and the page lacks an origin-country tag and proof of publication before 1931 needed to substantiate United States public-domain status."
+        },
+        {
+          "filename": "Mounif moussa and Mikheil Neameh.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mounif_moussa_and_Mikheil_Neameh.jpg",
+          "reasonCode": "licensed-file-missing-reliable-attribution",
+          "reason": "This is a modern photograph of an older displayed portrait, but the reproduction photographer's license does not establish the original portrait's photographer, provenance, or underlying copyright status."
+        }
+      ]
+    },
+    "madagascar:michele_rakotoson": {
+      "wikidataId": "Q3311698",
+      "filename": "Michele Rakotoson.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michele_Rakotoson.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a line drawing, not a real photograph of Michèle Rakotoson."
+    },
+    "mali:yambo_ouologuem": {
+      "wikidataId": "Q3142046",
+      "filename": "Dessin Yambo Ouologuem.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dessin_Yambo_Ouologuem.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a graphic drawing, not a real photograph of Yambo Ouologuem.",
+      "blockedSources": [
+        {
+          "filename": "Yambo Ouologuem Le devoir de violence 1968 Title.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yambo_Ouologuem_Le_devoir_de_violence_1968_Title.jpg",
+          "reasonCode": "no-writer-face",
+          "reason": "The source depicts title or cover material for Le devoir de violence rather than a documentary photograph with Yambo Ouologuem's visible face."
+        }
+      ]
+    },
+    "mongolia:byambyn_rinchen": {
+      "wikidataId": "Q879330",
+      "filename": "Bjambyn Rintschen.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bjambyn_Rintschen.jpg",
+      "reasonCode": "non-photographic-monument",
+      "reason": "The source depicts a statue rather than a real photograph of Byambyn Rinchen.",
+      "blockedSources": [
+        {
+          "filename": "Rinchen.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rinchen.jpg",
+          "reasonCode": "non-photographic-monument",
+          "reason": "The source is another photograph of a statue rather than an authentic photograph of Byambyn Rinchen."
+        }
+      ]
+    },
+    "morocco:mohamed_choukri": {
+      "wikidataId": "Q335436",
+      "filename": "منظر من مقهى الحافة.jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D9%85%D9%86%D8%B8%D8%B1_%D9%85%D9%86_%D9%85%D9%82%D9%87%D9%89_%D8%A7%D9%84%D8%AD%D8%A7%D9%81%D8%A9.jpeg",
+      "reasonCode": "wrong-subject-no-face",
+      "reason": "The source is a view of a café and the sea and does not depict Mohamed Choukri."
+    },
+    "niger:boubou_hama": {
+      "wikidataId": "Q2912103",
+      "filename": "Instruments de musique traditionnelle au Musée BOUBOU HAMA de Niamey.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Instruments_de_musique_traditionnelle_au_Mus%C3%A9e_BOUBOU_HAMA_de_Niamey.jpg",
+      "reasonCode": "wrong-subject-no-face",
+      "reason": "The source shows a museum display of instruments and does not depict Boubou Hama.",
+      "blockedSources": [
+        {
+          "filename": "Boubou Hama.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boubou_Hama.png",
+          "reasonCode": "disputed-copyright-and-wrong-license",
+          "reason": "This is a face-visible 1961 portrait reproduced from a 2007 L'Harmattan book, but the photographer is unknown and an unrelated 2026 uploader applied CC0 without evidence of being the photographer or rightsholder; neither origin-country nor United States public-domain status is established."
+        }
+      ]
+    },
+    "nigeria:buchi_emecheta": {
+      "wikidataId": "Q461675",
+      "filename": "July21 Buchi Emecheta.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:July21_Buchi_Emecheta.png",
+      "reasonCode": "no-writer-face",
+      "reason": "The source is a screenshot of biographical text and does not show Buchi Emecheta's face."
+    },
+    "nigeria:flora_nwapa": {
+      "wikidataId": "Q5460344",
+      "filename": "Flora Nwapa.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flora_Nwapa.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a modern vector illustration, not a real photograph of Flora Nwapa."
+    },
+    "norway:camilla_collett": {
+      "wikidataId": "Q243045",
+      "filename": "Camilla Collett 1839.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Camilla_Collett_1839.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a painted portrait. Camilla Collett lived into the photographic era and requires a documented photograph."
+    },
+    "peru:julio_ramon_ribeyro": {
+      "wikidataId": "Q1395161",
+      "filename": "Homenaje a Julio Ramón Ribeyro por Marco Sueño (4).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Homenaje_a_Julio_Ram%C3%B3n_Ribeyro_por_Marco_Sue%C3%B1o_(4).jpg",
+      "reasonCode": "non-photographic-mural",
+      "reason": "The source depicts a façade mural rather than Julio Ramón Ribeyro.",
+      "blockedSources": [
+        {
+          "filename": "Homenaje a Julio Ramón Ribeyro por Marco Sueño (12).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Homenaje_a_Julio_Ram%C3%B3n_Ribeyro_por_Marco_Sue%C3%B1o_(12).jpg",
+          "reasonCode": "non-photographic-mural",
+          "reason": "The source is another posthumous tribute or event view featuring display artwork, not an authentic photograph of Julio Ramón Ribeyro."
+        }
+      ]
+    },
+    "portugal:herberto_helder": {
+      "wikidataId": "Q631680",
+      "filename": "Herberto Helder.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Herberto_Helder.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a painted portrait, not a real photograph of Herberto Helder."
+    },
+    "portugal:miguel_torga": {
+      "wikidataId": "Q44851",
+      "filename": "Miguel Torga 100anos.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miguel_Torga_100anos.png",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a line drawing, not a real photograph of Miguel Torga.",
+      "blockedSources": [
+        {
+          "filename": "Miguel Torga escritor (cropped).png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miguel_Torga_escritor_(cropped).png",
+          "reasonCode": "licensed-file-missing-reliable-attribution",
+          "reason": "This is a face-visible color crop marked as 2021 own work even though Torga died in 1995, so it is necessarily derivative of an earlier photograph; the original photographer, source, date, and uploader's authority to license the underlying image are not documented."
+        }
+      ]
+    },
+    "puerto_rico:julia_de_burgos": {
+      "wikidataId": "Q468516",
+      "filename": "Julia de Burgos Santo Domingo.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Julia_de_Burgos_Santo_Domingo.jpg",
+      "reasonCode": "non-photographic-monument",
+      "reason": "The source depicts a commemorative bust rather than a real photograph of Julia de Burgos."
+    },
+    "russia:chekhov": {
+      "wikidataId": "Q5685",
+      "filename": "Chekhov 1898 by Osip Braz.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chekhov_1898_by_Osip_Braz.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The legacy source is Osip Braz's painted portrait. Anton Chekhov lived in the photographic era and will be replaced only by a documented real photograph."
+    },
+    "russia:tolstoy": {
+      "wikidataId": "Q7243",
+      "filename": "Leo Tolstoj.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Leo_Tolstoj.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The legacy source is a hatched engraving rather than a real photograph of Leo Tolstoy."
+    },
+    "spain:carmen_laforet": {
+      "wikidataId": "Q269123",
+      "filename": "Portrait Carmen Laforet.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_Carmen_Laforet.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a pencil drawing, not a real photograph of Carmen Laforet."
+    },
+    "sweden:erik_axel_karlfeldt": {
+      "wikidataId": "Q134641",
+      "filename": "Anders Zorn - Erik Axel Karlfeldt i Zorngårdens matsal (1906).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anders_Zorn_-_Erik_Axel_Karlfeldt_i_Zorng%C3%A5rdens_matsal_(1906).jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is Anders Zorn's painted portrait, not a real photograph of Erik Axel Karlfeldt.",
+      "blockedSources": [
+        {
+          "filename": "Erik Axel Karlfeldt 2.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Erik_Axel_Karlfeldt_2.jpg",
+          "reasonCode": "missing-united-states-public-domain-rationale-and-unknown-photographer",
+          "reason": "This is a genuine vertical portrait scanned from Fredrik Böök's Svenska litteraturens historia (Stockholm, 1923), but the photographer is unknown and the Commons page supplies only PD-Sweden-photo while explicitly requiring a United States public-domain tag."
+        }
+      ]
+    },
+    "sweden:verner_von_heidenstam": {
+      "wikidataId": "Q129173",
+      "filename": "Johan Krouthén - Porträtt av Verner von Heidenstam.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Johan_Krouth%C3%A9n_-_Portr%C3%A4tt_av_Verner_von_Heidenstam.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is Johan Krouthén's painted portrait, not a real photograph of Verner von Heidenstam."
+    },
+    "switzerland:conrad_ferdinand_meyer": {
+      "wikidataId": "Q123261",
+      "filename": "Karl Stauffer-Bern Conrad Ferdinand Meyer 1887.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karl_Stauffer-Bern_Conrad_Ferdinand_Meyer_1887.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is an etching, not a real photograph of Conrad Ferdinand Meyer.",
+      "blockedSources": [
+        {
+          "filename": "Zentralbibliothek Zürich - Conrad Ferdinand Meyer im Kostüm - 000011622.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zentralbibliothek_Z%C3%BCrich_-_Conrad_Ferdinand_Meyer_im_Kost%C3%BCm_-_000011622.jpg",
+          "reasonCode": "missing-united-states-public-domain-rationale",
+          "reason": "This is an authentic circa-1883 photograph by Johannes Ganz (1821-1886) from the Zentralbibliothek Zürich and is public domain in its country of origin, but the Commons page explicitly requires a United States public-domain tag and gives no proof of publication before 1931."
+        }
+      ]
+    },
+    "syria:salim_barakat": {
+      "wikidataId": "Q621086",
+      "filename": "Salim Barakat.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Salim_Barakat.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is a drawn book or poster illustration, not a real photograph of Salim Barakat."
+    },
+    "tunisia:ali_douagi": {
+      "wikidataId": "Q2836198",
+      "filename": "Douagi.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Douagi.jpg",
+      "reasonCode": "missing-united-states-public-domain-rationale-and-unknown-photographer",
+      "reason": "The source is a face-visible scan or crop of Ali Douagi's Tunisian identity document, but the photographer is unknown and the Commons page provides only PD-Tunisia, with no separate United States public-domain rationale or evidence of qualifying publication."
+    },
+    "usa:don_delillo": {
+      "wikidataId": "Q310048",
+      "filename": "Don delillo nyc 02.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Don_delillo_nyc_02.jpg",
+      "reasonCode": "invalid-crop-no-face",
+      "reason": "The generated crop shows only the edge of the subject's torso and no visible face."
+    },
+    "usa:henry_james": {
+      "wikidataId": "Q170509",
+      "filename": "Henry James by John Singer Sargent cleaned.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Henry_James_by_John_Singer_Sargent_cleaned.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is John Singer Sargent's painted portrait. Henry James lived in the photographic era and requires a documented photograph."
+    },
+    "usa:herman_melville": {
+      "wikidataId": "Q4985",
+      "filename": "Herman Melville by Joseph O Eaton.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Herman_Melville_by_Joseph_O_Eaton.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is Joseph O. Eaton's painted portrait. Herman Melville lived in the photographic era and requires a documented photograph."
+    },
+    "venezuela:eduardo_blanco": {
+      "wikidataId": "Q5340538",
+      "filename": "Eduardo Blanco - Antonio Herrera Toro.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eduardo_Blanco_-_Antonio_Herrera_Toro.jpg",
+      "reasonCode": "non-photographic-portrait",
+      "reason": "The source is Antonio Herrera Toro's painted portrait, not a real photograph of Eduardo Blanco."
+    }
+  }
+}

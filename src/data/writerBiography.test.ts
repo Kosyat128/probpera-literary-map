@@ -14,7 +14,7 @@ import {
 const source = {
   provider: "Official literary archive",
   url: "https://example.org/writers/verified-author",
-  fields: ["identity", "life-dates", "works"] as const,
+  fields: ["identity", "life-dates", "biography-facts", "works"] as const,
   usage: "fact-check" as const,
   retrievedAt: "2026-08-08",
 };
@@ -27,6 +27,7 @@ const russianBiography: WriterBiographyTranslationProfile = {
   status: "verified",
   method: "editorial-original",
   reviewedAt: "2026-08-08",
+  reviewer: "Редакционная проверка",
   sources: [{ ...source, fields: [...source.fields] }],
 };
 
@@ -48,6 +49,118 @@ describe("writer biography publication gate", () => {
       []
     );
     expect(writerBiographyText(writer(), "ru")).toBe(russianBiography.text);
+  });
+
+  it("не считает инициалы в имени отдельными предложениями", () => {
+    const englishBiography: WriterBiographyTranslationProfile = {
+      ...russianBiography,
+      locale: "en",
+      text:
+        "J. R. R. Tolkien was an English writer and philologist whose scholarship shaped his fiction and its invented languages. His novels established a major tradition within modern fantasy literature.",
+      sourceLanguage: "en",
+    };
+
+    expect(countBiographySentences(englishBiography.text)).toBe(2);
+    expect(
+      writerBiographyQualityIssues(
+        englishBiography,
+        "en",
+        writer(englishBiography)
+      )
+    ).toEqual([]);
+  });
+
+  it("считает конец предложения после тронного римского числа", () => {
+    expect(
+      countBiographySentences(
+        "Университет назван в честь Мухаммеда V. В 2003 году Фатима Мернисси получила литературную премию."
+      )
+    ).toBe(2);
+  });
+
+  it("не принимает корректное корейское имя Рён за повреждённую кодировку", () => {
+    const koreanBiography: WriterBiographyTranslationProfile = {
+      ...russianBiography,
+      text:
+        "Пэк Нам Рён (род. 1949) - северокорейский романист. Его роман «Friend», впервые изданный в КНДР в 1988 году, вышел на английском языке в 2020 году.",
+    };
+
+    expect(
+      writerBiographyQualityIssues(koreanBiography, "ru", writer(koreanBiography))
+    ).not.toContain("биография ru похожа на повреждённую кодировку");
+  });
+
+  it("по-прежнему блокирует настоящую mojibake-строку", () => {
+    const corrupted: WriterBiographyTranslationProfile = {
+      ...russianBiography,
+      text:
+        "РџРёСЃР°С‚РµР»СЊ СЃРѕР·РґР°РІР°Р» РїСЂРѕР·Сѓ Рё РґСЂР°РјР°С‚Сѓ. Р•РіРѕ РїСЂРѕРёР·РІРµРґРµРЅРёСЏ РёР·РґР°РІР°Р»РёСЃСЊ РЅР° СЂР°Р·РЅС‹С… СЏР·С‹РєР°С….",
+    };
+
+    expect(
+      writerBiographyQualityIssues(corrupted, "ru", writer(corrupted))
+    ).toContain("биография ru похожа на повреждённую кодировку");
+  });
+
+  it("не выпускает биографию без указанного редактора", () => {
+    const { reviewer: _reviewer, ...withoutReviewer } = russianBiography;
+    const incomplete = withoutReviewer as WriterBiographyTranslationProfile;
+
+    expect(
+      writerBiographyQualityIssues(incomplete, "ru", writer(incomplete))
+    ).toContain("не указан редактор биографии ru");
+    expect(selectWriterBiography(writer(incomplete), "ru")).toBeNull();
+  });
+
+  it("требует fact-check evidence именно для biography-facts", () => {
+    const weakEvidence: WriterBiographyTranslationProfile = {
+      ...russianBiography,
+      sources: [
+        {
+          ...russianBiography.sources[0],
+          usage: "structured-data",
+          fields: ["identity"],
+        },
+      ],
+    };
+    expect(
+      writerBiographyQualityIssues(weakEvidence, "ru", writer(weakEvidence))
+    ).toContain("нет fact-check источника biography-facts для биографии ru");
+    expect(selectWriterBiography(writer(weakEvidence), "ru")).toBeNull();
+  });
+
+  it("не позволяет машинному переводу выдаваться за verified", () => {
+    const machineEnglish: WriterBiographyTranslationProfile = {
+      locale: "en",
+      text:
+        "Leo Tolstoy was a Russian writer whose novels examined moral choice and social change throughout his creative period. His major works received lasting recognition among readers and literary scholars.",
+      sourceLanguage: "Russian",
+      status: "verified",
+      method: "machine-translation",
+      reviewedAt: "2026-08-08",
+      reviewer: "Independent English review",
+      translatedFromLocale: "ru",
+      sourceTextRights: "project-original",
+      sources: russianBiography.sources,
+      translationMeta: {
+        model: "translator",
+        reviewerModel: "reviewer",
+        sourceHash: "a".repeat(64),
+        generatedAt: "2026-08-08T12:00:00.000Z",
+      },
+    };
+    const completeWriter: WriterProfile = {
+      id: "verified-author",
+      name: "Проверенный автор",
+      biographyTranslations: { ru: russianBiography, en: machineEnglish },
+    };
+
+    expect(
+      writerBiographyQualityIssues(machineEnglish, "en", completeWriter)
+    ).toContain(
+      "машинный перевод en должен иметь статус reviewed"
+    );
+    expect(selectWriterBiography(completeWriter, "en")).toBeNull();
   });
 
   it("никогда не подставляет старое русское поле в английский интерфейс", () => {

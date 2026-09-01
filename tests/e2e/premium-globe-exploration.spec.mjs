@@ -286,7 +286,7 @@ test("keyboard candidate selects the optical-centre country without replacing Ca
   expect(Math.abs((after?.height ?? 0) - (before?.height ?? 0))).toBeLessThan(2);
 });
 
-test("style buttons commit only the texture that actually rendered", async ({
+test("edition buttons commit only the texture that actually rendered", async ({
   page,
 }) => {
   let releaseEarthTexture;
@@ -298,7 +298,7 @@ test("style buttons commit only the texture that actually rendered", async ({
     releaseEarthTexture = resolve;
   });
   await page.addInitScript(() => {
-    localStorage.setItem("probpera.globe-style.v1", "antique");
+    localStorage.setItem("probpera.globe-edition.v2", "rand-mcnally-1887");
   });
   await page.route(/earth-blue-marble/u, async (route) => {
     markEarthTextureRequested();
@@ -306,27 +306,137 @@ test("style buttons commit only the texture that actually rendered", async ({
     await route.continue();
   });
   const { globe } = await openAtlas(page);
-  const antique = globe.locator('[data-globe-style-option="antique"]');
-  const earth = globe.locator('[data-globe-style-option="earth"]');
-  await expect(antique).toHaveAttribute("aria-pressed", "true");
+  const randMcNally = globe.locator(
+    '[data-globe-edition-option="rand-mcnally-1887"]'
+  );
+  const nasa = globe.locator(
+    '[data-globe-edition-option="nasa-blue-marble"]'
+  );
+  await expect(globe).toHaveAttribute("data-globe-edition", "rand-mcnally-1887");
+  await expect(randMcNally).toHaveAttribute("aria-pressed", "true");
 
   // DOM click intentionally skips pointer-hover preloading so the pending
   // lifecycle remains observable while the texture request is held.
-  await earth.evaluate((element) => element.click());
+  await nasa.evaluate((element) => element.click());
   await earthTextureRequested;
   await expect(globe.locator(".globe-style-switch")).toHaveAttribute(
     "aria-busy",
     "true"
   );
-  await expect(antique).toHaveAttribute("aria-pressed", "true");
-  await expect(earth).toHaveAttribute("aria-pressed", "false");
+  await expect(globe).toHaveAttribute("data-globe-edition", "rand-mcnally-1887");
+  await expect(randMcNally).toHaveAttribute("aria-pressed", "true");
+  await expect(nasa).toHaveAttribute("aria-pressed", "false");
 
   releaseEarthTexture();
+  await expect(globe).toHaveAttribute("data-globe-edition", "nasa-blue-marble", {
+    timeout: 15_000,
+  });
   await expect(globe).toHaveAttribute("data-globe-style", "earth", {
     timeout: 15_000,
   });
-  await expect(earth).toHaveAttribute("aria-pressed", "true");
-  await expect(antique).toHaveAttribute("aria-pressed", "false");
+  await expect(nasa).toHaveAttribute("aria-pressed", "true");
+  await expect(randMcNally).toHaveAttribute("aria-pressed", "false");
+});
+
+test("edition rail moves focus without changing the rendered edition", async ({
+  page,
+  isMobile,
+}) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("probpera.globe-edition.v2", "rand-mcnally-1887");
+  });
+  const { globe } = await openAtlas(page);
+  const randMcNally = globe.locator(
+    '[data-globe-edition-option="rand-mcnally-1887"]'
+  );
+  const behaim = globe.locator('[data-globe-edition-option="behaim-1492"]');
+  const nasa = globe.locator(
+    '[data-globe-edition-option="nasa-blue-marble"]'
+  );
+  const naturalEarth = globe.locator(
+    '[data-globe-edition-option="natural-earth-2026"]'
+  );
+  const rail = globe.locator(".globe-style-switch");
+  const railToggle = globe.locator(
+    '[data-globe-control="edition-rail-toggle"]'
+  );
+
+  const controlAlignment = await globe
+    .locator(
+      '[data-globe-control="auto-rotate"], [data-globe-control="reset"]'
+    )
+    .evaluateAll((buttons) =>
+      buttons.map((button) => {
+        const buttonBox = button.getBoundingClientRect();
+        const label = button.querySelector(".ui-action__label");
+        const labelBox = label?.getBoundingClientRect();
+        return {
+          clipped: button.scrollWidth > button.clientWidth,
+          height: buttonBox.height,
+          labelCenterOffset: labelBox
+            ? Math.abs(
+                labelBox.top + labelBox.height / 2 -
+                  (buttonBox.top + buttonBox.height / 2)
+              )
+            : Number.POSITIVE_INFINITY,
+        };
+      })
+    );
+  expect(controlAlignment).toHaveLength(2);
+  expect(new Set(controlAlignment.map(({ height }) => height)).size).toBe(1);
+  for (const control of controlAlignment) {
+    expect(control.clipped).toBe(false);
+    expect(control.labelCenterOffset).toBeLessThanOrEqual(0.5);
+  }
+
+  await randMcNally.focus();
+  await randMcNally.press("Home");
+  await expect(behaim).toBeFocused();
+  await behaim.press("End");
+  await expect(naturalEarth).toBeFocused();
+  await naturalEarth.press("ArrowLeft");
+  await expect(nasa).toBeFocused();
+  await nasa.press("ArrowRight");
+  await expect(naturalEarth).toBeFocused();
+
+  await expect(globe).toHaveAttribute("data-globe-edition", "rand-mcnally-1887");
+  await expect(randMcNally).toHaveAttribute("aria-pressed", "true");
+  await expect(naturalEarth).toHaveAttribute("aria-pressed", "false");
+
+  await naturalEarth.press("Enter");
+  await expect(globe).toHaveAttribute("data-globe-edition", "natural-earth-2026", {
+    timeout: 15_000,
+  });
+  await expect(naturalEarth).toHaveAttribute("aria-pressed", "true");
+  await expect(globe).toHaveAttribute("data-globe-edition-rail", "hidden");
+  await expect(rail).toHaveAttribute("aria-hidden", "true");
+  await expect(rail).toHaveAttribute("inert", "");
+  await expect(railToggle).toBeVisible();
+  await expect(railToggle).toHaveAttribute("aria-expanded", "false");
+  await expect(railToggle).toBeFocused();
+
+  await railToggle.press("Enter");
+  await expect(globe).toHaveAttribute("data-globe-edition-rail", "visible");
+  await expect(naturalEarth).toBeFocused();
+
+  await naturalEarth.click();
+  await expect(globe).toHaveAttribute("data-globe-edition-rail", "hidden");
+  if (isMobile) {
+    await railToggle.click();
+  } else {
+    const globeBox = await globe.boundingBox();
+    expect(globeBox).toBeTruthy();
+    await page.mouse.move(
+      (globeBox?.x ?? 0) + (globeBox?.width ?? 0) / 2,
+      (globeBox?.y ?? 0) + 160
+    );
+    await page.mouse.move(
+      (globeBox?.x ?? 0) + (globeBox?.width ?? 0) / 2,
+      (globeBox?.y ?? 0) + 24
+    );
+  }
+  await expect(globe).toHaveAttribute("data-globe-edition-rail", "visible");
+  await expect(rail).toHaveAttribute("aria-hidden", "false");
 });
 
 test("idle atlas does not bulk-load country flags and Auto Off becomes demand", async ({
@@ -896,6 +1006,9 @@ test("Nobel layer keeps selection and its explicit article action separate", asy
   await expect(page.locator(".writer-detail-heading h4")).toHaveText(
     writerName ?? ""
   );
+  await expect(nobelStatus).toBeVisible();
+  await expect(nobelIndex).toBeVisible();
+  await expect(articleAction).toBeVisible();
   await expect(
     atlas.locator('canvas[data-stage4-nobel-identity="stable"]')
   ).toHaveCount(1);

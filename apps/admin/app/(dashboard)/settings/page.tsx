@@ -1,4 +1,4 @@
-import AdminMfaSettings from "@/components/AdminMfaSettings";
+import AdminMfaSettingsLoader from "@/components/AdminMfaSettingsLoader";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { adminMfaStatusLabel } from "@/lib/admin-mfa-policy";
 import { getStaffSession } from "@/lib/auth";
@@ -58,7 +58,7 @@ export default async function SettingsPage({
         </section>
       </div>
       <div className="dashboard-grid" style={{ marginTop: 18 }}>
-        <AdminMfaSettings
+        <AdminMfaSettingsLoader
           initialCurrentLevel={session.mfa.currentLevel}
           initialNextLevel={session.mfa.nextLevel}
           initialCheckError={session.mfa.checkError}

@@ -225,19 +225,29 @@ export const stage5FinalInterfaceCopyAttestation = Object.freeze({
   sourceStage5FSha: "d473278a7d0617f14b1d50938fda9bab5c464efa",
   sourceMainSyncSha: "c1939a632bc4c3d36649e7c4b2076fcc0711d2c4",
   interfaceLanguage: Object.freeze({
-    entries: 1189,
+    entries: 1203,
     keysSha256:
-      "f014859939322308d717a0d4245c8b1ef846a66076a34f8757f8901fbb1bd471",
+      "72042fd7f579032c1836f87174d8a2267852702e988b42507b0b1baf082a722a",
     pairsSha256:
-      "2153ede98400e11faf5c73cd5ee15427394c62be6b05543886b7efa0a1f3f92d",
+      "91bbe2a9c8a5e8108f5d64f71d0915d803a6860f7a757009a6660647838ca75b",
   }),
   catalog: Object.freeze({
-    entries: 1403,
+    entries: 1417,
     keysSha256:
-      "a2c49b3f52525047d62484be28ff06867c0c5617340752bce8a9fd1574cc46fd",
+      "dcf84a74db6063b7524173c7498d4b6a5b0e1fc0533524a2118e6949c0911198",
     contentSha256:
-      "87492117cb62bdfa216dc5ca8f7c4bf32fce926c24ee2847fa968f5e7aff03f3",
+      "76230bb1aab9ff01544bec4a66a4b317b37cad01ec18d162dd3b64d8e4a0a29a",
   }),
+});
+
+export const russianBiographyEditorialOwnerAttestation = Object.freeze({
+  id: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
+  authorizedOn: "2026-09-01",
+  scopes: Object.freeze([
+    "canonical-writer-biographies",
+    "book-quality-russian-copy",
+    "premium-translation-and-health-russian-copy",
+  ]),
 });
 
 const stage5D1Stage4GlobeStablePaths = Object.freeze(
@@ -251,13 +261,42 @@ const retiredPremiumCompatibilityPaths = Object.freeze([
   "apps/admin/app/(dashboard)/articles/atomic-auto-publish-action.ts",
 ]);
 
-const stage5D1PremiumCurrentStablePaths = Object.freeze(
-  currentIntegrationPremiumTranslationAndHealthPaths.filter(
+const stage5D1PremiumCurrentStablePaths = Object.freeze([
+  ...currentIntegrationPremiumTranslationAndHealthPaths.filter(
     (entry) =>
       !stage5D1AdditiveI18nAttestation.allowedPaths.includes(entry) &&
       !retiredPremiumCompatibilityPaths.includes(entry)
-  )
-);
+  ),
+  ".github/workflows/deploy-pages.yml",
+  "package.json",
+  "apps/admin/app/(dashboard)/editorial-database/actions.ts",
+  "apps/admin/app/(dashboard)/editorial-database/page.tsx",
+  "apps/admin/app/(dashboard)/translations/page.tsx",
+  "apps/admin/lib/editorial-catalog.ts",
+  "apps/admin/lib/editorial-profile-edit.ts",
+  "apps/admin/lib/writer-biography-edit.ts",
+  "scripts/archive-source.ts",
+  "scripts/audit-writer-biography-structured-ru.mjs",
+  "scripts/build-writer-biography-fact-review-overlay.mjs",
+  "scripts/export-editorial-catalog.mjs",
+  "scripts/generate-writer-biography-english-translations.mjs",
+  "scripts/generate-writer-biography-russian-editorial-refinements.mjs",
+  "scripts/lib/writer-biography-english-qa.mjs",
+  "scripts/lib/writer-biography-english-source-contract.mjs",
+  "scripts/lib/writer-biography-public-overrides.mjs",
+  "scripts/lib/writer-biography-public-profile.mjs",
+  "scripts/lib/writer-biography-russian-editorial-contract.mjs",
+  "scripts/lib/writer-biography-structured-ru.mjs",
+  "scripts/workers/writer-biography-english-translation-worker.ts",
+  "scripts/wrangler.writer-biography-english.jsonc",
+  "scripts/writer-biography-english-source.ts",
+  "src/data/countries/index.ts",
+  "src/data/countries/russianWriterExpansion.ts",
+  "src/data/countries/writerBiographyEnglishTranslations.ts",
+  "src/data/countries/writerBiographyFactReviews.ts",
+  "src/data/writerBiography.ts",
+  "src/data/writerBiographyDisplay.ts",
+]);
 
 export const stage5D1EnforcedGovernanceScopes = Object.freeze({
   stage4Globe: Object.freeze({
@@ -265,15 +304,16 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 19,
       sha256:
-        "67d9f0757f5dba3d0e1ae45787310f6ee8a7d4d1e1ba1e62e0213400e6e2e874",
+        "e15efbe454406893afb0d1de0b9efc6abb692b309848d92e69e0f234523f4134",
     }),
   }),
   premiumCurrent: Object.freeze({
     paths: stage5D1PremiumCurrentStablePaths,
+    ownerAttestationId: russianBiographyEditorialOwnerAttestation.id,
     expected: Object.freeze({
-      files: 43,
+      files: 72,
       sha256:
-        "0f75adb07410920b59bb763d54bee6a00545db2c8ffc24482ceccd4094734ad7",
+        "4b42e0650d0936bd3d90dff8f5fc90bf49904178001e28a4bdff9af02043a7ea",
     }),
   }),
 });
@@ -311,10 +351,12 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
               }),
               enforced: Object.freeze({
                 paths: bookArchiveOwnerPaths,
+                ownerAttestationId:
+                  russianBiographyEditorialOwnerAttestation.id,
                 expected: Object.freeze({
                   files: 9,
                   sha256:
-                    "3ef830b784d820525f1be6826cb28e37b80e05d444275ac2e1a247916d1be1fd",
+                    "689b74e6bbaf636d47c65506828a48f0013a7019c81ef09da14158e6988b0a12",
                 }),
               }),
             })
@@ -324,9 +366,9 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
                 enforced: Object.freeze({
                   paths: ["src/index.css"],
                   expected: Object.freeze({
-                    rules: 211,
+                    rules: 225,
                     sha256:
-                      "abd43284cc25668db3529c3b111b0286dfa616c413cc2d8762ba24ec72403113",
+                      "576898463bc2f981e3ddfdbb283ac82b961d2eaeb5a5fb316d35f89fd528d743",
                   }),
                 }),
               })

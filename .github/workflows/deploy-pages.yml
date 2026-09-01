@@ -161,6 +161,10 @@ jobs:
           CMS_EXPORT_REQUIRE_STABLE: "true"
           CMS_PUBLICATION_BASELINE_URL: https://probpera.ru/cms/published-content.json
 
+      - name: Verify complete writer biography release artifacts
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        run: npm run writers:biographies:reviews:check && npm run writers:biographies:russian:editorial:check && npm run writers:biographies:english:paused:check
+
       - name: Verify the frozen CMS publication snapshot
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run content:audit && npm run links:audit

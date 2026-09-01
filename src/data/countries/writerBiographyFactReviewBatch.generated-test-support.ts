@@ -52,6 +52,62 @@ type BatchTestOptions = {
   readonly profileCorrections: readonly ProfileCorrection[];
 };
 
+type LiveFactQaQueueItem = {
+  readonly key: string;
+  readonly qid?: string;
+  readonly field?: string;
+  readonly classification?: string;
+  readonly safeAction?: string;
+  readonly bestRankClaims?: readonly unknown[];
+};
+
+export type WriterBiographyLiveFactQaReport = {
+  readonly contradictionQueue?: readonly LiveFactQaQueueItem[];
+  readonly calendarOrSourceDiscrepancyQueue?: readonly LiveFactQaQueueItem[];
+  readonly badQidIdentityQueue?: readonly LiveFactQaQueueItem[];
+  readonly wikidataIdentityReviewQueue?: readonly LiveFactQaQueueItem[];
+  readonly wikidataDateDiscrepancyQueue?: readonly LiveFactQaQueueItem[];
+};
+
+/**
+ * Historical review batches pin their own claims, evidence and decisions. The
+ * live Wikidata snapshot is a separate conservative triage layer: new
+ * candidate QIDs and date claims may legitimately enter its review queues as
+ * coverage grows. Keep the release gate strict for proven regressions while
+ * validating, rather than freezing, those evolving candidate rows.
+ */
+export function expectNoProvenLiveFactRegression(
+  factQa: WriterBiographyLiveFactQaReport,
+  batchKeys: Iterable<string>
+): void {
+  const keys = new Set(batchKeys);
+  const selected = (items: readonly LiveFactQaQueueItem[] | undefined) =>
+    (items || []).filter((item) => keys.has(item.key));
+
+  expect(selected(factQa.contradictionQueue)).toEqual([]);
+  expect(selected(factQa.calendarOrSourceDiscrepancyQueue)).toEqual([]);
+  expect(selected(factQa.badQidIdentityQueue)).toEqual([]);
+
+  for (const item of selected(factQa.wikidataIdentityReviewQueue)) {
+    expect(item.qid, item.key).toMatch(/^Q\d+$/u);
+    expect(item.safeAction, item.key).toMatch(/candidate|validate the identity/iu);
+  }
+
+  for (const item of selected(factQa.wikidataDateDiscrepancyQueue)) {
+    expect(
+      [
+        "likely-bad-qid-mapping-or-identity",
+        "date-contradiction-requiring-authoritative-source",
+      ],
+      `${item.key}:${item.field || "date"}`
+    ).toContain(item.classification);
+    expect(item.bestRankClaims?.length, `${item.key}:${item.field || "date"}`).toBeGreaterThan(0);
+    expect(item.safeAction, `${item.key}:${item.field || "date"}`).toMatch(
+      /authoritative|do not auto-rewrite/iu
+    );
+  }
+}
+
 function sourceTextForKey(key: string): string {
   const [countryId, writerId] = key.split(":");
   const writer = countries
@@ -68,6 +124,18 @@ function publicWriter(key: string) {
   return publicCountries
     .find((country) => country.id === countryId)
     ?.writers.find((writer) => writer.id === writerId);
+}
+
+function expectProfilePatch(
+  actual: WriterProfile | undefined,
+  patch: Partial<WriterProfile>,
+  label: string
+): void {
+  const { works, ...scalarPatch } = patch;
+  expect(actual, label).toMatchObject(scalarPatch);
+  if (works) {
+    expect(actual?.works, label).toEqual(expect.arrayContaining([...works]));
+  }
 }
 
 function sha256(text: string): string {
@@ -219,7 +287,7 @@ export function defineWriterBiographyFactReviewBatchTests({
         expect(item.evidence.length, itemKey).toBeGreaterThanOrEqual(2);
         expect(hostnames.size, itemKey).toBeGreaterThanOrEqual(2);
         expect(item.note.trim()).not.toBe("");
-        expect(publicWriter(itemKey), itemKey).toMatchObject(item.patch);
+        expectProfilePatch(publicWriter(itemKey), item.patch, itemKey);
       }
       for (const record of records) {
         expect(Boolean(publicWriter(record.key)), record.key).toBe(

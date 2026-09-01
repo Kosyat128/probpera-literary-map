@@ -349,6 +349,31 @@ describe("writer biography fact QA", () => {
     expect(audited.automatedCoverage.completeClaimLevelFactCheck).toBe(false);
   });
 
+  it("does not report a metadata gap for an inflected, subtitled or translated work title", () => {
+    const audited = auditWriterBiographyRecord(
+      {
+        countryId: "ru",
+        countryName: "Россия",
+        writer: {
+          id: "ivan",
+          name: "Иван Петров",
+          bio: "Автор романов «Манхэттенского трансфера», «Парфюмер. История одного убийцы» и «The Tongue of the Dumb».",
+          works: [
+            "Манхэттенский трансфер",
+            "Парфюмер",
+            "«Язык немого» (The Tongue of the Dumb)",
+          ],
+        },
+      },
+      staging([])
+    );
+    expect(
+      audited.issues.filter(
+        (item) => item.code === "named-work-not-in-structured-list"
+      )
+    ).toEqual([]);
+  });
+
   it("builds a stable all-record queue regardless of public input order", () => {
     const publicRecords = [
       {

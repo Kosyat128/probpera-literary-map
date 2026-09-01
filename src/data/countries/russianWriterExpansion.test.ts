@@ -24,12 +24,14 @@ describe("verified Russian writer expansion", () => {
       expect(countBiographySentences(translation?.text || ""), writer.id).toBe(2);
       expect(translation?.text.length, writer.id).toBeGreaterThanOrEqual(120);
       expect(translation?.sources, writer.id).toHaveLength(1);
-      expect(
-        new URL(translation!.sources[0]!.url).hostname,
-        writer.id
-      ).toMatch(russianInstitutionalHost);
+      expect(new URL(translation!.sources[0]!.url).hostname, writer.id).toMatch(
+        russianInstitutionalHost
+      );
       expect(translation?.method, writer.id).toBe("editorial-original");
       expect(translation?.status, writer.id).toBe("verified");
+      expect(translation?.sourceTextRights, writer.id).toBe(
+        "project-original"
+      );
       expect(translation?.reviewedAt, writer.id).toBe("2026-08-31");
     }
   });

@@ -10,12 +10,18 @@ const registry = curatedWriterQids.writers as Record<
 >;
 
 const correctedMappings = {
-  "australia:les_murray": "Q259841",
-  "dominican_republic:juan_bosch": "Q439980",
-  "england:t_s_eliot": "Q37767",
-  "finland:fredrika_bremer": "Q262145",
-  "myanmar:ma_ma_lay": "Q6273845",
-  "sweden:hjalmar_soderberg": "Q331845",
+  "australia:les_murray": { oldQid: "Q6529770", newQid: "Q259841" },
+  "dominican_republic:juan_bosch": {
+    oldQid: "Q1710380",
+    newQid: "Q439980",
+  },
+  "england:t_s_eliot": { oldQid: "Q3261882", newQid: "Q37767" },
+  "finland:fredrika_bremer": { oldQid: "Q465687", newQid: "Q262145" },
+  "myanmar:ma_ma_lay": { oldQid: "Q56254273", newQid: "Q6273845" },
+  "sweden:hjalmar_soderberg": {
+    oldQid: "Q49099212",
+    newQid: "Q331845",
+  },
 } as const;
 
 const removedFalseMappings = {
@@ -37,13 +43,16 @@ function writerByKey(key: string) {
 
 describe("curated writer identity registry", () => {
   it.each(Object.entries(correctedMappings))(
-    "maps %s to the corrected person %s",
-    (key, qid) => {
-      expect(registry[key].wikidataId).toBe(qid);
+    "maps %s to the corrected person",
+    (key, { oldQid, newQid }) => {
+      expect(registry[key].wikidataId).toBe(newQid);
       expect(registry[key].sourceUrl).toBe(
-        `https://www.wikidata.org/wiki/${qid}`
+        `https://www.wikidata.org/wiki/${newQid}`
       );
-      expect(quarantinedWriterPortraitKeys.has(key)).toBe(true);
+      const writer = writerByKey(key);
+      expect(quarantinedWriterPortraitKeys.has(key)).toBe(false);
+      expect(writer?.portrait || "").not.toContain(oldQid.toLocaleLowerCase());
+      expect(writer?.portraitSourceUrl || "").not.toContain(oldQid);
     }
   );
 
@@ -51,7 +60,7 @@ describe("curated writer identity registry", () => {
     "does not retain the false mapping %s -> %s",
     (key, falseQid) => {
       expect(registry[key]).toBeUndefined();
-      expect(quarantinedWriterPortraitKeys.has(key)).toBe(true);
+      expect(quarantinedWriterPortraitKeys.has(key)).toBe(false);
       const writer = writerByKey(key);
       expect(writer?.portrait || "").not.toContain(falseQid.toLowerCase());
       expect(writer?.portraitSourceUrl || "").not.toContain(falseQid);

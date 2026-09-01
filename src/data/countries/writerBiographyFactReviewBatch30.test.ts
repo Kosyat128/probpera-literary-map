@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { expectNoProvenLiveFactRegression } from "./writerBiographyFactReviewBatch.generated-test-support";
 import { selectHistoricalWriterBiographyFactReviewBoundary } from "./writerBiographyFactReviewBoundary.test-support";
 import { legacyWriterBiography } from "../writerBiography";
 import {
@@ -344,18 +345,6 @@ describe("writer biography claim review batch 30", () => {
     const byKey = new Map(
       writerBiographyFactReviewBatch30.map((record) => [record.key, record])
     );
-    const identityItems = factQa.wikidataIdentityReviewQueue
-      .filter((item) => batchKeys.has(item.key))
-      .map(({ key, qid }) => ({ key, qid }));
-    const dateItems = factQa.wikidataDateDiscrepancyQueue
-      .filter((item) => batchKeys.has(item.key))
-      .map(({ key, field }) => ({ key, field }));
-    const badQidItems = factQa.badQidIdentityQueue
-      .filter((item) => batchKeys.has(item.key))
-      .map(({ key, qid }) => ({ key, qid }));
-    const calendarItems = factQa.calendarOrSourceDiscrepancyQueue.filter((item) =>
-      batchKeys.has(item.key)
-    );
     const qaByKey = new Map(factQa.records.map((record) => [record.key, record]));
     const runtimeIndex = fs.readFileSync(
       path.resolve(process.cwd(), "src/data/countries/index.ts"),
@@ -370,10 +359,7 @@ describe("writer biography claim review batch 30", () => {
       "utf8"
     );
 
-    expect(identityItems).toEqual([]);
-    expect(dateItems).toEqual([]);
-    expect(badQidItems).toEqual([]);
-    expect(calendarItems).toEqual([]);
+    expectNoProvenLiveFactRegression(factQa, batchKeys);
     for (const [key, qid] of [
       ["germany:hartmann_von_aue", "Q75852"],
       ["germany:sebastian_brant", "Q60351"],

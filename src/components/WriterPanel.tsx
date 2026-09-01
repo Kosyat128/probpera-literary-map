@@ -549,7 +549,7 @@ export default function WriterPanel({
                 ])}
           </strong>
           <small>
-            {t("Для каждой биографии показан её фактический статус")}
+            {t("У каждой биографии указан статус проверки")}
           </small>
         </div>
       </div>
@@ -569,7 +569,7 @@ export default function WriterPanel({
         <span className="archive-subscribe-label">
           {countrySubscribed
             ? t("Вы следите за архивом страны")
-            : t("Следить за новыми материалами страны")}
+            : t("Следить за новыми материалами об этой стране")}
         </span>
       </button>
       {language === "en" && (
@@ -599,8 +599,8 @@ export default function WriterPanel({
           aria-pressed={nobelSpotlightActive}
           title={t(
             nobelSpotlightActive
-              ? "Скрыть метки Нобелевских лауреатов этой страны"
-              : "Показать всех Нобелевских лауреатов этой страны на глобусе"
+              ? "Скрыть метки нобелевских лауреатов этой страны"
+              : "Показать всех нобелевских лауреатов этой страны на глобусе"
           )}
         >
           <strong>{number(nobelCount)}</strong>
@@ -610,9 +610,9 @@ export default function WriterPanel({
                 ? "Nobel laureate"
                 : "Nobel laureates"
               : pluralRu(nobelCount, [
-                  "Нобелевский лауреат",
-                  "Нобелевских лауреата",
-                  "Нобелевских лауреатов",
+                  "нобелевский лауреат",
+                  "нобелевских лауреата",
+                  "нобелевских лауреатов",
                 ])}
           </span>
         </button>
@@ -938,7 +938,7 @@ export default function WriterPanel({
             <span className="archive-subscribe-label">
               {activeWriterSubscribed
                 ? t("Вы следите за автором")
-                : t("Следить за новыми материалами автора")}
+                : t("Следить за новыми материалами об авторе")}
             </span>
           </button>
           <div
@@ -1016,10 +1016,10 @@ export default function WriterPanel({
                       navigateToArticle(activeNobelArticle);
                     }}
                   >
-                    {t("Читать редакционный материал года")} <span>→</span>
+                    {t("Читать материал о премии этого года")} <span>→</span>
                   </a>
                 ) : (
-                  <em>{t("Годовая статья готовится редакцией")}</em>
+                  <em>{t("Редакция готовит материал о премии этого года")}</em>
                 )}
               </div>
             </div>

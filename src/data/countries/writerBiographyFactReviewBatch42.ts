@@ -193,7 +193,7 @@ const seeds = [
   {
     key: "niger:mariama_hima",
     originalSha256: "f70f8029d4ad82b15e4a144010ddf6ac65d176a3f98d6494a320f772e001772f",
-    reviewedTextRu: "Мариама Хима (род. 1951) - нигерская кинорежиссёр-документалист, этнолог, антрополог и дипломат. BnF также каталогизирует её как автора книги «Sagesse africaine : proverbes».",
+    reviewedTextRu: "Мариама Хима (род. 1951) - нигерская кинорежиссёр-документалист, этнолог, антрополог и дипломат. BnF также каталогизирует её как автора книги «Sagesse africaine: proverbes».",
     evidence: [
       e("Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark:/12148/cb131962985", "Авторитетная запись BnF подтверждает дату рождения, профессии и авторство Sagesse africaine : proverbes."),
       e("African Film Festival New York", "https://africanfilmny.org/directors/mariama-hima/", "Профиль фестивального архива независимо подтверждает нигерскую идентичность, документальное кино и этнологическую работу Химы."),
@@ -381,7 +381,7 @@ const seeds = [
   {
     key: "north_macedonia:kocho_racin",
     originalSha256: "4a023669074dcc29bb4dd5f62f2d4ead7c18be61b9ab382a91d2e1b00244e24f",
-    reviewedTextRu: "Кочо Рацин (1908-1943) - македонский поэт и прозаик. Его поэтический сборник «Бели мугри» вышел в 1939 году.",
+    reviewedTextRu: "Кочо Рацин (1908-1943) - македонский поэт, прозаик и литературный деятель. В его литературное наследие входит поэтический сборник «Бели мугри», который был опубликован в 1939 году.",
     evidence: [
       e("Treccani", "https://www.treccani.it/enciclopedia/koco-racin/", "Итальянская национальная энциклопедия подтверждает годы, литературные роли и сборник Рацина."),
       e("Hrvatska enciklopedija", "https://enciklopedija.hr/clanak/racin-koco", "Хорватская национальная энциклопедия независимо подтверждает биографию и издание Beli mugri в 1939 году."),

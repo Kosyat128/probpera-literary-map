@@ -497,6 +497,8 @@ async function main() {
     lines.push("");
   }
 
+  while (lines.at(-1) === "") lines.pop();
+
   await writeFile(
     path.join(reportDirectory, "editorial-audit.md"),
     `${lines.join("\n")}\n`,

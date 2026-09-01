@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { TextDecoder } from "node:util";
 import { describe, expect, it } from "vitest";
+import { expectNoProvenLiveFactRegression } from "./writerBiographyFactReviewBatch.generated-test-support";
 import {
   legacyWriterBiography,
   selectWriterBiography,
@@ -247,15 +248,8 @@ describe("writer biography claim review batch 11", () => {
         cardValue: item.cardValue,
         candidate: item.bestRankClaims[0]?.value,
       }));
-    const identityMatches = [
-      ...factQa.wikidataIdentityReviewQueue,
-      ...factQa.badQidIdentityQueue,
-    ]
-      .filter((item) => batchKeySet.has(item.key))
-      .map((item) => item.key);
-
     expect(discrepancies).toEqual([]);
-    expect(identityMatches).toEqual(["australia:terry_hayes"]);
+    expectNoProvenLiveFactRegression(factQa, batchKeySet);
 
     const note = (key: string) =>
       writerBiographyFactReviewBatch11.find((record) => record.key === key)

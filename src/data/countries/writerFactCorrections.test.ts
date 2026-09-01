@@ -91,6 +91,7 @@ describe("curated writer fact resolutions", () => {
     ["finland:fredrika_bremer", "deathDate", "1865-12-31"],
     ["france:chretien_de_troyes", "birthDate", ""],
     ["france:francois_rabelais", "birthDate", ""],
+    ["french_guiana:leon_gontran_damas", "birthDate", "1912-03-28"],
     ["democratic_republic_of_congo:antoine_roger_bolamba", "birthPlace", "Бома, Демократическая Республика Конго"],
     ["democratic_republic_of_congo:kama_sywor_kamanda", "birthPlace", "Луэбо, Демократическая Республика Конго"],
     ["tanzania:said_ahmed_mohamed", "birthDate", "1947-12-12"],
@@ -286,12 +287,23 @@ describe("curated writer fact resolutions", () => {
       "1798-12-31"
     );
     expect(writerByKey("ethiopia:bealu_girma")?.years).toBe("1939-1984");
-    expect(writerByKey("finland:fredrika_bremer")).toMatchObject({
+    const bremer = writerByKey("finland:fredrika_bremer");
+    expect(bremer).toMatchObject({
       fullName: "Fredrika Bremer",
       years: "1801-1865",
-      works: ["Соседи", "Херта"],
+      birthDate: "1801-08-17",
+      deathDate: "1865-12-31",
+      birthPlace: "Туорла, Финляндия",
+      works: ["Соседи", "Герта"],
       nationality: "шведка",
     });
+    expect(bremer?.bio).toBe(
+      "Фредрика Бремер (1801-1865) - шведская писательница, основоположница феминистского движения в Швеции. В романах «Соседи» и «Герта» она обращалась к теме женского равноправия."
+    );
+    expect(
+      bremer?.biographyTranslations?.ru?.sources.map((source) => source.url)
+    ).toContain("https://old.bigenc.ru/world_history/text/1883169");
+    expect(JSON.stringify(bremer)).not.toContain("Герцогиня Финляндская");
     expect(writerByKey("france:chretien_de_troyes")).toMatchObject({
       years: "вторая половина XII века",
       birthDate: "",

@@ -4,6 +4,7 @@ import {
   auditWriterIdentityRecord,
   namesCompatible,
   summarizeWriterIdentityAudit,
+  yearFromValue,
 } from "./writer-identity-audit.mjs";
 
 function entity({
@@ -51,6 +52,33 @@ describe("writer identity audit", () => {
     expect(record.issues).toEqual([]);
   });
 
+  it("compares zero-padded years numerically", () => {
+    expect(yearFromValue("+01801-08-17T00:00:00Z")).toBe("1801");
+    expect(yearFromValue("01801-08-17")).toBe("1801");
+
+    const record = auditWriterIdentityRecord({
+      key: "finland:fredrika_bremer",
+      mapping: { wikidataId: "Q262145" },
+      writer: {
+        id: "fredrika_bremer",
+        name: "Fredrika Bremer",
+        birthDate: "1801-08-17",
+      },
+      entity: entity({
+        qid: "Q262145",
+        label: "Fredrika Bremer",
+        birth: "+01801-08-17T00:00:00Z",
+      }),
+    });
+
+    expect(record.birth).toMatchObject({
+      status: "match",
+      localYear: "1801",
+      externalYears: ["1801"],
+    });
+    expect(record.classification).toBe("corroborated");
+  });
+
   it("routes date conflicts and non-literary descriptions to review", () => {
     const record = auditWriterIdentityRecord({
       key: "test:test_writer",
@@ -75,6 +103,37 @@ describe("writer identity audit", () => {
         "literary-role-not-corroborated",
       ])
     );
+  });
+
+  it("accepts an authority-backed identity when Wikidata carries the wrong birth year", () => {
+    const record = auditWriterIdentityRecord({
+      key: "guatemala:luis_cardoza_y_aragon",
+      mapping: { wikidataId: "Q6700406" },
+      writer: {
+        id: "luis_cardoza_y_aragon",
+        name: "Luis Cardoza y Aragon",
+        birthDate: "1901-06-21",
+      },
+      entity: entity({
+        qid: "Q6700406",
+        label: "Luis Cardoza y Aragon",
+        birth: "+1904-06-21T00:00:00Z",
+      }),
+      manualConfirmation: {
+        qid: "Q6700406",
+        note: "Two official Guatemalan biographies establish the identity and date.",
+        sources: [
+          { title: "RENAP", url: "https://www.renap.gob.gt/example.pdf" },
+          { title: "MCD", url: "https://mcd.gob.gt/example.pdf" },
+        ],
+      },
+    });
+
+    expect(record.birth.status).toBe("conflict");
+    expect(record.classification).toBe("corroborated");
+    expect(record.manuallyCorroborated).toBe(true);
+    expect(record.manualConfirmation?.qid).toBe("Q6700406");
+    expect(record.issues).not.toContain("birth-year-conflict");
   });
 
   it("summarizes every audited record exactly once", () => {

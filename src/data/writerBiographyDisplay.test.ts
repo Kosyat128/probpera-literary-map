@@ -16,11 +16,12 @@ const publishedRussian: WriterBiographyTranslationProfile = {
   status: "reviewed",
   method: "editorial-original",
   reviewedAt: "2026-08-08",
+  reviewer: "Редакционная проверка",
   sources: [
     {
       provider: "Official literary archive",
       url: "https://example.org/writers/reviewed-author",
-      fields: ["identity", "life-dates", "works"],
+      fields: ["identity", "life-dates", "biography-facts", "works"],
       usage: "fact-check",
       retrievedAt: "2026-08-08",
     },
@@ -134,9 +135,9 @@ describe("writer biography display policy", () => {
       withheldKnownQualityIssues: displays.filter((display) => !display).length,
     }).toEqual({
       cards: 1_684,
-      strictGatePassing: 98,
-      published: 98,
-      legacyUnverified: 1_586,
+      strictGatePassing: 1_684,
+      published: 1_684,
+      legacyUnverified: 0,
       withheldKnownQualityIssues: 0,
     });
 

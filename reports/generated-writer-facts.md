@@ -1,16 +1,16 @@
 # Сверка автоматически импортированных писателей
 
-Сформировано: 2026-08-05T09:31:06.037Z
+Сформировано: 2026-08-31T22:55:20.128Z
 
 - Записей: 2356
 - Уникальных персон Wikidata: 2326
-- Источник подтверждён без замечаний: 2338
-- Требуют редакционной проверки: 16
+- Источник подтверждён без замечаний: 2328
+- Требуют редакционной проверки: 26
 - Отклонены автоматической проверкой: 2
-- С предупреждениями без фактического расхождения: 181
-- С кандидатами на свободный портрет: 1407
+- С предупреждениями без фактического расхождения: 177
+- С кандидатами на свободный портрет: 1404
 - Без русской метки имени: 0
-- Без внешнего библиотечного идентификатора: 181
+- Без внешнего библиотечного идентификатора: 177
 
 ## Первые случаи для ручной проверки
 
@@ -19,6 +19,12 @@
 chile · [Q210532](https://www.wikidata.org/wiki/Q210532) · review-required
 
 - Дата смерти расходится: +2003-09-15 → 2003-09-16
+
+### Бенхамин Каррион
+
+ecuador · [Q817767](https://www.wikidata.org/wiki/Q817767) · review-required
+
+- Дата смерти расходится: 1999-03-06 → 1979-03-08
 
 ### Саломея Нерис
 
@@ -31,6 +37,24 @@ lithuania · [Q462166](https://www.wikidata.org/wiki/Q462166) · review-required
 venezuela · [Q321601](https://www.wikidata.org/wiki/Q321601) · review-required
 
 - Дата смерти расходится: +2001-04-25 → 1976-04-25
+
+### Rocha Chimera
+
+kenya · [Q3089731](https://www.wikidata.org/wiki/Q3089731) · review-required
+
+- Имя изменилось: «Rocha Chimera» → «Rocha M. Chimerah»
+
+### David Maillu
+
+kenya · [Q5972584](https://www.wikidata.org/wiki/Q5972584) · review-required
+
+- Имя изменилось: «David Maillu» → «David G. Maillu»
+
+### David William Lister Read
+
+kenya · [Q1176280](https://www.wikidata.org/wiki/Q1176280) · review-required
+
+- Имя изменилось: «David William Lister Read» → «David Read»
 
 ### Маргарита Стрёмстедт
 
@@ -80,6 +104,18 @@ romania · [Q16409](https://www.wikidata.org/wiki/Q16409) · review-required
 
 - Дата смерти расходится: +1963-12-25 → 1963-12-24
 
+### Buata Malela
+
+democratic_republic_of_congo · [Q2927371](https://www.wikidata.org/wiki/Q2927371) · review-required
+
+- Имя изменилось: «Buata Malela» → «Buata Bundu Malela»
+
+### Alaíde Foppa
+
+guatemala · [Q5662422](https://www.wikidata.org/wiki/Q5662422) · review-required
+
+- Имя изменилось: «Alaíde Foppa» → «Alaíde Foppa Falla»
+
 ### Manuel José Arce Leal
 
 guatemala · [Q967978](https://www.wikidata.org/wiki/Q967978) · review-required
@@ -104,6 +140,20 @@ philippines · [Q951527](https://www.wikidata.org/wiki/Q951527) · review-requir
 
 - Дата смерти расходится: +1944-08-25 → 1944-08-30
 
+### Victorina A. Abellanosa
+
+philippines · [Q3348330](https://www.wikidata.org/wiki/Q3348330) · review-required
+
+- Имя изменилось: «Victorina A. Abellanosa» → «Victorino A. Abellanosa»
+- Дата рождения расходится: 1903 → 1903-12-23
+- Дата смерти расходится: 1968-01-01 → 1968-08-08
+
+### Мозес Нагамуту
+
+guyana · [Q6915896](https://www.wikidata.org/wiki/Q6915896) · review-required
+
+- Дата рождения расходится: 2001-11-30 → 1947-11-30
+
 ### Aḥmad ʿAlāwinah
 
 jordan · [Q12178632](https://www.wikidata.org/wiki/Q12178632) · review-required
@@ -115,6 +165,18 @@ jordan · [Q12178632](https://www.wikidata.org/wiki/Q12178632) · review-require
 yemen · [Q2068019](https://www.wikidata.org/wiki/Q2068019) · rejected
 
 - Объект Wikidata не подтверждён как человек (P31≠Q5)
+
+### Francis Moto
+
+malawi · [Q24263717](https://www.wikidata.org/wiki/Q24263717) · review-required
+
+- Имя изменилось: «Francis Moto» → «Francis P. B. Moto»
+
+### Samuel Josia Ntara
+
+malawi · [Q121205849](https://www.wikidata.org/wiki/Q121205849) · review-required
+
+- Дата смерти расходится: 1976 → 1976-01-01
 
 ### Mansour Alnogaidan
 
@@ -628,12 +690,6 @@ myanmar · [Q5924534](https://www.wikidata.org/wiki/Q5924534)
 
 - Нет внешнего библиотечного идентификатора VIAF/ISNI/LCCN/BnF/NLA
 
-### Khin Swe Oo
-
-myanmar · [Q13063308](https://www.wikidata.org/wiki/Q13063308)
-
-- Нет внешнего библиотечного идентификатора VIAF/ISNI/LCCN/BnF/NLA
-
 ### Siddhidas Mahaju
 
 nepal · [Q3465356](https://www.wikidata.org/wiki/Q3465356)
@@ -988,12 +1044,6 @@ kuwait · [Q12209738](https://www.wikidata.org/wiki/Q12209738)
 
 - Нет внешнего библиотечного идентификатора VIAF/ISNI/LCCN/BnF/NLA
 
-### Taibah Al-Ibrahim
-
-kuwait · [Q4116051](https://www.wikidata.org/wiki/Q4116051)
-
-- Нет внешнего библиотечного идентификатора VIAF/ISNI/LCCN/BnF/NLA
-
 ### Hayat Alyaqut
 
 kuwait · [Q12209740](https://www.wikidata.org/wiki/Q12209740)
@@ -1042,12 +1092,6 @@ malawi · [Q34846323](https://www.wikidata.org/wiki/Q34846323)
 
 - Нет внешнего библиотечного идентификатора VIAF/ISNI/LCCN/BnF/NLA
 
-### Francis Moto
-
-malawi · [Q24263717](https://www.wikidata.org/wiki/Q24263717)
-
-- Нет внешнего библиотечного идентификатора VIAF/ISNI/LCCN/BnF/NLA
-
 ### Innocent Masina Nkhonyo
 
 malawi · [Q21285227](https://www.wikidata.org/wiki/Q21285227)
@@ -1057,12 +1101,6 @@ malawi · [Q21285227](https://www.wikidata.org/wiki/Q21285227)
 ### Ndongolera Mwangupili
 
 malawi · [Q22007100](https://www.wikidata.org/wiki/Q22007100)
-
-- Нет внешнего библиотечного идентификатора VIAF/ISNI/LCCN/BnF/NLA
-
-### Samuel Josia Ntara
-
-malawi · [Q121205849](https://www.wikidata.org/wiki/Q121205849)
 
 - Нет внешнего библиотечного идентификатора VIAF/ISNI/LCCN/BnF/NLA
 

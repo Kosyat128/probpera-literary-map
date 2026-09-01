@@ -6,6 +6,7 @@ import { mergeReviewedWriterBiographyDrafts } from "./writerBiographyResearch";
 import { writerBiographyResearchDrafts } from "./writerBiographyResearchBatches";
 import { mergeWriterBiographyLegacyCorrections } from "./writerBiographyLegacyCorrections";
 import { mergeWriterBiographyFactReviews } from "./writerBiographyFactReviews";
+import { mergeWriterBiographyEnglishTranslations } from "./writerBiographyEnglishTranslations";
 import { mergeArticleReferencedBooks } from "./articleReferencedBooks";
 import { mergeVerifiedBookSupplements } from "./verifiedBookSupplements";
 import { mergeUserSuppliedBookWorkSupplementsBatch20260820 } from "./userSuppliedBookWorkSupplementsBatch20260820";
@@ -500,10 +501,20 @@ const publicWriterCountries = mergeWriterBiographyLegacyCorrections(
   countriesBeforeWriterBiographyCorrections
 );
 
+/**
+ * Complete checked-in editorial fallback after fact review and generated EN,
+ * but before any durable CMS overrides. The closed admin catalog must use this
+ * corpus so a public partial map or tombstone cannot erase its recovery source.
+ */
+export const editorialCatalogCountries: Country[] =
+  mergeWriterBiographyEnglishTranslations(
+    mergeWriterBiographyFactReviews(publicWriterCountries)
+  );
+
 /** Public globe/writer corpus after writer-only corrections and fact review. */
 export const countries: Country[] = applyCmsWriterProfileOverrides(
   applyCmsCountryProfileOverrides(
-    mergeWriterBiographyFactReviews(publicWriterCountries)
+    editorialCatalogCountries
   )
 );
 export { generatedWriterDraftCount };

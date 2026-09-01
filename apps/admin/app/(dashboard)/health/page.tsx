@@ -179,7 +179,7 @@ export default async function HealthPage() {
       <article className="stat-card"><span>Сохранение RU+EN</span><HealthValue status={atomicArticleSaveStatus} /><small>{atomicArticleSaveDetail}</small></article>
       <article className="stat-card"><span>Media Studio</span><HealthValue status={mediaStudioReady ? "OK" : schemaCheckAvailable ? "FAILED" : "UNKNOWN"} /><small>{mediaStudioDetail}</small></article>
       <article className="stat-card"><span>Публикация</span><HealthValue status={!schemaHealth ? "UNKNOWN" : Number(schemaHealth.pendingPublicBuilds || 0) > 50 ? "DEGRADED" : "OK"} /><small>{schemaHealthError || !schemaHealth ? "транзакционная очередь недоступна" : `${schemaHealth.pendingPublicBuilds || 0} запросов ожидают подтверждения deploy`}</small></article>
-      <article className="stat-card"><span>Автоперевод EN</span><HealthValue status={translationStatus} /><small>{translationStatusDetail}</small></article>
+      <article className="stat-card"><span>Перевод на английский</span><HealthValue status={translationStatus} /><small>{translationStatusDetail}</small></article>
       <article className="stat-card"><span>Резервная копия DB + Storage</span><HealthValue status={backupHealth.status} /><small>{backupHealth.detail}</small></article>
       <article className="stat-card"><span>Проверка восстановления</span><HealthValue status={restoreHealth.status} /><small>{restoreHealth.detail}</small></article>
     </section>

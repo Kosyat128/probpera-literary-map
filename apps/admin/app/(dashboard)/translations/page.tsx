@@ -24,6 +24,24 @@ import { resumeTranslationJobAction } from "./resume-action";
 export const metadata = { title: "Premium English" };
 export const dynamic = "force-dynamic";
 
+type BackfillCursorQuery = {
+  articleCursor?: string;
+  libraryCursor?: string;
+  writerCursor?: string;
+  countryCursor?: string;
+};
+
+function BackfillCursorFields({ query }: { query: BackfillCursorQuery }) {
+  return (
+    <>
+      <input type="hidden" name="articleCursor" value={query.articleCursor || "0"} />
+      <input type="hidden" name="libraryCursor" value={query.libraryCursor || "0"} />
+      <input type="hidden" name="writerCursor" value={query.writerCursor || "0"} />
+      <input type="hidden" name="countryCursor" value={query.countryCursor || "0"} />
+    </>
+  );
+}
+
 function objectValue(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" && !Array.isArray(value)
     ? (value as Record<string, unknown>)
@@ -355,7 +373,7 @@ export default async function PremiumTranslationsPage({
 
       <section className="dashboard-grid" style={{ marginTop: 18 }}>
         <form className="panel settings-stack" action={translatePremiumArticleBatchAction}>
-          <input type="hidden" name="articleCursor" value={query.articleCursor || "0"} />
+          <BackfillCursorFields query={query} />
           <span className="eyebrow">Статьи</span>
           <h2>Догнать опубликованный архив</h2>
           <p>
@@ -368,7 +386,7 @@ export default async function PremiumTranslationsPage({
         </form>
 
         <form className="panel settings-stack" action={translatePremiumLibraryBatchAction}>
-          <input type="hidden" name="libraryCursor" value={query.libraryCursor || "0"} />
+          <BackfillCursorFields query={query} />
           <span className="eyebrow">Книжный архив</span>
           <h2>Премиальный EN книг</h2>
           <p>
@@ -382,7 +400,7 @@ export default async function PremiumTranslationsPage({
         </form>
 
         <form className="panel settings-stack" action={translatePremiumWriterBatchAction}>
-          <input type="hidden" name="writerCursor" value={query.writerCursor || "0"} />
+          <BackfillCursorFields query={query} />
           <span className="eyebrow">Писатели</span>
           <h2>Премиальный EN биографий</h2>
           <p>
@@ -396,7 +414,7 @@ export default async function PremiumTranslationsPage({
         </form>
 
         <form className="panel settings-stack" action={translatePremiumCountryBatchAction}>
-          <input type="hidden" name="countryCursor" value={query.countryCursor || "0"} />
+          <BackfillCursorFields query={query} />
           <span className="eyebrow">Страны</span>
           <h2>Премиальный EN профилей стран</h2>
           <p>
@@ -410,6 +428,7 @@ export default async function PremiumTranslationsPage({
         </form>
 
         <form className="panel settings-stack" action={translatePremiumSiteCopyBatchAction}>
+          <BackfillCursorFields query={query} />
           <span className="eyebrow">Интерфейс</span>
           <h2>Догнать CMS site-copy</h2>
           <p>

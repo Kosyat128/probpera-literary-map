@@ -2,6 +2,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { normalizeShortHyphens } from "./lib/short-hyphens.mjs";
+
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
 const generatedPath = path.join(
@@ -478,12 +480,12 @@ async function main() {
   await mkdir(reportDirectory, { recursive: true });
   await writeFile(
     path.join(reportDirectory, "generated-writer-facts.json"),
-    `${JSON.stringify(report, null, 2)}\n`,
+    `${normalizeShortHyphens(JSON.stringify(report, null, 2))}\n`,
     "utf8"
   );
   await writeFile(
     path.join(reportDirectory, "generated-writer-facts.md"),
-    reportMarkdown(report),
+    normalizeShortHyphens(reportMarkdown(report)),
     "utf8"
   );
 
@@ -499,7 +501,11 @@ async function main() {
         ),
       ])
     );
-    await writeFile(generatedPath, `${JSON.stringify(updatedGroups, null, 2)}\n`, "utf8");
+    await writeFile(
+      generatedPath,
+      `${normalizeShortHyphens(JSON.stringify(updatedGroups, null, 2))}\n`,
+      "utf8"
+    );
   }
 
   console.log(JSON.stringify(report.summary, null, 2));

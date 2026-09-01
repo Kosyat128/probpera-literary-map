@@ -40,6 +40,9 @@ export type WriterBiographyTranslationProfile = {
     reviewerModel?: string;
     sourceHash?: string;
     generatedAt?: string;
+    editorialPostEditedAt?: string;
+    editorialPostEditor?: string;
+    editorialPostEditReasonCodes?: string[];
   };
 };
 

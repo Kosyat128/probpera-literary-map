@@ -51,10 +51,23 @@ export default defineConfig(({ mode }) => {
             }
             if (
               moduleId.includes(
-                "/writerBiographyFactReviewCorrections.generated.json"
+                "/writerBiographyFactReviewRuntime.generated.json"
               )
             ) {
               return "writer-biography-reviews";
+            }
+            const countryFileName = moduleId.match(
+              /\/src\/data\/countries\/([a-z_]+)\.ts$/u
+            )?.[1];
+            if (
+              countryFileName &&
+              !new Set(["generated", "index", "types"]).has(
+                countryFileName
+              )
+            ) {
+              return countryFileName[0]! <= "m"
+                ? "country-data-a-m"
+                : "country-data-n-z";
             }
             if (
               moduleId.includes("/node_modules/three/") ||

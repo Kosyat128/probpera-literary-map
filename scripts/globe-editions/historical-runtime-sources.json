@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "historical-globe-runtime-production-sources",
+  "acquisitionDate": "2026-08-31",
+  "cacheDirectory": "scripts/.cache/globe-editions/historical-runtime/production-inputs",
+  "longitudeConvention": "canonical-equirectangular-west-minus-east-plus-greenwich-centered",
+  "outputs": {
+    "desktop": { "width": 4096, "height": 2048, "quality": 84, "method": 6 },
+    "mobile": { "width": 2048, "height": 1024, "quality": 80, "method": 6 },
+    "desktopBudgetBytes": 2200000,
+    "mobileBudgetBytes": 550000
+  },
+  "canonicalAtlas": {
+    "path": "src/data/geo/countries.geojson",
+    "dataset": "Natural Earth Admin 0 - Countries",
+    "repositoryVersion": "5.1.2",
+    "featureCount": 177,
+    "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
+    "portedEvidence": {
+      "originalBuildSha256": "1390263ABE434B8A30321230D79D10A12693BE465E8F2CDBAC711C7BBA7838AC",
+      "currentDifference": "One NAME_RU punctuation character for PNG changed from an em dash to a spaced hyphen; parsed feature geometry is byte-for-byte identical after JSON parsing.",
+      "rebuildRunOnPort": false
+    },
+    "registration": {
+      "canonicalUnionCoastlineRegistered": true,
+      "internalBorders": false,
+      "treatment": "source-derived-rgb-darkening",
+      "desktopWidthPx": 2,
+      "mobileWidthPxApprox": 1,
+      "maximumDarkeningOpacity": 0.36
+    }
+  },
+  "editions": [
+    {
+      "id": "behaim-1492",
+      "displayTitle": "Martin Behaim 1492 - Ravenstein facsimile 1908",
+      "outputBasename": "behaim-1492-ravenstein-1908",
+      "encoding": { "desktopQuality": 74, "mobileQuality": 77 },
+      "institution": "Universitätsbibliothek Freiburg",
+      "catalogUrl": "https://dl.ub.uni-freiburg.de/diglit/ravenstein1908",
+      "rights": {
+        "status": "accepted-public-domain-mark-1.0",
+        "url": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "credit": "Universitätsbibliothek Freiburg; E. G. Ravenstein, Martin Behaim: His Life and His Globe, 1908",
+        "note": "Production uses only the four complete 1908 Ravenstein facsimile sheets published by UB Freiburg with Public Domain Mark 1.0; it does not use the restricted modern GNM/FAU 3D surface."
+      },
+      "sources": [
+        { "id": "a-d", "role": "facsimile-segments-a-d", "filename": "behaim-1908-a-d.jpg", "url": "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/124.jpg", "catalogUrl": "https://dl.ub.uni-freiburg.de/diglit/ravenstein1908/0142", "width": 5271, "height": 6965, "bytes": 5204276, "sha256": "4BC83B19B792BC893E9B7ECF617822D5589ECA788CB4D9400E56A4E3FC234414" },
+        { "id": "e-g", "role": "facsimile-segments-e-g", "filename": "behaim-1908-e-g.jpg", "url": "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/125.jpg", "catalogUrl": "https://dl.ub.uni-freiburg.de/diglit/ravenstein1908/0143", "width": 5271, "height": 6965, "bytes": 5205526, "sha256": "A7AB75040DE15E0A92A29BC9D0689D74BF6D1E9F364BD81583BBAFDF7FF50440" },
+        { "id": "h-j", "role": "facsimile-segments-h-j", "filename": "behaim-1908-h-j.jpg", "url": "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/126.jpg", "catalogUrl": "https://dl.ub.uni-freiburg.de/diglit/ravenstein1908/0144", "width": 5271, "height": 6965, "bytes": 5116201, "sha256": "82CC5C3FBCD44FDA1F4AF4AEDB7B851126B1E5E2FEBE29C7BDDE1B28BDC9ABD6" },
+        { "id": "k-m-caps", "role": "facsimile-segments-k-m-and-polar-calottes", "filename": "behaim-1908-k-m-caps.jpg", "url": "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/127.jpg", "catalogUrl": "https://dl.ub.uni-freiburg.de/diglit/ravenstein1908/0145", "width": 5895, "height": 7010, "bytes": 5613741, "sha256": "94F0BC3C3CB5DE40518C827B4FA4425F78F91978B47FA489C44F2EFA8FB1A0A3" }
+      ],
+      "surface": {
+        "projection": "30-degree globe gores with separate polar calottes",
+        "joinLatitudeDeg": 60,
+        "edgeInsetPx": 24,
+        "edgeInsetRows": [{ "latitudeDeg": 60, "insetPx": 125 }, { "latitudeDeg": 0, "insetPx": 24 }, { "latitudeDeg": -60, "insetPx": 125 }],
+        "capEdgeInsetPx": 14,
+        "joinFeatherDeg": 0.7,
+        "goreOverlapDeg": 1.2,
+        "paletteNormalizationStrength": 0.55,
+        "seamFeatherOutputPx": 0,
+        "goreOrder": "A through M eastward; A and M are the two halves of the seam gore",
+        "geographicAnchor": "Segment D is centered on Greenwich; early-modern geographic distortion is preserved rather than silently warped.",
+        "gores": [
+          { "id": "M", "sourceId": "k-m-caps", "centralLongitudeDeg": -90, "offsetRangeDeg": [-15, 0], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 2990, "centerX": 3315, "rightX": 3640 }, { "latitudeDeg": 0, "y": 3212, "leftX": 2665, "centerX": 3315, "rightX": 3965 }, { "latitudeDeg": -60, "y": 6135, "leftX": 2990, "centerX": 3315, "rightX": 3640 }] },
+          { "id": "A", "sourceId": "a-d", "centralLongitudeDeg": -90, "offsetRangeDeg": [0, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 60, "centerX": 385, "rightX": 710 }, { "latitudeDeg": 0, "y": 3417, "leftX": -265, "centerX": 385, "rightX": 1035 }, { "latitudeDeg": -60, "y": 6135, "leftX": 60, "centerX": 385, "rightX": 710 }] },
+          { "id": "B", "sourceId": "a-d", "centralLongitudeDeg": -60, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 1420, "centerX": 1745, "rightX": 2070 }, { "latitudeDeg": 0, "y": 3417, "leftX": 1095, "centerX": 1745, "rightX": 2395 }, { "latitudeDeg": -60, "y": 6135, "leftX": 1420, "centerX": 1745, "rightX": 2070 }] },
+          { "id": "C", "sourceId": "a-d", "centralLongitudeDeg": -30, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 2739, "centerX": 3064, "rightX": 3389 }, { "latitudeDeg": 0, "y": 3417, "leftX": 2414, "centerX": 3064, "rightX": 3714 }, { "latitudeDeg": -60, "y": 6135, "leftX": 2739, "centerX": 3064, "rightX": 3389 }] },
+          { "id": "D", "sourceId": "a-d", "centralLongitudeDeg": 0, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 4057, "centerX": 4382, "rightX": 4707 }, { "latitudeDeg": 0, "y": 3417, "leftX": 3732, "centerX": 4382, "rightX": 5032 }, { "latitudeDeg": -60, "y": 6135, "leftX": 4057, "centerX": 4382, "rightX": 4707 }] },
+          { "id": "E", "sourceId": "e-g", "centralLongitudeDeg": 30, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 963, "centerX": 1288, "rightX": 1613 }, { "latitudeDeg": 0, "y": 3417, "leftX": 638, "centerX": 1288, "rightX": 1938 }, { "latitudeDeg": -60, "y": 6135, "leftX": 963, "centerX": 1288, "rightX": 1613 }] },
+          { "id": "F", "sourceId": "e-g", "centralLongitudeDeg": 60, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 2312, "centerX": 2637, "rightX": 2962 }, { "latitudeDeg": 0, "y": 3417, "leftX": 1987, "centerX": 2637, "rightX": 3287 }, { "latitudeDeg": -60, "y": 6135, "leftX": 2312, "centerX": 2637, "rightX": 2962 }] },
+          { "id": "G", "sourceId": "e-g", "centralLongitudeDeg": 90, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 3659, "centerX": 3984, "rightX": 4309 }, { "latitudeDeg": 0, "y": 3417, "leftX": 3334, "centerX": 3984, "rightX": 4634 }, { "latitudeDeg": -60, "y": 6135, "leftX": 3659, "centerX": 3984, "rightX": 4309 }] },
+          { "id": "H", "sourceId": "h-j", "centralLongitudeDeg": 120, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 963, "centerX": 1288, "rightX": 1613 }, { "latitudeDeg": 0, "y": 3417, "leftX": 638, "centerX": 1288, "rightX": 1938 }, { "latitudeDeg": -60, "y": 6135, "leftX": 963, "centerX": 1288, "rightX": 1613 }] },
+          { "id": "I", "sourceId": "h-j", "centralLongitudeDeg": 150, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 2312, "centerX": 2637, "rightX": 2962 }, { "latitudeDeg": 0, "y": 3417, "leftX": 1987, "centerX": 2637, "rightX": 3287 }, { "latitudeDeg": -60, "y": 6135, "leftX": 2312, "centerX": 2637, "rightX": 2962 }] },
+          { "id": "J", "sourceId": "h-j", "centralLongitudeDeg": 180, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 3659, "centerX": 3984, "rightX": 4309 }, { "latitudeDeg": 0, "y": 3417, "leftX": 3334, "centerX": 3984, "rightX": 4634 }, { "latitudeDeg": -60, "y": 6135, "leftX": 3659, "centerX": 3984, "rightX": 4309 }] },
+          { "id": "K", "sourceId": "k-m-caps", "centralLongitudeDeg": -150, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 425, "centerX": 750, "rightX": 1075 }, { "latitudeDeg": 0, "y": 3212, "leftX": 100, "centerX": 750, "rightX": 1400 }, { "latitudeDeg": -60, "y": 6135, "leftX": 425, "centerX": 750, "rightX": 1075 }] },
+          { "id": "L", "sourceId": "k-m-caps", "centralLongitudeDeg": -120, "offsetRangeDeg": [-15, 15], "rows": [{ "latitudeDeg": 60, "y": 395, "leftX": 1770, "centerX": 2095, "rightX": 2420 }, { "latitudeDeg": 0, "y": 3212, "leftX": 1445, "centerX": 2095, "rightX": 2745 }, { "latitudeDeg": -60, "y": 6135, "leftX": 1770, "centerX": 2095, "rightX": 2420 }] }
+        ],
+        "caps": [
+          { "hemisphere": "north", "sourceId": "k-m-caps", "centerX": 4770, "centerY": 4560, "radiusPx": 1110, "zeroLongitudeAngleDeg": 0, "longitudeDirection": -1 },
+          { "hemisphere": "south", "sourceId": "k-m-caps", "centerX": 4770, "centerY": 1970, "radiusPx": 1110, "zeroLongitudeAngleDeg": 0, "longitudeDirection": 1 }
+        ]
+      }
+    },
+    {
+      "id": "hondius-1615",
+      "displayTitle": "Jodocus Hondius / Giuseppe di Rossi - Terrestrial Globe Gores, 1615",
+      "outputBasename": "hondius-rossi-1615",
+      "encoding": { "desktopQuality": 84, "mobileQuality": 76 },
+      "institution": "Library of Congress Geography and Map Division",
+      "catalogUrl": "https://www.loc.gov/item/2008627640/",
+      "rights": { "status": "accepted-loc-free-use-reuse", "credit": "Library of Congress Geography and Map Division", "note": "LOC states that Geography and Map Division digitized content is free to use and reuse unless an item-specific Rights Advisory says otherwise; none is present for this item." },
+      "sources": [
+        { "id": "gores", "role": "complete-twelve-gore-set-on-two-sheets", "filename": "hondius-1615.jpg", "url": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct000726/full/full/0/default.jpg", "catalogUrl": "https://www.loc.gov/resource/g3201b.ct000726/", "width": 9318, "height": 4384, "bytes": 5344246, "sha256": "DEA176294A641A601A045244102D763E47ECA5269E72D5F83A599077FB1900C4" }
+      ],
+      "surface": {
+        "projection": "twelve 30-degree pole-to-pole globe gores",
+        "joinLatitudeDeg": 90,
+        "edgeInsetPx": 6,
+        "edgeInsetRows": [{ "latitudeDeg": 90, "insetPx": 0 }, { "latitudeDeg": 80, "insetPx": 6 }, { "latitudeDeg": 0, "insetPx": 6 }, { "latitudeDeg": -80, "insetPx": 6 }, { "latitudeDeg": -90, "insetPx": 0 }],
+        "goreOverlapDeg": 1.0,
+        "paletteNormalizationStrength": 0.85,
+        "seamFeatherOutputPx": 0,
+        "geographicAnchor": "Named geography fixes the second gore on the right sheet on Greenwich; source order then runs eastward in 30-degree steps.",
+        "uniformGores": { "sourceId": "gores", "tips": { "northY": [272, 279, 275, 247, 261, 271, 188, 194, 199, 209, 209, 226], "southY": [4064, 4067, 4056, 4060, 4048, 4048, 3972, 3996, 3994, 4015, 4020, 4022] }, "centralLongitudeDeg": [150, 180, -150, -120, -90, -60, -30, 0, 30, 60, 90, 120], "centerX": [812, 1432, 2052, 2672, 3292, 3912, 5417, 6037, 6657, 7277, 7897, 8517], "north": { "latitudeDeg": 80, "y": [485, 490, 486, 461, 473, 481, 400, 406, 411, 420, 421, 437], "halfWidthPx": 52 }, "equator": { "latitudeDeg": 0, "y": [2186, 2179, 2175, 2170, 2169, 2161, 2100, 2104, 2108, 2112, 2116, 2122], "halfWidthPx": 302 }, "south": { "latitudeDeg": -80, "y": [3855, 3857, 3847, 3850, 3839, 3838, 3764, 3786, 3784, 3804, 3808, 3811], "halfWidthPx": 52 } }
+      }
+    },
+    {
+      "id": "coronelli-1697",
+      "displayTitle": "Vincenzo Coronelli - Globe Gores, 1697",
+      "outputBasename": "coronelli-1697",
+      "encoding": { "desktopQuality": 84, "mobileQuality": 80 },
+      "institution": "Stanford University Libraries, David Rumsey Map Center",
+      "catalogUrl": "https://purl.stanford.edu/fw438kx8748",
+      "rights": { "status": "accepted-public-domain-mark-1.0", "url": "https://creativecommons.org/publicdomain/mark/1.0/", "credit": "Image from the Glen McLaughlin Map Collection of California as an Island courtesy Stanford University Libraries", "note": "Stanford states that the item may be copied, modified, distributed, and used commercially without permission." },
+      "sources": [
+        { "id": "sheet", "role": "terrestrial-and-celestial-gore-sheet; terrestrial lower panel only", "filename": "coronelli-1697.jp2", "url": "https://stacks.stanford.edu/file/druid:fw438kx8748/fw438kx8748_05_0001.jp2", "catalogUrl": "https://purl.stanford.edu/fw438kx8748", "width": 7766, "height": 8101, "bytes": 11818985, "sha256": "9062923B37840A927CF2399AB5B9F18EF85C015DB2BBDE20250E45083BFC88AF" }
+      ],
+      "surface": {
+        "projection": "twelve 30-degree pole-to-pole terrestrial gores; celestial upper panel excluded",
+        "joinLatitudeDeg": 90,
+        "edgeInsetPx": 5,
+        "edgeInsetRows": [{ "latitudeDeg": 90, "insetPx": 0 }, { "latitudeDeg": 80, "insetPx": 5 }, { "latitudeDeg": 0, "insetPx": 5 }, { "latitudeDeg": -80, "insetPx": 5 }, { "latitudeDeg": -90, "insetPx": 0 }],
+        "goreOverlapDeg": 1.0,
+        "paletteNormalizationStrength": 0.85,
+        "seamFeatherOutputPx": 0,
+        "geographicAnchor": "Europe/Africa on gore 11 fixes Greenwich; the sequence runs eastward from the first gore centered at 60°E.",
+        "uniformGores": { "sourceId": "sheet", "tips": { "northX": [995, 1522, 2039, 2555, 3086, 3607, 4114, 4643, 5160, 5688, 6205, 6739], "southX": [998, 1529, 2045, 2572, 3092, 3619, 4128, 4656, 5175, 5691, 6223, 6741], "northY": [4234, 4234, 4244, 4250, 4254, 4249, 4242, 4242, 4239, 4243, 4250, 4243], "southY": [7325, 7337, 7334, 7334, 7342, 7332, 7338, 7339, 7333, 7330, 7335, 7326] }, "centralLongitudeDeg": [60, 90, 120, 150, 180, -150, -120, -90, -60, -30, 0, 30], "centerX": [996, 1519, 2039, 2567, 3088, 3610, 4130, 4646, 5165, 5689, 6209, 6736], "north": { "latitudeDeg": 80, "y": 4400, "centerX": [995, 1522, 2039, 2556, 3086, 3607, 4116, 4643, 5161, 5688, 6205, 6739], "halfWidthPx": 43 }, "equator": { "latitudeDeg": 0, "y": 5610, "centerX": [996, 1519, 2039, 2567, 3088, 3610, 4130, 4646, 5165, 5689, 6209, 6736], "leftX": [732, 1252, 1773, 2298, 2823, 3344, 3867, 4384, 4905, 5424, 5949, 6469], "rightX": [1252, 1773, 2298, 2823, 3344, 3867, 4384, 4905, 5424, 5949, 6469, 6997] }, "south": { "latitudeDeg": -80, "y": 7165, "centerX": [998, 1528, 2044, 2571, 3092, 3618, 4128, 4655, 5174, 5691, 6222, 6741], "halfWidthPx": 43 } }
+      }
+    },
+    {
+      "id": "scherer-1700",
+      "displayTitle": "Heinrich Scherer - Typus Totius Orbis Terraquei, 1700",
+      "outputBasename": "scherer-1700",
+      "encoding": { "desktopQuality": 84, "mobileQuality": 80 },
+      "institution": "University of Illinois Urbana-Champaign Library",
+      "catalogUrl": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
+      "rights": { "status": "accepted-no-copyright-united-states", "url": "https://rightsstatements.org/page/NoC-US/1.0/", "credit": "University of Illinois Urbana-Champaign Library, Rare Book & Manuscript Library", "note": "The item page labels the scan No Copyright - United States and describes it as public domain." },
+      "sources": [
+        { "id": "gores", "role": "complete-twelve-gore-set", "filename": "scherer-1700.jpg", "url": "https://images.digital.library.illinois.edu/iiif/2/e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0/full/full/0/default.jpg", "referer": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9", "catalogUrl": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9", "width": 3000, "height": 2000, "bytes": 1304625, "sha256": "7F462DCE31DE5ED1B78AAFE3ECC7BEBF34152B520696E68D7B9881F57417BA64" }
+      ],
+      "surface": {
+        "projection": "twelve 30-degree pole-to-pole globe gores",
+        "joinLatitudeDeg": 90,
+        "edgeInsetPx": 5,
+        "edgeInsetRows": [{ "latitudeDeg": 90, "insetPx": 0 }, { "latitudeDeg": 80, "insetPx": 5 }, { "latitudeDeg": 0, "insetPx": 5 }, { "latitudeDeg": -80, "insetPx": 5 }, { "latitudeDeg": -90, "insetPx": 0 }],
+        "goreOverlapDeg": 1.0,
+        "paletteNormalizationStrength": 0.9,
+        "seamFeatherOutputPx": 0,
+        "geographicAnchor": "Printed equatorial meridians place the twelve gore centers at 225°, 255° … 195° east; normalized here to -135° … -165° and checked against the Europe/Africa and Atlantic sequence.",
+        "uniformGores": { "sourceId": "gores", "tips": { "northX": [289.5, 491.5, 694.5, 897, 1099, 1300, 1503, 1704.5, 1907, 2110, 2310.5, 2513.5], "southX": [288.5, 490, 696, 901.5, 1104.5, 1307, 1509, 1711.5, 1911.5, 2113, 2314.5, 2515.5], "northY": 312, "southY": 1517 }, "centralLongitudeDeg": [-135, -105, -75, -45, -15, 15, 45, 75, 105, 135, 165, -165], "centerX": [289, 491, 695, 899, 1102, 1304, 1506, 1708, 1909, 2112, 2313, 2515], "north": { "latitudeDeg": 80, "y": 379, "centerX": [289.5, 491.5, 694.5, 897, 1099, 1300, 1503, 1704.5, 1907, 2110, 2310.5, 2513.5], "halfWidthPx": 17 }, "equator": { "latitudeDeg": 0, "y": 911, "centerX": [289, 491, 695, 899, 1102, 1304, 1506, 1708, 1909, 2112, 2313, 2515], "halfWidthPx": 98 }, "south": { "latitudeDeg": -80, "y": 1450, "centerX": [288.5, 490, 696, 901.5, 1104.5, 1307, 1509, 1711.5, 1911.5, 2113, 2314.5, 2515.5], "halfWidthPx": 17 } }
+      }
+    }
+  ]
+}

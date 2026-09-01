@@ -136,5 +136,5 @@ export function globeKeyboardCandidateAriaCopy({
       : ` ${normalizedWriterCount.toLocaleString("ru-RU")} ${writerWord} в архиве.`;
   return selected
     ? `В центре глобуса: ${name}.${count} Страна выбрана.`
-    : `В центре глобуса: ${name}.${count} Нажмите Enter, чтобы открыть страну.`;
+    : `В центре глобуса: ${name}.${count} Нажмите Enter, чтобы открыть архив страны.`;
 }

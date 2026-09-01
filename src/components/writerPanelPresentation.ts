@@ -341,7 +341,7 @@ export function writerBiographyPublicStatus(
     return {
       code: "pending",
       label: "В редакционной очереди",
-      detail: "Проверенная биография готовится",
+      detail: "Биография готовится к редакционной проверке",
       sourceCount: 0,
     };
   }

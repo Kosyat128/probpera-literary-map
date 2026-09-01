@@ -73,7 +73,10 @@ export function namesCompatible(writerNames, labels) {
 }
 
 export function yearFromValue(value) {
-  return String(value || "").match(/[+-]?(\d{3,4})/u)?.[1] || "";
+  const digits = String(value || "").match(/[+-]?(\d{3,})/u)?.[1];
+  if (!digits) return "";
+  const numericYear = Number.parseInt(digits, 10);
+  return Number.isSafeInteger(numericYear) ? String(numericYear) : "";
 }
 
 function claimYears(entity, property) {
@@ -93,13 +96,23 @@ function compareYear(localValue, externalYears) {
     return { status: "no-wikidata-value", localYear, externalYears };
   }
   return {
-    status: externalYears.includes(localYear) ? "match" : "conflict",
+    status: externalYears.some(
+      (externalYear) => Number(externalYear) === Number(localYear)
+    )
+      ? "match"
+      : "conflict",
     localYear,
     externalYears,
   };
 }
 
-export function auditWriterIdentityRecord({ key, mapping, writer, entity }) {
+export function auditWriterIdentityRecord({
+  key,
+  mapping,
+  writer,
+  entity,
+  manualConfirmation = null,
+}) {
   if (!writer) {
     return {
       key,
@@ -152,10 +165,19 @@ export function auditWriterIdentityRecord({ key, mapping, writer, entity }) {
     claimYears(entity, "P569")
   );
   const death = compareYear(writer.deathDate, claimYears(entity, "P570"));
+  const manuallyCorroborated = Boolean(
+    manualConfirmation?.qid === mapping?.wikidataId &&
+      Array.isArray(manualConfirmation.sources) &&
+      manualConfirmation.sources.length >= 2
+  );
   const issues = [];
   if (!human) issues.push("not-confirmed-human");
-  if (nameStatus === "conflict") issues.push("label-name-conflict");
-  if (birth.status === "conflict") issues.push("birth-year-conflict");
+  if (nameStatus === "conflict" && !manuallyCorroborated) {
+    issues.push("label-name-conflict");
+  }
+  if (birth.status === "conflict" && !manuallyCorroborated) {
+    issues.push("birth-year-conflict");
+  }
   if (birth.status === "no-local-value") issues.push("local-birth-year-missing");
   if (birth.status === "no-wikidata-value") issues.push("wikidata-birth-year-missing");
   if (death.status === "conflict") issues.push("death-year-conflict");
@@ -163,10 +185,10 @@ export function auditWriterIdentityRecord({ key, mapping, writer, entity }) {
 
   const identityCorroborated =
     human &&
-    nameStatus !== "conflict" &&
-    birth.status === "match" &&
-    literaryEvidence;
-  const blocked = !human || nameStatus === "conflict";
+    literaryEvidence &&
+    (manuallyCorroborated ||
+      (nameStatus !== "conflict" && birth.status === "match"));
+  const blocked = !human || (nameStatus === "conflict" && !manuallyCorroborated);
 
   return {
     key,
@@ -187,6 +209,8 @@ export function auditWriterIdentityRecord({ key, mapping, writer, entity }) {
     occupationIds,
     literaryOccupationIds,
     literaryEvidence,
+    manuallyCorroborated,
+    manualConfirmation: manuallyCorroborated ? manualConfirmation : null,
     issues,
     sourceUrl: `https://www.wikidata.org/wiki/${mapping.wikidataId}`,
   };
@@ -221,6 +245,8 @@ export function summarizeWriterIdentityAudit(records) {
       (record) =>
         record.literaryEvidence && !record.literaryOccupationIds?.length
     ).length,
+    manuallyCorroborated: records.filter((record) => record.manuallyCorroborated)
+      .length,
     reviewQueue: records.filter(
       (record) => record.classification === "review-required"
     ).length,

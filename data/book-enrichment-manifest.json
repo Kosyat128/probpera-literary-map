@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "generatedAt": "2026-08-31T00:00:00.000Z",
-  "datasetFingerprint": "d5f48b1599ba21d966d76de9a08963523116ae6b08f4f7f620ff029f7bde46e0",
+  "datasetFingerprint": "7c576ffbd0ea1e07909404a5071a27fd1e7f4eca1ab7ccff9de463458068a38c",
   "target": {
-    "archiveDraftCards": 9777,
+    "archiveDraftCards": 9778,
     "archiveNonPublicEditorialCards": 248,
-    "archiveNonPublicCards": 10025,
-    "rawDraftIds": 9780,
-    "rawTargetIds": 10028,
+    "archiveNonPublicCards": 10026,
+    "rawDraftIds": 9781,
+    "rawTargetIds": 10029,
     "goal": "Every canonical work has editor-original, reviewed RU and EN annotations with verified facts, provenance and text-rights metadata."
   },
   "policy": {
@@ -72,46 +72,46 @@
     "reject": "exclude-safe"
   },
   "summary": {
-    "archiveRecords": 10053,
-    "archiveDraftCards": 9777,
+    "archiveRecords": 10054,
+    "archiveDraftCards": 9778,
     "archiveNonPublicEditorialCards": 248,
-    "archiveNonPublicCards": 10025,
-    "rawDraftIds": 9780,
+    "archiveNonPublicCards": 10026,
+    "rawDraftIds": 9781,
     "rawNonPublicEditorialIds": 248,
-    "rawTargetIds": 10028,
+    "rawTargetIds": 10029,
     "shadowRawIds": 3,
     "statuses": {
       "merge": 47,
       "ready": 20,
       "reject": 242,
-      "research": 9719
+      "research": 9720
     },
     "archiveStatuses": {
       "merge": 44,
       "ready": 20,
       "reject": 242,
-      "research": 9719
+      "research": 9720
     },
-    "remainingCanonicalResearch": 9719,
-    "remainingArchiveResearch": 9719,
+    "remainingCanonicalResearch": 9720,
+    "remainingArchiveResearch": 9720,
     "safeProcessedTargetIds": 309,
     "sourceKinds": {
       "curated-draft": 45,
       "editorial-nonpublic": 248,
       "generated-openlibrary": 6567,
       "generated-shadow": 3,
-      "legacy-title-only": 3165
+      "legacy-title-only": 3166
     },
     "archiveTargetSourceKinds": {
       "curated-draft": 45,
       "editorial-nonpublic": 248,
       "generated-openlibrary": 6567,
-      "legacy-title-only": 3165
+      "legacy-title-only": 3166
     },
     "archiveDraftSourceKinds": {
       "curated-draft": 45,
       "generated-openlibrary": 6567,
-      "legacy-title-only": 3165
+      "legacy-title-only": 3166
     },
     "fields": {
       "firstPublished": 6550,
@@ -1955,7 +1955,7 @@
     {"recordKey":"angola:jose_luandino_vieira:openlibrary-works-ol3737119w","source":{"kind":"generated-openlibrary","title":"No antigamente, na vida","externalIdentity":"openlibrary:OL3737119W","fingerprint":"401a938e3f4fa8748cf380fabbbd3f2fe1f044fb116f8e2032dff4f6c9fd68a1"},"status":"research","reasons":["original-language-unverified","curation-required"]},
     {"recordKey":"angola:jose_luandino_vieira:openlibrary-works-ol3737122w","source":{"kind":"generated-openlibrary","title":"A vida verdadeira de Domingos Xavier","externalIdentity":"openlibrary:OL3737122W","fingerprint":"c65d6413a05b45556cf2d9cebcff1eeae0be121c6f9cd992d40ae25a32c0d9f4"},"status":"research","reasons":["original-language-unverified","curation-required"]},
     {"recordKey":"angola:manuel_rui:legacy-manuel_rui-кто-такой-дурил","source":{"kind":"legacy-title-only","title":"Кто такой Дурил?","fingerprint":"c39f6d521e7c6b66fedc157005645587373267ba55a2986ea3ceb8d928d176e3"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
-    {"recordKey":"angola:ondjaki:legacy-ondjaki-прозрачный-дождь","source":{"kind":"legacy-title-only","title":"Прозрачный дождь","fingerprint":"88d0119ae72eab1cf10e5f6313b34a8a75bce1cb4adbac28c8db1df0b7d383aa"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
+    {"recordKey":"angola:ondjaki:legacy-ondjaki-прозрачные","source":{"kind":"legacy-title-only","title":"Прозрачные","fingerprint":"8916dfefe86a77dc824326558ab9500d34b23b9102af7c9e490e0b568e69245e"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
     {"recordKey":"angola:pepetela:legacy-pepetela-майомбе","source":{"kind":"legacy-title-only","title":"Майомбе","fingerprint":"68f2b594d35f5ea5a124989859b424fd1edf628d8b5b7e369cd159fc53e69054"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
     {"recordKey":"angola:pepetela:legacy-pepetela-поколение-утопии","source":{"kind":"legacy-title-only","title":"Поколение утопии","fingerprint":"9d184e3946d3a178ed999cd3aea7c6c664a1e9f27e6b8680aab321cef69833e7"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
     {"recordKey":"angola:pepetela:openlibrary-works-ol2161301w","source":{"kind":"generated-openlibrary","title":"Jaime Bunda, agente secreto","externalIdentity":"openlibrary:OL2161301W","fingerprint":"8779e854d4d0b9e6a1d241873acb2f6efcbb32f164d4654a87f0a43129dc83c9"},"status":"research","reasons":["original-language-unverified","curation-required"]},
@@ -5164,7 +5164,8 @@
     {"recordKey":"finland:aleksis_kivi:legacy-aleksis_kivi-семеро-братьев","source":{"kind":"legacy-title-only","title":"Семеро братьев","fingerprint":"61abbbec1d0a9ac67b16ad97a0dda746ca66558fc359285141d7914bd615bfe7"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
     {"recordKey":"finland:eino_leino:legacy-eino_leino-хелка-вирсия","source":{"kind":"legacy-title-only","title":"Хелка-вирсия","fingerprint":"59be38be750f1135bc4b68497d3ef9dbee2c39d00272f3cfddbb50caebe05bfc"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
     {"recordKey":"finland:frans_sillanpaa:legacy-frans_sillanpaa-праведная-бедность","source":{"kind":"legacy-title-only","title":"Праведная бедность","fingerprint":"4e7112ee50c7e2d0fa40002d7e4a8f971a3c25c1ea0a5f9acbfa4a2900f47311"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
-    {"recordKey":"finland:fredrika_bremer:legacy-fredrika_bremer-герцогиня-финляндская","source":{"kind":"legacy-title-only","title":"Герцогиня Финляндская","fingerprint":"43db0efb78b3e52045e9c40bc2958cce659b13657ec3daaf0d4ca5ee2266d8d6"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
+    {"recordKey":"finland:fredrika_bremer:legacy-fredrika_bremer-герта","source":{"kind":"legacy-title-only","title":"Герта","fingerprint":"22d1d48aaadbcb5f58acdd2fc69d8d49c96ec7ca3abbd21625a8db29b9fec893"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
+    {"recordKey":"finland:fredrika_bremer:legacy-fredrika_bremer-соседи","source":{"kind":"legacy-title-only","title":"Соседи","fingerprint":"bdb5593baf6804a304df1b26fff793d10b94530b87f11b49df095220fd6eeadd"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
     {"recordKey":"finland:johan_ludvig_runeberg:legacy-johan_ludvig_runeberg-рассказы-прапорщика-столя","source":{"kind":"legacy-title-only","title":"Рассказы прапорщика Столя","fingerprint":"7ed29e7c532595fb4e51f919cb4bb7c5f8f17e5cc1b437fff5a16d89addcf9be"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},
     {"recordKey":"finland:johan_ludvig_runeberg:openlibrary-works-ol91773w","source":{"kind":"generated-openlibrary","title":"Johan Ludvig Runebergs samlade skrifter","externalIdentity":"openlibrary:OL91773W","fingerprint":"05f456ccaaed624464c56ab2b040528023fa0f20ddb95c89e0cb9f559cf20ce7"},"status":"research","reasons":["original-language-unverified","curation-required"]},
     {"recordKey":"finland:mikael_agricola:legacy-mikael_agricola-первый-финский-перевод-нового-завета","source":{"kind":"legacy-title-only","title":"Первый финский перевод Нового Завета","fingerprint":"36c964a124bfce97aa20a3a1eea7b5f3c4dc4efcb0e9bc801d483df7cc8b4818"},"status":"research","reasons":["publication-year-unverified","original-language-unverified","genre-unverified","curation-required"]},

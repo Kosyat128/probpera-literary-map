@@ -6,6 +6,18 @@ import { premiumTranslateToEnglish } from "./premium-english-translation";
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
 import { translationErrorCode } from "./translation-errors";
 import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
+import {
+  assertWriterBiographyEnglishFidelity,
+  isCurrentMachineWriterBiography,
+  writerBiographyEnglishAutomationOwnership,
+  writerBiographySourceFields,
+  writerBiographySourceIdentity,
+  writerBiographySourceUsages,
+  type WriterBiographyProfile,
+  type WriterBiographySource,
+  type WriterBiographySourceField,
+  type WriterBiographySourceUsage,
+} from "./writer-biography-edit";
 
 const biographyOutputSchema = z.object({
   text: z.string().trim().min(120).max(1_600),
@@ -18,47 +30,8 @@ const biographyJsonSchema = {
   properties: { text: { type: "string", minLength: 120, maxLength: 1_600 } },
 } as const;
 
-type BiographySource = {
-  provider: string;
-  url: string;
-  fields: string[];
-  usage: string;
-  retrievedAt: string;
-  author?: string;
-  title?: string;
-  licenseName?: string;
-  licenseUrl?: string;
-};
-
-type BiographyProfile = {
-  locale: "ru" | "en";
-  text: string;
-  sourceLanguage: string;
-  status: "draft" | "reviewed" | "verified";
-  method:
-    | "editorial-original"
-    | "human-translation"
-    | "machine-translation"
-    | "licensed-source";
-  reviewedAt?: string;
-  reviewer?: string;
-  translatedFromLocale?: "ru" | "en";
-  sourceTextRights?:
-    | "project-original"
-    | "public-domain"
-    | "licensed"
-    | "permission";
-  sources: BiographySource[];
-  translationMeta?: {
-    provider?: "cloudflare" | "openai";
-    model?: string;
-    reviewerModel?: string | null;
-    sourceHash?: string;
-    generatedAt?: string;
-    translatorRequestId?: string | null;
-    reviewerRequestId?: string | null;
-  };
-};
+type BiographySource = WriterBiographySource;
+type BiographyProfile = WriterBiographyProfile;
 
 type BiographyMap = Partial<Record<"ru" | "en", BiographyProfile>>;
 
@@ -74,20 +47,36 @@ function validSources(value: unknown): BiographySource[] {
     const source = objectValue(candidate);
     const provider = typeof source.provider === "string" ? source.provider.trim() : "";
     const url = typeof source.url === "string" ? source.url.trim() : "";
-    const fields = Array.isArray(source.fields)
-      ? source.fields.filter((item): item is string => typeof item === "string" && item.trim().length > 0)
+    const fields: WriterBiographySourceField[] = Array.isArray(source.fields)
+      ? source.fields.flatMap((item) => {
+          const field = typeof item === "string" ? item.trim() : "";
+          return writerBiographySourceFields.includes(
+            field as WriterBiographySourceField
+          )
+            ? [field as WriterBiographySourceField]
+            : [];
+        })
       : [];
-    const usage = typeof source.usage === "string" ? source.usage.trim() : "";
+    const usage =
+      typeof source.usage === "string" ? source.usage.trim() : "";
     const retrievedAt =
       typeof source.retrievedAt === "string" ? source.retrievedAt.trim() : "";
-    if (!provider || !/^https:\/\//iu.test(url) || !fields.length || !retrievedAt) {
+    if (
+      !provider ||
+      !/^https:\/\//iu.test(url) ||
+      !fields.length ||
+      !writerBiographySourceUsages.includes(
+        usage as WriterBiographySourceUsage
+      ) ||
+      !retrievedAt
+    ) {
       return [];
     }
     return [{
       provider,
       url,
       fields,
-      usage,
+      usage: usage as WriterBiographySourceUsage,
       retrievedAt,
       author: typeof source.author === "string" ? source.author : undefined,
       title: typeof source.title === "string" ? source.title : undefined,
@@ -140,19 +129,16 @@ function biographyMap(value: unknown): BiographyMap {
   };
 }
 
-function sentenceCount(value: string) {
-  return value.match(/[.!?…]+(?=\s|$)/gu)?.length || 0;
-}
-
-function validateEnglishBiography(value: unknown) {
+function validateEnglishBiography(
+  value: unknown,
+  source: { writerName: string; text: string }
+) {
   const parsed = biographyOutputSchema.parse(value);
-  const count = sentenceCount(parsed.text);
-  if (count < 2 || count > 4) {
-    throw new Error("Premium English biography must contain 2-4 sentences");
-  }
-  if (/\p{Script=Cyrillic}/u.test(parsed.text)) {
-    throw new Error("Premium English biography still contains Cyrillic");
-  }
+  assertWriterBiographyEnglishFidelity({
+    sourceText: source.text,
+    englishText: parsed.text,
+    writerName: source.writerName,
+  });
   return parsed;
 }
 
@@ -180,6 +166,7 @@ export async function ensureWriterEnglishBiography(input: {
   writerId: string;
   sourceFields: Record<string, unknown>;
   runtimeApproved?: boolean;
+  replaceEnglishTombstone?: boolean;
 }): Promise<{
   state: WriterBiographyTranslationState;
   model?: string;
@@ -222,31 +209,37 @@ export async function ensureWriterEnglishBiography(input: {
     };
   }
 
+  const englishOwnership = writerBiographyEnglishAutomationOwnership({
+    overrideFields,
+    english,
+  });
   if (
-    english &&
-    english.method !== "machine-translation" &&
-    new Set(["reviewed", "verified"]).has(english.status)
+    englishOwnership === "tombstone" &&
+    !input.replaceEnglishTombstone
   ) {
+    return {
+      state: "skipped",
+      error: "an explicit English biography tombstone is present",
+      overrideId: existingOverride?.id,
+    };
+  }
+  if (englishOwnership === "human") {
     return { state: "manual", overrideId: existingOverride?.id };
   }
 
   const source = {
-    writerName:
-      typeof effectiveFields.name === "string"
-        ? effectiveFields.name
-        : typeof effectiveFields.fullName === "string"
-          ? effectiveFields.fullName
-          : input.writerId,
+    writerName: writerBiographySourceIdentity(effectiveFields, input.writerId),
     text: russian.text,
     sourceLanguage: russian.sourceLanguage,
     sources: russian.sources,
   };
   const sourceHash = await sha256(source);
-  if (
-    english?.method === "machine-translation" &&
-    english.translationMeta?.sourceHash === sourceHash &&
-    new Set(["reviewed", "verified"]).has(english.status)
-  ) {
+  if (isCurrentMachineWriterBiography({
+    russian,
+    english,
+    sourceHash,
+    writerName: source.writerName,
+  })) {
     return { state: "current", overrideId: existingOverride?.id };
   }
 
@@ -256,8 +249,10 @@ export async function ensureWriterEnglishBiography(input: {
       source,
       schema: biographyJsonSchema,
       schemaName: "probpera_writer_biography_translation",
-      validate: validateEnglishBiography,
-      review: runtime.twoPassReview,
+      validate: (value) => validateEnglishBiography(value, source),
+      // A checked biography may never be published from a single model pass,
+      // even when the generic premium-translation setting disables review.
+      review: true,
       maxOutputTokens: 4_000,
       domainInstructions: [
         "This is a concise factual literary biography for a world-literature encyclopedia.",
@@ -266,6 +261,11 @@ export async function ensureWriterEnglishBiography(input: {
         "Write 2-4 fluent sentences with an authoritative reference-work tone, not promotional copy.",
       ],
     });
+    if (!translated.reviewerModel) {
+      throw new Error(
+        "writer biography translation did not complete the required reviewer pass"
+      );
+    }
 
     const latestResponse = existingOverride
       ? await input.supabase

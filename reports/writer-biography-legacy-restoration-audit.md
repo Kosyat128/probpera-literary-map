@@ -1,30 +1,30 @@
 # Аудит возврата русских биографий писателей
 
-Сформирован: 2026-08-21T02:18:37.868Z
+Сформирован: 2026-09-01T13:44:15.015Z
 
-> Этот отчёт не утверждает, что 1678 публичные карточки фактологически проверены. Автоматический аудит классифицирует риски и provenance; истинность каждого утверждения проверяется только в редакционном workflow.
+> Этот отчёт не утверждает, что 1684 публичные карточки фактологически проверены. Автоматический аудит классифицирует риски и provenance; истинность каждого утверждения проверяется только в редакционном workflow.
 
 ## Точный остаток
 
-- Карточек: 1678; уникальных `countryId:writerId`: 1678; уникальных `writerId`: 1665.
-- Текущий строгий RU-gate проходит 45; скрыто 1633.
+- Карточек: 1684; уникальных `countryId:writerId`: 1684; уникальных `writerId`: 1671.
+- Текущий строгий RU-gate проходит 1684; скрыто 0.
 - EN-gate проходит 20. Русский legacy-текст не используется как английский fallback.
-- Legacy `bio` физически хранится у 1678 карточек.
-- Автоматический screen допускает к публичному отображению 1633 legacy-текстов, но сам по себе не проверяет их факты и происхождение; явных служебных/шаблонных текстов среди оставшихся публичных карточек: 0.
-- Всего RU-текст отображается у 1678 карточек: 45 gate-passing + 1633 legacy. Публичный интерфейс не показывает для legacy маркер статуса.
-- Исправлено 55 служебных биографий реальных авторов; 91 сомнительные/дублирующие карточки исключены из публичных массивов до подтверждения личности.
+- Legacy `bio` физически хранится у 1684 карточек.
+- Автоматический screen допускает к публичному отображению 0 legacy-текстов, но сам по себе не проверяет их факты и происхождение; явных служебных/шаблонных текстов среди оставшихся публичных карточек: 0.
+- Всего RU-текст отображается у 1684 карточек: 1684 gate-passing + 0 legacy. Публичный интерфейс не показывает для legacy маркер статуса.
+- Исправлено 55 служебных биографий реальных авторов; 97 сомнительные/дублирующие карточки исключены из публичных массивов до подтверждения личности.
 - Ещё 2 карточки с реальными авторами сохранены после исправления чужого ID, ложных дат и связанных полей по библиотечным/университетским источникам.
 - Новых статусов `reviewed`/`verified` этот аудит не выставляет: 0.
 
 ## Почему нельзя сказать «все проверены»
 
-- 1540 из 1633 legacy-текстов не имеют даже writer-level source candidate; у 93 такой кандидат есть, но он не является per-text provenance.
-- У всех 1633 legacy-текстов не записаны способ создания и правовое происхождение. Это отсутствие доказательства в репозитории, а не вывод о нарушении.
-- 627 текстов не достигают текущего норматива по длине или числу предложений.
+- 0 из 0 legacy-текстов не имеют даже writer-level source candidate; у 0 такой кандидат есть, но он не является per-text provenance.
+- У всех 0 legacy-текстов не записаны способ создания и правовое происхождение. Это отсутствие доказательства в репозитории, а не вывод о нарушении.
+- 0 текстов не достигают текущего норматива по длине или числу предложений.
 - 0 текст - служебный/шаблонный; 0 содержат редакционные фразы вместо биографии.
-- 144 содержат суперлативы вроде «крупнейший» или «один из ведущих», которые требуют отдельного источника или нейтральной переписи.
+- 0 содержат суперлативы вроде «крупнейший» или «один из ведущих», которые требуют отдельного источника или нейтральной переписи.
 - Дословные повторы: 0 карточек в 0 группах. Повторяющиеся ID: 26 карточки в 13 группах.
-- У 25 карточек есть внутренний общий статус reviewed/verified, хотя сама биография не проходит gate. Этот статус не переносится на legacy-текст и не показывается рядом с описанием.
+- У 0 карточек есть внутренний общий статус reviewed/verified, хотя сама биография не проходит gate. Этот статус не переносится на legacy-текст и не показывается рядом с описанием.
 - 0 legacy-текстов заявляют Нобелевскую премию без структурированного `nobelYear`; это очередь сверки metadata, а не доказанная фактическая ошибка.
 
 ## Что реализовано безопасно
@@ -36,7 +36,7 @@ Selector подключён к публичным `WriterPanel` и `WriterProfil
 - Gate-passing биография остаётся `published` со своими sources/status.
 - Русский legacy получает только внутреннюю QA-классификацию; публично выводится сам текст без маркера статуса.
 - В результате явно записано: fact check - `not-recorded`, provenance - `not-recorded`, rights - `not-recorded`.
-- После 55 точечных замен и карантина 91 identity-risk карточек публичных generic/service placeholder осталось 0.
+- После 55 точечных замен и карантина 97 identity-risk карточек публичных generic/service placeholder осталось 0.
 - Английского fallback нет.
 
 > Публичный интерфейс не сообщает статус legacy-текста. Это не делает текст проверенным: общий статус карточки автора не используется как доказательство статуса биографии, а строгий gate остаётся неизменным.
@@ -45,7 +45,7 @@ Selector подключён к публичным `WriterPanel` и `WriterProfil
 
 Проверены только отдельные поля двух записей, а не весь корпус: сведения о Редьярде Киплинге сопоставлены с [официальной страницей Nobel Prize Outreach](https://www.nobelprize.org/prizes/literature/1907/kipling/facts/), а сведения о театральной карьере Шекспира - со [страницей Folger Shakespeare Library](https://www.folger.edu/explore/shakespeares-life/). Для Киплинга выбранные поля согласуются с источником. Шекспировская legacy-биография автоматически не promoted: writer-level источник не заменяет per-text provenance и запись способа создания текста.
 
-> Эта выборка из двух записей подтверждает пригодность процесса, но не является проверкой остальных 1676 карточек и не доказывает каждое предложение в двух выбранных текстах.
+> Эта выборка из двух записей подтверждает пригодность процесса, но не является проверкой остальных 1682 карточек и не доказывает каждое предложение в двух выбранных текстах.
 
 ## Точечные исправления служебных биографий
 
@@ -114,7 +114,7 @@ Selector подключён к публичным `WriterPanel` и `WriterProfil
 
 ## Карантин сомнительных личностей
 
-Из публичной базы временно исключены 91 записи с неверным/дублирующим ID, явной межстрановой служебной связью или без подтверждённого соответствия личности и произведения. Исходные файлы стран не удалены: записи можно вернуть после документированной сверки.
+Из публичной базы временно исключены 97 записи с неверным/дублирующим ID, явной межстрановой служебной связью или без подтверждённого соответствия личности и произведения. Исходные файлы стран не удалены: записи можно вернуть после документированной сверки.
 
 - `portugal:augusto_abreu` - No authoritative catalog establishes the claimed Portuguese poet and essayist Augusto Abreu with the 1927-2011 dates or attributable bibliography.
 - `qatar:ahmad_al_mahmoud` - No authoritative source establishes the claimed male Qatari writer and poet born in 1957; the card risks conflating several different people with similar names.
@@ -207,10 +207,16 @@ Selector подключён к публичным `WriterPanel` и `WriterProfil
 - `oman:zahir_al_ghazali` - No authoritative identity record or attributable bibliography establishes the claimed Omani writer; the card must not be conflated with poet Zahir al-Ghafri.
 - `panama:demetrio_kalleyas` - No authoritative identity record or attributable bibliography establishes the claimed Panamanian writer; the card must not be conflated with poet Demetrio Korsi.
 - `papua_new_guinea:siri_gising` - No authoritative identity record or attributable bibliography establishes the claimed Papua New Guinean writer or the work attributed to the card.
+- `saint_vincent_and_the_grenadines:michael_anthony` - Authoritative national-library and university sources identify Michael Anthony as a Trinidad and Tobago writer born in Mayaro, Trinidad; the card must not remain published under Saint Vincent and the Grenadines.
+- `seychelles:gladyse_adele` - No authoritative library identity or attributable bibliography establishes the claimed Seychellois writer Gladyse Adele or the asserted 1951 birth year.
+- `sierra_leone:augustine_bangura` - No authoritative library identity or attributable bibliography establishes the claimed Sierra Leonean writer and researcher Augustine Bangura or the asserted 1965 birth year.
+- `south_korea:byun_hyung_jun` - No authoritative library identity or attributable bibliography establishes the claimed South Korean writer Byun Hyung-jun, the asserted 1962 birth year or the attributed Hwang Sun-won literary prize.
+- `south_sudan:atuok_mayen` - No authoritative library identity or attributable bibliography establishes the claimed South Sudanese writer Atuok Mayen, the asserted 1970 birth year or a documented literary work.
+- `spain:juan_ruiz` - Libro de buen amor is traditionally attributed to Juan Ruiz, Archpriest of Hita, but the checked institutional sources do not establish an independently documented identity or reliable life dates for the public profile.
 
 ## Реалистичный план
 
-Начальная очередь - 1620 уникальных legacy `writerId`, минимум 81 партий по 20. До подсчёта реальных людей нужно разрешить cross-country дубли и несовпадающие ID.
+Начальная очередь - 0 уникальных legacy `writerId`, минимум 0 партий по 20. До подсчёта реальных людей нужно разрешить cross-country дубли и несовпадающие ID.
 
 1. Разрешить каноническую личность, дубли и межстрановые связи.
 2. Проверить по полям даты жизни, языки, национальный контекст и главные произведения.
@@ -219,7 +225,7 @@ Selector подключён к публичным `WriterPanel` и `WriterProfil
 5. Провести независимую факт-проверку, русскую вычитку и проверку provenance.
 6. Продвинуть запись через неизменённый publication gate reviewed/verified.
 
-Оценка: 1450-2100 человеко-часов, или 242-350 редакционных дней по 6 продуктивных часов. Команда из четырёх редакторов - ориентировочно 13-18 рабочих недель.
+Оценка: 0-0 человеко-часов, или 0-0 редакционных дней по 6 продуктивных часов. Команда из четырёх редакторов - ориентировочно 0-0 рабочих недель.
 
 Авторитетные точки входа: [Library of Congress Name Authority](https://id.loc.gov/authorities/names.html), [VIAF/OCLC](https://viaf.org/), [BnF](https://catalogue.bnf.fr/), [Nobel Prize Outreach](https://www.nobelprize.org/prizes/literature/). Они используются по назначению: authority-запись подтверждает identity/имя/даты, но не заменяет источник литературной интерпретации.
 

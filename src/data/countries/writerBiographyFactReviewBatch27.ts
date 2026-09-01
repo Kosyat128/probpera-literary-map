@@ -31,7 +31,12 @@ export interface WriterBiographyFactReviewRecord {
 const reviewer = WRITER_BIOGRAPHY_FACT_REVIEW_BATCH27_REVIEWER;
 const checkedAt = "2026-08-09";
 
-type EvidenceSeed = readonly [provider: string, url: string, findingRu: string];
+type EvidenceSeed = readonly [
+  provider: string,
+  url: string,
+  findingRu: string,
+  checkedAt?: string,
+];
 
 interface ReviewSeed {
   readonly key: string;
@@ -90,7 +95,7 @@ const seeds = [
   {
     key: "england:william_shakespeare",
     originalSha256: "429cbc98608db12be2f300fe90fdb9f20fabead9624ebb980c9757de10d03c3d",
-    reviewedTextRu: "Уильям Шекспир (1564-1616) - английский драматург, поэт и актёр. Он был пайщиком труппы «Слуги лорда-камергера», позднее получившей название «Слуги короля».",
+    reviewedTextRu: "Уильям Шекспир (1564-1616) - английский драматург, поэт и актёр. Помимо литературной работы он был пайщиком театральной труппы «Слуги лорда-камергера», позднее получившей название «Слуги короля».",
     evidence: [
       ["Shakespeare Birthplace Trust", "https://www.shakespeare.org.uk/explore-shakespeare/shakespedia/william-shakespeare/william-shakespeare-biography/", "Музейно-архивная биография подтверждает годы жизни, профессии Шекспира и его участие в названной театральной труппе."],
       ["Folger Shakespeare Library", "https://www.folger.edu/explore/shakespeares-life/", "Фолджеровская библиотека независимо подтверждает деятельность Шекспира как драматурга, поэта, актёра и пайщика, а также переименование труппы."],
@@ -364,14 +369,15 @@ const seeds = [
   },
   {
     key: "finland:fredrika_bremer",
-    originalSha256: "ae3751ae456a5ef904588a3763c2d8f3b3fdf26105caac2a7487f6104acc1086",
-    reviewedTextRu: "Фредрика Бремер (1801-1865) - шведская писательница и общественная деятельница, родившаяся в Финляндии. Она написала романы «Соседи» и «Херта».",
+    originalSha256: "73cb3ca9e9b2c2173c23e5d35449835ba4dc9beb3f83110ab4cc2d9d6bee5d68",
+    reviewedTextRu: "Фредрика Бремер (1801-1865) - шведская писательница, основоположница феминистского движения в Швеции. В романах «Соседи» и «Герта» она обращалась к теме женского равноправия.",
     evidence: [
       ["Nationalmuseum Sweden", "https://collection.nationalmuseum.se/sv/artists/artist/8980/", "Национальный музей подтверждает годы жизни, рождение Бремер в Финляндии и её шведскую писательскую деятельность."],
-      ["Svenskt kvinnobiografiskt lexikon, University of Gothenburg", "https://skbl.se/en/article/FredrikaBremer", "Университетский биографический словарь независимо подтверждает даты, национальную принадлежность, общественную деятельность и романы «Соседи» и «Херта»."],
+      ["Svenskt kvinnobiografiskt lexikon, University of Gothenburg", "https://skbl.se/en/article/FredrikaBremer", "Университетский биографический словарь независимо подтверждает даты, шведскую писательскую и общественную деятельность, а также авторство романов Grannarne и Hertha."],
+      ["Большая российская энциклопедия", "https://old.bigenc.ru/world_history/text/1883169", "БРЭ подтверждает даты и место рождения, характеризует Бремер как шведскую писательницу и основоположницу феминистского движения в Швеции, а также фиксирует русские названия романов «Соседи» и «Герта».", "2026-08-31"],
     ],
     decision: "corrected",
-    notes: "Исправлены национальная характеристика и фактические годы жизни. Date recommendation: заменить карточечные 1807-09-02 / 1879-03-27 на 1801-08-17 / 1865-12-31. Shared country files не изменялись.",
+    notes: "Исправлены смешанные с Фредрикой Рунеберг поля карточки: полное имя, годы жизни 1801-1865, даты 1801-08-17 / 1865-12-31, место рождения, национальность и произведения. Русский текст и формы названий сверены по БРЭ.",
   },
   {
     key: "finland:johan_ludvig_runeberg",
@@ -501,10 +507,10 @@ function finalizeReviewRecord(seed: ReviewSeed): WriterBiographyFactReviewRecord
     claims: [{
       textRu: seed.reviewedTextRu,
       verdict,
-      evidence: seed.evidence.map(([provider, url, findingRu]) => ({
+      evidence: seed.evidence.map(([provider, url, findingRu, evidenceCheckedAt]) => ({
         provider,
         url,
-        checkedAt,
+        checkedAt: evidenceCheckedAt || checkedAt,
         findingRu,
       })),
     }],

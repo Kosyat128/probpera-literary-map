@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 3,
+  "artifactKind": "final-globe-edition-comparison",
+  "updatedAt": "2026-09-01",
+  "baselineCommit": "47771ea84d1bc0d38b5b60dcd218b3a3949c384e",
+  "releaseDefinitionComplete": false,
+  "inventory": {
+    "registeredEditionCount": 9,
+    "visitorVisibleEditionCount": 9,
+    "editionIds": [
+      "behaim-1492",
+      "hondius-1615",
+      "coronelli-1697",
+      "scherer-1700",
+      "cassini-1790",
+      "rand-mcnally-1887",
+      "us-army-general-reference-1943",
+      "nasa-blue-marble",
+      "natural-earth-2026"
+    ]
+  },
+  "gateDefinitions": {
+    "A": "authoritative source, compatible rights, pinned identity and no fabricated historical content",
+    "B": "reproducible reconstruction with correct projection, seams, poles and protected source content",
+    "C": "historical artwork itself meets the canonical coastline residual target; a canonical baked line does not count",
+    "D": "final integrated desktop/mobile product, localization, accessibility, caching, performance, build and test evidence"
+  },
+  "gateCThreshold": {
+    "measurementWidth": 2048,
+    "measurementHeight": 1024,
+    "medianMaximumPixels": 1,
+    "p95MaximumPixels": 2,
+    "maximumMaximumPixels": 6,
+    "requiresNoSystematicRegionalShift": true,
+    "canonicalVectorToBakedLineZeroResidualMayBeUsed": false
+  },
+  "currentValidation": {
+    "typeScript": "pass",
+    "targetedVitest": "71-tests-pass",
+    "pythonM101": "8-tests-pass",
+    "productionBuild": "pass",
+    "performanceBudget": "pass",
+    "targetedBrowserViewports": [
+      "1440px desktop",
+      "390px mobile",
+      "320px narrow mobile"
+    ],
+    "targetedBrowserResult": "all-nine-editions-load-no-console-errors-no-observed-overlap-or-text-overflow",
+    "fullEndToEndSuite": "not-run",
+    "deployment": "not-performed"
+  },
+  "editions": [
+    {
+      "id": "behaim-1492",
+      "visitorVisible": true,
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "gates": {
+        "A": "pass",
+        "B": "partial",
+        "C": "not-passed-global-match-would-invent-absent-geography",
+        "D": "partial-targeted-pass-full-e2e-not-run"
+      },
+      "artworkResidualPixels": {
+        "median": null,
+        "p95": null,
+        "maximum": null
+      },
+      "decision": "keep source artwork and centroid-only selection; do not claim exact modern coastline alignment"
+    },
+    {
+      "id": "hondius-1615",
+      "visitorVisible": true,
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "gates": {
+        "A": "pass",
+        "B": "partial",
+        "C": "not-passed-unmeasured",
+        "D": "partial-targeted-pass-full-e2e-not-run"
+      },
+      "artworkResidualPixels": {
+        "median": null,
+        "p95": null,
+        "maximum": null
+      },
+      "decision": "keep source artwork and centroid-only selection"
+    },
+    {
+      "id": "coronelli-1697",
+      "visitorVisible": true,
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "gates": {
+        "A": "pass",
+        "B": "partial",
+        "C": "not-passed-unmeasured",
+        "D": "partial-targeted-pass-full-e2e-not-run"
+      },
+      "artworkResidualPixels": {
+        "median": null,
+        "p95": null,
+        "maximum": null
+      },
+      "decision": "keep source artwork and centroid-only selection"
+    },
+    {
+      "id": "scherer-1700",
+      "visitorVisible": true,
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "gates": {
+        "A": "pass",
+        "B": "partial-preservation-master-not-promoted",
+        "C": "fail",
+        "D": "partial-targeted-pass-full-e2e-not-run"
+      },
+      "artworkResidualPixelsAt1024x512": {
+        "median": 5.9515,
+        "p95": 41.817404,
+        "maximum": 84.932597,
+        "coverageWithinTwoPixelsPercent": 20.794702,
+        "canonicalHitTargetToDisplayedVectorP95": 49.084804
+      },
+      "decision": "reject artwork warp and warped runtime outline; production pixels remain unchanged"
+    },
+    {
+      "id": "cassini-1790",
+      "visitorVisible": true,
+      "overlayProfile": "source-only-centroid-selection-v2",
+      "gates": {
+        "A": "pass",
+        "B": "pass",
+        "C": "not-passed-unmeasured",
+        "D": "partial-targeted-pass-full-e2e-not-run"
+      },
+      "artworkResidualPixels": {
+        "median": null,
+        "p95": null,
+        "maximum": null,
+        "canonicalBakedLineResidual": 0,
+        "canonicalBakedLineCountsAsArtworkEvidence": false
+      },
+      "decision": "retain source-derived polar treatment and centroid-only selection; no synthetic Antarctica"
+    },
+    {
+      "id": "rand-mcnally-1887",
+      "visitorVisible": true,
+      "overlayProfile": "standard-canonical-overlay-v1",
+      "gates": {
+        "A": "pass",
+        "B": "legacy-user-accepted-baseline",
+        "C": "legacy-user-accepted-baseline-not-independently-measured",
+        "D": "partial-targeted-pass-full-e2e-not-run"
+      },
+      "artworkResidualPixels": {
+        "median": null,
+        "p95": null,
+        "maximum": null
+      },
+      "decision": "keep unchanged as the visual baseline; provenance is now machine-readable"
+    },
+    {
+      "id": "us-army-general-reference-1943",
+      "visitorVisible": true,
+      "overlayProfile": "standard-canonical-overlay-v1",
+      "gates": {
+        "A": "pass-with-required-david-rumsey-credit",
+        "B": "pass-source-derived-reprojection-and-seam-pipeline",
+        "C": "fail-current-proxy-p95-4",
+        "D": "partial-targeted-pass-full-e2e-not-run"
+      },
+      "artworkResidualProxyPixelsAt2048x1024": {
+        "mean": 0.9568,
+        "rmse": 2.3654,
+        "p95": 4,
+        "maximumCapped": 13,
+        "withinThreePixelsPercent": 94.26
+      },
+      "decision": "accepted replacement edition and runtime-integrated, but exact artwork-alignment hard gate is not claimed"
+    },
+    {
+      "id": "nasa-blue-marble",
+      "visitorVisible": true,
+      "overlayProfile": "standard-canonical-overlay-v1",
+      "gates": {
+        "A": "pass-with-nasa-credit",
+        "B": "not-applicable-modern-photographic-edition",
+        "C": "not-applicable-historical-artwork-gate",
+        "D": "partial-targeted-pass-full-e2e-not-run"
+      },
+      "decision": "available"
+    },
+    {
+      "id": "natural-earth-2026",
+      "visitorVisible": true,
+      "overlayProfile": "standard-canonical-overlay-v1",
+      "gates": {
+        "A": "pass",
+        "B": "not-applicable-modern-canonical-edition",
+        "C": "not-applicable-canonical-source",
+        "D": "partial-targeted-pass-full-e2e-not-run"
+      },
+      "decision": "available in RU and EN desktop/mobile variants"
+    }
+  ],
+  "overallDecision": "Current runtime is usable and locally validated, but the strict all-edition definition of done is not met: five source-only historical editions do not pass Gate C, M-101 does not meet the hard p95 target, Rand is an accepted visual baseline without independent numeric Gate C evidence, and the full end-to-end suite was not rerun."
+}

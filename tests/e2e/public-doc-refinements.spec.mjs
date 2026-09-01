@@ -166,9 +166,20 @@ test("globe controls expose correctly ordered touch targets", async ({ page }) =
   const globe = page.locator(".literary-globe:not(.is-loading)");
   await expect(globe).toBeVisible({ timeout: 60_000 });
   const controls = globe.locator(".globe-controls > button");
-  await expect(controls).toHaveCount(4);
-  await expect(controls.nth(0)).toHaveAttribute("data-globe-control", "zoom-in");
-  await expect(controls.nth(1)).toHaveAttribute("data-globe-control", "zoom-out");
+  await expect(controls).toHaveCount(5);
+  await expect
+    .poll(() =>
+      controls.evaluateAll((buttons) =>
+        buttons.map((button) => button.dataset.globeControl)
+      )
+    )
+    .toEqual([
+      "zoom-in",
+      "zoom-out",
+      "auto-rotate",
+      "reset",
+      "edition-info",
+    ]);
 
   const geometry = await controls.evaluateAll((buttons) =>
     buttons.map((button) => {
@@ -188,5 +199,18 @@ test("globe controls expose correctly ordered touch targets", async ({ page }) =
   await expect(controls.nth(1)).toHaveAttribute(
     "aria-label",
     "Уменьшить масштаб глобуса"
+  );
+  await expect(controls.nth(2)).toHaveAttribute(
+    "aria-label",
+    "Остановить автоматическое вращение"
+  );
+  await expect(controls.nth(2)).toHaveAttribute("aria-pressed", "true");
+  await expect(controls.nth(3)).toHaveAttribute(
+    "aria-label",
+    "Вернуть исходный вид глобуса"
+  );
+  await expect(controls.nth(4)).toHaveAttribute(
+    "aria-label",
+    "Источник и права текущего издания глобуса"
   );
 });

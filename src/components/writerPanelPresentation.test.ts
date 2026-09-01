@@ -169,7 +169,7 @@ describe("writer card public status", () => {
     expect(writerBiographyPublicStatus(null)).toEqual({
       code: "pending",
       label: "В редакционной очереди",
-      detail: "Проверенная биография готовится",
+      detail: "Биография готовится к редакционной проверке",
       sourceCount: 0,
     });
   });

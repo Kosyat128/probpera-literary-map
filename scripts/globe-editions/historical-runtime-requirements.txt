@@ -1,0 +1,4 @@
+# Rebuild environment for scripts/build-historical-globe-textures.py.
+# Python 3.12.13; encoded WebP identity also depends on libwebp 1.6.0.
+numpy==2.3.5
+Pillow==12.3.0

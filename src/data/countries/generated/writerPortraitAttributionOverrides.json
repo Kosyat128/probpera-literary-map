@@ -1,0 +1,265 @@
+{
+  "version": 1,
+  "checkedAt": "2026-08-31",
+  "overrides": {
+    "armenia:avetik_isahakyan": {
+      "filename": "Жандармская карточка на Аветика Исаакяна (1).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%96%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D0%BC%D1%81%D0%BA%D0%B0%D1%8F_%D0%BA%D0%B0%D1%80%D1%82%D0%BE%D1%87%D0%BA%D0%B0_%D0%BD%D0%B0_%D0%90%D0%B2%D0%B5%D1%82%D0%B8%D0%BA%D0%B0_%D0%98%D1%81%D0%B0%D0%B0%D0%BA%D1%8F%D0%BD%D0%B0_(1).jpg",
+      "creator": "Tiflis Governorate Gendarmerie Administration; source: National Archives of Georgia",
+      "useOriginal": true,
+      "crop": {
+        "left": 780,
+        "top": 80,
+        "width": 760,
+        "height": 950
+      }
+    },
+    "belgium:emile_verhaeren": {
+      "filename": "Verhaeren LCCN2014699855.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Verhaeren_LCCN2014699855.jpg",
+      "creator": "Charles Bernier; source: Library of Congress, George Grantham Bain Collection"
+    },
+    "cape_verde:eugenio_tavares": {
+      "filename": "ETavares3a3.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:ETavares3a3.jpg",
+      "creator": "Mito; uploaded and licensed on Wikimedia Commons by Otimarte"
+    },
+    "cape_verde:armenio_vieira": {
+      "filename": "Conde.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Conde.jpg",
+      "creator": "Otimarte"
+    },
+    "colombia:leon_de_greiff": {
+      "filename": "Leondegreiffoneyearold-MelitonRodriguez1896.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Leondegreiffoneyearold-MelitonRodriguez1896.jpg",
+      "creator": "Melitón Rodríguez; source: Luis Ángel Arango Virtual Library"
+    },
+    "england:wilkie_collins": {
+      "filename": "Wilkie Collins, 1871.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wilkie_Collins,_1871.jpg",
+      "creator": "Elliott & Fry; source: Biblioteca Marucelliana"
+    },
+    "finland:minna_canth": {
+      "filename": "Minna Canth 1844-1897 - 1880 SLSA 1270 34 foto 386.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Minna_Canth_1844-1897_-_1880_SLSA_1270_34_foto_386.jpg",
+      "creator": "Daniel Nyblin; source: Society of Swedish Literature in Finland / Finna"
+    },
+    "germany:theodor_fontane": {
+      "filename": "Theodor Fontane by E. Bieber, 1894.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Theodor_Fontane_by_E._Bieber,_1894.png",
+      "creator": "E. Bieber studio; source: Deutsches Historisches Museum"
+    },
+    "hungary:mor_jokai": {
+      "filename": "Jókai Mór író. Fortepan 25848.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:J%C3%B3kai_M%C3%B3r_%C3%ADr%C3%B3._Fortepan_25848.jpg",
+      "creator": "FOTO:FORTEPAN / SK"
+    },
+    "norway:camilla_collett": {
+      "filename": "Portrett av Camilla Collett fra 1893.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrett_av_Camilla_Collett_fra_1893.jpg",
+      "creator": "Robert Collett; source: Nasjonalbiblioteket",
+      "useOriginal": true,
+      "crop": {
+        "left": 1200,
+        "top": 500,
+        "width": 1600,
+        "height": 2000
+      }
+    },
+    "italy:ludovico_ariosto": {
+      "filename": "Ariosto.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ariosto.jpg",
+      "creator": "Paolo da Reggio"
+    },
+    "japan:chikamatsu_monzaemon": {
+      "filename": "Chikamatsu2.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chikamatsu2.jpg",
+      "creator": "Suguri_F"
+    },
+    "england:t_s_eliot": {
+      "filename": "Thomas Stearns Eliot by Lady Ottoline Morrell (1934).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thomas_Stearns_Eliot_by_Lady_Ottoline_Morrell_(1934).jpg",
+      "creator": "Lady Ottoline Morrell; cropped by Octave.H"
+    },
+    "egypt:sonallah_ibrahim": {
+      "filename": "Sonallah Ibrahim at Stanford.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sonallah_Ibrahim_at_Stanford.jpg",
+      "creator": "Author30",
+      "useOriginal": true,
+      "crop": {
+        "left": 260,
+        "top": 0,
+        "width": 400,
+        "height": 500
+      }
+    },
+    "mauritius:nathacha_appanah": {
+      "filename": "Nathacha Appanah - Jardins d'hiver 2026 - Rennes.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nathacha_Appanah_-_Jardins_d%27hiver_2026_-_Rennes.png",
+      "creator": "Plyd"
+    },
+    "nigeria:chinua_achebe": {
+      "filename": "Chinua Achebe, 2008 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chinua_Achebe,_2008_(cropped).jpg",
+      "creator": "Stuart C. Shapiro"
+    },
+    "philippines:nick_joaquin": {
+      "filename": "Nick Joaquin Portrait from Fringe (cropped2).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nick_Joaquin_Portrait_from_Fringe_(cropped2).jpg",
+      "creator": "Fringe Magazine",
+      "manualLicense": {
+        "kind": "wikimedia-attribution-only",
+        "licenseName": "Wikimedia Attribution-only license",
+        "licenseUrl": "https://commons.wikimedia.org/wiki/Template:Attribution"
+      }
+    },
+    "russia:fyodor_tyutchev": {
+      "filename": "Тютчев 1860-1861.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%A2%D1%8E%D1%82%D1%87%D0%B5%D0%B2_1860%E2%80%941861.jpg",
+      "creator": "Sergey Lvovich Levitsky"
+    },
+    "russia:afanasiy_fet": {
+      "filename": "Афанасий Фет - 1860-е.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%84%D0%B0%D0%BD%D0%B0%D1%81%D0%B8%D0%B9_%D0%A4%D0%B5%D1%82_-_1860-%D0%B5.jpg",
+      "creator": "Andrey Denyer"
+    },
+    "russia:avvakum": {
+      "filename": "Protopop Avvakym.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Protopop_Avvakym.jpg",
+      "creator": "Anonymous icon painter; collection of the Moscow State Historical Museum",
+      "useOriginal": true,
+      "crop": {
+        "left": 1000,
+        "top": 300,
+        "width": 800,
+        "height": 1000
+      }
+    },
+    "russia:chekhov": {
+      "filename": "Anton Checkov signed Cabinet Photograph, 1899 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anton_Checkov_signed_Cabinet_Photograph,_1899_(cropped).jpg",
+      "creator": "Unattributed; attributed by Christie's to Alexander Pavlovich Chekhov"
+    },
+    "russia:goncharov": {
+      "filename": "Ivan Goncharov (1880).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ivan_Goncharov_(1880).jpg",
+      "creator": "Constantin Shapiro; source: Russian State Library"
+    },
+    "russia:leskov": {
+      "filename": "Stebnitski i, head-and-shoulders portrait, facing left LCCN99615548.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stebnitski_i,_head-and-shoulders_portrait,_facing_left_LCCN99615548.jpg",
+      "creator": "Vezenberg & Co.; source: Library of Congress"
+    },
+    "russia:ostrovsky": {
+      "filename": "Aleksandr Nikolaevich Ostrovsky, half-length portrait, facing front LCCN99615567.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aleksandr_Nikolaevich_Ostrovsky,_half-length_portrait,_facing_front_LCCN99615567.jpg",
+      "creator": "Vezenberg & Co.; source: Library of Congress"
+    },
+    "russia:saltykov-shchedrin": {
+      "filename": "Mikhail Evgrafovich Saltykov-Shchedrin, head-and-shoulders portrait, facing left LCCN99615562.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mikhail_Evgrafovich_Saltykov-Shchedrin,_head-and-shoulders_portrait,_facing_left_LCCN99615562.jpg",
+      "creator": "Vezenberg & Co.; source: Library of Congress"
+    },
+    "russia:turgenev": {
+      "filename": "Turgenev 1859.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turgenev_1859.jpg",
+      "creator": "Andrey Denyer"
+    },
+    "russia:tolstoy": {
+      "filename": "Л. Н. Толстой (Левицкий, 1856) (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%9B._%D0%9D._%D0%A2%D0%BE%D0%BB%D1%81%D1%82%D0%BE%D0%B9_(%D0%9B%D0%B5%D0%B2%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_1856)_(cropped).jpg",
+      "creator": "Sergey Lvovich Levitsky; source: State Museum of Leo Tolstoy"
+    },
+    "russia:maxim_gorky": {
+      "filename": "Maxim Gorky LOC Restored edit1.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Maxim_Gorky_LOC_Restored_edit1.jpg",
+      "creator": "Herman Mishkin"
+    },
+    "russia:alexander_kuprin": {
+      "filename": "Kuprin AI 1914.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kuprin_AI_1914.jpg",
+      "creator": "P. Glybovskaya"
+    },
+    "russia:andrei_bely": {
+      "filename": "Андрей Белый. Фотоателье «Отто Ренар», 1903 год.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9_%D0%91%D0%B5%D0%BB%D1%8B%D0%B9._%D0%A4%D0%BE%D1%82%D0%BE%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%B5_%C2%AB%D0%9E%D1%82%D1%82%D0%BE_%D0%A0%D0%B5%D0%BD%D0%B0%D1%80%C2%BB,_1903_%D0%B3%D0%BE%D0%B4.jpg",
+      "creator": "Otto Renard",
+      "useOriginal": true,
+      "crop": {
+        "left": 240,
+        "top": 285,
+        "width": 400,
+        "height": 500
+      }
+    },
+    "russia:vladimir_mayakovsky": {
+      "filename": "Владимир Маяковский 1930.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80_%D0%9C%D0%B0%D1%8F%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_1930.jpg",
+      "creator": "Abram Sterenberg; attribution: Mos.ru"
+    },
+    "russia:varlam_shalamov": {
+      "filename": "Varlam Shalamov (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Varlam_Shalamov_(cropped).jpg",
+      "creator": "NKVD"
+    },
+    "russia:alexander_tvardovsky": {
+      "filename": "Александр Твардовский в кабинете в 1960 г.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80_%D0%A2%D0%B2%D0%B0%D1%80%D0%B4%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D0%B2_%D0%BA%D0%B0%D0%B1%D0%B8%D0%BD%D0%B5%D1%82%D0%B5_%D0%B2_1960_%D0%B3.jpg",
+      "creator": "Vsevolod Tarasevich; attribution: Russia in Photo"
+    },
+    "russia:akhmatova": {
+      "filename": "Anna Akhmatova (1906).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anna_Akhmatova_(1906).jpg",
+      "creator": "Anonymous photographer from the Russian Empire (documented by Wikimedia Commons)"
+    },
+    "senegal:birago_diop": {
+      "filename": "Diop gros plan.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Diop_gros_plan.png",
+      "creator": "Darreenvt"
+    },
+    "spain:camilo_jose_cela": {
+      "filename": "Camilo José Cela 2.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Camilo_Jos%C3%A9_Cela_2.jpg",
+      "creator": "RuizAnglada"
+    },
+    "sweden:verner_von_heidenstam": {
+      "filename": "Verner von Heidenstan (i.e. Heidenstam) LCCN2014700628.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Verner_von_Heidenstan_(i.e._Heidenstam)_LCCN2014700628.jpg",
+      "creator": "Bain News Service; source: Library of Congress, George Grantham Bain Collection"
+    },
+    "usa:don_delillo": {
+      "filename": "Don DeLillo, author.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Don_DeLillo,_author.jpg",
+      "creator": "Bernard Gotfryd; source: Library of Congress"
+    },
+    "usa:henry_james": {
+      "filename": "Henry James by Alice M. Boughton, 1905, platinum print, from the National Portrait Gallery - NPG-8700072C 1.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Henry_James_by_Alice_M._Boughton,_1905,_platinum_print,_from_the_National_Portrait_Gallery_-_NPG-8700072C_1.jpg",
+      "creator": "Alice M. Boughton; source: National Portrait Gallery, Smithsonian Institution"
+    },
+    "usa:herman_melville": {
+      "filename": "Herman Melville 1885.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Herman_Melville_1885.jpg",
+      "creator": "George G. Rockwood; source: New York Public Library",
+      "useOriginal": true,
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 488,
+        "height": 610
+      }
+    },
+    "uzbekistan:gafur_gulyam": {
+      "filename": "Vadim Kozhevnikov and Gafur Gulyam.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vadim_Kozhevnikov_and_Gafur_Gulyam.jpg",
+      "creator": "Mikhail A. Trakhman / Главархив Москвы; attribution: Mos.ru",
+      "useOriginal": true,
+      "crop": {
+        "left": 270,
+        "top": 125,
+        "width": 285,
+        "height": 356
+      }
+    }
+  }
+}

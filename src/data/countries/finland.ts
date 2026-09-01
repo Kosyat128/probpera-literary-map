@@ -101,26 +101,22 @@ export const finland: Country = {
     {
       id: "fredrika_bremer",
       name: "Фредрика Бремер",
-      fullName: "Fredrika Runeberg",
+      fullName: "Fredrika Bremer",
 
-      years: "1807-1879",
+      years: "1801-1865",
 
-      birthDate: "1807-09-02",
-      deathDate: "1879-03-27",
+      birthDate: "1801-08-17",
+      deathDate: "1865-12-31",
 
-      birthPlace: "Турку",
-
-      coordinates: {
-        lat: 60.45,
-        lng: 22.27
-      },
+      birthPlace: "Туорла, Финляндия",
 
       portrait: "",
 
-      bio: "Финляндская писательница шведского языка, одна из первых известных женщин-прозаиков Финляндии.",
+      bio: "Шведская писательница, основоположница феминистского движения в Швеции, автор романов «Соседи» и «Герта».",
 
       works: [
-        "Герцогиня Финляндская"
+        "Соседи",
+        "Герта"
       ],
 
       genres: [
@@ -130,7 +126,7 @@ export const finland: Country = {
 
       language: "шведский",
 
-      nationality: "финляндка",
+      nationality: "шведка",
 
       awards: [],
 

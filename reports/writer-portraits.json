@@ -1,31 +1,31 @@
 {
-  "generatedAt": "2026-08-04T05:17:46.986Z",
+  "generatedAt": "2026-08-31T22:09:40.252Z",
   "policy": {
     "identity": "exact normalized name + birth year + unique Wikidata QID",
     "licenses": "Public domain, CC0, CC BY and CC BY-SA from Wikimedia Commons only",
     "output": "384x480 WebP, quality 82, attention crop"
   },
   "summary": {
-    "publicWriterRecords": 1766,
-    "uniquePublicWriters": 1749,
-    "existingPublicPortraits": 1066,
-    "matchedPublicWriters": 219,
-    "publicRealPortraits": 1066,
-    "publicPlaceholders": 700,
-    "generatedPortraitCandidates": 2250,
-    "allowedUniquePortraits": 2202,
-    "publicPortraitCandidates": 0,
+    "publicWriterRecords": 1684,
+    "uniquePublicWriters": 1672,
+    "existingPublicPortraits": 1021,
+    "matchedPublicWriters": 335,
+    "publicRealPortraits": 1021,
+    "publicMissingPortraits": 663,
+    "removedStaleManifestEntries": 0,
+    "removedOrphanManifestEntries": 0,
+    "removedPolicyRejectedManifestEntries": 0,
+    "normalizedAttributionEntries": 4,
+    "refreshedRightsEntries": 0,
+    "lowResolutionPortraits": 37,
+    "generatedPortraitCandidates": 2335,
+    "allowedUniquePortraits": 2230,
+    "publicPortraitCandidates": 103,
     "downloadedUniquePortraits": 0,
-    "rejectedByLicenseOrFormat": 48,
+    "rejectedByLicenseOrFormat": 105,
     "downloadFailures": 0
   },
   "manualReview": [
-    {
-      "countryId": "afghanistan",
-      "writerId": "rabia_balkhi",
-      "name": "Рабия Балхи",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
     {
       "countryId": "afghanistan",
       "writerId": "bahauddin_majrooh",
@@ -33,33 +33,9 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "albania",
-      "writerId": "jeronim_de_rada",
-      "name": "Иероним де Рада",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "albania",
-      "writerId": "fan_noli",
-      "name": "Фан Ноли",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "andorra",
       "writerId": "antoni_morell_i_mora",
       "name": "Антони Морель и Мора",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "andorra",
-      "writerId": "josep_fonbernat",
-      "name": "Жозеп Фонбернат",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "angola",
-      "writerId": "ondjaki",
-      "name": "Онжани",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -87,18 +63,6 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "argentina",
-      "writerId": "adolfo_perez_zelas",
-      "name": "Адельфо Биой Касарес (дополнительная связь)",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "argentina",
-      "writerId": "alfredo_bryce_echenique",
-      "name": "Альфредо Брис Эченике",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "australia",
       "writerId": "kate_grenville",
       "name": "Кейт Гренвилл",
@@ -106,38 +70,14 @@
     },
     {
       "countryId": "australia",
-      "writerId": "markus_zusak",
-      "name": "Маркос Зусак",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "judith_wright",
+      "name": "Джудит Райт",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "australia",
       "writerId": "oodgeroo_noonuccal",
       "name": "Уджеру Нунонуккал",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "azerbaijan",
-      "writerId": "imadaddin_nasimi",
-      "name": "Имадеддин Насими",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "azerbaijan",
-      "writerId": "muhammad_fuzuli",
-      "name": "Мухаммед Физули",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "bahamas",
-      "writerId": "cyril_bray",
-      "name": "Сирил Д. Б. Брей",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "bahamas",
-      "writerId": "wallace_whitfield",
-      "name": "Уоллес Уитфилд",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -150,12 +90,6 @@
       "countryId": "bahrain",
       "writerId": "ali_abdullah_khalifa",
       "name": "Али Абдулла Халифа",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "bahrain",
-      "writerId": "qassim_haddad",
-      "name": "Касим Хаддад",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -172,15 +106,9 @@
     },
     {
       "countryId": "belarus",
-      "writerId": "vintsent_dunin_martsinkevich",
-      "name": "Винцент Дунин-Марцинкевич",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "belarus",
-      "writerId": "francisak_bahushevich",
-      "name": "Франтишек Богушевич",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "ales_adamovich",
+      "name": "Алесь Адамович",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "belize",
@@ -191,19 +119,7 @@
     {
       "countryId": "belize",
       "writerId": "glen_godfrey",
-      "name": "Глен Годфри",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "bhutan",
-      "writerId": "ngawang_namgyal",
-      "name": "Жабдрунг Нгаванг Намгьял",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "bhutan",
-      "writerId": "dzongsar_khyentse",
-      "name": "Дзонгсар Кхьенце Ринпоче",
+      "name": "Гленн Д. Годфри",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -226,9 +142,21 @@
     },
     {
       "countryId": "bolivia",
+      "writerId": "jesus_lara",
+      "name": "Хесус Лара",
+      "reason": "non-photographic-portrait"
+    },
+    {
+      "countryId": "bolivia",
       "writerId": "francisco_javier_del_granado",
       "name": "Франсиско Хавьер дель Гранадо",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
+    },
+    {
+      "countryId": "bolivia",
+      "writerId": "jaime_saenz",
+      "name": "Хайме Саэнс",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "bolivia",
@@ -245,7 +173,7 @@
     {
       "countryId": "bolivia",
       "writerId": "vilma_tapia_anda",
-      "name": "Вильма Тапиа Анда",
+      "name": "Вильма Тапиа Анайя",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -273,76 +201,22 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "botswana",
-      "writerId": "moshe_motshegwa",
-      "name": "Моше Моше",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "brazil",
-      "writerId": "goncalves_dias",
-      "name": "Гонсалвес Диас",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "brazil",
       "writerId": "machado_de_assis",
       "name": "Машаду де Ассис",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "brazil",
-      "writerId": "joao_guimaraes_rosa",
-      "name": "Жуан Гимарайнс Роза",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "brunei",
-      "writerId": "masuri_masrun",
-      "name": "Масури Масруни",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "brunei",
-      "writerId": "awang_mohammad_yassin",
-      "name": "Аванг Мохаммад Яссин",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "brunei",
-      "writerId": "ali_haji_ahmad",
-      "name": "Али Хаджи Ахмад",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "brunei",
-      "writerId": "haji_muhammad_jaafar",
-      "name": "Хаджи Мухаммад Джафар",
+      "countryId": "burkina_faso",
+      "writerId": "patrick_ilboudo",
+      "name": "Патрик Гомдаого Ильбудо",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "burkina_faso",
-      "writerId": "patrick_ilboudo",
-      "name": "Патрик-Ив Ильбудо",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "burundi",
-      "writerId": "jean_pierre_hatungimana",
-      "name": "Жан-Пьер Хатунгимана",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "burundi",
-      "writerId": "christophe_nkezabahizi",
-      "name": "Кристоф Нкезабахизи",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "burundi",
-      "writerId": "gaetan_muschimyimana",
-      "name": "Гаэтан Мушимиимана",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "norbert_zongo",
+      "name": "Норберт Зонго",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "cambodia",
@@ -351,22 +225,16 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "cambodia",
-      "writerId": "mae_khem",
-      "name": "Маэ Кхем",
+      "countryId": "cameroon",
+      "writerId": "jean_roger_essomba",
+      "name": "Жан-Роже Эссомба",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "cambodia",
-      "writerId": "keo_na",
-      "name": "Кео На",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "cambodia",
-      "writerId": "kambo_vong",
-      "name": "Камбо Вонг",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "canada",
+      "writerId": "northrop_frye",
+      "name": "Нортроп Фрай",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "canada",
@@ -376,20 +244,32 @@
     },
     {
       "countryId": "cape_verde",
+      "writerId": "jorge_barbosa",
+      "name": "Жоржи Барбоза",
+      "reason": "non-photographic-banknote-artwork"
+    },
+    {
+      "countryId": "cape_verde",
       "writerId": "baltasar_lopes",
       "name": "Бальтазар Лопеш",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "central_african_republic",
-      "writerId": "benoit_ndemba",
-      "name": "Бенуа Ньимба",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "cape_verde",
+      "writerId": "manuel_lopes",
+      "name": "Мануэл Лопеш",
+      "reason": "no-writer-face"
+    },
+    {
+      "countryId": "cape_verde",
+      "writerId": "manuel_de_novas",
+      "name": "Мануэл де Новас",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "chad",
-      "writerId": "felix_tchikaya",
-      "name": "Феликс Тчикáя",
+      "writerId": "ahmat_taboye",
+      "name": "Ахмад Табойе",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -400,14 +280,14 @@
     },
     {
       "countryId": "chile",
-      "writerId": "alejandra_costamagna",
-      "name": "Алехандра Костаманья",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "roberto_bolano",
+      "name": "Роберто Боланьо",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "chile",
-      "writerId": "carmen_martin_gaite_chile_relation",
-      "name": "Марта Брун",
+      "writerId": "alejandra_costamagna",
+      "name": "Алехандра Костаманья",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -426,12 +306,6 @@
       "countryId": "chile",
       "writerId": "alejandro_jodorowsky_chile",
       "name": "Алехандро Ходоровский",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "chile",
-      "writerId": "paul_auster_chile_connection",
-      "name": "Эстебан Яньес",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -454,12 +328,6 @@
     },
     {
       "countryId": "china",
-      "writerId": "chi_ziqiang",
-      "name": "Чи Цзыцянь",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "china",
       "writerId": "zhang_ling",
       "name": "Чжан Лин",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
@@ -469,6 +337,12 @@
       "writerId": "jorge_isaacs",
       "name": "Хорхе Айзекс",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
+    },
+    {
+      "countryId": "colombia",
+      "writerId": "rafael_pombo",
+      "name": "Рафаэль Помбо",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "colombia",
@@ -543,12 +417,6 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "comoros",
-      "writerId": "mahmoud_said_ahmed",
-      "name": "Махамуд Саид Ахмед",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "cook_islands",
       "writerId": "sir_thomas_davis",
       "name": "Сэр Томас Дэвис",
@@ -561,10 +429,16 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
+      "countryId": "cuba",
+      "writerId": "guillermo_cabrera_infante",
+      "name": "Гильермо Кабрера Инфанте",
+      "reason": "non-photographic-portrait"
+    },
+    {
       "countryId": "cyprus",
-      "writerId": "nikos_nikolaidis",
-      "name": "Никос Николаидис",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "vasilis_michaelides",
+      "name": "Василис Михаилидис",
+      "reason": "non-photographic-monument"
     },
     {
       "countryId": "cyprus",
@@ -574,44 +448,14 @@
     },
     {
       "countryId": "cyprus",
-      "writerId": "kyriakos_charalambous",
-      "name": "Кириакос Хариламбус",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "czechia",
-      "writerId": "karel_capek",
-      "name": "Карел Чапек",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "democratic_republic_of_congo",
-      "writerId": "v_y_mudimbe",
-      "name": "Венцеслас Мудимбе",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "democratic_republic_of_congo",
-      "writerId": "tshibumba_kanda_matulu",
-      "name": "Тшибумба Канда-Матулу",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "kostas_montis",
+      "name": "Костас Монтис",
+      "reason": "non-photographic-monument"
     },
     {
       "countryId": "denmark",
       "writerId": "johannes_v_jensen",
       "name": "Йоханнес Вильгельм Йенсен",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "djibouti",
-      "writerId": "abdourahman_waberi",
-      "name": "Абдурахман Али Варсама",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "djibouti",
-      "writerId": "abdourahman_h_yama",
-      "name": "Абдулкадир Хирси Яма",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -634,21 +478,21 @@
     },
     {
       "countryId": "ecuador",
+      "writerId": "medardo_angel_silva",
+      "name": "Медардо Анхель Сильва",
+      "reason": "disputed-copyright-and-wrong-license"
+    },
+    {
+      "countryId": "ecuador",
       "writerId": "ernesto_noboa_caamano",
       "name": "Эрнесто Нобоа-и-Кааманьо",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "ecuador",
-      "writerId": "jorge_icaza",
-      "name": "Хорхе Икаса",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "ecuador",
       "writerId": "demetrio_aguilera_malta",
-      "name": "Деметрио Агилар Мальта",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "name": "Деметрио Агилера Мальта",
+      "reason": "identity-crop-and-attribution-risk"
     },
     {
       "countryId": "ecuador",
@@ -678,12 +522,6 @@
       "countryId": "ecuador",
       "writerId": "javier_vasconez",
       "name": "Хавьер Васконес",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "ecuador",
-      "writerId": "lupe_rumazo",
-      "name": "Лупе Румасо",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -718,20 +556,8 @@
     },
     {
       "countryId": "england",
-      "writerId": "rudyard_kipling",
-      "name": "Джозеф Редьярд Киплинг",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "england",
       "writerId": "william_langland",
       "name": "Уильям Ленгленд",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "england",
-      "writerId": "percy_shelley",
-      "name": "Перси Биши Шелли",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -742,26 +568,8 @@
     },
     {
       "countryId": "england",
-      "writerId": "h_g_wells",
-      "name": "Герберт Джордж Уэллс",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "england",
-      "writerId": "bertrand_russell",
-      "name": "Бертран Артур Уильям Рассел",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "england",
       "writerId": "winston_churchill",
       "name": "Уинстон Леонард Спенсер Черчилль",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "england",
-      "writerId": "david_mitchell",
-      "name": "Дэвид Стивен Митчелл",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -783,57 +591,9 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "england",
-      "writerId": "john_fowles",
-      "name": "Джон Фаулз",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "equatorial_guinea",
       "writerId": "maria_nsue_angue",
       "name": "Мария Нсуэ Ангюэ",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "eritrea",
-      "writerId": "sebhat_gebregziabher",
-      "name": "Себхат Эфрем",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "eritrea",
-      "writerId": "rebkah_haile",
-      "name": "Ребках Хайле",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "eritrea",
-      "writerId": "hadish_haile",
-      "name": "Хадиш Хайле",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "eswatini",
-      "writerId": "sarah_mlotshwa",
-      "name": "Сара Млотшва",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "eswatini",
-      "writerId": "stanley_madwe",
-      "name": "Стенли Мадуве",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "eswatini",
-      "writerId": "gladys_lobola",
-      "name": "Глэдис Лобола",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "eswatini",
-      "writerId": "albert_ncube",
-      "name": "Альберт Нкубэ",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -855,21 +615,9 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "ethiopia",
-      "writerId": "kebede_michael",
-      "name": "Кебеде Михаэль",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "ethiopia",
-      "writerId": "hirut_kefele",
-      "name": "Хируит Кефеле",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "fiji",
-      "writerId": "subramani",
-      "name": "Субрамани",
+      "writerId": "satendra_nandan",
+      "name": "Сатендра Нандан",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -898,26 +646,8 @@
     },
     {
       "countryId": "france",
-      "writerId": "marie_de_france",
-      "name": "Мария Французская",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "france",
       "writerId": "moliere",
       "name": "Жан-Батист Мольер",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "france",
-      "writerId": "montesquieu",
-      "name": "Шарль Луи де Монтескьё",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "france",
-      "writerId": "beaumarchais",
-      "name": "Пьер Огюстен Карон де Бомарше",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -946,50 +676,20 @@
     },
     {
       "countryId": "france",
-      "writerId": "francois_mauriac",
-      "name": "Франсуа Шарль Мориак",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "france",
       "writerId": "saint_john_perse",
       "name": "Сен-Жон Перс (Алексис Леже)",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "france",
-      "writerId": "louis_ferdinand_celine",
-      "name": "Луи-Фердинанд Селин",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "french_guiana",
-      "writerId": "leon_gontran_damas",
-      "name": "Леон-Гонтан Дамас",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "henri_barbusse",
+      "name": "Анри Барбюс",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "gabon",
       "writerId": "angele_rawiri",
       "name": "Анжель Равири",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "gabon",
-      "writerId": "juste_auguste_kotto",
-      "name": "Жюстен-Огюст Котти",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "gabon",
-      "writerId": "florentin_moussavou_nzigu",
-      "name": "Флорентин Мвуэ Нзигу",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "gambia",
-      "writerId": "baaba_jobarteh",
-      "name": "Бааба Джобе",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -999,15 +699,21 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "germany",
-      "writerId": "theodor_mommsen",
-      "name": "Кристиан Маттиас Теодор Моммзен",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "georgia",
+      "writerId": "nodar_dumbadze",
+      "name": "Нодар Думбадзе",
+      "reason": "non-photographic-portrait"
+    },
+    {
+      "countryId": "georgia",
+      "writerId": "otar_chiladze",
+      "name": "Отар Чиладзе",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "germany",
-      "writerId": "paul_heyse",
-      "name": "Пауль Йохан Людвиг фон Хейзе",
+      "writerId": "theodor_mommsen",
+      "name": "Кристиан Маттиас Теодор Моммзен",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1024,9 +730,9 @@
     },
     {
       "countryId": "ghana",
-      "writerId": "joseph_casely_hayford",
-      "name": "Джозеф Эфуа Кейсели Хейфорд",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "ama_ata_aidoo",
+      "name": "Ама Ата Айду",
+      "reason": "youtube-license-review-needed"
     },
     {
       "countryId": "ghana",
@@ -1053,33 +759,15 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "grenada",
-      "writerId": "julian_fedon",
-      "name": "Джулиан Федон",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "guatemala",
       "writerId": "francisco_alejandro_mendez",
       "name": "Франциско Алехандро Мендес",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "guinea_bissau",
-      "writerId": "antonio_aurelio_gomes",
-      "name": "Антониу Аурелиу Гомеш",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "guyana",
       "writerId": "cyril_dabydeen",
       "name": "Сирил Дабидин",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "guyana",
-      "writerId": "roshni_kempadoo",
-      "name": "Рошини Кемпадоо",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1101,6 +789,12 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
+      "countryId": "iceland",
+      "writerId": "jon_arnason",
+      "name": "Йоун Арнасон",
+      "reason": "non-photographic-portrait"
+    },
+    {
       "countryId": "india",
       "writerId": "vyasa",
       "name": "Вьяса",
@@ -1108,44 +802,20 @@
     },
     {
       "countryId": "india",
-      "writerId": "mirabai",
-      "name": "Мирабаи",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "india",
       "writerId": "bankim_chandra_chatterjee",
-      "name": "Банким Чандра Чаттерджи",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "india",
-      "writerId": "munshi_premchand",
-      "name": "Мунши Премчанд",
+      "name": "Банким Чандра Чаттопадхьяй",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "india",
       "writerId": "subramania_bharati",
-      "name": "Субраманья Бхарати",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "india",
-      "writerId": "r_k_narayan",
-      "name": "Р. К. Нараян",
+      "name": "Субрамания Бхарати",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "india",
       "writerId": "anil_menon",
       "name": "Анил Менон",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "india",
-      "writerId": "amit_chaudhuri",
-      "name": "Амита Чоудхури",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1180,14 +850,14 @@
     },
     {
       "countryId": "iraq",
-      "writerId": "fuad_al_takarli",
-      "name": "Фуад ат-Тикерли",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "nazik_al_malaika",
+      "name": "Назик аль-Малаика",
+      "reason": "non-photographic-monument"
     },
     {
-      "countryId": "israel",
-      "writerId": "david_grossman",
-      "name": "Давид Гроссман",
+      "countryId": "iraq",
+      "writerId": "fuad_al_takarli",
+      "name": "Фуад ат-Тикерли",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1222,38 +892,8 @@
     },
     {
       "countryId": "japan",
-      "writerId": "yosano_akiko",
-      "name": "Ёсано Акико",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "ishikawa_takuboku",
-      "name": "Исикава Такубоку",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "akutagawa_ryunosuke",
-      "name": "Акутагава Рюноскэ",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "tanizaki_junichiro",
-      "name": "Танидзаки Дзюнъитиро",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "japan",
       "writerId": "mitsuyo_kakuta",
       "name": "Мицуйо Какута",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "japan",
-      "writerId": "yasunari_kawabata_additional",
-      "name": "Катаока Тэцутаро",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1270,21 +910,15 @@
     },
     {
       "countryId": "jordan",
-      "writerId": "ghalib_halasa",
-      "name": "Галиб Халса",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "jordan",
       "writerId": "zuleikha_abu_risha",
       "name": "Зулайха Абу Риша",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "kazakhstan",
-      "writerId": "ybyrai_altynsarin",
-      "name": "Ыбырай Алтынсарин",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "mukhtar_auyezov",
+      "name": "Мухтар Ауэзов",
+      "reason": "commons-deletion-request"
     },
     {
       "countryId": "kazakhstan",
@@ -1294,20 +928,14 @@
     },
     {
       "countryId": "kazakhstan",
-      "writerId": "olzhas_suleimenov",
-      "name": "Олжас Сулейменов",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "magzhan_zhumabayev",
+      "name": "Магжан Жумабаев",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "kazakhstan",
       "writerId": "abdizhamil_nurpeisov",
       "name": "Абдижамил Нурпеисов",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "kenya",
-      "writerId": "grace_ogot",
-      "name": "Грейс Огот",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1348,14 +976,14 @@
     },
     {
       "countryId": "kyrgyzstan",
-      "writerId": "chyngyz_aitmatov",
-      "name": "Чингиз Айтматов",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "kasym_tynystanov",
+      "name": "Касым Тыныстанов",
+      "reason": "non-photographic-banknote-artwork"
     },
     {
       "countryId": "kyrgyzstan",
       "writerId": "suranbay_eraliev",
-      "name": "Суранбай Эралиев",
+      "name": "Сүйүнбай Эралиев",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1365,87 +993,45 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "laos",
-      "writerId": "sotheara_soth",
-      "name": "Сотхеара Сот",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "latvia",
+      "writerId": "rudolfs_blaumanis",
+      "name": "Рудольф Блауманис",
+      "reason": "non-photographic-portrait"
     },
     {
-      "countryId": "laos",
-      "writerId": "douangchandra_souphanouvong",
-      "name": "Доуангчандра Суваннафум",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "latvia",
+      "writerId": "andrejs_upits",
+      "name": "Андрейс Упит",
+      "reason": "non-photographic-postal-artwork"
     },
     {
-      "countryId": "laos",
-      "writerId": "visuth_phommasane",
-      "name": "Висутх Пхомсаван",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "laos",
-      "writerId": "bountheng_thongsavanh",
-      "name": "Боунтенг Тхонгсаван",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "latvia",
+      "writerId": "janis_jaunsudrabins",
+      "name": "Янис Яунсудрабиньш",
+      "reason": "non-photographic-monument"
     },
     {
       "countryId": "lebanon",
-      "writerId": "khalil_gibran",
-      "name": "Халиль Джебран",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "mikhail_naimy",
+      "name": "Михаил Нуайме",
+      "reason": "non-photographic-monument"
+    },
+    {
+      "countryId": "lesotho",
+      "writerId": "thomas_mofolo",
+      "name": "Томас Мофоло",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "lesotho",
       "writerId": "masechele_khaketla",
-      "name": "Масило Мацела Хакетла",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "lesotho",
-      "writerId": "letuka_molati",
-      "name": "Летука Молати",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "lesotho",
-      "writerId": "leapo_motsapi",
-      "name": "Леапо Мацеле",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "lesotho",
-      "writerId": "coleman_motsapi",
-      "name": "Коулман Мотсепе",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "liberia",
-      "writerId": "wilton_sankawulo",
-      "name": "Уилтон Санкайуло",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "liberia",
-      "writerId": "marvin_colley",
-      "name": "Марва Колли",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "liberia",
-      "writerId": "varney_bangura",
-      "name": "Варни Бэнгура",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "libya",
-      "writerId": "ahmed_rafiq_al_mahdaoui",
-      "name": "Ахмед Рафик аль-Махдави",
+      "name": "Нтселисенг «Масечеле» Хакетла",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "libya",
       "writerId": "hassan_al_faqih_hassan",
-      "name": "Хасан аль-Фких Хасан",
+      "name": "Хасан аль-Факих Хасан",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1473,45 +1059,9 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "liechtenstein",
-      "writerId": "maria_von_burg",
-      "name": "Мария фон Бург",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "macau",
-      "writerId": "hou_jingming",
-      "name": "Хоу Цзюньмин",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "macau",
-      "writerId": "hou_chio_jan",
-      "name": "Хо Чхоу Ин",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "macau",
-      "writerId": "lo_i_cheng",
-      "name": "Ло Ичэн",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "madagascar",
-      "writerId": "jean_joseph_rabearivelo",
-      "name": "Жан-Жозеф Рабеаривело",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "madagascar",
       "writerId": "regis_rajemisa_raolison",
-      "name": "Режи Раймиса-Раолисон",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "madagascar",
-      "writerId": "elie_charles_abraham",
-      "name": "Эли-Шарль Абрахам",
+      "name": "Режис Радземиса-Раулизон",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1522,15 +1072,9 @@
     },
     {
       "countryId": "madagascar",
-      "writerId": "nirina_lua",
-      "name": "Нирина Луйз",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "malaysia",
-      "writerId": "kemala",
-      "name": "Кемала",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "michele_rakotoson",
+      "name": "Мишель Ракотосон",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "maldives",
@@ -1540,26 +1084,26 @@
     },
     {
       "countryId": "maldives",
-      "writerId": "amin_jameel",
-      "name": "Амин Джамиль",
+      "writerId": "abdulla_sodiq",
+      "name": "Абдулла Содик",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
+    },
+    {
+      "countryId": "mali",
+      "writerId": "yambo_ouologuem",
+      "name": "Ямбо Уологем",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "malta",
       "writerId": "anton_manuel_caruana",
-      "name": "Антон Мануэль Каруана",
+      "name": "Антонио Эмануэле Каруана",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "malta",
       "writerId": "ruzar_briffa",
       "name": "Ружар Бриффа",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "marshall_islands",
-      "writerId": "kathy_jetnil_kijiner",
-      "name": "Кэти Джетнил-Кидд",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1575,12 +1119,6 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "mauritania",
-      "writerId": "hamed_ould_hamdane",
-      "name": "Хамед Ульд Хамдани",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "mexico",
       "writerId": "sor_juana_ines_de_la_cruz",
       "name": "Сор Хуана Инес де ла Крус",
@@ -1588,20 +1126,8 @@
     },
     {
       "countryId": "mexico",
-      "writerId": "elena_poniatowska",
-      "name": "Елена Понятовска",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "mexico",
       "writerId": "javier_velasco",
       "name": "Хавьер Веласко",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "mexico",
-      "writerId": "guadalupe_nettel",
-      "name": "Гваделупе Неттель",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1613,32 +1139,20 @@
     {
       "countryId": "mexico",
       "writerId": "yuri_herrera",
-      "name": "Юрий Эррера",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "mexico",
-      "writerId": "maria_fernanda_ampuero",
-      "name": "Мария Фернанда Ампуэро",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "micronesia",
-      "writerId": "peter_sigeo",
-      "name": "Питер Сигео",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "micronesia",
-      "writerId": "marcel_mares",
-      "name": "Марсель Лоус",
+      "name": "Юри Эррера",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "mongolia",
       "writerId": "inzhannashi",
-      "name": "Инжаннаши",
+      "name": "Ванчинбалын Инжаннаши",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
+    },
+    {
+      "countryId": "mongolia",
+      "writerId": "byambyn_rinchen",
+      "name": "Бямбын Ринчен",
+      "reason": "non-photographic-monument"
     },
     {
       "countryId": "mongolia",
@@ -1659,51 +1173,15 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "montenegro",
-      "writerId": "nikola_i_petrovic",
-      "name": "Никола I Петрович Негош",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "morocco",
-      "writerId": "fatima_mernissi",
-      "name": "Фатима Мернисси",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "mohamed_choukri",
+      "name": "Мохамед Шукри",
+      "reason": "wrong-subject-no-face"
     },
     {
       "countryId": "myanmar",
       "writerId": "dagon_taryar",
-      "name": "Дагон Тхаяр",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "namibia",
-      "writerId": "ndapewaoshali_shikongo",
-      "name": "Ндандулениао Шиконго",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "namibia",
-      "writerId": "gabi_stolz",
-      "name": "Габи Штольц",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "nauru",
-      "writerId": "michael_francis",
-      "name": "Майкл Фрэнсис",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "nepal",
-      "writerId": "bp_koirala",
-      "name": "Б. П. Коирала",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "netherlands",
-      "writerId": "betje_wolff",
-      "name": "Бетје Вольф",
+      "name": "Дагон Тая",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1720,56 +1198,8 @@
     },
     {
       "countryId": "new_zealand",
-      "writerId": "jane_mander",
-      "name": "Джейн Мандер",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "allen_curnow",
-      "name": "Аллен Карноу",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "c_k_stead",
-      "name": "К. К. Стед",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "patricia_grace",
-      "name": "Патриция Грейс",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "bruce_mason",
-      "name": "Брюс Мейсон",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "elizabeth_knox",
-      "name": "Элизабет Нокс",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "fiona_kidman",
-      "name": "Фиона Кидман",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "new_zealand",
       "writerId": "robin_hyde",
       "name": "Робин Хайд",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "bill_manhire",
-      "name": "Билл Манхайр",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1779,39 +1209,27 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "nicaragua",
-      "writerId": "gioconda_belli",
-      "name": "Джоконда Белли",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "niger",
+      "writerId": "boubou_hama",
+      "name": "Бубу Хама",
+      "reason": "wrong-subject-no-face"
     },
     {
       "countryId": "nigeria",
-      "writerId": "d_o_fagunwa",
-      "name": "Д. О. Фагунва",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "flora_nwapa",
+      "name": "Флора Нвапа",
+      "reason": "non-photographic-portrait"
     },
     {
-      "countryId": "niue",
-      "writerId": "john_pule",
-      "name": "Джон Пуле",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "nigeria",
+      "writerId": "buchi_emecheta",
+      "name": "Бучи Эмечета",
+      "reason": "no-writer-face"
     },
     {
       "countryId": "north_korea",
       "writerId": "choe_myong_ik",
       "name": "Чхве Мён Ик",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "north_korea",
-      "writerId": "paek_nam_nyong",
-      "name": "Пэк Нам Рён",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "norway",
-      "writerId": "jon_fosse",
-      "name": "Юн Улав Фоссе",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1827,57 +1245,15 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "oman",
-      "writerId": "jokha_alharthi",
-      "name": "Джоха аль-Харси",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "oman",
-      "writerId": "zahir_al_ghazali",
-      "name": "Захир аль-Газали",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "panama",
-      "writerId": "rogelio_sinan",
-      "name": "Рохелио Синиан",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "panama",
-      "writerId": "demetrio_kalleyas",
-      "name": "Деметрио Кальехас",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "panama",
       "writerId": "juan_david_morgan",
       "name": "Хуан Давид Морган",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "papua_new_guinea",
-      "writerId": "siri_gising",
-      "name": "Сири Гисинг",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "papua_new_guinea",
-      "writerId": "kati_thambe",
-      "name": "Кати Тэмб",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "paraguay",
       "writerId": "natalicio_gonzalez",
       "name": "Наталисио Гонсалес",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "paraguay",
-      "writerId": "gabriel_casaccia",
-      "name": "Габриэль Касаксиа",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1901,19 +1277,7 @@
     {
       "countryId": "paraguay",
       "writerId": "liza_haedo",
-      "name": "Лис Хаун",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "paraguay",
-      "writerId": "susana_galeano",
-      "name": "Сусана Гальеано",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "paraguay",
-      "writerId": "maida_victoria_melgar",
-      "name": "Майда Виктория Мельгар",
+      "name": "Лиз Мария Аэдо",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1925,7 +1289,7 @@
     {
       "countryId": "paraguay",
       "writerId": "rubén_bareiro_saguier",
-      "name": "Рубен Барейро Сагье",
+      "name": "Рубен Барейро Сагьер",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1939,6 +1303,12 @@
       "writerId": "manuel_gonzalez_prada",
       "name": "Мануэль Гонсалес Прада",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
+    },
+    {
+      "countryId": "peru",
+      "writerId": "julio_ramon_ribeyro",
+      "name": "Хулио Рамон Рибейро",
+      "reason": "non-photographic-mural"
     },
     {
       "countryId": "peru",
@@ -1966,26 +1336,8 @@
     },
     {
       "countryId": "peru",
-      "writerId": "oscar_malpica",
-      "name": "Оскар Мальпика",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "peru",
-      "writerId": "karina_sainz_borgo_peru_relation",
-      "name": "Карина Сайнс Борго",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "peru",
       "writerId": "oscar_colchado_lucio",
       "name": "Оскар Колчадо Лусио",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "peru",
-      "writerId": "mario_bellatin",
-      "name": "Марио Беллатин",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -1998,18 +1350,6 @@
       "countryId": "philippines",
       "writerId": "f_sionil_jose",
       "name": "Ф. Сионил Хосе",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "philippines",
-      "writerId": "edith_tiempo",
-      "name": "Эдит Тиампо",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "poland",
-      "writerId": "wladyslaw_reymont",
-      "name": "Владислав Станислав Реймонт",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2028,12 +1368,6 @@
       "countryId": "portugal",
       "writerId": "alexandre_herculano",
       "name": "Александре Эркулану",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "portugal",
-      "writerId": "eca_de_queiros",
-      "name": "Эса де Кейрош",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2057,8 +1391,14 @@
     {
       "countryId": "portugal",
       "writerId": "walter_hugo_mae",
-      "name": "Валтер Угу Маи",
+      "name": "Валтер Угу Маэ",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
+    },
+    {
+      "countryId": "portugal",
+      "writerId": "miguel_torga",
+      "name": "Мигел Торга",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "portugal",
@@ -2080,15 +1420,21 @@
     },
     {
       "countryId": "portugal",
-      "writerId": "augusto_abreu",
-      "name": "Аугушту Абреу",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "herberto_helder",
+      "name": "Эрберту Элдер",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "portugal",
       "writerId": "jose_rodrigues_dos_santos",
       "name": "Жозе Родригеш душ Сантуш",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
+    },
+    {
+      "countryId": "puerto_rico",
+      "writerId": "julia_de_burgos",
+      "name": "Хулия де Бургос",
+      "reason": "non-photographic-monument"
     },
     {
       "countryId": "puerto_rico",
@@ -2111,55 +1457,37 @@
     {
       "countryId": "qatar",
       "writerId": "abdulaziz_al_mahmoud",
-      "name": "Абдель Азиз аль-Махмуд",
+      "name": "Абдулазиз Аль-Махмуд",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "qatar",
       "writerId": "kulthum_jaber",
-      "name": "Кулсум Джабер",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "qatar",
-      "writerId": "ahmad_al_mahmoud",
-      "name": "Ахмад аль-Махмуд",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "qatar",
-      "writerId": "jamal_fayiz_al_maliki",
-      "name": "Джамаль Файз аль-Малики",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "republic_of_congo",
-      "writerId": "jean_baptiste_tati_loutard",
-      "name": "Жан-Батист Тати Лутард",
+      "name": "Кульсум Джабр аль-Кувари",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "russia",
-      "writerId": "avvakum",
-      "name": "Протопоп Аввакум Петров",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "yevgeny_zamyatin",
+      "name": "Евгений Иванович Замятин",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "russia",
-      "writerId": "pelevin",
-      "name": "Виктор Олегович Пелевин",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "andrei_platonov",
+      "name": "Андрей Платонович Платонов",
+      "reason": "territorial-photo-copyright-risk-and-unknown-photographer"
+    },
+    {
+      "countryId": "russia",
+      "writerId": "vasily_grossman",
+      "name": "Василий Семёнович Гроссман",
+      "reason": "missing-united-states-public-domain-rationale-and-unknown-photographer"
     },
     {
       "countryId": "russia",
       "writerId": "sergey_ivanovich_ozhegov",
       "name": "Сергей Иванович Ожегов",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "russia",
-      "writerId": "robert_shtilmark",
-      "name": "Роберт Александрович Штильмарк",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2181,22 +1509,22 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "sao_tome_and_principe",
-      "writerId": "alda_do_espirito_santo",
-      "name": "Алда ду Эшпириту Санту",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "senegal",
       "writerId": "cheikh_hamidou_kane",
       "name": "Шейх Хамиду Кан",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "seychelles",
-      "writerId": "gladyse_adele",
-      "name": "Глэдис Адель",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "serbia",
+      "writerId": "mesa_selimovic",
+      "name": "Меша Селимович",
+      "reason": "non-photographic-portrait"
+    },
+    {
+      "countryId": "serbia",
+      "writerId": "danilo_kis",
+      "name": "Данило Киш",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "sierra_leone",
@@ -2205,21 +1533,9 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "sierra_leone",
-      "writerId": "augustine_bangura",
-      "name": "Огастин Бэнгура",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "singapore",
-      "writerId": "edwin_thumboo",
-      "name": "Эдвин Тамбу",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "solomon_islands",
       "writerId": "rex_horoi",
-      "name": "Рекс Хэтчинс",
+      "name": "Рекс Стивен Хорои",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2231,7 +1547,7 @@
     {
       "countryId": "somalia",
       "writerId": "abdullahi_diiriye_guuleed",
-      "name": "Абдуллахи Диирие Гулам",
+      "name": "Абдуллахи Диирие Гулед",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2244,30 +1560,6 @@
       "countryId": "south_africa",
       "writerId": "cj_langenhoven",
       "name": "Корнелис Якоб Лангенховен",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "south_africa",
-      "writerId": "sol_plaatje",
-      "name": "Сол Платже",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "south_africa",
-      "writerId": "eskia_mphahlele",
-      "name": "Эскиа Мпахлеле",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "south_africa",
-      "writerId": "jm_coetzee",
-      "name": "Дж. М. Кутзее",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "south_korea",
-      "writerId": "il_yeon",
-      "name": "Иль Ён",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2314,12 +1606,6 @@
     },
     {
       "countryId": "south_korea",
-      "writerId": "byun_hyung_jun",
-      "name": "Пён Хёнджун",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "south_korea",
       "writerId": "shin_kyung_sook",
       "name": "Син Гён Сук",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
@@ -2340,18 +1626,6 @@
       "countryId": "south_korea",
       "writerId": "bae_su_a",
       "name": "Пэ Су А",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "south_sudan",
-      "writerId": "atuok_mayen",
-      "name": "Атуок Мейен",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "spain",
-      "writerId": "jose_echegaray",
-      "name": "Хосе Эчегарай-и-Эйсагирре",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2386,20 +1660,14 @@
     },
     {
       "countryId": "spain",
-      "writerId": "vicente_aleixandre",
-      "name": "Висенте Алейксандре",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "carmen_laforet",
+      "name": "Кармен Лафорет",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "sri_lanka",
       "writerId": "shobasakthi",
       "name": "Шобашакти",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "sudan",
-      "writerId": "tayeb_salih",
-      "name": "Аль-Тайиб Салих",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2415,15 +1683,9 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "sudan",
-      "writerId": "taj_el_sir",
-      "name": "Тадж Эль-Сир",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "suriname",
       "writerId": "dobru",
-      "name": "Добру (Робин Равалес)",
+      "name": "Добру (Робин Эвалд Равелес)",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2439,33 +1701,15 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "suriname",
-      "writerId": "clarrisa_lispenard",
-      "name": "Кларисса Лиспенард",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "sweden",
+      "writerId": "erik_axel_karlfeldt",
+      "name": "Эрик Аксель Карлфельдт",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "sweden",
       "writerId": "nelly_sachs",
       "name": "Нелли Леони Закс",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "sweden",
-      "writerId": "harry_martinson",
-      "name": "Харри Эдмунд Мартинсон",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "sweden",
-      "writerId": "tomas_transtromer",
-      "name": "Тумас Йоста Транстрёмер",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "sweden",
-      "writerId": "stieg_larsson",
-      "name": "Стиг Ларссон",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2476,9 +1720,9 @@
     },
     {
       "countryId": "switzerland",
-      "writerId": "carl_spitteler",
-      "name": "Карл Фридрих Георг Шпиттелер",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "conrad_ferdinand_meyer",
+      "name": "Конрад Фердинанд Майер",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "syria",
@@ -2487,10 +1731,10 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "taiwan",
-      "writerId": "zhong_lihe",
-      "name": "Чжун Ли-хэ",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "syria",
+      "writerId": "salim_barakat",
+      "name": "Салим Баракат",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "taiwan",
@@ -2506,33 +1750,21 @@
     },
     {
       "countryId": "tajikistan",
-      "writerId": "fazliddin_muhammadiev",
-      "name": "Фазлиддин Мухаммадиев",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "tajikistan",
       "writerId": "sattor_tursun",
       "name": "Саттор Турсун",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "timor_leste",
-      "writerId": "jorge_barretto_xavier",
-      "name": "Хорхе Баррету Ксавьер",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "tonga",
       "writerId": "epeli_hauofa",
-      "name": "Эпели Хау'офа",
+      "name": "Эпели Хауʻофа",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "tunisia",
-      "writerId": "aboul_qacem_echebbi",
-      "name": "Абу-ль-Касем аш-Шабби",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "ali_douagi",
+      "name": "Али Дуаги",
+      "reason": "missing-united-states-public-domain-rationale-and-unknown-photographer"
     },
     {
       "countryId": "turkey",
@@ -2543,7 +1775,7 @@
     {
       "countryId": "turkey",
       "writerId": "fuzuli",
-      "name": "Фузули",
+      "name": "Физули",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2561,25 +1793,13 @@
     {
       "countryId": "uae",
       "writerId": "sultan_al_owais",
-      "name": "Султан аль-Овайс",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uae",
-      "writerId": "ousha_al_suwaidi",
-      "name": "Оша бинт Халифа аль-Сувайди",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uae",
-      "writerId": "habib_al_sayegh",
-      "name": "Хабиб Юсеф аль-Сайех",
+      "name": "Султан бин Али аль-Овайс",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
       "countryId": "uae",
       "writerId": "mohammed_al_murr",
-      "name": "Мохаммед аль-Мурр",
+      "name": "Мохаммед Ахмед аль-Мурр",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2591,13 +1811,7 @@
     {
       "countryId": "uganda",
       "writerId": "jennifer_nansubuga_makumbi",
-      "name": "Дженифер Нансубуга Макаумби",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "ukraine",
-      "writerId": "ivan_kotliarevsky",
-      "name": "Иван Котляревский",
+      "name": "Дженнифер Нансубуга Макумби",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2610,12 +1824,6 @@
       "countryId": "ukraine",
       "writerId": "valerii_shevchuk",
       "name": "Валерий Шевчук",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "jose_enrique_rodo",
-      "name": "Хосе Энрике Родó",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2638,50 +1846,8 @@
     },
     {
       "countryId": "uruguay",
-      "writerId": "emilio_frugoni",
-      "name": "Эмилио Фругонь",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "mario_levrero",
-      "name": "Марио Левреро",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uruguay",
       "writerId": "mauricio_rosencof",
       "name": "Маурисио Росенкоф",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "juan_jose_moron",
-      "name": "Хуан Хосе Морон",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "silvia_lago",
-      "name": "Сильвия Лаго",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "maria_ester_vazquez",
-      "name": "Мария Эстер Васкес",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "claudia_amenedo",
-      "name": "Клаудия Аменьо",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "uruguay",
-      "writerId": "maria_morena",
-      "name": "Мария Морейра",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2692,56 +1858,14 @@
     },
     {
       "countryId": "usa",
-      "writerId": "vladimir_nabokov",
-      "name": "Владимир Набоков",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "paul_auster",
-      "name": "Пол Остер",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "pearl_s_buck",
-      "name": "Перл Сайденстрикер Бак",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "louise_gluck",
-      "name": "Луиза Элизабет Глюк",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "richard_matheson",
-      "name": "Ричард Бёртон Матесон",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "mario_puzo",
-      "name": "Марио Джанлуиджи Пьюзо",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "john_dos_passos",
+      "name": "Джон Дос Пассос",
+      "reason": "licensed-file-missing-reliable-attribution"
     },
     {
       "countryId": "usa",
       "writerId": "michael_crichton",
       "name": "Джон Майкл Крайтон",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "chuck_palahniuk",
-      "name": "Чарльз Майкл Паланик",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "dr_seuss",
-      "name": "Теодор Сьюз Гайзель",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2770,18 +1894,6 @@
     },
     {
       "countryId": "usa",
-      "writerId": "dennis_lehane",
-      "name": "Деннис Лихэйн",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "thomas_harris",
-      "name": "Томас Харрис",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
       "writerId": "blaine_harden",
       "name": "Блейн Харден",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
@@ -2795,7 +1907,7 @@
     {
       "countryId": "usa",
       "writerId": "n_k_jemisin",
-      "name": "Нора Кейт Джемисин",
+      "name": "Н. К. Джемисин",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
@@ -2811,24 +1923,6 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "usa",
-      "writerId": "michael_connelly",
-      "name": "Майкл Коннелли",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "john_irving",
-      "name": "Джон Ирвинг",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "usa",
-      "writerId": "tom_clancy",
-      "name": "Том Клэнси",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "uzbekistan",
       "writerId": "babur",
       "name": "Захириддин Мухаммад Бабур",
@@ -2836,27 +1930,33 @@
     },
     {
       "countryId": "uzbekistan",
-      "writerId": "mahmudhoja_behbudi",
-      "name": "Махмудходжа Бехбуди",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "writerId": "abdulla_qodiriy",
+      "name": "Абдулла Кадыри",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "uzbekistan",
       "writerId": "cholpon",
-      "name": "Чулпан",
+      "name": "Абдулхамид Чулпан",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "vanuatu",
-      "writerId": "nicolas_tewes",
-      "name": "Николас Теве",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
+      "countryId": "uzbekistan",
+      "writerId": "abdulla_qahhor",
+      "name": "Абдулла Каххар",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "venezuela",
       "writerId": "juan_vicente_gonzalez",
       "name": "Хуан Висенте Гонсалес",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
+    },
+    {
+      "countryId": "venezuela",
+      "writerId": "eduardo_blanco",
+      "name": "Эдуардо Бланко",
+      "reason": "non-photographic-portrait"
     },
     {
       "countryId": "venezuela",
@@ -2877,24 +1977,6 @@
       "reason": "нет однозначного совпадения имени, года рождения и QID"
     },
     {
-      "countryId": "venezuela",
-      "writerId": "eugenio_montejo",
-      "name": "Эугенио Монтехо",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "venezuela",
-      "writerId": "krishna_viveros",
-      "name": "Кристьян Виверос",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
-      "countryId": "vietnam",
-      "writerId": "vu_trong_phung",
-      "name": "Ву Чонг Фунг",
-      "reason": "нет однозначного совпадения имени, года рождения и QID"
-    },
-    {
       "countryId": "vietnam",
       "writerId": "bao_ninh",
       "name": "Бао Нинь",
@@ -2905,6 +1987,18 @@
       "writerId": "mohammed_abdul_wali",
       "name": "Мухаммад Абдулвали",
       "reason": "нет однозначного совпадения имени, года рождения и QID"
+    },
+    {
+      "countryId": "yemen",
+      "writerId": "habib_abdulrab_sarori",
+      "name": "Хабиб Абдул Раб Сарори",
+      "reason": "youtube-license-review-needed"
+    },
+    {
+      "countryId": "afghanistan",
+      "writerId": "rabia_balkhi",
+      "name": "Рабия Балхи",
+      "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "afghanistan",
@@ -2928,12 +2022,6 @@
       "countryId": "angola",
       "writerId": "jose_luandino_vieira",
       "name": "Жозе Луандино Виейра",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
-      "countryId": "angola",
-      "writerId": "ana_paula_tavares",
-      "name": "Ана Паулина Тавареш",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3075,18 +2163,6 @@
       "reason": "свободный портрет не подтверждён"
     },
     {
-      "countryId": "cameroon",
-      "writerId": "etienne_goyemide",
-      "name": "Этьен Гойемиде",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
-      "countryId": "cameroon",
-      "writerId": "jean_roger_essomba",
-      "name": "Жан-Роже Эссомба",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
       "countryId": "canada",
       "writerId": "mordecai_richler",
       "name": "Мордехай Рихлер",
@@ -3112,12 +2188,6 @@
     },
     {
       "countryId": "cape_verde",
-      "writerId": "virgilio_de_lemos",
-      "name": "Виржилиу де Лемуш",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
-      "countryId": "cape_verde",
       "writerId": "germano_almeida",
       "name": "Жерману Алмейда",
       "reason": "license:Copyrighted free use"
@@ -3129,15 +2199,15 @@
       "reason": "свободный портрет не подтверждён"
     },
     {
-      "countryId": "chad",
-      "writerId": "ahmat_taboye",
-      "name": "Ахмат Табойе",
+      "countryId": "china",
+      "writerId": "wu_chengen",
+      "name": "У Чэнъэнь",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "china",
-      "writerId": "wu_chengen",
-      "name": "У Чэнъэнь",
+      "writerId": "chi_ziqiang",
+      "name": "Чи Цзыцянь",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3153,15 +2223,15 @@
       "reason": "свободный портрет не подтверждён"
     },
     {
-      "countryId": "comoros",
-      "writerId": "said_ahmed_mohamed",
-      "name": "Саид Ахмед Мохамед",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
       "countryId": "cuba",
       "writerId": "reynaldo_arenas",
       "name": "Рейнальдо Аренас",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "cyprus",
+      "writerId": "nikos_nikolaidis",
+      "name": "Никос Николаидис",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3180,12 +2250,6 @@
       "countryId": "democratic_republic_of_congo",
       "writerId": "antoine_roger_bolamba",
       "name": "Антуан-Роже Боламба",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
-      "countryId": "democratic_republic_of_congo",
-      "writerId": "sylvain_bemba",
-      "name": "Сильвен Бемба",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3211,6 +2275,12 @@
       "writerId": "juan_leon_mera",
       "name": "Хуан Леон Мера",
       "reason": "mime:application/pdf"
+    },
+    {
+      "countryId": "ecuador",
+      "writerId": "lupe_rumazo",
+      "name": "Лупе Румасо",
+      "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "egypt",
@@ -3244,6 +2314,12 @@
     },
     {
       "countryId": "england",
+      "writerId": "bertrand_russell",
+      "name": "Бертран Артур Уильям Рассел",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "countryId": "england",
       "writerId": "hilary_mantel",
       "name": "Хилари Мантел",
       "reason": "свободный портрет не подтверждён"
@@ -3267,15 +2343,15 @@
       "reason": "свободный портрет не подтверждён"
     },
     {
-      "countryId": "eritrea",
-      "writerId": "alemseged_tesfai",
-      "name": "Алемсегед Тесфайе",
+      "countryId": "england",
+      "writerId": "john_fowles",
+      "name": "Джон Фаулз",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "eritrea",
-      "writerId": "khaled_abdalla",
-      "name": "Халед Абдалла",
+      "writerId": "alemseged_tesfai",
+      "name": "Алемсегед Тесфай",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3286,8 +2362,8 @@
     },
     {
       "countryId": "fiji",
-      "writerId": "satendra_nandan",
-      "name": "Сатендра Нандан",
+      "writerId": "subramani",
+      "name": "Субрамани",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3300,7 +2376,7 @@
       "countryId": "finland",
       "writerId": "fredrika_bremer",
       "name": "Фредрика Бремер",
-      "reason": "license:No restrictions"
+      "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "gabon",
@@ -3454,6 +2530,12 @@
     },
     {
       "countryId": "jordan",
+      "writerId": "ghalib_halasa",
+      "name": "Галиб Халаса",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "jordan",
       "writerId": "ibrahim_nasrallah",
       "name": "Ибрахим Насралла",
       "reason": "свободный портрет не подтверждён"
@@ -3462,6 +2544,12 @@
       "countryId": "kazakhstan",
       "writerId": "dulat_isabekov",
       "name": "Дулат Исабеков",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "kenya",
+      "writerId": "grace_ogot",
+      "name": "Грейс Огот",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3497,7 +2585,7 @@
     {
       "countryId": "kyrgyzstan",
       "writerId": "musa_jangaziev",
-      "name": "Муса Джангазиев",
+      "name": "Муса Жангазиев",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3539,19 +2627,25 @@
     {
       "countryId": "liberia",
       "writerId": "bai_t_moore",
-      "name": "Бай Т. Мур",
+      "name": "Бай Тамиа Мур",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "liberia",
+      "writerId": "wilton_sankawulo",
+      "name": "Уилтон Санкавуло",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "liechtenstein",
       "writerId": "ida_ospelt_amann",
-      "name": "Ида Оспельт-Амман",
+      "name": "Ида Оспельт-Аманн",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "liechtenstein",
       "writerId": "hansjorg_quaderer",
-      "name": "Хансйорг Квенцель",
+      "name": "Хансйорг Квадерер",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3588,12 +2682,6 @@
       "countryId": "madagascar",
       "writerId": "flavien_ranaivo",
       "name": "Флавьен Ранаиво",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
-      "countryId": "madagascar",
-      "writerId": "jean_francois_samlong",
-      "name": "Жан-Франсуа Самлон",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3647,7 +2735,7 @@
     {
       "countryId": "mauritania",
       "writerId": "moussa_ould_ebnou",
-      "name": "Муса Ульд Эбну",
+      "name": "Мусса ульд Эбну",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3665,7 +2753,7 @@
     {
       "countryId": "mauritius",
       "writerId": "khal_torabully",
-      "name": "Хал Торрабулли",
+      "name": "Хал Торабулли",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3718,38 +2806,44 @@
     },
     {
       "countryId": "mozambique",
+      "writerId": "virgilio_de_lemos",
+      "name": "Виржилиу де Лемуш",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "mozambique",
       "writerId": "eduardo_white",
       "name": "Эдуарду Уайт",
       "reason": "license:GFDL"
     },
     {
       "countryId": "myanmar",
-      "writerId": "ma_ma_lay",
-      "name": "Ма Ма Лэй",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
-      "countryId": "myanmar",
       "writerId": "theippan_maung_wa",
-      "name": "Тхейппан Маунг Ва",
+      "name": "Тейппан Маун Ва",
       "reason": "свободный портрет не подтверждён"
     },
     {
-      "countryId": "namibia",
-      "writerId": "gustav_frolich",
-      "name": "Густав Фрёлих",
+      "countryId": "netherlands",
+      "writerId": "betje_wolff",
+      "name": "Бетје Вольф",
+      "reason": "mime:image/gif"
+    },
+    {
+      "countryId": "new_zealand",
+      "writerId": "allen_curnow",
+      "name": "Аллен Карноу",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "new_zealand",
+      "writerId": "bruce_mason",
+      "name": "Брюс Мейсон",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "new_zealand",
       "writerId": "damien_wilkins",
-      "name": "Дамиан Уилкинс",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
-      "countryId": "new_zealand",
-      "writerId": "steven_baker",
-      "name": "Стивен Бикер",
+      "name": "Дэмиен Уилкинс",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3760,26 +2854,38 @@
     },
     {
       "countryId": "niger",
-      "writerId": "ibrahim_adam",
-      "name": "Ибрахим Адам",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
-      "countryId": "niger",
       "writerId": "mariama_hima",
       "name": "Мариама Хима",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "nigeria",
+      "writerId": "d_o_fagunwa",
+      "name": "Д. О. Фагунва",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "nigeria",
       "writerId": "helon_habila",
       "name": "Хелон Хабила",
-      "reason": "license:GFDL 1.2"
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "countryId": "north_korea",
+      "writerId": "paek_nam_nyong",
+      "name": "Пэк Нам Рён",
+      "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "oman",
       "writerId": "abu_muslim_al_bahlani",
       "name": "Абу Муслим аль-Бахляни",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "oman",
+      "writerId": "jokha_alharthi",
+      "name": "Джоха аль-Харси",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3831,15 +2937,15 @@
       "reason": "свободный портрет не подтверждён"
     },
     {
-      "countryId": "papua_new_guinea",
-      "writerId": "vincent_eri",
-      "name": "Винсент Эри",
+      "countryId": "panama",
+      "writerId": "rogelio_sinan",
+      "name": "Рохелио Синан",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "papua_new_guinea",
-      "writerId": "raymond_gat",
-      "name": "Рэймонд Гат",
+      "writerId": "vincent_eri",
+      "name": "Винсент Эри",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3868,6 +2974,12 @@
     },
     {
       "countryId": "republic_of_congo",
+      "writerId": "sylvain_bemba",
+      "name": "Сильвен Бемба",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "republic_of_congo",
       "writerId": "sony_labou_tansi",
       "name": "Сони Лабу Танси",
       "reason": "свободный портрет не подтверждён"
@@ -3882,6 +2994,18 @@
       "countryId": "republic_of_congo",
       "writerId": "daniel_biyaoula",
       "name": "Даниэль Бийола",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "russia",
+      "writerId": "pelevin",
+      "name": "Виктор Олегович Пелевин",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "russia",
+      "writerId": "robert_shtilmark",
+      "name": "Роберт Александрович Штильмарк",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3929,7 +3053,7 @@
     {
       "countryId": "seychelles",
       "writerId": "guy_lionnet",
-      "name": "Ги Лионнет",
+      "name": "Ги Лионне",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3940,8 +3064,14 @@
     },
     {
       "countryId": "singapore",
+      "writerId": "edwin_thumboo",
+      "name": "Эдвин Тамбу",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "singapore",
       "writerId": "kuo_pao_kun",
-      "name": "Куо Пайк Шан",
+      "name": "Куо Пао Кун",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -3970,12 +3100,6 @@
     },
     {
       "countryId": "south_africa",
-      "writerId": "alan_paton",
-      "name": "Алан Пейтон",
-      "reason": "license:GFDL"
-    },
-    {
-      "countryId": "south_africa",
       "writerId": "alex_la_guma",
       "name": "Алекс Ла Гума",
       "reason": "свободный портрет не подтверждён"
@@ -3983,7 +3107,7 @@
     {
       "countryId": "south_africa",
       "writerId": "zakes_mda",
-      "name": "Зукесва Мда",
+      "name": "Закес Мда",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -4029,12 +3153,6 @@
       "reason": "свободный портрет не подтверждён"
     },
     {
-      "countryId": "spain",
-      "writerId": "juan_ruiz",
-      "name": "Хуан Руис",
-      "reason": "свободный портрет не подтверждён"
-    },
-    {
       "countryId": "sri_lanka",
       "writerId": "ediriweera_sarachchandra",
       "name": "Эдиривира Сараччандра",
@@ -4053,6 +3171,18 @@
       "reason": "свободный портрет не подтверждён"
     },
     {
+      "countryId": "sudan",
+      "writerId": "taj_el_sir",
+      "name": "Амир Тадж ас-Сир",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "sweden",
+      "writerId": "stieg_larsson",
+      "name": "Стиг Ларссон",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
       "countryId": "syria",
       "writerId": "zakaria_tamer",
       "name": "Закария Тамер",
@@ -4062,6 +3192,12 @@
       "countryId": "syria",
       "writerId": "hanna_mina",
       "name": "Ханна Мина",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "tajikistan",
+      "writerId": "fazliddin_muhammadiev",
+      "name": "Фазлиддин Мухаммадиев",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -4079,13 +3215,19 @@
     {
       "countryId": "tanzania",
       "writerId": "ebrahim_hussein",
-      "name": "Эфраим Хусейн",
+      "name": "Эбрахим Хусейн",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "tanzania",
       "writerId": "euphrase_kezilahabi",
-      "name": "Эфраим Киазилахаби",
+      "name": "Эфрас Кезилахаби",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "tanzania",
+      "writerId": "said_ahmed_mohamed",
+      "name": "Саид Ахмед Мохамед",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -4097,7 +3239,7 @@
     {
       "countryId": "thailand",
       "writerId": "saneh_sangsuk",
-      "name": "Санех Сангсук",
+      "name": "Санэ Сангсук",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -4127,13 +3269,19 @@
     {
       "countryId": "turkmenistan",
       "writerId": "kemine",
-      "name": "Кемине",
+      "name": "Мехметвели Кемине",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "turkmenistan",
       "writerId": "aman_kekilov",
       "name": "Аман Кекилов",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "uae",
+      "writerId": "ousha_al_suwaidi",
+      "name": "Оша бинт Халифа аль-Сувайди",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -4145,13 +3293,13 @@
     {
       "countryId": "uganda",
       "writerId": "timothy_wangusa",
-      "name": "Тимоти Ваньяра",
+      "name": "Тимоти Вангуса",
       "reason": "свободный портрет не подтверждён"
     },
     {
       "countryId": "uganda",
       "writerId": "moses_isegawa",
-      "name": "Мозес Исекава",
+      "name": "Мозес Исегава",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -4163,7 +3311,19 @@
     {
       "countryId": "uganda",
       "writerId": "byron_kawadwa",
-      "name": "Байрон Каваду",
+      "name": "Байрон Кавадва",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "uruguay",
+      "writerId": "silvia_lago",
+      "name": "Сильвия Лаго",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "usa",
+      "writerId": "thomas_harris",
+      "name": "Томас Харрис",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -4188,6 +3348,12 @@
       "countryId": "uzbekistan",
       "writerId": "odil_yoqubov",
       "name": "Одил Якубов",
+      "reason": "свободный портрет не подтверждён"
+    },
+    {
+      "countryId": "venezuela",
+      "writerId": "eugenio_montejo",
+      "name": "Эухенио Монтехо",
       "reason": "свободный портрет не подтверждён"
     },
     {
@@ -4221,11 +3387,1975 @@
       "reason": "license:GFDL"
     }
   ],
+  "readyCandidates": [
+    {
+      "countryId": "albania",
+      "writerId": "jeronim_de_rada",
+      "name": "Иероним де Рада",
+      "wikidataId": "Q1527077",
+      "filename": "Jeronim de Rada (i ri).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jeronim_de_Rada_(i_ri).jpg",
+      "portrait": "assets/writer-portraits/q1527077.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jeronim_de_Rada_(i_ri).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "albania",
+      "writerId": "fan_noli",
+      "name": "Фан Ноли",
+      "wikidataId": "Q366307",
+      "filename": "Fan Stilian Noli.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fan_Stilian_Noli.jpg",
+      "portrait": "assets/writer-portraits/q366307.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fan_Stilian_Noli.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "angola",
+      "writerId": "ana_paula_tavares",
+      "name": "Ана Паулина Тавареш",
+      "wikidataId": "Q460121",
+      "filename": "Ana Paula Tavares, Festival Literário Internacional de Óbidos, 2024.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ana_Paula_Tavares,_Festival_Liter%C3%A1rio_Internacional_de_%C3%93bidos,_2024.png",
+      "portrait": "assets/writer-portraits/q460121.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "creator": "ÓBIDOS TV",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ana_Paula_Tavares,_Festival_Liter%C3%A1rio_Internacional_de_%C3%93bidos,_2024.png",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "australia",
+      "writerId": "markus_zusak",
+      "name": "Маркус Зусак",
+      "wikidataId": "Q61522",
+      "filename": "Markus Zusak 2019 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Markus_Zusak_2019_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q61522.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "creator": "Library of Congress Life",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Markus_Zusak_2019_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "azerbaijan",
+      "writerId": "imadaddin_nasimi",
+      "name": "Имадеддин Насими",
+      "wikidataId": "Q982506",
+      "filename": "Portrait of Nasimi.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Nasimi.jpg",
+      "portrait": "assets/writer-portraits/q982506.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Processed by Andrei Sdobnikov",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portrait_of_Nasimi.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "azerbaijan",
+      "writerId": "muhammad_fuzuli",
+      "name": "Мухаммед Физули",
+      "wikidataId": "Q178379",
+      "filename": "Fuzûlî.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fuz%C3%BBl%C3%AE.jpg",
+      "portrait": "assets/writer-portraits/q178379.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Aşık Çelebi",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fuz%C3%BBl%C3%AE.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "bahrain",
+      "writerId": "qassim_haddad",
+      "name": "Касим Хаддад",
+      "wikidataId": "Q6829735",
+      "filename": "2013 Qassim Haddad, Nuenen.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2013_Qassim_Haddad,_Nuenen.jpg",
+      "portrait": "assets/writer-portraits/q6829735.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Elliottbuckley",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2013_Qassim_Haddad,_Nuenen.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "belarus",
+      "writerId": "vintsent_dunin_martsinkevich",
+      "name": "Винцент Дунин-Марцинкевич",
+      "wikidataId": "Q3008609",
+      "filename": "Wincenty Dunin-Marcinkiewicz 2.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wincenty_Dunin-Marcinkiewicz_2.jpg",
+      "portrait": "assets/writer-portraits/q3008609.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Antoni Prószyński",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wincenty_Dunin-Marcinkiewicz_2.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "belarus",
+      "writerId": "francisak_bahushevich",
+      "name": "Франтишек Богушевич",
+      "wikidataId": "Q2996666",
+      "filename": "Francišak Bahuševič. Францішак Багушэвіч (1880-89) (4).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Franci%C5%A1ak_Bahu%C5%A1evi%C4%8D._%D0%A4%D1%80%D0%B0%D0%BD%D1%86%D1%96%D1%88%D0%B0%D0%BA_%D0%91%D0%B0%D0%B3%D1%83%D1%88%D1%8D%D0%B2%D1%96%D1%87_(1880-89)_(4).jpg",
+      "portrait": "assets/writer-portraits/q2996666.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Franci%C5%A1ak_Bahu%C5%A1evi%C4%8D._%D0%A4%D1%80%D0%B0%D0%BD%D1%86%D1%96%D1%88%D0%B0%D0%BA_%D0%91%D0%B0%D0%B3%D1%83%D1%88%D1%8D%D0%B2%D1%96%D1%87_(1880-89)_(4).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "bhutan",
+      "writerId": "ngawang_namgyal",
+      "name": "Жабдрунг Нгаванг Намгьял",
+      "wikidataId": "Q337583",
+      "filename": "Shabdrung rubin.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shabdrung_rubin.png",
+      "portrait": "assets/writer-portraits/q337583.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Shabdrung_rubin.png",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "bhutan",
+      "writerId": "dzongsar_khyentse",
+      "name": "Дзонгсар Кхьенце Ринпоче",
+      "wikidataId": "Q730984",
+      "filename": "Dzongsar Jamyang Khyentse Rinpoche.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dzongsar_Jamyang_Khyentse_Rinpoche.jpg",
+      "portrait": "assets/writer-portraits/q730984.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "creator": "Pedro Rocha",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dzongsar_Jamyang_Khyentse_Rinpoche.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "brazil",
+      "writerId": "goncalves_dias",
+      "name": "Гонсалвес Диас",
+      "wikidataId": "Q611997",
+      "filename": "Gonçalves Dias.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gon%C3%A7alves_Dias.png",
+      "portrait": "assets/writer-portraits/q611997.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Édouard Viénot",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gon%C3%A7alves_Dias.png",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "brazil",
+      "writerId": "joao_guimaraes_rosa",
+      "name": "Жуан Гимарайнс Роза",
+      "wikidataId": "Q13012",
+      "filename": "Guimarães Rosa, anos 1960.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Guimar%C3%A3es_Rosa,_anos_1960.jpg",
+      "portrait": "assets/writer-portraits/q13012.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown Unknown",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Guimar%C3%A3es_Rosa,_anos_1960.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "chile",
+      "writerId": "marta_brunet",
+      "name": "Марта Брунет",
+      "wikidataId": "Q275648",
+      "filename": "Marta Brunet (1943).JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marta_Brunet_(1943).JPG",
+      "portrait": "assets/writer-portraits/q275648.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Desconocido - Revista En Viaje",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marta_Brunet_(1943).JPG",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "czechia",
+      "writerId": "karel_capek",
+      "name": "Карел Чапек",
+      "wikidataId": "Q155855",
+      "filename": "Karel Čapek podepisuje první výtisky Povětroně, Pestrý týden 27.1.1934.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karel_%C4%8Capek_podepisuje_prvn%C3%AD_v%C3%BDtisky_Pov%C4%9Btron%C4%9B,_Pestr%C3%BD_t%C3%BDden_27.1.1934.jpg",
+      "portrait": "assets/writer-portraits/q155855.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karel_%C4%8Capek_podepisuje_prvn%C3%AD_v%C3%BDtisky_Pov%C4%9Btron%C4%9B,_Pestr%C3%BD_t%C3%BDden_27.1.1934.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "democratic_republic_of_congo",
+      "writerId": "v_y_mudimbe",
+      "name": "Валантен-Ив Мудимбе",
+      "wikidataId": "Q3056528",
+      "filename": "01 V. Y. Mudimbe 2013 (profile).jpeg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:01_V._Y._Mudimbe_2013_(profile).jpeg",
+      "portrait": "assets/writer-portraits/q3056528.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "creator": "ALICE CES",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:01_V._Y._Mudimbe_2013_(profile).jpeg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "djibouti",
+      "writerId": "abdourahman_waberi",
+      "name": "Абдурахман Али Вабери",
+      "wikidataId": "Q308454",
+      "filename": "Abdourahmanwaberi.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Abdourahmanwaberi.jpg",
+      "portrait": "assets/writer-portraits/q308454.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "Paolo Montanaro",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Abdourahmanwaberi.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "ecuador",
+      "writerId": "jorge_icaza",
+      "name": "Хорхе Икаса",
+      "wikidataId": "Q961263",
+      "filename": "Jorgeicaza.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jorgeicaza.png",
+      "portrait": "assets/writer-portraits/q961263.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "creator": "Jorge Icaza",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jorgeicaza.png",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "england",
+      "writerId": "rudyard_kipling",
+      "name": "Джозеф Редьярд Киплинг",
+      "wikidataId": "Q34743",
+      "filename": "Kipling nd.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kipling_nd.jpg",
+      "portrait": "assets/writer-portraits/q34743.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Bain News Service, publisher",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kipling_nd.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "england",
+      "writerId": "percy_shelley",
+      "name": "Перси Биши Шелли",
+      "wikidataId": "Q93343",
+      "filename": "Percy Bysshe Shelley by Alfred Clint.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Percy_Bysshe_Shelley_by_Alfred_Clint.jpg",
+      "portrait": "assets/writer-portraits/q93343.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "After Amelia Curran",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Percy_Bysshe_Shelley_by_Alfred_Clint.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "england",
+      "writerId": "h_g_wells",
+      "name": "Герберт Джордж Уэллс",
+      "wikidataId": "Q42511",
+      "filename": "H.G. Wells by Beresford.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:H.G._Wells_by_Beresford.jpg",
+      "portrait": "assets/writer-portraits/q42511.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "George Charles Beresford",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:H.G._Wells_by_Beresford.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "england",
+      "writerId": "david_mitchell",
+      "name": "Дэвид Стивен Митчелл",
+      "wikidataId": "Q40479",
+      "filename": "David Mitchell by Kubik.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:David_Mitchell_by_Kubik.JPG",
+      "portrait": "assets/writer-portraits/q40479.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 2.5",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+        "creator": "Mariusz Kubik, http://www.mariuszkubik.pl",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:David_Mitchell_by_Kubik.JPG",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "ethiopia",
+      "writerId": "kebede_michael",
+      "name": "Кебеде Михаэль",
+      "wikidataId": "Q3194578",
+      "filename": "Dr Kebede Mikael.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dr_Kebede_Mikael.jpg",
+      "portrait": "assets/writer-portraits/q3194578.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "BKSeifu",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dr_Kebede_Mikael.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "france",
+      "writerId": "marie_de_france",
+      "name": "Мария Французская",
+      "wikidataId": "Q5617",
+      "filename": "Marie de France detail from BNF Arsenal MS 3142 f 256.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marie_de_France_detail_from_BNF_Arsenal_MS_3142_f_256.jpg",
+      "portrait": "assets/writer-portraits/q5617.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Richard of Verdun",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Marie_de_France_detail_from_BNF_Arsenal_MS_3142_f_256.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "france",
+      "writerId": "montesquieu",
+      "name": "Шарль Луи де Монтескьё",
+      "wikidataId": "Q15975",
+      "filename": "Montesquieu 1.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Montesquieu_1.png",
+      "portrait": "assets/writer-portraits/q15975.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "After Jacques-Antoine Dassier",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Montesquieu_1.png",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "france",
+      "writerId": "beaumarchais",
+      "name": "Пьер Огюстен Карон де Бомарше",
+      "wikidataId": "Q70326",
+      "filename": "D'après Jean-Marc Nattier, Portrait de Pierre-Augustin Caron de Beaumarchais (Bibliothèque-musée de la Comédie-Française) -001.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%27apr%C3%A8s_Jean-Marc_Nattier,_Portrait_de_Pierre-Augustin_Caron_de_Beaumarchais_(Biblioth%C3%A8que-mus%C3%A9e_de_la_Com%C3%A9die-Fran%C3%A7aise)_-001.jpg",
+      "portrait": "assets/writer-portraits/q70326.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "After Jean-Marc Nattier",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:D%27apr%C3%A8s_Jean-Marc_Nattier,_Portrait_de_Pierre-Augustin_Caron_de_Beaumarchais_(Biblioth%C3%A8que-mus%C3%A9e_de_la_Com%C3%A9die-Fran%C3%A7aise)_-001.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "france",
+      "writerId": "francois_mauriac",
+      "name": "Франсуа Шарль Мориак",
+      "wikidataId": "Q81685",
+      "filename": "Mauriac Harcourt 1945 2.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mauriac_Harcourt_1945_2.jpg",
+      "portrait": "assets/writer-portraits/q81685.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Studio Harcourt",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mauriac_Harcourt_1945_2.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "france",
+      "writerId": "louis_ferdinand_celine",
+      "name": "Луи-Фердинанд Селин",
+      "wikidataId": "Q151820",
+      "filename": "L.-F. Céline.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:L.-F._C%C3%A9line.jpg",
+      "portrait": "assets/writer-portraits/q151820.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Agence Meurisse",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:L.-F._C%C3%A9line.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "french_guiana",
+      "writerId": "leon_gontran_damas",
+      "name": "Леон-Гонтран Дамас",
+      "wikidataId": "Q983363",
+      "filename": "CLR James and Léon Damas, 2nd Congress of African People, San Diego, 1972 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:CLR_James_and_L%C3%A9on_Damas,_2nd_Congress_of_African_People,_San_Diego,_1972_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q983363.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:CLR_James_and_L%C3%A9on_Damas,_2nd_Congress_of_African_People,_San_Diego,_1972_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "germany",
+      "writerId": "paul_heyse",
+      "name": "Пауль Йохан Людвиг фон Хейзе",
+      "wikidataId": "Q76487",
+      "filename": "Porträt des Paul Heyse (1853) - Adolf Friedrich Erdmann von Menzel (Museum Georg Schäfer).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portr%C3%A4t_des_Paul_Heyse_(1853)_-_Adolf_Friedrich_Erdmann_von_Menzel_(Museum_Georg_Sch%C3%A4fer).jpg",
+      "portrait": "assets/writer-portraits/q76487.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Adolph von Menzel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portr%C3%A4t_des_Paul_Heyse_(1853)_-_Adolf_Friedrich_Erdmann_von_Menzel_(Museum_Georg_Sch%C3%A4fer).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "ghana",
+      "writerId": "joseph_casely_hayford",
+      "name": "Джозеф Эфраим Кейсли-Хейфорд",
+      "wikidataId": "Q327522",
+      "filename": "J. E. Casely-Hayford.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:J._E._Casely-Hayford.jpg",
+      "portrait": "assets/writer-portraits/q327522.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Northwestern University (NU)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:J._E._Casely-Hayford.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "india",
+      "writerId": "mirabai",
+      "name": "Мирабаи",
+      "wikidataId": "Q466330",
+      "filename": "Meerabai painting.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meerabai_painting.jpg",
+      "portrait": "assets/writer-portraits/q466330.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "creator": "Onef9day",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meerabai_painting.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "india",
+      "writerId": "munshi_premchand",
+      "name": "Мунши Премчанд",
+      "wikidataId": "Q174152",
+      "filename": "Prem chand.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prem_chand.jpg",
+      "portrait": "assets/writer-portraits/q174152.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "Ankur8563",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prem_chand.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "india",
+      "writerId": "r_k_narayan",
+      "name": "Р. К. Нараян",
+      "wikidataId": "Q334252",
+      "filename": "RK Narayan in Mysore.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:RK_Narayan_in_Mysore.jpg",
+      "portrait": "assets/writer-portraits/q334252.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "R. K. Balaraman (photographer)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:RK_Narayan_in_Mysore.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "india",
+      "writerId": "amit_chaudhuri",
+      "name": "Амит Чаудхури",
+      "wikidataId": "Q472352",
+      "filename": "Amit Chaudhuri - Kolkata 2014-01-31 8218.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amit_Chaudhuri_-_Kolkata_2014-01-31_8218.JPG",
+      "portrait": "assets/writer-portraits/q472352.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "creator": "Biswarup Ganguly",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amit_Chaudhuri_-_Kolkata_2014-01-31_8218.JPG",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "israel",
+      "writerId": "david_grossman",
+      "name": "Давид Гроссман",
+      "wikidataId": "Q160263",
+      "filename": "David Grossman Bibliothèques idéales Strasbourg 4 septembre 2015.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:David_Grossman_Biblioth%C3%A8ques_id%C3%A9ales_Strasbourg_4_septembre_2015.jpg",
+      "portrait": "assets/writer-portraits/q160263.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "Photo Claude TRUONG-NGOC",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:David_Grossman_Biblioth%C3%A8ques_id%C3%A9ales_Strasbourg_4_septembre_2015.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "japan",
+      "writerId": "yosano_akiko",
+      "name": "Ёсано Акико",
+      "wikidataId": "Q464104",
+      "filename": "Akiko Yosano.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akiko_Yosano.jpg",
+      "portrait": "assets/writer-portraits/q464104.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "published by 東洋文化協會 (The Eastern Culture Association)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akiko_Yosano.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "japan",
+      "writerId": "ishikawa_takuboku",
+      "name": "Исикава Такубоку",
+      "wikidataId": "Q467747",
+      "filename": "Takuboku Ishikawa.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Takuboku_Ishikawa.jpg",
+      "portrait": "assets/writer-portraits/q467747.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Takuboku_Ishikawa.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "japan",
+      "writerId": "akutagawa_ryunosuke",
+      "name": "Акутагава Рюноскэ",
+      "wikidataId": "Q186326",
+      "filename": "Akutagawa Ryunosuke photo.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akutagawa_Ryunosuke_photo.jpg",
+      "portrait": "assets/writer-portraits/q186326.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Akutagawa_Ryunosuke_photo.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "japan",
+      "writerId": "tanizaki_junichiro",
+      "name": "Танидзаки Дзюнъитиро",
+      "wikidataId": "Q316213",
+      "filename": "Junichiro Tanizaki 02.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Junichiro_Tanizaki_02.jpg",
+      "portrait": "assets/writer-portraits/q316213.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Junichiro_Tanizaki_02.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "japan",
+      "writerId": "kataoka_teppei",
+      "name": "Катаока Тэппэй",
+      "wikidataId": "Q1735602",
+      "filename": "Teppei Kataoka.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teppei_Kataoka.jpg",
+      "portrait": "assets/writer-portraits/q1735602.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "heibonsha",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teppei_Kataoka.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "kazakhstan",
+      "writerId": "ybyrai_altynsarin",
+      "name": "Ыбырай Алтынсарин",
+      "wikidataId": "Q2628401",
+      "filename": "Altynsarin.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altynsarin.jpg",
+      "portrait": "assets/writer-portraits/q2628401.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altynsarin.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "kazakhstan",
+      "writerId": "olzhas_suleimenov",
+      "name": "Олжас Сулейменов",
+      "wikidataId": "Q2628409",
+      "filename": "Oljas Suleymenov.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oljas_Suleymenov.jpg",
+      "portrait": "assets/writer-portraits/q2628409.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "creator": "Ivan Bessedin",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oljas_Suleymenov.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "kyrgyzstan",
+      "writerId": "chyngyz_aitmatov",
+      "name": "Чингиз Айтматов",
+      "wikidataId": "Q484292",
+      "filename": "Chinghiz Aitmatov (2006-02-21).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chinghiz_Aitmatov_(2006-02-21).jpg",
+      "portrait": "assets/writer-portraits/q484292.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "creator": "Госсоветник Татарстана",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chinghiz_Aitmatov_(2006-02-21).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "lebanon",
+      "writerId": "khalil_gibran",
+      "name": "Халиль Джебран",
+      "wikidataId": "Q47737",
+      "filename": "Kahlil Gibran 1913.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kahlil_Gibran_1913.jpg",
+      "portrait": "assets/writer-portraits/q47737.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kahlil_Gibran_1913.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "libya",
+      "writerId": "ahmed_rafiq_al_mahdaoui",
+      "name": "Ахмед Рафик аль-Махдави",
+      "wikidataId": "Q4695975",
+      "filename": "Ahmed Rafiq.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ahmed_Rafiq.JPG",
+      "portrait": "assets/writer-portraits/q4695975.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ahmed_Rafiq.JPG",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "madagascar",
+      "writerId": "jean_joseph_rabearivelo",
+      "name": "Жан-Жозеф Рабеаривело",
+      "wikidataId": "Q671601",
+      "filename": "Jean-Joseph Rabearivelo.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jean-Joseph_Rabearivelo.jpg",
+      "portrait": "assets/writer-portraits/q671601.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Anonymous Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jean-Joseph_Rabearivelo.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "malaysia",
+      "writerId": "kemala",
+      "name": "Кемала",
+      "wikidataId": "Q4072987",
+      "filename": "Kemala 4.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kemala_4.jpg",
+      "portrait": "assets/writer-portraits/q4072987.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "В.А. Погадаев",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kemala_4.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "marshall_islands",
+      "writerId": "kathy_jetnil_kijiner",
+      "name": "Кэти Джетнил-Киджинер",
+      "wikidataId": "Q42883452",
+      "filename": "Kathy Jetn̄il-Kijiner, 2018.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kathy_Jetn%CC%84il-Kijiner,_2018.jpg",
+      "portrait": "assets/writer-portraits/q42883452.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Kara Schumacher",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kathy_Jetn%CC%84il-Kijiner,_2018.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "mexico",
+      "writerId": "elena_poniatowska",
+      "name": "Элена Понятовская",
+      "wikidataId": "Q261397",
+      "filename": "Elena Poniatowska.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Elena_Poniatowska.JPG",
+      "portrait": "assets/writer-portraits/q261397.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "creator": "Pedrobautista",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Elena_Poniatowska.JPG",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "mexico",
+      "writerId": "guadalupe_nettel",
+      "name": "Гуадалупе Неттель",
+      "wikidataId": "Q3118678",
+      "filename": "Guadalupe Nettel 5.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Guadalupe_Nettel_5.jpg",
+      "portrait": "assets/writer-portraits/q3118678.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "creator": "Mely Avila",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Guadalupe_Nettel_5.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "montenegro",
+      "writerId": "nikola_i_petrovic",
+      "name": "Никола I Петрович Негош",
+      "wikidataId": "Q283255",
+      "filename": "King Nicholas of Montenegro (1911).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:King_Nicholas_of_Montenegro_(1911).jpg",
+      "portrait": "assets/writer-portraits/q283255.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Bain News Service, publisher",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:King_Nicholas_of_Montenegro_(1911).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "morocco",
+      "writerId": "fatima_mernissi",
+      "name": "Фатима Мернисси",
+      "wikidataId": "Q242376",
+      "filename": "Fatima Mernissi 2004 Al Azm Mernissi Soroush Mernissi cropped.tiff",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fatima_Mernissi_2004_Al_Azm_Mernissi_Soroush_Mernissi_cropped.tiff",
+      "portrait": "assets/writer-portraits/q242376.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Praemium Erasmianum Foundation",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fatima_Mernissi_2004_Al_Azm_Mernissi_Soroush_Mernissi_cropped.tiff",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "nepal",
+      "writerId": "bp_koirala",
+      "name": "Бишвешвар Прасад Коирала",
+      "wikidataId": "Q560515",
+      "filename": "BP Koirala.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:BP_Koirala.jpg",
+      "portrait": "assets/writer-portraits/q560515.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:BP_Koirala.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "new_zealand",
+      "writerId": "jane_mander",
+      "name": "Джейн Мандер",
+      "wikidataId": "Q6152520",
+      "filename": "Jane Mander 1890s.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jane_Mander_1890s.jpg",
+      "portrait": "assets/writer-portraits/q6152520.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jane_Mander_1890s.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "new_zealand",
+      "writerId": "c_k_stead",
+      "name": "Кристиан Карлсон Стед",
+      "wikidataId": "Q559631",
+      "filename": "C.K. Stead (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:C.K._Stead_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q559631.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "creator": "New Zealand Government, Office of the Governor-General",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:C.K._Stead_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "new_zealand",
+      "writerId": "patricia_grace",
+      "name": "Патриция Грейс",
+      "wikidataId": "Q138882",
+      "filename": "Patricia Grace in 2016 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Patricia_Grace_in_2016_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q138882.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Marcushobsonauthor",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Patricia_Grace_in_2016_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "new_zealand",
+      "writerId": "elizabeth_knox",
+      "name": "Элизабет Нокс",
+      "wikidataId": "Q5363083",
+      "filename": "Elizabeth Knox CNZM (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Elizabeth_Knox_CNZM_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q5363083.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "creator": "New Zealand Government, Office of the Governor-General",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Elizabeth_Knox_CNZM_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "new_zealand",
+      "writerId": "fiona_kidman",
+      "name": "Фиона Кидман",
+      "wikidataId": "Q3072714",
+      "filename": "Fiona Kidman 2024 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fiona_Kidman_2024_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q3072714.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "creator": "New Zealand Government, Office of the Governor-General",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fiona_Kidman_2024_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "new_zealand",
+      "writerId": "bill_manhire",
+      "name": "Билл Манхайр",
+      "wikidataId": "Q4910026",
+      "filename": "Bill Manhire.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bill_Manhire.jpg",
+      "portrait": "assets/writer-portraits/q4910026.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "creator": "NZatFrankfurt",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bill_Manhire.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "nicaragua",
+      "writerId": "gioconda_belli",
+      "name": "Джоконда Белли",
+      "wikidataId": "Q290491",
+      "filename": "Gioconda Belli announces the release of her novel El intenso calor de la luna (15598872740).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gioconda_Belli_announces_the_release_of_her_novel_El_intenso_calor_de_la_luna_(15598872740).jpg",
+      "portrait": "assets/writer-portraits/q290491.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "creator": "Jorge Mejía peralta from Managua, Nicaragua",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gioconda_Belli_announces_the_release_of_her_novel_El_intenso_calor_de_la_luna_(15598872740).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "niue",
+      "writerId": "john_pule",
+      "name": "Джон Пуле",
+      "wikidataId": "Q1222678",
+      "filename": "John Pule in 2024 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Pule_in_2024_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q1222678.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "US Embassy New Zealand",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Pule_in_2024_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "norway",
+      "writerId": "jon_fosse",
+      "name": "Юн Фоссе",
+      "wikidataId": "Q443868",
+      "filename": "Writer Jon Fosse (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Writer_Jon_Fosse_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q443868.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Tom A. Kolstad/Det norske samlaget.",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Writer_Jon_Fosse_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "paraguay",
+      "writerId": "gabriel_casaccia",
+      "name": "Габриэль Касаксиа",
+      "wikidataId": "Q2639230",
+      "filename": "Gabriel Casaccia.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gabriel_Casaccia.jpg",
+      "portrait": "assets/writer-portraits/q2639230.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Ezlpy",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gabriel_Casaccia.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "peru",
+      "writerId": "mario_bellatin",
+      "name": "Марио Беллатин",
+      "wikidataId": "Q2156253",
+      "filename": "Bellatin, Mario FILSA 20171110 fRF04.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bellatin,_Mario_FILSA_20171110_fRF04.jpg",
+      "portrait": "assets/writer-portraits/q2156253.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Rodrigo Fernández",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bellatin,_Mario_FILSA_20171110_fRF04.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "philippines",
+      "writerId": "edith_tiempo",
+      "name": "Эдит Тьемпо",
+      "wikidataId": "Q2577431",
+      "filename": "Edith Tiempo 2019 stamp of the Philippines.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Edith_Tiempo_2019_stamp_of_the_Philippines.jpg",
+      "portrait": "assets/writer-portraits/q2577431.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Philippine Postal Corporation",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Edith_Tiempo_2019_stamp_of_the_Philippines.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "poland",
+      "writerId": "wladyslaw_reymont",
+      "name": "Владислав Станислав Реймонт",
+      "wikidataId": "Q121180",
+      "filename": "Wladyslaw Reymont 1897 (71364799) (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wladyslaw_Reymont_1897_(71364799)_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q121180.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wladyslaw_Reymont_1897_(71364799)_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "portugal",
+      "writerId": "eca_de_queiros",
+      "name": "Эса де Кейрош",
+      "wikidataId": "Q316327",
+      "filename": "Eça de Queirós c. 1882.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:E%C3%A7a_de_Queir%C3%B3s_c._1882.jpg",
+      "portrait": "assets/writer-portraits/q316327.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Photographia Contemporanea In O Contemporâneo, nº 108, Lisboa [1882], p. [1]",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:E%C3%A7a_de_Queir%C3%B3s_c._1882.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "republic_of_congo",
+      "writerId": "jean_baptiste_tati_loutard",
+      "name": "Жан-Батист Тати Лутард",
+      "wikidataId": "Q1541759",
+      "filename": "Tati-Loutard.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tati-Loutard.jpg",
+      "portrait": "assets/writer-portraits/q1541759.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 2.5",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.5",
+        "creator": "Kama Sywor Kamanda",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tati-Loutard.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "russia",
+      "writerId": "mikhail_zoshchenko",
+      "name": "Михаил Михайлович Зощенко",
+      "wikidataId": "Q360507",
+      "filename": "Mikhail Zoshchenko Rasskazy.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mikhail_Zoshchenko_Rasskazy.jpg",
+      "portrait": "assets/writer-portraits/q360507.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mikhail_Zoshchenko_Rasskazy.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "sao_tome_and_principe",
+      "writerId": "alda_do_espirito_santo",
+      "name": "Алда ду Эшпириту Санту",
+      "wikidataId": "Q457401",
+      "filename": "Alda Neves da Graça do Espírito Santo.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alda_Neves_da_Gra%C3%A7a_do_Esp%C3%ADrito_Santo.jpg",
+      "portrait": "assets/writer-portraits/q457401.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Women in African History: an E-Learning Tool; CC-BY-SA UNESCO/N.N.",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alda_Neves_da_Gra%C3%A7a_do_Esp%C3%ADrito_Santo.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "south_africa",
+      "writerId": "sol_plaatje",
+      "name": "Сол Платже",
+      "wikidataId": "Q2143151",
+      "filename": "Sol Plaatje 002.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sol_Plaatje_002.jpg",
+      "portrait": "assets/writer-portraits/q2143151.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Anonymous Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sol_Plaatje_002.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "south_africa",
+      "writerId": "eskia_mphahlele",
+      "name": "Эскиа Мпахлеле",
+      "wikidataId": "Q1372674",
+      "filename": "Es'kia Mphahlele-borsbeeld, Pretoria.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Es%27kia_Mphahlele-borsbeeld,_Pretoria.jpg",
+      "portrait": "assets/writer-portraits/q1372674.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "JMK",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Es%27kia_Mphahlele-borsbeeld,_Pretoria.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "south_africa",
+      "writerId": "jm_coetzee",
+      "name": "Дж. М. Кутзее",
+      "wikidataId": "Q43293",
+      "filename": "J.M. Coetzee.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:J.M._Coetzee.JPG",
+      "portrait": "assets/writer-portraits/q43293.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 2.5",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+        "creator": "Mariusz Kubik, http://www.mariuszkubik.pl",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:J.M._Coetzee.JPG",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "south_korea",
+      "writerId": "il_yeon",
+      "name": "Ирён",
+      "wikidataId": "Q484286",
+      "filename": "Portraits of kings at Tongiljeon.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portraits_of_kings_at_Tongiljeon.jpg",
+      "portrait": "assets/writer-portraits/q484286.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Christophe95",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Portraits_of_kings_at_Tongiljeon.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "spain",
+      "writerId": "jose_echegaray",
+      "name": "Хосе Эчегарай-и-Эйсагирре",
+      "wikidataId": "Q127349",
+      "filename": "José Echegaray y Eizaguirre.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jos%C3%A9_Echegaray_y_Eizaguirre.jpg",
+      "portrait": "assets/writer-portraits/q127349.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Nobel Foundation archive",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jos%C3%A9_Echegaray_y_Eizaguirre.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "spain",
+      "writerId": "vicente_aleixandre",
+      "name": "Висенте Алейксандре",
+      "wikidataId": "Q134644",
+      "filename": "Spaanse dichter en nobelprijswinnaar Vicente Alexandre, Bestanddeelnr 929-3851.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spaanse_dichter_en_nobelprijswinnaar_Vicente_Alexandre,_Bestanddeelnr_929-3851.jpg",
+      "portrait": "assets/writer-portraits/q134644.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "creator": "Anefo",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spaanse_dichter_en_nobelprijswinnaar_Vicente_Alexandre,_Bestanddeelnr_929-3851.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "sudan",
+      "writerId": "tayeb_salih",
+      "name": "Аль-Тайиб Салих",
+      "wikidataId": "Q561434",
+      "filename": "Tayeb saleh.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tayeb_saleh.jpg",
+      "portrait": "assets/writer-portraits/q561434.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "Engfrompalestine",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tayeb_saleh.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "sweden",
+      "writerId": "harry_martinson",
+      "name": "Харри Эдмунд Мартинсон",
+      "wikidataId": "Q132695",
+      "filename": "Harry Martinson.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Harry_Martinson.jpg",
+      "portrait": "assets/writer-portraits/q132695.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Gunnar Herbert Lundh",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Harry_Martinson.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "sweden",
+      "writerId": "tomas_transtromer",
+      "name": "Тумас Йоста Транстрёмер",
+      "wikidataId": "Q42122",
+      "filename": "Tomas Tranströmer 2012-05-04 001 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tomas_Transtr%C3%B6mer_2012-05-04_001_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q42122.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "creator": "Pia Nordlander / bildN",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tomas_Transtr%C3%B6mer_2012-05-04_001_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "switzerland",
+      "writerId": "carl_spitteler",
+      "name": "Карл Фридрих Георг Шпиттелер",
+      "wikidataId": "Q226525",
+      "filename": "Carl Spitteler 1919.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carl_Spitteler_1919.jpg",
+      "portrait": "assets/writer-portraits/q226525.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "A. B. Lagrelius & Westphal, Stockholm",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carl_Spitteler_1919.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "taiwan",
+      "writerId": "zhong_lihe",
+      "name": "Чжун Ли-хэ",
+      "wikidataId": "Q700821",
+      "filename": "Chung li ho 1941.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chung_li_ho_1941.jpg",
+      "portrait": "assets/writer-portraits/q700821.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chung_li_ho_1941.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "tunisia",
+      "writerId": "aboul_qacem_echebbi",
+      "name": "Абу-ль-Касем аш-Шабби",
+      "wikidataId": "Q335543",
+      "filename": "Aboul Kacem Chebbi.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aboul_Kacem_Chebbi.jpg",
+      "portrait": "assets/writer-portraits/q335543.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aboul_Kacem_Chebbi.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "uae",
+      "writerId": "habib_al_sayegh",
+      "name": "Хабиб Юсеф ас-Сайег",
+      "wikidataId": "Q12207054",
+      "filename": "حبيب الصايغ.JPG",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D8%AD%D8%A8%D9%8A%D8%A8_%D8%A7%D9%84%D8%B5%D8%A7%D9%8A%D8%BA.JPG",
+      "portrait": "assets/writer-portraits/q12207054.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "Ahmad K Hasan",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D8%AD%D8%A8%D9%8A%D8%A8_%D8%A7%D9%84%D8%B5%D8%A7%D9%8A%D8%BA.JPG",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "ukraine",
+      "writerId": "ivan_kotliarevsky",
+      "name": "Иван Котляревский",
+      "wikidataId": "Q455246",
+      "filename": "Іван Котляревський cropped.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%86%D0%B2%D0%B0%D0%BD_%D0%9A%D0%BE%D1%82%D0%BB%D1%8F%D1%80%D0%B5%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_cropped.jpg",
+      "portrait": "assets/writer-portraits/q455246.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Іван_Котляревський.jpg : unknown derivative work: Gnesener1900",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%86%D0%B2%D0%B0%D0%BD_%D0%9A%D0%BE%D1%82%D0%BB%D1%8F%D1%80%D0%B5%D0%B2%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_cropped.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "uruguay",
+      "writerId": "jose_enrique_rodo",
+      "name": "Хосе Энрике Родо",
+      "wikidataId": "Q734054",
+      "filename": "José Enrique Rodó.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jos%C3%A9_Enrique_Rod%C3%B3.jpg",
+      "portrait": "assets/writer-portraits/q734054.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jos%C3%A9_Enrique_Rod%C3%B3.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "uruguay",
+      "writerId": "emilio_frugoni",
+      "name": "Эмилио Фругони",
+      "wikidataId": "Q166298",
+      "filename": "Pasaje Frugoni.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasaje_Frugoni.jpg",
+      "portrait": "assets/writer-portraits/q166298.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "Fedaro",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pasaje_Frugoni.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "uruguay",
+      "writerId": "mario_levrero",
+      "name": "Марио Левреро",
+      "wikidataId": "Q3293478",
+      "filename": "Homenaje a Mario Levrero.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Homenaje_a_Mario_Levrero.jpg",
+      "portrait": "assets/writer-portraits/q3293478.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Fernando da Rosa (fedaro)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Homenaje_a_Mario_Levrero.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "uruguay",
+      "writerId": "claudia_amenedo",
+      "name": "Клаудия Аменгуаль",
+      "wikidataId": "Q1532132",
+      "filename": "Foto de C Amengual.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Foto_de_C_Amengual.jpg",
+      "portrait": "assets/writer-portraits/q1532132.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Fadesga",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Foto_de_C_Amengual.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "vladimir_nabokov",
+      "name": "Владимир Набоков",
+      "wikidataId": "Q36591",
+      "filename": "Vladimir Nabokov 1973.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vladimir_Nabokov_1973.jpg",
+      "portrait": "assets/writer-portraits/q36591.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Walter Mori (Mondadori Publishers)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vladimir_Nabokov_1973.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "paul_auster",
+      "name": "Пол Остер",
+      "wikidataId": "Q214642",
+      "filename": "Paul Auster BBF 2010 Shankbone.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paul_Auster_BBF_2010_Shankbone.jpg",
+      "portrait": "assets/writer-portraits/q214642.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "creator": "David Shankbone",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paul_Auster_BBF_2010_Shankbone.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "pearl_s_buck",
+      "name": "Перл Сайденстрикер Бак",
+      "wikidataId": "Q80900",
+      "filename": "Pearl Buck (Nobel).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pearl_Buck_(Nobel).jpg",
+      "portrait": "assets/writer-portraits/q80900.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown (see print without name",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pearl_Buck_(Nobel).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "louise_gluck",
+      "name": "Луиза Элизабет Глюк",
+      "wikidataId": "Q2344210",
+      "filename": "Louise Glück circa 1977.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Louise_Gl%C3%BCck_circa_1977.jpg",
+      "portrait": "assets/writer-portraits/q2344210.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Gerard Malanga",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Louise_Gl%C3%BCck_circa_1977.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "richard_matheson",
+      "name": "Ричард Матесон",
+      "wikidataId": "Q325130",
+      "filename": "Richard Matheson (crop).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Richard_Matheson_(crop).jpg",
+      "portrait": "assets/writer-portraits/q325130.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "JaSunni at PicasaWeb",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Richard_Matheson_(crop).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "mario_puzo",
+      "name": "Марио Джанлуиджи Пьюзо",
+      "wikidataId": "Q182870",
+      "filename": "Mario Puzo 1972 (cropped).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mario_Puzo_1972_(cropped).jpg",
+      "portrait": "assets/writer-portraits/q182870.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Bernard Gotfryd",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mario_Puzo_1972_(cropped).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "chuck_palahniuk",
+      "name": "Чак Паланик",
+      "wikidataId": "Q268181",
+      "filename": "Chuck Palahniuk (21955).jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chuck_Palahniuk_(21955).jpg",
+      "portrait": "assets/writer-portraits/q268181.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "creator": "Rhododendrites",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chuck_Palahniuk_(21955).jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "dr_seuss",
+      "name": "Теодор Сьюз Гайзель",
+      "wikidataId": "Q298685",
+      "filename": "Ted Geisel NYWTS 2 crop.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ted_Geisel_NYWTS_2_crop.jpg",
+      "portrait": "assets/writer-portraits/q298685.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Al Ravenna, New York World-Telegram and the Sun staff photographer",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ted_Geisel_NYWTS_2_crop.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "dennis_lehane",
+      "name": "Деннис Лихэйн",
+      "wikidataId": "Q311744",
+      "filename": "Dennis Lehane BBF 2010 Shankbone crop.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dennis_Lehane_BBF_2010_Shankbone_crop.jpg",
+      "portrait": "assets/writer-portraits/q311744.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "creator": "David Shankbone",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dennis_Lehane_BBF_2010_Shankbone_crop.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "michael_connelly",
+      "name": "Майкл Коннелли",
+      "wikidataId": "Q313193",
+      "filename": "MConnelly.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:MConnelly.jpg",
+      "portrait": "assets/writer-portraits/q313193.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "creator": "Mark Coggins from San Francisco",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:MConnelly.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "john_irving",
+      "name": "Джон Ирвинг",
+      "wikidataId": "Q310379",
+      "filename": "John Irving Hengelo 2.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Irving_Hengelo_2.jpg",
+      "portrait": "assets/writer-portraits/q310379.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "creator": "Dr. Jost Hindersmann Krimidoedel",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:John_Irving_Hengelo_2.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "usa",
+      "writerId": "tom_clancy",
+      "name": "Том Клэнси",
+      "wikidataId": "Q105167",
+      "filename": "Tom Clancy at Burns Library cropped.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tom_Clancy_at_Burns_Library_cropped.jpg",
+      "portrait": "assets/writer-portraits/q105167.webp",
+      "portraitRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "creator": "Gary Wayne Gilbert",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tom_Clancy_at_Burns_Library_cropped.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "uzbekistan",
+      "writerId": "mahmudhoja_behbudi",
+      "name": "Махмудходжа Бехбуди",
+      "wikidataId": "Q1884979",
+      "filename": "Photograph of Mahmud Khoja Behbudiy.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Photograph_of_Mahmud_Khoja_Behbudiy.jpg",
+      "portrait": "assets/writer-portraits/q1884979.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Photograph_of_Mahmud_Khoja_Behbudiy.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    },
+    {
+      "countryId": "vietnam",
+      "writerId": "vu_trong_phung",
+      "name": "Ву Чонг Фунг",
+      "wikidataId": "Q1611010",
+      "filename": "Vu Trong Phung.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vu_Trong_Phung.jpg",
+      "portrait": "assets/writer-portraits/q1611010.webp",
+      "portraitRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vu_Trong_Phung.jpg",
+        "checkedAt": "2026-08-31"
+      }
+    }
+  ],
+  "lowResolutionPortraits": [
+    {
+      "qid": "Q161842",
+      "filename": "Jaan Kross (1987) by Guenter Prust.jpg",
+      "sourceWidth": 184,
+      "sourceHeight": 250,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jaan_Kross_(1987)_by_Guenter_Prust.jpg"
+    },
+    {
+      "qid": "Q339020",
+      "filename": "Christopher Okigbo.jpg",
+      "sourceWidth": 150,
+      "sourceHeight": 167,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Christopher_Okigbo.jpg"
+    },
+    {
+      "qid": "Q102071",
+      "filename": "Tove Jansson 1956b.jpg",
+      "sourceWidth": 184,
+      "sourceHeight": 253,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tove_Jansson_1956b.jpg"
+    },
+    {
+      "qid": "Q921435",
+      "filename": "KofiAwoonor.jpg",
+      "sourceWidth": 98,
+      "sourceHeight": 147,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:KofiAwoonor.jpg"
+    },
+    {
+      "qid": "Q561434",
+      "filename": "Tayeb saleh.jpg",
+      "sourceWidth": 300,
+      "sourceHeight": 225,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tayeb_saleh.jpg"
+    },
+    {
+      "qid": "Q186630",
+      "filename": "ErnestoSabato001.JPG",
+      "sourceWidth": 196,
+      "sourceHeight": 276,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:ErnestoSabato001.JPG"
+    },
+    {
+      "qid": "Q259841",
+      "filename": "Lesmurray.jpg",
+      "sourceWidth": 158,
+      "sourceHeight": 181,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lesmurray.jpg"
+    },
+    {
+      "qid": "Q1393103",
+      "filename": "Svetozar Ćorović.jpg",
+      "sourceWidth": 150,
+      "sourceHeight": 188,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Svetozar_%C4%86orovi%C4%87.jpg"
+    },
+    {
+      "qid": "Q313593",
+      "filename": "Michael Ondaatje redux.jpg",
+      "sourceWidth": 181,
+      "sourceHeight": 207,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Michael_Ondaatje_redux.jpg"
+    },
+    {
+      "qid": "Q1355682",
+      "filename": "ETavares3a3.jpg",
+      "sourceWidth": 182,
+      "sourceHeight": 263,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:ETavares3a3.jpg"
+    },
+    {
+      "qid": "Q2939388",
+      "filename": "Carlos Luis Fallas Retrato.jpeg",
+      "sourceWidth": 140,
+      "sourceHeight": 180,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carlos_Luis_Fallas_Retrato.jpeg"
+    },
+    {
+      "qid": "Q610015",
+      "filename": "Matos.jpg",
+      "sourceWidth": 128,
+      "sourceHeight": 156,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Matos.jpg"
+    },
+    {
+      "qid": "Q325428",
+      "filename": "Miroslav Krleža 1953.jpg",
+      "sourceWidth": 193,
+      "sourceHeight": 279,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Miroslav_Krle%C5%BEa_1953.jpg"
+    },
+    {
+      "qid": "Q967740",
+      "filename": "Aden Robleh Awaleh in 2006.jpg",
+      "sourceWidth": 133,
+      "sourceHeight": 168,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aden_Robleh_Awaleh_in_2006.jpg"
+    },
+    {
+      "qid": "Q1650875",
+      "filename": "Pablo Palacio.jpg",
+      "sourceWidth": 200,
+      "sourceHeight": 241,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pablo_Palacio.jpg"
+    },
+    {
+      "qid": "Q981929",
+      "filename": "Tahtawi.jpg",
+      "sourceWidth": 150,
+      "sourceHeight": 216,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tahtawi.jpg"
+    },
+    {
+      "qid": "Q6700406",
+      "filename": "Luis cardoza y Aragón.jpg",
+      "sourceWidth": 134,
+      "sourceHeight": 168,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Luis_cardoza_y_Arag%C3%B3n.jpg"
+    },
+    {
+      "qid": "Q1740716",
+      "filename": "Khushwantsingh.jpg",
+      "sourceWidth": 200,
+      "sourceHeight": 175,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Khushwantsingh.jpg"
+    },
+    {
+      "qid": "Q4159911",
+      "filename": "Ilyas Zhansugurov.jpg",
+      "sourceWidth": 159,
+      "sourceHeight": 200,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ilyas_Zhansugurov.jpg"
+    },
+    {
+      "qid": "Q1393229",
+      "filename": "Rexhep Qosja (cropped).jpg",
+      "sourceWidth": 144,
+      "sourceHeight": 137,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rexhep_Qosja_(cropped).jpg"
+    },
+    {
+      "qid": "Q5460279",
+      "filename": "Flora Brovina.jpg",
+      "sourceWidth": 150,
+      "sourceHeight": 223,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flora_Brovina.jpg"
+    },
+    {
+      "qid": "Q1573895",
+      "filename": "Manwel-dimech.jpg",
+      "sourceWidth": 150,
+      "sourceHeight": 202,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Manwel-dimech.jpg"
+    },
+    {
+      "qid": "Q575350",
+      "filename": "Dun Karm Psaila (1938).jpg",
+      "sourceWidth": 107,
+      "sourceHeight": 142,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dun_Karm_Psaila_(1938).jpg"
+    },
+    {
+      "qid": "Q2773385",
+      "filename": "ليلى أبو زيد.jpg",
+      "sourceWidth": 200,
+      "sourceHeight": 235,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D9%84%D9%8A%D9%84%D9%89_%D8%A3%D8%A8%D9%88_%D8%B2%D9%8A%D8%AF.jpg"
+    },
+    {
+      "qid": "Q472110",
+      "filename": "Blaže Koneski 1968.jpg",
+      "sourceWidth": 196,
+      "sourceHeight": 282,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bla%C5%BEe_Koneski_1968.jpg"
+    },
+    {
+      "qid": "Q496828",
+      "filename": "Kim Sowol.jpg",
+      "sourceWidth": 136,
+      "sourceHeight": 196,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kim_Sowol.jpg"
+    },
+    {
+      "qid": "Q83184",
+      "filename": "Jacinto Benavente.jpg",
+      "sourceWidth": 162,
+      "sourceHeight": 227,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jacinto_Benavente.jpg"
+    },
+    {
+      "qid": "Q496165",
+      "filename": "PortraitMahmoudMessadi.jpg",
+      "sourceWidth": 197,
+      "sourceHeight": 295,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:PortraitMahmoudMessadi.jpg"
+    },
+    {
+      "qid": "Q234289",
+      "filename": "Halide adivar.jpg",
+      "sourceWidth": 200,
+      "sourceHeight": 243,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Halide_adivar.jpg"
+    },
+    {
+      "qid": "Q2080832",
+      "filename": "Berdy Kerbabayev.jpg",
+      "sourceWidth": 160,
+      "sourceHeight": 214,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berdy_Kerbabayev.jpg"
+    },
+    {
+      "qid": "Q182658",
+      "filename": "Harper Lee Medal (cropped).jpg",
+      "sourceWidth": 169,
+      "sourceHeight": 244,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Harper_Lee_Medal_(cropped).jpg"
+    },
+    {
+      "qid": "Q255339",
+      "filename": "Donna Tartt.jpg",
+      "sourceWidth": 167,
+      "sourceHeight": 251,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Donna_Tartt.jpg"
+    },
+    {
+      "qid": "Q3113009",
+      "filename": "Grace Mera Molisa.jpg",
+      "sourceWidth": 171,
+      "sourceHeight": 261,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grace_Mera_Molisa.jpg"
+    },
+    {
+      "qid": "Q1358685",
+      "filename": "Anonimo 010.JPG",
+      "sourceWidth": 194,
+      "sourceHeight": 257,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anonimo_010.JPG"
+    },
+    {
+      "qid": "Q4665920",
+      "filename": "Al-Hamdi and Bardoni (cropped).jpg",
+      "sourceWidth": 147,
+      "sourceHeight": 206,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Al-Hamdi_and_Bardoni_(cropped).jpg"
+    },
+    {
+      "qid": "Q174152",
+      "filename": "Prem chand.jpg",
+      "sourceWidth": 194,
+      "sourceHeight": 259,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prem_chand.jpg"
+    },
+    {
+      "qid": "Q2143151",
+      "filename": "Sol Plaatje 002.jpg",
+      "sourceWidth": 204,
+      "sourceHeight": 228,
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sol_Plaatje_002.jpg"
+    }
+  ],
   "rejectedFiles": [
     {
       "qid": "Q9575",
       "filename": "Harivansh Rai Bachchan 2003 stamp of India.jpg",
       "reason": "license:GODL-India"
+    },
+    {
+      "qid": "Q19015",
+      "filename": "Andreas Eschbach.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
     },
     {
       "qid": "Q59206",
@@ -4240,7 +5370,12 @@
     {
       "qid": "Q121778",
       "filename": "Ha jin 8693.jpg",
-      "reason": "license:GFDL 1.2"
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q197456",
+      "filename": "趙樹理老舍楊朔合影.jpg",
+      "reason": "territorial-or-use-restriction"
     },
     {
       "qid": "Q19800",
@@ -4263,9 +5398,44 @@
       "reason": "license:Attribution"
     },
     {
+      "qid": "Q76158",
+      "filename": "Carolina michaelis de vasconcelos 1911.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q228801",
+      "filename": "Colleen McCullough (1977).jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q291505",
+      "filename": "Anaemilialahitte.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
       "qid": "Q361623",
       "filename": "Alan Paton.jpg",
-      "reason": "license:GFDL"
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q1185444",
+      "filename": "Velia marquez demetrio aguilera malta.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q237914",
+      "filename": "Juana de Ibarbourou from Estampas de la Biblia (cropped).jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q453768",
+      "filename": "Generacion del 45 (cropped - Amanda Berenguer).jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q195008",
+      "filename": "Generacion del 45.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
     },
     {
       "qid": "Q133657",
@@ -4273,14 +5443,39 @@
       "reason": "license:FAL"
     },
     {
+      "qid": "Q41772",
+      "filename": "Steineriklunde.JPG",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q15969",
+      "filename": "Jean Améry par Félix De Boeck 1951.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
       "qid": "Q274334",
       "filename": "Svetlana Alexievich asv2024-01.jpg",
       "reason": "license:FAL"
     },
     {
+      "qid": "Q235308",
+      "filename": "Elizabeth Bowen (cropped).png",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q233046",
+      "filename": "Anne McCaffrey 2005.JPG",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q316292",
+      "filename": "Ken Saro-Wisa close-up (cropped).jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
       "qid": "Q1371444",
       "filename": "Helon Habila B283438.jpg",
-      "reason": "license:GFDL 1.2"
+      "reason": "territorial-or-use-restriction"
     },
     {
       "qid": "Q127348",
@@ -4303,14 +5498,49 @@
       "reason": "license:Copyrighted free use"
     },
     {
+      "qid": "Q267698",
+      "filename": "Leena Lehtolainen.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q323088",
+      "filename": "Vaino-Nuorteva-1930s.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q80064",
+      "filename": "Elias Canetti 2.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
       "qid": "Q545100",
       "filename": "Petya Dubarova aged 16 - Restoration.jpg",
       "reason": "license:Attribution"
     },
     {
+      "qid": "Q84455",
+      "filename": "Ödön von Horváth.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
       "qid": "Q41464",
       "filename": "Filip-David-Udruzenje-Crnogoraca-Kosova-04.jpg",
       "reason": "license:Attribution"
+    },
+    {
+      "qid": "Q256657",
+      "filename": "Miha Mazzini.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q712853",
+      "filename": "Dinko Simunovic.jpeg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q157313",
+      "filename": "Assia-Djebar (cropped).jpg",
+      "reason": "licensed-file-missing-attribution-creator"
     },
     {
       "qid": "Q715932",
@@ -4328,6 +5558,11 @@
       "reason": "license:Copyrighted free use"
     },
     {
+      "qid": "Q2226193",
+      "filename": "Said Akl.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
       "qid": "Q1393458",
       "filename": "Georges Schehadé vers 1987.jpg",
       "reason": "license:Copyrighted free use"
@@ -4338,14 +5573,39 @@
       "reason": "mime:image/gif"
     },
     {
+      "qid": "Q274071",
+      "filename": "Tracy Chamoun, Noursat Jordan - Oct 20, 2018.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q314787",
+      "filename": "Tariq Ali.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
       "qid": "Q274302",
       "filename": "Lina Kostenko (cropped).jpg",
       "reason": "license:GFDL"
     },
     {
+      "qid": "Q25973",
+      "filename": "Hermann Hesse 2.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q76820",
+      "filename": "Bundesarchiv Bild 146-2005-0008, Carl Zuckmayer.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q446899",
+      "filename": "Le Ly Hayslip.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
       "qid": "Q4120336",
       "filename": "Linh dinh 7271397.jpg",
-      "reason": "license:GFDL 1.2"
+      "reason": "territorial-or-use-restriction"
     },
     {
       "qid": "Q3339363",
@@ -4353,9 +5613,19 @@
       "reason": "mime:image/gif"
     },
     {
+      "qid": "Q298224",
+      "filename": "Ama Ata Aidoo (2016).png",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
       "qid": "Q792956",
       "filename": "Ayi Kwei Armah.jpg",
       "reason": "license:GFDL"
+    },
+    {
+      "qid": "Q452860",
+      "filename": "Amma Darko.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
     },
     {
       "qid": "Q3364231",
@@ -4365,7 +5635,7 @@
     {
       "qid": "Q3081853",
       "filename": "Z francisco goldman 8304680.JPG",
-      "reason": "license:GFDL 1.2"
+      "reason": "territorial-or-use-restriction"
     },
     {
       "qid": "Q311592",
@@ -4393,6 +5663,21 @@
       "reason": "mime:image/gif"
     },
     {
+      "qid": "Q1134508",
+      "filename": "Chittadhar portrait.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q3325982",
+      "filename": "Monir Shafiq in Meeting of Participants in the International Conference on Unity with Ayatollah Khamenei.jpg01 (cropped).jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q6542304",
+      "filename": "Ahmad Rafic Awad, 4D Media Production - Aug 30, 2012.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
       "qid": "Q4901826",
       "filename": "M.C. Bhisadej Rajani.jpg",
       "reason": "license:GFDL"
@@ -4403,9 +5688,24 @@
       "reason": "license:Attribution"
     },
     {
+      "qid": "Q70986",
+      "filename": "LiAoAtFayuansi.JPG",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
       "qid": "Q704051",
       "filename": "憲政改造徵詢之旅－秘書長拜訪柏楊.jpg",
       "reason": "license:Attribution"
+    },
+    {
+      "qid": "Q697008",
+      "filename": "SF-Magazine-1963-January-3.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q736833",
+      "filename": "Jose Maria Sison portrait.jpg",
+      "reason": "territorial-or-use-restriction"
     },
     {
       "qid": "Q1565397",
@@ -4413,9 +5713,19 @@
       "reason": "license:Attribution"
     },
     {
+      "qid": "Q104439581",
+      "filename": "Pawo Choyning Dorji.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
       "qid": "Q176405",
       "filename": "Daína Chaviano.jpg",
       "reason": "license:GFDL"
+    },
+    {
+      "qid": "Q1280799",
+      "filename": "Norbert Berens 2012 g.JPG",
+      "reason": "licensed-file-missing-attribution-creator"
     },
     {
       "qid": "Q559545",
@@ -4428,6 +5738,11 @@
       "reason": "mime:image/gif"
     },
     {
+      "qid": "Q3302469",
+      "filename": "Mitrush Kuteli (portrait).jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
       "qid": "Q327500",
       "filename": "Joseph Furphy (Tom Collins).jpg",
       "reason": "license:No restrictions"
@@ -4436,6 +5751,21 @@
       "qid": "Q316785",
       "filename": "GregEgan.gif",
       "reason": "mime:image/gif"
+    },
+    {
+      "qid": "Q234908",
+      "filename": "Nizami Rug Crop.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q3116411",
+      "filename": "Jibanananda Das (1899-1954).jpg",
+      "reason": "imageinfo-missing"
+    },
+    {
+      "qid": "Q713284",
+      "filename": "Bundesarchiv Bild 102-12722, Felix Timmermanns.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
     },
     {
       "qid": "Q3780447",
@@ -4448,9 +5778,29 @@
       "reason": "license:No restrictions"
     },
     {
+      "qid": "Q2983255",
+      "filename": "Jose-asuncion-silva.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q361265",
+      "filename": "Karel Hynek Mácha - Jan Vilímek - České album.jpg",
+      "reason": "imageinfo-missing"
+    },
+    {
       "qid": "Q1710543",
       "filename": "Guitarras y bandurrias - sainete lírico en dos actos y en prosa (IA guitarrasybandur4181sout).pdf",
       "reason": "mime:application/pdf"
+    },
+    {
+      "qid": "Q6805151",
+      "filename": "Medardo angel silva foto.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q44183",
+      "filename": "William Golding 1983.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
     },
     {
       "qid": "Q215339",
@@ -4458,9 +5808,69 @@
       "reason": "mime:image/gif"
     },
     {
-      "qid": "Q465687",
-      "filename": "Fredrika Runeberg 1846, Society of Swedish Literature in Finland, Runebergbibliotekets bildsamling, slsa1160 587 (cropped).jpg",
-      "reason": "license:No restrictions"
+      "qid": "Q47293",
+      "filename": "Bundesarchiv Bild 183-R04034, Erich Maria Remarque (cropped).jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q227312",
+      "filename": "Móricz Zsigmond 1920 körül (Székely Aladár felvétele) - crop.jpg",
+      "reason": "imageinfo-missing"
+    },
+    {
+      "qid": "Q316217",
+      "filename": "Shusaku-Endo-1.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q557348",
+      "filename": "Auezov Mukhtar.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q4358032",
+      "filename": "A young Marjorie Oludhe Macgoye.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q37060",
+      "filename": "JSJoseSaramago.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q315885",
+      "filename": "Armand-Charles Caraffe, Denis Fonvizin, c. 1784-1785, Pushkin House Ж-95; from goskatalog.ru.jpg",
+      "reason": "imageinfo-missing"
+    },
+    {
+      "qid": "Q31215",
+      "filename": "Miloš Crnjanski crop.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q129533",
+      "filename": "Idea Vilariño.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q312407",
+      "filename": "John dos Passos.jpg",
+      "reason": "licensed-file-missing-attribution-creator"
+    },
+    {
+      "qid": "Q5636754",
+      "filename": "Habib Abdulrab Sarori, Belqees TV - Feb 29, 2020.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q33760",
+      "filename": "Bertrand Russell photo.jpg",
+      "reason": "territorial-or-use-restriction"
+    },
+    {
+      "qid": "Q183007",
+      "filename": "Betje Wolff.gif",
+      "reason": "mime:image/gif"
     }
   ],
   "downloadFailures": []

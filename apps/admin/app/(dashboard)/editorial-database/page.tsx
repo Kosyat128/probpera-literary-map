@@ -5,10 +5,22 @@ import {
   editorialCountry,
   editorialWriter,
 } from "@/lib/editorial-catalog";
+import { adminEnv } from "@/lib/env";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import {
+  effectiveStoredWriterBiographyTranslations,
+  parseStoredWriterBiographyTranslations,
+  writerBiographyMethods,
+  writerBiographySourceRights,
+  writerBiographySourcesJson,
+  writerBiographyStatuses,
+  type WriterBiographyLocale,
+  type WriterBiographyProfile,
+} from "@/lib/writer-biography-edit";
 import {
   publishEditorialDatabaseAction,
   saveEditorialProfileAction,
+  saveWriterBiographyAction,
 } from "./actions";
 
 export const metadata = { title: "Страны и авторы" };
@@ -20,6 +32,7 @@ type SearchParams = {
   publication?: string;
   error?: string;
   warning?: string;
+  translation?: string;
 };
 
 const countryFieldGroups = [
@@ -31,8 +44,25 @@ const countryFieldGroups = [
 const writerFieldGroups = [
   ["Имя и годы жизни", ["name", "fullName", "birth", "death", "years", "birthDate", "deathDate", "birthPlace", "deathPlace", "country", "nationality"]],
   ["Литературный профиль", ["movement", "literaryEra", "genres", "languages", "language", "tags", "category", "works", "awards", "places", "relatedWriters", "articleUrl"]],
-  ["Биография и изображения", ["bio", "biography", "description", "portrait", "portraitAlt", "portraitSourceUrl"]],
+  ["Описание", ["description"]],
 ] as const;
+
+const biographyTranslationMessages: Record<string, string> = {
+  translated:
+    "Автоматический перевод на английский создан, повторно проверен моделью и сохранён вместе со сведениями о происхождении текста.",
+  current: "Автоматический перевод на английский уже соответствует текущему русскому оригиналу.",
+  manual:
+    "Ручной английский перевод сохранён без изменений и не передан модели.",
+  skipped: adminEnv.openAiAutoTranslateProfiles
+    ? "Автоматический перевод на английский пропущен: проверьте статус русской версии и сведения о происхождении текста."
+    : "Автоматический перевод на английский приостановлен. Русская правка сохранена; модель не запускалась.",
+  "not-configured":
+    "Автоматический перевод на английский не настроен. Русская правка сохранена; устаревший машинный перевод не публикуется.",
+  conflict:
+    "Автоматический перевод на английский не записан: карточка изменилась параллельно. Обновите страницу и повторите сохранение.",
+  failed:
+    "Автоматический перевод на английский завершился ошибкой. Русская правка сохранена; устаревший машинный перевод не публикуется.",
+};
 
 const labels: Record<string, string> = {
   name: "Название / имя",
@@ -64,9 +94,6 @@ const labels: Record<string, string> = {
   deathDate: "Дата смерти",
   birthPlace: "Место рождения",
   deathPlace: "Место смерти",
-  portrait: "Портрет",
-  portraitAlt: "Описание портрета",
-  portraitSourceUrl: "Источник портрета",
   country: "Страна в карточке",
   movement: "Направление",
   literaryEra: "Литературная эпоха",
@@ -239,6 +266,12 @@ function ProfileEditor({
         type="hidden"
         value={expectedUpdatedAt || ""}
       />
+      {entityType === "writer" && (
+        <p className="editorial-note">
+          Портрет, описание, источник и сведения о правах защищены от раздельного
+          редактирования и публикуются только из проверенного каталога.
+        </p>
+      )}
       {groups.map(([title, fields]) => (
         <section className="editorial-field-group" key={title}>
           <header><h3>{title}</h3><p>Отметьте только те поля, которыми должна управлять админка.</p></header>
@@ -260,6 +293,245 @@ function ProfileEditor({
           Чтобы вернуться к проверенному исходнику, снимите отметку с поля.
         </p>
         <button className="button" type="submit">Сохранить и опубликовать</button>
+      </div>
+    </form>
+  );
+}
+
+const biographyMethodLabels: Record<string, string> = {
+  "editorial-original": "Редакционный оригинал",
+  "human-translation": "Ручной перевод",
+  "machine-translation": "Машинный перевод",
+  "licensed-source": "Лицензированный текст",
+};
+
+const biographyStatusLabels: Record<string, string> = {
+  draft: "Черновик",
+  reviewed: "Проверено",
+  verified: "Подтверждено",
+};
+
+const biographyRightsLabels: Record<string, string> = {
+  "project-original": "Оригинал проекта",
+  "public-domain": "Общественное достояние",
+  licensed: "Лицензия",
+  permission: "Разрешение правообладателя",
+};
+
+function BiographyLocaleEditor({
+  locale,
+  profile,
+  origin,
+}: {
+  locale: WriterBiographyLocale;
+  profile?: WriterBiographyProfile;
+  origin: "catalog" | "cms" | "empty";
+}) {
+  const upperLocale = locale.toUpperCase();
+  const defaultMethod =
+    profile?.method || (locale === "ru" ? "editorial-original" : "human-translation");
+  const translationMeta = plainRecord(profile?.translationMeta);
+  return (
+    <fieldset className="editorial-field-group writer-biography-locale">
+      <legend>{upperLocale} · структурированная биография</legend>
+      <label className="check-field">
+        <input
+          name={`${locale}_enabled`}
+          type="checkbox"
+          value="1"
+          defaultChecked={locale === "ru" || Boolean(profile)}
+          required={locale === "ru"}
+        />
+        <span>Хранить и публиковать языковую версию после проверки качества</span>
+      </label>
+      <p className="editorial-note">
+        Источник текущей записи: {origin === "cms" ? "CMS" : origin === "catalog" ? "закрытый каталог" : "не заполнено"}.
+      </p>
+      <label className="field">
+        <span>Текст {upperLocale}</span>
+        <textarea
+          name={`${locale}_text`}
+          defaultValue={profile?.text || ""}
+          rows={8}
+          maxLength={1_600}
+          placeholder="2-4 фактических предложения, 120-1600 символов"
+        />
+      </label>
+      <div className="editorial-field-grid">
+        <label className="field">
+          <span>Исходный язык</span>
+          <input
+            name={`${locale}_source_language`}
+            defaultValue={profile?.sourceLanguage || (locale === "ru" ? "Russian" : "Russian")}
+            maxLength={80}
+          />
+        </label>
+        <label className="field">
+          <span>Редакционный статус</span>
+          <select name={`${locale}_status`} defaultValue={profile?.status || "draft"}>
+            {writerBiographyStatuses.map((status) => (
+              <option key={status} value={status}>{biographyStatusLabels[status]}</option>
+            ))}
+          </select>
+        </label>
+        <label className="field">
+          <span>Метод создания</span>
+          <select name={`${locale}_method`} defaultValue={defaultMethod}>
+            {writerBiographyMethods.map((method) => (
+              <option key={method} value={method}>{biographyMethodLabels[method]}</option>
+            ))}
+          </select>
+        </label>
+        <label className="field">
+          <span>Дата проверки</span>
+          <input
+            name={`${locale}_reviewed_at`}
+            type="date"
+            defaultValue={profile?.reviewedAt || ""}
+          />
+        </label>
+        <label className="field">
+          <span>Проверяющий / переводчик</span>
+          <input
+            name={`${locale}_reviewer`}
+            defaultValue={profile?.reviewer || ""}
+            maxLength={300}
+          />
+        </label>
+        <label className="field">
+          <span>Переведено с</span>
+          <select
+            name={`${locale}_translated_from_locale`}
+            defaultValue={profile?.translatedFromLocale || (locale === "en" ? "ru" : "")}
+          >
+            <option value="">Не является переводом</option>
+            <option value="ru">RU</option>
+            <option value="en">EN</option>
+          </select>
+        </label>
+        <label className="field">
+          <span>Права на исходный текст</span>
+          <select
+            name={`${locale}_source_text_rights`}
+            defaultValue={profile?.sourceTextRights || (locale === "en" ? "project-original" : "")}
+          >
+            <option value="">Не применяется</option>
+            {writerBiographySourceRights.map((rights) => (
+              <option key={rights} value={rights}>{biographyRightsLabels[rights]}</option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <label className="field">
+        <span>Источники и права · JSON-массив</span>
+        <textarea
+          className="code-textarea"
+          name={`${locale}_sources_json`}
+          defaultValue={writerBiographySourcesJson(profile)}
+          rows={12}
+          spellCheck={false}
+        />
+        <small>
+          Обязательные поля: provider, HTTPS url, fields, usage и retrievedAt.
+          Допустимые fields: identity, life-dates, biography-facts, awards, works;
+          usage: structured-data, fact-check или licensed-copy. Для licensed-copy
+          укажите licenseName и licenseUrl.
+        </small>
+      </label>
+      {Object.keys(translationMeta).length > 0 && (
+        <details className="editorial-artwork-provenance">
+          <summary>Неизменяемые метаданные машинного перевода</summary>
+          <p>Модель: {String(translationMeta.model || "-")}</p>
+          <p>Проверяющая модель: {String(translationMeta.reviewerModel || "-")}</p>
+          <p>Хеш русского оригинала: <code>{String(translationMeta.sourceHash || "-")}</code></p>
+          <p>Создано: {String(translationMeta.generatedAt || "-")}</p>
+        </details>
+      )}
+    </fieldset>
+  );
+}
+
+function WriterBiographyEditor({
+  countryId,
+  writerId,
+  sourceFields,
+  overrideFields,
+  expectedUpdatedAt,
+}: {
+  countryId: string;
+  writerId: string;
+  sourceFields: Record<string, unknown>;
+  overrideFields: Record<string, unknown>;
+  expectedUpdatedAt?: string | null;
+}) {
+  const source = parseStoredWriterBiographyTranslations(
+    sourceFields.biographyTranslations
+  );
+  const override = parseStoredWriterBiographyTranslations(
+    overrideFields.biographyTranslations
+  );
+  const overrideOwnsLocaleMap = Object.hasOwn(
+    overrideFields,
+    "biographyTranslations"
+  );
+  const effective = effectiveStoredWriterBiographyTranslations(
+    sourceFields.biographyTranslations,
+    overrideFields.biographyTranslations
+  );
+  return (
+    <form
+      className="settings-stack writer-biography-editor"
+      action={saveWriterBiographyAction}
+    >
+      <input name="country_id" type="hidden" value={countryId} />
+      <input name="writer_id" type="hidden" value={writerId} />
+      <input
+        name="expected_updated_at"
+        type="hidden"
+        value={expectedUpdatedAt || ""}
+      />
+      <header>
+        <div>
+          <span className="eyebrow">Строгий отбор для публикации</span>
+          <h3>Биографии на русском и английском: происхождение текста и права</h3>
+          <p>
+            Публичный сайт использует именно эти структурированные языковые версии.{" "}
+            {adminEnv.openAiAutoTranslateProfiles
+              ? "Правка русского текста удаляет устаревший машинный перевод на английский и запускает новый двухпроходный перевод; ручной английский текст, включая черновик, модель никогда не заменяет."
+              : "Правка русского текста удаляет устаревший машинный перевод на английский. Автоматический перевод биографий сейчас приостановлен; английский текст можно сохранить вручную."}
+          </p>
+        </div>
+      </header>
+      <div className="dashboard-grid">
+        <BiographyLocaleEditor
+          locale="ru"
+          profile={effective.ru}
+          origin={overrideOwnsLocaleMap ? (override.ru ? "cms" : "empty") : source.ru ? "catalog" : "empty"}
+        />
+        <BiographyLocaleEditor
+          locale="en"
+          profile={effective.en}
+          origin={overrideOwnsLocaleMap ? (override.en ? "cms" : "empty") : source.en ? "catalog" : "empty"}
+        />
+      </div>
+      <div className="editorial-save-bar">
+        <div>
+          <p>
+            Сохранение защищено контролем конкурентных изменений, регистрируется в журнале аудита и ставит
+            публичную сборку в очередь. Языковая версия с ошибками не публикуется.
+          </p>
+          <label>
+            <input
+              name="confirm_manual_en_against_ru"
+              type="checkbox"
+              value="1"
+            />{" "}
+            Я повторно сверил(а) ручной английский перевод с изменённым русским оригиналом
+          </label>
+        </div>
+        <button className="button" type="submit">
+          Сохранить русский и английский тексты и опубликовать
+        </button>
       </div>
     </form>
   );
@@ -320,10 +592,23 @@ export default async function EditorialDatabasePage({
             ? "Переопределение удалено; сайт снова использует проверенную исходную запись."
             : query.result === "published"
               ? "Публикация всех сохранённых изменений запрошена."
+              : query.result === "biography-saved"
+                ? "Структурированные RU/EN-биографии сохранены и переданы в публикацию."
               : "Профиль сохранён и передан в публикацию."}
           {query.publication === "started" && " Сборка запущена."}
           {query.publication === "queued" && " Запрос сохранён в резервной очереди."}
           {query.publication === "queue-error" && " Не удалось записать резервную очередь - проверьте журнал."}
+        </p>
+      )}
+      {query.translation && biographyTranslationMessages[query.translation] && (
+        <p
+          className={`form-message ${
+            ["translated", "current", "manual"].includes(query.translation)
+              ? "form-success"
+              : ""
+          }`}
+        >
+          {biographyTranslationMessages[query.translation]}
         </p>
       )}
       {query.warning === "audit" && <p className="form-message">Профиль и публикация сохранены, но запись журнала требует проверки.</p>}
@@ -381,6 +666,13 @@ export default async function EditorialDatabasePage({
             </div>
           </header>
           <ProfileEditor entityType="writer" countryId={countryId} writerId={writerId} sourceFields={selectedWriter.fields} overrideFields={writerOverrideFields} expectedUpdatedAt={writerOverrideResult.data?.updated_at} />
+          <WriterBiographyEditor
+            countryId={countryId}
+            writerId={writerId}
+            sourceFields={selectedWriter.fields}
+            overrideFields={writerOverrideFields}
+            expectedUpdatedAt={writerOverrideResult.data?.updated_at}
+          />
         </section>
       )}
 

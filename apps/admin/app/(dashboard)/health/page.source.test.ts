@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 const source = readFileSync(
   path.join(process.cwd(), "apps/admin/app/(dashboard)/health/page.tsx"),
   "utf8"
-);
+).replace(/\r\n?/gu, "\n");
 
 describe("site health atomic article persistence card", () => {
   it("shows atomic RU+EN readiness only for the current production schema", () => {

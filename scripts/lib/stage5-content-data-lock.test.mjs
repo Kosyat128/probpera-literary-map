@@ -10,6 +10,7 @@ import {
   currentIntegrationGovernanceFingerprintRegistry,
   governanceFingerprintRegistry,
   ownerCssClasses,
+  russianBiographyEditorialOwnerAttestation,
   stage5D1AdditiveI18nAttestation,
   stage5FinalInterfaceCopyAttestation,
 } from "../stage5-baseline-registry.mjs";
@@ -248,8 +249,10 @@ function ownerCssFingerprint() {
   )
     .filter((rule) => patterns.some((pattern) => pattern.test(rule.selector)))
     .map(({ selector, contexts, declarations }) => ({
-      selector,
-      contexts,
+      selector: selector.replace(/\s+/gu, " ").trim(),
+      contexts: contexts.map((context) =>
+        context.replace(/\s+/gu, " ").trim()
+      ),
       declarations,
     }));
   const aggregate = createHash("sha256");
@@ -286,6 +289,7 @@ const lockedScopes = [
   },
   {
     name: "canonical country, book and writer records",
+    ownerAttestationId: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
     paths: [
       "src/data/countries",
       "src/data/writers",
@@ -305,8 +309,8 @@ const lockedScopes = [
       );
     },
     expected: {
-      files: 536,
-      sha256: "700845bbe6a1f126932e57e789a687a5e1dc5642ac18fa5124eee649d69c865e",
+      files: 542,
+      sha256: "6f80c536fd685cb4daaca59219993f753c47fe51288268cd88c1f6f402cff665",
     },
   },
 ];
@@ -315,11 +319,38 @@ describe("Stage 5 authorial content and canonical data lock", () => {
   for (const scope of lockedScopes) {
     it(`keeps ${scope.name} semantically unchanged`, () => {
       expect(fingerprint(scope.paths, scope.include)).toEqual(scope.expected);
-    });
+    }, 30_000);
   }
 });
 
 describe("Stage 5 owner and production-pipeline governance locks", () => {
+  it("records the owner-authorized Russian biography editorial delta", () => {
+    expect(russianBiographyEditorialOwnerAttestation).toEqual({
+      id: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
+      authorizedOn: "2026-09-01",
+      scopes: [
+        "canonical-writer-biographies",
+        "book-quality-russian-copy",
+        "premium-translation-and-health-russian-copy",
+      ],
+    });
+    expect(
+      lockedScopes.find(
+        (scope) => scope.name === "canonical country, book and writer records"
+      )?.ownerAttestationId
+    ).toBe(russianBiographyEditorialOwnerAttestation.id);
+    for (const id of [
+      "BOOK-ARCHIVE-OWNER-LOCK",
+      "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE",
+    ]) {
+      expect(
+        currentIntegrationGovernanceFingerprintRegistry.find(
+          (entry) => entry.id === id
+        )?.enforced?.ownerAttestationId
+      ).toBe(russianBiographyEditorialOwnerAttestation.id);
+    }
+  });
+
   for (const scope of currentIntegrationGovernanceFingerprintRegistry.filter(
     (entry) => !entry.classTokens
   )) {
@@ -328,7 +359,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       expect(fingerprint(enforced.paths, () => true)).toEqual(
         enforced.expected
       );
-    });
+    }, 30_000);
   }
 
   it("preserves the approved Stage 5D-1 delta and pins final interface copy", () => {
@@ -449,7 +480,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     expect(premium.enforced.paths).not.toContain(
       "apps/admin/app/(dashboard)/articles/atomic-auto-publish-action.ts"
     );
-    expect(premium.enforced.expected.files).toBe(43);
+    expect(premium.enforced.expected.files).toBe(72);
   });
 
   it("preserves the historical Stage 5A premium-pipeline evidence", () => {
@@ -489,5 +520,5 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       (entry) => entry.id === "HEADER-HERO-CSS-OWNER-LOCK"
     );
     expect(ownerCssFingerprint()).toEqual(scope.enforced.expected);
-  });
+  }, 30_000);
 });

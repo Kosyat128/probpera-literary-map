@@ -39,6 +39,17 @@ const writerPortraits = images.filter((item) =>
 const bookCovers = images.filter((item) =>
   item.relative.startsWith("brand/book-covers/")
 );
+const globeTexturePattern =
+  /^textures\/(?:antique-world-1887|behaim-1492-ravenstein-1908|hondius-rossi-1615|coronelli-1697|scherer-1700|cassini-globo-terrestre-1790|us-army-general-reference-1943|earth-blue-marble|modern-atlas-2026-(?:ru|en))(?:-mobile)?[.]webp$/u;
+const globeTextures = images.filter((item) =>
+  globeTexturePattern.test(item.relative)
+);
+const globeDesktopTextures = globeTextures.filter(
+  (item) => !item.relative.endsWith("-mobile.webp")
+);
+const globeMobileTextures = globeTextures.filter((item) =>
+  item.relative.endsWith("-mobile.webp")
+);
 const largestScript = scripts.toSorted((a, b) => b.bytes - a.bytes)[0];
 const mainScript = scripts
   .filter((item) => /^assets\/index-/u.test(item.relative))
@@ -48,7 +59,7 @@ const globeTexture = measured.find((item) =>
 );
 const oversizedImages = images.filter(
   (item) =>
-    item.relative !== globeTexture?.relative &&
+    !globeTexturePattern.test(item.relative) &&
     item.bytes > budget.individualImageBytes
 );
 
@@ -74,6 +85,10 @@ const bookCoverAverage = bookCovers.length
   : 0;
 const bookCoverMaximum = bookCovers.reduce(
   (maximum, item) => Math.max(maximum, item.bytes),
+  0
+);
+const globeTextureTotal = globeTextures.reduce(
+  (sum, item) => sum + item.bytes,
   0
 );
 const distExcludingBookCovers = total - bookCoverTotal;
@@ -494,6 +509,36 @@ if (largestScript) enforce(`largest JS gzip (${largestScript.relative})`, larges
 if (mainScript) enforce(`main JS (${mainScript.relative})`, mainScript.bytes, budget.mainJavaScriptBytes);
 if (mainScript) enforce(`main JS gzip (${mainScript.relative})`, mainScriptGzip, budget.mainJavaScriptGzipBytes);
 if (globeTexture) enforce("antique globe texture", globeTexture.bytes, budget.globeTextureBytes);
+if (!Number.isSafeInteger(budget.globeTextureCount) || budget.globeTextureCount < 0) {
+  recordFailure(
+    "globe texture count budget",
+    "performance-budget.json requires a non-negative globeTextureCount"
+  );
+} else if (globeTextures.length !== budget.globeTextureCount) {
+  recordFailure(
+    "globe texture count",
+    `${globeTextures.length} / ${budget.globeTextureCount} files`
+  );
+} else {
+  console.log(
+    `PASS globe texture count: ${globeTextures.length} / ${budget.globeTextureCount} files`
+  );
+}
+enforce("globe textures total", globeTextureTotal, budget.globeTextureTotalBytes);
+for (const texture of globeDesktopTextures) {
+  enforce(
+    `desktop globe texture ${texture.relative}`,
+    texture.bytes,
+    budget.globeDesktopTextureBytes
+  );
+}
+for (const texture of globeMobileTextures) {
+  enforce(
+    `mobile globe texture ${texture.relative}`,
+    texture.bytes,
+    budget.globeMobileTextureBytes
+  );
+}
 enforce("writer portraits total", writerPortraitTotal, budget.writerPortraitTotalBytes);
 enforce("writer portrait average", writerPortraitAverage, budget.writerPortraitAverageBytes);
 enforce("writer portrait maximum", writerPortraitMaximum, budget.writerPortraitMaximumBytes);

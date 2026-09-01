@@ -1,75 +1,14 @@
 {
-  "generatedAt": "2026-08-28T01:37:21.480Z",
+  "generatedAt": "2026-09-01T13:19:23.600Z",
   "summary": {
     "countryCards": 200,
-    "writerRecords": 1678,
-    "bookRecords": 9729,
-    "findings": 10,
+    "writerRecords": 1684,
+    "bookRecords": 9768,
+    "findings": 0,
     "critical": 0,
-    "review": 10
+    "review": 0
   },
   "critical": [],
-  "review": [
-    {
-      "identity": "writer:austria:elias_canetti",
-      "field": "biography",
-      "issue": "проверенная биография короче 180 знаков",
-      "severity": "review"
-    },
-    {
-      "identity": "writer:england:rudyard_kipling",
-      "field": "biography",
-      "issue": "проверенная биография короче 180 знаков",
-      "severity": "review"
-    },
-    {
-      "identity": "writer:england:william_shakespeare",
-      "field": "biography",
-      "issue": "проверенная биография короче 180 знаков",
-      "severity": "review"
-    },
-    {
-      "identity": "writer:france:sully_prudhomme",
-      "field": "biography",
-      "issue": "проверенная биография короче 180 знаков",
-      "severity": "review"
-    },
-    {
-      "identity": "writer:germany:theodor_mommsen",
-      "field": "biography",
-      "issue": "проверенная биография короче 180 знаков",
-      "severity": "review"
-    },
-    {
-      "identity": "writer:germany:rudolf_eucken",
-      "field": "biography",
-      "issue": "проверенная биография короче 180 знаков",
-      "severity": "review"
-    },
-    {
-      "identity": "writer:germany:paul_heyse",
-      "field": "biography",
-      "issue": "проверенная биография короче 180 знаков",
-      "severity": "review"
-    },
-    {
-      "identity": "writer:niger:mariama_hima",
-      "field": "biography",
-      "issue": "пробел перед знаком препинания",
-      "severity": "review"
-    },
-    {
-      "identity": "writer:niger:mariama_hima",
-      "field": "work",
-      "issue": "пробел перед знаком препинания",
-      "severity": "review"
-    },
-    {
-      "identity": "writer:north_macedonia:kocho_racin",
-      "field": "biography",
-      "issue": "проверенная биография короче 180 знаков",
-      "severity": "review"
-    }
-  ],
+  "review": [],
   "note": "Автоматическая проверка обнаруживает формальные дефекты и формирует очередь. Фактологический статус verified назначается только после сверки с указанными источниками."
 }

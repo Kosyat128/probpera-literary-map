@@ -6,6 +6,7 @@ import IconButton from "../ui/IconButton";
 import BrandCloseIcon from "./BrandCloseIcon";
 import BrandFilterIcon from "./BrandFilterIcon";
 import BrandSearchIcon from "./BrandSearchIcon";
+import BrandSparkleIcon from "./BrandSparkleIcon";
 import InterfaceLanguageControl from "./InterfaceLanguageControl";
 
 type Props = {
@@ -99,7 +100,7 @@ export default function AtlasExperienceChrome({
             size="md"
             surface="dark"
             variant="secondary"
-            startIcon={<span aria-hidden="true">✦</span>}
+            startIcon={<BrandSparkleIcon />}
             disabled={randomDisabled}
             aria-label={t("Случайное литературное путешествие")}
             data-atlas-action="random-journey"

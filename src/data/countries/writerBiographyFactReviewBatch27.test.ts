@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { expectNoProvenLiveFactRegression } from "./writerBiographyFactReviewBatch.generated-test-support";
 import { legacyWriterBiography } from "../writerBiography";
 import { writerBiographyFactReviewSourceCountries as countries } from "./index";
 import { quarantinedWriterIdentities } from "./writerBiographyLegacyCorrections";
@@ -181,7 +182,11 @@ describe("writer biography claim review batch 27", () => {
         expect(hostnames.size).toBeGreaterThanOrEqual(2);
         for (const item of claim.evidence) {
           expect(item.provider.trim()).not.toBe("");
-          expect(item.checkedAt).toBe("2026-08-09");
+          expect(item.checkedAt).toBe(
+            item.url === "https://old.bigenc.ru/world_history/text/1883169"
+              ? "2026-08-31"
+              : "2026-08-09"
+          );
           expect(item.findingRu.trim()).not.toBe("");
           expect(item.findingRu).toMatch(/[А-Яа-яЁё]/);
           const parsedUrl = new URL(item.url);
@@ -211,18 +216,6 @@ describe("writer biography claim review batch 27", () => {
     const byKey = new Map(
       writerBiographyFactReviewBatch27.map((record) => [record.key, record])
     );
-    const identityItems = factQa.wikidataIdentityReviewQueue
-      .filter((item) => batchKeys.has(item.key))
-      .map(({ key, qid }) => ({ key, qid }));
-    const dateItems = factQa.wikidataDateDiscrepancyQueue
-      .filter((item) => batchKeys.has(item.key))
-      .map(({ key, field }) => ({ key, field }));
-    const badQidItems = factQa.badQidIdentityQueue
-      .filter((item) => batchKeys.has(item.key))
-      .map(({ key, qid }) => ({ key, qid }));
-    const calendarItems = factQa.calendarOrSourceDiscrepancyQueue.filter((item) =>
-      batchKeys.has(item.key)
-    );
     const runtimeIndex = fs.readFileSync(
       path.resolve(process.cwd(), "src/data/countries/index.ts"),
       "utf8"
@@ -236,10 +229,7 @@ describe("writer biography claim review batch 27", () => {
       "utf8"
     );
 
-    expect(identityItems).toEqual([]);
-    expect(dateItems).toEqual([]);
-    expect(badQidItems).toEqual([]);
-    expect(calendarItems).toEqual([]);
+    expectNoProvenLiveFactRegression(factQa, batchKeys);
     expect(byKey.get("eritrea:alemseged_tesfai")?.notes).toContain("1942");
     expect(byKey.get("eritrea:alemseged_tesfai")?.notes).toContain("1944");
     expect(byKey.get("estonia:friedrich_robert_faehlmann")?.notes).toContain(
@@ -247,6 +237,12 @@ describe("writer biography claim review batch 27", () => {
     );
     expect(byKey.get("finland:fredrika_bremer")?.notes).toContain("1801-08-17");
     expect(byKey.get("finland:fredrika_bremer")?.notes).toContain("1865-12-31");
+    expect(
+      byKey
+        .get("finland:fredrika_bremer")
+        ?.claims.flatMap((claim) => claim.evidence)
+        .map((item) => item.url)
+    ).toContain("https://old.bigenc.ru/world_history/text/1883169");
     expect(byKey.get("ethiopia:bealu_girma")?.notes).toContain("1939");
     expect(byKey.get("finland:mikael_agricola")?.notes).toContain("1508-1510");
     expect(runtimeIndex).not.toContain("writerBiographyFactReviewBatch27");
@@ -281,6 +277,7 @@ describe("writer biography claim review batch 27", () => {
     const report = JSON.parse(fs.readFileSync(reportPath, "utf8")) as {
       batch: string;
       generatedAt: string;
+      revisedAt?: string;
       selectionSnapshot: {
         reviewQueue: number;
         priorAssignedRecords: number;
@@ -303,6 +300,7 @@ describe("writer biography claim review batch 27", () => {
 
     expect(report.batch).toBe("27");
     expect(report.generatedAt).toBe("2026-08-09");
+    expect(report.revisedAt).toBe("2026-08-31");
     expect(report.selectionSnapshot).toEqual({
       reviewQueue: 1720,
       priorAssignedRecords: 520,

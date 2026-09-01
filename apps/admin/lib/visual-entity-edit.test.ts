@@ -6,6 +6,7 @@ import {
   parseBookEntityId,
   parseVisualEntityEdit,
   parseWriterEntityId,
+  visualWriterFields,
 } from "./visual-entity-edit";
 
 describe("visual entity editing policy", () => {
@@ -85,7 +86,7 @@ describe("visual entity editing policy", () => {
     expect(edit.value).toEqual(["Премия первая", "Премия вторая"]);
   });
 
-  it("validates years, required titles and portrait protocols", () => {
+  it("validates years and required titles", () => {
     expect(
       parseVisualEntityEdit({
         entityType: "book",
@@ -102,14 +103,22 @@ describe("visual entity editing policy", () => {
         value: "   ",
       })
     ).toThrow("пустым");
-    expect(() =>
-      parseVisualEntityEdit({
-        entityType: "writer",
-        entityId: "russia:tolstoy",
-        field: "portrait",
-        value: "javascript:alert(1)",
-      })
-    ).toThrow("HTTPS");
+  });
+
+  it("does not expose partial portrait editing in the quick editor", () => {
+    expect(visualWriterFields).not.toEqual(
+      expect.arrayContaining(["portrait", "portraitAlt"])
+    );
+    for (const field of ["portrait", "portraitAlt"]) {
+      expect(() =>
+        parseVisualEntityEdit({
+          entityType: "writer",
+          entityId: "russia:tolstoy",
+          field,
+          value: "https://example.org/portrait.jpg",
+        })
+      ).toThrow("нельзя менять");
+    }
   });
 
   it("removes empty writer overrides instead of masking source data", () => {
@@ -127,10 +136,13 @@ describe("visual entity editing policy", () => {
           name: "Лев Толстой",
           years: "",
           awards: [],
+          portrait: "https://example.org/unverified.jpg",
           portraitAlt: "Портрет писателя",
+          portraitSourceUrl: "https://example.org/source",
+          portraitRights: { status: "licensed" },
         },
-        "portraitAlt",
-        "   "
+        "name",
+        "Лев Толстой"
       )
     ).toEqual({ name: "Лев Толстой" });
     expect(

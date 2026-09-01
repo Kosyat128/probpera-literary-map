@@ -106,13 +106,14 @@ describe("premium English translation", () => {
       .fn()
       .mockResolvedValueOnce({
         id: "cf_translate",
-        model: "@cf/google/gemma-4-26b-a4b-it",
-        response: { text: "First Workers AI draft" },
+        model: "provider-internal-gemma-alias",
+        response:
+          'Structured result follows:\n{"text":"First Workers AI draft"}\nEnd result.',
         usage: { prompt_tokens: 90, completion_tokens: 35 },
       })
       .mockResolvedValueOnce({
         id: "cf_review",
-        model: "@cf/openai/gpt-oss-120b",
+        model: "provider-internal-gpt-oss-alias",
         response: { text: "Final Workers AI English" },
         usage: { prompt_tokens: 125, completion_tokens: 30 },
       });
@@ -136,7 +137,9 @@ describe("premium English translation", () => {
     expect(result.reviewerRequestId).toBe("cf_review");
     expect(result.inputTokens).toBe(90);
     expect(result.reviewOutputTokens).toBe(30);
-    expect(result.translatorReasoningEffort).toBe("none");
+    expect(result.translatorModel).toBe("@cf/google/gemma-4-26b-a4b-it");
+    expect(result.reviewerModel).toBe("@cf/openai/gpt-oss-120b");
+    expect(result.translatorReasoningEffort).toBe("low");
     expect(result.translatorReasoningMode).toBe("standard");
 
     const firstInput = run.mock.calls[0]?.[1] as Record<string, unknown>;
@@ -147,10 +150,55 @@ describe("premium English translation", () => {
     });
     expect(firstInput.max_completion_tokens).toBe(30_000);
     expect(firstInput).not.toHaveProperty("max_tokens");
+    expect(firstInput.reasoning_effort).toBe("low");
+    expect(firstInput.temperature).toBe(0);
     expect(secondInput.max_tokens).toBe(30_000);
     expect(secondInput).not.toHaveProperty("max_completion_tokens");
+    expect(secondInput).not.toHaveProperty("reasoning_effort");
+    expect(secondInput.temperature).toBe(0);
     expect(JSON.stringify(secondInput)).toContain("DRAFT_TRANSLATION");
     expect(JSON.stringify(secondInput)).toContain("SOURCE_DATA");
+  });
+
+  it("routes malformed first-pass Workers AI JSON through repair and review", async () => {
+    const run = vi
+      .fn()
+      .mockResolvedValueOnce({
+        id: "cf_malformed",
+        response: " ",
+        usage: { prompt_tokens: 80, completion_tokens: 20 },
+      })
+      .mockResolvedValueOnce({
+        id: "cf_repair",
+        response: { text: "Repaired Workers AI draft" },
+        usage: { prompt_tokens: 110, completion_tokens: 25 },
+      })
+      .mockResolvedValueOnce({
+        id: "cf_review",
+        response: { text: "Final reviewed Workers AI English" },
+        usage: { prompt_tokens: 120, completion_tokens: 30 },
+      });
+
+    const result = await premiumTranslateToEnglish({
+      source: { text: "Русский исходник" },
+      schema,
+      schemaName: "workers_ai_malformed_translation",
+      validate: validateText,
+      provider: "cloudflare",
+      aiBinding: { run } as unknown as WorkersAiBinding,
+      review: true,
+    });
+
+    expect(run).toHaveBeenCalledTimes(3);
+    expect(result.value.text).toBe("Final reviewed Workers AI English");
+    expect(result.reviewInputTokens).toBe(230);
+    expect(result.reviewOutputTokens).toBe(55);
+    expect(JSON.stringify(run.mock.calls[1]?.[1])).toContain(
+      "INVALID_DRAFT_TRANSLATION"
+    );
+    expect(JSON.stringify(run.mock.calls[2]?.[1])).toContain(
+      "DRAFT_TRANSLATION"
+    );
   });
 
   it("supports explicitly disabling the reviewer for controlled OpenAI fallback", async () => {

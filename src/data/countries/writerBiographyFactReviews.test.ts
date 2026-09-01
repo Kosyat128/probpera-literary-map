@@ -4,34 +4,64 @@ import {
   legacyWriterBiography,
   selectWriterBiography,
 } from "../writerBiography";
-import {
-  countries,
-  writerBiographyFactReviewSourceCountries,
-} from "./index";
+import { countries, writerBiographyFactReviewSourceCountries } from "./index";
 import reviewOverlay from "./generated/writerBiographyFactReviewCorrections.generated.json";
-import { writerBiographyFactReviewCounts } from "./writerBiographyFactReviews";
+import clientReviewRuntime from "./generated/writerBiographyFactReviewRuntime.generated.json";
+import {
+  equivalentReviewedWorkTitle,
+  writerBiographyFactReviewCounts,
+} from "./writerBiographyFactReviews";
 import reviewRollup from "../../../reports/writer-biography-fact-review-rollup.json";
 
-function writerByKey(
-  source: typeof countries,
-  key: string
-) {
+function writerByKey(source: typeof countries, key: string) {
   const [countryId, writerId] = key.split(":");
   return source
     .find((country) => country.id === countryId)
     ?.writers.find((writer) => writer.id === writerId);
 }
 
+function normalizedWorkTitle(value: string | undefined) {
+  return String(value || "")
+    .normalize("NFKD")
+    .replace(/\p{M}/gu, "")
+    .toLocaleLowerCase("ru")
+    .replace(/ё/gu, "е")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
+}
+
 describe("writer biography fact-review overlay", () => {
+  it("deduplicates inflected and parenthesized forms without merging translations", () => {
+    expect(
+      equivalentReviewedWorkTitle(
+        "Манхэттенский трансфер",
+        "Манхэттенского трансфера",
+      ),
+    ).toBe(true);
+    expect(equivalentReviewedWorkTitle("Декамерон", "Декамерона")).toBe(true);
+    expect(
+      equivalentReviewedWorkTitle(
+        "Truyện Kiều (Повесть о Киеу)",
+        "Truyện Kiều",
+      ),
+    ).toBe(true);
+    expect(equivalentReviewedWorkTitle("Pariksit", "Париксит")).toBe(false);
+  });
+
   it("publishes only the compact proven correction set", () => {
     expect(writerBiographyFactReviewCounts).toEqual({
       reviewed: 1740,
       corrected: 1577,
       published: 1573,
       russianPublished: 41,
+      structuredRussianPublished: 1672,
+      structuredWorkTitlesPublished: 2225,
     });
     expect(Object.keys(reviewOverlay.corrections)).toHaveLength(1573);
     expect(Object.keys(reviewOverlay.russianBiographies)).toHaveLength(41);
+    expect(
+      Object.keys(reviewOverlay.structuredRussianBiographies),
+    ).toHaveLength(1672);
     expect(reviewRollup.summary).toEqual({
       records: 1740,
       unchanged: 99,
@@ -41,6 +71,8 @@ describe("writer biography fact-review overlay", () => {
     expect(reviewRollup.publication).toEqual({
       corrections: 1573,
       russianBiographies: 41,
+      structuredRussianBiographies: 1672,
+      structuredWorkTitles: 2225,
       excludedQuarantinedCorrectionKeys: [
         "cape_verde:virgilio_de_lemos",
         "comoros:said_ahmed_mohamed",
@@ -48,6 +80,113 @@ describe("writer biography fact-review overlay", () => {
         "democratic_republic_of_congo:tshibumba_kanda_matulu",
       ],
     });
+    expect(clientReviewRuntime.version).toBe(1);
+    expect(clientReviewRuntime.reviewVersion).toBe(reviewOverlay.version);
+    expect(Object.keys(clientReviewRuntime.corrections)).toHaveLength(0);
+    expect(Object.keys(clientReviewRuntime.russianBiographies)).toHaveLength(0);
+    expect(Object.keys(clientReviewRuntime.biographies)).toHaveLength(1672);
+  });
+
+  it("reconstructs every public Russian profile and source from the full audited overlay", () => {
+    for (const [key, publication] of Object.entries(
+      reviewOverlay.structuredRussianBiographies,
+    )) {
+      const writer = writerByKey(countries, key);
+      expect(writer, key).toBeDefined();
+      const translation = selectWriterBiography(writer!, "ru");
+      expect(translation?.text, key).toBe(publication.text);
+      expect(translation?.reviewedAt, key).toBe(publication.reviewedAt);
+      expect(translation?.reviewer, key).toBe(publication.reviewer);
+      expect(translation?.sourceTextRights, key).toBe("project-original");
+      expect(translation?.sources, key).toEqual(
+        publication.sources.map((source) => ({
+          provider: source.provider,
+          url: source.url,
+          fields: source.fields,
+          usage: "fact-check",
+          retrievedAt: source.retrievedAt,
+        })),
+      );
+      const metadataPublication = publication as typeof publication & {
+        generatedAt?: string;
+        translatorModel?: string;
+        reviewerModel?: string;
+      };
+      expect(translation?.translationMeta, key).toEqual({
+        sourceHash: publication.sourceHash,
+        generatedAt: metadataPublication.generatedAt || publication.reviewedAt,
+        model: metadataPublication.translatorModel,
+        reviewerModel: metadataPublication.reviewerModel,
+      });
+    }
+  });
+
+  it("uses catalogued Russian-edition titles in Hemingway's Russian biography", () => {
+    const publication =
+      reviewOverlay.structuredRussianBiographies["usa:ernest_hemingway"];
+
+    expect(publication.text).toContain("«Фиеста (И восходит солнце)»");
+    expect(publication.text).toContain("«Прощай, оружие!»");
+    expect(publication.text).toContain("«Старик и море»");
+    expect(publication.text).not.toMatch(
+      /The Sun Also Rises|A Farewell to Arms|The Old Man and the Sea/u,
+    );
+    expect(publication.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          provider: "Российская государственная библиотека",
+          url: "https://search.rsl.ru/ru/record/01002392937",
+          retrievedAt: "2026-09-01",
+        }),
+        expect.objectContaining({
+          provider: "Российская государственная библиотека",
+          url: "https://search.rsl.ru/ru/record/01004876860",
+          retrievedAt: "2026-09-01",
+        }),
+      ]),
+    );
+  });
+
+  it("publishes every attested Russian-edition title with works provenance", () => {
+    expect(reviewRollup.russianPublicationTitles).toHaveLength(109);
+    const structuredRussianBiographies =
+      reviewOverlay.structuredRussianBiographies as Record<
+        string,
+        {
+          text: string;
+          works: string[];
+          sources: Array<{
+            provider: string;
+            url: string;
+            retrievedAt: string;
+            fields?: string[];
+          }>;
+        }
+      >;
+
+    for (const attestation of reviewRollup.russianPublicationTitles) {
+      const publication = structuredRussianBiographies[attestation.key];
+      expect(publication, attestation.key).toBeDefined();
+      expect(publication.text, attestation.key).toContain(
+        `«${attestation.displayTitleRu}»`,
+      );
+      expect(publication.text, attestation.key).not.toContain(
+        `«${attestation.sourceTitleExact}»`,
+      );
+      expect(publication.works, attestation.key).toContain(
+        attestation.displayTitleRu,
+      );
+      expect(publication.sources, attestation.key).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            provider: attestation.authority,
+            url: attestation.recordUrl,
+            retrievedAt: attestation.verifiedAt,
+            fields: ["works"],
+          }),
+        ]),
+      );
+    }
   });
 
   it("publishes every Russian writer through the strict gate with a primary Russian source", () => {
@@ -61,17 +200,15 @@ describe("writer biography fact-review overlay", () => {
       expect(translation?.sourceLanguage, writer.id).toBe("ru");
       expect(translation?.method, writer.id).toBe("editorial-original");
       expect(translation?.status, writer.id).toBe("verified");
-      expect(
-        new URL(translation!.sources[0]!.url).hostname,
-        writer.id
-      ).toMatch(
-        /(?:^|\.)(?:ru|chekhovmuseum\.com)$/iu
+      expect(new URL(translation!.sources[0]!.url).hostname, writer.id).toMatch(
+        /(?:^|\.)(?:ru|chekhovmuseum\.com)$/iu,
       );
     }
   });
 
   it("never ships corrections for identities removed from the public corpus", () => {
-    for (const key of reviewRollup.publication.excludedQuarantinedCorrectionKeys) {
+    for (const key of reviewRollup.publication
+      .excludedQuarantinedCorrectionKeys) {
       expect(reviewOverlay.corrections).not.toHaveProperty(key);
       expect(writerByKey(countries, key)).toBeUndefined();
     }
@@ -81,27 +218,172 @@ describe("writer biography fact-review overlay", () => {
     const correctedKey = "afghanistan:khalilullah_khalili";
     const unchangedKey = "afghanistan:atiq_rahimi";
     const correctedBefore = legacyWriterBiography(
-      writerByKey(writerBiographyFactReviewSourceCountries, correctedKey)!
+      writerByKey(writerBiographyFactReviewSourceCountries, correctedKey)!,
     );
     const correctedAfter = legacyWriterBiography(
-      writerByKey(countries, correctedKey)!
+      writerByKey(countries, correctedKey)!,
     );
     const unchangedBefore = legacyWriterBiography(
-      writerByKey(writerBiographyFactReviewSourceCountries, unchangedKey)!
+      writerByKey(writerBiographyFactReviewSourceCountries, unchangedKey)!,
     );
     const unchangedAfter = legacyWriterBiography(
-      writerByKey(countries, unchangedKey)!
+      writerByKey(countries, unchangedKey)!,
     );
 
-    expect(correctedAfter).toBe(reviewOverlay.corrections[correctedKey]);
+    expect(correctedAfter).toBe(
+      reviewOverlay.structuredRussianBiographies[correctedKey].text,
+    );
     expect(correctedAfter).not.toBe(correctedBefore);
     expect(unchangedAfter).toBe(unchangedBefore);
   });
 
   it("does not put review markers into public prose", () => {
     for (const text of Object.values(reviewOverlay.corrections)) {
-      expect(text).not.toMatch(/(?:проверено|не проверено|verified|unverified)/iu);
+      expect(text).not.toMatch(
+        /(?:проверено|не проверено|verified|unverified)/iu,
+      );
     }
+    for (const biography of Object.values(
+      reviewOverlay.structuredRussianBiographies,
+    )) {
+      expect(biography.text).not.toMatch(
+        /(?:проверено|не проверено|verified|unverified)/iu,
+      );
+    }
+  });
+
+  it("appends every explicitly reviewed work title without duplicating structured metadata", () => {
+    let explicitWorkTitles = 0;
+    let appendedWorkTitles = 0;
+    const writersWithAppendedWorks = new Set<string>();
+
+    for (const [key, publication] of Object.entries(
+      reviewOverlay.structuredRussianBiographies,
+    )) {
+      const before = writerByKey(writerBiographyFactReviewSourceCountries, key);
+      const after = writerByKey(countries, key);
+      expect(before, key).toBeDefined();
+      expect(after, key).toBeDefined();
+
+      const publicationIdentities = publication.works.map(normalizedWorkTitle);
+      expect(new Set(publicationIdentities).size, key).toBe(
+        publication.works.length,
+      );
+      explicitWorkTitles += publication.works.length;
+
+      const beforeTitles = [
+        ...(before?.works || []),
+        ...(before?.workDetails || []).map((work) => work.title),
+      ];
+      const afterTitles = [
+        ...(after?.works || []),
+        ...(after?.workDetails || []).map((work) => work.title),
+      ];
+
+      for (const [index, identity] of publicationIdentities.entries()) {
+        const title = publication.works[index]!;
+        expect(
+          afterTitles.some((candidate) =>
+            equivalentReviewedWorkTitle(candidate, title),
+          ),
+          `${key}:${identity}`,
+        ).toBe(true);
+        if (
+          beforeTitles.some((candidate) =>
+            equivalentReviewedWorkTitle(candidate, title),
+          )
+        ) {
+          continue;
+        }
+        appendedWorkTitles += 1;
+        writersWithAppendedWorks.add(key);
+      }
+    }
+
+    expect(explicitWorkTitles).toBe(2225);
+    expect(appendedWorkTitles).toBe(668);
+    expect(writersWithAppendedWorks.size).toBe(426);
+  });
+
+  it("withholds titles lacking title-specific claim evidence in an exact review queue", () => {
+    expect(reviewRollup.workTitleReviewExceptions).toHaveLength(87);
+    expect(reviewRollup.workTitleEvidenceAliases).toHaveLength(19);
+    const unresolvedMetadata: string[] = [];
+    const structuredRussianBiographies =
+      reviewOverlay.structuredRussianBiographies as Record<
+        string,
+        { works: string[] }
+      >;
+
+    for (const exception of reviewRollup.workTitleReviewExceptions) {
+      const publication = structuredRussianBiographies[exception.key];
+      expect(publication, exception.key).toBeDefined();
+      expect(
+        publication.works.map(normalizedWorkTitle),
+        exception.key,
+      ).not.toContain(normalizedWorkTitle(exception.title));
+
+      const before = writerByKey(
+        writerBiographyFactReviewSourceCountries,
+        exception.key,
+      );
+      const beforeStructured = new Set(
+        [
+          ...(before?.works || []),
+          ...(before?.workDetails || []).map((work) => work.title),
+        ]
+          .map(normalizedWorkTitle)
+          .filter(Boolean),
+      );
+      if (beforeStructured.has(normalizedWorkTitle(exception.title))) continue;
+
+      const after = writerByKey(countries, exception.key);
+      const afterStructured = new Set(
+        [
+          ...(after?.works || []),
+          ...(after?.workDetails || []).map((work) => work.title),
+        ]
+          .map(normalizedWorkTitle)
+          .filter(Boolean),
+      );
+      expect(
+        afterStructured.has(normalizedWorkTitle(exception.title)),
+        `${exception.key}:${exception.title}`,
+      ).toBe(false);
+      unresolvedMetadata.push(`${exception.key}:${exception.title}`);
+    }
+
+    expect(unresolvedMetadata).toEqual([
+      "australia:peter_carey:Истинная история шайки Келли",
+      "bangladesh:jibanananda_das:Прекрасная Бенгалия",
+      "bangladesh:tahmima_anam:Добрый мусульманин",
+      "barbados:george_lamming:Эмигранты",
+      "belize:zee_edgell:Time and the River",
+      "bolivia:vilma_tapia_anda:El agua más cercana",
+      "bolivia:vilma_tapia_anda:La hierba es un niño",
+      "cambodia:soth_polin:Анархист",
+      "cameroon:ferdinand_oyono:Chemin d’Europe",
+      "cameroon:ferdinand_oyono:Le Vieux Nègre et la Médaille",
+      "cameroon:jean_roger_essomba:Le Dernier Gardien de l’arbre",
+      "cameroon:jean_roger_essomba:Le Paradis du Nord",
+      "canada:chris_hadfield:Ты здесь: вокруг света за 92 минуты",
+      "chile:luis_sepúlveda:История о чайке и коте, который научил её летать",
+      "china:ai_qing:Факел",
+      "china:can_xue:Улица пяти специй",
+      "denmark:peter_hoeg:Женщина и обезьяна",
+      "denmark:peter_hoeg:Условно пригодные",
+      "ecuador:javier_vasconez:Далёкий город",
+      "ecuador:maria_fernanda_ampuero:Петушиный бой",
+      "ecuador:santiago_paez:В глубине галактики",
+      "egypt:ahmed_khaled_towfik:Паранормальное",
+      "egypt:bahaa_taher:Оазис заката",
+      "egypt:sonallah_ibrahim:Зат",
+      "england:harold_pinter:День рождения",
+      "england:harold_pinter:Предательство",
+      "england:john_fowles:Волхва",
+      "england:john_fowles:Женщину французского лейтенанта",
+      "england:john_le_carre:Шпион, выйди вон!",
+    ]);
   });
 
   it("never publishes held batch 29 identities or correction text", () => {
@@ -112,8 +394,8 @@ describe("writer biography fact-review overlay", () => {
     ];
     const publicKeys = new Set(
       countries.flatMap((country) =>
-        country.writers.map((writer) => `${country.id}:${writer.id}`)
-      )
+        country.writers.map((writer) => `${country.id}:${writer.id}`),
+      ),
     );
 
     for (const heldKey of heldKeys) {
@@ -125,12 +407,12 @@ describe("writer biography fact-review overlay", () => {
   it("publishes corrected batch 30 associations and withholds only Julian Fedon", () => {
     const publicKeys = new Set(
       countries.flatMap((country) =>
-        country.writers.map((writer) => `${country.id}:${writer.id}`)
-      )
+        country.writers.map((writer) => `${country.id}:${writer.id}`),
+      ),
     );
 
     expect(reviewOverlay.corrections).not.toHaveProperty(
-      "grenada:julian_fedon"
+      "grenada:julian_fedon",
     );
     expect(publicKeys.has("grenada:julian_fedon")).toBe(false);
     expect(publicKeys.has("germany:robert_musil")).toBe(true);
@@ -141,7 +423,7 @@ describe("writer biography fact-review overlay", () => {
 
   it("keeps the source-confirmed Su Tong birth date", () => {
     expect(writerByKey(countries, "china:su_tong")?.birthDate).toBe(
-      "1963-01-23"
+      "1963-01-23",
     );
   });
 });

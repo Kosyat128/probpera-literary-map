@@ -16,11 +16,12 @@ import { useAuth } from "./community/AuthContext";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
 import InterfaceLanguageControl from "./components/InterfaceLanguageControl";
 import CountryFlagIcon from "./components/CountryFlagIcon";
-import WriterPortrait from "./components/WriterPortrait";
+import WriterPortrait, { writerHasApprovedPortrait } from "./components/WriterPortrait";
 import BrandArrowIcon from "./components/BrandArrowIcon";
 import BrandBookIcon from "./components/BrandBookIcon";
 import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
 import BrandSearchIcon from "./components/BrandSearchIcon";
+import BrandWidescreenIcon from "./components/BrandWidescreenIcon";
 import AtlasSearchCombobox from "./components/AtlasSearchCombobox";
 import AtlasExperienceChrome from "./components/AtlasExperienceChrome";
 import LiteraryWorldMap from "./components/LiteraryWorldMap";
@@ -47,6 +48,7 @@ import {
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
+import { selectWriterBiography } from "./data/writerBiography";
 import type { BookArchiveEntry } from "./data/bookArchive";
 import { isPublicBook } from "./data/bookQuality";
 import {
@@ -94,6 +96,7 @@ import {
 import { writerSearchLabel } from "./utils/writerSearchLabel";
 import ActionLink from "./ui/ActionLink";
 import Button from "./ui/Button";
+import IconButton from "./ui/IconButton";
 import { calculateLightweightArchiveOverview } from "./loading/archiveOverview";
 import {
   loadBookArchiveRuntime,
@@ -197,10 +200,10 @@ function countryMatchesAtlasFilter(country: Country, filter: AtlasFilter) {
   if (filter === "nobel") return country.writers.some(isNobelLaureate);
   if (filter === "rich") return country.writers.length >= 10;
   if (filter === "portrait") {
-    return country.writers.some((writer) => Boolean(writer.portrait));
+    return country.writers.some(writerHasApprovedPortrait);
   }
   return country.writers.some(
-    (writer) => writer.editorial?.status === "verified"
+    (writer) => selectWriterBiography(writer, "ru")?.status === "verified"
   );
 }
 
@@ -212,12 +215,12 @@ function preferredWriterForAtlas(
   if (requestedWriter) return requestedWriter;
   if (filter === "nobel") return country.writers.find(isNobelLaureate) ?? null;
   if (filter === "portrait") {
-    return country.writers.find((writer) => Boolean(writer.portrait)) ?? null;
+    return country.writers.find(writerHasApprovedPortrait) ?? null;
   }
   if (filter === "verified") {
     return (
       country.writers.find(
-        (writer) => writer.editorial?.status === "verified"
+        (writer) => selectWriterBiography(writer, "ru")?.status === "verified"
       ) ?? null
     );
   }
@@ -578,6 +581,7 @@ export default function App() {
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
   const atlasSearchInputRef = useRef<HTMLInputElement>(null);
+  const atlasActiveFilterRef = useRef<HTMLButtonElement>(null);
   const atlasFilterClusterRef = useRef<HTMLDivElement>(null);
   const atlasArchivesToggleRef = useRef<HTMLButtonElement>(null);
   const randomAtlasHistoryRef = useRef<string[]>([]);
@@ -2205,9 +2209,17 @@ export default function App() {
                       );
                     }
                   }}
-                  onFiltersToggle={() =>
-                    atlasExperienceDispatch({ type: "TOGGLE_FILTERS" })
-                  }
+                  onFiltersToggle={() => {
+                    const nextOpen = !atlasExperience.state.filtersOpen;
+                    atlasExperienceDispatch({ type: "TOGGLE_FILTERS" });
+                    if (nextOpen) {
+                      window.requestAnimationFrame(() =>
+                        atlasActiveFilterRef.current?.focus({
+                          preventScroll: true,
+                        })
+                      );
+                    }
+                  }}
                   randomDisabled={filteredCountries.length === 0}
                   onRandomJourney={selectRandomLiteraryDestination}
                 />
@@ -2336,7 +2348,7 @@ export default function App() {
                           )} · ${
                             isPublicBook(result.book)
                               ? t("проверено")
-                              : t("Не проверено")
+                              : t("не проверено")
                           }`}
                   </small>
                 </>
@@ -2391,6 +2403,11 @@ export default function App() {
                     ] as Array<[AtlasFilter, string]>
                   ).map(([value, label]) => (
                     <Button
+                      ref={
+                        atlasFilter === value
+                          ? atlasActiveFilterRef
+                          : undefined
+                      }
                       className={atlasFilter === value ? "is-active" : ""}
                       size="md"
                       surface="dark"
@@ -2438,7 +2455,13 @@ export default function App() {
                       size="md"
                       surface="dark"
                       variant="text"
-                      aria-label={`${countryName(country.code, country.name)} - ${number(country.writers.length)} ${t("авторов")}`}
+                      aria-label={`${countryName(country.code, country.name)} - ${number(country.writers.length)} ${t(
+                        selectInterfacePlural(country.writers.length, language, [
+                          "автор",
+                          "автора",
+                          "авторов",
+                        ])
+                      )}`}
                       onClick={() => {
                         selectCountry(country);
                         focusCountryPresentation();
@@ -2466,32 +2489,19 @@ export default function App() {
 
           <div className={`atlas-layout${selectedCountry ? " has-country" : ""}`}>
             <section className="globe-column" id="globe-stage">
-              <Button
+              <IconButton
                 ref={atlasExperience.launchButtonRef}
                 className="atlas-immersion-launch"
+                icon={<BrandWidescreenIcon />}
                 size="md"
                 surface="dark"
-                variant="primary"
                 data-atlas-action="enter-immersive"
+                aria-label={t("Погрузиться в Литературную планету")}
+                title={t("Погрузиться в Литературную планету")}
                 onClick={(event) =>
                   atlasExperience.enter("embedded", event.currentTarget)
                 }
-              >
-                <span aria-hidden="true">✦</span> {t("Погрузиться")}
-              </Button>
-              <div className="globe-copy">
-                <span>{t("Интерактивный глобус · ручная навигация")}</span>
-                <p>
-                  {t("В выбранной коллекции -")} {archiveDataStatus === "ready" ? number(filteredCountries.length) : "…"}{" "}
-                  {t(
-                    selectInterfacePlural(filteredCountries.length, language, [
-                      "страна",
-                      "страны",
-                      "стран",
-                    ])
-                  )}
-                </p>
-              </div>
+              />
               <div className="atlas-ornaments" aria-hidden="true">
                 <span className="atlas-coordinate">
                   <small>{globeCoordinateContext?.label || t("Архив мира")}</small>
@@ -2594,9 +2604,9 @@ export default function App() {
                     </span>
                     <span className="atlas-country-sheet-action">
                       {atlasExperience.state.sheetState === "expanded"
-                        ? t("Свернуть архив страны")
+                        ? t("Свернуть")
                         : atlasExperience.state.sheetState === "half"
-                          ? t("Развернуть архив полностью")
+                          ? t("Развернуть")
                           : t("Открыть архив")}
                     </span>
                   </Button>
