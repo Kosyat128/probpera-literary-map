@@ -13,7 +13,7 @@ const root = path.resolve(process.cwd());
 const latestSchemaMigration = readFileSync(
   path.join(
     root,
-    "supabase/migrations/20260901_zzzzzz_admin_completion_health.sql"
+    "supabase/migrations/20260902_zz_article_working_drafts_health.sql"
   ),
   "utf8"
 );
@@ -54,6 +54,10 @@ const completeHealth: EditorialSchemaHealth = {
   adminMutationGuards: true,
   adminAnalyticsReporting: true,
   adminOpsObservability: true,
+  articleWorkingDrafts: true,
+  articleWorkingDraftPromotionCas: true,
+  articlePublicationRbac: true,
+  articleTranslationRbac: true,
 };
 
 describe("editorial schema health", () => {
@@ -81,6 +85,12 @@ describe("editorial schema health", () => {
     expect(productionMigrationPlanner).toContain("health ->> 'dataStudioIntegrity'");
     expect(productionMigrationPlanner).toContain("health ->> 'translationOperations'");
     expect(productionMigrationPlanner).toContain("health ->> 'adminOpsObservability'");
+    expect(productionMigrationPlanner).toContain("health ->> 'articleWorkingDrafts'");
+    expect(productionMigrationPlanner).toContain(
+      "health ->> 'articleWorkingDraftPromotionCas'"
+    );
+    expect(productionMigrationPlanner).toContain("health ->> 'articlePublicationRbac'");
+    expect(productionMigrationPlanner).toContain("health ->> 'articleTranslationRbac'");
   });
 
   it("fails the Media Studio diagnostic closed unless all lifecycle contracts are ready", () => {

@@ -77,7 +77,7 @@ export default function CoverEditor({
             alt={
               coverAlt ||
               (locale === "en"
-                ? "Article cover preview"
+                ? "Предпросмотр обложки английской версии статьи"
                 : "Предпросмотр обложки статьи")
             }
           />
@@ -103,14 +103,21 @@ export default function CoverEditor({
           type="url"
           name="cover_external_url"
           value={coverUrl}
-          onChange={(event) => onCoverUrlChange(event.target.value)}
+          onChange={(event) => {
+            onCoverUrlChange(event.target.value);
+            markRussianSourceChanged();
+            markDirty();
+          }}
           placeholder="https://…"
         />
+        <small>
+          Можно загрузить файл выше или вставить прямую ссылку на изображение.
+        </small>
       </label>
       <label className="field">
         <span>
           {locale === "en"
-            ? "Image description (English)"
+            ? "Описание изображения для английской версии"
             : "Описание изображения"}
         </span>
         <textarea
@@ -123,7 +130,7 @@ export default function CoverEditor({
           maxLength={500}
           placeholder={
             locale === "en"
-              ? "Describe the image for accessibility and search"
+              ? "Описание на английском языке для доступности и поиска"
               : "Что изображено - для доступности и поиска"
           }
         />

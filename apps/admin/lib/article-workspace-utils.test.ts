@@ -29,12 +29,18 @@ describe("article workspace helpers", () => {
     expect(articleWorkspaceCheckSection("SEO-описание - от 80 знаков")).toBe("seo");
     expect(articleWorkspaceCheckSection("Указан хотя бы один источник")).toBe("sources");
     expect(articleWorkspaceCheckSection("Все места для изображений заменены")).toBe("media");
-    expect(articleWorkspaceCheckSection("English: статус approved/published")).toBe("publish");
+    expect(
+      articleWorkspaceCheckSection(
+        "Английская версия: статус «проверен» или «опубликован»"
+      )
+    ).toBe("publish");
   });
 
   it("detects the locale behind publication checklist issues", () => {
     expect(articleWorkspaceCheckLocale("Рубрика выбрана")).toBe("ru");
-    expect(articleWorkspaceCheckLocale("English: указан источник")).toBe("en");
+    expect(
+      articleWorkspaceCheckLocale("Английская версия: указан источник")
+    ).toBe("en");
   });
 
   it("builds deterministic outline anchors from Russian headings", () => {

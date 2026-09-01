@@ -1,15 +1,25 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-import ArticleEditor, { type CustomTemplate } from "@/components/ArticleEditor";
+import ArticleEditorLoader, {
+  type CustomTemplate,
+} from "@/components/ArticleEditorLoader";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { adminEnv } from "@/lib/env";
 import { articlePublicPath } from "@/lib/article-route";
+import { getStaffSession } from "@/lib/auth";
 import { formatDate } from "@/lib/format";
+import { operatorDataError } from "@/lib/operator-data-error";
 import { safePublicSiteHref } from "@/lib/public-link-boundary";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import {
+  articleWithWorkingDraft,
+  englishTranslationWithWorkingDraft,
+  parseArticleWorkingDraft,
+} from "../article-working-draft";
+import {
   duplicateArticleAction,
+  discardArticleWorkingDraftAction,
   requestSocialPublicationAction,
   restoreArticleRevisionAction,
   softDeleteArticleAction,
@@ -26,12 +36,14 @@ export default async function EditArticlePage({
     error?: string;
     saved?: string;
     publish?: string;
+    released?: string;
     replaced?: string;
     social?: string;
   }>;
 }) {
   const { id } = await params;
   const query = await searchParams;
+  const staff = await getStaffSession();
   const supabase = await createServerSupabaseClient();
   if (!supabase) notFound();
   const [
@@ -40,7 +52,7 @@ export default async function EditArticlePage({
     { data: categoriesResult },
     { data: revisionsResult },
     { data: templatesResult },
-    { data: authResult },
+    { data: workingDraftResult, error: workingDraftQueryError },
   ] = await Promise.all([
     supabase.from("articles").select("*").eq("id", id).maybeSingle(),
     supabase
@@ -65,7 +77,13 @@ export default async function EditArticlePage({
       .select("id,label,content_html,visibility,owner_id")
       .order("updated_at", { ascending: false })
       .limit(60),
-    supabase.auth.getUser(),
+    supabase
+      .from("article_working_drafts")
+      .select(
+        "article_id,base_article_updated_at,payload,english_payload,expected_english_updated_at,version,updated_at"
+      )
+      .eq("article_id", id)
+      .maybeSingle(),
   ]);
 
   const categories = categoriesResult || [];
@@ -75,10 +93,33 @@ export default async function EditArticlePage({
     label: template.label,
     html: template.content_html,
     visibility: template.visibility as "personal" | "shared",
-    canDelete: template.owner_id === authResult.user?.id,
+    canDelete: template.owner_id === staff.user?.id,
   }));
 
   if (!article) notFound();
+  let workingDraft = null;
+  let workingDraftLoadError = workingDraftQueryError
+    ? operatorDataError("articles", "load")
+    : null;
+  if (workingDraftResult && !workingDraftLoadError) {
+    try {
+      workingDraft = parseArticleWorkingDraft(workingDraftResult);
+    } catch (error) {
+      workingDraftLoadError =
+        error instanceof Error
+          ? error.message
+          : "Рабочий черновик повреждён и не был открыт.";
+    }
+  }
+  const editableArticle = workingDraft
+    ? articleWithWorkingDraft(article, workingDraft)
+    : { ...article, working_draft_version: 0 };
+  const editableEnglishTranslation = workingDraft
+    ? englishTranslationWithWorkingDraft(
+        englishTranslation || null,
+        workingDraft
+      )
+    : englishTranslation;
   const { data: socialRequests } = await supabase
     .from("admin_audit_log")
     .select("id,created_at,metadata")
@@ -167,23 +208,52 @@ export default async function EditArticlePage({
         </div>
       </header>
       {query.error && <p className="form-message">{query.error}</p>}
+      {workingDraftLoadError && (
+        <p className="form-message" role="alert">
+          {workingDraftLoadError}
+        </p>
+      )}
+      {workingDraft && (
+        <section className="form-message form-success" aria-label="Рабочий черновик">
+          <p role="status">
+            Открыт сохранённый рабочий черновик. Опубликованная версия остаётся
+            без изменений до выпуска.
+          </p>
+          <form action={discardArticleWorkingDraftAction}>
+            <input type="hidden" name="id" value={id} />
+            <input
+              type="hidden"
+              name="working_draft_version"
+              value={workingDraft.version}
+            />
+            <ConfirmSubmitButton message="Удалить рабочий черновик и вернуться к опубликованной версии?">
+              Отменить правки
+            </ConfirmSubmitButton>
+          </form>
+        </section>
+      )}
       {query.saved && !query.publish && (
         <p className="form-message form-success">Изменения сохранены.</p>
       )}
       {query.publish === "started" && (
         <p className="form-message form-success publication-result">
-          Статья опубликована. Проверка доставки в очередь выполнена.{" "}
-          <a href={publicArticleUrl} target="_blank" rel="noreferrer">
-            Публичный адрес статьи →
-          </a>
+          Изменения сохранены. Обновление публичного сайта запущено.
+          {query.released === "published" && (
+            <>{" "}<a href={publicArticleUrl} target="_blank" rel="noreferrer">
+              Публичный адрес статьи →
+            </a></>
+          )}
         </p>
       )}
       {query.publish === "queued" && (
         <p className="form-message form-success publication-result">
-          Статья поставлена в очередь публикации. Обновление обычно занимает 5-10 минут.{" "}
-          <a href={publicArticleUrl} target="_blank" rel="noreferrer">
-            Публичный адрес статьи →
-          </a>
+          Изменения сохранены и поставлены в очередь. Обновление обычно занимает
+          5-10 минут.
+          {query.released === "published" && (
+            <>{" "}<a href={publicArticleUrl} target="_blank" rel="noreferrer">
+              Публичный адрес статьи →
+            </a></>
+          )}
         </p>
       )}
       {query.publish === "queue-error" && (
@@ -249,13 +319,15 @@ export default async function EditArticlePage({
           политикой и не блокирует выпуск.
         </small>
       </section>
-      <ArticleEditor
-        article={article}
-        englishTranslation={englishTranslation || undefined}
+      <ArticleEditorLoader
+        article={editableArticle}
+        englishTranslation={editableEnglishTranslation || undefined}
         categories={categories}
         publicSiteUrl={adminEnv.publicSiteUrl}
         templates={templates}
         saveConfirmed={Boolean(query.saved)}
+        canPublish={staff.role === "owner" || staff.role === "admin"}
+        canOverridePublicationChecklist={staff.role === "owner"}
       />
 
       <div className="dashboard-grid article-maintenance">

@@ -332,6 +332,8 @@ function normalizeInlineEditorialImage(
     `is-aspect-${attributes.aspect}`,
     `is-fit-${attributes.fit}`
   );
+  figure.dataset.imageAppearance = attributes.appearance;
+  figure.dataset.imageReveal = attributes.reveal;
   if (attributes.width < 100) figure.classList.add("has-custom-width");
   figure.style.cssText = editorialImageFigureStyle(attributes);
   figure.querySelectorAll(":scope > figcaption").forEach((caption) =>

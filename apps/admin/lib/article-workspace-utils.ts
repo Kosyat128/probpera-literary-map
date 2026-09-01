@@ -38,11 +38,18 @@ export function articleWorkspacePanelSection(
 }
 
 export function articleWorkspaceCheckLocale(label: string): ArticleWorkspaceLocale {
-  return normalizeWorkspaceText(label).startsWith("english:") ? "en" : "ru";
+  const value = normalizeWorkspaceText(label);
+  return value.startsWith("english:") ||
+    value.startsWith("англииская версия:")
+    ? "en"
+    : "ru";
 }
 
 export function articleWorkspaceCheckSection(label: string): ArticleWorkspaceSection {
-  const value = normalizeWorkspaceText(label).replace(/^english:\s*/u, "");
+  const value = normalizeWorkspaceText(label).replace(
+    /^(?:english|англииская версия):\s*/u,
+    ""
+  );
   if (value.includes("seo")) return "seo";
   if (value.includes("источник") || value.includes("source")) return "sources";
   if (value.includes("облож") || value.includes("alt")) return "cover";
@@ -55,6 +62,8 @@ export function articleWorkspaceCheckSection(label: string): ArticleWorkspaceSec
   if (
     value.includes("approved") ||
     value.includes("published") ||
+    value.includes("проверен") ||
+    value.includes("опубликован") ||
     value.includes("сверен") ||
     value.includes("current original")
   ) {

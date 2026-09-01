@@ -1,4 +1,4 @@
-import { load } from "cheerio";
+import { load } from "cheerio/slim";
 
 function isHeadingLevelTwo(node: unknown) {
   if (!node || typeof node !== "object") return false;

@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 const sql = readFileSync(
   new URL("../../supabase/migrations/20260901_zz_translation_operations_runtime.sql", import.meta.url),
   "utf8"
-);
+).replace(/\r\n?/gu, "\n");
 
 describe("translation operations runtime migration", () => {
   it("persists only redacted self-test state behind staff RLS", () => {

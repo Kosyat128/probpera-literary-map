@@ -1,5 +1,8 @@
 import { useMemo } from "react";
 
+import { articleComposerPlainText } from "../../lib/article-composer";
+import { editorialMediaAccessibilityIssues } from "../../lib/editorial-media-content";
+
 import type { ArticleTranslationStatus, ArticleValidationCheck } from "./ArticleEditorTypes";
 
 export type ArticleValidationInput = {
@@ -7,20 +10,30 @@ export type ArticleValidationInput = {
   slug: string;
   categoryId: string;
   contentHtml: string;
+  contentJson: string;
   excerpt: string;
   coverUrl: string;
   coverAlt: string;
   seoDescription: string;
   sourceText: string;
+  status: string;
+  scheduledAt: string;
   englishEnabled: boolean;
   englishStatus: ArticleTranslationStatus;
   englishTitle: string;
+  englishSubtitle: string;
   englishSlug: string;
   englishContentHtml: string;
+  englishContentJson: string;
   englishExcerpt: string;
   englishCoverAlt: string;
+  englishSeoTitle: string;
   englishSeoDescription: string;
+  englishSeoKeywords: string;
+  englishOgTitle: string;
+  englishOgDescription: string;
   englishSourceText: string;
+  englishBibliographyText: string;
   englishConfirmedCurrentSource: boolean;
   englishSourceContentHash?: string | null;
   russianSourceChanged: boolean;
@@ -34,12 +47,19 @@ export type ArticleValidationResult = {
 };
 
 export function countArticleHtmlWords(html: string) {
-  const text = html
-    .replace(/<[^>]+>/gu, " ")
-    .replace(/&nbsp;/giu, " ")
-    .replace(/\s+/gu, " ")
-    .trim();
-  return text ? text.split(/\s+/u).length : 0;
+  return (
+    articleComposerPlainText(html).match(
+      /\p{L}[\p{L}\p{M}'’ʼ-]*|\p{N}+/gu
+    ) || []
+  ).length;
+}
+
+function accessibleEditorialMedia(serialized: string) {
+  try {
+    return editorialMediaAccessibilityIssues(JSON.parse(serialized)).length === 0;
+  } catch {
+    return false;
+  }
 }
 
 export function buildArticleValidation(
@@ -47,6 +67,20 @@ export function buildArticleValidation(
 ): ArticleValidationResult {
   const russianWordCount = countArticleHtmlWords(input.contentHtml);
   const englishWordCount = countArticleHtmlWords(input.englishContentHtml);
+  const englishEditorialText = [
+    input.englishTitle,
+    input.englishSubtitle,
+    input.englishExcerpt,
+    input.englishContentHtml,
+    input.englishCoverAlt,
+    input.englishSeoTitle,
+    input.englishSeoDescription,
+    input.englishSeoKeywords,
+    input.englishOgTitle,
+    input.englishOgDescription,
+    input.englishSourceText,
+    input.englishBibliographyText,
+  ].join(" ");
   const russianChecks: ArticleValidationCheck[] = [
     {
       label: "Заголовок и постоянный адрес",
@@ -82,51 +116,73 @@ export function buildArticleValidation(
       label: "Все места для изображений заменены",
       ok: !/data-editorial-block=["']media["']/iu.test(input.contentHtml),
     },
+    {
+      label: "Все изображения имеют описание",
+      ok: accessibleEditorialMedia(input.contentJson),
+    },
+    {
+      label: "Для публикации по расписанию выбраны дата и время",
+      ok: input.status !== "scheduled" || Boolean(input.scheduledAt.trim()),
+    },
   ];
 
   const checks = input.englishEnabled
     ? [
         ...russianChecks,
         {
-          label: "English: статус approved/published",
+          label: "Английская версия: статус «проверен» или «опубликован»",
           ok:
             input.englishStatus === "approved" ||
             input.englishStatus === "published",
         },
         {
-          label: "English: заголовок и адрес",
+          label: "Английская версия: заголовок и адрес",
           ok:
             input.englishTitle.trim().length >= 3 &&
             input.englishSlug.length >= 2,
         },
         {
-          label: "English: не менее 250 слов",
+          label: "Английская версия: не менее 250 слов",
           ok: englishWordCount >= 250,
         },
         {
-          label: "English: есть подзаголовки H2",
+          label: "Английская версия: есть подзаголовки H2",
           ok: /<h2(?:\s|>)/iu.test(input.englishContentHtml),
         },
         {
-          label: "English: описание карточки - от 80 знаков",
+          label: "Английская версия: описание карточки - от 80 знаков",
           ok: input.englishExcerpt.trim().length >= 80,
         },
         {
-          label: "English: alt обложки",
+          label: "Английская версия: описание обложки",
           ok: input.englishCoverAlt.trim().length >= 10,
         },
         {
-          label: "English: SEO-описание - от 80 знаков",
+          label: "Английская версия: SEO-описание - от 80 знаков",
           ok: input.englishSeoDescription.trim().length >= 80,
         },
         {
-          label: "English: указан источник",
+          label: "Английская версия: указан источник",
           ok: input.englishSourceText
             .split(/\r?\n/u)
             .some((item) => item.trim().length >= 5),
         },
         {
-          label: "English: перевод сверен с текущим оригиналом",
+          label: "Английская версия: все изображения имеют описание",
+          ok: accessibleEditorialMedia(input.englishContentJson),
+        },
+        {
+          label: "Английская версия: все места для изображений заменены",
+          ok: !/data-editorial-block=["']media["']/iu.test(
+            input.englishContentHtml
+          ),
+        },
+        {
+          label: "Английская версия: текст и метаданные не содержат кириллицу",
+          ok: !/\p{Script=Cyrillic}/u.test(englishEditorialText),
+        },
+        {
+          label: "Английская версия: перевод сверен с текущим оригиналом",
           ok:
             input.englishConfirmedCurrentSource ||
             (!input.russianSourceChanged &&
@@ -149,24 +205,34 @@ export function useArticleValidation(input: ArticleValidationInput) {
     [
       input.categoryId,
       input.contentHtml,
+      input.contentJson,
       input.coverAlt,
       input.coverUrl,
       input.englishConfirmedCurrentSource,
       input.englishContentHtml,
+      input.englishContentJson,
       input.englishCoverAlt,
       input.englishEnabled,
       input.englishExcerpt,
+      input.englishBibliographyText,
+      input.englishOgDescription,
+      input.englishOgTitle,
       input.englishSeoDescription,
+      input.englishSeoKeywords,
+      input.englishSeoTitle,
       input.englishSlug,
       input.englishSourceContentHash,
       input.englishSourceText,
       input.englishStatus,
+      input.englishSubtitle,
       input.englishTitle,
       input.excerpt,
       input.russianSourceChanged,
+      input.scheduledAt,
       input.seoDescription,
       input.slug,
       input.sourceText,
+      input.status,
       input.title,
     ]
   );

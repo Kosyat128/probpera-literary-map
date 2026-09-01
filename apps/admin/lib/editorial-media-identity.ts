@@ -1,4 +1,4 @@
-import { load } from "cheerio";
+import { load } from "cheerio/slim";
 
 const MEDIA_ID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/iu;
@@ -8,22 +8,35 @@ const MAX_MEDIA_SOURCE_LENGTH = 2_000;
 const MAX_MEDIA_ALT_LENGTH = 500;
 
 function loadEditorialHtml(html: string) {
-  let fatalParseError = false;
-  const document = load(
-    html,
-    {
-      onParseError(error) {
-        if (error.code === "eof-in-tag") fatalParseError = true;
-      },
-    },
-    false
-  );
-  if (fatalParseError) {
+  let tagStart = -1;
+  let quote = "";
+  for (let index = 0; index < html.length; index += 1) {
+    const character = html[index];
+    if (tagStart < 0) {
+      if (
+        character === "<" &&
+        /[A-Za-z!?/]/u.test(html[index + 1] || "")
+      ) {
+        tagStart = index;
+      }
+      continue;
+    }
+    if (quote) {
+      if (character === quote) quote = "";
+      continue;
+    }
+    if (character === '"' || character === "'") {
+      quote = character;
+    } else if (character === ">") {
+      tagStart = -1;
+    }
+  }
+  if (tagStart >= 0 || quote) {
     throw new EditorialMediaIdentityError(
       "HTML редактора повреждён: обнаружен незавершённый тег."
     );
   }
-  return document;
+  return load(html, {}, false);
 }
 
 export type EditorialMediaReference = {

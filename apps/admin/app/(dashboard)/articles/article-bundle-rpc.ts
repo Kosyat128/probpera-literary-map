@@ -31,6 +31,9 @@ export type ArticleBundleRpcResult = {
 
 function rpcErrorMessage(error: { message?: string } | null | undefined) {
   const message = String(error?.message || "").trim();
+  if (message.includes("WORKING_DRAFT_CONFLICT")) {
+    return "Рабочий черновик уже изменён в другой вкладке. Обновите страницу и повторите выпуск.";
+  }
   if (message.includes("ARTICLE_CONFLICT")) {
     return "Статья уже изменена в другой вкладке. Обновите страницу и повторите правку.";
   }
@@ -40,14 +43,17 @@ function rpcErrorMessage(error: { message?: string } | null | undefined) {
   if (message.includes("STAFF_ACCESS_REQUIRED")) {
     return "Недостаточно прав для сохранения статьи.";
   }
+  if (
+    message.includes("PROMOTION_INPUT_INVALID") ||
+    message.includes("PROMOTION_STATUS_REQUIRED")
+  ) {
+    return "Не удалось безопасно подтвердить выпуск статьи. Обновите страницу и повторите действие.";
+  }
   return "Не удалось атомарно сохранить статью и английскую версию.";
 }
 
-export async function saveArticleBundleRpc(
-  supabase: ServerSupabaseClient,
-  input: ArticleBundleRpcInput
-): Promise<ArticleBundleRpcResult> {
-  const { data, error } = await supabase.rpc("save_article_bundle", {
+function articleBundleRpcArgs(input: ArticleBundleRpcInput) {
+  return {
     p_article_id: input.articleId,
     p_expected_article_updated_at: input.expectedArticleUpdatedAt,
     p_article_payload: input.articlePayload,
@@ -61,8 +67,13 @@ export async function saveArticleBundleRpc(
     p_audit_metadata: input.auditMetadata,
     p_social_publish_requested: input.socialPublishRequested,
     p_social_metadata: input.socialMetadata,
-  });
+  };
+}
 
+function parseArticleBundleRpcResult(
+  data: unknown,
+  error: { message?: string } | null | undefined
+): ArticleBundleRpcResult {
   if (error) {
     throw new Error(rpcErrorMessage(error));
   }
@@ -87,4 +98,39 @@ export async function saveArticleBundleRpc(
       : null,
     homepageReplaced: Number(result.homepage_replaced || 0),
   };
+}
+
+export async function saveArticleBundleRpc(
+  supabase: ServerSupabaseClient,
+  input: ArticleBundleRpcInput
+): Promise<ArticleBundleRpcResult> {
+  const { data, error } = await supabase.rpc(
+    "save_article_bundle",
+    articleBundleRpcArgs(input)
+  );
+  return parseArticleBundleRpcResult(data, error);
+}
+
+export async function promoteArticleWorkingDraftRpc(
+  supabase: ServerSupabaseClient,
+  input: ArticleBundleRpcInput & { expectedWorkingDraftVersion: number }
+): Promise<ArticleBundleRpcResult> {
+  if (
+    !input.articleId ||
+    !input.expectedArticleUpdatedAt ||
+    !Number.isInteger(input.expectedWorkingDraftVersion) ||
+    input.expectedWorkingDraftVersion < 0
+  ) {
+    throw new Error(
+      "Не удалось безопасно подтвердить выпуск статьи. Обновите страницу и повторите действие."
+    );
+  }
+  const { data, error } = await supabase.rpc(
+    "promote_article_working_draft",
+    {
+      ...articleBundleRpcArgs(input),
+      p_expected_working_draft_version: input.expectedWorkingDraftVersion,
+    }
+  );
+  return parseArticleBundleRpcResult(data, error);
 }

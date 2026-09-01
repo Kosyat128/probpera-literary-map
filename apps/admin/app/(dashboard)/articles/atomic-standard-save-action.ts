@@ -7,6 +7,10 @@ import { z } from "zod";
 import { articleEditPath } from "@/lib/admin-routes";
 import { articlePublicPath } from "@/lib/article-route";
 import {
+  buildArticleMetadataDraft,
+  completeArticleMetadataDraft,
+} from "@/lib/article-composer";
+import {
   articleTranslationSourceHash,
   canReuseEnglishTranslationApproval,
   englishTranslationReleaseIssues,
@@ -19,10 +23,6 @@ import {
   safeTextToneSpanAttributes,
   sanitizeArticleTextToneJson,
 } from "@/lib/article-content-presentation";
-import {
-  positionLeadingIllustrationHtml,
-  positionLeadingIllustrationJson,
-} from "@/lib/article-leading-illustration";
 import { rebindPremiumArticleMachineSourceHash } from "@/lib/article-translation-machine-ownership";
 import { adminEnv } from "@/lib/env";
 import { sanitizeEditorAnchorAttributes } from "@/lib/editor-link";
@@ -48,7 +48,15 @@ import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { operatorDataError } from "@/lib/operator-data-error";
 
-import { saveArticleBundleRpc } from "./article-bundle-rpc";
+import {
+  promoteArticleWorkingDraftRpc,
+  saveArticleBundleRpc,
+  type ArticleBundleRpcInput,
+} from "./article-bundle-rpc";
+import {
+  articleWorkingDraftEnglishEnvelope,
+  saveArticleWorkingDraftRpc,
+} from "./article-working-draft";
 
 const articleSchema = z.object({
   id: z.string().uuid().optional(),
@@ -229,29 +237,71 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     formData.get("english_expected_updated_at")
   );
 
-  const intent = String(formData.get("intent") || "save");
+  const submittedIntent = String(formData.get("intent") || "save");
+  const intent = ["publish", "preview"].includes(submittedIntent)
+    ? (submittedIntent as "publish" | "preview")
+    : "save";
+  const previewLocale = formData.get("preview_locale") === "en" ? "en" : "ru";
+  const submittedArticleId = optionalText(formData.get("id")) || undefined;
+  const submittedStatus = String(formData.get("status") || "draft");
   const requestedStatus =
     intent === "publish"
-      ? "published"
-      : String(formData.get("status") || "draft");
-  const previousStatusFromForm = String(
-    formData.get("previous_status") || "draft"
-  );
+      ? ["scheduled", "hidden", "archived"].includes(submittedStatus)
+        ? submittedStatus
+        : "published"
+      : submittedStatus === "review"
+        ? "review"
+        : "draft";
   const title = String(formData.get("title") || "");
   const rawSlug = String(formData.get("slug") || "");
   const generatedSlug = createSlug(rawSlug || title) || `material-${Date.now()}`;
   const scheduledAt = optionalText(formData.get("scheduled_at"));
-  const status =
-    requestedStatus === "scheduled" && !scheduledAt ? "draft" : requestedStatus;
+  if (requestedStatus === "scheduled" && !scheduledAt) {
+    redirect(
+      saveErrorPath(
+        submittedArticleId,
+        "Для запланированной публикации укажите дату и время."
+      )
+    );
+  }
+  const status = requestedStatus;
   const canonicalUrl = optionalText(formData.get("canonical_url"));
+  const publicationOverride = formData.get("publication_override") === "1";
+  if (publicationOverride && session.role !== "owner") {
+    redirect(
+      saveErrorPath(
+        submittedArticleId,
+        "Ручное подтверждение контрольного списка доступно только владельцу."
+      )
+    );
+  }
+
+  const subtitle = String(formData.get("subtitle") || "");
+  const submittedContentHtml = String(formData.get("content_html") || "");
+  const completedMetadata = completeArticleMetadataDraft(
+    {
+      excerpt: String(formData.get("excerpt") || ""),
+      seoTitle: String(formData.get("seo_title") || ""),
+      seoDescription: String(formData.get("seo_description") || ""),
+      seoKeywords: String(formData.get("seo_keywords") || ""),
+      ogTitle: String(formData.get("og_title") || ""),
+      ogDescription: String(formData.get("og_description") || ""),
+    },
+    buildArticleMetadataDraft({
+      title,
+      subtitle,
+      contentHtml: submittedContentHtml,
+      locale: "ru",
+    })
+  );
 
   const parsed = articleSchema.safeParse({
     id: optionalText(formData.get("id")) || undefined,
     title,
-    subtitle: String(formData.get("subtitle") || ""),
-    excerpt: String(formData.get("excerpt") || ""),
+    subtitle,
+    excerpt: completedMetadata.excerpt,
     slug: generatedSlug,
-    contentHtml: String(formData.get("content_html") || ""),
+    contentHtml: submittedContentHtml,
     contentJson: String(formData.get("content_json") || "{}"),
     categoryId: optionalText(formData.get("category_id")),
     status,
@@ -259,12 +309,12 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     coverExternalUrl: optionalText(formData.get("cover_external_url")),
     coverAlt: String(formData.get("cover_alt") || ""),
     legacyPath: optionalText(formData.get("legacy_path")),
-    seoTitle: String(formData.get("seo_title") || ""),
-    seoDescription: String(formData.get("seo_description") || ""),
-    seoKeywords: commaList(formData.get("seo_keywords")),
+    seoTitle: completedMetadata.seoTitle,
+    seoDescription: completedMetadata.seoDescription,
+    seoKeywords: commaList(completedMetadata.seoKeywords),
     canonicalUrl,
-    ogTitle: String(formData.get("og_title") || ""),
-    ogDescription: String(formData.get("og_description") || ""),
+    ogTitle: completedMetadata.ogTitle,
+    ogDescription: completedMetadata.ogDescription,
     sources: lineItems(formData.get("sources")),
     bibliography: lineItems(formData.get("bibliography")),
     allowIndexing: formData.get("allow_indexing") === "on",
@@ -275,12 +325,36 @@ export async function saveStandardArticleAtomically(formData: FormData) {
 
   if (!parsed.success) {
     const failedArticleId = optionalText(formData.get("id")) || undefined;
-    const errorMessage = parsed.error.issues[0]?.message || "Проверьте поля статьи.";
-    redirect(saveErrorPath(failedArticleId, errorMessage));
+    redirect(
+      saveErrorPath(
+        failedArticleId,
+        "Проверьте обязательные поля статьи, адреса и допустимую длину текста."
+      )
+    );
   }
 
   const englishEnabled = formData.get("english_enabled") === "on";
   const englishTitle = String(formData.get("english_title") || "");
+  const englishSubtitle = String(formData.get("english_subtitle") || "");
+  const submittedEnglishContentHtml = String(
+    formData.get("english_content_html") || ""
+  );
+  const completedEnglishMetadata = completeArticleMetadataDraft(
+    {
+      excerpt: String(formData.get("english_excerpt") || ""),
+      seoTitle: String(formData.get("english_seo_title") || ""),
+      seoDescription: String(formData.get("english_seo_description") || ""),
+      seoKeywords: String(formData.get("english_seo_keywords") || ""),
+      ogTitle: String(formData.get("english_og_title") || ""),
+      ogDescription: String(formData.get("english_og_description") || ""),
+    },
+    buildArticleMetadataDraft({
+      title: englishTitle,
+      subtitle: englishSubtitle,
+      contentHtml: submittedEnglishContentHtml,
+      locale: "en",
+    })
+  );
   const englishSlug =
     createSlug(String(formData.get("english_slug") || "") || englishTitle) ||
     `english-material-${Date.now()}`;
@@ -288,20 +362,18 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     ? articleTranslationSchema.safeParse({
         enabled: true,
         title: englishTitle,
-        subtitle: String(formData.get("english_subtitle") || ""),
-        excerpt: String(formData.get("english_excerpt") || ""),
+        subtitle: englishSubtitle,
+        excerpt: completedEnglishMetadata.excerpt,
         slug: englishSlug,
-        contentHtml: String(formData.get("english_content_html") || ""),
+        contentHtml: submittedEnglishContentHtml,
         contentJson: String(formData.get("english_content_json") || "{}"),
         coverAlt: String(formData.get("english_cover_alt") || ""),
-        seoTitle: String(formData.get("english_seo_title") || ""),
-        seoDescription: String(
-          formData.get("english_seo_description") || ""
-        ),
-        seoKeywords: commaList(formData.get("english_seo_keywords")),
+        seoTitle: completedEnglishMetadata.seoTitle,
+        seoDescription: completedEnglishMetadata.seoDescription,
+        seoKeywords: commaList(completedEnglishMetadata.seoKeywords),
         canonicalUrl: optionalText(formData.get("english_canonical_url")),
-        ogTitle: String(formData.get("english_og_title") || ""),
-        ogDescription: String(formData.get("english_og_description") || ""),
+        ogTitle: completedEnglishMetadata.ogTitle,
+        ogDescription: completedEnglishMetadata.ogDescription,
         sources: lineItems(formData.get("english_sources")),
         bibliography: lineItems(formData.get("english_bibliography")),
         status: String(formData.get("english_status") || "draft"),
@@ -312,10 +384,12 @@ export async function saveStandardArticleAtomically(formData: FormData) {
 
   if (parsedEnglish && !parsedEnglish.success) {
     const failedArticleId = optionalText(formData.get("id")) || undefined;
-    const errorMessage =
-      parsedEnglish.error.issues[0]?.message ||
-      "Проверьте поля английской версии статьи.";
-    redirect(saveErrorPath(failedArticleId, errorMessage));
+    redirect(
+      saveErrorPath(
+        failedArticleId,
+        "Проверьте обязательные поля, адреса и длину английской версии статьи."
+      )
+    );
   }
 
   const englishData = parsedEnglish?.success ? parsedEnglish.data : null;
@@ -364,115 +438,21 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       );
     }
   }
-  const isNewRelease =
-    intent === "publish" ||
-    requestedStatus === "scheduled" ||
-    (requestedStatus === "published" &&
-      previousStatusFromForm !== "published");
-  const requiresReleaseValidation =
-    parsed.data.status === "published" || parsed.data.status === "scheduled";
   const publicationIssues = new Set<string>();
-  const publicationOverride = formData.get("publication_override") === "1";
-
-  if (requiresReleaseValidation) {
-    const releaseContentHtml = sanitizeHtml(
-      parsed.data.contentHtml,
-      allowedArticleHtml
-    );
-    const releaseEnglishContentHtml = englishData
-      ? sanitizeHtml(englishData.contentHtml, allowedArticleHtml)
-      : "";
-    const plainText = sanitizeHtml(releaseContentHtml, {
-      allowedTags: [],
-      allowedAttributes: {},
-    })
-      .replace(/\s+/gu, " ")
-      .trim();
-    const releaseIssues = [
-      !parsed.data.categoryId && "выберите рубрику",
-      plainText.split(/\s+/u).filter(Boolean).length < 250 &&
-        "добавьте не менее 250 слов",
-      !/<h2(?:\s|>)/iu.test(releaseContentHtml) &&
-        "добавьте смысловые подзаголовки H2",
-      parsed.data.excerpt.length < 80 &&
-        "расширьте описание карточки до 80 знаков",
-      (!parsed.data.coverExternalUrl || parsed.data.coverAlt.length < 10) &&
-        "добавьте обложку и её описание",
-      parsed.data.seoDescription.length < 80 &&
-        "расширьте SEO-описание до 80 знаков",
-      parsed.data.sources.length === 0 && "укажите хотя бы один источник",
-      /data-editorial-block=["']media["']/iu.test(releaseContentHtml) &&
-        "замените все места для изображений настоящими файлами",
-      ...editorialMediaHtmlAccessibilityIssues(releaseContentHtml),
-      !publicationOverride &&
-        formData.get("publication_ready") !== "yes" &&
-        "завершите контроль перед публикацией",
-      ...(englishEnabled
-        ? englishTranslationReleaseIssues(
-            englishData
-              ? {
-                  enabled: true,
-                  status: englishData.status,
-                  title: englishData.title,
-                  subtitle: englishData.subtitle,
-                  excerpt: englishData.excerpt,
-                  contentHtml: releaseEnglishContentHtml,
-                  slug: englishData.slug,
-                  coverUrl: parsed.data.coverExternalUrl,
-                  coverAlt: englishData.coverAlt,
-                  seoTitle: englishData.seoTitle,
-                  seoDescription: englishData.seoDescription,
-                  seoKeywords: englishData.seoKeywords,
-                  ogTitle: englishData.ogTitle,
-                  ogDescription: englishData.ogDescription,
-                  sources: englishData.sources,
-                  bibliography: englishData.bibliography,
-                }
-              : {
-                  enabled: false,
-                  status: "draft",
-                  title: "",
-                  subtitle: "",
-                  excerpt: "",
-                  contentHtml: "",
-                  slug: "",
-                  coverUrl: null,
-                  coverAlt: "",
-                  seoTitle: "",
-                  seoDescription: "",
-                  seoKeywords: [],
-                  ogTitle: "",
-                  ogDescription: "",
-                  sources: [],
-                  bibliography: [],
-                }
-          ).map((issue) => `English: ${issue}`)
-        : []),
-      ...(englishData && isReleasedTranslationStatus(englishData.status)
-        ? editorialMediaHtmlAccessibilityIssues(releaseEnglishContentHtml).map(
-            (issue) => `English: ${issue}`
-          )
-        : []),
-    ].filter(Boolean) as string[];
-    releaseIssues.forEach((issue) => publicationIssues.add(issue));
-  }
 
   const savedSlug = parsed.data.slug || generatedSlug;
-  const contentJson = positionLeadingIllustrationJson(submittedContentJson);
-  const sanitizedContentHtml = positionLeadingIllustrationHtml(
-    sanitizeHtml(parsed.data.contentHtml, allowedArticleHtml)
+  const contentJson = submittedContentJson;
+  const sanitizedContentHtml = sanitizeHtml(
+    parsed.data.contentHtml,
+    allowedArticleHtml
   );
 
   let englishContentJson: unknown = null;
   const sanitizedEnglishContentHtml = englishData
-    ? positionLeadingIllustrationHtml(
-        sanitizeHtml(englishData.contentHtml, allowedArticleHtml)
-      )
+    ? sanitizeHtml(englishData.contentHtml, allowedArticleHtml)
     : "";
   if (englishData) {
-    englishContentJson = positionLeadingIllustrationJson(
-      submittedEnglishContentJson
-    );
+    englishContentJson = submittedEnglishContentJson;
   }
 
   try {
@@ -531,6 +511,23 @@ export async function saveStandardArticleAtomically(formData: FormData) {
 
   const now = new Date().toISOString();
   const articleId = parsed.data.id;
+  let expectedWorkingDraftVersion = 0;
+  if (articleId) {
+    const parsedWorkingDraftVersion = z.coerce
+      .number()
+      .int()
+      .min(0)
+      .safeParse(formData.get("working_draft_version") || "0");
+    if (!parsedWorkingDraftVersion.success) {
+      redirect(
+        saveErrorPath(
+          articleId,
+          "Версия рабочего черновика устарела. Обновите страницу и повторите правку."
+        )
+      );
+    }
+    expectedWorkingDraftVersion = parsedWorkingDraftVersion.data;
+  }
   let previousSlug: string | null = null;
   let previousPublishedAt: string | null = null;
   let previousCategorySlug: string | null = null;
@@ -614,6 +611,109 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       ? previous.categories[0]
       : previous.categories;
     previousCategorySlug = previousCategory?.slug || null;
+  }
+
+  const isPublishedWorkingDraftSave = Boolean(
+    articleId &&
+      persistedPreviousStatus === "published" &&
+      (intent === "save" || intent === "preview")
+  );
+  if (
+    session.role === "editor" &&
+    !isPublishedWorkingDraftSave &&
+    !["draft", "review"].includes(parsed.data.status)
+  ) {
+    redirect(
+      saveErrorPath(
+        articleId,
+        "Редактор может сохранять черновик и передавать его на проверку. Публикация и планирование доступны владельцу или администратору."
+      )
+    );
+  }
+
+  const isNewRelease =
+    intent === "publish" ||
+    parsed.data.status === "scheduled" ||
+    (parsed.data.status === "published" &&
+      persistedPreviousStatus !== "published");
+  const requiresReleaseValidation =
+    !isPublishedWorkingDraftSave &&
+    (parsed.data.status === "published" || parsed.data.status === "scheduled");
+
+  if (requiresReleaseValidation) {
+    const plainText = sanitizeHtml(sanitizedContentHtml, {
+      allowedTags: [],
+      allowedAttributes: {},
+    })
+      .replace(/\s+/gu, " ")
+      .trim();
+    const releaseIssues = [
+      !parsed.data.categoryId && "выберите рубрику",
+      plainText.split(/\s+/u).filter(Boolean).length < 250 &&
+        "добавьте не менее 250 слов",
+      !/<h2(?:\s|>)/iu.test(sanitizedContentHtml) &&
+        "добавьте смысловые подзаголовки H2",
+      parsed.data.excerpt.length < 80 &&
+        "расширьте описание карточки до 80 знаков",
+      (!parsed.data.coverExternalUrl || parsed.data.coverAlt.length < 10) &&
+        "добавьте обложку и её описание",
+      parsed.data.seoDescription.length < 80 &&
+        "расширьте SEO-описание до 80 знаков",
+      parsed.data.sources.length === 0 && "укажите хотя бы один источник",
+      /data-editorial-block=["']media["']/iu.test(sanitizedContentHtml) &&
+        "замените все места для изображений настоящими файлами",
+      ...editorialMediaHtmlAccessibilityIssues(sanitizedContentHtml),
+      !publicationOverride &&
+        formData.get("publication_ready") !== "yes" &&
+        "завершите контроль перед публикацией",
+      ...(englishEnabled
+        ? englishTranslationReleaseIssues(
+            englishData
+              ? {
+                  enabled: true,
+                  status: englishData.status,
+                  title: englishData.title,
+                  subtitle: englishData.subtitle,
+                  excerpt: englishData.excerpt,
+                  contentHtml: sanitizedEnglishContentHtml,
+                  slug: englishData.slug,
+                  coverUrl: parsed.data.coverExternalUrl,
+                  coverAlt: englishData.coverAlt,
+                  seoTitle: englishData.seoTitle,
+                  seoDescription: englishData.seoDescription,
+                  seoKeywords: englishData.seoKeywords,
+                  ogTitle: englishData.ogTitle,
+                  ogDescription: englishData.ogDescription,
+                  sources: englishData.sources,
+                  bibliography: englishData.bibliography,
+                }
+              : {
+                  enabled: false,
+                  status: "draft",
+                  title: "",
+                  subtitle: "",
+                  excerpt: "",
+                  contentHtml: "",
+                  slug: "",
+                  coverUrl: null,
+                  coverAlt: "",
+                  seoTitle: "",
+                  seoDescription: "",
+                  seoKeywords: [],
+                  ogTitle: "",
+                  ogDescription: "",
+                  sources: [],
+                  bibliography: [],
+                }
+          ).map((issue) => `English: ${issue}`)
+        : []),
+      ...(englishData && isReleasedTranslationStatus(englishData.status)
+        ? editorialMediaHtmlAccessibilityIssues(
+            sanitizedEnglishContentHtml
+          ).map((issue) => `English: ${issue}`)
+        : []),
+    ].filter(Boolean) as string[];
+    releaseIssues.forEach((issue) => publicationIssues.add(issue));
   }
 
   const englishReleaseChecks = englishTranslationReleaseIssues(
@@ -719,7 +819,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     });
   const requiresEnglishRelease =
     Boolean(englishData) &&
-    (parsed.data.status === "published" || parsed.data.status === "scheduled");
+    requiresReleaseValidation;
 
   if (requiresEnglishRelease) {
     const bilingualIssues = [
@@ -732,29 +832,30 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     );
   }
 
-  const publicationSavePolicy = publicationFailureSavePolicy({
-    hasIssues: publicationIssues.size > 0,
-    previousStatus: persistedPreviousStatus,
-    requestedStatus: parsed.data.status,
-  });
-  if (publicationSavePolicy.kind === "preserve-published") {
-    if (!articleId) {
-      redirect("/articles?error=Не удалось определить опубликованную статью");
-    }
-    const errorMessage = `Публикация остановлена: ${Array.from(
-      publicationIssues
-    ).join(
-      "; "
-    )}. Опубликованная версия оставлена без изменений. Новые правки находятся в локальной автокопии редактора - нажмите «Восстановить копию» после возврата.`;
-    redirect(articleEditPath(articleId, { error: errorMessage }));
-  }
+  const publicationSavePolicy = isPublishedWorkingDraftSave
+    ? null
+    : publicationFailureSavePolicy({
+        hasIssues: publicationIssues.size > 0,
+        previousStatus: persistedPreviousStatus,
+        requestedStatus: parsed.data.status,
+      });
+  const publicationWasBlockedForPublished =
+    publicationSavePolicy?.kind === "preserve-published";
+  const saveToPublishedWorkingDraft =
+    isPublishedWorkingDraftSave || publicationWasBlockedForPublished;
 
   const publicationBlockMessage = publicationIssues.size
     ? `Публикация остановлена: ${Array.from(publicationIssues).join(
         "; "
-      )}. Текст и изображения сохранены в черновике.`
+      )}. Текст и изображения сохранены в рабочем черновике, опубликованная версия не изменена.`
     : null;
-  const savedStatus = publicationSavePolicy.savedStatus;
+  const savedStatus = saveToPublishedWorkingDraft
+    ? isPublishedWorkingDraftSave && parsed.data.status === "review"
+      ? "review"
+      : "draft"
+    : publicationSavePolicy?.kind === "save"
+      ? publicationSavePolicy.savedStatus
+      : "draft";
   const savedEnglishStatus: ArticleTranslationStatus | null = englishData
     ? publicationBlockMessage && isReleasedTranslationStatus(englishData.status)
       ? "draft"
@@ -850,6 +951,53 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     };
   }
 
+  if (saveToPublishedWorkingDraft) {
+    if (!articleId || !expectedUpdatedAt) {
+      redirect(
+        saveErrorPath(
+          articleId,
+          "Не удалось определить версию опубликованной статьи. Обновите страницу."
+        )
+      );
+    }
+    try {
+      await saveArticleWorkingDraftRpc(supabase, {
+        articleId,
+        baseArticleUpdatedAt: expectedUpdatedAt,
+        articlePayload,
+        englishEnvelope: articleWorkingDraftEnglishEnvelope(englishPayload),
+        expectedEnglishUpdatedAt: englishExpectedUpdatedAt,
+        expectedVersion: expectedWorkingDraftVersion,
+      });
+    } catch (error) {
+      const safeMessage =
+        error instanceof Error &&
+        [
+          "Черновик или опубликованная статья",
+          "Английская версия",
+          "Отдельный рабочий черновик",
+          "Недостаточно прав",
+          "Не удалось безопасно сохранить",
+          "Рабочий черновик сохранён",
+        ].some((prefix) => error.message.startsWith(prefix))
+          ? error.message
+          : "Не удалось безопасно сохранить рабочий черновик. Опубликованная версия не изменена.";
+      redirect(saveErrorPath(articleId, safeMessage));
+    }
+
+    revalidatePath("/articles/edit");
+    revalidatePath(`/articles/${articleId}/preview`);
+    if (intent === "preview") {
+      redirect(`/articles/${articleId}/preview?locale=${previewLocale}`);
+    }
+    redirect(
+      articleEditPath(articleId, {
+        saved: "working-draft",
+        error: publicationBlockMessage,
+      })
+    );
+  }
+
   const redirectSourcePath =
     previousSlug &&
     (previousSlug !== savedSlug || previousCategorySlug !== categorySlug)
@@ -860,50 +1008,69 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     : null;
   const socialPublishRequested =
     savedStatus === "published" && isNewRelease;
+  const isPrivilegedRelease = [
+    "published",
+    "scheduled",
+    "hidden",
+    "archived",
+  ].includes(savedStatus);
+  const shouldPromoteExistingArticle = Boolean(
+    articleId && intent === "publish" && isPrivilegedRelease
+  );
+  const bundleInput: ArticleBundleRpcInput = {
+    articleId: articleId || null,
+    expectedArticleUpdatedAt: articleId ? expectedUpdatedAt : null,
+    articlePayload,
+    englishMode,
+    englishPayload,
+    expectedEnglishUpdatedAt:
+      englishMode === "save" || englishMode === "stale"
+        ? englishExpectedUpdatedAt
+        : null,
+    redirectSourcePath,
+    redirectDestinationPath,
+    replaceHomepage:
+      savedStatus === "published" &&
+      parsed.data.showOnHomepage &&
+      Boolean(parsed.data.categoryId),
+    auditAction: articleId ? "article.updated" : "article.created",
+    auditMetadata: {
+      title: parsed.data.title,
+      status: savedStatus,
+      requested_status: parsed.data.status,
+      publication_blocked: Boolean(publicationBlockMessage),
+      slug: savedSlug,
+      english_status: staleReleasedEnglishOnDisable
+        ? "stale"
+        : savedEnglishStatus,
+      english_source_hash: englishData ? currentSourceHash : null,
+      persistence: shouldPromoteExistingArticle
+        ? "atomic-working-draft-promotion"
+        : "atomic-article-bundle",
+    },
+    socialPublishRequested,
+    socialMetadata: socialPublishRequested
+      ? {
+          article_id: articleId || null,
+          title: parsed.data.title,
+          slug: savedSlug,
+          platforms: ["dzen"],
+          requested_at: now,
+          persistence: shouldPromoteExistingArticle
+            ? "atomic-working-draft-promotion"
+            : "atomic-article-bundle",
+        }
+      : {},
+  };
 
   let saved: Awaited<ReturnType<typeof saveArticleBundleRpc>>;
   try {
-    saved = await saveArticleBundleRpc(supabase, {
-      articleId: articleId || null,
-      expectedArticleUpdatedAt: articleId ? expectedUpdatedAt : null,
-      articlePayload,
-      englishMode,
-      englishPayload,
-      expectedEnglishUpdatedAt:
-        englishMode === "save" || englishMode === "stale"
-          ? englishExpectedUpdatedAt
-          : null,
-      redirectSourcePath,
-      redirectDestinationPath,
-      replaceHomepage:
-        savedStatus === "published" &&
-        parsed.data.showOnHomepage &&
-        Boolean(parsed.data.categoryId),
-      auditAction: articleId ? "article.updated" : "article.created",
-      auditMetadata: {
-        title: parsed.data.title,
-        status: savedStatus,
-        requested_status: parsed.data.status,
-        publication_blocked: Boolean(publicationBlockMessage),
-        slug: savedSlug,
-        english_status: staleReleasedEnglishOnDisable
-          ? "stale"
-          : savedEnglishStatus,
-        english_source_hash: englishData ? currentSourceHash : null,
-        persistence: "atomic-article-bundle",
-      },
-      socialPublishRequested,
-      socialMetadata: socialPublishRequested
-        ? {
-            article_id: articleId || null,
-            title: parsed.data.title,
-            slug: savedSlug,
-            platforms: ["dzen"],
-            requested_at: now,
-            persistence: "atomic-article-bundle",
-          }
-        : {},
-    });
+    saved = shouldPromoteExistingArticle
+      ? await promoteArticleWorkingDraftRpc(supabase, {
+          ...bundleInput,
+          expectedWorkingDraftVersion,
+        })
+      : await saveArticleBundleRpc(supabase, bundleInput);
   } catch (error) {
     const message =
       error instanceof Error
@@ -913,25 +1080,37 @@ export async function saveStandardArticleAtomically(formData: FormData) {
   }
 
   let publicationState: "started" | "queued" | "queue-error" | null = null;
-  if (savedStatus === "published") {
+  if (
+    intent === "publish" &&
+    ["published", "scheduled", "hidden", "archived"].includes(savedStatus)
+  ) {
     const publication = await requestPublicBuild({
       supabase,
       actorId,
       entityType: "article",
       entityId: saved.articleId,
-      reason: "article.published",
-      metadata: { persistence: "atomic-article-bundle" },
+      reason: `article.status.${savedStatus}`,
+      metadata: {
+        persistence: shouldPromoteExistingArticle
+          ? "atomic-working-draft-promotion"
+          : "atomic-article-bundle",
+        status: savedStatus,
+      },
     });
     publicationState = publication.state;
   }
 
   revalidatePath("/dashboard");
   revalidatePath("/articles");
+  if (intent === "preview") {
+    redirect(`/articles/${saved.articleId}/preview?locale=${previewLocale}`);
+  }
   redirect(
     articleEditPath(saved.articleId, {
       saved: 1,
       error: publicationBlockMessage,
       publish: publicationState,
+      released: intent === "publish" ? savedStatus : null,
       replaced: saved.homepageReplaced || null,
     })
   );

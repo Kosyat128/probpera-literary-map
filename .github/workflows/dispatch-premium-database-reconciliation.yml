@@ -19,6 +19,8 @@ on:
       - "supabase/migrations/20260901_zzz_admin_mutation_guards.sql"
       - "supabase/migrations/20260901_zzzz_admin_ops_observability.sql"
       - "supabase/migrations/20260901_zzzzzz_admin_completion_health.sql"
+      - "supabase/migrations/20260902_article_working_drafts.sql"
+      - "supabase/migrations/20260902_zz_article_working_drafts_health.sql"
       - "scripts/database/build-production-migration-plan.mjs"
       - ".github/workflows/reconcile-production-database.yml"
 

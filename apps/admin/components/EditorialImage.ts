@@ -55,6 +55,22 @@ export const EditorialImage = Image.extend({
           }).fit,
         renderHTML: () => ({}),
       },
+      appearance: {
+        default: "frame",
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            appearance: element.getAttribute("data-image-appearance"),
+          }).appearance,
+        renderHTML: () => ({}),
+      },
+      reveal: {
+        default: "none",
+        parseHTML: (element) =>
+          normalizeEditorialImageAttributes({
+            reveal: element.getAttribute("data-image-reveal"),
+          }).reveal,
+        renderHTML: () => ({}),
+      },
       focusX: {
         default: 0.5,
         parseHTML: (element) =>

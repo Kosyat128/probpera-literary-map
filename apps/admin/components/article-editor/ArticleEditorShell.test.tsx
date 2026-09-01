@@ -11,6 +11,8 @@ const hidden: ArticleEditorShellHiddenModel = {
     id: "article-id",
     expectedUpdatedAt: "2026-08-28T10:00:00Z",
     englishExpectedUpdatedAt: "2026-08-28T10:01:00Z",
+    workingDraftVersion: 3,
+    previewLocale: "ru",
   },
   publication: {
     previousStatus: "review",
@@ -62,6 +64,8 @@ const hidden: ArticleEditorShellHiddenModel = {
 
 const alwaysPresentNames = [
   "english_expected_updated_at",
+  "working_draft_version",
+  "preview_locale",
   "previous_status",
   "status",
   "scheduled_at",

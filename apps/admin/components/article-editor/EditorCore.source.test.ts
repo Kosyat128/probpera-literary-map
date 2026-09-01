@@ -19,8 +19,8 @@ describe("article editor presentational composition", () => {
 
     expect(translation).toContain("RU · авторский оригинал");
     expect(translation).toContain("EN · необязательный перевод");
-    expect(translation).toContain("English translation");
-    expect(translation).toContain("Russian text is never inserted as an");
+    expect(translation).toContain("Английская версия статьи");
+    expect(translation).toContain("русский текст никогда не подставляется");
     expect(translation).not.toMatch(/useState|useEffect|useReducer/u);
   });
 

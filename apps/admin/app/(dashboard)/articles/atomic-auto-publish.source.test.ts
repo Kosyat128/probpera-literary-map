@@ -25,8 +25,10 @@ describe("canonical atomic article save", () => {
     expect(wrapperSource).not.toContain("atomicPersistenceAvailable");
   });
 
-  it("uses the reconciled atomic RPC as the only persistence path", () => {
+  it("uses only reconciled atomic RPCs as persistence paths", () => {
     expect(actionSource).toContain("saveArticleBundleRpc(supabase");
+    expect(actionSource).toContain("saveArticleWorkingDraftRpc(supabase");
+    expect(actionSource).toContain("promoteArticleWorkingDraftRpc(supabase");
     expect(actionSource).not.toContain("isArticleBundleRpcAvailable");
     expect(actionSource).not.toContain("legacySaveArticleAction");
     expect(actionSource).toContain("articleSchema.safeParse");
@@ -50,7 +52,8 @@ describe("canonical atomic article save", () => {
     expect(actionSource).toContain("replaceHomepage");
     expect(actionSource).toContain("auditMetadata");
     expect(actionSource).toContain("socialPublishRequested");
-    expect(actionSource).toContain('persistence: "atomic-article-bundle"');
+    expect(actionSource).toContain('"atomic-article-bundle"');
+    expect(actionSource).toContain('"atomic-working-draft-promotion"');
     expect(actionSource).not.toContain("compensateAfterEnglishFailure");
     expect(actionSource).not.toContain(".update(");
     expect(actionSource).not.toContain(".insert(");

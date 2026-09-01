@@ -94,7 +94,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(29);
+      expect(manifest.migrations).toHaveLength(31);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -125,6 +125,8 @@ describe("guarded production database reconciliation", () => {
         "20260901_zzz_admin_mutation_guards.sql",
         "20260901_zzzz_admin_ops_observability.sql",
         "20260901_zzzzzz_admin_completion_health.sql",
+        "20260902_article_working_drafts.sql",
+        "20260902_zz_article_working_drafts_health.sql",
       ]);
       expect(manifest.migrations.every((migration) => /^[0-9a-f]{64}$/u.test(migration.sha256))).toBe(true);
       expect(plan).not.toContain("\r\n");
@@ -171,6 +173,10 @@ describe("guarded production database reconciliation", () => {
         "adminMutationGuards",
         "adminAnalyticsReporting",
         "adminOpsObservability",
+        "articleWorkingDrafts",
+        "articlePublicationRbac",
+        "articleTranslationRbac",
+        "articleWorkingDraftPromotionCas",
       ]);
       expect(healthFailureDiagnostic).not.toContain("jsonb_each");
       expect(healthFailureDiagnostic).not.toContain("pendingPublicBuilds");
@@ -181,6 +187,12 @@ describe("guarded production database reconciliation", () => {
       expect(plan).toContain("public.reader_book_collections");
       expect(plan).toContain("public.editor_autosaves");
       expect(plan).toContain("public.save_editor_autosave");
+      expect(plan).toContain("public.article_working_drafts");
+      expect(plan).toContain("public.save_article_working_draft");
+      expect(plan).toContain("public.discard_article_working_draft");
+      expect(plan).toContain("public.clear_article_working_draft_after_promotion");
+      expect(plan).toContain("public.guard_article_working_draft_promotion");
+      expect(plan).toContain("public.promote_article_working_draft");
       expect(plan).toContain("public.list_media_studio_assets");
       expect(plan).toContain("public.preview_media_asset_replacement");
       expect(plan).toContain("public.replace_media_asset_current_usages");
@@ -234,6 +246,10 @@ describe("guarded production database reconciliation", () => {
       expect(verification).toContain("admin_mutation_guards=");
       expect(verification).toContain("admin_analytics_reporting=");
       expect(verification).toContain("admin_ops_observability=");
+      expect(verification).toContain("article_working_drafts=");
+      expect(verification).toContain("article_publication_rbac=");
+      expect(verification).toContain("article_translation_rbac=");
+      expect(verification).toContain("article_working_draft_promotion_cas=");
       expect(verification).toContain("then 'true' else 'false' end");
     } finally {
       rmSync(temporaryDirectory, { recursive: true, force: true });
@@ -716,10 +732,10 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "Migration range: 20260808_article_translations through 20260901_zzzzzz_admin_completion_health"
+      "Migration range: 20260808_article_translations through 20260902_zz_article_working_drafts_health"
     );
     expect(workflowSource).toContain(
-      "schema_health=20260901_zzzzzz_admin_completion_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=29;invalid_indexes=0"
+      "schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=31;invalid_indexes=0"
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260828_zz_editor_autosaves.sql"'
@@ -759,6 +775,12 @@ describe("guarded production database reconciliation", () => {
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260901_zzzzzz_admin_completion_health.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260902_article_working_drafts.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260902_zz_article_working_drafts_health.sql"'
     );
     expect(workflowSource).toContain(
       "reconciliation/production-verification-expected.txt"

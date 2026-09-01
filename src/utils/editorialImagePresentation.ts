@@ -1,6 +1,8 @@
 const imageLayouts = new Set(["wide", "normal", "full", "left", "right"]);
 const imageAspects = new Set(["auto", "1-1", "4-3", "3-2", "16-9", "2-3"]);
 const imageFits = new Set(["contain", "cover"]);
+const imageAppearances = new Set(["clean", "frame", "shadow"]);
+const imageReveals = new Set(["none", "fade-up", "zoom"]);
 
 export const editorialImageDataAttributes = [
   "data-media-id",
@@ -10,6 +12,8 @@ export const editorialImageDataAttributes = [
   "data-image-max-width",
   "data-image-aspect",
   "data-image-fit",
+  "data-image-appearance",
+  "data-image-reveal",
   "data-focus-x",
   "data-focus-y",
   "data-credit",
@@ -29,6 +33,8 @@ export type EditorialImagePublicAttributes = {
   maxWidth: number | null;
   aspect: "auto" | "1-1" | "4-3" | "3-2" | "16-9" | "2-3";
   fit: "contain" | "cover";
+  appearance: "clean" | "frame" | "shadow";
+  reveal: "none" | "fade-up" | "zoom";
   focusX: number;
   focusY: number;
   credit: string;
@@ -118,6 +124,13 @@ export function normalizeEditorialImagePublicAttributes(
     maxWidth: rawMaxWidth > 0 ? Math.max(240, rawMaxWidth) : null,
     aspect: enumValue(attributes["data-image-aspect"], imageAspects, "auto"),
     fit: enumValue(attributes["data-image-fit"], imageFits, "contain"),
+    // Existing content used this framed presentation before it became configurable.
+    appearance: enumValue(
+      attributes["data-image-appearance"],
+      imageAppearances,
+      "frame"
+    ),
+    reveal: enumValue(attributes["data-image-reveal"], imageReveals, "none"),
     focusX: boundedNumber(attributes["data-focus-x"], 0, 1, 0.5),
     focusY: boundedNumber(attributes["data-focus-y"], 0, 1, 0.5),
     credit: boundedText(attributes["data-credit"], 300),
@@ -143,6 +156,8 @@ export function canonicalEditorialImageData(
       : {}),
     "data-image-aspect": attributes.aspect,
     "data-image-fit": attributes.fit,
+    "data-image-appearance": attributes.appearance,
+    "data-image-reveal": attributes.reveal,
     "data-focus-x": attributes.focusX.toFixed(4),
     "data-focus-y": attributes.focusY.toFixed(4),
     ...(attributes.credit ? { "data-credit": attributes.credit } : {}),

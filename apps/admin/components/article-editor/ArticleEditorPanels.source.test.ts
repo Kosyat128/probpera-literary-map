@@ -32,16 +32,18 @@ describe("article editor panel source contracts", () => {
     expect(shell).toContain('name="bibliography"');
   });
 
-  it("preserves the existing uncontrolled and named form fields", () => {
+  it("preserves named form fields while keeping recovered values controlled", () => {
     const cover = source("./CoverEditor.tsx");
     const seo = source("./SeoPanel.tsx");
     const checklist = source("./ValidationChecklist.tsx");
 
     expect(cover).toContain('name="cover_external_url"');
     expect(seo).toContain('name="legacy_path"');
-    expect(seo).toContain("defaultValue={legacyPath}");
+    expect(seo).toContain("value={legacyPath}");
+    expect(seo).toContain("onLegacyPathChange(event.target.value)");
     expect(seo).toContain('name="allow_indexing"');
-    expect(seo).toContain("defaultChecked={allowIndexing}");
+    expect(seo).toContain("checked={allowIndexing}");
+    expect(seo).toContain("onAllowIndexingChange(event.target.checked)");
     expect(checklist).toContain('name="publication_ready"');
   });
 

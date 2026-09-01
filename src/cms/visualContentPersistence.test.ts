@@ -48,7 +48,9 @@ const directEditMigration = readFileSync(
 describe("visual page and site-chrome persistence", () => {
   it("requires staff, audits the exact field and requests a public build", () => {
     expect(actionSource).toContain("await requireStaff()");
-    expect(actionSource).toContain('supabase.rpc(\n    "save_visual_content_field_v2"');
+    expect(actionSource).toMatch(
+      /supabase\.rpc\(\s*"save_visual_content_field_v2"/u
+    );
     expect(directEditMigration).toContain("insert into public.admin_audit_log");
     expect(directEditMigration).toContain("'field', p_field");
     expect(actionSource).toContain("await requestPublicBuild");

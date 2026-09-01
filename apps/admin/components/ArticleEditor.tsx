@@ -14,6 +14,16 @@ import {
 } from "react";
 
 import { createSlug } from "@/lib/slug";
+import {
+  ARTICLE_METADATA_DRAFT_FIELDS,
+  buildArticleMetadataDraft,
+  createArticleMetadataAutomationState,
+  markArticleMetadataFieldManual,
+  synchronizeArticleMetadataDraft,
+  type ArticleMetadataAutomationState,
+  type ArticleMetadataDraft,
+  type ArticleMetadataDraftField,
+} from "@/lib/article-composer";
 import { saveArticleAction } from "@/app/(dashboard)/articles/actions";
 import {
   deleteEditorTemplateAction,
@@ -32,7 +42,6 @@ import {
   recoveryContentFingerprint,
   resolveArticleDraftRecoverySource,
 } from "@/lib/article-recovery";
-import { withClientAdminPath } from "@/lib/admin-path";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
 import {
@@ -101,6 +110,7 @@ type ImageSelectionContext = {
 type Article = {
   id?: string;
   updated_at?: string;
+  working_draft_version?: number;
   title?: string;
   subtitle?: string;
   excerpt?: string;
@@ -187,6 +197,8 @@ type ArticleRecoverySnapshot = {
   ogDescription?: string;
   sourceText?: string;
   bibliographyText?: string;
+  legacyPath?: string;
+  allowIndexing?: boolean;
   russianSourceChanged?: boolean;
   english?: {
     enabled?: boolean;
@@ -248,6 +260,21 @@ const articleTemplates = [
     description: "Свободное эссе с устойчивым ритмом и 2 местами для изображений",
     html: `<aside class="article-lead"><p><strong>Предисловие</strong></p><p>Замените текст главным вопросом и редакционной позицией.</p></aside>${mediaSlot("Главное изображение эссе", "Нажмите на квадрат и выберите файл с компьютера.")}<h2>Контекст</h2><p>Вставьте текст раздела.</p><h2>Основная идея</h2><p>Разверните центральный тезис.</p><h2>Примеры и аргументы</h2><p>Вставьте основную часть эссе.</p><blockquote><p>Замените цитату и обязательно укажите источник.</p></blockquote>${mediaSlot("Вторая иллюстрация", "Нажмите на квадрат; используйте изображение как смысловую паузу, а не как украшение.")}<h2>Вывод</h2><p>Сформулируйте итог.</p><h2>Источники</h2><p>Укажите проверяемые источники.</p>`,
   },
+  {
+    label: "Интервью",
+    description: "Вступление, карточка собеседника и готовый ритм вопросов",
+    html: `<aside class="article-lead"><p><strong>О собеседнике</strong></p><p>Коротко представьте героя беседы и объясните, почему этот разговор важен читателю.</p></aside>${mediaSlot("Портрет собеседника", "Добавьте портрет, автора снимка и основание использования.")}<h2>Начало разговора</h2><p><strong>Вопрос.</strong> Сформулируйте первый вопрос.</p><p><em>Ответ.</em> Вставьте ответ без изменения авторского смысла.</p><h2>Книги, работа и идеи</h2><p><strong>Вопрос.</strong> Продолжите разговор.</p><p><em>Ответ.</em> Вставьте ответ.</p><section class="article-design-block is-accent" data-editorial-block="accent" data-reveal="fade-up"><h3>Ключевая мысль беседы</h3><p>Выделите точную цитату, согласованную с собеседником.</p></section><h2>Блиц</h2><p><strong>Вопрос.</strong> Короткий ответ.</p><h2>После разговора</h2><p>Подведите редакционный итог и добавьте необходимые ссылки.</p>`,
+  },
+  {
+    label: "Подборка книг",
+    description: "Тематическое введение и повторяемые карточки произведений",
+    html: `<aside class="article-lead"><p><strong>Тема подборки</strong></p><p>Объясните принцип отбора и кому пригодится этот список.</p></aside>${mediaSlot("Главная иллюстрация подборки", "Выберите изображение, которое объединяет тему, а не дублирует одну книгу.")}<h2>1. Название первой книги</h2><p>Автор, контекст и причина включения в подборку.</p><section class="article-design-block is-fact" data-editorial-block="fact" data-reveal="fade-up"><h3>Кому подойдёт</h3><p>Короткая практическая рекомендация читателю.</p></section><h2>2. Название второй книги</h2><p>Автор, контекст и причина включения.</p><h2>3. Название третьей книги</h2><p>Автор, контекст и причина включения.</p><h2>Как выбрать, с чего начать</h2><p>Сопоставьте книги и помогите читателю принять решение.</p><h2>Источники</h2><p>Укажите издательские страницы и проверяемые библиографические данные.</p>`,
+  },
+  {
+    label: "Архивное расследование",
+    description: "Источники, хронология, версии и проверяемый вывод",
+    html: `<aside class="article-lead"><p><strong>Что мы выясняем</strong></p><p>Сформулируйте вопрос, границы исследования и доступные свидетельства.</p></aside>${mediaSlot("Архивный документ", "Добавьте изображение документа с подписью, датой, фондом и лицензией.")}<h2>Исходная версия</h2><p>Опишите распространённое утверждение и откуда оно появилось.</p><h2>Что говорят документы</h2><p>Разберите первичные и авторитетные вторичные источники.</p><section class="article-design-block is-timeline" data-editorial-block="timeline" data-reveal="fade-up"><h3>Хронология</h3><p>Год - подтверждённое событие.</p><p>Год - подтверждённое событие.</p></section>${mediaSlot("Второй источник", "Покажите фрагмент, который помогает проверить вывод.")}<h2>Разночтения и ограничения</h2><p>Честно обозначьте, какие данные остаются спорными.</p><h2>Вывод редакции</h2><p>Отделите установленный факт от обоснованной интерпретации.</p><h2>Источники и библиография</h2><p>Перечислите архивные шифры, каталоги и публикации.</p>`,
+  },
 ] as const;
 
 const LEGACY_TEMPLATES_KEY = "probpera-editor-custom-templates";
@@ -279,6 +306,18 @@ function hasStructuredContent(value: unknown): value is JSONContent {
   return Array.isArray(value.content) && value.content.length > 0;
 }
 
+export type ArticleEditorProps = {
+  article: Article;
+  englishTranslation?: ArticleTranslation;
+  categories: Category[];
+  publicSiteUrl: string;
+  templates?: CustomTemplate[];
+  draftKey?: string;
+  saveConfirmed?: boolean;
+  canPublish?: boolean;
+  canOverridePublicationChecklist?: boolean;
+};
+
 export default function ArticleEditor({
   article,
   englishTranslation,
@@ -287,15 +326,9 @@ export default function ArticleEditor({
   templates = [],
   draftKey,
   saveConfirmed = false,
-}: {
-  article: Article;
-  englishTranslation?: ArticleTranslation;
-  categories: Category[];
-  publicSiteUrl: string;
-  templates?: CustomTemplate[];
-  draftKey?: string;
-  saveConfirmed?: boolean;
-}) {
+  canPublish = false,
+  canOverridePublicationChecklist = false,
+}: ArticleEditorProps) {
   const [activeLocale, setActiveLocale] = useState<"ru" | "en">("ru");
   const activeLocaleRef = useRef<"ru" | "en">("ru");
   const switchingLocaleRef = useRef(false);
@@ -376,6 +409,7 @@ export default function ArticleEditor({
   const latestRecoverySnapshotRef = useRef<ArticleRecoverySnapshot | null>(null);
   const [customTemplates, setCustomTemplates] = useState<CustomTemplate[]>(templates);
   const [templateMessage, setTemplateMessage] = useState("");
+  const [metadataMessage, setMetadataMessage] = useState("");
   const [mediaComposerKind, setMediaComposerKind] =
     useState<GalleryEditorKind | null>(null);
   const [mediaComposerValue, setMediaComposerValue] = useState("");
@@ -416,7 +450,9 @@ export default function ArticleEditor({
   const [isImageDraggingOverEditor, setIsImageDraggingOverEditor] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const saveSubmitButtonRef = useRef<HTMLButtonElement>(null);
+  const previewSubmitButtonRef = useRef<HTMLButtonElement>(null);
   const publishSubmitButtonRef = useRef<HTMLButtonElement>(null);
+  const submissionInFlightRef = useRef(false);
   const coverFileInputRef = useRef<HTMLInputElement>(null);
   const workspaceSectionRefs = useRef<
     Record<ArticleWorkspaceSection, HTMLElement | null>
@@ -440,6 +476,10 @@ export default function ArticleEditor({
   const [sourceText, setSourceText] = useState(listValue(article.sources));
   const [bibliographyText, setBibliographyText] = useState(
     listValue(article.bibliography)
+  );
+  const [legacyPath, setLegacyPath] = useState(article.legacy_path || "");
+  const [allowIndexing, setAllowIndexing] = useState(
+    article.allow_indexing !== false
   );
   const [seoTitle, setSeoTitle] = useState(article.seo_title || "");
   const [seoKeywords, setSeoKeywords] = useState(
@@ -482,6 +522,40 @@ export default function ArticleEditor({
   const [englishConfirmedCurrentSource, setEnglishConfirmedCurrentSource] =
     useState(false);
   const [russianSourceChanged, setRussianSourceChanged] = useState(false);
+  const automaticMetadataRef = useRef<{
+    ru: ArticleMetadataAutomationState;
+    en: ArticleMetadataAutomationState;
+  } | null>(null);
+  if (!automaticMetadataRef.current) {
+    automaticMetadataRef.current = {
+      ru: createArticleMetadataAutomationState({
+        excerpt: article.excerpt || "",
+        seoTitle: article.seo_title || "",
+        seoDescription: article.seo_description || "",
+        seoKeywords: (article.seo_keywords || []).join(", "),
+        ogTitle: article.og_title || "",
+        ogDescription: article.og_description || "",
+      }),
+      en: createArticleMetadataAutomationState({
+        excerpt: englishTranslation?.excerpt || "",
+        seoTitle: englishTranslation?.seo_title || "",
+        seoDescription: englishTranslation?.seo_description || "",
+        seoKeywords: (englishTranslation?.seo_keywords || []).join(", "),
+        ogTitle: englishTranslation?.og_title || "",
+        ogDescription: englishTranslation?.og_description || "",
+      }),
+    };
+  }
+  const automaticMetadata = automaticMetadataRef.current;
+  const markMetadataFieldManual = (
+    locale: "ru" | "en",
+    field: ArticleMetadataDraftField
+  ) => {
+    automaticMetadata[locale] = markArticleMetadataFieldManual(
+      automaticMetadata[locale],
+      field
+    );
+  };
   const registerWorkspaceSection = useCallback(
     (section: ArticleWorkspaceSection, element: HTMLElement | null) => {
       workspaceSectionRefs.current[section] = element;
@@ -490,7 +564,14 @@ export default function ArticleEditor({
   );
   const scrollToWorkspaceSection = useCallback(
     (section: ArticleWorkspaceSection) => {
-      workspaceSectionRefs.current[section]?.scrollIntoView({
+      const target = workspaceSectionRefs.current[section];
+      if (!target) return;
+      const disclosure =
+        target instanceof HTMLDetailsElement
+          ? target
+          : target.closest("details");
+      if (disclosure instanceof HTMLDetailsElement) disclosure.open = true;
+      target.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
@@ -606,6 +687,96 @@ export default function ArticleEditor({
     }
   }, [englishCanonicalEdited, generatedEnglishCanonical]);
 
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      if (!title.trim() && !subtitle.trim() && !contentHtml.trim()) return;
+      const next = buildArticleMetadataDraft({
+        title,
+        subtitle,
+        contentHtml,
+        locale: "ru",
+      });
+      const synchronized = synchronizeArticleMetadataDraft(
+        { excerpt, seoTitle, seoDescription, seoKeywords, ogTitle, ogDescription },
+        next,
+        automaticMetadata.ru
+      );
+      automaticMetadata.ru = synchronized.state;
+      setExcerpt(synchronized.draft.excerpt);
+      setSeoTitle(synchronized.draft.seoTitle);
+      setSeoDescription(synchronized.draft.seoDescription);
+      setSeoKeywords(synchronized.draft.seoKeywords);
+      setOgTitle(synchronized.draft.ogTitle);
+      setOgDescription(synchronized.draft.ogDescription);
+      if (synchronized.changed) {
+        markRussianSourceChanged();
+        setIsDirty(true);
+      }
+    }, 500);
+    return () => window.clearTimeout(timer);
+  }, [
+    automaticMetadata,
+    contentHtml,
+    excerpt,
+    ogDescription,
+    ogTitle,
+    seoDescription,
+    seoKeywords,
+    seoTitle,
+    subtitle,
+    title,
+  ]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      if (
+        !englishTitle.trim() &&
+        !englishSubtitle.trim() &&
+        !englishContentHtml.trim()
+      ) {
+        return;
+      }
+      const next = buildArticleMetadataDraft({
+        title: englishTitle,
+        subtitle: englishSubtitle,
+        contentHtml: englishContentHtml,
+        locale: "en",
+      });
+      const synchronized = synchronizeArticleMetadataDraft(
+        {
+          excerpt: englishExcerpt,
+          seoTitle: englishSeoTitle,
+          seoDescription: englishSeoDescription,
+          seoKeywords: englishSeoKeywords,
+          ogTitle: englishOgTitle,
+          ogDescription: englishOgDescription,
+        },
+        next,
+        automaticMetadata.en
+      );
+      automaticMetadata.en = synchronized.state;
+      setEnglishExcerpt(synchronized.draft.excerpt);
+      setEnglishSeoTitle(synchronized.draft.seoTitle);
+      setEnglishSeoDescription(synchronized.draft.seoDescription);
+      setEnglishSeoKeywords(synchronized.draft.seoKeywords);
+      setEnglishOgTitle(synchronized.draft.ogTitle);
+      setEnglishOgDescription(synchronized.draft.ogDescription);
+      if (synchronized.changed) setIsDirty(true);
+    }, 500);
+    return () => window.clearTimeout(timer);
+  }, [
+    automaticMetadata,
+    englishContentHtml,
+    englishExcerpt,
+    englishOgDescription,
+    englishOgTitle,
+    englishSeoDescription,
+    englishSeoKeywords,
+    englishSeoTitle,
+    englishSubtitle,
+    englishTitle,
+  ]);
+
   const switchEditorLocale = useCallback((nextLocale: "ru" | "en") => {
     if (!editor) {
       setImageUploadError("Редактор ещё загружается. Повторите переключение через секунду.");
@@ -664,6 +835,71 @@ export default function ArticleEditor({
     activeLocale === "en" ? englishSourceText : sourceText;
   const activeBibliographyText =
     activeLocale === "en" ? englishBibliographyText : bibliographyText;
+  const activeContentHtml =
+    activeLocale === "en" ? englishContentHtml : contentHtml;
+
+  const prepareArticleMetadata = () => {
+    const draft = buildArticleMetadataDraft({
+      title: activeTitle,
+      subtitle: activeSubtitle,
+      contentHtml: activeContentHtml,
+      locale: activeLocale,
+    });
+    if (!draft.excerpt) {
+      setMetadataMessage(
+        activeLocale === "en"
+          ? "Сначала добавьте несколько предложений английского текста."
+          : "Сначала добавьте несколько предложений основного текста."
+      );
+      scrollToWorkspaceSection("text");
+      return;
+    }
+    const currentMetadata: ArticleMetadataDraft = {
+      excerpt: activeExcerpt,
+      seoTitle: activeSeoTitle,
+      seoDescription: activeSeoDescription,
+      seoKeywords: activeSeoKeywords,
+      ogTitle: activeOgTitle,
+      ogDescription: activeOgDescription,
+    };
+    const metadataAutomation = automaticMetadata[activeLocale];
+    const hasExistingMetadata = ARTICLE_METADATA_DRAFT_FIELDS.some(
+      (field) =>
+        currentMetadata[field].trim() && !metadataAutomation.managed[field]
+    );
+    if (
+      hasExistingMetadata &&
+      !window.confirm(
+        "Обновить краткое описание и SEO на основе текущего текста? Введённые значения будут заменены."
+      )
+    ) {
+      return;
+    }
+
+    if (activeLocale === "en") {
+      setEnglishExcerpt(draft.excerpt);
+      setEnglishSeoTitle(draft.seoTitle);
+      setEnglishSeoDescription(draft.seoDescription);
+      setEnglishSeoKeywords(draft.seoKeywords);
+      setEnglishOgTitle(draft.ogTitle);
+      setEnglishOgDescription(draft.ogDescription);
+      if (draft.excerpt) setEnglishEnabled(true);
+      automaticMetadata.en = createArticleMetadataAutomationState(draft, true);
+    } else {
+      setExcerpt(draft.excerpt);
+      setSeoTitle(draft.seoTitle);
+      setSeoDescription(draft.seoDescription);
+      setSeoKeywords(draft.seoKeywords);
+      setOgTitle(draft.ogTitle);
+      setOgDescription(draft.ogDescription);
+      markRussianSourceChanged();
+      automaticMetadata.ru = createArticleMetadataAutomationState(draft, true);
+    }
+    setIsDirty(true);
+    setMetadataMessage(
+      "Описание карточки и SEO подготовлены. Проверьте формулировку перед публикацией."
+    );
+  };
 
   useEffect(() => {
     if (article.id) {
@@ -790,6 +1026,8 @@ export default function ArticleEditor({
       ogDescription,
       sourceText,
       bibliographyText,
+      legacyPath,
+      allowIndexing,
       russianSourceChanged,
       english: {
         enabled: englishEnabled,
@@ -816,6 +1054,7 @@ export default function ArticleEditor({
     }),
     [
       activeLocale,
+      allowIndexing,
       bibliographyText,
       canonicalEdited,
       canonicalUrl,
@@ -849,6 +1088,7 @@ export default function ArticleEditor({
       ogDescription,
       ogTitle,
       pinned,
+      legacyPath,
       russianSourceChanged,
       scheduledAt,
       seoDescription,
@@ -902,8 +1142,9 @@ export default function ArticleEditor({
 
   useEffect(() => {
     const protectDraft = (event: BeforeUnloadEvent) => {
-      if (!isDirty) return;
+      if (!isDirty || submissionInFlightRef.current) return;
       event.preventDefault();
+      event.returnValue = "";
     };
     window.addEventListener("beforeunload", protectDraft);
     return () => window.removeEventListener("beforeunload", protectDraft);
@@ -985,26 +1226,48 @@ export default function ArticleEditor({
     slug,
     categoryId,
     contentHtml,
+    contentJson,
     excerpt,
     coverUrl,
     coverAlt,
     seoDescription,
     sourceText,
+    status,
+    scheduledAt,
     englishEnabled,
     englishStatus,
     englishTitle,
+    englishSubtitle,
     englishSlug,
     englishContentHtml,
+    englishContentJson,
     englishExcerpt,
     englishCoverAlt,
+    englishSeoTitle,
     englishSeoDescription,
+    englishSeoKeywords,
+    englishOgTitle,
+    englishOgDescription,
     englishSourceText,
+    englishBibliographyText,
     englishConfirmedCurrentSource,
     englishSourceContentHash: englishTranslation?.source_content_hash,
     russianSourceChanged,
   });
   const wordCount =
     activeLocale === "en" ? englishWordCount : russianWordCount;
+  const publicationActionReady =
+    status === "hidden" || status === "archived" || publicationReady;
+  const publicationActionLabel =
+    status === "scheduled"
+      ? "Запланировать публикацию"
+      : status === "hidden"
+        ? "Скрыть статью с сайта"
+        : status === "archived"
+          ? "Перенести статью в архив"
+          : status === "published"
+            ? "Проверить и обновить публикацию"
+            : "Проверить и опубликовать";
 
   const workspaceDocument = useMemo(() => {
     const outline: Array<{
@@ -1045,7 +1308,7 @@ export default function ArticleEditor({
   }, [activeLocale, contentJson, editor, englishContentJson]);
   const workspaceSaveState = `${wordCount.toLocaleString(
     activeLocale === "en" ? "en-US" : "ru-RU"
-  )} ${activeLocale === "en" ? "words" : "слов"}${
+  )} ${activeLocale === "en" ? "английских слов" : "слов"}${
     savedLocallyAt ? ` · автокопия ${savedLocallyAt}` : ""
   }${isDirty ? " · изменения ещё не отправлены в редакционную базу" : ""}`;
   const workspaceSnapshot = useMemo<ArticleEditorWorkspace["snapshot"]>(() => {
@@ -1065,14 +1328,15 @@ export default function ArticleEditor({
       total: publicationChecks.length,
       saveState: workspaceSaveState,
       canSave: !isImageUploadActive,
-      canPreview: Boolean(article.id),
-      canPublish: publicationReady && !isImageUploadActive,
+      canPreview: !isImageUploadActive,
+      canPublish: canPublish && publicationActionReady && !isImageUploadActive,
     };
   }, [
     activeLocale,
-    article.id,
+    canPublish,
     isImageUploadActive,
     publicationChecks,
+    publicationActionReady,
     publicationReady,
     workspaceDocument,
     workspaceSaveState,
@@ -1088,13 +1352,10 @@ export default function ArticleEditor({
     formRef.current?.requestSubmit(submitter);
   }, []);
   const previewWorkspaceArticle = useCallback(() => {
-    if (!article.id) return;
-    window.open(
-      withClientAdminPath(`/articles/${article.id}/preview?locale=${activeLocale}`),
-      "_blank",
-      "noopener,noreferrer"
-    );
-  }, [activeLocale, article.id]);
+    const submitter = previewSubmitButtonRef.current;
+    if (!submitter || submitter.disabled) return;
+    formRef.current?.requestSubmit(submitter);
+  }, []);
   const toggleWorkspaceFullscreen = useCallback(() => {
     setIsFullscreen((value) => !value);
   }, []);
@@ -1202,15 +1463,14 @@ export default function ArticleEditor({
       setTemplateMessage("Место для изображения заполнено.");
       return;
     }
-    const insertedAsLead = insertImageAtLogicalPosition(attributes);
-    setTemplateMessage(
-      insertedAsLead
-        ? "Первая иллюстрация размещена после вступления и перед первым смысловым разделом."
-        : "Изображение вставлено в материал."
-    );
+    if (insertImageAtRememberedPosition(attributes)) {
+      setTemplateMessage(
+        "Изображение вставлено точно в сохранённое место курсора."
+      );
+    }
   };
 
-  const insertImageAtLogicalPosition = (attributes: {
+  const insertImageAtRememberedPosition = (attributes: {
     src: string;
     mediaId: string | null;
     alt: string;
@@ -1218,39 +1478,27 @@ export default function ArticleEditor({
     layout: EditorialImageLayout;
   }) => {
     if (!editor) return false;
-    let hasImage = false;
-    editor.state.doc.descendants((node) => {
-      if (node.type.name === "image") {
-        hasImage = true;
-        return false;
-      }
-      return !hasImage;
-    });
-    if (hasImage) {
-      editor.chain().focus().setImage(attributes).run();
-      return false;
-    }
-
-    let firstHeadingPosition: number | null = null;
-    let firstBlockEnd: number | null = null;
-    editor.state.doc.forEach((node, offset) => {
-      if (firstBlockEnd === null) firstBlockEnd = offset + node.nodeSize;
-      if (
-        firstHeadingPosition === null &&
-        node.type.name === "heading" &&
-        Number(node.attrs.level || 0) === 2
-      ) {
-        firstHeadingPosition = offset;
-      }
-    });
-    const insertionPosition =
-      firstHeadingPosition ?? firstBlockEnd ?? editor.state.doc.content.size;
-    editor
+    const rememberedPosition = imageSelectionRef.current.insertionPos;
+    const insertionPosition = Math.max(
+      0,
+      Math.min(
+        typeof rememberedPosition === "number"
+          ? rememberedPosition
+          : editor.state.selection.from,
+        editor.state.doc.content.size
+      )
+    );
+    const inserted = editor
       .chain()
       .focus()
       .insertContentAt(insertionPosition, { type: "image", attrs: attributes })
       .run();
-    return true;
+    if (!inserted) {
+      setTemplateMessage(
+        "Место курсора изменилось. Установите курсор и повторите вставку."
+      );
+    }
+    return inserted;
   };
 
   const rememberImageSelection = () => {
@@ -1265,7 +1513,7 @@ export default function ArticleEditor({
           ? attributes.src
           : undefined,
       nodePos: selectedImage ? editor?.state.selection.from : undefined,
-      insertionPos: undefined,
+      insertionPos: selectedImage ? undefined : editor?.state.selection.from,
       mediaSlotPos: undefined,
     };
   };
@@ -1304,6 +1552,7 @@ export default function ArticleEditor({
       });
 
       setCoverUrl(result.url);
+      markRussianSourceChanged();
       if (!activeCoverAlt.trim()) {
         if (uploadLocale === "en") setEnglishCoverAlt(altText);
         else setCoverAlt(altText);
@@ -1457,6 +1706,22 @@ export default function ArticleEditor({
     if (!editor) return;
       if (recovery.version === 2) {
         const english = recovery.english || {};
+        automaticMetadata.ru = createArticleMetadataAutomationState({
+          excerpt: recovery.excerpt ?? "",
+          seoTitle: recovery.seoTitle ?? "",
+          seoDescription: recovery.seoDescription ?? "",
+          seoKeywords: recovery.seoKeywords ?? "",
+          ogTitle: recovery.ogTitle ?? "",
+          ogDescription: recovery.ogDescription ?? "",
+        });
+        automaticMetadata.en = createArticleMetadataAutomationState({
+          excerpt: english.excerpt ?? "",
+          seoTitle: english.seoTitle ?? "",
+          seoDescription: english.seoDescription ?? "",
+          seoKeywords: english.seoKeywords ?? "",
+          ogTitle: english.ogTitle ?? "",
+          ogDescription: english.ogDescription ?? "",
+        });
         setTitle(recovery.title ?? "");
         setSubtitle(recovery.subtitle ?? "");
         setExcerpt(recovery.excerpt ?? "");
@@ -1485,6 +1750,8 @@ export default function ArticleEditor({
         setOgDescription(recovery.ogDescription ?? "");
         setSourceText(recovery.sourceText ?? "");
         setBibliographyText(recovery.bibliographyText ?? "");
+        setLegacyPath(recovery.legacyPath ?? "");
+        setAllowIndexing(recovery.allowIndexing !== false);
         setRussianSourceChanged(Boolean(recovery.russianSourceChanged));
 
         setEnglishEnabled(Boolean(english.enabled));
@@ -1607,6 +1874,8 @@ export default function ArticleEditor({
           id: article.id,
           expectedUpdatedAt: article.updated_at || "",
           englishExpectedUpdatedAt: englishTranslation?.updated_at || "",
+          workingDraftVersion: article.working_draft_version || 0,
+          previewLocale: activeLocale,
         },
         publication: {
           previousStatus: article.status || "draft",
@@ -1697,7 +1966,10 @@ export default function ArticleEditor({
             }
           }
         }
-        setIsDirty(false);
+        submissionInFlightRef.current = true;
+        window.setTimeout(() => {
+          submissionInFlightRef.current = false;
+        }, 15_000);
       }}
     >
       <RecoveryController
@@ -1766,7 +2038,11 @@ export default function ArticleEditor({
             className="panel"
           >
             <label className="field">
-              <span>{activeLocale === "en" ? "Title" : "Заголовок"}</span>
+              <span>
+                {activeLocale === "en"
+                  ? "Заголовок английской версии"
+                  : "Заголовок"}
+              </span>
               <input
                 className="editor-title"
                 value={activeTitle}
@@ -1783,13 +2059,19 @@ export default function ArticleEditor({
                   setIsDirty(true);
                 }}
                 placeholder={
-                  activeLocale === "en" ? "Article title" : "Заголовок материала"
+                  activeLocale === "en"
+                    ? "Заголовок на английском языке"
+                    : "Заголовок материала"
                 }
                 required={activeLocale === "ru"}
               />
             </label>
             <label className="field">
-              <span>{activeLocale === "en" ? "Subtitle" : "Подзаголовок"}</span>
+              <span>
+                {activeLocale === "en"
+                  ? "Подзаголовок английской версии"
+                  : "Подзаголовок"}
+              </span>
               <input
                 value={activeSubtitle}
                 onChange={(event) => {
@@ -1803,18 +2085,21 @@ export default function ArticleEditor({
                 maxLength={360}
                 placeholder={
                   activeLocale === "en"
-                    ? "Optional line below the title"
+                    ? "Необязательная строка на английском языке"
                     : "Необязательная строка под заголовком"
                 }
               />
             </label>
             <label className="field">
               <span>
-                {activeLocale === "en" ? "Short description" : "Краткое описание"}
+                {activeLocale === "en"
+                  ? "Краткое описание английской версии"
+                  : "Краткое описание"}
               </span>
               <textarea
                 value={activeExcerpt}
                 onChange={(event) => {
+                  markMetadataFieldManual(activeLocale, "excerpt");
                   if (activeLocale === "en") setEnglishExcerpt(event.target.value);
                   else {
                     setExcerpt(event.target.value);
@@ -1825,11 +2110,29 @@ export default function ArticleEditor({
                 maxLength={700}
                 placeholder={
                   activeLocale === "en"
-                    ? "For cards, search, and social media"
+                    ? "Английский текст для карточек, поиска и социальных сетей"
                     : "Для карточек, поиска и социальных сетей"
                 }
               />
             </label>
+            <div className="article-metadata-assistant">
+              <div>
+                <strong>Описание и SEO</strong>
+                <small>
+                  Заполняются автоматически из заголовка и текста. Ручные
+                  правки сохраняются; кнопка ниже пересобирает все поля по
+                  вашему запросу. Внешние сервисы не используются.
+                </small>
+              </div>
+              <button
+                className="button-secondary"
+                type="button"
+                onClick={prepareArticleMetadata}
+              >
+                Пересобрать из текста
+              </button>
+              {metadataMessage && <small role="status">{metadataMessage}</small>}
+            </div>
           </section>
 
           <EditorCore
@@ -1882,24 +2185,48 @@ export default function ArticleEditor({
               registerWorkspaceSection("publish", element)
             }
             status={status}
-            onStatusChange={setStatus}
+            onStatusChange={(value) => {
+              setStatus(value);
+              setIsDirty(true);
+            }}
             scheduledAt={scheduledAt}
-            onScheduledAtChange={setScheduledAt}
+            onScheduledAtChange={(value) => {
+              setScheduledAt(value);
+              setIsDirty(true);
+            }}
             featured={featured}
-            onFeaturedChange={setFeatured}
+            onFeaturedChange={(value) => {
+              setFeatured(value);
+              setIsDirty(true);
+            }}
             showOnHomepage={showOnHomepage}
-            onShowOnHomepageChange={setShowOnHomepage}
+            onShowOnHomepageChange={(value) => {
+              setShowOnHomepage(value);
+              setIsDirty(true);
+            }}
             pinned={pinned}
-            onPinnedChange={setPinned}
+            onPinnedChange={(value) => {
+              setPinned(value);
+              setIsDirty(true);
+            }}
             englishEnabled={englishEnabled}
-            onEnglishEnabledChange={setEnglishEnabled}
+            onEnglishEnabledChange={(value) => {
+              setEnglishEnabled(value);
+              setIsDirty(true);
+            }}
             englishStatus={englishStatus}
-            onEnglishStatusChange={setEnglishStatus}
+            onEnglishStatusChange={(value) => {
+              setEnglishStatus(value);
+              setIsDirty(true);
+            }}
             englishConfirmedCurrentSource={englishConfirmedCurrentSource}
-            onEnglishConfirmedCurrentSourceChange={
-              setEnglishConfirmedCurrentSource
-            }
+            onEnglishConfirmedCurrentSourceChange={(value) => {
+              setEnglishConfirmedCurrentSource(value);
+              setIsDirty(true);
+            }}
             englishApprovedAt={englishTranslation?.approved_at}
+            canPublish={canPublish}
+            canOverridePublicationChecklist={canOverridePublicationChecklist}
           />
 
           <section className="panel settings-stack">
@@ -1909,7 +2236,10 @@ export default function ArticleEditor({
               <select
                 name="category_id"
                 value={categoryId}
-                onChange={(event) => setCategoryId(event.target.value)}
+                onChange={(event) => {
+                  setCategoryId(event.target.value);
+                  setIsDirty(true);
+                }}
               >
                 <option value="">Без рубрики</option>
                 {categories.map((category) => (
@@ -1954,14 +2284,16 @@ export default function ArticleEditor({
                 ? generatedEnglishCanonical
                 : generatedCanonical
             }
-            legacyPath={article.legacy_path || ""}
+            legacyPath={legacyPath}
             seoTitle={activeSeoTitle}
             seoDescription={activeSeoDescription}
             seoKeywords={activeSeoKeywords}
             canonicalUrl={activeCanonicalUrl}
             ogTitle={activeOgTitle}
             ogDescription={activeOgDescription}
-            allowIndexing={article.allow_indexing !== false}
+            allowIndexing={allowIndexing}
+            onLegacyPathChange={setLegacyPath}
+            onAllowIndexingChange={setAllowIndexing}
             onSlugChange={
               activeLocale === "en" ? setEnglishSlug : setSlug
             }
@@ -1973,25 +2305,31 @@ export default function ArticleEditor({
                 ? setEnglishCanonicalEdited
                 : setCanonicalEdited
             }
-            onSeoTitleChange={
-              activeLocale === "en" ? setEnglishSeoTitle : setSeoTitle
-            }
-            onSeoDescriptionChange={
-              activeLocale === "en"
-                ? setEnglishSeoDescription
-                : setSeoDescription
-            }
-            onSeoKeywordsChange={
-              activeLocale === "en" ? setEnglishSeoKeywords : setSeoKeywords
-            }
-            onOgTitleChange={
-              activeLocale === "en" ? setEnglishOgTitle : setOgTitle
-            }
-            onOgDescriptionChange={
-              activeLocale === "en"
-                ? setEnglishOgDescription
-                : setOgDescription
-            }
+            onSeoTitleChange={(value) => {
+              markMetadataFieldManual(activeLocale, "seoTitle");
+              if (activeLocale === "en") setEnglishSeoTitle(value);
+              else setSeoTitle(value);
+            }}
+            onSeoDescriptionChange={(value) => {
+              markMetadataFieldManual(activeLocale, "seoDescription");
+              if (activeLocale === "en") setEnglishSeoDescription(value);
+              else setSeoDescription(value);
+            }}
+            onSeoKeywordsChange={(value) => {
+              markMetadataFieldManual(activeLocale, "seoKeywords");
+              if (activeLocale === "en") setEnglishSeoKeywords(value);
+              else setSeoKeywords(value);
+            }}
+            onOgTitleChange={(value) => {
+              markMetadataFieldManual(activeLocale, "ogTitle");
+              if (activeLocale === "en") setEnglishOgTitle(value);
+              else setOgTitle(value);
+            }}
+            onOgDescriptionChange={(value) => {
+              markMetadataFieldManual(activeLocale, "ogDescription");
+              if (activeLocale === "en") setEnglishOgDescription(value);
+              else setOgDescription(value);
+            }}
             markRussianSourceChanged={markRussianSourceChanged}
             markDirty={() => setIsDirty(true)}
           />
@@ -2110,16 +2448,6 @@ export default function ArticleEditor({
               Восстановить локальную копию
             </button>
           )}
-          {article.id && (
-            <NextLink
-              className="button-secondary"
-              href={`/articles/${article.id}/preview?locale=${activeLocale}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {activeLocale === "en" ? "Preview EN" : "Предпросмотр RU"}
-            </NextLink>
-          )}
           <button
             ref={saveSubmitButtonRef}
             className="button-secondary"
@@ -2128,38 +2456,71 @@ export default function ArticleEditor({
             value="save"
             disabled={isImageUploadActive}
           >
-            Сохранить
+            Сохранить черновик
           </button>
           <button
-            ref={publishSubmitButtonRef}
-            className="button"
+            ref={previewSubmitButtonRef}
+            className="button-secondary"
             type="submit"
             name="intent"
-            value="publish"
-            disabled={!publicationReady || isImageUploadActive}
-            title={publicationReady ? "Опубликовать материал" : "Заполните требования чеклиста"}
-          >
-            Опубликовать
-          </button>
-          <button
-            className="button"
-            type="submit"
-            name="intent"
-            value="publish"
-            title="Опубликовать без проверки"
+            value="preview"
             disabled={isImageUploadActive}
-            onClick={(event) => {
-              const form = event.currentTarget.form;
-              const overrideInput = form?.querySelector("input[name=\"publication_override\"]") as HTMLInputElement | null;
-              if (overrideInput) overrideInput.value = "1";
-              if (!window.confirm("Действительно опубликовать эту статью без проверки готовности?")) {
-                event.preventDefault();
-                if (overrideInput) overrideInput.value = "0";
-              }
-            }}
           >
-            Опубликовать сейчас
+            Сохранить и открыть предпросмотр
           </button>
+          {canPublish ? (
+            <>
+              <button
+                ref={publishSubmitButtonRef}
+                className="button"
+                type="submit"
+                name="intent"
+                value="publish"
+                disabled={!publicationActionReady || isImageUploadActive}
+                title={
+                  publicationActionReady
+                    ? publicationActionLabel
+                    : "Сначала заполните требования чек-листа"
+                }
+              >
+                {publicationActionLabel}
+              </button>
+              {canOverridePublicationChecklist && (
+                <details className="publication-override-disclosure">
+                  <summary>Дополнительные действия</summary>
+                  <button
+                    className="button-secondary"
+                    type="submit"
+                    name="intent"
+                    value="publish"
+                    disabled={isImageUploadActive}
+                    onClick={(event) => {
+                      const form = event.currentTarget.form;
+                      const overrideInput = form?.querySelector(
+                        'input[name="publication_override"]'
+                      ) as HTMLInputElement | null;
+                      if (overrideInput) overrideInput.value = "1";
+                      if (
+                        !window.confirm(
+                          "Выпустить материал с ручным подтверждением редакционного чек-листа? Серверные проверки безопасности всё равно останутся обязательными."
+                        )
+                      ) {
+                        event.preventDefault();
+                        if (overrideInput) overrideInput.value = "0";
+                      }
+                    }}
+                  >
+                    Выпустить с ручным подтверждением
+                  </button>
+                </details>
+              )}
+            </>
+          ) : (
+            <small>
+              После сохранения выберите статус «На проверке» - выпуск выполнит
+              администратор.
+            </small>
+          )}
         </div>
       </footer>
     </ArticleEditorShell>

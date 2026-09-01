@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 const sql = readFileSync(
   new URL("../../supabase/migrations/20260901_zz_translation_operations.sql", import.meta.url),
   "utf8"
-);
+).replace(/\r\n?/gu, "\n");
 
 describe("durable translation operations migration", () => {
   it("creates bounded private jobs, items and redacted attempts", () => {

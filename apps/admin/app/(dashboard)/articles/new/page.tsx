@@ -1,11 +1,12 @@
-import ArticleEditor, {
+import ArticleEditorLoader, {
   type ArticleTranslation,
   type CustomTemplate,
-} from "@/components/ArticleEditor";
+} from "@/components/ArticleEditorLoader";
 import ArticleCopyPicker, {
   type CopyableArticle,
 } from "@/components/ArticleCopyPicker";
 import { INITIAL_ARTICLE_COPY_OPTIONS_LIMIT } from "@/lib/article-copy-search";
+import { getStaffSession } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
 import { createSlug } from "@/lib/slug";
 import { AdminDependencyState } from "@/components/AdminStatusState";
@@ -26,6 +27,7 @@ export default async function NewArticlePage({
   searchParams: Promise<{ error?: string; copyFrom?: string }>;
 }) {
   const { error, copyFrom } = await searchParams;
+  const staff = await getStaffSession();
   const supabase = await createServerSupabaseClient();
   if (!supabase) return <AdminDependencyState />;
 
@@ -35,7 +37,6 @@ export default async function NewArticlePage({
   const [
     { data: categoriesResult },
     { data: templatesResult },
-    { data: authResult },
     { data: articlesResult },
     { data: sourceArticleResult },
     {
@@ -53,7 +54,6 @@ export default async function NewArticlePage({
       .select("id,label,content_html,visibility,owner_id")
       .order("updated_at", { ascending: false })
       .limit(60),
-    supabase.auth.getUser(),
     supabase
       .from("articles")
       .select("id,title,status,updated_at")
@@ -88,7 +88,7 @@ export default async function NewArticlePage({
     label: template.label,
     html: template.content_html,
     visibility: template.visibility as "personal" | "shared",
-    canDelete: template.owner_id === authResult.user?.id,
+    canDelete: template.owner_id === staff.user?.id,
   }));
   const copyableArticles: CopyableArticle[] = (articlesResult || []).map((item) => ({
     id: item.id,
@@ -176,13 +176,15 @@ export default async function NewArticlePage({
       )}
       <ArticleCopyPicker articles={copyableArticles} />
       {!copyLoadError && (
-        <ArticleEditor
+        <ArticleEditorLoader
           article={copiedArticle ? copiedArticle : { status: "draft" }}
           englishTranslation={copiedEnglishTranslation}
           categories={categories}
           publicSiteUrl={adminEnv.publicSiteUrl}
           templates={templates}
           draftKey={copyFromId ? `copy-${copyFromId}` : undefined}
+          canPublish={staff.role === "owner" || staff.role === "admin"}
+          canOverridePublicationChecklist={staff.role === "owner"}
         />
       )}
     </>
