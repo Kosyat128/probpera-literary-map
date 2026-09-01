@@ -18,7 +18,7 @@ type EnrollmentState = {
   secret: string;
 } | null;
 
-type Props = {
+export type AdminMfaSettingsProps = {
   initialCurrentLevel: AdminAuthenticatorAssuranceLevel;
   initialNextLevel: AdminAuthenticatorAssuranceLevel;
   initialCheckError?: string;
@@ -37,7 +37,7 @@ export default function AdminMfaSettings({
   initialCurrentLevel,
   initialNextLevel,
   initialCheckError,
-}: Props) {
+}: AdminMfaSettingsProps) {
   const router = useRouter();
   const supabase = useMemo(() => createBrowserSupabaseClient(), []);
   const [factors, setFactors] = useState<TotpFactor[]>([]);

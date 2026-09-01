@@ -2,9 +2,9 @@
   "meta": {
     "schemaVersion": 2,
     "root": ".",
-    "filesScanned": 1162,
+    "filesScanned": 1163,
     "filesByScope": {
-      "runtime": 957,
+      "runtime": 958,
       "test-or-fixture": 202,
       "historical-negative-evidence": 2,
       "audit-source-snapshot": 1
@@ -42,7 +42,7 @@
         },
         {
           "path": "apps/admin/lib/admin-mfa.source.test.ts",
-          "line": 36,
+          "line": 37,
           "text": "expect(authSource).toContain(\"!session.role ||\\n    session.mfa.required ||\");",
           "scope": "test-or-fixture"
         },
