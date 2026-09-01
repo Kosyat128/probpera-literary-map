@@ -21656,19 +21656,27 @@ html[data-theme="book"] .calendar-heading h3 {
   top: max(14px, env(safe-area-inset-top));
   right: max(16px, env(safe-area-inset-right));
   left: max(16px, env(safe-area-inset-left));
-  grid-template-columns: minmax(250px, 1fr) minmax(620px, 940px);
-  gap: 14px;
+  grid-template-columns: clamp(232px, 18vw, 286px) minmax(0, 1fr);
+  gap: 0;
   box-sizing: border-box;
   width: auto;
   max-width: none;
+  height: 52px;
   min-height: 52px;
   padding: 0;
-  overflow: visible;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  backdrop-filter: none;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 8% -70%, rgba(255, 168, 83, 0.16), transparent 32%),
+    radial-gradient(circle at 72% -90%, rgba(180, 118, 229, 0.2), transparent 46%),
+    linear-gradient(155deg, rgba(31, 9, 43, 0.96), rgba(12, 3, 21, 0.95));
+  border: 1px solid rgba(255, 205, 159, 0.25);
+  border-radius: 16px;
+  box-shadow:
+    0 16px 44px rgba(2, 0, 8, 0.34),
+    inset 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 -1px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(20px) saturate(1.12);
   pointer-events: auto;
   transition:
     opacity 260ms ease,
@@ -21701,22 +21709,19 @@ html[data-theme="book"] .calendar-heading h3 {
   grid-template-columns: 44px minmax(0, auto);
   gap: 11px;
   align-items: center;
-  justify-self: start;
-  width: auto;
+  justify-self: stretch;
+  width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  height: 52px;
-  overflow: visible;
-  padding: 3px 13px 3px 3px;
-  background:
-    radial-gradient(circle at 18% 0, rgba(255, 184, 113, 0.1), transparent 55%),
-    linear-gradient(160deg, rgba(31, 9, 43, 0.93), rgba(12, 3, 21, 0.92));
-  border: 1px solid rgba(255, 201, 151, 0.24);
-  border-radius: 16px;
-  box-shadow:
-    0 14px 38px rgba(2, 0, 8, 0.32),
-    inset 0 1px rgba(255, 255, 255, 0.055);
-  backdrop-filter: blur(20px) saturate(1.12);
+  height: 100%;
+  overflow: hidden;
+  padding: 3px 15px 3px 3px;
+  background: linear-gradient(90deg, rgba(255, 146, 47, 0.055), transparent 82%);
+  border: 0;
+  border-right: 1px solid rgba(255, 235, 216, 0.1);
+  border-radius: 0;
+  box-shadow: 12px 0 28px rgba(5, 0, 12, 0.12);
+  backdrop-filter: none;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav::before {
@@ -21785,25 +21790,21 @@ html[data-theme="book"] .calendar-heading h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr)) 88px 44px;
   gap: 2px;
   align-items: center;
-  justify-self: end;
+  justify-self: stretch;
   box-sizing: border-box;
-  width: min(940px, 100%);
+  width: 100%;
+  max-width: none;
   min-width: 0;
-  height: 52px;
-  min-height: 52px;
+  height: 100%;
+  min-height: 0;
   padding: 3px;
   overflow: hidden;
   isolation: isolate;
-  background:
-    radial-gradient(circle at 54% -80%, rgba(180, 118, 229, 0.18), transparent 46%),
-    linear-gradient(160deg, rgba(31, 9, 43, 0.94), rgba(12, 3, 21, 0.93));
-  border: 1px solid rgba(255, 205, 159, 0.24);
-  border-radius: 16px;
-  box-shadow:
-    0 16px 44px rgba(2, 0, 8, 0.34),
-    inset 0 1px rgba(255, 255, 255, 0.055),
-    inset 0 -1px rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(20px) saturate(1.12);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] :is(
@@ -22165,12 +22166,12 @@ html[data-theme="book"] .calendar-heading h3 {
 @media (max-width: 1220px) and (min-width: 981px) {
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
     grid-template-columns: 52px minmax(0, 1fr);
-    gap: 8px;
+    gap: 0;
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity {
     grid-template-columns: 44px;
-    width: 52px;
+    width: 100%;
     padding-right: 3px;
   }
 
@@ -22323,8 +22324,11 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-quiet="true"] .atlas-immersive-chrome:is(:hover, :focus-within) {
   opacity: 1;
-  border-color: transparent;
-  box-shadow: none;
+  border-color: rgba(255, 205, 159, 0.25);
+  box-shadow:
+    0 16px 44px rgba(2, 0, 8, 0.34),
+    inset 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 -1px rgba(0, 0, 0, 0.18);
   transform: none;
 }
 
