@@ -1006,6 +1006,9 @@ test("Nobel layer keeps selection and its explicit article action separate", asy
   await expect(page.locator(".writer-detail-heading h4")).toHaveText(
     writerName ?? ""
   );
+  await expect(nobelStatus).toBeVisible();
+  await expect(nobelIndex).toBeVisible();
+  await expect(articleAction).toBeVisible();
   await expect(
     atlas.locator('canvas[data-stage4-nobel-identity="stable"]')
   ).toHaveCount(1);

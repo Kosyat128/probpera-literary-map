@@ -19647,8 +19647,21 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 }
 
-.atlas-experience-surface[data-atlas-panel-state="open"] .literary-globe .globe-nobel-status {
-  visibility: hidden;
+@media (min-width: 981px) {
+  .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-panel-state="open"] .literary-globe .globe-nobel-status {
+    right: 445px;
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-nobel-status {
+    right: calc(max(18px, env(safe-area-inset-right)) + 458px);
+  }
+}
+
+@media (max-width: 980px) {
+  .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="half"] .literary-globe .globe-nobel-status,
+  .atlas-experience-surface[data-atlas-panel-state="open"][data-atlas-sheet-state="expanded"] .literary-globe .globe-nobel-status {
+    visibility: hidden;
+  }
 }
 
 .atlas-experience-surface[data-atlas-panel-state="open"] .literary-globe .globe-country-label {
