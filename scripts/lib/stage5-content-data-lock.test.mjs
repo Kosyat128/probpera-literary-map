@@ -248,8 +248,10 @@ function ownerCssFingerprint() {
   )
     .filter((rule) => patterns.some((pattern) => pattern.test(rule.selector)))
     .map(({ selector, contexts, declarations }) => ({
-      selector,
-      contexts,
+      selector: selector.replace(/\s+/gu, " ").trim(),
+      contexts: contexts.map((context) =>
+        context.replace(/\s+/gu, " ").trim()
+      ),
       declarations,
     }));
   const aggregate = createHash("sha256");
