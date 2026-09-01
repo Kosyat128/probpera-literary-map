@@ -20244,7 +20244,10 @@ html[data-theme="book"] .calendar-heading h3 {
 
 /* Literary Planet: lightweight, aligned premium controls for every viewport. */
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
-  top: max(14px, env(safe-area-inset-top));
+  --atlas-chrome-state: 246, 157, 76;
+  --atlas-chrome-top: max(14px, env(safe-area-inset-top));
+
+  top: var(--atlas-chrome-top);
   right: max(16px, env(safe-area-inset-right));
   left: max(16px, env(safe-area-inset-left));
   display: grid;
@@ -20963,6 +20966,12 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 }
 
+@media (min-width: 1221px) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="closed"] .atlas-heading {
+    left: calc(max(16px, env(safe-area-inset-left)) + clamp(232px, 18vw, 286px) + 4px);
+  }
+}
+
 @media (max-width: 980px) {
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
     grid-template-columns: minmax(0, 1fr);
@@ -21667,15 +21676,16 @@ html[data-theme="book"] .calendar-heading h3 {
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(circle at 8% -70%, rgba(255, 168, 83, 0.16), transparent 32%),
-    radial-gradient(circle at 72% -90%, rgba(180, 118, 229, 0.2), transparent 46%),
-    linear-gradient(155deg, rgba(31, 9, 43, 0.96), rgba(12, 3, 21, 0.95));
-  border: 1px solid rgba(255, 205, 159, 0.25);
+    radial-gradient(circle at 7% -65%, rgba(255, 168, 83, 0.19), transparent 30%),
+    radial-gradient(circle at 65% -105%, rgba(var(--atlas-chrome-state), 0.18), transparent 48%),
+    linear-gradient(155deg, rgba(34, 10, 46, 0.975), rgba(11, 3, 20, 0.965));
+  border: 1px solid rgba(var(--atlas-chrome-state), 0.3);
   border-radius: 16px;
   box-shadow:
-    0 16px 44px rgba(2, 0, 8, 0.34),
-    inset 0 1px rgba(255, 255, 255, 0.06),
-    inset 0 -1px rgba(0, 0, 0, 0.18);
+    0 18px 54px rgba(2, 0, 8, 0.42),
+    0 0 0 1px rgba(255, 226, 199, 0.025),
+    inset 0 1px rgba(255, 255, 255, 0.075),
+    inset 0 -1px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(20px) saturate(1.12);
   pointer-events: auto;
   transition:
@@ -21690,21 +21700,28 @@ html[data-theme="book"] .calendar-heading h3 {
   right: 18px;
   bottom: 0;
   left: 18px;
-  height: 1px;
+  height: 2px;
   content: "";
   pointer-events: none;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 164, 79, 0.52) 18%,
-    rgba(181, 124, 223, 0.32) 72%,
+    rgba(var(--atlas-chrome-state), 0.18) 12%,
+    rgba(var(--atlas-chrome-state), 0.78) 42%,
+    rgba(213, 166, 242, 0.38) 78%,
     transparent
   );
-  display: none;
-  opacity: 0;
+  display: block;
+  border-radius: 999px 999px 0 0;
+  filter: drop-shadow(0 0 7px rgba(var(--atlas-chrome-state), 0.3));
+  opacity: 0.72;
+  transform-origin: center;
+  animation: atlas-chrome-trace 6.4s ease-in-out infinite;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 44px minmax(0, auto);
   gap: 11px;
@@ -21716,17 +21733,21 @@ html[data-theme="book"] .calendar-heading h3 {
   height: 100%;
   overflow: hidden;
   padding: 3px 15px 3px 3px;
-  background: linear-gradient(90deg, rgba(255, 146, 47, 0.055), transparent 82%);
+  background:
+    radial-gradient(circle at 12% 15%, rgba(255, 194, 131, 0.12), transparent 44%),
+    linear-gradient(90deg, rgba(255, 146, 47, 0.07), transparent 84%);
   border: 0;
   border-right: 1px solid rgba(255, 235, 216, 0.1);
   border-radius: 0;
-  box-shadow: 12px 0 28px rgba(5, 0, 12, 0.12);
+  box-shadow:
+    16px 0 34px rgba(5, 0, 12, 0.18),
+    inset -1px 0 rgba(255, 255, 255, 0.018);
   backdrop-filter: none;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav::before {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   inset: 1px 10% auto;
   height: 1px;
   content: "";
@@ -21737,6 +21758,7 @@ html[data-theme="book"] .calendar-heading h3 {
     rgba(255, 224, 196, 0.22),
     transparent
   );
+  opacity: 0.72;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity > img {
@@ -21748,9 +21770,13 @@ html[data-theme="book"] .calendar-heading h3 {
   border: 1px solid rgba(255, 222, 192, 0.48);
   border-radius: 11px;
   box-shadow:
-    0 9px 24px rgba(219, 79, 4, 0.24),
-    inset 0 1px rgba(255, 255, 255, 0.2);
+    0 10px 26px rgba(219, 79, 4, 0.3),
+    0 0 0 1px rgba(255, 241, 224, 0.055),
+    inset 0 1px rgba(255, 255, 255, 0.24);
   transform: none;
+  transition:
+    filter 260ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity > div {
@@ -21760,13 +21786,14 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity small {
+  display: block;
   overflow: hidden;
-  color: rgba(255, 237, 220, 0.56);
+  color: rgba(255, 237, 220, 0.68);
   font-family: var(--sans);
-  font-size: 9px;
+  font-size: 9.5px;
   font-weight: 720;
   line-height: 1;
-  letter-spacing: 0.105em;
+  letter-spacing: 0.065em;
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
@@ -21776,8 +21803,8 @@ html[data-theme="book"] .calendar-heading h3 {
   overflow: hidden;
   color: rgba(255, 249, 240, 0.92);
   font-family: var(--sans);
-  font-size: 13.5px;
-  font-weight: 680;
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1.08;
   letter-spacing: 0.012em;
   text-overflow: ellipsis;
@@ -21787,8 +21814,8 @@ html[data-theme="book"] .calendar-heading h3 {
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) 88px 44px;
-  gap: 2px;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 0.96fr) minmax(0, 1.26fr) 91px 44px;
+  gap: 3px;
   align-items: center;
   justify-self: stretch;
   box-sizing: border-box;
@@ -21818,10 +21845,13 @@ html[data-theme="book"] .calendar-heading h3 {
   height: 44px;
   min-height: 44px;
   color: rgba(255, 247, 237, 0.82);
-  background: transparent;
-  border: 1px solid transparent;
+  background:
+    linear-gradient(155deg, rgba(var(--atlas-control-accent), 0.045), rgba(255, 255, 255, 0.012));
+  border: 1px solid rgba(var(--atlas-control-accent), 0.075);
   border-radius: 11px;
-  box-shadow: none;
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.035),
+    inset 0 -1px rgba(0, 0, 0, 0.12);
   backdrop-filter: none;
 }
 
@@ -21838,8 +21868,8 @@ html[data-theme="book"] .calendar-heading h3 {
   .atlas-immersive-filter-toggle,
   .atlas-immersive-random
 ) .ui-action__label {
-  font-size: 12px;
-  font-weight: 670;
+  font-size: 12.5px;
+  font-weight: 650;
   letter-spacing: 0.002em;
 }
 
@@ -21850,16 +21880,19 @@ html[data-theme="book"] .calendar-heading h3 {
   .atlas-immersive-close
 ) .ui-action__icon {
   display: grid;
-  flex-basis: 28px;
-  width: 28px;
-  height: 28px;
+  flex-basis: 29px;
+  width: 29px;
+  height: 29px;
   place-items: center;
   line-height: 0;
   color: rgb(var(--atlas-control-accent));
-  background: rgba(var(--atlas-control-accent), 0.08);
-  border: 1px solid rgba(var(--atlas-control-accent), 0.16);
+  background:
+    linear-gradient(145deg, rgba(var(--atlas-control-accent), 0.15), rgba(var(--atlas-control-accent), 0.045));
+  border: 1px solid rgba(var(--atlas-control-accent), 0.23);
   border-radius: 9px;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.045);
+  box-shadow:
+    0 5px 15px rgba(var(--atlas-control-accent), 0.055),
+    inset 0 1px rgba(255, 255, 255, 0.07);
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] :is(
@@ -21888,8 +21921,12 @@ html[data-theme="book"] .calendar-heading h3 {
   height: 15px;
 }
 
-.atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > :not(:first-child) {
-  box-shadow: -1px 0 rgba(255, 235, 216, 0.075);
+.atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > :not(:first-child)::before {
+  background:
+    linear-gradient(180deg, transparent, rgba(255, 235, 216, 0.16), transparent) left center / 1px 22px no-repeat,
+    radial-gradient(circle at 50% 110%, rgba(var(--atlas-control-accent, 246, 157, 76), 0.2), transparent 62%);
+  opacity: 0.7;
+  transform: none;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] :is(
@@ -21901,8 +21938,9 @@ html[data-theme="book"] .calendar-heading h3 {
     linear-gradient(145deg, rgba(var(--atlas-control-accent), 0.2), rgba(36, 9, 50, 0.82));
   border-color: rgba(var(--atlas-control-accent), 0.52);
   box-shadow:
-    0 8px 22px rgba(var(--atlas-control-accent), 0.11),
-    inset 0 1px rgba(255, 255, 255, 0.08);
+    0 9px 24px rgba(var(--atlas-control-accent), 0.13),
+    inset 0 1px rgba(255, 255, 255, 0.09),
+    inset 0 -2px rgba(var(--atlas-control-accent), 0.74);
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] :is(
@@ -21917,33 +21955,102 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control {
-  width: 88px;
-  min-width: 88px;
+  width: 91px;
+  min-width: 91px;
   height: 44px;
+  gap: 1px;
   padding: 0;
-  background: rgba(255, 255, 255, 0.025);
-  border: 0;
+  background: rgba(255, 255, 255, 0.028);
+  border: 1px solid rgba(255, 226, 199, 0.08);
   border-radius: 11px;
-  box-shadow: -1px 0 rgba(255, 235, 216, 0.075);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.035),
+    inset 0 -1px rgba(0, 0, 0, 0.12);
   backdrop-filter: none;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control button {
   height: 44px;
   min-height: 44px;
-  border-radius: 10px;
+  color: rgba(255, 242, 229, 0.58);
+  font-size: 10px;
+  font-weight: 760;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 220ms ease,
+    transform 180ms ease;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control button.is-active {
-  background: linear-gradient(145deg, #ffad56, #f67518);
+  color: #ffe1bd;
+  background:
+    linear-gradient(145deg, rgba(255, 164, 77, 0.22), rgba(190, 70, 12, 0.16));
+  border-color: rgba(255, 178, 103, 0.38);
   box-shadow:
-    0 6px 17px rgba(246, 117, 24, 0.22),
-    inset 0 1px rgba(255, 255, 255, 0.3);
+    0 6px 16px rgba(246, 117, 24, 0.09),
+    inset 0 1px rgba(255, 255, 255, 0.11),
+    inset 0 -1px rgba(143, 46, 6, 0.24);
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-close {
-  color: rgba(255, 191, 198, 0.86);
-  background: rgba(197, 59, 76, 0.055);
+  color: rgba(255, 211, 215, 0.72);
+  background: rgba(197, 59, 76, 0.035);
+  border-color: rgba(226, 105, 116, 0.12);
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-close .ui-action__icon {
+  width: 28px;
+  height: 28px;
+  color: rgba(255, 183, 191, 0.82);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-search-open="true"] .atlas-immersive-chrome {
+  --atlas-chrome-state: 118, 170, 232;
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-filters-open="true"] .atlas-immersive-chrome {
+  --atlas-chrome-state: 174, 132, 224;
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome:focus-within {
+  border-color: rgba(var(--atlas-chrome-state), 0.48);
+  box-shadow:
+    0 20px 60px rgba(2, 0, 8, 0.46),
+    0 0 0 3px rgba(var(--atlas-chrome-state), 0.055),
+    inset 0 1px rgba(255, 255, 255, 0.085),
+    inset 0 -1px rgba(0, 0, 0, 0.22);
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"] :is(
+  .atlas-immersive-search-toggle,
+  .atlas-immersive-filter-toggle,
+  .atlas-immersive-random,
+  .atlas-immersive-close
+):focus-visible,
+.atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control button:focus-visible {
+  outline: 2px solid rgba(var(--atlas-control-accent, 246, 157, 76), 0.88);
+  outline-offset: -3px;
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"] :is(
+  .atlas-immersive-search-toggle,
+  .atlas-immersive-filter-toggle
+)[aria-expanded="true"]::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-random:disabled {
+  color: rgba(255, 247, 237, 0.36);
+  filter: saturate(0.55);
+  opacity: 0.58;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch,
@@ -22112,13 +22219,40 @@ html[data-theme="book"] .calendar-heading h3 {
     .atlas-immersive-random,
     .atlas-immersive-close
   ):not(:disabled):hover {
+    color: #fffaf3;
     background:
-      linear-gradient(145deg, rgba(var(--atlas-control-accent), 0.14), rgba(28, 7, 42, 0.68));
-    border-color: rgba(var(--atlas-control-accent), 0.34);
+      radial-gradient(circle at 50% 115%, rgba(var(--atlas-control-accent), 0.19), transparent 60%),
+      linear-gradient(145deg, rgba(var(--atlas-control-accent), 0.11), rgba(27, 7, 41, 0.72));
+    border-color: rgba(var(--atlas-control-accent), 0.42);
     box-shadow:
-      0 8px 22px rgba(var(--atlas-control-accent), 0.1),
-      inset 0 1px rgba(255, 255, 255, 0.07);
+      0 9px 24px rgba(var(--atlas-control-accent), 0.1),
+      inset 0 1px rgba(255, 255, 255, 0.085),
+      inset 0 -1px rgba(var(--atlas-control-accent), 0.16);
     transform: translateY(-1px);
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"] :is(
+    .atlas-immersive-search-toggle,
+    .atlas-immersive-filter-toggle,
+    .atlas-immersive-random,
+    .atlas-immersive-close
+  ):not(:disabled):hover .ui-action__icon {
+    filter: drop-shadow(0 0 7px rgba(var(--atlas-control-accent), 0.48));
+    transform: translateY(-0.5px) scale(1.06);
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-random:not(:disabled):hover .ui-action__icon {
+    transform: translateY(-0.5px) rotate(12deg) scale(1.08);
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control button:not(.is-active):hover {
+    color: rgba(255, 248, 239, 0.9);
+    background: rgba(255, 255, 255, 0.045);
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome:hover .atlas-immersive-identity > img {
+    filter: brightness(1.05) saturate(1.05);
+    transform: translateY(-0.5px) scale(1.015);
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-heading .search-results button:hover {
@@ -22136,6 +22270,16 @@ html[data-theme="book"] .calendar-heading h3 {
       inset 0 1px rgba(255, 255, 255, 0.065);
     transform: translateY(-1px);
   }
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"] :is(
+  .atlas-immersive-search-toggle,
+  .atlas-immersive-filter-toggle,
+  .atlas-immersive-random,
+  .atlas-immersive-close
+):not(:disabled):active {
+  transition-duration: 100ms;
+  transform: translateY(0) scale(0.985);
 }
 
 @media (min-width: 981px) {
@@ -22208,7 +22352,7 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav {
-    grid-template-columns: repeat(3, minmax(44px, 1fr)) 88px 44px;
+    grid-template-columns: repeat(3, minmax(44px, 1fr)) 91px 44px;
     gap: 2px;
     justify-self: stretch;
     width: 100%;
@@ -22236,8 +22380,8 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control {
-    width: 88px;
-    min-width: 88px;
+    width: 91px;
+    min-width: 91px;
     height: 44px;
   }
 
@@ -22265,8 +22409,24 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (min-width: 721px) and (max-width: 980px) {
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity {
+    display: grid;
+    grid-template-columns: 44px;
+    width: 100%;
+    padding-right: 3px;
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity > div {
+    display: none;
+  }
+
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) 88px 44px;
+    grid-template-columns: minmax(90px, 0.7fr) minmax(140px, 1fr) minmax(180px, 1.3fr) 91px 44px;
+    gap: 3px;
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-toolbar .atlas-filters {
@@ -22287,13 +22447,15 @@ html[data-theme="book"] .calendar-heading h3 {
     .atlas-immersive-random
   ) .ui-action__label {
     display: inline;
-    font-size: 11px;
+    font-size: 11.5px;
   }
 }
 
 @media (max-width: 430px) {
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
-    top: max(10px, env(safe-area-inset-top));
+    --atlas-chrome-top: max(10px, env(safe-area-inset-top));
+
+    top: var(--atlas-chrome-top);
     right: max(8px, env(safe-area-inset-right));
     left: max(8px, env(safe-area-inset-left));
   }
@@ -22319,24 +22481,68 @@ html[data-theme="book"] .calendar-heading h3 {
   opacity: 0.2;
   border-color: transparent;
   box-shadow: none;
-  transform: translateY(calc(-100% + 8px));
+  transform: translateY(calc(-100% - var(--atlas-chrome-top) + 8px));
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-quiet="true"] .atlas-immersive-chrome::after {
+  right: calc(50% - 30px);
+  left: calc(50% - 30px);
+  background: linear-gradient(90deg, transparent, rgba(var(--atlas-chrome-state), 0.92), transparent);
+  filter: drop-shadow(0 0 8px rgba(var(--atlas-chrome-state), 0.52));
+  opacity: 1;
+  transform: none;
+  animation: none;
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-quiet="true"] .atlas-immersive-chrome:is(:hover, :focus-within) {
   opacity: 1;
-  border-color: rgba(255, 205, 159, 0.25);
+  border-color: rgba(var(--atlas-chrome-state), 0.38);
   box-shadow:
-    0 16px 44px rgba(2, 0, 8, 0.34),
-    inset 0 1px rgba(255, 255, 255, 0.06),
-    inset 0 -1px rgba(0, 0, 0, 0.18);
+    0 18px 54px rgba(2, 0, 8, 0.42),
+    inset 0 1px rgba(255, 255, 255, 0.075),
+    inset 0 -1px rgba(0, 0, 0, 0.22);
   transform: none;
+}
+
+.atlas-experience-surface[data-atlas-view="immersive"][data-atlas-quiet="true"] .atlas-immersive-chrome:is(:hover, :focus-within)::after {
+  right: 18px;
+  left: 18px;
+  opacity: 0.72;
+  animation: atlas-chrome-trace 6.4s ease-in-out infinite;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-quiet="true"] .atlas-immersive-chrome {
+    opacity: 0.9;
+    border-color: rgba(var(--atlas-chrome-state), 0.24);
+    transform: translateY(-6px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome,
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome::after,
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity > img,
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > *::before,
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome nav > *::after,
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome .ui-action__icon,
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-heading .search-results button {
+    animation: none !important;
     transition: none !important;
     transform: none !important;
+  }
+}
+
+@keyframes atlas-chrome-trace {
+  0%,
+  100% {
+    opacity: 0.46;
+    transform: scaleX(0.86);
+  }
+
+  50% {
+    opacity: 0.82;
+    transform: scaleX(1);
   }
 }
 
