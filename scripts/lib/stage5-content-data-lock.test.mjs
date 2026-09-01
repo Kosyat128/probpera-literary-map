@@ -10,6 +10,7 @@ import {
   currentIntegrationGovernanceFingerprintRegistry,
   governanceFingerprintRegistry,
   ownerCssClasses,
+  russianBiographyEditorialOwnerAttestation,
   stage5D1AdditiveI18nAttestation,
   stage5FinalInterfaceCopyAttestation,
 } from "../stage5-baseline-registry.mjs";
@@ -286,6 +287,7 @@ const lockedScopes = [
   },
   {
     name: "canonical country, book and writer records",
+    ownerAttestationId: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
     paths: [
       "src/data/countries",
       "src/data/writers",
@@ -306,7 +308,7 @@ const lockedScopes = [
     },
     expected: {
       files: 542,
-      sha256: "112fb964a516c449bc9a4fb3df1d013307f6c1ad151e3055cdcc1f62ebbf8b56",
+      sha256: "6f80c536fd685cb4daaca59219993f753c47fe51288268cd88c1f6f402cff665",
     },
   },
 ];
@@ -320,6 +322,33 @@ describe("Stage 5 authorial content and canonical data lock", () => {
 });
 
 describe("Stage 5 owner and production-pipeline governance locks", () => {
+  it("records the owner-authorized Russian biography editorial delta", () => {
+    expect(russianBiographyEditorialOwnerAttestation).toEqual({
+      id: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
+      authorizedOn: "2026-09-01",
+      scopes: [
+        "canonical-writer-biographies",
+        "book-quality-russian-copy",
+        "premium-translation-and-health-russian-copy",
+      ],
+    });
+    expect(
+      lockedScopes.find(
+        (scope) => scope.name === "canonical country, book and writer records"
+      )?.ownerAttestationId
+    ).toBe(russianBiographyEditorialOwnerAttestation.id);
+    for (const id of [
+      "BOOK-ARCHIVE-OWNER-LOCK",
+      "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE",
+    ]) {
+      expect(
+        currentIntegrationGovernanceFingerprintRegistry.find(
+          (entry) => entry.id === id
+        )?.enforced?.ownerAttestationId
+      ).toBe(russianBiographyEditorialOwnerAttestation.id);
+    }
+  });
+
   for (const scope of currentIntegrationGovernanceFingerprintRegistry.filter(
     (entry) => !entry.classTokens
   )) {

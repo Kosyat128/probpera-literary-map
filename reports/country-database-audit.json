@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T23:31:03.653Z",
+  "generatedAt": "2026-09-01T13:17:54.500Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
@@ -14,11 +14,11 @@
     "cardsWithLiteraryPlaces": 0,
     "writerRecords": 1684,
     "uniqueWriters": 1672,
-    "workRecords": 4125,
-    "uniqueWorks": 4106,
+    "workRecords": 4487,
+    "uniqueWorks": 4466,
     "verifiedWriters": 61,
     "sourcedWriters": 141,
-    "expandedBiographies": 72,
+    "expandedBiographies": 78,
     "russianBiographiesReady": 1684,
     "russianBiographiesVerified": 1684,
     "russianBiographiesWithheld": 0,

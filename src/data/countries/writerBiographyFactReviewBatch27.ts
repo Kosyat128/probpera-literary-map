@@ -95,7 +95,7 @@ const seeds = [
   {
     key: "england:william_shakespeare",
     originalSha256: "429cbc98608db12be2f300fe90fdb9f20fabead9624ebb980c9757de10d03c3d",
-    reviewedTextRu: "Уильям Шекспир (1564-1616) - английский драматург, поэт и актёр. Он был пайщиком труппы «Слуги лорда-камергера», позднее получившей название «Слуги короля».",
+    reviewedTextRu: "Уильям Шекспир (1564-1616) - английский драматург, поэт и актёр. Помимо литературной работы он был пайщиком театральной труппы «Слуги лорда-камергера», позднее получившей название «Слуги короля».",
     evidence: [
       ["Shakespeare Birthplace Trust", "https://www.shakespeare.org.uk/explore-shakespeare/shakespedia/william-shakespeare/william-shakespeare-biography/", "Музейно-архивная биография подтверждает годы жизни, профессии Шекспира и его участие в названной театральной труппе."],
       ["Folger Shakespeare Library", "https://www.folger.edu/explore/shakespeares-life/", "Фолджеровская библиотека независимо подтверждает деятельность Шекспира как драматурга, поэта, актёра и пайщика, а также переименование труппы."],

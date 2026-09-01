@@ -1,0 +1,5134 @@
+{
+  "version": 1,
+  "deterministic": true,
+  "sourceFingerprint": "sha256:75cd43e455fceda6c31ed4dc8a52b5ba4e39214530006f926c4a8443779fe7b1",
+  "summary": {
+    "attestedMappings": 109,
+    "attestedQuotedOccurrences": 114,
+    "structuredWorkTitles": 2225,
+    "unresolvedLatinStructuredWorks": 1279,
+    "russianFirstParentheticalOriginalWorks": 0,
+    "romanNumeralOnlyStructuredWorks": 2,
+    "latinQuotedFragments": 1531,
+    "latinQuotedFragmentsRequiringClassification": 1528,
+    "russianFirstParentheticalOriginalConstructions": 71
+  },
+  "unresolvedStructuredWorks": [
+    {
+      "key": "albania:andon_zako_cajupi",
+      "title": "Baba-Tomorri"
+    },
+    {
+      "key": "albania:andon_zako_cajupi",
+      "title": "Katërmbëdhjetë vjeç dhëndër"
+    },
+    {
+      "key": "albania:besnik_mustafaj",
+      "title": "Vera pa kthim"
+    },
+    {
+      "key": "algeria:boualem_sansal",
+      "title": "2084. La fin du monde"
+    },
+    {
+      "key": "algeria:boualem_sansal",
+      "title": "Le Serment des barbares"
+    },
+    {
+      "key": "algeria:boualem_sansal",
+      "title": "Le Village de l’Allemand"
+    },
+    {
+      "key": "andorra:albert_salvado",
+      "title": "Els ulls d’Anníbal"
+    },
+    {
+      "key": "andorra:joan_peruga",
+      "title": "Últim estiu a Ordino"
+    },
+    {
+      "key": "angola:ana_paula_tavares",
+      "title": "O Lago da Lua"
+    },
+    {
+      "key": "angola:ana_paula_tavares",
+      "title": "Ritos de Passagem"
+    },
+    {
+      "key": "angola:manuel_rui",
+      "title": "Quem me dera ser onda"
+    },
+    {
+      "key": "argentina:alberto_manguel",
+      "title": "A History of Reading"
+    },
+    {
+      "key": "argentina:alberto_manguel",
+      "title": "The Library at Night"
+    },
+    {
+      "key": "argentina:jose_hernandez",
+      "title": "El gaucho Martín Fierro"
+    },
+    {
+      "key": "argentina:juan_gelman",
+      "title": "Gotán"
+    },
+    {
+      "key": "argentina:juan_gelman",
+      "title": "Violín y otras cuestiones"
+    },
+    {
+      "key": "argentina:leopoldo_lugones",
+      "title": "Las fuerzas extrañas"
+    },
+    {
+      "key": "argentina:leopoldo_lugones",
+      "title": "Las montañas del oro"
+    },
+    {
+      "key": "argentina:leopoldo_lugones",
+      "title": "Lunario sentimental"
+    },
+    {
+      "key": "argentina:leopoldo_marechal",
+      "title": "Adán Buenosayres"
+    },
+    {
+      "key": "argentina:leopoldo_marechal",
+      "title": "Antígona Vélez"
+    },
+    {
+      "key": "argentina:ricardo_guiraldes",
+      "title": "Don Segundo Sombra"
+    },
+    {
+      "key": "argentina:ricardo_guiraldes",
+      "title": "Raucho"
+    },
+    {
+      "key": "argentina:rodrigo_fresan",
+      "title": "Historia argentina"
+    },
+    {
+      "key": "argentina:rodrigo_fresan",
+      "title": "Jardines de Kensington"
+    },
+    {
+      "key": "argentina:rodrigo_fresan",
+      "title": "La parte inventada"
+    },
+    {
+      "key": "australia:alexis_wright",
+      "title": "Praiseworthy"
+    },
+    {
+      "key": "australia:bruce_pascoe",
+      "title": "Dark Emu"
+    },
+    {
+      "key": "australia:bruce_pascoe",
+      "title": "Young Dark Emu"
+    },
+    {
+      "key": "australia:oodgeroo_noonuccal",
+      "title": "We Are Going"
+    },
+    {
+      "key": "bangladesh:humayun_ahmed",
+      "title": "Nondito Naroke"
+    },
+    {
+      "key": "belgium:felix_timmermans",
+      "title": "Pallieter"
+    },
+    {
+      "key": "belgium:michel_de_ghelderode",
+      "title": "Magie rouge"
+    },
+    {
+      "key": "belize:colville_young",
+      "title": "Pataki Full"
+    },
+    {
+      "key": "belize:glen_godfrey",
+      "title": "The Sinner’s Bossanova"
+    },
+    {
+      "key": "belize:zee_edgell",
+      "title": "Beka Lamb"
+    },
+    {
+      "key": "bhutan:dzongsar_khyentse",
+      "title": "What Makes You Not a Buddhist"
+    },
+    {
+      "key": "bolivia:alcides_arguedas",
+      "title": "Raza de bronce"
+    },
+    {
+      "key": "bolivia:augusto_cespedes",
+      "title": "Sangre de mestizos"
+    },
+    {
+      "key": "bolivia:francisco_javier_del_granado",
+      "title": "La parábola del águila"
+    },
+    {
+      "key": "bolivia:francisco_javier_del_granado",
+      "title": "Rosas pálidas"
+    },
+    {
+      "key": "bolivia:gaston_suarez",
+      "title": "Vértigo"
+    },
+    {
+      "key": "bolivia:hilda_mundy",
+      "title": "Pirotecnia"
+    },
+    {
+      "key": "bolivia:jaime_saenz",
+      "title": "Felipe Delgado"
+    },
+    {
+      "key": "bolivia:jesus_lara",
+      "title": "Surumi"
+    },
+    {
+      "key": "bolivia:jesus_lara",
+      "title": "Yanakuna"
+    },
+    {
+      "key": "bolivia:marcelo_quiroga_santa_cruz",
+      "title": "Los deshabitados"
+    },
+    {
+      "key": "bolivia:nataniel_aguirre",
+      "title": "Juan de la Rosa: memorias del último soldado de la Independencia"
+    },
+    {
+      "key": "bolivia:oscar_cerruto",
+      "title": "Aluvión de fuego"
+    },
+    {
+      "key": "bolivia:oscar_cerruto",
+      "title": "Cerco de penumbras"
+    },
+    {
+      "key": "bolivia:oscar_cerruto",
+      "title": "Patria de sal cautiva"
+    },
+    {
+      "key": "bolivia:vilma_tapia_anda",
+      "title": "La fiesta de mi boda"
+    },
+    {
+      "key": "bolivia:yolanda_bedregal",
+      "title": "Bajo el oscuro sol"
+    },
+    {
+      "key": "bolivia:yolanda_bedregal",
+      "title": "Nadir"
+    },
+    {
+      "key": "bolivia:yolanda_bedregal",
+      "title": "Naufragio"
+    },
+    {
+      "key": "bolivia:yolanda_bedregal",
+      "title": "Poemar"
+    },
+    {
+      "key": "bosnia:aleksandar_hemon",
+      "title": "The Lazarus Project"
+    },
+    {
+      "key": "bosnia:mehmed_beg_kapetanovic",
+      "title": "Istočno blago"
+    },
+    {
+      "key": "bosnia:mehmed_beg_kapetanovic",
+      "title": "Narodno blago"
+    },
+    {
+      "key": "bosnia:petar_kocic",
+      "title": "Jazavac pred sudom"
+    },
+    {
+      "key": "bosnia:petar_kocic",
+      "title": "S planine i ispod planine"
+    },
+    {
+      "key": "bosnia:svetozar_corovic",
+      "title": "Majčina sultanija"
+    },
+    {
+      "key": "bosnia:svetozar_corovic",
+      "title": "Stojan Mutikaša"
+    },
+    {
+      "key": "bosnia:svetozar_corovic",
+      "title": "U časovima odmora"
+    },
+    {
+      "key": "botswana:laurie_kubuitsile",
+      "title": "The Scattering"
+    },
+    {
+      "key": "botswana:unity_dow",
+      "title": "Far and Beyon’"
+    },
+    {
+      "key": "burkina_faso:monique_ilboudo",
+      "title": "Droit de cité: être femme au Burkina Faso"
+    },
+    {
+      "key": "burkina_faso:monique_ilboudo",
+      "title": "Le Mal de peau"
+    },
+    {
+      "key": "burkina_faso:norbert_zongo",
+      "title": "Le Parachutage"
+    },
+    {
+      "key": "burkina_faso:norbert_zongo",
+      "title": "Rougbêinga"
+    },
+    {
+      "key": "burkina_faso:patrick_ilboudo",
+      "title": "Le Héraut têtu"
+    },
+    {
+      "key": "burundi:roland_rugero",
+      "title": "Baho!"
+    },
+    {
+      "key": "burundi:roland_rugero",
+      "title": "Les Oniriques"
+    },
+    {
+      "key": "cambodia:rim_kin",
+      "title": "Sophat"
+    },
+    {
+      "key": "cameroon:calixthe_beyala",
+      "title": "Assèze l’Africaine"
+    },
+    {
+      "key": "cameroon:calixthe_beyala",
+      "title": "Les Honneurs perdus"
+    },
+    {
+      "key": "cameroon:ferdinand_oyono",
+      "title": "Une vie de boy"
+    },
+    {
+      "key": "canada:miriam_toews",
+      "title": "A Complicated Kindness"
+    },
+    {
+      "key": "canada:miriam_toews",
+      "title": "All My Puny Sorrows"
+    },
+    {
+      "key": "canada:miriam_toews",
+      "title": "Women Talking"
+    },
+    {
+      "key": "cape_verde:manuel_lopes",
+      "title": "Chuva Braba"
+    },
+    {
+      "key": "cape_verde:manuel_lopes",
+      "title": "Os Flagelados do Vento Leste"
+    },
+    {
+      "key": "cape_verde:ovidio_martins",
+      "title": "Gritarei, berrarei, matarei, não vou para Pasárgada"
+    },
+    {
+      "key": "central_african_republic:etienne_goyemide",
+      "title": "Le Dernier Survivant de la caravane"
+    },
+    {
+      "key": "central_african_republic:etienne_goyemide",
+      "title": "Le Silence de la forêt"
+    },
+    {
+      "key": "chad:ahmat_taboye",
+      "title": "Au pays des démocrates ou “La débrouillardise”"
+    },
+    {
+      "key": "chad:ahmat_taboye",
+      "title": "Le Patriarche"
+    },
+    {
+      "key": "chad:koulsy_lamko",
+      "title": "La Phalène des collines"
+    },
+    {
+      "key": "chad:koulsy_lamko",
+      "title": "N’do kela ou l’Initiation avortée"
+    },
+    {
+      "key": "chad:koulsy_lamko",
+      "title": "Tout bas… si bas"
+    },
+    {
+      "key": "chad:nimrod",
+      "title": "Le Bal des princes"
+    },
+    {
+      "key": "chad:nimrod",
+      "title": "Le Départ"
+    },
+    {
+      "key": "chad:nimrod",
+      "title": "Les Jambes d’Alice"
+    },
+    {
+      "key": "chile:alberto_blest_gana",
+      "title": "Durante la Reconquista"
+    },
+    {
+      "key": "chile:alberto_blest_gana",
+      "title": "El loco Estero"
+    },
+    {
+      "key": "chile:alberto_blest_gana",
+      "title": "Martín Rivas"
+    },
+    {
+      "key": "chile:alejandra_costamagna",
+      "title": "El sistema del tacto"
+    },
+    {
+      "key": "chile:alejandra_costamagna",
+      "title": "En voz baja"
+    },
+    {
+      "key": "chile:alejandra_costamagna",
+      "title": "Últimos fuegos"
+    },
+    {
+      "key": "chile:alejandro_zambra",
+      "title": "Bonsái"
+    },
+    {
+      "key": "chile:alejandro_zambra",
+      "title": "Formas de volver a casa"
+    },
+    {
+      "key": "chile:alejandro_zambra",
+      "title": "La vida privada de los árboles"
+    },
+    {
+      "key": "chile:alejandro_zambra",
+      "title": "Poeta chileno"
+    },
+    {
+      "key": "chile:baldomero_lillo",
+      "title": "Sub-terra"
+    },
+    {
+      "key": "chile:diamela_eltit",
+      "title": "El cuarto mundo"
+    },
+    {
+      "key": "chile:diamela_eltit",
+      "title": "Lumpérica"
+    },
+    {
+      "key": "chile:diamela_eltit",
+      "title": "Por la patria"
+    },
+    {
+      "key": "chile:gabriela_mistral",
+      "title": "Desolación"
+    },
+    {
+      "key": "chile:gabriela_mistral",
+      "title": "Tala"
+    },
+    {
+      "key": "chile:gabriela_mistral",
+      "title": "Ternura"
+    },
+    {
+      "key": "chile:hernan_rivera_letelier",
+      "title": "La Reina Isabel cantaba rancheras"
+    },
+    {
+      "key": "chile:hernan_rivera_letelier",
+      "title": "Santa María de las flores negras"
+    },
+    {
+      "key": "chile:jose_donoso",
+      "title": "Casa de campo"
+    },
+    {
+      "key": "chile:jose_donoso",
+      "title": "El lugar sin límites"
+    },
+    {
+      "key": "chile:jose_donoso",
+      "title": "El obsceno pájaro de la noche"
+    },
+    {
+      "key": "chile:jose_miguel_varas",
+      "title": "Chacón"
+    },
+    {
+      "key": "chile:jose_miguel_varas",
+      "title": "Lugares comunes"
+    },
+    {
+      "key": "chile:jose_miguel_varas",
+      "title": "Sucede"
+    },
+    {
+      "key": "chile:lina_meruane",
+      "title": "Sangre en el ojo"
+    },
+    {
+      "key": "chile:marcela_serrano",
+      "title": "El albergue de las mujeres tristes"
+    },
+    {
+      "key": "chile:marcela_serrano",
+      "title": "Nosotras que nos queremos tanto"
+    },
+    {
+      "key": "chile:marta_brunet",
+      "title": "Montaña adentro"
+    },
+    {
+      "key": "chile:raul_zurita",
+      "title": "Anteparaíso"
+    },
+    {
+      "key": "chile:raul_zurita",
+      "title": "Purgatorio"
+    },
+    {
+      "key": "chile:roberto_bolano",
+      "title": "Los perros románticos"
+    },
+    {
+      "key": "china:han_han",
+      "title": "The Triple Door"
+    },
+    {
+      "key": "china:jia_pingwa",
+      "title": "Ruined City"
+    },
+    {
+      "key": "china:jia_pingwa",
+      "title": "Turbulence"
+    },
+    {
+      "key": "china:zhang_a_ling",
+      "title": "Love in a Fallen City"
+    },
+    {
+      "key": "china:zhang_a_ling",
+      "title": "Naked Earth"
+    },
+    {
+      "key": "china:zhang_a_ling",
+      "title": "The Rice-Sprout Song"
+    },
+    {
+      "key": "china:zhang_ling",
+      "title": "A Single Swallow"
+    },
+    {
+      "key": "china:zhang_ling",
+      "title": "Gold Mountain Blues"
+    },
+    {
+      "key": "colombia:alvaro_mutis",
+      "title": "Empresas y tribulaciones de Maqroll el Gaviero"
+    },
+    {
+      "key": "colombia:andres_caicedo",
+      "title": "¡Que viva la música!"
+    },
+    {
+      "key": "colombia:andres_caicedo",
+      "title": "El atravesado"
+    },
+    {
+      "key": "colombia:fernando_vallejo",
+      "title": "El desbarrancadero"
+    },
+    {
+      "key": "colombia:fernando_vallejo",
+      "title": "La Virgen de los sicarios"
+    },
+    {
+      "key": "colombia:german_castro_caycedo",
+      "title": "Colombia amarga"
+    },
+    {
+      "key": "colombia:german_castro_caycedo",
+      "title": "El Karina"
+    },
+    {
+      "key": "colombia:german_castro_caycedo",
+      "title": "Perdido en el Amazonas"
+    },
+    {
+      "key": "colombia:german_espinosa",
+      "title": "La tejedora de coronas"
+    },
+    {
+      "key": "colombia:hector_abad_faciolince",
+      "title": "Angosta"
+    },
+    {
+      "key": "colombia:hector_abad_faciolince",
+      "title": "El olvido que seremos"
+    },
+    {
+      "key": "colombia:hector_abad_faciolince",
+      "title": "La oculta"
+    },
+    {
+      "key": "colombia:hector_rojas_herazo",
+      "title": "Celia se pudre"
+    },
+    {
+      "key": "colombia:hector_rojas_herazo",
+      "title": "En noviembre llega el arzobispo"
+    },
+    {
+      "key": "colombia:hector_rojas_herazo",
+      "title": "Respirando el verano"
+    },
+    {
+      "key": "colombia:jairo_anibal_nino",
+      "title": "El monte calvo"
+    },
+    {
+      "key": "colombia:jorge_isaacs",
+      "title": "María"
+    },
+    {
+      "key": "colombia:jose_asuncion_silva",
+      "title": "De sobremesa"
+    },
+    {
+      "key": "colombia:jose_asuncion_silva",
+      "title": "Nocturno"
+    },
+    {
+      "key": "colombia:juan_carlos_botero",
+      "title": "La sentencia"
+    },
+    {
+      "key": "colombia:juan_carlos_botero",
+      "title": "Las semillas del tiempo"
+    },
+    {
+      "key": "colombia:juan_carlos_botero",
+      "title": "Las ventanas y las voces"
+    },
+    {
+      "key": "colombia:laura_restrepo",
+      "title": "Delirio"
+    },
+    {
+      "key": "colombia:laura_restrepo",
+      "title": "La multitud errante"
+    },
+    {
+      "key": "colombia:leon_de_greiff",
+      "title": "Libro de signos"
+    },
+    {
+      "key": "colombia:leon_de_greiff",
+      "title": "Tergiversaciones"
+    },
+    {
+      "key": "colombia:leon_de_greiff",
+      "title": "Variaciones alrededor de nada"
+    },
+    {
+      "key": "colombia:manuel_mejia_vallejo",
+      "title": "El día señalado"
+    },
+    {
+      "key": "colombia:manuel_mejia_vallejo",
+      "title": "La casa de las dos palmas"
+    },
+    {
+      "key": "colombia:mario_mendoza",
+      "title": "Satanás"
+    },
+    {
+      "key": "colombia:pilar_quintana",
+      "title": "La perra"
+    },
+    {
+      "key": "colombia:pilar_quintana",
+      "title": "Los abismos"
+    },
+    {
+      "key": "colombia:ricardo_silva_romero",
+      "title": "Cómo perderlo todo"
+    },
+    {
+      "key": "colombia:ricardo_silva_romero",
+      "title": "Historia oficial del amor"
+    },
+    {
+      "key": "colombia:santiago_gamboa",
+      "title": "Necrópolis"
+    },
+    {
+      "key": "colombia:santiago_gamboa",
+      "title": "Plegarias nocturnas"
+    },
+    {
+      "key": "colombia:santiago_mutis_duran",
+      "title": "Dicen de ti"
+    },
+    {
+      "key": "colombia:santiago_mutis_duran",
+      "title": "En la línea de sombra"
+    },
+    {
+      "key": "colombia:santiago_mutis_duran",
+      "title": "Tú también eres de lluvia"
+    },
+    {
+      "key": "costa_rica:ana_istarus",
+      "title": "La estación de fiebre"
+    },
+    {
+      "key": "costa_rica:ana_istarus",
+      "title": "Madre nuestra que estás en la tierra"
+    },
+    {
+      "key": "costa_rica:carlos_luis_fallas",
+      "title": "Mamita Yunai"
+    },
+    {
+      "key": "costa_rica:carmen_lyra",
+      "title": "Cuentos de mi tía Panchita"
+    },
+    {
+      "key": "cote_d_ivoire:jean_marie_adiaffi",
+      "title": "D’éclairs et de foudres"
+    },
+    {
+      "key": "cote_d_ivoire:jean_marie_adiaffi",
+      "title": "La Carte d’identité"
+    },
+    {
+      "key": "cote_d_ivoire:maurice_bandaman",
+      "title": "Le Fils de-la-femme-mâle"
+    },
+    {
+      "key": "cote_d_ivoire:tanella_boni",
+      "title": "Là où il fait si clair en moi"
+    },
+    {
+      "key": "cote_d_ivoire:veronique_tadjo",
+      "title": "L’Ombre d’Imana"
+    },
+    {
+      "key": "cote_d_ivoire:veronique_tadjo",
+      "title": "Reine Pokou"
+    },
+    {
+      "key": "croatia:antun_matos",
+      "title": "Iverje"
+    },
+    {
+      "key": "croatia:antun_matos",
+      "title": "Novo iverje"
+    },
+    {
+      "key": "croatia:antun_matos",
+      "title": "Umorne priče"
+    },
+    {
+      "key": "croatia:dubravka_ugresic",
+      "title": "Ministarstvo boli"
+    },
+    {
+      "key": "croatia:dubravka_ugresic",
+      "title": "Muzej bezuvjetne predaje"
+    },
+    {
+      "key": "croatia:ivan_gundulic",
+      "title": "Dubravka"
+    },
+    {
+      "key": "croatia:ivan_gundulic",
+      "title": "Osman"
+    },
+    {
+      "key": "croatia:ivana_brlic_mazuranic",
+      "title": "Čudnovate zgode šegrta Hlapića"
+    },
+    {
+      "key": "croatia:vesna_parun",
+      "title": "Crna maslina"
+    },
+    {
+      "key": "croatia:vesna_parun",
+      "title": "Zore i vihori"
+    },
+    {
+      "key": "cyprus:kyriakos_charalambous",
+      "title": "Famagusta Regina"
+    },
+    {
+      "key": "cyprus:kyriakos_charalambous",
+      "title": "Metahistory"
+    },
+    {
+      "key": "cyprus:nikos_nikolaidis",
+      "title": "Metathanato"
+    },
+    {
+      "key": "cyprus:nikos_nikolaidis",
+      "title": "Oi Iperetes"
+    },
+    {
+      "key": "cyprus:pantelis_michanikos",
+      "title": "Katathesi"
+    },
+    {
+      "key": "cyprus:pantelis_michanikos",
+      "title": "Parekliseis"
+    },
+    {
+      "key": "cyprus:pantelis_michanikos",
+      "title": "Ta dyo vouna"
+    },
+    {
+      "key": "cyprus:tefkros_anthias",
+      "title": "Cyprus Village Tales"
+    },
+    {
+      "key": "cyprus:tefkros_anthias",
+      "title": "Ta sfyrigmata tou aliti"
+    },
+    {
+      "key": "czechia:alois_jirasek",
+      "title": "F. L. Věk"
+    },
+    {
+      "key": "czechia:alois_jirasek",
+      "title": "Psohlavci"
+    },
+    {
+      "key": "czechia:alois_jirasek",
+      "title": "Staré pověsti české"
+    },
+    {
+      "key": "czechia:jaroslav_hasek",
+      "title": "Osudy dobrého vojáka Švejka za světové války"
+    },
+    {
+      "key": "czechia:karel_capek",
+      "title": "R.U.R."
+    },
+    {
+      "key": "democratic_republic_of_congo:antoine_roger_bolamba",
+      "title": "Esanzo: chants pour mon pays"
+    },
+    {
+      "key": "democratic_republic_of_congo:fiston_mwanza_mujila",
+      "title": "Tram 83"
+    },
+    {
+      "key": "democratic_republic_of_congo:kama_sywor_kamanda",
+      "title": "Chants de brumes"
+    },
+    {
+      "key": "democratic_republic_of_congo:kama_sywor_kamanda",
+      "title": "L’Exil des songes"
+    },
+    {
+      "key": "democratic_republic_of_congo:v_y_mudimbe",
+      "title": "The Invention of Africa"
+    },
+    {
+      "key": "denmark:jacob_paludan",
+      "title": "Fugle omkring Fyret"
+    },
+    {
+      "key": "denmark:jacob_paludan",
+      "title": "Markerne modnes"
+    },
+    {
+      "key": "denmark:karen_blixen",
+      "title": "Out of Africa"
+    },
+    {
+      "key": "denmark:karen_blixen",
+      "title": "Seven Gothic Tales"
+    },
+    {
+      "key": "djibouti:aden_robleh_awaleh",
+      "title": "Djibouti, clef de la mer Rouge"
+    },
+    {
+      "key": "dominica:phyllis_shand_allfrey",
+      "title": "The Orchid House"
+    },
+    {
+      "key": "dominican_republic:juan_bosch",
+      "title": "La Mañosa"
+    },
+    {
+      "key": "dominican_republic:junot_diaz",
+      "title": "Drown"
+    },
+    {
+      "key": "dominican_republic:junot_diaz",
+      "title": "This Is How You Lose Her"
+    },
+    {
+      "key": "ecuador:ernesto_noboa_caamano",
+      "title": "Romanza de las horas"
+    },
+    {
+      "key": "ecuador:lupe_rumazo",
+      "title": "Carta larga sin final"
+    },
+    {
+      "key": "ecuador:lupe_rumazo",
+      "title": "Peste blanca, peste negra"
+    },
+    {
+      "key": "ecuador:medardo_angel_silva",
+      "title": "El árbol del bien y el mal"
+    },
+    {
+      "key": "ecuador:monica_ojeda",
+      "title": "Las voladoras"
+    },
+    {
+      "key": "ecuador:monica_ojeda",
+      "title": "Mandíbula"
+    },
+    {
+      "key": "ecuador:monica_ojeda",
+      "title": "Nefando"
+    },
+    {
+      "key": "egypt:hamdi_abu_golayyel",
+      "title": "A Dog with No Tail"
+    },
+    {
+      "key": "egypt:hamdi_abu_golayyel",
+      "title": "Thieves in Retirement"
+    },
+    {
+      "key": "el_salvador:alvaro_menen_desleal",
+      "title": "Luz negra"
+    },
+    {
+      "key": "england:anthony_trollope",
+      "title": "Barchester Towers"
+    },
+    {
+      "key": "england:anthony_trollope",
+      "title": "Chronicles of Barsetshire"
+    },
+    {
+      "key": "england:christopher_marlowe",
+      "title": "Doctor Faustus"
+    },
+    {
+      "key": "england:christopher_marlowe",
+      "title": "Tamburlaine the Great"
+    },
+    {
+      "key": "england:doris_lessing",
+      "title": "The Golden Notebook"
+    },
+    {
+      "key": "england:edmund_spenser",
+      "title": "The Faerie Queene"
+    },
+    {
+      "key": "england:evelyn_waugh",
+      "title": "Decline and Fall"
+    },
+    {
+      "key": "england:frederick_forsyth",
+      "title": "The Day of the Jackal"
+    },
+    {
+      "key": "england:oliver_goldsmith",
+      "title": "She Stoops to Conquer"
+    },
+    {
+      "key": "england:oliver_goldsmith",
+      "title": "The Vicar of Wakefield"
+    },
+    {
+      "key": "england:percy_shelley",
+      "title": "Ode to the West Wind"
+    },
+    {
+      "key": "england:percy_shelley",
+      "title": "Prometheus Unbound"
+    },
+    {
+      "key": "england:ronald_delderfield",
+      "title": "The Adventures of Ben Gunn"
+    },
+    {
+      "key": "england:samuel_coleridge",
+      "title": "Lyrical Ballads"
+    },
+    {
+      "key": "england:samuel_richardson",
+      "title": "Clarissa"
+    },
+    {
+      "key": "england:samuel_richardson",
+      "title": "Pamela"
+    },
+    {
+      "key": "england:t_s_eliot",
+      "title": "Four Quartets"
+    },
+    {
+      "key": "england:t_s_eliot",
+      "title": "The Waste Land"
+    },
+    {
+      "key": "england:thomas_hardy",
+      "title": "Jude the Obscure"
+    },
+    {
+      "key": "equatorial_guinea:donato_ndongo_bidyogo",
+      "title": "Las tinieblas de tu memoria negra"
+    },
+    {
+      "key": "equatorial_guinea:donato_ndongo_bidyogo",
+      "title": "Los poderes de la tempestad"
+    },
+    {
+      "key": "equatorial_guinea:juan_tomas_avila_laurel",
+      "title": "Arde el monte de noche"
+    },
+    {
+      "key": "equatorial_guinea:juan_tomas_avila_laurel",
+      "title": "Avión de ricos, ladrón de cerdos"
+    },
+    {
+      "key": "eritrea:alemseged_tesfai",
+      "title": "The Other War"
+    },
+    {
+      "key": "ethiopia:daniachew_worku",
+      "title": "The Thirteenth Sun"
+    },
+    {
+      "key": "ethiopia:maaza_mengiste",
+      "title": "Beneath the Lion’s Gaze"
+    },
+    {
+      "key": "ethiopia:maaza_mengiste",
+      "title": "The Shadow King"
+    },
+    {
+      "key": "fiji:epeli_hauofa",
+      "title": "Our Sea of Islands"
+    },
+    {
+      "key": "fiji:satendra_nandan",
+      "title": "Gandhianjali"
+    },
+    {
+      "key": "fiji:satendra_nandan",
+      "title": "Life Journeys: Love & Grief"
+    },
+    {
+      "key": "fiji:subramani",
+      "title": "Dauka Puran"
+    },
+    {
+      "key": "fiji:subramani",
+      "title": "The Fantasy Eaters"
+    },
+    {
+      "key": "finland:eino_leino",
+      "title": "Helkavirsiä"
+    },
+    {
+      "key": "finland:frans_sillanpaa",
+      "title": "Nuorena nukkunut"
+    },
+    {
+      "key": "french_guiana:leon_gontran_damas",
+      "title": "Pigments"
+    },
+    {
+      "key": "gabon:angele_rawiri",
+      "title": "Elonga"
+    },
+    {
+      "key": "gabon:angele_rawiri",
+      "title": "Fureurs et cris de femmes"
+    },
+    {
+      "key": "gabon:laurent_owondo",
+      "title": "Au bout du silence"
+    },
+    {
+      "key": "gabon:sylvie_ntsame",
+      "title": "La Fille du Komo"
+    },
+    {
+      "key": "gambia:lenrie_peters",
+      "title": "Satellites"
+    },
+    {
+      "key": "gambia:lenrie_peters",
+      "title": "The Second Round"
+    },
+    {
+      "key": "gambia:nana_grey_johnson",
+      "title": "Edward Francis Small: Watchdog of The Gambia"
+    },
+    {
+      "key": "gambia:nana_grey_johnson",
+      "title": "The Magic Calabash"
+    },
+    {
+      "key": "gambia:tijan_sallah",
+      "title": "Dream Kingdom"
+    },
+    {
+      "key": "gambia:tijan_sallah",
+      "title": "Kora Land"
+    },
+    {
+      "key": "ghana:joseph_casely_hayford",
+      "title": "Ethiopia Unbound"
+    },
+    {
+      "key": "ghana:martin_egblewogbe",
+      "title": "Mr Happy and the Hammer of God and Other Stories"
+    },
+    {
+      "key": "ghana:martin_egblewogbe",
+      "title": "The Waiting"
+    },
+    {
+      "key": "ghana:nii_ayikwei_parkes",
+      "title": "Tail of the Blue Bird"
+    },
+    {
+      "key": "ghana:nii_ayikwei_parkes",
+      "title": "The Makings of You"
+    },
+    {
+      "key": "guatemala:luis_cardoza_y_aragon",
+      "title": "Guatemala, las líneas de su mano"
+    },
+    {
+      "key": "guatemala:rodrigo_rey_rosa",
+      "title": "Cárcel de árboles"
+    },
+    {
+      "key": "guatemala:rodrigo_rey_rosa",
+      "title": "El material humano"
+    },
+    {
+      "key": "guatemala:rodrigo_rey_rosa",
+      "title": "La orilla africana"
+    },
+    {
+      "key": "guinea_bissau:abdulai_sila",
+      "title": "A Última Tragédia"
+    },
+    {
+      "key": "guinea_bissau:abdulai_sila",
+      "title": "Mistida"
+    },
+    {
+      "key": "guyana:cyril_dabydeen",
+      "title": "Dark Swirl"
+    },
+    {
+      "key": "guyana:cyril_dabydeen",
+      "title": "The Wizard Swami"
+    },
+    {
+      "key": "guyana:martin_carter",
+      "title": "Poems of Resistance from British Guiana"
+    },
+    {
+      "key": "guyana:wilson_harris",
+      "title": "Palace of the Peacock"
+    },
+    {
+      "key": "haiti:edwidge_danticat",
+      "title": "Breath, Eyes, Memory"
+    },
+    {
+      "key": "haiti:edwidge_danticat",
+      "title": "Brother, I’m Dying"
+    },
+    {
+      "key": "haiti:edwidge_danticat",
+      "title": "Krik? Krak!"
+    },
+    {
+      "key": "haiti:franketienne",
+      "title": "Dézafi"
+    },
+    {
+      "key": "haiti:jacques_stephen_alexis",
+      "title": "Compère général soleil"
+    },
+    {
+      "key": "haiti:jacques_stephen_alexis",
+      "title": "L’Espace d’un cillement"
+    },
+    {
+      "key": "haiti:jacques_stephen_alexis",
+      "title": "Les Arbres musiciens"
+    },
+    {
+      "key": "honduras:juan_ramon_molina",
+      "title": "El Chele"
+    },
+    {
+      "key": "honduras:juan_ramon_molina",
+      "title": "Mr. Black"
+    },
+    {
+      "key": "honduras:julio_escoto",
+      "title": "El árbol de los pañuelos"
+    },
+    {
+      "key": "honduras:julio_escoto",
+      "title": "Los guerreros de Hibueras"
+    },
+    {
+      "key": "honduras:julio_escoto",
+      "title": "Rey del albor. Madrugada"
+    },
+    {
+      "key": "india:anil_menon",
+      "title": "Half of What I Say"
+    },
+    {
+      "key": "india:anil_menon",
+      "title": "The Beast with Nine Billion Feet"
+    },
+    {
+      "key": "india:anita_desai",
+      "title": "In Custody"
+    },
+    {
+      "key": "india:chetan_bhagat",
+      "title": "2 States"
+    },
+    {
+      "key": "india:chetan_bhagat",
+      "title": "Five Point Someone"
+    },
+    {
+      "key": "india:chetan_bhagat",
+      "title": "The 3 Mistakes of My Life"
+    },
+    {
+      "key": "india:kiran_desai",
+      "title": "Hullabaloo in the Guava Orchard"
+    },
+    {
+      "key": "india:perumal_murugan",
+      "title": "Fire Bird"
+    },
+    {
+      "key": "india:perumal_murugan",
+      "title": "One Part Woman"
+    },
+    {
+      "key": "india:perumal_murugan",
+      "title": "Poonachi, or The Story of a Black Goat"
+    },
+    {
+      "key": "india:perumal_murugan",
+      "title": "Pyre"
+    },
+    {
+      "key": "india:rohinton_mistry",
+      "title": "A Fine Balance"
+    },
+    {
+      "key": "india:rohinton_mistry",
+      "title": "Family Matters"
+    },
+    {
+      "key": "india:rohinton_mistry",
+      "title": "Such a Long Journey"
+    },
+    {
+      "key": "india:ruskin_bond",
+      "title": "The Blue Umbrella"
+    },
+    {
+      "key": "india:ruskin_bond",
+      "title": "The Night Train at Deoli"
+    },
+    {
+      "key": "india:ruskin_bond",
+      "title": "The Room on the Roof"
+    },
+    {
+      "key": "iran:shahrnush_parsipur",
+      "title": "Kissing the Sword"
+    },
+    {
+      "key": "iran:shahrnush_parsipur",
+      "title": "Touba and the Meaning of Night"
+    },
+    {
+      "key": "iraq:fuad_al_takarli",
+      "title": "The Long Way Back"
+    },
+    {
+      "key": "ireland:flann_obrien",
+      "title": "At Swim-Two-Birds"
+    },
+    {
+      "key": "ireland:flann_obrien",
+      "title": "The Third Policeman"
+    },
+    {
+      "key": "israel:david_grossman",
+      "title": "See Under: Love"
+    },
+    {
+      "key": "israel:david_grossman",
+      "title": "To the End of the Land"
+    },
+    {
+      "key": "israel:etgar_keret",
+      "title": "Suddenly, a Knock on the Door"
+    },
+    {
+      "key": "israel:etgar_keret",
+      "title": "The Bus Driver Who Wanted to Be God"
+    },
+    {
+      "key": "israel:orly_castel_bloom",
+      "title": "Dolly City"
+    },
+    {
+      "key": "israel:zeruya_shalev",
+      "title": "Husband and Wife"
+    },
+    {
+      "key": "israel:zeruya_shalev",
+      "title": "Love Life"
+    },
+    {
+      "key": "israel:zeruya_shalev",
+      "title": "Thera"
+    },
+    {
+      "key": "jamaica:andrew_salky",
+      "title": "A Quality of Violence"
+    },
+    {
+      "key": "jamaica:andrew_salky",
+      "title": "The Late Emancipation of Jerry Stover"
+    },
+    {
+      "key": "jamaica:claude_mckay",
+      "title": "Harlem Shadows"
+    },
+    {
+      "key": "jamaica:claude_mckay",
+      "title": "Home to Harlem"
+    },
+    {
+      "key": "jamaica:claude_mckay",
+      "title": "Spring in New Hampshire"
+    },
+    {
+      "key": "jamaica:kerry_yang",
+      "title": "Gloria"
+    },
+    {
+      "key": "jamaica:kerry_yang",
+      "title": "Pao"
+    },
+    {
+      "key": "jamaica:kerry_yang",
+      "title": "Show Me a Mountain"
+    },
+    {
+      "key": "jamaica:marlon_james",
+      "title": "John Crow’s Devil"
+    },
+    {
+      "key": "jamaica:marlon_james",
+      "title": "The Book of Night Women"
+    },
+    {
+      "key": "jamaica:roger_mais",
+      "title": "Black Lightning"
+    },
+    {
+      "key": "jamaica:roger_mais",
+      "title": "Brother Man"
+    },
+    {
+      "key": "jamaica:roger_mais",
+      "title": "The Hills Were Joyful Together"
+    },
+    {
+      "key": "japan:banana_yoshimoto",
+      "title": "TUGUMI"
+    },
+    {
+      "key": "japan:futabatei_shimei",
+      "title": "Heibon"
+    },
+    {
+      "key": "japan:futabatei_shimei",
+      "title": "Sono omokage"
+    },
+    {
+      "key": "japan:futabatei_shimei",
+      "title": "Ukigumo"
+    },
+    {
+      "key": "japan:haruki_murakami",
+      "title": "1Q84"
+    },
+    {
+      "key": "japan:hirano_keichiro",
+      "title": "A Man"
+    },
+    {
+      "key": "japan:hirano_keichiro",
+      "title": "At the End of the Matinee"
+    },
+    {
+      "key": "japan:hiromi_kawakami",
+      "title": "Manazuru"
+    },
+    {
+      "key": "japan:hiromi_kawakami",
+      "title": "People from My Neighborhood"
+    },
+    {
+      "key": "japan:hiromi_kawakami",
+      "title": "Strange Weather in Tokyo"
+    },
+    {
+      "key": "japan:mori_ogai",
+      "title": "The Abe Family"
+    },
+    {
+      "key": "japan:mori_ogai",
+      "title": "The Dancing Girl"
+    },
+    {
+      "key": "japan:mori_ogai",
+      "title": "Wild Goose"
+    },
+    {
+      "key": "japan:shotaro_yasuoka",
+      "title": "Inki na tanoshimi"
+    },
+    {
+      "key": "japan:shotaro_yasuoka",
+      "title": "Warui nakama"
+    },
+    {
+      "key": "jordan:ghalib_halasa",
+      "title": "Sultana"
+    },
+    {
+      "key": "jordan:ibrahim_nasrallah",
+      "title": "The Second Dog War"
+    },
+    {
+      "key": "kenya:billy_kahora",
+      "title": "The Cape Cod Bicycle War"
+    },
+    {
+      "key": "kenya:billy_kahora",
+      "title": "The True Story of David Munyakei"
+    },
+    {
+      "key": "kenya:henry_ole_kulet",
+      "title": "Blossoms of the Savannah"
+    },
+    {
+      "key": "kenya:henry_ole_kulet",
+      "title": "Is It Possible?"
+    },
+    {
+      "key": "kenya:henry_ole_kulet",
+      "title": "Vanishing Herds"
+    },
+    {
+      "key": "kenya:marjorie_oludhe_macgoye",
+      "title": "Coming to Birth"
+    },
+    {
+      "key": "kenya:mukoma_wa_ngugi",
+      "title": "Black Star Nairobi"
+    },
+    {
+      "key": "kenya:mukoma_wa_ngugi",
+      "title": "Nairobi Heat"
+    },
+    {
+      "key": "kenya:peter_kimani",
+      "title": "Dance of the Jakaranda"
+    },
+    {
+      "key": "kiribati:teresia_teaiwa",
+      "title": "Searching for Nei Nim’anoa"
+    },
+    {
+      "key": "kosovo:adem_demaci",
+      "title": "Gjarpijt e gjakut"
+    },
+    {
+      "key": "kosovo:ali_podrimja",
+      "title": "Lum Lumi"
+    },
+    {
+      "key": "laos:outhine_bounyavong",
+      "title": "Mother’s Beloved"
+    },
+    {
+      "key": "lebanon:antoine_douaihy",
+      "title": "Drowning in Lake Morez"
+    },
+    {
+      "key": "lebanon:antoine_douaihy",
+      "title": "The Bearer of the Purple Rose"
+    },
+    {
+      "key": "lebanon:georges_schehade",
+      "title": "Histoire de Vasco"
+    },
+    {
+      "key": "lesotho:masechele_khaketla",
+      "title": "’Mantsopa"
+    },
+    {
+      "key": "lesotho:masechele_khaketla",
+      "title": "Mosali eo u ’neileng eena"
+    },
+    {
+      "key": "lesotho:thomas_mofolo",
+      "title": "Chaka"
+    },
+    {
+      "key": "lesotho:thomas_mofolo",
+      "title": "Moeti oa Bochabela"
+    },
+    {
+      "key": "lesotho:thomas_mofolo",
+      "title": "Pitseng"
+    },
+    {
+      "key": "liberia:bai_t_moore",
+      "title": "Ebony Dust"
+    },
+    {
+      "key": "liberia:bai_t_moore",
+      "title": "Murder in the Cassava Patch"
+    },
+    {
+      "key": "liberia:wilton_sankawulo",
+      "title": "Sundown at Dawn"
+    },
+    {
+      "key": "liberia:wilton_sankawulo",
+      "title": "The Marriage of Wisdom and Other Tales"
+    },
+    {
+      "key": "liberia:wilton_sankawulo",
+      "title": "The Rain and the Night"
+    },
+    {
+      "key": "libya:ahmed_fagih",
+      "title": "Maps of the Soul"
+    },
+    {
+      "key": "libya:ahmed_fagih",
+      "title": "There Is No Water in the Sea"
+    },
+    {
+      "key": "libya:ali_mustafa_al_misrati",
+      "title": "A Handful of Ashes"
+    },
+    {
+      "key": "libya:ali_mustafa_al_misrati",
+      "title": "Mirsal"
+    },
+    {
+      "key": "libya:ali_mustafa_al_misrati",
+      "title": "The General in Victoria Station"
+    },
+    {
+      "key": "libya:sadeq_al_neihum",
+      "title": "al-Ramz fi al-Qur’an"
+    },
+    {
+      "key": "libya:sadeq_al_neihum",
+      "title": "Min Makka ila huna"
+    },
+    {
+      "key": "liechtenstein:ida_ospelt_amann",
+      "title": "Di aalta Räder"
+    },
+    {
+      "key": "liechtenstein:ida_ospelt_amann",
+      "title": "S Loob-Bett"
+    },
+    {
+      "key": "liechtenstein:ida_ospelt_amann",
+      "title": "S’ischt Suusersunntig"
+    },
+    {
+      "key": "lithuania:antanas_venclova",
+      "title": "Draugystė"
+    },
+    {
+      "key": "lithuania:antanas_venclova",
+      "title": "Gimimo diena"
+    },
+    {
+      "key": "lithuania:ieva_simonaityte",
+      "title": "Aukštujų Šimonių likimas"
+    },
+    {
+      "key": "lithuania:jurga_ivanauskaite",
+      "title": "Miegančių drugelių tvirtovė"
+    },
+    {
+      "key": "lithuania:jurga_ivanauskaite",
+      "title": "Placebas"
+    },
+    {
+      "key": "lithuania:jurga_ivanauskaite",
+      "title": "Ragana ir lietus"
+    },
+    {
+      "key": "lithuania:jurgis_kuncinas",
+      "title": "Tūla"
+    },
+    {
+      "key": "lithuania:maironis",
+      "title": "Pavasario balsai"
+    },
+    {
+      "key": "lithuania:ricardas_gavelis",
+      "title": "Vilniaus pokeris"
+    },
+    {
+      "key": "lithuania:ruta_sepetys",
+      "title": "Between Shades of Gray"
+    },
+    {
+      "key": "lithuania:ruta_sepetys",
+      "title": "I Must Betray You"
+    },
+    {
+      "key": "lithuania:ruta_sepetys",
+      "title": "Salt to the Sea"
+    },
+    {
+      "key": "lithuania:vincas_kreve",
+      "title": "Dainavos šalies senų žmonių padavimai"
+    },
+    {
+      "key": "lithuania:vincas_kreve",
+      "title": "Šarūnas"
+    },
+    {
+      "key": "lithuania:vincas_putinas",
+      "title": "Altorių šešėly"
+    },
+    {
+      "key": "lithuania:zemaite",
+      "title": "Laimė nutekėjimo"
+    },
+    {
+      "key": "luxembourg:anise_koltz",
+      "title": "Le mur du son"
+    },
+    {
+      "key": "luxembourg:anise_koltz",
+      "title": "Somnambule du jour"
+    },
+    {
+      "key": "luxembourg:edmond_de_la_fontaine",
+      "title": "D’Mumm Séis"
+    },
+    {
+      "key": "luxembourg:edmond_de_la_fontaine",
+      "title": "De Scholtscheîn"
+    },
+    {
+      "key": "luxembourg:jean_portante",
+      "title": "L’étrange langue"
+    },
+    {
+      "key": "luxembourg:jean_portante",
+      "title": "Mrs Haroy ou la mémoire de la baleine"
+    },
+    {
+      "key": "luxembourg:michel_rodange",
+      "title": "Renert oder de Fuuss am Frack an a Maansgréisst"
+    },
+    {
+      "key": "madagascar:charlotte_rafe­nomanjato",
+      "title": "Le cinquième sceau"
+    },
+    {
+      "key": "madagascar:charlotte_rafe­nomanjato",
+      "title": "Le prix de la paix"
+    },
+    {
+      "key": "madagascar:charlotte_rafe­nomanjato",
+      "title": "Pétales de sortilège"
+    },
+    {
+      "key": "madagascar:flavien_ranaivo",
+      "title": "L’ombre et le vent"
+    },
+    {
+      "key": "madagascar:flavien_ranaivo",
+      "title": "Le retour au bercail"
+    },
+    {
+      "key": "madagascar:flavien_ranaivo",
+      "title": "Mes chansons de toujours"
+    },
+    {
+      "key": "madagascar:jacques_rabemananjara",
+      "title": "Antsa"
+    },
+    {
+      "key": "madagascar:jacques_rabemananjara",
+      "title": "Lamba"
+    },
+    {
+      "key": "madagascar:jacques_rabemananjara",
+      "title": "Les dieux malgaches"
+    },
+    {
+      "key": "madagascar:jean_joseph_rabearivelo",
+      "title": "Presque-Songes"
+    },
+    {
+      "key": "madagascar:jean_joseph_rabearivelo",
+      "title": "Traduit de la nuit"
+    },
+    {
+      "key": "madagascar:jean_luc_raharimanana",
+      "title": "Nour, 1947"
+    },
+    {
+      "key": "madagascar:jean_luc_raharimanana",
+      "title": "Revenir"
+    },
+    {
+      "key": "madagascar:jean_luc_raharimanana",
+      "title": "Za"
+    },
+    {
+      "key": "madagascar:michele_rakotoson",
+      "title": "Elle, au printemps"
+    },
+    {
+      "key": "madagascar:michele_rakotoson",
+      "title": "Lalana"
+    },
+    {
+      "key": "madagascar:michele_rakotoson",
+      "title": "Le bain des reliques"
+    },
+    {
+      "key": "malawi:frank_chipasula",
+      "title": "O Earth, Wait for Me"
+    },
+    {
+      "key": "malawi:frank_chipasula",
+      "title": "Visions and Reflections"
+    },
+    {
+      "key": "malawi:frank_chipasula",
+      "title": "Whispers in the Wings"
+    },
+    {
+      "key": "malawi:jack_mapanje",
+      "title": "Of Chameleons and Gods"
+    },
+    {
+      "key": "malawi:jack_mapanje",
+      "title": "The Chattering Wagtails of Mikuyu Prison"
+    },
+    {
+      "key": "malawi:legson_kayira",
+      "title": "Jingala"
+    },
+    {
+      "key": "malawi:legson_kayira",
+      "title": "The Detainee"
+    },
+    {
+      "key": "malawi:paul_tiyambe_zeleza",
+      "title": "Smouldering Charcoal"
+    },
+    {
+      "key": "malawi:paul_tiyambe_zeleza",
+      "title": "The Joys of Exile"
+    },
+    {
+      "key": "malawi:steve_chimombo",
+      "title": "Malawian Oral Literature"
+    },
+    {
+      "key": "malawi:steve_chimombo",
+      "title": "Napolo and the Python"
+    },
+    {
+      "key": "malawi:steve_chimombo",
+      "title": "The Basket Girl"
+    },
+    {
+      "key": "malaysia:abdul_samad_said",
+      "title": "Hujan Pagi"
+    },
+    {
+      "key": "malaysia:abdul_samad_said",
+      "title": "Salina"
+    },
+    {
+      "key": "malaysia:kemala",
+      "title": "‘Ayn"
+    },
+    {
+      "key": "malaysia:kemala",
+      "title": "Mim"
+    },
+    {
+      "key": "malaysia:kemala",
+      "title": "Timbang Terima"
+    },
+    {
+      "key": "malaysia:shahnon_ahmad",
+      "title": "Ranjau Sepanjang Jalan"
+    },
+    {
+      "key": "malaysia:shahnon_ahmad",
+      "title": "Srengenge"
+    },
+    {
+      "key": "malaysia:tan_twan_eng",
+      "title": "The Garden of Evening Mists"
+    },
+    {
+      "key": "malaysia:tan_twan_eng",
+      "title": "The Gift of Rain"
+    },
+    {
+      "key": "malaysia:tan_twan_eng",
+      "title": "The House of Doors"
+    },
+    {
+      "key": "mali:adame_ba_konare",
+      "title": "Quand l'ail se frotte à l'encens"
+    },
+    {
+      "key": "mali:amadou_hampate_ba",
+      "title": "Amkoullel, l’enfant peul"
+    },
+    {
+      "key": "mali:amadou_hampate_ba",
+      "title": "L’Étrange Destin de Wangrin"
+    },
+    {
+      "key": "mali:modibo_sounkalo_keita",
+      "title": "L’Archer bassari"
+    },
+    {
+      "key": "mali:modibo_sounkalo_keita",
+      "title": "L’Orphelin"
+    },
+    {
+      "key": "mali:yambo_ouologuem",
+      "title": "Le Devoir de violence"
+    },
+    {
+      "key": "malta:anton_manuel_caruana",
+      "title": "Ineż Farruġ"
+    },
+    {
+      "key": "malta:dun_karm_psaila",
+      "title": "L-Innu Malti"
+    },
+    {
+      "key": "malta:manwel_dimech",
+      "title": "Ivan u Prascovia"
+    },
+    {
+      "key": "malta:oliver_friggieri",
+      "title": "Fil-Parlament ma Jikbrux Fjuri"
+    },
+    {
+      "key": "malta:oliver_friggieri",
+      "title": "L-Istramb"
+    },
+    {
+      "key": "marshall_islands:kathy_jetnil_kijiner",
+      "title": "Dear Matafele Peinem"
+    },
+    {
+      "key": "marshall_islands:kathy_jetnil_kijiner",
+      "title": "Iep Jāltok: Poems from a Marshallese Daughter"
+    },
+    {
+      "key": "mauritania:mokhtar_ould_hamidoun",
+      "title": "Hayat Muritaniyya"
+    },
+    {
+      "key": "mauritania:moussa_ould_ebnou",
+      "title": "L’Amour impossible"
+    },
+    {
+      "key": "mauritania:moussa_ould_ebnou",
+      "title": "Le Barzakh"
+    },
+    {
+      "key": "mauritius:ananda_devi",
+      "title": "Ève de ses décombres"
+    },
+    {
+      "key": "mauritius:ananda_devi",
+      "title": "Le Sari vert"
+    },
+    {
+      "key": "mauritius:edouard_maunick",
+      "title": "Ces oiseaux du sang"
+    },
+    {
+      "key": "mauritius:edouard_maunick",
+      "title": "Fusillez-moi"
+    },
+    {
+      "key": "mauritius:edouard_maunick",
+      "title": "Mandéla mort et vif"
+    },
+    {
+      "key": "mauritius:jmg_le_clezio",
+      "title": "Désert"
+    },
+    {
+      "key": "mauritius:jmg_le_clezio",
+      "title": "Le Chercheur d’or"
+    },
+    {
+      "key": "mauritius:khal_torabully",
+      "title": "Cale d’étoiles - Coolitude"
+    },
+    {
+      "key": "mauritius:malcolm_de_chazal",
+      "title": "Sens-plastique"
+    },
+    {
+      "key": "mauritius:nathacha_appanah",
+      "title": "Le Dernier Frère"
+    },
+    {
+      "key": "mauritius:nathacha_appanah",
+      "title": "Tropique de la violence"
+    },
+    {
+      "key": "mexico:alfonso_reyes",
+      "title": "El deslinde"
+    },
+    {
+      "key": "mexico:alfonso_reyes",
+      "title": "Ifigenia cruel"
+    },
+    {
+      "key": "mexico:alfonso_reyes",
+      "title": "Visión de Anáhuac"
+    },
+    {
+      "key": "mexico:alvaro_enrigue",
+      "title": "Hipotermia"
+    },
+    {
+      "key": "mexico:alvaro_enrigue",
+      "title": "La muerte de un instalador"
+    },
+    {
+      "key": "mexico:alvaro_enrigue",
+      "title": "Muerte súbita"
+    },
+    {
+      "key": "mexico:carlos_de_siguenza",
+      "title": "Infortunios de Alonso Ramírez"
+    },
+    {
+      "key": "mexico:carlos_de_siguenza",
+      "title": "Primavera indiana"
+    },
+    {
+      "key": "mexico:carlos_fuentes",
+      "title": "La muerte de Artemio Cruz"
+    },
+    {
+      "key": "mexico:carlos_fuentes",
+      "title": "La región más transparente"
+    },
+    {
+      "key": "mexico:carlos_fuentes",
+      "title": "Terra Nostra"
+    },
+    {
+      "key": "mexico:cristina_rivera_garza",
+      "title": "El invencible verano de Liliana"
+    },
+    {
+      "key": "mexico:elena_garro",
+      "title": "La semana de colores"
+    },
+    {
+      "key": "mexico:elena_garro",
+      "title": "Los recuerdos del porvenir"
+    },
+    {
+      "key": "mexico:elena_garro",
+      "title": "Un hogar sólido"
+    },
+    {
+      "key": "mexico:elena_poniatowska",
+      "title": "Hasta no verte Jesús mío"
+    },
+    {
+      "key": "mexico:elena_poniatowska",
+      "title": "La noche de Tlatelolco"
+    },
+    {
+      "key": "mexico:elena_poniatowska",
+      "title": "Querido Diego, te abraza Quiela"
+    },
+    {
+      "key": "mexico:fernanda_melchor",
+      "title": "Páradais"
+    },
+    {
+      "key": "mexico:fernanda_melchor",
+      "title": "Temporada de huracanes"
+    },
+    {
+      "key": "mexico:guadalupe_nettel",
+      "title": "Después del invierno"
+    },
+    {
+      "key": "mexico:guadalupe_nettel",
+      "title": "El cuerpo en que nací"
+    },
+    {
+      "key": "mexico:guadalupe_nettel",
+      "title": "El matrimonio de los peces rojos"
+    },
+    {
+      "key": "mexico:ignacio_manuel_altamirano",
+      "title": "Clemencia"
+    },
+    {
+      "key": "mexico:ignacio_manuel_altamirano",
+      "title": "El Zarco"
+    },
+    {
+      "key": "mexico:ignacio_manuel_altamirano",
+      "title": "La Navidad en las montañas"
+    },
+    {
+      "key": "mexico:javier_velasco",
+      "title": "Diablo guardián"
+    },
+    {
+      "key": "mexico:javier_velasco",
+      "title": "Luna llena en las rocas"
+    },
+    {
+      "key": "mexico:javier_velasco",
+      "title": "Puedo explicarlo todo"
+    },
+    {
+      "key": "mexico:jorge_volpi",
+      "title": "El fin de la locura"
+    },
+    {
+      "key": "mexico:jorge_volpi",
+      "title": "En busca de Klingsor"
+    },
+    {
+      "key": "mexico:jorge_volpi",
+      "title": "Una novela criminal"
+    },
+    {
+      "key": "mexico:jose_emilio_pacheco",
+      "title": "El principio del placer"
+    },
+    {
+      "key": "mexico:jose_emilio_pacheco",
+      "title": "Las batallas en el desierto"
+    },
+    {
+      "key": "mexico:jose_joaquin_fernandez_de_lizardi",
+      "title": "El Periquillo Sarniento"
+    },
+    {
+      "key": "mexico:jose_joaquin_fernandez_de_lizardi",
+      "title": "La Quijotita y su prima"
+    },
+    {
+      "key": "mexico:jose_vasconcelos",
+      "title": "La raza cósmica"
+    },
+    {
+      "key": "mexico:jose_vasconcelos",
+      "title": "La tormenta"
+    },
+    {
+      "key": "mexico:jose_vasconcelos",
+      "title": "Ulises criollo"
+    },
+    {
+      "key": "mexico:laura_esquivel",
+      "title": "Como agua para chocolate"
+    },
+    {
+      "key": "mexico:laura_esquivel",
+      "title": "La ley del amor"
+    },
+    {
+      "key": "mexico:laura_esquivel",
+      "title": "Malinche"
+    },
+    {
+      "key": "mexico:manuel_gutierrez_najera",
+      "title": "Cuentos frágiles"
+    },
+    {
+      "key": "mexico:manuel_gutierrez_najera",
+      "title": "La duquesa Job"
+    },
+    {
+      "key": "mexico:manuel_gutierrez_najera",
+      "title": "La novela del tranvía"
+    },
+    {
+      "key": "mexico:mariano_azuela",
+      "title": "Los caciques"
+    },
+    {
+      "key": "mexico:mariano_azuela",
+      "title": "Los de abajo"
+    },
+    {
+      "key": "mexico:mariano_azuela",
+      "title": "Mala yerba"
+    },
+    {
+      "key": "mexico:octavio_paz",
+      "title": "El arco y la lira"
+    },
+    {
+      "key": "mexico:octavio_paz",
+      "title": "El laberinto de la soledad"
+    },
+    {
+      "key": "mexico:octavio_paz",
+      "title": "Piedra de sol"
+    },
+    {
+      "key": "mexico:sergio_pitol",
+      "title": "El arte de la fuga"
+    },
+    {
+      "key": "mexico:sergio_pitol",
+      "title": "El desfile del amor"
+    },
+    {
+      "key": "mexico:sergio_pitol",
+      "title": "La vida conyugal"
+    },
+    {
+      "key": "mexico:sor_juana_ines_de_la_cruz",
+      "title": "Los empeños de una casa"
+    },
+    {
+      "key": "mexico:sor_juana_ines_de_la_cruz",
+      "title": "Primero sueño"
+    },
+    {
+      "key": "mexico:valeria_luiselli",
+      "title": "La historia de mis dientes"
+    },
+    {
+      "key": "mexico:valeria_luiselli",
+      "title": "Los ingrávidos"
+    },
+    {
+      "key": "mexico:valeria_luiselli",
+      "title": "Lost Children Archive"
+    },
+    {
+      "key": "mexico:yuri_herrera",
+      "title": "La transmigración de los cuerpos"
+    },
+    {
+      "key": "mexico:yuri_herrera",
+      "title": "Señales que precederán al fin del mundo"
+    },
+    {
+      "key": "mexico:yuri_herrera",
+      "title": "Trabajos del reino"
+    },
+    {
+      "key": "moldova:grigore_vieru",
+      "title": "Alarma"
+    },
+    {
+      "key": "moldova:grigore_vieru",
+      "title": "Numele tău"
+    },
+    {
+      "key": "moldova:grigore_vieru",
+      "title": "Taina care mă apără"
+    },
+    {
+      "key": "moldova:ion_druta",
+      "title": "Frunze de dor"
+    },
+    {
+      "key": "moldova:ion_druta",
+      "title": "Povara bunătății noastre"
+    },
+    {
+      "key": "moldova:ion_druta",
+      "title": "Ultima lună de toamnă"
+    },
+    {
+      "key": "moldova:leonida_lari",
+      "title": "Marele vânt"
+    },
+    {
+      "key": "moldova:leonida_lari",
+      "title": "Mitul trandafirului"
+    },
+    {
+      "key": "moldova:leonida_lari",
+      "title": "Piața Diolei"
+    },
+    {
+      "key": "moldova:nicolae_dabija",
+      "title": "Ochiul al treilea"
+    },
+    {
+      "key": "moldova:nicolae_dabija",
+      "title": "Tema pentru acasă"
+    },
+    {
+      "key": "moldova:spiridon_vangheli",
+      "title": "Guguță - căpitan de corabie"
+    },
+    {
+      "key": "moldova:spiridon_vangheli",
+      "title": "Isprăvile lui Guguță"
+    },
+    {
+      "key": "moldova:spiridon_vangheli",
+      "title": "Steaua lui Ciuboțel"
+    },
+    {
+      "key": "monaco:louis_notari",
+      "title": "A legenda de Santa Devota"
+    },
+    {
+      "key": "montenegro:marko_miljanov",
+      "title": "Pleme Kuči u narodnoj priči i pjesmi"
+    },
+    {
+      "key": "montenegro:marko_miljanov",
+      "title": "Primjeri čojstva i junaštva"
+    },
+    {
+      "key": "montenegro:marko_miljanov",
+      "title": "Život i običaji Arbanasa"
+    },
+    {
+      "key": "montenegro:miodrag_bulatovic",
+      "title": "Crveni petao leti prema nebu"
+    },
+    {
+      "key": "montenegro:miodrag_bulatovic",
+      "title": "Heroj na magarcu"
+    },
+    {
+      "key": "montenegro:miodrag_bulatovic",
+      "title": "Ljudi sa četiri prsta"
+    },
+    {
+      "key": "montenegro:nikola_i_petrovic",
+      "title": "Balkanska carica"
+    },
+    {
+      "key": "montenegro:ognjen_spahic",
+      "title": "Hansenova djeca"
+    },
+    {
+      "key": "montenegro:ognjen_spahic",
+      "title": "Puna glava radosti"
+    },
+    {
+      "key": "montenegro:petar_ii_petrovic_njegos",
+      "title": "Gorski vijenac"
+    },
+    {
+      "key": "montenegro:stefan_ljubisa",
+      "title": "Kanjoš Macedonović"
+    },
+    {
+      "key": "montenegro:stefan_ljubisa",
+      "title": "Prodaja patrijare Brkića"
+    },
+    {
+      "key": "morocco:ahmed_sefrioui",
+      "title": "La Boîte à merveilles"
+    },
+    {
+      "key": "morocco:ahmed_sefrioui",
+      "title": "Le Chapelet d’ambre"
+    },
+    {
+      "key": "morocco:driss_chraibi",
+      "title": "La Civilisation, ma Mère!"
+    },
+    {
+      "key": "morocco:driss_chraibi",
+      "title": "La Mère du printemps"
+    },
+    {
+      "key": "morocco:driss_chraibi",
+      "title": "Le Passé simple"
+    },
+    {
+      "key": "morocco:tahar_ben_jelloun",
+      "title": "La Nuit sacrée"
+    },
+    {
+      "key": "mozambique:eduardo_white",
+      "title": "Janela para o Índico"
+    },
+    {
+      "key": "mozambique:eduardo_white",
+      "title": "O País de Mim"
+    },
+    {
+      "key": "mozambique:lilia_momple",
+      "title": "Neighbours"
+    },
+    {
+      "key": "mozambique:lilia_momple",
+      "title": "Ninguém Matou Suhura"
+    },
+    {
+      "key": "mozambique:lilia_momple",
+      "title": "Os Olhos da Cobra Verde"
+    },
+    {
+      "key": "mozambique:orlando_mendes",
+      "title": "Portagem"
+    },
+    {
+      "key": "myanmar:ma_ma_lay",
+      "title": "A Man Like Him"
+    },
+    {
+      "key": "myanmar:ma_ma_lay",
+      "title": "Not Out of Hate"
+    },
+    {
+      "key": "nepal:bp_koirala",
+      "title": "Narendra Dai"
+    },
+    {
+      "key": "nepal:bp_koirala",
+      "title": "Sumnima"
+    },
+    {
+      "key": "nepal:bp_koirala",
+      "title": "Teen Ghumti"
+    },
+    {
+      "key": "nepal:krishna_dharabasi",
+      "title": "Radha"
+    },
+    {
+      "key": "nepal:laxmi_prasad_devkota",
+      "title": "Muna Madan"
+    },
+    {
+      "key": "nepal:laxmi_prasad_devkota",
+      "title": "Shakuntala"
+    },
+    {
+      "key": "nepal:laxmi_prasad_devkota",
+      "title": "Sulochana"
+    },
+    {
+      "key": "nepal:manjushree_thapa",
+      "title": "Seasons of Flight"
+    },
+    {
+      "key": "nepal:manjushree_thapa",
+      "title": "The Tutor of History"
+    },
+    {
+      "key": "nepal:parijat",
+      "title": "Shirishko Phool"
+    },
+    {
+      "key": "netherlands:alexandre_olivier_exquemelin",
+      "title": "De Americaensche Zee-Roovers"
+    },
+    {
+      "key": "netherlands:betje_wolff",
+      "title": "Historie van mejuffrouw Sara Burgerhart"
+    },
+    {
+      "key": "netherlands:cees_nooteboom",
+      "title": "Het volgende verhaal"
+    },
+    {
+      "key": "netherlands:cees_nooteboom",
+      "title": "Rituelen"
+    },
+    {
+      "key": "netherlands:frederik_van_eeden",
+      "title": "De kleine Johannes"
+    },
+    {
+      "key": "netherlands:frederik_van_eeden",
+      "title": "Van de koele meren des doods"
+    },
+    {
+      "key": "netherlands:harry_mulisch",
+      "title": "De aanslag"
+    },
+    {
+      "key": "netherlands:harry_mulisch",
+      "title": "De ontdekking van de hemel"
+    },
+    {
+      "key": "netherlands:herman_koch",
+      "title": "Geachte heer M."
+    },
+    {
+      "key": "netherlands:herman_koch",
+      "title": "Het diner"
+    },
+    {
+      "key": "netherlands:herman_koch",
+      "title": "Zomerhuis met zwembad"
+    },
+    {
+      "key": "netherlands:joost_van_den_vondel",
+      "title": "Gijsbrecht van Aemstel"
+    },
+    {
+      "key": "netherlands:joost_van_den_vondel",
+      "title": "Jeptha"
+    },
+    {
+      "key": "netherlands:joost_van_den_vondel",
+      "title": "Lucifer"
+    },
+    {
+      "key": "netherlands:louis_couperus",
+      "title": "De stille kracht"
+    },
+    {
+      "key": "netherlands:louis_couperus",
+      "title": "Eline Vere"
+    },
+    {
+      "key": "netherlands:louis_couperus",
+      "title": "Van oude menschen, de dingen, die voorbij gaan"
+    },
+    {
+      "key": "netherlands:multatuli",
+      "title": "Max Havelaar"
+    },
+    {
+      "key": "new_zealand:allen_curnow",
+      "title": "Continuum: New and Later Poems"
+    },
+    {
+      "key": "new_zealand:allen_curnow",
+      "title": "Early Days Yet"
+    },
+    {
+      "key": "new_zealand:bill_manhire",
+      "title": "Lifted"
+    },
+    {
+      "key": "new_zealand:bill_manhire",
+      "title": "Milky Way Bar"
+    },
+    {
+      "key": "new_zealand:bruce_mason",
+      "title": "The End of the Golden Weather"
+    },
+    {
+      "key": "new_zealand:bruce_mason",
+      "title": "The Pohutukawa Tree"
+    },
+    {
+      "key": "new_zealand:c_k_stead",
+      "title": "All Visitors Ashore"
+    },
+    {
+      "key": "new_zealand:c_k_stead",
+      "title": "Mansfield"
+    },
+    {
+      "key": "new_zealand:c_k_stead",
+      "title": "The Death of the Body"
+    },
+    {
+      "key": "new_zealand:damien_wilkins",
+      "title": "Max Gate"
+    },
+    {
+      "key": "new_zealand:damien_wilkins",
+      "title": "The Miserables"
+    },
+    {
+      "key": "new_zealand:damien_wilkins",
+      "title": "The Veteran Perils"
+    },
+    {
+      "key": "new_zealand:eleanor_catton",
+      "title": "The Luminaries"
+    },
+    {
+      "key": "new_zealand:elizabeth_knox",
+      "title": "Dreamhunter"
+    },
+    {
+      "key": "new_zealand:elizabeth_knox",
+      "title": "Dreamquake"
+    },
+    {
+      "key": "new_zealand:elizabeth_knox",
+      "title": "The Vintner’s Luck"
+    },
+    {
+      "key": "new_zealand:fiona_kidman",
+      "title": "This Mortal Boy"
+    },
+    {
+      "key": "new_zealand:frank_sargeson",
+      "title": "That Summer"
+    },
+    {
+      "key": "new_zealand:frank_sargeson",
+      "title": "The Stories of Frank Sargeson"
+    },
+    {
+      "key": "new_zealand:james_k_baxter",
+      "title": "Jerusalem Sonnets"
+    },
+    {
+      "key": "new_zealand:james_k_baxter",
+      "title": "Pig Island Letters"
+    },
+    {
+      "key": "new_zealand:jane_mander",
+      "title": "Allen Adair"
+    },
+    {
+      "key": "new_zealand:jane_mander",
+      "title": "The Story of a New Zealand River"
+    },
+    {
+      "key": "new_zealand:janet_frame",
+      "title": "An Angel at My Table"
+    },
+    {
+      "key": "new_zealand:janet_frame",
+      "title": "Faces in the Water"
+    },
+    {
+      "key": "new_zealand:janet_frame",
+      "title": "Owls Do Cry"
+    },
+    {
+      "key": "new_zealand:kate_de_goldi",
+      "title": "From the Cutting Room of Barney Kettle"
+    },
+    {
+      "key": "new_zealand:kate_de_goldi",
+      "title": "The 10 PM Question"
+    },
+    {
+      "key": "new_zealand:katherine_mansfield",
+      "title": "Bliss and Other Stories"
+    },
+    {
+      "key": "new_zealand:katherine_mansfield",
+      "title": "The Garden Party and Other Stories"
+    },
+    {
+      "key": "new_zealand:keri_hulme",
+      "title": "The Bone People"
+    },
+    {
+      "key": "new_zealand:loyd_jones",
+      "title": "Mister Pip"
+    },
+    {
+      "key": "new_zealand:patricia_grace",
+      "title": "Cousins"
+    },
+    {
+      "key": "new_zealand:patricia_grace",
+      "title": "Potiki"
+    },
+    {
+      "key": "new_zealand:patricia_grace",
+      "title": "Tu"
+    },
+    {
+      "key": "new_zealand:robin_hyde",
+      "title": "The Godwits Fly"
+    },
+    {
+      "key": "new_zealand:robin_hyde",
+      "title": "Wednesday’s Children"
+    },
+    {
+      "key": "new_zealand:witi_ihimaera",
+      "title": "Tangi"
+    },
+    {
+      "key": "new_zealand:witi_ihimaera",
+      "title": "The Whale Rider"
+    },
+    {
+      "key": "nicaragua:ernesto_cardenal",
+      "title": "Cántico cósmico"
+    },
+    {
+      "key": "nicaragua:ernesto_cardenal",
+      "title": "Salmos"
+    },
+    {
+      "key": "nicaragua:gioconda_belli",
+      "title": "El ojo de la mujer"
+    },
+    {
+      "key": "nicaragua:gioconda_belli",
+      "title": "La mujer habitada"
+    },
+    {
+      "key": "nicaragua:ruben_dario",
+      "title": "Azul…"
+    },
+    {
+      "key": "nicaragua:ruben_dario",
+      "title": "Cantos de vida y esperanza"
+    },
+    {
+      "key": "nicaragua:ruben_dario",
+      "title": "Prosas profanas y otros poemas"
+    },
+    {
+      "key": "nicaragua:sergio_ramirez",
+      "title": "Margarita, está linda la mar"
+    },
+    {
+      "key": "niger:abdoulaye_mamani",
+      "title": "Sarraounia"
+    },
+    {
+      "key": "niger:boubou_hama",
+      "title": "Contes et légendes du Niger"
+    },
+    {
+      "key": "niger:boubou_hama",
+      "title": "Izé-Gani"
+    },
+    {
+      "key": "niger:mariama_hima",
+      "title": "Sagesse africaine: proverbes"
+    },
+    {
+      "key": "nigeria:ben_okri",
+      "title": "The Famished Road"
+    },
+    {
+      "key": "nigeria:buchi_emecheta",
+      "title": "Second-Class Citizen"
+    },
+    {
+      "key": "nigeria:buchi_emecheta",
+      "title": "The Slave Girl"
+    },
+    {
+      "key": "nigeria:chimamanda_adichie",
+      "title": "Americanah"
+    },
+    {
+      "key": "nigeria:chimamanda_adichie",
+      "title": "Half of a Yellow Sun"
+    },
+    {
+      "key": "nigeria:chimamanda_adichie",
+      "title": "Purple Hibiscus"
+    },
+    {
+      "key": "nigeria:chinua_achebe",
+      "title": "Arrow of God"
+    },
+    {
+      "key": "nigeria:chinua_achebe",
+      "title": "Things Fall Apart"
+    },
+    {
+      "key": "nigeria:christopher_okigbo",
+      "title": "Heavensgate"
+    },
+    {
+      "key": "nigeria:christopher_okigbo",
+      "title": "Labyrinths"
+    },
+    {
+      "key": "nigeria:christopher_okigbo",
+      "title": "Limits"
+    },
+    {
+      "key": "nigeria:d_o_fagunwa",
+      "title": "Ògbójú Ọdẹ nínú Igbó Irúnmalẹ̀"
+    },
+    {
+      "key": "nigeria:flora_nwapa",
+      "title": "Efuru"
+    },
+    {
+      "key": "nigeria:helon_habila",
+      "title": "Measuring Time"
+    },
+    {
+      "key": "nigeria:helon_habila",
+      "title": "Oil on Water"
+    },
+    {
+      "key": "nigeria:helon_habila",
+      "title": "Waiting for an Angel"
+    },
+    {
+      "key": "nigeria:teju_cole",
+      "title": "Every Day Is for the Thief"
+    },
+    {
+      "key": "nigeria:teju_cole",
+      "title": "Open City"
+    },
+    {
+      "key": "nigeria:wole_soyinka",
+      "title": "Death and the King’s Horseman"
+    },
+    {
+      "key": "niue:john_pule",
+      "title": "Burn My Head in Heaven"
+    },
+    {
+      "key": "niue:john_pule",
+      "title": "The Shark That Ate the Sun"
+    },
+    {
+      "key": "north_korea:paek_nam_nyong",
+      "title": "Friend"
+    },
+    {
+      "key": "north_korea:ri_ki_yong",
+      "title": "Gohyang"
+    },
+    {
+      "key": "norway:aksel_sandemose",
+      "title": "En flyktning krysser sitt spor"
+    },
+    {
+      "key": "norway:alexander_kielland",
+      "title": "Garman & Worse"
+    },
+    {
+      "key": "norway:alexander_kielland",
+      "title": "Gift"
+    },
+    {
+      "key": "norway:alexander_kielland",
+      "title": "Skipper Worse"
+    },
+    {
+      "key": "norway:amalie_skram",
+      "title": "Constance Ring"
+    },
+    {
+      "key": "norway:amalie_skram",
+      "title": "Forrådt"
+    },
+    {
+      "key": "norway:amalie_skram",
+      "title": "Hellemyrsfolket"
+    },
+    {
+      "key": "norway:bjornstjerne_bjornson",
+      "title": "Synnøve Solbakken"
+    },
+    {
+      "key": "norway:camilla_collett",
+      "title": "Amtmandens Døttre"
+    },
+    {
+      "key": "norway:camilla_collett",
+      "title": "I de lange Nætter"
+    },
+    {
+      "key": "norway:erlend_loe",
+      "title": "Doppler"
+    },
+    {
+      "key": "norway:erlend_loe",
+      "title": "Naiv. Super"
+    },
+    {
+      "key": "norway:erlend_loe",
+      "title": "Tatt av kvinnen"
+    },
+    {
+      "key": "norway:jo_nesbo",
+      "title": "Hodejegerne"
+    },
+    {
+      "key": "norway:jo_nesbo",
+      "title": "Sønnen"
+    },
+    {
+      "key": "norway:jon_fosse",
+      "title": "Nokon kjem til å komme"
+    },
+    {
+      "key": "norway:jon_fosse",
+      "title": "Septologien"
+    },
+    {
+      "key": "norway:jonas_lie",
+      "title": "Den Fremsynte"
+    },
+    {
+      "key": "norway:jonas_lie",
+      "title": "Familjen paa Gilje"
+    },
+    {
+      "key": "norway:jonas_lie",
+      "title": "Trold"
+    },
+    {
+      "key": "norway:jostein_gaarder",
+      "title": "I et speil, i en gåte"
+    },
+    {
+      "key": "norway:jostein_gaarder",
+      "title": "Kabalmysteriet"
+    },
+    {
+      "key": "norway:jostein_gaarder",
+      "title": "Sofies verden"
+    },
+    {
+      "key": "norway:knut_hamsun",
+      "title": "Markens Grøde"
+    },
+    {
+      "key": "norway:olav_duun",
+      "title": "Juvikfolke"
+    },
+    {
+      "key": "norway:olav_duun",
+      "title": "Medmenneske"
+    },
+    {
+      "key": "norway:olav_duun",
+      "title": "Menneske og maktene"
+    },
+    {
+      "key": "norway:sigrid_undset",
+      "title": "Jenny"
+    },
+    {
+      "key": "norway:tarjei_vesaas",
+      "title": "Fuglane"
+    },
+    {
+      "key": "norway:tarjei_vesaas",
+      "title": "Is-slottet"
+    },
+    {
+      "key": "pakistan:bano_qudsia",
+      "title": "Raja Gidh"
+    },
+    {
+      "key": "pakistan:faiz_ahmad_faiz",
+      "title": "Dast-e-Saba"
+    },
+    {
+      "key": "pakistan:faiz_ahmad_faiz",
+      "title": "Naqsh-e-Faryadi"
+    },
+    {
+      "key": "pakistan:faiz_ahmad_faiz",
+      "title": "Zindan-Nama"
+    },
+    {
+      "key": "pakistan:intizar_husain",
+      "title": "Aage Samandar Hai"
+    },
+    {
+      "key": "pakistan:intizar_husain",
+      "title": "Basti"
+    },
+    {
+      "key": "pakistan:kamila_shamsie",
+      "title": "Burnt Shadows"
+    },
+    {
+      "key": "pakistan:kamila_shamsie",
+      "title": "Home Fire"
+    },
+    {
+      "key": "pakistan:mohsin_hamid",
+      "title": "Exit West"
+    },
+    {
+      "key": "pakistan:mohsin_hamid",
+      "title": "Moth Smoke"
+    },
+    {
+      "key": "pakistan:mohsin_hamid",
+      "title": "The Reluctant Fundamentalist"
+    },
+    {
+      "key": "pakistan:muhammad_iqbal",
+      "title": "Asrar-i-Khudi"
+    },
+    {
+      "key": "pakistan:muhammad_iqbal",
+      "title": "Bang-i-Dara"
+    },
+    {
+      "key": "pakistan:muhammad_iqbal",
+      "title": "Javid Nama"
+    },
+    {
+      "key": "pakistan:saadat_hasan_manto",
+      "title": "Khol Do"
+    },
+    {
+      "key": "pakistan:saadat_hasan_manto",
+      "title": "Thanda Gosht"
+    },
+    {
+      "key": "pakistan:saadat_hasan_manto",
+      "title": "Toba Tek Singh"
+    },
+    {
+      "key": "palau:emelihter_kihleng",
+      "title": "My Urohs"
+    },
+    {
+      "key": "palestine:edward_said",
+      "title": "Culture and Imperialism"
+    },
+    {
+      "key": "palestine:edward_said",
+      "title": "Orientalism"
+    },
+    {
+      "key": "palestine:edward_said",
+      "title": "Out of Place"
+    },
+    {
+      "key": "palestine:fadwa_tuqan",
+      "title": "A Mountainous Journey"
+    },
+    {
+      "key": "palestine:fadwa_tuqan",
+      "title": "Alone with the Days"
+    },
+    {
+      "key": "palestine:fadwa_tuqan",
+      "title": "The Night and the Horsemen"
+    },
+    {
+      "key": "palestine:ghassan_kanafani",
+      "title": "All That’s Left to You"
+    },
+    {
+      "key": "palestine:ghassan_kanafani",
+      "title": "Men in the Sun"
+    },
+    {
+      "key": "palestine:ghassan_kanafani",
+      "title": "Returning to Haifa"
+    },
+    {
+      "key": "palestine:ibrahim_nasrallah",
+      "title": "Lanterns of the King of Galilee"
+    },
+    {
+      "key": "palestine:ibrahim_nasrallah",
+      "title": "The Second War of the Dog"
+    },
+    {
+      "key": "palestine:ibrahim_nasrallah",
+      "title": "Time of White Horses"
+    },
+    {
+      "key": "palestine:mahmoud_darwish",
+      "title": "Memory for Forgetfulness"
+    },
+    {
+      "key": "palestine:mahmoud_darwish",
+      "title": "Mural"
+    },
+    {
+      "key": "palestine:mahmoud_darwish",
+      "title": "Why Did You Leave the Horse Alone?"
+    },
+    {
+      "key": "palestine:sahar_khalifeh",
+      "title": "The Image, the Icon, and the Covenant"
+    },
+    {
+      "key": "palestine:sahar_khalifeh",
+      "title": "Wild Thorns"
+    },
+    {
+      "key": "panama:juan_david_morgan",
+      "title": "El caballo de oro"
+    },
+    {
+      "key": "panama:juan_david_morgan",
+      "title": "El silencio de Gaudí"
+    },
+    {
+      "key": "panama:juan_david_morgan",
+      "title": "Fugitivos del paisaje"
+    },
+    {
+      "key": "panama:ricardo_miro",
+      "title": "Caminos silenciosos"
+    },
+    {
+      "key": "panama:ricardo_miro",
+      "title": "La leyenda del Pacífico"
+    },
+    {
+      "key": "panama:ricardo_miro",
+      "title": "Los segundos preludios"
+    },
+    {
+      "key": "panama:ricardo_miro",
+      "title": "Preludios"
+    },
+    {
+      "key": "panama:rogelio_sinan",
+      "title": "La isla mágica"
+    },
+    {
+      "key": "panama:rogelio_sinan",
+      "title": "Onda"
+    },
+    {
+      "key": "panama:rogelio_sinan",
+      "title": "Plenilunio"
+    },
+    {
+      "key": "papua_new_guinea:vincent_eri",
+      "title": "The Crocodile"
+    },
+    {
+      "key": "paraguay:augusto_roa_bastos",
+      "title": "El fiscal"
+    },
+    {
+      "key": "paraguay:augusto_roa_bastos",
+      "title": "Hijo de hombre"
+    },
+    {
+      "key": "paraguay:augusto_roa_bastos",
+      "title": "Yo el Supremo"
+    },
+    {
+      "key": "paraguay:elvio_romero",
+      "title": "Destierro y atardecer"
+    },
+    {
+      "key": "paraguay:elvio_romero",
+      "title": "Días roturados"
+    },
+    {
+      "key": "paraguay:elvio_romero",
+      "title": "El sol bajo las raíces"
+    },
+    {
+      "key": "paraguay:gabriel_casaccia",
+      "title": "El Guajhú"
+    },
+    {
+      "key": "paraguay:gabriel_casaccia",
+      "title": "La babosa"
+    },
+    {
+      "key": "paraguay:gabriel_casaccia",
+      "title": "La llaga"
+    },
+    {
+      "key": "paraguay:gabriel_casaccia",
+      "title": "Los exiliados"
+    },
+    {
+      "key": "paraguay:juan_manuel_marcos",
+      "title": "El invierno de Gunter"
+    },
+    {
+      "key": "paraguay:julio_correa",
+      "title": "Karu poka"
+    },
+    {
+      "key": "paraguay:julio_correa",
+      "title": "Pleito rire"
+    },
+    {
+      "key": "paraguay:julio_correa",
+      "title": "Sandía yvyguy"
+    },
+    {
+      "key": "paraguay:liza_haedo",
+      "title": "Juruguasúlas"
+    },
+    {
+      "key": "paraguay:liza_haedo",
+      "title": "Pieles de papel"
+    },
+    {
+      "key": "paraguay:mario_ruben_alvarez",
+      "title": "La sangre insurrecta"
+    },
+    {
+      "key": "paraguay:mario_ruben_alvarez",
+      "title": "Las voces de la memoria"
+    },
+    {
+      "key": "paraguay:mario_ruben_alvarez",
+      "title": "Ñe’ẽ apytere / A flor de ausencia"
+    },
+    {
+      "key": "paraguay:natalicio_gonzalez",
+      "title": "Baladas guaraníes"
+    },
+    {
+      "key": "paraguay:natalicio_gonzalez",
+      "title": "El Paraguay eterno"
+    },
+    {
+      "key": "paraguay:natalicio_gonzalez",
+      "title": "Proceso y formación de la cultura paraguaya"
+    },
+    {
+      "key": "paraguay:rubén_bareiro_saguier",
+      "title": "La rosa azul"
+    },
+    {
+      "key": "paraguay:rubén_bareiro_saguier",
+      "title": "Ojo por diente"
+    },
+    {
+      "key": "peru:alfredo_bryce_echenique",
+      "title": "El huerto de mi amada"
+    },
+    {
+      "key": "peru:alfredo_bryce_echenique",
+      "title": "La vida exagerada de Martín Romaña"
+    },
+    {
+      "key": "peru:alfredo_bryce_echenique",
+      "title": "Un mundo para Julius"
+    },
+    {
+      "key": "peru:cesar_vallejo",
+      "title": "Trilce"
+    },
+    {
+      "key": "peru:claudia_salazar_jimenez",
+      "title": "La sangre de la aurora"
+    },
+    {
+      "key": "peru:eduardo_gonzalez_viana",
+      "title": "El corrido de Dante"
+    },
+    {
+      "key": "peru:fernando_iwasaki",
+      "title": "Ajuar funerario"
+    },
+    {
+      "key": "peru:fernando_iwasaki",
+      "title": "Libro de mal amor"
+    },
+    {
+      "key": "peru:fernando_iwasaki",
+      "title": "Neguijón"
+    },
+    {
+      "key": "peru:ivan_thays",
+      "title": "La disciplina de la vanidad"
+    },
+    {
+      "key": "peru:ivan_thays",
+      "title": "Las fotografías de Frances Farmer"
+    },
+    {
+      "key": "peru:ivan_thays",
+      "title": "Un lugar llamado Oreja de Perro"
+    },
+    {
+      "key": "peru:jose_maria_arguedas",
+      "title": "El zorro de arriba y el zorro de abajo"
+    },
+    {
+      "key": "peru:jose_maria_arguedas",
+      "title": "Los ríos profundos"
+    },
+    {
+      "key": "peru:jose_maria_arguedas",
+      "title": "Yawar Fiesta"
+    },
+    {
+      "key": "peru:jose_watanabe",
+      "title": "Álbum de familia"
+    },
+    {
+      "key": "peru:jose_watanabe",
+      "title": "El huso de la palabra"
+    },
+    {
+      "key": "peru:jose_watanabe",
+      "title": "Historia natural"
+    },
+    {
+      "key": "peru:juan_espinosa_medrano",
+      "title": "Apologético en favor de don Luis de Góngora"
+    },
+    {
+      "key": "peru:julio_ortega",
+      "title": "Ayacucho, Good Bye"
+    },
+    {
+      "key": "peru:julio_ortega",
+      "title": "El discurso de la abundancia"
+    },
+    {
+      "key": "peru:julio_ortega",
+      "title": "La mesa del padre"
+    },
+    {
+      "key": "peru:julio_ramon_ribeyro",
+      "title": "La palabra del mudo"
+    },
+    {
+      "key": "peru:manuel_gonzalez_prada",
+      "title": "Horas de lucha"
+    },
+    {
+      "key": "peru:manuel_gonzalez_prada",
+      "title": "Pájinas libres"
+    },
+    {
+      "key": "peru:mario_bellatin",
+      "title": "El gran vidrio"
+    },
+    {
+      "key": "peru:mario_bellatin",
+      "title": "Flores"
+    },
+    {
+      "key": "peru:mario_bellatin",
+      "title": "Salón de belleza"
+    },
+    {
+      "key": "peru:mario_bellatin",
+      "title": "Shiki Nagaoka: una nariz de ficción"
+    },
+    {
+      "key": "peru:oscar_colchado_lucio",
+      "title": "Rosa Cuchillo"
+    },
+    {
+      "key": "peru:ricardo_palma",
+      "title": "Tradiciones peruanas"
+    },
+    {
+      "key": "peru:santiago_roncagliolo",
+      "title": "Abril rojo"
+    },
+    {
+      "key": "philippines:f_sionil_jose",
+      "title": "Rosales Saga"
+    },
+    {
+      "key": "philippines:francisco_balagtas",
+      "title": "Florante at Laura"
+    },
+    {
+      "key": "philippines:francisco_balagtas",
+      "title": "Orosmán at Zafira"
+    },
+    {
+      "key": "philippines:jose_rizal",
+      "title": "El filibusterismo"
+    },
+    {
+      "key": "philippines:jose_rizal",
+      "title": "Noli me tangere"
+    },
+    {
+      "key": "philippines:miguel_syjuco",
+      "title": "Ilustrado"
+    },
+    {
+      "key": "philippines:nick_joaquin",
+      "title": "A Portrait of the Artist as Filipino"
+    },
+    {
+      "key": "philippines:nick_joaquin",
+      "title": "The Woman Who Had Two Navels"
+    },
+    {
+      "key": "portugal:alexandre_herculano",
+      "title": "Eurico, o Presbítero"
+    },
+    {
+      "key": "portugal:alexandre_herculano",
+      "title": "O Monge de Cister"
+    },
+    {
+      "key": "portugal:almeida_garrett",
+      "title": "Frei Luís de Sousa"
+    },
+    {
+      "key": "portugal:almeida_garrett",
+      "title": "Viagens na Minha Terra"
+    },
+    {
+      "key": "portugal:antonio_lobo_antunes",
+      "title": "Manual dos Inquisidores"
+    },
+    {
+      "key": "portugal:antonio_lobo_antunes",
+      "title": "Memória de Elefante"
+    },
+    {
+      "key": "portugal:antonio_lobo_antunes",
+      "title": "Os Cus de Judas"
+    },
+    {
+      "key": "portugal:branquinho_da_fonseca",
+      "title": "Caminhos Magnéticos"
+    },
+    {
+      "key": "portugal:branquinho_da_fonseca",
+      "title": "Mar Santo"
+    },
+    {
+      "key": "portugal:branquinho_da_fonseca",
+      "title": "O Barão"
+    },
+    {
+      "key": "portugal:branquinho_da_fonseca",
+      "title": "Zonas"
+    },
+    {
+      "key": "portugal:eca_de_queiros",
+      "title": "O Crime do Padre Amaro"
+    },
+    {
+      "key": "portugal:eca_de_queiros",
+      "title": "O Primo Basílio"
+    },
+    {
+      "key": "portugal:eca_de_queiros",
+      "title": "Os Maias"
+    },
+    {
+      "key": "portugal:fernando_pessoa",
+      "title": "Mensagem"
+    },
+    {
+      "key": "portugal:gil_vicente",
+      "title": "Auto da Índia"
+    },
+    {
+      "key": "portugal:gil_vicente",
+      "title": "Autos das Barcas"
+    },
+    {
+      "key": "portugal:gil_vicente",
+      "title": "Farsa de Inês Pereira"
+    },
+    {
+      "key": "portugal:goncalo_m_tavares",
+      "title": "Jerusalém"
+    },
+    {
+      "key": "portugal:goncalo_m_tavares",
+      "title": "Uma Viagem à Índia"
+    },
+    {
+      "key": "portugal:helia_correa",
+      "title": "A Terceira Miséria"
+    },
+    {
+      "key": "portugal:helia_correa",
+      "title": "Adoecer"
+    },
+    {
+      "key": "portugal:helia_correa",
+      "title": "Lillias Fraser"
+    },
+    {
+      "key": "portugal:herberto_helder",
+      "title": "Electronicolírica"
+    },
+    {
+      "key": "portugal:herberto_helder",
+      "title": "O Amor em Visita"
+    },
+    {
+      "key": "portugal:herberto_helder",
+      "title": "Photomaton & Vox"
+    },
+    {
+      "key": "portugal:jose_luis_peixoto",
+      "title": "Nenhum Olhar"
+    },
+    {
+      "key": "portugal:jose_rodrigues_dos_santos",
+      "title": "A Fórmula de Deus"
+    },
+    {
+      "key": "portugal:jose_rodrigues_dos_santos",
+      "title": "Codex 632"
+    },
+    {
+      "key": "portugal:lidia_jorge",
+      "title": "A Costa dos Murmúrios"
+    },
+    {
+      "key": "portugal:lidia_jorge",
+      "title": "O Dia dos Prodígios"
+    },
+    {
+      "key": "portugal:luis_de_camoes",
+      "title": "Os Lusíadas"
+    },
+    {
+      "key": "portugal:manuel_de_aranha",
+      "title": "Na Primeira Presidência da República Portuguesa"
+    },
+    {
+      "key": "portugal:mario_de_sa_carneiro",
+      "title": "A Confissão de Lúcio"
+    },
+    {
+      "key": "portugal:mario_de_sa_carneiro",
+      "title": "Dispersão"
+    },
+    {
+      "key": "portugal:mario_de_sa_carneiro",
+      "title": "Indícios de Oiro"
+    },
+    {
+      "key": "portugal:miguel_torga",
+      "title": "Bichos"
+    },
+    {
+      "key": "portugal:miguel_torga",
+      "title": "Novos Contos da Montanha"
+    },
+    {
+      "key": "portugal:sofia_de_mello_breyner",
+      "title": "A Menina do Mar"
+    },
+    {
+      "key": "portugal:sofia_de_mello_breyner",
+      "title": "Dia do Mar"
+    },
+    {
+      "key": "portugal:sofia_de_mello_breyner",
+      "title": "Livro Sexto"
+    },
+    {
+      "key": "portugal:sofia_de_mello_breyner",
+      "title": "O Nome das Coisas"
+    },
+    {
+      "key": "portugal:vergilio_ferreira",
+      "title": "Aparição"
+    },
+    {
+      "key": "portugal:vergilio_ferreira",
+      "title": "Manhã Submersa"
+    },
+    {
+      "key": "portugal:vergilio_ferreira",
+      "title": "Signo sinal"
+    },
+    {
+      "key": "portugal:walter_hugo_mae",
+      "title": "a máquina de fazer espanhóis"
+    },
+    {
+      "key": "portugal:walter_hugo_mae",
+      "title": "o apocalipse dos trabalhadores"
+    },
+    {
+      "key": "portugal:walter_hugo_mae",
+      "title": "o filho de mil homens"
+    },
+    {
+      "key": "portugal:walter_hugo_mae",
+      "title": "o remorso de baltazar serapião"
+    },
+    {
+      "key": "puerto_rico:esmeralda_santiago",
+      "title": "Almost a Woman"
+    },
+    {
+      "key": "puerto_rico:esmeralda_santiago",
+      "title": "América’s Dream"
+    },
+    {
+      "key": "puerto_rico:esmeralda_santiago",
+      "title": "Conquistadora"
+    },
+    {
+      "key": "puerto_rico:esmeralda_santiago",
+      "title": "When I Was Puerto Rican"
+    },
+    {
+      "key": "puerto_rico:jose_luis_gonzalez",
+      "title": "Balada de otro tiempo"
+    },
+    {
+      "key": "puerto_rico:jose_luis_gonzalez",
+      "title": "El hombre en la calle"
+    },
+    {
+      "key": "puerto_rico:jose_luis_gonzalez",
+      "title": "El país de cuatro pisos"
+    },
+    {
+      "key": "puerto_rico:jose_luis_gonzalez",
+      "title": "La llegada"
+    },
+    {
+      "key": "puerto_rico:julia_de_burgos",
+      "title": "Canción de la verdad sencilla"
+    },
+    {
+      "key": "puerto_rico:julia_de_burgos",
+      "title": "Poema en veinte surcos"
+    },
+    {
+      "key": "puerto_rico:manuel_ramos_otero",
+      "title": "Invitación al polvo"
+    },
+    {
+      "key": "puerto_rico:manuel_ramos_otero",
+      "title": "La novelabingo"
+    },
+    {
+      "key": "puerto_rico:manuel_ramos_otero",
+      "title": "Página en blanco y staccato"
+    },
+    {
+      "key": "puerto_rico:rene_marques",
+      "title": "La carreta"
+    },
+    {
+      "key": "puerto_rico:rene_marques",
+      "title": "La mirada"
+    },
+    {
+      "key": "puerto_rico:rene_marques",
+      "title": "La víspera del hombre"
+    },
+    {
+      "key": "puerto_rico:rene_marques",
+      "title": "Los soles truncos"
+    },
+    {
+      "key": "qatar:abdulaziz_al_mahmoud",
+      "title": "Al Qursan"
+    },
+    {
+      "key": "qatar:abdulaziz_al_mahmoud",
+      "title": "The Holy Sail"
+    },
+    {
+      "key": "qatar:kulthum_jaber",
+      "title": "Anyā wa-ghābāt al-ṣamt wa-l-taraddud"
+    },
+    {
+      "key": "republic_of_congo:alain_mabanckou",
+      "title": "Black Bazar"
+    },
+    {
+      "key": "republic_of_congo:alain_mabanckou",
+      "title": "Mémoires de porc-épic"
+    },
+    {
+      "key": "republic_of_congo:alain_mabanckou",
+      "title": "Verre cassé"
+    },
+    {
+      "key": "republic_of_congo:daniel_biyaoula",
+      "title": "Agonies"
+    },
+    {
+      "key": "republic_of_congo:daniel_biyaoula",
+      "title": "L’Impasse"
+    },
+    {
+      "key": "republic_of_congo:daniel_biyaoula",
+      "title": "La Source de joies"
+    },
+    {
+      "key": "republic_of_congo:emmanuel_dongala",
+      "title": "Johnny chien méchant"
+    },
+    {
+      "key": "republic_of_congo:emmanuel_dongala",
+      "title": "Le Feu des origines"
+    },
+    {
+      "key": "republic_of_congo:emmanuel_dongala",
+      "title": "Photo de groupe au bord du fleuve"
+    },
+    {
+      "key": "republic_of_congo:guy_menga",
+      "title": "L’Oracle"
+    },
+    {
+      "key": "republic_of_congo:guy_menga",
+      "title": "La Marmite de Koka-Mbala"
+    },
+    {
+      "key": "republic_of_congo:guy_menga",
+      "title": "La Palabre stérile"
+    },
+    {
+      "key": "republic_of_congo:henri_lopes",
+      "title": "Le Chercheur d’Afriques"
+    },
+    {
+      "key": "republic_of_congo:henri_lopes",
+      "title": "Le Pleurer-rire"
+    },
+    {
+      "key": "republic_of_congo:henri_lopes",
+      "title": "Sur l’autre rive"
+    },
+    {
+      "key": "republic_of_congo:jean_baptiste_tati_loutard",
+      "title": "Chroniques congolaises"
+    },
+    {
+      "key": "republic_of_congo:jean_baptiste_tati_loutard",
+      "title": "Le Récit de la mort"
+    },
+    {
+      "key": "republic_of_congo:jean_baptiste_tati_loutard",
+      "title": "Les Normes du temps"
+    },
+    {
+      "key": "republic_of_congo:jean_malonga",
+      "title": "Cœur d’Aryenne"
+    },
+    {
+      "key": "republic_of_congo:jean_malonga",
+      "title": "La Légende de M’Pfoumou Ma Mazono"
+    },
+    {
+      "key": "republic_of_congo:sony_labou_tansi",
+      "title": "Je soussigné cardiaque"
+    },
+    {
+      "key": "republic_of_congo:sony_labou_tansi",
+      "title": "L’Anté-peuple"
+    },
+    {
+      "key": "republic_of_congo:sony_labou_tansi",
+      "title": "La Parenthèse de sang"
+    },
+    {
+      "key": "republic_of_congo:sony_labou_tansi",
+      "title": "La Vie et demie"
+    },
+    {
+      "key": "republic_of_congo:sylvain_bemba",
+      "title": "L’Homme qui tua le crocodile"
+    },
+    {
+      "key": "republic_of_congo:sylvain_bemba",
+      "title": "Le Soleil est parti à M’Pemba"
+    },
+    {
+      "key": "republic_of_congo:sylvain_bemba",
+      "title": "Léopolis"
+    },
+    {
+      "key": "romania:mihai_eminescu",
+      "title": "Poezii"
+    },
+    {
+      "key": "rwanda:benjamin_sehene",
+      "title": "Le Feu sous la soutane"
+    },
+    {
+      "key": "rwanda:scholastique_mukasonga",
+      "title": "Inyenzi ou les Cafards"
+    },
+    {
+      "key": "rwanda:scholastique_mukasonga",
+      "title": "La femme aux pieds nus"
+    },
+    {
+      "key": "saint_kitts_and_nevis:caryl_phillips",
+      "title": "A Distant Shore"
+    },
+    {
+      "key": "saint_kitts_and_nevis:caryl_phillips",
+      "title": "Crossing the River"
+    },
+    {
+      "key": "saint_lucia:derek_walcott",
+      "title": "Dream on Monkey Mountain"
+    },
+    {
+      "key": "saint_lucia:derek_walcott",
+      "title": "Omeros"
+    },
+    {
+      "key": "samoa:albert_wendt",
+      "title": "Leaves of the Banyan Tree"
+    },
+    {
+      "key": "samoa:albert_wendt",
+      "title": "Pouliuli"
+    },
+    {
+      "key": "samoa:lani_wendt_young",
+      "title": "Pacific Tsunami “Galu Afi”"
+    },
+    {
+      "key": "samoa:lani_wendt_young",
+      "title": "Telesā"
+    },
+    {
+      "key": "samoa:selina_tusitala_marsh",
+      "title": "Dark Sparring"
+    },
+    {
+      "key": "samoa:selina_tusitala_marsh",
+      "title": "Fast Talking PI"
+    },
+    {
+      "key": "samoa:selina_tusitala_marsh",
+      "title": "Tightrope"
+    },
+    {
+      "key": "samoa:sia_figiel",
+      "title": "Where We Once Belonged"
+    },
+    {
+      "key": "samoa:tusiata_avia",
+      "title": "The Savage Coloniser Book"
+    },
+    {
+      "key": "samoa:tusiata_avia",
+      "title": "Wild Dogs Under My Skirt"
+    },
+    {
+      "key": "san_marino:marino_fattori",
+      "title": "Ricordi storici della Repubblica di San Marino"
+    },
+    {
+      "key": "sao_tome_and_principe:francisco_jose_tenreiro",
+      "title": "Coração em África"
+    },
+    {
+      "key": "sao_tome_and_principe:francisco_jose_tenreiro",
+      "title": "Ilha de Nome Santo"
+    },
+    {
+      "key": "senegal:birago_diop",
+      "title": "Les Contes d’Amadou Koumba"
+    },
+    {
+      "key": "senegal:birago_diop",
+      "title": "Les Nouveaux Contes d’Amadou Koumba"
+    },
+    {
+      "key": "senegal:boubacar_boris_diop",
+      "title": "Les Tambours de la mémoire"
+    },
+    {
+      "key": "senegal:boubacar_boris_diop",
+      "title": "Murambi, le livre des ossements"
+    },
+    {
+      "key": "senegal:cheikh_hamidou_kane",
+      "title": "L’Aventure ambiguë"
+    },
+    {
+      "key": "senegal:cheikh_hamidou_kane",
+      "title": "Les Gardiens du temple"
+    },
+    {
+      "key": "senegal:david_diop",
+      "title": "Coups de pilon"
+    },
+    {
+      "key": "senegal:fatou_diome",
+      "title": "Celles qui attendent"
+    },
+    {
+      "key": "senegal:fatou_diome",
+      "title": "La Préférence nationale"
+    },
+    {
+      "key": "senegal:fatou_diome",
+      "title": "Le Ventre de l’Atlantique"
+    },
+    {
+      "key": "senegal:felwine_sarr",
+      "title": "105, rue Carnot"
+    },
+    {
+      "key": "senegal:felwine_sarr",
+      "title": "Afrotopia"
+    },
+    {
+      "key": "senegal:ken_bugul",
+      "title": "Le Baobab fou"
+    },
+    {
+      "key": "senegal:ken_bugul",
+      "title": "Riwan ou le chemin de sable"
+    },
+    {
+      "key": "senegal:mariama_ba",
+      "title": "Un chant écarlate"
+    },
+    {
+      "key": "senegal:mariama_ba",
+      "title": "Une si longue lettre"
+    },
+    {
+      "key": "senegal:ousmane_sembene",
+      "title": "Les Bouts de bois de Dieu"
+    },
+    {
+      "key": "serbia:branko_radicevic",
+      "title": "Pesme"
+    },
+    {
+      "key": "serbia:danilo_kis",
+      "title": "Bašta, pepeo"
+    },
+    {
+      "key": "serbia:danilo_kis",
+      "title": "Enciklopedija mrtvih"
+    },
+    {
+      "key": "serbia:danilo_kis",
+      "title": "Grobnica za Borisa Davidoviča"
+    },
+    {
+      "key": "serbia:dositej_obradovic",
+      "title": "Život i priključenija"
+    },
+    {
+      "key": "serbia:laza_kostic",
+      "title": "Maksim Crnojević"
+    },
+    {
+      "key": "serbia:laza_kostic",
+      "title": "Santa Maria della Salute"
+    },
+    {
+      "key": "sierra_leone:aminatta_forna",
+      "title": "Happiness"
+    },
+    {
+      "key": "sierra_leone:aminatta_forna",
+      "title": "The Memory of Love"
+    },
+    {
+      "key": "sierra_leone:delia_jarrett_macauley",
+      "title": "Moses, Citizen & Me"
+    },
+    {
+      "key": "sierra_leone:syl_cheney_coker",
+      "title": "The Last Harmattan of Alusine Dunbar"
+    },
+    {
+      "key": "sierra_leone:william_conton",
+      "title": "The African"
+    },
+    {
+      "key": "sierra_leone:william_conton",
+      "title": "West Africa in History"
+    },
+    {
+      "key": "singapore:claire_tham",
+      "title": "Fascist Rock"
+    },
+    {
+      "key": "singapore:claire_tham",
+      "title": "The Gunpowder Trail & Other Stories"
+    },
+    {
+      "key": "singapore:claire_tham",
+      "title": "The Inlet"
+    },
+    {
+      "key": "singapore:edwin_thumboo",
+      "title": "Gods Can Die"
+    },
+    {
+      "key": "singapore:edwin_thumboo",
+      "title": "Ulysses by the Merlion"
+    },
+    {
+      "key": "singapore:josephine_chia",
+      "title": "Kampong Spirit: Gotong Royong, Life in Potong Pasir 1955-1965"
+    },
+    {
+      "key": "singapore:kuo_pao_kun",
+      "title": "Lao Jiu"
+    },
+    {
+      "key": "singapore:kuo_pao_kun",
+      "title": "The Coffin Is Too Big for the Hole"
+    },
+    {
+      "key": "slovakia:hviezdoslav",
+      "title": "Hájnikova žena"
+    },
+    {
+      "key": "slovakia:hviezdoslav",
+      "title": "Krvavé sonety"
+    },
+    {
+      "key": "slovakia:ludovit_stur",
+      "title": "Spevy a piesne"
+    },
+    {
+      "key": "slovakia:timrava",
+      "title": "Bez hrdosti"
+    },
+    {
+      "key": "slovakia:timrava",
+      "title": "Ťapákovci"
+    },
+    {
+      "key": "slovenia:tone_pavcek",
+      "title": "Pesmi štirih"
+    },
+    {
+      "key": "solomon_islands:john_saunana",
+      "title": "The Alternative"
+    },
+    {
+      "key": "somalia:farah_mohamed_jama_awl",
+      "title": "Aqoondarro waa u Nacab Jacayl"
+    },
+    {
+      "key": "somalia:mohamed_ibrahim_warsame_hadraawi",
+      "title": "Gudgude"
+    },
+    {
+      "key": "somalia:mohamed_ibrahim_warsame_hadraawi",
+      "title": "Sirta Nolosha"
+    },
+    {
+      "key": "somalia:nuruddin_farah",
+      "title": "From a Crooked Rib"
+    },
+    {
+      "key": "somalia:nuruddin_farah",
+      "title": "Maps"
+    },
+    {
+      "key": "somalia:nuruddin_farah",
+      "title": "Secrets"
+    },
+    {
+      "key": "south_africa:achmat_dangor",
+      "title": "Bitter Fruit"
+    },
+    {
+      "key": "south_africa:alex_la_guma",
+      "title": "A Walk in the Night"
+    },
+    {
+      "key": "south_africa:alex_la_guma",
+      "title": "The Stone Country"
+    },
+    {
+      "key": "south_africa:alex_la_guma",
+      "title": "Time of the Butcherbird"
+    },
+    {
+      "key": "south_africa:andre_brink",
+      "title": "A Dry White Season"
+    },
+    {
+      "key": "south_africa:breyten_breytenbach",
+      "title": "The True Confessions of an Albino Terrorist"
+    },
+    {
+      "key": "south_africa:herman_charles_bosman",
+      "title": "Mafeking Road"
+    },
+    {
+      "key": "south_africa:ivan_vladislavic",
+      "title": "Double Negative"
+    },
+    {
+      "key": "south_africa:ivan_vladislavic",
+      "title": "The Restless Supermarket"
+    },
+    {
+      "key": "south_africa:kopano_matlwa",
+      "title": "Coconut"
+    },
+    {
+      "key": "south_africa:mandla_langa",
+      "title": "The Lost Colours of the Chameleon"
+    },
+    {
+      "key": "south_africa:mandla_langa",
+      "title": "The Memory of Stones"
+    },
+    {
+      "key": "south_africa:marlene_van_niekerk",
+      "title": "Agaat"
+    },
+    {
+      "key": "south_africa:marlene_van_niekerk",
+      "title": "Triomf"
+    },
+    {
+      "key": "south_africa:olive_schreiner",
+      "title": "The Story of an African Farm"
+    },
+    {
+      "key": "south_africa:sindiwe_magona",
+      "title": "Beauty’s Gift"
+    },
+    {
+      "key": "south_africa:sindiwe_magona",
+      "title": "Mother to Mother"
+    },
+    {
+      "key": "south_africa:sol_plaatje",
+      "title": "Mhudi"
+    },
+    {
+      "key": "south_africa:sol_plaatje",
+      "title": "Native Life in South Africa"
+    },
+    {
+      "key": "south_africa:zakes_mda",
+      "title": "The Heart of Redness"
+    },
+    {
+      "key": "south_africa:zakes_mda",
+      "title": "Ways of Dying"
+    },
+    {
+      "key": "south_africa:zoe_wicomb",
+      "title": "David’s Story"
+    },
+    {
+      "key": "south_africa:zoe_wicomb",
+      "title": "You Can’t Get Lost in Cape Town"
+    },
+    {
+      "key": "south_korea:bae_su_a",
+      "title": "A Greater Music"
+    },
+    {
+      "key": "south_korea:bae_su_a",
+      "title": "Nowhere to Be Found"
+    },
+    {
+      "key": "south_korea:cho_nam_joo",
+      "title": "Kim Jiyoung, Born 1982"
+    },
+    {
+      "key": "south_korea:choi_in_hun",
+      "title": "The Square"
+    },
+    {
+      "key": "south_korea:gong_ji_young",
+      "title": "Our Happy Time"
+    },
+    {
+      "key": "south_korea:gong_ji_young",
+      "title": "The Crucible"
+    },
+    {
+      "key": "south_korea:han_yong_un",
+      "title": "Silence of Love"
+    },
+    {
+      "key": "south_korea:hwang_seok_yong",
+      "title": "Princess Bari"
+    },
+    {
+      "key": "south_korea:hwang_seok_yong",
+      "title": "The Guest"
+    },
+    {
+      "key": "south_korea:hwang_seok_yong",
+      "title": "The Old Garden"
+    },
+    {
+      "key": "south_korea:jeong_cheol",
+      "title": "Gwandong byeolgok"
+    },
+    {
+      "key": "south_korea:jeong_cheol",
+      "title": "Samiingok"
+    },
+    {
+      "key": "south_korea:jeong_yoo_jung",
+      "title": "Seven Years of Darkness"
+    },
+    {
+      "key": "south_korea:jeong_yoo_jung",
+      "title": "The Good Son"
+    },
+    {
+      "key": "south_korea:kim_aeran",
+      "title": "My Brilliant Life"
+    },
+    {
+      "key": "south_korea:kim_aeran",
+      "title": "Run, Daddy, Run"
+    },
+    {
+      "key": "south_korea:kim_hun",
+      "title": "Song of the Sword"
+    },
+    {
+      "key": "south_korea:kim_man_jung",
+      "title": "Lady Sa’s Journey to the South"
+    },
+    {
+      "key": "south_korea:kim_man_jung",
+      "title": "The Nine Cloud Dream"
+    },
+    {
+      "key": "south_korea:kim_so_wol",
+      "title": "Azaleas"
+    },
+    {
+      "key": "south_korea:kim_young_ha",
+      "title": "Diary of a Murderer"
+    },
+    {
+      "key": "south_korea:kim_young_ha",
+      "title": "I Have the Right to Destroy Myself"
+    },
+    {
+      "key": "south_korea:kim_young_ha",
+      "title": "Your Republic Is Calling You"
+    },
+    {
+      "key": "south_korea:ko_un",
+      "title": "Ten Thousand Lives"
+    },
+    {
+      "key": "south_korea:park_min_gyu",
+      "title": "Castella"
+    },
+    {
+      "key": "south_korea:park_min_gyu",
+      "title": "Pavane for a Dead Princess"
+    },
+    {
+      "key": "south_korea:park_min_gyu",
+      "title": "The Sammi Superstars’ Last Fan Club"
+    },
+    {
+      "key": "south_korea:park_wan_suh",
+      "title": "The Naked Tree"
+    },
+    {
+      "key": "south_korea:park_wan_suh",
+      "title": "Who Ate Up All the Shinga?"
+    },
+    {
+      "key": "south_korea:shin_kyung_sook",
+      "title": "Please Look After Mom"
+    },
+    {
+      "key": "south_korea:shin_kyung_sook",
+      "title": "The Court Dancer"
+    },
+    {
+      "key": "south_korea:shin_kyung_sook",
+      "title": "The Girl Who Wrote Loneliness"
+    },
+    {
+      "key": "south_korea:yi_kwangsu",
+      "title": "The Heartless"
+    },
+    {
+      "key": "south_sudan:taban_lo_liyong",
+      "title": "Fixions and Other Stories"
+    },
+    {
+      "key": "south_sudan:taban_lo_liyong",
+      "title": "The Last Word"
+    },
+    {
+      "key": "spain:antonio_machado",
+      "title": "Campos de Castilla"
+    },
+    {
+      "key": "spain:antonio_machado",
+      "title": "Juan de Mairena"
+    },
+    {
+      "key": "spain:antonio_machado",
+      "title": "Soledades, galerías y otros poemas"
+    },
+    {
+      "key": "spain:benito_perez_galdos",
+      "title": "Doña Perfecta"
+    },
+    {
+      "key": "spain:benito_perez_galdos",
+      "title": "Episodios nacionales"
+    },
+    {
+      "key": "spain:benito_perez_galdos",
+      "title": "Fortunata y Jacinta"
+    },
+    {
+      "key": "spain:calderon_de_la_barca",
+      "title": "El alcalde de Zalamea"
+    },
+    {
+      "key": "spain:calderon_de_la_barca",
+      "title": "El médico de su honra"
+    },
+    {
+      "key": "spain:calderon_de_la_barca",
+      "title": "La vida es sueño"
+    },
+    {
+      "key": "spain:carmen_laforet",
+      "title": "La isla y los demonios"
+    },
+    {
+      "key": "spain:carmen_laforet",
+      "title": "Nada"
+    },
+    {
+      "key": "spain:emilia_pardo_bazan",
+      "title": "La madre naturaleza"
+    },
+    {
+      "key": "spain:emilia_pardo_bazan",
+      "title": "La Tribuna"
+    },
+    {
+      "key": "spain:emilia_pardo_bazan",
+      "title": "Los pazos de Ulloa"
+    },
+    {
+      "key": "spain:federico_garcia_lorca",
+      "title": "La casa de Bernarda Alba"
+    },
+    {
+      "key": "spain:francisco_de_quevedo",
+      "title": "Sueños y discursos"
+    },
+    {
+      "key": "spain:jacinto_benavente",
+      "title": "La malquerida"
+    },
+    {
+      "key": "spain:jacinto_benavente",
+      "title": "La noche del sábado"
+    },
+    {
+      "key": "spain:jacinto_benavente",
+      "title": "Los intereses creados"
+    },
+    {
+      "key": "spain:javier_marias",
+      "title": "Corazón tan blanco"
+    },
+    {
+      "key": "spain:javier_marias",
+      "title": "Todas las almas"
+    },
+    {
+      "key": "spain:jose_de_espronceda",
+      "title": "Canción del pirata"
+    },
+    {
+      "key": "spain:jose_de_espronceda",
+      "title": "El diablo mundo"
+    },
+    {
+      "key": "spain:jose_de_espronceda",
+      "title": "El estudiante de Salamanca"
+    },
+    {
+      "key": "spain:jose_echegaray",
+      "title": "El gran Galeoto"
+    },
+    {
+      "key": "spain:jose_echegaray",
+      "title": "O locura o santidad"
+    },
+    {
+      "key": "spain:jose_ortega_y_gasset",
+      "title": "La deshumanización del arte"
+    },
+    {
+      "key": "spain:jose_ortega_y_gasset",
+      "title": "La rebelión de las masas"
+    },
+    {
+      "key": "spain:jose_ortega_y_gasset",
+      "title": "Meditaciones del Quijote"
+    },
+    {
+      "key": "spain:juan_marse",
+      "title": "El amante bilingüe"
+    },
+    {
+      "key": "spain:juan_marse",
+      "title": "Últimas tardes con Teresa"
+    },
+    {
+      "key": "spain:leopoldo_alas_clarin",
+      "title": "Cuentos morales"
+    },
+    {
+      "key": "spain:leopoldo_alas_clarin",
+      "title": "La Regenta"
+    },
+    {
+      "key": "spain:leopoldo_alas_clarin",
+      "title": "Su único hijo"
+    },
+    {
+      "key": "spain:lope_de_vega",
+      "title": "El caballero de Olmedo"
+    },
+    {
+      "key": "spain:lope_de_vega",
+      "title": "El perro del hortelano"
+    },
+    {
+      "key": "spain:lope_de_vega",
+      "title": "Fuenteovejuna"
+    },
+    {
+      "key": "spain:miguel_de_cervantes",
+      "title": "El ingenioso hidalgo don Quijote de la Mancha"
+    },
+    {
+      "key": "spain:miguel_de_cervantes",
+      "title": "Los trabajos de Persiles y Sigismunda"
+    },
+    {
+      "key": "spain:miguel_de_cervantes",
+      "title": "Novelas ejemplares"
+    },
+    {
+      "key": "spain:miguel_de_unamuno",
+      "title": "Abel Sánchez"
+    },
+    {
+      "key": "spain:miguel_de_unamuno",
+      "title": "Niebla"
+    },
+    {
+      "key": "spain:miguel_de_unamuno",
+      "title": "San Manuel Bueno, mártir"
+    },
+    {
+      "key": "spain:miguel_delibes",
+      "title": "Cinco horas con Mario"
+    },
+    {
+      "key": "spain:miguel_delibes",
+      "title": "El camino"
+    },
+    {
+      "key": "spain:miguel_delibes",
+      "title": "Los santos inocentes"
+    },
+    {
+      "key": "spain:pío_baroja",
+      "title": "El árbol de la ciencia"
+    },
+    {
+      "key": "spain:pío_baroja",
+      "title": "Las inquietudes de Shanti Andía"
+    },
+    {
+      "key": "spain:pío_baroja",
+      "title": "Zalacaín el aventurero"
+    },
+    {
+      "key": "spain:rafael_alberti",
+      "title": "La arboleda perdida"
+    },
+    {
+      "key": "spain:rafael_alberti",
+      "title": "Marinero en tierra"
+    },
+    {
+      "key": "spain:rafael_alberti",
+      "title": "Sobre los ángeles"
+    },
+    {
+      "key": "spain:ramon_del_valle_inclan",
+      "title": "Luces de bohemia"
+    },
+    {
+      "key": "spain:ramon_del_valle_inclan",
+      "title": "Sonatas"
+    },
+    {
+      "key": "spain:ramon_del_valle_inclan",
+      "title": "Tirano Banderas"
+    },
+    {
+      "key": "spain:teresa_de_avila",
+      "title": "Camino de perfección"
+    },
+    {
+      "key": "spain:teresa_de_avila",
+      "title": "Las moradas"
+    },
+    {
+      "key": "spain:teresa_de_avila",
+      "title": "Libro de la vida"
+    },
+    {
+      "key": "sri_lanka:anne_ranasinghe",
+      "title": "Against Eternity and Darkness"
+    },
+    {
+      "key": "sri_lanka:anne_ranasinghe",
+      "title": "And the Sun That Sucks the Earth to Dry"
+    },
+    {
+      "key": "sri_lanka:anne_ranasinghe",
+      "title": "Not Even Shadows"
+    },
+    {
+      "key": "sri_lanka:ediriweera_sarachchandra",
+      "title": "Maname"
+    },
+    {
+      "key": "sri_lanka:ediriweera_sarachchandra",
+      "title": "Sinhabahu"
+    },
+    {
+      "key": "sri_lanka:martin_wickramasinghe",
+      "title": "Gamperaliya"
+    },
+    {
+      "key": "sri_lanka:martin_wickramasinghe",
+      "title": "Madol Doowa"
+    },
+    {
+      "key": "sri_lanka:martin_wickramasinghe",
+      "title": "Yuganthaya"
+    },
+    {
+      "key": "sri_lanka:romesh_gunesekera",
+      "title": "Reef"
+    },
+    {
+      "key": "sri_lanka:shobasakthi",
+      "title": "Gorilla"
+    },
+    {
+      "key": "sri_lanka:shobasakthi",
+      "title": "Traitor"
+    },
+    {
+      "key": "sudan:abdelaziz_baraka_sakin",
+      "title": "The Jungo"
+    },
+    {
+      "key": "sudan:abdelaziz_baraka_sakin",
+      "title": "The Messiah of Darfur"
+    },
+    {
+      "key": "sudan:al_saddiq_al_raddi",
+      "title": "Songs of Solitude"
+    },
+    {
+      "key": "sudan:al_saddiq_al_raddi",
+      "title": "The Sultan's Labyrinth"
+    },
+    {
+      "key": "sudan:hammour_ziada",
+      "title": "The Longing of the Dervish"
+    },
+    {
+      "key": "sudan:tayeb_salih",
+      "title": "The Doum Tree of Wad Hamid"
+    },
+    {
+      "key": "suriname:cynthia_mccleod",
+      "title": "Hoe duur was de suiker?"
+    },
+    {
+      "key": "suriname:dobru",
+      "title": "Wan Bon"
+    },
+    {
+      "key": "sweden:eyvind_johnson",
+      "title": "Romanen om Olof"
+    },
+    {
+      "key": "sweden:gunnar_ekelof",
+      "title": "sent på jorden"
+    },
+    {
+      "key": "sweden:harry_martinson",
+      "title": "Aniara"
+    },
+    {
+      "key": "switzerland:max_frisch",
+      "title": "Homo Faber"
+    },
+    {
+      "key": "syria:hanna_mina",
+      "title": "Blue Lamps"
+    },
+    {
+      "key": "syria:hanna_mina",
+      "title": "The Sail and the Storm"
+    },
+    {
+      "key": "tanzania:muhammed_said_abdulla",
+      "title": "Mzimu wa Watu wa Kale"
+    },
+    {
+      "key": "tanzania:shaaban_robert",
+      "title": "Kusadikika"
+    },
+    {
+      "key": "thailand:prabda_yoon",
+      "title": "The Sad Part Was"
+    },
+    {
+      "key": "tunisia:aboul_qacem_echebbi",
+      "title": "Aghānī al-ḥayāh"
+    },
+    {
+      "key": "tunisia:ali_douagi",
+      "title": "Jawla bayna ḥānāt al-Baḥr al-Mutawassiṭ"
+    },
+    {
+      "key": "tunisia:ali_douagi",
+      "title": "Sahirtu minhu al-layālī"
+    },
+    {
+      "key": "tunisia:habib_selmi",
+      "title": "The Scents of Marie-Claire"
+    },
+    {
+      "key": "tunisia:mahmoud_messadi",
+      "title": "Al-Sudd"
+    },
+    {
+      "key": "turkey:ahmet_hamdi_tanpinar",
+      "title": "Saatleri Ayarlama Enstitüsü"
+    },
+    {
+      "key": "turkey:fuzuli",
+      "title": "Leylî vü Mecnun"
+    },
+    {
+      "key": "turkey:halide_edib",
+      "title": "Ateşten Gömlek"
+    },
+    {
+      "key": "turkey:halide_edib",
+      "title": "Sinekli Bakkal"
+    },
+    {
+      "key": "turkey:namik_kemal",
+      "title": "İntibah"
+    },
+    {
+      "key": "turkey:namik_kemal",
+      "title": "Vatan Yahut Silistre"
+    },
+    {
+      "key": "turkey:nazim_hikmet",
+      "title": "Memleketimden İnsan Manzaraları"
+    },
+    {
+      "key": "turkey:yunus_emre",
+      "title": "Risâletü’n-Nushiyye"
+    },
+    {
+      "key": "turkmenistan:aman_kekilov",
+      "title": "Söýgi"
+    },
+    {
+      "key": "turkmenistan:atajan_tagan",
+      "title": "Keseki"
+    },
+    {
+      "key": "turkmenistan:atajan_tagan",
+      "title": "Saragt galasy"
+    },
+    {
+      "key": "turkmenistan:berdy_kerbabayev",
+      "title": "Aýgytly ädim"
+    },
+    {
+      "key": "turkmenistan:berdy_kerbabayev",
+      "title": "Aýsoltan"
+    },
+    {
+      "key": "turkmenistan:berdy_kerbabayev",
+      "title": "Nebitdag"
+    },
+    {
+      "key": "turkmenistan:dowletmammet_azady",
+      "title": "Wagzy-Azat"
+    },
+    {
+      "key": "turkmenistan:kerim_kurbannepesov",
+      "title": "Güýjümiň gözbaşy"
+    },
+    {
+      "key": "turkmenistan:kerim_kurbannepesov",
+      "title": "Oýlanma baýry"
+    },
+    {
+      "key": "turkmenistan:kerim_kurbannepesov",
+      "title": "Taýmaz baba"
+    },
+    {
+      "key": "uae:ahmad_rashid_thani",
+      "title": "A Wave at the Door"
+    },
+    {
+      "key": "uganda:byron_kawadwa",
+      "title": "Oluyimba lwa Wankoko"
+    },
+    {
+      "key": "uganda:jennifer_nansubuga_makumbi",
+      "title": "Kintu"
+    },
+    {
+      "key": "uganda:jennifer_nansubuga_makumbi",
+      "title": "Manchester Happened"
+    },
+    {
+      "key": "uganda:jennifer_nansubuga_makumbi",
+      "title": "The First Woman"
+    },
+    {
+      "key": "uganda:mary_karooro_okurut",
+      "title": "The Curse of the Sacred Cow"
+    },
+    {
+      "key": "uganda:mary_karooro_okurut",
+      "title": "The Invisible Weevil"
+    },
+    {
+      "key": "uganda:mary_karooro_okurut",
+      "title": "The Official Wife"
+    },
+    {
+      "key": "uganda:moses_isegawa",
+      "title": "Abyssinian Chronicles"
+    },
+    {
+      "key": "uganda:moses_isegawa",
+      "title": "Snakepit"
+    },
+    {
+      "key": "uganda:okot_pbitek",
+      "title": "Song of Lawino"
+    },
+    {
+      "key": "uganda:okot_pbitek",
+      "title": "Song of Ocol"
+    },
+    {
+      "key": "uganda:robert_serumaga",
+      "title": "Majangwa"
+    },
+    {
+      "key": "uganda:robert_serumaga",
+      "title": "Return to the Shadows"
+    },
+    {
+      "key": "uganda:robert_serumaga",
+      "title": "The Elephants"
+    },
+    {
+      "key": "uganda:timothy_wangusa",
+      "title": "A Pattern of Dust"
+    },
+    {
+      "key": "uganda:timothy_wangusa",
+      "title": "Salutations"
+    },
+    {
+      "key": "uganda:timothy_wangusa",
+      "title": "Upon This Mountain"
+    },
+    {
+      "key": "ukraine:mykhailo_kotsiubynsky",
+      "title": "Intermezzo"
+    },
+    {
+      "key": "uruguay:carlos_reyles",
+      "title": "Beba"
+    },
+    {
+      "key": "uruguay:carlos_reyles",
+      "title": "El terruño"
+    },
+    {
+      "key": "uruguay:carlos_reyles",
+      "title": "La raza de Caín"
+    },
+    {
+      "key": "uruguay:claudia_amenedo",
+      "title": "Desde las cenizas"
+    },
+    {
+      "key": "uruguay:emilio_frugoni",
+      "title": "La esfinge roja"
+    },
+    {
+      "key": "uruguay:emilio_frugoni",
+      "title": "Los himnos"
+    },
+    {
+      "key": "uruguay:emilio_frugoni",
+      "title": "Poemas montevideanos"
+    },
+    {
+      "key": "uruguay:horacio_quiroga",
+      "title": "Anaconda"
+    },
+    {
+      "key": "uruguay:horacio_quiroga",
+      "title": "Cuentos de amor de locura y de muerte"
+    },
+    {
+      "key": "uruguay:horacio_quiroga",
+      "title": "Cuentos de la selva"
+    },
+    {
+      "key": "uruguay:idea_vilarino",
+      "title": "Nocturnos"
+    },
+    {
+      "key": "uruguay:idea_vilarino",
+      "title": "Pobre mundo"
+    },
+    {
+      "key": "uruguay:idea_vilarino",
+      "title": "Poemas de amor"
+    },
+    {
+      "key": "uruguay:javier_de_viana",
+      "title": "Campo"
+    },
+    {
+      "key": "uruguay:javier_de_viana",
+      "title": "Gaucha"
+    },
+    {
+      "key": "uruguay:javier_de_viana",
+      "title": "Gurí"
+    },
+    {
+      "key": "uruguay:juan_carlos_onetti",
+      "title": "El astillero"
+    },
+    {
+      "key": "uruguay:juan_carlos_onetti",
+      "title": "El pozo"
+    },
+    {
+      "key": "uruguay:juan_carlos_onetti",
+      "title": "La vida breve"
+    },
+    {
+      "key": "uruguay:mario_benedetti",
+      "title": "La tregua"
+    },
+    {
+      "key": "uruguay:mario_benedetti",
+      "title": "Montevideanos"
+    },
+    {
+      "key": "uruguay:mario_benedetti",
+      "title": "Poemas de la oficina"
+    },
+    {
+      "key": "uruguay:mario_levrero",
+      "title": "El discurso vacío"
+    },
+    {
+      "key": "uruguay:mario_levrero",
+      "title": "La ciudad"
+    },
+    {
+      "key": "uruguay:mauricio_rosencof",
+      "title": "Las cartas que no llegaron"
+    },
+    {
+      "key": "uruguay:mauricio_rosencof",
+      "title": "Memorias del Calabozo"
+    },
+    {
+      "key": "usa:anne_bradstreet",
+      "title": "The Tenth Muse Lately Sprung Up in America"
+    },
+    {
+      "key": "usa:blake_crouch",
+      "title": "Upgrade"
+    },
+    {
+      "key": "usa:dean_koontz",
+      "title": "False Memory"
+    },
+    {
+      "key": "usa:eugene_oneill",
+      "title": "The Iceman Cometh"
+    },
+    {
+      "key": "usa:jack_kerouac",
+      "title": "The Town and the City"
+    },
+    {
+      "key": "usa:ralph_waldo_emerson",
+      "title": "Nature"
+    },
+    {
+      "key": "uzbekistan:erkin_vohidov",
+      "title": "Oltin devor"
+    },
+    {
+      "key": "uzbekistan:erkin_vohidov",
+      "title": "Ruhlar isyoni"
+    },
+    {
+      "key": "vanuatu:grace_mera_molisa",
+      "title": "Colonised People: Poems"
+    },
+    {
+      "key": "venezuela:adriano_gonzalez_leon",
+      "title": "País portátil"
+    },
+    {
+      "key": "venezuela:arturo_uslar_pietri",
+      "title": "El camino de El Dorado"
+    },
+    {
+      "key": "venezuela:arturo_uslar_pietri",
+      "title": "Las lanzas coloradas"
+    },
+    {
+      "key": "venezuela:eduardo_blanco",
+      "title": "Venezuela heroica"
+    },
+    {
+      "key": "venezuela:eduardo_blanco",
+      "title": "Zárate"
+    },
+    {
+      "key": "venezuela:eugenio_montejo",
+      "title": "Élegos"
+    },
+    {
+      "key": "venezuela:eugenio_montejo",
+      "title": "Muerte y memoria"
+    },
+    {
+      "key": "venezuela:eugenio_montejo",
+      "title": "Terredad"
+    },
+    {
+      "key": "venezuela:eugenio_montejo",
+      "title": "Trópico absoluto"
+    },
+    {
+      "key": "venezuela:fermin_toro",
+      "title": "Los mártires"
+    },
+    {
+      "key": "venezuela:fermin_toro",
+      "title": "Reflexiones sobre la Ley del 10 de abril de 1834"
+    },
+    {
+      "key": "venezuela:manuel_diaz_rodriguez",
+      "title": "Ídolos rotos"
+    },
+    {
+      "key": "venezuela:manuel_diaz_rodriguez",
+      "title": "Sangre patricia"
+    },
+    {
+      "key": "venezuela:miguel_otero_silva",
+      "title": "Casas muertas"
+    },
+    {
+      "key": "venezuela:miguel_otero_silva",
+      "title": "Cuando quiero llorar no lloro"
+    },
+    {
+      "key": "venezuela:miguel_otero_silva",
+      "title": "Lope de Aguirre, príncipe de la libertad"
+    },
+    {
+      "key": "venezuela:rafael_cadenas",
+      "title": "Falsas maniobras"
+    },
+    {
+      "key": "venezuela:rafael_cadenas",
+      "title": "Los cuadernos del destierro"
+    },
+    {
+      "key": "venezuela:romulo_gallegos",
+      "title": "Canaima"
+    },
+    {
+      "key": "venezuela:romulo_gallegos",
+      "title": "Cantaclaro"
+    },
+    {
+      "key": "venezuela:romulo_gallegos",
+      "title": "Doña Bárbara"
+    },
+    {
+      "key": "venezuela:teresa_de_la_parra",
+      "title": "Ifigenia"
+    },
+    {
+      "key": "venezuela:teresa_de_la_parra",
+      "title": "Las memorias de Mamá Blanca"
+    },
+    {
+      "key": "vietnam:bao_ninh",
+      "title": "The Sorrow of War"
+    },
+    {
+      "key": "vietnam:duong_thu_huong",
+      "title": "Novel Without a Name"
+    },
+    {
+      "key": "vietnam:duong_thu_huong",
+      "title": "Paradise of the Blind"
+    },
+    {
+      "key": "vietnam:nam_cao",
+      "title": "Chí Phèo"
+    },
+    {
+      "key": "vietnam:nam_cao",
+      "title": "Lão Hạc"
+    },
+    {
+      "key": "vietnam:nam_cao",
+      "title": "Sống mòn"
+    },
+    {
+      "key": "vietnam:nguyen_cong_hoan",
+      "title": "Bước đường cùng"
+    },
+    {
+      "key": "vietnam:nguyen_cong_hoan",
+      "title": "Kép Tư Bền"
+    },
+    {
+      "key": "vietnam:nguyen_du",
+      "title": "Truyện Kiều"
+    },
+    {
+      "key": "vietnam:vu_trong_phung",
+      "title": "Giông tố"
+    },
+    {
+      "key": "vietnam:vu_trong_phung",
+      "title": "Số đỏ"
+    },
+    {
+      "key": "yemen:ali_ahmad_bakathir",
+      "title": "al-Tha'ir al-Ahmar"
+    },
+    {
+      "key": "yemen:ali_ahmad_bakathir",
+      "title": "Wa Islamah"
+    },
+    {
+      "key": "yemen:habib_abdulrab_sarori",
+      "title": "Suslov's Daughter"
+    },
+    {
+      "key": "yemen:mohammed_abdul_wali",
+      "title": "Sana'a: An Open City"
+    },
+    {
+      "key": "yemen:mohammed_abdul_wali",
+      "title": "They Die Strangers"
+    },
+    {
+      "key": "yemen:wajdi_al_ahdal",
+      "title": "A Land of Happy Conspiracies"
+    },
+    {
+      "key": "yemen:wajdi_al_ahdal",
+      "title": "A Land Without Jasmine"
+    },
+    {
+      "key": "yemen:wajdi_al_ahdal",
+      "title": "Mountain Boats"
+    },
+    {
+      "key": "zambia:dominic_mulaisho",
+      "title": "The Smoke That Thunders"
+    },
+    {
+      "key": "zambia:dominic_mulaisho",
+      "title": "The Tongue of the Dumb"
+    },
+    {
+      "key": "zambia:ellen_banda_aaku",
+      "title": "Patchwork"
+    },
+    {
+      "key": "zambia:ellen_banda_aaku",
+      "title": "Wandi's Little Voice"
+    },
+    {
+      "key": "zimbabwe:charles_mungoshi",
+      "title": "Waiting for the Rain"
+    },
+    {
+      "key": "zimbabwe:chenjerai_hove",
+      "title": "Bones"
+    },
+    {
+      "key": "zimbabwe:peter_godwin",
+      "title": "Mukiwa"
+    },
+    {
+      "key": "zimbabwe:peter_godwin",
+      "title": "The Fear"
+    },
+    {
+      "key": "zimbabwe:peter_godwin",
+      "title": "When a Crocodile Eats the Sun"
+    },
+    {
+      "key": "zimbabwe:solomon_mutswairo",
+      "title": "Feso"
+    },
+    {
+      "key": "zimbabwe:tsitsi_dangarembga",
+      "title": "Nervous Conditions"
+    },
+    {
+      "key": "zimbabwe:tsitsi_dangarembga",
+      "title": "The Book of Not"
+    },
+    {
+      "key": "zimbabwe:tsitsi_dangarembga",
+      "title": "This Mournable Body"
+    },
+    {
+      "key": "zimbabwe:yvonne_vera",
+      "title": "Butterfly Burning"
+    },
+    {
+      "key": "zimbabwe:yvonne_vera",
+      "title": "The Stone Virgins"
+    },
+    {
+      "key": "zimbabwe:yvonne_vera",
+      "title": "Under the Tongue"
+    }
+  ]
+}

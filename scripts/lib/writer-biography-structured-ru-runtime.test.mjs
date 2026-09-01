@@ -10,6 +10,9 @@ import { russianWriterExpansion } from "../../src/data/countries/russianWriterEx
 import {
   isStructuredRussianBiographyText,
   normalizeStructuredRussianBiographyText,
+  structuredRussianBiographyAwardRestatementIssues,
+  structuredRussianBiographyGenderAgreementPattern,
+  structuredRussianBiographyLifespanRestatementIssues,
   structuredRussianBiographySourceNarrationPattern,
   structuredRussianBiographyTautologyIssues,
   structuredRussianBiographyTechnicalPattern,
@@ -21,11 +24,11 @@ const russianInstitutionalHost =
 describe("public structured Russian biography corpus", () => {
   it("publishes all 1684 writers through the strict provenance gate", () => {
     const writers = countries.flatMap((country) =>
-      country.writers.map((writer) => ({ countryId: country.id, writer }))
+      country.writers.map((writer) => ({ countryId: country.id, writer })),
     );
     expect(writers).toHaveLength(1684);
     expect(
-      Object.keys(reviewOverlay.structuredRussianBiographies || {})
+      Object.keys(reviewOverlay.structuredRussianBiographies || {}),
     ).toHaveLength(1672);
     expect(russianWriterExpansion).toHaveLength(12);
 
@@ -36,28 +39,40 @@ describe("public structured Russian biography corpus", () => {
         writerBiographyQualityIssues(
           writer.biographyTranslations?.ru,
           "ru",
-          writer
+          writer,
         ),
-        key
+        key,
       ).toEqual([]);
       const translation = selectWriterBiography(writer, "ru");
       expect(translation, key).not.toBeNull();
       expect(translation.text, key).toBe(writer.bio);
       expect(isStructuredRussianBiographyText(translation.text), key).toBe(
-        true
+        true,
       );
       expect(
         structuredRussianBiographySourceNarrationPattern.test(translation.text),
-        key
+        key,
       ).toBe(false);
       expect(
         structuredRussianBiographyTechnicalPattern.test(translation.text),
-        key
+        key,
       ).toBe(false);
       expect(
         structuredRussianBiographyTautologyIssues(translation.text),
-        key
+        key,
       ).toHaveLength(0);
+      expect(
+        structuredRussianBiographyAwardRestatementIssues(translation.text),
+        key,
+      ).toHaveLength(0);
+      expect(
+        structuredRussianBiographyLifespanRestatementIssues(translation.text),
+        key,
+      ).toHaveLength(0);
+      expect(
+        structuredRussianBiographyGenderAgreementPattern.test(translation.text),
+        key,
+      ).toBe(false);
       expect(translation.locale, key).toBe("ru");
       expect(translation.sourceLanguage, key).toBe("ru");
       expect(translation.status, key).toBe("verified");
@@ -71,22 +86,40 @@ describe("public structured Russian biography corpus", () => {
         expect(translation.sources.length, key).toBeGreaterThanOrEqual(2);
       }
       const hostnames = new Set();
+      let biographyFactSourceCount = 0;
       for (const source of translation.sources) {
         expect(source.url, key).toMatch(/^https:\/\//u);
         expect(source.provider.trim(), key).toBeTruthy();
         expect(source.usage, key).toBe("fact-check");
-        expect(source.fields, key).toContain("biography-facts");
+        expect(source.fields.length, key).toBeGreaterThan(0);
+        expect(
+          source.fields.every((field) =>
+            new Set([
+              "identity",
+              "life-dates",
+              "biography-facts",
+              "awards",
+              "works",
+            ]).has(field),
+          ),
+          key,
+        ).toBe(true);
+        if (source.fields.includes("biography-facts")) {
+          biographyFactSourceCount += 1;
+        }
         expect(source.retrievedAt, key).toMatch(/^\d{4}-\d{2}-\d{2}$/u);
         hostnames.add(new URL(source.url).hostname.toLowerCase());
       }
       if (countryId === "russia") {
+        expect(biographyFactSourceCount, key).toBe(1);
         expect(hostnames.size, key).toBe(1);
       } else {
+        expect(biographyFactSourceCount, key).toBeGreaterThanOrEqual(2);
         expect(hostnames.size, key).toBeGreaterThanOrEqual(2);
       }
 
       const normalized = normalizeStructuredRussianBiographyText(
-        translation.text
+        translation.text,
       ).toLocaleLowerCase("ru");
       expect(normalizedTexts.get(normalized), key).toBeUndefined();
       normalizedTexts.set(normalized, key);
@@ -101,12 +134,11 @@ describe("public structured Russian biography corpus", () => {
       expect(translation.sources, writer.id).toHaveLength(1);
       expect(
         new URL(translation.sources[0].url).hostname.toLowerCase(),
-        writer.id
+        writer.id,
       ).not.toBe("old.bigenc.ru");
-      expect(
-        new URL(translation.sources[0].url).hostname,
-        writer.id
-      ).toMatch(russianInstitutionalHost);
+      expect(new URL(translation.sources[0].url).hostname, writer.id).toMatch(
+        russianInstitutionalHost,
+      );
     }
   });
 
@@ -119,20 +151,20 @@ describe("public structured Russian biography corpus", () => {
     };
     const russianCountry = countries.find((country) => country.id === "russia");
     for (const [writerId, expectedUrl] of Object.entries(
-      expectedPrimarySources
+      expectedPrimarySources,
     )) {
       const writer = russianCountry?.writers.find(
-        (candidate) => candidate.id === writerId
+        (candidate) => candidate.id === writerId,
       );
       expect(selectWriterBiography(writer, "ru").sources[0].url, writerId).toBe(
-        expectedUrl
+        expectedUrl,
       );
     }
   });
 
   it("labels two-pass AI editorial provenance without presenting it as manual review", () => {
     for (const [key, publication] of Object.entries(
-      reviewOverlay.structuredRussianBiographies || {}
+      reviewOverlay.structuredRussianBiographies || {},
     )) {
       if (publication.derivation !== "two-pass-editorial-refinement") continue;
       const [countryId, writerId] = key.split(":");
@@ -142,26 +174,28 @@ describe("public structured Russian biography corpus", () => {
       const translation = selectWriterBiography(writer, "ru");
       expect(translation.reviewer, key).toMatch(/Workers AI/iu);
       expect(translation.translationMeta?.model, key).toBe(
-        publication.translatorModel
+        publication.translatorModel,
       );
       expect(translation.translationMeta?.reviewerModel, key).toBe(
-        publication.reviewerModel
+        publication.reviewerModel,
       );
       expect(translation.translationMeta?.generatedAt, key).toBe(
-        publication.generatedAt
+        publication.generatedAt,
       );
     }
   });
 
   it("labels locally curated prose separately from factual review", () => {
     const curated = Object.entries(
-      reviewOverlay.structuredRussianBiographies || {}
-    ).filter(([, publication]) => publication.derivation === "curated-editorial");
-    expect(curated).toHaveLength(316);
+      reviewOverlay.structuredRussianBiographies || {},
+    ).filter(
+      ([, publication]) => publication.derivation === "curated-editorial",
+    );
+    expect(curated).toHaveLength(324);
 
     for (const [key, publication] of curated) {
       expect(publication.reviewer, key).toMatch(
-        /^Редакционная обработка Codex; факты проверены: /u
+        /^Редакционная обработка Codex; факты проверены: /u,
       );
       expect(publication.factualReviewer.trim(), key).toBeTruthy();
       expect(publication.reviewer, key).not.toMatch(/Workers AI/iu);

@@ -240,6 +240,16 @@ export const stage5FinalInterfaceCopyAttestation = Object.freeze({
   }),
 });
 
+export const russianBiographyEditorialOwnerAttestation = Object.freeze({
+  id: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
+  authorizedOn: "2026-09-01",
+  scopes: Object.freeze([
+    "canonical-writer-biographies",
+    "book-quality-russian-copy",
+    "premium-translation-and-health-russian-copy",
+  ]),
+});
+
 const stage5D1Stage4GlobeStablePaths = Object.freeze(
   stage4ProductionPaths.filter(
     (entry) => entry !== "src/i18n/InterfaceLanguage.tsx"
@@ -299,10 +309,11 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
   }),
   premiumCurrent: Object.freeze({
     paths: stage5D1PremiumCurrentStablePaths,
+    ownerAttestationId: russianBiographyEditorialOwnerAttestation.id,
     expected: Object.freeze({
       files: 72,
       sha256:
-        "659d9af0d010ae42d1a0c682e92f0154730dbc859bc9ed28e4aa2ae795f809cb",
+        "48c5fe1c85c135b365b7ec5e71c2e11fe621e424effb8602b32c617fbd0512fc",
     }),
   }),
 });
@@ -340,10 +351,12 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
               }),
               enforced: Object.freeze({
                 paths: bookArchiveOwnerPaths,
+                ownerAttestationId:
+                  russianBiographyEditorialOwnerAttestation.id,
                 expected: Object.freeze({
                   files: 9,
                   sha256:
-                    "3ef830b784d820525f1be6826cb28e37b80e05d444275ac2e1a247916d1be1fd",
+                    "689b74e6bbaf636d47c65506828a48f0013a7019c81ef09da14158e6988b0a12",
                 }),
               }),
             })

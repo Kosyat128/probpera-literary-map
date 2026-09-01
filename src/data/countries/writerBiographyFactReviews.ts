@@ -11,8 +11,11 @@ type RussianBiographyPublication = {
     provider: string;
     url: string;
     retrievedAt: string;
+    fields: BiographySourceField[];
   };
 };
+type BiographySourceField =
+  "identity" | "life-dates" | "biography-facts" | "awards" | "works";
 type StructuredRussianBiographyPublication = {
   text: string;
   works: string[];
@@ -27,9 +30,15 @@ type StructuredRussianBiographyPublication = {
     provider: string;
     url: string;
     retrievedAt: string;
+    fields: BiographySourceField[];
   }>;
 };
-type EncodedSource = [providerIndex: number, url: string, dateIndex: number];
+type EncodedSource = [
+  providerIndex: number,
+  url: string,
+  dateIndex: number,
+  fields: BiographySourceField[],
+];
 type EncodedStructuredRussianBiography = [
   text: string,
   works: string[],
@@ -207,12 +216,13 @@ const structuredRussianBiographies = new Map<
         ...(reviewerModel ? { reviewerModel } : {}),
         ...(generatedAt ? { generatedAt } : {}),
         sources: sourceIndexes.map((index) => {
-          const [providerIndex, url, retrievedAtIndex] =
+          const [providerIndex, url, retrievedAtIndex, fields] =
             reviewRuntime.sources[index]!;
           return {
             provider: reviewRuntime.providers[providerIndex]!,
             url,
             retrievedAt: reviewRuntime.dates[retrievedAtIndex]!,
+            fields,
           };
         }),
       },
@@ -269,7 +279,7 @@ export function mergeWriterBiographyFactReviews(
               sources: publicationSources.map((source) => ({
                   provider: source.provider,
                   url: source.url,
-                  fields: ["biography-facts"],
+                  fields: source.fields,
                   usage: "fact-check",
                   retrievedAt: source.retrievedAt,
               })),

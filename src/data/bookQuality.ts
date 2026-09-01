@@ -76,7 +76,9 @@ export function bookPublicationIssues(work: WorkProfile) {
   const issues = requiredLocales.flatMap((locale) =>
     translationQualityIssues(work.translations?.[locale], locale)
   );
-  if (!work.sources?.length) issues.push("нет структурированной provenance");
+  if (!work.sources?.length) {
+    issues.push("нет структурированных сведений об источниках");
+  }
   if (
     work.sources?.some(
       (source) =>
@@ -86,7 +88,7 @@ export function bookPublicationIssues(work: WorkProfile) {
         !source.retrievedAt
     )
   ) {
-    issues.push("provenance заполнена не полностью");
+    issues.push("сведения об источниках заполнены не полностью");
   }
 
   const structuredSourceUrls = new Set(
@@ -100,7 +102,7 @@ export function bookPublicationIssues(work: WorkProfile) {
         (sourceUrl) => !structuredSourceUrls.has(sourceUrl.trim())
       )
     ) {
-      issues.push(`источники текста ${locale} не описаны в provenance`);
+      issues.push(`источники текста ${locale} не описаны в структурированном виде`);
     }
     if (
       translation.method === "licensed-source" &&
