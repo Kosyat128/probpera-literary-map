@@ -78,7 +78,7 @@ const reviewedMigrations = [
   ],
   [
     "20260901_zz_visual_direct_edit_v2.sql",
-    "e3a0a6443089f949d73869971e3041a3cc98c2e68f3742192338d1ecba30e371",
+    "38347f54fbe152e89cf392d517e3d3a6e1d389b50b3510611a7fd3b4a66157ed",
   ],
   [
     "20260901_zzz_admin_mutation_guards.sql",

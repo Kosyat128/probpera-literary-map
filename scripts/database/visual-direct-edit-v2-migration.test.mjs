@@ -26,6 +26,11 @@ describe("atomic Direct Edit v2 migration", () => {
     expect(sql).not.toMatch(/\bexecute\s+format\s*\(/iu);
   });
 
+  it("parenthesizes CASE expressions used as IF comparison operands", () => {
+    expect(sql).not.toMatch(/char_length\(value_text\)\s*>\s*case\b/iu);
+    expect(sql.match(/char_length\(value_text\)\s*>\s*\(case p_field[\s\S]*?end\) then/gu)).toHaveLength(2);
+  });
+
   it("revokes default execution and grants only authenticated staff entry", () => {
     expect(sql).toMatch(/revoke all on function public\.save_visual_content_field_v2\([\s\S]*?from public, anon, authenticated, service_role;/u);
     expect(sql).toMatch(/grant execute on function public\.save_visual_content_field_v2\([\s\S]*?to authenticated;/u);
