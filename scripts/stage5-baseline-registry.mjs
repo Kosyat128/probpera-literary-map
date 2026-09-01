@@ -225,18 +225,18 @@ export const stage5FinalInterfaceCopyAttestation = Object.freeze({
   sourceStage5FSha: "d473278a7d0617f14b1d50938fda9bab5c464efa",
   sourceMainSyncSha: "c1939a632bc4c3d36649e7c4b2076fcc0711d2c4",
   interfaceLanguage: Object.freeze({
-    entries: 1189,
+    entries: 1201,
     keysSha256:
-      "f014859939322308d717a0d4245c8b1ef846a66076a34f8757f8901fbb1bd471",
+      "b773bacb465d5abf37dc5c61b27c2212cde41cb98237c75c8a303d7f32a1f9b9",
     pairsSha256:
-      "2153ede98400e11faf5c73cd5ee15427394c62be6b05543886b7efa0a1f3f92d",
+      "f58d6d9ffd20bf4d6d24d48adab625998e567b1bd1ac42f819690f6c004cd011",
   }),
   catalog: Object.freeze({
-    entries: 1403,
+    entries: 1415,
     keysSha256:
-      "a2c49b3f52525047d62484be28ff06867c0c5617340752bce8a9fd1574cc46fd",
+      "80cdc5b9745d5f6a865feba825fcf7e63609c15d8f3b9f4c91932e2f678d032f",
     contentSha256:
-      "87492117cb62bdfa216dc5ca8f7c4bf32fce926c24ee2847fa968f5e7aff03f3",
+      "dae3b55c7b030efe0ceed72fd717b3494f3b3f60a65d183247bdecdc8582cee2",
   }),
 });
 
@@ -265,7 +265,7 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 19,
       sha256:
-        "67d9f0757f5dba3d0e1ae45787310f6ee8a7d4d1e1ba1e62e0213400e6e2e874",
+        "2dc1a426abfbdd09bab7f8df14cbb8ea047d5f689a3129939f6b9244c1f19c84",
     }),
   }),
   premiumCurrent: Object.freeze({
@@ -324,9 +324,9 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
                 enforced: Object.freeze({
                   paths: ["src/index.css"],
                   expected: Object.freeze({
-                    rules: 211,
+                    rules: 218,
                     sha256:
-                      "abd43284cc25668db3529c3b111b0286dfa616c413cc2d8762ba24ec72403113",
+                      "22dab6580403874e28d6f1950dd69e0f698bc87b38746a09b75079e8dc1cb20f",
                   }),
                 }),
               })

@@ -414,6 +414,7 @@ test("embedded launch keeps a dedicated touch-safe row above the globe on narrow
   for (const viewport of [
     { width: 360, height: 800 },
     { width: 768, height: 1024 },
+    { width: 1366, height: 768 },
   ]) {
     await page.setViewportSize(viewport);
     const { experience } = await openEmbeddedAtlas(page);
@@ -444,6 +445,97 @@ test("embedded launch keeps a dedicated touch-safe row above the globe on narrow
     expect(boxesOverlap(geometry.launch, geometry.copy)).toBe(false);
     expect(boxesOverlap(geometry.launch, geometry.style)).toBe(false);
     expect(geometry.launch.height).toBeGreaterThanOrEqual(44);
+  }
+});
+
+test("premium globe controls stay balanced and inside every viewport", async ({
+  page,
+  isMobile,
+}) => {
+  test.setTimeout(90_000);
+  test.skip(isMobile, "The desktop project owns the exact responsive matrix.");
+
+  for (const viewport of [
+    { width: 320, height: 720 },
+    { width: 820, height: 900 },
+    { width: 1366, height: 768 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto("/?atlasView=immersive");
+    const experience = page.locator(experienceSelector);
+    await expect(experience).toHaveAttribute("data-atlas-view", "immersive");
+    await expect(experience.locator("canvas")).toHaveCount(1, {
+      timeout: 45_000,
+    });
+    const geometry = await experience.evaluate((element) => {
+      const rect = (target) => {
+        const box = target.getBoundingClientRect();
+        return {
+          x: box.x,
+          y: box.y,
+          width: box.width,
+          height: box.height,
+          right: box.right,
+          bottom: box.bottom,
+        };
+      };
+      const select = (selector) => {
+        const target = element.querySelector(selector);
+        if (!target) throw new Error(`Missing ${selector}`);
+        return rect(target);
+      };
+      const controlButtons = Array.from(
+        element.querySelectorAll(".globe-controls button")
+      ).map(rect);
+      return {
+        chrome: select(".atlas-immersive-chrome"),
+        search: select(".atlas-immersive-search-toggle"),
+        filters: select(".atlas-immersive-filter-toggle"),
+        random: select(".atlas-immersive-random"),
+        languageButtons: Array.from(
+          element.querySelectorAll(".interface-language-control button")
+        ).map(rect),
+        close: select(".atlas-immersive-close"),
+        styleSwitch: select(".globe-style-switch"),
+        controls: select(".globe-controls"),
+        controlButtons,
+        identityDisplay: getComputedStyle(
+          element.querySelector(".atlas-immersive-identity")
+        ).display,
+      };
+    });
+
+    for (const group of [geometry.chrome, geometry.styleSwitch, geometry.controls]) {
+      expect(group.x).toBeGreaterThanOrEqual(0);
+      expect(group.right).toBeLessThanOrEqual(viewport.width);
+    }
+    expect(
+      Math.abs(geometry.chrome.x + geometry.chrome.width / 2 - viewport.width / 2)
+    ).toBeLessThanOrEqual(1);
+    expect(
+      Math.abs(
+        geometry.controls.x + geometry.controls.width / 2 - viewport.width / 2
+      )
+    ).toBeLessThanOrEqual(1);
+    expect(
+      Math.max(geometry.search.width, geometry.filters.width, geometry.random.width) -
+        Math.min(geometry.search.width, geometry.filters.width, geometry.random.width)
+    ).toBeLessThanOrEqual(1);
+    for (const control of [
+      geometry.search,
+      geometry.filters,
+      geometry.random,
+      ...geometry.languageButtons,
+      geometry.close,
+      ...geometry.controlButtons,
+    ]) {
+      expect(Math.round(control.height)).toBeGreaterThanOrEqual(44);
+      expect(control.x).toBeGreaterThanOrEqual(0);
+      expect(control.right).toBeLessThanOrEqual(viewport.width);
+    }
+    expect(geometry.chrome.bottom).toBeLessThanOrEqual(geometry.styleSwitch.y);
+    expect(geometry.identityDisplay).toBe(viewport.width <= 980 ? "none" : "grid");
+
   }
 });
 

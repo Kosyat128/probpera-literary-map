@@ -521,7 +521,6 @@ const englishInterfaceText: Record<string, string> = {
     "{count} records remain in editorial review; automatically assembled drafts are not published before manual verification",
   "Ещё {count} записей остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки":
     "{count} records remain in editorial review; automatically assembled drafts are not published before manual verification",
-  "Стиль глобуса": "Globe style",
   "Издание глобуса": "Globe edition",
   "Источник и права текущего издания глобуса":
     "Source and rights for the current globe edition",

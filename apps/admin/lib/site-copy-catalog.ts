@@ -44,7 +44,7 @@ const curatedSiteCopyDefinitions = [
   { key: "globe.loading", group: "Глобус", label: "Загрузка глобуса", defaultRu: "Готовим интерактивный глобус…" },
   { key: "globe.unavailable", group: "Глобус", label: "Ошибка глобуса", defaultRu: "Литературная планета временно недоступна" },
   { key: "globe.text_fallback", group: "Глобус", label: "Текстовый запасной режим", defaultRu: "Используйте текстовый указатель стран ниже" },
-  { key: "globe.style.group", group: "Глобус", label: "Название переключателя стиля", defaultRu: "Стиль глобуса" },
+  { key: "globe.edition.group", group: "Глобус", label: "Название переключателя издания", defaultRu: "Издание глобуса" },
   { key: "globe.style.antique", group: "Глобус", label: "Старинный стиль", defaultRu: "Старинный" },
   { key: "globe.style.classic", group: "Глобус", label: "Классический стиль", defaultRu: "Классический" },
   { key: "globe.style.modern", group: "Глобус", label: "Современный стиль", defaultRu: "Современный" },
