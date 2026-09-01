@@ -442,13 +442,13 @@ const seeds = [
   {
     key: "mali:adame_ba_konare",
     originalSha256: "6cb6afd0663d1d337200e144ae95054fc80460237e23eef9c3d72d5dc438abcb",
-    reviewedTextRu: "Адама Ба Конаре (род. 1947) - малийская историк, писательница и общественная деятельница, родившаяся в Сегу. Она публиковала исследования по истории женщин и государства Мали, а также роман «Le Wassa ou les secrets d’une reine».",
+    reviewedTextRu: "Адама Ба Конаре (род. 1947) - историк и писательница из Мали, родившаяся в Сегу. Она публиковала исследования и статьи по истории Мали; в 2006 году вышел её роман «Quand l'ail se frotte à l'encens».",
     evidence: [
-      ["Institut des Sciences Humaines du Mali", "https://www.ish-mali.ml/ish-web/storage/app/public/fichiers/a9tuwbTz6BoJJIRHG1GgcIlpk4xuc68PQGOMmBqS.pdf", "Малийское академическое издание подтверждает рождение в Сегу, историческую работу и библиографию Адамы Ба Конаре."],
-      ["University of Western Australia - African Literature", "https://aflit.arts.uwa.edu.au/BaKonareAdameEng.html", "Академический профиль подтверждает 1947 год, писательскую и историческую деятельность и роман Le Wassa."],
+      ["University of Western Australia - African Literature", "https://aflit.arts.uwa.edu.au/BaKonareAdameEng.html", "Академический профиль подтверждает рождение в Сегу, писательскую и историческую деятельность, публикацию статей по истории и роман Quand l'ail se frotte à l'encens."],
+      ["Bibliothèque nationale de France", "https://catalogue.bnf.fr/ark:/12148/cb402157187", "Национальный библиотечный каталог подтверждает авторство романа Quand l'ail se frotte à l'encens и его публикацию в 2006 году."],
     ],
     decision: "corrected",
-    notes: "Профильное место рождения Бамако исправляется на Сегу; общая формула дополнена предметом исследований и романом.",
+    notes: "Профильное место рождения Бамако исправляется на Сегу; ошибочная атрибуция Le Wassa удалена, а библиография сверена по университетскому профилю и каталогу BnF.",
   },
   {
     key: "mali:amadou_hampate_ba",

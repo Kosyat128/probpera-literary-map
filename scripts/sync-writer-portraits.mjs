@@ -651,7 +651,7 @@ function reportMarkdown(report) {
     `- Надёжно связаны с Wikidata: ${report.summary.matchedPublicWriters}`,
     `- Получили свободный оптимизированный портрет: ${report.summary.publicRealPortraits}`,
     `- Публичные карточки без портрета: ${report.summary.publicMissingPortraits}`,
-    `- Новых портретов готовы к применению: ${report.summary.readyNewPublicPortraits}`,
+    `- Новых портретов-кандидатов для правовой и визуальной проверки: ${report.summary.publicPortraitCandidates}`,
     `- Удалено устаревших записей manifest: ${report.summary.removedStaleManifestEntries}`,
     `- Удалено осиротевших записей manifest: ${report.summary.removedOrphanManifestEntries}`,
     `- Удалено записей, отклонённых правовой/визуальной проверкой: ${report.summary.removedPolicyRejectedManifestEntries}`,
@@ -1022,9 +1022,6 @@ async function main() {
     });
   }
 
-  const readyPublicPortraits = processCandidates
-    ? usablePortraits.length
-    : publicPortraitCandidates.length;
   const downloadFailures = processCandidates
     ? processedPortraits.filter(
         (portrait) => portrait.allowed && !portrait.downloaded
@@ -1046,7 +1043,6 @@ async function main() {
       matchedPublicWriters: publicMatches.length,
       publicRealPortraits: publicPortraitKeys.size,
       publicMissingPortraits: publicWriterRecords - publicPortraitKeys.size,
-      readyNewPublicPortraits: readyPublicPortraits,
       removedStaleManifestEntries: staleManifestEntries.length,
       removedOrphanManifestEntries: orphanManifestEntries.length,
       removedPolicyRejectedManifestEntries:

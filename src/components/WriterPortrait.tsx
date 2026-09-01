@@ -4,6 +4,7 @@ import { selectWriterDisplayName } from "../data/bookLocalization";
 import type { WriterProfile } from "../data/countries/types";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { CmsMarkerAttributes } from "../cms/directEditBridge";
+import BrandUserIcon from "./BrandUserIcon";
 
 type WriterPortraitProps = {
   writer: WriterProfile;
@@ -16,7 +17,7 @@ type WriterPortraitProps = {
 
 export function writerDisplayName(
   writer: WriterProfile,
-  language: "ru" | "en" = "ru"
+  language: "ru" | "en" = "ru",
 ) {
   return selectWriterDisplayName(writer, language);
 }
@@ -88,19 +89,22 @@ export default function WriterPortrait({
     language === "en" && /\p{Script=Cyrillic}/u.test(storedAlt)
       ? ""
       : storedAlt;
+  const placeholderLabel = `${t("Фирменная заглушка портрета")}: ${name}`;
 
   useEffect(() => setFailed(false), [source]);
 
   return (
     <span
       {...cmsMarker}
-      className={`writer-portrait-media${hasPortrait ? " has-image" : " is-empty"}${
-        className ? ` ${className}` : ""
-      }`}
+      className={`writer-portrait-media${
+        hasPortrait ? " has-image" : " is-placeholder"
+      }${className ? ` ${className}` : ""}`}
       style={style}
-      aria-hidden={decorative || !hasPortrait || undefined}
+      aria-hidden={decorative || undefined}
+      role={!decorative && !hasPortrait ? "img" : undefined}
+      aria-label={!decorative && !hasPortrait ? placeholderLabel : undefined}
     >
-      {hasPortrait && (
+      {hasPortrait ? (
         <img
           src={source}
           alt={decorative ? "" : localizedAlt || `${t("Портрет")}: ${name}`}
@@ -108,6 +112,10 @@ export default function WriterPortrait({
           decoding="async"
           onError={() => setFailed(true)}
         />
+      ) : (
+        <span className="writer-portrait-placeholder" aria-hidden="true">
+          <BrandUserIcon />
+        </span>
       )}
     </span>
   );

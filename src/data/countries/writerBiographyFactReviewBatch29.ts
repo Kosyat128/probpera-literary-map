@@ -99,12 +99,13 @@ const writerBiographyFactReviewBatch29Base = [
   review({
     key: "france:sully_prudhomme",
     originalSha256: "c272426fb6cd26e3e5e65e6564e3c7199b00c7f81565b1b38907126d19edd779",
-    reviewedTextRu: "Французский поэт и эссеист, первый лауреат Нобелевской премии по литературе (1901).",
+    reviewedTextRu: "Рене Франсуа Арман Сюлли-Прюдом (1839-1907) - французский поэт и эссеист, избранный членом Французской академии. В 1901 году он стал первым в истории лауреатом Нобелевской премии по литературе.",
     decision: "corrected",
     evidence: [
       evidence("The Nobel Prize", "https://www.nobelprize.org/prizes/literature/1901/prudhomme/facts/", "Официальная запись Нобелевской премии подтверждает, что Сюлли-Прюдом был французским поэтом и первым лауреатом премии по литературе в 1901 году."),
-      evidence("Académie française", "https://www.academie-francaise.fr/les-immortels/armand-prudhomme-dit-sully-prudhomme", "Биографическая страница Французской академии независимо подтверждает его поэтическую и эссеистическую деятельность и присуждение первой Нобелевской премии по литературе."),
+      evidence("Académie française", "https://www.academie-francaise.fr/les-immortels/armand-prudhomme-dit-sully-prudhomme", "Биографическая страница Французской академии независимо подтверждает даты, избрание Сюлли-Прюдома в Академию, его поэтическую и эссеистическую деятельность и присуждение первой Нобелевской премии по литературе."),
     ],
+    notes: "Краткая исходная формулировка расширена точными биографическими данными, членством во Французской академии и статусом первого нобелевского лауреата. Shared country files не изменялись.",
   }),
   review({
     key: "france:victor_hugo",

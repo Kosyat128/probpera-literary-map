@@ -3,7 +3,10 @@ import { describe, expect, it } from "vitest";
 import {
   isPublishableRussianBiographyClaim,
   isStructuredRussianBiographyText,
+  structuredRussianBiographyAwardRestatementIssues,
   structuredRussianBiographyFromReview,
+  structuredRussianBiographyGenderAgreementPattern,
+  structuredRussianBiographyLifespanRestatementIssues,
   structuredRussianBiographyRefinementIssues,
   structuredRussianBiographySourceNarrationPattern,
   structuredRussianBiographyTautologyIssues,
@@ -36,7 +39,10 @@ const input = {
 const validText =
   "Иван Петров (1900-1970) - русский писатель, работавший в жанре художественной прозы. Среди его произведений - роман «Северный путь».";
 
-function refinement(text = validText, expectedSourceHash = input.expectedSourceHash) {
+function refinement(
+  text = validText,
+  expectedSourceHash = input.expectedSourceHash,
+) {
   return { text, expectedSourceHash };
 }
 
@@ -52,8 +58,47 @@ describe("structured Russian biography core gate", () => {
     "Профиль издателя подтверждает биографию Ивана Петрова. Официальная страница перечисляет его произведения, включая роман «Северный путь».",
   ])("rejects source narration: %s", (text) => {
     expect(structuredRussianBiographySourceNarrationPattern.test(text)).toBe(
-      true
+      true,
     );
+    expect(isStructuredRussianBiographyText(text)).toBe(false);
+  });
+
+  it("rejects abbreviated institutional source narration", () => {
+    const text =
+      "Мариама Хима - кинорежиссёр и этнолог из Нигера. BnF каталогизирует её как автора документальной книги о культуре Африки.";
+    expect(structuredRussianBiographySourceNarrationPattern.test(text)).toBe(
+      true,
+    );
+    expect(isStructuredRussianBiographyText(text)).toBe(false);
+  });
+
+  it.each([
+    "Адама Ба Конаре - малийская историк и писательница, родившаяся в Сегу. Она публиковала исследования по истории женщин и государства Мали.",
+    "Мариама Хима - нигерская кинорежиссёр-документалист и дипломат. Она также написала книгу о традиционной культуре Нигера.",
+    "Элия Коррея - португальская прозаик, поэтесса и драматург. Она получила премию Камоэнса за литературное творчество.",
+    "Анна Петрова - русская писатель и переводчик. Она опубликовала два романа.",
+  ])("rejects grammatical gender disagreement: %s", (text) => {
+    expect(structuredRussianBiographyGenderAgreementPattern.test(text)).toBe(
+      true,
+    );
+    expect(isStructuredRussianBiographyText(text)).toBe(false);
+  });
+
+  it("rejects an award restated by an anaphoric second sentence", () => {
+    const text =
+      "Петер Хандке - австрийский писатель и лауреат Нобелевской премии по литературе. Эта награда была присуждена ему в 2019 году.";
+    expect(structuredRussianBiographyAwardRestatementIssues(text)).toEqual([
+      [0, 1],
+    ]);
+    expect(isStructuredRussianBiographyText(text)).toBe(false);
+  });
+
+  it("rejects a lifespan range repeated as exact birth and death dates", () => {
+    const text =
+      "Артур Шницлер (1862-1931) - австрийский писатель и драматург эпохи модернизма. Он родился 15 мая 1862 года и умер 21 октября 1931 года.";
+    expect(structuredRussianBiographyLifespanRestatementIssues(text)).toEqual([
+      [0, 1],
+    ]);
     expect(isStructuredRussianBiographyText(text)).toBe(false);
   });
 
@@ -86,51 +131,51 @@ describe("structured Russian biography core gate", () => {
   it("filters editorial/service claims from prompts", () => {
     expect(
       isPublishableRussianBiographyClaim(
-        "Оценочный суперлатив заменён проверяемой формулировкой."
-      )
+        "Оценочный суперлатив заменён проверяемой формулировкой.",
+      ),
     ).toBe(false);
     expect(
       isPublishableRussianBiographyClaim(
-        "Иван Петров написал роман «Северный путь»."
-      )
+        "Иван Петров написал роман «Северный путь».",
+      ),
     ).toBe(true);
   });
 
   it("checks source hash, new numbers, works, names and writer identity", () => {
-    expect(structuredRussianBiographyRefinementIssues(input, refinement())).toEqual(
-      []
-    );
+    expect(
+      structuredRussianBiographyRefinementIssues(input, refinement()),
+    ).toEqual([]);
     expect(
       structuredRussianBiographyRefinementIssues(
         input,
-        refinement(validText, "b".repeat(64))
-      )
+        refinement(validText, "b".repeat(64)),
+      ),
     ).toContain("source-hash-mismatch");
     expect(
       structuredRussianBiographyRefinementIssues(
         input,
-        refinement(validText.replace("1970", "1980"))
-      )
+        refinement(validText.replace("1970", "1980")),
+      ),
     ).toContain("new-numbers:1980");
     expect(
       structuredRussianBiographyRefinementIssues(
         input,
-        refinement(validText.replace("Северный путь", "Южный путь"))
-      ).some((issue) => issue.startsWith("new-works:"))
+        refinement(validText.replace("Северный путь", "Южный путь")),
+      ).some((issue) => issue.startsWith("new-works:")),
     ).toBe(true);
     expect(
       structuredRussianBiographyRefinementIssues(
         input,
-        refinement(validText.replace("Иван Петров", "Пётр Сидоров"))
-      ).some((issue) => issue.startsWith("new-names:"))
+        refinement(validText.replace("Иван Петров", "Пётр Сидоров")),
+      ).some((issue) => issue.startsWith("new-names:")),
     ).toBe(true);
     expect(
       structuredRussianBiographyRefinementIssues(
         input,
         refinement(
-          "Русский писатель работал в жанре художественной прозы на протяжении своей литературной карьеры. Среди его произведений - роман «Северный путь»."
-        )
-      )
+          "Русский писатель работал в жанре художественной прозы на протяжении своей литературной карьеры. Среди его произведений - роман «Северный путь».",
+        ),
+      ),
     ).toContain("writer-name-missing");
   });
 
@@ -140,23 +185,23 @@ describe("structured Russian biography core gate", () => {
       claims: [],
     };
     expect(
-      structuredRussianBiographyFromReview(record, validText).derivation
+      structuredRussianBiographyFromReview(record, validText).derivation,
     ).toBe("curated-editorial");
     expect(
       structuredRussianBiographyFromReview(
         record,
         "Слишком коротко.",
         refinement(),
-        input
-      ).derivation
+        input,
+      ).derivation,
     ).toBe("two-pass-editorial-refinement");
     expect(
       structuredRussianBiographyFromReview(
         record,
         "Слишком коротко.",
         refinement(validText, "b".repeat(64)),
-        input
-      ).derivation
+        input,
+      ).derivation,
     ).toBe("blocked-editorial-refinement");
   });
 });

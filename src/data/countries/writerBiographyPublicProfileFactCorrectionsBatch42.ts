@@ -177,7 +177,7 @@ export const writerBiographyPublicProfileFactCorrectionsBatch42 = [
     patch: {
       years: "1951-",
       birthDate: "1951-02-20",
-      works: ["Sagesse africaine : proverbes"],
+      works: ["Sagesse africaine: proverbes"],
       genres: ["документальное кино", "этнология", "антропология", "дипломатическая работа"],
     },
     evidence: sources(

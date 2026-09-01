@@ -1,6 +1,6 @@
 # QA фактов в коротких русских биографиях писателей
 
-Источник данных: `sha256:4b18c58b507b96e3edfea5c591c6f9f2f941988b9debde8c082cd17707763824`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
+Источник данных: `sha256:0a2d1f86ebb6003c2215b8f71304c1b552aa8a5b33abec06161fa682f512a80d`. Отчёт детерминирован: в нём нет текущей даты и при неизменных входных файлах он воспроизводится побайтно.
 
 > Этот аудит не маркирует карточки, не меняет тексты и не утверждает, что весь корпус фактологически проверен. Он выполняет полную автоматическую инвентаризацию, находит внутренние противоречия и строит очередь ручной сверки.
 
@@ -14,25 +14,25 @@
 - Ручных source-resolution с сохранёнными доказательствами: 74 в 62 карточках.
 - Карточек с high-confidence противоречиями: 0; отдельных противоречий: 0.
 - Отдельно допустимые календарные/precision/source расхождения: 0 карточек, 0 полей.
-- Metadata gaps (это не доказанные ошибки): 0.
-- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1678.
+- Metadata gaps (это не доказанные ошибки): 36.
+- Bio, где хотя бы один тип утверждений всё ещё требует выбранного человеком источника: 1677.
 - Статусов `reviewed`/`verified`, UI-плашек и текстов изменено: 0.
 
 ## Типы утверждений во всём корпусе
 
-- `awards`: 112
+- `awards`: 105
 - `critical-ranking`: 2
-- `identity-role`: 1628
-- `language`: 208
-- `life-dates`: 790
+- `identity-role`: 1627
+- `language`: 207
+- `life-dates`: 795
 - `movement-era`: 61
 - `national-cultural-affiliation`: 1084
 - `nobel`: 124
-- `places`: 55
-- `priority-claim`: 91
+- `places`: 56
+- `priority-claim`: 90
 - `reception-influence`: 17
 - `themes-style`: 391
-- `works`: 1503
+- `works`: 1505
 
 ## High-confidence противоречия
 
@@ -196,7 +196,42 @@ Snapshot `ad60e0b097803f1c71aa1a53d18fb3ea996ac5be8775e4993b6a27b243d770f3` со
 
 | Ключ | Писатель | Поле | Код | Значения | Безопасный кандидат исправления |
 | --- | --- | --- | --- | --- | --- |
-| - | - | - | - | Не найдено | Исправление не требуется |
+| `australia:bruce_pascoe` | Брюс Паско | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Young Dark Emu"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `australia:peter_carey` | Питер Кэри | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Истинная история шайки Келли"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `bangladesh:jibanananda_das` | Джибанананда Дас | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Прекрасная Бенгалия"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `bangladesh:tahmima_anam` | Тахмима Анам | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Добрый мусульманин"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `barbados:george_lamming` | Джордж Лэмминг | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Эмигранты"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `belize:zee_edgell` | Зи Эдгелл | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Time and the River"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `bolivia:vilma_tapia_anda` | Вильма Тапиа Анайя | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"El agua más cercana"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `bolivia:vilma_tapia_anda` | Вильма Тапиа Анайя | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"La hierba es un niño"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `cambodia:soth_polin` | Сот Полин | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Анархист"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `cameroon:ferdinand_oyono` | Фердинан Ойоно | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Chemin d’Europe"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `cameroon:ferdinand_oyono` | Фердинан Ойоно | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Le Vieux Nègre et la Médaille"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `cameroon:jean_roger_essomba` | Жан-Роже Эссомба | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Le Dernier Gardien de l’arbre"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `cameroon:jean_roger_essomba` | Жан-Роже Эссомба | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Le Paradis du Nord"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `canada:chris_hadfield` | Крис Остин Хэдфилд | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Ты здесь: вокруг света за 92 минуты"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `chile:luis_sepúlveda` | Луис Сепульведа | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"История о чайке и коте, который научил её летать"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `china:ai_qing` | Ай Цин | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Факел"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `china:can_xue` | Цань Сюэ | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Улица пяти специй"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `croatia:antun_matos` | Антун Густав Матош | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Novo iverje"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `denmark:peter_hoeg` | Петер Хёг | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Женщина и обезьяна"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `denmark:peter_hoeg` | Петер Хёг | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Условно пригодные"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ecuador:javier_vasconez` | Хавьер Васконес | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Далёкий город"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ecuador:maria_fernanda_ampuero` | Мария Фернанда Ампуэро | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Петушиный бой"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `ecuador:santiago_paez` | Сантьяго Паэс | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"В глубине галактики"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `egypt:ahmed_khaled_towfik` | Ахмед Халед Тауфик | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Паранормальное"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `egypt:bahaa_taher` | Баха Тахер | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Оазис заката"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `egypt:sonallah_ibrahim` | Суналлах Ибрахим | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Зат"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `england:charles_dickens` | Чарльз Диккенс | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Рождественская песнь в прозе"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `england:harold_pinter` | Гарольд Пинтер | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"День рождения"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `england:harold_pinter` | Гарольд Пинтер | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Предательство"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `england:john_fowles` | Джон Фаулз | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Волхва"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `england:john_fowles` | Джон Фаулз | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Женщину французского лейтенанта"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `england:john_le_carre` | Джон ле Карре | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Шпион, выйди вон!"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `france:diderot` | Дени Дидро | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Жак-фаталист и его хозяин"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `greece:nikos_kazantzakis` | Никос Казандзакис | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Последнее искушение Христа"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `india:aravind_adiga` | Аравинд Адига | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"Последнего человека в башне"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
+| `jamaica:andrew_salky` | Эндрю Салкей | `biography/works` | `named-work-not-in-structured-list` | {"biographyTitle":"The Late Emancipation of Jerry Stover"} | Проверить название и авторство по библиографическому authority-источнику; затем либо добавить подтверждённое произведение в works, либо исправить название в bio. |
 
 ## Что реально автоматизируется
 

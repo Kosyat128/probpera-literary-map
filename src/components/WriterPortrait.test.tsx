@@ -28,12 +28,12 @@ const approvedWriter: WriterProfile = {
 
 function renderPortrait(
   writer: WriterProfile,
-  props: Partial<ComponentProps<typeof WriterPortrait>> = {}
+  props: Partial<ComponentProps<typeof WriterPortrait>> = {},
 ) {
   return renderToStaticMarkup(
     <InterfaceLanguageProvider>
       <WriterPortrait writer={writer} {...props} />
-    </InterfaceLanguageProvider>
+    </InterfaceLanguageProvider>,
   );
 }
 
@@ -43,7 +43,7 @@ describe("WriterPortrait", () => {
 
     expect(writerHasApprovedPortrait(approvedWriter)).toBe(true);
     expect(approvedWriterPortraitUrl(approvedWriter)).toContain(
-      "assets/writer-portraits/approved.webp"
+      "assets/writer-portraits/approved.webp",
     );
     expect(markup).toContain("writer-portrait-media has-image");
     expect(markup).toContain("<img");
@@ -51,19 +51,20 @@ describe("WriterPortrait", () => {
     expect(markup).not.toContain("writer-portrait-initials");
   });
 
-  it("keeps an empty layout slot without inventing a visual or image semantics", () => {
+  it("renders a neutral, explicitly labelled placeholder without inventing a portrait", () => {
     const markup = renderPortrait({
       id: "no-photo",
       name: "Автор Без Фотографии",
     });
 
-    expect(markup).toContain("writer-portrait-media is-empty");
-    expect(markup).toContain('aria-hidden="true"');
+    expect(markup).toContain("writer-portrait-media is-placeholder");
+    expect(markup).toContain('role="img"');
+    expect(markup).toContain(
+      'aria-label="Фирменная заглушка портрета: Автор Без Фотографии"',
+    );
+    expect(markup).toContain("brand-user-icon");
     expect(markup).not.toContain("<img");
-    expect(markup).not.toContain('role="img"');
-    expect(markup).not.toContain("aria-label");
     expect(markup).not.toContain("АБ");
-    expect(markup).not.toContain("заглуш");
   });
 
   it("fails closed for a bare URL, unverified rights and incomplete approval", () => {
@@ -93,6 +94,7 @@ describe("WriterPortrait", () => {
     expect(writerHasApprovedPortrait(unverifiedWriter)).toBe(false);
     expect(writerHasApprovedPortrait(mismatchedSourceWriter)).toBe(false);
     expect(renderPortrait(unverifiedWriter)).not.toContain("<img");
+    expect(renderPortrait(unverifiedWriter)).toContain("is-placeholder");
   });
 
   it("keeps approved decorative images silent", () => {
@@ -103,29 +105,40 @@ describe("WriterPortrait", () => {
     expect(markup).not.toContain('role="img"');
   });
 
-  it("hides the empty slot in CSS while preserving its box in layout", () => {
+  it("keeps a missing decorative portrait silent", () => {
+    const markup = renderPortrait(
+      { id: "decorative-placeholder", name: "Автор Без Фотографии" },
+      { decorative: true },
+    );
+
+    expect(markup).toContain("is-placeholder");
+    expect(markup).toContain('aria-hidden="true"');
+    expect(markup).not.toContain('role="img"');
+    expect(markup).not.toContain("aria-label");
+  });
+
+  it("shows the placeholder in CSS while preserving its layout box", () => {
     const css = readFileSync(new URL("../index.css", import.meta.url), "utf8");
-    const emptyRule = css.match(
-      /\.writer-portrait-media\.is-empty\s*\{(?<body>[^}]+)\}/u
+    const placeholderRule = css.match(
+      /\.writer-portrait-media\.is-placeholder\s*\{(?<body>[^}]+)\}/u,
     )?.groups?.body;
-    const writerRule = css.match(
-      /\.writer-portrait\s*\{(?<body>[^}]+)\}/u
-    )?.groups?.body;
+    const writerRule = css.match(/\.writer-portrait\s*\{(?<body>[^}]+)\}/u)
+      ?.groups?.body;
     const searchRule = css.match(
-      /\.global-search-writer-portrait\s*\{(?<body>[^}]+)\}/u
+      /\.global-search-writer-portrait\s*\{(?<body>[^}]+)\}/u,
     )?.groups?.body;
-    const emptyShowcaseRule = css.match(
-      /\.author-showcase button:has\(\.author-showcase-portrait\.is-empty\)::after\s*\{(?<body>[^}]+)\}/u
+    const placeholderShowcaseRule = css.match(
+      /\.author-showcase button:has\(\.author-showcase-portrait\.is-placeholder\)::after\s*\{(?<body>[^}]+)\}/u,
     )?.groups?.body;
 
-    expect(emptyRule).toContain("visibility: hidden");
-    expect(emptyRule).toContain("background: none");
-    expect(emptyRule).not.toContain("display: none");
+    expect(placeholderRule).not.toContain("visibility: hidden");
+    expect(placeholderRule).not.toContain("background: none");
+    expect(placeholderRule).not.toContain("display: none");
     expect(writerRule).toContain("background: transparent");
     expect(writerRule).not.toContain("gradient");
     expect(searchRule).toContain("background: transparent");
     expect(searchRule).not.toContain("gradient");
-    expect(emptyShowcaseRule).toContain("background: rgba(");
-    expect(emptyShowcaseRule).not.toContain("gradient");
+    expect(placeholderShowcaseRule).toContain("background: rgba(");
+    expect(placeholderShowcaseRule).not.toContain("gradient");
   });
 });

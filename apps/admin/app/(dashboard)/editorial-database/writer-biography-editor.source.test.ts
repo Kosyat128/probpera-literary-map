@@ -30,7 +30,7 @@ describe("structured writer biography editor integration", () => {
       expect(pageSource).toContain("`${locale}_source_text_rights`");
       expect(pageSource).toContain("`${locale}_sources_json`");
     }
-    expect(pageSource).toContain("Публичный strict selector");
+    expect(pageSource).toContain("Строгий отбор для публикации");
     expect(pageSource).toContain('name="expected_updated_at"');
     expect(pageSource).toContain("overrideOwnsLocaleMap");
     expect(pageSource).toContain('name="confirm_manual_en_against_ru"');
@@ -100,7 +100,7 @@ describe("structured writer biography editor integration", () => {
   it("keeps profile auto-translation paused and tells editors the truth", () => {
     expect(adminWrangler.vars.OPENAI_AUTO_TRANSLATE_PROFILES).toBe("false");
     expect(pageSource).toContain("adminEnv.openAiAutoTranslateProfiles");
-    expect(pageSource).toContain("Автоперевод биографий сейчас приостановлен");
+    expect(pageSource).toContain("Автоматический перевод биографий сейчас приостановлен");
     expect(pageSource).toContain("запускает новый двухпроходный перевод");
   });
 

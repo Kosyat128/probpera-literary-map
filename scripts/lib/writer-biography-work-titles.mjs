@@ -4,7 +4,10 @@
  * organisations, festivals and movements may also be quoted in prose.
  */
 export const WORK_TITLE_PATTERN =
-  /(?:(?<!из\s)(?:роман|поэм|пьес|книг|сборник|произведен)\p{L}*|автор(?:ка)?)\s+«([^\u00bb\r\n]{2,120})»/giu;
+  /(?:(?<!из\s)(?:роман|повест|рассказ|поэм|пьес|книг|сборник|произведен|цикл|комед|трагед|новелл|эссе|сказк|эпос|драм|сонет|стихотворен|мемуар)\p{L}*|автор(?:ка)?|написал(?:а|и)?|создал(?:а|и)?|опубликовал(?:а|и)?)\s*(?:[-\u2013\u2014:]\s*)?«([^\u00bb\r\n]{2,120})»/giu;
+
+const WORK_TITLE_CONTINUATION_PATTERN =
+  /^\s*(?:(?:,\s*)|(?:и\s+)|(?:а\s+также\s+))«([^\u00bb\r\n]{2,120})»/iu;
 
 /**
  * Narrow translation/inflection aliases for reviewed work titles. Every
@@ -170,13 +173,20 @@ for (const alias of curatedWorkTitleEvidenceAliases) {
 
 export function extractExplicitWorkTitles(value) {
   const source = String(value || "");
-  return [
-    ...new Set(
-      [...source.matchAll(WORK_TITLE_PATTERN)]
-        .map((match) => match[1].replace(/\s+/gu, " ").trim())
-        .filter(Boolean)
-    ),
-  ].sort((left, right) => left.localeCompare(right, "ru"));
+  const titles = new Set();
+  for (const match of source.matchAll(WORK_TITLE_PATTERN)) {
+    const firstTitle = match[1].replace(/\s+/gu, " ").trim();
+    if (firstTitle) titles.add(firstTitle);
+    let cursor = (match.index || 0) + match[0].length;
+    while (cursor < source.length) {
+      const continuation = source.slice(cursor).match(WORK_TITLE_CONTINUATION_PATTERN);
+      if (!continuation) break;
+      const title = continuation[1].replace(/\s+/gu, " ").trim();
+      if (title) titles.add(title);
+      cursor += continuation[0].length;
+    }
+  }
+  return [...titles].sort((left, right) => left.localeCompare(right, "ru"));
 }
 
 export function normalizeWorkEvidenceText(value) {

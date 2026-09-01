@@ -174,7 +174,7 @@ const seeds: readonly ReviewSeed[] = [
   {
     key: "zambia:dominic_mulaisho",
     originalSha256: "4cf21d58cd9296b9b68e39184d754ad5b9dcde8d95d59a89a6b62685cfdfbbbb",
-    reviewedTextRu: "Доминик Мулаишо (1933-2013) - замбийский романист и государственный служащий. Он написал романы «The Tongue of the Dumb» и «The Smoke That Thunders».",
+    reviewedTextRu: "Доминик Мулаишо (1933-2013) - замбийский романист, дипломат и государственный служащий. Он написал романы «The Tongue of the Dumb» и «The Smoke That Thunders», а позднее был управляющим Банка Замбии.",
     evidence: [
       e("University of Zambia", "https://dspace.unza.zm/bitstream/handle/123456789/7186/The%20Final%20Copy%20of%20the%20%20Dissertation-Trevor%20Mwansa.pdf", "Университетское исследование приводит годы 1933-2013, государственную и дипломатическую карьеру Мулаишо и анализирует The Tongue of the Dumb."),
       e("Lusaka Times", "https://www.lusakatimes.com/2013/07/02/president-sata-mourns-dominic-mulaisho/", "Современное сообщение подтверждает смерть Мулаишо у себя дома в Лусаке вечером воскресенья, его государственную службу, руководство Банком Замбии и авторство двух романов; публикация датирована 2 июля 2013 года."),

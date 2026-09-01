@@ -16,7 +16,7 @@ import { useAuth } from "./community/AuthContext";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
 import InterfaceLanguageControl from "./components/InterfaceLanguageControl";
 import CountryFlagIcon from "./components/CountryFlagIcon";
-import WriterPortrait from "./components/WriterPortrait";
+import WriterPortrait, { writerHasApprovedPortrait } from "./components/WriterPortrait";
 import BrandArrowIcon from "./components/BrandArrowIcon";
 import BrandBookIcon from "./components/BrandBookIcon";
 import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
@@ -200,7 +200,7 @@ function countryMatchesAtlasFilter(country: Country, filter: AtlasFilter) {
   if (filter === "nobel") return country.writers.some(isNobelLaureate);
   if (filter === "rich") return country.writers.length >= 10;
   if (filter === "portrait") {
-    return country.writers.some((writer) => Boolean(writer.portrait));
+    return country.writers.some(writerHasApprovedPortrait);
   }
   return country.writers.some(
     (writer) => selectWriterBiography(writer, "ru")?.status === "verified"
@@ -215,7 +215,7 @@ function preferredWriterForAtlas(
   if (requestedWriter) return requestedWriter;
   if (filter === "nobel") return country.writers.find(isNobelLaureate) ?? null;
   if (filter === "portrait") {
-    return country.writers.find((writer) => Boolean(writer.portrait)) ?? null;
+    return country.writers.find(writerHasApprovedPortrait) ?? null;
   }
   if (filter === "verified") {
     return (

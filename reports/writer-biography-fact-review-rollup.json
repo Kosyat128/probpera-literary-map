@@ -1,7 +1,7 @@
 {
-  "version": 6,
+  "version": 7,
   "deterministic": true,
-  "sourceFingerprint": "sha256:e7b1f43413b80305f6715312780020dfa90dc883971d6e07c02f0fd541a3136d",
+  "sourceFingerprint": "sha256:3cd6cae87e034611a0c41292d6f66548a0bce57e2b4e2df20017fde02dd30f24",
   "summary": {
     "records": 1740,
     "unchanged": 99,
@@ -12,7 +12,7 @@
     "corrections": 1573,
     "russianBiographies": 41,
     "structuredRussianBiographies": 1672,
-    "structuredWorkTitles": 929,
+    "structuredWorkTitles": 2225,
     "excludedQuarantinedCorrectionKeys": [
       "cape_verde:virgilio_de_lemos",
       "comoros:said_ahmed_mohamed",
@@ -28,7 +28,22 @@
     },
     {
       "key": "australia:peter_carey",
+      "title": "Истинная история шайки Келли",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "australia:peter_carey",
       "title": "Оскар и Люсинда",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "bangladesh:jibanananda_das",
+      "title": "Прекрасная Бенгалия",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "bangladesh:tahmima_anam",
+      "title": "Добрый мусульманин",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
@@ -37,8 +52,18 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "barbados:george_lamming",
+      "title": "Эмигранты",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "belgium:amelie_nothomb",
       "title": "Гигиена убийцы",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "belgium:amelie_nothomb",
+      "title": "Страх и трепет",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
@@ -52,13 +77,68 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "belize:zee_edgell",
+      "title": "In Times Like These",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "belize:zee_edgell",
+      "title": "The Festival of San Joaquin",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "belize:zee_edgell",
+      "title": "Time and the River",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "bolivia:vilma_tapia_anda",
+      "title": "El agua más cercana",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "bolivia:vilma_tapia_anda",
+      "title": "La hierba es un niño",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "brazil:carlos_drummond_de_andrade",
       "title": "Роза народа",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "cambodia:soth_polin",
+      "title": "Анархист",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "cameroon:ferdinand_oyono",
+      "title": "Chemin d’Europe",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "cameroon:ferdinand_oyono",
+      "title": "Le Vieux Nègre et la Médaille",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "cameroon:jean_roger_essomba",
+      "title": "Le Dernier Gardien de l’arbre",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "cameroon:jean_roger_essomba",
+      "title": "Le Paradis du Nord",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "canada:chris_hadfield",
       "title": "Руководство астронавта по жизни на Земле",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "canada:chris_hadfield",
+      "title": "Ты здесь: вокруг света за 92 минуты",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
@@ -74,6 +154,11 @@
     {
       "key": "canada:margaret_laurence",
       "title": "Каменный ангел",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "canada:mordecai_richler",
+      "title": "Версия Барни",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
@@ -97,6 +182,16 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "chile:luis_sepúlveda",
+      "title": "История о чайке и коте, который научил её летать",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "chile:luis_sepúlveda",
+      "title": "Старик, который читал любовные романы",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "chile:roberto_bolano",
       "title": "Дикие детективы",
       "reason": "no-title-specific-supported-claim-evidence"
@@ -107,8 +202,33 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "china:ai_qing",
+      "title": "Факел",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "china:ba_jin",
+      "title": "Весна",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "china:ba_jin",
+      "title": "Осень",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "china:ba_jin",
       "title": "Семья",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "china:can_xue",
+      "title": "Любовь в новом тысячелетии",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "china:can_xue",
+      "title": "Улица пяти специй",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
@@ -122,6 +242,26 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "denmark:peter_hoeg",
+      "title": "Женщина и обезьяна",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "denmark:peter_hoeg",
+      "title": "Смилла и её чувство снега",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "denmark:peter_hoeg",
+      "title": "Условно пригодные",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "ecuador:javier_vasconez",
+      "title": "Далёкий город",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "ecuador:jorge_icaza",
       "title": "Уасипунго",
       "reason": "no-title-specific-supported-claim-evidence"
@@ -132,8 +272,33 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "ecuador:juan_montalvo",
+      "title": "Главы, которые забыл Сервантес",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "ecuador:juan_montalvo",
+      "title": "Семь трактатов",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "ecuador:maria_fernanda_ampuero",
+      "title": "Петушиный бой",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "ecuador:pablo_palacio",
       "title": "Дебора",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "ecuador:santiago_paez",
+      "title": "В глубине галактики",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "egypt:ahmed_khaled_towfik",
+      "title": "Паранормальное",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
@@ -142,8 +307,18 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "egypt:bahaa_taher",
+      "title": "Оазис заката",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "egypt:salah_abdel_sabour",
       "title": "Трагедия аль-Халладжа",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "egypt:sonallah_ibrahim",
+      "title": "Зат",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
@@ -162,6 +337,51 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "england:graham_greene",
+      "title": "Тихий американец",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:harold_pinter",
+      "title": "Возвращение домой",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:harold_pinter",
+      "title": "День рождения",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:harold_pinter",
+      "title": "Предательство",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:harold_pinter",
+      "title": "Сторож",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:john_fowles",
+      "title": "Волхва",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:john_fowles",
+      "title": "Женщину французского лейтенанта",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:john_galsworthy",
+      "title": "Сага о Форсайтах",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:john_le_carre",
+      "title": "Шпион, выйди вон!",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "england:john_milton",
       "title": "Самсон-борец",
       "reason": "no-title-specific-supported-claim-evidence"
@@ -172,8 +392,23 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "england:laurence_sterne",
+      "title": "Сентиментальное путешествие по Франции и Италии",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "england:lee_child",
       "title": "Этаж смерти",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:liz_jensen",
+      "title": "Девятая жизнь Луи Дракса",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:lord_byron",
+      "title": "Дон Жуан",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
@@ -182,8 +417,23 @@
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
+      "key": "england:stuart_turton",
+      "title": "Дьявол и тёмная вода",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "england:stuart_turton",
+      "title": "Семь смертей Эвелины Хардкасл",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
       "key": "england:thomas_more",
       "title": "Утопия",
+      "reason": "no-title-specific-supported-claim-evidence"
+    },
+    {
+      "key": "estonia:friedrich_reinhold_kreutzwald",
+      "title": "Калевипоэг",
       "reason": "no-title-specific-supported-claim-evidence"
     },
     {
@@ -342,6 +592,2316 @@
       "checkedAt": "2026-08-09"
     }
   ],
+  "russianPublicationTitles": [
+    {
+      "key": "afghanistan:khaled_hosseini",
+      "sourceTitleExact": "The Kite Runner",
+      "catalogTitleRu": "Бегущий за ветром",
+      "displayTitleRu": "Бегущий за ветром",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01008135815",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01008135815",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Kite Runner под названием «Бегущий за ветром».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "afghanistan:khaled_hosseini",
+      "sourceTitleExact": "A Thousand Splendid Suns",
+      "catalogTitleRu": "Тысяча сияющих солнц",
+      "displayTitleRu": "Тысяча сияющих солнц",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01008164205",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01008164205",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения A Thousand Splendid Suns под названием «Тысяча сияющих солнц».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "afghanistan:khaled_hosseini",
+      "sourceTitleExact": "And the Mountains Echoed",
+      "catalogTitleRu": "И эхо летит по горам",
+      "displayTitleRu": "И эхо летит по горам",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Фантом Пресс",
+      "recordUrl": "https://phantom-press.ru/product/chosseyni-chaled_i-eho-letit-po-goram/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство Фантом Пресс",
+        "url": "https://phantom-press.ru/product/chosseyni-chaled_i-eho-letit-po-goram/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Фантом Пресс подтверждает российское издание произведения And the Mountains Echoed под названием «И эхо летит по горам».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "colombia:gabriel_garcia_marquez",
+      "sourceTitleExact": "Cien años de soledad",
+      "catalogTitleRu": "Сто лет одиночества",
+      "displayTitleRu": "Сто лет одиночества",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01002460339",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01002460339",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Cien años de soledad под названием «Сто лет одиночества».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:charles_dickens",
+      "sourceTitleExact": "Oliver Twist",
+      "catalogTitleRu": "Приключения Оливера Твиста",
+      "displayTitleRu": "Приключения Оливера Твиста",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01007925844",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01007925844",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Oliver Twist под названием «Приключения Оливера Твиста».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:charles_dickens",
+      "sourceTitleExact": "Great Expectations",
+      "catalogTitleRu": "Большие надежды",
+      "displayTitleRu": "Большие надежды",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004965142",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004965142",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Great Expectations под названием «Большие надежды».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:charles_dickens",
+      "sourceTitleExact": "A Christmas Carol",
+      "catalogTitleRu": "Рождественская песнь в прозе",
+      "displayTitleRu": "Рождественская песнь в прозе",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004859845",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004859845",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения A Christmas Carol под названием «Рождественская песнь в прозе».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:charlotte_bronte",
+      "sourceTitleExact": "Jane Eyre",
+      "catalogTitleRu": "Джейн Эйр",
+      "displayTitleRu": "Джейн Эйр",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01009388331",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01009388331",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Jane Eyre под названием «Джейн Эйр».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:daniel_defoe",
+      "sourceTitleExact": "Robinson Crusoe",
+      "catalogTitleRu": "Робинзон Крузо",
+      "displayTitleRu": "Робинзон Крузо",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01005467841",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01005467841",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Robinson Crusoe под названием «Робинзон Крузо».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:daniel_defoe",
+      "sourceTitleExact": "Moll Flanders",
+      "catalogTitleRu": "Молль Флендерс",
+      "displayTitleRu": "Молль Флендерс",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01002150619",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01002150619",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Moll Flanders под названием «Молль Флендерс».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:oscar_wilde",
+      "sourceTitleExact": "The Picture of Dorian Gray",
+      "catalogTitleRu": "Портрет Дориана Грея",
+      "displayTitleRu": "Портрет Дориана Грея",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01009895599",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01009895599",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Picture of Dorian Gray под названием «Портрет Дориана Грея».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:oscar_wilde",
+      "sourceTitleExact": "The Importance of Being Earnest",
+      "catalogTitleRu": "Как важно быть серьезным",
+      "displayTitleRu": "Как важно быть серьёзным",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01005716508",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "displayNormalization": "е-to-ё",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01005716508",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Importance of Being Earnest под названием «Как важно быть серьезным».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:robert_louis_stevenson",
+      "sourceTitleExact": "Treasure Island",
+      "catalogTitleRu": "Остров сокровищ",
+      "displayTitleRu": "Остров сокровищ",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01000641569",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01000641569",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Treasure Island под названием «Остров сокровищ».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:robert_louis_stevenson",
+      "sourceTitleExact": "Kidnapped",
+      "catalogTitleRu": "Похищенный",
+      "displayTitleRu": "Похищенный",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004940847",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004940847",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Kidnapped под названием «Похищенный».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:robert_louis_stevenson",
+      "sourceTitleExact": "Strange Case of Dr Jekyll and Mr Hyde",
+      "catalogTitleRu": "Странная история доктора Джекила и мистера Хайда",
+      "displayTitleRu": "Странная история доктора Джекила и мистера Хайда",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004626540",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004626540",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Strange Case of Dr Jekyll and Mr Hyde под названием «Странная история доктора Джекила и мистера Хайда».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "spain:carlos_ruiz_zafon",
+      "sourceTitleExact": "La sombra del viento",
+      "catalogTitleRu": "Тень ветра",
+      "displayTitleRu": "Тень ветра",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01009466661",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01009466661",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения La sombra del viento под названием «Тень ветра».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "spain:carlos_ruiz_zafon",
+      "sourceTitleExact": "El juego del ángel",
+      "catalogTitleRu": "Игра ангела",
+      "displayTitleRu": "Игра ангела",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01008044790",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01008044790",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения El juego del ángel под названием «Игра ангела».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "spain:carlos_ruiz_zafon",
+      "sourceTitleExact": "El prisionero del cielo",
+      "catalogTitleRu": "Узник Неба",
+      "displayTitleRu": "Узник Неба",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/uznik-neba-134054/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/uznik-neba-134054/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения El prisionero del cielo под названием «Узник Неба».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:andy_weir",
+      "sourceTitleExact": "The Martian",
+      "catalogTitleRu": "Марсианин",
+      "displayTitleRu": "Марсианин",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01009814922",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01009814922",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Martian под названием «Марсианин».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:andy_weir",
+      "sourceTitleExact": "Artemis",
+      "catalogTitleRu": "Артемида",
+      "displayTitleRu": "Артемида",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/artemida-831751/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/artemida-831751/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Artemis под названием «Артемида».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:andy_weir",
+      "sourceTitleExact": "Project Hail Mary",
+      "catalogTitleRu": "Проект «Аве Мария»",
+      "displayTitleRu": "Проект „Аве Мария“",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/proekt-ave-mariya-856798/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "displayNormalization": "nested-quotes",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/proekt-ave-mariya-856798/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Project Hail Mary под названием «Проект «Аве Мария»».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dan_simmons",
+      "sourceTitleExact": "Hyperion Cantos",
+      "catalogTitleRu": "Песни Гипериона",
+      "displayTitleRu": "Песни Гипериона",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/cycle/pesni-giperiona/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/cycle/pesni-giperiona/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Hyperion Cantos под названием «Песни Гипериона».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dan_simmons",
+      "sourceTitleExact": "The Terror",
+      "catalogTitleRu": "Террор",
+      "displayTitleRu": "Террор",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004834579",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004834579",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Terror под названием «Террор».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dan_simmons",
+      "sourceTitleExact": "Song of Kali",
+      "catalogTitleRu": "Песнь Кали",
+      "displayTitleRu": "Песнь Кали",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/pesn-kali-886535/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/pesn-kali-886535/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Song of Kali под названием «Песнь Кали».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:daniel_keyes",
+      "sourceTitleExact": "Flowers for Algernon",
+      "catalogTitleRu": "Цветы для Элджернона",
+      "displayTitleRu": "Цветы для Элджернона",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01005403940",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 2,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01005403940",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Flowers for Algernon под названием «Цветы для Элджернона».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:daniel_keyes",
+      "sourceTitleExact": "The Minds of Billy Milligan",
+      "catalogTitleRu": "Таинственная история Билли Миллигана",
+      "displayTitleRu": "Таинственная история Билли Миллигана",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01008874024",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01008874024",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Minds of Billy Milligan под названием «Таинственная история Билли Миллигана».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:donna_tartt",
+      "sourceTitleExact": "The Secret History",
+      "catalogTitleRu": "Тайная история",
+      "displayTitleRu": "Тайная история",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01007861694",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01007861694",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Secret History под названием «Тайная история».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:donna_tartt",
+      "sourceTitleExact": "The Little Friend",
+      "catalogTitleRu": "Маленький друг",
+      "displayTitleRu": "Маленький друг",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/malenkiy-drug-701162/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/malenkiy-drug-701162/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения The Little Friend под названием «Маленький друг».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:donna_tartt",
+      "sourceTitleExact": "The Goldfinch",
+      "catalogTitleRu": "Щегол",
+      "displayTitleRu": "Щегол",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/shchegol-155650/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 2,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/shchegol-155650/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения The Goldfinch под названием «Щегол».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:ernest_hemingway",
+      "sourceTitleExact": "The Sun Also Rises",
+      "catalogTitleRu": "Фиеста (И восходит солнце)",
+      "displayTitleRu": "Фиеста (И восходит солнце)",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01002392937",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01002392937",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Sun Also Rises под названием «Фиеста (И восходит солнце)».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:ernest_hemingway",
+      "sourceTitleExact": "A Farewell to Arms",
+      "catalogTitleRu": "Прощай, оружие!",
+      "displayTitleRu": "Прощай, оружие!",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01002392937",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01002392937",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения A Farewell to Arms под названием «Прощай, оружие!».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:ernest_hemingway",
+      "sourceTitleExact": "The Old Man and the Sea",
+      "catalogTitleRu": "Старик и море",
+      "displayTitleRu": "Старик и море",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004876860",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004876860",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Old Man and the Sea под названием «Старик и море».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:francis_scott_fitzgerald",
+      "sourceTitleExact": "This Side of Paradise",
+      "catalogTitleRu": "По эту сторону рая",
+      "displayTitleRu": "По эту сторону рая",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01001698229",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01001698229",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения This Side of Paradise под названием «По эту сторону рая».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:francis_scott_fitzgerald",
+      "sourceTitleExact": "The Beautiful and Damned",
+      "catalogTitleRu": "Прекрасные и проклятые",
+      "displayTitleRu": "Прекрасные и проклятые",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01008730196",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01008730196",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Beautiful and Damned под названием «Прекрасные и проклятые».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:francis_scott_fitzgerald",
+      "sourceTitleExact": "The Great Gatsby",
+      "catalogTitleRu": "Великий Гэтсби",
+      "displayTitleRu": "Великий Гэтсби",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01008931049",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01008931049",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Great Gatsby под названием «Великий Гэтсби».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:francis_scott_fitzgerald",
+      "sourceTitleExact": "Tender Is the Night",
+      "catalogTitleRu": "Ночь нежна",
+      "displayTitleRu": "Ночь нежна",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004348768",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004348768",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Tender Is the Night под названием «Ночь нежна».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:edgar_allan_poe",
+      "sourceTitleExact": "The Murders in the Rue Morgue",
+      "catalogTitleRu": "Убийство на улице Морг",
+      "displayTitleRu": "Убийство на улице Морг",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01001603014",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01001603014",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Murders in the Rue Morgue под названием «Убийство на улице Морг».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:edgar_allan_poe",
+      "sourceTitleExact": "The Raven",
+      "catalogTitleRu": "Ворон",
+      "displayTitleRu": "Ворон",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01008240101",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "original-title-linked",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01008240101",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Raven под названием «Ворон».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:edgar_allan_poe",
+      "sourceTitleExact": "The Fall of the House of Usher",
+      "catalogTitleRu": "Падение дома Ашеров",
+      "displayTitleRu": "Падение дома Ашеров",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01006749040",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01006749040",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Fall of the House of Usher под названием «Падение дома Ашеров».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:eugene_oneill",
+      "sourceTitleExact": "Long Day’s Journey into Night",
+      "catalogTitleRu": "Долгое путешествие в ночь",
+      "displayTitleRu": "Долгое путешествие в ночь",
+      "status": "russian-edition-attested",
+      "authority": "Национальная электронная библиотека",
+      "recordUrl": "https://rusneb.ru/catalog/000199_000009_006851950/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Национальная электронная библиотека",
+        "url": "https://rusneb.ru/catalog/000199_000009_006851950/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Национальная электронная библиотека подтверждает российское издание произведения Long Day’s Journey into Night под названием «Долгое путешествие в ночь».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:jack_kerouac",
+      "sourceTitleExact": "On the Road",
+      "catalogTitleRu": "На дороге",
+      "displayTitleRu": "На дороге",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/na-doroge-854348/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/na-doroge-854348/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения On the Road под названием «На дороге».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:tony_morrison",
+      "sourceTitleExact": "The Bluest Eye",
+      "catalogTitleRu": "Самые голубые глаза",
+      "displayTitleRu": "Самые голубые глаза",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/amp/book/samye-golubye-glaza-ITD1059086/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/amp/book/samye-golubye-glaza-ITD1059086/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание произведения The Bluest Eye под названием «Самые голубые глаза».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:cormac_mccarthy",
+      "sourceTitleExact": "Blood Meridian",
+      "catalogTitleRu": "Кровавый меридиан, или Закатный багрянец на западе",
+      "displayTitleRu": "Кровавый меридиан, или Закатный багрянец на западе",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/krovavyy-meridian-ili-zakatnyy-bagryanets-na-zapade",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/krovavyy-meridian-ili-zakatnyy-bagryanets-na-zapade",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения Blood Meridian под названием «Кровавый меридиан, или Закатный багрянец на западе».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:cormac_mccarthy",
+      "sourceTitleExact": "No Country for Old Men",
+      "catalogTitleRu": "Старикам тут не место",
+      "displayTitleRu": "Старикам тут не место",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004339536",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004339536",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения No Country for Old Men под названием «Старикам тут не место».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:cormac_mccarthy",
+      "sourceTitleExact": "The Road",
+      "catalogTitleRu": "Дорога",
+      "displayTitleRu": "Дорога",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/doroga-olvr",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 2,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/doroga-olvr",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения The Road под названием «Дорога».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:don_delillo",
+      "sourceTitleExact": "White Noise",
+      "catalogTitleRu": "Белый шум",
+      "displayTitleRu": "Белый шум",
+      "status": "russian-edition-attested",
+      "authority": "Российская национальная библиотека",
+      "recordUrl": "https://nlr.ru/nlr_visit/dep/artupload/media/db/qa3/NA44657.pdf",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская национальная библиотека",
+        "url": "https://nlr.ru/nlr_visit/dep/artupload/media/db/qa3/NA44657.pdf",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская национальная библиотека подтверждает российское издание произведения White Noise под названием «Белый шум».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:don_delillo",
+      "sourceTitleExact": "Libra",
+      "catalogTitleRu": "Весы",
+      "displayTitleRu": "Весы",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01002709309",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01002709309",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Libra под названием «Весы».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:colson_whitehead",
+      "sourceTitleExact": "The Underground Railroad",
+      "catalogTitleRu": "Подземная железная дорога",
+      "displayTitleRu": "Подземная железная дорога",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/podzemnaya-zheleznaya-doroga-827293/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/podzemnaya-zheleznaya-doroga-827293/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения The Underground Railroad под названием «Подземная железная дорога».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:colson_whitehead",
+      "sourceTitleExact": "The Nickel Boys",
+      "catalogTitleRu": "Мальчишки из «Никеля»",
+      "displayTitleRu": "Мальчишки из „Никеля“",
+      "status": "russian-edition-attested",
+      "authority": "Издательство «Синдбад»",
+      "recordUrl": "https://sindbadbooks.ru/index.php?path=25&product_id=349&route=product%2Fproduct",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "displayNormalization": "nested-quotes",
+      "evidence": {
+        "provider": "Издательство «Синдбад»",
+        "url": "https://sindbadbooks.ru/index.php?path=25&product_id=349&route=product%2Fproduct",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство «Синдбад» подтверждает российское издание произведения The Nickel Boys под названием «Мальчишки из «Никеля»».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:chuck_palahniuk",
+      "sourceTitleExact": "Fight Club",
+      "catalogTitleRu": "Бойцовский клуб",
+      "displayTitleRu": "Бойцовский клуб",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/boytsovskiy-klub-863988/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/boytsovskiy-klub-863988/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Fight Club под названием «Бойцовский клуб».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:chuck_palahniuk",
+      "sourceTitleExact": "Invisible Monsters",
+      "catalogTitleRu": "Невидимки",
+      "displayTitleRu": "Невидимки",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01006501978",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01006501978",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Invisible Monsters под названием «Невидимки».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:chuck_palahniuk",
+      "sourceTitleExact": "Choke",
+      "catalogTitleRu": "Удушье",
+      "displayTitleRu": "Удушье",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/udushe-858530/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/udushe-858530/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Choke под названием «Удушье».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dan_brown",
+      "sourceTitleExact": "The Da Vinci Code",
+      "catalogTitleRu": "Код да Винчи",
+      "displayTitleRu": "Код да Винчи",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/kod-da-vinchi-825779/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/kod-da-vinchi-825779/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения The Da Vinci Code под названием «Код да Винчи».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dan_brown",
+      "sourceTitleExact": "Angels & Demons",
+      "catalogTitleRu": "Ангелы и демоны",
+      "displayTitleRu": "Ангелы и демоны",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/angely-i-demony-136260/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/angely-i-demony-136260/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Angels & Demons под названием «Ангелы и демоны».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dan_brown",
+      "sourceTitleExact": "The Lost Symbol",
+      "catalogTitleRu": "Утраченный символ",
+      "displayTitleRu": "Утраченный символ",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/utrachennyy-simvol-861268/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/utrachennyy-simvol-861268/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения The Lost Symbol под названием «Утраченный символ».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dan_brown",
+      "sourceTitleExact": "Inferno",
+      "catalogTitleRu": "Инферно",
+      "displayTitleRu": "Инферно",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/inferno-125755/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/inferno-125755/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Inferno под названием «Инферно».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dan_brown",
+      "sourceTitleExact": "Origin",
+      "catalogTitleRu": "Происхождение",
+      "displayTitleRu": "Происхождение",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/proiskhozhdenie-869805/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/proiskhozhdenie-869805/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Origin под названием «Происхождение».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dennis_lehane",
+      "sourceTitleExact": "Mystic River",
+      "catalogTitleRu": "Таинственная река",
+      "displayTitleRu": "Таинственная река",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/tainstvennaya-reka",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/tainstvennaya-reka",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения Mystic River под названием «Таинственная река».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dennis_lehane",
+      "sourceTitleExact": "Shutter Island",
+      "catalogTitleRu": "Остров проклятых",
+      "displayTitleRu": "Остров проклятых",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/ostrov-proklyatykh-uiae",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/ostrov-proklyatykh-uiae",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения Shutter Island под названием «Остров проклятых».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dennis_lehane",
+      "sourceTitleExact": "Gone, Baby, Gone",
+      "catalogTitleRu": "Прощай, детка, прощай",
+      "displayTitleRu": "Прощай, детка, прощай",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/proshchay-detka-proshchay-spke",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/proshchay-detka-proshchay-spke",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения Gone, Baby, Gone под названием «Прощай, детка, прощай».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:ernest_cline",
+      "sourceTitleExact": "Ready Player One",
+      "catalogTitleRu": "Первому игроку приготовиться",
+      "displayTitleRu": "Первому игроку приготовиться",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/pervomu-igroku-prigotovitsya-837562/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 2,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/pervomu-igroku-prigotovitsya-837562/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Ready Player One под названием «Первому игроку приготовиться».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:ernest_cline",
+      "sourceTitleExact": "Armada",
+      "catalogTitleRu": "Армада",
+      "displayTitleRu": "Армада",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/armada-719302/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/armada-719302/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Armada под названием «Армада».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:ernest_cline",
+      "sourceTitleExact": "Ready Player Two",
+      "catalogTitleRu": "Второму игроку приготовиться",
+      "displayTitleRu": "Второму игроку приготовиться",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/vtoromu-igroku-prigotovitsya-866706/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/vtoromu-igroku-prigotovitsya-866706/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Ready Player Two под названием «Второму игроку приготовиться».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:blake_crouch",
+      "sourceTitleExact": "Dark Matter",
+      "catalogTitleRu": "Темная материя",
+      "displayTitleRu": "Темная материя",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/amp/book/temnaya-materiya-ITD959546/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 2,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/amp/book/temnaya-materiya-ITD959546/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание произведения Dark Matter под названием «Темная материя».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:blake_crouch",
+      "sourceTitleExact": "Recursion",
+      "catalogTitleRu": "Возвращение",
+      "displayTitleRu": "Возвращение",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/amp/book/vozvrashchenie-ITD1045825/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/amp/book/vozvrashchenie-ITD1045825/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание произведения Recursion под названием «Возвращение».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:blake_crouch",
+      "sourceTitleExact": "Wayward Pines",
+      "catalogTitleRu": "Сосны",
+      "displayTitleRu": "Сосны",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/cicle/sosny-ID474/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/cicle/sosny-ID474/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание произведения Wayward Pines под названием «Сосны».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "colombia:gabriel_garcia_marquez",
+      "sourceTitleExact": "El amor en los tiempos del cólera",
+      "catalogTitleRu": "Любовь во время чумы",
+      "displayTitleRu": "Любовь во время чумы",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01000965138",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01000965138",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения El amor en los tiempos del cólera под названием «Любовь во время чумы».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "mexico:juan_rulfo",
+      "sourceTitleExact": "El Llano en llamas",
+      "catalogTitleRu": "Равнина в огне",
+      "displayTitleRu": "Равнина в огне",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/pedro-paramo-ravnina-v-ogne-031235/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/pedro-paramo-ravnina-v-ogne-031235/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения El Llano en llamas под названием «Равнина в огне».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "mexico:juan_rulfo",
+      "sourceTitleExact": "Pedro Páramo",
+      "catalogTitleRu": "Педро Парамо",
+      "displayTitleRu": "Педро Парамо",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/pedro-paramo-ravnina-v-ogne-031235/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/pedro-paramo-ravnina-v-ogne-031235/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Pedro Páramo под названием «Педро Парамо».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "chile:isabel_allende",
+      "sourceTitleExact": "La casa de los espíritus",
+      "catalogTitleRu": "Дом духов",
+      "displayTitleRu": "Дом духов",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/dom-dukhov",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/dom-dukhov",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения La casa de los espíritus под названием «Дом духов».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "chile:isabel_allende",
+      "sourceTitleExact": "De amor y de sombra",
+      "catalogTitleRu": "Любовь и тьма",
+      "displayTitleRu": "Любовь и тьма",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/lyubov-i-tma-bez-supera-ac98",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/lyubov-i-tma-bez-supera-ac98",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения De amor y de sombra под названием «Любовь и тьма».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "chile:isabel_allende",
+      "sourceTitleExact": "Eva Luna",
+      "catalogTitleRu": "Ева Луна",
+      "displayTitleRu": "Ева Луна",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/eva-lyna",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/eva-lyna",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения Eva Luna под названием «Ева Луна».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "norway:henrik_ibsen",
+      "sourceTitleExact": "Et dukkehjem",
+      "catalogTitleRu": "Кукольный дом",
+      "displayTitleRu": "Кукольный дом",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004914972",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-contents",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004914972",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Et dukkehjem под названием «Кукольный дом».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "norway:henrik_ibsen",
+      "sourceTitleExact": "Gengangere",
+      "catalogTitleRu": "Привидения",
+      "displayTitleRu": "Привидения",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004914972",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-contents",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004914972",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Gengangere под названием «Привидения».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "norway:henrik_ibsen",
+      "sourceTitleExact": "Hedda Gabler",
+      "catalogTitleRu": "Гедда Габлер",
+      "displayTitleRu": "Гедда Габлер",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004914972",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-contents",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004914972",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Hedda Gabler под названием «Гедда Габлер».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "norway:henrik_ibsen",
+      "sourceTitleExact": "Peer Gynt",
+      "catalogTitleRu": "Пер Гюнт",
+      "displayTitleRu": "Пер Гюнт",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004914972",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-contents",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004914972",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Peer Gynt под названием «Пер Гюнт».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "norway:knut_hamsun",
+      "sourceTitleExact": "Sult",
+      "catalogTitleRu": "Голод",
+      "displayTitleRu": "Голод",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01008800922",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "original-title-linked",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01008800922",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Sult под названием «Голод».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "norway:knut_hamsun",
+      "sourceTitleExact": "Pan",
+      "catalogTitleRu": "Пан",
+      "displayTitleRu": "Пан",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01008800922",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "original-title-linked",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01008800922",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Pan под названием «Пан».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "norway:sigrid_undset",
+      "sourceTitleExact": "Kristin Lavransdatter",
+      "catalogTitleRu": "Кристин, дочь Лавранса",
+      "displayTitleRu": "Кристин, дочь Лавранса",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01009614590",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01009614590",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Kristin Lavransdatter под названием «Кристин, дочь Лавранса».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "spain:federico_garcia_lorca",
+      "sourceTitleExact": "Romancero gitano",
+      "catalogTitleRu": "Цыганское романсеро",
+      "displayTitleRu": "Цыганское романсеро",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01001417992",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01001417992",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Romancero gitano под названием «Цыганское романсеро».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "spain:federico_garcia_lorca",
+      "sourceTitleExact": "Bodas de sangre",
+      "catalogTitleRu": "Кровавая свадьба",
+      "displayTitleRu": "Кровавая свадьба",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01001394316",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-contents",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01001394316",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Bodas de sangre под названием «Кровавая свадьба».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "spain:federico_garcia_lorca",
+      "sourceTitleExact": "Yerma",
+      "catalogTitleRu": "Йерма",
+      "displayTitleRu": "Йерма",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01001394316",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-contents",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01001394316",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Yerma под названием «Йерма».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "portugal:jose_saramago",
+      "sourceTitleExact": "Memorial do Convento",
+      "catalogTitleRu": "Воспоминания о монастыре",
+      "displayTitleRu": "Воспоминания о монастыре",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/book/vospominaniya-o-monastyre-ITD1375851/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "original-title-linked",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/book/vospominaniya-o-monastyre-ITD1375851/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание произведения Memorial do Convento под названием «Воспоминания о монастыре».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "portugal:jose_saramago",
+      "sourceTitleExact": "O Evangelho segundo Jesus Cristo",
+      "catalogTitleRu": "Евангелие от Иисуса",
+      "displayTitleRu": "Евангелие от Иисуса",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01002158456",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "original-title-linked",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01002158456",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения O Evangelho segundo Jesus Cristo под названием «Евангелие от Иисуса».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "portugal:jose_saramago",
+      "sourceTitleExact": "Ensaio sobre a Cegueira",
+      "catalogTitleRu": "Слепота",
+      "displayTitleRu": "Слепота",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004088075",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "original-title-linked",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004088075",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения Ensaio sobre a Cegueira под названием «Слепота».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "sweden:stieg_larsson",
+      "sourceTitleExact": "Män som hatar kvinnor",
+      "catalogTitleRu": "Девушка с татуировкой дракона",
+      "displayTitleRu": "Девушка с татуировкой дракона",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/book/devushka-s-tatuirovkoy-drakona-ITD1235447/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidenceAlias": "Man som hatar kvinnor",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/book/devushka-s-tatuirovkoy-drakona-ITD1235447/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание под названием «Девушка с татуировкой дракона»; оригинал в карточке приведён как «Man som hatar kvinnor», а в биографии сохранено точное написание «Män som hatar kvinnor».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:david_mitchell",
+      "sourceTitleExact": "Cloud Atlas",
+      "catalogTitleRu": "Облачный атлас",
+      "displayTitleRu": "Облачный атлас",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/oblachnyy-atlas",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/oblachnyy-atlas",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения Cloud Atlas под названием «Облачный атлас».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:anne_bronte",
+      "sourceTitleExact": "Agnes Grey",
+      "catalogTitleRu": "Агнес Грей",
+      "displayTitleRu": "Агнес Грей",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/agnes-grey-883788/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/agnes-grey-883788/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Agnes Grey под названием «Агнес Грей».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:anne_bronte",
+      "sourceTitleExact": "The Tenant of Wildfell Hall",
+      "catalogTitleRu": "Незнакомка из Уайлдфелл-Холла",
+      "displayTitleRu": "Незнакомка из Уайлдфелл-Холла",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/neznakomka-iz-uayldfell-kholla-870567/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/neznakomka-iz-uayldfell-kholla-870567/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения The Tenant of Wildfell Hall под названием «Незнакомка из Уайлдфелл-Холла».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:emily_bronte",
+      "sourceTitleExact": "Wuthering Heights",
+      "catalogTitleRu": "Грозовой перевал",
+      "displayTitleRu": "Грозовой перевал",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01009545262",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "original-title-linked",
+      "evidenceAlias": "Wuthering heights",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01009545262",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание под названием «Грозовой перевал»; оригинал в карточке приведён как «Wuthering heights», а в биографии сохранено точное написание «Wuthering Heights».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:arthur_conan_doyle",
+      "sourceTitleExact": "A Study in Scarlet",
+      "catalogTitleRu": "Этюд в багровых тонах",
+      "displayTitleRu": "Этюд в багровых тонах",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/etyud-v-bagrovykh-tonakh-721517/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/etyud-v-bagrovykh-tonakh-721517/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения A Study in Scarlet под названием «Этюд в багровых тонах».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:chaucer",
+      "sourceTitleExact": "The Canterbury Tales",
+      "catalogTitleRu": "Кентерберийские рассказы",
+      "displayTitleRu": "Кентерберийские рассказы",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/kenterberiyskie-rasskazy-880594/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/kenterberiyskie-rasskazy-880594/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения The Canterbury Tales под названием «Кентерберийские рассказы».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:hilary_mantel",
+      "sourceTitleExact": "Wolf Hall",
+      "catalogTitleRu": "Вулфхолл",
+      "displayTitleRu": "Вулфхолл",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/vulfkholl-151003/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/vulfkholl-151003/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Wolf Hall под названием «Вулфхолл».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:hilary_mantel",
+      "sourceTitleExact": "Bring Up the Bodies",
+      "catalogTitleRu": "Внесите тела",
+      "displayTitleRu": "Внесите тела",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/vnesite-tela-123853/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/vnesite-tela-123853/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Bring Up the Bodies под названием «Внесите тела».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:roald_dahl",
+      "sourceTitleExact": "Charlie and the Chocolate Factory",
+      "catalogTitleRu": "Чарли и шоколадная фабрика",
+      "displayTitleRu": "Чарли и шоколадная фабрика",
+      "status": "russian-edition-attested",
+      "authority": "Издательство «Самокат»",
+      "recordUrl": "https://samokatbook.ru/book/charli-i-shokoladnaya-fabrika/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство «Самокат»",
+        "url": "https://samokatbook.ru/book/charli-i-shokoladnaya-fabrika/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство «Самокат» подтверждает российское издание произведения Charlie and the Chocolate Factory под названием «Чарли и шоколадная фабрика».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:roald_dahl",
+      "sourceTitleExact": "Matilda",
+      "catalogTitleRu": "Матильда",
+      "displayTitleRu": "Матильда",
+      "status": "russian-edition-attested",
+      "authority": "Издательство «Самокат»",
+      "recordUrl": "https://samokatbook.ru/book/matilda/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство «Самокат»",
+        "url": "https://samokatbook.ru/book/matilda/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство «Самокат» подтверждает российское издание произведения Matilda под названием «Матильда».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:thomas_hardy",
+      "sourceTitleExact": "Tess of the d’Urbervilles",
+      "catalogTitleRu": "Тэсс из рода д'Эрбервиллей",
+      "displayTitleRu": "Тэсс из рода д'Эрбервиллей",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/tess-iz-roda-d-erbervilley-826602/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/tess-iz-roda-d-erbervilley-826602/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения Tess of the d’Urbervilles под названием «Тэсс из рода д'Эрбервиллей».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "england:rudyard_kipling",
+      "sourceTitleExact": "The Jungle Book",
+      "catalogTitleRu": "Книга джунглей",
+      "displayTitleRu": "Книга джунглей",
+      "status": "russian-edition-attested",
+      "authority": "Российская государственная библиотека",
+      "recordUrl": "https://search.rsl.ru/ru/record/01004627125",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "translated-edition-record",
+      "evidence": {
+        "provider": "Российская государственная библиотека",
+        "url": "https://search.rsl.ru/ru/record/01004627125",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Российская государственная библиотека подтверждает российское издание произведения The Jungle Book под названием «Книга джунглей».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "south_korea:han_kang",
+      "sourceTitleExact": "The Vegetarian",
+      "catalogTitleRu": "Вегетарианка",
+      "displayTitleRu": "Вегетарианка",
+      "status": "russian-edition-attested",
+      "authority": "Издательство АСТ",
+      "recordUrl": "https://ast.ru/book/vegetarianka-829094/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство АСТ",
+        "url": "https://ast.ru/book/vegetarianka-829094/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство АСТ подтверждает российское издание произведения The Vegetarian под названием «Вегетарианка».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "turkey:elif_shafak",
+      "sourceTitleExact": "The Bastard of Istanbul",
+      "catalogTitleRu": "Стамбульский бастард",
+      "displayTitleRu": "Стамбульский бастард",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/stambulskiy-bastard",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/stambulskiy-bastard",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения The Bastard of Istanbul под названием «Стамбульский бастард».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "turkey:elif_shafak",
+      "sourceTitleExact": "The Forty Rules of Love",
+      "catalogTitleRu": "Сорок правил любви",
+      "displayTitleRu": "Сорок правил любви",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/sorok-pravil-lyubvi",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/sorok-pravil-lyubvi",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения The Forty Rules of Love под названием «Сорок правил любви».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "jamaica:marlon_james",
+      "sourceTitleExact": "A Brief History of Seven Killings",
+      "catalogTitleRu": "Краткая история семи убийств",
+      "displayTitleRu": "Краткая история семи убийств",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/amp/book/kratkaya-istoriya-semi-ubiystv-ITD825374/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/amp/book/kratkaya-istoriya-semi-ubiystv-ITD825374/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание произведения A Brief History of Seven Killings под названием «Краткая история семи убийств».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "usa:dean_koontz",
+      "sourceTitleExact": "Odd Thomas",
+      "catalogTitleRu": "Странный Томас",
+      "displayTitleRu": "Странный Томас",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/book/strannyy-tomas-ITD234708/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/book/strannyy-tomas-ITD234708/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание произведения Odd Thomas под названием «Странный Томас».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "israel:david_grossman",
+      "sourceTitleExact": "A Horse Walks Into a Bar",
+      "catalogTitleRu": "Как-то лошадь входит в бар",
+      "displayTitleRu": "Как-то лошадь входит в бар",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/book/kak-to-loshad-vkhodit-v-bar-ITD1415819/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidenceAlias": "A Horse Walks into a Bar",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/book/kak-to-loshad-vkhodit-v-bar-ITD1415819/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание под названием «Как-то лошадь входит в бар»; оригинал в карточке приведён как «A Horse Walks into a Bar», а в биографии сохранено точное написание «A Horse Walks Into a Bar».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "south_africa:damon_galgut",
+      "sourceTitleExact": "The Promise",
+      "catalogTitleRu": "Обещание",
+      "displayTitleRu": "Обещание",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/book/obeshchanie-ITD1362261/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/book/obeshchanie-ITD1362261/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание произведения The Promise под названием «Обещание».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "rwanda:scholastique_mukasonga",
+      "sourceTitleExact": "Notre-Dame du Nil",
+      "catalogTitleRu": "Богоматерь Нильская",
+      "displayTitleRu": "Богоматерь Нильская",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/book/bogomater-nilskaya-ITD1250971/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/book/bogomater-nilskaya-ITD1250971/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание произведения Notre-Dame du Nil под названием «Богоматерь Нильская».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "spain:arturo_perez_reverte",
+      "sourceTitleExact": "El club Dumas",
+      "catalogTitleRu": "Клуб Дюма, или Тень Ришелье",
+      "displayTitleRu": "Клуб Дюма, или Тень Ришелье",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/book/klub-dyuma-ili-ten-rishele-ITD305427/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidenceAlias": "El Club Dumas",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/book/klub-dyuma-ili-ten-rishele-ITD305427/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание под названием «Клуб Дюма, или Тень Ришелье»; оригинал в карточке приведён как «El Club Dumas», а в биографии сохранено точное написание «El club Dumas».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "spain:arturo_perez_reverte",
+      "sourceTitleExact": "La carta esférica",
+      "catalogTitleRu": "Карта небесной сферы, или Тайный меридиан",
+      "displayTitleRu": "Карта небесной сферы, или Тайный меридиан",
+      "status": "russian-edition-attested",
+      "authority": "Издательство Эксмо",
+      "recordUrl": "https://eksmo.ru/book/karta-nebesnoy-sfery-ili-taynyy-meridian-ITD633798/",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidenceAlias": "LA CARTA ESFÉRICA",
+      "evidence": {
+        "provider": "Издательство Эксмо",
+        "url": "https://eksmo.ru/book/karta-nebesnoy-sfery-ili-taynyy-meridian-ITD633798/",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательство Эксмо подтверждает российское издание под названием «Карта небесной сферы, или Тайный меридиан»; оригинал в карточке приведён как «LA CARTA ESFÉRICA», а в биографии сохранено точное написание «La carta esférica».",
+        "fields": [
+          "works"
+        ]
+      }
+    },
+    {
+      "key": "uruguay:eduardo_galeano",
+      "sourceTitleExact": "Las venas abiertas de América Latina",
+      "catalogTitleRu": "Вскрытые вены Латинской Америки: Пять веков разграбления",
+      "displayTitleRu": "Вскрытые вены Латинской Америки: Пять веков разграбления",
+      "status": "russian-edition-attested",
+      "authority": "Издательская группа «Азбука-Аттикус»",
+      "recordUrl": "https://azbooka.ru/books/vskrytye-veny-latinskoy-ameriki-pyat-vekov-razgrableniya",
+      "verifiedAt": "2026-09-01",
+      "expectedOccurrences": 1,
+      "attestationType": "official-publisher-edition",
+      "evidence": {
+        "provider": "Издательская группа «Азбука-Аттикус»",
+        "url": "https://azbooka.ru/books/vskrytye-veny-latinskoy-ameriki-pyat-vekov-razgrableniya",
+        "checkedAt": "2026-09-01",
+        "findingRu": "Издательская группа «Азбука-Аттикус» подтверждает российское издание произведения Las venas abiertas de América Latina под названием «Вскрытые вены Латинской Америки: Пять веков разграбления».",
+        "fields": [
+          "works"
+        ]
+      }
+    }
+  ],
+  "russianPublicationTitleAudit": {
+    "attestedMappings": 109,
+    "attestedQuotedOccurrences": 114,
+    "structuredWorkTitles": 2225,
+    "unresolvedLatinStructuredWorks": 1279,
+    "russianFirstParentheticalOriginalWorks": 0,
+    "romanNumeralOnlyStructuredWorks": 2,
+    "latinQuotedFragments": 1531,
+    "latinQuotedFragmentsRequiringClassification": 1528,
+    "russianFirstParentheticalOriginalConstructions": 71
+  },
   "reviewedKeys": [
     "afghanistan:atiq_rahimi",
     "afghanistan:bahauddin_majrooh",

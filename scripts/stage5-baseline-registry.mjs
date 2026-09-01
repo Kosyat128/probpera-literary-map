@@ -225,11 +225,11 @@ export const stage5FinalInterfaceCopyAttestation = Object.freeze({
   sourceStage5FSha: "d473278a7d0617f14b1d50938fda9bab5c464efa",
   sourceMainSyncSha: "c1939a632bc4c3d36649e7c4b2076fcc0711d2c4",
   interfaceLanguage: Object.freeze({
-    entries: 1201,
+    entries: 1203,
     keysSha256:
-      "b773bacb465d5abf37dc5c61b27c2212cde41cb98237c75c8a303d7f32a1f9b9",
+      "a925b66e5f1d331a1ccf063047719c879ede1fb6456d23506f7ebc04398bf540",
     pairsSha256:
-      "f58d6d9ffd20bf4d6d24d48adab625998e567b1bd1ac42f819690f6c004cd011",
+      "f5d87e6ca49c2af5b9e8fcbb17d62033f842d98ef4acd9563764e02e8dec70bf",
   }),
   catalog: Object.freeze({
     entries: 1415,
@@ -238,6 +238,16 @@ export const stage5FinalInterfaceCopyAttestation = Object.freeze({
     contentSha256:
       "dae3b55c7b030efe0ceed72fd717b3494f3b3f60a65d183247bdecdc8582cee2",
   }),
+});
+
+export const russianBiographyEditorialOwnerAttestation = Object.freeze({
+  id: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
+  authorizedOn: "2026-09-01",
+  scopes: Object.freeze([
+    "canonical-writer-biographies",
+    "book-quality-russian-copy",
+    "premium-translation-and-health-russian-copy",
+  ]),
 });
 
 const stage5D1Stage4GlobeStablePaths = Object.freeze(
@@ -294,15 +304,16 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 19,
       sha256:
-        "4bf12f6b7d720eb9b5705ee74343c8c833932281c346ea79b236329e36ecf90b",
+        "7b310fe5bdd3cf9828c6be67770d7ba0107cf7addd0451fd0d5f959a742e62a0",
     }),
   }),
   premiumCurrent: Object.freeze({
     paths: stage5D1PremiumCurrentStablePaths,
+    ownerAttestationId: russianBiographyEditorialOwnerAttestation.id,
     expected: Object.freeze({
       files: 72,
       sha256:
-        "e570d38e81437a6f0217355a7d42b60c27f1fcd5e2e9145eae21d43e92292b5b",
+        "4b42e0650d0936bd3d90dff8f5fc90bf49904178001e28a4bdff9af02043a7ea",
     }),
   }),
 });
@@ -340,10 +351,12 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
               }),
               enforced: Object.freeze({
                 paths: bookArchiveOwnerPaths,
+                ownerAttestationId:
+                  russianBiographyEditorialOwnerAttestation.id,
                 expected: Object.freeze({
                   files: 9,
                   sha256:
-                    "3ef830b784d820525f1be6826cb28e37b80e05d444275ac2e1a247916d1be1fd",
+                    "689b74e6bbaf636d47c65506828a48f0013a7019c81ef09da14158e6988b0a12",
                 }),
               }),
             })
@@ -353,9 +366,9 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
                 enforced: Object.freeze({
                   paths: ["src/index.css"],
                   expected: Object.freeze({
-                    rules: 219,
+                    rules: 225,
                     sha256:
-                      "33c1c2700f037487d14e732500c42db057510ee025a48dbcedb2841584cee70e",
+                      "576898463bc2f981e3ddfdbb283ac82b961d2eaeb5a5fb316d35f89fd528d743",
                   }),
                 }),
               })
