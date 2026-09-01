@@ -1992,8 +1992,8 @@ export default function LiteraryGlobe({
   const editionRailToggleRef = useRef<HTMLButtonElement>(null);
   const editionPreloadTimerRef = useRef<number | null>(null);
   const editionRailHideTimerRef = useRef<number | null>(null);
-  const editionRailRevealArmedRef = useRef(false);
   const editionRailRestoreFocusRef = useRef(false);
+  const editionRailFocusToggleAfterHideRef = useRef(false);
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [atlasLoadRequest, setAtlasLoadRequest] = useState(0);
@@ -2091,8 +2091,26 @@ export default function LiteraryGlobe({
     if (!activeEdition) return;
     const centeredLeft =
       activeEdition.offsetLeft - (rail.clientWidth - activeEdition.offsetWidth) / 2;
+    const maximumLeft = Math.max(0, rail.scrollWidth - rail.clientWidth);
+    const boundedLeft = Math.min(maximumLeft, Math.max(0, centeredLeft));
+    const editionButtons = Array.from(
+      rail.querySelectorAll<HTMLElement>("[data-globe-edition-option]")
+    );
+    const originLeft = editionButtons[0]?.offsetLeft ?? 0;
+    const alignedLeft = editionButtons
+      .map((editionButton) =>
+        Math.max(0, editionButton.offsetLeft - originLeft)
+      )
+      .filter((candidate) => candidate <= maximumLeft)
+      .reduce(
+        (closest, candidate) =>
+          Math.abs(candidate - boundedLeft) < Math.abs(closest - boundedLeft)
+            ? candidate
+            : closest,
+        0
+      );
     rail.scrollTo({
-      left: Math.max(0, centeredLeft),
+      left: Math.min(maximumLeft, alignedLeft),
       behavior: "auto",
     });
   }, [atlas, renderedEditionId, selectedCountry?.id, viewportSize.width]);
@@ -2189,7 +2207,6 @@ export default function LiteraryGlobe({
   }, []);
   const revealEditionRail = useCallback(() => {
     clearEditionRailHideTimer();
-    editionRailRevealArmedRef.current = false;
     setEditionRailVisible(true);
   }, [clearEditionRailHideTimer]);
   const hideEditionRail = useCallback(() => {
@@ -2198,13 +2215,8 @@ export default function LiteraryGlobe({
       editionRailRestoreFocusRef.current ||
       Boolean(rail && rail.contains(document.activeElement));
     editionRailRestoreFocusRef.current = false;
-    editionRailRevealArmedRef.current = false;
+    editionRailFocusToggleAfterHideRef.current = shouldRestoreFocus;
     setEditionRailVisible(false);
-    if (shouldRestoreFocus) {
-      window.requestAnimationFrame(() => {
-        editionRailToggleRef.current?.focus({ preventScroll: true });
-      });
-    }
   }, []);
   const scheduleEditionRailHide = useCallback(() => {
     clearEditionRailHideTimer();
@@ -2226,7 +2238,7 @@ export default function LiteraryGlobe({
       target?.scrollIntoView({
         behavior: "auto",
         block: "nearest",
-        inline: "center",
+        inline: "nearest",
       });
     });
   }, [renderedEditionId, revealEditionRail]);
@@ -2280,6 +2292,13 @@ export default function LiteraryGlobe({
 
   useLayoutEffect(() => {
     editionRailRef.current?.toggleAttribute("inert", !editionRailVisible);
+    if (
+      !editionRailVisible &&
+      editionRailFocusToggleAfterHideRef.current
+    ) {
+      editionRailFocusToggleAfterHideRef.current = false;
+      editionRailToggleRef.current?.focus({ preventScroll: true });
+    }
   }, [editionRailVisible]);
 
   const handleEditionRailKeyDown = useCallback(
@@ -2335,7 +2354,7 @@ export default function LiteraryGlobe({
       nextButton.scrollIntoView({
         behavior: "auto",
         block: "nearest",
-        inline: "center",
+        inline: "nearest",
       });
     },
     [renderedEditionId]
@@ -2362,14 +2381,7 @@ export default function LiteraryGlobe({
       const offsetFromTop =
         event.clientY - event.currentTarget.getBoundingClientRect().top;
       const revealBoundary = mode === "immersive" ? 96 : 84;
-      if (offsetFromTop > revealBoundary + 36) {
-        editionRailRevealArmedRef.current = true;
-        return;
-      }
-      if (
-        editionRailRevealArmedRef.current &&
-        offsetFromTop <= revealBoundary
-      ) {
+      if (offsetFromTop <= revealBoundary) {
         revealEditionRail();
       }
     }, [editionRailVisible, markPrewarmInputActivity, mode, revealEditionRail]
@@ -2697,9 +2709,6 @@ export default function LiteraryGlobe({
       onKeyDown={handleGlobeKeyDown}
       onPointerDownCapture={() => markPrewarmInputActivity(420)}
       onPointerMoveCapture={handleGlobePointerMoveCapture}
-      onPointerLeave={() => {
-        if (!editionRailVisible) editionRailRevealArmedRef.current = true;
-      }}
       onTouchStartCapture={() => markPrewarmInputActivity(420)}
       onTouchMoveCapture={() => markPrewarmInputActivity(320)}
       onWheelCapture={() => markPrewarmInputActivity(420)}
@@ -2909,6 +2918,14 @@ export default function LiteraryGlobe({
           <small>{t("Источник")}</small>
         </Button>
       </div>
+
+      <div
+        className="globe-style-switch-reveal-zone"
+        aria-hidden="true"
+        onPointerEnter={(event) => {
+          if (event.pointerType !== "touch") revealEditionRail();
+        }}
+      />
 
       <IconButton
         ref={editionRailToggleRef}

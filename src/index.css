@@ -18253,12 +18253,12 @@ html[data-theme="book"] .calendar-heading h3 {
 .atlas-experience-surface .atlas-immersion-launch {
   position: absolute;
   z-index: 28;
-  top: 74px;
+  top: 38px;
   left: 22px;
-  width: 48px;
-  min-width: 48px;
-  height: 48px;
-  min-height: 48px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
   padding: 0;
   color: rgba(255, 246, 231, 0.92);
   background:
@@ -19090,24 +19090,26 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .literary-globe .globe-style-switch {
+  top: 36px;
   right: auto;
   left: 50%;
+  gap: 2px;
   grid-template-columns: none;
-  grid-auto-columns: 128px;
+  grid-auto-columns: calc((100% - 8px) / 5);
   grid-auto-flow: column;
   width: min(1040px, calc(100% - 160px));
   max-width: none;
-  padding: 5px;
+  padding: 3px;
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
-  scroll-padding-inline: 5px;
+  scroll-padding-inline: 3px;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
   background:
     linear-gradient(180deg, rgba(41, 12, 52, 0.91), rgba(17, 4, 28, 0.9));
   border-color: rgba(255, 191, 126, 0.34);
-  border-radius: 16px;
+  border-radius: 14px;
   box-shadow:
     0 18px 50px rgba(5, 0, 10, 0.38),
     inset 0 1px rgba(255, 255, 255, 0.055);
@@ -19125,21 +19127,50 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .literary-globe .globe-style-switch button {
+  box-sizing: border-box;
+  height: 40px;
+  min-height: 40px;
   min-width: 0;
-  padding-inline: 10px;
+  padding: 0 11px;
   font-family: var(--sans);
   font-size: 11px;
-  font-weight: 720;
-  line-height: 1.2;
+  font-weight: 700;
+  line-height: 1;
   letter-spacing: 0.015em;
   text-transform: none;
-  scroll-snap-align: center;
+  border-radius: 11px;
+  scroll-snap-align: start;
+}
+
+.literary-globe .globe-style-switch .ui-action__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+}
+
+.literary-globe .globe-style-switch-reveal-zone {
+  position: absolute;
+  z-index: 19;
+  top: 0;
+  right: 72px;
+  left: 72px;
+  height: 96px;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .literary-globe[data-globe-edition-rail="hidden"] .globe-style-switch-reveal-zone {
+    pointer-events: auto;
+  }
 }
 
 .literary-globe .globe-style-switch-toggle {
   position: absolute;
   z-index: 23;
-  top: 69px;
+  top: 38px;
   right: 20px;
   width: 44px;
   min-width: 44px;
@@ -19192,11 +19223,106 @@ html[data-theme="book"] .calendar-heading h3 {
   transition-delay: 0s;
 }
 
-.literary-globe .globe-style-switch button[data-globe-edition-option="us-army-general-reference-1943"].is-active {
-  color: #fff4cf;
-  background: linear-gradient(135deg, rgba(105, 112, 54, 0.72), rgba(173, 69, 31, 0.62));
-  border-color: rgba(250, 208, 116, 0.72);
-  box-shadow: inset 0 0 18px rgba(255, 211, 122, 0.12);
+.literary-globe .globe-style-switch button[data-globe-edition-option="behaim-1492"] {
+  --edition-active-text: #ffe8bf;
+  --edition-active-start: rgba(128, 70, 29, 0.78);
+  --edition-active-end: rgba(70, 33, 22, 0.78);
+  --edition-active-border: rgba(221, 157, 81, 0.82);
+  --edition-active-glow: rgba(210, 126, 53, 0.2);
+  --edition-hover: rgba(176, 103, 42, 0.14);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option="hondius-1615"] {
+  --edition-active-text: #dcfff5;
+  --edition-active-start: rgba(28, 103, 92, 0.76);
+  --edition-active-end: rgba(36, 53, 67, 0.8);
+  --edition-active-border: rgba(101, 210, 184, 0.8);
+  --edition-active-glow: rgba(66, 194, 166, 0.19);
+  --edition-hover: rgba(66, 194, 166, 0.12);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option="coronelli-1697"] {
+  --edition-active-text: #fff0e7;
+  --edition-active-start: rgba(139, 54, 65, 0.78);
+  --edition-active-end: rgba(77, 31, 53, 0.8);
+  --edition-active-border: rgba(235, 139, 119, 0.82);
+  --edition-active-glow: rgba(222, 98, 87, 0.2);
+  --edition-hover: rgba(222, 98, 87, 0.12);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option="scherer-1700"] {
+  --edition-active-text: #f8e9ff;
+  --edition-active-start: rgba(105, 61, 139, 0.8);
+  --edition-active-end: rgba(78, 37, 76, 0.8);
+  --edition-active-border: rgba(185, 133, 218, 0.82);
+  --edition-active-glow: rgba(159, 99, 204, 0.2);
+  --edition-hover: rgba(159, 99, 204, 0.13);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option="cassini-1790"] {
+  --edition-active-text: #edf5ff;
+  --edition-active-start: rgba(48, 79, 126, 0.8);
+  --edition-active-end: rgba(51, 40, 86, 0.8);
+  --edition-active-border: rgba(119, 162, 220, 0.82);
+  --edition-active-glow: rgba(91, 135, 200, 0.2);
+  --edition-hover: rgba(91, 135, 200, 0.13);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option="rand-mcnally-1887"] {
+  --edition-active-text: #fff5d2;
+  --edition-active-start: rgba(113, 94, 41, 0.8);
+  --edition-active-end: rgba(91, 48, 33, 0.8);
+  --edition-active-border: rgba(226, 187, 96, 0.82);
+  --edition-active-glow: rgba(208, 161, 70, 0.2);
+  --edition-hover: rgba(208, 161, 70, 0.13);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option="us-army-general-reference-1943"] {
+  --edition-active-text: #fff4cf;
+  --edition-active-start: rgba(105, 112, 54, 0.82);
+  --edition-active-end: rgba(159, 65, 34, 0.78);
+  --edition-active-border: rgba(250, 208, 116, 0.84);
+  --edition-active-glow: rgba(222, 146, 55, 0.22);
+  --edition-hover: rgba(196, 143, 54, 0.14);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option="nasa-blue-marble"] {
+  --edition-active-text: #e4f7ff;
+  --edition-active-start: rgba(25, 86, 153, 0.82);
+  --edition-active-end: rgba(18, 43, 101, 0.84);
+  --edition-active-border: rgba(83, 183, 241, 0.84);
+  --edition-active-glow: rgba(50, 153, 224, 0.22);
+  --edition-hover: rgba(50, 153, 224, 0.14);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option="natural-earth-2026"] {
+  --edition-active-text: #ddfff2;
+  --edition-active-start: rgba(23, 109, 83, 0.82);
+  --edition-active-end: rgba(25, 66, 92, 0.84);
+  --edition-active-border: rgba(78, 214, 162, 0.84);
+  --edition-active-glow: rgba(54, 190, 139, 0.22);
+  --edition-hover: rgba(54, 190, 139, 0.14);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option]:not(.is-active):hover {
+  color: var(--edition-active-text);
+  background: var(--edition-hover);
+  border-color: var(--edition-active-border);
+}
+
+.literary-globe .globe-style-switch button[data-globe-edition-option].is-active {
+  color: var(--edition-active-text);
+  text-decoration-color: var(--edition-active-border);
+  background: linear-gradient(
+    135deg,
+    var(--edition-active-start),
+    var(--edition-active-end)
+  );
+  border-color: var(--edition-active-border);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.11),
+    inset 0 0 16px rgba(255, 255, 255, 0.035),
+    0 5px 16px var(--edition-active-glow);
 }
 
 .literary-globe .globe-style-status.is-error {
@@ -19244,25 +19370,115 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .literary-globe .globe-controls {
-  bottom: 104px;
-  grid-template-columns: 48px 48px repeat(3, minmax(82px, auto));
-  gap: 5px;
-  padding: 5px;
-  border-radius: 15px;
+  right: auto;
+  bottom: 52px;
+  left: 50%;
+  grid-template-columns: 44px 44px repeat(3, minmax(76px, auto));
+  gap: 4px;
+  width: auto;
+  max-width: calc(100% - 24px);
+  padding: 4px;
+  background:
+    radial-gradient(circle at 50% 0, rgba(255, 184, 105, 0.1), transparent 58%),
+    linear-gradient(180deg, rgba(35, 10, 48, 0.94), rgba(17, 4, 28, 0.92));
+  border-color: rgba(255, 188, 119, 0.4);
+  border-radius: 14px;
+  box-shadow:
+    0 16px 42px rgba(5, 0, 10, 0.4),
+    inset 0 1px rgba(255, 255, 255, 0.07),
+    inset 0 0 20px rgba(246, 117, 24, 0.035);
+  transform: translateX(-50%);
 }
 
 .literary-globe .globe-controls button {
+  --globe-control-accent: 255, 190, 124;
+
+  position: relative;
   box-sizing: border-box;
   height: 48px;
   min-height: 48px;
-  padding-block: 0;
+  padding: 0 7px;
+  overflow: hidden;
   font-family: var(--sans);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
+  border-color: rgba(255, 255, 255, 0.045);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.035);
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.literary-globe .globe-controls button[data-globe-control="zoom-in"] {
+  --globe-control-accent: 238, 181, 87;
+}
+
+.literary-globe .globe-controls button[data-globe-control="zoom-out"] {
+  --globe-control-accent: 177, 141, 211;
+}
+
+.literary-globe .globe-controls button[data-globe-control="auto-rotate"] {
+  --globe-control-accent: 239, 135, 61;
+}
+
+.literary-globe .globe-controls button[data-globe-control="reset"] {
+  --globe-control-accent: 116, 188, 220;
+}
+
+.literary-globe .globe-controls button[data-globe-control="edition-info"] {
+  --globe-control-accent: 105, 201, 163;
+}
+
+.literary-globe .globe-controls button:hover {
+  color: #fff9ef;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--globe-control-accent), 0.2),
+      rgba(var(--globe-control-accent), 0.075)
+    );
+  border-color: rgba(var(--globe-control-accent), 0.5);
+  box-shadow:
+    0 7px 18px rgba(var(--globe-control-accent), 0.14),
+    inset 0 1px rgba(255, 255, 255, 0.09);
+  transform: translateY(-2px);
+}
+
+.literary-globe .globe-controls button:active {
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.18);
+  transform: translateY(0) scale(0.97);
+}
+
+.literary-globe .globe-controls button.is-active {
+  color: #fff7e8;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(var(--globe-control-accent), 0.27),
+      rgba(var(--globe-control-accent), 0.1)
+    );
+  border-color: rgba(var(--globe-control-accent), 0.62);
+  box-shadow:
+    0 6px 18px rgba(var(--globe-control-accent), 0.13),
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 14px rgba(var(--globe-control-accent), 0.08);
 }
 
 .literary-globe .globe-controls .ui-action__icon {
   display: grid;
   align-self: center;
   place-items: center;
+  transition:
+    filter 180ms ease,
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.literary-globe .globe-controls button:hover .ui-action__icon {
+  filter: drop-shadow(0 0 5px rgba(var(--globe-control-accent), 0.42));
+  transform: scale(1.1);
 }
 
 .literary-globe .globe-controls .ui-action__label {
@@ -19282,6 +19498,16 @@ html[data-theme="book"] .calendar-heading h3 {
   letter-spacing: 0.015em;
   text-transform: none;
   white-space: nowrap;
+}
+
+.literary-globe .globe-controls button[data-globe-control="auto-rotate"].is-active .ui-action__icon {
+  animation: globe-control-spin 4.8s linear infinite;
+}
+
+@keyframes globe-control-spin {
+  to {
+    transform: rotate(1turn);
+  }
 }
 
 .literary-globe .globe-instruction {
@@ -19310,6 +19536,10 @@ html[data-theme="book"] .calendar-heading h3 {
   width: min(1040px, calc(100% - 160px));
 }
 
+.atlas-experience-surface[data-atlas-view="immersive"] .globe-style-switch-toggle {
+  top: calc(max(14px, env(safe-area-inset-top)) + 62px);
+}
+
 .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-nobel-status {
   top: calc(max(14px, env(safe-area-inset-top)) + 124px);
 }
@@ -19319,7 +19549,11 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .atlas-experience-surface[data-atlas-view="embedded"] .globe-style-switch {
-  top: 64px;
+  top: 36px;
+}
+
+.atlas-experience-surface[data-atlas-view="embedded"] .globe-copy {
+  top: 14px;
 }
 
 @media (min-width: 981px) {
@@ -19348,6 +19582,30 @@ html[data-theme="book"] .calendar-heading h3 {
     right: 445px;
   }
 
+  .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-panel-state="open"] .literary-globe .globe-controls {
+    left: calc((100% - 445px) / 2);
+  }
+
+  .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-panel-state="open"] .literary-globe .globe-instruction {
+    left: calc((100% - 445px) / 2);
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-controls {
+    left: calc((100% - 458px) / 2);
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-instruction {
+    left: calc((100% - 458px) / 2);
+  }
+
+  .atlas-experience-surface[data-atlas-panel-state="open"] .globe-style-switch {
+    grid-auto-columns: calc((100% - 2px) / 2);
+  }
+
+  .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-panel-state="open"] .globe-copy p {
+    display: none;
+  }
+
   .atlas-experience-surface[data-atlas-panel-state="open"] .literary-globe .globe-style-status.is-error {
     left: max(14px, calc(env(safe-area-inset-left) + 12px));
     width: min(420px, calc(100% - 500px));
@@ -19355,8 +19613,50 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 }
 
+@media (min-width: 1180px) {
+  .literary-globe .globe-style-switch {
+    grid-auto-columns: calc((100% - 10px) / 6);
+  }
+}
+
+@media (min-width: 1100px) {
+  .atlas-experience-surface[data-atlas-panel-state="open"] .globe-style-switch {
+    grid-auto-columns: calc((100% - 4px) / 3);
+  }
+}
+
+@media (min-width: 1280px) {
+  .literary-globe .globe-style-switch {
+    grid-auto-columns: calc((100% - 12px) / 7);
+  }
+
+  .atlas-experience-surface[data-atlas-panel-state="open"] .globe-style-switch {
+    grid-auto-columns: calc((100% - 6px) / 4);
+  }
+}
+
+@media (min-width: 1480px) {
+  .atlas-experience-surface[data-atlas-panel-state="open"] .globe-style-switch {
+    grid-auto-columns: calc((100% - 8px) / 5);
+  }
+}
+
+@media (min-width: 1600px) {
+  .atlas-experience-surface[data-atlas-panel-state="open"] .globe-style-switch {
+    grid-auto-columns: calc((100% - 10px) / 6);
+  }
+}
+
 .atlas-experience-surface[data-atlas-panel-state="open"] .literary-globe .globe-nobel-status {
   visibility: hidden;
+}
+
+.atlas-experience-surface[data-atlas-panel-state="open"] .literary-globe .globe-country-label {
+  visibility: hidden;
+}
+
+.atlas-experience-surface[data-atlas-panel-state="open"] .atlas-coordinate {
+  display: none;
 }
 
 .globe-edition-info-dialog {
@@ -19456,25 +19756,27 @@ html[data-theme="book"] .calendar-heading h3 {
 
 @media (max-width: 1024px) {
   .atlas-experience-surface[data-atlas-view="embedded"] .globe-style-switch {
-    top: 56px;
+    top: 42px;
   }
 
   .literary-globe .globe-style-switch {
-    top: 56px;
+    top: 42px;
     right: 14px;
     left: 14px;
     grid-template-columns: none;
-    grid-auto-columns: 138px;
+    grid-auto-columns: calc((100% - 6px) / 4);
     width: auto;
     transform: none;
   }
 
   .literary-globe .globe-style-switch-toggle {
-    top: 61px;
+    top: 47px;
     right: 14px;
   }
 
   .literary-globe .globe-style-switch button {
+    height: 44px;
+    min-height: 44px;
     padding-inline: 9px;
     font-size: 11px;
     letter-spacing: 0.01em;
@@ -19501,8 +19803,16 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .atlas-experience-surface[data-atlas-view="embedded"] .globe-copy {
-    top: 120px;
+    top: 70px;
     left: 16px;
+  }
+
+  .literary-globe .globe-country-label {
+    bottom: 128px;
+  }
+
+  .atlas-coordinate {
+    bottom: 126px;
   }
 }
 
@@ -19512,9 +19822,13 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .literary-globe .globe-controls {
-    bottom: 112px;
+    bottom: 44px;
     grid-template-columns: 44px 44px repeat(3, minmax(0, 1fr));
-    width: min(356px, calc(100% - 20px));
+    width: min(340px, calc(100% - 24px));
+  }
+
+  .literary-globe .globe-style-switch {
+    grid-auto-columns: calc((100% - 2px) / 2);
   }
 
   .literary-globe .globe-controls button {
@@ -19610,18 +19924,18 @@ html[data-theme="book"] .calendar-heading h3 {
     right: 6px;
     left: 6px;
     grid-template-columns: none;
-    grid-auto-columns: minmax(116px, 42vw);
+    grid-auto-columns: calc((100% - 2px) / 2);
     width: auto;
     padding: 3px;
     transform: none;
   }
 
   .literary-globe .globe-style-switch {
-    top: 72px;
+    top: 58px;
   }
 
   .literary-globe .globe-style-switch-toggle {
-    top: 77px;
+    top: 63px;
     right: 6px;
   }
 
@@ -19651,8 +19965,13 @@ html[data-theme="book"] .calendar-heading h3 {
 
 @media (prefers-reduced-motion: reduce) {
   .literary-globe .globe-style-switch,
-  .literary-globe .globe-style-switch-toggle {
+  .literary-globe .globe-style-switch-toggle,
+  .literary-globe .globe-controls button {
     transition: none !important;
+  }
+
+  .literary-globe .globe-controls button[data-globe-control="auto-rotate"].is-active .ui-action__icon {
+    animation: none;
   }
 }
 
