@@ -75,7 +75,7 @@ const statusLabels: Record<ChangeSetRow["status"], string> = {
 
 function valueSummary(value: unknown) {
   const serialized = JSON.stringify(value);
-  if (!serialized) return "—";
+  if (!serialized) return "-";
   return serialized.length > 90 ? `${serialized.slice(0, 87)}…` : serialized;
 }
 

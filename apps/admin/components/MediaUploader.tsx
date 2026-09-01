@@ -115,7 +115,7 @@ export default function MediaUploader() {
       <label className="upload-zone">
         <input name="file" type="file" accept={CLIENT_IMAGE_ACCEPT_ATTRIBUTE} multiple required />
         <strong>Растровые изображения всех распространённых форматов</strong>
-        <p>JPEG, PNG, WebP, AVIF, GIF, BMP, TIFF, HEIC/HEIF и JPEG XL — если формат декодируется вашим браузером. До 20 файлов за операцию; каждый исходник будет подогнан без обрезки, очищен от метаданных и сохранён отдельным неизменяемым WebP. SVG и другие исполняемые документы запрещены.</p>
+        <p>JPEG, PNG, WebP, AVIF, GIF, BMP, TIFF, HEIC/HEIF и JPEG XL - если формат декодируется вашим браузером. До 20 файлов за операцию; каждый исходник будет подогнан без обрезки, очищен от метаданных и сохранён отдельным неизменяемым WebP. SVG и другие исполняемые документы запрещены.</p>
       </label>
       <label className="field">
         <span>Общее описание для выбранных файлов *</span>

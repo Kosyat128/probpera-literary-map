@@ -46,7 +46,7 @@ export default async function SiteStudioPage() {
       <header className={styles.heading}>
         <div>
           <span className="eyebrow">Site Studio</span>
-          <h1>Оформление сайта — в одной системе</h1>
+          <h1>Оформление сайта - в одной системе</h1>
           <p>
             Меняйте управляемые части сайта через типизированные настройки,
             проверяйте результат и публикуйте связанные правки одним выпуском.

@@ -120,7 +120,7 @@ function csvCell(value: string | number) {
 export function analyticsReportCsv(report: AnalyticsReport) {
   const rows = [
     ["Раздел", "Значение", "Просмотры"],
-    ["Период", `${report.from} — ${report.to}`, report.views],
+    ["Период", `${report.from} - ${report.to}`, report.views],
     ["Читатели", report.visitors, ""],
     ["Страницы", report.pages, ""],
     ["Оценки", report.ratings, ""],

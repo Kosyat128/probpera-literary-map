@@ -287,7 +287,7 @@ export default async function PremiumTranslationsPage({
         <h2>{operationsReady ? "Долговечный контур заданий готов" : "Нужна миграция очереди переводов"}</h2>
         <p>
           {operationsReady
-            ? "Каждый малый пакет сохраняет задания, элементы, попытки, статусы и следующий курсор в приватной базе без исходных текстов и сырых ответов провайдера. Кнопка продолжения — активный ограниченный staff-runner с сохранённой позиции. Service-role lease API также закрыт от браузера и готов для отдельного фонового worker, но расписание worker в этом интерфейсе не заявляется."
+            ? "Каждый малый пакет сохраняет задания, элементы, попытки, статусы и следующий курсор в приватной базе без исходных текстов и сырых ответов провайдера. Кнопка продолжения - активный ограниченный staff-runner с сохранённой позиции. Service-role lease API также закрыт от браузера и готов для отдельного фонового worker, но расписание worker в этом интерфейсе не заявляется."
             : "Пока миграция Translation Operations не применена, доступны только малые ограниченные пакеты в текущем запросе. Интерфейс не выдаёт их за фоновые задания."}
         </p>
         {operationsReady && (
@@ -327,9 +327,9 @@ export default async function PremiumTranslationsPage({
           <div><span>CONFIGURED</span><strong>{runtimeReadiness.configured ? "ДА" : "НЕТ"}</strong></div>
           <div><span>BINDING FOUND</span><strong>{runtimeReadiness.bindingFound ? "ДА" : "НЕТ"}</strong></div>
           <div><span>TEST PASSED</span><strong>{translationReady ? "ДА" : providerProbe.test_passed === false ? "НЕТ" : "НЕ ЗАПУСКАЛСЯ"}</strong></div>
-          <div><span>LAST TEST</span><strong>{typeof providerProbe.last_test_at === "string" ? formatDate(providerProbe.last_test_at, true) : "—"}</strong></div>
-          <div><span>LATENCY</span><strong>{typeof providerProbe.latency_ms === "number" ? `${providerProbe.latency_ms} мс` : "—"}</strong></div>
-          <div><span>LAST ERROR</span><strong>{translationErrorMessage(providerProbe.last_error_code) || "—"}</strong></div>
+          <div><span>LAST TEST</span><strong>{typeof providerProbe.last_test_at === "string" ? formatDate(providerProbe.last_test_at, true) : "-"}</strong></div>
+          <div><span>LATENCY</span><strong>{typeof providerProbe.latency_ms === "number" ? `${providerProbe.latency_ms} мс` : "-"}</strong></div>
+          <div><span>LAST ERROR</span><strong>{translationErrorMessage(providerProbe.last_error_code) || "-"}</strong></div>
         </div>
         <p>
           Self-test делает настоящий короткий запрос к выбранной модели, проверяет binding,

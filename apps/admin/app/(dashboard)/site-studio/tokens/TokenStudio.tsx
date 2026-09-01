@@ -219,7 +219,7 @@ function TokenValueFields({
   if (valueType === "number" || valueType === "duration") {
     return (
       <label className="field">
-        <span>{valueType === "duration" ? "Длительность, мс (0–5000)" : "Число"}</span>
+        <span>{valueType === "duration" ? "Длительность, мс (0-5000)" : "Число"}</span>
         <input
           type="number"
           min={valueType === "duration" ? 0 : -10000}
@@ -328,7 +328,7 @@ function TokenValueFields({
         </label>
         {display === "grid" && (
           <label className="field">
-            <span>Колонки (1–12)</span>
+            <span>Колонки (1-12)</span>
             <input type="number" min={1} max={12} value={number(source.columns, 2)} onChange={(event) => onChange({ ...source, columns: Number(event.target.value) })} />
           </label>
         )}

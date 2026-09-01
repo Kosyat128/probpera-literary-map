@@ -8,21 +8,21 @@ Last updated: `2026-09-01`
 
 ## Состояние реализации
 
-- [x] Phase 5 — Site Studio: типизированный реестр компонентов, дизайн-токены,
+- [x] Phase 5 - Site Studio: типизированный реестр компонентов, дизайн-токены,
   адаптивные состояния, наборы изменений, атомарные релизы и откат; публичный
   runtime/export; Direct Edit v2; безопасная загрузка растровых изображений.
-- [x] Phase 6 — Data Studio: единый маршрут, канонические справочники стран и
+- [x] Phase 6 - Data Studio: единый маршрут, канонические справочники стран и
   писателей, validated FK, ручной приоритет, SELECT-only/FORCE RLS, атомарные
   операции с изданиями и CAS/audit/outbox.
-- [x] Phase 7 — Translation Operations: реальный provider self-test со строгой
+- [x] Phase 7 - Translation Operations: реальный provider self-test со строгой
   JSON-схемой, cooldown/lease и сроком 24 часа; безопасные коды ошибок; durable
   jobs/items/attempts и ограниченное продолжение по сохранённому курсору.
-- [x] Phase 8 — Site Copy, SEO, комментарии, аналитика и операции: атомарные RPC,
+- [x] Phase 8 - Site Copy, SEO, комментарии, аналитика и операции: атомарные RPC,
   запрет обхода прямым DML, защита редиректов, агрегированная DB-аналитика и CSV,
   backup Storage manifest с SHA-256, restore verification и operational markers.
-- [x] Phase 9 — единый типизированный реестр модулей для sidebar и command
+- [x] Phase 9 - единый типизированный реестр модулей для sidebar и command
   palette; все операторские маршруты покрыты и проверены.
-- [x] Phase 10 — fail-closed schema health, закрытый словарь статусов, редактирование
+- [x] Phase 10 - fail-closed schema health, закрытый словарь статусов, редактирование
   без вывода сырых PostgREST/provider ошибок, граница клиентских секретов,
   документация и матрица CMS-покрытия.
 
