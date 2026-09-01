@@ -356,7 +356,8 @@ const englishInterfaceText: Record<string, string> = {
   "Тяните, чтобы вращать": "Drag to rotate",
   "Колесо - масштаб": "Scroll to zoom",
   "Тяните или используйте стрелки": "Drag or use the arrow keys",
-  "Колесо или кнопки ± — масштаб": "Scroll or use the ± buttons to zoom",
+  "Масштаб: колесо или кнопки ±": "Zoom: scroll or use the ± buttons",
+  Развернуть: "Expand",
   "Нажмите, чтобы открыть архив страны": "Select to open the country archive",
   "Страна выбрана · карточка архива открыта":
     "Country selected · archive card open",

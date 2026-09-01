@@ -581,6 +581,7 @@ export default function App() {
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
   const atlasSearchInputRef = useRef<HTMLInputElement>(null);
+  const atlasActiveFilterRef = useRef<HTMLButtonElement>(null);
   const atlasFilterClusterRef = useRef<HTMLDivElement>(null);
   const atlasArchivesToggleRef = useRef<HTMLButtonElement>(null);
   const randomAtlasHistoryRef = useRef<string[]>([]);
@@ -2208,9 +2209,17 @@ export default function App() {
                       );
                     }
                   }}
-                  onFiltersToggle={() =>
-                    atlasExperienceDispatch({ type: "TOGGLE_FILTERS" })
-                  }
+                  onFiltersToggle={() => {
+                    const nextOpen = !atlasExperience.state.filtersOpen;
+                    atlasExperienceDispatch({ type: "TOGGLE_FILTERS" });
+                    if (nextOpen) {
+                      window.requestAnimationFrame(() =>
+                        atlasActiveFilterRef.current?.focus({
+                          preventScroll: true,
+                        })
+                      );
+                    }
+                  }}
                   randomDisabled={filteredCountries.length === 0}
                   onRandomJourney={selectRandomLiteraryDestination}
                 />
@@ -2394,6 +2403,11 @@ export default function App() {
                     ] as Array<[AtlasFilter, string]>
                   ).map(([value, label]) => (
                     <Button
+                      ref={
+                        atlasFilter === value
+                          ? atlasActiveFilterRef
+                          : undefined
+                      }
                       className={atlasFilter === value ? "is-active" : ""}
                       size="md"
                       surface="dark"
@@ -2590,9 +2604,9 @@ export default function App() {
                     </span>
                     <span className="atlas-country-sheet-action">
                       {atlasExperience.state.sheetState === "expanded"
-                        ? t("Свернуть архив страны")
+                        ? t("Свернуть")
                         : atlasExperience.state.sheetState === "half"
-                          ? t("Развернуть архив полностью")
+                          ? t("Развернуть")
                           : t("Открыть архив")}
                     </span>
                   </Button>

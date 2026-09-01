@@ -195,6 +195,9 @@ test("embedded atlas enters one-canvas immersion and Escape restores scroll and 
     "data-atlas-filters-open",
     "true"
   );
+  await expect(
+    atlas.experience.locator('[data-atlas-filter][aria-pressed="true"]')
+  ).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(atlas.experience).toHaveAttribute(
     "data-atlas-filters-open",

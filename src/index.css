@@ -4384,12 +4384,19 @@ main [id] {
     transform var(--ui-transition-fast);
 }
 
-.writer-detail-tabs button:hover,
-.writer-detail-tabs button:focus-visible {
+.writer-detail-tabs button:hover {
   color: #54276a;
   background: rgba(255, 255, 255, 0.7);
-  outline: none;
   border-color: rgba(104, 16, 201, 0.16);
+}
+
+.writer-detail-tabs button:focus-visible {
+  color: #54276a;
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(246, 117, 24, 0.58);
+  outline: 2px solid #d9550d;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(246, 117, 24, 0.12);
 }
 
 .writer-detail-tabs button.is-active {
@@ -4559,12 +4566,19 @@ main [id] {
     box-shadow 160ms ease;
 }
 
-a.writer-nobel-medal:hover,
-a.writer-nobel-medal:focus-visible {
+a.writer-nobel-medal:hover {
   box-shadow:
     0 8px 25px rgba(22, 5, 28, 0.35),
     0 0 0 3px rgba(246, 117, 24, 0.2);
-  outline: none;
+  transform: translateY(-2px) scale(1.04);
+}
+
+a.writer-nobel-medal:focus-visible {
+  outline: 2px solid #d9550d;
+  outline-offset: 3px;
+  box-shadow:
+    0 8px 25px rgba(22, 5, 28, 0.35),
+    0 0 0 5px rgba(246, 117, 24, 0.14);
   transform: translateY(-2px) scale(1.04);
 }
 
@@ -4976,14 +4990,14 @@ a.writer-nobel-medal:focus-visible {
   }
 
   .writer-nobel-feature {
-    grid-template-columns: 40px minmax(0, 1fr);
+    grid-template-columns: 44px minmax(0, 1fr);
     gap: 10px;
     padding: 12px;
   }
 
   .writer-nobel-medal {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
 
   .writer-detail .writer-record-section {
@@ -21744,7 +21758,7 @@ html[data-theme="book"] .calendar-heading h3 {
   overflow: hidden;
   color: rgba(255, 237, 220, 0.56);
   font-family: var(--sans);
-  font-size: 8.5px;
+  font-size: 9px;
   font-weight: 720;
   line-height: 1;
   letter-spacing: 0.105em;
@@ -21757,7 +21771,7 @@ html[data-theme="book"] .calendar-heading h3 {
   overflow: hidden;
   color: rgba(255, 249, 240, 0.92);
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 680;
   line-height: 1.08;
   letter-spacing: 0.012em;
@@ -22349,7 +22363,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .atlas-experience-surface[data-atlas-view="embedded"] .globe-style-switch {
     top: 70px;
     right: 6px;
-    left: 70px;
+    left: 76px;
     width: auto;
     transform: none;
   }
@@ -22367,7 +22381,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .atlas-experience-surface[data-atlas-view="embedded"] .globe-style-switch {
     right: 14px;
-    left: 70px;
+    left: 79px;
     width: auto;
     transform: none;
   }
@@ -22464,6 +22478,65 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 }
 
+/* The primary globe dock owns the optical centre of the available stage. */
+@media (min-width: 681px) {
+  .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls,
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-controls {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .atlas-experience-surface[data-atlas-view="immersive"] .atlas-coordinate {
+    bottom: calc(var(--atlas-coordinate-bottom) + 70px);
+  }
+}
+
+@media (min-width: 981px) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-controls {
+    left: calc((100% - 458px) / 2);
+  }
+}
+
+@media (min-width: 1100px) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="closed"] .literary-globe .globe-navigation-label {
+    top: calc(50% + 6px);
+    right: calc(50% - 50vw + max(24px, env(safe-area-inset-right)));
+    left: auto;
+    width: max-content;
+    max-width: min(310px, calc(100vw - 48px));
+    text-align: right;
+    white-space: nowrap;
+    transform: translateY(-50%);
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1325px) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-navigation-label {
+    top: calc(100% + 12px);
+    right: auto;
+    left: 50%;
+    width: 360px;
+    max-width: calc(100vw - 490px);
+    text-align: center;
+    white-space: normal;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 1326px) {
+  .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-navigation-label {
+    top: calc(50% + 6px);
+    right: calc(50% - (100vw - 458px) / 2 + 24px);
+    left: auto;
+    width: max-content;
+    max-width: 310px;
+    text-align: right;
+    white-space: nowrap;
+    transform: translateY(-50%);
+  }
+}
+
 /* Literary Planet: final text baselines and compact-card safeguards. */
 .atlas-experience-surface[data-atlas-view="immersive"] :is(
   .atlas-immersive-search-toggle,
@@ -22479,15 +22552,75 @@ html[data-theme="book"] .calendar-heading h3 {
   position: sticky;
   z-index: 30;
   top: -28px;
-  padding: 4px 4px 4px 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
+  gap: 10px;
+  align-items: center;
+  min-height: 54px;
+  padding: 4px 4px 4px 16px;
   background:
-    linear-gradient(90deg, rgba(255, 253, 248, 0.96), rgba(250, 242, 231, 0.94));
-  border: 1px solid rgba(94, 38, 111, 0.08);
-  border-radius: 13px;
+    linear-gradient(90deg, rgba(255, 253, 248, 0.985), rgba(250, 242, 231, 0.965));
+  border: 1px solid rgba(94, 38, 111, 0.11);
+  border-radius: 14px;
   box-shadow:
-    0 9px 24px rgba(58, 17, 73, 0.07),
+    0 10px 28px rgba(58, 17, 73, 0.085),
     inset 0 1px rgba(255, 255, 255, 0.68);
   backdrop-filter: blur(14px) saturate(1.06);
+}
+
+.country-panel .panel-topline > div {
+  display: flex;
+  min-width: 0;
+  height: 44px;
+  gap: 8px;
+  align-items: center;
+  overflow: hidden;
+  transform: translateY(2px);
+}
+
+.country-panel .panel-topline .eyebrow {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 11.25px;
+  line-height: 1.2;
+  letter-spacing: 0.075em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.country-panel .panel-topline .archive-code {
+  flex: 0 0 auto;
+  padding-left: 8px;
+  font-size: 10.5px;
+  line-height: 1.2;
+}
+
+.country-panel .panel-close {
+  align-self: center;
+  justify-self: end;
+  color: #563061;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(250, 243, 233, 0.7));
+  border-color: rgba(91, 39, 106, 0.18);
+  border-radius: 11px;
+  box-shadow:
+    0 7px 18px rgba(52, 17, 66, 0.075),
+    inset 0 1px rgba(255, 255, 255, 0.82);
+}
+
+.country-panel .panel-close:hover,
+.country-panel .panel-close:focus-visible {
+  color: #fff;
+  background: linear-gradient(145deg, #ef6f18, #c84808);
+  border-color: rgba(255, 178, 105, 0.84);
+  box-shadow:
+    0 11px 26px rgba(185, 65, 8, 0.25),
+    0 0 0 4px rgba(246, 117, 24, 0.1),
+    inset 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.country-panel .panel-close:active {
+  transform: scale(0.96);
 }
 
 .country-panel .writer-detail {
@@ -22532,6 +22665,10 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (max-width: 340px) {
+  .country-panel .panel-topline {
+    top: -21px;
+  }
+
   .writer-detail-tabs {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -22558,5 +22695,17 @@ html[data-theme="book"] .calendar-heading h3 {
   .country-panel .writer-row .writer-portrait {
     transition: none !important;
     transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 981px) {
+  .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-panel-state="closed"] .globe-style-switch {
+    transform: translateX(-50%) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 681px) {
+  .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls {
+    transform: translateX(-50%) !important;
   }
 }

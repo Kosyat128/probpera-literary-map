@@ -3243,7 +3243,7 @@ export default function LiteraryGlobe({
       <div className="globe-instruction" aria-hidden="true">
         <span>{t("Тяните или используйте стрелки")}</span>
         <i aria-hidden="true" />
-        <span>{t("Колесо или кнопки ± — масштаб")}</span>
+        <span>{t("Масштаб: колесо или кнопки ±")}</span>
       </div>
     </div>
   );
