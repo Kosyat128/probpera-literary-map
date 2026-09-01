@@ -8,6 +8,7 @@ import { requireStaff } from "@/lib/auth";
 import { requestPublicBuild } from "@/lib/publication";
 import { isSafePublicHref } from "@/lib/public-href";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 const optionalUuid = z.union([z.string().uuid(), z.literal("")]);
 const bannerSchema = z.object({
@@ -124,7 +125,7 @@ export async function saveBannerAction(formData: FormData) {
       .eq("updated_at", parsed.data.expectedUpdatedAt)
       .select("id")
       .maybeSingle();
-    if (error) redirect(`/banners?error=${encodeURIComponent(error.message)}`);
+    if (error) redirect(`/banners?error=${encodeURIComponent(operatorDataError("banners", "save"))}`);
     if (!updated) {
       redirect("/banners?error=Баннер уже изменён в другой вкладке. Обновите страницу и повторите правку.");
     }
@@ -135,7 +136,7 @@ export async function saveBannerAction(formData: FormData) {
       .select("id")
       .single();
     if (error || !data) {
-      redirect(`/banners?error=${encodeURIComponent(error?.message || "Баннер не создан")}`);
+      redirect(`/banners?error=${encodeURIComponent(operatorDataError("banners", "create"))}`);
     }
     bannerId = data.id;
   }
@@ -166,7 +167,7 @@ export async function deleteBannerAction(formData: FormData) {
     .eq("updated_at", expectedUpdatedAt.data)
     .select("id")
     .maybeSingle();
-  if (error) redirect(`/banners?error=${encodeURIComponent(error.message)}`);
+  if (error) redirect(`/banners?error=${encodeURIComponent(operatorDataError("banners", "delete"))}`);
   if (!deleted) {
     redirect("/banners?error=Баннер уже изменён или удалён. Обновите страницу.");
   }

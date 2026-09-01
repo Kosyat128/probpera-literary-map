@@ -4,16 +4,11 @@ import Link from "next/link";
 
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import {
-  typographyBreakpointLabels,
   typographyBreakpoints,
   typographyFontStyles,
-  typographyLayerLabels,
   typographyLayers,
-  typographyPropertyFormValues,
-  typographyScopeLabels,
   typographySemanticScopes,
   typographySystemFamilies,
-  typographySystemFamilyLabels,
   typographyTextAlignments,
   typographyTextDecorations,
   typographyTextTransforms,
@@ -21,6 +16,14 @@ import {
   type SiteTypographyProperties,
   type SiteTypographyTarget,
 } from "@/lib/site-typography";
+import {
+  typographyBreakpointLabels,
+  typographyErrorMessage,
+  typographyLayerLabels,
+  typographyPropertyFormValues,
+  typographyScopeLabels,
+  typographySystemFamilyLabels,
+} from "@/lib/site-typography-ui";
 
 import FontUploadForm from "./FontUploadForm";
 import {
@@ -189,50 +192,78 @@ function TypographyEditor({
         )}
         <fieldset disabled={!canManage}>
           <legend className="sr-only">Область применения</legend>
-          <div className={styles.targetGrid}>
-            <label className="field">
-              <span>Уровень</span>
-              <select name="layer" defaultValue={target.layer}>
-                {typographyLayers.map((layer) => (
-                  <option key={layer} value={layer}>{typographyLayerLabels[layer]}</option>
-                ))}
-              </select>
-            </label>
-            <label className="field">
-              <span>Ключ области</span>
-              <input
-                name="target_key"
-                defaultValue={target.targetKey}
-                pattern="[a-z0-9][a-z0-9_-]{0,79}"
-                maxLength={80}
-                required
-                aria-describedby="target-key-help"
-              />
-              <small id="target-key-help">
-                Сайт: site; шаблоны: home, article, page; компоненты: magazine,
-                journal, article-reader, cms-page-reader. Страница: безопасный ключ
-                пути, например stranitsy_sl_about. Экземпляр: article-ID или page-slug.
-              </small>
-            </label>
-            <label className="field">
-              <span>Тип текста</span>
-              <select name="semantic_scope" defaultValue={target.semanticScope}>
-                {typographySemanticScopes.map((scope) => (
-                  <option key={scope} value={scope}>{typographyScopeLabels[scope]}</option>
-                ))}
-              </select>
-            </label>
-            <label className="field">
-              <span>Экран</span>
-              <select name="breakpoint" defaultValue={target.breakpoint}>
-                {typographyBreakpoints.map((breakpoint) => (
-                  <option key={breakpoint} value={breakpoint}>
-                    {typographyBreakpointLabels[breakpoint]}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
+          {selected ? (
+            <>
+              <TargetHiddenFields target={target} />
+              <div className={styles.targetGrid}>
+                <div className="field">
+                  <span>Уровень</span>
+                  <strong>{typographyLayerLabels[target.layer]}</strong>
+                </div>
+                <div className="field">
+                  <span>Ключ области</span>
+                  <strong>{target.targetKey}</strong>
+                </div>
+                <div className="field">
+                  <span>Тип текста</span>
+                  <strong>{typographyScopeLabels[target.semanticScope]}</strong>
+                </div>
+                <div className="field">
+                  <span>Экран</span>
+                  <strong>{typographyBreakpointLabels[target.breakpoint]}</strong>
+                </div>
+              </div>
+              <p className={styles.statusMessage}>
+                Область существующего правила зафиксирована. Ниже можно менять
+                только параметры оформления.
+              </p>
+            </>
+          ) : (
+            <div className={styles.targetGrid}>
+              <label className="field">
+                <span>Уровень</span>
+                <select name="layer" defaultValue={target.layer}>
+                  {typographyLayers.map((layer) => (
+                    <option key={layer} value={layer}>{typographyLayerLabels[layer]}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="field">
+                <span>Ключ области</span>
+                <input
+                  name="target_key"
+                  defaultValue={target.targetKey}
+                  pattern="[a-z0-9][a-z0-9_-]{0,79}"
+                  maxLength={80}
+                  required
+                  aria-describedby="target-key-help"
+                />
+                <small id="target-key-help">
+                  Сайт: site; шаблоны: home, article, page; компоненты: magazine,
+                  journal, article-reader, cms-page-reader. Страница: безопасный ключ
+                  пути, например stranitsy_sl_about. Экземпляр: article-ID или page-slug.
+                </small>
+              </label>
+              <label className="field">
+                <span>Тип текста</span>
+                <select name="semantic_scope" defaultValue={target.semanticScope}>
+                  {typographySemanticScopes.map((scope) => (
+                    <option key={scope} value={scope}>{typographyScopeLabels[scope]}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="field">
+                <span>Экран</span>
+                <select name="breakpoint" defaultValue={target.breakpoint}>
+                  {typographyBreakpoints.map((breakpoint) => (
+                    <option key={breakpoint} value={breakpoint}>
+                      {typographyBreakpointLabels[breakpoint]}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          )}
 
           <div className={styles.propertyGrid}>
             <label className="field">
@@ -383,7 +414,11 @@ export default function TypographyWorkspace({
         </div>
       </header>
 
-      {messages.error && <p className={styles.message} role="alert">{messages.error}</p>}
+      {messages.error && (
+        <p className={styles.message} role="alert">
+          {typographyErrorMessage(messages.error)}
+        </p>
+      )}
       {messages.saved && <p className={`${styles.message} ${styles.success}`} role="status">Черновик сохранён.</p>}
       {messages.published && <p className={`${styles.message} ${styles.success}`} role="status">Настройка опубликована.</p>}
       {messages.restored && <p className={`${styles.message} ${styles.success}`} role="status">Версия восстановлена и опубликована.</p>}

@@ -12,6 +12,7 @@ function cursorToken(value: unknown) {
 
 export function translationBackfillCursorParams(formData: FormData) {
   return {
+    articleCursor: cursorToken(formData.get("articleCursor")),
     libraryCursor: cursorToken(formData.get("libraryCursor")),
     writerCursor: cursorToken(formData.get("writerCursor")),
     countryCursor: cursorToken(formData.get("countryCursor")),

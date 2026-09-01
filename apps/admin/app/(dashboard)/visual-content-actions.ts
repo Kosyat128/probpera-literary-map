@@ -10,7 +10,6 @@ import {
   type VisualContentEditInput,
 } from "@/lib/visual-content-edit";
 import {
-  mergeHomepageVisualSettings,
   parseHomepageVisualSettings,
 } from "@/lib/homepage-visual-settings";
 
@@ -41,6 +40,23 @@ function normalizedExpectedUpdatedAt(value: unknown) {
     : "";
 }
 
+function visualEditDatabaseError(error: { code?: string; message?: string } | null) {
+  if (!error) return "Не удалось сохранить изменение.";
+  if (error.code === "40001" || /visual_edit_conflict/iu.test(error.message || "")) {
+    return "Запись уже изменили в другой вкладке. Обновите предпросмотр и повторите правку.";
+  }
+  if (error.code === "42501" || /visual_edit_forbidden/iu.test(error.message || "")) {
+    return "Недостаточно прав для прямого редактирования.";
+  }
+  if (error.code === "23503" || /visual_edit_media_missing/iu.test(error.message || "")) {
+    return "Изображение не найдено в действующей медиатеке.";
+  }
+  if (error.code === "22023" || /visual_edit_(?:invalid|field|entity)/iu.test(error.message || "")) {
+    return "Изменение не прошло безопасную проверку.";
+  }
+  return "База данных временно не приняла изменение.";
+}
+
 export async function getVisualContentVersionAction(input: {
   entityType: keyof typeof entityConfiguration;
   entityId: string;
@@ -59,7 +75,7 @@ export async function getVisualContentVersionAction(input: {
     .select("updated_at")
     .eq("id", entityId)
     .maybeSingle();
-  if (error) return { ok: false, error: error.message };
+  if (error) return { ok: false, error: visualEditDatabaseError(error) };
   if (!data) return { ok: false, error: "Запись не найдена." };
   return { ok: true, updatedAt: data.updated_at };
 }
@@ -86,12 +102,6 @@ const entityConfiguration = {
     publicationType: "homepage",
   },
 } as const;
-
-function objectValue(value: unknown): Record<string, unknown> {
-  return value && typeof value === "object" && !Array.isArray(value)
-    ? (value as Record<string, unknown>)
-    : {};
-}
 
 export async function saveHomepageBlockVisualSettingsAction(
   input: HomepageBlockVisualSettingsInput
@@ -130,72 +140,28 @@ export async function saveHomepageBlockVisualSettingsAction(
     return { ok: false, error: "База данных не подключена." };
   }
 
-  const { data: existingBlock, error: existingError } = await supabase
-    .from("homepage_blocks")
-    .select("settings,is_enabled,updated_at")
-    .eq("id", entityId)
-    .maybeSingle();
-  if (existingError) return { ok: false, error: existingError.message };
-  if (!existingBlock?.is_enabled) {
-    return {
-      ok: false,
-      error: "Блок не найден или сейчас скрыт на сайте.",
-    };
-  }
-  if (existingBlock.updated_at !== expectedUpdatedAt) {
-    return {
-      ok: false,
-      error: "Блок уже изменили в другой вкладке. Обновите предпросмотр и повторите правку.",
-    };
-  }
-  const existingSettings = objectValue(existingBlock.settings);
-  if (existingSettings.systemKey) {
-    return {
-      ok: false,
-      error: "Системный блок нельзя оформлять из визуального редактора.",
-    };
-  }
-
-  const settings = mergeHomepageVisualSettings(
-    existingSettings,
-    normalizedSettings,
-    input.reset === true
-  );
-  const { data: updated, error: updateError } = await supabase
-    .from("homepage_blocks")
-    .update({ settings, updated_by: session.user.id })
-    .eq("id", entityId)
-    .eq("is_enabled", true)
-    .eq("updated_at", expectedUpdatedAt)
-    .select("id,updated_at")
-    .maybeSingle();
-  if (updateError) return { ok: false, error: updateError.message };
-  if (!updated) {
-    return {
-      ok: false,
-      error:
-        "Блок уже изменили в другой вкладке. Обновите предпросмотр и повторите правку.",
-    };
-  }
-
   const action = input.reset
     ? "homepage.block.visual_settings_reset"
     : "homepage.block.visual_settings_updated";
-  const { error: auditError } = await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action,
-    entity_type: "homepage",
-    entity_id: entityId,
-    metadata: {
-      fields: Object.keys(normalizedSettings),
-      editor: "visual",
-    },
-  });
-  if (auditError) {
-    return {
-      ok: false,
-      error: `Оформление сохранено, но не записано в журнал: ${auditError.message}`,
-    };
+  const { data: updated, error: updateError } = await supabase.rpc(
+    "save_homepage_visual_settings_v2",
+    {
+      p_entity_id: entityId,
+      p_settings: normalizedSettings,
+      p_reset: input.reset === true,
+      p_expected_updated_at: expectedUpdatedAt,
+    }
+  );
+  if (updateError) {
+    return { ok: false, error: visualEditDatabaseError(updateError) };
+  }
+  const updatedAt =
+    updated && typeof updated === "object" && "updatedAt" in updated &&
+    typeof updated.updatedAt === "string"
+      ? updated.updatedAt
+      : "";
+  if (!updatedAt) {
+    return { ok: false, error: "База данных не вернула новую версию блока." };
   }
 
   const publication = await requestPublicBuild({
@@ -211,7 +177,7 @@ export async function saveHomepageBlockVisualSettingsAction(
   return {
     ok: true,
     publication: publication.state,
-    updatedAt: updated.updated_at,
+    updatedAt,
   };
 }
 
@@ -246,105 +212,27 @@ export async function saveVisualContentFieldAction(
     };
   }
 
-  if (edit.isMedia && edit.value) {
-    const { data: mediaAsset, error: mediaError } = await supabase
-      .from("media_assets")
-      .select("id")
-      .eq("id", edit.value)
-      .is("deleted_at", null)
-      .maybeSingle();
-    if (mediaError) return { ok: false, error: mediaError.message };
-    if (!mediaAsset) {
-      return {
-        ok: false,
-        error: "Изображение не найдено в действующей медиатеке.",
-      };
-    }
-  }
-
   const configuration = entityConfiguration[edit.entityType];
-  const patch: Record<string, unknown> = { [edit.column]: edit.value };
-  if (edit.entityType === "page" || edit.entityType === "banner") {
-    patch.updated_by = session.user.id;
-  }
-
-  if (edit.entityType === "homepage-block") {
-    const { data: existingBlock, error: existingError } = await supabase
-      .from("homepage_blocks")
-      .select("settings,is_enabled,updated_at")
-      .eq("id", edit.entityId)
-      .maybeSingle();
-    if (existingError) return { ok: false, error: existingError.message };
-    const existingSettings = objectValue(existingBlock?.settings);
-    if (
-      !existingBlock?.is_enabled ||
-      existingSettings.systemKey ||
-      existingSettings.coreSectionKey
-    ) {
-      return {
-        ok: false,
-        error:
-          "Этот блок скрыт или управляется отдельной формой основной композиции.",
-      };
+  const { data: updated, error: updateError } = await supabase.rpc(
+    "save_visual_content_field_v2",
+    {
+      p_entity_type: edit.entityType,
+      p_entity_id: edit.entityId,
+      p_field: edit.field,
+      p_value: edit.value,
+      p_expected_updated_at: expectedUpdatedAt,
     }
-    if (existingBlock.updated_at !== expectedUpdatedAt) {
-      return {
-        ok: false,
-        error: "Блок уже изменили в другой вкладке. Выберите поле заново и повторите правку.",
-      };
-    }
-    if (edit.column === "settings") {
-      patch.settings = {
-        ...existingSettings,
-        [edit.field]: edit.value,
-      };
-    }
-    patch.updated_by = session.user.id;
+  );
+  if (updateError) {
+    return { ok: false, error: visualEditDatabaseError(updateError) };
   }
-
-  let updateQuery = supabase
-    .from(configuration.table)
-    .update(patch)
-    .eq("id", edit.entityId);
-  if (edit.entityType === "page") updateQuery = updateQuery.eq("status", "published");
-  if (edit.entityType === "navigation-item") {
-    updateQuery = updateQuery.eq("is_visible", true);
-  }
-  if (edit.entityType === "banner") updateQuery = updateQuery.eq("is_active", true);
-  if (edit.entityType === "homepage-block") {
-    updateQuery = updateQuery.eq("is_enabled", true);
-  }
-  updateQuery = updateQuery.eq("updated_at", expectedUpdatedAt);
-
-  const { data: updated, error: updateError } = await updateQuery
-    .select("id,updated_at")
-    .maybeSingle();
-  if (updateError) return { ok: false, error: updateError.message };
-  if (!updated) {
-    return {
-      ok: false,
-      error:
-        edit.entityType === "homepage-block"
-          ? "Блок уже изменили в другой вкладке. Обновите предпросмотр и повторите правку."
-          : "Опубликованная запись не найдена или больше не доступна для прямого редактирования.",
-    };
-  }
-
-  const { error: auditError } = await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action: configuration.auditAction,
-    entity_type: configuration.publicationType,
-    entity_id: edit.entityId,
-    metadata: {
-      field: edit.field,
-      editor: "visual",
-    },
-  });
-  if (auditError) {
-    return {
-      ok: false,
-      error: `Изменение сохранено, но не записано в журнал: ${auditError.message}`,
-    };
+  const updatedAt =
+    updated && typeof updated === "object" && "updatedAt" in updated &&
+    typeof updated.updatedAt === "string"
+      ? updated.updatedAt
+      : "";
+  if (!updatedAt) {
+    return { ok: false, error: "База данных не вернула новую версию записи." };
   }
 
   const publication = await requestPublicBuild({
@@ -369,6 +257,6 @@ export async function saveVisualContentFieldAction(
   return {
     ok: true,
     publication: publication.state,
-    updatedAt: updated.updated_at,
+    updatedAt,
   };
 }

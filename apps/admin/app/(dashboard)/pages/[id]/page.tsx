@@ -13,6 +13,7 @@ import {
 } from "@/lib/page-catalog-query";
 import { redirect } from "@/lib/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 import {
   restorePageRevisionAction,
   softDeletePageAction,
@@ -97,7 +98,7 @@ export default async function EditPage({
         <section className="panel">
           <h2>История версий</h2>
           {revisionsError ? (
-            <p className="form-message">Не удалось загрузить историю: {revisionsError.message}</p>
+            <p className="form-message">{operatorDataError("history", "load")}</p>
           ) : revisions.length ? (
             <table className="data-table">
               <thead>

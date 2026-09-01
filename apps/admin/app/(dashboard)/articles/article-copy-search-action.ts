@@ -7,6 +7,7 @@ import {
   normalizeArticleCopySearch,
 } from "@/lib/article-copy-search";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 export type ArticleCopySearchItem = {
   id: string;
@@ -45,7 +46,7 @@ export async function searchArticleCopyOptionsAction(
     .limit(ARTICLE_COPY_SEARCH_LIMIT);
 
   if (response.error) {
-    return { items: [], error: response.error.message };
+    return { items: [], error: operatorDataError("articles", "load") };
   }
 
   return {

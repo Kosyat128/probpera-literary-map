@@ -10,6 +10,8 @@ import type {
   RefCallback,
 } from "react";
 
+import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE } from "../../lib/client-image-upload";
+
 import ArticleEditorToolbar from "./ArticleEditorToolbar";
 import { EnglishTranslationNotice } from "./TranslationPanel";
 import type { ArticleEditorLocale } from "./ArticleEditorTypes";
@@ -173,7 +175,7 @@ export default function EditorCore({
         className="visually-hidden-file"
         type="file"
         multiple
-        accept="image/jpeg,image/png,image/webp,image/avif"
+        accept={CLIENT_IMAGE_ACCEPT_ATTRIBUTE}
         onChange={(event) => actions.handleFileInput(event.target.files)}
       />
       <button

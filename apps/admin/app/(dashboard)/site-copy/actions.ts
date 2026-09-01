@@ -10,9 +10,10 @@ import {
 import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
 import {
-  premiumTranslationConfigurationError,
   premiumTranslationRuntimeMetadata,
 } from "@/lib/premium-translation-runtime";
+import { translationErrorCode } from "@/lib/translation-errors";
+import { premiumTranslationRuntimeGate } from "@/lib/translation-runtime-gate";
 import { requestPublicBuild } from "@/lib/publication";
 import {
   normalizeShortHyphens,
@@ -129,9 +130,11 @@ function submittedRows(
 async function autoTranslateChangedRows({
   rows,
   existingSettings,
+  supabase,
 }: {
   rows: ReturnType<typeof submittedRows>;
   existingSettings: Record<string, unknown>;
+  supabase: NonNullable<Awaited<ReturnType<typeof createServerSupabaseClient>>>;
 }) {
   const current = readSiteCopyValues(existingSettings.siteCopy);
   const premiumState = objectValue(existingSettings.premiumTranslation);
@@ -169,8 +172,8 @@ async function autoTranslateChangedRows({
       translationReviewerModel: null as string | null,
     };
   }
-  if (!adminEnv.premiumTranslationConfigured) {
-    throw new Error(premiumTranslationConfigurationError());
+  if (!(await premiumTranslationRuntimeGate(supabase))) {
+    throw new Error("translation provider is not configured");
   }
 
   const runtime = premiumTranslationRuntimeMetadata();
@@ -227,16 +230,12 @@ export async function saveSiteCopyAction(formData: FormData) {
   try {
     const allowedKeys = await loadAllSiteCopyKeys();
     rows = submittedRows(formData, allowedKeys);
-  } catch (error) {
-    redirect(
-      `/site-copy?error=${encodeURIComponent(
-        error instanceof Error ? error.message : "Проверьте тексты"
-      )}`
-    );
+  } catch {
+    redirect("/site-copy?errorCode=invalid_input");
   }
 
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect("/site-copy?error=База данных не подключена");
+  if (!supabase) redirect("/site-copy?errorCode=database_unavailable");
 
   const { data: existingRows, error: existingError } = await supabase
     .from("homepage_blocks")
@@ -245,30 +244,27 @@ export async function saveSiteCopyAction(formData: FormData) {
     .order("updated_at", { ascending: false })
     .limit(1);
   if (existingError) {
-    redirect(`/site-copy?error=${encodeURIComponent(existingError.message)}`);
+    redirect("/site-copy?errorCode=database_read_failed");
   }
 
   const existing = existingRows?.[0];
   if (existing && (!expectedUpdatedAt || existing.updated_at !== expectedUpdatedAt)) {
     redirect(
-      "/site-copy?error=" +
-        encodeURIComponent(
-          "Тексты уже изменили в другой вкладке. Обновите страницу и повторите сохранение."
-        )
+      "/site-copy?errorCode=write_conflict"
     );
   }
   const existingSettings = objectValue(existing?.settings);
 
   let translationResult: Awaited<ReturnType<typeof autoTranslateChangedRows>>;
   try {
-    translationResult = await autoTranslateChangedRows({ rows, existingSettings });
+    translationResult = await autoTranslateChangedRows({
+      rows,
+      existingSettings,
+      supabase,
+    });
   } catch (error) {
     redirect(
-      `/site-copy?error=${encodeURIComponent(
-        error instanceof Error
-          ? error.message
-          : "Не удалось подготовить премиальный английский перевод."
-      )}`
+      `/site-copy?errorCode=${translationErrorCode(error)}`
     );
   }
 
@@ -304,57 +300,27 @@ export async function saveSiteCopyAction(formData: FormData) {
     updated_by: session.user.id,
   };
 
-  let blockId = existing?.id;
-  if (blockId) {
-    const { data: updated, error } = await supabase
-      .from("homepage_blocks")
-      .update(payload)
-      .eq("id", blockId)
-      .eq("updated_at", expectedUpdatedAt)
-      .select("id")
-      .maybeSingle();
-    if (error) redirect(`/site-copy?error=${encodeURIComponent(error.message)}`);
-    if (!updated) {
-      redirect(
-        "/site-copy?error=" +
-          encodeURIComponent(
-            "Тексты уже изменили в другой вкладке. Обновите страницу и повторите сохранение."
-          )
-      );
+  const { data: blockId, error: saveError } = await supabase.rpc(
+    "save_site_copy_block",
+    {
+      p_expected_updated_at: existing ? expectedUpdatedAt : null,
+      p_payload: payload,
+      p_audit_metadata: {
+        russian_overrides: Object.keys(ru).length,
+        english_overrides: Object.keys(en).length,
+        premium_translation_calls: translationResult.translationCalls,
+        translation_provider: runtime.provider,
+        translation_model: translationResult.translationModel || runtime.model,
+        translation_reviewer_model:
+          translationResult.translationReviewerModel ?? runtime.reviewerModel,
+      },
     }
-  } else {
-    const { data, error } = await supabase
-      .from("homepage_blocks")
-      .insert(payload)
-      .select("id")
-      .single();
-    if (error || !data) {
-      redirect(
-        `/site-copy?error=${encodeURIComponent(
-          error?.message || "Не удалось сохранить тексты"
-        )}`
-      );
-    }
-    blockId = data.id;
+  );
+  if (saveError?.message === "SITE_COPY_WRITE_CONFLICT") {
+    redirect("/site-copy?errorCode=write_conflict");
   }
-  if (!blockId) redirect("/site-copy?error=Не удалось определить запись текстов");
-
-  await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action: "site_copy.updated",
-    entity_type: "site_copy",
-    entity_id: blockId,
-    metadata: {
-      russian_overrides: Object.keys(ru).length,
-      english_overrides: Object.keys(en).length,
-      premium_translation_calls: translationResult.translationCalls,
-      translation_provider: runtime.provider,
-      translation_model: translationResult.translationModel || runtime.model,
-      translation_reviewer_model:
-        translationResult.translationReviewerModel ?? runtime.reviewerModel,
-      storage: "homepage_blocks",
-    },
-  });
+  if (saveError) redirect("/site-copy?errorCode=database_write_failed");
+  if (!blockId) redirect("/site-copy?errorCode=database_write_failed");
   const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,

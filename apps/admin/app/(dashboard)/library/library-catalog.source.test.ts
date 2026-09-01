@@ -33,10 +33,9 @@ describe("complete library catalogs", () => {
 
   it("never overwrites an existing manual edition during ISBN import", () => {
     expect(actionsSource).toContain('.eq("legacy_id", legacyId)');
-    expect(actionsSource).toContain('.insert(payload)');
+    expect(actionsSource).toContain('"create_book_edition_atomic"');
     expect(actionsSource).not.toContain('.upsert(payload, { onConflict: "legacy_id" })');
     expect(actionsSource).toContain('error?.code === "23505"');
-    expect(actionsSource).toContain("throw new ExistingBookEditionError(collidedEdition.id)");
     expect(actionsSource).toContain('notice: "edition-exists"');
     expect(actionsSource).toContain("#edition-editor");
     expect(pageSource).toContain('query.notice === "edition-exists"');
@@ -44,15 +43,11 @@ describe("complete library catalogs", () => {
 
     const preflightGuard = actionsSource.indexOf("if (existingByLegacyId?.id)");
     const primaryHandoff = actionsSource.indexOf(
-      "await persistWithPrimaryEditionCompensation({",
+      '"create_book_edition_atomic"',
       actionsSource.indexOf("export async function saveBookEditionAction")
     );
     const collisionGuard = actionsSource.indexOf(
-      "if (error instanceof ExistingBookEditionError)"
-    );
-    const audit = actionsSource.indexOf(
-      'action: "book_edition.created"',
-      collisionGuard
+      'if (saveError?.code === "23505")'
     );
     const build = actionsSource.indexOf(
       "const publication = await requestPublicBuild",
@@ -61,7 +56,6 @@ describe("complete library catalogs", () => {
     expect(preflightGuard).toBeGreaterThan(-1);
     expect(preflightGuard).toBeLessThan(primaryHandoff);
     expect(collisionGuard).toBeGreaterThan(primaryHandoff);
-    expect(collisionGuard).toBeLessThan(audit);
     expect(collisionGuard).toBeLessThan(build);
   });
 });

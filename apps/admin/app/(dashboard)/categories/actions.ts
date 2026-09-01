@@ -8,6 +8,7 @@ import { requireStaff } from "@/lib/auth";
 import { requestPublicBuild } from "@/lib/publication";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 import { taxonomyCatalogFormHref } from "@/lib/taxonomy-catalog-query";
 
 const kindSchema = z.enum(["category", "tag"]);
@@ -110,7 +111,7 @@ export async function createTaxonomyItemAction(formData: FormData) {
   if (error || !data) {
     redirect(
       catalogTarget(formData, {
-        error: error?.message || "Элемент не создан.",
+        error: operatorDataError("categories", "create"),
       })
     );
   }
@@ -209,7 +210,7 @@ export async function updateTaxonomyItemAction(formData: FormData) {
     .eq("updated_at", identity.data.expectedUpdatedAt)
     .select("id")
     .maybeSingle();
-  if (error) redirect(catalogTarget(formData, { error: error.message }));
+  if (error) redirect(catalogTarget(formData, { error: operatorDataError("categories", "save") }));
   if (!updated) {
     redirect(
       catalogTarget(formData, {
@@ -267,7 +268,7 @@ export async function deleteTaxonomyItemAction(formData: FormData) {
     .eq("updated_at", parsed.data.expectedUpdatedAt)
     .select("id")
     .maybeSingle();
-  if (error) redirect(catalogTarget(formData, { error: error.message }));
+  if (error) redirect(catalogTarget(formData, { error: operatorDataError("categories", "delete") }));
   if (!deleted) {
     redirect(
       catalogTarget(formData, {

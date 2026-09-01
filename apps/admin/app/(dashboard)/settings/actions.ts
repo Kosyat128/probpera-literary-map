@@ -12,6 +12,21 @@ const memberSchema = z.object({
   role: z.enum(["owner", "admin", "editor"]),
 });
 
+const staffErrorMessages: Record<string, string> = {
+  STAFF_LAST_OWNER: "Нельзя удалить или понизить последнего владельца",
+  STAFF_MEMBER_NOT_FOUND: "Участник команды не найден",
+  STAFF_OWNER_REQUIRED: "Требуются права владельца",
+  STAFF_SELF_REMOVE_FORBIDDEN:
+    "Для удаления собственного доступа используйте другую учётную запись владельца",
+  STAFF_USER_NOT_REGISTERED:
+    "Пользователь должен сначала зарегистрироваться на сайте",
+};
+
+function staffErrorMessage(message?: string) {
+  if (!message) return "Не удалось изменить состав команды";
+  return staffErrorMessages[message] ?? "Не удалось изменить состав команды";
+}
+
 export async function saveStaffMemberAction(formData: FormData) {
   const session = await requireStaff(["owner"]);
   if (!session?.user) redirect("/login");
@@ -30,20 +45,8 @@ export async function saveStaffMemberAction(formData: FormData) {
     }
   );
   if (error || !userId) {
-    redirect(
-      `/settings?error=${encodeURIComponent(
-        error?.message ||
-          "Пользователь должен сначала зарегистрироваться на сайте"
-      )}`
-    );
+    redirect(`/settings?error=${encodeURIComponent(staffErrorMessage(error?.message))}`);
   }
-  await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action: "staff.updated",
-    entity_type: "staff",
-    entity_id: userId,
-    metadata: { email: parsed.data.email, role: parsed.data.role },
-  });
   revalidatePath("/settings");
   redirect("/settings?saved=1");
 }
@@ -58,13 +61,9 @@ export async function removeStaffMemberAction(formData: FormData) {
   const { error } = await supabase.rpc("owner_remove_staff_member", {
     p_user_id: userId.data,
   });
-  if (error) redirect(`/settings?error=${encodeURIComponent(error.message)}`);
-  await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action: "staff.removed",
-    entity_type: "staff",
-    entity_id: userId.data,
-  });
+  if (error) {
+    redirect(`/settings?error=${encodeURIComponent(staffErrorMessage(error.message))}`);
+  }
   revalidatePath("/settings");
   redirect("/settings?deleted=1");
 }

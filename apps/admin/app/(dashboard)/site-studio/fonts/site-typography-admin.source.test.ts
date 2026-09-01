@@ -8,6 +8,10 @@ const workspaceSource = readFileSync(
   new URL("./TypographyWorkspace.tsx", import.meta.url),
   "utf8"
 );
+const typographyUiSource = readFileSync(
+  new URL("../../../../lib/site-typography-ui.ts", import.meta.url),
+  "utf8"
+);
 const loaderSource = readFileSync(
   new URL("./TypographyWorkspaceLoader.tsx", import.meta.url),
   "utf8"
@@ -64,7 +68,7 @@ describe("Site Studio typography admin contract", () => {
     expect(loaderSource).toContain('aria-live="polite"');
     expect(cssSource).toContain("@media (max-width: 760px)");
     expect(cssSource).toContain(".workspace");
-    expect(shellSource.match(/"Шрифты", "\/site-studio\/fonts"/gu)).toHaveLength(1);
+    expect(shellSource.match(/"Студия сайта", "\/site-studio"/gu)).toHaveLength(1);
   });
 
   it("shows Russian workflow copy and never accepts a raw style payload", () => {
@@ -77,5 +81,19 @@ describe("Site Studio typography admin contract", () => {
     expect(actionsSource).not.toContain("return error?.message");
     expect(renderSource).not.toContain('name="style"');
     expect(renderSource).not.toContain('name="css"');
+  });
+
+  it("passes stable server codes into a client-only Russian message map", () => {
+    expect(actionsSource).toContain('error: typographyErrorCode(error)');
+    expect(actionsSource).toContain(
+      'rpcErrorCode(error, "typography_save_failed")'
+    );
+    expect(actionsSource).toContain('return "typography_stale"');
+    expect(actionsSource).not.toContain("Не удалось сохранить настройку.");
+    expect(typographyUiSource).toMatch(/^"use client";/u);
+    expect(typographyUiSource).toContain("TYPOGRAPHY_ERROR_MESSAGES");
+    expect(workspaceSource).toContain(
+      "typographyErrorMessage(messages.error)"
+    );
   });
 });

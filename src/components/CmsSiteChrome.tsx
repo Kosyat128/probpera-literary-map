@@ -5,13 +5,16 @@ import {
 } from "../cms/directEditBridge";
 import {
   buildCmsNavigationForest,
+  cmsBannerIsActiveAt,
   cmsBannerMatchesPath,
   type CmsNavigationItem,
   type CmsNavigationNode,
 } from "../cms/siteChromeRuntime";
 import { safePublicHref } from "../utils/publicHref";
 import { mediaFocusPosition } from "../utils/mediaFocus";
-import type { CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
+
+const MAX_BROWSER_TIMEOUT_MS = 2_147_483_647;
 
 type Banner = {
   id: string;
@@ -20,6 +23,8 @@ type Banner = {
   targetUrl?: string | null;
   buttonText?: string;
   pagePatterns?: string[];
+  startsAt?: string | null;
+  endsAt?: string | null;
   desktopImageUrl?: string;
   tabletImageUrl?: string;
   mobileImageUrl?: string;
@@ -45,17 +50,48 @@ function safeHref(value: unknown, fallback = "#journal") {
   return safePublicHref(value, fallback);
 }
 
+function useBannerScheduleClock(banners: readonly Banner[]) {
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    const nextBoundary = banners.reduce((nearest, banner) => {
+      for (const value of [banner.startsAt, banner.endsAt]) {
+        if (typeof value !== "string" || value.trim() === "") continue;
+        const timestamp = Date.parse(value);
+        if (Number.isFinite(timestamp) && timestamp > now && timestamp < nearest) {
+          nearest = timestamp;
+        }
+      }
+      return nearest;
+    }, Number.POSITIVE_INFINITY);
+
+    if (!Number.isFinite(nextBoundary)) return;
+
+    const delay = Math.min(
+      Math.max(nextBoundary - Date.now() + 1, 0),
+      MAX_BROWSER_TIMEOUT_MS
+    );
+    const timeoutId = window.setTimeout(() => setNow(Date.now()), delay);
+    return () => window.clearTimeout(timeoutId);
+  }, [banners, now]);
+
+  return now;
+}
+
 export function CmsPageBanners({ pathname }: { pathname?: string } = {}) {
   const { language, t } = useInterfaceLanguage();
   const banners = cmsSiteContent.banners as readonly Banner[];
+  const now = useBannerScheduleClock(banners);
   const currentPathname =
     pathname || (typeof window === "undefined" ? "/" : window.location.pathname);
   const banner = banners.find(
-    (item) => cmsBannerMatchesPath(
-      item.pagePatterns,
-      currentPathname,
-      import.meta.env.BASE_URL
-    )
+    (item) =>
+      cmsBannerIsActiveAt(item, now) &&
+      cmsBannerMatchesPath(
+        item.pagePatterns,
+        currentPathname,
+        import.meta.env.BASE_URL
+      )
   );
   if (!banner || language === "en") return null;
   const hasImage = Boolean(

@@ -40,6 +40,7 @@ import {
 } from "@/lib/short-hyphens";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 const pageSchema = z.object({
   id: z.string().uuid().optional(),
@@ -239,7 +240,7 @@ export async function createPageAction(formData: FormData) {
     .select("id")
     .single();
   if (error || !data) {
-    redirect(catalogTarget({ error: error?.message || "Страница не создана" }));
+    redirect(catalogTarget({ error: operatorDataError("pages", "create") }));
   }
   const publication = await auditPage(supabase, session.user.id, data.id, "page.created", {
     slug: parsed.data.slug,
@@ -354,7 +355,7 @@ export async function savePageAction(formData: FormData) {
     .select("id")
     .maybeSingle();
   if (error) {
-    redirect(editorTarget(id, { error: error.message }));
+    redirect(editorTarget(id, { error: operatorDataError("pages", "save") }));
   }
   if (!updated) {
     redirect(editorTarget(id, {
@@ -394,7 +395,7 @@ export async function changePageStatusAction(formData: FormData) {
       .eq("id", id.data)
       .eq("updated_at", expectedUpdatedAt.data)
       .maybeSingle();
-    if (currentPageError) redirect(target({ error: currentPageError.message }));
+    if (currentPageError) redirect(target({ error: operatorDataError("pages", "load") }));
     if (!currentPage) {
       redirect(target({
         error: "Страницу уже изменили в другой вкладке. Обновите список и повторите действие.",
@@ -432,7 +433,7 @@ export async function changePageStatusAction(formData: FormData) {
     .eq("updated_at", expectedUpdatedAt.data)
     .select("id")
     .maybeSingle();
-  if (error) redirect(target({ error: error.message }));
+  if (error) redirect(target({ error: operatorDataError("pages", "save") }));
   if (!updated) {
     redirect(target({
       error: "Статус уже изменён в другой вкладке. Обновите список и повторите действие.",
@@ -469,7 +470,7 @@ export async function softDeletePageAction(formData: FormData) {
     .eq("updated_at", expectedUpdatedAt.data)
     .select("id")
     .maybeSingle();
-  if (error) redirect(target({ error: error.message }));
+  if (error) redirect(target({ error: operatorDataError("pages", "delete") }));
   if (!deleted) {
     redirect(target({
       error: "Страницу уже изменили в другой вкладке. Обновите данные перед удалением.",
@@ -555,7 +556,7 @@ export async function restorePageRevisionAction(formData: FormData) {
     .select("id")
     .maybeSingle();
   if (error) {
-    redirect(editorTarget(id.data, { error: error.message }));
+    redirect(editorTarget(id.data, { error: operatorDataError("pages", "restore") }));
   }
   if (!restored) {
     redirect(editorTarget(id.data, {

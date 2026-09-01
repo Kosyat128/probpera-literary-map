@@ -66,7 +66,9 @@ export async function saveInlineSiteCopyAction(input: {
     .contains("settings", { systemKey: SITE_COPY_SYSTEM_KEY })
     .order("updated_at", { ascending: false })
     .limit(1);
-  if (existingError) return { ok: false, error: existingError.message };
+  if (existingError) {
+    return { ok: false, error: "Не удалось безопасно прочитать тексты." };
+  }
 
   const existing = existingRows?.[0];
   const existingSettings = objectValue(existing?.settings);
@@ -91,46 +93,25 @@ export async function saveInlineSiteCopyAction(input: {
     updated_by: session.user.id,
   };
 
-  let blockId = existing?.id as string | undefined;
-  if (blockId) {
-    const { data: updated, error } = await supabase
-      .from("homepage_blocks")
-      .update(payload)
-      .eq("id", blockId)
-      .eq("updated_at", existing.updated_at)
-      .select("id")
-      .maybeSingle();
-    if (error) return { ok: false, error: error.message };
-    if (!updated) {
-      return {
-        ok: false,
-        error:
-          "Текст уже изменили в другой вкладке. Обновите предпросмотр и повторите правку.",
-      };
+  const { data: blockId, error: saveError } = await supabase.rpc(
+    "save_site_copy_block",
+    {
+      p_expected_updated_at: existing ? existing.updated_at : null,
+      p_payload: payload,
+      p_audit_metadata: { key, inline_editor: true },
     }
-  } else {
-    const { data, error } = await supabase
-      .from("homepage_blocks")
-      .insert(payload)
-      .select("id")
-      .single();
-    if (error || !data) {
-      return {
-        ok: false,
-        error: error?.message || "Не удалось сохранить текст.",
-      };
-    }
-    blockId = data.id;
+  );
+  if (saveError?.message === "SITE_COPY_WRITE_CONFLICT") {
+    return {
+      ok: false,
+      error:
+        "Текст уже изменили в другой вкладке. Обновите предпросмотр и повторите правку.",
+    };
+  }
+  if (saveError) {
+    return { ok: false, error: "Не удалось безопасно сохранить текст." };
   }
   if (!blockId) return { ok: false, error: "Не удалось определить запись текста." };
-
-  await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action: "site_copy.inline_updated",
-    entity_type: "site_copy",
-    entity_id: blockId,
-    metadata: { key, storage: "homepage_blocks", inline_editor: true },
-  });
   const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,

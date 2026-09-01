@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { savePageAction } from "@/app/(dashboard)/pages/actions";
 import { createSlug } from "@/lib/slug";
+import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/client-image-upload";
 import {
   EditorialBlock,
   insertEditorialBlock,
@@ -657,7 +658,7 @@ export default function PageEditor({
           className="visually-hidden-file"
           type="file"
           multiple
-          accept="image/jpeg,image/png,image/webp,image/avif"
+          accept={CLIENT_IMAGE_ACCEPT_ATTRIBUTE}
           onChange={(event) => editorMedia.handleFileInput(event.target.files)}
         />
         {imageUploadMessage && (

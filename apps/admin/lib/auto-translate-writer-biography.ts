@@ -4,6 +4,8 @@ import { z } from "zod";
 import { adminEnv } from "./env";
 import { premiumTranslateToEnglish } from "./premium-english-translation";
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
+import { translationErrorCode } from "./translation-errors";
+import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
 import {
   assertWriterBiographyEnglishFidelity,
   isCurrentMachineWriterBiography,
@@ -25,7 +27,7 @@ const biographyJsonSchema = {
   type: "object",
   additionalProperties: false,
   required: ["text"],
-  properties: { text: { type: "string" } },
+  properties: { text: { type: "string", minLength: 120, maxLength: 1_600 } },
 } as const;
 
 type BiographySource = WriterBiographySource;
@@ -163,6 +165,7 @@ export async function ensureWriterEnglishBiography(input: {
   countryId: string;
   writerId: string;
   sourceFields: Record<string, unknown>;
+  runtimeApproved?: boolean;
   replaceEnglishTombstone?: boolean;
 }): Promise<{
   state: WriterBiographyTranslationState;
@@ -172,7 +175,9 @@ export async function ensureWriterEnglishBiography(input: {
   overrideId?: string;
 }> {
   if (!adminEnv.openAiAutoTranslateProfiles) return { state: "skipped" };
-  if (!adminEnv.premiumTranslationConfigured) return { state: "not-configured" };
+  if (!input.runtimeApproved && !(await premiumTranslationRuntimeGate(input.supabase))) {
+    return { state: "not-configured" };
+  }
 
   const existingResponse = await input.supabase
     .from("writer_profile_overrides")
@@ -378,7 +383,7 @@ export async function ensureWriterEnglishBiography(input: {
         provider: runtime.provider,
         model: runtime.model,
         reviewer_model: runtime.reviewerModel,
-        error: message.slice(0, 500),
+        error_code: translationErrorCode(message),
       },
     });
     return { state: "failed", error: message };

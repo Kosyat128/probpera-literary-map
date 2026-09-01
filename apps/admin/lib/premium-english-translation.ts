@@ -6,6 +6,7 @@ import {
   type OpenAiReasoningMode,
   type PremiumTranslationProvider,
 } from "./env";
+import { translationErrorCode, type TranslationErrorCode } from "./translation-errors";
 
 export type TranslationJsonSchema = Record<string, unknown>;
 
@@ -146,11 +147,138 @@ function apiErrorMessage(payload: unknown) {
     : "";
 }
 
+function isWorkersAiBinding(value: unknown): value is WorkersAiBinding {
+  return Boolean(
+    value &&
+      typeof value === "object" &&
+      typeof (value as { run?: unknown }).run === "function"
+  );
+}
+
 function runtimeWorkersAiBinding(): WorkersAiBinding | null {
   try {
-    return getCloudflareContext().env.AI as unknown as WorkersAiBinding;
+    const binding = getCloudflareContext().env.AI as unknown;
+    return isWorkersAiBinding(binding) ? binding : null;
   } catch {
     return null;
+  }
+}
+
+/**
+ * Checks the real runtime capability, not merely the selected provider name.
+ * This prevents the admin readiness panel from reporting a missing Workers AI
+ * binding as configured.
+ */
+export function premiumTranslationProviderReady(options: {
+  provider?: PremiumTranslationProvider;
+  aiBinding?: unknown;
+  apiKey?: string;
+} = {}) {
+  const provider = options.provider ?? adminEnv.premiumTranslationProvider;
+  if (provider === "cloudflare") {
+    const binding = options.aiBinding ?? runtimeWorkersAiBinding();
+    return isWorkersAiBinding(binding);
+  }
+  return Boolean((options.apiKey ?? adminEnv.openAiDirectApiKey).trim());
+}
+
+export function premiumTranslationRuntimeReadiness(options: {
+  provider?: PremiumTranslationProvider;
+  aiBinding?: unknown;
+  apiKey?: string;
+} = {}) {
+  const provider = options.provider ?? adminEnv.premiumTranslationProvider;
+  const configured = provider === "cloudflare" || Boolean(
+    (options.apiKey ?? adminEnv.openAiDirectApiKey).trim()
+  );
+  const bindingFound = provider === "cloudflare"
+    ? isWorkersAiBinding(options.aiBinding ?? runtimeWorkersAiBinding())
+    : Boolean((options.apiKey ?? adminEnv.openAiDirectApiKey).trim());
+  return { provider, configured, bindingFound };
+}
+
+export type PremiumTranslationSelfTestResult = ReturnType<
+  typeof premiumTranslationRuntimeReadiness
+> & {
+  testPassed: boolean;
+  model: string;
+  latencyMs: number;
+  requestId: string | null;
+  errorCode: TranslationErrorCode | null;
+};
+
+export async function premiumTranslationSelfTest(options: {
+  provider?: PremiumTranslationProvider;
+  aiBinding?: WorkersAiBinding | null;
+  apiKey?: string;
+  fetchImpl?: typeof fetch;
+  now?: () => number;
+} = {}): Promise<PremiumTranslationSelfTestResult> {
+  const readiness = premiumTranslationRuntimeReadiness(options);
+  const model = readiness.provider === "cloudflare"
+    ? adminEnv.cloudflareTranslationModel
+    : adminEnv.openAiTranslationModel;
+  const now = options.now ?? Date.now;
+  const startedAt = now();
+  if (!readiness.configured || !readiness.bindingFound) {
+    return {
+      ...readiness,
+      testPassed: false,
+      model,
+      latencyMs: 0,
+      requestId: null,
+      errorCode: "translation_not_configured",
+    };
+  }
+
+  const schema = {
+    type: "object",
+    additionalProperties: false,
+    required: ["probe"],
+    properties: { probe: { type: "string", const: "ok" } },
+  } as const;
+  try {
+    const result = await premiumTranslateToEnglish({
+      source: { probe: "Верните только контрольное значение ok." },
+      schema,
+      schemaName: "probpera_translation_runtime_self_test",
+      validate(value) {
+        if (
+          !value ||
+          typeof value !== "object" ||
+          (value as { probe?: unknown }).probe !== "ok"
+        ) {
+          throw new Error("translation self-test schema mismatch");
+        }
+        return { probe: "ok" as const };
+      },
+      provider: readiness.provider,
+      aiBinding: options.aiBinding,
+      apiKey: options.apiKey,
+      fetchImpl: options.fetchImpl,
+      review: false,
+      maxOutputTokens: 2_000,
+      domainInstructions: [
+        "This is a runtime health probe. Return exactly the requested JSON value without translating or adding text.",
+      ],
+    });
+    return {
+      ...readiness,
+      testPassed: true,
+      model: result.translatorModel,
+      latencyMs: Math.max(0, Math.round(now() - startedAt)),
+      requestId: result.translatorRequestId,
+      errorCode: null,
+    };
+  } catch (error) {
+    return {
+      ...readiness,
+      testPassed: false,
+      model,
+      latencyMs: Math.max(0, Math.round(now() - startedAt)),
+      requestId: null,
+      errorCode: translationErrorCode(error),
+    };
   }
 }
 
@@ -416,6 +544,7 @@ export async function premiumTranslateToEnglish<T>(
 
   let first: TranslationPassResult;
   let repair: TranslationPassResult | null = null;
+  let finalRepair: TranslationPassResult | null = null;
   let second: TranslationPassResult | null = null;
 
   if (provider === "cloudflare") {
@@ -472,8 +601,33 @@ export async function premiumTranslateToEnglish<T>(
       });
     }
 
-    const finalValue = second ? options.validate(second.value) : draft;
-    const finalEditorialPass = second ?? repair;
+    let finalValue = draft;
+    if (second) {
+      try {
+        finalValue = options.validate(second.value);
+      } catch (error) {
+        const validationFailure = validationFailureMessage(error);
+        finalRepair = await workersAiStructuredPass({
+          ai,
+          model: adminEnv.cloudflareTranslationReviewModel,
+          schema: options.schema,
+          instructions: [
+            ...baseRepairInstructions,
+            ...domainInstructions,
+            `VALIDATION_FAILURE: ${validationFailure.slice(0, 1_000)}`,
+          ],
+          data: {
+            SOURCE_DATA: options.source,
+            INVALID_DRAFT_TRANSLATION: second.value,
+            VALIDATION_FAILURE: validationFailure,
+          },
+          maxOutputTokens,
+          label: "repair",
+        });
+        finalValue = options.validate(finalRepair.value);
+      }
+    }
+    const finalEditorialPass = finalRepair ?? second ?? repair;
     return {
       value: finalValue,
       translatorModel: first.model,
@@ -488,11 +642,13 @@ export async function premiumTranslateToEnglish<T>(
       outputTokens: first.outputTokens,
       reviewInputTokens: combinedTokenCount(
         repair?.inputTokens,
-        second?.inputTokens
+        second?.inputTokens,
+        finalRepair?.inputTokens
       ),
       reviewOutputTokens: combinedTokenCount(
         repair?.outputTokens,
-        second?.outputTokens
+        second?.outputTokens,
+        finalRepair?.outputTokens
       ),
     };
   }
@@ -565,8 +721,37 @@ export async function premiumTranslateToEnglish<T>(
     });
   }
 
-  const finalValue = second ? options.validate(second.value) : draft;
-  const finalEditorialPass = second ?? repair;
+  let finalValue = draft;
+  if (second) {
+    try {
+      finalValue = options.validate(second.value);
+    } catch (error) {
+      const validationFailure = validationFailureMessage(error);
+      finalRepair = await openAiStructuredPass({
+        apiKey,
+        model: reviewerModel,
+        reasoningEffort: openAiReviewerReasoningEffort,
+        reasoningMode: openAiReviewerReasoningMode,
+        schema: options.schema,
+        schemaName: `${options.schemaName}_final_repair`,
+        instructions: [
+          ...baseRepairInstructions,
+          ...domainInstructions,
+          `VALIDATION_FAILURE: ${validationFailure.slice(0, 1_000)}`,
+        ],
+        data: {
+          SOURCE_DATA: options.source,
+          INVALID_DRAFT_TRANSLATION: second.value,
+          VALIDATION_FAILURE: validationFailure,
+        },
+        maxOutputTokens,
+        fetchImpl,
+        label: "repair",
+      });
+      finalValue = options.validate(finalRepair.value);
+    }
+  }
+  const finalEditorialPass = finalRepair ?? second ?? repair;
   return {
     value: finalValue,
     translatorModel: first.model,
@@ -583,11 +768,13 @@ export async function premiumTranslateToEnglish<T>(
     outputTokens: first.outputTokens,
     reviewInputTokens: combinedTokenCount(
       repair?.inputTokens,
-      second?.inputTokens
+      second?.inputTokens,
+      finalRepair?.inputTokens
     ),
     reviewOutputTokens: combinedTokenCount(
       repair?.outputTokens,
-      second?.outputTokens
+      second?.outputTokens,
+      finalRepair?.outputTokens
     ),
   };
 }

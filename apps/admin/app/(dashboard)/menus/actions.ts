@@ -8,6 +8,7 @@ import { requireStaff } from "@/lib/auth";
 import { requestPublicBuild } from "@/lib/publication";
 import { isSafePublicHref } from "@/lib/public-href";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 const optionalUuid = z.union([z.string().uuid(), z.literal("")]);
 const navigationSchema = z.object({
@@ -107,7 +108,7 @@ export async function saveNavigationItemAction(formData: FormData) {
       .eq("updated_at", parsed.data.expectedUpdatedAt)
       .select("id")
       .maybeSingle();
-    if (error) redirect(menuTarget(formData, { error: error.message }, itemId));
+    if (error) redirect(menuTarget(formData, { error: operatorDataError("menus", "save") }, itemId));
     if (!updated) {
       redirect(menuTarget(formData, {
         error: "Пункт меню уже изменили в другой вкладке. Обновите страницу и повторите правку.",
@@ -120,7 +121,7 @@ export async function saveNavigationItemAction(formData: FormData) {
       .select("id")
       .single();
     if (error || !data) {
-      redirect(menuTarget(formData, { error: error?.message || "Пункт не создан" }));
+      redirect(menuTarget(formData, { error: operatorDataError("menus", "create") }));
     }
     itemId = data.id;
   }
@@ -152,7 +153,7 @@ export async function deleteNavigationItemAction(formData: FormData) {
     .eq("updated_at", expectedUpdatedAt.data)
     .select("id")
     .maybeSingle();
-  if (error) redirect(menuTarget(formData, { error: error.message }));
+  if (error) redirect(menuTarget(formData, { error: operatorDataError("menus", "delete") }));
   if (!deleted) {
     redirect(menuTarget(formData, {
       error: "Пункт меню уже изменили в другой вкладке. Обновите страницу перед удалением.",

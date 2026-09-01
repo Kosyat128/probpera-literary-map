@@ -67,20 +67,29 @@ function parseRedirectForm(formData: FormData) {
   };
 }
 
-async function auditAndRequestBuild(
+const redirectErrorMessages: Record<string, string> = {
+  ADMIN_HIGH_RISK_ROLE_REQUIRED: "Для удаления нужны права администратора или владельца.",
+  ADMIN_STAFF_REQUIRED: "Требуются права редакции.",
+  REDIRECT_COLLISION_OR_CHAIN: "Адрес пересекается с другой активной переадресацией или создаёт цепочку.",
+  REDIRECT_INVALID_PATH: "Проверьте старый и новый адреса.",
+  REDIRECT_INVALID_STATUS: "Недопустимый код переадресации.",
+  REDIRECT_LIVE_ROUTE_COLLISION: "Старый адрес занят опубликованной страницей.",
+  REDIRECT_SELF_REFERENCE: "Старый и новый адреса не должны совпадать.",
+  REDIRECT_SOURCE_EXISTS: "Переадресация с таким старым адресом уже существует.",
+  REDIRECT_WRITE_CONFLICT: "Переадресация уже изменена или удалена. Обновите страницу.",
+};
+
+function redirectErrorMessage(message?: string) {
+  return (message && redirectErrorMessages[message]) || "Не удалось сохранить переадресацию.";
+}
+
+async function requestRedirectBuild(
   supabase: NonNullable<Awaited<ReturnType<typeof createServerSupabaseClient>>>,
   actorId: string,
   entityId: string,
   action: string,
   metadata: Record<string, unknown> = {}
 ) {
-  await supabase.from("admin_audit_log").insert({
-    actor_id: actorId,
-    action,
-    entity_type: "redirect",
-    entity_id: entityId,
-    metadata,
-  });
   const publication = await requestPublicBuild({
     supabase,
     actorId,
@@ -108,22 +117,17 @@ export async function createRedirectAction(formData: FormData) {
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect(catalogTarget(formData, { error: "База данных не подключена." }));
 
-  const { data, error } = await supabase
-    .from("redirects")
-    .insert({
-      source_path: parsed.data.sourcePath,
-      destination_path: parsed.data.destinationPath,
-      status_code: parsed.data.statusCode,
-      is_active: parsed.data.isActive,
-      created_by: session.user.id,
-    })
-    .select("id")
-    .single();
+  const { data, error } = await supabase.rpc("create_seo_redirect_guarded", {
+    p_source_path: parsed.data.sourcePath,
+    p_destination_path: parsed.data.destinationPath,
+    p_status_code: parsed.data.statusCode,
+    p_is_active: parsed.data.isActive,
+  });
   if (error || !data) {
-    redirect(catalogTarget(formData, { error: error?.message || "Переадресация не создана." }));
+    redirect(catalogTarget(formData, { error: redirectErrorMessage(error?.message) }));
   }
 
-  const publication = await auditAndRequestBuild(
+  const publication = await requestRedirectBuild(
     supabase,
     session.user.id,
     data.id,
@@ -166,28 +170,19 @@ export async function updateRedirectAction(formData: FormData) {
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect(catalogTarget(formData, { error: "База данных не подключена." }));
 
-  const { data: updated, error } = await supabase
-    .from("redirects")
-    .update({
-      source_path: parsed.data.sourcePath,
-      destination_path: parsed.data.destinationPath,
-      status_code: parsed.data.statusCode,
-      is_active: parsed.data.isActive,
-    })
-    .eq("id", identity.data.id)
-    .eq("updated_at", identity.data.expectedUpdatedAt)
-    .select("id")
-    .maybeSingle();
-  if (error) redirect(catalogTarget(formData, { error: error.message }));
-  if (!updated) {
-    redirect(
-      catalogTarget(formData, {
-        error: "Переадресация уже изменена в другой вкладке. Обновите страницу и повторите правку.",
-      })
-    );
+  const { data: updated, error } = await supabase.rpc("update_seo_redirect_guarded", {
+    p_id: identity.data.id,
+    p_expected_updated_at: identity.data.expectedUpdatedAt,
+    p_source_path: parsed.data.sourcePath,
+    p_destination_path: parsed.data.destinationPath,
+    p_status_code: parsed.data.statusCode,
+    p_is_active: parsed.data.isActive,
+  });
+  if (error || !updated) {
+    redirect(catalogTarget(formData, { error: redirectErrorMessage(error?.message) }));
   }
 
-  const publication = await auditAndRequestBuild(
+  const publication = await requestRedirectBuild(
     supabase,
     session.user.id,
     identity.data.id,
@@ -219,23 +214,15 @@ export async function deleteRedirectAction(formData: FormData) {
   }
   const supabase = await createServerSupabaseClient();
   if (!supabase) redirect(catalogTarget(formData, { error: "База данных не подключена." }));
-  const { data: deleted, error } = await supabase
-    .from("redirects")
-    .delete()
-    .eq("id", identity.data.id)
-    .eq("updated_at", identity.data.expectedUpdatedAt)
-    .select("id")
-    .maybeSingle();
-  if (error) redirect(catalogTarget(formData, { error: error.message }));
-  if (!deleted) {
-    redirect(
-      catalogTarget(formData, {
-        error: "Переадресация уже изменена или удалена. Обновите страницу.",
-      })
-    );
+  const { data: deleted, error } = await supabase.rpc("delete_seo_redirect_guarded", {
+    p_id: identity.data.id,
+    p_expected_updated_at: identity.data.expectedUpdatedAt,
+  });
+  if (error || !deleted) {
+    redirect(catalogTarget(formData, { error: redirectErrorMessage(error?.message) }));
   }
 
-  const publication = await auditAndRequestBuild(
+  const publication = await requestRedirectBuild(
     supabase,
     session.user.id,
     identity.data.id,

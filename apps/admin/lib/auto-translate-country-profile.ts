@@ -4,6 +4,8 @@ import { z } from "zod";
 import { adminEnv } from "./env";
 import { premiumTranslateToEnglish } from "./premium-english-translation";
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
+import { translationErrorCode } from "./translation-errors";
+import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
 
 const timelineItemSchema = z.object({
   year: z.string().max(80),
@@ -50,19 +52,19 @@ const translatedCountryJsonSchema = {
     "chronology",
   ],
   properties: {
-    name: { type: "string" },
-    region: { type: "string" },
-    continent: { type: "string" },
-    officialLanguage: { type: "string" },
-    capital: { type: "string" },
-    description: { type: "string" },
-    history: { type: "string" },
-    historicalNote: { type: "string" },
-    literaryPeriods: { type: "array", maxItems: 40, items: { type: "string" } },
-    literaryMovements: { type: "array", maxItems: 40, items: { type: "string" } },
-    periods: { type: "array", maxItems: 40, items: { type: "string" } },
-    facts: { type: "array", maxItems: 80, items: { type: "string" } },
-    literaryPlaces: { type: "array", maxItems: 80, items: { type: "string" } },
+    name: { type: "string", minLength: 1, maxLength: 160 },
+    region: { type: "string", maxLength: 160 },
+    continent: { type: "string", maxLength: 160 },
+    officialLanguage: { type: "string", maxLength: 300 },
+    capital: { type: "string", maxLength: 200 },
+    description: { type: "string", maxLength: 4_000 },
+    history: { type: "string", maxLength: 8_000 },
+    historicalNote: { type: "string", maxLength: 4_000 },
+    literaryPeriods: { type: "array", maxItems: 40, items: { type: "string", maxLength: 300 } },
+    literaryMovements: { type: "array", maxItems: 40, items: { type: "string", maxLength: 300 } },
+    periods: { type: "array", maxItems: 40, items: { type: "string", maxLength: 300 } },
+    facts: { type: "array", maxItems: 80, items: { type: "string", maxLength: 1_000 } },
+    literaryPlaces: { type: "array", maxItems: 80, items: { type: "string", maxLength: 500 } },
     timeline: {
       type: "array",
       maxItems: 100,
@@ -71,9 +73,9 @@ const translatedCountryJsonSchema = {
         additionalProperties: false,
         required: ["year", "title", "description"],
         properties: {
-          year: { type: "string" },
-          title: { type: "string" },
-          description: { type: "string" },
+          year: { type: "string", maxLength: 80 },
+          title: { type: "string", maxLength: 500 },
+          description: { type: "string", maxLength: 2_000 },
         },
       },
     },
@@ -85,9 +87,9 @@ const translatedCountryJsonSchema = {
         additionalProperties: false,
         required: ["year", "title", "description"],
         properties: {
-          year: { type: "string" },
-          title: { type: "string" },
-          description: { type: "string" },
+          year: { type: "string", maxLength: 80 },
+          title: { type: "string", maxLength: 500 },
+          description: { type: "string", maxLength: 2_000 },
         },
       },
     },
@@ -225,6 +227,7 @@ export async function ensureCountryEnglishProfile(input: {
   actorId: string;
   countryId: string;
   sourceFields: Record<string, unknown>;
+  runtimeApproved?: boolean;
 }): Promise<{
   state: CountryTranslationState;
   model?: string;
@@ -232,7 +235,9 @@ export async function ensureCountryEnglishProfile(input: {
   error?: string;
 }> {
   if (!adminEnv.openAiAutoTranslateProfiles) return { state: "skipped" };
-  if (!adminEnv.premiumTranslationConfigured) return { state: "not-configured" };
+  if (!input.runtimeApproved && !(await premiumTranslationRuntimeGate(input.supabase))) {
+    return { state: "not-configured" };
+  }
 
   const existingResponse = await input.supabase
     .from("country_profile_overrides")
@@ -393,7 +398,7 @@ export async function ensureCountryEnglishProfile(input: {
         provider: runtime.provider,
         model: runtime.model,
         reviewer_model: runtime.reviewerModel,
-        error: message.slice(0, 500),
+        error_code: translationErrorCode(message),
       },
     });
     return { state: "failed", error: message };

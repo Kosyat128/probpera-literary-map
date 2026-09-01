@@ -23,6 +23,7 @@ import {
   normalizePublishedTypography,
   publicFontMetadata,
 } from "./lib/site-typography-publication.mjs";
+import { normalizePublishedSiteDesign } from "./lib/site-studio-publication.mjs";
 import {
   articleIdSet,
   assertCandidateCanReplaceBaseline,
@@ -259,6 +260,29 @@ async function fetchPublishedTypographyInputs() {
     overrides: Array.isArray(snapshot?.overrides) ? snapshot.overrides : [],
     fonts: [],
   };
+}
+
+async function fetchPublishedSiteDesign() {
+  const response = await fetch(
+    `${supabaseUrl}/rest/v1/rpc/get_published_site_design`,
+    {
+      headers: {
+        apikey: publicSnapshotKey,
+        Authorization: `Bearer ${publicSnapshotKey}`,
+      },
+    }
+  );
+  if (response.ok) return normalizePublishedSiteDesign(await response.json());
+  const body = await response.text();
+  if (
+    response.status === 404 &&
+    /(?:PGRST202|get_published_site_design)/iu.test(body)
+  ) {
+    return { release: null, tokens: [], components: [] };
+  }
+  throw new Error(
+    `CMS Site Studio export failed: ${response.status} ${body.slice(0, 240)}`
+  );
 }
 
 async function readJsonIfExists(target) {
@@ -692,6 +716,7 @@ const [
   rawLiteraryWorks,
   rawBookEditions,
   rawTypographyInputs,
+  siteDesign,
 ] = await Promise.all([
   fetchRows("articles", {
     select:
@@ -774,6 +799,7 @@ const [
     order: "is_primary.desc,updated_at.desc,id.asc",
   }, publicSnapshotKey),
   fetchPublishedTypographyInputs(),
+  fetchPublishedSiteDesign(),
 ]);
 
 const rawTypographyOverrides = rawTypographyInputs.overrides;
@@ -1150,6 +1176,7 @@ const siteContentBase = {
   pages,
   bookEditionsByWorkId,
   typography,
+  siteDesign,
 };
 const snapshotBaseContent = {
   version: 1,
@@ -1369,5 +1396,5 @@ if (process.env.GITHUB_OUTPUT) {
 }
 
 console.log(
-  `Exported stable CMS snapshot ${snapshot.publication.contentSha256.slice(0, 12)} at publication head ${publicationHeadMarker(stablePublicationHead) || `${stablePublicationHead.source}:0`}: ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${Object.keys(siteCopy.ru).length + Object.keys(siteCopy.en).length} site-copy overrides, ${Object.keys(countryProfileOverrides).length} country overrides, ${Object.keys(writerProfileOverrides).length} writer overrides, ${Object.keys(literaryWorksByLegacyId).length} literary works, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus, ${Object.keys(bookEditionsByWorkId).length} exact book covers and ${typography.fonts.length} self-hosted fonts; ${replacement.removedIds.length} authoritative withdrawal(s), ${staleArticleDocumentNames.length} stale article snapshot(s) and ${staleFontDocumentNames.length} stale font file(s) removed.`
+  `Exported stable CMS snapshot ${snapshot.publication.contentSha256.slice(0, 12)} at publication head ${publicationHeadMarker(stablePublicationHead) || `${stablePublicationHead.source}:0`}: ${articles.length} articles, ${homepageBlocks.length} homepage blocks, ${Object.keys(siteCopy.ru).length + Object.keys(siteCopy.en).length} site-copy overrides, ${Object.keys(countryProfileOverrides).length} country overrides, ${Object.keys(writerProfileOverrides).length} writer overrides, ${Object.keys(literaryWorksByLegacyId).length} literary works, ${banners.length} banners, ${pages.length} pages, ${navigationMenus.length} menus, ${Object.keys(bookEditionsByWorkId).length} exact book covers, ${typography.fonts.length} self-hosted fonts and ${siteDesign.tokens.length} published design tokens; ${replacement.removedIds.length} authoritative withdrawal(s), ${staleArticleDocumentNames.length} stale article snapshot(s) and ${staleFontDocumentNames.length} stale font file(s) removed.`
 );

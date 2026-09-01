@@ -13,6 +13,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
   supabase: SupabaseClient;
   actorId: string;
   workId: string;
+  runtimeApproved?: boolean;
 }): Promise<{
   state: SafeLiteraryWorkAutoTranslationState;
   model?: string;

@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import { createHash } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -15,6 +16,29 @@ if (!url || !serviceKey) {
 const supabase = createClient(url, serviceKey, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
+
+function safeStorageIdentity(bucket, objectPath) {
+  if (!/^[a-z0-9][a-z0-9._-]{0,99}$/iu.test(bucket)) {
+    throw new Error("Storage backup rejected an unsafe bucket identifier.");
+  }
+  const segments = String(objectPath || "").split("/");
+  if (
+    !segments.length ||
+    segments.some(
+      (segment) =>
+        !segment || segment === "." || segment === ".." ||
+        /[\\\u0000-\u001f\u007f]/u.test(segment)
+    )
+  ) {
+    throw new Error("Storage backup rejected an unsafe object path.");
+  }
+  const target = path.resolve(outputRoot, bucket, ...segments);
+  const root = path.resolve(outputRoot);
+  if (!target.startsWith(`${root}${path.sep}`)) {
+    throw new Error("Storage backup path escaped the output directory.");
+  }
+  return target;
+}
 
 async function listFolder(bucket, prefix = "") {
   const collected = [];
@@ -48,18 +72,32 @@ for (const bucket of buckets || []) {
   for (const objectPath of objects) {
     const { data, error } = await supabase.storage.from(bucket.id).download(objectPath);
     if (error) throw error;
-    const target = path.join(outputRoot, bucket.id, ...objectPath.split("/"));
+    const target = safeStorageIdentity(bucket.id, objectPath);
     await mkdir(path.dirname(target), { recursive: true });
     const bytes = Buffer.from(await data.arrayBuffer());
     await writeFile(target, bytes);
-    manifest.push({ bucket: bucket.id, path: objectPath, bytes: bytes.length });
+    manifest.push({
+      bucket: bucket.id,
+      path: objectPath,
+      bytes: bytes.length,
+      sha256: createHash("sha256").update(bytes).digest("hex"),
+    });
   }
 }
 
 await mkdir(outputRoot, { recursive: true });
 await writeFile(
   path.join(outputRoot, "storage-manifest.json"),
-  `${JSON.stringify({ createdAt: new Date().toISOString(), objects: manifest }, null, 2)}\n`,
+  `${JSON.stringify({
+    version: 2,
+    createdAt: new Date().toISOString(),
+    objectCount: manifest.length,
+    totalBytes: manifest.reduce((total, item) => total + item.bytes, 0),
+    objects: manifest.sort((left, right) =>
+      left.bucket.localeCompare(right.bucket, "en") ||
+      left.path.localeCompare(right.path, "en")
+    ),
+  }, null, 2)}\n`,
   "utf8"
 );
 console.log(`Backed up ${manifest.length} storage objects.`);

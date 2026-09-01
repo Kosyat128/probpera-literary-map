@@ -18,10 +18,12 @@ describe("translation backfill cursors", () => {
 
   it("preserves only bounded non-negative cursor tokens across actions", () => {
     const formData = new FormData();
+    formData.set("articleCursor", "11");
     formData.set("libraryCursor", "42");
     formData.set("writerCursor", "7");
     formData.set("countryCursor", "999999999999999999999");
     expect(translationBackfillCursorParams(formData)).toEqual({
+      articleCursor: 11,
       libraryCursor: 42,
       writerCursor: 7,
       countryCursor: 0,

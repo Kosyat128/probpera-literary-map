@@ -1,0 +1,300 @@
+.page {
+  display: grid;
+  gap: 22px;
+}
+
+.heading,
+.headingActions,
+.createPanel,
+.setCard > header,
+.setCard > footer,
+.item,
+.actions,
+.approval {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.heading {
+  align-items: end;
+}
+
+.heading h1 {
+  margin: 8px 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 4vw, 58px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.heading p,
+.createPanel p,
+.setCard p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.headingActions,
+.actions {
+  flex-wrap: wrap;
+}
+
+.message {
+  margin: 0;
+  border: 1px solid rgba(255, 141, 135, 0.32);
+  border-radius: 14px;
+  background: rgba(145, 24, 37, 0.18);
+  padding: 13px 16px;
+  color: #ffd2cf;
+}
+
+.success {
+  border-color: rgba(101, 215, 161, 0.34);
+  background: rgba(101, 215, 161, 0.08);
+  color: #dff9ec;
+}
+
+.createPanel {
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background:
+    linear-gradient(120deg, rgba(255, 118, 25, 0.08), transparent 46%),
+    rgba(27, 9, 46, 0.78);
+  padding: clamp(20px, 3vw, 30px);
+}
+
+.createPanel h2,
+.sets > header h2,
+.releaseHistory h2 {
+  margin: 6px 0 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.createPanel form {
+  display: grid;
+  width: min(560px, 100%);
+  gap: 11px;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.7fr);
+  gap: 20px;
+}
+
+.sets,
+.releaseHistory {
+  min-width: 0;
+}
+
+.sets > header,
+.releaseHistory > header {
+  margin-bottom: 14px;
+}
+
+.setCard,
+.releaseHistory {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(27, 9, 46, 0.74);
+  padding: 20px;
+}
+
+.setCard + .setCard {
+  margin-top: 14px;
+}
+
+.setCard > header {
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+
+.setCard h3 {
+  margin: 8px 0 5px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.setCard > header > small {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.status {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  padding: 5px 8px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.review,
+.approved {
+  border-color: rgba(255, 179, 109, 0.35);
+  color: var(--orange-soft);
+}
+
+.published {
+  border-color: rgba(101, 215, 161, 0.35);
+  color: var(--good);
+}
+
+.cancelled {
+  opacity: 0.64;
+}
+
+.items {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(8, 2, 17, 0.25);
+  padding: 11px 12px;
+}
+
+.item strong,
+.item small,
+.item code {
+  display: block;
+}
+
+.item small,
+.item code {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.item code {
+  max-width: 620px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item button,
+.releaseList button {
+  border: 0;
+  background: transparent;
+  padding: 4px;
+  color: var(--orange-soft);
+  font-size: 11px;
+}
+
+.actions {
+  justify-content: flex-start;
+  align-items: end;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.actions details {
+  flex: 1 1 100%;
+}
+
+.actions summary {
+  color: var(--orange-soft);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.actions details form {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.approval {
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+.approval label {
+  min-width: 280px;
+}
+
+.releaseHistory {
+  align-self: start;
+  position: sticky;
+  top: 92px;
+}
+
+.releaseList {
+  display: grid;
+  gap: 9px;
+}
+
+.releaseList article {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(8, 2, 17, 0.24);
+  padding: 12px;
+}
+
+.releaseList article > span {
+  color: var(--orange-soft);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.releaseList small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.empty {
+  margin: 0;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 1050px) {
+  .heading,
+  .createPanel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .releaseHistory {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .setCard > header,
+  .item,
+  .actions,
+  .approval {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .approval label {
+    min-width: 0;
+  }
+}

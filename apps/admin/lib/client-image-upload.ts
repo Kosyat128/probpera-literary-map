@@ -15,12 +15,25 @@ const MEBIBYTE = 1024 * 1024;
 export const MAX_CLIENT_IMAGE_SOURCE_BYTES = 20 * MEBIBYTE;
 export const MAX_CLIENT_IMAGE_UPLOAD_BYTES = Math.floor(3.8 * MEBIBYTE);
 
-const acceptedTypes = new Set([
+export const CLIENT_IMAGE_ACCEPT_ATTRIBUTE = [
   "image/jpeg",
   "image/png",
   "image/webp",
   "image/avif",
-]);
+  "image/gif",
+  "image/bmp",
+  "image/x-ms-bmp",
+  "image/tiff",
+  "image/heic",
+  "image/heif",
+  "image/jxl",
+].join(",");
+
+const acceptedTypes = new Set(CLIENT_IMAGE_ACCEPT_ATTRIBUTE.split(","));
+
+export function isAcceptedClientImageType(value: unknown) {
+  return typeof value === "string" && acceptedTypes.has(value.toLowerCase());
+}
 
 const sizePresets: Record<ClientImageUsage, { width: number; height: number }> = {
   cover: { width: 1800, height: 2700 },
@@ -132,8 +145,12 @@ export async function prepareClientImage(
   file: File,
   usage: ClientImageUsage = "inline"
 ): Promise<PreparedClientImage> {
-  if (!acceptedTypes.has(file.type)) {
-    throw new Error("Выберите изображение JPEG, PNG, WebP или AVIF.");
+  if (!isAcceptedClientImageType(file.type)) {
+    throw new Error(
+      file.type === "image/svg+xml"
+        ? "SVG нельзя загружать как изображение: используйте растровый исходник без исполняемого кода."
+        : "Выберите растровое изображение JPEG, PNG, WebP, AVIF, GIF, BMP, TIFF, HEIC/HEIF или JPEG XL. Формат должен поддерживаться вашим браузером."
+    );
   }
   if (file.size <= 0) {
     throw new Error("Выбранный файл пуст. Выберите другое изображение.");

@@ -1,5 +1,17 @@
 # Редакционная система «Проба Пера»
 
+Production-выпуск, резервное копирование, восстановление и действия при
+инцидентах собраны в
+[`ADMIN_OPERATIONS_RUNBOOK_RU.md`](./ADMIN_OPERATIONS_RUNBOOK_RU.md).
+
+Документация по фактически реализованным административным контурам:
+
+- [матрица покрытия CMS](./CMS_COVERAGE_RU.md);
+- [Data Studio: страны и авторы](./ADMIN_DATA_STUDIO_RU.md);
+- [Site Studio](./ADMIN_SITE_STUDIO_RU.md);
+- [Translation Operations](./ADMIN_TRANSLATION_RU.md);
+- [восстановление редакционной работы](./ADMIN_RECOVERY_RUNBOOK_RU.md).
+
 ## Что уже предусмотрено
 
 - защищённый кабинет по адресу `https://admin.probpera.ru`;

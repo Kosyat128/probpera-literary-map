@@ -6,6 +6,7 @@ import { articlePublicPath } from "@/lib/article-route";
 import { articleStatusLabels, formatDate } from "@/lib/format";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 import { viewPathVariants } from "@/lib/view-path";
 import {
   changeArticleStatusAction,
@@ -234,7 +235,7 @@ export default async function ArticlesPage({
           <span>Найдено: {total.toLocaleString("ru-RU")}</span>
           <span>Страница {currentPage} из {totalPages}</span>
         </div>
-        {error && <p className="form-message">Не удалось загрузить список: {error.message}</p>}
+        {error && <p className="form-message">{operatorDataError("articles", "load")}</p>}
         {!error && articles.length === 0 ? (
           <div className="empty-state">
             <div>

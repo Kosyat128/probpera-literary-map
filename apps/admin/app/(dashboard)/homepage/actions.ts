@@ -25,6 +25,7 @@ import {
   normalizeShortHyphensDeep,
 } from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 const blockTypes = new Set([
   "hero",
@@ -176,7 +177,7 @@ export async function createHomepageBlockAction(formData: FormData) {
   if (error || !data) {
     redirect(
       `/homepage?error=${encodeURIComponent(
-        error?.message || "Не удалось создать блок"
+        operatorDataError("homepage", "create")
       )}`
     );
   }
@@ -209,7 +210,7 @@ export async function updateHomepageBlockAction(formData: FormData) {
   if (existingError || !existing) {
     redirect(
       `/homepage?error=${encodeURIComponent(
-        existingError?.message || "Блок не найден"
+        operatorDataError("homepage", "load")
       )}`
     );
   }
@@ -244,7 +245,7 @@ export async function updateHomepageBlockAction(formData: FormData) {
     if (!error) {
       redirect("/homepage?error=Блок уже изменён в другой вкладке. Обновите страницу и повторите правку.");
     }
-    redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+    redirect(`/homepage?error=${encodeURIComponent(operatorDataError("homepage", "save"))}`);
   }
   const publication = await recordBuildRequest(
     supabase,
@@ -270,7 +271,7 @@ export async function toggleHomepageBlockAction(formData: FormData) {
     .eq("id", id)
     .single();
   if (existingError || !existing) {
-    redirect(`/homepage?error=${encodeURIComponent(existingError?.message || "Блок не найден")}`);
+    redirect(`/homepage?error=${encodeURIComponent(operatorDataError("homepage", "load"))}`);
   }
   if (isProtectedHomepageBlock(existing)) {
     redirect("/homepage?error=Основной или системный блок нельзя выключить здесь");
@@ -288,7 +289,7 @@ export async function toggleHomepageBlockAction(formData: FormData) {
     .eq("updated_at", expectedUpdatedAt)
     .select("id")
     .maybeSingle();
-  if (error) redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+  if (error) redirect(`/homepage?error=${encodeURIComponent(operatorDataError("homepage", "save"))}`);
   if (!updated) redirect("/homepage?error=Блок уже изменён в другой вкладке. Обновите страницу.");
   const publication = await recordBuildRequest(
     supabase,
@@ -312,7 +313,7 @@ export async function moveHomepageBlockAction(formData: FormData) {
     p_direction: direction,
   });
   if (error) {
-    redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+    redirect(`/homepage?error=${encodeURIComponent(operatorDataError("homepage", "save"))}`);
   }
   if (!moved) return;
   const publication = await recordBuildRequest(
@@ -338,7 +339,7 @@ export async function deleteHomepageBlockAction(formData: FormData) {
     .eq("id", id)
     .single();
   if (existingError || !existing) {
-    redirect(`/homepage?error=${encodeURIComponent(existingError?.message || "Блок не найден")}`);
+    redirect(`/homepage?error=${encodeURIComponent(operatorDataError("homepage", "load"))}`);
   }
   if (isProtectedHomepageBlock(existing)) {
     redirect("/homepage?error=Основной или системный блок нельзя удалить");
@@ -353,7 +354,7 @@ export async function deleteHomepageBlockAction(formData: FormData) {
     .eq("updated_at", expectedUpdatedAt)
     .select("id")
     .maybeSingle();
-  if (error) redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+  if (error) redirect(`/homepage?error=${encodeURIComponent(operatorDataError("homepage", "delete"))}`);
   if (!deleted) redirect("/homepage?error=Блок уже изменён или удалён. Обновите страницу.");
   const publication = await recordBuildRequest(
     supabase,
@@ -407,7 +408,7 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
     .limit(1)
     .maybeSingle();
   if (existingError) {
-    redirect(`/homepage?error=${encodeURIComponent(existingError.message)}`);
+    redirect(`/homepage?error=${encodeURIComponent(operatorDataError("homepage", "load"))}`);
   }
 
   const existingSettings =
@@ -452,7 +453,7 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
       .is("deleted_at", null)
       .maybeSingle();
     if (sceneMediaError) {
-      redirect(`/homepage?error=${encodeURIComponent(sceneMediaError.message)}`);
+      redirect(`/homepage?error=${encodeURIComponent(operatorDataError("homepage", "load"))}`);
     }
     const mediaIssue = bookArchiveBackgroundMediaIssue(sceneMedia);
     if (mediaIssue) {
@@ -489,7 +490,7 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
       if (!error) {
         redirect("/homepage?error=Основной блок уже изменён в другой вкладке. Обновите страницу и повторите правку.");
       }
-      redirect(`/homepage?error=${encodeURIComponent(error.message)}`);
+      redirect(`/homepage?error=${encodeURIComponent(operatorDataError("homepage", "save"))}`);
     }
   } else {
     const { data, error } = await supabase
@@ -500,7 +501,7 @@ export async function saveCoreHomepageSectionAction(formData: FormData) {
     if (error || !data) {
       redirect(
         `/homepage?error=${encodeURIComponent(
-          error?.message || "Не удалось подключить основной блок"
+          operatorDataError("homepage", "create")
         )}`
       );
     }

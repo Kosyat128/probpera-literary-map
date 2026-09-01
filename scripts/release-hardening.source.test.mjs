@@ -166,6 +166,17 @@ describe("release workflow hardening", () => {
     expect(workflow).not.toContain("Finalize scheduled publications");
   });
 
+  it("publishes approved due Site Studio change sets through the atomic RPC", () => {
+    const source = read("scripts/publish-scheduled-content.mjs");
+    expect(source).toContain('status: "eq.approved"');
+    expect(source).toContain('scheduled_at: `lte.${now}`');
+    expect(source).toContain("/rest/v1/rpc/publish_site_design_change_set");
+    expect(source).toContain("p_expected_cas_version: changeSet.cas_version");
+    expect(source).toContain(
+      "publishedArticles.length + publishedDesignChangeSets.length"
+    );
+  });
+
   it("uses the supported v7 checkout and setup-node actions in deploy workflows", () => {
     for (const workflow of ["deploy-pages.yml", "deploy-admin.yml"]) {
       const source = read(`.github/workflows/${workflow}`);

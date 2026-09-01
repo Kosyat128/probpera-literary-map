@@ -19,9 +19,9 @@ function formValue(formData: FormData, camelCase: string, snakeCase: string) {
   return formData.get(camelCase) ?? formData.get(snakeCase);
 }
 
-function errorResponse(error: string, status: number) {
+function errorResponse(errorCode: string, status: number) {
   return NextResponse.json(
-    { error },
+    { errorCode },
     { status, headers: { "Cache-Control": "private, no-store" } }
   );
 }
@@ -29,21 +29,18 @@ function errorResponse(error: string, status: number) {
 export async function POST(request: Request) {
   const session = await requireStaff(["owner", "admin"]);
   if (!session?.user) {
-    return errorResponse("Требуется доступ администратора редакции.", 401);
+    return errorResponse("admin_access_required", 401);
   }
 
   let formData: FormData;
   try {
     formData = await request.formData();
   } catch {
-    return errorResponse("Передайте файл шрифта и его описание.", 400);
+    return errorResponse("form_data_invalid", 400);
   }
 
   if (hasForbiddenRemoteFontInput(formData)) {
-    return errorResponse(
-      "Загрузка шрифтов по внешней ссылке или через CSS-импорт запрещена.",
-      400
-    );
+    return errorResponse("remote_font_forbidden", 400);
   }
 
   const file = formData.get("file");
@@ -52,17 +49,15 @@ export async function POST(request: Request) {
       typeof file === "string" &&
       /(?:@import\b|url\s*\(|https?:\/\/|^\/\/)/iu.test(file.trim());
     return errorResponse(
-      remoteAttempt
-        ? "Загрузка шрифтов по внешней ссылке или через CSS-импорт запрещена."
-        : "Выберите локальный файл шрифта WOFF2 или WOFF.",
+      remoteAttempt ? "remote_font_forbidden" : "file_required",
       400
     );
   }
   if (file.size <= 0) {
-    return errorResponse("Выбранный файл шрифта пуст.", 400);
+    return errorResponse("file_empty", 400);
   }
   if (file.size > MAX_FONT_UPLOAD_BYTES) {
-    return errorResponse("Файл шрифта превышает допустимый размер 2 МБ.", 413);
+    return errorResponse("file_too_large", 413);
   }
 
   try {
@@ -78,10 +73,7 @@ export async function POST(request: Request) {
     });
     const bytes = new Uint8Array(await file.arrayBuffer());
     if (bytes.byteLength !== file.size) {
-      return errorResponse(
-        "Не удалось подтвердить размер файла шрифта. Выберите файл заново.",
-        422
-      );
+      return errorResponse("file_size_mismatch", 422);
     }
     const font = validateFontFile({
       bytes,
@@ -91,7 +83,7 @@ export async function POST(request: Request) {
 
     const supabase = await createServerSupabaseClient();
     if (!supabase) {
-      return errorResponse("Хранилище шрифтов временно недоступно.", 503);
+      return errorResponse("storage_unavailable", 503);
     }
 
     const storage = supabase.storage.from(SITE_FONT_BUCKET);
@@ -102,10 +94,7 @@ export async function POST(request: Request) {
     });
     if (uploadError && !isStorageObjectAlreadyPresent(uploadError)) {
       console.error("Font upload: storage rejected the object", uploadError);
-      return errorResponse(
-        "Не удалось сохранить файл шрифта. Повторите попытку.",
-        502
-      );
+      return errorResponse("storage_write_failed", 502);
     }
 
     const { data, error: insertError } = await supabase
@@ -137,34 +126,25 @@ export async function POST(request: Request) {
       // here could race with another request that already references the same
       // hash; unreferenced objects are handled by the staged cleanup workflow.
       if (isDatabaseUniqueConflict(insertError)) {
-        return errorResponse("Этот файл шрифта уже добавлен.", 409);
+        return errorResponse("font_already_added", 409);
       }
       console.error("Font upload: font_assets insert failed", insertError);
-      return errorResponse(
-        "Не удалось зарегистрировать шрифт. Повторите попытку.",
-        502
-      );
+      return errorResponse("font_registration_failed", 502);
     }
 
     return NextResponse.json(
       {
         ok: true,
         id: data.id,
-        sourceType: "uploaded",
-        format: font.format,
         displayName: metadata.displayName,
-        familyName: metadata.familyName,
-        objectPath: font.objectPath,
-        sha256: font.sha256Hex,
-        byteSize: font.byteSize,
       },
       { status: 201, headers: { "Cache-Control": "private, no-store" } }
     );
   } catch (error) {
     if (error instanceof FontUploadValidationError) {
-      return errorResponse(error.message, error.status);
+      return errorResponse(error.code, error.status);
     }
     console.error("Font upload: unexpected failure", error);
-    return errorResponse("Не удалось обработать файл шрифта.", 422);
+    return errorResponse("font_processing_failed", 422);
   }
 }

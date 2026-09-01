@@ -84,6 +84,9 @@ jobs:
             backup.tar.gz "$archive" verify.tar.gz
           tar -xOf verify.tar.gz backup/database/probpera.dump > verify.dump
           tar -xOf verify.tar.gz backup/database/auth-user-ids.seed > verify-auth-user-ids.seed
+          mkdir -p verify-storage
+          tar -xzf verify.tar.gz -C verify-storage backup/storage
+          node scripts/verify-supabase-storage-backup.mjs verify-storage/backup/storage
           echo "archive=$archive" >> "$GITHUB_OUTPUT"
           if [[ "$(date -u +%d)" == "01" ]]; then echo "retention=90" >> "$GITHUB_OUTPUT"; else echo "retention=30" >> "$GITHUB_OUTPUT"; fi
 
@@ -119,8 +122,35 @@ jobs:
             fi
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Record verified backup health markers
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
+        run: |
+          printf '%s\n' \
+            "do \$probpera_backup_marker\$" \
+            "begin" \
+            "  if to_regclass('public.admin_ops_markers') is not null then" \
+            "    insert into public.admin_ops_markers (marker_key, status, occurred_at, details, updated_at)" \
+            "    values" \
+            "      ('encrypted_backup', 'ok', now(), '{\"database\":true,\"storage\":true,\"encryptionVerified\":true}'::jsonb, now())," \
+            "      ('restore_drill', 'ok', now(), '{\"database\":true,\"storageSha256Verified\":true,\"scope\":\"public-application-schema\"}'::jsonb, now())" \
+            "    on conflict (marker_key) do update" \
+            "      set status = excluded.status," \
+            "          occurred_at = excluded.occurred_at," \
+            "          details = excluded.details," \
+            "          updated_at = excluded.updated_at;" \
+            "  end if;" \
+            "end;" \
+            "\$probpera_backup_marker\$;" \
+            > backup/record-ops-markers.sql
+          bash scripts/database/supabase-database-safety.sh apply-plan \
+            backup/record-ops-markers.sql
+
       - name: Remove plaintext backup material
         if: always()
         run: |
           rm -rf backup
+          rm -rf verify-storage
           rm -f backup.tar.gz verify.tar.gz verify.dump verify-auth-user-ids.seed

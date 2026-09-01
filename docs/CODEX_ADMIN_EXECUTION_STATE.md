@@ -1,119 +1,74 @@
 # Codex Admin Execution State
 
-Audited Phase 4 baseline: `7a189e173d9efebafdd6077b9c36ff1af8f8ad3e`
-Phase 4 release: `ff9f4853684208f37ac9deba8e14f4944f1fef51`
-Current Phase 5 branch: `codex/admin-phase5-font-manager`
-Last updated: `2026-08-30`
+Phase 4 production baseline: `ff9f4853684208f37ac9deba8e14f4944f1fef51`
 
-## Completed
+Current completion branch: `codex/admin-stage5-10-completion`
 
-- [x] Preceding Stage 5 released and certified on `fd683994` (Pages, exact-main Quality, live security, rollback drill).
-- [x] Baseline-to-HEAD admin-related name-status diff reviewed; no prior Admin 2.0 checkpoint existed.
-- [x] Live release head is exactly `fd683994`; Pages, Quality and live-security workflows are green.
-- [x] The known public-build backlog was finalized through outbox high-water `281` and legacy-audit high-water `620`.
-- [x] Production Pages artifact `33159539789` inspected directly: the baseline article is an authoritative CMS withdrawal, not a generated slug mismatch.
-- [x] Fail-closed exact-record restoration tool, focused regression tests and immutable manual production workflow implemented for the required baseline article.
-- [x] Next.js upgraded from `16.3.0` to patched `16.3.3` without unrelated dependency upgrades.
-- [x] Root/global error boundaries and graceful Russian dependency states added; all 18 nullable Supabase pages no longer render blank screens.
-- [x] Admin OpenNext Worker built successfully and size gate passed at `2862.20 / 2900 KiB` gzip.
-- [x] Phase 1-2 PR `#132` merged by the repository-required rebase strategy; deploy-admin and Quality are green (`114` browser checks passed, `18` skipped).
-- [x] Phase 3 typed Article Editor workspace bridge implemented without DOM scraping, `MutationObserver`, heading-text parsing or synthetic clicks; focused tests (`21/21`) and admin TypeScript passed.
-- [x] The first production restoration attempt (`33168427295`) failed closed before mutation because the guard compared the public route segment with the CMS category slug. The CMS contract is now pinned correctly to `book-opinions`; focused restore tests pass (`8/8`).
-- [x] Shared editor media workflow extracted and reused by Article/Page: ordered multi-file upload, exact single-file replacement, drag/paste handling, cancel/retry and the read-only media library preserve authoritative `mediaId` metadata.
-- [x] Shared RichEditor controls and safe-link workflow extracted without changing TipTap serialization: Article/Page reuse ordered extensions, typography controls, tables, divider, image dialog and authenticated internal-link autocomplete.
-- [x] ArticleEditor presentation boundaries extracted into Shell, Core, Toolbar, Gallery and pure validation/publish/cover/SEO/source panels while the parent retains canonical state, effects and submit ordering.
-- [x] Recovery is separated through the typed workspace bridge and RecoveryController; server recovery uses actor-only RLS, monotonic per-tab sequences, exact-receipt cleanup, canonical-version conflict detection and explicit manual restore for complete Article/Page snapshots.
-- [x] Legacy import, social publication and article-management responsibilities are split into focused action modules; the reconciled canonical atomic article RPC is now the only save path.
-- [x] Shared editor dialog focus management is implemented for link, image, media and gallery dialogs; the remaining parity/focus audit can proceed in parallel before the pre-reconcile PR is frozen.
-- [x] A bounded `windows-latest` standalone smoke workflow type-checks, builds, prepares, starts and HTTP-probes the production admin entrypoint without browser E2E; the Phase 3 PR run is green.
-- [x] Phase 3 PR `#137` merged to exact main SHA `ae5e02e5fdac929e03cff2729202c201651f39d1` with Quality/security, deploy-admin and Windows smoke green.
-- [x] Production reconciliation run `33194740075` succeeded on that exact SHA with `article_bundle_rpc=true`, `editor_autosaves=true`, `editor_autosave_rpc=true`, `ledger_entries=17` and `invalid_indexes=0`.
-- [x] The post-reconciliation compatibility probe, legacy atomic-save fallback and dead auto-publish compatibility action are removed; saves now fail closed through the canonical transactional RPC.
-- [x] Phase 4 completed: shared responsive media, structured galleries/sliders,
-  Media Studio lifecycle and usage graph, Safe Replace, bulk metadata, orphan
-  cleanup, staged owner-only permanent purge and one-pass repair for invalid
-  structured translations.
-- [x] Phase 4 PRs `#146`-`#149` were merged and released from exact `main` SHA
-  `ff9f4853684208f37ac9deba8e14f4944f1fef51`.
-- [x] Phase 4 production reconciliation `33324161053` committed successfully:
-  `181` articles reconciled, `2` UUID stubs retained, backup created, all schema
-  health checks passed, `18` ledger entries and `0` invalid indexes confirmed.
-- [x] Exact-main admin deployment `33326732598`, Pages `33326732600`, Quality
-  `33326732594` and live-security verification are green. Deployed admin Worker
-  version: `56c0795e-8288-4e56-9be2-cf8163826f71`; direct-root gzip size:
-  `2891.86 / 2912 KiB`.
+Last updated: `2026-09-01`
 
-## In progress
+## Состояние реализации
 
-- Phase 5 Style Engine, section 15, is implemented locally: private WOFF/WOFF2 font
-  ingestion, content-addressed storage, audited CAS publication and revisions,
-  layered responsive typography rules, Font Manager UI, trusted same-origin public
-  font export, runtime typography and semantic text roles in the editors.
-- Section 15 is pending final combined validation, review, merge, production
-  reconciliation and exact-main release. It is not yet deployed.
+- [x] Phase 5 - Site Studio: типизированный реестр компонентов, дизайн-токены,
+  адаптивные состояния, наборы изменений, атомарные релизы и откат; публичный
+  runtime/export; Direct Edit v2; безопасная загрузка растровых изображений.
+- [x] Phase 6 - Data Studio: единый маршрут, канонические справочники стран и
+  писателей, validated FK, ручной приоритет, SELECT-only/FORCE RLS, атомарные
+  операции с изданиями и CAS/audit/outbox.
+- [x] Phase 7 - Translation Operations: реальный provider self-test со строгой
+  JSON-схемой, cooldown/lease и сроком 24 часа; безопасные коды ошибок; durable
+  jobs/items/attempts и ограниченное продолжение по сохранённому курсору.
+- [x] Phase 8 - Site Copy, SEO, комментарии, аналитика и операции: атомарные RPC,
+  запрет обхода прямым DML, защита редиректов, агрегированная DB-аналитика и CSV,
+  backup Storage manifest с SHA-256, restore verification и operational markers.
+- [x] Phase 9 - единый типизированный реестр модулей для sidebar и command
+  palette; все операторские маршруты покрыты и проверены.
+- [x] Phase 10 - fail-closed schema health, закрытый словарь статусов, редактирование
+  без вывода сырых PostgREST/provider ошибок, граница клиентских секретов,
+  документация и матрица CMS-покрытия.
 
-## Pending
+## Инварианты релиза
 
-- [ ] Release Phase 5 Style Engine section 15, then continue with the first
-  unfinished Site Studio item without reopening completed work.
-- [ ] Phase 6 - Data Studio.
-- [ ] Phase 7 - translation runtime and durable jobs.
-- [ ] Phase 8 - site copy, SEO and operations.
-- [ ] Phase 9 - route/module coverage closure.
-- [ ] Phase 10 - final QA.
-- [ ] Final QA, release and production verification.
+- Production migration plan содержит ровно 29 рассмотренных миграций с
+  нормализованными SHA-256 и завершается
+  `20260901_zzzzzz_admin_completion_health`.
+- Итоговый health RPC наследует все прежние проверки и дополнительно закрывает
+  Site/Data/Translation Studio, Direct Edit v2, last-owner, mutation guards,
+  analytics и operational observability.
+- Сверка БД выполняется только из exact `main`, после зашифрованной резервной
+  копии и изолированной restore-проверки; несовпадение SHA, ledger или health
+  останавливает применение.
+- Клиентские chunks проверяются после production/OpenNext build; серверные
+  secrets и их значения в `.next/static` запрещены.
+- Глобус и книжная полка остаются `ownerLocked`: Site Studio не меняет их
+  геометрию и интерактивные алгоритмы.
 
-## Production reconciliation evidence
+## Проверки текущего блока
 
-- Phase 4 reconciliation run `33324161053` passed immutable invocation,
-  exact-main recheck, backup, isolated validation, production apply and exact
-  schema-health comparison.
-- The reconciliation committed successfully for `181` articles with `2` UUID
-  compatibility stubs, `18` ledger entries and `0` invalid indexes; every recorded
-  health check is true.
-- Production deployment and verification used exact merged Phase 4 SHA
-  `ff9f4853684208f37ac9deba8e14f4944f1fef51`; admin, Pages, Quality and
-  live-security checks are green.
+- Admin TypeScript (`tsc --noEmit` и Cloudflare tsconfig): успешно.
+- Финальный объединённый focused suite: **34 файла, 154/154 теста**.
+- Production migration planner/schema-health suite: **21/21 тест**.
+- Дополнительные профильные прогоны фаз до финального набора: Data Studio
+  **11/11**, mutation guards **10/10**, Translation Operations **47/47**.
+- `git diff --check`: ошибок нет; сообщения о будущей CRLF-нормализации на
+  Windows не являются ошибками содержимого.
+- Локальный OpenNext build на Windows остановлен известной junction-проблемой
+  окружения (`node_modules` разрешается в другой диск). Кодовая проверка и
+  typecheck зелёные; авторитетная production-сборка выполняется в чистом Linux CI
+  из lockfile, без повторного локального прогона той же сломанной команды.
 
-## Tests already green for current relevant code
+## Документация оператора
 
-- Exact-main Quality run `33159539777` - `fd683994`.
-- Pages run `33159539789` and live-security run `33160046572` - `fd683994`.
-- Exact-record restoration and resilience source contracts - 2 files, 11 tests.
-- Admin TypeScript and Cloudflare TypeScript configurations.
-- OpenNext production build on Next `16.3.3` and Worker gzip size gate.
-- PR `#132` deploy-admin run `33166448296` and Quality run `33166448257`.
-- Typed workspace focused suite: `21/21`; admin TypeScript and `git diff --check` passed.
-- Corrected exact-record restore contract: `8/8` focused tests.
-- Shared media/link parity: `6` focused files, `23/23` tests; admin TypeScript and `git diff --check` passed.
-- Shared RichEditor/autosave/migration/Windows source contracts: `6` focused files, `25/25` tests; the Phase 3 `windows-latest` workflow is green.
-- Recovery integration source contract: `4/4`; admin and Cloudflare TypeScript configurations pass.
-- ArticleEditor panel extraction: `15/15` focused tests; toolbar/gallery extraction: `10/10`; EditorCore/translation extraction: `17/17`; Shell extraction: `7/7`.
-- Direct media parity: `11/11` focused tests; production reconciliation contract: `10/10`; shared dialog focus: focused source and hook tests are committed.
-- Phase 3 fallback cleanup: all `36/36` focused source, governance and atomic-bundle tests pass; admin TypeScript and `git diff --check` pass.
-- Phase 4 media lifecycle migration and production planner contracts: `16/16`.
-- Phase 4 bulk metadata, orphan cleanup and staged permanent purge contracts: `13/13`.
-- Phase 4 editor/gallery/public/translation focused result: `97/97` relevant tests
-  green (one combined `93/97`, followed only by the four corrected files: `18/18`).
-- Admin, Cloudflare Worker and public-site TypeScript configurations pass. The
-  Cloudflare check reused the exact already-installed locked type package
-  `@cloudflare/workers-types@5.20260823.1`; dependencies were not reinstalled.
-- Independent final audit: no P0 or P1 findings; migration/planner checksum is
-  `3cb8717f0cf4f4b6a718591d2759c0c73008e35eaf9c3c09a1e0fd19f65ef837`.
-- Phase 4 production reconciliation `33324161053`, exact-main admin deployment
-  `33326732598`, Pages `33326732600` and Quality `33326732594` are green.
-- Phase 5 section 15 has focused local coverage for upload validation, migration
-  governance, public font publication/runtime and editor semantic-role contracts;
-  its final combined validation has not yet been recorded.
+- [Матрица покрытия CMS](./CMS_COVERAGE_RU.md)
+- [Data Studio](./ADMIN_DATA_STUDIO_RU.md)
+- [Site Studio](./ADMIN_SITE_STUDIO_RU.md)
+- [Translation Operations](./ADMIN_TRANSLATION_RU.md)
+- [Восстановление редакционной работы](./ADMIN_RECOVERY_RUNBOOK_RU.md)
+- [Backup, restore и operational checks](./ADMIN_OPERATIONS_RUNBOOK_RU.md)
 
-## Known blockers
+## Граница текущего релиза
 
-- No known Phase 4 blocker; Phase 4 is fully released and verified.
-- No known section 15 implementation blocker. Final combined validation and release
-  remain before it can be marked complete.
-
-## NEXT STEP
-
-Complete the single final validation for Phase 5 section 15, review the diff, merge
-one logical commit, reconcile production on the exact merged SHA, deploy and verify.
-Then continue from the first unfinished Site Studio item without reopening Phase 4.
+В этот блок не входят незавершённые изменения соседней задачи по глобусу:
+`src/index.css`, `src/components/globeFilterStability.test.ts` и
+`tests/e2e/literary-planet-immersion.spec.mjs`. Они не должны попадать в коммиты
+админки. Dirty-файл `apps/admin/catalog-assets/editorial-catalog.json` также не
+включается без отдельного подтверждённого содержательного изменения каталога.

@@ -6,8 +6,10 @@ import { requireStaff } from "@/lib/auth";
 import { redirect } from "@/lib/navigation";
 import {
   expectedTypographyVersionFromForm,
+  SiteTypographyValidationError,
   typographyPropertiesInputFromForm,
   typographyTargetFromForm,
+  type SiteTypographyErrorCode,
 } from "@/lib/site-typography";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
@@ -25,23 +27,35 @@ function pageTarget(
   return query.size ? `${pagePath}?${query.toString()}` : pagePath;
 }
 
-function requiredUuid(value: FormDataEntryValue | null, label: string) {
+function requiredUuid(value: FormDataEntryValue | null) {
   const candidate = typeof value === "string" ? value.trim() : "";
-  if (!uuidPattern.test(candidate)) throw new Error(`Некорректный ${label}.`);
+  if (!uuidPattern.test(candidate)) {
+    throw new SiteTypographyValidationError("typography_id_invalid");
+  }
   return candidate.toLowerCase();
 }
 
-function rpcErrorMessage(
-  error: { code?: string; message?: string } | null,
-  fallback: string
+function typographyErrorCode(
+  error: unknown,
+  fallback: SiteTypographyErrorCode = "typography_request_invalid"
 ) {
-  if (error?.code === "40001" || /(?:version|верс|conflict|stale)/iu.test(error?.message || "")) {
-    return "Настройка уже изменена в другой вкладке. Обновите страницу и повторите действие.";
+  return error instanceof SiteTypographyValidationError ? error.code : fallback;
+}
+
+function rpcErrorCode(
+  error: { code?: string; message?: string } | null,
+  fallback: SiteTypographyErrorCode
+): SiteTypographyErrorCode {
+  if (
+    error?.code === "40001" ||
+    /(?:version|верс|conflict|stale)/iu.test(error?.message || "")
+  ) {
+    return "typography_stale";
   }
   if (error?.code === "23503") {
-    return "Шрифт используется в настройках или истории типографики и не может быть архивирован.";
+    return "typography_font_in_use";
   }
-  if (error?.code === "42501") return "Недостаточно прав для этого действия.";
+  if (error?.code === "42501") return "typography_forbidden";
   return fallback;
 }
 
@@ -49,35 +63,35 @@ async function mutationContext() {
   const session = await requireStaff(["owner", "admin"]);
   if (!session?.user) redirect("/login");
   const supabase = await createServerSupabaseClient();
-  if (!supabase) redirect(pageTarget({ error: "База данных не подключена" }));
+  if (!supabase) {
+    redirect(pageTarget({ error: "typography_database_unavailable" }));
+  }
   return { session, supabase };
 }
 
 export async function saveTypographyOverrideAction(formData: FormData) {
   const { supabase } = await mutationContext();
-  const overrideValue = formData.get("override_id");
-  const overrideId =
-    typeof overrideValue === "string" && overrideValue.trim()
-      ? requiredUuid(overrideValue, "идентификатор настройки")
-      : null;
-
+  let overrideId: string | null = null;
   let target;
   let settings;
   let expectedVersion: number | null = null;
   try {
+    const overrideValue = formData.get("override_id");
+    overrideId =
+      typeof overrideValue === "string" && overrideValue.trim()
+        ? requiredUuid(overrideValue)
+        : null;
     target = typographyTargetFromForm(formData);
     settings = typographyPropertiesInputFromForm(formData);
     if (!Object.keys(settings).length) {
-      throw new Error(
-        "Укажите хотя бы один параметр. Чтобы убрать настройку, используйте «Сбросить»."
-      );
+      throw new SiteTypographyValidationError("typography_empty");
     }
     if (overrideId) expectedVersion = expectedTypographyVersionFromForm(formData);
   } catch (error) {
     redirect(
       pageTarget({
         override: overrideId || undefined,
-        error: error instanceof Error ? error.message : "Проверьте настройки",
+        error: typographyErrorCode(error),
       })
     );
   }
@@ -96,7 +110,7 @@ export async function saveTypographyOverrideAction(formData: FormData) {
     redirect(
       pageTarget({
         override: overrideId || undefined,
-        error: rpcErrorMessage(error, "Не удалось сохранить настройку."),
+        error: rpcErrorCode(error, "typography_save_failed"),
       })
     );
   }
@@ -111,13 +125,13 @@ export async function resetTypographyOverrideAction(formData: FormData) {
   let expectedVersion: number;
   let target;
   try {
-    overrideId = requiredUuid(formData.get("override_id"), "идентификатор настройки");
+    overrideId = requiredUuid(formData.get("override_id"));
     expectedVersion = expectedTypographyVersionFromForm(formData);
     target = typographyTargetFromForm(formData);
   } catch (error) {
     redirect(
       pageTarget({
-        error: error instanceof Error ? error.message : "Проверьте настройку",
+        error: typographyErrorCode(error),
       })
     );
   }
@@ -144,7 +158,7 @@ export async function resetTypographyOverrideAction(formData: FormData) {
     redirect(
       pageTarget({
         override: overrideId,
-        error: rpcErrorMessage(saveError, "Не удалось сбросить настройку."),
+        error: rpcErrorCode(saveError, "typography_reset_failed"),
       })
     );
   }
@@ -159,10 +173,7 @@ export async function resetTypographyOverrideAction(formData: FormData) {
     redirect(
       pageTarget({
         override: overrideId,
-        error: rpcErrorMessage(
-          publishError,
-          "Сброс сохранён как черновик, но опубликовать его не удалось."
-        ),
+        error: rpcErrorCode(publishError, "typography_reset_publish_failed"),
       })
     );
   }
@@ -175,12 +186,12 @@ export async function publishTypographyOverrideAction(formData: FormData) {
   let overrideId: string;
   let expectedVersion: number;
   try {
-    overrideId = requiredUuid(formData.get("override_id"), "идентификатор настройки");
+    overrideId = requiredUuid(formData.get("override_id"));
     expectedVersion = expectedTypographyVersionFromForm(formData);
   } catch (error) {
     redirect(
       pageTarget({
-        error: error instanceof Error ? error.message : "Проверьте настройку",
+        error: typographyErrorCode(error),
       })
     );
   }
@@ -193,7 +204,7 @@ export async function publishTypographyOverrideAction(formData: FormData) {
     redirect(
       pageTarget({
         override: overrideId,
-        error: rpcErrorMessage(error, "Не удалось опубликовать настройку."),
+        error: rpcErrorCode(error, "typography_publish_failed"),
       })
     );
   }
@@ -211,13 +222,13 @@ export async function restoreTypographyRevisionAction(formData: FormData) {
   let expectedVersion: number;
   try {
     if (!Number.isSafeInteger(revisionId) || revisionId < 1) {
-      throw new Error("Некорректная версия истории.");
+      throw new SiteTypographyValidationError("typography_revision_invalid");
     }
     expectedVersion = expectedTypographyVersionFromForm(formData);
   } catch (error) {
     redirect(
       pageTarget({
-        error: error instanceof Error ? error.message : "Проверьте версию",
+        error: typographyErrorCode(error),
       })
     );
   }
@@ -230,7 +241,7 @@ export async function restoreTypographyRevisionAction(formData: FormData) {
   if (error || !restored || typeof restored !== "object") {
     redirect(
       pageTarget({
-        error: rpcErrorMessage(error, "Не удалось восстановить версию."),
+        error: rpcErrorCode(error, "typography_restore_failed"),
       })
     );
   }
@@ -244,12 +255,12 @@ export async function archiveFontAssetAction(formData: FormData) {
   let fontId: string;
   let expectedVersion: number;
   try {
-    fontId = requiredUuid(formData.get("font_id"), "идентификатор шрифта");
+    fontId = requiredUuid(formData.get("font_id"));
     expectedVersion = expectedTypographyVersionFromForm(formData);
   } catch (error) {
     redirect(
       pageTarget({
-        error: error instanceof Error ? error.message : "Проверьте шрифт",
+        error: typographyErrorCode(error),
       })
     );
   }
@@ -262,7 +273,7 @@ export async function archiveFontAssetAction(formData: FormData) {
   if (error) {
     redirect(
       pageTarget({
-        error: rpcErrorMessage(error, "Не удалось архивировать шрифт."),
+        error: rpcErrorCode(error, "typography_font_archive_failed"),
       })
     );
   }

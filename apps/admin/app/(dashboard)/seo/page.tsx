@@ -205,7 +205,7 @@ export default async function SeoPage({
           <h2>Материалы с замечаниями</h2>
           {issuesPreviewResponse.error ? (
             <p className="form-message form-error" role="alert">
-              Не удалось получить SEO-проверку: {issuesPreviewResponse.error.message}
+              Не удалось получить SEO-проверку. Обновите страницу или повторите позже.
             </p>
           ) : (
             <div className="status-list">
@@ -251,7 +251,7 @@ export default async function SeoPage({
           <p>{redirectCount ? `Найдено переадресаций: ${redirectCount}` : "Переадресации не найдены."}</p>
           {redirectsResponse.error ? (
             <p className="form-message form-error" role="alert">
-              Не удалось загрузить переадресации: {redirectsResponse.error.message}
+              Не удалось загрузить переадресации. Обновите страницу или повторите позже.
             </p>
           ) : redirects.length ? (
             <table className="data-table">

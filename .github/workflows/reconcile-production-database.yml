@@ -141,7 +141,7 @@ jobs:
             echo "# Production database reconciliation"
             echo
             printf '%s\n' "- Repository SHA: $EXPECTED_MAIN_SHA"
-            echo "- Migration range: 20260808_article_translations through 20260830_zz_site_typography_engine"
+            echo "- Migration range: 20260808_article_translations through 20260901_zzzzzz_admin_completion_health"
             echo "- Guard: exact reviewed SHA-256 allowlist"
           } > reconciliation/summary.md
 
@@ -253,7 +253,7 @@ jobs:
           bash scripts/database/supabase-database-safety.sh verify-production \
             reconciliation/verify.sql \
             reconciliation/production-verification.txt
-          expected='schema_health=20260830_zz_site_typography_engine;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=19;invalid_indexes=0'
+          expected='schema_health=20260901_zzzzzz_admin_completion_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=29;invalid_indexes=0'
           printf '%s\n' "$expected" > reconciliation/production-verification-expected.txt
           actual="$(tr -d '\r\n' < reconciliation/production-verification.txt)"
           [[ "$actual" == "$expected" ]] || {

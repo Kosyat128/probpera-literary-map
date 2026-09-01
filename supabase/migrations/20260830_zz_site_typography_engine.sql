@@ -574,12 +574,15 @@ begin
       raise exception 'typography override changed in another session'
         using errcode = '40001';
     end if;
+    if current_override.layer is distinct from p_layer
+      or current_override.target_key is distinct from p_target_key
+      or current_override.semantic_scope is distinct from p_semantic_scope
+      or current_override.breakpoint is distinct from p_breakpoint then
+      raise exception 'typography override identity is immutable'
+        using errcode = '22023';
+    end if;
     update public.site_typography_overrides override_row
-    set layer = p_layer,
-        target_key = p_target_key,
-        semantic_scope = p_semantic_scope,
-        breakpoint = p_breakpoint,
-        draft_settings = p_draft_settings,
+    set draft_settings = p_draft_settings,
         updated_by = actor_id,
         cas_version = current_override.cas_version + 1
     where override_row.id = p_override_id
@@ -905,21 +908,24 @@ as $$
 $$;
 
 revoke all on function public.is_valid_site_typography_settings(jsonb)
-  from public;
+  from public, anon, authenticated;
 revoke all on function public.assert_site_typography_font_reference(jsonb)
-  from public;
-revoke all on function public.guard_font_asset_update() from public;
-revoke all on function public.audit_font_asset_insert() from public;
+  from public, anon, authenticated;
+revoke all on function public.guard_font_asset_update()
+  from public, anon, authenticated;
+revoke all on function public.audit_font_asset_insert()
+  from public, anon, authenticated;
 revoke all on function public.archive_font_asset(uuid, bigint, text)
-  from public;
+  from public, anon, authenticated;
 revoke all on function public.save_site_typography_override(
   uuid, text, text, text, text, jsonb, bigint
-) from public;
+) from public, anon, authenticated;
 revoke all on function public.publish_site_typography_override(uuid, bigint)
-  from public;
+  from public, anon, authenticated;
 revoke all on function public.restore_site_typography_revision(bigint, bigint)
-  from public;
-revoke all on function public.get_published_site_typography() from public;
+  from public, anon, authenticated;
+revoke all on function public.get_published_site_typography()
+  from public, anon, authenticated;
 grant execute on function public.save_site_typography_override(
   uuid, text, text, text, text, jsonb, bigint
 ) to authenticated;
@@ -1172,6 +1178,7 @@ as $$
   end;
 $$;
 
-revoke all on function public.get_editorial_schema_health() from public;
+revoke all on function public.get_editorial_schema_health()
+  from public, anon, authenticated;
 grant execute on function public.get_editorial_schema_health()
   to authenticated;

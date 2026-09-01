@@ -4,6 +4,8 @@ import { z } from "zod";
 import { adminEnv } from "./env";
 import { premiumTranslateToEnglish } from "./premium-english-translation";
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
+import { translationErrorCode } from "./translation-errors";
+import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
 
 type SupabaseServerClient = SupabaseClient;
 
@@ -17,8 +19,8 @@ const translatedWorkJsonSchema = {
   additionalProperties: false,
   required: ["title", "description"],
   properties: {
-    title: { type: "string" },
-    description: { type: "string" },
+    title: { type: "string", minLength: 1, maxLength: 300 },
+    description: { type: "string", minLength: 140, maxLength: 900 },
   },
 } as const;
 
@@ -72,6 +74,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
   supabase: SupabaseServerClient;
   actorId: string;
   workId: string;
+  runtimeApproved?: boolean;
 }): Promise<{
   state: LiteraryWorkAutoTranslationState;
   model?: string;
@@ -79,7 +82,9 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
   error?: string;
 }> {
   if (!adminEnv.openAiAutoTranslateLibrary) return { state: "skipped" };
-  if (!adminEnv.premiumTranslationConfigured) return { state: "not-configured" };
+  if (!input.runtimeApproved && !(await premiumTranslationRuntimeGate(input.supabase))) {
+    return { state: "not-configured" };
+  }
 
   const [workResponse, russianResponse, englishResponse] = await Promise.all([
     input.supabase
@@ -279,7 +284,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
         provider: runtime.provider,
         model: runtime.model,
         reviewer_model: runtime.reviewerModel,
-        error: message.slice(0, 500),
+        error_code: translationErrorCode(message),
         duration_ms: Date.now() - startedAt,
       },
     });

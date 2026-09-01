@@ -23,8 +23,8 @@ const siteCopyJsonSchema = {
         additionalProperties: false,
         required: ["key", "text"],
         properties: {
-          key: { type: "string" },
-          text: { type: "string" },
+          key: { type: "string", minLength: 1, maxLength: 1_200 },
+          text: { type: "string", minLength: 1, maxLength: 4_000 },
         },
       },
     },

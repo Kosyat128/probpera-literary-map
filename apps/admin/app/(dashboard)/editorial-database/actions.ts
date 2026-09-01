@@ -142,6 +142,53 @@ export async function saveEditorialProfileAction(formData: FormData) {
     );
   }
 
+  const editorialCatalog = await loadEditorialCatalog();
+  const referenceCountry = editorialCatalog.countries.find(
+    (country) => country.id === edit.countryId
+  );
+  const referenceWriter = edit.writerId
+    ? referenceCountry?.writers.find((writer) => writer.id === edit.writerId)
+    : null;
+  if (!referenceCountry || (edit.writerId && !referenceWriter)) {
+    redirect(
+      targetUrl({
+        countryId: edit.countryId,
+        writerId: edit.writerId,
+        result: "error",
+        message: "Карточка не найдена в проверенном редакционном каталоге.",
+      })
+    );
+  }
+  const countryFields = objectValue(referenceCountry.fields);
+  const writerFields = objectValue(referenceWriter?.fields);
+  const { error: referenceError } = await supabase.rpc(
+    "ensure_editorial_reference",
+    {
+      p_country_id: referenceCountry.id,
+      p_country_name_ru: referenceCountry.label,
+      p_country_name_en:
+        typeof countryFields.nameEn === "string" ? countryFields.nameEn : "",
+      p_country_iso_code:
+        typeof countryFields.code === "string"
+          ? countryFields.code.toUpperCase()
+          : null,
+      p_writer_id: referenceWriter?.id || null,
+      p_writer_name_ru: referenceWriter?.label || null,
+      p_writer_name_en:
+        typeof writerFields.fullName === "string" ? writerFields.fullName : "",
+    }
+  );
+  if (referenceError) {
+    redirect(
+      targetUrl({
+        countryId: edit.countryId,
+        writerId: edit.writerId,
+        result: "error",
+        message: "Канонический справочник не обновлён. Проверьте миграцию Data Studio.",
+      })
+    );
+  }
+
   const isWriter = edit.entityType === "writer";
   const table = isWriter
     ? "writer_profile_overrides"
@@ -208,7 +255,7 @@ export async function saveEditorialProfileAction(formData: FormData) {
     ? null
     : resolveEditorialSourceFields(
         editorialSourceFields(
-          await loadEditorialCatalog(),
+          editorialCatalog,
           edit.countryId,
           edit.writerId
         ),

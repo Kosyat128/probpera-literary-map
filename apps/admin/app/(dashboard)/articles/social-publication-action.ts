@@ -8,6 +8,7 @@ import { requireStaff } from "@/lib/auth";
 import { redirect } from "@/lib/navigation";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 function articleIdFromForm(formData: FormData) {
   const parsed = z.string().uuid().safeParse(formData.get("id"));
@@ -30,7 +31,7 @@ export async function requestSocialPublicationAction(formData: FormData) {
   if (error || !article) {
     redirect(
       articleEditPath(id, {
-        error: error?.message || "Статья не найдена",
+        error: error ? operatorDataError("articles", "load") : "Статья не найдена",
       })
     );
   }
@@ -51,7 +52,7 @@ export async function requestSocialPublicationAction(formData: FormData) {
     .order("created_at", { ascending: false })
     .limit(1);
   if (latestRequestError) {
-    redirect(articleEditPath(id, { error: latestRequestError.message }));
+    redirect(articleEditPath(id, { error: operatorDataError("publication", "load") }));
   }
 
   const latestRequest = latestRequests?.[0] || null;
@@ -65,7 +66,7 @@ export async function requestSocialPublicationAction(formData: FormData) {
         .limit(1)
     : { data: [], error: null };
   if (completionError) {
-    redirect(articleEditPath(id, { error: completionError.message }));
+    redirect(articleEditPath(id, { error: operatorDataError("publication", "save") }));
   }
 
   const resumedPendingRequest = Boolean(latestRequest && !completedRows?.length);
@@ -85,7 +86,7 @@ export async function requestSocialPublicationAction(formData: FormData) {
       },
     });
     if (queueError) {
-      redirect(articleEditPath(id, { error: queueError.message }));
+      redirect(articleEditPath(id, { error: operatorDataError("publication", "publish") }));
     }
   }
 

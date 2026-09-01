@@ -6,7 +6,6 @@ import { z } from "zod";
 
 import { requireStaff } from "@/lib/auth";
 import { parseBookEditionEdit } from "@/lib/book-edition-edit";
-import { persistWithPrimaryEditionCompensation } from "@/lib/book-edition-primary";
 import { isValidIsbn, normalizeIsbn } from "@/lib/isbn";
 import { libraryCatalogFormHref } from "@/lib/library-catalog-query";
 import {
@@ -50,11 +49,16 @@ function databaseError(error: { message?: string } | null, fallback: string) {
   return new Error(error?.message || fallback);
 }
 
-class ExistingBookEditionError extends Error {
-  constructor(readonly editionId: string) {
-    super("Издание с этим ISBN уже существует.");
-    this.name = "ExistingBookEditionError";
+function editionRpcError(error: { code?: string; message?: string } | null) {
+  if (error?.code === "40001" || error?.message === "edition-version-conflict") {
+    return "Издание уже изменили в другой вкладке. Обновите страницу.";
   }
+  if (error?.code === "23505") return "Издание с этим ISBN уже существует.";
+  if (error?.message === "edition-not-found") return "Издание не найдено.";
+  if (error?.message === "edition-work-is-immutable") {
+    return "Перенос издания между произведениями запрещён.";
+  }
+  return "Издание не сохранено. Проверьте поля и повторите.";
 }
 
 function editionEditInput(formData: FormData) {
@@ -116,73 +120,18 @@ export async function updateBookEditionAction(formData: FormData) {
     }));
   }
 
-  try {
-    await persistWithPrimaryEditionCompensation({
-      enabled: edit.patch.is_primary,
-      readPreviousPrimaryIds: async () => {
-        const { data, error } = await supabase
-          .from("book_editions")
-          .select("id")
-          .eq("work_id", edit.workId)
-          .eq("is_primary", true)
-          .neq("id", edit.editionId);
-        if (error) throw databaseError(error, "Не удалось проверить основное издание.");
-        return (data || []).map((edition) => edition.id);
-      },
-      demotePreviousPrimaries: async (ids) => {
-        const { error } = await supabase
-          .from("book_editions")
-          .update({ is_primary: false })
-          .in("id", [...ids]);
-        if (error) throw databaseError(error, "Не удалось сменить основное издание.");
-      },
-      persist: async () => {
-        const { data, error } = await supabase
-          .from("book_editions")
-          .update(edit.patch)
-          .eq("id", edit.editionId)
-          .eq("updated_at", edit.expectedUpdatedAt)
-          .select("id")
-          .maybeSingle();
-        if (error || !data) {
-          throw databaseError(
-            error,
-            "Издание уже изменили в другой вкладке. Обновите страницу и повторите правку."
-          );
-        }
-        return data;
-      },
-      restorePreviousPrimaries: async (ids) => {
-        const { error } = await supabase
-          .from("book_editions")
-          .update({ is_primary: true })
-          .in("id", [...ids]);
-        if (error) {
-          throw databaseError(error, "Не удалось вернуть прежнее основное издание.");
-        }
-      },
-    });
-  } catch (error) {
+  const { error: saveError } = await supabase.rpc("update_book_edition_atomic", {
+    p_edition_id: edit.editionId,
+    p_expected_updated_at: edit.expectedUpdatedAt,
+    p_payload: edit.patch,
+  });
+  if (saveError) {
     redirect(target({
       editionId: edit.editionId,
-      error: error instanceof Error ? error.message : "Издание не сохранено.",
+      error: editionRpcError(saveError),
     }));
   }
 
-  // The 20260813 trigger captures the previous complete row before this
-  // update. The audit entry records the user-facing operation separately.
-  const { error: auditError } = await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action: "book_edition.updated",
-    entity_type: "book_edition",
-    entity_id: edit.editionId,
-    metadata: {
-      workId: edit.workId,
-      isbn10: edit.patch.isbn_10,
-      isbn13: edit.patch.isbn_13,
-      primary: edit.patch.is_primary,
-    },
-  });
   const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,
@@ -193,14 +142,6 @@ export async function updateBookEditionAction(formData: FormData) {
 
   revalidatePath("/library");
   revalidatePath("/history");
-  if (auditError) {
-    redirect(target({
-      editionId: edit.editionId,
-      saved: "edition",
-      published: publication.state,
-      error: `Издание сохранено, но журнал аудита недоступен: ${auditError.message}`,
-    }));
-  }
   redirect(target({
     editionId: edit.editionId,
     saved: "edition",
@@ -281,10 +222,15 @@ export async function saveBookEditionAction(formData: FormData) {
     publisher: parsed.data.publisher,
     publication_year: parsed.data.publicationYear,
     language: parsed.data.language,
+    format: String(formData.get("format") || "").trim(),
     page_count: parsed.data.pageCount,
     cover_url: hasCover ? parsed.data.coverUrl : null,
     cover_source_url: hasCover ? parsed.data.coverSourceUrl : null,
     cover_rights_status: hasCover ? "external-preview" : "unverified",
+    license_name: "",
+    license_url: null,
+    creator: "",
+    rights_holder: "",
     rights_checked_at: hasCover ? checkedAt : null,
     source_url: parsed.data.sourceUrl,
     is_primary: parsed.data.primary,
@@ -293,97 +239,43 @@ export async function saveBookEditionAction(formData: FormData) {
       importedAt: new Date().toISOString(),
     },
   };
-  let data: { id: string };
-  try {
-    data = await persistWithPrimaryEditionCompensation({
-      enabled: parsed.data.primary,
-      readPreviousPrimaryIds: async () => {
-        const { data: previous, error } = await supabase
-          .from("book_editions")
-          .select("id")
-          .eq("work_id", parsed.data.workId)
-          .eq("is_primary", true);
-        if (error) throw databaseError(error, "Не удалось проверить основное издание.");
-        return (previous || []).map((edition) => edition.id);
-      },
-      demotePreviousPrimaries: async (ids) => {
-        const { error } = await supabase
-          .from("book_editions")
-          .update({ is_primary: false })
-          .in("id", [...ids]);
-        if (error) throw databaseError(error, "Не удалось сменить основное издание.");
-      },
-      persist: async () => {
-        const { data: saved, error } = await supabase
-          .from("book_editions")
-          .insert(payload)
-          .select("id")
-          .single();
-        if (error?.code === "23505") {
-          const { data: collidedEdition, error: collisionLookupError } = await supabase
-            .from("book_editions")
-            .select("id")
-            .eq("legacy_id", legacyId)
-            .maybeSingle();
-          if (collisionLookupError) {
-            throw databaseError(
-              collisionLookupError,
-              "Не удалось открыть существующее издание после конфликта ISBN."
-            );
-          }
-          if (collidedEdition?.id) {
-            throw new ExistingBookEditionError(collidedEdition.id);
-          }
-        }
-        if (error || !saved) {
-          throw databaseError(error, "Издание не сохранено.");
-        }
-        return saved;
-      },
-      restorePreviousPrimaries: async (ids) => {
-        const { error } = await supabase
-          .from("book_editions")
-          .update({ is_primary: true })
-          .in("id", [...ids]);
-        if (error) {
-          throw databaseError(error, "Не удалось вернуть прежнее основное издание.");
-        }
-      },
-    });
-  } catch (error) {
-    if (error instanceof ExistingBookEditionError) {
-      redirect(`${target({
-        editionId: error.editionId,
-        notice: "edition-exists",
-      })}#edition-editor`);
+  const { data, error: saveError } = await supabase.rpc(
+    "create_book_edition_atomic",
+    { p_payload: payload }
+  );
+  const savedId =
+    data && typeof data === "object" && !Array.isArray(data) &&
+    typeof (data as { id?: unknown }).id === "string"
+      ? (data as { id: string }).id
+      : null;
+  if (saveError || !savedId) {
+    if (saveError?.code === "23505") {
+      const { data: collidedEdition } = await supabase
+        .from("book_editions")
+        .select("id")
+        .eq("legacy_id", legacyId)
+        .maybeSingle();
+      if (collidedEdition?.id) {
+        redirect(`${target({
+          editionId: collidedEdition.id,
+          notice: "edition-exists",
+        })}#edition-editor`);
+      }
     }
-    redirect(target({
-      error: error instanceof Error ? error.message : "Издание не сохранено.",
-    }));
+    redirect(target({ error: editionRpcError(saveError) }));
   }
 
-  await supabase.from("admin_audit_log").insert({
-    actor_id: session.user.id,
-    action: "book_edition.created",
-    entity_type: "book_edition",
-    entity_id: data.id,
-    metadata: {
-      isbn10: parsed.data.isbn10,
-      isbn13: parsed.data.isbn13,
-      workId: parsed.data.workId,
-    },
-  });
   const publication = await requestPublicBuild({
     supabase,
     actorId: session.user.id,
     entityType: "book_edition",
-    entityId: data.id,
+    entityId: savedId,
     reason: "book_edition.created",
   });
 
   revalidatePath("/library");
   redirect(target({
-    editionId: data.id,
+    editionId: savedId,
     saved: "edition",
     published: publication.state,
   }));

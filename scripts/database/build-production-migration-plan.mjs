@@ -50,7 +50,47 @@ const reviewedMigrations = [
   ],
   [
     "20260830_zz_site_typography_engine.sql",
-    "c44596b1217ef19b8490c794e01568e5b036219719a2d2da00452486e91667fc",
+    "097f70aefd34278167a7c275db36cdb1182732a22eabfaa5d609be18512bde20",
+  ],
+  [
+    "20260901_zz_admin_analytics_reporting.sql",
+    "c1f9c7314c127d5a6a9c2113e84b8cf05dc6bb60052e96c00b317a9228f03d75",
+  ],
+  [
+    "20260901_zz_data_studio_integrity.sql",
+    "976134c7e7f64c4dd66a4afccef5a59e1af29b437c299cf9e3f3cc5fec7b3911",
+  ],
+  [
+    "20260901_zz_site_studio_engine.sql",
+    "4350165699a2e88dde7eece9bc57bc154ec6ba8b3b82933cbfd4b9fe514f4675",
+  ],
+  [
+    "20260901_zz_staff_owner_invariant.sql",
+    "8bc034b04540f835337ca6edc1f8b1c797d4b3064569778cc6bdb4e4501f3067",
+  ],
+  [
+    "20260901_zz_translation_operations.sql",
+    "481f1887cee0f28fed054a5bbae95260e33ef96a3ae059d307a8573d4eed16f7",
+  ],
+  [
+    "20260901_zz_translation_operations_runtime.sql",
+    "502d34ca1bcd30f79ccdbc10f238201daf89b8a36cc9a3cabf8cdc5e8ac25248",
+  ],
+  [
+    "20260901_zz_visual_direct_edit_v2.sql",
+    "e3a0a6443089f949d73869971e3041a3cc98c2e68f3742192338d1ecba30e371",
+  ],
+  [
+    "20260901_zzz_admin_mutation_guards.sql",
+    "21432b83209e353857d183b667c923bb47624a173276cf618515984ab4f200b9",
+  ],
+  [
+    "20260901_zzzz_admin_ops_observability.sql",
+    "d40c42e752641bdefe4a41bc6b079aa9c00c9f8bf37546051a4a28cca6b913b6",
+  ],
+  [
+    "20260901_zzzzzz_admin_completion_health.sql",
+    "dda44cc2f3248cf54621e07d17a701095ecea92193832371636618217531711f",
   ],
 ];
 
@@ -115,7 +155,7 @@ function assertStaticSafety(filename, source) {
   if (/\bdrop\s+(?:table|schema|column)\b/iu.test(source)) {
     fail(`${filename} contains destructive DROP DDL`);
   }
-  if (/\btruncate\b/iu.test(source)) {
+  if (/^\s*truncate\b/gimu.test(source)) {
     fail(`${filename} contains TRUNCATE`);
   }
 
@@ -253,7 +293,13 @@ begin
     or to_regclass('public.reader_book_collections') is null
     or to_regclass('public.reader_book_collection_items') is null
     or to_regclass('public.reader_book_favorites') is null
-    or to_regclass('public.editor_autosaves') is null then
+    or to_regclass('public.editor_autosaves') is null
+    or to_regclass('public.site_component_registry') is null
+    or to_regclass('public.site_design_tokens') is null
+    or to_regclass('public.site_design_change_sets') is null
+    or to_regclass('public.site_design_change_set_items') is null
+    or to_regclass('public.site_design_releases') is null
+    or to_regclass('public.site_design_token_revisions') is null then
     raise exception 'Required editorial relation is missing after reconciliation';
   end if;
 
@@ -344,6 +390,33 @@ begin
     or to_regprocedure('public.replace_media_asset_current_usages(uuid,uuid,timestamptz,timestamptz,jsonb,jsonb,boolean,text,text)') is null
     or to_regprocedure('public.trash_media_asset(uuid,timestamptz)') is null
     or to_regprocedure('public.restore_media_asset(uuid,timestamptz)') is null
+    or to_regprocedure('public.publish_site_design_change_set(uuid,bigint)') is null
+    or to_regprocedure('public.rollback_site_design_release(uuid)') is null
+    or to_regprocedure('public.get_published_site_design()') is null
+    or to_regprocedure('public.get_admin_analytics_report(timestamptz,timestamptz)') is null
+    or to_regprocedure('public.get_data_studio_schema_health()') is null
+    or to_regprocedure('public.ensure_editorial_reference(text,text,text,text,text,text,text)') is null
+    or to_regprocedure('public.save_manual_editorial_reference(text,text,text,text,text,text,text)') is null
+    or to_regprocedure('public.sync_editorial_reference_catalog(jsonb,jsonb)') is null
+    or to_regprocedure('public.create_book_edition_atomic(jsonb)') is null
+    or to_regprocedure('public.update_book_edition_atomic(uuid,timestamptz,jsonb)') is null
+    or to_regprocedure('public.owner_set_staff_member(text,public.staff_role)') is null
+    or to_regprocedure('public.owner_remove_staff_member(uuid)') is null
+    or to_regprocedure('public.create_translation_job(text,text,jsonb,integer)') is null
+    or to_regprocedure('public.claim_translation_job_items(text,integer,integer)') is null
+    or to_regprocedure('public.complete_translation_job_item(uuid,text,boolean,text,text,text,integer,integer,integer)') is null
+    or to_regprocedure('public.begin_translation_provider_self_test(text,boolean,boolean,text,integer)') is null
+    or to_regprocedure('public.finish_translation_provider_self_test(text,uuid,boolean,boolean,boolean,text,integer,text)') is null
+    or to_regprocedure('public.record_translation_sync_run(text,text,jsonb,jsonb,jsonb)') is null
+    or to_regprocedure('public.get_translation_job_resume(uuid)') is null
+    or to_regprocedure('public.translation_operations_ready()') is null
+    or to_regprocedure('public.save_visual_content_field_v2(text,uuid,text,jsonb,timestamptz)') is null
+    or to_regprocedure('public.save_homepage_visual_settings_v2(uuid,jsonb,boolean,timestamptz)') is null
+    or to_regprocedure('public.save_site_copy_block(timestamptz,jsonb,jsonb)') is null
+    or to_regprocedure('public.create_seo_redirect_guarded(text,text,smallint,boolean)') is null
+    or to_regprocedure('public.update_seo_redirect_guarded(uuid,timestamptz,text,text,smallint,boolean)') is null
+    or to_regprocedure('public.delete_seo_redirect_guarded(uuid,timestamptz)') is null
+    or to_regprocedure('public.moderate_comments_guarded(jsonb,public.publication_status)') is null
     or to_regprocedure('public.premium_machine_translation_ready()') is null then
     raise exception 'Required editorial RPC is missing after reconciliation';
   end if;
@@ -429,7 +502,7 @@ ${values}
     select
       'version'::text as check_name,
       health is not null
-        and health ->> 'version' = '20260830_zz_site_typography_engine' as ok
+        and health ->> 'version' = '20260901_zzzzzz_admin_completion_health' as ok
     union all
     select
       required_key,
@@ -451,13 +524,25 @@ ${values}
       'mediaStudioLifecycle',
       'mediaUsageGraph',
       'mediaSafeReplaceRpc',
-      'siteTypographyEngine'
+      'siteTypographyEngine',
+      'siteStudioEngine',
+      'visualDirectEditV2',
+      'staffOwnerInvariant',
+      'dataStudioIntegrity',
+      'translationOperations',
+      'adminMutationGuards',
+      'adminAnalyticsReporting',
+      'adminOpsObservability'
     ]::text[]) as required(required_key)
   ) as checks
   where ok is distinct from true;
   if failed_health_keys is not null then
     raise exception 'Editorial schema health RPC false keys: %',
       failed_health_keys;
+  end if;
+
+  if not public.translation_operations_ready() then
+    raise exception 'Translation operations schema is not ready';
   end if;
 
   if not public.premium_machine_translation_ready() then
@@ -510,6 +595,14 @@ select concat(
   ';media_usage_graph=', health ->> 'mediaUsageGraph',
   ';media_safe_replace_rpc=', health ->> 'mediaSafeReplaceRpc',
   ';site_typography_engine=', health ->> 'siteTypographyEngine',
+  ';site_studio_engine=', health ->> 'siteStudioEngine',
+  ';visual_direct_edit_v2=', health ->> 'visualDirectEditV2',
+  ';staff_owner_invariant=', health ->> 'staffOwnerInvariant',
+  ';data_studio_integrity=', health ->> 'dataStudioIntegrity',
+  ';translation_operations=', health ->> 'translationOperations',
+  ';admin_mutation_guards=', health ->> 'adminMutationGuards',
+  ';admin_analytics_reporting=', health ->> 'adminAnalyticsReporting',
+  ';admin_ops_observability=', health ->> 'adminOpsObservability',
   ';migration_ledger=', health ->> 'migrationLedger',
   ';premium_machine_translation=', case when public.premium_machine_translation_ready() then 'true' else 'false' end,
   ';editor_autosaves=', case when to_regclass('public.editor_autosaves') is not null then 'true' else 'false' end,

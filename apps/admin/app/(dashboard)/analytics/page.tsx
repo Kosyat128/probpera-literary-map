@@ -1,32 +1,23 @@
-import { articlePublicPath } from "@/lib/article-route";
 import { adminEnv } from "@/lib/env";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { normalizeViewPath } from "@/lib/view-path";
+import {
+  analyticsPeriods,
+  normalizeAnalyticsReport,
+  resolveAnalyticsRange,
+} from "@/lib/analytics-report";
 
 export const metadata = { title: "Статистика" };
 
-type ViewRow = {
-  path: string;
-  session_id?: string | null;
-  referrer_host: string | null;
-  previous_path?: string | null;
-  navigation_source?: string | null;
-  utm_source?: string | null;
-  created_at: string;
-};
-
-function increment(map: Map<string, number>, key: string) {
-  map.set(key, (map.get(key) || 0) + 1);
-}
-
-function topEntries(map: Map<string, number>, limit: number) {
-  return [...map].sort((first, second) => second[1] - first[1]).slice(0, limit);
-}
-
-export default async function AnalyticsPage() {
+export default async function AnalyticsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ period?: string }>;
+}) {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return <AdminDependencyState />;
+  const query = await searchParams;
+  const range = resolveAnalyticsRange(query.period);
 
   const metrikaCounterId = /^\d{1,15}$/u.test(adminEnv.metrikaCounterId)
     ? adminEnv.metrikaCounterId
@@ -35,115 +26,15 @@ export default async function AnalyticsPage() {
     ? `https://metrika.yandex.ru/stat/geo?period=month&id=${encodeURIComponent(metrikaCounterId)}`
     : "https://metrika.yandex.ru/list";
 
-  const sinceDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-  const since = sinceDate.toISOString();
-  const extendedViewsResult = await supabase
-    .from("content_views")
-    .select(
-      "path,session_id,referrer_host,previous_path,navigation_source,utm_source,created_at",
-      { count: "exact" }
-    )
-    .gte("created_at", since)
-    .order("created_at", { ascending: false })
-    .limit(50_000);
-
-  let views = (extendedViewsResult.data || []) as ViewRow[];
-  let viewsCount = extendedViewsResult.count || 0;
-  let trackingNotice = "";
-  if (extendedViewsResult.error) {
-    const legacyViewsResult = await supabase
-      .from("content_views")
-      .select("path,session_id,referrer_host,created_at", { count: "exact" })
-      .gte("created_at", since)
-      .order("created_at", { ascending: false })
-      .limit(50_000);
-    views = (legacyViewsResult.data || []) as ViewRow[];
-    viewsCount = legacyViewsResult.count || 0;
-    trackingNotice = legacyViewsResult.error
-      ? `Счётчик недоступен: ${legacyViewsResult.error.message}`
-      : "Базовый счётчик работает. Расширенная аналитика переходов включится после применения последней миграции Supabase.";
-  }
-
-  const [
-    { data: ratingsResult, count: ratingsCount },
-    { count: commentsCount },
-    { data: articlesResult },
-  ] = await Promise.all([
-    supabase
-      .from("ratings")
-      .select("subject_type,subject_id,score", { count: "exact" })
-      .gte("created_at", since)
-      .limit(50_000),
-    supabase
-      .from("article_comments")
-      .select("id", { count: "exact", head: true })
-      .gte("created_at", since),
-    supabase
-      .from("articles")
-      .select("slug,legacy_path,categories(slug)")
-      .eq("status", "published")
-      .is("deleted_at", null),
-  ]);
-  const ratings = ratingsResult || [];
-
-  const currentPathByAlias = new Map<string, string>();
-  for (const article of articlesResult || []) {
-    const category = Array.isArray(article.categories)
-      ? article.categories[0]
-      : article.categories;
-    const currentPath = normalizeViewPath(
-      articlePublicPath(article.slug, category?.slug)
-    );
-    currentPathByAlias.set(currentPath, currentPath);
-    if (article.legacy_path) {
-      currentPathByAlias.set(normalizeViewPath(article.legacy_path), currentPath);
-    }
-  }
-
-  const canonicalPath = (path: string) => {
-    const normalized = normalizeViewPath(path);
-    return currentPathByAlias.get(normalized) || normalized;
-  };
-  const pathCounts = new Map<string, number>();
-  const sourceCounts = new Map<string, number>();
-  const transitionCounts = new Map<string, number>();
-  const visitorIds = new Set<string>();
-  const dayCounts = new Map<string, number>();
-
-  for (let offset = 29; offset >= 0; offset -= 1) {
-    const day = new Date();
-    day.setUTCHours(0, 0, 0, 0);
-    day.setUTCDate(day.getUTCDate() - offset);
-    dayCounts.set(day.toISOString().slice(0, 10), 0);
-  }
-
-  for (const view of views) {
-    const path = canonicalPath(view.path);
-    increment(pathCounts, path);
-    if (view.session_id) visitorIds.add(view.session_id);
-    const day = view.created_at.slice(0, 10);
-    if (dayCounts.has(day)) increment(dayCounts, day);
-
-    if (view.utm_source) increment(sourceCounts, `Кампания: ${view.utm_source}`);
-    else if (view.navigation_source === "internal" || view.previous_path) {
-      increment(sourceCounts, "Внутренние переходы");
-    } else if (view.referrer_host) increment(sourceCounts, view.referrer_host);
-    else increment(sourceCounts, "Прямой переход");
-
-    if (view.previous_path) {
-      const previousPath = canonicalPath(view.previous_path);
-      if (previousPath !== path) increment(transitionCounts, `${previousPath} → ${path}`);
-    }
-  }
-
-  const topPaths = topEntries(pathCounts, 12);
-  const topSources = topEntries(sourceCounts, 8);
-  const topTransitions = topEntries(transitionCounts, 10);
-  const dailyViews = [...dayCounts];
-  const maxDailyViews = Math.max(1, ...dailyViews.map(([, count]) => count));
-  const averageRating = ratings.length
-    ? ratings.reduce((sum, rating) => sum + rating.score, 0) / ratings.length
-    : 0;
+  const { data: reportData, error: reportError } = await supabase.rpc(
+    "get_admin_analytics_report",
+    { p_from: range.from, p_to: range.to }
+  );
+  const report = normalizeAnalyticsReport(reportData, range.from, range.to);
+  const trackingNotice = reportError
+    ? "Статистика временно недоступна: примените актуальную production-схему."
+    : "";
+  const maxDailyViews = Math.max(1, ...report.daily.map((item) => item.views));
 
   return (
     <>
@@ -160,6 +51,28 @@ export default async function AnalyticsPage() {
       </header>
 
       {trackingNotice && <p className="form-message">{trackingNotice}</p>}
+
+      <section className="panel analytics-period-controls" aria-label="Период отчёта">
+        <form method="get">
+          <label className="field">
+            <span>Период</span>
+            <select name="period" defaultValue={String(range.period)}>
+              {analyticsPeriods.map((days) => (
+                <option key={days} value={days}>Последние {days} дней</option>
+              ))}
+            </select>
+          </label>
+          <button className="button" type="submit">Показать</button>
+          {!reportError && (
+            <a
+              className="button-secondary"
+              href={`/analytics/export?period=${range.period}`}
+            >
+              Скачать CSV
+            </a>
+          )}
+        </form>
+      </section>
 
       <section className="panel analytics-geography">
         <div>
@@ -199,45 +112,51 @@ export default async function AnalyticsPage() {
 
       <section className="stats-grid analytics-stats">
         <article className="stat-card">
-          <span>Просмотры за 30 дней</span>
-          <strong>{viewsCount.toLocaleString("ru-RU")}</strong>
-          <small>один просмотр страницы за 30 минут</small>
+          <span>Просмотры за период</span>
+          <strong>{report.views.toLocaleString("ru-RU")}</strong>
+          <small>агрегация выполняется в базе данных</small>
         </article>
         <article className="stat-card">
           <span>Читатели</span>
-          <strong>{visitorIds.size.toLocaleString("ru-RU")}</strong>
+          <strong>{report.visitors.toLocaleString("ru-RU")}</strong>
           <small>анонимные идентификаторы браузеров</small>
         </article>
         <article className="stat-card">
           <span>Просмотренные страницы</span>
-          <strong>{pathCounts.size.toLocaleString("ru-RU")}</strong>
+          <strong>{report.pages.toLocaleString("ru-RU")}</strong>
           <small>включая разделы главной и статьи</small>
         </article>
         <article className="stat-card">
           <span>Средняя оценка</span>
-          <strong>{averageRating ? averageRating.toFixed(2) : "-"}</strong>
-          <small>{ratingsCount || 0} оценок за 30 дней</small>
+          <strong>{report.averageRating ? report.averageRating.toFixed(2) : "-"}</strong>
+          <small>{report.ratings.toLocaleString("ru-RU")} оценок за период</small>
         </article>
         <article className="stat-card">
           <span>Новые комментарии</span>
-          <strong>{(commentsCount || 0).toLocaleString("ru-RU")}</strong>
-          <small>за 30 дней</small>
+          <strong>{report.comments.toLocaleString("ru-RU")}</strong>
+          <small>за выбранный период</small>
         </article>
       </section>
 
       <section className="panel analytics-timeline">
         <header>
           <div>
-            <span className="eyebrow">Последние 30 дней</span>
+            <span className="eyebrow">Последние {range.period} дней</span>
             <h2>Динамика чтения</h2>
           </div>
-          <small>{viewsCount.toLocaleString("ru-RU")} просмотров</small>
+          <small>{report.views.toLocaleString("ru-RU")} просмотров</small>
         </header>
-        <div className="analytics-bars" aria-label="Просмотры по дням">
-          {dailyViews.map(([day, count]) => (
-            <div key={day} title={`${day}: ${count}`}>
-              <i style={{ height: `${Math.max(4, (count / maxDailyViews) * 100)}%` }} />
-              <span>{day.slice(8)}</span>
+        <div
+          className="analytics-bars"
+          aria-label="Просмотры по дням"
+          style={{
+            gridTemplateColumns: `repeat(${Math.max(1, report.daily.length)}, minmax(4px, 1fr))`,
+          }}
+        >
+          {report.daily.map((item) => (
+            <div key={item.day} title={`${item.day}: ${item.views}`}>
+              <i style={{ height: `${Math.max(4, (item.views / maxDailyViews) * 100)}%` }} />
+              <span>{item.day.slice(8)}</span>
             </div>
           ))}
         </div>
@@ -247,16 +166,16 @@ export default async function AnalyticsPage() {
         <section className="panel">
           <h2>Самые читаемые страницы</h2>
           <div className="status-list analytics-list">
-            {topPaths.length ? topPaths.map(([path, count]) => (
-              <div key={path}><span>{path}</span><strong>{count}</strong></div>
+            {report.topPaths.length ? report.topPaths.slice(0, 12).map((item) => (
+              <div key={item.path}><span>{item.path}</span><strong>{item.views}</strong></div>
             )) : <p>Данные появятся после первых зарегистрированных просмотров.</p>}
           </div>
         </section>
         <section className="panel">
           <h2>Источники переходов</h2>
           <div className="status-list analytics-list">
-            {topSources.length ? topSources.map(([source, count]) => (
-              <div key={source}><span>{source}</span><strong>{count}</strong></div>
+            {report.topSources.length ? report.topSources.slice(0, 8).map((item) => (
+              <div key={item.source}><span>{item.source}</span><strong>{item.views}</strong></div>
             )) : <p>Источники ещё не накоплены.</p>}
           </div>
         </section>
@@ -265,8 +184,8 @@ export default async function AnalyticsPage() {
       <section className="panel analytics-transitions">
         <h2>Частые переходы внутри сайта</h2>
         <div className="status-list analytics-list">
-          {topTransitions.length ? topTransitions.map(([transition, count]) => (
-            <div key={transition}><span>{transition}</span><strong>{count}</strong></div>
+          {report.topTransitions.length ? report.topTransitions.slice(0, 10).map((item) => (
+            <div key={`${item.from}\u0000${item.to}`}><span>{item.from} → {item.to}</span><strong>{item.views}</strong></div>
           )) : <p>Маршруты появятся после применения миграции и новых переходов читателей.</p>}
         </div>
       </section>

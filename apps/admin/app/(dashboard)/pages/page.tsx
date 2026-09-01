@@ -11,6 +11,7 @@ import {
 import { redirect } from "@/lib/navigation";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import {
   changePageStatusAction,
@@ -89,7 +90,7 @@ export default async function PagesPage({
         <section className="panel">
           <h2>Все страницы · {(count || 0).toLocaleString("ru-RU")}</h2>
           {pagesError ? (
-            <p className="form-message">Не удалось загрузить страницы: {pagesError.message}</p>
+            <p className="form-message">{operatorDataError("pages", "load")}</p>
           ) : pages.length ? (
             <div className="data-table-wrap">
             <table className="data-table">

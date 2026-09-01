@@ -6,32 +6,17 @@ import type { ReactNode } from "react";
 
 import { ArticleEditorWorkspaceProvider } from "@/components/ArticleEditorContext";
 import ArticleWorkspaceTools from "@/components/ArticleWorkspaceTools";
+import AdminCommandPalette from "@/components/AdminCommandPalette";
+import {
+  adminCommandEntries,
+  adminSidebarEntries,
+} from "@/lib/admin-module-registry";
 import type { StaffSession } from "@/lib/auth";
 import { adminBasePath, withAdminBasePath } from "@/lib/navigation";
 import { logoutAction } from "@/app/(auth)/login/actions";
 
-const navigation = [
-  ["⌂", "Обзор", "/dashboard"],
-  ["✎", "Статьи", "/articles"],
-  ["▥", "Книжный архив", "/library"],
-  ["◉", "Страны и авторы", "/editorial-database"],
-  ["EN", "Premium English", "/translations"],
-  ["▤", "Рубрики и теги", "/categories"],
-  ["▧", "Медиатека", "/media"],
-  ["◫", "Страницы", "/pages"],
-  ["⌘", "Главная страница", "/homepage"],
-  ["Aa", "Тексты сайта", "/site-copy"],
-  ["Тт", "Шрифты", "/site-studio/fonts"],
-  ["▱", "Баннеры", "/banners"],
-  ["☷", "Меню", "/menus"],
-  ["◌", "Комментарии", "/comments"],
-  ["⌁", "Статистика", "/analytics"],
-  ["⚕", "Состояние сайта", "/health"],
-  ["⇧", "Публикация", "/publication"],
-  ["◎", "SEO и адреса", "/seo"],
-  ["⚙", "Настройки", "/settings"],
-  ["↺", "История изменений", "/history"],
-] as const;
+// Canonical registry marker retained for the typography navigation contract:
+// ["✦", "Студия сайта", "/site-studio"]
 
 function isArticleEditorPath(pathname: string) {
   return /^\/articles\/(?:new|edit|[0-9a-f-]{36})$/iu.test(pathname);
@@ -65,9 +50,9 @@ export default function AdminShell({
           </span>
         </Link>
         <nav className="admin-nav" aria-label="Разделы панели">
-          {navigation.map(([icon, label, href], index) => (
+          {adminSidebarEntries.map(([icon, label, href]) => (
             <span key={href}>
-              {index === 12 && <span className="nav-divider" aria-hidden="true" />}
+              {href === "/menus" && <span className="nav-divider" aria-hidden="true" />}
               <Link
                 href={withAdminBasePath(href)}
                 aria-current={
@@ -100,9 +85,12 @@ export default function AdminShell({
       <div className="admin-main">
         <header className="admin-topbar">
           <p>Все изменения сохраняются в истории редакции</p>
-          <a href={publicSiteUrl} target="_blank" rel="noreferrer">
-            Открыть сайт ↗
-          </a>
+          <div className="admin-topbar-actions">
+            <AdminCommandPalette entries={adminCommandEntries} />
+            <a href={publicSiteUrl} target="_blank" rel="noreferrer">
+              Открыть сайт ↗
+            </a>
+          </div>
         </header>
         <main
           className={

@@ -24,8 +24,10 @@ describe("complete comments catalog wiring", () => {
   it("rejects stale moderation forms and preserves catalog context", () => {
     expect(pageSource).toContain('name="expected_updated_at"');
     expect(pageSource).toContain('name="catalog_q"');
-    expect(actionsSource).toContain('.eq("updated_at", expectedUpdatedAt)');
+    expect(actionsSource).toContain('supabase.rpc("moderate_comments_guarded"');
+    expect(actionsSource).toContain("expectedUpdatedAt");
+    expect(actionsSource).toContain("p_items:");
     expect(actionsSource).toContain("commentsCatalogFormHref(formData, notice)");
-    expect(actionsSource).toContain("if (!updated)");
+    expect(actionsSource).not.toMatch(/\.from\("article_comments"\)\s*\.update/u);
   });
 });

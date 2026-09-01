@@ -5,6 +5,7 @@ import { useState, type FormEvent } from "react";
 
 import { withClientAdminPath } from "@/lib/admin-path";
 
+import { fontUploadErrorMessage } from "./font-upload-error-messages";
 import styles from "./page.module.css";
 
 type UploadState =
@@ -27,8 +28,7 @@ export default function FontUploadForm() {
     if (!isVariable && weightMin !== weightMax) {
       setUpload({
         state: "error",
-        message:
-          "Для обычного шрифта укажите одинаковую насыщенность от и до. Диапазон доступен вариативному шрифту.",
+        message: fontUploadErrorMessage("fixed_weight_range_client"),
       });
       return;
     }
@@ -41,22 +41,29 @@ export default function FontUploadForm() {
         headers: { Accept: "application/json" },
       });
       const result = (await response.json().catch(() => null)) as
-        | { error?: string; displayName?: string }
+        | { errorCode?: unknown; displayName?: unknown }
         | null;
       if (!response.ok) {
-        throw new Error(result?.error || "Не удалось загрузить шрифт.");
+        setUpload({
+          state: "error",
+          message: fontUploadErrorMessage(result?.errorCode),
+        });
+        return;
       }
       form.reset();
       setUpload({
         state: "success",
-        message: `Шрифт «${result?.displayName || "без названия"}» добавлен.`,
+        message: `Шрифт «${
+          typeof result?.displayName === "string" && result.displayName
+            ? result.displayName
+            : "без названия"
+        }» добавлен.`,
       });
       router.refresh();
-    } catch (error) {
+    } catch {
       setUpload({
         state: "error",
-        message:
-          error instanceof Error ? error.message : "Не удалось загрузить шрифт.",
+        message: fontUploadErrorMessage(null),
       });
     }
   }

@@ -9,6 +9,7 @@ import { redirect } from "@/lib/navigation";
 import { requestPublicBuild } from "@/lib/publication";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 function articleIdFromForm(formData: FormData) {
   const parsed = z.string().uuid().safeParse(formData.get("id"));
@@ -64,12 +65,12 @@ export async function duplicateArticleAction(formData: FormData) {
       .maybeSingle(),
   ]);
   if (sourceError || !source) {
-    redirect(`/articles?error=${encodeURIComponent(sourceError?.message || "Статья не найдена")}`);
+    redirect(`/articles?error=${encodeURIComponent(sourceError ? operatorDataError("articles", "load") : "Статья не найдена")}`);
   }
   if (sourceEnglishError) {
     redirect(
       `/articles?error=${encodeURIComponent(
-        `Не удалось прочитать английскую версию: ${sourceEnglishError.message}`
+        operatorDataError("articles", "load")
       )}`
     );
   }
@@ -121,7 +122,7 @@ export async function duplicateArticleAction(formData: FormData) {
     .select("id")
     .single();
   if (error || !copy) {
-    redirect(`/articles?error=${encodeURIComponent(error?.message || "Не удалось создать копию")}`);
+    redirect(`/articles?error=${encodeURIComponent(operatorDataError("articles", "create"))}`);
   }
 
   if (sourceEnglishTranslation) {
@@ -191,15 +192,15 @@ export async function duplicateArticleAction(formData: FormData) {
         .eq("id", copy.id)
         .select("id")
         .maybeSingle();
-      const rollbackFailure =
-        rollbackError?.message ||
-        (!rolledBackCopy ? "запись копии не была удалена" : null);
+      const rollbackFailure = rollbackError
+        ? "операция отката не выполнена"
+        : (!rolledBackCopy ? "запись копии не была удалена" : null);
       const rollbackMessage = rollbackFailure
         ? `; удалить неполную копию также не удалось: ${rollbackFailure}`
         : "; неполная русская копия удалена";
       redirect(
         `/articles?error=${encodeURIComponent(
-          `Английская версия не скопирована: ${englishCopyError.message}${rollbackMessage}`
+          `${operatorDataError("articles", "create")}${rollbackMessage}`
         )}`
       );
     }
@@ -257,7 +258,7 @@ export async function changeArticleStatusAction(formData: FormData) {
     .select("id")
     .maybeSingle();
   if (error) {
-    redirect(`/articles?error=${encodeURIComponent(error.message)}`);
+    redirect(`/articles?error=${encodeURIComponent(operatorDataError("articles", "save"))}`);
   }
   if (!updated) {
     redirect("/articles?error=Статья уже изменена в другой вкладке. Обновите список.");
@@ -299,7 +300,7 @@ export async function softDeleteArticleAction(formData: FormData) {
     .eq("updated_at", expectedUpdatedAt)
     .select("id")
     .maybeSingle();
-  if (error) redirect(`/articles?error=${encodeURIComponent(error.message)}`);
+  if (error) redirect(`/articles?error=${encodeURIComponent(operatorDataError("articles", "delete"))}`);
   if (!updated) redirect("/articles?error=Статья уже изменена в другой вкладке. Обновите страницу.");
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
@@ -339,7 +340,7 @@ export async function restoreArticleRevisionAction(formData: FormData) {
     .single();
   if (revisionError || !revision?.snapshot) {
     redirect(articleEditPath(articleId, {
-      error: revisionError?.message || "Версия не найдена",
+      error: revisionError ? operatorDataError("history", "load") : "Версия не найдена",
     }));
   }
 
@@ -390,7 +391,7 @@ export async function restoreArticleRevisionAction(formData: FormData) {
     .select("id")
     .maybeSingle();
   if (error) {
-    redirect(articleEditPath(articleId, { error: error.message }));
+    redirect(articleEditPath(articleId, { error: operatorDataError("articles", "restore") }));
   }
   if (!updated) {
     redirect(articleEditPath(articleId, {

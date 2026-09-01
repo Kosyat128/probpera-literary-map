@@ -13,6 +13,7 @@ import {
   isRevisionSnapshot,
 } from "@/lib/revision-restore";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 type RevisionConfig = {
   revisionTable: string;
@@ -131,8 +132,8 @@ const revisionConfig: Record<string, RevisionConfig> = {
   },
 };
 
-function databaseError(error: { message?: string } | null, fallback: string) {
-  return new Error(error?.message || fallback);
+function databaseError(_error: { message?: string } | null, fallback: string) {
+  return new Error(fallback);
 }
 
 export async function restoreRevisionAction(formData: FormData) {
@@ -173,7 +174,7 @@ export async function restoreRevisionAction(formData: FormData) {
     (config.revisionEntityType &&
       revisionRecord.entity_type !== config.revisionEntityType)
   ) {
-    redirect(target({ error: revisionError?.message || "Версия не найдена" }));
+    redirect(target({ error: revisionError ? operatorDataError("history", "load") : "Версия не найдена" }));
   }
 
   let patch: Record<string, unknown>;
@@ -320,7 +321,7 @@ export async function restoreRevisionAction(formData: FormData) {
     redirect(target({
       restored: kind,
       published: publication.state,
-      error: `Версия восстановлена, но журнал аудита недоступен: ${auditError.message}`,
+      error: operatorDataError("history", "audit"),
     }));
   }
   redirect(target({ restored: kind, published: publication.state }));

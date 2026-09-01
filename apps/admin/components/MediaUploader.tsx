@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { republishMediaAction } from "@/app/(dashboard)/media/actions";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
+import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/client-image-upload";
 
 type UploadPublicationState = "started" | "queued" | "queue-error";
 
@@ -112,9 +113,9 @@ export default function MediaUploader() {
         <small>Пропорции сохраняются; кадрирование настраивается позже фокусом и эффектами.</small>
       </label>
       <label className="upload-zone">
-        <input name="file" type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple required />
-        <strong>JPEG, PNG, WebP или AVIF</strong>
-        <p>До 20 файлов за операцию. Каждый исходник будет подогнан без обрезки, очищен от метаданных и сохранён отдельным неизменяемым WebP.</p>
+        <input name="file" type="file" accept={CLIENT_IMAGE_ACCEPT_ATTRIBUTE} multiple required />
+        <strong>Растровые изображения всех распространённых форматов</strong>
+        <p>JPEG, PNG, WebP, AVIF, GIF, BMP, TIFF, HEIC/HEIF и JPEG XL - если формат декодируется вашим браузером. До 20 файлов за операцию; каждый исходник будет подогнан без обрезки, очищен от метаданных и сохранён отдельным неизменяемым WebP. SVG и другие исполняемые документы запрещены.</p>
       </label>
       <label className="field">
         <span>Общее описание для выбранных файлов *</span>
