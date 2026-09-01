@@ -29,12 +29,40 @@ export type ValidatedFontFile = {
   sha256Hex: string;
 };
 
+export type FontUploadValidationErrorCode =
+  | "display_name_required"
+  | "display_name_too_long"
+  | "display_name_unsafe"
+  | "family_name_required"
+  | "family_name_too_long"
+  | "family_name_unsafe"
+  | "file_empty"
+  | "file_extension_invalid"
+  | "file_mime_invalid"
+  | "file_name_invalid"
+  | "file_signature_invalid"
+  | "file_too_large"
+  | "fixed_weight_range_invalid"
+  | "license_name_required"
+  | "license_name_too_long"
+  | "license_url_invalid"
+  | "license_url_too_long"
+  | "metadata_invalid"
+  | "metadata_weight_integer"
+  | "style_invalid"
+  | "variable_flag_invalid"
+  | "weight_max_integer"
+  | "weight_max_range"
+  | "weight_min_integer"
+  | "weight_min_range"
+  | "weight_order_invalid";
+
 export class FontUploadValidationError extends Error {
   constructor(
-    message: string,
+    readonly code: FontUploadValidationErrorCode,
     readonly status: 400 | 413 | 415 = 400
   ) {
-    super(message);
+    super(code);
     this.name = "FontUploadValidationError";
   }
 }
@@ -65,69 +93,82 @@ const fontSpecifications = {
 const unsafeFontReference = /(?:@import\b|url\s*\(|https?:\/\/|^\/\/)/iu;
 const unsafeMetadataCharacters = /[\u0000-\u001f\u007f{};]/u;
 
-const requiredFontName = (label: string) =>
+const requiredFontName = (
+  codes: Readonly<{
+    required: FontUploadValidationErrorCode;
+    tooLong: FontUploadValidationErrorCode;
+    unsafe: FontUploadValidationErrorCode;
+  }>
+) =>
   z
     .string()
     .trim()
-    .min(1, `${label} обязательно.`)
-    .max(120, `${label} не должно превышать 120 символов.`)
+    .min(1, codes.required)
+    .max(120, codes.tooLong)
     .refine(
       (value) =>
         !unsafeFontReference.test(value) && !unsafeMetadataCharacters.test(value),
-      `${label} содержит недопустимую ссылку или CSS-конструкцию.`
+      codes.unsafe
     );
 
 const metadataSchema = z
   .object({
-    displayName: requiredFontName("Название шрифта"),
-    familyName: requiredFontName("Название семейства"),
+    displayName: requiredFontName({
+      required: "display_name_required",
+      tooLong: "display_name_too_long",
+      unsafe: "display_name_unsafe",
+    }),
+    familyName: requiredFontName({
+      required: "family_name_required",
+      tooLong: "family_name_too_long",
+      unsafe: "family_name_unsafe",
+    }),
     weightMin: z
       .number()
-      .int("Минимальная насыщенность должна быть целым числом.")
-      .min(1, "Минимальная насыщенность должна быть от 1 до 1000.")
-      .max(1000, "Минимальная насыщенность должна быть от 1 до 1000."),
+      .int("weight_min_integer")
+      .min(1, "weight_min_range")
+      .max(1000, "weight_min_range"),
     weightMax: z
       .number()
-      .int("Максимальная насыщенность должна быть целым числом.")
-      .min(1, "Максимальная насыщенность должна быть от 1 до 1000.")
-      .max(1000, "Максимальная насыщенность должна быть от 1 до 1000."),
+      .int("weight_max_integer")
+      .min(1, "weight_max_range")
+      .max(1000, "weight_max_range"),
     style: z.enum(["normal", "italic", "oblique"], {
-      message: "Выберите допустимое начертание шрифта.",
+      message: "style_invalid",
     }),
     isVariable: z.boolean({
-      message: "Укажите, является ли шрифт вариативным.",
+      message: "variable_flag_invalid",
     }),
     licenseName: z
       .string()
       .trim()
-      .min(2, "Укажите название лицензии или основание использования.")
-      .max(180, "Название лицензии не должно превышать 180 символов."),
+      .min(2, "license_name_required")
+      .max(180, "license_name_too_long"),
     licenseUrl: z
       .string()
       .trim()
-      .max(2048, "Ссылка на лицензию слишком длинная.")
+      .max(2048, "license_url_too_long")
       .nullable(),
   })
   .superRefine(({ weightMin, weightMax, isVariable, licenseUrl }, context) => {
     if (weightMin > weightMax) {
       context.addIssue({
         code: "custom",
-        message: "Минимальная насыщенность не может быть больше максимальной.",
+        message: "weight_order_invalid",
         path: ["weightMin"],
       });
     }
     if (!isVariable && weightMin !== weightMax) {
       context.addIssue({
         code: "custom",
-        message:
-          "Для обычного файла укажите одинаковую минимальную и максимальную насыщенность.",
+        message: "fixed_weight_range_invalid",
         path: ["weightMax"],
       });
     }
     if (licenseUrl && !isSafeHttpUrl(licenseUrl)) {
       context.addIssue({
         code: "custom",
-        message: "Укажите корректную ссылку на лицензию (http или https).",
+        message: "license_url_invalid",
         path: ["licenseUrl"],
       });
     }
@@ -176,9 +217,7 @@ export function parseFontUploadMetadata(input: {
   const weightMin = parseInteger(input.weightMin);
   const weightMax = parseInteger(input.weightMax);
   if (!Number.isFinite(weightMin) || !Number.isFinite(weightMax)) {
-    throw new FontUploadValidationError(
-      "Насыщенность шрифта должна быть целым числом от 1 до 1000."
-    );
+    throw new FontUploadValidationError("metadata_weight_integer");
   }
   const parsed = metadataSchema.safeParse({
     displayName: requiredText(input.displayName),
@@ -192,7 +231,9 @@ export function parseFontUploadMetadata(input: {
   });
   if (!parsed.success) {
     throw new FontUploadValidationError(
-      parsed.error.issues[0]?.message || "Проверьте данные шрифта."
+      (parsed.error.issues[0]?.message as
+        | FontUploadValidationErrorCode
+        | undefined) ?? "metadata_invalid"
     );
   }
   return parsed.data;
@@ -205,7 +246,7 @@ function normalizeMimeType(value: string) {
 function safeOriginalName(value: string) {
   const name = value.split(/[\\/]/u).at(-1)?.trim() || "";
   if (!name || name.length > 255 || /[\u0000-\u001f\u007f]/u.test(name)) {
-    throw new FontUploadValidationError("Имя файла шрифта недопустимо.");
+    throw new FontUploadValidationError("file_name_invalid");
   }
   return name;
 }
@@ -228,37 +269,25 @@ export function validateFontFile(input: {
 }): ValidatedFontFile {
   const { bytes } = input;
   if (bytes.byteLength === 0) {
-    throw new FontUploadValidationError("Выбранный файл шрифта пуст.");
+    throw new FontUploadValidationError("file_empty");
   }
   if (bytes.byteLength > MAX_FONT_UPLOAD_BYTES) {
-    throw new FontUploadValidationError(
-      "Файл шрифта превышает допустимый размер 2 МБ.",
-      413
-    );
+    throw new FontUploadValidationError("file_too_large", 413);
   }
 
   const originalName = safeOriginalName(input.originalName);
   const format = formatFromExtension(originalName);
   if (!format) {
-    throw new FontUploadValidationError(
-      "Допустимы только файлы WOFF2 (.woff2) и WOFF (.woff).",
-      415
-    );
+    throw new FontUploadValidationError("file_extension_invalid", 415);
   }
 
   const specification = fontSpecifications[format];
   const mimeType = normalizeMimeType(input.mimeType);
   if (!specification.mimeTypes.includes(mimeType)) {
-    throw new FontUploadValidationError(
-      "Тип файла не соответствует допустимому формату WOFF2 или WOFF.",
-      415
-    );
+    throw new FontUploadValidationError("file_mime_invalid", 415);
   }
   if (!hasExpectedMagic(bytes, specification.magic)) {
-    throw new FontUploadValidationError(
-      "Файл не прошёл проверку сигнатуры WOFF2 или WOFF.",
-      415
-    );
+    throw new FontUploadValidationError("file_signature_invalid", 415);
   }
 
   const sha256Hex = createHash("sha256").update(bytes).digest("hex");

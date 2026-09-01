@@ -8,6 +8,10 @@ const workspaceSource = readFileSync(
   new URL("./TypographyWorkspace.tsx", import.meta.url),
   "utf8"
 );
+const typographyUiSource = readFileSync(
+  new URL("../../../../lib/site-typography-ui.ts", import.meta.url),
+  "utf8"
+);
 const loaderSource = readFileSync(
   new URL("./TypographyWorkspaceLoader.tsx", import.meta.url),
   "utf8"
@@ -77,5 +81,19 @@ describe("Site Studio typography admin contract", () => {
     expect(actionsSource).not.toContain("return error?.message");
     expect(renderSource).not.toContain('name="style"');
     expect(renderSource).not.toContain('name="css"');
+  });
+
+  it("passes stable server codes into a client-only Russian message map", () => {
+    expect(actionsSource).toContain('error: typographyErrorCode(error)');
+    expect(actionsSource).toContain(
+      'rpcErrorCode(error, "typography_save_failed")'
+    );
+    expect(actionsSource).toContain('return "typography_stale"');
+    expect(actionsSource).not.toContain("Не удалось сохранить настройку.");
+    expect(typographyUiSource).toMatch(/^"use client";/u);
+    expect(typographyUiSource).toContain("TYPOGRAPHY_ERROR_MESSAGES");
+    expect(workspaceSource).toContain(
+      "typographyErrorMessage(messages.error)"
+    );
   });
 });

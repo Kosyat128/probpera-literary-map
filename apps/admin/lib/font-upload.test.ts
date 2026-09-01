@@ -4,12 +4,27 @@ import { describe, expect, it } from "vitest";
 
 import {
   FontUploadValidationError,
+  type FontUploadValidationErrorCode,
   MAX_FONT_UPLOAD_BYTES,
   isDatabaseUniqueConflict,
   isStorageObjectAlreadyPresent,
   parseFontUploadMetadata,
   validateFontFile,
 } from "./font-upload";
+
+function expectValidationCode(
+  operation: () => unknown,
+  code: FontUploadValidationErrorCode,
+  status: 400 | 413 | 415 = 400
+) {
+  try {
+    operation();
+    throw new Error(`Expected font upload validation error: ${code}`);
+  } catch (error) {
+    expect(error).toBeInstanceOf(FontUploadValidationError);
+    expect(error).toMatchObject({ code, status });
+  }
+}
 
 function fontBytes(magic: "wOFF" | "wOF2", size = 16) {
   const bytes = new Uint8Array(size);
@@ -37,47 +52,50 @@ describe("font upload validation", () => {
   );
 
   it("checks extension, MIME and magic independently", () => {
-    expect(() =>
-      validateFontFile({
-        bytes: fontBytes("wOF2"),
-        mimeType: "font/woff2",
-        originalName: "archive.ttf",
-      })
-    ).toThrow("Допустимы только файлы WOFF2");
-    expect(() =>
-      validateFontFile({
-        bytes: fontBytes("wOF2"),
-        mimeType: "application/octet-stream",
-        originalName: "archive.woff2",
-      })
-    ).toThrow("Тип файла не соответствует");
-    expect(() =>
-      validateFontFile({
-        bytes: fontBytes("wOFF"),
-        mimeType: "font/woff2",
-        originalName: "archive.woff2",
-      })
-    ).toThrow("проверку сигнатуры");
+    expectValidationCode(
+      () =>
+        validateFontFile({
+          bytes: fontBytes("wOF2"),
+          mimeType: "font/woff2",
+          originalName: "archive.ttf",
+        }),
+      "file_extension_invalid",
+      415
+    );
+    expectValidationCode(
+      () =>
+        validateFontFile({
+          bytes: fontBytes("wOF2"),
+          mimeType: "application/octet-stream",
+          originalName: "archive.woff2",
+        }),
+      "file_mime_invalid",
+      415
+    );
+    expectValidationCode(
+      () =>
+        validateFontFile({
+          bytes: fontBytes("wOFF"),
+          mimeType: "font/woff2",
+          originalName: "archive.woff2",
+        }),
+      "file_signature_invalid",
+      415
+    );
   });
 
   it("enforces the two MiB limit", () => {
     const bytes = fontBytes("wOF2", MAX_FONT_UPLOAD_BYTES + 1);
-    expect(() =>
-      validateFontFile({
-        bytes,
-        mimeType: "font/woff2",
-        originalName: "archive.woff2",
-      })
-    ).toThrowError(FontUploadValidationError);
-    try {
-      validateFontFile({
-        bytes,
-        mimeType: "font/woff2",
-        originalName: "archive.woff2",
-      });
-    } catch (error) {
-      expect(error).toMatchObject({ status: 413 });
-    }
+    expectValidationCode(
+      () =>
+        validateFontFile({
+          bytes,
+          mimeType: "font/woff2",
+          originalName: "archive.woff2",
+        }),
+      "file_too_large",
+      413
+    );
   });
 
   it("normalizes Russian-facing metadata without coercing false to true", () => {
@@ -105,29 +123,37 @@ describe("font upload validation", () => {
   });
 
   it.each([
-    [{ displayName: "@import url(https://evil.example/font.woff2)" }, "CSS-конструкцию"],
-    [{ familyName: "https://evil.example/font.woff2" }, "недопустимую ссылку"],
-    [{ weightMin: "700", weightMax: "300" }, "не может быть больше"],
-    [{ weightMin: "300", weightMax: "700", isVariable: "false" }, "обычного файла"],
-    [{ weightMax: "1001" }, "от 1 до 1000"],
-    [{ weightMin: "regular" }, "должна быть целым числом"],
-    [{ style: "upright" }, "допустимое начертание"],
-    [{ licenseName: "" }, "название лицензии"],
-    [{ licenseUrl: "data:text/plain,font" }, "http или https"],
-  ])("rejects unsafe or invalid metadata: %o", (override, message) => {
-    expect(() =>
-      parseFontUploadMetadata({
-        displayName: "Литературный антиква",
-        familyName: "Проба Пера Serif",
-        weightMin: "400",
-        weightMax: "400",
-        style: "normal",
-        isVariable: "false",
-        licenseName: "OFL 1.1",
-        licenseUrl: "",
-        ...override,
-      })
-    ).toThrow(message);
+    [
+      { displayName: "@import url(https://evil.example/font.woff2)" },
+      "display_name_unsafe",
+    ],
+    [{ familyName: "https://evil.example/font.woff2" }, "family_name_unsafe"],
+    [{ weightMin: "700", weightMax: "300" }, "weight_order_invalid"],
+    [
+      { weightMin: "300", weightMax: "700", isVariable: "false" },
+      "fixed_weight_range_invalid",
+    ],
+    [{ weightMax: "1001" }, "weight_max_range"],
+    [{ weightMin: "regular" }, "metadata_weight_integer"],
+    [{ style: "upright" }, "style_invalid"],
+    [{ licenseName: "" }, "license_name_required"],
+    [{ licenseUrl: "data:text/plain,font" }, "license_url_invalid"],
+  ] as const)("rejects unsafe or invalid metadata: %o", (override, code) => {
+    expectValidationCode(
+      () =>
+        parseFontUploadMetadata({
+          displayName: "Литературный антиква",
+          familyName: "Проба Пера Serif",
+          weightMin: "400",
+          weightMax: "400",
+          style: "normal",
+          isVariable: "false",
+          licenseName: "OFL 1.1",
+          licenseUrl: "",
+          ...override,
+        }),
+      code
+    );
   });
 
   it("never removes a pre-existing or conflict-shared hash", () => {

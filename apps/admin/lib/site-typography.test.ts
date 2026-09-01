@@ -5,14 +5,32 @@ import {
   parseSiteTypographyProperties,
   parseTypographyTarget,
   readSiteTypographyProperties,
-  resolveSiteTypography,
+  SiteTypographyValidationError,
   typographyPropertiesInputFromForm,
-  typographyPropertyFormValues,
   typographyTargetFromForm,
+  type SiteTypographyErrorCode,
   type SiteTypographyOverride,
 } from "./site-typography";
+import {
+  resolveSiteTypography,
+  typographyErrorMessage,
+  typographyPropertyFormValues,
+} from "./site-typography-ui";
 
 const familyId = "2ea3fe6f-9a32-4dad-86e3-4677614f5e56";
+
+function expectTypographyCode(
+  operation: () => unknown,
+  code: SiteTypographyErrorCode
+) {
+  try {
+    operation();
+    throw new Error(`Expected typography validation error: ${code}`);
+  } catch (error) {
+    expect(error).toBeInstanceOf(SiteTypographyValidationError);
+    expect(error).toMatchObject({ code, message: code });
+  }
+}
 
 describe("site typography contract", () => {
   it("parses only the publication allowlist and preserves camelCase keys", () => {
@@ -46,23 +64,32 @@ describe("site typography contract", () => {
   });
 
   it("rejects raw CSS, remote font families and conflicting family sources", () => {
-    expect(() =>
-      parseSiteTypographyProperties({ cssText: "position:fixed" })
-    ).toThrow("неизвестное CSS-свойство");
-    expect(() =>
-      parseSiteTypographyProperties({ systemFamily: "url(https://example.test/font)" })
-    ).toThrow("Недопустимое");
-    expect(() =>
-      parseSiteTypographyProperties({ familyId, systemFamily: "georgia" })
-    ).toThrow("либо загруженный, либо системный");
-    expect(() =>
-      parseSiteTypographyProperties({ fontSize: 145 })
-    ).toThrow("144");
-    expect(() =>
-      parseSiteTypographyProperties({
-        familyId: "2ea3fe6f-9a32-6dad-86e3-4677614f5e56",
-      })
-    ).toThrow("неизвестный файл");
+    expectTypographyCode(
+      () => parseSiteTypographyProperties({ cssText: "position:fixed" }),
+      "typography_property_unknown"
+    );
+    expectTypographyCode(
+      () =>
+        parseSiteTypographyProperties({
+          systemFamily: "url(https://example.test/font)",
+        }),
+      "typography_value_invalid"
+    );
+    expectTypographyCode(
+      () => parseSiteTypographyProperties({ familyId, systemFamily: "georgia" }),
+      "typography_font_source_conflict"
+    );
+    expectTypographyCode(
+      () => parseSiteTypographyProperties({ fontSize: 145 }),
+      "typography_number_invalid"
+    );
+    expectTypographyCode(
+      () =>
+        parseSiteTypographyProperties({
+          familyId: "2ea3fe6f-9a32-6dad-86e3-4677614f5e56",
+        }),
+      "typography_font_id_invalid"
+    );
   });
 
   it("validates semantic targets and exact target_key policy", () => {
@@ -79,22 +106,26 @@ describe("site typography contract", () => {
       semanticScope: "h2",
       breakpoint: "tablet",
     });
-    expect(() =>
-      parseTypographyTarget({
-        layer: "page",
-        targetKey: "Article / Home",
-        semanticScope: "page",
-        breakpoint: "base",
-      })
-    ).toThrow("a-z, 0-9");
-    expect(() =>
-      parseTypographyTarget({
-        layer: "site",
-        targetKey: "global",
-        semanticScope: "body",
-        breakpoint: "base",
-      })
-    ).toThrow("ключ области должен быть «site»");
+    expectTypographyCode(
+      () =>
+        parseTypographyTarget({
+          layer: "page",
+          targetKey: "Article / Home",
+          semanticScope: "page",
+          breakpoint: "base",
+        }),
+      "typography_target_key_invalid"
+    );
+    expectTypographyCode(
+      () =>
+        parseTypographyTarget({
+          layer: "site",
+          targetKey: "global",
+          semanticScope: "body",
+          breakpoint: "base",
+        }),
+      "typography_site_key_invalid"
+    );
   });
 
   it("builds strict values from forms and parses the rendered version", () => {
@@ -122,16 +153,33 @@ describe("site typography contract", () => {
     expect(expectedTypographyVersionFromForm(form)).toBe(7);
 
     form.set("family_kind", "remote");
-    expect(() => typographyPropertiesInputFromForm(form)).toThrow(
-      "неизвестный источник"
+    expectTypographyCode(
+      () => typographyPropertiesInputFromForm(form),
+      "typography_family_kind_invalid"
     );
     form.set("family_kind", "asset");
     form.set("familyId", "");
-    expect(() => typographyPropertiesInputFromForm(form)).toThrow(
-      "менеджера шрифтов"
+    expectTypographyCode(
+      () => typographyPropertiesInputFromForm(form),
+      "typography_asset_required"
     );
     form.set("expected_version", "0");
-    expect(() => expectedTypographyVersionFromForm(form)).toThrow("Версия");
+    expectTypographyCode(
+      () => expectedTypographyVersionFromForm(form),
+      "typography_version_invalid"
+    );
+  });
+
+  it("maps stable error codes to Russian client copy and hides unknown values", () => {
+    expect(typographyErrorMessage("typography_empty")).toContain(
+      "Укажите хотя бы один параметр"
+    );
+    expect(typographyErrorMessage("typography_stale")).toContain(
+      "изменена в другой вкладке"
+    );
+    expect(typographyErrorMessage("произвольный текст из query")).toBe(
+      "Не удалось выполнить действие с типографикой."
+    );
   });
 
   it("resolves site to instance and base to breakpoint deterministically", () => {

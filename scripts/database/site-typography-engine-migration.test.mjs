@@ -117,6 +117,29 @@ describe("site typography engine migration", () => {
     expect(migration).toContain(
       "current_override.cas_version <> p_expected_cas_version"
     );
+    expect(migration).toContain(
+      "current_override.layer is distinct from p_layer"
+    );
+    expect(migration).toContain(
+      "current_override.target_key is distinct from p_target_key"
+    );
+    expect(migration).toContain(
+      "current_override.semantic_scope is distinct from p_semantic_scope"
+    );
+    expect(migration).toContain(
+      "current_override.breakpoint is distinct from p_breakpoint"
+    );
+    expect(migration).toContain("typography override identity is immutable");
+    const saveRpc = migration.slice(
+      migration.indexOf(
+        "create or replace function public.save_site_typography_override("
+      ),
+      migration.indexOf(
+        "create or replace function public.publish_site_typography_override("
+      )
+    );
+    expect(saveRpc).toMatch(/set draft_settings = p_draft_settings,/u);
+    expect(saveRpc).not.toMatch(/set layer = p_layer,/u);
     expect(migration).toContain("'typography.override_saved'");
     expect(migration).toContain("'typography.override_published'");
     expect(migration).toContain("'typography.revision_restored'");
@@ -191,6 +214,28 @@ describe("site typography engine migration", () => {
     expect(publicReader).not.toContain("sha256Hex");
     expect(publicReader).not.toContain("byteSize");
     expect(publicReader).toContain("'isVariable', asset.is_variable");
+  });
+
+  it("removes pinned-image default grants before restoring intended RPC ACLs", () => {
+    for (const revokedBoundary of [
+      "revoke all on function public.is_valid_site_typography_settings(jsonb)\n  from public, anon, authenticated;",
+      "revoke all on function public.assert_site_typography_font_reference(jsonb)\n  from public, anon, authenticated;",
+      "revoke all on function public.guard_font_asset_update()\n  from public, anon, authenticated;",
+      "revoke all on function public.audit_font_asset_insert()\n  from public, anon, authenticated;",
+      "revoke all on function public.archive_font_asset(uuid, bigint, text)\n  from public, anon, authenticated;",
+      "revoke all on function public.publish_site_typography_override(uuid, bigint)\n  from public, anon, authenticated;",
+      "revoke all on function public.restore_site_typography_revision(bigint, bigint)\n  from public, anon, authenticated;",
+      "revoke all on function public.get_published_site_typography()\n  from public, anon, authenticated;",
+      "revoke all on function public.get_editorial_schema_health()\n  from public, anon, authenticated;",
+    ]) {
+      expect(migration).toContain(revokedBoundary);
+    }
+    expect(migration).toMatch(
+      /revoke all on function public\.save_site_typography_override\([\s\S]*?\) from public, anon, authenticated;/u
+    );
+    expect(migration).toMatch(
+      /grant execute on function public\.get_published_site_typography\(\)\s+to anon, authenticated;/u
+    );
   });
 
   it("creates a bounded private font bucket and immutable upload policy", () => {

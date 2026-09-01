@@ -73,51 +73,6 @@ export type TypographyTextTransform =
 export type TypographyTextDecoration =
   (typeof typographyTextDecorations)[number];
 
-export const typographyScopeLabels: Record<TypographySemanticScope, string> = {
-  body: "Основной текст",
-  navigation: "Навигация",
-  h1: "Заголовок H1",
-  h2: "Заголовок H2",
-  h3: "Заголовок H3",
-  h4: "Заголовок H4",
-  h5: "Заголовок H5",
-  h6: "Заголовок H6",
-  article: "Текст статьи",
-  page: "Текст страницы",
-  lead: "Лид",
-  quote: "Цитата",
-  caption: "Подпись",
-  button: "Кнопка",
-  card: "Карточка",
-  footer: "Подвал",
-};
-
-export const typographyLayerLabels: Record<TypographyLayer, string> = {
-  site: "Весь сайт",
-  component: "Компонент",
-  template: "Шаблон",
-  page: "Страница",
-  instance: "Отдельный элемент",
-};
-
-export const typographyBreakpointLabels: Record<TypographyBreakpoint, string> = {
-  base: "Все экраны",
-  mobile: "Телефон",
-  tablet: "Планшет",
-  desktop: "Компьютер",
-};
-
-export const typographySystemFamilyLabels: Record<
-  TypographySystemFamily,
-  string
-> = {
-  "system-sans": "Системный без засечек",
-  "system-serif": "Системный с засечками",
-  georgia: "Georgia",
-  arial: "Arial",
-  times: "Times New Roman",
-};
-
 export type SiteTypographyProperties = {
   familyId?: string;
   systemFamily?: TypographySystemFamily;
@@ -151,6 +106,42 @@ export type SiteTypographyResolutionContext = {
   breakpoint: TypographyBreakpoint;
   targetKeys?: Partial<Record<Exclude<TypographyLayer, "site">, string>>;
 };
+
+export type SiteTypographyErrorCode =
+  | "typography_target_invalid"
+  | "typography_value_invalid"
+  | "typography_target_key_invalid"
+  | "typography_site_key_invalid"
+  | "typography_settings_invalid"
+  | "typography_property_unknown"
+  | "typography_font_id_invalid"
+  | "typography_number_invalid"
+  | "typography_font_source_conflict"
+  | "typography_family_kind_invalid"
+  | "typography_asset_required"
+  | "typography_system_required"
+  | "typography_version_invalid"
+  | "typography_id_invalid"
+  | "typography_request_invalid"
+  | "typography_empty"
+  | "typography_stale"
+  | "typography_font_in_use"
+  | "typography_forbidden"
+  | "typography_database_unavailable"
+  | "typography_save_failed"
+  | "typography_reset_failed"
+  | "typography_reset_publish_failed"
+  | "typography_publish_failed"
+  | "typography_revision_invalid"
+  | "typography_restore_failed"
+  | "typography_font_archive_failed";
+
+export class SiteTypographyValidationError extends Error {
+  constructor(readonly code: SiteTypographyErrorCode) {
+    super(code);
+    this.name = "SiteTypographyValidationError";
+  }
+}
 
 export const siteTypographyPropertyKeys = [
   "familyId",
@@ -195,16 +186,15 @@ function isPlainRecord(value: unknown): value is Record<string, unknown> {
 
 function parseEnum<const Values extends readonly string[]>(
   value: unknown,
-  values: Values,
-  label: string
+  values: Values
 ): Values[number] {
   if (typeof value !== "string" || !values.includes(value as Values[number])) {
-    throw new Error(`Недопустимое значение поля «${label}».`);
+    throw new SiteTypographyValidationError("typography_value_invalid");
   }
   return value as Values[number];
 }
 
-function parseNumber(value: unknown, rule: NumericRule, label: string) {
+function parseNumber(value: unknown, rule: NumericRule) {
   const candidate =
     typeof value === "number"
       ? value
@@ -217,39 +207,29 @@ function parseNumber(value: unknown, rule: NumericRule, label: string) {
     candidate > rule.max ||
     (rule.integer && !Number.isInteger(candidate))
   ) {
-    throw new Error(
-      `Поле «${label}» должно быть от ${rule.min} до ${rule.max}.`
-    );
+    throw new SiteTypographyValidationError("typography_number_invalid");
   }
   return Number(candidate.toFixed(4));
 }
 
 export function parseTypographyTarget(input: unknown): SiteTypographyTarget {
-  if (!isPlainRecord(input)) throw new Error("Некорректная область оформления.");
-  const layer = parseEnum(input.layer, typographyLayers, "Уровень");
+  if (!isPlainRecord(input)) {
+    throw new SiteTypographyValidationError("typography_target_invalid");
+  }
+  const layer = parseEnum(input.layer, typographyLayers);
   const targetKey =
     typeof input.targetKey === "string" ? input.targetKey.trim() : "";
   if (!targetKeyPattern.test(targetKey)) {
-    throw new Error(
-      "Ключ области должен начинаться с латинской буквы или цифры и содержать только a-z, 0-9, _ или -."
-    );
+    throw new SiteTypographyValidationError("typography_target_key_invalid");
   }
   if (layer === "site" && targetKey !== "site") {
-    throw new Error("Для уровня всего сайта ключ области должен быть «site».");
+    throw new SiteTypographyValidationError("typography_site_key_invalid");
   }
   return {
     layer,
     targetKey,
-    semanticScope: parseEnum(
-      input.semanticScope,
-      typographySemanticScopes,
-      "Тип текста"
-    ),
-    breakpoint: parseEnum(
-      input.breakpoint,
-      typographyBreakpoints,
-      "Экран"
-    ),
+    semanticScope: parseEnum(input.semanticScope, typographySemanticScopes),
+    breakpoint: parseEnum(input.breakpoint, typographyBreakpoints),
   };
 }
 
@@ -261,13 +241,13 @@ export function parseSiteTypographyProperties(
   input: unknown
 ): SiteTypographyProperties {
   if (!isPlainRecord(input)) {
-    throw new Error("Некорректные параметры типографики.");
+    throw new SiteTypographyValidationError("typography_settings_invalid");
   }
   const unknownKeys = Object.keys(input).filter(
     (key) => !typographyPropertyKeySet.has(key)
   );
   if (unknownKeys.length) {
-    throw new Error("Передано неизвестное CSS-свойство.");
+    throw new SiteTypographyValidationError("typography_property_unknown");
   }
 
   const parsed: SiteTypographyProperties = {};
@@ -276,7 +256,7 @@ export function parseSiteTypographyProperties(
     if (value === undefined || value === null || value === "") continue;
     if (key === "familyId") {
       if (typeof value !== "string" || !uuidPattern.test(value.trim())) {
-        throw new Error("Выбран неизвестный файл шрифта.");
+        throw new SiteTypographyValidationError("typography_font_id_invalid");
       }
       parsed.familyId = value.trim().toLowerCase();
       continue;
@@ -284,26 +264,27 @@ export function parseSiteTypographyProperties(
     if (key in numericRules) {
       parsed[key as keyof typeof numericRules] = parseNumber(
         value,
-        numericRules[key as keyof typeof numericRules],
-        key
+        numericRules[key as keyof typeof numericRules]
       );
       continue;
     }
     if (key === "systemFamily") {
-      parsed.systemFamily = parseEnum(value, typographySystemFamilies, key);
+      parsed.systemFamily = parseEnum(value, typographySystemFamilies);
     } else if (key === "fontStyle") {
-      parsed.fontStyle = parseEnum(value, typographyFontStyles, key);
+      parsed.fontStyle = parseEnum(value, typographyFontStyles);
     } else if (key === "textAlign") {
-      parsed.textAlign = parseEnum(value, typographyTextAlignments, key);
+      parsed.textAlign = parseEnum(value, typographyTextAlignments);
     } else if (key === "textTransform") {
-      parsed.textTransform = parseEnum(value, typographyTextTransforms, key);
+      parsed.textTransform = parseEnum(value, typographyTextTransforms);
     } else if (key === "textDecoration") {
-      parsed.textDecoration = parseEnum(value, typographyTextDecorations, key);
+      parsed.textDecoration = parseEnum(value, typographyTextDecorations);
     }
   }
 
   if (parsed.familyId && parsed.systemFamily) {
-    throw new Error("Выберите либо загруженный, либо системный шрифт.");
+    throw new SiteTypographyValidationError(
+      "typography_font_source_conflict"
+    );
   }
   return parsed;
 }
@@ -331,20 +312,22 @@ export function typographyTargetFromForm(formData: FormData) {
 export function typographyPropertiesInputFromForm(formData: FormData) {
   const familyKind = String(formData.get("family_kind") || "inherit");
   if (!["inherit", "system", "asset"].includes(familyKind)) {
-    throw new Error("Выбран неизвестный источник шрифта.");
+    throw new SiteTypographyValidationError(
+      "typography_family_kind_invalid"
+    );
   }
   const input: Record<string, unknown> = {};
   if (familyKind === "asset") {
     const familyId = formData.get("familyId");
     if (typeof familyId !== "string" || !familyId.trim()) {
-      throw new Error("Выберите шрифт из менеджера шрифтов.");
+      throw new SiteTypographyValidationError("typography_asset_required");
     }
     input.familyId = familyId;
   }
   if (familyKind === "system") {
     const systemFamily = formData.get("systemFamily");
     if (typeof systemFamily !== "string" || !systemFamily.trim()) {
-      throw new Error("Выберите системный шрифт.");
+      throw new SiteTypographyValidationError("typography_system_required");
     }
     input.systemFamily = systemFamily;
   }
@@ -363,53 +346,7 @@ export function expectedTypographyVersionFromForm(formData: FormData) {
       ? Number(raw)
       : Number.NaN;
   if (!Number.isSafeInteger(version) || version < 1) {
-    throw new Error("Версия настройки устарела или повреждена.");
+    throw new SiteTypographyValidationError("typography_version_invalid");
   }
   return version;
-}
-
-export function typographyPropertyFormValues(
-  input: unknown
-): Record<(typeof siteTypographyPropertyKeys)[number], string> {
-  const settings = readSiteTypographyProperties(input);
-  return Object.fromEntries(
-    siteTypographyPropertyKeys.map((key) => [
-      key,
-      settings[key] === undefined ? "" : String(settings[key]),
-    ])
-  ) as Record<(typeof siteTypographyPropertyKeys)[number], string>;
-}
-
-/**
- * Resolves the admin preview using the same deterministic inheritance order:
- * site → component → template → page → instance, with base before the selected
- * breakpoint inside every layer.
- */
-export function resolveSiteTypography(
-  overrides: readonly SiteTypographyOverride[],
-  context: SiteTypographyResolutionContext
-) {
-  const resolved: SiteTypographyProperties = {};
-  for (const layer of typographyLayers) {
-    const expectedTarget =
-      layer === "site" ? "site" : context.targetKeys?.[layer];
-    if (!expectedTarget) continue;
-    const breakpoints: TypographyBreakpoint[] =
-      context.breakpoint === "base"
-        ? ["base"]
-        : ["base", context.breakpoint];
-    for (const breakpoint of breakpoints) {
-      for (const override of overrides) {
-        if (
-          override.layer === layer &&
-          override.targetKey === expectedTarget &&
-          override.semanticScope === context.semanticScope &&
-          override.breakpoint === breakpoint
-        ) {
-          Object.assign(resolved, readSiteTypographyProperties(override.settings));
-        }
-      }
-    }
-  }
-  return resolved;
 }

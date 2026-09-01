@@ -50,7 +50,7 @@ const reviewedMigrations = [
   ],
   [
     "20260830_zz_site_typography_engine.sql",
-    "c44596b1217ef19b8490c794e01568e5b036219719a2d2da00452486e91667fc",
+    "097f70aefd34278167a7c275db36cdb1182732a22eabfaa5d609be18512bde20",
   ],
 ];
 

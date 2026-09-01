@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   buildCmsNavigationForest,
+  cmsBannerIsActiveAt,
   cmsBannerMatchesPath,
   cmsPagePatternMatches,
   normalizeCmsPathname,
@@ -86,6 +87,51 @@ describe("CMS banner route matching", () => {
         "/probpera-literary-map/stati/example",
         "/probpera-literary-map/"
       )
+    ).toBe(false);
+  });
+});
+
+describe("CMS banner scheduling", () => {
+  const startsAt = "2026-09-01T09:00:00.000Z";
+  const endsAt = "2026-09-01T10:00:00.000Z";
+
+  it("uses an inclusive start and exclusive end like the public RLS policy", () => {
+    expect(
+      cmsBannerIsActiveAt({ startsAt, endsAt }, new Date(startsAt))
+    ).toBe(true);
+    expect(
+      cmsBannerIsActiveAt(
+        { startsAt, endsAt },
+        new Date("2026-09-01T09:30:00.000Z")
+      )
+    ).toBe(true);
+    expect(cmsBannerIsActiveAt({ startsAt, endsAt }, new Date(endsAt))).toBe(
+      false
+    );
+  });
+
+  it("hides banners before and after their configured window", () => {
+    expect(
+      cmsBannerIsActiveAt(
+        { startsAt, endsAt },
+        new Date("2026-09-01T08:59:59.999Z")
+      )
+    ).toBe(false);
+    expect(
+      cmsBannerIsActiveAt(
+        { startsAt, endsAt },
+        new Date("2026-09-01T10:00:00.001Z")
+      )
+    ).toBe(false);
+  });
+
+  it("supports open windows and fails closed for malformed boundaries", () => {
+    expect(cmsBannerIsActiveAt({}, new Date(startsAt))).toBe(true);
+    expect(
+      cmsBannerIsActiveAt({ startsAt: "not-a-timestamp" }, new Date(startsAt))
+    ).toBe(false);
+    expect(
+      cmsBannerIsActiveAt({ endsAt: "not-a-timestamp" }, new Date(startsAt))
     ).toBe(false);
   });
 });
