@@ -227,16 +227,16 @@ export const stage5FinalInterfaceCopyAttestation = Object.freeze({
   interfaceLanguage: Object.freeze({
     entries: 1203,
     keysSha256:
-      "a925b66e5f1d331a1ccf063047719c879ede1fb6456d23506f7ebc04398bf540",
+      "72042fd7f579032c1836f87174d8a2267852702e988b42507b0b1baf082a722a",
     pairsSha256:
-      "f5d87e6ca49c2af5b9e8fcbb17d62033f842d98ef4acd9563764e02e8dec70bf",
+      "91bbe2a9c8a5e8108f5d64f71d0915d803a6860f7a757009a6660647838ca75b",
   }),
   catalog: Object.freeze({
-    entries: 1415,
+    entries: 1417,
     keysSha256:
-      "80cdc5b9745d5f6a865feba825fcf7e63609c15d8f3b9f4c91932e2f678d032f",
+      "dcf84a74db6063b7524173c7498d4b6a5b0e1fc0533524a2118e6949c0911198",
     contentSha256:
-      "dae3b55c7b030efe0ceed72fd717b3494f3b3f60a65d183247bdecdc8582cee2",
+      "76230bb1aab9ff01544bec4a66a4b317b37cad01ec18d162dd3b64d8e4a0a29a",
   }),
 });
 
@@ -304,7 +304,7 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
     expected: Object.freeze({
       files: 19,
       sha256:
-        "7b310fe5bdd3cf9828c6be67770d7ba0107cf7addd0451fd0d5f959a742e62a0",
+        "e15efbe454406893afb0d1de0b9efc6abb692b309848d92e69e0f234523f4134",
     }),
   }),
   premiumCurrent: Object.freeze({

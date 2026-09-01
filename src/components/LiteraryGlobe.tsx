@@ -3162,7 +3162,7 @@ export default function LiteraryGlobe({
               )}`}
             </small>
             <em>
-              {t("Нажмите на метку — откроется карточка лауреата")}
+              {t("Нажмите на метку - откроется карточка лауреата")}
             </em>
           </div>
         </div>
@@ -3191,12 +3191,12 @@ export default function LiteraryGlobe({
                 ])
               )}
               {hoveredLaureate.yearRange
-                ? ` · ${hoveredLaureate.yearRange.first}–${hoveredLaureate.yearRange.last}`
+                ? ` · ${hoveredLaureate.yearRange.first}-${hoveredLaureate.yearRange.last}`
                 : ""}
             </small>
             <em>
               {t(
-                "Нажмите на группу — откроется список лауреатов страны"
+                "Нажмите на группу - откроется список лауреатов страны"
               )}
             </em>
           </div>

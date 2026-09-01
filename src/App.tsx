@@ -2256,14 +2256,14 @@ export default function App() {
                   "atlas",
                   "description",
                   coreAtlas?.description ||
-                    "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.",
+                    "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка.",
                   { kind: "textarea", label: "Описание литературной планеты" }
                 )}
               >
                 {language === "ru" && coreAtlas?.description
                   ? coreAtlas.description
                   : t(
-                      "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка."
+                      "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка."
                     )}
               </p>
             </div>
@@ -2455,7 +2455,7 @@ export default function App() {
                       size="md"
                       surface="dark"
                       variant="text"
-                      aria-label={`${countryName(country.code, country.name)} — ${number(country.writers.length)} ${t(
+                      aria-label={`${countryName(country.code, country.name)} - ${number(country.writers.length)} ${t(
                         selectInterfacePlural(country.writers.length, language, [
                           "автор",
                           "автора",

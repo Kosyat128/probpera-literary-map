@@ -92,7 +92,7 @@ describe("globe edition registry", () => {
     }
 
     expect(GLOBE_EDITION_BY_ID["behaim-1492"].fullLabel.ru).toContain(
-      "1492–1494"
+      "1492-1494"
     );
     expect(GLOBE_EDITION_BY_ID["hondius-1615"].creator.ru).toBe(
       "Йодокус Хондиус и Джузеппе де Росси"

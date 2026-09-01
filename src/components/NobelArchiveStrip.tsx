@@ -96,7 +96,7 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
         </span>
         <div>
           <small>{t("Редакционная серия")}</small>
-          <strong>{t("Лауреаты Нобелевской премии · 1901–2025")}</strong>
+          <strong>{t("Лауреаты Нобелевской премии · 1901-2025")}</strong>
           <p>
             {language === "en"
               ? `${number(laureates.length)} ${
@@ -111,7 +111,7 @@ export default function NobelArchiveStrip({ countries, onLaureateSelect }: Props
                 ])}, ${number(archiveYears.length)} ${pluralRu(
                   archiveYears.length,
                   ["присуждение", "присуждения", "присуждений"]
-                )}. Год с готовым материалом открывает статью журнала; имя лауреата — его биографию в энциклопедии.`}
+                )}. Год с готовым материалом открывает статью журнала; имя лауреата - его биографию в энциклопедии.`}
           </p>
         </div>
         {introduction && (

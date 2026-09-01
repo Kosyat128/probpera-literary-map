@@ -800,6 +800,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Биография готовится к редакционной проверке",
+    "group": "Весь интерфейс",
+    "label": "Биография готовится к редакционной проверке",
+    "defaultRu": "Биография готовится к редакционной проверке",
+    "defaultEn": "The biography is being prepared for editorial review",
+    "multiline": false
+  },
+  {
     "key": "interface.Биография сохранена. Для подборок примените новую миграцию профиля.",
     "group": "Весь интерфейс",
     "label": "Биография сохранена. Для подборок примените новую миграцию профиля.",
@@ -1696,14 +1704,6 @@
     "multiline": false
   },
   {
-    "key": "interface.Годовая статья готовится редакцией",
-    "group": "Весь интерфейс",
-    "label": "Годовая статья готовится редакцией",
-    "defaultRu": "Годовая статья готовится редакцией",
-    "defaultEn": "The editorial article for this year is in preparation",
-    "multiline": false
-  },
-  {
     "key": "interface.Годы жизни",
     "group": "Весь интерфейс",
     "label": "Годы жизни",
@@ -1933,14 +1933,6 @@
     "label": "Для детей",
     "defaultRu": "Для детей",
     "defaultEn": "For children",
-    "multiline": false
-  },
-  {
-    "key": "interface.Для каждой биографии показан её фактический статус",
-    "group": "Весь интерфейс",
-    "label": "Для каждой биографии показан её фактический статус",
-    "defaultRu": "Для каждой биографии показан её фактический статус",
-    "defaultEn": "Each biography shows its actual review status",
     "multiline": false
   },
   {
@@ -3624,14 +3616,6 @@
     "multiline": false
   },
   {
-    "key": "interface.Колесо или ± - масштаб",
-    "group": "Весь интерфейс",
-    "label": "Колесо или ± - масштаб",
-    "defaultRu": "Колесо или ± - масштаб",
-    "defaultEn": "Scroll or use ± to zoom",
-    "multiline": false
-  },
-  {
     "key": "country.CO",
     "group": "Названия стран",
     "label": "Название страны: Колумбия",
@@ -4368,6 +4352,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Масштаб: колесо или кнопки ±",
+    "group": "Весь интерфейс",
+    "label": "Масштаб: колесо или кнопки ±",
+    "defaultRu": "Масштаб: колесо или кнопки ±",
+    "defaultEn": "Zoom: scroll or use the ± buttons",
+    "multiline": false
+  },
+  {
     "key": "interface.материал в архиве",
     "group": "Весь интерфейс",
     "label": "материал в архиве",
@@ -4760,11 +4752,11 @@
     "multiline": false
   },
   {
-    "key": "interface.Нажмите на кластер - откроется Нобелевский контекст страны",
+    "key": "interface.Нажмите на группу - откроется список лауреатов страны",
     "group": "Весь интерфейс",
-    "label": "Нажмите на кластер - откроется Нобелевский контекст страны",
-    "defaultRu": "Нажмите на кластер - откроется Нобелевский контекст страны",
-    "defaultEn": "Select the cluster to open the country’s Nobel context",
+    "label": "Нажмите на группу - откроется список лауреатов страны",
+    "defaultRu": "Нажмите на группу - откроется список лауреатов страны",
+    "defaultEn": "Select the group to open the country’s laureate list",
     "multiline": false
   },
   {
@@ -5005,6 +4997,14 @@
     "label": "Не менее 10 символов. Не используйте пароль от почты или социальных сетей.",
     "defaultRu": "Не менее 10 символов. Не используйте пароль от почты или социальных сетей.",
     "defaultEn": "Use at least 10 characters. Do not reuse your email or social-media password.",
+    "multiline": false
+  },
+  {
+    "key": "interface.не проверено",
+    "group": "Весь интерфейс",
+    "label": "не проверено",
+    "defaultRu": "не проверено",
+    "defaultEn": "not verified",
     "multiline": false
   },
   {
@@ -6984,10 +6984,10 @@
     "multiline": false
   },
   {
-    "key": "interface.Показать всех Нобелевских лауреатов этой страны на глобусе",
+    "key": "interface.Показать всех нобелевских лауреатов этой страны на глобусе",
     "group": "Весь интерфейс",
-    "label": "Показать всех Нобелевских лауреатов этой страны на глобусе",
-    "defaultRu": "Показать всех Нобелевских лауреатов этой страны на глобусе",
+    "label": "Показать всех нобелевских лауреатов этой страны на глобусе",
+    "defaultRu": "Показать всех нобелевских лауреатов этой страны на глобусе",
     "defaultEn": "Show all of this country’s Nobel laureates on the globe",
     "multiline": false
   },
@@ -7424,14 +7424,6 @@
     "multiline": false
   },
   {
-    "key": "interface.Проверенная биография готовится",
-    "group": "Весь интерфейс",
-    "label": "Проверенная биография готовится",
-    "defaultRu": "Проверенная биография готовится",
-    "defaultEn": "A verified biography is in preparation",
-    "multiline": false
-  },
-  {
     "key": "interface.Проверенные произведения этого автора пока не опубликованы.",
     "group": "Весь интерфейс",
     "label": "Проверенные произведения этого автора пока не опубликованы.",
@@ -7805,6 +7797,14 @@
     "label": "Название страны: Пуэрто-Рико",
     "defaultRu": "Пуэрто-Рико",
     "defaultEn": "Puerto Rico",
+    "multiline": false
+  },
+  {
+    "key": "interface.Развернуть",
+    "group": "Весь интерфейс",
+    "label": "Развернуть",
+    "defaultRu": "Развернуть",
+    "defaultEn": "Expand",
     "multiline": false
   },
   {
@@ -8205,6 +8205,14 @@
     "label": "Редакция «Пробы Пера»",
     "defaultRu": "Редакция «Пробы Пера»",
     "defaultEn": "Proba Pera editorial team",
+    "multiline": false
+  },
+  {
+    "key": "interface.Редакция готовит материал о премии этого года",
+    "group": "Весь интерфейс",
+    "label": "Редакция готовит материал о премии этого года",
+    "defaultRu": "Редакция готовит материал о премии этого года",
+    "defaultEn": "The editorial team is preparing a feature on this year’s prize",
     "multiline": false
   },
   {
@@ -8848,10 +8856,10 @@
     "multiline": false
   },
   {
-    "key": "interface.Скрыть метки Нобелевских лауреатов этой страны",
+    "key": "interface.Скрыть метки нобелевских лауреатов этой страны",
     "group": "Весь интерфейс",
-    "label": "Скрыть метки Нобелевских лауреатов этой страны",
-    "defaultRu": "Скрыть метки Нобелевских лауреатов этой страны",
+    "label": "Скрыть метки нобелевских лауреатов этой страны",
+    "defaultRu": "Скрыть метки нобелевских лауреатов этой страны",
     "defaultEn": "Hide this country’s Nobel laureate markers",
     "multiline": false
   },
@@ -8864,18 +8872,18 @@
     "multiline": false
   },
   {
-    "key": "interface.Следить за новыми материалами автора",
+    "key": "interface.Следить за новыми материалами об авторе",
     "group": "Весь интерфейс",
-    "label": "Следить за новыми материалами автора",
-    "defaultRu": "Следить за новыми материалами автора",
+    "label": "Следить за новыми материалами об авторе",
+    "defaultRu": "Следить за новыми материалами об авторе",
     "defaultEn": "Follow new publications about this writer",
     "multiline": false
   },
   {
-    "key": "interface.Следить за новыми материалами страны",
+    "key": "interface.Следить за новыми материалами об этой стране",
     "group": "Весь интерфейс",
-    "label": "Следить за новыми материалами страны",
-    "defaultRu": "Следить за новыми материалами страны",
+    "label": "Следить за новыми материалами об этой стране",
+    "defaultRu": "Следить за новыми материалами об этой стране",
     "defaultEn": "Follow new publications about this country",
     "multiline": false
   },
@@ -10232,6 +10240,14 @@
     "multiline": false
   },
   {
+    "key": "interface.У каждой биографии указан статус проверки",
+    "group": "Весь интерфейс",
+    "label": "У каждой биографии указан статус проверки",
+    "defaultRu": "У каждой биографии указан статус проверки",
+    "defaultEn": "Each biography shows its review status",
+    "multiline": false
+  },
+  {
     "key": "interface.Убрать",
     "group": "Весь интерфейс",
     "label": "Убрать",
@@ -10920,20 +10936,20 @@
     "multiline": false
   },
   {
+    "key": "interface.Читать материал о премии этого года",
+    "group": "Весь интерфейс",
+    "label": "Читать материал о премии этого года",
+    "defaultRu": "Читать материал о премии этого года",
+    "defaultEn": "Read the feature on this year’s prize",
+    "multiline": false
+  },
+  {
     "key": "interface.Читать обсуждения можно сразу. Профиль нужен только для участия в разговоре, оценок и личной библиотеки.",
     "group": "Весь интерфейс",
     "label": "Читать обсуждения можно сразу. Профиль нужен только для участия в разговоре, оценок и личной библиотеки.",
     "defaultRu": "Читать обсуждения можно сразу. Профиль нужен только для участия в разговоре, оценок и личной библиотеки.",
     "defaultEn": "Anyone can read the discussions. A profile is needed only to join the conversation, rate publications and use a personal library.",
     "multiline": true
-  },
-  {
-    "key": "interface.Читать редакционный материал года",
-    "group": "Весь интерфейс",
-    "label": "Читать редакционный материал года",
-    "defaultRu": "Читать редакционный материал года",
-    "defaultEn": "Read the editorial article for this year",
-    "multiline": false
   },
   {
     "key": "interface.Читать статью",

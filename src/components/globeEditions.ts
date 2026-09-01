@@ -81,12 +81,12 @@ export const GLOBE_EDITIONS = [
     id: "behaim-1492",
     compactLabel: { ru: "Бехайм · 1492", en: "Behaim · 1492" },
     fullLabel: {
-      ru: "Мартин Бехайм — «Земное яблоко», 1492–1494; факсимиле Равенштейна, 1908",
+      ru: "Мартин Бехайм: «Земное яблоко», 1492-1494; факсимиле Равенштейна, 1908",
       en: "Martin Behaim - Erdapfel, 1492-1494; Ravenstein facsimile, 1908",
     },
     creator: { ru: "Мартин Бехайм", en: "Martin Behaim" },
     sourceTitle: {
-      ru: "«Мартин Бехайм: его жизнь и его глобус» — факсимильные листы",
+      ru: "«Мартин Бехайм: его жизнь и его глобус»: факсимильные листы",
       en: "Martin Behaim: His Life and His Globe - facsimile sheets",
     },
     sourceInstitution: {
@@ -96,7 +96,7 @@ export const GLOBE_EDITIONS = [
     sourceCatalogId: "Ravenstein 1908, plates 124-127",
     sourceUrl: "https://dl.ub.uni-freiburg.de/diglit/ravenstein1908",
     rightsSummary: {
-      ru: "Основа — четыре факсимильных листа Равенштейна с отметкой Public Domain Mark 1.0. Ограниченная современная поверхность GNM/FAU не используется.",
+      ru: "Основа: четыре факсимильных листа Равенштейна с отметкой Public Domain Mark 1.0. Ограниченная современная поверхность GNM/FAU не используется.",
       en: "Built from four Ravenstein facsimile sheets marked Public Domain Mark 1.0. The restricted modern GNM/FAU surface is not used.",
     },
     alignmentDisclosure: {
@@ -116,7 +116,7 @@ export const GLOBE_EDITIONS = [
     id: "hondius-1615",
     compactLabel: { ru: "Хондиус · 1615", en: "Hondius · 1615" },
     fullLabel: {
-      ru: "Йодокус Хондиус и Джузеппе де Росси — листы земного глобуса, 1615",
+      ru: "Йодокус Хондиус и Джузеппе де Росси: листы земного глобуса, 1615",
       en: "Jodocus Hondius / Giuseppe di Rossi - Terrestrial Globe Gores, 1615",
     },
     creator: {
@@ -148,7 +148,7 @@ export const GLOBE_EDITIONS = [
     id: "coronelli-1697",
     compactLabel: { ru: "Коронелли · 1697", en: "Coronelli · 1697" },
     fullLabel: {
-      ru: "Винченцо Коронелли — листы глобуса, 1697",
+      ru: "Винченцо Коронелли: листы глобуса, 1697",
       en: "Vincenzo Coronelli - Globe Gores, 1697",
     },
     creator: { ru: "Винченцо Коронелли", en: "Vincenzo Coronelli" },
@@ -177,7 +177,7 @@ export const GLOBE_EDITIONS = [
     id: "scherer-1700",
     compactLabel: { ru: "Шерер · 1700", en: "Scherer · 1700" },
     fullLabel: {
-      ru: "Генрих Шерер — «Typus Totius Orbis Terraquei», 1700",
+      ru: "Генрих Шерер: «Typus Totius Orbis Terraquei», 1700",
       en: "Heinrich Scherer - Typus Totius Orbis Terraquei, 1700",
     },
     creator: { ru: "Генрих Шерер", en: "Heinrich Scherer" },
@@ -189,7 +189,7 @@ export const GLOBE_EDITIONS = [
     sourceCatalogId: "17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
     sourceUrl: "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
     rightsSummary: {
-      ru: "Использован скан Университета Иллинойса с отметкой «Нет авторских прав — США».",
+      ru: "Использован скан Университета Иллинойса с отметкой «Нет авторских прав: США».",
       en: "Built from the University of Illinois scan marked No Copyright - United States.",
     },
     alignmentDisclosure: {
@@ -209,7 +209,7 @@ export const GLOBE_EDITIONS = [
     id: "cassini-1790",
     compactLabel: { ru: "Кассини · 1790", en: "Cassini · 1790" },
     fullLabel: {
-      ru: "Джованни Мария Кассини — «Globo terrestre», 1790",
+      ru: "Джованни Мария Кассини: «Globo terrestre», 1790",
       en: "Giovanni Maria Cassini - Globo terrestre, 1790",
     },
     creator: {
@@ -244,7 +244,7 @@ export const GLOBE_EDITIONS = [
     id: "rand-mcnally-1887",
     compactLabel: { ru: "Rand · 1887", en: "Rand · 1887" },
     fullLabel: {
-      ru: "Rand McNally & Co. — двенадцатидюймовый земной глобус, 1887",
+      ru: "Rand McNally & Co.: двенадцатидюймовый земной глобус, 1887",
       en: "Rand McNally & Co. - New Twelve Inch Terrestrial Globe, 1887",
     },
     creator: { ru: "Rand McNally & Co.", en: "Rand McNally & Co." },
@@ -276,11 +276,11 @@ export const GLOBE_EDITIONS = [
     id: "us-army-general-reference-1943",
     compactLabel: { ru: "M-101 · 1943", en: "M-101 · 1943" },
     fullLabel: {
-      ru: "Службы снабжения Армии США — «Обзорная карта мира № 1», армейский атлас M-101, ноябрь 1943 года",
+      ru: "Службы снабжения Армии США: «Обзорная карта мира № 1», армейский атлас M-101, ноябрь 1943 года",
       en: "U.S. Army Service Forces - General Reference Map No. 1, Army atlas M-101, November 1943",
     },
     creator: {
-      ru: "Американское географическое общество подготовило карту для Государственного департамента США; издатель — Службы снабжения Армии США",
+      ru: "Американское географическое общество подготовило карту для Государственного департамента США; издатель: Службы снабжения Армии США",
       en: "American Geographical Society for the U.S. Department of State; issued by Army Service Forces",
     },
     sourceTitle: {
@@ -294,7 +294,7 @@ export const GLOBE_EDITIONS = [
     sourceCatalogId: "M-101 · 1057-G · Rumsey List No. 6351.015 · Wikimedia 113387121",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:General_Reference_Map_1.jpg",
     rightsSummary: {
-      ru: "Оригинальная федеральная карта 1943 года отдельно отмечена Викискладом как общественное достояние в США (PD-USGov-Military). Используемый цифровой скан — Rumsey List No. 6351.015; правила коллекции разрешают публикацию при обязательном указании: «David Rumsey Map Collection, David Rumsey Map Center, Stanford University Libraries». Статус оригинальной карты не отменяет условия использования скана.",
+      ru: "Оригинальная федеральная карта 1943 года отдельно отмечена Викискладом как общественное достояние в США (PD-USGov-Military). Используемый цифровой скан: Rumsey List No. 6351.015; правила коллекции разрешают публикацию при обязательном указании: «David Rumsey Map Collection, David Rumsey Map Center, Stanford University Libraries». Статус оригинальной карты не отменяет условия использования скана.",
       en: "Wikimedia Commons separately marks the underlying 1943 federal map public domain in the United States (PD-USGov-Military). The digital scan used here is Rumsey List No. 6351.015; the collection permits publication with the required credit: “David Rumsey Map Collection, David Rumsey Map Center, Stanford University Libraries”. The underlying map's status does not waive the scan-use terms.",
     },
     alignmentDisclosure: {
@@ -314,7 +314,7 @@ export const GLOBE_EDITIONS = [
     id: "nasa-blue-marble",
     compactLabel: { ru: "NASA · Blue Marble", en: "NASA · Blue Marble" },
     fullLabel: {
-      ru: "NASA — «Голубой мрамор: новое поколение»",
+      ru: "NASA: «Голубой мрамор: новое поколение»",
       en: "NASA - Blue Marble: Next Generation",
     },
     creator: {
@@ -349,7 +349,7 @@ export const GLOBE_EDITIONS = [
     id: "natural-earth-2026",
     compactLabel: { ru: "Natural Earth · 2026", en: "Natural Earth · 2026" },
     fullLabel: {
-      ru: "Natural Earth — литературный атлас, 2026",
+      ru: "Natural Earth: литературный атлас, 2026",
       en: "Natural Earth - Literary Atlas, 2026",
     },
     creator: { ru: "Natural Earth", en: "Natural Earth" },

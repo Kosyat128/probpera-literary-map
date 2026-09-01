@@ -74,7 +74,7 @@ const englishInterfaceText: Record<string, string> = {
   "Литературный журнал · с 2025 года": "Literary journal · since 2025",
   "Интерактивная энциклопедия": "Interactive encyclopedia",
   "Литературная планета": "Literary Planet",
-  "Выберите страну на интерактивном глобусе — откроются писатели, произведения, эпохи и проверенная редакционная справка.":
+  "Выберите страну на интерактивном глобусе - откроются писатели, произведения, эпохи и проверенная редакционная справка.":
     "Choose a country on the interactive globe to discover its writers, works, periods and editor-reviewed literary history.",
   "Найти страну": "Find a country",
   "Найти страну, писателя или книгу": "Find a country, writer or book",
@@ -717,9 +717,9 @@ const englishInterfaceText: Record<string, string> = {
   "Подключаем статьи, книги, писателей и страны.":
     "Loading articles, books, writers and countries.",
   "Нобелевский лауреат": "Nobel laureate",
-  "Нажмите на метку — откроется карточка лауреата":
+  "Нажмите на метку - откроется карточка лауреата":
     "Select the marker to open the laureate’s profile",
-  "Нажмите на группу — откроется список лауреатов страны":
+  "Нажмите на группу - откроется список лауреатов страны":
     "Select the group to open the country’s laureate list",
   "Статья о лауреате": "Article about the laureate",
   "лауреат страны": "country laureate",
@@ -727,8 +727,8 @@ const englishInterfaceText: Record<string, string> = {
   "лауреатов страны": "country laureates",
   "Нобелевский архив": "Nobel archive",
   "Редакционная серия": "Editorial series",
-  "Лауреаты Нобелевской премии · 1901–2025":
-    "Nobel Prize laureates · 1901–2025",
+  "Лауреаты Нобелевской премии · 1901-2025":
+    "Nobel Prize laureates · 1901-2025",
   "История премии": "History of the prize",
   "Период архива": "Archive period",
   "Все годы": "All years",
