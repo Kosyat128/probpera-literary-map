@@ -17,4 +17,7 @@ scripts/.cache/
 .review/
 .reference/
 .tmp/
+/_tmp*
+/tmp_*
+/*.err
 test-results/
