@@ -22590,7 +22590,7 @@ html[data-theme="book"] .calendar-heading h3 {
     top: 70px;
     right: 6px;
     left: 76px;
-    grid-auto-columns: max(124px, calc((100% - 2px) / 2));
+    grid-auto-columns: max(132px, calc((100% - 2px) / 2));
     width: auto;
     transform: none;
   }

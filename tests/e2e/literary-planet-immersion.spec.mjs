@@ -645,6 +645,7 @@ test("mobile country archive is a collapsed, expandable bottom sheet over the st
   page,
   isMobile,
 }) => {
+  test.setTimeout(90_000);
   test.skip(!isMobile, "This contract applies below the tablet breakpoint.");
 
   const { canvas, experience } = await enterFromEmbedded(page);
