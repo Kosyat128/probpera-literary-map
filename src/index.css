@@ -21118,10 +21118,6 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (max-width: 330px) {
-  .atlas-experience-surface[data-atlas-view="embedded"] .literary-globe .globe-style-switch {
-    grid-auto-columns: 116px;
-  }
-
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
     right: max(4px, env(safe-area-inset-right));
     left: max(4px, env(safe-area-inset-left));
@@ -22594,6 +22590,7 @@ html[data-theme="book"] .calendar-heading h3 {
     top: 70px;
     right: 6px;
     left: 76px;
+    grid-auto-columns: max(124px, calc((100% - 2px) / 2));
     width: auto;
     transform: none;
   }
@@ -22612,6 +22609,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .atlas-experience-surface[data-atlas-view="embedded"] .globe-style-switch {
     right: 14px;
     left: 79px;
+    grid-auto-columns: max(140px, calc((100% - 6px) / 4));
     width: auto;
     transform: none;
   }

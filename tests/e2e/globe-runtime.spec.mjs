@@ -80,6 +80,9 @@ test("globe edition preview reuses decoded texture assets", async ({
   page,
   isMobile,
 }) => {
+  // This deliberately decodes and swaps multiple full-resolution textures.
+  // Cold two-worker CI runs can exceed the global timeout without a cache fault.
+  test.setTimeout(120_000);
   await page.addInitScript(() => {
     window.__globeTextureAssignments = [];
     const descriptor = Object.getOwnPropertyDescriptor(
