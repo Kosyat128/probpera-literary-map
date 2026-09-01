@@ -9,6 +9,7 @@ import {
 } from "@/lib/publication-catalog-query";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 import { requestFullPublicBuildAction, retryPublicationAction } from "./actions";
 
 export const metadata = { title: "Публикация сайта" };
@@ -160,7 +161,7 @@ export default async function PublicationPage({
 
         {eventsResponse.error ? (
           <p className="form-message form-error" role="alert">
-            Очередь публикации недоступна: {eventsResponse.error.message}. Примените миграцию
+            {operatorDataError("publication", "load")} Проверьте применённые миграции.
             20260814 и проверьте состояние схемы.
           </p>
         ) : events.length === 0 ? (

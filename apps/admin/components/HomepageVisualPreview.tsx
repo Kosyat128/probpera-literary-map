@@ -22,9 +22,17 @@ import {
   homepageTextWeights,
   type HomepageVisualSettings,
 } from "@/lib/homepage-visual-settings";
+import {
+  siteStudioComponentRegistry,
+  siteStudioStates,
+  type SiteStudioBreakpoint,
+  type SiteStudioComponentId,
+  type SiteStudioState,
+} from "@/lib/site-studio-contract";
 
 const BRIDGE_CHANNEL = "probpera:cms-edit";
-const BRIDGE_VERSION = 1;
+const BRIDGE_VERSION = 2;
+const BRIDGE_LEGACY_VERSION = 1;
 
 export type HomepagePreviewSection = {
   key: string;
@@ -53,6 +61,15 @@ type PreviewSelection = {
   entityType: string;
   entityId: string;
   mediaId?: string;
+  componentId: SiteStudioComponentId;
+  instanceId: string;
+  ancestry: Array<{
+    componentId: SiteStudioComponentId;
+    instanceId: string;
+  }>;
+  breakpoint: Exclude<SiteStudioBreakpoint, "base">;
+  state: SiteStudioState;
+  ownerLocked: boolean;
 };
 
 type EntityMessage = {
@@ -65,6 +82,171 @@ type EntityMessage = {
 
 function isBridgeRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value && typeof value === "object" && !Array.isArray(value));
+}
+
+function isComponentId(value: unknown): value is SiteStudioComponentId {
+  return (
+    typeof value === "string" &&
+    Object.prototype.hasOwnProperty.call(siteStudioComponentRegistry, value)
+  );
+}
+
+function isInstanceId(value: unknown): value is string {
+  return typeof value === "string" && /^[a-z0-9][a-z0-9_-]{0,79}$/u.test(value);
+}
+
+function previewBreakpoint(): PreviewSelection["breakpoint"] {
+  if (window.innerWidth <= 639) return "mobile";
+  if (window.innerWidth <= 1023) return "tablet";
+  return "desktop";
+}
+
+function legacyInstanceId(value: unknown) {
+  const normalized = String(value || "legacy")
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/gu, "-")
+    .replace(/^-+|-+$/gu, "")
+    .slice(0, 80);
+  return /^[a-z0-9]/u.test(normalized) ? normalized : "legacy";
+}
+
+function readPreviewSelection(
+  value: Record<string, unknown>,
+  version: number
+): PreviewSelection | null {
+  const commonKeys = [
+    "channel",
+    "version",
+    "type",
+    "key",
+    "copyKey",
+    "sourceText",
+    "field",
+    "kind",
+    "label",
+    "value",
+    "href",
+    "entityType",
+    "entityId",
+    "mediaId",
+  ];
+  const allowedKeys =
+    version === BRIDGE_VERSION
+      ? [
+          ...commonKeys,
+          "componentId",
+          "instanceId",
+          "ancestry",
+          "breakpoint",
+          "state",
+          "ownerLocked",
+        ]
+      : commonKeys;
+  if (
+    Object.keys(value).some((key) => !allowedKeys.includes(key)) ||
+    value.type !== "selection" ||
+    typeof value.key !== "string" ||
+    typeof value.copyKey !== "string" ||
+    typeof value.sourceText !== "string" ||
+    typeof value.field !== "string" ||
+    !["text", "textarea", "image", "richtext"].includes(String(value.kind)) ||
+    typeof value.label !== "string" ||
+    typeof value.value !== "string" ||
+    typeof value.href !== "string" ||
+    typeof value.entityType !== "string" ||
+    typeof value.entityId !== "string" ||
+    (value.mediaId !== undefined && typeof value.mediaId !== "string")
+  ) {
+    return null;
+  }
+
+  const base = {
+    type: "selection" as const,
+    key: value.key,
+    copyKey: value.copyKey,
+    sourceText: value.sourceText,
+    field: value.field,
+    kind: value.kind as PreviewSelection["kind"],
+    label: value.label,
+    value: value.value,
+    href: value.href,
+    entityType: value.entityType,
+    entityId: value.entityId,
+    ...(typeof value.mediaId === "string" ? { mediaId: value.mediaId } : {}),
+  };
+  if (version === BRIDGE_LEGACY_VERSION) {
+    const instanceId = legacyInstanceId(value.entityId || value.key);
+    return {
+      ...base,
+      componentId: "magazine",
+      instanceId,
+      ancestry: [{ componentId: "magazine", instanceId }],
+      breakpoint: previewBreakpoint(),
+      state: "default",
+      ownerLocked: false,
+    };
+  }
+  if (
+    version !== BRIDGE_VERSION ||
+    !isComponentId(value.componentId) ||
+    !isInstanceId(value.instanceId) ||
+    !["mobile", "tablet", "desktop"].includes(String(value.breakpoint)) ||
+    !siteStudioStates.includes(value.state as SiteStudioState) ||
+    value.ownerLocked !== siteStudioComponentRegistry[value.componentId].ownerLocked ||
+    !Array.isArray(value.ancestry) ||
+    value.ancestry.length < 1 ||
+    value.ancestry.length > 12
+  ) {
+    return null;
+  }
+  const ancestry = value.ancestry.flatMap((entry) => {
+    if (!isBridgeRecord(entry)) return [];
+    if (
+      Object.keys(entry).length !== 2 ||
+      !isComponentId(entry.componentId) ||
+      !isInstanceId(entry.instanceId)
+    ) {
+      return [];
+    }
+    return [{ componentId: entry.componentId, instanceId: entry.instanceId }];
+  });
+  if (ancestry.length !== value.ancestry.length) return null;
+  const nearest = ancestry[ancestry.length - 1];
+  if (
+    nearest.componentId !== value.componentId ||
+    nearest.instanceId !== value.instanceId
+  ) {
+    return null;
+  }
+  return {
+    ...base,
+    componentId: value.componentId,
+    instanceId: value.instanceId,
+    ancestry,
+    breakpoint: value.breakpoint as PreviewSelection["breakpoint"],
+    state: value.state as SiteStudioState,
+    ownerLocked: value.ownerLocked,
+  };
+}
+
+function isReadyCapabilities(value: unknown) {
+  if (!isBridgeRecord(value)) return false;
+  const components = Object.keys(siteStudioComponentRegistry);
+  const exact = (candidate: unknown, expected: readonly unknown[]) =>
+    Array.isArray(candidate) &&
+    candidate.length === expected.length &&
+    candidate.every((item, index) => item === expected[index]);
+  return (
+    Object.keys(value).length === 7 &&
+    value.selectionContext === true &&
+    value.ancestry === true &&
+    value.ownerLocks === true &&
+    exact(value.breakpoints, ["mobile", "tablet", "desktop"]) &&
+    exact(value.states, siteStudioStates) &&
+    exact(value.components, components) &&
+    exact(value.legacyInboundVersions, [BRIDGE_LEGACY_VERSION])
+  );
 }
 
 function safeAdminHref(value: unknown) {
@@ -359,20 +541,25 @@ export default function HomepageVisualPreview({
         event.source !== iframeRef.current?.contentWindow ||
         !isBridgeRecord(event.data) ||
         event.data.channel !== BRIDGE_CHANNEL ||
-        event.data.version !== BRIDGE_VERSION
+        ![BRIDGE_LEGACY_VERSION, BRIDGE_VERSION].includes(
+          Number(event.data.version)
+        )
       ) {
         return;
       }
 
-      if (event.data.type === "selection") {
-        const next = event.data as unknown as PreviewSelection;
+      const version = Number(event.data.version);
+      if (event.data.type === "ready") {
         if (
-          typeof next.key !== "string" ||
-          typeof next.value !== "string" ||
-          typeof next.field !== "string"
-        ) {
-          return;
-        }
+          version !== BRIDGE_VERSION ||
+          !isReadyCapabilities(event.data.capabilities)
+        ) return;
+        return;
+      }
+
+      if (event.data.type === "selection") {
+        const next = readPreviewSelection(event.data, version);
+        if (!next) return;
         setSelection(next);
         const selectedMediaId =
           next.mediaId ||
@@ -398,6 +585,27 @@ export default function HomepageVisualPreview({
 
       if (event.data.type === "entity-open") {
         const entity = event.data as unknown as EntityMessage;
+        if (
+          Object.keys(event.data).some(
+            (key) =>
+              ![
+                "channel",
+                "version",
+                "type",
+                "entityType",
+                "entityId",
+                "label",
+                "adminHref",
+              ].includes(key)
+          ) ||
+          ![BRIDGE_LEGACY_VERSION, BRIDGE_VERSION].includes(version) ||
+          typeof entity.entityType !== "string" ||
+          typeof entity.entityId !== "string" ||
+          typeof entity.label !== "string" ||
+          typeof entity.adminHref !== "string"
+        ) {
+          return;
+        }
         const href = safeAdminHref(entity.adminHref);
         if (href) window.location.assign(href);
       }

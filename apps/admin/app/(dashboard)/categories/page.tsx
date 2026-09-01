@@ -4,6 +4,7 @@ import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
 import { redirect } from "@/lib/navigation";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 import {
   TAXONOMY_TAG_PAGE_SIZE,
   parseTaxonomyCatalogQuery,
@@ -140,7 +141,7 @@ export default async function CategoriesPage({
           <h2>Рубрики</h2>
           {categoriesResponse.error ? (
             <p className="form-message form-error" role="alert">
-              Не удалось загрузить рубрики: {categoriesResponse.error.message}
+              {operatorDataError("categories", "load")}
             </p>
           ) : categories.length ? (
             <table className="data-table">
@@ -220,7 +221,7 @@ export default async function CategoriesPage({
           <p>{tagCount ? `Найдено тегов: ${tagCount}` : catalog.term ? "Совпадений нет." : "Тегов пока нет."}</p>
           {tagsResponse.error ? (
             <p className="form-message form-error" role="alert">
-              Не удалось загрузить теги: {tagsResponse.error.message}
+              {operatorDataError("categories", "load")}
             </p>
           ) : tags.length ? (
             <table className="data-table">

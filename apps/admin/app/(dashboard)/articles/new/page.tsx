@@ -10,6 +10,7 @@ import { adminEnv } from "@/lib/env";
 import { createSlug } from "@/lib/slug";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 export const metadata = { title: "Новая статья" };
 
@@ -155,7 +156,7 @@ export default async function NewArticlePage({
       : undefined;
   const copyLoadError =
     copyFromId && sourceEnglishTranslationError
-      ? `Не удалось загрузить английскую версию исходной статьи: ${sourceEnglishTranslationError.message}`
+      ? operatorDataError("articles", "load")
       : null;
 
   return (

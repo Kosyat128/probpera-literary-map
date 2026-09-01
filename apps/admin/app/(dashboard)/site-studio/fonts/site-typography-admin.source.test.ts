@@ -68,7 +68,7 @@ describe("Site Studio typography admin contract", () => {
     expect(loaderSource).toContain('aria-live="polite"');
     expect(cssSource).toContain("@media (max-width: 760px)");
     expect(cssSource).toContain(".workspace");
-    expect(shellSource.match(/"Шрифты", "\/site-studio\/fonts"/gu)).toHaveLength(1);
+    expect(shellSource.match(/"Студия сайта", "\/site-studio"/gu)).toHaveLength(1);
   });
 
   it("shows Russian workflow copy and never accepts a raw style payload", () => {

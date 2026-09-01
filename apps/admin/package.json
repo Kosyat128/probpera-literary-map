@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "node ../../scripts/export-editorial-catalog.mjs && node ../../scripts/export-interface-copy-catalog.mjs && next build --webpack",
-    "cf:build": "cross-env ADMIN_BASE_PATH=/ NEXT_PUBLIC_ADMIN_URL=https://admin.probpera.ru NEXT_PUBLIC_SITE_URL=https://probpera.ru ADMIN_ALLOWED_ORIGINS=admin.probpera.ru opennextjs-cloudflare build",
+    "build": "node ../../scripts/export-editorial-catalog.mjs && node ../../scripts/export-interface-copy-catalog.mjs && next build --webpack && node ../../scripts/check-admin-client-secrets.mjs",
+    "cf:build": "cross-env ADMIN_BASE_PATH=/ NEXT_PUBLIC_ADMIN_URL=https://admin.probpera.ru NEXT_PUBLIC_SITE_URL=https://probpera.ru ADMIN_ALLOWED_ORIGINS=admin.probpera.ru opennextjs-cloudflare build && node ../../scripts/check-admin-client-secrets.mjs",
     "cf:size": "node ../../scripts/check-admin-worker-size.mjs",
     "cf:catalogs:sync": "node scripts/sync-private-catalogs.mjs",
     "cf:catalogs:sync:local": "node scripts/sync-private-catalogs.mjs --local",

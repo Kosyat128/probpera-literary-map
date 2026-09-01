@@ -1,5 +1,5 @@
 export const CURRENT_EDITORIAL_SCHEMA_VERSION =
-  "20260830_zz_site_typography_engine";
+  "20260901_zzzzzz_admin_completion_health";
 
 export type EditorialSchemaHealth = {
   version?: string;
@@ -21,6 +21,14 @@ export type EditorialSchemaHealth = {
   mediaUsageGraph?: boolean;
   mediaSafeReplaceRpc?: boolean;
   siteTypographyEngine?: boolean;
+  siteStudioEngine?: boolean;
+  visualDirectEditV2?: boolean;
+  staffOwnerInvariant?: boolean;
+  dataStudioIntegrity?: boolean;
+  translationOperations?: boolean;
+  adminMutationGuards?: boolean;
+  adminAnalyticsReporting?: boolean;
+  adminOpsObservability?: boolean;
 };
 
 export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
@@ -41,6 +49,14 @@ export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
   "mediaUsageGraph",
   "mediaSafeReplaceRpc",
   "siteTypographyEngine",
+  "siteStudioEngine",
+  "visualDirectEditV2",
+  "staffOwnerInvariant",
+  "dataStudioIntegrity",
+  "translationOperations",
+  "adminMutationGuards",
+  "adminAnalyticsReporting",
+  "adminOpsObservability",
 ] as const;
 
 export type EditorialSchemaRequiredFlag =
@@ -67,6 +83,14 @@ const editorialSchemaCapabilityLabels: Record<
   mediaUsageGraph: "граф использования изображений",
   mediaSafeReplaceRpc: "безопасная атомарная замена изображений",
   siteTypographyEngine: "шрифты и типографика сайта",
+  siteStudioEngine: "Site Studio и управляемые дизайн-токены",
+  visualDirectEditV2: "безопасное визуальное редактирование",
+  staffOwnerInvariant: "защита последнего владельца",
+  dataStudioIntegrity: "целостность Data Studio",
+  translationOperations: "операционный контур переводов",
+  adminMutationGuards: "атомарные административные изменения",
+  adminAnalyticsReporting: "агрегированная аналитика",
+  adminOpsObservability: "наблюдаемость резервного копирования",
 };
 
 export function getMissingEditorialSchemaCapabilities(

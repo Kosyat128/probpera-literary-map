@@ -40,7 +40,7 @@ function rpcErrorMessage(error: { message?: string } | null | undefined) {
   if (message.includes("STAFF_ACCESS_REQUIRED")) {
     return "Недостаточно прав для сохранения статьи.";
   }
-  return message || "Не удалось атомарно сохранить статью и английскую версию.";
+  return "Не удалось атомарно сохранить статью и английскую версию.";
 }
 
 export async function saveArticleBundleRpc(

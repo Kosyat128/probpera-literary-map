@@ -299,7 +299,16 @@ export async function POST(request: Request) {
       publication: publication.state,
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Не удалось обработать файл.";
-    return NextResponse.json({ error: message }, { status: 422 });
+    const incidentId = globalThis.crypto.randomUUID();
+    console.error("media_upload_failed", {
+      incidentId,
+      errorType: error instanceof Error ? error.name : "unknown",
+    });
+    return NextResponse.json(
+      {
+        error: `Не удалось безопасно обработать файл. Код события: ${incidentId}`,
+      },
+      { status: 422 }
+    );
   }
 }

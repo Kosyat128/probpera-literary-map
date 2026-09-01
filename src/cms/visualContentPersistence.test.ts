@@ -37,25 +37,33 @@ const siteChromeRevisionMigration = readFileSync(
   ),
   "utf8"
 );
+const directEditMigration = readFileSync(
+  new URL(
+    "../../supabase/migrations/20260901_zz_visual_direct_edit_v2.sql",
+    import.meta.url
+  ),
+  "utf8"
+);
 
 describe("visual page and site-chrome persistence", () => {
   it("requires staff, audits the exact field and requests a public build", () => {
     expect(actionSource).toContain("await requireStaff()");
-    expect(actionSource).toContain('.from("admin_audit_log")');
-    expect(actionSource).toContain("field: edit.field");
+    expect(actionSource).toContain('supabase.rpc(\n    "save_visual_content_field_v2"');
+    expect(directEditMigration).toContain("insert into public.admin_audit_log");
+    expect(directEditMigration).toContain("'field', p_field");
     expect(actionSource).toContain("await requestPublicBuild");
   });
 
   it("updates only currently published or visible records", () => {
-    expect(actionSource).toContain('.eq("status", "published")');
-    expect(actionSource).toContain('.eq("is_visible", true)');
-    expect(actionSource).toContain('.eq("is_active", true)');
-    expect(actionSource).toContain('.eq("is_enabled", true)');
+    expect(directEditMigration).toContain("status = 'published'");
+    expect(directEditMigration).toContain("is_visible and updated_at");
+    expect(directEditMigration).toContain("is_active and updated_at");
+    expect(directEditMigration).toContain("is_enabled and updated_at");
   });
 
   it("preserves custom homepage settings and existing revision triggers", () => {
-    expect(actionSource).toContain("...existingSettings");
-    expect(actionSource).toContain("[edit.field]: edit.value");
+    expect(directEditMigration).toContain("jsonb_set(settings, array[p_field]");
+    expect(directEditMigration).toContain("(settings - visual_keys) || p_settings");
     expect(pageRevisionMigration).toContain("before update on public.pages");
     expect(siteChromeRevisionMigration).toContain(
       "before update or delete on public.navigation_items"

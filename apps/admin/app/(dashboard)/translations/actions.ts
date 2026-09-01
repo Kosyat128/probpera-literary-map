@@ -16,7 +16,6 @@ import {
 import { adminEnv } from "@/lib/env";
 import { redirect } from "@/lib/navigation";
 import {
-  premiumTranslationConfigurationError,
   premiumTranslationRuntimeMetadata,
 } from "@/lib/premium-translation-runtime";
 import { requestPublicBuild } from "@/lib/publication";
@@ -28,6 +27,12 @@ import {
   normalizeBackfillCursor,
   translationBackfillCursorParams,
 } from "@/lib/translation-backfill-cursor";
+import { translationErrorCode } from "@/lib/translation-errors";
+import { premiumTranslationRuntimeGate } from "@/lib/translation-runtime-gate";
+import {
+  recordTranslationSyncRun,
+  type TranslationRunItem,
+} from "@/lib/translation-run-record";
 
 const SITE_COPY_SYSTEM_KEY = "site-copy-overrides";
 const MAX_LIBRARY_TRANSLATIONS = 4;
@@ -65,29 +70,16 @@ function publicBuildMetadata(kind: string, translated: number) {
   };
 }
 
-function batchFailureMessage(error: unknown) {
-  const message = typeof error === "string" ? error.trim() : "";
-  return message
-    ? `Пакет остановлен после первой ошибки перевода: ${message.slice(0, 320)}`
-    : "Пакет остановлен после первой ошибки перевода. Повторите запуск позже.";
-}
-
 export async function translatePremiumLibraryBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const cursorParams = translationBackfillCursorParams(formData);
-  if (!adminEnv.premiumTranslationConfigured) {
-    redirect(
-      translationsUrl({
-        ...cursorParams,
-        error: premiumTranslationConfigurationError(),
-      })
-    );
-  }
-
   const supabase = await createServerSupabaseClient();
   if (!supabase) {
-    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_unavailable" }));
+  }
+  if (!(await premiumTranslationRuntimeGate(supabase))) {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "translation_not_configured" }));
   }
 
   const readiness = await supabase.rpc("premium_machine_translation_ready");
@@ -95,8 +87,7 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
     redirect(
       translationsUrl({
         ...cursorParams,
-        error:
-          "Книжный premium EN подготовлен, но DB-миграция machine-translation ещё не применена.",
+        errorCode: "translation_migration_required",
       })
     );
   }
@@ -108,7 +99,7 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
     .in("editorial_status", ["reviewed", "verified"]);
   if (countResponse.error) {
     redirect(
-      translationsUrl({ ...cursorParams, error: countResponse.error.message })
+      translationsUrl({ ...cursorParams, errorCode: "database_read_failed" })
     );
   }
   const totalCandidates = countResponse.count || 0;
@@ -131,7 +122,7 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
     : { data: [], error: null };
   if (russianRows.error) {
     redirect(
-      translationsUrl({ ...cursorParams, error: russianRows.error.message })
+      translationsUrl({ ...cursorParams, errorCode: "database_read_failed" })
     );
   }
 
@@ -142,6 +133,7 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
   let failed = 0;
   let processed = 0;
   let firstError = "";
+  const runItems: TranslationRunItem[] = [];
   const uniqueWorkIds = [
     ...new Set((russianRows.data || []).map((row) => String(row.work_id))),
   ];
@@ -152,15 +144,24 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
       supabase,
       actorId: session.user.id,
       workId,
+      runtimeApproved: true,
     });
-    if (result.state === "translated") translated += 1;
-    else if (result.state === "current") current += 1;
-    else if (result.state === "manual") manual += 1;
-    else if (result.state === "failed") {
+    const runState =
+      result.state === "not-ready" ? "not-configured" : result.state;
+    runItems.push({
+      entityId: workId,
+      state: runState,
+      error: result.error,
+      model: result.model,
+    });
+    if (runState === "translated") translated += 1;
+    else if (runState === "current") current += 1;
+    else if (runState === "manual") manual += 1;
+    else if (runState === "failed") {
       failed += 1;
       firstError = result.error || "";
       break;
-    } else if (result.state === "conflict") failed += 1;
+    } else if (runState === "conflict") failed += 1;
     else skipped += 1;
   }
   const nextLibraryCursor = advanceBackfillCursor(
@@ -168,6 +169,16 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
     processed,
     totalCandidates
   );
+  try {
+    await recordTranslationSyncRun({
+      supabase,
+      kind: "literary_work",
+      items: runItems,
+      resumeCursor: { libraryCursor: nextLibraryCursor },
+    });
+  } catch {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_write_failed" }));
+  }
 
   let publication: string | null = null;
   if (translated > 0) {
@@ -188,7 +199,7 @@ export async function translatePremiumLibraryBatchAction(formData: FormData) {
     translationsUrl({
       ...cursorParams,
       success: `Книги: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
-      error: firstError ? batchFailureMessage(firstError) : null,
+      errorCode: firstError ? translationErrorCode(firstError) : null,
       publication,
       libraryCursor: nextLibraryCursor,
     })
@@ -234,18 +245,12 @@ export async function translatePremiumWriterBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const cursorParams = translationBackfillCursorParams(formData);
-  if (!adminEnv.premiumTranslationConfigured) {
-    redirect(
-      translationsUrl({
-        ...cursorParams,
-        error: premiumTranslationConfigurationError(),
-      })
-    );
-  }
-
   const supabase = await createServerSupabaseClient();
   if (!supabase) {
-    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_unavailable" }));
+  }
+  if (!(await premiumTranslationRuntimeGate(supabase))) {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "translation_not_configured" }));
   }
 
   const editorialCatalog = await loadEditorialCatalog();
@@ -261,6 +266,7 @@ export async function translatePremiumWriterBatchAction(formData: FormData) {
   let failed = 0;
   let processed = 0;
   let firstError = "";
+  const runItems: TranslationRunItem[] = [];
   const scanLimit = Math.min(MAX_WRITER_SCAN, candidates.length);
 
   for (let step = 0; step < scanLimit; step += 1) {
@@ -274,6 +280,13 @@ export async function translatePremiumWriterBatchAction(formData: FormData) {
       supabase,
       actorId: session.user.id,
       ...candidate,
+      runtimeApproved: true,
+    });
+    runItems.push({
+      entityId: `${candidate.countryId}/${candidate.writerId}`,
+      state: result.state,
+      error: result.error,
+      model: result.model,
     });
     if (result.state === "translated") translated += 1;
     else if (result.state === "current") current += 1;
@@ -290,6 +303,16 @@ export async function translatePremiumWriterBatchAction(formData: FormData) {
     processed,
     candidates.length
   );
+  try {
+    await recordTranslationSyncRun({
+      supabase,
+      kind: "writer",
+      items: runItems,
+      resumeCursor: { writerCursor: nextWriterCursor },
+    });
+  } catch {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_write_failed" }));
+  }
 
   let publication: string | null = null;
   if (translated > 0) {
@@ -310,7 +333,7 @@ export async function translatePremiumWriterBatchAction(formData: FormData) {
     translationsUrl({
       ...cursorParams,
       success: `Биографии: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
-      error: firstError ? batchFailureMessage(firstError) : null,
+      errorCode: firstError ? translationErrorCode(firstError) : null,
       publication,
       writerCursor: nextWriterCursor,
     })
@@ -326,17 +349,12 @@ export async function translatePremiumSiteCopyBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const cursorParams = translationBackfillCursorParams(formData);
-  if (!adminEnv.premiumTranslationConfigured) {
-    redirect(
-      translationsUrl({
-        ...cursorParams,
-        error: premiumTranslationConfigurationError(),
-      })
-    );
-  }
   const supabase = await createServerSupabaseClient();
   if (!supabase) {
-    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_unavailable" }));
+  }
+  if (!(await premiumTranslationRuntimeGate(supabase))) {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "translation_not_configured" }));
   }
 
   const existingRows = await supabase
@@ -347,7 +365,7 @@ export async function translatePremiumSiteCopyBatchAction(formData: FormData) {
     .limit(1);
   if (existingRows.error) {
     redirect(
-      translationsUrl({ ...cursorParams, error: existingRows.error.message })
+      translationsUrl({ ...cursorParams, errorCode: "database_read_failed" })
     );
   }
   const existing = existingRows.data?.[0];
@@ -393,10 +411,19 @@ export async function translatePremiumSiteCopyBatchAction(formData: FormData) {
     );
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error || "");
+    try {
+      await recordTranslationSyncRun({
+        supabase,
+        kind: "site_copy",
+        items: [{ entityId: existing.id, state: "failed", error: message }],
+      });
+    } catch {
+      redirect(translationsUrl({ ...cursorParams, errorCode: "database_write_failed" }));
+    }
     redirect(
       translationsUrl({
         ...cursorParams,
-        error: batchFailureMessage(message),
+        errorCode: translationErrorCode(message),
       })
     );
   }
@@ -444,11 +471,25 @@ export async function translatePremiumSiteCopyBatchAction(formData: FormData) {
     redirect(
       translationsUrl({
         ...cursorParams,
-        error:
-          update.error?.message ||
-          "Site copy изменился во время перевода. Повторите пакет на свежей версии.",
+        errorCode: update.error ? "write_conflict" : "source_changed",
       })
     );
+  }
+
+  try {
+    await recordTranslationSyncRun({
+      supabase,
+      kind: "site_copy",
+      items: [
+        {
+          entityId: existing.id,
+          state: "translated",
+          model: translated.translatorModel,
+        },
+      ],
+    });
+  } catch {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_write_failed" }));
   }
 
   await supabase.from("admin_audit_log").insert({

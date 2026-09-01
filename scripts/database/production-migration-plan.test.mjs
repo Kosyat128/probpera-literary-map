@@ -94,7 +94,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(19);
+      expect(manifest.migrations).toHaveLength(29);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -115,6 +115,16 @@ describe("guarded production database reconciliation", () => {
         "20260828_zz_editor_autosaves.sql",
         "20260830_media_studio_lifecycle.sql",
         "20260830_zz_site_typography_engine.sql",
+        "20260901_zz_admin_analytics_reporting.sql",
+        "20260901_zz_data_studio_integrity.sql",
+        "20260901_zz_site_studio_engine.sql",
+        "20260901_zz_staff_owner_invariant.sql",
+        "20260901_zz_translation_operations.sql",
+        "20260901_zz_translation_operations_runtime.sql",
+        "20260901_zz_visual_direct_edit_v2.sql",
+        "20260901_zzz_admin_mutation_guards.sql",
+        "20260901_zzzz_admin_ops_observability.sql",
+        "20260901_zzzzzz_admin_completion_health.sql",
       ]);
       expect(manifest.migrations.every((migration) => /^[0-9a-f]{64}$/u.test(migration.sha256))).toBe(true);
       expect(plan).not.toContain("\r\n");
@@ -153,6 +163,14 @@ describe("guarded production database reconciliation", () => {
         "mediaUsageGraph",
         "mediaSafeReplaceRpc",
         "siteTypographyEngine",
+        "siteStudioEngine",
+        "visualDirectEditV2",
+        "staffOwnerInvariant",
+        "dataStudioIntegrity",
+        "translationOperations",
+        "adminMutationGuards",
+        "adminAnalyticsReporting",
+        "adminOpsObservability",
       ]);
       expect(healthFailureDiagnostic).not.toContain("jsonb_each");
       expect(healthFailureDiagnostic).not.toContain("pendingPublicBuilds");
@@ -173,6 +191,19 @@ describe("guarded production database reconciliation", () => {
       expect(plan).toContain("public.save_site_typography_override");
       expect(plan).toContain("public.publish_site_typography_override");
       expect(plan).toContain("public.restore_site_typography_revision");
+      expect(plan).toContain("public.site_component_registry");
+      expect(plan).toContain("public.site_design_change_sets");
+      expect(plan).toContain("public.publish_site_design_change_set");
+      expect(plan).toContain("public.rollback_site_design_release");
+      expect(plan).toContain("public.get_published_site_design");
+      expect(plan).toContain("public.get_admin_analytics_report");
+      expect(plan).toContain("public.get_data_studio_schema_health");
+      expect(plan).toContain("public.owner_set_staff_member");
+      expect(plan).toContain("public.translation_operations_ready");
+      expect(plan).toContain("public.begin_translation_provider_self_test");
+      expect(plan).toContain("public.save_visual_content_field_v2");
+      expect(plan).toContain("public.save_site_copy_block");
+      expect(plan).toContain("public.moderate_comments_guarded");
       expect(plan).toMatch(
         /do \$storage_policy_guard\$[\s\S]*if to_regclass\('storage\.objects'\) is not null then[\s\S]*\$storage_policy_guard\$;/u
       );
@@ -195,6 +226,14 @@ describe("guarded production database reconciliation", () => {
       expect(verification).toContain("media_usage_graph=");
       expect(verification).toContain("media_safe_replace_rpc=");
       expect(verification).toContain("site_typography_engine=");
+      expect(verification).toContain("site_studio_engine=");
+      expect(verification).toContain("visual_direct_edit_v2=");
+      expect(verification).toContain("staff_owner_invariant=");
+      expect(verification).toContain("data_studio_integrity=");
+      expect(verification).toContain("translation_operations=");
+      expect(verification).toContain("admin_mutation_guards=");
+      expect(verification).toContain("admin_analytics_reporting=");
+      expect(verification).toContain("admin_ops_observability=");
       expect(verification).toContain("then 'true' else 'false' end");
     } finally {
       rmSync(temporaryDirectory, { recursive: true, force: true });
@@ -677,10 +716,10 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "Migration range: 20260808_article_translations through 20260830_zz_site_typography_engine"
+      "Migration range: 20260808_article_translations through 20260901_zzzzzz_admin_completion_health"
     );
     expect(workflowSource).toContain(
-      "schema_health=20260830_zz_site_typography_engine;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=19;invalid_indexes=0"
+      "schema_health=20260901_zzzzzz_admin_completion_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=29;invalid_indexes=0"
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260828_zz_editor_autosaves.sql"'
@@ -690,6 +729,36 @@ describe("guarded production database reconciliation", () => {
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260830_zz_site_typography_engine.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zz_admin_analytics_reporting.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zz_data_studio_integrity.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zz_site_studio_engine.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zz_staff_owner_invariant.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zz_translation_operations.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zz_translation_operations_runtime.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zz_visual_direct_edit_v2.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zzz_admin_mutation_guards.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zzzz_admin_ops_observability.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260901_zzzzzz_admin_completion_health.sql"'
     );
     expect(workflowSource).toContain(
       "reconciliation/production-verification-expected.txt"

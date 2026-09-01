@@ -2,11 +2,11 @@
 
 import { createBrowserClient } from "@supabase/ssr";
 
-import { adminEnv } from "@/lib/env";
+import { adminPublicEnv } from "@/lib/public-env";
 
 export function createBrowserSupabaseClient() {
   return createBrowserClient(
-    adminEnv.supabaseUrl,
-    adminEnv.supabasePublishableKey
+    adminPublicEnv.supabaseUrl,
+    adminPublicEnv.supabasePublishableKey
   );
 }

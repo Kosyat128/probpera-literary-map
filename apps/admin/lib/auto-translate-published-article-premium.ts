@@ -9,6 +9,8 @@ import { articleTranslationSourceHash } from "./article-translations";
 import { translateArticleSourceToEnglish } from "./auto-translate-article";
 import { adminEnv } from "./env";
 import { premiumTranslationRuntimeMetadata } from "./premium-translation-runtime";
+import { translationErrorCode } from "./translation-errors";
+import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
 import { createSlug } from "./slug";
 
 type ArticleRow = {
@@ -67,6 +69,7 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
   supabase: SupabaseClient;
   actorId: string;
   articleId: string;
+  runtimeApproved?: boolean;
 }): Promise<{
   state: PremiumArticleBackfillState;
   model?: string;
@@ -74,7 +77,9 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
   error?: string;
 }> {
   if (!adminEnv.openAiAutoTranslateArticles) return { state: "skipped" };
-  if (!adminEnv.premiumTranslationConfigured) return { state: "not-configured" };
+  if (!input.runtimeApproved && !(await premiumTranslationRuntimeGate(input.supabase))) {
+    return { state: "not-configured" };
+  }
 
   const articleResponse = await input.supabase
     .from("articles")
@@ -296,7 +301,7 @@ export async function ensurePublishedArticlePremiumEnglish(input: {
         provider: runtime.provider,
         model: runtime.model,
         reviewer_model: runtime.reviewerModel,
-        error: message.slice(0, 500),
+        error_code: translationErrorCode(message),
         duration_ms: Date.now() - startedAt,
       },
     });

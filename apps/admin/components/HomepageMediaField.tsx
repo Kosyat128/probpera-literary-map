@@ -2,7 +2,10 @@
 
 import { useRef, useState } from "react";
 import { withClientAdminPath } from "@/lib/admin-path";
-import { prepareClientImage } from "@/lib/client-image-upload";
+import {
+  CLIENT_IMAGE_ACCEPT_ATTRIBUTE,
+  prepareClientImage,
+} from "@/lib/client-image-upload";
 
 export type HomepageMediaOption = {
   id: string;
@@ -110,7 +113,7 @@ export default function HomepageMediaField({
             ref={inputRef}
             className="visually-hidden-file"
             type="file"
-            accept="image/jpeg,image/png,image/webp,image/avif"
+            accept={CLIENT_IMAGE_ACCEPT_ATTRIBUTE}
             onChange={(event) => {
               const file = event.target.files?.[0];
               if (file) void upload(file);

@@ -9,7 +9,7 @@ import {
 } from "@/lib/comments-catalog-query";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { moderateCommentAction } from "./actions";
+import { bulkModerateCommentsAction, moderateCommentAction } from "./actions";
 
 export const metadata = { title: "Комментарии" };
 
@@ -73,15 +73,27 @@ export default async function CommentsPage({
         <p className="catalog-summary">
           Найдено комментариев: <strong>{totalCount.toLocaleString("ru-RU")}</strong>
         </p>
+        {comments.length > 0 && (
+          <form id="bulk-comment-form" action={bulkModerateCommentsAction} className="toolbar">
+            <input type="hidden" name="catalog_q" value={catalog.term} />
+            <input type="hidden" name="catalog_status" value={catalog.status} />
+            <input type="hidden" name="catalog_page" value={catalog.page} />
+            <select name="bulk_status" defaultValue="hidden" aria-label="Статус выбранных комментариев">
+              <option value="hidden">Скрыть выбранные</option>
+              <option value="published">Опубликовать выбранные</option>
+            </select>
+            <button className="button-secondary" type="submit">Применить к выбранным</button>
+          </form>
+        )}
         {error ? (
           <p className="form-message form-error" role="alert">
-            Не удалось загрузить комментарии: {error.message}
+            Не удалось загрузить комментарии. Обновите страницу или повторите позже.
           </p>
         ) : comments.length === 0 ? (
           <div className="empty-state"><p>В этом разделе пока нет комментариев.</p></div>
         ) : (
           <table className="data-table">
-            <thead><tr><th>Читатель и текст</th><th>Материал</th><th>Дата</th><th>Действие</th></tr></thead>
+            <thead><tr><th scope="col">Выбор</th><th>Читатель и текст</th><th>Материал</th><th>Дата</th><th>Действие</th></tr></thead>
             <tbody>
               {comments.map((comment) => {
                 const profileValue = comment.profiles as unknown;
@@ -90,6 +102,15 @@ export default async function CommentsPage({
                   : (profileValue as { display_name?: string } | null);
                 return (
                   <tr key={comment.id}>
+                    <td>
+                      <input
+                        form="bulk-comment-form"
+                        type="checkbox"
+                        name="selected_comment"
+                        value={`${comment.id}|${comment.updated_at}`}
+                        aria-label={`Выбрать комментарий ${profile?.display_name || comment.guest_name || "гостя"}`}
+                      />
+                    </td>
                     <td className="data-title">
                       <strong>{profile?.display_name || comment.guest_name || "Гость"}</strong>
                       <small>{comment.body}</small>

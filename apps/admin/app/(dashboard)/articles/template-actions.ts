@@ -10,6 +10,7 @@ import {
   normalizeShortHyphensDeep,
 } from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 const templateSchema = z.object({
   label: z.string().trim().min(2).max(80),
@@ -38,7 +39,7 @@ export async function saveEditorTemplateAction(input: unknown) {
     }, { onConflict: "owner_id,label" })
     .select("id,label,content_html,visibility,owner_id")
     .single();
-  if (error || !data) return { error: error?.message || "Шаблон не сохранён." };
+  if (error || !data) return { error: operatorDataError("articles", "save") };
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
     action: "editor_template.saved",
@@ -56,7 +57,7 @@ export async function deleteEditorTemplateAction(id: string) {
   const supabase = await createServerSupabaseClient();
   if (!supabase) return { error: "База данных не подключена." };
   const { error } = await supabase.from("editor_templates").delete().eq("id", id);
-  if (error) return { error: error.message };
+  if (error) return { error: operatorDataError("articles", "delete") };
   await supabase.from("admin_audit_log").insert({
     actor_id: session.user.id,
     action: "editor_template.deleted",

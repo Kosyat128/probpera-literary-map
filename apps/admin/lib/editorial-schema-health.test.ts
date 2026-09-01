@@ -13,7 +13,7 @@ const root = path.resolve(process.cwd());
 const latestSchemaMigration = readFileSync(
   path.join(
     root,
-    "supabase/migrations/20260830_zz_site_typography_engine.sql"
+    "supabase/migrations/20260901_zzzzzz_admin_completion_health.sql"
   ),
   "utf8"
 );
@@ -46,6 +46,14 @@ const completeHealth: EditorialSchemaHealth = {
   mediaUsageGraph: true,
   mediaSafeReplaceRpc: true,
   siteTypographyEngine: true,
+  siteStudioEngine: true,
+  visualDirectEditV2: true,
+  staffOwnerInvariant: true,
+  dataStudioIntegrity: true,
+  translationOperations: true,
+  adminMutationGuards: true,
+  adminAnalyticsReporting: true,
+  adminOpsObservability: true,
 };
 
 describe("editorial schema health", () => {
@@ -69,13 +77,19 @@ describe("editorial schema health", () => {
     expect(productionMigrationPlanner).toContain("health ->> 'mediaUsageGraph'");
     expect(productionMigrationPlanner).toContain("health ->> 'mediaSafeReplaceRpc'");
     expect(productionMigrationPlanner).toContain("health ->> 'siteTypographyEngine'");
+    expect(productionMigrationPlanner).toContain("health ->> 'siteStudioEngine'");
+    expect(productionMigrationPlanner).toContain("health ->> 'dataStudioIntegrity'");
+    expect(productionMigrationPlanner).toContain("health ->> 'translationOperations'");
+    expect(productionMigrationPlanner).toContain("health ->> 'adminOpsObservability'");
   });
 
   it("fails the Media Studio diagnostic closed unless all lifecycle contracts are ready", () => {
     expect(healthPageSource).toContain("schemaHealth?.mediaStudioLifecycle === true");
     expect(healthPageSource).toContain("schemaHealth?.mediaUsageGraph === true");
     expect(healthPageSource).toContain("schemaHealth?.mediaSafeReplaceRpc === true");
-    expect(healthPageSource).toContain('mediaStudioReady ? "Готова" : "Закрыта"');
+    expect(healthPageSource).toContain(
+      'mediaStudioReady ? "OK" : schemaCheckAvailable ? "FAILED" : "UNKNOWN"'
+    );
   });
 
   it("rejects every missing or false required database capability", () => {

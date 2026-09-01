@@ -8,6 +8,7 @@ import { redirect } from "@/lib/navigation";
 import { requestPublicBuild } from "@/lib/publication";
 import { publicationCatalogFormHref } from "@/lib/publication-catalog-query";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 const outboxIdSchema = z.string().regex(/^[1-9]\d*$/u).max(30);
 
@@ -26,7 +27,7 @@ export async function retryPublicationAction(formData: FormData) {
     .select("id,entity_type,entity_id,reason,status")
     .eq("id", parsedId.data)
     .maybeSingle();
-  if (error) redirect(target({ error: error.message }));
+  if (error) redirect(target({ error: operatorDataError("publication", "publish") }));
   if (!event) redirect(target({ error: "Запрос публикации уже недоступен." }));
 
   const publication = await requestPublicBuild({

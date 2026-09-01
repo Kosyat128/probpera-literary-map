@@ -82,39 +82,82 @@ if (!dueResponse.ok) {
 }
 
 const dueArticles = await dueResponse.json();
-if (!dueArticles.length) {
+let publishedArticles = [];
+if (dueArticles.length) {
+  const ids = dueArticles.map((article) => article.id).join(",");
+  const updateResponse = await fetch(
+    `${supabaseUrl}/rest/v1/articles?id=in.(${encodeURIComponent(ids)})`,
+    {
+      method: "PATCH",
+      headers: {
+        ...headers,
+        Prefer: "return=representation",
+      },
+      body: JSON.stringify({
+        status: "published",
+        published_at: now,
+        // The transactional outbox is the retry contract. Clearing the schedule
+        // in the same mutation prevents a failed deploy from publishing the row
+        // repeatedly while still leaving its outbox request pending.
+        scheduled_at: null,
+      }),
+    }
+  );
+  if (!updateResponse.ok) {
+    throw new Error(
+      `Scheduled article update failed: ${updateResponse.status} ${await updateResponse.text()}`
+    );
+  }
+  publishedArticles = await updateResponse.json();
+} else {
   console.log("No scheduled articles are due.");
-  await setOutput("published", "0");
-  await setOutput("ids", "");
-  process.exit(0);
 }
 
-const ids = dueArticles.map((article) => article.id).join(",");
-const updateResponse = await fetch(
-  `${supabaseUrl}/rest/v1/articles?id=in.(${encodeURIComponent(ids)})`,
-  {
-    method: "PATCH",
-    headers: {
-      ...headers,
-      Prefer: "return=representation",
-    },
-    body: JSON.stringify({
-      status: "published",
-      published_at: now,
-      // The transactional outbox is the retry contract. Clearing the schedule
-      // in the same mutation prevents a failed deploy from publishing the row
-      // repeatedly while still leaving its outbox request pending.
-      scheduled_at: null,
-    }),
-  }
+const designQuery = new URLSearchParams({
+  select: "id,cas_version,scheduled_at",
+  status: "eq.approved",
+  scheduled_at: `lte.${now}`,
+  order: "scheduled_at.asc",
+  limit: "25",
+});
+const dueDesignResponse = await fetch(
+  `${supabaseUrl}/rest/v1/site_design_change_sets?${designQuery.toString()}`,
+  { headers }
 );
-if (!updateResponse.ok) {
+if (!dueDesignResponse.ok) {
   throw new Error(
-    `Scheduled article update failed: ${updateResponse.status} ${await updateResponse.text()}`
+    `Scheduled Site Studio query failed: ${dueDesignResponse.status} ${await dueDesignResponse.text()}`
   );
 }
+const dueDesignChangeSets = await dueDesignResponse.json();
+const publishedDesignChangeSets = [];
+for (const changeSet of dueDesignChangeSets) {
+  const publishResponse = await fetch(
+    `${supabaseUrl}/rest/v1/rpc/publish_site_design_change_set`,
+    {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        p_change_set_id: changeSet.id,
+        p_expected_cas_version: changeSet.cas_version,
+      }),
+    }
+  );
+  if (!publishResponse.ok) {
+    throw new Error(
+      `Scheduled Site Studio release failed: ${publishResponse.status} ${await publishResponse.text()}`
+    );
+  }
+  publishedDesignChangeSets.push(changeSet.id);
+}
 
-const published = await updateResponse.json();
-await setOutput("published", String(published.length));
-await setOutput("ids", published.map((article) => article.id).join(","));
-console.log(`Published ${published.length} scheduled article(s).`);
+const publishedCount =
+  publishedArticles.length + publishedDesignChangeSets.length;
+await setOutput("published", String(publishedCount));
+await setOutput(
+  "ids",
+  publishedArticles.map((article) => article.id).join(",")
+);
+console.log(
+  `Published ${publishedArticles.length} scheduled article(s) and ${publishedDesignChangeSets.length} Site Studio release(s).`
+);

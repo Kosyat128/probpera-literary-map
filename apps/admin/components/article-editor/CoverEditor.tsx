@@ -1,5 +1,7 @@
 import type { DragEvent } from "react";
 
+import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/client-image-upload";
+
 import type {
   ArticleEditorLocale,
   ArticleFileInputRef,
@@ -56,7 +58,7 @@ export default function CoverEditor({
         ref={fileInputRef}
         className="visually-hidden-file"
         type="file"
-        accept="image/jpeg,image/png,image/webp,image/avif"
+        accept={CLIENT_IMAGE_ACCEPT_ATTRIBUTE}
         onChange={(event) => uploadFirstFile(event.target.files)}
       />
       <button

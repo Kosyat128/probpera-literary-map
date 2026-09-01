@@ -9,6 +9,7 @@ import {
 } from "@/lib/site-copy-storage";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { translationErrorMessage } from "@/lib/translation-errors";
 
 export const metadata = { title: "Тексты сайта" };
 
@@ -24,7 +25,7 @@ export default async function SiteCopyPage({
   searchParams,
 }: {
   searchParams: Promise<{
-    error?: string;
+    errorCode?: string;
     saved?: string;
     published?: string;
   }>;
@@ -77,9 +78,10 @@ export default async function SiteCopyPage({
         </a>
       </header>
 
-      {(query.error || error) && (
+      {(translationErrorMessage(query.errorCode) || error) && (
         <p className="form-message form-error" role="alert">
-          {query.error || error?.message}
+          {translationErrorMessage(query.errorCode) ||
+            "Не удалось безопасно прочитать тексты. Повторите позже."}
         </p>
       )}
       {query.saved && (

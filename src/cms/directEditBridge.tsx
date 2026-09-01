@@ -7,10 +7,19 @@ import {
   isCompleteCmsHomepageVisualSettings,
   type CmsHomepageVisualSettings,
 } from "../data/cms/homepageVisualSettings";
+import {
+  siteStudioComponentRegistry,
+  siteStudioStates,
+  type SiteStudioBreakpoint,
+  type SiteStudioComponentId,
+  type SiteStudioState,
+} from "../data/cms/siteStudioContract";
+import { cmsTypographyTargetKey } from "../data/cms/siteTypography";
 import { isObservedInterfaceSourceText } from "../i18n/InterfaceLanguage";
 
 export const CMS_EDIT_BRIDGE_CHANNEL = "probpera:cms-edit";
-export const CMS_EDIT_BRIDGE_VERSION = 1;
+export const CMS_EDIT_BRIDGE_VERSION = 2;
+export const CMS_EDIT_BRIDGE_LEGACY_VERSION = 1;
 
 export type CmsEditableKind = "text" | "textarea" | "image" | "richtext";
 
@@ -19,7 +28,31 @@ type CmsBridgeEnvelope = {
   version: typeof CMS_EDIT_BRIDGE_VERSION;
 };
 
-export type CmsSelectionMessage = CmsBridgeEnvelope & {
+export const CMS_EDIT_BRIDGE_CAPABILITIES = {
+  selectionContext: true,
+  ancestry: true,
+  ownerLocks: true,
+  breakpoints: ["mobile", "tablet", "desktop"],
+  states: siteStudioStates,
+  components: Object.keys(siteStudioComponentRegistry),
+  legacyInboundVersions: [CMS_EDIT_BRIDGE_LEGACY_VERSION],
+} as const;
+
+export type CmsSelectionAncestryEntry = Readonly<{
+  componentId: SiteStudioComponentId;
+  instanceId: string;
+}>;
+
+export type CmsSelectionContext = Readonly<{
+  componentId: SiteStudioComponentId;
+  instanceId: string;
+  ancestry: readonly CmsSelectionAncestryEntry[];
+  breakpoint: Exclude<SiteStudioBreakpoint, "base">;
+  state: SiteStudioState;
+  ownerLocked: boolean;
+}>;
+
+export type CmsSelectionMessage = CmsBridgeEnvelope & CmsSelectionContext & {
   type: "selection";
   key: string;
   copyKey: string;
@@ -69,7 +102,27 @@ export type CmsBridgeMessage =
   | CmsEntityOpenMessage
   | CmsPreviewUpdateMessage
   | CmsPreviewStyleUpdateMessage
-  | (CmsBridgeEnvelope & { type: "ready" });
+  | (CmsBridgeEnvelope & {
+      type: "ready";
+      capabilities: typeof CMS_EDIT_BRIDGE_CAPABILITIES;
+    });
+
+type CmsLegacyPreviewUpdateMessage = Omit<
+  CmsPreviewUpdateMessage,
+  "version"
+> & { version: typeof CMS_EDIT_BRIDGE_LEGACY_VERSION };
+type CmsLegacyPreviewStyleUpdateMessage = Omit<
+  CmsPreviewStyleUpdateMessage,
+  "version"
+> & { version: typeof CMS_EDIT_BRIDGE_LEGACY_VERSION };
+type CmsPreviewUpdatePayload = Pick<
+  CmsPreviewUpdateMessage,
+  "key" | "kind" | "value" | "mediaId"
+>;
+export type CmsInboundBridgeMessage =
+  | CmsBridgeMessage
+  | CmsLegacyPreviewUpdateMessage
+  | CmsLegacyPreviewStyleUpdateMessage;
 
 export type CmsMarkerAttributes = Record<`data-cms-${string}`, string>;
 
@@ -316,19 +369,125 @@ export function prepareCmsEditDocument(location: Location = window.location) {
   return true;
 }
 
-export function isCmsBridgeMessage(value: unknown): value is CmsBridgeMessage {
+function isExactStringArray(value: unknown, expected: readonly string[]) {
+  return (
+    Array.isArray(value) &&
+    value.length === expected.length &&
+    value.every((item, index) => item === expected[index])
+  );
+}
+
+function hasOnlyMessageKeys(
+  message: Record<string, unknown>,
+  allowed: readonly string[]
+) {
+  return Object.keys(message).every((key) => allowed.includes(key));
+}
+
+function isSiteStudioComponentId(value: unknown): value is SiteStudioComponentId {
+  return (
+    typeof value === "string" &&
+    Object.prototype.hasOwnProperty.call(siteStudioComponentRegistry, value)
+  );
+}
+
+function isSelectionInstanceId(value: unknown) {
+  return (
+    typeof value === "string" &&
+    /^[a-z0-9][a-z0-9_-]{0,79}$/u.test(value)
+  );
+}
+
+function isSelectionContext(message: Record<string, unknown>) {
+  if (
+    !isSiteStudioComponentId(message.componentId) ||
+    !isSelectionInstanceId(message.instanceId) ||
+    !["mobile", "tablet", "desktop"].includes(String(message.breakpoint)) ||
+    !siteStudioStates.includes(message.state as SiteStudioState) ||
+    message.ownerLocked !==
+      siteStudioComponentRegistry[message.componentId].ownerLocked ||
+    !Array.isArray(message.ancestry) ||
+    message.ancestry.length < 1 ||
+    message.ancestry.length > 12
+  ) {
+    return false;
+  }
+  const valid = message.ancestry.every((entry) => {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) return false;
+    const candidate = entry as Record<string, unknown>;
+    return (
+      Object.keys(candidate).length === 2 &&
+      isSiteStudioComponentId(candidate.componentId) &&
+      isSelectionInstanceId(candidate.instanceId)
+    );
+  });
+  if (!valid) return false;
+  const nearest = message.ancestry[message.ancestry.length - 1] as Record<
+    string,
+    unknown
+  >;
+  return (
+    nearest.componentId === message.componentId &&
+    nearest.instanceId === message.instanceId
+  );
+}
+
+function isReadyCapabilities(value: unknown) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const capabilities = value as Record<string, unknown>;
+  return (
+    Object.keys(capabilities).length === 7 &&
+    capabilities.selectionContext === true &&
+    capabilities.ancestry === true &&
+    capabilities.ownerLocks === true &&
+    isExactStringArray(
+      capabilities.breakpoints,
+      CMS_EDIT_BRIDGE_CAPABILITIES.breakpoints
+    ) &&
+    isExactStringArray(capabilities.states, CMS_EDIT_BRIDGE_CAPABILITIES.states) &&
+    isExactStringArray(
+      capabilities.components,
+      CMS_EDIT_BRIDGE_CAPABILITIES.components
+    ) &&
+    Array.isArray(capabilities.legacyInboundVersions) &&
+    capabilities.legacyInboundVersions.length === 1 &&
+    capabilities.legacyInboundVersions[0] === CMS_EDIT_BRIDGE_LEGACY_VERSION
+  );
+}
+
+export function isCmsBridgeMessage(
+  value: unknown
+): value is CmsInboundBridgeMessage {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
   const message = value as Record<string, unknown>;
   if (
     message.channel !== CMS_EDIT_BRIDGE_CHANNEL ||
-    message.version !== CMS_EDIT_BRIDGE_VERSION ||
+    ![CMS_EDIT_BRIDGE_LEGACY_VERSION, CMS_EDIT_BRIDGE_VERSION].includes(
+      Number(message.version)
+    ) ||
     typeof message.type !== "string"
   ) {
     return false;
   }
-  if (message.type === "ready") return true;
+  const isCurrentVersion = message.version === CMS_EDIT_BRIDGE_VERSION;
+  if (message.type === "ready") {
+    return (
+      isCurrentVersion &&
+      hasOnlyMessageKeys(message, ["channel", "version", "type", "capabilities"]) &&
+      isReadyCapabilities(message.capabilities)
+    );
+  }
   if (message.type === "preview-update") {
     return (
+      hasOnlyMessageKeys(message, [
+        "channel",
+        "version",
+        "type",
+        "key",
+        "kind",
+        "value",
+        "mediaId",
+      ]) &&
       typeof message.key === "string" &&
       typeof message.value === "string" &&
       (message.mediaId === undefined || typeof message.mediaId === "string") &&
@@ -339,6 +498,14 @@ export function isCmsBridgeMessage(value: unknown): value is CmsBridgeMessage {
   }
   if (message.type === "preview-style-update") {
     return (
+      hasOnlyMessageKeys(message, [
+        "channel",
+        "version",
+        "type",
+        "key",
+        "styles",
+        "reset",
+      ]) &&
       typeof message.key === "string" &&
       message.key.length > 0 &&
       message.key.length <= 520 &&
@@ -348,14 +515,55 @@ export function isCmsBridgeMessage(value: unknown): value is CmsBridgeMessage {
   }
   if (message.type === "selection") {
     return (
+      isCurrentVersion &&
+      hasOnlyMessageKeys(message, [
+        "channel",
+        "version",
+        "type",
+        "key",
+        "copyKey",
+        "sourceText",
+        "field",
+        "kind",
+        "label",
+        "value",
+        "href",
+        "entityType",
+        "entityId",
+        "mediaId",
+        "componentId",
+        "instanceId",
+        "ancestry",
+        "breakpoint",
+        "state",
+        "ownerLocked",
+      ]) &&
+      isSelectionContext(message) &&
       typeof message.key === "string" &&
+      typeof message.copyKey === "string" &&
+      typeof message.sourceText === "string" &&
       typeof message.field === "string" &&
+      ["text", "textarea", "image", "richtext"].includes(String(message.kind)) &&
+      typeof message.label === "string" &&
       typeof message.value === "string" &&
+      typeof message.href === "string" &&
+      typeof message.entityType === "string" &&
+      typeof message.entityId === "string" &&
       (message.mediaId === undefined || typeof message.mediaId === "string")
     );
   }
   if (message.type === "entity-open") {
     return (
+      isCurrentVersion &&
+      hasOnlyMessageKeys(message, [
+        "channel",
+        "version",
+        "type",
+        "entityType",
+        "entityId",
+        "label",
+        "adminHref",
+      ]) &&
       [
         "article",
         "book",
@@ -368,6 +576,7 @@ export function isCmsBridgeMessage(value: unknown): value is CmsBridgeMessage {
         String(message.entityType)
       ) &&
       typeof message.entityId === "string" &&
+      typeof message.label === "string" &&
       typeof message.adminHref === "string"
     );
   }
@@ -514,7 +723,7 @@ export function validatedCmsPreviewHref(field: string, value: string) {
 
 function updateLinkTargetPreview(
   marker: HTMLElement,
-  message: CmsPreviewUpdateMessage
+  message: CmsPreviewUpdatePayload
 ) {
   const field = marker.dataset.cmsField || "";
   if (!["href", "targetUrl", "buttonUrl"].includes(field)) return false;
@@ -531,7 +740,7 @@ function updateLinkTargetPreview(
 
 function updateBannerMediaPreview(
   marker: HTMLElement,
-  message: CmsPreviewUpdateMessage
+  message: CmsPreviewUpdatePayload
 ) {
   if (
     marker.dataset.cmsEntity !== "banner" ||
@@ -568,7 +777,7 @@ function updateBannerMediaPreview(
 
 function updateHomepageBlockPreview(
   marker: HTMLElement,
-  message: CmsPreviewUpdateMessage
+  message: CmsPreviewUpdatePayload
 ) {
   if (marker.dataset.cmsEntity !== "homepage-block") return false;
   const block = marker.closest<HTMLElement>(".cms-home-block");
@@ -596,7 +805,9 @@ function updateHomepageBlockPreview(
   return false;
 }
 
-function updatePreviewMarker(message: CmsPreviewUpdateMessage) {
+function updatePreviewMarker(
+  message: CmsPreviewUpdateMessage | CmsLegacyPreviewUpdateMessage
+) {
   const markers = document.querySelectorAll<HTMLElement>("[data-cms-key]");
   markers.forEach((marker) => {
     if (marker.dataset.cmsKey !== message.key) return;
@@ -682,7 +893,9 @@ function updatePreviewMarker(message: CmsPreviewUpdateMessage) {
   });
 }
 
-function updatePreviewStyles(message: CmsPreviewStyleUpdateMessage) {
+function updatePreviewStyles(
+  message: CmsPreviewStyleUpdateMessage | CmsLegacyPreviewStyleUpdateMessage
+) {
   const markers = document.querySelectorAll<HTMLElement>("[data-cms-key]");
   const blocks = new Set<HTMLElement>();
   markers.forEach((marker) => {
@@ -712,6 +925,93 @@ function makeEnvelope() {
     channel: CMS_EDIT_BRIDGE_CHANNEL,
     version: CMS_EDIT_BRIDGE_VERSION,
   } as const;
+}
+
+export function cmsEditBreakpointForWidth(
+  width: number
+): CmsSelectionContext["breakpoint"] {
+  if (width <= 639) return "mobile";
+  if (width <= 1023) return "tablet";
+  return "desktop";
+}
+
+function componentIdForElement(element: HTMLElement): SiteStudioComponentId | null {
+  const declared = element.dataset.typographyComponent;
+  if (isSiteStudioComponentId(declared)) return declared;
+  if (element.matches(".literary-globe")) return "literary-globe";
+  if (element.matches(".book-archive-section, #books")) return "bookshelf";
+  if (element.matches("header, .site-header, .topbar")) return "site-header";
+  if (element.matches("footer, .site-footer")) return "site-footer";
+  return null;
+}
+
+function stableComponentInstanceId(
+  element: HTMLElement,
+  componentId: SiteStudioComponentId,
+  marker: HTMLElement
+) {
+  const declared = element.dataset.typographyInstance;
+  if (declared && isSelectionInstanceId(declared)) return declared;
+  const identity = [
+    componentId,
+    element.id,
+    marker.dataset.cmsEntity,
+    marker.dataset.cmsEntityId,
+  ]
+    .filter(Boolean)
+    .join("-");
+  return cmsTypographyTargetKey(identity || componentId);
+}
+
+function selectionAncestry(marker: HTMLElement): CmsSelectionAncestryEntry[] {
+  const innerToOuter: CmsSelectionAncestryEntry[] = [];
+  const seen = new Set<string>();
+  for (let current: HTMLElement | null = marker; current; current = current.parentElement) {
+    const componentId = componentIdForElement(current);
+    if (!componentId) continue;
+    const instanceId = stableComponentInstanceId(current, componentId, marker);
+    const identity = `${componentId}:${instanceId}`;
+    if (seen.has(identity)) continue;
+    seen.add(identity);
+    innerToOuter.push({ componentId, instanceId });
+  }
+  if (!innerToOuter.length) {
+    innerToOuter.push({ componentId: "magazine", instanceId: "magazine" });
+  }
+  return innerToOuter.reverse();
+}
+
+function selectionState(marker: HTMLElement): SiteStudioState {
+  if (marker.closest("[disabled], [aria-disabled=\"true\"]")) return "disabled";
+  if (marker.closest("details[open], [aria-expanded=\"true\"]")) return "open";
+  if (marker.closest("[aria-selected=\"true\"], [aria-current=\"true\"]")) {
+    return "selected";
+  }
+  if (document.activeElement instanceof Element && marker.contains(document.activeElement)) {
+    return "focus";
+  }
+  return "default";
+}
+
+function selectionContext(marker: HTMLElement): CmsSelectionContext {
+  const ancestry = selectionAncestry(marker);
+  const nearest = ancestry[ancestry.length - 1];
+  return {
+    componentId: nearest.componentId,
+    instanceId: nearest.instanceId,
+    ancestry,
+    breakpoint: cmsEditBreakpointForWidth(window.innerWidth),
+    state: selectionState(marker),
+    ownerLocked: siteStudioComponentRegistry[nearest.componentId].ownerLocked,
+  };
+}
+
+export function cmsEditReadyMessage(): Extract<CmsBridgeMessage, { type: "ready" }> {
+  return {
+    ...makeEnvelope(),
+    type: "ready",
+    capabilities: CMS_EDIT_BRIDGE_CAPABILITIES,
+  };
 }
 
 export default function CmsDirectEditBridge() {
@@ -795,6 +1095,7 @@ export default function CmsDirectEditBridge() {
         post({
           ...makeEnvelope(),
           type: "selection",
+          ...selectionContext(marker),
           key,
           copyKey: marker.dataset.cmsCopyKey || "",
           sourceText: marker.dataset.cmsSourceText || markerText(marker, kind),
@@ -854,7 +1155,7 @@ export default function CmsDirectEditBridge() {
 
     document.addEventListener("click", onClick, true);
     window.addEventListener("message", onMessage);
-    post({ ...makeEnvelope(), type: "ready" });
+    post(cmsEditReadyMessage());
 
     return () => {
       document.documentElement.classList.remove("cms-edit-mode");

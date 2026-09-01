@@ -4,18 +4,27 @@ import { revalidatePath } from "next/cache";
 
 import { ensurePublishedArticlePremiumEnglish } from "@/lib/auto-translate-published-article-premium";
 import { requireStaff } from "@/lib/auth";
-import { adminEnv } from "@/lib/env";
 import { redirect } from "@/lib/navigation";
 import {
-  premiumTranslationConfigurationError,
   premiumTranslationRuntimeMetadata,
 } from "@/lib/premium-translation-runtime";
 import { requestPublicBuild } from "@/lib/publication";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
-import { translationBackfillCursorParams } from "@/lib/translation-backfill-cursor";
+import {
+  advanceBackfillCursor,
+  normalizeBackfillCursor,
+  translationBackfillCursorParams,
+} from "@/lib/translation-backfill-cursor";
+import { translationErrorCode } from "@/lib/translation-errors";
+import { premiumTranslationRuntimeGate } from "@/lib/translation-runtime-gate";
+import {
+  recordTranslationSyncRun,
+  type TranslationRunItem,
+} from "@/lib/translation-run-record";
 
 const MAX_ARTICLE_TRANSLATIONS = 2;
 const ARTICLE_SCAN_PAGE_SIZE = 100;
+const MAX_ARTICLE_SCAN = 500;
 
 function translationsUrl(values: Record<string, string | number | null | undefined>) {
   const params = new URLSearchParams();
@@ -27,39 +36,47 @@ function translationsUrl(values: Record<string, string | number | null | undefin
   return `/translations${params.size ? `?${params}` : ""}`;
 }
 
-function batchFailureMessage(error: unknown) {
-  const message = typeof error === "string" ? error.trim() : "";
-  return message
-    ? `Пакет остановлен после первой ошибки перевода: ${message.slice(0, 320)}`
-    : "Пакет остановлен после первой ошибки перевода. Повторите запуск позже.";
-}
-
 export async function translatePremiumArticleBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const cursorParams = translationBackfillCursorParams(formData);
-  if (!adminEnv.premiumTranslationConfigured) {
-    redirect(
-      translationsUrl({
-        ...cursorParams,
-        error: premiumTranslationConfigurationError(),
-      })
-    );
-  }
   const supabase = await createServerSupabaseClient();
   if (!supabase) {
-    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_unavailable" }));
   }
+  if (!(await premiumTranslationRuntimeGate(supabase))) {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "translation_not_configured" }));
+  }
+
+  const candidateCount = await supabase
+    .from("articles")
+    .select("id", { count: "exact", head: true })
+    .eq("status", "published")
+    .is("deleted_at", null);
+  if (candidateCount.error) {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_read_failed" }));
+  }
+  const totalCandidates = candidateCount.count || 0;
+  const startOffset = normalizeBackfillCursor(
+    cursorParams.articleCursor,
+    totalCandidates
+  );
 
   let translated = 0;
   let current = 0;
   let manual = 0;
   let skipped = 0;
   let failed = 0;
-  let offset = 0;
+  let offset = startOffset;
+  let processed = 0;
   let firstError = "";
+  const runItems: TranslationRunItem[] = [];
 
-  while (translated < MAX_ARTICLE_TRANSLATIONS && !firstError) {
+  while (
+    translated < MAX_ARTICLE_TRANSLATIONS &&
+    !firstError &&
+    runItems.length < MAX_ARTICLE_SCAN
+  ) {
     const articles = await supabase
       .from("articles")
       .select("id")
@@ -69,7 +86,7 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
       .range(offset, offset + ARTICLE_SCAN_PAGE_SIZE - 1);
     if (articles.error) {
       redirect(
-        translationsUrl({ ...cursorParams, error: articles.error.message })
+        translationsUrl({ ...cursorParams, errorCode: "database_read_failed" })
       );
     }
 
@@ -84,7 +101,7 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
       .in("article_id", articleIds);
     if (englishRows.error) {
       redirect(
-        translationsUrl({ ...cursorParams, error: englishRows.error.message })
+        translationsUrl({ ...cursorParams, errorCode: "database_read_failed" })
       );
     }
 
@@ -93,9 +110,15 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
     );
 
     for (const articleId of articleIds) {
-      if (translated >= MAX_ARTICLE_TRANSLATIONS || firstError) break;
+      if (
+        translated >= MAX_ARTICLE_TRANSLATIONS ||
+        firstError ||
+        runItems.length >= MAX_ARTICLE_SCAN
+      ) break;
+      processed += 1;
       if (englishStatus.get(articleId) === "published") {
         current += 1;
+        runItems.push({ entityId: articleId, state: "current" });
         continue;
       }
 
@@ -103,6 +126,13 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
         supabase,
         actorId: session.user.id,
         articleId,
+        runtimeApproved: true,
+      });
+      runItems.push({
+        entityId: articleId,
+        state: result.state,
+        error: result.error,
+        model: result.model,
       });
       if (result.state === "translated") translated += 1;
       else if (result.state === "current") current += 1;
@@ -114,8 +144,24 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
       else skipped += 1;
     }
 
-    offset += page.length;
+    offset = startOffset + processed;
     if (page.length < ARTICLE_SCAN_PAGE_SIZE) break;
+  }
+  const nextArticleCursor = advanceBackfillCursor(
+    startOffset,
+    processed,
+    totalCandidates
+  );
+
+  try {
+    await recordTranslationSyncRun({
+      supabase,
+      kind: "article",
+      items: runItems,
+      resumeCursor: { articleCursor: nextArticleCursor },
+    });
+  } catch {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_write_failed" }));
   }
 
   let publication: string | null = null;
@@ -147,8 +193,9 @@ export async function translatePremiumArticleBatchAction(formData: FormData) {
     translationsUrl({
       ...cursorParams,
       success: `Статьи: новых/обновлённых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
-      error: firstError ? batchFailureMessage(firstError) : null,
+      errorCode: firstError ? translationErrorCode(firstError) : null,
       publication,
+      articleCursor: nextArticleCursor,
     })
   );
 }

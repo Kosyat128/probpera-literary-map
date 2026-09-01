@@ -5,10 +5,8 @@ import { revalidatePath } from "next/cache";
 import { ensureCountryEnglishProfile } from "@/lib/auto-translate-country-profile";
 import { requireStaff } from "@/lib/auth";
 import { loadEditorialCatalog } from "@/lib/editorial-catalog";
-import { adminEnv } from "@/lib/env";
 import { redirect } from "@/lib/navigation";
 import {
-  premiumTranslationConfigurationError,
   premiumTranslationRuntimeMetadata,
 } from "@/lib/premium-translation-runtime";
 import { requestPublicBuild } from "@/lib/publication";
@@ -19,6 +17,12 @@ import {
   normalizeBackfillCursor,
   translationBackfillCursorParams,
 } from "@/lib/translation-backfill-cursor";
+import { translationErrorCode } from "@/lib/translation-errors";
+import { premiumTranslationRuntimeGate } from "@/lib/translation-runtime-gate";
+import {
+  recordTranslationSyncRun,
+  type TranslationRunItem,
+} from "@/lib/translation-run-record";
 
 const MAX_COUNTRY_TRANSLATIONS = 2;
 const MAX_COUNTRY_SCAN = 30;
@@ -33,28 +37,16 @@ function translationsUrl(values: Record<string, string | number | null | undefin
   return `/translations${params.size ? `?${params}` : ""}`;
 }
 
-function batchFailureMessage(error: unknown) {
-  const message = typeof error === "string" ? error.trim() : "";
-  return message
-    ? `Пакет остановлен после первой ошибки перевода: ${message.slice(0, 320)}`
-    : "Пакет остановлен после первой ошибки перевода. Повторите запуск позже.";
-}
-
 export async function translatePremiumCountryBatchAction(formData: FormData) {
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
   const cursorParams = translationBackfillCursorParams(formData);
-  if (!adminEnv.premiumTranslationConfigured) {
-    redirect(
-      translationsUrl({
-        ...cursorParams,
-        error: premiumTranslationConfigurationError(),
-      })
-    );
-  }
   const supabase = await createServerSupabaseClient();
   if (!supabase) {
-    redirect(translationsUrl({ ...cursorParams, error: "База данных не подключена." }));
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_unavailable" }));
+  }
+  if (!(await premiumTranslationRuntimeGate(supabase))) {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "translation_not_configured" }));
   }
 
   const editorialCatalog = await loadEditorialCatalog();
@@ -70,6 +62,7 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
   let failed = 0;
   let processed = 0;
   let firstError = "";
+  const runItems: TranslationRunItem[] = [];
   const scanLimit = Math.min(MAX_COUNTRY_SCAN, candidates.length);
 
   for (let step = 0; step < scanLimit; step += 1) {
@@ -84,6 +77,13 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
       actorId: session.user.id,
       countryId: country.id,
       sourceFields: country.fields,
+      runtimeApproved: true,
+    });
+    runItems.push({
+      entityId: country.id,
+      state: result.state,
+      error: result.error,
+      model: result.model,
     });
     if (result.state === "translated") translated += 1;
     else if (result.state === "current") current += 1;
@@ -99,6 +99,16 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
     processed,
     candidates.length
   );
+  try {
+    await recordTranslationSyncRun({
+      supabase,
+      kind: "country",
+      items: runItems,
+      resumeCursor: { countryCursor: nextCountryCursor },
+    });
+  } catch {
+    redirect(translationsUrl({ ...cursorParams, errorCode: "database_write_failed" }));
+  }
 
   let publication: string | null = null;
   if (translated > 0) {
@@ -129,7 +139,7 @@ export async function translatePremiumCountryBatchAction(formData: FormData) {
     translationsUrl({
       ...cursorParams,
       success: `Страны: новых EN ${translated}, актуальных ${current}, ручных ${manual}, пропущено ${skipped}, ошибок ${failed}.`,
-      error: firstError ? batchFailureMessage(firstError) : null,
+      errorCode: firstError ? translationErrorCode(firstError) : null,
       publication,
       countryCursor: nextCountryCursor,
     })

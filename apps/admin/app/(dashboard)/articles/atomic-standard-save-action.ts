@@ -46,6 +46,7 @@ import { requestPublicBuild } from "@/lib/publication";
 import { normalizeShortHyphensFormData } from "@/lib/short-hyphens";
 import { createSlug } from "@/lib/slug";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 import { saveArticleBundleRpc } from "./article-bundle-rpc";
 
@@ -569,9 +570,9 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     if (previousError || !previous) {
       redirect(
         articleEditPath(articleId, {
-          error: `Не удалось прочитать исходную статью: ${
-            previousError?.message || "запись не найдена"
-          }`,
+          error: previousError
+            ? operatorDataError("articles", "load")
+            : "Исходная статья не найдена.",
         })
       );
     }
@@ -586,7 +587,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     if (englishError) {
       redirect(
         articleEditPath(articleId, {
-          error: `Не удалось прочитать английскую версию: ${englishError.message}`,
+          error: operatorDataError("articles", "load"),
         })
       );
     }

@@ -13,6 +13,7 @@ import {
 import { redirect } from "@/lib/navigation";
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 import { restoreRevisionAction } from "./actions";
 
 export const metadata = { title: "История изменений" };
@@ -139,7 +140,7 @@ export default async function HistoryPage({
   }
   const schemaWarnings = [revisionResult.error, restorableResult.error, eventsResult.error]
     .filter(Boolean)
-    .map((error) => error?.message);
+    .map((error) => error ? operatorDataError("history", "load") : undefined);
 
   return (
     <>
@@ -212,7 +213,7 @@ export default async function HistoryPage({
       <section className="panel">
         <h2>Версии контента</h2>
         {revisionResult.error ? (
-          <p className="form-message">Не удалось загрузить версии: {revisionResult.error.message}</p>
+          <p className="form-message">{operatorDataError("history", "load")}</p>
         ) : revisions.length ? (
           <div className="data-table-wrap">
             <table className="data-table">
@@ -264,7 +265,7 @@ export default async function HistoryPage({
       <section className="panel">
         <h2>Журнал операций</h2>
         {eventsResult.error ? (
-          <p className="form-message">Не удалось загрузить журнал: {eventsResult.error.message}</p>
+          <p className="form-message">{operatorDataError("history", "load")}</p>
         ) : events.length ? (
           <div className="data-table-wrap">
             <table className="data-table">

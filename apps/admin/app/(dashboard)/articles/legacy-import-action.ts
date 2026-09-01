@@ -22,6 +22,7 @@ import {
 import { createSlug } from "@/lib/slug";
 import { normalizeShortHyphensDeep } from "@/lib/short-hyphens";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import { operatorDataError } from "@/lib/operator-data-error";
 
 const allowedArticleHtml = {
   allowedTags: [
@@ -205,7 +206,7 @@ export async function importLegacyArticlesAction() {
     });
     const { error } = await supabase.from("articles").insert(payload);
     if (error) {
-      redirect(`/articles?error=${encodeURIComponent(error.message)}`);
+      redirect(`/articles?error=${encodeURIComponent(operatorDataError("articles", "create"))}`);
     }
     imported += payload.length;
   }

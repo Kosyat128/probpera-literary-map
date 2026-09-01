@@ -2,7 +2,11 @@ import { describe, expect, it } from "vitest";
 
 import {
   CMS_EDIT_BRIDGE_CHANNEL,
+  CMS_EDIT_BRIDGE_CAPABILITIES,
+  CMS_EDIT_BRIDGE_LEGACY_VERSION,
   CMS_EDIT_BRIDGE_VERSION,
+  cmsEditBreakpointForWidth,
+  cmsEditReadyMessage,
   cmsEntityFieldMarker,
   cmsHomepageBlockFieldMarker,
   cmsPageFieldMarker,
@@ -24,6 +28,11 @@ const readyMessage = {
   channel: CMS_EDIT_BRIDGE_CHANNEL,
   version: CMS_EDIT_BRIDGE_VERSION,
   type: "ready",
+  capabilities: CMS_EDIT_BRIDGE_CAPABILITIES,
+} as const;
+const bridgeEnvelope = {
+  channel: CMS_EDIT_BRIDGE_CHANNEL,
+  version: CMS_EDIT_BRIDGE_VERSION,
 } as const;
 
 describe("CMS direct-edit bridge security", () => {
@@ -78,6 +87,60 @@ describe("CMS direct-edit bridge security", () => {
     expect(
       isCmsBridgeMessage({ ...readyMessage, version: 99 })
     ).toBe(false);
+    expect(cmsEditReadyMessage()).toEqual(readyMessage);
+    expect(isCmsBridgeMessage({ ...readyMessage, arbitrary: true })).toBe(false);
+  });
+
+  it("accepts legacy v1 only for inbound preview updates", () => {
+    expect(
+      isCmsBridgeMessage({
+        channel: CMS_EDIT_BRIDGE_CHANNEL,
+        version: CMS_EDIT_BRIDGE_LEGACY_VERSION,
+        type: "preview-update",
+        key: "homepage.title",
+        kind: "text",
+        value: "Заголовок",
+      })
+    ).toBe(true);
+    expect(
+      isCmsBridgeMessage({
+        ...readyMessage,
+        version: CMS_EDIT_BRIDGE_LEGACY_VERSION,
+      })
+    ).toBe(false);
+  });
+
+  it("validates the complete v2 selection context and owner lock", () => {
+    const selection = {
+      channel: CMS_EDIT_BRIDGE_CHANNEL,
+      version: CMS_EDIT_BRIDGE_VERSION,
+      type: "selection",
+      key: "book.title",
+      copyKey: "",
+      sourceText: "Война и мир",
+      field: "title",
+      kind: "text",
+      label: "Название",
+      value: "Война и мир",
+      href: "",
+      entityType: "book",
+      entityId: "war-and-peace",
+      componentId: "bookshelf",
+      instanceId: "bookshelf-books",
+      ancestry: [
+        { componentId: "magazine", instanceId: "magazine" },
+        { componentId: "bookshelf", instanceId: "bookshelf-books" },
+      ],
+      breakpoint: "desktop",
+      state: "selected",
+      ownerLocked: true,
+    } as const;
+    expect(isCmsBridgeMessage(selection)).toBe(true);
+    expect(isCmsBridgeMessage({ ...selection, ownerLocked: false })).toBe(false);
+    expect(isCmsBridgeMessage({ ...selection, arbitraryCss: "display:none" })).toBe(false);
+    expect(cmsEditBreakpointForWidth(639)).toBe("mobile");
+    expect(cmsEditBreakpointForWidth(640)).toBe("tablet");
+    expect(cmsEditBreakpointForWidth(1024)).toBe("desktop");
   });
 
   it("prefers a leaf text over an ancestor background marker", () => {
@@ -95,19 +158,21 @@ describe("CMS direct-edit bridge security", () => {
   it("accepts only declared CMS entity kinds", () => {
     expect(
       isCmsBridgeMessage({
-        ...readyMessage,
+        ...bridgeEnvelope,
         type: "entity-open",
         entityType: "navigation-item",
         entityId: "nav-1",
+        label: "Навигация",
         adminHref: "/menus#navigation-item-nav-1",
       })
     ).toBe(true);
     expect(
       isCmsBridgeMessage({
-        ...readyMessage,
+        ...bridgeEnvelope,
         type: "entity-open",
         entityType: "unknown",
         entityId: "x",
+        label: "Unknown",
         adminHref: "/settings",
       })
     ).toBe(false);
@@ -134,7 +199,7 @@ describe("CMS direct-edit bridge security", () => {
     };
     expect(
       isCmsBridgeMessage({
-        ...readyMessage,
+        ...bridgeEnvelope,
         type: "preview-style-update",
         key: "homepage-block.id.title",
         styles,
@@ -142,7 +207,7 @@ describe("CMS direct-edit bridge security", () => {
     ).toBe(true);
     expect(
       isCmsBridgeMessage({
-        ...readyMessage,
+        ...bridgeEnvelope,
         type: "preview-style-update",
         key: "homepage-block.id.title",
         styles: { ...styles, arbitraryCss: "display:none" },
