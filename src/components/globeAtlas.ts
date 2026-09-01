@@ -16,13 +16,14 @@ import {
   countryFocusMetricsFromGeometries,
   type CountryFocusMetrics,
 } from "./globeFocusMath";
-import { scheduleGlobeIdlePrewarm } from "./globePerformance";
+import {
+  releaseGlobeCanvas,
+  scheduleGlobeIdlePrewarm,
+} from "./globePerformance";
 import {
   buildSphericalOutlinePositions,
-  geometryLatitudeBounds,
   geometryContainsGeographicPoint,
   GLOBE_TEXTURE_FLIP_Y,
-  latitudeBoundsContain,
   longitudeToTextureX,
   normalizeLongitude,
   partitionGeometryAtGeographicPoint,
@@ -262,6 +263,238 @@ function unwrapRing(ring: LinearRing): LinearRing {
   }
 
   return result;
+}
+
+function globeMapCacheKey(
+  editionId: GlobeEditionId,
+  compact: boolean,
+  language: InterfaceLanguage
+) {
+  const assetUrl = resolveGlobeEditionTextureUrl(editionId, compact, language);
+  return assetUrl
+    ? `${editionId}:${compact ? "compact" : "desktop"}:${language}:${assetUrl}`
+    : null;
+}
+
+export type GlobeLongitudeRange = Readonly<{
+  minimum: number;
+  maximum: number;
+}>;
+
+export type GlobeGeometryBounds = Readonly<{
+  minimumLatitude: number;
+  maximumLatitude: number;
+  longitudeRanges: readonly GlobeLongitudeRange[];
+}>;
+
+export type GlobeCountrySpatialEntry<T> = Readonly<{
+  geometry: GlobeGeoGeometry;
+  value: T;
+}>;
+
+export type GlobeCountrySpatialIndex<T> = Readonly<{
+  find: (longitude: number, latitude: number) => T | null;
+  candidateCountAt: (longitude: number, latitude: number) => number;
+  clear: () => void;
+}>;
+
+const GLOBE_SPATIAL_LONGITUDE_BUCKETS = 24;
+const GLOBE_SPATIAL_LATITUDE_BUCKETS = 12;
+
+function ringLongitudeRanges(ring: LinearRing): GlobeLongitudeRange[] {
+  if (!ring.length) return [{ minimum: -180, maximum: 180 }];
+
+  let previous = normalizeLongitude(ring[0][0]);
+  let minimum = previous;
+  let maximum = previous;
+  for (let index = 1; index < ring.length; index += 1) {
+    let longitude = normalizeLongitude(ring[index][0]);
+    while (longitude - previous > 180) longitude -= 360;
+    while (longitude - previous < -180) longitude += 360;
+    minimum = Math.min(minimum, longitude);
+    maximum = Math.max(maximum, longitude);
+    previous = longitude;
+  }
+
+  if (maximum - minimum >= 360) {
+    return [{ minimum: -180, maximum: 180 }];
+  }
+
+  // Shift the unwrapped interval so its start is canonical. An interval that
+  // reaches the antimeridian is split into both edge ranges; this makes +180
+  // and -180 land in equivalent index cells without widening other countries.
+  while (minimum < -180) {
+    minimum += 360;
+    maximum += 360;
+  }
+  while (minimum >= 180) {
+    minimum -= 360;
+    maximum -= 360;
+  }
+  if (maximum < 180) return [{ minimum, maximum }];
+  return [
+    { minimum, maximum: 180 },
+    { minimum: -180, maximum: maximum - 360 },
+  ];
+}
+
+/** Returns one lossless, antimeridian-safe broad-phase bound per polygon. */
+export function globeGeometryBounds(
+  geometry: GlobeGeoGeometry
+): GlobeGeometryBounds[] {
+  const polygons =
+    geometry.type === "Polygon"
+      ? [geometry.coordinates as PolygonCoordinates]
+      : (geometry.coordinates as MultiPolygonCoordinates);
+
+  if (!polygons.length) {
+    return [
+      {
+        minimumLatitude: -90,
+        maximumLatitude: 90,
+        longitudeRanges: [{ minimum: -180, maximum: 180 }],
+      },
+    ];
+  }
+
+  return polygons.map((polygon) => {
+    const outerRing = polygon[0];
+    if (!outerRing?.length) {
+      return {
+        minimumLatitude: -90,
+        maximumLatitude: 90,
+        longitudeRanges: [{ minimum: -180, maximum: 180 }],
+      };
+    }
+
+    let minimumLatitude = Number.POSITIVE_INFINITY;
+    let maximumLatitude = Number.NEGATIVE_INFINITY;
+    outerRing.forEach(([, latitude]) => {
+      minimumLatitude = Math.min(minimumLatitude, latitude);
+      maximumLatitude = Math.max(maximumLatitude, latitude);
+    });
+    return {
+      minimumLatitude: Number.isFinite(minimumLatitude)
+        ? minimumLatitude
+        : -90,
+      maximumLatitude: Number.isFinite(maximumLatitude)
+        ? maximumLatitude
+        : 90,
+      longitudeRanges: ringLongitudeRanges(outerRing),
+    };
+  });
+}
+
+function longitudeBucket(longitude: number) {
+  const normalized = normalizeLongitude(longitude);
+  return Math.min(
+    GLOBE_SPATIAL_LONGITUDE_BUCKETS - 1,
+    Math.max(
+      0,
+      Math.floor(
+        ((normalized + 180) / 360) * GLOBE_SPATIAL_LONGITUDE_BUCKETS
+      )
+    )
+  );
+}
+
+function longitudeBoundaryBucket(longitude: number) {
+  return Math.min(
+    GLOBE_SPATIAL_LONGITUDE_BUCKETS - 1,
+    Math.max(
+      0,
+      Math.floor(((longitude + 180) / 360) * GLOBE_SPATIAL_LONGITUDE_BUCKETS)
+    )
+  );
+}
+
+function latitudeBucket(latitude: number) {
+  return Math.min(
+    GLOBE_SPATIAL_LATITUDE_BUCKETS - 1,
+    Math.max(
+      0,
+      Math.floor(
+        ((THREE.MathUtils.clamp(latitude, -90, 90) + 90) / 180) *
+          GLOBE_SPATIAL_LATITUDE_BUCKETS
+      )
+    )
+  );
+}
+
+/**
+ * Builds a small fixed geographic grid. Every result still passes through the
+ * established exact point-in-polygon predicate, so this only removes unrelated
+ * countries from hot pointer-move work and cannot alter border accuracy.
+ */
+export function createGlobeCountrySpatialIndex<T>(
+  sourceEntries: readonly GlobeCountrySpatialEntry<T>[]
+): GlobeCountrySpatialIndex<T> {
+  const entries = [...sourceEntries];
+  const buckets = Array.from(
+    {
+      length:
+        GLOBE_SPATIAL_LONGITUDE_BUCKETS * GLOBE_SPATIAL_LATITUDE_BUCKETS,
+    },
+    () => new Set<GlobeCountrySpatialEntry<T>>()
+  );
+  const bucketAt = (longitudeIndex: number, latitudeIndex: number) =>
+    buckets[
+      latitudeIndex * GLOBE_SPATIAL_LONGITUDE_BUCKETS + longitudeIndex
+    ];
+
+  entries.forEach((entry) => {
+    globeGeometryBounds(entry.geometry).forEach((bounds) => {
+      const firstLatitudeBucket = latitudeBucket(bounds.minimumLatitude);
+      const lastLatitudeBucket = latitudeBucket(bounds.maximumLatitude);
+      bounds.longitudeRanges.forEach((range) => {
+        const firstLongitudeBucket = longitudeBoundaryBucket(range.minimum);
+        const lastLongitudeBucket = longitudeBoundaryBucket(range.maximum);
+        for (
+          let latitudeIndex = firstLatitudeBucket;
+          latitudeIndex <= lastLatitudeBucket;
+          latitudeIndex += 1
+        ) {
+          for (
+            let longitudeIndex = firstLongitudeBucket;
+            longitudeIndex <= lastLongitudeBucket;
+            longitudeIndex += 1
+          ) {
+            bucketAt(longitudeIndex, latitudeIndex).add(entry);
+          }
+        }
+      });
+    });
+  });
+
+  const candidatesAt = (longitude: number, latitude: number) => {
+    if (!Number.isFinite(longitude) || !Number.isFinite(latitude)) return null;
+    return bucketAt(longitudeBucket(longitude), latitudeBucket(latitude));
+  };
+
+  return {
+    find: (longitude, latitude) => {
+      const candidates = candidatesAt(longitude, latitude);
+      if (!candidates) return null;
+      for (const entry of candidates) {
+        if (
+          geometryContainsGeographicPoint(
+            entry.geometry,
+            longitude,
+            latitude
+          )
+        ) {
+          return entry.value;
+        }
+      }
+      return null;
+    },
+    candidateCountAt: (longitude, latitude) =>
+      candidatesAt(longitude, latitude)?.size ?? 0,
+    clear: () => {
+      entries.length = 0;
+      buckets.forEach((bucket) => bucket.clear());
+    },
+  };
 }
 
 function traceRing(
@@ -1004,13 +1237,11 @@ export async function createGlobeAtlas(
   const selectableFeatures: Array<{
     feature: GeoFeature;
     country: Country;
-    latitudeBounds: ReturnType<typeof geometryLatitudeBounds>;
   }> = [];
   const addSelectableFeature = (feature: GeoFeature, country: Country) => {
     selectableFeatures.push({
       feature,
       country,
-      latitudeBounds: geometryLatitudeBounds(feature.geometry),
     });
   };
 
@@ -1059,6 +1290,12 @@ export async function createGlobeAtlas(
   });
 
   throwIfAtlasCreationAborted(signal);
+  const countrySpatialIndex = createGlobeCountrySpatialIndex(
+    selectableFeatures.map(({ feature, country }) => ({
+      geometry: feature.geometry,
+      value: country,
+    }))
+  );
 
   const mapCanvas = makeMapCanvas(
     worldGeoJson.features,
@@ -1071,10 +1308,13 @@ export async function createGlobeAtlas(
   const mapTexture = configureTexture(new THREE.CanvasTexture(mapCanvas));
   const reliefWidth = Math.min(mapWidth, COMPACT_MAP_WIDTH);
   const reliefHeight = Math.min(mapHeight, COMPACT_MAP_HEIGHT);
+  const reliefCanvas = makeReliefCanvas(
+    worldGeoJson.features,
+    reliefWidth,
+    reliefHeight
+  );
   const reliefTexture = configureReliefTexture(
-    new THREE.CanvasTexture(
-      makeReliefCanvas(worldGeoJson.features, reliefWidth, reliefHeight)
-    )
+    new THREE.CanvasTexture(reliefCanvas)
   );
   const highlightCanvas = document.createElement("canvas");
   const highlightWidth = Math.min(mapWidth, HIGHLIGHT_WIDTH);
@@ -1090,7 +1330,14 @@ export async function createGlobeAtlas(
   const focusMetrics = new Map<string, CountryFocusMetrics | null>();
   const outlineGeometries = new Map<string, THREE.BufferGeometry | null>();
   const flagImages = new Map<string, HTMLImageElement>();
-  const pendingFlagImages = new Map<string, Promise<HTMLImageElement | null>>();
+  const pendingFlagImages = new Map<
+    string,
+    {
+      image: HTMLImageElement;
+      promise: Promise<HTMLImageElement | null>;
+      cancel: () => void;
+    }
+  >();
   let activeSelectedCountryId: string | null = null;
   let activeHoveredCountryId: string | null = null;
   let activeCandidateCountryId: string | null = null;
@@ -1101,16 +1348,8 @@ export async function createGlobeAtlas(
   let activeLanguage = initialLanguage;
   let visualStyleRequest = 0;
 
-  const countryAtGeographicCoordinates = (longitude: number, latitude: number) => {
-    for (const { feature, country, latitudeBounds } of selectableFeatures) {
-      if (!latitudeBoundsContain(latitudeBounds, latitude)) continue;
-      if (geometryContainsGeographicPoint(feature.geometry, longitude, latitude)) {
-        return country;
-      }
-    }
-
-    return null;
-  };
+  const countryAtGeographicCoordinates = (longitude: number, latitude: number) =>
+    countrySpatialIndex.find(longitude, latitude);
 
   const geographicCoordinatesAtUv = (uv: THREE.Vector2) => uvToGeographic(uv);
 
@@ -1177,33 +1416,55 @@ export async function createGlobeAtlas(
   };
 
   const loadFlagImage = (countryId: string) => {
+    if (disposed) return Promise.resolve(null);
     const loaded = flagImages.get(countryId);
     if (loaded) return Promise.resolve(loaded);
 
     const pending = pendingFlagImages.get(countryId);
-    if (pending) return pending;
+    if (pending) return pending.promise;
 
     const countryCode = countriesById.get(countryId)?.code?.trim().toLowerCase();
     if (!countryCode || !/^[a-z]{2}$/.test(countryCode)) {
       return Promise.resolve(null);
     }
 
+    const image = new Image();
+    image.decoding = "async";
+    image.fetchPriority = "low";
+    let settled = false;
+    let resolveImage!: (image: HTMLImageElement | null) => void;
     const promise = new Promise<HTMLImageElement | null>((resolve) => {
-      const image = new Image();
-      image.decoding = "async";
-      image.fetchPriority = "low";
-      image.onload = () => {
-        flagImages.set(countryId, image);
-        pendingFlagImages.delete(countryId);
-        resolve(image);
-      };
-      image.onerror = () => {
-        pendingFlagImages.delete(countryId);
-        resolve(null);
-      };
-      image.src = `${import.meta.env.BASE_URL}assets/country-flags/${countryCode}.svg`;
+      resolveImage = resolve;
     });
-    pendingFlagImages.set(countryId, promise);
+    const finish = (result: HTMLImageElement | null) => {
+      if (settled) return;
+      settled = true;
+      image.onload = null;
+      image.onerror = null;
+      if (pendingFlagImages.get(countryId)?.promise === promise) {
+        pendingFlagImages.delete(countryId);
+      }
+      resolveImage(result);
+    };
+    const cancel = () => {
+      image.removeAttribute("src");
+      finish(null);
+    };
+    image.onload = () => {
+      if (disposed) {
+        finish(null);
+        return;
+      }
+      flagImages.set(countryId, image);
+      finish(image);
+    };
+    image.onerror = () => finish(null);
+    pendingFlagImages.set(countryId, { image, promise, cancel });
+    try {
+      image.src = `${import.meta.env.BASE_URL}assets/country-flags/${countryCode}.svg`;
+    } catch {
+      finish(null);
+    }
     return promise;
   };
 
@@ -1365,6 +1626,7 @@ export async function createGlobeAtlas(
     hoveredCountryId?: string | null,
     candidateCountryId?: string | null
   ) => {
+    if (disposed) return;
     applyHighlightState(
       selectedCountryId,
       hoveredCountryId,
@@ -1383,6 +1645,9 @@ export async function createGlobeAtlas(
       editionId === activeEditionId &&
       (editionId !== "natural-earth-2026" || language === activeLanguage)
     ) {
+      globeMapCache.retainRequired(
+        globeMapCacheKey(editionId, compact, language)
+      );
       return;
     }
 
@@ -1439,14 +1704,26 @@ export async function createGlobeAtlas(
     setVisualStyle,
     preloadVisualStyle,
     dispose: () => {
+      if (disposed) return;
       disposed = true;
       visualStyleRequest += 1;
+      pendingFlagImages.forEach(({ cancel }) => cancel());
+      pendingFlagImages.clear();
+      flagImages.clear();
       mapTexture.dispose();
       reliefTexture.dispose();
       highlightTexture.dispose();
       outlineGeometries.forEach((geometry) => geometry?.dispose());
       outlineGeometries.clear();
+      countrySpatialIndex.clear();
+      selectableFeatures.length = 0;
+      featuresByCountryId.clear();
+      countriesById.clear();
+      centroids.clear();
       focusMetrics.clear();
+      releaseGlobeCanvas(mapCanvas);
+      releaseGlobeCanvas(reliefCanvas);
+      releaseGlobeCanvas(highlightCanvas);
     },
   };
 }

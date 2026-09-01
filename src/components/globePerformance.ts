@@ -303,3 +303,141 @@ export function resolveGlobeResize(
     size,
   };
 }
+
+export type GlobeWebGlContextSnapshot = Readonly<{
+  contextLost: boolean;
+  lossCount: number;
+  restorationCount: number;
+  lastLossAt: number | null;
+  lastRestorationAt: number | null;
+}>;
+
+export type GlobeWebGlContextLifecycleOptions = Readonly<{
+  onContextLost?: (
+    snapshot: GlobeWebGlContextSnapshot,
+    event: Event
+  ) => void;
+  onContextRestored?: (
+    snapshot: GlobeWebGlContextSnapshot,
+    event: Event
+  ) => void;
+  /** For a demand-rendered scene, usually React Three Fiber's invalidate. */
+  requestRender?: () => void;
+  now?: () => number;
+}>;
+
+export type GlobeWebGlContextLifecycle = Readonly<{
+  snapshot: () => GlobeWebGlContextSnapshot;
+  dispose: () => void;
+}>;
+
+/**
+ * Installs the browser contract required for recoverable WebGL context loss.
+ * Calling preventDefault on `webglcontextlost` permits restoration; after the
+ * restore callback has rebuilt any app-owned state, demand rendering is nudged
+ * once. The returned disposer makes listener ownership explicit.
+ */
+export function installGlobeWebGlContextLifecycle(
+  canvas: Pick<HTMLCanvasElement, "addEventListener" | "removeEventListener">,
+  options: GlobeWebGlContextLifecycleOptions = {}
+): GlobeWebGlContextLifecycle {
+  const now = options.now ?? Date.now;
+  let contextLost = false;
+  let lossCount = 0;
+  let restorationCount = 0;
+  let lastLossAt: number | null = null;
+  let lastRestorationAt: number | null = null;
+  let disposed = false;
+  const snapshot = (): GlobeWebGlContextSnapshot => ({
+    contextLost,
+    lossCount,
+    restorationCount,
+    lastLossAt,
+    lastRestorationAt,
+  });
+  const onLost: EventListener = (event) => {
+    if (disposed) return;
+    event.preventDefault();
+    contextLost = true;
+    lossCount += 1;
+    lastLossAt = now();
+    options.onContextLost?.(snapshot(), event);
+  };
+  const onRestored: EventListener = (event) => {
+    if (disposed) return;
+    contextLost = false;
+    restorationCount += 1;
+    lastRestorationAt = now();
+    options.onContextRestored?.(snapshot(), event);
+    options.requestRender?.();
+  };
+
+  canvas.addEventListener("webglcontextlost", onLost);
+  canvas.addEventListener("webglcontextrestored", onRestored);
+
+  return {
+    snapshot,
+    dispose: () => {
+      if (disposed) return;
+      disposed = true;
+      canvas.removeEventListener("webglcontextlost", onLost);
+      canvas.removeEventListener("webglcontextrestored", onRestored);
+    },
+  };
+}
+
+export type GlobeRendererResourceSnapshot = Readonly<{
+  geometries: number;
+  textures: number;
+  programs: number;
+  calls: number;
+  triangles: number;
+  points: number;
+  lines: number;
+}>;
+
+export type GlobeRendererInfoSource = Readonly<{
+  info: Readonly<{
+    memory?: Readonly<{
+      geometries?: number;
+      textures?: number;
+    }>;
+    render?: Readonly<{
+      calls?: number;
+      triangles?: number;
+      points?: number;
+      lines?: number;
+    }>;
+    programs?: ArrayLike<unknown> | null;
+  }>;
+}>;
+
+function nonNegativeDiagnosticCount(value: unknown) {
+  return typeof value === "number" && Number.isFinite(value)
+    ? Math.max(0, value)
+    : 0;
+}
+
+/** Produces a serializable leak diagnostic without retaining renderer objects. */
+export function readGlobeRendererResourceSnapshot(
+  renderer: GlobeRendererInfoSource
+): GlobeRendererResourceSnapshot {
+  const { memory, render, programs } = renderer.info;
+  return {
+    geometries: nonNegativeDiagnosticCount(memory?.geometries),
+    textures: nonNegativeDiagnosticCount(memory?.textures),
+    programs: nonNegativeDiagnosticCount(programs?.length),
+    calls: nonNegativeDiagnosticCount(render?.calls),
+    triangles: nonNegativeDiagnosticCount(render?.triangles),
+    points: nonNegativeDiagnosticCount(render?.points),
+    lines: nonNegativeDiagnosticCount(render?.lines),
+  };
+}
+
+/** Shrinks a detached backing store after its Three.js texture is disposed. */
+export function releaseGlobeCanvas(
+  canvas: Pick<HTMLCanvasElement, "width" | "height">
+) {
+  canvas.width = 1;
+  canvas.height = 1;
+}

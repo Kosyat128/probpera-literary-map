@@ -11,6 +11,7 @@ import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
 import {
   GLOBE_MAX_FOCUS_RADIUS,
+  GLOBE_MAX_CAMERA_RADIUS,
   GLOBE_SAFE_CAMERA_RADIUS,
   angularDistanceRadians,
   cameraFlightDurationMs,
@@ -143,7 +144,6 @@ type SettlingMotion = {
   target: THREE.Vector3;
 };
 
-const HOME_MAX_DISTANCE = 5.15;
 const MIN_POLAR_ANGLE = 0.08;
 const MAX_POLAR_ANGLE = Math.PI - MIN_POLAR_ANGLE;
 const DAMPING_FACTOR = 0.055;
@@ -685,7 +685,7 @@ export default function GlobeCameraRig({
       enablePan={false}
       enableZoom={interactionEnabled}
       minDistance={GLOBE_SAFE_CAMERA_RADIUS}
-      maxDistance={Math.max(HOME_MAX_DISTANCE, GLOBE_MAX_FOCUS_RADIUS)}
+      maxDistance={Math.max(GLOBE_MAX_CAMERA_RADIUS, GLOBE_MAX_FOCUS_RADIUS)}
       minPolarAngle={MIN_POLAR_ANGLE}
       maxPolarAngle={MAX_POLAR_ANGLE}
       rotateSpeed={0.48}

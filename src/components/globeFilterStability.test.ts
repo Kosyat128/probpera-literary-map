@@ -10,6 +10,10 @@ const worldMapSource = readFileSync(
   new URL("./LiteraryWorldMap.tsx", import.meta.url),
   "utf8"
 );
+const writerPanelSource = readFileSync(
+  new URL("./WriterPanel.tsx", import.meta.url),
+  "utf8"
+);
 const cssSource = readFileSync(new URL("../index.css", import.meta.url), "utf8");
 
 describe("globe filter stability wiring", () => {
@@ -104,6 +108,55 @@ describe("globe filter stability wiring", () => {
     expect(premiumCss).toContain("@media (prefers-reduced-motion: reduce)");
   });
 
+  it("uses one geometry contract and keeps edition navigation discoverable", () => {
+    const polishCss = cssSource.slice(
+      cssSource.indexOf(
+        "/* Literary Planet: canonical geometry and post-merge interaction polish. */"
+      )
+    );
+
+    for (const token of [
+      "--atlas-globe-chrome-top",
+      "--atlas-globe-rail-top",
+      "--atlas-globe-panel-reserve",
+      "--atlas-globe-coordinate-bottom",
+      "--atlas-globe-controls-offset",
+    ]) {
+      expect(polishCss).toContain(token);
+    }
+    expect(globeSource).toContain('data-can-scroll-left={editionRailScroll.canScrollLeft}');
+    expect(globeSource).toContain('className="globe-edition-compact-select"');
+    expect(globeSource).toContain('className="globe-edition-scroll-cue is-previous"');
+    expect(globeSource).toContain('className="globe-edition-scroll-cue is-next"');
+    expect(polishCss).toContain('.globe-style-switch[data-can-scroll-left="true"]');
+    expect(polishCss).toContain('.globe-style-switch[data-can-scroll-right="true"]');
+    expect(polishCss).toMatch(
+      /\.globe-edition-scroll-cue\[data-visible="true"\]\s*\{[\s\S]*?display:\s*flex;[\s\S]*?visibility:\s*visible;/u
+    );
+    expect(polishCss).toMatch(
+      /@media \(min-width: 981px\) and \(max-width: 1325px\)[\s\S]*?\.globe-edition-compact-select\s*\{[\s\S]*?display:\s*block;/u
+    );
+  });
+
+  it("keeps loading feedback optical and reduced-motion safe", () => {
+    const polishCss = cssSource.slice(
+      cssSource.indexOf(
+        "/* Literary Planet: canonical geometry and post-merge interaction polish. */"
+      )
+    );
+    const transitionRule =
+      polishCss.match(/\.literary-globe \.globe-edition-transition\s*\{([\s\S]*?)\}/u)?.[1] ?? "";
+
+    expect(globeSource).toContain('data-globe-edition-transition={editionTransitionState}');
+    expect(globeSource).toContain('className="globe-webgl-recovery"');
+    expect(globeSource).toContain('className="globe-scale-feedback"');
+    expect(transitionRule).toContain("pointer-events: none");
+    expect(transitionRule).not.toContain("backdrop-filter");
+    expect(polishCss).toMatch(
+      /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.globe-edition-transition > span/u
+    );
+  });
+
   it("keeps country archive cards readable, aligned, and overflow-safe", () => {
     const archiveCss = cssSource.slice(
       cssSource.indexOf(
@@ -130,6 +183,29 @@ describe("globe filter stability wiring", () => {
       ".writer-detail .writer-record-meta :is(a, .writer-record-open-book)"
     );
     expect(archiveCss).toContain("@media (max-width: 360px)");
+  });
+
+  it("keeps compact country actions complete and card affordances explicit", () => {
+    const polishCss = cssSource.slice(
+      cssSource.indexOf(
+        "/* Literary Planet: canonical geometry and post-merge interaction polish. */"
+      )
+    );
+
+    expect(appSource).toContain('className="atlas-country-sheet-action-full"');
+    expect(appSource).toContain('className="atlas-country-sheet-action-compact"');
+    expect(appSource).toContain('aria-hidden="true"');
+    expect(writerPanelSource).toContain("country-metric--static");
+    expect(writerPanelSource).toContain("country-metric--action");
+    expect(polishCss).toMatch(
+      /\.country-panel \.panel-topline\s*\{[\s\S]*?top:\s*0;[\s\S]*?backdrop-filter:\s*none;/u
+    );
+    expect(polishCss).toMatch(
+      /@media \(max-width: 360px\)[\s\S]*?\.atlas-country-sheet-action-full\s*\{[\s\S]*?display:\s*none;/u
+    );
+    expect(polishCss).toMatch(
+      /@media \(max-width: 340px\)[\s\S]*?\.writer-detail-tabs\s*\{[\s\S]*?overflow-x:\s*auto;[\s\S]*?scroll-snap-type:\s*x proximity;/u
+    );
   });
 
   it("mounts the 200-country fallback only after visitors open it", () => {

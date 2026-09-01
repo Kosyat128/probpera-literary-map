@@ -2603,11 +2603,29 @@ export default function App() {
                       </small>
                     </span>
                     <span className="atlas-country-sheet-action">
-                      {atlasExperience.state.sheetState === "expanded"
-                        ? t("Свернуть")
-                        : atlasExperience.state.sheetState === "half"
-                          ? t("Развернуть")
-                          : t("Открыть архив")}
+                      <span className="atlas-country-sheet-action-full">
+                        {atlasExperience.state.sheetState === "expanded"
+                          ? t("Свернуть")
+                          : atlasExperience.state.sheetState === "half"
+                            ? t("Развернуть")
+                            : t("Открыть архив")}
+                      </span>
+                      <span
+                        className="atlas-country-sheet-action-compact"
+                        aria-hidden="true"
+                      >
+                        {atlasExperience.state.sheetState === "expanded"
+                          ? t("Свернуть")
+                          : atlasExperience.state.sheetState === "half"
+                            ? t("Развернуть")
+                            : language === "en"
+                              ? "Open"
+                              : "Открыть"}
+                      </span>
+                      <span
+                        className="atlas-country-sheet-action-chevron"
+                        aria-hidden="true"
+                      />
                     </span>
                   </Button>
                 )}
