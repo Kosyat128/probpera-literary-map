@@ -298,7 +298,7 @@ describe("site font orphan cleanup", () => {
         "cleanup-site-font-orphans.yml"
       ),
       "utf8"
-    );
+    ).replace(/\r\n?/gu, "\n");
     expect(workflow).toContain('cron: "41 3 * * 0"');
     expect(workflow).toContain("workflow_dispatch:");
     expect(workflow).toContain("default: false");

@@ -41,9 +41,6 @@ export const writerProfileFieldRules = {
   deathDate: { kind: "text", maxLength: 100 },
   birthPlace: { kind: "text", maxLength: 500 },
   deathPlace: { kind: "text", maxLength: 500 },
-  portrait: { kind: "image", maxLength: 2_000 },
-  portraitAlt: { kind: "text", maxLength: 1_000 },
-  portraitSourceUrl: { kind: "image", maxLength: 2_000 },
   country: { kind: "text", maxLength: 240 },
   movement: { kind: "text", maxLength: 500 },
   literaryEra: { kind: "text", maxLength: 500 },
@@ -69,6 +66,50 @@ export const countryProfileFields = Object.freeze(
 export const writerProfileFields = Object.freeze(
   Object.keys(writerProfileFieldRules)
 );
+
+export const protectedWriterPortraitFields = Object.freeze([
+  "portrait",
+  "portraitAlt",
+  "portraitSourceUrl",
+  "portraitRights",
+] as const);
+
+export function resolveEditorialSourceFields(
+  catalogFields: Record<string, unknown>,
+  enabledOverrides: Record<string, unknown>
+) {
+  return { ...catalogFields, ...enabledOverrides };
+}
+
+export function preserveProtectedEditorialField(
+  editedFields: Record<string, unknown>,
+  existingFields: Record<string, unknown>,
+  protectedField: string
+) {
+  return {
+    ...editedFields,
+    ...(Object.hasOwn(existingFields, protectedField)
+      ? { [protectedField]: existingFields[protectedField] }
+      : {}),
+  };
+}
+
+export function preserveUneditedEditorialFields(
+  editedFields: Record<string, unknown>,
+  existingFields: Record<string, unknown>,
+  fieldNames: readonly string[]
+) {
+  const result = { ...editedFields };
+  for (const fieldName of fieldNames) {
+    if (
+      !Object.hasOwn(result, fieldName) &&
+      Object.hasOwn(existingFields, fieldName)
+    ) {
+      result[fieldName] = existingFields[fieldName];
+    }
+  }
+  return result;
+}
 
 function plainRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value && typeof value === "object" && !Array.isArray(value));
@@ -221,6 +262,14 @@ export function parseEditorialProfileOverride(input: unknown) {
       ? input.enabledFields.filter((field): field is string => typeof field === "string")
       : []
   );
+  if (
+    entityType === "writer" &&
+    protectedWriterPortraitFields.some((field) => enabledFields.has(field))
+  ) {
+    throw new Error(
+      "Портрет, его источник и права меняются только в проверенном каталоге."
+    );
+  }
   const rules: Record<string, FieldRule> =
     entityType === "country" ? countryProfileFieldRules : writerProfileFieldRules;
   const fields = Object.fromEntries(

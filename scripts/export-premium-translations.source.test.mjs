@@ -24,4 +24,22 @@ describe("premium translation public export", () => {
     const publicKeyUses = source.match(/publicSnapshotKey/gu) || [];
     expect(publicKeyUses.length).toBeGreaterThanOrEqual(4);
   });
+
+  it("applies explicit biography tombstones instead of preserving stale public text", () => {
+    expect(source).toContain("applyPublishedWriterBiographyOverrides({");
+    expect(source).toContain("normalizeBiographyTranslations,");
+  });
+
+  it("uses the fail-closed public biography profile normalizer", () => {
+    expect(source).toContain(
+      'await fs.readFile(editorialCatalogPath, "utf8")'
+    );
+    expect(source).toContain(
+      "normalizePublicWriterBiographyTranslations(value, { writerName })"
+    );
+    expect(source.indexOf("effectiveFields.fullName")).toBeLessThan(
+      source.indexOf("effectiveFields.name")
+    );
+    expect(source).not.toContain("function normalizeBiographyProfile(");
+  });
 });

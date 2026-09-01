@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { TextDecoder } from "node:util";
 import { describe, expect, it } from "vitest";
+import { expectNoProvenLiveFactRegression } from "./writerBiographyFactReviewBatch.generated-test-support";
 import {
   legacyWriterBiography,
   selectWriterBiography,
@@ -234,6 +235,19 @@ describe("writer biography claim review batch 08", () => {
       }>;
       wikidataIdentityReviewQueue: Array<{ key: string }>;
       badQidIdentityQueue: Array<{ key: string }>;
+      records: Array<{
+        key: string;
+        manualResolutions: Array<{
+          field: string;
+          cardValue: string;
+          decision: string;
+          sources: Array<{ url: string }>;
+        }>;
+        wikidataEvidence: {
+          identityValidationStatus?: string;
+          manualIdentityConfirmation?: { qid: string } | null;
+        };
+      }>;
     };
     const batchKeySet = new Set<string>(expectedKeys);
     const discrepancies = factQa.wikidataDateDiscrepancyQueue
@@ -244,15 +258,31 @@ describe("writer biography claim review batch 08", () => {
         cardValue: item.cardValue,
         candidate: item.bestRankClaims[0]?.value,
       }));
-    const identityMatches = [
-      ...factQa.wikidataIdentityReviewQueue,
-      ...factQa.badQidIdentityQueue,
-    ]
-      .filter((item) => batchKeySet.has(item.key))
-      .map((item) => item.key);
-
     expect(discrepancies).toEqual([]);
-    expect(identityMatches).toEqual(["dominican_republic:juan_bosch"]);
+    expectNoProvenLiveFactRegression(factQa, batchKeySet);
+
+    const mudimbeQa = factQa.records.find(
+      (record) => record.key === "democratic_republic_of_congo:v_y_mudimbe"
+    );
+    expect(mudimbeQa?.wikidataEvidence).toMatchObject({
+      identityValidationStatus: "identity-corroborated",
+      manualIdentityConfirmation: { qid: "Q3056528" },
+    });
+    expect(mudimbeQa?.manualResolutions).toContainEqual(
+      expect.objectContaining({
+        field: "deathDate",
+        cardValue: "2025-04-21",
+        decision: "retain-authority-confirmed-card",
+      })
+    );
+    expect(
+      mudimbeQa?.manualResolutions
+        .find((item) => item.field === "deathDate")
+        ?.sources.map((source) => source.url)
+    ).toEqual([
+      "https://trinity.duke.edu/news/literature-professor-valentin-yves-mudimbe-passes-away",
+      "https://www.cambridge.org/core/journals/africa/article/life-and-work-of-vy-mudimbe-8-december-194121-april-2025/E7E89FC89E5B6CDAF870EA8B54A0D5E0",
+    ]);
 
     const note = (key: string) =>
       writerBiographyFactReviewBatch08.find((record) => record.key === key)

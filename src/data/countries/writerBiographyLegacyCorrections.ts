@@ -1171,7 +1171,8 @@ export const writerPublicProfileFactCorrections = [
       years: "1801-1865",
       birthDate: "1801-08-17",
       deathDate: "1865-12-31",
-      works: ["Соседи", "Херта"],
+      birthPlace: "Туорла, Финляндия",
+      works: ["Соседи", "Герта"],
       nationality: "шведка",
     },
     evidence: [
@@ -1185,8 +1186,13 @@ export const writerPublicProfileFactCorrections = [
         url: "https://skbl.se/en/article/FredrikaBremer",
         checkedAt,
       },
+      {
+        provider: "Большая российская энциклопедия",
+        url: "https://old.bigenc.ru/world_history/text/1883169",
+        checkedAt: "2026-08-31",
+      },
     ],
-    note: "Corrects the false Runeberg full name, life dates, nationality and work list while preserving Finland as her birthplace connection.",
+    note: "Corrects the false Runeberg full name, life dates, birthplace, nationality and work list using the checked Bremer records, including the authoritative Russian encyclopedia entry.",
   },
   {
     countryId: "france",

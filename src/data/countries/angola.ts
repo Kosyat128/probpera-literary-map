@@ -233,7 +233,7 @@ export const angola: Country = {
 
     {
       id: "ondjaki",
-      name: "Онжани",
+      name: "Онджаки",
       fullName: "Ndalu de Almeida",
       years: "1977-",
 
@@ -252,7 +252,7 @@ export const angola: Country = {
       bio: "Современный ангольский писатель, один из наиболее известных авторов португалоязычной Африки.",
 
       works: [
-        "Прозрачный дождь"
+        "Прозрачные"
       ],
 
       genres: [

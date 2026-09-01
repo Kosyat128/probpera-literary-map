@@ -14,6 +14,8 @@ import {
 } from "./lib/cms-publication-state.mjs";
 import { fetchCmsPublicationHead } from "./lib/cms-publication-head.mjs";
 import { collectPostgrestPages } from "./lib/postgrest-pagination.mjs";
+import { applyPublishedWriterBiographyOverrides } from "./lib/writer-biography-public-overrides.mjs";
+import { normalizePublicWriterBiographyTranslations } from "./lib/writer-biography-public-profile.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCmsDirectory = path.join(projectRoot, "public", "cms");
@@ -21,6 +23,13 @@ const snapshotPath = path.join(publicCmsDirectory, "published-content.json");
 const publishedArticlesPath = path.join(
   publicCmsDirectory,
   "published-articles.json"
+);
+const editorialCatalogPath = path.join(
+  projectRoot,
+  "apps",
+  "admin",
+  "catalog-assets",
+  "editorial-catalog.json"
 );
 const countryProfilesModule = path.join(
   projectRoot,
@@ -67,31 +76,6 @@ const countryTranslationMethods = new Set([
   "editorial-original",
   "human-translation",
   "machine-translation",
-]);
-const biographyStatuses = new Set(["reviewed", "verified"]);
-const biographyMethods = new Set([
-  "editorial-original",
-  "human-translation",
-  "machine-translation",
-  "licensed-source",
-]);
-const biographyRights = new Set([
-  "project-original",
-  "public-domain",
-  "licensed",
-  "permission",
-]);
-const biographySourceUsages = new Set([
-  "structured-data",
-  "fact-check",
-  "licensed-copy",
-]);
-const biographySourceFields = new Set([
-  "identity",
-  "life-dates",
-  "biography-facts",
-  "awards",
-  "works",
 ]);
 const workTranslationStatuses = new Set(["reviewed", "verified"]);
 const workTranslationMethods = new Set([
@@ -287,103 +271,6 @@ function normalizeCountryTranslation(value) {
   };
 }
 
-function normalizeBiographySource(value) {
-  const row = objectValue(value);
-  const provider = stringValue(row.provider, 240);
-  const url = stringValue(row.url, 1_000);
-  const fields = safeStringList(row.fields, biographySourceFields, 20);
-  const usage = stringValue(row.usage, 80);
-  const retrievedAt = stringValue(row.retrievedAt, 40);
-  if (
-    !provider ||
-    !/^https:\/\//iu.test(url) ||
-    !fields.length ||
-    !biographySourceUsages.has(usage) ||
-    !retrievedAt
-  ) {
-    return null;
-  }
-  return {
-    provider,
-    url,
-    fields,
-    usage,
-    retrievedAt,
-    author: optionalString(row.author, 300),
-    title: optionalString(row.title, 500),
-    licenseName: optionalString(row.licenseName, 300),
-    licenseUrl: /^https:\/\//iu.test(stringValue(row.licenseUrl, 1_000))
-      ? stringValue(row.licenseUrl, 1_000)
-      : undefined,
-  };
-}
-
-function normalizeBiographyProfile(value, locale) {
-  const row = objectValue(value);
-  const text = stringValue(row.text, 1_600);
-  const sourceLanguage = stringValue(row.sourceLanguage, 80);
-  const status = String(row.status || "");
-  const method = String(row.method || "");
-  const sources = Array.isArray(row.sources)
-    ? row.sources.flatMap((source) => {
-        const normalized = normalizeBiographySource(source);
-        return normalized ? [normalized] : [];
-      })
-    : [];
-  if (
-    row.locale !== locale ||
-    !text ||
-    !sourceLanguage ||
-    !biographyStatuses.has(status) ||
-    !biographyMethods.has(method) ||
-    !sources.length ||
-    (locale === "en" && cyrillicPattern.test(text))
-  ) {
-    return null;
-  }
-
-  const translatedFromLocale =
-    row.translatedFromLocale === "ru" || row.translatedFromLocale === "en"
-      ? row.translatedFromLocale
-      : undefined;
-  const sourceTextRights = biographyRights.has(String(row.sourceTextRights))
-    ? String(row.sourceTextRights)
-    : undefined;
-  const sourceMeta = objectValue(row.translationMeta);
-  const translationMeta = Object.fromEntries(
-    Object.entries({
-      model: optionalString(sourceMeta.model, 120),
-      reviewerModel: optionalString(sourceMeta.reviewerModel, 120),
-      sourceHash: optionalString(sourceMeta.sourceHash, 128),
-      generatedAt: optionalString(sourceMeta.generatedAt, 80),
-    }).filter(([, item]) => item !== undefined)
-  );
-
-  return {
-    locale,
-    text,
-    sourceLanguage,
-    status,
-    method,
-    reviewedAt: optionalString(row.reviewedAt, 40),
-    reviewer: optionalString(row.reviewer, 300),
-    translatedFromLocale,
-    sourceTextRights,
-    sources,
-    ...(Object.keys(translationMeta).length ? { translationMeta } : {}),
-  };
-}
-
-function normalizeBiographyTranslations(value) {
-  const row = objectValue(value);
-  const ru = normalizeBiographyProfile(row.ru, "ru");
-  const en = normalizeBiographyProfile(row.en, "en");
-  return {
-    ...(ru ? { ru } : {}),
-    ...(en ? { en } : {}),
-  };
-}
-
 function normalizeWorkTranslation(row) {
   const locale = row.locale === "ru" || row.locale === "en" ? row.locale : null;
   const title = stringValue(row.title, 300);
@@ -464,6 +351,33 @@ function failStaleExport(error) {
 }
 
 const snapshot = JSON.parse(await fs.readFile(snapshotPath, "utf8"));
+const editorialCatalog = JSON.parse(
+  await fs.readFile(editorialCatalogPath, "utf8")
+);
+const editorialWriterFields = new Map(
+  (editorialCatalog.countries || []).flatMap((country) =>
+    (country.writers || []).map((writer) => [
+      `${country.id}:${writer.id}`,
+      objectValue(writer.fields),
+    ])
+  )
+);
+
+function normalizeBiographyTranslations(value, context) {
+  const catalogFields = editorialWriterFields.get(context.key);
+  if (!catalogFields) {
+    return normalizePublicWriterBiographyTranslations(value);
+  }
+  const effectiveFields = {
+    ...catalogFields,
+    ...objectValue(context.row?.fields),
+  };
+  const writerName =
+    stringValue(effectiveFields.fullName, 300) ||
+    stringValue(effectiveFields.name, 300) ||
+    stringValue(context.row?.writer_id, 200);
+  return normalizePublicWriterBiographyTranslations(value, { writerName });
+}
 const originalHead = publicationHeadFromSnapshot(snapshot);
 let stableHead = originalHead;
 if (serviceRoleKey) {
@@ -572,22 +486,11 @@ for (const row of countryOverrides) {
   };
 }
 
-const writerProfileOverrides = {
-  ...objectValue(snapshot.writerProfileOverrides),
-};
-for (const row of writerOverrides) {
-  const fields = objectValue(row.fields);
-  const biographyTranslations = normalizeBiographyTranslations(
-    fields.biographyTranslations
-  );
-  if (!Object.keys(biographyTranslations).length) continue;
-  const key = `${row.country_id}:${row.writer_id}`;
-  const existing = objectValue(writerProfileOverrides[key]);
-  writerProfileOverrides[key] = {
-    ...existing,
-    biographyTranslations,
-  };
-}
+const writerProfileOverrides = applyPublishedWriterBiographyOverrides({
+  snapshotOverrides: snapshot.writerProfileOverrides,
+  rows: writerOverrides,
+  normalizeBiographyTranslations,
+});
 
 const workTranslationsById = new Map();
 for (const row of workTranslations) {

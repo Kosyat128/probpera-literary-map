@@ -318,6 +318,7 @@ export const russianWriterExpansion: readonly WriterProfile[] = seeds.map(
         method: "editorial-original",
         reviewedAt,
         reviewer: "Редакционная фактологическая проверка Codex",
+        sourceTextRights: "project-original",
         sources: [biographySource(seed.sources[0])],
       },
     },

@@ -302,7 +302,7 @@
 
 Вердикт: `corrected`. Источники:
 
-- [John le Carré - official website](https://johnlecarre.com/biography/) - Официальная биография подтверждает настоящее имя, псевдоним, службу Корнуэлла в MI5 и MI6, а также авторство романов о Джордже Смайли.
+- [John le Carré - official website](https://johnlecarre.com/biography/) - Официальная биография подтверждает настоящее имя, псевдоним и службу Корнуэлла в британском МИД, а также прямо перечисляет роман The Spy Who Came in from the Cold (1963).
 - [Bodleian Libraries, University of Oxford](https://archives.bodleian.ox.ac.uk/repositories/2/resources/14397) - Архивное описание Бодлианской библиотеки независимо подтверждает идентичность автора, годы жизни, карьеру и состав рукописного наследия.
 
 ### `england:john_marrs`
@@ -352,4 +352,3 @@
 
 - [Trinity College Dublin - Trinity Writers](https://www.tcd.ie/trinitywriters/draft/assets/pdf/Swift%2C%20Trinity%20Writers.pdf) - Университетский профиль подтверждает англо-ирландскую идентичность, церковную должность Свифта и авторство трёх названных произведений.
 - [National Portrait Gallery, London](https://www.npg.org.uk/collections/search/portrait?LinkID=mp07167&mkey=mw06171&rNo=3) - Национальная портретная галерея независимо идентифицирует Свифта как автора и настоятеля собора Святого Патрика.
-

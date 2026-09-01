@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { expectNoProvenLiveFactRegression } from "./writerBiographyFactReviewBatch.generated-test-support";
 import {
   legacyWriterBiography,
   selectWriterBiography,
@@ -139,22 +140,13 @@ describe("writer biography claim review batch 01", () => {
     }
   });
 
-  it("has no unresolved identity or displayed-date queue match in this batch", () => {
+  it("keeps the historical batch free of proven live fact regressions", () => {
     const report = JSON.parse(
       fs.readFileSync(reportPath, "utf8")
     ) as FactQaReport;
     const batchKeys = new Set(expectedKeys);
 
-    expect(
-      report.wikidataIdentityReviewQueue.filter((record) =>
-        batchKeys.has(record.key as (typeof expectedKeys)[number])
-      )
-    ).toEqual([]);
-    expect(
-      report.wikidataDateDiscrepancyQueue.filter((record) =>
-        batchKeys.has(record.key as (typeof expectedKeys)[number])
-      )
-    ).toEqual([]);
+    expectNoProvenLiveFactRegression(report, batchKeys);
   });
 
   it("covers every field that the final fact QA queue sends to human review", () => {

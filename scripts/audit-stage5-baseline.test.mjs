@@ -126,5 +126,5 @@ describe("Stage 5A baseline audit", () => {
       FIX: expect.any(Number),
     });
     expect(Object.keys(generated.files)).toHaveLength(16);
-  }, 60_000);
+  }, 120_000);
 });

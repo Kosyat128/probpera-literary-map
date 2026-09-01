@@ -56,9 +56,6 @@ const writerFields = [
   "deathDate",
   "birthPlace",
   "deathPlace",
-  "portrait",
-  "portraitAlt",
-  "portraitSourceUrl",
   "country",
   "movement",
   "literaryEra",
@@ -70,6 +67,7 @@ const writerFields = [
   "category",
   "bio",
   "biography",
+  "biographyTranslations",
   "description",
   "works",
   "awards",
@@ -101,7 +99,7 @@ try {
   const source = await import(
     `${pathToFileURL(temporaryBundle).href}?v=${Date.now()}`
   );
-  const countries = source.archiveCountries.map((country) => ({
+  const countries = source.archiveEditorialCatalogCountries.map((country) => ({
     id: country.id,
     label: country.name || country.id,
     fields: selectedFields(country, countryFields),

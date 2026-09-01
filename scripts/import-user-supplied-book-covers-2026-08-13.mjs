@@ -531,7 +531,7 @@ async function validateCanonicalArchive(committedManifest) {
     baselinePublicCount,
     currentPublicCount,
   } = archiveModule;
-  if (baseline.length !== 9_767 || current.length !== 9_767) {
+  if (baseline.length !== 9_768 || current.length !== 9_768) {
     throw new Error(
       "Размер архива изменился: baseline=" +
         baseline.length +

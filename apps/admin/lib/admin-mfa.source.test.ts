@@ -13,6 +13,7 @@ const loginPage = read("apps/admin/app/(auth)/login/page.tsx");
 const challengeAction = read("apps/admin/app/(auth)/mfa/actions.ts");
 const challengePage = read("apps/admin/app/(auth)/mfa/page.tsx");
 const settingsComponent = read("apps/admin/components/AdminMfaSettings.tsx");
+const settingsLoader = read("apps/admin/components/AdminMfaSettingsLoader.tsx");
 const settingsPage = read("apps/admin/app/(dashboard)/settings/page.tsx");
 
 describe("admin TOTP MFA source contract", () => {
@@ -67,7 +68,14 @@ describe("admin TOTP MFA source contract", () => {
   });
 
   it("surfaces MFA status and enrollment from the existing settings page", () => {
-    expect(settingsPage).toContain("<AdminMfaSettings");
+    expect(settingsPage).toContain("<AdminMfaSettingsLoader");
+    expect(settingsPage).not.toContain(
+      'from "@/components/AdminMfaSettings"'
+    );
+    expect(settingsLoader).toContain(
+      'dynamic(() => import("./AdminMfaSettings")'
+    );
+    expect(settingsLoader).toContain("ssr: false");
     expect(settingsPage).toContain("adminMfaStatusLabel");
     expect(settingsPage).toContain("MFA редакции");
   });

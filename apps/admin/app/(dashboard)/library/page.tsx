@@ -860,23 +860,10 @@ export default async function LibraryPage({
               label="Годы жизни"
               value={textValue(writerOverrideFields.years)}
             />
-            <VisualEntityFieldForm
-              formContext={formContext}
-              entityType="writer"
-              entityId={selectedWriterEntityId}
-              field="portrait"
-              label="Портрет"
-              value={textValue(writerOverrideFields.portrait)}
-              hint="HTTPS-адрес или путь к проверенному файлу сайта."
-            />
-            <VisualEntityFieldForm
-              formContext={formContext}
-              entityType="writer"
-              entityId={selectedWriterEntityId}
-              field="portraitAlt"
-              label="Описание портрета"
-              value={textValue(writerOverrideFields.portraitAlt)}
-            />
+            <p className="editorial-note">
+              Портрет и его атрибуция публикуются только из проверенного каталога
+              и недоступны для быстрой раздельной правки.
+            </p>
             <VisualEntityFieldForm
               formContext={formContext}
               entityType="writer"

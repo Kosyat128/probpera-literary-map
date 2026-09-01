@@ -1,47 +1,47 @@
 {
   "generatedAt": "2026-08-31T00:00:00.000Z",
-  "datasetFingerprint": "d5f48b1599ba21d966d76de9a08963523116ae6b08f4f7f620ff029f7bde46e0",
+  "datasetFingerprint": "7c576ffbd0ea1e07909404a5071a27fd1e7f4eca1ab7ccff9de463458068a38c",
   "summary": {
-    "archiveRecords": 10053,
-    "archiveDraftCards": 9777,
+    "archiveRecords": 10054,
+    "archiveDraftCards": 9778,
     "archiveNonPublicEditorialCards": 248,
-    "archiveNonPublicCards": 10025,
-    "rawDraftIds": 9780,
+    "archiveNonPublicCards": 10026,
+    "rawDraftIds": 9781,
     "rawNonPublicEditorialIds": 248,
-    "rawTargetIds": 10028,
+    "rawTargetIds": 10029,
     "shadowRawIds": 3,
     "statuses": {
       "merge": 47,
       "ready": 20,
       "reject": 242,
-      "research": 9719
+      "research": 9720
     },
     "archiveStatuses": {
       "merge": 44,
       "ready": 20,
       "reject": 242,
-      "research": 9719
+      "research": 9720
     },
-    "remainingCanonicalResearch": 9719,
-    "remainingArchiveResearch": 9719,
+    "remainingCanonicalResearch": 9720,
+    "remainingArchiveResearch": 9720,
     "safeProcessedTargetIds": 309,
     "sourceKinds": {
       "curated-draft": 45,
       "editorial-nonpublic": 248,
       "generated-openlibrary": 6567,
       "generated-shadow": 3,
-      "legacy-title-only": 3165
+      "legacy-title-only": 3166
     },
     "archiveTargetSourceKinds": {
       "curated-draft": 45,
       "editorial-nonpublic": 248,
       "generated-openlibrary": 6567,
-      "legacy-title-only": 3165
+      "legacy-title-only": 3166
     },
     "archiveDraftSourceKinds": {
       "curated-draft": 45,
       "generated-openlibrary": 6567,
-      "legacy-title-only": 3165
+      "legacy-title-only": 3166
     },
     "fields": {
       "firstPublished": 6550,

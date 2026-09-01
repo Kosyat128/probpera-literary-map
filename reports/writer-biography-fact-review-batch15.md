@@ -122,7 +122,7 @@ Held означает, что исходная карточка не может 
   - Фердинанд Ойоно был камерунским писателем и дипломатом, автором трёх опубликованных романов. (`corrected`)
     - [United Nations](https://www.un.org/sg/en/content/former-secretary-general/statements/2010-06-10/secretary-generals-remarks-the-republic-of-cameroon-national-assembly-delivered) - Генеральный секретарь ООН назвал Ойоно бывшим министром, писателем и бывшим постоянным представителем Камеруна при ООН и зафиксировал смерть 10 июня 2010 года. Проверено: 2026-08-09.
     - [United Nations Digital Library](https://digitallibrary.un.org/record/3808623?ln=en) - Биографическая запись ООН подтверждает дипломатическую идентичность Фердинанда Леопольда Ойоно и его руководство Исполнительным советом ЮНИСЕФ. Проверено: 2026-08-09.
-    - [Bibliothèque nationale de France](https://data.bnf.fr/en/see_all_activities/12170141/page1) - Национальная библиотека подтверждает годы жизни 1929-2010 и библиографию Ойоно. Проверено: 2026-08-09.
+    - [Bibliothèque nationale de France](https://data.bnf.fr/en/see_all_activities/12170141/page1) - Национальная библиотека подтверждает годы жизни 1929-2010 и перечисляет роман Une vie de boy (1956) в библиографии Ойоно. Проверено: 2026-08-09.
 
 ### `cameroon:jean_roger_essomba`
 
@@ -260,4 +260,3 @@ Held означает, что исходная карточка не может 
 - `cameroon:jean_roger_essomba` - исправить identity mapping (Jean-Roger Essomba, не Jean-Roger Essombe Edimo) и заменить `birthDate: 1950` на `1962`.
 - `cameroon:paul_dakeyo` - уточнить `birthDate` до `1948-02-18`.
 - `cameroon:werewere_liking` - уточнить `birthDate` до `1950-05-01`.
-

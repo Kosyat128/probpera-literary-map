@@ -3983,10 +3983,7 @@ main [id] {
   place-items: center;
   width: 38px;
   height: 38px;
-  color: #fff;
-  font-size: 9px;
-  font-weight: 900;
-  background: linear-gradient(145deg, #8c3fbc, #301042);
+  background: transparent;
   border: 1px solid rgba(49, 14, 67, 0.2);
   border-radius: 50%;
 }
@@ -3996,18 +3993,14 @@ main [id] {
   display: grid;
   overflow: hidden;
   place-items: center;
-  color: #fff;
-  background:
-    radial-gradient(circle at 32% 24%, rgba(255, 151, 60, 0.32), transparent 34%),
-    linear-gradient(145deg, #8c3fbc, #301042);
+  background: transparent;
 }
 
-.writer-portrait-initials {
-  position: relative;
-  z-index: 0;
-  font-family: var(--serif);
-  font-weight: 700;
-  letter-spacing: 0.04em;
+.writer-portrait-media.is-empty {
+  visibility: hidden;
+  background: none;
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .writer-portrait-media img,
@@ -7002,6 +6995,10 @@ a.writer-nobel-medal:focus-visible {
   background: linear-gradient(0deg, rgba(19, 2, 29, 0.94), transparent 60%);
 }
 
+.author-showcase button:has(.author-showcase-portrait.is-empty)::after {
+  background: rgba(19, 2, 29, 0.72);
+}
+
 .author-showcase .author-showcase-portrait {
   position: absolute;
   inset: 0;
@@ -7268,17 +7265,20 @@ a.writer-nobel-medal:focus-visible {
   width: 24px;
   height: 24px;
   overflow: hidden;
-  color: #fff5e8;
-  font-family: var(--serif);
-  background: linear-gradient(145deg, #7a229a, #3a0755);
   border: 1px solid rgba(255, 168, 81, 0.58);
   border-radius: 50%;
   object-fit: cover;
 }
 
+.country-result-portrait {
+  background: transparent;
+}
+
 .country-result-book {
   color: var(--orange-soft);
   font-size: 14px;
+  font-family: var(--serif);
+  background: linear-gradient(145deg, #7a229a, #3a0755);
   border-radius: 5px;
 }
 
@@ -13242,9 +13242,7 @@ a.writer-nobel-medal:focus-visible {
   height: 28px;
   overflow: hidden;
   place-items: center;
-  color: #fff;
-  font-size: 7px;
-  background: linear-gradient(145deg, #8c3fbc, #301042);
+  background: transparent;
   border: 1px solid rgba(255, 169, 84, 0.42);
   border-radius: 50%;
 }

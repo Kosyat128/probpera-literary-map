@@ -8,6 +8,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const write = process.argv.includes("--write");
 const ignoredDirectories = new Set([
   ".git",
+  ".cache",
   ".next",
   ".open-next",
   ".wrangler",

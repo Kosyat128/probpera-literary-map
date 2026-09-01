@@ -8,8 +8,11 @@ export type EditorialAuditSummary = {
   portraitedWriters: number;
   expandedBiographies: number;
   russianBiographiesReady: number;
+  russianBiographiesVerified: number;
   russianBiographiesWithheld: number;
   englishBiographiesReady: number;
+  englishBiographiesReviewed: number;
+  englishBiographiesVerified: number;
   englishBiographiesWithheld: number;
   recordsNeedingReview: number;
 };
@@ -39,12 +42,14 @@ export function auditCountryArchive(countries: Country[]): EditorialAuditSummary
       Boolean(writer.editorial.sources?.length)
   ).length;
 
-  const russianBiographiesReady = writers.filter((writer) =>
-    selectWriterBiography(writer, "ru")
-  ).length;
-  const englishBiographiesReady = writers.filter((writer) =>
-    selectWriterBiography(writer, "en")
-  ).length;
+  const russianBiographies = writers
+    .map((writer) => selectWriterBiography(writer, "ru"))
+    .filter((profile) => profile !== null);
+  const englishBiographies = writers
+    .map((writer) => selectWriterBiography(writer, "en"))
+    .filter((profile) => profile !== null);
+  const russianBiographiesReady = russianBiographies.length;
+  const englishBiographiesReady = englishBiographies.length;
 
   return {
     totalWriters: writers.length,
@@ -54,8 +59,17 @@ export function auditCountryArchive(countries: Country[]): EditorialAuditSummary
     portraitedWriters: writers.filter((writer) => Boolean(writer.portrait?.trim())).length,
     expandedBiographies: writers.filter(isExpandedProfile).length,
     russianBiographiesReady,
+    russianBiographiesVerified: russianBiographies.filter(
+      (profile) => profile.status === "verified"
+    ).length,
     russianBiographiesWithheld: writers.length - russianBiographiesReady,
     englishBiographiesReady,
+    englishBiographiesReviewed: englishBiographies.filter(
+      (profile) => profile.status === "reviewed"
+    ).length,
+    englishBiographiesVerified: englishBiographies.filter(
+      (profile) => profile.status === "verified"
+    ).length,
     englishBiographiesWithheld: writers.length - englishBiographiesReady,
     recordsNeedingReview: writers.length - verifiedWriters,
   };

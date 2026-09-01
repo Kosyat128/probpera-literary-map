@@ -251,13 +251,42 @@ const retiredPremiumCompatibilityPaths = Object.freeze([
   "apps/admin/app/(dashboard)/articles/atomic-auto-publish-action.ts",
 ]);
 
-const stage5D1PremiumCurrentStablePaths = Object.freeze(
-  currentIntegrationPremiumTranslationAndHealthPaths.filter(
+const stage5D1PremiumCurrentStablePaths = Object.freeze([
+  ...currentIntegrationPremiumTranslationAndHealthPaths.filter(
     (entry) =>
       !stage5D1AdditiveI18nAttestation.allowedPaths.includes(entry) &&
       !retiredPremiumCompatibilityPaths.includes(entry)
-  )
-);
+  ),
+  ".github/workflows/deploy-pages.yml",
+  "package.json",
+  "apps/admin/app/(dashboard)/editorial-database/actions.ts",
+  "apps/admin/app/(dashboard)/editorial-database/page.tsx",
+  "apps/admin/app/(dashboard)/translations/page.tsx",
+  "apps/admin/lib/editorial-catalog.ts",
+  "apps/admin/lib/editorial-profile-edit.ts",
+  "apps/admin/lib/writer-biography-edit.ts",
+  "scripts/archive-source.ts",
+  "scripts/audit-writer-biography-structured-ru.mjs",
+  "scripts/build-writer-biography-fact-review-overlay.mjs",
+  "scripts/export-editorial-catalog.mjs",
+  "scripts/generate-writer-biography-english-translations.mjs",
+  "scripts/generate-writer-biography-russian-editorial-refinements.mjs",
+  "scripts/lib/writer-biography-english-qa.mjs",
+  "scripts/lib/writer-biography-english-source-contract.mjs",
+  "scripts/lib/writer-biography-public-overrides.mjs",
+  "scripts/lib/writer-biography-public-profile.mjs",
+  "scripts/lib/writer-biography-russian-editorial-contract.mjs",
+  "scripts/lib/writer-biography-structured-ru.mjs",
+  "scripts/workers/writer-biography-english-translation-worker.ts",
+  "scripts/wrangler.writer-biography-english.jsonc",
+  "scripts/writer-biography-english-source.ts",
+  "src/data/countries/index.ts",
+  "src/data/countries/russianWriterExpansion.ts",
+  "src/data/countries/writerBiographyEnglishTranslations.ts",
+  "src/data/countries/writerBiographyFactReviews.ts",
+  "src/data/writerBiography.ts",
+  "src/data/writerBiographyDisplay.ts",
+]);
 
 export const stage5D1EnforcedGovernanceScopes = Object.freeze({
   stage4Globe: Object.freeze({
@@ -271,9 +300,9 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
   premiumCurrent: Object.freeze({
     paths: stage5D1PremiumCurrentStablePaths,
     expected: Object.freeze({
-      files: 43,
+      files: 72,
       sha256:
-        "0f75adb07410920b59bb763d54bee6a00545db2c8ffc24482ceccd4094734ad7",
+        "659d9af0d010ae42d1a0c682e92f0154730dbc859bc9ed28e4aa2ae795f809cb",
     }),
   }),
 });

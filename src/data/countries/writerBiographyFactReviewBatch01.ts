@@ -10,6 +10,7 @@ export type WriterBiographyClaimFinding =
 
 export type WriterBiographyClaimField =
   | "identity-role"
+  | "life-dates"
   | "national-cultural-affiliation"
   | "critical-ranking"
   | "language"
@@ -120,10 +121,10 @@ const iranicaKhalili = source(
   "academic-encyclopedia",
   "https://www.iranicaonline.org/articles/kalili-kalil-allah/"
 );
-const locKhalili = source(
-  "Library of Congress",
-  "national-library",
-  "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/eighteenth-and-nineteenth-century-literature.html"
+const ecoKhalili = source(
+  "ECO Cultural Institute",
+  "intergovernmental-cultural-institution",
+  "https://www.ecieco.org/fa/news/7007/%D8%AE%D9%84%DB%8C%D9%84-%D8%A7%D9%84%D9%84%D9%87-%D8%AE%D9%84%DB%8C%D9%84%DB%8C"
 );
 const iranicaTarzi = source(
   "Encyclopaedia Iranica",
@@ -401,19 +402,37 @@ export const writerBiographyFactReviewBatch01 = [
         "identity-role",
         "Халилулла Халили - афганский поэт XX века.",
         "confirmed",
-        [iranicaKhalili, locKhalili]
+        [iranicaKhalili, ecoKhalili]
+      ),
+      claim(
+        "language",
+        "Основной язык его поэзии - дари (персидский).",
+        "confirmed",
+        [iranicaKhalili]
       ),
       claim(
         "national-cultural-affiliation",
         "Он принадлежит персоязычной литературе Афганистана.",
         "confirmed",
-        [iranicaKhalili, locKhalili]
+        [iranicaKhalili, ecoKhalili]
+      ),
+      claim(
+        "themes-style",
+        "Его творчество продолжает классическую персидскую поэтическую традицию.",
+        "confirmed",
+        [iranicaKhalili]
+      ),
+      claim(
+        "works",
+        "Халили создавал поэтические произведения.",
+        "confirmed",
+        [iranicaKhalili, ecoKhalili]
       ),
       claim(
         "critical-ranking",
         "Оценочный суперлатив заменён проверяемым описанием поэтической традиции.",
         "corrected",
-        [locKhalili, iranicaKhalili]
+        [ecoKhalili, iranicaKhalili]
       ),
     ],
     reviewer,
@@ -435,6 +454,12 @@ export const writerBiographyFactReviewBatch01 = [
         "identity-role",
         "Махмуд Тарзи (1865-1933) - афганский писатель, журналист, переводчик и политический деятель.",
         "corrected",
+        [iranicaTarzi]
+      ),
+      claim(
+        "life-dates",
+        "Махмуд Тарзи жил в 1865-1933 годах.",
+        "confirmed",
         [iranicaTarzi]
       ),
       claim(
@@ -529,6 +554,12 @@ export const writerBiographyFactReviewBatch01 = [
         [treccaniDeRada, albanianAcademyDeRada]
       ),
       claim(
+        "language",
+        "Де Рада создавал поэтические произведения на албанском языке и сопровождал часть изданий собственными переводами на итальянский.",
+        "confirmed",
+        [treccaniDeRada]
+      ),
+      claim(
         "priority-claim",
         "Он был одним из двух главных инициаторов итало-албанского, или арберешского, культурного движения второй половины XIX века.",
         "corrected",
@@ -548,7 +579,7 @@ export const writerBiographyFactReviewBatch01 = [
     originalTextRu:
       "Албанский писатель, поэт и переводчик, один из крупнейших авторов албанской прозы XX века.",
     reviewedTextRu:
-      "Албанский писатель, поэт и переводчик, один из основоположников современной албанской прозы.",
+      "Албанский писатель, поэт и переводчик, работавший в албанской прозе.",
     claimEvidence: [
       claim(
         "identity-role",
@@ -563,8 +594,14 @@ export const writerBiographyFactReviewBatch01 = [
         [pogradecKuteli, qkllKuteli]
       ),
       claim(
+        "themes-style",
+        "Кутели работал в албанской прозе.",
+        "confirmed",
+        [qkllKuteli]
+      ),
+      claim(
         "priority-claim",
-        "Оценочный суперлатив заменён подтверждённой историко-литературной ролью Кутели в становлении современной албанской прозы.",
+        "Оценочное определение «один из крупнейших» удалено; источники подтверждают его роль писателя, переводчика и автора албанской прозы.",
         "corrected",
         [qkllKuteli, pogradecKuteli]
       ),
@@ -572,7 +609,7 @@ export const writerBiographyFactReviewBatch01 = [
     reviewer,
     decision: "corrected",
     notes: [
-      "Субъективное выражение «один из крупнейших» заменено подтверждённой ролью в становлении современной албанской прозы.",
+      "Субъективное выражение «один из крупнейших» удалено; сохранена проверяемая жанровая характеристика.",
     ],
   },
   {
@@ -597,10 +634,10 @@ export const writerBiographyFactReviewBatch01 = [
         [albanianAcademyNaim, albanianAcademyNaimOctober, albaniaDiasporaNaim]
       ),
       claim(
-        "critical-ranking",
-        "Он относится к основоположникам современной албанской литературы.",
+        "priority-claim",
+        "Наим Фрашери заложил основы албанской национальной литературы.",
         "corrected",
-        [albanianAcademyNaim, albaniaDiasporaNaim]
+        [albaniaDiasporaNaim]
       ),
     ],
     reviewer,
@@ -635,6 +672,24 @@ export const writerBiographyFactReviewBatch01 = [
         "Она - алжирская писательница.",
         "confirmed",
         [bnfDjebar, academieDjebar]
+      ),
+      claim(
+        "works",
+        "К произведениям Джебар относятся «L’Amour, la Fantasia» и «Femmes d’Alger dans leur appartement».",
+        "confirmed",
+        [academieDjebar]
+      ),
+      claim(
+        "themes-style",
+        "Её творческая работа охватывала романы, эссе, театр, литературную критику и кино.",
+        "confirmed",
+        [academieDjebar]
+      ),
+      claim(
+        "reception-influence",
+        "Джебар была избрана во Французскую академию, а её произведения переведены на 23 языка.",
+        "confirmed",
+        [academieDjebar]
       ),
       claim(
         "critical-ranking",
@@ -709,6 +764,12 @@ export const writerBiographyFactReviewBatch01 = [
         "Он относится к франкоязычной литературе Алжира.",
         "confirmed",
         [bnfDib]
+      ),
+      claim(
+        "language",
+        "Мохаммед Диб писал литературные произведения по-французски.",
+        "confirmed",
+        [bnfDib, bnfDibArchive, academieDib]
       ),
       claim(
         "priority-claim",
@@ -803,6 +864,12 @@ export const writerBiographyFactReviewBatch01 = [
         [bnfFeraoun, imaFeraoun]
       ),
       claim(
+        "works",
+        "Первым романом Мулуда Ферауна был «Le Fils du pauvre»; среди других его произведений - «La Terre et le Sang» и «Les Chemins qui montent».",
+        "confirmed",
+        [imaFeraoun]
+      ),
+      claim(
         "critical-ranking",
         "Оценочный рейтинг удалён; происхождение, роль и язык автора подтверждены институциональными источниками.",
         "corrected",
@@ -841,6 +908,12 @@ export const writerBiographyFactReviewBatch01 = [
         "Он писал по-французски.",
         "confirmed",
         [bnfBoudjedra, imaBoudjedra]
+      ),
+      claim(
+        "works",
+        "Среди произведений Рашида Буджедры - роман «La Prise de Gibraltar» 1987 года.",
+        "confirmed",
+        [bnfBoudjedra]
       ),
       claim(
         "critical-ranking",
@@ -885,6 +958,12 @@ export const writerBiographyFactReviewBatch01 = [
       claim(
         "themes-style",
         "Его романы, эссе, исторические и журналистские тексты размышляют об Андорре и её жителях.",
+        "confirmed",
+        [andorraMorell, catalanEncyclopediaMorell]
+      ),
+      claim(
+        "works",
+        "Среди романов Антони Мореля - «Set lletanies de mort», «Borís I, rei d’Andorra» и «La neu adversa».",
         "confirmed",
         [andorraMorell, catalanEncyclopediaMorell]
       ),
@@ -973,6 +1052,12 @@ export const writerBiographyFactReviewBatch01 = [
         [ucclaOndjaki, angolaLiteraryPatrimony]
       ),
       claim(
+        "national-cultural-affiliation",
+        "Его творчество относится к литературе Анголы.",
+        "confirmed",
+        [ucclaOndjaki, angolaLiteraryPatrimony]
+      ),
+      claim(
         "language",
         "Он публикует произведения на португальском языке.",
         "confirmed",
@@ -987,6 +1072,12 @@ export const writerBiographyFactReviewBatch01 = [
       claim(
         "awards",
         "Роман «Прозрачные» получил премию Жозе Сарамаго 2013 года.",
+        "confirmed",
+        [ucclaOndjaki]
+      ),
+      claim(
+        "works",
+        "Онджаки - автор романа «Os Transparentes» («Прозрачные»), получившего премию Жозе Сарамаго в 2013 году.",
         "confirmed",
         [ucclaOndjaki]
       ),

@@ -1,10 +1,13 @@
 import { existsSync } from "node:fs";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
 import { createServer } from "vite";
+
+import { portraitRightsFromLicensedQueueEntry } from "./lib/writer-portrait-rights-workflow.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
@@ -33,6 +36,35 @@ const curatedQidsPath = path.join(
   "generated",
   "curatedWriterQids.generated.json"
 );
+const identityRemediationsPath = path.join(
+  projectRoot,
+  "src",
+  "data",
+  "countries",
+  "generated",
+  "writerIdentityRemediations.generated.json"
+);
+const portraitRejectionsPath = path.join(
+  projectRoot,
+  "src",
+  "data",
+  "countries",
+  "generated",
+  "writerPortraitRejections.json"
+);
+const portraitAttributionOverridesPath = path.join(
+  projectRoot,
+  "src",
+  "data",
+  "countries",
+  "generated",
+  "writerPortraitAttributionOverrides.json"
+);
+const portraitRightsQueuePath = path.join(
+  projectRoot,
+  "data",
+  "writer-portrait-rights-queue.json"
+);
 const outputDirectory = path.join(
   projectRoot,
   "public",
@@ -47,8 +79,18 @@ const reportMarkdownPath = path.join(
 );
 const cacheDirectory = path.join(projectRoot, "scripts", ".cache", "writer-portraits");
 const metadataCachePath = path.join(cacheDirectory, "commons-metadata.json");
+const stagingDirectory = path.join(cacheDirectory, "staging");
 const applyChanges = process.argv.includes("--apply");
+const stageOnly = process.argv.includes("--stage-only");
+const processCandidates = applyChanges || stageOnly;
 const refresh = process.argv.includes("--refresh");
+const forceKeys = new Set(
+  process.argv
+    .filter((argument) => argument.startsWith("--force-key="))
+    .flatMap((argument) => argument.slice("--force-key=".length).split(","))
+    .map((key) => key.trim())
+    .filter(Boolean)
+);
 const checkedAt = new Date().toISOString().slice(0, 10);
 
 const sleep = (milliseconds) =>
@@ -107,6 +149,73 @@ function fileKey(filename) {
     .toLocaleLowerCase("en");
 }
 
+function portraitQid(value) {
+  const qid = String(value || "").match(/(?:^|\/)q(\d+)\.webp$/iu)?.[1];
+  return qid ? `Q${qid}` : "";
+}
+
+function stalePortraitQids(remediations) {
+  return new Map(
+    [
+      ...(remediations?.repairedMappings || []),
+      ...(remediations?.removedMappings || []),
+    ]
+      .filter((item) => item?.key && item?.oldQid)
+      .map((item) => [item.key, item.oldQid])
+  );
+}
+
+function rejectionSources(rejection) {
+  if (!rejection) return [];
+  return [rejection, ...(rejection.blockedSources || [])];
+}
+
+export function rejectionMatches(rejection, { filename = "", sourceUrl = "" }) {
+  return rejectionSources(rejection).some(
+    (source) =>
+      (filename && source.filename && fileKey(filename) === fileKey(source.filename)) ||
+      (sourceUrl && source.sourceUrl && sourceUrl === source.sourceUrl)
+  );
+}
+
+export function effectiveKeyedPortraitCandidate(
+  key,
+  record,
+  curatedWriters,
+  overrides
+) {
+  const fallback = {
+    filename: record?.live?.portraitFilename || "",
+    sourceUrl: record?.live?.portraitSourceUrl || "",
+  };
+  const override = overrides?.[key];
+  const curatedQid = curatedWriters?.[key]?.wikidataId;
+  if (
+    !override?.filename ||
+    !curatedQid ||
+    curatedQid !== record?.wikidataId
+  ) {
+    return fallback;
+  }
+  return {
+    filename: override.filename,
+    sourceUrl: override.sourceUrl || fallback.sourceUrl,
+  };
+}
+
+export function applyKeyedPortraitFilenameOverrides(
+  qidToFilename,
+  curatedWriters,
+  overrides
+) {
+  for (const [key, override] of Object.entries(overrides || {})) {
+    const qid = curatedWriters?.[key]?.wikidataId;
+    if (!qid || !override?.filename) continue;
+    qidToFilename.set(qid, override.filename);
+  }
+  return qidToFilename;
+}
+
 function stripHtml(value) {
   return String(value || "")
     .replace(/<[^>]*>/gu, " ")
@@ -122,26 +231,58 @@ function metadataValue(metadata, key) {
   return stripHtml(metadata?.[key]?.value || "");
 }
 
-function licenseDecision(imageInfo) {
+export function licenseDecision(
+  imageInfo,
+  creatorOverride = "",
+  manualLicense = null
+) {
   const metadata = imageInfo?.extmetadata || {};
   const licenseName =
     metadataValue(metadata, "LicenseShortName") ||
     metadataValue(metadata, "UsageTerms");
   const licenseUrl = metadataValue(metadata, "LicenseUrl");
-  const normalized = `${licenseName} ${licenseUrl}`.toLocaleLowerCase("en");
-  const restricted = /\bby-nc\b|\bby-nd\b|non.?commercial|no.?derivatives|fair.?use/u.test(
-    normalized
+  const categories = metadataValue(metadata, "Categories");
+  const creator =
+    creatorOverride ||
+    metadataValue(metadata, "Artist") ||
+    metadataValue(metadata, "Credit") ||
+    "";
+  const normalized = `${licenseName} ${licenseUrl} ${categories}`.toLocaleLowerCase(
+    "en"
   );
+  const restricted =
+    /\bby-nc\b|\bby-nd\b|non.?commercial|no.?derivatives|fair.?use|works copyrighted in the u\.?s\.?|wrong.?license|disputed copyright|deletion requests?|license review needed|need(?:s|ing)? license review|youtube[^|]*review needed|review needed[^|]*youtube/u.test(
+      normalized
+    );
   const publicDomain = /public.?domain|\bcc0\b|publicdomain/u.test(normalized);
-  const licensed = /\bcc.?by(?:-sa)?\b|creative.?commons.?attribution/u.test(
-    normalized
-  );
+  const attributionOnly =
+    manualLicense?.kind === "wikimedia-attribution-only" &&
+    licenseName.toLocaleLowerCase("en") === "attribution" &&
+    /(?:^|\|)attribution only license(?:\||$)/u.test(
+      categories.toLocaleLowerCase("en")
+    );
+  const licensed =
+    /\bcc.?by(?:-sa)?\b|creative.?commons.?attribution/u.test(normalized) ||
+    attributionOnly;
+  const missingLicensedCreator =
+    licensed && (!creator || /\bunknown(?: author)?\b/iu.test(creator));
 
   return {
-    allowed: !restricted && (publicDomain || licensed),
+    allowed:
+      !restricted && !missingLicensedCreator && (publicDomain || licensed),
     status: publicDomain ? "public-domain" : "licensed",
-    licenseName,
-    licenseUrl,
+    licenseName: attributionOnly
+      ? manualLicense.licenseName || licenseName
+      : licenseName,
+    licenseUrl: attributionOnly
+      ? manualLicense.licenseUrl || licenseUrl
+      : licenseUrl,
+    creator,
+    reason: restricted
+      ? "territorial-or-use-restriction"
+      : missingLicensedCreator
+        ? "licensed-file-missing-attribution-creator"
+        : "",
   };
 }
 
@@ -283,20 +424,25 @@ async function loadCommonsMetadata(filenames) {
   return cached;
 }
 
-function portraitMetadata(qid, filename, cached) {
+function portraitMetadata(qid, filename, cached, attributionOverride) {
   const record = cached[fileKey(filename)];
   const imageInfo = record?.imageInfo;
   if (!imageInfo) {
     return { qid, filename, allowed: false, reason: record?.error || "not-found" };
   }
-  const license = licenseDecision(imageInfo);
+  const license = licenseDecision(
+    imageInfo,
+    attributionOverride?.creator,
+    attributionOverride?.manualLicense
+  );
   const mime = imageInfo.mime || "";
   if (!license.allowed) {
     return {
       qid,
       filename,
       allowed: false,
-      reason: `license:${license.licenseName || "unknown"}`,
+      reason:
+        license.reason || `license:${license.licenseName || "unknown"}`,
     };
   }
   if (!/^image\/(?:jpeg|png|webp|tiff)$/u.test(mime)) {
@@ -310,29 +456,44 @@ function portraitMetadata(qid, filename, cached) {
     qid,
     filename,
     allowed: true,
-    downloadUrl: imageInfo.thumburl || imageInfo.url,
+    downloadUrl: attributionOverride?.useOriginal
+      ? imageInfo.url
+      : imageInfo.thumburl || imageInfo.url,
     sourceUrl,
     portrait: `assets/writer-portraits/${qid.toLocaleLowerCase("en")}.webp`,
     portraitRights: {
       status: license.status,
       licenseName: license.licenseName || undefined,
       licenseUrl: license.licenseUrl || undefined,
-      creator:
-        metadataValue(imageInfo.extmetadata, "Artist") ||
-        metadataValue(imageInfo.extmetadata, "Credit") ||
-        undefined,
+      creator: license.creator || undefined,
       sourceUrl,
       checkedAt,
     },
+    sourceWidth: Number(imageInfo.width || 0),
+    sourceHeight: Number(imageInfo.height || 0),
+    crop: attributionOverride?.crop,
   };
 }
 
-async function downloadPortrait(metadata, attempt = 1) {
+async function downloadPortrait(
+  metadata,
+  attempt = 1,
+  forceDownload = false,
+  targetDirectory = outputDirectory
+) {
   const target = path.join(
-    outputDirectory,
+    targetDirectory,
     `${metadata.qid.toLocaleLowerCase("en")}.webp`
   );
-  if (existsSync(target) && !refresh) return { ...metadata, downloaded: true };
+  if (existsSync(target) && !refresh && !forceDownload) {
+    const targetBytes = await readFile(target);
+    return {
+      ...metadata,
+      downloaded: true,
+      targetPath: target,
+      assetSha256: createHash("sha256").update(targetBytes).digest("hex"),
+    };
+  }
   try {
     const response = await fetch(metadata.downloadUrl, {
       headers: {
@@ -347,12 +508,21 @@ async function downloadPortrait(metadata, attempt = 1) {
       throw error;
     }
     const source = Buffer.from(await response.arrayBuffer());
-    await sharp(source)
-      .rotate()
+    let pipeline = sharp(source).rotate();
+    if (metadata.crop) {
+      pipeline = pipeline.extract(metadata.crop);
+    }
+    await pipeline
       .resize({ width: 384, height: 480, fit: "cover", position: "attention" })
       .webp({ quality: 82, effort: 5, smartSubsample: true })
       .toFile(target);
-    return { ...metadata, downloaded: true };
+    const targetBytes = await readFile(target);
+    return {
+      ...metadata,
+      downloaded: true,
+      targetPath: target,
+      assetSha256: createHash("sha256").update(targetBytes).digest("hex"),
+    };
   } catch (error) {
     if (attempt < 6) {
       const retryAfter = Number(error.retryAfter || 0) * 1_000;
@@ -360,7 +530,12 @@ async function downloadPortrait(metadata, attempt = 1) {
       await sleep(
         Math.max(retryAfter, rateLimitPause, 1_250 * 2 ** (attempt - 1))
       );
-      return downloadPortrait(metadata, attempt + 1);
+      return downloadPortrait(
+        metadata,
+        attempt + 1,
+        forceDownload,
+        targetDirectory
+      );
     }
     return { ...metadata, downloaded: false, reason: `download:${error.message}` };
   }
@@ -387,11 +562,67 @@ async function mapConcurrent(values, concurrency, mapper) {
   return result;
 }
 
-function applyGeneratedPortraits(groups, usableByQid) {
+function applyGeneratedPortraits(
+  groups,
+  usableByQid,
+  portraitRejections,
+  manifestWriters
+) {
+  const rejectedSourcesByQid = new Map();
+  for (const rejection of Object.values(portraitRejections.rejections || {})) {
+    if (!rejection?.wikidataId) continue;
+    const sourceUrls = rejectedSourcesByQid.get(rejection.wikidataId) || new Set();
+    for (const source of rejectionSources(rejection)) {
+      if (source?.sourceUrl) sourceUrls.add(source.sourceUrl);
+    }
+    rejectedSourcesByQid.set(rejection.wikidataId, sourceUrls);
+  }
+  const canonicalPortraitsByQid = new Map();
+  for (const portrait of Object.values(manifestWriters || {})) {
+    const qid = portraitQid(portrait?.portrait);
+    if (!qid) continue;
+    const existing = canonicalPortraitsByQid.get(qid);
+    if (!existing) {
+      canonicalPortraitsByQid.set(qid, portrait);
+      continue;
+    }
+    if (
+      existing.portrait !== portrait.portrait ||
+      existing.portraitSourceUrl !== portrait.portraitSourceUrl
+    ) {
+      canonicalPortraitsByQid.set(qid, null);
+    }
+  }
+
   return Object.fromEntries(
     Object.entries(groups).map(([countryId, writers]) => [
       countryId,
       writers.map((writer) => {
+        const manifestKey = `${countryId}:${writer.id}`;
+        const exactCanonicalPortrait = manifestWriters?.[manifestKey];
+        const canonicalPortrait =
+          exactCanonicalPortrait || canonicalPortraitsByQid.get(writer.wikidataId);
+        if (
+          canonicalPortrait &&
+          portraitQid(canonicalPortrait.portrait) === writer.wikidataId
+        ) {
+          return {
+            ...writer,
+            ...canonicalPortrait,
+            portraitCandidateUrl: undefined,
+            portraitRightsStatus: undefined,
+          };
+        }
+        if (rejectedSourcesByQid.get(writer.wikidataId)?.has(writer.portraitSourceUrl)) {
+          const {
+            portrait: _portrait,
+            portraitAlt: _portraitAlt,
+            portraitSourceUrl: _portraitSourceUrl,
+            portraitRights: _portraitRights,
+            ...cleanWriter
+          } = writer;
+          return cleanWriter;
+        }
         const portrait = usableByQid.get(writer.wikidataId);
         if (!portrait) return writer;
         return {
@@ -419,7 +650,14 @@ function reportMarkdown(report) {
     `- Уже имели локальный портрет: ${report.summary.existingPublicPortraits}`,
     `- Надёжно связаны с Wikidata: ${report.summary.matchedPublicWriters}`,
     `- Получили свободный оптимизированный портрет: ${report.summary.publicRealPortraits}`,
-    `- Используют фирменную заглушку: ${report.summary.publicPlaceholders}`,
+    `- Публичные карточки без портрета: ${report.summary.publicMissingPortraits}`,
+    `- Новых портретов готовы к применению: ${report.summary.readyNewPublicPortraits}`,
+    `- Удалено устаревших записей manifest: ${report.summary.removedStaleManifestEntries}`,
+    `- Удалено осиротевших записей manifest: ${report.summary.removedOrphanManifestEntries}`,
+    `- Удалено записей, отклонённых правовой/визуальной проверкой: ${report.summary.removedPolicyRejectedManifestEntries}`,
+    `- Исправлено записей атрибуции: ${report.summary.normalizedAttributionEntries}`,
+    `- Обновлена дата онлайн-проверки прав: ${report.summary.refreshedRightsEntries}`,
+    `- Низкое разрешение исходника (ручная очередь): ${report.summary.lowResolutionPortraits}`,
     `- Кандидатов P18 в очереди из 2356 записей: ${report.summary.generatedPortraitCandidates}`,
     `- Свободных файлов после проверки лицензии: ${report.summary.allowedUniquePortraits}`,
     `- Файлов скачано и преобразовано в WebP: ${report.summary.downloadedUniquePortraits}`,
@@ -441,19 +679,82 @@ async function main() {
     publicCountries,
     existingManifest,
     curatedQids,
+    identityRemediations,
+    portraitRejections,
+    portraitAttributionOverrides,
+    portraitRightsQueue,
   ] = await Promise.all([
     readJson(factsPath, null),
     readJson(generatedWritersPath, {}),
     loadPublicCountries(),
     readJson(manifestPath, { writers: {} }),
     readJson(curatedQidsPath, { writers: {} }),
+    readJson(identityRemediationsPath, {
+      repairedMappings: [],
+      removedMappings: [],
+    }),
+    readJson(portraitRejectionsPath, { rejections: {} }),
+    readJson(portraitAttributionOverridesPath, { overrides: {} }),
+    readJson(portraitRightsQueuePath, { writers: [] }),
   ]);
   if (!facts) throw new Error("Сначала выполните npm run writers:facts:audit");
 
   const indexes = indexRecords(facts.records);
+  const portraitRightsQueueByKey = new Map(
+    (portraitRightsQueue.writers || []).map((entry) => [entry.key, entry])
+  );
   const publicMatches = [];
   const manualReview = [];
   const manifestWriters = { ...(existingManifest.writers || {}) };
+  const publicWriterKeys = new Set(
+    publicCountries.flatMap((country) =>
+      country.writers.map((writer) => `${country.id}:${writer.id}`)
+    )
+  );
+  const orphanManifestEntries = Object.keys(manifestWriters).filter(
+    (key) => !publicWriterKeys.has(key)
+  );
+  for (const key of orphanManifestEntries) delete manifestWriters[key];
+
+  const staleQids = stalePortraitQids(identityRemediations);
+  const staleManifestEntries = Object.entries(manifestWriters)
+    .filter(([key, portrait]) => staleQids.get(key) === portraitQid(portrait?.portrait))
+    .map(([key]) => key);
+  for (const key of staleManifestEntries) delete manifestWriters[key];
+
+  const policyRejectedManifestEntries = Object.entries(manifestWriters)
+    .filter(([key, portrait]) => {
+      const rejection = portraitRejections.rejections?.[key];
+      return rejectionMatches(rejection, {
+        sourceUrl: portrait?.portraitSourceUrl,
+      });
+    })
+    .map(([key]) => key);
+  for (const key of policyRejectedManifestEntries) delete manifestWriters[key];
+
+  const normalizedAttributionEntries = [];
+  for (const [key, override] of Object.entries(
+    portraitAttributionOverrides.overrides || {}
+  )) {
+    const portrait = manifestWriters[key];
+    if (
+      !portrait ||
+      portrait.portraitSourceUrl !== override.sourceUrl ||
+      !override.creator ||
+      portrait.portraitRights?.creator === override.creator
+    ) {
+      continue;
+    }
+    manifestWriters[key] = {
+      ...portrait,
+      portraitRights: {
+        ...(portrait.portraitRights || {}),
+        creator: override.creator,
+      },
+    };
+    normalizedAttributionEntries.push(key);
+  }
+
   const publicPortraitKeys = new Set();
   let publicWriterRecords = 0;
   let existingPublicPortraits = 0;
@@ -462,6 +763,7 @@ async function main() {
   for (const country of publicCountries) {
     for (const writer of country.writers) {
       const manifestKey = `${country.id}:${writer.id}`;
+      const forcePortrait = forceKeys.has(manifestKey);
       publicWriterRecords += 1;
       uniquePublicWriterKeys.add(
         `${normalizedName(writerName(writer))}:${year(
@@ -472,12 +774,15 @@ async function main() {
       const existingPortraitPath = existingPortrait?.portrait
         ? path.join(projectRoot, "public", existingPortrait.portrait)
         : "";
-      if (existingPortrait && existsSync(existingPortraitPath)) {
+      if (!forcePortrait && existingPortrait && existsSync(existingPortraitPath)) {
         existingPublicPortraits += 1;
         publicPortraitKeys.add(manifestKey);
         continue;
       }
-      if (writer.portrait) {
+      const directPortraitPath = writer.portrait
+        ? path.join(projectRoot, "public", writer.portrait)
+        : "";
+      if (!forcePortrait && writer.portrait && existsSync(directPortraitPath)) {
         existingPublicPortraits += 1;
         publicPortraitKeys.add(manifestKey);
         continue;
@@ -489,8 +794,43 @@ async function main() {
             live: { portraitFilename: curated.portraitFilename },
           }
         : matchPublicWriter(country.id, writer, indexes);
+      const rejection = portraitRejections.rejections?.[manifestKey];
+      const effectivePortrait = record
+        ? effectiveKeyedPortraitCandidate(
+            manifestKey,
+            record,
+            curatedQids.writers || {},
+            portraitAttributionOverrides.overrides || {}
+          )
+        : { filename: "", sourceUrl: "" };
+      if (
+        record &&
+        rejectionMatches(rejection, {
+          filename: effectivePortrait.filename,
+          sourceUrl: effectivePortrait.sourceUrl,
+        })
+      ) {
+        manualReview.push({
+          countryId: country.id,
+          writerId: writer.id,
+          name: writerName(writer),
+          reason: rejection.reasonCode,
+        });
+        continue;
+      }
       if (record) {
-        publicMatches.push({ countryId: country.id, writer, record });
+        publicMatches.push({
+          countryId: country.id,
+          writer,
+          record: {
+            ...record,
+            live: {
+              ...(record.live || {}),
+              portraitFilename: effectivePortrait.filename,
+              portraitSourceUrl: effectivePortrait.sourceUrl,
+            },
+          },
+        });
       } else {
         manualReview.push({
           countryId: country.id,
@@ -513,34 +853,112 @@ async function main() {
       qidToFilename.set(writer.wikidataId, writer.portraitFilename);
     }
   }
+  applyKeyedPortraitFilenameOverrides(
+    qidToFilename,
+    curatedQids.writers || {},
+    portraitAttributionOverrides.overrides || {}
+  );
   const filenames = [...new Set(qidToFilename.values())];
   const commonsCache = await loadCommonsMetadata(filenames);
-  const checkedPortraits = [...qidToFilename.entries()].map(([qid, filename]) =>
-    portraitMetadata(qid, filename, commonsCache)
+  const attributionByFilename = new Map(
+    Object.values(portraitAttributionOverrides.overrides || {})
+      .filter((override) => override?.filename && override?.creator)
+      .map((override) => [fileKey(override.filename), override])
   );
+  const checkedPortraits = [...qidToFilename.entries()].map(([qid, filename]) =>
+    portraitMetadata(
+      qid,
+      filename,
+      commonsCache,
+      attributionByFilename.get(fileKey(filename))
+    )
+  );
+  const checkedPortraitsByQid = new Map(
+    checkedPortraits.map((portrait) => [portrait.qid, portrait])
+  );
+  const refreshedRightsEntries = [];
+  for (const [key, portrait] of Object.entries(manifestWriters)) {
+    const checkedPortrait = checkedPortraitsByQid.get(
+      portraitQid(portrait?.portrait)
+    );
+    if (
+      !checkedPortrait?.allowed ||
+      checkedPortrait.sourceUrl !== portrait.portraitSourceUrl ||
+      portrait.portraitRights?.checkedAt === checkedAt
+    ) {
+      continue;
+    }
+    manifestWriters[key] = {
+      ...portrait,
+      portraitRights: {
+        ...portrait.portraitRights,
+        checkedAt,
+      },
+    };
+    refreshedRightsEntries.push(key);
+  }
   const allowedPortraits = checkedPortraits.filter((portrait) => portrait.allowed);
+  const publishedPortraitQids = new Set(
+    publicCountries
+      .flatMap((country) => country.writers)
+      .map((writer) => portraitQid(writer.portrait))
+      .filter(Boolean)
+  );
   const publicQids = new Set(
     publicMatches.map((match) => match.record.wikidataId)
   );
   const publicPortraitCandidates = allowedPortraits.filter((portrait) =>
     publicQids.has(portrait.qid)
   );
+  const appliedOrPublishedQids = new Set([
+    ...publishedPortraitQids,
+    ...publicPortraitCandidates.map((portrait) => portrait.qid),
+  ]);
+  const lowResolutionPortraits = allowedPortraits.filter(
+    (portrait) =>
+      appliedOrPublishedQids.has(portrait.qid) &&
+      (portrait.sourceWidth < 200 || portrait.sourceHeight < 250)
+  );
+  const forcedDownloadQids = new Set(
+    publicMatches
+      .filter((match) => {
+        const key = `${match.countryId}:${match.writer.id}`;
+        return forceKeys.has(key) || portraitRejections.rejections?.[key];
+      })
+      .map((match) => match.record.wikidataId)
+  );
 
-  let processedPortraits = publicPortraitCandidates;
-  if (applyChanges) {
-    await mkdir(outputDirectory, { recursive: true });
+  const selectedPortraitCandidates = forceKeys.size
+    ? publicPortraitCandidates.filter((portrait) =>
+        forcedDownloadQids.has(portrait.qid)
+      )
+    : publicPortraitCandidates;
+  let processedPortraits = selectedPortraitCandidates;
+  if (processCandidates) {
+    await mkdir(stagingDirectory, { recursive: true });
     processedPortraits = await mapConcurrent(
-      publicPortraitCandidates,
+      selectedPortraitCandidates,
       1,
-      downloadPortrait
+      (portrait) =>
+        downloadPortrait(
+          portrait,
+          1,
+          true,
+          stagingDirectory
+        )
     );
   }
   const usablePortraits = processedPortraits.filter(
-    (portrait) => portrait.allowed && (!applyChanges || portrait.downloaded)
+    (portrait) => portrait.allowed && (!processCandidates || portrait.downloaded)
   );
   const usableByQid = new Map(
     usablePortraits.map((portrait) => [portrait.qid, portrait])
   );
+  const readyCandidates = [];
+
+  if (applyChanges) {
+    await mkdir(outputDirectory, { recursive: true });
+  }
 
   for (const match of publicMatches) {
     const portrait = usableByQid.get(match.record.wikidataId);
@@ -555,14 +973,63 @@ async function main() {
       });
       continue;
     }
-    manifestWriters[`${match.countryId}:${match.writer.id}`] = {
+    let approvedPortraitRights = null;
+    if (applyChanges) {
+      const manifestKey = `${match.countryId}:${match.writer.id}`;
+      const queueEntry = portraitRightsQueueByKey.get(manifestKey);
+      approvedPortraitRights = portraitRightsFromLicensedQueueEntry(queueEntry, {
+        today: checkedAt,
+        identityRegistry: curatedQids.writers,
+      });
+      const expectedAssetRef = `staging://writer-portraits/${portrait.qid.toLocaleLowerCase("en")}.webp#sha256=${portrait.assetSha256}`;
+      if (queueEntry.candidate.assetRef !== expectedAssetRef) {
+        throw new Error(
+          `Portrait ${manifestKey} staged asset digest does not match the licensed queue entry.`
+        );
+      }
+      if (queueEntry.rights.sourceUrl !== portrait.sourceUrl) {
+        throw new Error(
+          `Portrait ${manifestKey} Commons source does not match the licensed queue entry.`
+        );
+      }
+      await copyFile(
+        portrait.targetPath,
+        path.join(
+          outputDirectory,
+          `${portrait.qid.toLocaleLowerCase("en")}.webp`
+        )
+      );
+      manifestWriters[manifestKey] = {
+        portrait: portrait.portrait,
+        portraitAlt: `Портрет: ${writerName(match.writer)}`,
+        portraitSourceUrl: approvedPortraitRights.sourceUrl,
+        portraitRights: approvedPortraitRights,
+      };
+      publicPortraitKeys.add(manifestKey);
+    }
+    readyCandidates.push({
+      countryId: match.countryId,
+      writerId: match.writer.id,
+      name: writerName(match.writer),
+      wikidataId: portrait.qid,
+      filename: portrait.filename,
+      sourceUrl: approvedPortraitRights?.sourceUrl || portrait.sourceUrl,
       portrait: portrait.portrait,
-      portraitAlt: `Портрет: ${writerName(match.writer)}`,
-      portraitSourceUrl: portrait.sourceUrl,
-      portraitRights: portrait.portraitRights,
-    };
-    publicPortraitKeys.add(`${match.countryId}:${match.writer.id}`);
+      portraitRights: approvedPortraitRights || portrait.portraitRights,
+      stagingAssetRef: portrait.assetSha256
+        ? `staging://writer-portraits/${portrait.qid.toLocaleLowerCase("en")}.webp#sha256=${portrait.assetSha256}`
+        : undefined,
+    });
   }
+
+  const readyPublicPortraits = processCandidates
+    ? usablePortraits.length
+    : publicPortraitCandidates.length;
+  const downloadFailures = processCandidates
+    ? processedPortraits.filter(
+        (portrait) => portrait.allowed && !portrait.downloaded
+      )
+    : [];
 
   const report = {
     generatedAt: new Date().toISOString(),
@@ -578,22 +1045,37 @@ async function main() {
       existingPublicPortraits,
       matchedPublicWriters: publicMatches.length,
       publicRealPortraits: publicPortraitKeys.size,
-      publicPlaceholders: publicWriterRecords - publicPortraitKeys.size,
+      publicMissingPortraits: publicWriterRecords - publicPortraitKeys.size,
+      readyNewPublicPortraits: readyPublicPortraits,
+      removedStaleManifestEntries: staleManifestEntries.length,
+      removedOrphanManifestEntries: orphanManifestEntries.length,
+      removedPolicyRejectedManifestEntries:
+        policyRejectedManifestEntries.length,
+      normalizedAttributionEntries: normalizedAttributionEntries.length,
+      refreshedRightsEntries: refreshedRightsEntries.length,
+      lowResolutionPortraits: lowResolutionPortraits.length,
       generatedPortraitCandidates: qidToFilename.size,
       allowedUniquePortraits: allowedPortraits.length,
       publicPortraitCandidates: publicPortraitCandidates.length,
-      downloadedUniquePortraits: usablePortraits.length,
+      downloadedUniquePortraits: processCandidates ? usablePortraits.length : 0,
       rejectedByLicenseOrFormat: checkedPortraits.length - allowedPortraits.length,
-      downloadFailures: processedPortraits.filter(
-        (portrait) => portrait.allowed && !portrait.downloaded
-      ).length,
+      downloadFailures: downloadFailures.length,
     },
     manualReview,
+    readyCandidates,
+    lowResolutionPortraits: lowResolutionPortraits.map(
+      ({ qid, filename, sourceWidth, sourceHeight, sourceUrl }) => ({
+        qid,
+        filename,
+        sourceWidth,
+        sourceHeight,
+        sourceUrl,
+      })
+    ),
     rejectedFiles: checkedPortraits
       .filter((portrait) => !portrait.allowed)
       .map(({ qid, filename, reason }) => ({ qid, filename, reason })),
-    downloadFailures: processedPortraits
-      .filter((portrait) => portrait.allowed && !portrait.downloaded)
+    downloadFailures: downloadFailures
       .map(({ qid, filename, reason }) => ({ qid, filename, reason })),
   };
 
@@ -613,7 +1095,12 @@ async function main() {
     await writeFile(
       generatedWritersPath,
       `${JSON.stringify(
-        applyGeneratedPortraits(generatedGroups, usableByQid),
+        applyGeneratedPortraits(
+          generatedGroups,
+          usableByQid,
+          portraitRejections,
+          manifestWriters
+        ),
         null,
         2
       )}\n`,
@@ -624,4 +1111,9 @@ async function main() {
   console.log(JSON.stringify(report.summary, null, 2));
 }
 
-await main();
+if (
+  process.argv[1] &&
+  path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  await main();
+}

@@ -219,7 +219,7 @@ test("atlas URL restores selections, supports history and mounts the index on de
   await expect(countryIndex.locator(":scope > div")).toHaveCount(0);
   await countryIndex.locator("summary").click();
   await expect(countryIndex.locator(":scope > div")).toHaveCount(1);
-  await expect(countryIndex.locator(":scope > div > button")).toHaveCount(20);
+  await expect(countryIndex.locator(":scope > div > button")).toHaveCount(190);
 
   await page.locator('[data-atlas-filter="all"]').click();
   await expect(page).not.toHaveURL(/atlas=verified/iu);

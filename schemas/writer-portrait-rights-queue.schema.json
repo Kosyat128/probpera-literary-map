@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/writer-portrait-rights-queue.schema.json",
+  "title": "Writer portrait rights queue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "updatedAt", "policy", "writers"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "updatedAt": { "type": "string", "format": "date" },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "worldwidePublicationRequired",
+        "aiGeneratedLikenessesAllowed",
+        "publicAssetReferencesAllowedBeforeClearance",
+        "publishableStatus",
+        "unlicensedPresentation"
+      ],
+      "properties": {
+        "worldwidePublicationRequired": { "const": true },
+        "aiGeneratedLikenessesAllowed": { "const": false },
+        "publicAssetReferencesAllowedBeforeClearance": { "const": false },
+        "publishableStatus": { "const": "licensed" },
+        "unlicensedPresentation": { "const": "photo-not-published" }
+      }
+    },
+    "writers": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/writer" }
+    }
+  },
+  "$defs": {
+    "safeId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^[\\p{L}\\p{N}_.\\u00ad-]+$"
+    },
+    "writer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "countryId",
+        "countryName",
+        "writerId",
+        "writerName",
+        "status",
+        "candidate",
+        "rights",
+        "notes"
+      ],
+      "properties": {
+        "key": { "type": "string", "minLength": 3, "maxLength": 481 },
+        "countryId": { "$ref": "#/$defs/safeId" },
+        "countryName": { "type": "string", "minLength": 1, "maxLength": 240 },
+        "writerId": { "$ref": "#/$defs/safeId" },
+        "writerName": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "status": {
+          "enum": [
+            "commons-search",
+            "permission-needed",
+            "permission-received",
+            "licensed"
+          ]
+        },
+        "candidate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "assetRef",
+            "mediaKind",
+            "subjectNameAtSource",
+            "identityEvidenceUrl"
+          ],
+          "properties": {
+            "assetRef": { "type": "string", "maxLength": 2000 },
+            "mediaKind": { "enum": ["", "photograph"] },
+            "subjectNameAtSource": { "type": "string", "maxLength": 500 },
+            "identityEvidenceUrl": { "type": "string", "maxLength": 2000 }
+          }
+        },
+        "rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "rightsHolder",
+            "creator",
+            "basis",
+            "licenseName",
+            "licenseUrl",
+            "licenseOrPermissionArtifactRef",
+            "territory",
+            "sourceUrl",
+            "checkedAt"
+          ],
+          "properties": {
+            "rightsHolder": { "type": "string", "maxLength": 1000 },
+            "creator": { "type": "string", "maxLength": 1000 },
+            "basis": { "enum": ["", "public-domain", "license", "permission"] },
+            "licenseName": { "type": "string", "maxLength": 1000 },
+            "licenseUrl": { "type": "string", "maxLength": 2000 },
+            "licenseOrPermissionArtifactRef": { "type": "string", "maxLength": 2000 },
+            "territory": { "type": "string", "maxLength": 240 },
+            "sourceUrl": { "type": "string", "maxLength": 2000 },
+            "checkedAt": { "type": "string", "maxLength": 10 }
+          }
+        },
+        "notes": { "type": "string", "maxLength": 5000 }
+      }
+    }
+  }
+}

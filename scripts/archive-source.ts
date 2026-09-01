@@ -1,6 +1,7 @@
 import {
   bookArchiveCountries,
   countries,
+  editorialCatalogCountries,
 } from "../src/data/countries/index";
 import { calculateArchiveStatistics } from "../src/data/archiveStatistics";
 import { buildBookArchive } from "../src/data/bookArchive";
@@ -29,6 +30,7 @@ import {
 } from "../src/data/countries/writerBiographyLegacyCorrections";
 
 export const archiveCountries = countries;
+export const archiveEditorialCatalogCountries = editorialCatalogCountries;
 export const archiveBooks = buildBookArchive(bookArchiveCountries);
 export const archiveRawBooks = buildBookArchive(bookArchiveCountries, {
   includeReviewedGenerated: false,

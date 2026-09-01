@@ -120,9 +120,22 @@
               "checkedAt": "2026-08-09"
             },
             {
-              "provider": "Library of Congress",
-              "sourceFamily": "national-library",
-              "url": "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/eighteenth-and-nineteenth-century-literature.html",
+              "provider": "ECO Cultural Institute",
+              "sourceFamily": "intergovernmental-cultural-institution",
+              "url": "https://www.ecieco.org/fa/news/7007/%D8%AE%D9%84%DB%8C%D9%84-%D8%A7%D9%84%D9%84%D9%87-%D8%AE%D9%84%DB%8C%D9%84%DB%8C",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Основной язык его поэзии - дари (персидский).",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/kalili-kalil-allah/",
               "checkedAt": "2026-08-09"
             }
           ]
@@ -139,9 +152,41 @@
               "checkedAt": "2026-08-09"
             },
             {
-              "provider": "Library of Congress",
-              "sourceFamily": "national-library",
-              "url": "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/eighteenth-and-nineteenth-century-literature.html",
+              "provider": "ECO Cultural Institute",
+              "sourceFamily": "intergovernmental-cultural-institution",
+              "url": "https://www.ecieco.org/fa/news/7007/%D8%AE%D9%84%DB%8C%D9%84-%D8%A7%D9%84%D9%84%D9%87-%D8%AE%D9%84%DB%8C%D9%84%DB%8C",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "themes-style",
+          "claimRu": "Его творчество продолжает классическую персидскую поэтическую традицию.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/kalili-kalil-allah/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "Халили создавал поэтические произведения.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/kalili-kalil-allah/",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "ECO Cultural Institute",
+              "sourceFamily": "intergovernmental-cultural-institution",
+              "url": "https://www.ecieco.org/fa/news/7007/%D8%AE%D9%84%DB%8C%D9%84-%D8%A7%D9%84%D9%84%D9%87-%D8%AE%D9%84%DB%8C%D9%84%DB%8C",
               "checkedAt": "2026-08-09"
             }
           ]
@@ -152,9 +197,9 @@
           "finding": "corrected",
           "sources": [
             {
-              "provider": "Library of Congress",
-              "sourceFamily": "national-library",
-              "url": "https://www.loc.gov/exhibits/thousand-years-of-the-persian-book/eighteenth-and-nineteenth-century-literature.html",
+              "provider": "ECO Cultural Institute",
+              "sourceFamily": "intergovernmental-cultural-institution",
+              "url": "https://www.ecieco.org/fa/news/7007/%D8%AE%D9%84%DB%8C%D9%84-%D8%A7%D9%84%D9%84%D9%87-%D8%AE%D9%84%DB%8C%D9%84%DB%8C",
               "checkedAt": "2026-08-09"
             },
             {
@@ -182,6 +227,19 @@
           "field": "identity-role",
           "claimRu": "Махмуд Тарзи (1865-1933) - афганский писатель, журналист, переводчик и политический деятель.",
           "finding": "corrected",
+          "sources": [
+            {
+              "provider": "Encyclopaedia Iranica",
+              "sourceFamily": "academic-encyclopedia",
+              "url": "https://www.iranicaonline.org/articles/tarzi-mahmud/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "life-dates",
+          "claimRu": "Махмуд Тарзи жил в 1865-1933 годах.",
+          "finding": "confirmed",
           "sources": [
             {
               "provider": "Encyclopaedia Iranica",
@@ -384,6 +442,19 @@
           ]
         },
         {
+          "field": "language",
+          "claimRu": "Де Рада создавал поэтические произведения на албанском языке и сопровождал часть изданий собственными переводами на итальянский.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Treccani",
+              "sourceFamily": "national-encyclopedia",
+              "url": "https://www.treccani.it/enciclopedia/girolamo-de-rada_%28Enciclopedia-Italiana%29/",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
           "field": "priority-claim",
           "claimRu": "Он был одним из двух главных инициаторов итало-албанского, или арберешского, культурного движения второй половины XIX века.",
           "finding": "corrected",
@@ -407,7 +478,7 @@
       "key": "albania:mitrush_kuteli",
       "originalSha256": "31cba6ce2ff25f56b3e08a4d35158da2d4ee02adfa1761353302f81bcf772395",
       "originalTextRu": "Албанский писатель, поэт и переводчик, один из крупнейших авторов албанской прозы XX века.",
-      "reviewedTextRu": "Албанский писатель, поэт и переводчик, один из основоположников современной албанской прозы.",
+      "reviewedTextRu": "Албанский писатель, поэт и переводчик, работавший в албанской прозе.",
       "claimEvidence": [
         {
           "field": "identity-role",
@@ -442,8 +513,21 @@
           ]
         },
         {
+          "field": "themes-style",
+          "claimRu": "Кутели работал в албанской прозе.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "National Centre for Books and Reading of Albania",
+              "sourceFamily": "national-book-center",
+              "url": "https://qkll.gov.al/?p=6938",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
           "field": "priority-claim",
-          "claimRu": "Оценочный суперлатив заменён подтверждённой историко-литературной ролью Кутели в становлении современной албанской прозы.",
+          "claimRu": "Оценочное определение «один из крупнейших» удалено; источники подтверждают его роль писателя, переводчика и автора албанской прозы.",
           "finding": "corrected",
           "sources": [
             {
@@ -464,7 +548,7 @@
       "reviewer": "OpenAI Codex / writer_claim_review_batch01",
       "decision": "corrected",
       "notes": [
-        "Субъективное выражение «один из крупнейших» заменено подтверждённой ролью в становлении современной албанской прозы."
+        "Субъективное выражение «один из крупнейших» удалено; сохранена проверяемая жанровая характеристика."
       ]
     },
     {
@@ -524,16 +608,10 @@
           ]
         },
         {
-          "field": "critical-ranking",
-          "claimRu": "Он относится к основоположникам современной албанской литературы.",
+          "field": "priority-claim",
+          "claimRu": "Наим Фрашери заложил основы албанской национальной литературы.",
           "finding": "corrected",
           "sources": [
-            {
-              "provider": "Academy of Sciences of Albania",
-              "sourceFamily": "national-academy",
-              "url": "https://akad.gov.al/wp-content/uploads/2026/06/Maj-2026-Final_compressed.pdf",
-              "checkedAt": "2026-08-09"
-            },
             {
               "provider": "National Diaspora Agency of Albania",
               "sourceFamily": "government-cultural-agency",
@@ -604,6 +682,45 @@
               "url": "https://catalogue.bnf.fr/ark:/12148/cb11900279p",
               "checkedAt": "2026-08-09"
             },
+            {
+              "provider": "Académie française",
+              "sourceFamily": "national-academy",
+              "url": "https://www.academie-francaise.fr/les-immortels/assia-djebar?election=16-06-&fauteuil=5",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "К произведениям Джебар относятся «L’Amour, la Fantasia» и «Femmes d’Alger dans leur appartement».",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Académie française",
+              "sourceFamily": "national-academy",
+              "url": "https://www.academie-francaise.fr/les-immortels/assia-djebar?election=16-06-&fauteuil=5",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "themes-style",
+          "claimRu": "Её творческая работа охватывала романы, эссе, театр, литературную критику и кино.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Académie française",
+              "sourceFamily": "national-academy",
+              "url": "https://www.academie-francaise.fr/les-immortels/assia-djebar?election=16-06-&fauteuil=5",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "reception-influence",
+          "claimRu": "Джебар была избрана во Французскую академию, а её произведения переведены на 23 языка.",
+          "finding": "confirmed",
+          "sources": [
             {
               "provider": "Académie française",
               "sourceFamily": "national-academy",
@@ -737,6 +854,31 @@
               "provider": "Bibliothèque nationale de France",
               "sourceFamily": "national-library",
               "url": "https://www.bnf.fr/fr/agenda/mohammed-dib",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "language",
+          "claimRu": "Мохаммед Диб писал литературные произведения по-французски.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://www.bnf.fr/fr/agenda/mohammed-dib",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://www.bnf.fr/fr/selection-de-dons-faits-la-bnf-en-2012",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Académie française",
+              "sourceFamily": "national-academy",
+              "url": "https://www.academie-francaise.fr/rapports-sur-les-grands-prix-et-discours-sur-letat-de-la-langue-0",
               "checkedAt": "2026-08-09"
             }
           ]
@@ -934,6 +1076,19 @@
           ]
         },
         {
+          "field": "works",
+          "claimRu": "Первым романом Мулуда Ферауна был «Le Fils du pauvre»; среди других его произведений - «La Terre et le Sang» и «Les Chemins qui montent».",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Institut du monde arabe",
+              "sourceFamily": "public-cultural-institution",
+              "url": "https://www.imarabe.org/fr/magazine/hommage-ecrivain-algerien-mouloud-feraoun-28-septembre-2013",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
           "field": "critical-ranking",
           "claimRu": "Оценочный рейтинг удалён; происхождение, роль и язык автора подтверждены институциональными источниками.",
           "finding": "corrected",
@@ -1012,6 +1167,19 @@
               "provider": "Institut du monde arabe",
               "sourceFamily": "public-cultural-institution",
               "url": "https://www.imarabe.org/fr/magazine/chaire-ima-rend-hommage-naget-belkaid-khadda",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "Среди произведений Рашида Буджедры - роман «La Prise de Gibraltar» 1987 года.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Bibliothèque nationale de France",
+              "sourceFamily": "national-library",
+              "url": "https://catalogue.bnf.fr/ark:/12148/cb118932046",
               "checkedAt": "2026-08-09"
             }
           ]
@@ -1096,6 +1264,25 @@
         {
           "field": "themes-style",
           "claimRu": "Его романы, эссе, исторические и журналистские тексты размышляют об Андорре и её жителях.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "Government of Andorra",
+              "sourceFamily": "government-publication",
+              "url": "https://www.govern.ad/documents/d/guest/2019_el_soler_antoni_morell_lhumanista_andorra",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Gran Enciclopèdia Catalana",
+              "sourceFamily": "scholarly-encyclopedia",
+              "url": "https://www.enciclopedia.cat/gran-enciclopedia-catalana/antoni-morell-i-mora",
+              "checkedAt": "2026-08-31"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "Среди романов Антони Мореля - «Set lletanies de mort», «Borís I, rei d’Andorra» и «La neu adversa».",
           "finding": "confirmed",
           "sources": [
             {
@@ -1266,6 +1453,25 @@
           ]
         },
         {
+          "field": "national-cultural-affiliation",
+          "claimRu": "Его творчество относится к литературе Анголы.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/noticias/ondjaki-vence-premio-jose-saramago",
+              "checkedAt": "2026-08-09"
+            },
+            {
+              "provider": "Government of Angola",
+              "sourceFamily": "government-publication",
+              "url": "https://mat.gov.ao/web/noticias/colectanea-%22angola%3A-50-livros-50-autores%22-marca-encerramento-das-celebracoes-da-independencia-nacional",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
           "field": "language",
           "claimRu": "Он публикует произведения на португальском языке.",
           "finding": "confirmed",
@@ -1300,6 +1506,19 @@
         {
           "field": "awards",
           "claimRu": "Роман «Прозрачные» получил премию Жозе Сарамаго 2013 года.",
+          "finding": "confirmed",
+          "sources": [
+            {
+              "provider": "UCCLA",
+              "sourceFamily": "intermunicipal-cultural-institution",
+              "url": "https://www.uccla.pt/noticias/ondjaki-vence-premio-jose-saramago",
+              "checkedAt": "2026-08-09"
+            }
+          ]
+        },
+        {
+          "field": "works",
+          "claimRu": "Онджаки - автор романа «Os Transparentes» («Прозрачные»), получившего премию Жозе Сарамаго в 2013 году.",
           "finding": "confirmed",
           "sources": [
             {

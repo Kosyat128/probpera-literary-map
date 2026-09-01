@@ -1,5 +1,10 @@
 import { createHash } from "node:crypto";
 
+import {
+  equivalentWorkTitle,
+  extractExplicitWorkTitles,
+} from "./writer-biography-work-titles.mjs";
+
 const LITERARY_OCCUPATION_IDS = new Set([
   "Q36180", // writer
   "Q49757", // poet
@@ -29,6 +34,20 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
       {
         title: "Aden Robleh Awaleh - Bibliothèque nationale de France",
         url: "https://catalogue.bnf.fr/ark%3A/12148/cb34933567g",
+      },
+    ],
+  },
+  "democratic_republic_of_congo:v_y_mudimbe": {
+    qid: "Q3056528",
+    note: "Duke University and the Cambridge University Press journal Africa identify Valentin-Yves Mudimbe as the Congolese philosopher, novelist, poet and author of The Invention of Africa, and independently record his death on 21 April 2025. The divergent Wikidata label and 22 April claim therefore do not identify a different person.",
+    sources: [
+      {
+        title: "Valentin-Yves Mudimbe - Duke University",
+        url: "https://trinity.duke.edu/news/literature-professor-valentin-yves-mudimbe-passes-away",
+      },
+      {
+        title: "The life and work of V.-Y. Mudimbe - Cambridge University Press",
+        url: "https://www.cambridge.org/core/journals/africa/article/life-and-work-of-vy-mudimbe-8-december-194121-april-2025/E7E89FC89E5B6CDAF870EA8B54A0D5E0",
       },
     ],
   },
@@ -211,6 +230,34 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
       {
         title: "Zhuangzi - Internet Encyclopedia of Philosophy, University of Tennessee at Martin",
         url: "https://iep.utm.edu/zhuangzi-chuang-tzu-chinese-philosopher/",
+      },
+    ],
+  },
+  "guatemala:luis_cardoza_y_aragon": {
+    qid: "Q6700406",
+    note: "The exact bilingual name, Guatemalan poet-diplomat identity, works and death date establish Q6700406 as Luis Cardoza y Aragon. Two official Guatemalan biographies establish 21 June 1901, so the conflicting 1904 Wikidata birth year is a data error rather than an identity mismatch.",
+    sources: [
+      {
+        title: "Luis Cardoza y Aragon - Registro Nacional de las Personas de Guatemala",
+        url: "https://www.renap.gob.gt/sites/default/files/publicaciones-renap/luis-cardoza-y-aragon-web.pdf",
+      },
+      {
+        title: "Luis Cardoza y Aragon - Ministerio de Cultura y Deportes de Guatemala",
+        url: "https://mcd.gob.gt/wp-content/uploads/2022/05/7-Poesi%E2%95%A0ua-de-Luis-Cardoza-y-Arago%E2%95%A0un-Lecturas-Bicentenarias.pdf",
+      },
+    ],
+  },
+  "french_guiana:leon_gontran_damas": {
+    qid: "Q983363",
+    note: "The Bibliotheque nationale de France authority record and the French National Assembly deputy database identify Leon-Gontran Damas, born in Cayenne on 28 March 1912 and deceased in Washington on 22 January 1978. These records establish both the mapped identity and the corrected public birth date.",
+    sources: [
+      {
+        title: "Leon-Gontran Damas - Bibliotheque nationale de France",
+        url: "https://catalogue.bnf.fr/ark:/12148/cb11898508m",
+      },
+      {
+        title: "Leon Damas - Assemblee nationale",
+        url: "https://www2.assemblee-nationale.fr/sycomore/fiche/2113",
       },
     ],
   },
@@ -656,6 +703,25 @@ export const WRITER_IDENTITY_MANUAL_CONFIRMATIONS = Object.freeze({
  * pair; all other automated checks continue to run.
  */
 export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
+  "democratic_republic_of_congo:v_y_mudimbe": [
+    {
+      field: "deathDate",
+      cardValue: "2025-04-21",
+      stagingValue: "",
+      decision: "retain-authority-confirmed-card",
+      note: "Duke University states that Mudimbe died on 21 April 2025, and the Cambridge University Press journal Africa independently gives the same date. The conflicting 22 April Wikidata claim is not promoted.",
+      sources: [
+        {
+          title: "Valentin-Yves Mudimbe - Duke University",
+          url: "https://trinity.duke.edu/news/literature-professor-valentin-yves-mudimbe-passes-away",
+        },
+        {
+          title: "The life and work of V.-Y. Mudimbe - Cambridge University Press",
+          url: "https://www.cambridge.org/core/journals/africa/article/life-and-work-of-vy-mudimbe-8-december-194121-april-2025/E7E89FC89E5B6CDAF870EA8B54A0D5E0",
+        },
+      ],
+    },
+  ],
   "england:oliver_goldsmith": [
     {
       field: "birthDate",
@@ -965,6 +1031,44 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
         {
           title: "Salim Hatubou - Takam Tikou, Bibliothèque nationale de France",
           url: "https://takamtikou.bnf.fr/actualites/2015-04-02/hommage-salim-hatubou-crivain-et-conteur-franco-comorien",
+        },
+      ],
+    },
+  ],
+  "guatemala:luis_cardoza_y_aragon": [
+    {
+      field: "birthDate",
+      cardValue: "1901-06-21",
+      stagingValue: "",
+      decision: "retain-current-card",
+      note: "RENAP records 21 June 1901 and the Guatemalan Ministry of Culture independently records 1901. The conflicting 1904 Wikidata claim is therefore excluded from corrections while the verified public date is retained.",
+      sources: [
+        {
+          title: "Luis Cardoza y Aragon - Registro Nacional de las Personas de Guatemala",
+          url: "https://www.renap.gob.gt/sites/default/files/publicaciones-renap/luis-cardoza-y-aragon-web.pdf",
+        },
+        {
+          title: "Luis Cardoza y Aragon - Ministerio de Cultura y Deportes de Guatemala",
+          url: "https://mcd.gob.gt/wp-content/uploads/2022/05/7-Poesi%E2%95%A0ua-de-Luis-Cardoza-y-Arago%E2%95%A0un-Lecturas-Bicentenarias.pdf",
+        },
+      ],
+    },
+  ],
+  "french_guiana:leon_gontran_damas": [
+    {
+      field: "birthDate",
+      cardValue: "1912-03-28",
+      stagingValue: "",
+      decision: "corrected-card",
+      note: "The erroneous 28 April date was corrected to 28 March 1912. The Bibliotheque nationale de France authority record and the French National Assembly deputy database independently give the same exact date.",
+      sources: [
+        {
+          title: "Leon-Gontran Damas - Bibliotheque nationale de France",
+          url: "https://catalogue.bnf.fr/ark:/12148/cb11898508m",
+        },
+        {
+          title: "Leon Damas - Assemblee nationale",
+          url: "https://www2.assemblee-nationale.fr/sycomore/fiche/2113",
         },
       ],
     },
@@ -1329,6 +1433,25 @@ export const WRITER_FACT_MANUAL_RESOLUTIONS = Object.freeze({
         {
           title: "Zeruya Shalev - Humanitas",
           url: "https://humanitas.ro/autori/zeruya-shalev",
+        },
+      ],
+    },
+  ],
+  "japan:kawabata_yasunari": [
+    {
+      field: "birthDate",
+      cardValue: "1899-06-14",
+      stagingValue: "1899-06-11",
+      decision: "retained-national-authority-value",
+      note: "The National Diet Library of Japan gives 14 June 1899, while the Nobel Foundation gives 11 June 1899. The public card retains the Japanese national authority value and records the institutional disagreement explicitly.",
+      sources: [
+        {
+          title: "KAWABATA Yasunari - National Diet Library, Japan",
+          url: "https://www.ndl.go.jp/portrait/e/datas/6086/",
+        },
+        {
+          title: "Yasunari Kawabata - NobelPrize.org",
+          url: "https://www.nobelprize.org/prizes/literature/1968/kawabata/facts/",
         },
       ],
     },
@@ -1978,8 +2101,6 @@ const DATE_PAIR_PATTERN =
   /\b(1\d{3}|20\d{2})\s*[−-]\s*(1\d{3}|20\d{2})\b/gu;
 const NOBEL_PATTERN = /Нобелевск\p{L}*/iu;
 const QUOTED_TITLE_PATTERN = /«([^»\r\n]{2,120})»/gu;
-const WORK_TITLE_PATTERN =
-  /(?:(?<!из\s)(?:роман|поэм|пьес|книг|сборник|произведен)\p{L}*|автор(?:ка)?)\s+«([^»\r\n]{2,120})»/giu;
 
 function isLifeYearPair(source, match) {
   const index = match.index ?? 0;
@@ -2545,7 +2666,7 @@ export function extractBiographyClaims(text) {
     ),
   ].sort((a, b) => a - b);
   const quotedTitles = [...source.matchAll(QUOTED_TITLE_PATTERN)].map((match) => match[1].trim());
-  const workTitles = [...source.matchAll(WORK_TITLE_PATTERN)].map((match) => match[1].trim());
+  const workTitles = extractExplicitWorkTitles(source);
   const lifeYearPairs = [...source.matchAll(DATE_PAIR_PATTERN)]
     .filter((match) => isLifeYearPair(source, match))
     .map((match) => ({
@@ -2559,7 +2680,7 @@ export function extractBiographyClaims(text) {
     claimTypes,
     nobelYears,
     quotedTitles: [...new Set(quotedTitles)].sort((a, b) => a.localeCompare(b, "ru")),
-    workTitles: [...new Set(workTitles)].sort((a, b) => a.localeCompare(b, "ru")),
+    workTitles,
     lifeYearPairs,
   };
 }
@@ -2698,11 +2819,10 @@ function compareBiographyToCard(writer, claims) {
     ...(writer.works || []),
     ...(writer.workDetails || []).map((work) => work?.title),
   ]
-    .map(normalizeIdentity)
+    .map((title) => String(title || "").trim())
     .filter(Boolean);
-  const structuredWorkSet = new Set(structuredWorks);
   for (const title of claims.workTitles) {
-    if (!structuredWorkSet.has(normalizeIdentity(title))) {
+    if (!structuredWorks.some((candidate) => equivalentWorkTitle(candidate, title))) {
       issues.push(
         issue(
           "named-work-not-in-structured-list",

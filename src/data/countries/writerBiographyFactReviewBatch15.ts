@@ -340,7 +340,7 @@ const writerBiographyFactReviewBatch15Base: readonly Omit<
           evidence(
             "Bibliothèque nationale de France",
             "https://data.bnf.fr/en/see_all_activities/12170141/page1",
-            "Национальная библиотека подтверждает годы жизни 1929-2010 и библиографию Ойоно.",
+            "Национальная библиотека подтверждает годы жизни 1929-2010 и перечисляет роман Une vie de boy (1956) в библиографии Ойоно.",
           ),
         ],
       },
