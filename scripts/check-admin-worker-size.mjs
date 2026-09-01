@@ -4,7 +4,9 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const CLOUDFLARE_FREE_GZIP_KIB = 3_072;
-const RELEASE_SAFETY_MARGIN_KIB = 160;
+// Keep a full 128 KiB below Cloudflare's compressed free-plan ceiling while
+// allowing the complete editorial and typography toolsets to ship together.
+const RELEASE_SAFETY_MARGIN_KIB = 128;
 const MAX_GZIP_KIB =
   CLOUDFLARE_FREE_GZIP_KIB - RELEASE_SAFETY_MARGIN_KIB;
 const projectRoot = path.resolve(

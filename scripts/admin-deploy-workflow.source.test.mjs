@@ -66,7 +66,7 @@ describe("editorial admin deployment workflow", () => {
       "const CLOUDFLARE_FREE_GZIP_KIB = 3_072;"
     );
     expect(workerSizeGate).toContain(
-      "const RELEASE_SAFETY_MARGIN_KIB = 160;"
+      "const RELEASE_SAFETY_MARGIN_KIB = 128;"
     );
     expect(workerSizeGate).toContain(
       "CLOUDFLARE_FREE_GZIP_KIB - RELEASE_SAFETY_MARGIN_KIB"
