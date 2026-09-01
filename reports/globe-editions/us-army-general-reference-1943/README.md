@@ -1,4 +1,4 @@
-# General Reference Map No. 1 — globe texture QA
+# General Reference Map No. 1 - globe texture QA
 
 ## Result
 

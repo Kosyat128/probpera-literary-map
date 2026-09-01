@@ -31,8 +31,8 @@ python scripts/build-us-army-general-reference-1943.py
 
 Результат:
 
-- `public/textures/us-army-general-reference-1943.webp` — 4096×2048;
-- `public/textures/us-army-general-reference-1943-mobile.webp` — 2048×1024;
-- `reports/globe-editions/us-army-general-reference-1943/` — manifest, численные метрики и визуальные QA-превью.
+- `public/textures/us-army-general-reference-1943.webp` - 4096×2048;
+- `public/textures/us-army-general-reference-1943-mobile.webp` - 2048×1024;
+- `reports/globe-editions/us-army-general-reference-1943/` - manifest, численные метрики и визуальные QA-превью.
 
 Runtime должен применять `STANDARD_GLOBE_OVERLAY_PROFILE`: полный SVG-контур стран, заливка/обводка выбранной страны и связанный интерфейс выбора остаются отдельным слоем и не растрируются в историческую текстуру.

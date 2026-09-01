@@ -4,14 +4,14 @@
 
 ## Что найдено
 
-Карточка UIUC для *Typus Totius Orbis Terraquei…* имеет стабильный item UUID `17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9`, Map ID `afm0003392`, репозиторий Rare Book & Manuscript Library и статус **No Copyright – United States / public domain**: [карточка](https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9), [машинная JSON-запись](https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9.json), [rights statement](https://rightsstatements.org/page/NoC-US/1.0/).
+Карточка UIUC для *Typus Totius Orbis Terraquei…* имеет стабильный item UUID `17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9`, Map ID `afm0003392`, репозиторий Rare Book & Manuscript Library и статус **No Copyright - United States / public domain**: [карточка](https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9), [машинная JSON-запись](https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9.json), [rights statement](https://rightsstatements.org/page/NoC-US/1.0/).
 
 У UIUC есть два разных уровня изображения:
 
 - access binary `e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0`: публичный IIIF `3000 × 2000`; именно он остаётся текущим production input ([info.json](https://images.digital.library.illinois.edu/iiif/2/e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0/info.json));
 - preservation master `e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8`: TIFF `448 825 264` байта, `10 147 × 7 371`, 16 bit/sample, RGB, без сжатия, 600 dpi, `page_count=2` ([binary JSON](https://digital.library.illinois.edu/binaries/e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8.json), [IIIF info.json](https://images.digital.library.illinois.edu/iiif/2/e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8/info.json), [стабильный download route](https://digital.library.illinois.edu/binaries/e14fe7f0-8be8-0137-6dac-02d0d7bfd6e4-8/object)).
 
-Следовательно, `3000 × 2000` — предел текущего access binary, а не предел оцифровки UIUC. Preservation master подтверждён официальными binary- и IIIF-метаданными.
+Следовательно, `3000 × 2000` - предел текущего access binary, а не предел оцифровки UIUC. Preservation master подтверждён официальными binary- и IIIF-метаданными.
 
 ## Минимальная проверка получения
 
@@ -27,7 +27,7 @@
 
 Raw TIFF не скачан: 448,8 МБ противоречат заданному ограничению на размер, а публичные метаданные не публикуют checksum оригинала. Карточка предлагает `Original File (TIFF)`, стабильный `/object` route выдаёт временный подписанный URL после browser/WAF session. Для получения без неоправданного объёма подготовлен, но не отправлен запрос на `digitalcollections@lists.illinois.edu`: попросить SHA-256 оригинала, подтвердить нужную TIFF-страницу и предоставить стабильный 5K derivative. Текст запроса находится в JSON-конфиге.
 
-OAI-ID вида `oai:digital.library.illinois.edu:<item UUID>` встречается у внешних harvesters UIUC, но публичный OAI-PMH endpoint для этой записи не удалось подтвердить. Поэтому authoritative machine route здесь — официальный item JSON, а OAI-шаблон помечен только как неподтверждённый candidate, не как источник бинарных параметров.
+OAI-ID вида `oai:digital.library.illinois.edu:<item UUID>` встречается у внешних harvesters UIUC, но публичный OAI-PMH endpoint для этой записи не удалось подтвердить. Поэтому authoritative machine route здесь - официальный item JSON, а OAI-шаблон помечен только как неподтверждённый candidate, не как источник бинарных параметров.
 
 ## Почему нельзя заменить production автоматически
 
@@ -53,4 +53,4 @@ Preservation capture имеет другое кадрирование и вкл�
 node scripts/check-scherer-preservation-source.mjs --require-cache
 ```
 
-Он проверяет идентификаторы и метаданные preservation master, что production по-прежнему ссылается на access binary `3000 × 2000`, неизменность desktop/mobile texture hash, а при `--require-cache` — размеры и SHA-256 четырёх локальных QA/reference-файлов.
+Он проверяет идентификаторы и метаданные preservation master, что production по-прежнему ссылается на access binary `3000 × 2000`, неизменность desktop/mobile texture hash, а при `--require-cache` - размеры и SHA-256 четырёх локальных QA/reference-файлов.

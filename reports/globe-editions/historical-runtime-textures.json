@@ -28,7 +28,7 @@
   "editions": [
     {
       "id": "behaim-1492",
-      "displayTitle": "Martin Behaim 1492 — Ravenstein facsimile 1908",
+      "displayTitle": "Martin Behaim 1492 - Ravenstein facsimile 1908",
       "catalogUrl": "https://dl.ub.uni-freiburg.de/diglit/ravenstein1908",
       "rights": {
         "status": "accepted-public-domain-mark-1.0",
@@ -90,7 +90,7 @@
       },
       "canonicalRegistration": {
         "path": "src/data/geo/countries.geojson",
-        "dataset": "Natural Earth Admin 0 – Countries",
+        "dataset": "Natural Earth Admin 0 - Countries",
         "repositoryVersion": "5.1.2",
         "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
         "featureCount": 177,
@@ -188,7 +188,7 @@
     },
     {
       "id": "hondius-1615",
-      "displayTitle": "Jodocus Hondius / Giuseppe di Rossi — Terrestrial Globe Gores, 1615",
+      "displayTitle": "Jodocus Hondius / Giuseppe di Rossi - Terrestrial Globe Gores, 1615",
       "catalogUrl": "https://www.loc.gov/item/2008627640/",
       "rights": {
         "status": "accepted-loc-free-use-reuse",
@@ -222,7 +222,7 @@
       },
       "canonicalRegistration": {
         "path": "src/data/geo/countries.geojson",
-        "dataset": "Natural Earth Admin 0 – Countries",
+        "dataset": "Natural Earth Admin 0 - Countries",
         "repositoryVersion": "5.1.2",
         "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
         "featureCount": 177,
@@ -328,7 +328,7 @@
     },
     {
       "id": "coronelli-1697",
-      "displayTitle": "Vincenzo Coronelli — Globe Gores, 1697",
+      "displayTitle": "Vincenzo Coronelli - Globe Gores, 1697",
       "catalogUrl": "https://purl.stanford.edu/fw438kx8748",
       "rights": {
         "status": "accepted-public-domain-mark-1.0",
@@ -363,7 +363,7 @@
       },
       "canonicalRegistration": {
         "path": "src/data/geo/countries.geojson",
-        "dataset": "Natural Earth Admin 0 – Countries",
+        "dataset": "Natural Earth Admin 0 - Countries",
         "repositoryVersion": "5.1.2",
         "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
         "featureCount": 177,
@@ -469,13 +469,13 @@
     },
     {
       "id": "scherer-1700",
-      "displayTitle": "Heinrich Scherer — Typus Totius Orbis Terraquei, 1700",
+      "displayTitle": "Heinrich Scherer - Typus Totius Orbis Terraquei, 1700",
       "catalogUrl": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
       "rights": {
         "status": "accepted-no-copyright-united-states",
         "url": "https://rightsstatements.org/page/NoC-US/1.0/",
         "credit": "University of Illinois Urbana-Champaign Library, Rare Book & Manuscript Library",
-        "note": "The item page labels the scan No Copyright — United States and describes it as public domain."
+        "note": "The item page labels the scan No Copyright - United States and describes it as public domain."
       },
       "sources": [
         {
@@ -504,7 +504,7 @@
       },
       "canonicalRegistration": {
         "path": "src/data/geo/countries.geojson",
-        "dataset": "Natural Earth Admin 0 – Countries",
+        "dataset": "Natural Earth Admin 0 - Countries",
         "repositoryVersion": "5.1.2",
         "sha256": "402706B730069FB691D1EC6098E13D7D59670A1823D1FFB62546FF045DF20279",
         "featureCount": 177,

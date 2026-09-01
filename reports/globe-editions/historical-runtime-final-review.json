@@ -36,7 +36,7 @@
   "editions": [
     {
       "id": "behaim-1492",
-      "title": "Martin Behaim 1492 — Ravenstein facsimile 1908",
+      "title": "Martin Behaim 1492 - Ravenstein facsimile 1908",
       "outputs": [
         {
           "profile": "desktop",
@@ -62,7 +62,7 @@
     },
     {
       "id": "hondius-1615",
-      "title": "Jodocus Hondius / Giuseppe di Rossi — Terrestrial Globe Gores, 1615",
+      "title": "Jodocus Hondius / Giuseppe di Rossi - Terrestrial Globe Gores, 1615",
       "outputs": [
         {
           "profile": "desktop",
@@ -88,7 +88,7 @@
     },
     {
       "id": "coronelli-1697",
-      "title": "Vincenzo Coronelli — Globe Gores, 1697",
+      "title": "Vincenzo Coronelli - Globe Gores, 1697",
       "outputs": [
         {
           "profile": "desktop",
@@ -114,7 +114,7 @@
     },
     {
       "id": "scherer-1700",
-      "title": "Heinrich Scherer — Typus Totius Orbis Terraquei, 1700",
+      "title": "Heinrich Scherer - Typus Totius Orbis Terraquei, 1700",
       "outputs": [
         {
           "profile": "desktop",

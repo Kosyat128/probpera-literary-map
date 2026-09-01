@@ -42,7 +42,7 @@ Sources and rights:
   Public Domain Mark 1.0.
 - Heinrich Scherer, 1700:
   [University of Illinois Urbana-Champaign Library](https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9),
-  No Copyright — United States.
+  No Copyright - United States.
 - Giovanni Maria Cassini, 1790:
   [Library of Congress item 2004626115](https://www.loc.gov/item/2004626115/),
   resources `g3201b.ct001065a` through `g3201b.ct001065e`.

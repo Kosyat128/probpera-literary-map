@@ -1,6 +1,6 @@
 # Статус реализации глобусов
 
-Текущий inventory: 9 зарегистрированных и 9 доступных изданий. Выбранное военное издание — M-101 1943. Базовый commit: 47771ea8; поверх него находятся сегодняшние runtime/UI исправления и этот non-binary evidence-пакет.
+Текущий inventory: 9 зарегистрированных и 9 доступных изданий. Выбранное военное издание - M-101 1943. Базовый commit: 47771ea8; поверх него находятся сегодняшние runtime/UI исправления и этот non-binary evidence-пакет.
 
 Готово в этом пакете: воспроизводимые builders и pinned configs ранних глобусов, Cassini master/runtime chain, rejected Scherer alignment pilot, Scherer preservation audit, ручные checksum-pinned acquisition-команды, Rand source manifest и актуальные source/final matrices. Production WebP не изменялись, новые бинарные файлы не добавлялись.
 

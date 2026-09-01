@@ -26,4 +26,4 @@
 
 Полный E2E-набор и deployment сегодня не запускались. Для строгого закрытия Gate C нужны независимые fit/holdout landmarks, source-specific reviewed land masks и protected-content review каждого исторического издания; это новая исследовательская работа, а не безопасный перенос уже готовых материалов.
 
-Текущая безопасная эксплуатация: пять ранних глобусов используют source-only centroid selection, остальные — standard canonical overlay. Изменять этот fail-safe до прохождения hard Gate C нельзя.
+Текущая безопасная эксплуатация: пять ранних глобусов используют source-only centroid selection, остальные - standard canonical overlay. Изменять этот fail-safe до прохождения hard Gate C нельзя.

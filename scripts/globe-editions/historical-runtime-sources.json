@@ -33,7 +33,7 @@
   "editions": [
     {
       "id": "behaim-1492",
-      "displayTitle": "Martin Behaim 1492 — Ravenstein facsimile 1908",
+      "displayTitle": "Martin Behaim 1492 - Ravenstein facsimile 1908",
       "outputBasename": "behaim-1492-ravenstein-1908",
       "encoding": { "desktopQuality": 74, "mobileQuality": 77 },
       "institution": "Universitätsbibliothek Freiburg",
@@ -85,7 +85,7 @@
     },
     {
       "id": "hondius-1615",
-      "displayTitle": "Jodocus Hondius / Giuseppe di Rossi — Terrestrial Globe Gores, 1615",
+      "displayTitle": "Jodocus Hondius / Giuseppe di Rossi - Terrestrial Globe Gores, 1615",
       "outputBasename": "hondius-rossi-1615",
       "encoding": { "desktopQuality": 84, "mobileQuality": 76 },
       "institution": "Library of Congress Geography and Map Division",
@@ -108,7 +108,7 @@
     },
     {
       "id": "coronelli-1697",
-      "displayTitle": "Vincenzo Coronelli — Globe Gores, 1697",
+      "displayTitle": "Vincenzo Coronelli - Globe Gores, 1697",
       "outputBasename": "coronelli-1697",
       "encoding": { "desktopQuality": 84, "mobileQuality": 80 },
       "institution": "Stanford University Libraries, David Rumsey Map Center",
@@ -131,12 +131,12 @@
     },
     {
       "id": "scherer-1700",
-      "displayTitle": "Heinrich Scherer — Typus Totius Orbis Terraquei, 1700",
+      "displayTitle": "Heinrich Scherer - Typus Totius Orbis Terraquei, 1700",
       "outputBasename": "scherer-1700",
       "encoding": { "desktopQuality": 84, "mobileQuality": 80 },
       "institution": "University of Illinois Urbana-Champaign Library",
       "catalogUrl": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9",
-      "rights": { "status": "accepted-no-copyright-united-states", "url": "https://rightsstatements.org/page/NoC-US/1.0/", "credit": "University of Illinois Urbana-Champaign Library, Rare Book & Manuscript Library", "note": "The item page labels the scan No Copyright — United States and describes it as public domain." },
+      "rights": { "status": "accepted-no-copyright-united-states", "url": "https://rightsstatements.org/page/NoC-US/1.0/", "credit": "University of Illinois Urbana-Champaign Library, Rare Book & Manuscript Library", "note": "The item page labels the scan No Copyright - United States and describes it as public domain." },
       "sources": [
         { "id": "gores", "role": "complete-twelve-gore-set", "filename": "scherer-1700.jpg", "url": "https://images.digital.library.illinois.edu/iiif/2/e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0/full/full/0/default.jpg", "referer": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9", "catalogUrl": "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9", "width": 3000, "height": 2000, "bytes": 1304625, "sha256": "7F462DCE31DE5ED1B78AAFE3ECC7BEBF34152B520696E68D7B9881F57417BA64" }
       ],
