@@ -20790,7 +20790,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls,
   .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"] .literary-globe .globe-controls {
     right: auto;
-    bottom: calc(var(--atlas-coordinate-bottom) + 70px);
+    bottom: calc(var(--atlas-coordinate-bottom) + 72px);
     left: var(--atlas-left-ornament-edge);
     width: auto;
     margin-inline: 0;
@@ -21118,6 +21118,10 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (max-width: 330px) {
+  .atlas-experience-surface[data-atlas-view="embedded"] .literary-globe .globe-style-switch {
+    grid-auto-columns: 116px;
+  }
+
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
     right: max(4px, env(safe-area-inset-right));
     left: max(4px, env(safe-area-inset-left));
@@ -22321,7 +22325,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 @media (max-width: 1220px) and (min-width: 981px) {
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
-    grid-template-columns: 52px minmax(0, 1fr);
+    grid-template-columns: 50px minmax(0, 1fr);
     gap: 0;
   }
 
@@ -22422,7 +22426,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 @media (min-width: 721px) and (max-width: 980px) {
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
-    grid-template-columns: 52px minmax(0, 1fr);
+    grid-template-columns: 50px minmax(0, 1fr);
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-identity {
@@ -22464,6 +22468,10 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (max-width: 430px) {
+  .atlas-experience-surface[data-atlas-view="immersive"] {
+    --atlas-mobile-dock-gutter: 8px;
+  }
+
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-immersive-chrome {
     --atlas-chrome-top: max(10px, env(safe-area-inset-top));
 
@@ -22658,7 +22666,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .literary-globe .globe-navigation-label {
     top: calc(100% + 12px);
     left: 50%;
-    width: calc(100vw - 32px);
+    width: calc(100% - 4px);
     max-width: 360px;
     font-size: 12px;
     text-align: center;

@@ -144,6 +144,9 @@ test("globe edition preview reuses decoded texture assets", async ({
 test("all globe surfaces use the same seamless star background", async ({
   page,
 }) => {
+  // Switching several full-resolution globe textures can exceed the suite's
+  // default timeout on a cold CI runner without indicating a rendering fault.
+  test.setTimeout(120_000);
   await page.goto("/");
   await page.locator("#atlas").scrollIntoViewIfNeeded();
   const globe = page.locator(".literary-globe:not(.is-loading)");

@@ -411,7 +411,7 @@ test("глобус загружается только после приближ
   await expect(naturalEarthButton).toBeVisible({ timeout: 30_000 });
   await expect(nasaButton).toBeVisible({ timeout: 30_000 });
   await expect(naturalEarthButton).toHaveAccessibleName(
-    "Natural Earth - литературный атлас, 2026"
+    "Natural Earth: литературный атлас, 2026"
   );
   const initialViewport = page.viewportSize();
   const checkedWidths = isMobile ? [320, 360] : [initialViewport?.width ?? 1280, 700];
@@ -419,11 +419,15 @@ test("глобус загружается только после приближ
     await page.setViewportSize({ width, height: isMobile ? 820 : 900 });
     const styleButtons = page.locator(".globe-style-switch button");
     for (let index = 0; index < (await styleButtons.count()); index += 1) {
+      const buttonMetrics = await styleButtons.nth(index).evaluate((element) => ({
+        clientWidth: element.clientWidth,
+        label: element.getAttribute("data-globe-edition-option") || element.textContent,
+        scrollWidth: element.scrollWidth,
+      }));
       expect(
-        await styleButtons.nth(index).evaluate(
-          (element) => element.scrollWidth <= element.clientWidth
-        )
-      ).toBe(true);
+        buttonMetrics.scrollWidth,
+        `${width}px ${buttonMetrics.label} edition label must fit its button`
+      ).toBeLessThanOrEqual(buttonMetrics.clientWidth);
     }
   }
   if (initialViewport) await page.setViewportSize(initialViewport);

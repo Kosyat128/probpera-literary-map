@@ -408,7 +408,7 @@ test("a direct immersive URL closes by replace without adding or consuming histo
     .toBe(historyBefore);
 });
 
-test("embedded launch keeps a dedicated touch-safe row above the globe on narrow layouts", async ({
+test("embedded launch stays touch-safe beside the edition rail on every layout", async ({
   page,
   isMobile,
 }) => {
@@ -434,18 +434,20 @@ test("embedded launch keeps a dedicated touch-safe row above the globe on narrow
         };
       };
       return {
-        copy: box(".globe-copy"),
         launch: box(".atlas-immersion-launch"),
         stage: box(".world-map-stage"),
         style: box(".globe-style-switch"),
       };
     });
 
-    expect(
-      geometry.launch.y + geometry.launch.height,
-      `${viewport.width}px launch must end before the globe stage`
-    ).toBeLessThanOrEqual(geometry.stage.y);
-    expect(boxesOverlap(geometry.launch, geometry.copy)).toBe(false);
+    expect(geometry.launch.x).toBeGreaterThanOrEqual(geometry.stage.x);
+    expect(geometry.launch.y).toBeGreaterThanOrEqual(geometry.stage.y);
+    expect(geometry.launch.x + geometry.launch.width).toBeLessThanOrEqual(
+      geometry.stage.x + geometry.stage.width
+    );
+    expect(geometry.launch.y + geometry.launch.height).toBeLessThanOrEqual(
+      geometry.stage.y + geometry.stage.height
+    );
     expect(boxesOverlap(geometry.launch, geometry.style)).toBe(false);
     expect(geometry.launch.height).toBeGreaterThanOrEqual(44);
   }
@@ -508,7 +510,7 @@ test("premium globe controls stay balanced and inside every viewport", async ({
         close: select(".atlas-immersive-close"),
         styleSwitch: select(".globe-style-switch"),
         controls: select(".globe-controls"),
-        instruction: select(".globe-instruction"),
+        navigationLabel: select(".globe-navigation-label"),
         coordinate: selectOptional(".atlas-coordinate"),
         controlButtons,
         controlLabelsFit: controlButtonElements.every((button) => {
@@ -538,10 +540,15 @@ test("premium globe controls stay balanced and inside every viewport", async ({
     }
     expect(geometry.chromeNav.x).toBeGreaterThanOrEqual(geometry.chrome.x - 1);
     expect(geometry.chromeNav.right).toBeLessThanOrEqual(geometry.chrome.right + 1);
-    expect(
-      Math.max(geometry.search.width, geometry.filters.width, geometry.random.width) -
-        Math.min(geometry.search.width, geometry.filters.width, geometry.random.width)
-    ).toBeLessThanOrEqual(1);
+    if (viewport.width <= 720) {
+      expect(
+        Math.max(geometry.search.width, geometry.filters.width, geometry.random.width) -
+          Math.min(geometry.search.width, geometry.filters.width, geometry.random.width)
+      ).toBeLessThanOrEqual(1);
+    } else {
+      expect(geometry.search.width).toBeLessThan(geometry.filters.width);
+      expect(geometry.filters.width).toBeLessThan(geometry.random.width);
+    }
     for (const control of [
       geometry.search,
       geometry.filters,
@@ -564,12 +571,18 @@ test("premium globe controls stay balanced and inside every viewport", async ({
         expect(Math.abs(dock.x - geometry.chrome.x)).toBeLessThanOrEqual(1);
         expect(Math.abs(dock.right - geometry.chrome.right)).toBeLessThanOrEqual(1);
       }
-      const controlsInstructionGap = geometry.instruction.y - geometry.controls.bottom;
+      const controlsInstructionGap =
+        geometry.navigationLabel.y - geometry.controls.bottom;
       expect(controlsInstructionGap).toBeGreaterThanOrEqual(0);
       expect(controlsInstructionGap).toBeLessThanOrEqual(20);
     } else {
       expect(geometry.coordinate).not.toBeNull();
-      expect(Math.abs(geometry.controls.x - geometry.coordinate.x)).toBeLessThanOrEqual(1);
+      expect(
+        Math.abs(
+          geometry.controls.x + geometry.controls.width / 2 - viewport.width / 2
+        )
+      ).toBeLessThanOrEqual(1);
+      expect(geometry.coordinate.x).toBeLessThan(geometry.controls.x);
       const controlsCoordinateGap = geometry.coordinate.y - geometry.controls.bottom;
       expect(controlsCoordinateGap).toBeGreaterThanOrEqual(4);
       expect(controlsCoordinateGap).toBeLessThanOrEqual(20);
@@ -582,10 +595,14 @@ test("premium globe controls stay balanced and inside every viewport", async ({
         Math.min(...geometry.controlButtons.slice(2).map((button) => button.width))
     ).toBeLessThanOrEqual(1);
     expect(geometry.controlLabelsFit).toBe(true);
-    expect(geometry.identityDisplay).toBe(viewport.width <= 980 ? "none" : "grid");
-    if (viewport.width > 980) {
+    expect(geometry.identityDisplay).toBe(viewport.width <= 720 ? "none" : "grid");
+    if (viewport.width > 720 && viewport.width <= 1220) {
       expect(Math.abs(geometry.identity.width - geometry.identity.height)).toBeLessThanOrEqual(1);
       expect(geometry.identity.width).toBeGreaterThanOrEqual(48);
+    } else if (viewport.width > 1220) {
+      expect(geometry.identity.width).toBeGreaterThanOrEqual(232);
+      expect(geometry.identity.width).toBeGreaterThan(geometry.identity.height);
+      expect(geometry.identity.height).toBeGreaterThanOrEqual(48);
     }
 
   }
