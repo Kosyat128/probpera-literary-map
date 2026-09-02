@@ -225,4 +225,4 @@ jobs:
       - name: Audit the promoted admin release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run audit-live-security.yml --ref main
+        run: gh workflow run audit-live-security.yml --repo "$GITHUB_REPOSITORY" --ref main
