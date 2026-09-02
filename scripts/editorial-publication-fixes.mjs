@@ -5,6 +5,19 @@ export const MYTHOLOGY_EXPRESSIONS_ARTICLE_ID =
 export const BLACK_SWAN_REVIEW_ARTICLE_ID =
   "7ad1ab89-8a77-407d-b59a-6147c0e2a7a6";
 export const INDIA_WRITERS_ARTICLE_ID = "8dc6a430-ac15-4a20-ac3e-af9c07bc4bdc";
+export const FILM_ADAPTATIONS_PART_FOUR_ARTICLE_ID =
+  "42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa";
+export const TUGARIN_ARTICLE_ID = "c115750b-1ccb-43a6-adf9-95621f06ba41";
+export const WRITERS_PROFESSIONS_PART_FOUR_ARTICLE_ID =
+  "4c60932a-cd7d-4e43-a83f-5b38dc3e0b02";
+
+const filmAdaptationsPartFourImageAlt =
+  "Иллюстрация к статье «Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)»";
+
+const tugarinHistoricalIllustration =
+  '<img src="https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/5ecd0f72-224e-4b3a-af81-6e9ffd374ab7.webp" alt="Алёша Попович и Тугарин Змиевич - иллюстрация К. В. Лебедева, 1889 год" class="article-image is-left" data-image-layout="left" data-caption="К. В. Лебедев. «Алёша Попович и Тугарин Змиевич». Иллюстрация к книге П. Н. Полевого «Сказка о смелом Алёше Поповиче». Москва: А. Д. Ступин, 1889." loading="lazy">';
+const tugarinIllustrationAnchor =
+  "<p>Эту концепцию нельзя выдавать за окончательно доказанную историю происхождения персонажа.";
 
 export const CONFIRMED_RUSSIAN_COPY_ARTICLE_IDS = Object.freeze([
   "13723645-4457-4386-9d66-8b94f4b90743",
@@ -21,6 +34,7 @@ export const CONFIRMED_RUSSIAN_COPY_ARTICLE_IDS = Object.freeze([
   "df0e0863-989f-4361-92bb-067b81bd80ab",
   "e2cdfafe-5bb4-4010-87ad-942be7595a7b",
   "f46301a6-7a47-430a-945b-f5f57e9c3a8f",
+  WRITERS_PROFESSIONS_PART_FOUR_ARTICLE_ID,
 ]);
 
 export const EDITORIAL_PUBLICATION_FIX_IDS = Object.freeze([
@@ -28,6 +42,8 @@ export const EDITORIAL_PUBLICATION_FIX_IDS = Object.freeze([
   MYTHOLOGY_EXPRESSIONS_ARTICLE_ID,
   BLACK_SWAN_REVIEW_ARTICLE_ID,
   INDIA_WRITERS_ARTICLE_ID,
+  FILM_ADAPTATIONS_PART_FOUR_ARTICLE_ID,
+  TUGARIN_ARTICLE_ID,
   ...CONFIRMED_RUSSIAN_COPY_ARTICLE_IDS,
 ]);
 
@@ -204,7 +220,11 @@ export const CONFIRMED_RUSSIAN_COPY_REPLACEMENTS = Object.freeze({
     ["жил внутри жилищи", "жил внутри жилища"],
     [
       "Страж порядка - на ряду с домовым, выполняют функцию контроля за порядком в доме и в случае чего наказывает за беспорядок.",
-      "Наряду с домовым кикимора выполняет роль стража порядка: следит за порядком в доме и наказывает хозяев за беспорядок.",
+      "Страж порядка - наряду с домовым кикимора следит за порядком в доме и наказывает хозяев за беспорядок.",
+    ],
+    [
+      " </strong>- на ряду с домовым, выполняют функцию контроля за порядком в доме и в случае чего наказывает за беспорядок.",
+      "</strong> - наряду с домовым кикимора следит за порядком в доме и наказывает хозяев за беспорядок.",
     ],
     [
       "появление кикиморы из душ умерших «неправильной» смертью",
@@ -223,6 +243,9 @@ export const CONFIRMED_RUSSIAN_COPY_REPLACEMENTS = Object.freeze({
   ]),
   "f46301a6-7a47-430a-945b-f5f57e9c3a8f": Object.freeze([
     ["на ряду с А.Н. Афанасьевым", "наряду с А. Н. Афанасьевым"],
+  ]),
+  [WRITERS_PROFESSIONS_PART_FOUR_ARTICLE_ID]: Object.freeze([
+    ["The New Yorker ,", "The New Yorker,"],
   ]),
 });
 
@@ -383,6 +406,40 @@ export function applyEditorialPublicationFix(article) {
         description: mythologyExpressionsMetadataFix.excerpt,
         seoDescription: mythologyExpressionsMetadataFix.seo_description,
         ogDescription: mythologyExpressionsMetadataFix.og_description,
+      };
+    }
+  }
+
+  if (articleId === FILM_ADAPTATIONS_PART_FOUR_ARTICLE_ID) {
+    corrected = {
+      ...corrected,
+      ...(typeof corrected.cover_alt === "string"
+        ? { cover_alt: filmAdaptationsPartFourImageAlt }
+        : {}),
+      ...(typeof corrected.imageAlt === "string"
+        ? { imageAlt: filmAdaptationsPartFourImageAlt }
+        : {}),
+    };
+  }
+
+  if (articleId === TUGARIN_ARTICLE_ID) {
+    const contentField =
+      typeof corrected.content_html === "string"
+        ? "content_html"
+        : typeof corrected.contentHtml === "string"
+          ? "contentHtml"
+          : "";
+    if (
+      contentField &&
+      !corrected[contentField].includes("5ecd0f72-224e-4b3a-af81-6e9ffd374ab7.webp") &&
+      corrected[contentField].includes(tugarinIllustrationAnchor)
+    ) {
+      corrected = {
+        ...corrected,
+        [contentField]: corrected[contentField].replace(
+          tugarinIllustrationAnchor,
+          `${tugarinHistoricalIllustration}${tugarinIllustrationAnchor}`
+        ),
       };
     }
   }

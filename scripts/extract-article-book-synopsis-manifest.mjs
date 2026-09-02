@@ -13,6 +13,10 @@ import {
   normalizeArticleBookText,
   resolveArticleBookCandidate,
 } from "./lib/article-book-coverage-policy.mjs";
+import {
+  articleSynopsisCorpusSha256,
+  articleSynopsisRevisionSha256,
+} from "./lib/article-book-synopsis-revision.mjs";
 
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -49,10 +53,6 @@ function sha256(value) {
   return createHash("sha256").update(value, "utf8").digest("hex");
 }
 
-function canonicalUtf8Text(value) {
-  return value.replace(/\r\n?/gu, "\n");
-}
-
 async function sourceArchive() {
   await fs.mkdir(cacheDirectory, { recursive: true });
   await build({
@@ -77,8 +77,7 @@ async function sourceArchive() {
 }
 
 async function sourceArticles() {
-  const manifestRaw = await fs.readFile(publishedArticlesPath, "utf8");
-  const manifest = JSON.parse(manifestRaw);
+  const manifest = JSON.parse(await fs.readFile(publishedArticlesPath, "utf8"));
   const snapshots = await Promise.all(
     manifest.articles.map(async (metadata) => {
       const absoluteDocumentPath = path.join(
@@ -100,7 +99,7 @@ async function sourceArticles() {
       "en"
     )
   );
-  return { manifest, manifestRaw, snapshots };
+  return { manifest, snapshots };
 }
 
 function unique(values) {
@@ -120,7 +119,9 @@ function sourceOccurrence(occurrence, snapshotById) {
   const headingText = occurrence.headingText || "";
   const excerptText = occurrence.excerptText || "";
   const articleSha256 = sha256(article.contentHtml || "");
-  const revisionSha256 = sha256(canonicalUtf8Text(revisionRaw));
+  const revisionSha256 = articleSynopsisRevisionSha256(
+    JSON.parse(revisionRaw)
+  );
   const headingSha256 = headingText ? sha256(headingText) : null;
   const excerptSha256 = excerptText ? sha256(excerptText) : null;
   const occurrenceSha256 = sha256(
@@ -312,7 +313,7 @@ const pairs = candidates
   );
 
 const manifest = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   purpose:
     "Read-only provenance manifest for later human-reviewed article synopsis migration; it contains no excerpt text and creates no book descriptions.",
   matchingPolicy: "normalized-title-author-and-reviewed-writer-alias-v3",
@@ -320,14 +321,14 @@ const manifest = {
   hashScopes: {
     article: "UTF-8 contentHtml from the canonical CMS article snapshot",
     revision:
-      "UTF-8 text of the canonical public/cms article JSON revision with line endings normalized to LF",
+      "Canonical JSON projection of article identity, publication date, prose, headings, sources and bibliography; export/update timestamps, image metadata and presentation flags are excluded",
     heading: "Whitespace-normalized heading text; null when absent",
     excerpt:
       "Whitespace-normalized DOM text extracted after the heading; null when absent",
   },
   extractionPolicy: {
     canonicalSource: "public/cms/published-articles.json",
-    canonicalTextLineEndings: "LF",
+    canonicalRevisionTextLineEndings: "LF",
     minimumUsableExcerptCharacters,
     selectedSourcePriority: [
       "usable excerpt",
@@ -341,10 +342,8 @@ const manifest = {
     generatedDescriptions: false,
   },
   sourceRevision: {
-    generatedAt: articleSource.manifest.generatedAt || "",
-    publishedArticlesManifestSha256: sha256(
-      canonicalUtf8Text(articleSource.manifestRaw)
-    ),
+    articleCount: articleSource.snapshots.length,
+    articleCorpusSha256: articleSynopsisCorpusSha256(articleSource.snapshots),
     writerIdentityAliasRegistrySha256: sha256(
       JSON.stringify(archiveSource.writerIdentityAliasRegistry)
     ),

@@ -1,3 +1,4 @@
+import { withoutUndefinedTitleEvidenceOptions } from "./bookEvidenceV2TitleEvidence";
 import type {
   WorkDescriptionProvenanceProfile,
   WorkLocale,
@@ -84,7 +85,7 @@ const peasantsKey = "poland:wladyslaw_reymont:the-peasants";
 function titleEvidence(draft: TitleEvidenceDraft): WorkTitleEvidenceProfile {
   return {
     entityKind: "manifestation",
-    ...draft,
+    ...withoutUndefinedTitleEvidenceOptions(draft),
     retrievedAt: checkedAt,
     checkedAt,
     checkedBy,

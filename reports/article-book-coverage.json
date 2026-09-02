@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T04:44:25.780Z",
+  "generatedAt": "2026-09-02T10:26:32.744Z",
   "matchingPolicy": "normalized-title-author-and-reviewed-writer-alias-v3",
   "writerIdentityAliasRegistry": {
     "schemaVersion": 1,
@@ -13,12 +13,12 @@
     ]
   },
   "totals": {
-    "sourceOccurrences": 268,
-    "candidates": 259,
-    "covered": 259,
+    "sourceOccurrences": 267,
+    "candidates": 258,
+    "covered": 258,
     "missing": 0,
     "ambiguous": 0,
-    "matchedWriter": 259,
+    "matchedWriter": 258,
     "unmatchedWriter": 0,
     "ambiguousWriter": 0,
     "titleCollisionCandidates": 5,
@@ -1239,30 +1239,6 @@
       "countryId": "usa",
       "writerId": "mario_puzo",
       "writerName": "Марио Джанлуиджи Пьюзо",
-      "writerMatchAmbiguous": false,
-      "workMatchAmbiguous": false,
-      "collisionReasonCodes": [],
-      "titleCollisionMatches": [],
-      "authorWorkMatches": []
-    },
-    {
-      "author": "",
-      "title": "Под знаком чёрного лебедя",
-      "kind": "primary",
-      "articleId": "page--article--page--books--14",
-      "cmsArticleId": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-      "articleTitle": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-      "articleUrl": "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
-      "sourceOccurrenceCount": 1,
-      "sourceArticleIds": [
-        "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6"
-      ],
-      "resolutionStatus": "covered",
-      "covered": true,
-      "targetRecordKey": "england:david_mitchell:black-swan-green",
-      "countryId": "england",
-      "writerId": "david_mitchell",
-      "writerName": "Дэвид Стивен Митчелл",
       "writerMatchAmbiguous": false,
       "workMatchAmbiguous": false,
       "collisionReasonCodes": [],

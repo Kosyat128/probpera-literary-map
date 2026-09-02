@@ -1,3 +1,4 @@
+import { withoutUndefinedTitleEvidenceOptions } from "./bookEvidenceV2TitleEvidence";
 import type {
   Country,
   WorkDescriptionProvenanceProfile,
@@ -64,7 +65,7 @@ export type BookEvidenceV2PublicBatch03AuthorityDraft = {
 function titleEvidence(draft: TitleEvidenceDraft): WorkTitleEvidenceProfile {
   return {
     entityKind: "manifestation",
-    ...draft,
+    ...withoutUndefinedTitleEvidenceOptions(draft),
     retrievedAt: checkedAt,
     checkedAt,
     checkedBy,

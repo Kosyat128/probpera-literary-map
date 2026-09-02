@@ -1,6 +1,9 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { buildBookArchive } from "../../src/data/bookArchive.ts";
+import { bookEvidenceV2Issues } from "../../src/data/bookEvidence.ts";
+import { bookArchiveCountries } from "../../src/data/countries/index.ts";
 import {
   BOOK_EVIDENCE_V2_CONTRACT,
   BOOK_EVIDENCE_V2_SCHEMA_VERSION,
@@ -12,6 +15,7 @@ import {
   evidenceV2DatabaseContentProjection,
   evidenceV2ValidatorImplementationSha256,
 } from "../lib/book-evidence-v2-attestations.mjs";
+import { canonicalLiteraryArchiveReleasePayload } from "../lib/literary-archive-atomic-release.mjs";
 
 const root = path.resolve(process.cwd());
 const raw = (file) => readFileSync(path.join(root, file));
@@ -426,6 +430,46 @@ describe("literary-work Evidence V2 production boundary", () => {
       expectedContentSha256: "b".repeat(64),
       expectedContent,
     });
+  });
+
+  it("keeps every real Evidence V2 attestation strictly JSON-canonicalizable", () => {
+    const archive = buildBookArchive(bookArchiveCountries);
+    const review = evidenceV2AttestationCandidatesFromArchive(archive, {
+      canonRegistry,
+      canonRegistrySha256,
+      issuesForWork: bookEvidenceV2Issues,
+      validatorSha256,
+      today: "2026-09-02",
+    });
+    const failures = review.candidates.flatMap((candidate) => {
+      try {
+        canonicalLiteraryArchiveReleasePayload(candidate.evidence);
+        return [];
+      } catch (error) {
+        return [
+          `${candidate.recordKey}: ${
+            error instanceof Error ? error.message : String(error)
+          }`,
+        ];
+      }
+    });
+
+    expect(review.candidates).toHaveLength(46);
+    expect(review.rejected).toHaveLength(9_715);
+    expect(failures).toEqual([]);
+
+    const lifeOfPi = archive.find(
+      (book) =>
+        `${book.countryId}:${book.writerId}:${book.id}` ===
+        "canada:yann_martel:life-of-pi"
+    );
+    expect(lifeOfPi).toBeDefined();
+    expect(
+      Object.hasOwn(
+        lifeOfPi.localizedTitles.ru.evidence[0],
+        "editionStatement"
+      )
+    ).toBe(false);
   });
 
   it("mirrors all edition/artwork fields and PostgreSQL C byte ordering", () => {

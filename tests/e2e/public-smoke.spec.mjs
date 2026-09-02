@@ -246,7 +246,12 @@ test("прямой URL статьи возвращает к полному жу�
     name: /Английский язык|English/iu,
   });
   await expect(languageControl).toBeVisible();
-  await expect(russianButton).toHaveAttribute("aria-pressed", "true");
+  const routeLanguage = await page
+    .locator("html")
+    .getAttribute("data-route-language");
+  const initialLanguageButton =
+    routeLanguage === "en" ? englishButton : russianButton;
+  await expect(initialLanguageButton).toHaveAttribute("aria-pressed", "true");
 
   await englishButton.click();
   await expect(reader).toBeVisible();
