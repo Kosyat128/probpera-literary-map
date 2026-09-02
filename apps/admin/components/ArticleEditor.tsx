@@ -44,7 +44,9 @@ import {
 } from "@/lib/article-recovery";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
 import {
+  resolveEditorImageCaption,
   resolveEditorImageAltText,
+  suggestEditorImageCaption,
   suggestEditorImageAltText,
 } from "@/lib/editor-image-naming";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
@@ -613,20 +615,35 @@ export default function ArticleEditor({
   const suggestedArticleImageAlt = useCallback(
     (fileName: string, context: { position: number }) =>
       suggestEditorImageAltText({
-        document: activeLocale === "ru" ? editor?.state.doc : null,
+        document: editor?.state.doc,
         position: context.position,
-        title,
+        title: activeLocale === "en" ? englishTitle : title,
         fileName,
         kind: "article",
+        locale: activeLocale,
       }),
-    [activeLocale, editor, title]
+    [activeLocale, editor, englishTitle, title]
+  );
+  const suggestedArticleImageCaption = useCallback(
+    (fileName: string, context: { position: number }) =>
+      suggestEditorImageCaption({
+        document: editor?.state.doc,
+        position: context.position,
+        title: activeLocale === "en" ? englishTitle : title,
+        fileName,
+        kind: "article",
+        locale: activeLocale,
+      }),
+    [activeLocale, editor, englishTitle, title]
   );
 
   const editorMedia = useEditorMediaWorkflow({
     editor,
     collectionName: "Статьи",
     contextKey: activeLocale,
+    metadataLocale: activeLocale,
     suggestedAltText: suggestedArticleImageAlt,
+    suggestedCaptionText: suggestedArticleImageCaption,
     onChanged: () => {
       setTemplateMessage(
         "Изображение готово. При необходимости выберите его и измените расположение."
@@ -1425,6 +1442,9 @@ export default function ArticleEditor({
     if (!editor) return;
     rememberImageSelection();
     const selectedImage = imageSelectionRef.current.attributes;
+    const imagePosition =
+      imageSelectionRef.current.nodePos ??
+      imageSelectionRef.current.insertionPos;
     const selectedAlt =
       typeof selectedImage.alt === "string" ? selectedImage.alt.trim() : "";
     setImageDialogInitialValue({
@@ -1432,15 +1452,25 @@ export default function ArticleEditor({
       alt: resolveEditorImageAltText({
         currentAlt: selectedAlt,
         suggestedAlt: suggestEditorImageAltText({
-          document: activeLocale === "ru" ? editor.state.doc : null,
-          position: imageSelectionRef.current.insertionPos,
-          title,
+          document: editor.state.doc,
+          position: imagePosition,
+          title: activeLocale === "en" ? englishTitle : title,
           kind: "article",
+          locale: activeLocale,
         }),
         decorative: selectedImage.decorative === true,
       }),
-      caption:
-        typeof selectedImage.caption === "string" ? selectedImage.caption : "",
+      caption: resolveEditorImageCaption({
+        currentCaption: selectedImage.caption,
+        suggestedCaption: suggestEditorImageCaption({
+          document: editor.state.doc,
+          position: imagePosition,
+          title: activeLocale === "en" ? englishTitle : title,
+          kind: "article",
+          locale: activeLocale,
+        }),
+        decorative: selectedImage.decorative === true,
+      }),
     });
     setImageDialogOpen(true);
   };
@@ -1448,13 +1478,23 @@ export default function ArticleEditor({
   const applyImageUrl = (value: EditorImageDialogValue) => {
     if (!editor) return;
     const selection = imageSelectionRef.current;
+    const sourceChanged = Boolean(
+      selection.selectedImage && value.src !== selection.expectedSrc
+    );
     const attributes = {
       src: value.src,
-      // A manually supplied URL is no longer tied to the previously selected
-      // media-library record.
-      mediaId: null,
+      // Editing metadata keeps the media identity. A genuinely different URL
+      // is detached from the previous library record and provenance.
+      mediaId: sourceChanged
+        ? null
+        : typeof selection.attributes.mediaId === "string"
+          ? selection.attributes.mediaId
+          : null,
       alt: value.alt,
       caption: value.caption,
+      ...(sourceChanged
+        ? { credit: "", source: "", license: "", licenseUrl: "" }
+        : {}),
       layout:
         typeof selection.attributes.layout === "string"
           ? (selection.attributes.layout as EditorialImageLayout)
@@ -1560,9 +1600,10 @@ export default function ArticleEditor({
     const altText = resolveEditorImageAltText({
       currentAlt,
       suggestedAlt: suggestEditorImageAltText({
-        title,
+        title: uploadLocale === "en" ? englishTitle : title,
         fileName: file.name,
         kind: "article",
+        locale: uploadLocale,
       }),
     });
 
@@ -1616,9 +1657,24 @@ export default function ArticleEditor({
 
   const confirmMediaCollection = (settings: EditorialGallerySettings) => {
     if (!mediaComposerKind) return;
+    const insertionPosition = editor?.state.selection.from ?? 0;
+    const linkedItems = parseEditorialGalleryUrls(mediaComposerValue).map(
+      (src) => {
+        const fileName = src.split("/").pop() || "изображение";
+        return {
+          src,
+          alt: suggestedArticleImageAlt(fileName, {
+            position: insertionPosition,
+          }),
+          caption: suggestedArticleImageCaption(fileName, {
+            position: insertionPosition,
+          }),
+        };
+      }
+    );
     const items = mergeEditorialGalleryItems(
       mediaComposerItems,
-      parseEditorialGalleryUrls(mediaComposerValue)
+      linkedItems
     );
     if (!items.length) {
       setMediaComposerError("Загрузите или выберите хотя бы одно изображение.");

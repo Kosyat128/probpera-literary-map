@@ -16,6 +16,24 @@ const wrapperSource = readFileSync(
   ),
   "utf8"
 );
+const publicationSource = readFileSync(
+  path.join(process.cwd(), "apps/admin/lib/publication.ts"),
+  "utf8"
+);
+const editAdapterSource = readFileSync(
+  path.join(
+    process.cwd(),
+    "apps/admin/app/(dashboard)/articles/edit/page.tsx"
+  ),
+  "utf8"
+);
+const editPageSource = readFileSync(
+  path.join(
+    process.cwd(),
+    "apps/admin/app/(dashboard)/articles/[id]/page.tsx"
+  ),
+  "utf8"
+);
 
 describe("canonical atomic article save", () => {
   it("routes ordinary, manual-English and auto-translated saves through one action", () => {
@@ -23,6 +41,34 @@ describe("canonical atomic article save", () => {
     expect(wrapperSource).not.toContain("legacySaveArticleAction");
     expect(wrapperSource).not.toContain("saveAutoTranslatedArticleAtomically");
     expect(wrapperSource).not.toContain("atomicPersistenceAvailable");
+  });
+
+  it("keeps English optional and falls back to a Russian-only release", () => {
+    const translationCall = wrapperSource.indexOf(
+      "translateArticleSourceToEnglish({"
+    );
+    expect(wrapperSource).toContain(
+      'const englishReleaseRequested = formData.get("english_enabled") === "on"'
+    );
+    expect(wrapperSource.indexOf("!englishReleaseRequested")).toBeLessThan(
+      translationCall
+    );
+    expect(wrapperSource).toContain('formData.delete("english_enabled")');
+    expect(wrapperSource).toContain(
+      'formData.set("automatic_translation_deferred", "1")'
+    );
+    expect(wrapperSource).toContain(
+      'formData.set("skip_automatic_translation", "1")'
+    );
+    expect(actionSource).toContain(
+      "skipAutoTranslation: skipAutomaticTranslation"
+    );
+    expect(publicationSource).toContain("!skipAutoTranslation &&");
+    expect(actionSource).toContain(
+      'translation: automaticTranslationDeferred ? "deferred" : null'
+    );
+    expect(editAdapterSource).toContain("translation,");
+    expect(editPageSource).toContain('query.translation === "deferred"');
   });
 
   it("uses only reconciled atomic RPCs as persistence paths", () => {

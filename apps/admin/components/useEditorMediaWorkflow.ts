@@ -23,7 +23,10 @@ import {
   type EditorMediaSlotDetail,
 } from "@/components/editorMediaEvents";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
-import { resolveEditorImageAltText } from "@/lib/editor-image-naming";
+import {
+  resolveEditorImageAltText,
+  resolveEditorImageCaption,
+} from "@/lib/editor-image-naming";
 import type { EditorialGalleryItemInput } from "@/lib/editorial-gallery";
 import { isAcceptedClientImageType } from "@/lib/client-image-upload";
 
@@ -70,6 +73,10 @@ type UploadedItem = {
     alt: string;
     caption: string;
     layout: EditorialImageLayout;
+    credit: string;
+    source: string;
+    license: string;
+    licenseUrl: string;
   };
 };
 
@@ -85,11 +92,18 @@ function imageLayout(attributes: Record<string, unknown>): EditorialImageLayout 
     : "wide";
 }
 
+function assetTextForLocale(value: string, locale: "ru" | "en") {
+  const text = value.trim();
+  return locale === "en" && /\p{Script=Cyrillic}/u.test(text) ? "" : text;
+}
+
 export function useEditorMediaWorkflow({
   editor,
   collectionName,
   contextKey = "default",
+  metadataLocale = "ru",
   suggestedAltText,
+  suggestedCaptionText = suggestedAltText,
   onChanged,
   onMessage,
   onError,
@@ -97,7 +111,12 @@ export function useEditorMediaWorkflow({
   editor: Editor | null;
   collectionName: string;
   contextKey?: string;
+  metadataLocale?: "ru" | "en";
   suggestedAltText: (
+    fileName: string,
+    context: EditorSuggestedAltContext
+  ) => string;
+  suggestedCaptionText?: (
     fileName: string,
     context: EditorSuggestedAltContext
   ) => string;
@@ -167,6 +186,10 @@ export function useEditorMediaWorkflow({
             mediaId: item.attributes.mediaId,
             alt: item.attributes.alt,
             caption: item.attributes.caption,
+            credit: item.attributes.credit,
+            source: item.attributes.source,
+            license: item.attributes.license,
+            licenseUrl: item.attributes.licenseUrl,
           }))
         );
         return;
@@ -274,23 +297,37 @@ export function useEditorMediaWorkflow({
             typeof previousAttributes.alt === "string"
               ? previousAttributes.alt.trim()
               : "";
+          const suggestedAlt = suggestedAltText(file.name, {
+            position: target.position,
+            targetKind: target.kind,
+          });
+          const decorative =
+            target.kind === "replace" &&
+            target.attributes.decorative === true;
           const altText = resolveEditorImageAltText({
             currentAlt: previousAlt,
-            suggestedAlt: suggestedAltText(file.name, {
-              position: target.position,
-              targetKind: target.kind,
-            }),
-            decorative:
-              target.kind === "replace" && target.attributes.decorative === true,
+            suggestedAlt,
+            decorative,
           });
           const caption =
-            typeof previousAttributes.caption === "string"
-              ? previousAttributes.caption.trim()
-              : "";
+            resolveEditorImageCaption({
+              currentCaption: previousAttributes.caption,
+              suggestedCaption: suggestedCaptionText(file.name, {
+                position: target.position,
+                targetKind: target.kind,
+              }),
+              decorative,
+            });
           const result = await uploadEditorImage(file, {
             usage: "inline",
-            altText,
-            caption,
+            // The library record stays reusable: contextual captions belong to
+            // this editor node, not to the underlying file. Decorative nodes
+            // still need a descriptive library alt for the upload contract.
+            altText: resolveEditorImageAltText({
+              currentAlt: previousAlt,
+              suggestedAlt,
+            }),
+            caption: "",
             collectionName,
             signal: controller.signal,
             onProgress(stage, progress) {
@@ -315,6 +352,13 @@ export function useEditorMediaWorkflow({
               alt: altText,
               caption,
               layout: imageLayout(previousAttributes),
+              // A new local file has no verified rights metadata. Explicitly
+              // clear provenance when replacing an older library asset rather
+              // than attributing the new image to the previous creator.
+              credit: "",
+              source: "",
+              license: "",
+              licenseUrl: "",
             },
           });
         } catch (reason) {
@@ -386,7 +430,15 @@ export function useEditorMediaWorkflow({
       }
       for (const { id } of entries) abortControllersRef.current.delete(id);
     },
-    [attachUploaded, collectionName, editor, suggestedAltText, updateQueueItem]
+    [
+      attachUploaded,
+      collectionName,
+      editor,
+      metadataLocale,
+      suggestedAltText,
+      suggestedCaptionText,
+      updateQueueItem,
+    ]
   );
 
   const rememberSelection = useCallback(() => {
@@ -519,7 +571,7 @@ export function useEditorMediaWorkflow({
           target.kind === "replace" ? target.attributes : {};
         const alt = resolveEditorImageAltText({
           currentAlt: previousAttributes.alt,
-          fallbackAlt: asset.alt,
+          fallbackAlt: assetTextForLocale(asset.alt, metadataLocale),
           suggestedAlt: suggestedAltText(
             asset.alt || asset.src.split("/").pop() || "изображение",
             { position: target.position, targetKind: target.kind }
@@ -527,11 +579,23 @@ export function useEditorMediaWorkflow({
           decorative:
             target.kind === "replace" && previousAttributes.decorative === true,
         });
-        const caption =
-          target.kind === "replace" &&
-          typeof previousAttributes.caption === "string"
-            ? previousAttributes.caption.trim()
-            : asset.caption;
+        const caption = resolveEditorImageCaption({
+          currentCaption:
+            target.kind === "replace" ? previousAttributes.caption : "",
+          fallbackCaption: assetTextForLocale(asset.caption, metadataLocale),
+          suggestedCaption: suggestedCaptionText(
+            asset.alt || asset.src.split("/").pop() || "изображение",
+            { position: target.position, targetKind: target.kind }
+          ),
+          decorative:
+            target.kind === "replace" && previousAttributes.decorative === true,
+        });
+        const mediaAttributes = {
+          credit: asset.creator,
+          source: asset.sourceUrl,
+          license: asset.licenseName,
+          licenseUrl: asset.licenseUrl,
+        };
         if (target.kind === "collection") {
           target.onCollect([
             {
@@ -539,10 +603,7 @@ export function useEditorMediaWorkflow({
               mediaId: asset.id,
               alt,
               caption,
-              credit: asset.creator,
-              source: asset.sourceUrl,
-              license: asset.licenseName,
-              licenseUrl: asset.licenseUrl,
+              ...mediaAttributes,
             },
           ]);
           callbacksRef.current.onChanged();
@@ -559,6 +620,7 @@ export function useEditorMediaWorkflow({
               mediaId: asset.id,
               alt,
               caption,
+              ...mediaAttributes,
               layout:
                 target.kind === "replace"
                   ? imageLayout(target.attributes)
@@ -579,7 +641,13 @@ export function useEditorMediaWorkflow({
         );
       }
     },
-    [attachUploaded, captureTarget, suggestedAltText]
+    [
+      attachUploaded,
+      captureTarget,
+      metadataLocale,
+      suggestedAltText,
+      suggestedCaptionText,
+    ]
   );
 
   const cancelItem = useCallback((id: string) => {

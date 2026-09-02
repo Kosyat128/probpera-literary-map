@@ -2,7 +2,9 @@ import { describe, expect, it } from "vitest";
 
 import {
   nearestEditorHeading,
+  resolveEditorImageCaption,
   resolveEditorImageAltText,
+  suggestEditorImageCaption,
   suggestEditorImageAltText,
   type EditorHeadingDocument,
 } from "./editor-image-naming";
@@ -95,6 +97,48 @@ describe("editor image naming", () => {
     expect(value.length).toBeLessThanOrEqual(500);
   });
 
+  it("builds a visible Russian caption from the closest chapter and article title", () => {
+    expect(
+      suggestEditorImageCaption({
+        document,
+        position: 70,
+        title: "Мастер и Маргарита",
+        fileName: "IMG_0042.JPG",
+        kind: "article",
+      })
+    ).toBe(
+      "Деталь главы - иллюстрация к статье «Мастер и Маргарита»"
+    );
+  });
+
+  it("bounds generated captions to the editor caption limit", () => {
+    const value = suggestEditorImageCaption({
+      document: documentWith([
+        { position: 1, type: "heading", level: 2, text: "Г".repeat(800) },
+      ]),
+      position: 20,
+      title: "К".repeat(800),
+      kind: "article",
+    });
+    expect(value.length).toBeLessThanOrEqual(600);
+  });
+
+  it("keeps English editor metadata free from accidental Cyrillic fallbacks", () => {
+    expect(
+      suggestEditorImageAltText({
+        document: documentWith([
+          { position: 2, type: "heading", level: 2, text: "Book history" },
+        ]),
+        position: 20,
+        title: "The Master and Margarita",
+        kind: "article",
+        locale: "en",
+      })
+    ).toBe(
+      'Illustration for the section "Book history" in the article "The Master and Margarita"'
+    );
+  });
+
   it("keeps a manual alt, otherwise uses asset metadata and then the suggestion", () => {
     expect(
       resolveEditorImageAltText({
@@ -121,6 +165,46 @@ describe("editor image naming", () => {
       resolveEditorImageAltText({
         currentAlt: "Ручное описание",
         suggestedAlt: "Автоматическое описание",
+        decorative: true,
+      })
+    ).toBe("");
+  });
+
+  it("keeps a manual caption, otherwise uses the media title and contextual caption", () => {
+    expect(
+      resolveEditorImageCaption({
+        currentCaption: "  Ручная подпись  ",
+        fallbackCaption: "Название из медиатеки",
+        suggestedCaption: "Автоматическая подпись",
+      })
+    ).toBe("Ручная подпись");
+    expect(
+      resolveEditorImageCaption({
+        currentCaption: "",
+        fallbackCaption: "Название из медиатеки",
+        suggestedCaption: "Автоматическая подпись",
+      })
+    ).toBe("Название из медиатеки");
+    expect(
+      resolveEditorImageCaption({
+        currentCaption: "",
+        fallbackCaption: "",
+        suggestedCaption: "Автоматическая подпись",
+      })
+    ).toBe("Автоматическая подпись");
+    expect(
+      resolveEditorImageCaption({
+        currentCaption: "Подпись декоративного изображения",
+        fallbackCaption: "",
+        suggestedCaption: "Автоматическая подпись",
+        decorative: true,
+      })
+    ).toBe("Подпись декоративного изображения");
+    expect(
+      resolveEditorImageCaption({
+        currentCaption: "",
+        fallbackCaption: "Название из медиатеки",
+        suggestedCaption: "Автоматическая подпись",
         decorative: true,
       })
     ).toBe("");

@@ -39,6 +39,7 @@ export default async function EditArticlePage({
     released?: string;
     replaced?: string;
     social?: string;
+    translation?: string;
   }>;
 }) {
   const { id } = await params;
@@ -260,6 +261,12 @@ export default async function EditArticlePage({
         <p className="form-message" role="alert">
           Статья сохранена, но не удалось отправить в очередь публикации. Проверьте
           консоль и повторите позже.
+        </p>
+      )}
+      {query.translation === "deferred" && (
+        <p className="form-message form-success" role="status">
+          Русская версия опубликована. Английский перевод отложен и не блокирует
+          выпуск; его можно подготовить или повторить позже.
         </p>
       )}
       {Number(query.replaced || 0) > 0 && (

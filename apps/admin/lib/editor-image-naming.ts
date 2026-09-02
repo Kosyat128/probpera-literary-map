@@ -11,8 +11,10 @@ export type EditorHeadingDocument = {
 };
 
 export type EditorImageDocumentKind = "article" | "page";
+export type EditorImageDocumentLocale = "ru" | "en";
 
 const MAX_IMAGE_TEXT_LENGTH = 500;
+const MAX_IMAGE_CAPTION_LENGTH = 600;
 const MAX_CONTEXT_SEGMENT_LENGTH = 180;
 
 function normalizedText(value: unknown, maximum = MAX_CONTEXT_SEGMENT_LENGTH) {
@@ -61,15 +63,38 @@ export function suggestEditorImageAltText({
   title,
   fileName = "",
   kind,
+  locale = "ru",
 }: {
   document?: EditorHeadingDocument | null;
   position?: number | null;
   title: string;
   fileName?: string;
   kind: EditorImageDocumentKind;
+  locale?: EditorImageDocumentLocale;
 }) {
   const documentTitle = normalizedText(title);
   const heading = nearestEditorHeading(document, position);
+  if (locale === "en") {
+    if (heading && documentTitle) {
+      return `Illustration for the section "${heading}" in the ${kind} "${documentTitle}"`.slice(
+        0,
+        MAX_IMAGE_TEXT_LENGTH
+      );
+    }
+    if (heading) {
+      return `Illustration for the section "${heading}"`.slice(
+        0,
+        MAX_IMAGE_TEXT_LENGTH
+      );
+    }
+    if (documentTitle) {
+      return `Illustration for the ${kind} "${documentTitle}"`.slice(
+        0,
+        MAX_IMAGE_TEXT_LENGTH
+      );
+    }
+    return `Illustration for the ${kind}`;
+  }
   const subject = kind === "article" ? "статье" : "странице";
   const owner = kind === "article" ? "статьи" : "страницы";
   let value = "";
@@ -85,6 +110,47 @@ export function suggestEditorImageAltText({
   }
 
   return value.slice(0, MAX_IMAGE_TEXT_LENGTH);
+}
+
+export function suggestEditorImageCaption({
+  document,
+  position,
+  title,
+  fileName = "",
+  kind,
+  locale = "ru",
+}: {
+  document?: EditorHeadingDocument | null;
+  position?: number | null;
+  title: string;
+  fileName?: string;
+  kind: EditorImageDocumentKind;
+  locale?: EditorImageDocumentLocale;
+}) {
+  const documentTitle = normalizedText(title);
+  const heading = nearestEditorHeading(document, position);
+  const file = locale === "ru" ? fileLabel(fileName) : "";
+  let value = "";
+
+  if (locale === "en") {
+    if (heading && documentTitle) {
+      value = `${heading} - illustration for "${documentTitle}"`;
+    } else {
+      value = heading || (documentTitle ? `Illustration for "${documentTitle}"` : "") || file;
+    }
+    return (value || `Illustration for the ${kind}`).slice(
+      0,
+      MAX_IMAGE_CAPTION_LENGTH
+    );
+  }
+
+  const subject = kind === "article" ? "статье" : "странице";
+  if (heading && documentTitle) {
+    value = `${heading} - иллюстрация к ${subject} «${documentTitle}»`;
+  } else {
+    value = heading || (documentTitle ? `Иллюстрация к ${subject} «${documentTitle}»` : "") || file;
+  }
+  return (value || `Иллюстрация к ${subject}`).slice(0, MAX_IMAGE_CAPTION_LENGTH);
 }
 
 export function resolveEditorImageAltText({
@@ -111,4 +177,22 @@ export function resolveEditorImageAltText({
   return fallback.length >= 3
     ? fallback
     : suggestedAlt.trim().slice(0, MAX_IMAGE_TEXT_LENGTH);
+}
+
+export function resolveEditorImageCaption({
+  currentCaption,
+  fallbackCaption,
+  suggestedCaption,
+  decorative = false,
+}: {
+  currentCaption?: unknown;
+  fallbackCaption?: unknown;
+  suggestedCaption: string;
+  decorative?: boolean;
+}) {
+  const current = normalizedText(currentCaption, MAX_IMAGE_CAPTION_LENGTH);
+  if (current) return current;
+  if (decorative) return "";
+  const fallback = normalizedText(fallbackCaption, MAX_IMAGE_CAPTION_LENGTH);
+  return fallback || normalizedText(suggestedCaption, MAX_IMAGE_CAPTION_LENGTH);
 }
