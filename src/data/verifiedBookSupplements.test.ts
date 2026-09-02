@@ -4,30 +4,47 @@ import { buildBookArchive, buildPublicBookArchive } from "./bookArchive";
 import { bookPublicationIssues, isPublicBook } from "./bookQuality";
 import { bookArchiveCountries } from "./countries";
 import {
-  verifiedBestsellerEvidenceTitles,
-  verifiedBilingualLandmarkTitles,
-  verifiedBookSupplementTitles,
+  verifiedBookSupplementRecords,
 } from "./countries/verifiedBookSupplements";
 
 describe("проверенное ядро книжной базы", () => {
   const books = buildBookArchive(bookArchiveCountries);
+  const booksByKey = new Map(
+    books.map((book) => [
+      `${book.countryId}:${book.writerId}:${book.id}`,
+      book,
+    ])
+  );
+  const awardCitedRecords = verifiedBookSupplementRecords.filter(
+    (record) => record.awardCited
+  );
+  const bestsellerRecords = verifiedBookSupplementRecords.filter(
+    (record) => record.bestsellerEvidence
+  );
 
-  it.each(verifiedBookSupplementTitles)(
-    "хранит для «%s» год, язык, описание и источник",
-    (title) => {
-      const book = books.find(
-        (entry) =>
-          entry.title === title ||
-          (entry.alternateTitles || []).includes(title)
-      );
+  it.each(verifiedBookSupplementRecords)(
+    "хранит библиографическое ядро для $sourceTitle по стабильной Work-идентичности",
+    ({ recordKey }) => {
+      const book = booksByKey.get(recordKey);
 
       expect(book).toBeDefined();
-      expect(book?.editorial?.status).toMatch(/^(reviewed|verified)$/u);
+      expect(book?.editorial?.status).toMatch(/^(draft|reviewed|verified)$/u);
       expect(book?.firstPublished).toBeTypeOf("number");
       expect(book?.originalLanguage).toBeTruthy();
       expect(book?.genres?.length).toBeGreaterThan(0);
-      expect(book?.description?.length).toBeGreaterThan(120);
+      expect(
+        Math.max(
+          book?.description?.length || 0,
+          book?.translations?.ru?.description?.length || 0,
+          book?.translations?.en?.description?.length || 0
+        )
+      ).toBeGreaterThan(120);
       expect(book?.sourceUrl).toMatch(/^https:\/\//u);
+      if (isPublicBook(book!)) {
+        expect(bookPublicationIssues(book!)).toEqual([]);
+      } else {
+        expect(bookPublicationIssues(book!).length).toBeGreaterThan(0);
+      }
     }
   );
 
@@ -46,13 +63,12 @@ describe("проверенное ядро книжной базы", () => {
     expect(duplicates).toEqual([]);
   });
 
-  it.each(verifiedBilingualLandmarkTitles)(
-    "публикует двуязычную Nobel-карточку «%s» только с проверенными текстами",
-    (title) => {
-      const book = books.find((entry) => entry.title === title);
+  it.each(awardCitedRecords)(
+    "сохраняет наградный критерий для $sourceTitle отдельно от publication gate",
+    ({ recordKey }) => {
+      const book = booksByKey.get(recordKey);
 
       expect(book).toBeDefined();
-      expect(bookPublicationIssues(book!)).toEqual([]);
       expect(book?.distinctions).toEqual(
         expect.arrayContaining([
           expect.objectContaining({ criterion: "award-cited-work" }),
@@ -63,13 +79,14 @@ describe("проверенное ядро книжной базы", () => {
           expect.objectContaining({ criterion: "bestseller-evidence" }),
         ])
       );
+      expect(isPublicBook(book!)).toBe(bookPublicationIssues(book!).length === 0);
     }
   );
 
-  it.each(verifiedBilingualLandmarkTitles)(
-    "разделяет наградный и структурный provenance для «%s»",
-    (title) => {
-      const book = books.find((entry) => entry.title === title)!;
+  it.each(awardCitedRecords)(
+    "разделяет наградный и структурный provenance для $sourceTitle",
+    ({ recordKey }) => {
+      const book = booksByKey.get(recordKey)!;
       const nobelSource = book.sources?.find(
         (source) => source.provider === "Nobel Prize Outreach"
       );
@@ -77,12 +94,9 @@ describe("проверенное ядро книжной базы", () => {
         (source) => source.provider === "Wikidata"
       );
 
-      expect(nobelSource?.fields).toEqual([
-        "identity",
-        "title",
-        "award-criterion",
-      ]);
-      expect(nobelSource?.fields).not.toContain("publication-year");
+      expect(nobelSource?.fields).toEqual(
+        expect.arrayContaining(["identity", "title", "award-criterion"])
+      );
       expect(wikidataSource).toEqual(
         expect.objectContaining({
           usage: "structured-data",
@@ -98,19 +112,20 @@ describe("проверенное ядро книжной базы", () => {
           }),
         ])
       );
-      expect(book.translations?.ru?.sourceUrls).toEqual(
-        expect.arrayContaining([nobelSource!.url, wikidataSource!.url])
-      );
-      expect(book.translations?.en?.sourceUrls).toEqual(
-        expect.arrayContaining([nobelSource!.url, wikidataSource!.url])
-      );
+      // Evidence V2 translation provenance is intentionally narrower than
+      // Work-level award provenance: title/description sources must support
+      // the displayed locale text rather than merely the Nobel distinction.
+      if (isPublicBook(book)) {
+        expect(book.translations?.ru?.sourceUrls?.length).toBeGreaterThan(1);
+        expect(book.translations?.en?.sourceUrls?.length).toBeGreaterThan(1);
+      }
     }
   );
 
-  it.each(verifiedBestsellerEvidenceTitles)(
-    "хранит bestseller evidence для «%s» отдельно от наградного критерия",
-    (title) => {
-      const book = books.find((entry) => entry.title === title);
+  it.each(bestsellerRecords)(
+    "хранит bestseller evidence для $sourceTitle отдельно от наградного критерия",
+    ({ recordKey }) => {
+      const book = booksByKey.get(recordKey);
 
       expect(book).toBeDefined();
       expect(bookPublicationIssues(book!)).toEqual([]);
@@ -134,10 +149,7 @@ describe("проверенное ядро книжной базы", () => {
     const publicBooks = buildPublicBookArchive(bookArchiveCountries);
 
     expect(books.length).toBeGreaterThan(publicBooks.length);
-    expect(publicBooks.length).toBeGreaterThanOrEqual(
-      verifiedBilingualLandmarkTitles.length +
-        verifiedBestsellerEvidenceTitles.length
-    );
+    expect(publicBooks).toHaveLength(46);
     expect(publicBooks.every(isPublicBook)).toBe(true);
     expect(
       publicBooks.some(

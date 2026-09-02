@@ -86,6 +86,11 @@ function isIsoCalendarDate(value = "") {
 }
 
 export function sourceAuthorityFamily(source = {}) {
+  const declaredAuthority = String(source.authorityId || "")
+    .trim()
+    .toLocaleLowerCase("en");
+  if (declaredAuthority) return declaredAuthority;
+
   try {
     const hostname = new URL(source.url).hostname.replace(/^www\./u, "");
     if (
@@ -98,6 +103,15 @@ export function sourceAuthorityFamily(source = {}) {
     }
     if (/(?:openlibrary\.org|archive\.org)$/iu.test(hostname)) {
       return "internet-archive";
+    }
+    if (/(?:bnf\.fr)$/iu.test(hostname)) return "bnf";
+    if (/(?:rsl\.ru)$/iu.test(hostname)) return "rsl";
+    if (/(?:nlr\.ru)$/iu.test(hostname)) return "nlr";
+    if (/(?:rusneb\.ru)$/iu.test(hostname)) return "neb";
+    if (/(?:loc\.gov)$/iu.test(hostname)) return "loc";
+    if (/(?:bl\.uk)$/iu.test(hostname)) return "british-library";
+    if (/(?:chekhovmuseum\.com)$/iu.test(hostname)) {
+      return "chekhov-museum";
     }
     return hostname;
   } catch {

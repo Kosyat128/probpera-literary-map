@@ -11,6 +11,7 @@ const ignoredDirectories = new Set([
   ".cache",
   ".next",
   ".open-next",
+  ".tmp",
   ".wrangler",
   "coverage",
   "dist",
@@ -36,6 +37,12 @@ const textExtensions = new Set([
   ".yaml",
   ".yml",
 ]);
+const exactSourceTranscriptionFiles = new Set([
+  path.join(projectRoot, "data", "book-canon-source-registry.json"),
+  path.join(projectRoot, "data", "book-canon-loc-held-review-batch01.json"),
+  path.join(projectRoot, "reports", "book-canon-source-coverage.json"),
+  path.join(projectRoot, "reports", "book-canon-source-coverage.md"),
+]);
 
 async function filesIn(directory) {
   const result = [];
@@ -52,6 +59,9 @@ async function filesIn(directory) {
 
 const changed = [];
 for (const absolutePath of await filesIn(projectRoot)) {
+  // Exact authority transcriptions preserve the source's punctuation byte-for-byte.
+  // Their dedicated snapshot checks are stricter than the editorial dash policy.
+  if (exactSourceTranscriptionFiles.has(absolutePath)) continue;
   const source = await fs.readFile(absolutePath, "utf8");
   const normalized = normalizeShortHyphens(source);
   if (normalized === source) continue;

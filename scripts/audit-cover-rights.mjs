@@ -36,7 +36,10 @@ async function main() {
     }))
   );
   const files = (await readdir(countriesDirectory))
-    .filter((file) => file.endsWith(".ts"))
+    .filter(
+      (file) =>
+        file.endsWith(".ts") && !/\.(?:test|spec)\.ts$/u.test(file)
+    )
     .sort((left, right) => left.localeCompare(right, "en"));
   const covers = [];
 

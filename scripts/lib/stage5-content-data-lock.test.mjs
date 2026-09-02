@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 
 import { parseCss } from "../audit-stage5-baseline.mjs";
 import {
+  bookDatabaseEditorialOwnerAttestation,
   currentIntegrationGovernanceFingerprintRegistry,
   governanceFingerprintRegistry,
   ownerCssClasses,
@@ -289,7 +290,7 @@ const lockedScopes = [
   },
   {
     name: "canonical country, book and writer records",
-    ownerAttestationId: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
+    ownerAttestationId: "BOOK-DATABASE-EDITORIAL-2026-09-02",
     paths: [
       "src/data/countries",
       "src/data/writers",
@@ -309,8 +310,8 @@ const lockedScopes = [
       );
     },
     expected: {
-      files: 542,
-      sha256: "6f80c536fd685cb4daaca59219993f753c47fe51288268cd88c1f6f402cff665",
+      files: 556,
+      sha256: "b51cdc0044c1902499aaf417f4dd6724668a2a9fef5eda6babc3decb52383904",
     },
   },
 ];
@@ -324,7 +325,7 @@ describe("Stage 5 authorial content and canonical data lock", () => {
 });
 
 describe("Stage 5 owner and production-pipeline governance locks", () => {
-  it("records the owner-authorized Russian biography editorial delta", () => {
+  it("preserves the Russian-biography authorization and records the book-database authorization", () => {
     expect(russianBiographyEditorialOwnerAttestation).toEqual({
       id: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
       authorizedOn: "2026-09-01",
@@ -334,11 +335,21 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
         "premium-translation-and-health-russian-copy",
       ],
     });
+    expect(bookDatabaseEditorialOwnerAttestation).toEqual({
+      id: "BOOK-DATABASE-EDITORIAL-2026-09-02",
+      authorizedOn: "2026-09-02",
+      sourceIntegrationSha: "d87db7674de685bed86f78d93212246ab41fe804",
+      scopes: [
+        "canonical-book-audit-and-localization",
+        "canon-source-and-evidence-v2-adjudication",
+        "book-admin-and-atomic-release-pipeline",
+      ],
+    });
     expect(
       lockedScopes.find(
         (scope) => scope.name === "canonical country, book and writer records"
       )?.ownerAttestationId
-    ).toBe(russianBiographyEditorialOwnerAttestation.id);
+    ).toBe(bookDatabaseEditorialOwnerAttestation.id);
     for (const id of [
       "BOOK-ARCHIVE-OWNER-LOCK",
       "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE",
@@ -347,7 +358,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
         currentIntegrationGovernanceFingerprintRegistry.find(
           (entry) => entry.id === id
         )?.enforced?.ownerAttestationId
-      ).toBe(russianBiographyEditorialOwnerAttestation.id);
+      ).toBe(bookDatabaseEditorialOwnerAttestation.id);
     }
   });
 
@@ -469,6 +480,9 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     expect(premium.sourceMainSha).toBe(
       "97f4a8d191989f454b5625caae0bafc6a22b47d6"
     );
+    expect(premium.sourceBookIntegrationSha).toBe(
+      bookDatabaseEditorialOwnerAttestation.sourceIntegrationSha
+    );
     expect(premium.paths).toHaveLength(47);
     expect(premium.expected).toEqual({
       files: 47,
@@ -480,7 +494,10 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     expect(premium.enforced.paths).not.toContain(
       "apps/admin/app/(dashboard)/articles/atomic-auto-publish-action.ts"
     );
-    expect(premium.enforced.expected.files).toBe(72);
+    expect(premium.enforced.expected).toEqual({
+      files: 72,
+      sha256: "5678542e1616f76809d0512bcc60a9d8696b7c9551a11a3a6de5b00ce28dc847",
+    });
   });
 
   it("preserves the historical Stage 5A premium-pipeline evidence", () => {
@@ -507,11 +524,15 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       (entry) => entry.id === "BOOK-ARCHIVE-OWNER-LOCK"
     );
     expect(current.sourceIntegrationSha).toBe(
-      "fdd981381e859ab0ceaa44b48e9236af70c43db7"
+      "d87db7674de685bed86f78d93212246ab41fe804"
     );
     expect(current.expected).toEqual({
       files: 9,
       sha256: "dd720968c269372c4caa3521273d9eea9b1ead231e5733e334c993402da38942",
+    });
+    expect(current.enforced.expected).toEqual({
+      files: 9,
+      sha256: "5f9a3fc115e4022b6a128cb592191b8e0a3c317e55e383e5b95651d45f97e383",
     });
   });
 

@@ -38,6 +38,16 @@ import {
   buildLegacyArticleWithdrawals,
   partitionRedirectsByWithdrawnDestination,
 } from "./lib/cms-legacy-withdrawals.mjs";
+import {
+  groupPublishedAuthorRows,
+  publishedWorkAuthorship,
+} from "./lib/book-authorship-roundtrip.mjs";
+import {
+  groupPublishedWorkRows,
+  publishedWorkMetadata,
+  publishedWorkSources,
+  publishedWorkTranslations,
+} from "./lib/literary-work-publication-roundtrip.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCmsDirectory = path.join(projectRoot, "public", "cms");
@@ -165,13 +175,23 @@ const rowIdentity = {
   country_profile_overrides: (row) => row.country_id,
   writer_profile_overrides: (row) => `${row.country_id}:${row.writer_id}`,
   literary_works: (row) => row.id,
+  literary_work_authors: (row) => `${row.work_id}:${row.position}`,
+  literary_work_translations: (row) => `${row.work_id}:${row.locale}`,
+  literary_work_sources: (row) =>
+    `${row.work_id}:${row.provider}:${row.source_url}`,
   book_editions: (row) => row.id,
   font_assets: (row) => row.id,
   site_typography_overrides: (row) =>
     `${row.layer}:${row.target_key}:${row.semantic_scope}:${row.breakpoint}`,
 };
 
-async function fetchTableRows(table, query, accessKey, optional) {
+async function fetchTableRows(
+  table,
+  query,
+  accessKey,
+  optional,
+  optionalColumns = []
+) {
   return collectPostgrestPages({
     table,
     identity: rowIdentity[table] || ((row) => row.id),
@@ -201,6 +221,19 @@ async function fetchTableRows(table, query, accessKey, optional) {
         );
         return { rows: [], contentRange: "*/0" };
       }
+      if (
+        optional &&
+        pageIndex === 0 &&
+        response.status === 400 &&
+        /(?:PGRST204|42703)/u.test(body) &&
+        optionalColumns.some((column) => body.includes(column))
+      ) {
+        console.warn(
+          `Optional CMS columns ${optionalColumns.join(", ")} on ${table} ` +
+            "are not provisioned yet; using the legacy snapshot shape."
+        );
+        return { rows: [], contentRange: "*/0" };
+      }
       throw new Error(`CMS export failed for ${table}: ${response.status} ${body}`);
     },
   });
@@ -212,6 +245,21 @@ async function fetchRows(table, query) {
 
 async function fetchOptionalRows(table, query, accessKey = apiKey) {
   return fetchTableRows(table, query, accessKey, true);
+}
+
+async function fetchOptionalColumnRows(
+  table,
+  query,
+  optionalColumns,
+  accessKey = apiKey
+) {
+  return fetchTableRows(
+    table,
+    query,
+    accessKey,
+    true,
+    optionalColumns
+  );
 }
 
 async function fetchPublishedTypographyInputs() {
@@ -717,6 +765,10 @@ const [
   rawCountryProfileOverrides,
   rawWriterProfileOverrides,
   rawLiteraryWorks,
+  rawLiteraryWorkAuthorshipKinds,
+  rawLiteraryWorkAuthors,
+  rawLiteraryWorkTranslations,
+  rawLiteraryWorkSources,
   rawBookEditions,
   rawTypographyInputs,
   siteDesign,
@@ -788,9 +840,30 @@ const [
   }),
   fetchOptionalRows("literary_works", {
     select:
-      "id,legacy_id,country_id,writer_id,title,original_title,first_published,original_language,genres,tags,description,source_url,editorial_status,reviewed_at,updated_at",
+      "id,legacy_id,country_id,writer_id,title,original_title,first_published,original_language,genres,tags,description,source_url,editorial_status,reviewed_at,updated_at,metadata",
     editorial_status: "in.(reviewed,verified)",
     order: "legacy_id.asc,id.asc",
+  }, publicSnapshotKey),
+  fetchOptionalColumnRows("literary_works", {
+    select: "id,authorship_kind",
+    editorial_status: "in.(reviewed,verified)",
+    order: "id.asc",
+  }, ["authorship_kind"], publicSnapshotKey),
+  fetchOptionalRows("literary_work_authors", {
+    select:
+      "work_id,position,writer_country_id,writer_id,credit_name_ru,credit_name_en,attribution_status",
+    order: "work_id.asc,position.asc",
+  }, publicSnapshotKey),
+  fetchOptionalRows("literary_work_translations", {
+    select:
+      "work_id,locale,title,description,source_language,translation_method,editorial_status,source_urls,reviewed_at,metadata",
+    editorial_status: "in.(reviewed,verified)",
+    order: "work_id.asc,locale.asc",
+  }, publicSnapshotKey),
+  fetchOptionalRows("literary_work_sources", {
+    select:
+      "work_id,provider,source_url,field_names,license_name,usage,retrieved_at,metadata",
+    order: "work_id.asc,provider.asc,source_url.asc",
   }, publicSnapshotKey),
   fetchOptionalRows("book_editions", {
     select:
@@ -1086,10 +1159,41 @@ const countryProfileOverrides = Object.fromEntries(
   ])
 );
 
+const literaryWorkAuthorsByWorkId = groupPublishedAuthorRows(
+  rawLiteraryWorkAuthors
+);
+const literaryWorkAuthorshipKindByWorkId = new Map(
+  rawLiteraryWorkAuthorshipKinds.map((work) => [
+    work.id,
+    work.authorship_kind,
+  ])
+);
+const literaryWorkTranslationsByWorkId = groupPublishedWorkRows(
+  rawLiteraryWorkTranslations
+);
+const literaryWorkSourcesByWorkId = groupPublishedWorkRows(
+  rawLiteraryWorkSources
+);
+
 const literaryWorksByLegacyId = Object.fromEntries(
   rawLiteraryWorks.flatMap((work) => {
     const prefix = `${work.country_id}:${work.writer_id}:`;
     if (!String(work.legacy_id || "").startsWith(prefix)) return [];
+    const authorship = publishedWorkAuthorship(
+      {
+        ...work,
+        authorship_kind: literaryWorkAuthorshipKindByWorkId.get(work.id),
+      },
+      literaryWorkAuthorsByWorkId
+    );
+    const translations = publishedWorkTranslations(
+      work.id,
+      literaryWorkTranslationsByWorkId
+    );
+    const sources = publishedWorkSources(
+      work.id,
+      literaryWorkSourcesByWorkId
+    );
     return [
       [
         work.legacy_id,
@@ -1099,6 +1203,7 @@ const literaryWorksByLegacyId = Object.fromEntries(
           writerId: work.writer_id,
           localId: work.legacy_id.slice(prefix.length),
           title: work.title,
+          ...(authorship ? { authorship } : {}),
           originalTitle: work.original_title || undefined,
           firstPublished: work.first_published ?? undefined,
           originalLanguage: work.original_language || undefined,
@@ -1106,6 +1211,9 @@ const literaryWorksByLegacyId = Object.fromEntries(
           tags: Array.isArray(work.tags) ? work.tags : [],
           description: work.description || undefined,
           sourceUrl: work.source_url || undefined,
+          ...(translations ? { translations } : {}),
+          ...publishedWorkMetadata(work.metadata),
+          ...(sources ? { sources } : {}),
           editorialStatus: work.editorial_status,
           reviewedAt: work.reviewed_at || undefined,
         },

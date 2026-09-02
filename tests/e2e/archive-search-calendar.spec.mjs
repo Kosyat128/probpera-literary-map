@@ -97,7 +97,7 @@ test("архив и изображения сохраняют desktop-сетку
   await expect(cover).toHaveCSS("object-fit", "contain");
 });
 
-test("архив разделяет 48 проверенных книг и 9 720 карточек в очереди", async ({
+test("архив публикует 46 проверенных книг и не раскрывает редакционную очередь", async ({
   page,
   isMobile,
 }) => {
@@ -108,7 +108,7 @@ test("архив разделяет 48 проверенных книг и 9 720 
     name: /Проверено/u,
   });
 
-  await expect(filters).toHaveAttribute("aria-label", /9\s*768/u, {
+  await expect(filters).toHaveAttribute("aria-label", /^46\s+результатов$/u, {
     timeout: 40_000,
   });
   await page
@@ -124,13 +124,14 @@ test("архив разделяет 48 проверенных книг и 9 720 
   await filterDialog
     .getByRole("button", { name: "Закрыть фильтры", exact: true })
     .click();
-  await expect(filters).toHaveAttribute("aria-label", /9\s*720/u);
-  await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
-    "Не проверено"
+  await expect(filters).toHaveAttribute("aria-label", /^0\s+результатов$/u);
+  await expect(page.locator(".archive-book-card")).toHaveCount(0);
+  await expect(page.locator(".book-archive-empty")).toContainText(
+    "Ничего не найдено"
   );
 
   await verified.click();
-  await expect(filters).toHaveAttribute("aria-label", /48/u);
+  await expect(filters).toHaveAttribute("aria-label", /^46\s+результатов$/u);
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
     "проверено"
   );

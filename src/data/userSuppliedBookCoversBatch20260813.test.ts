@@ -111,10 +111,10 @@ describe("пользовательские редакционные обложк
       expect(isCoverArtworkDisplayAllowed(after!)).toBe(true);
     }
 
-    expect(archive).toHaveLength(9_768);
-    expect(baseline).toHaveLength(9_768);
-    expect(archive.filter(isPublicBook)).toHaveLength(48);
-    expect(baseline.filter(isPublicBook)).toHaveLength(48);
+    expect(archive).toHaveLength(9_761);
+    expect(baseline).toHaveLength(9_761);
+    expect(archive.filter(isPublicBook)).toHaveLength(46);
+    expect(baseline.filter(isPublicBook)).toHaveLength(46);
   });
 
   it("фиксирует каждую запись архива ровно в одной категории решения", async () => {

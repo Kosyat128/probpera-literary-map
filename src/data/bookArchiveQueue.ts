@@ -110,9 +110,9 @@ export function classifyBookArchiveQueue(
 }
 
 /**
- * Pending records may expose a candidate title for identification, but never
- * their draft description. Only a book that passed the shared publication
- * gate can expose its localized editorial description.
+ * Only a book that passed the shared publication gate may expose its title or
+ * localized editorial description. Pending records receive a neutral label so
+ * draft bibliographic claims cannot leak through visitor-facing queue views.
  */
 export function presentBookArchiveQueueItem(
   item: BookArchiveQueueItem,
@@ -123,19 +123,21 @@ export function presentBookArchiveQueueItem(
   const localizedTitle =
     item.status === "verified" ? localized.title.trim() : "";
   const canonicalTitle =
-    locale === "en"
-      ? [
-          item.book.originalTitle,
-          item.book.title,
-          ...(item.book.alternateTitles || []),
-        ]
-          .map((title) => title?.trim() || "")
-          .find(
-            (title) =>
-              /\p{Script=Latin}/u.test(title) &&
-              !/\p{Script=Cyrillic}/u.test(title)
-          ) || ""
-      : item.book.title.trim();
+    item.status === "verified"
+      ? locale === "en"
+        ? [
+            item.book.originalTitle,
+            item.book.title,
+            ...(item.book.alternateTitles || []),
+          ]
+            .map((title) => title?.trim() || "")
+            .find(
+              (title) =>
+                /\p{Script=Latin}/u.test(title) &&
+                !/\p{Script=Cyrillic}/u.test(title)
+            ) || ""
+        : item.book.title.trim()
+      : "";
   const verifiedDescription =
     item.status === "verified" ? localized.description.trim() : "";
 

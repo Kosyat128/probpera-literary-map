@@ -1,7 +1,7 @@
 {
   "version": 3,
   "deterministic": true,
-  "sourceFingerprint": "sha256:0a2d1f86ebb6003c2215b8f71304c1b552aa8a5b33abec06161fa682f512a80d",
+  "sourceFingerprint": "sha256:932609dc4355ce377faadc867c1294f13fb234a3a70359e5187299f305eabb3b",
   "scope": {
     "corpus": "stored short Russian writer biographies",
     "cardsAudited": 1684,

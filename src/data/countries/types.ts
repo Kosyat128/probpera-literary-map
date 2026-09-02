@@ -48,6 +48,153 @@ export type WriterBiographyTranslationProfile = {
 
 export type WorkEditorialStatus = "draft" | "reviewed" | "verified";
 
+/**
+ * Factual authorship is deliberately separate from the writer that owns the
+ * legacy archive key. Older records omit this object and continue to use their
+ * enclosing writer as the single credited author.
+ */
+export type WorkAuthorshipKind =
+  | "single"
+  | "multiple"
+  | "anonymous"
+  | "collective"
+  | "traditional"
+  | "disputed";
+
+export type WorkAuthorCredit = {
+  /** A linked public writer. Both identifiers must be supplied together. */
+  countryId?: string;
+  writerId?: string;
+  /** Reviewed credit-line spellings; never inferred across locales. */
+  creditNames?: Partial<Record<WorkLocale, string>>;
+  attribution?: "credited" | "attributed" | "disputed";
+};
+
+export type WorkAuthorship = {
+  kind: WorkAuthorshipKind;
+  /** Editorial order is meaningful, but it is never part of bookArchiveKey. */
+  authors: WorkAuthorCredit[];
+};
+
+export type WorkTitleEvidenceRecordKind =
+  | "national-bibliography"
+  | "legal-deposit-catalog"
+  | "publisher-catalog"
+  | "rights-holder-catalog"
+  | "author-estate"
+  | "critical-edition";
+
+export type WorkTitleEvidenceProfile = {
+  entityKind: "manifestation";
+  manifestationId: string;
+  sourceUrl: string;
+  provider: string;
+  authorityId: string;
+  authorityTier: "A" | "B";
+  recordKind: WorkTitleEvidenceRecordKind;
+  recordId: string;
+  /**
+   * `principal` (the default for legacy records) means the manifestation's
+   * principal catalog title is the localized work title. `contained-work`
+   * means an official catalog or publisher contents statement identifies the
+   * work analytically inside the named container manifestation.
+   */
+  titleRelation?: "principal" | "contained-work";
+  catalogTitleExact: string;
+  /** Exact analytic title as printed in the official contents statement. */
+  analyticTitleExact?: string;
+  /** Exact principal title of the manifestation containing the analytic. */
+  containerTitleExact?: string;
+  /** Where the official record exposes the contained-work relationship. */
+  containedInField?: "contents-note" | "table-of-contents";
+  locale: WorkLocale;
+  market: string;
+  expressionLanguage: string;
+  isbn10?: string;
+  isbn13?: string;
+  publisher?: string;
+  publicationYear?: number;
+  translator?: string;
+  editionStatement?: string;
+  retrievedAt: string;
+  checkedAt: string;
+  checkedBy: string;
+};
+
+export type WorkLocalizedTitleProfile = {
+  entityKind: "expression";
+  expressionId: string;
+  locale: WorkLocale;
+  value: string;
+  status: "verified-published";
+  expressionLanguage: string;
+  market: string;
+  selectionRule:
+    | "authoritative-uniform-title"
+    | "earliest-authorized-edition"
+    | "current-complete-authorized-edition"
+    | "original-market-title";
+  selectionNote?: string;
+  evidence: WorkTitleEvidenceProfile[];
+};
+
+export type WorkDescriptionProvenanceProfile = {
+  origin:
+    | "article-adapted"
+    | "official-source-synthesis"
+    | "human-translation";
+  sourceLanguage: string;
+  sourceCountry: string;
+  sourceUrls: string[];
+  sourceArticle?: {
+    articleId: string;
+    url: string;
+    revisionId: string;
+    sourceHash: string;
+    excerptHash: string;
+  };
+  transformations?: Array<
+    "condensed" | "deduplicated" | "spoiler-limited" | "style-edited"
+  >;
+  translatedFromLocale?: WorkLocale;
+  translatedFromSourceHash?: string;
+  rights: {
+    textOrigin: "project-owned-article" | "project-original";
+    copiedSourceText: false;
+  };
+  author: string;
+  createdAt: string;
+  reviewedBy: string;
+  reviewedAt: string;
+};
+
+export type WorkCanonicalityEvidenceProfile = {
+  registrySourceId: string;
+  registryItemOrdinal: number;
+  class:
+    | "official-curriculum"
+    | "national-library-heritage-collection"
+    | "academy-or-literary-institute"
+    | "scholarly-critical-project"
+    | "international-heritage-register"
+    | "work-specific-landmark-award";
+  sourceUrl: string;
+  provider: string;
+  authorityId: string;
+  authorityTier: "A" | "B";
+  itemId: string;
+  assertion: string;
+  snapshotAt: string;
+};
+
+export type WorkCanonProfile = {
+  status: "canonical-classic" | "modern-landmark";
+  registryVersion: string;
+  evidence: WorkCanonicalityEvidenceProfile[];
+  reviewedAt: string;
+  reviewedBy: string;
+};
+
 export type WorkTranslationProfile = {
   locale: WorkLocale;
   title: string;
@@ -61,15 +208,32 @@ export type WorkTranslationProfile = {
     | "machine-translation"
     | "licensed-source";
   reviewedAt?: string;
+  titleEvidence?: WorkLocalizedTitleProfile;
+  descriptionProvenance?: WorkDescriptionProvenanceProfile;
 };
 
 export type WorkSourceProfile = {
   provider: string;
+  authorityId?: string;
+  authorityTier?: "A" | "B";
+  /** Legacy descriptive jurisdiction; do not use it as an edition market. */
+  country?: string;
+  /** ISO-3166-1 alpha-2 publication market for manifestation evidence. */
+  market?: string;
+  language?: string;
+  recordKind?:
+    | WorkTitleEvidenceRecordKind
+    | "authoritative-work-page"
+    | "article-source"
+    | "structured-dataset";
+  recordId?: string;
   url: string;
   fields: Array<
     | "identity"
     | "authorship"
     | "title"
+    | "container-title"
+    | "contained-title"
     | "original-title"
     | "publication-year"
     | "language"
@@ -120,6 +284,7 @@ export type NobelLiteratureAwardProfile = {
 export type WorkProfile = {
   id: string;
   title: string;
+  authorship?: WorkAuthorship;
   alternateTitles?: string[];
   originalTitle?: string;
   firstPublished?: number;
@@ -128,6 +293,8 @@ export type WorkProfile = {
   tags?: string[];
   description?: string;
   translations?: Partial<Record<WorkLocale, WorkTranslationProfile>>;
+  localizedTitles?: Partial<Record<WorkLocale, WorkLocalizedTitleProfile>>;
+  canon?: WorkCanonProfile;
   sources?: WorkSourceProfile[];
   externalIds?: WorkExternalId[];
   distinctions?: WorkDistinction[];

@@ -1,0 +1,735 @@
+{
+  "schemaVersion": 1,
+  "batchId": "loc-held-work-identity-review-batch01",
+  "checkedAt": "2026-09-02",
+  "applicationStatus": "research-only",
+  "sourceId": "loc-books-that-shaped-america-2012",
+  "hashProfile": "sha256-canonical-json-loc-held-review-v1",
+  "reviewPolicy": "This batch is a non-executable, fail-closed research artifact. It pins held Library of Congress Work candidates to exact official identity evidence, records exact Russian-market title evidence, and compares them with the complete runtime raw archive. An accepted mapping is not an activation instruction; every draft addition still requires a reviewed author identity, Work-level Evidence V2, localized description provenance, rights-safe artwork, and a separate generator-approved integration.",
+  "summary": {
+    "reviewCount": 10,
+    "acceptedMappingCount": 1,
+    "draftAdditionCount": 9,
+    "holdCount": 0,
+    "productionActionCount": 0,
+    "canonClaimCount": 0
+  },
+  "reviews": [
+    {
+      "reviewId": "harriet-beecher-stowe-uncle-toms-cabin",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 20,
+        "itemId": "loc-020-uncle-tom-s-cabin-or-life-among-the-lowly",
+        "itemHash": "382805ca5529d527d0692a222397383b996ebb0de1eb870a299792ad77a4639f"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "Uncle Tom’s Cabin; or, Life Among the Lowly.",
+        "creatorExact": "Harriet Beecher Stowe (1811–1896)",
+        "workFirstPublishedYear": 1852,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj2",
+        "displayedManifestation": {
+          "titleExact": "Uncle Tom’s Cabin; or, Life Among the Lowly.",
+          "publicationPlace": "Boston",
+          "publisher": "John P. Jewett & Company",
+          "year": 1852
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj2",
+            "findingRu": "Страница LoC называет автора, полное заглавие и первое книжное издание 1852 года, отличая его от газетной сериализации 1851-1852 годов."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Хижина дяди Тома",
+        "evidence": {
+          "authority": "Российская государственная библиотека",
+          "recordKind": "national-bibliography",
+          "recordId": "01002380533",
+          "url": "https://search.rsl.ru/ru/record/01002380533",
+          "catalogTitleExact": "Хижина дяди Тома",
+          "authorExact": "Бичер-Стоу, Гарриет",
+          "publisher": "Эксмо",
+          "publicationYear": 2003,
+          "translatorExact": "Н. Волжина, М. Тугушева",
+          "checkedAt": "2026-09-02"
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": [
+          "Uncle Tom’s Cabin; or, Life Among the Lowly.",
+          "Uncle Tom's Cabin; or, Life Among the Lowly",
+          "Uncle Tom's Cabin",
+          "Хижина дяди Тома"
+        ],
+        "exactTitleMatchRecordKeys": [],
+        "writerKeyProbes": ["usa:harriet_beecher_stowe"],
+        "writerNameProbes": [
+          "Harriet Beecher Stowe",
+          "Гарриет Бичер-Стоу",
+          "Гарриет Бичер Стоу"
+        ],
+        "writerMatchKeys": []
+      },
+      "decision": {
+        "status": "draft-addition",
+        "reasonRu": "LoC однозначно подтверждает отдельное произведение, а РГБ - точное русское заглавие опубликованного перевода. В текущем raw-архиве нет ни карточки произведения, ни авторского профиля, поэтому автоматическое добавление запрещено.",
+        "requiredBeforeIntegration": [
+          "создать и независимо проверить профиль Гарриет Бичер-Стоу",
+          "оформить Work и русское Expression без смешения с газетной и двухтомной Manifestation",
+          "пройти Evidence V2 и редакторскую проверку описания",
+          "добавить отдельное легальное изображение или оставить без обложки"
+        ]
+      },
+      "descriptionDraftRu": "Роман Гарриет Бичер-Стоу сначала печатался частями в аболиционистской газете National Era с июня 1851 по апрель 1852 года, а первое книжное издание вышло в марте 1852 года. По данным Библиотеки Конгресса, произведение привлекало внимание к страданиям порабощённых людей и семейным разлукам и заметно усилило антирабовладельческие настроения перед Гражданской войной в США.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj2"
+      ]
+    },
+    {
+      "reviewId": "louisa-may-alcott-little-women",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 26,
+        "itemId": "loc-026-little-women-or-meg-jo-beth-and-amy",
+        "itemHash": "040a7fa07c8c476702f0b95e8cc5678ee0fd7c90c9f323347f8132a8f7a149c1"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "Little Women, or, Meg, Jo, Beth, and Amy.",
+        "creatorExact": "Louisa May Alcott (1832–1888)",
+        "workFirstPublishedYear": 1868,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj7",
+        "displayedManifestation": {
+          "titleExact": "Little Women, or, Meg, Jo, Beth, and Amy.",
+          "publicationPlace": "Boston",
+          "publisher": "Roberts Brothers",
+          "year": 1868
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj7",
+            "findingRu": "LoC фиксирует Луизу Мэй Олкотт, полное заглавие первой части и бостонское издание Roberts Brothers 1868 года."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Маленькие женщины",
+        "evidence": {
+          "authority": "Российская государственная библиотека",
+          "recordKind": "national-bibliography",
+          "recordId": "01009956741",
+          "url": "https://search.rsl.ru/ru/record/01009956741",
+          "catalogTitleExact": "Маленькие женщины",
+          "authorExact": "Олкотт, Луиза Мэй",
+          "publisher": "Азбука : Азбука-Аттикус",
+          "publicationYear": 2019,
+          "translatorExact": "Ирина Бессмертная",
+          "checkedAt": "2026-09-02"
+        },
+        "documentedHistoricalAlias": {
+          "titleExact": "Маленькие женщины, или Мег, Джо, Бетси и Эми",
+          "url": "https://search.rsl.ru/ru/record/01003693490",
+          "publicationYear": 1900
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": [
+          "Little Women, or, Meg, Jo, Beth, and Amy.",
+          "Little Women, or, Meg, Jo, Beth, and Amy",
+          "Little Women",
+          "Маленькие женщины",
+          "Маленькие женщины, или Мег, Джо, Бетси и Эми"
+        ],
+        "exactTitleMatchRecordKeys": [],
+        "writerKeyProbes": ["usa:louisa_may_alcott"],
+        "writerNameProbes": ["Louisa May Alcott", "Луиза Мэй Олкотт"],
+        "writerMatchKeys": []
+      },
+      "decision": {
+        "status": "draft-addition",
+        "reasonRu": "Рабочая идентичность и обе русские формы заглавия подтверждены библиотечными записями, однако в raw-архиве отсутствуют и произведение, и профиль автора. Нельзя превращать упоминание в сборнике или продолжения серии в самостоятельное доказательство этой карточки.",
+        "requiredBeforeIntegration": [
+          "создать и проверить профиль Луизы Мэй Олкотт",
+          "зафиксировать границу между первой частью 1868 года и позднейшими продолжениями",
+          "оформить Evidence V2 для русского и английского заглавий",
+          "провести редакторскую проверку описания и прав изображения"
+        ]
+      },
+      "descriptionDraftRu": "Роман Луизы Мэй Олкотт вышел в 1868 году и во многом опирался на опыт писательницы, выросшей вместе с тремя сёстрами; первое издание иллюстрировала её младшая сестра Мэй. Книга сразу получила читательский успех, а позднее Олкотт продолжила историю в двух произведениях о тех же героях.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj7"
+      ]
+    },
+    {
+      "reviewId": "l-frank-baum-wonderful-wizard-of-oz",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 35,
+        "itemId": "loc-035-the-wonderful-wizard-of-oz",
+        "itemHash": "b475beaa6218678a6651a7c0b3508492db31b16fd89369faf09892bd74bdb08c"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "The Wonderful Wizard of Oz.",
+        "creatorExact": "L. Frank Baum (1856–1919)",
+        "workFirstPublishedYear": 1900,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj0",
+        "displayedManifestation": {
+          "titleExact": "The Wonderful Wizard of Oz.",
+          "publicationPlace": "Chicago and New York",
+          "publisher": "Geo. M. Hill",
+          "year": 1900
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj0",
+            "findingRu": "LoC подтверждает заглавие, авторство Лаймена Фрэнка Баума и первое издание Geo. M. Hill 1900 года."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Удивительный волшебник из Страны Оз",
+        "evidence": {
+          "authority": "Российская государственная библиотека",
+          "recordKind": "national-bibliography",
+          "recordId": "01007658629",
+          "url": "https://search.rsl.ru/ru/record/01007658629",
+          "catalogTitleExact": "Удивительный волшебник из Страны Оз",
+          "authorExact": "Баум, Лаймен Фрэнк",
+          "publisher": "Эксмо",
+          "publicationYear": 2014,
+          "translatorExact": "С. Белов",
+          "checkedAt": "2026-09-02"
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": [
+          "The Wonderful Wizard of Oz.",
+          "The Wonderful Wizard of Oz",
+          "Удивительный волшебник из Страны Оз"
+        ],
+        "exactTitleMatchRecordKeys": [],
+        "writerKeyProbes": ["usa:l_frank_baum", "usa:frank_baum"],
+        "writerNameProbes": [
+          "L. Frank Baum",
+          "Лаймен Фрэнк Баум",
+          "Фрэнк Баум"
+        ],
+        "writerMatchKeys": []
+      },
+      "decision": {
+        "status": "draft-addition",
+        "reasonRu": "LoC и РГБ однозначно связывают произведение Баума с опубликованным русским заглавием, но текущая база не содержит ни автора, ни Work. Адаптацию Александра Волкова «Волшебник Изумрудного города» нельзя использовать как русское Expression этой книги.",
+        "requiredBeforeIntegration": [
+          "создать и проверить профиль Лаймена Фрэнка Баума",
+          "не смешивать перевод Баума с самостоятельной адаптацией Александра Волкова",
+          "оформить Evidence V2 для полного русского перевода",
+          "проверить описание и права иллюстрации отдельной редакцией"
+        ]
+      },
+      "descriptionDraftRu": "Сказочная повесть Лаймена Фрэнка Баума была опубликована в 1900 году и сразу добилась успеха как одна из первых самобытных американских фантазий для детей. История Дороти и её спутников оказалась настолько востребованной, что Баум создал ещё тринадцать книг о стране Оз.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj0",
+        "https://www.loc.gov/exhibits/oz/ozsect1.html"
+      ]
+    },
+    {
+      "reviewId": "upton-sinclair-the-jungle",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 40,
+        "itemId": "loc-040-the-jungle",
+        "itemHash": "9b9d1636001527cc1cae38d042dfe0956e4a639ce459197e35b9ed5aeca1ed6d"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "The Jungle.",
+        "creatorExact": "Upton Sinclair (1878–1968)",
+        "workFirstPublishedYear": 1906,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj5",
+        "displayedManifestation": {
+          "titleExact": "The Jungle.",
+          "publicationPlace": "New York",
+          "publisher": "Doubleday, Page & Company",
+          "year": 1945
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj5",
+            "findingRu": "Заголовок LoC датирует произведение 1906 годом, тогда как библиографическая строка относится к показанному экземпляру 1945 года; это Work и Manifestation, а не две книги."
+          },
+          {
+            "role": "work-year-boundary",
+            "url": "https://www.loc.gov/exhibits/america-reads/1900-to-1949.html#obj014",
+            "findingRu": "Дополнительная выставочная страница LoC прямо называет The Jungle произведением 1906 года и отдельно показывает издание 1945 года и литографию 1906 года."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Джунгли",
+        "evidence": {
+          "authority": "Национальная электронная библиотека; запись Российской национальной библиотеки",
+          "recordKind": "national-bibliography",
+          "recordId": "000200_000018_v19_rc_2097738",
+          "url": "https://rusneb.ru/catalog/000200_000018_v19_rc_2097738/",
+          "catalogTitleExact": "Джунгли",
+          "authorExact": "Синклер, Эптон",
+          "publisher": "Прометей Н. Н. Михайлова",
+          "publicationYear": 1915,
+          "translatorExact": "перевод под редакцией А. Н. Кудрявцевой",
+          "checkedAt": "2026-09-02"
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": ["The Jungle.", "The Jungle", "Джунгли"],
+        "exactTitleMatchRecordKeys": [],
+        "writerKeyProbes": ["usa:upton_sinclair"],
+        "writerNameProbes": ["Upton Sinclair", "Эптон Синклер", "Уптон Синклер"],
+        "writerMatchKeys": []
+      },
+      "decision": {
+        "status": "draft-addition",
+        "reasonRu": "Идентичность произведения, год 1906 и русское заглавие подтверждены официальными библиотечными источниками, однако в архиве нет автора и карточки. Год экземпляра LoC 1945 нельзя записывать как firstPublished.",
+        "requiredBeforeIntegration": [
+          "создать и проверить профиль Эптона Синклера",
+          "зафиксировать firstPublished 1906 отдельно от Manifestation 1945",
+          "оформить русское Expression по записи НЭБ и РНБ",
+          "пройти Evidence V2, редактуру описания и проверку изображения"
+        ]
+      },
+      "descriptionDraftRu": "Роман Эптона Синклера 1906 года соединяет художественное повествование с журналистским расследованием условий труда и производства на чикагских мясокомбинатах. Библиотека Конгресса связывает общественный резонанс книги с принятием в 1906 году федеральных законов о контроле мяса и безопасности пищевых продуктов и лекарств.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj5",
+        "https://www.loc.gov/exhibits/america-reads/1900-to-1949.html#obj014"
+      ]
+    },
+    {
+      "reviewId": "margaret-mitchell-gone-with-the-wind",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 52,
+        "itemId": "loc-052-gone-with-the-wind",
+        "itemHash": "7c0d134013ae03cb9451a131c434c3faf61440891bd74498cc4757f66ea664df"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "Gone With the Wind.",
+        "creatorExact": "Margaret Mitchell (1900–1949)",
+        "workFirstPublishedYear": 1936,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj17",
+        "displayedManifestation": {
+          "titleExact": "Gone With the Wind.",
+          "publicationPlace": "New York",
+          "publisher": "Macmillan",
+          "year": 1936
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj18",
+            "findingRu": "Текущая страница LoC фиксирует роман Маргарет Митчелл, заглавие Gone With the Wind и первое издание Macmillan 1936 года; живой якорь сместился с сохранённого в registry obj17 на obj18."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Унесенные ветром",
+        "evidence": {
+          "authority": "Российская государственная библиотека",
+          "recordKind": "national-bibliography",
+          "recordId": "01009814002",
+          "url": "https://search.rsl.ru/ru/record/01009814002",
+          "catalogTitleExact": "Унесенные ветром",
+          "authorExact": "Митчелл, Маргарет",
+          "publisher": "Художественная литература",
+          "publicationYear": 1984,
+          "translatorExact": "Т. Озерская",
+          "checkedAt": "2026-09-02"
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": [
+          "Gone With the Wind.",
+          "Gone With the Wind",
+          "Унесенные ветром",
+          "Унесённые ветром"
+        ],
+        "exactTitleMatchRecordKeys": [],
+        "writerKeyProbes": ["usa:margaret_mitchell"],
+        "writerNameProbes": ["Margaret Mitchell", "Маргарет Митчелл"],
+        "writerMatchKeys": []
+      },
+      "decision": {
+        "status": "draft-addition",
+        "reasonRu": "Произведение и официально опубликованное русское заглавие подтверждены LoC и РГБ, но в текущем архиве отсутствуют и писательница, и Work. Фотография Митчелл с книгой в экспозиции LoC не является вторым сигналом произведения.",
+        "requiredBeforeIntegration": [
+          "создать и проверить профиль Маргарет Митчелл",
+          "оформить один Work, не считая двухтомную русскую Manifestation двумя произведениями",
+          "пройти Evidence V2 и нейтрально отредактировать исторический контекст",
+          "проверить права обложки или портретного изображения"
+        ]
+      },
+      "descriptionDraftRu": "Роман Маргарет Митчелл, впервые изданный в 1936 году, разворачивается на американском Юге во время Гражданской войны. Библиотека Конгресса отмечает его огромный читательский успех и получение Пулитцеровской и Национальной книжной премий, одновременно указывая на критику изображения рабства.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj18"
+      ]
+    },
+    {
+      "reviewId": "e-b-white-charlottes-web",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 73,
+        "itemId": "loc-073-charlotte-s-web",
+        "itemHash": "649a817f79de671d7043a123378a9dc7710e8d38061d2660cfafbd2dfa2bd219"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "Charlotte’s Web.",
+        "creatorExact": "E. B. White (1899–1985)",
+        "workFirstPublishedYear": 1952,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj2",
+        "displayedManifestation": {
+          "titleExact": "Charlotte’s Web.",
+          "publicationPlace": "New York",
+          "publisher": "Harper",
+          "year": 1952
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj2",
+            "findingRu": "LoC называет автора Э. Б. Уайта, заглавие Charlotte’s Web и первое издание Harper 1952 года."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Паутина Шарлотты",
+        "evidence": {
+          "authority": "Издательство АСТ",
+          "recordKind": "official-publisher-record",
+          "recordId": "978-5-17-067618-7",
+          "url": "https://ast.ru/book/pautina-sharlotty-031216/",
+          "catalogTitleExact": "Паутина Шарлотты",
+          "authorExact": "Уайт Эллиот",
+          "publisher": "АСТ",
+          "publicationYear": null,
+          "translatorExact": null,
+          "checkedAt": "2026-09-02"
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": [
+          "Charlotte’s Web.",
+          "Charlotte's Web",
+          "Паутина Шарлотты"
+        ],
+        "exactTitleMatchRecordKeys": [],
+        "writerKeyProbes": ["usa:e_b_white", "usa:eb_white"],
+        "writerNameProbes": [
+          "E. B. White",
+          "Э. Б. Уайт",
+          "Элвин Брукс Уайт",
+          "Уайт Эллиот"
+        ],
+        "writerMatchKeys": []
+      },
+      "decision": {
+        "status": "draft-addition",
+        "reasonRu": "LoC подтверждает Work, а официальная карточка АСТ - опубликованное русское заглавие и конкретный ISBN. В базе нет профиля Элвина Брукса Уайта и самой карточки, поэтому материал остаётся исследовательским черновиком.",
+        "requiredBeforeIntegration": [
+          "создать и проверить профиль Элвина Брукса Уайта",
+          "проверить переводчика и полные выходные сведения русского издания",
+          "оформить Evidence V2 и редакторское описание",
+          "использовать только изображение с подтверждёнными правами"
+        ]
+      },
+      "descriptionDraftRu": "Детская повесть Элвина Брукса Уайта рассказывает о рассудительной паучихе Шарлотте, которая пытается спасти поросёнка. Библиотека Конгресса подчёркивает, что книга обращается и к детям, и ко взрослым и говорит о смерти как о естественной части жизни без назидательной тяжеловесности.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj2"
+      ]
+    },
+    {
+      "reviewId": "ayn-rand-atlas-shrugged",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 76,
+        "itemId": "loc-076-atlas-shrugged",
+        "itemHash": "eb954e734a448b3f334e588b0dc1644c5697aad294a29ba6af789f8b9bd124d5"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "Atlas Shrugged.",
+        "creatorExact": "Ayn Rand (1905–1982)",
+        "workFirstPublishedYear": 1957,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj5",
+        "displayedManifestation": {
+          "titleExact": "Atlas Shrugged.",
+          "publicationPlace": "New York",
+          "publisher": "Random House",
+          "year": 1957
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj5",
+            "findingRu": "LoC фиксирует авторство Айн Рэнд, точное заглавие и первое издание Random House 1957 года."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Атлант расправил плечи",
+        "evidence": {
+          "authority": "Российская государственная библиотека",
+          "recordKind": "national-bibliography",
+          "recordId": "01004953161",
+          "url": "https://search.rsl.ru/ru/record/01004953161",
+          "catalogTitleExact": "Атлант расправил плечи",
+          "authorExact": "Рэнд, Эйн",
+          "publisher": "Альпина Паблишерз",
+          "publicationYear": 2011,
+          "translatorExact": "Ю. Соколов, В. Вебер, Д. Вознякевич",
+          "checkedAt": "2026-09-02"
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": ["Atlas Shrugged.", "Atlas Shrugged", "Атлант расправил плечи"],
+        "exactTitleMatchRecordKeys": [],
+        "writerKeyProbes": ["usa:ayn_rand"],
+        "writerNameProbes": ["Ayn Rand", "Айн Рэнд", "Эйн Рэнд"],
+        "writerMatchKeys": []
+      },
+      "decision": {
+        "status": "draft-addition",
+        "reasonRu": "Заглавия и Work identity подтверждены LoC и РГБ, но в архиве нет профиля Айн Рэнд и книги. Русская трёхчастная публикация является Manifestation одного романа и не должна создавать три Work.",
+        "requiredBeforeIntegration": [
+          "создать и проверить профиль Айн Рэнд",
+          "смоделировать три части русского издания как одну Manifestation одного Work",
+          "пройти Evidence V2 и нейтральную редактуру идеологического контекста",
+          "проверить права любого изображения"
+        ]
+      },
+      "descriptionDraftRu": "Роман Айн Рэнд 1957 года изображает Соединённые Штаты ближайшего будущего, переживающие кризис из-за сращивания государственной бюрократии и деловых интересов. Библиотека Конгресса отмечает, что защита свободного рынка и критика государственного вмешательства сделали книгу влиятельной для либертарианского движения.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj5"
+      ]
+    },
+    {
+      "reviewId": "rachel-carson-silent-spring",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 83,
+        "itemId": "loc-083-silent-spring",
+        "itemHash": "393056ec2b54282d615fcbc6e6f9a6dfc937eb69dbc47a1af0253974d4e70e12"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "Silent Spring.",
+        "creatorExact": "Rachel Carson (1907–1964)",
+        "workFirstPublishedYear": 1962,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj12",
+        "displayedManifestation": {
+          "titleExact": "Silent Spring.",
+          "publicationPlace": "Boston",
+          "publisher": "Houghton Mifflin",
+          "year": 1962
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj12",
+            "findingRu": "LoC подтверждает автора, заглавие, издательство Houghton Mifflin и год первого издания 1962."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Безмолвная весна",
+        "evidence": {
+          "authority": "Национальная электронная библиотека; запись Всероссийской государственной библиотеки иностранной литературы",
+          "recordKind": "national-bibliography",
+          "recordId": "000201_000010_BJVVV989750",
+          "url": "https://rusneb.ru/catalog/000201_000010_BJVVV989750/",
+          "catalogTitleExact": "Безмолвная весна",
+          "authorExact": "Карсон, Рахиль",
+          "publisher": "Прогресс",
+          "publicationYear": 1965,
+          "translatorExact": null,
+          "checkedAt": "2026-09-02"
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": ["Silent Spring.", "Silent Spring", "Безмолвная весна"],
+        "exactTitleMatchRecordKeys": [],
+        "writerKeyProbes": ["usa:rachel_carson"],
+        "writerNameProbes": ["Rachel Carson", "Рейчел Карсон", "Рахиль Карсон"],
+        "writerMatchKeys": []
+      },
+      "decision": {
+        "status": "draft-addition",
+        "reasonRu": "LoC подтверждает отдельную научно-популярную книгу 1962 года, а НЭБ - русское издание «Безмолвная весна» 1965 года. В архиве нет ни автора, ни Work, поэтому карточку можно готовить только как закрытый редакционный черновик.",
+        "requiredBeforeIntegration": [
+          "создать и проверить профиль Рейчел Карсон",
+          "подтвердить переводчика русского издания отдельной библиографической записью",
+          "пройти Evidence V2 и научно-фактическую редактуру",
+          "проверить права изображения или оставить карточку без него"
+        ]
+      },
+      "descriptionDraftRu": "Книга морского биолога Рейчел Карсон, опубликованная в 1962 году, объясняла вред пестицидов, прежде всего ДДТ, для природных систем и человека. Библиотека Конгресса связывает её широкий общественный резонанс с ростом экологического движения и последующим ужесточением контроля над опасными химикатами.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj12",
+        "https://guides.loc.gov/rachel-carson/books"
+      ]
+    },
+    {
+      "reviewId": "truman-capote-in-cold-blood",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 89,
+        "itemId": "loc-089-in-cold-blood-a-true-account-of-a-multiple-murder-and-its-conseq",
+        "itemHash": "6921754852b95ab2807ac07d86e4dcbae77c118262c984a4f2f51685de78bd2c"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "In Cold Blood: A True Account of a Multiple Murder and Its Consequences.",
+        "creatorExact": "Truman Capote (1924–1984)",
+        "workFirstPublishedYear": 1966,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj18",
+        "displayedManifestation": {
+          "titleExact": "In Cold Blood: A True Account of a Multiple Murder and Its Consequences.",
+          "publicationPlace": "New York",
+          "publisher": "Random House",
+          "year": 1966
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj18",
+            "findingRu": "LoC называет Трумена Капоте, полное заглавие и первое издание Random House 1966 года и характеризует форму книги как nonfiction novel."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Хладнокровное убийство",
+        "evidence": {
+          "authority": "Издательство Азбука",
+          "recordKind": "official-publisher-record",
+          "recordId": "978-5-389-18181-6",
+          "url": "https://azbooka.ru/books/khladnokrovnoe-ubiystvo-peea",
+          "catalogTitleExact": "Хладнокровное убийство",
+          "authorExact": "Трумен Капоте",
+          "publisher": "Азбука",
+          "publicationYear": 2021,
+          "translatorExact": "Мария Гальперина",
+          "checkedAt": "2026-09-02"
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": [
+          "In Cold Blood: A True Account of a Multiple Murder and Its Consequences.",
+          "In Cold Blood",
+          "Хладнокровное убийство"
+        ],
+        "exactTitleMatchRecordKeys": [],
+        "writerKeyProbes": ["usa:truman_capote"],
+        "writerNameProbes": ["Truman Capote", "Трумен Капоте"],
+        "writerMatchKeys": []
+      },
+      "decision": {
+        "status": "draft-addition",
+        "reasonRu": "LoC и официальный российский издатель подтверждают Work и точное русское заглавие, но в raw-архиве отсутствуют автор и книга. Маркетинговую формулу издателя нельзя переносить в описание без сверки с первичным источником LoC.",
+        "requiredBeforeIntegration": [
+          "создать и проверить профиль Трумена Капоте",
+          "оформить опубликованное русское Expression с переводчиком Марией Гальпериной",
+          "пройти Evidence V2 и осторожную фактологическую редактуру true-crime материала",
+          "проверить права изображения"
+        ]
+      },
+      "descriptionDraftRu": "Документальный роман Трумена Капоте вырос из исследования убийства семьи Клаттеров в Канзасе, которое писатель проводил вместе с Харпер Ли. Опубликованная в 1966 году книга соединяет проверяемую фактическую основу с повествовательными приёмами художественной прозы и стала одним из ключевых образцов документального романа.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj18"
+      ]
+    },
+    {
+      "reviewId": "toni-morrison-beloved",
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "ordinal": 94,
+        "itemId": "loc-094-beloved-a-novel",
+        "itemHash": "543f257b4848114ad36c495a9c44befc9a1a71f4e9e1c47c67a3fde9d0d9cabf"
+      },
+      "locIdentity": {
+        "entityKind": "work",
+        "titleExact": "Beloved: A Novel.",
+        "creatorExact": "Toni Morrison (b. 1931)",
+        "workFirstPublishedYear": 1987,
+        "itemUrl": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj23",
+        "displayedManifestation": {
+          "titleExact": "Beloved: A Novel.",
+          "publicationPlace": "New York",
+          "publisher": "Knopf",
+          "year": 1987
+        },
+        "sources": [
+          {
+            "role": "work-identity-and-description",
+            "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj23",
+            "findingRu": "LoC показывает, что выставочное полное заглавие Beloved: A Novel относится к роману Тони Моррисон Beloved, впервые изданному Knopf в 1987 году."
+          }
+        ]
+      },
+      "ruTitle": {
+        "recommendedExact": "Возлюбленная",
+        "evidence": {
+          "authority": "Издательство Эксмо",
+          "recordKind": "official-publisher-record",
+          "recordId": "978-5-04-114157-8",
+          "url": "https://eksmo.ru/amp/book/vozlyublennaya-ITD1109970/",
+          "catalogTitleExact": "Возлюбленная",
+          "authorExact": "Тони Моррисон",
+          "publisher": "Inspiria",
+          "publicationYear": 2021,
+          "translatorExact": null,
+          "checkedAt": "2026-09-02"
+        }
+      },
+      "archiveReview": {
+        "method": "runtime-raw-exact-title-and-writer-scan-v1",
+        "titleProbes": ["Beloved: A Novel.", "Beloved", "Возлюбленная"],
+        "exactTitleMatchRecordKeys": ["usa:tony_morrison:beloved"],
+        "writerKeyProbes": ["usa:tony_morrison", "usa:toni_morrison"],
+        "writerNameProbes": ["Toni Morrison", "Тони Моррисон"],
+        "writerMatchKeys": ["usa:tony_morrison"]
+      },
+      "decision": {
+        "status": "accepted-mapping",
+        "recordKey": "usa:tony_morrison:beloved",
+        "sourceTitleAliasExact": "Beloved: A Novel.",
+        "expectedArchiveFields": {
+          "title": "Возлюбленная",
+          "originalTitle": "Beloved",
+          "firstPublished": 1987
+        },
+        "reasonRu": "Единственная карточка raw-архива совпадает по автору, основному английскому заглавию Beloved, русскому заглавию и году 1987. Формула LoC Beloved: A Novel является точным заглавием показанной Manifestation и может храниться как проверенный alias того же Work, но это решение не активирует canon claim или публикацию."
+      },
+      "descriptionDraftRu": "Роман Тони Моррисон рассказывает о бывшей рабыне Сэти и травматической памяти, которая продолжает определять жизнь её семьи после Гражданской войны в США. Книга вышла в 1987 году и получила Пулитцеровскую премию за художественную литературу в 1988 году.",
+      "descriptionSourceUrls": [
+        "https://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj23"
+      ]
+    }
+  ],
+  "batchFingerprint": "5d717a332dbf5ecea2a12f63152c66219e05284dc14058d670a0f6ea3dca245e"
+}

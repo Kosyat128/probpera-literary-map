@@ -45,9 +45,10 @@ describe("work-level editorial artwork persistence", () => {
     expect(syncSource).toMatch(
       /синхронизация не перезаписывает её/iu
     );
-    expect(syncSource).toMatch(
-      /onConflict: "work_id,source_archive_sha256,source_image_sha256"/u
+    expect(syncSource).toContain(
+      "artworks: artworkRowsForWork.map(withoutWorkId)"
     );
+    expect(syncSource).not.toContain(".upsert(");
     expect(syncSource).toMatch(/lockedLegacyIds\.has\(entry\.workKey\)/u);
   });
 
@@ -62,14 +63,19 @@ describe("work-level editorial artwork persistence", () => {
     ]) {
       expect(syncSource).toContain(`"${relation}"`);
     }
-    expect(syncSource).toContain('"get_editorial_schema_health"');
+    expect(syncSource).toContain(
+      '"assert_literary_work_evidence_v2_health"'
+    );
+    expect(syncSource).toContain(
+      '"get_literary_archive_release_precondition"'
+    );
     expect(syncSource.indexOf("await preflightDatabaseContract(supabase)")).toBeLessThan(
-      syncSource.indexOf(".upsert(batch")
+      syncSource.indexOf("publishLiteraryArchiveAtomicRelease({")
     );
     expect(syncSource).toContain("batchArtworkWorkKeys.size !== 41");
     expect(syncSource).toContain("source.batch20260820CoverEntries.length !== 43");
     expect(syncSource.indexOf("Artwork data preflight passed")).toBeLessThan(
-      syncSource.indexOf(".upsert(batch")
+      syncSource.indexOf("publishLiteraryArchiveAtomicRelease({")
     );
     expect(syncSource).toContain('process.argv.includes("--batch-2026-08-20")');
     expect(syncSource).toContain('process.argv.includes("--preflight")');

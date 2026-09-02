@@ -62,7 +62,13 @@ describe("durable visual entity persistence", () => {
     expect(migration).toContain(
       "create table if not exists public.literary_work_revisions"
     );
-    expect(synchronizer).toContain('.eq("is_cms_locked", true)');
+    expect(synchronizer).toContain(
+      '.select("id,legacy_id,is_cms_locked,updated_at")'
+    );
+    expect(synchronizer).toContain(
+      "const lockedWorks = liveWorks.filter((work) => work.is_cms_locked);"
+    );
+    expect(synchronizer).toContain("const lockedLegacyIds = new Set");
     expect(synchronizer).toContain("synchronizableWorks");
     expect(visualEntityActions).toContain("is_cms_locked: true");
   });
@@ -78,5 +84,23 @@ describe("durable visual entity persistence", () => {
     expect(exporter).toMatch(
       /fetchOptionalRows\("literary_works", \{[\s\S]*?\}, publicSnapshotKey\)/u
     );
+  });
+
+  it("persists literary evidence in the existing JSONB metadata columns", () => {
+    for (const mapping of [
+      "canon: book.canon",
+      "localizedTitles: book.localizedTitles",
+      "titleEvidence: translation.titleEvidence",
+      "descriptionProvenance: translation.descriptionProvenance",
+      "authorityId: source.authorityId",
+      "authorityTier: source.authorityTier",
+      "country: source.country",
+      "language: source.language",
+      "recordKind: source.recordKind",
+      "recordId: source.recordId",
+    ]) {
+      expect(synchronizer).toContain(mapping);
+    }
+    expect(synchronizer).toContain("metadataWithDefinedValues");
   });
 });

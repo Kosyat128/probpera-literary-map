@@ -11,6 +11,10 @@ import { bookArchiveCountries } from "../src/data/countries";
 import { articleCatalog as legacyArticleCatalog } from "../src/data/articles/catalog.generated";
 import { cmsArticleCatalog } from "../src/data/articles/cms.generated";
 import { cmsWithdrawnLegacyArticles } from "../src/data/articles/cms-withdrawals.generated";
+import writerIdentityAliasesPayload from "../data/article-book-writer-identity-aliases.json";
+
+export const writerIdentityAliasRegistry = writerIdentityAliasesPayload;
+export const writerIdentityAliases = writerIdentityAliasesPayload.aliases;
 
 const withdrawnLegacyArticles = cmsWithdrawnLegacyArticles as readonly {
   readonly cmsId: string;

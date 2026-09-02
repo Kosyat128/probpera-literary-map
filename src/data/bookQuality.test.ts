@@ -2,8 +2,10 @@ import { describe, expect, it } from "vitest";
 
 import type { WorkProfile } from "./countries/types";
 import {
+  bookAuthorshipIssues,
   bookPublicationIssues,
   countEditorialSentences,
+  editorialProseQualityIssues,
   isPublicBook,
   translationQualityIssues,
 } from "./bookQuality";
@@ -139,5 +141,82 @@ describe("контроль публичного книжного текста", 
       ])
     );
     expect(isPublicBook(unsafe)).toBe(false);
+  });
+
+  it("отклоняет объективные типографические дефекты энциклопедического текста", () => {
+    expect(
+      editorialProseQualityIssues(
+        " Текст  содержит <em>разметку</em> , URL https://example.org и дефис - вместо тире!! ",
+        "ru"
+      )
+    ).toEqual(
+      expect.arrayContaining([
+        "описание ru содержит краевые пробелы",
+        "описание ru содержит лишние пробелы или переносы",
+        "описание ru содержит пробел перед знаком препинания",
+        "описание ru содержит HTML",
+        "описание ru содержит URL внутри текста",
+        "описание ru содержит экспрессивную пунктуацию",
+      ])
+    );
+    expect(
+      editorialProseQualityIssues("Описание с «незакрытой цитатой.", "ru")
+    ).toContain("описание ru содержит незакрытые кавычки");
+  });
+
+  it("не падает на повреждённом JSONB и закрывает публикацию", () => {
+    const malformed = {
+      ...validBook,
+      translations: {
+        ...validBook.translations,
+        ru: {
+          ...validBook.translations!.ru!,
+          title: null,
+          description: null,
+          sourceUrls: [null],
+        },
+      },
+      sources: [null],
+    } as unknown as WorkProfile;
+
+    expect(() => bookPublicationIssues(malformed)).not.toThrow();
+    expect(bookPublicationIssues(malformed).length).toBeGreaterThan(0);
+    expect(isPublicBook(malformed)).toBe(false);
+  });
+
+  it("не позволяет молча потерять соавтора из двуязычной подписи", () => {
+    const coauthored: WorkProfile = {
+      ...validBook,
+      authorship: {
+        kind: "multiple",
+        authors: [
+          {
+            countryId: "russia",
+            writerId: "ilya-ilf",
+            creditNames: { ru: "Илья Ильф", en: "Ilya Ilf" },
+          },
+          {
+            countryId: "russia",
+            writerId: "yevgeny-petrov",
+            creditNames: { ru: "Евгений Петров" },
+          },
+        ],
+      },
+    };
+
+    expect(bookAuthorshipIssues(coauthored)).toContain(
+      "автор 2: нет проверенной английской подписи"
+    );
+    expect(isPublicBook(coauthored)).toBe(false);
+  });
+
+  it("принимает явное анонимное и традиционное авторство без псевдоавтора", () => {
+    for (const kind of ["anonymous", "traditional"] as const) {
+      const work: WorkProfile = {
+        ...validBook,
+        authorship: { kind, authors: [] },
+      };
+      expect(bookAuthorshipIssues(work)).toEqual([]);
+    }
   });
 });

@@ -14,7 +14,7 @@ import {
 const root = path.resolve(process.cwd());
 const workflowPath = path.join(
   root,
-  ".github/workflows/sync-book-cover-batch-20260820.yml"
+  ".github/workflows/reconcile-production-database.yml"
 );
 
 function validSnapshot(contract) {
@@ -42,7 +42,7 @@ function validSnapshot(contract) {
   };
 }
 
-describe("2026-08-20 production book-cover batch verification", () => {
+describe("atomic archive reviewed-cover postflight", () => {
   it("pins the reviewed 43-artwork, 41-work, 17-supplement contract", () => {
     const contract = buildBookCoverBatch20260820Contract();
     expect(contract.archiveSha256).toBe(
@@ -174,7 +174,7 @@ describe("2026-08-20 production book-cover batch verification", () => {
     expect(redacted).toBe("Bearer [REDACTED] at [REDACTED]");
   });
 
-  it("keeps the manual workflow immutable, read-only until apply, and exact", () => {
+  it("uses the cover contract only as postflight for one full atomic release", () => {
     const source = readFileSync(workflowPath, "utf8");
     const workflow = parse(source);
     expect(workflow.on).toEqual({
@@ -187,15 +187,14 @@ describe("2026-08-20 production book-cover batch verification", () => {
     });
     expect(workflow.permissions).toEqual({ contents: "read" });
     expect(workflow.concurrency).toEqual({
-      group: "production-book-cover-batch-20260820",
+      group: "production-database-reconciliation",
       "cancel-in-progress": false,
     });
-    expect(workflow.jobs.sync.environment).toEqual({ name: "production" });
-    expect(workflow.jobs.sync.if).toBe("github.ref == 'refs/heads/main'");
+    expect(workflow.jobs.reconcile.environment).toEqual({ name: "production" });
+    expect(workflow.jobs.reconcile.if).toBe("github.ref == 'refs/heads/main'");
 
-    expect(source).toContain("SYNC BOOK COVER BATCH 20260820");
+    expect(source).toContain("RECONCILE PRODUCTION DATABASE");
     expect(source).toContain("^[0-9a-f]{40}$");
-    expect(source).toContain("ref: ${{ inputs.expected_main_sha }}");
     expect(source).toContain("persist-credentials: false");
     expect(source).toContain("node-version: 24");
     expect(source).toContain("npm ci");
@@ -203,28 +202,44 @@ describe("2026-08-20 production book-cover batch verification", () => {
     expect(source).toContain("secrets.SUPABASE_SERVICE_ROLE_KEY");
     expect(source).toContain("git ls-remote --exit-code origin refs/heads/main");
 
-    const dryRun = "Validate the repository batch without database access";
-    const preflight = "Run the read-only production schema and data preflight";
-    const apply = "Reconfirm remote main and apply the idempotent batch";
-    const applyCommand =
-      "node scripts/sync-literary-archive.mjs --batch-2026-08-20 --apply";
-    const verify =
-      "Verify the exact production batch through the service role";
-    expect(source.indexOf(dryRun)).toBeLessThan(source.indexOf(preflight));
-    expect(source.indexOf(preflight)).toBeLessThan(source.indexOf(apply));
-    expect(source.indexOf(apply)).toBeLessThan(
-      source.lastIndexOf("git ls-remote --exit-code origin refs/heads/main")
+    const migrationVerification =
+      "Verify production schema health and invariants";
+    const credentialValidation =
+      "Validate the pinned atomic archive service credential";
+    const install = "Install the locked dependency graph for the archive release";
+    const preflight = "Run the read-only full archive preflight";
+    const reconfirm = "Reconfirm the exact main tip before the archive commit";
+    const apply = "Publish the full literary archive in one atomic commit";
+    const postflight = "Run the read-only atomic archive postflight";
+    const applyCommand = "node scripts/sync-literary-archive.mjs --apply";
+    for (const [before, after] of [
+      [migrationVerification, credentialValidation],
+      [credentialValidation, install],
+      [install, preflight],
+      [preflight, reconfirm],
+      [reconfirm, apply],
+      [apply, postflight],
+    ]) {
+      expect(source.indexOf(before)).toBeLessThan(source.indexOf(after));
+    }
+    expect(source.lastIndexOf("git ls-remote --exit-code origin refs/heads/main"))
+      .toBeLessThan(source.indexOf(applyCommand));
+    expect(source.match(/node scripts\/sync-literary-archive\.mjs --apply/gu))
+      .toHaveLength(1);
+    expect(source.match(/node scripts\/sync-literary-archive\.mjs --preflight/gu))
+      .toHaveLength(1);
+    expect(source.match(/node scripts\/sync-literary-archive\.mjs --postflight/gu))
+      .toHaveLength(1);
+    expect(source.match(/--receipt-file reconciliation\/literary-archive-release-receipt\.json/gu))
+      .toHaveLength(2);
+    expect(source).not.toContain("--batch-2026-08-20 --apply");
+    const coverVerifier =
+      "node scripts/database/verify-book-cover-batch-20260820.mjs";
+    expect(source.lastIndexOf(coverVerifier)).toBeGreaterThan(
+      source.indexOf(applyCommand)
     );
-    expect(
-      source.lastIndexOf("git ls-remote --exit-code origin refs/heads/main")
-    ).toBeLessThan(source.indexOf(applyCommand));
-    expect(source.indexOf(applyCommand)).toBeLessThan(source.lastIndexOf(verify));
-    expect(source).toMatch(
-      /node scripts\/sync-literary-archive\.mjs --batch-2026-08-20\s+--preflight/u
-    );
-    expect(source).toContain(applyCommand);
-    expect(source).toContain(
-      "node scripts/database/verify-book-cover-batch-20260820.mjs"
+    expect(source.lastIndexOf(coverVerifier)).toBeGreaterThan(
+      source.indexOf(postflight)
     );
     expect(source).not.toMatch(/echo[^\n]*(?:VITE_SUPABASE_URL|SUPABASE_SERVICE_ROLE_KEY)=/u);
     expect(source).not.toMatch(/^\s*(?:push|pull_request|schedule):/mu);

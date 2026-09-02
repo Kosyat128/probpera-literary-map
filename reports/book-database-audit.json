@@ -1,27 +1,27 @@
 {
-  "generatedAt": "2026-09-01T13:18:12.796Z",
+  "generatedAt": "2026-09-02T04:44:20.299Z",
   "summary": {
-    "records": 9768,
-    "rawSourceRecords": 10054,
-    "canonicalRecords": 9768,
-    "removedBySafeActions": 286,
-    "publicRecords": 48,
-    "uniqueLinks": 9768,
-    "detailedRecords": 6606,
-    "legacyRecords": 3162,
+    "records": 9761,
+    "rawSourceRecords": 10057,
+    "canonicalRecords": 9761,
+    "removedBySafeActions": 296,
+    "publicRecords": 46,
+    "uniqueLinks": 9761,
+    "detailedRecords": 6600,
+    "legacyRecords": 3161,
     "statuses": {
-      "verified": 47,
-      "reviewed": 240,
-      "draft": 9481
+      "verified": 55,
+      "reviewed": 216,
+      "draft": 9490
     },
-    "withFirstPublished": 6302,
-    "withOriginalLanguage": 91,
-    "withGenres": 6567,
-    "withDescription": 287,
-    "withSource": 6567,
+    "withFirstPublished": 6298,
+    "withOriginalLanguage": 94,
+    "withGenres": 6565,
+    "withDescription": 291,
+    "withSource": 6565,
     "withCoverArtwork": 201,
-    "bilingualReady": 48,
-    "reviewedWithTranslationIssues": 239,
+    "bilingualReady": 46,
+    "reviewedWithTranslationIssues": 225,
     "globalExternalIdDuplicates": 97,
     "publishableExternalIdDuplicates": 0,
     "quarantinedExternalIdDuplicates": 97,
@@ -29,7 +29,7 @@
       "editorial-original": 200,
       "external-preview": 1
     },
-    "reviewQueue": 9735,
+    "reviewQueue": 9716,
     "duplicateLinks": 0,
     "criticalIssues": 0
   },
@@ -3388,19 +3388,6 @@
       ]
     },
     {
-      "id": "twenty-love-poems",
-      "identity": "chile:pablo_neruda:двадцать стихотворений о любви и одна песня отчаяния",
-      "title": "Двадцать стихотворений о любви и одна песня отчаяния",
-      "writer": "Пабло Неруда",
-      "country": "Чили",
-      "status": "verified",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
       "id": "one-hundred-years-of-solitude",
       "identity": "colombia:gabriel_garcia_marquez:сто лет одиночества",
       "title": "Сто лет одиночества",
@@ -3446,45 +3433,6 @@
       "writer": "Джуно Диас",
       "country": "Доминиканская Республика",
       "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "cairo-trilogy",
-      "identity": "egypt:naguib_mahfouz:каирская трилогия",
-      "title": "Каирская трилогия",
-      "writer": "Нагиб Махфуз",
-      "country": "Египет",
-      "status": "verified",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "midaq-alley",
-      "identity": "egypt:naguib_mahfouz:переулок мидак",
-      "title": "Переулок Мидак",
-      "writer": "Нагиб Махфуз",
-      "country": "Египет",
-      "status": "verified",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "the-thief-and-the-dogs",
-      "identity": "egypt:naguib_mahfouz:вор и собаки",
-      "title": "Вор и собаки",
-      "writer": "Нагиб Махфуз",
-      "country": "Египет",
-      "status": "verified",
       "issues": [
         "нет перевода ru",
         "нет перевода en",
@@ -4350,6 +4298,18 @@
       ]
     },
     {
+      "id": "la-tendresse",
+      "identity": "france:henri_barbusse:нежность",
+      "title": "Нежность",
+      "writer": "Анри Барбюс",
+      "country": "Франция",
+      "status": "reviewed",
+      "issues": [
+        "нет перевода ru",
+        "нет перевода en"
+      ]
+    },
+    {
       "id": "article-series-1pbbunm",
       "identity": "france:henri_barbusse:нокаут",
       "title": "Нокаут",
@@ -4486,19 +4446,6 @@
       "writer": "Эрих Мария Ремарк",
       "country": "Германия",
       "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "gitanjali",
-      "identity": "india:rabindranath_tagore:гитанджали",
-      "title": "Гитанджали",
-      "writer": "Рабиндранат Тагор",
-      "country": "Индия",
-      "status": "verified",
       "issues": [
         "нет перевода ru",
         "нет перевода en",
@@ -4675,19 +4622,6 @@
       ]
     },
     {
-      "id": "article-series-men9bv",
-      "identity": "russia:turgenev:дым",
-      "title": "Дым",
-      "writer": "Иван Сергеевич Тургенев",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
       "id": "article-series-cnwr4c",
       "identity": "russia:dostoevsky:подросток",
       "title": "Подросток",
@@ -4714,45 +4648,6 @@
       ]
     },
     {
-      "id": "article-series-k1mlo9",
-      "identity": "russia:tolstoy:казаки",
-      "title": "Казаки",
-      "writer": "Лев Николаевич Толстой",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "article-series-zqpjjm",
-      "identity": "russia:tolstoy:после бала",
-      "title": "После бала",
-      "writer": "Лев Николаевич Толстой",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "article-series-1ibqthb",
-      "identity": "russia:tolstoy:алеша горшок",
-      "title": "Алёша Горшок",
-      "writer": "Лев Николаевич Толстой",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
       "id": "article-series-1sm81xc",
       "identity": "russia:tolstoy:страшный зверь",
       "title": "Страшный зверь",
@@ -4769,32 +4664,6 @@
       "id": "article-series-16bli22",
       "identity": "russia:tolstoy:эскимосы",
       "title": "Эскимосы",
-      "writer": "Лев Николаевич Толстой",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "article-series-u18dwv",
-      "identity": "russia:tolstoy:лев и собачка",
-      "title": "Лев и собачка",
-      "writer": "Лев Николаевич Толстой",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "article-series-ms8wjq",
-      "identity": "russia:tolstoy:филипок",
-      "title": "Филипок",
       "writer": "Лев Николаевич Толстой",
       "country": "Россия",
       "status": "reviewed",
@@ -4831,19 +4700,6 @@
       ]
     },
     {
-      "id": "article-series-10x9915",
-      "identity": "russia:chekhov:степь",
-      "title": "Степь",
-      "writer": "Антон Павлович Чехов",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
       "id": "article-series-6k0trb",
       "identity": "russia:chekhov:брожение умов",
       "title": "Брожение умов",
@@ -4857,48 +4713,9 @@
       ]
     },
     {
-      "id": "article-series-38cmfo",
-      "identity": "russia:chekhov:жалобная книга",
-      "title": "Жалобная книга",
-      "writer": "Антон Павлович Чехов",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "article-series-1fa9e8h",
-      "identity": "russia:chekhov:смерть чиновника",
-      "title": "Смерть чиновника",
-      "writer": "Антон Павлович Чехов",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
       "id": "article-series-1qws8gr",
       "identity": "russia:chekhov:в бане",
       "title": "В бане",
-      "writer": "Антон Павлович Чехов",
-      "country": "Россия",
-      "status": "reviewed",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
-      "id": "article-series-807ko1",
-      "identity": "russia:chekhov:лошадиная фамилия",
-      "title": "Лошадиная фамилия",
       "writer": "Антон Павлович Чехов",
       "country": "Россия",
       "status": "reviewed",
@@ -5520,19 +5337,6 @@
       ]
     },
     {
-      "id": "the-great-gatsby",
-      "identity": "usa:francis_scott_fitzgerald:великий гэтсби",
-      "title": "Великий Гэтсби",
-      "writer": "Фрэнсис Скотт Фицджеральд",
-      "country": "США",
-      "status": "verified",
-      "issues": [
-        "нет перевода ru",
-        "нет перевода en",
-        "нет структурированных сведений об источниках"
-      ]
-    },
-    {
       "id": "article-series-1gtgnbx",
       "identity": "usa:ernest_hemingway:иметь и не иметь",
       "title": "Иметь и не иметь",
@@ -5920,6 +5724,18 @@
         "нет перевода ru",
         "нет перевода en",
         "нет структурированных сведений об источниках"
+      ]
+    },
+    {
+      "id": "the-lost-world",
+      "identity": "usa:michael_crichton:затерянный мир",
+      "title": "Затерянный мир",
+      "writer": "Джон Майкл Крайтон",
+      "country": "США",
+      "status": "reviewed",
+      "issues": [
+        "нет перевода ru",
+        "нет перевода en"
       ]
     },
     {
@@ -20744,7 +20560,7 @@
     },
     {
       "id": "openlibrary-works-ol675783w",
-      "title": "Рассказ служанки",
+      "title": "Рассказ Служанки",
       "writer": "Маргарет Этвуд",
       "country": "Канада",
       "status": "reviewed",
@@ -23758,9 +23574,10 @@
       "title": "Двадцать стихотворений о любви и одна песня отчаяния",
       "writer": "Пабло Неруда",
       "country": "Чили",
-      "status": "verified",
+      "status": "draft",
       "missing": [
-        "обложка или редакционная иллюстрация"
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
       ]
     },
     {
@@ -33717,9 +33534,10 @@
       "title": "Каирская трилогия",
       "writer": "Нагиб Махфуз",
       "country": "Египет",
-      "status": "verified",
+      "status": "draft",
       "missing": [
-        "обложка или редакционная иллюстрация"
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
       ]
     },
     {
@@ -33727,9 +33545,10 @@
       "title": "Переулок Мидак",
       "writer": "Нагиб Махфуз",
       "country": "Египет",
-      "status": "verified",
+      "status": "draft",
       "missing": [
-        "обложка или редакционная иллюстрация"
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
       ]
     },
     {
@@ -33737,9 +33556,10 @@
       "title": "Вор и собаки",
       "writer": "Нагиб Махфуз",
       "country": "Египет",
-      "status": "verified",
+      "status": "draft",
       "missing": [
-        "обложка или редакционная иллюстрация"
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
       ]
     },
     {
@@ -40956,19 +40776,6 @@
       ]
     },
     {
-      "id": "openlibrary-works-ol8193416w",
-      "title": "The Picture of Dorian Gray",
-      "writer": "Оскар Уайльд",
-      "country": "Англия",
-      "status": "draft",
-      "missing": [
-        "язык оригинала",
-        "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
       "id": "openlibrary-works-ol27776452w",
       "title": "The Importance of Being Earnest",
       "writer": "Оскар Уайльд",
@@ -41393,22 +41200,6 @@
       "missing": [
         "язык оригинала",
         "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "legacy-oscar_wilde-портрет-дориана-грея",
-      "title": "Портрет Дориана Грея",
-      "writer": "Оскар Уайльд",
-      "country": "Англия",
-      "status": "draft",
-      "missing": [
-        "год первой публикации",
-        "язык оригинала",
-        "жанр",
-        "редакционное описание",
-        "библиографический источник",
         "обложка или редакционная иллюстрация",
         "финальная проверка"
       ]
@@ -42088,16 +41879,6 @@
       ]
     },
     {
-      "id": "brave-new-world-editorial",
-      "title": "О дивный новый мир",
-      "writer": "Олдос Хаксли",
-      "country": "Англия",
-      "status": "reviewed",
-      "missing": [
-        "финальная проверка"
-      ]
-    },
-    {
       "id": "openlibrary-works-ol64440w",
       "title": "Brave New World and Brave New World Revisited",
       "writer": "Олдос Хаксли",
@@ -42498,20 +42279,9 @@
       "title": "Властелин колец",
       "writer": "Джон Рональд Руэл Толкин",
       "country": "Англия",
-      "status": "reviewed",
+      "status": "verified",
       "missing": [
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "the-hobbit",
-      "title": "Хоббит, или Туда и обратно",
-      "writer": "Джон Рональд Руэл Толкин",
-      "country": "Англия",
-      "status": "reviewed",
-      "missing": [
-        "финальная проверка"
+        "обложка или редакционная иллюстрация"
       ]
     },
     {
@@ -42993,26 +42763,6 @@
         "редакционное описание",
         "библиографический источник",
         "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "animal-farm-editorial",
-      "title": "Скотный двор",
-      "writer": "Джордж Оруэлл",
-      "country": "Англия",
-      "status": "reviewed",
-      "missing": [
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "nineteen-eighty-four",
-      "title": "1984",
-      "writer": "Джордж Оруэлл",
-      "country": "Англия",
-      "status": "reviewed",
-      "missing": [
         "финальная проверка"
       ]
     },
@@ -53653,16 +53403,6 @@
       ]
     },
     {
-      "id": "les-miserables",
-      "title": "Отверженные",
-      "writer": "Виктор Гюго",
-      "country": "Франция",
-      "status": "reviewed",
-      "missing": [
-        "финальная проверка"
-      ]
-    },
-    {
       "id": "the-hunchback-of-notre-dame-editorial",
       "title": "Собор Парижской Богоматери",
       "writer": "Виктор Гюго",
@@ -54329,16 +54069,6 @@
       ]
     },
     {
-      "id": "madame-bovary",
-      "title": "Госпожа Бовари",
-      "writer": "Гюстав Флобер",
-      "country": "Франция",
-      "status": "reviewed",
-      "missing": [
-        "финальная проверка"
-      ]
-    },
-    {
       "id": "openlibrary-works-ol893807w",
       "title": "Un coeur simple",
       "writer": "Гюстав Флобер",
@@ -54633,19 +54363,6 @@
     {
       "id": "openlibrary-works-ol118981w",
       "title": "Au bonheur des dames",
-      "writer": "Эмиль Золя",
-      "country": "Франция",
-      "status": "draft",
-      "missing": [
-        "язык оригинала",
-        "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "openlibrary-works-ol3521623w",
-      "title": "Therese Raquin",
       "writer": "Эмиль Золя",
       "country": "Франция",
       "status": "draft",
@@ -55132,19 +54849,6 @@
     {
       "id": "openlibrary-works-ol16538128w",
       "title": "Antología de la literatura fantástica",
-      "writer": "Ги де Мопассан",
-      "country": "Франция",
-      "status": "draft",
-      "missing": [
-        "язык оригинала",
-        "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "openlibrary-works-ol93822w",
-      "title": "Vie",
       "writer": "Ги де Мопассан",
       "country": "Франция",
       "status": "draft",
@@ -56667,10 +56371,9 @@
       "title": "Маленький принц",
       "writer": "Антуан де Сент-Экзюпери",
       "country": "Франция",
-      "status": "reviewed",
+      "status": "verified",
       "missing": [
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
+        "обложка или редакционная иллюстрация"
       ]
     },
     {
@@ -59222,9 +58925,10 @@
       "title": "Семья Тибо",
       "writer": "Роже Мартен дю Гар",
       "country": "Франция",
-      "status": "verified",
+      "status": "draft",
       "missing": [
-        "обложка или редакционная иллюстрация"
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
       ]
     },
     {
@@ -59355,6 +59059,17 @@
     {
       "id": "under-fire",
       "title": "Огонь",
+      "writer": "Анри Барбюс",
+      "country": "Франция",
+      "status": "reviewed",
+      "missing": [
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
+      ]
+    },
+    {
+      "id": "la-tendresse",
+      "title": "Нежность",
       "writer": "Анри Барбюс",
       "country": "Франция",
       "status": "reviewed",
@@ -60052,9 +59767,10 @@
       "title": "Римская история",
       "writer": "Кристиан Маттиас Теодор Моммзен",
       "country": "Германия",
-      "status": "verified",
+      "status": "draft",
       "missing": [
-        "обложка или редакционная иллюстрация"
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
       ]
     },
     {
@@ -68342,9 +68058,10 @@
       "title": "Гитанджали",
       "writer": "Рабиндранат Тагор",
       "country": "Индия",
-      "status": "verified",
+      "status": "draft",
       "missing": [
-        "обложка или редакционная иллюстрация"
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
       ]
     },
     {
@@ -72466,9 +72183,7 @@
       "missing": [
         "год первой публикации",
         "язык оригинала",
-        "жанр",
         "редакционное описание",
-        "библиографический источник",
         "обложка или редакционная иллюстрация",
         "финальная проверка"
       ]
@@ -93275,7 +92990,7 @@
     },
     {
       "id": "growth-of-the-soil",
-      "title": "Соки земли",
+      "title": "Плоды земли",
       "writer": "Кнут Гамсун",
       "country": "Норвегия",
       "status": "verified",
@@ -104080,7 +103795,7 @@
       "title": "Дым",
       "writer": "Иван Сергеевич Тургенев",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -104533,16 +104248,6 @@
         "редакционное описание",
         "библиографический источник",
         "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "crime-and-punishment",
-      "title": "Преступление и наказание",
-      "writer": "Фёдор Михайлович Достоевский",
-      "country": "Россия",
-      "status": "reviewed",
-      "missing": [
         "финальная проверка"
       ]
     },
@@ -105126,16 +104831,6 @@
       ]
     },
     {
-      "id": "war-and-peace",
-      "title": "Война и мир",
-      "writer": "Лев Николаевич Толстой",
-      "country": "Россия",
-      "status": "reviewed",
-      "missing": [
-        "финальная проверка"
-      ]
-    },
-    {
       "id": "anna-karenina-editorial",
       "title": "Анна Каренина",
       "writer": "Лев Николаевич Толстой",
@@ -105155,7 +104850,7 @@
       "title": "Казаки",
       "writer": "Лев Николаевич Толстой",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -105168,7 +104863,7 @@
       "title": "После бала",
       "writer": "Лев Николаевич Толстой",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -105180,7 +104875,7 @@
       "title": "Алёша Горшок",
       "writer": "Лев Николаевич Толстой",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -105219,7 +104914,7 @@
       "title": "Лев и собачка",
       "writer": "Лев Николаевич Толстой",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -105232,7 +104927,7 @@
       "title": "Филипок",
       "writer": "Лев Николаевич Толстой",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -105786,7 +105481,7 @@
       "title": "Степь",
       "writer": "Антон Павлович Чехов",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -105811,7 +105506,7 @@
       "title": "Жалобная книга",
       "writer": "Антон Павлович Чехов",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -105824,7 +105519,7 @@
       "title": "Смерть чиновника",
       "writer": "Антон Павлович Чехов",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -105850,7 +105545,7 @@
       "title": "Лошадиная фамилия",
       "writer": "Антон Павлович Чехов",
       "country": "Россия",
-      "status": "reviewed",
+      "status": "draft",
       "missing": [
         "год первой публикации",
         "язык оригинала",
@@ -106419,6 +106114,17 @@
       ]
     },
     {
+      "id": "the-village",
+      "title": "Деревня",
+      "writer": "Иван Алексеевич Бунин",
+      "country": "Россия",
+      "status": "draft",
+      "missing": [
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
+      ]
+    },
+    {
       "id": "openlibrary-works-ol603368w",
       "title": "Short stories",
       "writer": "Иван Алексеевич Бунин",
@@ -106914,7 +106620,6 @@
         "год первой публикации",
         "язык оригинала",
         "жанр",
-        "редакционное описание",
         "библиографический источник",
         "финальная проверка"
       ]
@@ -112479,10 +112184,9 @@
       "title": "Дон Кихот",
       "writer": "Мигель де Сервантес",
       "country": "Испания",
-      "status": "reviewed",
+      "status": "verified",
       "missing": [
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
+        "обложка или редакционная иллюстрация"
       ]
     },
     {
@@ -118656,9 +118360,10 @@
       "title": "Олимпийская весна",
       "writer": "Карл Фридрих Георг Шпиттелер",
       "country": "Швейцария",
-      "status": "verified",
+      "status": "draft",
       "missing": [
-        "обложка или редакционная иллюстрация"
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
       ]
     },
     {
@@ -123148,19 +122853,6 @@
       ]
     },
     {
-      "id": "openlibrary-works-ol2514745w",
-      "title": "The Way to Wealth",
-      "writer": "Бенджамин Франклин",
-      "country": "США",
-      "status": "draft",
-      "missing": [
-        "язык оригинала",
-        "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
       "id": "openlibrary-works-ol26516w",
       "title": "Fart proudly",
       "writer": "Бенджамин Франклин",
@@ -125522,19 +125214,6 @@
       ]
     },
     {
-      "id": "openlibrary-works-ol21138836w",
-      "title": "Walden - Life in the Woods",
-      "writer": "Генри Дэвид Торо",
-      "country": "США",
-      "status": "draft",
-      "missing": [
-        "язык оригинала",
-        "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
       "id": "openlibrary-works-ol55670w",
       "title": "A week on the Concord and Merrimack Rivers",
       "writer": "Генри Дэвид Торо",
@@ -126254,13 +125933,12 @@
     },
     {
       "id": "moby-dick",
-      "title": "Моби Дик, или Белый кит",
+      "title": "Моби Дик, или Белый Кит",
       "writer": "Герман Мелвилл",
       "country": "США",
-      "status": "reviewed",
+      "status": "verified",
       "missing": [
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
+        "обложка или редакционная иллюстрация"
       ]
     },
     {
@@ -127221,6 +126899,7 @@
       "country": "США",
       "status": "draft",
       "missing": [
+        "год первой публикации",
         "язык оригинала",
         "редакционное описание",
         "обложка или редакционная иллюстрация",
@@ -128674,19 +128353,6 @@
       ]
     },
     {
-      "id": "openlibrary-works-ol144705w",
-      "title": "Call of the Wild",
-      "writer": "Джек Лондон",
-      "country": "США",
-      "status": "draft",
-      "missing": [
-        "язык оригинала",
-        "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
       "id": "openlibrary-works-ol34800474w",
       "title": "El Talón de Hierro",
       "writer": "Джек Лондон",
@@ -129957,11 +129623,8 @@
       "country": "США",
       "status": "draft",
       "missing": [
-        "год первой публикации",
         "язык оригинала",
-        "жанр",
         "редакционное описание",
-        "библиографический источник",
         "финальная проверка"
       ]
     },
@@ -130098,19 +129761,6 @@
     {
       "id": "openlibrary-works-ol62979w",
       "title": "The Sun Also Rises",
-      "writer": "Эрнест Хемингуэй",
-      "country": "США",
-      "status": "draft",
-      "missing": [
-        "язык оригинала",
-        "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "openlibrary-works-ol63009w",
-      "title": "For Whom the Bell Tolls",
       "writer": "Эрнест Хемингуэй",
       "country": "США",
       "status": "draft",
@@ -130523,11 +130173,8 @@
       "country": "США",
       "status": "draft",
       "missing": [
-        "год первой публикации",
         "язык оригинала",
-        "жанр",
         "редакционное описание",
-        "библиографический источник",
         "финальная проверка"
       ]
     },
@@ -130586,19 +130233,6 @@
     {
       "id": "openlibrary-works-ol82928w",
       "title": "Absalom, Absalom!",
-      "writer": "Уильям Фолкнер",
-      "country": "США",
-      "status": "draft",
-      "missing": [
-        "язык оригинала",
-        "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "openlibrary-works-ol82870w",
-      "title": "The Sound and the Fury",
       "writer": "Уильям Фолкнер",
       "country": "США",
       "status": "draft",
@@ -131244,11 +130878,8 @@
       "country": "США",
       "status": "draft",
       "missing": [
-        "год первой публикации",
         "язык оригинала",
-        "жанр",
         "редакционное описание",
-        "библиографический источник",
         "финальная проверка"
       ]
     },
@@ -131268,19 +130899,6 @@
     {
       "id": "openlibrary-works-ol23204w",
       "title": "Of Mice and Men",
-      "writer": "Джон Стейнбек",
-      "country": "США",
-      "status": "draft",
-      "missing": [
-        "язык оригинала",
-        "редакционное описание",
-        "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "openlibrary-works-ol23205w",
-      "title": "The Grapes of Wrath",
       "writer": "Джон Стейнбек",
       "country": "США",
       "status": "draft",
@@ -132343,16 +131961,6 @@
         "редакционное описание",
         "библиографический источник",
         "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "fahrenheit-451-editorial",
-      "title": "451° по Фаренгейту",
-      "writer": "Рэй Брэдбери",
-      "country": "США",
-      "status": "reviewed",
-      "missing": [
         "финальная проверка"
       ]
     },
@@ -133887,16 +133495,6 @@
       ]
     },
     {
-      "id": "the-catcher-in-the-rye-editorial",
-      "title": "Над пропастью во ржи",
-      "writer": "Джером Дэвид Сэлинджер",
-      "country": "США",
-      "status": "reviewed",
-      "missing": [
-        "финальная проверка"
-      ]
-    },
-    {
       "id": "openlibrary-works-ol3335290w",
       "title": "Nine Stories",
       "writer": "Джером Дэвид Сэлинджер",
@@ -134081,16 +133679,6 @@
         "редакционное описание",
         "библиографический источник",
         "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "to-kill-a-mockingbird-editorial",
-      "title": "Убить пересмешника",
-      "writer": "Харпер Ли",
-      "country": "США",
-      "status": "reviewed",
-      "missing": [
         "финальная проверка"
       ]
     },
@@ -134438,16 +134026,6 @@
         "редакционное описание",
         "библиографический источник",
         "обложка или редакционная иллюстрация",
-        "финальная проверка"
-      ]
-    },
-    {
-      "id": "lolita-editorial",
-      "title": "Лолита",
-      "writer": "Владимир Набоков",
-      "country": "США",
-      "status": "reviewed",
-      "missing": [
         "финальная проверка"
       ]
     },
@@ -137282,6 +136860,17 @@
     {
       "id": "jurassic-park",
       "title": "Парк юрского периода",
+      "writer": "Джон Майкл Крайтон",
+      "country": "США",
+      "status": "reviewed",
+      "missing": [
+        "обложка или редакционная иллюстрация",
+        "финальная проверка"
+      ]
+    },
+    {
+      "id": "the-lost-world",
+      "title": "Затерянный мир",
       "writer": "Джон Майкл Крайтон",
       "country": "США",
       "status": "reviewed",

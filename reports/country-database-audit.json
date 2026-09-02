@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T13:17:54.500Z",
+  "generatedAt": "2026-09-02T04:44:45.355Z",
   "summary": {
     "countryCards": 200,
     "uniqueCountryIds": 200,
@@ -14,8 +14,8 @@
     "cardsWithLiteraryPlaces": 0,
     "writerRecords": 1684,
     "uniqueWriters": 1672,
-    "workRecords": 4487,
-    "uniqueWorks": 4466,
+    "workRecords": 4490,
+    "uniqueWorks": 4469,
     "verifiedWriters": 61,
     "sourcedWriters": 141,
     "expandedBiographies": 78,

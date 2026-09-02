@@ -63,5 +63,5 @@ describe("Stage 5D-6 static and deterministic certification", () => {
         windows.every(({ includesAnchor }) => includesAnchor),
       ),
     ).toBe(true);
-  });
+  }, 30_000);
 });

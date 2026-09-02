@@ -1,0 +1,799 @@
+{
+  "schemaVersion": 1,
+  "packageId": "book-canon-additions-batch01-2026-09-02",
+  "checkedAt": "2026-09-02",
+  "applicationStatus": "isolated-research-hold",
+  "publicationEffect": "none",
+  "policy": "This package prepares evidence-bound Work candidates only. It is not imported by bookArchive, the enrichment generator, the canon registry, a migration, or a production workflow. Every candidate remains fail-closed until its explicit publication holds are resolved and the runtime Evidence V2 validator passes against the then-current registry.",
+  "registryVersion": "world-canon-2026-09-v2",
+  "registrySourceId": "neb-svet-important-classics-2026-09-02",
+  "hashProfile": "sha256-canonical-json-canon-addition-v1",
+  "proposedAuthorities": [
+    {
+      "authorityId": "northwestern-university-press",
+      "provider": "Northwestern University Press",
+      "authorityCountryId": "usa",
+      "independenceGroup": "northwestern-university-press",
+      "tier": "B",
+      "allowedRoles": [
+        "title-publisher",
+        "description-fact"
+      ],
+      "domains": [
+        "nupress.northwestern.edu"
+      ],
+      "markets": [
+        "US"
+      ],
+      "registrationStatus": "proposed-not-active"
+    },
+    {
+      "authorityId": "russian-life-books",
+      "provider": "Russian Life Books / Russian Information Services",
+      "authorityCountryId": "usa",
+      "independenceGroup": "russian-life-books",
+      "tier": "B",
+      "allowedRoles": [
+        "title-publisher",
+        "description-fact"
+      ],
+      "domains": [
+        "russianlife.com"
+      ],
+      "markets": [
+        "US"
+      ],
+      "registrationStatus": "proposed-not-active"
+    }
+  ],
+  "sources": [
+    {
+      "sourceId": "neb-twelve-chairs-work",
+      "provider": "Национальная электронная библиотека - Свет",
+      "authorityId": "neb",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "russian-national-library-infrastructure",
+      "authorityTier": "A",
+      "sourceKind": "national-library-work-page",
+      "url": "https://svetapp.rusneb.ru/catalog/dvenadcat-stulev",
+      "recordId": "NEB-SVET:dvenadcat-stulev",
+      "locator": "H1, contributor line, summary and collection tags",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The Work page displays the Russian title «Двенадцать стульев».",
+        "The contributor line credits both Ильф И. А. and Петров Е. П. as authors.",
+        "The summary identifies a rogue's adventures and the book's panorama of Soviet life in the 1920s."
+      ]
+    },
+    {
+      "sourceId": "rsl-twelve-chairs-1928",
+      "provider": "Российская государственная библиотека",
+      "authorityId": "rsl",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "russian-state-library",
+      "authorityTier": "A",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://search.rsl.ru/ru/record/01009200723",
+      "recordId": "RSL:009200723",
+      "locator": "MARC 245 $a/$b/$c, 260 $a/$b/$c and 700 $a",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "MARC field 245 records the principal title «Двенадцать стульев» and the genre statement «Роман».",
+        "The responsibility statement credits Илья Ильф and Евг. Петров, with Petrov also recorded in field 700.",
+        "The Земля и фабрика book manifestation is dated 1928 and carries registration number 28-37731."
+      ]
+    },
+    {
+      "sourceId": "ast-twelve-chairs-9785171466299",
+      "provider": "Издательство АСТ",
+      "authorityId": "ast",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "ast-publishing-group",
+      "authorityTier": "B",
+      "sourceKind": "official-publisher-record",
+      "url": "https://ast.ru/book/dvenadtsat-stulev-862697/",
+      "recordId": "ISBN:9785171466299",
+      "locator": "H1, author line, ISBN and annotation",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The publisher markets ISBN 978-5-17-146629-9 under the exact title «Двенадцать стульев».",
+        "The product record credits Ильф Илья Арнольдович and Петров Евгений Петрович together.",
+        "The annotation dates the novel to 1928 and identifies the search for jewels hidden in one of twelve chairs."
+      ]
+    },
+    {
+      "sourceId": "loc-twelve-chairs-2011",
+      "provider": "Library of Congress",
+      "authorityId": "loc",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "united-states-library-of-congress",
+      "authorityTier": "A",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://lccn.loc.gov/2011013393",
+      "recordId": "LCCN:2011013393",
+      "locator": "principal title, responsibility statement, English uniform title and ISBN",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The Library of Congress record identifies the principal English title as The twelve chairs, with A novel as subtitle.",
+        "The record credits Ilya Ilf and Evgeny Petrov and identifies Anne O. Fisher as translator from Russian.",
+        "The Northwestern University Press manifestation is dated 2011 and keyed by ISBN 9780810127722."
+      ]
+    },
+    {
+      "sourceId": "northwestern-twelve-chairs-9780810127722",
+      "provider": "Northwestern University Press",
+      "authorityId": "northwestern-university-press",
+      "evidenceClass": "proposed-authority",
+      "independenceGroup": "northwestern-university-press",
+      "authorityTier": "B",
+      "sourceKind": "official-publisher-record",
+      "url": "https://nupress.northwestern.edu/9780810127722/the-twelve-chairs/",
+      "recordId": "ISBN:9780810127722",
+      "locator": "H1/subtitle, author/translator lines, paperback ISBN and description",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The publisher displays the title The Twelve Chairs with the subtitle A Novel.",
+        "The page credits Ilya Ilf and Evgeny Petrov and names Anne O. Fisher as translator.",
+        "The description follows Ostap Bender and Ippolit Vorobyaninov searching for jewels through the provinces, Moscow and the Transcaucasus."
+      ]
+    },
+    {
+      "sourceId": "neb-moscow-and-muscovites-work",
+      "provider": "Национальная электронная библиотека",
+      "authorityId": "neb",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "russian-national-library-infrastructure",
+      "authorityTier": "A",
+      "sourceKind": "national-library-digital-record",
+      "url": "https://rusneb.ru/catalog/010000_000060_ART-008fa62b-4241-4e9a-8cf7-33738a229494/",
+      "recordId": "NEB:010000_000060_ART-008fa62b-4241-4e9a-8cf7-33738a229494",
+      "locator": "H1, detailed information and full annotation",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The digital record displays the exact Russian title «Москва и москвичи» and credits Гиляровский В. А.",
+        "The annotation dates the first authorial edition to 1926 and distinguishes the expanded 1935 edition.",
+        "The work describes Moscow's customs and everyday life from the second half of the nineteenth century into the early twentieth century."
+      ]
+    },
+    {
+      "sourceId": "azbooka-moscow-and-muscovites-9785389117372",
+      "provider": "Издательство «Азбука»",
+      "authorityId": "azbooka",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "azbooka-atticus-publishing-group",
+      "authorityTier": "B",
+      "sourceKind": "official-publisher-record",
+      "url": "https://azbooka.ru/books/moskva-i-moskvichi-es2c",
+      "recordId": "ISBN:9785389117372",
+      "locator": "H1, author, ISBN, publication data and description",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The publisher markets ISBN 978-5-389-11737-2 under the exact title «Москва и москвичи».",
+        "The record credits Владимир Гиляровский and identifies the publisher as Азбука.",
+        "The publisher calls the work a history of Moscow's everyday life and dates it to 1926 in its author bibliography."
+      ]
+    },
+    {
+      "sourceId": "loc-moscow-and-muscovites-2013",
+      "provider": "Library of Congress",
+      "authorityId": "loc",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "united-states-library-of-congress",
+      "authorityTier": "A",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://lccn.loc.gov/2013955149",
+      "recordId": "LCCN:2013955149",
+      "locator": "MODS titleInfo, names, originInfo, abstract, relatedItem and identifiers",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The principal MODS title is Moscow & Muscovites and the alternative title is Moscow and Muscovites.",
+        "The record credits Vladimir Gilyarovsky and translator Brendan Kiernan and identifies English as the manifestation language.",
+        "The Montpelier, Vermont manifestation was published by Russian Information Services in 2013 as ISBN 9781880100820."
+      ]
+    },
+    {
+      "sourceId": "russian-life-moscow-and-muscovites-9781880100820",
+      "provider": "Russian Life Books / Russian Information Services",
+      "authorityId": "russian-life-books",
+      "evidenceClass": "proposed-authority",
+      "independenceGroup": "russian-life-books",
+      "authorityTier": "B",
+      "sourceKind": "official-publisher-record",
+      "url": "https://russianlife.com/shop/books/moscow-and-muscovites/",
+      "recordId": "ISBN:9781880100820",
+      "locator": "H1, author/translator/ISBN block, first-publication note and description",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The publisher markets ISBN 978-1-880100-82-0 under the heading Moscow and Muscovites.",
+        "The page credits Vladimir Gilyarovsky and translator Brendan Kiernan and dates the English edition to 2013.",
+        "The publisher describes an account of pre-Soviet Moscow spanning sewers, gambling rooms, baths, restaurants, markets and firemen."
+      ]
+    },
+    {
+      "sourceId": "neb-year-of-the-lord-work",
+      "provider": "Национальная электронная библиотека - Свет",
+      "authorityId": "neb",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "russian-national-library-infrastructure",
+      "authorityTier": "A",
+      "sourceKind": "national-library-work-page",
+      "url": "https://svetapp.rusneb.ru/catalog/leto-gospodne",
+      "recordId": "NEB-SVET:leto-gospodne",
+      "locator": "H1, author line, tags and summary",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The Work page displays the exact Russian title «Лето Господне» and credits Шмелёв И. С.",
+        "The summary presents young Vanya living through an Orthodox year in a Moscow merchant household.",
+        "The page characterizes the narrative as autobiographical and foregrounds family customs, food, faith and growing up."
+      ]
+    },
+    {
+      "sourceId": "rsl-year-of-the-lord-2018",
+      "provider": "Российская государственная библиотека",
+      "authorityId": "rsl",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "russian-state-library",
+      "authorityTier": "A",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://search.rsl.ru/ru/record/01009703909",
+      "recordId": "RSL:009703909",
+      "locator": "principal title, responsibility statement, publication data and ISBN",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The catalog records the principal title «Лето господне» and credits Иван Шмелёв.",
+        "The Детская литература manifestation was published in Moscow in 2018.",
+        "The record identifies Russian as the language and ISBN 978-5-08-005869-1."
+      ]
+    },
+    {
+      "sourceId": "neb-year-of-the-lord-complete-1948",
+      "provider": "Национальная электронная библиотека",
+      "authorityId": "neb",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "russian-national-library-infrastructure",
+      "authorityTier": "A",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://rusneb.ru/catalog/000199_000009_003179466/",
+      "recordId": "NEB:000199_000009_003179466",
+      "locator": "bibliographic title, publication place, publisher, copyright year and extent",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The record identifies «Лето Господне : праздники, радости, скорби» by Иван Шмелев.",
+        "The complete Paris manifestation was issued by YMCA-Press with copyright year 1948.",
+        "The record describes a 527-page Russian-language manifestation rather than an English translation."
+      ]
+    },
+    {
+      "sourceId": "azbooka-year-of-the-lord-9785389191136",
+      "provider": "Издательство «Азбука»",
+      "authorityId": "azbooka",
+      "evidenceClass": "current-registry",
+      "independenceGroup": "azbooka-atticus-publishing-group",
+      "authorityTier": "B",
+      "sourceKind": "official-publisher-record",
+      "url": "https://azbooka.ru/books/leto-gospodne",
+      "recordId": "ISBN:9785389191136",
+      "locator": "H1, author/ISBN block and publication-history description",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The publisher markets ISBN 978-5-389-19113-6 under the exact title «Лето Господне» and credits Иван Шмелев.",
+        "The page states that the text first appeared as separate sketches during the author's emigration.",
+        "The publisher identifies the three-part complete Paris edition «Праздники», «Радости», «Скорби» as a 1948 publication."
+      ]
+    },
+    {
+      "sourceId": "lulu-year-of-the-lord-9798988282402",
+      "provider": "Lulu print-on-demand marketplace",
+      "authorityId": null,
+      "evidenceClass": "discovery-only",
+      "independenceGroup": "lulu-marketplace",
+      "authorityTier": null,
+      "sourceKind": "marketplace-product-record",
+      "url": "https://www.lulu.com/shop/ivan-shmelev-and-nicholas-semyanko-and-eugenia-semyanko-and-natalie-semyanko/the-year-of-the-lord/hardcover/product-nkm2vd.html",
+      "recordId": "ISBN:9798988282402",
+      "locator": "H1, contributor block, publication date, language and ISBN",
+      "retrievedAt": "2026-09-02",
+      "claims": [
+        "The marketplace lists an English-language manifestation titled The Year of the Lord.",
+        "The record credits Ivan Shmelev and translator Natalie Semyanko.",
+        "The print-on-demand manifestation is dated 2023 and keyed by ISBN 9798988282402."
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidateId": "twelve-chairs-coauthored-work",
+      "suggestedRecordKey": "russia:ilya-ilf:the-twelve-chairs",
+      "registryHoldRef": {
+        "sourceId": "neb-svet-important-classics-2026-09-02",
+        "ordinal": 14,
+        "itemId": "dvenadcat-stulev",
+        "itemHash": "836b0b594943011d1374d222998e109bfd2540cb846f65cbb795da7600149fc5"
+      },
+      "work": {
+        "entityKind": "work",
+        "originalTitle": "Двенадцать стульев",
+        "originalLanguage": "ru",
+        "firstPublished": 1928,
+        "genre": "сатирический роман",
+        "publicationModel": "The Work was published in book form in 1928; the 2011 English manifestation is a distinct translated Expression."
+      },
+      "authorship": {
+        "kind": "multiple",
+        "authors": [
+          {
+            "position": 1,
+            "countryId": "russia",
+            "writerId": "ilya-ilf",
+            "creditNames": {
+              "ru": "Илья Ильф",
+              "en": "Ilya Ilf"
+            },
+            "linkStatus": "missing-active-writer"
+          },
+          {
+            "position": 2,
+            "countryId": "russia",
+            "writerId": "yevgeny-petrov",
+            "creditNames": {
+              "ru": "Евгений Петров",
+              "en": "Evgeny Petrov"
+            },
+            "linkStatus": "missing-active-writer"
+          }
+        ],
+        "sourceIds": [
+          "rsl-twelve-chairs-1928",
+          "ast-twelve-chairs-9785171466299",
+          "loc-twelve-chairs-2011",
+          "northwestern-twelve-chairs-9780810127722"
+        ]
+      },
+      "localizedTitles": {
+        "ru": {
+          "status": "verified-research",
+          "selectedValue": "Двенадцать стульев",
+          "market": "RU",
+          "expressionLanguage": "ru",
+          "selectionRule": "original-market-title",
+          "evidence": [
+            {
+              "sourceId": "rsl-twelve-chairs-1928",
+              "manifestationId": "RSL:009200723",
+              "catalogTitleExact": "Двенадцать стульев",
+              "publisher": "Земля и фабрика",
+              "publicationYear": 1928
+            },
+            {
+              "sourceId": "ast-twelve-chairs-9785171466299",
+              "manifestationId": "ISBN:9785171466299",
+              "catalogTitleExact": "Двенадцать стульев",
+              "publisher": "АСТ",
+              "isbn13": "9785171466299"
+            }
+          ]
+        },
+        "en": {
+          "status": "verified-research",
+          "selectedValue": "The Twelve Chairs",
+          "market": "US",
+          "expressionLanguage": "en",
+          "selectionRule": "current-complete-authorized-edition",
+          "evidence": [
+            {
+              "sourceId": "loc-twelve-chairs-2011",
+              "manifestationId": "LCCN:2011013393",
+              "catalogTitleExact": "The twelve chairs",
+              "subtitleExact": "A novel",
+              "publisher": "Northwestern University Press",
+              "publicationYear": 2011,
+              "translator": "Anne O. Fisher",
+              "isbn13": "9780810127722"
+            },
+            {
+              "sourceId": "northwestern-twelve-chairs-9780810127722",
+              "manifestationId": "ISBN:9780810127722",
+              "catalogTitleExact": "The Twelve Chairs",
+              "subtitleExact": "A Novel",
+              "publisher": "Northwestern University Press",
+              "publicationYear": 2011,
+              "translator": "Anne O. Fisher",
+              "isbn13": "9780810127722"
+            }
+          ]
+        }
+      },
+      "descriptions": {
+        "ru": {
+          "text": "Сатирический роман Ильи Ильфа и Евгения Петрова рассказывает о поисках драгоценностей, спрятанных в одном из двенадцати стульев, и о похождениях Остапа Бендера и Ипполита Воробьянинова. Авантюрный сюжет одновременно разворачивается как широкая и остроумная картина советской жизни 1920-х годов.",
+          "sha256": "f8105a16e9f204ee2a044c54d88d7677b7d1d9568e464d80691baa79677803ec",
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceIds": [
+            "neb-twelve-chairs-work",
+            "ast-twelve-chairs-9785171466299"
+          ],
+          "sentenceAttestations": [
+            {
+              "sentence": 1,
+              "sourceIds": [
+                "ast-twelve-chairs-9785171466299",
+                "neb-twelve-chairs-work"
+              ]
+            },
+            {
+              "sentence": 2,
+              "sourceIds": [
+                "neb-twelve-chairs-work"
+              ]
+            }
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          }
+        },
+        "en": {
+          "text": "Ilya Ilf and Evgeny Petrov’s satirical novel follows Ostap Bender and Ippolit Vorobyaninov in their search for jewels hidden in one of twelve chairs. Its adventure plot also unfolds as a broad and witty portrait of Soviet life in the 1920s.",
+          "sha256": "db47f3dae74ccb3db74fc9b5641864e386be5adada02df33ba603852e99dfa42",
+          "origin": "human-translation",
+          "sourceLanguage": "ru",
+          "translatedFromLocale": "ru",
+          "translatedFromSourceHash": "f8105a16e9f204ee2a044c54d88d7677b7d1d9568e464d80691baa79677803ec",
+          "sourceIds": [
+            "neb-twelve-chairs-work",
+            "ast-twelve-chairs-9785171466299"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          }
+        }
+      },
+      "publicationAssessment": {
+        "status": "hold",
+        "holdCodes": [
+          "archive-work-record-missing",
+          "active-coauthor-links-missing",
+          "northwestern-publisher-authority-not-registered"
+        ],
+        "nextStep": "Create or verify both active Russia writer entities, retain authorship.kind=multiple with both links, register the publisher authority, then run the full runtime Evidence V2 gate before any publication."
+      },
+      "canonAssessment": {
+        "status": "hold-no-claim",
+        "holdCodes": [
+          "neb-snapshot-content-hash-unverified",
+          "second-independent-work-signal-missing"
+        ]
+      },
+      "reviewFingerprint": "315ce98760588cfb912b6bd6f4a918658a214f5183da0234a7e5c5a78988c94a"
+    },
+    {
+      "candidateId": "moscow-and-muscovites-work",
+      "suggestedRecordKey": "russia:vladimir-gilyarovsky:moscow-and-muscovites",
+      "registryHoldRef": {
+        "sourceId": "neb-svet-important-classics-2026-09-02",
+        "ordinal": 12,
+        "itemId": "vladimir-alekseevich-gilyarovskii-moskva-i-moskvichi",
+        "itemHash": "04c2008d4fbaeba83fa0606c4829706b262ba64017d0d7b5e288e531e0badec5"
+      },
+      "work": {
+        "entityKind": "work",
+        "originalTitle": "Москва и москвичи",
+        "originalLanguage": "ru",
+        "firstPublished": 1926,
+        "genre": "книга очерков",
+        "publicationModel": "The 1926 authorial Work and the expanded 1935 Russian Expression must remain distinguishable; the 2013 English manifestation explicitly presents a translation of the 1926 text."
+      },
+      "authorship": {
+        "kind": "single",
+        "authors": [
+          {
+            "position": 1,
+            "countryId": "russia",
+            "writerId": "vladimir-gilyarovsky",
+            "creditNames": {
+              "ru": "Владимир Гиляровский",
+              "en": "Vladimir Gilyarovsky"
+            },
+            "linkStatus": "missing-active-writer"
+          }
+        ],
+        "sourceIds": [
+          "neb-moscow-and-muscovites-work",
+          "azbooka-moscow-and-muscovites-9785389117372",
+          "loc-moscow-and-muscovites-2013",
+          "russian-life-moscow-and-muscovites-9781880100820"
+        ]
+      },
+      "localizedTitles": {
+        "ru": {
+          "status": "verified-research",
+          "selectedValue": "Москва и москвичи",
+          "market": "RU",
+          "expressionLanguage": "ru",
+          "selectionRule": "authoritative-uniform-title",
+          "evidence": [
+            {
+              "sourceId": "neb-moscow-and-muscovites-work",
+              "manifestationId": "NEB:010000_000060_ART-008fa62b-4241-4e9a-8cf7-33738a229494",
+              "catalogTitleExact": "Москва и москвичи",
+              "publicationYear": 1926,
+              "editionStatement": "first authorial edition identified in the national-library annotation"
+            },
+            {
+              "sourceId": "azbooka-moscow-and-muscovites-9785389117372",
+              "manifestationId": "ISBN:9785389117372",
+              "catalogTitleExact": "Москва и москвичи",
+              "publisher": "Азбука",
+              "publicationYear": 2026,
+              "isbn13": "9785389117372"
+            }
+          ]
+        },
+        "en": {
+          "status": "verified-research",
+          "selectedValue": "Moscow and Muscovites",
+          "market": "US",
+          "expressionLanguage": "en",
+          "selectionRule": "current-complete-authorized-edition",
+          "selectionNote": "The publisher's market heading and the LoC alternative title use 'and'; LoC records the physical-title punctuation variant 'Moscow & Muscovites' as principal. The ampersand form is retained as a hidden manifestation variant, not a second translation.",
+          "hiddenManifestationVariants": [
+            "Moscow & Muscovites"
+          ],
+          "evidence": [
+            {
+              "sourceId": "loc-moscow-and-muscovites-2013",
+              "manifestationId": "LCCN:2013955149",
+              "catalogTitleExact": "Moscow and Muscovites",
+              "catalogField": "MODS titleInfo[type=alternative]",
+              "principalTitleExact": "Moscow & Muscovites",
+              "publisher": "Russian Information Services",
+              "publicationYear": 2013,
+              "translator": "Brendan Kiernan",
+              "isbn13": "9781880100820"
+            },
+            {
+              "sourceId": "russian-life-moscow-and-muscovites-9781880100820",
+              "manifestationId": "ISBN:9781880100820",
+              "catalogTitleExact": "Moscow and Muscovites",
+              "publisher": "Russian Life Books",
+              "publicationYear": 2013,
+              "translator": "Brendan Kiernan",
+              "isbn13": "9781880100820"
+            }
+          ]
+        }
+      },
+      "descriptions": {
+        "ru": {
+          "text": "Книга очерков Владимира Гиляровского посвящена традициям, быту и нравам Москвы второй половины XIX - начала XX века и опирается на личный опыт автора-журналиста. Топографическая композиция и внимание к людям превращают отдельные городские истории в подробную хронику дореволюционной Москвы.",
+          "sha256": "9c9c9f99066159d6ec5b8d11127d7ac53e418c306091214103b35a69d4933e3f",
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceIds": [
+            "neb-moscow-and-muscovites-work",
+            "azbooka-moscow-and-muscovites-9785389117372"
+          ],
+          "sentenceAttestations": [
+            {
+              "sentence": 1,
+              "sourceIds": [
+                "neb-moscow-and-muscovites-work",
+                "azbooka-moscow-and-muscovites-9785389117372"
+              ]
+            },
+            {
+              "sentence": 2,
+              "sourceIds": [
+                "neb-moscow-and-muscovites-work",
+                "azbooka-moscow-and-muscovites-9785389117372"
+              ]
+            }
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          }
+        },
+        "en": {
+          "text": "Vladimir Gilyarovsky’s collection of sketches examines the traditions, daily life, and customs of Moscow from the second half of the nineteenth century to the early twentieth century, drawing on the journalist-author’s personal experience. Its topographical structure and attention to people turn individual urban stories into a detailed chronicle of pre-revolutionary Moscow.",
+          "sha256": "1d0134a590fead4338ce6cc9d59b86dbed614aadd0c39fd8f1308041fa85de4a",
+          "origin": "human-translation",
+          "sourceLanguage": "ru",
+          "translatedFromLocale": "ru",
+          "translatedFromSourceHash": "9c9c9f99066159d6ec5b8d11127d7ac53e418c306091214103b35a69d4933e3f",
+          "sourceIds": [
+            "neb-moscow-and-muscovites-work",
+            "azbooka-moscow-and-muscovites-9785389117372"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          }
+        }
+      },
+      "publicationAssessment": {
+        "status": "hold",
+        "holdCodes": [
+          "archive-work-record-missing",
+          "active-writer-link-missing",
+          "russian-life-publisher-authority-not-registered"
+        ],
+        "nextStep": "Create or verify the active Gilyarovsky writer entity, register the publisher authority, preserve the 1926/1935 Expression note, then run the full runtime Evidence V2 gate before any publication."
+      },
+      "canonAssessment": {
+        "status": "hold-no-claim",
+        "holdCodes": [
+          "neb-snapshot-content-hash-unverified",
+          "second-independent-work-signal-missing"
+        ]
+      },
+      "reviewFingerprint": "b01dc024eeef942557bb5c5a21807bdde001bc4e346e070819b2993e19d7e1c7"
+    },
+    {
+      "candidateId": "year-of-the-lord-work",
+      "suggestedRecordKey": "russia:ivan-shmelev:year-of-the-lord",
+      "registryHoldRef": {
+        "sourceId": "neb-svet-important-classics-2026-09-02",
+        "ordinal": 32,
+        "itemId": "leto-gospodne",
+        "itemHash": "1c55096dd72b4ab4a4b2d713a770ed14b4aad3b6c4707ef1a67d676a875b70d6"
+      },
+      "work": {
+        "entityKind": "work",
+        "originalTitle": "Лето Господне",
+        "originalLanguage": "ru",
+        "firstPublished": null,
+        "genre": "автобиографическое повествование",
+        "publicationModel": "The text first appeared in separate parts; a complete three-part Russian manifestation was published in Paris in 1948. A single firstPublished year must remain withheld until the Work-versus-part publication rule is fixed."
+      },
+      "authorship": {
+        "kind": "single",
+        "authors": [
+          {
+            "position": 1,
+            "countryId": "russia",
+            "writerId": "ivan-shmelev",
+            "creditNames": {
+              "ru": "Иван Шмелёв",
+              "en": "Ivan Shmelev"
+            },
+            "linkStatus": "missing-active-writer"
+          }
+        ],
+        "sourceIds": [
+          "neb-year-of-the-lord-work",
+          "rsl-year-of-the-lord-2018",
+          "neb-year-of-the-lord-complete-1948",
+          "azbooka-year-of-the-lord-9785389191136"
+        ]
+      },
+      "localizedTitles": {
+        "ru": {
+          "status": "verified-research",
+          "selectedValue": "Лето Господне",
+          "market": "RU",
+          "expressionLanguage": "ru",
+          "selectionRule": "authoritative-uniform-title",
+          "evidence": [
+            {
+              "sourceId": "rsl-year-of-the-lord-2018",
+              "manifestationId": "RSL:009703909",
+              "catalogTitleExact": "Лето господне",
+              "publisher": "Детская литература",
+              "publicationYear": 2018,
+              "isbn13": "9785080058691"
+            },
+            {
+              "sourceId": "azbooka-year-of-the-lord-9785389191136",
+              "manifestationId": "ISBN:9785389191136",
+              "catalogTitleExact": "Лето Господне",
+              "publisher": "Азбука",
+              "publicationYear": 2026,
+              "isbn13": "9785389191136"
+            }
+          ]
+        },
+        "en": {
+          "status": "withheld",
+          "selectedValue": null,
+          "market": "US",
+          "expressionLanguage": "en",
+          "selectionRule": null,
+          "reason": "A 2023 English manifestation titled The Year of the Lord was found, but no national-library record and no authoritative editorial publisher record independently confirm an English-market title. The value must not be promoted or substituted with a literal translation.",
+          "observedManifestations": [
+            {
+              "sourceId": "lulu-year-of-the-lord-9798988282402",
+              "manifestationId": "ISBN:9798988282402",
+              "observedTitleExact": "The Year of the Lord",
+              "publicationYear": 2023,
+              "translator": "Natalie Semyanko",
+              "isbn13": "9798988282402",
+              "evidenceUse": "discovery-only"
+            }
+          ]
+        }
+      },
+      "descriptions": {
+        "ru": {
+          "text": "Автобиографическое повествование показано глазами маленького Вани, который проживает православный год в московской купеческой семье. Праздники, повседневный быт, еда и обычаи раскрывают семейную хронику и детское восприятие дореволюционной Москвы.",
+          "sha256": "0425d8f513c7846e6479179c169ff0bfc6b3732cb68f7894af4089d2cdf89220",
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceIds": [
+            "neb-year-of-the-lord-work",
+            "azbooka-year-of-the-lord-9785389191136"
+          ],
+          "sentenceAttestations": [
+            {
+              "sentence": 1,
+              "sourceIds": [
+                "neb-year-of-the-lord-work",
+                "azbooka-year-of-the-lord-9785389191136"
+              ]
+            },
+            {
+              "sentence": 2,
+              "sourceIds": [
+                "neb-year-of-the-lord-work",
+                "azbooka-year-of-the-lord-9785389191136"
+              ]
+            }
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          }
+        },
+        "en": {
+          "text": "The autobiographical narrative is presented through the eyes of young Vanya as he lives through the Orthodox year in a Moscow merchant family. Feasts, everyday life, food, and customs reveal both a family chronicle and a child’s view of pre-revolutionary Moscow.",
+          "sha256": "fd6eb0561afb4935739c8024f5d32da7568a6a20327fd4c2d7d8336ef785d5ac",
+          "origin": "human-translation",
+          "sourceLanguage": "ru",
+          "translatedFromLocale": "ru",
+          "translatedFromSourceHash": "0425d8f513c7846e6479179c169ff0bfc6b3732cb68f7894af4089d2cdf89220",
+          "sourceIds": [
+            "neb-year-of-the-lord-work",
+            "azbooka-year-of-the-lord-9785389191136"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          }
+        }
+      },
+      "publicationAssessment": {
+        "status": "hold",
+        "holdCodes": [
+          "archive-work-record-missing",
+          "active-writer-link-missing",
+          "en-national-bibliography-missing",
+          "en-authoritative-publisher-record-missing",
+          "work-part-publication-year-model-unresolved"
+        ],
+        "nextStep": "Create or verify the active Shmelev writer entity, locate a stable national-library record and an independent authoritative publisher record for a complete English manifestation, resolve the part-versus-complete publication date rule, then run the full runtime Evidence V2 gate."
+      },
+      "canonAssessment": {
+        "status": "hold-no-claim",
+        "holdCodes": [
+          "neb-snapshot-content-hash-unverified",
+          "second-independent-work-signal-missing"
+        ]
+      },
+      "reviewFingerprint": "2421895331fea20b902a238b211225bfe57abb65c114094a9131428d09aea0b2"
+    }
+  ],
+  "summary": {
+    "candidateCount": 3,
+    "publicationReadyCount": 0,
+    "publicationHoldCount": 3,
+    "canonClaimCount": 0,
+    "verifiedRuTitleCount": 3,
+    "verifiedEnTitleCount": 2,
+    "withheldEnTitleCount": 1,
+    "multipleAuthorshipCount": 1,
+    "proposedAuthorityCount": 2
+  },
+  "manifestFingerprint": "c3b4fb2d1628799832b6bc81c498c2bfa389a5f70100455f37ae5fc5adbd8ea4"
+}

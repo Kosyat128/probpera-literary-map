@@ -152,6 +152,33 @@ function sentenceCount(value: string) {
   return (value.match(/[.!?…]+(?=\s|$)/gu) || []).length;
 }
 
+function assertEditorialProse(value: string) {
+  if (/[ \t]{2,}|[\r\n]/u.test(value)) {
+    throw new Error("Описание: удалите лишние пробелы и переносы строк.");
+  }
+  if (/\s+[,.!?;:]/u.test(value)) {
+    throw new Error("Описание: удалите пробел перед знаком препинания.");
+  }
+  if (/\s-\s/u.test(value)) {
+    throw new Error("Описание: используйте тире, а не дефис с пробелами.");
+  }
+  if (/<\/?[a-z][^>]*>/iu.test(value)) {
+    throw new Error("Описание: HTML-разметка не допускается.");
+  }
+  if (/https?:\/\//iu.test(value)) {
+    throw new Error("Описание: URL указываются в полях источников, не в тексте.");
+  }
+  if (/[!?]{2,}/u.test(value)) {
+    throw new Error("Описание: экспрессивная пунктуация не допускается.");
+  }
+  if (
+    (value.match(/«/gu)?.length || 0) !==
+    (value.match(/»/gu)?.length || 0)
+  ) {
+    throw new Error("Описание: проверьте парность кавычек.");
+  }
+}
+
 export function parseWorkTranslationEdit(input: Record<string, unknown>) {
   const translationId = uuid(input.translationId, "Перевод", true);
   const status = enumValue(
@@ -160,6 +187,7 @@ export function parseWorkTranslationEdit(input: Record<string, unknown>) {
     "Редакционный статус"
   ) as EditorialStatus;
   const description = text(input.description, "Описание", 900, 140);
+  assertEditorialProse(description);
   const sourceUrls = uniqueLines(input.sourceUrls, "Источники перевода", {
     maxItems: 20,
     maxLength: 2_000,

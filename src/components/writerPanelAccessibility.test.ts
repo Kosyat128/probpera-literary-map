@@ -61,7 +61,7 @@ describe("writer panel accessible relationships", () => {
       appSource.indexOf("const openWriterWork"),
       appSource.indexOf("const selectCountry")
     );
-    expect(transition).toContain("bookArchive.find");
+    expect(transition).toContain("verifiedBookArchive.find");
     expect(transition).toContain("entry.countryId === countryId");
     expect(transition).toContain("entry.writerId === writerId");
     expect(transition).toContain("entry.id === workId");

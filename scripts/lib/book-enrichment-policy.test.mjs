@@ -7,6 +7,7 @@ import {
   curatedRecordIssues,
   englishAnnotationIssues,
   russianAnnotationIssues,
+  sourceAuthorityFamily,
   sourceLegalIssues,
 } from "./book-enrichment-policy.mjs";
 
@@ -212,6 +213,21 @@ describe("book enrichment policy", () => {
     expect(curatedRecordIssues(record)).toContain(
       "two-independent-authority-families-required"
     );
+  });
+
+  it("groups subdomains owned by one national institution as one authority", () => {
+    expect(
+      [
+        "https://catalogue.bnf.fr/ark:/12148/example",
+        "https://gallica.bnf.fr/ark:/12148/example",
+      ].map((url) => sourceAuthorityFamily({ url }))
+    ).toEqual(["bnf", "bnf"]);
+    expect(
+      sourceAuthorityFamily({
+        url: "https://catalogue.bnf.fr/ark:/12148/example",
+        authorityId: "declared-national-library",
+      })
+    ).toBe("declared-national-library");
   });
 
   it("validates source usage, licensed-copy rights and declared fact URLs", () => {
