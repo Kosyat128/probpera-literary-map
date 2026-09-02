@@ -5,7 +5,7 @@ import {
   NodeViewWrapper,
   type NodeViewProps,
 } from "@tiptap/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type {
   DragEvent as ReactDragEvent,
   KeyboardEvent as ReactKeyboardEvent,
@@ -18,6 +18,7 @@ import {
   editorialGalleryHtmlAttributes,
   editorialGalleryNodeAttributes,
   editorialGallerySettingsFromNodeAttributes,
+  reorderEditorialGalleryItems,
   type EditorialGalleryKind,
   type EditorialGallerySettings,
 } from "@/lib/editorial-gallery";
@@ -38,6 +39,9 @@ export default function EditorialBlockView({
     typeof node.attrs.reveal === "string" ? node.attrs.reveal : "none";
   const className = `article-design-block is-${kind}${selected ? " is-selected" : ""}`;
   const legacyGalleryIdRef = useRef("");
+  const draggedImageIndexRef = useRef<number | null>(null);
+  const [dropImageIndex, setDropImageIndex] = useState<number | null>(null);
+  const [reorderMessage, setReorderMessage] = useState("");
   const collectionKind: EditorialGalleryKind | null =
     kind === "gallery" || kind === "slider" ? kind : null;
 
@@ -97,16 +101,69 @@ export default function EditorialBlockView({
       editor.commands.setNodeSelection(position);
     };
 
-    const moveImage = (imageIndex: number, direction: -1 | 1) => {
-      const current = imageChildren[imageIndex];
-      const target = imageChildren[imageIndex + direction];
-      if (!current || !target) return;
+    const clearImageDragState = () => {
+      draggedImageIndexRef.current = null;
+      setDropImageIndex(null);
+    };
+
+    const moveImageTo = (fromIndex: number, toIndex: number) => {
+      if (
+        fromIndex === toIndex ||
+        fromIndex < 0 ||
+        toIndex < 0 ||
+        fromIndex >= imageChildren.length ||
+        toIndex >= imageChildren.length
+      ) {
+        clearImageDragState();
+        return;
+      }
+      const orderedImages = reorderEditorialGalleryItems(
+        imageChildren.map(({ child }) => child),
+        fromIndex,
+        toIndex
+      );
       const nextChildren = [...children];
-      [nextChildren[current.childIndex], nextChildren[target.childIndex]] = [
-        nextChildren[target.childIndex],
-        nextChildren[current.childIndex],
-      ];
+      imageChildren.forEach(({ childIndex }, imageIndex) => {
+        nextChildren[childIndex] = orderedImages[imageIndex];
+      });
       replaceChildren(nextChildren);
+      setReorderMessage(
+        `Кадр ${fromIndex + 1} перемещён на позицию ${toIndex + 1}.`
+      );
+      clearImageDragState();
+    };
+
+    const moveImage = (imageIndex: number, direction: -1 | 1) => {
+      moveImageTo(imageIndex, imageIndex + direction);
+    };
+
+    const startImageDrag = (
+      event: ReactDragEvent<HTMLButtonElement>,
+      imageIndex: number
+    ) => {
+      event.stopPropagation();
+      event.dataTransfer.effectAllowed = "move";
+      event.dataTransfer.setData("text/plain", String(imageIndex));
+      draggedImageIndexRef.current = imageIndex;
+      setDropImageIndex(imageIndex);
+    };
+
+    const dropImage = (
+      event: ReactDragEvent<HTMLLIElement>,
+      toIndex: number
+    ) => {
+      const draggedImageIndex = draggedImageIndexRef.current;
+      if (draggedImageIndex === null) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const transferredValue = event.dataTransfer.getData("text/plain");
+      const transferredIndex = Number(transferredValue);
+      moveImageTo(
+        transferredValue && Number.isInteger(transferredIndex)
+          ? transferredIndex
+          : draggedImageIndex,
+        toIndex
+      );
     };
 
     const removeImage = (imageIndex: number) => {
@@ -303,9 +360,35 @@ export default function EditorialBlockView({
                   (typeof child.attrs.alt === "string" && child.attrs.alt.trim()) ||
                   `Изображение ${imageIndex + 1}`;
                 return (
-                  <li key={`${String(child.attrs.mediaId || child.attrs.src)}-${imageIndex}`}>
+                  <li
+                    className={
+                      dropImageIndex === imageIndex ? "is-drop-target" : undefined
+                    }
+                    key={`${String(child.attrs.mediaId || child.attrs.src)}-${imageIndex}`}
+                    onDragOver={(event) => {
+                      if (draggedImageIndexRef.current === null) return;
+                      event.preventDefault();
+                      event.dataTransfer.dropEffect = "move";
+                      setDropImageIndex((current) =>
+                        current === imageIndex ? current : imageIndex
+                      );
+                    }}
+                    onDrop={(event) => dropImage(event, imageIndex)}
+                  >
+                    <button
+                      type="button"
+                      className="editor-gallery-drag-handle"
+                      draggable={imageChildren.length > 1}
+                      aria-label={`Перетащить изображение ${imageIndex + 1}`}
+                      title="Перетащить кадр"
+                      onMouseDown={(event) => event.stopPropagation()}
+                      onDragStart={(event) => startImageDrag(event, imageIndex)}
+                      onDragEnd={clearImageDragState}
+                    >
+                      ⋮⋮
+                    </button>
                     <span title={label}>{imageIndex + 1}. {label}</span>
-                    <div>
+                    <div className="editor-gallery-item-actions">
                       <button
                         type="button"
                         aria-label={`Переместить изображение ${imageIndex + 1} назад`}
@@ -337,6 +420,14 @@ export default function EditorialBlockView({
                 );
               })}
             </ol>
+            <small className="editor-gallery-reorder-help">
+              Перетаскивайте кадры за маркер ⋮⋮ или используйте стрелки.
+            </small>
+            {reorderMessage && (
+              <small className="editor-gallery-reorder-status" role="status">
+                {reorderMessage}
+              </small>
+            )}
           </aside>
         )}
         <NodeViewContent />

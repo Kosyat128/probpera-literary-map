@@ -38,9 +38,14 @@ import {
 } from "@/lib/article-content-presentation";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
 import {
+  resolveEditorImageAltText,
+  suggestEditorImageAltText,
+} from "@/lib/editor-image-naming";
+import {
   defaultEditorialGallerySettings,
   mergeEditorialGalleryItems,
   parseEditorialGalleryUrls,
+  reorderEditorialGalleryItems,
   type EditorialGalleryItemInput,
   type EditorialGallerySettings,
 } from "@/lib/editorial-gallery";
@@ -82,15 +87,6 @@ type PageRecoverySnapshot = {
   canonicalEdited: boolean;
   allowIndexing: boolean;
 };
-
-function suggestedPageImageAlt(file: File) {
-  const label = file.name
-    .replace(/\.[^.]+$/u, "")
-    .replace(/[_-]+/gu, " ")
-    .replace(/\s+/gu, " ")
-    .trim();
-  return label.length >= 3 ? label.slice(0, 500) : "Иллюстрация к странице";
-}
 
 function ToolbarButton({
   label,
@@ -243,6 +239,17 @@ export default function PageEditor({
       setIsDirty(true);
     },
   });
+  const suggestedPageImageAlt = useCallback(
+    (fileName: string, context: { position: number }) =>
+      suggestEditorImageAltText({
+        document: editor?.state.doc,
+        position: context.position,
+        title,
+        fileName,
+        kind: "page",
+      }),
+    [editor, title]
+  );
   const editorMedia = useEditorMediaWorkflow({
     editor,
     collectionName: "Страницы сайта",
@@ -391,9 +398,20 @@ export default function PageEditor({
     setImageUploadMessage("");
     rememberImageSelection();
     const attributes = imageSelectionRef.current.attributes;
+    const selectedAlt =
+      typeof attributes.alt === "string" ? attributes.alt.trim() : "";
     setImageDialogInitialValue({
       src: typeof attributes.src === "string" ? attributes.src : "",
-      alt: typeof attributes.alt === "string" ? attributes.alt : "",
+      alt: resolveEditorImageAltText({
+        currentAlt: selectedAlt,
+        suggestedAlt: suggestEditorImageAltText({
+          document: editor.state.doc,
+          position: imageSelectionRef.current.insertionPos,
+          title,
+          kind: "page",
+        }),
+        decorative: attributes.decorative === true,
+      }),
       caption:
         typeof attributes.caption === "string" ? attributes.caption : "",
     });
@@ -863,6 +881,11 @@ export default function PageEditor({
         }
         onUploadFiles={() =>
           editorMedia.openCollectionPicker(appendMediaComposerItems)
+        }
+        onMoveItem={(fromIndex, toIndex) =>
+          setMediaComposerItems((current) =>
+            reorderEditorialGalleryItems(current, fromIndex, toIndex)
+          )
         }
         onRemoveItem={(index) =>
           setMediaComposerItems((current) =>

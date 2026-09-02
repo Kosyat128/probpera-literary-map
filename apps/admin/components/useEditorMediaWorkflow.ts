@@ -23,6 +23,7 @@ import {
   type EditorMediaSlotDetail,
 } from "@/components/editorMediaEvents";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
+import { resolveEditorImageAltText } from "@/lib/editor-image-naming";
 import type { EditorialGalleryItemInput } from "@/lib/editorial-gallery";
 import { isAcceptedClientImageType } from "@/lib/client-image-upload";
 
@@ -46,9 +47,15 @@ type EditorMediaTarget =
     }
   | {
       kind: "collection";
+      position: number;
       contextKey: string;
       onCollect: (items: EditorialGalleryItemInput[]) => void;
     };
+
+export type EditorSuggestedAltContext = {
+  position: number;
+  targetKind: EditorMediaTarget["kind"];
+};
 
 type QueueJob = {
   file: File;
@@ -90,7 +97,10 @@ export function useEditorMediaWorkflow({
   editor: Editor | null;
   collectionName: string;
   contextKey?: string;
-  suggestedAltText: (file: File) => string;
+  suggestedAltText: (
+    fileName: string,
+    context: EditorSuggestedAltContext
+  ) => string;
   onChanged: () => void;
   onMessage?: (message: string) => void;
   onError?: (message: string) => void;
@@ -264,8 +274,15 @@ export function useEditorMediaWorkflow({
             typeof previousAttributes.alt === "string"
               ? previousAttributes.alt.trim()
               : "";
-          const altText =
-            previousAlt.length >= 3 ? previousAlt : suggestedAltText(file);
+          const altText = resolveEditorImageAltText({
+            currentAlt: previousAlt,
+            suggestedAlt: suggestedAltText(file.name, {
+              position: target.position,
+              targetKind: target.kind,
+            }),
+            decorative:
+              target.kind === "replace" && target.attributes.decorative === true,
+          });
           const caption =
             typeof previousAttributes.caption === "string"
               ? previousAttributes.caption.trim()
@@ -400,10 +417,11 @@ export function useEditorMediaWorkflow({
   const collectionTarget = useCallback(
     (onCollect: (items: EditorialGalleryItemInput[]) => void): EditorMediaTarget => ({
       kind: "collection",
+      position: editor?.state.selection.from ?? 0,
       contextKey: contextKeyRef.current,
       onCollect,
     }),
-    []
+    [editor]
   );
 
   const openCollectionLibrary = useCallback(
@@ -497,13 +515,30 @@ export function useEditorMediaWorkflow({
       const target = targetRef.current ?? captureTarget();
       if (!target) return;
       try {
+        const previousAttributes =
+          target.kind === "replace" ? target.attributes : {};
+        const alt = resolveEditorImageAltText({
+          currentAlt: previousAttributes.alt,
+          fallbackAlt: asset.alt,
+          suggestedAlt: suggestedAltText(
+            asset.alt || asset.src.split("/").pop() || "изображение",
+            { position: target.position, targetKind: target.kind }
+          ),
+          decorative:
+            target.kind === "replace" && previousAttributes.decorative === true,
+        });
+        const caption =
+          target.kind === "replace" &&
+          typeof previousAttributes.caption === "string"
+            ? previousAttributes.caption.trim()
+            : asset.caption;
         if (target.kind === "collection") {
           target.onCollect([
             {
               src: asset.src,
               mediaId: asset.id,
-              alt: asset.alt,
-              caption: asset.caption,
+              alt,
+              caption,
               credit: asset.creator,
               source: asset.sourceUrl,
               license: asset.licenseName,
@@ -522,8 +557,8 @@ export function useEditorMediaWorkflow({
             attributes: {
               src: asset.src,
               mediaId: asset.id,
-              alt: asset.alt,
-              caption: asset.caption,
+              alt,
+              caption,
               layout:
                 target.kind === "replace"
                   ? imageLayout(target.attributes)
@@ -544,7 +579,7 @@ export function useEditorMediaWorkflow({
         );
       }
     },
-    [attachUploaded, captureTarget]
+    [attachUploaded, captureTarget, suggestedAltText]
   );
 
   const cancelItem = useCallback((id: string) => {

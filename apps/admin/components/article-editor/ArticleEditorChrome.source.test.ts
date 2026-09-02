@@ -47,14 +47,27 @@ describe("article editor chrome module boundaries", () => {
     expect(article).toContain('insertEditorialGallery(editor, items, "статье", settings)');
     expect(article).toContain("openCollectionLibrary(appendMediaComposerItems)");
     expect(article).toContain("openCollectionPicker(appendMediaComposerItems)");
+    expect(article).toContain(
+      "reorderEditorialGalleryItems(current, fromIndex, toIndex)"
+    );
     expect(gallery).toContain("EDITORIAL_GALLERY_MAX_ITEMS");
     expect(gallery).toContain("settings.columnsDesktop");
     expect(gallery).toContain("settings.autoplay");
     expect(gallery).toContain("Выбрать в медиатеке");
     expect(gallery).toContain("Загрузить с компьютера");
+    expect(gallery).toContain("onMoveItem(fromIndex, toIndex)");
+    expect(gallery).toContain("onDragStart={(event) => startDrag(event, index)}");
+    expect(gallery).toContain("onDrop={(event) => dropItem(event, index)}");
+    expect(gallery).toContain("используйте стрелки");
     expect(gallery).not.toContain(".slice(0, 8)");
     expect(blockView).toContain('event.target.closest(".editorial-image-node")');
     expect(blockView).toContain("onClick={handleCollectionClick}");
+    expect(blockView).toContain("reorderEditorialGalleryItems(");
+    expect(blockView).toContain(
+      "onDragStart={(event) => startImageDrag(event, imageIndex)}"
+    );
+    expect(blockView).toContain("onDrop={(event) => dropImage(event, imageIndex)}");
+    expect(blockView).toContain('role="status"');
     expect(editorStyles).toContain("content-visibility: auto");
     expect(editorStyles).toContain("contain-intrinsic-size: 280px 220px");
   });

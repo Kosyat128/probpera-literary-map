@@ -1,6 +1,11 @@
 "use client";
 
-import { useId } from "react";
+import {
+  useId,
+  useRef,
+  useState,
+  type DragEvent as ReactDragEvent,
+} from "react";
 
 import { useEditorDialogFocus } from "@/components/useEditorDialogFocus";
 import {
@@ -24,6 +29,7 @@ export default function GalleryEditor({
   onSettingsChange,
   onOpenMediaLibrary,
   onUploadFiles,
+  onMoveItem,
   onRemoveItem,
   onCancel,
   onConfirm,
@@ -38,11 +44,15 @@ export default function GalleryEditor({
   onSettingsChange: (settings: EditorialGallerySettings) => void;
   onOpenMediaLibrary: () => void;
   onUploadFiles: () => void;
+  onMoveItem: (fromIndex: number, toIndex: number) => void;
   onRemoveItem: (index: number) => void;
   onCancel: () => void;
   onConfirm: (settings: EditorialGallerySettings) => void;
 }) {
   const titleId = useId();
+  const draggedIndexRef = useRef<number | null>(null);
+  const [dropIndex, setDropIndex] = useState<number | null>(null);
+  const [reorderMessage, setReorderMessage] = useState("");
   const { dialogRef, onDialogKeyDown } = useEditorDialogFocus({
     open: kind !== null,
     onClose: onCancel,
@@ -60,6 +70,51 @@ export default function GalleryEditor({
     key: Key,
     nextValue: EditorialGallerySettings[Key]
   ) => onSettingsChange({ ...settings, [key]: nextValue });
+  const clearDragState = () => {
+    draggedIndexRef.current = null;
+    setDropIndex(null);
+  };
+  const moveItem = (fromIndex: number, toIndex: number) => {
+    if (
+      fromIndex === toIndex ||
+      fromIndex < 0 ||
+      toIndex < 0 ||
+      fromIndex >= items.length ||
+      toIndex >= items.length
+    ) {
+      clearDragState();
+      return;
+    }
+    onMoveItem(fromIndex, toIndex);
+    setReorderMessage(
+      `Кадр ${fromIndex + 1} перемещён на позицию ${toIndex + 1}.`
+    );
+    clearDragState();
+  };
+  const startDrag = (
+    event: ReactDragEvent<HTMLButtonElement>,
+    index: number
+  ) => {
+    event.stopPropagation();
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("text/plain", String(index));
+    draggedIndexRef.current = index;
+    setDropIndex(index);
+  };
+  const dropItem = (event: ReactDragEvent<HTMLLIElement>, toIndex: number) => {
+    const draggedIndex = draggedIndexRef.current;
+    if (draggedIndex === null) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const transferredValue = event.dataTransfer.getData("text/plain");
+    const transferredIndex = Number(transferredValue);
+    moveItem(
+      transferredValue && Number.isInteger(transferredIndex)
+        ? transferredIndex
+        : draggedIndex,
+      toIndex
+    );
+  };
 
   return (
     <div
@@ -91,8 +146,8 @@ export default function GalleryEditor({
         </div>
         <p>
           Загрузите файлы или последовательно выберите изображения из медиатеки.
-          Порядок выбора станет порядком кадров; после вставки его можно изменить
-          в инспекторе блока.
+          Порядок выбора станет порядком кадров. Перетаскивайте кадры за маркер
+          или используйте стрелки; тот же способ останется доступен после вставки.
         </p>
         <div className="editor-gallery-source-actions">
           <button
@@ -119,24 +174,68 @@ export default function GalleryEditor({
             aria-label="Выбранные изображения"
           >
             {items.map((item, index) => (
-              <li key={`${item.mediaId || item.src}-${index}`}>
+              <li
+                className={dropIndex === index ? "is-drop-target" : undefined}
+                key={item.mediaId || item.src}
+                onDragOver={(event) => {
+                  if (draggedIndexRef.current === null) return;
+                  event.preventDefault();
+                  event.dataTransfer.dropEffect = "move";
+                  setDropIndex((current) => (current === index ? current : index));
+                }}
+                onDrop={(event) => dropItem(event, index)}
+              >
+                <button
+                  className="editor-gallery-drag-handle"
+                  type="button"
+                  draggable={items.length > 1}
+                  aria-label={`Перетащить изображение ${index + 1}`}
+                  title="Перетащить кадр"
+                  onDragStart={(event) => startDrag(event, index)}
+                  onDragEnd={clearDragState}
+                >
+                  ⋮⋮
+                </button>
                 <span>
                   <strong>
                     {index + 1}. {item.alt?.trim() || "Изображение"}
                   </strong>
                   <small>{item.caption?.trim() || item.src}</small>
                 </span>
-                <button
-                  className="text-button"
-                  type="button"
-                  aria-label={`Убрать изображение ${index + 1} из подборки`}
-                  onClick={() => onRemoveItem(index)}
-                >
-                  Убрать
-                </button>
+                <div className="editor-gallery-composer-item-actions">
+                  <button
+                    type="button"
+                    aria-label={`Переместить изображение ${index + 1} выше`}
+                    disabled={index === 0}
+                    onClick={() => moveItem(index, index - 1)}
+                  >
+                    ↑
+                  </button>
+                  <button
+                    type="button"
+                    aria-label={`Переместить изображение ${index + 1} ниже`}
+                    disabled={index === items.length - 1}
+                    onClick={() => moveItem(index, index + 1)}
+                  >
+                    ↓
+                  </button>
+                  <button
+                    className="text-button"
+                    type="button"
+                    aria-label={`Убрать изображение ${index + 1} из подборки`}
+                    onClick={() => onRemoveItem(index)}
+                  >
+                    Убрать
+                  </button>
+                </div>
               </li>
             ))}
           </ol>
+        )}
+        {reorderMessage && (
+          <small className="editor-gallery-reorder-status" role="status">
+            {reorderMessage}
+          </small>
         )}
         <label className="editor-gallery-legacy-import">
           <span>Дополнительно: импорт по HTTPS-адресам, по одному в строке</span>

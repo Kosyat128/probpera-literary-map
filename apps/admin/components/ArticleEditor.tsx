@@ -43,11 +43,16 @@ import {
   resolveArticleDraftRecoverySource,
 } from "@/lib/article-recovery";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
+import {
+  resolveEditorImageAltText,
+  suggestEditorImageAltText,
+} from "@/lib/editor-image-naming";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
 import {
   defaultEditorialGallerySettings,
   mergeEditorialGalleryItems,
   parseEditorialGalleryUrls,
+  reorderEditorialGalleryItems,
   type EditorialGalleryItemInput,
   type EditorialGallerySettings,
 } from "@/lib/editorial-gallery";
@@ -228,15 +233,6 @@ type ArticleRecoverySnapshot = {
 
 function mediaSlot(label: string, hint: string) {
   return `<section class="article-design-block is-media" data-editorial-block="media" data-reveal="fade-up"><h3>${label}</h3><p>${hint}</p></section>`;
-}
-
-function suggestedAltText(file: File) {
-  const label = file.name
-    .replace(/\.[^.]+$/u, "")
-    .replace(/[_-]+/gu, " ")
-    .replace(/\s+/gu, " ")
-    .trim();
-  return label.length >= 3 ? label.slice(0, 500) : "Иллюстрация к статье";
 }
 
 const articleTemplates = [
@@ -614,11 +610,23 @@ export default function ArticleEditor({
     },
   });
 
+  const suggestedArticleImageAlt = useCallback(
+    (fileName: string, context: { position: number }) =>
+      suggestEditorImageAltText({
+        document: activeLocale === "ru" ? editor?.state.doc : null,
+        position: context.position,
+        title,
+        fileName,
+        kind: "article",
+      }),
+    [activeLocale, editor, title]
+  );
+
   const editorMedia = useEditorMediaWorkflow({
     editor,
     collectionName: "Статьи",
     contextKey: activeLocale,
-    suggestedAltText,
+    suggestedAltText: suggestedArticleImageAlt,
     onChanged: () => {
       setTemplateMessage(
         "Изображение готово. При необходимости выберите его и измените расположение."
@@ -1417,9 +1425,20 @@ export default function ArticleEditor({
     if (!editor) return;
     rememberImageSelection();
     const selectedImage = imageSelectionRef.current.attributes;
+    const selectedAlt =
+      typeof selectedImage.alt === "string" ? selectedImage.alt.trim() : "";
     setImageDialogInitialValue({
       src: typeof selectedImage.src === "string" ? selectedImage.src : "",
-      alt: typeof selectedImage.alt === "string" ? selectedImage.alt : "",
+      alt: resolveEditorImageAltText({
+        currentAlt: selectedAlt,
+        suggestedAlt: suggestEditorImageAltText({
+          document: activeLocale === "ru" ? editor.state.doc : null,
+          position: imageSelectionRef.current.insertionPos,
+          title,
+          kind: "article",
+        }),
+        decorative: selectedImage.decorative === true,
+      }),
       caption:
         typeof selectedImage.caption === "string" ? selectedImage.caption : "",
     });
@@ -1538,7 +1557,14 @@ export default function ArticleEditor({
     imageUploadInFlightRef.current = true;
     const uploadLocale = activeLocaleRef.current;
     const currentAlt = activeCoverAlt.trim();
-    const altText = currentAlt.length >= 3 ? currentAlt : suggestedAltText(file);
+    const altText = resolveEditorImageAltText({
+      currentAlt,
+      suggestedAlt: suggestEditorImageAltText({
+        title,
+        fileName: file.name,
+        kind: "article",
+      }),
+    });
 
     setImageUploadTarget("cover");
     setImageUploadError("");
@@ -2380,6 +2406,11 @@ export default function ArticleEditor({
         }
         onUploadFiles={() =>
           editorMedia.openCollectionPicker(appendMediaComposerItems)
+        }
+        onMoveItem={(fromIndex, toIndex) =>
+          setMediaComposerItems((current) =>
+            reorderEditorialGalleryItems(current, fromIndex, toIndex)
+          )
         }
         onRemoveItem={(index) =>
           setMediaComposerItems((current) =>
