@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const articleDirectory = path.join(projectRoot, "public", "articles");
@@ -8,7 +9,8 @@ const argumentsSet = new Set(process.argv.slice(2));
 const dryRun = argumentsSet.has("--dry-run") || !argumentsSet.has("--apply");
 const limitArgument = process.argv.find((value) => value.startsWith("--limit="));
 const limit = limitArgument ? Number(limitArgument.split("=")[1]) : Number.POSITIVE_INFINITY;
-const supabaseUrl = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "").replace(/\/+$/, "");
+const rawSupabaseUrl = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "").replace(/\/+$/, "");
+const supabaseUrl = rawSupabaseUrl ? trustedSupabaseOrigin(rawSupabaseUrl) : "";
 const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 const ownerId = process.env.CMS_OWNER_USER_ID || "";
 

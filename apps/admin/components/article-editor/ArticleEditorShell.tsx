@@ -14,6 +14,8 @@ export type ArticleEditorShellHiddenModel = {
     id?: string;
     expectedUpdatedAt: string;
     englishExpectedUpdatedAt: string;
+    workingDraftVersion: number;
+    previewLocale: "ru" | "en";
   };
   publication: {
     previousStatus: string;
@@ -103,6 +105,16 @@ export default function ArticleEditorShell({
         type="hidden"
         name="english_expected_updated_at"
         value={hidden.identity.englishExpectedUpdatedAt}
+      />
+      <input
+        type="hidden"
+        name="working_draft_version"
+        value={hidden.identity.workingDraftVersion}
+      />
+      <input
+        type="hidden"
+        name="preview_locale"
+        value={hidden.identity.previewLocale}
       />
       <input
         type="hidden"

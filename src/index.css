@@ -21323,6 +21323,20 @@ html[data-theme="book"] .calendar-heading h3 {
   contain-intrinsic-size: auto 520px;
 }
 
+:is(.article-reader-content, .cms-page-prose) figure.article-inline-image[data-image-appearance="clean"] {
+  padding: 0;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+:is(.article-reader-content, .cms-page-prose) figure.article-inline-image[data-image-appearance="shadow"] {
+  padding: 0;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: 0 24px 56px color-mix(in srgb, var(--reader-bg, #f6eee2) 56%, transparent);
+}
+
 :is(.article-reader-content, .cms-page-prose) figure.article-inline-image.is-normal {
   max-width: min(var(--editorial-image-max-width, 620px), 100%);
 }
@@ -21398,6 +21412,44 @@ html[data-theme="book"] .calendar-heading h3 {
 :is(.article-reader-content, .cms-page-prose) .article-editorial-image.is-aspect-2-3 { aspect-ratio: 2 / 3; }
 :is(.article-reader-content, .cms-page-prose) .article-editorial-image.is-fit-contain { object-fit: contain; }
 :is(.article-reader-content, .cms-page-prose) .article-editorial-image.is-fit-cover { object-fit: cover; }
+
+@keyframes editorial-image-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes editorial-image-zoom {
+  from {
+    opacity: 0;
+    transform: scale(0.965);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+:is(.article-reader-content, .cms-page-prose) figure.article-inline-image[data-image-reveal="fade-up"] .article-editorial-image {
+  animation: editorial-image-fade-up 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+:is(.article-reader-content, .cms-page-prose) figure.article-inline-image[data-image-reveal="zoom"] .article-editorial-image {
+  animation: editorial-image-zoom 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.article-reader-content, .cms-page-prose) figure.article-inline-image[data-image-reveal] .article-editorial-image {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
 
 :is(.article-reader-content, .cms-page-prose) .article-image-link .article-editorial-image {
   cursor: pointer;

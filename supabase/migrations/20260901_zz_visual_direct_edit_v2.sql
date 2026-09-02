@@ -135,8 +135,8 @@ begin
 
   elsif p_entity_type = 'banner' then
     if p_field in ('title', 'description', 'buttonText') then
-      if value_text is null or char_length(value_text) > case p_field
-        when 'title' then 240 when 'buttonText' then 120 else 1200 end then
+      if value_text is null or char_length(value_text) > (case p_field
+        when 'title' then 240 when 'buttonText' then 120 else 1200 end) then
         raise exception 'visual_edit_invalid' using errcode = '22023';
       end if;
     elsif p_field = 'targetUrl' then
@@ -173,9 +173,9 @@ begin
 
   elsif p_entity_type = 'homepage-block' then
     if p_field in ('title', 'eyebrow', 'description', 'copy', 'buttonText', 'buttonUrl') then
-      if value_text is null or char_length(value_text) > case p_field
+      if value_text is null or char_length(value_text) > (case p_field
         when 'title' then 240 when 'eyebrow' then 160
-        when 'buttonText' then 120 when 'buttonUrl' then 500 else 2000 end then
+        when 'buttonText' then 120 when 'buttonUrl' then 500 else 2000 end) then
         raise exception 'visual_edit_invalid' using errcode = '22023';
       end if;
       if p_field = 'buttonUrl' and value_text <> '' and not (

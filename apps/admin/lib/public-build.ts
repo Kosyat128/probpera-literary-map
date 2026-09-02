@@ -1,4 +1,5 @@
 import { adminEnv } from "@/lib/env";
+import { trustedAdminOutboundUrl } from "@/lib/trusted-server-url";
 
 export type PublicBuildResult =
   | {
@@ -32,8 +33,13 @@ async function dispatchGitHubWorkflow(reason: string): Promise<PublicBuildResult
 
   try {
     const workflow = encodeURIComponent(adminEnv.githubDeployWorkflow);
+    const [owner, name] = repository.split("/").map(encodeURIComponent);
+    const dispatchUrl = trustedAdminOutboundUrl(
+      `https://api.github.com/repos/${owner}/${name}/actions/workflows/${workflow}/dispatches`,
+      "GitHub dispatch URL"
+    );
     const response = await fetch(
-      `https://api.github.com/repos/${repository}/actions/workflows/${workflow}/dispatches`,
+      dispatchUrl,
       {
         method: "POST",
         cache: "no-store",
@@ -81,7 +87,11 @@ export async function triggerPublicBuild(
   }
 
   try {
-    const response = await fetch(adminEnv.deployHookUrl, {
+    const deployHookUrl = trustedAdminOutboundUrl(adminEnv.deployHookUrl, "Deploy hook URL");
+    if (deployHookUrl.hostname !== "api.cloudflare.com") {
+      throw new Error("Deploy hook URL must use api.cloudflare.com.");
+    }
+    const response = await fetch(deployHookUrl, {
       method: "POST",
       cache: "no-store",
       headers: {

@@ -24,6 +24,7 @@ import {
 } from "@/components/editorMediaEvents";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
 import type { EditorialGalleryItemInput } from "@/lib/editorial-gallery";
+import { isAcceptedClientImageType } from "@/lib/client-image-upload";
 
 type EditorMediaTarget =
   | {
@@ -64,13 +65,6 @@ type UploadedItem = {
     layout: EditorialImageLayout;
   };
 };
-
-const acceptedImageTypes = new Set([
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "image/avif",
-]);
 
 function queueId() {
   return globalThis.crypto?.randomUUID?.() ??
@@ -220,10 +214,12 @@ export function useEditorMediaWorkflow({
         );
         return;
       }
-      const supported = files.filter((file) => acceptedImageTypes.has(file.type));
+      const supported = files.filter((file) =>
+        isAcceptedClientImageType(file.type)
+      );
       if (supported.length !== files.length) {
         callbacksRef.current.onError?.(
-          "Поддерживаются только изображения JPEG, PNG, WebP и AVIF."
+          "Поддерживаются растровые JPEG, PNG, WebP, AVIF, GIF, BMP, TIFF, HEIC/HEIF и JPEG XL, если браузер умеет прочитать исходник."
         );
       }
       if (!supported.length) return;

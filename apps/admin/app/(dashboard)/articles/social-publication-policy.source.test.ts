@@ -47,7 +47,7 @@ describe("article publication presentation policy", () => {
     expect(preview).toContain('["desktop", "tablet", "mobile"]');
     expect(preview).toContain('className="preview-device-tabs"');
     expect(preview.indexOf("localizedArticle.excerpt")).toBeLessThan(
-      preview.indexOf("article.cover_external_url")
+      preview.indexOf("previewArticle.cover_external_url")
     );
   });
 });

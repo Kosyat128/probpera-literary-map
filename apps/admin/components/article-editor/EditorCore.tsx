@@ -88,13 +88,14 @@ export default function EditorCore({
       aria-busy={model.imageUploadActive}
     >
       {model.activeLocale === "ru" ? (
-        <div className="editor-template-bar">
-          <span>Или начать с готовой структуры</span>
-          <small>
-            Заголовки разделов и квадратные места под изображения уже
-            расставлены. Выберите основу и замените только содержимое.
-          </small>
-          <div>
+        <details className="editor-template-bar">
+          <summary>
+            <span>Или начать с готовой структуры</span>
+            <small>
+              7 редакционных форматов - выберите основу и замените содержимое
+            </small>
+          </summary>
+          <div className="editor-template-options">
             {model.templates.map((template) => (
               <button
                 type="button"
@@ -147,7 +148,7 @@ export default function EditorCore({
           {model.templateMessage && (
             <small role="status">{model.templateMessage}</small>
           )}
-        </div>
+        </details>
       ) : (
         <EnglishTranslationNotice />
       )}

@@ -1,6 +1,10 @@
 "use server";
 
 import { articleEditPath } from "@/lib/admin-routes";
+import {
+  buildArticleMetadataDraft,
+  completeArticleMetadataDraft,
+} from "@/lib/article-composer";
 import { articleCanonicalUrl } from "@/lib/article-route";
 import {
   isMachineOwnedEnglishArticleTranslation,
@@ -10,6 +14,7 @@ import {
 } from "@/lib/article-translation-machine-ownership";
 import { articleTranslationSourceHash } from "@/lib/article-translations";
 import { translateArticleSourceToEnglish } from "@/lib/auto-translate-article";
+import { requireStaff } from "@/lib/auth";
 import { adminEnv } from "@/lib/env";
 import {
   assertEditorialMediaIdentityParity,
@@ -223,10 +228,52 @@ async function saveStandardRespectingEnglishOwnership(
 
 export async function saveArticleAction(formData: FormData) {
   normalizeShortHyphensFormData(formData);
+  const session = await requireStaff();
+  if (!session?.user) redirect("/login");
   const intent = String(formData.get("intent") || "save");
+  const articleId = optionalText(formData.get("id"));
+  if (intent === "publish" && session.role === "editor") {
+    redirect(
+      publicationErrorPath(
+        articleId,
+        "Публикация доступна только владельцу или администратору."
+      )
+    );
+  }
+  if (
+    formData.get("publication_override") === "1" &&
+    session.role !== "owner"
+  ) {
+    redirect(
+      publicationErrorPath(
+        articleId,
+        "Ручное подтверждение контрольного списка доступно только владельцу."
+      )
+    );
+  }
   const autoTranslationEnabled =
     adminEnv.openAiAutoTranslateArticles && Boolean(adminEnv.openAiApiKey);
-  if (intent !== "publish" || !autoTranslationEnabled) {
+  const releaseStatus = String(formData.get("status") || "draft");
+  if (
+    intent === "publish" &&
+    releaseStatus === "scheduled" &&
+    !optionalText(formData.get("scheduled_at"))
+  ) {
+    redirect(
+      publicationErrorPath(
+        articleId,
+        "Для запланированной публикации укажите дату и время."
+      )
+    );
+  }
+  const releaseNeedsTranslation = !["hidden", "archived"].includes(
+    releaseStatus
+  );
+  if (
+    intent !== "publish" ||
+    !releaseNeedsTranslation ||
+    !autoTranslationEnabled
+  ) {
     return saveStandardRespectingEnglishOwnership(formData);
   }
 
@@ -245,13 +292,28 @@ export async function saveArticleAction(formData: FormData) {
     });
   }
 
-  const articleId = optionalText(formData.get("id"));
   const title = String(formData.get("title") || "").trim();
   const subtitle = String(formData.get("subtitle") || "").trim();
-  const excerpt = String(formData.get("excerpt") || "").trim();
   const rawSlug = String(formData.get("slug") || "").trim();
   const slug = createSlug(rawSlug || title) || `material-${Date.now()}`;
   const contentHtml = String(formData.get("content_html") || "");
+  const completedMetadata = completeArticleMetadataDraft(
+    {
+      excerpt: String(formData.get("excerpt") || ""),
+      seoTitle: String(formData.get("seo_title") || ""),
+      seoDescription: String(formData.get("seo_description") || ""),
+      seoKeywords: String(formData.get("seo_keywords") || ""),
+      ogTitle: String(formData.get("og_title") || ""),
+      ogDescription: String(formData.get("og_description") || ""),
+    },
+    buildArticleMetadataDraft({
+      title,
+      subtitle,
+      contentHtml,
+      locale: "ru",
+    })
+  );
+  const excerpt = completedMetadata.excerpt.trim();
   let contentJson: unknown;
   try {
     contentJson = parseEditorialContentJson(
@@ -276,16 +338,12 @@ export async function saveArticleAction(formData: FormData) {
   const coverAlt = String(formData.get("cover_alt") || "").trim();
   const sources = lineItems(formData.get("sources"));
   const bibliography = lineItems(formData.get("bibliography"));
-  const seoTitle = String(formData.get("seo_title") || "").trim() || title;
-  const seoDescription =
-    String(formData.get("seo_description") || "").trim() || excerpt;
-  const seoKeywords = commaList(formData.get("seo_keywords"));
-  const ogTitle =
-    String(formData.get("og_title") || "").trim() || seoTitle || title;
+  const seoTitle = completedMetadata.seoTitle.trim() || title;
+  const seoDescription = completedMetadata.seoDescription.trim() || excerpt;
+  const seoKeywords = commaList(completedMetadata.seoKeywords);
+  const ogTitle = completedMetadata.ogTitle.trim() || seoTitle || title;
   const ogDescription =
-    String(formData.get("og_description") || "").trim() ||
-    seoDescription ||
-    excerpt;
+    completedMetadata.ogDescription.trim() || seoDescription || excerpt;
   const sourceHash = articleTranslationSourceHash({
     title,
     subtitle,
@@ -439,13 +497,12 @@ export async function saveArticleAction(formData: FormData) {
 
     return saveStandardArticleAtomically(formData);
   } catch (error) {
-    const detail =
-      error instanceof Error ? error.message : "неизвестная ошибка переводчика";
-    const message =
-      `Автоматический английский перевод не выполнен, поэтому публикация остановлена: ${detail}`.slice(
-        0,
-        900
-      );
-    redirect(publicationErrorPath(articleId, message));
+    console.error("Automatic article translation failed before publication", error);
+    redirect(
+      publicationErrorPath(
+        articleId,
+        "Автоматический английский перевод не выполнен, поэтому публикация остановлена. Повторите позже или подготовьте английскую версию вручную."
+      )
+    );
   }
 }

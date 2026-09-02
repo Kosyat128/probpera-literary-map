@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 
 import { articleEditPath } from "@/lib/admin-routes";
 import { formatDate } from "@/lib/format";
+import { operatorDataError } from "@/lib/operator-data-error";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import {
+  parseArticleWorkingDraft,
+  previewEnglishTranslationWithWorkingDraft,
+} from "../../article-working-draft";
 
 export const metadata = { title: "Предпросмотр статьи" };
 
@@ -29,10 +34,15 @@ export default async function ArticlePreviewPage({
     `/articles/${id}/preview?locale=${nextLocale}&viewport=${nextViewport}`;
   const supabase = await createServerSupabaseClient();
   if (!supabase) notFound();
-  const [{ data: article }, { data: englishTranslation }] = await Promise.all([
+  const [
+    { data: article },
+    { data: englishTranslation },
+    { data: workingDraftResult, error: workingDraftQueryError },
+    { data: categoriesResult },
+  ] = await Promise.all([
     supabase
       .from("articles")
-      .select("title,subtitle,excerpt,content_html,cover_external_url,cover_alt,updated_at,status,categories(name)")
+      .select("id,title,subtitle,excerpt,content_html,cover_external_url,cover_alt,updated_at,status,category_id,categories(name)")
       .eq("id", id)
       .maybeSingle(),
     supabase
@@ -41,13 +51,61 @@ export default async function ArticlePreviewPage({
       .eq("article_id", id)
       .eq("locale", "en")
       .maybeSingle(),
+    supabase
+      .from("article_working_drafts")
+      .select(
+        "article_id,base_article_updated_at,payload,english_payload,expected_english_updated_at,version,updated_at"
+      )
+      .eq("article_id", id)
+      .maybeSingle(),
+    supabase
+      .from("categories")
+      .select("id,name")
+      .eq("is_visible", true),
   ]);
   if (!article) notFound();
-  const categoryValue = article.categories as unknown;
+  let workingDraft = null;
+  let workingDraftLoadError = workingDraftQueryError
+    ? operatorDataError("articles", "load")
+    : null;
+  if (workingDraftResult && !workingDraftLoadError) {
+    try {
+      workingDraft = parseArticleWorkingDraft(workingDraftResult);
+    } catch (error) {
+      workingDraftLoadError =
+        error instanceof Error
+          ? error.message
+          : "Рабочий черновик повреждён и не был открыт.";
+    }
+  }
+  const previewArticle = workingDraft
+    ? {
+        ...article,
+        ...workingDraft.payload,
+        id: article.id,
+        updated_at: workingDraft.updated_at,
+      }
+    : article;
+  const previewEnglishTranslation = workingDraft
+    ? previewEnglishTranslationWithWorkingDraft(
+        englishTranslation || null,
+        workingDraft
+      )
+    : englishTranslation;
+  const categoryValue = previewArticle.categories as unknown;
   const category = Array.isArray(categoryValue)
     ? (categoryValue[0] as { name?: string } | undefined)
     : (categoryValue as { name?: string } | null);
-  const localizedArticle = locale === "en" ? englishTranslation : article;
+  const draftCategory = workingDraft
+    ? (categoriesResult || []).find(
+        (item) => item.id === previewArticle.category_id
+      )
+    : null;
+  const localizedArticle = workingDraftLoadError
+    ? null
+    : locale === "en"
+      ? previewEnglishTranslation
+      : previewArticle;
   const localizedUpdatedAt = localizedArticle
     ? locale === "en"
       ? new Intl.DateTimeFormat("en-GB", {
@@ -61,7 +119,11 @@ export default async function ArticlePreviewPage({
     <>
       <header className="page-heading preview-toolbar">
         <div>
-          <span className="eyebrow">Закрытый предпросмотр · {article.status}</span>
+          <span className="eyebrow">
+            {workingDraft
+              ? "Сохранённый рабочий черновик · публичная версия не изменена"
+              : `Закрытый предпросмотр · ${article.status}`}
+          </span>
           <h1>Так материал увидит читатель</h1>
           <p>Страница доступна только редакции и не индексируется.</p>
         </div>
@@ -101,7 +163,12 @@ export default async function ArticlePreviewPage({
           </Link>
         ))}
       </nav>
-      {locale === "en" && !englishTranslation && (
+      {workingDraftLoadError && (
+        <p className="form-message" role="alert">
+          {workingDraftLoadError}
+        </p>
+      )}
+      {locale === "en" && !previewEnglishTranslation && (
         <p className="form-message" role="status">
           Английская версия ещё не создана. Русский текст не подставляется вместо
           перевода.
@@ -109,7 +176,13 @@ export default async function ArticlePreviewPage({
       )}
       {localizedArticle && <article className={`admin-article-preview is-${viewport}`}>
         <header>
-          <span>{locale === "en" ? "Article" : category?.name || "Материалы"}</span>
+          <span>
+            {locale === "en"
+              ? "Article"
+              : workingDraft
+                ? draftCategory?.name || "Материалы"
+                : category?.name || "Материалы"}
+          </span>
           <h1>{localizedArticle.title}</h1>
           {localizedArticle.subtitle && <p>{localizedArticle.subtitle}</p>}
           <small>
@@ -120,10 +193,10 @@ export default async function ArticlePreviewPage({
         {localizedArticle.excerpt && (
           <p className="preview-lead">{localizedArticle.excerpt}</p>
         )}
-        {article.cover_external_url && (
+        {previewArticle.cover_external_url && (
           <figure>
             <img
-              src={article.cover_external_url}
+              src={previewArticle.cover_external_url}
               alt={localizedArticle.cover_alt || ""}
             />
             {localizedArticle.cover_alt && (

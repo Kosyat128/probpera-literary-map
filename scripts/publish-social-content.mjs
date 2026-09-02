@@ -3,15 +3,15 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { dzenCoverForArticle } from "./lib/article-publication-images.mjs";
+import { trustedHttpsUrl, trustedProbperaOrigin, trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const supabaseUrl = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "")
+const rawSupabaseUrl = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "")
   .trim()
   .replace(/\/+$/u, "");
+const supabaseUrl = rawSupabaseUrl ? trustedSupabaseOrigin(rawSupabaseUrl) : "";
 const serviceKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
-const siteUrl = (process.env.PUBLIC_SITE_URL || "https://probpera.ru")
-  .trim()
-  .replace(/\/+$/u, "");
+const siteUrl = trustedProbperaOrigin(process.env.PUBLIC_SITE_URL || "https://probpera.ru");
 const requiredPlatforms = new Set(
   (process.env.SOCIAL_REQUIRED_PLATFORMS || "dzen")
     .split(",")
@@ -132,7 +132,8 @@ function md5(value) {
 }
 
 async function apiRequest(resource, options = {}) {
-  const response = await fetch(resource, {
+  const allowedHosts = [new URL(supabaseUrl).hostname, "api.ok.ru", "api.vk.com"];
+  const response = await fetch(trustedHttpsUrl(resource, allowedHosts, "Social API URL"), {
     ...options,
     signal: AbortSignal.timeout(30_000),
   });
@@ -500,14 +501,23 @@ async function publishOk(article) {
 }
 
 async function verifyDzenRss(article) {
-  const rssUrl = (process.env.DZEN_RSS_URL || `${siteUrl}/rss.xml`).trim();
+  const rssUrl = "https://probpera.ru/rss.xml";
+  const configuredRssUrl = (process.env.DZEN_RSS_URL || `${siteUrl}/rss.xml`).trim();
+  if (configuredRssUrl !== rssUrl) {
+    throw new Error("DZEN_RSS_URL must be the canonical https://probpera.ru/rss.xml feed.");
+  }
   const localRssPath = path.join(projectRoot, "dist", "rss.xml");
   let rss = "";
   try {
     rss = await fs.readFile(localRssPath, "utf8");
   } catch {
-    const response = await fetch(rssUrl, { signal: AbortSignal.timeout(30_000) });
-    if (!response.ok) throw new Error(`RSS HTTP ${response.status}`);
+    const response = await fetch(rssUrl, {
+      signal: AbortSignal.timeout(30_000),
+      redirect: "error",
+    });
+    if (!response.ok || response.redirected || response.url !== rssUrl) {
+      throw new Error(`RSS request failed or redirected (${response.status}).`);
+    }
     rss = await response.text();
   }
   const canonical = articleUrl(article);

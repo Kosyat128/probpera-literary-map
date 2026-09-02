@@ -18,6 +18,15 @@ export type TranslationPanelActions = {
   switchLocale: (locale: ArticleEditorLocale) => void;
 };
 
+const translationStatusLabel: Record<ArticleTranslationStatus, string> = {
+  draft: "черновик",
+  review: "на проверке",
+  approved: "проверен",
+  published: "опубликован",
+  stale: "нужна повторная сверка",
+  archived: "в архиве",
+};
+
 export default function TranslationPanel({
   model,
   actions,
@@ -47,7 +56,7 @@ export default function TranslationPanel({
       </button>
       <span>
         {model.englishEnabled
-          ? `EN: ${model.englishStatus}`
+          ? `EN: ${translationStatusLabel[model.englishStatus]}`
           : "EN: не используется"}
         {model.englishEnabled &&
         model.englishLinkedToOriginal &&
@@ -63,12 +72,12 @@ export default function TranslationPanel({
 
 export function EnglishTranslationNotice() {
   return (
-    <div className="editor-template-bar">
-      <span>English translation</span>
+    <div className="english-translation-notice">
+      <strong>Английская версия статьи</strong>
       <small>
-        Translate the author&apos;s current Russian version. The English text is
-        stored and reviewed independently; Russian text is never inserted as an
-        English fallback.
+        Переводите актуальную русскую версию автора. Английский текст хранится и
+        проверяется отдельно; русский текст никогда не подставляется вместо
+        перевода.
       </small>
     </div>
   );

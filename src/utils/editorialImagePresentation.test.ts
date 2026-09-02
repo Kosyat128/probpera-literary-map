@@ -33,6 +33,8 @@ describe("public editorial image attributes", () => {
       "data-image-max-width": "120",
       "data-image-aspect": "16-9",
       "data-image-fit": "cover",
+      "data-image-appearance": "shadow",
+      "data-image-reveal": "fade-up",
       "data-focus-x": "-0.2",
       "data-focus-y": "0.72555",
       "data-credit": "Редакция",
@@ -50,6 +52,8 @@ describe("public editorial image attributes", () => {
       maxWidth: 240,
       aspect: "16-9",
       fit: "cover",
+      appearance: "shadow",
+      reveal: "fade-up",
       focusX: 0,
       focusY: 0.72555,
       lightbox: false,
@@ -61,6 +65,8 @@ describe("public editorial image attributes", () => {
       "data-image-max-width": "240",
       "data-focus-x": "0.0000",
       "data-focus-y": "0.7256",
+      "data-image-appearance": "shadow",
+      "data-image-reveal": "fade-up",
       "data-decorative": "true",
     });
   });
@@ -90,6 +96,20 @@ describe("public editorial image attributes", () => {
       "--editorial-focus-x: 12.50%; --editorial-focus-y: 87.50%"
     );
   });
+
+  it("fails closed to the legacy frame and no motion for unknown presentation values", () => {
+    const value = normalizeEditorialImagePublicAttributes({
+      "data-image-appearance": "custom-class shadow-xl",
+      "data-image-reveal": "url(javascript:alert(1))",
+    });
+
+    expect(value.appearance).toBe("frame");
+    expect(value.reveal).toBe("none");
+    expect(canonicalEditorialImageData(value)).toMatchObject({
+      "data-image-appearance": "frame",
+      "data-image-reveal": "none",
+    });
+  });
 });
 
 describe("public editorial image integration", () => {
@@ -100,6 +120,12 @@ describe("public editorial image integration", () => {
     expect(sanitizerSource).toContain('element.setAttribute("role", "presentation")');
     expect(sanitizerSource).toContain('element.setAttribute("aria-hidden", "true")');
     expect(sanitizerSource).toContain("safeEditorialMediaUrl(attributes.source)");
+    expect(sanitizerSource).toContain(
+      "figure.dataset.imageAppearance = attributes.appearance"
+    );
+    expect(sanitizerSource).toContain(
+      "figure.dataset.imageReveal = attributes.reveal"
+    );
   });
 
   it("uses one responsive rendering contract in Article and CmsPage readers", () => {
@@ -111,6 +137,11 @@ describe("public editorial image integration", () => {
     expect(publicStyles).toContain("--editorial-focus-x");
     expect(publicStyles).toContain("max-width: min(var(--editorial-image-max-width, 100%), 100%)");
     expect(publicStyles).toContain(".article-editorial-image.is-aspect-16-9");
+    expect(publicStyles).toContain('[data-image-appearance="clean"]');
+    expect(publicStyles).toContain('[data-image-appearance="shadow"]');
+    expect(publicStyles).toContain('[data-image-reveal="fade-up"]');
+    expect(publicStyles).toContain('[data-image-reveal="zoom"]');
+    expect(publicStyles).toContain("@media (prefers-reduced-motion: reduce)");
   });
 
   it("keeps decorative, disabled, and linked images out of the lightbox", () => {

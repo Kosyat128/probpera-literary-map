@@ -1,5 +1,5 @@
 export const CURRENT_EDITORIAL_SCHEMA_VERSION =
-  "20260901_zzzzzz_admin_completion_health";
+  "20260902_zz_article_working_drafts_health";
 
 export type EditorialSchemaHealth = {
   version?: string;
@@ -29,6 +29,10 @@ export type EditorialSchemaHealth = {
   adminMutationGuards?: boolean;
   adminAnalyticsReporting?: boolean;
   adminOpsObservability?: boolean;
+  articleWorkingDrafts?: boolean;
+  articleWorkingDraftPromotionCas?: boolean;
+  articlePublicationRbac?: boolean;
+  articleTranslationRbac?: boolean;
 };
 
 export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
@@ -57,6 +61,10 @@ export const EDITORIAL_SCHEMA_REQUIRED_FLAGS = [
   "adminMutationGuards",
   "adminAnalyticsReporting",
   "adminOpsObservability",
+  "articleWorkingDrafts",
+  "articleWorkingDraftPromotionCas",
+  "articlePublicationRbac",
+  "articleTranslationRbac",
 ] as const;
 
 export type EditorialSchemaRequiredFlag =
@@ -91,6 +99,10 @@ const editorialSchemaCapabilityLabels: Record<
   adminMutationGuards: "атомарные административные изменения",
   adminAnalyticsReporting: "агрегированная аналитика",
   adminOpsObservability: "наблюдаемость резервного копирования",
+  articleWorkingDrafts: "рабочие черновики статей",
+  articleWorkingDraftPromotionCas: "атомарная публикация рабочего черновика",
+  articlePublicationRbac: "права публикации статей",
+  articleTranslationRbac: "права публикации переводов статей",
 };
 
 export function getMissingEditorialSchemaCapabilities(

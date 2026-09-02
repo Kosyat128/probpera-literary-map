@@ -2,9 +2,9 @@
 
 Phase 4 production baseline: `ff9f4853684208f37ac9deba8e14f4944f1fef51`
 
-Current completion branch: `codex/admin-stage5-10-completion`
+Current completion branch: `codex/admin-production-reconciliation-fix`
 
-Last updated: `2026-09-01`
+Last updated: `2026-09-02`
 
 ## Состояние реализации
 
@@ -25,15 +25,25 @@ Last updated: `2026-09-01`
 - [x] Phase 10 - fail-closed schema health, закрытый словарь статусов, редактирование
   без вывода сырых PostgREST/provider ошибок, граница клиентских секретов,
   документация и матрица CMS-покрытия.
+- [x] Published-article draft isolation - отдельная versioned/CAS рабочая копия,
+  FORCE RLS, закрытый прямой DML и транзакционное удаление после публикации.
+- [x] Article composer polish - безопасная автоматизация анонса/SEO/OG без
+  перезаписи ручных формулировок, семь редакционных шаблонов, единая русская
+  терминология и управляемое оформление изображений.
 
 ## Инварианты релиза
 
-- Production migration plan содержит ровно 29 рассмотренных миграций с
+- Production migration plan содержит ровно 31 рассмотренную миграцию с
   нормализованными SHA-256 и завершается
-  `20260901_zzzzzz_admin_completion_health`.
+  `20260902_zz_article_working_drafts_health`.
 - Итоговый health RPC наследует все прежние проверки и дополнительно закрывает
   Site/Data/Translation Studio, Direct Edit v2, last-owner, mutation guards,
   analytics и operational observability.
+- Итоговый health RPC также подтверждает приватные рабочие черновики статей:
+  таблицу, FORCE RLS, staff-only SELECT, RPC ACL, cleanup-trigger и RLS-разделение
+  owner/admin publication против editor draft/review для статьи и перевода,
+  bounded 5 MiB payload для обеих языковых версий и атомарный working-draft
+  CAS перед privileged release.
 - Сверка БД выполняется только из exact `main`, после зашифрованной резервной
   копии и изолированной restore-проверки; несовпадение SHA, ledger или health
   останавливает применение.
@@ -44,9 +54,16 @@ Last updated: `2026-09-01`
 
 ## Проверки текущего блока
 
+- Полный финальный suite: **461 тестовый файл, 2572/2572 теста**; ещё 2
+  штатно пропущены.
+- Единый `npm run lint`: успешно, включая публичный TypeScript, оба admin
+  TypeScript-конфига, каталоги интерфейса и Cloudflare bindings.
 - Admin TypeScript (`tsc --noEmit` и Cloudflare tsconfig): успешно.
 - Финальный объединённый focused suite: **34 файла, 154/154 теста**.
 - Production migration planner/schema-health suite: **21/21 тест**.
+- Working-draft migration/final-health/planner suite: **30/30 тестов**.
+- Article working-draft server flow: **9 файлов, 50/50 тестов**; Admin
+  TypeScript typecheck успешно.
 - Дополнительные профильные прогоны фаз до финального набора: Data Studio
   **11/11**, mutation guards **10/10**, Translation Operations **47/47**.
 - `git diff --check`: ошибок нет; сообщения о будущей CRLF-нормализации на
@@ -67,8 +84,7 @@ Last updated: `2026-09-01`
 
 ## Граница текущего релиза
 
-В этот блок не входят незавершённые изменения соседней задачи по глобусу:
-`src/index.css`, `src/components/globeFilterStability.test.ts` и
-`tests/e2e/literary-planet-immersion.spec.mjs`. Они не должны попадать в коммиты
-админки. Dirty-файл `apps/admin/catalog-assets/editorial-catalog.json` также не
-включается без отдельного подтверждённого содержательного изменения каталога.
+Изменения глобуса из соседней задачи не редактируются этим блоком. Добавление в
+`src/index.css` ограничено публичным оформлением редакционных изображений;
+геометрия и интерактивные алгоритмы глобуса остаются без изменений. Каталоги
+контента не включаются без отдельного подтверждённого содержательного изменения.

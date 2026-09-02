@@ -67,6 +67,7 @@ describe("shared editor media parity", () => {
   });
 
   it("keeps ordered multi-file cursor insertion and single exact replacement", () => {
+    expect(workflowSource).toContain("isAcceptedClientImageType(file.type)");
     expect(articleSource).toContain(
       "handleEditorPaste: editorMedia.handlePaste"
     );

@@ -90,7 +90,7 @@ describe("shared rich editor foundation", () => {
 
     const articleImageWorkflow = articleSource.slice(
       articleSource.indexOf("const addImage ="),
-      articleSource.indexOf("const insertImageAtLogicalPosition")
+      articleSource.indexOf("const insertImageAtRememberedPosition")
     );
     expect(articleImageWorkflow).not.toContain("window.prompt");
     expect(articleImageWorkflow).toContain("setImageDialogOpen(true)");

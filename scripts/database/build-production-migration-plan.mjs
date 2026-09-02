@@ -78,7 +78,7 @@ const reviewedMigrations = [
   ],
   [
     "20260901_zz_visual_direct_edit_v2.sql",
-    "e3a0a6443089f949d73869971e3041a3cc98c2e68f3742192338d1ecba30e371",
+    "38347f54fbe152e89cf392d517e3d3a6e1d389b50b3510611a7fd3b4a66157ed",
   ],
   [
     "20260901_zzz_admin_mutation_guards.sql",
@@ -91,6 +91,14 @@ const reviewedMigrations = [
   [
     "20260901_zzzzzz_admin_completion_health.sql",
     "dda44cc2f3248cf54621e07d17a701095ecea92193832371636618217531711f",
+  ],
+  [
+    "20260902_article_working_drafts.sql",
+    "3426ae0a6b234aa903670dde6efbd34f84c27a3f47f495fe454d593c95b66c72",
+  ],
+  [
+    "20260902_zz_article_working_drafts_health.sql",
+    "72259c999de34611ac9bb3bddd3d1374b62b43cfa1eb9a4f11fabfeb5bd20460",
   ],
 ];
 
@@ -294,6 +302,7 @@ begin
     or to_regclass('public.reader_book_collection_items') is null
     or to_regclass('public.reader_book_favorites') is null
     or to_regclass('public.editor_autosaves') is null
+    or to_regclass('public.article_working_drafts') is null
     or to_regclass('public.site_component_registry') is null
     or to_regclass('public.site_design_tokens') is null
     or to_regclass('public.site_design_change_sets') is null
@@ -384,6 +393,11 @@ begin
     or to_regprocedure('public.move_homepage_block(uuid,text)') is null
     or to_regprocedure('public.save_article_bundle(uuid,timestamptz,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null
     or to_regprocedure('public.save_editor_autosave(text,uuid,text,text,timestamptz,uuid,bigint,text,jsonb,timestamptz)') is null
+    or to_regprocedure('public.save_article_working_draft(uuid,timestamptz,jsonb,jsonb,timestamptz,bigint)') is null
+    or to_regprocedure('public.discard_article_working_draft(uuid,bigint)') is null
+    or to_regprocedure('public.clear_article_working_draft_after_promotion()') is null
+    or to_regprocedure('public.guard_article_working_draft_promotion()') is null
+    or to_regprocedure('public.promote_article_working_draft(uuid,timestamptz,bigint,jsonb,text,jsonb,timestamptz,text,text,boolean,text,jsonb,boolean,jsonb)') is null
     or to_regprocedure('public.list_media_studio_assets(text,text,text,integer,integer)') is null
     or to_regprocedure('public.list_media_asset_usages(uuid[])') is null
     or to_regprocedure('public.preview_media_asset_replacement(uuid,uuid)') is null
@@ -502,7 +516,7 @@ ${values}
     select
       'version'::text as check_name,
       health is not null
-        and health ->> 'version' = '20260901_zzzzzz_admin_completion_health' as ok
+        and health ->> 'version' = '20260902_zz_article_working_drafts_health' as ok
     union all
     select
       required_key,
@@ -532,7 +546,11 @@ ${values}
       'translationOperations',
       'adminMutationGuards',
       'adminAnalyticsReporting',
-      'adminOpsObservability'
+      'adminOpsObservability',
+      'articleWorkingDrafts',
+      'articlePublicationRbac',
+      'articleTranslationRbac',
+      'articleWorkingDraftPromotionCas'
     ]::text[]) as required(required_key)
   ) as checks
   where ok is distinct from true;
@@ -603,6 +621,10 @@ select concat(
   ';admin_mutation_guards=', health ->> 'adminMutationGuards',
   ';admin_analytics_reporting=', health ->> 'adminAnalyticsReporting',
   ';admin_ops_observability=', health ->> 'adminOpsObservability',
+  ';article_working_drafts=', health ->> 'articleWorkingDrafts',
+  ';article_publication_rbac=', health ->> 'articlePublicationRbac',
+  ';article_translation_rbac=', health ->> 'articleTranslationRbac',
+  ';article_working_draft_promotion_cas=', health ->> 'articleWorkingDraftPromotionCas',
   ';migration_ledger=', health ->> 'migrationLedger',
   ';premium_machine_translation=', case when public.premium_machine_translation_ready() then 'true' else 'false' end,
   ';editor_autosaves=', case when to_regclass('public.editor_autosaves') is not null then 'true' else 'false' end,

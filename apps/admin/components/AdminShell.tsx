@@ -13,6 +13,7 @@ import {
 } from "@/lib/admin-module-registry";
 import type { StaffSession } from "@/lib/auth";
 import { adminBasePath, withAdminBasePath } from "@/lib/navigation";
+import { safePublicSiteOrigin } from "@/lib/public-link-boundary";
 import { logoutAction } from "@/app/(auth)/login/actions";
 
 // Canonical registry marker retained for the typography navigation contract:
@@ -33,10 +34,14 @@ export default function AdminShell({
 }) {
   const pathname = usePathname();
   const normalizedPathname =
-    adminBasePath === ""
+    !adminBasePath
       ? pathname
-      : pathname.replace(new RegExp(`^${adminBasePath.replace("/", "\\/")}(?=/|$)`, "u"), "") ||
-        "/";
+      : pathname === adminBasePath
+        ? "/"
+        : pathname.startsWith(`${adminBasePath}/`)
+          ? pathname.slice(adminBasePath.length) || "/"
+          : pathname;
+  const publicSiteOrigin = safePublicSiteOrigin(publicSiteUrl);
   const showArticleWorkspace = isArticleEditorPath(normalizedPathname);
 
   return (
@@ -87,7 +92,7 @@ export default function AdminShell({
           <p>Все изменения сохраняются в истории редакции</p>
           <div className="admin-topbar-actions">
             <AdminCommandPalette entries={adminCommandEntries} />
-            <a href={publicSiteUrl} target="_blank" rel="noreferrer">
+            <a href={publicSiteOrigin} target="_blank" rel="noreferrer">
               Открыть сайт ↗
             </a>
           </div>

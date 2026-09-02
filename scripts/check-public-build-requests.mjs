@@ -1,9 +1,11 @@
 import { appendFile } from "node:fs/promises";
 import { isMissingPublicationOutbox } from "./lib/cms-publication-head.mjs";
+import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 
-const supabaseUrl = (
+const rawSupabaseUrl = (
   process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || ""
 ).replace(/\/+$/u, "");
+const supabaseUrl = rawSupabaseUrl ? trustedSupabaseOrigin(rawSupabaseUrl) : "";
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
 const outputPath = process.env.GITHUB_OUTPUT || "";
 const finalizeArgument = process.argv.find((argument) =>

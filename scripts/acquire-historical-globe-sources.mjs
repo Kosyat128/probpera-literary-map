@@ -30,6 +30,45 @@ function sha256(bytes) {
   return createHash("sha256").update(bytes).digest("hex").toUpperCase();
 }
 
+function pinnedSourceRequest(source) {
+  let url;
+  let referer = null;
+  switch (source.filename) {
+    case "behaim-1908-a-d.jpg":
+      url = "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/124.jpg";
+      break;
+    case "behaim-1908-e-g.jpg":
+      url = "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/125.jpg";
+      break;
+    case "behaim-1908-h-j.jpg":
+      url = "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/126.jpg";
+      break;
+    case "behaim-1908-k-m-caps.jpg":
+      url = "https://dl.ub.uni-freiburg.de/diglitData/image/ravenstein1908/4/127.jpg";
+      break;
+    case "hondius-1615.jpg":
+      url =
+        "https://tile.loc.gov/image-services/iiif/service:gmd:gmd3:g3201:g3201b:ct000726/full/full/0/default.jpg";
+      break;
+    case "coronelli-1697.jp2":
+      url = "https://stacks.stanford.edu/file/druid:fw438kx8748/fw438kx8748_05_0001.jp2";
+      break;
+    case "scherer-1700.jpg":
+      url =
+        "https://images.digital.library.illinois.edu/iiif/2/e0f792e0-8be8-0137-6dac-02d0d7bfd6e4-0/full/full/0/default.jpg";
+      referer =
+        "https://digital.library.illinois.edu/items/17c519d0-8bdc-0137-6dac-02d0d7bfd6e4-9";
+      break;
+    default:
+      throw new Error(`${source.filename}: historical source is not statically pinned.`);
+  }
+
+  if (source.url !== url || (source.referer ?? null) !== referer) {
+    throw new Error(`${source.filename}: request metadata does not match the reviewed source.`);
+  }
+  return { url, referer };
+}
+
 async function verifyPinned(pathname, source) {
   const bytes = await readFile(pathname);
   if (bytes.length !== source.bytes || sha256(bytes) !== source.sha256) {
@@ -65,12 +104,13 @@ for (const source of sources) {
     if (error?.code !== "ENOENT") throw error;
   }
 
+  const request = pinnedSourceRequest(source);
   const headers = {
     "user-agent": "ProbPeraHistoricalGlobeSources/1.0",
-    ...(source.referer ? { referer: source.referer } : {}),
+    ...(request.referer ? { referer: request.referer } : {}),
   };
-  const response = await fetch(source.url, { headers, redirect: "error" });
-  if (!response.ok || response.redirected || response.url !== source.url) {
+  const response = await fetch(request.url, { headers, redirect: "error" });
+  if (!response.ok || response.redirected || response.url !== request.url) {
     throw new Error(`${source.filename}: source request failed or redirected (${response.status}).`);
   }
   const bytes = Buffer.from(await response.arrayBuffer());

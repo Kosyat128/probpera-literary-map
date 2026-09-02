@@ -1,10 +1,14 @@
 const imageLayouts = new Set(["wide", "normal", "full", "left", "right"]);
 const imageAspects = new Set(["auto", "1-1", "4-3", "3-2", "16-9", "2-3"]);
 const imageFits = new Set(["contain", "cover"]);
+const imageAppearances = new Set(["clean", "frame", "shadow"]);
+const imageReveals = new Set(["none", "fade-up", "zoom"]);
 
 export type EditorialImageLayout = "wide" | "normal" | "full" | "left" | "right";
 export type EditorialImageAspect = "auto" | "1-1" | "4-3" | "3-2" | "16-9" | "2-3";
 export type EditorialImageFit = "contain" | "cover";
+export type EditorialImageAppearance = "clean" | "frame" | "shadow";
+export type EditorialImageReveal = "none" | "fade-up" | "zoom";
 
 export const editorialImageWidthPresets = [33, 50, 66, 75, 100] as const;
 
@@ -14,6 +18,8 @@ export type EditorialImageAttributes = {
   maxWidth: number;
   aspect: EditorialImageAspect;
   fit: EditorialImageFit;
+  appearance: EditorialImageAppearance;
+  reveal: EditorialImageReveal;
   focusX: number;
   focusY: number;
   credit: string;
@@ -84,6 +90,9 @@ export function normalizeEditorialImageAttributes(
     maxWidth: rawMaxWidth > 0 ? Math.max(240, rawMaxWidth) : 0,
     aspect: enumValue(value.aspect, imageAspects, "auto"),
     fit: enumValue(value.fit, imageFits, "contain"),
+    // `frame` preserves the presentation used before these controls existed.
+    appearance: enumValue(value.appearance, imageAppearances, "frame"),
+    reveal: enumValue(value.reveal, imageReveals, "none"),
     focusX: boundedNumber(value.focusX, 0, 1, 0.5),
     focusY: boundedNumber(value.focusY, 0, 1, 0.5),
     credit: boundedText(value.credit, 300),
@@ -107,6 +116,8 @@ export function editorialImageHtmlAttributes(value: Record<string, unknown>) {
       : {}),
     "data-image-aspect": normalized.aspect,
     "data-image-fit": normalized.fit,
+    "data-image-appearance": normalized.appearance,
+    "data-image-reveal": normalized.reveal,
     "data-focus-x": normalized.focusX.toFixed(4),
     "data-focus-y": normalized.focusY.toFixed(4),
     ...(normalized.credit ? { "data-credit": normalized.credit } : {}),
@@ -125,6 +136,8 @@ export const editorialImageDataAttributes = [
   "data-image-max-width",
   "data-image-aspect",
   "data-image-fit",
+  "data-image-appearance",
+  "data-image-reveal",
   "data-focus-x",
   "data-focus-y",
   "data-credit",
@@ -144,6 +157,8 @@ export function safeEditorialImageHtmlAttributes(attributes: Record<string, stri
     maxWidth: attributes["data-image-max-width"],
     aspect: attributes["data-image-aspect"],
     fit: attributes["data-image-fit"],
+    appearance: attributes["data-image-appearance"],
+    reveal: attributes["data-image-reveal"],
     focusX: attributes["data-focus-x"],
     focusY: attributes["data-focus-y"],
     credit: attributes["data-credit"],

@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { load } from "cheerio";
+import { load } from "cheerio/slim";
 import sanitizeHtml from "sanitize-html";
 import { z } from "zod";
 

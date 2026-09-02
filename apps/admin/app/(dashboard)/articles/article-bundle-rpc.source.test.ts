@@ -12,7 +12,7 @@ const source = readFileSync(
 
 describe("article bundle RPC client", () => {
   it("calls only the canonical transactional article RPC", () => {
-    expect(source).toContain('supabase.rpc("save_article_bundle"');
+    expect(source).toContain('"save_article_bundle"');
     expect(source).toContain("p_expected_article_updated_at");
     expect(source).toContain("p_expected_english_updated_at");
     expect(source).toContain("p_english_mode");
@@ -21,6 +21,13 @@ describe("article bundle RPC client", () => {
     expect(source).toContain("p_social_publish_requested");
     expect(source).not.toContain("service_role");
     expect(source).not.toContain("SUPABASE_SERVICE_ROLE");
+  });
+
+  it("uses the atomic promotion RPC with an explicit working-draft version", () => {
+    expect(source).toContain('"promote_article_working_draft"');
+    expect(source).toContain("p_expected_working_draft_version");
+    expect(source).toContain("expectedWorkingDraftVersion: number");
+    expect(source).toContain('message.includes("WORKING_DRAFT_CONFLICT")');
   });
 
   it("fails closed through the canonical RPC without a runtime legacy probe", () => {

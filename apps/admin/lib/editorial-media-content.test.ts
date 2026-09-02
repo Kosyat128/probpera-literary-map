@@ -17,6 +17,8 @@ describe("editorial image attribute contract", () => {
         maxWidth: 9_000,
         aspect: "16-9",
         fit: "cover",
+        appearance: "shadow",
+        reveal: "fade-up",
         focusX: -4,
         focusY: 8,
         link: "javascript:alert(1)",
@@ -28,6 +30,8 @@ describe("editorial image attribute contract", () => {
       maxWidth: 2_400,
       aspect: "16-9",
       fit: "cover",
+      appearance: "shadow",
+      reveal: "fade-up",
       focusX: 0,
       focusY: 1,
       link: "",
@@ -46,6 +50,8 @@ describe("editorial image attribute contract", () => {
         maxWidth: 960,
         aspect: "4-3",
         fit: "cover",
+        appearance: "clean",
+        reveal: "zoom",
         focusX: 0.25,
         focusY: 0.75,
         decorative: false,
@@ -56,6 +62,8 @@ describe("editorial image attribute contract", () => {
       "data-image-max-width": "960",
       "data-image-aspect": "4-3",
       "data-image-fit": "cover",
+      "data-image-appearance": "clean",
+      "data-image-reveal": "zoom",
       "data-focus-x": "0.2500",
       "data-focus-y": "0.7500",
       "data-decorative": "false",
@@ -69,12 +77,16 @@ describe("editorial image attribute contract", () => {
       "data-image-width": "999",
       "data-focus-x": "NaN",
       "data-link": "data:text/html,bad",
+      "data-image-appearance": "url(javascript:alert(1))",
+      "data-image-reveal": "spin",
       "data-decorative": "true",
     });
     expect(attributes.alt).toBe("");
     expect(attributes.src).toBe("https://cdn.example/image.webp");
     expect(attributes["data-image-width"]).toBe("100");
     expect(attributes["data-focus-x"]).toBe("0.5000");
+    expect(attributes["data-image-appearance"]).toBe("frame");
+    expect(attributes["data-image-reveal"]).toBe("none");
     expect(attributes["data-link"]).toBeUndefined();
     expect(safeEditorialImageHtmlAttributes({ src: "#fragment" }).src).toBeUndefined();
   });
@@ -95,6 +107,8 @@ describe("editorial media JSON policy", () => {
                 alt: "  Подробное описание  ",
                 width: 120,
                 aspect: "unsafe",
+                appearance: "unsafe-class",
+                reveal: "unsafe-animation",
                 decorative: false,
               },
             },
@@ -114,6 +128,8 @@ describe("editorial media JSON policy", () => {
     expect(image.alt).toBe("Подробное описание");
     expect(image.width).toBe(100);
     expect(image.aspect).toBe("auto");
+    expect(image.appearance).toBe("frame");
+    expect(image.reveal).toBe("none");
   });
 
   it("requires alt on publication unless the image is decorative", () => {

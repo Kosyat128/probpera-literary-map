@@ -39,6 +39,8 @@ describe("article editor shell boundaries", () => {
     expect(shell).toContain("{hidden.identity.id && (");
     expect(shell).toContain('name="expected_updated_at"');
     expect(shell).toContain('name="english_expected_updated_at"');
+    expect(shell).toContain('name="working_draft_version"');
+    expect(shell).toContain('name="preview_locale"');
     expect(shell).toContain('name="publication_override"');
     expect(shell).toContain("{children}");
   });

@@ -114,17 +114,19 @@ function ToolbarButton({
   );
 }
 
+export type PageEditorProps = {
+  page: PageRecord;
+  publicSiteUrl: string;
+  catalogContext: { q: string; status: string; page: number; revisionPage: number };
+  savedAfterSubmit?: boolean;
+};
+
 export default function PageEditor({
   page,
   publicSiteUrl,
   catalogContext,
   savedAfterSubmit = false,
-}: {
-  page: PageRecord;
-  publicSiteUrl: string;
-  catalogContext: { q: string; status: string; page: number; revisionPage: number };
-  savedAfterSubmit?: boolean;
-}) {
+}: PageEditorProps) {
   const [title, setTitle] = useState(page.title || "");
   const [slug, setSlug] = useState(page.slug || "");
   const [slugEdited, setSlugEdited] = useState(true);

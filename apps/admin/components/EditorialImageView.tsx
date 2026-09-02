@@ -14,8 +14,10 @@ import { requestEditorImageReplacement } from "@/components/editorMediaEvents";
 import {
   editorialImageWidthPresets,
   normalizeEditorialImageAttributes,
+  type EditorialImageAppearance,
   type EditorialImageAspect,
   type EditorialImageFit,
+  type EditorialImageReveal,
 } from "@/lib/editorial-media-content";
 
 import type { EditorialImageLayout } from "./EditorialImage";
@@ -46,6 +48,18 @@ const aspectLabels: Record<EditorialImageAspect, string> = {
 const fitLabels: Record<EditorialImageFit, string> = {
   contain: "Показывать целиком",
   cover: "Заполнять с кадрированием",
+};
+
+const appearanceLabels: Record<EditorialImageAppearance, string> = {
+  clean: "Без рамки",
+  frame: "Редакционная рамка",
+  shadow: "Мягкая тень",
+};
+
+const revealLabels: Record<EditorialImageReveal, string> = {
+  none: "Без анимации",
+  "fade-up": "Плавное появление",
+  zoom: "Мягкое приближение",
 };
 
 function aspectRatio(value: EditorialImageAspect) {
@@ -120,6 +134,8 @@ export default function EditorialImageView({
       data-image-max-width={media.maxWidth}
       data-image-aspect={media.aspect}
       data-image-fit={media.fit}
+      data-image-appearance={media.appearance}
+      data-image-reveal={media.reveal}
       data-focus-x={media.focusX}
       data-focus-y={media.focusY}
       data-lightbox={String(media.lightbox)}
@@ -291,6 +307,36 @@ export default function EditorialImageView({
               {(Object.entries(fitLabels) as Array<[EditorialImageFit, string]>).map(
                 ([value, label]) => <option key={value} value={value}>{label}</option>
               )}
+            </select>
+          </label>
+          <label>
+            <span>Оформление</span>
+            <select
+              value={media.appearance}
+              onChange={(event) =>
+                updateAttributes({ appearance: event.target.value })
+              }
+            >
+              {(Object.entries(appearanceLabels) as Array<
+                [EditorialImageAppearance, string]
+              >).map(([value, label]) => (
+                <option key={value} value={value}>{label}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            <span>Появление на странице</span>
+            <select
+              value={media.reveal}
+              onChange={(event) =>
+                updateAttributes({ reveal: event.target.value })
+              }
+            >
+              {(Object.entries(revealLabels) as Array<
+                [EditorialImageReveal, string]
+              >).map(([value, label]) => (
+                <option key={value} value={value}>{label}</option>
+              ))}
             </select>
           </label>
           <label>

@@ -1,4 +1,4 @@
-import { load } from "cheerio";
+import { load } from "cheerio/slim";
 import sanitizeHtml from "sanitize-html";
 import { z } from "zod";
 

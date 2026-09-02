@@ -46,11 +46,13 @@ describe("article editor panels", () => {
         onSlugChange={noop}
         onSlugEditedChange={noop}
         onCanonicalEditedChange={noop}
+        onLegacyPathChange={noop}
         onSeoTitleChange={noop}
         onSeoDescriptionChange={noop}
         onSeoKeywordsChange={noop}
         onOgTitleChange={noop}
         onOgDescriptionChange={noop}
+        onAllowIndexingChange={noop}
         markRussianSourceChanged={noop}
         markDirty={noop}
       />
@@ -93,6 +95,8 @@ describe("article editor panels", () => {
         englishConfirmedCurrentSource
         onEnglishConfirmedCurrentSourceChange={noop}
         englishApprovedAt="2026-08-28T12:00:00Z"
+        canPublish
+        canOverridePublicationChecklist={false}
       />
     );
     const sources = renderToStaticMarkup(
@@ -107,9 +111,66 @@ describe("article editor panels", () => {
       />
     );
 
-    expect(publication).toContain("English publication");
-    expect(publication).toContain("Ready for review");
+    expect(publication).toContain("Публикация перевода");
+    expect(publication).toContain("Готов к проверке");
+    expect(publication).not.toContain("English publication");
     expect(sources).toContain("Источники и библиография");
+  });
+
+  it("keeps scheduling explicit and publication capability-bound", () => {
+    const scheduled = renderToStaticMarkup(
+      <PublishPanel
+        locale="ru"
+        status="scheduled"
+        onStatusChange={noop}
+        scheduledAt=""
+        onScheduledAtChange={noop}
+        featured={false}
+        onFeaturedChange={noop}
+        showOnHomepage={false}
+        onShowOnHomepageChange={noop}
+        pinned={false}
+        onPinnedChange={noop}
+        englishEnabled={false}
+        onEnglishEnabledChange={noop}
+        englishStatus="draft"
+        onEnglishStatusChange={noop}
+        englishConfirmedCurrentSource={false}
+        onEnglishConfirmedCurrentSourceChange={noop}
+        canPublish
+        canOverridePublicationChecklist
+      />
+    );
+    const editorOnly = renderToStaticMarkup(
+      <PublishPanel
+        locale="ru"
+        status="draft"
+        onStatusChange={noop}
+        scheduledAt=""
+        onScheduledAtChange={noop}
+        featured={false}
+        onFeaturedChange={noop}
+        showOnHomepage={false}
+        onShowOnHomepageChange={noop}
+        pinned={false}
+        onPinnedChange={noop}
+        englishEnabled={false}
+        onEnglishEnabledChange={noop}
+        englishStatus="draft"
+        onEnglishStatusChange={noop}
+        englishConfirmedCurrentSource={false}
+        onEnglishConfirmedCurrentSourceChange={noop}
+        canPublish={false}
+        canOverridePublicationChecklist={false}
+      />
+    );
+
+    expect(scheduled).toContain('type="datetime-local"');
+    expect(scheduled).not.toMatch(/\srequired(?:=|\s|>)/u);
+    expect(scheduled).toContain("Укажите дату и время");
+    expect(scheduled).toContain("ручное подтверждение редакционного чек-листа");
+    expect(editorOnly).not.toContain('value="published"');
+    expect(editorOnly).toContain("Выпуск выполнит администратор");
   });
 });
 

@@ -36,40 +36,50 @@ export default function SourceBibliographyEditor({
     <section ref={sectionRef} className="panel settings-stack">
       <h2>
         {locale === "en"
-          ? "English sources and bibliography"
+          ? "Источники английской версии"
           : "Источники и библиография"}
       </h2>
-      <label className="field">
-        <span>
-          {locale === "en"
-            ? "Sources - one per line"
-            : "Источники - по одному на строку"}
-        </span>
-        <textarea
-          value={sourceText}
-          onChange={(event) => {
-            onSourceTextChange(event.target.value);
-            updateRussianSourceState();
-          }}
-          placeholder={
-            locale === "en" ? "Title - https://…" : "Название - https://…"
-          }
-        />
-      </label>
-      <label className="field">
-        <span>
-          {locale === "en"
-            ? "Bibliography - one entry per line"
-            : "Библиография - по одной записи на строку"}
-        </span>
-        <textarea
-          value={bibliographyText}
-          onChange={(event) => {
-            onBibliographyTextChange(event.target.value);
-            updateRussianSourceState();
-          }}
-        />
-      </label>
+      <details className="editor-panel-disclosure">
+        <summary>
+          <span>Добавить источники и библиографию</span>
+          <small>
+            {sourceText.trim() || bibliographyText.trim()
+              ? "Раздел заполнен"
+              : "Можно заполнить перед публикацией"}
+          </small>
+        </summary>
+        <div className="editor-panel-disclosure-content settings-stack">
+          <label className="field">
+            <span>
+              {locale === "en"
+                ? "Источники английской версии - по одному на строку"
+                : "Источники - по одному на строку"}
+            </span>
+            <textarea
+              value={sourceText}
+              onChange={(event) => {
+                onSourceTextChange(event.target.value);
+                updateRussianSourceState();
+              }}
+              placeholder="Название - https://…"
+            />
+          </label>
+          <label className="field">
+            <span>
+              {locale === "en"
+                ? "Библиография английской версии - по одной записи на строку"
+                : "Библиография - по одной записи на строку"}
+            </span>
+            <textarea
+              value={bibliographyText}
+              onChange={(event) => {
+                onBibliographyTextChange(event.target.value);
+                updateRussianSourceState();
+              }}
+            />
+          </label>
+        </div>
+      </details>
     </section>
   );
 }

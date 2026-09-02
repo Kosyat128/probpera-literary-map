@@ -7,6 +7,7 @@ import {
   publicationHeadMarker,
 } from "./lib/cms-publication-state.mjs";
 import { fetchCmsPublicationHead } from "./lib/cms-publication-head.mjs";
+import { trustedHttpsUrl } from "./lib/trusted-server-url.mjs";
 
 export function assertPublicationDeployHead({
   candidateHeadSource = "outbox",
@@ -95,7 +96,11 @@ export async function verifyPublicationDeployHead(environment = process.env, fet
     fetchCmsPublicationHead({ supabaseUrl, serviceKey, fetchImpl }),
     json(
       await fetchImpl(
-        `https://api.github.com/repos/${githubRepository}/git/ref/heads/main`,
+        trustedHttpsUrl(
+          `https://api.github.com/repos/${githubRepository.split("/").map(encodeURIComponent).join("/")}/git/ref/heads/main`,
+          ["api.github.com"],
+          "GitHub main-ref URL"
+        ),
         {
           headers: {
             Accept: "application/vnd.github+json",

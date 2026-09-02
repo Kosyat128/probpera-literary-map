@@ -3,6 +3,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { normalizeConfirmedArticleHeading } from "./lib/article-route-policy.mjs";
+import { trustedHttpsUrl } from "./lib/trusted-server-url.mjs";
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, "..");
@@ -348,10 +349,11 @@ function selectArticleContent($) {
 }
 
 async function fetchText(url, attempts = 3) {
+  const trustedUrl = trustedHttpsUrl(url, ["probpera.ru"], "Crawl URL");
   let lastError;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     try {
-      const response = await fetch(url, {
+      const response = await fetch(trustedUrl, {
         headers: {
           "user-agent":
             "ProbperaEditorialArchive/1.0 (+https://probpera.ru/contacts)",

@@ -211,3 +211,18 @@ jobs:
             echo "### Premium English: deployment check failed" >> "$GITHUB_STEP_SUMMARY"
             echo "Workers AI readiness could not be confirmed by the deployment workflow." >> "$GITHUB_STEP_SUMMARY"
           fi
+
+  post_deploy_security_audit:
+    name: Dispatch the live security audit
+    if: github.event_name != 'pull_request'
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+
+    steps:
+      - name: Audit the promoted admin release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run audit-live-security.yml --ref main

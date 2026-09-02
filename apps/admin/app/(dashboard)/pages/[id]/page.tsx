@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
-import PageEditor from "@/components/PageEditor";
+import PageEditorLoader from "@/components/PageEditorLoader";
 import { adminEnv } from "@/lib/env";
 import { formatDate } from "@/lib/format";
 import {
@@ -83,7 +83,7 @@ export default async function EditPage({
       {query.published === "started" && <p className="form-message form-success">Публичная сборка со страницей запущена.</p>}
       {query.published === "queued" && <p className="form-message form-success">Изменение страницы сохранено в резервной очереди публикации.</p>}
       {query.published === "queue-error" && <p className="form-message form-error" role="alert">Изменение сохранено, но запрос публикации записать не удалось. Повторите публикацию позже.</p>}
-      <PageEditor
+      <PageEditorLoader
         page={page}
         publicSiteUrl={adminEnv.publicSiteUrl}
         savedAfterSubmit={Boolean(query.saved)}

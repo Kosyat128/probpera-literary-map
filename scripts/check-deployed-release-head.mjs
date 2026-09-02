@@ -9,6 +9,7 @@ import {
   normalizeReleaseCommitSha,
   releaseCodeHeadPath,
 } from "./lib/release-code-head.mjs";
+import { trustedProbperaOrigin } from "./lib/trusted-server-url.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -52,12 +53,9 @@ export async function checkDeployedReleaseCodeHead(
     environment.EXPECTED_MAIN_SHA,
     "expected main SHA"
   );
-  const publicSiteUrl = String(environment.PUBLIC_SITE_URL || "https://probpera.ru")
+  const publicSiteUrl = trustedProbperaOrigin(String(environment.PUBLIC_SITE_URL || "https://probpera.ru")
     .trim()
-    .replace(/\/+$/u, "");
-  if (!/^https:\/\//u.test(publicSiteUrl)) {
-    throw new Error("PUBLIC_SITE_URL must be an HTTPS origin.");
-  }
+    .replace(/\/+$/u, ""));
 
   const url = `${publicSiteUrl}${releaseCodeHeadPath}?expected=${expectedCommitSha}&ts=${Date.now()}`;
   let result;
