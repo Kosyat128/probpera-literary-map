@@ -1034,25 +1034,29 @@ const articles = rawArticles.map((rawArticle) => {
     allowIndexing: article.allow_indexing !== false,
     translations: englishEntry ? { en: englishEntry } : undefined,
   });
+  const normalizedEnglishEntry = entry.translations?.en;
+  const articleDocument = {
+    ...entry,
+    ...document,
+    sources: article.sources || [],
+    bibliography: article.bibliography || [],
+    translations:
+      normalizedEnglishEntry && englishDocument
+        ? {
+            en: {
+              ...normalizedEnglishEntry,
+              ...englishDocument,
+              sources: englishTranslation.sources || [],
+              bibliography: englishTranslation.bibliography || [],
+            },
+          }
+        : undefined,
+  };
   articleDocuments.push({
     path: path.join(publicCmsArticlesDirectory, `${id}.json`),
-    payload: {
-      ...entry,
-      ...document,
-      sources: article.sources || [],
-      bibliography: article.bibliography || [],
-      translations:
-        englishEntry && englishDocument
-          ? {
-              en: {
-                ...englishEntry,
-                ...englishDocument,
-                sources: englishTranslation.sources || [],
-                bibliography: englishTranslation.bibliography || [],
-              },
-            }
-          : undefined,
-    },
+    payload: normalizeArticlePublicMetadata(
+      applyEditorialPublicationFix(articleDocument)
+    ),
   });
   return entry;
 });
