@@ -1,0 +1,3188 @@
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'html' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ html--node--5660.html.twig
+   ▪️ html--node--%.html.twig
+   ▪️ html--node.html.twig
+   ✅ html.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/html.html.twig' -->
+<!DOCTYPE html>
+<html  lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+<link rel="canonical" href="https://gallica.bnf.fr/accueil/fr/html/150-epub-gallica-selectionnes-par-le-ministere-de-leducation-nationale" />
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/accueil/sites/default/files/Favicon_Gallica_Noir_48x48.png" type="image/png" />
+<link rel="alternate" hreflang="fr" href="https://gallica.bnf.fr/fr/html/150-epub-gallica-selectionnes-par-le-ministere-de-leducation-nationale" />
+
+    <title>150 EPUB Gallica sélectionnés par le ministère de l’Éducation nationale | Gallica</title>
+    <link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/align.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/fieldgroup.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/container-inline.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/clearfix.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/details.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/hidden.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/item-list.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/js.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/nowrap.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/position-container.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/reset-appearance.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/resize.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/system-status-counter.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/system-status-report-counters.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/system-status-report-general-info.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/core/modules/system/css/components/tablesort.module.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/modules/custom/bnf_langselector/css/bnf_langselector.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/modules/custom/bnf_langselector/css/fonts/fonts.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/modules/custom/gallica10_search/css/gallica10_search.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/modules/custom/gallica_customblock/css/gallica_customblock.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/modules/custom/gallica_customblock/css/font/fonts.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/modules/contrib/paragraphs/css/paragraphs.unpublished.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/themes/custom/gallica_accueilblog/css/jquery.jscrollpane.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/themes/custom/gallica_accueilblog/css/style.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/themes/custom/gallica_accueilblog/css/contraste.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/themes/custom/gallica_accueilblog/css/responsive.css?thjuqk" />
+<link rel="stylesheet" media="all" href="/accueil/themes/custom/gallica_accueilblog/css/fonts/fonts.css?thjuqk" />
+
+    <script src="/accueil/core/assets/vendor/jquery/jquery.min.js?v=3.7.1"></script>
+<script src="/accueil/modules/custom/bnf_tagaucitronaccblog/js/bnf_tagaucitronaccblog.js?v=1.x"></script>
+<script src="https://tarteaucitron.io/load.js?domain=gallica.bnf.fr&amp;uuid=91ba7c974c752a888f0a2765181efcbea3a33ef9" async></script>
+
+  </head>
+  <body class="billet_blog" class="">
+
+    <div class="skiplinks">
+      <nav class="container" role="navigation" aria-label="Quick access">
+        <ul class="skiplinkslist focusable">
+          <li>
+            <a href="#main-content">
+              Skip to content
+            </a>
+          </li>
+          <li>
+            <a href="#menuheaderanchor">
+              Skip to menu
+            </a>
+          </li>
+          <li>
+            <a href="#rechercheheaderanchor">
+              Skip to search
+            </a>
+          </li>
+          <li>
+            <a href="#menufooter">
+              Skip to footer
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    
+            
+        
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'off_canvas_page_wrapper' -->
+<!-- BEGIN OUTPUT from 'core/modules/system/templates/off-canvas-page-wrapper.html.twig' -->
+  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'page' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ page--node--5660.html.twig
+   ▪️ page--node--%.html.twig
+   ▪️ page--node.html.twig
+   ✅ page.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/page.html.twig' -->
+<div class="layout-container">
+
+  <header role="banner">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ region--header.html.twig
+   ✅ region.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/region.html.twig' -->
+  <div class="region region-header">
+    <!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_lienlogoblock_bnf
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_lienlogoblock_bnf
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.006952047 -->
+<!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_lienlogoblock_bnf
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_lienlogoblock_bnf
+-->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_lienlogoblock_bnf
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_lienlogoblock_bnf
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.022799015 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-lienlogoblock-bnf.html.twig
+   ▪️ block--LienLogoBlock-block.html.twig
+   ▪️ block--mb-lienlogo.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-lienlogoblock-bnf" class="block block-mb-lienlogo block-lienlogoblock-block">
+  
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'lienlogotpl' -->
+<!-- BEGIN OUTPUT from 'modules/custom/mb_lienlogo/templates/lienlogotpl.html.twig' -->
+
+
+<div class="logo">
+
+		<a class="logo" title="Accéder au site BnF (nouvelle fenêtre)" target="_blank" href="https://www.bnf.fr/fr">
+					<img alt="Accéder au site BnF" src="/accueil/sites/default/files/logo_bnf.png">
+		</a>
+		<p class="texte_alt_logo">
+			Accéder au site BnF
+		</p>
+</div>
+
+<!-- END OUTPUT from 'modules/custom/mb_lienlogo/templates/lienlogotpl.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+<!-- END RENDERER -->
+<!-- END RENDERER --><!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_logogallicablock
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_logogallicablock
+-->
+<!-- CACHE MAX-AGE: -1 -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_logogallicablock
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_logogallicablock
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.007778883 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-logogallicablock.html.twig
+   ▪️ block--LogoGallicaBlock-block.html.twig
+   ▪️ block--gallica-customblock.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-logogallicablock" class="block block-gallica-customblock block-logogallicablock-block">
+  
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'logogallicatpl' -->
+<!-- BEGIN OUTPUT from 'modules/custom/gallica_customblock/templates/logogallicatpl.html.twig' -->
+<div class="logo">
+    <a class="logo logogallica" href="https://gallica.bnf.fr">
+    Gallica
+    </a>
+</div>
+<!-- END OUTPUT from 'modules/custom/gallica_customblock/templates/logogallicatpl.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+<!-- END RENDERER --><!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_texteheader
+   * block_content_view
+   * block_content:1
+   * config:filter.format.full_html
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * languages:language_content
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_texteheader
+-->
+<!-- CACHE MAX-AGE: -1 -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_texteheader
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_texteheader
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.008650064 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-texteheader.html.twig
+   ▪️ block--block-content--9f47d6d6-6e51-4c11-a252-beb4bc42b798.html.twig
+   ▪️ block--block-content--id-view--gallica-accueilblog-texteheader--full.html.twig
+   ▪️ block--block-content--id--gallica-accueilblog-texteheader.html.twig
+   ▪️ block--block-content--view-type--basic--full.html.twig
+   ▪️ block--block-content--type--basic.html.twig
+   ▪️ block--block-content--view--full.html.twig
+   ▪️ block--block-content.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-texteheader" class="block block-block-content block-block-content9f47d6d6-6e51-4c11-a252-beb4bc42b798">
+  
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--block-content--body--basic.html.twig
+   ▪️ field--block-content--body.html.twig
+   ▪️ field--block-content--basic.html.twig
+   ▪️ field--body.html.twig
+   ▪️ field--text-with-summary.html.twig
+   ✅ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Gallica est la bibliothèque numérique de la BnF et de ses partenaires. Elle offre un accès libre et gratuit à plusieurs millions de documents numérisés de toutes époques et de tous supports.</p></div>
+      
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+<!-- END RENDERER --><!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_headercontrastblock
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_headercontrastblock
+-->
+<!-- CACHE MAX-AGE: -1 -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_headercontrastblock
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_headercontrastblock
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.005963087 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-headercontrastblock.html.twig
+   ▪️ block--HeaderContrastBlock-block.html.twig
+   ▪️ block--gallica-customblock.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-headercontrastblock" class="block block-gallica-customblock block-headercontrastblock-block">
+  
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'headercontrasttpl' -->
+<!-- BEGIN OUTPUT from 'modules/custom/gallica_customblock/templates/headercontrasttpl.html.twig' -->
+<div id="block-contrastheader">
+    <button title="dark theme" aria-label="dark theme" class="boutoncontrast" id="boutoncontrast" aria-pressed="false" >
+    </button>
+</div>
+<!-- END OUTPUT from 'modules/custom/gallica_customblock/templates/headercontrasttpl.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+<!-- END RENDERER --><!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_headersearchblock
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_headersearchblock
+-->
+<!-- CACHE MAX-AGE: -1 -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_headersearchblock
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_headersearchblock
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.017576933 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-headersearchblock.html.twig
+   ▪️ block--HeaderSearchBlock-block.html.twig
+   ▪️ block--gallica10-search.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-headersearchblock" class="block block-gallica10-search block-headersearchblock-block">
+  
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'headersearchtpl' -->
+<!-- BEGIN OUTPUT from 'modules/custom/gallica10_search/templates/headersearchtpl.html.twig' -->
+
+<div class="hidden" id="suggest">0</div>
+<div class="hidden" id="suggestion">https://gallica.bnf.fr/services/engine/search/suggest</div>
+<div id="block-rechercheheader" role="search">
+    <a id="rechercheheaderanchor"></a>
+
+    <button class="boutonrechercheheader" id="boutonrechercheheader" aria-controls="rechercheheader" aria-label="Search bar" aria-expanded="false" >
+      <span class="loupe open"></span>
+      <span class="loupe close"></span>
+    </button>
+
+    <div id="rechercheheader" class="rechercheheader modal" aria-label="Recherche dans :" aria-hidden="true">
+        Recherche dans :
+        <div class="tabs">
+            <ul class="tabs__list" role="tablist" aria-label="onglets de recherche">
+                                <li role="presentation">
+    <button id="tabpanel-blog" class="tabs__tab " tabindex="0" role="tab" aria-selected="true" aria-controls="tabpanel-blog-panel">les articles du blog</button>
+</li>
+<li role="presentation">
+    <button id="tabpanel-selection" class="tabs__tab " tabindex="-1" role="tab" aria-selected="false" aria-controls="tabpanel-selection-panel">les parcours thématiques</button>
+</li>
+<li role="presentation">
+    <button id="tabpanel-collection" class="tabs__tab " tabindex="-1" role="tab" aria-selected="false" aria-controls="tabpanel-collection-panel">la collection de Gallica</button>
+</li>
+                                
+                
+                            </ul>
+            <div id="tabpanel-collection-panel" class="tabs__panel  " role="tabpanel" aria-labelledby="tabpanel-collection" tabindex="0">
+                <form method="POST" class="search" role="search" name="collsearch" id="collsearch-form" action="https://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&amp;version=1.2&amp;" onsubmit="event.preventDefault();gsb_required()">
+                    <input type="text" class="hidden" name="lang" id="lang" value="fr">
+                    <input type="text" class="hidden" name="errorts" id="errorts" value="Please enter a term with at least 3 characters.">
+                    <label class="fr-label hidden" for="motcle">Rechercher dans les collections</label>
+                    <input required class="search-input typeahead" id="motcle" name="motcle" type="search" value="" title="Rechercher dans les 10 millions de documents de Gallica" placeholder="Rechercher dans les 10 millions de documents de Gallica"  dir="auto" >
+                    <button type="button" class="clear_input">
+                      <span class="sr-only">Clean the search field</span>
+                    </button>
+                    <button type="submit" class="search-btn" title="Rechercher dans les collections">
+                      <span class="sr-only">Rechercher dans les collections</span>
+                    </button>
+                </form>
+            </div>
+            <div id="tabpanel-selection-panel" class="tabs__panel " role="tabpanel" aria-labelledby="tabpanel-selection" tabindex="0">
+                <form method="GET" class="search" role="search" name="selsearch" id="selsearch-form" action="https://gallica.bnf.fr/selections/fr/html/recherche">
+                    <label class="fr-label hidden" for="query_selection">Search the selections</label>
+                    <input class="search-input" id="query_selection" name="query_selection" type="search" value="" title="Rechercher dans les parcours thématiques de Gallica" placeholder="Rechercher dans les parcours thématiques de Gallica"  dir="auto" >
+                    <button type="button" class="clear_input">
+                      <span class="sr-only">Clean the search field</span>
+                    </button>
+                    <button type="submit" class="search-btn" title="Search the selections">
+                      <span class="sr-only">Search the selections</span>
+                    </button>
+                </form>
+            </div>
+            <div id="tabpanel-blog-panel" class="tabs__panel selected" role="tabpanel" aria-labelledby="tabpanel-blog" tabindex="0">
+                <form method="GET" class="search" role="search" name="blogsearch" id="blogsearch-form" action="https://gallica.bnf.fr/accueil/fr/html/recherche">
+                    <label class="fr-label hidden" for="query_blog">Search the blog</label>
+                    <input class="search-input" id="query_blog" name="query_blog" type="search" value="" title="Rechercher dans les articles du blog de Gallica" placeholder="Rechercher dans les articles du blog de Gallica"  dir="auto" >
+                    <button type="button" class="clear_input">
+                      <span class="sr-only">Clean the search field</span>
+                    </button>
+                    <button type="submit" class="search-btn" title="Search the blog">
+                      <span class="sr-only">Search the blog</span>
+                    </button>
+                </form>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- END OUTPUT from 'modules/custom/gallica10_search/templates/headersearchtpl.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+<!-- END RENDERER --><!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_headertoolbarblock
+   * node:2550
+   * node:79
+   * node:2548
+   * node:7296
+   * node:7295
+   * config:system.menu.header
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_headertoolbarblock
+-->
+<!-- CACHE MAX-AGE: -1 -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_headertoolbarblock
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_headertoolbarblock
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.076634884 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-headertoolbarblock.html.twig
+   ▪️ block--HeaderToolBarBlock-block.html.twig
+   ▪️ block--gallica-customblock.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-headertoolbarblock" class="block block-gallica-customblock block-headertoolbarblock-block">
+  
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'headertoolbartpl' -->
+<!-- BEGIN OUTPUT from 'modules/custom/gallica_customblock/templates/headertoolbartpl.html.twig' -->
+<nav id="block-menuheader" role="navigation" aria-label="menu">
+
+    <a id="menuheaderanchor"></a>
+
+    <button class="boutonmenuheader" id="boutonmenuheader" aria-controls="menuheader" aria-expanded="false" aria-label="Menu" aria-hidden="false">
+        <div class="burger">
+            <div class="barre1"></div>
+            <div class="barre2"></div>
+            <div class="barre3"></div>
+        </div>
+    </button>
+
+    <div id="menuheader" class="menuheader modal" aria-label="main menu" aria-hidden="true">
+        <div class="menuheaderwrapper">
+            
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'menu__header' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ menu--header.html.twig
+   ✅ menu.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/modules/system/templates/menu.html.twig' -->
+
+              <ul>
+              <li>
+        <a href="/accueil/fr/html/notre-collection" data-drupal-link-system-path="node/2550">NOTRE COLLECTION</a>
+              </li>
+          <li>
+        <a href="/accueil/fr/html/le-blog-gallica" data-drupal-link-system-path="node/79">LE BLOG GALLICA</a>
+              </li>
+          <li>
+        <a href="/accueil/fr/html/a-propos" data-drupal-link-system-path="node/2548">À PROPOS</a>
+              </li>
+          <li>
+        <a href="https://gallica.bnf.fr/selections/fr/html/les-selections-de-gallica">PARCOURS THÉMATIQUES</a>
+              </li>
+          <li>
+        <a href="/accueil/fr/html/aide-a-la-recherche" data-drupal-link-system-path="node/7296">AIDE À LA RECHERCHE</a>
+              </li>
+          <li>
+        <a href="/accueil/fr/html/contact" data-drupal-link-system-path="node/7295">CONTACT</a>
+              </li>
+        </ul>
+  
+
+
+<!-- END OUTPUT from 'core/modules/system/templates/menu.html.twig' -->
+
+
+        </div>
+
+        <div id="epersoheader">
+            <a class="eperso" href="https://gallica.bnf.fr/login?AppOrigine=Gallica&amp;urlReferer=https%3A%2F%2Fgallica.bnf.fr%2F">
+                <span class="logopersonalspace"></span>
+                <span class="sr-only">personal space</span>
+            </a>
+        </div>
+
+        <div class="sociaux">
+            <ul>
+                <li>
+                    <a target="_blank" href="https://fr-fr.facebook.com/GallicaBnF">
+                        <span class="logofacebook"></span>
+                        <span class="sr-only">Facebook (new window)</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.instagram.com/gallicabnf/">
+                        <span class="logoinstagram"></span>
+                        <span class="sr-only">Instagram (new window)</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://twitter.com/gallicabnf">
+                        <span class="logox"></span>
+                        <span class="sr-only">X (new window)</span>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://fr.pinterest.com/gallicabnf/">
+                        <span class="logopinterest"></span>
+                        <span class="sr-only">Pinterest (new window)</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END OUTPUT from 'modules/custom/gallica_customblock/templates/headertoolbartpl.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+<!-- END RENDERER --><!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_langselectorblock
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_langselectorblock
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.004876852 -->
+<!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_langselectorblock
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_langselectorblock
+-->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_langselectorblock
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_langselectorblock
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.018489838 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-langselectorblock.html.twig
+   ▪️ block--LangSelectorBlock-block.html.twig
+   ▪️ block--bnf-langselector.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-langselectorblock" class="block block-bnf-langselector block-langselectorblock-block">
+  
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'langselectortpl' -->
+<!-- BEGIN OUTPUT from 'modules/custom/bnf_langselector/templates/langselectortpl.html.twig' -->
+
+<div class="lang">
+  <button aria-label="choose language French(fr) selected" 
+          title="choose language French(fr) selected" 
+          id="selected-lang" aria-expanded="false" aria-controls="langlist">
+	    <span>fr</span>
+	</button>
+	<div class="lang-layer" id="langlist" aria-hidden="true">
+  	    <ul >
+                      <li class="selected">
+			    <a href="https://gallica.bnf.fr/accueil/fr/html/150-epub-gallica-selectionnes-par-le-ministere-de-leducation-nationale" class="selected" id="lang-fr" hreflang="fr" lang="fr">
+                French-<span>fr</span>
+                </a>
+            </li> 
+                      <li class="notselected">
+			    <a href="https://gallica.bnf.fr/accueil/fr/html/150-epub-gallica-selectionnes-par-le-ministere-de-leducation-nationale" class="notselected" id="lang-en" hreflang="en" lang="en">
+                English-<span>en</span>
+                </a>
+            </li> 
+            		</ul>
+	</div>
+</div>
+<!-- END OUTPUT from 'modules/custom/bnf_langselector/templates/langselectortpl.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+<!-- END RENDERER -->
+<!-- END RENDERER -->
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/region.html.twig' -->
+
+
+  </header>
+
+  
+  
+  
+  
+
+  <main role="main">
+    <a id="main-content" tabindex="-1"></a>
+    <div class="layout-content">
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ region--content.html.twig
+   ✅ region.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/region.html.twig' -->
+  <div class="region region-content">
+    <!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_messages
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_messages
+-->
+<!-- CACHE MAX-AGE: -1 -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_messages
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_messages
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.006975889 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-messages.html.twig
+   ✅ block--system-messages-block.html.twig
+   ▪️ block--system.html.twig
+   ▪️ block.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/modules/system/templates/block--system-messages-block.html.twig' -->
+<div data-drupal-messages-fallback class="hidden"></div>
+
+<!-- END OUTPUT from 'core/modules/system/templates/block--system-messages-block.html.twig' -->
+
+
+<!-- END RENDERER -->
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-content.html.twig
+   ▪️ block--system-main-block.html.twig
+   ▪️ block--system.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-content" class="block block-system block-system-main-block">
+  
+    
+      <!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * node_view
+   * node:5660
+   * paragraph_view
+   * paragraph:11239
+   * config:paragraphs.settings
+   * paragraph:11240
+   * config:filter.format.full_html
+   * user:1
+   * config:system.site
+-->
+<!-- CACHE CONTEXTS:
+   * url.site
+   * languages:language_url
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * user.roles:authenticated
+   * route
+   * timezone
+   * url.path
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * node
+   * 5660
+   * full
+-->
+<!-- CACHE MAX-AGE: -1 -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * node_view
+   * node:5660
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * url.site
+   * languages:language_url
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * node
+   * 5660
+   * full
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.460576057 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'node' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ node--5660--full.html.twig
+   ▪️ node--5660.html.twig
+   ▪️ node--billet-blog--full.html.twig
+   ▪️ node--billet-blog.html.twig
+   ▪️ node--full.html.twig
+   ✅ node.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/modules/node/templates/node.html.twig' -->
+<article data-history-node-id="5660">
+
+  
+    
+
+  
+  <div>
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'links__node' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ links--node.html.twig
+   ✅ links.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/modules/system/templates/links.html.twig' -->
+
+<!-- END OUTPUT from 'core/modules/system/templates/links.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--node--field-titrealter-bb--billet-blog.html.twig
+   ▪️ field--node--field-titrealter-bb.html.twig
+   ▪️ field--node--billet-blog.html.twig
+   ▪️ field--field-titrealter-bb.html.twig
+   ▪️ field--heading.html.twig
+   ✅ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+            <div class="field field--name-field-titrealter-bb field--type-heading field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'heading' -->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/heading.html.twig' -->
+<h1>150 EPUB Gallica sélectionnés par le ministère de l’Éducation nationale </h1>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/heading.html.twig' -->
+
+</div>
+      
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--node--field-soustitre-bb--billet-blog.html.twig
+   ▪️ field--node--field-soustitre-bb.html.twig
+   ▪️ field--node--billet-blog.html.twig
+   ✅ field--field-soustitre-bb.html.twig
+   ▪️ field--entity-reference.html.twig
+   ▪️ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field--field-soustitre-bb.html.twig' -->
+<div class="soustitre">
+                                    <a href="/accueil/fr/html/recherche-par-sous-titre?query_soustitre=1855">Gallica 20 ans</a>
+        </div>
+
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field--field-soustitre-bb.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field_group_html_element' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field-group-html-element--node--billet-blog--group-entete.html.twig
+   ▪️ field-group-html-element--node--billet-blog--div.html.twig
+   ▪️ field-group-html-element--node--group-entete.html.twig
+   ▪️ field-group-html-element--node--billet-blog.html.twig
+   ▪️ field-group-html-element--node--div.html.twig
+   ▪️ field-group-html-element--group-entete.html.twig
+   ▪️ field-group-html-element--billet-blog.html.twig
+   ▪️ field-group-html-element--node.html.twig
+   ▪️ field-group-html-element--div.html.twig
+   ✅ field-group-html-element.html.twig
+-->
+<!-- BEGIN OUTPUT from 'modules/contrib/field_group/templates/field-group-html-element.html.twig' -->
+
+<div  class="entete">
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--node--field-date-bb--billet-blog.html.twig
+   ▪️ field--node--field-date-bb.html.twig
+   ▪️ field--node--billet-blog.html.twig
+   ✅ field--field-date-bb.html.twig
+   ▪️ field--datetime.html.twig
+   ▪️ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field--field-date-bb.html.twig' -->
+<p class="field--name-field-date-bb">
+<time>18  Janvier  2018</time>
+</p>
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field--field-date-bb.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--node--field-auteur-bb--billet-blog.html.twig
+   ▪️ field--node--field-auteur-bb.html.twig
+   ▪️ field--node--billet-blog.html.twig
+   ✅ field--field-auteur-bb.html.twig
+   ▪️ field--entity-reference.html.twig
+   ▪️ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field--field-auteur-bb.html.twig' -->
+<div class="auteurs">
+    <ul>
+                <li>
+            <a href="/accueil/fr/html/recherche-par-auteur?query_auteur=Equipe Gallica">Equipe Gallica
+                        </a>
+        </li>
+            </ul>
+</div>
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field--field-auteur-bb.html.twig' -->
+
+
+  </div>
+<!-- END OUTPUT from 'modules/contrib/field_group/templates/field-group-html-element.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--node--field-chapeau-bb--billet-blog.html.twig
+   ▪️ field--node--field-chapeau-bb.html.twig
+   ▪️ field--node--billet-blog.html.twig
+   ▪️ field--field-chapeau-bb.html.twig
+   ▪️ field--text-long.html.twig
+   ✅ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+            <div class="field field--name-field-chapeau-bb field--type-text-long field--label-hidden field__item"><p>La Direction du Numérique pour l’Éducation (DNE) du ministère de l'Éducation nationale fête elle aussi les 20 ans de Gallica&nbsp;! Dans ce cadre, la DNE a sélectionné 150 EPUB Gallica à destination des enseignants de Lettres inscrits sur le portail <a href="http://www.edutheque.fr/accueil.html" target="_blank">Éduthèque</a> et de leurs élèves. Ces livres numériques en lien avec les programmes scolaires sont tous téléchargeables gratuitement dans Gallica.</p></div>
+      
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--node--field-vignette-bb--billet-blog.html.twig
+   ▪️ field--node--field-vignette-bb.html.twig
+   ▪️ field--node--billet-blog.html.twig
+   ✅ field--field-vignette-bb.html.twig
+   ▪️ field--image.html.twig
+   ▪️ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/hidden/field--field-vignette-bb.html.twig' -->
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/hidden/field--field-vignette-bb.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--node--field-une-bb--billet-blog.html.twig
+   ▪️ field--node--field-une-bb.html.twig
+   ▪️ field--node--billet-blog.html.twig
+   ▪️ field--field-une-bb.html.twig
+   ▪️ field--entity-reference-revisions.html.twig
+   ✅ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+            <div class="field field--name-field-une-bb field--type-entity-reference-revisions field--label-hidden field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ paragraph--une-para--default.html.twig
+   ✅ paragraph--une-para.html.twig
+   ▪️ paragraph--default.html.twig
+   ▪️ paragraph--une-para--default.html.twig
+   ✅ paragraph--une-para.html.twig
+   ▪️ paragraph--default.html.twig
+   ▪️ paragraph.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/paragraphs/paragraph--une-para.html.twig' -->
+
+<div class="une">
+
+    
+                  <a target="_self" title="" href="http://gallica.bnf.fr/ark:/12148/btv1b8596958z/f23.item" class="link">
+          
+        
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'image' -->
+<!-- BEGIN OUTPUT from 'core/modules/system/templates/image.html.twig' -->
+<img src="/accueil/sites/default/files/150_epub_gallica_une_bis.jpg" alt="" />
+
+<!-- END OUTPUT from 'core/modules/system/templates/image.html.twig' -->
+
+
+
+        </a>
+    
+
+</div>
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/paragraphs/paragraph--une-para.html.twig' -->
+
+</div>
+      
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--node--field-contenu-bb--billet-blog.html.twig
+   ▪️ field--node--field-contenu-bb.html.twig
+   ▪️ field--node--billet-blog.html.twig
+   ▪️ field--field-contenu-bb.html.twig
+   ▪️ field--entity-reference-revisions.html.twig
+   ✅ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+      <div class="field field--name-field-contenu-bb field--type-entity-reference-revisions field--label-hidden field__items">
+              <div class="field__item">
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'paragraph' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ paragraph--texteriche-para--default.html.twig
+   ✅ paragraph--texteriche-para.html.twig
+   ▪️ paragraph--default.html.twig
+   ▪️ paragraph--texteriche-para--default.html.twig
+   ✅ paragraph--texteriche-para.html.twig
+   ▪️ paragraph--default.html.twig
+   ▪️ paragraph.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/paragraphs/paragraph--texteriche-para.html.twig' -->
+<div class="texteriche">
+            <div class="texte">
+         
+            <div class="rtecenter"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8596958z/f23.item" target="_blank">Album Reutlinger de portraits divers&nbsp;: Renouardt</a><br>
+&nbsp;</div>
+Les ouvrages relèvent de plusieurs genres (roman, théâtre, poésie, conte, etc.) en littératures française et étrangère. Eschyle, Dante, Charles Perrault, Émile Zola, Mark Twain, la Comtesse de Ségur, Robert Louis Stevenson, Guillaume Apollinaire, George Sand ou bien d’autres… Remplissez vos tablettes de classiques !<br>
+<br>
+En 2016, la DNE avait déjà réalisé une sélection de <a href="http://gallica.bnf.fr/blog/28112016/75-epub-gallica-selectionnes-par-le-ministere-de-leducation-nationale" target="_blank">75 EPUB Gallica pour Éduthèque</a>. Devant le succès de l’opération, il est apparu nécessaire à la fois d’élargir l’offre, mais aussi de lancer des opérations de valorisation pour mieux la faire connaître&nbsp;: ce fut le cas en 2017 autour d’un <a href="http://gallica.bnf.fr/blog/16052017/un-marathon-lecture-pour-les-fous-de-don-quichotte" target="_blank">marathon lecture</a> à la BnF qui a associé Gallica et Éduthèque. C’est de nouveau le cas en ce début d’année, dans <a href="http://gallicastudio.bnf.fr/" target="_blank">Gallica Studio</a>, un site qui abrite projets, boîte à outils et réalisations des Gallicanautes : un <a href="http://gallicastudio.bnf.fr/bo%C3%AEte-%C3%A0-outils/les-tutos-de-gallica-studio-cr%C3%A9er-son-epub-enrichi-avec-gallica" target="_blank">tutoriel</a> explique comment éditer des EPUB enrichis à partir des contenus de Gallica. Si la sélection de 150 EPUB et le tutoriel d’enrichissement ont d’abord été conçus pour les enseignants de Lettres inscrits sur le portail <a href="http://www.edutheque.fr/accueil.html" target="_blank">Éduthèque</a> et leurs élèves, ils sont bien entendu consultables et réutilisables par tous !<br>
+&nbsp;<br>
+Liste des EPUB Gallica sélectionnés pour <a href="http://www.edutheque.fr/accueil.html" target="_blank">Éduthèque</a> (cliquez sur le titre pour feuilleter le document numérisé dans Gallica et cliquez directement sur "télécharger l’EPUB" pour récupérer l'ouvrage dans ce format) : &nbsp;<br>
+<br>
+<strong>Andersen, Hans Christian (1805-1875)</strong><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k56212445" target="_blank">Histoire d'une mère. Suivi de : Le Canneton, Le Mauvais Prince, Les Souliers rouges, Les Cigognes</a><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k56212445.epub" target="_blank">Télécharger l'EPUB</a><br>
+<br>
+<strong>Anonyme</strong><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k6391102w" target="_blank">La Farce de maître Pathelin</a><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k6391102w.epub" target="_blank">Télécharger l'EPUB</a><br>
+<br>
+<strong>Apollinaire, Guillaume (1880-1918)</strong><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k1049536d" target="_blank">Le Poète assassiné</a><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k1049536d.epub" target="_blank">Télécharger l'EPUB</a><br>
+&nbsp;<br>
+<strong>Balzac, Honoré de (1799-1850)</strong><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k6305407r" target="_blank">La Peau de chagrin (édition de 1839)</a><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k6305407r.epub" target="_blank">Télécharger l'EPUB</a>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte">
+<div class="debut" id="debut_3">&nbsp;</div>
+</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600285b" target="_blank">La Peau de chagrin (édition de 1831)</a></span>
+
+<div class="debut" id="debut_4"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600285b.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61487169" target="_blank">Louis Lambert, suivi de Séraphita</a></span>
+
+<div class="debut" id="debut_5"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61487169.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6305332g" target="_blank">Le Père Goriot</a></span>
+
+<div class="debut" id="debut_6"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6305332g.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k132583w" target="_blank">Le Lys dans la vallée</a></span>
+
+<div class="debut" id="debut_7"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k132583w.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="B"><strong>Baudelaire, Charles (1821-1867)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k70861t" target="_blank">Les Fleurs du mal</a></span>
+
+<div class="debut" id="debut_8"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k70861t.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1054576n" target="_blank">Les Epaves</a></span>
+
+<div class="debut" id="debut_9"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1054576n.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65732674" target="_blank">Variétés critiques. I. La Peinture romantique. II. Modernité et surnaturalisme. Esthétique spiritualiste</a></span>
+
+<div class="debut" id="debut_10"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65732674.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="B"><strong>Béranger, Pierre-Jean de (1780-1857) ; Dupont, Pierre (1821-1870)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1045490m">La Légende du Juif errant, ill. Gustave Doré</a></span>
+
+<div class="debut" id="debut_11"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1045490m.epub">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="B"><strong>Bernardin de Saint-Pierre, Henri (1737-1814)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600195c" target="_blank">Paul et Virginie</a></span>
+
+<div class="debut" id="debut_12"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600195c.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="B"><strong>Bertrand, Aloysius (1807-1841)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600227w" target="_blank">Gaspard de la nuit</a></span>
+
+<div class="debut" id="debut_13"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600227w.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="C"><strong>Cervantes Saavedra, Miguel de (1547-1616)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1044810n" target="_blank">L'Ingénieux Hidalgo Don Quichotte de la Manche, ill. Tony Johannot. Tome 1</a></span>
+
+<div class="debut" id="debut_14"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1044810n.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600262b" target="_blank">L'Ingénieux Hidalgo Don Quichotte de la Manche, ill. Gustave Doré. Tome 2</a></span>
+
+<div class="debut" id="debut_15"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600262b.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="C"><strong>Charcot, Jean-Martin (1825-1893) et Richer, Paul (1849-1933)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6492840j" target="_blank">Les Démoniaques dans l'art</a></span>
+
+<div class="debut" id="debut_16"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6492840j.epub">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="C"><strong>Chateaubriand, François-René de (1768-1848)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5706590p" target="_blank">Atala ; René ; Le Dernier des Abencérages ; Les Quatre Stuarts ; Voyages, etc.</a></span>
+
+<div class="debut" id="debut_17"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5706590p.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="C"><strong>Corbière, Tristan (1845-1875)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10578489" target="_blank">Les Amours jaunes</a></span>
+
+<div class="debut" id="debut_18"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10578489.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="C"><strong>Corneille, Pierre (1606-1684)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5551207g" target="_blank">Théâtre classique : contenant le Cid, Horace, Cinna, Polyeucte, de Corneille ; Le Misanthrope, de Molière ; Britannicus, Esther, Athalie, de Racine</a></span>
+
+<div class="debut" id="debut_19"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5551207g.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="D"><strong>Dante Alighieri (1265-1321)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1045484w" target="_blank">Le Purgatoire de Dante, ill. Gustave Doré</a></span>
+
+<div class="debut" id="debut_20"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1045484w.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="D"><strong>Darwin, Charles (1809-1882)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6564680d" target="_blank">De l'origine des espèces par sélection naturelle, ou Des lois de transformation des êtres organisés</a></span>
+
+<div class="debut" id="debut_21"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6564680d.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="D"><strong>Daudet, Alphonse (1840-1897)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6489447z" target="_blank">Contes du lundi</a></span>
+
+<div class="debut" id="debut_22"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6489447z.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61015897" target="_blank">Contes du lundi (nouvelle édition)</a></span>
+
+<div class="debut" id="debut_23"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61015897.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="D"><strong>Dickens, Charles (1812-1870)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k57731190" target="_blank">Oliver Twist, les voleurs de Londres, trad. La Bédollière</a></span>
+
+<div class="debut" id="debut_24"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k57731190.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="D"><strong>Du Bellay, Joachim (1522?-1560)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k166650v" target="_blank">La Défense et illustration de la langue française</a></span>
+
+<div class="debut" id="debut_25"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k166650v.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="D"><strong>Dumas, Alexandre (1802-1870)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61336787" target="_blank">Les Trois Mousquetaires</a></span>
+
+<div class="debut" id="debut_26"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61336787.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="D"><strong>Dumas, Alexandre (1802-1870), père</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600196s" target="_blank">Le Comte de Monte-Christo, ill. Gavarni et Tony Johannot. Vol. 1</a></span>
+
+<div class="debut" id="debut_27"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600196s.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="D"><strong>Dumas, Alexandre (1824-1895), fils</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86001976" target="_blank">La Dame aux camélias, ill. Gavarni</a></span>
+
+<div class="debut" id="debut_28"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86001976.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6572546p" target="_blank">La Dame aux camélias</a></span>
+
+<div class="debut" id="debut_29"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6572546p.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="E"><strong>Eschyle (525?-456 av. J.-C.)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10494488" target="_blank">Traduction de Leconte de Lisle</a></span>
+
+<div class="debut" id="debut_30"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10494488.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="F"><strong>Faure, Élie (1873-1937)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6447535c" target="_blank">Histoire de l'Art. L'Esprit des formes</a></span>
+
+<div class="debut" id="debut_31"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6447535c.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="F"><strong>Flaubert, Gustave (1821-1880)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6531510n" target="_blank">Correspondance et souvenirs intimes. Tome II. 1850-1854</a></span>
+
+<div class="debut" id="debut_32"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6531510n.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61076295" target="_blank">Salammbô</a></span>
+
+<div class="debut" id="debut_33"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61076295.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6576703v" target="_blank">L'Éducation sentimentale</a></span>
+
+<div class="debut" id="debut_34"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6576703v.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6138387q" target="_blank">La Tentation de saint Antoine</a></span>
+
+<div class="debut" id="debut_35"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6138387q.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k62126049" target="_blank">Bouvard et Pécuchet</a></span>
+
+<div class="debut" id="debut_36"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k62126049.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="F"><strong>Forneret, Xavier (1809-1884)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1040590d" target="_blank">Vapeurs : ni vers, ni prose</a></span>
+
+<div class="debut" id="debut_37"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1040590d.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="F"><strong>Fouqué, Friedrich Heinrich Karl de La Motte (1777-1843)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65670415" target="_blank">Ondine, ill. Arthur Rackham</a></span>
+
+<div class="debut" id="debut_38"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65670415.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="G"><strong>Gautier, Théophile (1811-1872)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61320909" target="_blank">Nouvelles</a></span>
+
+<div class="debut" id="debut_39"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k61320909.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002007" target="_blank">Capitaine Fracasse, ill. Gustave Doré</a></span>
+
+<div class="debut" id="debut_40"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002007.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65577486" target="_blank">Les Dieux et les demi-dieux de la peinture, ill. M. Calamatta</a></span>
+
+<div class="debut" id="debut_41"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65577486.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="G"><strong>Goethe, Johann Wolfgang von (1749-1832)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002645" target="_blank">Les Souffrances du jeune Werther, trad. La Bédoyère</a></span>
+
+<div class="debut" id="debut_42"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002645.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k134831w" target="_blank">Faust, trad. Albert Stapfer et ill. Eugène Delacroix</a></span>
+
+<div class="debut" id="debut_43"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k134831w.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="G"><strong>Goncourt, Edmond de (1822-1896)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1040750k" target="_blank">Germinie Lacerteux</a></span>
+
+<div class="debut" id="debut_44"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1040750k.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="H"><strong>Heredia, José Maria de (1842-1905)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1049450b" target="_blank">Les Trophées</a></span>
+
+<div class="debut" id="debut_45"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1049450b.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="H"><strong>Hoffmann, Ernst Theodor Amadeus (1776-1822)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6355336h" target="_blank">Oeuvres complètes. Tome 4</a></span>
+
+<div class="debut" id="debut_46"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6355336h.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k96929756" target="_blank">Contes fantastiques</a></span>
+
+<div class="debut" id="debut_47"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k96929756.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="H"><strong>Homère</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1049480g" target="_blank">Nausikaa (Odyssée), trad. Leconte de Lisle, ill. Gaston de Latenay</a></span>
+
+<div class="debut" id="debut_48"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1049480g.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="H"><strong>Hugo, Victor (1802-1885)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10546426" target="_blank">Claude Gueux</a></span>
+
+<div class="debut" id="debut_49"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10546426.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5407537w">Les Contemplations. Autrefois</a></span>
+
+<div class="debut" id="debut_50"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5407537w.epub">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k54075441" target="_blank">Les Contemplations. Aujourd'hui</a></span>
+
+<div class="debut" id="debut_51"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k54075441.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10751801" target="_blank">L'Homme qui rit. Tome 1</a></span>
+
+<div class="debut" id="debut_52"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10751801.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k57483825" target="_blank">L'Homme qui rit, ill. Rochegrosse et Vierge</a></span>
+
+<div class="debut" id="debut_53"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k57483825.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6558112t" target="_blank">Les Misérables. 1ère partie, Fantine</a></span>
+
+<div class="debut" id="debut_54"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6558112t.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6557947g" target="_blank">Les Misérables. 2e partie, Cosette</a></span>
+
+<div class="debut" id="debut_55"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6557947g.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65583558" target="_blank">Les Misérables. 3e partie, Marius</a></span>
+
+<div class="debut" id="debut_56"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65583558.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6558152b" target="_blank">Les Misérables. 4e partie, L'idylle rue Plumet et l'épopée rue Saint-Denis</a></span>
+
+<div class="debut" id="debut_57"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6558152b.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6558010n" target="_blank">Les Misérables. 5e partie, Jean Valjean</a></span>
+
+<div class="debut" id="debut_58"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6558010n.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k55028937" target="_blank">Les Orientales, ill. Gérôme et Benjamin Constant</a></span>
+
+<div class="debut" id="debut_59"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k55028937.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="H"><strong>Huysmans, Joris-Karl (1848-1907)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6505780d" target="_blank">Les Soeurs Vatard</a></span>
+
+<div class="debut" id="debut_60"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6505780d.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600236v" target="_blank">A rebours, ill. Auguste Lepère</a></span>
+
+<div class="debut" id="debut_61"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600236v.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1057838x" target="_blank">En rade</a></span>
+
+<div class="debut" id="debut_62"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1057838x.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="K"><strong>Kant, Immanuel (1724-1804)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5400656d" target="_blank">Critique de la raison pure, trad. J. Tissot. Tome 2</a></span>
+
+<div class="debut" id="debut_63"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5400656d.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="K"><strong>Kästner, Abraham Gotthelf (1719-1800)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600194z" target="_blank">Aventures du baron de Münchhausen, trad. Théophile Gautier fils, ill. Gustave Doré</a></span>
+
+<div class="debut" id="debut_64"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600194z.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="L"><strong>La Bruyère, Jean de (1645-1696)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5493831p" target="_blank">Les Caractères</a></span>
+
+<div class="debut" id="debut_65"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5493831p.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="L"><strong>La Fontaine, Jean de (1621-1695)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10479684">Fables de La Fontaine, ill. J. J. Grandville. Tome 1</a></span>
+
+<div class="debut" id="debut_66"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10479684.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10443224" target="_blank">Fables de La Fontaine, ill. Gustave Doré. Tome 1</a></span>
+
+<div class="debut" id="debut_67"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10443224.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1044324z" target="_blank">Fables de La Fontaine, ill. Gustave Doré. Tome 2</a></span>
+
+<div class="debut" id="debut_68"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1044324z.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="L"><strong>La Fontaine, Jean de (1621-1695) ; Florian, Jean-Pierre Claris de (1755-1794) ; Fénelon, François de (1651-1715)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5449454s" target="_blank">Cinquante fables choisies de La Fontaine, Florian et Fénelon (expliquées et annotées pour les élèves des classes élémentaires et les écoles primaires par E.-A. Vrau)</a></span>
+
+<div class="debut" id="debut_69"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5449454s.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="L"><strong>Lamartine, Alphonse de (1790-1869)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1065240k" target="_blank">Méditations poétiques, ill. G. Motte d'après Mendoze</a></span>
+
+<div class="debut" id="debut_70"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1065240k.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="L"><strong>Lautréamont (1846-1870)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1066594g" target="_blank">Les Chants de Maldoror</a></span>
+
+<div class="debut" id="debut_71"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1066594g.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="L"><strong>Lesage, Alain-René (1668-1747)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002074" target="_blank">Le Diable boiteux, ill. Tony Johannot</a></span>
+
+<div class="debut" id="debut_72"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002074.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="L"><strong>Lytton, Edward Bulwer (1803-1873)</strong><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k6524137k" target="_blank">Les Derniers Jours de Pompéi</a><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k6524137k.epub" target="_blank">Télécharger l'EPUB</a><br>
+&nbsp;<br>
+<strong>Maupassant, Guy de (1850-1893)</strong><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k10407421" target="_blank">Une vie</a><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k10407421.epub" target="_blank">Télécharger l'EPUB</a><br>
+<br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k10407406" target="_blank">Contes de la bécasse</a><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k10407406.epub" target="_blank">Télécharger l'EPUB</a><br>
+<br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k5458767d" target="_blank">Au soleil, ill. André Suréda</a><br>
+<a href="http://gallica.bnf.fr/ark:/12148/bpt6k5458767d.epub">Télécharger l'EPUB</a><br>
+&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="M"><strong>Mendès, Catulle (1841-1909)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6484868z" target="_blank">Les 73 journées de la Commune (du 18 mars au 29 mai 1871)</a></span>
+
+<div class="debut" id="debut_77"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6484868z.epub">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="M"><strong>Michelet, Jules (1798-1874)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k57265106" target="_blank">La Sorcière</a></span>
+
+<div class="debut" id="debut_78"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k57265106.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="M"><strong>Milton, John (1608-1674)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5452523p" target="_blank">Le Paradis perdu, trad. Chateaubriand</a></span>
+
+<div class="debut" id="debut_79"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5452523p.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="M"><strong>Molière (1622-1673)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5551207g" target="_blank">Théâtre classique : contenant Le Cid, Horace, Cinna, Polyeucte, de Corneille ; Le Misanthrope, de Molière ; Britannicus, Esther, Athalie, de Racine</a></span>
+
+<div class="debut" id="debut_80"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5551207g.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1644368" target="_blank">Le Tartuffe</a></span>
+
+<div class="debut" id="debut_81"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1644368.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k56754076" target="_blank">Le Misanthrope, suivi de : Le Tartuffe, L'Avare, Le Bourgeois gentilhomme, Les Femmes savantes...</a></span>
+
+<div class="debut" id="debut_82"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k56754076.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="M"><strong>Montaigne, Michel de (1533-1592)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6382240z" target="_blank">Essais. Tome 1.</a></span>
+
+<div class="debut" id="debut_83"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6382240z.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6463832g" target="_blank">Essais. Tome 2</a></span>
+
+<div class="debut" id="debut_84"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6463832g.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k64593130" target="_blank">Essais. Tome 3</a></span>
+
+<div class="debut" id="debut_85"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k64593130.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="M"><strong>Musset, Alfred de (1810-1857)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65251107" target="_blank">La Confession d'un enfant du siècle</a></span>
+
+<div class="debut" id="debut_86"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65251107.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k166654c" target="_blank">Les Caprices de Marianne</a></span>
+
+<div class="debut" id="debut_87"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k166654c.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="N"><strong>Navarre, Marguerite de (1492-1549)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6346323x" target="_blank">Les Dernières Poésies de Marguerite de Navarre, éd. Abel Lefranc</a></span>
+
+<div class="debut" id="debut_88"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6346323x.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="N"><strong>Nodier, Charles (1780-1844)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6461485m" target="_blank">Contes fantastiques</a></span>
+
+<div class="debut" id="debut_89"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6461485m.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="P"><strong>Perrault, Charles (1628-1703)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600193j" target="_blank">Contes du temps passé</a></span>
+
+<div class="debut" id="debut_90"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600193j.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="P"><strong>Poe, Edgar Allan (1809-1849)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10567106" target="_blank">Poèmes, trad. Stéphane Mallarmé</a></span>
+
+<div class="debut" id="debut_91"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10567106.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k56266940" target="_blank">Dix contes d'Edgar Poe, trad. Charles Baudelaire et ill. Martin Van Maële</a></span>
+
+<div class="debut" id="debut_92"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k56266940.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="P"><strong>Prévost, Antoine François (1697-1763)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600209z" target="_blank">Histoire de Manon Lescaut et du Chevalier Des Grieux, ill. Tony Johannot</a></span>
+
+<div class="debut" id="debut_93"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600209z.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="P"><strong>Proust, Marcel (1871-1922)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600270w" target="_blank">À la recherche du temps perdu. Le côté de Guermantes. II, Sodome et Gomorrhe</a></span>
+
+<div class="debut" id="debut_94"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600270w.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1049546s" target="_blank">À la recherche du temps perdu. À l'ombre des jeunes filles en fleurs.</a></span>
+
+<div class="debut" id="debut_95"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1049546s.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10495602" target="_blank">À la recherche du temps perdu. Albertine disparue.</a></span>
+
+<div class="debut" id="debut_96"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10495602.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="R"><strong>Racine, Jean (1639-1699)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5551207g" target="_blank">Théâtre classique : contenant Le Cid, Horace, Cinna, Polyeucte, de Corneille ; Le Misanthrope, de Molière ; Britannicus, Esther, Athalie, de Racine</a></span>
+
+<div class="debut" id="debut_97"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5551207g.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k54594683" target="_blank">Britannicus</a></span>
+
+<div class="debut" id="debut_98"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k54594683.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5459562z" target="_blank">Phèdre</a></span>
+
+<div class="debut" id="debut_99"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5459562z.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="R"><strong>Radiguet, Raymond (1903-1923)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k131452w" target="_blank">Le Diable au corps</a></span>
+
+<div class="debut" id="debut_100"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k131452w.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="R"><strong>Régnier, Mathurin (1573-1613)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k96919020" target="_blank">Oeuvres complètes</a></span>
+
+<div class="debut" id="debut_101"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k96919020.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="R"><strong>Renard, Jules (1864-1910)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5445869c" target="_blank">Coquecigrues</a></span>
+
+<div class="debut" id="debut_102"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5445869c.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600290n" target="_blank">Poil de carotte, ill. Félix Vallotton</a></span>
+
+<div class="debut" id="debut_103"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600290n.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="R"><strong>Rimbaud, Arthur (1854-1891)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k70658c" target="_blank">Une saison en Enfer</a></span>
+
+<div class="debut" id="debut_104"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k70658c.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="R"><strong>Rostand, Edmond (1868-1918)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k64960772" target="_blank">Cyrano de Bergerac</a></span>
+
+<div class="debut" id="debut_105"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k64960772.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6492842c" target="_blank">L'Aiglon</a></span>
+
+<div class="debut" id="debut_106"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6492842c.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="R"><strong>Rousseau, Jean-Jacques (1712-1778)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5767388w" target="_blank">La Nouvelle Héloïse</a></span>
+
+<div class="debut" id="debut_107"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5767388w.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5658748j" target="_blank">Émile, ou De l'éducation</a></span>
+
+<div class="debut" id="debut_108"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5658748j.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6141532j" target="_blank">Contrat social ou Principes de droit politique ; (précédé des trois) Discours ; Lettre à d'Alembert sur les spectacles ; (et suivi de) Considérations sur le gouvernement de Pologne…</a></span>
+
+<div class="debut" id="debut_109"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6141532j.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="S"><strong>Sand, George (1804-1876)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k57240593" target="_blank">Mauprat ; Metella</a></span>
+
+<div class="debut" id="debut_110"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k57240593.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k133638n" target="_blank">La Mare au diable</a></span>
+
+<div class="debut" id="debut_111"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k133638n.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k134019r" target="_blank">La Petite Fadette. Tome 1</a></span>
+
+<div class="debut" id="debut_112"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k134019r.epub">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k134020p" target="_blank">La Petite Fadette. Tome 2</a></span>
+
+<div class="debut" id="debut_113"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k134020p.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5622788c" target="_blank">Le Château des Désertes ; Isidora</a></span>
+
+<div class="debut" id="debut_114"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5622788c.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="S"><strong>Ségur, Sophie de (1799-1874)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6577498m" target="_blank">Les Malheurs de Sophie</a></span>
+
+<div class="debut" id="debut_115"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6577498m.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6512261p" target="_blank">Mémoires d'un âne, ill. Horace Castelli</a></span>
+
+<div class="debut" id="debut_116"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6512261p.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="S"><strong>Shakespeare, William (1564-1616)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6567030c" target="_blank">Le Songe d'une nuit d'été, ill. Arthur Rackham</a></span>
+
+<div class="debut" id="debut_117"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6567030c.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="S"><strong>Stendhal (1783-1842)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6148004p" target="_blank">Racine et Shakespeare</a></span>
+
+<div class="debut" id="debut_118"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6148004p.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65526044" target="_blank">Chroniques italiennes</a></span>
+
+<div class="debut" id="debut_119"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65526044.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6566481r" target="_blank">La Chartreuse de Parme, Tome 1, ill. V. Foulquier</a></span>
+
+<div class="debut" id="debut_121"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6566481r.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6566422w" target="_blank">La Chartreuse de Parme, Tome 2, ill. V. Foulquier</a></span>
+
+<div class="debut" id="debut_122"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6566422w.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="S"><strong>Stevenson, Robert Louis (1850-1894)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6566382t" target="_blank">L'Île au trésor, trad. André Laurie</a></span>
+
+<div class="debut" id="debut_123"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6566382t.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="S"><strong>Swift, Jonathan (1667-1745)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65665546" target="_blank">Voyages de Gulliver, trad. B.-H. Gausseron</a></span>
+
+<div class="debut" id="debut_124"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65665546.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">
+<div class="cleaner">&nbsp;</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600288k" target="_blank">Voyages de Gulliver dans des contrées lointaines, ill. Grandville. Tome 1</a></span>
+
+<div class="debut" id="debut_126"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600288k.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002890" target="_blank">Voyages de Gulliver dans des contrées lointaines, ill. Grandville. Tome 2</a></span>
+
+<div class="debut" id="debut_125"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002890.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="T"><strong>Twain, Mark (1835-1910)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5706208j" target="_blank">Les Aventures de Tom Sawyer, trad. William-L. Hughes et ill. Achille Sirouy</a></span>
+
+<div class="debut" id="debut_127"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5706208j.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="V"><strong>Vaschide, Nicolas (1873-1907)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k54953498" target="_blank">Essai sur la psychologie de la main</a></span>
+
+<div class="debut" id="debut_128"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k54953498.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="V"><strong>Verhaeren, Émile (1855-1916)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6572610d" target="_blank">Sensations</a></span>
+
+<div class="debut" id="debut_129"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6572610d.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="V"><strong>Verlaine, Paul (1844-1896)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10665702" target="_blank">Mes Prisons</a></span>
+
+<div class="debut" id="debut_130"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10665702.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="V"><strong>Verne, Jules (1828-1905)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1340157" target="_blank">Voyage au centre de la terre</a></span>
+
+<div class="debut" id="debut_131"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k1340157.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600252z" target="_blank">Cinq semaines en ballon, ill. Riou et de Montaut</a></span>
+
+<div class="debut" id="debut_132"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600252z.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600259v" target="_blank">Voyage au centre de la terre, ill. Riou</a></span>
+
+<div class="debut" id="debut_133"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600259v.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600254s" target="_blank">Les Enfants du Capitaine Grant, voyage autour du monde</a></span>
+
+<div class="debut" id="debut_134"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600254s.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600253c" target="_blank">De La Terre à la lune, ill. de Montaut</a></span>
+
+<div class="debut" id="debut_135"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600253c.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600258f" target="_blank">Vingt mille lieues sous les mers, ill. Neuville et Riou</a></span>
+
+<div class="debut" id="debut_136"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600258f.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600244d" target="_blank">Le Tour du monde en quatre-vingts jours, ill. Neuville et Benett</a></span>
+
+<div class="debut" id="debut_137"><a href="http://gallica.bnf.fr/ark:/12148/btv1b8600244d.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002556" target="_blank">L'Ile mystérieuse, ill. Férat</a></span>
+
+<div class="debut" id="debut_138"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002556.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002571" target="_blank">Les Tribulations d'un Chinois en Chine, ill. Benett</a></span>
+
+<div class="debut" id="debut_139"><a href="http://gallica.bnf.fr/ark:/12148/btv1b86002571.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6570628g" target="_blank">Mathias Sandorf, ill. Benett</a></span>
+
+<div class="debut" id="debut_140"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6570628g.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6512278z" target="_blank">Robur-le-conquérant, ill. Benett et Roux</a></span>
+
+<div class="debut" id="debut_141"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6512278z.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6105866h" target="_blank">Le Château des Carpathes</a></span>
+
+<div class="debut" id="debut_142"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6105866h.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65773684" target="_blank">Un capitaine de quinze ans, ill. H. Meyer</a></span></div>
+
+<div class="ressourcetexte"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k65773684.epub" target="_blank">Télécharger l'EPUB</a></div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="V"><strong>Vigny, Alfred de (1797-1863)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10567388" target="_blank">Journal d'un poète</a></span>
+
+<div class="debut" id="debut_144"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k10567388.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="V"><strong>Voltaire (1694-1778)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5625137x" target="_blank">Vie de Molière</a></span>
+
+<div class="debut" id="debut_145"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5625137x.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="filettyperessource">
+<div class="typeressource" id="Z"><strong>Zola, Émile (1840-1902)</strong></div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6514275b" target="_blank">Thérèse Raquin</a></span>
+
+<div class="debut" id="debut_146"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6514275b.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6213165k" target="_blank">Les Rougon-Macquart. Tome 3, Le ventre de Paris</a></span>
+
+<div class="debut" id="debut_147"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6213165k.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5532754m" target="_blank">Le Ventre de Paris, ill. André Gill, Georges Bellenger, Castelli, etc.</a></span>
+
+<div class="debut" id="debut_148"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k5532754m.epub" target="_blank">Télécharger l'EPUB</a></div>
+</div>
+
+<div class="cleaner">&nbsp;</div>
+</div>
+
+<div class="ressourcebloc">
+<div class="ressourcetexte"><span class="titre"><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6213380z" target="_blank">Nana</a></span>
+
+<div style="display: block; "><a href="http://gallica.bnf.fr/ark:/12148/bpt6k6213380z.epub" target="_blank">Télécharger l'EPUB</a><br>
+&nbsp;<br>
+Envie d’en lire davantage&nbsp;? Gallica propose enfin <a href="http://gallica.bnf.fr/services/engine/search/sru?operation=searchRetrieve&amp;exactSearch=false&amp;collapsing=false&amp;version=1.2&amp;query=%28dc.format%20all%20%22epub%22%29&amp;suggest=10" target="_blank">plus de 4500 EPUB à télécharger gratuitement</a>.<br>
+&nbsp;</div>
+</div>
+
+<div style="padding: 0; padding-bottom: 136.7781744008159%; position: relative;  display: block; height: 0; "><iframe src="https://gallica.bnf.fr/ark:/12148/btv1b86002890/f15.image.mini" style="position: absolute;  top: 0; bottom: 0; left: 0; width: 50%; height: 50%; border: 0;"></iframe></div>
+</div>
+
+        </div>
+    </div>
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/paragraphs/paragraph--texteriche-para.html.twig' -->
+
+</div>
+          </div>
+  
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field.html.twig' -->
+
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'field' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ field--node--field-motcle-bb--billet-blog.html.twig
+   ▪️ field--node--field-motcle-bb.html.twig
+   ▪️ field--node--billet-blog.html.twig
+   ✅ field--field-motcle-bb.html.twig
+   ▪️ field--entity-reference.html.twig
+   ▪️ field.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field--field-motcle-bb.html.twig' -->
+<div class="mots_cles">
+    <ul>
+                <li>
+                            <a href="/accueil/fr/html/recherche-par-mots-cles?query_motcle=4033">École</a>
+        </li>
+                <li>
+                            <a href="/accueil/fr/html/recherche-par-mots-cles?query_motcle=1857">Gallica 20 ans</a>
+        </li>
+                <li>
+                            <a href="/accueil/fr/html/recherche-par-mots-cles?query_motcle=276">Numérisation</a>
+        </li>
+                <li>
+                            <a href="/accueil/fr/html/recherche-par-mots-cles?query_motcle=4088">Jean Giraudoux</a>
+        </li>
+                <li>
+                            <a href="/accueil/fr/html/recherche-par-mots-cles?query_motcle=4146">Louis-Sébastien Mercier</a>
+        </li>
+            </ul>
+</div>
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/fields/field--field-motcle-bb.html.twig' -->
+
+
+  </div>
+
+</article>
+
+<!-- END OUTPUT from 'core/modules/node/templates/node.html.twig' -->
+
+
+<!-- END RENDERER -->
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/region.html.twig' -->
+
+
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footerwrapper">
+    
+    
+    
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'region' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ region--footerthird.html.twig
+   ✅ region.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/region.html.twig' -->
+  <div class="region region-footerthird">
+    <!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_footerblock
+   * node:7295
+   * node:7296
+   * node:7293
+   * node:78
+   * node:7294
+   * config:system.menu.footer
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_footerblock
+-->
+<!-- CACHE MAX-AGE: -1 -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_footerblock
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_footerblock
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.028074026 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-footerblock.html.twig
+   ▪️ block--FooterBlock-block.html.twig
+   ▪️ block--gallica-customblock.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-footerblock" class="block block-gallica-customblock block-footerblock-block">
+  
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'footertpl' -->
+<!-- BEGIN OUTPUT from 'modules/custom/gallica_customblock/templates/footertpl.html.twig' -->
+<div class="footercustomblock">
+
+    <div id="menufooter" class="menufooter" aria-label="menu footer">
+        <nav>
+            
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'menu__footer' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ menu--footer.html.twig
+   ✅ menu.html.twig
+-->
+<!-- BEGIN OUTPUT from 'core/modules/system/templates/menu.html.twig' -->
+
+              <ul>
+              <li>
+        <a href="/accueil/fr/html/contact" data-drupal-link-system-path="node/7295">Contact</a>
+              </li>
+          <li>
+        <a href="/accueil/fr/html/aide-a-la-recherche" data-drupal-link-system-path="node/7296">Aide</a>
+              </li>
+          <li>
+        <a href="/accueil/fr/html/cookies" data-drupal-link-system-path="node/7293">Cookies</a>
+              </li>
+          <li>
+        <a href="/accueil/fr/html/mentions-legales" data-drupal-link-system-path="node/78">Mentions légales</a>
+              </li>
+          <li>
+        <a href="https://gallica.bnf.fr/accueil/fr/html/conditions-dutilisation-de-gallica">Conditions d&#039;utilisation</a>
+              </li>
+          <li>
+        <a href="/accueil/fr/html/accessibilite" data-drupal-link-system-path="node/7294">Accessibilité : Non conforme</a>
+              </li>
+        </ul>
+  
+
+
+<!-- END OUTPUT from 'core/modules/system/templates/menu.html.twig' -->
+
+
+        </nav>
+    </div>
+
+    <div class="sociauxfooter">
+        <ul>
+            <li>
+                <a target="_blank" href="https://fr-fr.facebook.com/GallicaBnF">
+                    <span class="logofacebook"></span>
+                    <span class="sr-only">Facebook (new window)</span>
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://www.instagram.com/gallicabnf/">
+                    <span class="logoinstagram"></span>
+                    <span class="sr-only">Instagram (new window)</span>
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://twitter.com/gallicabnf">
+                    <span class="logox"></span>
+                    <span class="sr-only">X (new window)</span>
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://fr.pinterest.com/gallicabnf/">
+                    <span class="logopinterest"></span>
+                    <span class="sr-only">Pinterest (new window)</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+<!-- END OUTPUT from 'modules/custom/gallica_customblock/templates/footertpl.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+<!-- END RENDERER --><!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_tagaucitroncentraliseaccblogblock
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_tagaucitroncentraliseaccblogblock
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.004150152 -->
+<!-- START RENDERER -->
+<!-- CACHE-HIT: No -->
+<!-- CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_tagaucitroncentraliseaccblogblock
+-->
+<!-- CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+   * route
+   * languages:language_url
+   * url.site
+-->
+<!-- CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_tagaucitroncentraliseaccblogblock
+-->
+<!-- PRE-BUBBLING CACHE TAGS:
+   * block_view
+   * config:block.block.gallica_accueilblog_tagaucitroncentraliseaccblogblock
+-->
+<!-- PRE-BUBBLING CACHE CONTEXTS:
+   * languages:language_interface
+   * theme
+   * user.permissions
+-->
+<!-- PRE-BUBBLING CACHE KEYS:
+   * entity_view
+   * block
+   * gallica_accueilblog_tagaucitroncentraliseaccblogblock
+-->
+<!-- PRE-BUBBLING CACHE MAX-AGE: -1 -->
+<!-- RENDERING TIME: 0.267792940 -->
+
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'block' -->
+<!-- FILE NAME SUGGESTIONS:
+   ▪️ block--gallica-accueilblog-tagaucitroncentraliseaccblogblock.html.twig
+   ▪️ block--TagAuCitronCentraliseAccblogBlock-block.html.twig
+   ▪️ block--bnf-tagaucitroncentraliseaccblog.html.twig
+   ✅ block.html.twig
+-->
+<!-- 💡 BEGIN CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+<div id="block-gallica-accueilblog-tagaucitroncentraliseaccblogblock" class="block block-bnf-tagaucitroncentraliseaccblog block-tagaucitroncentraliseaccblogblock-block">
+  
+    
+      
+
+<!-- THEME DEBUG -->
+<!-- THEME HOOK: 'tagaucitroncentraliseaccblogtpl' -->
+<!-- BEGIN OUTPUT from 'modules/custom/bnf_tagaucitroncentraliseaccblog/templates/tagaucitroncentraliseaccblogtpl.html.twig' -->
+<div class="marquage">
+<script async defer type="text/javascript" src="https://multimedia-ext.bnf.fr/bnf_marquage/bnf_marquage.js??version=1.0&domaine=gallica_p.bnf.fr"></script>
+<div class="marquage-page"		           		
+	data-siten1="18798"		
+	data-level2="15"				
+	data-chapitre1="Blog"					
+	data-chapitre2=""					
+    data-titre="150 EPUB Gallica sélectionnés par le ministère de l’Éducation nationale "	>
+</div>
+</div>
+<!-- END OUTPUT from 'modules/custom/bnf_tagaucitroncentraliseaccblog/templates/tagaucitroncentraliseaccblogtpl.html.twig' -->
+
+
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/blocks/block.html.twig' -->
+
+
+<!-- END RENDERER -->
+<!-- END RENDERER -->
+  </div>
+
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/region.html.twig' -->
+
+
+    <div>
+  </footer>
+
+</div>
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/page.html.twig' -->
+
+
+  </div>
+
+<!-- END OUTPUT from 'core/modules/system/templates/off-canvas-page-wrapper.html.twig' -->
+
+
+        
+        
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"fr\/","currentPath":"node\/5660","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"fr","currentQuery":{"mode":"desktop"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"field_group":{"html_element":{"mode":"default","context":"view","settings":{"classes":"entete","show_empty_fields":false,"id":"","label_as_html":false,"element":"div","show_label":false,"label_element":"h3","label_element_classes":"","attributes":"","effect":"none","speed":"fast"}}},"user":{"uid":0,"permissionsHash":"1955b36ab78c58f68a7fb2383023592920d1e27e0a96848ef04b787ae6772626"}}</script>
+<script src="/accueil/sites/default/files/languages/fr_sFMKpPqwf1DeZZljby-TBXMmex2VwL0jX_a_689i1DY.js?thjuqk"></script>
+<script src="/accueil/core/misc/drupalSettingsLoader.js?v=10.4.10"></script>
+<script src="/accueil/core/misc/drupal.js?v=10.4.10"></script>
+<script src="/accueil/core/misc/drupal.init.js?v=10.4.10"></script>
+<script src="/accueil/modules/custom/bnf_langselector/js/bnf_langselector.js?v=1.x"></script>
+<script src="/accueil/modules/custom/gallica10_search/js/typeahead.js?v=1.x"></script>
+<script src="/accueil/modules/custom/gallica10_search/js/gallica10_search.js?v=1.x"></script>
+<script src="/accueil/modules/custom/gallica10_search/js/gallica10_suggest.js?v=1.x"></script>
+<script src="/accueil/themes/custom/gallica_accueilblog/js/jquery.mousewheel.js?v=10.4.10"></script>
+<script src="/accueil/themes/custom/gallica_accueilblog/js/jquery.jscrollpane.min.js?v=10.4.10"></script>
+<script src="/accueil/themes/custom/gallica_accueilblog/js/script.js?v=10.4.10"></script>
+<script src="/accueil/modules/custom/gallica_customblock/js/gallica_customblock.js?v=1.x"></script>
+
+  </body>
+</html>
+
+  
+<!-- END CUSTOM TEMPLATE OUTPUT from 'themes/custom/gallica_accueilblog/templates/layout/html.html.twig' -->
+

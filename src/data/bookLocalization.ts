@@ -1,4 +1,5 @@
 import type {
+  WorkAuthorCredit,
   WorkLocale,
   WorkProfile,
   WriterProfile,
@@ -11,10 +12,18 @@ export type LocalizedBookText = {
 };
 
 type BookWithWriter = WorkProfile & {
+  countryId?: string;
   writer?: WriterProfile;
   writerId?: string;
   writerName?: string;
 };
+
+export type BookAuthorReference = Readonly<{
+  countryId: string;
+  writerId: string;
+  creditNames?: Readonly<Partial<Record<WorkLocale, string>>>;
+  attribution: NonNullable<WorkAuthorCredit["attribution"]>;
+}>;
 
 const curatedEnglishBookWriterNames = new Map<string, string>([
   ["dostoevsky", "Fyodor Dostoevsky"],
@@ -148,7 +157,7 @@ export function selectWriterYears(
   return stored.match(/-?\d{3,4}/u)?.[0] || "";
 }
 
-export function selectBookWriterName(
+function selectLegacyBookWriterName(
   work: BookWithWriter,
   locale: WorkLocale,
   fallback = locale === "en" ? "Author" : "Автор"
@@ -168,6 +177,152 @@ export function selectBookWriterName(
 
   const stableName = stableWriterIdName(work.writer?.id || work.writerId || "");
   return stableName || fallback;
+}
+
+function linkedAuthorName(
+  work: BookWithWriter,
+  author: WorkAuthorCredit,
+  locale: WorkLocale
+) {
+  const reviewedCredit = author.creditNames?.[locale]?.trim() || "";
+  if (
+    reviewedCredit &&
+    (locale === "ru" || isProfessionalEnglishWriterName(reviewedCredit))
+  ) {
+    return reviewedCredit;
+  }
+
+  const authorWriterId = author.writerId?.trim() || "";
+  const anchorWriterId = (work.writer?.id || work.writerId || "").trim();
+  const authorCountryId =
+    author.countryId?.trim() || work.countryId?.trim() || "";
+  const isLegacyAnchor =
+    authorWriterId &&
+    authorWriterId === anchorWriterId &&
+    (!author.countryId || !work.countryId || authorCountryId === work.countryId);
+  if (isLegacyAnchor) {
+    return selectLegacyBookWriterName(work, locale, "");
+  }
+  if (locale === "en" && authorWriterId) {
+    return stableWriterIdName(authorWriterId);
+  }
+  return "";
+}
+
+/**
+ * Returns only author credits that can safely link to a writer profile.
+ * Anonymous and literal collective credits intentionally return no link.
+ * When authorship is absent, the legacy archive owner remains the single
+ * author reference so old records preserve their exact behaviour.
+ */
+export function selectBookAuthorRefs(
+  work: BookWithWriter
+): BookAuthorReference[] {
+  if (work.authorship) {
+    if (
+      work.authorship.kind === "anonymous" ||
+      work.authorship.kind === "traditional"
+    ) {
+      return [];
+    }
+    const seen = new Set<string>();
+    return work.authorship.authors.flatMap((author) => {
+      const writerId = author.writerId?.trim() || "";
+      const countryId =
+        author.countryId?.trim() || work.countryId?.trim() || "";
+      const key = `${countryId}:${writerId}`;
+      if (!countryId || !writerId || seen.has(key)) return [];
+      seen.add(key);
+      return [
+        {
+          countryId,
+          writerId,
+          ...(author.creditNames
+            ? { creditNames: { ...author.creditNames } }
+            : {}),
+          attribution: author.attribution || "credited",
+        },
+      ];
+    });
+  }
+
+  const countryId = work.countryId?.trim() || "";
+  const writerId = (work.writer?.id || work.writerId || "").trim();
+  if (!countryId || !writerId) return [];
+  const ru = selectLegacyBookWriterName(work, "ru", "");
+  const en = selectLegacyBookWriterName(work, "en", "");
+  return [
+    {
+      countryId,
+      writerId,
+      ...((ru || en) && {
+        creditNames: {
+          ...(ru ? { ru } : {}),
+          ...(en ? { en } : {}),
+        },
+      }),
+      attribution: "credited",
+    },
+  ];
+}
+
+export function selectBookAuthorNames(
+  work: BookWithWriter,
+  locale: WorkLocale,
+  fallback = locale === "en" ? "Author" : "Автор"
+) {
+  if (!work.authorship) {
+    return [selectLegacyBookWriterName(work, locale, fallback)];
+  }
+  if (
+    work.authorship.kind === "anonymous" ||
+    work.authorship.kind === "traditional"
+  ) {
+    return [];
+  }
+
+  const names = work.authorship.authors
+    .map((author) => linkedAuthorName(work, author, locale))
+    .filter(Boolean);
+  return names.length ? names : [fallback];
+}
+
+function joinBookAuthorNames(names: readonly string[], locale: WorkLocale) {
+  if (names.length <= 1) return names[0] || "";
+  if (names.length === 2) {
+    return `${names[0]} ${locale === "en" ? "and" : "и"} ${names[1]}`;
+  }
+  const conjunction = locale === "en" ? ", and " : " и ";
+  return `${names.slice(0, -1).join(", ")}${conjunction}${names[names.length - 1]}`;
+}
+
+export function selectBookAuthorByline(
+  work: BookWithWriter,
+  locale: WorkLocale,
+  fallback = locale === "en" ? "Author" : "Автор"
+) {
+  if (work.authorship?.kind === "anonymous") {
+    return locale === "en" ? "Anonymous" : "Аноним";
+  }
+  if (work.authorship?.kind === "traditional") {
+    return locale === "en" ? "Traditional work" : "Традиционное произведение";
+  }
+  return joinBookAuthorNames(
+    selectBookAuthorNames(work, locale, fallback),
+    locale
+  );
+}
+
+/**
+ * Backwards-compatible name retained for existing callers. It now returns the
+ * factual byline when explicit authorship is present.
+ */
+export function selectBookWriterName(
+  work: BookWithWriter,
+  locale: WorkLocale,
+  fallback = locale === "en" ? "Author" : "Автор"
+) {
+  return selectBookAuthorByline(work, locale, fallback);
 }
 
 export function selectBookOriginalLanguage(

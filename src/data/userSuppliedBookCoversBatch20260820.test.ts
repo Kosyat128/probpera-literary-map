@@ -35,6 +35,15 @@ function sha256(value: Buffer) {
   return createHash("sha256").update(value).digest("hex");
 }
 
+function normalizedTitle(value = "") {
+  return value
+    .normalize("NFKC")
+    .toLocaleLowerCase("ru")
+    .replace(/ё/gu, "е")
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .trim();
+}
+
 describe("пользовательские редакционные обложки - batch 2026-08-20", () => {
   it("подключает все 43 artwork третьим манифестом и сохраняет прежние primary", () => {
     const entries = userSuppliedBookCoverBatch20260820Manifest.entries;
@@ -111,20 +120,24 @@ describe("пользовательские редакционные обложк
       const key = `${countryId}:${writerId}:${work.id}`;
       const canonical = baselineByKey.get(key);
       expect(canonical, key).toBeDefined();
-      expect(canonical?.translations?.ru?.title).toBe(work.title);
+      expect(
+        [work.title, ...(work.alternateTitles || [])].map(normalizedTitle)
+      ).toContain(normalizedTitle(canonical?.translations?.ru?.title));
       expect(canonical?.translations?.en?.title).toMatch(/[A-Za-z]/u);
       expect(canonical?.sources?.length).toBeGreaterThan(0);
       expect(canonical?.externalIds?.length).toBeGreaterThan(0);
       expect(bookPublicationIssues(canonical!)).toEqual([]);
       expect(isPublicBook(canonical!)).toBe(true);
-      expect(JSON.stringify(canonical)).not.toMatch(/isbn[-_ ]?1[03]/iu);
+      // The artwork batch itself must not invent an ISBN. A later reviewed
+      // bibliographic overlay may legitimately attach source-record ISBNs.
+      expect(JSON.stringify(work)).not.toMatch(/isbn[-_ ]?1[03]/iu);
     }
 
-    expect(archive).toHaveLength(9_768);
-    expect(baseline).toHaveLength(9_768);
-    expect(archive.filter(isPublicBook)).toHaveLength(48);
-    expect(baseline.filter(isPublicBook)).toHaveLength(48);
-    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_720);
+    expect(archive).toHaveLength(9_761);
+    expect(baseline).toHaveLength(9_761);
+    expect(archive.filter(isPublicBook)).toHaveLength(46);
+    expect(baseline.filter(isPublicBook)).toHaveLength(46);
+    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_715);
   });
 
   it("применяет только 31 primary и оставляет 12 secondary вне публичного overlay", () => {

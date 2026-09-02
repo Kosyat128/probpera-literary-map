@@ -23,7 +23,7 @@ jobs:
   reconcile:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 120
     environment:
       name: production
 
@@ -61,6 +61,7 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 24
+          cache: npm
 
       - name: Pre-pull and pin the database image for this runner
         env:
@@ -110,12 +111,14 @@ jobs:
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
         run: |
           set -Eeuo pipefail
           missing=()
           [[ -n "$SUPABASE_DB_URL" ]] || missing+=(SUPABASE_DB_URL)
           [[ -n "$SUPABASE_URL" ]] || missing+=(VITE_SUPABASE_URL)
+          [[ -n "$SUPABASE_SERVICE_ROLE_KEY" ]] || missing+=(SUPABASE_SERVICE_ROLE_KEY)
           [[ -n "$BACKUP_ENCRYPTION_KEY" ]] || missing+=(BACKUP_ENCRYPTION_KEY)
           if (( ${#missing[@]} > 0 )); then
             echo "::error::Missing required GitHub Actions secrets: ${missing[*]}"
@@ -141,7 +144,7 @@ jobs:
             echo "# Production database reconciliation"
             echo
             printf '%s\n' "- Repository SHA: $EXPECTED_MAIN_SHA"
-            echo "- Migration range: 20260808_article_translations through 20260902_zz_article_working_drafts_health"
+            echo "- Migration range: 20260808_article_translations through 20260902_zz_literary_archive_atomic_release"
             echo "- Guard: exact reviewed SHA-256 allowlist"
           } > reconciliation/summary.md
 
@@ -253,7 +256,7 @@ jobs:
           bash scripts/database/supabase-database-safety.sh verify-production \
             reconciliation/verify.sql \
             reconciliation/production-verification.txt
-          expected='schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=31;invalid_indexes=0'
+          expected='schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=34;invalid_indexes=0'
           printf '%s\n' "$expected" > reconciliation/production-verification-expected.txt
           actual="$(tr -d '\r\n' < reconciliation/production-verification.txt)"
           [[ "$actual" == "$expected" ]] || {
@@ -265,6 +268,59 @@ jobs:
             "- Expected production verification: $expected" \
             "- Actual production verification: $actual" \
             >> reconciliation/summary.md
+
+      - name: Validate the pinned atomic archive service credential
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: >-
+          node scripts/database/verify-book-cover-batch-20260820.mjs
+          --validate-environment-only
+
+      - name: Install the locked dependency graph for the archive release
+        run: npm ci
+
+      - name: Run the read-only full archive preflight
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/sync-literary-archive.mjs --preflight
+
+      - name: Reconfirm the exact main tip before the archive commit
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -Eeuo pipefail
+          current_main_sha="$(
+            git ls-remote --exit-code origin refs/heads/main \
+              | awk '{ print $1 }'
+          )"
+          [[ "$current_main_sha" == "$EXPECTED_MAIN_SHA" ]] || {
+            echo "::error::main advanced after archive preflight; start a new reviewed run."
+            exit 1
+          }
+
+      - name: Publish the full literary archive in one atomic commit
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          set -Eeuo pipefail
+          node scripts/sync-literary-archive.mjs --apply \
+            --enable-evidence-v2 \
+            --receipt-file reconciliation/literary-archive-release-receipt.json
+          echo "- Full literary archive atomic release: committed" >> reconciliation/summary.md
+
+      - name: Run the read-only atomic archive postflight
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          set -Eeuo pipefail
+          node scripts/sync-literary-archive.mjs --postflight \
+            --receipt-file reconciliation/literary-archive-release-receipt.json
+          node scripts/database/verify-book-cover-batch-20260820.mjs
+          echo "- Atomic archive postflight and reviewed cover subset: passed" >> reconciliation/summary.md
 
       - name: Finalize redacted summary
         if: always()
@@ -285,6 +341,7 @@ jobs:
           path: |
             reconciliation/migration-manifest.json
             reconciliation/summary.md
+            reconciliation/literary-archive-release-receipt.json
             reconciliation/production-verification-expected.txt
             reconciliation/production-verification.txt
           retention-days: 90

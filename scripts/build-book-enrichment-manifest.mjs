@@ -21,6 +21,10 @@ import {
   normalizeBookIdentity,
 } from "./lib/book-enrichment-policy.mjs";
 import { reviewedPayload } from "./lib/book-enrichment-promotion.mjs";
+import {
+  buildDuplicateResolutionApplication,
+  loadReviewedDuplicateResolutionManifest,
+} from "./lib/book-canon-duplicate-resolutions.mjs";
 
 const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -71,6 +75,14 @@ const enrichmentActionsPath = path.join(
   "books.enrichment-actions.json"
 );
 const dataDirectory = path.join(projectRoot, "data");
+const duplicateResolutionPath = path.join(
+  dataDirectory,
+  "book-canon-duplicate-resolutions-batch01.json"
+);
+const canonRegistryPath = path.join(
+  dataDirectory,
+  "book-canon-source-registry.json"
+);
 const shouldWrite = process.argv.includes("--write");
 const shouldCheck = process.argv.includes("--check");
 const requestedDate = process.argv
@@ -447,6 +459,9 @@ function reportMarkdown(report) {
     `- Точных alias-merge в уже проверенные публичные canonical works: ${summary.verifiedAliasMerges}.`,
     `- Reviewed external-identity merge у того же автора: ${summary.curatedReviewedIdentityMerges}.`,
     `- Явных independently reviewed исправлений неверной writer-связи: ${summary.curatedCrossWriterCorrections}.`,
+    `- Reviewed canon Work-identity merge: ${summary.canonReviewedIdentityMerges}.`,
+    `- Runtime exact-title alias без создания второй карточки: ${summary.canonReviewedTitleAliases}.`,
+    `- Сохранённых multiwork manifestation hold: ${summary.canonReviewedHeldManifestations}.`,
     "",
     "## Правила текста и прав",
     "",
@@ -466,11 +481,15 @@ const [
   generatedPayload,
   existingManifest,
   batches,
+  duplicateResolutionManifest,
+  canonRegistry,
 ] = await Promise.all([
     loadArchiveSource(),
     readJsonIfPresent(generatedBooksPath, { works: {} }),
     readJsonIfPresent(manifestPath, null),
     loadCuratedBatches(),
+    loadReviewedDuplicateResolutionManifest(duplicateResolutionPath),
+    readJsonIfPresent(canonRegistryPath, null),
   ]);
 
 if (batches.conflicts.length) {
@@ -558,12 +577,11 @@ targetRecords.sort((left, right) =>
   recordKey(left).localeCompare(recordKey(right), "en")
 );
 
-const sourceSnapshots = new Map();
-for (const record of targetRecords) {
+function buildSourceSnapshot(record, archiveCard) {
   const key = recordKey(record);
   const snapshot = {
     recordKey: key,
-    archiveCard: Boolean(record.inArchive),
+    archiveCard,
     sourceKind: sourceKind(record, rawGeneratedKeys),
     countryId: record.countryId,
     countryName: record.countryName || null,
@@ -585,12 +603,64 @@ for (const record of targetRecords) {
     ),
   };
   snapshot.sourceFingerprint = fingerprint(snapshot);
-  sourceSnapshots.set(key, snapshot);
+  return snapshot;
 }
+
+const sourceSnapshots = new Map();
+for (const record of targetRecords) {
+  sourceSnapshots.set(
+    recordKey(record),
+    buildSourceSnapshot(record, Boolean(record.inArchive))
+  );
+}
+const archiveSourceSnapshots = new Map(
+  sourceArchiveBooks.map((record) => [
+    recordKey(record),
+    buildSourceSnapshot(record, true),
+  ])
+);
 
 const rejectReasonsByKey = new Map(
   targetRecords.map((record) => [recordKey(record), automaticRejectReasons(record)])
 );
+const liveResolutionInputManifest = {
+  records: [...sourceSnapshots.entries()].map(([key, source]) => ({
+    recordKey: key,
+    source: {
+      fingerprint: source.sourceFingerprint,
+      externalIdentity: source.externalIdentities[0] || null,
+    },
+  })),
+};
+const duplicateResolutionApplication = buildDuplicateResolutionApplication(
+  duplicateResolutionManifest,
+  {
+    canonRegistry,
+    enrichmentManifest: liveResolutionInputManifest,
+    records: targetRecords.map((record) => ({
+      ...record,
+      recordKey: recordKey(record),
+    })),
+  }
+);
+for (const action of duplicateResolutionApplication.merges) {
+  if ((rejectReasonsByKey.get(action.from) || []).length > 0) {
+    throw new Error(`duplicate-resolution-source-rejected:${action.from}`);
+  }
+  if ((rejectReasonsByKey.get(action.into) || []).length > 0) {
+    throw new Error(`duplicate-resolution-survivor-rejected:${action.into}`);
+  }
+}
+const reviewedResolutionMergeBySource = new Map(
+  duplicateResolutionApplication.merges.map((action) => [action.from, action])
+);
+const reviewedResolutionAliasesByRecordKey = new Map();
+for (const action of duplicateResolutionApplication.aliases) {
+  if (!reviewedResolutionAliasesByRecordKey.has(action.recordKey)) {
+    reviewedResolutionAliasesByRecordKey.set(action.recordKey, []);
+  }
+  reviewedResolutionAliasesByRecordKey.get(action.recordKey).push(action);
+}
 // Promotion output must never affect the classification input. Only verified
 // works from the raw/base archive may act as pre-existing canonical aliases.
 const publicAliases = canonicalAliasMap(sourceArchiveBooks, isPublicBook);
@@ -607,15 +677,25 @@ for (const record of targetRecords) {
   }
 }
 
+const identityResolvedEvidenceHoldCodes = new Set([
+  "complete-multipart-expression-independent-evidence-unresolved",
+  "ru-manifestation-unresolved",
+  "ru-independent-attestation-missing",
+]);
+
 function isEditorialCanonicalCandidate(record) {
   const status = record.editorial?.status || "draft";
+  const isIdentityResolvedEvidenceHold = identityResolvedEvidenceHoldCodes.has(
+    record.evidenceV2Hold?.code
+  );
   return (
     record.inArchive &&
     !rawGeneratedKeys.has(recordKey(record)) &&
     !record.id.startsWith("legacy-") &&
     (status === "reviewed" ||
       status === "verified" ||
-      record.coverRights?.status === "editorial-original")
+      record.coverRights?.status === "editorial-original" ||
+      isIdentityResolvedEvidenceHold)
   );
 }
 
@@ -676,15 +756,19 @@ const curatedCrossWriterConflictsByCanonicalKey = new Map();
 const curatedCrossWriterConflictsByCandidateKey = new Map();
 const curatedRelationIssuesByCanonicalKey = new Map();
 for (const [canonicalKey, batch] of batches.records) {
-  const canonicalRecord = targetRecordByKey.get(canonicalKey);
-  const currentSource = sourceSnapshots.get(canonicalKey);
+  // A curated canonical card may already have passed the publication gate and
+  // therefore be absent from targetRecords. It must still remain available as
+  // the destination of an independently reviewed alias/identity decision.
+  const canonicalRecord =
+    targetRecordByKey.get(canonicalKey) || archiveByKey.get(canonicalKey);
+  const currentSource =
+    sourceSnapshots.get(canonicalKey) || archiveSourceSnapshots.get(canonicalKey);
   if (
     !canonicalRecord ||
-    !currentSource ||
     batch.requestedStatus !== "ready" ||
     curatedRecordIssues(batch).length > 0 ||
     (batch.sourceFingerprint &&
-      batch.sourceFingerprint !== currentSource.sourceFingerprint)
+      batch.sourceFingerprint !== currentSource?.sourceFingerprint)
   ) {
     continue;
   }
@@ -866,6 +950,7 @@ const manifestRecords = [];
 const safeRejectActions = [];
 const safeMergeActions = [];
 const readyCurations = [];
+const readyCurationKeys = new Set();
 
 for (const record of targetRecords) {
   const key = recordKey(record);
@@ -899,7 +984,18 @@ for (const record of targetRecords) {
   let confidence = "review-required";
   let mergeInto = null;
   let decisionBasis = "incomplete-legal-quality-record";
+  const reviewedResolutionAction = reviewedResolutionMergeBySource.get(key);
+  const reviewedResolutionAliases =
+    reviewedResolutionAliasesByRecordKey.get(key) || [];
   const reasonCodes = automaticResearchReasons(record);
+  for (const aliasAction of reviewedResolutionAliases) {
+    if (aliasAction.workFirstPublishedStatus === "withheld") {
+      reasonCodes.unshift(
+        "canon-reviewed-publication-year-withheld",
+        `resolution:${aliasAction.resolutionId}`
+      );
+    }
+  }
   for (const externalIdentity of externalAuthorshipConflictsByKey.get(key) || []) {
     reasonCodes.push(
       "cross-writer-external-id-authorship-conflict",
@@ -929,6 +1025,15 @@ for (const record of targetRecords) {
     decisionBasis = "deterministic-non-canonical-import";
     reasonCodes.unshift(...rejectReasons);
     safeRejectActions.push({ recordKey: key, reasonCodes: rejectReasons });
+  } else if (reviewedResolutionAction) {
+    status = "merge";
+    confidence = "editorially-verified";
+    mergeInto = reviewedResolutionAction.into;
+    decisionBasis = reviewedResolutionAction.basis;
+    reasonCodes.unshift(
+      "duplicates-canon-reviewed-work-identity",
+      `resolution:${reviewedResolutionAction.resolutionId}`
+    );
   } else if (record.shadowOf) {
     status = "merge";
     confidence = "high";
@@ -990,7 +1095,7 @@ for (const record of targetRecords) {
   }
 
   if (status === "merge") {
-    const action = {
+    const action = reviewedResolutionAction || {
       from: key,
       into: mergeInto,
       basis: decisionBasis,
@@ -1008,6 +1113,7 @@ for (const record of targetRecords) {
       },
       curatedRecord: effectiveCuration,
     });
+    readyCurationKeys.add(key);
   }
 
   const primaryExternalIdentity = source.externalIdentities[0] || null;
@@ -1053,14 +1159,77 @@ for (const record of targetRecords) {
   });
 }
 
-const datasetFingerprint = fingerprint(
-  manifestRecords.map((record) => [
-    record.recordKey,
-    record.source.fingerprint,
-    record.status,
-    record.mergeInto || null,
-    record.curationRef?.batchDigest || null,
+// Curated records remain the deterministic bibliographic baseline even after
+// a later Evidence V2 overlay publishes or quarantines their visitor-facing
+// card. Omitting them merely because they left the non-public target set would
+// erase reviewed year/source/language fields on a clean regeneration.
+for (const [key, batch] of batches.records) {
+  if (readyCurationKeys.has(key)) continue;
+  if (
+    batch.requestedStatus !== "ready" ||
+    curatedRecordIssues(batch).length > 0
+  ) {
+    continue;
+  }
+  const sourceRecord = archiveByKey.get(key);
+  const currentSource = archiveSourceSnapshots.get(key);
+  if (!sourceRecord || !currentSource) {
+    throw new Error(`curated-baseline-source-not-found:${key}`);
+  }
+  if (
+    batch.sourceFingerprint &&
+    batch.sourceFingerprint !== currentSource.sourceFingerprint
+  ) {
+    throw new Error(`curated-baseline-source-changed:${key}`);
+  }
+  const curatedRecord = sanitizedCuratedRecord(
+    batch,
+    currentSource.sourceFingerprint,
+    existingByKey.get(key)?.curationRef
+  );
+  readyCurations.push({
+    sourceRecord: {
+      ...sourceRecord,
+      externalIdentities: currentSource.externalIdentities,
+    },
+    curatedRecord,
+  });
+  readyCurationKeys.add(key);
+}
+
+readyCurations.sort((left, right) =>
+  recordKey(left.sourceRecord).localeCompare(
+    recordKey(right.sourceRecord),
+    "en"
+  )
+);
+const curatedBaselineDigest = fingerprint(
+  readyCurations.map(({ sourceRecord, curatedRecord }) => [
+    recordKey(sourceRecord),
+    archiveSourceSnapshots.get(recordKey(sourceRecord))?.sourceFingerprint ||
+      sourceSnapshots.get(recordKey(sourceRecord))?.sourceFingerprint ||
+      null,
+    fingerprint(curatedRecord),
   ])
+);
+
+const datasetFingerprint = fingerprint(
+  {
+    records: manifestRecords.map((record) => [
+      record.recordKey,
+      record.source.fingerprint,
+      record.status,
+      record.mergeInto || null,
+      record.curationRef?.batchDigest || null,
+    ]),
+    curatedBaselineDigest,
+    duplicateResolutionApplication: {
+      manifestFingerprint: duplicateResolutionApplication.manifestFingerprint,
+      merges: duplicateResolutionApplication.merges,
+      aliases: duplicateResolutionApplication.aliases,
+      heldDecisions: duplicateResolutionApplication.heldDecisions,
+    },
+  }
 );
 const generatedAt =
   existingManifest?.datasetFingerprint === datasetFingerprint
@@ -1160,6 +1329,12 @@ const summary = {
       action.basis ===
       "curated-reviewed-cross-writer-authorship-correction"
   ).length,
+  canonReviewedIdentityMerges: safeMergeActions.filter(
+    (action) => action.basis === "canon-reviewed-work-identity-resolution"
+  ).length,
+  canonReviewedTitleAliases: duplicateResolutionApplication.aliases.length,
+  canonReviewedHeldManifestations:
+    duplicateResolutionApplication.heldDecisions.length,
   curatedUndeclaredCrossWriterConflicts: [
     ...curatedCrossWriterConflictsByCanonicalKey.values(),
   ].reduce((total, conflicts) => total + conflicts.length, 0),
@@ -1167,6 +1342,8 @@ const summary = {
     (action) => action.basis === "same-writer-exact-normalized-title-shadow"
   ).length,
   curatedBatches: batches.filenames,
+  curatedBaselineRecords: readyCurations.length,
+  curatedBaselineDigest,
 };
 
 const manifest = {
@@ -1190,11 +1367,23 @@ const manifest = {
     reject: "exclude-safe",
   },
   summary,
+  curatedBaseline: {
+    records: readyCurations.length,
+    digest: curatedBaselineDigest,
+  },
+  duplicateResolution: {
+    manifestId: duplicateResolutionApplication.manifestId,
+    fingerprint: duplicateResolutionApplication.manifestFingerprint,
+    appliedMergeDecisions: duplicateResolutionApplication.merges.length,
+    appliedAliasDecisions: duplicateResolutionApplication.aliases.length,
+    unappliedHoldDecisions: duplicateResolutionApplication.heldDecisions.length,
+  },
   safeActions: {
     note:
-      "Actions are applied by the generated canonical-archive overlay. Raw source files remain recoverable; cross-writer merges require an explicit independently reviewed authorship correction in a curated batch.",
+      "Actions are applied by the generated canonical-archive overlay. Raw source files remain recoverable; cross-writer merges require either an explicit independently reviewed authorship correction in a curated batch or a fingerprint-pinned reviewed Work-identity resolution.",
     rejects: safeRejectActions,
     merges: safeMergeActions,
+    aliases: duplicateResolutionApplication.aliases,
   },
   records: manifestRecords,
 };
@@ -1206,8 +1395,13 @@ const enrichmentActions = {
   generatedAt: manifest.generatedAt,
   sourceManifestFingerprint: manifest.datasetFingerprint,
   source: "Deterministic reject/merge decisions from book enrichment manifest",
+  duplicateResolutionManifest: {
+    manifestId: duplicateResolutionApplication.manifestId,
+    fingerprint: duplicateResolutionApplication.manifestFingerprint,
+  },
   rejects: manifest.safeActions.rejects,
   merges: manifest.safeActions.merges,
+  aliases: manifest.safeActions.aliases,
 };
 
 const classificationReport = {
@@ -1245,6 +1439,9 @@ const classificationReport = {
   verifiedAliasMerges: safeMergeActions.filter(
     (action) => action.basis === "same-writer-exact-verified-title-alias"
   ),
+  canonReviewedTitleAliases: duplicateResolutionApplication.aliases,
+  canonReviewedHeldManifestations:
+    duplicateResolutionApplication.heldDecisions,
   shadowRawRecords: shadowRecords.map((record) => ({
     recordKey: recordKey(record),
     title: record.title,

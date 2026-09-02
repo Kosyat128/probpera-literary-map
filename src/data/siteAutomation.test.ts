@@ -12,13 +12,18 @@ describe("automatic site counters", () => {
     expect(countries).toHaveLength(200);
     expect(writers.length).toBeGreaterThan(100);
     expect(books.length).toBeGreaterThan(100);
-    expect(books.length).toBe(
-      bookArchiveCountries.reduce(
-        (total, country) =>
-          total + buildBookArchive([country]).length,
-        0
-      )
+    expect(books).toHaveLength(9_761);
+    const isolatedCountryTotal = bookArchiveCountries.reduce(
+      (total, country) => total + buildBookArchive([country]).length,
+      0
     );
+    // Two reviewed Wilde identities cross the legacy England/Ireland split;
+    // only the global build can apply those lossless Work merges.
+    expect(isolatedCountryTotal - books.length).toBe(2);
+    expect(
+      new Set(books.map((book) => `${book.countryId}:${book.writerId}:${book.id}`))
+        .size
+    ).toBe(books.length);
   });
 
   it("derives article and section counters from the merged publication catalog", () => {

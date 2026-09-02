@@ -1,5 +1,6 @@
 import { execFileSync } from "node:child_process";
 import {
+  existsSync,
   mkdtempSync,
   readFileSync,
   rmSync,
@@ -94,7 +95,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(31);
+      expect(manifest.migrations).toHaveLength(34);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -127,7 +128,20 @@ describe("guarded production database reconciliation", () => {
         "20260901_zzzzzz_admin_completion_health.sql",
         "20260902_article_working_drafts.sql",
         "20260902_zz_article_working_drafts_health.sql",
+        "20260902_literary_work_authorship.sql",
+        "20260902_literary_work_evidence_v2_attestations.sql",
+        "20260902_zz_literary_archive_atomic_release.sql",
       ]);
+      const migrationFilenames = manifest.migrations.map(
+        (migration) => migration.filename
+      );
+      expect(
+        migrationFilenames.indexOf(
+          "20260902_zz_article_working_drafts_health.sql"
+        )
+      ).toBeLessThan(
+        migrationFilenames.indexOf("20260902_literary_work_authorship.sql")
+      );
       expect(manifest.migrations.every((migration) => /^[0-9a-f]{64}$/u.test(migration.sha256))).toBe(true);
       expect(plan).not.toContain("\r\n");
       expect(plan).toContain("Historical migration checksum mismatch");
@@ -157,6 +171,9 @@ describe("guarded production database reconciliation", () => {
         "revisionHistory",
         "workTranslations",
         "workCoverArtworks",
+        "literaryWorkAuthorship",
+        "literaryWorkEvidenceV2",
+        "literaryArchiveAtomicRelease",
         "countryOverrides",
         "writerOverrides",
         "homepageMove",
@@ -216,6 +233,28 @@ describe("guarded production database reconciliation", () => {
       expect(plan).toContain("public.save_visual_content_field_v2");
       expect(plan).toContain("public.save_site_copy_block");
       expect(plan).toContain("public.moderate_comments_guarded");
+      expect(plan).toContain("public.literary_work_evidence_v2_controls");
+      expect(plan).toContain("public.literary_work_evidence_v2_attestations");
+      expect(plan).toContain("public.literary_archive_releases");
+      expect(plan).toContain("public.literary_archive_release_batches");
+      expect(plan).toContain("public.literary_archive_release_items");
+      expect(plan).toContain("public.assert_literary_work_evidence_v2_health");
+      expect(plan).toContain("public.create_literary_archive_release");
+      expect(plan).toContain(
+        "public.create_literary_archive_release(text,text,integer,integer,integer,text,jsonb,text,integer,text,boolean,jsonb)"
+      );
+      expect(plan).not.toContain(
+        "public.create_literary_archive_release(text,text,integer,integer,integer,text,text,integer,text,boolean,jsonb)"
+      );
+      expect(plan).toContain("public.stage_literary_archive_release_batch");
+      expect(plan).toContain("public.commit_literary_archive_release");
+      expect(plan).toContain("public.assert_literary_archive_live_target");
+      expect(plan).toContain(
+        "f2ef2c46ae78be553a190057f8833c5661dc1cbcc1902564708effa7f6db0026"
+      );
+      expect(plan).toContain(
+        "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef"
+      );
       expect(plan).toMatch(
         /do \$storage_policy_guard\$[\s\S]*if to_regclass\('storage\.objects'\) is not null then[\s\S]*\$storage_policy_guard\$;/u
       );
@@ -229,6 +268,9 @@ describe("guarded production database reconciliation", () => {
       expect(verification).toContain("public.get_editorial_schema_health()");
       expect(verification).toContain("ledger_entries=");
       expect(verification).toContain("work_cover_artworks=");
+      expect(verification).toContain("literary_work_authorship=");
+      expect(verification).toContain("literary_work_evidence_v2=");
+      expect(verification).toContain("literary_archive_atomic_release=");
       expect(verification).toContain("staff_editorial_read_policies=");
       expect(verification).toContain("article_bundle_rpc=");
       expect(verification).toContain("premium_machine_translation=");
@@ -732,10 +774,10 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "Migration range: 20260808_article_translations through 20260902_zz_article_working_drafts_health"
+      "Migration range: 20260808_article_translations through 20260902_zz_literary_archive_atomic_release"
     );
     expect(workflowSource).toContain(
-      "schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=31;invalid_indexes=0"
+      "schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=34;invalid_indexes=0"
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260828_zz_editor_autosaves.sql"'
@@ -782,6 +824,31 @@ describe("guarded production database reconciliation", () => {
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260902_zz_article_working_drafts_health.sql"'
     );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260902_literary_work_authorship.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"supabase/migrations/20260902_zz_literary_archive_atomic_release.sql"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"scripts/sync-literary-archive.mjs"'
+    );
+    expect(dispatchWorkflowSource).toContain(
+      '"scripts/lib/literary-archive-atomic-release.mjs"'
+    );
+    for (const dispatchPath of [
+      '"scripts/lib/book-authorship-roundtrip.mjs"',
+      '"scripts/lib/book-evidence-v2-attestations.mjs"',
+      '"src/data/**"',
+      '"data/book-canon-source-registry.json"',
+      '"package.json"',
+      '"package-lock.json"',
+    ]) {
+      expect(dispatchWorkflowSource).toContain(dispatchPath);
+    }
     expect(workflowSource).toContain(
       "reconciliation/production-verification-expected.txt"
     );
@@ -866,6 +933,71 @@ describe("guarded production database reconciliation", () => {
     ).toBeLessThan(
       workflowSource.indexOf("Apply the verified plan to production")
     );
+    const migrationVerification = workflowSource.indexOf(
+      "Verify production schema health and invariants"
+    );
+    const credentialValidation = workflowSource.indexOf(
+      "Validate the pinned atomic archive service credential"
+    );
+    const dependencyInstall = workflowSource.indexOf(
+      "Install the locked dependency graph for the archive release"
+    );
+    const archivePreflight = workflowSource.indexOf(
+      "Run the read-only full archive preflight"
+    );
+    const archiveReconfirm = workflowSource.indexOf(
+      "Reconfirm the exact main tip before the archive commit"
+    );
+    const archiveApply = workflowSource.indexOf(
+      "Publish the full literary archive in one atomic commit"
+    );
+    const archivePostflight = workflowSource.indexOf(
+      "Run the read-only atomic archive postflight"
+    );
+    expect(migrationVerification).toBeLessThan(credentialValidation);
+    expect(credentialValidation).toBeLessThan(dependencyInstall);
+    expect(dependencyInstall).toBeLessThan(archivePreflight);
+    expect(archivePreflight).toBeLessThan(archiveReconfirm);
+    expect(archiveReconfirm).toBeLessThan(archiveApply);
+    expect(archiveApply).toBeLessThan(archivePostflight);
+    expect(
+      workflowSource.match(
+        /node scripts\/sync-literary-archive\.mjs --apply/gu
+      )
+    ).toHaveLength(1);
+    expect(workflowSource).toContain("--enable-evidence-v2");
+    expect(
+      workflowSource.match(
+        /node scripts\/sync-literary-archive\.mjs --preflight/gu
+      )
+    ).toHaveLength(1);
+    expect(
+      workflowSource.match(
+        /node scripts\/sync-literary-archive\.mjs --postflight/gu
+      )
+    ).toHaveLength(1);
+    expect(
+      workflowSource.match(
+        /--receipt-file reconciliation\/literary-archive-release-receipt\.json/gu
+      )
+    ).toHaveLength(2);
+    expect(workflowSource).toContain(
+      "reconciliation/literary-archive-release-receipt.json"
+    );
+    expect(
+      workflowSource.lastIndexOf(
+        "node scripts/database/verify-book-cover-batch-20260820.mjs"
+      )
+    ).toBeGreaterThan(archivePostflight);
+    expect(workflowSource).not.toContain("--batch-2026-08-20 --apply");
+    expect(
+      existsSync(
+        path.join(
+          root,
+          ".github/workflows/sync-book-cover-batch-20260820.yml"
+        )
+      )
+    ).toBe(false);
     expect(workflowSource).not.toMatch(/echo[^\n]*SUPABASE_DB_URL/iu);
   });
 });

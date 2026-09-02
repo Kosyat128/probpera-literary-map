@@ -426,7 +426,9 @@ async function main() {
   const environment = resolveBookCoverBatchProductionEnvironment(process.env);
   buildBookCoverBatch20260820Contract();
   if (process.argv.includes("--validate-environment-only")) {
-    console.log("Production batch environment and reviewed contract are valid.");
+    console.log(
+      "Production atomic-archive environment and reviewed cover postflight contract are valid."
+    );
     return;
   }
 
@@ -440,7 +442,7 @@ async function main() {
   );
   const summary = await verifyProductionBookCoverBatch20260820({ supabase });
   console.log(
-    `Production cover batch verified: ${summary.artworks} artworks / ${summary.works} works / ${summary.primary} primary / ${summary.secondary} secondary; ${summary.supplementalWorks} supplemental works have RU+EN and source provenance.`
+    `Atomic archive cover postflight verified: ${summary.artworks} artworks / ${summary.works} works / ${summary.primary} primary / ${summary.secondary} secondary; ${summary.supplementalWorks} supplemental works have RU+EN and source provenance.`
   );
 }
 

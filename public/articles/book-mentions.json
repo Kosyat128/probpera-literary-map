@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "bookCount": 9768,
+  "bookCount": 9761,
   "articleCount": 162,
-  "linkedBookCount": 519,
+  "linkedBookCount": 522,
   "linkedArticleCount": 27,
-  "relationCount": 661,
-  "articleBookRelationCount": 35,
+  "relationCount": 664,
+  "articleBookRelationCount": 36,
   "byBook": {
     "afghanistan:khaled_hosseini:article-catalog-gxmx58": [
       {
@@ -2509,6 +2509,18 @@
         "kind": "mention"
       }
     ],
+    "france:henri_barbusse:la-tendresse": [
+      {
+        "id": "cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace",
+        "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Анри Барбюс",
+        "sectionId": "literary-essays",
+        "sectionLabel": "О литературе и культуре",
+        "readingMinutes": 5,
+        "slug": "sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-anri-barbyus",
+        "imageUrl": "https://static.tildacdn.com/tild6239-6636-4035-b639-643538396638/6890672564.jpg",
+        "kind": "mention"
+      }
+    ],
     "france:henri_barbusse:article-series-1pbbunm": [
       {
         "id": "cms-42fc788d-5d3b-41d2-9c68-f74effdd6ace",
@@ -4865,6 +4877,18 @@
         "kind": "mention"
       }
     ],
+    "russia:buninin:the-village": [
+      {
+        "id": "cms-192bc665-3461-422c-adee-d25fb394385c",
+        "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 3)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 6,
+        "slug": "sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-3",
+        "imageUrl": "https://static.tildacdn.com/tild3439-3635-4165-b637-653735383439/4c6dfa68-946f-4eef-8.png",
+        "kind": "mention"
+      }
+    ],
     "russia:bulgakov:master-and-margarita": [
       {
         "id": "cms-d37e5f07-4733-4e3c-a42e-2c5728484b21",
@@ -5713,16 +5737,6 @@
         "slug": "nepriznannye-sovremennikami-genii-literatury-german-melvill",
         "imageUrl": "https://static.tildacdn.com/tild3964-3561-4134-b337-653639393934/photo.png",
         "kind": "feature"
-      },
-      {
-        "id": "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8",
-        "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
-        "sectionId": "book-opinions",
-        "sectionLabel": "Мнение о книге",
-        "readingMinutes": 8,
-        "slug": "mnenie-o-knige-devid-mitchell-oblachnyy-atlas",
-        "imageUrl": "https://static.tildacdn.com/tild3535-3836-4566-b965-613830626138/photo.webp",
-        "kind": "mention"
       }
     ],
     "usa:herman_melville:article-series-1e5e8ag": [
@@ -7207,6 +7221,28 @@
         "kind": "mention"
       }
     ],
+    "usa:michael_crichton:the-lost-world": [
+      {
+        "id": "cms-a842e019-25b3-464b-a084-64cb6a5357cf",
+        "title": "Десять романов, которые читаются на одном дыхании",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 6,
+        "slug": "desyat-romanov-kotorye-chitayutsya-na-odnom-dyhanii",
+        "imageUrl": "https://static.tildacdn.com/tild3633-3034-4661-b035-346539326537/b55efe4f-1e32-435f-b.png",
+        "kind": "mention"
+      },
+      {
+        "id": "cms-6e8f5f8d-bb53-4c6e-b2e8-9bb8e0a7e2d1",
+        "title": "Десять романов, которые читаются на одном дыхании (Часть 2)",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 7,
+        "slug": "desyat-romanov-kotorye-chitayutsya-na-odnom-dyhanii-chast-2",
+        "imageUrl": "https://static.tildacdn.com/tild3430-3266-4365-b538-633165663064/068be666-6d9d-402c-b.png",
+        "kind": "mention"
+      }
+    ],
     "usa:michael_crichton:article-catalog-1w5szuv": [
       {
         "id": "cms-f7db4224-c6ce-4c59-982e-5e5b0c1fa9fe",
@@ -7666,7 +7702,7 @@
         "firstPublished": 1985,
         "localizations": {
           "ru": {
-            "title": "Рассказ служанки",
+            "title": "Рассказ Служанки",
             "writerName": "Маргарет Этвуд"
           },
           "en": {
@@ -7736,6 +7772,24 @@
         "kind": "mention"
       },
       {
+        "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+        "countryId": "usa",
+        "writerId": "francis_scott_fitzgerald",
+        "bookId": "the-great-gatsby",
+        "firstPublished": 1925,
+        "localizations": {
+          "ru": {
+            "title": "Великий Гэтсби",
+            "writerName": "Фрэнсис Скотт Фицджеральд"
+          },
+          "en": {
+            "title": "The Great Gatsby",
+            "writerName": "Francis Scott Fitzgerald"
+          }
+        },
+        "kind": "mention"
+      },
+      {
         "key": "england:jane_austen:pride-and-prejudice",
         "countryId": "england",
         "writerId": "jane_austen",
@@ -7795,6 +7849,24 @@
     ],
     "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02": [
       {
+        "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+        "countryId": "usa",
+        "writerId": "francis_scott_fitzgerald",
+        "bookId": "the-great-gatsby",
+        "firstPublished": 1925,
+        "localizations": {
+          "ru": {
+            "title": "Великий Гэтсби",
+            "writerName": "Фрэнсис Скотт Фицджеральд"
+          },
+          "en": {
+            "title": "The Great Gatsby",
+            "writerName": "Francis Scott Fitzgerald"
+          }
+        },
+        "kind": "mention"
+      },
+      {
         "key": "england:h_g_wells:the-food-of-the-gods",
         "countryId": "england",
         "writerId": "h_g_wells",
@@ -7840,7 +7912,7 @@
         "firstPublished": 1914,
         "localizations": {
           "ru": {
-            "title": "Освобождённый мир",
+            "title": "Освобожденный мир",
             "writerName": "Герберт Джордж Уэллс"
           },
           "en": {
@@ -7900,7 +7972,7 @@
         "firstPublished": 1917,
         "localizations": {
           "ru": {
-            "title": "Соки земли",
+            "title": "Плоды земли",
             "writerName": "Кнут Гамсун"
           },
           "en": {
@@ -7989,24 +8061,6 @@
         "kind": "mention"
       },
       {
-        "key": "usa:herman_melville:moby-dick",
-        "countryId": "usa",
-        "writerId": "herman_melville",
-        "bookId": "moby-dick",
-        "firstPublished": 1851,
-        "localizations": {
-          "ru": {
-            "title": "Моби Дик, или Белый кит",
-            "writerName": "Герман Мелвилл"
-          },
-          "en": {
-            "title": "Moby-Dick; or, The Whale",
-            "writerName": "Herman Melville"
-          }
-        },
-        "kind": "mention"
-      },
-      {
         "key": "england:david_mitchell:number9dream",
         "countryId": "england",
         "writerId": "david_mitchell",
@@ -8020,26 +8074,6 @@
           "en": {
             "title": "Number9Dream",
             "writerName": "David Stephen Mitchell"
-          }
-        },
-        "kind": "mention"
-      }
-    ],
-    "cms-941eb836-1fa5-4cd0-befc-f7ad4e8637e9": [
-      {
-        "key": "germany:theodor_mommsen:history-of-rome",
-        "countryId": "germany",
-        "writerId": "theodor_mommsen",
-        "bookId": "history-of-rome",
-        "firstPublished": 1854,
-        "localizations": {
-          "ru": {
-            "title": "Римская история",
-            "writerName": "Кристиан Маттиас Теодор Моммзен"
-          },
-          "en": {
-            "title": "A History of Rome",
-            "writerName": "Christian Matthias Theodor Mommsen"
           }
         },
         "kind": "mention"
@@ -8075,7 +8109,7 @@
         "firstPublished": 1917,
         "localizations": {
           "ru": {
-            "title": "Соки земли",
+            "title": "Плоды земли",
             "writerName": "Кнут Гамсун"
           },
           "en": {
@@ -8095,7 +8129,7 @@
         "firstPublished": 1917,
         "localizations": {
           "ru": {
-            "title": "Соки земли",
+            "title": "Плоды земли",
             "writerName": "Кнут Гамсун"
           },
           "en": {
@@ -8167,26 +8201,6 @@
         "kind": "mention"
       }
     ],
-    "cms-cb99e537-e502-4a9e-818d-b92a621a40f7": [
-      {
-        "key": "switzerland:carl_spitteler:olympian-spring",
-        "countryId": "switzerland",
-        "writerId": "carl_spitteler",
-        "bookId": "olympian-spring",
-        "firstPublished": 1900,
-        "localizations": {
-          "ru": {
-            "title": "Олимпийская весна",
-            "writerName": "Карл Фридрих Георг Шпиттелер"
-          },
-          "en": {
-            "title": "Olympian Spring",
-            "writerName": "Carl Friedrich Georg Spitteler"
-          }
-        },
-        "kind": "mention"
-      }
-    ],
     "cms-cb93763f-3fe6-42ec-aefa-f58287922352": [
       {
         "key": "usa:herman_melville:moby-dick",
@@ -8196,7 +8210,7 @@
         "firstPublished": 1851,
         "localizations": {
           "ru": {
-            "title": "Моби Дик, или Белый кит",
+            "title": "Моби Дик, или Белый Кит",
             "writerName": "Герман Мелвилл"
           },
           "en": {
@@ -8205,6 +8219,46 @@
           }
         },
         "kind": "feature"
+      }
+    ],
+    "cms-ee3f4162-54d8-4a76-a6a9-47d50d6093d2": [
+      {
+        "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+        "countryId": "usa",
+        "writerId": "francis_scott_fitzgerald",
+        "bookId": "the-great-gatsby",
+        "firstPublished": 1925,
+        "localizations": {
+          "ru": {
+            "title": "Великий Гэтсби",
+            "writerName": "Фрэнсис Скотт Фицджеральд"
+          },
+          "en": {
+            "title": "The Great Gatsby",
+            "writerName": "Francis Scott Fitzgerald"
+          }
+        },
+        "kind": "feature"
+      }
+    ],
+    "cms-a5d63a02-72bb-46bb-ba7d-9c0c9b3225b7": [
+      {
+        "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+        "countryId": "usa",
+        "writerId": "francis_scott_fitzgerald",
+        "bookId": "the-great-gatsby",
+        "firstPublished": 1925,
+        "localizations": {
+          "ru": {
+            "title": "Великий Гэтсби",
+            "writerName": "Фрэнсис Скотт Фицджеральд"
+          },
+          "en": {
+            "title": "The Great Gatsby",
+            "writerName": "Francis Scott Fitzgerald"
+          }
+        },
+        "kind": "mention"
       }
     ],
     "cms-a1285abc-3c95-45c7-b573-56860d5b2be6": [

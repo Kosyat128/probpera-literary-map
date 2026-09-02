@@ -1,58 +1,58 @@
 {
-  "generatedAt": "2026-08-31T00:00:00.000Z",
-  "datasetFingerprint": "7c576ffbd0ea1e07909404a5071a27fd1e7f4eca1ab7ccff9de463458068a38c",
+  "generatedAt": "2026-09-02T00:00:00.000Z",
+  "datasetFingerprint": "f8818711b16ffc380156f1ab042cbc25358c47a40a775ed64b26ebe29c6a7e06",
   "summary": {
-    "archiveRecords": 10054,
-    "archiveDraftCards": 9778,
-    "archiveNonPublicEditorialCards": 248,
-    "archiveNonPublicCards": 10026,
-    "rawDraftIds": 9781,
-    "rawNonPublicEditorialIds": 248,
-    "rawTargetIds": 10029,
+    "archiveRecords": 10057,
+    "archiveDraftCards": 9788,
+    "archiveNonPublicEditorialCards": 227,
+    "archiveNonPublicCards": 10015,
+    "rawDraftIds": 9791,
+    "rawNonPublicEditorialIds": 227,
+    "rawTargetIds": 10018,
     "shadowRawIds": 3,
     "statuses": {
-      "merge": 47,
-      "ready": 20,
+      "merge": 57,
       "reject": 242,
-      "research": 9720
+      "research": 9719,
+      "ready": 0
     },
     "archiveStatuses": {
-      "merge": 44,
-      "ready": 20,
+      "merge": 54,
       "reject": 242,
-      "research": 9720
+      "research": 9719,
+      "ready": 0
     },
-    "remainingCanonicalResearch": 9720,
-    "remainingArchiveResearch": 9720,
-    "safeProcessedTargetIds": 309,
+    "remainingCanonicalResearch": 9719,
+    "remainingArchiveResearch": 9719,
+    "safeProcessedTargetIds": 299,
     "sourceKinds": {
-      "curated-draft": 45,
-      "editorial-nonpublic": 248,
-      "generated-openlibrary": 6567,
+      "curated-draft": 58,
+      "editorial-nonpublic": 227,
+      "generated-openlibrary": 6564,
       "generated-shadow": 3,
       "legacy-title-only": 3166
     },
     "archiveTargetSourceKinds": {
-      "curated-draft": 45,
-      "editorial-nonpublic": 248,
-      "generated-openlibrary": 6567,
+      "curated-draft": 58,
+      "editorial-nonpublic": 227,
+      "generated-openlibrary": 6564,
       "legacy-title-only": 3166
     },
     "archiveDraftSourceKinds": {
-      "curated-draft": 45,
-      "generated-openlibrary": 6567,
+      "curated-draft": 58,
+      "generated-openlibrary": 6564,
       "legacy-title-only": 3166
     },
     "fields": {
-      "firstPublished": 6550,
-      "originalLanguage": 52,
-      "genres": 6816,
+      "firstPublished": 6545,
+      "originalLanguage": 50,
+      "genres": 6810,
       "description": 249,
       "usableDescription": 0,
-      "sourceUrl": 6816,
-      "structuredProvenance": 0,
-      "translations": 0,
-      "coverArtwork": 64
+      "sourceUrl": 6810,
+      "structuredProvenance": 21,
+      "translations": 15,
+      "coverArtwork": 52
     },
     "invalidOpenLibraryWorkIds": 28,
     "rawExternalDuplicateGroups": 119,
@@ -62,16 +62,21 @@
     "externalMergeActions": 0,
     "crossWriterAuthorshipConflictGroups": 97,
     "crossWriterAuthorshipConflictMembers": 385,
-    "verifiedAliasMerges": 7,
+    "verifiedAliasMerges": 19,
     "editorialCanonicalAliasMerges": 16,
-    "curatedReviewedAliasMerges": 6,
-    "curatedReviewedIdentityMerges": 14,
+    "curatedReviewedAliasMerges": 4,
+    "curatedReviewedIdentityMerges": 4,
     "curatedCrossWriterCorrections": 1,
+    "canonReviewedIdentityMerges": 10,
+    "canonReviewedTitleAliases": 1,
+    "canonReviewedHeldManifestations": 1,
     "curatedUndeclaredCrossWriterConflicts": 0,
     "shadowMerges": 3,
     "curatedBatches": [
       "book-enrichment-curated-batch-01.json"
-    ]
+    ],
+    "curatedBaselineRecords": 20,
+    "curatedBaselineDigest": "6a98a51d7bc2d5d80c249333bbb72630d72495e7176e29b7fc0e15bc67b07745"
   },
   "rejectReasons": {
     "edition-not-work": 2,
@@ -81,12 +86,13 @@
     "translation-or-editor-credit-in-title": 2
   },
   "mergeBases": {
+    "canon-reviewed-work-identity-resolution": 10,
     "curated-reviewed-cross-writer-authorship-correction": 1,
-    "curated-reviewed-same-writer-external-identity": 14,
-    "curated-reviewed-same-writer-title-alias": 6,
+    "curated-reviewed-same-writer-external-identity": 4,
+    "curated-reviewed-same-writer-title-alias": 4,
     "same-writer-exact-editorial-title-alias": 16,
     "same-writer-exact-normalized-title-shadow": 3,
-    "same-writer-exact-verified-title-alias": 7
+    "same-writer-exact-verified-title-alias": 19
   },
   "externalDuplicateGroups": [
     {
@@ -7816,14 +7822,50 @@
       "preserveWriterRelation": true
     },
     {
+      "from": "england:aldous_huxley:openlibrary-works-ol64365w",
+      "into": "england:aldous_huxley:brave-new-world-editorial",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
       "from": "england:charles_dickens:openlibrary-works-ol8193465w",
       "into": "england:charles_dickens:a-tale-of-two-cities",
       "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
-      "from": "france:roger_martin_du_gard:openlibrary-works-ol32012067w",
-      "into": "france:roger_martin_du_gard:the-thibaults",
+      "from": "england:george_orwell:openlibrary-works-ol1168007w",
+      "into": "england:george_orwell:animal-farm-editorial",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "england:george_orwell:openlibrary-works-ol1168083w",
+      "into": "england:george_orwell:nineteen-eighty-four",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "england:j_r_r_tolkien:legacy-j_r_r_tolkien-властелин-колец",
+      "into": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "france:flaubert:openlibrary-works-ol893707w",
+      "into": "france:flaubert:madame-bovary",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "france:saint_exupery:legacy-saint_exupery-маленький-принц",
+      "into": "france:saint_exupery:openlibrary-works-ol10263w",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "france:victor_hugo:openlibrary-works-ol1063588w",
+      "into": "france:victor_hugo:les-miserables",
       "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
@@ -7840,8 +7882,44 @@
       "preserveWriterRelation": true
     },
     {
+      "from": "russia:dostoevsky:openlibrary-works-ol21062236w",
+      "into": "russia:dostoevsky:crime-and-punishment",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "russia:tolstoy:openlibrary-works-ol267171w",
+      "into": "russia:tolstoy:war-and-peace",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
       "from": "usa:ernest_hemingway:openlibrary-works-ol63073w",
       "into": "usa:ernest_hemingway:the-old-man-and-the-sea",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "usa:francis_scott_fitzgerald:openlibrary-works-ol468431w",
+      "into": "usa:francis_scott_fitzgerald:the-great-gatsby",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "usa:harper_lee:openlibrary-works-ol3140822w",
+      "into": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "usa:jerome_david_salinger:openlibrary-works-ol3335245w",
+      "into": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+      "basis": "same-writer-exact-verified-title-alias",
+      "preserveWriterRelation": true
+    },
+    {
+      "from": "usa:ray_bradbury:openlibrary-works-ol103123w",
+      "into": "usa:ray_bradbury:fahrenheit-451-editorial",
       "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
@@ -7850,6 +7928,29 @@
       "into": "usa:suzanne_collins:the-hunger-games",
       "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
+    }
+  ],
+  "canonReviewedTitleAliases": [
+    {
+      "recordKey": "usa:mark_twain:openlibrary-works-ol53908w",
+      "title": "The Adventures of Huckleberry Finn (Tom Sawyer’s Comrade).",
+      "sourceId": "loc-twain-huckleberry-finn",
+      "basis": "canon-reviewed-exact-title-alias",
+      "aliasContractVersion": 1,
+      "resolutionId": "alias-loc-full-huckleberry-title-to-ol53908w",
+      "resolutionFingerprint": "87a6c4a4856467a813647c34d46abeeb2f6a0c44268072aa8848d1f779f751b8",
+      "targetFingerprint": "c2df34964485074e6b00e2a00db697ce3f111c2f7a5cbc3fd1700b45a9b3cef1",
+      "targetMergeProjectionFingerprint": "f75edd6b831cd812d5d6f0da068d64bfeeaa671914f76d3d67d95cdd90add1d4",
+      "workFirstPublishedStatus": "withheld",
+      "workFirstPublished": null
+    }
+  ],
+  "canonReviewedHeldManifestations": [
+    {
+      "targetId": "henry-david-thoreau-walden",
+      "decisionId": "hold-thoreau-ol55661w-as-multiwork-manifestation",
+      "recordKey": "usa:henry_david_thoreau:openlibrary-works-ol55661w",
+      "entityKind": "manifestation"
     }
   ],
   "shadowRawRecords": [

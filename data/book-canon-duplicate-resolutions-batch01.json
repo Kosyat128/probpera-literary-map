@@ -1,0 +1,895 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "book-canon-duplicate-resolutions-batch01-2026-09-02",
+  "checkedAt": "2026-09-02",
+  "applicationStatus": "generator-approved",
+  "reviewPolicy": "This manifest records reviewed Work-identity decisions and may be consumed only by the deterministic book-enrichment generator under the exact activation allowlist, full endpoint fingerprints, and lossless merge contract. It does not publish a card, certify descriptions, mutate the canon registry, run a database migration, or authorize any production workflow.",
+  "activation": {
+    "contractVersion": 1,
+    "consumer": "scripts/build-book-enrichment-manifest.mjs",
+    "approvedDecisionIds": [
+      "merge-franklin-ol2514745w-into-ol26610w",
+      "merge-thoreau-ol21138836w-into-ol55649w",
+      "merge-london-ol144705w-into-ol14942956w",
+      "merge-faulkner-ol82870w-into-editorial",
+      "merge-steinbeck-ol23205w-into-editorial",
+      "merge-hemingway-ol63009w-into-editorial",
+      "merge-maupassant-ol93822w-into-ol93840w",
+      "merge-zola-ol3521623w-into-ol7982341w",
+      "alias-loc-full-huckleberry-title-to-ol53908w",
+      "merge-wilde-england-legacy-into-ireland-legacy",
+      "merge-wilde-ol8193416w-into-ireland-legacy"
+    ],
+    "excludedDecisionIds": [
+      "hold-thoreau-ol55661w-as-multiwork-manifestation"
+    ]
+  },
+  "hashProfile": "sha256-canonical-json-resolution-v1",
+  "sourceAuthorities": [
+    {
+      "sourceId": "loc-franklin-way-to-wealth",
+      "authority": "Library of Congress",
+      "independenceGroup": "united-states-library-of-congress",
+      "sourceKind": "national-library-exhibit-record",
+      "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj1",
+      "recordId": "books-that-shaped-america:1750-to-1800:obj1",
+      "claims": [
+        "The displayed title is The Way to Wealth, and a Plan by Which Every Man May Pay His Taxes.",
+        "The displayed author is Benjamin Franklin.",
+        "The displayed broadside was printed in Philadelphia by Daniel Humphreys in 1785."
+      ]
+    },
+    {
+      "sourceId": "nara-franklin-poor-richard-1758",
+      "authority": "Founders Online, National Archives",
+      "independenceGroup": "united-states-national-archives-founders-online",
+      "sourceKind": "official-scholarly-document-edition",
+      "url": "https://founders.archives.gov/documents/Franklin/01-07-02-0146",
+      "recordId": "Franklin/01-07-02-0146",
+      "claims": [
+        "The Franklin Papers identifies the 1758 Poor Richard Improved preface as the text later most commonly titled The Way to Wealth.",
+        "The editorial note attributes the text to Benjamin Franklin.",
+        "The note distinguishes the Work and its title history from later reprint manifestations."
+      ]
+    },
+    {
+      "sourceId": "loc-thoreau-walden",
+      "authority": "Library of Congress",
+      "independenceGroup": "united-states-library-of-congress",
+      "sourceKind": "national-library-exhibit-record",
+      "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj4",
+      "recordId": "books-that-shaped-america:1850-to-1900:obj4",
+      "claims": [
+        "The displayed Work is Walden; or, Life in the Woods.",
+        "The displayed author is Henry David Thoreau.",
+        "The displayed first edition was published by Ticknor and Fields in 1854."
+      ]
+    },
+    {
+      "sourceId": "concord-thoreau-walden-1854",
+      "authority": "Concord Free Public Library Special Collections",
+      "independenceGroup": "concord-free-public-library",
+      "sourceKind": "official-special-collections-catalog",
+      "url": "https://concordlibrary.org/special-collections/emerson-celebration/Em_Con_64_65_66",
+      "recordId": "Em_Con_64",
+      "claims": [
+        "The catalog identifies Henry David Thoreau's Walden; or, Life in the Woods.",
+        "The catalog dates the Ticknor and Fields edition to 1854.",
+        "The catalog describes a physical copy inscribed by Thoreau to Ralph Waldo Emerson."
+      ]
+    },
+    {
+      "sourceId": "concord-teale-walden-civil-disobedience",
+      "authority": "Concord Free Public Library Special Collections",
+      "independenceGroup": "concord-free-public-library",
+      "sourceKind": "official-special-collections-finding-aid",
+      "url": "https://concordlibrary.org/special-collections/fin_aids/TEALE",
+      "recordId": "TEALE:Walden-c1948",
+      "claims": [
+        "The finding aid catalogs a 1948 Rinehart edition containing Walden; or, Life in the Woods and On the Duty of Civil Disobedience.",
+        "The slash-separated object contains two separately titled Works in one edition.",
+        "The cataloged object is therefore a multiwork manifestation and not a second Walden Work."
+      ]
+    },
+    {
+      "sourceId": "loc-london-call-of-the-wild",
+      "authority": "Library of Congress",
+      "independenceGroup": "united-states-library-of-congress",
+      "sourceKind": "national-library-exhibit-record",
+      "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj2",
+      "recordId": "books-that-shaped-america:1900-to-1950:obj2",
+      "claims": [
+        "The displayed title is The Call of the Wild.",
+        "The displayed author is Jack London.",
+        "The displayed Macmillan edition was published in 1903."
+      ]
+    },
+    {
+      "sourceId": "california-parks-jack-london",
+      "authority": "California State Parks",
+      "independenceGroup": "california-state-parks",
+      "sourceKind": "official-author-site-publication",
+      "url": "https://www.parks.ca.gov/pages/478/files/JL.pdf",
+      "recordId": "Jack-London-State-Historic-Park:JL.pdf",
+      "claims": [
+        "The official park publication attributes Call of the Wild to Jack London.",
+        "The publication dates Call of the Wild to 1903.",
+        "The publication treats it as one of London's individual literary Works."
+      ]
+    },
+    {
+      "sourceId": "loc-faulkner-sound-and-fury",
+      "authority": "Library of Congress",
+      "independenceGroup": "united-states-library-of-congress",
+      "sourceKind": "national-library-exhibit-record",
+      "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj14",
+      "recordId": "books-that-shaped-america:1900-to-1950:obj14",
+      "claims": [
+        "The displayed title is The Sound and the Fury.",
+        "The displayed author is William Faulkner.",
+        "The displayed Jonathan Cape and Harrison Smith edition was published in 1929."
+      ]
+    },
+    {
+      "sourceId": "prh-faulkner-sound-and-fury",
+      "authority": "Penguin Random House",
+      "independenceGroup": "penguin-random-house",
+      "sourceKind": "official-publisher-record",
+      "url": "https://www.penguinrandomhouse.com/books/48428/the-sound-and-the-fury-by-william-faulkner/9780679600176/",
+      "recordId": "ISBN:9780679600176",
+      "claims": [
+        "The publisher record identifies The Sound and the Fury by William Faulkner.",
+        "The publisher states that the Work was first published in 1929.",
+        "The product record is keyed by ISBN 9780679600176."
+      ]
+    },
+    {
+      "sourceId": "rsl-faulkner-shum-i-yarost",
+      "authority": "Российская государственная библиотека",
+      "independenceGroup": "russian-state-library",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://search.rsl.ru/ru/record/01004632880",
+      "recordId": "RSL:004632880",
+      "claims": [
+        "The cataloged Russian title is Шум и ярость.",
+        "The record attributes the novel to Уильям Фолкнер and identifies Осий Сорока as the translator from English.",
+        "The cataloged Azbuka-klassika edition is keyed by ISBN 978-5-9985-0861-5."
+      ]
+    },
+    {
+      "sourceId": "loc-steinbeck-grapes-of-wrath",
+      "authority": "Library of Congress",
+      "independenceGroup": "united-states-library-of-congress",
+      "sourceKind": "national-library-exhibit-record",
+      "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj23",
+      "recordId": "books-that-shaped-america:1900-to-1950:obj23",
+      "claims": [
+        "The displayed title is The Grapes of Wrath.",
+        "The displayed author is John Steinbeck.",
+        "The displayed Viking Press edition was published in 1939."
+      ]
+    },
+    {
+      "sourceId": "prh-steinbeck-grapes-of-wrath",
+      "authority": "Penguin Random House",
+      "independenceGroup": "penguin-random-house",
+      "sourceKind": "official-publisher-record",
+      "url": "https://www.penguinrandomhouse.com/books/354795/the-grapes-of-wrath-by-john-steinbeck/",
+      "recordId": "ISBN:9780142000663",
+      "claims": [
+        "The publisher record identifies The Grapes of Wrath by John Steinbeck.",
+        "The publisher states that the Work was first published in 1939.",
+        "The product record is keyed by ISBN 9780142000663."
+      ]
+    },
+    {
+      "sourceId": "rsl-steinbeck-grozdya-gneva",
+      "authority": "Российская государственная библиотека",
+      "independenceGroup": "russian-state-library",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://search.rsl.ru/ru/record/01005230945",
+      "recordId": "RSL:005230945",
+      "claims": [
+        "The cataloged Russian title is Гроздья гнева.",
+        "The record attributes the novel to Джон Стейнбек and identifies Наталья Волжина as the translator.",
+        "The reverse-title-page note records the source title John Steinbeck. The grapes of wrath and the year 1939."
+      ]
+    },
+    {
+      "sourceId": "loc-hemingway-bell-tolls",
+      "authority": "Library of Congress",
+      "independenceGroup": "united-states-library-of-congress",
+      "sourceKind": "national-library-exhibit-record",
+      "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj25",
+      "recordId": "books-that-shaped-america:1900-to-1950:obj25",
+      "claims": [
+        "The displayed title is For Whom the Bell Tolls.",
+        "The displayed author is Ernest Hemingway.",
+        "The displayed Scribners edition was published in 1940."
+      ]
+    },
+    {
+      "sourceId": "simon-schuster-hemingway-bell-tolls",
+      "authority": "Simon & Schuster",
+      "independenceGroup": "simon-and-schuster",
+      "sourceKind": "official-publisher-record",
+      "url": "https://www.simonandschuster.com/books/For-Whom-the-Bell-Tolls/Ernest-Hemingway/9780684830483",
+      "recordId": "ISBN:9780684830483",
+      "claims": [
+        "The official publisher page identifies For Whom the Bell Tolls by Ernest Hemingway.",
+        "The publisher states that the Work was published in 1940.",
+        "The product record is keyed by ISBN 9780684830483."
+      ]
+    },
+    {
+      "sourceId": "rsl-hemingway-po-kom-zvonit-kolokol",
+      "authority": "Российская государственная библиотека",
+      "independenceGroup": "russian-state-library",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://search.rsl.ru/ru/record/01004049694",
+      "recordId": "RSL:004049694",
+      "claims": [
+        "The cataloged Russian title is По ком звонит колокол.",
+        "The record attributes the novel to Эрнест Хемингуэй and identifies Наталья Волжина and Евгения Калашникова as translators.",
+        "The cataloged AST edition is keyed by ISBN 978-5-17-050462-6."
+      ]
+    },
+    {
+      "sourceId": "bnf-maupassant-une-vie-1883",
+      "authority": "Bibliothèque nationale de France",
+      "independenceGroup": "bibliotheque-nationale-de-france",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://catalogue.bnf.fr/ark:/12148/cb309106521",
+      "recordId": "FRBNF30910652",
+      "claims": [
+        "The bibliographic title is Une vie.",
+        "The author is Guy de Maupassant.",
+        "The V. Havard edition was published in Paris in 1883."
+      ]
+    },
+    {
+      "sourceId": "hachette-maupassant-une-vie",
+      "authority": "Hachette Éducation",
+      "independenceGroup": "hachette-livre",
+      "sourceKind": "official-publisher-record",
+      "url": "https://www.enseignants.hachette-education.com/livre/bibliolycee-une-vie-guy-de-maupassant-9782012814110/",
+      "recordId": "EAN:9782012814110",
+      "claims": [
+        "The publisher record identifies Une vie by Guy de Maupassant.",
+        "The publisher describes it as Maupassant's first novel.",
+        "The product record is keyed by EAN 9782012814110."
+      ]
+    },
+    {
+      "sourceId": "bnf-zola-therese-raquin-work",
+      "authority": "Bibliothèque nationale de France",
+      "independenceGroup": "bibliotheque-nationale-de-france",
+      "sourceKind": "national-library-work-authority-record",
+      "url": "https://catalogue.bnf.fr/ark:/12148/cb12460232j",
+      "recordId": "FRBNF12460232",
+      "claims": [
+        "The conventional Work title is Thérèse Raquin.",
+        "The authority record attributes the Work to Émile Zola.",
+        "The authority record dates the Work to 1867 and classifies it as a novel."
+      ]
+    },
+    {
+      "sourceId": "hachette-zola-therese-raquin",
+      "authority": "Hachette Éducation",
+      "independenceGroup": "hachette-livre",
+      "sourceKind": "official-publisher-record",
+      "url": "https://www.enseignants.hachette-education.com/livre/bibliolycee-therese-raquin-emile-zola-9782012815438/",
+      "recordId": "EAN:9782012815438",
+      "claims": [
+        "The publisher record identifies Thérèse Raquin by Émile Zola.",
+        "The publisher treats it as one individual complete Work.",
+        "The product record is keyed by EAN 9782012815438."
+      ]
+    },
+    {
+      "sourceId": "loc-twain-huckleberry-finn",
+      "authority": "Library of Congress",
+      "independenceGroup": "united-states-library-of-congress",
+      "sourceKind": "national-library-exhibit-record",
+      "url": "https://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj10",
+      "recordId": "books-that-shaped-america:1850-to-1900:obj10",
+      "claims": [
+        "The displayed London-edition title is The Adventures of Huckleberry Finn (Tom Sawyer’s Comrade).",
+        "The displayed author is Mark Twain, identified as Samuel Clemens.",
+        "The displayed London manifestation was published by Chatto & Windus in 1884."
+      ]
+    },
+    {
+      "sourceId": "ucpress-twain-huckleberry-finn",
+      "authority": "University of California Press and Mark Twain Project",
+      "independenceGroup": "university-of-california-mark-twain-project",
+      "sourceKind": "official-scholarly-critical-edition",
+      "url": "https://www.ucpress.edu/book/9780520237711/adventures-of-huckleberry-finn",
+      "recordId": "ISBN:9780520237711",
+      "claims": [
+        "The critical edition title is Adventures of Huckleberry Finn.",
+        "The Work is attributed to Mark Twain.",
+        "The edition is based on Mark Twain's complete original manuscript and is keyed by ISBN 9780520237711."
+      ]
+    },
+    {
+      "sourceId": "neb-wilde-dorian-gray-ru",
+      "authority": "Национальная электронная библиотека",
+      "independenceGroup": "russian-national-library-infrastructure",
+      "sourceKind": "national-library-heritage-record",
+      "url": "https://svetapp.rusneb.ru/catalog/portret-doriana-greya",
+      "recordId": "portret-doriana-greya",
+      "claims": [
+        "The Russian Work title is Портрет Дориана Грея.",
+        "The record attributes the Work to Оскар Уайльд.",
+        "The object is presented as an individual Work, not as an aggregate edition."
+      ]
+    },
+    {
+      "sourceId": "nli-wilde-dorian-gray-1891",
+      "authority": "National Library of Ireland",
+      "independenceGroup": "national-library-of-ireland",
+      "sourceKind": "national-library-bibliographic-record",
+      "url": "https://catalogue.nli.ie/Record/vtls000106195",
+      "recordId": "vtls000106195",
+      "claims": [
+        "The bibliographic title is The picture of Dorian Gray.",
+        "The main creator is Oscar Wilde, 1854-1900.",
+        "The catalog describes the 1891 Ward, Lock first edition, second issue."
+      ]
+    },
+    {
+      "sourceId": "tcd-wilde-author-identity",
+      "authority": "Trinity College Dublin, Oscar Wilde Centre",
+      "independenceGroup": "trinity-college-dublin",
+      "sourceKind": "official-university-author-record",
+      "url": "https://www.tcd.ie/owc/history/oscar-wilde/",
+      "recordId": "owc:history:oscar-wilde",
+      "claims": [
+        "The university record states that Oscar Wilde was born in Dublin.",
+        "The record identifies him as the author of The Picture of Dorian Gray.",
+        "The record is maintained by the Trinity Oscar Wilde Centre for Irish Writing."
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "targetId": "benjamin-franklin-way-to-wealth",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "The Way to Wealth",
+        "authors": ["Benjamin Franklin"]
+      },
+      "workYearResolution": {
+        "status": "authority-backed",
+        "value": 1758,
+        "sourceIds": ["nara-franklin-poor-richard-1758"],
+        "reason": "The National Archives scholarly Franklin Papers edition identifies the 1758 Poor Richard preface as the text later titled The Way to Wealth; later observed dates belong to manifestations."
+      },
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "itemId": "loc-003-the-way-to-wealth-and-a-plan-by-which-every-man-may-pay-his-taxe",
+        "itemHash": "6e78301888c8117f7b73aac2891ef26e55a6ba78091b62b17b812e224ef4bf46"
+      },
+      "sourceIds": [
+        "loc-franklin-way-to-wealth",
+        "nara-franklin-poor-richard-1758"
+      ],
+      "decisions": [
+        {
+          "decisionId": "merge-franklin-ol2514745w-into-ol26610w",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "usa:benjamin_franklin:openlibrary-works-ol2514745w",
+            "observedInputFingerprint": "31e5d4ff8e043c5eb1b6616804da4883ca661d2f49e01eaab10ea39a71bd8554",
+            "mergeProjectionFingerprint": "5e33dfc3b6f8e184b442b0aba6879e396e01d88c610a00d994da4966dbb6c7c6"
+          },
+          "to": {
+            "kind": "record",
+            "value": "usa:benjamin_franklin:openlibrary-works-ol26610w",
+            "observedInputFingerprint": "5a78b1839f6db234dc1d6437b32b1fe17fc4284090c8155322e1706d4abc218e",
+            "mergeProjectionFingerprint": "2f039f62e2cfcc0df17243dca99978a6da162280556cd7c4046535883db1042c"
+          },
+          "reason": "Both cards represent Franklin's same Work. The OL26610W card is the safer survivor because its observed 1758 Work date aligns with the original Poor Richard preface; the OL2514745W card's 1986 date describes a later manifestation."
+        }
+      ],
+      "reviewReason": "Two independent United States institutions identify one Franklin Work and document its title history. The merge only resolves identity; a later enrichment pass must retain variant titles and correct manifestation-level dates before publication.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "583e90676c8c4a4a5bdc308dfc217fc1ffdb8f9583d8753fe3518679a1657f98"
+    },
+    {
+      "targetId": "henry-david-thoreau-walden",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "Walden; or, Life in the Woods",
+        "authors": ["Henry David Thoreau"]
+      },
+      "workYearResolution": {
+        "status": "authority-backed",
+        "value": 1854,
+        "sourceIds": [
+          "loc-thoreau-walden",
+          "concord-thoreau-walden-1854"
+        ],
+        "reason": "The Library of Congress and Concord Free Public Library independently date the individual Walden Work and its first edition to 1854."
+      },
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "itemId": "loc-023-walden-or-life-in-the-woods",
+        "itemHash": "a302ed623ca56662a44dfa8f739d19d650c68ccbe81880528da4e74b2cc13333"
+      },
+      "sourceIds": [
+        "loc-thoreau-walden",
+        "concord-thoreau-walden-1854",
+        "concord-teale-walden-civil-disobedience"
+      ],
+      "decisions": [
+        {
+          "decisionId": "merge-thoreau-ol21138836w-into-ol55649w",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "usa:henry_david_thoreau:openlibrary-works-ol21138836w",
+            "observedInputFingerprint": "a4198b6e49ec7a8a970dd012f6d5c89f272c399e95e9e5837a929078634ecbbd",
+            "mergeProjectionFingerprint": "494c6872d100ea694e54da473478c3ebdff3a84a1ce7a94e096f1416fde5b69a"
+          },
+          "to": {
+            "kind": "record",
+            "value": "usa:henry_david_thoreau:openlibrary-works-ol55649w",
+            "observedInputFingerprint": "7288118ef17c763ab38a49ef3f66561996c58005067dbea35cd80ed83f520d18",
+            "mergeProjectionFingerprint": "fd9fd73dca96a6194c65fd23088f676eaa92533286d103bde9dcda6138e231a7"
+          },
+          "reason": "The cards are title variants for Thoreau's same 1854 Work. OL55649W carries the correct Work-level publication year, while OL21138836W carries a 2017 manifestation date."
+        },
+        {
+          "decisionId": "hold-thoreau-ol55661w-as-multiwork-manifestation",
+          "status": "hold",
+          "entityKind": "manifestation",
+          "from": {
+            "kind": "record",
+            "value": "usa:henry_david_thoreau:openlibrary-works-ol55661w",
+            "observedInputFingerprint": "e5a62ce988271608b1bded17a557891da0fd1b5d3dba4f10a67195db89ebd378"
+          },
+          "to": null,
+          "reason": "The slash title contains Walden and On the Duty of Civil Disobedience, two separately titled Works in one edition. It must remain held as a multiwork manifestation until Work-membership modeling exists."
+        }
+      ],
+      "reviewReason": "The national-library and Concord special-collections records identify the single Walden Work and separately document a later two-Work edition. This resolves the duplicate Work cards without collapsing the multiwork manifestation.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "40ec1868f7e2e247d933a42fccf35263b5e32559746dbb4b1d32de0592b309a9"
+    },
+    {
+      "targetId": "jack-london-call-of-the-wild",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "The Call of the Wild",
+        "authors": ["Jack London"]
+      },
+      "workYearResolution": {
+        "status": "authority-backed",
+        "value": 1903,
+        "sourceIds": [
+          "loc-london-call-of-the-wild",
+          "california-parks-jack-london"
+        ],
+        "reason": "The Library of Congress and California State Parks independently date Jack London's individual Work to 1903."
+      },
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "itemId": "loc-037-the-call-of-the-wild",
+        "itemHash": "55768b7a9ab4b37e16f149ae5bee803445db36dbfc4ae31e82bd5f14783eb348"
+      },
+      "sourceIds": [
+        "loc-london-call-of-the-wild",
+        "california-parks-jack-london"
+      ],
+      "decisions": [
+        {
+          "decisionId": "merge-london-ol144705w-into-ol14942956w",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "usa:jack_london:openlibrary-works-ol144705w",
+            "observedInputFingerprint": "f7621faf6f6878ec30327ef509be36f546273bd8a5ded3b65cc7da65951167bd",
+            "mergeProjectionFingerprint": "df63bea71d9892c5aa0d1d7f630730e5c71e71822e809c64824382142ccf3b1f"
+          },
+          "to": {
+            "kind": "record",
+            "value": "usa:jack_london:openlibrary-works-ol14942956w",
+            "observedInputFingerprint": "98d3032abee223c75908c190642488b4fa1d61a2ac3009f43a14f12982784bf0",
+            "mergeProjectionFingerprint": "40083e12ac0c1b1c85bcdfc2d4bc57bdd22abb8517360e3cdeba5ad918ce3510"
+          },
+          "reason": "Both cards identify London's same 1903 Work. OL14942956W preserves the exact article title and the correct Work-level year; OL144705W carries a 2000 manifestation date."
+        }
+      ],
+      "reviewReason": "The Library of Congress and California State Parks independently attribute the individual 1903 Work to Jack London. The later-dated duplicate is not a distinct Work and can merge into the historically aligned survivor.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "71aef75fcae5de4c2121bae95bfe876b60a54672b0e6804cc71b09a080edb4e2"
+    },
+    {
+      "targetId": "william-faulkner-sound-and-fury",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "The Sound and the Fury",
+        "authors": ["William Faulkner"]
+      },
+      "workYearResolution": {
+        "status": "authority-backed",
+        "value": 1929,
+        "sourceIds": [
+          "loc-faulkner-sound-and-fury",
+          "prh-faulkner-sound-and-fury"
+        ],
+        "reason": "The Library of Congress and the official publisher independently identify 1929 as the Work's first-publication year."
+      },
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "itemId": "loc-049-the-sound-and-the-fury",
+        "itemHash": "99f928f2ef70eb678730bb58f8e91e39d5f01cfef96445bb252f8432dab6465e"
+      },
+      "sourceIds": [
+        "loc-faulkner-sound-and-fury",
+        "prh-faulkner-sound-and-fury",
+        "rsl-faulkner-shum-i-yarost"
+      ],
+      "decisions": [
+        {
+          "decisionId": "merge-faulkner-ol82870w-into-editorial",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "usa:william_faulkner:openlibrary-works-ol82870w",
+            "observedInputFingerprint": "bfa545aa85adb5f7f307c062918436e74115cc650027d7a47d2cd6c3b7695328",
+            "mergeProjectionFingerprint": "9ab74fc8d51b23b090575b3eb115955af5d8949e48ea858e4491f6295c57dce5"
+          },
+          "to": {
+            "kind": "record",
+            "value": "usa:william_faulkner:the-sound-and-the-fury-editorial",
+            "observedInputFingerprint": "18af61b6d5d354c43d11b22878b20e456a872791c86c5b25245d9d776dfd5dce",
+            "mergeProjectionFingerprint": "6f06f879c7c4231b62258e784d8d03f235f13b3b5b9003476677fad0c93f1dfe"
+          },
+          "reason": "The cards are English- and Russian-title representations of the same Work. The editorial card is the survivor to preserve the project-owned cover and Russian-market title; an atomic merge must absorb the 1929 year, English title, source URL, and external identity from the generated card."
+        }
+      ],
+      "reviewReason": "The Library of Congress and the current rights-holder publisher independently confirm one Faulkner Work first published in 1929; the Russian State Library confirms the editorial survivor's Russian title and authorship. The survivor choice is a preservation decision and does not discard the generated card's bibliographic fields.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "588f53357a53ec519bd16cb47a45cf28540c09ac49e3f96b7d048646f3f93c4a"
+    },
+    {
+      "targetId": "john-steinbeck-grapes-of-wrath",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "The Grapes of Wrath",
+        "authors": ["John Steinbeck"]
+      },
+      "workYearResolution": {
+        "status": "authority-backed",
+        "value": 1939,
+        "sourceIds": [
+          "loc-steinbeck-grapes-of-wrath",
+          "prh-steinbeck-grapes-of-wrath"
+        ],
+        "reason": "The Library of Congress and the official publisher independently identify 1939 as the Work's first-publication year."
+      },
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "itemId": "loc-058-the-grapes-of-wrath",
+        "itemHash": "da10c7689a265c9eab41e1bf27c452ef8f2057043139842048076a6bb7628c07"
+      },
+      "sourceIds": [
+        "loc-steinbeck-grapes-of-wrath",
+        "prh-steinbeck-grapes-of-wrath",
+        "rsl-steinbeck-grozdya-gneva"
+      ],
+      "decisions": [
+        {
+          "decisionId": "merge-steinbeck-ol23205w-into-editorial",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "usa:john_steinbeck:openlibrary-works-ol23205w",
+            "observedInputFingerprint": "9018a08a23b27e3f48b6c273392bc4e4d0b0c04b99484fc67ebe4a81d1f91777",
+            "mergeProjectionFingerprint": "90d3a0f6df540321e147f0def53c80f8200c375e1f44ac6897888a1575d4e622"
+          },
+          "to": {
+            "kind": "record",
+            "value": "usa:john_steinbeck:the-grapes-of-wrath-editorial",
+            "observedInputFingerprint": "6ab949dd07a13fc2444ecc821e4c600421dec40ab765f7b8ca4e85d73f7124e3",
+            "mergeProjectionFingerprint": "09f6b19ea98e46f074eb0fae3c3d1ef15f69a891c3d60c1c6ccdeaf5d800bd2c"
+          },
+          "reason": "The cards are English- and Russian-title representations of the same Work. The editorial card is the survivor to preserve the project-owned cover and Russian-market title; an atomic merge must absorb the 1939 year, English title, source URL, and external identity from the generated card."
+        }
+      ],
+      "reviewReason": "The Library of Congress and Penguin independently confirm one Steinbeck Work first published in 1939; the Russian State Library confirms the editorial survivor's Russian title, authorship, and source-title relationship. The survivor preserves local editorial assets while the required field-union prevents loss of the generated bibliographic identity.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "3d7bd3720709f151ed02be756721b8e3b6ba6b574d8b16b82aab615984796564"
+    },
+    {
+      "targetId": "ernest-hemingway-for-whom-the-bell-tolls",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "For Whom the Bell Tolls",
+        "authors": ["Ernest Hemingway"]
+      },
+      "workYearResolution": {
+        "status": "authority-backed",
+        "value": 1940,
+        "sourceIds": [
+          "loc-hemingway-bell-tolls",
+          "simon-schuster-hemingway-bell-tolls"
+        ],
+        "reason": "The Library of Congress and Hemingway's official publisher independently identify 1940 as the Work's publication year."
+      },
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "itemId": "loc-061-for-whom-the-bell-tolls",
+        "itemHash": "b5fdb6fb73c30e123b99e89619293b43151b4feb487defacbef8c2f3771e4e22"
+      },
+      "sourceIds": [
+        "loc-hemingway-bell-tolls",
+        "simon-schuster-hemingway-bell-tolls",
+        "rsl-hemingway-po-kom-zvonit-kolokol"
+      ],
+      "decisions": [
+        {
+          "decisionId": "merge-hemingway-ol63009w-into-editorial",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "usa:ernest_hemingway:openlibrary-works-ol63009w",
+            "observedInputFingerprint": "80aa2355957261cd3941b343f61f5b8953995b1177c66ec58f73f964f8287693",
+            "mergeProjectionFingerprint": "b70cbc7f7eca4a10c6ab4f9fb33d23fb1d61e488d9f41912cd4a1f0a69418977"
+          },
+          "to": {
+            "kind": "record",
+            "value": "usa:ernest_hemingway:for-whom-the-bell-tolls-editorial",
+            "observedInputFingerprint": "d8cfe1dab88782e7e1cfa4f04efed6baf823d5dc4697e422258ac03f243b4805",
+            "mergeProjectionFingerprint": "e510f2b9e1af853c83ca792f82c225ffb98020fe636751cff4ddd57d51ebf24d"
+          },
+          "reason": "The cards are English- and Russian-title representations of the same Work. The editorial card is the survivor to preserve the project-owned cover and Russian-market title; an atomic merge must absorb the 1940 year, English title, source URL, and external identity from the generated card."
+        }
+      ],
+      "reviewReason": "The Library of Congress and Hemingway's official publisher independently identify one 1940 novel; the Russian State Library confirms the editorial survivor's Russian title and authorship. The survivor decision preserves local assets while requiring a lossless union of the generated card's bibliographic fields.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "cdbce5bd5b273fda02e43a380179345a2dd43736a133c3ed9b35e45faa7ca430"
+    },
+    {
+      "targetId": "maupassant-une-vie",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "Une vie",
+        "authors": ["Guy de Maupassant"]
+      },
+      "workYearResolution": {
+        "status": "authority-backed",
+        "value": 1883,
+        "sourceIds": ["bnf-maupassant-une-vie-1883"],
+        "reason": "The BnF first-edition bibliographic record dates the individual Une vie Work manifestation to 1883; the observed 1918 value is later-edition data."
+      },
+      "canonHoldRef": {
+        "sourceId": "bnf-dne-education-epub-selection-2018",
+        "itemId": "bnf-075-bpt6k10407421",
+        "itemHash": "1d9ad72c8d4eac31070dfb581728a4abc620315d88dc019ac74f7786dba31494"
+      },
+      "sourceIds": [
+        "bnf-maupassant-une-vie-1883",
+        "hachette-maupassant-une-vie"
+      ],
+      "decisions": [
+        {
+          "decisionId": "merge-maupassant-ol93822w-into-ol93840w",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "france:maupassant:openlibrary-works-ol93822w",
+            "observedInputFingerprint": "405e61a40fe4eb355327d5903bfdb5a1fac99d5fdfb60298cd879c0f452d6f03",
+            "mergeProjectionFingerprint": "f44648e50d4669ce06078d0797a9e4daba20e4a821e5a19714385318308323de"
+          },
+          "to": {
+            "kind": "record",
+            "value": "france:maupassant:openlibrary-works-ol93840w",
+            "observedInputFingerprint": "a17b03a9b66f32dda6b0662f090ddf470da8e3594edec97eaccccd5ace9dede8",
+            "mergeProjectionFingerprint": "05e67e0b9f84439acac42cd7efd35ebeda673c799bd4680137d6d944fc0d0c06"
+          },
+          "reason": "Vie is a shortened manifestation title for Maupassant's same novel Une vie. OL93840W preserves the exact French Work title and correct 1883 Work-level date; OL93822W carries a 1918 manifestation date."
+        }
+      ],
+      "reviewReason": "The BnF first-edition record and Hachette publisher record independently identify Une vie by Guy de Maupassant. The exact-title 1883 card is the stable Work survivor; the shortened Vie card is not a separate Work.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "12f5a42a5e3033aa1e6fed895735174328dae64e938519df3cbcbf8ce0bcbf43"
+    },
+    {
+      "targetId": "emile-zola-therese-raquin",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "Thérèse Raquin",
+        "authors": ["Émile Zola"]
+      },
+      "workYearResolution": {
+        "status": "authority-backed",
+        "value": 1867,
+        "sourceIds": ["bnf-zola-therese-raquin-work"],
+        "reason": "The BnF Work authority record explicitly dates Thérèse Raquin to 1867; neither observed Open Library year is retained as the Work year."
+      },
+      "canonHoldRef": {
+        "sourceId": "bnf-dne-education-epub-selection-2018",
+        "itemId": "bnf-146-bpt6k6514275b",
+        "itemHash": "fbac7afb0945c401e3b8d76cccceab7efe3f5a493b121c10b3be9bfc0c04955a"
+      },
+      "sourceIds": [
+        "bnf-zola-therese-raquin-work",
+        "hachette-zola-therese-raquin"
+      ],
+      "decisions": [
+        {
+          "decisionId": "merge-zola-ol3521623w-into-ol7982341w",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "france:emile_zola:openlibrary-works-ol3521623w",
+            "observedInputFingerprint": "c344096dd1279a1751e1464cc69484648f50f06b91a4786799ba2ec9ae52409b",
+            "mergeProjectionFingerprint": "0a3999179c76dd10197a77979904c2fd8120f7d17d9f8689625c622a6322ea2b"
+          },
+          "to": {
+            "kind": "record",
+            "value": "france:emile_zola:openlibrary-works-ol7982341w",
+            "observedInputFingerprint": "05a1c5fcbb8b0222bbfe807c05beb37b92297d8c03183702c2bd9f255b03b049",
+            "mergeProjectionFingerprint": "8bdf88ccf24f9e7f34e9c44c63114f69114911d4494ddd7a7b9b3f016db57b81"
+          },
+          "reason": "The accented and unaccented cards represent Zola's same novel. OL7982341W preserves the authoritative French Work title; OL3521623W is a later unaccented manifestation-derived duplicate. The survivor's observed year still requires correction from 1880 to the BnF Work date before publication."
+        }
+      ],
+      "reviewReason": "The BnF Work authority and Hachette publisher record independently identify the exact French title and authorship. The accented-title card is the identity survivor, but this decision explicitly does not certify its imported publication year.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "caa88a09c450ad1fab96849fa024bbb2379a0a478ba7bf67a8e9abcbd16c51a8"
+    },
+    {
+      "targetId": "mark-twain-huckleberry-finn-title-alias",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "Adventures of Huckleberry Finn",
+        "authors": ["Mark Twain"]
+      },
+      "workYearResolution": {
+        "status": "withheld",
+        "value": null,
+        "sourceIds": [
+          "loc-twain-huckleberry-finn",
+          "ucpress-twain-huckleberry-finn"
+        ],
+        "reason": "The reviewed sources establish title identity but do not support the imported 1876 Work year; the alias must leave the record non-public and its year uncertified."
+      },
+      "canonHoldRef": {
+        "sourceId": "loc-books-that-shaped-america-2012",
+        "itemId": "loc-029-the-adventures-of-huckleberry-finn-tom-sawyer-s-comrade",
+        "itemHash": "dfdb66d19b2b906eec36a6a3a487611be7d80f0aef8c59fd801f3a9e6604850f"
+      },
+      "sourceIds": [
+        "loc-twain-huckleberry-finn",
+        "ucpress-twain-huckleberry-finn"
+      ],
+      "decisions": [
+        {
+          "decisionId": "alias-loc-full-huckleberry-title-to-ol53908w",
+          "status": "alias",
+          "entityKind": "work",
+          "from": {
+            "kind": "source-title",
+            "value": "The Adventures of Huckleberry Finn (Tom Sawyer’s Comrade).",
+            "sourceId": "loc-twain-huckleberry-finn"
+          },
+          "to": {
+            "kind": "record",
+            "value": "usa:mark_twain:openlibrary-works-ol53908w",
+            "observedInputFingerprint": "c2df34964485074e6b00e2a00db697ce3f111c2f7a5cbc3fd1700b45a9b3cef1",
+            "mergeProjectionFingerprint": "f75edd6b831cd812d5d6f0da068d64bfeeaa671914f76d3d67d95cdd90add1d4"
+          },
+          "reason": "The LoC full title with subtitle and the UC Press authoritative shortened title denote Mark Twain's same Work. Register the full source title as an exact alias of the existing single-Work card; do not create another Work."
+        }
+      ],
+      "reviewReason": "The national-library first-edition evidence and the Mark Twain Project critical edition establish that the subtitle-bearing and shortened titles are forms of one Work. The card's imported 1876 date remains unverified and must be corrected separately.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "87a6c4a4856467a813647c34d46abeeb2f6a0c44268072aa8848d1f779f751b8"
+    },
+    {
+      "targetId": "oscar-wilde-dorian-gray-cross-country",
+      "reviewStatus": "accepted",
+      "canonicalIdentity": {
+        "entityKind": "work",
+        "title": "The Picture of Dorian Gray",
+        "authors": ["Oscar Wilde"]
+      },
+      "workYearResolution": {
+        "status": "withheld",
+        "value": null,
+        "sourceIds": [
+          "nli-wilde-dorian-gray-1891",
+          "tcd-wilde-author-identity"
+        ],
+        "reason": "The sources establish the Work identity and a 1891 book manifestation, but this batch does not adjudicate the distinct 1890 expression history as the Work-level first-publication value."
+      },
+      "canonHoldRef": {
+        "sourceId": "neb-svet-important-classics-2026-09-02",
+        "itemId": "portret-doriana-greya",
+        "itemHash": "e077248aad9df5737cac54ba177ce35eaf0306d6c835bb35ec5825882ceacf9c"
+      },
+      "sourceIds": [
+        "neb-wilde-dorian-gray-ru",
+        "nli-wilde-dorian-gray-1891",
+        "tcd-wilde-author-identity"
+      ],
+      "decisions": [
+        {
+          "decisionId": "merge-wilde-england-legacy-into-ireland-legacy",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "england:oscar_wilde:legacy-oscar_wilde-портрет-дориана-грея",
+            "observedInputFingerprint": "b6e42bf45b44086b0c3a8f7381be001ec7e015507d6c295050ac6249d78b6078",
+            "mergeProjectionFingerprint": "cc984758e4e173d999dd9715d4c4c26a9e0d6a19cb249622b53f6a701254869c"
+          },
+          "to": {
+            "kind": "record",
+            "value": "ireland:oscar_wilde:legacy-oscar_wilde-портрет-дориана-грея",
+            "observedInputFingerprint": "e76fa35957f4d0a0c471654d548421f3a9347187ccdff6d70e6dd25acf3452f4",
+            "mergeProjectionFingerprint": "cc984758e4e173d999dd9715d4c4c26a9e0d6a19cb249622b53f6a701254869c"
+          },
+          "reason": "The two Russian-title cards are exact cross-country duplicates. The Ireland card is the survivor because the catalog groups authors by national identity and the Trinity record establishes Wilde's Dublin and Irish-writing identity."
+        },
+        {
+          "decisionId": "merge-wilde-ol8193416w-into-ireland-legacy",
+          "status": "merge",
+          "entityKind": "work",
+          "from": {
+            "kind": "record",
+            "value": "england:oscar_wilde:openlibrary-works-ol8193416w",
+            "observedInputFingerprint": "42e069b4f238606ef05fa47d5016095ef7fc4037ff1db585ca8c4a59caeb125f",
+            "mergeProjectionFingerprint": "7e407d12c3831d1d19fceea6195661038088a7c3a1256cb96223cf58ad36b60c"
+          },
+          "to": {
+            "kind": "record",
+            "value": "ireland:oscar_wilde:legacy-oscar_wilde-портрет-дориана-грея",
+            "observedInputFingerprint": "e76fa35957f4d0a0c471654d548421f3a9347187ccdff6d70e6dd25acf3452f4",
+            "mergeProjectionFingerprint": "cc984758e4e173d999dd9715d4c4c26a9e0d6a19cb249622b53f6a701254869c"
+          },
+          "reason": "The English-title generated card is the same Work as the Russian-title Ireland survivor. A lossless atomic merge must retain its English title, 1890 expression history, source URL, and external identity while preserving the Russian-market title."
+        }
+      ],
+      "reviewReason": "The NEB, National Library of Ireland, and Trinity College independently establish the Russian and English title forms, Wilde's authorship, and the Irish author identity used by this catalog. Both England cards can converge on one Ireland Work without certifying a public description.",
+      "checkedAt": "2026-09-02",
+      "reviewFingerprint": "fbe8b653647bff6eb929849ae1dfb16398b41be5865e853e26b31d844ee9c724"
+    }
+  ],
+  "summary": {
+    "targetCount": 10,
+    "acceptedTargetCount": 10,
+    "heldTargetCount": 0,
+    "decisionCounts": {
+      "merge": 10,
+      "alias": 1,
+      "hold": 1
+    },
+    "potentiallyUnblockedCanonHoldCount": 10,
+    "note": "Potentially unblocked means only that the duplicate or title-alias blocker has a reviewed decision. No canon claim, registry mutation, public-card promotion, database merge, or deployment is performed by this manifest."
+  },
+  "manifestFingerprint": "a5f9527b3a45f5e9863d91a37395c5f5eccee0340237c4b2e8107ecb5e8b72cd"
+}

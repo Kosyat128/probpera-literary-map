@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<title>Exhibition Items - Books That Shaped America | Exhibitions - Library of Congress</title>
+<meta name="description" content="A complete listing of items on display during the &ldquo;Books That Shaped America &rdquo; exhibition at the Library of Congress. Items are listed in order by exhibition subject." />
+<link rel="dc.relation.isPartOf" 
+      href="http://loc.gov/exhibits/" 
+      title="Exhibitions"/>
+<link rel="dc.relation.isPartOf" 
+      href="http://www.loc.gov/exhibits/books-that-shaped-america/" 
+      title="Books That Shaped America"/>
+<link rel="alternate" 
+      type="image/jpg" 
+      href="http://www.loc.gov/exhibits/images/current_books.jpg" />
+<meta name="dc.subject" content="National Book Festival" />
+<meta name="dc.subject" content="Library of Congress" />
+<meta name="dc.subject" content="Center for the Book " />
+<meta name="dc.subject" content="Books" />
+<meta name="dc.subject" content="American culture" />
+<meta name="dc.subject" content="Literature" />
+<meta name="dc.coverage.spatial" content="United States" />
+<meta name="dc.coverage.spatial" content="Washington, D.C." />
+<meta name="dc.date" content="2012-06-25" />
+<meta name="dc.coverage.temporal" content="1751/2002" />
+<meta name="dc.type" content="web page" />
+<meta name="dc.language" content="eng" />
+<meta name="dc.identifier" content="http://www.loc.gov/exhibits/books-that-shaped-america/exhibititems.html"/>
+<link rel="dc.rights" title="Rights Restriction" href="http://www.loc.gov/us-government-work" />
+<!-- CSS -->
+<link rel="stylesheet" media="screen" href="/exhibits/css/styles.css" />
+<link media="screen" rel="stylesheet" href="/exhibits/css/lightbox.css" type="text/css">
+<link rel="stylesheet" media="print" href="http://www.loc.gov/css/loc_print_v2.css" />
+<!--[if lte IE 7]><link media="screen" rel="stylesheet" href="/css/loc_lte_ie6.css" /><![endif]-->
+<!-- scripts -->
+<!-- Toolbar -->
+<script src="http://cdn.loc.gov/sites/exhibits.js"></script>
+<script src="http://cdn.loc.gov/sites/exhibits.js"></script>
+<script src="http://cdn.loc.gov/js/lib/modernizr-1.5.min.js"></script>
+</head>
+<body>
+<a id="skip" href="#skip_menu">skip navigation</a>
+<div id="container">
+  <div id="branding">
+  <h2>Library of Congress</h2>
+  <h3>Exhibitions</h3>
+</div>
+<!-- end id:branding -->
+
+  <div id="h-wrapper" class="fix-float">
+    <div id="header" class="fix-float">
+        <div class="logo">
+            <a href="https://www.loc.gov/" accesskey="1"><img src="//cdn.loc.gov/images/img-head/logo-loc.png" width="141" height="32" alt="Library of Congress" /></a>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a class="btn-loc" href="https://ask.loc.gov/" accesskey="2">Ask a Librarian</a></li>
+                <li><a class="btn-loc" href="https://www.loc.gov/collections/" accesskey="3">Digital Collections</a></li>
+                <li><a class="btn-loc" href="https://catalog.loc.gov/" accesskey="4">Library Catalogs</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <form action="https://www.loc.gov/search" method="get">
+                <label class="search_label" for="search">Search</label>
+                <div class="search_wrap">
+                    <input type='hidden' name='new' value='true'/>
+                    <input id="search" type="search" name="q" maxlength="200" accesskey="/" title="Search the Library of Congress website" placeholder="Search Loc.gov" class="locsuggest" /><button class="button" id="search_button" type="submit">GO</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="//cdn.loc.gov/suggest/library-of-congress.js" type="text/javascript"></script>
+</div>
+
+  <div id="crumb_nav"><a href="http://www.loc.gov">The Library of Congress</a> <span>&gt;</span> <a href="/exhibits/">Exhibitions</a> <span>&gt;</span> <a href="/exhibits/books-that-shaped-america/">Books That Shaped America</a> &gt; Exhibition Items</div>
+  <div id="content">
+    <!-- begin left nav -->
+    <div id="left_nav" role="navigation">
+  <div class="box leftnavtitle"><a href="/exhibits/"><img src="/exhibits/images/left-img-head.jpg" alt="Exhibitions" width="219" height="50" /></a></div>
+  <div class="box leftnavimg">Exhibitions Image</div>
+  <div class="box">
+  	 <form action="https://www.loc.gov/search/" accept-charset="utf-8" id="site_search" name="seek1" method="get">
+          <input type="hidden" name="fa" value="digitized:true|partof:exhibitions" />
+          <input id="searchtext" name="q" type="text" placeholder="Search this site" title="Search this site" onfocus="this.value=''" />
+      <input class="button" type="submit" value="GO" />
+    </form>
+  </div>
+  <div class="box">
+    <ul class="arrow_o bold">
+      <li><a href="/exhibits/">Exhibitions Home</a></li>
+      <li><a href="/exhibits/current/">Current Exhibitions</a></li>
+      <li><a href="/exhibits/all/">All Exhibitions</a></li>
+      <!--li><a href="/exhibits/programs/">Programs &amp; Events</a></li>
+      <li><a href="/exhibits/traveling/">Traveling Exhibitions</a></li-->
+      <li><a href="/exhibits/loan/">Loan Procedures for Institutions</a></li>
+      <li><a href="/exhibits/special-presentations/">Special Presentations</a></li>
+      <li><a href="/exhibits/contact/">Contact Us</a></li>
+    </ul>
+  </div>
+</div>
+<!-- end id:left_nav -->
+ 
+    <!-- end left_nav -->
+    <div id="main_body" role="main">
+      <!-- Toolbar -->
+<script src="http://cdn.loc.gov/sites/exhibits.js"></script>
+      <div class="locshare-this" id='instance_cds1001'></div>
+      <div class="clear-share">
+        <!-- -->
+      </div>
+      <div id="page_head"><span style="width: 100%;"><a id="skip_menu"></a></span>
+        <h1>Books That Shaped America<br />
+          <span>Exhibition Items</span></h1>
+      </div>
+      <!-- Banner Image -->
+      <div class="box_img"><img src="/exhibits/books-that-shaped-america/Assets/books_banner.jpg" alt="Books That Shaped America" width="694" height="100" /></div>
+      <!-- Navigation -->
+      <div id="main_nav" class="w_tert"><a href="index.html">Home</a>&nbsp;|&nbsp;<a href="overview.html">Overview</a> |&nbsp;Exhibition Items&nbsp;|&nbsp;<a href="public.html">Public Programs</a>&nbsp;|&nbsp;<a href="learnmore.html">Learn More</a>&nbsp;|&nbsp;<a href="credit.html">Acknowledgments</a>&nbsp;</div>
+      <div id="tert_nav"><strong>Sections:</strong>&nbsp;<a href="1750-to-1800.html">1750 to 1800</a>&nbsp;|&nbsp;<a href="1800-to-1850.html">1800 to 1850</a>&nbsp;|&nbsp;<a href="1850-to-1900.html">1850 to 1900</a>&nbsp;|&nbsp;<a href="1900-to-1950.html">1900 to 1950</a>&nbsp;|&nbsp;<a href="1950-to-2000.html">1950 to 2000</a></div>
+      <!-- CONTENT - BEGIN -->
+      <h2>1750 to 1800</h2>
+      <ul class="plain">
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj0">Benjamin Franklin (1706&ndash;1790). <em>Experiments and Observations on Electricity, Made at Philadelphia in America.</em> London: E. Cave, 1751. </a>Benjamin Franklin Collection, Rare Book and Special Collections Division, Library of Congress (001.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj1">Benjamin Franklin (1706&ndash;1790). <em>Poor Richard Improved: An Almanack for the Year of Christ 1758.</em></a> Philadelphia: B. Franklin, 1757. American Almanac Collection, Rare Book and Special Collections Division, Library of Congress (002.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj1">Benjamin Franklin (1706&ndash;1790). <em>The Way to Wealth, and a Plan by Which Every Man May Pay His Taxes.</em></a> Philadelphia: Daniel Humphreys, 1785. Printed Ephemera Collection, Rare Book and Special Collections Division, Library of Congress (103.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj2">Thomas Paine (1737&ndash;1809). <em>Common Sense.</em> Philadelphia: R. Bell, 1776.</a> American Imprint Collection, Rare Book and Special Collections Division, Library of Congress (003.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj4"><em>The Federalist: A Collection of Essays, Written in Favour of the New Constitution. vol. 1.</em> New York: J. and A. McLean, 1788.</a> Thomas Jefferson Collection, Rare Book and Special Collections Division, Library of Congress (006.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj5"><em>A Curious Hieroglyphick Bible, or, Select Passages in the Old and New Testaments. . .  . </em>Worcester, MA: Isaiah Thomas, 1788.</a> American Imprint Collection, Rare Book and Special Collections Division, Library of Congress (007.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj6">Christopher Colles (1738&ndash;1816). &ldquo;From Annapolis to Alexandria.&rdquo; <em>A Survey of the Roads of the United States of America.</em> New York: Colles, 1789.</a> Geography and Map Division, Library of Congress (008.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj7">Benjamin Franklin (1706&ndash;1790). <em>The Private Life of the Late Benjamin Franklin, LL.D. Late Minister Plenipotentiary from the United States of America to France, &amp;c.</em> London: J. Parsons, 1793.</a> Benjamin Franklin Collection, Rare Book and Special Collections Division, Library of Congress (009.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj8">Amelia Simmons [n.d.]. <em>American Cookery, or, The Art of Dressing Viands, Fish, Poultry, and Vegetables . . . and All Kinds of Cakes, from the Imperial Plumb to Plain Cake, Adapted to This Country, and All Grades of Life.</em> Hartford: Hudson &amp; Goodwin, 1796.</a> American Imprint Collection, Rare Book and Special Collections Division, Library of Congress (010.00.00)</li>
+      </ul>
+      <p class="backtotop"><a href="#skip_menu">Back to top</a></p>
+      <h2>1800 to 1850</h2>
+      <ul class="plain">
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1800-to-1850.html#obj0"><em>The New England Primer, Improved: for the More Easy Attaining the True Reading of English: to which is added the Assembly of Divines’ Catechism.</em> Hartford: Printed by Lincoln &amp; Gleason, and Hudson &amp; Goodwin, 1803.</a> Rare Book and Special Collections Division, Library of Congress (011.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1800-to-1850.html#obj1">Meriwether Lewis (1774&ndash;1809). <em>History of the Expedition Under the Command of the Captains Lewis and C lark.</em> Philadelphia: Bradford and Inskeep; New York: Abm. H. Inskeep, 1814.</a> Rare Book and Special Collections Division, Library of Congress (012.01.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1800-to-1850.html#obj2">Washington Irving (1783&ndash;1859). <em>The Legend of Sleepy Hollow.</em></a> New York and London: G. P. Putnam’s Sons, 1899. Margaret Armstrong Collection, Rare Book and Special Collections Division, Library of Congress (013.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1800-to-1850.html#obj3"><em>McGuffey’s Newly Revised Eclectic Primer. With Pictorial Illustrations.</em> Cincinnati: W. B. Smith &amp; Co., 1849.</a> Rare Book and Special Collections Division, Library of Congress (014.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1750-to-1800.html#obj3">Noah Webster (1758&ndash;1843). <em>A Grammatical Institute of the English Language.</em> Hartford: Hudson &amp; Goodwin, 1783.</a> John Davis Batchelder Collection, Rare Book and Special Collections Division, Library of Congress (004.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1800-to-1850.html#obj4">Samuel Goodrich (1793&ndash;1860). <em>Peter Parley’s Universal History, on the Basis of Geography: for the Use of Families, Illustrated by Maps and Engravings.</em> Boston: American Stationers’ Company, John B. Russell, 1837.</a> Rare Book and Special Collections Division, Library of Congress (015.00.00&ndash;016.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1800-to-1850.html#obj5">Frederick Douglass (1818&ndash;1895). <em>Narrative of the Life of Frederick Douglass.</em> Boston: Anti-Slavery Office, 1845.</a> Rare Book and Special Collections Division, Library of Congress (017.00.00)</li>
+      </ul>
+      <p class="backtotop"><a href="#skip_menu">Back to top</a></p>
+      <h2>1850 to 1900</h2>
+      <ul class="plain">
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj0">Nathaniel Hawthorne (1804&ndash;1864). <em>The Scarlet Letter.</em> Boston: Ticknor, Reed, and Fields, 1850.</a> Rosenwald Collection, Rare Book and Special Collections Division, Library of Congress (019.02.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj0">Nathaniel Hawthorne (1804&ndash;1864). <em>The Scarlet Letter.</em> Introduction by Dorothy Canfield. Illustrated by Henry Varnum Poor.  Facsimile of cover. </a>New York: The Limited Edition Club, 1941. Rare Book and Special Collections Division, Library of Congress (019.01.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj1">Herman Melville (1819&ndash;1891). <em>Moby-Dick; or, the Whale.</em> New York: Harper &amp; Brothers, 1851.</a> Rare Book and Special Collections Division, Library of Congress (020.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj2">Harriet Beecher Stowe (1811&ndash;1896). <em>Uncle Tom’s Cabin; or, Life Among the Lowly.</em> 2 vols. Boston: John P. Jewett &amp; Company, 1852.</a> Oliver Wendell Holmes Library Collection and Susan B. Anthony Collection, Rare Book and Special Collections Division, Library of Congress (021.00.00, 021.01.00, 022.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj2"><em>National Era, December 11, 1851.</em></a> Newspaper. John Davis Batchelder Collection, Rare Book and Special Collections Division, Library of Congress (102.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj3">Harriet Beecher Stowe (1811&ndash;1896). <em>The Key to Uncle Tom’s Cabin.</em> Boston: John P. Jewett &amp; Co. 1853.</a> John Davis Batchelder Collection, Rare Book and Special Collections Division (023.01.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj4">Henry David Thoreau (1817&ndash;1862). <em>Walden; or, Life in the Woods.</em> Boston: Ticknor and Fields, 1854.</a> Rare Book and Special Collections Division, Library of Congress (024.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj5">Walt Whitman (1819&ndash;1892). <em>Leaves of Grass.</em> Brooklyn, New York: [Walt Whitman] and Rome Brothers, 1855.</a> Houghton Whitman Collection, Rare Book and Special Collections Division, Library of Congress (025.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj6">Louisa May Alcott (1832&ndash;1888). <em>The Mysterious Key and What It Opened.</em> Boston: Elliot, Thomes &amp; Talbot, 1867.</a> Rare Book and Special Collections Division, Library of Congress (026.00.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj7">Louisa May Alcott (1832&ndash;1888). <em>Little Women, or, Meg, Jo, Beth, and Amy.</em> Boston: Roberts Brothers, 1868.</a> Rare Book and Special Collections Division, Library of Congress (027.01.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj8">Horatio Alger Jr. (1832&ndash;1899). <em>Mark, the Match Boy.</em> Boston: Loring, 1869.</a> Rare Book and Special Collections Division, Library of Congress (028.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj9">Catharine E. Beecher (1800&ndash;1878) and Harriet Beecher Stowe (1811&ndash;1896).</a> <em>The American Woman’s Home; or, Principles of Domestic Science; Being a Guide to the Formation and Maintenance of Economical, Healthful, Beautiful, and Christian Homes.</em> New York: J. B. Ford, 1869. Katherine Golden Bitting Collection, Rare Book and Special Collections Division, Library of Congress (029.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj10">Mark Twain (Samuel Clemens, 1835&ndash;1910). <em>The Adventures of Huckleberry Finn (Tom Sawyer’s Comrade).</em> London: Chatto &amp; Windus, 1884.</a> Rare Book and Special Collections Division, Library of Congress (030.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj10">Mark Twain (Samuel Clemens, 1835&ndash;1910). <em>Adventures of Huckleberry Finn (Tom Sawyer’s Comrade).</em> New York: Charles L. Webster and Co., 1885.</a> Rare Book and Special Collections Division, Library of Congress (030.01.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj11">Emily Dickinson (1830&ndash;1886). <em>Poems</em>. Boston: Roberts Brothers, 1890.</a> Rare Book and Special Collections Division, Library of Congress (031.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj12">Emily Dickinson (1830&ndash;1886). <em>Slant of Light=Sesgo de Luz.</em> Matanzas, Cuba: Ediciones Vigia, 1998.</a> Press Collection, Rare Book and Special Collections Division, Library of Congress (32.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj13">Jacob Riis (1849&ndash;1914). <em>How the Other Half Lives: Studies Among the Tenements of New York.</em> New York: Penguin Books, 1997.</a> General Collections, Library of Congress (033.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1850-to-1900.html#obj14">Steven Crane (1871&ndash;1900). <em>The Red Badge of Courage: An Episode of the American Civil War.</em> New York: D. Appleton and Company, 1895.</a> Rare Book and Special Collections Division, Library of Congress (034.00.00)</li>
+      </ul>
+      <p class="backtotop"><a href="#skip_menu">Back to top</a></p>
+      <h2>1900 to 1950</h2>
+      <ul class="plain">
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj0">L. Frank Baum (1856&ndash;1919). <em>The Wonderful Wizard of Oz.</em> Chicago and New York: Geo. M. Hill, 1900.</a> Juvenile Collection, Rare Book and Special Collections Division, Library of Congress (035.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj1">Sarah H. Bradford. <em>Harriet, the Moses of Her People.</em> New York: Little &amp; Co., 1901.</a> Susan B. Anthony Collection, Rare Book and Special Collections Division, Library of Congress (036.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj2">Jack London (1876&ndash;1916). <em>The Call of the Wild</em>. New York: Macmillan, 1903.</a> Oliver Wendell Holmes Library Collection, Rare Book and Special Collections Division, Library of Congress (038.00.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj3">W. E. Burghardt Du Bois. <em>The Souls of Black Folk: Essays and Sketches.</em> Chicago: A. C. McClurg &amp; Co., 1928.</a> Private Collection (038.01.00)</li>
+        <li>Ida Tarbell (1857&ndash;1944). “The History of the Standard Oil Company.” <em>McClure’s Magazine.</em> vol. 20, November 1902. General Collections, Library of Congress (037.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj4">Ida Tarbell (1857&ndash;1944). <em>The History of the Standard Oil Company.</em> New York: Harper &amp; Row, 1966.</a> General Collections, Library of Congress (039.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj5">Upton Sinclair (1878&ndash;1968). <em>The Jungle.</em> New York: Doubleday, Page &amp; Company, 1945.</a> Rare Book and Special Collections Division, Library of Congress (040.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj6">Henry Adams (1838&ndash;1918). <em>The Education of Henry Adams: an Autobiography.</em> Armed Services Edition Q-40.</a> Rare Book and Special Collections Division, Library of Congress (041.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj7">William James (1842&ndash;1910). <em>Pragmatism: A New Name for Some Old Ways of Thinking: Popular Lectures on Philosophy.</em> New York: Longmans, Green, 1907.</a> Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (042.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj8">Zane Grey (1872&ndash;1939). <em>Riders of the Purple Sage.</em> New York: Grosset &amp; Dunlap, 1940.</a> Western Literature Collection, Rare Book and Special Collections Division, Library of Congress (043.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj9">Edgar Rice Burroughs (1875&ndash;1950). <em>Tarzan of the Apes.</em> Armed Services Edition M-16. Tarzana, CA: Edgar Rice Burroughs Publishing Company, 1940.</a> Rare Book and Special Collections Division, Library of Congress (044.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj10">Margaret Sanger (1879&ndash;1966). <em>Family Limitation.</em> [New York: 1914].</a> Rare Book and Special Collections Division, Library of Congress (045.00.00)</li>
+        <li>William Carlos Williams (1883&ndash;1963). <em>Spring and All.</em> Paris: Contact Publishing, 1923. Rare Book and Special Collections Division, Library of Congress (046.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj11">Robert Frost (1874&ndash;1963). <em>New Hampshire, a Poem.</em> New York: Henry Holt, 1923.</a> Rare Book and Special Collections Division, Library of Congress (047.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj12">F. Scott Fitzgerald (1896&ndash;1940). <em>The Great Gatsby</em>. New York: Charles Scribner’s Sons, 1925.</a> Rare Book and Special Collections Division, Library of Congress (048.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj13">Langston Hughes (1902&ndash;1967). <em>The Weary Blues.</em> New York: Knopf, 1926.</a> Rare Book and Special Collections Division, Library of Congress (049.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj14">William Faulkner (1897&ndash;1962). <em>The Sound and the Fury.</em> New York: J. Cape and H. Smith, 1929.</a> Rare Book and Special Collections Division, Library of Congress (050.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj15">Dashiell Hammett (1894&ndash;1961). <em>Red Harvest.</em> New York: Knopf, 1929.</a> Oliver Wendell Holmes Library Collection, Rare Book and Special Collections Division, Library of Congress (052.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj16">Irma Rombauer (1877&ndash;1962). <em>Joy of Cooking.</em> New York: The Bobbs-Merrill Company, 1941.</a> General Collections, Library of Congress (054.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj17">Margaret Mitchell (1900&ndash;1949). <em>Gone With the Wind.</em> New York: Macmillan, 1936.</a> Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (053.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj18">William F. Warnecke. Margaret Mitchell holding her book, <em>Gone With the Wind</em>, ca. 1938.</a> Photograph. New York World-Telegram and Sun Newspaper Collection, Prints and Photographs Division, Library of Congress (053.01.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj19">Dale Carnegie (1888&ndash;1955). <em>How to Win Friends and Influence People.</em> New York: Simon and Schuster, Inc., and Pocket Books, Inc., 1940.</a> Private Collection (055.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj20">Zora Neale Hurston (1891&ndash;1960). <em>Their Eyes Were Watching God: A Novel.</em> Philadelphia: J. B. Lippincott, 1937.</a> Rare Book and Special Collections Division, Library of Congress (056.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj21">Federal Writers’ Project. <em>Idaho: A Guide in Word and Pictures.</em> Caldwell, ID: Caxton Printers, Ltd., 1937.</a> Private Collection (057.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj22">Thornton Wilder (1897&ndash;1975). <em>Our Town: A Play in Three Acts.</em> New York: Coward McCann, 1938.</a> Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (058.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj23">John Steinbeck (1902&ndash;1961). <em>The Grapes of Wrath.</em> New York: Viking Press, 1939. </a>Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (059.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj23">Carol M. Highsmith (b.1946). <em>Grapes of Wrath Billboard along a California Highway</em>, between 1980 and 2006.</a> Facsimile. Prints and Photographs Division, Library of Congress (059.01.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj24"><em>Alcoholics Anonymous: The Story of How More Than One Hundred Men Have Recovered from Alcoholism.</em> Third Edition. New York: Alcoholics Anonymous World Services, 1976</a>. Rare Book and Special Collections Division, Library of Congress (060.01.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj25">Ernest Hemingway (1899&ndash;1961). <em>For Whom the Bell Tolls.</em> New York: Scribners, 1940.</a> Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (061.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj26">Richard Wright (1908&ndash;1960). <em>Native Son.</em> New York: Harper &amp; Brothers, 1940.</a> Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (062.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj27">Betty Smith (1896&ndash;1972). <em>A Tree Grows in Brooklyn.</em> New York: Harper &amp; Brothers, 1943.</a> Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (064.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj28">Benjamin A. Botkin (1901&ndash;1975) ed. <em>A Treasury of American Folklore: The Stories, Legends, Tall Tales, Traditions, Ballads and Songs of the American People.</em> New York: Crown Publishers, 1944.</a> Private Collection (066.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj29">Gwendolyn Brooks (1917&ndash;2000). <em>A Street in Bronzeville.</em> New York and London: Harper &amp; Brothers, 1945.</a> Rare Book and Special Collections Division, Library of Congress (067.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj30">Benjamin Spock (1903&ndash;1998). <em>Baby and Child Care.</em> New Revised and Enlarged Edition. New York: Pocket Books, 1968.</a> Private Collection (068.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj31">Eugene O’Neill (1888&ndash;1953). <em>The Iceman Cometh, A Play.</em> New York: Random House, 1946.</a> Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (070.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj32">Margaret Wise Brown (1910&ndash;1952). <em>Goodnight Moon.</em> New York: HarperCollins, 1997.</a> Private Collection (071.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj33">Tennessee Williams (1911&ndash;1983). <em>A Streetcar Named Desire.</em> New York: New Directions, 1947.</a> Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (072.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1900-to-1950.html#obj34">Alfred C. Kinsey (1894&ndash;1956). <em>Sexual Behavior in the Human Male.</em> Philadelphia: W. B. Saunders, 1948.</a> Rare Book and Special Collections Division, Library of Congress (073.00.00)</li>
+      </ul>
+      <p class="backtotop"><a href="#skip_menu">Back to top</a></p>
+      <h2>1950 to 2000</h2>
+      <ul class="plain">
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj0">J. D. Salinger (1919&ndash;2010). <em>The Catcher in the Rye.</em> London: Hamish Hamilton, 1951.</a> Rare Book and Special Collections Division, Library of Congress (074.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj1">Ralph Ellison (1914&ndash;1994). <em>Invisible Man.</em> New York: Random House, 1952.</a> Herman Finkelstein Collection, Rare Book and Special Collections Division, Library of Congress (075.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj2">E. B. White (1899&ndash;1985). <em>Charlotte’s Web.</em> New York: Harper, 1952.</a> Rare Book and Special Collections Division, Library of Congress (076.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj3">Ray Bradbury (1920&ndash;2012). <em>Fahrenheit 451.</em> New York: Ballantine Books, 1953.</a> General Collections, Library of Congress (078.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj4">Allen Ginsberg (1926&ndash;1997). <em>Howl and Other Poems.</em> San Francisco: City Lights Pocket Bookshop, 1956.</a> Rare Book and Special Collections Division, Library of Congress (079.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj5">Ayn Rand (1905&ndash;1982). <em>Atlas Shrugged.</em> New York: Random House, 1957.</a> General Collections, Library of Congress (080.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj6">Theodor Geisel (Dr. Seuss, 1904&ndash;1991). <em>The Cat in the Hat.</em> New York: Random House, 1957.</a> Rare Book and Special Collections Division, Library of Congress (081.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj7">Jack Kerouac (1922&ndash;1969). <em>On the Road.</em> New York: Viking Press, 1957.</a> Rare Book and Special Collections Division, Library of Congress (082.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj8">Harper Lee (b. 1926). <em>To Kill a Mockingbird.</em> Philadelphia: J. B. Lippincott, 1960.</a> Rare Book and Special Collections Division, Library of Congress (083.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj9">Joseph Heller (1888&ndash;1957). <em>Catch-22.</em> London: Jonathan Cape, 1962.</a> Rare Book and Special Collections Division, Library of Congress (084.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj10">Robert A. Heinlein (1907&ndash;1988). <em>Stranger in a Strange Land.</em> New York: Putman, 1961.</a> General Collections, Library of Congress (085.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj11">Ezra Jack Keats (1916&ndash;1983). <em>The Snowy Day.</em> New York: Viking, 1962.</a> Rare Book and Special Collections Division, Library of Congress (086.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj12">Rachel Carson (1907&ndash;1964). <em>Silent Spring.</em> Boston: Houghton Mifflin, 1962.</a> Rare Book and Special Collections Division, Library of Congress (092.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj13">Maurice Sendak (1928&ndash;2012). <em>Where the Wild Things Are.</em> New York: Harper &amp; Row, 1963.</a> Rare Book and Special Collections Division, Library of Congress (087.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj14">James Baldwin (1924&ndash;1987). <em>The Fire Next Time.</em> New York: Dial, 1963.</a> Rare Book and Special Collections Division, Library of Congress (088.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj15">Betty Friedan (1921&ndash;2006). <em>The Feminine Mystique.</em> New York: Laurel, 1984.</a> General Collections, Library of Congress (089.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj16">Malcolm X (1925&ndash;1965) and Alex Haley (1921&ndash;1992). <em>The Autobiography of Malcolm X.</em> New York: Grove Press, 1965.</a> General Collections, Library of Congress (090.00.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj17">Ralph Nader (b. 1934). <em>Unsafe at Any Speed: The Designed-in Dangers of the American Automobile.</em> New York: Grossman, 1965.</a> General Collections, Library of Congress (091.00.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj18">Truman Capote (1924&ndash;1984). <em>In Cold Blood: A True Account of a Multiple Murder and Its Consequences.</em> New York: Random House, 1966. </a>Rare Book and Special Collections Division, Library of Congress (093.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj19">James D. Watson (b. 1928). <em>The Double Helix: A Personal Account of the Discovery of the Structure of DNA.</em> London: Weidenfeld &amp; Nicolson, 1968</a>. General Collections, Library of Congress (094.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj20">Dee Brown (1908&ndash;2002). <em>Bury My Heart at Wounded Knee: An Indian History of the American West.</em> New York: Holt, Rinehart, &amp; Winston, 1971.</a> General Collections, Library of Congress (095.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj21">Boston Women’s Health Book Collective. <em>Our Bodies, Ourselves: A Book By and For Women.</em> New York: Simon &amp; Schuster, 1973.</a> General Collections, Library of Congress (096.00.00) </li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj22">Carl Sagan (1934&ndash;1996). <em>Cosmos.</em> New York: Random House, 1980.</a> General Collections, Library of Congress (097.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj23">Toni Morrison (b. 1931). <em>Beloved: A Novel.</em> New York: Knopf, 1987.</a> Rare Book and Special Collections Division, Library of Congress (098.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj24">Randy Shilts (1951&ndash;1994). <em>And the Band Played On: Politics, People, and the AIDS Epidemic.</em> New York: St. Martin’s Press, 1987.</a> Rare Book and Special Collections Division, Library of Congress (099.00.00)</li>
+        <li><a href="http://www.loc.gov/exhibits/books-that-shaped-america/1950-to-2000.html#obj25">Richard Jensen and John C. Hammerback eds. <em>The Words of César Chávez.</em> College Station: Texas A &amp; M University Press, 2002.</a> General Collections, Library of Congress (101.00.00)</li>
+      </ul>
+      <p class="backtotop"><a href="#skip_menu">Back to top</a></p>
+      <!-- CONTENT - END -->
+      <!-- Navigation -->
+      <div id="main_nav" class="w_tert"><a href="index.html">Home</a>&nbsp;|&nbsp;<a href="overview.html">Overview</a> |&nbsp;Exhibition Items&nbsp;|&nbsp;<a href="public.html">Public Programs</a>&nbsp;|&nbsp;<a href="learnmore.html">Learn More</a>&nbsp;|&nbsp;<a href="credit.html">Acknowledgments</a>&nbsp;</div>
+      <div id="tert_nav"><strong>Sections:</strong>&nbsp;<a href="1750-to-1800.html">1750 to 1800</a>&nbsp;|&nbsp;<a href="1800-to-1850.html">1800 to 1850</a>&nbsp;|&nbsp;<a href="1850-to-1900.html">1850 to 1900</a>&nbsp;|&nbsp;<a href="1900-to-1950.html">1900 to 1950</a>&nbsp;|&nbsp;<a href="1950-to-2000.html">1950 to 2000</a></div>
+    </div>
+    <!-- end id:main_body -->
+  </div>
+  <!-- end id:content -->
+  	<!-- begin: global footer -->
+  <div id="f-wrapper" class="fix-float">
+  <div id="footer" class="fix-float">
+      <div class="cols heading">
+        <h2>Connect with the Library</h2>
+        <p><a class="ar-more foot" href="http://www.loc.gov/homepage/connect.html">All ways to connect</a></p>
+      </div>
+      <div class="cols">
+        <h3>Find Us On</h3>
+        <a href="http://www.pinterest.com/LibraryCongress/"><img src="http://cdn.loc.gov/images/img-foot/pinterest.gif" alt="Pinterest" width="16" height="16" /></a> &nbsp; <a href="http://www.facebook.com/libraryofcongress"><img src="http://cdn.loc.gov/images/img-foot/facebook.gif" alt="Facebook" width="16" height="16" /></a> &nbsp; <a href="http://twitter.com/#!/librarycongress"><img src="http://cdn.loc.gov/images/img-foot/twitter.gif" alt="Twitter" width="16" height="16" /></a> &nbsp; <a href="http://www.youtube.com/libraryofcongress"><img src="http://cdn.loc.gov/images/img-foot/youtube.gif" alt="YouTube" width="16" height="16" /></a> &nbsp; <a href="http://www.flickr.com/photos/library_of_congress/"><img src="http://cdn.loc.gov/images/img-foot/flickr.gif" alt="Flickr" width="16" height="16" /></a>
+      </div>
+      <div class="cols">
+        <h3>Subscribe &amp; Comment</h3>
+        <ul class="plain">
+          <li><a href="http://www.loc.gov/rss/">RSS &amp; E-Mail</a></li>
+          <li><a href="http://blogs.loc.gov/">Blogs</a></li>
+        </ul>
+      </div>
+      <div class="cols">
+        <h3>Download &amp; Play</h3>
+        <ul class="plain">
+          <li><a href="http://www.loc.gov/apps/">Apps</a></li>
+          <li><a href="http://www.loc.gov/podcasts/">Podcasts</a></li>
+          <li><a href="http://www.loc.gov/today/cyberlc/index.php">Webcasts</a></li>
+          <li><a href="http://itunes.apple.com/us/institution/library-of-congress/id386017159" class="external foot mod">iTunesU<span> (external link)</span></a></li>
+        </ul>
+      </div>
+      <div class="cols">
+        <h3>Questions</h3>
+        <ul class="plain">
+          <li><a href="https://ask.loc.gov/">Ask a Librarian</a></li>
+          <li><a href="http://www.loc.gov/help/contact-general.html" accesskey="8">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="clear"><!-- --></div>
+      <p class="links">
+      <a href="http://www.loc.gov/about/">About</a> |
+      <a href="http://www.loc.gov/pressroom/login">Press</a> |
+      <a href="http://www.loc.gov/hr/employment/index.php">Jobs</a> |
+      <a href="http://www.loc.gov/philanthropy/index.php">Donate</a>
+      <br />
+      <a href="http://www.loc.gov/about/oig/">Inspector General</a> |
+      <a href="http://www.loc.gov/homepage/legal.html" accesskey="9">Legal</a> |
+      <a href="http://www.loc.gov/access/" accesskey="0">Accessibility</a> |
+      <a href="http://www.loc.gov/global/disclaim.html">External Link Disclaimer</a> |
+      <a href="http://www.usa.gov/">USA.gov</a>
+      </p>
+      <span class="speech"><a href="http://www.loc.gov/access/web.html">Speech Enabled</a></span>
+  </div><!-- end id:footer -->
+  </div><!-- end id:f-wrapper -->
+	<!-- end: global footer -->
+
+</div>
+<!-- end id:container -->
+</body>
+</html>

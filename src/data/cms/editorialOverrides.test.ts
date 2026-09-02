@@ -8,6 +8,7 @@ import {
   applyCmsCountryProfileOverrides,
   applyCmsWriterProfileOverrides,
   cmsLiteraryWorkProfilesForWriter,
+  type CmsLiteraryWork,
 } from "./editorialOverrides";
 
 const country = {
@@ -216,5 +217,203 @@ describe("CMS editorial overrides", () => {
         editorial: { status: "verified", reviewedAt: undefined },
       }),
     ]);
+  });
+
+  it("deep-copies every evidence field restored from JSONB metadata", () => {
+    const ruTitleEvidence = {
+      entityKind: "expression" as const,
+      expressionId: "expression:ru:verified-title",
+      locale: "ru" as const,
+      value: "Проверенное название",
+      status: "verified-published" as const,
+      expressionLanguage: "Russian",
+      market: "RU",
+      selectionRule: "earliest-authorized-edition" as const,
+      selectionNote: "Выбрано по первой авторизованной русской публикации.",
+      evidence: [
+        {
+          entityKind: "manifestation" as const,
+          manifestationId: "RSL-123",
+          sourceUrl: "https://search.rsl.ru/ru/record/123",
+          provider: "Российская государственная библиотека",
+          authorityId: "rsl",
+          authorityTier: "A" as const,
+          recordKind: "national-bibliography" as const,
+          recordId: "RSL-123",
+          catalogTitleExact: "Проверенное название",
+          locale: "ru" as const,
+          market: "RU",
+          expressionLanguage: "Russian",
+          isbn13: "9780000000001",
+          publisher: "Проверенное издательство",
+          publicationYear: 2020,
+          translator: "Проверенный переводчик",
+          editionStatement: "Первое авторизованное издание",
+          retrievedAt: "2026-09-02",
+          checkedAt: "2026-09-02",
+          checkedBy: "Редактор библиографии",
+        },
+      ],
+    };
+    const enTitleEvidence = {
+      ...ruTitleEvidence,
+      expressionId: "expression:en:verified-title",
+      locale: "en" as const,
+      value: "Verified Title",
+      expressionLanguage: "English",
+      market: "US",
+      evidence: ruTitleEvidence.evidence.map((evidence) => ({
+        ...evidence,
+        manifestationId: "LCCN-456",
+        sourceUrl: "https://catalog.loc.gov/vwebv/holdingsInfo?bibId=456",
+        provider: "Library of Congress",
+        authorityId: "loc",
+        recordKind: "legal-deposit-catalog" as const,
+        recordId: "LCCN-456",
+        catalogTitleExact: "Verified Title",
+        locale: "en" as const,
+        market: "US",
+        expressionLanguage: "English",
+      })),
+    };
+    const descriptionProvenance = {
+      origin: "official-source-synthesis" as const,
+      sourceLanguage: "Russian",
+      sourceCountry: "RU",
+      sourceUrls: [
+        "https://search.rsl.ru/ru/record/123",
+        "https://publisher.example/book",
+      ],
+      transformations: ["condensed" as const, "spoiler-limited" as const],
+      rights: {
+        textOrigin: "project-original" as const,
+        copiedSourceText: false as const,
+      },
+      author: "Редактор аннотации",
+      createdAt: "2026-09-02",
+      reviewedBy: "Независимый рецензент",
+      reviewedAt: "2026-09-02",
+    };
+    const cmsWork: CmsLiteraryWork = {
+      legacyId: "test-country:writer:evidence-book",
+      countryId: "test-country",
+      writerId: "writer",
+      localId: "evidence-book",
+      title: "Проверенное название",
+      authorship: {
+        kind: "multiple",
+        authors: [
+          { countryId: "test-country", writerId: "writer" },
+          { countryId: "other-country", writerId: "coauthor" },
+        ],
+      },
+      translations: {
+        ru: {
+          locale: "ru",
+          title: "Проверенное название",
+          description:
+            "Проверенная русская аннотация сообщает факты о произведении и его сюжете. Второе предложение завершает краткое энциклопедическое описание книги.",
+          sourceLanguage: "Russian",
+          status: "verified",
+          sourceUrls: descriptionProvenance.sourceUrls,
+          method: "editorial-original",
+          reviewedAt: "2026-09-02",
+          titleEvidence: ruTitleEvidence,
+          descriptionProvenance,
+        },
+        en: {
+          locale: "en",
+          title: "Verified Title",
+          description:
+            "The reviewed English synopsis states the essential facts about the work and its plot. A second sentence completes the concise encyclopedic description.",
+          sourceLanguage: "Russian",
+          status: "reviewed",
+          sourceUrls: descriptionProvenance.sourceUrls,
+          method: "human-translation",
+          reviewedAt: "2026-09-02",
+          titleEvidence: enTitleEvidence,
+          descriptionProvenance: {
+            ...descriptionProvenance,
+            origin: "human-translation",
+            translatedFromLocale: "ru",
+            translatedFromSourceHash: "a".repeat(64),
+          },
+        },
+      },
+      localizedTitles: { ru: ruTitleEvidence, en: enTitleEvidence },
+      canon: {
+        status: "canonical-classic",
+        registryVersion: "world-canon-2026-09-v2",
+        evidence: [
+          {
+            registrySourceId: "loc-shaped-books",
+            registryItemOrdinal: 1,
+            class: "national-library-heritage-collection",
+            sourceUrl: "https://www.loc.gov/exhibits/books-that-shaped-america/",
+            provider: "Library of Congress",
+            authorityId: "loc",
+            authorityTier: "A",
+            itemId: "verified-title",
+            assertion: "The work belongs to a curated heritage collection.",
+            snapshotAt: "2026-09-02",
+          },
+        ],
+        reviewedAt: "2026-09-02",
+        reviewedBy: "Редактор канона",
+      },
+      sources: [
+        {
+          provider: "Российская государственная библиотека",
+          authorityId: "rsl",
+          authorityTier: "A",
+          country: "RU",
+          market: "RU",
+          language: "ru",
+          recordKind: "national-bibliography",
+          recordId: "RSL-123",
+          url: "https://search.rsl.ru/ru/record/123",
+          fields: ["identity", "title", "description"],
+          usage: "reference-only",
+          retrievedAt: "2026-09-02",
+        },
+      ],
+      editorialStatus: "verified",
+      reviewedAt: "2026-09-02",
+    };
+
+    const [mapped] = cmsLiteraryWorkProfilesForWriter(
+      "test-country",
+      "writer",
+      { [cmsWork.legacyId]: cmsWork }
+    );
+
+    expect(mapped.localizedTitles).toEqual(cmsWork.localizedTitles);
+    expect(mapped.authorship).toEqual(cmsWork.authorship);
+    expect(mapped.authorship?.authors).toHaveLength(2);
+    expect(mapped.canon).toEqual(cmsWork.canon);
+    expect(mapped.translations?.ru?.titleEvidence).toEqual(ruTitleEvidence);
+    expect(mapped.translations?.ru?.descriptionProvenance).toEqual(
+      descriptionProvenance
+    );
+    expect(mapped.sources?.[0]).toMatchObject({
+      authorityId: "rsl",
+      authorityTier: "A",
+      country: "RU",
+      market: "RU",
+      language: "ru",
+      recordKind: "national-bibliography",
+      recordId: "RSL-123",
+    });
+    expect(mapped.localizedTitles).not.toBe(cmsWork.localizedTitles);
+    expect(mapped.localizedTitles?.ru?.evidence).not.toBe(
+      cmsWork.localizedTitles?.ru?.evidence
+    );
+    expect(mapped.canon?.evidence).not.toBe(cmsWork.canon?.evidence);
+    expect(mapped.translations?.ru?.descriptionProvenance).not.toBe(
+      cmsWork.translations?.ru?.descriptionProvenance
+    );
+    expect(mapped.sources?.[0]).not.toBe(cmsWork.sources?.[0]);
+    expect(mapped.authorship).not.toBe(cmsWork.authorship);
+    expect(mapped.authorship?.authors).not.toBe(cmsWork.authorship?.authors);
   });
 });

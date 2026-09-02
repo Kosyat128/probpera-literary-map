@@ -182,7 +182,7 @@ function TranslationEditor({
             defaultValue={(translation?.source_urls || []).join("\n")}
           />
         </label>
-        <button className="button" type="submit">Сохранить и сразу опубликовать</button>
+        <button className="button" type="submit">Сохранить и поставить обновление в очередь</button>
       </form>
       {translation && (
         <form className="work-workspace-delete" action={deleteWorkTranslationAction}>
@@ -261,7 +261,8 @@ export default function LiteraryWorkWorkspace({
           <h3>Переводы, источники и внешние базы</h3>
           <p>
             Здесь хранятся публичные RU/EN-описания, происхождение сведений и связи с каталогами.
-            Каждое сохранение защищено версией записи и сразу ставит обновление сайта в очередь.
+            Каждое сохранение защищено версией записи и ставит обновление сайта в очередь.
+            Публичной становится только карточка, которая после правки снова прошла все проверки названий, описаний и источников.
           </p>
         </div>
         <span className="badge">{work.title}</span>

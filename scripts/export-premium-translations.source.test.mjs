@@ -42,4 +42,57 @@ describe("premium translation public export", () => {
     );
     expect(source).not.toContain("function normalizeBiographyProfile(");
   });
+
+  it("fetches and validates every literary evidence JSONB payload", () => {
+    expect(source).toContain('select: "id,legacy_id,metadata"');
+    expect(source).toContain(
+      '"work_id,locale,title,description,source_language,translation_method,editorial_status,source_urls,reviewed_at,metadata"'
+    );
+    expect(source).toContain(
+      '"work_id,provider,source_url,field_names,license_name,usage,retrieved_at,metadata"'
+    );
+    expect(source).toContain(
+      "const evidence = normalizeWorkEvidenceMetadata(work.metadata);"
+    );
+    expect(source).toContain(
+      "metadata.titleEvidence,\n    locale"
+    );
+    expect(source).toContain(
+      "metadata.descriptionProvenance"
+    );
+    expect(source).toContain(
+      "const evidence = normalizeWorkSourceEvidenceMetadata(row.metadata);"
+    );
+    expect(source).toContain("const market = optionalString(metadata.market, 80);");
+    expect(source).toContain("...(market ? { market } : {}),");
+  });
+
+  it("fails closed on malformed evidence enums, URLs, dates and hashes", () => {
+    for (const validator of [
+      "workTitleEvidenceRecordKinds",
+      "workTitleSelectionRules",
+      "workDescriptionOrigins",
+      "workDescriptionTransformations",
+      "workCanonEvidenceClasses",
+      "httpsUrlValue",
+      "isoDateValue",
+      "sha256Value",
+    ]) {
+      expect(source).toContain(validator);
+    }
+    expect(source).toContain('rights.copiedSourceText !== false');
+    expect(source).toContain('row.status !== "verified-published"');
+    expect(source).toContain('row.entityKind === "manifestation"');
+    expect(source).toContain('row.entityKind === "expression"');
+    expect(source).toContain("registryItemOrdinal < 1");
+    expect(source).toContain("evidence.some((item) => !item)");
+  });
+
+  it("removes stale work-level evidence before applying validated metadata", () => {
+    expect(source).toContain("canon: _staleCanon");
+    expect(source).toContain(
+      "localizedTitles: _staleLocalizedTitles"
+    );
+    expect(source).toContain("...baseWork,\n    ...evidence,");
+  });
 });

@@ -363,6 +363,66 @@ describe("book archive controlled facets", () => {
     expect(pending?.sourceOriginalLanguage).toBe("английский");
   });
 
+  it("indexes one coauthored card under both factual author refs", () => {
+    const coauthored = fixtureItem({
+      id: "the-twelve-chairs",
+      title: "Двенадцать стульев",
+      countryId: "russia",
+      writerId: "ilya-ilf",
+      writerName: "Илья Ильф",
+      fullWriterName: "Ilya Ilf",
+      work: {
+        authorship: {
+          kind: "multiple",
+          authors: [
+            {
+              countryId: "russia",
+              writerId: "ilya-ilf",
+              creditNames: { ru: "Илья Ильф", en: "Ilya Ilf" },
+            },
+            {
+              countryId: "russia",
+              writerId: "yevgeny-petrov",
+              creditNames: {
+                ru: "Евгений Петров",
+                en: "Yevgeny Petrov",
+              },
+            },
+          ],
+        },
+      },
+    });
+    const index = buildBookArchiveFacetIndex({
+      items: [coauthored],
+      locale: "ru",
+    });
+    const document = index.documents[0];
+
+    expect(index.documents).toHaveLength(1);
+    expect(document.authorKey).toBe("russia:ilya-ilf");
+    expect(document.authorKeys).toEqual([
+      "russia:ilya-ilf",
+      "russia:yevgeny-petrov",
+    ]);
+    expect(document.writerLabel).toBe("Илья Ильф и Евгений Петров");
+    expect(index.indexes.author.get("russia:ilya-ilf")).toEqual([0]);
+    expect(index.indexes.author.get("russia:yevgeny-petrov")).toEqual([0]);
+    expect(
+      filterBookArchiveFacetIndex(
+        index,
+        normalizeBookArchiveFilterState({
+          authorKey: "russia:yevgeny-petrov",
+        })
+      ).documents.map(({ key }) => key)
+    ).toEqual([coauthored.key]);
+    expect(
+      filterBookArchiveFacetIndex(
+        index,
+        normalizeBookArchiveFilterState({ query: "Евгений Петров" })
+      ).bestMatchKey
+    ).toBe(coauthored.key);
+  });
+
   it("applies OR within categories and AND across categories", () => {
     const { index, firstKey, thirdKey } = buildFixtureIndex();
     const withinCountry = filterBookArchiveFacetIndex(

@@ -109,15 +109,16 @@ node scripts/import-articles-to-supabase.mjs --apply
 npm run books:sync
 ```
 
-Для batch обложек 20 августа сначала выполняется локальный dry-run, затем
-read-only preflight всех обязательных таблиц и schema-health RPC, и только
-после успешного согласования миграций - точечная синхронизация 41 canonical
-work target (17 из них добавлены этим статическим batch) и 43 artwork-записей:
+Batch обложек 20 августа можно проверять локально и через read-only preflight.
+Частичная публикация этого batch запрещена: production-синхронизация всегда
+заменяет полный незаблокированный архив одним атомарным commit после guarded
+миграций. Отдельная проверка 43 artwork-записей используется как postflight:
 
 ```text
 npm run books:sync:covers-20260820
 npm run books:sync:covers-20260820:preflight
-npm run books:sync:covers-20260820:apply
+npm run books:sync:apply
+npm run books:sync:postflight:covers-20260820
 ```
 
 ## Восстановление

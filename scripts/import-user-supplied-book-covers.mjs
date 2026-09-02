@@ -411,16 +411,16 @@ function validateDecisionInventory() {
 async function validateCanonicalArchive() {
   const archiveModule = await sourceArchive();
   const { baseline, current, baselinePublicCount, currentPublicCount } = archiveModule;
-  if (baseline.length !== 9_768 || current.length !== 9_768) {
+  if (baseline.length !== 9_761 || current.length !== 9_761) {
     throw new Error(
       `Размер архива изменился: baseline=${baseline.length}, current=${current.length}.`
     );
   }
   if (
-    baselinePublicCount !== 48 ||
-    currentPublicCount !== 48 ||
-    baseline.length - baselinePublicCount !== 9_720 ||
-    current.length - currentPublicCount !== 9_720
+    baselinePublicCount !== 46 ||
+    currentPublicCount !== 46 ||
+    baseline.length - baselinePublicCount !== 9_715 ||
+    current.length - currentPublicCount !== 9_715
   ) {
     throw new Error(
       `Публичные/ожидающие карточки изменились: baseline=${baselinePublicCount}/${baseline.length - baselinePublicCount}, current=${currentPublicCount}/${current.length - currentPublicCount}.`

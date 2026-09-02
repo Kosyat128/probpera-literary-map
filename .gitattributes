@@ -1,4 +1,7 @@
 src/data/geo/countries.geojson text eol=lf
+public/cms/*.json text eol=lf
+public/cms/articles/*.json text eol=lf
+data/book-canon-snapshots/*.html.bin binary
 apps/admin/lib/*.generated.json text eol=lf
 data/*manifest.json text eol=lf
 reports/*.json text eol=lf

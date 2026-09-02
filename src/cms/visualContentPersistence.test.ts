@@ -7,7 +7,7 @@ const actionSource = readFileSync(
     import.meta.url
   ),
   "utf8"
-);
+).replace(/\r\n?/gu, "\n");
 const bridgeSource = readFileSync(
   new URL("./directEditBridge.tsx", import.meta.url),
   "utf8"

@@ -57,6 +57,7 @@ export type CmsLiteraryWork = {
   writerId: string;
   localId: string;
   title: string;
+  authorship?: WorkProfile["authorship"];
   originalTitle?: string;
   firstPublished?: number;
   originalLanguage?: string;
@@ -65,6 +66,8 @@ export type CmsLiteraryWork = {
   description?: string;
   sourceUrl?: string;
   translations?: WorkProfile["translations"];
+  localizedTitles?: WorkProfile["localizedTitles"];
+  canon?: WorkProfile["canon"];
   sources?: WorkProfile["sources"];
   editorialStatus: "reviewed" | "verified";
   reviewedAt?: string;
@@ -150,6 +153,14 @@ const literaryWorksByWriter = Object.values(cmsLiteraryWorksByLegacyId).reduce(
   new Map<string, CmsLiteraryWork[]>()
 );
 
+function copiedJsonMetadata<T>(value: T): T {
+  if (value === undefined) return value;
+  // These fields have already crossed a JSONB/generated-module boundary. A
+  // JSON copy mirrors that contract and prevents CMS consumers from mutating
+  // nested evidence owned by the generated snapshot.
+  return JSON.parse(JSON.stringify(value)) as T;
+}
+
 function copiedTranslations(
   translations: WorkProfile["translations"]
 ): WorkProfile["translations"] {
@@ -158,7 +169,7 @@ function copiedTranslations(
     ...(translations.ru
       ? {
           ru: {
-            ...translations.ru,
+            ...copiedJsonMetadata(translations.ru),
             sourceUrls: [...translations.ru.sourceUrls],
           },
         }
@@ -166,7 +177,7 @@ function copiedTranslations(
     ...(translations.en
       ? {
           en: {
-            ...translations.en,
+            ...copiedJsonMetadata(translations.en),
             sourceUrls: [...translations.en.sourceUrls],
           },
         }
@@ -189,6 +200,7 @@ export function cmsLiteraryWorkProfilesForWriter(
     (work) => ({
       id: work.localId,
       title: work.title,
+      authorship: copiedJsonMetadata(work.authorship),
       originalTitle: work.originalTitle || undefined,
       firstPublished: work.firstPublished,
       originalLanguage: work.originalLanguage || undefined,
@@ -197,8 +209,10 @@ export function cmsLiteraryWorkProfilesForWriter(
       description: work.description || undefined,
       sourceUrl: work.sourceUrl || undefined,
       translations: copiedTranslations(work.translations),
+      localizedTitles: copiedJsonMetadata(work.localizedTitles),
+      canon: copiedJsonMetadata(work.canon),
       sources: work.sources?.map((source) => ({
-        ...source,
+        ...copiedJsonMetadata(source),
         fields: [...source.fields],
       })),
       editorial: {
