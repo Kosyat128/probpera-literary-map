@@ -142,7 +142,9 @@ describe("release workflow hardening", () => {
     expect(deploy).not.toContain("actions: write");
     expect(finalize).not.toContain("actions: write");
     expect(securityAudit).toContain("permissions:\n      actions: write\n      contents: read");
-    expect(securityAudit).toContain("gh workflow run audit-live-security.yml --ref main");
+    expect(securityAudit).toContain(
+      'gh workflow run audit-live-security.yml --repo "$GITHUB_REPOSITORY" --ref main'
+    );
     expect(securityAudit).not.toContain("pages: write");
     expect(securityAudit).not.toContain("id-token: write");
     expect(followUp).toContain("permissions:\n      contents: read\n      actions: write");
@@ -214,7 +216,7 @@ describe("release workflow hardening", () => {
       expect(deploySource).toContain("post_deploy_security_audit:");
       expect(deploySource).toContain("actions: write");
       expect(deploySource).toContain(
-        "gh workflow run audit-live-security.yml --ref main"
+        'gh workflow run audit-live-security.yml --repo "$GITHUB_REPOSITORY" --ref main'
       );
     }
   });
