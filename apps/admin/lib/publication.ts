@@ -18,6 +18,7 @@ type RequestPublicBuildOptions = {
   entityId: string;
   reason: string;
   metadata?: Record<string, unknown>;
+  skipAutoTranslation?: boolean;
 };
 
 function normalizeOutboxId(value: unknown): string | null {
@@ -39,6 +40,7 @@ export async function requestPublicBuild({
   entityId,
   reason,
   metadata = {},
+  skipAutoTranslation = false,
 }: RequestPublicBuildOptions): Promise<{
   state: PublicationState;
   build: PublicBuildResult;
@@ -50,7 +52,9 @@ export async function requestPublicBuild({
   // credentials server-side. Translation failure is audited but does not
   // destroy the accepted Russian publication; a later republish can retry.
   const translation =
-    entityType === "article" && reason === "article.published"
+    !skipAutoTranslation &&
+    entityType === "article" &&
+    reason === "article.published"
       ? await ensurePublishedArticlePremiumEnglish({
           supabase,
           actorId,

@@ -116,18 +116,36 @@ describe("shared editor media parity", () => {
     expect(pageSource).toContain("openCollectionPicker(appendMediaComposerItems)");
   });
 
-  it("generates contextual Russian alt text without replacing manual metadata", () => {
+  it("generates contextual descriptions and carries media titles and authors", () => {
     expect(articleSource).toContain("suggestEditorImageAltText({");
+    expect(articleSource).toContain("suggestEditorImageCaption({");
     expect(pageSource).toContain("suggestEditorImageAltText({");
+    expect(pageSource).toContain("suggestEditorImageCaption({");
     expect(workflowSource).toContain("resolveEditorImageAltText({");
+    expect(workflowSource).toContain("resolveEditorImageCaption({");
     expect(workflowSource).toContain("currentAlt: previousAttributes.alt");
-    expect(workflowSource).toContain("fallbackAlt: asset.alt");
+    expect(workflowSource).toContain("assetTextForLocale(asset.alt, metadataLocale)");
+    expect(workflowSource).toContain(
+      "assetTextForLocale(asset.caption, metadataLocale)"
+    );
+    expect(workflowSource).toContain("credit: asset.creator");
+    expect(workflowSource).toContain('caption: ""');
     expect(workflowSource).toContain("position: target.position");
-    expect(workflowSource).toContain("previousAttributes.caption.trim()");
+    expect(workflowSource).toContain("suggestedCaptionText");
+    expect(articleSource).toContain("metadataLocale: activeLocale");
+    expect(pageSource).toContain('metadataLocale: "ru"');
+    expect(articleSource).toContain("imageSelectionRef.current.nodePos ??");
+    expect(pageSource).toContain("imageSelectionRef.current.nodePos ??");
+    expect(articleSource).toContain("const linkedItems = parseEditorialGalleryUrls");
+    expect(pageSource).toContain("const linkedItems = parseEditorialGalleryUrls");
   });
 
-  it("clears a stale media-library identity for manual URL replacement", () => {
-    expect(articleSource).toContain("mediaId: null");
+  it("keeps media identity for metadata edits and clears it for URL replacement", () => {
+    expect(articleSource).toContain("mediaId: sourceChanged");
+    expect(pageSource).toContain("mediaId: sourceChanged");
+    expect(articleSource).toContain(
+      '{ credit: "", source: "", license: "", licenseUrl: "" }'
+    );
   });
 
   it("uses the controlled safe-link dialog in both editors", () => {

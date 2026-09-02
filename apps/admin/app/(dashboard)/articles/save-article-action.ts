@@ -253,6 +253,7 @@ export async function saveArticleAction(formData: FormData) {
   }
   const autoTranslationEnabled =
     adminEnv.openAiAutoTranslateArticles && Boolean(adminEnv.openAiApiKey);
+  const englishReleaseRequested = formData.get("english_enabled") === "on";
   const releaseStatus = String(formData.get("status") || "draft");
   if (
     intent === "publish" &&
@@ -270,9 +271,17 @@ export async function saveArticleAction(formData: FormData) {
     releaseStatus
   );
   if (
+    intent === "publish" &&
+    releaseNeedsTranslation &&
+    !englishReleaseRequested
+  ) {
+    formData.set("skip_automatic_translation", "1");
+  }
+  if (
     intent !== "publish" ||
     !releaseNeedsTranslation ||
-    !autoTranslationEnabled
+    !autoTranslationEnabled ||
+    !englishReleaseRequested
   ) {
     return saveStandardRespectingEnglishOwnership(formData);
   }
@@ -498,11 +507,11 @@ export async function saveArticleAction(formData: FormData) {
     return saveStandardArticleAtomically(formData);
   } catch (error) {
     console.error("Automatic article translation failed before publication", error);
-    redirect(
-      publicationErrorPath(
-        articleId,
-        "Автоматический английский перевод не выполнен, поэтому публикация остановлена. Повторите позже или подготовьте английскую версию вручную."
-      )
-    );
+    // English is optional. Keep a failed or stale translation private, publish
+    // the accepted Russian source, and avoid immediately charging the provider
+    // for the same failed request again in requestPublicBuild.
+    formData.delete("english_enabled");
+    formData.set("automatic_translation_deferred", "1");
+    return saveStandardRespectingEnglishOwnership(formData);
   }
 }

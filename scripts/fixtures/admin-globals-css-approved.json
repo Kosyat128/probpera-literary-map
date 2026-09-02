@@ -1,7 +1,7 @@
 {
   "sourceRevision": "1d87267c",
   "normalization": "CRLF and CR are normalized to LF before SHA-256.",
-  "sha256": "408d1f68a41a772d4d6ce73ade9a1f7ead083ca064a7417264ca966f399975a6",
-  "normalizedLength": 120350,
-  "normalizedLineCount": 6130
+  "sha256": "0ae498beca621d3827a3a69cd776f31562746082c422566edb49d6eaf267c98d",
+  "normalizedLength": 120632,
+  "normalizedLineCount": 6144
 }

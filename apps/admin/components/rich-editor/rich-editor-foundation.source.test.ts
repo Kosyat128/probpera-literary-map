@@ -94,6 +94,10 @@ describe("shared rich editor foundation", () => {
     );
     expect(articleImageWorkflow).not.toContain("window.prompt");
     expect(articleImageWorkflow).toContain("setImageDialogOpen(true)");
-    expect(articleImageWorkflow).toContain("mediaId: null");
+    expect(articleImageWorkflow).toContain("mediaId: sourceChanged");
+    expect(articleImageWorkflow).toContain("selection.attributes.mediaId");
+    expect(articleImageWorkflow).toContain(
+      '{ credit: "", source: "", license: "", licenseUrl: "" }'
+    );
   });
 });

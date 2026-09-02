@@ -266,6 +266,18 @@ export default function EditorialImageView({
         </div>
       </div>
 
+      {(caption || media.credit) && (
+        <figcaption
+          className="editorial-image-editor-caption"
+          contentEditable={false}
+        >
+          {caption && <span>{caption}</span>}
+          {media.credit && (
+            <small>Автор изображения: {media.credit}</small>
+          )}
+        </figcaption>
+      )}
+
       {selected && (
         <div
           className="editorial-image-inspector"
@@ -284,14 +296,14 @@ export default function EditorialImageView({
             />
           </label>
           <label>
-            <span>Подпись под изображением</span>
+            <span>Название / подпись под изображением</span>
             <input
               value={caption}
               maxLength={600}
               onChange={(event) =>
                 updateAttributes({ caption: event.target.value })
               }
-              placeholder="Необязательно"
+              placeholder="Создаётся автоматически; при необходимости уточните"
             />
           </label>
           <div

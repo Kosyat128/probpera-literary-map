@@ -21,4 +21,10 @@ describe("editorial image placement controls", () => {
     expect(imageViewSource).toContain("editor.state.tr.replaceWith(from, to, replacement)");
     expect(editorStyles).toContain(".editorial-image-width-slider");
   });
+
+  it("shows the generated title and verified image author below the preview", () => {
+    expect(imageViewSource).toContain('className="editorial-image-editor-caption"');
+    expect(imageViewSource).toContain("Автор изображения:");
+    expect(editorStyles).toContain(".editorial-image-editor-caption");
+  });
 });

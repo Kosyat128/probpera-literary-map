@@ -38,7 +38,9 @@ import {
 } from "@/lib/article-content-presentation";
 import type { EditorLinkAttributes } from "@/lib/editor-link";
 import {
+  resolveEditorImageCaption,
   resolveEditorImageAltText,
+  suggestEditorImageCaption,
   suggestEditorImageAltText,
 } from "@/lib/editor-image-naming";
 import {
@@ -250,10 +252,23 @@ export default function PageEditor({
       }),
     [editor, title]
   );
+  const suggestedPageImageCaption = useCallback(
+    (fileName: string, context: { position: number }) =>
+      suggestEditorImageCaption({
+        document: editor?.state.doc,
+        position: context.position,
+        title,
+        fileName,
+        kind: "page",
+      }),
+    [editor, title]
+  );
   const editorMedia = useEditorMediaWorkflow({
     editor,
     collectionName: "Страницы сайта",
+    metadataLocale: "ru",
     suggestedAltText: suggestedPageImageAlt,
+    suggestedCaptionText: suggestedPageImageCaption,
     onChanged: () => setIsDirty(true),
     onMessage: (message) => {
       setImageUploadError("");
@@ -398,6 +413,9 @@ export default function PageEditor({
     setImageUploadMessage("");
     rememberImageSelection();
     const attributes = imageSelectionRef.current.attributes;
+    const imagePosition =
+      imageSelectionRef.current.nodePos ??
+      imageSelectionRef.current.insertionPos;
     const selectedAlt =
       typeof attributes.alt === "string" ? attributes.alt.trim() : "";
     setImageDialogInitialValue({
@@ -406,14 +424,22 @@ export default function PageEditor({
         currentAlt: selectedAlt,
         suggestedAlt: suggestEditorImageAltText({
           document: editor.state.doc,
-          position: imageSelectionRef.current.insertionPos,
+          position: imagePosition,
           title,
           kind: "page",
         }),
         decorative: attributes.decorative === true,
       }),
-      caption:
-        typeof attributes.caption === "string" ? attributes.caption : "",
+      caption: resolveEditorImageCaption({
+        currentCaption: attributes.caption,
+        suggestedCaption: suggestEditorImageCaption({
+          document: editor.state.doc,
+          position: imagePosition,
+          title,
+          kind: "page",
+        }),
+        decorative: attributes.decorative === true,
+      }),
     });
     setImageDialogOpen(true);
   }
@@ -421,12 +447,22 @@ export default function PageEditor({
   function applyImageUrl(value: EditorImageDialogValue) {
     if (!editor) return;
     const selection = imageSelectionRef.current;
+    const sourceChanged = Boolean(
+      typeof selection.nodePos === "number" && value.src !== selection.expectedSrc
+    );
     const attributes = {
       ...selection.attributes,
       src: value.src,
-      mediaId: null,
+      mediaId: sourceChanged
+        ? null
+        : typeof selection.attributes.mediaId === "string"
+          ? selection.attributes.mediaId
+          : null,
       alt: value.alt,
       caption: value.caption,
+      ...(sourceChanged
+        ? { credit: "", source: "", license: "", licenseUrl: "" }
+        : {}),
       layout:
         typeof selection.attributes.layout === "string"
           ? (selection.attributes.layout as EditorialImageLayout)
@@ -483,9 +519,22 @@ export default function PageEditor({
 
   function confirmMediaCollection(settings: EditorialGallerySettings) {
     if (!mediaComposerKind) return;
+    const insertionPosition = editor?.state.selection.from ?? 0;
+    const linkedItems = parseEditorialGalleryUrls(mediaComposerValue).map(
+      (src) => {
+        const fileName = src.split("/").pop() || "изображение";
+        return {
+          src,
+          alt: suggestedPageImageAlt(fileName, { position: insertionPosition }),
+          caption: suggestedPageImageCaption(fileName, {
+            position: insertionPosition,
+          }),
+        };
+      }
+    );
     const items = mergeEditorialGalleryItems(
       mediaComposerItems,
-      parseEditorialGalleryUrls(mediaComposerValue)
+      linkedItems
     );
     if (!items.length) {
       setMediaComposerError("Загрузите или выберите хотя бы одно изображение.");

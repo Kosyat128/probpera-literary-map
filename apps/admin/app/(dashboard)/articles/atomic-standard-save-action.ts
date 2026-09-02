@@ -242,6 +242,11 @@ export async function saveStandardArticleAtomically(formData: FormData) {
     ? (submittedIntent as "publish" | "preview")
     : "save";
   const previewLocale = formData.get("preview_locale") === "en" ? "en" : "ru";
+  const automaticTranslationDeferred =
+    formData.get("automatic_translation_deferred") === "1";
+  const skipAutomaticTranslation =
+    automaticTranslationDeferred ||
+    formData.get("skip_automatic_translation") === "1";
   const submittedArticleId = optionalText(formData.get("id")) || undefined;
   const submittedStatus = String(formData.get("status") || "draft");
   const requestedStatus =
@@ -1095,7 +1100,9 @@ export async function saveStandardArticleAtomically(formData: FormData) {
           ? "atomic-working-draft-promotion"
           : "atomic-article-bundle",
         status: savedStatus,
+        automatic_translation_deferred: automaticTranslationDeferred,
       },
+      skipAutoTranslation: skipAutomaticTranslation,
     });
     publicationState = publication.state;
   }
@@ -1111,6 +1118,7 @@ export async function saveStandardArticleAtomically(formData: FormData) {
       error: publicationBlockMessage,
       publish: publicationState,
       released: intent === "publish" ? savedStatus : null,
+      translation: automaticTranslationDeferred ? "deferred" : null,
       replaced: saved.homepageReplaced || null,
     })
   );
