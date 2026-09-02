@@ -97,6 +97,21 @@ export default function EditorialImageView({
       media.focusY * 100
     )}%`,
   };
+  const topLevelPosition =
+    typeof position === "number" &&
+    editor.state.doc.resolve(position).depth === 0
+      ? position
+      : undefined;
+  const previousSibling =
+    typeof topLevelPosition === "number"
+      ? editor.state.doc.childBefore(topLevelPosition)
+      : undefined;
+  const nextSibling =
+    typeof topLevelPosition === "number"
+      ? editor.state.doc.childAfter(topLevelPosition + node.nodeSize)
+      : undefined;
+  const canMoveUp = Boolean(previousSibling?.node);
+  const canMoveDown = Boolean(nextSibling?.node);
 
   const selectImage = () => {
     if (typeof position === "number") {
@@ -111,6 +126,28 @@ export default function EditorialImageView({
       position,
       attributes: { ...node.attrs },
     });
+  };
+
+  const moveImage = (direction: -1 | 1) => {
+    if (typeof topLevelPosition !== "number") return;
+
+    const sibling = direction === -1 ? previousSibling : nextSibling;
+    if (!sibling?.node) return;
+
+    const from = direction === -1 ? sibling.offset : topLevelPosition;
+    const to =
+      direction === -1
+        ? topLevelPosition + node.nodeSize
+        : sibling.offset + sibling.node.nodeSize;
+    const replacement =
+      direction === -1 ? [node, sibling.node] : [sibling.node, node];
+    const nextPosition =
+      direction === -1 ? sibling.offset : topLevelPosition + sibling.node.nodeSize;
+
+    editor.view.dispatch(
+      editor.state.tr.replaceWith(from, to, replacement).scrollIntoView()
+    );
+    editor.commands.setNodeSelection(nextPosition);
   };
 
   const handleKeyDown = (event: ReactKeyboardEvent<HTMLElement>) => {
@@ -164,8 +201,47 @@ export default function EditorialImageView({
           contentEditable={false}
           aria-label="Действия с изображением"
         >
+          {typeof topLevelPosition === "number" && (
+            <>
+              <button
+                type="button"
+                className="is-drag-handle"
+                data-drag-handle
+                aria-label="Перетащить изображение в другое место"
+                title="Зажмите и перетащите изображение"
+                onClick={(event) => event.stopPropagation()}
+              >
+                Перетащить
+              </button>
+              <button
+                type="button"
+                disabled={!canMoveUp}
+                aria-label="Переместить изображение выше"
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  moveImage(-1);
+                }}
+              >
+                Выше
+              </button>
+              <button
+                type="button"
+                disabled={!canMoveDown}
+                aria-label="Переместить изображение ниже"
+                onMouseDown={(event) => event.preventDefault()}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  moveImage(1);
+                }}
+              >
+                Ниже
+              </button>
+            </>
+          )}
           <button
             type="button"
+            className="is-primary"
             onMouseDown={(event) => event.preventDefault()}
             onClick={(event) => {
               event.stopPropagation();
@@ -256,6 +332,20 @@ export default function EditorialImageView({
                 </button>
               ))}
             </div>
+            <label className="editorial-image-width-slider">
+              <span>Масштаб: {media.width}%</span>
+              <input
+                type="range"
+                min={20}
+                max={100}
+                step={1}
+                value={media.width}
+                aria-label="Масштаб изображения"
+                onChange={(event) =>
+                  updateAttributes({ width: Number(event.target.value) })
+                }
+              />
+            </label>
             <label>
               <span>Своя ширина, 20-100%</span>
               <input

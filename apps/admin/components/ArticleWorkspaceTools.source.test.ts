@@ -18,6 +18,10 @@ const shellSource = readFileSync(
   new URL("./AdminShell.tsx", import.meta.url),
   "utf8"
 );
+const workspaceStyles = readFileSync(
+  new URL("./ArticleWorkspaceTools.module.css", import.meta.url),
+  "utf8"
+);
 
 describe("typed article editor workspace bridge", () => {
   it("consumes typed editor state without scraping or observing rendered markup", () => {
@@ -43,5 +47,23 @@ describe("typed article editor workspace bridge", () => {
     expect(editorSource).toContain("documentNode.textBetween");
     expect(editorSource).toContain("articleWorkspaceCheckSection(item.label)");
     expect(editorSource).toContain("goToWorkspaceHeading");
+  });
+
+  it("keeps the formatting toolbar sticky without stacking it under the workspace", () => {
+    expect(workspaceStyles).toContain("--article-editor-sticky-top: 78px");
+    expect(workspaceStyles).toContain("--article-editor-sticky-top: 76px");
+    expect(workspaceStyles).toContain("--article-editor-sticky-top: 8px");
+    expect(workspaceStyles).toContain("top: var(--article-editor-sticky-top)");
+    expect(workspaceStyles).toContain(
+      "max-height: calc(100dvh - var(--article-editor-sticky-top) - 8px)"
+    );
+    expect(workspaceStyles).toContain("overscroll-behavior: contain");
+    expect(workspaceStyles).not.toContain("top: 158px");
+    expect(workspaceStyles).toMatch(
+      /\.workspace\s*\{[\s\S]*?position:\s*relative;[\s\S]*?top:\s*auto;/u
+    );
+    expect(workspaceStyles).toMatch(
+      /article-workspace-enabled\.is-fullscreen[^}]*\{\s*--article-editor-sticky-top:\s*8px;/u
+    );
   });
 });

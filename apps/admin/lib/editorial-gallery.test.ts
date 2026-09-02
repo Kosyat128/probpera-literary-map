@@ -7,11 +7,31 @@ import {
   normalizeEditorialGalleryItems,
   normalizeEditorialGallerySettings,
   parseEditorialGalleryUrls,
+  reorderEditorialGalleryItems,
   safeEditorialGalleryHtmlAttributes,
   sanitizeEditorialGalleryJson,
 } from "./editorial-gallery";
 
 describe("structured editorial gallery model", () => {
+  it("reorders an immutable gallery to the requested final position", () => {
+    const original = ["first", "second", "third", "fourth"];
+
+    expect(reorderEditorialGalleryItems(original, 0, 2)).toEqual([
+      "second",
+      "third",
+      "first",
+      "fourth",
+    ]);
+    expect(reorderEditorialGalleryItems(original, 3, 1)).toEqual([
+      "first",
+      "fourth",
+      "second",
+      "third",
+    ]);
+    expect(reorderEditorialGalleryItems(original, -1, 2)).toEqual(original);
+    expect(original).toEqual(["first", "second", "third", "fourth"]);
+  });
+
   it("normalizes every setting to a finite, responsive schema", () => {
     expect(
       normalizeEditorialGallerySettings(
