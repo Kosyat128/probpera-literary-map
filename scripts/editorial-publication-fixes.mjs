@@ -379,6 +379,21 @@ function publicArticleId(value = "") {
   return String(value).replace(/^cms-/u, "");
 }
 
+export function applyConfirmedCopyReplacements(value, replacements) {
+  let corrected = String(value);
+  const maximumPasses = replacements.length + 1;
+
+  for (let pass = 0; pass < maximumPasses; pass += 1) {
+    const previous = corrected;
+    for (const [before, after] of replacements) {
+      corrected = corrected.replaceAll(before, after);
+    }
+    if (corrected === previous) return corrected;
+  }
+
+  throw new Error("Confirmed Russian copy replacements did not converge.");
+}
+
 export function applyEditorialPublicationFix(article) {
   if (!article?.id) return article;
   const articleId = publicArticleId(article.id);
@@ -470,10 +485,10 @@ export function applyEditorialPublicationFix(article) {
     ) {
       continue;
     }
-    let value = corrected[field];
-    for (const [before, after] of russianCopyReplacements) {
-      value = value.replaceAll(before, after);
-    }
+    const value = applyConfirmedCopyReplacements(
+      corrected[field],
+      russianCopyReplacements,
+    );
     if (value !== corrected[field]) {
       corrected = { ...corrected, [field]: value };
     }
