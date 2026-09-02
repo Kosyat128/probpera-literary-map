@@ -7,6 +7,7 @@ import {
   normalizePublicMetadataText,
 } from "./lib/article-route-policy.mjs";
 import { normalizeLegacyArticleWithdrawals } from "./lib/cms-legacy-withdrawals.mjs";
+import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCms = path.join(projectRoot, "public", "cms");
@@ -34,19 +35,20 @@ async function readJson(file) {
 }
 
 function normalizeDocument(document) {
-  const metadata = normalizeArticlePublicMetadata(document);
+  const editoriallyCorrected = applyEditorialPublicationFix(document);
+  const metadata = normalizeArticlePublicMetadata(editoriallyCorrected);
   return {
-    ...document,
+    ...editoriallyCorrected,
     ...metadata,
-    translations: document.translations?.en
+    translations: editoriallyCorrected.translations?.en
       ? {
-          ...document.translations,
+          ...editoriallyCorrected.translations,
           en: {
-            ...document.translations.en,
-            ...normalizeArticlePublicMetadata(document.translations.en),
+            ...editoriallyCorrected.translations.en,
+            ...normalizeArticlePublicMetadata(editoriallyCorrected.translations.en),
           },
         }
-      : document.translations,
+      : editoriallyCorrected.translations,
   };
 }
 

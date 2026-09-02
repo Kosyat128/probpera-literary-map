@@ -46,7 +46,7 @@ const tolstoyShortStoriesArticle: ArticleIdentity = {
   revisionDocumentPath:
     "cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
   revisionSha256:
-    "741830c31a1c1cd46fd4626f68e4958d7fceb6e71d71ac0d07da9051ccb38606",
+    "5a3574570e446af11c1ee561fe315372fafd1ffa7dd75717b75938c7a49264d2",
 };
 
 const chekhovShortStoriesArticle: ArticleIdentity = {
@@ -58,7 +58,7 @@ const chekhovShortStoriesArticle: ArticleIdentity = {
   revisionDocumentPath:
     "cms/articles/cms-473b8ad5-1bc5-43e6-8698-1c9528e61b10.json",
   revisionSha256:
-    "e07ff1aacfd0d98d3a42773a5bdcfc57886470cea5ab7fb17b272f0fb10c58f2",
+    "3370bdc6d8957e0d1ef8e41f18c8758da70dbf88acbff1e7febd1a273441e241",
 };
 
 const topBooksPartFiveArticle: ArticleIdentity = {
@@ -70,7 +70,7 @@ const topBooksPartFiveArticle: ArticleIdentity = {
   revisionDocumentPath:
     "cms/articles/cms-db3ab5d8-4d2f-41a3-8369-8fab1df44d86.json",
   revisionSha256:
-    "b5e00413992cad055a0d8a38ab9de4d9764232c6eea42a868cf7470ed07c62bc",
+    "f2edb7f23f41408feb091ff540dbf5c8a8ee9bd42972469126f861fd2eb46e77",
 };
 
 function officialFactSource(
@@ -131,7 +131,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "07bd5ff77c634ecba8bc89f644eb45bd4c2991b000c305ee308f67075545a653",
       occurrenceSha256:
-        "786542c0be89ee4c4217daad159a5c0eced0f61e08b9e05d5f8d476b15595bdf",
+        "2f2abdb459e74dc5b5d23498cfc27bdafdb31dccdc240e621a3b132b653680b6",
       ...tolstoyShortStoriesArticle,
       headingId: "chapter-2-алёша-горшок-3",
       headingText: "2. Алёша Горшок",
@@ -161,7 +161,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "54efe51b40f43be87a0f3f43bea8624d2b5f3f8611865b9cdbc58a85a2f7eb59",
       occurrenceSha256:
-        "444c492e4898115a19113bc9ea1cbac597c228fb52ee4c469092f23f9bd8f447",
+        "d01a25d7d40d754ca095ba556ae9e8bec5752d40cc3953e792bc6011e5fd3338",
       articleId: "cms-77f11506-9e49-4ed4-b199-8b87b86fc820",
       articleUrl:
         "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-4/",
@@ -170,7 +170,7 @@ export const bookArticleSynopsisBatch01Records = [
       revisionDocumentPath:
         "cms/articles/cms-77f11506-9e49-4ed4-b199-8b87b86fc820.json",
       revisionSha256:
-        "ccf94e883a56364548ef5c267ab74b172fa9febbf8bb83caf0502ce995db5449",
+        "e37b02bb85c2721659b1696752a18230fa48ee2b0a810e52ee8d1c8e16b337d6",
       headingId: "chapter-4-михаил-булгаков-белая-гвардия-5",
       headingText: "4. Михаил Булгаков - Белая гвардия",
       headingSha256:
@@ -199,7 +199,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "a21a666d4e882125ce86b57f53c11ddb2073892938f6cbf706af00cae713c24c",
       occurrenceSha256:
-        "e98e225ae7b1fba952a7e7a770922d157ff017d75631ad7665de8f35d0f0cb56",
+        "33d0f4c719c3c5d7a2645909bd58551962c1eb0e0204d4f5fe208f9037cba5b6",
       articleId: "cms-192bc665-3461-422c-adee-d25fb394385c",
       articleUrl:
         "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-3/",
@@ -208,7 +208,7 @@ export const bookArticleSynopsisBatch01Records = [
       revisionDocumentPath:
         "cms/articles/cms-192bc665-3461-422c-adee-d25fb394385c.json",
       revisionSha256:
-        "08f342f7b6e63f8164c3ac56d0fa50275c6fc865cf7658e77ed6cc621cff17cc",
+        "cb0b5dc674ae32dffec4dab9e48cf647be050900b36956429e8071afcf648624",
       headingId: "chapter-6-иван-бунин-деревня-7",
       headingText: "6. Иван Бунин - Деревня",
       headingSha256:
@@ -241,7 +241,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "f8e77aab6ee30a1c3219a796edd49e0782ffd6b1b7a837102188560263067019",
       occurrenceSha256:
-        "91a8e7511c5987c14ce0c683ae231381e27b5ff732e38ee7d62aab9760d22416",
+        "42077c35348bc96938c50e8d70674500e365726db07ab76f603cdb7e673d2596",
       ...topBooksPartFiveArticle,
       headingId: "chapter-5-и-с-тургенев-дым-6",
       headingText: "5. И.С. Тургенев «Дым»",
@@ -271,7 +271,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "ab4e0508a9d91de440d7d909b7593cd46659fdd5d5b2d8388a93d8592c3fb84b",
       occurrenceSha256:
-        "5c8ef32bf56b7a5e7ae9dc1a51b0e432bcfe8104211c92f3956e29295a060b66",
+        "b35508ef05d79134c87854584e15a8ce0e5bc4a1853d1e7c9552ccd7ec5fdfdf",
       ...chekhovShortStoriesArticle,
       headingId: "chapter-2-жалобная-книга-3",
       headingText: "2. Жалобная книга",
@@ -301,7 +301,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "66346893a93546fe6f12a8dcbae6d1ddf4daecd3ab2e5b67d992ae00e02223b4",
       occurrenceSha256:
-        "d7036cb779362d14a7173bdd5ab6eeaa3bd820294f6d04e3f6deb7eaeb7429b6",
+        "0aa4ec12f4996806c075ea3097c392a499ba7f06c5a3be775f1c988c22531733",
       articleId: "cms-f78a8ab2-99fb-4f16-bf95-8945e3a33aa0",
       articleUrl:
         "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-1/",
@@ -310,7 +310,7 @@ export const bookArticleSynopsisBatch01Records = [
       revisionDocumentPath:
         "cms/articles/cms-f78a8ab2-99fb-4f16-bf95-8945e3a33aa0.json",
       revisionSha256:
-        "b305694d7b33f9f5f94665787b126554f77ae52cfee2e40f67e9e470c6c9e489",
+        "f353cbe9ddbdb2e970b09644129e36dc8bca2c258623b833a306cee11e89159e",
       headingId: "chapter-2-л-н-толстой-казаки-3",
       headingText: "2. Л.Н. Толстой - Казаки",
       headingSha256:
@@ -339,7 +339,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "00bc5043f8d65247e9e52e87f4bdc848daa94bf5012447484003263bd30a0f4b",
       occurrenceSha256:
-        "6212a4b906be0c987f0264b2b8ca99cebec731ed25ba4a33c967bfb65ba1a775",
+        "059c1878c189242aa665c3946bf07270611f7877f6f5773be97c7ef690fa5cff",
       ...tolstoyShortStoriesArticle,
       headingId: "chapter-5-лев-и-собачка-6",
       headingText: "5. Лев и собачка",
@@ -369,7 +369,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "d6ea343b1d3fcb4a86793d28b801ddb5d326199c7a37f63bef6b21379763d4e5",
       occurrenceSha256:
-        "0f90fcbf93a9b7b5ab9bd86b960f471ceb61e8d075228b6851cb6461cffb25e4",
+        "974ce6b17e9f17d4525c321730de2efc530a8804a6e4c46635dc44def5f39882",
       ...chekhovShortStoriesArticle,
       headingId: "chapter-5-лошадиная-фамилия-6",
       headingText: "5. Лошадиная фамилия",
@@ -399,7 +399,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "31b906d5686a48d45a021594d673b3662b7542dfe2bb3553157f88d9fe4bf050",
       occurrenceSha256:
-        "deb497525177d5bb661851b9e57a0124df088e34d211b7d6ea26bfc410263a13",
+        "195c3b0e0c2e5e35e4f25af5b2b372fe8fa0368b68b8aeca8f72e07d549a071e",
       ...tolstoyShortStoriesArticle,
       headingId: "chapter-1-после-бала-2",
       headingText: "1. После бала",
@@ -429,7 +429,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "d5c5b94c84809bc25f5a8ef0071e5536aa4a5316036beda04f6b18db24ced29c",
       occurrenceSha256:
-        "96bdfc0ee2ee01d07d37eda782885a7507ee3245aae59702391617e025ef97d5",
+        "ab52679d760aa09601b2383414a0d6eec1f2e11ad300960635df88f290732ee1",
       ...chekhovShortStoriesArticle,
       headingId: "chapter-3-смерть-чиновника-4",
       headingText: "3. Смерть чиновника",
@@ -459,7 +459,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "2fde697b774ecb4b5e9376e32d8d279cdbfe98e5b2dfdc793d75a939f624a9e8",
       occurrenceSha256:
-        "dbdc53eb209b8ed3cd6c65a40a7d689d1f199c0ddf42d3c49c787af6ce86ffb2",
+        "ccfb301660f2f85257fe34cb9aea86ac5213da2928d07f46bc83d7f72a1b6934",
       ...topBooksPartFiveArticle,
       headingId: "chapter-4-а-п-чехов-степь-5",
       headingText: "4. А.П. Чехов «Степь»",
@@ -489,7 +489,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "2869fa858c4a6af0ca398ffbd7b53b3b502e3865cae07527437fe76dcbe8b8bd",
       occurrenceSha256:
-        "a7684db06ef0d70b03967b70d7a04bedaa5658cc67d2dc52c863007acc223393",
+        "e786a59926145d74cf40566f8ccdf797a2011dceaba23ffd66948035fddb4807",
       ...tolstoyShortStoriesArticle,
       headingId: "chapter-6-филипок-7",
       headingText: "6. Филипок",

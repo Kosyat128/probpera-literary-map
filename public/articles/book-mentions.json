@@ -1,11 +1,11 @@
 {
   "version": 2,
   "bookCount": 9761,
-  "articleCount": 162,
-  "linkedBookCount": 522,
-  "linkedArticleCount": 27,
-  "relationCount": 664,
-  "articleBookRelationCount": 36,
+  "articleCount": 167,
+  "linkedBookCount": 535,
+  "linkedArticleCount": 30,
+  "relationCount": 694,
+  "articleBookRelationCount": 42,
   "byBook": {
     "afghanistan:khaled_hosseini:article-catalog-gxmx58": [
       {
@@ -987,6 +987,18 @@
         "kind": "mention"
       }
     ],
+    "england:william_shakespeare:legacy-william_shakespeare-ромео-и-джульетта": [
+      {
+        "id": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+        "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+        "sectionId": "screen-adaptations",
+        "sectionLabel": "Книга и экранизация",
+        "readingMinutes": 13,
+        "slug": "15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/b85d8484-8e88-43a6-b43c-9612f85641d4.webp",
+        "kind": "mention"
+      }
+    ],
     "england:daniel_defoe:a-general-history-of-the-pyrates": [
       {
         "id": "cms-dcbb3d16-6817-4016-8715-e6c7a42f3f33",
@@ -1057,6 +1069,18 @@
         "kind": "mention"
       }
     ],
+    "england:jane_austen:legacy-jane_austen-разум-и-чувства": [
+      {
+        "id": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+        "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+        "sectionId": "screen-adaptations",
+        "sectionLabel": "Книга и экранизация",
+        "readingMinutes": 13,
+        "slug": "15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/b85d8484-8e88-43a6-b43c-9612f85641d4.webp",
+        "kind": "mention"
+      }
+    ],
     "england:walter_scott:article-catalog-1eojcsu": [
       {
         "id": "cms-c8093da3-ec42-43f1-b712-5099cf9d6ab5",
@@ -1099,6 +1123,18 @@
         "kind": "mention"
       }
     ],
+    "england:walter_scott:legacy-walter_scott-айвенго": [
+      {
+        "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+        "title": "15 лучших художественных книг о рыцарях",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 9,
+        "slug": "15-luchshih-hudozhestvennyh-knig-o-rytsaryah",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+        "kind": "mention"
+      }
+    ],
     "england:charles_dickens:great-expectations": [
       {
         "id": "cms-2c74fe14-83b3-4e0f-b785-91f388253141",
@@ -1122,6 +1158,16 @@
       }
     ],
     "england:charles_dickens:oliver-twist-editorial": [
+      {
+        "id": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+        "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+        "sectionId": "screen-adaptations",
+        "sectionLabel": "Книга и экранизация",
+        "readingMinutes": 13,
+        "slug": "15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/b85d8484-8e88-43a6-b43c-9612f85641d4.webp",
+        "kind": "mention"
+      },
       {
         "id": "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02",
         "title": "Зарубежные классики литературы и их профессии",
@@ -1167,7 +1213,41 @@
         "kind": "mention"
       }
     ],
+    "england:charlotte_bronte:jane-eyre-editorial": [
+      {
+        "id": "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+        "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+        "sectionId": "writers-world",
+        "sectionLabel": "Писатели мира",
+        "readingMinutes": 7,
+        "slug": "zarubezhnye-klassiki-literatury-i-ih-professii-chast-4",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/5a87c5a2-1cc1-4800-9715-5e3331728c48.webp",
+        "kind": "mention"
+      }
+    ],
+    "england:emily_bronte:legacy-emily_bronte-грозовой-перевал": [
+      {
+        "id": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+        "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+        "sectionId": "screen-adaptations",
+        "sectionLabel": "Книга и экранизация",
+        "readingMinutes": 13,
+        "slug": "15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/b85d8484-8e88-43a6-b43c-9612f85641d4.webp",
+        "kind": "mention"
+      }
+    ],
     "england:robert_louis_stevenson:article-series-1vf17g1": [
+      {
+        "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+        "title": "15 лучших художественных книг о рыцарях",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 9,
+        "slug": "15-luchshih-hudozhestvennyh-knig-o-rytsaryah",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+        "kind": "mention"
+      },
       {
         "id": "cms-f78a8ab2-99fb-4f16-bf95-8945e3a33aa0",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 1)",
@@ -1202,6 +1282,16 @@
       }
     ],
     "england:arthur_conan_doyle:article-series-nq6wxl": [
+      {
+        "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+        "title": "15 лучших художественных книг о рыцарях",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 9,
+        "slug": "15-luchshih-hudozhestvennyh-knig-o-rytsaryah",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+        "kind": "mention"
+      },
       {
         "id": "cms-77f11506-9e49-4ed4-b199-8b87b86fc820",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",
@@ -1259,6 +1349,86 @@
         "kind": "mention"
       }
     ],
+    "england:h_g_wells:ann-veronica": [
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
+      }
+    ],
+    "england:h_g_wells:the-first-men-in-the-moon": [
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
+      }
+    ],
+    "england:h_g_wells:the-food-of-the-gods": [
+      {
+        "id": "cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d",
+        "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «А»",
+        "sectionId": "language",
+        "sectionLabel": "Русский язык",
+        "readingMinutes": 3,
+        "slug": "popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-a",
+        "imageUrl": "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
+        "kind": "mention"
+      },
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
+      },
+      {
+        "id": "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02",
+        "title": "Зарубежные классики литературы и их профессии",
+        "sectionId": "writers-world",
+        "sectionLabel": "Писатели мира",
+        "readingMinutes": 12,
+        "slug": "zarubezhnye-klassiki-literatury-i-ih-professii",
+        "imageUrl": "https://static.tildacdn.com/tild3035-6663-4331-b734-666332663634/7e6f5121-7d08-43fa-9.png",
+        "kind": "mention"
+      }
+    ],
+    "england:h_g_wells:the-history-of-mr-polly": [
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
+      }
+    ],
+    "england:h_g_wells:the-world-set-free": [
+      {
+        "id": "cms-e922551a-afd3-40e0-bcaf-17379de6bd9b",
+        "title": "Мнение о книге Герберта Уэллса «Война в воздухе»",
+        "sectionId": "book-opinions",
+        "sectionLabel": "Мнение о книге",
+        "readingMinutes": 6,
+        "slug": "mnenie-o-knige-gerberta-uellsa-voyna-v-vozduhe",
+        "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
+        "kind": "mention"
+      }
+    ],
     "england:h_g_wells:invisible-man-editorial": [
       {
         "id": "cms-e922551a-afd3-40e0-bcaf-17379de6bd9b",
@@ -1269,6 +1439,16 @@
         "slug": "mnenie-o-knige-gerberta-uellsa-voyna-v-vozduhe",
         "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
         "kind": "feature"
+      },
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
       },
       {
         "id": "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02",
@@ -1301,9 +1481,29 @@
         "slug": "mnenie-o-knige-gerberta-uellsa-voyna-v-vozduhe",
         "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
         "kind": "review"
+      },
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
       }
     ],
     "england:h_g_wells:article-series-15osrun": [
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
+      },
       {
         "id": "cms-0683d7e5-ce88-4ead-8169-ac8cd6c2ac44",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 6)",
@@ -1399,40 +1599,6 @@
         "kind": "mention"
       }
     ],
-    "england:h_g_wells:the-food-of-the-gods": [
-      {
-        "id": "cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d",
-        "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «А»",
-        "sectionId": "language",
-        "sectionLabel": "Русский язык",
-        "readingMinutes": 3,
-        "slug": "popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-a",
-        "imageUrl": "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
-        "kind": "mention"
-      },
-      {
-        "id": "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02",
-        "title": "Зарубежные классики литературы и их профессии",
-        "sectionId": "writers-world",
-        "sectionLabel": "Писатели мира",
-        "readingMinutes": 12,
-        "slug": "zarubezhnye-klassiki-literatury-i-ih-professii",
-        "imageUrl": "https://static.tildacdn.com/tild3035-6663-4331-b734-666332663634/7e6f5121-7d08-43fa-9.png",
-        "kind": "mention"
-      }
-    ],
-    "england:h_g_wells:the-world-set-free": [
-      {
-        "id": "cms-e922551a-afd3-40e0-bcaf-17379de6bd9b",
-        "title": "Мнение о книге Герберта Уэллса «Война в воздухе»",
-        "sectionId": "book-opinions",
-        "sectionLabel": "Мнение о книге",
-        "readingMinutes": 6,
-        "slug": "mnenie-o-knige-gerberta-uellsa-voyna-v-vozduhe",
-        "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
-        "kind": "mention"
-      }
-    ],
     "england:h_g_wells:legacy-h_g_wells-машина-времени": [
       {
         "id": "cms-e922551a-afd3-40e0-bcaf-17379de6bd9b",
@@ -1443,6 +1609,16 @@
         "slug": "mnenie-o-knige-gerberta-uellsa-voyna-v-vozduhe",
         "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
         "kind": "feature"
+      },
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
       },
       {
         "id": "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02",
@@ -1475,6 +1651,16 @@
         "slug": "mnenie-o-knige-gerberta-uellsa-voyna-v-vozduhe",
         "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
         "kind": "feature"
+      },
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
       },
       {
         "id": "cms-e4bf2314-4621-48c4-9587-b4e88131412f",
@@ -1517,6 +1703,16 @@
         "slug": "mnenie-o-knige-gerberta-uellsa-voyna-v-vozduhe",
         "imageUrl": "https://static.tildacdn.com/tild3966-6634-4362-a565-303334366562/b4a0242e-c028-42fa-a.png",
         "kind": "feature"
+      },
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
       },
       {
         "id": "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02",
@@ -1727,6 +1923,30 @@
         "kind": "mention"
       }
     ],
+    "england:david_mitchell:ghostwritten": [
+      {
+        "id": "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8",
+        "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
+        "sectionId": "book-opinions",
+        "sectionLabel": "Мнение о книге",
+        "readingMinutes": 8,
+        "slug": "mnenie-o-knige-devid-mitchell-oblachnyy-atlas",
+        "imageUrl": "https://static.tildacdn.com/tild3535-3836-4566-b965-613830626138/photo.webp",
+        "kind": "mention"
+      }
+    ],
+    "england:david_mitchell:number9dream": [
+      {
+        "id": "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8",
+        "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
+        "sectionId": "book-opinions",
+        "sectionLabel": "Мнение о книге",
+        "readingMinutes": 8,
+        "slug": "mnenie-o-knige-devid-mitchell-oblachnyy-atlas",
+        "imageUrl": "https://static.tildacdn.com/tild3535-3836-4566-b965-613830626138/photo.webp",
+        "kind": "mention"
+      }
+    ],
     "england:david_mitchell:cloud-atlas": [
       {
         "id": "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8",
@@ -1777,28 +1997,6 @@
         "slug": "desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-2",
         "imageUrl": "https://static.tildacdn.com/tild3534-3066-4639-a233-356534313063/image.png",
         "kind": "mention"
-      },
-      {
-        "id": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-        "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-        "sectionId": "book-opinions",
-        "sectionLabel": "Мнение о книге",
-        "readingMinutes": 7,
-        "slug": "mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya",
-        "imageUrl": "https://static.tildacdn.com/tild3438-6231-4837-b336-313232663631/23213.jpg",
-        "kind": "mention"
-      }
-    ],
-    "england:david_mitchell:black-swan-green": [
-      {
-        "id": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-        "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-        "sectionId": "book-opinions",
-        "sectionLabel": "Мнение о книге",
-        "readingMinutes": 7,
-        "slug": "mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya",
-        "imageUrl": "https://static.tildacdn.com/tild3438-6231-4837-b336-313232663631/23213.jpg",
-        "kind": "review"
       }
     ],
     "england:david_mitchell:utopia-avenue": [
@@ -1811,30 +2009,6 @@
         "slug": "mnenie-o-knige-devida-mitchella-utopiya-avenyu",
         "imageUrl": "https://static.tildacdn.com/tild3933-3832-4536-b831-353861383232/234234.jpg",
         "kind": "review"
-      }
-    ],
-    "england:david_mitchell:ghostwritten": [
-      {
-        "id": "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8",
-        "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
-        "sectionId": "book-opinions",
-        "sectionLabel": "Мнение о книге",
-        "readingMinutes": 8,
-        "slug": "mnenie-o-knige-devid-mitchell-oblachnyy-atlas",
-        "imageUrl": "https://static.tildacdn.com/tild3535-3836-4566-b965-613830626138/photo.webp",
-        "kind": "mention"
-      }
-    ],
-    "england:david_mitchell:number9dream": [
-      {
-        "id": "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8",
-        "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
-        "sectionId": "book-opinions",
-        "sectionLabel": "Мнение о книге",
-        "readingMinutes": 8,
-        "slug": "mnenie-o-knige-devid-mitchell-oblachnyy-atlas",
-        "imageUrl": "https://static.tildacdn.com/tild3535-3836-4566-b965-613830626138/photo.webp",
-        "kind": "mention"
       }
     ],
     "england:evelyn_waugh:article-series-15s6gh2": [
@@ -2205,6 +2379,18 @@
         "kind": "mention"
       }
     ],
+    "france:chretien_de_troyes:legacy-chretien_de_troyes-персеваль-или-повесть-о-граале": [
+      {
+        "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+        "title": "15 лучших художественных книг о рыцарях",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 9,
+        "slug": "15-luchshih-hudozhestvennyh-knig-o-rytsaryah",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+        "kind": "mention"
+      }
+    ],
     "france:francois_rabelais:legacy-francois_rabelais-гаргантюа-и-пантагрюэль": [
       {
         "id": "cms-c4f0f1be-b108-4d78-8fa2-324bebbc7f06",
@@ -2346,6 +2532,18 @@
         "readingMinutes": 5,
         "slug": "sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-5",
         "imageUrl": "https://static.tildacdn.com/tild6139-6134-4530-b338-613031346331/image.png",
+        "kind": "mention"
+      }
+    ],
+    "france:jules_verne:legacy-jules_verne-вокруг-света-за-80-дней": [
+      {
+        "id": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+        "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+        "sectionId": "screen-adaptations",
+        "sectionLabel": "Книга и экранизация",
+        "readingMinutes": 13,
+        "slug": "15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/b85d8484-8e88-43a6-b43c-9612f85641d4.webp",
         "kind": "mention"
       }
     ],
@@ -2674,6 +2872,18 @@
         "readingMinutes": 4,
         "slug": "1910-god-paul-yohan-lyudvig-fon-heyze-laureat-nobelevskoy-premii",
         "imageUrl": "https://static.tildacdn.com/tild3939-3537-4539-b036-363238633965/f2db9a8d-79cd-4d8d-9.png",
+        "kind": "mention"
+      }
+    ],
+    "germany:wolfram_von_eschenbach:legacy-wolfram_von_eschenbach-парцифаль": [
+      {
+        "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+        "title": "15 лучших художественных книг о рыцарях",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 9,
+        "slug": "15-luchshih-hudozhestvennyh-knig-o-rytsaryah",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
         "kind": "mention"
       }
     ],
@@ -3135,6 +3345,16 @@
     ],
     "ireland:iris_murdoch:article-series-j8wxp2": [
       {
+        "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+        "title": "15 лучших художественных книг о рыцарях",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 9,
+        "slug": "15-luchshih-hudozhestvennyh-knig-o-rytsaryah",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+        "kind": "mention"
+      },
+      {
         "id": "cms-0683d7e5-ce88-4ead-8169-ac8cd6c2ac44",
         "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 6)",
         "sectionId": "book-guides",
@@ -3548,6 +3768,18 @@
         "readingMinutes": 4,
         "slug": "1923-god-uilyam-batler-yeyts-laureat-nobelevskoy-premii-po-literature",
         "imageUrl": "https://static.tildacdn.com/tild3632-3030-4366-a631-393933643236/1e518762-16b8-460b-9.png",
+        "kind": "mention"
+      }
+    ],
+    "laos:phoumi_vongvichit:legacy-phoumi_vongvichit-исторические-труды": [
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
         "kind": "mention"
       }
     ],
@@ -4329,6 +4561,18 @@
         "kind": "mention"
       }
     ],
+    "poland:henryk_sienkiewicz:legacy-henryk_sienkiewicz-крестоносцы": [
+      {
+        "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+        "title": "15 лучших художественных книг о рыцарях",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 9,
+        "slug": "15-luchshih-hudozhestvennyh-knig-o-rytsaryah",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+        "kind": "mention"
+      }
+    ],
     "poland:joseph_conrad:article-series-1r32g0c": [
       {
         "id": "cms-694bd02d-bae7-4ea1-85fe-5aa3de3eb0ae",
@@ -4857,6 +5101,16 @@
         "kind": "mention"
       },
       {
+        "id": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+        "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+        "sectionId": "folklore",
+        "sectionLabel": "Фольклор и мифология",
+        "readingMinutes": 10,
+        "slug": "13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/55d2ba53-185f-4ecd-bcf1-d4c671e80206.webp",
+        "kind": "mention"
+      },
+      {
         "id": "cms-67892186-c9dd-49f2-895e-ee6e4cfcca88",
         "title": "Водяной",
         "sectionId": "folklore",
@@ -5173,6 +5427,16 @@
     ],
     "spain:miguel_de_cervantes:openlibrary-works-ol15272537w": [
       {
+        "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+        "title": "15 лучших художественных книг о рыцарях",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 9,
+        "slug": "15-luchshih-hudozhestvennyh-knig-o-rytsaryah",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+        "kind": "mention"
+      },
+      {
         "id": "cms-22c7eab8-cf9d-4824-8311-3680a4d88714",
         "title": "Премия «Мигель де Сервантес»",
         "sectionId": "awards",
@@ -5306,6 +5570,16 @@
         "readingMinutes": 10,
         "slug": "zarubezhnye-klassiki-literatury-i-ih-professii-chast-3",
         "imageUrl": "https://static.tildacdn.com/tild6531-6165-4235-b465-323531316331/image.png",
+        "kind": "mention"
+      },
+      {
+        "id": "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+        "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+        "sectionId": "writers-world",
+        "sectionLabel": "Писатели мира",
+        "readingMinutes": 7,
+        "slug": "zarubezhnye-klassiki-literatury-i-ih-professii-chast-4",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/5a87c5a2-1cc1-4800-9715-5e3331728c48.webp",
         "kind": "mention"
       }
     ],
@@ -5737,6 +6011,16 @@
         "slug": "nepriznannye-sovremennikami-genii-literatury-german-melvill",
         "imageUrl": "https://static.tildacdn.com/tild3964-3561-4134-b337-653639393934/photo.png",
         "kind": "feature"
+      },
+      {
+        "id": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+        "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+        "sectionId": "screen-adaptations",
+        "sectionLabel": "Книга и экранизация",
+        "readingMinutes": 13,
+        "slug": "15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/b85d8484-8e88-43a6-b43c-9612f85641d4.webp",
+        "kind": "mention"
       }
     ],
     "usa:herman_melville:article-series-1e5e8ag": [
@@ -5926,6 +6210,18 @@
         "readingMinutes": 6,
         "slug": "sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-mark-tven",
         "imageUrl": "https://static.tildacdn.com/tild6166-6438-4135-b530-363433303239/photo.png",
+        "kind": "mention"
+      }
+    ],
+    "usa:mark_twain:legacy-mark_twain-янки-из-коннектикута-при-дворе-короля-артура": [
+      {
+        "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+        "title": "15 лучших художественных книг о рыцарях",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 9,
+        "slug": "15-luchshih-hudozhestvennyh-knig-o-rytsaryah",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
         "kind": "mention"
       }
     ],
@@ -6905,6 +7201,16 @@
         "kind": "feature"
       },
       {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
+        "kind": "mention"
+      },
+      {
         "id": "cms-75067054-81b1-40e7-8bd4-3ac1b8296c02",
         "title": "Зарубежные классики литературы и их профессии",
         "sectionId": "writers-world",
@@ -6926,6 +7232,16 @@
       }
     ],
     "usa:jack_kerouac:legacy-jack_kerouac-на-дороге": [
+      {
+        "id": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+        "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+        "sectionId": "folklore",
+        "sectionLabel": "Фольклор и мифология",
+        "readingMinutes": 10,
+        "slug": "13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/55d2ba53-185f-4ecd-bcf1-d4c671e80206.webp",
+        "kind": "mention"
+      },
       {
         "id": "cms-8fa390e5-db2d-450b-89c9-8db574179cfa",
         "title": "15 крылатых выражений, пришедших к нам из древнегреческой мифологии",
@@ -7014,6 +7330,16 @@
         "readingMinutes": 6,
         "slug": "viy",
         "imageUrl": "https://static.tildacdn.com/tild3630-3835-4535-a434-356632396432/fc2a485b-c8a3-47c4-a.png",
+        "kind": "mention"
+      },
+      {
+        "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+        "title": "Десять лучших книг Герберта Уэллса",
+        "sectionId": "book-guides",
+        "sectionLabel": "Книжный гид и подборки",
+        "readingMinutes": 8,
+        "slug": "desyat-luchshih-knig-gerberta-uellsa",
+        "imageUrl": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/275b2aee-fb6a-4c29-a93b-3a46495356c5.webp",
         "kind": "mention"
       }
     ],
@@ -7808,6 +8134,80 @@
         "kind": "mention"
       }
     ],
+    "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d": [
+      {
+        "key": "england:h_g_wells:ann-veronica",
+        "countryId": "england",
+        "writerId": "h_g_wells",
+        "bookId": "ann-veronica",
+        "firstPublished": 1909,
+        "localizations": {
+          "ru": {
+            "title": "Анна-Вероника",
+            "writerName": "Герберт Джордж Уэллс"
+          },
+          "en": {
+            "title": "Ann Veronica",
+            "writerName": "H G Wells"
+          }
+        },
+        "kind": "mention"
+      },
+      {
+        "key": "england:h_g_wells:the-history-of-mr-polly",
+        "countryId": "england",
+        "writerId": "h_g_wells",
+        "bookId": "the-history-of-mr-polly",
+        "firstPublished": 1910,
+        "localizations": {
+          "ru": {
+            "title": "История мистера Полли",
+            "writerName": "Герберт Джордж Уэллс"
+          },
+          "en": {
+            "title": "The History of Mr. Polly",
+            "writerName": "H G Wells"
+          }
+        },
+        "kind": "mention"
+      },
+      {
+        "key": "england:h_g_wells:the-first-men-in-the-moon",
+        "countryId": "england",
+        "writerId": "h_g_wells",
+        "bookId": "the-first-men-in-the-moon",
+        "firstPublished": 1901,
+        "localizations": {
+          "ru": {
+            "title": "Первые люди на Луне",
+            "writerName": "Герберт Джордж Уэллс"
+          },
+          "en": {
+            "title": "The First Men in the Moon",
+            "writerName": "H G Wells"
+          }
+        },
+        "kind": "mention"
+      },
+      {
+        "key": "england:h_g_wells:the-food-of-the-gods",
+        "countryId": "england",
+        "writerId": "h_g_wells",
+        "bookId": "the-food-of-the-gods",
+        "firstPublished": 1904,
+        "localizations": {
+          "ru": {
+            "title": "Пища богов",
+            "writerName": "Герберт Джордж Уэллс"
+          },
+          "en": {
+            "title": "The Food of the Gods and How It Came to Earth",
+            "writerName": "H G Wells"
+          }
+        },
+        "kind": "mention"
+      }
+    ],
     "cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d": [
       {
         "key": "russia:tolstoy:war-and-peace",
@@ -8161,6 +8561,26 @@
         "kind": "feature"
       }
     ],
+    "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8": [
+      {
+        "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+        "countryId": "spain",
+        "writerId": "miguel_de_cervantes",
+        "bookId": "openlibrary-works-ol15272537w",
+        "firstPublished": 1605,
+        "localizations": {
+          "ru": {
+            "title": "Дон Кихот",
+            "writerName": "Мигель де Сервантес"
+          },
+          "en": {
+            "title": "Don Quixote",
+            "writerName": "Miguel de Cervantes"
+          }
+        },
+        "kind": "mention"
+      }
+    ],
     "cms-22c7eab8-cf9d-4824-8311-3680a4d88714": [
       {
         "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
@@ -8219,6 +8639,26 @@
           }
         },
         "kind": "feature"
+      }
+    ],
+    "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c": [
+      {
+        "key": "usa:herman_melville:moby-dick",
+        "countryId": "usa",
+        "writerId": "herman_melville",
+        "bookId": "moby-dick",
+        "firstPublished": 1851,
+        "localizations": {
+          "ru": {
+            "title": "Моби Дик, или Белый Кит",
+            "writerName": "Герман Мелвилл"
+          },
+          "en": {
+            "title": "Moby-Dick; or, The Whale",
+            "writerName": "Herman Melville"
+          }
+        },
+        "kind": "mention"
       }
     ],
     "cms-ee3f4162-54d8-4a76-a6a9-47d50d6093d2": [

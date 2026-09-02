@@ -1,10 +1,12 @@
 {
-  "generatedAt": "2026-09-02T04:44:26.757Z",
+  "generatedAt": "2026-09-02T10:26:33.826Z",
   "contract": "Atomic future gate: published-edition RU/EN title evidence and immutable description provenance for every public card; canon evidence is additionally mandatory whenever canonical or landmark status is claimed.",
   "summary": {
     "canonicalRecords": 9761,
     "currentlyPublic": 46,
     "evidenceV2Ready": 46,
+    "evidenceV2AttestationCandidates": 46,
+    "evidenceV2CanonicalizationFailures": 0,
     "currentlyPublicEvidenceV2Ready": 46,
     "currentlyPublicReauditRequired": 0,
     "canonClaims": 0,
@@ -29,5 +31,6 @@
     "missing-en-description-provenance": 1,
     "missing-ru-description-provenance": 1
   },
-  "currentlyPublicReauditQueue": []
+  "currentlyPublicReauditQueue": [],
+  "evidenceCanonicalizationFailures": []
 }

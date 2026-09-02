@@ -6,6 +6,7 @@ import {
   applyBookEvidenceV2PublicBatch03Work,
   bookEvidenceV2PublicBatch03Holds,
 } from "./bookEvidenceV2PublicBatch03";
+import { withoutUndefinedTitleEvidenceOptions } from "./bookEvidenceV2TitleEvidence";
 import type {
   WorkDescriptionProvenanceProfile,
   WorkLocale,
@@ -76,7 +77,7 @@ export type BookEvidenceV2PublicHolds01Hold = {
 function titleEvidence(draft: TitleEvidenceDraft): WorkTitleEvidenceProfile {
   return {
     entityKind: "manifestation",
-    ...draft,
+    ...withoutUndefinedTitleEvidenceOptions(draft),
     retrievedAt: checkedAt,
     checkedAt,
     checkedBy,

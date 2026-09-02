@@ -270,8 +270,8 @@ const lockedScopes = [
       relativePath.endsWith(".json") &&
       relativePath !== "public/articles/book-mentions.json",
     expected: {
-      files: 320,
-      sha256: "c1d83797247c5de6a413c239ba8be886e9c8c51a972b415756206c3f2c202021",
+      files: 325,
+      sha256: "9ae59b16eeaba20b8e60a4688a500eb6f0921f9736107f5b203fb1f51878b1d3",
     },
   },
   {
@@ -285,7 +285,7 @@ const lockedScopes = [
     include: () => true,
     expected: {
       files: 4,
-      sha256: "9184bc4a1dc07222ca1a1e2fdac0adda6d957dfcbf39786eff4b8a767f10b36c",
+      sha256: "438361af3402081dfbab8cffae86165b1f982541ec9e0138cdf19fe83770de17",
     },
   },
   {
@@ -310,8 +310,8 @@ const lockedScopes = [
       );
     },
     expected: {
-      files: 556,
-      sha256: "3d669ababb0fda095ea41021f01f51a447ecba93571ba60b078fbb500db176c5",
+      files: 557,
+      sha256: "35947967c805bb1a6973c702b296ffd1a56e28cac512b9635bb9cd2a162dbb55",
     },
   },
 ];

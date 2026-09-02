@@ -5,6 +5,8 @@ import { resolve } from "node:path";
 import * as cheerio from "cheerio";
 import { describe, expect, it } from "vitest";
 
+import { articleSynopsisRevisionSha256 } from "../../../scripts/lib/article-book-synopsis-revision.mjs";
+
 import { bookArchiveKey, buildBookArchive } from "../bookArchive";
 import {
   countEditorialSentences,
@@ -45,7 +47,7 @@ type ManifestPair = {
 type SynopsisManifest = {
   extractionPolicy: {
     canonicalSource: string;
-    canonicalTextLineEndings: "LF";
+    canonicalRevisionTextLineEndings: "LF";
     minimumUsableExcerptCharacters: number;
     generatedDescriptions: boolean;
   };
@@ -86,10 +88,6 @@ const archive = buildBookArchive(bookArchiveCountries, {
 
 function sha256(value: string | Buffer) {
   return createHash("sha256").update(value).digest("hex");
-}
-
-function canonicalUtf8Text(value: Buffer) {
-  return value.toString("utf8").replace(/\r\n?/gu, "\n");
 }
 
 function archiveWork(recordKey: string): WorkProfile {
@@ -163,7 +161,7 @@ describe("project-owned article synopsis batch 01", () => {
     expect(new Set(bookArticleSynopsisBatch01RecordKeys).size).toBe(12);
     expect(manifest.extractionPolicy).toMatchObject({
       canonicalSource: "public/cms/published-articles.json",
-      canonicalTextLineEndings: "LF",
+      canonicalRevisionTextLineEndings: "LF",
       minimumUsableExcerptCharacters: 140,
       generatedDescriptions: false,
     });
@@ -226,7 +224,7 @@ describe("project-owned article synopsis batch 01", () => {
       const article = JSON.parse(
         revisionBytes.toString("utf8"),
       ) as CanonicalArticleRevision;
-      expect(sha256(canonicalUtf8Text(revisionBytes))).toBe(
+      expect(articleSynopsisRevisionSha256(article)).toBe(
         record.identity.revisionSha256,
       );
       expect(article.id).toBe(record.identity.articleId);

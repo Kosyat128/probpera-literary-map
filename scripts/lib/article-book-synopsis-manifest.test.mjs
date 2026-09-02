@@ -5,6 +5,11 @@ import { fileURLToPath } from "node:url";
 
 import { it } from "vitest";
 
+import {
+  articleSynopsisCorpusSha256,
+  articleSynopsisRevisionSha256,
+} from "./article-book-synopsis-revision.mjs";
+
 const repositoryRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
@@ -34,30 +39,30 @@ function keyNames(value, names = []) {
   return names;
 }
 
-it("manifest preserves the audited 259 author-work pairs", async () => {
+it("manifest preserves the audited 258 author-work pairs", async () => {
   const manifest = await manifestFixture();
 
   assert.deepEqual(manifest.totals, {
-    sourceOccurrences: 268,
-    pairs: 259,
-    uniquelyResolved: 259,
+    sourceOccurrences: 267,
+    pairs: 258,
+    uniquelyResolved: 258,
     missingCards: 0,
     ambiguousCards: 0,
     unmatchedWriters: 0,
-    usableSynopsisPairs: 249,
+    usableSynopsisPairs: 248,
     quarantinedPairs: 10,
   });
-  assert.equal(manifest.pairs.length, 259);
+  assert.equal(manifest.pairs.length, 258);
   assert.equal(
     manifest.pairs.reduce(
       (total, pair) => total + pair.sourceOccurrenceCount,
       0
     ),
-    268
+    267
   );
   assert.equal(manifest.extractionPolicy.generatedDescriptions, false);
-  assert.equal(manifest.extractionPolicy.canonicalTextLineEndings, "LF");
-  assert.match(manifest.hashScopes.revision, /normalized to LF/u);
+  assert.equal(manifest.extractionPolicy.canonicalRevisionTextLineEndings, "LF");
+  assert.match(manifest.hashScopes.revision, /Canonical JSON projection/u);
 });
 
 it("the three researched title collisions resolve to the correct authors", async () => {
@@ -125,7 +130,14 @@ it("all source scopes carry SHA-256 without embedding excerpt text", async () =>
     keyNames(manifest).some((key) => forbiddenKeys.has(key)),
     false
   );
-  assert.match(manifest.sourceRevision.publishedArticlesManifestSha256, sha256Pattern);
+  assert.equal(manifest.schemaVersion, 2);
+  assert.equal(manifest.sourceRevision.articleCount, 167);
+  assert.match(manifest.sourceRevision.articleCorpusSha256, sha256Pattern);
+  assert.equal("generatedAt" in manifest.sourceRevision, false);
+  assert.equal(
+    "publishedArticlesManifestSha256" in manifest.sourceRevision,
+    false
+  );
   assert.match(
     manifest.sourceRevision.writerIdentityAliasRegistrySha256,
     sha256Pattern
@@ -158,4 +170,79 @@ it("all source scopes carry SHA-256 without embedding excerpt text", async () =>
       }
     }
   }
+});
+
+it("semantic article hashes ignore deployment metadata but retain prose provenance", () => {
+  const article = {
+    id: "cms-00000000-0000-4000-8000-000000000000",
+    title: "Статья",
+    canonicalUrl: "https://probpera.ru/stati/example/",
+    contentHtml: "<h2 id=\"book\">Книга</h2><p>Исходный текст.</p>",
+    plainText: "Книга Исходный текст.",
+    headings: [{ id: "book", text: "Книга" }],
+    updatedAt: "2026-09-01T00:00:00.000Z",
+    dzenImageUrl: "https://example.com/first.jpg",
+    dzenImageAlt: "Первая обложка",
+    featured: false,
+  };
+  const revision = articleSynopsisRevisionSha256(article);
+  const deploymentOnlyChange = {
+    ...article,
+    updatedAt: "2026-09-02T00:00:00.000Z",
+    dzenImageUrl: "https://example.com/second.jpg",
+    dzenImageAlt: "Вторая обложка",
+    featured: true,
+  };
+  const proseChange = {
+    ...deploymentOnlyChange,
+    contentHtml: "<h2 id=\"book\">Книга</h2><p>Исправленный текст.</p>",
+  };
+
+  assert.equal(articleSynopsisRevisionSha256(deploymentOnlyChange), revision);
+  assert.notEqual(articleSynopsisRevisionSha256(proseChange), revision);
+  assert.equal(
+    articleSynopsisCorpusSha256([
+      { article, documentPath: "cms/articles/article.json" },
+    ]),
+    articleSynopsisCorpusSha256([
+      {
+        article: deploymentOnlyChange,
+        documentPath: "cms/articles/article.json",
+      },
+    ])
+  );
+  assert.equal(
+    articleSynopsisRevisionSha256({ ...article, contentHtml: "a\r\nb\rc" }),
+    articleSynopsisRevisionSha256({ ...article, contentHtml: "a\nb\nc" })
+  );
+  assert.notEqual(
+    articleSynopsisRevisionSha256({
+      ...article,
+      publishedAt: "2026-09-01T00:00:00.000Z",
+    }),
+    articleSynopsisRevisionSha256({
+      ...article,
+      publishedAt: "2026-09-02T00:00:00.000Z",
+    })
+  );
+});
+
+it("semantic corpus hashes reject duplicate or incomplete identities", () => {
+  const article = {
+    id: "cms-00000000-0000-4000-8000-000000000000",
+    title: "Статья",
+    contentHtml: "<p>Текст.</p>",
+  };
+  assert.throws(
+    () =>
+      articleSynopsisCorpusSha256([
+        { article, documentPath: "cms/articles/article.json" },
+        { article, documentPath: "cms/articles/article-copy.json" },
+      ]),
+    /Duplicate article id/u
+  );
+  assert.throws(
+    () => articleSynopsisCorpusSha256([{ article, documentPath: "" }]),
+    /require an id and documentPath/u
+  );
 });

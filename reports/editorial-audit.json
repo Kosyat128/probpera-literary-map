@@ -1,29 +1,62 @@
 {
-  "generatedAt": "2026-09-02T04:44:15.502Z",
+  "generatedAt": "2026-09-02T10:26:22.414Z",
   "note": "Автоматический аудит формирует редакционную очередь, но не изменяет авторский текст. Каждая правка требует человеческого подтверждения.",
   "summary": {
-    "articles": 162,
-    "totalWords": 146704,
+    "articles": 167,
+    "totalWords": 155366,
     "bySource": {
-      "cms": 162,
+      "cms": 167,
       "legacy": 0
     },
     "englishTranslations": {
-      "released": 0,
-      "missing": 162
+      "released": 1,
+      "missing": 166
     },
-    "findings": 1007,
-    "affectedArticles": 162,
+    "findings": 1038,
+    "affectedArticles": 167,
     "bySeverity": {
-      "low": 845,
-      "high": 162
+      "low": 872,
+      "high": 166
     },
     "byCategory": {
-      "Типографика": 845,
-      "Локализация": 162
+      "Типографика": 872,
+      "Локализация": 166
     }
   },
   "articles": [
+    {
+      "id": "cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a",
+      "title": "15 крылатых выражений, пришедших к нам из Библии",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 1803,
+      "issues": 7,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+      "title": "Десять лучших книг Герберта Уэллса",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 1405,
+      "issues": 7,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+      "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 2242,
+      "issues": 7,
+      "critical": 0,
+      "high": 1
+    },
     {
       "id": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
       "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
@@ -42,6 +75,17 @@
       "source": "cms",
       "englishTranslationStatus": "missing",
       "wordCount": 980,
+      "issues": 7,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 1775,
       "issues": 7,
       "critical": 0,
       "high": 1
@@ -294,7 +338,7 @@
       "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/desyat-luchshih-filmov-xxi-veka-ekranizatsiy-mirovyh-bestsellerov-kotorye-opredelenno-stoyat-vashego-vremeni-chast-1/",
       "source": "cms",
       "englishTranslationStatus": "missing",
-      "wordCount": 1582,
+      "wordCount": 1583,
       "issues": 7,
       "critical": 0,
       "high": 1
@@ -338,7 +382,7 @@
       "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-forrest-gamp/",
       "source": "cms",
       "englishTranslationStatus": "missing",
-      "wordCount": 732,
+      "wordCount": 733,
       "issues": 7,
       "critical": 0,
       "high": 1
@@ -481,7 +525,7 @@
       "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/kniga-i-ekranizatsiya-boytsovskiy-klub/",
       "source": "cms",
       "englishTranslationStatus": "missing",
-      "wordCount": 929,
+      "wordCount": 928,
       "issues": 7,
       "critical": 0,
       "high": 1
@@ -559,17 +603,6 @@
       "source": "cms",
       "englishTranslationStatus": "missing",
       "wordCount": 631,
-      "issues": 7,
-      "critical": 0,
-      "high": 1
-    },
-    {
-      "id": "cms-13723645-4457-4386-9d66-8b94f4b90743",
-      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок!",
-      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok/",
-      "source": "cms",
-      "englishTranslationStatus": "missing",
-      "wordCount": 1062,
       "issues": 7,
       "critical": 0,
       "high": 1
@@ -773,17 +806,6 @@
       "high": 1
     },
     {
-      "id": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-      "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
-      "source": "cms",
-      "englishTranslationStatus": "missing",
-      "wordCount": 1215,
-      "issues": 7,
-      "critical": 0,
-      "high": 1
-    },
-    {
       "id": "cms-8dc6a430-ac15-4a20-ac3e-af9c07bc4bdc",
       "title": "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Индия",
       "url": "https://probpera.ru/stati/pisateli-mira/literaturnaya-karta-mira-7-znakovyh-pisateley-proslavivshih-svoyu-rodinu-indiya/",
@@ -855,7 +877,7 @@
       "url": "https://probpera.ru/stati/folklor-i-mifologiya/kikimora/",
       "source": "cms",
       "englishTranslationStatus": "missing",
-      "wordCount": 1439,
+      "wordCount": 1440,
       "issues": 7,
       "critical": 0,
       "high": 1
@@ -1152,7 +1174,7 @@
       "url": "https://probpera.ru/stati/folklor-i-mifologiya/leshiy/",
       "source": "cms",
       "englishTranslationStatus": "missing",
-      "wordCount": 645,
+      "wordCount": 644,
       "issues": 7,
       "critical": 0,
       "high": 1
@@ -1323,6 +1345,17 @@
       "high": 1
     },
     {
+      "id": "cms-13723645-4457-4386-9d66-8b94f4b90743",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок!",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 1038,
+      "issues": 6,
+      "critical": 0,
+      "high": 1
+    },
+    {
       "id": "cms-33605c7b-409d-415a-ac7b-96f8c0a1fa45",
       "title": "1915 год. Ромен Роллан - лауреат Нобелевской премии",
       "url": "https://probpera.ru/stati/literaturnye-premii/1915-god-romen-rollan-laureat-nobelevskoy-premii/",
@@ -1396,6 +1429,17 @@
       "englishTranslationStatus": "missing",
       "wordCount": 1100,
       "issues": 6,
+      "critical": 0,
+      "high": 1
+    },
+    {
+      "id": "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+      "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+      "url": "https://probpera.ru/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+      "source": "cms",
+      "englishTranslationStatus": "missing",
+      "wordCount": 1194,
+      "issues": 5,
       "critical": 0,
       "high": 1
     },
@@ -1805,9 +1849,404 @@
       "issues": 2,
       "critical": 0,
       "high": 1
+    },
+    {
+      "id": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+      "title": "15 лучших художественных книг о рыцарях",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/15-luchshih-hudozhestvennyh-knig-o-rytsaryah/",
+      "source": "cms",
+      "englishTranslationStatus": "published",
+      "wordCount": 1481,
+      "issues": 6,
+      "critical": 0,
+      "high": 0
     }
   ],
   "findings": [
+    {
+      "articleId": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+      "title": "15 лучших художественных книг о рыцарях",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/15-luchshih-hudozhestvennyh-knig-o-rytsaryah/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 693,
+      "excerpt": "…их художественных книг о рыцарях, написанные в совершенно разные эпохи, которые объединяет одно - все они получили широкую известность во всём мире.1. Кретьен де Труа - «Персеваль, или Повесть…"
+    },
+    {
+      "articleId": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+      "title": "15 лучших художественных книг о рыцарях",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/15-luchshih-hudozhestvennyh-knig-o-rytsaryah/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 764,
+      "excerpt": "…которые объединяет одно - все они получили широкую известность во всём мире.1. Кретьен де Труа - «Персеваль, или Повесть о Граале» (около 1181-1190)Юный Персеваль растёт вдали от рыцарского ми…"
+    },
+    {
+      "articleId": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+      "title": "15 лучших художественных книг о рыцарях",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/15-luchshih-hudozhestvennyh-knig-o-rytsaryah/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 1473,
+      "excerpt": "…зведение, впоследствии его сюжет продолжили другие средневековые авторы.2. Вольфрам фон Эшенбах - «Парцифаль» (около 1200-1210)Парцифаль воспитывается матерью вдали от рыцарского общества, но п…"
+    },
+    {
+      "articleId": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+      "title": "15 лучших художественных книг о рыцарях",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/15-luchshih-hudozhestvennyh-knig-o-rytsaryah/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 2145,
+      "excerpt": "…ентов, что свидетельствует об огромной популярности произведения в Средние века.3. Томас Мэлори - «Смерть Артура» (1485)Большой прозаический свод объединяет истории о короле Артуре и рыцарях Кр…"
+    },
+    {
+      "articleId": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+      "title": "15 лучших художественных книг о рыцарях",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/15-luchshih-hudozhestvennyh-knig-o-rytsaryah/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 2666,
+      "excerpt": "…нившаяся рукопись произведения сегодня находится в Британской библиотеке.4. Мигель де Сервантес - «Дон Кихот» (1605-1615)Обедневший идальго Алонсо Кихано в какой-то момент настолько увлекается…"
+    },
+    {
+      "articleId": "cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+      "title": "15 лучших художественных книг о рыцарях",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/15-luchshih-hudozhestvennyh-knig-o-rytsaryah/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 3108,
+      "excerpt": "…опытный факт о книге: первая часть истории о Дон Кихоте была опубликована в 1605 году, а вторая - уже в 1615-м. Дело в том, что несмотря на ошеломительный успех первой части романа, Сервантес н…"
+    },
+    {
+      "articleId": "cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a",
+      "title": "15 крылатых выражений, пришедших к нам из Библии",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 5299,
+      "excerpt": "…хозяин вернулся, то осудил именно нерадивого слугу, причем не за потерю денег, а за бездействие - не использование возможностей.Современное употреблениеФразу используют, призывая человека раскр…"
+    },
+    {
+      "articleId": "cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a",
+      "title": "15 крылатых выражений, пришедших к нам из Библии",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 5534,
+      "excerpt": "…т возможностей из-за страха или лени.Пример:С таким голосом тебе нельзя зарывать талант в землю - необходимо заниматься вокалом на профессиональном уровне.Интересный фактВ библейскую эпоху тала…"
+    },
+    {
+      "articleId": "cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a",
+      "title": "15 крылатых выражений, пришедших к нам из Библии",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 5742,
+      "excerpt": "…мерой веса и денежной единицей, а не обозначением способности.6. Блудный сынЗначениеБлудный сын - человек, который надолго покинул семью или привычный круг общения, совершил ошибки, а затем вер…"
+    },
+    {
+      "articleId": "cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a",
+      "title": "15 крылатых выражений, пришедших к нам из Библии",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 10266,
+      "excerpt": "…е являясь «хищными волками». Овца в данном случае символизирует кротость и безопасность, а волк - скрытую угрозу.Современное употреблениеВыражение применяют к лицемеру, мошеннику или скрытому в…"
+    },
+    {
+      "articleId": "cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a",
+      "title": "15 крылатых выражений, пришедших к нам из Библии",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 10788,
+      "excerpt": "…«овечью шкуру».12. Соль землиЗначениеСолью земли обычно называют лучших представителей общества - честных, деятельных и нравственно стойких людей, на которых держится всеобщее благополучие.Прои…"
+    },
+    {
+      "articleId": "cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a",
+      "title": "15 крылатых выражений, пришедших к нам из Библии",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 10937,
+      "excerpt": "…которых держится всеобщее благополучие.ПроисхождениеВыражение происходит из Нагорной проповеди - собрания изречений Иисуса Христа в Евангелии от Матфея. В одной из глав, Христос обращается к у…"
+    },
+    {
+      "articleId": "cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a",
+      "title": "15 крылатых выражений, пришедших к нам из Библии",
+      "url": "https://probpera.ru/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
+    {
+      "articleId": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+      "title": "Десять лучших книг Герберта Уэллса",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 5737,
+      "excerpt": "…и на Луне»Неудачливый предприниматель мистер Бедфорд случайно знакомится со своим новым соседом - эксцентричным учёным Кейвором, который создал вещество, способное экранировать силу земного при…"
+    },
+    {
+      "articleId": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+      "title": "Десять лучших книг Герберта Уэллса",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 7136,
+      "excerpt": "…зываются физически несовместимыми с обычным человеческим обществом.Полное название произведения - «Пища богов и как она попала на Землю». Книга вышла в 1904 году. В ней научное открытие станови…"
+    },
+    {
+      "articleId": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+      "title": "Десять лучших книг Герберта Уэллса",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 7563,
+      "excerpt": "…развития.7. «Война в воздухе»Сюжет романа строится вокруг простого англичанина Берта Смоллуэйса - молодого человека без особых амбиций, который по воле судьбы оказывается втянут в масштабный ме…"
+    },
+    {
+      "articleId": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+      "title": "Десять лучших книг Герберта Уэллса",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 8490,
+      "excerpt": "…ожно сказать предсказано), как стремительная индустриализация мира, приводит неизменно к одному - инновационные разработки рано или поздно попадают не в те руки и масштабно применяются в военны…"
+    },
+    {
+      "articleId": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+      "title": "Десять лучших книг Герберта Уэллса",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 9276,
+      "excerpt": "…1909 году. Через эту историю Уэллс наглядно демонстрирует капиталистический мир начала XX века - эпоху рекламы, предпринимательства и стремления людей к несметным богатствам. На фоне его знаме…"
+    },
+    {
+      "articleId": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+      "title": "Десять лучших книг Герберта Уэллса",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 10423,
+      "excerpt": "…дчинение семье единственно возможным жизненным выбором.10. «История мистера Полли»Альфред Полли - владелец небольшого магазинчика, недовольный своей профессией, браком и однообразием жизни в це…"
+    },
+    {
+      "articleId": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+      "title": "Десять лучших книг Герберта Уэллса",
+      "url": "https://probpera.ru/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
+    {
+      "articleId": "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+      "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+      "url": "https://probpera.ru/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 2056,
+      "excerpt": "…«в подвешенном состоянии»: не слуга, но в тоже время и не равная хозяевам.Так, образ Джейн Эйр - не просто вымышленная героиня, а воплощение той женщины, которой могла бы быть сама Бронте, есл…"
+    },
+    {
+      "articleId": "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+      "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+      "url": "https://probpera.ru/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 2551,
+      "excerpt": "…еподавал в университетах, писал научные статьи, исследовал механизмы знаков, символов и текстов - и именно эта работа сподвигла его в дальнейшем начать писать художественные произведения.4. Джо…"
+    },
+    {
+      "articleId": "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+      "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+      "url": "https://probpera.ru/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 5964,
+      "excerpt": "…кже нередко содержат нравственные и воспитательные мотивы. Даже самое известное её произведение - «Чудесное путешествие Нильса с дикими гусями», изначально создавалось как учебная книга по геог…"
+    },
+    {
+      "articleId": "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+      "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+      "url": "https://probpera.ru/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 8920,
+      "excerpt": "…ярис», ставшем классикой мировой литературы.15. Артур Хейли (лётчик Королевских ВВС)Артур Хейли - британско-канадский писатель, во время Второй мировой войны проходил службу в Королевских военн…"
+    },
+    {
+      "articleId": "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+      "title": "Зарубежные классики литературы и их профессии (Часть 4)",
+      "url": "https://probpera.ru/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-4/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
+    {
+      "articleId": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+      "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 2059,
+      "excerpt": "…пойдёшь, то и найдёшь», повествующая о мелком чиновнике Михайло Дмитриевиче (Мише) Бальзаминове - маменькином сынке, подлизе и неудачнике, стремящемся найти себе состоятельную, пусть и немолоду…"
+    },
+    {
+      "articleId": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+      "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 2856,
+      "excerpt": "…1978)Киноадаптация известной повести А. П. Чехова «Драма на охоте» повествует о молодой девушке - Ольге Скворцовой, которая в поисках материальной выгоды выходит замуж за мужчину в летах Петра…"
+    },
+    {
+      "articleId": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+      "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 2972,
+      "excerpt": "…которая в поисках материальной выгоды выходит замуж за мужчину в летах Петра Егоровича Урбенина - потомственного дворянина. Но влюблённый в прекрасную Ольгу судебный следователь Сергей Петрович…"
+    },
+    {
+      "articleId": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+      "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 4258,
+      "excerpt": "…вести английского писателя-сатирика Джерома К. Джерома. Это история о трёх приятелях из Лондона - Джее, Гаррисе и Джордже, которые в компании с псом по кличке Монморанси отправляются на лодочну…"
+    },
+    {
+      "articleId": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+      "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 5195,
+      "excerpt": "…ного романа Джорджа Оруэлла о тоталитарном обществе, слежке и подавлении личности. Уинстон Смит - работник Министерства партии, который не разделяет идеологию сложившегося режима. Постоянные ко…"
+    },
+    {
+      "articleId": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+      "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 7049,
+      "excerpt": "…а, в том числе три статуэтки премии «Оскар». Стилистика, операторская работа и атмосфера фильма - на высочайшем уровне, и, если готическая зарисовка Стокера была хороша, то теперь вся история к…"
+    },
+    {
+      "articleId": "cms-422ff2c6-1c28-4c5b-9cae-b9b05702dc0c",
+      "title": "15 экранизаций классических романов, которые действительно удались (Часть 3)",
+      "url": "https://probpera.ru/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-3/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
     {
       "articleId": "cms-42ac59ff-eca6-4fbc-836b-a1f9ebcb8faa",
       "title": "Десять лучших фильмов XXI века - экранизаций мировых бестселлеров, которые определённо стоят вашего времени (Часть 4)",
@@ -2076,6 +2515,90 @@
       "articleId": "cms-2cbd3bd0-78c6-445e-9af9-8c643afc1104",
       "title": "Семь малоизвестных рассказов Амброза Бирса, которые стоит прочитать",
       "url": "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-ambroz-birs/",
+      "ruleId": "missing-approved-english-translation",
+      "category": "Локализация",
+      "severity": "high",
+      "match": "translations.en",
+      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
+      "index": 0,
+      "excerpt": "Английская версия не опубликована."
+    },
+    {
+      "articleId": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 962,
+      "excerpt": "…дами, вроде превращения главного героя сказки в осла. Особенно мрачным выдался финальный эпизод - сцена мщения егеря, где ведьма, служанка и её дочь сами превращаются в ослиц. Старую ведьму в и…"
+    },
+    {
+      "articleId": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 1232,
+      "excerpt": "…озвращает им человеческий облик.2. Шестеро слугКоролевич едет свататься к красавице, но её мать - злая колдунья, убивает тех женихов, которые не решают её хитроумные загадки. По дороге герой со…"
+    },
+    {
+      "articleId": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 1581,
+      "excerpt": "…ую длину; человека со смертельным взглядом; «зябкого», которому холодно в жару; и дальнозоркого - настоящая команда супергероев. С их помощью он успешно выполняет поочередно все три задания вед…"
+    },
+    {
+      "articleId": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 3043,
+      "excerpt": "…ых и в тоже время страшных сказок братьев Гримм. Главный герой не просто ловкий мошенник и плут - его успех напрямую выстроен на бедах и смертях односельчан. Массовая смерть людей, кстати, пода…"
+    },
+    {
+      "articleId": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 3269,
+      "excerpt": "…о делает историю ещё более жуткой.4. Подарки маленьких людейРассказ повествует о двух приятелях - портном и золотых дел мастере, которые однажды встречают в лесу маленьких человечков, весело во…"
+    },
+    {
+      "articleId": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
+      "ruleId": "spaced-hyphen",
+      "category": "Типографика",
+      "severity": "low",
+      "match": " - ",
+      "suggestion": "Проверить замену дефиса на тире: « - ».",
+      "index": 5114,
+      "excerpt": "…на свадьбу, обещая, что его дочери с момента женитьбы всегда будет положено молоко и вино, а её - только вода. В первые месяцы после свадьбы падчерицу действительно балуют, но вскоре всё радика…"
+    },
+    {
+      "articleId": "cms-36e62997-96e2-4815-8a58-5bc453c18f1e",
+      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)",
+      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok-chast-4/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -4949,7 +5472,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 4067,
+      "index": 4071,
       "excerpt": "…ем постоянной угрозы. Кадр из фильма 5. Я-легенда (США, 2007) Киноадаптация одноимённого романа - бестселлера писателя Ричарда Мэтисона повествует о постапокалиптическом мире, где человечество…"
     },
     {
@@ -4961,7 +5484,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 4325,
+      "index": 4329,
       "excerpt": "…кровожадных зомби, не оставил человеческому роду ни малейшего шанса на выживание. Роберт Невилл - бывший полковник медицинской службы США - последний выживший посреди руин Нью-Йорка. Герой не о…"
     },
     {
@@ -4973,7 +5496,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 4367,
+      "index": 4371,
       "excerpt": "…у роду ни малейшего шанса на выживание. Роберт Невилл - бывший полковник медицинской службы США - последний выживший посреди руин Нью-Йорка. Герой не оставляет попыток разработать вакцину и изб…"
     },
     {
@@ -5310,7 +5833,7 @@
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
       "index": 5273,
-      "excerpt": "…пустить мимо, ведь прочтение романа напрочь испортит впечатление от экранизации. Фильм Земекиса - вот что имеет действительный вес, ведь картина безоговорочный шедевр, который по силе воздейств…"
+      "excerpt": "…пустить мимо, ведь прочтение романа напрочь испортит впечатление от экранизации. Фильм Земекиса - вот что имеет действительный вес, ведь картина - безоговорочный шедевр, который по силе воздейс…"
     },
     {
       "articleId": "cms-e2cdfafe-5bb4-4010-87ad-942be7595a7b",
@@ -6641,7 +7164,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 1744,
+      "index": 1743,
       "excerpt": "…ортону, который годом ранее выдал мощнейший перфоманс в «Американской истории X». Герой Нортона - безымянный офисный клерк, задыхающийся от бессмысленной жизни, который встречает Тайлера Дёрден…"
     },
     {
@@ -6653,7 +7176,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 3087,
+      "index": 3086,
       "excerpt": "…чика в скопе создают ощущение погружения в поток сознания главного героя.И как вишенка на торте - саундтрек бостонской альтернативной рок группы The Pixies - Where Is My Mind усиливает ощущение…"
     },
     {
@@ -6665,7 +7188,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 3147,
+      "index": 3146,
       "excerpt": "…авного героя.И как вишенка на торте - саундтрек бостонской альтернативной рок группы The Pixies - Where Is My Mind усиливает ощущение всей иронии: мир вокруг рушится, но в этом есть странное, п…"
     },
     {
@@ -6677,7 +7200,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 3746,
+      "index": 3745,
       "excerpt": "…м тексте. Кадр из фильма 2. Темы и идеиКак роман, так и фильм исследуют экзистенциальный кризис - отчуждение и пустоту. Однако Финчер в экранизации 1999 года намного сильнее акцентирует тему бр…"
     },
     {
@@ -6689,7 +7212,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 4339,
+      "index": 4338,
       "excerpt": "…желаний, агрессии и жажды разрушения, вырвавшихся на свободу.Третий основной персонаж в сюжете - Марла в фильме играет более заметную эмоциональную роль, становясь как бы последней границей ре…"
     },
     {
@@ -6701,7 +7224,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 4891,
+      "index": 4890,
       "excerpt": "…лает историю ещё более жёсткой и осязаемой. Кадр из фильма 5. Культурный контекстРоман Паланика - продукт 90-х, эпохи разочарования и кризиса «поколения X» В фильме Финчера вся история в универ…"
     },
     {
@@ -7433,8 +7956,8 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 1084,
-      "excerpt": "…ка Два приятеля: башмачник и портной скитаются по миру в поисках работы и пропитания. Башмачник - угрюмый и злой, завидует вечно весёлому и оптимистично настроенному портному во всём. Происходи…"
+      "index": 3097,
+      "excerpt": "…изирующего родное селение. Храбрецу, которому удастся изловить страшного зверя, полагается приз - королевская дочь и полкоролевства. Однако приключение вскоре оборачивается настоящим кошмаром.Н…"
     },
     {
       "articleId": "cms-13723645-4457-4386-9d66-8b94f4b90743",
@@ -7445,8 +7968,8 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 2394,
-      "excerpt": "…упа бедного пасынка, кормит таким омерзительным блюдом ничего не подозревающего главу семейства - отца убиенного.На протяжении всего сюжета, встречаются по меньшей мере три омерзительных момент…"
+      "index": 4328,
+      "excerpt": "…овествование насыщено сценами отсечения конечностей, кровавыми убийствами и бесовскими мотивами - всё по канону братьев Гримм. 9. Жених-разбойник Девушка из простой семьи должна выйти замуж за…"
     },
     {
       "articleId": "cms-13723645-4457-4386-9d66-8b94f4b90743",
@@ -7457,8 +7980,8 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 3058,
-      "excerpt": "…сказка, кровавый финал которой оканчивается смертью задиры-заяца. 6. Поющая косточка Два брата - охотника берутся поймать разъярённого кабана, терроризирующего родное селение. Храбрецу, которо…"
+      "index": 4600,
+      "excerpt": "…до дома жениха. Добравшись до дома своего будущего мужа, она вдруг узнаёт, что дом её суженого - пристанище разбойников-людоедов, а её жених - холоднокровный убийца, который вместе со своей пр…"
     },
     {
       "articleId": "cms-13723645-4457-4386-9d66-8b94f4b90743",
@@ -7469,20 +7992,8 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 3207,
-      "excerpt": "…ризирующего родное селение. Храбрецу, которому удастся изловить страшного зверя полагается приз - королевская дочь и пол королевства. Однако приключение вскоре оборачивается настоящим кошмаром.…"
-    },
-    {
-      "articleId": "cms-13723645-4457-4386-9d66-8b94f4b90743",
-      "title": "13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок!",
-      "url": "https://probpera.ru/stati/folklor-i-mifologiya/13-po-nastoyaschemu-zhutkih-skazok-bratev-grimm-kotorye-povergnut-vas-v-shok/",
-      "ruleId": "spaced-hyphen",
-      "category": "Типографика",
-      "severity": "low",
-      "match": " - ",
-      "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 4445,
-      "excerpt": "…иваются…Нарратив сказки переполнен сценами отсечения конечностей, кровавых убийств и бесовщиной - всё по канону братьев Гримм. 9. Жених-разбойник Девушка из простой семьи, должна выйти замуж за…"
+      "index": 4646,
+      "excerpt": "…ущего мужа, она вдруг узнаёт, что дом её суженого - пристанище разбойников-людоедов, а её жених - холоднокровный убийца, который вместе со своей преступной шайкой орудует в лесу и похищает моло…"
     },
     {
       "articleId": "cms-13723645-4457-4386-9d66-8b94f4b90743",
@@ -9120,90 +9631,6 @@
       "articleId": "cms-2aa1069c-1650-4e51-b05a-dd95020c63fc",
       "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Синклер Льюис",
       "url": "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-sinkler-lyuis/",
-      "ruleId": "missing-approved-english-translation",
-      "category": "Локализация",
-      "severity": "high",
-      "match": "translations.en",
-      "suggestion": "Подготовить, проверить и утвердить английскую версию заголовка, описания и полного текста.",
-      "index": 0,
-      "excerpt": "Английская версия не опубликована."
-    },
-    {
-      "articleId": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-      "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
-      "ruleId": "spaced-hyphen",
-      "category": "Типографика",
-      "severity": "low",
-      "match": " - ",
-      "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 639,
-      "excerpt": "…кий трюк, а удивительно камерный, почти исповедальный роман о взрослении обыкновенного мальчика - наверное самый искренний и личный роман в творчестве Дэвида.Несмотря на относительную простоту…"
-    },
-    {
-      "articleId": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-      "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
-      "ruleId": "spaced-hyphen",
-      "category": "Типографика",
-      "severity": "low",
-      "match": " - ",
-      "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 1043,
-      "excerpt": "…ные контексты. В итоге «Под знаком чёрного лебедя» воспринимается как ключ к пониманию писателя - его тем, интонаций и даже духовной биографии. История создания произведения Дэвид МитчеллРоман…"
-    },
-    {
-      "articleId": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-      "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
-      "ruleId": "spaced-hyphen",
-      "category": "Типографика",
-      "severity": "low",
-      "match": " - ",
-      "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 1485,
-      "excerpt": "…назвал это произведение наполовину автобиографическим романом, что нетрудно заметить. 1982 год - время, когда и сам Митчелл был тринадцатилетним мальчиком, живший в тех же краях, что и Джейсон…"
-    },
-    {
-      "articleId": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-      "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
-      "ruleId": "spaced-hyphen",
-      "category": "Типографика",
-      "severity": "low",
-      "match": " - ",
-      "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 1954,
-      "excerpt": "…рые определяли музыкальный фон юности начала восьмидесятых. В тексте упоминаются также и фильмы - от некогда популярного «Бриолина» с Джоном Траволтой до совсем свежей на тот момент британской…"
-    },
-    {
-      "articleId": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-      "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
-      "ruleId": "spaced-hyphen",
-      "category": "Типографика",
-      "severity": "low",
-      "match": " - ",
-      "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 2273,
-      "excerpt": "…да в Париже). Добавьте сюда сладости того времени, бытовые мелочи и, конечно, английский футбол - и атмосфера подросткового мира 80-х оживает перед глазами почти документально. Кадр из фильма \"…"
-    },
-    {
-      "articleId": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-      "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
-      "ruleId": "spaced-hyphen",
-      "category": "Типографика",
-      "severity": "low",
-      "match": " - ",
-      "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 2721,
-      "excerpt": "…ом и сам Митчелл). Там вместе со своей семьёй проживает тринадцатилетний мальчик Джейсон Тэйлор - абсолютно обычный подросток: застенчивый и робкий, но в то же время сообразительный и вниматель…"
-    },
-    {
-      "articleId": "cms-7ad1ab89-8a77-407d-b59a-6147c0e2a7a6",
-      "title": "Мнение о книге Дэвида Митчелла «Под знаком чёрного лебедя»",
-      "url": "https://probpera.ru/stati/mnenie-o-knige/mnenie-o-knige-devida-mitchella-pod-znakom-chernogo-lebedya/",
       "ruleId": "missing-approved-english-translation",
       "category": "Локализация",
       "severity": "high",
@@ -12641,7 +13068,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 3755,
+      "index": 3754,
       "excerpt": "…риродном духе встречалась также и в карело-финской мифологии. Местные жители называли его Хийси - который являлся в образе ужасающего призрака величественных размеров повелителем леса и стихий.…"
     },
     {
@@ -12653,7 +13080,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 4023,
+      "index": 4022,
       "excerpt": "…оплощающий в себе души умерших. В текстах сказок и басен татарских писателей фигурировал Шурале - антропоморфное существо, по описанию схожее на Лешего. ЗаключениеТаким образом, мы кратко, но н…"
     },
     {
@@ -12665,7 +13092,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 4555,
+      "index": 4554,
       "excerpt": "…ществует ещё уйма информации по этой теме, но главное, что можно отметить напоследок, что Леший - остаётся жить в сказках, баснях и сочинениях по сей день и наверняка будет оставаться «на слуху…"
     },
     {
@@ -13085,7 +13512,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 9411,
+      "index": 9403,
       "excerpt": "…с другой, может оказаться серьезным барьером для создания действительно качественного продукта - ведь стоит непомерно много. И если достаточно солидный бюджет с использованием передовых технол…"
     },
     {
@@ -13097,7 +13524,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 11457,
+      "index": 11449,
       "excerpt": "…ед в плане инновационной графики, в итоге сделала два шага назад и ожидаемо пренебрегла главным - геймплеем, который в игре настолько посредственный и надоевший всем со времен еще третьего Far…"
     },
     {
@@ -13109,7 +13536,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 12858,
+      "index": 12848,
       "excerpt": "…продукт, если можно пойти по наиболее простому варианту и переориентироваться на незамысловатые - бездушные проекты, что с точки зрения маркетинга, будет выглядеть вполне себе правильным ходом.…"
     },
     {
@@ -13121,7 +13548,7 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 13157,
+      "index": 13147,
       "excerpt": "…их порой культовые картины, так и не вставали на ноги и закрывались. Например, Carolco Pictures - студия, известная такими фильмами, как \"Терминатор 2\" и «Рэмбо: Первая кровь», потерпела крах п…"
     },
     {
@@ -13133,8 +13560,8 @@
       "severity": "low",
       "match": " - ",
       "suggestion": "Проверить замену дефиса на тире: « - ».",
-      "index": 13481,
-      "excerpt": "…тельно. Касаемо игр можно назвать, к примеру, провальный на тот момент «Vampire: The Masquerade - Bloodlines» от Troika Games (которую вскоре закрыли), спустя некоторое время всё же обрела стат…"
+      "index": 13476,
+      "excerpt": "…о. Что касается игр можно назвать, к примеру, провальный на тот момент «Vampire: The Masquerade - Bloodlines» от Troika Games (которую вскоре закрыли), спустя некоторое время всё же обрела стат…"
     },
     {
       "articleId": "cms-c244258d-fd2a-48a3-a22e-38f144e75d2d",
