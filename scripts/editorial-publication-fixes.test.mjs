@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 import {
+  applyConfirmedCopyReplacements,
   applyEditorialPublicationFix,
   BLACK_SWAN_REVIEW_ARTICLE_ID,
   CONFIRMED_RUSSIAN_COPY_ARTICLE_IDS,
@@ -17,6 +18,15 @@ import {
 } from "./editorial-publication-fixes.mjs";
 
 describe("confirmed editorial publication fixes", () => {
+  it("resolves replacement chains to a stable result in one call", () => {
+    expect(
+      applyConfirmedCopyReplacements("исходный текст", [
+        ["промежуточный текст", "готовый текст"],
+        ["исходный текст", "промежуточный текст"],
+      ]),
+    ).toBe("готовый текст");
+  });
+
   it("replaces the mismatched film metadata on the mythology article", () => {
     const corrected = applyEditorialPublicationFix({
       id: MYTHOLOGY_EXPRESSIONS_ARTICLE_ID,
