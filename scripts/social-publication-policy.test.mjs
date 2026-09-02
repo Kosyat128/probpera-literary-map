@@ -49,4 +49,12 @@ describe("automatic publication channel policy", () => {
     expect(publisher).toContain("latest.dzenImageAlt || latest.imageAlt");
     expect(articleBuilder).toContain("content_html: document.contentHtml");
   });
+
+  it("keeps the Dzen RSS request on the canonical non-redirecting endpoint", () => {
+    expect(publisher).toContain('const rssUrl = "https://probpera.ru/rss.xml"');
+    expect(publisher).toContain("configuredRssUrl !== rssUrl");
+    expect(publisher).toContain('redirect: "error"');
+    expect(publisher).toContain("response.url !== rssUrl");
+    expect(publisher).not.toContain("fetch(trustedHttpsUrl(rssUrl");
+  });
 });

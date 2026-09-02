@@ -501,16 +501,23 @@ async function publishOk(article) {
 }
 
 async function verifyDzenRss(article) {
-  const rssUrl = (process.env.DZEN_RSS_URL || `${siteUrl}/rss.xml`).trim();
+  const rssUrl = "https://probpera.ru/rss.xml";
+  const configuredRssUrl = (process.env.DZEN_RSS_URL || `${siteUrl}/rss.xml`).trim();
+  if (configuredRssUrl !== rssUrl) {
+    throw new Error("DZEN_RSS_URL must be the canonical https://probpera.ru/rss.xml feed.");
+  }
   const localRssPath = path.join(projectRoot, "dist", "rss.xml");
   let rss = "";
   try {
     rss = await fs.readFile(localRssPath, "utf8");
   } catch {
-    const response = await fetch(trustedHttpsUrl(rssUrl, ["probpera.ru"], "Dzen RSS URL"), {
+    const response = await fetch(rssUrl, {
       signal: AbortSignal.timeout(30_000),
+      redirect: "error",
     });
-    if (!response.ok) throw new Error(`RSS HTTP ${response.status}`);
+    if (!response.ok || response.redirected || response.url !== rssUrl) {
+      throw new Error(`RSS request failed or redirected (${response.status}).`);
+    }
     rss = await response.text();
   }
   const canonical = articleUrl(article);
