@@ -107,6 +107,57 @@ const workSourceFields = new Set([
   "measurement",
 ]);
 const cyrillicPattern = /\p{Script=Cyrillic}/u;
+const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/u;
+const sha256Pattern = /^[a-f0-9]{64}$/u;
+const workLocales = new Set(["ru", "en"]);
+const workAuthorityTiers = new Set(["A", "B"]);
+const workTitleEvidenceRecordKinds = new Set([
+  "national-bibliography",
+  "legal-deposit-catalog",
+  "publisher-catalog",
+  "rights-holder-catalog",
+  "author-estate",
+  "critical-edition",
+]);
+const workSourceRecordKinds = new Set([
+  ...workTitleEvidenceRecordKinds,
+  "authoritative-work-page",
+  "article-source",
+  "structured-dataset",
+]);
+const workTitleSelectionRules = new Set([
+  "authoritative-uniform-title",
+  "earliest-authorized-edition",
+  "current-complete-authorized-edition",
+  "original-market-title",
+]);
+const workDescriptionOrigins = new Set([
+  "article-adapted",
+  "official-source-synthesis",
+  "human-translation",
+]);
+const workDescriptionTransformations = new Set([
+  "condensed",
+  "deduplicated",
+  "spoiler-limited",
+  "style-edited",
+]);
+const workDescriptionTextOrigins = new Set([
+  "project-owned-article",
+  "project-original",
+]);
+const workCanonStatuses = new Set([
+  "canonical-classic",
+  "modern-landmark",
+]);
+const workCanonEvidenceClasses = new Set([
+  "official-curriculum",
+  "national-library-heritage-collection",
+  "academy-or-literary-institute",
+  "scholarly-critical-project",
+  "international-heritage-register",
+  "work-specific-landmark-award",
+]);
 
 function queryString(values) {
   const params = new URLSearchParams();
@@ -194,6 +245,392 @@ function safeStringList(value, allowed, maximumItems = 100) {
       return [normalized];
     })
     .slice(0, maximumItems);
+}
+
+function enumStringValue(value, allowed) {
+  const normalized = stringValue(value, 120);
+  return allowed.has(normalized) ? normalized : "";
+}
+
+function httpsUrlValue(value, maximum = 2_000) {
+  const normalized = stringValue(value, maximum);
+  if (!normalized) return "";
+  try {
+    return new URL(normalized).protocol === "https:" ? normalized : "";
+  } catch {
+    return "";
+  }
+}
+
+function isoDateValue(value) {
+  const normalized = stringValue(value, 40);
+  if (!isoDatePattern.test(normalized)) return "";
+  const parsed = new Date(`${normalized}T00:00:00.000Z`);
+  return !Number.isNaN(parsed.valueOf()) &&
+    parsed.toISOString().slice(0, 10) === normalized
+    ? normalized
+    : "";
+}
+
+function sha256Value(value) {
+  const normalized = stringValue(value, 64);
+  return sha256Pattern.test(normalized) ? normalized : "";
+}
+
+function safeHttpsUrlList(value, maximumItems = 100) {
+  if (!Array.isArray(value) || value.length > maximumItems) return null;
+  const urls = value.map((item) => httpsUrlValue(item));
+  return urls.some((url) => !url) ? null : urls;
+}
+
+function safeEnumList(value, allowed, maximumItems = 100) {
+  if (!Array.isArray(value) || value.length > maximumItems) return null;
+  const items = value.map((item) => enumStringValue(item, allowed));
+  return items.some((item) => !item) ? null : items;
+}
+
+function normalizeWorkTitleEvidenceRecord(value) {
+  const row = objectValue(value);
+  const entityKind = row.entityKind === "manifestation" ? row.entityKind : "";
+  const manifestationId = stringValue(row.manifestationId, 300);
+  const sourceUrl = httpsUrlValue(row.sourceUrl);
+  const provider = stringValue(row.provider, 240);
+  const authorityId = stringValue(row.authorityId, 160);
+  const authorityTier = enumStringValue(row.authorityTier, workAuthorityTiers);
+  const recordKind = enumStringValue(
+    row.recordKind,
+    workTitleEvidenceRecordKinds
+  );
+  const recordId = stringValue(row.recordId, 300);
+  const catalogTitleExact = stringValue(row.catalogTitleExact, 300);
+  const locale = enumStringValue(row.locale, workLocales);
+  const market = stringValue(row.market, 80);
+  const expressionLanguage = stringValue(row.expressionLanguage, 120);
+  const retrievedAt = isoDateValue(row.retrievedAt);
+  const checkedAt = isoDateValue(row.checkedAt);
+  const checkedBy = stringValue(row.checkedBy, 240);
+  let publicationYear;
+  if (row.publicationYear !== undefined && row.publicationYear !== null) {
+    if (
+      !Number.isInteger(row.publicationYear) ||
+      row.publicationYear < 1000 ||
+      row.publicationYear > new Date().getUTCFullYear() + 1
+    ) {
+      return null;
+    }
+    publicationYear = row.publicationYear;
+  }
+  if (
+    !entityKind ||
+    !manifestationId ||
+    !sourceUrl ||
+    !provider ||
+    !authorityId ||
+    !authorityTier ||
+    !recordKind ||
+    !recordId ||
+    !catalogTitleExact ||
+    !locale ||
+    !market ||
+    !expressionLanguage ||
+    !retrievedAt ||
+    !checkedAt ||
+    !checkedBy
+  ) {
+    return null;
+  }
+  return {
+    entityKind,
+    manifestationId,
+    sourceUrl,
+    provider,
+    authorityId,
+    authorityTier,
+    recordKind,
+    recordId,
+    catalogTitleExact,
+    locale,
+    market,
+    expressionLanguage,
+    ...(optionalString(row.isbn10, 32)
+      ? { isbn10: optionalString(row.isbn10, 32) }
+      : {}),
+    ...(optionalString(row.isbn13, 32)
+      ? { isbn13: optionalString(row.isbn13, 32) }
+      : {}),
+    ...(optionalString(row.publisher, 240)
+      ? { publisher: optionalString(row.publisher, 240) }
+      : {}),
+    ...(publicationYear !== undefined ? { publicationYear } : {}),
+    ...(optionalString(row.translator, 240)
+      ? { translator: optionalString(row.translator, 240) }
+      : {}),
+    ...(optionalString(row.editionStatement, 500)
+      ? { editionStatement: optionalString(row.editionStatement, 500) }
+      : {}),
+    retrievedAt,
+    checkedAt,
+    checkedBy,
+  };
+}
+
+function normalizeWorkLocalizedTitle(value, expectedLocale) {
+  const row = objectValue(value);
+  const entityKind = row.entityKind === "expression" ? row.entityKind : "";
+  const expressionId = stringValue(row.expressionId, 300);
+  const locale = enumStringValue(row.locale, workLocales);
+  const title = stringValue(row.value, 300);
+  const expressionLanguage = stringValue(row.expressionLanguage, 120);
+  const market = stringValue(row.market, 80);
+  const selectionRule = enumStringValue(
+    row.selectionRule,
+    workTitleSelectionRules
+  );
+  const evidenceInput = Array.isArray(row.evidence) ? row.evidence : [];
+  const evidence = evidenceInput
+    .slice(0, 20)
+    .map(normalizeWorkTitleEvidenceRecord);
+  if (
+    !entityKind ||
+    !expressionId ||
+    locale !== expectedLocale ||
+    !title ||
+    row.status !== "verified-published" ||
+    !expressionLanguage ||
+    !market ||
+    !selectionRule ||
+    evidenceInput.length === 0 ||
+    evidenceInput.length > 20 ||
+    evidence.some((item) => !item) ||
+    evidence.some(
+      (item) =>
+        item.locale !== locale ||
+        item.market !== market ||
+        item.expressionLanguage !== expressionLanguage
+    )
+  ) {
+    return null;
+  }
+  return {
+    entityKind,
+    expressionId,
+    locale,
+    value: title,
+    status: "verified-published",
+    expressionLanguage,
+    market,
+    selectionRule,
+    ...(optionalString(row.selectionNote, 1_000)
+      ? { selectionNote: optionalString(row.selectionNote, 1_000) }
+      : {}),
+    evidence,
+  };
+}
+
+function normalizeWorkLocalizedTitles(value) {
+  const row = objectValue(value);
+  const ru = normalizeWorkLocalizedTitle(row.ru, "ru");
+  const en = normalizeWorkLocalizedTitle(row.en, "en");
+  if (!ru && !en) return undefined;
+  return {
+    ...(ru ? { ru } : {}),
+    ...(en ? { en } : {}),
+  };
+}
+
+function normalizeWorkDescriptionProvenance(value) {
+  const row = objectValue(value);
+  const origin = enumStringValue(row.origin, workDescriptionOrigins);
+  const sourceLanguage = stringValue(row.sourceLanguage, 120);
+  const sourceCountry = stringValue(row.sourceCountry, 120);
+  const sourceUrls = safeHttpsUrlList(row.sourceUrls, 100);
+  const transformations =
+    row.transformations === undefined
+      ? undefined
+      : safeEnumList(
+          row.transformations,
+          workDescriptionTransformations,
+          20
+        );
+  const rights = objectValue(row.rights);
+  const textOrigin = enumStringValue(
+    rights.textOrigin,
+    workDescriptionTextOrigins
+  );
+  const author = stringValue(row.author, 240);
+  const createdAt = isoDateValue(row.createdAt);
+  const reviewedBy = stringValue(row.reviewedBy, 240);
+  const reviewedAt = isoDateValue(row.reviewedAt);
+  if (
+    !origin ||
+    !sourceLanguage ||
+    !sourceCountry ||
+    !sourceUrls ||
+    !sourceUrls.length ||
+    transformations === null ||
+    !textOrigin ||
+    rights.copiedSourceText !== false ||
+    !author ||
+    !createdAt ||
+    !reviewedBy ||
+    !reviewedAt
+  ) {
+    return null;
+  }
+
+  let sourceArticle;
+  if (row.sourceArticle !== undefined && row.sourceArticle !== null) {
+    const article = objectValue(row.sourceArticle);
+    sourceArticle = {
+      articleId: stringValue(article.articleId, 300),
+      url: httpsUrlValue(article.url),
+      revisionId: stringValue(article.revisionId, 300),
+      sourceHash: sha256Value(article.sourceHash),
+      excerptHash: sha256Value(article.excerptHash),
+    };
+    if (Object.values(sourceArticle).some((item) => !item)) return null;
+  }
+
+  let translatedFromLocale;
+  if (row.translatedFromLocale !== undefined) {
+    translatedFromLocale = enumStringValue(
+      row.translatedFromLocale,
+      workLocales
+    );
+    if (!translatedFromLocale) return null;
+  }
+  let translatedFromSourceHash;
+  if (row.translatedFromSourceHash !== undefined) {
+    translatedFromSourceHash = sha256Value(row.translatedFromSourceHash);
+    if (!translatedFromSourceHash) return null;
+  }
+  if (origin === "article-adapted" && !sourceArticle) return null;
+  if (
+    origin === "human-translation" &&
+    (!translatedFromLocale || !translatedFromSourceHash)
+  ) {
+    return null;
+  }
+
+  return {
+    origin,
+    sourceLanguage,
+    sourceCountry,
+    sourceUrls,
+    ...(sourceArticle ? { sourceArticle } : {}),
+    ...(transformations !== undefined ? { transformations } : {}),
+    ...(translatedFromLocale ? { translatedFromLocale } : {}),
+    ...(translatedFromSourceHash ? { translatedFromSourceHash } : {}),
+    rights: {
+      textOrigin,
+      copiedSourceText: false,
+    },
+    author,
+    createdAt,
+    reviewedBy,
+    reviewedAt,
+  };
+}
+
+function normalizeWorkCanonEvidence(value) {
+  const row = objectValue(value);
+  const registrySourceId = stringValue(row.registrySourceId, 300);
+  const registryItemOrdinal = row.registryItemOrdinal;
+  const evidenceClass = enumStringValue(row.class, workCanonEvidenceClasses);
+  const sourceUrl = httpsUrlValue(row.sourceUrl);
+  const provider = stringValue(row.provider, 240);
+  const authorityId = stringValue(row.authorityId, 160);
+  const authorityTier = enumStringValue(row.authorityTier, workAuthorityTiers);
+  const itemId = stringValue(row.itemId, 300);
+  const assertion = stringValue(row.assertion, 2_000);
+  const snapshotAt = isoDateValue(row.snapshotAt);
+  if (
+    !registrySourceId ||
+    !Number.isInteger(registryItemOrdinal) ||
+    registryItemOrdinal < 1 ||
+    !evidenceClass ||
+    !sourceUrl ||
+    !provider ||
+    !authorityId ||
+    !authorityTier ||
+    !itemId ||
+    !assertion ||
+    !snapshotAt
+  ) {
+    return null;
+  }
+  return {
+    registrySourceId,
+    registryItemOrdinal,
+    class: evidenceClass,
+    sourceUrl,
+    provider,
+    authorityId,
+    authorityTier,
+    itemId,
+    assertion,
+    snapshotAt,
+  };
+}
+
+function normalizeWorkCanon(value) {
+  const row = objectValue(value);
+  const status = enumStringValue(row.status, workCanonStatuses);
+  const registryVersion = stringValue(row.registryVersion, 160);
+  const reviewedAt = isoDateValue(row.reviewedAt);
+  const reviewedBy = stringValue(row.reviewedBy, 240);
+  const evidenceInput = Array.isArray(row.evidence) ? row.evidence : [];
+  const evidence = evidenceInput.slice(0, 50).map(normalizeWorkCanonEvidence);
+  if (
+    !status ||
+    !registryVersion ||
+    !reviewedAt ||
+    !reviewedBy ||
+    evidenceInput.length === 0 ||
+    evidenceInput.length > 50 ||
+    evidence.some((item) => !item)
+  ) {
+    return undefined;
+  }
+  return { status, registryVersion, evidence, reviewedAt, reviewedBy };
+}
+
+function normalizeWorkEvidenceMetadata(value) {
+  const metadata = objectValue(value);
+  const canon = normalizeWorkCanon(metadata.canon);
+  const localizedTitles = normalizeWorkLocalizedTitles(
+    metadata.localizedTitles
+  );
+  return {
+    ...(canon ? { canon } : {}),
+    ...(localizedTitles ? { localizedTitles } : {}),
+  };
+}
+
+function normalizeWorkSourceEvidenceMetadata(value) {
+  const metadata = objectValue(value);
+  const authorityId = optionalString(metadata.authorityId, 160);
+  const authorityTier = enumStringValue(
+    metadata.authorityTier,
+    workAuthorityTiers
+  );
+  const country = optionalString(metadata.country, 120);
+  const market = optionalString(metadata.market, 80);
+  const language = optionalString(metadata.language, 120);
+  const recordKind = enumStringValue(
+    metadata.recordKind,
+    workSourceRecordKinds
+  );
+  const recordId = optionalString(metadata.recordId, 300);
+  return {
+    ...(authorityId ? { authorityId } : {}),
+    ...(authorityTier ? { authorityTier } : {}),
+    ...(country ? { country } : {}),
+    ...(market ? { market } : {}),
+    ...(language ? { language } : {}),
+    ...(recordKind ? { recordKind } : {}),
+    ...(recordId ? { recordId } : {}),
+  };
 }
 
 function safeTimeline(value) {
@@ -296,6 +733,14 @@ function normalizeWorkTranslation(row) {
   ) {
     return null;
   }
+  const metadata = objectValue(row.metadata);
+  const titleEvidence = normalizeWorkLocalizedTitle(
+    metadata.titleEvidence,
+    locale
+  );
+  const descriptionProvenance = normalizeWorkDescriptionProvenance(
+    metadata.descriptionProvenance
+  );
   return {
     locale,
     title,
@@ -305,6 +750,8 @@ function normalizeWorkTranslation(row) {
     sourceUrls,
     method,
     reviewedAt: stringValue(row.reviewed_at, 40),
+    ...(titleEvidence ? { titleEvidence } : {}),
+    ...(descriptionProvenance ? { descriptionProvenance } : {}),
   };
 }
 
@@ -323,6 +770,7 @@ function normalizeWorkSource(row) {
   ) {
     return null;
   }
+  const evidence = normalizeWorkSourceEvidenceMetadata(row.metadata);
   return {
     provider,
     url,
@@ -330,6 +778,7 @@ function normalizeWorkSource(row) {
     license: optionalString(row.license_name, 300),
     usage,
     retrievedAt,
+    ...evidence,
   };
 }
 
@@ -426,7 +875,7 @@ const [
   fetchTableRows(
     "literary_works",
     {
-      select: "id,legacy_id",
+      select: "id,legacy_id,metadata",
       editorial_status: "in.(reviewed,verified)",
       order: "legacy_id.asc,id.asc",
     },
@@ -437,7 +886,7 @@ const [
     "literary_work_translations",
     {
       select:
-        "work_id,locale,title,description,source_language,translation_method,editorial_status,source_urls,reviewed_at",
+        "work_id,locale,title,description,source_language,translation_method,editorial_status,source_urls,reviewed_at,metadata",
       editorial_status: "in.(reviewed,verified)",
       order: "work_id.asc,locale.asc",
     },
@@ -448,7 +897,7 @@ const [
     "literary_work_sources",
     {
       select:
-        "work_id,provider,source_url,field_names,license_name,usage,retrieved_at",
+        "work_id,provider,source_url,field_names,license_name,usage,retrieved_at,metadata",
       order: "work_id.asc,provider.asc,source_url.asc",
     },
     publicSnapshotKey,
@@ -520,8 +969,15 @@ for (const work of literaryWorks) {
   if (!legacyId || !Object.keys(existing).length) continue;
   const translations = objectValue(workTranslationsById.get(work.id));
   const sources = workSourcesById.get(work.id) || [];
+  const evidence = normalizeWorkEvidenceMetadata(work.metadata);
+  const {
+    canon: _staleCanon,
+    localizedTitles: _staleLocalizedTitles,
+    ...baseWork
+  } = existing;
   literaryWorksByLegacyId[legacyId] = {
-    ...existing,
+    ...baseWork,
+    ...evidence,
     ...(Object.keys(translations).length ? { translations } : {}),
     ...(sources.length ? { sources } : {}),
   };

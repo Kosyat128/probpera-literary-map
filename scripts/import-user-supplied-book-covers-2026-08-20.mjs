@@ -300,11 +300,11 @@ function setsIntersect(left, right) {
 async function validateCanonicalArchive(committedManifest) {
   const archiveModule = await sourceArchive();
   const { baseline, current, baselinePublicCount, currentPublicCount } = archiveModule;
-  if (baseline.length !== 9_768 || current.length !== 9_768) {
-    throw new Error(`Unexpected archive size: ${baseline.length}/${current.length}, expected 9768.`);
+  if (baseline.length !== 9_761 || current.length !== 9_761) {
+    throw new Error(`Unexpected archive size: ${baseline.length}/${current.length}, expected 9761.`);
   }
-  if (baselinePublicCount !== 48 || currentPublicCount !== 48) {
-    throw new Error(`Unexpected public book count: ${baselinePublicCount}/${currentPublicCount}, expected 48.`);
+  if (baselinePublicCount !== 46 || currentPublicCount !== 46) {
+    throw new Error(`Unexpected public book count: ${baselinePublicCount}/${currentPublicCount}, expected 46.`);
   }
   if (archiveModule.userSuppliedBookWorkBatch20260820Count !== 17) {
     throw new Error("Batch must create exactly 17 missing canonical works.");

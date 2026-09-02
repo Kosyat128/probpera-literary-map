@@ -15,7 +15,7 @@ describe("book archive editorial queue", () => {
     const queue = classifyBookArchiveQueue(canonicalArchive);
     const keys = queue.all.map((item) => item.key);
 
-    expect(queue.counts).toEqual({ total: 9_768, verified: 48, pending: 9_720 });
+    expect(queue.counts).toEqual({ total: 9_761, verified: 46, pending: 9_715 });
     expect(queue.counts.total).toBe(canonicalArchive.length);
     expect(queue.counts.verified + queue.counts.pending).toBe(
       queue.counts.total
@@ -46,7 +46,7 @@ describe("book archive editorial queue", () => {
     expect(after.verified.some(({ key }) => key === promotedKey)).toBe(true);
   });
 
-  it("never presents an unverified description as editorial copy", () => {
+  it("never presents an unverified title or description as editorial copy", () => {
     const pendingBook = canonicalArchive.find(
       (book) => !isPublicBook(book) && Boolean(book.description?.trim())
     );
@@ -63,6 +63,10 @@ describe("book archive editorial queue", () => {
     expect(en.description).toBe("");
     expect(ru.descriptionSource).toBe("empty");
     expect(en.descriptionSource).toBe("empty");
+    expect(ru.title).toBe("Название уточняется");
+    expect(en.title).toBe("Title pending review");
+    expect(ru.titleSource).toBe("placeholder");
+    expect(en.titleSource).toBe("placeholder");
     expect(ru.statusLabel).toBe("Не проверено");
     expect(en.statusLabel).toBe("Not verified");
   });

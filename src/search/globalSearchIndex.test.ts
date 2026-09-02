@@ -80,7 +80,8 @@ function makeBook(
 
 function makeVerifiedBook(
   id: string,
-  country: Country
+  country: Country,
+  title = "Spectral Archive"
 ): BookArchiveEntry {
   const writer = country.writers[0];
   if (!writer) throw new Error("Book fixture requires a writer");
@@ -92,8 +93,8 @@ function makeVerifiedBook(
 
   return {
     id,
-    title: "Спектральный архив",
-    originalTitle: "Spectral Archive",
+    title,
+    originalTitle: title,
     originalLanguage: "русский",
     genres: ["spectralism"],
     description: ruDescription,
@@ -110,7 +111,7 @@ function makeVerifiedBook(
     translations: {
       ru: {
         locale: "ru",
-        title: "Спектральный архив",
+        title,
         description: ruDescription,
         sourceLanguage: "ru",
         status: "verified",
@@ -120,7 +121,7 @@ function makeVerifiedBook(
       },
       en: {
         locale: "en",
-        title: "Spectral Archive",
+        title,
         description: enDescription,
         sourceLanguage: "en",
         status: "verified",
@@ -175,7 +176,7 @@ describe("shared global search index", () => {
     const books = Array.from(
       { length: 7 },
       (_, index) =>
-        makeBook(
+        makeVerifiedBook(
           "book-" + index,
           countries[0]
         )
@@ -222,7 +223,7 @@ describe("shared global search index", () => {
     const country = makeCountry("shelf", 14);
     const books = Array.from(
       { length: 14 },
-      (_, index) => makeBook("shelf-" + index, country)
+      (_, index) => makeVerifiedBook("shelf-" + index, country)
     );
     const articles = Array.from(
       { length: 5 },
@@ -254,7 +255,7 @@ describe("shared global search index", () => {
 
   it("returns controller-safe identities and separates book focus from open", () => {
     const country = makeCountry("exact-country", 1);
-    const book = makeBook(
+    const book = makeVerifiedBook(
       "exact-book",
       country,
       "Exact Beacon"
@@ -410,7 +411,7 @@ describe("shared global search index", () => {
       makeIndex({
         countries: [country],
         books: [
-          makeBook(
+          makeVerifiedBook(
             "silver-library-book",
             country,
             "Silver Library Book"
@@ -453,7 +454,7 @@ describe("shared global search index", () => {
 });
 
 describe("publication and loading gates", () => {
-  it("never indexes pending descriptions or metadata as public search text", () => {
+  it("never indexes pending books or their draft metadata as public search text", () => {
     const country = makeCountry("quality", 1);
     const pending = {
       ...makeBook("pending", country, "Pending Card"),
@@ -473,6 +474,16 @@ describe("publication and loading gates", () => {
     expect(
       result.groups.books.map(({ book }) => book.id)
     ).toEqual(["verified"]);
+
+    const titleResult = searchGlobalSearchIndex(
+      makeIndex({
+        countries: [country],
+        books: [pending, verified],
+      }),
+      "Pending Card",
+      HEADER_GLOBAL_SEARCH_PROFILE
+    );
+    expect(titleResult.groups.books).toEqual([]);
   });
 
   it("keeps English writer and article release gates unchanged", () => {

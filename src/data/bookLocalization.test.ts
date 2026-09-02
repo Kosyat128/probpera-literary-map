@@ -4,6 +4,8 @@ import type { WorkProfile } from "./countries/types";
 import { buildBookArchive } from "./bookArchive";
 import { bookArchiveCountries } from "./countries";
 import {
+  selectBookAuthorByline,
+  selectBookAuthorRefs,
   selectBookMetadataLabels,
   selectBookOriginalLanguage,
   selectBookText,
@@ -55,7 +57,7 @@ describe("локализация книжной карточки", () => {
           /\p{Script=Cyrillic}/u.test(writerName)
       );
 
-    expect(archiveBooks).toHaveLength(9_768);
+    expect(archiveBooks).toHaveLength(9_761);
     expect(invalidWriterNames).toEqual([]);
   });
 
@@ -88,6 +90,47 @@ describe("локализация книжной карточки", () => {
       title: "",
       description: "",
     });
+  });
+
+  it("показывает анонимное авторство локально и не создаёт ссылку на anchor", () => {
+    const anonymousBook = {
+      ...book,
+      countryId: "ancient-greece",
+      writerId: "anonymous",
+      writerName: "Служебный автор",
+      writer: {
+        id: "anonymous",
+        name: "Служебный автор",
+        fullName: "Routing Anchor",
+      },
+      authorship: {
+        kind: "anonymous" as const,
+        authors: [],
+      },
+    };
+
+    expect(selectBookAuthorByline(anonymousBook, "ru")).toBe("Аноним");
+    expect(selectBookAuthorByline(anonymousBook, "en")).toBe("Anonymous");
+    expect(selectBookWriterName(anonymousBook, "ru")).toBe("Аноним");
+    expect(selectBookWriterName(anonymousBook, "en")).toBe("Anonymous");
+    expect(selectBookAuthorRefs(anonymousBook)).toEqual([]);
+  });
+
+  it("показывает традиционное произведение без технического псевдоавтора", () => {
+    const traditionalBook = {
+      ...book,
+      countryId: "kyrgyzstan",
+      writerId: "anonymous",
+      authorship: { kind: "traditional" as const, authors: [] },
+    };
+
+    expect(selectBookAuthorByline(traditionalBook, "ru")).toBe(
+      "Традиционное произведение"
+    );
+    expect(selectBookAuthorByline(traditionalBook, "en")).toBe(
+      "Traditional work"
+    );
+    expect(selectBookAuthorRefs(traditionalBook)).toEqual([]);
   });
 
   it("не пропускает русские метаданные и имя автора в английский режим", () => {

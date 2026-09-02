@@ -48,6 +48,23 @@ describe("literary work workspace validation", () => {
     ).toThrow(/источник|строк/iu);
   });
 
+  it("blocks objective prose defects before they reach the database", () => {
+    expect(() =>
+      parseWorkTranslationEdit({
+        workId,
+        locale: "ru",
+        title: "Название",
+        description:
+          "Это достаточно длинное описание  с ошибочным пробелом и URL https://example.org внутри текста. Второе предложение завершает проверочный пример без добавления полезных фактов.",
+        sourceLanguage: "ru",
+        translationMethod: "editorial-original",
+        editorialStatus: "draft",
+        sourceUrls: "",
+        reviewedAt: "",
+      })
+    ).toThrow(/пробел|URL/iu);
+  });
+
   it("normalizes source fields and validates HTTPS", () => {
     const parsed = parseWorkSourceEdit({
       workId,

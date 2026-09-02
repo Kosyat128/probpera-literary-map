@@ -748,32 +748,47 @@ export function mergeVerifiedBookSupplements(countries: Country[]): Country[] {
   });
 }
 
-export const verifiedBookSupplementTitles = Object.values(supplements).flatMap(
-  (writers) => Object.values(writers).flatMap((works) => works.map((work) => work.title))
-);
+export type VerifiedBookSupplementRecord = Readonly<{
+  recordKey: string;
+  sourceTitle: string;
+  awardCited: boolean;
+  bestsellerEvidence: boolean;
+}>;
 
-export const verifiedBilingualLandmarkTitles = Object.values(supplements).flatMap(
-  (writers) =>
-    Object.values(writers).flatMap((works) =>
-      works
-        .filter((work) =>
+/**
+ * Stable identities for the legacy supplement layer. Later Evidence V2
+ * overlays may replace a display title with the exact title of a reviewed
+ * RU-market manifestation, so tests and audits must bind these records by
+ * Work key rather than by a mutable title spelling.
+ */
+export const verifiedBookSupplementRecords: VerifiedBookSupplementRecord[] =
+  Object.entries(supplements).flatMap(([countryId, writers]) =>
+    Object.entries(writers).flatMap(([writerId, works]) =>
+      works.map((work) => ({
+        recordKey: `${countryId}:${writerId}:${work.id}`,
+        sourceTitle: work.title,
+        awardCited: Boolean(
           work.distinctions?.some(
             (distinction) => distinction.criterion === "award-cited-work"
           )
-        )
-        .map((work) => work.title)
-  )
-);
-
-export const verifiedBestsellerEvidenceTitles = Object.values(supplements).flatMap(
-  (writers) =>
-    Object.values(writers).flatMap((works) =>
-      works
-        .filter((work) =>
+        ),
+        bestsellerEvidence: Boolean(
           work.distinctions?.some(
             (distinction) => distinction.criterion === "bestseller-evidence"
           )
-        )
-        .map((work) => work.title)
+        ),
+      }))
     )
+  );
+
+export const verifiedBookSupplementTitles = verifiedBookSupplementRecords.map(
+  (record) => record.sourceTitle
 );
+
+export const verifiedBilingualLandmarkTitles = verifiedBookSupplementRecords
+  .filter((record) => record.awardCited)
+  .map((record) => record.sourceTitle);
+
+export const verifiedBestsellerEvidenceTitles = verifiedBookSupplementRecords
+  .filter((record) => record.bestsellerEvidence)
+  .map((record) => record.sourceTitle);

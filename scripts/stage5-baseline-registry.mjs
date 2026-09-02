@@ -250,6 +250,17 @@ export const russianBiographyEditorialOwnerAttestation = Object.freeze({
   ]),
 });
 
+export const bookDatabaseEditorialOwnerAttestation = Object.freeze({
+  id: "BOOK-DATABASE-EDITORIAL-2026-09-02",
+  authorizedOn: "2026-09-02",
+  sourceIntegrationSha: "d87db7674de685bed86f78d93212246ab41fe804",
+  scopes: Object.freeze([
+    "canonical-book-audit-and-localization",
+    "canon-source-and-evidence-v2-adjudication",
+    "book-admin-and-atomic-release-pipeline",
+  ]),
+});
+
 const stage5D1Stage4GlobeStablePaths = Object.freeze(
   stage4ProductionPaths.filter(
     (entry) => entry !== "src/i18n/InterfaceLanguage.tsx"
@@ -309,11 +320,11 @@ export const stage5D1EnforcedGovernanceScopes = Object.freeze({
   }),
   premiumCurrent: Object.freeze({
     paths: stage5D1PremiumCurrentStablePaths,
-    ownerAttestationId: russianBiographyEditorialOwnerAttestation.id,
+    ownerAttestationId: bookDatabaseEditorialOwnerAttestation.id,
     expected: Object.freeze({
       files: 72,
       sha256:
-        "9d708a3de8a74cd74680ddc2b6e990128438596de45b483d547e68d21af35094",
+        "5678542e1616f76809d0512bcc60a9d8696b7c9551a11a3a6de5b00ce28dc847",
     }),
   }),
 });
@@ -330,6 +341,8 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
         ? Object.freeze({
             ...entry,
             sourceMainSha: "97f4a8d191989f454b5625caae0bafc6a22b47d6",
+            sourceBookIntegrationSha:
+              bookDatabaseEditorialOwnerAttestation.sourceIntegrationSha,
             paths: currentIntegrationPremiumTranslationAndHealthPaths,
             expected: Object.freeze({
               files: 47,
@@ -343,7 +356,7 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
           ? Object.freeze({
               ...entry,
               sourceIntegrationSha:
-                stage5D1AdditiveI18nAttestation.sourceIntegrationSha,
+                bookDatabaseEditorialOwnerAttestation.sourceIntegrationSha,
               expected: Object.freeze({
                 files: 9,
                 sha256:
@@ -352,11 +365,11 @@ export const currentIntegrationGovernanceFingerprintRegistry = Object.freeze(
               enforced: Object.freeze({
                 paths: bookArchiveOwnerPaths,
                 ownerAttestationId:
-                  russianBiographyEditorialOwnerAttestation.id,
+                  bookDatabaseEditorialOwnerAttestation.id,
                 expected: Object.freeze({
                   files: 9,
                   sha256:
-                    "689b74e6bbaf636d47c65506828a48f0013a7019c81ef09da14158e6988b0a12",
+                    "5f9a3fc115e4022b6a128cb592191b8e0a3c317e55e383e5b95651d45f97e383",
                 }),
               }),
             })

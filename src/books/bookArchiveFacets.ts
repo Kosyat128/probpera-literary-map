@@ -10,9 +10,12 @@ import {
   type BookArchiveQueueStatus,
 } from "../data/bookArchiveQueue";
 import {
+  selectBookAuthorByline,
+  selectBookAuthorNames,
+  selectBookAuthorRefs,
   selectBookMetadataLabels,
   selectBookOriginalLanguage,
-  selectBookWriterName,
+  type BookAuthorReference,
 } from "../data/bookLocalization";
 import type {
   BookArticleMentionKind,
@@ -325,7 +328,12 @@ export type BookArchiveFacetDocument = Readonly<{
   sourcePosition: number;
   key: string;
   item: BookArchiveQueueItem;
+  /** Legacy routing anchor retained for existing UI state. */
   authorKey: string;
+  /** Factual, linkable authors used by the author facet. */
+  authorKeys: readonly string[];
+  authorRefs: readonly BookAuthorReference[];
+  authorLabels: readonly string[];
   countryId: string;
   title: string;
   writerLabel: string;
@@ -347,6 +355,7 @@ export type BookArchiveFacetDocument = Readonly<{
   searchFields: Readonly<{
     title: string;
     writer: string;
+    authors: readonly string[];
     original: string;
     alternate: readonly string[];
     country: string;
@@ -912,8 +921,23 @@ export function buildBookArchiveFacetIndex({
 
     const position = documents.length;
     const authorKey = book.countryId + ":" + book.writerId;
+    const authorRefs = selectBookAuthorRefs(book);
+    const authorKeys = [
+      ...new Set(
+        authorRefs.map((author) => `${author.countryId}:${author.writerId}`)
+      ),
+    ];
     const displayed = presentBookArchiveQueueItem(item, locale);
-    const writerLabel = selectBookWriterName(book, locale, translate("Автор"));
+    const authorLabels = selectBookAuthorNames(
+      book,
+      locale,
+      translate("Автор")
+    );
+    const writerLabel = selectBookAuthorByline(
+      book,
+      locale,
+      translate("Автор")
+    );
     const countryLabel = countryName(
       book.country.code || "",
       book.countryName
@@ -991,6 +1015,7 @@ export function buildBookArchiveFacetIndex({
       originalTitle,
       ...alternateTitles,
       writerLabel,
+      ...authorLabels,
       countryLabel,
       ...verifiedMetadata,
       ...(audienceIds || []),
@@ -1003,6 +1028,9 @@ export function buildBookArchiveFacetIndex({
       key,
       item,
       authorKey,
+      authorKeys,
+      authorRefs,
+      authorLabels,
       countryId: book.countryId,
       title: displayed.title,
       writerLabel,
@@ -1030,6 +1058,7 @@ export function buildBookArchiveFacetIndex({
       searchFields: {
         title: normalizedField(displayed.title),
         writer: normalizedField(writerLabel),
+        authors: normalizedFields(authorLabels),
         original: normalizedField(originalTitle),
         alternate: normalizedFields(alternateTitles),
         country: normalizedField(countryLabel),
@@ -1037,7 +1066,7 @@ export function buildBookArchiveFacetIndex({
       },
       searchFieldTokens: {
         title: facetDocumentSearchTokens([displayed.title]),
-        writer: facetDocumentSearchTokens([writerLabel]),
+        writer: facetDocumentSearchTokens([writerLabel, ...authorLabels]),
         original: facetDocumentSearchTokens([originalTitle]),
         alternate: facetDocumentSearchTokens(alternateTitles),
         country: facetDocumentSearchTokens([countryLabel]),
@@ -1050,7 +1079,9 @@ export function buildBookArchiveFacetIndex({
     document.searchTokens.forEach((token) =>
       addToFacet(mutableIndexes.searchToken, token, position)
     );
-    addToFacet(mutableIndexes.author, authorKey, position);
+    authorKeys.forEach((key) =>
+      addToFacet(mutableIndexes.author, key, position)
+    );
     addToFacet(mutableIndexes.country, book.countryId, position);
     genreIds.forEach((id) => addToFacet(mutableIndexes.genre, id, position));
     (audienceIds || []).forEach((id) =>
@@ -1158,7 +1189,12 @@ function searchScore(
   ) {
     return 1;
   }
-  if (fields.writer === normalizedQuery) return 2;
+  if (
+    fields.writer === normalizedQuery ||
+    fields.authors.includes(normalizedQuery)
+  ) {
+    return 2;
+  }
   if (fields.original === normalizedQuery) return 3;
   if (fields.alternate.includes(normalizedQuery)) return 4;
   if (fields.country === normalizedQuery) return 5;

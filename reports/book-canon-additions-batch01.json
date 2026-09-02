@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "reportId": "book-canon-additions-batch01-evidence-report-2026-09-02",
+  "generatedAt": "2026-09-02",
+  "packageId": "book-canon-additions-batch01-2026-09-02",
+  "registryVersion": "world-canon-2026-09-v2",
+  "scope": {
+    "inventoriesInspected": [
+      "neb-svet-important-classics-2026-09-02",
+      "loc-books-that-shaped-america-2012",
+      "bnf-dne-education-epub-selection-2018"
+    ],
+    "selectionRule": "Select only held, exact Work identities from the existing official inventories; prefer Russian-origin NEB omissions with official RU records and a documented EN-market manifestation; make no canon claim.",
+    "integrationPerformed": "production-research-catalog-only",
+    "publicationPerformed": false
+  },
+  "inventorySummary": [
+    {
+      "sourceId": "neb-svet-important-classics-2026-09-02",
+      "itemCount": 47,
+      "acceptedCount": 25,
+      "rejectedCount": 17,
+      "heldCount": 5
+    },
+    {
+      "sourceId": "loc-books-that-shaped-america-2012",
+      "itemCount": 96,
+      "acceptedCount": 11,
+      "rejectedCount": 13,
+      "heldCount": 72
+    },
+    {
+      "sourceId": "bnf-dne-education-epub-selection-2018",
+      "itemCount": 149,
+      "acceptedCount": 3,
+      "rejectedCount": 85,
+      "heldCount": 61
+    }
+  ],
+  "selectedCandidates": [
+    {
+      "candidateId": "twelve-chairs-coauthored-work",
+      "registryOrdinal": 14,
+      "registryItemId": "dvenadcat-stulev",
+      "originalTitle": "Двенадцать стульев",
+      "authorshipKind": "multiple",
+      "ruTitleStatus": "verified-research",
+      "enTitleStatus": "verified-research",
+      "publicationStatus": "hold",
+      "publicationHoldCodes": [
+        "archive-work-record-missing",
+        "active-coauthor-links-missing",
+        "northwestern-publisher-authority-not-registered"
+      ],
+      "canonStatus": "hold-no-claim",
+      "rawArchiveExactTitleMatches": 0
+    },
+    {
+      "candidateId": "moscow-and-muscovites-work",
+      "registryOrdinal": 12,
+      "registryItemId": "vladimir-alekseevich-gilyarovskii-moskva-i-moskvichi",
+      "originalTitle": "Москва и москвичи",
+      "authorshipKind": "single",
+      "ruTitleStatus": "verified-research",
+      "enTitleStatus": "verified-research",
+      "publicationStatus": "hold",
+      "publicationHoldCodes": [
+        "archive-work-record-missing",
+        "active-writer-link-missing",
+        "russian-life-publisher-authority-not-registered"
+      ],
+      "canonStatus": "hold-no-claim",
+      "rawArchiveExactTitleMatches": 0
+    },
+    {
+      "candidateId": "year-of-the-lord-work",
+      "registryOrdinal": 32,
+      "registryItemId": "leto-gospodne",
+      "originalTitle": "Лето Господне",
+      "authorshipKind": "single",
+      "ruTitleStatus": "verified-research",
+      "enTitleStatus": "withheld",
+      "publicationStatus": "hold",
+      "publicationHoldCodes": [
+        "archive-work-record-missing",
+        "active-writer-link-missing",
+        "en-national-bibliography-missing",
+        "en-authoritative-publisher-record-missing",
+        "work-part-publication-year-model-unresolved"
+      ],
+      "canonStatus": "hold-no-claim",
+      "rawArchiveExactTitleMatches": 0
+    }
+  ],
+  "nebHeldNotSelected": [
+    {
+      "itemId": "printsessa-turandot",
+      "titleExact": "Принцесса Турандот",
+      "reason": "non-Russian-origin Work deferred from the Russian-first batch"
+    },
+    {
+      "itemId": "portret-doriana-greya",
+      "titleExact": "Портрет Дориана Грея",
+      "reason": "duplicate-resolution Work handled by the dedicated duplicate batch"
+    }
+  ],
+  "sourceAudit": {
+    "sourceCount": 14,
+    "currentRegistrySourceCount": 11,
+    "proposedAuthoritySourceCount": 2,
+    "discoveryOnlySourceCount": 1,
+    "proposedAuthorityIds": [
+      "northwestern-university-press",
+      "russian-life-books"
+    ]
+  },
+  "conclusions": [
+    "All three selected NEB Work identities are absent by exact original title from the checked raw archive.",
+    "The Twelve Chairs is modeled as one coauthored Work with two mandatory linked author credits; it must never be routed as single authorship.",
+    "The exact RU and EN-market title research is complete for The Twelve Chairs and Moscow and Muscovites, but their publisher authorities are not yet active in the registry.",
+    "The English title for Лето Господне remains withheld because the observed print-on-demand manifestation lacks an independent national-library record and an authoritative editorial publisher record.",
+    "Every Russian description and its English translation are grounded only in Russian official sources; foreign records are limited to English title and Expression evidence.",
+    "All candidates are production research drafts excluded from the visitor archive and carry no canonical-classic claim."
+  ],
+  "reportFingerprint": "dbaad81db6bb7ccd3f512ab4983a1100de49dd1a24da20e7a4c02cee1ee40540"
+}

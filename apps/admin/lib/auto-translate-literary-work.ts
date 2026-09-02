@@ -10,16 +10,14 @@ import { premiumTranslationRuntimeGate } from "./translation-runtime-gate";
 type SupabaseServerClient = SupabaseClient;
 
 const translatedWorkSchema = z.object({
-  title: z.string().trim().min(1).max(300),
   description: z.string().trim().min(140).max(900),
 });
 
 const translatedWorkJsonSchema = {
   type: "object",
   additionalProperties: false,
-  required: ["title", "description"],
+  required: ["description"],
   properties: {
-    title: { type: "string", minLength: 1, maxLength: 300 },
     description: { type: "string", minLength: 140, maxLength: 900 },
   },
 } as const;
@@ -37,7 +35,7 @@ function validateWorkTranslation(value: unknown) {
       }`
     );
   }
-  if (/\p{Script=Cyrillic}/u.test(`${parsed.data.title} ${parsed.data.description}`)) {
+  if (/\p{Script=Cyrillic}/u.test(parsed.data.description)) {
     throw new Error("Premium English book translation still contains Cyrillic");
   }
   const sentences = sentenceCount(parsed.data.description);
@@ -100,7 +98,7 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
       .maybeSingle(),
     input.supabase
       .from("literary_work_translations")
-      .select("id,title,description,translation_method,editorial_status,updated_at,metadata")
+      .select("id,title,description,source_urls,translation_method,editorial_status,updated_at,metadata")
       .eq("work_id", input.workId)
       .eq("locale", "en")
       .maybeSingle(),
@@ -145,8 +143,78 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
     return { state: "manual" };
   }
 
+  if (!existing) {
+    return {
+      state: "skipped",
+      error: "a pre-verified English bibliographic title is required",
+    };
+  }
+  const verifiedEnglishTitle = existing.title.trim();
+  if (!verifiedEnglishTitle || /\p{Script=Cyrillic}/u.test(verifiedEnglishTitle)) {
+    return {
+      state: "skipped",
+      error: "the pre-verified English bibliographic title is invalid",
+    };
+  }
+
+  const existingMetadata = translationMeta(existing.metadata);
+  const premiumMetadata = translationMeta(existingMetadata.premiumTranslation);
+  const recordedTitle = translationMeta(premiumMetadata.bibliographicTitle);
+  const recordedTitleSourceUrl =
+    typeof recordedTitle.sourceUrl === "string" ? recordedTitle.sourceUrl : "";
+  if (
+    existing.translation_method === "machine-translation" &&
+    (recordedTitle.value !== verifiedEnglishTitle || !recordedTitleSourceUrl)
+  ) {
+    return {
+      state: "skipped",
+      error: "the machine-generated English title requires bibliographic verification",
+    };
+  }
+
+  const englishTitleSourceUrls = Array.isArray(existing.source_urls)
+    ? existing.source_urls.filter(
+        (url): url is string => typeof url === "string" && /^https:\/\//u.test(url)
+      )
+    : [];
+  if (
+    englishTitleSourceUrls.length === 0 ||
+    (recordedTitleSourceUrl && !englishTitleSourceUrls.includes(recordedTitleSourceUrl))
+  ) {
+    return {
+      state: "skipped",
+      error: "the English title has no verified bibliographic provenance",
+    };
+  }
+
+  const titleSourceQuery = input.supabase
+    .from("literary_work_sources")
+    .select("provider,source_url,retrieved_at")
+    .eq("work_id", input.workId)
+    .contains("field_names", ["title"]);
+  const titleSourceResponse = recordedTitleSourceUrl
+    ? await titleSourceQuery
+        .eq("source_url", recordedTitleSourceUrl)
+        .limit(1)
+        .maybeSingle()
+    : await titleSourceQuery
+        .in("source_url", englishTitleSourceUrls)
+        .limit(1)
+        .maybeSingle();
+  if (titleSourceResponse.error) {
+    return { state: "failed", error: titleSourceResponse.error.message };
+  }
+  if (!titleSourceResponse.data) {
+    return {
+      state: "skipped",
+      error: "the English title is not backed by a verified bibliographic source",
+    };
+  }
+
   const source = {
-    title: russian.title,
+    russianTitle: russian.title,
+    verifiedEnglishTitle,
+    verifiedEnglishTitleSourceUrl: titleSourceResponse.data.source_url,
     description: russian.description,
     originalTitle: work.original_title || "",
     firstPublished: work.first_published,
@@ -155,10 +223,8 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
     sourceUrls: russian.source_urls,
   };
   const sourceHash = await sha256(source);
-  const existingMetadata = translationMeta(existing?.metadata);
-  const premiumMetadata = translationMeta(existingMetadata.premiumTranslation);
   if (
-    existing?.translation_method === "machine-translation" &&
+    existing.translation_method === "machine-translation" &&
     premiumMetadata.sourceHash === sourceHash &&
     new Set(["reviewed", "verified"]).has(existing.editorial_status)
   ) {
@@ -177,7 +243,8 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
       maxOutputTokens: 4_000,
       domainInstructions: [
         "This is a compact literary-encyclopedia record for a book or literary work.",
-        "Use the established English title when it is clearly standard and supported by the source context. Otherwise give a faithful English rendering without inventing an edition title.",
+        "Return only the English description. The verified English title is editorially locked and is not part of the model output.",
+        "Do not propose, translate, normalize or modify any work title. If the title must be mentioned in the description, copy verifiedEnglishTitle exactly.",
         "The description must be 2-3 polished sentences, 140-900 characters, suitable for an international literary encyclopedia.",
         "Do not translate or modify sourceUrls, publication years, identifiers or original-language metadata.",
       ],
@@ -209,38 +276,37 @@ export async function ensureLiteraryWorkEnglishTranslation(input: {
         translatorRequestId: translated.translatorRequestId,
         reviewerRequestId: translated.reviewerRequestId,
         generatedAt: new Date().toISOString(),
+        bibliographicTitle: {
+          value: verifiedEnglishTitle,
+          provider: titleSourceResponse.data.provider,
+          sourceUrl: titleSourceResponse.data.source_url,
+          retrievedAt: titleSourceResponse.data.retrieved_at,
+        },
       },
     };
     const payload = {
-      title: translated.value.title,
       description: translated.value.description,
       source_language: "Russian",
       translation_method: "machine-translation",
       editorial_status: "reviewed",
-      source_urls: russian.source_urls,
+      source_urls: [...new Set([...englishTitleSourceUrls, ...russian.source_urls])],
       reviewed_at: today,
       metadata,
     };
 
-    const saved = existing
-      ? await input.supabase
-          .from("literary_work_translations")
-          .update(payload)
-          .eq("id", existing.id)
-          .eq("work_id", input.workId)
-          .eq("locale", "en")
-          .eq("updated_at", existing.updated_at)
-          .select("id")
-          .maybeSingle()
-      : await input.supabase
-          .from("literary_work_translations")
-          .insert({ work_id: input.workId, locale: "en", ...payload })
-          .select("id")
-          .maybeSingle();
+    const saved = await input.supabase
+      .from("literary_work_translations")
+      .update(payload)
+      .eq("id", existing.id)
+      .eq("work_id", input.workId)
+      .eq("locale", "en")
+      .eq("updated_at", existing.updated_at)
+      .select("id")
+      .maybeSingle();
 
     if (saved.error || !saved.data) {
       return {
-        state: existing && !saved.error ? "conflict" : "failed",
+        state: !saved.error ? "conflict" : "failed",
         error: saved.error?.message || "English work translation changed concurrently",
       };
     }

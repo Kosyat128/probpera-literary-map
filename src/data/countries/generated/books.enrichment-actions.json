@@ -1,7 +1,11 @@
 {
-  "generatedAt": "2026-08-31T00:00:00.000Z",
-  "sourceManifestFingerprint": "7c576ffbd0ea1e07909404a5071a27fd1e7f4eca1ab7ccff9de463458068a38c",
+  "generatedAt": "2026-09-02T00:00:00.000Z",
+  "sourceManifestFingerprint": "f8818711b16ffc380156f1ab042cbc25358c47a40a775ed64b26ebe29c6a7e06",
   "source": "Deterministic reject/merge decisions from book enrichment manifest",
+  "duplicateResolutionManifest": {
+    "manifestId": "book-canon-duplicate-resolutions-batch01-2026-09-02",
+    "fingerprint": "a5f9527b3a45f5e9863d91a37395c5f5eccee0340237c4b2e8107ecb5e8b72cd"
+  },
   "rejects": [
     {
       "recordKey": "argentina:jorge_luis_borges:openlibrary-works-ol16467182w",
@@ -1514,7 +1518,7 @@
     {
       "from": "england:aldous_huxley:openlibrary-works-ol64365w",
       "into": "england:aldous_huxley:brave-new-world-editorial",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
@@ -1532,19 +1536,19 @@
     {
       "from": "england:george_orwell:openlibrary-works-ol1168007w",
       "into": "england:george_orwell:animal-farm-editorial",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
       "from": "england:george_orwell:openlibrary-works-ol1168083w",
       "into": "england:george_orwell:nineteen-eighty-four",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
       "from": "england:j_r_r_tolkien:legacy-j_r_r_tolkien-властелин-колец",
       "into": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
-      "basis": "curated-reviewed-same-writer-title-alias",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
@@ -1572,10 +1576,42 @@
       "preserveWriterRelation": true
     },
     {
+      "from": "england:oscar_wilde:legacy-oscar_wilde-портрет-дориана-грея",
+      "into": "ireland:oscar_wilde:legacy-oscar_wilde-портрет-дориана-грея",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": false,
+      "resolutionId": "merge-wilde-england-legacy-into-ireland-legacy",
+      "resolutionFingerprint": "fbe8b653647bff6eb929849ae1dfb16398b41be5865e853e26b31d844ee9c724",
+      "sourceFingerprint": "b6e42bf45b44086b0c3a8f7381be001ec7e015507d6c295050ac6249d78b6078",
+      "survivorFingerprint": "e76fa35957f4d0a0c471654d548421f3a9347187ccdff6d70e6dd25acf3452f4",
+      "sourceMergeProjectionFingerprint": "cc984758e4e173d999dd9715d4c4c26a9e0d6a19cb249622b53f6a701254869c",
+      "survivorMergeProjectionFingerprint": "cc984758e4e173d999dd9715d4c4c26a9e0d6a19cb249622b53f6a701254869c",
+      "workFirstPublishedStatus": "withheld",
+      "workFirstPublished": null,
+      "canonicalTitle": "The Picture of Dorian Gray"
+    },
+    {
       "from": "england:oscar_wilde:openlibrary-works-ol14877446w",
       "into": "england:oscar_wilde:openlibrary-works-ol24321269w",
       "basis": "same-writer-exact-normalized-title-shadow",
       "preserveWriterRelation": true
+    },
+    {
+      "from": "england:oscar_wilde:openlibrary-works-ol8193416w",
+      "into": "ireland:oscar_wilde:legacy-oscar_wilde-портрет-дориана-грея",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": false,
+      "resolutionId": "merge-wilde-ol8193416w-into-ireland-legacy",
+      "resolutionFingerprint": "fbe8b653647bff6eb929849ae1dfb16398b41be5865e853e26b31d844ee9c724",
+      "sourceFingerprint": "42e069b4f238606ef05fa47d5016095ef7fc4037ff1db585ca8c4a59caeb125f",
+      "survivorFingerprint": "e76fa35957f4d0a0c471654d548421f3a9347187ccdff6d70e6dd25acf3452f4",
+      "sourceMergeProjectionFingerprint": "7e407d12c3831d1d19fceea6195661038088a7c3a1256cb96223cf58ad36b60c",
+      "survivorMergeProjectionFingerprint": "cc984758e4e173d999dd9715d4c4c26a9e0d6a19cb249622b53f6a701254869c",
+      "workFirstPublishedStatus": "withheld",
+      "workFirstPublished": null,
+      "canonicalTitle": "The Picture of Dorian Gray"
     },
     {
       "from": "england:robert_louis_stevenson:openlibrary-works-ol17373883w",
@@ -1596,9 +1632,25 @@
       "preserveWriterRelation": true
     },
     {
+      "from": "france:emile_zola:openlibrary-works-ol3521623w",
+      "into": "france:emile_zola:openlibrary-works-ol7982341w",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": true,
+      "resolutionId": "merge-zola-ol3521623w-into-ol7982341w",
+      "resolutionFingerprint": "caa88a09c450ad1fab96849fa024bbb2379a0a478ba7bf67a8e9abcbd16c51a8",
+      "sourceFingerprint": "c344096dd1279a1751e1464cc69484648f50f06b91a4786799ba2ec9ae52409b",
+      "survivorFingerprint": "05a1c5fcbb8b0222bbfe807c05beb37b92297d8c03183702c2bd9f255b03b049",
+      "sourceMergeProjectionFingerprint": "0a3999179c76dd10197a77979904c2fd8120f7d17d9f8689625c622a6322ea2b",
+      "survivorMergeProjectionFingerprint": "8bdf88ccf24f9e7f34e9c44c63114f69114911d4494ddd7a7b9b3f016db57b81",
+      "workFirstPublishedStatus": "authority-backed",
+      "workFirstPublished": 1867,
+      "canonicalTitle": "Thérèse Raquin"
+    },
+    {
       "from": "france:flaubert:openlibrary-works-ol893707w",
       "into": "france:flaubert:madame-bovary",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
@@ -1614,21 +1666,37 @@
       "preserveWriterRelation": true
     },
     {
+      "from": "france:maupassant:openlibrary-works-ol93822w",
+      "into": "france:maupassant:openlibrary-works-ol93840w",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": true,
+      "resolutionId": "merge-maupassant-ol93822w-into-ol93840w",
+      "resolutionFingerprint": "12f5a42a5e3033aa1e6fed895735174328dae64e938519df3cbcbf8ce0bcbf43",
+      "sourceFingerprint": "405e61a40fe4eb355327d5903bfdb5a1fac99d5fdfb60298cd879c0f452d6f03",
+      "survivorFingerprint": "a17b03a9b66f32dda6b0662f090ddf470da8e3594edec97eaccccd5ace9dede8",
+      "sourceMergeProjectionFingerprint": "f44648e50d4669ce06078d0797a9e4daba20e4a821e5a19714385318308323de",
+      "survivorMergeProjectionFingerprint": "05e67e0b9f84439acac42cd7efd35ebeda673c799bd4680137d6d944fc0d0c06",
+      "workFirstPublishedStatus": "authority-backed",
+      "workFirstPublished": 1883,
+      "canonicalTitle": "Une vie"
+    },
+    {
       "from": "france:roger_martin_du_gard:openlibrary-works-ol32012067w",
       "into": "france:roger_martin_du_gard:the-thibaults",
-      "basis": "same-writer-exact-verified-title-alias",
+      "basis": "same-writer-exact-editorial-title-alias",
       "preserveWriterRelation": true
     },
     {
       "from": "france:saint_exupery:legacy-saint_exupery-маленький-принц",
       "into": "france:saint_exupery:openlibrary-works-ol10263w",
-      "basis": "curated-reviewed-same-writer-title-alias",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
       "from": "france:victor_hugo:openlibrary-works-ol1063588w",
       "into": "france:victor_hugo:les-miserables",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
@@ -1658,7 +1726,7 @@
     {
       "from": "russia:dostoevsky:openlibrary-works-ol21062236w",
       "into": "russia:dostoevsky:crime-and-punishment",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
@@ -1670,7 +1738,7 @@
     {
       "from": "russia:tolstoy:openlibrary-works-ol267171w",
       "into": "russia:tolstoy:war-and-peace",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
@@ -1678,6 +1746,38 @@
       "into": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
       "basis": "curated-reviewed-same-writer-title-alias",
       "preserveWriterRelation": true
+    },
+    {
+      "from": "usa:benjamin_franklin:openlibrary-works-ol2514745w",
+      "into": "usa:benjamin_franklin:openlibrary-works-ol26610w",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": true,
+      "resolutionId": "merge-franklin-ol2514745w-into-ol26610w",
+      "resolutionFingerprint": "583e90676c8c4a4a5bdc308dfc217fc1ffdb8f9583d8753fe3518679a1657f98",
+      "sourceFingerprint": "31e5d4ff8e043c5eb1b6616804da4883ca661d2f49e01eaab10ea39a71bd8554",
+      "survivorFingerprint": "5a78b1839f6db234dc1d6437b32b1fe17fc4284090c8155322e1706d4abc218e",
+      "sourceMergeProjectionFingerprint": "5e33dfc3b6f8e184b442b0aba6879e396e01d88c610a00d994da4966dbb6c7c6",
+      "survivorMergeProjectionFingerprint": "2f039f62e2cfcc0df17243dca99978a6da162280556cd7c4046535883db1042c",
+      "workFirstPublishedStatus": "authority-backed",
+      "workFirstPublished": 1758,
+      "canonicalTitle": "The Way to Wealth"
+    },
+    {
+      "from": "usa:ernest_hemingway:openlibrary-works-ol63009w",
+      "into": "usa:ernest_hemingway:for-whom-the-bell-tolls-editorial",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": true,
+      "resolutionId": "merge-hemingway-ol63009w-into-editorial",
+      "resolutionFingerprint": "cdbce5bd5b273fda02e43a380179345a2dd43736a133c3ed9b35e45faa7ca430",
+      "sourceFingerprint": "80aa2355957261cd3941b343f61f5b8953995b1177c66ec58f73f964f8287693",
+      "survivorFingerprint": "d8cfe1dab88782e7e1cfa4f04efed6baf823d5dc4697e422258ac03f243b4805",
+      "sourceMergeProjectionFingerprint": "b70cbc7f7eca4a10c6ab4f9fb33d23fb1d61e488d9f41912cd4a1f0a69418977",
+      "survivorMergeProjectionFingerprint": "e510f2b9e1af853c83ca792f82c225ffb98020fe636751cff4ddd57d51ebf24d",
+      "workFirstPublishedStatus": "authority-backed",
+      "workFirstPublished": 1940,
+      "canonicalTitle": "For Whom the Bell Tolls"
     },
     {
       "from": "usa:ernest_hemingway:openlibrary-works-ol63073w",
@@ -1688,7 +1788,7 @@
     {
       "from": "usa:francis_scott_fitzgerald:openlibrary-works-ol468431w",
       "into": "usa:francis_scott_fitzgerald:the-great-gatsby",
-      "basis": "same-writer-exact-editorial-title-alias",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
@@ -1700,8 +1800,24 @@
     {
       "from": "usa:harper_lee:openlibrary-works-ol3140822w",
       "into": "usa:harper_lee:to-kill-a-mockingbird-editorial",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
+    },
+    {
+      "from": "usa:henry_david_thoreau:openlibrary-works-ol21138836w",
+      "into": "usa:henry_david_thoreau:openlibrary-works-ol55649w",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": true,
+      "resolutionId": "merge-thoreau-ol21138836w-into-ol55649w",
+      "resolutionFingerprint": "40ec1868f7e2e247d933a42fccf35263b5e32559746dbb4b1d32de0592b309a9",
+      "sourceFingerprint": "a4198b6e49ec7a8a970dd012f6d5c89f272c399e95e9e5837a929078634ecbbd",
+      "survivorFingerprint": "7288118ef17c763ab38a49ef3f66561996c58005067dbea35cd80ed83f520d18",
+      "sourceMergeProjectionFingerprint": "494c6872d100ea694e54da473478c3ebdff3a84a1ce7a94e096f1416fde5b69a",
+      "survivorMergeProjectionFingerprint": "fd9fd73dca96a6194c65fd23088f676eaa92533286d103bde9dcda6138e231a7",
+      "workFirstPublishedStatus": "authority-backed",
+      "workFirstPublished": 1854,
+      "canonicalTitle": "Walden; or, Life in the Woods"
     },
     {
       "from": "usa:herman_melville:openlibrary-works-ol102749w",
@@ -1722,6 +1838,22 @@
       "preserveWriterRelation": true
     },
     {
+      "from": "usa:jack_london:openlibrary-works-ol144705w",
+      "into": "usa:jack_london:openlibrary-works-ol14942956w",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": true,
+      "resolutionId": "merge-london-ol144705w-into-ol14942956w",
+      "resolutionFingerprint": "71aef75fcae5de4c2121bae95bfe876b60a54672b0e6804cc71b09a080edb4e2",
+      "sourceFingerprint": "f7621faf6f6878ec30327ef509be36f546273bd8a5ded3b65cc7da65951167bd",
+      "survivorFingerprint": "98d3032abee223c75908c190642488b4fa1d61a2ac3009f43a14f12982784bf0",
+      "sourceMergeProjectionFingerprint": "df63bea71d9892c5aa0d1d7f630730e5c71e71822e809c64824382142ccf3b1f",
+      "survivorMergeProjectionFingerprint": "40083e12ac0c1b1c85bcdfc2d4bc57bdd22abb8517360e3cdeba5ad918ce3510",
+      "workFirstPublishedStatus": "authority-backed",
+      "workFirstPublished": 1903,
+      "canonicalTitle": "The Call of the Wild"
+    },
+    {
       "from": "usa:jack_london:openlibrary-works-ol144824w",
       "into": "usa:jack_london:the-sea-wolf",
       "basis": "same-writer-exact-editorial-title-alias",
@@ -1730,13 +1862,29 @@
     {
       "from": "usa:jerome_david_salinger:openlibrary-works-ol3335245w",
       "into": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
+    },
+    {
+      "from": "usa:john_steinbeck:openlibrary-works-ol23205w",
+      "into": "usa:john_steinbeck:the-grapes-of-wrath-editorial",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": true,
+      "resolutionId": "merge-steinbeck-ol23205w-into-editorial",
+      "resolutionFingerprint": "3d7bd3720709f151ed02be756721b8e3b6ba6b574d8b16b82aab615984796564",
+      "sourceFingerprint": "9018a08a23b27e3f48b6c273392bc4e4d0b0c04b99484fc67ebe4a81d1f91777",
+      "survivorFingerprint": "6ab949dd07a13fc2444ecc821e4c600421dec40ab765f7b8ca4e85d73f7124e3",
+      "sourceMergeProjectionFingerprint": "90d3a0f6df540321e147f0def53c80f8200c375e1f44ac6897888a1575d4e622",
+      "survivorMergeProjectionFingerprint": "09f6b19ea98e46f074eb0fae3c3d1ef15f69a891c3d60c1c6ccdeaf5d800bd2c",
+      "workFirstPublishedStatus": "authority-backed",
+      "workFirstPublished": 1939,
+      "canonicalTitle": "The Grapes of Wrath"
     },
     {
       "from": "usa:ray_bradbury:openlibrary-works-ol103123w",
       "into": "usa:ray_bradbury:fahrenheit-451-editorial",
-      "basis": "curated-reviewed-same-writer-external-identity",
+      "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
     },
     {
@@ -1744,6 +1892,37 @@
       "into": "usa:suzanne_collins:the-hunger-games",
       "basis": "same-writer-exact-verified-title-alias",
       "preserveWriterRelation": true
+    },
+    {
+      "from": "usa:william_faulkner:openlibrary-works-ol82870w",
+      "into": "usa:william_faulkner:the-sound-and-the-fury-editorial",
+      "basis": "canon-reviewed-work-identity-resolution",
+      "mergeContractVersion": 1,
+      "preserveWriterRelation": true,
+      "resolutionId": "merge-faulkner-ol82870w-into-editorial",
+      "resolutionFingerprint": "588f53357a53ec519bd16cb47a45cf28540c09ac49e3f96b7d048646f3f93c4a",
+      "sourceFingerprint": "bfa545aa85adb5f7f307c062918436e74115cc650027d7a47d2cd6c3b7695328",
+      "survivorFingerprint": "18af61b6d5d354c43d11b22878b20e456a872791c86c5b25245d9d776dfd5dce",
+      "sourceMergeProjectionFingerprint": "9ab74fc8d51b23b090575b3eb115955af5d8949e48ea858e4491f6295c57dce5",
+      "survivorMergeProjectionFingerprint": "6f06f879c7c4231b62258e784d8d03f235f13b3b5b9003476677fad0c93f1dfe",
+      "workFirstPublishedStatus": "authority-backed",
+      "workFirstPublished": 1929,
+      "canonicalTitle": "The Sound and the Fury"
+    }
+  ],
+  "aliases": [
+    {
+      "recordKey": "usa:mark_twain:openlibrary-works-ol53908w",
+      "title": "The Adventures of Huckleberry Finn (Tom Sawyer’s Comrade).",
+      "sourceId": "loc-twain-huckleberry-finn",
+      "basis": "canon-reviewed-exact-title-alias",
+      "aliasContractVersion": 1,
+      "resolutionId": "alias-loc-full-huckleberry-title-to-ol53908w",
+      "resolutionFingerprint": "87a6c4a4856467a813647c34d46abeeb2f6a0c44268072aa8848d1f779f751b8",
+      "targetFingerprint": "c2df34964485074e6b00e2a00db697ce3f111c2f7a5cbc3fd1700b45a9b3cef1",
+      "targetMergeProjectionFingerprint": "f75edd6b831cd812d5d6f0da068d64bfeeaa671914f76d3d67d95cdd90add1d4",
+      "workFirstPublishedStatus": "withheld",
+      "workFirstPublished": null
     }
   ]
 }

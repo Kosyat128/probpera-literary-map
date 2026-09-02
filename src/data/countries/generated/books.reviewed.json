@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-31T00:00:00.000Z",
-  "sourceManifestFingerprint": "7c576ffbd0ea1e07909404a5071a27fd1e7f4eca1ab7ccff9de463458068a38c",
+  "generatedAt": "2026-09-02T00:00:00.000Z",
+  "sourceManifestFingerprint": "f8818711b16ffc380156f1ab042cbc25358c47a40a775ed64b26ebe29c6a7e06",
   "source": "Validated book-enrichment-curated-batch files; raw imports remain unchanged",
   "works": {
     "austria:franz_kafka": [
@@ -8,7 +8,6 @@
         "id": "openlibrary-works-ol498556w",
         "title": "Превращение",
         "alternateTitles": [
-          "Metamorphosis",
           "The Metamorphosis",
           "Die Verwandlung"
         ],
@@ -120,6 +119,7 @@
         "id": "openlibrary-works-ol675783w",
         "title": "Рассказ служанки",
         "alternateTitles": [
+          "Рассказ Служанки",
           "The Handmaid's Tale"
         ],
         "originalTitle": "The Handmaid's Tale",
@@ -977,7 +977,6 @@
         "id": "openlibrary-works-ol10263w",
         "title": "Маленький принц",
         "alternateTitles": [
-          "Le petit prince",
           "The Little Prince",
           "Le Petit Prince"
         ],
@@ -1334,7 +1333,6 @@
         "id": "openlibrary-works-ol15272537w",
         "title": "Дон Кихот",
         "alternateTitles": [
-          "The ingenious hidalgo Don Quixote de la Mancha",
           "Don Quixote",
           "El ingenioso hidalgo don Quijote de la Mancha"
         ],
@@ -1444,6 +1442,7 @@
         "id": "to-kill-a-mockingbird-editorial",
         "title": "Убить пересмешника",
         "alternateTitles": [
+          "Убить пересмешника…",
           "To Kill a Mockingbird"
         ],
         "originalTitle": "To Kill a Mockingbird",
@@ -1562,7 +1561,7 @@
         "id": "moby-dick",
         "title": "Моби Дик, или Белый кит",
         "alternateTitles": [
-          "Моби Дик",
+          "Моби Дик, или Белый Кит",
           "Moby-Dick; or, The Whale"
         ],
         "originalTitle": "Moby-Dick; or, The Whale",

@@ -100,6 +100,18 @@ const reviewedMigrations = [
     "20260902_zz_article_working_drafts_health.sql",
     "72259c999de34611ac9bb3bddd3d1374b62b43cfa1eb9a4f11fabfeb5bd20460",
   ],
+  [
+    "20260902_literary_work_authorship.sql",
+    "79dd77139c128f22b184043665f39c76bc10bbbc895cabfc0d84c4d8d3e195bd",
+  ],
+  [
+    "20260902_literary_work_evidence_v2_attestations.sql",
+    "53f48a7716aeaf3c1d0ecebd9f0a316c04a93edc73f849c288a8a40385e87479",
+  ],
+  [
+    "20260902_zz_literary_archive_atomic_release.sql",
+    "a03f27a42fc6e7607dae6c46cb52292798ffc4eb931c470bfc2e9a481ebb1ef9",
+  ],
 ];
 
 const reviewedHotfixes = [
@@ -298,6 +310,13 @@ begin
     or to_regclass('public.probpera_schema_migrations') is null
     or to_regclass('public.admin_revision_history') is null
     or to_regclass('public.literary_work_cover_artworks') is null
+    or to_regclass('public.literary_work_authors') is null
+    or to_regclass('public.literary_work_authorship_revisions') is null
+    or to_regclass('public.literary_work_evidence_v2_controls') is null
+    or to_regclass('public.literary_work_evidence_v2_attestations') is null
+    or to_regclass('public.literary_archive_releases') is null
+    or to_regclass('public.literary_archive_release_batches') is null
+    or to_regclass('public.literary_archive_release_items') is null
     or to_regclass('public.reader_book_collections') is null
     or to_regclass('public.reader_book_collection_items') is null
     or to_regclass('public.reader_book_favorites') is null
@@ -388,6 +407,39 @@ begin
     raise exception 'Reader book collection owner-only policies are incomplete';
   end if;
 
+  if (
+    select count(*)
+    from pg_catalog.pg_class relation
+    join pg_catalog.pg_namespace namespace on namespace.oid = relation.relnamespace
+    where namespace.nspname = 'public'
+      and relation.relname in (
+        'literary_work_evidence_v2_controls',
+        'literary_work_evidence_v2_attestations',
+        'literary_archive_releases',
+        'literary_archive_release_batches',
+        'literary_archive_release_items'
+      )
+      and relation.relrowsecurity
+      and relation.relforcerowsecurity
+  ) <> 5 then
+    raise exception 'Evidence and atomic archive private-table RLS is incomplete';
+  end if;
+
+  if not exists (
+    select 1
+    from public.literary_work_evidence_v2_controls control
+    where control.singleton
+      and control.contract_version = 'book-evidence-v2'
+      and control.validator_version = 'book-evidence-v2-validator-v1'
+      and control.validator_sha256 =
+        'f2ef2c46ae78be553a190057f8833c5661dc1cbcc1902564708effa7f6db0026'
+      and control.canon_registry_version = 'world-canon-2026-09-v2'
+      and control.canon_registry_sha256 =
+        'd0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef'
+  ) then
+    raise exception 'Evidence V2 validator or canon registry pin is not frozen';
+  end if;
+
   if to_regprocedure('public.get_editorial_schema_health()') is null
     or to_regprocedure('public.enqueue_public_build_request(text,text,text,jsonb)') is null
     or to_regprocedure('public.move_homepage_block(uuid,text)') is null
@@ -431,6 +483,21 @@ begin
     or to_regprocedure('public.update_seo_redirect_guarded(uuid,timestamptz,text,text,smallint,boolean)') is null
     or to_regprocedure('public.delete_seo_redirect_guarded(uuid,timestamptz)') is null
     or to_regprocedure('public.moderate_comments_guarded(jsonb,public.publication_status)') is null
+    or to_regprocedure('public.replace_literary_work_authorship(uuid,timestamp with time zone,text,jsonb)') is null
+    or to_regprocedure('public.sync_literary_work_authorship_batch(jsonb)') is null
+    or to_regprocedure('public.literary_work_evidence_v2_content(uuid)') is null
+    or to_regprocedure('public.literary_work_evidence_v2_content_sha256(uuid)') is null
+    or to_regprocedure('public.literary_work_evidence_v2_content_sha256_batch(uuid[])') is null
+    or to_regprocedure('public.attest_literary_work_evidence_v2(uuid,text,jsonb,jsonb,text,date)') is null
+    or to_regprocedure('public.sync_literary_work_evidence_v2_batch(jsonb)') is null
+    or to_regprocedure('public.literary_work_evidence_v2_predecessor_manifest_sha256()') is null
+    or to_regprocedure('public.set_literary_work_evidence_v2_enforcement(boolean,text)') is null
+    or to_regprocedure('public.assert_literary_work_evidence_v2_health(text,text,text,text,text)') is null
+    or to_regprocedure('public.get_literary_archive_release_precondition()') is null
+    or to_regprocedure('public.assert_literary_archive_live_target(uuid,text)') is null
+    or to_regprocedure('public.create_literary_archive_release(text,text,integer,integer,integer,text,jsonb,text,integer,text,boolean,jsonb)') is null
+    or to_regprocedure('public.stage_literary_archive_release_batch(uuid,integer,jsonb)') is null
+    or to_regprocedure('public.commit_literary_archive_release(uuid,text)') is null
     or to_regprocedure('public.premium_machine_translation_ready()') is null then
     raise exception 'Required editorial RPC is missing after reconciliation';
   end if;
@@ -531,6 +598,9 @@ ${values}
       'revisionHistory',
       'workTranslations',
       'workCoverArtworks',
+      'literaryWorkAuthorship',
+      'literaryWorkEvidenceV2',
+      'literaryArchiveAtomicRelease',
       'countryOverrides',
       'writerOverrides',
       'homepageMove',
@@ -605,6 +675,9 @@ select concat(
   ';revision_history=', health ->> 'revisionHistory',
   ';work_translations=', health ->> 'workTranslations',
   ';work_cover_artworks=', health ->> 'workCoverArtworks',
+  ';literary_work_authorship=', health ->> 'literaryWorkAuthorship',
+  ';literary_work_evidence_v2=', health ->> 'literaryWorkEvidenceV2',
+  ';literary_archive_atomic_release=', health ->> 'literaryArchiveAtomicRelease',
   ';country_overrides=', health ->> 'countryOverrides',
   ';writer_overrides=', health ->> 'writerOverrides',
   ';homepage_move=', health ->> 'homepageMove',

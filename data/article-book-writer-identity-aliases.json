@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-02",
+  "policy": "Raw country records and legacy work keys remain unchanged. A reviewed alias may disambiguate article-to-book matching only when every author-title match resolves to one canonical writer key and exactly one matching book belongs to that canonical key.",
+  "aliases": [
+    {
+      "aliasWriterKey": "germany:robert_musil",
+      "canonicalWriterKey": "austria:robert_musil",
+      "identity": {
+        "name": "Robert Musil",
+        "birthDate": "1880-11-06",
+        "deathDate": "1942-04-15"
+      },
+      "reason": "Both repository records describe the same Klagenfurt-born Austrian writer. The Austria key is the canonical country placement; the Germany key is retained as a legacy duplicate.",
+      "evidence": [
+        {
+          "provider": "Literaturarchiv der Österreichischen Nationalbibliothek",
+          "url": "https://www.onb.ac.at/sammlungen/literaturarchiv/bestaende/personen/musil-robert-1880-1942",
+          "finding": "The official estate record identifies Robert Musil by the same 1880-1942 dates, records his birth in Klagenfurt and attributes the unfinished novel Der Mann ohne Eigenschaften to him."
+        },
+        {
+          "provider": "Robert-Musil-Institut / Kärntner Literaturarchiv, Universität Klagenfurt",
+          "url": "https://www.aau.at/musil/literaturforschung/musilforschung/",
+          "finding": "The specialist institute's critical-edition project identifies Der Mann ohne Eigenschaften as Robert Musil's unfinished novel and is based in his Austrian birthplace, Klagenfurt."
+        },
+        {
+          "provider": "MUSIL ONLINE, Robert-Musil-Institut and Österreichische Nationalbibliothek",
+          "url": "https://musilonline.at/musil-online/robert-musil/",
+          "finding": "The joint scholarly portal identifies Robert Musil, born in Klagenfurt in 1880, as the author of Der Mann ohne Eigenschaften and describes his oeuvre as Austria's contribution to twentieth-century world literature."
+        }
+      ],
+      "reviewedAt": "2026-09-02"
+    }
+  ]
+}

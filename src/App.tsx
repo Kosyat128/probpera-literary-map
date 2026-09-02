@@ -876,7 +876,7 @@ export default function App() {
     () => bookArchive.filter(isPublicBook),
     [bookArchive]
   );
-  // The archive counter includes both the 31 fully verified records and the
+  // The archive counter includes both publication-gated records and the
   // canonical editorial queue. Stable keys promote a record in place rather
   // than adding a second card for the same country/writer/work relation.
   const totalWorks = bookArchive.length;
@@ -1104,10 +1104,9 @@ export default function App() {
     }
 
     if (bookArchiveRuntime) {
-      for (const book of bookArchive) {
+      for (const book of verifiedBookArchive) {
         const displayedBook =
           bookArchiveRuntime.presentBookArchiveEntry(book, language);
-        const verified = isPublicBook(book);
         results.push({
           type: "book",
           key: `book:${book.countryId}:${book.writerId}:${book.id}`,
@@ -1122,12 +1121,8 @@ export default function App() {
               ...(book.alternateTitles || []),
               selectBookWriterName(book, language, t("Автор")),
               countryName(book.country.code, book.countryName),
-              ...(verified
-                ? [
-                    displayedBook.description,
-                    ...selectBookMetadataLabels(book, language, t),
-                  ]
-                : []),
+              displayedBook.description,
+              ...selectBookMetadataLabels(book, language, t),
             ]
               .filter(Boolean)
               .join(" ")
@@ -1137,7 +1132,7 @@ export default function App() {
     }
 
     return results;
-  }, [bookArchive, bookArchiveRuntime, countryArchive, countryName, language, t]);
+  }, [bookArchiveRuntime, countryArchive, countryName, language, t, verifiedBookArchive]);
 
   useEffect(() => {
     if (
@@ -1269,6 +1264,7 @@ export default function App() {
     book: BookArchiveEntry,
     returnFocus: HTMLElement | null = null
   ) => {
+    if (!isPublicBook(book)) return;
     requestBookRuntime();
     setBookLoadRequested(true);
     requestedBookReturnFocusRef.current = returnFocus;
@@ -1308,7 +1304,7 @@ export default function App() {
       workId: string,
       returnFocus: HTMLElement
     ) => {
-      const book = bookArchive.find(
+      const book = verifiedBookArchive.find(
         (entry) =>
           entry.countryId === countryId &&
           entry.writerId === writerId &&
@@ -1322,12 +1318,12 @@ export default function App() {
       }
       openResolvedWriterWork(book, returnFocus);
     },
-    [bookArchive, openResolvedWriterWork, requestBookRuntime]
+    [openResolvedWriterWork, requestBookRuntime, verifiedBookArchive]
   );
 
   useEffect(() => {
     if (!pendingWriterWork || bookRuntimeStatus !== "ready") return;
-    const book = bookArchive.find(
+    const book = verifiedBookArchive.find(
       (entry) =>
         entry.countryId === pendingWriterWork.countryId &&
         entry.writerId === pendingWriterWork.writerId &&
@@ -1337,10 +1333,10 @@ export default function App() {
     setPendingWriterWork(null);
     if (book) openResolvedWriterWork(book, returnFocus);
   }, [
-    bookArchive,
     bookRuntimeStatus,
     openResolvedWriterWork,
     pendingWriterWork,
+    verifiedBookArchive,
   ]);
 
   const selectCountry = useCallback(
@@ -3021,7 +3017,7 @@ export default function App() {
         </section>
 
         <DeferredBookArchive
-          books={bookArchive}
+          books={verifiedBookArchive}
           countries={countryArchive}
           archiveStatus={bookRuntimeStatus}
           forceLoad={
@@ -3759,7 +3755,7 @@ export default function App() {
             <GlobalSearch
               open
               countries={countryArchive}
-              books={bookArchive}
+              books={verifiedBookArchive}
               articleCount={articleCount}
               onClose={closeGlobalSearch}
               onCountrySelect={(country, writer) =>

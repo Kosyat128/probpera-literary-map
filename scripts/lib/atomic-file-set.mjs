@@ -108,7 +108,12 @@ export async function commitAtomicFileSet({ root, writes, deletes = [] }) {
     throw error;
   } finally {
     if (!preserveTransaction) {
-      await fs.rm(transactionRoot, { recursive: true, force: true });
+      await fs.rm(transactionRoot, {
+        recursive: true,
+        force: true,
+        maxRetries: 5,
+        retryDelay: 50,
+      });
     }
   }
 }

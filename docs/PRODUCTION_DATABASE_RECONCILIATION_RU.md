@@ -100,29 +100,39 @@ production-транзакции, база не менялась. Если оши
 скрипт dump/шифрования/изолированного restore drill, поэтому проверка
 восстановления не расходится с процедурой согласования.
 
-## Применение пакета обложек и произведений от 20.08.2026
+## Атомарная публикация полного книжного архива
 
-Пакет данных запускается только после зелёного `Reconcile production
-database` для того же SHA: таблица
-`literary_work_cover_artworks`, канонические staff-only политики и актуальный
-schema-health RPC должны уже существовать. В environment `production`
-дополнительно нужен secret `SUPABASE_SERVICE_ROLE_KEY`; его значение, как и
+Полный архив публикуется внутри guarded workflow `Reconcile production
+database` для того же SHA и только после успешной миграции и проверки
+Evidence V2/atomic-release схемы. В environment `production` дополнительно
+нужен secret `SUPABASE_SERVICE_ROLE_KEY`; его значение, как и
 `VITE_SUPABASE_URL`, не выводится в лог.
 
-Вручную запускается workflow `Sync book cover batch 2026-08-20` из
-ветки `main`. Поля запуска:
+После schema verification workflow проверяет закреплённый production API,
+устанавливает lockfile-зависимости, выполняет read-only preflight полного
+архива и повторно сверяет вершину `main`. Затем ровно один вызов `--apply`
+загружает приватные bounded batches и меняет live-таблицы только одним
+DB-side commit. Частичная публикация batch обложек запрещена. Ошибка до commit
+оставляет прежний архив, а ошибка после ответа commit может оставить только
+полностью зафиксированный атомарный результат.
 
-- `expected_main_sha` - точный текущий 40-символьный SHA `main`
-  строчными шестнадцатеричными знаками;
-- `confirmation` - точная строка
-  `SYNC BOOK COVER BATCH 20260820`.
+Перед первым destructive commit миграция отдельно восстанавливает историческую
+принадлежность ручных правок дочерних строк по двум production-журналам:
+`admin_audit_log` и транзакционному `public_build_outbox`. Для переводов,
+источников, внешних идентификаторов, изданий и artwork родительское произведение
+получает `is_cms_locked = true` и полностью исключается из static replacement.
+Событие с неоднозначным или отсутствующим `work_id`, а также явный CMS-маркер
+без журналируемого события останавливает миграцию; отсутствие доказательств не
+трактуется как отсутствие правок. `service_role`-синхронизации не считаются
+ручными. Новые staff-правки атомарно добавляют запись в приватный append-only
+ledger тем же child trigger, который ставит lock.
 
-Workflow закрепляет checkout на указанном SHA, собирает точный
-контракт пакета в dry-run, выполняет только чтением префлайт
-схемы, CMS-lock и уже загруженных primary-обложек, затем
-непосредственно перед первой записью повторно сверяет удалённую
-вершину `main`. Upsert повторяем: одинаковый пакет не создаёт
-дубли. Финальная service-role проверка требует одновременно:
+Read-only postflight принимает redacted receipt именно этого commit и одним
+service-role RPC на согласованном снимке сверяет с приватным staged target весь
+unlocked archive: work-поля, authorship, RU/EN translations, sources, external
+IDs, editions, artworks, receipt исторических child-edit locks и точный набор
+Evidence V2 attestations. Затем отдельно
+проверяется сохранённый контракт пакета обложек 20.08.2026:
 
 - ровно 43 artwork-строки с архивным SHA-256
   `0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3`;

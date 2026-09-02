@@ -380,11 +380,25 @@ test("globe search metadata and instructions stay readable inside 320-1720px", a
     await page.setViewportSize({ width, height: 800 });
     const search = page.locator("#country-search");
     await search.click();
-    await search.fill("Индонезия");
-    await expect(search).toHaveValue("Индонезия");
+    await search.fill("США");
+    await expect(search).toHaveValue("США");
     const results = page.locator("#country-results");
     await expect(results).toBeVisible();
-    await expect(results.locator(".country-result-flag").first()).toBeVisible();
+    const flag = results.locator(".country-result-flag").first();
+    await expect(flag).toBeVisible();
+    const flagVisual = await flag.evaluate((element) => {
+      const box = element.getBoundingClientRect();
+      const style = getComputedStyle(element);
+      return {
+        width: box.width,
+        height: box.height,
+        radius: style.borderRadius,
+        fit: style.objectFit,
+      };
+    });
+
+    await search.fill("Моби Дик, или Белый Кит");
+    await expect(search).toHaveValue("Моби Дик, или Белый Кит");
     await expect(results.locator(".country-result-book").first()).toBeVisible({
       timeout: 15_000,
     });
@@ -394,12 +408,9 @@ test("globe search metadata and instructions stay readable inside 320-1720px", a
       const bookRows = [...root.querySelectorAll("button")].filter((button) =>
         button.querySelector(".country-result-book")
       );
-      const flag = root.querySelector(".country-result-flag");
-      if (!flag || bookRows.length === 0) {
+      if (bookRows.length === 0) {
         throw new Error("Globe search regression target is missing");
       }
-      const flagBox = flag.getBoundingClientRect();
-      const flagStyle = getComputedStyle(flag);
 
       return {
         rootOverflow: root.scrollWidth - root.clientWidth,
@@ -414,20 +425,16 @@ test("globe search metadata and instructions stay readable inside 320-1720px", a
             )
           )
         ),
-        flagWidth: flagBox.width,
-        flagHeight: flagBox.height,
-        flagRadius: flagStyle.borderRadius,
-        flagFit: flagStyle.objectFit,
       };
     });
 
     expect(containment.rootOverflow, `search root overflow at ${width}px`).toBeLessThanOrEqual(1);
     expect(containment.rowOverflow, `search row overflow at ${width}px`).toBeLessThanOrEqual(1);
     expect(containment.descendantPastRoot, `search child overflow at ${width}px`).toBeLessThanOrEqual(1);
-    expect(containment.flagWidth).toBe(24);
-    expect(containment.flagHeight).toBe(24);
-    expect(containment.flagRadius).toBe("50%");
-    expect(containment.flagFit).toBe("cover");
+    expect(flagVisual.width).toBe(24);
+    expect(flagVisual.height).toBe(24);
+    expect(flagVisual.radius).toBe("50%");
+    expect(flagVisual.fit).toBe("cover");
     await search.press("Escape");
   }
 

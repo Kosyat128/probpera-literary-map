@@ -79,4 +79,19 @@ describe("translation operations admin boundary", () => {
     expect(country).toContain('minLength: 1, maxLength: 160');
     expect(siteCopy).toContain('minLength: 1, maxLength: 4_000');
   });
+
+  it("keeps literary-work titles outside the machine-translation contract", () => {
+    const work = schemas[1];
+    expect(work).toContain('required: ["description"]');
+    expect(work).not.toContain('required: ["title", "description"]');
+    expect(work).not.toContain("title: translated.value.title");
+    expect(work).toContain('.from("literary_work_sources")');
+    expect(work).toContain('.contains("field_names", ["title"])');
+    expect(work).toContain(
+      'error: "a pre-verified English bibliographic title is required"'
+    );
+    expect(work).toContain(
+      "The verified English title is editorially locked and is not part of the model output."
+    );
+  });
 });
