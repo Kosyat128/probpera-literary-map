@@ -52,6 +52,14 @@ function normalizeDocument(document) {
   };
 }
 
+function changedFields(current, next) {
+  return [...new Set([...Object.keys(current), ...Object.keys(next)])]
+    .filter(
+      (field) =>
+        JSON.stringify(current[field]) !== JSON.stringify(next[field])
+    );
+}
+
 const publishedContentPath = path.join(publicCms, "published-content.json");
 const publishedArticlesPath = path.join(publicCms, "published-articles.json");
 const publishedContent = await readJson(publishedContentPath);
@@ -69,7 +77,9 @@ for (const article of articles) {
   const current = JSON.stringify(document, null, 2);
   const next = JSON.stringify(normalized, null, 2);
   if (current !== next) {
-    changed.push(article.id);
+    changed.push(
+      `${article.id} [fields: ${changedFields(document, normalized).join(", ")}]`
+    );
     if (write) await fs.writeFile(documentPath, `${next}\n`, "utf8");
   }
 }
@@ -99,8 +109,9 @@ for (const [file, next] of outputs) {
 }
 
 if (changed.length && !write) {
+  const artifacts = changed.slice(0, 20).join(", ");
   throw new Error(
-    `CMS metadata requires whitespace normalization (${changed.length} artifacts). Run npm run content:metadata:fix.`
+    `CMS metadata requires whitespace normalization (${changed.length} artifacts: ${artifacts}). Run npm run content:metadata:fix.`
   );
 }
 console.log(
