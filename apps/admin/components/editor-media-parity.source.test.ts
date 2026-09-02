@@ -116,6 +116,16 @@ describe("shared editor media parity", () => {
     expect(pageSource).toContain("openCollectionPicker(appendMediaComposerItems)");
   });
 
+  it("generates contextual Russian alt text without replacing manual metadata", () => {
+    expect(articleSource).toContain("suggestEditorImageAltText({");
+    expect(pageSource).toContain("suggestEditorImageAltText({");
+    expect(workflowSource).toContain("resolveEditorImageAltText({");
+    expect(workflowSource).toContain("currentAlt: previousAttributes.alt");
+    expect(workflowSource).toContain("fallbackAlt: asset.alt");
+    expect(workflowSource).toContain("position: target.position");
+    expect(workflowSource).toContain("previousAttributes.caption.trim()");
+  });
+
   it("clears a stale media-library identity for manual URL replacement", () => {
     expect(articleSource).toContain("mediaId: null");
   });

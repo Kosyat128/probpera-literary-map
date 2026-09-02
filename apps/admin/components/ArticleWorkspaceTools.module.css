@@ -1,7 +1,7 @@
 .workspace {
-  position: sticky;
+  position: relative;
   z-index: 24;
-  top: 78px;
+  top: auto;
   display: grid;
   gap: 10px;
   margin: 0 0 18px;
@@ -315,6 +315,8 @@
 }
 
 :global(.admin-content):has(> .workspace) {
+  --article-editor-sticky-top: 78px;
+
   width: min(1840px, 100%);
   padding-right: clamp(18px, 2.6vw, 46px);
   padding-left: clamp(18px, 2.6vw, 46px);
@@ -333,8 +335,8 @@
 
 .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-side) {
   position: sticky;
-  top: 158px;
-  max-height: calc(100vh - 176px);
+  top: var(--article-editor-sticky-top);
+  max-height: calc(100vh - var(--article-editor-sticky-top) - 18px);
   overflow-y: auto;
   padding-right: 5px;
   scrollbar-gutter: stable;
@@ -343,17 +345,21 @@
 .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-side .panel),
 .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-content-drop-target),
 .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-main .panel) {
-  scroll-margin-top: 172px;
+  scroll-margin-top: calc(var(--article-editor-sticky-top) + 96px);
 }
 
 .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-toolbar) {
   position: sticky;
   z-index: 14;
-  top: 158px;
+  top: var(--article-editor-sticky-top);
   border-radius: 12px;
   background: rgba(24, 9, 39, 0.95);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
   backdrop-filter: blur(18px);
+}
+
+.workspace ~ :global(.article-form.article-workspace-enabled.is-fullscreen) {
+  --article-editor-sticky-top: 8px;
 }
 
 .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-content-drop-target .ProseMirror) {
@@ -419,9 +425,8 @@
 }
 
 @media (max-width: 1120px) {
-  .workspace {
-    position: relative;
-    top: auto;
+  :global(.admin-content):has(> .workspace) {
+    --article-editor-sticky-top: 76px;
   }
 
   .workspace ~ :global(.article-form.article-workspace-enabled) :global(.article-editor) {
@@ -433,10 +438,6 @@
     max-height: none;
     overflow: visible;
     padding-right: 0;
-  }
-
-  .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-toolbar) {
-    top: 76px;
   }
 
   .meta {
@@ -487,6 +488,12 @@
 
   .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-footer) {
     bottom: 4px;
+  }
+
+  .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-toolbar) {
+    max-height: calc(100dvh - var(--article-editor-sticky-top) - 8px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .workspace ~ :global(.article-form.article-workspace-enabled) :global(.editor-content-drop-target .ProseMirror) {

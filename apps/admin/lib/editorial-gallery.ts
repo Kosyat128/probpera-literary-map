@@ -428,3 +428,32 @@ export function mergeEditorialGalleryItems(
     })
     .slice(0, EDITORIAL_GALLERY_MAX_ITEMS);
 }
+
+/**
+ * Reorders an already validated gallery without re-normalizing its items.
+ * Keeping this operation pure lets the composer and the TipTap node view use
+ * exactly the same final-index semantics for arrows and drag-and-drop.
+ */
+export function reorderEditorialGalleryItems<Item>(
+  items: ReadonlyArray<Item>,
+  fromIndex: number,
+  toIndex: number
+) {
+  const next = [...items];
+  if (
+    !Number.isInteger(fromIndex) ||
+    !Number.isInteger(toIndex) ||
+    fromIndex < 0 ||
+    toIndex < 0 ||
+    fromIndex >= next.length ||
+    toIndex >= next.length ||
+    fromIndex === toIndex
+  ) {
+    return next;
+  }
+
+  const removed = next.splice(fromIndex, 1);
+  if (!removed.length) return next;
+  next.splice(toIndex, 0, removed[0]);
+  return next;
+}

@@ -51,9 +51,14 @@ describe("PageEditor Phase 3 parity", () => {
     expect(pageEditorSource).toContain(
       "openCollectionPicker(appendMediaComposerItems)"
     );
+    expect(pageEditorSource).toContain(
+      "reorderEditorialGalleryItems(current, fromIndex, toIndex)"
+    );
     expect(galleryEditorSource).toContain("contextLabel = \"статьи\"");
     expect(galleryEditorSource).toContain("EDITORIAL_GALLERY_MAX_ITEMS");
     expect(galleryEditorSource).toContain("settings.columnsDesktop");
+    expect(galleryEditorSource).toContain("onMoveItem(fromIndex, toIndex)");
+    expect(galleryEditorSource).toContain("draggable={items.length > 1}");
     expect(editorialBlockSource).toContain("normalizeEditorialGalleryItems");
     expect(editorialBlockSource).toContain("galleryColumnsDesktop");
     expect(editorialBlockSource).not.toContain("slice(0, 8)");
