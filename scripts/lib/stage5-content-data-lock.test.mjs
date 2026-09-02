@@ -271,7 +271,7 @@ const lockedScopes = [
       relativePath !== "public/articles/book-mentions.json",
     expected: {
       files: 320,
-      sha256: "e1f092a4e14c78a01335662135cc5c47ba2295b05ca1b6c0d5c1dab0ed644ace",
+      sha256: "c1d83797247c5de6a413c239ba8be886e9c8c51a972b415756206c3f2c202021",
     },
   },
   {
@@ -311,7 +311,7 @@ const lockedScopes = [
     },
     expected: {
       files: 556,
-      sha256: "b51cdc0044c1902499aaf417f4dd6724668a2a9fef5eda6babc3decb52383904",
+      sha256: "3d669ababb0fda095ea41021f01f51a447ecba93571ba60b078fbb500db176c5",
     },
   },
 ];
@@ -496,7 +496,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     );
     expect(premium.enforced.expected).toEqual({
       files: 72,
-      sha256: "5678542e1616f76809d0512bcc60a9d8696b7c9551a11a3a6de5b00ce28dc847",
+      sha256: "3376be86e374f657b0a9b0d83d24fd018fc3303616a8a6e460cf79f3e91e5044",
     });
   });
 

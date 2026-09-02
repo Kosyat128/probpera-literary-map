@@ -46,7 +46,7 @@ const tolstoyShortStoriesArticle: ArticleIdentity = {
   revisionDocumentPath:
     "cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
   revisionSha256:
-    "a43b4787d738a69bedecbc17fcde3efe2bb5a0c5341411930af2bf5f93fb3039",
+    "741830c31a1c1cd46fd4626f68e4958d7fceb6e71d71ac0d07da9051ccb38606",
 };
 
 const chekhovShortStoriesArticle: ArticleIdentity = {
@@ -131,7 +131,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "07bd5ff77c634ecba8bc89f644eb45bd4c2991b000c305ee308f67075545a653",
       occurrenceSha256:
-        "d1f795ba91409eff9b3fa0fb6f765dc853a5f84695477e389852bca003f46bf0",
+        "786542c0be89ee4c4217daad159a5c0eced0f61e08b9e05d5f8d476b15595bdf",
       ...tolstoyShortStoriesArticle,
       headingId: "chapter-2-алёша-горшок-3",
       headingText: "2. Алёша Горшок",
@@ -339,7 +339,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "00bc5043f8d65247e9e52e87f4bdc848daa94bf5012447484003263bd30a0f4b",
       occurrenceSha256:
-        "eea596627b2cc7e7c8841a45fdde7d18208bbbd89b6585cb5826a1cfad2a1190",
+        "6212a4b906be0c987f0264b2b8ca99cebec731ed25ba4a33c967bfb65ba1a775",
       ...tolstoyShortStoriesArticle,
       headingId: "chapter-5-лев-и-собачка-6",
       headingText: "5. Лев и собачка",
@@ -399,7 +399,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "31b906d5686a48d45a021594d673b3662b7542dfe2bb3553157f88d9fe4bf050",
       occurrenceSha256:
-        "118fda5dd24304cf7f98dbf1ff3d4553d56061ce04775ba3c8d42a736078e57e",
+        "deb497525177d5bb661851b9e57a0124df088e34d211b7d6ea26bfc410263a13",
       ...tolstoyShortStoriesArticle,
       headingId: "chapter-1-после-бала-2",
       headingText: "1. После бала",
@@ -489,7 +489,7 @@ export const bookArticleSynopsisBatch01Records = [
       pairSha256:
         "2869fa858c4a6af0ca398ffbd7b53b3b502e3865cae07527437fe76dcbe8b8bd",
       occurrenceSha256:
-        "292ac8d89efec78af9cdd16a3935956e4344bbf19946eccb0f1254b0e594b617",
+        "a7684db06ef0d70b03967b70d7a04bedaa5658cc67d2dc52c863007acc223393",
       ...tolstoyShortStoriesArticle,
       headingId: "chapter-6-филипок-7",
       headingText: "6. Филипок",

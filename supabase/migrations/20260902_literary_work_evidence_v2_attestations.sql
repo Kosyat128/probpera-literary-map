@@ -407,11 +407,13 @@ begin
       ''
     ) !~ '^[0-9a-f]{64}$'
     or p_evidence #>> '{validation,status}' is distinct from 'passed'
-    or case
-      when jsonb_typeof(p_evidence #> '{validation,issues}') = 'array'
-        then jsonb_array_length(p_evidence #> '{validation,issues}') <> 0
-      else true
-    end
+    or (
+      case
+        when jsonb_typeof(p_evidence #> '{validation,issues}') = 'array'
+          then jsonb_array_length(p_evidence #> '{validation,issues}') <> 0
+        else true
+      end
+    )
     or nullif(btrim(
       p_evidence #>> '{validation,canonRegistryVersion}'
     ), '') is null
@@ -422,7 +424,8 @@ begin
     raise exception 'Evidence must contain a zero-issue local V2 validation'
       using errcode = '23514';
   end if;
-  if case
+  if (
+    case
       when jsonb_typeof(
         p_evidence #> '{localizedTitles,ru,evidence}'
       ) = 'array'
@@ -431,7 +434,8 @@ begin
         ) < 2
       else true
     end
-    or case
+  ) or (
+    case
       when jsonb_typeof(
         p_evidence #> '{localizedTitles,en,evidence}'
       ) = 'array'
@@ -439,7 +443,8 @@ begin
           p_evidence #> '{localizedTitles,en,evidence}'
         ) < 2
       else true
-    end then
+    end
+  ) then
     raise exception 'Both localized titles require at least two evidence records'
       using errcode = '23514';
   end if;
@@ -447,24 +452,28 @@ begin
     or jsonb_typeof(
       p_evidence #> '{descriptions,en}'
     ) is distinct from 'object'
-    or case
-      when jsonb_typeof(
-        p_evidence #> '{descriptions,ru,sourceUrls}'
-      ) = 'array'
-        then jsonb_array_length(
+    or (
+      case
+        when jsonb_typeof(
           p_evidence #> '{descriptions,ru,sourceUrls}'
-        ) < 2
-      else true
-    end
-    or case
-      when jsonb_typeof(
-        p_evidence #> '{descriptions,en,sourceUrls}'
-      ) = 'array'
-        then jsonb_array_length(
+        ) = 'array'
+          then jsonb_array_length(
+            p_evidence #> '{descriptions,ru,sourceUrls}'
+          ) < 2
+        else true
+      end
+    )
+    or (
+      case
+        when jsonb_typeof(
           p_evidence #> '{descriptions,en,sourceUrls}'
-        ) < 2
-      else true
-    end
+        ) = 'array'
+          then jsonb_array_length(
+            p_evidence #> '{descriptions,en,sourceUrls}'
+          ) < 2
+        else true
+      end
+    )
     or coalesce(
       p_evidence #>> '{descriptions,ru,descriptionSha256}',
       ''

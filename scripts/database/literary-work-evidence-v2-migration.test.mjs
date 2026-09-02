@@ -82,6 +82,8 @@ describe("literary-work Evidence V2 production boundary", () => {
     expect(migration).toMatch(
       /when jsonb_typeof\([\s\S]+?descriptions,en,sourceUrls[\s\S]+?\) = 'array'[\s\S]+?else true/iu
     );
+    expect(migration).not.toMatch(/\b(?:if|or)\s+case\b/iu);
+    expect(migration.match(/\(\s*case\s+when\s+jsonb_typeof/giu)).toHaveLength(5);
     expect(migration).toContain(
       "Evidence must contain a zero-issue local V2 validation"
     );
