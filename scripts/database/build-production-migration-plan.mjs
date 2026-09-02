@@ -106,7 +106,7 @@ const reviewedMigrations = [
   ],
   [
     "20260902_literary_work_evidence_v2_attestations.sql",
-    "53f48a7716aeaf3c1d0ecebd9f0a316c04a93edc73f849c288a8a40385e87479",
+    "26e1e0cb57368c772a02d397e5df0cb2960725a7ad05ae35fbc299ddf41c4966",
   ],
   [
     "20260902_zz_literary_archive_atomic_release.sql",

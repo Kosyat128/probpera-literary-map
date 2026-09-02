@@ -39,7 +39,7 @@
     "usableSynopsisPairs": 249,
     "quarantinedPairs": 10
   },
-  "pairsSha256": "09bf7a34d9ad87825fc4ce1dff5dd9a24134752df216f99a0b36cbfd810b6540",
+  "pairsSha256": "6bb441bec84b4aba51450e5537713124cbbd8beec4f408e1b7416df5f19ef133",
   "pairs": [
     {
       "pairSha256": "0e5f38c48cef16d77a612cb6eca07f19b1c4ee1e0f241406d1141149fa0afa8f",
@@ -231,10 +231,10 @@
       "sourceArticleIds": [
         "cms-766846e2-a653-465e-a4b4-ce327a22696f"
       ],
-      "selectedOccurrenceSha256": "d1f795ba91409eff9b3fa0fb6f765dc853a5f84695477e389852bca003f46bf0",
+      "selectedOccurrenceSha256": "786542c0be89ee4c4217daad159a5c0eced0f61e08b9e05d5f8d476b15595bdf",
       "occurrences": [
         {
-          "occurrenceSha256": "d1f795ba91409eff9b3fa0fb6f765dc853a5f84695477e389852bca003f46bf0",
+          "occurrenceSha256": "786542c0be89ee4c4217daad159a5c0eced0f61e08b9e05d5f8d476b15595bdf",
           "kind": "short-story",
           "article": {
             "cmsArticleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
@@ -245,7 +245,7 @@
           "revision": {
             "documentPath": "cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
             "publishedAt": "2026-02-08T09:00:00+00:00",
-            "sha256": "a43b4787d738a69bedecbc17fcde3efe2bb5a0c5341411930af2bf5f93fb3039"
+            "sha256": "741830c31a1c1cd46fd4626f68e4958d7fceb6e71d71ac0d07da9051ccb38606"
           },
           "heading": {
             "present": true,
@@ -6011,10 +6011,10 @@
       "sourceArticleIds": [
         "cms-766846e2-a653-465e-a4b4-ce327a22696f"
       ],
-      "selectedOccurrenceSha256": "eea596627b2cc7e7c8841a45fdde7d18208bbbd89b6585cb5826a1cfad2a1190",
+      "selectedOccurrenceSha256": "6212a4b906be0c987f0264b2b8ca99cebec731ed25ba4a33c967bfb65ba1a775",
       "occurrences": [
         {
-          "occurrenceSha256": "eea596627b2cc7e7c8841a45fdde7d18208bbbd89b6585cb5826a1cfad2a1190",
+          "occurrenceSha256": "6212a4b906be0c987f0264b2b8ca99cebec731ed25ba4a33c967bfb65ba1a775",
           "kind": "short-story",
           "article": {
             "cmsArticleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
@@ -6025,7 +6025,7 @@
           "revision": {
             "documentPath": "cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
             "publishedAt": "2026-02-08T09:00:00+00:00",
-            "sha256": "a43b4787d738a69bedecbc17fcde3efe2bb5a0c5341411930af2bf5f93fb3039"
+            "sha256": "741830c31a1c1cd46fd4626f68e4958d7fceb6e71d71ac0d07da9051ccb38606"
           },
           "heading": {
             "present": true,
@@ -9783,10 +9783,10 @@
       "sourceArticleIds": [
         "cms-766846e2-a653-465e-a4b4-ce327a22696f"
       ],
-      "selectedOccurrenceSha256": "118fda5dd24304cf7f98dbf1ff3d4553d56061ce04775ba3c8d42a736078e57e",
+      "selectedOccurrenceSha256": "deb497525177d5bb661851b9e57a0124df088e34d211b7d6ea26bfc410263a13",
       "occurrences": [
         {
-          "occurrenceSha256": "118fda5dd24304cf7f98dbf1ff3d4553d56061ce04775ba3c8d42a736078e57e",
+          "occurrenceSha256": "deb497525177d5bb661851b9e57a0124df088e34d211b7d6ea26bfc410263a13",
           "kind": "short-story",
           "article": {
             "cmsArticleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
@@ -9797,7 +9797,7 @@
           "revision": {
             "documentPath": "cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
             "publishedAt": "2026-02-08T09:00:00+00:00",
-            "sha256": "a43b4787d738a69bedecbc17fcde3efe2bb5a0c5341411930af2bf5f93fb3039"
+            "sha256": "741830c31a1c1cd46fd4626f68e4958d7fceb6e71d71ac0d07da9051ccb38606"
           },
           "heading": {
             "present": true,
@@ -12087,10 +12087,10 @@
       "sourceArticleIds": [
         "cms-766846e2-a653-465e-a4b4-ce327a22696f"
       ],
-      "selectedOccurrenceSha256": "3c87a6a6ec529cdccd7f5fdec15a7e4e42a8224755471fcb3d0524db61233a49",
+      "selectedOccurrenceSha256": "3fb9a48052ef460d755c9d5f86b9015602ec6ecedf5456a0603b01576e7f994a",
       "occurrences": [
         {
-          "occurrenceSha256": "3c87a6a6ec529cdccd7f5fdec15a7e4e42a8224755471fcb3d0524db61233a49",
+          "occurrenceSha256": "3fb9a48052ef460d755c9d5f86b9015602ec6ecedf5456a0603b01576e7f994a",
           "kind": "short-story",
           "article": {
             "cmsArticleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
@@ -12101,7 +12101,7 @@
           "revision": {
             "documentPath": "cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
             "publishedAt": "2026-02-08T09:00:00+00:00",
-            "sha256": "a43b4787d738a69bedecbc17fcde3efe2bb5a0c5341411930af2bf5f93fb3039"
+            "sha256": "741830c31a1c1cd46fd4626f68e4958d7fceb6e71d71ac0d07da9051ccb38606"
           },
           "heading": {
             "present": true,
@@ -13378,10 +13378,10 @@
       "sourceArticleIds": [
         "cms-766846e2-a653-465e-a4b4-ce327a22696f"
       ],
-      "selectedOccurrenceSha256": "292ac8d89efec78af9cdd16a3935956e4344bbf19946eccb0f1254b0e594b617",
+      "selectedOccurrenceSha256": "a7684db06ef0d70b03967b70d7a04bedaa5658cc67d2dc52c863007acc223393",
       "occurrences": [
         {
-          "occurrenceSha256": "292ac8d89efec78af9cdd16a3935956e4344bbf19946eccb0f1254b0e594b617",
+          "occurrenceSha256": "a7684db06ef0d70b03967b70d7a04bedaa5658cc67d2dc52c863007acc223393",
           "kind": "short-story",
           "article": {
             "cmsArticleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
@@ -13392,7 +13392,7 @@
           "revision": {
             "documentPath": "cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
             "publishedAt": "2026-02-08T09:00:00+00:00",
-            "sha256": "a43b4787d738a69bedecbc17fcde3efe2bb5a0c5341411930af2bf5f93fb3039"
+            "sha256": "741830c31a1c1cd46fd4626f68e4958d7fceb6e71d71ac0d07da9051ccb38606"
           },
           "heading": {
             "present": true,
@@ -13604,10 +13604,10 @@
       "sourceArticleIds": [
         "cms-766846e2-a653-465e-a4b4-ce327a22696f"
       ],
-      "selectedOccurrenceSha256": "07bebe2f98df25fb6e81267e179435e05350ebcd1e7a303318ef687264ed732c",
+      "selectedOccurrenceSha256": "0244e5b42cc3f5ead44fe87283c442d6063da491f891f064de0e98d52a40a894",
       "occurrences": [
         {
-          "occurrenceSha256": "07bebe2f98df25fb6e81267e179435e05350ebcd1e7a303318ef687264ed732c",
+          "occurrenceSha256": "0244e5b42cc3f5ead44fe87283c442d6063da491f891f064de0e98d52a40a894",
           "kind": "short-story",
           "article": {
             "cmsArticleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
@@ -13618,7 +13618,7 @@
           "revision": {
             "documentPath": "cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
             "publishedAt": "2026-02-08T09:00:00+00:00",
-            "sha256": "a43b4787d738a69bedecbc17fcde3efe2bb5a0c5341411930af2bf5f93fb3039"
+            "sha256": "741830c31a1c1cd46fd4626f68e4958d7fceb6e71d71ac0d07da9051ccb38606"
           },
           "heading": {
             "present": true,
@@ -14464,10 +14464,10 @@
       "sourceArticleIds": [
         "cms-766846e2-a653-465e-a4b4-ce327a22696f"
       ],
-      "selectedOccurrenceSha256": "787c3e5398b5e49f2ca5bc38290f8a3a82d238d40164baae8657497ff2893ded",
+      "selectedOccurrenceSha256": "a5eb0e106a6af5af0fdc1ce8d6b89b0ebd6b9622e27c14d4eff95dcfd207201c",
       "occurrences": [
         {
-          "occurrenceSha256": "787c3e5398b5e49f2ca5bc38290f8a3a82d238d40164baae8657497ff2893ded",
+          "occurrenceSha256": "a5eb0e106a6af5af0fdc1ce8d6b89b0ebd6b9622e27c14d4eff95dcfd207201c",
           "kind": "short-story",
           "article": {
             "cmsArticleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
@@ -14478,7 +14478,7 @@
           "revision": {
             "documentPath": "cms/articles/cms-766846e2-a653-465e-a4b4-ce327a22696f.json",
             "publishedAt": "2026-02-08T09:00:00+00:00",
-            "sha256": "a43b4787d738a69bedecbc17fcde3efe2bb5a0c5341411930af2bf5f93fb3039"
+            "sha256": "741830c31a1c1cd46fd4626f68e4958d7fceb6e71d71ac0d07da9051ccb38606"
           },
           "heading": {
             "present": true,
