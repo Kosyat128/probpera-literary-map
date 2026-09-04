@@ -36,7 +36,7 @@ describe("article actions facade", () => {
     }
     expect(facade).toContain('from "./article-management-actions"');
     expect(facade).toContain('from "./legacy-import-action"');
-    expect(facade).toContain('from "./save-article-action"');
+    expect(facade).toContain('from "./save-article-publication-action"');
     expect(facade).toContain('from "./social-publication-action"');
   });
 

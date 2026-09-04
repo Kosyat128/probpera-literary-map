@@ -31,7 +31,7 @@ describe("article publication presentation policy", () => {
       'export { importLegacyArticlesAction } from "./legacy-import-action"'
     );
     expect(actionsFacade).toContain(
-      'export { saveArticleAction } from "./save-article-action"'
+      'export { saveArticleAction } from "./save-article-publication-action"'
     );
     expect(actionsFacade).toContain(
       'export { requestSocialPublicationAction } from "./social-publication-action"'

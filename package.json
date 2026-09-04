@@ -13,10 +13,6 @@
   ],
   "overrides": {
     "postcss": "8.5.24",
-    "@tiptap/react": {
-      "@tiptap/extension-bubble-menu": "3.30.4",
-      "@tiptap/extension-floating-menu": "3.30.4"
-    },
     "@react-three/drei": {
       "three-mesh-bvh": "0.8.3"
     },

@@ -6,7 +6,6 @@ import {
   completeArticleMetadataDraft,
 } from "@/lib/article-composer";
 import { articleCanonicalUrl } from "@/lib/article-route";
-import { prepareArticlePublicationIntent } from "@/lib/article-publication-intent";
 import {
   isMachineOwnedEnglishArticleTranslation,
   premiumArticleMachineContentJson,
@@ -228,7 +227,6 @@ async function saveStandardRespectingEnglishOwnership(
 }
 
 export async function saveArticleAction(formData: FormData) {
-  prepareArticlePublicationIntent(formData);
   normalizeShortHyphensFormData(formData);
   const session = await requireStaff();
   if (!session?.user) redirect("/login");
