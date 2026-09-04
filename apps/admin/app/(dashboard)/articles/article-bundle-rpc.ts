@@ -29,7 +29,9 @@ export type ArticleBundleRpcResult = {
   homepageReplaced: number;
 };
 
-function rpcErrorMessage(error: { message?: string } | null | undefined) {
+type ArticleRpcError = { code?: string; message?: string };
+
+function rpcErrorMessage(error: ArticleRpcError | null | undefined) {
   const message = String(error?.message || "").trim();
   if (message.includes("WORKING_DRAFT_CONFLICT")) {
     return "Рабочий черновик уже изменён в другой вкладке. Обновите страницу и повторите выпуск.";
@@ -43,13 +45,38 @@ function rpcErrorMessage(error: { message?: string } | null | undefined) {
   if (message.includes("STAFF_ACCESS_REQUIRED")) {
     return "Недостаточно прав для сохранения статьи.";
   }
+  if (message.includes("ARTICLE_NOT_FOUND")) {
+    return "Статья не найдена или больше недоступна. Вернитесь к списку статей и откройте её заново.";
+  }
+  if (
+    message.includes("REDIRECT_LIVE_ROUTE_COLLISION") ||
+    message.includes("REDIRECT_COLLISION_OR_CHAIN") ||
+    message.includes("REDIRECT_SOURCE_EXISTS")
+  ) {
+    return "Не удалось изменить адрес статьи: прежний адрес связан с другой страницей или перенаправлением. Проверьте адрес и раздел SEO. Изменения не опубликованы.";
+  }
+  if (message.includes("REDIRECT_WRITE_CONFLICT")) {
+    return "Перенаправление уже изменено в другой вкладке. Обновите статью перед повторным выпуском.";
+  }
+  if (message.includes("REDIRECT_INVALID_PATH") || message.includes("REDIRECT_SELF_REFERENCE")) {
+    return "Проверьте адрес статьи и перенаправление в разделе SEO. Изменения не опубликованы.";
+  }
   if (
     message.includes("PROMOTION_INPUT_INVALID") ||
     message.includes("PROMOTION_STATUS_REQUIRED")
   ) {
     return "Не удалось безопасно подтвердить выпуск статьи. Обновите страницу и повторите действие.";
   }
-  return "Не удалось атомарно сохранить статью и английскую версию.";
+  if (error?.code === "42501") {
+    return "Сервер отклонил операцию сохранения статьи. Текст не опубликован; код ошибки: ARTICLE_SAVE_PERMISSION.";
+  }
+  if (error?.code === "23505") {
+    return "Адрес статьи или перевода уже занят. Укажите уникальный адрес и повторите сохранение.";
+  }
+  if (error?.code === "23503") {
+    return "Связанная запись больше недоступна. Проверьте выбранную рубрику перед сохранением.";
+  }
+  return "Не удалось сохранить статью. Изменения не опубликованы; повторите сохранение позже.";
 }
 
 function articleBundleRpcArgs(input: ArticleBundleRpcInput) {
@@ -72,9 +99,17 @@ function articleBundleRpcArgs(input: ArticleBundleRpcInput) {
 
 function parseArticleBundleRpcResult(
   data: unknown,
-  error: { message?: string } | null | undefined
+  error: ArticleRpcError | null | undefined,
+  operation: "save_article_bundle" | "promote_article_working_draft"
 ): ArticleBundleRpcResult {
   if (error) {
+    // Retain only a bounded SQLSTATE/PostgREST code, never payloads, SQL or tokens.
+    console.error("article-publication-rpc-failed", {
+      operation,
+      code: /^(?:[0-9A-Z]{5}|PGRST[0-9]{3})$/u.test(error.code || "")
+        ? error.code
+        : "unknown",
+    });
     throw new Error(rpcErrorMessage(error));
   }
 
@@ -108,7 +143,7 @@ export async function saveArticleBundleRpc(
     "save_article_bundle",
     articleBundleRpcArgs(input)
   );
-  return parseArticleBundleRpcResult(data, error);
+  return parseArticleBundleRpcResult(data, error, "save_article_bundle");
 }
 
 export async function promoteArticleWorkingDraftRpc(
@@ -132,5 +167,5 @@ export async function promoteArticleWorkingDraftRpc(
       p_expected_working_draft_version: input.expectedWorkingDraftVersion,
     }
   );
-  return parseArticleBundleRpcResult(data, error);
+  return parseArticleBundleRpcResult(data, error, "promote_article_working_draft");
 }

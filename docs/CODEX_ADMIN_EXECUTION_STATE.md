@@ -2,9 +2,25 @@
 
 Phase 4 production baseline: `ff9f4853684208f37ac9deba8e14f4944f1fef51`
 
-Current completion branch: `codex/finish-admin-publishing-direct-edit`
+Current completion branch: `codex/fix-article-publication-rpc`
 
-Last updated: `2026-09-04`
+Last updated: `2026-09-05`
+
+## Исправление прав атомарной публикации, 5 сентября
+
+- Воспроизведены два отказа PostgreSQL: блокировка рабочего черновика через
+  `FOR UPDATE` при SELECT-only правах и прямой INSERT перенаправления после
+  перехода SEO на защищённые RPC. Общая ошибка неверно упоминала английскую версию.
+- Аддитивная миграция сохраняет SECURITY INVOKER у публичных RPC, RLS,
+  контроль версий и запрет прямого DML. Узкий owner/admin helper блокирует
+  черновик; перенаправление делегируется существующим guarded SEO RPC.
+- Реальный изолированный SQL-прогон воспроизвёл обе прежние ошибки, проверил
+  публикацию без EN, повторное применение миграции, CAS, полный rollback и роли.
+  В CI тот же контракт запускается на PostgreSQL 17. Production-статус
+  подтверждается отдельно после слияния и штатной сверки БД.
+- Необработанные ошибки больше не выводят ложное требование английской версии;
+  серверный журнал сохраняет только разрешённый код ошибки и имя операции,
+  без SQL, содержимого статьи и секретов.
 
 ## Завершение публикации и прямого редактирования, 4 сентября
 
@@ -63,9 +79,9 @@ Last updated: `2026-09-04`
 
 ## Инварианты релиза
 
-- Production migration plan содержит ровно 31 рассмотренную миграцию с
+- Production migration plan содержит ровно 35 рассмотренных миграций с
   нормализованными SHA-256 и завершается
-  `20260902_zz_article_working_drafts_health`.
+  `20260905_article_publication_permissions`.
 - Итоговый health RPC наследует все прежние проверки и дополнительно закрывает
   Site/Data/Translation Studio, Direct Edit v2, last-owner, mutation guards,
   analytics и operational observability.
