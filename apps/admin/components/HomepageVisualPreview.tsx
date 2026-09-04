@@ -660,6 +660,12 @@ export default function HomepageVisualPreview({
       } else {
         setInlineStatus(result.error);
       }
+    }).catch(() => {
+      if (!active) return;
+      setIsLoadingInlineVersion(false);
+      setInlineStatus(
+        "Не удалось загрузить запись. Проверьте соединение и выберите поле повторно."
+      );
     });
     return () => { active = false; };
   }, [selection, visualUpdatedAtByBlock]);
@@ -717,12 +723,10 @@ export default function HomepageVisualPreview({
         result.ok ? publicationLabel(result.publication) : result.error
       );
       return result;
-    } catch (error) {
+    } catch {
       if (!mountedRef.current) return;
       setInlineStatus(
-        error instanceof Error
-          ? error.message
-          : "Не удалось сохранить изменение. Повторите попытку."
+        "Не удалось подтвердить сохранение. Проверьте соединение и обновите предпросмотр."
       );
       return undefined;
     } finally {

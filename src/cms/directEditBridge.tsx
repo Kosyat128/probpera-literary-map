@@ -648,13 +648,20 @@ function existingCopyIdentity(renderedText: string) {
   return { key: `interface.${renderedText}`, sourceText: renderedText };
 }
 
+export function canSelectCmsInterfaceText(ownerEntity: string | undefined) {
+  // Core sections mark their entire background as an image. Their buttons and
+  // interface labels still use site-copy overrides independently of that image.
+  return !ownerEntity || ownerEntity === "homepage-core";
+}
+
 function fallbackTextMarker(target: Element) {
   const marker = target.closest<HTMLElement>(LEAF_TEXT_SELECTOR);
   if (!marker || marker.closest("[data-cms-ignore]")) return null;
-  // Text rendered by a CMS entity must be handled by an explicit field marker
-  // or by that entity's native editor. Treating it as generic interface copy
-  // would report a successful save without changing the owning CMS record.
-  if (marker.closest("[data-cms-entity]")) return null;
+  // Managed prose belongs to its native entity editor. A homepage-core
+  // background, however, must not hide the independent interface labels inside.
+  const ownerEntity = marker.closest<HTMLElement>("[data-cms-entity]")
+    ?.dataset.cmsEntity;
+  if (!canSelectCmsInterfaceText(ownerEntity)) return null;
   const sourceText = marker.textContent?.replace(/\s+/gu, " ").trim() || "";
   if (!sourceText || sourceText.length > 1_190) return null;
 

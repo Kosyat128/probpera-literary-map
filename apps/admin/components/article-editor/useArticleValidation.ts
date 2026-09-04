@@ -41,7 +41,9 @@ export type ArticleValidationInput = {
 
 export type ArticleValidationResult = {
   checks: ArticleValidationCheck[];
+  russianChecks: ArticleValidationCheck[];
   ready: boolean;
+  russianReady: boolean;
   russianWordCount: number;
   englishWordCount: number;
 };
@@ -193,7 +195,9 @@ export function buildArticleValidation(
 
   return {
     checks,
+    russianChecks,
     ready: checks.every((item) => item.ok),
+    russianReady: russianChecks.every((item) => item.ok),
     russianWordCount,
     englishWordCount,
   };

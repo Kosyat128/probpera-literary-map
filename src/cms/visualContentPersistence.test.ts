@@ -88,7 +88,7 @@ describe("visual page and site-chrome persistence", () => {
 
   it("never converts managed CMS entity prose into generic interface copy", () => {
     expect(bridgeSource).toContain(
-      'if (marker.closest("[data-cms-entity]")) return null;'
+      'if (!canSelectCmsInterfaceText(ownerEntity)) return null;'
     );
     expect(bridgeSource).toContain(
       'entityType === "page" && field === "contentHtml"'
