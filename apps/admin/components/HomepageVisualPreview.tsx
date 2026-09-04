@@ -503,6 +503,7 @@ export default function HomepageVisualPreview({
   );
   const savingInlineRef = useRef(false);
   const mountedRef = useRef(true);
+  const selectionRef = useRef<PreviewSelection | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const previewOrigin = useMemo(() => new URL(url).origin, [url]);
 
@@ -560,6 +561,7 @@ export default function HomepageVisualPreview({
       if (event.data.type === "selection") {
         const next = readPreviewSelection(event.data, version);
         if (!next) return;
+        selectionRef.current = next;
         setSelection(next);
         const selectedMediaId =
           next.mediaId ||
@@ -713,18 +715,20 @@ export default function HomepageVisualPreview({
     operation: () => Promise<InlineSaveResult>
   ) => {
     if (savingInlineRef.current) return;
+    const savingSelection = selectionRef.current;
     savingInlineRef.current = true;
     setIsSavingInline(true);
     setInlineStatus("");
     try {
       const result = await operation();
       if (!mountedRef.current) return;
+      if (selectionRef.current !== savingSelection) return result;
       setInlineStatus(
         result.ok ? publicationLabel(result.publication) : result.error
       );
       return result;
     } catch {
-      if (!mountedRef.current) return;
+      if (!mountedRef.current || selectionRef.current !== savingSelection) return;
       setInlineStatus(
         "Не удалось подтвердить сохранение. Проверьте соединение и обновите предпросмотр."
       );
@@ -776,7 +780,7 @@ export default function HomepageVisualPreview({
           expectedUpdatedAt: inlineExpectedUpdatedAt,
         })
       );
-      if (result?.ok && result.updatedAt) {
+      if (result?.ok && result.updatedAt && selectionRef.current === entity) {
         setInlineExpectedUpdatedAt(result.updatedAt);
         setInlineVersionReady(true);
       }
@@ -798,8 +802,10 @@ export default function HomepageVisualPreview({
         })
       );
       if (result?.ok && result.updatedAt) {
-        setInlineExpectedUpdatedAt(result.updatedAt);
-        setInlineVersionReady(true);
+        if (selectionRef.current === content) {
+          setInlineExpectedUpdatedAt(result.updatedAt);
+          setInlineVersionReady(true);
+        }
         if (content.entityType === "homepage-block") {
           setVisualUpdatedAtByBlock((current) => ({
             ...current,

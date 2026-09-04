@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+test.use({ serviceWorkers: "block" });
+
 test("редактор выбирает текст внутри фона главной и сохраняет прямое редактирование полей", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator(".hero-editorial h1")).toBeVisible();
