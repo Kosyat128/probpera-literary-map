@@ -70,8 +70,8 @@ describe("published CMS typography", () => {
         },
       ],
     });
-    expect(css.indexOf("h1{")).toBeLessThan(css.indexOf("@media"));
-    expect(css).toContain('[data-typography-page="about"] h1{font-size:32px}');
+    expect(css.indexOf(":where(h1){")).toBeLessThan(css.indexOf("@media"));
+    expect(css).toContain(':where([data-typography-page="about"]:is(h1), [data-typography-page="about"] h1){font-size:32px}');
   });
 
   it("orders equal-specificity rules by the documented inheritance cascade", () => {
@@ -89,8 +89,8 @@ describe("published CMS typography", () => {
     });
     const positions = ["site", "component", "template", "page", "instance"].map(
       (layer) => layer === "site"
-        ? css.indexOf("h2{")
-        : css.indexOf(`[data-typography-${layer}=\"sample\"] h2{`)
+        ? css.indexOf(":where(h2){")
+        : css.indexOf(`:where([data-typography-${layer}=\"sample\"]:is(h2)`)
     );
     expect(positions.every((position, index) => index === 0 || position > positions[index - 1])).toBe(true);
   });
@@ -130,9 +130,40 @@ describe("published CMS typography", () => {
       }],
     });
     expect(css).toContain(
-      '[data-typography-instance="article-cms-123"] :is(.article-reader-content, [data-typography-scope="article"]){line-height:1.8}'
+      '[data-typography-instance="article-cms-123"] :is(.article-reader-content, [data-typography-scope="article"])){line-height:1.8}'
     );
     expect(css).not.toContain('[data-typography-page="article-cms-123"]');
+  });
+
+  it("bounds component headings at nested component and instance roots", () => {
+    const css = buildCmsTypographyStylesheet({
+      overrides: [{
+        layer: "component",
+        targetKey: "magazine",
+        semanticScope: "h2",
+        breakpoint: "base",
+        settings: { fontSize: 37 },
+      }],
+    });
+    expect(css).toContain(':where([data-typography-component="magazine"]:is(h2),');
+    expect(css).toContain(':not([data-typography-component="magazine"] :is([data-typography-component], [data-typography-instance]),');
+    expect(css).not.toContain("!important");
+  });
+
+  it("preserves arbitrary allowed sizes and emits no defaults for empty settings", () => {
+    for (const fontSize of [17, 23, 37, 61]) {
+      expect(buildCmsTypographyStylesheet({
+        overrides: [{
+          layer: "site", targetKey: "site", semanticScope: "h1",
+          breakpoint: "base", settings: { fontSize },
+        }],
+      })).toBe(`:where(h1){font-size:${fontSize}px}`);
+    }
+    expect(buildCmsTypographyStylesheet({ overrides: [{
+      layer: "site", targetKey: "site", semanticScope: "h1",
+      breakpoint: "base", settings: { fontSize: 1000, fontFamily: "bad" },
+    }] })).toBe("");
+    expect(buildCmsTypographyStylesheet(undefined)).toBe("");
   });
 
   it("drops malformed paths, targets and arbitrary records fail closed", () => {

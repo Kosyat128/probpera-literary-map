@@ -12,6 +12,10 @@ const layoutCss = readFileSync(
 );
 const mainSource = readFileSync(path.join(root, "src/main.tsx"), "utf8");
 const rules = parseCss(layoutCss, "src/styles/stage5-home-layout.css");
+const typographyRules = parseCss(
+  readFileSync(path.join(root, "src/styles/site-typography.css"), "utf8"),
+  "src/styles/site-typography.css"
+);
 
 function value(selector, property, context = null) {
   const declarations = rules
@@ -20,7 +24,7 @@ function value(selector, property, context = null) {
         candidate.selector === selector &&
         (context
           ? candidate.contexts.includes(context)
-          : candidate.contexts.length === 0)
+          : candidate.contexts.every((entry) => entry.startsWith("@layer ")))
     )
     .flatMap((candidate) => candidate.declarations)
     .filter(
@@ -170,20 +174,17 @@ describe("Stage 5C homepage layout and community contract", () => {
       value("#sections .section-directory-card h3", "align-self")
     ).toBe("start");
     expect(value("#sections .section-card-action", "display")).toBe("flex");
-    expect(
-      value(
-        "#sections .section-card-series-slot",
-        "min-height",
-        "@media (min-width: 681px)"
-      )
-    ).toBe("72px");
-    expect(
-      value(
-        "#sections .section-card-latest-slot",
-        "min-height",
-        "@media (min-width: 681px)"
-      )
-    ).toBe("64px");
+    for (const selector of [
+      "#sections .section-card-series-slot",
+      "#sections .section-card-latest-slot",
+    ]) {
+      expect(value(selector, "display")).toBe("flex");
+      expect(value(selector, "align-items")).toBe("stretch");
+      expect(value(selector, "min-height")).toBeUndefined();
+    }
+    expect(value("#sections .section-card-latest", "grid-template-rows")).toBe(
+      "auto 1fr"
+    );
     for (const selector of [
       "#sections .section-card-series-slot:empty",
       "#sections .section-card-latest-slot:empty",
@@ -214,9 +215,14 @@ describe("Stage 5C homepage layout and community contract", () => {
     expect(
       value("#community .community-reading-notes strong", "white-space")
     ).toBe("normal");
-    expect(
-      value("#community .community-visual-stats strong", "font-size")
-    ).toBe("clamp(19px, 1.4vw, 24px)");
+    expect(value("#community .community-visual-stats strong", "font-size")).toBeUndefined();
+    const statisticsType = typographyRules
+      .filter((rule) => rule.selector.split(",").map((selector) => selector.trim()).includes("#community .community-visual-stats strong"))
+      .flatMap((rule) => rule.declarations);
+    expect(statisticsType.findLast((declaration) => declaration.property === "font-size")?.value)
+      .toBe("var(--type-card-compact-title)");
+    expect(statisticsType.findLast((declaration) => declaration.property === "font-family")?.value)
+      .toBe("var(--font-editorial)");
     expect(value("#community .community-actions", "display")).toBe("flex");
     expect(
       value(

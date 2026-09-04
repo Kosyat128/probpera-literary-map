@@ -1,0 +1,192 @@
+[
+  {
+    "selector": ".calendar-navigation strong",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "selector": ".calendar-navigation strong",
+    "property": "font-size",
+    "value": "19px"
+  },
+  {
+    "selector": ".calendar-navigation strong",
+    "property": "font-weight",
+    "value": "400"
+  },
+  {
+    "selector": ".calendar-summary > div > strong",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "selector": ".calendar-summary > div > strong",
+    "property": "font-size",
+    "value": "27px"
+  },
+  {
+    "selector": ".calendar-summary > div > strong",
+    "property": "font-weight",
+    "value": "400"
+  },
+  {
+    "selector": ".calendar-summary > div > strong",
+    "property": "line-height",
+    "value": "1"
+  },
+  {
+    "selector": ".calendar-featured > strong",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "selector": ".calendar-featured > strong",
+    "property": "font-size",
+    "value": "21px"
+  },
+  {
+    "selector": ".calendar-featured > strong",
+    "property": "font-weight",
+    "value": "400"
+  },
+  {
+    "selector": ".calendar-featured > small",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "selector": ".calendar-featured > small",
+    "property": "font-size",
+    "value": "12px"
+  },
+  {
+    "selector": ".calendar-agenda > header strong",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "selector": ".calendar-agenda > header strong",
+    "property": "font-size",
+    "value": "20px"
+  },
+  {
+    "selector": ".calendar-agenda > header strong",
+    "property": "font-weight",
+    "value": "400"
+  },
+  {
+    "selector": ".calendar-agenda > header button",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "selector": ".calendar-agenda > header button",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "selector": ".calendar-agenda > header button",
+    "property": "letter-spacing",
+    "value": "0.07em"
+  },
+  {
+    "selector": ".calendar-agenda > header button",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "selector": ".calendar-agenda .calendar-agenda-more",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "selector": ".calendar-agenda .calendar-agenda-more",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "selector": ".calendar-agenda .calendar-agenda-more",
+    "property": "letter-spacing",
+    "value": "0.08em"
+  },
+  {
+    "selector": ".calendar-agenda .calendar-agenda-more",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "selector": ".calendar-agenda .calendar-agenda-more strong",
+    "property": "font-family",
+    "value": "var(--sans)"
+  },
+  {
+    "selector": ".calendar-agenda .calendar-agenda-more strong",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "selector": ".calendar-agenda .calendar-agenda-more strong",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "selector": ".calendar-navigation .calendar-today",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "selector": ".calendar-navigation .calendar-today",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "selector": ".calendar-navigation .calendar-today",
+    "property": "letter-spacing",
+    "value": "0.06em"
+  },
+  {
+    "selector": ".calendar-navigation .calendar-today",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "selector": ".calendar-agenda-day > time strong",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "selector": ".calendar-agenda-day > time strong",
+    "property": "font-size",
+    "value": "25px"
+  },
+  {
+    "selector": ".calendar-agenda-day > time strong",
+    "property": "font-weight",
+    "value": "400"
+  },
+  {
+    "selector": ".calendar-agenda-day > div > span",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "selector": ".calendar-navigation .calendar-today",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "selector": ".calendar-agenda > header button",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "selector": ".calendar-agenda-day > div > span",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "selector": ".calendar-agenda-day > div > span",
+    "property": "line-height",
+    "value": "1.45"
+  }
+]

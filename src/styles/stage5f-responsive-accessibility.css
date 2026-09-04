@@ -1,3 +1,11 @@
+@layer site-defaults {
+/* Keep a useful reading measure at 320px, including the reader's 130% scale. */
+@media (max-width: 360px) {
+  .article-reader:not(.is-book) .article-reader-paper {
+    padding-inline: var(--ui-space-3);
+  }
+}
+
 /*
  * Stage 5F responsive/accessibility guardrails.
  *
@@ -42,9 +50,11 @@
     min-block-size: 44px;
   }
 
-  /* These compact reader controls otherwise retain their 26-29px min-width. */
+  /* Compact reader and series controls need explicit touch-size overrides. */
   .article-reader-bar .interface-language-control button,
-  .article-reader-bar .display-mode-control.is-compact button {
+  .article-reader-bar .display-mode-control.is-compact button,
+  .article-library-series button,
+  .section-card-series a {
     min-inline-size: 44px;
     min-block-size: 44px;
   }
@@ -142,7 +152,7 @@
     #community .community-copy,
     #editorial-policy .section-heading
   ) :where(h2, h3, p, strong) {
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
   }
 
   #sections .sections-all-button {
@@ -160,4 +170,5 @@
   ) {
     padding-inline: clamp(16px, 5vw, 22px);
   }
+}
 }

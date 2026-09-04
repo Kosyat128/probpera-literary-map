@@ -1,0 +1,641 @@
+{
+  "baseURL": "http://127.0.0.1:4184/",
+  "scope": "Content controls only; Header/Hero excluded",
+  "selectedCases": [
+    "ru/1440",
+    "en/390",
+    "en/1440"
+  ],
+  "results": [
+    {
+      "locale": "ru",
+      "width": 1440,
+      "coarse": false,
+      "footer": {
+        "normal": {
+          "rect": [
+            30,
+            462.453125,
+            237.953125,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "none",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": false,
+          "active": false
+        },
+        "focus": {
+          "rect": [
+            30,
+            462.453125,
+            237.953125,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "solid",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "hover": {
+          "rect": [
+            30,
+            462.453125,
+            237.953125,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "solid",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "active": {
+          "rect": [
+            30,
+            462.453125,
+            237.953125,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "solid",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": true
+        },
+        "pressedHitTarget": {
+          "x": 1200.4296875,
+          "y": 449.953125,
+          "withinControl": true,
+          "tag": "STRONG",
+          "className": null
+        }
+      },
+      "primary": {
+        "normal": {
+          "rect": [
+            0,
+            0,
+            180,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(246, 117, 24)",
+          "border": "rgb(246, 117, 24)",
+          "shadow": "none",
+          "outline": {
+            "style": "none",
+            "width": 3,
+            "color": "rgb(39, 21, 56)"
+          },
+          "focusVisible": false,
+          "active": false
+        },
+        "focus": {
+          "rect": [
+            0,
+            0,
+            180,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(246, 117, 24)",
+          "border": "rgb(246, 117, 24)",
+          "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+          "outline": {
+            "style": "solid",
+            "width": 2,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "hover": {
+          "rect": [
+            0,
+            0,
+            180,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(255, 155, 69)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "rgba(246, 117, 24, 0.24) 0px 0px 0px 3px",
+          "outline": {
+            "style": "solid",
+            "width": 2,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "active": {
+          "rect": [
+            0,
+            0,
+            180,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(217, 82, 8)",
+          "border": "rgb(217, 82, 8)",
+          "shadow": "rgba(19, 2, 32, 0.2) 0px 0px 0px 2px inset",
+          "outline": {
+            "style": "solid",
+            "width": 2,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": true
+        },
+        "pressedHitTarget": {
+          "x": 860.390625,
+          "y": 449.84375,
+          "withinControl": true,
+          "tag": "SPAN",
+          "className": "ui-action__label"
+        }
+      },
+      "directorySeries": [],
+      "archiveSeries": [],
+      "directorySeriesFixture": {
+        "kind": "temporary DOM fixture; not published content",
+        "metrics": [
+          {
+            "text": "QA series fixture",
+            "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "size": 14,
+            "width": 119.359375,
+            "height": 35.59375
+          }
+        ]
+      },
+      "archiveSeriesFixture": {
+        "kind": "temporary DOM fixture; not published content",
+        "metrics": [
+          {
+            "text": "QA series fixture",
+            "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "size": 14,
+            "width": 119.359375,
+            "height": 33.59375
+          }
+        ]
+      },
+      "reducedMotion": {
+        "directoryArrow": {
+          "resting": "matrix(1, 0, 0, 1, 0.25, 0)",
+          "hover": "matrix(1, 0, 0, 1, 0.25, 0)"
+        },
+        "editorialImage": "none",
+        "libraryImage": "none",
+        "libraryArrow": "none"
+      }
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "coarse": true,
+      "footer": {
+        "normal": {
+          "rect": [
+            24,
+            249.71875,
+            304,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "none",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": false,
+          "active": false
+        },
+        "focus": {
+          "rect": [
+            24,
+            249.71875,
+            304,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "solid",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "hover": {
+          "rect": [
+            24,
+            249.71875,
+            304,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "solid",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "active": {
+          "rect": [
+            24,
+            249.71875,
+            304,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "solid",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": true
+        },
+        "pressedHitTarget": {
+          "x": 195,
+          "y": 449.515625,
+          "withinControl": true,
+          "tag": "STRONG",
+          "className": null
+        }
+      },
+      "primary": {
+        "normal": {
+          "rect": [
+            0,
+            0,
+            350,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(246, 117, 24)",
+          "border": "rgb(246, 117, 24)",
+          "shadow": "none",
+          "outline": {
+            "style": "none",
+            "width": 3,
+            "color": "rgb(39, 21, 56)"
+          },
+          "focusVisible": false,
+          "active": false
+        },
+        "focus": {
+          "rect": [
+            0,
+            0,
+            350,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(246, 117, 24)",
+          "border": "rgb(246, 117, 24)",
+          "shadow": "rgba(246, 117, 24, 0.067) 0px 0px 0px 0.860473px",
+          "outline": {
+            "style": "solid",
+            "width": 2,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "hover": {
+          "rect": [
+            0,
+            0,
+            350,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(255, 155, 69)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "rgba(246, 117, 24, 0.24) 0px 0px 0px 3px",
+          "outline": {
+            "style": "solid",
+            "width": 2,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "active": {
+          "rect": [
+            0,
+            0,
+            350,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(217, 82, 8)",
+          "border": "rgb(217, 82, 8)",
+          "shadow": "rgba(19, 2, 32, 0.2) 0px 0px 0px 2px inset",
+          "outline": {
+            "style": "solid",
+            "width": 2,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": true
+        },
+        "pressedHitTarget": {
+          "x": 195,
+          "y": 449.578125,
+          "withinControl": true,
+          "tag": "SPAN",
+          "className": "ui-action__label"
+        }
+      },
+      "directorySeries": [],
+      "archiveSeries": [],
+      "directorySeriesFixture": {
+        "kind": "temporary DOM fixture; not published content",
+        "metrics": [
+          {
+            "text": "QA series fixture",
+            "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "size": 14,
+            "width": 119.359375,
+            "height": 44
+          }
+        ]
+      },
+      "archiveSeriesFixture": {
+        "kind": "temporary DOM fixture; not published content",
+        "metrics": [
+          {
+            "text": "QA series fixture",
+            "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "size": 14,
+            "width": 119.359375,
+            "height": 44
+          }
+        ]
+      },
+      "reducedMotion": {
+        "directoryArrow": {
+          "resting": "matrix(1, 0, 0, 1, 0.25, 0)",
+          "hover": "matrix(1, 0, 0, 1, 0.25, 0)"
+        },
+        "editorialImage": "none",
+        "libraryImage": "none",
+        "libraryArrow": "none"
+      }
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "coarse": false,
+      "footer": {
+        "normal": {
+          "rect": [
+            30,
+            253.71875,
+            237.953125,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "none",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": false,
+          "active": false
+        },
+        "focus": {
+          "rect": [
+            30,
+            253.71875,
+            237.953125,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "solid",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "hover": {
+          "rect": [
+            30,
+            253.71875,
+            237.953125,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "solid",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "active": {
+          "rect": [
+            30,
+            253.71875,
+            237.953125,
+            44
+          ],
+          "centerDifference": 0,
+          "background": "rgba(0, 0, 0, 0)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "none",
+          "outline": {
+            "style": "solid",
+            "width": 3,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": true
+        },
+        "pressedHitTarget": {
+          "x": 1200.4296875,
+          "y": 450.015625,
+          "withinControl": true,
+          "tag": "STRONG",
+          "className": null
+        }
+      },
+      "primary": {
+        "normal": {
+          "rect": [
+            0,
+            0,
+            180,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(246, 117, 24)",
+          "border": "rgb(246, 117, 24)",
+          "shadow": "none",
+          "outline": {
+            "style": "none",
+            "width": 3,
+            "color": "rgb(39, 21, 56)"
+          },
+          "focusVisible": false,
+          "active": false
+        },
+        "focus": {
+          "rect": [
+            0,
+            0,
+            180,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(246, 117, 24)",
+          "border": "rgb(246, 117, 24)",
+          "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+          "outline": {
+            "style": "solid",
+            "width": 2,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "hover": {
+          "rect": [
+            0,
+            0,
+            180,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(255, 155, 69)",
+          "border": "rgb(255, 155, 69)",
+          "shadow": "rgba(246, 117, 24, 0.24) 0px 0px 0px 3px",
+          "outline": {
+            "style": "solid",
+            "width": 2,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": false
+        },
+        "active": {
+          "rect": [
+            0,
+            0,
+            180,
+            48
+          ],
+          "centerDifference": null,
+          "background": "rgb(217, 82, 8)",
+          "border": "rgb(217, 82, 8)",
+          "shadow": "rgba(19, 2, 32, 0.2) 0px 0px 0px 2px inset",
+          "outline": {
+            "style": "solid",
+            "width": 2,
+            "color": "rgb(255, 155, 69)"
+          },
+          "focusVisible": true,
+          "active": true
+        },
+        "pressedHitTarget": {
+          "x": 860.390625,
+          "y": 449.90625,
+          "withinControl": true,
+          "tag": "SPAN",
+          "className": "ui-action__label"
+        }
+      },
+      "directorySeries": [],
+      "archiveSeries": [],
+      "directorySeriesFixture": {
+        "kind": "temporary DOM fixture; not published content",
+        "metrics": [
+          {
+            "text": "QA series fixture",
+            "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "size": 14,
+            "width": 119.359375,
+            "height": 35.59375
+          }
+        ]
+      },
+      "archiveSeriesFixture": {
+        "kind": "temporary DOM fixture; not published content",
+        "metrics": [
+          {
+            "text": "QA series fixture",
+            "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "size": 14,
+            "width": 119.359375,
+            "height": 33.59375
+          }
+        ]
+      },
+      "reducedMotion": {
+        "directoryArrow": {
+          "resting": "matrix(1, 0, 0, 1, 0.25, 0)",
+          "hover": "matrix(1, 0, 0, 1, 0.25, 0)"
+        },
+        "editorialImage": "none",
+        "libraryImage": "none",
+        "libraryArrow": "none"
+      }
+    }
+  ]
+}

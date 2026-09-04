@@ -1,0 +1,98 @@
+[
+  {
+    "locale": "ru",
+    "width": 390,
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "contain",
+    "position": "50% 50%",
+    "rectangle": [
+      352,
+      220
+    ],
+    "parent": [
+      352,
+      220
+    ],
+    "rendered": [
+      352,
+      199.12177564487104
+    ],
+    "title": "Хантер С. Томпсон «Ангелы ада»"
+  },
+  {
+    "locale": "ru",
+    "width": 1440,
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "contain",
+    "position": "50% 50%",
+    "rectangle": [
+      427.59375,
+      320.6875
+    ],
+    "parent": [
+      427.59375,
+      320.6875
+    ],
+    "rendered": [
+      427.59374999999994,
+      241.88416691661666
+    ],
+    "title": "Хантер С. Томпсон «Ангелы ада»"
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "contain",
+    "position": "50% 50%",
+    "rectangle": [
+      352,
+      220
+    ],
+    "parent": [
+      352,
+      220
+    ],
+    "rendered": [
+      352,
+      199.12177564487104
+    ],
+    "title": "Hunter S. Thompson, Hell’s Angels"
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "contain",
+    "position": "50% 50%",
+    "rectangle": [
+      427.59375,
+      320.6875
+    ],
+    "parent": [
+      427.59375,
+      320.6875
+    ],
+    "rendered": [
+      427.59374999999994,
+      241.88416691661666
+    ],
+    "title": "Hunter S. Thompson, Hell’s Angels"
+  }
+]

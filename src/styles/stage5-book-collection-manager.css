@@ -1,3 +1,4 @@
+@layer site-defaults {
 .book-collection-manager__backdrop {
   position: fixed;
   inset: 0;
@@ -54,17 +55,17 @@
 .book-collection-manager__books h3 {
   color: #c7b7cc;
   font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
 .book-collection-manager__header h2 {
   margin: 5px 0 0;
   color: #fffaf3;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-editorial);
   font-size: clamp(1.6rem, 4vw, 2.2rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.08;
 }
 
@@ -83,7 +84,7 @@
 
 .book-collection-manager__header > button span {
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1;
 }
 
@@ -184,7 +185,7 @@
   min-height: 44px;
   padding: 0 20px;
   color: #fff;
-  font-weight: 750;
+  font-weight: 700;
   border: 1px solid var(--manager-accent);
   border-radius: 10px;
   background: var(--manager-accent);
@@ -400,4 +401,5 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+}
 }

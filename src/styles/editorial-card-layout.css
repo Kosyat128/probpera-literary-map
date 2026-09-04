@@ -1,0 +1,186 @@
+@layer site-defaults {
+  :root {
+    --card-padding-inline: clamp(1rem, 5cqi, 1.5rem);
+    --card-padding-block: 1.25rem;
+    --card-content-gap: 1rem;
+    --card-footer-gap: 0.75rem;
+    --card-divider: rgba(255, 255, 255, 0.14);
+    --card-control-size: 44px;
+    --card-control-gap: 8px;
+    --card-icon-size: 18px;
+  }
+
+  .editorial-grid article {
+    container: editorial-card / inline-size;
+    min-inline-size: 0;
+  }
+
+  .article-library-grid article,
+  .cms-home-articles article,
+  .book-of-day > div:not(.book-cover),
+  .editorial-standard,
+  .book-fact-card {
+    container-type: inline-size;
+    min-inline-size: 0;
+  }
+
+  .cms-home-articles article > a {
+    border-radius: inherit;
+  }
+
+  .cms-home-articles article img {
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+  }
+
+  .editorial-grid .article-card-link {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    flex: 1;
+    min-inline-size: 0;
+    border-radius: inherit;
+  }
+
+  .editorial-grid .article-card-link > .article-image {
+    border-start-start-radius: inherit;
+    border-start-end-radius: inherit;
+  }
+
+  .article-copy,
+  .library-card-copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-content-gap);
+    min-inline-size: 0;
+    padding: var(--card-padding-block) var(--card-padding-inline);
+  }
+
+  .article-copy h3,
+  .article-copy p,
+  .library-card-copy h3,
+  .library-card-copy p {
+    margin: 0;
+  }
+
+  .article-copy strong {
+    display: block;
+    margin-block-start: auto;
+    padding-block-start: 0.5rem;
+  }
+
+  .library-card-copy > div {
+    flex-wrap: wrap;
+    min-inline-size: 0;
+  }
+
+  .library-card-copy > strong {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--card-footer-gap);
+    min-block-size: var(--card-control-size);
+    margin-block-start: auto;
+    padding-block-start: var(--card-footer-gap);
+    border-block-start: 1px solid var(--card-divider);
+  }
+
+  .article-card-footer {
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    margin-block-start: auto;
+    padding-inline: var(--card-padding-inline);
+    border-block-start: 1px solid var(--card-divider);
+  }
+
+  .article-card-footer > * + * {
+    border-block-start: 1px solid var(--card-divider);
+  }
+
+  .article-card-footer .section-link {
+    display: flex;
+    align-items: center;
+    min-inline-size: 0;
+    min-block-size: var(--card-control-size);
+    padding-block: var(--card-footer-gap);
+  }
+
+  .article-card-footer .section-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .share-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--card-footer-gap);
+    align-items: center;
+    min-inline-size: 0;
+  }
+
+  .share-links > span {
+    min-inline-size: 0;
+  }
+
+  .share-links--reader {
+    margin-block: 28px;
+  }
+
+  .share-links__controls {
+    display: grid;
+    grid-template-columns: repeat(4, var(--card-control-size));
+    gap: var(--card-control-gap);
+    align-items: center;
+    justify-content: start;
+  }
+
+  .share-links--card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    padding-block: var(--card-footer-gap);
+  }
+
+  .share-links .share-icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    inline-size: var(--card-control-size);
+    min-inline-size: var(--card-control-size);
+    max-inline-size: var(--card-control-size);
+    block-size: var(--card-control-size);
+    min-block-size: var(--card-control-size);
+    max-block-size: var(--card-control-size);
+    padding: 0;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .share-links .share-icon svg {
+    display: block;
+    inline-size: var(--card-icon-size);
+    block-size: var(--card-icon-size);
+    overflow: visible;
+  }
+
+  .share-links .share-icon:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  @container editorial-card (max-width: 24rem) {
+    .share-links--card {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .share-links--reader {
+      gap: var(--card-control-gap);
+    }
+
+    .share-links--reader > span {
+      flex-basis: 100%;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "baseURL": "http://127.0.0.1:4184/",
+  "captures": [
+    {
+      "locale": "ru",
+      "width": 390,
+      "communityControls": [
+        {
+          "height": 98.5625,
+          "categoryTop": 15
+        },
+        {
+          "height": 98.5625,
+          "categoryTop": 15
+        },
+        {
+          "height": 98.5625,
+          "categoryTop": 15
+        }
+      ]
+    },
+    {
+      "locale": "ru",
+      "width": 1440,
+      "communityControls": [
+        {
+          "height": 82,
+          "categoryTop": 15
+        },
+        {
+          "height": 82,
+          "categoryTop": 15
+        },
+        {
+          "height": 82,
+          "categoryTop": 15
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "communityControls": [
+        {
+          "height": 98.5625,
+          "categoryTop": 15
+        },
+        {
+          "height": 98.5625,
+          "categoryTop": 15
+        },
+        {
+          "height": 98.5625,
+          "categoryTop": 15
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "communityControls": [
+        {
+          "height": 82,
+          "categoryTop": 15
+        },
+        {
+          "height": 82,
+          "categoryTop": 15
+        },
+        {
+          "height": 82,
+          "categoryTop": 15
+        }
+      ]
+    }
+  ],
+  "bookMode": {
+    "className": "article-reader is-book",
+    "title": "15 лучших художественных книг о рыцарях",
+    "muted": [
+      {
+        "text": "В сегодняшней статье мы кратко приведем пятнадцать лучших художественных книг о рыцарях, написанные в совершенно разные эпохи, которые объединяет одно - все они получили широкую известность во всём мире.",
+        "color": "rgb(102, 83, 110)",
+        "fontSize": "20.16px"
+      },
+      {
+        "text": "-просмотров9минут чтения1 481слов17смысловых разделов16иллюстраций",
+        "color": "rgb(53, 39, 25)",
+        "fontSize": "16px"
+      },
+      {
+        "text": "Поделиться",
+        "color": "rgb(102, 83, 110)",
+        "fontSize": "13px"
+      }
+    ]
+  },
+  "captureLimitations": [
+    {
+      "file": "en-homepage-full-390.png",
+      "status": "removed",
+      "reason": "The long full-page screenshot contained a repeated page segment; the cause was not established. Valid mobile component screenshots are retained."
+    },
+    {
+      "file": "ru-homepage-full-1440.png",
+      "status": "removed",
+      "reason": "This full-page capture predates the directory subgrid repair and preview-image cover change; it is not evidence of the final homepage."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "before": {
+    "rows": "none",
+    "containerType": "inline-size",
+    "height": 235.1875,
+    "children": [
+      {
+        "tag": "SPAN",
+        "top": 322.859375,
+        "height": 174.1875,
+        "bottom": 497.046875
+      },
+      {
+        "tag": "H3",
+        "top": 340.859375,
+        "height": 24.3125,
+        "bottom": 365.171875
+      },
+      {
+        "tag": "P",
+        "top": 322.859375,
+        "height": 174.1875,
+        "bottom": 497.046875
+      },
+      {
+        "tag": "DIV",
+        "top": 322.859375,
+        "height": 174.1875,
+        "bottom": 497.046875
+      },
+      {
+        "tag": "DIV",
+        "top": 322.859375,
+        "height": 174.1875,
+        "bottom": 497.046875
+      },
+      {
+        "tag": "FOOTER",
+        "top": 339.859375,
+        "height": 157.1875,
+        "bottom": 497.046875
+      }
+    ]
+  },
+  "after": {
+    "rows": "subgrid [] [] [] [] [] [] []",
+    "containerType": "normal",
+    "height": 535.21875,
+    "children": [
+      {
+        "tag": "SPAN",
+        "top": 800.328125,
+        "height": 30.1875,
+        "bottom": 830.515625
+      },
+      {
+        "tag": "H3",
+        "top": 848.515625,
+        "height": 60.46875,
+        "bottom": 908.984375
+      },
+      {
+        "tag": "P",
+        "top": 922.984375,
+        "height": 102.375,
+        "bottom": 1025.359375
+      },
+      {
+        "tag": "DIV",
+        "top": 1025.359375,
+        "height": 0,
+        "bottom": 1025.359375
+      },
+      {
+        "tag": "DIV",
+        "top": 1025.359375,
+        "height": 174.1875,
+        "bottom": 1199.546875
+      },
+      {
+        "tag": "FOOTER",
+        "top": 1216.546875,
+        "height": 58,
+        "bottom": 1274.546875
+      }
+    ]
+  }
+}

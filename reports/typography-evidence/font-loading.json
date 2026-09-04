@@ -1,0 +1,94 @@
+[
+  {
+    "locale": "ru",
+    "width": 1440,
+    "fontDelayMs": 1200,
+    "requestedFonts": [
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-latin-400-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-latin-700-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-latin-700-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-latin-400-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-latin-600-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-latin-600-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2"
+    ],
+    "cls": 0.000014643464265046294,
+    "shifts": [
+      {
+        "value": 0.000014643464265046294,
+        "time": 1255.199999999255,
+        "sources": [
+          {
+            "selector": "SPAN",
+            "previous": {
+              "x": 1195.421875,
+              "y": 10,
+              "width": 98.0625,
+              "height": 14,
+              "top": 10,
+              "right": 1293.484375,
+              "bottom": 24,
+              "left": 1195.421875
+            },
+            "current": {
+              "x": 1185.09375,
+              "y": 10,
+              "width": 98.0625,
+              "height": 14,
+              "top": 10,
+              "right": 1283.15625,
+              "bottom": 24,
+              "left": 1185.09375
+            }
+          },
+          {
+            "selector": "SPAN",
+            "previous": {
+              "x": 1311.484375,
+              "y": 10,
+              "width": 70.921875,
+              "height": 14,
+              "top": 10,
+              "right": 1382.40625,
+              "bottom": 24,
+              "left": 1311.484375
+            },
+            "current": {
+              "x": 1301.15625,
+              "y": 10,
+              "width": 81.25,
+              "height": 14,
+              "top": 10,
+              "right": 1382.40625,
+              "bottom": 24,
+              "left": 1301.15625
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "fontDelayMs": 1200,
+    "requestedFonts": [
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-latin-400-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-latin-700-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-latin-700-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-latin-400-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-serif-4-latin-600-normal.woff2",
+      "http://127.0.0.1:4183/probpera-literary-map/fonts/editorial/source-sans-3-latin-600-normal.woff2"
+    ],
+    "cls": 0,
+    "shifts": []
+  }
+]

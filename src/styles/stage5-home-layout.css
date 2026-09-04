@@ -1,3 +1,4 @@
+@layer site-defaults {
 /* Stage 5C: scoped homepage composition, shared card rows, and responsive flow. */
 
 #book-day.daily-grid {
@@ -55,8 +56,14 @@
   align-items: stretch;
 }
 
+#sections {
+  --section-card-row-gap: 14px;
+}
+
 #sections .section-directory-card {
+  /* A subgrid carrier must not establish inline-size/layout containment. */
   display: grid;
+  align-items: stretch;
   grid-row: span 6;
   grid-template-rows: subgrid;
   min-height: 0;
@@ -67,11 +74,33 @@
   grid-row: 1 / -1;
   grid-template-rows: subgrid;
   align-content: stretch;
-  min-height: 100%;
+  min-height: 0;
 }
 
+#sections .section-card-eyebrow,
 #sections .section-directory-card h3 {
   align-self: start;
+}
+
+#sections .section-card-series-slot,
+#sections .section-card-latest-slot {
+  display: flex;
+  align-items: stretch;
+}
+
+#sections .section-card-series-slot:not(:empty),
+#sections .section-card-latest-slot:not(:empty) {
+  padding-block-start: var(--section-card-row-gap);
+}
+
+#sections .section-card-series {
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+#sections .section-card-latest {
+  grid-template-rows: auto 1fr;
+  align-content: start;
 }
 
 #sections .section-card-action {
@@ -81,6 +110,7 @@
 
 #sections .section-card-action > a {
   width: 100%;
+  align-items: center;
 }
 
 #community.community-section {
@@ -108,13 +138,16 @@
   padding: 12px 14px 12px 17px;
 }
 
-#community .community-reading-notes button > span,
+#community .community-reading-notes button > span {
+  min-width: 0;
+}
+
 #community .community-reading-notes strong {
   min-width: 0;
 }
 
 #community .community-reading-notes strong {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   text-overflow: clip;
   white-space: normal;
 }
@@ -126,17 +159,6 @@
 
 #community .community-visual-stats > span {
   min-width: 0;
-}
-
-#community .community-visual-stats strong {
-  font-size: clamp(19px, 1.4vw, 24px);
-}
-
-#community .community-visual-stats small {
-  font-size: 9px;
-  line-height: 1.35;
-  letter-spacing: 0.07em;
-  overflow-wrap: anywhere;
 }
 
 #community .community-copy {
@@ -153,21 +175,6 @@
 
 #community .community-actions > button {
   min-width: min(100%, 180px);
-}
-
-@media (min-width: 681px) {
-  #sections .section-card-series-slot,
-  #sections .section-card-latest-slot {
-    display: flex;
-  }
-
-  #sections .section-card-series-slot {
-    min-height: 72px;
-  }
-
-  #sections .section-card-latest-slot {
-    min-height: 64px;
-  }
 }
 
 @media (max-width: 1360px) {
@@ -260,7 +267,8 @@
 
   #sections .section-directory-card > div {
     grid-row: auto;
-    grid-template-rows: repeat(6, auto);
+    grid-template-rows: none;
+    grid-auto-rows: auto;
   }
 
   #sections .section-card-series-slot:empty,
@@ -298,4 +306,5 @@
     width: 100%;
     min-width: 0;
   }
+}
 }

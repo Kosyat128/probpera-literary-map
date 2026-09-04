@@ -1,3 +1,4 @@
+@layer site-defaults {
 .analytics-consent {
   position: fixed;
   z-index: 12000;
@@ -22,7 +23,7 @@
 .analytics-consent strong {
   display: block;
   margin-bottom: 4px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-editorial);
   font-size: 1.05rem;
 }
 
@@ -71,7 +72,7 @@
   min-height: 44px;
   padding: 0 13px;
   color: #fffaf1;
-  font: 600 0.76rem/1 system-ui, sans-serif;
+  font: 600 0.76rem/1 var(--font-ui);
   background: rgba(34, 12, 50, 0.9);
   border: 1px solid rgba(231, 199, 121, 0.52);
   border-radius: 999px;
@@ -104,4 +105,5 @@
     background: #220c32;
     backdrop-filter: none;
   }
+}
 }

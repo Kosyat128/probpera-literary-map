@@ -240,4 +240,18 @@ describe("site typography contract", () => {
     expect(typographyPropertyFormValues({ systemFamily: "times", fontSize: 20 }))
       .toMatchObject({ systemFamily: "times", fontSize: "20", familyId: "" });
   });
+
+  it("replaces inherited font sources in either direction", () => {
+    for (const [earlier, later] of [
+      [{ familyId }, { systemFamily: "georgia" as const }],
+      [{ systemFamily: "georgia" as const }, { familyId }],
+    ]) {
+      expect(resolveSiteTypography([
+        { layer: "site", targetKey: "site", semanticScope: "article", breakpoint: "base", settings: earlier },
+        { layer: "instance", targetKey: "sample", semanticScope: "article", breakpoint: "mobile", settings: later },
+      ], {
+        semanticScope: "article", breakpoint: "mobile", targetKeys: { instance: "sample" },
+      })).toEqual(later);
+    }
+  });
 });

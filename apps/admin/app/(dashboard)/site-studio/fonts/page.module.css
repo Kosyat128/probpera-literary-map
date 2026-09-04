@@ -259,14 +259,14 @@
 }
 
 .preview strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-editorial);
   font-size: 26px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .preview p {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-editorial);
   font-size: 17px;
   line-height: 1.6;
 }

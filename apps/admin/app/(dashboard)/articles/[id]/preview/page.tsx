@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { editorialPreviewFonts } from "@/components/EditorialPreviewFonts";
+import previewStyles from "@/components/EditorialPreview.module.css";
 import { articleEditPath } from "@/lib/admin-routes";
 import { formatDate } from "@/lib/format";
 import { operatorDataError } from "@/lib/operator-data-error";
@@ -174,7 +176,7 @@ export default async function ArticlePreviewPage({
           перевода.
         </p>
       )}
-      {localizedArticle && <article className={`admin-article-preview is-${viewport}`}>
+      {localizedArticle && <article className={`admin-article-preview is-${viewport} ${editorialPreviewFonts} ${previewStyles.fonts} ${previewStyles.reader}`}>
         <header>
           <span>
             {locale === "en"

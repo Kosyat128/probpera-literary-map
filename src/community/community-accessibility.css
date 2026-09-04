@@ -1,3 +1,4 @@
+@layer site-defaults {
 .community-header > button {
   width: 44px;
   min-width: 44px;
@@ -9,4 +10,5 @@
   .auth-form input:not([type="checkbox"]) {
     font-size: 16px;
   }
+}
 }

@@ -18,6 +18,7 @@ import { InterfaceLanguageProvider } from './i18n/InterfaceLanguage';
 import ConnectivityStatus from './mobile/ConnectivityStatus';
 import { registerServiceWorker } from './mobile/registerServiceWorker';
 import { installSafeWebStorage } from './utils/safeWebStorage';
+import './styles/editorial-fonts.css';
 import './index.css';
 import './community/community-accessibility.css';
 import './styles/stage5-home-art-direction.css';
@@ -25,7 +26,11 @@ import './styles/stage5-home-layout.css';
 
 import './styles/stage5-book-shelf.css';
 import './styles/stage5f-responsive-accessibility.css';
-import './styles/globe-editorial-fonts.css';
+import './styles/editorial-card-layout.css';
+import './styles/community-editorial-layout.css';
+import './styles/calendar-layout.css';
+import './styles/site-typography.css';
+import './styles/header-preserved.css';
 installSafeWebStorage();
 
 const cmsPage = currentCmsPage();

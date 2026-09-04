@@ -1,0 +1,292 @@
+[
+  {
+    "locale": "ru",
+    "width": 390,
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      352,
+      220
+    ],
+    "parent": [
+      352,
+      220
+    ],
+    "rendered": [
+      388.90774125132555,
+      220
+    ],
+    "title": "Хантер С. Томпсон «Ангелы ада»"
+  },
+  {
+    "locale": "ru",
+    "width": 390,
+    "role": "editorial-standard",
+    "heading": {
+      "text": "Материал, которому точно можно доверять",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "28px",
+      "height": 61.59375
+    }
+  },
+  {
+    "locale": "ru",
+    "width": 390,
+    "role": "library-real",
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      360,
+      202.5
+    ],
+    "parent": [
+      360,
+      202.5
+    ],
+    "rendered": [
+      360,
+      203.64727054589082
+    ],
+    "title": "Мнение о книге Хантера Томпсона «Ангелы ада»"
+  },
+  {
+    "locale": "ru",
+    "width": 390,
+    "role": "portrait-media-fixture-only",
+    "src": "http://127.0.0.1:4184/brand/magazine-hero-mobile.webp",
+    "natural": [
+      941,
+      1672
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      360,
+      202.5
+    ],
+    "parent": [
+      360,
+      202.5
+    ],
+    "rendered": [
+      360,
+      639.6599362380447
+    ],
+    "title": "Мнение о книге Хантера Томпсона «Ангелы ада»"
+  },
+  {
+    "locale": "ru",
+    "width": 1440,
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      427.59375,
+      320.6875
+    ],
+    "parent": [
+      427.59375,
+      320.6875
+    ],
+    "rendered": [
+      566.8993239660657,
+      320.6875
+    ],
+    "title": "Хантер С. Томпсон «Ангелы ада»"
+  },
+  {
+    "locale": "ru",
+    "width": 1440,
+    "role": "editorial-standard",
+    "heading": {
+      "text": "Материал, которому точно можно доверять",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "28.4342px",
+      "height": 62.5625
+    }
+  },
+  {
+    "locale": "ru",
+    "width": 1440,
+    "role": "library-real",
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      312.25,
+      175.640625
+    ],
+    "parent": [
+      312.25,
+      175.640625
+    ],
+    "rendered": [
+      312.25,
+      176.63572285542892
+    ],
+    "title": "Мнение о книге Хантера Томпсона «Ангелы ада»"
+  },
+  {
+    "locale": "ru",
+    "width": 1440,
+    "role": "portrait-media-fixture-only",
+    "src": "http://127.0.0.1:4184/brand/magazine-hero-mobile.webp",
+    "natural": [
+      941,
+      1672
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      312.25,
+      175.640625
+    ],
+    "parent": [
+      312.25,
+      175.640625
+    ],
+    "rendered": [
+      312.25,
+      554.8161530286928
+    ],
+    "title": "Мнение о книге Хантера Томпсона «Ангелы ада»"
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      352,
+      220
+    ],
+    "parent": [
+      352,
+      220
+    ],
+    "rendered": [
+      388.90774125132555,
+      220
+    ],
+    "title": "Hunter S. Thompson, Hell’s Angels"
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "role": "editorial-standard",
+    "heading": {
+      "text": "Material you can trust",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "28px",
+      "height": 30.796875
+    }
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "role": "library-real",
+    "src": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+    "natural": [
+      1155,
+      719
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      360,
+      202.5
+    ],
+    "parent": [
+      360,
+      202.5
+    ],
+    "rendered": [
+      360,
+      224.1038961038961
+    ],
+    "title": "15 Best Fiction Books About Knights"
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "src": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+    "natural": [
+      1667,
+      943
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      427.59375,
+      320.6875
+    ],
+    "parent": [
+      427.59375,
+      320.6875
+    ],
+    "rendered": [
+      566.8993239660657,
+      320.6875
+    ],
+    "title": "Hunter S. Thompson, Hell’s Angels"
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "role": "editorial-standard",
+    "heading": {
+      "text": "Material you can trust",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "28.4342px",
+      "height": 31.28125
+    }
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "role": "library-real",
+    "src": "https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/f6d26238-ca0b-4d2f-8861-62d34edc3ebf.webp",
+    "natural": [
+      1155,
+      719
+    ],
+    "fit": "cover",
+    "position": "50% 50%",
+    "rectangle": [
+      639.5,
+      319.75
+    ],
+    "parent": [
+      639.5,
+      319.75
+    ],
+    "rendered": [
+      639.5,
+      398.09567099567096
+    ],
+    "title": "15 Best Fiction Books About Knights"
+  }
+]

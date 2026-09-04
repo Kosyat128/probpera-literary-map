@@ -1,0 +1,52 @@
+[
+  {
+    "width": 390,
+    "selector": ".daily-grid",
+    "issues": []
+  },
+  {
+    "width": 390,
+    "selector": ".authors-section",
+    "issues": []
+  },
+  {
+    "width": 390,
+    "selector": ".editorial-section",
+    "issues": []
+  },
+  {
+    "width": 390,
+    "selector": ".trust-center",
+    "issues": []
+  },
+  {
+    "width": 390,
+    "selector": ".sections-directory",
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "selector": ".daily-grid",
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "selector": ".authors-section",
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "selector": ".editorial-section",
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "selector": ".trust-center",
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "selector": ".sections-directory",
+    "issues": []
+  }
+]

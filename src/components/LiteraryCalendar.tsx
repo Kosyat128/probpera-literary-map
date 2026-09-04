@@ -5,6 +5,7 @@ import { selectWriterDisplayName } from "../data/bookLocalization";
 import { cmsCoreFieldMarker } from "../cms/directEditBridge";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import BrandArrowIcon from "./BrandArrowIcon";
+import CountryFlagIcon from "./CountryFlagIcon";
 
 type Props = {
   countries: Country[];
@@ -446,10 +447,16 @@ export default function LiteraryCalendar({
                           event.country.code,
                           event.country.name
                         )}`}
+                        title={countryName(event.country.code, event.country.name)}
                         onClick={() => onCountrySelect?.(event.country)}
                       >
-                        <span>{t("Страна")}</span>
-                        {countryName(event.country.code, event.country.name)}
+                        <CountryFlagIcon
+                          code={event.country.code}
+                          countryName={countryName(event.country.code, event.country.name)}
+                          className="calendar-country-flag country-flag-icon--round"
+                          size={28}
+                          decorative
+                        />
                       </button>
                     </div>
                   ))}

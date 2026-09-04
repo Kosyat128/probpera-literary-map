@@ -15,70 +15,75 @@ const indexCss = readFileSync(path.join(root, "src/index.css"), "utf8");
 const mainSource = readFileSync(path.join(root, "src/main.tsx"), "utf8");
 const artRules = parseCss(artDirectionCss, "src/styles/stage5-home-art-direction.css");
 const indexRules = parseCss(indexCss, "src/index.css");
+const typographyRules = parseCss(
+  readFileSync(path.join(root, "src/styles/site-typography.css"), "utf8").replace(/\/\*[\s\S]*?\*\//gu, ""),
+  "src/styles/site-typography.css"
+);
 
 function declarationValue(rules, selector, property, context = null) {
-  const rule = rules
+  const declarations = rules
     .filter(
       (candidate) =>
         candidate.selector === selector &&
         (context
           ? candidate.contexts.includes(context)
-          : candidate.contexts.length === 0)
+          : candidate.contexts.every((entry) => entry.startsWith("@layer ")))
     )
-    .at(-1);
-  const declaration = rule?.declarations.find(
-    (candidate) => candidate.property === property
-  );
-  return declaration?.value;
+    .flatMap((candidate) => candidate.declarations)
+    .filter((candidate) => candidate.property === property);
+  return declarations.at(-1)?.value;
 }
 
 describe("Stage 5B homepage art-direction contract", () => {
-  it("pins the approved desktop and mobile type scales", () => {
-    expect(declarationValue(artRules, ":root", "--home-title-major")).toBe(
-      "clamp(34px, 3.1vw, 44px)"
+  it("pins the shared scale and keeps legacy homepage names as aliases", () => {
+    expect(declarationValue(typographyRules, ":root", "--home-title-major")).toBe(
+      "var(--type-section-title)"
     );
-    expect(declarationValue(artRules, ":root", "--home-title-normal")).toBe(
-      "clamp(30px, 2.7vw, 38px)"
+    expect(declarationValue(typographyRules, ":root", "--home-title-normal")).toBe(
+      "var(--type-card-feature-title)"
     );
-    expect(declarationValue(artRules, ":root", "--home-title-card")).toBe(
-      "clamp(23px, 2vw, 32px)"
+    expect(declarationValue(typographyRules, ":root", "--home-title-card")).toBe(
+      "var(--type-card-title)"
     );
-    expect(declarationValue(artRules, ":root", "--home-copy")).toBe(
-      "clamp(16px, 1.15vw, 18px)"
+    expect(declarationValue(typographyRules, ":root", "--home-copy")).toBe(
+      "var(--type-card-excerpt)"
     );
     expect(
       declarationValue(
-        artRules,
+        typographyRules,
         ":root",
-        "--home-title-major",
-        "@media (max-width: 680px)"
+        "--type-section-title"
       )
-    ).toBe("clamp(27px, 8vw, 34px)");
+    ).toBe("clamp(1.75rem, 3.2vw, 3.25rem)");
     expect(
       declarationValue(
-        artRules,
-        ":root",
-        "--home-copy",
-        "@media (max-width: 680px)"
+        typographyRules,
+        ".article-reader-content",
+        "--type-reading",
+        "@media (max-width: 560px)"
       )
-    ).toBe("clamp(15px, 4.2vw, 17px)");
+    ).toBe("1.0625rem");
+    expect(declarationValue(typographyRules, ":root", "--type-card-excerpt")).toBe("1rem");
+    expect(artRules.flatMap((rule) => rule.declarations).some((declaration) =>
+      /^--home-(?:title|copy|metadata|action-size)/u.test(declaration.property)
+    )).toBe(false);
   });
 
   it("assigns scoped roles without global element or owner-lock selectors", () => {
-    expect(declarationValue(artRules, ".section-heading h2", "font-size")).toBe(
-      "var(--home-title-major)"
+    expect(declarationValue(typographyRules, ".section-heading h2", "font-size")).toBe(
+      "var(--type-section-title)"
     );
     expect(
-      declarationValue(artRules, ".is-featured .article-copy h3", "font-size")
-    ).toBe("var(--home-title-normal)");
-    expect(declarationValue(artRules, ".article-copy h3", "font-size")).toBe(
-      "var(--home-title-card)"
+      declarationValue(typographyRules, ".is-featured .article-copy h3", "font-size")
+    ).toBe("var(--type-card-feature-title)");
+    expect(declarationValue(typographyRules, ".article-copy h3", "font-size")).toBe(
+      "var(--type-card-title)"
     );
-    expect(declarationValue(artRules, ".article-copy p", "font-size")).toBe(
-      "var(--home-copy)"
+    expect(declarationValue(typographyRules, ".article-copy p", "font-size")).toBe(
+      "var(--type-card-excerpt)"
     );
-    expect(declarationValue(artRules, ".section-link", "font-size")).toBe(
-      "var(--home-action-size)"
+    expect(declarationValue(typographyRules, ".section-link", "font-size")).toBe(
+      "var(--type-card-secondary-action)"
     );
 
     const forbiddenFragments = [
@@ -94,6 +99,12 @@ describe("Stage 5B homepage art-direction contract", () => {
     ];
     for (const rule of artRules) {
       expect(["h2", "h3", "p", "button"]).not.toContain(rule.selector);
+      if (rule.selector === ".hero-editorial .section-kicker") {
+        expect(rule.declarations.every((declaration) =>
+          ["align-self", "padding", "color", "background", "border-radius"].includes(declaration.property)
+        )).toBe(true);
+        continue;
+      }
       for (const fragment of forbiddenFragments) {
         expect(rule.selector).not.toContain(fragment);
       }
@@ -145,14 +156,14 @@ describe("Stage 5B homepage art-direction contract", () => {
     expect(
       declarationValue(
         artRules,
-        ".book-of-day .book-action-primary:hover",
+        ".book-of-day .book-action-primary:not(:disabled):hover",
         "background"
       )
     ).toBe("var(--ui-primary-hover)");
     expect(
       declarationValue(
         artRules,
-        ".book-of-day .book-action-primary:hover",
+        ".book-of-day .book-action-primary:not(:disabled):hover",
         "color"
       )
     ).toBe("var(--ink)");

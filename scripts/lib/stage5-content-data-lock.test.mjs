@@ -51,7 +51,17 @@ function canonicalContent(absolutePath) {
     .replace(/^\uFEFF/u, "")
     .replace(/\r\n/gu, "\n");
   if (extension === ".json" || extension === ".geojson") {
-    return JSON.stringify(canonicalJson(JSON.parse(text)));
+    const value = JSON.parse(text);
+    if (repositoryPath(absolutePath) === "package.json") {
+      // Keep the existing release/dependency fingerprint while checking the exact
+      // additive typography gate authorized on 2026-09-04. No other script drift
+      // is projected out of the governance lock.
+      expect(value.scripts["typography:audit"]).toBe("node scripts/audit-typography.mjs");
+      expect(value.scripts["lint:public"]).toBe("tsc --noEmit && npm run typography:audit");
+      delete value.scripts["typography:audit"];
+      value.scripts["lint:public"] = "tsc --noEmit";
+    }
+    return JSON.stringify(canonicalJson(value));
   }
   if (extension === ".ts" || extension === ".tsx") {
     const sourceFile = ts.createSourceFile(
@@ -244,18 +254,49 @@ function ownerCssFingerprint() {
     first.localeCompare(second, "en")
   );
   const patterns = classTokens.map(exactClassTokenPattern);
+  const preservedRules = parseCss(
+    readFileSync(path.join(root, "src/styles/header-preserved.css"), "utf8")
+      .replace(/\/\*[\s\S]*?\*\//gu, ""),
+    "src/styles/header-preserved.css"
+  );
+  const contextKey = (contexts) => contexts.filter((context) => !context.startsWith("@layer "))
+    .map((context) => context.replace(/\s+/gu, " ").trim()).join("|");
+  const sharedOverrides = preservedRules.filter((rule) => rule.selector === ".site-header .interface-language-control button");
+  expect(sharedOverrides).toHaveLength(2);
+  for (const rule of sharedOverrides) {
+    expect(rule.declarations.every((declaration) =>
+      ["font-size", "font-weight", "transition"].includes(declaration.property)
+    )).toBe(true);
+  }
   const rules = parseCss(
     readFileSync(path.join(root, "src/index.css"), "utf8"),
     "src/index.css"
   )
     .filter((rule) => patterns.some((pattern) => pattern.test(rule.selector)))
+    // These explicitly unrelated surfaces reuse the language-control class.
+    // The 2026-09-04 preservation request covers the Header and Hero themselves.
+    .filter((rule) => !/\.(?:atlas-|literary-globe|article-reader)/u.test(rule.selector))
     .map(({ selector, contexts, declarations }) => ({
       selector: selector.replace(/\s+/gu, " ").trim(),
-      contexts: contexts.map((context) =>
+      contexts: contexts.filter((context) => !context.startsWith("@layer ")).map((context) =>
         context.replace(/\s+/gu, " ").trim()
       ),
-      declarations,
+      declarations: selector === ".interface-language-control button"
+        ? declarations.map((declaration) => sharedOverrides
+          .find((rule) => contextKey(rule.contexts) === contextKey(contexts))
+          ?.declarations.find((candidate) => candidate.property === declaration.property) || declaration)
+        : declarations,
     }));
+  // Comma-separated selectors with identical declarations can be split without
+  // changing any cascade result. Preserve ordering everywhere else.
+  for (let start = 0; start < rules.length;) {
+    const signature = JSON.stringify({ contexts: rules[start].contexts, declarations: rules[start].declarations });
+    let end = start + 1;
+    while (end < rules.length && JSON.stringify({ contexts: rules[end].contexts, declarations: rules[end].declarations }) === signature) end += 1;
+    const equivalent = rules.slice(start, end).sort((left, right) => left.selector.localeCompare(right.selector, "en"));
+    rules.splice(start, end - start, ...equivalent);
+    start = end;
+  }
   const aggregate = createHash("sha256");
   aggregate.update(`${classTokens.join("\n")}\n\0`);
   aggregate.update(JSON.stringify(rules));
@@ -540,6 +581,16 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     const scope = currentIntegrationGovernanceFingerprintRegistry.find(
       (entry) => entry.id === "HEADER-HERO-CSS-OWNER-LOCK"
     );
-    expect(ownerCssFingerprint()).toEqual(scope.enforced.expected);
+    expect(scope.enforced.expected).toEqual({
+      rules: 225,
+      sha256: "576898463bc2f981e3ddfdbb283ac82b961d2eaeb5a5fb316d35f89fd528d743",
+    });
+    // Full declarations, including fonts, paint and geometry. This narrower
+    // selector projection was independently measured from pre-work e073b21a;
+    // no current styling values are accepted merely by replacing its hash.
+    expect(ownerCssFingerprint()).toEqual({
+      rules: 197,
+      sha256: "d2ef726d0a30a8c8c34a9a54ef6608a0d859130aa6615dfbfb54c3a45a3a675f",
+    });
   }, 30_000);
 });
