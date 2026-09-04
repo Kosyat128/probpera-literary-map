@@ -1,7 +1,8 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
   promoteArticleWorkingDraftRpc,
+  saveArticleBundleRpc,
   type ArticleBundleRpcInput,
 } from "./article-bundle-rpc";
 
@@ -24,6 +25,7 @@ const bundleInput: ArticleBundleRpcInput = {
 };
 
 describe("article working-draft promotion RPC client", () => {
+  afterEach(() => vi.restoreAllMocks());
   it("sends the exact working-draft CAS version with the bundle", async () => {
     const rpc = vi.fn().mockResolvedValue({
       data: [
@@ -55,6 +57,7 @@ describe("article working-draft promotion RPC client", () => {
   });
 
   it("maps a stale working draft to safe actionable copy", async () => {
+    vi.spyOn(console, "error").mockImplementation(() => {});
     const rpc = vi.fn().mockResolvedValue({
       data: null,
       error: { message: "private detail: WORKING_DRAFT_CONFLICT" },
@@ -77,5 +80,32 @@ describe("article working-draft promotion RPC client", () => {
       })
     ).rejects.toThrow("Не удалось безопасно подтвердить выпуск статьи");
     expect(rpc).not.toHaveBeenCalled();
+  });
+
+  it("reports a permission failure without blaming English or exposing server details", async () => {
+    const diagnostic = vi.spyOn(console, "error").mockImplementation(() => {});
+    const rpc = vi.fn().mockResolvedValue({
+      data: null,
+      error: { code: "42501", message: "private SQL and credential details" },
+    });
+    await expect(saveArticleBundleRpc({ rpc } as never, bundleInput))
+      .rejects.toThrow("ARTICLE_SAVE_PERMISSION");
+    expect(diagnostic).toHaveBeenCalledExactlyOnceWith("article-publication-rpc-failed", {
+      operation: "save_article_bundle", code: "42501",
+    });
+    expect(JSON.stringify(diagnostic.mock.calls)).not.toContain("private");
+  });
+
+  it("explains an address conflict and logs no arbitrary provider content", async () => {
+    const diagnostic = vi.spyOn(console, "error").mockImplementation(() => {});
+    const rpc = vi.fn().mockResolvedValue({
+      data: null,
+      error: { code: "private-value", message: "REDIRECT_LIVE_ROUTE_COLLISION: private SQL" },
+    });
+    await expect(saveArticleBundleRpc({ rpc } as never, bundleInput))
+      .rejects.toThrow("прежний адрес связан с другой страницей");
+    expect(diagnostic).toHaveBeenCalledExactlyOnceWith("article-publication-rpc-failed", {
+      operation: "save_article_bundle", code: "unknown",
+    });
   });
 });
