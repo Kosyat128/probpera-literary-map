@@ -979,14 +979,13 @@
   transform: translateX(-50%);
   transition:
     border-color 160ms ease,
-    background 160ms ease,
+    background-color 160ms ease,
     transform 160ms ease;
 }
 
 .book-shelf-scene-hint:hover {
   border-color: rgba(246, 117, 24, 0.66);
-  background:
-    linear-gradient(135deg, rgba(48, 26, 65, 0.95), rgba(23, 12, 37, 0.92));
+  background-color: rgba(48, 26, 65, 0.95);
   transform: translateX(-50%) translateY(-2px);
 }
 

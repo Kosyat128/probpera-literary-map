@@ -139,13 +139,13 @@ describe("Stage 5B homepage art-direction contract", () => {
     ).toMatch(/!important$/u);
   });
 
-  it("uses canonical action orange and changes Follow Writer colors only", () => {
+  it("uses scoped action orange with white book text and changes Follow Writer colors only", () => {
     expect(
       declarationValue(artRules, ".book-of-day .book-action-primary", "background")
     ).toBe("var(--ui-primary)");
     expect(
       declarationValue(artRules, ".book-of-day .book-action-primary", "color")
-    ).toBe("var(--ink)");
+    ).toBe("#fff");
     expect(
       declarationValue(
         artRules,
@@ -166,7 +166,7 @@ describe("Stage 5B homepage art-direction contract", () => {
         ".book-of-day .book-action-primary:not(:disabled):hover",
         "color"
       )
-    ).toBe("var(--ink)");
+    ).toBe("#fff");
 
     const followWriterRules = artRules.filter((rule) =>
       rule.selector.startsWith(".archive-subscribe.is-writer")

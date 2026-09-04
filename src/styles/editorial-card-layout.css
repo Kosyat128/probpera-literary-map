@@ -15,6 +15,27 @@
     min-inline-size: 0;
   }
 
+  /* Four stories fill complete rows instead of a tall lead and an empty cell. */
+  .editorial-grid:has(> article:nth-child(4):last-child) > article.is-featured {
+    grid-row: auto;
+  }
+
+  .editorial-grid:has(> article:nth-child(4):last-child) > article.is-featured .article-image {
+    aspect-ratio: 16 / 10;
+  }
+
+  @media (min-width: 681px) {
+    .editorial-grid:has(> article:nth-child(4):last-child) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .editorial-grid:has(> article:nth-child(4):last-child) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
   .article-library-grid article,
   .cms-home-articles article,
   .book-of-day > div:not(.book-cover),

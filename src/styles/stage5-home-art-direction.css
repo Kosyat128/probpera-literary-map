@@ -56,7 +56,10 @@
 }
 
 .book-of-day .book-action-primary {
-  color: var(--ink);
+  --ui-primary: color-mix(in srgb, var(--orange-deep) 80%, var(--ink));
+  --ui-primary-hover: color-mix(in srgb, var(--orange-deep) 88%, var(--ink));
+  --ui-primary-active: color-mix(in srgb, var(--orange-deep) 70%, var(--ink));
+  color: #fff;
   background: var(--ui-primary);
   border-color: var(--ui-primary);
 }
@@ -67,12 +70,12 @@
 
 .book-of-day .book-action-primary:not(:disabled):hover,
 .book-of-day .book-action-primary:not(:disabled):focus-visible {
-  color: var(--ink);
+  color: #fff;
   background: var(--ui-primary-hover);
 }
 
 .book-of-day .book-action-primary:not(:disabled):active {
-  color: var(--ink);
+  color: #fff;
   background: var(--ui-primary-active);
   border-color: var(--ui-primary-active);
   box-shadow: inset 0 0 0 2px rgba(19, 2, 32, 0.2);

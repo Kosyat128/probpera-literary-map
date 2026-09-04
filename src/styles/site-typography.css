@@ -91,7 +91,6 @@
   .editorial-standard h3,
   .book-of-day h3 {
     font-family: var(--font-editorial);
-    font-size: var(--type-card-feature-title);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: var(--type-tracking-title);
@@ -99,6 +98,16 @@
     overflow-wrap: normal;
     word-break: normal;
     hyphens: manual;
+  }
+
+  .is-featured .article-copy h3,
+  .is-lead .library-card-copy h3,
+  .editorial-standard h3 {
+    font-size: var(--type-card-feature-title);
+  }
+
+  .book-of-day h3 {
+    font-size: calc(var(--type-card-feature-title) * 1.25);
   }
 
   .journal-engagement h3,
@@ -210,7 +219,8 @@
     word-break: normal;
   }
 
-  .section-link {
+  .section-link,
+  .author-showcase article > a {
     font-family: var(--font-ui);
     font-size: var(--type-card-secondary-action);
     font-weight: 400;
@@ -245,6 +255,43 @@
     font-size: var(--type-card-meta);
   }
 
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters button {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    white-space: normal;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filter-count {
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search > label {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .search-field input {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 400;
+    line-height: var(--type-leading-ui);
+  }
+
+  @media (max-width: 390px) {
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-heading h2 {
+      --type-atlas-title: clamp(2.25rem, 12.72cqi, 2.8125rem);
+      font-size: var(--type-atlas-title);
+    }
+  }
+
   .share-links a,
   .share-links button {
     font-family: var(--font-ui);
@@ -253,7 +300,10 @@
   }
 
   .footer-map a,
-  .footer-map button {
+  .footer-map button,
+  .cms-page-header nav a,
+  .cms-page-header .cms-nav-group > summary,
+  .cms-page-back {
     font-family: var(--font-ui);
     font-size: var(--type-navigation);
     font-weight: 600;
@@ -264,10 +314,11 @@
 
   .footer-brand small,
   .author-showcase em,
-  .author-showcase article > a,
+  .cms-page-brand small,
+  .cms-page-main > article > header small,
   .trust-center summary span {
     font-family: var(--font-ui);
-    font-size: var(--type-caption);
+    font-size: var(--type-card-meta);
     font-weight: 400;
     line-height: var(--type-leading-ui);
     letter-spacing: 0;
@@ -425,6 +476,22 @@
     font-weight: 600;
   }
 
+  .forum-categories button > strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-action);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .forum-categories button > small {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    line-height: var(--type-leading-ui);
+  }
+
   .community-tabs button:not(.is-active) {
     color: var(--type-muted-dark);
   }
@@ -435,7 +502,8 @@
   #community .community-visual-rule > span,
   #community .community-visual-stats small,
   .community-setup > small,
-  .community-header small {
+  .community-header small,
+  .forum-categories button > em {
     color: var(--type-muted-dark);
     font-family: var(--font-ui);
     font-size: var(--type-card-meta);
@@ -448,7 +516,8 @@
   #community .community-visual-rule > span,
   #community .community-visual-stats small,
   .community-setup > small,
-  .community-header small {
+  .community-header small,
+  .forum-categories button > em {
     font-weight: 400;
   }
 
@@ -488,6 +557,9 @@
     font-weight: 400;
     line-height: 1.82;
     text-wrap: pretty;
+  }
+
+  .article-reader-content {
     max-inline-size: 68ch;
   }
 
@@ -554,6 +626,110 @@
 
   .author-showcase article > a {
     color: var(--type-muted-light);
+  }
+
+  /* The owner separately requested these open panels; the Header itself stays original. */
+  .sections-mega-menu,
+  .articles-mega-menu {
+    --sans: "Source Sans 3 Local", "Segoe UI", system-ui, sans-serif;
+    --serif: "Source Serif 4 Local", Georgia, serif;
+    --font-ui: var(--sans);
+    --font-editorial: var(--serif);
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  .sections-mega-menu > header strong,
+  .articles-mega-menu > header strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-feature-title);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+  }
+
+  .sections-mega-groups strong,
+  .articles-mega-content > section strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-related-title);
+    font-weight: 600;
+    line-height: 1.3;
+    text-wrap: pretty;
+  }
+
+  .articles-mega-lead strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-title);
+    font-weight: 400;
+    line-height: 1.2;
+    text-wrap: pretty;
+  }
+
+  .sections-mega-menu > header p,
+  .articles-mega-menu > header p,
+  .articles-mega-lead p {
+    color: var(--type-muted-dark);
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .sections-mega-groups small,
+  .articles-mega-content > section span,
+  .articles-mega-menu > footer > span {
+    color: var(--type-muted-light);
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .sections-mega-menu > header span,
+  .articles-mega-menu > header span,
+  .sections-mega-groups h3,
+  .articles-mega-lead small,
+  .articles-mega-content section small {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: var(--type-tracking-label);
+    text-transform: uppercase;
+  }
+
+  .sections-mega-groups h3,
+  .articles-mega-content section small {
+    color: color-mix(in srgb, var(--orange-deep) 88%, var(--ink));
+  }
+
+  .articles-mega-lead em {
+    color: var(--type-muted-dark);
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-style: normal;
+    line-height: 1.4;
+  }
+
+  .sections-mega-menu > footer a,
+  .articles-mega-menu > footer a {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .articles-mega-loading {
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    line-height: 1.5;
   }
 
   @supports (font-size: 1cqi) {

@@ -2,7 +2,7 @@
 
 Captured from local production builds in Chrome, with loaded fonts and reduced motion. The earlier typography suite passed **7 tests** (one desktop project; each test sets its own mobile/desktop viewport). Its directory checks missed overlapping vertical content; that gap and the later repair are documented below.
 
-The user-preserved Header and Hero retain their original typography and styling. The Source-font and minimum-text-size claims below apply to the edited content blocks, not these protected areas. No retained full-page screenshot is presented as proof of the final homepage.
+The main Header bands and Hero retain their original typography and styling. The owner later explicitly requested restyling the open Sections/Articles panels; those panels are the documented exception. The Source-font and minimum-text-size claims apply to edited content and these panels, not the protected main Header/Hero. No retained full-page screenshot is presented as proof of the final homepage.
 
 ## Results
 
@@ -66,7 +66,31 @@ Article/page previews and the Studio sample load the same 14 local WOFF2 assets 
 
 An existing inheritance limitation remains: a `site/body` override of 23px Georgia changes the body itself, while `.article-copy p` retains its directly declared 16px Source Sans 3 default. Chrome verified this distinction. The cascade was not broadened to force all descendant semantic roles to inherit the body setting. CMS settings were not published, and this work makes no production-deployment claim.
 
+## Navigation panels
+
+Navigation-panel screenshots under `navigation-panels/` with `current`, `compact-preview` or `fix-preview` in their names are **diagnostic**, not final production evidence. The final production captures are `ru-sections-1440.png` and `ru-articles-1440.png`; `ru-sections-390-fixture.png` and `ru-articles-390-fixture.png` explicitly show narrow layout fixtures. The compact layout uses natural Section lists, an opaque cream background and a 40/60 Articles split with the complete image. Sections decreased from 872px to 742.72px high; Articles decreased from 735.97px to 654.30px.
+
+The menu scenario checks real RU/EN desktop dropdowns at 1366, 1440 and 1920px. Narrow 320/390/768/1024 layouts are explicitly labelled fixtures: the preserved mobile Header still uses its original direct navigation. Natural Section lists align group headings and text rails without forcing every description into a shared row. Complete image aspect/frame agreement, stacked-content non-overlap, scroll/footer access and text bounds are checked separately.
+
+The final production matrix in `navigation-panels/geometry.json` passed **all 28 cases**: 12 real desktop dropdown checks and 16 labelled narrow fixtures, with no issues. Group-heading and text-rail differences are **0px**. All 14 images exactly match their frame dimensions; their largest relative aspect-ratio rounding difference is **0.008%**. All **98** measured orange group/category labels have contrast of at least **4.657:1**. Content stays within its natural blocks, the last links remain reachable by scrolling, footer links retain 44px targets, and desktop Enter/Tab/Escape plus visible focus checks pass.
+
+Natural `max-content` stacked rows corrected the collapsed Articles lead found in the first RU 320/390 fixtures. Escape is checked through actual paint/Playwright visibility: a closed native `details` element can retain `visibility: visible` in a descendant's cached computed style while painting no panel. No Escape styling change was needed. The existing desktop menu E2E now asserts that the focused closed summary does not reveal its panel and that Escape leaves it actually invisible; that targeted test passed.
+
 ## Reproduce
+
+Final follow-ups are documented in `final-review/`, `changed-details-review/`, `navigation-panels/` and `atlas-intro-layout/`. They cover the compact four-story grid with matching image/metadata rails, policy accordion height, email touch targets, CMS reading measures, complete forum labels, white book-button states, the 25% book-month heading increase, and the owner's desktop Atlas control row. Source-injection diagnostics are explicitly identified; final built-page screenshots/measurements are separate.
+
+The concluding integration run passed 16 browser tests; the subsequent image-frame change passed both RU/EN card cases again. Public TypeScript/typography lint and all 20 targeted source tests passed. Final build/domain/SEO/performance gates passed with 255307 / 307200 initial gzip bytes. Earlier full release checks were not repeated for each later CSS correction.
+
+```powershell
+npm run lint:public
+npx vitest run scripts/audit-typography.test.mjs scripts/lib/stage5b-art-direction.test.mjs scripts/lib/stage5c-layout-community.test.mjs
+$env:PLAYWRIGHT_PORT = '4184'
+$env:PLAYWRIGHT_REUSE_SERVER = 'true'
+npx playwright test tests/e2e/typography-and-card-geometry.spec.mjs tests/e2e/header-hero-polish.spec.mjs tests/e2e/stage5c-layout-community.spec.mjs tests/e2e/book-archive-history.spec.mjs --project=desktop-chromium --workers=2
+npx playwright test tests/e2e/premium-globe-exploration.spec.mjs --grep 'atlas controls wrap' --workers=1
+node scripts/audit-atlas-intro-layout.mjs http://127.0.0.1:4184/ --cases=ru/320,ru/390,ru/1440,ru/1848
+```
 
 Serve the domain production build at port 4184 in a separate terminal. Do not rebuild `dist` during a browser run.
 

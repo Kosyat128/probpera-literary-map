@@ -10,7 +10,7 @@ const normalizeSelector = (value) => value.trim().replace(/\s+/gu, " ").replace(
 const requiredRoles = [".article-copy h3", ".library-card-copy h3", ".share-links>span", ".article-reader-content", ".cms-page-prose"];
 // Explicit 2026-09-04 user exception: preserve the existing Header/Hero. These
 // roots do not include reader, atlas, footer-brand or arbitrary nested controls.
-const preservedRoot = /^\.(?:topline|site-header|mobile-nav|magazine-hero|brand|sections-menu|sections-mega-menu|sections-mega-groups|articles-menu|articles-mega-menu|articles-mega-lead|articles-mega-content|reader-button|global-search-trigger|hero-editorial|hero-actions|hero-proof|hero-cover|primary-action|secondary-action)(?![\w-])/u;
+const preservedRoot = /^\.(?:topline|site-header|mobile-nav|magazine-hero|brand|sections-menu|articles-menu|reader-button|global-search-trigger|hero-editorial|hero-actions|hero-proof|hero-cover|primary-action|secondary-action)(?![\w-])/u;
 const preservedAliases = {
   "--sans": '"Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
   "--serif": 'Georgia, "Times New Roman", serif',
@@ -25,6 +25,7 @@ function ownsRole(selector, owned) {
 
 function fullText(selector) {
   const value = normalizeSelector(selector);
+  if ([".sections-mega-groups small", ".sections-mega-groups strong", ".articles-mega-lead p", ".articles-mega-lead strong", ".articles-mega-content>section strong"].includes(value)) return true;
   if ([".sections-directory h3", ".sections-directory>div:last-child p", ".section-card-action strong"].includes(value)) return true;
   return /\.(?:article-copy|library-card-copy)(?: |>)?(?:h3|p)$/u.test(value) ||
     /\.(?:article-reader-content|cms-page-prose)(?:(?: |>)?(?:p|li|h[1-6]|blockquote))?$/u.test(value) ||

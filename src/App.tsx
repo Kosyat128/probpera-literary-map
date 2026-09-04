@@ -2219,6 +2219,7 @@ export default function App() {
                   randomDisabled={filteredCountries.length === 0}
                   onRandomJourney={selectRandomLiteraryDestination}
                 />
+          <div className="atlas-intro">
           <header className="atlas-heading" id="atlas-search-panel">
             <div>
               <span
@@ -2470,6 +2471,8 @@ export default function App() {
                 </div>
               )}
             </div>
+          </div>
+
           </div>
 
           {atlasFilter === "nobel" && (

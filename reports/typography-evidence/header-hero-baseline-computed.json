@@ -2,25 +2,33 @@
   {
     "language": "ru",
     "width": 390,
-    "elements": 170,
+    "elements": 91,
+    "contentMatched": true,
+    "attempts": 1,
     "differences": []
   },
   {
     "language": "ru",
     "width": 1440,
-    "elements": 170,
+    "elements": 91,
+    "contentMatched": true,
+    "attempts": 1,
     "differences": []
   },
   {
     "language": "en",
     "width": 390,
-    "elements": 170,
+    "elements": 91,
+    "contentMatched": true,
+    "attempts": 1,
     "differences": []
   },
   {
     "language": "en",
     "width": 1440,
-    "elements": 170,
+    "elements": 91,
+    "contentMatched": true,
+    "attempts": 1,
     "differences": []
   }
 ]

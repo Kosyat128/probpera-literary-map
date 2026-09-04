@@ -458,7 +458,7 @@ test("idle atlas does not bulk-load country flags and Auto Off becomes demand", 
   await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
 });
 
-test("atlas filters stay on one line and rich count matches the collection", async ({
+test("atlas controls wrap without overlap and rich count matches the collection", async ({
   page,
   isMobile,
 }) => {
@@ -482,16 +482,22 @@ test("atlas filters stay on one line and rich count matches the collection", asy
   const buttonBoxes = await ribbonControls.evaluateAll((buttons) =>
     buttons.map((button) => {
       const rect = button.getBoundingClientRect();
-      return { left: rect.left, right: rect.right, top: rect.top };
+      return {
+        left: rect.left, right: rect.right, top: rect.top,
+        bottom: rect.bottom, height: rect.height,
+        overflow: button.scrollWidth - button.clientWidth,
+      };
     })
   );
-  expect(Math.max(...buttonBoxes.map(({ top }) => top))).toBeLessThan(
-    Math.min(...buttonBoxes.map(({ top }) => top)) + 2
-  );
-  for (let index = 1; index < buttonBoxes.length; index += 1) {
-    expect(buttonBoxes[index].left).toBeGreaterThanOrEqual(
-      buttonBoxes[index - 1].right - 0.5
-    );
+  for (let index = 0; index < buttonBoxes.length; index += 1) {
+    const current = buttonBoxes[index];
+    expect(current.height).toBeGreaterThanOrEqual(44);
+    expect(current.overflow).toBeLessThanOrEqual(1);
+    for (const previous of buttonBoxes.slice(0, index)) {
+      const intersectsX = Math.min(current.right, previous.right) - Math.max(current.left, previous.left) > 1;
+      const intersectsY = Math.min(current.bottom, previous.bottom) - Math.max(current.top, previous.top) > 1;
+      expect(intersectsX && intersectsY).toBe(false);
+    }
   }
 
   const ribbonMetrics = await filters.evaluate((element) => {
@@ -504,43 +510,23 @@ test("atlas filters stay on one line and rich count matches the collection", asy
       scrollWidth: element.scrollWidth,
     };
   });
+  expect(ribbonMetrics.overflowX).toBe("visible");
+  expect(ribbonMetrics.scrollHeight).toBeLessThanOrEqual(ribbonMetrics.clientHeight + 1);
+  expect(ribbonMetrics.scrollWidth).toBeLessThanOrEqual(ribbonMetrics.clientWidth + 1);
+  const input = await atlas.locator(".country-search .search-field").boundingBox();
+  const filterBounds = await filters.boundingBox();
+  expect(input).not.toBeNull();
+  expect(filterBounds).not.toBeNull();
   if (isMobile) {
-    expect(ribbonMetrics.overflowX).toBe("auto");
-    expect(ribbonMetrics.scrollWidth).toBeGreaterThan(
-      ribbonMetrics.clientWidth + 8
-    );
-    await expect
-      .poll(() =>
-        page.evaluate(
-          () =>
-            document.documentElement.scrollWidth -
-            document.documentElement.clientWidth
-        )
-      )
-      .toBeLessThanOrEqual(1);
-    await filters.evaluate((element) => {
-      element.scrollLeft = element.scrollWidth;
-    });
-    await expect
-      .poll(() => filters.evaluate((element) => element.scrollLeft))
-      .toBeGreaterThan(0);
-    await expect
-      .poll(() =>
-        page.evaluate(
-          () =>
-            document.documentElement.scrollWidth -
-            document.documentElement.clientWidth
-        )
-      )
-      .toBeLessThanOrEqual(1);
+    expect(input.y).toBeGreaterThanOrEqual(filterBounds.y + filterBounds.height + 16);
   } else {
-    expect(ribbonMetrics.scrollHeight).toBeLessThanOrEqual(
-      ribbonMetrics.clientHeight + 2
-    );
-    expect(ribbonMetrics.scrollWidth).toBeLessThanOrEqual(
-      ribbonMetrics.clientWidth + 2
-    );
+    expect(input.x).toBeGreaterThanOrEqual(filterBounds.x + filterBounds.width + 8);
+    expect(Math.abs(input.y + input.height / 2 - buttonBoxes[0].top - buttonBoxes[0].height / 2)).toBeLessThanOrEqual(1);
+    expect(Math.max(...buttonBoxes.map(({ top }) => top)) - Math.min(...buttonBoxes.map(({ top }) => top))).toBeLessThanOrEqual(1);
+    expect(buttonBoxes[5].left).toBeGreaterThan(buttonBoxes[4].right);
+    expect(input.width).toBeGreaterThanOrEqual(220);
   }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
 
   const rich = filters.locator('[data-atlas-filter="rich"]');
   await expect(rich).toContainText(/10\+ (?:авторов|writers)/iu);

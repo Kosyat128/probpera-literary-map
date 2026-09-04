@@ -4,7 +4,7 @@ Baseline: `e073b21acfea854b3b573aa4613215156957ff38` (`origin/main`). Branch: `c
 
 ## Scope and owner decisions
 
-This is the independent typography task requested in `Типография.txt`. Later owner instructions take precedence: both Header bands and the complete Hero retain their original appearance; the community/forum panels receive a further layout pass; calendar country badges become accessible SVG flag controls.
+This is the independent typography task requested in `Типография.txt`. Later owner instructions take precedence: both Header bands and the complete Hero retain their original appearance; the community/forum panels receive a further layout pass; calendar country badges become accessible SVG flag controls. The owner's final screenshot explicitly authorizes restyling the open Sections and Articles navigation panels only, as a new exception to the earlier complete Header preservation.
 
 Article text, editorial data, translations, routes, SEO metadata, images and book/writer records are preserved. The intentional calendar exception removes the visible generic country caption/name from each event action while retaining the localized country name as its accessible label and tooltip. It does not change the selected country or action.
 
@@ -14,7 +14,7 @@ Article text, editorial data, translations, routes, SEO metadata, images and boo
 - Existing local Source Serif 4 serves editorial headings and reading text; Source Sans 3 serves excerpts, navigation, metadata and actions. The existing WOFF2 files, real 400/600/700 weights and italic faces are reused. No new dependency, font download or CDN was introduced.
 - Card titles respond to their own container: featured 28-38px, standard 20-27px, compact 18-23px, with explicit fallbacks. Directory titles use the stable 24px card role: their shared row containers deliberately have no layout containment. The editorial-standard heading uses the larger featured role at the owner's request, with its supporting list increased to 14px. Excerpts are 16px, metadata 13px, actions 14px. Text is complete; editorial words no longer use `anywhere`/`break-all` wrapping.
 - Reader content retains its existing 90%-130% scale. Heading and body roles scale together; the smallest reader has enough horizontal space for the measured long Russian words.
-- `header-preserved.css` is the explicit, narrow exception for the owner's original system fonts and metrics. Comparison against baseline CSS on the real DOM found zero differences in measured Header/Hero geometry, typography and surfaces: RU/EN at 390px and 1440px, 170 elements per case. See `typography-evidence/header-hero-baseline-computed.json`.
+- `header-preserved.css` is the explicit, narrow exception for the owner's original system fonts and metrics. The initial comparison against baseline CSS found zero differences across 170 Header/Hero elements per RU/EN case at 390px/1440px. The later comparison excludes only the subsequently authorized open navigation panels: all 91 protected elements have zero differences in all four cases. CSS comparisons require identical rendered text so asynchronous archive counters cannot create false geometry differences. See `typography-evidence/header-hero-baseline-computed.json`.
 
 ## Card layout and homepage
 
@@ -22,6 +22,7 @@ Article text, editorial data, translations, routes, SEO metadata, images and boo
 |---|---|---|
 | `--home-title-major`, section headings | `--type-section-title` | Source Serif 4, 28-52px |
 | Featured / lead cards, editorial standard | `--type-card-feature-title` | Source Serif 4, 28-38px in its container |
+| "Book of the month" section heading | `--type-card-feature-title × 1.25` | Source Serif 4, exactly 25% larger than the previous heading at the same width |
 | `.article-copy h3`, `.library-card-copy h3` | `--type-card-title` | Source Serif 4, 20-27px in its container |
 | Directory heading on an uncontained subgrid | `--type-card-title` fallback | Source Serif 4, 24px |
 | Compact cards and author names | `--type-card-compact-title` | Source Serif 4, 18-23px in its container |
@@ -34,6 +35,7 @@ Article text, editorial data, translations, routes, SEO metadata, images and boo
 The removed declarations and original selectors are recorded in `typography-evidence/migrated-declarations.json`, `calendar-migrated-declarations.json` and `community-migrated-declarations.json`.
 
 - Editorial cards use a natural content area and a separate bottom footer. Section links, Share labels and controls share the content rails. Four equal 44×44px controls contain 18px icons; interaction states retain their boxes.
+- A later full-page review found that four editorial cards were still using a three-column composition with a two-row lead, leaving an empty cell and 612px between the lead excerpt and action. The shared four-card composition now uses four complete columns at wide widths, two rows of two at medium widths and the unchanged mobile stack. Matching 16:10 preview frames also align image bottoms and metadata starts. The final desktop grid is 649px high instead of 1306px; the disproportionate lead gap is removed. Other card counts retain their existing composition.
 - Editorial and library preview images now fill their existing rectangular frames with `object-fit: cover` and zero minimum dimensions, as requested. Image assets, proportions and existing focal positions are preserved; reader illustrations and book covers keep their original fitting behavior. Fourteen final screenshots and decoded-image/frame assertions cover real RU/EN cards at 390px/1440px, including the reported Hells Angels image, and two explicitly labeled temporary portrait fixtures.
 - Directory cards use six shared natural grid rows. Eyebrows, titles, descriptions, series, the nested related article and bottom actions align with adjacent cards. Empty desktop slots retain the row landmarks; mobile empty slots collapse.
 - The entire directory CTA label is vertically centered against its 44px arrow circle, including multiline labels. Series links and library filters use the 14px action role and 44px minimum touch targets. Existing keyboard focus rings are restored where local rules previously removed them.
@@ -42,6 +44,12 @@ The removed declarations and original selectors are recorded in `typography-evid
 - Community panels use readable single-column measures inside the desktop pair. Discussion cards show their complete titles, with consistent metadata and spacing. The forum dialog uses restrained heading sizes, readable text, and reachable tabs/close controls.
 - Calendar event rows retain date, writer and country actions. SVG flags replace large text country badges; the date and action columns have consistent rails. Country names remain available to assistive technology.
 - Bookshelf and globe interaction/data pipelines retain their existing structure and assets; their local text uses the shared font aliases.
+- A final review restored the library search and reader sequence keyboard focus, including forced-colors mode. Community discussion controls and the bookshelf scene hint retain a static gradient while their background color transitions smoothly. Portrait attribution uses the 14px secondary-action role; life dates and footer metadata use 13px. Footer buttons and social links now reach 44px on coarse pointers without changing Header controls.
+- Closed editorial-policy cards no longer stretch to the height of their open neighbor. The report-error and footer email actions have 44px targets while prose links retain their normal reading flow.
+- Open navigation panels use Source fonts, 13-14px supporting text and 18/24/30px title roles. Sixty-two old font declarations and twelve clipping declarations were removed from `index.css`. Sections use compact natural lists with common column rails and adapt from four columns to two and one; forced equal text rows were removed after the owner identified excessive whitespace. An opaque cream surface prevents content behind the panel from showing through. The Articles lead uses 40% of the body width and places its full intrinsic-ratio image above the complete copy; the blurred duplicate, image overlay and hover crop are removed. Group names and category labels use a legible orange. The panels have bounded scrolling and reachable footer actions. The original mobile Header routes users directly to the catalog; narrow popup layouts are checked as explicit fixtures, not presented as newly available mobile navigation.
+- The "Book of the month" heading is exactly 25% larger at the same container width, as separately requested. Standard reader section headings have responsive 32-48px top margins plus 20px separator padding instead of 78px plus 26px; subheadings use 24-36px top margins instead of 55px. The book theme keeps its specific pagination spacing and the reader's font scale remains available.
+- The book-month heading measures 28px before and 35px after at both 390px and 1440px. Its real loaded cover, full copy and actions remain visible. The owner's subsequent white-text request applies to the book-month "About the book" button: its label stays white in rest, hover, keyboard-focus and pressed states. Scoped darker orange shades retain contrast without changing the global palette.
+- The owner separately authorized reorganizing the embedded Literary Planet controls. A small layout wrapper retains the existing heading/search/filter nodes and IDs; filters start at the left and search occupies the right of the same control row, with a stacked narrow layout. Immersive panels retain their existing owners. This does not change globe rendering, selection, search data or navigation logic.
 
 ## CMS compatibility
 
@@ -50,6 +58,8 @@ The existing site/component/template/page/instance model and breakpoint order ar
 Admin article/page previews and the Studio typography sketch load the same existing local font files. The font source editor clears an incompatible previous family when switching between uploaded and system fonts.
 
 The inherited body-setting behavior is intentionally retained: a body override changes inherited body text, while an explicit child role keeps its own size/family. The Studio sketch remains a structural sample; browser compatibility checks use the actual public CSS generator. No CMS publication or external data mutation was performed. See `typography-evidence/cms-compatibility.md`.
+
+The public-template review also aligns CMS headers and prose to one reading measure (316px at 390px, capped at 760px on desktop), removes double side padding and reduces combined bottom padding from 182px to 72/112px. Wide tables and code reuse the reader's horizontal scrolling and scaled technical-text role. Forum category titles and descriptions wrap fully instead of ending in an ellipsis. All 36 assertions in four source-CSS fixtures pass; these are explicitly representative CMS/forum fixtures, not live CMS content or authenticated forum data. The route-family mapping and limits are in `typography-evidence/final-review/public-template-review.md`.
 
 ## Evidence and validation
 
@@ -67,7 +77,7 @@ Integrated validation results:
 |---|---|
 | `npm run lint` | Passed public/admin type checks, text policy and typography audit |
 | `npm test` | 501 files passed, 2 skipped; 2902 tests passed, 3 skipped |
-| `npm run typography:audit` | 16 public CSS files, 0 issues |
+| `npm run typography:audit` | 18 public CSS files, 0 issues |
 | Focused typography Playwright suite | 7/7 passed; both locales and ten viewports are exercised inside the suite |
 | Added wide-directory Playwright regressions | 2/2 passed; initial/loaded/expanded states at 1767px and 1920px, RU/EN |
 | Final typography suite plus homepage geometry after interaction polish | 10/10 passed (the nine typography tests and existing Stage 5C browser regression) |
@@ -79,10 +89,16 @@ Integrated validation results:
 | Calendar SVG and geometry audit | 30/30 content and control-state cases; 0px writer/flag rail spread, loaded SVGs and localized accessible labels |
 | CMS and audit focused tests | 33/33 passed |
 | Final source guard and layout contract tests | 20/20 passed, including the new subgrid containment guard |
+| Public-template integration before the last Atlas/action follow-up | 22 browser tests passed, 1 mobile-only case skipped in the desktop project; typography, Header/Hero, reader themes, globe controls, community and homepage geometry |
+| Final card/menu integration | 16/16 browser tests passed; two additional RU/EN card tests passed after image-frame alignment |
+| Final navigation panels | 28/28 cases passed: 12 real desktop dropdowns and 16 explicit narrow fixtures; 98 orange labels at minimum 4.657:1 contrast |
+| Loaded book-month heading and button | 28→35px at 390/1440; white label retained in all eight recorded button states, contrast 4.817–6.319:1, fixed geometry |
+| Final four-story grid, policy cards and email controls | 22/22 assertions passed at 390/1440 against built pages, with actual decoded images and content/link comparison |
+| Final Atlas control row | 4/4 built-page cases at 320/390/1440/1848; six buttons and search share one row at 1440/1848 with 0px button-row spread, all controls 48px high, no heading clipping. Updated desktop/mobile control E2E: 2/2 passed. Earlier immersive enter/search/filter/Escape/exit smoke also passed |
 | Admin production build | Passed |
 | Snapshot/domain public build, domain and SEO audits | Passed |
 | Release content/configuration/editorial/book/cover/globe gates | All completed successfully |
-| Performance budget | Passed, 4564 production files; initial module/preload/CSS gzip 253872 / 307200 bytes |
+| Final performance budget | Passed, 4564 production files; initial module/preload/CSS gzip 255307 / 307200 bytes |
 
 The `release:check` chain was resumed from its remaining gates after Windows CRLF checkout bytes caused exact-generation comparisons to fail. Each affected artifact was first compared with the baseline; only line endings were restored. Git-normalized data and authored content are unchanged. Already successful tests were not repeated just to restart the chain. Verification used the versioned CMS snapshot (`CMS_SNAPSHOT_PREEXPORTED=true`) without a live CMS export.
 

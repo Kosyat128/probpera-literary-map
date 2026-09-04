@@ -104,6 +104,7 @@ test("desktop menus stay viewport-safe and return keyboard focus on Escape", asy
       const summary = details.locator(":scope > summary");
       const panel = details.locator(`.${menuClass}-mega-menu`);
       await summary.focus();
+      await expect(panel).not.toBeVisible();
       await page.keyboard.press("Enter");
       await expect(details).toHaveAttribute("open", "");
       await expect(panel).toBeVisible();
@@ -113,6 +114,7 @@ test("desktop menus stay viewport-safe and return keyboard focus on Escape", asy
       await page.keyboard.press("Escape");
       await expect(details).not.toHaveAttribute("open", "");
       await expect(summary).toBeFocused();
+      await expect(panel).not.toBeVisible();
     }
   }
 });

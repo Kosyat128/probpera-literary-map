@@ -1,0 +1,100 @@
+@layer site-defaults {
+  /* Keep the existing search/filter panel owners intact in immersive mode. */
+  .atlas-intro {
+    display: contents;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-intro {
+    container-type: inline-size;
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(220px, calc(25vw - 140px), 320px);
+    gap: 48px 16px;
+    max-width: 1530px;
+    margin: 0 auto 24px;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-heading {
+    display: contents;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-heading > div:first-child {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search {
+    grid-area: 2 / 2;
+    align-self: start;
+    min-width: 0;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search > label {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    margin: 0;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .search-field {
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    min-height: var(--ui-control-lg);
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .search-field input {
+    min-width: 0;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-toolbar {
+    grid-area: 2 / 1;
+    align-self: start;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start;
+    padding: 0;
+    overflow: visible;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filter-options {
+    display: contents;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters button {
+    min-height: var(--ui-control-lg);
+    max-width: 100%;
+    padding-block: var(--ui-space-2);
+  }
+
+  @media (min-width: 961px) and (max-width: 1499px) {
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters button {
+      padding-inline: var(--ui-space-2);
+    }
+  }
+
+  @media (max-width: 960px) {
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-intro {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-toolbar {
+      grid-area: 2 / 1;
+    }
+
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search {
+      grid-area: 3 / 1;
+    }
+
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search > label {
+      position: static;
+      margin-bottom: 8px;
+    }
+  }
+}

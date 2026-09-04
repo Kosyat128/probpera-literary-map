@@ -70,9 +70,15 @@ describe("Stage 5C homepage layout and community contract", () => {
     ]);
 
     expect(layoutCss).not.toContain("!important");
+    expect(value("#editorial-policy > div", "align-items")).toBe("start");
     for (const rule of rules) {
+      const editorialPolicyLayout = rule.selector === "#editorial-policy > div";
+      if (editorialPolicyLayout) {
+        expect(rule.declarations.map(({ property, value }) => ({ property, value })))
+          .toEqual([{ property: "align-items", value: "start" }]);
+      }
       expect(
-        allowed.some((prefix) => rule.selector.startsWith(prefix)),
+        editorialPolicyLayout || allowed.some((prefix) => rule.selector.startsWith(prefix)),
         rule.selector
       ).toBe(true);
       expect(["article", "button", "div", "footer", "h2", "h3", "p"]).not.toContain(

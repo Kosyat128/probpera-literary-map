@@ -29,6 +29,8 @@ import './styles/stage5f-responsive-accessibility.css';
 import './styles/editorial-card-layout.css';
 import './styles/community-editorial-layout.css';
 import './styles/calendar-layout.css';
+import './styles/navigation-panels.css';
+import './styles/atlas-intro-layout.css';
 import './styles/site-typography.css';
 import './styles/header-preserved.css';
 installSafeWebStorage();

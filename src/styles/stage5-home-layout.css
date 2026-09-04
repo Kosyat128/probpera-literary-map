@@ -1,6 +1,10 @@
 @layer site-defaults {
 /* Stage 5C: scoped homepage composition, shared card rows, and responsive flow. */
 
+#editorial-policy > div {
+  align-items: start;
+}
+
 #book-day.daily-grid {
   grid-template-columns: minmax(0, 1.22fr) minmax(340px, 0.78fr);
   grid-template-rows: auto;

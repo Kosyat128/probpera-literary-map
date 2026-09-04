@@ -14,6 +14,14 @@
  * artwork and keep the document itself available for normal page reflow.
  */
 
+.trust-center .section-heading > a[href^="mailto:"],
+.footer-bottom > a[href^="mailto:"] {
+  display: inline-flex;
+  align-items: center;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+}
+
 @media (any-pointer: coarse) {
   :where(
     .ui-action,
@@ -50,11 +58,13 @@
     min-block-size: 44px;
   }
 
-  /* Compact reader and series controls need explicit touch-size overrides. */
+  /* Compact reader, series and footer controls need explicit touch-size overrides. */
   .article-reader-bar .interface-language-control button,
   .article-reader-bar .display-mode-control.is-compact button,
   .article-library-series button,
-  .section-card-series a {
+  .section-card-series a,
+  .footer-map button,
+  .site-footer .header-socials .social-link {
     min-inline-size: 44px;
     min-block-size: 44px;
   }

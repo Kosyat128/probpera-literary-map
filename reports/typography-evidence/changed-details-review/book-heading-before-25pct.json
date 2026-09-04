@@ -1,0 +1,90 @@
+[
+  {
+    "width": 390,
+    "title": "Лолита",
+    "h3": {
+      "tag": "H3",
+      "text": "Книга месяца",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": 28,
+      "bounds": {
+        "left": 46,
+        "right": 344,
+        "top": 521.828125,
+        "bottom": 552.625
+      },
+      "ink": {
+        "left": 46,
+        "right": 233.359375,
+        "top": 517.828125,
+        "bottom": 555.828125
+      },
+      "clamp": "none",
+      "overflow": 0
+    },
+    "h4": {
+      "tag": "H4",
+      "text": "Лолита",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": 23,
+      "bounds": {
+        "left": 46,
+        "right": 344,
+        "top": 573.625,
+        "bottom": 610.421875
+      },
+      "ink": {
+        "left": 46,
+        "right": 129.078125,
+        "top": 575.625,
+        "bottom": 607.625
+      },
+      "clamp": "none",
+      "overflow": 0
+    }
+  },
+  {
+    "width": 1440,
+    "title": "Лолита",
+    "h3": {
+      "tag": "H3",
+      "text": "Книга месяца",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": 28,
+      "bounds": {
+        "left": 404.609375,
+        "right": 794.703125,
+        "top": 341.046875,
+        "bottom": 371.84375
+      },
+      "ink": {
+        "left": 404.609375,
+        "right": 591.96875,
+        "top": 337.046875,
+        "bottom": 375.046875
+      },
+      "clamp": "none",
+      "overflow": 0
+    },
+    "h4": {
+      "tag": "H4",
+      "text": "Лолита",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": 23,
+      "bounds": {
+        "left": 404.609375,
+        "right": 794.703125,
+        "top": 392.84375,
+        "bottom": 429.640625
+      },
+      "ink": {
+        "left": 404.609375,
+        "right": 487.6875,
+        "top": 394.84375,
+        "bottom": 426.84375
+      },
+      "clamp": "none",
+      "overflow": 0
+    }
+  }
+]
