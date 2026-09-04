@@ -168,6 +168,8 @@ describe("article editor panels", () => {
     expect(scheduled).toContain('type="datetime-local"');
     expect(scheduled).not.toMatch(/\srequired(?:=|\s|>)/u);
     expect(scheduled).toContain("Укажите дату и время");
+    expect(scheduled).toContain("Публикация на русском доступна без английского перевода");
+    expect(scheduled).toContain("Работать также с английской версией");
     expect(scheduled).toContain("ручное подтверждение редакционного чек-листа");
     expect(editorOnly).not.toContain('value="published"');
     expect(editorOnly).toContain("Выпуск выполнит администратор");

@@ -1242,8 +1242,10 @@ export default function ArticleEditor({
   }, [isDirty, recoveryDraftScope, recoveryKey]);
 
   const {
-    checks: publicationChecks,
+    checks: bilingualPublicationChecks,
+    russianChecks,
     ready: publicationReady,
+    russianReady: russianPublicationReady,
     russianWordCount,
     englishWordCount,
   } = useArticleValidation({
@@ -1281,18 +1283,34 @@ export default function ArticleEditor({
   });
   const wordCount =
     activeLocale === "en" ? englishWordCount : russianWordCount;
+  const russianOnlyPublication =
+    activeLocale === "ru" &&
+    englishEnabled &&
+    status !== "hidden" &&
+    status !== "archived";
+  const publicationChecks = russianOnlyPublication
+    ? russianChecks
+    : bilingualPublicationChecks;
   const publicationActionReady =
-    status === "hidden" || status === "archived" || publicationReady;
+    status === "hidden" ||
+    status === "archived" ||
+    (russianOnlyPublication ? russianPublicationReady : publicationReady);
   const publicationActionLabel =
     status === "scheduled"
-      ? "Запланировать публикацию"
+      ? russianOnlyPublication
+        ? "Запланировать русскую публикацию"
+        : "Запланировать публикацию"
       : status === "hidden"
         ? "Скрыть статью с сайта"
         : status === "archived"
           ? "Перенести статью в архив"
           : status === "published"
-            ? "Проверить и обновить публикацию"
-            : "Проверить и опубликовать";
+            ? russianOnlyPublication
+              ? "Обновить русскую публикацию"
+              : "Проверить и обновить публикацию"
+            : russianOnlyPublication
+              ? "Опубликовать на русском"
+              : "Проверить и опубликовать";
 
   const workspaceDocument = useMemo(() => {
     const outline: Array<{
@@ -2054,6 +2072,11 @@ export default function ArticleEditor({
         }, 15_000);
       }}
     >
+      <input
+        type="hidden"
+        name="russian_publication_ready"
+        value={russianPublicationReady ? "yes" : "no"}
+      />
       <RecoveryController
         locator={{
           entityType: "article",
@@ -2420,9 +2443,11 @@ export default function ArticleEditor({
             sectionRef={(element) =>
               registerWorkspaceSection("quality", element)
             }
-            englishEnabled={englishEnabled}
+            englishEnabled={englishEnabled && !russianOnlyPublication}
             checks={publicationChecks}
-            ready={publicationReady}
+            ready={
+              russianOnlyPublication ? russianPublicationReady : publicationReady
+            }
           />
 
           <SourceBibliographyEditor
@@ -2562,7 +2587,7 @@ export default function ArticleEditor({
                 className="button"
                 type="submit"
                 name="intent"
-                value="publish"
+                value={russianOnlyPublication ? "publish-ru" : "publish"}
                 disabled={!publicationActionReady || isImageUploadActive}
                 title={
                   publicationActionReady
@@ -2572,6 +2597,20 @@ export default function ArticleEditor({
               >
                 {publicationActionLabel}
               </button>
+              {russianOnlyPublication && (
+                <button
+                  className="button-secondary"
+                  type="submit"
+                  name="intent"
+                  value="publish"
+                  disabled={!publicationReady || isImageUploadActive}
+                  title="Обе версии должны пройти редакционный контроль"
+                >
+                  {status === "scheduled"
+                    ? "Запланировать обе версии"
+                    : "Опубликовать обе версии"}
+                </button>
+              )}
               {canOverridePublicationChecklist && (
                 <details className="publication-override-disclosure">
                   <summary>Дополнительные действия</summary>
@@ -2579,7 +2618,7 @@ export default function ArticleEditor({
                     className="button-secondary"
                     type="submit"
                     name="intent"
-                    value="publish"
+                    value={russianOnlyPublication ? "publish-ru" : "publish"}
                     disabled={isImageUploadActive}
                     onClick={(event) => {
                       const form = event.currentTarget.form;

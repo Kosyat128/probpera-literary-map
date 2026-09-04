@@ -5,6 +5,7 @@ import {
   CMS_EDIT_BRIDGE_CAPABILITIES,
   CMS_EDIT_BRIDGE_LEGACY_VERSION,
   CMS_EDIT_BRIDGE_VERSION,
+  canSelectCmsInterfaceText,
   cmsEditBreakpointForWidth,
   cmsEditReadyMessage,
   cmsEntityFieldMarker,
@@ -147,6 +148,14 @@ describe("CMS direct-edit bridge security", () => {
     expect(shouldPreferCmsLeafText("image", false, true)).toBe(true);
     expect(shouldPreferCmsLeafText("image", true, true)).toBe(false);
     expect(shouldPreferCmsLeafText("text", false, true)).toBe(false);
+  });
+
+  it("keeps interface text selectable inside core-section background markers", () => {
+    expect(canSelectCmsInterfaceText(undefined)).toBe(true);
+    expect(canSelectCmsInterfaceText("homepage-core")).toBe(true);
+    for (const entity of ["article", "page", "book", "writer", "homepage-block", "banner", "navigation-item"]) {
+      expect(canSelectCmsInterfaceText(entity)).toBe(false);
+    }
   });
 
   it("leaves Shift/Alt interactions to the embedded globe and controls", () => {

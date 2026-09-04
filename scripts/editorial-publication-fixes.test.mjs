@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { describe, expect, it } from "vitest";
+import { normalizeShortHyphensDeep } from "./lib/short-hyphens.mjs";
 
 import {
   applyConfirmedCopyReplacements,
@@ -25,6 +26,32 @@ describe("confirmed editorial publication fixes", () => {
         ["исходный текст", "промежуточный текст"],
       ]),
     ).toBe("готовый текст");
+  });
+
+  it.each([
+    "13723645-4457-4386-9d66-8b94f4b90743",
+    "df0e0863-989f-4361-92bb-067b81bd80ab",
+  ])("keeps %s corrected after the export normalizes long dashes", (id) => {
+    const [before, after] = CONFIRMED_RUSSIAN_COPY_REPLACEMENTS[id].find(
+      ([source]) => source.includes(" - "),
+    );
+
+    for (const dash of ["\u2013", "\u2014", "\u0026mdash;", "\u0026#8212;"]) {
+      const text = before.replaceAll(" - ", ` ${dash} `);
+      const exported = normalizeShortHyphensDeep(
+        applyEditorialPublicationFix({
+          id: `cms-${id}`,
+          content_html: `<p>${text}</p>`,
+          contentHtml: `<p>${text}</p>`,
+          plainText: text,
+        }),
+      );
+
+      expect(exported.content_html).toBe(`<p>${after}</p>`);
+      expect(exported.contentHtml).toBe(`<p>${after}</p>`);
+      expect(exported.plainText).toBe(after);
+      expect(applyEditorialPublicationFix(exported)).toEqual(exported);
+    }
   });
 
   it("replaces the mismatched film metadata on the mythology article", () => {

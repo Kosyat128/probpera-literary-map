@@ -1,3 +1,5 @@
+import { normalizeShortHyphens } from "./lib/short-hyphens.mjs";
+
 export const LATEST_EDITORIAL_ARTICLE_ID =
   "2cbd3bd0-78c6-445e-9af9-8c643afc1104";
 export const MYTHOLOGY_EXPRESSIONS_ARTICLE_ID =
@@ -486,7 +488,9 @@ export function applyEditorialPublicationFix(article) {
       continue;
     }
     const value = applyConfirmedCopyReplacements(
-      corrected[field],
+      // The export's final dash normalization must not introduce an unapplied
+      // confirmed correction after this pass has already finished.
+      normalizeShortHyphens(corrected[field]),
       russianCopyReplacements,
     );
     if (value !== corrected[field]) {
