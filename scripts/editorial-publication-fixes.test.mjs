@@ -36,7 +36,7 @@ describe("confirmed editorial publication fixes", () => {
       ([source]) => source.includes(" - "),
     );
 
-    for (const dash of ["\u2013", "\u2014", "&mdash;", "&#8212;"]) {
+    for (const dash of ["\u2013", "\u2014", "\u0026mdash;", "\u0026#8212;"]) {
       const text = before.replaceAll(" - ", ` ${dash} `);
       const exported = normalizeShortHyphensDeep(
         applyEditorialPublicationFix({
