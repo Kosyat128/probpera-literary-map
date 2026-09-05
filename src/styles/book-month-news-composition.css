@@ -1,0 +1,177 @@
+/* Local news preview: book and supporting cards share the same bottom edge. */
+#book-day.has-literary-news {
+  column-gap: 22px;
+  row-gap: 10px;
+  scroll-margin-top: 100px;
+}
+
+#book-day.has-literary-news > .book-month-supporting {
+  grid-template-rows: auto minmax(0, 1fr);
+  align-content: stretch;
+  align-items: stretch;
+  gap: 20px;
+}
+
+#book-day.has-literary-news .book-fact-card {
+  position: relative;
+  display: block;
+  align-self: stretch;
+  min-height: 280px;
+  padding: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(232, 183, 135, 0.2);
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse at 100% 0, rgba(113, 49, 115, 0.3), transparent 70%),
+    radial-gradient(ellipse at 0 100%, rgba(191, 80, 27, 0.18), transparent 60%),
+    linear-gradient(135deg, #2b113a, #15091f 88%);
+  box-shadow: 0 12px 28px rgba(33, 11, 43, 0.08);
+}
+
+#book-day.has-literary-news .book-fact-card::after {
+  width: 190px;
+  height: 190px;
+  right: -90px;
+  bottom: -100px;
+  border-color: rgba(226, 186, 142, 0.12);
+  pointer-events: none;
+}
+
+#book-day.has-literary-news .book-fact-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+#book-day.has-literary-news .book-fact-card .section-kicker {
+  display: block;
+  padding-right: 40px;
+  color: #edb67b;
+  letter-spacing: 0.12em;
+}
+
+#book-day.has-literary-news .book-fact-card h3 {
+  max-width: calc(100% - 38px);
+  margin: 10px 0 12px;
+  color: #fff6ec;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+#book-day.has-literary-news .book-fact-card p {
+  max-width: 52ch;
+  margin: 0 0 20px;
+  color: #e1d3e4;
+  line-height: 1.65;
+}
+
+#book-day.has-literary-news .book-fact-card a {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 40px;
+  margin-top: auto;
+  padding: 12px 0 0;
+  border-top: 1px solid rgba(240, 205, 167, 0.2);
+  color: #f2bd83;
+  font: 600 var(--type-card-meta)/1.65 var(--font-ui);
+  letter-spacing: 0.045em;
+  text-decoration: none;
+  text-wrap: pretty;
+}
+
+#book-day.has-literary-news .book-fact-card a:hover {
+  color: #fff6ec;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+#book-day.has-literary-news .book-fact-card a:focus-visible {
+  outline: 2px solid #f2bd83;
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+
+#book-day.has-literary-news .book-fact-orbit {
+  position: absolute;
+  top: 25px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  color: #f2bd83;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+#book-day.has-literary-news .book-fact-orbit::before,
+#book-day.has-literary-news .book-fact-orbit::after {
+  width: 36px;
+  height: 26px;
+  inset: 5px 0;
+  border-color: rgba(242, 189, 131, 0.45);
+}
+
+#book-day.has-literary-news .book-fact-orbit i {
+  width: 4px;
+  height: 4px;
+  top: 4px;
+  right: 2px;
+}
+
+#book-day.has-literary-news > .news-editorial-context {
+  grid-column: 2;
+  min-width: 0;
+  color: var(--muted, #74636e);
+}
+
+.news-editorial-context > summary {
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 0;
+  font: 12px/1.6 var(--font-ui);
+  cursor: pointer;
+}
+
+.news-editorial-context > summary:focus-visible {
+  outline: 2px solid #c34a00;
+  outline-offset: 4px;
+}
+
+.news-editorial-context[open] > summary {
+  margin-bottom: 12px;
+}
+
+@media (max-width: 1360px) {
+  #book-day.has-literary-news > .book-month-supporting {
+    grid-template-rows: auto;
+  }
+
+  #book-day.has-literary-news > .news-editorial-context {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  #book-day.has-literary-news > .book-month-supporting {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  #book-day.has-literary-news .book-fact-card {
+    min-height: 0;
+    padding: 24px 20px;
+  }
+
+  #book-day.has-literary-news .book-fact-card h3 {
+    max-width: calc(100% - 25px);
+  }
+
+  #book-day.has-literary-news .book-fact-orbit {
+    right: 18px;
+    top: 22px;
+  }
+}
