@@ -1,0 +1,15 @@
+﻿shot_id,store,platform,locale,device_class,orientation,screen,must_show,must_not_show,source_build_required,rights_check,optional_purchase_disclosure,status
+SS-001,all,all,ru,phone,portrait,Adult Home,canonical live globe; brand; core CTA,concept art; fake counters; Disney,true,true,not_applicable,PLANNED
+SS-002,all,all,ru,phone,portrait,Globe Explore,real edition; country selection; controls,flat screenshot replacing globe; debug UI,true,true,not_applicable,PLANNED
+SS-003,all,all,ru,phone,portrait,Writer Profile,real approved portrait or faceless placeholder; flag; verified bio,generated face; fake quote/cover,true,true,not_applicable,PLANNED
+SS-004,all,all,ru,phone,portrait,Search/Collection,real results; favorites/offline,unimplemented filters; adult content in child UI,true,true,not_applicable,PLANNED
+SS-005,all,all,ru,phone,portrait,Child Home,Планетка; child navigation; included content,price; Buy; adult recommendation; Disney without license,true,true,not_applicable,PLANNED
+SS-006,all,all,ru,phone,portrait,Child Journey,age-approved writer/work; globe step,adult biography; unlicensed character,true,true,not_applicable,PLANNED
+SS-007,all,all,ru,phone,portrait,Customization Starter Set,included skins/stands/backgrounds; live preview,fake locked wall; mock price,true,true,included_in_base,PLANNED
+SS-008,all,all,ru,phone,portrait,Adult Optional Store,real localized price; optional label,hardcoded price; child upsell; unavailable pack,true,true,required,PLANNED
+SS-009,all,all,ru,phone,portrait,Parent Center,age and topic controls; privacy,raw PIN; child personal data,true,true,not_applicable,PLANNED
+SS-010,all,all,ru,phone,portrait,Offline Downloads,downloaded packages and storage,fake offline claim,true,true,not_applicable,PLANNED
+SS-011,App Store,ios,en,phone,portrait,Core feature set,localized real UI,Android/RuStore branding,true,true,as_needed,PLANNED
+SS-012,App Store,ipados,ru,tablet,landscape,Globe/Writer split layout,real iPad adaptive UI,stretched phone mockup,true,true,not_applicable,PLANNED
+SS-013,Google Play,android-google,ru,tablet,landscape,Globe/Child experience,real tablet layout,App Store/RuStore badge,true,true,as_needed,PLANNED
+SS-014,RuStore,android-rustore,ru,phone,portrait,Standalone offline app,real app mechanics,Google Play/App Store link,true,true,as_needed,PLANNED

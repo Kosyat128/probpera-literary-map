@@ -1,0 +1,89 @@
+﻿area_id,area,weight,status,mandatory,evidence_required,score,release_blocker
+RR-01,Site canon/parity,5,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-02,Web/PWA paid edition,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-03,Android Google Play,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-04,Android RuStore,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-05,iOS/iPadOS,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-06,Paid Starter Set,5,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-07,Optional store/server verification,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-08,Child mode/Parent Gate,5,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-09,Planetka/journeys,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-10,Characters/StoryWorld,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-11,Disney rights gating,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-12,Customization/full-3D,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-13,Content/offline/update,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-14,Admin owner self-service,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-15,Security/privacy,5,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-16,Accessibility/localization/audio,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-17,Performance/reliability,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-18,Support/incidents/backups,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-19,Store/legal/submission,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-20,Traceability/handoff,3,NOT_STARTED,true,tests; reports; artifacts; commits,0,true
+RR-21,App name/brand consistency,2,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-22,Whole-binary age rating/target audience,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-23,Reviewer access/demo credentials,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-24,Privacy/Data Safety/account deletion,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-25,App Store moderation dossier,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-26,Google Play moderation dossier,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-27,RuStore moderation dossier,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-28,Exact-RC screenshot/metadata truth,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-29,IP rights-clean binary scan,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-30,Permissions/store-variant hygiene,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-31,Current SDK/target/toolchain compliance,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-32,Technical moderation smoke,5,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-33,Rejection/resubmission readiness,3,NOT_STARTED,true,tests; reports; exact RC artifact; dossier; commits,0,true
+RR-34,Single owner input and missing-input report,5,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-35,SAFE_PAID_BILINGUAL_V1 first-release profile,5,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-36,Accountless-first and one optional product,4,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-37,Secrets/signing backup and least privilege,4,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-38,Apple DSA/export/privacy API compliance,5,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-39,Android developer verification and package registration,5,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-40,Territory/legal readiness,4,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-41,Store API draft-upload automation,4,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-42,One-command release preparation,5,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-43,Final owner approval and handoff folder,5,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-44,First 72-hour launch operations,3,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-45,Context-efficient Codex continuation,4,NOT_STARTED,true,tests; generated artifacts; reports; commits; owner handoff,0,true
+RR-46,Child privacy jurisdiction and consent gates,5,NOT_STARTED,true,data-flow; territory matrix; owner/legal approval; fresh-reader handoff test,0,true
+RR-47,Single self-contained owner handoff usability,5,NOT_STARTED,true,data-flow; territory matrix; owner/legal approval; fresh-reader handoff test,0,true
+RR-48,Machine-readable SAFE_PAID_BILINGUAL_V1 and automation state,4,NOT_STARTED,true,schema; generated state; action matrix; final stop report,0,true
+RR-49,Zero-owner-programming action matrix,5,NOT_STARTED,true,schema; generated state; action matrix; final stop report,0,true
+RR-50,Final execution/stop-condition honesty,5,NOT_STARTED,true,schema; generated state; action matrix; final stop report,0,true
+RR-51,Offline owner approval report and export,3,NOT_STARTED,true,HTML usability; schema-valid exported approval JSON; artifact binding,0,true
+RR-52,Russian and English locale architecture,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-53,State-preserving language switching,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-54,English UI and native resource coverage,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-55,Translation quality and source-hash staleness,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-56,English writer names and work titles,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-57,Cross-language search and transliteration,4,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-58,Base Edition English content completeness,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-59,English CMS translation workflow,4,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-60,English Child Mode and Planetka,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-61,"English audio, transcripts and voice rights",4,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-62,Locale-specific offline packages,4,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-63,Localized App Store and Google Play materials,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-64,RuStore bilingual app moderation,3,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-65,Bilingual legal and support parity,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-66,Bilingual layout accessibility and pseudo-locale QA,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-67,Bilingual owner/reviewer handoff,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-68,Bilingual release metrics and publishing gate,5,NOT_STARTED,true,coverage; tests; exact RC screenshots; source/rights evidence; owner handoff,0,true
+RR-69,Controlled English style and variant consistency,4,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-70,Bilingual Web/PWA SEO canonical and hreflang,5,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-71,Bilingual legal controlling-language parity,5,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-72,AI/MT translation assistance governance,5,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-73,Bilingual support email and incident readiness,4,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-74,Machine-readable bilingual release evidence,5,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-75,English name and work-title evidence matrix,5,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-76,Weighted translation quality scorecard,5,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-77,Per-store bilingual submission field matrix,4,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-78,Independent Russian-owner and English-reviewer handoff usability,5,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-79,English post-build operational guide completeness,4,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-80,Legal/support version staleness and rollout blocking,4,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-81,Translation provider privacy rights and provenance audit,4,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-82,English web discovery and non-indexable stale-content gate,4,NOT_STARTED,true,tests; exact artifacts; reports; store/legal/content approval,0,true
+RR-83,Bilingual release evidence example and schema validation,4,NOT_STARTED,true,schemas; instances; tests; reports; exact RC hashes,0,true
+RR-84,Translation provider registry and data governance,5,NOT_STARTED,true,schemas; instances; tests; reports; exact RC hashes,0,true
+RR-85,Localized legal document version/hash schema,4,NOT_STARTED,true,schemas; instances; tests; reports; exact RC hashes,0,true
+RR-86,Signed compatible locale packages and rollback,5,NOT_STARTED,true,schemas; instances; tests; reports; exact RC hashes,0,true
+RR-87,Bilingual editorial correction and stale propagation,4,NOT_STARTED,true,schemas; instances; tests; reports; exact RC hashes,0,true
+RR-88,Bilingual commands/CI and final no-return contract,5,NOT_STARTED,true,schemas; instances; tests; reports; exact RC hashes,0,true

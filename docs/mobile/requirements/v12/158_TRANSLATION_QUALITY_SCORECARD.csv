@@ -1,0 +1,14 @@
+﻿score_id,area,weight,required_target,measurement,blocking_examples,evidence,status
+TQ-001,English critical UI,10,100%,reachable-key coverage + hardcoded scan,"raw key, mixed purchase/Parent Gate/error screen",i18n coverage report,OPEN
+TQ-002,English Base Edition literary content,12,100%,approved current source-hash fields,Russian-only writer/work/country page,coverage/stale report,OPEN
+TQ-003,Names and work titles,10,100% verified/fallback-labelled,evidence matrix,guessed published title or wrong writer form,name-title evidence,OPEN
+TQ-004,Semantic factual parity,10,0 high-severity deltas,proposition/citation/number diff,"added/omitted fact, changed date/award",semantic delta report,OPEN
+TQ-005,English child content and Planetka,10,100%,age-band/child review coverage,"adult leakage, commercial pressure, machine-like dialogue",child English report,OPEN
+TQ-006,Search and aliases,7,100% required cases,cross-script test matrix,alias bypasses policy or wrong entity,search evidence,OPEN
+TQ-007,Offline and errors,6,100% critical,airplane/failed-backend tests,Russian fallback in English critical flow,offline evidence,OPEN
+TQ-008,Native iOS/Android language,7,100%,per-app language/native-resource tests,wrong app label/system dialog/raw key,native i18n report,OPEN
+TQ-009,Accessibility/layout/fonts,7,100% critical,pseudo/text-scale/AT/visual regression,clipped safety/price/legal meaning or tofu,layout-a11y report,OPEN
+TQ-010,Store metadata/screenshots/review notes,7,100%,exact-RC locale manifest,"English caption over Russian UI, unsupported claim",store locale dossier,OPEN
+TQ-011,Legal/privacy/support,7,100% enabled territory,version parity and SLA check,stale or weaker English legal text,legal/support map,OPEN
+TQ-012,Audio/transcripts/pronunciation,4,100% enabled audio,script/transcript/rights alignment,untranslated audio-only meaning or voice clone,audio report,OPEN
+TQ-013,Web SEO/discovery,3,100% published English pages,canonical/hreflang/sitemap check,"English metadata with Russian body, stale page indexed",web SEO report,OPEN

@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/translation-unit-v12.json",
+  "title": "Literary Planet Translation Unit V12",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "unitId",
+    "entityType",
+    "entityId",
+    "fieldPath",
+    "sourceLocale",
+    "targetLocale",
+    "sourceText",
+    "sourceSha256",
+    "targetText",
+    "status",
+    "glossaryVersion",
+    "review",
+    "updatedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "unitId": {
+      "type": "string",
+      "minLength": 4
+    },
+    "entityType": {
+      "enum": [
+        "ui",
+        "writer",
+        "work",
+        "country",
+        "character",
+        "journey",
+        "fact",
+        "quote",
+        "planetka-dialogue",
+        "store-item",
+        "legal",
+        "support",
+        "store-metadata",
+        "admin",
+        "accessibility",
+        "audio-transcript"
+      ]
+    },
+    "entityId": {
+      "type": "string"
+    },
+    "fieldPath": {
+      "type": "string"
+    },
+    "sourceLocale": {
+      "const": "ru"
+    },
+    "targetLocale": {
+      "const": "en"
+    },
+    "sourceText": {
+      "type": "string"
+    },
+    "sourceSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "targetText": {
+      "type": "string"
+    },
+    "targetSha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "status": {
+      "enum": [
+        "MISSING",
+        "DRAFT_GENERATED",
+        "TERMINOLOGY_CHECKED",
+        "SEMANTIC_REVIEWED",
+        "RIGHTS_CHECKED",
+        "AGE_REVIEWED",
+        "LAYOUT_TESTED",
+        "APPROVED",
+        "PUBLISHED",
+        "STALE",
+        "BLOCKED_RIGHTS",
+        "REJECTED"
+      ]
+    },
+    "protectedSpans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "source"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "name",
+              "title",
+              "date",
+              "number",
+              "url",
+              "citation",
+              "quote",
+              "code",
+              "trademark"
+            ]
+          },
+          "source": {
+            "type": "string"
+          },
+          "target": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "placeholders": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "glossaryVersion": {
+      "type": "string"
+    },
+    "translationMemoryVersion": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rightsStatus": {
+      "enum": [
+        "not-applicable",
+        "approved",
+        "review-required",
+        "blocked"
+      ]
+    },
+    "ageBands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": [
+        "semantic",
+        "terminology",
+        "facts",
+        "layout"
+      ],
+      "properties": {
+        "semantic": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_RUN"
+          ]
+        },
+        "terminology": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_RUN"
+          ]
+        },
+        "facts": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_RUN"
+          ]
+        },
+        "layout": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_RUN"
+          ]
+        },
+        "reviewerRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "publishedVersion": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

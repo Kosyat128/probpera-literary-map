@@ -1,0 +1,664 @@
+ФИНАЛЬНЫЙ ИСПОЛНИТЕЛЬНЫЙ МАСТЕР-ПРОМТ V12 OWNER-MINIMAL FINAL AUTOPILOT
+«ЛИТЕРАТУРНАЯ ПЛАНЕТА — ПРОБА ПЕРА»
+
+ТРИ ПЛАТФОРМЫ:
+- Web/PWA;
+- Android: Google Play + RuStore;
+- iOS/iPadOS: App Store.
+
+КОММЕРЧЕСКАЯ МОДЕЛЬ:
+PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES
+
+КАНОНИЧЕСКАЯ ОСНОВА:
+ГОТОВАЯ «ЛИТЕРАТУРНАЯ ПЛАНЕТА» НА САЙТЕ PROBPERA.RU И АКТУАЛЬНЫЙ MAIN
+РЕПОЗИТОРИЯ KOSYAT128/PROBPERA-LITERARY-MAP.
+
+V12 MODERATION OWNER-LOCK:
+
+- Store-facing default name: «Литературная планета»; subtitle/tagline
+  «Проба пера» where supported.
+- Do not automatically select Apple Kids Category; treat the app as a
+  general/family educational product with a protected child mode unless
+  the owner explicitly approves a different final strategy.
+- Age rating and content declarations cover the entire submitted binary,
+  including adult biographies and works.
+- Store reviewers must receive durable access, Parent PIN, sandbox IAP,
+  offline instructions and account-deletion path without SMS, expiring
+  OTP, physical biometrics or owner intervention.
+- Store screenshots must come from the exact release candidate and show
+  only working, rights-cleared features. The concept collage is never a
+  store screenshot.
+- Unlicensed Disney/Pixar or other protected assets must be absent from
+  the binary and production manifest, not merely hidden in UI.
+- Privacy/Data Safety/permissions declarations must be generated from the
+  exact code, SDK, backend and native manifest inventory.
+- Required sensitive permissions are minimized; narration never justifies
+  microphone access.
+- The exact RC artifact must pass technical smoke, rights scan, privacy
+  congruence, child-boundary tests and store-specific build hygiene.
+- Add mandatory stages 28–31: moderation precheck, reviewer dossiers,
+  listing/artifact truth, rejection/resubmission readiness.
+
+V12 OWNER-MINIMAL LOCK:
+
+- Read and obey `03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md`.
+- Use `SAFE_PAID_BILINGUAL_V1` as the default first public release profile.
+- Collect all nonsecret owner decisions once in `owner-release-inputs.json`.
+- Generate one missing-input report instead of asking repeated questions.
+- Native V1 is accountless-first unless account/deletion/privacy/review
+  gates are already complete.
+- One original optional non-consumable is enabled for first review only
+  after every store/backend/reviewer gate passes.
+- Generate exact store console worksheets, official-API draft upload
+  automation and a one-command release-preparation flow.
+- Add DSA trader, export compliance, privacy-manifest, Required Reason API,
+  Android developer verification and territory gates.
+- All upload automation defaults to dry-run and never submits/releases.
+- Add mandatory stages S32–S35.
+- Final owner handoff must contain no programming task and no duplicated
+  data entry.
+
+V12 BILINGUAL ENGLISH RELEASE LOCK:
+
+- Read `03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md` immediately after
+  03B; it has higher priority than the remaining product specification.
+- Mandatory release locales are Russian and English.
+- Use `SAFE_PAID_BILINGUAL_V1`.
+- English means full UI, Base Edition content, child experience, Planetka,
+  offline, store, legal, support, reviewer and owner surfaces.
+- Base Edition English coverage is 100%; no silent Russian fallback on an
+  English critical screen.
+- No raw machine translation, guessed official title, changed fact,
+  generated real-writer portrait or lost citation.
+- English names/titles require authority/source evidence or a clearly
+  labelled fallback.
+- Cross-language search uses the same entity IDs and cannot bypass child
+  policy.
+- Language switching preserves the same globe Canvas and semantic state.
+- Create English App Store/Google materials and exact-RC screenshots;
+  RuStore remains Russian-first with selectable English in the app.
+- Add stages S36–S40 and do not complete before S40.
+
+V12 FINAL BILINGUAL QUALITY LOCK:
+
+- Treat Russian and English as equal release languages for the paid Base
+  Edition; English is not a thin UI overlay.
+- Apply 151–160 in addition to 119–150.
+- English editorial base is controlled international en-US; en-GB is an
+  optional reviewed metadata overlay only.
+- Web/PWA must have approved `/ru/` and `/en/` routes, self-canonical pages,
+  reciprocal hreflang, localized sitemaps/structured metadata and a stale-
+  translation noindex gate.
+- RU/EN legal, privacy, child, refund, deletion and support documents have
+  synchronized versions and an owner/legal-approved controlling language.
+- AI/MT may draft only; no raw output, child/private/secret material or
+  unlicensed source may be sent/published without governance and human review.
+- Russian and English support, security, deletion, entitlement and incident
+  messages are complete for every enabled English territory.
+- Generate and validate 156_BILINGUAL_RELEASE_EVIDENCE_SCHEMA.json,
+  157_ENGLISH_NAME_TITLE_EVIDENCE_MATRIX.csv,
+  158_TRANSLATION_QUALITY_SCORECARD.csv and
+  159_BILINGUAL_STORE_SUBMISSION_FIELD_MATRIX.csv.
+- Final handoff must pass independent Russian-owner and English-reviewer
+  fresh-reader usability checks under 160.
+
+======================================================================
+A. ЕДИНАЯ ЦЕЛЬ
+======================================================================
+
+Самостоятельно доведи актуальный репозиторий до законченного
+трёхплатформенного платного продукта высокого качества.
+
+Финал должен включать:
+
+1. Полноценную устанавливаемую Web/PWA-редакцию с одноразовой web-лицензией.
+2. Android QA APK, Google Play paid AAB и RuStore paid release artifact.
+3. iPhone/iPad native project, simulator build и archive configuration;
+   archive — при наличии signing credentials.
+4. Тот же канонический 3D-глобус сайта, а не новый аналог.
+5. Страны, писателей, произведения, реальные портреты, флаги и verified
+   тексты из единого источника.
+6. Полностью готовый adult UX.
+7. Полностью готовый child mode с точным возрастом, Parent Gate и
+   оригинальным проводником Планеткой.
+8. Paid Base Edition с богатым Starter Set без обязательных доплат.
+9. Необязательный магазин разовых skins, stands, full-3D backgrounds,
+   accessories и StoryWorld.
+10. Disney Licensed Collection как rights-gated optional catalog, скрытый
+    до подписанной лицензии.
+11. Offline, sync, content updates, rollback и recovery.
+12. CMS/admin self-service для дальнейшего развития без редактирования
+    runtime-кода.
+13. Security, privacy, accessibility, localization, performance, QA, CI,
+    store materials, support runbooks и final handoff.
+
+Не останавливайся после документации, skeleton, одной platform, mock store,
+неполного child mode или неподписанной сборки. External credentials не
+должны блокировать внутреннюю реализацию.
+
+======================================================================
+B. SITE-FIRST КОНСТИТУЦИЯ
+======================================================================
+
+Сайт — source of truth, а не приблизительный визуальный референс.
+
+Обязательно переиспользуй актуальные эквиваленты:
+
+- LiteraryWorldMap;
+- LiteraryGlobe;
+- GlobeCameraRig;
+- globeAtlas;
+- globeGeography;
+- globeProjection;
+- country picking/highlight/focus;
+- writer focus;
+- globe edition registry;
+- texture and historical-edition pipelines;
+- existing materials/lighting/atmosphere;
+- MuseumSkyDome;
+- MuseumStarfield;
+- one R3F Canvas and one renderer;
+- Country/Writer/Work domain data;
+- Nobel data;
+- WriterPortrait pipeline;
+- country flag SVG registry;
+- verified biography/evidence pipeline;
+- book evidence and cover rights pipeline;
+- CMS/admin publication logic;
+- brand logo, orange/violet palette and typography;
+- existing tests, governance locks and release checks.
+
+Запрещено:
+
+- Unity, Unreal или Flutter 3D replacement;
+- второй globe engine;
+- второй Canvas для режимов;
+- iframe/remote site как core runtime;
+- screenshot вместо live globe;
+- manual mobile copy of biographies/coordinates;
+- отдельная mobile fact database;
+- generated real-person portraits;
+- generated flags;
+- invented facts, quotes, dates или works;
+- generated covers, выдаваемые за реальные editions;
+- автоматический merge;
+- изменения main напрямую.
+
+Создай Site-Mobile Parity Gate для IDs, coordinates, editions, textures,
+picking semantics, portraits, flags, biographies, works, sources и hashes.
+
+======================================================================
+C. ПЛАТНАЯ БАЗОВАЯ РЕДАКЦИЯ
+======================================================================
+
+Это не freemium. Нативные production listings платные с первого публичного
+релиза. Полная PWA доступна по one-time web entitlement.
+
+Base Edition включает без дополнительной покупки:
+
+- весь core literary archive;
+- все основные globe functions;
+- search/favorites/history/collections;
+- базовый offline;
+- child mode;
+- Parent Center;
+- до четырёх child profiles;
+- Планетку;
+- минимум 5 included skins;
+- минимум 4 included stands;
+- минимум 5 included backgrounds;
+- минимум 6 rights-cleared StoryWorld;
+- accessibility, privacy и safety functions;
+- исправления и content updates в рамках поддерживаемой major version.
+
+Нельзя продавать отдельно: поиск, биографии, country access, child mode,
+Parent Gate, exact-age filter, basic offline, Планетку, accessibility,
+security и исправления.
+
+Google Play paid-status установить до первого public production release.
+Если package уже был offered free, не пытаться сделать его paid: создать
+зафиксированный owner blocker и новый package strategy. Не использовать
+public free beta.
+
+App Store требует active Paid Apps Agreement и ненулевую цену до review.
+RuStore application type = Paid. Web/PWA full access = verified one-time
+license.
+
+Price не hardcoded. До owner override использовать planning anchors:
+- nearest price point to USD 9.99 для App Store/Google Play;
+- 899 RUB для RuStore;
+- 899 RUB или локализованный equivalent для Web/PWA.
+Перед submission перепроверить price points, taxes, fees и территории.
+
+======================================================================
+D. OPTIONAL STORE
+======================================================================
+
+Разрешены только необязательные non-consumables:
+
+- дополнительные globe skins;
+- stands;
+- настоящие full-3D/optimized backgrounds;
+- original StoryWorld;
+- Planetka accessories/outfits;
+- curated bundles;
+- licensed character packs.
+
+Запрещены subscriptions, ads, consumable currency, loot boxes, energy,
+paid lives, pressure timers, fake scarcity и pay-to-learn.
+
+Purchase pipeline:
+
+catalog → platform price → Parent Gate при child context → system checkout
+→ store result → backend verification → entitlement → asset download →
+checksum/signature → install → apply.
+
+Client callback не выдаёт entitlement. Обязательны pending, cancel,
+duplicate, restore, reinstall, app-killed, refund, revocation, family-share
+и license-expiry flows.
+
+======================================================================
+E. CHILD MODE И PARENT GATE
+======================================================================
+
+Child mode — sealed data/runtime boundary, а не цветовая тема.
+
+Обязательно:
+
+- до четырёх local child profiles;
+- exact age 3–17 без хранения полной даты рождения;
+- derived age band and reading level;
+- per-work, per-character, per-scene, per-fact and per-media decisions;
+- writer approval не открывает все works;
+- separate child indexes, search, recommendations, favorites, history,
+  cache, deep links и offline packages;
+- policy restore before first content frame;
+- deny-by-default;
+- Parent Gate для выхода, purchases, restore, external links, age/account
+  changes и deletion;
+- secure PIN verifier, rate limit/backoff, optional biometrics;
+- Back/restart/deep link/purchase callback не обходят режим;
+- no ads, third-party behavioural analytics, public child account,
+  geolocation, camera, microphone или open generative chat;
+- platform age signals могут использоваться как дополнительный compliance
+  signal, но не заменяют parent profile и применяют более строгий policy.
+
+Ребёнок не видит price, Buy CTA, discount, paid ranking или licensed promo.
+Видит только included либо уже owned child-safe items.
+
+======================================================================
+F. ПЛАНЕТКА
+======================================================================
+
+Планетка — оригинальный главный герой проекта и образовательный проводник.
+
+Она:
+
+- встречает ребёнка;
+- объясняет gestures;
+- помогает выбирать страну;
+- знакомит с writer/work;
+- предлагает age-appropriate journey;
+- сообщает только sourced facts;
+- помогает offline/error recovery;
+- поздравляет без addictive mechanics;
+- может быть свёрнута;
+- не мешает globe;
+- не рекламирует IAP.
+
+Реплики scripted, локализованные и редакционно проверенные. Открытого AI
+чата нет. Narration optional, captioned and rights-cleared.
+
+Визуально: рот ниже глаз, крупные добрые глаза, полностью видимые руки и
+ноги; face/limbs separate from geographical surface; reduced motion;
+география не искажается.
+
+======================================================================
+G. ЛИТЕРАТУРНЫЕ И DISNEY-ПЕРСОНАЖИ
+======================================================================
+
+Разделяй:
+
+1. OWNER_ORIGINAL — Планетка и оригинальные project worlds.
+2. FOLKLORE/PUBLIC-DOMAIN CANDIDATE — только после jurisdiction,
+   translation и asset review.
+3. SPECIAL_RIGHTS_REVIEW — отдельная проверка source/illustration/marks.
+4. LICENSE_REQUIRED — защищённые персонажи и adaptations.
+5. BLOCKED — без прав не видны в production.
+
+Disney candidate packs:
+
+- Mickey & Friends;
+- Disney Winnie the Pooh;
+- Disney Princess Classics;
+- Frozen;
+- The Lion King;
+- Lilo & Stitch;
+- Disney Literary Adventures;
+- Modern Disney Worlds;
+- Disney Animal Classics;
+- Disney-Pixar Adventures.
+
+Все Disney records по умолчанию:
+
+legalStatus=LICENSE_REQUIRED
+publishStatus=BLOCKED
+storeStatus=HIDDEN
+assetStatus=NO_PRODUCTION_ASSET
+skuStatus=DISABLED
+
+До signed agreement запрещены assets, preview, SKU, marketing, logos,
+voices, music, 3D models, screenshots и AI imitation. Public-domain source
+не разрешает копировать Disney visual adaptation. Disney не является
+блокером Base Edition: приложение выпускается на Планетке, original worlds
+и rights-cleared classics.
+
+======================================================================
+H. TRUE 3D CUSTOMIZATION
+======================================================================
+
+Скины меняют поверхность того же глобуса. Stands and backgrounds —
+независимые scene layers. Нельзя remount Canvas или сбрасывать camera,
+selected country/writer и semantic state.
+
+Premium backgrounds High/Balanced должны быть настоящими 3D-сценами с:
+
+- geometry;
+- depth/parallax;
+- PBR materials;
+- lighting/light probes/lightmaps where applicable;
+- LOD;
+- spatially coherent particles/animation;
+- memory budgets;
+- Economy/static fallback;
+- accessibility/reduced motion;
+- rights/provenance.
+
+2.5D/static cannot be sold as full 3D. Background switching is
+transactional: preload → integrity/compatibility/memory check → shader
+warmup → controlled transition → commit → old resource disposal; error
+keeps previous composition. Rapid A→B→C commits only C.
+
+======================================================================
+I. THREE-PLATFORM TECHNICAL BASELINE
+======================================================================
+
+At execution start recheck all versions. Current package snapshot expects:
+
+- existing Node 24/npm 11 repository contract;
+- Capacitor 8 current family;
+- Android min API 24 unless audit justifies higher;
+- Google Play target Android 16/API 36 for new submissions after the 2026
+  deadline;
+- current Play Billing Library 9.x and backend verification;
+- separate Google Play and RuStore flavors;
+- current RuStore Pay SDK, not deprecated BillingClient;
+- iOS 15+ support under Capacitor 8 unless product/device audit changes it;
+- Xcode 26 and iOS/iPadOS 26 SDK or later for App Store upload;
+- Swift Package Manager by default where compatible;
+- Web/PWA isolated Service Worker scope that does not break public site.
+
+Do not pin stale versions merely because this prompt names them. Record
+current official requirements in OFFICIAL_REQUIREMENTS_SNAPSHOT.md and
+lock exact versions in code/CI.
+
+======================================================================
+J. OFFLINE, CONTENT И SOURCE OF TRUTH
+======================================================================
+
+Canonical CMS/database → verified export → Web export → mobile export →
+child-approved export → signed/versioned manifest → atomic client update.
+
+Required:
+
+- embedded bootstrap;
+- SQLite/structured local metadata;
+- filesystem for heavy assets;
+- secure storage for PIN/secrets;
+- separate child package;
+- checksums/signatures;
+- ETag/content version;
+- schema/minimum app version;
+- temporary download area;
+- atomic activation;
+- previous verified rollback;
+- interrupted download recovery;
+- storage management;
+- low-memory eviction;
+- never activate partial/corrupt package.
+
+No manual app-only biography or coordinate edits.
+
+======================================================================
+K. NO-AI FACTUAL CONTENT
+======================================================================
+
+For real persons, flags, geography, works, quotes, dates and book editions:
+
+- use canonical owner-supplied/rights-approved assets;
+- record source, rights, provenance and checksum;
+- no generated face;
+- no face reconstruction;
+- no similar-person substitution;
+- no generated flag;
+- no invented summary or fact;
+- no raw AI translation in production;
+- missing portrait → branded faceless placeholder;
+- missing cover → neutral typographic card, not fake edition.
+
+Original project art may be procedural or commissioned, but must be
+owner-approved and cannot imitate protected characters.
+
+======================================================================
+L. QUALITY, SECURITY, PRIVACY И ACCESSIBILITY
+======================================================================
+
+Every element passes Premium Element Gate:
+
+1. Purpose and hierarchy.
+2. Visual craft.
+3. All states.
+4. Responsive behaviour.
+5. Accessibility.
+6. Performance/memory/thermal.
+7. Offline/error/recovery.
+8. Localization/microcopy.
+9. Privacy/security/rights.
+10. Automated tests and evidence.
+
+Required:
+
+- WCAG 2.2 AA-oriented web/mobile behaviour;
+- VoiceOver/TalkBack;
+- Dynamic Type/large text;
+- reduced motion;
+- 44x44 minimum targets;
+- accessible country list alternative;
+- no colour-only meaning;
+- threat model;
+- secret/dependency/SBOM audits;
+- signed manifests;
+- least privileges;
+- no child tracking;
+- data minimization and retention;
+- account/data deletion/export;
+- privacy manifests/data safety forms;
+- incident and rollback runbooks.
+
+======================================================================
+M. OWNER SELF-SERVICE — ЧТОБЫ НЕ ВОЗВРАЩАТЬСЯ К КОДУ
+======================================================================
+
+Admin/CMS must allow owner without source-code editing to:
+
+- add/update countries, writers and works through canonical workflows;
+- review child biographies and exact-age access;
+- manage Planetka scripts/narration;
+- add skin/stand/background/accessory/bundle;
+- upload quality tiers and previews;
+- manage rights/provenance/checksums;
+- manage included vs optional status;
+- map platform SKUs;
+- manage territories/languages/license terms;
+- approve/publish/unpublish/rollback content and assets;
+- schedule releases;
+- view package sizes and compatibility;
+- monitor license expiry;
+- delist licensed content;
+- manage pricing planning without binary change;
+- generate store metadata/screenshots checklists;
+- view health, purchase reconciliation and content update status;
+- export final reports.
+
+Create owner playbook, maintenance calendar, support scripts, dashboard,
+alerts and exact one-click/dry-run commands.
+
+======================================================================
+N. AUTOPILOT EXECUTION
+======================================================================
+
+Preauthorized safe local actions:
+
+- repository audit;
+- feature branch;
+- source changes;
+- tests/builds;
+- local migrations/dry-runs;
+- native projects;
+- backend functions;
+- admin extensions;
+- CI;
+- sandbox/mock integrations;
+- unsigned/simulator artifacts;
+- documentation;
+- atomic commits;
+- final PR.
+
+Owner required only for real secrets, signing, merchant/store agreements,
+production deploy/submission, actual paid transactions, final price entry,
+Disney/other licensing and destructive production actions.
+
+If external blocker appears, finish code/tests/configuration/evidence and
+continue independent work. Store one consolidated action in
+EXTERNAL_OWNER_STEPS.md.
+
+Persistent state files:
+
+- docs/mobile/AUTOPILOT_STATE.json;
+- STATUS.md;
+- ROADMAP.md;
+- DECISIONS.md;
+- BLOCKERS.md;
+- AUTOPILOT_JOURNAL.md;
+- NEXT_CODEX_PROMPT.txt;
+- verification cache;
+- artifact inventory.
+
+======================================================================
+O. MANDATORY STAGES
+======================================================================
+
+STAGE 0 — repository safety, latest main/open PR audit, baseline, owner locks.
+STAGE 1 — site canon/parity and product architecture.
+STAGE 2 — shared domain/globe/content extraction with regression tests.
+STAGE 3 — Web/PWA paid edition and isolated service worker.
+STAGE 4 — mobile shell, navigation, Capacitor, Android/iOS projects.
+STAGE 5 — brand splash and onboarding.
+STAGE 6 — canonical globe integration and native lifecycle.
+STAGE 7 — premium responsive globe UX.
+STAGE 8 — canonical content/mobile/child export and signed manifests.
+STAGE 9 — country/writer/work screens with real assets.
+STAGE 10 — search/favorites/history/collections/literary passport.
+STAGE 11 — offline storage/download/update/rollback.
+STAGE 12 — paid Base Edition entitlement and complete Starter Set.
+STAGE 13 — skin/stand/accessory engine.
+STAGE 14 — true 3D background engine and stress/performance gates.
+STAGE 15 — Planetka mascot/guide/narration.
+STAGE 16 — child profiles, exact-age policy, Parent Gate, age assurance.
+STAGE 17 — literary characters and rights-cleared StoryWorld.
+STAGE 18 — Disney blocked catalog/licensing/expiry infrastructure.
+STAGE 19 — optional store UX and platform product catalog.
+STAGE 20 — StoreKit/Play Billing/RuStore Pay/Web purchase providers.
+STAGE 21 — server verification, entitlements, restore/refund/revocation.
+STAGE 22 — admin/CMS owner self-service and operations dashboard.
+STAGE 23 — accessibility/localization/audio/privacy/security.
+STAGE 24 — performance/reliability/device/thermal/low-memory hardening.
+STAGE 25 — full QA, platform parity, store review simulation.
+STAGE 26 — store assets, legal drafts, release candidates and pricing gates.
+STAGE 27 — final handoff foundation, owner external steps and PR preparation.
+STAGE 28 — exact release-candidate moderation precheck.
+STAGE 29 — reviewer access, Parent PIN, sandbox IAP and store dossiers.
+STAGE 30 — truthful listing/screenshots and exact-artifact freeze.
+STAGE 31 — rejection/resubmission simulation and final moderation handoff.
+STAGE 32 — owner input, SAFE_PAID_BILINGUAL_V1 and secret/signing preparation.
+STAGE 33 — regional compliance, DSA/export and Android verification.
+STAGE 34 — one-command preparation and official-API draft packages.
+STAGE 35 — final owner approval, launch runbook and owner-minimal handoff.
+STAGE 36 — internationalization foundation and state-preserving language switching.
+STAGE 37 — complete English UI, native, store, legal and support surfaces.
+STAGE 38 — English literary content, names, titles, search and CMS workflow.
+STAGE 39 — English child mode, Planetka, audio, offline and bilingual QA.
+STAGE 40 — bilingual dossiers, screenshots, owner approval and final handoff.
+
+After each Stage: tests → fixes → evidence → atomic commit → state update →
+next Stage. Do not wait for approval.
+
+======================================================================
+P. FINAL DEFINITION OF DONE
+======================================================================
+
+COMPLETE only when all internal criteria pass, including:
+
+- canonical site globe reused;
+- site/mobile parity passes;
+- three platform clients build;
+- Web/PWA paid entitlement works;
+- Android Google/RuStore variants isolated;
+- iOS/iPad project and simulator build work;
+- paid listing gates documented and automated;
+- Starter Set complete with no placeholder;
+- core works without IAP;
+- child mode is sealed and included;
+- exact-age per-work tests pass;
+- Parent Gate cannot be bypassed;
+- Планетка complete and accessible;
+- optional non-consumable store complete;
+- server purchase verification complete;
+- Disney unlicensed assets absent and records hidden;
+- full-3D scenes meet quality/performance gates;
+- real portraits/flags/verified content only;
+- offline/update/rollback complete;
+- owner self-service complete;
+- security/privacy/accessibility gates pass;
+- P0/P1 = 0;
+- reproducible artifacts with checksums;
+- store metadata and review notes complete;
+- FINAL_HANDOFF and EXTERNAL_OWNER_STEPS complete;
+- one owner input file and missing-input report complete;
+- SAFE_PAID_BILINGUAL_V1 profile complete;
+- DSA/export/developer-verification/territory gates complete;
+- draft-upload automation and owner console worksheets complete;
+- final owner approval and 72-hour launch runbook complete;
+- final PR open;
+- auto-merge disabled.
+
+COMPLETE_WITH_EXTERNAL_BLOCKERS only when all internal code and evidence
+are complete and only store accounts, signatures, merchant setup, final
+price entry, real-money sandbox, licenses or manual review remain.
+
+======================================================================
+Q. START NOW
+======================================================================
+
+1. Recheck current main, branch protection, open PRs and repository state.
+2. Create branch codex/literary-planet-v12-bilingual-final-autopilot.
+3. Save this package under docs/mobile/requirements/ with hashes.
+4. Create AGENTS.md and persistent state files.
+5. Execute STAGE 0.
+6. Continue automatically through STAGE 40 and FINAL HANDOFF.
+7. Never rewrite the site into a different product.
+8. Never pause for safe local decisions already fixed by this package.
+9. Never mark COMPLETE without evidence.
+10. Open final PR; do not merge main.
+
+НАЧИНАЙ РАБОТУ.

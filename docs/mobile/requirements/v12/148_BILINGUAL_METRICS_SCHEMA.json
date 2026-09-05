@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/i18n-metrics-v12.json",
+  "title": "Bilingual Release Metrics V12",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "coverage",
+    "quality",
+    "runtime",
+    "stores",
+    "status",
+    "generatedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "releaseId": {
+      "type": "string"
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    "quality": {
+      "type": "object",
+      "properties": {
+        "missingKeys": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hardcodedStrings": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "placeholderErrors": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "highSemanticDeltas": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "staleBaseUnits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "blockedRightsUnits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mixedLanguageCriticalScreens": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "localeSwitchStatePreservation": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "wrongLanguageFirstFrame": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "offlineLocalePacks": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "searchAliases": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        }
+      }
+    },
+    "stores": {
+      "type": "object",
+      "properties": {
+        "apple": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "googlePlay": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "ruStore": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "web": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "NOT_READY",
+        "READY_INTERNAL",
+        "BLOCKED_EXTERNAL",
+        "OWNER_APPROVAL_REQUIRED",
+        "READY_FOR_SUBMISSION"
+      ]
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

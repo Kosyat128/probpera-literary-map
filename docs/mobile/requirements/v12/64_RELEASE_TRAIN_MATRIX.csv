@@ -1,0 +1,7 @@
+﻿release_type,scope,preconditions,rollout,rollback,auto_merge,owner_production_approval
+content,Canonical content correction/addition,Signed package; schema compatible,Staged content rollout,Manifest rollback,false,required
+patch,Bug/security/reliability,No schema-breaking change,Store/web staged rollout,Previous binary/content,false,required
+minor,New original features/themes/worlds,Backward compatible migrations,Beta → staged production,Feature flag + binary rollback,false,required
+licensed,Disney/other pack,Rights/territory/term/marketing/IAP approval,Territory controlled,Delist/disable/post-term policy,false,required
+major,Breaking schema/product architecture,"Migration, compatibility and EOL plan",Extended beta/staged,Last supported major + data migration,false,required
+emergency,P0 incident,Minimal scoped fix and incident approval,Immediate controlled,Kill switch/rollback,false,required

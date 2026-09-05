@@ -1,0 +1,193 @@
+APP REVIEW NOTES TEMPLATES — V12
+Fill only with exact release-candidate facts. Do not leave placeholders in
+a real submission.
+
+======================================================================
+APPLE — ENGLISH TEMPLATE
+======================================================================
+
+App purpose:
+Literary Planet is a one-time paid educational literature application
+built on the existing Literary Planet experience of probpera.ru. It
+provides an interactive 3D globe, verified author biographies, countries,
+works, offline access, an included child mode, and optional non-consumable
+cosmetic additions.
+
+Base purchase:
+The paid app includes the core literary archive, child mode, Parent Center,
+Planetka guide, offline bootstrap, and the Starter Set. No subscription or
+advertising is used. Optional purchases are not required for the core
+experience.
+
+Review access:
+Account: [SECURE REVIEW FIELD]
+Password: [SECURE REVIEW FIELD]
+Parent PIN: [SECURE REVIEW FIELD]
+
+Steps:
+1. Launch the app.
+2. [Exact navigation to globe/writer].
+3. To test child mode: [exact steps].
+4. To exit child mode/open adult store: [exact Parent Gate steps].
+5. Test product: [sandbox product ID/display name].
+6. Restore Purchases: [exact path].
+7. Delete Account: [exact path], if accounts are enabled.
+8. Offline test: [exact path/behavior].
+
+External links:
+[Explain protected canonical article/support/privacy links.]
+
+Rights:
+The submitted build contains only rights-cleared production assets. Disney
+and other unlicensed candidate content is excluded from the binary,
+production manifests, screenshots and metadata.
+
+Technical notes:
+[Backend dependencies, Economy graphics fallback, known nonblocking limits.]
+
+Contact:
+[Name/role/email/response SLA]
+
+======================================================================
+APPLE — RUSSIAN INTERNAL COPY
+======================================================================
+
+Назначение:
+[Краткое фактическое описание.]
+
+Платная модель:
+[Что входит в базовую цену; какие IAP необязательны.]
+
+Доступ:
+[Аккаунт, Parent PIN, точные шаги.]
+
+Покупки:
+[Тестовый товар, восстановление, ожидаемый результат.]
+
+Детский режим:
+[Возраст, Parent Gate, отсутствие взрослого контента.]
+
+Права:
+[Подтверждение отсутствия нелицензированных материалов.]
+
+Удаление аккаунта:
+[Путь.]
+
+======================================================================
+GOOGLE PLAY — ENGLISH APP ACCESS TEMPLATE
+======================================================================
+
+Restricted app content can be accessed with the reusable review
+credentials supplied in the secure Play Console fields. No SMS, OTP,
+physical biometric, geographic restriction or real purchase is required.
+
+Review account:
+[SECURE FIELD]
+
+Parent PIN:
+[SECURE FIELD]
+
+Instructions:
+1. [Open the app.]
+2. [Reach child mode.]
+3. [Reach adult store through Parent Gate.]
+4. [Test sandbox non-consumable.]
+5. [Restore.]
+6. [Delete account.]
+7. [Test offline.]
+
+Paid model:
+This is a paid app. The core archive, child mode and Starter Set are
+included. Optional one-time cosmetic purchases are not required.
+
+IP:
+Unlicensed Disney/Pixar candidate packs are disabled and excluded from
+the submitted artifact and listing.
+
+Support:
+[Contact/SLA]
+
+======================================================================
+RUSTORE — RUSSIAN TEMPLATE
+======================================================================
+
+Приложение:
+«Литературная планета» — самостоятельное платное приложение с локальным
+3D-глобусом, литературным архивом, офлайн-режимом и защищённым детским
+режимом. Сайт probpera.ru является источником канонических данных, но
+приложение не является простым перенаправлением на сайт.
+
+Тестовый доступ:
+- логин: [ЗАЩИЩЁННОЕ ПОЛЕ];
+- пароль: [ЗАЩИЩЁННОЕ ПОЛЕ];
+- родительский PIN: [ЗАЩИЩЁННОЕ ПОЛЕ].
+
+Проверка:
+1. [Точные шаги к глобусу.]
+2. [Точные шаги к детскому режиму.]
+3. [Точные шаги к магазину.]
+4. [Тестовый товар.]
+5. [Восстановление.]
+6. [Удаление аккаунта.]
+7. [Офлайн.]
+
+Монетизация:
+Приложение приобретается один раз. Основной архив, детский режим,
+Планетка и стартовый набор входят в цену. Дополнительные непотребляемые
+оформления необязательны.
+
+Права:
+В сборке отсутствуют нелицензированные Disney/Pixar и иные заблокированные
+материалы. Реальные портреты, флаги и исторические материалы проходят
+каноническую проверку источников и прав.
+
+Контакт:
+[Контакт и срок ответа.]
+
+======================================================================
+REJECTION RESPONSE TEMPLATE — ENGLISH
+======================================================================
+
+Hello App Review Team,
+
+Thank you for the review. We reproduced the reported issue in build
+[OLD BUILD] and identified the root cause: [FACTUAL CAUSE].
+
+We corrected it in build [NEW BUILD]:
+- [CHANGE 1]
+- [CHANGE 2]
+- [REGRESSION TEST]
+
+To verify:
+1. [STEP]
+2. [STEP]
+3. [EXPECTED RESULT]
+
+We also updated [review notes / screenshots / privacy declaration / access
+credentials] to match the new build.
+
+Thank you for reviewing the updated submission.
+
+======================================================================
+REJECTION RESPONSE TEMPLATE — RUSSIAN
+======================================================================
+
+Здравствуйте!
+
+Спасибо за замечание. Мы воспроизвели проблему в сборке [СТАРАЯ СБОРКА]
+и установили причину: [ФАКТИЧЕСКАЯ ПРИЧИНА].
+
+В сборке [НОВАЯ СБОРКА] исправлено:
+- [ИЗМЕНЕНИЕ];
+- [ИЗМЕНЕНИЕ];
+- добавлена проверка [ТЕСТ].
+
+Порядок проверки:
+1. [ШАГ]
+2. [ШАГ]
+3. [ОЖИДАЕМЫЙ РЕЗУЛЬТАТ]
+
+Также обновлены [инструкции / скриншоты / декларации / доступ] в
+соответствии с новой сборкой.
+
+Спасибо за повторную проверку.

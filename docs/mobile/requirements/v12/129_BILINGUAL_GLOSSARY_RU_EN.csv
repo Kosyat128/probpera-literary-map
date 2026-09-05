@@ -1,0 +1,51 @@
+﻿term_id,ru,en,domain,note
+G-001,Литературная планета,Literary Planet,product-name,Fixed localized product name; title case only as proper name.
+G-002,Проба пера,Proba Pera,brand,Do not use a literal translation as the official brand.
+G-003,Планетка,Planetka,character,Stable proper name.
+G-004,Писатель,Writer,content,Use Author for authorship labels; Writer for profile/category.
+G-005,Автор,Author,content,Authorship role.
+G-006,Произведение,Work,content,"Includes books, poems, plays and stories."
+G-007,Книга,Book,content,Use only when the entity is a book.
+G-008,Страна,Country,geography,Modern UI country.
+G-009,Литературный паспорт,Literary Passport,feature,Fixed feature name.
+G-010,Избранное,Favorites,navigation,en-US base spelling.
+G-011,История,History,navigation,"User activity history, not historical content."
+G-012,Поиск,Search,navigation,
+G-013,Детский режим,Child Mode,child,Fixed mode name.
+G-014,Родительский центр,Parent Center,parent,Fixed feature name.
+G-015,Родительский шлюз,Parent Gate,parent,Security action boundary.
+G-016,Спросить взрослого,Ask an adult,child,Neutral; no price or pressure.
+G-017,Входит в приложение,Included,commerce,Included in paid Base Edition.
+G-018,Купить,Buy,commerce,Adult-only purchase CTA.
+G-019,Восстановить покупки,Restore Purchases,commerce,Platform-standard action.
+G-020,Куплено,Purchased,commerce,Entitlement state.
+G-021,Загрузить,Download,downloads,
+G-022,Установить,Install,downloads,Optional content package installation.
+G-023,Применить,Apply,customization,
+G-024,Используется,In use,customization,Active item.
+G-025,Недоступно,Unavailable,state,
+G-026,Офлайн,Offline,state,
+G-027,Литературное путешествие,Literary Journey,child,Fixed feature name.
+G-028,Интересный факт,Did you know?,content,Use Fact in admin/data labels.
+G-029,Биография,Biography,content,
+G-030,Произведения,Works,navigation,Profile tab.
+G-031,Настройки,Settings,navigation,
+G-032,Язык приложения,App Language,i18n,
+G-033,Системный язык,System Language,i18n,
+G-034,Русский,Русский,language-self-name,Self-name stays Russian.
+G-035,Английский,English,language-self-name,Self-name.
+G-036,Подставка,Stand,customization,Globe stand.
+G-037,Скин глобуса,Globe Skin,customization,
+G-038,Фоновая сцена,Background Scene,customization,Use 3D Background only when actual 3D.
+G-039,Аксессуар,Accessory,customization,
+G-040,Стартовый набор,Starter Set,commerce,Included package.
+G-041,Базовая редакция,Base Edition,commerce,Paid application core.
+G-042,Дополнительная покупка,Optional Purchase,commerce,Never imply required.
+G-043,Проверено редакцией,Editorially reviewed,trust,Use only when evidence passes.
+G-044,Источник,Source,evidence,
+G-045,Права,Rights,evidence,
+G-046,Возраст,Age,child,"Exact age in full years, local by default."
+G-047,Материал недоступен для этого возраста,This content is not available for this age,child,Neutral denial.
+G-048,Повторить,Try Again,error,
+G-049,Нет подключения,You’re offline,error,Friendly user-facing wording.
+G-050,Сохранено на устройстве,Saved on this device,privacy,

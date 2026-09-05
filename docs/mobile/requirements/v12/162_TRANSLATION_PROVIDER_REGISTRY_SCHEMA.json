@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/translation-provider-registry-v12.json",
+  "title": "Translation Assistance Provider Registry V12",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "providers",
+    "generatedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "providerId",
+          "vendor",
+          "purpose",
+          "allowedData",
+          "prohibitedData",
+          "retention",
+          "trainingUse",
+          "regions",
+          "securityReview",
+          "rightsReview",
+          "childDataAllowed",
+          "status"
+        ],
+        "properties": {
+          "providerId": {
+            "type": "string"
+          },
+          "vendor": {
+            "type": "string"
+          },
+          "modelOrService": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "allowedData": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "prohibitedData": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "retention": {
+            "type": "string"
+          },
+          "trainingUse": {
+            "enum": [
+              "disabled-confirmed",
+              "contractually-restricted",
+              "unknown",
+              "allowed-not-for-production"
+            ]
+          },
+          "regions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "dpaReference": {
+            "type": "string"
+          },
+          "securityReview": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "REQUIRED"
+            ]
+          },
+          "rightsReview": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "REQUIRED"
+            ]
+          },
+          "childDataAllowed": {
+            "const": false
+          },
+          "confidentialDataAllowed": {
+            "const": false
+          },
+          "lastReviewedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "status": {
+            "enum": [
+              "APPROVED_DRAFT_ONLY",
+              "BLOCKED",
+              "REVIEW_REQUIRED",
+              "DISABLED"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

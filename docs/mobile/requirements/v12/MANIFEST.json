@@ -1,0 +1,1596 @@
+{
+  "package": "LITERARY_PLANET_CODEX_FINAL_V12_BILINGUAL_RU_EN_ALL_IN_ONE",
+  "version": "12.0",
+  "createdAt": "2026-09-03",
+  "language": "ru-en",
+  "repository": "Kosyat128/probpera-literary-map",
+  "canonicalFoundation": "Existing Literary Planet on probpera.ru and current repository main",
+  "observedRepositorySnapshot": "51_REPOSITORY_SNAPSHOT.json",
+  "platforms": [
+    "web-pwa",
+    "android-google-play",
+    "android-rustore",
+    "ios-ipados"
+  ],
+  "distributionModel": "PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES",
+  "firstReleaseProfile": "SAFE_PAID_BILINGUAL_V1",
+  "requiredLocales": [
+    "ru",
+    "en"
+  ],
+  "sourceLocale": "ru",
+  "fallbackLocale": "en",
+  "productNames": {
+    "ru": {
+      "app": "Литературная планета",
+      "brand": "Проба пера",
+      "guide": "Планетка"
+    },
+    "en": {
+      "app": "Literary Planet",
+      "brand": "Proba Pera",
+      "guide": "Planetka"
+    }
+  },
+  "startFiles": {
+    "ru": "01_START_ONCE_RU.txt",
+    "en": "136_START_ONCE_EN.txt"
+  },
+  "resumeFiles": {
+    "ru": "02_RESUME_AUTOPILOT_RU.txt",
+    "en": "137_RESUME_AUTOPILOT_EN.txt"
+  },
+  "readmeFiles": {
+    "ru": "00_README_RU.txt",
+    "en": "135_README_EN.txt"
+  },
+  "executiveFile": "03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+  "bilingualOverlay": "03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md",
+  "fullSpecification": "04_FULL_PRODUCT_SPEC_V12_RU_EN.txt",
+  "standalonePrompt": "FINAL_MASTER_CODEX_PROMPT_LITERARY_PLANET_V12_BILINGUAL_RU_EN.txt",
+  "stageRouting": "95_STAGE_DOCUMENT_ROUTING.json",
+  "postBuildGuides": {
+    "ru": "ПОСЛЕ_ПОЛНОЙ_СБОРКИ_ПРИЛОЖЕНИЯ_V12_RU.txt",
+    "en": "134_AFTER_FULL_BUILD_APPLICATION_OWNER_ACTIONS_EN.txt"
+  },
+  "bilingualApproval": "138_BILINGUAL_OWNER_APPROVAL_TEMPLATE.html",
+  "officialLocalizationSources": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+  "visualReference": "47_OWNER_VISUAL_REFERENCE.png",
+  "visualReferencePolicy": "INTERNAL_ONLY_NOT_FOR_STORE",
+  "priorityRule": "Earlier binding documents override later documents. Current official store, platform and applicable legal requirements rechecked at Stage 0, bilingual RC and immediately before submission override stale versions, limits or forms.",
+  "contextRule": "Read executive overlays, requirement/stage matrices and current-stage routed documents. Standalone prompt is a recovery fallback.",
+  "bindingDocumentCount": 173,
+  "requirementCount": 342,
+  "bilingualRequirementCount": 107,
+  "moderationRequirementCount": 52,
+  "ownerMinimalRequirementCount": 55,
+  "childPrivacyRequirementCount": 10,
+  "stageCount": 41,
+  "finalInternalStage": "S40",
+  "releaseReadinessAreaCount": 88,
+  "bilingualTestCount": 36,
+  "translationQualityScorecardAreas": 13,
+  "officialSourceCount": 64,
+  "officialLocalizationSourceCount": 20,
+  "ownerGoal": {
+    "singleOwnerInput": true,
+    "translationTasksForOwner": 0,
+    "programmingTasksForOwner": 0,
+    "dryRunDraftAutomation": true,
+    "manualSubmissionReleaseMerge": true
+  },
+  "loadOrder": [
+    "03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+    "03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md",
+    "03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md",
+    "03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md",
+    "04_FULL_PRODUCT_SPEC_V12_RU_EN.txt",
+    "119_BILINGUAL_PRODUCT_LANGUAGE_CONTRACT_RU_EN.md",
+    "120_I18N_ARCHITECTURE_NATIVE_WEB_RU_EN.md",
+    "121_TRANSLATION_QUALITY_EDITORIAL_WORKFLOW_RU_EN.md",
+    "122_NAMES_TITLES_TRANSLITERATION_SEARCH_RU_EN.md",
+    "123_BILINGUAL_CHILD_PLANETKA_AUDIO_RU_EN.md",
+    "124_BILINGUAL_STORE_LEGAL_SUPPORT_RU_EN.md",
+    "125_LOCALIZED_CONTENT_OFFLINE_CMS_RU_EN.md",
+    "126_I18N_ACCESSIBILITY_LAYOUT_QA_RU_EN.md",
+    "151_ENGLISH_STYLE_GUIDE_VARIANTS_RU_EN.md",
+    "152_BILINGUAL_WEB_SEO_DISCOVERY_RU_EN.md",
+    "153_BILINGUAL_LEGAL_CONTROLLING_LANGUAGE_RU_EN.md",
+    "154_TRANSLATION_ASSISTANCE_GOVERNANCE_RU_EN.md",
+    "155_BILINGUAL_SUPPORT_EMAIL_NOTIFICATION_RU_EN.md",
+    "160_FINAL_BILINGUAL_HANDOFF_GENERATION_RU_EN.md",
+    "168_FINAL_BILINGUAL_NO_RETURN_CONTRACT_RU_EN.md",
+    "05_SITE_CANON_AND_PARITY_RU.md",
+    "06_AUTOPILOT_AND_PROJECT_GOVERNANCE_RU.md",
+    "07_THREE_PLATFORM_ARCHITECTURE_RU.md",
+    "08_PAID_APP_COMMERCIAL_MODEL_RU.md",
+    "09_BASE_EDITION_STARTER_SET_RU.md",
+    "10_STORE_IAP_ENTITLEMENTS_REFUNDS_RU.md",
+    "11_CHILD_MODE_PARENT_GATE_AGE_ASSURANCE_RU.md",
+    "12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+    "13_LITERARY_CHARACTERS_STORYWORLDS_RU.md",
+    "14_DISNEY_LICENSED_COLLECTION_RU.md",
+    "15_RIGHTS_PROVENANCE_NO_AI_RU.md",
+    "16_FULL_3D_BACKGROUND_ENGINE_RU.md",
+    "17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md",
+    "18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
+    "19_ACCOUNT_DATA_LIFECYCLE_RU.md",
+    "20_SECURITY_PRIVACY_COMPLIANCE_RU.md",
+    "21_VISUAL_UX_CANON_RU.md",
+    "22_ACCESSIBILITY_LOCALIZATION_AUDIO_RU.md",
+    "23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
+    "24_ADMIN_CMS_OPERATIONS_RU.md",
+    "25_QA_RELEASE_GATES_RU.md",
+    "26_SUPPORT_ANALYTICS_INCIDENTS_RU.md",
+    "27_STORE_SUBMISSION_LEGAL_HANDOFF_RU.md",
+    "27A_MODERATION_READINESS_MASTER_RU.md",
+    "27B_APPLE_APP_REVIEW_READINESS_RU.md",
+    "27C_GOOGLE_PLAY_REVIEW_READINESS_RU.md",
+    "27D_RUSTORE_MODERATION_READINESS_RU.md",
+    "27E_REVIEWER_ACCESS_AND_DEMO_MODE_RU.md",
+    "27F_STORE_METADATA_SCREENSHOT_TRUTH_RU.md",
+    "27G_AGE_RATING_TARGET_AUDIENCE_RU.md",
+    "27H_PRIVACY_PERMISSIONS_DATA_SAFETY_RU.md",
+    "27I_IP_RIGHTS_EVIDENCE_PACK_RU.md",
+    "27J_TECHNICAL_STABILITY_PRELAUNCH_RU.md",
+    "27K_REJECTION_RESUBMISSION_PLAYBOOK_RU.md",
+    "27L_APP_REVIEW_NOTES_TEMPLATES_RU_EN.txt",
+    "133_ENGLISH_REVIEW_NOTES_TEMPLATES_EN.txt",
+    "27M_STORE_LISTING_METADATA_TEMPLATES_RU.md",
+    "132_ENGLISH_STORE_METADATA_TEMPLATES_EN.txt",
+    "27N_APP_NAME_BRAND_CONSISTENCY_RU.md",
+    "27O_MODERATION_EVIDENCE_PACKAGE_RU.md",
+    "27P_REVIEW_BUILD_REPRODUCIBILITY_RU.md",
+    "27Q_MODERATION_PRECHECK_COMMANDS_RU.md",
+    "28_OFFICIAL_REQUIREMENTS_SNAPSHOT_2026-09-03.md",
+    "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+    "85_SAFE_BILINGUAL_FIRST_RELEASE_PROFILE_RU_EN.md",
+    "86_APPLE_DSA_EXPORT_PRIVACY_API_RU.md",
+    "87_ANDROID_DEVELOPER_VERIFICATION_RU.md",
+    "108_CHILD_PRIVACY_JURISDICTION_GATE_RU.md",
+    "88_STORE_API_AUTOMATION_RU.md",
+    "89_CODEX_CONTEXT_ORCHESTRATION_RU.md",
+    "90_OWNER_RELEASE_INPUT_SCHEMA.json",
+    "91_OWNER_RELEASE_INPUT_EXAMPLE.json",
+    "92_OWNER_SECRETS_SIGNING_MATRIX.csv",
+    "93_STORE_CONSOLE_FIELD_MATRIX.csv",
+    "94_TERRITORY_LAUNCH_MATRIX.csv",
+    "109_CHILD_PRIVACY_JURISDICTION_MATRIX.csv",
+    "95_STAGE_DOCUMENT_ROUTING.json",
+    "96_OWNER_MINIMAL_ACTIONS_RU.txt",
+    "97_ONE_COMMAND_RELEASE_PREPARATION_RU.md",
+    "98_STORE_UPLOAD_CAPABILITY_MATRIX.csv",
+    "99_FIRST_72_HOURS_RELEASE_RUNBOOK_RU.md",
+    "100_FINAL_OWNER_APPROVAL_TEMPLATE_RU.md",
+    "138_BILINGUAL_OWNER_APPROVAL_TEMPLATE.html",
+    "101_FINAL_OWNER_MINIMAL_CHECKLIST_RU.txt",
+    "139_BILINGUAL_OWNER_HANDOFF_CHECKLIST_RU_EN.txt",
+    "102_OWNER_MISSING_INPUTS_SCHEMA.json",
+    "103_RELEASE_AUTOMATION_STATE_SCHEMA.json",
+    "104_REGULATORY_COMPLIANCE_MATRIX.csv",
+    "105_DRAFT_UPLOAD_CHECKLIST.csv",
+    "106_POST_APPROVAL_ROLLOUT_MATRIX.csv",
+    "110_FINAL_OWNER_HANDOFF_GENERATION_RU.md",
+    "134_AFTER_FULL_BUILD_APPLICATION_OWNER_ACTIONS_EN.txt",
+    "ПОСЛЕ_ПОЛНОЙ_СБОРКИ_ПРИЛОЖЕНИЯ_V12_RU.txt",
+    "111_SAFE_PAID_BILINGUAL_V1_CONFIG.json",
+    "112_OWNER_ACTION_MINIMIZATION_MATRIX.csv",
+    "113_OWNER_APPROVAL_STATE_SCHEMA.json",
+    "114_OWNER_HANDOFF_INDEX_SCHEMA.json",
+    "115_RELEASE_AUTOMATION_INITIAL_STATE.json",
+    "116_FINAL_EXECUTION_STOP_CONDITIONS_RU.md",
+    "31_LITERARY_CHARACTER_CATALOG_RU.md",
+    "32_CHARACTER_RIGHTS_MATRIX.csv",
+    "33_DISNEY_RIGHTS_MATRIX.csv",
+    "34_CHARACTER_WORLD_SCHEMA_EXAMPLE.json",
+    "35_3D_BACKGROUND_CATALOG.csv",
+    "36_SKIN_STAND_ACCESSORY_CATALOG.csv",
+    "37_BASE_EDITION_STARTER_SET.csv",
+    "38_OPTIONAL_PRODUCTS_CATALOG.csv",
+    "39_SCREEN_ACCEPTANCE_MATRIX.csv",
+    "40_DEVICE_TEST_MATRIX.csv",
+    "41_PLATFORM_RELEASE_MATRIX.csv",
+    "42_PREMIUM_ELEMENT_QUALITY_MATRIX.csv",
+    "43_AUTOPILOT_STATE_SCHEMA.json",
+    "44_CONTENT_MANIFEST_SCHEMA.json",
+    "45_STORE_PRODUCT_SCHEMA.json",
+    "46_LICENSED_PACK_SCHEMA.json",
+    "48_VISUAL_REFERENCE_USAGE_NOTICE_RU.md",
+    "49_FINAL_ACCEPTANCE_CHECKLIST_RU.md",
+    "50_FINAL_HANDOFF_TEMPLATE_RU.md",
+    "52_OFFICIAL_SOURCE_URLS.json",
+    "53_PRODUCT_COMPLETENESS_NO_RETURN_RU.md",
+    "54_DECISION_DEFAULTS_RU.md",
+    "55_OWNER_OPERATIONS_MAINTENANCE_RU.md",
+    "56_COMPLIANCE_MATRIX.csv",
+    "57_REQUIREMENTS_TRACEABILITY_SCHEMA.json",
+    "58_RELEASE_READINESS_SCORECARD.csv",
+    "59_SUPPORT_INCIDENT_MATRIX.csv",
+    "60_PAID_APP_PRICING_MATRIX.csv",
+    "61_SECURITY_THREAT_MATRIX.csv",
+    "62_CHILD_AGE_POLICY_MATRIX.csv",
+    "63_APP_REVIEW_REJECTION_MATRIX.csv",
+    "64_RELEASE_TRAIN_MATRIX.csv",
+    "65_SAFE_FEATURE_FLAGS_SCHEMA.json",
+    "66_BACKUP_RECOVERY_MATRIX.csv",
+    "67_PRIVACY_SAFE_ANALYTICS_EVENT_SCHEMA.json",
+    "68_REQUIREMENT_ID_INDEX.csv",
+    "69_STAGE_ACCEPTANCE_MATRIX.csv",
+    "70_AUTOPILOT_INITIAL_STATE.json",
+    "71_MODERATION_PRECHECK_MATRIX.csv",
+    "72_REVIEWER_ACCESS_MATRIX.csv",
+    "73_STORE_SCREENSHOT_PLAN.csv",
+    "74_PRIVACY_PERMISSION_DECLARATION_MATRIX.csv",
+    "75_AGE_RATING_CONTENT_DISCLOSURE_MATRIX.csv",
+    "76_IP_RIGHTS_EVIDENCE_MATRIX.csv",
+    "77_REJECTION_RESPONSE_MATRIX.csv",
+    "78_REVIEW_NOTES_CHECKLIST.csv",
+    "79_STORE_METADATA_LIMITS.json",
+    "80_REVIEW_PACKAGE_SCHEMA.json",
+    "81_MODERATION_AUTOPILOT_INITIAL_STATE.json",
+    "82_OWNER_MODERATION_SUBMISSION_CHECKLIST_RU.txt",
+    "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+    "127_ENGLISH_CONTENT_COMPLETENESS_MATRIX.csv",
+    "128_TRANSLATION_UNIT_SCHEMA.json",
+    "129_BILINGUAL_GLOSSARY_RU_EN.csv",
+    "130_STORE_LOCALE_SCREENSHOT_MATRIX.csv",
+    "131_BILINGUAL_TEST_MATRIX.csv",
+    "141_ENGLISH_CONTENT_PUBLISHING_GATE_RU_EN.md",
+    "142_BILINGUAL_LOCALE_CONFIG.json",
+    "143_TRANSLATION_MEMORY_SCHEMA.json",
+    "145_BILINGUAL_ROLLOUT_MATRIX.csv",
+    "146_BILINGUAL_ASSET_LOCALIZATION_MATRIX.csv",
+    "147_BILINGUAL_SEARCH_ALIAS_SCHEMA.json",
+    "148_BILINGUAL_METRICS_SCHEMA.json",
+    "149_FINAL_BILINGUAL_ACCEPTANCE_CHECKLIST_RU_EN.txt",
+    "156_BILINGUAL_RELEASE_EVIDENCE_SCHEMA.json",
+    "157_ENGLISH_NAME_TITLE_EVIDENCE_MATRIX.csv",
+    "158_TRANSLATION_QUALITY_SCORECARD.csv",
+    "159_BILINGUAL_STORE_SUBMISSION_FIELD_MATRIX.csv",
+    "161_BILINGUAL_RELEASE_EVIDENCE_EXAMPLE.json",
+    "162_TRANSLATION_PROVIDER_REGISTRY_SCHEMA.json",
+    "163_LOCALIZED_LEGAL_DOCUMENT_SCHEMA.json",
+    "164_LOCALE_PACKAGE_SCHEMA.json",
+    "165_BILINGUAL_EDITORIAL_CORRECTION_WORKFLOW_RU_EN.md",
+    "166_BILINGUAL_COMMANDS_AND_CI_RU_EN.md"
+  ],
+  "files": [
+    {
+      "name": "00_README_RU.txt",
+      "bytes": 5574,
+      "sha256": "ad76d51f319bd8820603c00b34c42875c6a20bfe039b9921d6e7f2c317ed7e29",
+      "binding": false,
+      "role": "execution-guide"
+    },
+    {
+      "name": "01_START_ONCE_RU.txt",
+      "bytes": 2936,
+      "sha256": "0a03dd4abb87111dee517c156ba1f983ac5860b9e03a756a68bfee7ba35c67f7",
+      "binding": false,
+      "role": "execution-guide"
+    },
+    {
+      "name": "02_RESUME_AUTOPILOT_RU.txt",
+      "bytes": 1405,
+      "sha256": "830c48e69ea2b3a76b8679fd3ed1a856ee7cbe369453899af67427ed36016550",
+      "binding": false,
+      "role": "execution-guide"
+    },
+    {
+      "name": "03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+      "bytes": 29059,
+      "sha256": "b7922a0c341a6a699c82b02bb513de52035be7a35d5c8aa412124d17811cc615",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md",
+      "bytes": 18236,
+      "sha256": "4e36a2e51dcaa7c91e4afa7db07e68b03c91d958e97db7413e84265e1ad6923a",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md",
+      "bytes": 21563,
+      "sha256": "5071ce0e00ac06eab4045f2634e4bc7bddbdf43a1ec1afb13f662ec102da0779",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md",
+      "bytes": 10998,
+      "sha256": "b14e80b836d4b14c5180e55c3e0a8705ef6bdfffbe2f3fb1e9f307c3a29c9e99",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "04_FULL_PRODUCT_SPEC_V12_RU_EN.txt",
+      "bytes": 403518,
+      "sha256": "25b6be552aa1842b8efaa89f85cccdd1043e6b4bbcf2a51b655f6e27f6840ea7",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "05_SITE_CANON_AND_PARITY_RU.md",
+      "bytes": 3333,
+      "sha256": "7a28b00304fed4ce5c0c25ed561d0e295ab4d92cad6d6c2bf1b908cbff1d291b",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "05_TOP_APP_BENCHMARK_RU.md",
+      "bytes": 10956,
+      "sha256": "a11472b0745b83c86132aceed60371ecff8a407139e65fbdbf20b8b413d62948",
+      "binding": false,
+      "role": "supporting"
+    },
+    {
+      "name": "05A_TOP_APP_ADAPTATION_MATRIX.csv",
+      "bytes": 1218,
+      "sha256": "76cdc6319164efbbb247a2fd2a357360f6479790cb119a554af4fb54085166e0",
+      "binding": false,
+      "role": "supporting"
+    },
+    {
+      "name": "06_AUTOPILOT_AND_PROJECT_GOVERNANCE_RU.md",
+      "bytes": 4891,
+      "sha256": "c602cfdd2789771c7b8bd6098837c85251908153801d38220344e6524bea0560",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "07_PREMIUM_ELEMENT_QUALITY_RU.md",
+      "bytes": 6253,
+      "sha256": "b252ec380bfe811bc82d7dbae14ccda67bfd2c796a2c648cf38519463836c936",
+      "binding": false,
+      "role": "supporting"
+    },
+    {
+      "name": "07_THREE_PLATFORM_ARCHITECTURE_RU.md",
+      "bytes": 2779,
+      "sha256": "a05c20737ad9666aafa6aaca0b1f0ac7edff08345a4961e606376ac20cc05f83",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "08_PAID_APP_COMMERCIAL_MODEL_RU.md",
+      "bytes": 4934,
+      "sha256": "715679b3b51785cada19af1df0fa5ea4e4724a21133a5e9f3360dff8919d2a65",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "09_BASE_EDITION_STARTER_SET_RU.md",
+      "bytes": 7369,
+      "sha256": "ac72ef546b5af93b7d5c7ae070801b92b8a0d67fd47a7f26c4c605c607126d5e",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "100_FINAL_OWNER_APPROVAL_TEMPLATE_RU.md",
+      "bytes": 3037,
+      "sha256": "47f6c1a4da40d63e7ac6dd21941694c760302f7df463b6257cc7e959945c81ce",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "101_FINAL_OWNER_MINIMAL_CHECKLIST_RU.txt",
+      "bytes": 1430,
+      "sha256": "107f6860cc5de0a81c5eed1d7411947d02df48a0bbbc4a9d9625d50fc8e57e86",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "102_OWNER_MISSING_INPUTS_SCHEMA.json",
+      "bytes": 2796,
+      "sha256": "9c51a5aa71c7f71d5623227f0bfdafdd30328d7e3a601becb27164248dd275aa",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "103_RELEASE_AUTOMATION_STATE_SCHEMA.json",
+      "bytes": 4628,
+      "sha256": "b28718ab1a359b23f7bef896ba852703012c2f0d747172b4e6ed17d38dc10b28",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "104_REGULATORY_COMPLIANCE_MATRIX.csv",
+      "bytes": 3469,
+      "sha256": "883195d0377865a3349168a28a2b7eb994516c1285d34687e3bdca60097c7944",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "105_DRAFT_UPLOAD_CHECKLIST.csv",
+      "bytes": 1446,
+      "sha256": "e36948727bef93fe672363f5810366f8d850c3d57b6c8119b430b449b7a97f2a",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "106_POST_APPROVAL_ROLLOUT_MATRIX.csv",
+      "bytes": 946,
+      "sha256": "884aa4576becc77ed3e931b93a1e41bc20298c54d769288f6110f3feb1d63c9f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "107_CHANGELOG_V12_BILINGUAL_FINAL_RU_EN.md",
+      "bytes": 2114,
+      "sha256": "34025d53d0a232c54ffc4e8ab27fc84af7fda65a5550f2b413156931d33625a4",
+      "binding": false,
+      "role": "changelog"
+    },
+    {
+      "name": "108_CHILD_PRIVACY_JURISDICTION_GATE_RU.md",
+      "bytes": 6927,
+      "sha256": "8b3632fa50652ac768fc999818ba44735936f4e185cbe1582f206b75b9da578a",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "109_CHILD_PRIVACY_JURISDICTION_MATRIX.csv",
+      "bytes": 2059,
+      "sha256": "a8b377adbd263673c6e061620672db33c99a8cf0fc42ae7178bf13a48b88280a",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "10_STORE_IAP_ENTITLEMENTS_REFUNDS_RU.md",
+      "bytes": 12650,
+      "sha256": "09694f07eea737f60c3f45dae00d7271601b621f456e3815c2d744775bd0c599",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "110_FINAL_OWNER_HANDOFF_GENERATION_RU.md",
+      "bytes": 4760,
+      "sha256": "36dbc7b45800d627fea506d8f1b85ad1571c08b74f5409a4a2ddf893a529ea70",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "111_SAFE_PAID_BILINGUAL_V1_CONFIG.json",
+      "bytes": 2668,
+      "sha256": "7a2596f20d9d058f9012523191b1688ac1831273a6d7dca78c68a8f97abb3250",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "112_OWNER_ACTION_MINIMIZATION_MATRIX.csv",
+      "bytes": 3202,
+      "sha256": "a164b326e99b51174bb40aeaa14abb827392aae37592d50a57f296f0ff00d093",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "113_OWNER_APPROVAL_STATE_SCHEMA.json",
+      "bytes": 4361,
+      "sha256": "040f55905aa8ed5d436143e4b6f0f7a0d26382c2d12fb62c8329ef34763884b0",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "114_OWNER_HANDOFF_INDEX_SCHEMA.json",
+      "bytes": 2248,
+      "sha256": "a00694ed74f5708c3385257819986d2e6364908a4f056d2633990828f8b1dbce",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "115_RELEASE_AUTOMATION_INITIAL_STATE.json",
+      "bytes": 1306,
+      "sha256": "c93e4dec02bae07616a49665a79a2e1dee9ca67b1cf1c8b8d8a7a466e103eea7",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "116_FINAL_EXECUTION_STOP_CONDITIONS_RU.md",
+      "bytes": 3555,
+      "sha256": "cba026a7e56d70871c0d4d3d16b5565af217bcfaa1610e5fc20a5789e1070a46",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "117_FINAL_OWNER_APPROVAL_TEMPLATE.html",
+      "bytes": 13524,
+      "sha256": "15185a9fd17f718d467860a445975178c1de9eedc30b0cbe7ef81d92ace7a9d3",
+      "binding": false,
+      "role": "supporting"
+    },
+    {
+      "name": "119_BILINGUAL_PRODUCT_LANGUAGE_CONTRACT_RU_EN.md",
+      "bytes": 3490,
+      "sha256": "08359b89972023a96be269b7fbfa6d1ddf4eb66650025cd11b72fd4212a700e7",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "11_CHILD_MODE_PARENT_GATE_AGE_ASSURANCE_RU.md",
+      "bytes": 10271,
+      "sha256": "e465ec632eace6ce1dd964c085003140cb1247ddabe2136a757c9821409e8a76",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "120_I18N_ARCHITECTURE_NATIVE_WEB_RU_EN.md",
+      "bytes": 4864,
+      "sha256": "92bf65b5a97d3e0b65a001a5e763fc1c4eb820093d329c4ba4e2b250fe8f71cd",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "121_TRANSLATION_QUALITY_EDITORIAL_WORKFLOW_RU_EN.md",
+      "bytes": 4062,
+      "sha256": "ca503b5a4ea8ba9b9da6165400bd4373f927cdb2568c5c67c710d774dc9cc297",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "122_NAMES_TITLES_TRANSLITERATION_SEARCH_RU_EN.md",
+      "bytes": 3456,
+      "sha256": "5654ddc2fa00fd4121bd4d68232e3a18f40d05f9525e681f12bb2d41e6b5b6e5",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "123_BILINGUAL_CHILD_PLANETKA_AUDIO_RU_EN.md",
+      "bytes": 3166,
+      "sha256": "1dfc723b5d236d0d1ef017f1f1e42f26d71864ccb28180cd73bbc3e9ecb6992f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "124_BILINGUAL_STORE_LEGAL_SUPPORT_RU_EN.md",
+      "bytes": 3644,
+      "sha256": "415a14630a4d951a6852a7e66ce369acab7fabfc22675d63a611ea98c316b82f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "125_LOCALIZED_CONTENT_OFFLINE_CMS_RU_EN.md",
+      "bytes": 3279,
+      "sha256": "9e258f39429d952131395dc876af9d6784e2a621e389fb6c08fae7a73d456186",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "126_I18N_ACCESSIBILITY_LAYOUT_QA_RU_EN.md",
+      "bytes": 3334,
+      "sha256": "c587ac0011f7ddb0e479fc8d0bd93270c7ae6d653f88bff7c1e2c515ccddfe68",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "127_ENGLISH_CONTENT_COMPLETENESS_MATRIX.csv",
+      "bytes": 3257,
+      "sha256": "2cb3e01622a14499b920d7336559decc1e6ef570d1713ce9d29fcaf7b6074b5d",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "128_TRANSLATION_UNIT_SCHEMA.json",
+      "bytes": 4296,
+      "sha256": "8099664e29a8b55cf7b23117bb1eed234e795b3f1148496baf4432f132d28cdf",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "129_BILINGUAL_GLOSSARY_RU_EN.csv",
+      "bytes": 3699,
+      "sha256": "93773b63d6b735f782ee79bf6a972c3f49833c72c7e780ab565135b2f64bfef1",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+      "bytes": 7781,
+      "sha256": "5cc02f6ac6ea324ee0ca7f7c0205b38374fec63cc0daaf72165775f0419a8f0b",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "130_STORE_LOCALE_SCREENSHOT_MATRIX.csv",
+      "bytes": 1270,
+      "sha256": "9f1f12f9a96fba12d28141a142d5a0e18ae48a71df82057805597e0d5ad44f60",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "131_BILINGUAL_TEST_MATRIX.csv",
+      "bytes": 3448,
+      "sha256": "280a973141e52c6e8b7b2e3e52c1620240f85d7fb286498641f8f4d0cc2345ec",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "132_ENGLISH_STORE_METADATA_TEMPLATES_EN.txt",
+      "bytes": 3267,
+      "sha256": "31e0db63964437ef6d82b3f4969193333b2eb7d1506c8c6fb8d7ee51a52cd3d5",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "133_ENGLISH_REVIEW_NOTES_TEMPLATES_EN.txt",
+      "bytes": 2831,
+      "sha256": "d6437c89e6ae38e0750d5335387b3134c5a399ac20ad8d8a0cfced15bd942218",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "134_AFTER_FULL_BUILD_APPLICATION_OWNER_ACTIONS_EN.txt",
+      "bytes": 13892,
+      "sha256": "c362ad9e0dd5bfc3f91ed4f2d29985e32d7eb15d7470cbd9a9968f830b4e01a4",
+      "binding": true,
+      "role": "post-build-owner-guide"
+    },
+    {
+      "name": "135_README_EN.txt",
+      "bytes": 3035,
+      "sha256": "e3cd3cd6cd2f7742465f0c95435fd688b7851eae0c2c9255a1dfa5fcd40dde43",
+      "binding": false,
+      "role": "execution-guide"
+    },
+    {
+      "name": "136_START_ONCE_EN.txt",
+      "bytes": 1534,
+      "sha256": "db8b963e01e5da5e73efe7e1f3cc9aad718cba1c03ae3fff61f50a21b5c9c68a",
+      "binding": false,
+      "role": "execution-guide"
+    },
+    {
+      "name": "137_RESUME_AUTOPILOT_EN.txt",
+      "bytes": 820,
+      "sha256": "560afbaf10faa51baca0700c162c85ff1ebcbc138a45b4f1498dbfd363e60a38",
+      "binding": false,
+      "role": "execution-guide"
+    },
+    {
+      "name": "138_BILINGUAL_OWNER_APPROVAL_TEMPLATE.html",
+      "bytes": 20540,
+      "sha256": "93039dc473f8c4eaf71392c6f2b8752799fda972eee3df204e539f05bbb7f779",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "139_BILINGUAL_OWNER_HANDOFF_CHECKLIST_RU_EN.txt",
+      "bytes": 1191,
+      "sha256": "3c181fd135d94cc80f2c5eeaa1f9c46b86be5a3ee5db4f6aadc0f5a7f393b4ce",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "13_LITERARY_CHARACTERS_STORYWORLDS_RU.md",
+      "bytes": 4067,
+      "sha256": "56dc4b0ba38f03ab917e421c2da51793bb127d7d3bb0681a017c962267aa3889",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "bytes": 5772,
+      "sha256": "9dcdcf9d018a7b22f857e0579cadf815b71b68e558fea79b71793add4ad6db55",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "141_ENGLISH_CONTENT_PUBLISHING_GATE_RU_EN.md",
+      "bytes": 1333,
+      "sha256": "96fad0ce44bc1b7134f39de6c0aa867203877f7e5cbe8ef6cbf0faa4e37e7956",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "142_BILINGUAL_LOCALE_CONFIG.json",
+      "bytes": 1555,
+      "sha256": "581ad8f24a19917baa6e8f69fda1c2e08f7267bf1e0b72de3345a2f009acbcba",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "143_TRANSLATION_MEMORY_SCHEMA.json",
+      "bytes": 1948,
+      "sha256": "2577a9e61417faa224996e487e12901aaba65d3255a41d43fe3b2be016533c1f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "145_BILINGUAL_ROLLOUT_MATRIX.csv",
+      "bytes": 874,
+      "sha256": "c89d2131b6adae30a76bfc58aa026b339c4253a98316d3edb808fa2be64a9dfb",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "146_BILINGUAL_ASSET_LOCALIZATION_MATRIX.csv",
+      "bytes": 1290,
+      "sha256": "5139a95cbb119c7248452f5d5fe7f9e8abf824c0499c76a4a2bfa06769f312f0",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "147_BILINGUAL_SEARCH_ALIAS_SCHEMA.json",
+      "bytes": 1925,
+      "sha256": "22e727fda34e4ad51725ccf346a1f5b31daf80ad7e0d4cccd101a3e410b40df4",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "148_BILINGUAL_METRICS_SCHEMA.json",
+      "bytes": 2808,
+      "sha256": "ad593917056b2189e64dbe55f6d532c879fec722fbfb8fd74c4eed3952022530",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "149_FINAL_BILINGUAL_ACCEPTANCE_CHECKLIST_RU_EN.txt",
+      "bytes": 2981,
+      "sha256": "904f2c746b4632e705e43f2d04ac0d629c82a2d97ff9c13f6a362058ea14b456",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "14_DISNEY_LICENSED_COLLECTION_RU.md",
+      "bytes": 8906,
+      "sha256": "b89dab641cc68239159ccfe8614dfdb09db7ca7366e0451a5827aad3d888023b",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "150_CHANGELOG_V12_BILINGUAL_FINAL_RU_EN.md",
+      "bytes": 2114,
+      "sha256": "34025d53d0a232c54ffc4e8ab27fc84af7fda65a5550f2b413156931d33625a4",
+      "binding": false,
+      "role": "changelog"
+    },
+    {
+      "name": "151_ENGLISH_STYLE_GUIDE_VARIANTS_RU_EN.md",
+      "bytes": 3485,
+      "sha256": "01e4e665a18c2551b826b8fdd36120219fab642fdd6d4eb276649337d5d7aa1e",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "152_BILINGUAL_WEB_SEO_DISCOVERY_RU_EN.md",
+      "bytes": 2993,
+      "sha256": "06686b28c76e4490b94cc199f50936f7b05f998dc4dff087fa78c471da191831",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "153_BILINGUAL_LEGAL_CONTROLLING_LANGUAGE_RU_EN.md",
+      "bytes": 2735,
+      "sha256": "000319ea5435ac5c2f31d2c82d052add71273056714a439a12df9c1de3d52017",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "154_TRANSLATION_ASSISTANCE_GOVERNANCE_RU_EN.md",
+      "bytes": 2753,
+      "sha256": "6d1545a6d7d8905ea6edb42904fb664dabee206bc3ffcf9b3195b7643f2f16f0",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "155_BILINGUAL_SUPPORT_EMAIL_NOTIFICATION_RU_EN.md",
+      "bytes": 2665,
+      "sha256": "2fea3781a31d161681eedb517d9c367d2dac1789271b7f7c40d42a8b9ef50bae",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "156_BILINGUAL_RELEASE_EVIDENCE_SCHEMA.json",
+      "bytes": 8008,
+      "sha256": "9870ed2205e1ca357d31ffe5886a00c683a614f3755e7c45a42860fcb97457cd",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "157_ENGLISH_NAME_TITLE_EVIDENCE_MATRIX.csv",
+      "bytes": 2005,
+      "sha256": "2088fd7421bafa6b4217747a291a7f46748b9d7a84dc4f8745b97094e2eee785",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "158_TRANSLATION_QUALITY_SCORECARD.csv",
+      "bytes": 2073,
+      "sha256": "c724e13191bc3254e1d659884247cc44bfc198be9c8878d80f7859f03dd3ed63",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "159_BILINGUAL_STORE_SUBMISSION_FIELD_MATRIX.csv",
+      "bytes": 2310,
+      "sha256": "787fb74de4030b27ad96ab3349fd60de869733ee024ad58bffde3d4aa43b0d3f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "15_RIGHTS_PROVENANCE_NO_AI_RU.md",
+      "bytes": 2346,
+      "sha256": "4d649a59f191349839dceff1fcc9dae933eadff953c042ac5bf3b65018c787f8",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "160_FINAL_BILINGUAL_HANDOFF_GENERATION_RU_EN.md",
+      "bytes": 2535,
+      "sha256": "d246ec78946d828c91fa0d040b6e2f165245f6a5a67bea3fea2a60ebbd9ee1a9",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "161_BILINGUAL_RELEASE_EVIDENCE_EXAMPLE.json",
+      "bytes": 1977,
+      "sha256": "7b2bb4f8b7742e8442c9e1ccb9fc3f75a9e411f5c5d9008c4ebe3433cdf1cce0",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "162_TRANSLATION_PROVIDER_REGISTRY_SCHEMA.json",
+      "bytes": 2889,
+      "sha256": "5be603006bc487f258c4ec2f2da7c266f7d87aca9d7ae04430dd411a585944b8",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "163_LOCALIZED_LEGAL_DOCUMENT_SCHEMA.json",
+      "bytes": 2769,
+      "sha256": "9a9173aa6ff7db92aba848fa024bf3a253eb9dba47b0e3ea4c94972851f84243",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "164_LOCALE_PACKAGE_SCHEMA.json",
+      "bytes": 2537,
+      "sha256": "471623030c2f93da69dda9f394c03db7e5b6eb3c3ec95902507372a478244511",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "165_BILINGUAL_EDITORIAL_CORRECTION_WORKFLOW_RU_EN.md",
+      "bytes": 2119,
+      "sha256": "67bac07e28493aaa9325496f356d4fee2b85d560e8e1090965b7755287d32885",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "166_BILINGUAL_COMMANDS_AND_CI_RU_EN.md",
+      "bytes": 1502,
+      "sha256": "398c2b06667f2b640d7008826a204ee0b1a729f4e4eb4fb9ad4cae271e2e2464",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "168_FINAL_BILINGUAL_NO_RETURN_CONTRACT_RU_EN.md",
+      "bytes": 1426,
+      "sha256": "f56620fba2fd97d776a88f972633322b5a27e9f422951df056e0c8899c66c07f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "16_FULL_3D_BACKGROUND_ENGINE_RU.md",
+      "bytes": 11862,
+      "sha256": "75f830874b32c2afca440b958cb4b3cefdcb9c606b8ba0195fba2f02022198c5",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md",
+      "bytes": 4633,
+      "sha256": "d84657d718c24a69ce14ddfc6d1e9dc7d6778bf4e58b8be24d9d460249b51741",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
+      "bytes": 4450,
+      "sha256": "33692fcbbe6b489716d5f7cb87dbc3f6130bb71fca0902e174d7cc7c6abce3b0",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "19_ACCOUNT_DATA_LIFECYCLE_RU.md",
+      "bytes": 4849,
+      "sha256": "1c540426e660ff1c1165624d7855fef13c8428d5f1360a8b5504d1a41a10749e",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "20_SECURITY_PRIVACY_COMPLIANCE_RU.md",
+      "bytes": 5331,
+      "sha256": "f7d33dc6673785ad183dee3c7a35b09ff1dce56788702d0548bf4fc55f7ab3da",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "21_VISUAL_UX_CANON_RU.md",
+      "bytes": 2590,
+      "sha256": "2dd0f8911d1c9fe77835700f208a60df302d2cf4339ecd9b8d4d913f8cca9d19",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "22_ACCESSIBILITY_LOCALIZATION_AUDIO_RU.md",
+      "bytes": 4604,
+      "sha256": "bc94b2926d1c65cd841121f8d981f4259e3676aa9f245213e7e2f63158a4fb2c",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
+      "bytes": 4168,
+      "sha256": "f474001944a8bf621d95ccb19ea77ebe5488d49754c26a5eca5bc0ed0995ed31",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "24_ADMIN_CMS_OPERATIONS_RU.md",
+      "bytes": 4942,
+      "sha256": "c6d1b5b052a8179ff53782021861b417f41da6dcc937eac2bdea7383f9c711e8",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "25_QA_RELEASE_GATES_RU.md",
+      "bytes": 3575,
+      "sha256": "06b3bb9274cf52d9e98bb5c4030feec94c93196b0b1c501b2d66aa2184273d3e",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "26_SUPPORT_ANALYTICS_INCIDENTS_RU.md",
+      "bytes": 4433,
+      "sha256": "f182253130337a3a4bd98a390e2e9ddaae0175bf4b113fcdc944c8ca79703ccb",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27_STORE_SUBMISSION_LEGAL_HANDOFF_RU.md",
+      "bytes": 5276,
+      "sha256": "b55814c20e9105999d21d3cc22e765671e23fc37a08ffcdda14b17859a0362db",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27A_MODERATION_READINESS_MASTER_RU.md",
+      "bytes": 6574,
+      "sha256": "f199c0f3d9e3025000609ffaca6c421ba202d71f6b14626067fbd4544c99a620",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27B_APPLE_APP_REVIEW_READINESS_RU.md",
+      "bytes": 5000,
+      "sha256": "628bac7b4ee984d5589f9c06ff1f4fdc52d653252fac01dcbc7ebc0e5a249beb",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27C_GOOGLE_PLAY_REVIEW_READINESS_RU.md",
+      "bytes": 4295,
+      "sha256": "cad70f30da942170bdef35de9d14004d3cbf5e947de9ca1eadf3aca9dc7414f3",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27D_RUSTORE_MODERATION_READINESS_RU.md",
+      "bytes": 4663,
+      "sha256": "3bb257e81bae857a9dada10aef49d844c2e7ec15aefffbfecb5878fb972492f0",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27E_REVIEWER_ACCESS_AND_DEMO_MODE_RU.md",
+      "bytes": 3068,
+      "sha256": "5b1203b116b1a1324d0249a2132c3eba9585471baec9633c7bec392da6f2884a",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27F_STORE_METADATA_SCREENSHOT_TRUTH_RU.md",
+      "bytes": 3464,
+      "sha256": "40b514556089ccc1f92cb9de73ce27e05450edb81d8638d1f6728df2e6a9a04b",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27G_AGE_RATING_TARGET_AUDIENCE_RU.md",
+      "bytes": 2930,
+      "sha256": "1f836422576785c3c0e0ee0330c57f86b67f10465b7b59169a412ebc658083ba",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27H_PRIVACY_PERMISSIONS_DATA_SAFETY_RU.md",
+      "bytes": 3342,
+      "sha256": "fac6383556d476d4cf99d3314b89475b661f9ddf888d26914ef00fe509d5d4e2",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27I_IP_RIGHTS_EVIDENCE_PACK_RU.md",
+      "bytes": 2955,
+      "sha256": "1be32ec8fd824de64c8cfbc8dccd00581705d4a6dee8a5d31a81474bc67da48f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27J_TECHNICAL_STABILITY_PRELAUNCH_RU.md",
+      "bytes": 2762,
+      "sha256": "a77bf607cfb49b340cbb70c0d0d1e5de854e4aaddebb74183921ec0e62511a5c",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27K_REJECTION_RESUBMISSION_PLAYBOOK_RU.md",
+      "bytes": 4387,
+      "sha256": "3dcf4535adf63da12b662e6ae9964d447c1da3fd1ae649d8e8b5b0cea606be8a",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27L_APP_REVIEW_NOTES_TEMPLATES_RU_EN.txt",
+      "bytes": 6999,
+      "sha256": "385939018ff55b9600e5ca7496d054b8faa112a10e572df33bae5d344681447c",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27M_STORE_LISTING_METADATA_TEMPLATES_RU.md",
+      "bytes": 3678,
+      "sha256": "2cb090a4986f2a2c6c6c4620a7e658458d4b4f8a9e78378e50e994aefbc52038",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27N_APP_NAME_BRAND_CONSISTENCY_RU.md",
+      "bytes": 1766,
+      "sha256": "a22a8b9c0586867f97817f6730b362968967a041622d750d1c1047a799181574",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27O_MODERATION_EVIDENCE_PACKAGE_RU.md",
+      "bytes": 2048,
+      "sha256": "899bb73529032090b1ffb076b9e2b668e8e19549a1d8a2b9acdb2b27b709762c",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27P_REVIEW_BUILD_REPRODUCIBILITY_RU.md",
+      "bytes": 1923,
+      "sha256": "99ace8939617bc6d64f6406e0342b9f9230890f251cb6bc3a765249bd60b49c9",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "27Q_MODERATION_PRECHECK_COMMANDS_RU.md",
+      "bytes": 2183,
+      "sha256": "db2b6f9bdfb0129b9ce6031ec3749cb87d95e5b0dd86a9313b3d6e1640c101ee",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "28_OFFICIAL_REQUIREMENTS_SNAPSHOT_2026-09-03.md",
+      "bytes": 11880,
+      "sha256": "d80e897a5f1f88dab883af938e7d351548d38d99556dabdb74d205cf0a6f951d",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "29_OWNER_EXTERNAL_INPUTS_TEMPLATE_RU.txt",
+      "bytes": 1021,
+      "sha256": "bb739f17e04f373713303757633bb2d608435b0cb922203d3c40e7b4daf1e8f9",
+      "binding": false,
+      "role": "supporting"
+    },
+    {
+      "name": "30_CHANGELOG_V12_RU_EN.md",
+      "bytes": 2114,
+      "sha256": "34025d53d0a232c54ffc4e8ab27fc84af7fda65a5550f2b413156931d33625a4",
+      "binding": false,
+      "role": "changelog"
+    },
+    {
+      "name": "31_LITERARY_CHARACTER_CATALOG_RU.md",
+      "bytes": 28208,
+      "sha256": "8631191c91246e85e9ecaeef1735dde46598409818d05203edc4d1b4c35abd97",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "32_CHARACTER_RIGHTS_MATRIX.csv",
+      "bytes": 23548,
+      "sha256": "52e59fa714ba057837ab5e85c74bca25a2c35892c94afd3c5f4865f82540feb1",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "33_DISNEY_RIGHTS_MATRIX.csv",
+      "bytes": 40977,
+      "sha256": "6a6bfa5af9abdf912ed6080030b20180d19c4fecc6cff7ce7a8b5981b63b286d",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "34_CHARACTER_WORLD_SCHEMA_EXAMPLE.json",
+      "bytes": 2047,
+      "sha256": "c2141da912cb0d99879bb726d706331da2fa8fa26d7a0337977bbfe57e9dfef2",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "35_3D_BACKGROUND_CATALOG.csv",
+      "bytes": 4312,
+      "sha256": "30cc7b9f6157a38dee3b4661a7bb828e7d8856f09c4b7ccbcdca80a6afebb857",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "36_SKIN_STAND_ACCESSORY_CATALOG.csv",
+      "bytes": 9161,
+      "sha256": "7f35bf0f2c8f27c4d87839814c0bd5772ccf92b02c052eb05e76cda1c6f3eb72",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "37_BASE_EDITION_STARTER_SET.csv",
+      "bytes": 7009,
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "38_OPTIONAL_PRODUCTS_CATALOG.csv",
+      "bytes": 5180,
+      "sha256": "a0acd286e0d7924ab1e6df0ca54a7400071f6e07162bf57e0e8281e134aae628",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "39_SCREEN_ACCEPTANCE_MATRIX.csv",
+      "bytes": 4312,
+      "sha256": "6ac1060ef4e605f135f06b308537a224d5641fe8fc629f7e24a748c2517e85a8",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "40_DEVICE_TEST_MATRIX.csv",
+      "bytes": 4318,
+      "sha256": "469c7ddd02fb07fa1d66cb9f2e8cac4ae20129dd93f4b061aa5d904bde9faa62",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "41_PLATFORM_RELEASE_MATRIX.csv",
+      "bytes": 1011,
+      "sha256": "d9397f4ce78d49d45f387a996013d82ff8cbf566446f7a4c46bd8160459b6da5",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "42_PREMIUM_ELEMENT_QUALITY_MATRIX.csv",
+      "bytes": 2392,
+      "sha256": "b8379116e1bf7ee459784f4ef8c9ecc09f0c1188a7c865f7136aac210b0edcb6",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "43_AUTOPILOT_STATE_SCHEMA.json",
+      "bytes": 8447,
+      "sha256": "f6bd51781ea6bb6d7eff36987fbcfb25bb545611afed55e96f0f4b2feb447e72",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "44_CONTENT_MANIFEST_SCHEMA.json",
+      "bytes": 4840,
+      "sha256": "ae4920814c1c4469979f974d907176a7235d05377305fcc906380aa6662b779f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "45_STORE_PRODUCT_SCHEMA.json",
+      "bytes": 4788,
+      "sha256": "48e983e22fbe5c8b74d842d9b2acb6b98ded0a0f9515cb4fba06ed4d4a3033c7",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "46_LICENSED_PACK_SCHEMA.json",
+      "bytes": 5254,
+      "sha256": "efdbbe41360abcc0a6a45827d874854bc7e9ca93cda7d83834a0b3d88314311f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "47_OWNER_VISUAL_REFERENCE.png",
+      "bytes": 2275326,
+      "sha256": "6014338bd36e59ad2d85139006bf9d3f30183db97e37211b1771e32beecfd4a1",
+      "binding": false,
+      "role": "internal-visual-reference-not-for-store"
+    },
+    {
+      "name": "48_VISUAL_REFERENCE_USAGE_NOTICE_RU.md",
+      "bytes": 2009,
+      "sha256": "46ea4e60199e8f6eb3755409f6baa39785042e1a651b0efe538a6b9b8662bdc4",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "49_FINAL_ACCEPTANCE_CHECKLIST_RU.md",
+      "bytes": 10733,
+      "sha256": "11e79414e58d47dd7dd6761bc2aeda0318c85dadd44aa086e9eed94e7a918060",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "50_FINAL_HANDOFF_TEMPLATE_RU.md",
+      "bytes": 3573,
+      "sha256": "bae887a266d927e5c97af8fda460a825c1e3ed96a3cdc875b4e0646e60167b13",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "51_REPOSITORY_SNAPSHOT.json",
+      "bytes": 1833,
+      "sha256": "39cd4dcfb51a030b374a3ca556ae104fb360e79a5417d90e5cfba4cf90d0bd67",
+      "binding": false,
+      "role": "supporting"
+    },
+    {
+      "name": "52_OFFICIAL_SOURCE_URLS.json",
+      "bytes": 10100,
+      "sha256": "559712cba9578f3efcd9c618423d6135501336395eb82cbf2c19142c79b531cd",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "53_PRODUCT_COMPLETENESS_NO_RETURN_RU.md",
+      "bytes": 4171,
+      "sha256": "8a6f7ad0df95676252835d4b457483f96832b83713b5d9020ba8b4345cd474aa",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "54_DECISION_DEFAULTS_RU.md",
+      "bytes": 3621,
+      "sha256": "97ee22e5dd581595a6d8b7930b34b4f2ea0b6f01bfaddcbf070f966bcadd1892",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "55_OWNER_OPERATIONS_MAINTENANCE_RU.md",
+      "bytes": 2119,
+      "sha256": "0612deba6d902f22ba27a2c9c0fc71d3892cefc9c01a4c89847087fcea661845",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "56_COMPLIANCE_MATRIX.csv",
+      "bytes": 1363,
+      "sha256": "a0655aabdba3af9557124ef2048c41d2f284d50e70d623dc901cf853d7af3e52",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "57_REQUIREMENTS_TRACEABILITY_SCHEMA.json",
+      "bytes": 1926,
+      "sha256": "f0735ce84fce9c32cf057e24ed7554d245acf33ddfdcf467337a49677d7daad2",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "58_RELEASE_READINESS_SCORECARD.csv",
+      "bytes": 11221,
+      "sha256": "71075a07518aa558fda992e52899d96d483d03f46b847c006a877132e4eb88de",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "59_SUPPORT_INCIDENT_MATRIX.csv",
+      "bytes": 1419,
+      "sha256": "37fabbd2f384cfa00c41c482c5e78aaf43a0e814831a34200546faf8b3fbf1c0",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "60_PAID_APP_PRICING_MATRIX.csv",
+      "bytes": 2209,
+      "sha256": "661ffb715b1197b811cdad115c2192f66f3e9cb74ac2e4ea545b869e5315b031",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "61_SECURITY_THREAT_MATRIX.csv",
+      "bytes": 1706,
+      "sha256": "cbc081941c877bc785864bee39086507d249215bcbec58ff92236b4511fef0e0",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "62_CHILD_AGE_POLICY_MATRIX.csv",
+      "bytes": 3090,
+      "sha256": "b226343c9d648b734e83d9b1768163cc768c42e68a8a9139d2fff63ba012272d",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "63_APP_REVIEW_REJECTION_MATRIX.csv",
+      "bytes": 10759,
+      "sha256": "2c17bcaff303b60d832c4625c8c7505e836a811580a745e17f6309e524125193",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "64_RELEASE_TRAIN_MATRIX.csv",
+      "bytes": 910,
+      "sha256": "f6ec318a7857d33b6c929bf6c5b7f7b0ce7c72187aa635d839ce08e357db4dca",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "65_SAFE_FEATURE_FLAGS_SCHEMA.json",
+      "bytes": 2112,
+      "sha256": "c97d9f6ad241858f14432bfa569e355a2598dc14638611c6fd43130826c1e3d6",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "66_BACKUP_RECOVERY_MATRIX.csv",
+      "bytes": 1008,
+      "sha256": "3860b1fea55609c5c9146730417d8b71e1778fe4b5ea50ddd2e0ef2a5593eed4",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "67_PRIVACY_SAFE_ANALYTICS_EVENT_SCHEMA.json",
+      "bytes": 1250,
+      "sha256": "44437d7ea724e9b15e9903b9db0caa000babc9ecc4a2652345443543ec9a60c0",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "68_REQUIREMENT_ID_INDEX.csv",
+      "bytes": 37079,
+      "sha256": "c1610575d2e930d33d67d73522299b8d7d12683adda80d7593529ed87b396234",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "69_STAGE_ACCEPTANCE_MATRIX.csv",
+      "bytes": 15021,
+      "sha256": "a984abc8b06903e3d1b30ba9cad869174c2359054f06110d153bbf3e53afb02a",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "70_AUTOPILOT_INITIAL_STATE.json",
+      "bytes": 7719,
+      "sha256": "582876a5b8cba9ac70bcfc1b5419c09387dcc47f1fb12849ef884633535da18a",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "71_MODERATION_PRECHECK_MATRIX.csv",
+      "bytes": 6394,
+      "sha256": "e2f8c2575fd414a3df86683411f81587b02b81be4de6207e945a7e1d3c235993",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "72_REVIEWER_ACCESS_MATRIX.csv",
+      "bytes": 2113,
+      "sha256": "10398701d0a068e53b58cc72b01519dfc0885c3f98c9303f6807075a147a5628",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "73_STORE_SCREENSHOT_PLAN.csv",
+      "bytes": 2344,
+      "sha256": "a814e876c081a5bb5b7a72854335d7a9e9020111be8e28c6be9c5201296c203e",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "74_PRIVACY_PERMISSION_DECLARATION_MATRIX.csv",
+      "bytes": 2428,
+      "sha256": "5e8cf160efb421abf77cc34197f3af4a3c54c386912133e4ce3126d275d24797",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "75_AGE_RATING_CONTENT_DISCLOSURE_MATRIX.csv",
+      "bytes": 1873,
+      "sha256": "771f4d7a14c6a31889b4e124c3cefbf5912fefe9b11a719798048fc81940bab4",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "76_IP_RIGHTS_EVIDENCE_MATRIX.csv",
+      "bytes": 1337,
+      "sha256": "b73bd5cd608f9f138be83f1d628fc384bf5def693a693012fb67221e3dae163e",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "77_REJECTION_RESPONSE_MATRIX.csv",
+      "bytes": 1569,
+      "sha256": "900637aec5c29c10a3fc2d368d2e5a808a99190ad54382d1ffafeca286fcb9a5",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "78_REVIEW_NOTES_CHECKLIST.csv",
+      "bytes": 1324,
+      "sha256": "802037c1db8b140b9dc6b180d6a959cf1d64fdb4de0e37fdb1c6fa0ef1741375",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "79_STORE_METADATA_LIMITS.json",
+      "bytes": 3872,
+      "sha256": "54c0a2481d186bb3e517b5fb195a6dfda44c611f290a087a8178e9c769d549cd",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "80_REVIEW_PACKAGE_SCHEMA.json",
+      "bytes": 7026,
+      "sha256": "ddf9437453d8dcb0bc05a1c090ecfe2d2a1fc3ab562a94ed8cf4ce7351b8cb87",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "81_MODERATION_AUTOPILOT_INITIAL_STATE.json",
+      "bytes": 2639,
+      "sha256": "0d4877a02234c632f4e58f1d3f76a8eb3e2c9529741ca4da483c78c31de2aa3d",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "82_OWNER_MODERATION_SUBMISSION_CHECKLIST_RU.txt",
+      "bytes": 6448,
+      "sha256": "ef5d64a893131ebdeff1beacd2823efbfa8862e4bffe1eb0bccfa2e942c3f0f9",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "bytes": 14022,
+      "sha256": "1bd49f1f151dc76f71364690ed9a306a4084a74b3a52cff9870af030e8b56d20",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "84_CHANGELOG_V12_BILINGUAL_FINAL_RU_EN.md",
+      "bytes": 2114,
+      "sha256": "34025d53d0a232c54ffc4e8ab27fc84af7fda65a5550f2b413156931d33625a4",
+      "binding": false,
+      "role": "changelog"
+    },
+    {
+      "name": "85_SAFE_BILINGUAL_FIRST_RELEASE_PROFILE_RU_EN.md",
+      "bytes": 3787,
+      "sha256": "d668435e604f4cb97a3f568cd1841acb108694e996c940470cc84579caf18d84",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "86_APPLE_DSA_EXPORT_PRIVACY_API_RU.md",
+      "bytes": 3966,
+      "sha256": "e1373c07eaff4579a8000cdcef018b081815dbf3e8d3ef0f0338cf5e2ca94c4b",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "87_ANDROID_DEVELOPER_VERIFICATION_RU.md",
+      "bytes": 2216,
+      "sha256": "066c1f481c05868faedfbe28f9757e014298c3509917b00871ee4dafaae3bf02",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "88_STORE_API_AUTOMATION_RU.md",
+      "bytes": 3735,
+      "sha256": "cde66802bafbd53e049e036284f624a51bc1d86ea6df98af96fc423913858032",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "89_CODEX_CONTEXT_ORCHESTRATION_RU.md",
+      "bytes": 2175,
+      "sha256": "55cadee169313ff12ae3e7bd250efd461459c015886f798f79eb4a3262c10515",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "90_OWNER_RELEASE_INPUT_SCHEMA.json",
+      "bytes": 15176,
+      "sha256": "61228bc17d0cf9f3d385c83d4cb4c1af7e1be93df34c98a96530802e60e1f08c",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "91_OWNER_RELEASE_INPUT_EXAMPLE.json",
+      "bytes": 4537,
+      "sha256": "dcfe563d349c4b5c28546f431427faa5839f3871880716d0937d968da054794a",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "92_OWNER_SECRETS_SIGNING_MATRIX.csv",
+      "bytes": 2568,
+      "sha256": "9f44a87a3e9633234734d105e2a8af1217278da404ff5013edafcf1e0316a8af",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "93_STORE_CONSOLE_FIELD_MATRIX.csv",
+      "bytes": 3512,
+      "sha256": "e9a384a00576cad031f9f69af7cf5a8212314a16c9a5f70e21534b002067e2c7",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "94_TERRITORY_LAUNCH_MATRIX.csv",
+      "bytes": 2435,
+      "sha256": "3f3a3d40b0f72c9deb1edaea2f34a3bacefdbd44429b17fa77adc0ab653d656b",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "95_STAGE_DOCUMENT_ROUTING.json",
+      "bytes": 7421,
+      "sha256": "4df8f202240081c565e744368dcf4be793580d9fd4109d213c40cd313d00a9ef",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "96_OWNER_MINIMAL_ACTIONS_RU.txt",
+      "bytes": 3639,
+      "sha256": "583f5d3109187f1444ffc271905528c6e3d53729e7c036a9137ff96f3b44e401",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "97_ONE_COMMAND_RELEASE_PREPARATION_RU.md",
+      "bytes": 2314,
+      "sha256": "48794f9cc2d39da2c69f6ae902dd5f42aba28e44d6e0ec2ba12ff2457132b07f",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "98_STORE_UPLOAD_CAPABILITY_MATRIX.csv",
+      "bytes": 1291,
+      "sha256": "c8b1bc995f36e7b26896afa4a0398775aaed4515b3c1c3631b973b1cc2f50d76",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "99_FIRST_72_HOURS_RELEASE_RUNBOOK_RU.md",
+      "bytes": 1901,
+      "sha256": "5fc106efbf54f34abd80065bcfccec0fd131b99cc6e3a5ef560f6e6330764cc3",
+      "binding": true,
+      "role": "binding"
+    },
+    {
+      "name": "FINAL_MASTER_CODEX_PROMPT_LITERARY_PLANET_V12_BILINGUAL_RU_EN.txt",
+      "bytes": 1381619,
+      "sha256": "e9016b490180b8ac40dbf76aaf1b0baa4b37bc21db33faf6c38e5382ff4a3c23",
+      "binding": false,
+      "role": "standalone-fallback"
+    },
+    {
+      "name": "ПОСЛЕ_ПОЛНОЙ_СБОРКИ_ПРИЛОЖЕНИЯ_V12_RU.txt",
+      "bytes": 42320,
+      "sha256": "89145aa1edf329aecb1b0313e1250d115c71467835ca84c6315067bcd293bb55",
+      "binding": true,
+      "role": "post-build-owner-guide"
+    }
+  ]
+}

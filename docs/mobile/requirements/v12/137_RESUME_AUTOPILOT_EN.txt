@@ -1,0 +1,16 @@
+Continue the existing V12 Bilingual Final Autopilot branch.
+
+Read AGENTS.md, AUTOPILOT_STATE, STATUS, DECISIONS, BLOCKERS,
+AUTOPILOT_JOURNAL and NEXT_CODEX_PROMPT. Verify branch/HEAD/current main and
+unexpected changes. Load the shared invariants plus only the current Stage
+documents from 95_STAGE_DOCUMENT_ROUTING.json.
+
+Do not repeat the full audit or reread the standalone master prompt unless
+package recovery is necessary. Continue from the first incomplete
+requirement ID. Preserve the site-first canon, Russian/English completeness,
+SAFE_PAID_BILINGUAL_V1, child safety, rights, owner-minimal handoff,
+dry-run store automation and no-auto-merge rules.
+
+Before a session ends, record the exact next command, requirement, routed
+documents, test result and blocker evidence. Continue through S40 and FINAL
+HANDOFF.

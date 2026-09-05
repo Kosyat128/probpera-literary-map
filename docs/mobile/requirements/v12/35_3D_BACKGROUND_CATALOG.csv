@@ -1,0 +1,25 @@
+﻿id,title_ru,category,commercial_availability,high_full3d,balanced_full3d,economy,key_3d_features,interactive_hook,child_age,rights
+museum-starfield-3d,Музейные звёзды,canonical,included-in-base,yes,yes,3d-lite,multi-depth stars; nebula; parallax,constellation literary route,3-17,owner-original
+probpera-library-3d,Библиотека Пробы пера,canonical,included-in-base,yes,yes,3d-lite,two-level room; shelves; windows; PBR wood,book opens curated journey,6-17,owner-original
+planetka-room-3d,Комната Планетки,child,included-in-base,yes,yes,3d-lite,toy-scale room; books; map wall,suitcase opens offline library,3-12,owner-original
+grand-library-3d,Большая библиотека,general,optional-purchase,yes,yes,3d-lite,balconies; ladders; reading tables,route desks,8-17,owner-original
+writers-study-3d,Кабинет писателя,general,included-in-base,yes,yes,3d-lite,desk; ink; maps; window daylight,manuscript hotspot,10-17,owner-original
+celestial-observatory-3d,Небесная обсерватория,general,optional-purchase,yes,yes,3d-lite,dome; telescope; moving sky,constellation tour,7-17,owner-original
+museum-of-maps-3d,Музей старинных карт,general,optional-purchase,yes,yes,3d-lite,gallery; map frames; globe pedestals,edition history route,9-17,rights-reviewed
+floating-book-archive-3d,Архив парящих книг,general,optional-purchase,yes,yes,3d-lite,suspended shelves; controlled floating props,collection portal,7-17,owner-original
+old-scriptorium-3d,Старинный скрипторий,general,optional-purchase,yes,yes,3d-lite,stone room; desks; parchment; candles,manuscript fact,10-17,owner-original
+literary-theatre-3d,Театр мировой литературы,general,optional-purchase,yes,yes,3d-lite,stage; curtains; balconies,story performance route,8-17,owner-original
+autumn-literary-park-3d,Осенний литературный парк,general,optional-purchase,yes,yes,3d-lite,trees; gazebo; leaf animation,author walk,6-17,owner-original
+winter-reading-hall-3d,Зимний читальный зал,seasonal,optional-purchase,yes,yes,3d-lite,snow window; warm interior; fireplace,winter collection,5-17,owner-original
+ocean-of-stories-3d,Океан историй,general,optional-purchase,yes,yes,3d-lite,ship-library; ocean window; waves,adventure journey,7-17,owner-original
+northern-lights-library-3d,Библиотека северного сияния,general,optional-purchase,yes,yes,3d-lite,glass hall; aurora; reflections,northern authors route,6-17,owner-original
+cloud-library-3d,Облачная библиотека,child,optional-purchase,yes,yes,3d-lite,cloud islands; bridges; books,sky story route,3-12,owner-original
+story-forest-3d,Волшебный лес чтения,child,included-in-base,yes,yes,3d-lite,forest paths; reading clearings,character story worlds,4-12,owner-original/licensed-slots
+underwater-library-3d,Подводная библиотека,child,optional-purchase,yes,yes,3d-lite,underwater hall; fish; caustics,sea literature route,4-12,owner-original
+story-train-3d,Поезд историй,child,optional-purchase,yes,yes,3d-lite,train carriage; station portals,country journey selector,5-12,owner-original
+treehouse-reading-3d,Домик на дереве,child,optional-purchase,yes,yes,3d-lite,treehouse; rope bridge; maps,adventure shelf,4-12,owner-original
+cosmic-classroom-3d,Космический класс,child,optional-purchase,yes,yes,3d-lite,space classroom; planets; screens,science fiction route,6-14,owner-original
+land-of-letters-3d,Страна букв,child,optional-purchase,yes,yes,3d-lite,volumetric letters; book roads,alphabet/literature mission,3-8,owner-original
+snowy-story-square-3d,Снежная площадь сказок,child,optional-purchase,yes,yes,3d-lite,square; lights; gentle snow,winter tales route,4-12,owner-original
+dinosaur-book-island-3d,Остров динозавров и книг,child,optional-purchase,yes,yes,3d-lite,island; gentle original dinosaurs,prehistoric books route,4-10,owner-original
+animal-reading-circle-3d,Круг читающих зверят,child,optional-purchase,yes,yes,3d-lite,forest circle; original animals,read-together mission,3-9,owner-original

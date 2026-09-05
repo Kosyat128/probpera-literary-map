@@ -1,0 +1,65 @@
+ФИНАЛЬНЫЕ ДЕЙСТВИЯ ВЛАДЕЛЬЦА — V12
+
+После полного выполнения Codex владельцу не нужно программировать,
+собирать проект вручную, писать metadata, составлять privacy declarations
+или искать пути по приложению.
+
+Остаются семь классов объективных действий:
+
+1. АККАУНТЫ И ЮРИДИЧЕСКИЙ ПРОДАВЕЦ
+   - подтвердить форму владельца;
+   - создать/проверить Apple Developer, Google Play и RuStore;
+   - подключить merchant/PSP для платной PWA;
+   - завершить identity/D-U-N-S/organization/trader verification.
+
+2. СЕКРЕТЫ И ПОДПИСЬ
+   - поместить Apple API/signing, Google service account/upload key,
+     RuStore token/Pay и web PSP secrets в указанный secret store;
+   - сохранить резервные копии ключей;
+   - не отправлять секреты в чат или Git.
+
+3. ОДИН OWNER INPUT
+   - заполнить `owner-release-inputs.json`;
+   - утвердить legal name, public seller, цены, территории, URLs,
+     audience/rating и release date;
+   - не повторять данные в других файлах.
+
+4. ПРАВА И ЮРИДИЧЕСКИЕ ТЕКСТЫ
+   - утвердить privacy, terms, refund, deletion и support;
+   - утвердить права на Планетку, портреты, карты, обложки, аудио, fonts,
+     3D assets;
+   - Disney оставить выключенным, пока нет лицензии.
+
+5. ВИЗУАЛЬНОЕ УТВЕРЖДЕНИЕ
+   - просмотреть автоматически снятые screenshots exact RC;
+   - утвердить app icon, splash, Starter Set и один optional product;
+   - утвердить возрастные/privacy store answers.
+
+6. DRAFT UPLOAD И SUBMIT
+   - разрешить Codex/CI выполнить draft upload либо загрузить готовые
+     артефакты по созданной инструкции;
+   - проверить автоматически заполненные/подготовленные поля;
+   - вручную нажать Submit for Review;
+   - после одобрения вручную запустить staged/manual release.
+
+7. МОДЕРАЦИЯ И MERGE
+   - переслать Codex точный текст любого замечания;
+   - утвердить подготовленный ответ;
+   - вручную отправить исправленную версию;
+   - после проверки PR вручную объединить в main.
+
+Владелец не должен:
+
+- менять исходный код;
+- выполнять неизвестные shell-команды;
+- придумывать package IDs;
+- вручную собирать JSON;
+- вручную сверять сотни assets;
+- писать App Review Notes с нуля;
+- сам диагностировать WebGL или IAP;
+- вручную копировать биографии/портреты;
+- повторно проектировать child mode;
+- возвращаться к старым промтам.
+[ ] Russian and English release, store, legal, support, child and owner materials are complete.
+[ ] Base Edition English coverage is 100%; owner translation work = 0.
+[ ] Bilingual exact-RC screenshots and English reviewer notes are approved.

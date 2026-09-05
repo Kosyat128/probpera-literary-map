@@ -1,0 +1,18 @@
+﻿action_id,area,codex_must_finish,owner_only_action,programming_required_from_owner,single_source,blocking_type,generated_owner_artifact,completion_proof
+OA-001,Product architecture,All architecture/code/tests/docs,Approve final product,false,owner-release-inputs.json,owner-approval,FINAL_OWNER_APPROVAL,approval record
+OA-002,Developer accounts,Prepare identifiers and exact instructions,"Create/verify Apple, Google and RuStore accounts",false,owner-release-inputs.json,external-account,STORE_ACCOUNTS_AND_AGREEMENTS,console evidence
+OA-003,Legal seller/trader,Prepare DSA/legal worksheet,Confirm legal identity and trader status,false,owner-release-inputs.json,external-legal,LEGAL_PRIVACY_RIGHTS,legal/console reference
+OA-004,Signing,Prepare build/signing configuration and secret names,Provide signing keys/certificates in secret store,false,secrets matrix,external-signing,SECRETS_TO_ADD,secret reference health
+OA-005,Store API,Prepare dry-run/draft upload automation,Provide least-privilege API credentials,false,secrets matrix,external-account,DRAFT_UPLOAD_COMMANDS,API dry-run
+OA-006,Merchant/PWA,Implement commerce/webhook/refunds and staging,Open merchant account and add secrets,false,owner-release-inputs.json,external-merchant,WEB_PWA_STEP_BY_STEP,merchant smoke
+OA-007,Prices/territories,Generate recommendations/matrix,Approve final prices and SAFE_INITIAL territories,false,owner-release-inputs.json,owner-approval,PRICES_AND_TERRITORIES,approval record
+OA-008,Privacy/legal,Generate drafts/declarations/data inventory/deletion,Approve legal text and store answers,false,owner-release-inputs.json,external-legal,LEGAL_PRIVACY_RIGHTS,owner/legal approval
+OA-009,Rights,Audit and prepare rights evidence/fallbacks,Approve/supply missing rights evidence,false,owner-release-inputs.json,external-rights,RIGHTS dossier,rights gate
+OA-010,Disney,Keep absent and architecture-ready,Supply signed license only if future enablement desired,false,rights system,external-rights,Disney exclusion report,binary scan
+OA-011,Screenshots/metadata,Capture/generate/validate exact RC materials,Approve final visual/text package,false,owner-release-inputs.json,owner-approval,SCREENSHOTS/STORE packages,approval record
+OA-012,Reviewer access,Implement and test accounts/PIN/dossiers,Enter credentials into secure store fields,false,secure owner record,external-console,REVIEW_NOTES,external rehearsal
+OA-013,Builds,Build/test/package every variant,No technical action; permit signing/draft upload,false,release automation,external-signing,RELEASE_ARTIFACTS,checksums
+OA-014,Store submission,Prepare exact field/file/click instructions,Click Submit for Review,false,owner handoff,manual-store-action,STORE_CONSOLE_STEPS,store status
+OA-015,Rejection,Reproduce/fix/test/draft response,Forward exact message and send approved response,false,rejection ledger,manual-store-action,REJECTION_RESPONSE,new store status
+OA-016,Release,Prepare staged rollout/monitoring/rollback,Click Release/Pause as instructed,false,owner handoff,manual-store-action,FIRST_72_HOURS,rollout status
+OA-017,Git,Create final PR and CI evidence,Review and merge PR,false,final handoff,manual-owner-action,PR report,merge status

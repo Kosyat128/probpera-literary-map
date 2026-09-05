@@ -1,0 +1,39 @@
+﻿screen,platform,mode,must_have,mandatory_tests
+Native Splash,all native,adult+child,canonical orange; no white/black flash; platform icon rules,cold start; light/dark; cutout; video
+Brand Bridge,all,adult+child,same orange; official logo top-left; real bootstrap status,visual diff; reduced motion; safe area
+Paid Access / License,web-pwa,adult,verified one-time entitlement; offline grace; recovery,license valid/invalid/offline/refund
+Onboarding,all,adult+parent,3-4 concise pages; no required account/permissions,first run; skip/reopen; large text
+Adult Home,all,adult,canonical live globe; educational priority; continue journey,320/390/430/tablet; offline
+PWA Install,web-pwa,adult+parent,install affordance; safe SW/update,install; offline; update; rollback
+Globe Explore,all,adult+child,one Canvas; canonical parity; rotate/pinch/pick,context recovery; orientation; site parity
+Accessible Country List,all,adult+child,full non-3D alternative,screen reader; keyboard; large text
+Country,all,adult+child,canonical flag/data; writers; globe return,loading; offline; deep link; child filter
+Writer List,all,adult+child,real approved portraits; canonical names,no generated faces; offline; filter
+Writer Profile,all,adult+child,verified bio; real portrait; works/facts tabs,favorite; show on globe; rights; child bio
+Work Profile,all,adult+child,verified metadata; cover rights; age policy,empty; offline; direct link; child denial
+General Search,all,adult,canonical general index; typo/transliteration,offline; stale request; no mixed language
+Child Search,all,child,prefiltered approved exact-age index,ID/deep-link/cache/history bypass
+Favorites,all,adult+child,mode-separated; local/offline/sync,restart; conflict; delete; no leakage
+Recent/History,all,adult+child,mode-separated; parent deletable,restart; child isolation; migration
+Literary Passport,all,adult+child,countries/writers/journeys/badges; private,offline; sync; no streak pressure
+Journey Player,all,adult+child,Planetka; canonical nodes; checkpoint/resume,age; offline; migration; reduced motion
+Downloads / Чемодан Планетки,all,adult+parent,packages/progress/storage/repair,interrupt; retry; checksum; disk full
+Customization,all,adult+parent,same-runtime live preview; tabs; compatibility,apply/revert; A-B-C latest; stress
+Child Theme Picker,all,parent,planets/stands/backgrounds/accessories included/owned,age; rights; no price; store gate
+Store Catalog,all,adult+parent,paid optional only; real localized prices,offline; unavailable; restore; platform scope
+Product Detail,all,adult+parent,preview/rights/size/compatibility; one CTA,pending; owned; download; apply; revoke
+Purchase Pending,all,adult+parent,clear non-granted status; safe close,restart; callback; network; timeout
+Restore Purchases,all,adult+parent,store-specific optional restore,new device; account change; family share; error
+Child Home / Планетка,all,child,original mascot; reviewed dialogue; included content,age; reduced motion; no commerce
+Character Worlds,all,child,rights-cleared/owned only; provenance,blocked items absent; expiry fallback
+Parent Gate,all,parent,secure PIN; optional biometric; neutral child copy,back; deep link; brute force; restart
+Parent Center,all,parent,age/topics/store/links/data/audio/downloads,large text; security; persistence
+Settings/Profile,all,adult+parent,language/graphics/offline/privacy/account,persistence; export/delete; no child bypass
+Help/Diagnostics,all,adult+parent,redacted diagnostics; support; repair,no secrets/PIN/child query
+Privacy/Terms/About,all,adult+parent,actual data use; paid model; support/version,links; child gate; offline copy
+Offline Error,all,adult+child,clear recovery; child-safe wording,airplane; corrupt cache; backend outage
+Content Update,all,adult+parent,progress/integrity/atomic activation,interrupt; rollback; min version
+Update Required,all,adult+parent,minimum version; preserve local data,offline; store unavailable; child safe
+Licensed Pack Unavailable,all,adult+parent,territory/expiry/refund/fallback,no child commerce; safe theme switch
+Safe Mode,all,adult+parent,Economy/static fallback; repair/reset,WebGL failure; low memory; restart
+Account / Sync,all,adult+parent,optional; conflict/delete/export/device sessions,offline queue; no cross-store claim

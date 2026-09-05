@@ -1,0 +1,127 @@
+{
+  "stage": "S00",
+  "accessDate": "2026-09-04",
+  "sources": [
+    {
+      "key": "w3c-wai",
+      "authority": "W3C",
+      "requestedUrl": "https://www.w3.org/WAI/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://www.w3.org/WAI/",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "mdn-web-manifest",
+      "authority": "MDN",
+      "requestedUrl": "https://developer.mozilla.org/docs/Web/Manifest",
+      "accessDate": "2026-09-04",
+      "status": "requested_url_failed_official_replacement_verified",
+      "verifiedUrl": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "mdn-service-worker",
+      "authority": "MDN",
+      "requestedUrl": "https://developer.mozilla.org/docs/Web/API/Service_Worker_API",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://developer.mozilla.org/docs/Web/API/Service_Worker_API",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "ftc-coppa-official-topic",
+      "authority": "FTC",
+      "requestedUrl": "https://www.ftc.gov/news-events/topics/protecting-consumer-privacy-security/kids-privacy-coppa",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://www.ftc.gov/news-events/topics/protecting-consumer-privacy-security/kids-privacy-coppa",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "ftc-coppa-compliance-faq",
+      "authority": "FTC",
+      "requestedUrl": "https://www.ftc.gov/business-guidance/resources/complying-coppa-frequently-asked-questions",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://www.ftc.gov/business-guidance/resources/complying-coppa-frequently-asked-questions",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "ftc-2025-coppa-final-rule-summary",
+      "authority": "FTC",
+      "requestedUrl": "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-finalizes-changes-childrens-privacy-rule-limiting-companies-ability-monetize-kids-data",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-finalizes-changes-childrens-privacy-rule-limiting-companies-ability-monetize-kids-data",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "eu-safeguards-for-children-data",
+      "authority": "European Commission",
+      "requestedUrl": "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/legal-grounds-processing-data/are-there-any-specific-safeguards-data-about-children_en",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/legal-grounds-processing-data/are-there-any-specific-safeguards-data-about-children_en",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "cnil-minors-online-capacity",
+      "authority": "CNIL",
+      "requestedUrl": "https://www.cnil.fr/en/recommendation-1-regulate-capacity-children-act-online",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://www.cnil.fr/en/recommendation-1-regulate-capacity-children-act-online",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "cnil-parental-consent-under-15",
+      "authority": "CNIL",
+      "requestedUrl": "https://cnil.fr/fr/node/241",
+      "accessDate": "2026-09-04",
+      "status": "requested_url_failed_official_replacement_verified",
+      "verifiedUrl": "https://www.cnil.fr/en/recommendation-4-seek-parental-consent-children-under-15",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "cnil-consent-legal-basis",
+      "authority": "CNIL",
+      "requestedUrl": "https://www.cnil.fr/fr/les-bases-legales/consentement",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://www.cnil.fr/fr/les-bases-legales/consentement",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "uk-ico-children-s-code",
+      "authority": "ICO",
+      "requestedUrl": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/standards-of-age-appropriate-design/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/standards-of-age-appropriate-design/",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    },
+    {
+      "key": "uk-ico-age-appropriate-application",
+      "authority": "ICO",
+      "requestedUrl": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/3-age-appropriate-application/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "verifiedUrl": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/3-age-appropriate-application/",
+      "evidence": "docs/mobile/OFFICIAL_REQUIREMENTS.md",
+      "productApproval": false
+    }
+  ],
+  "note": "Read official content via web tools; policy preparation only. No territory or product compliance approval inferred."
+}

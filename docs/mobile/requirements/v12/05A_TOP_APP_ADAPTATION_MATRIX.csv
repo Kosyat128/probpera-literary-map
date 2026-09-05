@@ -1,0 +1,9 @@
+﻿source,pattern,adaptation,explicitly_rejected,acceptance
+Google Earth,globe-first direct manipulation,canonical globe is primary space,copying UI/branding,one Canvas; guided camera routes
+Google Earth Voyager,curated tours and layers,Guided Literary Journeys,unrelated map editing,route has checkpoints/content/finish
+Google Arts & Culture,immersive 3D cultural galleries,full-3D StoryWorld,copying museum assets,true 3D evidence and literary hotspots
+Khan Academy Kids,mascot/age/parent/offline,Планетка; exact-age; Parent Center; suitcase,third-party characters/style,child tests and offline pack
+Apple Books,continue/library/collections/offline,Continue Journey; Collections; reader controls,paywalling core data,resume and offline tests
+Duolingo,bite-size/immediate feedback/mascot consistency,2-5 min missions and feedback,coins/hearts/streak pressure,mission completion without dark patterns
+Apple HIG,accessibility/reduced motion/platform fit,Dynamic Type; VoiceOver; motion reduction,identical cross-platform UI,platform accessibility matrix
+Android Quality/Material 3,Back/state/adaptive expressive UI,lifecycle recovery and window classes,generic Material branding,Android native navigation tests

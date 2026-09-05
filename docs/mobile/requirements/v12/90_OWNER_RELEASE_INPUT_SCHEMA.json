@@ -1,0 +1,674 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/owner-release-inputs-v12.json",
+  "title": "Literary Planet V12 Owner Release Inputs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "product",
+    "legalOwner",
+    "brand",
+    "releaseProfile",
+    "platforms",
+    "audience",
+    "commerce",
+    "territories",
+    "urls",
+    "rightsApproval",
+    "releaseControl",
+    "childPrivacy"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "publicNameRu",
+        "subtitleRu",
+        "publicNameEn",
+        "subtitleEn",
+        "sourceLocale",
+        "fallbackLocale",
+        "defaultLocale",
+        "enabledLocales",
+        "storeLocales",
+        "englishReleaseApproved"
+      ],
+      "properties": {
+        "publicNameRu": {
+          "type": "string",
+          "default": "Литературная планета",
+          "maxLength": 30
+        },
+        "subtitleRu": {
+          "type": "string",
+          "default": "Проба пера",
+          "maxLength": 30
+        },
+        "defaultLocale": {
+          "enum": [
+            "system",
+            "ru",
+            "en"
+          ],
+          "default": "system"
+        },
+        "enabledLocales": {
+          "const": [
+            "ru",
+            "en"
+          ]
+        },
+        "supportName": {
+          "type": "string"
+        },
+        "publicNameEn": {
+          "type": "string",
+          "const": "Literary Planet",
+          "maxLength": 30
+        },
+        "subtitleEn": {
+          "type": "string",
+          "const": "Proba Pera",
+          "maxLength": 30
+        },
+        "sourceLocale": {
+          "const": "ru"
+        },
+        "fallbackLocale": {
+          "const": "en"
+        },
+        "englishReleaseApproved": {
+          "type": "boolean"
+        },
+        "storeLocales": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "appStore",
+            "googlePlay",
+            "ruStore",
+            "web"
+          ],
+          "properties": {
+            "appStore": {
+              "const": [
+                "en-US",
+                "ru"
+              ]
+            },
+            "googlePlay": {
+              "const": [
+                "en-US",
+                "ru-RU"
+              ]
+            },
+            "ruStore": {
+              "const": [
+                "ru"
+              ]
+            },
+            "web": {
+              "const": [
+                "en",
+                "ru"
+              ]
+            }
+          }
+        },
+        "supportNameEn": {
+          "type": "string",
+          "default": "Proba Pera Support"
+        }
+      }
+    },
+    "legalOwner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entityType",
+        "legalName",
+        "country",
+        "publicSellerName"
+      ],
+      "properties": {
+        "entityType": {
+          "enum": [
+            "individual",
+            "self-employed",
+            "sole-proprietor",
+            "company",
+            "other"
+          ]
+        },
+        "legalName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publicSellerName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "country": {
+          "type": "string",
+          "minLength": 2
+        },
+        "businessAddressReference": {
+          "type": "string"
+        },
+        "supportContactReference": {
+          "type": "string"
+        },
+        "euTraderStatus": {
+          "enum": [
+            "trader",
+            "not-trader",
+            "not-decided",
+            "not-applicable"
+          ]
+        },
+        "dunsNumberReference": {
+          "type": "string"
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probperaBrandApproved",
+        "domainControlApproved",
+        "appIconApproved"
+      ],
+      "properties": {
+        "probperaBrandApproved": {
+          "type": "boolean"
+        },
+        "domainControlApproved": {
+          "type": "boolean"
+        },
+        "appIconApproved": {
+          "type": "boolean"
+        },
+        "planetkaApproved": {
+          "type": "boolean",
+          "default": false
+        },
+        "brandEvidenceReference": {
+          "type": "string"
+        }
+      }
+    },
+    "releaseProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "const": "SAFE_PAID_BILINGUAL_V1"
+        },
+        "enableOptionalIapAtV1": {
+          "type": "boolean",
+          "default": true
+        },
+        "enableCloudAccountAtV1": {
+          "type": "boolean",
+          "default": false
+        },
+        "enablePushAtV1": {
+          "const": false
+        },
+        "enableBehaviouralAnalyticsAtV1": {
+          "const": false
+        },
+        "enableDisneyAtV1": {
+          "const": false
+        },
+        "manualReleaseAfterApproval": {
+          "const": true
+        },
+        "englishRequiredAtV1": {
+          "const": true
+        },
+        "enableThirdLocaleAtV1": {
+          "const": false
+        }
+      }
+    },
+    "platforms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "webPwa",
+        "googlePlay",
+        "ruStore",
+        "appStore"
+      ],
+      "properties": {
+        "webPwa": {
+          "type": "boolean"
+        },
+        "googlePlay": {
+          "type": "boolean"
+        },
+        "ruStore": {
+          "type": "boolean"
+        },
+        "appStore": {
+          "type": "boolean"
+        },
+        "androidPackageName": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z][A-Za-z0-9_]*)+$"
+        },
+        "appleBundleId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9.-]+$"
+        }
+      }
+    },
+    "audience": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "strategy",
+        "appleKidsCategory",
+        "childAgeMin",
+        "childAgeMax"
+      ],
+      "properties": {
+        "strategy": {
+          "const": "general-family-with-protected-child-mode"
+        },
+        "appleKidsCategory": {
+          "const": false
+        },
+        "childAgeMin": {
+          "const": 3
+        },
+        "childAgeMax": {
+          "const": 17
+        },
+        "ownerApprovedAgeRatingApple": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ownerApprovedAgeRatingGoogle": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ownerApprovedAgeRatingRuStore": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "googleTargetAgeGroups": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "commerce": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "distributionModel",
+        "noSubscription",
+        "noAds",
+        "priceAnchors"
+      ],
+      "properties": {
+        "distributionModel": {
+          "const": "PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES"
+        },
+        "noSubscription": {
+          "const": true
+        },
+        "noAds": {
+          "const": true
+        },
+        "firstOptionalProductId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "priceAnchors": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "appStore",
+            "googlePlay",
+            "ruStore",
+            "webPwa"
+          ],
+          "properties": {
+            "appStore": {
+              "type": [
+                "string",
+                "number"
+              ]
+            },
+            "googlePlay": {
+              "type": [
+                "string",
+                "number"
+              ]
+            },
+            "ruStore": {
+              "type": [
+                "string",
+                "number"
+              ]
+            },
+            "webPwa": {
+              "type": [
+                "string",
+                "number"
+              ]
+            }
+          }
+        },
+        "familySharingClaim": {
+          "enum": [
+            "not-promised",
+            "platform-specific-approved"
+          ]
+        },
+        "crossStoreEntitlementClaim": {
+          "const": "not-promised"
+        }
+      }
+    },
+    "territories": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "releaseSet"
+      ],
+      "properties": {
+        "releaseSet": {
+          "enum": [
+            "TEST_ONLY",
+            "SAFE_INITIAL",
+            "EXPANDED"
+          ]
+        },
+        "include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "euDistribution": {
+          "type": "boolean"
+        },
+        "franceDistribution": {
+          "type": "boolean"
+        }
+      }
+    },
+    "urls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "support",
+        "privacy",
+        "terms",
+        "supportEn",
+        "privacyEn",
+        "termsEn"
+      ],
+      "properties": {
+        "support": {
+          "type": "string",
+          "format": "uri"
+        },
+        "privacy": {
+          "type": "string",
+          "format": "uri"
+        },
+        "terms": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accountDeletion": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "privacyChoices": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "labelsAndMarkings": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "supportEn": {
+          "type": "string",
+          "format": "uri"
+        },
+        "privacyEn": {
+          "type": "string",
+          "format": "uri"
+        },
+        "termsEn": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accountDeletionEn": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "legalControllingLanguage": {
+          "enum": [
+            "ru",
+            "en",
+            "jurisdiction-specific",
+            "not-decided"
+          ]
+        }
+      }
+    },
+    "rightsApproval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "realPortraits",
+        "flags",
+        "starterSet",
+        "disneyExcluded",
+        "englishTranslations",
+        "englishStoreLegalSupport"
+      ],
+      "properties": {
+        "realPortraits": {
+          "type": "boolean"
+        },
+        "flags": {
+          "type": "boolean"
+        },
+        "starterSet": {
+          "type": "boolean"
+        },
+        "planetka": {
+          "type": "boolean"
+        },
+        "backgrounds": {
+          "type": "boolean"
+        },
+        "audioFonts": {
+          "type": "boolean"
+        },
+        "disneyExcluded": {
+          "const": true
+        },
+        "rightsEvidenceReference": {
+          "type": "string"
+        },
+        "englishTranslations": {
+          "type": "boolean"
+        },
+        "englishAudio": {
+          "type": "boolean"
+        },
+        "englishStoreLegalSupport": {
+          "type": "boolean"
+        },
+        "englishNamesTitlesEvidence": {
+          "type": "boolean"
+        }
+      }
+    },
+    "releaseControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ownerApprovesDraftUploads",
+        "ownerApprovesManualSubmission",
+        "autoMerge"
+      ],
+      "properties": {
+        "ownerApprovesDraftUploads": {
+          "type": "boolean",
+          "default": false
+        },
+        "ownerApprovesManualSubmission": {
+          "type": "boolean",
+          "default": false
+        },
+        "ownerApprovesStagedRollout": {
+          "type": "boolean",
+          "default": true
+        },
+        "autoMerge": {
+          "const": false
+        },
+        "targetReleaseDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "approvalRecordReference": {
+          "type": "string"
+        },
+        "bilingualReleaseApproved": {
+          "type": "boolean"
+        },
+        "localizedScreenshotsApproved": {
+          "type": "boolean"
+        }
+      }
+    },
+    "childPrivacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "childDataLocalByDefault",
+        "childCloudAccountEnabled",
+        "childAdvertisingEnabled",
+        "childBehaviouralAnalyticsEnabled",
+        "jurisdictionReview"
+      ],
+      "properties": {
+        "childDataLocalByDefault": {
+          "const": true
+        },
+        "childCloudAccountEnabled": {
+          "const": false
+        },
+        "childAdvertisingEnabled": {
+          "const": false
+        },
+        "childBehaviouralAnalyticsEnabled": {
+          "const": false
+        },
+        "childUploadsEnabled": {
+          "const": false
+        },
+        "childAiInputEnabled": {
+          "const": false
+        },
+        "jurisdictionReview": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "unitedStates",
+            "europeanUnion",
+            "france",
+            "unitedKingdom"
+          ],
+          "properties": {
+            "unitedStates": {
+              "enum": [
+                "not-distributed",
+                "safe-local-only-reviewed",
+                "legal-review-required",
+                "approved"
+              ]
+            },
+            "europeanUnion": {
+              "enum": [
+                "not-distributed",
+                "per-member-state-review-required",
+                "approved-territory-list"
+              ]
+            },
+            "france": {
+              "enum": [
+                "not-distributed",
+                "legal-review-required",
+                "approved"
+              ]
+            },
+            "unitedKingdom": {
+              "enum": [
+                "not-distributed",
+                "childrens-code-review-required",
+                "approved"
+              ]
+            }
+          }
+        },
+        "legalApprovalReference": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

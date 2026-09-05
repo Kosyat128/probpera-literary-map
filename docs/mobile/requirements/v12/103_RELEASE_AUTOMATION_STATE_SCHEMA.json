@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/release-automation-state-v12.json",
+  "title": "Literary Planet V12 Release Automation State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "profile",
+    "commitSha",
+    "status",
+    "ownerInputs",
+    "platforms",
+    "artifacts",
+    "generatedAt",
+    "bilingual"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "releaseId": {
+      "type": "string"
+    },
+    "profile": {
+      "const": "SAFE_PAID_BILINGUAL_V1"
+    },
+    "commitSha": {
+      "type": "string",
+      "minLength": 7
+    },
+    "status": {
+      "enum": [
+        "NOT_STARTED",
+        "VALIDATING",
+        "BLOCKED_OWNER_INPUT",
+        "BLOCKED_STORE_ACCOUNT",
+        "BLOCKED_SIGNING",
+        "BLOCKED_LEGAL",
+        "BLOCKED_RIGHTS",
+        "BLOCKED_INTERNAL",
+        "READY_INTERNAL",
+        "DRAFT_UPLOAD_READY",
+        "DRAFT_UPLOADED",
+        "OWNER_APPROVED",
+        "READY_FOR_MANUAL_SUBMISSION"
+      ]
+    },
+    "ownerInputs": {
+      "type": "object",
+      "required": [
+        "valid",
+        "sha256",
+        "missingReport"
+      ],
+      "properties": {
+        "valid": {
+          "type": "boolean"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "missingReport": {
+          "type": "string"
+        }
+      }
+    },
+    "platforms": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "appStore": {
+          "$ref": "#/$defs/platformState"
+        },
+        "googlePlay": {
+          "$ref": "#/$defs/platformState"
+        },
+        "ruStore": {
+          "$ref": "#/$defs/platformState"
+        },
+        "webPwa": {
+          "$ref": "#/$defs/platformState"
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "path",
+          "sha256",
+          "kind"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "store": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bilingual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "locales",
+        "coverage",
+        "contentGate",
+        "storePackages",
+        "ownerApproval"
+      ],
+      "properties": {
+        "locales": {
+          "const": [
+            "ru",
+            "en"
+          ]
+        },
+        "coverage": {
+          "enum": [
+            "NOT_STARTED",
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "contentGate": {
+          "enum": [
+            "NOT_STARTED",
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "storePackages": {
+          "enum": [
+            "NOT_STARTED",
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "ownerApproval": {
+          "enum": [
+            "NOT_STARTED",
+            "PENDING",
+            "APPROVED",
+            "REJECTED"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "platformState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "build",
+        "preflight",
+        "dossier",
+        "upload"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "build": {
+          "enum": [
+            "NOT_STARTED",
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "preflight": {
+          "enum": [
+            "NOT_STARTED",
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "dossier": {
+          "enum": [
+            "NOT_STARTED",
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "upload": {
+          "enum": [
+            "DISABLED",
+            "DRY_RUN",
+            "READY",
+            "DRAFT_UPLOADED",
+            "BLOCKED_EXTERNAL",
+            "FAIL"
+          ]
+        }
+      }
+    }
+  }
+}

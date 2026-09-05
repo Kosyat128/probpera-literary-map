@@ -1,0 +1,15 @@
+﻿field_id,store,locale,surface,required_content,source,validation,owner_action,status
+BSF-001,App Store,en-US,app information,Literary Planet; Proba Pera; privacy URL,owner input + English templates,length/rights/URL/claim checks,approve/publish,OPEN
+BSF-002,App Store,ru,app information,Литературная планета; Проба пера; privacy URL,owner input + Russian templates,length/rights/URL/claim checks,approve/publish,OPEN
+BSF-003,App Store,en-US,version metadata,"description, keywords, promotional text, review notes",exact RC dossier,coverage/claim/button-label checks,approve/publish,OPEN
+BSF-004,App Store,ru,version metadata,"description, keywords, promotional text",exact RC dossier,coverage/claim checks,approve/publish,OPEN
+BSF-005,App Store,en-US,screenshots,English exact-RC iPhone/iPad set,capture pipeline,"build hash, visible language, rights",approve/upload,OPEN
+BSF-006,App Store,ru,screenshots,Russian exact-RC iPhone/iPad set,capture pipeline,"build hash, visible language, rights",approve/upload,OPEN
+BSF-007,Google Play,en-US,default listing,"title, short/full description, graphics",English templates + RC,BCP47/limits/claim/rights,approve/edit,OPEN
+BSF-008,Google Play,ru-RU,localized listing,"title, short/full description, graphics",Russian templates + RC,BCP47/limits/claim/rights,approve/edit,OPEN
+BSF-009,Google Play,en-US,App Access,exact English button labels and paths,review dossier,external clean-device rehearsal,enter secure credentials,OPEN
+BSF-010,Google Play,ru-RU,custom listing if used,owned Russian translation and images,localized listing package,no automatic-translation dependency,approve/edit,CONDITIONAL
+BSF-011,RuStore,ru,primary listing/reviewer note,Russian description/screenshots/steps,Russian dossier,spell/limits/exact-build/rights,approve/submit,OPEN
+BSF-012,RuStore,en,in-app support evidence,English selector/UI/screenshots backup,bilingual evidence,switch/state/coverage tests,approve,OPEN
+BSF-013,Web/PWA,en,localized web/PWA,"routes, metadata, manifest, legal/support",web localization package,SSR/lang/canonical/hreflang/offline,approve/deploy,OPEN
+BSF-014,Web/PWA,ru,localized web/PWA,"routes, metadata, manifest, legal/support",web localization package,SSR/lang/canonical/hreflang/offline,approve/deploy,OPEN

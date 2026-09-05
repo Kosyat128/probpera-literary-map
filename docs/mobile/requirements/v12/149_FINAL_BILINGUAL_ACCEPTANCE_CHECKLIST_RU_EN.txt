@@ -1,0 +1,48 @@
+FINAL BILINGUAL ACCEPTANCE CHECKLIST / ФИНАЛЬНАЯ ПРИЁМКА V12
+
+[ ] S00–S40 complete.
+[ ] Existing probpera.ru Literary Planet remains the only globe/content canon.
+[ ] Release profile = SAFE_PAID_BILINGUAL_V1.
+[ ] Russian UI/content critical coverage = 100%.
+[ ] English UI coverage = 100%.
+[ ] Base Edition English content coverage = 100%.
+[ ] English child content and Planetka coverage = 100%.
+[ ] Native iOS/Android strings are complete in ru/en.
+[ ] Unsupported device locales safely fall back to English.
+[ ] Per-app language selection works on iOS and Android.
+[ ] In-app language switching preserves globe, camera, entity, child and purchase state.
+[ ] No wrong-language first frame.
+[ ] No raw key, critical mixed-language screen or unreviewed machine translation.
+[ ] Writer names and work titles follow verified evidence/fallback rules.
+[ ] Cross-language search and transliteration resolve the same IDs.
+[ ] Child policy is applied after alias resolution in both languages.
+[ ] Russian/English offline packages and emergency UI work.
+[ ] All audio has transcript, pronunciation, rights and English text fallback.
+[ ] No voice clone or child voice upload.
+[ ] Apple en-US + Russian metadata/screenshots are ready.
+[ ] Google en-US default + Russian translation are ready.
+[ ] Google custom listings do not rely on automatic translation.
+[ ] RuStore Russian listing and Russian/English app switch are ready.
+[ ] Web localized routes, lang, canonical and hreflang pass.
+[ ] Russian/English Privacy, Terms, Support and deletion pages are synchronized.
+[ ] Controlling legal language is owner/legal approved.
+[ ] Exact-RC screenshot pairs are real and rights-cleared.
+[ ] Disney/Pixar and blocked IP are absent.
+[ ] Translation/CMS/audit/stale/rollback workflows pass.
+[ ] Bilingual owner approval and post-build guides exist.
+[ ] The owner has no translation or programming task.
+[ ] Controlled English style and en-US/en-GB variant policy pass.
+[ ] AI/MT assistance provider, privacy and draft provenance gates pass.
+[ ] Legal controlling-language and stale-version gates pass.
+[ ] English support/security/deletion/incident messages pass.
+[ ] Bilingual Web SEO canonical/hreflang/sitemap/indexability pass.
+[ ] Machine-readable bilingual release evidence validates against schema.
+[ ] Weighted translation quality scorecard reaches all mandatory targets.
+[ ] Store field matrix is complete for Apple, Google Play, RuStore and Web/PWA.
+[ ] Russian owner and English reviewer can independently use the final handoff.
+[ ] Bilingual release evidence example validates against its schema.
+[ ] Translation-provider registry and prohibited-data rules pass.
+[ ] Localized legal document versions/hashes/approvals validate.
+[ ] Russian/English locale packages validate signatures, compatibility and rollback.
+[ ] Editorial correction workflow propagates stale state to every affected English artifact.
+[ ] Bilingual commands/CI and final no-return contract pass.

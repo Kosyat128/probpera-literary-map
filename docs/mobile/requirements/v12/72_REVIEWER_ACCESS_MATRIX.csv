@@ -1,0 +1,15 @@
+﻿access_id,store,feature,starting_state,credentials_required,exact_steps_required,expected_result,automated_health_check,expires,failure_blocks_submission,evidence
+RA-001,all,Base paid app,clean install,store-installed/review build,yes,Home opens with included Starter Set,yes,no,true,launch capture
+RA-002,all,Adult account,clean install,review account,yes,Account signs in without OTP,yes,no during review,true,external-network login test
+RA-003,all,Child mode,adult Home,review Parent PIN,yes,Child profile opens with correct age policy,yes,no during review,true,child access video
+RA-004,all,Exit child mode,child Home,review Parent PIN,yes,Parent Gate returns to adult mode,yes,no during review,true,gate test
+RA-005,all,Adult store from child context,child Home,review Parent PIN,yes,Adult store opens only after gate,yes,no during review,true,gate/store test
+RA-006,App Store,Sandbox IAP,adult store,sandbox tester/store environment,yes,Non-consumable reaches verified owned state,yes,configured,true,StoreKit evidence
+RA-007,Google Play,Test IAP,adult store,licensed tester/test product,yes,One-time product reaches verified owned state,yes,configured,true,Play Billing evidence
+RA-008,RuStore,Test IAP,adult store,RuStore test environment,yes,Pay SDK product reaches verified owned state,yes,configured,true,RuStore evidence
+RA-009,all,Restore Purchases,adult settings/store,store account,yes,Previously purchased optional item restored,yes,no,true,restore evidence
+RA-010,all,Offline mode,content downloaded,none,yes,Core globe/search/saved content works offline,yes,n/a,true,airplane-mode test
+RA-011,all,Economy graphics,Settings,none,yes,Globe remains usable on fallback scene,yes,n/a,true,Economy capture
+RA-012,all,Account deletion,signed-in review account,review account,yes,Request completes and account/data status shown,yes,no,true,deletion E2E
+RA-013,all,External article link,child mode,review Parent PIN,yes,Link blocked until gate then opens approved URL,yes,no,true,link gate test
+RA-014,all,Disney candidate visibility,any,none,yes,Unlicensed candidates absent,yes,n/a,true,rights scan

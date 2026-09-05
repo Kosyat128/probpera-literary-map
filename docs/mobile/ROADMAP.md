@@ -1,0 +1,45 @@
+# V12 roadmap
+
+Every stage remains open until its implementation and evidence pass.
+
+- S00: Repository safety and current baseline
+- S01: Product architecture and traceability
+- S02: Shared site-first extraction
+- S03: Paid Web/PWA edition
+- S04: Mobile shell and native projects
+- S05: Brand splash and onboarding
+- S06: Canonical globe integration
+- S07: Premium responsive globe UX
+- S08: Content export and signed manifests
+- S09: Country/writer/work screens
+- S10: Search/collection/passport
+- S11: Offline/download/sync
+- S12: Paid Base Edition and Starter Set
+- S13: Skins/stands/accessories
+- S14: Full-3D background engine
+- S15: Planetka and journeys
+- S16: Child mode and Parent Gate
+- S17: Literary characters/StoryWorld
+- S18: Disney licensing infrastructure
+- S19: Optional store UX
+- S20: Platform purchase providers
+- S21: Server verification/entitlements
+- S22: Admin owner self-service
+- S23: Accessibility/localization/security/privacy
+- S24: Performance/reliability/device hardening
+- S25: Full QA and parity
+- S26: Store/legal/release candidates
+- S27: Operations/no-return handoff
+- S28: Moderation precheck
+- S29: Reviewer access and store dossiers
+- S30: Listing truth and artifact match
+- S31: Rejection and resubmission readiness
+- S32: Owner input, SAFE_PAID_BILINGUAL_V1 and secrets/signing preparation
+- S33: Regional compliance, DSA/export and Android verification
+- S34: One-command preparation and official-API draft packages
+- S35: Final owner approval and launch handoff
+- S36: Internationalization foundation and state-preserving language switching
+- S37: Complete English UI, native, store, legal and support surfaces
+- S38: English literary content, names, titles, search and CMS workflow
+- S39: English child mode, Planetka, audio, offline and bilingual QA
+- S40: Bilingual release dossiers, screenshots, owner approval and final handoff

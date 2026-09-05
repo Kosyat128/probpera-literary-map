@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/owner-missing-inputs-v12.json",
+  "title": "Literary Planet V12 Missing Owner Inputs Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "releaseProfile",
+    "items",
+    "summary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "releaseProfile": {
+      "const": "SAFE_PAID_BILINGUAL_V1"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "category",
+          "titleRu",
+          "blocking",
+          "whyNeededRu",
+          "whereToCompleteRu",
+          "sensitive"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "legal",
+              "account",
+              "signing",
+              "merchant",
+              "price",
+              "territory",
+              "privacy",
+              "age-rating",
+              "rights",
+              "visual-approval",
+              "store-console",
+              "submission"
+            ]
+          },
+          "titleRu": {
+            "type": "string"
+          },
+          "blocking": {
+            "type": "boolean"
+          },
+          "whyNeededRu": {
+            "type": "string"
+          },
+          "recommendedDefaultRu": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "whereToCompleteRu": {
+            "type": "string"
+          },
+          "sensitive": {
+            "type": "boolean"
+          },
+          "ownerValuePath": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "secretName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidenceExpected": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blockingCount",
+        "nonBlockingCount",
+        "ownerCanSubmit"
+      ],
+      "properties": {
+        "blockingCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "nonBlockingCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ownerCanSubmit": {
+          "type": "boolean"
+        },
+        "nextActionRu": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

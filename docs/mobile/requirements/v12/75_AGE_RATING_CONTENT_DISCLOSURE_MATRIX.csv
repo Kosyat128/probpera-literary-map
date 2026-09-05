@@ -1,0 +1,11 @@
+﻿content_id,content_type,mode,sensitive_topic,severity,frequency,store_rating_relevance,child_access_policy,evidence_source,owner_review_required,status
+AGE-001,Adult writer biographies,adult,"war, death, persecution, illness and other factual themes",variable,variable,whole-binary,excluded unless separately child-approved,canonical content audit,true,TO_AUDIT
+AGE-002,Adult works/summaries,adult,"violence, suicide, substances, sexuality, horror depending on work",variable,variable,whole-binary,per-work exact-age allowlist,book evidence audit,true,TO_AUDIT
+AGE-003,Child biographies,child,only editorially reviewed age-safe wording,low,controlled,child experience,explicit approved + exact age,child review records,true,TO_AUDIT
+AGE-004,Child works,child,work-specific topics,controlled,controlled,child experience,exact-age per-work decision,child work matrix,true,TO_AUDIT
+AGE-005,Планетка dialogue,child,no commercial pressure or unsafe free-form output,low,frequent,child experience,reviewed script by age,dialogue registry,true,TO_AUDIT
+AGE-006,Literary characters,child,fear/violence depending on source,variable,controlled,child experience,character/storyworld age gate,rights/child matrix,true,TO_AUDIT
+AGE-007,Disney licensed packs,child,pack-specific and rights-limited,unknown until licensed,optional,listing/child,blocked until license + child review,Disney rights matrix,true,BLOCKED
+AGE-008,External web articles,adult/protected,unfiltered site content,variable,user initiated,whole-binary/external access,Parent Gate in child mode,link policy,true,TO_AUDIT
+AGE-009,Optional purchases,adult/protected,commercial activity,n/a,optional,purchase declaration,not shown to child; Parent Gate,store UX tests,true,TO_AUDIT
+AGE-010,Open AI/chat/UGC,none,not included in V1,n/a,none,whole-binary,prohibited,feature flags/code scan,false,ABSENT_REQUIRED

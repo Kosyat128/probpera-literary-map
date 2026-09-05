@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "stage": "S00",
+  "checkedAt": "2026-09-04T19:24:37Z",
+  "scope": "Read-only local native toolchain, existing CI, official portable installation candidates; no archive stage documents beyond S00 sources.",
+  "baseMainSha": "e073b21acfea854b3b573aa4613215156957ff38",
+  "workspace": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "readiness": {
+    "androidLocalBuild": "NOT_READY_TOOLCHAIN_MISSING",
+    "androidLocalEmulator": "NOT_READY_TOOLCHAIN_AND_VIRTUALIZATION_UNVERIFIED",
+    "iosLocalBuild": "UNAVAILABLE_ON_WINDOWS",
+    "macosRemoteExecution": "FEASIBLE_HOSTED_RUNNER_CANDIDATE_NOT_PROVEN_ACCESS",
+    "nativeProjects": "NOT_CREATED"
+  },
+  "host": {
+    "os": "Microsoft Windows 10.0.22631",
+    "architecture": "X64",
+    "freeGiB": {
+      "C": 3.5,
+      "D": 94.8
+    },
+    "diskObservation": "Point-in-time measurement. Avoid new native SDK, emulator and build caches on C.",
+    "virtualization": {
+      "status": "UNKNOWN",
+      "reason": "Read-only Win32_Processor CIM query denied access; no elevation attempted."
+    }
+  },
+  "commands": [
+    {
+      "name": "node",
+      "available": true,
+      "path": "C:/Program Files/nodejs/node.exe",
+      "version": "24.20.0"
+    },
+    {
+      "name": "npm",
+      "available": true,
+      "path": "C:/Program Files/nodejs/npm.ps1",
+      "version": "11.19.0"
+    },
+    {
+      "name": "git",
+      "available": true,
+      "path": "C:/Program Files/Git/cmd/git.exe"
+    },
+    {
+      "name": "gh",
+      "available": true,
+      "path": "C:/Program Files/GitHub CLI/gh.exe",
+      "authenticationInspected": false
+    },
+    {
+      "name": "ssh",
+      "available": true,
+      "path": "C:/WINDOWS/System32/OpenSSH/ssh.exe",
+      "remoteConnectionAttempted": false
+    },
+    {
+      "name": "java",
+      "available": false,
+      "scope": "PATH discovery only; standard installation directories additionally inspected"
+    },
+    {
+      "name": "javac",
+      "available": false,
+      "scope": "PATH discovery only; standard installation directories additionally inspected"
+    },
+    {
+      "name": "gradle",
+      "available": false,
+      "scope": "PATH discovery only; standard installation directories additionally inspected"
+    },
+    {
+      "name": "adb",
+      "available": false,
+      "scope": "PATH discovery only; standard installation directories additionally inspected"
+    },
+    {
+      "name": "sdkmanager",
+      "available": false,
+      "scope": "PATH discovery only; standard installation directories additionally inspected"
+    },
+    {
+      "name": "avdmanager",
+      "available": false,
+      "scope": "PATH discovery only; standard installation directories additionally inspected"
+    },
+    {
+      "name": "emulator",
+      "available": false,
+      "scope": "PATH discovery only; standard installation directories additionally inspected"
+    },
+    {
+      "name": "android",
+      "available": false,
+      "scope": "PATH discovery only; standard installation directories additionally inspected"
+    },
+    {
+      "name": "xcodebuild",
+      "available": false,
+      "scope": "PATH discovery only; standard installation directories additionally inspected"
+    }
+  ],
+  "standardLocations": [
+    {
+      "path": "C:/Program Files/Android",
+      "exists": false
+    },
+    {
+      "path": "C:/Program Files/Java",
+      "exists": false
+    },
+    {
+      "path": "C:/Program Files/Eclipse Adoptium",
+      "exists": false
+    },
+    {
+      "path": "C:/Program Files/Microsoft",
+      "exists": false
+    },
+    {
+      "path": "C:/Android",
+      "exists": false
+    },
+    {
+      "path": "D:/Android",
+      "exists": false
+    },
+    {
+      "path": "C:/Users/User/AppData/Local/Android",
+      "exists": false
+    },
+    {
+      "path": "C:/Users/User/.gradle",
+      "exists": false
+    },
+    {
+      "path": "C:/Users/User/.android",
+      "exists": false
+    },
+    {
+      "path": "D:/CodexData/tools",
+      "exists": false
+    }
+  ],
+  "additionalLocationCheck": "Top-level matching native-tool directories in Program Files, Program Files (x86), Local Programs and D drive did not reveal native toolchains.",
+  "environmentPresence": {
+    "JAVA_HOME": false,
+    "JDK_HOME": false,
+    "ANDROID_HOME": false,
+    "ANDROID_SDK_ROOT": false,
+    "GRADLE_HOME": false
+  },
+  "sshConfig": {
+    "path": "C:/Users/User/.ssh/config",
+    "exists": false,
+    "privateKeysRead": false
+  },
+  "repository": {
+    "nativeDependencies": [],
+    "androidDirectory": false,
+    "iosDirectory": false,
+    "gradleWrapperCount": 0,
+    "workflowCount": 15,
+    "runnerLabels": [
+      "ubuntu-latest",
+      "windows-latest"
+    ],
+    "nativeBuildStepsFound": false,
+    "macosWorkflowFound": false,
+    "selfHostedWorkflowFound": false,
+    "reviewedFiles": [
+      "AGENTS.md",
+      "package.json",
+      ".github/workflows/*.yml",
+      "scripts native-tool reference search",
+      "docs/mobile/AUTOPILOT_STATE.json",
+      "docs/mobile/STATUS.md",
+      "docs/mobile/DECISIONS.md",
+      "docs/mobile/BLOCKERS.md",
+      "docs/mobile/NEXT_CODEX_PROMPT.txt"
+    ]
+  },
+  "ci": {
+    "repositoryPublic": true,
+    "githubActionsRecentReadAvailable": true,
+    "recentRuns": [
+      {
+        "id": 33901741489,
+        "name": "Retry social publication",
+        "path": ".github/workflows/publish-social.yml",
+        "status": "completed",
+        "conclusion": "success",
+        "sha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33901741489"
+      },
+      {
+        "id": 33901637723,
+        "name": "Deploy Vite site to GitHub Pages",
+        "path": ".github/workflows/deploy-pages.yml",
+        "status": "completed",
+        "conclusion": "failure",
+        "sha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33901637723"
+      },
+      {
+        "id": 33882639594,
+        "name": "Retry social publication",
+        "path": ".github/workflows/publish-social.yml",
+        "status": "completed",
+        "conclusion": "success",
+        "sha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33882639594"
+      },
+      {
+        "id": 33882491207,
+        "name": "Deploy Vite site to GitHub Pages",
+        "path": ".github/workflows/deploy-pages.yml",
+        "status": "completed",
+        "conclusion": "failure",
+        "sha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33882491207"
+      },
+      {
+        "id": 33860995840,
+        "name": "Retry social publication",
+        "path": ".github/workflows/publish-social.yml",
+        "status": "completed",
+        "conclusion": "success",
+        "sha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33860995840"
+      }
+    ],
+    "observedJob": [
+      {
+        "id": 101117185077,
+        "name": "Verify pending articles in Dzen",
+        "status": "completed",
+        "labels": [
+          "ubuntu-latest"
+        ],
+        "runnerGroupName": "GitHub Actions",
+        "runnerName": "GitHub Actions 1000003921",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33901741489/job/101117185077"
+      }
+    ],
+    "macosConfigured": false,
+    "connectedToolLimit": "GitHub read tools and existing-run rerun tools are exposed. No remote macOS shell or dedicated macOS build executor was found. Workflow-list endpoint was rejected by connector URL allowlist; no administrative/secrets endpoint was read.",
+    "candidate": {
+      "runnerLabel": "macos-26-intel",
+      "xcodeVersion": "26.6",
+      "xcodeBuild": "17F113",
+      "developerDir": "/Applications/Xcode_26.6.app/Contents/Developer",
+      "simulatorRuntime": "iOS 26.5",
+      "devices": [
+        "iPhone 17",
+        "iPad (A16)"
+      ],
+      "status": "official_image_documented_only",
+      "signingRequiredForSimulator": false,
+      "productionSigningVerified": false,
+      "rationale": "Public repository and working Actions make a standard GitHub-hosted macOS simulator job feasible in principle. Runner policy/write permissions and an actual native workflow need verification. No job was dispatched.",
+      "sourceUrls": [
+        "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+        "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md"
+      ]
+    }
+  },
+  "futureS04Plan": {
+    "status": "PROPOSAL_NOT_EXECUTED",
+    "toolRoot": "D:/CodexData/.codex/visualizations/2026/09/04/01a06dd0-30ba-7fe1-9637-858d87ac1ff5/native-toolchain",
+    "useRootReason": "Existing writable task D root has space; C workspace does not have room for normal native SDK/emulator caches.",
+    "steps": [
+      "Recheck available disk, selected release versions and official checksums. Keep a bootstrap manifest with download URL, version, digest and source.properties.",
+      "Extract portable JDK 21 and pinned Android Command-Line Tools into task-local D root; use process-only tool paths. Keep SDK, Gradle user cache, Android AVD/data, downloads, temp and build caches there.",
+      "Install only required stable SDK packages: platforms;android-36, build-tools;36.0.0, platform-tools. Record actual package revisions; emulator/system image only after acceleration and disk preflight.",
+      "Add exact Capacitor 8.5.1 core/cli/android/ios to canonical app at S04 and lock versions. Use native projects generated by that version and their Gradle wrapper; no system Gradle. Confirm generated wrapper/AGP match proposed pins.",
+      "Prepare an isolated artifact-only macOS simulator workflow selecting explicit macos-26-intel and Xcode 26.6; use local bundled web output, no remote server.url, no secrets, no deploy, no signing/upload. Build for simulator and run RU/EN iPhone/iPad tests, record actual image/Xcode/SDK and exact commit.",
+      "Only after real build/device execution record native readiness; simulator artifacts do not establish App Store signing, physical-device graphics, purchase providers, or release readiness."
+    ],
+    "pinnedCandidates": [
+      {
+        "tool": "Capacitor",
+        "version": "8.5.1",
+        "packages": [
+          "@capacitor/core@8.5.1",
+          "@capacitor/cli@8.5.1",
+          "@capacitor/android@8.5.1",
+          "@capacitor/ios@8.5.1"
+        ],
+        "source": "https://github.com/ionic-team/capacitor/releases/tag/8.5.1",
+        "releasedAt": "2026-08-31T21:54:55Z",
+        "note": "8.5 introduces UIScene. 8.5.1 fixes internal HTTP proxy navigation, SPM POSIX paths and listener removal."
+      },
+      {
+        "tool": "JDK",
+        "version": "Microsoft OpenJDK 21.0.12.1 LTS",
+        "artifact": "microsoft-jdk-21.0.12.1-windows-x64.zip",
+        "downloadUrl": "https://aka.ms/download-jdk/microsoft-jdk-21.0.12.1-windows-x64.zip",
+        "officialIndex": "https://learn.microsoft.com/en-us/java/openjdk/download",
+        "sha256": null,
+        "checksumStatus": "Official checksum link exists; digest was not retrievable. Must verify before executing binaries."
+      },
+      {
+        "tool": "Android Command-Line Tools",
+        "artifactBuildId": "15859902",
+        "artifact": "commandlinetools-win-15859902_latest.zip",
+        "downloadUrl": "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip",
+        "officialIndex": "https://developer.android.com/studio#command-line-tools-only",
+        "sha256": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a",
+        "checksumStatus": "Published on official download table; no local artifact downloaded/hashed.",
+        "note": "File name includes latest but numeric build ID pins the artifact. Record actual package version from source.properties."
+      },
+      {
+        "tool": "Android Gradle Plugin",
+        "version": "8.13.0",
+        "coordinate": "com.android.tools.build:gradle:8.13.0",
+        "source": "https://raw.githubusercontent.com/ionic-team/capacitor/8.5.1/android/capacitor/build.gradle",
+        "note": "Capacitor source uses Java 21, compile/target 36, min 24."
+      },
+      {
+        "tool": "Gradle wrapper",
+        "version": "8.14.3",
+        "downloadUrl": "https://services.gradle.org/distributions/gradle-8.14.3-bin.zip",
+        "sha256": null,
+        "officialVersionSource": "https://capacitorjs.com/docs/updating/8-0",
+        "checksumUrl": "https://services.gradle.org/distributions/gradle-8.14.3-bin.zip.sha256",
+        "checksumStatus": "Checksum endpoint web parser rejected octet-stream; digest not retrieved.",
+        "note": "Capacitor guide documents version 8.14.3 with all distribution; bin is proposed smaller runtime distribution, direct HEAD unverified."
+      },
+      {
+        "tool": "Android Studio",
+        "version": "Quail 4 | 2026.1.4",
+        "artifact": "android-studio-quail4-windows.zip",
+        "officialIndex": "https://developer.android.com/studio",
+        "sha256": "fabc885015bd67182f4f49da8e3efbb3b60038b2dfda632cf2d29363ffb1e04e",
+        "status": "Optional IDE, not needed for initial headless bootstrap"
+      }
+    ],
+    "newAndroidCli": {
+      "status": "EVALUATE_ON_COMPATIBLE_RUNNER_LATER",
+      "source": "https://developer.android.com/tools/agents/android-cli",
+      "findings": "Current sdkmanager docs deprecate it for Android CLI. Android CLI offers UI layout and Journeys, but documented Windows issues disable android emulator and do not support download from PowerShell. Do not replace working Windows bootstrap with an unverified path.",
+      "noInstallation": true
+    }
+  },
+  "networkChecks": {
+    "method": "HEAD only; no download",
+    "results": [
+      {
+        "url": "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip",
+        "status": "UNVERIFIED_HTTP_REQUEST_EXCEPTION"
+      },
+      {
+        "url": "https://aka.ms/download-jdk/microsoft-jdk-21.0.12.1-windows-x64.zip",
+        "status": "UNVERIFIED_HTTP_REQUEST_EXCEPTION"
+      },
+      {
+        "url": "https://services.gradle.org/distributions/gradle-8.14.3-bin.zip",
+        "status": "UNVERIFIED_HTTP_REQUEST_EXCEPTION"
+      }
+    ],
+    "note": "Official documentation was retrieved using web tools. Direct binary transport from this shell remains unverified."
+  },
+  "guardrails": {
+    "systemInstallPerformed": false,
+    "downloadPerformed": false,
+    "workflowDispatchPerformed": false,
+    "remoteMutationPerformed": false,
+    "productionActionPerformed": false,
+    "secretValuesRead": false,
+    "privateKeyRead": false,
+    "credentialsRequested": false
+  },
+  "validation": {
+    "jsonParse": "PASS_serialized_and_checked",
+    "environmentDiscovery": "COMPLETE_WITH_RECORDED_LIMITS",
+    "nativeBuild": "NOT_RUN",
+    "emulator": "NOT_RUN",
+    "macosRunner": "NOT_DISPATCHED"
+  },
+  "sourcesAccessedAt": "2026-09-04",
+  "sourceUrls": [
+    "https://capacitorjs.com/docs/getting-started/environment-setup",
+    "https://capacitorjs.com/docs/updating/8-0",
+    "https://capacitorjs.com/docs/updating/8-5",
+    "https://github.com/ionic-team/capacitor/releases/tag/8.5.1",
+    "https://raw.githubusercontent.com/ionic-team/capacitor/8.5.1/android/capacitor/build.gradle",
+    "https://developer.android.com/studio",
+    "https://developer.android.com/tools/sdkmanager",
+    "https://developer.android.com/tools/agents/android-cli",
+    "https://learn.microsoft.com/en-us/java/openjdk/download",
+    "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+    "https://github.com/actions/runner-images/blob/main/images/macos/macos-26-Readme.md"
+  ],
+  "limitations": [
+    "Scoped discovery is not an exhaustive whole-disk tool search.",
+    "No Android or iOS build was possible/attempted in this read-only task.",
+    "CIM query denied; virtualization remains unknown.",
+    "Remote macOS policy/permissions and signing are unverified.",
+    "Binary download checks failed; portable setup remains future work, not installed tooling."
+  ]
+}

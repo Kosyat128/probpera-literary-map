@@ -1,0 +1,262 @@
+{
+  "snapshotDate": "2026-09-03",
+  "instruction": "Recheck every official source at Stage 0, bilingual release candidate, immediately before draft upload/submission, and after any rejection. Current official documentation overrides the package snapshot.",
+  "sources": [
+    {
+      "area": "Capacitor",
+      "url": "https://capacitorjs.com/docs"
+    },
+    {
+      "area": "Apple upload requirements",
+      "url": "https://developer.apple.com/news/upcoming-requirements/"
+    },
+    {
+      "area": "App Store pricing",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-pricing/set-a-price/"
+    },
+    {
+      "area": "App Review",
+      "url": "https://developer.apple.com/app-store/review/guidelines/"
+    },
+    {
+      "area": "Declared Age Range",
+      "url": "https://developer.apple.com/documentation/declaredagerange"
+    },
+    {
+      "area": "StoreKit",
+      "url": "https://developer.apple.com/documentation/storekit"
+    },
+    {
+      "area": "Google target API",
+      "url": "https://support.google.com/googleplay/android-developer/answer/11926878"
+    },
+    {
+      "area": "Google Play Billing",
+      "url": "https://developer.android.com/google/play/billing"
+    },
+    {
+      "area": "Google Billing Security",
+      "url": "https://developer.android.com/google/play/billing/security"
+    },
+    {
+      "area": "Google Families",
+      "url": "https://support.google.com/googleplay/android-developer/topic/9877766"
+    },
+    {
+      "area": "RuStore paid apps",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/sale-of-paid-applications-in-rustore"
+    },
+    {
+      "area": "RuStore Pay SDK",
+      "url": "https://www.rustore.ru/help/en/sdk/pay"
+    },
+    {
+      "area": "Disney permissions",
+      "url": "https://disneypermissions.my.site.com/WelcomeIntakePage/s/"
+    },
+    {
+      "area": "WIPO copyright",
+      "url": "https://www.wipo.int/copyright/en/"
+    },
+    {
+      "area": "WCAG",
+      "url": "https://www.w3.org/WAI/standards-guidelines/wcag/"
+    },
+    {
+      "area": "PWA",
+      "url": "https://web.dev/learn/pwa/"
+    },
+    {
+      "area": "OpenAI Codex",
+      "url": "https://developers.openai.com/codex/"
+    },
+    {
+      "area": "Apple — submission, current SDK",
+      "url": "https://developer.apple.com/app-store/submitting/"
+    },
+    {
+      "area": "Apple — Kids Category, parental gates, child data",
+      "url": "https://developer.apple.com/kids/"
+    },
+    {
+      "area": "Apple — name, subtitle, privacy URL",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-information/"
+    },
+    {
+      "area": "Apple — age rating",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/set-an-app-age-rating"
+    },
+    {
+      "area": "Google — Play Billing",
+      "url": "https://developer.android.com/google/play/billing/release-notes"
+    },
+    {
+      "area": "Google — billing lifecycle",
+      "url": "https://developer.android.com/google/play/billing/integrate"
+    },
+    {
+      "area": "Google — privacy, account deletion, user data",
+      "url": "https://support.google.com/googleplay/android-developer/answer/10144311"
+    },
+    {
+      "area": "Google — App Access, target audience, Data Safety, listing",
+      "url": "https://support.google.com/googleplay/android-developer/"
+    },
+    {
+      "area": "RuStore — listing limits, screenshots, publication",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication"
+    },
+    {
+      "area": "RuStore — stability, standalone app, IP, store links, paid type, screenshots",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/requirement-apps"
+    },
+    {
+      "area": "RuStore — permissions, User Data Safety",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication/new-version-app/declare-app-permissions/how-to-declare-permissions"
+    },
+    {
+      "area": "W3C — accessibility",
+      "url": "https://www.w3.org/WAI/"
+    },
+    {
+      "area": "MDN — PWA manifest",
+      "url": "https://developer.mozilla.org/docs/Web/Manifest"
+    },
+    {
+      "area": "MDN — service worker",
+      "url": "https://developer.mozilla.org/docs/Web/API/Service_Worker_API"
+    },
+    {
+      "area": "Apple DSA trader requirements",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/"
+    },
+    {
+      "area": "Apple EU app terms",
+      "url": "https://developer.apple.com/support/apps-in-the-eu"
+    },
+    {
+      "area": "Apple export compliance overview",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/overview-of-export-compliance"
+    },
+    {
+      "area": "Apple encryption documentation",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/export-compliance-documentation-for-encryption/"
+    },
+    {
+      "area": "Apple determine/upload encryption docs",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/determine-and-upload-app-encryption-documentation"
+    },
+    {
+      "area": "Apple privacy manifests and Required Reason APIs",
+      "url": "https://developer.apple.com/documentation/bundleresources/describing-data-use-in-privacy-manifests"
+    },
+    {
+      "area": "Apple App Privacy details",
+      "url": "https://developer.apple.com/app-store/app-privacy-details/"
+    },
+    {
+      "area": "Apple App Store Connect API",
+      "url": "https://developer.apple.com/documentation/appstoreconnectapi/"
+    },
+    {
+      "area": "Apple upload builds",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/"
+    },
+    {
+      "area": "Google Play Developer Publishing API edits",
+      "url": "https://developers.google.com/android-publisher/edits"
+    },
+    {
+      "area": "Android developer verification",
+      "url": "https://developer.android.com/developer-verification/guides"
+    },
+    {
+      "area": "FTC COPPA official topic",
+      "url": "https://www.ftc.gov/news-events/topics/protecting-consumer-privacy-security/kids-privacy-coppa"
+    },
+    {
+      "area": "FTC COPPA compliance FAQ",
+      "url": "https://www.ftc.gov/business-guidance/resources/complying-coppa-frequently-asked-questions"
+    },
+    {
+      "area": "FTC 2025 COPPA final rule summary",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-finalizes-changes-childrens-privacy-rule-limiting-companies-ability-monetize-kids-data"
+    },
+    {
+      "area": "EU safeguards for children data",
+      "url": "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/legal-grounds-processing-data/are-there-any-specific-safeguards-data-about-children_en"
+    },
+    {
+      "area": "CNIL minors online capacity",
+      "url": "https://www.cnil.fr/en/recommendation-1-regulate-capacity-children-act-online"
+    },
+    {
+      "area": "CNIL parental consent under 15",
+      "url": "https://cnil.fr/fr/node/241"
+    },
+    {
+      "area": "CNIL consent legal basis",
+      "url": "https://www.cnil.fr/fr/les-bases-legales/consentement"
+    },
+    {
+      "area": "UK ICO Children's Code",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/standards-of-age-appropriate-design/"
+    },
+    {
+      "area": "UK ICO age appropriate application",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/3-age-appropriate-application/"
+    },
+    {
+      "area": "RuStore Public API create draft",
+      "url": "https://www.rustore.ru/help/en/work-with-rustore-api/api-upload-publication-app/create-draft-version"
+    },
+    {
+      "area": "RuStore Public API artifact/icon upload",
+      "url": "https://www.rustore.ru/help/work-with-rustore-api/api-upload-publication-app/apk-icon-upload"
+    },
+    {
+      "area": "Apple App Store localizations",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-store-localizations/"
+    },
+    {
+      "area": "Apple localize app information",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/localize-app-information"
+    },
+    {
+      "area": "Apple localization overview",
+      "url": "https://developer.apple.com/localization/"
+    },
+    {
+      "area": "Apple localized screenshots and previews",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/upload-app-previews-and-screenshots"
+    },
+    {
+      "area": "Apple localizable properties",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/required-localizable-and-editable-properties"
+    },
+    {
+      "area": "Google Play localized listings API",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings"
+    },
+    {
+      "area": "Google Play update localized listing",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings/update"
+    },
+    {
+      "area": "Google Play transactional edits",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest"
+    },
+    {
+      "area": "Android per-app language preferences",
+      "url": "https://developer.android.com/guide/topics/resources/app-languages"
+    },
+    {
+      "area": "Android LocaleConfig",
+      "url": "https://developer.android.com/reference/android/app/LocaleConfig"
+    },
+    {
+      "area": "Android resource localization",
+      "url": "https://developer.android.com/guide/topics/resources/localization"
+    }
+  ]
+}

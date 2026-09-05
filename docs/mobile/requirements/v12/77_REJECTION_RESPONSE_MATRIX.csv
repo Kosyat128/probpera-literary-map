@@ -1,0 +1,9 @@
+﻿response_id,store,class,first_action,binary_change_expected,metadata_change_expected,legal_owner_input,required_regression,build_number_bump,response_template,closure_condition
+RSP-001,all,STABILITY,reproduce exact build,yes,possibly,no,technical smoke + case-specific,yes,27L,new build approved or submission withdrawn
+RSP-002,all,REVIEW_ACCESS,health-check credentials/backend,possibly,yes,secure credentials,clean-install external network,if binary changed,27L,reviewer access verified
+RSP-003,all,RIGHTS,freeze affected asset and scan artifact,possibly,yes,license or removal approval,rights-clean binary scan,if binary changed,27L,evidence accepted or asset absent
+RSP-004,all,PRIVACY,compare declarations to actual traffic,possibly,yes,legal declaration approval,privacy congruence/deletion,if binary changed,27L,exact RC and fields match
+RSP-005,all,AGE_AUDIENCE,audit whole-binary and child mode,possibly,yes,rating/strategy approval,age matrix + child tests,if binary changed,27L,store answers and RC align
+RSP-006,all,IAP,verify store product and backend lifecycle,possibly,yes,console product/agreement action,purchase/restore/refund,if binary changed,27L,sandbox reviewer path green
+RSP-007,all,METADATA,compare screenshot/claim with RC,no unless feature issue,yes,final asset approval,metadata/screenshot truth,no if metadata only,27L,truth gate green
+RSP-008,all,FALSE_POSITIVE,restore exact conditions and collect evidence,no by default,possibly,send response,reproduction/access health,no unless changed,27L,store accepts explanation or asks new fix

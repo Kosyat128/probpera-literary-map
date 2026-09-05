@@ -1,0 +1,42 @@
+{
+  "package": "LITERARY_PLANET_CODEX_FINAL_V12_BILINGUAL_RU_EN_ALL_IN_ONE",
+  "version": "12.0",
+  "builtAt": "2026-09-03T00:00:00Z",
+  "status": "PASS",
+  "canonicalFoundation": "Existing Literary Planet on probpera.ru and current repository main",
+  "requiredLocales": [
+    "ru",
+    "en"
+  ],
+  "distributionModel": "PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES",
+  "firstReleaseProfile": "SAFE_PAID_BILINGUAL_V1",
+  "counts": {
+    "filesInManifestInventory": 191,
+    "bindingDocuments": 173,
+    "requirements": 342,
+    "bilingualRequirements": 107,
+    "stages": 41,
+    "releaseReadinessAreas": 88,
+    "bilingualTests": 36,
+    "translationQualityAreas": 13,
+    "jsonFiles": 35,
+    "csvFiles": 48,
+    "officialSources": 64,
+    "localizationSources": 20,
+    "standaloneLines": 34851,
+    "standaloneBytes": 1381619,
+    "englishGuideLines": 313,
+    "russianGuideLines": 1032
+  },
+  "standalone": {
+    "name": "FINAL_MASTER_CODEX_PROMPT_LITERARY_PLANET_V12_BILINGUAL_RU_EN.txt",
+    "bytes": 1381619,
+    "lines": 34851,
+    "sha256": "e9016b490180b8ac40dbf76aaf1b0baa4b37bc21db33faf6c38e5382ff4a3c23"
+  },
+  "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+  "validationSha256": "77961309e08889e3b23aa4e623e921a7a36a67281267a7347efff69a8dcf63bb",
+  "zipSha256": "COMPUTED_OUTSIDE_ARCHIVE",
+  "ownerTranslationTasks": 0,
+  "ownerProgrammingTasks": 0
+}

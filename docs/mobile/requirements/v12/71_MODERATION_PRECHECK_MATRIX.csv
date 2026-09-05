@@ -1,0 +1,39 @@
+﻿check_id,area,store,priority,automated,input,pass_condition,evidence,failure_status,owner_action
+MPC-001,Build identity,all,P0,true,exact RC artifacts,Version/build/SHA/content/catalog/toolchain recorded,BUILD_IDENTITY.json,BLOCKED_INTERNAL,none
+MPC-002,Site canon,all,P0,true,source/build,Existing Literary Planet shared foundation parity passes,site-mobile parity report,BLOCKED_INTERNAL,none
+MPC-003,App name,all,P0,true,listing/install config,Name within current limits and installed/listing identity match,identity report,BLOCKED_INTERNAL,approve final name
+MPC-004,Paid status,App Store,P0,partial,App Store Connect,Nonzero app price and paid agreements ready,console evidence reference,BLOCKED_EXTERNAL,enter price/agreements
+MPC-005,Paid status,Google Play,P0,partial,Play Console,App paid before first public release; never public-free,console evidence reference,BLOCKED_EXTERNAL,configure paid listing
+MPC-006,Paid status,RuStore,P0,partial,RuStore Console,"App type Paid, monetization and price configured",console evidence reference,BLOCKED_EXTERNAL,configure paid listing
+MPC-007,Starter Set,all,P0,true,catalog/assets,All required included items production-ready,starter-set-completeness.json,BLOCKED_INTERNAL,none
+MPC-008,Reviewer account,all,P0,true,review environment,Reusable credentials work from clean external network,review-access report,BLOCKED_INTERNAL,securely enter credentials
+MPC-009,Review Parent PIN,all,P0,true,review environment,PIN works and wrong attempts/backoff test,parent-gate report,BLOCKED_INTERNAL,securely enter PIN
+MPC-010,Sandbox IAP,App Store,P0,partial,StoreKit sandbox/backend,"Purchase, pending, restore and verification pass",IAP evidence,BLOCKED_INTERNAL_OR_EXTERNAL,configure sandbox product
+MPC-011,Sandbox IAP,Google Play,P0,partial,Play test product/backend,"Purchase, pending, acknowledge, restore and verification pass",IAP evidence,BLOCKED_INTERNAL_OR_EXTERNAL,configure test product
+MPC-012,Sandbox IAP,RuStore,P0,partial,RuStore test product/backend,"Pay SDK flow, verification and restore pass",IAP evidence,BLOCKED_INTERNAL_OR_EXTERNAL,complete test moderation/product
+MPC-013,Child boot,all,P0,true,exact RC,No adult frame/data appears on saved-child cold start,child boot video/test,BLOCKED_INTERNAL,none
+MPC-014,Child bypass,all,P0,true,exact RC,Search/ID/deep link/cache/history/offline/Back bypasses all denied,child bypass report,BLOCKED_INTERNAL,none
+MPC-015,Parent Gate,all,P0,true,exact RC,Exit/store/purchase/external/account changes gated,Parent Gate E2E,BLOCKED_INTERNAL,none
+MPC-016,Whole-app content rating,all,P0,partial,content inventory,Sensitive adult themes inventoried and questionnaire mapped,age disclosure report,BLOCKED_INTERNAL,approve final answers
+MPC-017,Target audience,Google Play,P0,partial,RC/UI/data/SDK,Target ages and Families declarations match actual experience,audience worksheet,BLOCKED_INTERNAL_OR_EXTERNAL,approve console answers
+MPC-018,Kids Category,App Store,P0,partial,owner decision,Not selected automatically; explicit decision/evidence,decision record,BLOCKED_EXTERNAL,approve strategy
+MPC-019,Privacy inventory,all,P0,true,code/SDK/network/backend,All processed data categories inventoried,data-inventory.json,BLOCKED_INTERNAL,none
+MPC-020,Privacy declarations,all,P0,partial,privacy inventory/store fields,Store fields and policy match exact RC,privacy congruence report,BLOCKED_INTERNAL_OR_EXTERNAL,approve/enter fields
+MPC-021,Account deletion,all,P0,true,account-enabled RC/backend,In-app and required external deletion path pass,deletion E2E,BLOCKED_INTERNAL,approve retention wording
+MPC-022,Permissions,all,P0,true,native manifests/plugins,Only allowlisted necessary permissions remain,permission diff,BLOCKED_INTERNAL,approve any sensitive permission
+MPC-023,Rights binary scan,all,P0,true,exact RC/manifests/assets,No blocked/unlicensed/expired asset bundled,rights-clean report,BLOCKED_INTERNAL,supply license or remove
+MPC-024,Real portrait gate,all,P0,true,asset manifest,No generated real-person portrait; canonical assets only,portrait provenance report,BLOCKED_INTERNAL,none
+MPC-025,Disney gate,all,P0,true,artifact/metadata/catalog,Disney/Pixar absent unless every license gate passes,Disney gate report,BLOCKED_INTERNAL,supply signed license or exclude
+MPC-026,Screenshot truth,all,P0,true,exact RC/captures,Every screenshot maps to exact RC and implemented feature,screenshot inventory,BLOCKED_INTERNAL,approve final set
+MPC-027,Concept exclusion,all,P0,true,store export folders,Owner collage absent from submission assets,asset scan,BLOCKED_INTERNAL,none
+MPC-028,Metadata truth,all,P0,true,listing copy/RC,"No future feature, fake price, unverifiable claim or protected term",metadata lint,BLOCKED_INTERNAL,approve final copy
+MPC-029,Store variant hygiene,all,P0,true,each binary,Only correct billing provider/update links included,variant scan,BLOCKED_INTERNAL,none
+MPC-030,Apple toolchain,App Store,P0,true,archive/build log,Current accepted Xcode and SDK requirement met,toolchain report,BLOCKED_INTERNAL_OR_EXTERNAL,provide macOS/signing if needed
+MPC-031,Google target/billing,Google Play,P0,true,AAB/build config,Current target API and Billing requirements met,toolchain report,BLOCKED_INTERNAL,none
+MPC-032,RuStore Pay/signing,RuStore,P0,true,APK/AAB/config,Current Pay SDK and signing/update contract pass,toolchain/signing report,BLOCKED_INTERNAL_OR_EXTERNAL,provide signing/console data
+MPC-033,Technical smoke,all,P0,true,exact RC/device matrix,"Clean install, launch, offline, lifecycle, low-memory, accessibility pass",technical smoke report,BLOCKED_INTERNAL,none
+MPC-034,Reproducibility,all,P0,true,clean checkout/toolchain,Submitted artifact reproducible/attested,rebuild comparison,BLOCKED_INTERNAL,none
+MPC-035,Store dossier,App Store,P0,true,all evidence,Apple dossier complete and exact-build-bound,dossier validation,BLOCKED_INTERNAL,enter secure console fields
+MPC-036,Store dossier,Google Play,P0,true,all evidence,Google dossier complete and exact-build-bound,dossier validation,BLOCKED_INTERNAL,enter secure console fields
+MPC-037,Store dossier,RuStore,P0,true,all evidence,RuStore dossier complete and exact-build-bound,dossier validation,BLOCKED_INTERNAL,enter secure console fields
+MPC-038,Rejection readiness,all,P1,true,playbook/templates,Simulated rejection and resubmission workflow passes,simulation report,BLOCKED_INTERNAL,none

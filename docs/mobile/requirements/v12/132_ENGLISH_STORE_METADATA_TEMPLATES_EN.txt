@@ -1,0 +1,80 @@
+ENGLISH STORE METADATA TEMPLATES — V12
+Use only after generation from the exact release candidate and current
+store-limit validation. Replace bracketed facts with generated values.
+
+PRODUCT IDENTITY
+App name: Literary Planet
+Brand/subtitle: Proba Pera
+
+GOOGLE PLAY SHORT DESCRIPTION CANDIDATE
+Explore writers and books on an interactive 3D literary globe.
+
+APP STORE PROMOTIONAL TEXT CANDIDATE
+Travel across an interactive literary globe, discover writers and works,
+and explore a protected child mode with Planetka. The paid Base Edition
+includes the core archive, offline essentials and a complete Starter Set.
+
+FULL DESCRIPTION CANDIDATE
+Literary Planet turns world literature into an interactive journey across
+a live 3D globe.
+
+Explore countries, open editorially reviewed writer profiles, discover
+works and follow literary journeys without losing your place on the map.
+The mobile experience is built on the same canonical Literary Planet and
+content system as probpera.ru.
+
+WHAT IS INCLUDED
+• The core literary globe and archive
+• Countries, writers and works
+• Search, Favorites and History
+• Literary Passport and guided journeys
+• Essential offline access
+• A protected Child Mode and Parent Center
+• Planetka, the child-friendly guide
+• Included globe skins, stands, scenes and StoryWorlds
+
+FOR FAMILIES
+Parents can create local child profiles, set an exact age and control
+available topics. Access is evaluated for each work and content item. The
+child experience does not display prices, advertising or purchase prompts.
+Adult store and external actions remain behind the Parent Gate.
+
+CUSTOMIZE THE SAME GLOBE
+Change the skin, stand and background scene without replacing the
+canonical globe, geography, selected country or writer. The paid app
+already includes a complete Starter Set. Optional one-time cosmetic
+additions may be purchased separately, but they are not required to use
+the core literary and child features.
+
+TRUST AND PRIVACY
+Writer portraits, flags and factual content use documented sources and
+editorial checks. There are no ads, subscriptions, loot boxes or internal
+currency. Child profiles are local by default in the safe first-release
+profile.
+
+LANGUAGES
+Russian and English.
+
+PAID MODEL DISCLOSURE
+This is a one-time paid app. The core archive, Child Mode, Parent Center,
+Planetka, offline essentials and Starter Set are included. Optional
+non-consumable cosmetic additions are sold separately.
+
+KEYWORD CANDIDATES — VALIDATE CURRENT STORE RULES
+literature, books, writers, authors, reading, world, globe, education,
+biographies, stories
+
+WHAT’S NEW — FIRST RELEASE
+Welcome to Literary Planet. Explore the canonical 3D literary globe in
+Russian or English, discover writers and works, use offline essentials,
+set up protected child profiles and meet Planetka. The paid Base Edition
+includes the complete Starter Set; optional cosmetic additions are never
+required.
+
+DO NOT PUBLISH
+• unverified counts;
+• “best”, “No. 1”, “official” or guaranteed learning outcomes;
+• Disney/Pixar or unavailable packs;
+• a claim that one purchase transfers across all stores;
+• a claim of complete offline access if only selected content is offline;
+• screenshots from a mockup or another build.

@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/content-manifest-v12.json",
+  "title": "Literary Planet Content Manifest V12",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "generatedAt",
+    "source",
+    "compatibility",
+    "packages",
+    "integrity",
+    "rollback"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^9\\."
+    },
+    "contentVersion": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "repository",
+        "commitSha",
+        "canonicalSnapshotId"
+      ],
+      "properties": {
+        "repository": {
+          "const": "Kosyat128/probpera-literary-map"
+        },
+        "commitSha": {
+          "type": "string",
+          "minLength": 7
+        },
+        "canonicalSnapshotId": {
+          "type": "string"
+        },
+        "cmsExportVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "required": [
+        "minimumAppVersion",
+        "maximumSchemaVersion"
+      ],
+      "properties": {
+        "minimumAppVersion": {
+          "type": "string"
+        },
+        "maximumSchemaVersion": {
+          "type": "string"
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "web-pwa",
+              "android-google",
+              "android-rustore",
+              "ios-ipados"
+            ]
+          }
+        }
+      }
+    },
+    "locale": {
+      "type": "string"
+    },
+    "childPolicyVersion": {
+      "type": "string"
+    },
+    "stagedRollout": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "percentage": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "cohortSaltId": {
+          "type": "string"
+        }
+      }
+    },
+    "packages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "url",
+          "bytes",
+          "sha256",
+          "type"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{64}$"
+          },
+          "signature": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "bootstrap",
+              "countries",
+              "writers",
+              "works",
+              "search-general",
+              "search-child",
+              "journeys",
+              "planetka",
+              "media",
+              "customization",
+              "rights",
+              "tombstones"
+            ]
+          },
+          "locale": {
+            "type": "string"
+          },
+          "ageMin": {
+            "type": "integer",
+            "minimum": 3,
+            "maximum": 17
+          },
+          "ageMax": {
+            "type": "integer",
+            "minimum": 3,
+            "maximum": 17
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "manifestSha256"
+      ],
+      "properties": {
+        "algorithm": {
+          "const": "SHA-256"
+        },
+        "manifestSha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "signatureAlgorithm": {
+          "type": "string"
+        },
+        "keyId": {
+          "type": "string"
+        }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "required": [
+        "previousContentVersion"
+      ],
+      "properties": {
+        "previousContentVersion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "minimumStabilityWindowHours": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "retainPreviousPackages": {
+          "type": "boolean"
+        }
+      }
+    },
+    "deletions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "releaseNotes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "snapshotAt": "2026-09-03",
+  "repository": "Kosyat128/probpera-literary-map",
+  "observedDefaultBranch": "main",
+  "observedMainSha": "e073b21acfea854b3b573aa4613215156957ff38",
+  "mainProtectionObserved": {
+    "protected": true,
+    "requiredStatusChecks": [
+      "verify"
+    ]
+  },
+  "observedStack": {
+    "node": "24.x",
+    "npm": "11.x",
+    "web": "React + TypeScript + Vite",
+    "3d": "Three.js + React Three Fiber",
+    "backend": "Supabase/Cloudflare as found in repository"
+  },
+  "canonicalFoundation": "Existing Literary Planet on probpera.ru/current main",
+  "instruction": "This connected-GitHub snapshot was refreshed on 2026-09-03. Codex must still re-read current main, open PRs, branch protection and CI before creating the implementation branch. Never auto-merge PR #100, PR #87 or any other open work.",
+  "observedLatestCommit": {
+    "sha": "e073b21acfea854b3b573aa4613215156957ff38",
+    "message": "fix(release): stabilize editorial copy normalization (#171)",
+    "createdAt": "2026-09-02T15:13:50Z"
+  },
+  "observedOpenPullRequests": [
+    {
+      "number": 100,
+      "title": "fix: prepare guarded RU direct connectivity migration",
+      "head": "codex/fix-ru-direct-connectivity",
+      "headSha": "867d887533c47336692a9e8cddeedbe119ddb638",
+      "draft": false,
+      "mergeableObserved": false,
+      "instruction": "Do not merge or depend on this PR; re-evaluate current status at Stage 0."
+    },
+    {
+      "number": 87,
+      "title": "feat(db): require AAL2 for staff who opted into MFA",
+      "head": "feat/admin-mfa-aal2-rls-stage2",
+      "headSha": "18c448b38a2a82c20645eb2f1bfd451f90c5f581",
+      "draft": true,
+      "mergeableObserved": true,
+      "instruction": "Do not merge or apply production migration automatically; re-evaluate current status at Stage 0."
+    }
+  ]
+}

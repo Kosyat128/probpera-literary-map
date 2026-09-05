@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "12.0",
+  "releaseId": "TO_BE_GENERATED",
+  "artifactSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "locales": [
+    "ru",
+    "en"
+  ],
+  "coverage": {
+    "ruCritical": 0,
+    "enCritical": 0,
+    "englishBaseEdition": 0,
+    "childEnglish": 0,
+    "nativeEnglish": 0,
+    "storeEnglish": 0,
+    "legalSupportEnglish": 0
+  },
+  "languageSwitch": {
+    "sameCanvas": true,
+    "statePreserved": true,
+    "wrongLanguageFirstFrame": false,
+    "systemPerAppLanguage": "FAIL",
+    "evidence": []
+  },
+  "content": {
+    "sourceHashParity": "FAIL",
+    "namesTitles": "FAIL",
+    "semanticDelta": "FAIL",
+    "staleCount": 0,
+    "rawMachineTranslationCount": 0,
+    "searchAliases": "FAIL",
+    "evidence": []
+  },
+  "child": {
+    "englishPolicyParity": "FAIL",
+    "planetka": "FAIL",
+    "audioTranscripts": "NOT_APPLICABLE",
+    "zeroAdultLeakage": "FAIL",
+    "evidence": []
+  },
+  "stores": {
+    "appStore": {
+      "metadata": "FAIL",
+      "screenshots": "FAIL",
+      "reviewNotes": "FAIL",
+      "claims": "FAIL",
+      "status": "FAIL",
+      "evidence": []
+    },
+    "googlePlay": {
+      "metadata": "FAIL",
+      "screenshots": "FAIL",
+      "reviewNotes": "FAIL",
+      "claims": "FAIL",
+      "status": "FAIL",
+      "evidence": []
+    },
+    "ruStore": {
+      "metadata": "FAIL",
+      "screenshots": "FAIL",
+      "reviewNotes": "FAIL",
+      "claims": "FAIL",
+      "status": "FAIL",
+      "evidence": []
+    }
+  },
+  "legalSupport": {
+    "versionParity": "FAIL",
+    "controllingLanguageApproved": false,
+    "englishSupportReady": "TERRITORY_EXCLUDED",
+    "evidence": []
+  },
+  "webSeo": {
+    "localizedRoutes": "FAIL",
+    "canonicalHreflang": "FAIL",
+    "metadataBodyMatch": "FAIL",
+    "evidence": []
+  },
+  "offline": {
+    "ruPackage": "FAIL",
+    "enPackage": "FAIL",
+    "emergencyCatalog": "FAIL",
+    "evidence": []
+  },
+  "status": "NOT_READY",
+  "generatedAt": "1970-01-01T00:00:00Z"
+}

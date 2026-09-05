@@ -1,0 +1,11 @@
+﻿id,asset_type,localization_mode,content_rule,fallback,availability,gate
+ASL-001,App icon,common,no baked language text,single canonical asset,both,PASS_REQUIRED
+ASL-002,Orange splash,common,language-neutral logo preferred,no wrong-language flash,both,PASS_REQUIRED
+ASL-003,Globe textures,artifact/common,historical inscriptions remain original,localized accessible overlay,both,PASS_REQUIRED
+ASL-004,Modern globe labels,dynamic,render localized names outside destructive texture edit,ISO/CLDR + editorial exceptions,both,PASS_REQUIRED
+ASL-005,3D scene signage,localized variants or dynamic text,same geometry/rights,no baked Russian in English scene,both,PASS_REQUIRED
+ASL-006,Planetka animation,common,no language baked into model,localized text/audio/transcript,both,PASS_REQUIRED
+ASL-007,Writer portrait,common factual asset,same approved real portrait,localized caption only,both,PASS_REQUIRED
+ASL-008,Book cover,rights-specific,do not replace with fake English cover,locale edition only with rights,per-locale,PASS_REQUIRED
+ASL-009,Audio,locale-specific,voice/transcript/rights/pronunciation,English text fallback,per-locale,PASS_REQUIRED
+ASL-010,Store screenshots,locale-specific,exact RC rendered locale,no text overlay fake localization,per-store-locale,PASS_REQUIRED

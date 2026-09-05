@@ -1,4 +1,5 @@
 src/data/geo/countries.geojson text eol=lf
+docs/mobile/requirements/v12/** -text
 public/cms/*.json text eol=lf
 public/cms/articles/*.json text eol=lf
 data/book-canon-snapshots/*.html.bin binary

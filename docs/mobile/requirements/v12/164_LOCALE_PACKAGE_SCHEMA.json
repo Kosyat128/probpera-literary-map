@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/locale-package-v12.json",
+  "title": "Literary Planet Locale Package V12",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "packageId",
+    "locale",
+    "kind",
+    "version",
+    "appCompatibility",
+    "contentVersion",
+    "childPolicyVersion",
+    "files",
+    "manifestSha256",
+    "signatureStatus",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "packageId": {
+      "type": "string"
+    },
+    "locale": {
+      "enum": [
+        "ru",
+        "en"
+      ]
+    },
+    "kind": {
+      "enum": [
+        "ui",
+        "literary-content",
+        "child-content",
+        "search",
+        "audio",
+        "offline-base",
+        "optional-pack",
+        "emergency"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "appCompatibility": {
+      "type": "object",
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "type": "string"
+        },
+        "max": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "contentVersion": {
+      "type": "string"
+    },
+    "childPolicyVersion": {
+      "type": "string"
+    },
+    "commonAssetManifest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "rightsId": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "manifestSha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "signatureStatus": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_CONFIGURED"
+      ]
+    },
+    "coverage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "fallbackPackageId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "READY",
+        "ACTIVE",
+        "SUPERSEDED",
+        "ROLLED_BACK",
+        "BLOCKED"
+      ]
+    }
+  }
+}

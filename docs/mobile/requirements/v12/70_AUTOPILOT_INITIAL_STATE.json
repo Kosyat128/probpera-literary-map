@@ -1,0 +1,315 @@
+{
+  "version": "12.0",
+  "repository": "Kosyat128/probpera-literary-map",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "baseSha": "TO_BE_RECORDED_FROM_CURRENT_MAIN",
+  "headSha": "TO_BE_RECORDED_AFTER_BRANCH_CREATION",
+  "status": "IN_PROGRESS",
+  "updatedAt": "1970-01-01T00:00:00Z",
+  "currentStageId": "S00",
+  "currentCriterionId": "CANON-001",
+  "stages": [
+    {
+      "id": "S00",
+      "name": "Repository safety and current baseline",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S01",
+      "name": "Product architecture and traceability",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S02",
+      "name": "Shared site-first extraction",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S03",
+      "name": "Paid Web/PWA edition",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S04",
+      "name": "Mobile shell and native projects",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S05",
+      "name": "Brand splash and onboarding",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S06",
+      "name": "Canonical globe integration",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S07",
+      "name": "Premium responsive globe UX",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S08",
+      "name": "Content export and signed manifests",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S09",
+      "name": "Country/writer/work screens",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S10",
+      "name": "Search/collection/passport",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S11",
+      "name": "Offline/download/sync",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S12",
+      "name": "Paid Base Edition and Starter Set",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S13",
+      "name": "Skins/stands/accessories",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S14",
+      "name": "Full-3D background engine",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S15",
+      "name": "Planetka and journeys",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S16",
+      "name": "Child mode and Parent Gate",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S17",
+      "name": "Literary characters/StoryWorld",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S18",
+      "name": "Disney licensing infrastructure",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S19",
+      "name": "Optional store UX",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S20",
+      "name": "Platform purchase providers",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S21",
+      "name": "Server verification/entitlements",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S22",
+      "name": "Admin owner self-service",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S23",
+      "name": "Accessibility/localization/security/privacy",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S24",
+      "name": "Performance/reliability/device hardening",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S25",
+      "name": "Full QA and parity",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S26",
+      "name": "Store/legal/release candidates",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S27",
+      "name": "Operations/no-return handoff",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S28",
+      "name": "Moderation precheck",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S29",
+      "name": "Reviewer access and store dossiers",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S30",
+      "name": "Listing truth and artifact match",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S31",
+      "name": "Rejection and resubmission readiness",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S32",
+      "name": "Owner input, SAFE_PAID_BILINGUAL_V1 and secrets/signing preparation",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S33",
+      "name": "Regional compliance, DSA/export and Android verification",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S34",
+      "name": "One-command preparation and official-API draft packages",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S35",
+      "name": "Final owner approval and launch handoff",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S36",
+      "name": "Internationalization foundation and state-preserving language switching",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S37",
+      "name": "Complete English UI, native, store, legal and support surfaces",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S38",
+      "name": "English literary content, names, titles, search and CMS workflow",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S39",
+      "name": "English child mode, Planetka, audio, offline and bilingual QA",
+      "status": "NOT_STARTED",
+      "criteria": []
+    },
+    {
+      "id": "S40",
+      "name": "Bilingual release dossiers, screenshots, owner approval and final handoff",
+      "status": "NOT_STARTED",
+      "criteria": []
+    }
+  ],
+  "resume": {
+    "firstOpenCriterion": "CANON-001",
+    "nextAction": "Audit current main, open PRs, CI, existing Literary Planet and owner locks; then implement Stage 0.",
+    "contextFiles": [
+      "03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+      "03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md",
+      "03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md",
+      "03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md",
+      "68_REQUIREMENT_ID_INDEX.csv",
+      "69_STAGE_ACCEPTANCE_MATRIX.csv",
+      "95_STAGE_DOCUMENT_ROUTING.json"
+    ],
+    "commands": [],
+    "doNotRepeat": []
+  },
+  "requirementsHash": "TO_BE_CALCULATED_AFTER_COPY_TO_REPOSITORY",
+  "verificationCache": {},
+  "externalOwnerInputsStatus": {},
+  "unexpectedDirtyChanges": [],
+  "moderation": {
+    "status": "NOT_STARTED",
+    "exactBuildIdentities": [],
+    "storeDossiers": {
+      "app-store": "NOT_STARTED",
+      "google-play": "NOT_STARTED",
+      "rustore": "NOT_STARTED",
+      "web-pwa": "NOT_STARTED"
+    },
+    "openRejectionIds": [],
+    "lastPrecheckAt": null,
+    "notes": ""
+  },
+  "ownerMinimal": {
+    "releaseProfile": "SAFE_PAID_BILINGUAL_V1",
+    "ownerInputsStatus": "NOT_STARTED",
+    "missingInputsReport": null,
+    "automationState": null,
+    "territorySet": "SAFE_INITIAL",
+    "draftUploadStatus": "DISABLED",
+    "finalApprovalReport": null,
+    "ownerActionReport": null
+  },
+  "bilingual": {
+    "profile": "SAFE_PAID_BILINGUAL_V1",
+    "requiredLocales": [
+      "ru",
+      "en"
+    ],
+    "status": "NOT_STARTED",
+    "baseEditionEnglishCoverage": 0,
+    "uiCoverageRu": 0,
+    "uiCoverageEn": 0,
+    "currentTranslationUnit": null,
+    "metricsReport": null,
+    "ownerHandoffEn": null
+  }
+}

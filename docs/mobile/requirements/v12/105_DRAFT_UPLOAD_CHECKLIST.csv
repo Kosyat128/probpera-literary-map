@@ -1,0 +1,16 @@
+﻿check_id,platform,before_draft_upload,automated,owner_required,pass_evidence,failure_action
+DU-001,all,clean expected branch/SHA,true,false,git/build identity,stop
+DU-002,all,owner inputs valid,true,true,input validation,generate missing report
+DU-003,all,secret references available,true,true,names-only check,block external
+DU-004,all,all internal release/moderation gates green,true,false,gate summary,block internal
+DU-005,all,exact artifact hash frozen,true,false,checksum,stop on mismatch
+DU-006,all,screenshots/metadata tied to artifact,true,true,truth manifest,regenerate
+DU-007,all,rights-clean and Disney absent,true,true if license,rights scan,remove/block
+DU-008,App Store,app record/API key/signing ready,partial,true,credential/app ID check,block external
+DU-009,App Store,DSA/export/privacy/age fields ready,partial,true,console worksheet,block external
+DU-010,Google Play,app record/service account/paid status ready,partial,true,API dry-run,block external
+DU-011,Google Play,developer verification/package registration ready,partial,true,verification reference,block external
+DU-012,RuStore,app record/token/paid type ready,partial,true,API dry-run,block external
+DU-013,Web/PWA,merchant/staging/domain ready,partial,true,web preflight,block external
+DU-014,all,explicit confirm-draft-upload supplied,true,true,audit event,remain dry-run
+DU-015,all,submission/release remains disabled,true,false,command policy test,fail safe

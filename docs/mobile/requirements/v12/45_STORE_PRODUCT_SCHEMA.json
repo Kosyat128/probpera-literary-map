@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/store-product-v12.json",
+  "title": "Literary Planet Store Product V12",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "productClass",
+    "commercialAvailability",
+    "titles",
+    "platformProducts",
+    "rights",
+    "childPolicy",
+    "assets",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9._-]+$"
+    },
+    "productClass": {
+      "enum": [
+        "globe-skin",
+        "stand",
+        "background",
+        "accessory",
+        "story-world",
+        "bundle",
+        "licensed-character-pack"
+      ]
+    },
+    "commercialAvailability": {
+      "enum": [
+        "included-in-base",
+        "optional-non-consumable",
+        "licensed-blocked"
+      ]
+    },
+    "titles": {
+      "type": "object",
+      "required": [
+        "ru"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "descriptions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "platformProducts": {
+      "type": "object",
+      "properties": {
+        "appStore": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "googlePlay": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ruStore": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "web": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "pricePolicy": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "enum": [
+            "included",
+            "store-api",
+            "web-backend",
+            "blocked"
+          ]
+        },
+        "hardcodedPriceAllowed": {
+          "const": false
+        },
+        "familySharing": {
+          "enum": [
+            "not-applicable",
+            "disabled",
+            "owner-decision",
+            "enabled"
+          ]
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "required": [
+        "status",
+        "provenance"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "owner-original",
+            "canonical",
+            "cleared",
+            "review-required",
+            "license-required",
+            "blocked"
+          ]
+        },
+        "provenance": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "territories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expiresAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "childPolicy": {
+      "type": "object",
+      "required": [
+        "childSafe"
+      ],
+      "properties": {
+        "childSafe": {
+          "type": "boolean"
+        },
+        "minimumAge": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 17
+        },
+        "maximumAge": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 17
+        },
+        "reviewStatus": {
+          "enum": [
+            "not-reviewed",
+            "approved",
+            "rejected"
+          ]
+        },
+        "storeVisibleToChild": {
+          "const": false
+        }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "qualityTier",
+          "url",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "qualityTier": {
+            "enum": [
+              "preview",
+              "high",
+              "balanced",
+              "economy"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "platforms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object"
+    },
+    "minimumAppVersion": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "blocked",
+        "hidden",
+        "available",
+        "retired",
+        "revoked"
+      ]
+    },
+    "postTermPolicy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

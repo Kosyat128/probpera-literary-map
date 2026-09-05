@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 const acquisitionSource = readFileSync(
   new URL("./acquire-historical-globe-sources.mjs", import.meta.url),
   "utf8"
-);
+).replace(/\r\n/gu, "\n");
 const manifest = JSON.parse(
   readFileSync(
     new URL("./globe-editions/historical-runtime-sources.json", import.meta.url),
@@ -21,7 +21,7 @@ const bookAcquisitionSources = [
         import.meta.url
       ),
       "utf8"
-    ),
+    ).replace(/\r\n/gu, "\n"),
   },
   {
     id: "loc",
@@ -29,7 +29,7 @@ const bookAcquisitionSources = [
     source: readFileSync(
       new URL("./acquire-loc-book-canon-source.mjs", import.meta.url),
       "utf8"
-    ),
+    ).replace(/\r\n/gu, "\n"),
   },
   {
     id: "neb",
@@ -40,7 +40,7 @@ const bookAcquisitionSources = [
         import.meta.url
       ),
       "utf8"
-    ),
+    ).replace(/\r\n/gu, "\n"),
   },
 ];
 

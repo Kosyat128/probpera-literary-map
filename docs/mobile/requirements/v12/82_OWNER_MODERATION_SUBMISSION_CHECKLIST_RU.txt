@@ -1,0 +1,117 @@
+V12 — ЧЕК-ЛИСТ ВЛАДЕЛЬЦА ПЕРЕД РУЧНОЙ ОТПРАВКОЙ НА МОДЕРАЦИЮ
+
+Не вводите секреты в Git, обычный чат или этот файл. Отмечайте выполненное
+в защищённой копии либо store console.
+
+ОБЩЕЕ
+[ ] Утверждено название «Литературная планета».
+[ ] Утверждён подзаголовок/бренд «Проба пера».
+[ ] Юридический продавец связан с брендом и доменом.
+[ ] Утверждены privacy policy, terms, support и deletion URL.
+[ ] Утверждена коммерческая модель платного приложения.
+[ ] Утверждены финальные цены и страны продаж.
+[ ] Утверждён exact RC build и его SHA-256.
+[ ] Утверждены только реальные screenshots exact RC.
+[ ] Концептуальный коллаж исключён.
+[ ] Проверено отсутствие Disney/Pixar без лицензии.
+[ ] Проверен rights summary всех материалов.
+[ ] Stable review account и Parent PIN работают.
+[ ] Контакт модерации ежедневно контролируется.
+
+APPLE
+[ ] Apple Developer Program активен.
+[ ] Bundle ID/App record созданы.
+[ ] Paid Apps Agreement активен.
+[ ] Banking/tax заполнены.
+[ ] Цена и территории заданы.
+[ ] Актуальный Xcode/iOS SDK использован.
+[ ] App Privacy заполнена по exact RC.
+[ ] Возрастной рейтинг заполнен по всему приложению.
+[ ] Решение Kids Category принято явно; по умолчанию не выбирать.
+[ ] IAP metadata/sandbox готовы.
+[ ] Review Information содержит рабочие credentials/PIN/steps.
+[ ] Account deletion путь проверен.
+[ ] Screenshots/App Preview соответствуют build.
+[ ] Archive выбран и Add for Review готов.
+
+GOOGLE PLAY
+[ ] Developer/Payments Profile активны.
+[ ] Package/App record созданы.
+[ ] Google Play listing никогда не был публично free.
+[ ] Приложение настроено Paid до production.
+[ ] Цена/страны заданы.
+[ ] App Signing/upload key готовы.
+[ ] Current target API и Billing соблюдены.
+[ ] Target audience/Families заполнены честно.
+[ ] Content rating заполнен по всему приложению.
+[ ] Data Safety совпадает с exact RC.
+[ ] App Access содержит рабочие credentials/PIN/steps.
+[ ] Account deletion URL и in-app path работают.
+[ ] Test product и backend verification готовы.
+[ ] Screenshots/description соответствуют AAB.
+[ ] Closed/internal testing завершено.
+[ ] Production release готов к ручной отправке.
+
+RUSTORE
+[ ] Аккаунт/организация/ЭП готовы.
+[ ] App record создан.
+[ ] Тип приложения «Платное».
+[ ] Монетизация и цена настроены.
+[ ] Подпись/fingerprint согласованы.
+[ ] Актуальный Pay SDK используется.
+[ ] Test product и verification готовы.
+[ ] User Data Safety/permissions заполнены.
+[ ] Возрастная маркировка утверждена.
+[ ] Test account/PIN добавлены в комментарии.
+[ ] Нет ссылок на Google Play/App Store.
+[ ] Название на витрине совпадает с установленным.
+[ ] Телефонные screenshots exact RC загружены.
+[ ] Версия синхронизирована с release train.
+[ ] Сборка готова к ручной модерации.
+
+WEB/PWA
+[ ] Merchant/PSP активен.
+[ ] One-time license и webhook verification работают.
+[ ] Цена/валюты/налоги утверждены.
+[ ] Privacy/terms/refund/deletion доступны.
+[ ] Full PWA не открывается без entitlement.
+[ ] Native builds не ведут на web checkout в нарушение store rules.
+
+ДЕТСКИЙ РЕЖИМ
+[ ] Детский режим входит в цену.
+[ ] Точный возраст/произведения проверены.
+[ ] Parent Gate нельзя обойти.
+[ ] Ребёнок не видит цену/Buy.
+[ ] Нет рекламы/трекеров/child account.
+[ ] Нет взрослого flash при запуске.
+[ ] Планетка не рекламирует покупку.
+[ ] Disney скрыт без лицензии.
+
+ПРИ ОТКЛОНЕНИИ
+[ ] Сохранить сообщение модератора дословно.
+[ ] Передать Codex правило, screenshot и exact build.
+[ ] Не спорить до воспроизведения.
+[ ] Исправить root cause и добавить regression.
+[ ] Использовать новый build number при изменении binary.
+[ ] Обновить notes/screenshots/declarations.
+[ ] Отправить фактический ответ из шаблона.
+
+
+
+OWNER-MINIMAL V12
+[ ] Один owner-release-inputs.json заполнен и validated.
+[ ] Missing-input report не содержит повторяющихся вопросов.
+[ ] Secrets добавлены в указанные secure stores, но не в Git.
+[ ] SAFE_PAID_BILINGUAL_V1 approved.
+[ ] Native account remains off unless all account gates pass.
+[ ] One original optional product approved or safely disabled.
+[ ] SAFE_INITIAL territories approved.
+[ ] Apple DSA/export/privacy API gates approved.
+[ ] Android developer verification/package registration completed where required.
+[ ] US/EU/France/UK child privacy jurisdiction gates resolved for enabled territories.
+[ ] Official-API draft upload remains dry-run until owner authorization.
+[ ] FINAL_OWNER_APPROVAL and handoff folder approved.
+[ ] First 72-hour staged/manual rollout plan approved.
+[ ] Russian and English release, store, legal, support, child and owner materials are complete.
+[ ] Base Edition English coverage is 100%; owner translation work = 0.
+[ ] Bilingual exact-RC screenshots and English reviewer notes are approved.

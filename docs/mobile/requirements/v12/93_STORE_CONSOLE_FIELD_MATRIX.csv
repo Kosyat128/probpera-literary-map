@@ -1,0 +1,25 @@
+﻿field_id,store,section,field,generated_from,default_or_rule,owner_must_enter,automation_support,validation,evidence
+CF-001,App Store,App Information,Name,owner inputs,Литературная планета,approve/enter,API where supported,current length limit,metadata report
+CF-002,App Store,App Information,Subtitle,owner inputs,Проба пера,approve/enter,API where supported,current length limit,metadata report
+CF-003,App Store,App Information,Privacy Policy URL,owner inputs,required,approve/enter,API where supported,HTTPS health,URL report
+CF-004,App Store,Compliance,DSA trader status,legal owner,explicit decision,yes,console/manual,verification completed,console evidence
+CF-005,App Store,Compliance,Export compliance,encryption inventory,questionnaire result,approve,API/console partial,matches binary,export report
+CF-006,App Store,Pricing,Base price/territories,owner inputs,nonzero paid app,yes,API where supported,paid agreement active,pricing report
+CF-007,App Store,App Privacy,Data declarations,privacy inventory,generated draft,approve/publish,API/console,privacy report matches,declaration evidence
+CF-008,App Store,Age Rating,Questionnaire,content inventory,whole binary,approve,console/manual,content mapping,age report
+CF-009,App Store,Review Information,Credentials/PIN/notes,review dossier,durable access,secure entry,API/console,external rehearsal,access report
+CF-010,App Store,IAP,First optional product,catalog,one original non-consumable,create/approve,API supported,sandbox/restore,IAP report
+CF-011,Google Play,Store settings,Paid status,owner inputs,Paid before public release,yes,console/manual,history not free,console evidence
+CF-012,Google Play,Store listing,Title/descriptions/images,generated package,truthful exact RC,approve,Publishing API,lint/limits,metadata report
+CF-013,Google Play,App content,Target audience,audience strategy,mixed/family,approve,console/manual,matches child UX,audience report
+CF-014,Google Play,App content,Data Safety,privacy inventory,generated draft,approve,console/manual,traffic/SDK match,privacy report
+CF-015,Google Play,App content,App access,review dossier,durable credentials,secure entry,console/manual,external rehearsal,access report
+CF-016,Google Play,App content,Account deletion URL,owner inputs,if account enabled,approve/enter,console/manual,public HTTPS,deletion report
+CF-017,Google Play,Technical,Developer verification/app registration,package/signing inventory,current rollout,yes,console/manual,verified/registered,verification report
+CF-018,Google Play,Products,First optional product,catalog,one-time non-consumable,create/approve,API partial,sandbox/verification,IAP report
+CF-019,RuStore,Application,Paid type/price,owner inputs,Paid,yes,console/API partial,monetization active,pricing report
+CF-020,RuStore,Version,Artifact/description/screenshots,generated package,exact RC,approve/upload,Public API partial,signature/limits,artifact report
+CF-021,RuStore,Moderator comments,Credentials/PIN/steps,review dossier,durable access,secure entry,console/manual,external rehearsal,access report
+CF-022,RuStore,User Data Safety,Data/permissions,privacy inventory,generated draft,approve,console/manual,manifest match,privacy report
+CF-023,RuStore,Monetization,Pay SDK products,catalog,non-consumable,create/approve,console/API partial,sandbox/verification,IAP report
+CF-024,Web/PWA,Commerce,Merchant and prices,owner inputs/secrets,one-time license,approve/configure,provider API,webhook/refund,commerce report

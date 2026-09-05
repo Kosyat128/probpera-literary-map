@@ -1,0 +1,57 @@
+Распакуй загруженный архив V12 во временный рабочий каталог.
+
+Сначала:
+1. полностью прочитай `MANIFEST.json`;
+2. проверь `SHA256SUMS.txt`;
+3. прочитай:
+   - `03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt`;
+   - `03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md`;
+   - `03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md`;
+   - `03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md`;
+   - `68_REQUIREMENT_ID_INDEX.csv`;
+   - `69_STAGE_ACCEPTANCE_MATRIX.csv`;
+   - `89_CODEX_CONTEXT_ORCHESTRATION_RU.md`;
+   - `95_STAGE_DOCUMENT_ROUTING.json`.
+
+После этого читай только документы текущего Stage согласно routing.
+Считай все файлы с `binding=true` единым обязательным заданием.
+
+Создай ветку:
+
+`codex/literary-planet-v12-bilingual-final-autopilot`
+
+Непереговорные правила:
+
+1. probpera.ru и существующая Литературная планета — единственный канон.
+2. Не создавай второй globe engine, базу, географию или remote WebView.
+3. Обязательные production languages: `ru` и `en`.
+4. Русский продукт: «Литературная планета» / «Проба пера» / «Планетка».
+5. English product: `Literary Planet` / `Proba Pera` / `Planetka`.
+6. Profile: `SAFE_PAID_BILINGUAL_V1`.
+7. Model: `PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES`.
+8. Base Edition, Starter Set, Child Mode, Parent Center, Planetka and
+   offline essentials входят в цену.
+9. Base Edition English coverage must equal 100%.
+10. Raw machine translation, guessed English work titles, generated real
+    writer portraits and mixed-language critical screens are prohibited.
+11. Language switch preserves the same Canvas, camera, country, writer,
+    work, child policy, purchase and download state.
+12. Support iOS and Android per-app language selection.
+13. English child, Planetka, audio/transcripts, offline, store, legal,
+    support and reviewer surfaces are mandatory.
+14. Store screenshots are exact-RC captures in the target language.
+15. Google custom listings require owned translations; do not rely on
+    automatic translation.
+16. Disney/Pixar and other protected IP remain absent without exact rights.
+17. One owner input; zero owner programming/translation tasks.
+18. Store automation is dry-run/draft only by default.
+19. Complete S00–S40 and FINAL HANDOFF.
+20. Do not perform production Submit, Release, deploy or auto-merge.
+
+After each Stage:
+`tests → fixes → regression → evidence → atomic commit → state/status/
+decisions/next prompt update → next Stage`.
+
+Do not pause for safe local decisions already fixed by V12. Do not mark an
+internal translation, content, test or store mismatch as an external
+blocker. Start at Stage 0 now.

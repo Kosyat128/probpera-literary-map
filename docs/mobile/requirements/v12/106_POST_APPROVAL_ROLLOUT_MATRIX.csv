@@ -1,0 +1,6 @@
+﻿phase,time_window,release_percentage_or_scope,mandatory_checks,pause_condition,owner_action,codex_or_system_action,evidence
+R0,before approval,test/internal only,all release/moderation gates,any internal failure,approve submission,prepare/fix,submission dossier
+R1,approval to hour 2,manual or smallest staged rollout,launch/crash/WebGL/purchase/backend,any P0 or broad P1,click release/pause,monitor/alert,hour-2 report
+R2,hours 2–24,limited staged rollout,"support, restore, offline, child gate, content downloads",error threshold exceeded,approve expansion/pause,analyze/hotfix prep,day-1 report
+R3,days 2–3,expanded staged rollout,"reviews, refunds, device patterns, territory issues",unresolved P1,approve expansion,update support and evidence,72-hour report
+R4,after 72 hours,planned public scope,stable metrics and no rights/privacy incident,new critical incident,approve normal operations,maintenance release train,launch closeout

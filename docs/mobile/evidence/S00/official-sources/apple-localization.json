@@ -1,0 +1,496 @@
+{
+  "schemaVersion": 1,
+  "stage": "S00",
+  "scope": "Independent official-source refresh: Apple registry entries and localization standards; no code/build/compliance acceptance",
+  "accessDate": "2026-09-04",
+  "sourceRegistryFiles": [
+    "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+    "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json"
+  ],
+  "snapshotRead": "28_OFFICIAL_REQUIREMENTS_SNAPSHOT_2026-09-03.md",
+  "registryEntryCount": 30,
+  "uniqueSourceCount": 24,
+  "sources": [
+    {
+      "registryKeys": [
+        "apple-upcoming-requirements"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/news/upcoming-requirements/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Since 2026-04-28, uploads require Xcode 26 or later and iOS/iPadOS 26 SDK or later. Updated age-rating questionnaire was due 2026-01-31. Required Reason API declarations are required for covered APIs used by app and third-party code.",
+      "effectiveDate": "2026-04-28",
+      "evidenceLocator": "SDK minimum requirements; Age Rating Updates; Approved reasons for APIs",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-submitting"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/app-store/submitting/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Confirms the iOS/iPadOS 26 SDK minimum. Product pages require accurate privacy answers covering integrated partners. Accessibility Nutrition Labels can describe each supported platform; claims need implementation evidence.",
+      "evidenceLocator": "Update for the latest OS releases; Product page",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-app-review-guidelines"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/app-store/review/guidelines/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Review needs complete functional binaries, live backend access and working credentials; replacing a legally unavailable demo account with demo mode requires prior Apple approval. Screenshots must show the app in use; featured extra purchases need disclosure. Digital unlocks normally use IAP, and restorable purchases need restoration. Account creation requires in-app deletion. Kids Category gates purchases and external links, restricts third-party data/analytics, and differs from merely having Child Mode. Child-primary marketing is reserved for Kids Category. Apps need utility beyond a repackaged website.",
+      "evidenceLocator": "Before You Submit; 1.3; 2.1; 2.3; 3.1.1; 4.2; 5.1.1(v); 5.1.4",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-kids"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/kids/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Kids Category uses age bands 5 and under, 6-8, and 9-11. Parental gates precede purchases and external destinations; a gate is not a substitute for legal consent to process child data.",
+      "evidenceLocator": "Kids category",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-app-information",
+        "apple-app-info"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-information/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Localized app name is 2-30 characters; subtitle at most 30. Privacy policy URL is required for iOS. Age rating applies across platforms. Made for Kids cannot be changed after approval. Primary language supplies metadata fallback. Content rights are territory-specific; China book content may require NPPA permission.",
+      "evidenceLocator": "App information property table",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-age-rating"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/manage-app-information/set-an-app-age-rating",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Answer controls, capabilities and content-frequency questions accurately. Calculated 4+ or 9+ apps may request Made for Kids. That choice cannot change after approval. A higher EULA age requires a corresponding age-rating override.",
+      "evidenceLocator": "Age categories and override",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-dsa-trader-requirements"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "For EU distribution Apple verifies/displays trader address, phone and email. Individuals may use an address or P.O. Box; organizations use their D-U-N-S address. Account Holder/Admin completes factual status and contact verification. Paid activity informs, but does not mechanically settle, trader self-assessment.",
+      "evidenceLocator": "Information you need to provide if you're a trader; compliance steps",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-eu-app-terms"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/support/apps-in-the-eu",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Page announces an agreement update dated 2026-08-18, effective 2026-10-01: unified EU business terms, changed commissions, a 12-month payment-option commitment, and child protections for alternative payments. Apple IAP remains available. Do not treat future terms as already effective on the access date.",
+      "effectiveDate": "2026-10-01",
+      "evidenceLocator": "What's new; Payment options; Child safety protections",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-export-compliance-overview"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/manage-app-information/overview-of-export-compliance",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Any encryption use, including OS-provided crypto, requires an export-compliance determination. Distribution territories and actual encryption inventory matter; absence of document upload does not mean absence of assessment.",
+      "evidenceLocator": "Overview of export compliance",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-encryption-documentation"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/reference/export-compliance-documentation-for-encryption/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Apple's table says OS-only encryption needs no App Store Connect documentation; external industry-standard encryption requires a French declaration when distributing in France; proprietary encryption requires CCATS and, for France, the French declaration. This is not an app-specific legal classification.",
+      "resolvedUrl": "https://developer.apple.com/help/app-store-connect/reference/app-information/export-compliance-documentation-for-encryption",
+      "evidenceLocator": "Encryption algorithm / required documentation table",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-determine-upload-encryption-docs"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/manage-app-information/determine-and-upload-app-encryption-documentation",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Answer the App Store Connect encryption questionnaire. Required documents must be completed before App Review or TestFlight App Review; description and territory availability support Apple's assessment.",
+      "evidenceLocator": "Determine your export compliance requirements; Upload your documentation",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-privacy-manifests-and-required-reason-apis"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/documentation/bundleresources/describing-data-use-in-privacy-manifests",
+      "accessDate": "2026-09-04",
+      "status": "verified_alternate_official_representation",
+      "summary": "Declare collected data and purposes with documented keys/values. Third-party SDKs provide their own manifests. Generate the Xcode privacy report from the archive and compare its aggregation with App Privacy answers.",
+      "alternateUrl": "https://developer.apple.com/tutorials/data/documentation/bundleresources/describing-data-use-in-privacy-manifests.json",
+      "evidenceLocator": "Official JSON primaryContentSections",
+      "retrievalNote": "Canonical HTML returned a JavaScript shell; Markdown link failed. Official JSON content was read. Required Reason API category list itself remains a follow-up tied to actual dependencies.",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-app-privacy-details"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/app-store/app-privacy-details/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "App Privacy answers are required for new apps and updates and must include integrated third-party practices. Keep answers accurate as collection changes; the privacy report supports, but cannot replace, code/network verification.",
+      "evidenceLocator": "Answering app privacy questions",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-app-store-connect-api"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/documentation/appstoreconnectapi/",
+      "accessDate": "2026-09-04",
+      "status": "partially_verified_indexed_content",
+      "summary": "The REST API uses JWT authentication and automates metadata, IAP, provisioning, TestFlight and other operations. Changes affect production account data; draft metadata is still a real account mutation.",
+      "evidenceLocator": "Official indexed documentation, crawler reported two months; canonical/capitalized HTML re-opened as JS shell",
+      "retrievalNote": "Canonical and capitalized HTML opened but full live body unavailable. Markdown/JSON alternate retrieval failed; shell HTTPS retry failed TLS. Current upload-builds page independently confirms JWT/API upload support.",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-upload-builds"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Supports Xcode/Transporter and API-based build upload. JWT auth is documented. Build bundle ID/version/build string identify processing. The generic table still says built Xcode 16+, which conflicts with the dated Xcode 26/SDK 26 requirement and must not weaken the build gate.",
+      "evidenceLocator": "Supported Xcode Versions; Upload your app binary files with the App Store Connect API",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-app-store-localizations",
+        "apple-app-store-localizations"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-store-localizations/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "English (U.S.) and Russian are supported metadata localizations. Storefront, device language, available languages and primary language influence what a customer sees; app locale and store locale must be validated separately.",
+      "evidenceLocator": "App Store localizations introductory paragraphs",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-localize-app-information",
+        "apple-localize-app-info"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/manage-app-information/localize-app-information",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Metadata and binary localization are separate. New locale screenshots/properties initially copy the primary language except description/keywords. Add and validate explicit Russian/English assets; absence of a matching locale triggers fallback.",
+      "evidenceLocator": "Introduction; Add a language",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-localization-overview",
+        "apple-localization"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/localization/",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "iOS/iPadOS support per-app language independent of device language. String Catalogs handle plurals/device variants and track extracted strings. Current page advertises agent-assisted translation; project policy still limits AI/MT to drafts.",
+      "evidenceLocator": "What's new; Structure your app for localization",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-localized-screenshots-and-previews",
+        "apple-screenshots"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/manage-app-information/upload-app-previews-and-screenshots",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Upload 1-10 JPEG/JPG/PNG screenshots. Localized Media Manager overrides are available. App previews are optional, up to three per supported device size/language, with next-language fallback when absent.",
+      "evidenceLocator": "Screenshot requirements; App preview requirements",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-localizable-properties",
+        "apple-localizable-properties"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/reference/app-information/required-localizable-and-editable-properties",
+      "accessDate": "2026-09-04",
+      "status": "partially_verified_table_icons_missing",
+      "summary": "The page distinguishes required/localizable/editable properties and allows localized text within a custom license agreement. The web text extractor drops the table's yes/no icons, so exact boolean cells were not verified and must not be inferred from blanks.",
+      "evidenceLocator": "App information and Platform version information tables",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "apple-xcode-localization"
+      ],
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/documentation/xcode/localization",
+      "accessDate": "2026-09-04",
+      "status": "partially_verified_indexed_content",
+      "summary": "Official indexed content describes localizable APIs, String Catalogs, exports to localizers, previews, simulator/physical-device checks, native-speaker feedback and separate store localization.",
+      "evidenceLocator": "Official indexed documentation; crawler reported yesterday",
+      "retrievalNote": "Canonical HTML returned a JavaScript shell. Markdown and JSON retrieval failed; shell HTTPS retry failed TLS. This is indexed-content verification, not a successful live full-document fetch.",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "unicode-cldr-person-names"
+      ],
+      "authority": "Unicode CLDR",
+      "officialUrl": "https://unicode.org/cldr/charts/latest/verify/personNames/index.html",
+      "accessDate": "2026-09-04",
+      "status": "failed_requested_url_alternate_standard_verified",
+      "summary": "Requested verification chart could not be retrieved. An alternate current Unicode LDML Part 8 page (version 48.2) was read: it formats supplied name components and does not verify literary identities or published work titles.",
+      "alternateUrl": "https://www.unicode.org/reports/tr35/tr35-personNames.html",
+      "evidenceLocator": "Introduction; Not in scope; Person Name Formatting Overview",
+      "retrievalNote": "Both unicode.org and www.unicode.org chart URLs returned internal/non-retryable open errors.",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "mdn-intl-displaynames"
+      ],
+      "authority": "MDN",
+      "officialUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Intl.DisplayNames accepts BCP 47 locale identifiers and region/language display types. Default missing-name fallback returns the code; fallback none returns undefined. Application logic must supply a reviewed fallback to avoid raw identifiers on critical UI.",
+      "evidenceLocator": "Parameters: locales, type, fallback",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "registryKeys": [
+        "ietf-bcp47"
+      ],
+      "authority": "IETF/RFC Editor",
+      "officialUrl": "https://www.rfc-editor.org/info/bcp47",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "The current BCP 47 index comprises RFC 4647 for language matching and RFC 5646 for language-tag structure. Use valid language tags and a deterministic locale negotiation policy.",
+      "resolvedUrl": "https://www.rfc-editor.org/info/bcp47/",
+      "evidenceLocator": "RFC 4647 and RFC 5646 entries",
+      "implementationStatus": "not_audited",
+      "recheckAt": [
+        "bilingual_release_candidate",
+        "immediately_before_any_authorized_draft_upload",
+        "after_rejection"
+      ]
+    }
+  ],
+  "supplementalSources": [
+    {
+      "key": "apple-current-xcode-system-requirements",
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/xcode/system-requirements",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "Current table lists stable Xcode 26.6 with iOS 26.5 SDK on macOS Tahoe 26.2-26.x, and separately Xcode 27 beta 6. Proposed production toolchain is Xcode 26.6, subject to actual host availability and RC verification; beta presence is not release acceptance.",
+      "evidenceLocator": "Xcode Version table",
+      "implementationStatus": "not_installed_or_tested"
+    },
+    {
+      "key": "apple-screenshot-specifications",
+      "authority": "Apple",
+      "officialUrl": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications",
+      "accessDate": "2026-09-04",
+      "status": "verified_content",
+      "summary": "No alpha/transparency. Accepted iPhone 6.9-inch portrait sizes include 1260×2736, 1290×2796 and 1320×2868 (landscape reversed). 6.5-inch screenshots required if 6.9-inch absent. iPad 13-inch screenshots required for iPad support: 2064×2752 or 2048×2732 (landscape reversed). Capture each locale from the exact RC.",
+      "evidenceLocator": "iPhone 6.9/6.5-inch and iPad 13-inch sections",
+      "implementationStatus": "no_screenshots_captured"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "APPLE-S00-001",
+      "type": "recommended_build_gate",
+      "decision": "Enforce Xcode >=26 with iOS/iPadOS SDK >=26. Candidate installed toolchain may be Xcode 26.6/SDK26.5; record exact host output at build stage. Do not use stale upload compatibility table to relax the gate."
+    },
+    {
+      "id": "APPLE-S00-002",
+      "type": "commercial_scope",
+      "decision": "Preserve paid upfront with optional restorable non-consumable Apple IAP. Do not enable alternative EU payments from a documentation refresh; recheck terms before 2026-10-01."
+    },
+    {
+      "id": "APPLE-S00-003",
+      "type": "quality_gate",
+      "decision": "String Catalog translated-state and agent-generated translations are workflow states, not editorial evidence. Critical units still need approved source hashes and bilingual review."
+    },
+    {
+      "id": "APPLE-S00-004",
+      "type": "store_identity",
+      "decision": "Decide Kids Category from final audience/content and owner declaration. Child Mode alone is not that category; reserve child-primary metadata until category determination."
+    },
+    {
+      "id": "APPLE-S00-005",
+      "type": "automation_boundary",
+      "decision": "Default to locally generated dry-run payloads. App Store Connect metadata updates are real mutations even while version is a draft. No submit/release/deploy/merge performed."
+    }
+  ],
+  "unknowns": [
+    "Actual Xcode/macOS/signing/account configuration not audited.",
+    "Exact localized-property boolean cells require rendered/DOM verification because web extraction omitted icons.",
+    "App Store Connect API and Xcode localization full live documentation bodies remain unavailable despite direct/alternate retrieval attempts; indexed official content explicitly labeled.",
+    "Requested CLDR chart URL unresolved; alternate normative standard is not equivalent to chart verification.",
+    "No exact-binary privacy, encryption, age-rating, accessibility, purchase-restore or reviewer-access evidence exists in this research subtask.",
+    "No writer identity or published English title is verified by generic CLDR/Intl sources."
+  ]
+}

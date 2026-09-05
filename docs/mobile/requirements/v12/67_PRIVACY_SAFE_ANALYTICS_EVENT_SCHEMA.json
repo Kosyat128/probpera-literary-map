@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/analytics-event-v12.json",
+  "title": "Privacy-Safe Operational Event V12",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "eventId",
+    "eventName",
+    "occurredAt",
+    "appVersion",
+    "platform",
+    "privacyClass",
+    "properties"
+  ],
+  "properties": {
+    "eventId": {
+      "type": "string"
+    },
+    "eventName": {
+      "enum": [
+        "app_start",
+        "content_update_result",
+        "download_result",
+        "webgl_recovery",
+        "performance_bucket",
+        "purchase_state",
+        "restore_result",
+        "error_category",
+        "adult_screen_view"
+      ]
+    },
+    "occurredAt": {
+      "type": "string"
+    },
+    "appVersion": {
+      "type": "string"
+    },
+    "contentVersion": {
+      "type": "string"
+    },
+    "platform": {
+      "enum": [
+        "web-pwa",
+        "android-google",
+        "android-rustore",
+        "ios-ipados"
+      ]
+    },
+    "privacyClass": {
+      "enum": [
+        "strictly-necessary",
+        "adult-consented"
+      ]
+    },
+    "childContext": {
+      "type": "boolean"
+    },
+    "properties": {
+      "type": "object"
+    }
+  }
+}

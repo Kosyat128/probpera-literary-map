@@ -1,0 +1,8 @@
+﻿id,platform,locale,role,app_name,subtitle,screenshots,listing_language,review_language,rule
+SL-001,App Store,en-US,primary-if-new,Literary Planet,Proba Pera,English exact-RC iPhone+iPad,English,English,owner approval; preserve existing primary if record exists
+SL-002,App Store,ru,localized,Литературная планета,Проба пера,Russian exact-RC iPhone+iPad,Russian,English reviewer notes plus Russian internal copy,same features and build
+SL-003,Google Play,en-US,default-if-new,Literary Planet,,English exact-RC phone+tablet,English,English App Access,manual owned translation; no raw auto translation
+SL-004,Google Play,ru-RU,translation,Литературная планета,,Russian exact-RC phone+tablet,Russian,English App Access,same paid/IAP truth
+SL-005,RuStore,ru,primary,Литературная планета,,Russian exact-RC phone+tablet,Russian,Russian + English backup,app itself exposes Russian and English
+SL-006,Web/PWA,en,localized-route,Literary Planet,Proba Pera,English responsive captures,English,English support/legal,hreflang/canonical
+SL-007,Web/PWA,ru,localized-route,Литературная планета,Проба пера,Russian responsive captures,Russian,Russian support/legal,hreflang/canonical

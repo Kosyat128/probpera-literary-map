@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/localized-legal-document-v12.json",
+  "title": "Localized Legal Document V12",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "documentId",
+    "documentType",
+    "controllingLanguage",
+    "versions",
+    "territories",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "documentId": {
+      "type": "string"
+    },
+    "documentType": {
+      "enum": [
+        "privacy",
+        "terms",
+        "paid-sale",
+        "refund",
+        "account-deletion",
+        "child-privacy",
+        "support",
+        "rights-attribution",
+        "custom-eula"
+      ]
+    },
+    "controllingLanguage": {
+      "enum": [
+        "ru",
+        "en",
+        "territory-specific",
+        "owner-legal-pending"
+      ]
+    },
+    "territories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ru",
+        "en"
+      ],
+      "properties": {
+        "ru": {
+          "$ref": "#/$defs/version"
+        },
+        "en": {
+          "$ref": "#/$defs/version"
+        }
+      }
+    },
+    "meaningParity": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "REVIEW_REQUIRED"
+      ]
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "STALE",
+        "LEGAL_REVIEW",
+        "APPROVED",
+        "PUBLISHED",
+        "BLOCKED"
+      ]
+    }
+  },
+  "$defs": {
+    "version": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "locale",
+        "version",
+        "sourceSha256",
+        "effectiveDate",
+        "approval"
+      ],
+      "properties": {
+        "locale": {
+          "enum": [
+            "ru",
+            "en"
+          ]
+        },
+        "version": {
+          "type": "string"
+        },
+        "sourceSha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "effectiveDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "translatorReview": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "legalReview": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "PENDING"
+          ]
+        },
+        "approval": {
+          "enum": [
+            "APPROVED",
+            "PENDING",
+            "REJECTED"
+          ]
+        },
+        "changeSummary": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

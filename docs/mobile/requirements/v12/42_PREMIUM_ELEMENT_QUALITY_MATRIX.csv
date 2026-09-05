@@ -1,0 +1,19 @@
+﻿element,purpose,visual_gate,state_gate,accessibility_gate,performance_gate,offline_error_gate,evidence
+app-icon,brand recognition,clean silhouette; canonical asset,platform variants,contrast,size budgets,fallback icon,small-size matrix
+splash,fast trusted boot,exact orange; logo top-left,cold/warm/update,Reduce Motion,time-to-first-frame,offline bootstrap,cold-start video
+home,globe-first entry,one dominant CTA,loading/continue/offline,large text,fast meaningful frame,cached collections,screen matrix
+navigation,stable structure,adult/child/platform variants,selected/back/deep-link,labels/targets,no remount,route recovery,native tests
+globe,core exploration,site-canon materials,touch/focus/recovery,country list alt,FPS/memory,local base assets,trace+video
+background-scene,immersion,true full 3D/PBR,preview/apply/rollback,reduced motion,LOD/tiers,fallback chain,parallax video
+skin,surface personalization,UV/material quality,pending/error/latest-wins,labels readable,texture memory,installed/offline,alignment QA
+stand,presentation,contact/shadow/clearance,preview/apply,decorative hidden,LOD/dispose,fallback stand,multi-device screenshots
+planetka,child guidance,character bible/rig,idle/help/success/minimized,captions,bounded animation,offline scripts,animation reel
+button,action,token hierarchy,all interaction states,44x44/name,no layout shift,disabled reason,component tests
+writer-card,content discovery,real portrait,loading/error/favorite,alt/name,lazy media,faceless fallback,rights audit
+flag,country identity,canonical SVG,loading/fallback,accessible country name,small asset,local registry,parity audit
+search,find content,clean results,typing/cancel/empty,screen reader status,index latency,offline index,query tests
+reader,read biography,paper/typography,font/theme/progress,Dynamic Type,virtualize if needed,offline content,reader matrix
+store,cosmetics,restrained premium UI,price/pending/owned/install,purchase announcements,lazy previews,store unavailable,sandbox evidence
+parent-gate,protect child,clear adult task,wrong PIN/backoff/biometric,large text,instant local,secure recovery,bypass tests
+downloads,offline control,clear size/progress,pause/resume/error,status announcements,bounded concurrency,atomic recovery,stress logs
+empty-error,recovery,branded restrained,retry/offline/update,plain language,no infinite loop,safe fallback,failure injection

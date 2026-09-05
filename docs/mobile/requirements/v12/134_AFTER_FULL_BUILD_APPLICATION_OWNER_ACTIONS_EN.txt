@@ -1,0 +1,313 @@
+WHAT TO DO AFTER THE APPLICATION IS FULLY BUILT
+LITERARY PLANET — PROBA PERA
+V12 BILINGUAL FINAL OWNER GUIDE
+
+Use this document only after Codex has completed S00–S40 and generated the
+exact release candidates, bilingual store dossiers and the self-contained
+`artifacts/owner-handoff/` folder.
+
+======================================================================
+1. DO NOT ACCEPT AN INTERNAL FAILURE AS OWNER WORK
+======================================================================
+
+Do not submit when the status is `BLOCKED_INTERNAL`, a P0/P1 item is open,
+or any of these failures exists:
+
+- build/crash/ANR/black globe;
+- child content leakage or Parent Gate bypass;
+- missing English critical UI/content;
+- guessed writer/work title;
+- stale translation;
+- privacy/Data Safety mismatch;
+- missing account deletion when accounts are enabled;
+- unlicensed or bundled blocked asset;
+- IAP/Restore/server-verification failure;
+- mock screenshot or metadata/build mismatch;
+- store-variant provider/link contamination.
+
+These are Codex tasks. The owner only resolves genuine account, secret,
+legal, rights, price, territory, approval and manual submission actions.
+
+======================================================================
+2. OPEN THE SINGLE OWNER HANDOFF FOLDER
+======================================================================
+
+Start with:
+
+`artifacts/owner-handoff/00_READ_ME_FIRST_RU.md`
+`artifacts/owner-handoff/00_READ_ME_FIRST_EN.md`
+
+The folder must contain exact artifacts and hashes, Russian/English
+screenshots and metadata, reviewer notes, missing inputs, secrets list,
+rights/privacy/age evidence, store console worksheets, draft-upload steps,
+post-build guides, rejection playbook and first-72-hour runbook.
+
+Do not search through the repository for release files.
+
+======================================================================
+3. COMPLETE ONE OWNER INPUT
+======================================================================
+
+Complete `owner-release-inputs.json` once. Approve:
+
+- legal seller and country;
+- Russian and English product names;
+- final package/Bundle IDs already proposed by Codex;
+- enabled platforms;
+- prices and SAFE_INITIAL territories;
+- support/privacy/terms/deletion URLs in both languages;
+- family/general audience strategy;
+- whole-binary age ratings;
+- Google target age groups;
+- Apple Kids Category default `false`;
+- English release readiness;
+- rights approvals;
+- Disney/Pixar excluded;
+- draft-upload authorization;
+- manual/staged release mode.
+
+Do not put passwords, API tokens, .p8 keys, service-account JSON, keystore
+files or reviewer credentials in this nonsecret file.
+
+Run the generated validation/missing-input workflow. It must produce one
+short consolidated report, not repeated questions in different files.
+
+======================================================================
+4. ADD SECRETS SAFELY
+======================================================================
+
+Use the generated names-only secrets/signing matrix. Add Apple API/signing,
+Google service account/upload key, RuStore API/Pay and web merchant secrets
+to the specified encrypted secret stores. Use least privilege and separate
+sandbox/production credentials. Keep at least two protected backups of
+production signing keys.
+
+Never place secrets in Git, screenshots, reviewer notes, support tickets or
+ordinary chat. Confirm that logs and generated dossiers redact every secret.
+
+======================================================================
+5. APPROVE BOTH LANGUAGE EXPERIENCES
+======================================================================
+
+Verify the exact RC in Russian and English:
+
+- Russian names: `Литературная планета`, `Проба пера`, `Планетка`;
+- English names: `Literary Planet`, `Proba Pera`, `Planetka`;
+- onboarding and Settings language switch;
+- iOS/Android per-app language behavior;
+- no wrong-language first frame;
+- same globe/Canvas/camera/entity/profile/entitlement state after switching;
+- 100% critical UI coverage;
+- 100% Base Edition English content coverage;
+- verified writer names and work-title strategies;
+- cross-script search and transliteration;
+- English Child Mode and Planetka;
+- English offline/error package;
+- English legal/support/store/reviewer materials;
+- English/Russian exact-build screenshot sets;
+- no mixed critical screen or raw localization key.
+
+A missing English optional pack may stay hidden from English users, but a
+missing Base Edition English item blocks the bilingual release.
+
+======================================================================
+6. APPROVE RIGHTS, PRIVACY AND LEGAL PARITY
+======================================================================
+
+Approve the rights-clean binary report, real portraits/flags, maps/globes,
+book-cover strategy, original 3D assets, audio/fonts and English title/name
+evidence. Keep Disney/Pixar and all unlicensed packs absent unless an exact
+signed licence covers language, territory, platform, 3D, IAP and marketing.
+
+Compare Russian and English Privacy, Terms, refund, account deletion, child
+privacy and support documents. Approve the controlling-language rule. The
+English text must not weaken or expand the Russian commercial/privacy claim.
+
+Approve child-jurisdiction decisions for every enabled territory. SAFE_PAID_
+BILINGUAL_V1 keeps child data local and disables child account, uploads, ads,
+behavioral analytics, push targeting and child AI input by default.
+
+======================================================================
+7. APPROVE SAFE_INITIAL TERRITORIES AND SUPPORT
+======================================================================
+
+Do not select worldwide release by default. Enable a territory only when
+store sales, seller/tax/trader status, language, support, rights, privacy,
+child rules, prices and reviewer access are ready.
+
+For EU/France/US/UK follow the generated DSA/export/COPPA/GDPR/CNIL/UK
+Children’s Code worksheets. Exclude an unready territory rather than rely on
+a disclaimer or unsupported English support promise.
+
+======================================================================
+8. TEST REAL DEVICES
+======================================================================
+
+Test Android phone/tablet, iPhone/iPad and Web/PWA in both languages. Cover:
+
+1. branded splash and Home;
+2. canonical live globe;
+3. country, writer and work;
+4. real portrait/flag and verified content;
+5. search in Cyrillic and Latin aliases;
+6. switch language on a writer/work route;
+7. offline launch and locale package;
+8. child profile, exact age and Planetka;
+9. blocked adult item before rendering;
+10. Parent Gate;
+11. no price/Buy in child mode;
+12. Starter Set;
+13. one optional original sandbox product;
+14. pending/cancel/Restore/refund/revocation;
+15. background/resume and WebGL recovery;
+16. Economy graphics;
+17. text scaling, VoiceOver/TalkBack and font glyphs;
+18. account deletion if the optional account is enabled.
+
+Do not approve a visual or language state that you did not actually inspect.
+
+======================================================================
+9. RUN SAFE RELEASE PREPARATION
+======================================================================
+
+Run the generated workflow:
+
+`npm run release:prepare:all`
+
+It must validate owner input and secret references, refresh official rules,
+build every variant, run canon/child/rights/privacy/i18n/moderation gates,
+capture exact screenshots, generate metadata/dossiers/console worksheets,
+and create the owner approval package.
+
+All upload automation is dry-run by default. Authorize draft upload only
+after the artifact hash and owner approval match:
+
+`npm run release:upload:drafts -- --confirm-draft-upload`
+
+This command must not submit for review, publish, deploy production or merge
+main.
+
+======================================================================
+10. APP STORE
+======================================================================
+
+Confirm the correct app record, Bundle ID, signing, paid agreements,
+banking/tax, price, territories, DSA trader status, export compliance,
+privacy manifests/Required Reason APIs, App Privacy and full-app age rating.
+
+For a new international record, use the owner-approved primary-language
+strategy. V12 recommends `en-US` primary metadata with Russian localization
+when creating a new record, but preserves an existing primary language
+unless a reviewed migration is approved. Apple binary localization and
+App Store metadata localization are separate; both must be complete.
+
+Upload exact English and Russian screenshots/reviewer materials for the same
+build. Provide stable reviewer credentials/PIN and exact visible English
+button labels. Add the first optional non-consumable only when sandbox,
+review screenshot and Restore work.
+
+Manually review the draft, add the version/IAP for review and press Submit
+for Review. Use manual release for the first version unless the owner
+explicitly approves another mode.
+
+======================================================================
+11. GOOGLE PLAY
+======================================================================
+
+Confirm the package was never publicly free and is configured as a paid app
+before the first production release. Verify payments profile, prices,
+territories, Play App Signing, developer/package verification, current
+target API/Billing, testing requirements and pre-launch results.
+
+Prepare `en-US` default listing and `ru-RU` localization. Localized listing
+records and images must be validated separately; do not assume a custom
+store listing will be automatically translated. Complete App Access, target
+audience/Families, content rating, Data Safety, permissions and deletion.
+
+Use stable review credentials and exact English/Russian paths. Manually send
+the approved edit/release for review and keep production rollout under owner
+control.
+
+======================================================================
+12. RUSTORE
+======================================================================
+
+Confirm Paid type, price/monetization, app/package/signature, current Pay SDK,
+Russian primary listing and moderator note, exact screenshots, data/
+permissions, standalone functionality and no competitor-store link/provider.
+
+The application must provide a clear Russian or English experience; V12
+provides both. Review the English in-app switch but keep Russian moderation
+materials complete. Manually submit the prepared draft for moderation.
+
+======================================================================
+13. WEB/PWA
+======================================================================
+
+Approve merchant, price/currency/territory/tax/refund terms, entitlement and
+webhook verification, account recovery/deletion, localized `/ru/` and `/en/`
+routes, language-correct SSR/prerender, canonical/hreflang/sitemaps, PWA
+manifest, service worker, offline locale packs and rollback.
+
+Native store builds must not link to a web checkout in violation of their
+current rules. Production deployment requires explicit owner authorization.
+
+======================================================================
+14. DURING REVIEW
+======================================================================
+
+Keep reviewer account/PIN, backend/CDN, public legal/support URLs, content
+manifest, locale catalogs, screenshots, products, remote config and child
+policy stable. Do not silently enable an additional locale, account, SDK,
+IAP, territory or licensed pack.
+
+Monitor store messages daily. Preserve the exact submitted artifact,
+localized metadata and evidence snapshot.
+
+======================================================================
+15. IF A STORE REJECTS THE APP
+======================================================================
+
+Send Codex the complete message, policy/guideline number, screenshot, store,
+version/build, date and exact submitted artifact. Do not paraphrase away
+details.
+
+Codex must reproduce the issue on the submitted build, fix the root cause,
+add a regression test, update both language declarations/screenshots/notes
+where affected, increment the build when binary changes, freeze new hashes
+and draft a factual response. The owner approves and sends the response.
+
+Never resubmit the same failing build blindly. Never temporarily hide a
+noncompliant path only for review. Never claim rights without documents.
+
+======================================================================
+16. AFTER APPROVAL AND FIRST 72 HOURS
+======================================================================
+
+Verify the approved build, prices, territories, localizations and optional
+product before manual/staged release. Monitor launch, WebGL, purchases,
+Restore, content/locale downloads, child safety, support, privacy/deletion,
+localized web pages and store-specific routing.
+
+Pause expansion for any P0/P1. Disable only the affected optional content
+where possible; preserve the paid core. Do not immediately enable more SKU,
+Disney/Pixar, child cloud, push or analytics after approval.
+
+======================================================================
+17. FINAL OWNER RESPONSIBILITIES ONLY
+======================================================================
+
+The owner should only need to:
+
+1. create/verify external accounts and legal seller identity;
+2. add production secrets/signing safely;
+3. complete one owner input;
+4. approve legal, rights, price, territory, age/privacy and bilingual assets;
+5. authorize draft upload or upload prepared files;
+6. manually press Submit/Release and answer reviewers;
+7. manually review and merge the final PR;
+8. operate support, keys, licences and future updates.
+
+No source-code editing, manual application build, screenshot creation,
+translation production, SDK investigation or duplicate JSON entry should
+remain for the owner.

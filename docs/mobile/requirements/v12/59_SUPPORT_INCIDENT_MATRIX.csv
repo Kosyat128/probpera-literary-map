@@ -1,0 +1,11 @@
+﻿severity,incident,immediate_action,evidence,owner,target
+P0,Child boundary breach,Disable affected route/content; preserve child mode; incident review,child policy logs; route; content version,privacy/security owner,immediate
+P0,Unlicensed Disney/IP asset exposed,Remote delist; remove asset; halt rollout; legal escalation,asset hash; territory; release,rights/legal owner,immediate
+P0,Purchase self-grant or receipt compromise,Disable optional store/grant; rotate secrets; reconcile,transaction IDs hashed; provider; version,security/commerce owner,immediate
+P0,Data/secrets exposure,Contain; revoke; preserve evidence; notification assessment,redacted security evidence,security/privacy owner,immediate
+P1,Paid users cannot start core app,Enable offline/grace/safe fallback; hotfix,platform/build/entitlement status,release owner,hours
+P1,Content update corruption,Rollback manifest; disable rollout,content version/checksum,content/release owner,hours
+P1,Blank/failed globe,Safe mode/economy; context recovery; hotfix,GPU/device/build,globe owner,hours
+P1,Purchase restore failures,Pause sales if needed; reconcile; support instructions,store/provider/result category,commerce owner,hours
+P2,One optional 3D scene fails,Hide/delist item; included fallback,item/version/device,customization owner,business day
+P2,Localized text/visual defect,Content/UI patch,locale/screen/version,editorial/UI owner,business day

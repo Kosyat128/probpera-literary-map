@@ -1,0 +1,37 @@
+﻿test_id,area,precondition,action,expected,severity
+BI-001,Locale bootstrap,unsupported device locale,launch,English before first content frame; no flash,P0
+BI-002,Russian bootstrap,ru-RU device,launch,Russian before first content frame,P0
+BI-003,Manual switch,globe country selected,ru→en→ru,same Canvas/camera/country/writer,P0
+BI-004,Child switch,saved child profile,change allowed language,child mode/policy preserved,P0
+BI-005,Parent lock,child language locked,attempt switch,blocked or parent-controlled without adult leak,P0
+BI-006,Hardcoded strings,release source,scan,zero reachable user-facing hardcoded strings,P0
+BI-007,Placeholder parity,all catalogs,validate,same names/types/counts,P0
+BI-008,Plural rules,counts 0/1/2/5/21,render,grammatically correct ru/en,P1
+BI-009,Date/number/currency,locale matrix,render,locale-correct; store price untouched,P0
+BI-010,English names,authority fixtures,profile/search,verified display and aliases,P0
+BI-011,Work titles,known/missing title fixtures,render,published title or labelled fallback; no guess,P0
+BI-012,Cross-script search,Tolstoy/Толстой/etc.,search,same entity ID,P0
+BI-013,Alias child policy,blocked work English alias,search/deep link,denied before render,P0
+BI-014,Source change,approved translation source hash changes,build package,translation becomes STALE,P0
+BI-015,English content coverage,Base Edition,coverage,100% approved,P0
+BI-016,Optional pack incomplete,English translation missing,English catalog,pack hidden; Russian unaffected,P1
+BI-017,Offline locale pack,English pack installed,airplane launch,English content/search/audio available,P0
+BI-018,Offline switch missing pack,only Russian pack,switch to English,clear download prompt and bilingual emergency UI,P1
+BI-019,Planetka English,age bands,dialogue/audio,"natural, verified, no sales pressure",P0
+BI-020,Audio fallback,English audio absent,play,English transcript/text; no Russian speech,P1
+BI-021,Voice rights,English narration catalog,scan,all voice rights/territories valid,P0
+BI-022,iOS per-app language,iOS settings,select en/ru,native+web surfaces agree,P0
+BI-023,Android per-app language,Android 13+ settings,select en/ru,native+web surfaces agree,P0
+BI-024,Unsupported locale resources,Android unsupported locale,launch,default resources prevent crash,P0
+BI-025,App Store English listing,en-US materials,truth audit,exact build/content/legal support,P0
+BI-026,Google custom listing,manual localized listing,audit,no reliance on auto translation,P1
+BI-027,RuStore language,Russian listing/English app,moderation path,reviewer can select either language,P0
+BI-028,Legal sync,privacy source update,release check,ru/en versions same version and data meaning,P0
+BI-029,Controlling language,legal config,render,approved clause visible consistently,P1
+BI-030,English support,ticket/help path,submit,English acknowledgement and routing work,P1
+BI-031,Pseudolocale,expanded accented locale,critical screens,no clipping/overlap,P1
+BI-032,Text scale,ru/en 200%,critical paths,meaning not truncated,P0
+BI-033,Screen readers,ru/en,critical paths,localized labels/hints/focus,P0
+BI-034,Screenshot pair,same feature ru/en,capture,both exact RC; no overlay fake localization,P0
+BI-035,Web hreflang,localized routes,crawl audit,correct canonical/alternates/lang,P1
+BI-036,No mixed screen,failure injection,all critical routes,zero raw keys/wrong-locale critical text,P0

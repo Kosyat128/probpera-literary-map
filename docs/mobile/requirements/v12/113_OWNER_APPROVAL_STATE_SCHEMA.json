@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/owner-approval-state-v12.json",
+  "title": "Literary Planet V12 Owner Approval State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "artifactSha256",
+    "sections",
+    "authorization",
+    "status",
+    "generatedAt",
+    "releaseProfile",
+    "coverage",
+    "bilingualApproval"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "releaseId": {
+      "type": "string"
+    },
+    "artifactSha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "titleRu",
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "titleRu": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "PENDING",
+              "APPROVED",
+              "REJECTED",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "ownerNote": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "titleEn": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "draftUpload",
+        "manualSubmission",
+        "manualRelease",
+        "merge"
+      ],
+      "properties": {
+        "draftUpload": {
+          "type": "boolean"
+        },
+        "manualSubmission": {
+          "type": "boolean"
+        },
+        "manualRelease": {
+          "type": "boolean"
+        },
+        "merge": {
+          "type": "boolean"
+        }
+      }
+    },
+    "approverReference": {
+      "type": "string"
+    },
+    "approvedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "status": {
+      "enum": [
+        "PENDING",
+        "PARTIAL",
+        "APPROVED",
+        "REJECTED"
+      ]
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ownerNote": {
+      "type": "string"
+    },
+    "bilingualApproval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "russianProduct",
+        "englishProduct",
+        "englishContent",
+        "storeLocalizations",
+        "legalSupport"
+      ],
+      "properties": {
+        "russianProduct": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "englishProduct": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "englishContent": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "storeLocalizations": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "legalSupport": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED",
+            "NOT_APPLICABLE"
+          ]
+        }
+      }
+    },
+    "releaseProfile": {
+      "const": "SAFE_PAID_BILINGUAL_V1"
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ruCritical",
+        "enCritical",
+        "englishBaseEdition",
+        "englishChild"
+      ],
+      "properties": {
+        "ruCritical": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "enCritical": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "englishBaseEdition": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "englishChild": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    }
+  }
+}

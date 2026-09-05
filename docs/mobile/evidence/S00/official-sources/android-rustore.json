@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 1,
+  "stage": "S00",
+  "scope": "Google/Android, RuStore, Capacitor official requirements and localization sources only",
+  "generatedAt": "2026-09-04T19:14:36Z",
+  "archiveDocumentsRead": [
+    "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+    "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+    "28_OFFICIAL_REQUIREMENTS_SNAPSHOT_2026-09-03.md"
+  ],
+  "externalMutations": [],
+  "selectedVersionsAreImplemented": false,
+  "limitations": [
+    "Read-only official documentation refresh; no repository/native build/store-account compliance assessed.",
+    "Web retrieval availability and crawl recency are recorded; current documentation can change before RC.",
+    "RuStore detailed Pay 11.1.0 integration and runtime English UI remain unresolved; index alone proves only version label."
+  ],
+  "sources": [
+    {
+      "id": "google-target-api",
+      "url": "https://support.google.com/googleplay/android-developer/answer/11926878",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_via_official_language_variant",
+      "requirement": "Ordinary phone/tablet new apps and updates must target Android 16/API 36 or higher from 2026-08-31. Existing app discoverability floor differs: API 35. An extension to 2026-11-01 can be requested; do not assume it was granted.",
+      "evidence": "Official English query variant, sections App update requirements and What to do to comply.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "effectiveDate": "2026-08-31",
+      "verifiedVia": "https://support.google.com/googleplay/android-developer/answer/11926878?hl=en",
+      "initialFetchIssue": "Bare registry URL returned Google anti-bot redirect; language variant returned policy."
+    },
+    {
+      "id": "google-billing-release-notes",
+      "url": "https://developer.android.com/google/play/billing/release-notes",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Latest listed Play Billing release is 9.1.0, released 2026-06-18. Archive's 9.1.0 is confirmed. 9.0.0 sets library target SDK to 35; that library setting does not override app target API 36 policy.",
+      "evidence": "Top release headings: 9.1.0 (2026-06-18), 9.0.0 (2026-05-19).",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "observedLatestVersion": "9.1.0",
+      "releaseDate": "2026-06-18"
+    },
+    {
+      "id": "google-billing-integration",
+      "url": "https://developer.android.com/google/play/billing/integrate",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Handle pending purchases; grant and acknowledge only once PURCHASED. Acknowledge within three days of transition to PURCHASED to avoid refund/revocation. Query purchases on resume to reconcile purchases completed while absent.",
+      "evidence": "Sections Notify Google the purchase was processed and Handle pending transactions.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-billing-security",
+      "url": "https://developer.android.com/google/play/billing/security",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Validate purchase tokens with the backend; grant entitlements only for verified PURCHASED state. Acknowledge non-consumables using the corresponding server API and reconcile voided/refunded orders.",
+      "evidence": "Sections Move sensitive logic to your backend and Verify purchases before granting entitlements.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-user-data",
+      "url": "https://support.google.com/googleplay/android-developer/answer/10144311",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Provide an in-app and store-linked privacy policy on a public, active, non-geofenced, non-editable web URL, not PDF. Account creation requires discoverable in-app and external deletion requests; delete associated data and explain lawful retention.",
+      "evidence": "Privacy Policy and Account Deletion Requirement.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-play-policies",
+      "url": "https://support.google.com/googleplay/android-developer/",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Official help index is reachable. It is a routing index, not sufficient evidence for exact listing, App Access, Families, or Data Safety limits; specific linked pages are separately recorded.",
+      "evidence": "Help index links to review preparation, preview assets, pricing, Data Safety, and app setup.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "rustore-publishing",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Unique name <=30 characters; short description <=80; full description <=4000. At least three screenshots per supplied device type, although 1-10 can upload per batch. Phone screenshot max 3 MB; tablet 5 MB. PNG/JPG; mobile max 2160x3840. At least one developer contact field. Processed draft files expire after 14 days without review submission.",
+      "evidence": "App info, Developer contact details, Screenshots, and File upload stages.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "archiveDelta": "Snapshot omits minimum 3 screenshots per device type and claims email universally required; current Console page requires at least one contact, while API page separately requires email."
+    },
+    {
+      "id": "rustore-review-guidelines",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/requirement-apps",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Stable complete standalone product; website redirects alone insufficient. Supply reviewer access to all features. Russian or English experience or switch required. Mark app Paid if no free functions. No competing-store links; third-party IP evidence may be requested. Listing/install names and current screenshots must correspond; screenshot text RU/EN and aspect 9:16 or 16:9. RuStore installs should update through RuStore.",
+      "evidence": "Sections 1-6, including language notice, App type, screenshots.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "rustore-permissions",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication/new-version-app/declare-app-permissions/how-to-declare-permissions",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Declare actual data categories and sensitive permissions. Dangerous permissions prompt additional review. Complete required declaration fields and check app against review guidelines.",
+      "evidence": "How to declare app permissions.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "rustore-pay",
+      "url": "https://www.rustore.ru/help/en/sdk/pay",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "partially_verified_via_official_russian_pages",
+      "requirement": "English registry endpoint returned 429 challenge. Russian official overview works and identifies Pay SDK; old billingClient is deprecated. Current Kotlin/Java index lists 11.1.0. Detailed integration and runtime language support remain unverified.",
+      "evidence": "English URL challenge; Russian overview and Kotlin/Java current-version index.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "verifiedVia": "https://www.rustore.ru/help/sdk/pay",
+      "unresolved": [
+        "Detailed 11.1.0 integration requirements",
+        "English payment-sheet availability",
+        "Native SDK minimum API",
+        "merchant/signing/server-verification details"
+      ]
+    },
+    {
+      "id": "capacitor",
+      "url": "https://capacitorjs.com/docs",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Official documentation defaults to Capacitor v8. Native shells bridge the existing web application to native APIs; platform minima and build tools are recorded on dedicated official pages.",
+      "evidence": "Documentation version navigation v8.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-play-developer-publishing-api-edits",
+      "url": "https://developers.google.com/android-publisher/edits",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Transactional edits stage listings and artifacts until commit. Console changes may invalidate edits. Product, in-app product, and subscription APIs do not share this transaction and can take effect immediately. An existing app/upload and Console legal consents are prerequisites.",
+      "evidence": "Edits overview and Workflow.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "implementationImplication": "Dry-run allowlist must reject edits.commit, release/submission paths, and all nontransactional product writes by default."
+    },
+    {
+      "id": "android-developer-verification",
+      "url": "https://developer.android.com/developer-verification/guides",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Identity verification and package/signing-key registration apply to broad Android distribution. Regional enforcement starts 2026-09-30 in Brazil, Indonesia, Singapore, and Thailand; wider rollout follows in 2027+. Play developers use Play Console for on- and off-Play registration.",
+      "evidence": "Key milestones timeline and Find your path; page updated 2026-08-18.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "effectiveDate": "2026-09-30"
+    },
+    {
+      "id": "rustore-public-api-create-draft",
+      "url": "https://www.rustore.ru/help/en/work-with-rustore-api/api-upload-publication-app/create-draft-version",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Draft creation requires an active app version and allows one draft per app. Missing values inherit active-version data. publishType defaults to INSTANTLY; use MANUAL explicitly. Draft creation differs from moderation submission and publication. API requires minAndroidVersion and developerContacts with email.",
+      "evidence": "Key Points and Interaction parameters.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "documentationConflict": "API table says appName maximum 5 characters, conflicting with official Console publication page maximum 30. Treat as documentation inconsistency; verify endpoint schema before upload."
+    },
+    {
+      "id": "rustore-public-api-artifact-icon-upload",
+      "url": "https://www.rustore.ru/help/work-with-rustore-api/api-upload-publication-app/apk-icon-upload",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "This registry URL documents icon upload, not binary artifact upload. Icon .jpeg/.png, <=3 MB, 512x512, uploaded to the app/version icon endpoint with Public-Token.",
+      "evidence": "Title and Restrictions; POST /public/v1/application/{packageName}/version/{versionId}/image/icon.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "archiveDelta": "Registry key mentions artifact/icon but exact URL only covers icon."
+    },
+    {
+      "id": "google-play-localized-listings-api",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Listing is localized by BCP-47 language tag. Localized fields include title, fullDescription, shortDescription and video. Maintain distinct en-US and ru-RU payloads.",
+      "evidence": "Listing resource Fields.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-play-update-localized-listing",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings/update",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "PUT updates or creates listing within packageName/editId/language path. Request and response use Listing; androidpublisher OAuth scope is required.",
+      "evidence": "HTTP request, Path parameters, Authorization scopes.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-play-transactional-edits",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "REST reference includes edits and separate state-mutating resources. Presence in the same API does not make all operations draft-only; use endpoint-specific allowlisting.",
+      "evidence": "REST resource index; Edits guide supplies transaction semantics.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "android-per-app-language-preferences",
+      "url": "https://developer.android.com/guide/topics/resources/app-languages",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Android 13+ offers system per-app languages. Publish LocaleConfig and integrate public locale APIs; provide backward compatibility for older devices. setApplicationLocales recreates Activity by default unless app handles locale configuration changes. Automatic locale generation can unintentionally include library locales.",
+      "evidence": "System settings, Implement using AndroidX, locale configuration-change note.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "implementationImplication": "Explicitly handle native locale configuration changes, synchronize web locale in place, and test Activity/WebView/Canvas identity preservation. This is an engineering inference from platform behavior and the user's invariant."
+    },
+    {
+      "id": "android-localeconfig",
+      "url": "https://developer.android.com/reference/android/app/LocaleConfig",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "LocaleConfig is available from API 33 and lists supported app locales using BCP47. Check status for absent/malformed configuration. getDefaultLocale is API 35+, so gate calls on older supported Android versions.",
+      "evidence": "getStatus, getSupportedLocales, getDefaultLocale.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "android-resource-localization",
+      "url": "https://developer.android.com/guide/topics/resources/localization",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Complete default resources are mandatory. Missing default values can fail app startup in unsupported locales. Supply every needed default string/resource and complete RU/EN variants; test unsupported locale fallback.",
+      "evidence": "Why default resources are important and Create default resources.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-translate-localize",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9844778?hl=en",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Localized graphics must be provided with translated listings or default-language graphics appear. Play's Gemini app-string automation may override supplied translations in selected languages and future bundles. Keep RU/EN under controlled human-reviewed workflow; automatic store translation is not accepted as V12 evidence.",
+      "evidence": "If you don't add or purchase translations; App strings translation using Gemini.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "implementationImplication": "Do not enable automated replacement for RU/EN: it would invalidate reviewed string hashes and exact-RC evidence."
+    },
+    {
+      "id": "google-custom-listings",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9867158?hl=en-GB",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Custom store listings are not automatically translated. They use their selected default language unless translations are added; an existing published default listing is a prerequisite for creating custom listings.",
+      "evidence": "Translations and Create a custom store listing.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "android-per-app-language-query-en",
+      "url": "https://developer.android.com/guide/topics/resources/app-languages?hl=en",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "English query variant was opened and matches per-app-language guidance recorded for the canonical URL.",
+      "evidence": "System settings and in-app locale APIs.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "canonicalSourceId": "android-per-app-language-preferences"
+    },
+    {
+      "id": "android-resource-localization-query-en",
+      "url": "https://developer.android.com/guide/topics/resources/localization?hl=en",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "English query variant was opened and confirms complete default resources and locale-specific resource testing.",
+      "evidence": "Why default resources are important.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "canonicalSourceId": "android-resource-localization"
+    },
+    {
+      "id": "google-billing-deprecation",
+      "url": "https://developer.android.com/google/play/billing/deprecation-faq",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Version 7 new-app/update deadline was 2026-08-31, extension 2026-11-01. Version 8 deadline 2027-08-31; version 9 deadline 2028-08-31. Therefore use supported 8+ absent an approved v7 extension; selected latest 9.1.0 still requires integration validation.",
+      "evidence": "Support timeline table; page updated 2026-09-04.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "capacitor-environment",
+      "url": "https://capacitorjs.com/docs/getting-started/environment-setup",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Capacitor 8: Node 22+, Xcode 26.0+, macOS to build iOS, Android Studio 2025.2.1+ and Android SDK. Swift Package Manager is recommended; CocoaPods remains optional if dependencies require it.",
+      "evidence": "Core Requirements, iOS Requirements and Android Requirements.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "capacitor-android",
+      "url": "https://capacitorjs.com/docs/android",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Capacitor v8 supports Android API 24+ and Android WebView/Chrome 60+. Emulator WebView does not automatically update. These runtime minima do not override Play's app target API policy or actual WebGL feature/device testing.",
+      "evidence": "Android Support and Running Your App.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "capacitor-ios",
+      "url": "https://capacitorjs.com/docs/ios",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Capacitor v8 supports iOS 15+ with Xcode 26.0+ and WKWebView. Native iOS build/run requires Xcode environment; source preparation on Windows is not a signed iOS artifact.",
+      "evidence": "iOS Support and Running Your App.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "rustore-pay-russian",
+      "url": "https://www.rustore.ru/help/sdk/pay",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Russian official Pay SDK overview is reachable; Kotlin/Java integration is linked; billingClient is marked deprecated.",
+      "evidence": "Pay SDK navigation.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "canonicalSourceId": "rustore-pay"
+    },
+    {
+      "id": "rustore-pay-kotlin-index",
+      "url": "https://www.rustore.ru/help/sdk/pay/kotlin-java",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Official Kotlin/Java SDK index explicitly lists 11.1.0 as current.",
+      "evidence": "Current-version navigation.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "observedLatestVersion": "11.1.0"
+    },
+    {
+      "id": "rustore-pay-11-1-0",
+      "url": "https://www.rustore.ru/help/sdk/pay/kotlin-java/11-1-0",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "unavailable_recheck_required",
+      "requirement": "Detailed page was not retrievable (429 challenge); retries with English path/trailing slash also failed. Do not assert successful integration, version minima, billing-sheet locale support, or signatures from this page.",
+      "evidence": "Fetch challenge/error.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "rustore-pay-history",
+      "url": "https://www.rustore.ru/help/sdk/pay/kotlin-java/history",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "partial_official_search_index_evidence",
+      "requirement": "Direct page returned 429 challenge, but official-domain search result exposes 11.1.0 release heading and sandbox SBP testing addition. This is indexed evidence, not successful direct retrieval.",
+      "evidence": "Official-domain search result; direct page inaccessible.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-review-preparation",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9859455?hl=en&ref_topic=7072031",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Declare ads, target audience, sensitive permissions, ratings and privacy; children in target audience trigger Families policy. Provide sign-in access information for restricted app functionality.",
+      "evidence": "App content, Sign-in details, Target audience and content.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-review-access",
+      "url": "https://support.google.com/googleplay/android-developer/answer/15748846",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Review credentials/instructions must be in English, reusable, always valid and location-independent, with a way around OTP/MFA restrictions. Give access to all restricted/paywalled functions and explain PIN flows.",
+      "evidence": "Requirements for providing sign-in details.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-preview-assets",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en&ref_topic=12233401",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Icon 512x512 PNG <=1024 KB; feature graphic 1024x500 JPEG/24-bit PNG without alpha. Screenshots: at least two overall, up to eight per type; JPEG/24-bit PNG; usual dimension 320-3840 and longest <=2x shortest. Large-screen guidance uses four screenshots at 1080-7680, 16:9/9:16. Show actual app, localized text, and concise alt descriptions.",
+      "evidence": "App icon, Feature graphic, Screenshots.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ],
+      "implementationImplication": "Capture exact RC in RU/EN separately; validate per-device rules rather than one global dimension limit."
+    },
+    {
+      "id": "google-paid-app-pricing",
+      "url": "https://support.google.com/googleplay/android-developer/answer/6334373?hl=en&ref_topic=7071529",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "An app offered for free cannot later be converted to paid under the same package. Configure intended paid-upfront model before public availability. Payments profile and per-country availability govern sales.",
+      "evidence": "Make your app free or paid.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-data-safety",
+      "url": "https://support.google.com/googleplay/android-developer/answer/10787469?hl=en&ref_topic=12233401",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Data Safety must cover actual app and third-party SDK data collection, sharing, security, and purposes. Device-only access with no off-device transfer is not collection in this form. No-data apps still need accurate form and policy.",
+      "evidence": "Disclosure guidance and Optional format for SDKs.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-families",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9893335?hl=en",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_current_document",
+      "requirement": "Declare true audience and child-appropriate content. Mixed audience must prevent collection from children by unsuitable SDKs or gate such SDKs appropriately; child/unknown-age persistent identifiers are restricted. Monetization must avoid deceptive or manipulative child targeting. Use full policy over summary.",
+      "evidence": "Families Policy Requirements and Ads and Monetization.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    },
+    {
+      "id": "google-create-app",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9859152?hl=en",
+      "accessedAt": "2026-09-04T19:14:36Z",
+      "accessMethod": "web.run official page",
+      "status": "verified_page_available_account_state_unknown",
+      "requirement": "Official app-creation/setup page was opened after an initial linked URL failed. Account-dependent setup remains unperformed in this read-only research.",
+      "evidence": "Create and set up your app.",
+      "implementationStatus": "not_assessed_in_read_only_S00_research",
+      "selectedImplementationVersion": null,
+      "recheckAt": [
+        "release_candidate",
+        "immediately_before_draft_upload",
+        "after_rejection"
+      ]
+    }
+  ]
+}

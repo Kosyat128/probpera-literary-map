@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Literary Planet — Final Bilingual Owner Approval</title>
+  <style>
+    :root{color-scheme:light;--orange:#e87524;--violet:#4b2a68;--deep:#261631;--paper:#fffaf3;--line:#e4d8c9;--ok:#176b45;--pending:#8a5600;--bad:#9d2f2f;--muted:#685d69}
+    *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(145deg,var(--deep),var(--violet));color:#211826;min-height:100vh}
+    header{background:var(--orange);color:#fff;padding:24px clamp(18px,4vw,52px);display:flex;gap:20px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+    header h1{margin:0 0 6px;font-size:clamp(24px,4vw,42px)}header p{margin:0;max-width:850px;line-height:1.5}.lang-buttons{display:flex;gap:8px}
+    main{width:min(1120px,calc(100% - 28px));margin:28px auto 56px;background:var(--paper);border-radius:22px;padding:clamp(18px,4vw,42px);box-shadow:0 24px 75px rgba(0,0,0,.28)}
+    .en{display:none}body.en-mode .ru{display:none}body.en-mode .en{display:inline}.block.en{display:none}body.en-mode .block.ru{display:none}body.en-mode .block.en{display:block}
+    button{min-height:44px;padding:0 16px;border:0;border-radius:10px;font-weight:700;cursor:pointer}.language{background:#fff;color:var(--violet)}.primary{background:var(--orange);color:#fff}.secondary{background:var(--violet);color:#fff}.ghost{background:#fff;color:var(--violet);border:1px solid var(--violet)}
+    .notice{border-left:5px solid var(--orange);padding:13px 16px;background:#fff0df;border-radius:10px;line-height:1.55;margin-bottom:20px}
+    .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:18px 0 28px}.summary article{background:white;border:1px solid var(--line);border-radius:14px;padding:15px;overflow-wrap:anywhere}.summary strong{display:block;margin-bottom:5px;color:var(--violet)}
+    section{margin:28px 0;border-top:1px solid var(--line);padding-top:8px}h2{color:var(--violet);font-size:1.25rem}.item{display:grid;grid-template-columns:24px minmax(0,1fr) minmax(140px,260px);gap:10px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}.item input{width:19px;height:19px;margin-top:2px}.evidence{font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+    .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}.metric{background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px}.metric input{width:100%;padding:8px;border:1px solid #cdbed2;border-radius:8px;font:inherit}
+    textarea,input[type=text]{width:100%;padding:10px 12px;border:1px solid #cdbed2;border-radius:9px;font:inherit;background:white}textarea{min-height:100px;resize:vertical}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;position:sticky;bottom:0;background:rgba(255,250,243,.96);padding:14px 0 4px;backdrop-filter:blur(10px)}#stateBadge{font-weight:800}.ok{color:var(--ok)}.pending{color:var(--pending)}.bad{color:var(--bad)}
+    @media(max-width:720px){.item{grid-template-columns:24px 1fr}.evidence{grid-column:2}.actions{position:static}}
+    @media print{body{background:white}header{background:white;color:black;border-bottom:2px solid black}main{width:100%;margin:0;box-shadow:none}.actions,.lang-buttons{display:none}.item{break-inside:avoid}}
+  </style>
+</head>
+<body>
+<header>
+  <div><h1><span class="ru">Финальное двуязычное утверждение</span><span class="en">Final Bilingual Owner Approval</span></h1>
+    <p class="ru">«Литературная планета — Проба пера». Codex заполняет фактические версии, SHA, coverage и evidence точной release candidate. Секреты здесь не хранятся.</p>
+    <p class="en">“Literary Planet — Proba Pera.” Codex fills in exact release versions, hashes, coverage and evidence. This file never stores secrets.</p></div>
+  <div class="lang-buttons"><button class="language" data-lang="ru">Русский</button><button class="language" data-lang="en">English</button></div>
+</header>
+<main>
+  <div class="notice ru">Технический PASS не заменяет юридическое и магазинное решение. Нельзя утверждать English complete, пока критический перевод, права, child safety, legal/support, screenshots и store packages не прошли.</div>
+  <div class="notice en">A technical PASS does not replace legal or store decisions. English cannot be approved while critical translation, rights, child safety, legal/support, screenshots or store packages remain incomplete.</div>
+
+  <div class="summary">
+    <article><strong>Release ID</strong><span id="releaseId">TO_BE_GENERATED</span></article>
+    <article><strong>Artifact SHA-256</strong><span id="artifactSha">TO_BE_GENERATED</span></article>
+    <article><strong>Profile</strong><span>SAFE_PAID_BILINGUAL_V1</span></article>
+    <article><strong><span class="ru">Статус</span><span class="en">Status</span></strong><span id="stateBadge" class="pending">PENDING</span></article>
+  </div>
+
+  <section><h2><span class="ru">1. Канон и продукт</span><span class="en">1. Canon and product</span></h2>
+    <label class="item"><input type="checkbox" data-id="canon"><span><span class="ru">Глобус и литературная база probpera.ru остаются единственным каноном.</span><span class="en">The probpera.ru globe and literary database remain the sole canon.</span></span><span class="evidence">site-mobile parity / shared IDs</span></label>
+    <label class="item"><input type="checkbox" data-id="paid"><span><span class="ru">Платная Base Edition, Starter Set, child mode, Parent Center и Planetka соответствуют SAFE_PAID_BILINGUAL_V1.</span><span class="en">Paid Base Edition, Starter Set, Child Mode, Parent Center and Planetka match SAFE_PAID_BILINGUAL_V1.</span></span><span class="evidence">profile + Starter Set report</span></label>
+    <label class="item"><input type="checkbox" data-id="no-risk-features"><span><span class="ru">Нет рекламы, подписки, child account, push, behavioural analytics, открытого AI-чата и нелицензированных миров.</span><span class="en">No ads, subscription, child account, push, behavioural analytics, open AI chat or unlicensed worlds.</span></span><span class="evidence">binary/config/SDK scan</span></label>
+  </section>
+
+  <section><h2><span class="ru">2. Русский и английский</span><span class="en">2. Russian and English</span></h2>
+    <div class="metrics">
+      <label class="metric"><span>RU critical UI %</span><input id="ruUi" type="text" value="100"></label>
+      <label class="metric"><span>EN critical UI %</span><input id="enUi" type="text" value="100"></label>
+      <label class="metric"><span>EN Base Edition %</span><input id="enContent" type="text" value="100"></label>
+      <label class="metric"><span>EN child/Planetka %</span><input id="enChild" type="text" value="100"></label>
+    </div>
+    <label class="item"><input type="checkbox" data-id="names"><span><span class="ru">Английские имена писателей и названия произведений имеют evidence или честно обозначенный fallback.</span><span class="en">English writer names and work titles have evidence or a clearly labelled fallback.</span></span><span class="evidence">name-title evidence matrix</span></label>
+    <label class="item"><input type="checkbox" data-id="switch"><span><span class="ru">Переключение языка сохраняет тот же Canvas, камеру, страну, писателя, child profile, покупки и downloads.</span><span class="en">Language switching preserves the same Canvas, camera, country, writer, child profile, purchases and downloads.</span></span><span class="evidence">state-preservation E2E</span></label>
+    <label class="item"><input type="checkbox" data-id="search"><span><span class="ru">Поиск RU/EN/native/transliteration ведёт к одинаковым entity IDs и не обходит child policy.</span><span class="en">RU/EN/native/transliteration search resolves the same entity IDs and cannot bypass child policy.</span></span><span class="evidence">cross-script search report</span></label>
+    <label class="item"><input type="checkbox" data-id="translation"><span><span class="ru">Нет raw machine translation, stale critical units, high semantic deltas, mixed-language critical screens или raw keys.</span><span class="en">No raw machine translation, stale critical units, high semantic deltas, mixed-language critical screens or raw keys.</span></span><span class="evidence">English release gate + scorecard</span></label>
+  </section>
+
+  <section><h2><span class="ru">3. Детский режим, audio и accessibility</span><span class="en">3. Child Mode, audio and accessibility</span></h2>
+    <label class="item"><input type="checkbox" data-id="child"><span><span class="ru">Child Mode безопасен и полностью доступен на двух языках; взрослый контент не появляется ни на кадр.</span><span class="en">Child Mode is safe and complete in both languages; adult content never flashes.</span></span><span class="evidence">child cold-start/bypass tests</span></label>
+    <label class="item"><input type="checkbox" data-id="planetka"><span><span class="ru">Planetka имеет естественные age-banded RU/EN scripts, без pressure, voice cloning и child-data request.</span><span class="en">Planetka has natural age-banded RU/EN scripts with no pressure, voice cloning or child-data request.</span></span><span class="evidence">dialogue/audio/transcript report</span></label>
+    <label class="item"><input type="checkbox" data-id="a11y"><span><span class="ru">Fonts, text scale, VoiceOver/TalkBack, reduced motion, offline/errors и native strings прошли на RU/EN.</span><span class="en">Fonts, text scaling, VoiceOver/TalkBack, reduced motion, offline/errors and native strings pass in RU/EN.</span></span><span class="evidence">bilingual a11y/layout matrix</span></label>
+  </section>
+
+  <section><h2><span class="ru">4. Stores, screenshots и web discovery</span><span class="en">4. Stores, screenshots and web discovery</span></h2>
+    <label class="item"><input type="checkbox" data-id="screens"><span><span class="ru">Русские и английские screenshots сняты с exact RC, rights-cleared и соответствуют видимому языку.</span><span class="en">Russian and English screenshots come from the exact RC, are rights-cleared and match the visible language.</span></span><span class="evidence">localized screenshot manifest</span></label>
+    <label class="item"><input type="checkbox" data-id="apple"><span><span class="ru">App Store English/Russian metadata, review notes, screenshots и primary-language strategy утверждены.</span><span class="en">App Store English/Russian metadata, review notes, screenshots and primary-language strategy are approved.</span></span><span class="evidence">App Store bilingual dossier</span></label>
+    <label class="item"><input type="checkbox" data-id="google"><span><span class="ru">Google en-US default, ru-RU localization и owned custom-listing translations утверждены.</span><span class="en">Google en-US default, ru-RU localization and owned custom-listing translations are approved.</span></span><span class="evidence">Google bilingual dossier</span></label>
+    <label class="item"><input type="checkbox" data-id="rustore"><span><span class="ru">RuStore Russian primary materials и переключаемая English app experience готовы.</span><span class="en">RuStore Russian primary materials and the selectable English app experience are ready.</span></span><span class="evidence">RuStore dossier</span></label>
+    <label class="item"><input type="checkbox" data-id="webseo"><span><span class="ru">Web `/ru/` и `/en/`, lang, canonical, hreflang, sitemap, SSR и stale-index gate прошли.</span><span class="en">Web `/ru/` and `/en/`, lang, canonical, hreflang, sitemap, SSR and stale-index gates pass.</span></span><span class="evidence">web SEO report</span></label>
+  </section>
+
+  <section><h2><span class="ru">5. Legal, privacy, support и права</span><span class="en">5. Legal, privacy, support and rights</span></h2>
+    <label class="item"><input type="checkbox" data-id="legal"><span><span class="ru">Privacy/Terms/refund/deletion/child/support синхронизированы на RU/EN; controlling language утверждён.</span><span class="en">Privacy/Terms/refund/deletion/child/support are synchronized in RU/EN; controlling language is approved.</span></span><span class="evidence">legal version map + parity report</span></label>
+    <label class="item"><input type="checkbox" data-id="support"><span><span class="ru">English support SLA реалистичен для всех English territories; security/deletion emails локализованы.</span><span class="en">English support SLA is realistic for all English territories; security/deletion emails are localized.</span></span><span class="evidence">support language readiness</span></label>
+    <label class="item"><input type="checkbox" data-id="rights"><span><span class="ru">Права на portraits/flags/covers/maps/3D/audio/fonts и English translations подтверждены; Disney/Pixar исключены.</span><span class="en">Rights for portraits/flags/covers/maps/3D/audio/fonts and English translations are cleared; Disney/Pixar is excluded.</span></span><span class="evidence">rights-clean production scan</span></label>
+    <label class="item"><input type="checkbox" data-id="providers"><span><span class="ru">Translation assistance providers прошли privacy/rights/provenance review; raw provider output не публикуется.</span><span class="en">Translation-assistance providers passed privacy/rights/provenance review; raw provider output is not published.</span></span><span class="evidence">provider registry + draft provenance</span></label>
+  </section>
+
+  <section><h2><span class="ru">6. Разрешения владельца</span><span class="en">6. Owner authorizations</span></h2>
+    <label class="item"><input type="checkbox" data-id="draft"><span><span class="ru">Разрешить только dry-run/draft upload после сверки SHA.</span><span class="en">Authorize dry-run/draft upload only after SHA verification.</span></span><span class="evidence">does not authorize submission</span></label>
+    <label class="item"><input type="checkbox" data-id="submit"><span><span class="ru">Разрешить владельцу вручную нажать Submit for Review.</span><span class="en">Authorize the owner to press Submit for Review manually.</span></span><span class="evidence">manual action</span></label>
+    <label class="item"><input type="checkbox" data-id="release"><span><span class="ru">Разрешить manual/staged release после approval и final recheck.</span><span class="en">Authorize manual/staged release after approval and final recheck.</span></span><span class="evidence">72-hour runbook</span></label>
+    <label class="item"><input type="checkbox" data-id="merge"><span><span class="ru">Разрешить владельцу вручную merge финальный PR после review.</span><span class="en">Authorize the owner to merge the final PR manually after review.</span></span><span class="evidence">auto-merge remains off</span></label>
+  </section>
+
+  <section><h2><span class="ru">Комментарий и утверждающий</span><span class="en">Owner note and approver</span></h2>
+    <textarea id="ownerNote" placeholder="Owner note / Комментарий владельца"></textarea>
+    <p><input id="approver" type="text" placeholder="Name and role / Имя и роль"></p>
+  </section>
+
+  <div class="actions"><button class="primary" id="export"><span class="ru">Экспорт approval JSON</span><span class="en">Export approval JSON</span></button><button class="secondary" onclick="window.print()"><span class="ru">Печать / PDF</span><span class="en">Print / PDF</span></button><button class="ghost" id="clear"><span class="ru">Сбросить локальные отметки</span><span class="en">Clear local state</span></button></div>
+</main>
+<script>
+(()=>{const K='literary-planet-v12-bilingual-owner-approval';const boxes=[...document.querySelectorAll('input[type=checkbox][data-id]')];const note=document.getElementById('ownerNote');const approver=document.getElementById('approver');const badge=document.getElementById('stateBadge');
+function titleFor(box,cls){const item=box.closest('.item');return item?.querySelector('.'+cls)?.textContent?.trim()||box.dataset.id}
+function state(){const sections=boxes.map(b=>({id:b.dataset.id,titleRu:titleFor(b,'ru'),titleEn:titleFor(b,'en'),status:b.checked?'APPROVED':'PENDING',evidence:[b.closest('.item')?.querySelector('.evidence')?.textContent?.trim()||''].filter(Boolean)}));const all=boxes.every(b=>b.checked);return{schemaVersion:'12.0',releaseId:document.getElementById('releaseId').textContent.trim(),artifactSha256:document.getElementById('artifactSha').textContent.trim(),releaseProfile:'SAFE_PAID_BILINGUAL_V1',coverage:{ruCritical:Number(document.getElementById('ruUi').value),enCritical:Number(document.getElementById('enUi').value),englishBaseEdition:Number(document.getElementById('enContent').value),englishChild:Number(document.getElementById('enChild').value)},sections,authorization:{draftUpload:document.querySelector('[data-id=draft]').checked,manualSubmission:document.querySelector('[data-id=submit]').checked,manualRelease:document.querySelector('[data-id=release]').checked,merge:document.querySelector('[data-id=merge]').checked},bilingualApproval:{russianProduct:document.querySelector('[data-id=canon]').checked?'APPROVED':'PENDING',englishProduct:document.querySelector('[data-id=translation]').checked?'APPROVED':'PENDING',englishContent:Number(document.getElementById('enContent').value)===100?'APPROVED':'PENDING',storeLocalizations:['apple','google','rustore'].every(x=>document.querySelector('[data-id='+x+']').checked)?'APPROVED':'PENDING',legalSupport:document.querySelector('[data-id=legal]').checked&&document.querySelector('[data-id=support]').checked?'APPROVED':'PENDING'},approverReference:approver.value.trim(),approvedAt:all?new Date().toISOString():null,status:all?'APPROVED':'PARTIAL',generatedAt:new Date().toISOString(),ownerNote:note.value};}
+function update(){const s=state();badge.textContent=s.status;badge.className=s.status==='APPROVED'?'ok':'pending';localStorage.setItem(K,JSON.stringify(s));}
+function restore(){try{const s=JSON.parse(localStorage.getItem(K)||'null');if(!s)return;const map=new Map((s.sections||[]).map(x=>[x.id,x.status]));boxes.forEach(b=>b.checked=map.get(b.dataset.id)==='APPROVED');note.value=s.ownerNote||'';approver.value=s.approverReference||'';if(s.coverage){document.getElementById('ruUi').value=s.coverage.ruCritical??100;document.getElementById('enUi').value=s.coverage.enCritical??100;document.getElementById('enContent').value=s.coverage.englishBaseEdition??100;document.getElementById('enChild').value=s.coverage.englishChild??100;}}catch(e){}}
+boxes.forEach(b=>b.addEventListener('change',update));[note,approver,...document.querySelectorAll('.metric input')].forEach(x=>x.addEventListener('input',update));document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{document.body.classList.toggle('en-mode',b.dataset.lang==='en');document.documentElement.lang=b.dataset.lang});document.getElementById('export').onclick=()=>{const blob=new Blob([JSON.stringify(state(),null,2)],{type:'application/json'}),u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='literary-planet-v12-owner-approval.json';a.click();URL.revokeObjectURL(u)};document.getElementById('clear').onclick=()=>{localStorage.removeItem(K);location.reload()};restore();update();})();
+</script>
+</body>
+</html>

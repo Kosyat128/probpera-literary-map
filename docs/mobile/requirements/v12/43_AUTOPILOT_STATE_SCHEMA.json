@@ -1,0 +1,387 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/autopilot-state-v12-bilingual-final.json",
+  "title": "Literary Planet V12 Bilingual Final Autopilot State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "repository",
+    "branch",
+    "baseSha",
+    "headSha",
+    "status",
+    "stages",
+    "resume",
+    "updatedAt"
+  ],
+  "properties": {
+    "version": {
+      "const": "12.0"
+    },
+    "repository": {
+      "const": "Kosyat128/probpera-literary-map"
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseSha": {
+      "type": "string",
+      "minLength": 7
+    },
+    "headSha": {
+      "type": "string",
+      "minLength": 7
+    },
+    "status": {
+      "enum": [
+        "IN_PROGRESS",
+        "COMPLETE",
+        "COMPLETE_WITH_EXTERNAL_BLOCKERS",
+        "FAILED",
+        "READY_FOR_OWNER_REVIEW",
+        "READY_FOR_SUBMISSION",
+        "SUBMITTED",
+        "REJECTED",
+        "RESUBMISSION_READY",
+        "APPROVED",
+        "READY_INTERNAL",
+        "DRAFT_UPLOAD_READY",
+        "DRAFT_UPLOADED",
+        "OWNER_APPROVAL_REQUIRED",
+        "READY_FOR_MANUAL_SUBMISSION",
+        "RELEASED"
+      ]
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "currentStageId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "currentCriterionId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "status",
+          "criteria"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "NOT_STARTED",
+              "IN_PROGRESS",
+              "BLOCKED_INTERNAL",
+              "BLOCKED_EXTERNAL",
+              "COMPLETE"
+            ]
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "status"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "status": {
+                  "enum": [
+                    "OPEN",
+                    "IN_PROGRESS",
+                    "BLOCKED_INTERNAL",
+                    "BLOCKED_EXTERNAL",
+                    "PASSED"
+                  ]
+                },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "commit": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "lastValidatedAt": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "lastGreenCommands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "artifacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "externalBlockers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "resume": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "firstOpenCriterion",
+        "nextAction",
+        "contextFiles"
+      ],
+      "properties": {
+        "firstOpenCriterion": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nextAction": {
+          "type": "string"
+        },
+        "contextFiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "doNotRepeat": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requirementsHash": {
+      "type": "string"
+    },
+    "verificationCache": {
+      "type": "object"
+    },
+    "externalOwnerInputsStatus": {
+      "type": "object"
+    },
+    "unexpectedDirtyChanges": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "moderation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_STARTED",
+            "IN_PROGRESS",
+            "BLOCKED_INTERNAL",
+            "BLOCKED_EXTERNAL",
+            "READY_FOR_OWNER_REVIEW",
+            "READY_FOR_SUBMISSION",
+            "SUBMITTED",
+            "REJECTED",
+            "RESUBMISSION_READY",
+            "APPROVED"
+          ]
+        },
+        "exactBuildIdentities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "storeDossiers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "openRejectionIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lastPrecheckAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "ownerMinimal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "releaseProfile": {
+          "const": "SAFE_PAID_BILINGUAL_V1"
+        },
+        "ownerInputsStatus": {
+          "enum": [
+            "NOT_STARTED",
+            "INVALID",
+            "MISSING_INPUTS",
+            "VALID",
+            "OWNER_APPROVED"
+          ]
+        },
+        "missingInputsReport": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "automationState": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "territorySet": {
+          "enum": [
+            "TEST_ONLY",
+            "SAFE_INITIAL",
+            "EXPANDED"
+          ]
+        },
+        "draftUploadStatus": {
+          "enum": [
+            "DISABLED",
+            "DRY_RUN",
+            "READY",
+            "PARTIAL",
+            "COMPLETE",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "finalApprovalReport": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ownerActionReport": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "bilingual": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile": {
+          "const": "SAFE_PAID_BILINGUAL_V1"
+        },
+        "requiredLocales": {
+          "const": [
+            "ru",
+            "en"
+          ]
+        },
+        "status": {
+          "enum": [
+            "NOT_STARTED",
+            "IN_PROGRESS",
+            "BLOCKED_INTERNAL",
+            "BLOCKED_EXTERNAL",
+            "READY_INTERNAL",
+            "OWNER_APPROVAL_REQUIRED",
+            "READY_FOR_SUBMISSION"
+          ]
+        },
+        "baseEditionEnglishCoverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "uiCoverageRu": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "uiCoverageEn": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "currentTranslationUnit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "metricsReport": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ownerHandoffEn": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

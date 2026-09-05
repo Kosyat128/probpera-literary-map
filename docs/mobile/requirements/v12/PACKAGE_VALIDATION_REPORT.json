@@ -1,0 +1,49 @@
+{
+  "package": "LITERARY_PLANET_CODEX_FINAL_V12_BILINGUAL_RU_EN_ALL_IN_ONE",
+  "version": "12.0",
+  "validatedAt": "2026-09-03T00:00:00Z",
+  "status": "PASS",
+  "errors": [],
+  "warnings": [],
+  "counts": {
+    "filesInManifestInventory": 191,
+    "bindingDocuments": 173,
+    "requirements": 342,
+    "bilingualRequirements": 107,
+    "stages": 41,
+    "releaseReadinessAreas": 88,
+    "bilingualTests": 36,
+    "translationQualityAreas": 13,
+    "jsonFiles": 35,
+    "csvFiles": 48,
+    "officialSources": 64,
+    "localizationSources": 20,
+    "standaloneLines": 34851,
+    "standaloneBytes": 1381619,
+    "englishGuideLines": 313,
+    "russianGuideLines": 1032
+  },
+  "checks": {
+    "jsonParse": "PASS",
+    "jsonSchemasAndExamples": "PASS",
+    "csvStructureAndIds": "PASS",
+    "requirementSequences": "PASS",
+    "stageSequenceS00S40": "PASS",
+    "stageRouting": "PASS",
+    "safeBilingualProfile": "PASS",
+    "officialLocalizationSources": "PASS",
+    "requiredBilingualFiles": "PASS",
+    "bilingualPhraseContracts": "PASS",
+    "zeroOwnerProgramming": "PASS",
+    "staleAndSecretScan": "PASS",
+    "standaloneCompleteness": "PASS",
+    "postBuildGuides": "PASS",
+    "manifestInventory": "PASS"
+  },
+  "truthfulnessNotes": [
+    "V12 prepares a complete bilingual release candidate but cannot guarantee store approval.",
+    "Current official requirements and jurisdiction-specific legal advice must be rechecked before submission.",
+    "Unlicensed Disney/Pixar or other protected assets remain absent.",
+    "English is required for the Base Edition; raw machine translation and guessed published titles are blocked."
+  ]
+}

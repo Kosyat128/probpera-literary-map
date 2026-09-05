@@ -1,0 +1,21 @@
+BILINGUAL OWNER HANDOFF CHECKLIST / ЧЕК-ЛИСТ ПЕРЕДАЧИ V12
+
+[ ] Russian and English application UI are complete.
+[ ] Base Edition English content coverage is 100%.
+[ ] English writer names and work titles use verified strategies.
+[ ] Cross-language search resolves to the same entity IDs.
+[ ] Language switch preserves the same globe, route and child policy.
+[ ] English Child Mode and Planetka are complete.
+[ ] English offline package and emergency UI are complete.
+[ ] Russian and English legal/support URLs are live.
+[ ] Apple English/Russian localizations are prepared.
+[ ] Google English default listing and Russian translation are prepared.
+[ ] RuStore Russian listing and in-app English language are prepared.
+[ ] Exact-build screenshots exist in both languages.
+[ ] English reviewer notes and Russian RuStore notes are complete.
+[ ] No raw machine translation, untranslated critical key or mixed screen.
+[ ] No unlicensed Disney/Pixar or generated real-writer portrait.
+[ ] One owner input includes bilingual approvals.
+[ ] Bilingual owner approval HTML and post-build guides exist.
+[ ] S36–S40 are complete.
+[ ] The owner has zero translation or programming tasks.

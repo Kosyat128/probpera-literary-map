@@ -1,0 +1,1094 @@
+{
+  "schemaVersion": 1,
+  "stage": "S00",
+  "capturedOn": "2026-09-04",
+  "reportCompletedOn": "2026-09-05",
+  "repository": "Kosyat128/probpera-literary-map",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "canonicalGit": {
+    "head": "e073b21acfea854b3b573aa4613215156957ff38",
+    "tree": "188105f692c70865a038292a4d47bc2e8570c723",
+    "fileHashMethod": "SHA256 of git show HEAD:path bytes. Independent of worktree newline conversion or build rewrites.",
+    "status": "imported_e073_baseline_not_latest_remote_main",
+    "latestMainReportedByRootOnResume": "0a348bd4202e3fa1558d88183549f7576a361c4b",
+    "resumeNote": "Root independently verified a newer main on 2026-09-05 (#173 admin, #175 database permission, #176 typography). All selector counts/digests and git-HEAD hashes here remain the e073 baseline. Refresh affected selector fingerprints after rebase before calling this the current canonical baseline."
+  },
+  "runtimeInspection": {
+    "method": "In-memory esbuild bundle executed existing selectors with no network access. Only aggregate counts and identity digests emitted.",
+    "baseUrl": "/",
+    "statistics": {
+      "countries": 200,
+      "writerRecords": 1684,
+      "uniqueWriters": 1672,
+      "workRecords": 4490,
+      "uniqueWorks": 4469
+    },
+    "bookArchiveSourceCountries": 200,
+    "editorialSourceCountries": 200,
+    "generatedWriterDraftCount": 2356,
+    "bookCandidates": 9761,
+    "publicBooks": 46,
+    "heldBookCandidates": 9715,
+    "interfaceDictionary": {
+      "registered": 1211,
+      "missingRussian": [],
+      "missingEnglish": []
+    },
+    "countryEnglishAcceptedByExistingSelector": 0,
+    "writerBiographies": {
+      "ru": {
+        "acceptedByExistingSelector": 1684,
+        "methods": {
+          "editorial-original": 1684
+        },
+        "statuses": {
+          "verified": 1684
+        }
+      },
+      "en": {
+        "acceptedByExistingSelector": 20,
+        "methods": {
+          "editorial-original": 20
+        },
+        "statuses": {
+          "reviewed": 20
+        }
+      }
+    },
+    "writerEnglishNameFallbacks": 689,
+    "publicBookEnglishMethods": {
+      "human-translation": 46
+    },
+    "publicBookEmptyEnglishText": 0,
+    "articleCatalogEntries": 167,
+    "articleEnglishAcceptedByExistingSelector": 1,
+    "defaultGlobeEdition": "rand-mcnally-1887",
+    "globeEditions": [
+      {
+        "id": "behaim-1492",
+        "status": "available",
+        "visitorAvailable": true,
+        "desktopTexture": "textures/behaim-1492-ravenstein-1908.webp",
+        "mobileTexture": "textures/behaim-1492-ravenstein-1908-mobile.webp",
+        "textureContentVersion": "sha256-61b8fc02a496babf",
+        "overlayProfile": {
+          "profileId": "source-only-centroid-selection-v2",
+          "permanentCountryBorders": false,
+          "selectionRasterFill": false,
+          "selectionRasterOutline": false,
+          "selectionVectorOutline": false,
+          "selectionCentroidMarker": true
+        }
+      },
+      {
+        "id": "hondius-1615",
+        "status": "available",
+        "visitorAvailable": true,
+        "desktopTexture": "textures/hondius-rossi-1615.webp",
+        "mobileTexture": "textures/hondius-rossi-1615-mobile.webp",
+        "textureContentVersion": "sha256-7d8ef5ed66fe4daf",
+        "overlayProfile": {
+          "profileId": "source-only-centroid-selection-v2",
+          "permanentCountryBorders": false,
+          "selectionRasterFill": false,
+          "selectionRasterOutline": false,
+          "selectionVectorOutline": false,
+          "selectionCentroidMarker": true
+        }
+      },
+      {
+        "id": "coronelli-1697",
+        "status": "available",
+        "visitorAvailable": true,
+        "desktopTexture": "textures/coronelli-1697.webp",
+        "mobileTexture": "textures/coronelli-1697-mobile.webp",
+        "textureContentVersion": "sha256-11728e93c8ba3d53",
+        "overlayProfile": {
+          "profileId": "source-only-centroid-selection-v2",
+          "permanentCountryBorders": false,
+          "selectionRasterFill": false,
+          "selectionRasterOutline": false,
+          "selectionVectorOutline": false,
+          "selectionCentroidMarker": true
+        }
+      },
+      {
+        "id": "scherer-1700",
+        "status": "available",
+        "visitorAvailable": true,
+        "desktopTexture": "textures/scherer-1700.webp",
+        "mobileTexture": "textures/scherer-1700-mobile.webp",
+        "textureContentVersion": "sha256-53bdbfbca466a77f",
+        "overlayProfile": {
+          "profileId": "source-only-centroid-selection-v2",
+          "permanentCountryBorders": false,
+          "selectionRasterFill": false,
+          "selectionRasterOutline": false,
+          "selectionVectorOutline": false,
+          "selectionCentroidMarker": true
+        }
+      },
+      {
+        "id": "cassini-1790",
+        "status": "available",
+        "visitorAvailable": true,
+        "desktopTexture": "textures/cassini-globo-terrestre-1790.webp",
+        "mobileTexture": "textures/cassini-globo-terrestre-1790-mobile.webp",
+        "textureContentVersion": "sha256-3cb4692a97d0bb22",
+        "overlayProfile": {
+          "profileId": "source-only-centroid-selection-v2",
+          "permanentCountryBorders": false,
+          "selectionRasterFill": false,
+          "selectionRasterOutline": false,
+          "selectionVectorOutline": false,
+          "selectionCentroidMarker": true
+        }
+      },
+      {
+        "id": "rand-mcnally-1887",
+        "status": "available",
+        "visitorAvailable": true,
+        "desktopTexture": "textures/antique-world-1887.webp",
+        "mobileTexture": "textures/antique-world-1887-mobile.webp",
+        "textureContentVersion": "sha256-aca29559635dc981",
+        "overlayProfile": {
+          "profileId": "standard-canonical-overlay-v1",
+          "permanentCountryBorders": true,
+          "selectionRasterFill": true,
+          "selectionRasterOutline": true,
+          "selectionVectorOutline": true,
+          "selectionCentroidMarker": false
+        }
+      },
+      {
+        "id": "us-army-general-reference-1943",
+        "status": "available",
+        "visitorAvailable": true,
+        "desktopTexture": "textures/us-army-general-reference-1943.webp",
+        "mobileTexture": "textures/us-army-general-reference-1943-mobile.webp",
+        "textureContentVersion": "sha256-eca2ae835ef2d061",
+        "overlayProfile": {
+          "profileId": "standard-canonical-overlay-v1",
+          "permanentCountryBorders": true,
+          "selectionRasterFill": true,
+          "selectionRasterOutline": true,
+          "selectionVectorOutline": true,
+          "selectionCentroidMarker": false
+        }
+      },
+      {
+        "id": "nasa-blue-marble",
+        "status": "available",
+        "visitorAvailable": true,
+        "desktopTexture": "textures/earth-blue-marble.webp",
+        "mobileTexture": "textures/earth-blue-marble-mobile.webp",
+        "textureContentVersion": "sha256-cfa65dea7bdfea51",
+        "overlayProfile": {
+          "profileId": "standard-canonical-overlay-v1",
+          "permanentCountryBorders": true,
+          "selectionRasterFill": true,
+          "selectionRasterOutline": true,
+          "selectionVectorOutline": true,
+          "selectionCentroidMarker": false
+        }
+      },
+      {
+        "id": "natural-earth-2026",
+        "status": "available",
+        "visitorAvailable": true,
+        "desktopTexture": {
+          "ru": "textures/modern-atlas-2026-ru.webp",
+          "en": "textures/modern-atlas-2026-en.webp"
+        },
+        "mobileTexture": {
+          "ru": "textures/modern-atlas-2026-ru-mobile.webp",
+          "en": "textures/modern-atlas-2026-en-mobile.webp"
+        },
+        "textureContentVersion": "sha256-78388ac530e7a515",
+        "overlayProfile": {
+          "profileId": "standard-canonical-overlay-v1",
+          "permanentCountryBorders": true,
+          "selectionRasterFill": true,
+          "selectionRasterOutline": true,
+          "selectionVectorOutline": true,
+          "selectionCentroidMarker": false
+        }
+      }
+    ],
+    "availableGlobeEditionCount": 9,
+    "identityDigests": {
+      "countries": {
+        "algorithm": "sha256",
+        "sha256": "c7b1eab6d81aa52a26b9f3dfb6f4e7b3f232f0f0a98788bad27c0d214e338335",
+        "records": 200,
+        "serialization": "JSON.stringify runtime order, no whitespace"
+      },
+      "writerRelations": {
+        "algorithm": "sha256",
+        "sha256": "a2d02950a287ed43884e1a46a17827eed313699e84af4076fe9b77fec0611e30",
+        "records": 1684,
+        "serialization": "JSON.stringify runtime order, no whitespace"
+      },
+      "publicBooks": {
+        "algorithm": "sha256",
+        "sha256": "93ee10c2705323e5d7d53d3d80aa12548b451ed580918ea39bc322b78a711784",
+        "records": 46,
+        "serialization": "JSON.stringify runtime order, no whitespace"
+      },
+      "biographyText": {
+        "algorithm": "sha256",
+        "sha256": "267f708683ae458b20437db169c78f41358a9a41d627a97e5d694b69935572c3",
+        "records": 1684,
+        "serialization": "JSON.stringify runtime order, no whitespace"
+      }
+    },
+    "runtimeInputFingerprint": {
+      "fileCount": 301,
+      "bytes": 10244294,
+      "sha256": "1a638a42f3b87c4add64f9a45d0d6215946ec249f8a2f30f09a286a742c6038e",
+      "serialization": "JSON.stringify(sorted inputs [{path,sha256}]); hashes use current worktree bytes",
+      "gitTrackedInputChanges": []
+    },
+    "limits": [
+      "Counts describe existing selector output and records, not V12 critical-screen coverage or human editorial approval.",
+      "writerRecords are country-writer relations; uniqueWriters use calculateArchiveStatistics identity rules.",
+      "Work-title statistics differ from book-archive candidates and public book records.",
+      "The selected 46 public books are not a declaration of the V12 paid Base Edition.",
+      "No real-device native runtime, purchase flow, offline package or full locale-switch state acceptance is inferred."
+    ]
+  },
+  "canonicalFiles": [
+    {
+      "path": "src/main.tsx",
+      "bytes": 2739,
+      "sha256": "6ba6a97b2199131052775102b3f9194801441eb20cd7bd99a338fc55116f8c4b",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 148769,
+      "sha256": "8acd17a363393de7296ec68fb8cb1cc7fff7d1d3f7304fe0b468d53f20bf6029",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "bytes": 5694,
+      "sha256": "2c4b164ae607c60dfba92936f8ef1501bcb3417b81fb6e5e626dcaaf58803b55",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "bytes": 115844,
+      "sha256": "c99b82d1a1da222de87d65bb0b3f827028d8ec9679d3055eab022da24bcbe9e8",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "bytes": 20540,
+      "sha256": "0af78819eecf07304f95a87d8a33738ed5993b6e8051d8c8e86efecff4b1b8f3",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/GlobeViewObserver.tsx",
+      "bytes": 4658,
+      "sha256": "db81cb8f7a6f969cceb45ac177acbea9ee1e7aff220de9f768639ab2d6676c43",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "bytes": 23214,
+      "sha256": "645dcbc48918d62d1c54834c3914908e03540746083b704c5bfcf484960e7657",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "bytes": 50167,
+      "sha256": "669cbaf697424bd42918f3a94bbbf128ef64d15b3d6c90a991f46d1eb0e5f60d",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/globeCoordinates.ts",
+      "bytes": 7001,
+      "sha256": "09d10d0406c32e3ad63a32983c186792fb482571a2b3a42bbc5da8b30d2113ab",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/globeGeography.ts",
+      "bytes": 8504,
+      "sha256": "31be4859d2d4eb521b26727d9eb84f63007460f081322021d37d184310420d69",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/globeProjection.ts",
+      "bytes": 3153,
+      "sha256": "37e6067c48c4b72b26b3e7afa10ecdbdd107a477894fa4851df2f29bf9257d2c",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/globePerformance.ts",
+      "bytes": 12766,
+      "sha256": "0fc8cbaae6cac029d6af472169f6d7b15e81b7e1464c513f26635fd89ae0c374",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/components/globeAssetCache.ts",
+      "bytes": 10034,
+      "sha256": "1845fb402d344596c3d8e4ad9dcafebc7e4d8d4c915bea84a1081ee275d90a36",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "bytes": 7387,
+      "sha256": "d75d2696248e6851fa25e059de8cdc435926142f1a7cd021ea2ed114245038cf",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/atlas/useAtlasExperience.ts",
+      "bytes": 37137,
+      "sha256": "b7ea4ab19041f88879947ffe62fa0c109fe953e58aee512f23e3ab2d958e2da0",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/countries/index.ts",
+      "bytes": 13351,
+      "sha256": "faf8d240a24c11339306b950d6741470c7750e3febd9d4b89c4111f7666fb420",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/countries/types.ts",
+      "bytes": 12013,
+      "sha256": "45d598abccc7f0b59a3d0d25aebbee04d2ec511385a9c24136d519e641c06ca1",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/countries/writerRegistry.ts",
+      "bytes": 289,
+      "sha256": "ada22d3b46af53d1e716217d9b454f9dc6e48fa2dbe59d05928f45af5072dca1",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/archiveStatistics.ts",
+      "bytes": 2396,
+      "sha256": "e309ae2f9880bea56ec0c42039cb60548145be2ff3398de396abd4f4cfc2903c",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/bookArchive.ts",
+      "bytes": 26190,
+      "sha256": "158ede420f615ebbee2a5405267d3db2061e3197bac25e240dc9491fc43b5f9e",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/bookQuality.ts",
+      "bytes": 11217,
+      "sha256": "525a3dab1fb99753431c5bd6c293a718f56f73a6517ed13dc421bc59a55b8f3a",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/bookLocalization.ts",
+      "bytes": 10898,
+      "sha256": "8ead973413f44d356766893fd750087cfd00821f7d3c63cb7cf9e36eeb57fc25",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/countryLocalization.ts",
+      "bytes": 4902,
+      "sha256": "5612895d6d14851ca91d685e5b72557966e92123d82873a729e92538a14d1dd4",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "bytes": 11033,
+      "sha256": "f02098f3103a6fb15098ab07e8679380a7d0b9e95a74d96860b22ddb45aaed50",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/countries/writerBiographyEnglishTranslations.ts",
+      "bytes": 3240,
+      "sha256": "301688e4b4417838a697ea5b2c3a5a5680549b5a52fdbd10e5575fd3c34af704",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/countries/generated/writerBiographyEnglishTranslations.generated.json",
+      "bytes": 222,
+      "sha256": "c1bf1f67597e2faa1768f8d60b3c6b116c134ac36361c7e3ad994350d562ce66",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/articles/catalog.ts",
+      "bytes": 5103,
+      "sha256": "a81f9f3cf98923a27e722ce4104faaf438cc489f5316cbde3b57d9de5a0f7ad5",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/articles/localization.ts",
+      "bytes": 4925,
+      "sha256": "455ec4f3747556669fdf492342135e3b494218923c7a4b460fb052b77cfb8e93",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "bytes": 116200,
+      "sha256": "8573e0ae4691fe91b643c17ec7cd01f5cac1d4cf4701b4deb749b93682a450ba",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/cms/siteCopy.ts",
+      "bytes": 1876,
+      "sha256": "320f5cec6d093c66131e9823b15bcbdd83e0c9d2d735ae538b025b0a71a5e9e3",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "bytes": 6638,
+      "sha256": "9d569451e09cdd1706c3a63414a39cf1449c767afc24040ebad99bbe99c579da",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/utils/countryFlag.ts",
+      "bytes": 295,
+      "sha256": "b40030d613e28a6f1e0a6abb562ec0bc562c38c7865233235da08fc415928308",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/utils/articleRoutes.ts",
+      "bytes": 8477,
+      "sha256": "6b3709db5305529f209e8005e6cfa01a3312fe2cebc19e2a20c3680c525a7af9",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/mobile/registerServiceWorker.ts",
+      "bytes": 981,
+      "sha256": "0f299fc76e250bda78b892f68241181c3ab9c7085c9635442390257594a1e91a",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/mobile/ConnectivityStatus.tsx",
+      "bytes": 1687,
+      "sha256": "27ac8324c82909ae43ad5fdb5b9631ef603221aeaa03c49294662c31163a7f31",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/sw.js",
+      "bytes": 3760,
+      "sha256": "52e4f410295981846694dad956007681778b7e46a666c5b3b19f8e84208840f3",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "src/index.css",
+      "bytes": 545317,
+      "sha256": "9605f97cf15d84d1e60c7082a7e74fe5e90dfb90a3607ec19ebff4fa9a035a76",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "docs/UI_FOUNDATION.md",
+      "bytes": 7886,
+      "sha256": "ab7a29f7c57c676c1448b299147ec2bd7ddaea436ece12746821d6f25c2fa651",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "scripts/stage5-baseline-registry.mjs",
+      "bytes": 33018,
+      "sha256": "449746af83c5f63dd121646935a29eee48c96b3b646d349dc4a280251f13dd19",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "scripts/audit-stage5-baseline.mjs",
+      "bytes": 44764,
+      "sha256": "49b84317b4f50fef8c4405223e95453d7f277e9300952991e0b9dbfc4ff324c3",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "scripts/build-domain-release.mjs",
+      "bytes": 1781,
+      "sha256": "75cfbc2b59b21fa13f556817de1086fb9fa045b3c4eadf74f8b6f4e626506518",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "scripts/build-article-pages.mjs",
+      "bytes": 59177,
+      "sha256": "0c35242177d621913f1e383e66337efbe2249f3270e08ba09e9ac40ddb2804da",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "scripts/export-stable-published-content.mjs",
+      "bytes": 2513,
+      "sha256": "af13f55bd83c1998d2edc9b7a0e420aff09eff51d058fa3eb41ea4940c4d3223",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "scripts/check-writer-biography-english-pause.mjs",
+      "bytes": 2295,
+      "sha256": "faf8843437ad78e1726e0d6e7c0ef8f3204feb200da46c54ff153f44cd21172c",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "package.json",
+      "bytes": 16063,
+      "sha256": "9b32a43e36d240d1689d1bcf18796e626cebcc593bda52fc8f64bfd84fb320da",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 408731,
+      "sha256": "6a620bf5aa887263b038ad640528a58b98a19db933500d3c2a6c9f2ae8e960cc",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/brand/probpera-logo.png",
+      "bytes": 20811,
+      "sha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/behaim-1492-ravenstein-1908.webp",
+      "bytes": 2031414,
+      "sha256": "a06342cfaf146fdd4d72c0cbc870ab85946199a977d8c6366ef918bdad19c0b8",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/behaim-1492-ravenstein-1908-mobile.webp",
+      "bytes": 511208,
+      "sha256": "324301cf0724c337d34c1d370dc66fa8ea3f0abaa0afcb34713d2dd2a469d2b5",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/hondius-rossi-1615.webp",
+      "bytes": 1929066,
+      "sha256": "4d9b6926768fc6ac91eafa4a1586ab3fc70dfdd2d66d9a35243dc7a897e1b7b1",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/hondius-rossi-1615-mobile.webp",
+      "bytes": 537158,
+      "sha256": "5ce58cb1b6b3cfc102d0f012911e4a590aa6572302e8fa0b52f3beffb0f7687b",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/coronelli-1697.webp",
+      "bytes": 1429020,
+      "sha256": "1654e3e04ee14ccdec7cfbf7a640b212ebde0c96949558bcf0edeece1dd9a012",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/coronelli-1697-mobile.webp",
+      "bytes": 499562,
+      "sha256": "b03c5f23f84ddaef6da942a64f6ac5b37ff7481e90681d5e98ab7eeff48aeacf",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/scherer-1700.webp",
+      "bytes": 1104598,
+      "sha256": "b844cc59c075e03873c137daa761431ddb1f9f97676fac1c33b0ec28679cff64",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/scherer-1700-mobile.webp",
+      "bytes": 407040,
+      "sha256": "573b03cad23a9c626b13be4169b3089f6281a1e75049cb92d081e5ee1a7e6035",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/cassini-globo-terrestre-1790.webp",
+      "bytes": 2619370,
+      "sha256": "d62718455ea9a04605ac1694abe20bf551a93bf7b5c2c688df579b6eb4398018",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/cassini-globo-terrestre-1790-mobile.webp",
+      "bytes": 609440,
+      "sha256": "2e0efdd36e682d20be5b8db0875a71c47ef33d3d810be45596b6e4e1d99e83f0",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/antique-world-1887.webp",
+      "bytes": 2901792,
+      "sha256": "b498488cba930c48c5c68564ab8f355a50fe620f5aec15353225edcdf592a175",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/antique-world-1887-mobile.webp",
+      "bytes": 687972,
+      "sha256": "65ea5f03a43b6583dd95b456f42b1d184c48dc0449eaba25c5d23269b1e5974d",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/us-army-general-reference-1943.webp",
+      "bytes": 1971264,
+      "sha256": "09418203d87aa85a465e3694e53d33b9893387796db798966197dd19193e36d6",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/us-army-general-reference-1943-mobile.webp",
+      "bytes": 525424,
+      "sha256": "020f0808c4c1e0671c05124e836349884d6a204fd635057226106a9b9268d38a",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/earth-blue-marble.webp",
+      "bytes": 434610,
+      "sha256": "cc2b9b11fb1ccd4194c612c84320f0ef1ab991f6b247473be7b51a66f3328c41",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/earth-blue-marble-mobile.webp",
+      "bytes": 126246,
+      "sha256": "7e7dcfff082c0e1efe909e6d64ee815bc1b9d17f782b802a8fd4e4b2e7a65397",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/modern-atlas-2026-ru.webp",
+      "bytes": 1477124,
+      "sha256": "26a04a83536b6ceb7a3db37c2ff67c083cd1699c4dd4543292e43c8d694fc4fc",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/modern-atlas-2026-en.webp",
+      "bytes": 1461376,
+      "sha256": "8df82c055820b44b178efa7321888e9049821859ca0408bbc77b64b2d9219399",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/modern-atlas-2026-ru-mobile.webp",
+      "bytes": 395324,
+      "sha256": "8817b45f53a9caa9592a711e52ed83004265f36dd98de777776a2cb6143bd58b",
+      "source": "git HEAD blob, not worktree"
+    },
+    {
+      "path": "public/textures/modern-atlas-2026-en-mobile.webp",
+      "bytes": 390810,
+      "sha256": "b897e3722909ffbefa25013851ad2bdf605711a069e5c552129b6e470bb3c957",
+      "source": "git HEAD blob, not worktree"
+    }
+  ],
+  "sceneBoundary": {
+    "entry": "src/components/LiteraryWorldMap.tsx",
+    "rendererOwner": "src/components/LiteraryGlobe.tsx",
+    "canvasCountInCanonicalOwner": 1,
+    "canvasKey": "webglRecoveryGeneration",
+    "canvasKeyPurpose": "Explicit WebGL context recovery; not keyed by locale.",
+    "camera": "src/components/GlobeCameraRig.tsx",
+    "embeddedSceneFunctions": [
+      "LiteraryGlobe.tsx::GlobeScene",
+      "LiteraryGlobe.tsx::MuseumSkyDome",
+      "LiteraryGlobe.tsx::MuseumStarfield"
+    ],
+    "stateOwners": [
+      "src/App.tsx: selectedCountry, selectedWriter, requestedBook, focus requests, filters",
+      "src/atlas/atlasExperienceState.ts: view, transition, search, filters, sheet, quiet state",
+      "src/atlas/useAtlasExperience.ts: immersive/embedded coordination",
+      "src/components/useGlobeStyleState.ts: edition transitions"
+    ],
+    "preserve": [
+      "Canvas and WebGL renderer identity",
+      "camera and semantic focus",
+      "public country/writer objects and stable IDs",
+      "edition texture/projection/picking contracts"
+    ],
+    "verificationScope": "Source inventory. Parent's browser identity test evidence is separate."
+  },
+  "reusableApis": [
+    {
+      "path": "src/data/countries/index.ts",
+      "exports": [
+        "countries",
+        "bookArchiveCountries",
+        "editorialCatalogCountries"
+      ],
+      "purpose": "Shared public corpus, pre-quarantine book source, and editorial recovery corpus; preserve their intentional differences."
+    },
+    {
+      "path": "src/data/archiveStatistics.ts",
+      "exports": [
+        "writerIdentity",
+        "workIdentity",
+        "calculateArchiveStatistics"
+      ],
+      "purpose": "Existing identity-based aggregate statistics."
+    },
+    {
+      "path": "src/data/bookArchive.ts",
+      "exports": [
+        "buildBookArchive",
+        "buildPublicBookArchive",
+        "bookArchiveKey",
+        "resolveBookArchivePublicTarget",
+        "resolveBookArchiveAuthorTargets"
+      ],
+      "purpose": "Canonical works/editions and safe navigation back to public writers."
+    },
+    {
+      "path": "src/data/bookQuality.ts",
+      "exports": [
+        "isPublicBook",
+        "bookPublicationIssues",
+        "translationQualityIssues"
+      ],
+      "purpose": "Existing bilingual book publication gate; strengthen V12 editorial requirements within shared source."
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "exports": [
+        "selectWriterBiography",
+        "writerBiographyQualityIssues"
+      ],
+      "purpose": "Locale-exact provenance-aware biography selection."
+    },
+    {
+      "path": "src/data/bookLocalization.ts",
+      "exports": [
+        "selectBookText",
+        "selectWriterDisplayName",
+        "selectBookAuthorRefs"
+      ],
+      "purpose": "Existing locale-exact work text and author references; audit name evidence/fallbacks."
+    },
+    {
+      "path": "src/data/countryLocalization.ts",
+      "exports": [
+        "selectCountryEnglishTranslation",
+        "countryForLanguage",
+        "countryWithActiveLanguage"
+      ],
+      "purpose": "Country presentation overlay with protected canonical identity fields."
+    },
+    {
+      "path": "src/data/articles/localization.ts",
+      "exports": [
+        "articleCatalogEntryForLanguage",
+        "articleDocumentForLanguage"
+      ],
+      "purpose": "Released English article selection; unreleased English returns null."
+    },
+    {
+      "path": "src/utils/literarySearch.ts",
+      "exports": [
+        "normalizeLiterarySearch",
+        "literarySearchMatches",
+        "literarySearchMatchScore"
+      ],
+      "purpose": "Existing Unicode normalization, RU/EN token handling, Cyrillic transliteration, prefix/fuzzy matching. Add evidenced aliases without duplicating identity."
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "exports": [
+        "InterfaceLanguageProvider",
+        "useInterfaceLanguage",
+        "translateInterfaceText",
+        "resolveInitialInterfaceLanguage",
+        "auditInterfaceTranslations"
+      ],
+      "purpose": "Existing shared locale state and copy lookup; route locale precedes saved preference."
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "exports": [
+        "GLOBE_EDITIONS",
+        "AVAILABLE_GLOBE_EDITIONS",
+        "resolveGlobeEditionTexturePath"
+      ],
+      "purpose": "Nine canonical editions; localized modern texture paths and preserved antique default."
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "exports": [
+        "globeCameraIntentKey",
+        "globeCameraDestination",
+        "GlobeCameraRig"
+      ],
+      "purpose": "Semantic camera intents and one shared camera."
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.ts",
+      "exports": [
+        "loadBookArchiveRuntime"
+      ],
+      "purpose": "Single deferred production entry for the full book graph."
+    }
+  ],
+  "ownerLocks": [
+    {
+      "id": "STAGE4-PRODUCTION-SURFACE",
+      "paths": [
+        "src/atlas/atlasExperienceState.ts",
+        "src/atlas/useAtlasExperience.ts",
+        "src/components/AtlasExperienceChrome.tsx",
+        "src/components/GlobeCameraRig.tsx",
+        "src/components/GlobeViewObserver.tsx",
+        "src/components/LiteraryGlobe.tsx",
+        "src/components/LiteraryWorldMap.tsx",
+        "src/components/NobelMarkerLayer.tsx",
+        "src/components/WriterPanel.tsx",
+        "src/components/globeAtlas.ts",
+        "src/components/globeCoordinates.ts",
+        "src/components/globeDiscovery.ts",
+        "src/components/globeFocusMath.ts",
+        "src/components/globeKeyboardNavigation.ts",
+        "src/components/globePerformance.ts",
+        "src/components/globeProjection.ts",
+        "src/components/globeTouchActivation.ts",
+        "src/components/nobelMarkerPolicy.ts",
+        "src/components/useGlobeStyleState.ts"
+      ],
+      "expected": {
+        "files": 19,
+        "sha256": "d65bdd6d7bb99d16a2786879d7f88ed323286a7c227400d5292c1c43fb3db90c"
+      },
+      "ownerAttestationId": null,
+      "status": "declaration_read_not_revalidated_here"
+    },
+    {
+      "id": "BOOK-ARCHIVE-OWNER-LOCK",
+      "paths": [
+        "src/components/BookArchiveSection.tsx",
+        "src/hooks/useReadingLibrary.ts",
+        "src/data/bookArchive.ts",
+        "src/data/bookArchiveQueue.ts",
+        "src/data/bookLocalization.ts",
+        "src/data/bookQuality.ts",
+        "src/data/cms/bookEditions.generated.ts",
+        "src/data/cms/bookEditions.ts",
+        "src/data/userSuppliedBookCovers.ts"
+      ],
+      "expected": {
+        "files": 9,
+        "sha256": "5f9a3fc115e4022b6a128cb592191b8e0a3c317e55e383e5b95651d45f97e383"
+      },
+      "ownerAttestationId": "BOOK-DATABASE-EDITORIAL-2026-09-02",
+      "status": "declaration_read_not_revalidated_here"
+    },
+    {
+      "id": "PREMIUM-TRANSLATION-AND-HEALTH-PIPELINE",
+      "paths": [
+        ".github/workflows/deploy-admin.yml",
+        ".github/workflows/dispatch-premium-database-reconciliation.yml",
+        ".github/workflows/reconcile-production-database.yml",
+        "apps/admin/app/(dashboard)/articles/atomic-standard-save-action.ts",
+        "apps/admin/app/(dashboard)/articles/save-article-action.ts",
+        "apps/admin/app/(dashboard)/library/premium-translation-actions.ts",
+        "apps/admin/app/(dashboard)/site-copy/actions.ts",
+        "apps/admin/app/(dashboard)/translations/actions.ts",
+        "apps/admin/app/(dashboard)/translations/article-actions.ts",
+        "apps/admin/app/(dashboard)/translations/country-actions.ts",
+        "apps/admin/catalog-assets/editorial-catalog.json",
+        "apps/admin/lib/admin-catalog-assets.ts",
+        "apps/admin/lib/article-translations.ts",
+        "apps/admin/lib/auto-translate-article-core.ts",
+        "apps/admin/lib/auto-translate-article-premium.ts",
+        "apps/admin/lib/auto-translate-article.ts",
+        "apps/admin/lib/auto-translate-country-profile.ts",
+        "apps/admin/lib/auto-translate-literary-work-safe.ts",
+        "apps/admin/lib/auto-translate-literary-work.ts",
+        "apps/admin/lib/auto-translate-published-article-premium.ts",
+        "apps/admin/lib/auto-translate-site-copy.ts",
+        "apps/admin/lib/auto-translate-writer-biography.ts",
+        "apps/admin/lib/editorial-schema-health.ts",
+        "apps/admin/lib/env.ts",
+        "apps/admin/lib/premium-english-translation.ts",
+        "apps/admin/lib/publication.ts",
+        "apps/admin/scripts/sync-private-catalogs.mjs",
+        "scripts/audit-editorial-language.mjs",
+        "scripts/database/build-production-migration-plan.mjs",
+        "scripts/export-interface-copy-catalog.mjs",
+        "scripts/export-premium-translations.mjs",
+        "src/data/articles/localization.ts",
+        "src/data/bookLocalization.ts",
+        "src/data/countryLocalization.ts",
+        "supabase/migrations/20260808_article_translations.sql",
+        "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+        "supabase/migrations/20260813_unified_revision_history.sql",
+        "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+        "supabase/migrations/20260822_zz_atomic_article_bundle.sql",
+        "supabase/migrations/20260823_premium_machine_translation.sql",
+        "apps/admin/lib/article-translation-machine-ownership.ts",
+        "apps/admin/lib/premium-translation-runtime.ts",
+        "apps/admin/lib/translation-backfill-cursor.ts",
+        ".github/workflows/deploy-pages.yml",
+        "package.json",
+        "apps/admin/app/(dashboard)/editorial-database/actions.ts",
+        "apps/admin/app/(dashboard)/editorial-database/page.tsx",
+        "apps/admin/app/(dashboard)/translations/page.tsx",
+        "apps/admin/lib/editorial-catalog.ts",
+        "apps/admin/lib/editorial-profile-edit.ts",
+        "apps/admin/lib/writer-biography-edit.ts",
+        "scripts/archive-source.ts",
+        "scripts/audit-writer-biography-structured-ru.mjs",
+        "scripts/build-writer-biography-fact-review-overlay.mjs",
+        "scripts/export-editorial-catalog.mjs",
+        "scripts/generate-writer-biography-english-translations.mjs",
+        "scripts/generate-writer-biography-russian-editorial-refinements.mjs",
+        "scripts/lib/writer-biography-english-qa.mjs",
+        "scripts/lib/writer-biography-english-source-contract.mjs",
+        "scripts/lib/writer-biography-public-overrides.mjs",
+        "scripts/lib/writer-biography-public-profile.mjs",
+        "scripts/lib/writer-biography-russian-editorial-contract.mjs",
+        "scripts/lib/writer-biography-structured-ru.mjs",
+        "scripts/workers/writer-biography-english-translation-worker.ts",
+        "scripts/wrangler.writer-biography-english.jsonc",
+        "scripts/writer-biography-english-source.ts",
+        "src/data/countries/index.ts",
+        "src/data/countries/russianWriterExpansion.ts",
+        "src/data/countries/writerBiographyEnglishTranslations.ts",
+        "src/data/countries/writerBiographyFactReviews.ts",
+        "src/data/writerBiography.ts",
+        "src/data/writerBiographyDisplay.ts"
+      ],
+      "expected": {
+        "files": 72,
+        "sha256": "d9821155e4397b05aad0143c60ca3b3ca40885c834ec38fd2cd2a50919da09c3"
+      },
+      "ownerAttestationId": "BOOK-DATABASE-EDITORIAL-2026-09-02",
+      "status": "declaration_read_not_revalidated_here"
+    },
+    {
+      "id": "HEADER-HERO-CSS-OWNER-LOCK",
+      "paths": [
+        "src/index.css"
+      ],
+      "expected": {
+        "rules": 225,
+        "sha256": "576898463bc2f981e3ddfdbb283ac82b961d2eaeb5a5fb316d35f89fd528d743"
+      },
+      "ownerAttestationId": null,
+      "status": "declaration_read_not_revalidated_here"
+    }
+  ],
+  "localeShortcomings": [
+    {
+      "id": "BASE-LOCALE-001",
+      "severity": "release_gap",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "finding": "Dictionary has 1211 nonempty pairs, but unknown English keys fall back to Russian; dictionary completeness is not whole-product completeness. Existing number locale uses en-GB and requires deliberate alignment with the requested English style."
+    },
+    {
+      "id": "BASE-LOCALE-002",
+      "severity": "release_gap",
+      "path": "src/data/countryLocalization.ts",
+      "finding": "Current selector accepts zero English country profiles. Missing English returns source country; available overlays accept reviewed/verified machine-translation metadata and only check presence of sourceHash at runtime."
+    },
+    {
+      "id": "BASE-LOCALE-003",
+      "severity": "release_gap",
+      "path": "src/data/countries/writerBiographyEnglishTranslations.ts",
+      "finding": "Current accepted English biographies number 20 and all report editorial-original/reviewed. Generated English overlay is empty under an explicit pause contract. The inactive generator promotion path marks two-pass machine output reviewed; it cannot serve as V12 human approval."
+    },
+    {
+      "id": "BASE-LOCALE-004",
+      "severity": "release_gap",
+      "path": "src/data/bookLocalization.ts",
+      "finding": "English public-writer selector requires fallback for 689 writer-country relations. Book legacy fallback can form a label from technical writer ID; published English identity evidence still needs explicit verification."
+    },
+    {
+      "id": "BASE-LOCALE-005",
+      "severity": "release_gap",
+      "path": "src/data/articles/localization.ts",
+      "finding": "Only one of 167 catalog entries is accepted by the existing English selector. This counts catalog availability, not full article-body proof."
+    },
+    {
+      "id": "BASE-LOCALE-006",
+      "severity": "release_gap",
+      "path": "scripts/build-article-pages.mjs",
+      "finding": "Existing localized article generation/hreflang can be reused. Generated PWA name, description, shortcuts and manifest lang remain Russian. Full /ru/ and /en/ app routing is not established by current article-only locale paths."
+    },
+    {
+      "id": "BASE-LOCALE-007",
+      "severity": "release_gap",
+      "path": "public/sw.js",
+      "finding": "Current service worker is an opportunistic cache: install prefetches manifest/logo, navigation and JSON are network-first, assets cache-first. No versioned locale search/audio/content packages or localized first-visit offline document are provided by this code."
+    }
+  ],
+  "platformInventory": {
+    "nativeConfigurationFilesFound": 0,
+    "scanScope": "Tracked-path/dependency scan for Capacitor config, AndroidManifest, Info.plist, xcstrings and native project resources; excludes requirement documents and node_modules.",
+    "nativeStatus": "No existing native project/config/resource boundary found by this S00 scan.",
+    "pwaExisting": [
+      "src/mobile/registerServiceWorker.ts",
+      "src/mobile/ConnectivityStatus.tsx",
+      "public/sw.js",
+      "scripts/build-article-pages.mjs"
+    ],
+    "childPlanetkaStatus": "No dedicated child profile, Planetka or store entitlement runtime found in the scoped path scan; implementation not accepted."
+  },
+  "buildSideEffects": [
+    {
+      "command": "npm run build",
+      "effect": "Invokes CMS export before snapshot build. May contact configured CMS with environment keys and replace tracked generated snapshot/assets. Avoid for an unchanged baseline; no production write was observed in the inspected exporter paths, but it is not an offline-only build."
+    },
+    {
+      "command": "npm run build:from-snapshot",
+      "effect": "Regenerates interface catalog, modern globe textures/QA, book mentions and static pages before/after TypeScript/Vite. It can rewrite tracked generated files and dist; record diffs and preserve canonical source."
+    },
+    {
+      "command": "npm run build:domain",
+      "effect": "Pins probpera.ru domain/base path, invokes the build (or build:from-snapshot when CMS_SNAPSHOT_PREEXPORTED=true), writes dist CNAME/.nojekyll/release provenance and runs domain/SEO audits. Parent used the pre-exported snapshot setting."
+    },
+    {
+      "command": "npm run admin:build",
+      "effect": "Regenerates editorial catalog and builds admin locally. Separate deploy/upload scripts exist and are outside this task's execution boundary."
+    },
+    {
+      "command": "public/sw.js activation",
+      "effect": "Current activation deletes cache names not starting with the current version prefix and claims clients; later offline partitioning must preserve other app/package caches and avoid mixed-release assets."
+    }
+  ],
+  "narrowRegressionCommands": [
+    "npm run mobile:requirements:verify",
+    "npm run mobile:stage:context -- S00",
+    "npx vitest run scripts/mobile/requirements.test.mjs",
+    "npx vitest run src/components/stage5Governance.test.ts src/components/GlobeCameraRig.test.tsx src/components/globeEditions.test.ts src/components/globeAtlasRuntime.test.ts src/atlas/atlasExperienceState.test.ts",
+    "npx vitest run src/i18n/InterfaceLanguage.test.ts src/data/bookArchive.test.ts src/data/countries/writerBiographyEnglishTranslations.test.ts",
+    "node scripts/audit-interface-i18n.mjs",
+    "node scripts/check-writer-biography-english-pause.mjs",
+    "npx vitest run scripts/service-worker-cache.source.test.mjs"
+  ],
+  "validationOwnership": {
+    "independentlyExecuted": [
+      "V12 integrity verification: PASS, 194 checksum entries / 191 manifest entries / 173 binding documents",
+      "S00 document routing: returned shared invariants plus five S00 documents",
+      "Existing runtime selector computation: completed, 301 input files, zero git-tracked input changes"
+    ],
+    "parentReported": {
+      "fullRegression": {
+        "passedFiles": 501,
+        "passedTests": 2912,
+        "preexistingSkippedFiles": 2,
+        "preexistingSkippedTests": 3
+      },
+      "browserIdentityTestsPassed": 2,
+      "buildsPassed": [
+        "domain",
+        "SEO",
+        "admin"
+      ],
+      "note": "Reported by root agent; authoritative command logs and final stage acceptance remain in root's S00 evidence."
+    }
+  },
+  "verifierReview": {
+    "reviewedFiles": [
+      {
+        "path": "scripts/mobile/requirements.mjs",
+        "sha256": "07e3f579154339fc58276bc82eca6531ed56cfe255f303a17a9144898b0ae49a"
+      },
+      {
+        "path": "scripts/mobile/requirements.test.mjs",
+        "sha256": "aadd7e73ad75337e72ecd4982e524461cbc7552575e7c26615e53dd8dbd2ced3"
+      },
+      {
+        "path": "scripts/mobile/verify-requirements.mjs",
+        "sha256": "2fb502f693305b753c15d3d647b76b103f8087f3c5f8d04c6bd19326a43b7193"
+      },
+      {
+        "path": "scripts/mobile/stage-context.mjs",
+        "sha256": "9d5c79513b828aabedc4cc2f90b98cd43e9342a5218fd8be852350c82bde32c2"
+      }
+    ],
+    "actionableFindings": [],
+    "resolvedDuringReview": "Initial absence of an independent checksum-file pin was corrected by root. Both CLI entry points now pass V12_INPUT_PIN; tests cover input-pin mismatch.",
+    "limits": [
+      "The helper verifies the known flat V12 package and current stage route; it does not claim to be a general recursive archive validator.",
+      "Hash checks establish identity to the imported source pin, not factual correctness of source documents.",
+      "No source or tests were modified by this inventory agent."
+    ]
+  }
+}
+

@@ -1,0 +1,20 @@
+﻿entity_type,decision_before_render,exact_age,review_required,rights_required,unknown_policy,parent_override,separate_child_index,mandatory_tests
+writer,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,true,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+work,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,true,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+character,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,true,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+storyworld,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,true,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+fact,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+quote,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+activity,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+image,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+narration,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+animation,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+skin,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+stand,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+background,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+accessory,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+search-result,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,true,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+recommendation,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,true,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+deep-link,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+offline-package,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,true,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights
+store-preview,true,3-17,true,true,deny,only where explicitly safe; never bypass rights,n/a,min-1; min; max; max+1; not-reviewed; blocked-topic; expired-rights

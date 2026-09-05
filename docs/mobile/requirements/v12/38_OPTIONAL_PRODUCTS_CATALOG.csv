@@ -1,0 +1,24 @@
+﻿product_id,product_class,title_ru,consumable,subscription,required_for_core,child_store_visible,price_source,rights_status,platform_skus,restore_required,server_verification,family_sharing,status
+skin.optional.parchment,original-skin,Пергамент,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+skin.optional.bronze,original-skin,Бронзовый глобус,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+skin.optional.constellations,original-skin,Созвездия,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+skin.optional.ocean-animals,original-skin,Океан и животные,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+skin.optional.puzzle,original-skin,Планета-пазл,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+skin.optional.winter,original-skin,Зимняя Планетка,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+stand.optional.bronze,original-stand,Бронзовая,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+stand.optional.gold,original-stand,Золотая,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+stand.optional.inkwell,original-stand,Перо и чернильница,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+stand.optional.rocket,original-stand,Ракета,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+stand.optional.story-tree,original-stand,Дерево историй,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+background.optional.observatory,original-background,Небесная обсерватория,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+background.optional.map-museum,original-background,Музей старинных карт,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+background.optional.floating-archive,original-background,Архив парящих книг,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+background.optional.underwater-library,original-background,Подводная библиотека,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+background.optional.story-train,original-background,Поезд историй,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+background.optional.aurora,original-background,Библиотека северного сияния,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+accessory.optional.telescope,original-accessory,Телескоп,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+accessory.optional.lantern,original-accessory,Фонарик для чтения,false,false,false,false,platform-store-api,owner-original-or-canonical,owner-to-configure,true,true,not-promised-until-configured,candidate
+bundle.optional.reader-study,original-bundle-or-world,Набор «Кабинет читателя»,false,false,false,false,platform-store-api,owner-original-or-cleared,owner-to-configure,true,true,not-promised-until-configured,candidate
+bundle.optional.cosmos,original-bundle-or-world,Космический литературный набор,false,false,false,false,platform-store-api,owner-original-or-cleared,owner-to-configure,true,true,not-promised-until-configured,candidate
+bundle.optional.winter,original-bundle-or-world,Зимняя литературная планета,false,false,false,false,platform-store-api,owner-original-or-cleared,owner-to-configure,true,true,not-promised-until-configured,candidate
+world.optional.ocean-stories,original-bundle-or-world,Океан историй,false,false,false,false,platform-store-api,owner-original-or-cleared,owner-to-configure,true,true,not-promised-until-configured,candidate

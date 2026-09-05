@@ -1,0 +1,12 @@
+{
+  "status": "ready",
+  "checks": 12876,
+  "passed": 12876,
+  "failed": 0,
+  "articles": 167,
+  "sitemapUrls": 180,
+  "redirects": 2330,
+  "serverRedirects": 827,
+  "portableSectionAliases": 1503,
+  "errors": []
+}

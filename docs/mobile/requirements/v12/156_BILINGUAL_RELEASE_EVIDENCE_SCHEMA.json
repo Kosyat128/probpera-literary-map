@@ -1,0 +1,401 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/bilingual-release-evidence-v12.json",
+  "title": "Literary Planet V12 Bilingual Release Evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "artifactSha256",
+    "locales",
+    "coverage",
+    "languageSwitch",
+    "content",
+    "child",
+    "stores",
+    "legalSupport",
+    "webSeo",
+    "offline",
+    "status",
+    "generatedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "releaseId": {
+      "type": "string"
+    },
+    "artifactSha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "locales": {
+      "const": [
+        "ru",
+        "en"
+      ]
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ruCritical",
+        "enCritical",
+        "englishBaseEdition",
+        "childEnglish",
+        "nativeEnglish",
+        "storeEnglish",
+        "legalSupportEnglish"
+      ],
+      "properties": {
+        "ruCritical": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "enCritical": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "englishBaseEdition": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "childEnglish": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "nativeEnglish": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "storeEnglish": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "legalSupportEnglish": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "languageSwitch": {
+      "type": "object",
+      "required": [
+        "sameCanvas",
+        "statePreserved",
+        "wrongLanguageFirstFrame",
+        "systemPerAppLanguage"
+      ],
+      "properties": {
+        "sameCanvas": {
+          "const": true
+        },
+        "statePreserved": {
+          "const": true
+        },
+        "wrongLanguageFirstFrame": {
+          "const": false
+        },
+        "systemPerAppLanguage": {
+          "enum": [
+            "PASS",
+            "NOT_APPLICABLE",
+            "FAIL"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "required": [
+        "sourceHashParity",
+        "namesTitles",
+        "semanticDelta",
+        "staleCount",
+        "rawMachineTranslationCount",
+        "searchAliases"
+      ],
+      "properties": {
+        "sourceHashParity": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "namesTitles": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "semanticDelta": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "staleCount": {
+          "const": 0
+        },
+        "rawMachineTranslationCount": {
+          "const": 0
+        },
+        "searchAliases": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "child": {
+      "type": "object",
+      "required": [
+        "englishPolicyParity",
+        "planetka",
+        "audioTranscripts",
+        "zeroAdultLeakage"
+      ],
+      "properties": {
+        "englishPolicyParity": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "planetka": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "audioTranscripts": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "zeroAdultLeakage": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "stores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "appStore",
+        "googlePlay",
+        "ruStore"
+      ],
+      "properties": {
+        "appStore": {
+          "$ref": "#/$defs/storeLocaleState"
+        },
+        "googlePlay": {
+          "$ref": "#/$defs/storeLocaleState"
+        },
+        "ruStore": {
+          "$ref": "#/$defs/storeLocaleState"
+        }
+      }
+    },
+    "legalSupport": {
+      "type": "object",
+      "required": [
+        "versionParity",
+        "controllingLanguageApproved",
+        "englishSupportReady"
+      ],
+      "properties": {
+        "versionParity": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "controllingLanguageApproved": {
+          "type": "boolean"
+        },
+        "englishSupportReady": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "TERRITORY_EXCLUDED"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "webSeo": {
+      "type": "object",
+      "required": [
+        "localizedRoutes",
+        "canonicalHreflang",
+        "metadataBodyMatch"
+      ],
+      "properties": {
+        "localizedRoutes": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "canonicalHreflang": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "metadataBodyMatch": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "offline": {
+      "type": "object",
+      "required": [
+        "ruPackage",
+        "enPackage",
+        "emergencyCatalog"
+      ],
+      "properties": {
+        "ruPackage": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "enPackage": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "emergencyCatalog": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "NOT_READY",
+        "BLOCKED_INTERNAL",
+        "BLOCKED_OWNER_LEGAL",
+        "READY_INTERNAL",
+        "READY_FOR_OWNER_APPROVAL",
+        "READY_FOR_MANUAL_SUBMISSION"
+      ]
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "storeLocaleState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "screenshots",
+        "reviewNotes",
+        "claims",
+        "status"
+      ],
+      "properties": {
+        "metadata": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "screenshots": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "reviewNotes": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "claims": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

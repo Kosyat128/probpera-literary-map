@@ -1,0 +1,653 @@
+{
+  "observedAtUtc": "2026-09-04T19:20:02.7342478Z",
+  "repository": "Kosyat128/probpera-literary-map",
+  "canonicalMain": {
+    "commit": "e073b21acfea854b3b573aa4613215156957ff38",
+    "name": "main",
+    "protected": true
+  },
+  "access": {
+    "connectorBranchProtection": "HTTP 403: Resource not accessible by integration",
+    "remoteMutationsPerformed": false,
+    "ghGraphql": "HTTP 401",
+    "publicRestRead": "available"
+  },
+  "protection": {
+    "rulesets": [],
+    "applicableRules": [],
+    "legacyProtectionDetails": "unverified: CLI 401 and connector 403",
+    "protected": true,
+    "caveat": "Empty rulesets do not negate legacy branch protection."
+  },
+  "openPullRequests": [
+    {
+      "base": "main",
+      "draft": false,
+      "head": "dependabot/npm_and_yarn/tiptap/core-3.30.4",
+      "headSha": "c3b8a9957229cb49fbf0a073b58a7e1a0c642d8d",
+      "number": 172,
+      "title": "chore(deps): bump @tiptap/core from 3.30.0 to 3.30.4",
+      "updatedAt": "2026-09-02T21:41:48Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/172"
+    },
+    {
+      "base": "main",
+      "draft": false,
+      "head": "dependabot/npm_and_yarn/main/production-minor-and-patch-46d60e5984",
+      "headSha": "f80f03da80c555b4c62c6b4997979fd8bc8eaed8",
+      "number": 163,
+      "title": "chore(deps): bump the production-minor-and-patch group across 1 directory with 13 updates",
+      "updatedAt": "2026-09-02T07:13:29Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/163"
+    },
+    {
+      "base": "main",
+      "draft": false,
+      "head": "dependabot/npm_and_yarn/main/development-minor-and-patch-8951a188ec",
+      "headSha": "33e090eaa3e3cdd89b91a5198bddc9e3080092bf",
+      "number": 150,
+      "title": "chore(deps-dev): bump the development-minor-and-patch group across 1 directory with 5 updates",
+      "updatedAt": "2026-09-02T07:12:05Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/150"
+    },
+    {
+      "base": "main",
+      "draft": false,
+      "head": "codex/fix-ru-direct-connectivity",
+      "headSha": "867d887533c47336692a9e8cddeedbe119ddb638",
+      "number": 100,
+      "title": "fix: prepare guarded RU direct connectivity migration",
+      "updatedAt": "2026-08-24T08:58:51Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/100"
+    },
+    {
+      "base": "main",
+      "draft": true,
+      "head": "feat/admin-mfa-aal2-rls-stage2",
+      "headSha": "18c448b38a2a82c20645eb2f1bfd451f90c5f581",
+      "number": 87,
+      "title": "feat(db): require AAL2 for staff who opted into MFA",
+      "updatedAt": "2026-08-23T04:17:50Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/87"
+    },
+    {
+      "base": "main",
+      "draft": false,
+      "head": "dependabot/npm_and_yarn/main/typescript-7.0.2",
+      "headSha": "148b2c437cee4c1fe4de17f591ecafb8d582f1e5",
+      "number": 67,
+      "title": "chore(deps-dev): bump typescript from 5.9.3 to 7.0.2",
+      "updatedAt": "2026-09-02T07:11:00Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/67"
+    },
+    {
+      "base": "main",
+      "draft": false,
+      "head": "dependabot/npm_and_yarn/main/multi-d8ec5a502f",
+      "headSha": "b3510294bfd225d13460ab3ff56c24e26bd860dc",
+      "number": 65,
+      "title": "chore(deps): bump react-dom and @types/react-dom",
+      "updatedAt": "2026-09-02T07:11:06Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/65"
+    },
+    {
+      "base": "main",
+      "draft": false,
+      "head": "dependabot/npm_and_yarn/main/types/node-26.2.0",
+      "headSha": "9650714dcb592c6a4b7da01e7e393bdb32cfbfa3",
+      "number": 64,
+      "title": "chore(deps-dev): bump @types/node from 24.13.3 to 26.4.0",
+      "updatedAt": "2026-09-02T07:16:02Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/64"
+    },
+    {
+      "base": "main",
+      "draft": false,
+      "head": "dependabot/npm_and_yarn/main/multi-9b1536b8cd",
+      "headSha": "980acb405435c16d4fdeeab30bdd96485a927a5d",
+      "number": 63,
+      "title": "chore(deps): bump react and @types/react",
+      "updatedAt": "2026-09-02T07:11:15Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/63"
+    },
+    {
+      "base": "main",
+      "draft": false,
+      "head": "dependabot/npm_and_yarn/main/vite-8.2.1",
+      "headSha": "a7cffca16d73bf357c7cbe92a764f256d2211080",
+      "number": 62,
+      "title": "chore(deps-dev): bump vite from 7.3.6 to 8.2.2",
+      "updatedAt": "2026-09-02T07:11:17Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/62"
+    },
+    {
+      "base": "main",
+      "draft": false,
+      "head": "dependabot/npm_and_yarn/main/react-leaflet-5.0.0",
+      "headSha": "91fbb1ee07a06c808d4f83442c3d1caf7dfb4282",
+      "number": 61,
+      "title": "chore(deps): bump react-leaflet from 4.2.1 to 5.0.0",
+      "updatedAt": "2026-09-02T07:10:52Z",
+      "url": "https://github.com/Kosyat128/probpera-literary-map/pull/61"
+    }
+  ],
+  "mainWorkflows": {
+    "runs": [
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-04T17:39:28Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33901741489,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-04T17:40:22Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33901741489"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-04T17:38:17Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33901637723,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-04T17:42:00Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33901637723"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-04T14:15:06Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33882639594,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-04T14:15:50Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33882639594"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-04T14:13:32Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33882491207,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-04T14:16:43Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33882491207"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-04T09:58:57Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33860995840,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-04T10:03:07Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33860995840"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-04T09:58:57Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33860995735,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-04T10:07:37Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33860995735"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-04T07:18:10Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33848101996,
+        "name": "Purge expired operational data",
+        "status": "completed",
+        "updatedAt": "2026-09-04T07:18:28Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33848101996"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-04T07:14:34Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33847832022,
+        "name": "Encrypted Supabase backup",
+        "status": "completed",
+        "updatedAt": "2026-09-04T07:21:27Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33847832022"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-04T07:14:27Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33847823941,
+        "name": "Audit live production security",
+        "status": "completed",
+        "updatedAt": "2026-09-04T07:14:55Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33847823941"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-04T05:46:49Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33841768654,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-04T05:50:51Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33841768654"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-04T05:46:41Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33841760606,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-04T05:52:09Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33841760606"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-04T01:01:10Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33824108163,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-04T01:04:55Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33824108163"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-04T00:59:53Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33824014131,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-04T01:00:35Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33824014131"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T23:12:02Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33816539319,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T23:17:02Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33816539319"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T23:09:37Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33816355313,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-03T23:15:14Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33816355313"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T21:34:09Z",
+        "event": "workflow_dispatch",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33808644449,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T21:40:42Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33808644449"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T21:33:45Z",
+        "event": "workflow_dispatch",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33808609647,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T21:38:58Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33808609647"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T21:33:23Z",
+        "event": "workflow_dispatch",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33808576271,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T21:37:19Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33808576271"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T21:32:02Z",
+        "event": "workflow_dispatch",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33808452361,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T21:33:43Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33808452361"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T20:57:41Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33805271343,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T21:01:38Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33805271343"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T20:55:14Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33805045317,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-03T20:56:11Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33805045317"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T18:04:05Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33788290477,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T18:08:14Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33788290477"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T17:58:06Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33787690056,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-03T17:58:48Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33787690056"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T14:37:24Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33767940377,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T14:41:13Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33767940377"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T14:21:46Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33766391273,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-03T14:22:25Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33766391273"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T10:15:27Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33743318657,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T10:19:17Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33743318657"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T09:56:04Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33741563003,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-03T09:56:47Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33741563003"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T07:15:16Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33727157472,
+        "name": "Purge expired operational data",
+        "status": "completed",
+        "updatedAt": "2026-09-03T07:15:40Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33727157472"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T07:10:51Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33726786921,
+        "name": "Encrypted Supabase backup",
+        "status": "completed",
+        "updatedAt": "2026-09-03T07:17:45Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33726786921"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T07:10:39Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33726769852,
+        "name": "Audit live production security",
+        "status": "completed",
+        "updatedAt": "2026-09-03T07:11:02Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33726769852"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T05:49:49Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33720514005,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T05:53:00Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33720514005"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T05:13:16Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33717952670,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-03T05:13:54Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33717952670"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-03T01:10:31Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33702578866,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-03T01:14:27Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33702578866"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-03T00:40:21Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33700493515,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-03T00:41:01Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33700493515"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T23:14:45Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33694183579,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-02T23:18:49Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33694183579"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-02T22:37:02Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33691246360,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-02T22:37:50Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33691246360"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-02T21:40:28Z",
+        "event": "dynamic",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33686414116,
+        "name": "npm_and_yarn in /. for @tiptap/core - Update #1553183462",
+        "status": "completed",
+        "updatedAt": "2026-09-02T21:41:47Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33686414116"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T20:58:46Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33682478015,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-02T21:02:48Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33682478015"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-02T20:02:06Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33676856252,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-02T20:02:47Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33676856252"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T18:04:22Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33664964385,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-02T18:08:09Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33664964385"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-02T17:23:36Z",
+        "event": "schedule",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33660781586,
+        "name": "Retry social publication",
+        "status": "completed",
+        "updatedAt": "2026-09-02T17:24:15Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33660781586"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-02T15:13:54Z",
+        "event": "push",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33647195503,
+        "name": "Quality and security",
+        "status": "completed",
+        "updatedAt": "2026-09-02T15:41:27Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33647195503"
+      },
+      {
+        "conclusion": "success",
+        "createdAt": "2026-09-02T15:13:54Z",
+        "event": "dynamic",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33647194734,
+        "name": "Push on main",
+        "status": "completed",
+        "updatedAt": "2026-09-02T15:17:45Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33647194734"
+      },
+      {
+        "conclusion": "failure",
+        "createdAt": "2026-09-02T15:13:54Z",
+        "event": "push",
+        "headSha": "e073b21acfea854b3b573aa4613215156957ff38",
+        "id": 33647195470,
+        "name": "Deploy Vite site to GitHub Pages",
+        "status": "completed",
+        "updatedAt": "2026-09-02T15:17:52Z",
+        "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33647195470"
+      }
+    ],
+    "totalCount": 44
+  },
+  "latestPagesFailure": {
+    "sourceLocation": "scripts/normalize-cms-snapshot-metadata.mjs:102",
+    "deployConclusion": "skipped",
+    "passedTestFiles": 500,
+    "diagnostic": "CMS metadata requires whitespace normalization (2 artifacts). Run npm run content:metadata:fix.",
+    "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/33901637723/job/101116854857",
+    "passedTests": 2878,
+    "failedStep": "Verify public site and editorial archive",
+    "jobId": 101116854857,
+    "exactArtifactPaths": "Not present in available failure logs; not inferred.",
+    "runId": 33901637723
+  },
+  "localBaseline": {
+    "main": "e073b21acfea854b3b573aa4613215156957ff38",
+    "preFixLocalMismatch": "Two generated TypeScript catalogs differ by CRLF only; semantic JSON article metadata unchanged.",
+    "unchangedSnapshotArticles": 167,
+    "independentlyReproducedDefect": "Single-pass entity decoding can leave nested entities, controls and non-NFC decoded text for a later audit pass.",
+    "liveCauseConfidence": "Live normalization failure verified; nested-entity mechanism reproduced independently, not proven to identify the two live artifacts."
+  },
+  "localRepairVerification": {
+    "command": "npm test -- --run scripts/normalize-cms-snapshot-metadata.test.mjs scripts/editorial-publication-fixes.test.mjs scripts/export-published-content-article-metadata.source.test.mjs scripts/export-published-content-withdrawals.source.test.mjs",
+    "nativeOrStoreCertification": "Not attempted or claimed by this S00 repair.",
+    "tests": 20,
+    "secretsRead": false,
+    "result": "PASS",
+    "localMetadataAudit": "PASS: 167 articles, 0 mismatches",
+    "productionAccess": false,
+    "testFiles": 4,
+    "factualSnapshotEdits": false
+  }
+}

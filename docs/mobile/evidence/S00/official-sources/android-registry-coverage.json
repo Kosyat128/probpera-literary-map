@@ -1,0 +1,259 @@
+{
+  "checkedAt": "2026-09-04T19:14:36Z",
+  "expectedRegistryEntries": 31,
+  "uniqueUrls": 25,
+  "missingUrls": [],
+  "coverageStatus": "PASS",
+  "allRequirementsVerified": false,
+  "note": "Coverage PASS means every assigned registry URL was checked; it does not convert partial/unavailable source evidence into verified implementation.",
+  "entries": [
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-target-api",
+      "url": "https://support.google.com/googleplay/android-developer/answer/11926878",
+      "covered": true,
+      "researchId": "google-target-api",
+      "status": "verified_via_official_language_variant"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-billing-release-notes",
+      "url": "https://developer.android.com/google/play/billing/release-notes",
+      "covered": true,
+      "researchId": "google-billing-release-notes",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-billing-integration",
+      "url": "https://developer.android.com/google/play/billing/integrate",
+      "covered": true,
+      "researchId": "google-billing-integration",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-billing-security",
+      "url": "https://developer.android.com/google/play/billing/security",
+      "covered": true,
+      "researchId": "google-billing-security",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-user-data",
+      "url": "https://support.google.com/googleplay/android-developer/answer/10144311",
+      "covered": true,
+      "researchId": "google-user-data",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-play-policies",
+      "url": "https://support.google.com/googleplay/android-developer/",
+      "covered": true,
+      "researchId": "google-play-policies",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "rustore-publishing",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication",
+      "covered": true,
+      "researchId": "rustore-publishing",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "rustore-review-guidelines",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/requirement-apps",
+      "covered": true,
+      "researchId": "rustore-review-guidelines",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "rustore-permissions",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication/new-version-app/declare-app-permissions/how-to-declare-permissions",
+      "covered": true,
+      "researchId": "rustore-permissions",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "rustore-pay",
+      "url": "https://www.rustore.ru/help/en/sdk/pay",
+      "covered": true,
+      "researchId": "rustore-pay",
+      "status": "partially_verified_via_official_russian_pages"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "capacitor",
+      "url": "https://capacitorjs.com/docs",
+      "covered": true,
+      "researchId": "capacitor",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-play-developer-publishing-api-edits",
+      "url": "https://developers.google.com/android-publisher/edits",
+      "covered": true,
+      "researchId": "google-play-developer-publishing-api-edits",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "android-developer-verification",
+      "url": "https://developer.android.com/developer-verification/guides",
+      "covered": true,
+      "researchId": "android-developer-verification",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "rustore-public-api-create-draft",
+      "url": "https://www.rustore.ru/help/en/work-with-rustore-api/api-upload-publication-app/create-draft-version",
+      "covered": true,
+      "researchId": "rustore-public-api-create-draft",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "rustore-public-api-artifact-icon-upload",
+      "url": "https://www.rustore.ru/help/work-with-rustore-api/api-upload-publication-app/apk-icon-upload",
+      "covered": true,
+      "researchId": "rustore-public-api-artifact-icon-upload",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-play-localized-listings-api",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings",
+      "covered": true,
+      "researchId": "google-play-localized-listings-api",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-play-update-localized-listing",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings/update",
+      "covered": true,
+      "researchId": "google-play-update-localized-listing",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "google-play-transactional-edits",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest",
+      "covered": true,
+      "researchId": "google-play-transactional-edits",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "android-per-app-language-preferences",
+      "url": "https://developer.android.com/guide/topics/resources/app-languages",
+      "covered": true,
+      "researchId": "android-per-app-language-preferences",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "android-localeconfig",
+      "url": "https://developer.android.com/reference/android/app/LocaleConfig",
+      "covered": true,
+      "researchId": "android-localeconfig",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "83_OFFICIAL_REVIEW_SOURCES_2026-09-03.json",
+      "key": "android-resource-localization",
+      "url": "https://developer.android.com/guide/topics/resources/localization",
+      "covered": true,
+      "researchId": "android-resource-localization",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "google-translate-localize",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9844778?hl=en",
+      "covered": true,
+      "researchId": "google-translate-localize",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "google-custom-listings",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9867158?hl=en-GB",
+      "covered": true,
+      "researchId": "google-custom-listings",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "google-listings-api",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings",
+      "covered": true,
+      "researchId": "google-play-localized-listings-api",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "android-per-app-language",
+      "url": "https://developer.android.com/guide/topics/resources/app-languages?hl=en",
+      "covered": true,
+      "researchId": "android-per-app-language-query-en",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "android-localization",
+      "url": "https://developer.android.com/guide/topics/resources/localization?hl=en",
+      "covered": true,
+      "researchId": "android-resource-localization-query-en",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "rustore-language-review",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/requirement-apps",
+      "covered": true,
+      "researchId": "rustore-review-guidelines",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "rustore-publication",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication",
+      "covered": true,
+      "researchId": "rustore-publishing",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "google-listing-update-api",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings/update",
+      "covered": true,
+      "researchId": "google-play-update-localized-listing",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "google-publisher-api",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest",
+      "covered": true,
+      "researchId": "google-play-transactional-edits",
+      "status": "verified_current_document"
+    },
+    {
+      "registry": "140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
+      "key": "android-locale-config-api",
+      "url": "https://developer.android.com/reference/android/app/LocaleConfig",
+      "covered": true,
+      "researchId": "android-localeconfig",
+      "status": "verified_current_document"
+    }
+  ]
+}

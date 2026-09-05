@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 const source = readFileSync(
   new URL("./export-published-content.mjs", import.meta.url),
   "utf8"
-);
+).replace(/\r\n/gu, "\n");
 
 describe("published article document metadata", () => {
   it("reuses normalized English metadata in standalone article documents", () => {

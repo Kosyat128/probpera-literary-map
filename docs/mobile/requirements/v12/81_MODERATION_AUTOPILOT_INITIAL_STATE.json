@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "12.0",
+  "product": "Литературная планета — Проба пера",
+  "repository": "Kosyat128/probpera-literary-map",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "status": "NOT_STARTED",
+  "currentStage": "S28",
+  "stores": {
+    "app-store": {
+      "status": "NOT_STARTED",
+      "buildIdentity": null,
+      "reviewAccess": "NOT_STARTED",
+      "dossier": "NOT_STARTED",
+      "consoleConfiguration": "BLOCKED_EXTERNAL"
+    },
+    "google-play": {
+      "status": "NOT_STARTED",
+      "buildIdentity": null,
+      "reviewAccess": "NOT_STARTED",
+      "dossier": "NOT_STARTED",
+      "consoleConfiguration": "BLOCKED_EXTERNAL"
+    },
+    "rustore": {
+      "status": "NOT_STARTED",
+      "buildIdentity": null,
+      "reviewAccess": "NOT_STARTED",
+      "dossier": "NOT_STARTED",
+      "consoleConfiguration": "BLOCKED_EXTERNAL"
+    },
+    "web-pwa": {
+      "status": "NOT_STARTED",
+      "buildIdentity": null,
+      "reviewAccess": "NOT_STARTED",
+      "dossier": "NOT_STARTED",
+      "merchantConfiguration": "BLOCKED_EXTERNAL"
+    }
+  },
+  "gates": {
+    "MPC-001": "OPEN",
+    "MPC-002": "OPEN",
+    "MPC-003": "OPEN",
+    "MPC-004": "OPEN",
+    "MPC-005": "OPEN",
+    "MPC-006": "OPEN",
+    "MPC-007": "OPEN",
+    "MPC-008": "OPEN",
+    "MPC-009": "OPEN",
+    "MPC-010": "OPEN",
+    "MPC-011": "OPEN",
+    "MPC-012": "OPEN",
+    "MPC-013": "OPEN",
+    "MPC-014": "OPEN",
+    "MPC-015": "OPEN",
+    "MPC-016": "OPEN",
+    "MPC-017": "OPEN",
+    "MPC-018": "OPEN",
+    "MPC-019": "OPEN",
+    "MPC-020": "OPEN",
+    "MPC-021": "OPEN",
+    "MPC-022": "OPEN",
+    "MPC-023": "OPEN",
+    "MPC-024": "OPEN",
+    "MPC-025": "OPEN",
+    "MPC-026": "OPEN",
+    "MPC-027": "OPEN",
+    "MPC-028": "OPEN",
+    "MPC-029": "OPEN",
+    "MPC-030": "OPEN",
+    "MPC-031": "OPEN",
+    "MPC-032": "OPEN",
+    "MPC-033": "OPEN",
+    "MPC-034": "OPEN",
+    "MPC-035": "OPEN",
+    "MPC-036": "OPEN",
+    "MPC-037": "OPEN",
+    "MPC-038": "OPEN"
+  },
+  "openRejections": [],
+  "lastOfficialRequirementsCheck": null,
+  "lastExactRcPrecheck": null,
+  "nextAction": "Complete S00–S35, then execute S36–S40 for mandatory Russian and English release readiness and FINAL HANDOFF.",
+  "ownerMinimal": {
+    "profile": "SAFE_PAID_BILINGUAL_V1",
+    "ownerInputsStatus": "NOT_STARTED",
+    "territorySet": "SAFE_INITIAL",
+    "draftUploadStatus": "DISABLED"
+  },
+  "bilingual": {
+    "profile": "SAFE_PAID_BILINGUAL_V1",
+    "status": "NOT_STARTED",
+    "requiredLocales": [
+      "ru",
+      "en"
+    ],
+    "englishBaseEditionCoverage": 0,
+    "localizedStoreDossiers": "NOT_STARTED"
+  }
+}

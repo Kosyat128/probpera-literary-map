@@ -1,0 +1,15 @@
+﻿area,requirement,scope,evidence,severity,status
+Site canon,Shared globe/content parity,all,Automated IDs/coordinates/assets/text hashes,P0,required
+Paid distribution,Nonzero paid app / web license,all,Console/export evidence; release gate,P0,required
+Child safety,"Exact-age, pre-render sealed policy",all,Bypass E2E; package audit,P0,required
+Parent Gate,No Back/restart/deep-link/purchase bypass,all,Native + E2E security tests,P0,required
+Purchases,Server verification and restore/refund/revocation,all,Sandbox/server tests,P0,required
+Disney/IP,Blocked without license,all,Binary/metadata scan + rights matrix,P0,required
+Privacy,Actual data flow matches declarations,all,"Data map, permission and telemetry audit",P0,required
+Accessibility,Core flows VoiceOver/TalkBack/keyboard,all,Manual+automated evidence,P1,required
+Content rights,Portrait/cover/flag/source provenance,all,Rights/checksum gates,P0,required
+Offline,Atomic update/rollback and safe child package,all,Airplane/corruption tests,P1,required
+Security,No secrets/high vulnerabilities,all,Secret/SBOM/dependency/threat tests,P0,required
+Performance,Budgets/device/thermal/memory,all,Profiles/stress/CI,P1,required
+Store truth,Screenshots/features/prices accurate,stores,Submission audit,P0,required
+Operations,Backup restore/incident/support,backend/admin,Restore drill/tabletop,P1,required

@@ -1,0 +1,87 @@
+ENGLISH REVIEW NOTES TEMPLATES — V12
+Populate from the exact release dossier. Do not store credentials in Git.
+
+APPLE APP REVIEW NOTES
+
+App overview
+Literary Planet is a one-time paid educational literature app for adults
+and families. It is built on the existing canonical Literary Planet of
+probpera.ru and includes Russian and English application/content support.
+
+Business model
+The Base Edition includes the core literary globe and archive, Child Mode,
+Parent Center, Planetka, offline essentials and the Starter Set. There are
+no subscriptions or ads. Optional non-consumable cosmetic additions are
+not required.
+
+Languages
+The submitted binary supports Russian and English. English and Russian
+metadata/screenshots correspond to the same submitted build. App language
+can be selected during onboarding and in Settings without resetting the
+globe or selected content.
+
+Review access
+Account: [SECURE APP REVIEW FIELD]
+Password: [SECURE APP REVIEW FIELD]
+Parent PIN: [SECURE APP REVIEW FIELD]
+No SMS, OTP, physical biometric or VPN is required.
+
+Core route
+1. Launch the app.
+2. Select English if it is not already active.
+3. Open Planet.
+4. Select [COUNTRY].
+5. Open [WRITER] and [WORK].
+
+Child route
+1. Open [PATH].
+2. Select the prepared child profile.
+3. Verify [ALLOWED ITEM].
+4. Search/open [BLOCKED ITEM] and verify it is denied before rendering.
+5. Exit through the Parent Gate using the secure review PIN.
+
+Optional purchase
+1. Open [STORE PATH] in adult mode.
+2. Select [ORIGINAL TEST PRODUCT].
+3. Complete the official sandbox transaction.
+4. Verify entitlement, download and Apply.
+5. Restore at [RESTORE PATH].
+
+Offline
+[EXACT STEPS]
+
+Account deletion
+Core native use does not require an account in SAFE_PAID_BILINGUAL_V1.
+If optional account support is enabled, deletion is available at [PATH]
+and [PUBLIC URL].
+
+Rights
+No unlicensed Disney/Pixar or other blocked character asset is contained
+in the binary, downloadable production manifests, screenshots, metadata or
+SKU.
+
+Support
+[CONTACT / RESPONSE SLA]
+
+GOOGLE PLAY APP ACCESS
+
+All core paid-app functions are available without a separate account.
+Optional sync credentials, if enabled, are supplied in the secure Play
+Console fields and do not require OTP.
+
+English route: [STEPS]
+Russian route: [STEPS]
+Parent PIN: [SECURE FIELD]
+Test product: [ID]
+Restore: [PATH]
+Deletion: [PATH/URL IF APPLICABLE]
+
+The app intentionally serves adults and families with a separate protected
+child experience. It has no ads and no child behavioural analytics.
+
+RUSTORE MODERATION — ENGLISH BACKUP
+
+The primary RuStore moderator note is supplied in Russian. The application
+also provides a complete English interface selectable in onboarding and
+Settings. The English and Russian experiences use the same canonical
+globe, content IDs, child policy and purchase states.

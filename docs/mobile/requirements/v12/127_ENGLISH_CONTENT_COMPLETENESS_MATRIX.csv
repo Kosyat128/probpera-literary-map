@@ -1,0 +1,23 @@
+﻿scope_id,domain,surface,ru_required,en_required,coverage_target,publication_rule,evidence,owner_action,status
+EN-COV-001,App shell,Splash/onboarding/navigation/settings,true,true,100%,block release on missing key,coverage + screenshots,approve final visual,OPEN
+EN-COV-002,Globe,Controls/tooltips/country focus/errors,true,true,100%,same live globe and state,E2E + parity,none,OPEN
+EN-COV-003,Writer profiles,Names/biographies/tabs/facts,true,true,100% Base Edition,hide/block untranslated English entity,content report,approve summary,OPEN
+EN-COV-004,Works,Verified title strategy/descriptions/metadata,true,true,100% Base Edition,no guessed official title,title evidence,approve exceptions,OPEN
+EN-COV-005,Search,Aliases/results/filters/no-result,true,true,100%,cross-language same entity IDs,search tests,none,OPEN
+EN-COV-006,Child mode,Home/search/journeys/tasks/errors,true,true,100%,exact-age and no mixed language,child tests,approve child sample,OPEN
+EN-COV-007,Planetka,Dialogue/help/transcripts/pronunciation,true,true,100% included pack,English text fallback if audio missing,dialogue/audio report,approve voice/style,OPEN
+EN-COV-008,Parent Center,Profiles/age/topics/PIN/privacy,true,true,100%,no critical untranslated control,E2E screenshots,approve wording,OPEN
+EN-COV-009,Customization,Skins/stands/backgrounds/accessories,true,true,100% enabled items,item hidden in locale until ready,catalog report,approve names,OPEN
+EN-COV-010,Commerce,Base/optional/restore/pending/refund,true,true,100%,store price and meaning exact,sandbox tests,approve product copy,OPEN
+EN-COV-011,Offline,Downloads/storage/update/corruption/errors,true,true,100%,embedded bilingual emergency catalog,offline tests,none,OPEN
+EN-COV-012,Account,Sign-in/sync/deletion if enabled,true,true,100%,feature disabled if incomplete,account tests,approve legal text,OPEN
+EN-COV-013,Privacy/legal,Privacy/terms/refund/deletion/child notice,true,true,100%,owner/legal approval required,URL/version report,legal approval,OPEN
+EN-COV-014,Support,In-app help/email/templates,true,true,100%,territory excluded if English support unavailable,support report,confirm SLA,OPEN
+EN-COV-015,Native iOS,Display name/system/accessibility strings,true,true,100%,archive localization gate,Xcode report,none,OPEN
+EN-COV-016,Native Android,Resources/app languages/system strings,true,true,100%,bundle resources gate,Android report,none,OPEN
+EN-COV-017,Web/PWA,SSR/meta/routes/hreflang/install/offline,true,true,100%,no language/body mismatch,SEO/PWA report,approve URLs,OPEN
+EN-COV-018,Admin/CMS,Translation workbench/errors/preview,true,true,100% critical,admin release gate,admin E2E,none,OPEN
+EN-COV-019,Store metadata,Apple/Google/RuStore/Web materials,true,true,100% applicable,exact-build truth and locale gate,metadata packages,approve,OPEN
+EN-COV-020,Reviewer/owner,Review notes/dossiers/handoff/guides,true,true,100%,no English reviewer gap,dossier report,secure credentials/approval,OPEN
+EN-COV-021,Accessibility,Labels/hints/captions/focus announcements,true,true,100%,critical path blocks release,a11y report,none,OPEN
+EN-COV-022,Errors,404/500/offline/purchase/content/security,true,true,100%,never raw key or wrong locale,failure-injection tests,none,OPEN

@@ -1,0 +1,7 @@
+﻿asset_id,asset_type,path_or_catalog_id,source,creator,rights_holder,license_status,commercial_use,derivative_3d,platforms,territories,languages,marketing_screenshots,start_date,expiry_date,attribution,sha256,reviewer,production_allowed,fallback,notes
+RIGHTS-BRAND-001,brand,public/brand/probpera-logo.png,,,,REVIEW_REQUIRED,,,,,,,,,,,,false,brand fallback,Verify owner/domain/legal relationship.
+RIGHTS-PLANETKA-001,original mascot,Planetka asset registry,,Проба пера,,OWNER_ORIGINAL_REVIEW_REQUIRED,pending,pending,all,,,pending,,,,,,false,neutral procedural mascot,Owner art approval and contributor assignment required.
+RIGHTS-PORTRAITS,real portraits,public/assets/writer-portraits,,multiple,,CANONICAL_PIPELINE,,,all,,,,,,,,,conditional,faceless placeholder,Populate per-asset from existing rights registry.
+RIGHTS-FLAGS,flags,public/assets/country-flags,,,,CANONICAL_LICENSE,,,all,,,,,,,,,conditional,text country code,Preserve attribution/license.
+RIGHTS-GLOBE,historical globes,globe edition registry,,institutions/creators,,CANONICAL_PIPELINE,,,all,,,,,,,,,conditional,included modern globe,Populate per edition.
+RIGHTS-DISNEY,licensed characters,licensed.disney.*,,Disney/licensor,,LICENSE_REQUIRED,false,false,,,,false,,,,,,false,original Planetka worlds,Must remain absent until every scoped license gate passes.

@@ -45,6 +45,9 @@ const exactSourceTranscriptionFiles = new Set([
 ]);
 
 async function filesIn(directory) {
+  // The owner-supplied V12 specification is immutable evidence, not product copy.
+  // mobile:requirements:verify checks every byte against the supplied SHA256SUMS.
+  if (directory === path.join(projectRoot, "docs", "mobile", "requirements", "v12")) return [];
   const result = [];
   for (const entry of await fs.readdir(directory, { withFileTypes: true })) {
     if (entry.isDirectory() && ignoredDirectories.has(entry.name)) continue;

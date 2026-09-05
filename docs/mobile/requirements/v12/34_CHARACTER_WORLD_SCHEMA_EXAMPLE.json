@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "note": "Planning example only. No third-party character is cleared by this file.",
+  "characters": [
+    {
+      "id": "planetka",
+      "canonicalNameRu": "Планетка",
+      "sourceType": "owner-original",
+      "exactAgeMin": 3,
+      "exactAgeMax": 17,
+      "rightsRecordId": "rights.planetka.owner",
+      "storyWorldIds": [
+        "world.planetka.home"
+      ],
+      "childStatus": "approved-after-owner-art-review"
+    },
+    {
+      "id": "winnie_pooh_candidate",
+      "canonicalNameRu": "Винни-Пух",
+      "sourceType": "third-party-complex-rights",
+      "exactAgeMin": 4,
+      "exactAgeMax": 10,
+      "rightsRecordId": "rights.winnie_pooh.unresolved",
+      "storyWorldIds": [],
+      "childStatus": "blocked"
+    }
+  ],
+  "rightsRecords": [
+    {
+      "id": "rights.planetka.owner",
+      "rightsTrack": "OWNER_ORIGINAL",
+      "status": "asset-review",
+      "allowedTerritories": [],
+      "allowedPlatforms": [
+        "android",
+        "ios",
+        "ipados"
+      ],
+      "marketingAllowed": false,
+      "storePreviewAllowed": false,
+      "sourceFiles": [],
+      "checksums": []
+    },
+    {
+      "id": "rights.winnie_pooh.unresolved",
+      "rightsTrack": "COMPLEX_TERRITORY_VERSION_LICENSE",
+      "status": "blocked",
+      "characterVersion": "not-selected",
+      "translationVersion": "not-cleared",
+      "allowedTerritories": [],
+      "allowedPlatforms": [],
+      "marketingAllowed": false,
+      "storePreviewAllowed": false,
+      "voiceAllowed": false,
+      "restrictions": [
+        "No Disney or other adaptation artwork by default",
+        "No Russian translation/animation version without separate clearance",
+        "No AI lookalike or voice clone"
+      ]
+    }
+  ],
+  "storyWorlds": [
+    {
+      "id": "world.planetka.home",
+      "titleRu": "Дом Планетки",
+      "characterIds": [
+        "planetka"
+      ],
+      "exactAgeMin": 3,
+      "exactAgeMax": 17,
+      "status": "draft",
+      "fallbackWorldId": "world.core.stars"
+    }
+  ]
+}

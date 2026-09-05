@@ -1,0 +1,458 @@
+{
+  "snapshotDate": "2026-09-03",
+  "warning": "Recheck every source at Stage 0, Release Candidate, immediately before draft upload/submission, and after rejection.",
+  "sources": [
+    {
+      "key": "apple-upcoming-requirements",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/news/upcoming-requirements/",
+      "topics": [
+        "Xcode",
+        "SDK",
+        "age rating updates"
+      ]
+    },
+    {
+      "key": "apple-submitting",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/app-store/submitting/",
+      "topics": [
+        "submission",
+        "current SDK"
+      ]
+    },
+    {
+      "key": "apple-app-review-guidelines",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/app-store/review/guidelines/",
+      "topics": [
+        "review",
+        "metadata",
+        "privacy",
+        "IAP",
+        "demo access"
+      ]
+    },
+    {
+      "key": "apple-kids",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/kids/",
+      "topics": [
+        "Kids Category",
+        "parental gates",
+        "child data"
+      ]
+    },
+    {
+      "key": "apple-app-information",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-information/",
+      "topics": [
+        "name",
+        "subtitle",
+        "privacy URL"
+      ]
+    },
+    {
+      "key": "apple-age-rating",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/set-an-app-age-rating",
+      "topics": [
+        "age rating"
+      ]
+    },
+    {
+      "key": "google-target-api",
+      "authority": "Google",
+      "url": "https://support.google.com/googleplay/android-developer/answer/11926878",
+      "topics": [
+        "target API"
+      ]
+    },
+    {
+      "key": "google-billing-release-notes",
+      "authority": "Google",
+      "url": "https://developer.android.com/google/play/billing/release-notes",
+      "topics": [
+        "Play Billing"
+      ]
+    },
+    {
+      "key": "google-billing-integration",
+      "authority": "Google",
+      "url": "https://developer.android.com/google/play/billing/integrate",
+      "topics": [
+        "billing lifecycle"
+      ]
+    },
+    {
+      "key": "google-billing-security",
+      "authority": "Google",
+      "url": "https://developer.android.com/google/play/billing/security",
+      "topics": [
+        "server verification"
+      ]
+    },
+    {
+      "key": "google-user-data",
+      "authority": "Google",
+      "url": "https://support.google.com/googleplay/android-developer/answer/10144311",
+      "topics": [
+        "privacy",
+        "account deletion",
+        "user data"
+      ]
+    },
+    {
+      "key": "google-play-policies",
+      "authority": "Google",
+      "url": "https://support.google.com/googleplay/android-developer/",
+      "topics": [
+        "App Access",
+        "target audience",
+        "Data Safety",
+        "listing"
+      ]
+    },
+    {
+      "key": "rustore-publishing",
+      "authority": "RuStore",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication",
+      "topics": [
+        "listing limits",
+        "screenshots",
+        "publication"
+      ]
+    },
+    {
+      "key": "rustore-review-guidelines",
+      "authority": "RuStore",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/requirement-apps",
+      "topics": [
+        "stability",
+        "standalone app",
+        "IP",
+        "store links",
+        "paid type",
+        "screenshots"
+      ]
+    },
+    {
+      "key": "rustore-permissions",
+      "authority": "RuStore",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication/new-version-app/declare-app-permissions/how-to-declare-permissions",
+      "topics": [
+        "permissions",
+        "User Data Safety"
+      ]
+    },
+    {
+      "key": "rustore-pay",
+      "authority": "RuStore",
+      "url": "https://www.rustore.ru/help/en/sdk/pay",
+      "topics": [
+        "Pay SDK",
+        "payments"
+      ]
+    },
+    {
+      "key": "capacitor",
+      "authority": "Ionic/Capacitor",
+      "url": "https://capacitorjs.com/docs",
+      "topics": [
+        "Android",
+        "iOS",
+        "PWA"
+      ]
+    },
+    {
+      "key": "w3c-wai",
+      "authority": "W3C",
+      "url": "https://www.w3.org/WAI/",
+      "topics": [
+        "accessibility"
+      ]
+    },
+    {
+      "key": "mdn-web-manifest",
+      "authority": "MDN",
+      "url": "https://developer.mozilla.org/docs/Web/Manifest",
+      "topics": [
+        "PWA manifest"
+      ]
+    },
+    {
+      "key": "mdn-service-worker",
+      "authority": "MDN",
+      "url": "https://developer.mozilla.org/docs/Web/API/Service_Worker_API",
+      "topics": [
+        "service worker"
+      ]
+    },
+    {
+      "key": "apple-dsa-trader-requirements",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-compliance-information/manage-european-union-digital-services-act-trader-requirements/",
+      "topics": [
+        "Apple DSA trader requirements"
+      ]
+    },
+    {
+      "key": "apple-eu-app-terms",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/support/apps-in-the-eu",
+      "topics": [
+        "Apple EU app terms"
+      ]
+    },
+    {
+      "key": "apple-export-compliance-overview",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/overview-of-export-compliance",
+      "topics": [
+        "Apple export compliance overview"
+      ]
+    },
+    {
+      "key": "apple-encryption-documentation",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/export-compliance-documentation-for-encryption/",
+      "topics": [
+        "Apple encryption documentation"
+      ]
+    },
+    {
+      "key": "apple-determine-upload-encryption-docs",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/determine-and-upload-app-encryption-documentation",
+      "topics": [
+        "Apple determine/upload encryption docs"
+      ]
+    },
+    {
+      "key": "apple-privacy-manifests-and-required-reason-apis",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/documentation/bundleresources/describing-data-use-in-privacy-manifests",
+      "topics": [
+        "Apple privacy manifests and Required Reason APIs"
+      ]
+    },
+    {
+      "key": "apple-app-privacy-details",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/app-store/app-privacy-details/",
+      "topics": [
+        "Apple App Privacy details"
+      ]
+    },
+    {
+      "key": "apple-app-store-connect-api",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/documentation/appstoreconnectapi/",
+      "topics": [
+        "Apple App Store Connect API"
+      ]
+    },
+    {
+      "key": "apple-upload-builds",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/",
+      "topics": [
+        "Apple upload builds"
+      ]
+    },
+    {
+      "key": "google-play-developer-publishing-api-edits",
+      "authority": "Google/Android",
+      "url": "https://developers.google.com/android-publisher/edits",
+      "topics": [
+        "Google Play Developer Publishing API edits"
+      ]
+    },
+    {
+      "key": "android-developer-verification",
+      "authority": "Google/Android",
+      "url": "https://developer.android.com/developer-verification/guides",
+      "topics": [
+        "Android developer verification"
+      ]
+    },
+    {
+      "key": "ftc-coppa-official-topic",
+      "authority": "FTC",
+      "url": "https://www.ftc.gov/news-events/topics/protecting-consumer-privacy-security/kids-privacy-coppa",
+      "topics": [
+        "FTC COPPA official topic"
+      ]
+    },
+    {
+      "key": "ftc-coppa-compliance-faq",
+      "authority": "FTC",
+      "url": "https://www.ftc.gov/business-guidance/resources/complying-coppa-frequently-asked-questions",
+      "topics": [
+        "FTC COPPA compliance FAQ"
+      ]
+    },
+    {
+      "key": "ftc-2025-coppa-final-rule-summary",
+      "authority": "FTC",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2025/01/ftc-finalizes-changes-childrens-privacy-rule-limiting-companies-ability-monetize-kids-data",
+      "topics": [
+        "FTC 2025 COPPA final rule summary"
+      ]
+    },
+    {
+      "key": "eu-safeguards-for-children-data",
+      "authority": "European Commission",
+      "url": "https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/legal-grounds-processing-data/are-there-any-specific-safeguards-data-about-children_en",
+      "topics": [
+        "EU safeguards for children data"
+      ]
+    },
+    {
+      "key": "cnil-minors-online-capacity",
+      "authority": "CNIL",
+      "url": "https://www.cnil.fr/en/recommendation-1-regulate-capacity-children-act-online",
+      "topics": [
+        "CNIL minors online capacity"
+      ]
+    },
+    {
+      "key": "cnil-parental-consent-under-15",
+      "authority": "CNIL",
+      "url": "https://cnil.fr/fr/node/241",
+      "topics": [
+        "CNIL parental consent under 15"
+      ]
+    },
+    {
+      "key": "cnil-consent-legal-basis",
+      "authority": "CNIL",
+      "url": "https://www.cnil.fr/fr/les-bases-legales/consentement",
+      "topics": [
+        "CNIL consent legal basis"
+      ]
+    },
+    {
+      "key": "uk-ico-children-s-code",
+      "authority": "ICO",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/standards-of-age-appropriate-design/",
+      "topics": [
+        "UK ICO Children's Code"
+      ]
+    },
+    {
+      "key": "uk-ico-age-appropriate-application",
+      "authority": "ICO",
+      "url": "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/childrens-code-guidance-and-resources/age-appropriate-design-a-code-of-practice-for-online-services/3-age-appropriate-application/",
+      "topics": [
+        "UK ICO age appropriate application"
+      ]
+    },
+    {
+      "key": "rustore-public-api-create-draft",
+      "authority": "RuStore",
+      "url": "https://www.rustore.ru/help/en/work-with-rustore-api/api-upload-publication-app/create-draft-version",
+      "topics": [
+        "RuStore Public API create draft"
+      ]
+    },
+    {
+      "key": "rustore-public-api-artifact-icon-upload",
+      "authority": "RuStore",
+      "url": "https://www.rustore.ru/help/work-with-rustore-api/api-upload-publication-app/apk-icon-upload",
+      "topics": [
+        "RuStore Public API artifact/icon upload"
+      ]
+    },
+    {
+      "key": "apple-app-store-localizations",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-store-localizations/",
+      "topics": [
+        "Apple App Store localizations"
+      ]
+    },
+    {
+      "key": "apple-localize-app-information",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/localize-app-information",
+      "topics": [
+        "Apple localize app information"
+      ]
+    },
+    {
+      "key": "apple-localization-overview",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/localization/",
+      "topics": [
+        "Apple localization overview"
+      ]
+    },
+    {
+      "key": "apple-localized-screenshots-and-previews",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/upload-app-previews-and-screenshots",
+      "topics": [
+        "Apple localized screenshots and previews"
+      ]
+    },
+    {
+      "key": "apple-localizable-properties",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/required-localizable-and-editable-properties",
+      "topics": [
+        "Apple localizable properties"
+      ]
+    },
+    {
+      "key": "google-play-localized-listings-api",
+      "authority": "Google/Android",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings",
+      "topics": [
+        "Google Play localized listings API"
+      ]
+    },
+    {
+      "key": "google-play-update-localized-listing",
+      "authority": "Google/Android",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings/update",
+      "topics": [
+        "Google Play update localized listing"
+      ]
+    },
+    {
+      "key": "google-play-transactional-edits",
+      "authority": "Google/Android",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest",
+      "topics": [
+        "Google Play transactional edits"
+      ]
+    },
+    {
+      "key": "android-per-app-language-preferences",
+      "authority": "Google/Android",
+      "url": "https://developer.android.com/guide/topics/resources/app-languages",
+      "topics": [
+        "Android per-app language preferences"
+      ]
+    },
+    {
+      "key": "android-localeconfig",
+      "authority": "Google/Android",
+      "url": "https://developer.android.com/reference/android/app/LocaleConfig",
+      "topics": [
+        "Android LocaleConfig"
+      ]
+    },
+    {
+      "key": "android-resource-localization",
+      "authority": "Google/Android",
+      "url": "https://developer.android.com/guide/topics/resources/localization",
+      "topics": [
+        "Android resource localization"
+      ]
+    }
+  ],
+  "instruction": "Recheck every official source at Stage 0, bilingual release candidate, immediately before draft upload/submission, and after any rejection. Current official documentation overrides the package snapshot."
+}

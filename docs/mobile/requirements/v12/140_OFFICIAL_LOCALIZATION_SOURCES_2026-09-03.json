@@ -1,0 +1,196 @@
+{
+  "snapshotDate": "2026-09-03",
+  "instruction": "Recheck every official source at Stage 0, bilingual release candidate, immediately before draft upload/submission, and after any rejection. Current official documentation overrides this dated snapshot.",
+  "sources": [
+    {
+      "key": "apple-localization",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/localization/",
+      "topics": [
+        "binary localization",
+        "per-app language",
+        "String Catalogs",
+        "localized marketing"
+      ]
+    },
+    {
+      "key": "apple-localize-app-info",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/localize-app-information",
+      "topics": [
+        "localized metadata",
+        "primary language",
+        "fallback",
+        "API"
+      ]
+    },
+    {
+      "key": "apple-screenshots",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/upload-app-previews-and-screenshots",
+      "topics": [
+        "localized screenshots",
+        "1-10 screenshots",
+        "device localizations"
+      ]
+    },
+    {
+      "key": "apple-app-info",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-information",
+      "topics": [
+        "name 2-30",
+        "subtitle 30",
+        "privacy URL"
+      ]
+    },
+    {
+      "key": "apple-xcode-localization",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/documentation/xcode/localization",
+      "topics": [
+        "localizable APIs",
+        "string catalogs",
+        "formatters"
+      ]
+    },
+    {
+      "key": "google-translate-localize",
+      "authority": "Google Play",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9844778?hl=en",
+      "topics": [
+        "store translations",
+        "supported locales"
+      ]
+    },
+    {
+      "key": "google-custom-listings",
+      "authority": "Google Play",
+      "url": "https://support.google.com/googleplay/android-developer/answer/9867158?hl=en-GB",
+      "topics": [
+        "custom listings",
+        "manual translations",
+        "country targeting"
+      ]
+    },
+    {
+      "key": "google-listings-api",
+      "authority": "Google",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings",
+      "topics": [
+        "localized listing API",
+        "BCP-47 language"
+      ]
+    },
+    {
+      "key": "android-per-app-language",
+      "authority": "Android",
+      "url": "https://developer.android.com/guide/topics/resources/app-languages?hl=en",
+      "topics": [
+        "per-app language",
+        "localeConfig",
+        "resource configurations"
+      ]
+    },
+    {
+      "key": "android-localization",
+      "authority": "Android",
+      "url": "https://developer.android.com/guide/topics/resources/localization?hl=en",
+      "topics": [
+        "resource localization",
+        "testing",
+        "default resources"
+      ]
+    },
+    {
+      "key": "rustore-language-review",
+      "authority": "RuStore",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/requirement-apps",
+      "topics": [
+        "Russian or English app experience",
+        "moderation"
+      ]
+    },
+    {
+      "key": "rustore-publication",
+      "authority": "RuStore",
+      "url": "https://www.rustore.ru/help/en/developers/publishing-and-verifying-apps/app-publication",
+      "topics": [
+        "listing",
+        "screenshots",
+        "name",
+        "descriptions"
+      ]
+    },
+    {
+      "key": "unicode-cldr-person-names",
+      "authority": "Unicode CLDR",
+      "url": "https://unicode.org/cldr/charts/latest/verify/personNames/index.html",
+      "topics": [
+        "person-name formatting"
+      ]
+    },
+    {
+      "key": "mdn-intl-displaynames",
+      "authority": "MDN",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames/DisplayNames",
+      "topics": [
+        "localized region/language names",
+        "BCP-47"
+      ]
+    },
+    {
+      "key": "ietf-bcp47",
+      "authority": "IETF/RFC Editor",
+      "url": "https://www.rfc-editor.org/info/bcp47",
+      "topics": [
+        "language tags"
+      ]
+    },
+    {
+      "key": "apple-app-store-localizations",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-store-localizations/",
+      "topics": [
+        "supported metadata locales",
+        "storefront/device language behavior"
+      ]
+    },
+    {
+      "key": "apple-localizable-properties",
+      "authority": "Apple",
+      "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/required-localizable-and-editable-properties",
+      "topics": [
+        "required and localizable properties"
+      ]
+    },
+    {
+      "key": "google-listing-update-api",
+      "authority": "Google",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest/v3/edits.listings/update",
+      "topics": [
+        "localized listing update",
+        "BCP-47"
+      ]
+    },
+    {
+      "key": "google-publisher-api",
+      "authority": "Google",
+      "url": "https://developers.google.com/android-publisher/api-ref/rest",
+      "topics": [
+        "transactional edits",
+        "localized listing images and artifacts"
+      ]
+    },
+    {
+      "key": "android-locale-config-api",
+      "authority": "Android",
+      "url": "https://developer.android.com/reference/android/app/LocaleConfig",
+      "topics": [
+        "LocaleConfig",
+        "BCP-47",
+        "per-app language"
+      ]
+    }
+  ]
+}

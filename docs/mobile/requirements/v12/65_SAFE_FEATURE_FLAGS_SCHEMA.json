@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/feature-flags-v12.json",
+  "title": "Safe Remote Configuration V12",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "generatedAt",
+    "signature",
+    "flags"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "minimumAppVersion": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "keyId",
+        "value"
+      ],
+      "properties": {
+        "algorithm": {
+          "type": "string"
+        },
+        "keyId": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "value",
+          "failClosedDefault"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "boolean",
+              "integer",
+              "string",
+              "string-list",
+              "rollout"
+            ]
+          },
+          "value": {},
+          "failClosedDefault": {},
+          "allowedScopes": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "store-visibility",
+                "sku-visibility",
+                "territory",
+                "content-rollout",
+                "maintenance",
+                "minimum-version",
+                "licensed-kill-switch",
+                "visual-non-safety"
+              ]
+            }
+          },
+          "cannotWeaken": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "child-safety",
+                "rights",
+                "purchase-verification",
+                "security",
+                "privacy"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

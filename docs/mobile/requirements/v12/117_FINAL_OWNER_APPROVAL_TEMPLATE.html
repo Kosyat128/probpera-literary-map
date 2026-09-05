@@ -1,0 +1,265 @@
+
+<!-- V12: This is a legacy Russian compatibility template. The required final bilingual approval surface is 138_BILINGUAL_OWNER_APPROVAL_TEMPLATE.html. -->
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Финальное утверждение — Литературная планета</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --orange: #e87524;
+      --violet: #4b2a68;
+      --violet-dark: #281736;
+      --paper: #fffaf3;
+      --line: #e4d9ca;
+      --ok: #176b45;
+      --warn: #8a5600;
+      --bad: #9d2f2f;
+      --muted: #665c68;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: linear-gradient(150deg, var(--violet-dark), var(--violet));
+      color: #201822;
+      min-height: 100vh;
+    }
+    header {
+      background: var(--orange);
+      color: white;
+      padding: 28px clamp(18px, 4vw, 52px);
+    }
+    header h1 { margin: 0 0 6px; font-size: clamp(25px, 4vw, 42px); }
+    header p { margin: 0; max-width: 900px; line-height: 1.55; }
+    main {
+      width: min(1080px, calc(100% - 28px));
+      margin: 28px auto 48px;
+      background: var(--paper);
+      border-radius: 22px;
+      padding: clamp(18px, 4vw, 44px);
+      box-shadow: 0 22px 70px rgba(0,0,0,.25);
+    }
+    .status {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px,1fr));
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+    .status article {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 14px;
+      padding: 15px;
+    }
+    .status strong { display:block; margin-bottom:6px; }
+    section {
+      margin: 28px 0;
+      padding-top: 6px;
+      border-top: 1px solid var(--line);
+    }
+    h2 { color: var(--violet); margin-bottom: 12px; }
+    label.item {
+      display: grid;
+      grid-template-columns: 26px 1fr auto;
+      gap: 11px;
+      align-items: start;
+      padding: 12px;
+      border-radius: 12px;
+      margin: 7px 0;
+      background: white;
+      border: 1px solid var(--line);
+    }
+    input[type=checkbox] { width: 20px; height: 20px; margin-top: 1px; }
+    select, textarea, input[type=text] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cfc1d5;
+      border-radius: 9px;
+      font: inherit;
+      background: white;
+    }
+    textarea { min-height: 92px; resize: vertical; }
+    .evidence {
+      font-size: 12px;
+      color: var(--muted);
+      max-width: 280px;
+      overflow-wrap: anywhere;
+    }
+    .actions {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      position: sticky; bottom: 0;
+      background: rgba(255,250,243,.95);
+      padding: 14px 0 4px;
+      backdrop-filter: blur(10px);
+    }
+    button {
+      min-height: 46px;
+      border-radius: 11px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .primary { background: var(--orange); color: white; }
+    .secondary { background: var(--violet); color: white; }
+    .ghost { background: white; color: var(--violet); border-color: var(--violet); }
+    .notice {
+      border-left: 5px solid var(--orange);
+      padding: 12px 16px;
+      background: #fff0df;
+      border-radius: 9px;
+      line-height: 1.55;
+    }
+    @media print {
+      body { background: white; }
+      header { color: black; background: white; border-bottom: 2px solid black; }
+      main { box-shadow: none; width: 100%; margin: 0; }
+      .actions { display: none; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Финальное утверждение владельца</h1>
+  <p>«Литературная планета — Проба пера». Этот offline-шаблон заполняется
+     автоматически данными exact release candidate. Секреты здесь не хранятся.</p>
+</header>
+<main>
+  <div class="notice">
+    Технический статус <strong>PASS</strong> не заменяет юридическое или
+    магазинное одобрение. Disney/Pixar должны оставаться исключёнными,
+    пока не подтверждены точные права.
+  </div>
+
+  <div class="status" id="summary">
+    <article><strong>Release ID</strong><span data-field="releaseId">TO_BE_GENERATED</span></article>
+    <article><strong>Artifact SHA-256</strong><span data-field="artifactSha">TO_BE_GENERATED</span></article>
+    <article><strong>Профиль</strong><span>SAFE_PAID_BILINGUAL_V1</span></article>
+    <article><strong>Статус</strong><span data-field="status">PENDING</span></article>
+  </div>
+
+  <section data-section="product">
+    <h2>1. Продукт и канон</h2>
+    <label class="item"><input type="checkbox" data-id="product-canon"><span>Готовая Литературная планета сайта остаётся единственной основой.</span><span class="evidence">site/mobile parity report</span></label>
+    <label class="item"><input type="checkbox" data-id="product-name"><span>Название «Литературная планета» и бренд «Проба пера» утверждены.</span><span class="evidence">metadata identity report</span></label>
+    <label class="item"><input type="checkbox" data-id="product-profile"><span>SAFE_PAID_BILINGUAL_V1 и Starter Set утверждены.</span><span class="evidence">starter/profile report</span></label>
+  </section>
+
+  <section data-section="commerce">
+    <h2>2. Коммерция</h2>
+    <label class="item"><input type="checkbox" data-id="commerce-paid"><span>Платная базовая редакция, без подписки и рекламы.</span><span class="evidence">commercial model</span></label>
+    <label class="item"><input type="checkbox" data-id="commerce-iap"><span>Первый optional non-consumable утверждён либо безопасно отключён.</span><span class="evidence">IAP review report</span></label>
+    <label class="item"><input type="checkbox" data-id="commerce-price"><span>Цены, валюты и SAFE_INITIAL территории утверждены.</span><span class="evidence">pricing/territory matrix</span></label>
+  </section>
+
+  <section data-section="child">
+    <h2>3. Детский режим и приватность</h2>
+    <label class="item"><input type="checkbox" data-id="child-gate"><span>Parent Gate, exact-age policy и отсутствие взрослой утечки утверждены.</span><span class="evidence">child bypass report</span></label>
+    <label class="item"><input type="checkbox" data-id="child-local"><span>Child data local-by-default; нет child account, ads, profiling, uploads или AI input.</span><span class="evidence">child data-flow report</span></label>
+    <label class="item"><input type="checkbox" data-id="child-jurisdiction"><span>Юрисдикционные проверки для включённых территорий утверждены.</span><span class="evidence">COPPA/EU/France/UK matrix</span></label>
+  </section>
+
+  <section data-section="compliance">
+    <h2>4. Права, privacy и платформы</h2>
+    <label class="item"><input type="checkbox" data-id="rights"><span>Rights-clean binary; Disney/Pixar исключены; реальные портреты подтверждены.</span><span class="evidence">rights scan</span></label>
+    <label class="item"><input type="checkbox" data-id="privacy"><span>App Privacy, Data Safety, RuStore declarations и deletion согласованы.</span><span class="evidence">privacy congruence</span></label>
+    <label class="item"><input type="checkbox" data-id="apple"><span>Apple DSA, export compliance, privacy manifest и age rating утверждены.</span><span class="evidence">Apple dossier</span></label>
+    <label class="item"><input type="checkbox" data-id="android"><span>Google/RuStore package, signing, target SDK, billing and verification готовы.</span><span class="evidence">Android dossiers</span></label>
+  </section>
+
+  <section data-section="visual">
+    <h2>5. Визуальное утверждение</h2>
+    <label class="item"><input type="checkbox" data-id="screens"><span>Скриншоты сняты с exact RC и соответствуют реальным функциям.</span><span class="evidence">screenshot manifest</span></label>
+    <label class="item"><input type="checkbox" data-id="concept"><span>Концептуальный коллаж не используется в магазинах.</span><span class="evidence">artifact scan</span></label>
+    <label class="item"><input type="checkbox" data-id="icon"><span>Иконка, splash, Планетка и начальное оформление утверждены.</span><span class="evidence">visual approval package</span></label>
+  </section>
+
+  <section data-section="authorization">
+    <h2>6. Разрешённые внешние действия</h2>
+    <label class="item"><input type="checkbox" data-id="allow-draft"><span>Разрешить draft upload после повторной проверки SHA.</span><span class="evidence">не означает Submit</span></label>
+    <label class="item"><input type="checkbox" data-id="allow-submit"><span>Разрешить владельцу вручную отправить сборки на review.</span><span class="evidence">manual owner action</span></label>
+    <label class="item"><input type="checkbox" data-id="allow-release"><span>Разрешить manual/staged release после одобрения.</span><span class="evidence">72-hour runbook</span></label>
+    <label class="item"><input type="checkbox" data-id="allow-merge"><span>Разрешить владельцу вручную объединить финальный PR.</span><span class="evidence">auto-merge disabled</span></label>
+  </section>
+
+  <section>
+    <h2>Комментарий владельца</h2>
+    <textarea id="ownerNote" placeholder="Замечания, отклонённые пункты или условия утверждения"></textarea>
+    <p><label>Имя/роль утверждающего <input id="approver" type="text"></label></p>
+  </section>
+
+  <div class="actions">
+    <button class="primary" id="export">Экспортировать JSON</button>
+    <button class="secondary" onclick="window.print()">Печать / PDF</button>
+    <button class="ghost" id="clear">Сбросить локальные отметки</button>
+  </div>
+</main>
+<script>
+(() => {
+  const STORAGE_KEY = "literary-planet-v12-owner-approval";
+  const boxes = [...document.querySelectorAll("input[type=checkbox][data-id]")];
+  const note = document.getElementById("ownerNote");
+  const approver = document.getElementById("approver");
+
+  function collect() {
+    const sections = boxes.map(box => {
+      const label = box.closest("label");
+      const title = label ? label.querySelector("span")?.textContent?.trim() || box.dataset.id : box.dataset.id;
+      const evidenceText = label ? label.querySelector(".evidence")?.textContent?.trim() || "" : "";
+      return {
+        id: box.dataset.id,
+        titleRu: title,
+        status: box.checked ? "APPROVED" : "PENDING",
+        evidence: evidenceText ? [evidenceText] : []
+      };
+    });
+    return {
+      schemaVersion: "12.0",
+      releaseId: document.querySelector("[data-field=releaseId]").textContent.trim(),
+      artifactSha256: document.querySelector("[data-field=artifactSha]").textContent.trim(),
+      sections,
+      authorization: {
+        draftUpload: !!document.querySelector("[data-id=allow-draft]").checked,
+        manualSubmission: !!document.querySelector("[data-id=allow-submit]").checked,
+        manualRelease: !!document.querySelector("[data-id=allow-release]").checked,
+        merge: !!document.querySelector("[data-id=allow-merge]").checked
+      },
+      approverReference: approver.value.trim(),
+      ownerNote: note.value,
+      status: boxes.every(b => b.checked) ? "APPROVED" : "PARTIAL",
+      approvedAt: new Date().toISOString(),
+      generatedAt: new Date().toISOString()
+    };
+  }
+  function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(collect())); }
+  function restore() {
+    try {
+      const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+      if (!state) return;
+      const map = new Map(state.sections.map(x => [x.id, x.status]));
+      boxes.forEach(b => b.checked = map.get(b.dataset.id) === "APPROVED");
+      note.value = state.ownerNote || "";
+      approver.value = state.approverReference || "";
+    } catch (_) {}
+  }
+  boxes.forEach(b => b.addEventListener("change", save));
+  note.addEventListener("input", save);
+  approver.addEventListener("input", save);
+  document.getElementById("export").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(collect(), null, 2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "owner-approval-v12.json"; a.click();
+    URL.revokeObjectURL(url);
+  });
+  document.getElementById("clear").addEventListener("click", () => {
+    localStorage.removeItem(STORAGE_KEY); location.reload();
+  });
+  restore();
+})();
+</script>
+</body>
+</html>

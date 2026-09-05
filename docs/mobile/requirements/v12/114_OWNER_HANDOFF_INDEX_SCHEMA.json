@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/owner-handoff-index-v12.json",
+  "title": "Literary Planet V12 Owner Handoff Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "releaseId",
+    "status",
+    "items",
+    "ownerActionCount",
+    "generatedAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "releaseId": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "BLOCKED_INTERNAL",
+        "BLOCKED_OWNER_INPUT",
+        "BLOCKED_STORE_ACCOUNT",
+        "BLOCKED_SIGNING",
+        "BLOCKED_LEGAL",
+        "BLOCKED_RIGHTS",
+        "READY_INTERNAL",
+        "DRAFT_UPLOAD_READY",
+        "DRAFT_UPLOADED",
+        "READY_FOR_MANUAL_SUBMISSION",
+        "SUBMITTED",
+        "APPROVED",
+        "RELEASED"
+      ]
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "titleRu",
+          "path",
+          "sha256",
+          "store",
+          "ownerMustAct"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "titleRu": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{64}$"
+          },
+          "store": {
+            "enum": [
+              "common",
+              "app-store",
+              "google-play",
+              "rustore",
+              "web-pwa"
+            ]
+          },
+          "ownerMustAct": {
+            "type": "boolean"
+          },
+          "ownerActionId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sensitive": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "ownerActionCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "programmingActionsForOwner": {
+      "const": 0
+    },
+    "missingInputsReport": {
+      "type": "string"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

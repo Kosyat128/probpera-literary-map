@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://probpera.ru/schemas/mobile/review-package-v12-owner-minimal.json",
+  "title": "Literary Planet Store Review Package V12 Owner-Minimal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "store",
+    "buildIdentity",
+    "reviewAccess",
+    "paidModel",
+    "childMode",
+    "privacy",
+    "rights",
+    "screenshots",
+    "technicalSmoke",
+    "status",
+    "localization"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "12.0"
+    },
+    "store": {
+      "enum": [
+        "app-store",
+        "google-play",
+        "rustore",
+        "web-pwa"
+      ]
+    },
+    "buildIdentity": {
+      "type": "object",
+      "required": [
+        "version",
+        "buildNumber",
+        "commitSha",
+        "artifactSha256",
+        "contentVersion"
+      ],
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "buildNumber": {
+          "type": "string"
+        },
+        "commitSha": {
+          "type": "string",
+          "minLength": 7
+        },
+        "artifactSha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "contentVersion": {
+          "type": "string"
+        },
+        "childPolicyVersion": {
+          "type": "string"
+        },
+        "storeCatalogVersion": {
+          "type": "string"
+        },
+        "rightsManifestVersion": {
+          "type": "string"
+        },
+        "toolchainReport": {
+          "type": "string"
+        }
+      }
+    },
+    "reviewAccess": {
+      "type": "object",
+      "required": [
+        "instructions",
+        "healthStatus",
+        "parentPinReference"
+      ],
+      "properties": {
+        "instructions": {
+          "type": "string"
+        },
+        "credentialReference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "parentPinReference": {
+          "type": "string"
+        },
+        "healthStatus": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "lastCheckedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+    "paidModel": {
+      "type": "object",
+      "required": [
+        "distributionModel",
+        "starterSetComplete",
+        "optionalIapOnly"
+      ],
+      "properties": {
+        "distributionModel": {
+          "const": "PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES"
+        },
+        "starterSetComplete": {
+          "type": "boolean"
+        },
+        "optionalIapOnly": {
+          "type": "boolean"
+        },
+        "consoleConfigurationStatus": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        }
+      }
+    },
+    "childMode": {
+      "type": "object",
+      "required": [
+        "includedInBase",
+        "parentGate",
+        "zeroAdultLeakage"
+      ],
+      "properties": {
+        "includedInBase": {
+          "const": true
+        },
+        "parentGate": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "zeroAdultLeakage": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "ageRatingEvidence": {
+          "type": "string"
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "required": [
+        "inventory",
+        "declarations",
+        "accountDeletion",
+        "permissions"
+      ],
+      "properties": {
+        "inventory": {
+          "type": "string"
+        },
+        "declarations": {
+          "type": "string"
+        },
+        "accountDeletion": {
+          "enum": [
+            "PASS",
+            "NOT_APPLICABLE",
+            "FAIL"
+          ]
+        },
+        "permissions": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "required": [
+        "binaryScan",
+        "disneyGate",
+        "realPortraitGate"
+      ],
+      "properties": {
+        "binaryScan": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "disneyGate": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "realPortraitGate": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        }
+      }
+    },
+    "screenshots": {
+      "type": "object",
+      "required": [
+        "inventory",
+        "exactRc",
+        "conceptExcluded"
+      ],
+      "properties": {
+        "inventory": {
+          "type": "string"
+        },
+        "exactRc": {
+          "const": true
+        },
+        "conceptExcluded": {
+          "const": true
+        },
+        "metadataLint": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        }
+      }
+    },
+    "technicalSmoke": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED_EXTERNAL"
+      ]
+    },
+    "openBlockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "NOT_STARTED",
+        "IN_PROGRESS",
+        "BLOCKED_INTERNAL",
+        "BLOCKED_EXTERNAL",
+        "READY_FOR_OWNER_REVIEW",
+        "READY_FOR_SUBMISSION",
+        "SUBMITTED",
+        "REJECTED",
+        "RESUBMISSION_READY",
+        "APPROVED"
+      ]
+    },
+    "localization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requiredLocales",
+        "uiCoverage",
+        "baseEditionEnglishCoverage",
+        "languageSwitch",
+        "storeLocalizations",
+        "legalSupport",
+        "status"
+      ],
+      "properties": {
+        "requiredLocales": {
+          "const": [
+            "ru",
+            "en"
+          ]
+        },
+        "uiCoverage": {
+          "type": "object",
+          "required": [
+            "ru",
+            "en"
+          ],
+          "properties": {
+            "ru": {
+              "const": 100
+            },
+            "en": {
+              "const": 100
+            }
+          }
+        },
+        "baseEditionEnglishCoverage": {
+          "const": 100
+        },
+        "languageSwitch": {
+          "enum": [
+            "PASS",
+            "FAIL"
+          ]
+        },
+        "storeLocalizations": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        },
+        "legalSupport": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_OWNER_LEGAL"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED_EXTERNAL"
+          ]
+        }
+      }
+    }
+  }
+}

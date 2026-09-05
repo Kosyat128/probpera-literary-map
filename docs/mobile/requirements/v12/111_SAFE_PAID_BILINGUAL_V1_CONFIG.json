@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "12.0",
+  "profileId": "SAFE_PAID_BILINGUAL_V1",
+  "description": "Safe paid first release with complete Russian and English product, content, child, store, legal and support surfaces.",
+  "canonicalFoundation": "current-main-existing-site-literary-planet",
+  "distributionModel": "PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES",
+  "features": {
+    "adultLiteraryArchive": true,
+    "canonicalLiveGlobe": true,
+    "starterSet": true,
+    "offlineBootstrap": true,
+    "childMode": true,
+    "parentCenter": true,
+    "planetka": true,
+    "optionalIapEngine": true,
+    "firstOptionalProductMaximum": 1,
+    "cloudAdultAccount": false,
+    "cloudChildAccount": false,
+    "cloudChildSync": false,
+    "pushNotifications": false,
+    "behaviouralAnalytics": false,
+    "advertising": false,
+    "openChat": false,
+    "childAiInput": false,
+    "microphone": false,
+    "camera": false,
+    "location": false,
+    "contactsSmsCalls": false,
+    "socialOrUgc": false,
+    "externalNativeDigitalCheckout": false,
+    "disneyPixar": false,
+    "otherUnlicensedPacks": false,
+    "experimentalGraphics": false,
+    "bilingualRussianEnglish": true,
+    "englishBaseEditionContent": true,
+    "englishChildMode": true,
+    "englishPlanetka": true,
+    "englishStoreLegalSupport": true
+  },
+  "locales": {
+    "source": "ru",
+    "fallback": "en",
+    "required": [
+      "ru",
+      "en"
+    ],
+    "storeReview": [
+      "en",
+      "ru"
+    ],
+    "additionalLocalesEnabled": false,
+    "systemNegotiation": true,
+    "manualSwitch": true,
+    "preserveGlobeState": true,
+    "baseEditionCoverageRequired": 100,
+    "noMixedLanguageCriticalScreens": true,
+    "rawMachineTranslationAllowed": false
+  },
+  "territories": {
+    "publicSet": "SAFE_INITIAL",
+    "worldwideByDefault": false,
+    "testSetEnabled": true
+  },
+  "commerce": {
+    "subscription": false,
+    "consumableCurrency": false,
+    "lootBoxes": false,
+    "firstOptionalProductSelection": [
+      "original.background.premium-library",
+      "original.stand.book-stack-premium",
+      "original.planetka.accessory-bundle"
+    ],
+    "disableOptionalProductIfAnyStoreGateFails": true
+  },
+  "release": {
+    "draftUploadDefault": "DRY_RUN",
+    "manualSubmission": true,
+    "manualOrStagedRelease": true,
+    "autoMerge": false,
+    "productionDeploy": false
+  },
+  "cannotBeChangedByRemoteConfig": [
+    "child-safety",
+    "parent-gate",
+    "rights-gate",
+    "purchase-server-verification",
+    "privacy-minimization",
+    "account-deletion",
+    "store-provider-isolation",
+    "required-release-locales",
+    "english-base-edition-coverage",
+    "translation-publish-gate"
+  ]
+}

@@ -1,0 +1,27 @@
+Продолжай V12 Bilingual Final Autopilot.
+
+1. Прочитай AGENTS.md, AUTOPILOT_STATE, STATUS, DECISIONS, BLOCKERS,
+   AUTOPILOT_JOURNAL и NEXT_CODEX_PROMPT.
+2. Проверь branch/HEAD/current main и unexpected changes.
+3. Прочитай shared invariants и документы только текущего Stage из
+   `95_STAGE_DOCUMENT_ROUTING.json`.
+4. Не повторяй закрытый полный аудит и не перечитывай standalone prompt без
+   необходимости восстановления.
+5. Продолжай с первого незавершённого requirement ID.
+6. Сохраняй:
+   - site-first globe/content canon;
+   - `ru` + `en` mandatory release;
+   - `SAFE_PAID_BILINGUAL_V1`;
+   - 100% English Base Edition;
+   - state-preserving language switch;
+   - child safety in both languages;
+   - verified names/titles/search aliases;
+   - no raw machine translation;
+   - exact localized screenshots/dossiers;
+   - one owner input and no owner translation/code work;
+   - dry-run store automation;
+   - no production submit/release/merge.
+7. После завершённого блока выполни tests, fixes, evidence, atomic commit
+   и state update.
+8. Перед лимитом запиши точную следующую команду и routed documents.
+9. Продолжай до S40 и FINAL HANDOFF.

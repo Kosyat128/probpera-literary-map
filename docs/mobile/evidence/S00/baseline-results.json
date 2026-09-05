@@ -1,0 +1,68 @@
+{
+  "stage": "S00",
+  "kind": "pre-main-refresh-baseline",
+  "baseMainSha": "e073b21acfea854b3b573aa4613215156957ff38",
+  "testedAt": "2026-09-04",
+  "checks": [
+    {
+      "files": 191,
+      "status": "PASS",
+      "bindingDocuments": 173,
+      "name": "archive_integrity",
+      "entries": 194
+    },
+    {
+      "passedTests": 2912,
+      "passedFiles": 501,
+      "status": "PASS",
+      "name": "vitest",
+      "skippedTests": 3,
+      "skippedFiles": 2,
+      "log": "logs/vitest-S00-regression.log"
+    },
+    {
+      "status": "PASS",
+      "name": "public_types",
+      "log": "logs/typecheck-public.log"
+    },
+    {
+      "status": "PASS",
+      "note": "Vite/article build passed; wrapper git ownership failure repaired by running remaining release-head/domain/SEO steps in normal sandbox account.",
+      "name": "web_vite_build",
+      "log": "logs/build-domain-S00.log"
+    },
+    {
+      "status": "PASS",
+      "checks": 12876,
+      "name": "domain",
+      "log": "logs/domain-audit-S00.log"
+    },
+    {
+      "pages": 180,
+      "status": "PASS",
+      "checks": 5513,
+      "name": "seo",
+      "log": "logs/seo-audit-S00.log"
+    },
+    {
+      "status": "PASS_WITH_WARNINGS",
+      "note": "Next Edge Runtime framework warnings; compiled/typechecked/generated routes; client secret audit passed.",
+      "name": "admin_build",
+      "log": "logs/admin-build-S00.log"
+    },
+    {
+      "status": "PASS",
+      "log": "logs/browser-S00.log",
+      "name": "canvas_navigation_browser",
+      "tests": 2
+    }
+  ],
+  "codeReview": {
+    "status": "no_actionable_findings",
+    "reviewer": "independent_subagent",
+    "scope": "CMS normalization and pinned requirement verifier"
+  },
+  "latestRemoteMainOnResume": "0a348bd4202e3fa1558d88183549f7576a361c4b",
+  "needsRefreshBeforeS01": true,
+  "v12ReleaseReady": false
+}

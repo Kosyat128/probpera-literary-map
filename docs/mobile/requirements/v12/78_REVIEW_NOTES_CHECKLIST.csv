@@ -1,0 +1,15 @@
+﻿item_id,store,field,required,source_of_truth,validation,contains_secret,status
+RN-001,all,App purpose,true,exact RC/product spec,factual and concise,false,OPEN
+RN-002,all,Paid base and Starter Set,true,catalog/readiness report,matches actual included items,false,OPEN
+RN-003,all,Optional IAP,true,store catalog,non-consumable and reviewer accessible,false,OPEN
+RN-004,all,Reviewer account,if account enabled,secure owner vault,health check passes,true,OPEN
+RN-005,all,Parent PIN,true for child mode,secure owner vault,clean-install test passes,true,OPEN
+RN-006,all,Child mode path,true,exact RC,numbered reproducible steps,false,OPEN
+RN-007,all,Store/Restore path,true,exact RC,numbered reproducible steps,false,OPEN
+RN-008,all,Account deletion path,if account enabled,exact RC/public URL,E2E passes,false,OPEN
+RN-009,all,Offline/Economy behavior,true,exact RC,works without special environment,false,OPEN
+RN-010,all,Rights summary,true,rights manifest,no unlicensed content,false,OPEN
+RN-011,all,Disney exclusion/licensing status,true,Disney gate,matches binary/metadata,false,OPEN
+RN-012,all,Backend dependencies,true,deployment inventory,available for review,false,OPEN
+RN-013,all,Known limitations,true,QA report,no hidden blocker,false,OPEN
+RN-014,all,Contact/SLA,true,owner input,valid monitored contact,false,OPEN

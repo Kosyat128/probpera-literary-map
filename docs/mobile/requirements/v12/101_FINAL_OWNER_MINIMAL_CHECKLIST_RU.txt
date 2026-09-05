@@ -1,0 +1,20 @@
+V12 — ФИНАЛЬНЫЙ OWNER-MINIMAL ЧЕК-ЛИСТ
+
+После Codex:
+
+[ ] 1. Заполнить один `owner-release-inputs.json`.
+[ ] 2. Добавить перечисленные secrets в защищённое хранилище.
+[ ] 3. Завершить developer/merchant/trader/identity verification и Android package registration.
+[ ] 4. Утвердить legal texts, rights, prices, SAFE_INITIAL territories, age/privacy и US/EU/France/UK child privacy jurisdiction answers.
+[ ] 5. Утвердить exact-RC screenshots и один optional product.
+[ ] 6. Разрешить draft upload или загрузить готовые файлы.
+[ ] 7. Нажать Submit for Review.
+[ ] 8. Переслать Codex точное замечание, если оно придёт.
+[ ] 9. После approval вручную запустить staged/manual release.
+[ ] 10. После проверки PR вручную выполнить merge.
+
+Никаких изменений кода, JSON вручную, сборки проекта или самостоятельной
+диагностики от владельца требоваться не должно.
+[ ] Russian and English release, store, legal, support, child and owner materials are complete.
+[ ] Base Edition English coverage is 100%; owner translation work = 0.
+[ ] Bilingual exact-RC screenshots and English reviewer notes are approved.

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Store Metadata Limits Snapshot V12",
+  "snapshotDate": "2026-09-03",
+  "warning": "These are preparation-time values. Codex must recheck current official store documentation at Stage 0 and immediately before submission.",
+  "defaults": {
+    "publicAppNameRu": "Литературная планета",
+    "brandSubtitleRu": "Проба пера",
+    "conceptReferenceAllowedForSubmission": false,
+    "publicAppNameEn": "Literary Planet",
+    "brandSubtitleEn": "Proba Pera",
+    "requiredProductLocales": [
+      "ru",
+      "en"
+    ]
+  },
+  "stores": {
+    "app-store": {
+      "nameMaxCharactersObserved": 30,
+      "subtitleMaxCharactersObserved": 30,
+      "privacyPolicyUrlRequired": true,
+      "ageRatingRequired": true,
+      "kidsCategoryAutomatic": false,
+      "screenshotsExactRcRequired": true,
+      "currentToolchainSnapshot": {
+        "minimumSince": "2026-04-28",
+        "xcode": "26 or later",
+        "sdk": "iOS 26/iPadOS 26 or later",
+        "mustRecheck": true
+      },
+      "officialSourceKeys": [
+        "apple-upcoming-requirements",
+        "apple-app-review-guidelines",
+        "apple-app-information",
+        "apple-age-rating",
+        "apple-kids"
+      ],
+      "localization": {
+        "metadataLocales": [
+          "en-US",
+          "ru"
+        ],
+        "localizedScreenshotsRequiredForDifferentVisibleLanguage": true,
+        "primaryLanguageDecision": "owner-approved; en-US recommended only for a new record",
+        "mustRecheck": true
+      }
+    },
+    "google-play": {
+      "titleMaxCharacters": "RECHECK_CURRENT",
+      "shortDescriptionMaxCharacters": "RECHECK_CURRENT",
+      "fullDescriptionMaxCharacters": "RECHECK_CURRENT",
+      "privacyPolicyRequired": true,
+      "dataSafetyRequired": true,
+      "targetAudienceRequired": true,
+      "appAccessRequiredForRestrictedContent": true,
+      "accountDeletionExternalUrlRequiredWhenAccountsExist": true,
+      "targetApiSnapshot": {
+        "effective": "2026-08-31",
+        "phoneTabletNewAppsAndUpdates": 36,
+        "mustRecheck": true
+      },
+      "billingSnapshot": {
+        "observedLatestRelease": "9.1.0",
+        "observedReleaseDate": "2026-06-18",
+        "mustRecheckRequiredVersionAndDeadline": true
+      },
+      "officialSourceKeys": [
+        "google-target-api",
+        "google-billing-release-notes",
+        "google-user-data",
+        "google-play-policies"
+      ],
+      "localization": {
+        "defaultListing": "en-US",
+        "localizedListings": [
+          "ru-RU"
+        ],
+        "languageTagFormat": "BCP-47",
+        "customStoreListingsRequireOwnedTranslations": true,
+        "mustRecheck": true
+      }
+    },
+    "rustore": {
+      "nameMaxCharactersObserved": 30,
+      "shortDescriptionMaxCharactersObserved": 80,
+      "fullDescriptionMaxCharactersObserved": 4000,
+      "screenshots": {
+        "mandatory": true,
+        "minObserved": 1,
+        "maxObserved": 10,
+        "phoneMaxBytesObserved": 3000000,
+        "tabletMaxBytesObserved": 5000000,
+        "mobileMaxResolutionObserved": "2160x3840",
+        "mustRecheck": true
+      },
+      "developerEmailRequired": true,
+      "paidTypeRequiredForNoFreeFunctionality": true,
+      "testCredentialsRequiredForRestrictedApp": true,
+      "storefrontAndInstalledNameMustMatch": true,
+      "competingStoreLinksProhibited": true,
+      "sensitivePermissionsDeclarationRequired": true,
+      "officialSourceKeys": [
+        "rustore-publishing",
+        "rustore-review-guidelines",
+        "rustore-permissions",
+        "rustore-pay"
+      ],
+      "localization": {
+        "primaryModeratorMaterials": "ru",
+        "requiredInAppLanguages": [
+          "ru",
+          "en"
+        ],
+        "languageSwitchRequired": true,
+        "mustRecheck": true
+      }
+    }
+  }
+}

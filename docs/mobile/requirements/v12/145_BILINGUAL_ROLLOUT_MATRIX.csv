@@ -1,0 +1,6 @@
+﻿id,phase,scope,entry_gate,safety_rule,owner_action,status
+BR-001,TEST_ONLY,ru+en internal/TestFlight/closed,full bilingual tests,do not proceed on missing translation,collect evidence,OPEN
+BR-002,SAFE_INITIAL,Russian-speaking + selected English-ready territories,legal/support/rights/payment/language complete,exclude unready territory,owner approves exact countries,OPEN
+BR-003,ENGLISH_EXPANSION,additional English-speaking territories,"English support, legal, store listing and child jurisdiction ready",no automatic worldwide rollout,owner/legal approval,OPEN
+BR-004,OPTIONAL_PACKS,locale-specific pack rollout,100% locale translation/audio/store/rights,hide pack in incomplete locale,catalog approval,OPEN
+BR-005,72_HOURS,manual/staged first release,monitor by platform and locale,pause on P0/P1 or language-specific support failure,owner controls release,OPEN

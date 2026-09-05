@@ -4,7 +4,6 @@ import { fileURLToPath } from "node:url";
 
 import {
   normalizeArticlePublicMetadata,
-  normalizePublicMetadataText,
 } from "./lib/article-route-policy.mjs";
 import { normalizeLegacyArticleWithdrawals } from "./lib/cms-legacy-withdrawals.mjs";
 import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
@@ -92,7 +91,9 @@ const outputs = [
 ];
 for (const [file, next] of outputs) {
   const current = await fs.readFile(file, "utf8");
-  if (current !== next) {
+  // Git can check generated TypeScript out with CRLF on Windows. Compare
+  // serialized content independently of that transport-only line ending.
+  if (current.replace(/\r\n/gu, "\n") !== next) {
     changed.push(path.relative(projectRoot, file));
     if (write) await fs.writeFile(file, next, "utf8");
   }
@@ -100,7 +101,7 @@ for (const [file, next] of outputs) {
 
 if (changed.length && !write) {
   throw new Error(
-    `CMS metadata requires whitespace normalization (${changed.length} artifacts). Run npm run content:metadata:fix.`
+    `CMS metadata requires whitespace normalization (${changed.length} artifacts): ${changed.join(", ")}. Run npm run content:metadata:fix.`
   );
 }
 console.log(

@@ -1,0 +1,5 @@
+﻿platform,base_distribution,artifact,optional_store,signing,release_gate,external_owner
+Web/PWA,one-time paid web license,production PWA bundle,approved PSP one-time add-ons,content/artifact integrity,license enforcement; SW isolation; install/offline/update,merchant account; final price; production deploy
+Android Google Play,paid app,AAB + QA APK,Google Play one-time non-consumable,Play App Signing/owner key strategy,paid before public release; API/SDK current; billing verification,Play Console; agreements; price; signing; submission
+Android RuStore,paid app,RuStore release artifact + QA APK,current RuStore Pay SDK non-consumable,stable owner signing,paid type; monetization; separate flavor; server validation,RuStore console; EDS/merchant; price; moderation/submission
+iOS/iPadOS,paid app,simulator build + archive/IPA when signed,StoreKit non-consumable,Apple certificates/profiles,Paid Apps Agreement; current Xcode/SDK; restore; child gates,Apple account; agreements; price; signing; submission

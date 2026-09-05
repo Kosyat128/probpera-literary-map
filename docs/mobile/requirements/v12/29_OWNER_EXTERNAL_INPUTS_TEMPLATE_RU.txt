@@ -1,0 +1,25 @@
+# LEGACY OWNER INPUT TEMPLATE — V12 COMPATIBILITY NOTICE
+
+Do not fill this file directly.
+
+V12 replaces all earlier multi-file owner questionnaires with:
+
+- `90_OWNER_RELEASE_INPUT_SCHEMA.json`;
+- `91_OWNER_RELEASE_INPUT_EXAMPLE.json`;
+- generated runtime file: `owner-release-inputs.json`;
+- generated report: `MISSING_OWNER_INPUTS_RU.md`;
+- `92_OWNER_SECRETS_SIGNING_MATRIX.csv` for secret names only.
+
+Codex must migrate any values previously collected through older
+`EXTERNAL_OWNER_INPUTS` documents into the single V12 input model. It must
+not ask the owner to enter the same value twice.
+
+All store metadata, prices, territories, legal URLs, audience decisions,
+rights approvals, release controls and console worksheets are generated
+from that one file.
+
+Secret values never belong in `owner-release-inputs.json`; they are placed
+in the documented secure store/CI/merchant systems.
+
+This compatibility file remains only so older references in the
+specification resolve safely. It is not an additional owner task.

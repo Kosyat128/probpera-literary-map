@@ -1,0 +1,15 @@
+﻿threat_id,threat,asset_scope,severity,controls,verification,status
+T01,Local entitlement tampering,paid assets,high,server verification; signed snapshot; no self-grant,tamper tests,required
+T02,Child route/cache leakage,child safety,critical,pre-render policy; separate indexes; deny default,bypass E2E,required
+T03,Parent PIN brute force/bypass,parent control,critical,secure verifier; backoff; route/back/restart guards,security/native tests,required
+T04,Unlicensed Disney/IP publication,rights,critical,blocked default; binary/metadata scan; approvals,rights gates,required
+T05,Malicious content package,content,critical,schema/hash/signature; atomic activation,corrupt/replay tests,required
+T06,Receipt replay/wrong environment,commerce,critical,store/package/environment validation; idempotency,sandbox/server tests,required
+T07,Admin account compromise,admin,critical,RBAC/MFA/server auth/audit/dry-run,auth tests,required
+T08,Supply-chain compromise,build,high,lockfile; SBOM; pinned CI; scans,CI security,required
+T09,XSS/rich-content injection,web/mobile,high,sanitize; CSP; no eval/remote code,security tests,required
+T10,Secret/signing key leakage,release,critical,managed secrets; no Git/logs; rotation,secret scan/tabletop,required
+T11,WebGL resource exhaustion,availability,medium,budgets; LRU; disposal; safe mode,stress profile,required
+T12,Child telemetry leakage,privacy,critical,event allowlist; redaction; NoOp child analytics,schema/log tests,required
+T13,Rollback/downgrade attack,content,high,version/signature/minimum app/anti-rollback,update tests,required
+T14,License expiry without fallback,rights/UX,high,alerts; delist; post-term policy; fallback,expiry simulation,required

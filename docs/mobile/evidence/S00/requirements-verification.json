@@ -1,0 +1,11 @@
+{
+  "package": "LITERARY_PLANET_CODEX_FINAL_V12_BILINGUAL_RU_EN_ALL_IN_ONE",
+  "version": "12.0",
+  "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+  "checksumFileSha256": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
+  "checksumCount": 194,
+  "manifestFileCount": 191,
+  "bindingDocumentCount": 173,
+  "pass": true,
+  "failures": []
+}

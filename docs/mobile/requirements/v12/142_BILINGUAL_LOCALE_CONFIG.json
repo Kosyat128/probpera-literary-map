@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "12.0",
+  "profile": "SAFE_PAID_BILINGUAL_V1",
+  "sourceLocale": "ru",
+  "fallbackLocale": "en",
+  "supportedLocales": [
+    "ru",
+    "en"
+  ],
+  "resolutionOrder": [
+    "locked-child-profile",
+    "explicit-app-choice",
+    "os-per-app-language",
+    "system-preferred-languages",
+    "ru-if-russian",
+    "en-fallback"
+  ],
+  "storeLocales": {
+    "appStore": [
+      "en-US",
+      "ru"
+    ],
+    "googlePlay": [
+      "en-US",
+      "ru-RU"
+    ],
+    "ruStore": [
+      "ru"
+    ],
+    "web": [
+      "en",
+      "ru"
+    ]
+  },
+  "productNames": {
+    "ru": {
+      "name": "Литературная планета",
+      "brand": "Проба пера",
+      "guide": "Планетка"
+    },
+    "en": {
+      "name": "Literary Planet",
+      "brand": "Proba Pera",
+      "guide": "Planetka"
+    }
+  },
+  "coverageTargets": {
+    "ui": 100,
+    "baseEditionContent": 100,
+    "child": 100,
+    "planetkaText": 100,
+    "storeLegalSupport": 100,
+    "accessibility": 100
+  },
+  "languageSwitch": {
+    "preserveGlobeCanvas": true,
+    "preserveCamera": true,
+    "preserveEntitySelection": true,
+    "preserveChildPolicy": true,
+    "preserveEntitlements": true,
+    "noWrongLanguageFirstFrame": true
+  },
+  "disabledUntilApproved": [
+    "third-locale",
+    "untranslated-optional-pack",
+    "raw-machine-translation",
+    "unverified-title",
+    "unlicensed-audio"
+  ],
+  "privacy": {
+    "localPreferenceByDefault": true,
+    "doNotInferNationality": true,
+    "syncOnlyIfOptionalAccountEnabledAndDeclared": true
+  }
+}

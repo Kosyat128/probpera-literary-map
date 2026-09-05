@@ -1,0 +1,16 @@
+﻿item_id,category,data_or_permission,default_expected,purpose,child_mode,store_declarations,code_inventory_source,retention_or_denial,release_gate
+PP-001,permission,INTERNET,allowed,"content updates, purchase verification, sync",minimal,Apple/Google/RuStore,native manifests,offline fallback,must_match
+PP-002,permission,CAMERA,absent,none in V1,absent,all,native manifests/plugins,n/a,block_if_present
+PP-003,permission,MICROPHONE,absent,narration is playback only,absent,all,native manifests/plugins,n/a,block_if_present
+PP-004,permission,PRECISE_LOCATION,absent,not needed for literary globe,absent,all,native manifests/plugins,n/a,block_if_present
+PP-005,permission,CONTACTS_SMS_PHONE_CALL_LOG,absent,not needed,absent,all,native manifests/plugins,n/a,block_if_present
+PP-006,permission,BROAD_STORAGE,absent,use app sandbox/filesystem,absent,all,native manifests/plugins,denial-safe,block_if_present
+PP-007,permission,ADVERTISING_ID,absent,no ads/profiling,absent,all,SDK/manifest,n/a,block_if_present
+PP-008,data,Adult account identifier,only if optional account enabled,auth and sync,not a child account,privacy/Data Safety,auth/backend schemas,delete/anonymize,declare_if_processed
+PP-009,data,Child exact age in years,local/minimized,age policy,local only by default,privacy/target audience,child profile schema,parent deletes,declare_accurately
+PP-010,data,Favorites/history/progress,local; optional sync,user functionality,separate child namespace,privacy/Data Safety,storage/backend,delete with account/profile,declare_if_synced
+PP-011,data,Purchase transaction identifiers,processed securely,"verification, restore, fraud/refund",adult transaction only,privacy/Data Safety,purchase backend,legal/security retention; redact,declare
+PP-012,data,IP/server logs,minimal processing,security and delivery,no behavioral profile,privacy declarations,network/server config,short documented retention,declare_if_collected
+PP-013,data,Crash diagnostics,NoOp by default,reliability if enabled,strictly minimized,privacy declarations,SDK/config/traffic,document/opt-out where needed,audit_sdk
+PP-014,data,Support request,only user initiated,support,parent/adult channel,privacy declarations,support system,documented retention,declare
+PP-015,account,Deletion path,required if account creation enabled,user rights,parent deletes local child profile,Apple/Google/policy,UI/backend/web,complete deletion workflow,block_if_missing

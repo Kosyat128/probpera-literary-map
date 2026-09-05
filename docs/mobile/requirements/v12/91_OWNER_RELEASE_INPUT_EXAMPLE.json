@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "12.0",
+  "product": {
+    "publicNameRu": "Литературная планета",
+    "subtitleRu": "Проба пера",
+    "defaultLocale": "system",
+    "enabledLocales": [
+      "ru",
+      "en"
+    ],
+    "supportName": "Поддержка «Проба пера»",
+    "publicNameEn": "Literary Planet",
+    "subtitleEn": "Proba Pera",
+    "sourceLocale": "ru",
+    "fallbackLocale": "en",
+    "englishReleaseApproved": false,
+    "storeLocales": {
+      "appStore": [
+        "en-US",
+        "ru"
+      ],
+      "googlePlay": [
+        "en-US",
+        "ru-RU"
+      ],
+      "ruStore": [
+        "ru"
+      ],
+      "web": [
+        "en",
+        "ru"
+      ]
+    },
+    "supportNameEn": "Proba Pera Support"
+  },
+  "legalOwner": {
+    "entityType": "company",
+    "legalName": "ЗАПОЛНИТЬ",
+    "publicSellerName": "ЗАПОЛНИТЬ",
+    "country": "ЗАПОЛНИТЬ",
+    "businessAddressReference": "SECURE_OWNER_RECORD",
+    "supportContactReference": "SECURE_OWNER_RECORD",
+    "euTraderStatus": "not-decided",
+    "dunsNumberReference": "SECURE_OWNER_RECORD_IF_APPLICABLE"
+  },
+  "brand": {
+    "probperaBrandApproved": true,
+    "domainControlApproved": true,
+    "appIconApproved": false,
+    "planetkaApproved": false,
+    "brandEvidenceReference": "OWNER_RIGHTS_VAULT"
+  },
+  "releaseProfile": {
+    "id": "SAFE_PAID_BILINGUAL_V1",
+    "enableOptionalIapAtV1": true,
+    "enableCloudAccountAtV1": false,
+    "enablePushAtV1": false,
+    "enableBehaviouralAnalyticsAtV1": false,
+    "enableDisneyAtV1": false,
+    "manualReleaseAfterApproval": true,
+    "englishRequiredAtV1": true,
+    "enableThirdLocaleAtV1": false
+  },
+  "platforms": {
+    "webPwa": true,
+    "googlePlay": true,
+    "ruStore": true,
+    "appStore": true,
+    "androidPackageName": "ru.probpera.literaryplanet",
+    "appleBundleId": "ru.probpera.literaryplanet"
+  },
+  "audience": {
+    "strategy": "general-family-with-protected-child-mode",
+    "appleKidsCategory": false,
+    "childAgeMin": 3,
+    "childAgeMax": 17,
+    "ownerApprovedAgeRatingApple": null,
+    "ownerApprovedAgeRatingGoogle": null,
+    "ownerApprovedAgeRatingRuStore": null,
+    "googleTargetAgeGroups": []
+  },
+  "commerce": {
+    "distributionModel": "PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES",
+    "noSubscription": true,
+    "noAds": true,
+    "firstOptionalProductId": "original.background.premium-library",
+    "priceAnchors": {
+      "appStore": "OWNER_FINAL_PRICE_POINT",
+      "googlePlay": "OWNER_FINAL_PRICE",
+      "ruStore": 899,
+      "webPwa": 899
+    },
+    "familySharingClaim": "not-promised",
+    "crossStoreEntitlementClaim": "not-promised"
+  },
+  "territories": {
+    "releaseSet": "SAFE_INITIAL",
+    "include": [],
+    "exclude": [],
+    "euDistribution": false,
+    "franceDistribution": false
+  },
+  "urls": {
+    "support": "https://probpera.ru/support",
+    "privacy": "https://probpera.ru/privacy",
+    "terms": "https://probpera.ru/terms",
+    "accountDeletion": null,
+    "privacyChoices": null,
+    "labelsAndMarkings": null,
+    "supportEn": "https://probpera.ru/en/support",
+    "privacyEn": "https://probpera.ru/en/privacy",
+    "termsEn": "https://probpera.ru/en/terms",
+    "accountDeletionEn": null,
+    "legalControllingLanguage": "not-decided"
+  },
+  "rightsApproval": {
+    "realPortraits": false,
+    "flags": false,
+    "starterSet": false,
+    "planetka": false,
+    "backgrounds": false,
+    "audioFonts": false,
+    "disneyExcluded": true,
+    "rightsEvidenceReference": "OWNER_RIGHTS_VAULT",
+    "englishTranslations": false,
+    "englishAudio": false,
+    "englishStoreLegalSupport": false,
+    "englishNamesTitlesEvidence": false
+  },
+  "releaseControl": {
+    "ownerApprovesDraftUploads": false,
+    "ownerApprovesManualSubmission": false,
+    "ownerApprovesStagedRollout": true,
+    "autoMerge": false,
+    "targetReleaseDate": null,
+    "approvalRecordReference": "OWNER_APPROVAL_RECORD",
+    "bilingualReleaseApproved": false,
+    "localizedScreenshotsApproved": false
+  },
+  "childPrivacy": {
+    "childDataLocalByDefault": true,
+    "childCloudAccountEnabled": false,
+    "childAdvertisingEnabled": false,
+    "childBehaviouralAnalyticsEnabled": false,
+    "childUploadsEnabled": false,
+    "childAiInputEnabled": false,
+    "jurisdictionReview": {
+      "unitedStates": "not-distributed",
+      "europeanUnion": "not-distributed",
+      "france": "not-distributed",
+      "unitedKingdom": "not-distributed"
+    },
+    "legalApprovalReference": "OWNER_LEGAL_APPROVAL_RECORD"
+  }
+}

@@ -1,0 +1,8 @@
+﻿asset,backup_method,retention,restore_test_frequency,restore_acceptance,owner
+canonical database,automated + point-in-time where available,defined by owner/RPO,quarterly full + monthly sample,restore isolated then validate content/parity,content owner
+media/object storage,versioned/incremental,defined by rights/operations,quarterly sample,restore hashes/provenance/links,media owner
+rights/licensing records,encrypted export,long-term contractual,quarterly,restore agreement metadata/expiry alerts,rights owner
+store/SKU/pricing metadata,versioned export,release history,each release,compare console/export and mappings,commerce owner
+content manifests/packages,immutable archive,supported versions + legal,each release,activate last-known-good,release owner
+source/CI configs,Git + protected remote,project lifetime,continuous,fresh clone/build/test,engineering owner
+secrets inventory,names/rotation metadata only,policy-based,quarterly tabletop,rotate/reconfigure; never export values,security owner
