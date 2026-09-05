@@ -5,7 +5,9 @@ S00 accepted ef16246f; S01 accepted25b53479; S02 accepted6305df5f.
 Canonical base remains main0a348bd4. Active S03.acceptance is controlled Web/PWA.
 S03-S10 route18/21/22/23 and unchanged shared invariants have been read in full.
 Do not reread or load future specialized documents merely to fill context.
-S03 remains an IN_PROGRESS source checkpoint, not accepted. Inspect current git log.
+S03 source/evidence checkpoint is54bf83005fee01771e5f9e0ac1f0f12e16a85128,
+IN_PROGRESS, not accepted. State headSha deliberately retains accepted S02.
+Inspect current git log before the planned local canonical source integration.
 STATUS, PROGRESS_RU and evidence/S03/known-gaps.json distinguish
 snapshot tests from unfinished user flows and actual release gates.
 Preserve .tmp browser failures and all later successful raw logs.

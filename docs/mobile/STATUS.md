@@ -2,6 +2,9 @@
 
 Active stage: S03 - controlled Web/PWA implementation. IN_PROGRESS.
 
+Working source/evidence checkpoint:54bf83005fee01771e5f9e0ac1f0f12e16a85128.
+This is not S03 acceptance. State headSha remains the last accepted S02 checkpoint.
+
 S03 working checkpoint: controlled PWA build, signature-verifying access boundary,
 isolated integrity-checked worker and explicit update flow are implemented.
 The 55d51c715f4f3291f231811752d04c0655a6ba7b95c6cb678dce71890b2bd521
@@ -31,7 +34,7 @@ Dostoevsky; that separate product defect remains open. The final c2923b31 local 
 artifact passed all18 Chrome desktop/mobile-viewport scenarios and its331-file
 audit. The positive writer/work test uses confirmed Galsworthy data; it does not
 waive the Dostoevsky mismatch. No actual native device result is claimed.
-Current work: preserve this IN_PROGRESS source checkpoint, then integrate fetched
+Next work: integrate fetched
 canonical main, fix remaining current-stage gaps and validate fresh outputs.
 Remote main advanced from the accepted0a348bd4 base to f406a7de; its new bookshelf,
 dossier, typography and news changes are fetched and reviewed but not yet applied.

@@ -95,3 +95,7 @@
   identity, install and offline behavior. Provider work remains internal and
   global COMMERCE-008 stays open. Deletion initiation/status alone cannot prove
   functional execution; no automatic cron is inferred as the only valid design.
+- D030: Local checkpoint54bf8300 preserves the S03 working source and its4147
+  unit/18 Chrome viewport results before new canonical-main integration. S03
+  remains IN_PROGRESS, with known internal gaps; accepted state headSha stays
+  at S02. The source checkpoint and this state follow-up do not authorize release.
