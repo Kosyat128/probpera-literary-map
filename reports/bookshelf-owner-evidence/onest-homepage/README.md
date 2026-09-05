@@ -1,0 +1,21 @@
+# Onest homepage typography
+
+The owner explicitly rejected the previous Source UI typography and requested a modern, more compact Cyrillic face. Onest is bundled locally as four variable WOFF2 subsets, with its SIL OFL license. The UI uses 400 for copy, 500 for editorial headings and 600 for action emphasis. Paragraphs use 1.45 leading; long article reading uses 1.6 (1.55 on mobile). Actions are 15px, metadata 14px and captions at least 13px in the canonical system. Physical reference-bound book pages retain their existing Source fonts. Header and Hero retain their preserved local families and composition.
+
+Official font source: https://github.com/simpals/onest. The individual downloaded subset hashes are in `font-assets.json`. No external font request is needed at runtime.
+
+## Final local validation
+
+- Full unit suite: 521 files passed, 3004 tests passed; three files/four pre-existing tests skipped. Public/admin lint and type checks passed. Typography audit: 19 CSS files, zero issues.
+- Domain build passed, including 5513 SEO checks for 180 pages. Performance budgets passed for 4569 production files.
+- `typography-and-card-geometry.spec.mjs`: all nine tests passed. RU/EN cards and article reading were measured at ten widths, including complete text, Share alignment, control states, published CMS priority and 200/400-percent equivalent reflow.
+- All six Header/Hero browser checks passed. Both RU desktop and EN mobile art-direction checks passed with the new exact scale and leading values.
+- `globe-visual-regression.spec.mjs`: both desktop/mobile cases passed after review of the two changed writer-card baselines. The two upper-chrome baseline hashes are unchanged. All three mobile writer tabs are tested in the real UI before screenshot-only stabilization.
+- `shelf-controls.json`: eight visible controls measured at each of 1440, 768, 390 and 320px. Full labels fit their controls, minimum control dimensions are 44px and document overflow is zero. Long mobile actions receive sufficient grid width; labels are not shrunk or truncated to force a fit.
+- The separate navigation-alignment evidence has six responsive cases with zero row spread. Its 1024/390px cases are isolated panel fixtures because the preserved Header hides desktop dropdowns at those widths.
+
+`homepage-metrics.json` records eleven actual homepage sections at 1440/390px after the final production build, without CSS injection. It is an exploratory geometry capture, not a claim that every raw overflow entry is a defect: the two shelf live regions are deliberately visually hidden accessibility text, while journal category tabs and the globe edition rail have intentional scrollports. No visible editorial card title, excerpt, calendar copy, community counter or footer text was clipped. The mobile counters' earlier overflow is resolved. Sections larger than a viewport can show the existing sticky Header inside a full-element screenshot; this capture behavior does not imply duplicate headers in the document.
+
+The first control-only capture encountered replacement of the lazy archive placeholder during scrolling. The final capture waits for the actual controls and passed all four widths. Two old font-baseline failures were reviewed and updated for the intentional Onest change; screenshot tolerances were not relaxed. An earlier full unit run found two outdated presentation expectations and slow repeated Playwright subprocess imports; the exact expectations and isolated-process check were corrected before the successful final full run.
+
+These results describe the final local source/build before commit. Main merge, hosted release verification and database schema deployment are separate release steps and must be recorded from their actual outcomes.

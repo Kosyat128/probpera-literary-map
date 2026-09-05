@@ -73,7 +73,8 @@ for (const locale of ["ru", "en"]) {
     );
     expect(loadedSources.length).toBeGreaterThan(0);
     for (const source of loadedSources) expect(new URL(source).origin).toBe(new URL(page.url()).origin);
-    expect(await japaneseCard(page).locator("h3").evaluate((element) => getComputedStyle(element).fontFamily)).toContain("Source Serif");
+    expect(await japaneseCard(page).locator("h3").evaluate((element) => getComputedStyle(element).fontFamily)).toContain("Onest Local");
+    expect(await page.evaluate(async () => (await document.fonts.load('500 24px "Onest Local"', 'Прочитать')).length)).toBeGreaterThan(0);
   });
 
   test(`${locale}: archive and reader reflow, body scale and heading isolation`, async ({ page }) => {
@@ -218,8 +219,8 @@ test("project directory keeps complete copy and a consistent action label", asyn
         expect(element.clamp, `${locale}/${width}/${element.tag} complete`).toBe("none");
         expect(element.overflow, `${locale}/${width}/${element.tag} horizontal bounds`).toBeLessThanOrEqual(1);
         if (["STRONG", "SPAN"].includes(element.tag)) {
-          expect(element.font).toContain("Source Sans");
-          expect(element.size).toBe("14px");
+          expect(element.font).toContain("Onest Local");
+          expect(element.size).toBe("15px");
           expect(element.weight).toBe("600");
           expect(["normal", "0px"]).toContain(element.tracking);
           expect(element.transform).toBe("none");

@@ -410,7 +410,13 @@ describe("approved Complete Shelf outer presentation", () => {
       /\.book-shelf-controls\.book-archive-toolbar\s+\.book-shelf-controls__input input\s*\{[^}]*height:\s*42px[^}]*line-height:\s*42px/iu
     );
     expect(mobileCss).toMatch(
-      /\.book-shelf-controls \.book-archive-filters\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)[^}]*overflow:\s*hidden/iu
+      /\.book-shelf-controls \.book-archive-filters\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)[^}]*overflow:\s*visible/iu
+    );
+    expect(mobileCss).toMatch(
+      /@media \(max-width: 480px\)[\s\S]*?\.book-shelf-controls__views \.book-shelf-controls__random\s*\{[^}]*grid-column:\s*1 \/ -1/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-controls \.book-filter-copy strong\s*\{[^}]*font-size:\s*var\(--type-action\)[^}]*white-space:\s*normal/iu
     );
     expect(mobileCss).toMatch(
       /\.book-shelf-controls \.book-archive-filters > button\s*\{[^}]*align-items:\s*center[^}]*justify-content:\s*center[^}]*min-width:\s*0/iu

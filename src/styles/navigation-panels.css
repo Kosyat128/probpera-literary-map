@@ -46,16 +46,18 @@
 
   .sections-mega-menu .sections-mega-groups {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: auto;
+    grid-template-rows: none;
+    grid-auto-rows: max-content;
+    align-content: start;
     padding: 12px;
     background: #fffaf3;
   }
 
   .sections-mega-menu .sections-mega-groups > section {
     display: grid;
-    grid-template-rows: auto;
-    align-self: start;
-    align-content: start;
+    grid-row: span var(--menu-group-rows);
+    grid-template-rows: subgrid;
+    align-self: stretch;
     min-width: 0;
     padding: 0;
   }
@@ -67,7 +69,8 @@
   }
 
   .sections-mega-menu .sections-mega-groups a {
-    grid-template-rows: auto auto;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
     gap: 4px;
     align-content: start;
     align-items: start;
@@ -134,10 +137,14 @@
 
   .articles-mega-menu .articles-mega-content > section {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: max-content;
+    align-content: start;
     min-width: 0;
   }
 
   .articles-mega-menu .articles-mega-content > section a {
+    grid-row: span 3;
+    grid-template-rows: subgrid;
     gap: 6px;
     align-items: start;
     min-height: 44px;
@@ -224,6 +231,11 @@
     .sections-mega-menu .sections-mega-groups a {
       grid-row: auto;
       grid-template-rows: auto auto;
+    }
+
+    .articles-mega-menu .articles-mega-content > section a {
+      grid-row: auto;
+      grid-template-rows: auto auto auto;
     }
 
     .sections-mega-menu > footer,

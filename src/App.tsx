@@ -7,6 +7,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type CSSProperties,
   type HTMLAttributes,
 } from "react";
 
@@ -1873,7 +1874,9 @@ export default function App() {
                   )}
                 </p>
               </header>
-              <div className="sections-mega-groups">
+              <div className="sections-mega-groups" style={{
+                "--menu-group-rows": 1 + 2 * Math.max(...sectionMenuGroups.map(({ sections }) => sections.length)),
+              } as CSSProperties}>
                 {sectionMenuGroups.map(({ group, sections }) => (
                   <section key={group}>
                     <h3>{t(group)}</h3>

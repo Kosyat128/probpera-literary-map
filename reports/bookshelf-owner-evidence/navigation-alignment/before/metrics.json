@@ -1,0 +1,3925 @@
+{
+  "phase": "before",
+  "base": "http://127.0.0.1:4185/",
+  "started": "2026-09-05T04:31:12.541Z",
+  "cases": [
+    {
+      "kind": "sections",
+      "width": 1440,
+      "panel": {
+        "x": 160,
+        "y": 114,
+        "width": 1120,
+        "height": 742.71875,
+        "right": 1280,
+        "bottom": 856.71875
+      },
+      "items": [
+        {
+          "box": {
+            "x": 173,
+            "y": 253.875,
+            "width": 268.75,
+            "height": 101.890625,
+            "right": 441.75,
+            "bottom": 355.765625
+          },
+          "title": [
+            {
+              "x": 185,
+              "y": 260.875,
+              "right": 418.59375,
+              "bottom": 285.875
+            }
+          ],
+          "description": [
+            {
+              "x": 185,
+              "y": 289.265625,
+              "right": 375.859375,
+              "bottom": 307.265625
+            },
+            {
+              "x": 185,
+              "y": 308.765625,
+              "right": 417.765625,
+              "bottom": 326.765625
+            },
+            {
+              "x": 185,
+              "y": 328.265625,
+              "right": 306.96875,
+              "bottom": 346.265625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Все публикации журналаПолный авторский архив: статьи, рецензии, эссе, литературные истории и тематические циклы."
+        },
+        {
+          "box": {
+            "x": 173,
+            "y": 355.765625,
+            "width": 268.75,
+            "height": 101.890625,
+            "right": 441.75,
+            "bottom": 457.65625
+          },
+          "title": [
+            {
+              "x": 185,
+              "y": 362.765625,
+              "right": 330.140625,
+              "bottom": 387.765625
+            }
+          ],
+          "description": [
+            {
+              "x": 185,
+              "y": 391.15625,
+              "right": 421.96875,
+              "bottom": 409.15625
+            },
+            {
+              "x": 185,
+              "y": 410.65625,
+              "right": 366.203125,
+              "bottom": 428.65625
+            },
+            {
+              "x": 185,
+              "y": 430.15625,
+              "right": 297,
+              "bottom": 448.15625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Мнение о книгеРедкие издания, классика и современная литература - с контекстом и без лишних спойлеров."
+        },
+        {
+          "box": {
+            "x": 173,
+            "y": 457.65625,
+            "width": 268.75,
+            "height": 101.890625,
+            "right": 441.75,
+            "bottom": 559.546875
+          },
+          "title": [
+            {
+              "x": 185,
+              "y": 464.65625,
+              "right": 380.75,
+              "bottom": 489.65625
+            }
+          ],
+          "description": [
+            {
+              "x": 185,
+              "y": 493.046875,
+              "right": 405.6875,
+              "bottom": 511.046875
+            },
+            {
+              "x": 185,
+              "y": 512.546875,
+              "right": 402.328125,
+              "bottom": 530.546875
+            },
+            {
+              "x": 185,
+              "y": 532.046875,
+              "right": 269.609375,
+              "bottom": 550.046875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книга и экранизацияСравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее."
+        },
+        {
+          "box": {
+            "x": 173,
+            "y": 559.546875,
+            "width": 268.75,
+            "height": 101.890625,
+            "right": 441.75,
+            "bottom": 661.4375
+          },
+          "title": [
+            {
+              "x": 185,
+              "y": 566.546875,
+              "right": 422.671875,
+              "bottom": 591.546875
+            }
+          ],
+          "description": [
+            {
+              "x": 185,
+              "y": 594.9375,
+              "right": 396.484375,
+              "bottom": 612.9375
+            },
+            {
+              "x": 185,
+              "y": 614.4375,
+              "right": 412.921875,
+              "bottom": 632.4375
+            },
+            {
+              "x": 185,
+              "y": 633.9375,
+              "right": 345.921875,
+              "bottom": 651.9375
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книжный гид и подборкиТематические маршруты для чтения: классика, современная проза и книги, к которым хочется вернуться."
+        },
+        {
+          "box": {
+            "x": 173,
+            "y": 661.4375,
+            "width": 268.75,
+            "height": 125.28125,
+            "right": 441.75,
+            "bottom": 786.71875
+          },
+          "title": [
+            {
+              "x": 185,
+              "y": 668.4375,
+              "right": 286.3125,
+              "bottom": 693.4375
+            },
+            {
+              "x": 185,
+              "y": 691.828125,
+              "right": 401.4375,
+              "bottom": 716.828125
+            }
+          ],
+          "description": [
+            {
+              "x": 185,
+              "y": 720.21875,
+              "right": 383.109375,
+              "bottom": 738.21875
+            },
+            {
+              "x": 185,
+              "y": 739.71875,
+              "right": 416.15625,
+              "bottom": 757.71875
+            },
+            {
+              "x": 185,
+              "y": 759.21875,
+              "right": 312.4375,
+              "bottom": 777.21875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Рассказы и литературные историиАвторские рассказы и эссе, судьбы произведений, писательские замыслы и культурные открытия."
+        },
+        {
+          "box": {
+            "x": 442.75,
+            "y": 253.875,
+            "width": 268.75,
+            "height": 82.390625,
+            "right": 711.5,
+            "bottom": 336.265625
+          },
+          "title": [
+            {
+              "x": 454.75,
+              "y": 260.875,
+              "right": 666.34375,
+              "bottom": 285.875
+            }
+          ],
+          "description": [
+            {
+              "x": 454.75,
+              "y": 289.265625,
+              "right": 682.15625,
+              "bottom": 307.265625
+            },
+            {
+              "x": 454.75,
+              "y": 308.765625,
+              "right": 673.6875,
+              "bottom": 326.765625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Литературные премииИстория крупнейших наград, лауреаты, произведения и культурный контекст."
+        },
+        {
+          "box": {
+            "x": 442.75,
+            "y": 336.265625,
+            "width": 268.75,
+            "height": 125.28125,
+            "right": 711.5,
+            "bottom": 461.546875
+          },
+          "title": [
+            {
+              "x": 454.75,
+              "y": 343.265625,
+              "right": 645.484375,
+              "bottom": 368.265625
+            },
+            {
+              "x": 454.75,
+              "y": 366.65625,
+              "right": 551.015625,
+              "bottom": 391.65625
+            }
+          ],
+          "description": [
+            {
+              "x": 454.75,
+              "y": 395.046875,
+              "right": 677.921875,
+              "bottom": 413.046875
+            },
+            {
+              "x": 454.75,
+              "y": 414.546875,
+              "right": 651.578125,
+              "bottom": 432.546875
+            },
+            {
+              "x": 454.75,
+              "y": 434.046875,
+              "right": 538.875,
+              "bottom": 452.046875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Биографии и судьбы писателейТщательные человеческие биографии: судьба, время, характер и главные тексты автора."
+        },
+        {
+          "box": {
+            "x": 442.75,
+            "y": 461.546875,
+            "width": 268.75,
+            "height": 101.890625,
+            "right": 711.5,
+            "bottom": 563.4375
+          },
+          "title": [
+            {
+              "x": 454.75,
+              "y": 468.546875,
+              "right": 665.421875,
+              "bottom": 493.546875
+            }
+          ],
+          "description": [
+            {
+              "x": 454.75,
+              "y": 496.9375,
+              "right": 656.796875,
+              "bottom": 514.9375
+            },
+            {
+              "x": 454.75,
+              "y": 516.4375,
+              "right": 678.390625,
+              "bottom": 534.4375
+            },
+            {
+              "x": 454.75,
+              "y": 535.9375,
+              "right": 682.203125,
+              "bottom": 553.9375
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Литературная планетаСтраны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами."
+        },
+        {
+          "box": {
+            "x": 442.75,
+            "y": 563.4375,
+            "width": 268.75,
+            "height": 121.390625,
+            "right": 711.5,
+            "bottom": 684.828125
+          },
+          "title": [
+            {
+              "x": 454.75,
+              "y": 570.4375,
+              "right": 604.65625,
+              "bottom": 595.4375
+            }
+          ],
+          "description": [
+            {
+              "x": 454.75,
+              "y": 598.828125,
+              "right": 669.796875,
+              "bottom": 616.828125
+            },
+            {
+              "x": 454.75,
+              "y": 618.328125,
+              "right": 626.015625,
+              "bottom": 636.328125
+            },
+            {
+              "x": 454.75,
+              "y": 637.828125,
+              "right": 624.46875,
+              "bottom": 655.828125
+            },
+            {
+              "x": 454.75,
+              "y": 657.328125,
+              "right": 572.453125,
+              "bottom": 675.328125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книжный архивКниги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек."
+        },
+        {
+          "box": {
+            "x": 712.5,
+            "y": 253.875,
+            "width": 268.75,
+            "height": 101.890625,
+            "right": 981.25,
+            "bottom": 355.765625
+          },
+          "title": [
+            {
+              "x": 724.5,
+              "y": 260.875,
+              "right": 952.359375,
+              "bottom": 285.875
+            }
+          ],
+          "description": [
+            {
+              "x": 724.5,
+              "y": 289.265625,
+              "right": 946.28125,
+              "bottom": 307.265625
+            },
+            {
+              "x": 724.5,
+              "y": 308.765625,
+              "right": 923.75,
+              "bottom": 326.765625
+            },
+            {
+              "x": 724.5,
+              "y": 328.265625,
+              "right": 814.59375,
+              "bottom": 346.265625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "О литературе и культуреБольшие редакционные эссе о чтении, библиотеках, культурной памяти и будущем книги."
+        },
+        {
+          "box": {
+            "x": 712.5,
+            "y": 355.765625,
+            "width": 268.75,
+            "height": 101.890625,
+            "right": 981.25,
+            "bottom": 457.65625
+          },
+          "title": [
+            {
+              "x": 724.5,
+              "y": 362.765625,
+              "right": 940,
+              "bottom": 387.765625
+            }
+          ],
+          "description": [
+            {
+              "x": 724.5,
+              "y": 391.15625,
+              "right": 937.578125,
+              "bottom": 409.15625
+            },
+            {
+              "x": 724.5,
+              "y": 410.65625,
+              "right": 959.078125,
+              "bottom": 428.65625
+            },
+            {
+              "x": 724.5,
+              "y": 430.15625,
+              "right": 847.484375,
+              "bottom": 448.15625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Фольклор и мифологияПерсонажи, сюжеты и образы устной традиции - от славянского фольклора до мировых мифологий."
+        },
+        {
+          "box": {
+            "x": 712.5,
+            "y": 457.65625,
+            "width": 268.75,
+            "height": 101.890625,
+            "right": 981.25,
+            "bottom": 559.546875
+          },
+          "title": [
+            {
+              "x": 724.5,
+              "y": 464.65625,
+              "right": 912.34375,
+              "bottom": 489.65625
+            }
+          ],
+          "description": [
+            {
+              "x": 724.5,
+              "y": 493.046875,
+              "right": 916.84375,
+              "bottom": 511.046875
+            },
+            {
+              "x": 724.5,
+              "y": 512.546875,
+              "right": 946.890625,
+              "bottom": 530.546875
+            },
+            {
+              "x": 724.5,
+              "y": 532.046875,
+              "right": 927.578125,
+              "bottom": 550.046875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Язык и редкие словаИстория слов, точные значения и выразительные возможности русского языка без сухой словарной подачи."
+        },
+        {
+          "box": {
+            "x": 982.25,
+            "y": 253.875,
+            "width": 269.75,
+            "height": 101.890625,
+            "right": 1252,
+            "bottom": 355.765625
+          },
+          "title": [
+            {
+              "x": 994.25,
+              "y": 260.875,
+              "right": 1232.46875,
+              "bottom": 285.875
+            }
+          ],
+          "description": [
+            {
+              "x": 994.25,
+              "y": 289.265625,
+              "right": 1203.328125,
+              "bottom": 307.265625
+            },
+            {
+              "x": 994.25,
+              "y": 308.765625,
+              "right": 1227.21875,
+              "bottom": 326.765625
+            },
+            {
+              "x": 994.25,
+              "y": 328.265625,
+              "right": 1091.375,
+              "bottom": 346.265625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Литературный календарьДни рождения и памяти писателей с точными датами и быстрым переходом к карточке автора."
+        },
+        {
+          "box": {
+            "x": 982.25,
+            "y": 355.765625,
+            "width": 269.75,
+            "height": 101.890625,
+            "right": 1252,
+            "bottom": 457.65625
+          },
+          "title": [
+            {
+              "x": 994.25,
+              "y": 362.765625,
+              "right": 1186.328125,
+              "bottom": 387.765625
+            }
+          ],
+          "description": [
+            {
+              "x": 994.25,
+              "y": 391.15625,
+              "right": 1239.171875,
+              "bottom": 409.15625
+            },
+            {
+              "x": 994.25,
+              "y": 410.65625,
+              "right": 1185.953125,
+              "bottom": 428.65625
+            },
+            {
+              "x": 994.25,
+              "y": 430.15625,
+              "right": 1080.96875,
+              "bottom": 448.15625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Указатель писателейБыстрый вход в биографии, произведения и литературные связи авторов из энциклопедии."
+        },
+        {
+          "box": {
+            "x": 982.25,
+            "y": 457.65625,
+            "width": 269.75,
+            "height": 101.890625,
+            "right": 1252,
+            "bottom": 559.546875
+          },
+          "title": [
+            {
+              "x": 994.25,
+              "y": 464.65625,
+              "right": 1155.171875,
+              "bottom": 489.65625
+            }
+          ],
+          "description": [
+            {
+              "x": 994.25,
+              "y": 493.046875,
+              "right": 1215.40625,
+              "bottom": 511.046875
+            },
+            {
+              "x": 994.25,
+              "y": 512.546875,
+              "right": 1230.4375,
+              "bottom": 530.546875
+            },
+            {
+              "x": 994.25,
+              "y": 532.046875,
+              "right": 1066.46875,
+              "bottom": 550.046875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Форум читателейОбсуждения книг, статей, переводов и экранизаций с общей системой рейтинга и профилей."
+        },
+        {
+          "box": {
+            "x": 982.25,
+            "y": 559.546875,
+            "width": 269.75,
+            "height": 125.28125,
+            "right": 1252,
+            "bottom": 684.828125
+          },
+          "title": [
+            {
+              "x": 994.25,
+              "y": 566.546875,
+              "right": 1166.28125,
+              "bottom": 591.546875
+            },
+            {
+              "x": 994.25,
+              "y": 589.9375,
+              "right": 1101.859375,
+              "bottom": 614.9375
+            }
+          ],
+          "description": [
+            {
+              "x": 994.25,
+              "y": 618.328125,
+              "right": 1197.875,
+              "bottom": 636.328125
+            },
+            {
+              "x": 994.25,
+              "y": 637.828125,
+              "right": 1198.65625,
+              "bottom": 655.828125
+            },
+            {
+              "x": 994.25,
+              "y": 657.328125,
+              "right": 1092.4375,
+              "bottom": 675.328125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Личный кабинет и библиотекаСохранённые материалы, любимые книги, страны и писатели, оценки и история участия."
+        },
+        {
+          "box": {
+            "x": 982.25,
+            "y": 684.828125,
+            "width": 269.75,
+            "height": 101.890625,
+            "right": 1252,
+            "bottom": 786.71875
+          },
+          "title": [
+            {
+              "x": 994.25,
+              "y": 691.828125,
+              "right": 1196.46875,
+              "bottom": 716.828125
+            }
+          ],
+          "description": [
+            {
+              "x": 994.25,
+              "y": 720.21875,
+              "right": 1211.765625,
+              "bottom": 738.21875
+            },
+            {
+              "x": 994.25,
+              "y": 739.71875,
+              "right": 1204.171875,
+              "bottom": 757.71875
+            },
+            {
+              "x": 994.25,
+              "y": 759.21875,
+              "right": 1093.078125,
+              "bottom": 777.21875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "О проекте и редакцииМиссия «Пробы Пера», редакционный стандарт, источники, исправления и авторские права."
+        }
+      ],
+      "rowSpreads": [
+        {
+          "group": 0,
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 0,
+          "index": 1,
+          "title": 19.5,
+          "description": 3.890625
+        },
+        {
+          "group": 0,
+          "index": 2,
+          "title": 3.890625,
+          "description": 3.890625
+        },
+        {
+          "group": 0,
+          "index": 3,
+          "title": 3.890625,
+          "description": 23.390625
+        },
+        {
+          "group": 0,
+          "index": 4,
+          "title": 23.390625,
+          "description": 0
+        }
+      ],
+      "overflow": 0,
+      "fullHeight": 591,
+      "viewportHeight": 591,
+      "menuRows": "",
+      "clipping": [],
+      "overlapCount": 0,
+      "fullTextPreserved": true,
+      "surface": "normal production navigation"
+    },
+    {
+      "kind": "sections",
+      "width": 1024,
+      "panel": {
+        "x": 16,
+        "y": 41.59375,
+        "width": 992,
+        "height": 772,
+        "right": 1008,
+        "bottom": 813.59375
+      },
+      "items": [
+        {
+          "box": {
+            "x": 29,
+            "y": 181.46875,
+            "width": 474.5,
+            "height": 82.390625,
+            "right": 503.5,
+            "bottom": 263.859375
+          },
+          "title": [
+            {
+              "x": 41,
+              "y": 188.46875,
+              "right": 274.59375,
+              "bottom": 213.46875
+            }
+          ],
+          "description": [
+            {
+              "x": 41,
+              "y": 216.859375,
+              "right": 467.21875,
+              "bottom": 234.859375
+            },
+            {
+              "x": 41,
+              "y": 236.359375,
+              "right": 162.96875,
+              "bottom": 254.359375
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Все публикации журналаПолный авторский архив: статьи, рецензии, эссе, литературные истории и тематические циклы."
+        },
+        {
+          "box": {
+            "x": 29,
+            "y": 263.859375,
+            "width": 474.5,
+            "height": 82.390625,
+            "right": 503.5,
+            "bottom": 346.25
+          },
+          "title": [
+            {
+              "x": 41,
+              "y": 270.859375,
+              "right": 186.140625,
+              "bottom": 295.859375
+            }
+          ],
+          "description": [
+            {
+              "x": 41,
+              "y": 299.25,
+              "right": 461.765625,
+              "bottom": 317.25
+            },
+            {
+              "x": 41,
+              "y": 318.75,
+              "right": 153,
+              "bottom": 336.75
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Мнение о книгеРедкие издания, классика и современная литература - с контекстом и без лишних спойлеров."
+        },
+        {
+          "box": {
+            "x": 29,
+            "y": 346.25,
+            "width": 474.5,
+            "height": 82.390625,
+            "right": 503.5,
+            "bottom": 428.640625
+          },
+          "title": [
+            {
+              "x": 41,
+              "y": 353.25,
+              "right": 236.75,
+              "bottom": 378.25
+            }
+          ],
+          "description": [
+            {
+              "x": 41,
+              "y": 381.640625,
+              "right": 481.609375,
+              "bottom": 399.640625
+            },
+            {
+              "x": 41,
+              "y": 401.140625,
+              "right": 125.609375,
+              "bottom": 419.140625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книга и экранизацияСравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее."
+        },
+        {
+          "box": {
+            "x": 29,
+            "y": 428.640625,
+            "width": 474.5,
+            "height": 82.390625,
+            "right": 503.5,
+            "bottom": 511.03125
+          },
+          "title": [
+            {
+              "x": 41,
+              "y": 435.640625,
+              "right": 278.671875,
+              "bottom": 460.640625
+            }
+          ],
+          "description": [
+            {
+              "x": 41,
+              "y": 464.03125,
+              "right": 483,
+              "bottom": 482.03125
+            },
+            {
+              "x": 41,
+              "y": 483.53125,
+              "right": 201.921875,
+              "bottom": 501.53125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книжный гид и подборкиТематические маршруты для чтения: классика, современная проза и книги, к которым хочется вернуться."
+        },
+        {
+          "box": {
+            "x": 29,
+            "y": 511.03125,
+            "width": 474.5,
+            "height": 82.390625,
+            "right": 503.5,
+            "bottom": 593.421875
+          },
+          "title": [
+            {
+              "x": 41,
+              "y": 518.03125,
+              "right": 362.84375,
+              "bottom": 543.03125
+            }
+          ],
+          "description": [
+            {
+              "x": 41,
+              "y": 546.421875,
+              "right": 472.859375,
+              "bottom": 564.421875
+            },
+            {
+              "x": 41,
+              "y": 565.921875,
+              "right": 168.4375,
+              "bottom": 583.921875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Рассказы и литературные историиАвторские рассказы и эссе, судьбы произведений, писательские замыслы и культурные открытия."
+        },
+        {
+          "box": {
+            "x": 504.5,
+            "y": 181.46875,
+            "width": 475.5,
+            "height": 62.890625,
+            "right": 980,
+            "bottom": 244.359375
+          },
+          "title": [
+            {
+              "x": 516.5,
+              "y": 188.46875,
+              "right": 728.09375,
+              "bottom": 213.46875
+            }
+          ],
+          "description": [
+            {
+              "x": 516.5,
+              "y": 216.859375,
+              "right": 965.4375,
+              "bottom": 234.859375
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Литературные премииИстория крупнейших наград, лауреаты, произведения и культурный контекст."
+        },
+        {
+          "box": {
+            "x": 504.5,
+            "y": 244.359375,
+            "width": 475.5,
+            "height": 82.390625,
+            "right": 980,
+            "bottom": 326.75
+          },
+          "title": [
+            {
+              "x": 516.5,
+              "y": 251.359375,
+              "right": 807.609375,
+              "bottom": 276.359375
+            }
+          ],
+          "description": [
+            {
+              "x": 516.5,
+              "y": 279.75,
+              "right": 939.078125,
+              "bottom": 297.75
+            },
+            {
+              "x": 516.5,
+              "y": 299.25,
+              "right": 600.625,
+              "bottom": 317.25
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Биографии и судьбы писателейТщательные человеческие биографии: судьба, время, характер и главные тексты автора."
+        },
+        {
+          "box": {
+            "x": 504.5,
+            "y": 326.75,
+            "width": 475.5,
+            "height": 82.390625,
+            "right": 980,
+            "bottom": 409.140625
+          },
+          "title": [
+            {
+              "x": 516.5,
+              "y": 333.75,
+              "right": 727.171875,
+              "bottom": 358.75
+            }
+          ],
+          "description": [
+            {
+              "x": 516.5,
+              "y": 362.140625,
+              "right": 944.765625,
+              "bottom": 380.140625
+            },
+            {
+              "x": 516.5,
+              "y": 381.640625,
+              "right": 743.953125,
+              "bottom": 399.640625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Литературная планетаСтраны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами."
+        },
+        {
+          "box": {
+            "x": 504.5,
+            "y": 409.140625,
+            "width": 475.5,
+            "height": 82.390625,
+            "right": 980,
+            "bottom": 491.53125
+          },
+          "title": [
+            {
+              "x": 516.5,
+              "y": 416.140625,
+              "right": 666.40625,
+              "bottom": 441.140625
+            }
+          ],
+          "description": [
+            {
+              "x": 516.5,
+              "y": 444.53125,
+              "right": 913.9375,
+              "bottom": 462.53125
+            },
+            {
+              "x": 516.5,
+              "y": 464.03125,
+              "right": 798,
+              "bottom": 482.03125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книжный архивКниги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек."
+        },
+        {
+          "box": {
+            "x": 29,
+            "y": 627.609375,
+            "width": 474.5,
+            "height": 82.390625,
+            "right": 503.5,
+            "bottom": 710
+          },
+          "title": [
+            {
+              "x": 41,
+              "y": 634.609375,
+              "right": 268.859375,
+              "bottom": 659.609375
+            }
+          ],
+          "description": [
+            {
+              "x": 41,
+              "y": 663,
+              "right": 464.609375,
+              "bottom": 681
+            },
+            {
+              "x": 41,
+              "y": 682.5,
+              "right": 131.09375,
+              "bottom": 700.5
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "О литературе и культуреБольшие редакционные эссе о чтении, библиотеках, культурной памяти и будущем книги."
+        },
+        {
+          "box": {
+            "x": 29,
+            "y": 710,
+            "width": 474.5,
+            "height": 82.390625,
+            "right": 503.5,
+            "bottom": 792.390625
+          },
+          "title": [
+            {
+              "x": 41,
+              "y": 717,
+              "right": 256.5,
+              "bottom": 742
+            }
+          ],
+          "description": [
+            {
+              "x": 41,
+              "y": 745.390625,
+              "right": 491.25,
+              "bottom": 763.390625
+            },
+            {
+              "x": 41,
+              "y": 764.890625,
+              "right": 163.984375,
+              "bottom": 782.890625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Фольклор и мифологияПерсонажи, сюжеты и образы устной традиции - от славянского фольклора до мировых мифологий."
+        },
+        {
+          "box": {
+            "x": 29,
+            "y": 792.390625,
+            "width": 474.5,
+            "height": 82.390625,
+            "right": 503.5,
+            "bottom": 874.78125
+          },
+          "title": [
+            {
+              "x": 41,
+              "y": 799.390625,
+              "right": 228.84375,
+              "bottom": 824.390625
+            }
+          ],
+          "description": [
+            {
+              "x": 41,
+              "y": 827.78125,
+              "right": 458.3125,
+              "bottom": 845.78125
+            },
+            {
+              "x": 41,
+              "y": 847.28125,
+              "right": 244.078125,
+              "bottom": 865.28125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Язык и редкие словаИстория слов, точные значения и выразительные возможности русского языка без сухой словарной подачи."
+        },
+        {
+          "box": {
+            "x": 504.5,
+            "y": 627.609375,
+            "width": 475.5,
+            "height": 82.390625,
+            "right": 980,
+            "bottom": 710
+          },
+          "title": [
+            {
+              "x": 516.5,
+              "y": 634.609375,
+              "right": 754.71875,
+              "bottom": 659.609375
+            }
+          ],
+          "description": [
+            {
+              "x": 516.5,
+              "y": 663,
+              "right": 961.140625,
+              "bottom": 681
+            },
+            {
+              "x": 516.5,
+              "y": 682.5,
+              "right": 613.625,
+              "bottom": 700.5
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Литературный календарьДни рождения и памяти писателей с точными датами и быстрым переходом к карточке автора."
+        },
+        {
+          "box": {
+            "x": 504.5,
+            "y": 710,
+            "width": 475.5,
+            "height": 82.390625,
+            "right": 980,
+            "bottom": 792.390625
+          },
+          "title": [
+            {
+              "x": 516.5,
+              "y": 717,
+              "right": 708.578125,
+              "bottom": 742
+            }
+          ],
+          "description": [
+            {
+              "x": 516.5,
+              "y": 745.390625,
+              "right": 939.859375,
+              "bottom": 763.390625
+            },
+            {
+              "x": 516.5,
+              "y": 764.890625,
+              "right": 619.09375,
+              "bottom": 782.890625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Указатель писателейБыстрый вход в биографии, произведения и литературные связи авторов из энциклопедии."
+        },
+        {
+          "box": {
+            "x": 504.5,
+            "y": 792.390625,
+            "width": 475.5,
+            "height": 82.390625,
+            "right": 980,
+            "bottom": 874.78125
+          },
+          "title": [
+            {
+              "x": 516.5,
+              "y": 799.390625,
+              "right": 677.421875,
+              "bottom": 824.390625
+            }
+          ],
+          "description": [
+            {
+              "x": 516.5,
+              "y": 827.78125,
+              "right": 920.75,
+              "bottom": 845.78125
+            },
+            {
+              "x": 516.5,
+              "y": 847.28125,
+              "right": 644.421875,
+              "bottom": 865.28125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Форум читателейОбсуждения книг, статей, переводов и экранизаций с общей системой рейтинга и профилей."
+        },
+        {
+          "box": {
+            "x": 504.5,
+            "y": 874.78125,
+            "width": 475.5,
+            "height": 82.390625,
+            "right": 980,
+            "bottom": 957.171875
+          },
+          "title": [
+            {
+              "x": 516.5,
+              "y": 881.78125,
+              "right": 800.234375,
+              "bottom": 906.78125
+            }
+          ],
+          "description": [
+            {
+              "x": 516.5,
+              "y": 910.171875,
+              "right": 927.125,
+              "bottom": 928.171875
+            },
+            {
+              "x": 516.5,
+              "y": 929.671875,
+              "right": 614.6875,
+              "bottom": 947.671875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Личный кабинет и библиотекаСохранённые материалы, любимые книги, страны и писатели, оценки и история участия."
+        },
+        {
+          "box": {
+            "x": 504.5,
+            "y": 957.171875,
+            "width": 475.5,
+            "height": 82.390625,
+            "right": 980,
+            "bottom": 1039.5625
+          },
+          "title": [
+            {
+              "x": 516.5,
+              "y": 964.171875,
+              "right": 718.71875,
+              "bottom": 989.171875
+            }
+          ],
+          "description": [
+            {
+              "x": 516.5,
+              "y": 992.5625,
+              "right": 946.515625,
+              "bottom": 1010.5625
+            },
+            {
+              "x": 516.5,
+              "y": 1012.0625,
+              "right": 615.328125,
+              "bottom": 1030.0625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "О проекте и редакцииМиссия «Пробы Пера», редакционный стандарт, источники, исправления и авторские права."
+        }
+      ],
+      "rowSpreads": [
+        {
+          "group": 0,
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 0,
+          "index": 1,
+          "title": 19.5,
+          "description": 19.5
+        },
+        {
+          "group": 0,
+          "index": 2,
+          "title": 19.5,
+          "description": 19.5
+        },
+        {
+          "group": 0,
+          "index": 3,
+          "title": 19.5,
+          "description": 19.5
+        },
+        {
+          "group": 0,
+          "index": 4,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 2,
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 2,
+          "index": 1,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 2,
+          "index": 2,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 2,
+          "index": 3,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 2,
+          "index": 4,
+          "title": 0,
+          "description": 0
+        }
+      ],
+      "overflow": 0,
+      "fullHeight": 916,
+      "viewportHeight": 620,
+      "menuRows": "",
+      "clipping": [],
+      "overlapCount": 0,
+      "fullTextPreserved": true,
+      "surface": "isolated actual-menu DOM; compiled responsive layout, fixture position only"
+    },
+    {
+      "kind": "sections",
+      "width": 390,
+      "panel": {
+        "x": 16,
+        "y": 41.59375,
+        "width": 358,
+        "height": 772,
+        "right": 374,
+        "bottom": 813.59375
+      },
+      "items": [
+        {
+          "box": {
+            "x": 25,
+            "y": 265.96875,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 348.359375
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 272.96875,
+              "right": 270.59375,
+              "bottom": 297.96875
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 301.359375,
+              "right": 318.515625,
+              "bottom": 319.359375
+            },
+            {
+              "x": 37,
+              "y": 320.859375,
+              "right": 303.6875,
+              "bottom": 338.859375
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Все публикации журналаПолный авторский архив: статьи, рецензии, эссе, литературные истории и тематические циклы."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 348.359375,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 430.75
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 355.359375,
+              "right": 182.140625,
+              "bottom": 380.359375
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 383.75,
+              "right": 273.96875,
+              "bottom": 401.75
+            },
+            {
+              "x": 37,
+              "y": 403.25,
+              "right": 332.796875,
+              "bottom": 421.25
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Мнение о книгеРедкие издания, классика и современная литература - с контекстом и без лишних спойлеров."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 430.75,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 513.140625
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 437.75,
+              "right": 232.75,
+              "bottom": 462.75
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 466.140625,
+              "right": 279.78125,
+              "bottom": 484.140625
+            },
+            {
+              "x": 37,
+              "y": 485.640625,
+              "right": 319.4375,
+              "bottom": 503.640625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книга и экранизацияСравниваем текст и экранную версию: что изменилось, что потерялось и что стало сильнее."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 513.140625,
+            "width": 325,
+            "height": 101.890625,
+            "right": 350,
+            "bottom": 615.03125
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 520.140625,
+              "right": 274.671875,
+              "bottom": 545.140625
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 548.53125,
+              "right": 306,
+              "bottom": 566.53125
+            },
+            {
+              "x": 37,
+              "y": 568.03125,
+              "right": 260.09375,
+              "bottom": 586.03125
+            },
+            {
+              "x": 37,
+              "y": 587.53125,
+              "right": 145.234375,
+              "bottom": 605.53125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книжный гид и подборкиТематические маршруты для чтения: классика, современная проза и книги, к которым хочется вернуться."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 615.03125,
+            "width": 325,
+            "height": 105.78125,
+            "right": 350,
+            "bottom": 720.8125
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 622.03125,
+              "right": 138.3125,
+              "bottom": 647.03125
+            },
+            {
+              "x": 37,
+              "y": 645.421875,
+              "right": 253.4375,
+              "bottom": 670.421875
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 673.8125,
+              "right": 324.09375,
+              "bottom": 691.8125
+            },
+            {
+              "x": 37,
+              "y": 693.3125,
+              "right": 309.203125,
+              "bottom": 711.3125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Рассказы и литературные историиАвторские рассказы и эссе, судьбы произведений, писательские замыслы и культурные открытия."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 755,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 837.390625
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 762,
+              "right": 248.59375,
+              "bottom": 787
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 790.390625,
+              "right": 264.40625,
+              "bottom": 808.390625
+            },
+            {
+              "x": 37,
+              "y": 809.890625,
+              "right": 255.9375,
+              "bottom": 827.890625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Литературные премииИстория крупнейших наград, лауреаты, произведения и культурный контекст."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 837.390625,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 919.78125
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 844.390625,
+              "right": 328.109375,
+              "bottom": 869.390625
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 872.78125,
+              "right": 304.796875,
+              "bottom": 890.78125
+            },
+            {
+              "x": 37,
+              "y": 892.28125,
+              "right": 275.90625,
+              "bottom": 910.28125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Биографии и судьбы писателейТщательные человеческие биографии: судьба, время, характер и главные тексты автора."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 919.78125,
+            "width": 325,
+            "height": 101.890625,
+            "right": 350,
+            "bottom": 1021.671875
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 926.78125,
+              "right": 247.671875,
+              "bottom": 951.78125
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 955.171875,
+              "right": 298.078125,
+              "bottom": 973.171875
+            },
+            {
+              "x": 37,
+              "y": 974.671875,
+              "right": 318.359375,
+              "bottom": 992.671875
+            },
+            {
+              "x": 37,
+              "y": 994.171875,
+              "right": 147.703125,
+              "bottom": 1012.171875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Литературная планетаСтраны, национальные традиции и писатели, благодаря которым мировая литература говорит разными голосами."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 1021.671875,
+            "width": 325,
+            "height": 101.890625,
+            "right": 350,
+            "bottom": 1123.5625
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 1028.671875,
+              "right": 186.90625,
+              "bottom": 1053.671875
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 1057.0625,
+              "right": 312.328125,
+              "bottom": 1075.0625
+            },
+            {
+              "x": 37,
+              "y": 1076.5625,
+              "right": 320.296875,
+              "bottom": 1094.5625
+            },
+            {
+              "x": 37,
+              "y": 1096.0625,
+              "right": 154.703125,
+              "bottom": 1114.0625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книжный архивКниги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 1157.75,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 1240.140625
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 1164.75,
+              "right": 264.859375,
+              "bottom": 1189.75
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 1193.140625,
+              "right": 337.9375,
+              "bottom": 1211.140625
+            },
+            {
+              "x": 37,
+              "y": 1212.640625,
+              "right": 249.765625,
+              "bottom": 1230.640625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "О литературе и культуреБольшие редакционные эссе о чтении, библиотеках, культурной памяти и будущем книги."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 1240.140625,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 1322.53125
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 1247.140625,
+              "right": 252.5,
+              "bottom": 1272.140625
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 1275.53125,
+              "right": 330.515625,
+              "bottom": 1293.53125
+            },
+            {
+              "x": 37,
+              "y": 1295.03125,
+              "right": 316.734375,
+              "bottom": 1313.03125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Фольклор и мифологияПерсонажи, сюжеты и образы устной традиции - от славянского фольклора до мировых мифологий."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 1322.53125,
+            "width": 325,
+            "height": 101.890625,
+            "right": 350,
+            "bottom": 1424.421875
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 1329.53125,
+              "right": 224.84375,
+              "bottom": 1354.53125
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 1357.921875,
+              "right": 322.21875,
+              "bottom": 1375.921875
+            },
+            {
+              "x": 37,
+              "y": 1377.421875,
+              "right": 259.859375,
+              "bottom": 1395.421875
+            },
+            {
+              "x": 37,
+              "y": 1396.921875,
+              "right": 146.734375,
+              "bottom": 1414.921875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Язык и редкие словаИстория слов, точные значения и выразительные возможности русского языка без сухой словарной подачи."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 1458.609375,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 1541
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 1465.609375,
+              "right": 275.21875,
+              "bottom": 1490.609375
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 1494,
+              "right": 299.8125,
+              "bottom": 1512
+            },
+            {
+              "x": 37,
+              "y": 1513.5,
+              "right": 315.953125,
+              "bottom": 1531.5
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Литературный календарьДни рождения и памяти писателей с точными датами и быстрым переходом к карточке автора."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 1541,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 1623.390625
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 1548,
+              "right": 229.078125,
+              "bottom": 1573
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 1576.390625,
+              "right": 291.875,
+              "bottom": 1594.390625
+            },
+            {
+              "x": 37,
+              "y": 1595.890625,
+              "right": 308.078125,
+              "bottom": 1613.890625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Указатель писателейБыстрый вход в биографии, произведения и литературные связи авторов из энциклопедии."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 1623.390625,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 1705.78125
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 1630.390625,
+              "right": 197.921875,
+              "bottom": 1655.390625
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 1658.78125,
+              "right": 335.765625,
+              "bottom": 1676.78125
+            },
+            {
+              "x": 37,
+              "y": 1678.28125,
+              "right": 270.390625,
+              "bottom": 1696.28125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Форум читателейОбсуждения книг, статей, переводов и экранизаций с общей системой рейтинга и профилей."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 1705.78125,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 1788.171875
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 1712.78125,
+              "right": 320.734375,
+              "bottom": 1737.78125
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 1741.171875,
+              "right": 334.21875,
+              "bottom": 1759.171875
+            },
+            {
+              "x": 37,
+              "y": 1760.671875,
+              "right": 248.59375,
+              "bottom": 1778.671875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Личный кабинет и библиотекаСохранённые материалы, любимые книги, страны и писатели, оценки и история участия."
+        },
+        {
+          "box": {
+            "x": 25,
+            "y": 1788.171875,
+            "width": 325,
+            "height": 82.390625,
+            "right": 350,
+            "bottom": 1870.5625
+          },
+          "title": [
+            {
+              "x": 37,
+              "y": 1795.171875,
+              "right": 239.21875,
+              "bottom": 1820.171875
+            }
+          ],
+          "description": [
+            {
+              "x": 37,
+              "y": 1823.5625,
+              "right": 312.21875,
+              "bottom": 1841.5625
+            },
+            {
+              "x": 37,
+              "y": 1843.0625,
+              "right": 290.640625,
+              "bottom": 1861.0625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "О проекте и редакцииМиссия «Пробы Пера», редакционный стандарт, источники, исправления и авторские права."
+        }
+      ],
+      "rowSpreads": [
+        {
+          "group": 0,
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 0,
+          "index": 1,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 0,
+          "index": 2,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 0,
+          "index": 3,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 0,
+          "index": 4,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 1,
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 1,
+          "index": 1,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 1,
+          "index": 2,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 1,
+          "index": 3,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 2,
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 2,
+          "index": 1,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 2,
+          "index": 2,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 3,
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 3,
+          "index": 1,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 3,
+          "index": 2,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 3,
+          "index": 3,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "group": 3,
+          "index": 4,
+          "title": 0,
+          "description": 0
+        }
+      ],
+      "overflow": 0,
+      "fullHeight": 1655,
+      "viewportHeight": 532,
+      "menuRows": "",
+      "clipping": [],
+      "overlapCount": 0,
+      "fullTextPreserved": true,
+      "surface": "isolated actual-menu DOM; compiled responsive layout, fixture position only"
+    },
+    {
+      "kind": "articles",
+      "width": 1440,
+      "panel": {
+        "x": 160,
+        "y": 114,
+        "width": 1120,
+        "height": 633.65625,
+        "right": 1280,
+        "bottom": 747.65625
+      },
+      "items": [
+        {
+          "box": {
+            "x": 602.1875,
+            "y": 207.6875,
+            "width": 330.90625,
+            "height": 152.859375,
+            "right": 933.09375,
+            "bottom": 360.546875
+          },
+          "title": [
+            {
+              "x": 618.1875,
+              "y": 246.875,
+              "right": 853.546875,
+              "bottom": 271.875
+            },
+            {
+              "x": 618.1875,
+              "y": 270.265625,
+              "right": 884.9375,
+              "bottom": 295.265625
+            }
+          ],
+          "description": [
+            {
+              "x": 618.1875,
+              "y": 324.046875,
+              "right": 631.125,
+              "bottom": 342.046875
+            },
+            {
+              "x": 631.125,
+              "y": 324.046875,
+              "right": 633.734375,
+              "bottom": 342.046875
+            },
+            {
+              "x": 633.734375,
+              "y": 324.046875,
+              "right": 659.859375,
+              "bottom": 342.046875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Русский язык15 крылатых выражений, пришедших к нам из Библии11 мин."
+        },
+        {
+          "box": {
+            "x": 933.09375,
+            "y": 207.6875,
+            "width": 330.90625,
+            "height": 152.859375,
+            "right": 1264,
+            "bottom": 360.546875
+          },
+          "title": [
+            {
+              "x": 949.09375,
+              "y": 246.875,
+              "right": 1153.984375,
+              "bottom": 271.875
+            },
+            {
+              "x": 949.09375,
+              "y": 270.265625,
+              "right": 1211.359375,
+              "bottom": 295.265625
+            },
+            {
+              "x": 949.09375,
+              "y": 293.65625,
+              "right": 1029.5,
+              "bottom": 318.65625
+            }
+          ],
+          "description": [
+            {
+              "x": 949.09375,
+              "y": 324.046875,
+              "right": 955.5625,
+              "bottom": 342.046875
+            },
+            {
+              "x": 955.5625,
+              "y": 324.046875,
+              "right": 958.171875,
+              "bottom": 342.046875
+            },
+            {
+              "x": 958.171875,
+              "y": 324.046875,
+              "right": 984.296875,
+              "bottom": 342.046875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Писатели мираЗарубежные классики литературы и их профессии (Часть 4)7 мин."
+        },
+        {
+          "box": {
+            "x": 602.1875,
+            "y": 360.546875,
+            "width": 330.90625,
+            "height": 176.25,
+            "right": 933.09375,
+            "bottom": 536.796875
+          },
+          "title": [
+            {
+              "x": 618.1875,
+              "y": 399.734375,
+              "right": 859.328125,
+              "bottom": 424.734375
+            },
+            {
+              "x": 618.1875,
+              "y": 423.125,
+              "right": 908.671875,
+              "bottom": 448.125
+            },
+            {
+              "x": 618.1875,
+              "y": 446.515625,
+              "right": 894.015625,
+              "bottom": 471.515625
+            }
+          ],
+          "description": [
+            {
+              "x": 618.1875,
+              "y": 500.296875,
+              "right": 631.125,
+              "bottom": 518.296875
+            },
+            {
+              "x": 631.125,
+              "y": 500.296875,
+              "right": 633.734375,
+              "bottom": 518.296875
+            },
+            {
+              "x": 633.734375,
+              "y": 500.296875,
+              "right": 659.859375,
+              "bottom": 518.296875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Фольклор и мифология13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)10 мин."
+        },
+        {
+          "box": {
+            "x": 933.09375,
+            "y": 360.546875,
+            "width": 330.90625,
+            "height": 176.25,
+            "right": 1264,
+            "bottom": 536.796875
+          },
+          "title": [
+            {
+              "x": 949.09375,
+              "y": 399.734375,
+              "right": 1225.453125,
+              "bottom": 424.734375
+            },
+            {
+              "x": 949.09375,
+              "y": 423.125,
+              "right": 1116.046875,
+              "bottom": 448.125
+            },
+            {
+              "x": 949.09375,
+              "y": 446.515625,
+              "right": 1165.703125,
+              "bottom": 471.515625
+            },
+            {
+              "x": 949.09375,
+              "y": 469.90625,
+              "right": 1029.5,
+              "bottom": 494.90625
+            }
+          ],
+          "description": [
+            {
+              "x": 949.09375,
+              "y": 500.296875,
+              "right": 962.03125,
+              "bottom": 518.296875
+            },
+            {
+              "x": 962.03125,
+              "y": 500.296875,
+              "right": 964.640625,
+              "bottom": 518.296875
+            },
+            {
+              "x": 964.640625,
+              "y": 500.296875,
+              "right": 990.765625,
+              "bottom": 518.296875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книга и экранизация15 экранизаций классических романов, которые действительно удались (Часть 3)13 мин."
+        },
+        {
+          "box": {
+            "x": 602.1875,
+            "y": 536.796875,
+            "width": 330.90625,
+            "height": 152.859375,
+            "right": 933.09375,
+            "bottom": 689.65625
+          },
+          "title": [
+            {
+              "x": 618.1875,
+              "y": 575.984375,
+              "right": 907.40625,
+              "bottom": 600.984375
+            },
+            {
+              "x": 618.1875,
+              "y": 599.375,
+              "right": 842.859375,
+              "bottom": 624.375
+            },
+            {
+              "x": 618.1875,
+              "y": 622.765625,
+              "right": 772.703125,
+              "bottom": 647.765625
+            }
+          ],
+          "description": [
+            {
+              "x": 618.1875,
+              "y": 653.15625,
+              "right": 624.65625,
+              "bottom": 671.15625
+            },
+            {
+              "x": 624.65625,
+              "y": 653.15625,
+              "right": 627.265625,
+              "bottom": 671.15625
+            },
+            {
+              "x": 627.265625,
+              "y": 653.15625,
+              "right": 653.390625,
+              "bottom": 671.15625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "О литературе и культуреСемь малоизвестных рассказов Амброза Бирса, которые стоит прочитать4 мин."
+        },
+        {
+          "box": {
+            "x": 933.09375,
+            "y": 536.796875,
+            "width": 330.90625,
+            "height": 152.859375,
+            "right": 1264,
+            "bottom": 689.65625
+          },
+          "title": [
+            {
+              "x": 949.09375,
+              "y": 575.984375,
+              "right": 1232.984375,
+              "bottom": 600.984375
+            },
+            {
+              "x": 949.09375,
+              "y": 599.375,
+              "right": 1237.859375,
+              "bottom": 624.375
+            }
+          ],
+          "description": [
+            {
+              "x": 949.09375,
+              "y": 653.15625,
+              "right": 955.5625,
+              "bottom": 671.15625
+            },
+            {
+              "x": 955.5625,
+              "y": 653.15625,
+              "right": 958.171875,
+              "bottom": 671.15625
+            },
+            {
+              "x": 958.171875,
+              "y": 653.15625,
+              "right": 984.296875,
+              "bottom": 671.15625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Мнение о книгеМнение о книге Лорана Гунеля «Бог путешествует инкогнито»7 мин."
+        }
+      ],
+      "rowSpreads": [
+        {
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "index": 2,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "index": 4,
+          "title": 0,
+          "description": 0
+        }
+      ],
+      "overflow": 0,
+      "fullHeight": 482,
+      "viewportHeight": 482,
+      "menuRows": null,
+      "clipping": [],
+      "overlapCount": 0,
+      "fullTextPreserved": true,
+      "surface": "normal production navigation"
+    },
+    {
+      "kind": "articles",
+      "width": 1024,
+      "panel": {
+        "x": -480,
+        "y": 25.59375,
+        "width": 992,
+        "height": 697.265625,
+        "right": 512,
+        "bottom": 722.859375
+      },
+      "items": [
+        {
+          "box": {
+            "x": -479,
+            "y": 276.453125,
+            "width": 487.5,
+            "height": 129.46875,
+            "right": 8.5,
+            "bottom": 405.921875
+          },
+          "title": [
+            {
+              "x": -463,
+              "y": 315.640625,
+              "right": -55.5625,
+              "bottom": 340.640625
+            },
+            {
+              "x": -463,
+              "y": 339.03125,
+              "right": -368.328125,
+              "bottom": 364.03125
+            }
+          ],
+          "description": [
+            {
+              "x": -463,
+              "y": 369.421875,
+              "right": -450.0625,
+              "bottom": 387.421875
+            },
+            {
+              "x": -450.0625,
+              "y": 369.421875,
+              "right": -447.453125,
+              "bottom": 387.421875
+            },
+            {
+              "x": -447.453125,
+              "y": 369.421875,
+              "right": -421.328125,
+              "bottom": 387.421875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Русский язык15 крылатых выражений, пришедших к нам из Библии11 мин."
+        },
+        {
+          "box": {
+            "x": 8.5,
+            "y": 276.453125,
+            "width": 487.5,
+            "height": 129.46875,
+            "right": 496,
+            "bottom": 405.921875
+          },
+          "title": [
+            {
+              "x": 24.5,
+              "y": 315.640625,
+              "right": 388.96875,
+              "bottom": 340.640625
+            },
+            {
+              "x": 24.5,
+              "y": 339.03125,
+              "right": 211.6875,
+              "bottom": 364.03125
+            }
+          ],
+          "description": [
+            {
+              "x": 24.5,
+              "y": 369.421875,
+              "right": 30.96875,
+              "bottom": 387.421875
+            },
+            {
+              "x": 30.96875,
+              "y": 369.421875,
+              "right": 33.578125,
+              "bottom": 387.421875
+            },
+            {
+              "x": 33.578125,
+              "y": 369.421875,
+              "right": 59.703125,
+              "bottom": 387.421875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Писатели мираЗарубежные классики литературы и их профессии (Часть 4)7 мин."
+        },
+        {
+          "box": {
+            "x": -479,
+            "y": 405.921875,
+            "width": 487.5,
+            "height": 129.46875,
+            "right": 8.5,
+            "bottom": 535.390625
+          },
+          "title": [
+            {
+              "x": -463,
+              "y": 445.109375,
+              "right": -9.609375,
+              "bottom": 470.109375
+            },
+            {
+              "x": -463,
+              "y": 468.5,
+              "right": -104.84375,
+              "bottom": 493.5
+            }
+          ],
+          "description": [
+            {
+              "x": -463,
+              "y": 498.890625,
+              "right": -450.0625,
+              "bottom": 516.890625
+            },
+            {
+              "x": -450.0625,
+              "y": 498.890625,
+              "right": -447.453125,
+              "bottom": 516.890625
+            },
+            {
+              "x": -447.453125,
+              "y": 498.890625,
+              "right": -421.328125,
+              "bottom": 516.890625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Фольклор и мифология13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)10 мин."
+        },
+        {
+          "box": {
+            "x": 8.5,
+            "y": 405.921875,
+            "width": 487.5,
+            "height": 129.46875,
+            "right": 496,
+            "bottom": 535.390625
+          },
+          "title": [
+            {
+              "x": 24.5,
+              "y": 445.109375,
+              "right": 471.921875,
+              "bottom": 470.109375
+            },
+            {
+              "x": 24.5,
+              "y": 468.5,
+              "right": 325.609375,
+              "bottom": 493.5
+            }
+          ],
+          "description": [
+            {
+              "x": 24.5,
+              "y": 498.890625,
+              "right": 37.4375,
+              "bottom": 516.890625
+            },
+            {
+              "x": 37.4375,
+              "y": 498.890625,
+              "right": 40.046875,
+              "bottom": 516.890625
+            },
+            {
+              "x": 40.046875,
+              "y": 498.890625,
+              "right": 66.171875,
+              "bottom": 516.890625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книга и экранизация15 экранизаций классических романов, которые действительно удались (Часть 3)13 мин."
+        },
+        {
+          "box": {
+            "x": -479,
+            "y": 535.390625,
+            "width": 487.5,
+            "height": 129.46875,
+            "right": 8.5,
+            "bottom": 664.859375
+          },
+          "title": [
+            {
+              "x": -463,
+              "y": 574.578125,
+              "right": -27.359375,
+              "bottom": 599.578125
+            },
+            {
+              "x": -463,
+              "y": 597.96875,
+              "right": -226.140625,
+              "bottom": 622.96875
+            }
+          ],
+          "description": [
+            {
+              "x": -463,
+              "y": 628.359375,
+              "right": -456.53125,
+              "bottom": 646.359375
+            },
+            {
+              "x": -456.53125,
+              "y": 628.359375,
+              "right": -453.921875,
+              "bottom": 646.359375
+            },
+            {
+              "x": -453.921875,
+              "y": 628.359375,
+              "right": -427.796875,
+              "bottom": 646.359375
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "О литературе и культуреСемь малоизвестных рассказов Амброза Бирса, которые стоит прочитать4 мин."
+        },
+        {
+          "box": {
+            "x": 8.5,
+            "y": 535.390625,
+            "width": 487.5,
+            "height": 129.46875,
+            "right": 496,
+            "bottom": 664.859375
+          },
+          "title": [
+            {
+              "x": 24.5,
+              "y": 574.578125,
+              "right": 353.78125,
+              "bottom": 599.578125
+            },
+            {
+              "x": 24.5,
+              "y": 597.96875,
+              "right": 267.875,
+              "bottom": 622.96875
+            }
+          ],
+          "description": [
+            {
+              "x": 24.5,
+              "y": 628.359375,
+              "right": 30.96875,
+              "bottom": 646.359375
+            },
+            {
+              "x": 30.96875,
+              "y": 628.359375,
+              "right": 33.578125,
+              "bottom": 646.359375
+            },
+            {
+              "x": 33.578125,
+              "y": 628.359375,
+              "right": 59.703125,
+              "bottom": 646.359375
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Мнение о книгеМнение о книге Лорана Гунеля «Бог путешествует инкогнито»7 мин."
+        }
+      ],
+      "rowSpreads": [
+        {
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "index": 2,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "index": 4,
+          "title": 0,
+          "description": 0
+        }
+      ],
+      "overflow": 0,
+      "fullHeight": 546,
+      "viewportHeight": 546,
+      "menuRows": null,
+      "clipping": [],
+      "overlapCount": 0,
+      "fullTextPreserved": true,
+      "surface": "isolated actual-menu DOM; compiled responsive layout, fixture position only"
+    },
+    {
+      "kind": "articles",
+      "width": 390,
+      "panel": {
+        "x": 16,
+        "y": 41.59375,
+        "width": 358,
+        "height": 772,
+        "right": 374,
+        "bottom": 813.59375
+      },
+      "items": [
+        {
+          "box": {
+            "x": 17,
+            "y": 679.3125,
+            "width": 341,
+            "height": 129.46875,
+            "right": 358,
+            "bottom": 808.78125
+          },
+          "title": [
+            {
+              "x": 33,
+              "y": 718.5,
+              "right": 268.359375,
+              "bottom": 743.5
+            },
+            {
+              "x": 33,
+              "y": 741.890625,
+              "right": 299.75,
+              "bottom": 766.890625
+            }
+          ],
+          "description": [
+            {
+              "x": 33,
+              "y": 772.28125,
+              "right": 45.9375,
+              "bottom": 790.28125
+            },
+            {
+              "x": 45.9375,
+              "y": 772.28125,
+              "right": 48.546875,
+              "bottom": 790.28125
+            },
+            {
+              "x": 48.546875,
+              "y": 772.28125,
+              "right": 74.671875,
+              "bottom": 790.28125
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Русский язык15 крылатых выражений, пришедших к нам из Библии11 мин."
+        },
+        {
+          "box": {
+            "x": 17,
+            "y": 808.78125,
+            "width": 341,
+            "height": 152.859375,
+            "right": 358,
+            "bottom": 961.640625
+          },
+          "title": [
+            {
+              "x": 33,
+              "y": 847.96875,
+              "right": 237.890625,
+              "bottom": 872.96875
+            },
+            {
+              "x": 33,
+              "y": 871.359375,
+              "right": 295.265625,
+              "bottom": 896.359375
+            },
+            {
+              "x": 33,
+              "y": 894.75,
+              "right": 113.40625,
+              "bottom": 919.75
+            }
+          ],
+          "description": [
+            {
+              "x": 33,
+              "y": 925.140625,
+              "right": 39.46875,
+              "bottom": 943.140625
+            },
+            {
+              "x": 39.46875,
+              "y": 925.140625,
+              "right": 42.078125,
+              "bottom": 943.140625
+            },
+            {
+              "x": 42.078125,
+              "y": 925.140625,
+              "right": 68.203125,
+              "bottom": 943.140625
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Писатели мираЗарубежные классики литературы и их профессии (Часть 4)7 мин."
+        },
+        {
+          "box": {
+            "x": 17,
+            "y": 961.640625,
+            "width": 341,
+            "height": 152.859375,
+            "right": 358,
+            "bottom": 1114.5
+          },
+          "title": [
+            {
+              "x": 33,
+              "y": 1000.828125,
+              "right": 338.71875,
+              "bottom": 1025.828125
+            },
+            {
+              "x": 33,
+              "y": 1024.21875,
+              "right": 258.90625,
+              "bottom": 1049.21875
+            },
+            {
+              "x": 33,
+              "y": 1047.609375,
+              "right": 308.828125,
+              "bottom": 1072.609375
+            }
+          ],
+          "description": [
+            {
+              "x": 33,
+              "y": 1078,
+              "right": 45.9375,
+              "bottom": 1096
+            },
+            {
+              "x": 45.9375,
+              "y": 1078,
+              "right": 48.546875,
+              "bottom": 1096
+            },
+            {
+              "x": 48.546875,
+              "y": 1078,
+              "right": 74.671875,
+              "bottom": 1096
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Фольклор и мифология13 по-настоящему жутких сказок братьев Гримм, которые повергнут вас в шок! (Часть 4)10 мин."
+        },
+        {
+          "box": {
+            "x": 17,
+            "y": 1114.5,
+            "width": 341,
+            "height": 152.859375,
+            "right": 358,
+            "bottom": 1267.359375
+          },
+          "title": [
+            {
+              "x": 33,
+              "y": 1153.6875,
+              "right": 309.359375,
+              "bottom": 1178.6875
+            },
+            {
+              "x": 33,
+              "y": 1177.078125,
+              "right": 199.953125,
+              "bottom": 1202.078125
+            },
+            {
+              "x": 33,
+              "y": 1200.46875,
+              "right": 334.109375,
+              "bottom": 1225.46875
+            }
+          ],
+          "description": [
+            {
+              "x": 33,
+              "y": 1230.859375,
+              "right": 45.9375,
+              "bottom": 1248.859375
+            },
+            {
+              "x": 45.9375,
+              "y": 1230.859375,
+              "right": 48.546875,
+              "bottom": 1248.859375
+            },
+            {
+              "x": 48.546875,
+              "y": 1230.859375,
+              "right": 74.671875,
+              "bottom": 1248.859375
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Книга и экранизация15 экранизаций классических романов, которые действительно удались (Часть 3)13 мин."
+        },
+        {
+          "box": {
+            "x": 17,
+            "y": 1267.359375,
+            "width": 341,
+            "height": 152.859375,
+            "right": 358,
+            "bottom": 1420.21875
+          },
+          "title": [
+            {
+              "x": 33,
+              "y": 1306.546875,
+              "right": 322.21875,
+              "bottom": 1331.546875
+            },
+            {
+              "x": 33,
+              "y": 1329.9375,
+              "right": 257.671875,
+              "bottom": 1354.9375
+            },
+            {
+              "x": 33,
+              "y": 1353.328125,
+              "right": 187.515625,
+              "bottom": 1378.328125
+            }
+          ],
+          "description": [
+            {
+              "x": 33,
+              "y": 1383.71875,
+              "right": 39.46875,
+              "bottom": 1401.71875
+            },
+            {
+              "x": 39.46875,
+              "y": 1383.71875,
+              "right": 42.078125,
+              "bottom": 1401.71875
+            },
+            {
+              "x": 42.078125,
+              "y": 1383.71875,
+              "right": 68.203125,
+              "bottom": 1401.71875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "О литературе и культуреСемь малоизвестных рассказов Амброза Бирса, которые стоит прочитать4 мин."
+        },
+        {
+          "box": {
+            "x": 17,
+            "y": 1420.21875,
+            "width": 341,
+            "height": 129.46875,
+            "right": 358,
+            "bottom": 1549.6875
+          },
+          "title": [
+            {
+              "x": 33,
+              "y": 1459.40625,
+              "right": 316.890625,
+              "bottom": 1484.40625
+            },
+            {
+              "x": 33,
+              "y": 1482.796875,
+              "right": 321.765625,
+              "bottom": 1507.796875
+            }
+          ],
+          "description": [
+            {
+              "x": 33,
+              "y": 1513.1875,
+              "right": 39.46875,
+              "bottom": 1531.1875
+            },
+            {
+              "x": 39.46875,
+              "y": 1513.1875,
+              "right": 42.078125,
+              "bottom": 1531.1875
+            },
+            {
+              "x": 42.078125,
+              "y": 1513.1875,
+              "right": 68.203125,
+              "bottom": 1531.1875
+            }
+          ],
+          "titleFont": {
+            "family": "\"Source Serif 4 Local\", Georgia, serif",
+            "size": "18px",
+            "weight": "600",
+            "lineHeight": "23.4px"
+          },
+          "descriptionFont": {
+            "family": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, sans-serif",
+            "size": "13px",
+            "weight": "400",
+            "lineHeight": "19.5px"
+          },
+          "text": "Мнение о книгеМнение о книге Лорана Гунеля «Бог путешествует инкогнито»7 мин."
+        }
+      ],
+      "rowSpreads": [
+        {
+          "index": 0,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "index": 1,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "index": 2,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "index": 3,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "index": 4,
+          "title": 0,
+          "description": 0
+        },
+        {
+          "index": 5,
+          "title": 0,
+          "description": 0
+        }
+      ],
+      "overflow": 0,
+      "fullHeight": 1360,
+      "viewportHeight": 566,
+      "menuRows": null,
+      "clipping": [],
+      "overlapCount": 0,
+      "fullTextPreserved": true,
+      "surface": "isolated actual-menu DOM; compiled responsive layout, fixture position only"
+    }
+  ],
+  "sourceInjection": false,
+  "status": "baseline captured",
+  "finished": "2026-09-05T04:31:15.847Z"
+}

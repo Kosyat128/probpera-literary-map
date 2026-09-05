@@ -190,13 +190,37 @@ test.describe("globe visual regression", () => {
     const writerDetail = sheet.locator(".writer-detail");
     await expect(writerDetail.locator(".writer-detail-tabs")).toBeVisible();
     await expect(writerDetail).toBeFocused();
+    if (isMobile) {
+      // Check the real, unstabilized UI before the compact screenshot contract.
+      const tabs = writerDetail.getByRole("tab");
+      await expect(tabs).toHaveCount(3);
+      for (let index = 0; index < 3; index += 1) {
+        const tab = tabs.nth(index);
+        await tab.scrollIntoViewIfNeeded();
+        await expect(tab).toBeInViewport({ ratio: 1 });
+        await tab.click();
+        await expect(tab).toHaveAttribute("aria-selected", "true");
+        const panelId = await tab.getAttribute("aria-controls");
+        await expect(writerDetail.locator(`[id="${panelId}"]`)).toBeVisible();
+      }
+      await tabs.first().click();
+    }
     await setVisualContract(experience, "writer");
-    await expect(writerDetail).toHaveScreenshot(
-      isMobile
-        ? "globe-mobile-writer-card.png"
-        : "globe-desktop-writer-card.png",
-      screenshotOptions
-    );
+    // Hide the long tab panel before scrolling: screenshot-time reflow alone
+    // could leave the compact card's last row below the sheet's scrollport.
+    const writerStability = await page.addStyleTag({ path: stabilityStyles });
+    try {
+      await writerDetail.scrollIntoViewIfNeeded();
+      await expect(writerDetail.locator(".writer-detail-tabs")).toBeInViewport({ ratio: 1 });
+      await expect(writerDetail).toHaveScreenshot(
+        isMobile
+          ? "globe-mobile-writer-card.png"
+          : "globe-desktop-writer-card.png",
+        screenshotOptions
+      );
+    } finally {
+      await writerStability.evaluate(style => style.remove());
+    }
     await setVisualContract(experience, null);
   });
 });

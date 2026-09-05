@@ -9,7 +9,7 @@
   .book-detail-copy h3 {
     font-family: var(--font-editorial);
     font-size: var(--type-book-detail-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.14;
     letter-spacing: var(--type-tracking-title);
     text-wrap: balance;
@@ -19,7 +19,7 @@
     font-family: var(--font-editorial);
     font-size: var(--type-dossier-body);
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.5;
   }
   .book-detail-copy dt {
     font-family: var(--font-ui);
@@ -43,7 +43,7 @@
   .book-detail-mobile-handle strong {
     font-family: var(--font-editorial);
     font-size: var(--type-card-related-title);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.3;
   }
   .book-spine-tooltip span,
@@ -62,14 +62,14 @@
     font-family: var(--font-editorial);
     font-size: var(--type-dossier-body);
     font-weight: 400;
-    line-height: 1.65;
+    line-height: 1.5;
     font-synthesis: none;
     text-align: start;
   }
   .book-dossier-reader__page h4 {
     font-family: var(--font-editorial);
     font-size: var(--type-dossier-heading);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.22;
     letter-spacing: -.012em;
     text-wrap: balance;
@@ -97,13 +97,13 @@
     font-family: var(--font-editorial);
     font-size: var(--type-dossier-body);
     font-weight: 400;
-    line-height: 1.65;
+    line-height: 1.5;
   }
 }
 @layer site-typography {
   :root {
-    --font-ui: "Source Sans 3 Local", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-    --font-editorial: "Source Serif 4 Local", Georgia, "Times New Roman", serif;
+    --font-ui: "Onest Local", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    --font-editorial: var(--font-ui);
     --font-display: var(--font-editorial);
     --sans: var(--font-ui);
     --serif: var(--font-editorial);
@@ -119,18 +119,18 @@
     --type-reading-subsection: clamp(1.25rem, 2.4vw, 1.8125rem);
     --type-body: 1rem;
     --type-card-excerpt: 1rem;
-    --type-card-meta: 0.8125rem;
-    --type-caption: 0.75rem;
-    --type-navigation: 0.875rem;
-    --type-action: 0.875rem;
+    --type-card-meta: 0.875rem;
+    --type-caption: 0.8125rem;
+    --type-navigation: 0.9375rem;
+    --type-action: 0.9375rem;
     --type-card-primary-action: var(--type-action);
     --type-card-secondary-action: var(--type-action);
     --type-card-footer-label: var(--type-card-meta);
-    --type-leading-title: 1.12;
-    --type-leading-copy: 1.6;
+    --type-leading-title: 1.16;
+    --type-leading-copy: 1.45;
     --type-leading-ui: 1.4;
     --type-tracking-title: -0.015em;
-    --type-tracking-label: 0.04em;
+    --type-tracking-label: 0.025em;
     --type-muted-light: #66536e;
     --type-muted-dark: #d5c9dc;
     /* Compatibility aliases; there is no second homepage size scale. */
@@ -163,7 +163,7 @@
   .book-archive-heading h2 {
     font-family: var(--font-editorial);
     font-size: var(--type-section-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: var(--type-leading-title);
     letter-spacing: var(--type-tracking-title);
     text-wrap: balance;
@@ -178,7 +178,7 @@
   .sections-directory h3 {
     font-family: var(--font-editorial);
     font-size: var(--type-card-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: var(--type-leading-title);
     letter-spacing: var(--type-tracking-title);
     text-wrap: balance;
@@ -192,7 +192,7 @@
   .editorial-standard h3,
   .book-of-day h3 {
     font-family: var(--font-editorial);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.1;
     letter-spacing: var(--type-tracking-title);
     text-wrap: balance;
@@ -220,7 +220,7 @@
   .article-reader-related-book-copy strong {
     font-family: var(--font-editorial);
     font-size: var(--type-card-compact-title);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0;
     text-wrap: balance;
@@ -232,7 +232,7 @@
   .section-card-latest strong {
     font-family: var(--font-editorial);
     font-size: var(--type-card-related-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.3;
     letter-spacing: 0;
     text-wrap: pretty;
@@ -302,7 +302,11 @@
   .library-card-copy > strong,
   .section-card-action strong,
   .sections-all-button,
+  .section-directory-more,
   .section-directory-more > span,
+  .book-fact-card a,
+  .book-actions > .book-source-link,
+  .atlas-country-index summary,
   .article-library-tabs button,
   .article-library-more,
   .book-of-day .book-actions-primary button,
@@ -427,12 +431,48 @@
     word-break: normal;
   }
 
+  .footer-brand > p {
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 400;
+    line-height: var(--type-leading-copy);
+    text-wrap: pretty;
+  }
+
+  .footer-map h2 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-compact-title);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: var(--type-tracking-title);
+  }
+
+  .footer-bottom p,
+  .footer-bottom span,
+  .section-directory-more > strong {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .footer-bottom a {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 500;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
   .calendar-navigation strong,
   .calendar-agenda > header strong,
   .calendar-featured > strong {
     font-family: var(--font-editorial);
     font-size: var(--type-card-compact-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0;
   }
@@ -441,7 +481,7 @@
   .calendar-summary > div > strong {
     font-family: var(--font-editorial);
     font-size: var(--type-card-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: 0;
     font-variant-numeric: lining-nums tabular-nums;
@@ -459,6 +499,7 @@
   }
 
   .calendar-agenda-writer small,
+  .atlas-country-index button small,
   .calendar-featured > small,
   .calendar-agenda-day > div > span {
     font-family: var(--font-ui);
@@ -507,8 +548,8 @@
 
   #community .community-copy h2 {
     font-family: var(--font-editorial);
-    font-size: var(--type-card-feature-title);
-    font-weight: 400;
+    font-size: var(--type-section-title);
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: var(--type-tracking-title);
     text-wrap: balance;
@@ -521,7 +562,7 @@
   .forum-toolbar h2 {
     font-family: var(--font-editorial);
     font-size: var(--type-card-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
     letter-spacing: var(--type-tracking-title);
     text-wrap: balance;
@@ -580,7 +621,7 @@
   .forum-categories button > strong {
     font-family: var(--font-editorial);
     font-size: var(--type-action);
-    font-weight: 600;
+    font-weight: 500;
     line-height: var(--type-leading-ui);
     white-space: normal;
     overflow-wrap: normal;
@@ -642,7 +683,7 @@
   .cms-page-main > article > header h1 {
     font-family: var(--font-editorial);
     font-size: var(--type-page-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.1;
     letter-spacing: var(--type-tracking-title);
     text-wrap: balance;
@@ -656,7 +697,7 @@
     font-family: var(--font-editorial);
     font-size: calc(var(--type-reading) * var(--reader-scale, 1));
     font-weight: 400;
-    line-height: 1.82;
+    line-height: 1.6;
     text-wrap: pretty;
   }
 
@@ -733,14 +774,15 @@
   /* The owner separately requested these open panels; the Header itself stays original. */
   .sections-mega-menu,
   .articles-mega-menu {
-    --sans: "Source Sans 3 Local", "Segoe UI", system-ui, sans-serif;
-    --serif: "Source Serif 4 Local", Georgia, serif;
+    --sans: "Onest Local", "Segoe UI", system-ui, sans-serif;
+    --serif: var(--sans);
+    --type-menu-label: .8125rem;
     --font-ui: var(--sans);
     --font-editorial: var(--serif);
     font-family: var(--font-ui);
     font-size: var(--type-body);
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.4;
     letter-spacing: 0;
   }
 
@@ -748,7 +790,7 @@
   .articles-mega-menu > header strong {
     font-family: var(--font-editorial);
     font-size: var(--type-card-feature-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.15;
     letter-spacing: var(--type-tracking-title);
     text-wrap: balance;
@@ -758,7 +800,7 @@
   .articles-mega-content > section strong {
     font-family: var(--font-editorial);
     font-size: var(--type-card-related-title);
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.3;
     text-wrap: pretty;
   }
@@ -766,7 +808,7 @@
   .articles-mega-lead strong {
     font-family: var(--font-editorial);
     font-size: var(--type-card-title);
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
     text-wrap: pretty;
   }
@@ -777,18 +819,26 @@
     color: var(--type-muted-dark);
     font-family: var(--font-ui);
     font-size: var(--type-action);
-    line-height: 1.5;
+    line-height: 1.4;
     text-wrap: pretty;
   }
 
-  .sections-mega-groups small,
+  .sections-mega-groups small {
+    color: var(--type-muted-light);
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 400;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
   .articles-mega-content > section span,
   .articles-mega-menu > footer > span {
     color: var(--type-muted-light);
     font-family: var(--font-ui);
     font-size: var(--type-card-meta);
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.4;
     text-wrap: pretty;
   }
 
@@ -798,10 +848,10 @@
   .articles-mega-lead small,
   .articles-mega-content section small {
     font-family: var(--font-ui);
-    font-size: var(--type-card-meta);
+    font-size: var(--type-menu-label);
     font-weight: 600;
     line-height: 1.4;
-    letter-spacing: var(--type-tracking-label);
+    letter-spacing: .02em;
     text-transform: uppercase;
   }
 
@@ -861,7 +911,7 @@
     .article-reader-content,
     .cms-page-prose {
       --type-reading: 1.0625rem;
-      line-height: 1.75;
+      line-height: 1.55;
     }
   }
 

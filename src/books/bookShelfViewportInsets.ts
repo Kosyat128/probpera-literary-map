@@ -65,3 +65,19 @@ export function measureBookShelfViewportInsets({
 export function equalBookShelfViewportInsets(a: BookShelfViewportInsets, b: BookShelfViewportInsets) {
   return a.top === b.top && a.right === b.right && a.bottom === b.bottom && a.left === b.left;
 }
+
+export function shouldRestoreBookShelfAfterOrientation(
+  previous: Readonly<{ width: number; height: number; visible: boolean }>,
+  next: Readonly<{ width: number; height: number }>,
+  editingText = false,
+) {
+  if (!previous.visible || editingText) return false;
+  if (![previous.width, previous.height, next.width, next.height].every(value => Number.isFinite(value) && value > 0)) return false;
+  if ((previous.width > previous.height) === (next.width > next.height)) return false;
+  // Browser chrome can change the usable height. A keyboard-only resize does
+  // not exchange the viewport axes and must never move the user's scroll.
+  return Math.abs(previous.width - next.width) >= 64 &&
+    Math.abs(previous.height - next.height) >= 64 &&
+    Math.abs(previous.width - next.height) <= Math.max(64, previous.width * 0.2) &&
+    Math.abs(previous.height - next.width) <= Math.max(64, previous.height * 0.2);
+}
