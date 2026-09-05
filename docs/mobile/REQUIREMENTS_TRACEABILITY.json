@@ -1,6 +1,6 @@
 {
   "version": "12.0",
-  "generatedAt": "2026-09-05T03:55:27.098Z",
+  "generatedAt": "2026-09-05T04:29:01.477Z",
   "requirements": [
     {
       "id": "A11Y-001",
@@ -85,12 +85,24 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/planet/localization.ts",
+        "src/platform/PlatformServices.tsx",
+        "src/mobile/ConnectivityStatus.tsx"
+      ],
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "A11Y-007",
@@ -286,12 +298,23 @@
       "platforms": [
         "web"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/planet/localization.ts",
+        "src/planet/types.ts"
+      ],
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "BIL-012",
@@ -1747,12 +1770,22 @@
       "status": "IN_PROGRESS",
       "implementationFiles": [
         "docs/mobile/PLATFORM_ARCHITECTURE.md",
-        "scripts/mobile/platform-boundaries.mjs"
+        "scripts/mobile/platform-boundaries.mjs",
+        "src/App.tsx",
+        "src/planet/catalog.ts"
       ],
-      "tests": [],
-      "evidence": [],
-      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
-      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "CANON-002",
@@ -1765,12 +1798,23 @@
       "status": "IN_PROGRESS",
       "implementationFiles": [
         "docs/mobile/PLATFORM_ARCHITECTURE.md",
-        "docs/mobile/evidence/S00/current-main-canonical-delta.json"
+        "docs/mobile/evidence/S00/current-main-canonical-delta.json",
+        "src/planet/catalog.ts",
+        "src/planet/selection.ts",
+        "src/planet/editions.ts"
       ],
-      "tests": [],
-      "evidence": [],
-      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
-      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "CANON-003",
@@ -1780,12 +1824,23 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/main.tsx",
+        "src/platform/PlatformServices.tsx"
+      ],
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "CANON-004",
@@ -1798,12 +1853,23 @@
       "status": "IN_PROGRESS",
       "implementationFiles": [
         "docs/mobile/PLATFORM_ARCHITECTURE.md",
-        "docs/mobile/evidence/S00/current-main-canonical-delta.json"
+        "docs/mobile/evidence/S00/current-main-canonical-delta.json",
+        "src/planet/catalog.ts",
+        "src/planet/editorialCatalog.ts",
+        "src/planet/books.ts"
       ],
-      "tests": [],
-      "evidence": [],
-      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
-      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "CANON-005",
@@ -1813,12 +1879,23 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/planet/brand.ts",
+        "src/planet/catalog.ts"
+      ],
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "CANON-006",
@@ -1849,12 +1926,23 @@
       "status": "IN_PROGRESS",
       "implementationFiles": [
         "scripts/lib/stage5-content-data-lock.test.mjs",
-        "docs/mobile/evidence/S00/current-main-baseline-results.json"
+        "docs/mobile/evidence/S00/current-main-baseline-results.json",
+        "src/main.tsx",
+        "src/App.tsx",
+        "src/loading/bookArchiveRuntime.ts"
       ],
-      "tests": [],
-      "evidence": [],
-      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
-      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "CANON-008",
@@ -2572,12 +2660,24 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/planet/catalog.ts",
+        "src/planet/books.ts",
+        "src/loading/bookArchiveRuntime.ts"
+      ],
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "CONTENT-005",
@@ -5131,12 +5231,23 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/planet/brand.ts",
+        "src/App.tsx"
+      ],
+      "tests": [
+        "src/planet/localization.test.ts",
+        "src/planet/catalog.test.ts",
+        "src/planet/presentation.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "tests/e2e/platform-services.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S02/acceptance.json"
+      ],
+      "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. S02 shared extraction milestone accepted; complete typed ICU catalogs, reviewed bilingual content, native/child/offline export and RC/device evidence remain later mapped milestones."
     },
     {
       "id": "UX-005",

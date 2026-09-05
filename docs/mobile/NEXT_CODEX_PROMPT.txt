@@ -1,15 +1,18 @@
 Continue V12 in this checkout on codex/literary-planet-v12-bilingual-final-autopilot.
 Read AGENTS.md and state/status/decisions/blockers. Run pinned input verification,
-node scripts/mobile/stage-context.mjs S02 and node scripts/mobile/verify-state.mjs.
-S00 accepted ef16246f; S01 accepted25b53479; canonical base main0a348bd4.
-Current S02.acceptance: implement shared canonical exports and platform service
-interfaces/adapters, integrate existing product without duplicate scene/data/state.
-S01/S02 route is the same07/43/57 plus shared invariants already fully read.
-Use PLATFORM_ARCHITECTURE.md; root owns main/provider integration, delegate bounded
-shared-data and web-adapter work. Preserve original Canvas/renderer/camera/locale
-provider lifetimes, canonical facts/portraits/flags, approved main UI and owner locks.
-Native SDK dependencies belong only in native adapters; no remote runtime.
-Tests/fixes/regression/evidence/atomic commit then checkpoint and continue.
+node scripts/mobile/stage-context.mjs S03 and node scripts/mobile/verify-state.mjs.
+S00 accepted ef16246f; S01 accepted25b53479; S02 accepted6305df5f.
+Canonical base remains main0a348bd4. Active S03.acceptance is controlled Web/PWA.
+Read new S03-S10 route18/21/22/23 in full; unchanged shared invariants already read.
+Use the existing canonical App/domain/globe and S02 WebPlatformAdapter/provider.
+SHARED_SITE_EXTRACTION.md documents source identity and demand-loading boundaries.
+Implement controlled artifact, isolated cache/scope, offline bootstrap and safe
+updates with actual build/browser evidence; do not create a second product/globe.
+S02 full3139/final259/browser13 passed, with four unit skips and one existing
+desktop-only browser skip. Source guard430 Web modules passed. Preserve the failed
+concurrent Git-fixture log and successful serial resolution as recorded evidence.
+Tests/fixes/regression/evidence/atomic commit then checkpoint and continue S04.
+All global milestones, full reviewed RU/EN, strict ICU, native artifacts, child,
+purchases, downloads, legal/store/owner approval and exact RC work remain.
 No raw AI production translations, fabricated approvals, guessed titles, fake RC
 screenshots, deploy, production writes, Submit, Release or merge.
-All remaining global milestones and full RU/EN three-platform product work remain.

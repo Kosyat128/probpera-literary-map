@@ -4,7 +4,7 @@ A11Y-002,A11Y,P1,all,Accessible non-3D country/writer path,V12 modular specs/ful
 A11Y-003,A11Y,P1,all,Large text/Dynamic Type,V12 modular specs/full spec,OPEN,,,,
 A11Y-004,A11Y,P1,all,Reduced motion and sensory quiet mode,V12 modular specs/full spec,OPEN,,,,
 A11Y-005,A11Y,P1,all,44x44 controls and focus semantics,V12 modular specs/full spec,OPEN,,,,
-A11Y-006,A11Y,P1,all,RU complete and reviewed EN architecture,V12 modular specs/full spec,OPEN,,,,
+A11Y-006,A11Y,P1,all,RU complete and reviewed EN architecture,V12 modular specs/full spec,IN_PROGRESS,src/planet/localization.ts;src/platform/PlatformServices.tsx;src/mobile/ConnectivityStatus.tsx,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
 A11Y-007,A11Y,P1,all,Rights-aware captions/narration/audio,V12 modular specs/full spec,OPEN,,,,
 A11Y-008,A11Y,P1,all,No colour/motion/audio-only meaning,V12 modular specs/full spec,OPEN,,,,
 BIL-001,LOCALE,P0,all,Russian and English are mandatory production locales,03C;119;142,IN_PROGRESS,src/platform/productPolicy.ts;src/platform/productPolicy.test.ts,,,25b5347970fef19be280d29475953e98dbea69c2
@@ -17,7 +17,7 @@ BIL-007,LOCALE,P0,all,Language choice is resolved before first content frame,119
 BIL-008,LOCALE,P0,all,Child mode and exact-age policy survive language changes,119;123,OPEN,,,,
 BIL-009,LOCALE,P1,all,Parent may lock child profile language without blocking safety,123,OPEN,,,,
 BIL-010,LOCALE,P0,all,Language is never inferred from IP nationality SIM or store country,119,IN_PROGRESS,src/platform/productPolicy.ts;src/platform/productPolicy.test.ts,,,25b5347970fef19be280d29475953e98dbea69c2
-BIL-011,I18N,P0,web,Shared TypeScript catalogs are type-safe and ICU-compatible,120,OPEN,,,,
+BIL-011,I18N,P0,web,Shared TypeScript catalogs are type-safe and ICU-compatible,120,IN_PROGRESS,src/planet/localization.ts;src/planet/types.ts,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
 BIL-012,I18N,P0,all,User-facing hardcoded string scanner fails release,120;126,OPEN,,,,
 BIL-013,I18N,P0,all,Placeholder names types and counts match across locales,120;126,OPEN,,,,
 BIL-014,I18N,P1,all,Plural/select messages are locale-correct and not concatenated,120;126,OPEN,,,,
@@ -114,13 +114,13 @@ BIL-104,AUTOMATION,P0,all,Bilingual all-gate covers static content child native 
 BIL-105,NO_RETURN,P0,all,Base Edition English critical surfaces cannot be deferred as later localization,168,OPEN,,,,
 BIL-106,NO_RETURN,P0,all,Final handoff contains all English architecture content store legal support offline search correction and operations systems,168,OPEN,,,,
 BIL-107,NO_RETURN,P0,all,Future third locales cannot weaken or delay complete Russian and English release,168,IN_PROGRESS,src/platform/productPolicy.ts;src/platform/productPolicy.test.ts,,,25b5347970fef19be280d29475953e98dbea69c2
-CANON-001,CANON,P0,all,Existing site Literary Planet is sole globe foundation,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;scripts/mobile/platform-boundaries.mjs,,,25b5347970fef19be280d29475953e98dbea69c2
-CANON-002,CANON,P0,all,Shared IDs/coordinates/editions/textures across clients,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;docs/mobile/evidence/S00/current-main-canonical-delta.json,,,25b5347970fef19be280d29475953e98dbea69c2
-CANON-003,CANON,P0,all,One Canvas/renderer per active experience,V12 modular specs/full spec,OPEN,,,,
-CANON-004,CANON,P0,all,Canonical CMS is only factual content source,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;docs/mobile/evidence/S00/current-main-canonical-delta.json,,,25b5347970fef19be280d29475953e98dbea69c2
-CANON-005,CANON,P0,all,Real portraits and canonical flags reused,V12 modular specs/full spec,OPEN,,,,
+CANON-001,CANON,P0,all,Existing site Literary Planet is sole globe foundation,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;scripts/mobile/platform-boundaries.mjs;src/App.tsx;src/planet/catalog.ts,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
+CANON-002,CANON,P0,all,Shared IDs/coordinates/editions/textures across clients,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;docs/mobile/evidence/S00/current-main-canonical-delta.json;src/planet/catalog.ts;src/planet/selection.ts;src/planet/editions.ts,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
+CANON-003,CANON,P0,all,One Canvas/renderer per active experience,V12 modular specs/full spec,IN_PROGRESS,src/main.tsx;src/platform/PlatformServices.tsx,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
+CANON-004,CANON,P0,all,Canonical CMS is only factual content source,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;docs/mobile/evidence/S00/current-main-canonical-delta.json;src/planet/catalog.ts;src/planet/editorialCatalog.ts;src/planet/books.ts,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
+CANON-005,CANON,P0,all,Real portraits and canonical flags reused,V12 modular specs/full spec,IN_PROGRESS,src/planet/brand.ts;src/planet/catalog.ts,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
 CANON-006,CANON,P0,all,Site/Web/PWA/Android/iOS parity gates,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;docs/mobile/STAGE_REQUIREMENT_MAP.json,,,25b5347970fef19be280d29475953e98dbea69c2
-CANON-007,CANON,P0,all,Public site and admin remain regression-safe,V12 modular specs/full spec,IN_PROGRESS,scripts/lib/stage5-content-data-lock.test.mjs;docs/mobile/evidence/S00/current-main-baseline-results.json,,,25b5347970fef19be280d29475953e98dbea69c2
+CANON-007,CANON,P0,all,Public site and admin remain regression-safe,V12 modular specs/full spec,IN_PROGRESS,scripts/lib/stage5-content-data-lock.test.mjs;docs/mobile/evidence/S00/current-main-baseline-results.json;src/main.tsx;src/App.tsx;src/loading/bookArchiveRuntime.ts,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
 CANON-008,CANON,P0,all,No remote website as native core runtime,V12 modular specs/full spec,IN_PROGRESS,scripts/mobile/platform-boundaries.mjs;scripts/mobile/platform-boundaries.test.mjs,,,25b5347970fef19be280d29475953e98dbea69c2
 CHAR-001,CHAR,P0,all,Russian and foreign literary character catalog,V12 modular specs/full spec,OPEN,,,,
 CHAR-002,CHAR,P0,all,Rights-cleared StoryWorld minimum,V12 modular specs/full spec,OPEN,,,,
@@ -168,7 +168,7 @@ COMMERCE-013,COMMERCE,P0,all,Paid app agreements/prices gated,V12 modular specs/
 CONTENT-001,CONTENT,P0,all,Country/writer/work production screens,V12 modular specs/full spec,OPEN,,,,
 CONTENT-002,CONTENT,P0,all,Verified biographies and works,V12 modular specs/full spec,OPEN,,,,
 CONTENT-003,CONTENT,P0,all,No generated real-person factual assets,V12 modular specs/full spec,OPEN,,,,
-CONTENT-004,CONTENT,P0,all,Deterministic web/mobile/child export,V12 modular specs/full spec,OPEN,,,,
+CONTENT-004,CONTENT,P0,all,Deterministic web/mobile/child export,V12 modular specs/full spec,IN_PROGRESS,src/planet/catalog.ts;src/planet/books.ts;src/loading/bookArchiveRuntime.ts,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
 CONTENT-005,CONTENT,P0,all,Signed content manifests,V12 modular specs/full spec,OPEN,,,,
 CONTENT-006,CONTENT,P0,all,Atomic update/rollback,V12 modular specs/full spec,OPEN,,,,
 CONTENT-007,CONTENT,P0,all,Airplane-mode core,V12 modular specs/full spec,OPEN,,,,
@@ -336,7 +336,7 @@ SEC-008,SEC,P0,all,Signed artifacts/manifests and anti-rollback,V12 modular spec
 UX-001,UX,P1,all,Orange native and branded splash with logo top-left,V12 modular specs/full spec,OPEN,,,,
 UX-002,UX,P1,all,Adult navigation prioritizes Planet,V12 modular specs/full spec,OPEN,,,,
 UX-003,UX,P1,all,Child navigation prioritizes Planetka/learning,V12 modular specs/full spec,OPEN,,,,
-UX-004,UX,P1,all,Canonical violet/orange design system,V12 modular specs/full spec,OPEN,,,,
+UX-004,UX,P1,all,Canonical violet/orange design system,V12 modular specs/full spec,IN_PROGRESS,src/planet/brand.ts;src/App.tsx,src/planet/localization.test.ts;src/planet/catalog.test.ts;src/planet/presentation.test.ts;src/loading/stage5LoadingGraph.test.ts;tests/e2e/platform-services.spec.mjs,docs/mobile/evidence/S02/acceptance.json,6305df5fe671718c78b38af1ccc2bafbbdd44346
 UX-005,UX,P1,all,One dominant CTA per screen,V12 modular specs/full spec,OPEN,,,,
 UX-006,UX,P1,all,All loading/empty/error/offline states,V12 modular specs/full spec,OPEN,,,,
 UX-007,UX,P1,all,Visual reference used only as composition guide,V12 modular specs/full spec,OPEN,,,,

@@ -3,11 +3,11 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "25b5347970fef19be280d29475953e98dbea69c2",
+  "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-05T03:55:27.098Z",
-  "currentStageId": "S02",
-  "currentCriterionId": "S02.acceptance",
+  "updatedAt": "2026-09-05T04:29:01.477Z",
+  "currentStageId": "S03",
+  "currentCriterionId": "S03.acceptance",
   "stages": [
     {
       "id": "S00",
@@ -281,109 +281,142 @@
     {
       "id": "S02",
       "name": "Shared site-first extraction",
-      "status": "IN_PROGRESS",
+      "status": "COMPLETE",
       "criteria": [
         {
           "id": "S02.acceptance",
-          "status": "IN_PROGRESS",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "Stage foundation acceptance; global requirements remain separate."
         },
         {
           "id": "S02.A11Y-006",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "RU complete and reviewed EN architecture. Shared interaction/native accessibility precedes integrated and localized device evidence."
         },
         {
           "id": "S02.BIL-011",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "Shared TypeScript catalogs are type-safe and ICU-compatible. Extract shared typed catalog boundaries before S36 ICU/type compatibility validation; this does not certify complete translations."
         },
         {
           "id": "S02.CANON-001",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "Existing site Literary Planet is sole globe foundation. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S02.CANON-002",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "Shared IDs/coordinates/editions/textures across clients. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S02.CANON-003",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "One Canvas/renderer per active experience. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S02.CANON-004",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "Canonical CMS is only factual content source. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S02.CANON-005",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "Real portraits and canonical flags reused. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S02.CANON-007",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "Public site and admin remain regression-safe. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S02.CONTENT-004",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "Deterministic web/mobile/child export. Canonical export/display comes before offline integrity and reviewed English equivalence."
         },
         {
           "id": "S02.UX-004",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S02/acceptance.json"
+          ],
+          "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+          "lastValidatedAt": "2026-09-05T04:29:01.477Z",
           "notes": "Canonical violet/orange design system. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
         }
       ],
-      "lastGreenCommands": [],
-      "artifacts": [],
+      "lastGreenCommands": [
+        "node node_modules/vitest/vitest.mjs run --maxWorkers=3",
+        "node node_modules/vitest/vitest.mjs run scripts/mobile src/planet src/platform src/loading src/i18n/InterfaceLanguage.test.ts src/components/bootstrapBoundary.source.test.ts src/analytics/activityConsentPolicy.test.ts src/community/authTurnstile.source.test.ts scripts/safe-browser-storage.source.test.mjs scripts/lib/stage5-content-data-lock.test.mjs --maxWorkers=1",
+        "npm run lint:public",
+        "CMS_SNAPSHOT_PREEXPORTED=true npm run build:domain",
+        "PLAYWRIGHT_PORT=4273 node node_modules/@playwright/test/cli.js test tests/e2e/platform-services.spec.mjs tests/e2e/literary-planet-immersion.spec.mjs tests/e2e/globe-runtime.spec.mjs tests/e2e/public-smoke.spec.mjs tests/e2e/cms-direct-edit.spec.mjs tests/e2e/header-hero-polish.spec.mjs --grep 'live offline status|country selection replaces|globe filters update|поиск глобуса сохраняет|редактор выбирает|RU and EN hero copy|protected header bands' --workers=1",
+        "node scripts/mobile/platform-boundaries.mjs"
+      ],
+      "artifacts": [
+        "docs/mobile/evidence/S02/acceptance.json",
+        "docs/mobile/evidence/S02/results.json",
+        "docs/mobile/SHARED_SITE_EXTRACTION.md"
+      ],
       "externalBlockers": []
     },
     {
       "id": "S03",
       "name": "Paid Web/PWA edition",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S03.acceptance",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -10470,8 +10503,8 @@
     }
   ],
   "resume": {
-    "firstOpenCriterion": "S02.acceptance",
-    "nextAction": "Implement shared canonical exports and platform service interfaces; integrate into existing client without recreating scene, locale or factual state.",
+    "firstOpenCriterion": "S03.acceptance",
+    "nextAction": "Read S03 routed documents and implement the controlled Web/PWA artifact, scope, offline bootstrap and safe updates using the same canonical product.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10479,6 +10512,7 @@
       "docs/mobile/DECISIONS.md",
       "docs/mobile/BLOCKERS.md",
       "docs/mobile/PLATFORM_ARCHITECTURE.md",
+      "docs/mobile/SHARED_SITE_EXTRACTION.md",
       "docs/mobile/STAGE_REQUIREMENT_MAP.json",
       "docs/mobile/requirements/v12/03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
       "docs/mobile/requirements/v12/03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md",
@@ -10489,20 +10523,21 @@
       "docs/mobile/requirements/v12/03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md",
       "docs/mobile/requirements/v12/119_BILINGUAL_PRODUCT_LANGUAGE_CONTRACT_RU_EN.md",
       "docs/mobile/requirements/v12/140_OFFICIAL_LOCALIZATION_SOURCES_2026-09-03.json",
-      "docs/mobile/requirements/v12/07_THREE_PLATFORM_ARCHITECTURE_RU.md",
-      "docs/mobile/requirements/v12/57_REQUIREMENTS_TRACEABILITY_SCHEMA.json",
-      "docs/mobile/requirements/v12/43_AUTOPILOT_STATE_SCHEMA.json"
+      "docs/mobile/requirements/v12/18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
+      "docs/mobile/requirements/v12/21_VISUAL_UX_CANON_RU.md",
+      "docs/mobile/requirements/v12/22_ACCESSIBILITY_LOCALIZATION_AUDIO_RU.md",
+      "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
-      "node scripts/mobile/stage-context.mjs S02",
+      "node scripts/mobile/stage-context.mjs S03",
       "node scripts/mobile/verify-state.mjs",
       "node scripts/mobile/platform-boundaries.mjs"
     ],
     "doNotRepeat": [
-      "Do not reread the standalone fallback or unchanged S01/S02 documents.",
-      "S00 and S01 are accepted historical baselines; rerun only checks justified by S02 changes.",
-      "Do not mark a global requirement PASSED from a single stage milestone."
+      "Unchanged shared invariants and S01-S02 source contracts already fully read. Read new S03 routed documents before implementation.",
+      "S02 full regression3139, final narrow259 and browser13 passed; rerun only checks justified by S03 changes.",
+      "Global ICU/content/native/package/RC requirements remain incomplete; no approval or release inferred."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",

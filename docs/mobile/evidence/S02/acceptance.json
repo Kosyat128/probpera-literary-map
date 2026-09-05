@@ -1,0 +1,410 @@
+{
+  "version": "12.0",
+  "scope": "shared-site-extraction-and-web-platform-integration",
+  "sourceCommit": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
+  "criterionIds": [
+    "S02.acceptance",
+    "S02.A11Y-006",
+    "S02.BIL-011",
+    "S02.CANON-001",
+    "S02.CANON-002",
+    "S02.CANON-003",
+    "S02.CANON-004",
+    "S02.CANON-005",
+    "S02.CANON-007",
+    "S02.CONTENT-004",
+    "S02.UX-004"
+  ],
+  "requirementIds": [],
+  "sourceFiles": [
+    {
+      "path": "docs/mobile/PLATFORM_ARCHITECTURE.md",
+      "gitBlob": "e05616a8cdc23e866450cfe49518274a27c1f1c1",
+      "sha256": "8ec8a59ec9f173c195558e3db590d19a07ecf8a45b34e56e18a5a3c28654992d"
+    },
+    {
+      "path": "docs/mobile/SHARED_SITE_EXTRACTION.md",
+      "gitBlob": "52e7af5f85c87bee412b2b100b42b351a6955e96",
+      "sha256": "a399afb8f06342d33b8d1fa70199500e39a2b4d8a278a7deff37060c14085925"
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlob": "da716ab123927b95f8ab9fdb59290e52c821545d",
+      "sha256": "ecc7523f2b30e8568256c4ebdc75a2acf44b082787c8d50bcc56c3ca7e45b224"
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "116adefcb35957765a5c9f3fe3b4cd5fc27913c2",
+      "sha256": "577b2960ecead415fddfb6b532646d0a5ff8584a39dc6008b8f7778637d93413"
+    },
+    {
+      "path": "playwright.config.mjs",
+      "gitBlob": "b8390db1a47a93c57682e3eda2f5dcfb8102cadf",
+      "sha256": "230a39f8aee87771344d08bcecef07f3e18db4b70968043ba23341d83628af3f"
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "gitBlob": "3e8ed460a4c627e3de9d7bab98ae1fa19dd4fcd5",
+      "sha256": "dc290d625521a7d68db36ef3375f6e774248513363a0226ef58242e5e5f67ec3"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "gitBlob": "6940b48e5152e5918ea1606c81d5a4053178e22e",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "src/App.tsx",
+      "gitBlob": "3486fd803f55e7d0fbbc2c360fc5db2ba6ea42ee",
+      "sha256": "c6418c97910ca4be55c4a46712544f24946ae163a9d19cebd4a434062232e457"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "gitBlob": "b56e817b30c7891acc0d14193c399184ca10006c",
+      "sha256": "d75d2696248e6851fa25e059de8cdc435926142f1a7cd021ea2ed114245038cf"
+    },
+    {
+      "path": "src/components/BookShelfSceneCanvas.tsx",
+      "gitBlob": "82c4fd7042d792fc002d5fa7895126f1b5743f2e",
+      "sha256": "be107507cf5e77f40db56290dae82b0edbd002fd85d620f72972f252c669a2f3"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "gitBlob": "7d51b95a444e7fd2daba364558ca3285eb759e6c",
+      "sha256": "0af78819eecf07304f95a87d8a33738ed5993b6e8051d8c8e86efecff4b1b8f3"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "gitBlob": "a30721b1aeada5408001a5868bfdfb434a0a803b",
+      "sha256": "c99b82d1a1da222de87d65bb0b3f827028d8ec9679d3055eab022da24bcbe9e8"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "gitBlob": "122ea7020c90bf5162b6601e68d829106ab597f8",
+      "sha256": "2c4b164ae607c60dfba92936f8ef1501bcb3417b81fb6e5e626dcaaf58803b55"
+    },
+    {
+      "path": "src/data/bookArchive.ts",
+      "gitBlob": "e54d39ec42a2a51edc8a1d3552f770aabc2b784e",
+      "sha256": "158ede420f615ebbee2a5405267d3db2061e3197bac25e240dc9491fc43b5f9e"
+    },
+    {
+      "path": "src/data/bookArchiveQueue.ts",
+      "gitBlob": "069b7bb4a5c8055ce77060d8f15754506ccd5244",
+      "sha256": "f025392d854c687454a6d9f47d645ee83842fa733d52d33a00cb7148df68362d"
+    },
+    {
+      "path": "src/data/bookLocalization.ts",
+      "gitBlob": "0b668a1c460a6325f4f8302ac1e03b6971056729",
+      "sha256": "8ead973413f44d356766893fd750087cfd00821f7d3c63cb7cf9e36eeb57fc25"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "gitBlob": "4a4e73030bde81617fc8e6b8d2e2e3fef4d52c29",
+      "sha256": "9d569451e09cdd1706c3a63414a39cf1449c767afc24040ebad99bbe99c579da"
+    },
+    {
+      "path": "src/data/cms/siteCopy.ts",
+      "gitBlob": "d2b989848f121606e227f57fd3f80b9cff4ca990",
+      "sha256": "320f5cec6d093c66131e9823b15bcbdd83e0c9d2d735ae538b025b0a71a5e9e3"
+    },
+    {
+      "path": "src/data/countries.ts",
+      "gitBlob": "4b8d412ef924181f46fdc4d997c99c409a5bb832",
+      "sha256": "e42ecfa642afdfa603f48929fc09a9fdbccddac63e3884713d1c30cf2d0bb35b"
+    },
+    {
+      "path": "src/data/countries/index.ts",
+      "gitBlob": "8068e1f3349f1306da9d9112c1ff37ddc6142664",
+      "sha256": "faf8d240a24c11339306b950d6741470c7750e3febd9d4b89c4111f7666fb420"
+    },
+    {
+      "path": "src/data/countries/types.ts",
+      "gitBlob": "3d7ae31d7aed9f2b16aa2edbea8abd2a5f64cb07",
+      "sha256": "45d598abccc7f0b59a3d0d25aebbee04d2ec511385a9c24136d519e641c06ca1"
+    },
+    {
+      "path": "src/data/countryLocalization.ts",
+      "gitBlob": "3190a0951b2f76af6dd4ba25238c97ae3ca8ead1",
+      "sha256": "5612895d6d14851ca91d685e5b72557966e92123d82873a729e92538a14d1dd4"
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "gitBlob": "990b43d2db4ec639c5afc3ef540146222e3f05a6",
+      "sha256": "f02098f3103a6fb15098ab07e8679380a7d0b9e95a74d96860b22ddb45aaed50"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "gitBlob": "dedd323aa24cd658b2e047914ac3fa2cca3dc57a",
+      "sha256": "8573e0ae4691fe91b643c17ec7cd01f5cac1d4cf4701b4deb749b93682a450ba"
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.ts",
+      "gitBlob": "f529fb10a1160b4534684c4cb22b7682da3bd407",
+      "sha256": "c641425baf743c810c80154d5d89de9816be2fab91e88ef24dbef919c6e4917e"
+    },
+    {
+      "path": "src/loading/stage5LoadingGraph.test.ts",
+      "gitBlob": "377b644f41cbfb9a2ecf976224447b435c7f882f",
+      "sha256": "edcad64c2a0605dc3522297f7fb922fb8c12b89d04e8c252f16f17c1fc91234f"
+    },
+    {
+      "path": "src/main.tsx",
+      "gitBlob": "757059cb6a459a15873a3258a87f9586b9144cb7",
+      "sha256": "5dce7161003a6299c272f43a628f48cf68c693e869c1d51317cffc2698b6afd3"
+    },
+    {
+      "path": "src/mobile/ConnectivityStatus.tsx",
+      "gitBlob": "1f9d50ca94f6a18647533423f16487576c6fca25",
+      "sha256": "efcd5493bfb2c7af75c8b05318d3a0c320859fed8d1cd821b671d4d5fd10823b"
+    },
+    {
+      "path": "src/planet/books.test.ts",
+      "gitBlob": "6cddd981fce2ed4a69cf5717c8d9568f95712f1e",
+      "sha256": "61fd9b45b8c5044794344b46d8241de9906e43a34c094afbfeaaedb2d6f1037f"
+    },
+    {
+      "path": "src/planet/books.ts",
+      "gitBlob": "0e89f87c6792dcbcc95a5b53460d0928f7152a22",
+      "sha256": "c694e1991b64a4e626c4e578457d3e3b9f30bfb761558c4c6d8dde4304d08989"
+    },
+    {
+      "path": "src/planet/brand.ts",
+      "gitBlob": "a7dc416f22c6e41b0335337b731b1f9f79059a60",
+      "sha256": "074c3ad10618ed55204fcd2fb13067d6d6f1977c488b84d13aec460a47c640f4"
+    },
+    {
+      "path": "src/planet/catalog.test.ts",
+      "gitBlob": "201f9f18d951b51ca9a49f8edfd4e74025b4c386",
+      "sha256": "762afd189ad459dc0da40f73da80d38a0077545c46d52ca2c3f53fee05540f99"
+    },
+    {
+      "path": "src/planet/catalog.ts",
+      "gitBlob": "d0e01766fc4220562155c1c93b12455aaaf409ef",
+      "sha256": "a03280a4ac68a21be24d9a2dc3b6333ee44e1752e1a2c7c62efecb95d0606e19"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "gitBlob": "7fd93f015f3604d0a46578bc338adeea82d42739",
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/planet/editorialCatalog.ts",
+      "gitBlob": "af6f7b10c90cea107a96c7e392f7da8f5367c08c",
+      "sha256": "c91696cb5dfa0e3a9324c083b1899fda1429b736adcae55174b557bb7e4ae448"
+    },
+    {
+      "path": "src/planet/loadingBoundary.test.ts",
+      "gitBlob": "530fb769c5c1135c810bdca6a13e836ca122c093",
+      "sha256": "0b76095565a0dc9d3a7dd061a251c2fc6061e91a03dbc1d86195d3a10e3f1847"
+    },
+    {
+      "path": "src/planet/localization.test.ts",
+      "gitBlob": "4777ad17d8fd3f4a3edb2b346ce5151581894f2c",
+      "sha256": "4aee2b060ad23dfdc6f1a046a8763985f2cde09afed2e6cadd4877e1395a1454"
+    },
+    {
+      "path": "src/planet/localization.ts",
+      "gitBlob": "4af8a79219505486cf432b50edc0e4a512248ba2",
+      "sha256": "28b0b98bbbc89be8e1a33a13f2332217f8bdeb5d16cd702bc200ade4a83d2bff"
+    },
+    {
+      "path": "src/planet/presentation.test.ts",
+      "gitBlob": "e11e702eac104b8d2102713b11cdcf3ae1ca7151",
+      "sha256": "c0d46a0d57d557aa7fa11b384a64e84cc97dfa0362f64aa262b733b419757bdc"
+    },
+    {
+      "path": "src/planet/selection.ts",
+      "gitBlob": "b7c6ad03036698b3d83a43ed7d1d6806c45826e4",
+      "sha256": "0d0ed8c86722e7f4c36885ab572ffb746c16ce69e4ccebf797eb5c3cd0fd99e3"
+    },
+    {
+      "path": "src/planet/types.ts",
+      "gitBlob": "71d6d8bf08cff7b4ff6680dfc80231267c2dd71f",
+      "sha256": "80ffbec6e93002364fba05b8d303ee7a712f29cbe801a04a4af70a5a587ff25d"
+    },
+    {
+      "path": "src/platform/PlatformServices.test.tsx",
+      "gitBlob": "415b7a20cdbce401d9d6f9a100750a9dfd1dbea9",
+      "sha256": "f744b8131b386490f63b45986b9b74c9a328c692f6678cf8cc8288dc3a14d302"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "gitBlob": "ad24ddaebb1c1fb55527f0cb5752a446e0bd8bee",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "gitBlob": "8c59ed642c2cedbffb0adf2fa6df0ac6f576c17d",
+      "sha256": "b8e8afd9b852dc1bde308360d1b52430a0a1ab308a26f1be50a24111a19e5ed0"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "gitBlob": "0bb5d54fd7a281daaf1480d46eecf59a8ca61a78",
+      "sha256": "3582642d0540c1d02647690e021a673d9d2618f739660ec66b443c814b4519d8"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "gitBlob": "9f4678a2c4ef812f31896108d7b05369c137d2dc",
+      "sha256": "47e8e5d2602ec3228db943bc8c2e731811f6b1ab04d74b44ca869ae2db30ad7f"
+    },
+    {
+      "path": "src/platform/productPolicy.test.ts",
+      "gitBlob": "add83fcec01befa8f7e5c23a8f74e41ab6ae98ad",
+      "sha256": "d41f56238d58a774ac0c004c91c1e4310fc9cfe7431646f25c5ce81785be2a64"
+    },
+    {
+      "path": "src/platform/productPolicy.ts",
+      "gitBlob": "feb57b5c1e6f92628bd91842eef5bcdf1db9ebc7",
+      "sha256": "a43622ca8b7ef85bb0b1df2d9dbb1268d4a5e1ce2ca9d1f00a97387250fca480"
+    },
+    {
+      "path": "src/utils/atlasUrlState.ts",
+      "gitBlob": "f34beccdac0761c9300e1baecd8e7dd55028d772",
+      "sha256": "74242d23e7050203dc99030d3ef520dcdf0a6f71fb6e6f12e66f751c27ee3780"
+    },
+    {
+      "path": "src/utils/safeWebStorage.ts",
+      "gitBlob": "2f59ae4e6ae9c19de77050fcb99aea90bfcc79f1",
+      "sha256": "2bdf130ba4259e947ce8e9b967e87c4f5acc5d6a83a5c69e8244de6b4b22df07"
+    },
+    {
+      "path": "tests/e2e/cms-direct-edit.spec.mjs",
+      "gitBlob": "82f68fe879c5d03d338b564f41073effb074074f",
+      "sha256": "b819c40f61b8056bd33cd0a241199506fbd7027d531b8c1214c478c012a63d30"
+    },
+    {
+      "path": "tests/e2e/globe-runtime.spec.mjs",
+      "gitBlob": "4c5fa863340bf840fe6882dea7e027acd0b6b2c3",
+      "sha256": "e04ebc5f9dcdec59c847c4a4c85f1bba095611322c823dda7f42d83a61d5dd58"
+    },
+    {
+      "path": "tests/e2e/header-hero-polish.spec.mjs",
+      "gitBlob": "0bad338d49b5d4421924ee823984017e8431f11d",
+      "sha256": "d389f2ba596ffd4597a5f706f31436b2afefe0b81831f359c3293df8e699ed5f"
+    },
+    {
+      "path": "tests/e2e/literary-planet-immersion.spec.mjs",
+      "gitBlob": "a1fd8fb96b665961ecd6a06dd2aa23c3312746cf",
+      "sha256": "f15a55c399a0aad123d3eb9de87a80217db70f88450353d8cbc0b5589818a1cb"
+    },
+    {
+      "path": "tests/e2e/platform-services.spec.mjs",
+      "gitBlob": "55aeccd9d71e01ce873c0de56a776fd091a6270c",
+      "sha256": "1d3cb0818dcaee3d6986c44d2a8defcaca847c76c951737e4add8fedecb1196b"
+    },
+    {
+      "path": "tests/e2e/public-smoke.spec.mjs",
+      "gitBlob": "cca25ba15ca15cc49b1665bec370cf491dc877f8",
+      "sha256": "524761502c9063e4cbbdd2d97611402cdac8e4d31cfa25474c8f3a316e63f3f8"
+    },
+    {
+      "path": "vite.config.ts",
+      "gitBlob": "198731b80b65745bed2fc6c808ecea842f184e90",
+      "sha256": "984840b0b8855df1e1ec582ec39fe575fb20c72214ecc218ff4e17587c8c1850"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/mobile/evidence/S02/checkpoint-before-acceptance.json",
+      "gitBlob": "2b1eda12f0c39ab5898b82e357bc84016d6a182d",
+      "sha256": "4d8affed8e47c10ef538625abb9d73883055dadee670343d7a3301f1374accf8"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/loaded-documents.json",
+      "gitBlob": "f99c2df8bd34534f9546d8cc7c982045566ae1c1",
+      "sha256": "002ad167d04133e445415ab7088a01b2cb34fbf2ebcd3b94534643a99ddc7cdb"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-browser-final.log",
+      "gitBlob": "38bedfe52d2628551e09f23a05cc7b901c2ce2d2",
+      "sha256": "a3a8a0a08ec5194fb650de082627621199ea77f5c8b86140eeae148dc4f15723"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-browser-network-initial.log",
+      "gitBlob": "372c64009eb027085b835a154199c6b9f03e2f0f",
+      "sha256": "787bcfe7af5c7e4ff19de8f36c6715db7a4b9957c4f179ee77212960e33fac76"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-build-domain-final.log",
+      "gitBlob": "25f934060c7eba52e736522fcf265f82022fbba6",
+      "sha256": "c4b81203dbca861458ca03849b55b8f0a124d28af04fa28f155235940014cfa6"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-final-boundary-regression.log",
+      "gitBlob": "c66cada01466ddd215b5656c92e8d41b79ca4d74",
+      "sha256": "b57cabe69940f93d7094cdef8bfa288fc6e8280e0ddeee628ff18a42dc7a9af0"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-final-boundary-serial.log",
+      "gitBlob": "72c31dee908ca094fe9575f9471ecd07eb77bf48",
+      "sha256": "68f71f1dd032bdc98f87b76ad2b6133c8b58ba7dbdf225329fe4138d9a11cbb4"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-full-regression.log",
+      "gitBlob": "46aee7b4639fb4496067eefe4037cdbfc36dfb61",
+      "sha256": "1094e7fa7456b79b3b92a28e5bf10edd61f5de0c9cfb72cef81d602fc7a75523"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-lint-final.log",
+      "gitBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+      "sha256": "5b1a38b22395816c9c1cc76968ad073f523092b9fa6604d803fe26dd8db7911a"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/logs/s02-unit-initial.log",
+      "gitBlob": "0f3b56bb10177b05588f63d384a4eb4398226bf9",
+      "sha256": "ed8c87425836ad065201f290917b4c71e4dc0d0fee8f205596517cf6f37535dc"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/milestone-scope.json",
+      "gitBlob": "c547f183481fc6c974c902f6d5442afb14ea2f21",
+      "sha256": "6916d7ffaec64f9bfe78a00f7ff733f3171d95e2c654cde6a39dfc09c195fb63"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/platform-boundaries.json",
+      "gitBlob": "038759f6d9b71c26fc1b1fc9004b252a114f75e5",
+      "sha256": "3dfe69c7351355aeec836b892e51173d79655260c9043f9b42c43a649c0d9b01"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/results.json",
+      "gitBlob": "c04bc290459899ff8f124f3edb73ab7b3f4f76ec",
+      "sha256": "e312d27f9a072057d63aac10bab08a6566622b0c26f3c380131e8e8f5f7d2903"
+    },
+    {
+      "path": "docs/mobile/evidence/S02/web-build-inventory.json",
+      "gitBlob": "88bc4e36e31a3faa73a7204fa832a3c5c780c9fc",
+      "sha256": "24fce6aff75d5a2c31b37bf0cb5cdf59d7140c55e24e3b01fc06dd6bbf6f190d"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node node_modules/vitest/vitest.mjs run --maxWorkers=3",
+      "log": "docs/mobile/evidence/S02/logs/s02-full-regression.log",
+      "exitCode": 0
+    },
+    {
+      "command": "node node_modules/vitest/vitest.mjs run scripts/mobile src/planet src/platform src/loading src/i18n/InterfaceLanguage.test.ts src/components/bootstrapBoundary.source.test.ts src/analytics/activityConsentPolicy.test.ts src/community/authTurnstile.source.test.ts scripts/safe-browser-storage.source.test.mjs scripts/lib/stage5-content-data-lock.test.mjs --maxWorkers=1",
+      "log": "docs/mobile/evidence/S02/logs/s02-final-boundary-serial.log",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint:public",
+      "log": "docs/mobile/evidence/S02/logs/s02-lint-final.log",
+      "exitCode": 0
+    },
+    {
+      "command": "CMS_SNAPSHOT_PREEXPORTED=true npm run build:domain",
+      "log": "docs/mobile/evidence/S02/logs/s02-build-domain-final.log",
+      "exitCode": 0
+    },
+    {
+      "command": "PLAYWRIGHT_PORT=4273 node node_modules/@playwright/test/cli.js test tests/e2e/platform-services.spec.mjs tests/e2e/literary-planet-immersion.spec.mjs tests/e2e/globe-runtime.spec.mjs tests/e2e/public-smoke.spec.mjs tests/e2e/cms-direct-edit.spec.mjs tests/e2e/header-hero-polish.spec.mjs --grep 'live offline status|country selection replaces|globe filters update|поиск глобуса сохраняет|редактор выбирает|RU and EN hero copy|protected header bands' --workers=1",
+      "log": "docs/mobile/evidence/S02/logs/s02-browser-final.log",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/mobile/platform-boundaries.mjs",
+      "log": "docs/mobile/evidence/S02/platform-boundaries.json",
+      "exitCode": 0
+    }
+  ]
+}

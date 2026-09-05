@@ -2,7 +2,7 @@
 
 Internal work:
 
-- S01-S40: architecture, shared runtime, paid PWA, native clients, content,
+- S03-S40: controlled paid PWA, native clients, content,
   child/purchase/offline/rights flows and full bilingual release work remain.
 - English content is incomplete in main; prior release deliberately paused bulk
   English generation. This is internal work, never an owner translation task.
