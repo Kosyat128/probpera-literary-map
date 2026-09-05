@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "id": "V12-S03-TECHNICAL-COMPATIBILITY-2026-09-05",
+  "baseMainSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
+  "scope": "Exact controlled-distribution visibility, locale bootstrap, read-only Recent observers and local build/SQL-test support. Technical scope only; no human approval or release readiness is asserted.",
+  "projections": [
+    {
+      "id": "src/components/BookArchiveSection.tsx#1",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "} from \"react\";\n\nimport { createPortal } from \"react-dom\";\n\nimport ArticleEngagement from \"../community/ArticleEngagement\";\nimport {",
+      "after": "} from \"react\";\n\nimport { createPortal } from \"react-dom\";\nimport { useRecentHistory } from \"../planet/RecentHistory\";\nimport { isPublicBook } from \"../data/bookQuality\";\n\nimport ArticleEngagement from \"../community/ArticleEngagement\";\nimport {"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx#2",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "  requestedBookReturnFocus,\n  onRequestedBookHandled,\n}: Props) {\n  const [initialNavigationContext] = useState(\n    readInitialBookArchiveNavigationContext\n  );",
+      "after": "  requestedBookReturnFocus,\n  onRequestedBookHandled,\n}: Props) {\n  const { record: recordRecent } = useRecentHistory();\n  const [initialNavigationContext] = useState(\n    readInitialBookArchiveNavigationContext\n  );"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx#3",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "  const [selectedBook, setSelectedBook] = useState<BookArchiveEntry | null>(\n    null\n  );\n  const [collectionDialogBook, setCollectionDialogBook] =\n    useState<BookArchiveEntry | null>(null);\n  const [managerCollectionId, setManagerCollectionId] = useState<string | null>(",
+      "after": "  const [selectedBook, setSelectedBook] = useState<BookArchiveEntry | null>(\n    null\n  );\n  useEffect(() => {\n    if (selectedBook && isPublicBook(selectedBook)) void recordRecent({ kind: \"work\", countryId: selectedBook.countryId, writerId: selectedBook.writerId, workId: selectedBook.id });\n  }, [recordRecent, selectedBook?.countryId, selectedBook?.writerId, selectedBook?.id]);\n  const [collectionDialogBook, setCollectionDialogBook] =\n    useState<BookArchiveEntry | null>(null);\n  const [managerCollectionId, setManagerCollectionId] = useState<string | null>("
+    },
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx#1",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "before": "import { useCallback, useEffect, useMemo, useRef, useState } from \"react\";\n\nimport type { ArticleCatalogEntry } from \"../data/articles/catalog\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\nimport { PUBLIC_ARCHIVE_ARTICLE_COUNT } from \"../data/articles/publicationStats\";\nimport {",
+      "after": "import { useCallback, useEffect, useMemo, useRef, useState } from \"react\";\n\nimport type { ArticleCatalogEntry } from \"../data/articles/catalog\";\nimport { isControlledWebEdition } from \"../platform/distribution\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\nimport { PUBLIC_ARCHIVE_ARTICLE_COUNT } from \"../data/articles/publicationStats\";\nimport {"
+    },
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx#2",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "before": "                navigateToArticle(featured.lead);\n              }}\n            >\n              {featured.lead.imageUrl && (\n                <span className=\"articles-mega-lead-media\" aria-hidden=\"true\">\n                  <span\n                    style={{",
+      "after": "                navigateToArticle(featured.lead);\n              }}\n            >\n              {!isControlledWebEdition && featured.lead.imageUrl && (\n                <span className=\"articles-mega-lead-media\" aria-hidden=\"true\">\n                  <span\n                    style={{"
+    },
+    {
+      "id": "src/App.tsx#14",
+      "path": "src/App.tsx",
+      "before": "            </div>\n          </details>\n          <a href=\"#calendar\">{t(\"Календарь\")}</a>\n          <button type=\"button\" onClick={() => openCommunity(\"forum\")}>\n            {t(\"Форум\")}\n          </button>\n          <a href=\"#about\">{t(\"О проекте\")}</a>\n          <CmsNavigationLinks location=\"header\" />\n        </nav>",
+      "after": "            </div>\n          </details>\n          <a href=\"#calendar\">{t(\"Календарь\")}</a>\n          {!isControlledWebEdition && <button type=\"button\" onClick={() => openCommunity(\"forum\")}>\n            {t(\"Форум\")}\n          </button>}\n          <a href=\"#about\">{t(\"О проекте\")}</a>\n          <CmsNavigationLinks location=\"header\" />\n        </nav>"
+    },
+    {
+      "id": "src/App.tsx#15",
+      "path": "src/App.tsx",
+      "before": "          </button>\n          <InterfaceLanguageControl />\n          <SocialLinks />\n          <button\n            className=\"reader-button\"\n            aria-label={readerName || t(\"Войти\")}\n            type=\"button\"",
+      "after": "          </button>\n          <InterfaceLanguageControl />\n          <SocialLinks />\n          {!isControlledWebEdition && <button\n            className=\"reader-button\"\n            aria-label={readerName || t(\"Войти\")}\n            type=\"button\""
+    },
+    {
+      "id": "src/App.tsx#16",
+      "path": "src/App.tsx",
+      "before": "              )}\n            </span>\n            {readerName || t(\"Войти\")}\n          </button>\n        </div>\n      </header>\n",
+      "after": "              )}\n            </span>\n            {readerName || t(\"Войти\")}\n          </button>}\n        </div>\n      </header>\n"
+    },
+    {
+      "id": "src/App.tsx#17",
+      "path": "src/App.tsx",
+      "before": "        <a href=\"#books\">{t(\"Книги\")}</a>\n        <a href=\"#sections\">{t(\"Разделы\")}</a>\n        <a href=\"#calendar\">{t(\"Календарь\")}</a>\n        <button type=\"button\" onClick={() => openCommunity(\"forum\")}>\n          {t(\"Форум\")}\n        </button>\n        <button type=\"button\" onClick={() => setGlobalSearchOpen(true)}>\n          {t(\"Поиск\")}\n        </button>",
+      "after": "        <a href=\"#books\">{t(\"Книги\")}</a>\n        <a href=\"#sections\">{t(\"Разделы\")}</a>\n        <a href=\"#calendar\">{t(\"Календарь\")}</a>\n        {!isControlledWebEdition && <button type=\"button\" onClick={() => openCommunity(\"forum\")}>\n          {t(\"Форум\")}\n        </button>}\n        <button type=\"button\" onClick={() => setGlobalSearchOpen(true)}>\n          {t(\"Поиск\")}\n        </button>"
+    },
+    {
+      "id": "src/App.tsx#23",
+      "path": "src/App.tsx",
+      "before": "          </Suspense>\n        </section>\n\n        <section\n          className={`community-section${coreHomepageSectionClass(coreCommunity)}`}\n          id=\"community\"\n          style={coreHomepageSectionStyle(coreCommunity)}",
+      "after": "          </Suspense>\n        </section>\n\n        {!isControlledWebEdition && <section\n          className={`community-section${coreHomepageSectionClass(coreCommunity)}`}\n          id=\"community\"\n          style={coreHomepageSectionStyle(coreCommunity)}"
+    },
+    {
+      "id": "src/App.tsx#24",
+      "path": "src/App.tsx",
+      "before": "              )}\n            </div>\n          </div>\n        </section>\n\n        <section\n          className={`trust-center${coreHomepageSectionClass(coreTrust)}`}",
+      "after": "              )}\n            </div>\n          </div>\n        </section>}\n\n        <section\n          className={`trust-center${coreHomepageSectionClass(coreTrust)}`}"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx#distribution-import",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "before": "import { getCountrySiteCopy, getSiteCopy } from \"../data/cms/siteCopy\";",
+      "after": "import { getCountrySiteCopy, getSiteCopy } from \"../data/cms/siteCopy\";\nimport { isControlledWebEdition } from \"../platform/distribution\";"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx#browser-preference-resolver",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "before": "export function resolveInitialInterfaceLanguage(\n  storedLanguage: unknown,\n  routeLanguage: unknown\n): InterfaceLanguage {\n  if (isInterfaceLanguage(routeLanguage)) return routeLanguage;\n  return isInterfaceLanguage(storedLanguage) ? storedLanguage : \"ru\";\n}",
+      "after": "export function resolveInitialInterfaceLanguage(\n  storedLanguage: unknown,\n  routeLanguage: unknown,\n  preferredLanguages?: readonly string[]\n): InterfaceLanguage {\n  if (isInterfaceLanguage(routeLanguage)) return routeLanguage;\n  if (isInterfaceLanguage(storedLanguage)) return storedLanguage;\n  // Omitting browser negotiation preserves the canonical public site's default.\n  if (preferredLanguages === undefined) return \"ru\";\n  for (const preferred of preferredLanguages) {\n    if (typeof preferred !== \"string\") continue;\n    try {\n      const canonical = Intl.getCanonicalLocales(preferred)[0];\n      if (!canonical) continue;\n      // The first valid device preference wins; unsupported languages use English.\n      return canonical.split(\"-\")[0].toLowerCase() === \"ru\" ? \"ru\" : \"en\";\n    } catch {\n      // Ignore malformed tags instead of matching prefixes such as \"russian\".\n    }\n  }\n  return \"en\";\n}"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx#controlled-browser-preference-argument",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "before": "    document.documentElement.dataset.routeLanguage\n  );",
+      "after": "    document.documentElement.dataset.routeLanguage,\n    isControlledWebEdition ? window.navigator.languages : undefined\n  );"
+    }
+  ],
+  "packageProjections": [
+    {
+      "id": "controlled-build-script",
+      "path": [
+        "scripts",
+        "build:pwa"
+      ],
+      "before": {
+        "present": false
+      },
+      "after": {
+        "present": true,
+        "value": "tsc --noEmit && node scripts/mobile/build-pwa.mjs"
+      }
+    },
+    {
+      "id": "real-postgres-test-runtime",
+      "path": [
+        "devDependencies",
+        "@electric-sql/pglite"
+      ],
+      "before": {
+        "present": false
+      },
+      "after": {
+        "present": true,
+        "value": "0.5.8"
+      }
+    }
+  ]
+}

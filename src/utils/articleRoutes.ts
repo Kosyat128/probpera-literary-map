@@ -1,6 +1,11 @@
 import configuredArticleSectionSlugs from "../data/articles/sectionRoutes.json";
+import {
+  canonicalJournalOrigin,
+  isControlledWebEdition,
+} from "../platform/distribution";
 
 const basePath = import.meta.env.BASE_URL.replace(/\/+$/, "");
+const journalBase = isControlledWebEdition ? canonicalJournalOrigin : basePath;
 
 const transliteration: Record<string, string> = {
   а: "a", б: "b", в: "v", г: "g", д: "d", е: "e", ё: "e", ж: "zh",
@@ -73,7 +78,7 @@ export function articlePath(
   sectionId?: string,
   preferredSlug?: string
 ) {
-  return `${basePath}${articlePublicPath(
+  return `${journalBase}${articlePublicPath(
     articleId,
     title,
     sectionId,
@@ -82,10 +87,12 @@ export function articlePath(
 }
 
 export function isDirectArticlePath(pathname: string) {
+  if (isControlledWebEdition) return false;
   return /\/(?:stati\/[^/]+\/[^/]+|articles\/[^/]+)\/?$/iu.test(pathname);
 }
 
 export function journalSectionFromPath(pathname = window.location.pathname) {
+  if (isControlledWebEdition) return null;
   const normalizedBase = basePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const archiveMatch = pathname.match(
     new RegExp(`^${normalizedBase}/stati(?:/([^/]+))?/?$`, "i")
@@ -176,6 +183,7 @@ export function resolveArticleRoute(
   catalog: ArticleRouteCatalogEntry[],
   pathname = window.location.pathname
 ): ArticleRouteResolution | null {
+  if (isControlledWebEdition) return null;
   const normalizedBase = basePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const articleMatch = pathname.match(
     new RegExp(`^${normalizedBase}/articles/([^/]+)/?$`, "i")
@@ -228,7 +236,7 @@ export function journalPath(sectionId?: string, seriesId?: string) {
   const params = new URLSearchParams();
   if (seriesId) params.set("series", seriesId);
   const query = params.size ? `?${params.toString()}` : "";
-  return `${basePath}${articleSectionArchivePath(sectionId)}${query}`;
+  return `${journalBase}${articleSectionArchivePath(sectionId)}${query}`;
 }
 
 type ArticleRouteTarget = {
@@ -251,12 +259,22 @@ function scrollToReadingSurface(id: "journal" | "atlas") {
   });
 }
 
+function requestCanonicalJournal(href: string): void {
+  // With noopener, a successful open can also return null. Request it once;
+  // neither report success nor retry in a way that could open a second tab.
+  window.open(href, "_blank", "noopener,noreferrer");
+}
+
 export function navigateToJournal(
   sectionId?: string,
   replace = false,
   seriesId?: string
 ) {
   const href = journalPath(sectionId, seriesId);
+  if (isControlledWebEdition) {
+    requestCanonicalJournal(href);
+    return;
+  }
   const state = { probperaJournal: sectionId || "all" };
   if (replace) window.history.replaceState(state, "", href);
   else window.history.pushState(state, "", href);
@@ -265,10 +283,20 @@ export function navigateToJournal(
 }
 
 export function navigateToArticle(article: ArticleRouteTarget) {
+  const href = articlePath(
+    article.id,
+    article.title,
+    article.sectionId,
+    article.slug
+  );
+  if (isControlledWebEdition) {
+    requestCanonicalJournal(href);
+    return;
+  }
   window.history.pushState(
     { probperaArticle: article.id },
     "",
-    articlePath(article.id, article.title, article.sectionId, article.slug)
+    href
   );
   window.dispatchEvent(new Event("probpera:navigation"));
   scrollToReadingSurface("journal");
@@ -283,6 +311,7 @@ export function shouldUseClientNavigation(event: {
   altKey: boolean;
 }) {
   return (
+    !isControlledWebEdition &&
     !event.defaultPrevented &&
     event.button === 0 &&
     !event.metaKey &&

@@ -1,0 +1,381 @@
+/** The controlled /planet/ distribution owns this lifecycle; the public site does not. */
+export type PwaWorkerPhase = "disabled" | "registering" | "ready" | "checking" | "update-available" | "activating" | "rolling-back" | "reloading" | "error" | "disposed";
+export type PwaWorkerError = "unsupported" | "invalid-configuration" | "registration-failed" | "update-failed" | "message-failed" | "timeout" | "cancelled" | "disposed" | "not-ready" | "busy" | "worker-changed" | "rejected" | "reload-failed" | "multiple-clients";
+export interface PwaWorkerSnapshot {
+  readonly phase: PwaWorkerPhase;
+  readonly update: { readonly buildId: string } | null;
+  readonly error: PwaWorkerError | null;
+  readonly rollback: { readonly buildId: string } | null;
+  readonly activeBuildId: string | null;
+  readonly engineBuildId: string | null;
+}
+export type PwaWorkerResult = { readonly ok: true } | { readonly ok: false; readonly reason: PwaWorkerError };
+export interface PwaWorkerOptions {
+  readonly controlledDistribution: boolean;
+  /** Null explicitly disables unavailable browser APIs, including SSR fixtures. */
+  readonly serviceWorker?: ServiceWorkerContainer | null;
+  readonly location?: Pick<Location, "href"> | null;
+  readonly reload?: () => void;
+  readonly allowLocalQa?: boolean;
+  readonly timeoutMs?: number;
+  readonly signal?: AbortSignal;
+}
+export interface PwaWorkerController {
+  readonly ready: Promise<boolean>;
+  getSnapshot(): PwaWorkerSnapshot;
+  subscribe(callback: () => void): () => void;
+  checkForUpdate(options?: { readonly signal?: AbortSignal }): Promise<PwaWorkerResult>;
+  /** Call only from an explicit user action. Cancellation cannot undo skipWaiting. */
+  activateUpdate(options?: { readonly signal?: AbortSignal }): Promise<PwaWorkerResult>;
+  /** Explicit whole-app rollback; the installed worker engine remains current.
+   * Cancellation cannot undo a selection already committed by the worker. */
+  rollback(options?: { readonly signal?: AbortSignal }): Promise<PwaWorkerResult>;
+  dispose(): void;
+}
+
+const HASH = /^[a-f0-9]{64}$/u;
+const ROUTES = new Set(["/planet/", "/planet/ru/", "/planet/en/"]);
+const success = (): PwaWorkerResult => Object.freeze({ ok: true });
+const failure = (reason: PwaWorkerError): PwaWorkerResult => Object.freeze({ ok: false, reason });
+class LifecycleError extends Error {
+  constructor(readonly reason: PwaWorkerError) { super(reason); }
+}
+
+/** No module-level browser reads, registration, update, activation or reload. */
+export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerController {
+  const container = options.serviceWorker === undefined ? globalThis.navigator?.serviceWorker : options.serviceWorker;
+  const location = options.location === undefined ? globalThis.location : options.location;
+  const timeoutMs = options.timeoutMs ?? 10_000;
+  const reload = options.reload ?? (() => globalThis.location.reload());
+  let origin = "";
+  let allowed = options.controlledDistribution === true;
+  let initialError: PwaWorkerError | null = null;
+  if (allowed) {
+    try {
+      const url = new URL(location?.href ?? "");
+      const local = options.allowLocalQa === true && ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname);
+      if ((!local && url.protocol !== "https:") || (local && !["https:", "http:"].includes(url.protocol)) || !ROUTES.has(url.pathname) || url.username || url.password || !Number.isFinite(timeoutMs) || timeoutMs <= 0 || timeoutMs > 60_000) throw new Error("Invalid distribution boundary");
+      origin = url.origin;
+      if (!container?.register || !container.addEventListener) initialError = "unsupported";
+    } catch { initialError = "invalid-configuration"; }
+    allowed = initialError === null;
+  }
+  let generationState = { activeBuildId: null as string | null, engineBuildId: null as string | null, rollbackBuildId: null as string | null };
+  let snapshot: PwaWorkerSnapshot = Object.freeze({ phase: allowed ? "registering" : "disabled", update: null, error: initialError, rollback: null, activeBuildId: null, engineBuildId: null });
+  let disposed = false;
+  let registration: ServiceWorkerRegistration | undefined;
+  let availableWorker: ServiceWorker | undefined;
+  let reloaded = false;
+  let requestSequence = 0;
+  const nonce = Math.random().toString(36).slice(2) + Date.now().toString(36);
+  const lifetime = new AbortController();
+  const subscribers = new Map<() => void, number>();
+  const workerCleanups = new Map<ServiceWorker, () => void>();
+  let removeRegistrationListener: (() => void) | undefined;
+  let pendingProbe: { worker: ServiceWorker; promise: Promise<PwaWorkerResult> } | undefined;
+  let pendingCheck: Promise<PwaWorkerResult> | undefined;
+  let activation: { worker: ServiceWorker; changed: Promise<void>; confirmChange: () => void; promise?: Promise<PwaWorkerResult> } | undefined;
+  let rollbackOperation: Promise<PwaWorkerResult> | undefined;
+  let activeProbe: { worker: ServiceWorker; promise: Promise<void> } | undefined;
+  let generationEpoch = 0;
+
+  function setSnapshot(phase: PwaWorkerPhase, buildId: string | null = null, error: PwaWorkerError | null = null) {
+    if (snapshot.phase === phase && snapshot.update?.buildId === (buildId ?? undefined) && snapshot.error === error && snapshot.activeBuildId === generationState.activeBuildId && snapshot.engineBuildId === generationState.engineBuildId && snapshot.rollback?.buildId === (generationState.rollbackBuildId ?? undefined)) return;
+    snapshot = Object.freeze({ phase, update: buildId ? Object.freeze({ buildId }) : null, error, activeBuildId: generationState.activeBuildId, engineBuildId: generationState.engineBuildId, rollback: generationState.rollbackBuildId ? Object.freeze({ buildId: generationState.rollbackBuildId }) : null });
+    for (const callback of [...subscribers.keys()]) {
+      try { callback(); } catch { /* A consumer cannot break worker cleanup. */ }
+    }
+  }
+  function combinedSignal(signal?: AbortSignal) {
+    const controller = new AbortController();
+    const abort = () => controller.abort();
+    for (const source of [lifetime.signal, signal]) {
+      source?.addEventListener("abort", abort, { once: true });
+      if (source?.aborted) abort();
+    }
+    return { signal: controller.signal, cleanup: () => {
+      lifetime.signal.removeEventListener("abort", abort);
+      signal?.removeEventListener("abort", abort);
+    } };
+  }
+  function bounded<T>(operation: Promise<T>, signal: AbortSignal): Promise<T> {
+    return new Promise((resolve, reject) => {
+      const timer = setTimeout(() => finish(new LifecycleError("timeout")), timeoutMs);
+      const abort = () => finish(new LifecycleError(disposed ? "disposed" : "cancelled"));
+      let settled = false;
+      function finish(error?: unknown, value?: T) {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        signal.removeEventListener("abort", abort);
+        if (error) reject(error); else resolve(value as T);
+      }
+      signal.addEventListener("abort", abort, { once: true });
+      operation.then((value) => finish(undefined, value), (error) => finish(error));
+      if (signal.aborted) abort();
+    });
+  }
+  function errorReason(error: unknown, fallback: PwaWorkerError): PwaWorkerError {
+    return error instanceof LifecycleError ? error.reason : fallback;
+  }
+  async function handshake(worker: ServiceWorker, type: "PLANET_UPDATE_STATUS" | "PLANET_ACTIVATE_UPDATE", signal: AbortSignal, buildId?: string) {
+    const requestId = `pwa-${nonce}-${++requestSequence}`;
+    const responseType = type === "PLANET_UPDATE_STATUS" ? "PLANET_UPDATE_STATUS_RESULT" : "PLANET_UPDATE_ACTIVATION_RESULT";
+    let onMessage: ((event: MessageEvent) => void) | undefined;
+    try {
+      return await bounded(new Promise<{ buildId: string; confirmed: boolean }>((resolve, reject) => {
+        if (signal.aborted || disposed) { reject(new LifecycleError(disposed ? "disposed" : "cancelled")); return; }
+        onMessage = (event) => {
+          const data = event.data;
+          const field = type === "PLANET_UPDATE_STATUS" ? "ready" : "accepted";
+          if (event.source !== worker || event.origin !== origin || !data || typeof data !== "object" || data.type !== responseType || data.requestId !== requestId || typeof data.buildId !== "string" || !HASH.test(data.buildId) || (buildId && data.buildId !== buildId) || typeof data[field] !== "boolean") return;
+          resolve({ buildId: data.buildId, confirmed: data[field] });
+        };
+        container!.addEventListener("message", onMessage);
+        try { worker.postMessage({ type, requestId, ...(buildId ? { buildId } : {}) }); }
+        catch { reject(new LifecycleError("message-failed")); }
+      }), signal);
+    } finally {
+      if (onMessage) container!.removeEventListener("message", onMessage);
+    }
+  }
+  function workerAllowed(worker: ServiceWorker) {
+    try { return worker.scriptURL === origin + "/planet/sw.js" && worker.state !== "redundant"; }
+    catch { return false; }
+  }
+  async function rollbackHandshake(worker: ServiceWorker, signal: AbortSignal, target?: { engineBuildId: string; buildId: string }) {
+    const requestId = `pwa-${nonce}-${++requestSequence}`;
+    const type = target ? "PLANET_ACTIVATE_ROLLBACK" : "PLANET_ROLLBACK_STATUS";
+    const responseType = target ? "PLANET_ROLLBACK_ACTIVATION_RESULT" : "PLANET_ROLLBACK_STATUS_RESULT";
+    let onMessage: ((event: MessageEvent) => void) | undefined;
+    try {
+      return await bounded(new Promise<{ engineBuildId: string; activeBuildId: string | null; rollbackBuildId: string | null; confirmed: boolean; reason: PwaWorkerError }>((resolve, reject) => {
+        if (disposed || signal.aborted) { reject(new LifecycleError(disposed ? "disposed" : "cancelled")); return; }
+        onMessage = event => {
+          const data = event.data;
+          if (event.source !== worker || event.origin !== origin || !data || typeof data !== "object" || data.type !== responseType || data.requestId !== requestId || typeof data.engineBuildId !== "string" || !HASH.test(data.engineBuildId) || (data.activeBuildId !== null && (typeof data.activeBuildId !== "string" || !HASH.test(data.activeBuildId)))) return;
+          if (target) {
+            if (data.engineBuildId !== target.engineBuildId || data.targetBuildId !== target.buildId || typeof data.accepted !== "boolean" || (data.accepted && data.activeBuildId !== target.buildId)) return;
+          } else if (typeof data.ready !== "boolean" || (data.rollbackBuildId !== null && (typeof data.rollbackBuildId !== "string" || !HASH.test(data.rollbackBuildId))) || (data.ready && (data.activeBuildId !== data.engineBuildId || !data.rollbackBuildId || data.rollbackBuildId === data.engineBuildId)) || (!data.ready && data.rollbackBuildId !== null)) return;
+          resolve({ engineBuildId: data.engineBuildId, activeBuildId: data.activeBuildId, rollbackBuildId: target ? null : data.rollbackBuildId, confirmed: target ? data.accepted : data.ready, reason: data.reason === "multiple-clients" ? "multiple-clients" : "rejected" });
+        };
+        container!.addEventListener("message", onMessage);
+        try { worker.postMessage({ type, requestId, ...(target ? { engineBuildId: target.engineBuildId, targetBuildId: target.buildId } : {}) }); }
+        catch { reject(new LifecycleError("message-failed")); }
+      }), signal);
+    } finally { if (onMessage) container!.removeEventListener("message", onMessage); }
+  }
+  function probeActiveGeneration(): Promise<void> {
+    const worker = container?.controller;
+    if (disposed || activation || rollbackOperation || reloaded || !worker || !workerAllowed(worker)) return Promise.resolve();
+    if (activeProbe?.worker === worker) return activeProbe.promise;
+    const epoch = generationEpoch;
+    let operation!: Promise<void>;
+    operation = (async () => {
+      try {
+        const reply = await rollbackHandshake(worker, lifetime.signal);
+        if (disposed || activation || rollbackOperation || reloaded || generationEpoch !== epoch || container?.controller !== worker) return;
+        generationState = { activeBuildId: reply.activeBuildId, engineBuildId: reply.engineBuildId, rollbackBuildId: reply.rollbackBuildId };
+        setSnapshot(snapshot.phase, snapshot.update?.buildId ?? null, snapshot.error);
+      } catch { /* Older engines may not expose rollback. Never auto-reload or guess a target. */ }
+      finally { if (activeProbe?.promise === operation) activeProbe = undefined; }
+    })();
+    activeProbe = { worker, promise: operation };
+    return operation;
+  }
+  function probeWaiting(signal?: AbortSignal): Promise<PwaWorkerResult> {
+    if (disposed) return Promise.resolve(failure("disposed"));
+    if (activation || rollbackOperation || reloaded) return Promise.resolve(failure("busy"));
+    const worker = registration?.waiting;
+    if (!worker) {
+      availableWorker = undefined;
+      setSnapshot("ready");
+      return Promise.resolve(success());
+    }
+    if (!workerAllowed(worker)) return Promise.resolve(failure("worker-changed"));
+    if (pendingProbe?.worker === worker) return signal ? bounded(pendingProbe.promise, signal).catch((error) => failure(errorReason(error, "message-failed"))) : pendingProbe.promise;
+    const joined = combinedSignal(signal);
+    const promise = (async () => {
+      try {
+        const reply = await handshake(worker, "PLANET_UPDATE_STATUS", joined.signal);
+        if (disposed) return failure("disposed");
+        if (registration?.waiting !== worker || !workerAllowed(worker)) return failure("worker-changed");
+        if (!reply.confirmed) { availableWorker = undefined; setSnapshot("ready", null, "not-ready"); return failure("not-ready"); }
+        availableWorker = worker;
+        setSnapshot("update-available", reply.buildId);
+        return success();
+      } catch (error) {
+        const reason = errorReason(error, "message-failed");
+        if (!disposed && !activation && registration?.waiting === worker) setSnapshot("ready", null, reason);
+        return failure(reason);
+      } finally {
+        joined.cleanup();
+        if (pendingProbe?.worker === worker) pendingProbe = undefined;
+      }
+    })();
+    pendingProbe = { worker, promise };
+    return promise;
+  }
+  function watchInstalling() {
+    if (disposed) return;
+    const worker = registration?.installing;
+    if (!worker || workerCleanups.has(worker)) return;
+    const changed = () => {
+      if (disposed) return;
+      if (worker.state === "installed") void probeWaiting();
+      if (worker.state === "activated" || worker.state === "redundant") {
+        workerCleanups.get(worker)?.();
+        workerCleanups.delete(worker);
+        if (!activation && registration?.waiting !== availableWorker) void probeWaiting();
+      }
+    };
+    worker.addEventListener("statechange", changed);
+    workerCleanups.set(worker, () => worker.removeEventListener("statechange", changed));
+    changed();
+  }
+  function controllerChanged() {
+    if (disposed) return;
+    generationEpoch++;
+    generationState = { activeBuildId: null, engineBuildId: null, rollbackBuildId: null };
+    if (activation) {
+      if (container!.controller === activation.worker) activation.confirmChange();
+    } else if (!reloaded && registration) { void probeWaiting(); void probeActiveGeneration(); }
+  }
+  const ready = (async () => {
+    if (!allowed || options.signal?.aborted) return false;
+    container!.addEventListener("controllerchange", controllerChanged);
+    try {
+      const result = await bounded(container!.register("/planet/sw.js", { scope: "/planet/", type: "classic", updateViaCache: "none" }), lifetime.signal);
+      if (disposed) return false;
+      if (result.scope !== origin + "/planet/") throw new LifecycleError("invalid-configuration");
+      registration = result;
+      registration.addEventListener("updatefound", watchInstalling);
+      removeRegistrationListener = () => registration?.removeEventListener("updatefound", watchInstalling);
+      setSnapshot("ready");
+      watchInstalling();
+      void probeWaiting();
+      void probeActiveGeneration();
+      return true;
+    } catch (error) {
+      if (!disposed) setSnapshot("error", null, errorReason(error, "registration-failed"));
+      container!.removeEventListener("controllerchange", controllerChanged);
+      return false;
+    }
+  })();
+  function checkForUpdate({ signal }: { signal?: AbortSignal } = {}): Promise<PwaWorkerResult> {
+    if (disposed) return Promise.resolve(failure("disposed"));
+    if (pendingCheck) return signal ? bounded(pendingCheck, signal).catch((error) => failure(errorReason(error, "update-failed"))) : pendingCheck;
+    const joined = combinedSignal(signal);
+    const operation = (async () => {
+      try {
+        if (!await bounded(ready, joined.signal) || !registration) return failure("not-ready");
+        if (activation || rollbackOperation || reloaded) return failure("busy");
+        if (joined.signal.aborted) return failure(disposed ? "disposed" : "cancelled");
+        if (!snapshot.update) setSnapshot("checking");
+        await bounded(registration.update(), joined.signal);
+        void probeActiveGeneration();
+        return await probeWaiting(joined.signal);
+      } catch (error) {
+        const reason = errorReason(error, "update-failed");
+        if (!disposed && !activation && !snapshot.update) setSnapshot("ready", null, reason);
+        return failure(reason);
+      } finally { joined.cleanup(); pendingCheck = undefined; }
+    })();
+    pendingCheck = operation;
+    return operation;
+  }
+  function activateUpdate({ signal }: { signal?: AbortSignal } = {}): Promise<PwaWorkerResult> {
+    if (disposed) return Promise.resolve(failure("disposed"));
+    if (activation?.promise) return activation.promise;
+    if (rollbackOperation) return Promise.resolve(failure("busy"));
+    const worker = registration?.waiting;
+    const buildId = snapshot.update?.buildId;
+    if (reloaded || !worker || worker !== availableWorker || !buildId || !workerAllowed(worker)) return Promise.resolve(failure("not-ready"));
+    const joined = combinedSignal(signal);
+    if (joined.signal.aborted) { joined.cleanup(); return Promise.resolve(failure("cancelled")); }
+    let confirmChange!: () => void;
+    const changed = new Promise<void>((resolve) => { confirmChange = resolve; });
+    const attempt = { worker, changed, confirmChange, promise: undefined as Promise<PwaWorkerResult> | undefined };
+    activation = attempt;
+    setSnapshot("activating", buildId);
+    attempt.promise = (async () => {
+      try {
+        const reply = await handshake(worker, "PLANET_ACTIVATE_UPDATE", joined.signal, buildId);
+        if (!reply.confirmed) throw new LifecycleError("rejected");
+        await bounded(changed, joined.signal);
+        if (disposed || joined.signal.aborted) throw new LifecycleError(disposed ? "disposed" : "cancelled");
+        if (container!.controller !== worker) throw new LifecycleError("worker-changed");
+        reloaded = true;
+        availableWorker = undefined;
+        setSnapshot("reloading");
+        try { reload(); } catch { throw new LifecycleError("reload-failed"); }
+        return success();
+      } catch (error) {
+        const reason = errorReason(error, "message-failed");
+        if (!disposed) setSnapshot(registration?.waiting === worker && !reloaded ? "update-available" : "error", registration?.waiting === worker && !reloaded ? buildId : null, reason);
+        return failure(reason);
+      } finally { joined.cleanup(); if (activation === attempt) activation = undefined; }
+    })();
+    return attempt.promise;
+  }
+  function rollback({ signal }: { signal?: AbortSignal } = {}): Promise<PwaWorkerResult> {
+    if (disposed) return Promise.resolve(failure("disposed"));
+    if (rollbackOperation) return rollbackOperation;
+    if (activation || reloaded) return Promise.resolve(failure("busy"));
+    const worker = container?.controller, buildId = snapshot.rollback?.buildId, engineBuildId = snapshot.engineBuildId;
+    if (!worker || !workerAllowed(worker) || !buildId || !engineBuildId || snapshot.activeBuildId !== engineBuildId) return Promise.resolve(failure("not-ready"));
+    const joined = combinedSignal(signal);
+    if (joined.signal.aborted) { joined.cleanup(); return Promise.resolve(failure("cancelled")); }
+    generationEpoch++;
+    setSnapshot("rolling-back", snapshot.update?.buildId ?? null);
+    let operation!: Promise<PwaWorkerResult>;
+    operation = (async () => {
+      try {
+        const reply = await rollbackHandshake(worker, joined.signal, { buildId, engineBuildId });
+        if (!reply.confirmed) throw new LifecycleError(reply.reason);
+        if (disposed || joined.signal.aborted) throw new LifecycleError(disposed ? "disposed" : "cancelled");
+        if (container!.controller !== worker) throw new LifecycleError("worker-changed");
+        generationState = { engineBuildId, activeBuildId: buildId, rollbackBuildId: null };
+        reloaded = true;
+        setSnapshot("reloading");
+        try { reload(); } catch { throw new LifecycleError("reload-failed"); }
+        return success();
+      } catch (error) {
+        const reason = errorReason(error, "message-failed");
+        if (!disposed) setSnapshot(snapshot.update ? "update-available" : "ready", snapshot.update?.buildId ?? null, reason);
+        return failure(reason);
+      } finally { joined.cleanup(); if (rollbackOperation === operation) rollbackOperation = undefined; }
+    })();
+    rollbackOperation = operation;
+    return operation;
+  }
+  function dispose() {
+    if (disposed) return;
+    disposed = true;
+    lifetime.abort();
+    options.signal?.removeEventListener("abort", dispose);
+    container?.removeEventListener("controllerchange", controllerChanged);
+    removeRegistrationListener?.();
+    for (const cleanup of workerCleanups.values()) cleanup();
+    workerCleanups.clear();
+    availableWorker = undefined;
+    generationState = { activeBuildId: null, engineBuildId: null, rollbackBuildId: null };
+    setSnapshot("disposed");
+    subscribers.clear();
+  }
+  options.signal?.addEventListener("abort", dispose, { once: true });
+  if (options.signal?.aborted) dispose();
+  return Object.freeze({ ready, getSnapshot: () => snapshot, checkForUpdate, activateUpdate, rollback, dispose,
+    subscribe(callback: () => void) {
+      if (disposed) return () => undefined;
+      subscribers.set(callback, (subscribers.get(callback) ?? 0) + 1);
+      let removed = false;
+      return () => {
+        if (removed) return;
+        removed = true;
+        const count = subscribers.get(callback) ?? 0;
+        if (count <= 1) subscribers.delete(callback); else subscribers.set(callback, count - 1);
+      };
+    },
+  });
+}

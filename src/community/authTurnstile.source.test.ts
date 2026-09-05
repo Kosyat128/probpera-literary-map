@@ -55,7 +55,7 @@ describe("public authentication Turnstile contract", () => {
 
   it("stays outside CMS preview and is allowed by the public CSP", () => {
     expect(entrypoint).toContain(
-      "{!cmsEditMode && <AuthTurnstileGate />}"
+      "{!isControlledWebEdition && !cmsEditMode && <AuthTurnstileGate />}"
     );
     expect(edgeSecurity).toContain(
       "script-src 'self' https://challenges.cloudflare.com"

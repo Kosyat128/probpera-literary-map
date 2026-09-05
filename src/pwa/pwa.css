@@ -1,0 +1,52 @@
+.pwa-access {
+  box-sizing: border-box;
+  min-height: 100svh;
+  margin: 0;
+  padding: max(1.5rem, env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right)) max(1.5rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+  background: var(--paper, #fffaf2);
+  color: var(--ink, #271538);
+}
+.pwa-access__status { max-width: 42rem; line-height: 1.65; }
+.pwa-access__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+.pwa-access__actions :is(a, button) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .65rem 1rem;
+  border: 2px solid #f67518;
+  border-radius: .5rem;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+}
+.pwa-access__actions :is(a, button):focus-visible { outline: 3px solid #4b087c; outline-offset: 3px; }
+.pwa-access__actions button:disabled { opacity: .65; cursor: progress; }
+.pwa-access__refresh {
+  position: fixed;
+  z-index: 90;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  max-width: min(30rem, 90vw);
+  padding: .6rem 1rem;
+  border: 1px solid #f67518;
+  border-radius: .5rem;
+  background: #fffaf2;
+  color: #271538;
+  pointer-events: none;
+}
+.pwa-help {
+  box-sizing: border-box;
+  padding: 1rem max(1.25rem, env(safe-area-inset-right)) max(1.5rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+  background: var(--paper, #fffaf2);
+  color: var(--ink, #271538);
+}
+.pwa-help details { max-width: 48rem; margin-inline: auto; }
+.pwa-help summary { min-height: 44px; padding-block: .75rem; cursor: pointer; }
+.pwa-help__body { line-height: 1.65; overflow-wrap: break-word; }
+.pwa-help__body h2 { font-size: 1.15rem; margin-block: 1.5rem .5rem; }
+.pwa-help__links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+.pwa-help__links a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-underline-offset: .2em; }
+.pwa-help :is(summary, a):focus-visible { outline: 3px solid #4b087c; outline-offset: 3px; }
+@media (forced-colors: active) {
+  .pwa-access__actions :is(a, button), .pwa-access__refresh { border-color: ButtonText; }
+}

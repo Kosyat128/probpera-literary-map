@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import {
   articleIdFromPath,
@@ -9,10 +9,13 @@ import {
   isDirectArticlePath,
   journalPath,
   journalSectionFromPath,
+  navigateToArticle,
   navigateToJournal,
   resolveArticleRoute,
   shouldUseClientNavigation,
 } from "./articleRoutes";
+
+afterEach(() => vi.unstubAllGlobals());
 
 describe("SEO-адреса статей", () => {
   it("создаёт читаемый адрес из русского заголовка", () => {
@@ -147,6 +150,36 @@ describe("SEO-адреса статей", () => {
         "/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii/",
       isCanonical: false,
     });
+  });
+
+  it("keeps site article navigation in the current history and reading surface", () => {
+    const pushState = vi.fn();
+    const dispatchEvent = vi.fn();
+    const requestAnimationFrame = vi.fn(() => 1);
+    const open = vi.fn();
+    vi.stubGlobal("window", {
+      history: { pushState },
+      dispatchEvent,
+      requestAnimationFrame,
+      open,
+    });
+
+    navigateToArticle({
+      id: "article-1",
+      title: "О книге",
+      sectionId: "book-opinions",
+      slug: "approved-book-title",
+    });
+
+    expect(pushState).toHaveBeenCalledExactlyOnceWith(
+      { probperaArticle: "article-1" },
+      "",
+      "/stati/mnenie-o-knige/approved-book-title/"
+    );
+    expect(dispatchEvent).toHaveBeenCalledTimes(1);
+    expect(dispatchEvent.mock.calls[0][0].type).toBe("probpera:navigation");
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(open).not.toHaveBeenCalled();
   });
 
   it("canonicalizes the trailing slash and refuses an ambiguous cross-section slug", () => {

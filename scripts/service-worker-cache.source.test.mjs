@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { describe, expect, it } from "vitest";
+import vm from "node:vm";
+import { describe, expect, it, vi } from "vitest";
 
 const source = readFileSync(
   path.join(process.cwd(), "public", "sw.js"),
@@ -13,10 +14,43 @@ function numericConstant(name) {
 }
 
 describe("service worker cache bounds", () => {
-  it("rotates the cache generation and removes older namespaces", () => {
-    expect(source).toContain('const CACHE_VERSION = "probpera-v3"');
-    expect(source).toContain(".filter((key) => !key.startsWith(CACHE_VERSION))");
-    expect(source).toContain("caches.delete(key)");
+  it("leaves the exact PWA subtree to its own worker before and after activation", async () => {
+    const handlers = new Map();
+    const fetch = vi.fn(async () => new Response("site", { headers: { "Cache-Control": "no-store" } }));
+    const worker = { registration: { scope: "https://probpera.ru/" }, location: { origin: "https://probpera.ru" }, addEventListener: (name, handler) => handlers.set(name, handler) };
+    vm.runInNewContext(source, { self: worker, URL, fetch, Response });
+    for (const pathname of ["/planet", "/planet/ru/", "/planet/assets/runtime.js", "/planet/api/license?token=private", "/p%6canet/ru/", "/planet%2Fapi/license", "/%70lanet", "/invalid%zz"]) {
+      const respondWith = vi.fn();
+      handlers.get("fetch")({ request: { url: "https://probpera.ru" + pathname, method: "GET", mode: "navigate" }, respondWith });
+      expect(respondWith).not.toHaveBeenCalled();
+    }
+    expect(fetch).not.toHaveBeenCalled();
+    let response;
+    handlers.get("fetch")({ request: { url: "https://probpera.ru/planetarium/", method: "GET", mode: "navigate" }, respondWith: (promise) => { response = promise; } });
+    expect(await (await response).text()).toBe("site");
+    expect(fetch).toHaveBeenCalledOnce();
+  });
+
+  it.each(["/", "/preview/"])("cleans only exact owned legacy caches for site scope %s", async (scope) => {
+    const handlers = new Map();
+    const names = ["probpera-v1-static", "probpera-v1-pages", "probpera-v2-static", "probpera-v2-pages", "probpera-v3-static", "probpera-v3-pages", "probpera-v2-static-other", "literary-planet-pwa-v1-" + "a".repeat(64), "other-application-cache"];
+    const storage = {
+      keys: vi.fn(async () => names),
+      delete: vi.fn(async () => true),
+      open: vi.fn(async () => ({ keys: async () => [] })),
+    };
+    const worker = {
+      registration: { scope: "https://probpera.ru" + scope },
+      location: { origin: "https://probpera.ru" },
+      addEventListener: (name, handler) => handlers.set(name, handler),
+      clients: { claim: vi.fn(async () => undefined) },
+    };
+    vm.runInNewContext(source, { self: worker, caches: storage, URL });
+    let completion;
+    handlers.get("activate")({ waitUntil: (promise) => { completion = promise; } });
+    await completion;
+    expect(storage.delete.mock.calls.map(([name]) => name)).toEqual(scope === "/" ? names.slice(0, 4) : []);
+    expect(worker.clients.claim).toHaveBeenCalledOnce();
   });
 
   it("keeps both runtime caches within deliberate limits", () => {

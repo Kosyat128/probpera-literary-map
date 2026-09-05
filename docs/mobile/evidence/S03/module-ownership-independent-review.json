@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "recordedAt": "2026-09-05 18:21:59 UTC",
+  "scope": "bounded-independent-static-packaging-review",
+  "releaseReady": false,
+  "independentSourceToBinaryProof": false,
+  "sourceFreezeUnchanged": true,
+  "checks": [
+    {
+      "command": "npx vitest run scripts/mobile/pwa-artifact.test.mjs scripts/mobile/verify-pwa-artifact.test.mjs --maxWorkers=1 -t \"Vite|shared|ownership|matching name\"",
+      "passed": 14,
+      "failed": 0,
+      "filteredOut": 94,
+      "durationSeconds": 16.68,
+      "meaning": "Selected exact module-ID/query, final Vite writeBundle bytes, shared Rollup chunk, namespace/path, and ownership corruption checks. Filtered-out tests were not independently rerun."
+    },
+    {
+      "command": "npx vitest run --config .tmp/worker-review/ownership-review.config.mjs",
+      "passed": 1,
+      "failed": 0,
+      "durationSeconds": 2.97,
+      "meaning": "Positive reproduction of the remaining source-to-output provenance limitation, not a successful rejection."
+    }
+  ],
+  "confirmedFindings": [
+    {
+      "id": "late-vite-output-rewrite",
+      "status": "fixed-in-source-and-real-vite-fixture",
+      "observation": "Root's actual app build found index-chunk bytes differing from the earlier user generateBundle capture. Vite performs later preload/import-analysis changes. The production capture now runs writeBundle order=post,sequential=true, and the builder independently compares captured hashes with final disk files. The selected real Vite fixture confirms early bytes differ while finalized capture matches disk.",
+      "actualAppBuildRecheckedByThisReviewer": false
+    },
+    {
+      "id": "self-consistent-ownership-reassignment",
+      "status": "acknowledged-preparation-auditor-limitation",
+      "reproduction": [
+        "Create a valid separate assets/book-lazy.js referenced by a real dynamic import; remove the BookArchiveSection direct Vite source key and record exact shared-chunk ownership.",
+        "Confirm auditor has no findings with that real chunk in bootstrap.",
+        "Reassign only the BookArchiveSection sidecar record to existing assets/app.js; remove book-lazy.js from bootstrap while retaining its file, inventory, Vite entry and executable dynamic import.",
+        "Recompute the sidecar hash and internally consistent build/configuration/worker/inventory hashes. Auditor still reports no findings."
+      ],
+      "implication": "The current static auditor validates internal consistency and captured source/output hashes, but an independently rewritten sidecar cannot establish faithful source-to-binary compilation. A cold offline book check can detect this omission in the tested actual artifact, not all possible executable changes.",
+      "requiredExactRcEvidence": "An explicitly trusted receipt outside the artifact, bound to sourceInputs, build configuration, exact Rollup module IDs and finalized output hashes; or an independent repeat compilation with exact map/output comparison. Artifact-supplied self-asserted receipt paths/hashes are insufficient."
+    }
+  ],
+  "reviewedProperties": [
+    "Exact normalized module/facade IDs are used; primary/retry query IDs remain distinct.",
+    "Shared chunks resolve by exact output file, never basename or substring.",
+    "Ownership source and aggregate input hashes are compared with current source records; output hashes are checked against disk/inventory.",
+    "The ownership sidecar belongs to verified bootstrap and therefore participates in the build identity.",
+    "Static import closure and explicitly selected dynamic entry outputs remain required."
+  ],
+  "limitations": [
+    "No full application build or app/server start by this reviewer.",
+    "Root's fresh application build and cold offline catalog/browser checks were still pending when requested; this report does not claim their outcome.",
+    "No native artifacts, human copy approval, production deployment or release action is covered."
+  ],
+  "inputs": [
+    {
+      "path": "scripts/mobile/build-pwa.mjs",
+      "sha256": "19e76003b4434c0a36afc1085920bb4810e3ace8660fd101dd61a5ba8190af0d"
+    },
+    {
+      "path": "scripts/mobile/pwa-artifact.mjs",
+      "sha256": "32d33ac98f1b60a2f922e531384503850e172062d957aa4beec6270ee0d45193"
+    },
+    {
+      "path": "scripts/mobile/pwa-artifact.test.mjs",
+      "sha256": "cf4697649834517b1c090d8173786ff27095c864d9d63a9678c0821f1a3bb0f0"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.mjs",
+      "sha256": "e318fb459f028d89e9865d0650a0f09bc62a1db4acc9f31ff17f1cff75f17b46"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.test.mjs",
+      "sha256": "759618b81cee81c1972e33aa6329bea534791018b18a05a0ae43a66731dd62cc"
+    },
+    {
+      "path": "tests/pwa/support/local-server.mjs",
+      "sha256": "5961d3e61339bb8e44704d804acbad99041706645377c9f9bf28b6676f1c5c1e"
+    },
+    {
+      "path": "tests/pwa/support/local-server.test.mjs",
+      "sha256": "471a4c8845c89dba8e5c5b80b27fa8bdcefce3c931f36fd13a0a2e9305eddd66"
+    },
+    {
+      "path": ".tmp/worker-review/ownership-review.test.mjs",
+      "sha256": "1e0a059022916d83bc1fdcf2ed11e0442d9305a095be59f1202e94227ca1ce59"
+    },
+    {
+      "path": ".tmp/worker-review/ownership-review.config.mjs",
+      "sha256": "89160a52280e3eacbd9caa1321a5ce0acca5127e471064ae608d2b36fb9c2d7f"
+    }
+  ]
+}

@@ -39,6 +39,7 @@ await run(nodeCommand, [
     ? "build:from-snapshot"
     : "build",
 ]);
+await run(nodeCommand, ["scripts/mobile/write-public-locale-pages.mjs"]);
 await fs.writeFile(path.join(projectRoot, "dist", "CNAME"), "probpera.ru\n", "utf8");
 await fs.writeFile(path.join(projectRoot, "dist", ".nojekyll"), "", "utf8");
 await run(nodeCommand, ["scripts/check-deployed-release-head.mjs", "--write"]);

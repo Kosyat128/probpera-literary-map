@@ -38,3 +38,60 @@
 - D015: Code-based policy freezes the user's two locales, paid profile, safe defaults and local-only preparation grant. Platform SDKs will be injected through exact adapter boundaries into the existing product.
 - D016: S02 extracts narrow canonical re-exports, not copied domains or an aggregate eager barrel. App uses the same records, IDs, locale context, flags and icons. One injected Web adapter supplies network state while the canonical scene and provider lifetimes remain unchanged. Existing owner source fingerprints are not rewritten.
 - D017: S02 keeps the failed concurrent Git-fixture timeout log. The identical assertions passed in the serial259-test rerun after the build; no assertion or timeout was relaxed. Final browser acceptance binds the rebuilt local artifact, whose parent-HEAD marker is explicitly not an exact RC identity.
+- D018: S03 uses a separate /planet/ distribution of the same App and scene.
+  Exact immutable bootstrap manifests, public asset provenance and source-input
+  hashes distinguish a local preparation artifact from an exact RC. No source
+  archive, service key, private signing key or QA probe belongs in the default app.
+- D019: Web identity is the existing Supabase auth.users UUID. The server verifies
+  signed claims, the current Auth user and matching auth.sessions existence before
+  its encrypted HttpOnly cookie bridge. A cookie is a bounded envelope of that
+  existing session, not a second account system. Live-session existence does not
+  independently implement every configured Auth inactivity/time-box policy.
+- D020: The canonical SQL ledger accepts only server-verified provider events,
+  protects transaction identity and terminal refund/revocation, and blocks access
+  atomically when deletion is requested. Request acknowledgement is not deletion.
+  Existing editorial/comment/staff deletion constraints remain intact. Historical
+  payment records use nullable subject references rather than preserving a second
+  copy of a deleted UUID; production retention rules remain a legal evidence gate.
+- D021: Exact dev-only PGlite 0.5.8 enables actual local PostgreSQL/ACL/RLS tests
+  without a second production database. It cannot establish concurrent connection
+  behavior. New server routes and Cloudflare hosting files are local drafts with
+  no production routes, deployment actions, configured keys or real merchant.
+- D022: Account deletion requires same-session verified recent authentication
+  using signed AMR method timestamps, never the issue time of a refreshed token.
+  Its user-facing disclosure is absent until synchronized RU/EN source is supplied;
+  no retention period or legal approval is invented to enable the interface.
+- D023: Read-only remote verification found main f406a7de after the accepted
+  0a348bd4 source base. Its five upstream commits have been fetched, not applied.
+  Preserve historical accepted commits and evidence; incorporate canonical source
+  changes in a separate local checkpoint, then rerun affected gates. Newly fetched
+  deployment workflows do not authorize their execution. News/dossier network
+  requests require explicit controlled-edition handling.
+- D024: A deletion-status lookup authenticates the existing canonical Bearer
+  session independently of the paid-access block. It distinguishes no request
+  from lookup failure and recovers a committed request after a lost202 response.
+  Account disappearance or 401/403 does not imply completed deletion. Actual
+  processing must account for demonstrated canonical constraints and side effects.
+- D025: Recent history is a bounded preference of canonical IDs, scoped by the
+  verified account and authority/product. It never supplies content or paid access.
+  App and book navigation retain canonical state ownership. Ordinary public pages
+  use a no-op history port; full child/profile behavior remains a later stage.
+- D026: Exact test-only S03 reverse projections retain historical governance
+  fingerprints and reject any unlisted or altered delta. The public header and
+  community tree remain protected; Recent is a third explicitly gated consumer.
+  These projections do not grant editorial approval or change canonical data.
+- D027: PWA bootstrap ownership uses exact Rollup module IDs, including each
+  bookshelf query variant. Capture occurs after Vite's final output rewrite in
+  writeBundle; every owned output must match its disk SHA. An internally consistent
+  sidecar is not independent source-to-binary proof. Exact-candidate provenance
+  needs a trusted external build receipt or repeat compilation, as recorded in
+  the independent review; browser/offline checks remain separate.
+- D028: The cold-offline test exposed an existing canonical mismatch: the raw
+  Dostoevsky writer panel omits a book published by reviewed runtime overlays.
+  Keep this as an internal defect; do not loosen publication gates. A confirmed
+  Galsworthy work supplies the positive offline test without hiding that defect.
+- D029: The master assigns concrete Web purchase providers to S20 and server
+  purchase verification to S21. S03 must already implement verified license,
+  identity, install and offline behavior. Provider work remains internal and
+  global COMMERCE-008 stays open. Deletion initiation/status alone cannot prove
+  functional execution; no automatic cron is inferred as the only valid design.

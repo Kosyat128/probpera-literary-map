@@ -678,7 +678,7 @@ export default function CommunityHub({
       setMessage(t("Введите действующий адрес электронной почты."));
       return;
     }
-    if (password.length < 10) {
+    if (authMode === "signup" && password.length < 10) {
       setMessage(t("Пароль должен содержать не менее 10 символов."));
       return;
     }
@@ -1616,7 +1616,7 @@ export default function CommunityHub({
                   <span className="auth-password-field">
                     <input
                       type={showPassword ? "text" : "password"}
-                      minLength={10}
+                      minLength={authMode === "signup" ? 10 : 1}
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
                       autoComplete={

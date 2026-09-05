@@ -9,6 +9,7 @@ import {
 } from "react";
 
 import { getCountrySiteCopy, getSiteCopy } from "../data/cms/siteCopy";
+import { isControlledWebEdition } from "../platform/distribution";
 
 export type InterfaceLanguage = "ru" | "en";
 
@@ -1503,17 +1504,33 @@ function isInterfaceLanguage(value: unknown): value is InterfaceLanguage {
 
 export function resolveInitialInterfaceLanguage(
   storedLanguage: unknown,
-  routeLanguage: unknown
+  routeLanguage: unknown,
+  preferredLanguages?: readonly string[]
 ): InterfaceLanguage {
   if (isInterfaceLanguage(routeLanguage)) return routeLanguage;
-  return isInterfaceLanguage(storedLanguage) ? storedLanguage : "ru";
+  if (isInterfaceLanguage(storedLanguage)) return storedLanguage;
+  // Omitting browser negotiation preserves the canonical public site's default.
+  if (preferredLanguages === undefined) return "ru";
+  for (const preferred of preferredLanguages) {
+    if (typeof preferred !== "string") continue;
+    try {
+      const canonical = Intl.getCanonicalLocales(preferred)[0];
+      if (!canonical) continue;
+      // The first valid device preference wins; unsupported languages use English.
+      return canonical.split("-")[0].toLowerCase() === "ru" ? "ru" : "en";
+    } catch {
+      // Ignore malformed tags instead of matching prefixes such as "russian".
+    }
+  }
+  return "en";
 }
 
 function initialLanguage(): InterfaceLanguage {
   if (typeof window === "undefined") return "ru";
   return resolveInitialInterfaceLanguage(
     window.localStorage.getItem(STORAGE_KEY),
-    document.documentElement.dataset.routeLanguage
+    document.documentElement.dataset.routeLanguage,
+    isControlledWebEdition ? window.navigator.languages : undefined
   );
 }
 

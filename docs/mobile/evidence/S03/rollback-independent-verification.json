@@ -1,0 +1,48 @@
+{
+  "reviewedAt": "2026-09-05T17:06:13.681Z",
+  "sourceHashes": {
+    "serviceWorkerRuntime.js": "908c2de5a6cabdec3388c930ff07c65f7a01f0407f9d9dca06a1ab17dd21eca1",
+    "registerPwaWorker.ts": "2da0965fbe7acbf47c9be1320041f37ebc1eefb632991f72b12326dc4cf0557c",
+    "serviceWorkerRuntime.test.mjs": "8f7a84450bf8e187f6ccd61de42619c103fa2e183ff4df97066dac89e5401f22",
+    "registerPwaWorker.test.ts": "a30e1c6ae41a1e9297b32ed47949757a7ce868f6f44d6208895440166734b8e7"
+  },
+  "findings": [
+    {
+      "scenario": "late-window-during-selection-and-restart",
+      "pass": true,
+      "document": "error",
+      "texture": "error"
+    },
+    {
+      "scenario": "pending-cache-script",
+      "pass": true,
+      "response": "error"
+    },
+    {
+      "scenario": "pending-cache-navigation",
+      "pass": true,
+      "response": "error"
+    },
+    {
+      "scenario": "pending-network-script",
+      "pass": true,
+      "response": "error"
+    },
+    {
+      "scenario": "verified-document-binding-survives-worker-restart",
+      "pass": true
+    },
+    {
+      "scenario": "A-to-B-rollback-A-update-C-anchored-B",
+      "pass": true,
+      "ready": false,
+      "rollbackBuildId": null,
+      "retained": [
+        "A",
+        "C"
+      ],
+      "supersededBActivation": "rejected",
+      "restartedC": "same"
+    }
+  ]
+}

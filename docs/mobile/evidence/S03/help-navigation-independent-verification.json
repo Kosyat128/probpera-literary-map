@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "recordedAt": "2026-09-05 18:16:11 UTC",
+  "scope": "independent-component-browser-verification",
+  "productReleaseEvidence": false,
+  "command": "npx playwright test --config .tmp/worker-review/help-review.config.mjs",
+  "result": {
+    "passed": 1,
+    "failed": 0,
+    "durationSeconds": 2.7
+  },
+  "browser": "installed Google Chrome, headless",
+  "implementation": "Actual PwaHelp, InterfaceLanguageProvider and canonical language control bundled only into a tiny in-memory fixture. All navigation requests intercepted locally. No app build or real account navigation.",
+  "checks": [
+    "Current returnTo after in-document navigation and keyboard focus",
+    "Current delete-account returnTo after real right-click",
+    "RU to EN preserves the exact native details element and its open state",
+    "Selected book query remains intact across locale change",
+    "History change after focus followed by Enter uses the latest returnTo in native anchor navigation"
+  ],
+  "limitations": [
+    "Component fixture only; does not verify the full artifact, Service Worker, globe, mobile rendering, or native platforms.",
+    "Draft copy remains unapproved. No production network requests or mutations occurred.",
+    "Reproduction files are local .tmp inputs; root owns durable actual-artifact regression."
+  ],
+  "inputs": [
+    {
+      "path": "src/pwa/PwaHelp.tsx",
+      "sha256": "b76630fde156942e08fb7662cfa6a025ee3f82dc162895dfdf15b3136b35c3cb"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "69448f821d31673a3edfb741e844c47c5c7de040573a86e48dbd4212612d7ea9"
+    },
+    {
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "sha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "sha256": "cc10a7ec626da254494408635a0806f6c014c7aaf073a7eda1d30d64d7590819"
+    },
+    {
+      "path": ".tmp/worker-review/help-review.spec.mjs",
+      "sha256": "056e6126cabad996f239afb4757fb9142c3b2a4f589579cee24487afb91e742f"
+    },
+    {
+      "path": ".tmp/worker-review/help-review.config.mjs",
+      "sha256": "0e3ce9c48a2406e5d85e227de6e6df25ad3f1d7cd20a6ea014c25e43f1f97e5f"
+    }
+  ]
+}

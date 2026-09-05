@@ -13,6 +13,8 @@ import {
 } from "react";
 
 import { createPortal } from "react-dom";
+import { useRecentHistory } from "../planet/RecentHistory";
+import { isPublicBook } from "../data/bookQuality";
 
 import ArticleEngagement from "../community/ArticleEngagement";
 import {
@@ -535,6 +537,7 @@ export default function BookArchiveSection({
   requestedBookReturnFocus,
   onRequestedBookHandled,
 }: Props) {
+  const { record: recordRecent } = useRecentHistory();
   const [initialNavigationContext] = useState(
     readInitialBookArchiveNavigationContext
   );
@@ -653,6 +656,9 @@ export default function BookArchiveSection({
   const [selectedBook, setSelectedBook] = useState<BookArchiveEntry | null>(
     null
   );
+  useEffect(() => {
+    if (selectedBook && isPublicBook(selectedBook)) void recordRecent({ kind: "work", countryId: selectedBook.countryId, writerId: selectedBook.writerId, workId: selectedBook.id });
+  }, [recordRecent, selectedBook?.countryId, selectedBook?.writerId, selectedBook?.id]);
   const [collectionDialogBook, setCollectionDialogBook] =
     useState<BookArchiveEntry | null>(null);
   const [managerCollectionId, setManagerCollectionId] = useState<string | null>(

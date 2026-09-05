@@ -15,6 +15,7 @@ import {
   articleSeriesLabel,
 } from "../utils/articleSeries";
 import BrandArrowIcon from "./BrandArrowIcon";
+import { isControlledWebEdition } from "../platform/distribution";
 
 export type SiteSectionLink = {
   id: string;
@@ -275,7 +276,7 @@ export default function SectionsDirectory({
             key={section.id}
             style={
               {
-                "--section-art": `url(${mediaUrl(section.image)})`,
+                "--section-art": isControlledWebEdition && /^https?:\/\//iu.test(section.image) ? "none" : `url(${mediaUrl(section.image)})`,
               } as CSSProperties
             }
           >

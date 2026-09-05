@@ -4,6 +4,7 @@ import path from "node:path";
 
 import * as ts from "typescript";
 import { describe, expect, it } from "vitest";
+import { projectV12S03Source } from "../../scripts/governance/v12-s03-compatibility.mjs";
 
 type ParsedSource = {
   absolutePath: string;
@@ -221,8 +222,18 @@ function productionTsxFiles(directory: string): string[] {
   });
 }
 
-const app = parseSource("src/App.tsx");
-const headerArticlesMenu = parseSource("src/components/HeaderArticlesMenu.tsx");
+function parsePublicGovernanceSource(relativePath: string): ParsedSource {
+  const parsed = parseSource(relativePath);
+  const text = projectV12S03Source(parsed.relativePath, parsed.text);
+  return {
+    ...parsed,
+    text,
+    sourceFile: ts.createSourceFile(relativePath, text, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX),
+  };
+}
+
+const app = parsePublicGovernanceSource("src/App.tsx");
+const headerArticlesMenu = parsePublicGovernanceSource("src/components/HeaderArticlesMenu.tsx");
 const languageControl = parseSource(
   "src/components/InterfaceLanguageControl.tsx"
 );
@@ -309,6 +320,12 @@ describe("Stage 5A governance baseline", () => {
       "community",
       "trust",
     ]);
+  });
+
+  it("preserves the complete public community tree behind its controlled-only guard", () => {
+    // Canonical main 0a348bd4, before the exact V12 visibility wrapper.
+    expect(canonicalNodeHash(singleJsxNodeByClass(app, "community-section"), app.sourceFile))
+      .toBe("eb8569fe01682df8047d6cd403b6092779bd7de7d89a4126e26685222cd1842d");
   });
 
   it("keeps BookArchiveSection as the canonical controller", () => {

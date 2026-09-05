@@ -7,6 +7,7 @@ import {
 import { mediaFocusStyle } from "../utils/mediaFocus";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import { PUBLIC_ARCHIVE_ARTICLE_COUNT } from "../data/articles/publicationStats";
+import { isControlledWebEdition } from "../platform/distribution";
 import {
   articleIdFromPath,
   articlePath,
@@ -353,6 +354,7 @@ export default function ArticleLibrarySection({
 
   const openArticle = (article: ArticleCatalogEntry) => {
     navigateToArticle(article);
+    if (isControlledWebEdition) return;
     setSelectedId(article.id);
   };
 

@@ -1,0 +1,48 @@
+{
+  "limitation": "Local PGlite with minimal auth.users fixture and verbatim selected public DDL. Does not claim deployed migration parity or execute an Auth Admin API.",
+  "sourceHashes": {
+    "supabase/schema.sql": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459",
+    "supabase/migrations/20260728_cms_foundation.sql": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22"
+  },
+  "findings": [
+    {
+      "scenario": "bare-reader-profile-cascades",
+      "deleted": true,
+      "result": [
+        {
+          "profiles_remaining": 0
+        }
+      ]
+    },
+    {
+      "scenario": "registered-comment-blocks-delete",
+      "deleted": false,
+      "sqlState": "23514",
+      "constraint": "article_comments_check"
+    },
+    {
+      "scenario": "guest-and-user-rating-same-session-blocks-delete",
+      "deleted": false,
+      "sqlState": "23505",
+      "constraint": "ratings_guest_unique_idx"
+    },
+    {
+      "scenario": "auth-cascade-bypasses-owner-RPC",
+      "deleted": true,
+      "result": [
+        {
+          "owner_count": 0
+        }
+      ]
+    },
+    {
+      "scenario": "forum-topic-cascade-removes-other-reader-reply",
+      "deleted": true,
+      "result": [
+        {
+          "other_reader_replies": 0
+        }
+      ]
+    }
+  ]
+}

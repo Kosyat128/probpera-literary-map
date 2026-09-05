@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S03",
+  "recordType": "known-gaps",
+  "basis": "Current implementation review and the explicitly described local fixture; not an acceptance report.",
+  "releaseReady": false,
+  "stageAcceptanceClaimed": false,
+  "productionActionsAuthorized": false,
+  "acceptanceImpact": "This inventory does not adjudicate S03 acceptance or later-stage requirements.",
+  "items": [
+    {
+      "id": "S03-GAP-001",
+      "area": "merchant-and-identity-integration",
+      "status": "OPEN",
+      "classification": "implementation-and-external-account-evidence",
+      "finding": "Server handlers, encrypted existing-session bridge, ES256 signer, canonical Supabase adapter, actual PostgreSQL RPCs and public account restoration/recovery/deletion-status recovery are implemented and locally tested. The combined server/SQL/client regression passed 339 tests; account browser fixtures passed 15 scenarios. A draft Cloudflare host adapter and explicit public-only authority build input exist. Real payment acquisition is unfinished: the Worker does not provide a payment verifier and there is no checkout-start route. Credentials alone do not complete that adapter.",
+      "sourcePaths": [
+        "src/pwa/PwaLicenseRuntime.ts",
+        "src/platform/adapters/web/WebLicense.ts",
+        "scripts/mobile/build-pwa.mjs",
+        "src/community/AuthContext.tsx",
+        "src/lib/supabase.ts",
+        "apps/admin/lib/supabase/server.ts",
+        "supabase/schema.sql",
+        "supabase/migrations/20260901_zz_staff_owner_invariant.sql",
+        "server/planet/api.ts",
+        "server/planet/crypto.ts",
+        "server/planet/supabase.ts",
+        "server/planet/worker.ts",
+        "supabase/migrations/20260905_literary_planet_web_license.sql"
+      ],
+      "requiredResolution": "Reuse the canonical backend and account identity, implement and test the server contracts and denial/revocation/deletion behavior, then validate concrete merchant and signing authority evidence. Do not create a second account database.",
+      "doesNotClaim": "A loopback QA identity or locally signed fixture is not a real purchase or a verified production merchant integration."
+    },
+    {
+      "id": "S03-GAP-002",
+      "area": "critical-bilingual-copy",
+      "status": "OPEN",
+      "classification": "internal-editorial-work-and-review-evidence",
+      "finding": "New access and update/offline messages are explicitly marked draft and not production ready. RU/EN availability does not certify editorial, legal or semantic review.",
+      "sourcePaths": [
+        "src/pwa/pwaCopy.ts",
+        "src/pwa/PwaConnectivity.tsx"
+      ],
+      "requiredResolution": "Complete controlled translation and editorial/legal review with source binding and review evidence for all critical copy. Keep translation and programming tasks with implementation, not the owner.",
+      "doesNotClaim": "Existing interface strings reused in startup shells do not approve all English content or newly authored legal/purchase text."
+    },
+    {
+      "id": "S03-GAP-003",
+      "area": "public-locale-indexing",
+      "status": "OPEN",
+      "classification": "internal-release-gates",
+      "finding": "New public /ru/ and /en/ home shells have correct locale metadata and shared application references, but remain noindex and excluded from the indexable sitemap. The generator rejects releaseReady true.",
+      "sourcePaths": [
+        "scripts/mobile/public-locale-pages.mjs",
+        "scripts/mobile/write-public-locale-pages.mjs",
+        "src/i18n/PublicLocaleMetadata.tsx"
+      ],
+      "requiredResolution": "Meet the bilingual content and release evidence gates before implementing and authorizing an indexable publication path. Preserve the existing public manifest identity and article canonicals.",
+      "doesNotClaim": "Generating two locale homes does not complete reviewed English articles, catalog parity or public SEO release readiness."
+    },
+    {
+      "id": "S03-GAP-004",
+      "area": "existing-english-article-freshness-gates",
+      "status": "OPEN",
+      "classification": "fixture-verified-validation-gap",
+      "finding": "The inspected locale selector accepts an approved English fixture even when sourceContentHash deliberately does not match. The inspected article builder release predicate also has no direct source hash comparison. Upstream freshness enforcement was not fully audited.",
+      "sourcePaths": [
+        "src/data/articles/localization.ts",
+        "src/data/articles/catalog.ts",
+        "scripts/build-article-pages.mjs"
+      ],
+      "evidence": {
+        "kind": "local-SSR-function-fixture",
+        "function": "articleCatalogEntryForLanguage",
+        "requestedLocale": "en",
+        "fixtureId": "stale-regression-only",
+        "translationStatus": "approved",
+        "sourceContentHash": "does-not-match-current-source",
+        "sourceArticleUpdatedAt": "2020-01-01T00:00:00Z",
+        "observedResult": "English entry returned with title Previously approved title."
+      },
+      "requiredResolution": "Audit existing upstream freshness handling and bind article publication/selection to validated current source and review evidence in the applicable content workflow. Add meaningful stale-propagation regression coverage without inventing reviews.",
+      "doesNotClaim": "This synthetic fixture is not evidence that any current production article is stale, and it did not alter the actual catalog."
+    },
+    {
+      "id": "S03-GAP-005",
+      "area": "same-origin-storage-and-offline-trust",
+      "status": "OPEN",
+      "classification": "documented-security-and-platform-limit",
+      "finding": "The saved account subject and signed receipt use localStorage on the same origin as the public site. Path and cache namespaces are cooperative isolation, not a separate origin or hardware identity. Offline verification cannot observe new remote revocations; browser storage is not guaranteed durable.",
+      "sourcePaths": [
+        "src/pwa/PwaLicenseRuntime.ts",
+        "src/platform/adapters/web/WebLicense.ts",
+        "src/pwa/PwaAccessBoundary.tsx",
+        "src/pwa/serviceWorkerRuntime.js"
+      ],
+      "requiredResolution": "Assess the concrete production origin/session model, test denial and subject changes, document storage loss and bounded offline rights, and verify deployment controls. Do not promise hardware device binding or immediate offline revocation.",
+      "doesNotClaim": "Signature verification does not protect against compromised same-origin script or establish a trusted clock across reloads."
+    },
+    {
+      "id": "S03-GAP-006",
+      "area": "offline-content-and-recovery-scope",
+      "status": "OPEN",
+      "classification": "remaining-product-implementation",
+      "finding": "The worker verifies a bounded essential bootstrap and now offers explicit whole-app rollback to a verified compatible prior generation. Independent tests cover document/in-flight request generation fences and forbid an incorrect transitive rollback target. The worker engine itself stays current. Offline writer/work/favorite/help browser scenarios and a recent-items implementation still need final artifact regression; optional download/search/audio packages remain incomplete.",
+      "sourcePaths": [
+        "scripts/mobile/pwa-artifact.mjs",
+        "scripts/mobile/build-pwa.mjs",
+        "src/pwa/serviceWorkerRuntime.js",
+        "src/pwa/registerPwaWorker.ts"
+      ],
+      "requiredResolution": "Complete applicable optional package, offline search/audio, repair and recovery workflows with integrity, quota and interruption evidence. Preserve the current no-mixing rule for build generations.",
+      "doesNotClaim": "An offline core does not make every book, portrait, edition, audio item, child package or native download available offline."
+    },
+    {
+      "id": "S03-GAP-007",
+      "area": "browser-and-exact-artifact-evidence",
+      "status": "OPEN",
+      "classification": "validation-evidence",
+      "finding": "The local QA artifact 55d51c715f4f3291f231811752d04c0655a6ba7b95c6cb678dce71890b2bd521 passed 12 actual desktop/mobile browser scenarios and an independent artifact audit. Source-input and canonical public-source hashes bind preparation builds to working bytes beyond HEAD. Subsequent server/account/rollback/SEO changes still require a fresh final artifact and regression; no exact RC or production hosting is claimed.",
+      "sourcePaths": [
+        "scripts/mobile/build-pwa.mjs",
+        "src/main.tsx",
+        "src/pwa/registerPwaWorker.ts",
+        "src/pwa/PwaLocaleMetadata.tsx"
+      ],
+      "requiredResolution": "Bind final regression and desktop/mobile browser evidence to the actual built artifact; test offline/reconnect, selected country and same live scene, license denial/deadlines, failed installs, updates and runtime request boundaries. Verify actual hosting headers when deployment is separately authorized.",
+      "doesNotClaim": "Local QA screenshots are not exact-RC store screenshots or evidence of production deployment. This inventory does not override subsequent actual browser results."
+    },
+    {
+      "id": "S03-GAP-009",
+      "area": "deletion-processing",
+      "status": "OPEN",
+      "classification": "remaining-internal-implementation-and-policy-evidence",
+      "finding": "A request and its authenticated status are implemented; actual deletion processing is not. Real local PostgreSQL reproductions expose authenticated-comment and guest/auth-rating constraints, collateral deletion of other readers' replies, and Auth CASCADE bypassing the last-owner RPC. Storage cleanup, mutation fences, claim/lease, preflight, resumable cleanup and verification must be implemented before completion can be reported.",
+      "sourcePaths": [
+        "server/planet/api.ts",
+        "server/planet/supabase.ts",
+        "supabase/schema.sql",
+        "supabase/migrations/20260905_literary_planet_web_license.sql",
+        "docs/mobile/evidence/S03/account-deletion-canonical-audit.md",
+        "docs/mobile/evidence/S03/account-deletion-constraint-repro.json"
+      ],
+      "requiredResolution": "Implement and locally test a guarded canonical processing workflow, then apply an explicit reviewed treatment of contributions, other readers' replies, Storage and retained records. Keep all programming internal; do not guess retention periods or silently erase shared content.",
+      "doesNotClaim": "An accepted request, null status, missing session or 401/403 response does not establish completed deletion."
+    },
+    {
+      "id": "S03-GAP-010",
+      "area": "updated-canonical-main",
+      "status": "OPEN",
+      "classification": "internal-source-integration-and-regression",
+      "finding": "Read-only remote verification found canonical main f406a7de9e16e8cf63545cbce6681ed9278761a4, with five commits after the accepted 0a348bd4 base. New bookshelf, typography, dossier and news sources have not yet been incorporated into the current V12 worktree. Fetch changed no working source or production state.",
+      "sourcePaths": [
+        "src/App.tsx",
+        "src/components/BookArchiveSection.tsx",
+        "src/main.tsx",
+        "docs/mobile/AUTOPILOT_STATE.json"
+      ],
+      "requiredResolution": "Preserve the current working checkpoint and historical S00-S02 evidence, incorporate the current canonical source changes without production merge/deploy, then rerun affected source, artifact and browser gates.",
+      "doesNotClaim": "Historical accepted tests certify their recorded source base, not newly fetched upstream code."
+    },
+    {
+      "id": "S03-GAP-011",
+      "area": "writer-and-book-publication-parity",
+      "status": "OPEN",
+      "classification": "internal-canonical-selector-integration",
+      "finding": "The real cold-offline test exposed a canonical selector mismatch: writerWorksForPanel/getPublicWriterWorkTitles return zero works for russia:dostoevsky because they filter raw writer workDetails, while buildBookArchive applies reviewed overlays and publishes russia:dostoevsky:crime-and-punishment. This also occurs in a local data-only selector query, independently of offline or packaging. It does not mean all Dostoevsky books are held.",
+      "sourcePaths": [
+        "src/components/writerPanelPresentation.ts",
+        "src/components/WriterPanel.tsx",
+        "src/data/bookArchive.ts",
+        "src/data/countries/bookEvidenceV2PublicBatch05.ts",
+        "src/App.tsx"
+      ],
+      "requiredResolution": "Make the writer panel consume the same canonical publication-gated enriched work records as the existing book runtime, with honest loading/failure behavior and lazy-load boundaries. Preserve all publication holds, reviewed sources and locale gates; verify the actual cross-surface link and add a regression for this exact mismatch.",
+      "doesNotClaim": "Choosing a currently published Galsworthy work for the positive offline test fixes its fixture assumption; it does not fix or waive this separate product defect."
+    },
+    {
+      "id": "S03-GAP-012",
+      "area": "independent-build-provenance",
+      "status": "OPEN",
+      "classification": "exact-candidate-validation-evidence",
+      "finding": "The builder captures exact Rollup source ownership after Vite finalizes bytes and checks disk SHA. The static artifact auditor verifies internal consistency and current source hashes, but an independently reproduced coordinated sidecar/hash rewrite can reassign a source lacking a direct Vite key and omit its true lazy chunk from bootstrap without a finding.",
+      "sourcePaths": [
+        "scripts/mobile/build-pwa.mjs",
+        "scripts/mobile/pwa-artifact.mjs",
+        "scripts/mobile/verify-pwa-artifact.mjs",
+        "docs/mobile/evidence/S03/module-ownership-independent-review.json"
+      ],
+      "requiredResolution": "Before claiming exact-candidate source-to-output provenance, compare against an explicitly trusted external build receipt captured from the finalized compiler output or independently repeat the compilation and compare exact ownership. Continue actual cold-offline tests of the built artifact.",
+      "doesNotClaim": "This limitation is not evidence that the current locally built mapping is false; the preparation auditor does not establish arbitrary executable equivalence."
+    },
+    {
+      "id": "S03-GAP-008",
+      "area": "full-product-and-approval-scope",
+      "status": "OPEN",
+      "classification": "later-stage-implementation-and-evidence",
+      "finding": "This PWA foundation does not complete native clients, child isolation, full reviewed RU/EN content, accessibility validation, synchronized legal/support documents, store dossiers or final owner approval.",
+      "sourcePaths": [
+        "docs/mobile/AUTOPILOT_STATE.json",
+        "docs/mobile/STAGE_REQUIREMENT_MAP.json",
+        "docs/mobile/PWA_ARCHITECTURE.md"
+      ],
+      "requiredResolution": "Execute the applicable routed stages and collect real implementation, review and device evidence. Keep owner actions limited to concrete authority/access/rights/final approval decisions.",
+      "doesNotClaim": "No global bilingual requirement or later-stage criterion is passed by the presence of this architecture document."
+    }
+  ]
+}

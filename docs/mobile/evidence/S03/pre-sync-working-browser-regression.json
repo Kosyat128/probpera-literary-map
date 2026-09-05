@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S03",
+  "recordType": "working-browser-regression-evidence",
+  "identity": {
+    "buildId": "c2923b31b31be3c9b2a95889fb7c82feaffe79b965d10cd889070030a6692058",
+    "sourceCommit": "82743ad60f3f72ebcf0259a82c949a37eed2699e",
+    "sourceInputsSha256": "73a855e87aec35058b0eac5f118513d1be391e64d7c8cab55f8613d70345adc7",
+    "localQaAuthority": true
+  },
+  "command": "node node_modules/@playwright/test/cli.js test --config=playwright.pwa.config.mjs",
+  "stats": {
+    "startTime": "2026-09-05T18:34:29.566Z",
+    "duration": 320095.499,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "files": [
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "sha256": "ea96400473917fbe1c1a054761b931279c5c3a6530500ae52766a5fe2357d37f",
+      "bytes": 14622
+    },
+    {
+      "path": "tests/pwa/offline-catalog.spec.mjs",
+      "sha256": "da3f5d85f23165d9b00efddaf3148de20222b2d3f83d80f7891ef4c83a0c523c",
+      "bytes": 10632
+    },
+    {
+      "path": "playwright.pwa.config.mjs",
+      "sha256": "af8689ad47ae071bbd7eff3fd8f13338b9fb69c165d5e99f1736f84f52054f31",
+      "bytes": 1118
+    },
+    {
+      "path": ".tmp/pwa-browser-results/results.json",
+      "sha256": "2d8309bcfd948b0280517399589de6b2796e421b4865a3aa54fcc55af3633553",
+      "bytes": 23902
+    },
+    {
+      "path": "../.tmp/literary-planet-v12-intake/S03-pwa-canonical-work-browser.log",
+      "sha256": "27a687e53faa29c55ee4ac98fcd83168395879ff3bde9d5153bed30168ba0752",
+      "bytes": 8759
+    },
+    {
+      "path": "dist-pwa/artifact.json",
+      "sha256": "ce5fac7f058feb729eab77365dbebc62e5ed2f376086693bdecbb673c54bfc10",
+      "bytes": 193968
+    },
+    {
+      "path": "dist-pwa/module-ownership.json",
+      "sha256": "19a32dc1820ba899b0d2d2658dc3a1537b26c5d97225613ca12680f88f13677f",
+      "bytes": 5620
+    }
+  ],
+  "releaseReady": false,
+  "stageAcceptanceClaimed": false,
+  "limitations": [
+    "Actual Chrome with desktop and Pixel7 viewport; no native Android/iOS device execution.",
+    "Local ephemeral signed identity/payment protocol fixtures, not production accounts or real merchant transactions.",
+    "Positive Galsworthy fixture does not resolve the separately recorded raw-writer/enriched-book selector mismatch.",
+    "Screenshots and output are local preparation evidence, not exact-RC store materials."
+  ]
+}

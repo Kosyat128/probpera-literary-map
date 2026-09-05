@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S03",
+  "recordType": "working-regression-evidence",
+  "sourceCommit": "82743ad60f3f72ebcf0259a82c949a37eed2699e",
+  "sourceInputsSha256": "73a855e87aec35058b0eac5f118513d1be391e64d7c8cab55f8613d70345adc7",
+  "command": "node node_modules/vitest/vitest.mjs run --maxWorkers=1 --reporter=dot",
+  "perProcessGitSafeDirectory": true,
+  "counts": {
+    "passedTests": 4147,
+    "existingSkippedTests": 4,
+    "failedTests": 0,
+    "passedFiles": 545,
+    "skippedFiles": 3
+  },
+  "durationSeconds": 413.12,
+  "log": {
+    "path": "../.tmp/literary-planet-v12-intake/S03-pre-sync-final-unit.log",
+    "sha256": "93e1e2316790dd3d9270b9001981175b1e605a412b6c64b95cc57d0afa51eded",
+    "bytes": 11208
+  },
+  "releaseReady": false,
+  "stageAcceptanceClaimed": false,
+  "limitations": [
+    "Unit regression of the recorded working source; it does not prove native device behavior, reviewed translations, purchase provider integration or final release readiness.",
+    "Known canonical writer/enriched-book mismatch and other S03 gaps remain open."
+  ]
+}

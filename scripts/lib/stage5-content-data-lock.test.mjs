@@ -6,6 +6,7 @@ import * as ts from "typescript";
 import { describe, expect, it } from "vitest";
 
 import { parseCss } from "../audit-stage5-baseline.mjs";
+import { projectV12S03Package, projectV12S03Source } from "../governance/v12-s03-compatibility.mjs";
 import {
   adminArticlePublicationPermissionsAttestation,
   bookDatabaseEditorialOwnerAttestation,
@@ -52,7 +53,8 @@ function canonicalContent(absolutePath) {
     .replace(/^\uFEFF/u, "")
     .replace(/\r\n/gu, "\n");
   if (extension === ".json" || extension === ".geojson") {
-    const value = JSON.parse(text);
+    const value = repositoryPath(absolutePath) === "package.json"
+      ? projectV12S03Package(JSON.parse(text)) : JSON.parse(text);
     if (repositoryPath(absolutePath) === "package.json") {
       // Keep the existing release/dependency fingerprint while checking the exact
       // additive typography gate authorized on 2026-09-04. No other script drift
@@ -67,7 +69,7 @@ function canonicalContent(absolutePath) {
   if (extension === ".ts" || extension === ".tsx") {
     const sourceFile = ts.createSourceFile(
       repositoryPath(absolutePath),
-      text,
+      projectV12S03Source(repositoryPath(absolutePath), text),
       ts.ScriptTarget.Latest,
       true,
       extension === ".tsx" ? ts.ScriptKind.TSX : ts.ScriptKind.TS
@@ -156,9 +158,9 @@ function staticPropertyName(property, sourceFile) {
 
 function readEnglishInterfaceText() {
   const absolutePath = path.join(root, "src/i18n/InterfaceLanguage.tsx");
-  const text = readFileSync(absolutePath, "utf8")
+  const text = projectV12S03Source("src/i18n/InterfaceLanguage.tsx", readFileSync(absolutePath, "utf8")
     .replace(/^\uFEFF/u, "")
-    .replace(/\r\n?/gu, "\n");
+    .replace(/\r\n?/gu, "\n"));
   const sourceFile = ts.createSourceFile(
     "src/i18n/InterfaceLanguage.tsx",
     text,

@@ -2,6 +2,7 @@ node_modules/
 __pycache__/
 *.py[cod]
 dist/
+dist-pwa/
 .next/
 next-env.d.ts
 .local-ops/

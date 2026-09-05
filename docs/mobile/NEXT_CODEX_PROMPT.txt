@@ -3,7 +3,57 @@ Read AGENTS.md and state/status/decisions/blockers. Run pinned input verificatio
 node scripts/mobile/stage-context.mjs S03 and node scripts/mobile/verify-state.mjs.
 S00 accepted ef16246f; S01 accepted25b53479; S02 accepted6305df5f.
 Canonical base remains main0a348bd4. Active S03.acceptance is controlled Web/PWA.
-Read new S03-S10 route18/21/22/23 in full; unchanged shared invariants already read.
+S03-S10 route18/21/22/23 and unchanged shared invariants have been read in full.
+Do not reread or load future specialized documents merely to fill context.
+S03 remains an IN_PROGRESS source checkpoint, not accepted. Inspect current git log.
+STATUS, PROGRESS_RU and evidence/S03/known-gaps.json distinguish
+snapshot tests from unfinished user flows and actual release gates.
+Preserve .tmp browser failures and all later successful raw logs.
+Latest independent work: canonical agent exact governance compatibility and S03
+criteria allocation; Android finalized Rollup ownership and a read-only future
+dossier integration proposal; Apple Help/ownership reviews and canonical selector
+reproduction. Verify live ownership before overlapping edits. Server-only files live in server/planet; one existing
+Supabase database remains canonical. PGlite 0.5.8 is exact dev-only test tooling;
+its real SQL tests do not prove multi-connection lock contention.
+Latest full pre-sync unit regression4147 passed,4 existing skips,545 files passed
+and3 files skipped. Log ../.tmp/literary-planet-v12-intake/S03-pre-sync-final-unit.log.
+Earlier full4087/9fail is preserved; exact governance49 and types passed without
+rewriting historical hashes. Platform guard453 modules and typography21 CSS passed.
+Server/SQL/account/recovery regression339 passed. Account component Chrome15
+and recovery Chrome8 passed; each uses a separate Playwright configuration and
+explicit local protocol fixtures. The artifact-device configuration runs only
+controlled-pwa.spec.mjs and offline-catalog.spec.mjs (18 desktop/mobile cases),
+not those component fixtures. Fresh artifactc623683a passed331-file audit and16/18
+browser scenarios. Two failures revealed canonical raw writer/enriched book
+selector mismatch for Dostoevsky (known-gap011), not a missing bundled module.
+The new positive fixture uses verified Galsworthy/the-forsyte-saga in both selectors;
+final freshc2923b31 full18 run passed (5.3min), with the same331-file auditor PASS.
+Evidence: pre-sync-working-unit-regression.json, pre-sync-working-artifact-audit.json,
+and pre-sync-working-browser-regression.json under docs/mobile/evidence/S03.
+Preserve c623 results in .tmp/pwa-browser-c623683a-16passed; final18 are in
+.tmp/pwa-browser-results. These are desktop Chrome/Pixel7 viewport, not native devices.
+Recent quota/clear/filter fixes passed56 and independent rechecks. Help returnTo
+activation fix passed real keyboard/contextmenu Chrome and artifact favorites test.
+Builder now captures finalized Rollup writeBundle ownership (118 focused tests);
+earlier missing-manifest-key and early-byte-hash failed logs remain. Independent
+ownership review records the limitation of internally consistent provenance;
+an external trusted receipt or repeat compilation is required before exact-RC
+source-to-output claims. Do not claim that the static auditor proves arbitrary code.
+The ordinary --authority build input is now separate from --qa-authority and
+binds mode, public source bytes and rollback compatibility into artifact identity.
+Remote main is now f406a7de (five commits after the accepted0a348bd4 base). Fetched
+only; working sources have not incorporated its bookshelf/dossier/typography/news.
+Preserve S00-S02 ancestor evidence with a separate local source-sync checkpoint.
+Control newly introduced remote news/dossier requests in the PWA and preserve
+all existing fonts: Onest plus physical-reader Source Sans/Serif. Inspect new
+book-dossier deletion RESTRICT references and locale-keyed reading-state reset.
+No production merge, deploy or workflow run is authorized by fetched source.
+Actual deletion execution, canonical writer/public-book parity and public localized
+HTTP404 host routing remain current internal gaps. Concrete provider adapter is
+explicit S20/S21 internal work, never an owner programming task. The read-only
+.tmp/S03-criteria-allocation-audit.md/.json records exact current binding references,
+not any acceptance or requirements waiver. Deletion constraint
+reproductions and independent rollback evidence are retained under evidence/S03.
 Use the existing canonical App/domain/globe and S02 WebPlatformAdapter/provider.
 SHARED_SITE_EXTRACTION.md documents source identity and demand-loading boundaries.
 Implement controlled artifact, isolated cache/scope, offline bootstrap and safe

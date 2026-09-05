@@ -4,6 +4,12 @@ const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const STATIC_CACHE_LIMIT = 160;
 const PAGE_CACHE_LIMIT = 40;
+// These names belong to previous root-site workers only. CacheStorage is shared
+// with separately scoped applications; never sweep an origin-wide namespace.
+const LEGACY_SITE_CACHES = new Set([
+  "probpera-v1-static", "probpera-v1-pages",
+  "probpera-v2-static", "probpera-v2-pages",
+]);
 const scopeUrl = new URL(self.registration.scope);
 const scopePath = scopeUrl.pathname.replace(/\/$/, "");
 const scoped = (path) => `${scopePath}${path}` || "/";
@@ -69,7 +75,7 @@ self.addEventListener("activate", (event) => {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((key) => !key.startsWith(CACHE_VERSION))
+            .filter((key) => scopePath === "" && LEGACY_SITE_CACHES.has(key))
             .map((key) => caches.delete(key))
         )
       )
@@ -107,6 +113,11 @@ self.addEventListener("fetch", (event) => {
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+  // The paid PWA owns this exact subtree, including before its first activation.
+  // Match the decoded pathname used by the static server, including aliases.
+  let pathname;
+  try { pathname = decodeURIComponent(url.pathname); } catch { return; }
+  if (pathname === "/planet" || pathname.startsWith("/planet/")) return;
 
   if (request.mode === "navigate") {
     event.respondWith(networkFirst(request));
