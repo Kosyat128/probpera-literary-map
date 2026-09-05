@@ -75,6 +75,18 @@
   .article-reader-content .article-gallery,
   .article-reader-content :is(table, pre, hr) { margin-block: var(--reader-block-gap); }
   .article-reader-content .article-media-split > figure.article-inline-image { margin-block: 0; }
+  .article-reader-content :is(.article-gallery, .article-media-split) { min-inline-size: 0; }
+  .article-reader-content .article-gallery { margin-inline: 0; }
+  /* Collection columns own their width; standalone full/wide image rules must
+     not expand or translate a figure beyond its gallery or split column. */
+  .article-reader-content :is(.article-gallery, .article-media-split) > figure.article-inline-image:is(.is-wide, .is-normal, .is-full, .is-left, .is-right) {
+    min-inline-size: 0;
+    inline-size: min(var(--editorial-image-width, 100%), 100%);
+    max-inline-size: min(var(--editorial-image-max-width, 100%), 100%);
+    margin: 0;
+    float: none;
+    transform: none;
+  }
   .article-reader-content figcaption { margin-block-start: 12px; text-align: start; }
   .article-reader-content a,
   .article-byline a,

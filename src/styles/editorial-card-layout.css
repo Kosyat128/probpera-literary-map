@@ -67,6 +67,64 @@
     border-start-end-radius: inherit;
   }
 
+  /* Quiet orange signatures share a matte backing on every photographic card. */
+  .editorial-grid .article-image > span,
+  .library-card-image > small,
+  .sections-directory .section-card-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    inline-size: fit-content;
+    max-inline-size: 100%;
+    padding: 6px 10px;
+    color: var(--orange-soft);
+    background: rgba(26, 6, 43, 0.94);
+    border: 1px solid rgba(255, 155, 69, 0.26);
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(17, 3, 29, 0.12);
+  }
+
+  .editorial-grid .article-image > span,
+  .library-card-image > small {
+    position: absolute;
+    z-index: 3;
+    inset-block-end: 14px;
+    inset-inline-start: 14px;
+    max-inline-size: calc(100% - 28px);
+  }
+
+  .sections-directory .section-card-eyebrow {
+    justify-self: start;
+    box-shadow: none;
+  }
+
+  /* Small orange text needs a deeper ink on paper and a lighter ink on violet. */
+  :is(.authors-section, .calendar-section, .book-archive-section,
+    .editorial-standard, .trust-center) .section-kicker {
+    color: #b7470a;
+  }
+
+  :is(.editorial-section, .sections-directory, .article-library,
+    .community-section, .book-of-day, .book-fact-card) .section-kicker {
+    color: var(--orange-soft);
+  }
+
+  .cms-core-editable:is(.is-light, .is-paper) .section-kicker {
+    color: #b7470a;
+  }
+
+  .cms-core-editable.is-violet .section-kicker {
+    color: var(--orange-soft);
+  }
+
+  .cms-core-editable.is-orange .section-kicker {
+    color: var(--ink);
+  }
+
+  /* These nested cards keep their own dark surface inside a paper CMS section. */
+  .cms-core-editable :is(.book-of-day, .book-fact-card) .section-kicker {
+    color: var(--orange-soft);
+  }
+
   .article-copy,
   .library-card-copy {
     display: flex;

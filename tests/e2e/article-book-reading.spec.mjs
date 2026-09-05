@@ -15,14 +15,105 @@ function deliveredCoverUrl(articleUrl) {
   return createImageDeliveryResolver(imageManifest, basePath).url(source.imageUrl, 1280);
 }
 
-async function fixtureArticleUrl(request, baseURL) {
+async function fixtureArticleUrl(request, baseURL, article = source) {
   for (const prefix of ["", "/probpera-literary-map"]) {
-    const response = await request.get(new URL(`${prefix}/${source.documentPath}`, baseURL).href);
+    const response = await request.get(new URL(`${prefix}/${article.documentPath}`, baseURL).href);
     const document = await response.json().catch(() => null);
-    if (document?.id === source.id) return new URL(prefix + new URL(source.url).pathname, baseURL).href;
+    if (document?.id === article.id) return new URL(prefix + new URL(article.url).pathname, baseURL).href;
   }
   throw new Error("The bilingual article fixture must be available from the local preview.");
 }
+
+test("real vocabulary illustrations stay with their own numbered entries at every reader font size", async ({ page, request, baseURL, isMobile }, testInfo) => {
+  test.setTimeout(240_000);
+  const article = JSON.parse(readFileSync(new URL("../../public/cms/articles/cms-0e262528-70b9-43c4-8160-7cfb5c6b101c.json", import.meta.url), "utf8"));
+  const url = await fixtureArticleUrl(request, baseURL, article);
+  const articlePath = new URL(article.url).pathname;
+  const prefix = new URL(url).pathname.slice(0, -articlePath.length) + "/";
+  const delivery = createImageDeliveryResolver(imageManifest, prefix);
+  await installEnvironment(page);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  // The narrow viewport also exercises the book's additional readability scale.
+  await page.setViewportSize({ width: isMobile ? 320 : 1440, height: 1000 });
+  const book = await enterBook(page, url, "ru");
+  await expect(book).toHaveAttribute("data-renderer", "three", { timeout: 30_000 });
+  await expectPage(book, 0);
+  const original = await page.evaluate(html => {
+    const body = new DOMParser().parseFromString(html, "text/html").body;
+    const entries = [...body.querySelectorAll("h2")].filter(heading => /^\s*\d+\./u.test(heading.textContent)).map(heading => {
+      let text = "";
+      let source = "";
+      for (let node = heading.nextElementSibling; node && node.tagName !== "H2"; node = node.nextElementSibling) {
+        text += ` ${node.textContent}`;
+        source ||= node.querySelector("img")?.getAttribute("src") || "";
+      }
+      return { heading: heading.textContent.replace(/\s+/gu, " ").trim(), text: text.replace(/\s+/gu, " ").trim(), source };
+    });
+    return { entries, text: body.textContent };
+  }, article.contentHtml);
+  expect(original.entries).toHaveLength(25);
+  expect(original.entries[12].heading).toBe("13. Гематология");
+  expect(original.entries[13].heading).toBe("14. Гобелен");
+  await book.locator("summary").click();
+  const reports = [];
+  let currentScale = 1;
+  for (const scale of [1, 0.9, 1.3]) {
+    const change = scale > currentScale ? "Увеличить шрифт" : "Уменьшить шрифт";
+    for (let step = 0; step < Math.round(Math.abs(scale - currentScale) * 10); step++) {
+      await page.locator(".article-reader-bar").getByRole("button", { name: change, exact: true }).click();
+    }
+    currentScale = scale;
+    await expect.poll(() => book.evaluate(node => Number(node.style.getPropertyValue("--reader-scale")))).toBeCloseTo(scale, 2);
+    await settleResize(page, book);
+    await expect(book).toHaveAttribute("data-renderer", "three");
+    const count = Number(await book.getAttribute("data-page-count"));
+    const pages = [];
+    for (let index = 0; index < count; index++) {
+      await book.locator("select").selectOption(String(index));
+      await expectPage(book, index);
+      pages.push(await book.locator("[data-article-book-page]").evaluate(node => ({
+        text: node.textContent,
+        content: [...node.querySelectorAll("h2, h3, h4, h5, h6, p, img")].map(element => element instanceof HTMLImageElement
+          ? { source: element.getAttribute("src") }
+          : element.tagName === "P" ? { text: element.textContent }
+          : { heading: element.textContent.replace(/\s+/gu, " ").trim() }),
+      })));
+    }
+    expect(compactText(pages.map(value => value.text).join("")), `all original text survives at ${scale}`).toBe(compactText(article.title + original.text));
+    const associations = [];
+    for (const entry of original.entries) {
+      const sourceUrl = delivery.url(entry.source, 1280);
+      const matches = pages.flatMap((value, index) => value.content.some(item => item.source === sourceUrl) ? [{ ...value, index }] : []);
+      expect(matches, `exactly one illustration for ${entry.heading} at ${scale}`).toHaveLength(1);
+      const containingPage = matches[0];
+      // A long entry may span pages, but its illustration must retain the end
+      // of its own definition instead of opening the following entry's page.
+      const imagePosition = containingPage.content.findIndex(item => item.source === sourceUrl);
+      const precedingText = containingPage.content.slice(0, imagePosition).findLast(item => item.text)?.text || "";
+      expect(precedingText, `own definition accompanies ${entry.heading} at ${scale}`).toMatch(/\p{L}{3}/u);
+      expect(compactText(entry.text).endsWith(compactText(precedingText)), `the text before the illustration belongs to ${entry.heading} at ${scale}`).toBe(true);
+      const precedingHeading = containingPage.content.slice(0, imagePosition).findLast(item => item.heading)?.heading;
+      if (precedingHeading) expect(precedingHeading, `preceding heading belongs to ${entry.heading} at ${scale}`).toBe(entry.heading);
+      else expect(containingPage.content.filter(item => item.heading), `a continuation illustration cannot introduce the next entry at ${scale}`).toEqual([]);
+      if (["13. Гематология", "14. Гобелен"].includes(entry.heading)) {
+        expect(containingPage.content.some(item => item.heading === entry.heading), `short entry and its illustration share a page at ${scale}`).toBe(true);
+      }
+      associations.push({ heading: entry.heading, page: containingPage.index + 1, source: sourceUrl });
+    }
+    reports.push({ width: isMobile ? 320 : 1440, fontScale: scale, pageCount: count, associations });
+    if (scale === 1) {
+      for (const entry of [12, 13, 14]) {
+        const index = associations[entry - 1].page - 1;
+        await book.locator("select").selectOption(String(index));
+        await expectPage(book, index);
+        await book.locator("summary").click();
+        await book.screenshot({ path: testInfo.outputPath(`vocabulary-entry-${entry}.png`) });
+        await book.locator("summary").click();
+      }
+    }
+  }
+  await testInfo.attach("real-vocabulary-image-associations", { body: JSON.stringify(reports, null, 2), contentType: "application/json" });
+});
 
 function illustratedContent(locale) {
   const en = locale === "en";

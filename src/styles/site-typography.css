@@ -125,6 +125,7 @@
     --type-body: 1rem;
     --type-card-excerpt: 1rem;
     --type-card-meta: 0.875rem;
+    --type-editorial-label: 0.8125rem;
     --type-caption: 0.8125rem;
     --type-navigation: 0.9375rem;
     --type-action: 0.9375rem;
@@ -301,12 +302,8 @@
 
   .section-kicker,
   .section-card-latest span,
-  .article-copy small,
   .author-showcase small,
-  .sections-directory .section-card-eyebrow,
   .article-library-heading label span,
-  .library-card-image small,
-  .library-card-copy > div,
   .calendar-summary > div > span,
   .calendar-featured > span,
   .calendar-agenda > header span,
@@ -316,6 +313,42 @@
     font-weight: 600;
     line-height: var(--type-leading-ui);
     letter-spacing: var(--type-tracking-label);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .editorial-grid .article-image > span,
+  .library-card-image > small,
+  .sections-directory .section-card-eyebrow {
+    font-family: var(--font-ui);
+    font-size: var(--type-editorial-label);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: .015em;
+    text-transform: none;
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  :is(.section-heading, .article-library-heading, .book-archive-heading, .atlas-heading,
+    .editorial-standard, .book-of-day, .book-fact-card, .calendar-heading,
+    .community-copy, .community-visual-intro, .journal-engagement) .section-kicker {
+    font-size: var(--type-editorial-label);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: .025em;
+    text-transform: none;
+  }
+
+  .article-copy small,
+  .library-card-copy > div {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
     overflow-wrap: normal;
     word-break: normal;
   }

@@ -53,6 +53,8 @@ export type BookShelfSceneFailure =
 
 export type BookShelfSceneProps = {
   inspectionOnly?: boolean;
+  /** Article viewport enlargement; ordinary shelf framing keeps its default. */
+  inspectionViewScale?: number;
   textureRenderer?: BookShelfPageTextureRenderer;
   onInspectionReady?: () => void;
   items: readonly BookShelfPresentationItem[];
@@ -329,6 +331,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
           {props.active && support === "ready" ? (
             <LazyBookShelfSceneCanvas
               inspectionOnly={props.inspectionOnly}
+              inspectionViewScale={props.inspectionViewScale}
               textureRenderer={props.textureRenderer}
               onInspectionReady={props.onInspectionReady}
               items={props.items}

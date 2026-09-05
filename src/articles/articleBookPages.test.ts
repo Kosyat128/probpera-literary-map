@@ -12,6 +12,46 @@ const input = (html: string, overrides: Partial<ArticleBookInput> = {}): Article
 const tight = (value: string) => value.replace(/\s/gu, "");
 
 describe("article book pagination", () => {
+  it("keeps each short illustrated entry with its own heading and definition across page breaks", () => {
+    const html = Array.from({length: 25}, (_, index) => `<h2>${index + 1}. Термин</h2><p>Определение термина ${index + 1}, объясняющее изображённое понятие.</p><figure><img src="/term-${index + 1}.png" width="1400" height="900"><figcaption>Иллюстрация ${index + 1}</figcaption></figure>`).join("");
+    const blocks = parseArticleBookHtml(html, readTree);
+    for (const fontScale of [.9, 1.1, 1.408]) {
+      const {pages} = paginateArticleBook(input(html, {fontScale}), blocks, measure);
+      for (let index = 1; index <= 25; index++) {
+        const matches = pages.filter(page => page.articleLayout.some(command => command.kind === "image" && command.block.src === `/term-${index}.png`));
+        expect(matches).toHaveLength(1);
+        expect(matches[0].text).toContain(`${index}. Термин`);
+        expect(matches[0].text).toContain(`Определение термина ${index},`);
+        expect(matches[0].text).toContain(`Иллюстрация ${index}`);
+      }
+    }
+  });
+
+  it("keeps the last lines of a long definition with its illustration and starts the next entry separately", () => {
+    const definition = "Подробное объяснение понятия для читателя. ".repeat(90) + "Конец определения гематологии.";
+    const html = `<h2>13. Гематология</h2><p>${definition}</p><figure><img src="/blood.png" width="1400" height="900"><figcaption>Клетки крови</figcaption></figure><h2>14. Гобелен</h2><p>Декоративная ткань.</p><img src="/tapestry.png" width="1400" height="900">`;
+    const blocks = parseArticleBookHtml(html, readTree);
+    for (const fontScale of [1.1, 1.408, 2.2]) {
+      const {pages} = paginateArticleBook(input(html, {fontScale}), blocks, measure);
+      const imagePage = pages.find(page => page.articleLayout.some(command => command.kind === "image" && command.block.src === "/blood.png"))!;
+      expect(imagePage.text).toContain("Конец определения гематологии.");
+      expect(imagePage.text).toContain("Клетки крови");
+      expect(imagePage.text).not.toContain("14. Гобелен");
+      const text = pages.flatMap(page => page.articleLayout).flatMap(command => command.kind === "text" && command.block.id !== "article-title" ? command.runs.map(run => run.text) : []).join("");
+      expect(text).toBe(blocks.flatMap(block => block.kind === "text" ? block.runs.map(run => run.text) : []).join(""));
+      for (const command of pages.flatMap(page => page.articleLayout)) expect(command.y + command.height).toBeLessThanOrEqual(ARTICLE_BOOK_PAGE.height - ARTICLE_BOOK_PAGE.bottom + .01);
+    }
+  });
+
+  it("keeps a long illustrated section's heading with its opening lines rather than orphaning it at the page bottom", () => {
+    const html = `<p>${Array.from({length: 16}, () => "Вводная строка.").join("<br>")}</p><h2>13. Гематология</h2><p>${"Подробное объяснение понятия для читателя. ".repeat(60)}</p><img src="/blood.png" width="1400" height="900">`;
+    const blocks = parseArticleBookHtml(html, readTree);
+    const heading = blocks.findIndex(block => block.kind === "text" && block.role === "heading");
+    const {pages} = paginateArticleBook(input(html), blocks, measure);
+    const headingPage = pages.find(page => page.articleLayout.some(command => command.block.id === blocks[heading].id))!;
+    expect(headingPage.articleLayout.filter(command => command.block.id === blocks[heading + 1].id).length).toBeGreaterThanOrEqual(2);
+  });
+
   it("preserves the complete first, middle and final article text beyond 36 pages, with every image in source order", () => {
     const html = Array.from({length: 180}, (_, index) => `<p>MARKER_${index} ${"Каждое слово исходного текста остаётся доступным читателю. ".repeat(6)}</p>${index % 30 === 0 ? `<figure><img src="/image-${index}.png" alt="Иллюстрация ${index}"><figcaption>Подпись ${index}</figcaption></figure>` : ""}`).join("") + "<p>FINAL_MARKER</p>";
     const blocks = parseArticleBookHtml(html, readTree);

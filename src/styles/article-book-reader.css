@@ -19,6 +19,20 @@
   }
   .article-book-reader__backdrop { position: absolute; inset: -10px; background-position: center; background-size: cover; filter: blur(4px); pointer-events: none; }
   .article-book-reader__backdrop::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(245, 237, 223, .62), rgba(224, 211, 190, .76)); }
+  .article-book-reader__viewport { position: absolute; inset: 0; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #9a796a transparent; }
+  .article-book-reader__surface { width: calc(100% * var(--book-view-scale, 1)); height: calc(100% * var(--book-view-scale, 1)); }
+  .article-book-reader.is-zoomed .article-book-reader__viewport { cursor: grab; touch-action: pan-x pan-y pinch-zoom; }
+  .article-book-reader.is-zoomed .article-book-reader__viewport:active { cursor: grabbing; }
+  .article-book-reader.is-zoomed .article-book-reader__surface { pointer-events: none; user-select: none; }
+  .article-book-reader__view-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; padding: 8px 16px; border-block-end: 1px solid rgba(64, 34, 77, .14); background: #fffaf2; }
+  .article-book-reader__view-label { color: #684d69; font-size: 14px; line-height: 1.35; font-weight: 500; }
+  .article-book-reader__view-controls > div { display: flex; align-items: center; gap: 4px; }
+  .article-book-reader__view-controls button { min-width: 44px; min-height: 44px; padding: 8px; border: 1px solid transparent; border-radius: var(--ui-radius-control); background: transparent; color: var(--ink); font: 500 22px/1 var(--font-ui); cursor: pointer; }
+  .article-book-reader__view-controls .article-book-reader__view-reset { min-width: 64px; font-size: 14px; line-height: 1.35; font-variant-numeric: tabular-nums; }
+  .article-book-reader__view-controls button:not(:disabled):hover { background: #ffe4ca; border-color: #edc6a1; }
+  .article-book-reader__view-controls button:disabled { opacity: .45; cursor: default; }
+  .article-book-reader__view-controls .article-book-reader__view-reset:disabled { opacity: 1; }
+  .article-book-reader__pan-hint { margin: 0; padding: 8px 16px; background: #fffaf2; color: #684d69; font-size: 14px; line-height: 1.4; }
   .article-book-reader .book-shelf-scene { min-height: 0; height: 100%; background: transparent; }
   .article-book-reader .book-shelf-scene canvas { background: transparent; }
   .article-book-reader__loading { position: relative; z-index: 3; margin: 0; padding: 40px 24px; text-align: center; }
@@ -47,6 +61,7 @@
   .article-book-reader__controls :disabled { opacity: .45; cursor: default; }
   .article-book-reader :is(button, select, summary, img[role="button"]):focus-visible,
   .article-book-reader:focus-visible { outline: 3px solid var(--violet-700); outline-offset: 3px; }
+  .article-book-reader__viewport:focus-visible { outline: 3px solid var(--violet-700); outline-offset: -3px; }
   .article-book-reader__text { padding: 0 24px 16px; background: #fffaf2; }
   .article-book-reader__text summary { min-height: 44px; padding-block: 12px; color: var(--violet-700); cursor: pointer; }
   .article-book-reader__text > div,
@@ -69,6 +84,8 @@
     .article-book-reader__stage { height: clamp(340px, 60svh, 580px); }
     .article-book-reader__controls { gap: 8px; padding: 12px; }
     .article-book-reader__controls :is(button, select) { padding-inline: 10px; }
+    .article-book-reader__view-controls { padding-inline: 12px; }
+    .article-book-reader__pan-hint { padding: 4px 12px 10px; }
     .article-book-reader__text { padding-inline: 16px; }
   }
 }

@@ -2,7 +2,7 @@ import type { BookEditorialDocument, BookEditorialPage } from "../books/bookEdit
 import { hyphenateSync as hyphenateRussian } from "hyphen/ru";
 import { hyphenateSync as hyphenateEnglish } from "hyphen/en-us";
 
-export const ARTICLE_BOOK_VERSION = "article-book-pages-v3";
+export const ARTICLE_BOOK_VERSION = "article-book-pages-v4";
 export const ARTICLE_BOOK_PAGE = Object.freeze({ width: 1400, height: 2000, left: 136, right: 136, top: 182, bottom: 154 });
 export type ArticleBookRole = "title" | "heading" | "body" | "caption" | "quote" | "list" | "table" | "pre";
 export type ArticleBookRun = Readonly<{ text: string; bold?: boolean; italic?: boolean; href?: string; underline?: boolean; displayText?: string }>;
@@ -322,16 +322,11 @@ export function paginateArticleBook(input: ArticleBookInput, content: readonly A
   const source: ArticleBookBlock[] = [{kind: "text", id: "article-title", role: "title", runs: [{text: input.title}] }];
   if (input.coverUrl) source.push({kind: "image", id: "article-cover", src: input.coverUrl, alt: input.title});
   source.push(...content);
-  for (let blockIndex = 0; blockIndex < source.length; blockIndex++) {
-    const block = source[blockIndex];
+  // Measure once so page breaks consider editorial units, not only the next block.
+  const prepared = source.map(block => {
     if (block.kind === "image") {
       const ratio = block.width && block.height ? block.width / block.height : 1.4;
-      const height = Math.min(1050, Math.max(300, pageWidth / ratio));
-      const captionReserve = source[blockIndex + 1]?.kind === "text" && (source[blockIndex + 1] as ArticleBookTextBlock).role === "caption" ? 100 * fontScale : 0;
-      if (commands.length && y + height + captionReserve > bottom) nextPage();
-      commands.push({ kind: "image", block, x: ARTICLE_BOOK_PAGE.left, y, width: pageWidth, height });
-      y += height + 30;
-      continue;
+      return {kind: "image" as const, height: Math.min(1050, Math.max(300, pageWidth / ratio)), before: 0, after: 30};
     }
     const style = articleBookTextStyle(block.role, fontScale);
     const lineHeight = style.size * style.leading;
@@ -341,11 +336,75 @@ export function paginateArticleBook(input: ArticleBookInput, content: readonly A
     const indent = prefix ? Math.min(pageWidth * .6, (Math.min(block.depth || 1, 5) - 1) * 30 * fontScale + prefixWidth + 20 * fontScale) : block.role === "quote" ? 32 * fontScale : 0;
     const availableWidth = pageWidth - indent;
     const lines = wrapRuns(block.runs, availableWidth, style, measure, block.role, input.locale);
+    return {kind: "text" as const, style, lineHeight, prefix, prefixSize, indent, availableWidth, lines,
+      height: lines.length * lineHeight, before: block.role === "heading" ? 38 : 0, after: block.role === "heading" || block.role === "title" ? 26 : 28};
+  });
+  const capacity = bottom - ARTICLE_BOOK_PAGE.top;
+  const isHeading = (index: number) => source[index]?.kind === "text" && ["heading", "title"].includes((source[index] as ArticleBookTextBlock).role);
+  const rangeHeight = (start: number, end: number, hasPrevious = false) => {
+    let height = 0;
+    for (let index = start; index <= end; index++) {
+      const item = prepared[index];
+      height += (index > start || hasPrevious ? item.before : 0) + item.height + (index < end ? item.after : 0);
+    }
+    return height;
+  };
+  const keepEnds = new Map<number, number>();
+  const imageEnds = new Map<number, number>();
+  const imageHeadings = new Map<string, string | undefined>();
+  let headingId: string | undefined;
+  for (let index = 0; index < source.length; index++) {
+    if (isHeading(index)) headingId = source[index].id;
+    if (source[index].kind !== "image") continue;
+    imageHeadings.set(source[index].id, headingId);
+    let end = index;
+    while (source[end + 1]?.kind === "text" && (source[end + 1] as ArticleBookTextBlock).role === "caption") end++;
+    imageEnds.set(index, end);
+    // An illustration follows its preceding explanation. Move the whole short
+    // section, or the largest fitting tail of a long section, onto the next page.
+    let start = index;
+    if (rangeHeight(start, end) > capacity) continue;
+    while (start > 0 && source[start - 1].kind === "text" && rangeHeight(start - 1, end) <= capacity) {
+      start--;
+      if (isHeading(start)) break;
+    }
+    keepEnds.set(start, Math.max(end, keepEnds.get(start) ?? end));
+  }
+  for (let blockIndex = 0; blockIndex < source.length; blockIndex++) {
+    const block = source[blockIndex];
+    const item = prepared[blockIndex];
+    // A continuation illustration must not look like the next section's opener.
+    if (isHeading(blockIndex) && commands.some(command => command.kind === "image" && command.block.id !== "article-cover" &&
+      !commands.some(candidate => candidate.kind === "text" && candidate.block.id === imageHeadings.get(command.block.id)))) nextPage();
+    const keepEnd = keepEnds.get(blockIndex);
+    if (keepEnd !== undefined && commands.length && y + rangeHeight(blockIndex, keepEnd, true) > bottom) nextPage();
+    const following = prepared[blockIndex + 1];
+    if (isHeading(blockIndex) && following && commands.length) {
+      const opening = following.kind === "text" ? following.lineHeight * Math.min(2, following.lines.length) : following.height;
+      const headingWithOpening = item.height + item.after + following.before + opening;
+      if (headingWithOpening <= capacity && y + item.before + headingWithOpening > bottom) nextPage();
+    }
+    if (block.kind === "image") {
+      const height = item.height;
+      const caption = prepared[blockIndex + 1];
+      const captionReserve = source[blockIndex + 1]?.kind === "text" && (source[blockIndex + 1] as ArticleBookTextBlock).role === "caption" && caption?.kind === "text"
+        ? Math.min(capacity - height, item.after + caption.lineHeight * Math.min(2, caption.lines.length)) : 0;
+      if (commands.length && y + height + captionReserve > bottom) nextPage();
+      commands.push({ kind: "image", block, x: ARTICLE_BOOK_PAGE.left, y, width: pageWidth, height });
+      y += height + 30;
+      continue;
+    }
+    if (item.kind !== "text") continue;
+    const {style, lineHeight, prefix, prefixSize, indent, availableWidth, lines} = item;
     if (!lines.length) continue;
     const before = block.role === "heading" ? 38 : 0;
     if (commands.length && y + before + lineHeight * Math.min(lines.length, block.role === "heading" || block.role === "title" ? 3 : 2) > bottom) nextPage();
     y += commands.length ? before : 0;
+    const imageEnd = imageEnds.get(blockIndex + 1);
+    const imageReserve = imageEnd === undefined ? 0 : item.after + rangeHeight(blockIndex + 1, imageEnd);
+    const tailLines = imageReserve ? Math.min(2, lines.length, Math.max(0, Math.floor((capacity - imageReserve) / lineHeight))) : 0;
     for (let index = 0; index < lines.length; index++) {
+      if (tailLines && lines.length - index === tailLines && commands.length && y + tailLines * lineHeight + imageReserve > bottom) nextPage();
       if (y + lineHeight > bottom) nextPage();
       const line = lines[index];
       const finalLine = index === lines.length - 1;

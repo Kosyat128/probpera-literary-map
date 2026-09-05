@@ -5944,14 +5944,6 @@
     "multiline": false
   },
   {
-    "key": "interface.Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.",
-    "group": "Весь интерфейс",
-    "label": "Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.",
-    "defaultRu": "Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.",
-    "defaultEn": "Open ratings and first-party comments are ready and will become active when the project database is connected.",
-    "multiline": true
-  },
-  {
     "key": "interface.Открытых жалоб на форум нет.",
     "group": "Весь интерфейс",
     "label": "Открытых жалоб на форум нет.",
@@ -6229,6 +6221,14 @@
     "label": "Оценки",
     "defaultRu": "Оценки",
     "defaultEn": "Ratings",
+    "multiline": false
+  },
+  {
+    "key": "interface.Оценки и комментарии пока недоступны.",
+    "group": "Весь интерфейс",
+    "label": "Оценки и комментарии пока недоступны.",
+    "defaultRu": "Оценки и комментарии пока недоступны.",
+    "defaultEn": "Ratings and comments are currently unavailable.",
     "multiline": false
   },
   {

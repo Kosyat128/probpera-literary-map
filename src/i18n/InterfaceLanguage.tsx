@@ -473,8 +473,8 @@ const englishInterfaceText: Record<string, string> = {
   "Не удалось отправить жалобу.": "The report could not be sent.",
   "Спасибо. Комментарий передан редакции на проверку.":
     "Thank you. The comment has been sent to the editors for review.",
-  "Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.":
-    "Open ratings and first-party comments are ready and will become active when the project database is connected.",
+  "Оценки и комментарии пока недоступны.":
+    "Ratings and comments are currently unavailable.",
   "Обсуждение публикации": "Publication discussion",
   "Обсуждение книги": "Book discussion",
   "Мнение читателей": "Readers’ views",

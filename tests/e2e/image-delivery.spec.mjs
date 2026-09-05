@@ -9,7 +9,7 @@ const provenance = JSON.parse(readFileSync(new URL("../../reports/public-image-d
 const sourceRecords = new Map(provenance.images.map(image => [image.sourceUrl, image]));
 const documents = published.articles.map(article => JSON.parse(readFileSync(new URL(article.documentPath, publicRoot), "utf8")));
 const mostIllustrated = [...documents].sort((a, b) => (b.contentHtml.match(/<img\b/giu) || []).length - (a.contentHtml.match(/<img\b/giu) || []).length)[0];
-const articleIds = [...new Set(["cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8", "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02", mostIllustrated.id])];
+const articleIds = [...new Set(["cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8", "cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02", "cms-0743e614-19bc-4c3d-8eba-7d43fac78d58", mostIllustrated.id])];
 
 async function previewPrefix(request, baseURL) {
   for (const prefix of ["", "/probpera-literary-map"]) {

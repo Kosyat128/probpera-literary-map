@@ -42,6 +42,7 @@ import CompleteShelfRenderer, {
 
 export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
   inspectionOnly?: boolean;
+  inspectionViewScale?: number;
   textureRenderer?: BookShelfPageTextureRenderer;
   onInspectionReady?: () => void;
   items: readonly BookShelfPresentationItem[];
@@ -80,6 +81,7 @@ export const BOOK_SHELF_IDLE_CAMERA_TARGET: BookInspectionCameraTarget =
 
 function InspectionCameraController({
   inspectionOnly,
+  inspectionViewScale = 1,
   detailOpen,
   itemIndex,
   itemCount,
@@ -89,6 +91,7 @@ function InspectionCameraController({
   liveBookLimit,
 }: {
   inspectionOnly?: boolean;
+  inspectionViewScale?: number;
   detailOpen: boolean;
   itemIndex: number;
   itemCount: number;
@@ -106,7 +109,7 @@ function InspectionCameraController({
     const rowWidth = completeShelfRowWidth(Math.min(itemCount, completeShelfVisibleBookLimit(liveBookLimit)));
     // A narrow article reader follows its current sheet; the real cover and
     // turning leaf remain in the scene. Shelf inspection keeps its full rig.
-    const focusArticlePage = inspectionOnly && size.width < 680;
+    const focusArticlePage = inspectionOnly && size.width / Math.max(1, inspectionViewScale) < 680;
     const framingPhase = inspectionOnly ? (focusArticlePage ? "INSPECTION_CLOSED" : "BOOK_OPEN") : phase;
     return resolveBookInspectionCameraFraming({
       viewportWidth: size.width, viewportHeight: size.height,
@@ -117,10 +120,10 @@ function InspectionCameraController({
         : { min: [-rowWidth / 2 - 0.12, vertical.minY - vertical.opticalCenterY, -0.08],
             max: [rowWidth / 2 + 0.12, vertical.maxY - vertical.opticalCenterY, 0.58] },
       fov: detailOpen ? 35 : 38,
-      marginPx: inspectionOnly ? 12 : detailOpen ? 16 : 20,
+      marginPx: inspectionOnly ? 12 * inspectionViewScale : detailOpen ? 16 : 20,
       orbitAllowance: inspectionOnly ? 1 : detailOpen ? 1.24 : 1,
     });
-  }, [inspectionOnly, detailOpen, itemCount, itemIndex, liveBookLimit, phase, size.height, size.width, viewportInsets]);
+  }, [inspectionOnly, inspectionViewScale, detailOpen, itemCount, itemIndex, liveBookLimit, phase, size.height, size.width, viewportInsets]);
   const cameraInitializedRef = useRef(false);
   const targetRef = useRef<BookInspectionCameraTarget>(
     BOOK_SHELF_IDLE_CAMERA_TARGET
@@ -393,6 +396,7 @@ function RakingAreaLight({
 
 export default function BookShelfSceneCanvas({
   inspectionOnly,
+  inspectionViewScale,
   textureRenderer,
   onInspectionReady,
   items,
@@ -497,6 +501,7 @@ export default function BookShelfSceneCanvas({
       />
       <InspectionCameraController
         inspectionOnly={inspectionOnly}
+        inspectionViewScale={inspectionViewScale}
         detailOpen={Boolean(selectedBookKey && inspectionActive)}
         itemIndex={Math.max(
           0,
