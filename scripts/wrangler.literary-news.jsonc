@@ -1,0 +1,13 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "probpera-literary-news",
+  "main": "./workers/literary-news-worker.mjs",
+  "compatibility_date": "2026-08-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "https://probpera.ru/api/literary-news/*", "zone_name": "probpera.ru" }],
+  "kv_namespaces": [{ "binding": "NEWS_STATE", "id": "f3ae59fd55ee4c0cac8ff1613db81680" }],
+  "vars": { "NEWS_RELEASE_SHA": "local" },
+  "observability": { "enabled": true, "head_sampling_rate": 1 }
+}

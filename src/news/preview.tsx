@@ -23,7 +23,7 @@ function Preview() {
       <a className="news-preview-placement" href={`${import.meta.env.BASE_URL}?literary-news=1#book-day`}>
         {language === "ru" ? "Посмотреть новости рядом с книгой месяца →" : "See the news beside the book of the month →"}
       </a>
-      <LiteraryNewsPanel />
+      <LiteraryNewsPanel endpoint="/__literary-news/feed" />
       <p className="news-preview-note">{language === "ru" ? "Локальный прототип. В подборке - проверенные примеры с исходными датами. Новые материалы источников ожидают проверки фактов и обеих языковых версий." : "Local prototype. The selection contains reviewed examples with their original dates. New source material awaits fact checking and review in both languages."}</p>
     </main>
   </div>;

@@ -22,6 +22,7 @@ const webglRegressionSpecs = [
   "**/globe-runtime.spec.mjs",
   "**/globe-visual-regression.spec.mjs",
   "**/literary-planet-immersion.spec.mjs",
+  "**/literary-news-production.spec.mjs",
   "**/navigation-layout.spec.mjs",
   "**/public-doc-refinements.spec.mjs",
   "**/public-smoke.spec.mjs",

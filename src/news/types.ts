@@ -36,7 +36,7 @@ export type NewsSource = {
 };
 
 export type NewsFeed = {
-  mode: "local-prototype";
+  mode: "local-prototype" | "reviewed";
   generatedAt: string;
   lastCheckedAt: string | null;
   refreshIntervalSeconds: number;

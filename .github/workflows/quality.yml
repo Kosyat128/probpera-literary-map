@@ -56,6 +56,9 @@ jobs:
       - name: Build production public site and admin
         run: npm run admin:build && npm run build:domain
 
+      - name: Verify the public literary news Worker bundle
+        run: node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news.jsonc --outdir .tmp/literary-news-worker
+
       - name: Audit production SEO output
         run: npm run seo:audit
 
