@@ -1,0 +1,15 @@
+Capture kind: persisted tool text output, not original stdout file bytes.
+Command: node node_modules/vitest/vitest.mjs run src/host/HostPlatformServices.test.ts --configLoader runner --maxWorkers 1 --no-file-parallelism
+Tool chunk: 53a0a1
+Observed exit code: 0
+
+
+ RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work
+
+
+ Test Files  1 passed (1)
+      Tests  80 passed (80)
+   Start at  00:02:44
+   Duration  382ms (transform 56ms, setup 0ms, import 99ms, tests 38ms, environment 0ms)
+
+

@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-09-05T21:25:05.210Z",
+  "status": "CANONICAL_BRAND_RESOURCES_APPLIED_LOCAL_PREPARATION",
+  "canonicalSource": {
+    "path": "public/brand/probpera-logo.png",
+    "sha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27",
+    "width": 500,
+    "height": 500,
+    "background": "#ff8000"
+  },
+  "tools": {
+    "sharp": "0.35.3",
+    "vips": "8.18.3"
+  },
+  "adaptiveGeometry": {
+    "layerDp": 108,
+    "fullSourceSquareDp": 87,
+    "sourceVisibleContentMaxRadiusPx": 182.10024711680103,
+    "outputVisibleContentMaxRadiusDp": 31.685442998323378,
+    "conservativeSafeCircleRadiusDp": 33,
+    "previewCentralViewportDp": 72,
+    "calculation": "Visible source pixels differ from the canonical background by total RGB distance >24; antialiased near-background pixels below that threshold are not essential artwork."
+  },
+  "files": [
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-hdpi/splash.png",
+      "previousSha256": "08cc34ad7713fe7ed58bceaa37b2387b670c53cd60264b4bd6442db3098e75dc",
+      "sha256": "41cbbc568bb360a84681d1ef4ba470c09993c18547f4b7f09f42de8d039059d5",
+      "bytes": 13149,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 230,
+      "width": 800,
+      "height": 480
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-mdpi/splash.png",
+      "previousSha256": "5cf98b4451bd99b20df26f9e608a46946118be6b0ae90762f9ca1786a30c76ff",
+      "sha256": "4feccc0dd7ee03ed57d1ab4d3bc97b23e05d93e9ec55cde44135bd7fa2c7d06c",
+      "bytes": 7473,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 154,
+      "width": 480,
+      "height": 320
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-xhdpi/splash.png",
+      "previousSha256": "22f87e1e3bc89aa01a7dbc39c9a4db058cd0bf4ad3fe9f55712bf69eb997f4bf",
+      "sha256": "51555e88ad31c4ac9ad8a1ca6e971d948332a907f107e0957bc69828d010325a",
+      "bytes": 22450,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 346,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-xxhdpi/splash.png",
+      "previousSha256": "42aa26392546fcdee1b8d3ac6d4b41bfcceb41dc6a4f3a3c30c24a8a8f4db862",
+      "sha256": "ff1130bd95a9d3cae479c6e9d0ef294a4803f2cc9d0d757861b1a575a5fe5e40",
+      "bytes": 34393,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 461,
+      "width": 1600,
+      "height": 960
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-xxxhdpi/splash.png",
+      "previousSha256": "60393ce8636fd263e4e1fea3fd4ab2de948c6295e898fda9b50ac4e5283be809",
+      "sha256": "54598cf67943455e55cf3d9dec0b1a6dcf455b99efe6227b9d868f58418dd465",
+      "bytes": 50758,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 614,
+      "width": 1920,
+      "height": 1280
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-hdpi/splash.png",
+      "previousSha256": "c5015f4ba3628392b538386c5e210f0b94f352a3160adab934fd0311972137ca",
+      "sha256": "78a0de5069b2b0c21f71406f508dcf6329873cebfcfd2becd20d53e673d27b46",
+      "bytes": 13179,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 230,
+      "width": 480,
+      "height": 800
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-mdpi/splash.png",
+      "previousSha256": "07fa579e1c83e04ba7f9cbcbfcf41b68e15fe3638f2c44a04e58b809103e6b69",
+      "sha256": "6aa888101a497078614f668f09c7b705e62f8b2d5df0c8263e5593df5f9dd348",
+      "bytes": 7519,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 154,
+      "width": 320,
+      "height": 480
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-xhdpi/splash.png",
+      "previousSha256": "b73049cb37fe76d6c11b87a796766bf6af0c85483b31eb6a921657b0d764a4b9",
+      "sha256": "03e5339f0ef1edcc013ddcc2360dd97e4926485aeee3e6593bfcec729f7a0fde",
+      "bytes": 22779,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 346,
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-xxhdpi/splash.png",
+      "previousSha256": "0c7f1212f25b7b90e9a6e1d320013e4ff3d3e03e634cbb07b7b7981cac51627f",
+      "sha256": "7bc2485cff17cf3b293fede8f343ee6e5a9b1c77a0ddb1b712dd7a16bdc5d0a9",
+      "bytes": 34359,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 461,
+      "width": 960,
+      "height": 1600
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-xxxhdpi/splash.png",
+      "previousSha256": "3db071a03b2f8ffe0dfd4170fc59842d53cd15bba5e88af59401d58efabf7827",
+      "sha256": "1f330daeb98706e0939185b972e370a90a5afec07ebd75498dbe73701d47a270",
+      "bytes": 50328,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 614,
+      "width": 1280,
+      "height": 1920
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "previousSha256": "a8514094f754b099d3e55ce1d6e0b2de79db418b2eeacb0fc2a6bb0bfadef221",
+      "sha256": "8cd775ca03b52c7f6ac2a97689c8da4ed07e8092270f039fa3febce7a98864a3",
+      "bytes": 185,
+      "operation": "Replace template Android robot vector with a reference to canonical foreground",
+      "canonicalImageSizePx": null,
+      "width": null,
+      "height": null
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "previousSha256": "718ba51adf166bb55c3e9936bb8199a0148457f7f0191aaa2f37a94f3159d6ec",
+      "sha256": "bc02ce505d0fb9aeddb8ee7d051fde3519f56637c1f2b86e6812b0dd8714c9a9",
+      "bytes": 201,
+      "operation": "Replace unreferenced template grid with canonical-color background drawable",
+      "canonicalImageSizePx": null,
+      "width": null,
+      "height": null
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable/splash.png",
+      "previousSha256": "5cf98b4451bd99b20df26f9e608a46946118be6b0ae90762f9ca1786a30c76ff",
+      "sha256": "4feccc0dd7ee03ed57d1ab4d3bc97b23e05d93e9ec55cde44135bd7fa2c7d06c",
+      "bytes": 7473,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 154,
+      "width": 480,
+      "height": 320
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "previousSha256": "72b71c3581ca3b5a23b1c168d69b9d855b3f184fa079902a01f088eb4f0607d5",
+      "sha256": "429a4798e1eb0ace1d02311088dc95e3dc4b098de1910ed405c7632f19a002b6",
+      "bytes": 2201,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 72,
+      "width": 72,
+      "height": 72
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+      "previousSha256": "32baa10d2632a4417454a579f992bd640e0a3cec79321423559b2c9940de58a9",
+      "sha256": "3ee46031b42e469e3932ea71aa64e55f05a290db02b326c39f7ec3c6383b8e41",
+      "bytes": 5540,
+      "operation": "Canonical full square at 87dp within 108dp layer, transparent outer padding; visible non-background content fits central radius 32dp",
+      "canonicalImageSizePx": 131,
+      "width": 162,
+      "height": 162
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+      "previousSha256": "bfcc1b0fa931b14bb241372c76ab4f04374b67d02363c98d9cb12edfdacdf5f3",
+      "sha256": "429a4798e1eb0ace1d02311088dc95e3dc4b098de1910ed405c7632f19a002b6",
+      "bytes": 2201,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 72,
+      "width": 72,
+      "height": 72
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+      "previousSha256": "27ed3603010ebc278f64f8645741ab132ff517abb5308eb9df6c8e42a48956b2",
+      "sha256": "ca35947d9144b858e03cfa72f4ecc50b89cbfd776fc63d819e5f8e799d3d12a1",
+      "bytes": 1341,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 48,
+      "width": 48,
+      "height": 48
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+      "previousSha256": "58e78a618778926b1f6d9472a6468de878de8530970934e94aab5ba4ba08cc00",
+      "sha256": "0cb8c1d2700dd28a5dbd7c7a615f348942f47e3d0bc27696c59fd4aacb1bc51d",
+      "bytes": 3169,
+      "operation": "Canonical full square at 87dp within 108dp layer, transparent outer padding; visible non-background content fits central radius 32dp",
+      "canonicalImageSizePx": 87,
+      "width": 108,
+      "height": 108
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+      "previousSha256": "0166fc333074c373fbd0ce6b5defd71552166165ac778121ca9c9dff6b83f0fc",
+      "sha256": "ca35947d9144b858e03cfa72f4ecc50b89cbfd776fc63d819e5f8e799d3d12a1",
+      "bytes": 1341,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 48,
+      "width": 48,
+      "height": 48
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+      "previousSha256": "d35dbfff175b83c13ef59cf924abfc810f7b6a158595d7417c5498ea8c7c7ed1",
+      "sha256": "4c9d5dc6413d1d4b9c15e32c0c556a7b213fb04f237279714e8b08daf5d29958",
+      "bytes": 3303,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 96,
+      "width": 96,
+      "height": 96
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+      "previousSha256": "6f88083b8166cc559102f7044688de7525287632ebe09ac45d001ac8bf4b3eae",
+      "sha256": "5a1106df21364ff942eecabb8ff8e7c795f922b63cf3227cbd8b89fa6e37541b",
+      "bytes": 7919,
+      "operation": "Canonical full square at 87dp within 108dp layer, transparent outer padding; visible non-background content fits central radius 32dp",
+      "canonicalImageSizePx": 174,
+      "width": 216,
+      "height": 216
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+      "previousSha256": "40911a00922868686854a4804b93fd6e56b503664696de03f450bff690affb6d",
+      "sha256": "4c9d5dc6413d1d4b9c15e32c0c556a7b213fb04f237279714e8b08daf5d29958",
+      "bytes": 3303,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 96,
+      "width": 96,
+      "height": 96
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+      "previousSha256": "ed346eb1e3f0280f15709393705899b3ff55c20b88f4e0308006b3c33cf5fe14",
+      "sha256": "31ba5a377d1412005e75cb94e9ed59f488aa66d107c5a56dff004f8970f6a81b",
+      "bytes": 5578,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 144,
+      "width": 144,
+      "height": 144
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+      "previousSha256": "4a82bc1e9923576275869998925ce0ae021a79aa18b24a0dd87ad6b61ca85053",
+      "sha256": "973be00f28c78f7c985276f715a82863f85a63920eda57e7bfec24caf1487978",
+      "bytes": 13335,
+      "operation": "Canonical full square at 87dp within 108dp layer, transparent outer padding; visible non-background content fits central radius 32dp",
+      "canonicalImageSizePx": 261,
+      "width": 324,
+      "height": 324
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+      "previousSha256": "1ee4cd9ff371dcb2e3938097e434f6fb8731688ed7165e61fc63693ad5b2f455",
+      "sha256": "31ba5a377d1412005e75cb94e9ed59f488aa66d107c5a56dff004f8970f6a81b",
+      "bytes": 5578,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 144,
+      "width": 144,
+      "height": 144
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "previousSha256": "87cb2f2ffe992652bb4fa768c73719a37b5852ab17fbf8e170e888f7a42b0761",
+      "sha256": "682d42a97553720be3cdfcf20c43d57dfd46c28f924efdb48d59f7aa76013824",
+      "bytes": 8030,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 192,
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+      "previousSha256": "bd24fd383253bf8d43f0a81f11c071d76d1d555114376dd647cd9fb38fa0a9da",
+      "sha256": "9d15dc51d13e869de8b44d3a1769c8d6e9e6003b9c2a73bbeac22626b302846c",
+      "bytes": 20043,
+      "operation": "Canonical full square at 87dp within 108dp layer, transparent outer padding; visible non-background content fits central radius 32dp",
+      "canonicalImageSizePx": 348,
+      "width": 432,
+      "height": 432
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+      "previousSha256": "ab93096331e7cd8ec379f73f1e9adcaaa9ee1115c9f4ff10411a811fb9700174",
+      "sha256": "682d42a97553720be3cdfcf20c43d57dfd46c28f924efdb48d59f7aa76013824",
+      "bytes": 8030,
+      "operation": "Full canonical image, proportional legacy launcher resize, source-color flatten; launcher controls external mask",
+      "canonicalImageSizePx": 192,
+      "width": 192,
+      "height": 192
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/ic_launcher_background.xml",
+      "previousSha256": "cd40bafe618ff506f4088778b135cb4faa15f25e0c9b475e22d730c74b7be115",
+      "sha256": "51c58896188ff626f1254e711b1f1caa1247ca67b1c338ca9bb1840ac9617764",
+      "bytes": 121,
+      "operation": "Background color sampled from canonical source pixel 20,20",
+      "canonicalImageSizePx": null,
+      "width": null,
+      "height": null
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+      "previousSha256": "29e4777e319de3ee5a52c3a8004ec19d0568414004257e36d7c94a077d71c93b",
+      "sha256": "0468ec2c05dcf9ff2b071aafed86381127f6e45a230cadeae9810191ad5997e7",
+      "bytes": 101202,
+      "operation": "Full canonical image, proportional 1024 resize, source-color flatten, opaque RGB",
+      "canonicalImageSizePx": 1024,
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png",
+      "previousSha256": "1b5002b74a5500e697298ced06ca2811ac33f2771f236f3c720ff23243890530",
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a",
+      "bytes": 67647,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 601,
+      "width": 2732,
+      "height": 2732
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png",
+      "previousSha256": "1b5002b74a5500e697298ced06ca2811ac33f2771f236f3c720ff23243890530",
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a",
+      "bytes": 67647,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 601,
+      "width": 2732,
+      "height": 2732
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png",
+      "previousSha256": "1b5002b74a5500e697298ced06ca2811ac33f2771f236f3c720ff23243890530",
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a",
+      "bytes": 67647,
+      "operation": "Full canonical image centered proportionally on opaque source-color canvas; existing splash dimensions preserved",
+      "canonicalImageSizePx": 601,
+      "width": 2732,
+      "height": 2732
+    }
+  ],
+  "previewFiles": [
+    ".tmp/native-brand-preparation/android-circle-preview.png",
+    ".tmp/native-brand-preparation/android-squircle-preview.png"
+  ],
+  "sourceCrop": false,
+  "aiGeneration": false,
+  "replacementArtwork": false,
+  "visualReview": {
+    "method": "view_image of actual canonical source, actual prepared iOS1024 and Android splash, circular and rounded-rectangle previews of the central72dp adaptive viewport, and actual iOS splash",
+    "result": "Existing feather and complete Cyrillic brand lettering retained; orange background continuous; no visible cropping or substituted artwork.",
+    "humanApprovalCreated": false,
+    "storeScreenshot": false
+  },
+  "nativeBuildVerified": false,
+  "storeArtworkApproved": false,
+  "releaseReady": false,
+  "appliedAt": "2026-09-05T21:26:42.881Z",
+  "measuredAdaptiveSafeArea": [
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+      "essentialArtworkRadiusDp": 31.933959631993304,
+      "essentialArtworkPixelCount": 1863,
+      "safeRadiusDp": 33
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+      "essentialArtworkRadiusDp": 31.503968004046722,
+      "essentialArtworkPixelCount": 903,
+      "safeRadiusDp": 33
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+      "essentialArtworkRadiusDp": 31.75098423671304,
+      "essentialArtworkPixelCount": 3106,
+      "safeRadiusDp": 33
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+      "essentialArtworkRadiusDp": 31.700858733549232,
+      "essentialArtworkPixelCount": 6530,
+      "safeRadiusDp": 33
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+      "essentialArtworkRadiusDp": 31.77508851285862,
+      "essentialArtworkPixelCount": 11294,
+      "safeRadiusDp": 33
+    }
+  ],
+  "limitations": [
+    "Canonical source is a 500px raster; 1024px iOS output is deterministic upscaling, not newly recovered artwork detail.",
+    "The original Cyrillic brand wordmark is retained in both app locales; it is not translated or replaced.",
+    "Adaptive previews simulate two masks at rest; actual launchers, animation, Android12+ splash timing, iOS light/dark/tinted treatments and device screenshots remain unverified.",
+    "A complete native application build and actual iOS asset-catalog compilation remain separate evidence."
+  ],
+  "officialSources": [
+    {
+      "url": "https://developer.android.com/develop/ui/compose/system/icon_design_adaptive",
+      "accessDate": "2026-09-05",
+      "supports": "108dp layers, central66dp essential artwork area, outer18dp for effects, separate foreground/background. The implementation additionally measures essential artwork inside a radius33dp circle."
+    },
+    {
+      "url": "https://developer.apple.com/documentation/xcode/configuring-your-app-icon",
+      "accessDate": "2026-09-05",
+      "supports": "Existing iOS universal single1024 asset remains configured for Xcode-generated variants. Output is full square opaque RGB; system applies the mask."
+    }
+  ],
+  "generator": {
+    "path": ".tmp/native-tools/prepare-native-brand.mjs",
+    "sha256": "21f9082cc31e888764dbd1f6c8d90af8e2cfc8dfc848b033707aba04ec98aaf6"
+  }
+}

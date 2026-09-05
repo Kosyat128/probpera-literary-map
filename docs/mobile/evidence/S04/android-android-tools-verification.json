@@ -1,0 +1,39 @@
+{
+  "pass": true,
+  "adb": "Android Debug Bridge version 1.0.41\r\nVersion 37.0.1-15733141\r\nInstalled as C:\\Users\\User\\Documents\\ChatGPT\\������ �� �����\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platform-tools\\adb.exe\r\nRunning on Windows 10.0.22631",
+  "aapt2": "Android Asset Packaging Tool (aapt) 2.20-13193326",
+  "apksigner": "0.9",
+  "d8": "D8 8.10.9-dev (build a7ad18a70460b799d0482e497c109a75bf7f91de from go/r8bot (luci-r8-custom-ci-archive-0-mt8s))",
+  "zipalignCreateAndCheckPassed": true,
+  "files": [
+    {
+      "path": "platform-tools\\adb.exe",
+      "sha256": "b4a6b455702684652cccf7b46258b29e653538904359a58fd4931cf3ef286b3f"
+    },
+    {
+      "path": "build-tools\\36.0.0\\aapt2.exe",
+      "sha256": "babf3122e515ddb954c5ac4669e085ce990536c035e3072de30127bddd6e3608"
+    },
+    {
+      "path": "build-tools\\36.0.0\\zipalign.exe",
+      "sha256": "c503c7da88bd4f6cddbcc8d3febd41e1e5022a525147f05f8caf4602353409c0"
+    },
+    {
+      "path": "build-tools\\36.0.0\\lib\\apksigner.jar",
+      "sha256": "3716d9311e55d2b0918a2fd9d54ba9e406c5f6abeea700b287f11259bc163dec"
+    },
+    {
+      "path": "build-tools\\36.0.0\\lib\\d8.jar",
+      "sha256": "4097ff9c46c185c6e7214da7fe9b1befb5adeea5cc9ca349270e0249904f9240"
+    },
+    {
+      "path": "platforms\\android-36\\android.jar",
+      "sha256": "d9eb9da824d9e247a352f570f01e1169e725b2954bca9e283a71786c59b59f9a"
+    }
+  ],
+  "verifiedAt": "2026-09-05T20:57:43.5176321+00:00",
+  "deviceEnumerationRun": false,
+  "adbServerStartedByThisCheck": false,
+  "nativeApplicationBuilt": false,
+  "temporaryEnvironmentOnly": true
+}

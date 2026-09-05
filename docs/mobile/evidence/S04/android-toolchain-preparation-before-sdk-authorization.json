@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S04",
+  "recordType": "workspace-local-android-toolchain-preparation",
+  "sourceCommit": "0afad0906f266dcac138aba697fc7cc97579fc7e",
+  "createdAt": "2026-09-05T20:40:07.586Z",
+  "status": "JAVA_READY_ANDROID_SDK_LICENSE_PENDING",
+  "stageComplete": false,
+  "androidBuildReady": false,
+  "releaseReady": false,
+  "scope": {
+    "toolsRoot": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools",
+    "repository": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+    "globalInstall": false,
+    "permanentEnvironmentChanges": false,
+    "registryChanges": false,
+    "npmOrProductChanges": false,
+    "sdkLicenseAccepted": false,
+    "productionActions": [],
+    "iosBuildClaimed": false
+  },
+  "disk": {
+    "freeBytesBeforeDownload": 15703764992,
+    "freeBytesAfterJavaExtraction": 14916997120,
+    "extractionReserveBytes": 2147483648,
+    "measuredVolume": "C:",
+    "note": "No emulator/system image downloaded. Recheck free space before each SDK/build/cache acquisition."
+  },
+  "java": {
+    "vendor": "Eclipse Adoptium / Temurin",
+    "architecture": "x64",
+    "version": "21.0.12.1+1-LTS",
+    "packageType": "portable ZIP JDK",
+    "packageBytes": 205073461,
+    "expectedBytes": 205073461,
+    "expectedSha256": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e",
+    "measuredSha256": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e",
+    "checksumMatched": true,
+    "officialSources": [
+      "https://api.adoptium.net/v3/assets/latest/21/hotspot?architecture=x64&image_type=jdk&os=windows&vendor=eclipse",
+      "https://github.com/adoptium/temurin21-binaries/releases/expanded_assets/jdk-21.0.12.1%2B1"
+    ],
+    "downloadUrl": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip",
+    "checksumUrl": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip.sha256.txt",
+    "publishedMetadataSha256": "f8fe05b00bf7005b37eadd6a879d35617b7e142aad7e216811f498f6c9d56017",
+    "publishedChecksumFileSha256": "dc395bbf1dce8ef947dcecd26f13cb5b74a949047ef0c13c2bed0485301a9c80",
+    "publisherChecksumIndependentlyFetched": true,
+    "signatureVerificationClaimed": false,
+    "extraction": {
+      "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip",
+      "sha256": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e",
+      "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java",
+      "entries": 577,
+      "files": 490,
+      "uncompressedBytes": 343823876,
+      "traversalAndLinkInspection": "passed",
+      "destinationWasAbsent": true,
+      "inspectedAt": "2026-09-05T20:35:59.4896735+00:00",
+      "extractedAt": "2026-09-05T20:36:00.7746248+00:00",
+      "freeBytesAfter": 14916997120
+    },
+    "verification": {
+      "javaHome": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1",
+      "javaVersion": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\r\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\r\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+      "javacVersion": "javac 21.0.12.1",
+      "unicodeCompileRunSmoke": "JAVA21_UTF8_WORKSPACE_SMOKE_PASS",
+      "executionScope": "escalated-scoped-local",
+      "smokeOutput": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java-smoke-verified-escalated",
+      "verifiedAt": "2026-09-05T20:38:40.2167115+00:00",
+      "files": [
+        {
+          "relativePath": "bin\\java.exe",
+          "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55"
+        },
+        {
+          "relativePath": "bin\\javac.exe",
+          "sha256": "00f7c6f9ec89ebba4bb96cf8760403cccf1268df2eae8685900ba38e58a7aff9"
+        },
+        {
+          "relativePath": "release",
+          "sha256": "07117c72ce033949c14878e07fbf2fe23f59a1f8c90a6d1351b5c89099847ce7"
+        }
+      ],
+      "systemEnvironmentChanged": false,
+      "globalInstallPerformed": false
+    }
+  },
+  "android": {
+    "downloaded": false,
+    "extracted": false,
+    "sdkmanagerExecuted": false,
+    "sdkmanagerVersion": null,
+    "sdkRootPlanned": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk",
+    "commandLineTools": {
+      "packageName": "commandlinetools-win-15859902_latest.zip",
+      "buildId": "15859902",
+      "expectedSha256": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a",
+      "measuredSha256": null,
+      "officialListing": "https://developer.android.com/studio",
+      "officialListingLines": "162-169",
+      "displayedSize": "155.7 MB",
+      "internalPackageRevision": null
+    },
+    "licenseGate": {
+      "status": "NOT_ACCEPTED",
+      "source": "https://developer.android.com/studio",
+      "exactSection": "Download Android Command Line Tools for Windows, lines921-994; SDK Agreement sections2.1-2.4",
+      "agreementDateDisplayed": "2026-04-28",
+      "quote": "Before downloading, you must agree to the following terms and conditions.",
+      "reason": "The official download page requires agreement before download; SDK use also constitutes acceptance. Parent explicitly disallows automatic legal acceptance. No download click, acceptance flag, licenses hash file or sdkmanager --licenses execution was performed.",
+      "ownerActionRequired": "Authorized owner decision on the actual Android SDK agreement, routed through root; no claim of previous acceptance is inferred from local-development authorization."
+    },
+    "initialInstallPlan": [
+      {
+        "step": 1,
+        "action": "After actual license authorization, resolve the Windows link on the official listing, download the exact15859902 ZIP into this tools root and require the published SHA256 before extraction.",
+        "executed": false
+      },
+      {
+        "step": 2,
+        "action": "Inspect every ZIP path/link/size and extract to a fresh workspace subdirectory. Place command-line tool contents under android-sdk/cmdline-tools/15859902; read source.properties to record the actual internal revision instead of guessing from the build ID.",
+        "executed": false
+      },
+      {
+        "step": 3,
+        "action": "Use process-scoped JAVA_HOME with verified portable JDK; SDK --sdk_root must be explicit; ANDROID_USER_HOME and GRADLE_USER_HOME remain inside native-tools. Run --version and --list --channel=0, record actual package versions/checksums. Do not pipe yes or fabricate SDK license hashes.",
+        "executed": false
+      },
+      {
+        "step": 4,
+        "packages": [
+          "platform-tools",
+          "platforms;android-36",
+          "build-tools;36.0.0"
+        ],
+        "action": "Resolve the exact stable platform-tools/platform package revision and confirm compatible36.x build tools from the SDK repository. These are requested package IDs, not an installed/latest-revision assertion; record checksums/revisions before installation.",
+        "executed": false
+      },
+      {
+        "step": 5,
+        "action": "Use project-owned Gradle8.14.3 wrapper once root creates it; verify distributionSha256Sum and Java21. No system Gradle, emulator, NDK, CMake, system image or native project was installed/generated by this preparation.",
+        "executed": false
+      }
+    ],
+    "newCli": {
+      "officialSource": "https://developer.android.com/tools/agents/android-cli",
+      "sdkmanagerDeprecationSource": "https://developer.android.com/tools/sdkmanager",
+      "status": "not-installed",
+      "facts": [
+        "Current documentation marks sdkmanager deprecated in favor of android sdk.",
+        "Current Android CLI docs state Windows emulator command is disabled and downloading via Windows PowerShell is unsupported.",
+        "The new CLI defaults to an AGP9 project template and collects usage data; this preparation did not install it, initialize skills or replace the required Capacitor8/AGP8.13 project."
+      ],
+      "decision": "Pinned command-line tools remain a documented available package for the scoped Windows/Capacitor preparation, subject to actual SDK agreement and a root compatibility decision. Do not label sdkmanager the new preferred interface."
+    },
+    "sources": [
+      "https://developer.android.com/tools/sdkmanager",
+      "https://developer.android.com/about/versions/16/setup-sdk",
+      "https://developer.android.com/tools/releases/build-tools"
+    ]
+  },
+  "execution": {
+    "network": [
+      "Sandbox PowerShell HTTPS failed authentication; Windows curl Schannel returned SEC_E_NO_CREDENTIALS.",
+      "Approved escalation performed the same official HTTPS reads/downloads successfully; TLS validation remained enabled.",
+      "First ZIP transfer reached131221312 bytes and timed out at300s. The same official URL was resumed with curl --continue-at and the complete publisher SHA256 was required before extraction."
+    ],
+    "commands": [
+      "curl.exe --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --connect-timeout 15 --max-time 300 --output <workspace ZIP> <official Temurin ZIP URL>",
+      "curl.exe --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --continue-at - --connect-timeout 15 --max-time 300 --output <same ZIP> <same official URL>",
+      "& ./.tmp/native-tools/inspect-extract-jdk.ps1",
+      "& ./.tmp/native-tools/verify-java.ps1 -RunName 'verified-escalated' -ExecutionScope 'escalated-scoped-local'"
+    ],
+    "javaCommands": [
+      "<portableJdk>/bin/java.exe -version",
+      "<portableJdk>/bin/javac.exe -version",
+      "<portableJdk>/bin/javac.exe -encoding UTF-8 -d <workspace smoke output> <workspace NativeToolchainSmoke.java>",
+      "<portableJdk>/bin/java.exe -cp <workspace smoke output> NativeToolchainSmoke <workspace smoke output>"
+    ]
+  },
+  "localEvidenceFiles": [
+    {
+      "path": ".tmp/native-tools/inspect-extract-jdk.ps1",
+      "sha256": "0b3f6ca78cf424b26500beaa525c5b948986aa019a98e5b0c6279a69ed4a3043",
+      "bytes": 3916
+    },
+    {
+      "path": ".tmp/native-tools/verify-java.ps1",
+      "sha256": "59d4e5a6f8c0c0f7d4885431c8337e7c57151a77ad7f757f002d7051323dbfcf",
+      "bytes": 1896
+    },
+    {
+      "path": ".tmp/native-tools/NativeToolchainSmoke.java",
+      "sha256": "93c9f86d8e264c25ce51856da714392330913539fd37ec7a8516770b00e9811c",
+      "bytes": 862
+    },
+    {
+      "path": ".tmp/native-tools/jdk-extraction.json",
+      "sha256": "561aabb6474558b6a5d9853b2570707ce8583a61ef92066be1a7b9baffec2343",
+      "bytes": 708
+    },
+    {
+      "path": ".tmp/native-tools/java-verification.json",
+      "sha256": "a240534e02dc7b4726925356ea9d63fdb024a39b407e2235942e8880a80191f1",
+      "bytes": 1265
+    },
+    {
+      "path": ".tmp/native-tools/java-initial-sandbox-failure.json",
+      "sha256": "1aa381aa8e277f2224825bad05eac2e302c492a19d1b8a04cf205c35aa78ba84",
+      "bytes": 969
+    },
+    {
+      "path": ".tmp/native-tools/downloads/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip",
+      "sha256": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e",
+      "bytes": 205073461
+    },
+    {
+      "path": ".tmp/native-tools/downloads/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip.sha256.txt",
+      "sha256": "dc395bbf1dce8ef947dcecd26f13cb5b74a949047ef0c13c2bed0485301a9c80",
+      "bytes": 117
+    },
+    {
+      "path": ".tmp/native-tools/downloads/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip.json",
+      "sha256": "f8fe05b00bf7005b37eadd6a879d35617b7e142aad7e216811f498f6c9d56017",
+      "bytes": 31216
+    }
+  ],
+  "initialSandboxFailure": {
+    "kind": "preserved-initial-toolchain-smoke-failure",
+    "sourceCommit": "0afad0906f266dcac138aba697fc7cc97579fc7e",
+    "executionScope": "sandbox",
+    "javaVersionPassed": true,
+    "javacVersionPassed": true,
+    "compilationPassed": true,
+    "runPassed": false,
+    "runExitCode": 1,
+    "exception": "java.nio.file.AccessDeniedException",
+    "operation": "Path.toRealPath via WindowsLinkSupport.getRealPath",
+    "target": ".tmp/native-tools/java-smoke under the canonical Cyrillic workspace",
+    "productChangedToHideFailure": false,
+    "sameClassAndArgumentsOutsideSandbox": {
+      "executionScope": "escalated-scoped-local",
+      "exitCode": 0,
+      "stdout": "JAVA21_UTF8_WORKSPACE_SMOKE_PASS",
+      "utf8FileReadback": "Java 21: Русский / English"
+    },
+    "conclusion": "Observed sandbox execution restriction; no system ACL/TLS change. Complete version/compile/run verification is repeated separately in a fresh owned output directory with approved scoped escalation."
+  },
+  "limitations": [
+    "Java is genuinely extracted/version-checked/compile-tested; Android SDK and sdkmanager are not downloaded or version-checked.",
+    "Java Path.toRealPath failed inside sandbox; identical class/arguments passed with scoped escalation. A later Gradle invocation may need the same execution allowance; this does not authorize global ACL/environment changes.",
+    "The SDK blocker comes from the actual official agreement and explicit parent scope, not an invented owner programming task.",
+    "JDK SHA256 validation proves equality with the publisher artifact; no GPG or independent third-party attestation is claimed.",
+    "No Android/native artifact, emulator/device run or iOS/Xcode build has been performed."
+  ]
+}

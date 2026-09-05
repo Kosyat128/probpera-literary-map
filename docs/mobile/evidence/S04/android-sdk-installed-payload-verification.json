@@ -1,0 +1,37 @@
+{
+  "verifiedAt": "2026-09-05T20:56:30.5987750+00:00",
+  "pass": true,
+  "packages": [
+    {
+      "packageId": "platforms;android-36",
+      "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36",
+      "payloadFilesCompared": 11342,
+      "payloadBytesCompared": 106177284,
+      "allPayloadSha256Matched": true,
+      "sourceProperties": "Pkg.Desc=Android SDK Platform 16\nPkg.UserSrc=false\nPlatform.Version=16\nPlatform.CodeName=\nPkg.Revision=2\nAndroidVersion.ApiLevel=36\nAndroidVersion.ExtensionLevel=17\nAndroidVersion.IsBaseSdk=true\nLayoutlib.Api=15\nLayoutlib.Revision=1\nPlatform.MinToolsRev=22\n",
+      "generatedPackageXmlExists": true
+    },
+    {
+      "packageId": "build-tools;36.0.0",
+      "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0",
+      "payloadFilesCompared": 169,
+      "payloadBytesCompared": 143241305,
+      "allPayloadSha256Matched": true,
+      "sourceProperties": "Pkg.UserSrc=false\nPkg.Revision=36.0.0\n#Pkg.Revision=36.0.0 rc5",
+      "generatedPackageXmlExists": true
+    },
+    {
+      "packageId": "platform-tools",
+      "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platform-tools",
+      "payloadFilesCompared": 14,
+      "payloadBytesCompared": 17529398,
+      "allPayloadSha256Matched": true,
+      "sourceProperties": "Pkg.UserSrc=false\nPkg.Revision=37.0.1\n",
+      "generatedPackageXmlExists": true
+    }
+  ],
+  "licenseFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\licenses\\android-sdk-license",
+  "licenseFileSha256": "70fd2713ca385fd6b14c1d5577ce8349996699186a3a216e9643a09098c26dca",
+  "licenseFileCreatedBy": "sdkmanager install flow with explicitly authorized y response",
+  "freeBytesAfter": 14008086528
+}

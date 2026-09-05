@@ -1,0 +1,33 @@
+
+ RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work
+
+ ❯ scripts/lib/stage5-content-data-lock.test.mjs (16 tests | 1 failed) 5551ms
+     × attests only the reviewed language-storage guards and preserves the historical runtime 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/lib/stage5-content-data-lock.test.mjs > Stage 5 owner and production-pipeline governance locks > attests only the reviewed language-storage guards and preserves the historical runtime
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ scripts/lib/stage5-content-data-lock.test.mjs:623:10
+    621|       )).toThrow("Missing or duplicate reviewed interface-storage delt…
+    622|       expect(() => projectApprovedInterfaceStorageDelta(source + delta…
+    623|         .toThrow("Missing or duplicate reviewed interface-storage delt…
+       |          ^
+    624|     }
+    625|     expect(projectApprovedInterfaceStorageDelta(source + "\nconst unre…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 128 passed (129)
+   Start at  00:09:46
+   Duration  6.26s (transform 391ms, setup 0ms, import 1.32s, tests 6.26s, environment 1ms)
+

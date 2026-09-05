@@ -1,0 +1,6 @@
+√ Adding native android project in apps/mobile/android in 149.26ms
+√ add in 150.05ms
+[warn] sync could not run--missing dist-native directory.
+[success] android platform added!
+Follow the Developer Workflow guide to get building:
+https://capacitorjs.com/docs/basics/workflow

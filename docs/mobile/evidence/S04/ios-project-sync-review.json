@@ -1,0 +1,1962 @@
+{
+  "schemaVersion": 1,
+  "stage": "S04",
+  "observedAt": "2026-09-05T21:43:23.626Z",
+  "status": "IOS_SYNC_BYTES_AND_PROJECT_STRUCTURE_VERIFIED_NO_NATIVE_BUILD",
+  "sourceCommit": "e2530cc6b5eb112bf70c1bf5b8aa167fde259db1",
+  "scope": "Read-only independent review after root-run Capacitor iOS sync; only new review/history evidence written.",
+  "artifact": {
+    "path": "dist-native/artifact.json",
+    "bytes": 255385,
+    "sha256": "906baf9944ea11f2c15dae1891e8a24c08feca29120691581d72f63bb24e0d54",
+    "buildId": "e7921e30d23f94261f264335aab1ace9e3f9e988fb8f3040558ef731668619d4",
+    "platform": "ios",
+    "channel": "dev",
+    "declaredInventoryFiles": 319,
+    "independentSourceBytesVerified": 320
+  },
+  "copiedBundle": {
+    "directory": "apps/mobile/ios/App/App/public",
+    "exactSourceCopyCount": 320,
+    "totalFiles": 322,
+    "copiedFiles": [
+      {
+        "path": ".vite/manifest.json",
+        "bytes": 15268,
+        "sha256": "02cf2c7d88a2e75d51ee713e7b45bb31801222b36cc5b4a91446debeef320ab3"
+      },
+      {
+        "path": "articles/book-mentions.json",
+        "bytes": 462099,
+        "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+      },
+      {
+        "path": "artifact.json",
+        "bytes": 255385,
+        "sha256": "906baf9944ea11f2c15dae1891e8a24c08feca29120691581d72f63bb24e0d54"
+      },
+      {
+        "path": "assets/ArticleLibrarySection-BzyCzae0.js",
+        "bytes": 10849,
+        "sha256": "36fd183204f7a93397fbf1bb44d1a5552ae7caa06aa1e94667b45cb91c01895c"
+      },
+      {
+        "path": "assets/ArticleReader-DXPcLjKb.js",
+        "bytes": 35223,
+        "sha256": "3c72b28dbca0d550a847295ef5b9e637be0e0ff7b17fe77535dc93bfd7512201"
+      },
+      {
+        "path": "assets/BookArchiveSection-DVI8KyOc.css",
+        "bytes": 13707,
+        "sha256": "168a8cc484796dbfd9c2f3b15247b50d6ddba606f3a8e5b059925f85f14afdfb"
+      },
+      {
+        "path": "assets/BookArchiveSection-RJxmmpkf.js",
+        "bytes": 285026,
+        "sha256": "a54fe85cc4725e1a54a2260dd1587414c39f57c5d507e598b29e46a52fd247b7"
+      },
+      {
+        "path": "assets/BookShelfSceneCanvas-BDnUr--7.js",
+        "bytes": 8345,
+        "sha256": "9978dde9671fe5770fd9a2bad3808af4130a5a4a6a23e9f6cf1e32e90437b52e"
+      },
+      {
+        "path": "assets/BookShelfSceneCanvas-CKlKdkmy.js",
+        "bytes": 8345,
+        "sha256": "2f41c37ce9a34786f0555180118625eb7941e24788efa6f0f072e24c72eb5ca3"
+      },
+      {
+        "path": "assets/BrandHeartIcon-CyEDMswn.js",
+        "bytes": 3505,
+        "sha256": "fd75e14ec344c9ca7eee690a8e574e3881aa2279e55469266857242930d73c30"
+      },
+      {
+        "path": "assets/CmsHomepageContent-B4mP9du8.js",
+        "bytes": 8146,
+        "sha256": "c1704796f921555fd4b129cf7962f05014ac7f5ede7281b4012d2c61ac8f8032"
+      },
+      {
+        "path": "assets/CommunityHub-CzDKVIaw.js",
+        "bytes": 34958,
+        "sha256": "2b3878931dad70e720e1629551e6052e4d5aa40697b542a0856769c154e57f30"
+      },
+      {
+        "path": "assets/GlobalSearch-2eY7cx5j.js",
+        "bytes": 8127,
+        "sha256": "b8974de7d3cf76a2e43550a37e7eb12f511cfd0e89ac86c29218ef6c6f62bcfd"
+      },
+      {
+        "path": "assets/LiteraryCalendar-DRHx1rE9.js",
+        "bytes": 8940,
+        "sha256": "d0832fe062fb49707be0c9f80fccf75159590b0c65afe1428cf1844258ed7752"
+      },
+      {
+        "path": "assets/LiteraryGlobe-DIBuAZQ2.js",
+        "bytes": 127203,
+        "sha256": "5191737f4aec64abab60c849a713265c869a26190373178d1611822374f745e7"
+      },
+      {
+        "path": "assets/NobelArchiveStrip-DlnOsF-Q.js",
+        "bytes": 3852,
+        "sha256": "e1c3fcb799222682eced7e1c8c7961373a6c1dc4601c0928549132157356a81b"
+      },
+      {
+        "path": "assets/SectionsDirectory-rlGacCjJ.js",
+        "bytes": 5003,
+        "sha256": "9a6e826c4439147a6c43c7df00eba3af7ca0502e61315f5218f26a51a9eb48e4"
+      },
+      {
+        "path": "assets/WriterPanel-Dr9BHvDM.js",
+        "bytes": 29055,
+        "sha256": "566c474e27c7d78846cc1746560361d1c528e540bd49efae7fa87dcc2203541a"
+      },
+      {
+        "path": "assets/articleSeries-bfsT0q_2.js",
+        "bytes": 2623,
+        "sha256": "750fcb7b390f0dd9d2ee947282cd669a5b3781a7a234fe88a8af0bcaa7475019"
+      },
+      {
+        "path": "assets/book-catalog-CUS-317M.js",
+        "bytes": 2053989,
+        "sha256": "a564e81105d5dd6396fc930cc99d741e98e3c69cfb793eaa87f9923c6d8ac008"
+      },
+      {
+        "path": "assets/bookArchiveLocation-Cn0gYpxN.js",
+        "bytes": 31193,
+        "sha256": "4b64b7ea9614e878d582083e639a620af10fbffd03aa7dc1379724f6596bd577"
+      },
+      {
+        "path": "assets/books-DcaPIRjr.js",
+        "bytes": 607109,
+        "sha256": "3014042c758a125bf1233ea08b0dbdb3b47d5048e5a3817b6bf719bbdcb29c41"
+      },
+      {
+        "path": "assets/brush-orange-stage-B2wkl8IX.webp",
+        "bytes": 46570,
+        "sha256": "3d16e63c8d74e2c7cb521a16a4e6ced5fc34d08590140b0d2c993d29eee0b493"
+      },
+      {
+        "path": "assets/brush-paper-corners-ChpKv6VW.webp",
+        "bytes": 75400,
+        "sha256": "d6b5a8528a0e95ad555e4a3f93a886e2c7437f578023b6d2bcdea1b0cd6771df"
+      },
+      {
+        "path": "assets/brush-paper-east-Dhu-9hco.webp",
+        "bytes": 68426,
+        "sha256": "4067b8328ca6389bf7f6eb38a35f66e428181f0cd37180374c2d9c30415fc031"
+      },
+      {
+        "path": "assets/brush-paper-split-zfVJ2vHM.webp",
+        "bytes": 62348,
+        "sha256": "7cac3c0966ac13fe1d6e461d051921e8d12ad8b3bab5c8c83f1711708246ee7f"
+      },
+      {
+        "path": "assets/brush-violet-stage-WEaHRUQQ.webp",
+        "bytes": 67858,
+        "sha256": "e8f77a5f1f2b73ba8abec2921d0b3388bf8a81994c03b810be0d9e664e43aaa3"
+      },
+      {
+        "path": "assets/catalog-CfAZJGwg.js",
+        "bytes": 607083,
+        "sha256": "6c9e81f7b640e8d5864e764f6a1cbf9f8073102f581e726b0403b47618e039f3"
+      },
+      {
+        "path": "assets/catalog-DSzsumj2.js",
+        "bytes": 771188,
+        "sha256": "b636c7419d89c7a30f27065c77009395dd4edb7bcbb51219f410bec96cecd3e0"
+      },
+      {
+        "path": "assets/completeShelfRenderer-B0AKRuzX.js",
+        "bytes": 53082,
+        "sha256": "d6a848d5d4ba19f9c65d17de7fb3cb5952804d8b22dcaf14efe028603ccdabc2"
+      },
+      {
+        "path": "assets/countries-B1fL43Dn.geojson",
+        "bytes": 305051,
+        "sha256": "402706b730069fb691d1ec6098e13d7d59670a1823d1ffb62546ff045df20279"
+      },
+      {
+        "path": "assets/country-data-a-m-C_afZbhK.js",
+        "bytes": 789513,
+        "sha256": "ed13618f873cb9ddb630a0678a7a0559c0bf0a1af4eb2b9227cecd8790b64feb"
+      },
+      {
+        "path": "assets/country-data-n-z-B6kBB-fK.js",
+        "bytes": 508626,
+        "sha256": "7b0767f36760768bad1fa4add0c1bdea1399d2f0c27cd11102fa1e4a4e207859"
+      },
+      {
+        "path": "assets/country-flags/ATTRIBUTION.md",
+        "bytes": 407,
+        "sha256": "42b87b984bdac84fd91406bd6fc7e183e7aea203ae686bfe81aa9b95b2b22676"
+      },
+      {
+        "path": "assets/country-flags/LICENSE.flag-icons.txt",
+        "bytes": 1108,
+        "sha256": "fc0231ccb89981e55d600f3015d8ae43adea79b2cf636da976b643d476b10336"
+      },
+      {
+        "path": "assets/country-flags/ad.svg",
+        "bytes": 29290,
+        "sha256": "109ba7a31e12bfacf0bcbe883e4106ad2155c219da74c7d9be35b1d0ef550c20"
+      },
+      {
+        "path": "assets/country-flags/ae.svg",
+        "bytes": 280,
+        "sha256": "76169e87fbcafd080c8b2b61879d11f5124a2484bc53b9690d842c35264bae99"
+      },
+      {
+        "path": "assets/country-flags/af.svg",
+        "bytes": 19065,
+        "sha256": "977f76362bd08a30b586893d87a928fa36d60f71af0957ed47afc1d45d70bb4b"
+      },
+      {
+        "path": "assets/country-flags/ag.svg",
+        "bytes": 765,
+        "sha256": "d0adea96bbe83d799c2784efff99697781a159b1645d4f85811348e7d9943228"
+      },
+      {
+        "path": "assets/country-flags/al.svg",
+        "bytes": 3144,
+        "sha256": "79d59ff62ede6f90498b8db0fa19437bd34e68f90c2ea574bcf9347b00f14d1e"
+      },
+      {
+        "path": "assets/country-flags/am.svg",
+        "bytes": 241,
+        "sha256": "8e88ae569c5a338e7f9845d69f0fb5c494158776bb0fb8bb531cde0b19278730"
+      },
+      {
+        "path": "assets/country-flags/ao.svg",
+        "bytes": 1615,
+        "sha256": "26f2b59221e90e6c72e8b55d635b085d3f3217bdde9603428ed01f942790e2d3"
+      },
+      {
+        "path": "assets/country-flags/ar.svg",
+        "bytes": 3472,
+        "sha256": "a974bc276c59b6e966f75847de5142630d324f205e0ae67ca3e68cb9e9d2d13b"
+      },
+      {
+        "path": "assets/country-flags/at.svg",
+        "bytes": 207,
+        "sha256": "684391468a87bd7e1e4959fc5f4ae3116447d9a1a16d4135b72c05f469fcda1e"
+      },
+      {
+        "path": "assets/country-flags/au.svg",
+        "bytes": 1264,
+        "sha256": "99559b63850a05738f79479b9a7d84ea46f41833570727edc403180d2d3e8838"
+      },
+      {
+        "path": "assets/country-flags/az.svg",
+        "bytes": 496,
+        "sha256": "37f17341984d2741746df65337b246364a387ace2ff3a0cc3dddc497b2f98077"
+      },
+      {
+        "path": "assets/country-flags/ba.svg",
+        "bytes": 1184,
+        "sha256": "7b9e7cdcc229b79ada4d738dee25aed25780d5f36a8cfa0b1417db7202bbf9c9"
+      },
+      {
+        "path": "assets/country-flags/bb.svg",
+        "bytes": 624,
+        "sha256": "c8ac779b7ea847895b0316d53faa91f60cd11eeaedf7d86914ce3af47ee9b8f7"
+      },
+      {
+        "path": "assets/country-flags/bd.svg",
+        "bytes": 193,
+        "sha256": "15c417792aeb1d342eee26b74f34060f7d40e3614ca18b6f3642a72e60dd69a3"
+      },
+      {
+        "path": "assets/country-flags/be.svg",
+        "bytes": 309,
+        "sha256": "9e3cd2bc416707b65f2ef1784311cd04bf4a4d18d154dec79fe78de3af8468a1"
+      },
+      {
+        "path": "assets/country-flags/bf.svg",
+        "bytes": 386,
+        "sha256": "de72e8c1b351cd7775e7c2b9a758668bc44a42b266a85dde2a7d09e394cf8e35"
+      },
+      {
+        "path": "assets/country-flags/bg.svg",
+        "bytes": 238,
+        "sha256": "29912868ebc35fd7fd2bf63ab62b3a4b33fdb6144089af27de49d2a0cf749f90"
+      },
+      {
+        "path": "assets/country-flags/bh.svg",
+        "bytes": 280,
+        "sha256": "9a41774b53fe15a5471e68f9057156ca9664d570b86f165610f7763e9906659e"
+      },
+      {
+        "path": "assets/country-flags/bi.svg",
+        "bytes": 1067,
+        "sha256": "9877fe5ade48c714093aa8586b17e8ad83fbde7b6a2b7b5b21bd3eaa937ea018"
+      },
+      {
+        "path": "assets/country-flags/bj.svg",
+        "bytes": 515,
+        "sha256": "fadb0139b30fb0c9de875406708ebf02f9a68154746afaefdc3142f803160250"
+      },
+      {
+        "path": "assets/country-flags/bn.svg",
+        "bytes": 13507,
+        "sha256": "c3562ae190a71c7f3db1ed0886e60fc228472c1b8ee813dbefff32c095cc4a2c"
+      },
+      {
+        "path": "assets/country-flags/bo.svg",
+        "bytes": 105402,
+        "sha256": "5fcb4a086bfa4507fbc582b44c62d478070949d1ec5593488e3564e06d51335f"
+      },
+      {
+        "path": "assets/country-flags/br.svg",
+        "bytes": 6791,
+        "sha256": "763b3f405b0f9781461009ea614406188ce366f119e5bfad1799fe37d60de99e"
+      },
+      {
+        "path": "assets/country-flags/bs.svg",
+        "bytes": 592,
+        "sha256": "5864b8d85507a0a9a2343742183351bff6d4ebb671bbe2eba36a4dc8e82faa19"
+      },
+      {
+        "path": "assets/country-flags/bt.svg",
+        "bytes": 24592,
+        "sha256": "f228bfe6e7ac32089f5032950bb60c306ecfc2f6ea2ed0fb42a89c2a07905a2e"
+      },
+      {
+        "path": "assets/country-flags/bw.svg",
+        "bytes": 273,
+        "sha256": "7437c873716bd6b0ab5dee623d96069ba8895a9cb84978e9ae677fdb97523575"
+      },
+      {
+        "path": "assets/country-flags/by.svg",
+        "bytes": 2100,
+        "sha256": "aa7828191e5e218bfffdb48462bbde9ae11785213f0156c5922dbf0d16950f7d"
+      },
+      {
+        "path": "assets/country-flags/bz.svg",
+        "bytes": 42822,
+        "sha256": "8ddebd9b229cbc0e2667dbba610dd17f254693f398e7bad3a368adb7662789b5"
+      },
+      {
+        "path": "assets/country-flags/ca.svg",
+        "bytes": 636,
+        "sha256": "16e8a974830514ace22648cc89c822e973b518070582e13d22cc354bc1c799a0"
+      },
+      {
+        "path": "assets/country-flags/cd.svg",
+        "bytes": 510,
+        "sha256": "a6a2bad8c2c612f48f2308ef1cae8781cbf6dabbc0c3ac68062b0072f8aa4702"
+      },
+      {
+        "path": "assets/country-flags/cf.svg",
+        "bytes": 650,
+        "sha256": "65f6272b9d4d52feeaea31cac6c3ccb470370d7a691d10ab674491c1ef9d3cdb"
+      },
+      {
+        "path": "assets/country-flags/cg.svg",
+        "bytes": 473,
+        "sha256": "4537b5c430968cf25b880ae2e2db6efa5a3b5f66263a342371ec032195edc14a"
+      },
+      {
+        "path": "assets/country-flags/ch.svg",
+        "bytes": 297,
+        "sha256": "ac7047fcf8f23613cbe961eda02c09b79c6a564f077ab6d6ff18575bad2a4c40"
+      },
+      {
+        "path": "assets/country-flags/ci.svg",
+        "bytes": 287,
+        "sha256": "490d683bd5fa2a11c5df7c319098e6bac834e134c1239b647f7a05d88182427f"
+      },
+      {
+        "path": "assets/country-flags/ck.svg",
+        "bytes": 1866,
+        "sha256": "14949d469b107ace6eba048bfef51e6895552dce2540d207bb47f6d2cbdee26c"
+      },
+      {
+        "path": "assets/country-flags/cl.svg",
+        "bytes": 579,
+        "sha256": "4699e2e4d4ff40c2fd04985465b2d991c1d90e8abee0357de0a06c49b23cacb1"
+      },
+      {
+        "path": "assets/country-flags/cm.svg",
+        "bytes": 855,
+        "sha256": "7f22b151f6ffced20a4dc3889f5fe98b65a4d328c027709af6c84a36cc677646"
+      },
+      {
+        "path": "assets/country-flags/cn.svg",
+        "bytes": 762,
+        "sha256": "894ed72396d28e34b8ef253c92ce608781aee6ed30c071088ffcb18720f0e170"
+      },
+      {
+        "path": "assets/country-flags/co.svg",
+        "bytes": 293,
+        "sha256": "bb9c71afe2ef9dfb518b3c0fa5803533133c06e52433dec742963d21f32f827b"
+      },
+      {
+        "path": "assets/country-flags/cr.svg",
+        "bytes": 297,
+        "sha256": "f3bf37d4727ade12eef03d092e5296bccaea8d20016207c0c7176dbdf65bb301"
+      },
+      {
+        "path": "assets/country-flags/cu.svg",
+        "bytes": 581,
+        "sha256": "d3d058ba00e0951dca2b9c05b875f9717a13f60d28ab0276d077f5fcf7410027"
+      },
+      {
+        "path": "assets/country-flags/cv.svg",
+        "bytes": 1373,
+        "sha256": "0f9b5a8884c0bba96be51647bcd7dc34f3cf1d098b472467ac140676c2a8b0a6"
+      },
+      {
+        "path": "assets/country-flags/cy.svg",
+        "bytes": 5516,
+        "sha256": "1f59acddbdf934e636a650c9c91e0f3403eaeea1ffd32256574ccef3e5cb849c"
+      },
+      {
+        "path": "assets/country-flags/cz.svg",
+        "bytes": 231,
+        "sha256": "e7d98d2e64570c05f3cd946c9d1abf672b90a2934aade172cf2d10291644d192"
+      },
+      {
+        "path": "assets/country-flags/de.svg",
+        "bytes": 234,
+        "sha256": "e91aa5074a0f55b4a3bc68d136be105c9919b78513807954be684d07fe342fb9"
+      },
+      {
+        "path": "assets/country-flags/dj.svg",
+        "bytes": 589,
+        "sha256": "5336c9fbff30dd84d30822c51a77e382806bdcc1a5e41a0b47b97e8092ba26eb"
+      },
+      {
+        "path": "assets/country-flags/dk.svg",
+        "bytes": 237,
+        "sha256": "5b20e142ab4757843aae226ec3f23febd05fb9e2ddc3c434f0cd70f9bf4ab986"
+      },
+      {
+        "path": "assets/country-flags/dm.svg",
+        "bytes": 16418,
+        "sha256": "7b841a33115c8e2a4bd09d82dd22070c2ef765ec072fc2257083ea73521537e1"
+      },
+      {
+        "path": "assets/country-flags/do.svg",
+        "bytes": 41458,
+        "sha256": "dfa3689a6c4044a70573676d6ff5a57880a253a93f41dd2736761dd38a3c484c"
+      },
+      {
+        "path": "assets/country-flags/dz.svg",
+        "bytes": 311,
+        "sha256": "cb0eae2ca11a6d723338213f2055fdb2b77e62f4e8f3c4d21db5bf7d6191ff05"
+      },
+      {
+        "path": "assets/country-flags/ec.svg",
+        "bytes": 29485,
+        "sha256": "03725fbfe0c010887afc624ee85896c0240e0d79956123862c3a68ece4eba666"
+      },
+      {
+        "path": "assets/country-flags/ee.svg",
+        "bytes": 238,
+        "sha256": "3fda3816919d723ff9ea90ac2c4ca918e31babde579665e8ca7ae0360a7920bc"
+      },
+      {
+        "path": "assets/country-flags/eg.svg",
+        "bytes": 8777,
+        "sha256": "3ea9f3ba25b66d4334e97262ce42be1b20701dbcc0f8d2215bbf5e8a734bf6f5"
+      },
+      {
+        "path": "assets/country-flags/eh.svg",
+        "bytes": 598,
+        "sha256": "28c5ba3794ebb14e2f270623276c1732939bbfa03ac89a75500645db92681272"
+      },
+      {
+        "path": "assets/country-flags/er.svg",
+        "bytes": 3339,
+        "sha256": "2642dbcc0352b36efc9e33e9fe1a77927a0c7b983180ac0ee8da44a950e9bfc5"
+      },
+      {
+        "path": "assets/country-flags/es.svg",
+        "bytes": 82696,
+        "sha256": "213505763b83c705ed4fe59500a05f928fc4a4d9584fd97471cda9f124b135b7"
+      },
+      {
+        "path": "assets/country-flags/et.svg",
+        "bytes": 1194,
+        "sha256": "71bdcf2cc72af5b572a5e73d7a685a3fb1b4844d0891354bcd1f02d68a475bd0"
+      },
+      {
+        "path": "assets/country-flags/fi.svg",
+        "bytes": 242,
+        "sha256": "028b55725bffe73dc3c48b7c44f8cddfbdaff14f7297df2a6208a640df6a52db"
+      },
+      {
+        "path": "assets/country-flags/fj.svg",
+        "bytes": 24260,
+        "sha256": "37615a723017bdc4791cc0d6540092205d1cc2ac5ccd75d9ab729ed9cea80889"
+      },
+      {
+        "path": "assets/country-flags/fm.svg",
+        "bytes": 771,
+        "sha256": "393ddbbd70ce43a5904fa3b0998534445c529caacab74a903a6fa25b296c103f"
+      },
+      {
+        "path": "assets/country-flags/fr.svg",
+        "bytes": 236,
+        "sha256": "f2f6df42273df620d1a851957a5b997f5c6cad9115b7afe9bad59aabf7c51846"
+      },
+      {
+        "path": "assets/country-flags/ga.svg",
+        "bytes": 282,
+        "sha256": "427b2d835e3f098f52e52f28567d34aa4ec2fc2323956f19ea9c1ee91025dac5"
+      },
+      {
+        "path": "assets/country-flags/gb.svg",
+        "bytes": 512,
+        "sha256": "6a18edf4c0d8cc42802dafd1c97cfae16088b4d07fe9464611094a2a0ecfc052"
+      },
+      {
+        "path": "assets/country-flags/gd.svg",
+        "bytes": 1881,
+        "sha256": "6572ebf41d7ab27e76584ebf7aebdc12a8a46fa9664ba075df69afd0f0a65af3"
+      },
+      {
+        "path": "assets/country-flags/ge.svg",
+        "bytes": 1448,
+        "sha256": "5a889460fa48b0a8cc4ca7d1366b3209eeb4966764c8b20b8cceba1fdee2e40b"
+      },
+      {
+        "path": "assets/country-flags/gf.svg",
+        "bytes": 236,
+        "sha256": "d590184e462bd6ccc3547fc9eee67465129729f7068fb3c33d091d61c0eaaaa5"
+      },
+      {
+        "path": "assets/country-flags/gh.svg",
+        "bytes": 314,
+        "sha256": "20a8ff39759ef53d44f21dea2bbe4757f7f7d6ae11680cfb9e28096eb4822ea4"
+      },
+      {
+        "path": "assets/country-flags/gm.svg",
+        "bytes": 388,
+        "sha256": "d483c71c5984493c0b0533a79554d6d110ff547dc783464421264ea5a9791e1e"
+      },
+      {
+        "path": "assets/country-flags/gn.svg",
+        "bytes": 299,
+        "sha256": "6869cae3f2a785502e028f694224816b58b24ccf15402e51e169f03f036b8caf"
+      },
+      {
+        "path": "assets/country-flags/gq.svg",
+        "bytes": 5097,
+        "sha256": "7e5d790108571ea2bdfc235af38a9f3d39812bdd75c9dcb06aa8a18526dae07a"
+      },
+      {
+        "path": "assets/country-flags/gr.svg",
+        "bytes": 877,
+        "sha256": "867142d7dc897ac56acd504b7bef98b7a46c22dc94165386b6956d8153570278"
+      },
+      {
+        "path": "assets/country-flags/gt.svg",
+        "bytes": 31556,
+        "sha256": "ca905c201b3407b2a823ec0526f395b16eb4998deaabe15d443a6357db9c2e60"
+      },
+      {
+        "path": "assets/country-flags/gw.svg",
+        "bytes": 936,
+        "sha256": "34d79dd59dada5c368574c8d74311bff240cc400d3de8ee77f3f50561ee12ab4"
+      },
+      {
+        "path": "assets/country-flags/gy.svg",
+        "bytes": 490,
+        "sha256": "20d83906137a2bc8110c0b8695115827b25edb929df534b45f3a5bc19d1ed726"
+      },
+      {
+        "path": "assets/country-flags/hk.svg",
+        "bytes": 724,
+        "sha256": "2df89fe993a224aa61b546f2d52a40a7648d726236093fdf2ef3869504bc28e9"
+      },
+      {
+        "path": "assets/country-flags/hn.svg",
+        "bytes": 1165,
+        "sha256": "afef8544fe634b984cfcfe5fc7646bbabea129c13e6389e90e7a678078fe558b"
+      },
+      {
+        "path": "assets/country-flags/hr.svg",
+        "bytes": 31340,
+        "sha256": "c5ebaf1dfc7be0bab32540b07494c5f085c83b11faa13297daed29baaaceb600"
+      },
+      {
+        "path": "assets/country-flags/ht.svg",
+        "bytes": 13575,
+        "sha256": "d0661fad666ae8f80a2a5661bea9fada86b4b26e38a4444ffea7db61bcd79828"
+      },
+      {
+        "path": "assets/country-flags/hu.svg",
+        "bytes": 280,
+        "sha256": "713a22cb3e48a86a4b8ac7a3bedb97fb92d3bfdbe9d8e45168fe62badfa388d4"
+      },
+      {
+        "path": "assets/country-flags/id.svg",
+        "bytes": 182,
+        "sha256": "bfc242df38ccf2d887d017fe6c2b20fbf6fda4171ca8616edd554dfb2882989f"
+      },
+      {
+        "path": "assets/country-flags/ie.svg",
+        "bytes": 296,
+        "sha256": "b1d4bcfb264ea54832b70cac316ff3268ea71742d2a5250fe2d14e249fc1b393"
+      },
+      {
+        "path": "assets/country-flags/il.svg",
+        "bytes": 802,
+        "sha256": "d015cf4f69ed4642b6b1f1f0c367cff09faa9babc0343a0cc66d1376ec6edf90"
+      },
+      {
+        "path": "assets/country-flags/in.svg",
+        "bytes": 1128,
+        "sha256": "95e15853a34160218b55d09b684c3ff997d0a91930e24f387939814a11410d94"
+      },
+      {
+        "path": "assets/country-flags/iq.svg",
+        "bytes": 1435,
+        "sha256": "3436aaf02d83619c385388b36493f7be369cc27606836662a4a3039c0b947ed2"
+      },
+      {
+        "path": "assets/country-flags/ir.svg",
+        "bytes": 15516,
+        "sha256": "d3f87e87649787c6606b540a8bfd2645153ade2da490bfac4dc6f437c98c4516"
+      },
+      {
+        "path": "assets/country-flags/is.svg",
+        "bytes": 532,
+        "sha256": "568224c7eb1c4a96e0f34b5526293b8066263ba400bdeb52b3ee668109f90550"
+      },
+      {
+        "path": "assets/country-flags/it.svg",
+        "bytes": 296,
+        "sha256": "9a11ba5a6a3ee6a07a46193c1a51836a46d805484f79e511fdc3a17a02817347"
+      },
+      {
+        "path": "assets/country-flags/jm.svg",
+        "bytes": 409,
+        "sha256": "121632fee32ef773c5520862e4529e0c2dcdd269e63008f7e37c5754b037396a"
+      },
+      {
+        "path": "assets/country-flags/jo.svg",
+        "bytes": 718,
+        "sha256": "18cf96c3a1714c64b57f79b7585797e58709b74656aaceb65e2e456b3a716336"
+      },
+      {
+        "path": "assets/country-flags/jp.svg",
+        "bytes": 496,
+        "sha256": "e08c6085db83c0b33a8b42b766cf3f97c6839d9434ea183976cce2017710d38a"
+      },
+      {
+        "path": "assets/country-flags/ke.svg",
+        "bytes": 1552,
+        "sha256": "99c14c96c187db15f411cf9b1ad7f93af79e5789c1ab255a545ef3f6f087f612"
+      },
+      {
+        "path": "assets/country-flags/kg.svg",
+        "bytes": 4797,
+        "sha256": "39f3dac83529bfec1cd9c45c7546e54f766cac8724f82d3852ca4a6278d09588"
+      },
+      {
+        "path": "assets/country-flags/kh.svg",
+        "bytes": 7184,
+        "sha256": "859d0f683bef14cc5949a23979314a8896982811d1c719d5a7c24a9aa77a432a"
+      },
+      {
+        "path": "assets/country-flags/ki.svg",
+        "bytes": 5842,
+        "sha256": "63f20f0d73d4b817c93d4ef564517ad870a20a762dda7632d358d0d5479b2ca5"
+      },
+      {
+        "path": "assets/country-flags/km.svg",
+        "bytes": 1047,
+        "sha256": "3a1225519689047b7435b4134b3f509e23e6e747a4cc7957bb930e2c01ca1982"
+      },
+      {
+        "path": "assets/country-flags/kn.svg",
+        "bytes": 829,
+        "sha256": "dc9a5bd236a7faee403df271f0471f125323f33d5ddd0f636e18101bb2864978"
+      },
+      {
+        "path": "assets/country-flags/kp.svg",
+        "bytes": 862,
+        "sha256": "c3a01fcb61db4a76117b775c454165adc8b32cb7938bccbd0b5328157514f27b"
+      },
+      {
+        "path": "assets/country-flags/kr.svg",
+        "bytes": 871,
+        "sha256": "6197dd174f44fbf5cc19dbbd488d7a40ed7793d846d8f7aae4a63f7aa117ef29"
+      },
+      {
+        "path": "assets/country-flags/kw.svg",
+        "bytes": 534,
+        "sha256": "10875b43f97a6c3a2d9cf657258d1387de3c15b3198d6a074d6590a70578c64a"
+      },
+      {
+        "path": "assets/country-flags/kz.svg",
+        "bytes": 7132,
+        "sha256": "ef4a2f28c2d2680a27d5d5084f4515bf49ed4e5d71101b960282b5969798f51e"
+      },
+      {
+        "path": "assets/country-flags/la.svg",
+        "bytes": 517,
+        "sha256": "05fa21d5992f4af691f0d5eb977d5f11b5c15ca7132f282e470d6fc85418fca0"
+      },
+      {
+        "path": "assets/country-flags/lb.svg",
+        "bytes": 2734,
+        "sha256": "a69bf6a2339ddee11d197b7bd53ecfea20e108f6abe521beb73aecc5d3167c8a"
+      },
+      {
+        "path": "assets/country-flags/lc.svg",
+        "bytes": 370,
+        "sha256": "08db312e536b61713fa38a13550e7cfabea619ff4958fe4ff001137ef3af68a0"
+      },
+      {
+        "path": "assets/country-flags/li.svg",
+        "bytes": 7383,
+        "sha256": "bec9ddf6f204c7ed8cdab8f79a2d2dd60bbc375bbce7e11f2a155720ba1aaa8a"
+      },
+      {
+        "path": "assets/country-flags/lk.svg",
+        "bytes": 10758,
+        "sha256": "ee5409cd0290e70e591aaa72df3578092ce32273b28bc6f69cd11ef9f78d23ce"
+      },
+      {
+        "path": "assets/country-flags/lr.svg",
+        "bytes": 700,
+        "sha256": "6009b5f43013519b1cb497eedad9e8ae6c4efceaca1542ec99d9acfaa6815795"
+      },
+      {
+        "path": "assets/country-flags/ls.svg",
+        "bytes": 1145,
+        "sha256": "3e6168b276b052c7a378838e374744e9fbd7a603b8deb2e1ca0015c14e43a806"
+      },
+      {
+        "path": "assets/country-flags/lt.svg",
+        "bytes": 446,
+        "sha256": "54ad29aef729bb7b6c5ec93a05a457d9e4b2540dddb46643c5bca5c6835920c4"
+      },
+      {
+        "path": "assets/country-flags/lu.svg",
+        "bytes": 238,
+        "sha256": "6ecad4d4a4667632b09f5258dc7d2fd46e113e275b6d90c4f51a33fb6e79135f"
+      },
+      {
+        "path": "assets/country-flags/lv.svg",
+        "bytes": 240,
+        "sha256": "85cebce4826fcf31fd0d36c36c27c3bbf1025baddbabdc5a5a5901d18076e8e2"
+      },
+      {
+        "path": "assets/country-flags/ly.svg",
+        "bytes": 560,
+        "sha256": "b7a606660384cd7a53b1cfc4e38a3a576fffc8ee2509dcf87eba8070b4b61a46"
+      },
+      {
+        "path": "assets/country-flags/ma.svg",
+        "bytes": 250,
+        "sha256": "d1cdb7af8da9fc6418b9124e5a1a2499623a0d56160419f65226c535e7ed5f33"
+      },
+      {
+        "path": "assets/country-flags/mc.svg",
+        "bytes": 240,
+        "sha256": "d185d42f98c7f0f3e4e0889402e4d7a96f4285374e3d5ae647889c816b28d76b"
+      },
+      {
+        "path": "assets/country-flags/md.svg",
+        "bytes": 11310,
+        "sha256": "87f3af2559a8eba95c00210d62f661dcea88134ea3dba22dd64a88df34276212"
+      },
+      {
+        "path": "assets/country-flags/me.svg",
+        "bytes": 57068,
+        "sha256": "9f1388b32ab8653b578606a894a1fe5f68cefed0704b43dc0096995ff74019d1"
+      },
+      {
+        "path": "assets/country-flags/mg.svg",
+        "bytes": 306,
+        "sha256": "56ed8bf8f1018fad8cd5275edcb57404cfe1a90fcb73ab718b2c658e6e12a6bc"
+      },
+      {
+        "path": "assets/country-flags/mh.svg",
+        "bytes": 761,
+        "sha256": "a5c548386f7b128250aecfc3e41448a14812ce80b4768e5e17ca2ca18e25bb05"
+      },
+      {
+        "path": "assets/country-flags/mk.svg",
+        "bytes": 412,
+        "sha256": "940cb0ee0e88bdce2ca63f1d7a235809a724c2d0e883132c70a52a13ec8e4495"
+      },
+      {
+        "path": "assets/country-flags/ml.svg",
+        "bytes": 283,
+        "sha256": "41efbabc5e33cacd4e6ea425bf1bd03975c9c6e83bcbf31ffa3ef7ecffc4fe33"
+      },
+      {
+        "path": "assets/country-flags/mm.svg",
+        "bytes": 717,
+        "sha256": "785ab70e1506032f1562113942192ca4be1d130141257d7c0330867a8e286269"
+      },
+      {
+        "path": "assets/country-flags/mn.svg",
+        "bytes": 1384,
+        "sha256": "cfe66ae4a1638024f6cd2bd3923896175866e8de11867916aac04dbd252be1cb"
+      },
+      {
+        "path": "assets/country-flags/mo.svg",
+        "bytes": 1394,
+        "sha256": "637957b9a29fc6797505afe5b533f8fbb3963b519ead879183037016091f65fc"
+      },
+      {
+        "path": "assets/country-flags/mr.svg",
+        "bytes": 436,
+        "sha256": "8ab8189698276c118ae87cbd1dcc3de6c8237db86dc75f241014480629e44805"
+      },
+      {
+        "path": "assets/country-flags/mt.svg",
+        "bytes": 12766,
+        "sha256": "baf9a1e61d63e0760bc97742143e0815fe553cb424ca8c53ed2dbec421467946"
+      },
+      {
+        "path": "assets/country-flags/mu.svg",
+        "bytes": 324,
+        "sha256": "39881a9bb1c2fb663dbfd45aadb72ec2121051ad09a7494c2de82b3cbb1365b2"
+      },
+      {
+        "path": "assets/country-flags/mv.svg",
+        "bytes": 310,
+        "sha256": "bc1790e1a7eeec92eacf4818f557ffd1eb180a4538a071d1db1efa67219475f8"
+      },
+      {
+        "path": "assets/country-flags/mw.svg",
+        "bytes": 3781,
+        "sha256": "f111a83bf1227a577e04c3050955c8a6c1df7f90d989e282809bc367f0627480"
+      },
+      {
+        "path": "assets/country-flags/mx.svg",
+        "bytes": 80584,
+        "sha256": "ad0d9d19a274593637f69d4cfa6bccc6248e73cd8e8e3647eea0d43cf8458596"
+      },
+      {
+        "path": "assets/country-flags/my.svg",
+        "bytes": 1179,
+        "sha256": "edf763e06e3e3a6031f10225129e7627066f5b40466a02f8c7e4390c66cb3ce6"
+      },
+      {
+        "path": "assets/country-flags/mz.svg",
+        "bytes": 2565,
+        "sha256": "7ae9955b5fd16080e623b26194566ef846b8121355b057393dd9ce86c97eb3c4"
+      },
+      {
+        "path": "assets/country-flags/na.svg",
+        "bytes": 965,
+        "sha256": "5bfa73618aa0ad2b41dd2445d554d81a9c4b5f26b4a854dac56ac5de4c669d83"
+      },
+      {
+        "path": "assets/country-flags/ne.svg",
+        "bytes": 285,
+        "sha256": "4e05cbf2912c838a8075dc1bbc69d1df6d8f74043d6775c56504835642ece9f6"
+      },
+      {
+        "path": "assets/country-flags/ng.svg",
+        "bytes": 263,
+        "sha256": "628a7cd78c92b38e1d52887afff715a129e9c14f777fcaa69734c93718866dc4"
+      },
+      {
+        "path": "assets/country-flags/ni.svg",
+        "bytes": 17422,
+        "sha256": "437fb1d96f7d5efdde963fdd5be0c41afc38eb8f6788b53bcddb620f2f8e337b"
+      },
+      {
+        "path": "assets/country-flags/nl.svg",
+        "bytes": 238,
+        "sha256": "b72eb8da2067d7a358cdfa1f6e3a41b5f57c5beffc8c97ca8d3d0f3ca1ffabad"
+      },
+      {
+        "path": "assets/country-flags/no.svg",
+        "bytes": 325,
+        "sha256": "3adf9cdd2b54939c02e0957af1263507f55ac771183211dc851e4593c9b7de18"
+      },
+      {
+        "path": "assets/country-flags/np.svg",
+        "bytes": 1150,
+        "sha256": "567d81e806ebb7ff622d4344b5083e6f0c1abff08de5d330296aca7606c0324f"
+      },
+      {
+        "path": "assets/country-flags/nr.svg",
+        "bytes": 681,
+        "sha256": "a7e897e309a900d4b69337eaa066160d245b0fe1a4840c199791a937e45c6222"
+      },
+      {
+        "path": "assets/country-flags/nu.svg",
+        "bytes": 850,
+        "sha256": "92368a5acc533a5380355b6106e5d7ecc62dce7efc1e970a52849a2d6246d961"
+      },
+      {
+        "path": "assets/country-flags/nz.svg",
+        "bytes": 2189,
+        "sha256": "479356f5d59e0fb55bef6dd650d24dd368c3d712a06d47c15ff5ad6e4a4465ae"
+      },
+      {
+        "path": "assets/country-flags/om.svg",
+        "bytes": 22322,
+        "sha256": "f772d78276dadd33a140b628ab3fffb9d9d309ea74a5b4b0e87e50fc7292f306"
+      },
+      {
+        "path": "assets/country-flags/pa.svg",
+        "bytes": 654,
+        "sha256": "010870108d2132cd0410323710515be713432aba28f35b0b55d28910b72c5a4d"
+      },
+      {
+        "path": "assets/country-flags/pe.svg",
+        "bytes": 190,
+        "sha256": "5002d1a4c05360c33eb6c49d1903b1561d9a2da6bdaf3579681ad32f5d059531"
+      },
+      {
+        "path": "assets/country-flags/pg.svg",
+        "bytes": 2099,
+        "sha256": "e7968b0e31c4de29cd2b4d30b8ea9fe0e9a382d0a4e2603cead1d10439c4f8b1"
+      },
+      {
+        "path": "assets/country-flags/ph.svg",
+        "bytes": 1432,
+        "sha256": "c22d5533794d96a1eecd64b2b347bd67a58a13fea51e9cbac1ba57f4a66b6bc7"
+      },
+      {
+        "path": "assets/country-flags/pk.svg",
+        "bytes": 692,
+        "sha256": "1d33c964a478d224f3332a1e230fc95ec407bdf6ca603e2a3c622fdf217c98b9"
+      },
+      {
+        "path": "assets/country-flags/pl.svg",
+        "bytes": 225,
+        "sha256": "2a40f0b8209c9efadfc7f3a49f087b0f5fdaeaa3db4159a5adca23a83a013630"
+      },
+      {
+        "path": "assets/country-flags/pr.svg",
+        "bytes": 621,
+        "sha256": "12802b6ebdef584c861f9302f5e79110e7f79190223e2c0b69e3d10fadadbedc"
+      },
+      {
+        "path": "assets/country-flags/ps.svg",
+        "bytes": 288,
+        "sha256": "040082188cce070dedb61bec942d90d86926b1ab87235ca72a2b360dc7456f2e"
+      },
+      {
+        "path": "assets/country-flags/pt.svg",
+        "bytes": 8426,
+        "sha256": "2937f40ad4501e1a81801ccb8008bed43eacbbe2486dce38f87e4b6f4ea99dfb"
+      },
+      {
+        "path": "assets/country-flags/pw.svg",
+        "bytes": 522,
+        "sha256": "d7b22e01719ed7e09ae114beadd5543b3f51c3949f431d154e2e5e49ce02fb2f"
+      },
+      {
+        "path": "assets/country-flags/py.svg",
+        "bytes": 16517,
+        "sha256": "c3fbfcc4c57aedc64c5b5ae68c8df0e3d6d20e102c1d68ecbd3f7bf11e9b5f17"
+      },
+      {
+        "path": "assets/country-flags/qa.svg",
+        "bytes": 355,
+        "sha256": "de4b2ed278ead1753a6631817e9e58db92bd83b7272d0e2e140d7153fc51e290"
+      },
+      {
+        "path": "assets/country-flags/ro.svg",
+        "bytes": 309,
+        "sha256": "65c2e6c2a14ceebfe2a4df983e0f4baf63e34bd7d14b4144292d7958fdc73371"
+      },
+      {
+        "path": "assets/country-flags/rs.svg",
+        "bytes": 181773,
+        "sha256": "1b0b0d609026c4293bd3f3ed84633e95047121d954bd83d1914282ea7af7fe84"
+      },
+      {
+        "path": "assets/country-flags/ru.svg",
+        "bytes": 238,
+        "sha256": "375a1fd45c4d0c0b0cd5e05a5322da90f30714b979b41771de847d92a8536fc9"
+      },
+      {
+        "path": "assets/country-flags/rw.svg",
+        "bytes": 769,
+        "sha256": "d9f26966a0d29ba72db3ab12026bdec756901c13b6b1314d817d085a62037845"
+      },
+      {
+        "path": "assets/country-flags/sa.svg",
+        "bytes": 9878,
+        "sha256": "9054be4ba0405e918c4f0a708d2490668bd12a250a9bed14939e10de1c4c1abc"
+      },
+      {
+        "path": "assets/country-flags/sb.svg",
+        "bytes": 960,
+        "sha256": "dfa08fc195cbdb225d9a42d22fbd383bdbe531ee96841e62b8819d05d92bf553"
+      },
+      {
+        "path": "assets/country-flags/sc.svg",
+        "bytes": 328,
+        "sha256": "470b407c2083d3139d662853b22adfba30f7014c371a2634aba7679ee31dc32b"
+      },
+      {
+        "path": "assets/country-flags/sd.svg",
+        "bytes": 520,
+        "sha256": "473b467d84752b3b62ac59ba59c4a2bb49fb28c63d8900f9977faba40fe3d0d0"
+      },
+      {
+        "path": "assets/country-flags/se.svg",
+        "bytes": 227,
+        "sha256": "7a89949c4be31a4bfd8c3ee3490fdd6b8f756545b03ec9c525a615de3838cc9b"
+      },
+      {
+        "path": "assets/country-flags/sg.svg",
+        "bytes": 961,
+        "sha256": "230ddecab20273281a57b85172d38cbcbcd0f908cf3c561c8cf54bb6cf2e1c09"
+      },
+      {
+        "path": "assets/country-flags/si.svg",
+        "bytes": 2031,
+        "sha256": "56f5bf8cdb3771809be97f7ddabbf4aa543df3a6e55ebd42302d736517696b1f"
+      },
+      {
+        "path": "assets/country-flags/sk.svg",
+        "bytes": 1170,
+        "sha256": "18a942685a1ef5437bde0923abdfd650082b9b86e68b6a94e10b6833debf6b72"
+      },
+      {
+        "path": "assets/country-flags/sl.svg",
+        "bytes": 453,
+        "sha256": "ac9791b87dbd28ca0d0bef4aa2f83eae96381c2d1bb044fc2a501316770e91bd"
+      },
+      {
+        "path": "assets/country-flags/sm.svg",
+        "bytes": 15617,
+        "sha256": "45cadf24d04f0f15893b729a2d72a16a59561b16d7392886b9532a4119d46819"
+      },
+      {
+        "path": "assets/country-flags/sn.svg",
+        "bytes": 419,
+        "sha256": "f95340e80728c2620f64d44c7b896ccda0b526a19178324868fced5ca55cf7e0"
+      },
+      {
+        "path": "assets/country-flags/so.svg",
+        "bytes": 500,
+        "sha256": "18383d39f4ba0ae61c4b2b406713d835d85ff6b5cebad41e33ba9f6743414cc1"
+      },
+      {
+        "path": "assets/country-flags/sr.svg",
+        "bytes": 323,
+        "sha256": "df3bb5a4274c469fd0697ac9cbfb76015050c5d60061ea055f4b4a5c579297b2"
+      },
+      {
+        "path": "assets/country-flags/ss.svg",
+        "bytes": 417,
+        "sha256": "bd371d20dc4e2ba0b228f88fac343827fd4456a007bdfff1bba2c56b8e9a7fba"
+      },
+      {
+        "path": "assets/country-flags/st.svg",
+        "bytes": 974,
+        "sha256": "d2bb7a921d38ee0124f2f1badb4e7c15b3c2e8ff531f4b32fd4e7fa6a896a709"
+      },
+      {
+        "path": "assets/country-flags/sv.svg",
+        "bytes": 78309,
+        "sha256": "ffe5ede8f11e8898962a0bc23fb0525cc14dd82b6e99ab033613469747a6f0c6"
+      },
+      {
+        "path": "assets/country-flags/sy.svg",
+        "bytes": 398,
+        "sha256": "e545be310305e49dba5cfe125d07f47ebccdc58efd2030fae8ce0e09deb18a5a"
+      },
+      {
+        "path": "assets/country-flags/sz.svg",
+        "bytes": 4667,
+        "sha256": "23d06d5b25ffaa1b0b1c027f380d711ba233a12c00ae70eb0cde6836f4ef057e"
+      },
+      {
+        "path": "assets/country-flags/td.svg",
+        "bytes": 290,
+        "sha256": "8da1c5cf85aafa89c1126e3a7278d46d8fa2b0c7b8cbec1e7f901137aa2d1530"
+      },
+      {
+        "path": "assets/country-flags/tg.svg",
+        "bytes": 732,
+        "sha256": "167049b50ab760c4763e9722b32619b1477a65e940ddf6a7fc7296452dad8291"
+      },
+      {
+        "path": "assets/country-flags/th.svg",
+        "bytes": 292,
+        "sha256": "bd853add0286344c230b3653656f52f92f3f5b4bc9cefec87bc2382fa211e400"
+      },
+      {
+        "path": "assets/country-flags/tj.svg",
+        "bytes": 1838,
+        "sha256": "2ef9c220ed285f6f1d270e5b6537b860f3f84bbab05ec84cc0ecba37bb485851"
+      },
+      {
+        "path": "assets/country-flags/tl.svg",
+        "bytes": 603,
+        "sha256": "c9c1c54ed7712812fc38fa87b8f37a0da95e51356aeb8547c455699f705bc8f8"
+      },
+      {
+        "path": "assets/country-flags/tm.svg",
+        "bytes": 38425,
+        "sha256": "b11b188c9b07de5805a5ec4f67e00065826eefde632c22265c4ccf96b07dd4c3"
+      },
+      {
+        "path": "assets/country-flags/tn.svg",
+        "bytes": 343,
+        "sha256": "b46e0237f380976d05c84d3f8386ea520b12307fc1d73846d8d4be5a0fc231e7"
+      },
+      {
+        "path": "assets/country-flags/to.svg",
+        "bytes": 368,
+        "sha256": "509371cb437e8062ab2c9c638f5332dde799b251224971cff11556696a1dcb5f"
+      },
+      {
+        "path": "assets/country-flags/tr.svg",
+        "bytes": 569,
+        "sha256": "a1220df05d93b7be75854be1304b050116fecad4d3ff4123f81f7b0a3b61fdd6"
+      },
+      {
+        "path": "assets/country-flags/tt.svg",
+        "bytes": 319,
+        "sha256": "7c35b15c9ea340628d2258261b90c8b0ba30dbcb2097528005dcc91799bab6da"
+      },
+      {
+        "path": "assets/country-flags/tv.svg",
+        "bytes": 1351,
+        "sha256": "f115d24e5b207b42eb5b2e5ef45ea8a3c33b8390517a66f98de56332fbb5f01d"
+      },
+      {
+        "path": "assets/country-flags/tw.svg",
+        "bytes": 2538,
+        "sha256": "25514f28ae4d9999e7225381dc78399c3f29694a4fb51ab9ffaa46e3a589581d"
+      },
+      {
+        "path": "assets/country-flags/tz.svg",
+        "bytes": 626,
+        "sha256": "90778f1373099eca63e2e453185c0f7054531f88034c2c439b3dbea66d729acd"
+      },
+      {
+        "path": "assets/country-flags/ua.svg",
+        "bytes": 238,
+        "sha256": "323887aa839956511063b2c2fb6140a3298f987c414b19fc99698bd313d5475b"
+      },
+      {
+        "path": "assets/country-flags/ug.svg",
+        "bytes": 4022,
+        "sha256": "7a9a9995514d3f6d91d4de954d4db6d8dbf70fe75a993afe8d9feea229ce9b09"
+      },
+      {
+        "path": "assets/country-flags/us.svg",
+        "bytes": 659,
+        "sha256": "43a00def4fa058cc317d79aba935eaf1622f2d215442bb35a6f8fbc6a01a4d5f"
+      },
+      {
+        "path": "assets/country-flags/uy.svg",
+        "bytes": 1749,
+        "sha256": "0df0899da80373f45fc3223d6acafc91a30d7b512040d6067112231d293885f0"
+      },
+      {
+        "path": "assets/country-flags/uz.svg",
+        "bytes": 1527,
+        "sha256": "4b3ec82532ab93e3f793ce21b7b8cb217de99a539286521b86b26b2c431766cd"
+      },
+      {
+        "path": "assets/country-flags/va.svg",
+        "bytes": 28849,
+        "sha256": "a95c827ea5d0cedd0685a3d4f712cdcc88160cbc964cb5fc12a13178f8c3219d"
+      },
+      {
+        "path": "assets/country-flags/vc.svg",
+        "bytes": 485,
+        "sha256": "ea04f0f61ba46537dad78144367158183a6cffe2dfc76affea1e922e7a26ab83"
+      },
+      {
+        "path": "assets/country-flags/ve.svg",
+        "bytes": 1251,
+        "sha256": "03fff7bde98d9c1f4ab677b1d6df066b787295dbf2e4a05bf8c4d2a99d9b3c8a"
+      },
+      {
+        "path": "assets/country-flags/vn.svg",
+        "bytes": 500,
+        "sha256": "0027ae897484d06523042cfcb2acb4685fa6250b8e0b886634ba52e1cdc9b159"
+      },
+      {
+        "path": "assets/country-flags/vu.svg",
+        "bytes": 2032,
+        "sha256": "b7238556c5d24b2a9e2ea28e03fee52286a89a7753a16deb0302274e0da8278e"
+      },
+      {
+        "path": "assets/country-flags/ws.svg",
+        "bytes": 706,
+        "sha256": "02300e43954d9676e707016c32ec4620a31fa45ede8a1df4ff06853566250c7f"
+      },
+      {
+        "path": "assets/country-flags/xk.svg",
+        "bytes": 7740,
+        "sha256": "83a436e2aef237c7d44d7ef21dd99ebdf17da8e7f80e702ca6c00614afa02f48"
+      },
+      {
+        "path": "assets/country-flags/ye.svg",
+        "bytes": 294,
+        "sha256": "a6b576dec78c1bad2230deb3be3d47a57181351e5c9c77da59e726d0bf6b83db"
+      },
+      {
+        "path": "assets/country-flags/za.svg",
+        "bytes": 873,
+        "sha256": "32d151e7b89bd2bb2ee1aa079165ec4648fbfc495903c01b994d7290ba05bf10"
+      },
+      {
+        "path": "assets/country-flags/zm.svg",
+        "bytes": 5339,
+        "sha256": "807cf907b6337ee3f45afe54043134b305d561aa7f8bed01012fa9645dec6b78"
+      },
+      {
+        "path": "assets/country-flags/zw.svg",
+        "bytes": 6186,
+        "sha256": "ce9d5e418e5289c5a10a77beaa8bb01ad56a50fb4fc94cebfa0304b12764bfdc"
+      },
+      {
+        "path": "assets/editorial-paper-DwbOovh5.webp",
+        "bytes": 37272,
+        "sha256": "b47d170befac71b0f2496a9d80dd68e5dd960fd41cb5fc45d48cf0a442cb9a68"
+      },
+      {
+        "path": "assets/editorialOverrides-CkipcD4J.js",
+        "bytes": 50558,
+        "sha256": "f9b2702dfc797c524b1566c8030963e7cfa69852cb1b5534f0aaf92c9843889e"
+      },
+      {
+        "path": "assets/globalSearchRuntime-9KNdV5Yt.js",
+        "bytes": 8276,
+        "sha256": "ddd950b73afda3fea4d7111f6a844e52a7b9dd846e47555f3da27125f8f6c719"
+      },
+      {
+        "path": "assets/native-C8wmItXS.css",
+        "bytes": 560809,
+        "sha256": "38fd42c26b4ba9260b1ec4ae204a940c86a7a687c079e32771dcf4e1bd242f7d"
+      },
+      {
+        "path": "assets/native-CEbxMr0d.js",
+        "bytes": 356828,
+        "sha256": "db8e2a90c177d9f8a150ee0ad70fcf4312f9359d004941a85d4d110e297ab7f1"
+      },
+      {
+        "path": "assets/nobelArticles-BvQzZbN7.js",
+        "bytes": 477,
+        "sha256": "6478c432b32cd422528eb053546d39d14807745644977fd1c04772a337db606f"
+      },
+      {
+        "path": "assets/react-vendor-DMLUCItc.js",
+        "bytes": 145934,
+        "sha256": "0a7fa582c1c768e180e9ff76adca40b6e20463a076d3cc86e2376033696735d1"
+      },
+      {
+        "path": "assets/sanitizeArticleHtml-CwLWWSTt.js",
+        "bytes": 12065,
+        "sha256": "9174759ccda3d92cd74e21db68d8eec71669f58fb133f0aba303080da66ada00"
+      },
+      {
+        "path": "assets/section-prizes-DXUciBB7.webp",
+        "bytes": 349278,
+        "sha256": "3b4cd3e381198f0a71226fb46268b298d9fd37061ab039ff9f537fecc37d02ab"
+      },
+      {
+        "path": "assets/supabase-vendor-l0sNRNKZ.js",
+        "bytes": 1,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      {
+        "path": "assets/three-vendor-cYmUA5aw.js",
+        "bytes": 1094826,
+        "sha256": "51c953dd1e9c53f787a545e34b5fe17542a8a05fc0060148f36fedb1712574f6"
+      },
+      {
+        "path": "assets/useSubscriptions-B6M-s6Bf.js",
+        "bytes": 1070,
+        "sha256": "1459d6f38e64a39682722a20675855b945e0f174720adc41301bf7c9c3a0f964"
+      },
+      {
+        "path": "assets/vite-preload-helper-BXl3LOEh.js",
+        "bytes": 1110,
+        "sha256": "d887044e7c17fd90344fc4f74f53cac686584daf2a458ab2136d36f1946e9ab6"
+      },
+      {
+        "path": "assets/web-B1JrnSZN.js",
+        "bytes": 1231,
+        "sha256": "8617f39d88b0df3a05c65607ce82076a1517af36ccc236953f19ef6bda15d380"
+      },
+      {
+        "path": "assets/web-CKRkLH1A.js",
+        "bytes": 920,
+        "sha256": "79858926b33e8d6f0e8d181f350e4a90bec0e1ce3633da1e3753f29003eff7c2"
+      },
+      {
+        "path": "assets/web-CnaDeRk_.js",
+        "bytes": 270,
+        "sha256": "7f141ed2f858c185a95593f97951aac437ce48d9f20973dc4a242db191d6838c"
+      },
+      {
+        "path": "assets/web-Dlq8iFhq.js",
+        "bytes": 1323,
+        "sha256": "b754fb3969379d494c5462298c64ce7526045cb72736dd2c369a82dd3724dc21"
+      },
+      {
+        "path": "assets/web-jYHUc-Mu.js",
+        "bytes": 457,
+        "sha256": "c8aaf9419e12659dbb6db1b649b2287385bf2d4fcda2ceea0d30f2f491cc69f0"
+      },
+      {
+        "path": "assets/writer-biography-reviews-BMVRO21A.js",
+        "bytes": 1227678,
+        "sha256": "5bfe97420888e9a628d43f4d498ccbd2e8d9838589ba133da26775d6137deb4e"
+      },
+      {
+        "path": "assets/writer-portraits-data-ZDd9rYw-.js",
+        "bytes": 500029,
+        "sha256": "f2440a9425dac791dca77dfc1d3172b86499f61081ab53abf6dc73135980ef45"
+      },
+      {
+        "path": "brand/alfred-nobel-medallion.png",
+        "bytes": 20003,
+        "sha256": "7c81bf2b388b45e6a2a8a85f126f657719cd3dcd2f7eab4524918b026bca3e85"
+      },
+      {
+        "path": "brand/atlas-side-brushes-mobile.webp",
+        "bytes": 22580,
+        "sha256": "863c5b7efc2f39421a59d6ae559b5d3fc9080869255a0d47ab6994bf3b847203"
+      },
+      {
+        "path": "brand/atlas-side-brushes.webp",
+        "bytes": 63832,
+        "sha256": "c31429f2306ea9f74b83d01bc0bd4a9a1cae02892765d214de4775cceca5c084"
+      },
+      {
+        "path": "brand/chekhov.png",
+        "bytes": 313580,
+        "sha256": "42b04487a942daf58d1ec1903bdf4b1504d94e7388415ef5f70ee338cd970e57"
+      },
+      {
+        "path": "brand/library-archive-background-mobile-v1.avif",
+        "bytes": 94945,
+        "sha256": "51b19d485cf67a6bdf4d375aefada5dd4dc4f12d711a632e1e7401a651d220f8"
+      },
+      {
+        "path": "brand/library-archive-background-mobile-v1.webp",
+        "bytes": 94662,
+        "sha256": "cc1e4f7328d05cb237778572b0cdc862b9d5ca59badfdea89ebdd9c9ee7a10a1"
+      },
+      {
+        "path": "brand/library-archive-background-v1.avif",
+        "bytes": 188591,
+        "sha256": "75754066540434399faafd31256b39009914e7b1870b3e338e70a2698235ca0e"
+      },
+      {
+        "path": "brand/library-archive-background-v1.webp",
+        "bytes": 220192,
+        "sha256": "295d8b3459897df91f3727a6e811e6d6101d3e7d41904c59efb5c7e3a0d4f532"
+      },
+      {
+        "path": "brand/magazine-cover.webp",
+        "bytes": 263276,
+        "sha256": "547dbf71daf35b279b98fc57198b368ce3cd83ec7c521235175722604d419696"
+      },
+      {
+        "path": "brand/magazine-hero-mobile.avif",
+        "bytes": 144336,
+        "sha256": "304a0cb57ebd0736b26d82fe9a04739b5dc3da9b5a2ca2ac874e1e324caf73d3"
+      },
+      {
+        "path": "brand/magazine-hero-mobile.webp",
+        "bytes": 238192,
+        "sha256": "4b09de40909a720a94844e538e8efebfe196c451feecbae3b2f833214d47b713"
+      },
+      {
+        "path": "brand/magazine-hero-wide.avif",
+        "bytes": 141607,
+        "sha256": "cf58f94ef29aacc546c412f41459f5afc1d0b1e7f6c8e1e9e87a1880a0ce04ba"
+      },
+      {
+        "path": "brand/magazine-hero-wide.webp",
+        "bytes": 230886,
+        "sha256": "29df2ed78320b87c8d49abc6dc76cee466e4ad75d8d1ee4a373d339c23ee1cd9"
+      },
+      {
+        "path": "brand/probpera-logo.png",
+        "bytes": 20811,
+        "sha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27"
+      },
+      {
+        "path": "brand/sections/about-editorial.webp",
+        "bytes": 115274,
+        "sha256": "13e0cfcb67af30d058f448ece70a948e6d677e04099a570a2b6ed17bd05fe869"
+      },
+      {
+        "path": "brand/sections/literary-calendar.webp",
+        "bytes": 85994,
+        "sha256": "e0939b1ac6666d9eb4ed7690e6207d38b670b17dd7ba4cdeeac4fb01a6e48467"
+      },
+      {
+        "path": "brand/sections/readers-forum.webp",
+        "bytes": 118496,
+        "sha256": "6491f7ecbf11c49b35520b008f50b6661524cbc9ff6e7e9a54c5f94c34a4f537"
+      },
+      {
+        "path": "brand/series-2.webp",
+        "bytes": 60308,
+        "sha256": "cb72cc123fbfe6de6ca75f91735ee66d3ae6088d814ee165b486007b10e4e12d"
+      },
+      {
+        "path": "fonts/editorial/LICENSE.onest.txt",
+        "bytes": 4476,
+        "sha256": "16df0fdfdf25d4e2e1dcc25fab97773de0f3a9db962fdb15cb6a9d39d9cdc407"
+      },
+      {
+        "path": "fonts/editorial/LICENSE.source-sans-3.md",
+        "bytes": 4578,
+        "sha256": "62efaba15836b1ce985d0e3205befc0ce8588d453b07d168915ec2803d219206"
+      },
+      {
+        "path": "fonts/editorial/LICENSE.source-serif-4.md",
+        "bytes": 4584,
+        "sha256": "717a22f1bd2e30d49c21a2a6f548819aacd0ade1adf854533f4d42a01bb4f910"
+      },
+      {
+        "path": "fonts/editorial/onest-cyrillic-ext-variable.woff2",
+        "bytes": 10540,
+        "sha256": "268f03691b3d06e57abcf20f9277e314ea8784298983aab5b40c1b91965027e1"
+      },
+      {
+        "path": "fonts/editorial/onest-cyrillic-variable.woff2",
+        "bytes": 15860,
+        "sha256": "68e5e01d6265bd68967746d4f5a9d18d0e6cbb5d15583c7082d6384ab1229b27"
+      },
+      {
+        "path": "fonts/editorial/onest-latin-ext-variable.woff2",
+        "bytes": 28452,
+        "sha256": "14e7d3079b75860e2ab50efc6c318c398fdb46ede9b56e625f12ae70a3c5d9a4"
+      },
+      {
+        "path": "fonts/editorial/onest-latin-variable.woff2",
+        "bytes": 33760,
+        "sha256": "052df74533250c2e0ca0c4bdd32de594e107d99c1648e63820ef9c6142067828"
+      },
+      {
+        "path": "fonts/editorial/source-sans-3-cyrillic-400-normal.woff2",
+        "bytes": 9604,
+        "sha256": "b0324c3af47c138a2b5457466037637b8279576197024ed6968041836ffc0546"
+      },
+      {
+        "path": "fonts/editorial/source-sans-3-cyrillic-600-normal.woff2",
+        "bytes": 9644,
+        "sha256": "31fe183d248fa315a872f0956e0e43bc5d1d6c9c7fea2fa434deb91ab2a686ff"
+      },
+      {
+        "path": "fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+        "bytes": 9604,
+        "sha256": "1c484c7583999a7471c7d2dff4f0d1e001d459afaed4f58b3f6e0d88548d982c"
+      },
+      {
+        "path": "fonts/editorial/source-sans-3-latin-400-normal.woff2",
+        "bytes": 15696,
+        "sha256": "0f73f35e08cde0a2f10c109c6e01d71459d97e4099ecd9a50f1b6c0209e4de2b"
+      },
+      {
+        "path": "fonts/editorial/source-sans-3-latin-600-normal.woff2",
+        "bytes": 15668,
+        "sha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38"
+      },
+      {
+        "path": "fonts/editorial/source-sans-3-latin-700-normal.woff2",
+        "bytes": 15596,
+        "sha256": "ae35266f2ab0d5314ff9a04127931eb26c793e4f1269bb240046d4d2db4b7bb1"
+      },
+      {
+        "path": "fonts/editorial/source-serif-4-cyrillic-400-italic.woff2",
+        "bytes": 13748,
+        "sha256": "18148c0920aa7272b106614f585dfa46d08d01aca5734e5c990f02e649c33aeb"
+      },
+      {
+        "path": "fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+        "bytes": 14172,
+        "sha256": "4899e71407c11bcafe49dfa3573415740a5b47a87028917eedd39731237369c0"
+      },
+      {
+        "path": "fonts/editorial/source-serif-4-cyrillic-600-normal.woff2",
+        "bytes": 14776,
+        "sha256": "881a5cd61ba36255b82c4e99ca68a21dab3fc62fd91d780501c597f82cae477a"
+      },
+      {
+        "path": "fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+        "bytes": 14864,
+        "sha256": "faf0f5d4125e4f68e024a1d6cf5dad104487692badf3b24a3a8dd38a63542e20"
+      },
+      {
+        "path": "fonts/editorial/source-serif-4-latin-400-italic.woff2",
+        "bytes": 20092,
+        "sha256": "882b7c150c29f29d4f8daae6b8dcae8662aac7f28ca34b34615305154136ecfd"
+      },
+      {
+        "path": "fonts/editorial/source-serif-4-latin-400-normal.woff2",
+        "bytes": 20088,
+        "sha256": "02194deb92d3975dd30e11a3824a1f1db32b48c93654e60560cb81ce8e7b5f95"
+      },
+      {
+        "path": "fonts/editorial/source-serif-4-latin-600-normal.woff2",
+        "bytes": 21532,
+        "sha256": "f2b7e1cf1d277b7608231868135648f8ad8e2b58d8e97ca088bee15dc357bee7"
+      },
+      {
+        "path": "fonts/editorial/source-serif-4-latin-700-normal.woff2",
+        "bytes": 21716,
+        "sha256": "7691c51bc286a9014db0048277d2c3f2ad0a90b533dc8adfb16cb22a95390d39"
+      },
+      {
+        "path": "index.html",
+        "bytes": 1036,
+        "sha256": "8fc30f2f6604d98dc2790043e9861c987dda5b6a90707a52877e27b4b30752f9"
+      },
+      {
+        "path": "module-ownership.json",
+        "bytes": 76471,
+        "sha256": "290cd52a156b34cc227352aea13b90fd621c4ef595366dbcb640d3f840b62054"
+      },
+      {
+        "path": "textures/antique-world-1887-mobile.webp",
+        "bytes": 687972,
+        "sha256": "65ea5f03a43b6583dd95b456f42b1d184c48dc0449eaba25c5d23269b1e5974d"
+      },
+      {
+        "path": "textures/antique-world-1887.webp",
+        "bytes": 2901792,
+        "sha256": "b498488cba930c48c5c68564ab8f355a50fe620f5aec15353225edcdf592a175"
+      },
+      {
+        "path": "textures/behaim-1492-ravenstein-1908-mobile.webp",
+        "bytes": 511208,
+        "sha256": "324301cf0724c337d34c1d370dc66fa8ea3f0abaa0afcb34713d2dd2a469d2b5"
+      },
+      {
+        "path": "textures/behaim-1492-ravenstein-1908.webp",
+        "bytes": 2031414,
+        "sha256": "a06342cfaf146fdd4d72c0cbc870ab85946199a977d8c6366ef918bdad19c0b8"
+      },
+      {
+        "path": "textures/cassini-globo-terrestre-1790-mobile.webp",
+        "bytes": 609440,
+        "sha256": "2e0efdd36e682d20be5b8db0875a71c47ef33d3d810be45596b6e4e1d99e83f0"
+      },
+      {
+        "path": "textures/cassini-globo-terrestre-1790.webp",
+        "bytes": 2619370,
+        "sha256": "d62718455ea9a04605ac1694abe20bf551a93bf7b5c2c688df579b6eb4398018"
+      },
+      {
+        "path": "textures/coronelli-1697-mobile.webp",
+        "bytes": 499562,
+        "sha256": "b03c5f23f84ddaef6da942a64f6ac5b37ff7481e90681d5e98ab7eeff48aeacf"
+      },
+      {
+        "path": "textures/coronelli-1697.webp",
+        "bytes": 1429020,
+        "sha256": "1654e3e04ee14ccdec7cfbf7a640b212ebde0c96949558bcf0edeece1dd9a012"
+      },
+      {
+        "path": "textures/earth-blue-marble-mobile.webp",
+        "bytes": 126246,
+        "sha256": "7e7dcfff082c0e1efe909e6d64ee815bc1b9d17f782b802a8fd4e4b2e7a65397"
+      },
+      {
+        "path": "textures/earth-blue-marble.webp",
+        "bytes": 434610,
+        "sha256": "cc2b9b11fb1ccd4194c612c84320f0ef1ab991f6b247473be7b51a66f3328c41"
+      },
+      {
+        "path": "textures/hondius-rossi-1615-mobile.webp",
+        "bytes": 537158,
+        "sha256": "5ce58cb1b6b3cfc102d0f012911e4a590aa6572302e8fa0b52f3beffb0f7687b"
+      },
+      {
+        "path": "textures/hondius-rossi-1615.webp",
+        "bytes": 1929066,
+        "sha256": "4d9b6926768fc6ac91eafa4a1586ab3fc70dfdd2d66d9a35243dc7a897e1b7b1"
+      },
+      {
+        "path": "textures/modern-atlas-2026-en-mobile.webp",
+        "bytes": 390810,
+        "sha256": "b897e3722909ffbefa25013851ad2bdf605711a069e5c552129b6e470bb3c957"
+      },
+      {
+        "path": "textures/modern-atlas-2026-en.webp",
+        "bytes": 1461376,
+        "sha256": "8df82c055820b44b178efa7321888e9049821859ca0408bbc77b64b2d9219399"
+      },
+      {
+        "path": "textures/modern-atlas-2026-ru-mobile.webp",
+        "bytes": 395324,
+        "sha256": "8817b45f53a9caa9592a711e52ed83004265f36dd98de777776a2cb6143bd58b"
+      },
+      {
+        "path": "textures/modern-atlas-2026-ru.webp",
+        "bytes": 1477124,
+        "sha256": "26a04a83536b6ceb7a3db37c2ff67c083cd1699c4dd4543292e43c8d694fc4fc"
+      },
+      {
+        "path": "textures/scherer-1700-mobile.webp",
+        "bytes": 407040,
+        "sha256": "573b03cad23a9c626b13be4169b3089f6281a1e75049cb92d081e5ee1a7e6035"
+      },
+      {
+        "path": "textures/scherer-1700.webp",
+        "bytes": 1104598,
+        "sha256": "b844cc59c075e03873c137daa761431ddb1f9f97676fac1c33b0ec28679cff64"
+      },
+      {
+        "path": "textures/us-army-general-reference-1943-mobile.webp",
+        "bytes": 525424,
+        "sha256": "020f0808c4c1e0671c05124e836349884d6a204fd635057226106a9b9268d38a"
+      },
+      {
+        "path": "textures/us-army-general-reference-1943.webp",
+        "bytes": 1971264,
+        "sha256": "09418203d87aa85a465e3694e53d33b9893387796db798966197dd19193e36d6"
+      }
+    ],
+    "extraFiles": [
+      {
+        "path": "apps/mobile/ios/App/App/public/cordova.js",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "apps/mobile/ios/App/App/public/cordova_plugins.js",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "unknownExtras": [],
+    "missingFiles": [],
+    "mismatchedFiles": [],
+    "symlinks": []
+  },
+  "emptyCordovaFiles": {
+    "explanation": "CLI creates both empty compatibility files when no Cordova plugins are installed; zero bytes are individually verified, not accepted by filename alone.",
+    "source": {
+      "path": "node_modules/@capacitor/cli/dist/cordova.js",
+      "bytes": 43736,
+      "sha256": "e20c13b06c7aff87a2ac94ed83e94a8312fc0cfaab25d7faa4bea0aed5829caf"
+    },
+    "createEmptyCordovaJSLines": [
+      136,
+      141
+    ],
+    "handleCordovaPluginsJSLines": [
+      218,
+      232
+    ]
+  },
+  "sync": {
+    "log": {
+      "path": ".tmp/native-bootstrap/sync-ios-first.log",
+      "bytes": 618,
+      "sha256": "7dfd58ddfed3ba00fede62bec4d329bc9a639465deea34e8bb7820d87207cd73"
+    },
+    "observedExitCode": 0,
+    "exitCodeProvenance": "Parent-run exec completed with code 0; this review independently verifies resulting files and does not rerun the mutating sync command."
+  },
+  "generatedConfiguration": {
+    "path": "apps/mobile/ios/App/App/capacitor.config.json",
+    "bytes": 481,
+    "sha256": "ed3670fd9a0b229ba32436b8d453b96fa8493f345f66df600658273eddfe2545",
+    "localBundle": true,
+    "remoteServerUrl": false,
+    "allowNavigationOverride": false,
+    "hostname": "localhost",
+    "scheme": "capacitor",
+    "pluginClasses": [
+      "AppPlugin",
+      "AppLauncherPlugin",
+      "CAPBrowserPlugin",
+      "CAPNetworkPlugin",
+      "PreferencesPlugin"
+    ]
+  },
+  "retainedIosResources": [
+    {
+      "path": "apps/mobile/ios/App/App/Info.plist",
+      "sha256": "9c791e794d5a4f8849d7ceb4d282f2623fab79c1ccf28165f66ab3f82ffbfa51"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/en.lproj/InfoPlist.strings",
+      "sha256": "0c24ed31dbe052a9198992fb0330d6af98de85d771a0fd831ff57c8c7ca23f60"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/ru.lproj/InfoPlist.strings",
+      "sha256": "8eae58cbbe72a70cb8ba63ea171949d9e4251f9803ecb42b1cc5eeb2a070fe7f"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PrivacyInfo.xcprivacy",
+      "sha256": "a3799663af4d176d8ce1d87b8f061deddd8ebe7083de64ef5406f9e4844d30f2"
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "sha256": "78d4fea0192468e192d0275a523d22fa94cba7ab6895420ce6fbf7e77d719e4d"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/SceneDelegate.swift",
+      "sha256": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/AppDelegate.swift",
+      "sha256": "481e2ad8672b14acbd3e3df65acdc6d046526ae542b7bec903cf842fc68d9e49"
+    }
+  ],
+  "retainedIosBrandResources": [
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+      "sha256": "0468ec2c05dcf9ff2b071aafed86381127f6e45a230cadeae9810191ad5997e7"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png",
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png",
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png",
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a"
+    }
+  ],
+  "parsedProject": {
+    "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+    "bytes": 16280,
+    "sha256": "78d4fea0192468e192d0275a523d22fa94cba7ab6895420ce6fbf7e77d719e4d",
+    "parser": "xcode 3.0.1",
+    "knownRegions": [
+      "en",
+      "ru",
+      "Base"
+    ],
+    "localizations": [
+      "en",
+      "ru"
+    ],
+    "privateAppPreferencesReason": "CA92.1",
+    "singleSceneDelegateRetained": true,
+    "targetResourceReferencesPresent": true,
+    "capAppSpmProjectReferencePresent": true
+  },
+  "swiftPackage": {
+    "generatedManifest": {
+      "path": "apps/mobile/ios/App/CapApp-SPM/Package.swift",
+      "bytes": 1620,
+      "sha256": "2770201ccb936e1c7855836a7793c5de73e3b7ec4ac03e53250cb0da8119fe78"
+    },
+    "generator": {
+      "path": "node_modules/@capacitor/cli/dist/util/spm.js",
+      "bytes": 16450,
+      "sha256": "d6404734c5c70444ece02c45ad7760081a5ef139682518e00a8c553dbd8cc13c"
+    },
+    "exactClauseLine": 107,
+    "generatedCapacitorRequirement": "exact: \"8.5.1\"",
+    "localPlugins": [
+      {
+        "product": "CapacitorApp",
+        "localPathInGeneratedManifest": "../../../../../node_modules/@capacitor/app",
+        "resolvedRepositoryPath": "node_modules/@capacitor/app",
+        "npmName": "@capacitor/app",
+        "npmVersion": "8.1.1",
+        "packageJson": {
+          "path": "node_modules/@capacitor/app/package.json",
+          "bytes": 2834,
+          "sha256": "1682e621c3efdc11ddcc7b48f7386bd3d6ec63987510d89c280c6c0ccd75ef82"
+        },
+        "swiftManifest": {
+          "path": "node_modules/@capacitor/app/Package.swift",
+          "bytes": 815,
+          "sha256": "d44561f547e84b2e19c7dfec43c9d6ac844780baea95819384da493a5a847abd"
+        },
+        "swiftSources": [
+          {
+            "path": "node_modules/@capacitor/app/ios/Sources/AppPlugin",
+            "files": 1
+          }
+        ],
+        "capacitorRequirementInPlugin": "from: \"8.0.0\"",
+        "actualCompilerValidated": false
+      },
+      {
+        "product": "CapacitorAppLauncher",
+        "localPathInGeneratedManifest": "../../../../../node_modules/@capacitor/app-launcher",
+        "resolvedRepositoryPath": "node_modules/@capacitor/app-launcher",
+        "npmName": "@capacitor/app-launcher",
+        "npmVersion": "8.0.1",
+        "packageJson": {
+          "path": "node_modules/@capacitor/app-launcher/package.json",
+          "bytes": 2711,
+          "sha256": "6cfc3e7ef35063f0a966fd4c93d4a3a7f6fd717c5c6e3a06acd1d4654e39f203"
+        },
+        "swiftManifest": {
+          "path": "node_modules/@capacitor/app-launcher/Package.swift",
+          "bytes": 879,
+          "sha256": "3a8129212beddbbecedfe8f371229cbbe2ce4c7d1f9b7b2a0a04fb0c2b84fafc"
+        },
+        "swiftSources": [
+          {
+            "path": "node_modules/@capacitor/app-launcher/ios/Sources/AppLauncherPlugin",
+            "files": 1
+          }
+        ],
+        "capacitorRequirementInPlugin": "from: \"8.0.0\"",
+        "actualCompilerValidated": false
+      },
+      {
+        "product": "CapacitorBrowser",
+        "localPathInGeneratedManifest": "../../../../../node_modules/@capacitor/browser",
+        "resolvedRepositoryPath": "node_modules/@capacitor/browser",
+        "npmName": "@capacitor/browser",
+        "npmVersion": "8.0.4",
+        "packageJson": {
+          "path": "node_modules/@capacitor/browser/package.json",
+          "bytes": 2732,
+          "sha256": "cb1325946ea0aae2c0181ecb1cac7c7f2ed45bd10f42b1551e0c44e555d620e5"
+        },
+        "swiftManifest": {
+          "path": "node_modules/@capacitor/browser/Package.swift",
+          "bytes": 847,
+          "sha256": "7dc633bc6d0aff6411323a30b37bcbda203bae637741f37e094971a19aebcd72"
+        },
+        "swiftSources": [
+          {
+            "path": "node_modules/@capacitor/browser/ios/Sources/BrowserPlugin",
+            "files": 2
+          }
+        ],
+        "capacitorRequirementInPlugin": "from: \"8.0.0\"",
+        "actualCompilerValidated": false
+      },
+      {
+        "product": "CapacitorNetwork",
+        "localPathInGeneratedManifest": "../../../../../node_modules/@capacitor/network",
+        "resolvedRepositoryPath": "node_modules/@capacitor/network",
+        "npmName": "@capacitor/network",
+        "npmVersion": "8.0.1",
+        "packageJson": {
+          "path": "node_modules/@capacitor/network/package.json",
+          "bytes": 2700,
+          "sha256": "d5018db36cccdae9931a4ee014f6a6258cfe91727535a166eba00ac947fc0256"
+        },
+        "swiftManifest": {
+          "path": "node_modules/@capacitor/network/Package.swift",
+          "bytes": 859,
+          "sha256": "8452df2d3082b944a7a5673ef5b552e084c97bdffb5b800bf9a557b27c573f58"
+        },
+        "swiftSources": [
+          {
+            "path": "node_modules/@capacitor/network/ios/Sources/NetworkPlugin",
+            "files": 3
+          }
+        ],
+        "capacitorRequirementInPlugin": "from: \"8.0.0\"",
+        "actualCompilerValidated": false
+      },
+      {
+        "product": "CapacitorPreferences",
+        "localPathInGeneratedManifest": "../../../../../node_modules/@capacitor/preferences",
+        "resolvedRepositoryPath": "node_modules/@capacitor/preferences",
+        "npmName": "@capacitor/preferences",
+        "npmVersion": "8.0.1",
+        "packageJson": {
+          "path": "node_modules/@capacitor/preferences/package.json",
+          "bytes": 2743,
+          "sha256": "4bd8fd8cd326301d7c68d03086825a2ad119481201cfb0c851c103a6a36f8bc0"
+        },
+        "swiftManifest": {
+          "path": "node_modules/@capacitor/preferences/Package.swift",
+          "bytes": 879,
+          "sha256": "30324e8b3ba4ea660a7b8851aed0594b82c324a4709638d9e491a9920aa42b9c"
+        },
+        "swiftSources": [
+          {
+            "path": "node_modules/@capacitor/preferences/ios/Sources/PreferencesPlugin",
+            "files": 2
+          }
+        ],
+        "capacitorRequirementInPlugin": "from: \"8.0.0\"",
+        "actualCompilerValidated": false
+      }
+    ],
+    "pluginPathsChecked": 5,
+    "packageResolvedFiles": [],
+    "swiftPackageResolutionRun": false,
+    "swiftCompileRun": false
+  },
+  "correction": {
+    "historical": [
+      {
+        "original": {
+          "path": "docs/mobile/evidence/S04/capacitor-package-contracts.json",
+          "bytes": 95394,
+          "sha256": "9b4621525e863308ce66b8f2a0b9803586e3498ef111952911bb36683c384bff"
+        },
+        "historicalCopy": {
+          "path": "docs/mobile/evidence/S04/history/capacitor-package-contracts-before-ios-sync-review.json",
+          "bytes": 95394,
+          "sha256": "9b4621525e863308ce66b8f2a0b9803586e3498ef111952911bb36683c384bff"
+        }
+      },
+      {
+        "original": {
+          "path": "docs/mobile/evidence/S04/capacitor-package-contracts.md",
+          "bytes": 13575,
+          "sha256": "15aa3fa9c2c1b3e6194e31501b16ce92d4d20e0579925025b73f8c76b859169d"
+        },
+        "historicalCopy": {
+          "path": "docs/mobile/evidence/S04/history/capacitor-package-contracts-before-ios-sync-review.md",
+          "bytes": 13575,
+          "sha256": "15aa3fa9c2c1b3e6194e31501b16ce92d4d20e0579925025b73f8c76b859169d"
+        }
+      }
+    ],
+    "originalMdLine": 58,
+    "originalJsonPointer": "/contractFindings/templates/ios/cliUpdateVersionRange",
+    "originalJsonLine": 2784,
+    "incorrectClaim": "The final CLI-generated app dependency remains from:<installed @capacitor/ios version>.",
+    "correctedClaim": "Capacitor CLI 8.5.1 generatePackageText emits the app dependency exact:<installed @capacitor/ios version>; the actual synced manifest is exact:\"8.5.1\". update.js inspects plugin manifests and separately generates Cordova plugin packages. Their from: clauses do not describe the final CapApp-SPM app manifest.",
+    "preservedValidCaution": "Plugin manifests have compatible from: 8.0.0 clauses and the application constrains Capacitor to exactly 8.5.1, but no macOS dependency resolution or locked resolved graph has been produced. npm exact pins and generated app exact clause are not a substitute for actual resolved/native build evidence.",
+    "appGeneratorProof": {
+      "path": "node_modules/@capacitor/cli/dist/util/spm.js",
+      "function": "generatePackageText",
+      "definitionLine": 87,
+      "exactClauseLine": 107
+    },
+    "updateFlowProof": {
+      "path": "node_modules/@capacitor/cli/dist/ios/update.js",
+      "bytes": 31317,
+      "sha256": "8165877362d8116c02ffd364bf2afbaebb55c6ca4e0a1aac46d71c98dc1f5b64",
+      "pluginManifestHandlingLines": [
+        47,
+        63
+      ],
+      "appGeneratorCallLine": 64
+    },
+    "originalReportEdited": false
+  },
+  "machineCapability": {
+    "platform": "win32",
+    "arch": "x64",
+    "macOSHost": false,
+    "swiftOnPathObserved": false,
+    "xcodebuildOnPathObserved": false,
+    "method": "Windows host plus Get-Command swift,xcodebuild returned no commands. No remote host account metadata, credential environment, remote job, installation or iOS build was requested."
+  },
+  "limits": [
+    "Local copied-bundle identity and source/resource parsing only.",
+    "No Package.resolved, Swift resolver, xcodebuild, simulator, iPhone/iPad install, signing, archive or IPA proof.",
+    "Existing artifact audit is preparation integrity and self-reported module ownership, not independent arbitrary source-to-binary compilation proof.",
+    "No store screenshot, bilingual human translation approval, paid entitlement validation or release readiness is implied."
+  ],
+  "releaseReady": false,
+  "productionActionsAuthorized": false
+}

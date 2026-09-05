@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-05T21:27:50.602Z",
+  "status": "ALL_REPLACED_ANDROID_BRAND_RESOURCES_AAPT2_COMPILE_PASS",
+  "preparationReceipt": {
+    "path": "docs/mobile/evidence/S04/native-brand-resources-preparation.json",
+    "sha256": "9cfbc9247eb31c721f72132266fc279b62a3135101fd6a9f1743e11dbe8bb336"
+  },
+  "sourceHashMatches": 33,
+  "androidResourceCompiles": 29,
+  "commandPattern": ".tmp/native-tools/android-sdk/build-tools/36.0.0/aapt2.exe compile <exact source resource> -o .tmp/native-brand-preparation/aapt2-compiled",
+  "compilerOutputs": [
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-land-hdpi_splash.png.flat",
+      "sha256": "632605e9e5ef7967e74b9953102be64c20a7f95879b3ba05783e192d268b5964"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-land-mdpi_splash.png.flat",
+      "sha256": "8259c387352774c5f5c450f9df9af37612f8b6330f89e8d2f99d54afa0d8a7c1"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-land-xhdpi_splash.png.flat",
+      "sha256": "994fad66b8f6ce2e3e286e83f41ad8a5688aee5e37f23bccce607899bb634c28"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-land-xxhdpi_splash.png.flat",
+      "sha256": "b21238d4492c2e089bd6ec64a3cea814018328a551afe0a1c725044ceda56d18"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-land-xxxhdpi_splash.png.flat",
+      "sha256": "2267c8d38337c73a6cfb87d8346ee3a35d067156a61e5cea421a46d7117cec29"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-port-hdpi_splash.png.flat",
+      "sha256": "d97c00c7a09b073c2f844dceac1a6f014b90f83cdce80712f55ce9049a78bff9"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-port-mdpi_splash.png.flat",
+      "sha256": "76c817d9e97c1154abedef7aa78c8df645e391e7db452e38d7c2adf1d60cafed"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-port-xhdpi_splash.png.flat",
+      "sha256": "6dca3ff9edb5f8bacc9f7e377ff7dcc72226f43b7e7f8667ac4b2813f8968eda"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-port-xxhdpi_splash.png.flat",
+      "sha256": "f4dd3415ed063640455e53095741208e9e8096fcdb66977ad27a64f92e8a38bb"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-port-xxxhdpi_splash.png.flat",
+      "sha256": "45152e5c506cf7f4240a2b098e0726fd407e09012c24368f294786d09d8995ac"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable-v24_ic_launcher_foreground.xml.flat",
+      "sha256": "2028ac9428175a2bb5d045927bf819874cf1b6a19c2810249451d0443bcdd13e"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable_ic_launcher_background.xml.flat",
+      "sha256": "fd386d7a1064a28ffd89f23c039b25ff35d228c77c0ce867dfd0d6e2352a965a"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/drawable_splash.png.flat",
+      "sha256": "5df3265dba3fc8c67448fe3c7c5dea334e17845eb92ae1cbf97da726fe035c2f"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-hdpi_ic_launcher.png.flat",
+      "sha256": "6fd426d589c0c90edc5139782c731d2ab53e70b6263d85132c6226e3ed8afe40"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-hdpi_ic_launcher_foreground.png.flat",
+      "sha256": "0bd8b94a7a0167290094b9c9e5cf2fe7b14b290f0ee4cff8e1c5109b337d201a"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-hdpi_ic_launcher_round.png.flat",
+      "sha256": "70757a687469f05fdc14c57c9e59b0c03d49cb24e15c6bd32a6d0786c273211a"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-mdpi_ic_launcher.png.flat",
+      "sha256": "5a38c953a2264cf79f8ebd13bd0ad4673b2f2dd27b50a4e6f6a8ab78acc84c0e"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-mdpi_ic_launcher_foreground.png.flat",
+      "sha256": "8be8d7a61b8c662d503dfa3ccfd31bb35c8296fbf455736ec5e86eb591a86219"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-mdpi_ic_launcher_round.png.flat",
+      "sha256": "7b7b977d59bc2172a7ce05279412a2d519578726631ff7d57c98d97db4ad1251"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-xhdpi_ic_launcher.png.flat",
+      "sha256": "160c29fdf8ec6bb516a0a553cff530483c19d1fd432dd8496bdd67c92d555b2c"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+      "sha256": "6a45e415d57569d770f0bd0e0d282c0f01b1cb62ce093d47a3562bee26860d63"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-xhdpi_ic_launcher_round.png.flat",
+      "sha256": "95d287c83b66a3c8546633255d5ffcffd29b44275984559e11591c9dcbb2b52b"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-xxhdpi_ic_launcher.png.flat",
+      "sha256": "77fe3f772de2c3694ef10ede8e76c586df2e0538215d554b9a98ee35b76c64c7"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+      "sha256": "afae8dc4871f1bf41d17330b50c3255e7cdf466a0cb3756c239c76f22a04213a"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-xxhdpi_ic_launcher_round.png.flat",
+      "sha256": "54abe0654df3034f43a0ebf8bb5ac1c244fdf6c95e76ea67e07012a010e751e3"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-xxxhdpi_ic_launcher.png.flat",
+      "sha256": "1c8ee5a024237714d286a12408c909cba8728d36236f3a932e1d7a692b323ba6"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+      "sha256": "301036fa28c4868eb1f5cdc7acf5c99ce2f60c707514d40190041d36cfdbd42d"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+      "sha256": "b5e43ba0050c0797aeeae0305df1d3fc2e4fdb5815bfd6bae2059f6320f27135"
+    },
+    {
+      "path": ".tmp/native-brand-preparation/aapt2-compiled/values_ic_launcher_background.arsc.flat",
+      "sha256": "8193539888dc131d26cbbcc6f06f0d6db0d1ebe0b5cc03131d797a844dbc7b1c"
+    }
+  ],
+  "androidApplicationBuild": false,
+  "iosAssetCatalogCompile": false,
+  "deviceScreenshots": false,
+  "releaseReady": false
+}

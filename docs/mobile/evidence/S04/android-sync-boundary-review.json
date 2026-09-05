@@ -1,0 +1,349 @@
+{
+  "scope": "Read-only Android Capacitor sync output comparison, not APK or device evidence",
+  "checkedAt": "2026-09-05T21:26:57.108Z",
+  "artifactBuildId": "fa9dd4a0ddaf48dbc9f714df32e94b6c97e51f439e504766465746b8a2bfd207",
+  "syncedBuildId": "c58cae3038a1b4e4212ac8ee486c0f8d184ce850f6b27db1e22d32b636490bf2",
+  "sourceFiles": 320,
+  "syncedFiles": 323,
+  "missing": [
+    {
+      "path": "assets/ArticleLibrarySection-D23UZAOu.js",
+      "bytes": 10849,
+      "sha256": "d4efbe350af04c4cd1ef0f68c9725148c720c24caffb1cbf85fb9d88e460bab9"
+    },
+    {
+      "path": "assets/ArticleReader-DNG_vUt_.js",
+      "bytes": 35223,
+      "sha256": "f1ff909f9d1dbf6ff33c347455ed6894d28d9b99ddf72ee7c7c3de3273e86f25"
+    },
+    {
+      "path": "assets/bookArchiveLocation-G2HWPkPu.js",
+      "bytes": 31193,
+      "sha256": "154f2ad8bcbadb88c8f2258aea1af39fefc5c8ecaa8516a71cf82e0f1cd36e9b"
+    },
+    {
+      "path": "assets/BookArchiveSection-B3tYJygG.js",
+      "bytes": 285026,
+      "sha256": "582cb5d26a19c6182d53824d567fd135600d2cd41bfbda2d0e1947ae2325005f"
+    },
+    {
+      "path": "assets/books-El-hvO3D.js",
+      "bytes": 607109,
+      "sha256": "24292b118bb2ebc2c3543201be4f7f1b04e290a5387f8caec5c5f132853bf0a3"
+    },
+    {
+      "path": "assets/BookShelfSceneCanvas-BwtH9wF7.js",
+      "bytes": 8345,
+      "sha256": "0bc5c54447d3429b4607ebc8849850a7d5bc33005e1a77a4f80ea32fc5220106"
+    },
+    {
+      "path": "assets/BookShelfSceneCanvas-DXf4ztrc.js",
+      "bytes": 8345,
+      "sha256": "88e19ce539171de9054219517fff090d7fe8b16eff6744eeaf85865b7cdeb30f"
+    },
+    {
+      "path": "assets/BrandHeartIcon-D25_rpBU.js",
+      "bytes": 3505,
+      "sha256": "1c4359995f0bf90eb147f5164f53477c4570e22536722fbf39ff4df765dbe115"
+    },
+    {
+      "path": "assets/catalog-D8X-emzH.js",
+      "bytes": 771188,
+      "sha256": "29b87ffb2c345ba27d255cfe83b49ee64f2db16403f7dc6fe0a52b796242aebd"
+    },
+    {
+      "path": "assets/catalog-DWxQFfX_.js",
+      "bytes": 607083,
+      "sha256": "405056172de5f925f09f84e0fc72cd6135156c5efd63e7a8f39c09a42a08f733"
+    },
+    {
+      "path": "assets/CmsHomepageContent-Cmj90jv3.js",
+      "bytes": 8146,
+      "sha256": "607d739e1254f7ceb4623278ffd233b714261142118a1f2a563f00199dc8490d"
+    },
+    {
+      "path": "assets/CommunityHub-x2kEb9H2.js",
+      "bytes": 34958,
+      "sha256": "04b5b35a43edeccc9a63ef6188669486da8161a0280ac3ecf30703245c0e2504"
+    },
+    {
+      "path": "assets/completeShelfRenderer-CAXozuEj.js",
+      "bytes": 53082,
+      "sha256": "85a0a32d6401fb562d90e28d3556483dd1af9be75ab751273135d793cf162531"
+    },
+    {
+      "path": "assets/GlobalSearch-CjvjtFev.js",
+      "bytes": 8127,
+      "sha256": "0eed341e1636b7861790a471ad4b6371f02ab062b131e743cddd38a35601b2ec"
+    },
+    {
+      "path": "assets/globalSearchRuntime-p5l_4ZHM.js",
+      "bytes": 8276,
+      "sha256": "96396b96ce670fc1ed3b1e4075c8c5c75ba872a440d50beddeed40b82daceb87"
+    },
+    {
+      "path": "assets/LiteraryCalendar-Cat5IW2r.js",
+      "bytes": 8940,
+      "sha256": "92d70bedb7865590fd9c3939a4a31737f807c013d48bfa8fcaa7308af7dbbc8a"
+    },
+    {
+      "path": "assets/LiteraryGlobe-3m5l8156.js",
+      "bytes": 127203,
+      "sha256": "c12e4d9c9e200a922211590deb01d8b9c07f523497394514920125f2ed69e304"
+    },
+    {
+      "path": "assets/native-DkdMfddY.js",
+      "bytes": 356852,
+      "sha256": "29b0c7bb83e4d7005ad850a231ee4f9edf53f5b63e654447af89aa2bba5dd3c6"
+    },
+    {
+      "path": "assets/NobelArchiveStrip-CmS6TscN.js",
+      "bytes": 3852,
+      "sha256": "a830b280916db3b4ca8c7356c7dc2939db41e536511161275bda98d1bd049c12"
+    },
+    {
+      "path": "assets/nobelArticles-DyPd7UlC.js",
+      "bytes": 477,
+      "sha256": "5d5be3e78290049b8049772f9856527499f68de80fb29f7d91785c2ab47236fc"
+    },
+    {
+      "path": "assets/sanitizeArticleHtml-CvfNTgeA.js",
+      "bytes": 12065,
+      "sha256": "bd52b60eb47570807b1583495df5a06bc3160f4c1e6dffe8805e06548acef99c"
+    },
+    {
+      "path": "assets/SectionsDirectory-Cnc93h6M.js",
+      "bytes": 5003,
+      "sha256": "944f328c583c8c0c03a6f5d5deff22a84e3549f019748ecdd9a5cd36e93c741e"
+    },
+    {
+      "path": "assets/supabase-vendor-l0sNRNKZ.js",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "assets/useSubscriptions-BBT3HZIe.js",
+      "bytes": 1070,
+      "sha256": "187301cad8bb17b6470be3f530aefc3e55fdb83ac35778748112ff864abf1a78"
+    },
+    {
+      "path": "assets/web-AuasSiC3.js",
+      "bytes": 1231,
+      "sha256": "ab517f5a1001b81a9ae43edf8206ac678406a6a3816a055767872efda788e2ab"
+    },
+    {
+      "path": "assets/web-BnyXA0_f.js",
+      "bytes": 920,
+      "sha256": "8d9439262762a884869438e895c90de356f01b69fcffac57687d716c37905113"
+    },
+    {
+      "path": "assets/web-C4A6nAfi.js",
+      "bytes": 457,
+      "sha256": "53eea348f43c9fe9826f7cd9fbc925dad830f80159163dbf6ab4c62831d8df90"
+    },
+    {
+      "path": "assets/web-CmXHeTsX.js",
+      "bytes": 270,
+      "sha256": "d71f5e5377e8d1bb5d4cf38e07f2e4c2a048b7e718b7e1e4caa78ce8e39bb980"
+    },
+    {
+      "path": "assets/web-DIa8k90x.js",
+      "bytes": 1323,
+      "sha256": "748f710b25467da00be226608b1d87c6fc2b3d037d52b5a82e97eee66842ae27"
+    },
+    {
+      "path": "assets/WriterPanel-DFkJczLX.js",
+      "bytes": 29055,
+      "sha256": "b9e13a8e3b2c03f4da62b6786d04ffd7277fbc13757d53c0dc6f93ce56533711"
+    }
+  ],
+  "changed": [
+    {
+      "path": ".vite/manifest.json",
+      "source": "53d96d62286e23922333a5ff88ded9c9cfed39fce53a0d3f1fdec4471bad048e",
+      "synced": "8ddd5b5153894a68e4b98767da48bbd454acb9bbe8997b8196e45d0345ade4c6"
+    },
+    {
+      "path": "artifact.json",
+      "source": "6b7488b6a9d2208ef5e9578be379bc045fcda601d9704c958e6fec76d7677ecd",
+      "synced": "b02db5a975aa5eff8a13be4e5a333cca9fb328228fa5b2a6e19d077d74b21d66"
+    },
+    {
+      "path": "index.html",
+      "source": "f7d65824bbe07d79751cdbda75ed1875c3e93d6a69bbff717c4595405df7d7ad",
+      "synced": "9d1c7e574d7b875b570a9f5d88ae8d7c5b3e2a0df4955b9ef17b4ca512c1eec2"
+    },
+    {
+      "path": "module-ownership.json",
+      "source": "f73d431ba30c758e59d30ef91486431c66a8c803d7849ee399877b8cb6edf33d",
+      "synced": "989e6487a33fd0e6468440b300448e759c9dffa1b72ee7cda1d9ee7c98faddf9"
+    }
+  ],
+  "extra": [
+    {
+      "path": "assets/ArticleLibrarySection-hoeZviAs.js",
+      "bytes": 10922,
+      "sha256": "57a1487fb03a6a455bad28779227512e9b25a8ac6e84e501d26f6f9af96219bd"
+    },
+    {
+      "path": "assets/ArticleReader-D63UXZxT.js",
+      "bytes": 36256,
+      "sha256": "22a87c34b7739abbc066ee3938a8537b5ee20b4b64d0b18e1cab603e2f2ff441"
+    },
+    {
+      "path": "assets/bookArchiveLocation-CesUih4w.js",
+      "bytes": 31195,
+      "sha256": "33cc329d151327f60dc6d59fd13fc14a0d03e0427a0d749fa51f0ab4a52f1591"
+    },
+    {
+      "path": "assets/BookArchiveSection-Sy7V_y0a.js",
+      "bytes": 290126,
+      "sha256": "52588baf8aa9bd5c02408172f8e8fdf60a286cced820a30baae79bf6504740cd"
+    },
+    {
+      "path": "assets/books-jNuOOKju.js",
+      "bytes": 607109,
+      "sha256": "368e8f6cece6f34e49c6479dff204f5bf9a9ef5e90a0b19d6bd65d597430c087"
+    },
+    {
+      "path": "assets/BookShelfSceneCanvas-BLGQPut_.js",
+      "bytes": 8414,
+      "sha256": "e8a71323d43aba1b462e165a60a4447e293ca29cfa302983e41d767b4a335b49"
+    },
+    {
+      "path": "assets/BookShelfSceneCanvas-D88uluX9.js",
+      "bytes": 8414,
+      "sha256": "341ec6efc176b17be7ed8c6037a7d6dc84e98fa405ff6b1d9a439e9625870f50"
+    },
+    {
+      "path": "assets/BrandHeartIcon-BdjUzybP.js",
+      "bytes": 5947,
+      "sha256": "a301ec3d5250e82e7eab51f6fa38a0536134e618c91ae62222a5ad15558eaab4"
+    },
+    {
+      "path": "assets/catalog-B7UV6K7X.js",
+      "bytes": 607083,
+      "sha256": "df9fc81359c455f49f1565aa26b4150d310668ade6563921eb4aea82027a86b8"
+    },
+    {
+      "path": "assets/catalog-Q0Sx4qWl.js",
+      "bytes": 771188,
+      "sha256": "ace7ca3b99d7e1501ddad82d02d3272e0c3bce01389f8d8c43a33bc5293b9670"
+    },
+    {
+      "path": "assets/CmsHomepageContent-C5-YuOXn.js",
+      "bytes": 8146,
+      "sha256": "5159df6b953e93d788427e0f34068efe554603e39a0537fdf34049a61ce41229"
+    },
+    {
+      "path": "assets/CommunityHub-BsNg4ENr.js",
+      "bytes": 44991,
+      "sha256": "842d3e66ef0f94ad74ba4346532ac4024dcaf3df47c8fc3cf2db851250ecd8f1"
+    },
+    {
+      "path": "assets/completeShelfRenderer-CnULxpes.js",
+      "bytes": 53082,
+      "sha256": "1c6e71ae7a11e9f32464bc9481c5a797ab7701e650d5b3dc92130eaea765699a"
+    },
+    {
+      "path": "assets/GlobalSearch-DnavO63s.js",
+      "bytes": 8127,
+      "sha256": "fb48a99f11c8f7c9d19bb1efebb6cf8916dd62ef8920a2ed36098c183eb932ec"
+    },
+    {
+      "path": "assets/globalSearchRuntime-DyfclBgz.js",
+      "bytes": 8276,
+      "sha256": "cfcb1599777840c1c719ae581b9e2c1aa23159b7e61cf0f740b16211e40bfca3"
+    },
+    {
+      "path": "assets/LiteraryCalendar-BFggEsZr.js",
+      "bytes": 8940,
+      "sha256": "cf4a30d8169191790cfa7c7c6f0d6bb30208f56a47b2e3232c85beedf42946a3"
+    },
+    {
+      "path": "assets/LiteraryGlobe-MMedXumJ.js",
+      "bytes": 127203,
+      "sha256": "28c35e4a5dd863bf8ecbaeb068c71be6603e17f9ec9033b2f57712a9430253a1"
+    },
+    {
+      "path": "assets/native-pnqOwMr0.js",
+      "bytes": 357201,
+      "sha256": "8c66d74ecf795f593eddd36ad57493e3646875d71c8de0e3cbb978dac393ab80"
+    },
+    {
+      "path": "assets/NobelArchiveStrip-BW3GLFfi.js",
+      "bytes": 3852,
+      "sha256": "b6a54108400cd22c54ec17387f4a4ff88c45aac692ffefc662922d11e1cab076"
+    },
+    {
+      "path": "assets/nobelArticles-DEgx8kbW.js",
+      "bytes": 477,
+      "sha256": "ebd5e4d598ad10d8f481e198dad544b2ce46c1fe4a80ef83bcf6b0e0b4a3d38c"
+    },
+    {
+      "path": "assets/sanitizeArticleHtml-oaAi3WZQ.js",
+      "bytes": 12065,
+      "sha256": "e6522c765b3143dfee2fde52f543d2a5ca18da3145e46acf52ea125b500daa48"
+    },
+    {
+      "path": "assets/SectionsDirectory-pN5wNDZi.js",
+      "bytes": 5003,
+      "sha256": "c4658c1fac29b858dacf70f5449b6e23f04eeda94145d42180fc4e833027ec2c"
+    },
+    {
+      "path": "assets/supabase-DwPyaB9a.js",
+      "bytes": 1053,
+      "sha256": "b6fe38a7eea659e26df2c3ab196dd7ef9a7174044fa140acd99eae9fc78fd74c"
+    },
+    {
+      "path": "assets/supabase-vendor-C0Z0FS3K.js",
+      "bytes": 216820,
+      "sha256": "57643c9b251680f571bda0e09597ad88105a3853d5605d1b7fc7ba47fc35e482"
+    },
+    {
+      "path": "assets/useSubscriptions-jlUH2nMn.js",
+      "bytes": 2153,
+      "sha256": "1dc3cafde6fc76e640b0de6a358e6072b27c2a656283352d0c5cb7528d29a7a2"
+    },
+    {
+      "path": "assets/web-BATMPW13.js",
+      "bytes": 1231,
+      "sha256": "13907857511d67c3ff5d9783d916298c0ded252c9873a35b8363df6360cc890c"
+    },
+    {
+      "path": "assets/web-bBneyHOB.js",
+      "bytes": 270,
+      "sha256": "f2efcf053cfbcca7700b979bc874e5437c15d40be74c733b49e3c372ce1c73f2"
+    },
+    {
+      "path": "assets/web-CTq-1Zye.js",
+      "bytes": 1323,
+      "sha256": "6c7e435448f8cdad3a7b8aee9f20ea1124c678aafbaa437324f3245ebdaeb666"
+    },
+    {
+      "path": "assets/web-DrdGlXzC.js",
+      "bytes": 457,
+      "sha256": "ec50f8f0de4e3f51c7aa5629ddf1df81ec94b0e7561ca65235bf05442b9d1cf2"
+    },
+    {
+      "path": "assets/web-oKvXcx2I.js",
+      "bytes": 920,
+      "sha256": "d82235a4ad428d1afab08568ead398fa24b3e933f5e7da6ec9bffbb5653e1531"
+    },
+    {
+      "path": "assets/WriterPanel-BJ-gnX6G.js",
+      "bytes": 29125,
+      "sha256": "8773eaf39b045593545fcfb9149ac48ee0cfa514eccb8d3f7ec8f8a91ce8eb67"
+    },
+    {
+      "path": "cordova_plugins.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cordova.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

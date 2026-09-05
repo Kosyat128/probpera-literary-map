@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 dist/
 dist-pwa/
+dist-native/
 dist-public-locales/
 .next/
 next-env.d.ts

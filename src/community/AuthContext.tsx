@@ -127,3 +127,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth() {
   return useContext(AuthContext);
 }
+
+const accountlessReader: AuthContextValue = Object.freeze({
+  configured: false, loading: false, session: null, user: null,
+  role: "reader", displayName: "",
+});
+
+/** Bundled reading has no account session; this provider starts no backend IO. */
+export function AccountlessReaderProvider({ children }: { children: ReactNode }) {
+  return <AuthContext.Provider value={accountlessReader}>{children}</AuthContext.Provider>;
+}

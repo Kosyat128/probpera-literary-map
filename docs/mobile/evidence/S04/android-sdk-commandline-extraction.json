@@ -1,0 +1,13 @@
+{
+  "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\commandlinetools-win-15859902_latest.zip",
+  "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\cmdline-tools\\22.0",
+  "entries": 330,
+  "extractedFiles": 141,
+  "uncompressedBytes": 179901603,
+  "sha256": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a",
+  "sha1": "b9862337a13e2809a5159dc3a08d058091bd59f6",
+  "traversalAndLinkInspection": "passed",
+  "destinationWasAbsent": true,
+  "completedAt": "2026-09-05T20:47:09.7251755+00:00",
+  "freeBytesAfter": 14550695936
+}

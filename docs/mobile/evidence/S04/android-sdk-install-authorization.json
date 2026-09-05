@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S04",
+  "recordType": "explicit-user-sdk-install-authorization",
+  "source": "explicit user reply in current task",
+  "userReplyExactText": "Разрешаю принять лицензию и установить SDK",
+  "conveyedBy": "root agent in current task",
+  "authorizedScope": [
+    "Accept the standard Google Android SDK license through the actual SDK tool flow",
+    "Install the pinned command-line tools and selected Android36 SDK packages inside .tmp/native-tools",
+    "Use process-scoped Java/SDK/cache environment values without permanent system changes"
+  ],
+  "excludedScope": [
+    "Production deployment, signing, store submission or release",
+    "Global installations or permanent environment/registry changes",
+    "System images, emulator, NDK, CMake, extra AI/MCP setup or project-template replacement"
+  ],
+  "downloadAgreementSource": "https://developer.android.com/studio",
+  "downloadAgreementDateDisplayed": "2026-04-28",
+  "repositoryLicenseId": "android-sdk-license",
+  "repositoryLicenseDateDisplayed": "2019-01-16",
+  "repositoryLicenseTextSha256": "1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16",
+  "historicalPendingReceipt": "docs/mobile/evidence/S04/android-toolchain-preparation-before-sdk-authorization.json",
+  "historicalPendingReceiptSha256": "1b302d21311dc994868ba58d62a320bb9e8ebdc15b94d99a2919d60372998636",
+  "note": "Authorization is genuine; this record alone does not claim successful acceptance, installation or native build. Actual tool results are recorded separately. No human review of project legal copy is inferred."
+}

@@ -71,7 +71,10 @@ export function installAuthTurnstile(
   return client;
 }
 
-export const supabase = isCommunityConfigured
+const accountlessNativeReader = typeof __LITERARY_PLANET_EDITION__ !== "undefined"
+  && __LITERARY_PLANET_EDITION__ === "native";
+
+export const supabase = !accountlessNativeReader && isCommunityConfigured
   ? installAuthTurnstile(
       createClient(
         supabaseConnection.url!,

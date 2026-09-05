@@ -1,0 +1,644 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S04",
+  "recordType": "workspace-local-android-toolchain-installed",
+  "sourceCommit": "0afad0906f266dcac138aba697fc7cc97579fc7e",
+  "createdAt": "2026-09-05T21:02:36.096Z",
+  "status": "JAVA_ANDROID_SDK_READY_FOR_PROJECT_BUILD",
+  "stageComplete": false,
+  "androidBuildReady": true,
+  "releaseReady": false,
+  "scope": {
+    "toolsRoot": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools",
+    "repository": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+    "globalInstall": false,
+    "permanentEnvironmentChanges": false,
+    "registryChanges": false,
+    "npmOrProductChanges": false,
+    "sdkLicenseAccepted": true,
+    "productionActions": [],
+    "iosBuildClaimed": false,
+    "profileSideEffectOccurredAndReverted": true
+  },
+  "disk": {
+    "freeBytesBeforeDownload": 15703764992,
+    "freeBytesAfterJavaExtraction": 14916997120,
+    "extractionReserveBytes": 2147483648,
+    "measuredVolume": "C:",
+    "note": "No emulator/system image downloaded. Recheck free space before each SDK/build/cache acquisition.",
+    "freeBytesBeforeSdkDownload": 14855430144,
+    "freeBytesAfterSdkPayloadVerification": 14008086528
+  },
+  "java": {
+    "vendor": "Eclipse Adoptium / Temurin",
+    "architecture": "x64",
+    "version": "21.0.12.1+1-LTS",
+    "packageType": "portable ZIP JDK",
+    "packageBytes": 205073461,
+    "expectedBytes": 205073461,
+    "expectedSha256": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e",
+    "measuredSha256": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e",
+    "checksumMatched": true,
+    "officialSources": [
+      "https://api.adoptium.net/v3/assets/latest/21/hotspot?architecture=x64&image_type=jdk&os=windows&vendor=eclipse",
+      "https://github.com/adoptium/temurin21-binaries/releases/expanded_assets/jdk-21.0.12.1%2B1"
+    ],
+    "downloadUrl": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip",
+    "checksumUrl": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip.sha256.txt",
+    "publishedMetadataSha256": "f8fe05b00bf7005b37eadd6a879d35617b7e142aad7e216811f498f6c9d56017",
+    "publishedChecksumFileSha256": "dc395bbf1dce8ef947dcecd26f13cb5b74a949047ef0c13c2bed0485301a9c80",
+    "publisherChecksumIndependentlyFetched": true,
+    "signatureVerificationClaimed": false,
+    "extraction": {
+      "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip",
+      "sha256": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e",
+      "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java",
+      "entries": 577,
+      "files": 490,
+      "uncompressedBytes": 343823876,
+      "traversalAndLinkInspection": "passed",
+      "destinationWasAbsent": true,
+      "inspectedAt": "2026-09-05T20:35:59.4896735+00:00",
+      "extractedAt": "2026-09-05T20:36:00.7746248+00:00",
+      "freeBytesAfter": 14916997120
+    },
+    "verification": {
+      "javaHome": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1",
+      "javaVersion": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\r\nOpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)\r\nOpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)",
+      "javacVersion": "javac 21.0.12.1",
+      "unicodeCompileRunSmoke": "JAVA21_UTF8_WORKSPACE_SMOKE_PASS",
+      "executionScope": "escalated-scoped-local",
+      "smokeOutput": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java-smoke-verified-escalated",
+      "verifiedAt": "2026-09-05T20:38:40.2167115+00:00",
+      "files": [
+        {
+          "relativePath": "bin\\java.exe",
+          "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55"
+        },
+        {
+          "relativePath": "bin\\javac.exe",
+          "sha256": "00f7c6f9ec89ebba4bb96cf8760403cccf1268df2eae8685900ba38e58a7aff9"
+        },
+        {
+          "relativePath": "release",
+          "sha256": "07117c72ce033949c14878e07fbf2fe23f59a1f8c90a6d1351b5c89099847ce7"
+        }
+      ],
+      "systemEnvironmentChanged": false,
+      "globalInstallPerformed": false
+    }
+  },
+  "android": {
+    "downloaded": true,
+    "extracted": true,
+    "sdkmanagerExecuted": true,
+    "sdkmanagerVersion": "22.0",
+    "sdkRoot": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk",
+    "commandLineTools": {
+      "revision": "22.0",
+      "buildId": "15859902",
+      "extraction": {
+        "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\commandlinetools-win-15859902_latest.zip",
+        "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\cmdline-tools\\22.0",
+        "entries": 330,
+        "extractedFiles": 141,
+        "uncompressedBytes": 179901603,
+        "sha256": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a",
+        "sha1": "b9862337a13e2809a5159dc3a08d058091bd59f6",
+        "traversalAndLinkInspection": "passed",
+        "destinationWasAbsent": true,
+        "completedAt": "2026-09-05T20:47:09.7251755+00:00",
+        "freeBytesAfter": 14550695936
+      }
+    },
+    "authorization": {
+      "schemaVersion": 1,
+      "stageId": "S04",
+      "recordType": "explicit-user-sdk-install-authorization",
+      "source": "explicit user reply in current task",
+      "userReplyExactText": "Разрешаю принять лицензию и установить SDK",
+      "conveyedBy": "root agent in current task",
+      "authorizedScope": [
+        "Accept the standard Google Android SDK license through the actual SDK tool flow",
+        "Install the pinned command-line tools and selected Android36 SDK packages inside .tmp/native-tools",
+        "Use process-scoped Java/SDK/cache environment values without permanent system changes"
+      ],
+      "excludedScope": [
+        "Production deployment, signing, store submission or release",
+        "Global installations or permanent environment/registry changes",
+        "System images, emulator, NDK, CMake, extra AI/MCP setup or project-template replacement"
+      ],
+      "downloadAgreementSource": "https://developer.android.com/studio",
+      "downloadAgreementDateDisplayed": "2026-04-28",
+      "repositoryLicenseId": "android-sdk-license",
+      "repositoryLicenseDateDisplayed": "2019-01-16",
+      "repositoryLicenseTextSha256": "1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16",
+      "historicalPendingReceipt": "docs/mobile/evidence/S04/android-toolchain-preparation-before-sdk-authorization.json",
+      "historicalPendingReceiptSha256": "1b302d21311dc994868ba58d62a320bb9e8ebdc15b94d99a2919d60372998636",
+      "note": "Authorization is genuine; this record alone does not claim successful acceptance, installation or native build. Actual tool results are recorded separately. No human review of project legal copy is inferred.",
+      "receiptFile": "docs/mobile/evidence/S04/android-sdk-install-authorization.json",
+      "receiptSha256": "bdd0d8831327f51a778c1f13caed65242ecf97f8888ae457f2d3842c274fc313"
+    },
+    "licenseAcceptance": {
+      "licenseId": "android-sdk-license",
+      "acceptedThrough": "actual sdkmanager --install flow for the three specified packages",
+      "stdinAnswer": "y",
+      "answerCount": 1,
+      "licenseHashFilesManuallyCreated": false,
+      "toolExitCode": 0,
+      "toolTranscript": "docs/mobile/evidence/S04/android-sdk-install-tool-transcript.txt",
+      "toolTranscriptSha256": "b45e3b8626b4c4eac8e4d7b3c2ead99dd97777379281cb124686d814d75250a9",
+      "licenseFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\licenses\\android-sdk-license",
+      "licenseFileSha256": "70fd2713ca385fd6b14c1d5577ce8349996699186a3a216e9643a09098c26dca",
+      "repositoryLicenseTextSha256": "1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16",
+      "repositoryTextDate": "2019-01-16",
+      "downloadPageAgreementDate": "2026-04-28",
+      "differentPublishedTextsNotClaimedIdentical": true
+    },
+    "officialPackagePlan": [
+      {
+        "path": "platforms;android-36",
+        "revision": "<major>2</major>",
+        "displayName": "Android SDK Platform 36",
+        "channelRef": "channel-0",
+        "licenseRef": "android-sdk-license",
+        "archives": [
+          {
+            "hostOs": null,
+            "size": "65878410",
+            "checksumType": "sha1",
+            "checksum": "2c1a80dd4d9f7d0e6dd336ec603d9b5c55a6f576",
+            "url": "platform-36_r02.zip"
+          }
+        ]
+      },
+      {
+        "path": "build-tools;36.0.0",
+        "revision": "<major>36</major><minor>0</minor><micro>0</micro>",
+        "displayName": "Android SDK Build-Tools 36",
+        "channelRef": "channel-0",
+        "licenseRef": "android-sdk-license",
+        "archives": [
+          {
+            "hostOs": "windows",
+            "size": "58699878",
+            "checksumType": "sha1",
+            "checksum": "f16ccffd34de8790dede813a6c7d8e2c11a27b50",
+            "url": "build-tools_r36_windows.zip"
+          }
+        ]
+      },
+      {
+        "path": "cmdline-tools;22.0",
+        "revision": "<major>22</major><minor>0</minor>",
+        "displayName": "Android SDK Command-line Tools",
+        "channelRef": "channel-0",
+        "licenseRef": "android-sdk-license",
+        "archives": [
+          {
+            "hostOs": "windows",
+            "size": "155655386",
+            "checksumType": "sha1",
+            "checksum": "b9862337a13e2809a5159dc3a08d058091bd59f6",
+            "url": "commandlinetools-win-15859902_latest.zip"
+          }
+        ]
+      },
+      {
+        "path": "platform-tools",
+        "revision": "<major>37</major><minor>0</minor><micro>1</micro>",
+        "displayName": "Android SDK Platform-Tools",
+        "channelRef": "channel-0",
+        "licenseRef": "android-sdk-license",
+        "archives": [
+          {
+            "hostOs": "windows",
+            "size": "8044989",
+            "checksumType": "sha1",
+            "checksum": "e03e78b1d80b396f1c3358e31251cb31740e1110",
+            "url": "platform-tools_r37.0.1-win.zip"
+          }
+        ]
+      }
+    ],
+    "archiveVerification": [
+      {
+        "packageId": "platforms;android-36",
+        "url": "https://dl.google.com/android/repository/platform-36_r02.zip",
+        "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\platform-36_r02.zip",
+        "bytes": 65878410,
+        "publisherChecksumType": "sha1",
+        "publisherChecksum": "2c1a80dd4d9f7d0e6dd336ec603d9b5c55a6f576",
+        "measuredSha1": "2c1a80dd4d9f7d0e6dd336ec603d9b5c55a6f576",
+        "measuredSha256": "37607369a28c5b640b3a7998868d45898ebcb777565a0e85f9acf36f29631d2e",
+        "publisherSha256Available": false,
+        "entries": 11342,
+        "expandedBytes": 106177284,
+        "topDirectories": [
+          "android-36"
+        ],
+        "traversalAndLinkInspection": "passed",
+        "inspectedBeforeSdkmanagerInstall": true,
+        "inspectedAt": "2026-09-05T20:50:39.7043635+00:00"
+      },
+      {
+        "packageId": "build-tools;36.0.0",
+        "url": "https://dl.google.com/android/repository/build-tools_r36_windows.zip",
+        "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\build-tools_r36_windows.zip",
+        "bytes": 58699878,
+        "publisherChecksumType": "sha1",
+        "publisherChecksum": "f16ccffd34de8790dede813a6c7d8e2c11a27b50",
+        "measuredSha1": "f16ccffd34de8790dede813a6c7d8e2c11a27b50",
+        "measuredSha256": "aa1095cb14d83e483818a748a2c06faaeb8e601561b06a356a119a1b2ca280d3",
+        "publisherSha256Available": false,
+        "entries": 197,
+        "expandedBytes": 143241305,
+        "topDirectories": [
+          "android-16"
+        ],
+        "traversalAndLinkInspection": "passed",
+        "inspectedBeforeSdkmanagerInstall": true,
+        "inspectedAt": "2026-09-05T20:51:20.0915287+00:00"
+      },
+      {
+        "packageId": "platform-tools",
+        "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-win.zip",
+        "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\platform-tools_r37.0.1-win.zip",
+        "bytes": 8044989,
+        "publisherChecksumType": "sha1",
+        "publisherChecksum": "e03e78b1d80b396f1c3358e31251cb31740e1110",
+        "measuredSha1": "e03e78b1d80b396f1c3358e31251cb31740e1110",
+        "measuredSha256": "45f4d63113e895ebde0c90f194099a4676b6ac653bd28d54314a9e022bbc1a99",
+        "publisherSha256Available": false,
+        "entries": 15,
+        "expandedBytes": 17529398,
+        "topDirectories": [
+          "platform-tools"
+        ],
+        "traversalAndLinkInspection": "passed",
+        "inspectedBeforeSdkmanagerInstall": true,
+        "inspectedAt": "2026-09-05T20:51:26.4452495+00:00"
+      }
+    ],
+    "installedPayloadVerification": {
+      "verifiedAt": "2026-09-05T20:56:30.5987750+00:00",
+      "pass": true,
+      "packages": [
+        {
+          "packageId": "platforms;android-36",
+          "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36",
+          "payloadFilesCompared": 11342,
+          "payloadBytesCompared": 106177284,
+          "allPayloadSha256Matched": true,
+          "sourceProperties": "Pkg.Desc=Android SDK Platform 16\nPkg.UserSrc=false\nPlatform.Version=16\nPlatform.CodeName=\nPkg.Revision=2\nAndroidVersion.ApiLevel=36\nAndroidVersion.ExtensionLevel=17\nAndroidVersion.IsBaseSdk=true\nLayoutlib.Api=15\nLayoutlib.Revision=1\nPlatform.MinToolsRev=22\n",
+          "generatedPackageXmlExists": true
+        },
+        {
+          "packageId": "build-tools;36.0.0",
+          "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0",
+          "payloadFilesCompared": 169,
+          "payloadBytesCompared": 143241305,
+          "allPayloadSha256Matched": true,
+          "sourceProperties": "Pkg.UserSrc=false\nPkg.Revision=36.0.0\n#Pkg.Revision=36.0.0 rc5",
+          "generatedPackageXmlExists": true
+        },
+        {
+          "packageId": "platform-tools",
+          "destination": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platform-tools",
+          "payloadFilesCompared": 14,
+          "payloadBytesCompared": 17529398,
+          "allPayloadSha256Matched": true,
+          "sourceProperties": "Pkg.UserSrc=false\nPkg.Revision=37.0.1\n",
+          "generatedPackageXmlExists": true
+        }
+      ],
+      "licenseFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\licenses\\android-sdk-license",
+      "licenseFileSha256": "70fd2713ca385fd6b14c1d5577ce8349996699186a3a216e9643a09098c26dca",
+      "licenseFileCreatedBy": "sdkmanager install flow with explicitly authorized y response",
+      "freeBytesAfter": 14008086528
+    },
+    "toolVerification": {
+      "pass": true,
+      "adb": "Android Debug Bridge version 1.0.41\r\nVersion 37.0.1-15733141\r\nInstalled as C:\\Users\\User\\Documents\\ChatGPT\\������ �� �����\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platform-tools\\adb.exe\r\nRunning on Windows 10.0.22631",
+      "aapt2": "Android Asset Packaging Tool (aapt) 2.20-13193326",
+      "apksigner": "0.9",
+      "d8": "D8 8.10.9-dev (build a7ad18a70460b799d0482e497c109a75bf7f91de from go/r8bot (luci-r8-custom-ci-archive-0-mt8s))",
+      "zipalignCreateAndCheckPassed": true,
+      "files": [
+        {
+          "path": "platform-tools\\adb.exe",
+          "sha256": "b4a6b455702684652cccf7b46258b29e653538904359a58fd4931cf3ef286b3f"
+        },
+        {
+          "path": "build-tools\\36.0.0\\aapt2.exe",
+          "sha256": "babf3122e515ddb954c5ac4669e085ce990536c035e3072de30127bddd6e3608"
+        },
+        {
+          "path": "build-tools\\36.0.0\\zipalign.exe",
+          "sha256": "c503c7da88bd4f6cddbcc8d3febd41e1e5022a525147f05f8caf4602353409c0"
+        },
+        {
+          "path": "build-tools\\36.0.0\\lib\\apksigner.jar",
+          "sha256": "3716d9311e55d2b0918a2fd9d54ba9e406c5f6abeea700b287f11259bc163dec"
+        },
+        {
+          "path": "build-tools\\36.0.0\\lib\\d8.jar",
+          "sha256": "4097ff9c46c185c6e7214da7fe9b1befb5adeea5cc9ca349270e0249904f9240"
+        },
+        {
+          "path": "platforms\\android-36\\android.jar",
+          "sha256": "d9eb9da824d9e247a352f570f01e1169e725b2954bca9e283a71786c59b59f9a"
+        }
+      ],
+      "verifiedAt": "2026-09-05T20:57:43.5176321+00:00",
+      "deviceEnumerationRun": false,
+      "adbServerStartedByThisCheck": false,
+      "nativeApplicationBuilt": false,
+      "temporaryEnvironmentOnly": true
+    },
+    "newCli": {
+      "officialSource": "https://developer.android.com/tools/agents/android-cli",
+      "sdkmanagerDeprecationSource": "https://developer.android.com/tools/sdkmanager",
+      "status": "not-invoked",
+      "facts": [
+        "Current documentation marks sdkmanager deprecated in favor of android sdk.",
+        "Current Android CLI docs state Windows emulator command is disabled and downloading via Windows PowerShell is unsupported.",
+        "The new CLI defaults to an AGP9 project template and collects usage data; this preparation did not install it, initialize skills or replace the required Capacitor8/AGP8.13 project."
+      ],
+      "decision": "Pinned command-line tools remain a documented available package for the scoped Windows/Capacitor preparation, subject to actual SDK agreement and a root compatibility decision. Do not label sdkmanager the new preferred interface.",
+      "note": "Official command-line-tools22.0 includes android.exe. It was not independently installed, invoked, initialized for agents or used to generate/replace a template. sdkmanager remains the available compatible path used for this pinned Windows preparation."
+    },
+    "processEnvironment": {
+      "JAVA_HOME": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1",
+      "ANDROID_HOME": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk",
+      "ANDROID_SDK_ROOT": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk",
+      "ANDROID_USER_HOME": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-user",
+      "GRADLE_USER_HOME": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user",
+      "TEMP": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+      "TMP": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+      "javaUserHome": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user"
+    },
+    "windowsAdbConstraint": {
+      "kind": "reverted-windows-adb-profile-side-effect",
+      "observedAt": "2026-09-05T20:57:42.8623459Z",
+      "cause": "Windows ADB obtains CSIDL_PROFILE through SHGetFolderPathW; ANDROID_USER_HOME/ANDROID_SDK_HOME do not redirect its base .android directory.",
+      "officialSource": "https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/adb_utils.cpp",
+      "sourceFunction": "adb_get_homedir_path / adb_get_android_dir_path",
+      "path": "C:\\Users\\User\\.android",
+      "observedContents": [],
+      "createdBy": "single escalated adb version check",
+      "deviceEnumerationRun": false,
+      "adbServerStarted": false,
+      "cleanup": {
+        "completedAt": "2026-09-05T21:00:13.1203324+00:00",
+        "exactPathChecked": true,
+        "creationTimeChecked": true,
+        "nonReparseDirectoryChecked": true,
+        "emptyDirectoryChecked": true,
+        "recursiveDelete": false,
+        "existsAfter": false
+      },
+      "futureConstraint": "Do not run Windows adb under a claim that all profile writes stay inside native-tools. A real device workflow needs an explicit permitted profile-cache exception or a separate execution host."
+    },
+    "deviceCommandsExecuted": [],
+    "devicesTested": [],
+    "emulatorInstalled": false,
+    "systemImageInstalled": false,
+    "ndkInstalled": false,
+    "cmakeInstalled": false
+  },
+  "execution": {
+    "network": [
+      "Sandbox PowerShell HTTPS failed authentication; Windows curl Schannel returned SEC_E_NO_CREDENTIALS.",
+      "Approved escalation performed the same official HTTPS reads/downloads successfully; TLS validation remained enabled.",
+      "First ZIP transfer reached131221312 bytes and timed out at300s. The same official URL was resumed with curl --continue-at and the complete publisher SHA256 was required before extraction."
+    ],
+    "commands": [
+      "curl.exe --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --connect-timeout 15 --max-time 300 --output <workspace ZIP> <official Temurin ZIP URL>",
+      "curl.exe --fail --silent --show-error --location --proto '=https' --proto-redir '=https' --continue-at - --connect-timeout 15 --max-time 300 --output <same ZIP> <same official URL>",
+      "& ./.tmp/native-tools/inspect-extract-jdk.ps1",
+      "& ./.tmp/native-tools/verify-java.ps1 -RunName 'verified-escalated' -ExecutionScope 'escalated-scoped-local'"
+    ],
+    "javaCommands": [
+      "<portableJdk>/bin/java.exe -version",
+      "<portableJdk>/bin/javac.exe -version",
+      "<portableJdk>/bin/javac.exe -encoding UTF-8 -d <workspace smoke output> <workspace NativeToolchainSmoke.java>",
+      "<portableJdk>/bin/java.exe -cp <workspace smoke output> NativeToolchainSmoke <workspace smoke output>"
+    ]
+  },
+  "localEvidenceFiles": [
+    {
+      "path": ".tmp/native-tools/inspect-extract-jdk.ps1",
+      "sha256": "0b3f6ca78cf424b26500beaa525c5b948986aa019a98e5b0c6279a69ed4a3043",
+      "bytes": 3916
+    },
+    {
+      "path": ".tmp/native-tools/verify-java.ps1",
+      "sha256": "59d4e5a6f8c0c0f7d4885431c8337e7c57151a77ad7f757f002d7051323dbfcf",
+      "bytes": 1896
+    },
+    {
+      "path": ".tmp/native-tools/NativeToolchainSmoke.java",
+      "sha256": "93c9f86d8e264c25ce51856da714392330913539fd37ec7a8516770b00e9811c",
+      "bytes": 862
+    },
+    {
+      "path": ".tmp/native-tools/jdk-extraction.json",
+      "sha256": "561aabb6474558b6a5d9853b2570707ce8583a61ef92066be1a7b9baffec2343",
+      "bytes": 708
+    },
+    {
+      "path": ".tmp/native-tools/java-verification.json",
+      "sha256": "a240534e02dc7b4726925356ea9d63fdb024a39b407e2235942e8880a80191f1",
+      "bytes": 1265
+    },
+    {
+      "path": ".tmp/native-tools/java-initial-sandbox-failure.json",
+      "sha256": "1aa381aa8e277f2224825bad05eac2e302c492a19d1b8a04cf205c35aa78ba84",
+      "bytes": 969
+    },
+    {
+      "path": ".tmp/native-tools/downloads/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip",
+      "sha256": "f9d6e191ab098c0d416e7d588a24420a8621cd2f4720dab2459b8b7b2d2d8b4e",
+      "bytes": 205073461
+    },
+    {
+      "path": ".tmp/native-tools/downloads/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip.sha256.txt",
+      "sha256": "dc395bbf1dce8ef947dcecd26f13cb5b74a949047ef0c13c2bed0485301a9c80",
+      "bytes": 117
+    },
+    {
+      "path": ".tmp/native-tools/downloads/OpenJDK21U-jdk_x64_windows_hotspot_21.0.12.1_1.zip.json",
+      "sha256": "f8fe05b00bf7005b37eadd6a879d35617b7e142aad7e216811f498f6c9d56017",
+      "bytes": 31216
+    }
+  ],
+  "initialSandboxFailure": {
+    "kind": "preserved-initial-toolchain-smoke-failure",
+    "sourceCommit": "0afad0906f266dcac138aba697fc7cc97579fc7e",
+    "executionScope": "sandbox",
+    "javaVersionPassed": true,
+    "javacVersionPassed": true,
+    "compilationPassed": true,
+    "runPassed": false,
+    "runExitCode": 1,
+    "exception": "java.nio.file.AccessDeniedException",
+    "operation": "Path.toRealPath via WindowsLinkSupport.getRealPath",
+    "target": ".tmp/native-tools/java-smoke under the canonical Cyrillic workspace",
+    "productChangedToHideFailure": false,
+    "sameClassAndArgumentsOutsideSandbox": {
+      "executionScope": "escalated-scoped-local",
+      "exitCode": 0,
+      "stdout": "JAVA21_UTF8_WORKSPACE_SMOKE_PASS",
+      "utf8FileReadback": "Java 21: Русский / English"
+    },
+    "conclusion": "Observed sandbox execution restriction; no system ACL/TLS change. Complete version/compile/run verification is repeated separately in a fresh owned output directory with approved scoped escalation."
+  },
+  "limitations": [
+    "Toolchain is usable for the upcoming project build; no Android application artifact, emulator or real-device run is claimed.",
+    "Package XML supplied publisher SHA1 checksums; measured SHA256 values are recorded without claiming independently published SHA256 for the three SDK packages. All installed payload files matched the pre-inspected archive bytes.",
+    "Windows Java/adb sandbox restrictions are preserved. ADB uses the Windows known-profile API and cannot be represented as workspace-only via Android environment variables; the one observed empty directory side effect was reverted.",
+    "No Gradle distribution/project build, production signing, store activity or iOS/Xcode build was performed in this task. Native project work is owned separately by root."
+  ],
+  "androidApplicationBuildVerified": false,
+  "historicalReceipt": {
+    "path": "docs/mobile/evidence/S04/android-toolchain-preparation-before-sdk-authorization.json",
+    "sha256": "1b302d21311dc994868ba58d62a320bb9e8ebdc15b94d99a2919d60372998636"
+  },
+  "sdkExecution": {
+    "installCommand": "& './.tmp/native-tools/Invoke-ScopedSdk.ps1' -Operation Install",
+    "actualArguments": [
+      "--sdk_root=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk",
+      "--install",
+      "platform-tools",
+      "platforms;android-36",
+      "build-tools;36.0.0",
+      "--channel=0"
+    ],
+    "versionCommand": "& './.tmp/native-tools/Invoke-ScopedSdk.ps1' -Operation Version",
+    "installedListingCommand": "& './.tmp/native-tools/Invoke-ScopedSdk.ps1' -Operation Installed",
+    "preInspectionCommand": "& './.tmp/native-tools/Download-InspectSdkPackages.ps1'",
+    "postComparisonCommand": "& './.tmp/native-tools/Verify-InstalledSdk.ps1'",
+    "exactInstalledVersions": {
+      "cmdline-tools": "22.0",
+      "platforms;android-36": "2",
+      "build-tools;36.0.0": "36.0.0",
+      "platform-tools": "37.0.1"
+    },
+    "filesCompared": 11525,
+    "helperCorrection": "A first version invocation splatted a scalar string as characters. A typed string array fixed the local wrapper; the failed log is retained. No vendor script was changed.",
+    "profileConstraint": "The final native tool version/ZIP smoke used scoped escalation. adb still created an empty Windows profile directory despite SDK env vars; this was safely removed and documented."
+  },
+  "sdkEvidenceFiles": [
+    {
+      "path": ".tmp/native-tools/sdk-package-plan.json",
+      "sha256": "73764357ea9d70e93a5ce75e4c5f97d9a2c965a97fc1dc296c0611855ba95f0e",
+      "bytes": 1906
+    },
+    {
+      "path": ".tmp/native-tools/sdk-commandline-extraction.json",
+      "sha256": "264c19b9b33ba5facd044e8762f769373cd3ec10294e6b71987af73872d11e47",
+      "bytes": 735
+    },
+    {
+      "path": ".tmp/native-tools/sdk-package-archive-inspection.json",
+      "sha256": "f91c57983d81c18e3580c606b9a74051b9dc0a3c43ed5ecd5514967a3bd35371",
+      "bytes": 2663
+    },
+    {
+      "path": ".tmp/native-tools/sdk-installed-payload-verification.json",
+      "sha256": "1e95f5c062058bf6767b15e53dd7ba7f3e7e36ae42eff061a26a2fd0ce291ec4",
+      "bytes": 2114
+    },
+    {
+      "path": ".tmp/native-tools/sdkmanager-version-result.json",
+      "sha256": "09c6e6dd1a95da9e6f5c86a14fb2537d8bf1482fa83f54038a6e498479e8758d",
+      "bytes": 317
+    },
+    {
+      "path": ".tmp/native-tools/sdkmanager-list-result.json",
+      "sha256": "7654ca2620bdea27b40c8a37ebae457f2642212b6cab3b545b7982d9fce8a9fd",
+      "bytes": 472
+    },
+    {
+      "path": ".tmp/native-tools/sdkmanager-install-result.json",
+      "sha256": "787c0a44adbe20e1f02b235ebaca28b4e940f0a1f6f0764a99797dc4424f4f79",
+      "bytes": 560
+    },
+    {
+      "path": ".tmp/native-tools/sdkmanager-installed-result.json",
+      "sha256": "c2dbaee6439dbf920be0f8a4f2e810cb13d2fabb384227eb1a231a3cb6e74db2",
+      "bytes": 472
+    },
+    {
+      "path": ".tmp/native-tools/android-tools-verification.json",
+      "sha256": "db5f89f474a3f2d3a7c5ffd01bf03734c818b21bc53ea6ca88ded405fe58897b",
+      "bytes": 1683
+    },
+    {
+      "path": ".tmp/native-tools/Invoke-ScopedSdk.ps1",
+      "sha256": "1c75d454568e1540354332fdbaf379ac4d42ff1972b79f7e16978e28224453d5",
+      "bytes": 3531
+    },
+    {
+      "path": ".tmp/native-tools/inspect-extract-sdk.ps1",
+      "sha256": "4e78e4176bae50af9038fe16adbb889d43a81f44254304d5f7b0fcbc2f6d7816",
+      "bytes": 4680
+    },
+    {
+      "path": ".tmp/native-tools/Download-InspectSdkPackages.ps1",
+      "sha256": "b1dbf09d5e29a25f50c8128aa11050d0e6f5cd84ae00ad3437cf5610ec842af5",
+      "bytes": 4340
+    },
+    {
+      "path": ".tmp/native-tools/Verify-InstalledSdk.ps1",
+      "sha256": "600238137aa9662f46104c2df531c5ee0a51f032dc207973da817e30312af9ab",
+      "bytes": 3644
+    },
+    {
+      "path": ".tmp/native-tools/Verify-AndroidTools.ps1",
+      "sha256": "8f642ea9adbcb041e67c5f70dfa1bc211cafd7140cfc33c3735240e8bf98ac4f",
+      "bytes": 3423
+    },
+    {
+      "path": ".tmp/native-tools/adb-version-sandbox-failure.txt",
+      "sha256": "0070ca381af2cc47560dde2d07f44b83c153858d9ca64a4e0fc8db7bd6047386",
+      "bytes": 106
+    },
+    {
+      "path": ".tmp/native-tools/google-standard-sdk-license.txt",
+      "sha256": "1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16",
+      "bytes": 16962
+    },
+    {
+      "path": ".tmp/native-tools/adb-utils-source.base64",
+      "sha256": "3201c31bf427834669b1810ac92e8374de7aa560afa417b437cfc49f6177467e",
+      "bytes": 13832
+    },
+    {
+      "path": ".tmp/native-tools/downloads/google-repository2-3-20260905.xml",
+      "sha256": "fc2503ca74b0b098fa1668619ff195c0dd118b722e1680bc7c822be4b3f2276a",
+      "bytes": 413485
+    },
+    {
+      "path": ".tmp/native-tools/logs/sdkmanager-version-20260905T204808.txt",
+      "sha256": "17697f17f54a2b4b4b58d682ec5946aecf1cbb7864a8c28fa32153bceae556df",
+      "bytes": 352
+    },
+    {
+      "path": ".tmp/native-tools/logs/sdkmanager-list-20260905T204833.txt",
+      "sha256": "96840c4070f5096af13260deccd629310c622ea2088f1a498072818caeeb7ad3",
+      "bytes": 105831
+    },
+    {
+      "path": ".tmp/native-tools/logs/sdkmanager-install-20260905T205319.txt",
+      "sha256": "b45e3b8626b4c4eac8e4d7b3c2ead99dd97777379281cb124686d814d75250a9",
+      "bytes": 17575
+    },
+    {
+      "path": ".tmp/native-tools/logs/sdkmanager-installed-20260905T205528.txt",
+      "sha256": "7128a3373b43f71d8a70529cb3f65eb20d092f3363cb3d24cf5754208527d512",
+      "bytes": 797
+    }
+  ]
+}

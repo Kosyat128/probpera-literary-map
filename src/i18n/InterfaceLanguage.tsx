@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -1556,9 +1557,20 @@ type InterfaceLanguageContextValue = {
 const InterfaceLanguageContext =
   createContext<InterfaceLanguageContextValue | null>(null);
 
-export function InterfaceLanguageProvider({ children }: { children: ReactNode }) {
+export interface HostLanguagePersistence {
+  readonly initialLanguage: InterfaceLanguage;
+  readonly persist: (language: InterfaceLanguage) => Promise<boolean>;
+  readonly onFailure?: () => void;
+}
+
+export function InterfaceLanguageProvider({ children, hostLanguage }: {
+  children: ReactNode;
+  hostLanguage?: HostLanguagePersistence;
+}) {
+  const initialHost = useRef(hostLanguage);
+  if (initialHost.current !== hostLanguage) throw new Error("Language persistence cannot change after mount.");
   const [language, setLocalLanguage] =
-    useState<InterfaceLanguage>(initialLanguage);
+    useState<InterfaceLanguage>(() => hostLanguage?.initialLanguage ?? initialLanguage());
 
   useEffect(() => {
     applyLanguage(language);
@@ -1570,6 +1582,7 @@ export function InterfaceLanguageProvider({ children }: { children: ReactNode })
       if (isInterfaceLanguage(nextLanguage)) setLocalLanguage(nextLanguage);
     };
     const syncStorage = (event: StorageEvent) => {
+      if (initialHost.current) return;
       if (event.key === STORAGE_KEY && isInterfaceLanguage(event.newValue)) {
         setLocalLanguage(event.newValue);
       }
@@ -1583,11 +1596,21 @@ export function InterfaceLanguageProvider({ children }: { children: ReactNode })
   }, []);
 
   const setLanguage = useCallback((nextLanguage: InterfaceLanguage) => {
+    if (!isInterfaceLanguage(nextLanguage)) return;
     setLocalLanguage(nextLanguage);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, nextLanguage);
-    } catch {
-      // Keep the selected language for this page even without persistence.
+    const host = initialHost.current;
+    if (host) {
+      const reportFailure = () => { try { host.onFailure?.(); } catch { /* Keep the selected locale. */ } };
+      // Host persistence serializes writes. Late completion never sets locale.
+      void Promise.resolve().then(() => host.persist(nextLanguage)).then(
+        saved => { if (saved !== true) reportFailure(); }, reportFailure
+      );
+    } else {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, nextLanguage);
+      } catch {
+        // Keep the selected language for this page even without persistence.
+      }
     }
     applyLanguage(nextLanguage);
     window.dispatchEvent(

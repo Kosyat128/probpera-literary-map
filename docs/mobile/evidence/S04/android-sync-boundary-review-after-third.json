@@ -1,0 +1,23 @@
+{
+  "scope": "Read-only Android Capacitor sync output comparison, not APK or device evidence",
+  "checkedAt": "2026-09-05T21:28:23.409Z",
+  "artifactBuildId": "fa9dd4a0ddaf48dbc9f714df32e94b6c97e51f439e504766465746b8a2bfd207",
+  "syncedBuildId": "fa9dd4a0ddaf48dbc9f714df32e94b6c97e51f439e504766465746b8a2bfd207",
+  "sourceFiles": 320,
+  "syncedFiles": 322,
+  "configMatches": true,
+  "missing": [],
+  "changed": [],
+  "extra": [
+    {
+      "path": "cordova_plugins.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cordova.js",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

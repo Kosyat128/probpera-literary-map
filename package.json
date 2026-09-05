@@ -156,6 +156,14 @@
     "assets:globe:evidence:check": "npm run assets:globe:historical:check && npm run assets:globe:historical:registration:check && npm run assets:globe:cassini:runtime:check && npm run assets:globe:scherer:source:check"
   },
   "dependencies": {
+    "@capacitor/android": "8.5.1",
+    "@capacitor/app": "8.1.1",
+    "@capacitor/app-launcher": "8.0.1",
+    "@capacitor/browser": "8.0.4",
+    "@capacitor/core": "8.5.1",
+    "@capacitor/ios": "8.5.1",
+    "@capacitor/network": "8.0.1",
+    "@capacitor/preferences": "8.0.1",
     "@react-three/drei": "9.122.0",
     "@react-three/fiber": "8.18.0",
     "@supabase/supabase-js": "2.112.3",
@@ -168,6 +176,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
+    "@capacitor/cli": "8.5.1",
     "@electric-sql/pglite": "0.5.8",
     "@playwright/test": "^1.62.1",
     "@types/leaflet": "^1.9.22",

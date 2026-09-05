@@ -1,6 +1,10 @@
 src/data/geo/countries.geojson text eol=lf
 docs/mobile/requirements/v12/** -text
 docs/mobile/evidence/S03/logs/* binary
+# Evidence retains measured bytes, including original CRLF and final blank lines.
+docs/mobile/evidence/S04/** -text whitespace=cr-at-eol,-blank-at-eof
+docs/mobile/evidence/S04/logs/* binary
+docs/mobile/evidence/S04/android-sdk-install-tool-transcript.txt binary
 public/cms/*.json text eol=lf
 public/cms/articles/*.json text eol=lf
 data/book-canon-snapshots/*.html.bin binary

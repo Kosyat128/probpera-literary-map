@@ -1,94 +1,75 @@
 # V12 status
 
-S00-S02 are accepted. S03 (controlled Web/PWA) is IN_PROGRESS.
-S04 has begun documented parallel-safe environment preparation; S05-S40 have not started. No global requirement is PASSED. releaseReady:false.
+S00-S02 are accepted. S03 is IN_PROGRESS and remains first-open. S04 is
+IN_PROGRESS under its documented parallel-safe entry. S05-S40 have not started.
+No global requirement is PASSED. releaseReady:false.
 
 Canonical main f406a7de9e16e8cf63545cbce6681ed9278761a4 is incorporated by five
 local cherry-picks through8e6cfe1f482ebd261965d774cbf4e14f80f62f1d. Accepted
-ancestors remain intact. State headSha deliberately remains the accepted S02
-checkpoint6305df5fe671718c78b38af1ccc2bafbbdd44346; the current working changes
-are not S03 acceptance or an exact RC.
+headSha remains S02:6305df5fe671718c78b38af1ccc2bafbbdd44346. Working checkpoints
+0afad090 and e2530cc6 preserve S03 integration and saved-verification behavior;
+neither accepts S03. Current S04 evidence records working source beyond e2530cc6.
 
-Current integrated checks:
+S03 measured results:
 
-- Full unit regression:4479 passed,4 existing skips;576 files passed,3 skipped.
-  Duration553.88s. The initial six failures and the successful76-test narrow
-  rerun are preserved. Existing Git-fixture timeouts/assertions were not relaxed.
-- Actual PWA artifact03c7623e:20 Chrome desktop/Pixel7-viewport scenarios passed,
-  zero skips/failures/flaky cases. Its independent335-file audit passed.
-- The real Dostoevsky/Crime and Punishment route works cold offline. RU/EN changes
-  preserve writer/work selection, the panel and the same live R3F scene.
-- Canonical public browser6 passed; real WriterPanel/StrictMode browser4 passed;
-  dossier38 unit and7 Chrome scenarios passed.
-- Domain build:12876 domain and5513 SEO checks,659 dossier JSON files without
-  issues. TypeScript, typography25 CSS and platform boundaries481 modules passed.
-- Safe-reader deletion:70 processor/CLI/Postgres tests, server types and actual
-  CLI dry-run passed. Independent review passed6 SQL and6 CLI groups.
-- Public localized404:106 checks including actual workerd and loopback origin
-  passed. The bound Worker is an inactive draft outside the GitHub Pages artifact.
+- Integrated unit regression:4479 passed,4 existing skips,576 files passed,
+  3 skipped,553.88s. Subsequent bounded changes have separate evidence.
+- Fresh PWA b006c275:20/20 actual Chrome scenarios and335-file audit passed.
+  Real Dostoevsky/work cold-offline navigation and RU/EN saved-access text retain
+  the same Canvas/renderer/camera/scene and selection. This is local QA, not RC.
+- Saved-access fix:117 affected unit,6 Chrome component and12 typography tests.
+- Historical cross-engine4a0696ef:4 PASS,2 FAIL. Firefox both passed; Chrome
+  network-hint reset and Windows WebKit offline transport failure were reproduced
+  independently. Preserve failures; this is not Safari or native-device evidence.
+- Canonical public browser6, WriterPanel/StrictMode4, dossier38 unit/7 browser,
+  domain12876/SEO5513/dossier659 checks, safe-reader deletion70 with independent
+  6 SQL/6 CLI groups, localized404106 checks are preserved in S03 evidence.
+- Later private-content audit fixes passed88 affected tests across recorded runs;
+  copy normalization passed137. These did not rerun the earlier full4479 suite.
 
-WriterPanel now shares the publication-gated verifiedBookArchive. All46 published
-owner routes are preserved. Dossier choices survive locale changes and reject late
-responses. Controlled news/dossier transport does not run. Historical governance
-fingerprints were preserved; exact compatibility tests passed122.
+S04 implemented and measured:
 
-Evidence: docs/mobile/evidence/S03/canonical-integration-working-*.json and
-logs/canonical-integration-*.log. Those records identify their working bytes and
-specific local outputs. Subsequent narrow fixes have separate validation; they
-must not be retroactively described as part of the full4479 run.
+- Shared canonical App mounts through Android/iOS adapters and SDK-free host
+  capabilities. There is one existing global language provider; initialization,
+  preference ordering, lifecycle/network hints and external-link policy are tested.
+- Exact Capacitor packages were inspected and installed:81 additions, no existing
+  package changes/removals. Both native projects use local bundled assets. No
+  remote runtime, account SDK in the native graph, production signing or release.
+- The user authorized the Google SDK license. Workspace-local Java21, SDK36 and
+  Gradle8.14.3 were verified. Actual Android dev APK compiled:167 tasks,161 seconds.
+  APK:33,359,413 bytes; SHA256
+  3a4cccecf310a7b2eabef22426d96fe78033e89bdca058249383e30d2b17cf20.
+  Preserved at .tmp/native-builds/android-dev/fa9dd4a0/app-dev-debug.apk.
+  Independent actual-byte, ZIP, DEX, RU/EN resources, signature and alignment
+  verification passed. No installed-device run has been observed.
+- Android fa9dd4a0 and iOS e7921e30 each passed strict native artifact audit.
+  Both actual syncs passed. iOS320 declared files match, plus2 empty Cordova
+  compatibility files. Current dist-native is iOS; do not sync it into Android.
+- Canonical brand assets replace stock icons/splashes; resource compilation,
+  safe-area geometry and exact hashes passed. Native RU/EN resource strings and
+  iOS privacy/project structure are preserved. Text review remains incomplete.
+- Host80, adapters/initialization68, auditor64, shared governance/provider129,
+  backend guards11, persistence outcomes10 tests passed. Five actual Chrome host
+  component tests use a DOM probe instead of App, not an actual globe or device.
+  Final TypeScript,26 CSS files and platform boundaries passed.
+- iOS app SPM constraint is exact8.5.1. The incorrect earlier intake range claim
+  is explicitly corrected with original bytes retained. There is no completed
+  Swift resolution, Xcode build, simulator run or IPA.
 
-Still open within S03: browser support boundaries and their actual narrow checks;
-final source/evidence/checkpoint; supported lifecycle for accounts outside the
-tested safe-reader category. The RU/EN deletion disclosure has9 aligned draft
-paragraphs and concrete external decisions; it is not approved legal text.
-Policy choices may require external authority, while their implementation stays
-internal. A support contact alone does not prove account erasure.
+The user has no Mac. A cloud macOS simulator workflow is being prepared locally;
+its existence will not be claimed as a successful remote build. Signing and
+store delivery remain separate from unsigned simulator validation.
 
-Later stages still owe native artifacts, reviewed RU/EN content and critical copy,
-ICU/translation workflow, child/Planetka, purchase providers, full offline/search/
-audio packages, accessibility, legal/store materials, exact-RC screenshots and
-owner handoff. No native device, production purchase, human translation approval
-or release readiness is claimed. Production deploy/Submit/Release/merge and
-production data writes remain prohibited and unperformed.
+Primary current evidence: evidence/S04/working-native-implementation.json,
+android-dev-apk-verification.json, ios-project-sync-review.json and their
+byte-preserved reports/logs. Initial failures remain alongside corrections.
 
-Historical accepted checkpoints: S00 ef16246f; S01 25b53479; S02 6305df5f.
-Earlier S03 checkpoint54bf8300 and its4147-unit/18-browser results remain valid
-only for their historical source. Do not repeat completed canonical integration.
+Open work includes S03 browser/device boundaries and broader account lifecycle;
+native installed behavior, child/deep-link/navigation/commerce policy; complete
+reviewed RU/EN content, search/audio/offline packages, accessibility, bilingual
+legal/store support, exact-RC screenshots and owner approval. These are internal
+implementation tasks except concrete account/signing/legal decisions. No human
+translation/legal approval or release readiness is fabricated.
 
-Post-full bounded changes: private JSON extension/duplicate-key audit fixed;
-88 affected tests passed across the preserved narrow runs. Copy normalization
-and equivalent test regex escapes passed137 tests/8 files, types and short-hyphen
-policy. Neither bounded rerun is described as a repeat of full4479.
-
-Additional engines are now measured: Chrome152.0.7977.76, Firefox153.0,
-Windows Playwright WebKit26.5. Fresh4a0696ef artifact335-file audit passed;
-6 scenarios:4 passed,2 failed,0 skipped/retries/flaky. Firefox both passed.
-Chrome navigator.onLine reset after cached offline navigation and WebKit internal
-offline navigation error also occur with an independent minimal worker and the
-actual worker on tiny hashed content. Preserve the two failures and raw diagnosis;
-do not weaken assertions or relabel this suite green. Safari/native installation
-and physical-device evidence remain unverified. See PWA_BROWSER_BOUNDARIES.md
-and cross-engine-browser-first/transport-boundaries evidence. No further browser
-process or build is running. The native entry review is prepared in
-.tmp/S04-native-entry-review.md/.json; S04 has now begun documented parallel-safe environment preparation.
-
-Working checkpoint0afad0906f266dcac138aba697fc7cc97579fc7e committed all
-integrated S03 source and evidence. S03 is not accepted; accepted headSha staysS02.
-Next S03 correction exposes server/saved verification provenance without changing
-license deadlines, cryptography or acceptance. S04 environment preparation is
-explicitly parallel-safe per evidence/S04/parallel-safe-entry.json. CurrentStageId,
-firstOpen and resume criterion remainS03; native source-only work is not acceptance.
-
-Saved-verification correction is implemented and measured:117 affected unit,6
-real Chrome component lifecycle and12 typography tests passed; types/CSS passed.
-Fresh b006c275 artifact has20/20 real Chrome scenarios and335-file independent
-audit PASS. Offline Dostoevsky/work navigation asserts RU/EN saved-access status
-while preserving the same scene. SourceInputs2712685a; sourceCommit1ef90cff plus
-recorded working changes; local QA authority, not exact RC or stage acceptance.
-Historical cross-engine4 PASS/2 FAIL remains unchanged. See S03 evidence
-saved-verification-artifact-regression.json and its byte-preserved logs.
-
-The user explicitly authorized the standard Google Android SDK license and local
-installation: "Разрешаю принять лицензию и установить SDK". Java21 is verified;
-SDK preparation proceeds in .tmp/native-tools. This scoped authorization does not
-permit store, release, deploy, merge or other agreements. S04 remains IN_PROGRESS.
+No production deploy, Submit, Release, merge, store mutation or production data
+write has been performed. Historical evidence is not silently reclassified.

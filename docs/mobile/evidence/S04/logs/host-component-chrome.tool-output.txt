@@ -1,0 +1,19 @@
+Capture kind: transcribed tool text output from two execution chunks; not original stdout file bytes.
+Command: node node_modules/@playwright/test/cli.js test --config playwright.host-lifecycle.config.mjs
+Tool chunks: 047026 (initial), ac62cf (completion)
+Observed exit code: 0
+Execution: approved local Chrome fixture outside sandbox; no prior failed host browser attempt.
+
+
+Running 5 tests using 1 worker
+
+(node:51960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\host\host-lifecycle.spec.mjs:104:1 › mount subscribes actual host state and keeps one language owner, title and child across RU/EN/RU (3.0s)
+  ok 2 tests\host\host-lifecycle.spec.mjs:137:1 › an older failed write cannot replace the newest pending choice or successful status (2.4s)
+  ok 3 tests\host\host-lifecycle.spec.mjs:156:1 › latest write failure stays localized without reverting selection, and a current retry clears it (3.1s)
+  ok 4 tests\host\host-lifecycle.spec.mjs:186:1 › uses native initialization precedence and explains unavailable saved preference without browser fallback (3.3s)
+  ok 5 tests\host\host-lifecycle.spec.mjs:205:1 › unmount removes owned native listeners and ignores late events and persistence completion (1.7s)
+
+  5 passed (19.5s)
+

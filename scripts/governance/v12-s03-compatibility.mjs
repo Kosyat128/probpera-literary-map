@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { projectV12S04HostSource, projectV12S04HostPackage } from "./v12-s04-host-compatibility.mjs";
 
 // Test-only reverse projection. This preserves historical governance hashes;
 // it neither changes production source nor certifies editorial/release approval.
@@ -32,7 +33,7 @@ export const v12S03Compatibility = Object.freeze({
 
 /** Match only pinned, complete deltas; every other source byte survives. */
 export function projectV12S03Source(relativePath, source) {
-  let result = source;
+  let result = projectV12S04HostSource(relativePath, source);
   // Undo the latest technical integration first, then the original S03 delta.
   // Upstream bookshelf refinements are still checked separately by their lock.
   for (const delta of [...v12S03CanonicalIntegration.projections, ...v12S03Compatibility.projections]) {
@@ -47,7 +48,7 @@ export function projectV12S03Source(relativePath, source) {
 
 /** Remove exactly two additive development/build properties, never other drift. */
 export function projectV12S03Package(value) {
-  const result = structuredClone(value);
+  const result = projectV12S04HostPackage(value);
   for (const delta of v12S03Compatibility.packageProjections) {
     const [group, key] = delta.path;
     const target = result[group];

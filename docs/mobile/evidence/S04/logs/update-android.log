@@ -1,0 +1,9 @@
+√ Updating Android plugins in 6.92ms
+[info] Found 5 Capacitor plugins for android:
+       @capacitor/app@8.1.1
+       @capacitor/app-launcher@8.0.1
+       @capacitor/browser@8.0.4
+       @capacitor/network@8.0.1
+       @capacitor/preferences@8.0.1
+× update android - failed!
+[error] Error: ENOENT: no such file or directory, open 'C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\apps\mobile\android\app\src\main\assets\capacitor.plugins.json'

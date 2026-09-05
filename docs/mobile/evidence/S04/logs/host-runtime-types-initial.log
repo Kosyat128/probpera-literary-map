@@ -1,0 +1,2 @@
+src/host/HostRuntimeStatus.tsx(25,5): error TS2322: Type 'HostLanguageStatus' is not assignable to type '"idle" | "read-unavailable"'.
+  Type '"failed"' is not assignable to type '"idle" | "read-unavailable"'.

@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "stage": "S04",
+  "kind": "host-runtime-preparation",
+  "capturedDate": "2026-09-06",
+  "timezone": "Europe/Moscow",
+  "acceptance": {
+    "S03": "IN_PROGRESS",
+    "S04": "IN_PROGRESS",
+    "stageAccepted": false,
+    "releaseReady": false,
+    "editorialApproval": false,
+    "nativeDeviceEvidence": false,
+    "realGlobeEvidence": false
+  },
+  "result": "80 host service unit tests, 10 persistence-outcome tests and 5 real Chrome component lifecycle tests passed. Root source types and the 26-file public CSS audit passed separately.",
+  "scope": {
+    "hostServices": "SDK-free structural App/Network/Preferences and browser/mail capabilities; exact existing non-secret preference allowlist, serialized per-key reads/writes/readback, stable snapshots, refcount subscriptions and event/lifetime fences.",
+    "hostMount": "One canonical InterfaceLanguageProvider and PlatformServicesProvider. HostRuntimeStatus actually subscribes native state. A persistence-status controller observes only the latest attempt without owning or resetting locale.",
+    "browserProbe": "Real Chrome/React and mountHostApp, canonical language provider/control, HostPlatformServices and actual status CSS. App is explicitly replaced by a DOM/input/canvas-element component probe. Native plugin implementations are structural controlled doubles.",
+    "backend": "No SDK-backed backend, Supabase session/account, purchase provider or live endpoint behavior was exercised. Later native backend guard edits are outside this evidence.",
+    "copy": "New host runtime network and language-persistence notices are synchronized RU/EN AI drafts with releaseReady:false."
+  },
+  "sources": {
+    "captureKind": "raw-file-SHA256-at-evidence-capture",
+    "files": [
+      {
+        "path": "src/host/HostPlatformServices.ts",
+        "bytes": 14409,
+        "sha256": "04cb3edbfd5b882a2eb49c6eb74fae1f4e7e9b0f6e1164a5bc574098bb1fd940"
+      },
+      {
+        "path": "src/host/HostPlatformServices.test.ts",
+        "bytes": 28834,
+        "sha256": "2dd8575ab1ee3b08ce832e052b47baceab8a0d74a9706e5fa7b80284ab5df068"
+      },
+      {
+        "path": "src/host/mountHostApp.tsx",
+        "bytes": 3815,
+        "sha256": "a77b9d962bceb18eb59b2de9d9a1e5a2e0105bf95a8723d96af8dde598542b2e"
+      },
+      {
+        "path": "src/host/HostRuntimeStatus.tsx",
+        "bytes": 5008,
+        "sha256": "cf10af412532534e8f317d4082c40deee8fb9c992f4997a83cf97e5c22cfa736"
+      },
+      {
+        "path": "src/host/host.css",
+        "bytes": 321,
+        "sha256": "6f46a113b6d2439a8a6e6070a5e6ff3e83ef340bbe4f4e831e8976667e79b101"
+      },
+      {
+        "path": "tests/host/host-language-status.test.ts",
+        "bytes": 5883,
+        "sha256": "8a70f524a39d1fe11570eb6b2a24a39d434f6d93df46b82eabbb54e2c835e713"
+      },
+      {
+        "path": "tests/host/host-lifecycle.spec.mjs",
+        "bytes": 15449,
+        "sha256": "c65e54e394be9b7c02ce73587890d0caf1e05a7142499baee44bb0bd7617076e"
+      },
+      {
+        "path": "playwright.host-lifecycle.config.mjs",
+        "bytes": 304,
+        "sha256": "6fb1c52ae22215d41ef90c1372fccc8163240b9357f8c57bad4a3e2b60cd3967"
+      },
+      {
+        "path": "vitest.config.ts",
+        "bytes": 394,
+        "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+      },
+      {
+        "path": "tsconfig.json",
+        "bytes": 704,
+        "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+      },
+      {
+        "path": "src/i18n/InterfaceLanguage.tsx",
+        "bytes": 119951,
+        "sha256": "558aa11a47cff412db410ae094db48edadf7a9185cbba48c857e1f3ba4643e51"
+      },
+      {
+        "path": "src/components/InterfaceLanguageControl.tsx",
+        "bytes": 1043,
+        "sha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293"
+      },
+      {
+        "path": "src/platform/PlatformServices.tsx",
+        "bytes": 1374,
+        "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+      },
+      {
+        "path": "src/platform/ports.ts",
+        "bytes": 1541,
+        "sha256": "6d660acf26dd709a83c9164be777f2cc04d814e23e3a3db0c2225901c035e4ce"
+      },
+      {
+        "path": "src/host/initializeHostPlatform.ts",
+        "bytes": 5665,
+        "sha256": "747aabe8e36ea20e8714d509a05c9bb01836b0b688b9eef5f743f6c76423422c"
+      },
+      {
+        "path": "src/index.css",
+        "bytes": 555731,
+        "sha256": "8999db3c9a1ce4f1863a5ceef948c2a044e4b4ff19a20426530873dc9051209c"
+      },
+      {
+        "path": "src/utils/safeWebStorage.ts",
+        "bytes": 7732,
+        "sha256": "81ea225b4e6c0a1a2d8c3bf4ba2b48523144280429ff3ae2a2bf38df800b9277"
+      }
+    ],
+    "limits": [
+      "Focused directly relevant source/config/probe inventory, not a complete transitive bundler closure or signed build receipt.",
+      "The eight owned host source/test/probe/config SHA values match the previously captured final source freeze.",
+      "vitest.config.ts is captured after root added exact tests/host/**/*.spec.mjs and dist-native/** exclusions. Targeted unit commands were explicit files and were not rerun to manufacture a full-current-config claim.",
+      "The Chrome bundle was generated in memory and not retained as a native or release artifact."
+    ]
+  },
+  "checks": [
+    {
+      "id": "host-services-unit",
+      "command": "node node_modules/vitest/vitest.mjs run src/host/HostPlatformServices.test.ts --configLoader runner --maxWorkers 1 --no-file-parallelism",
+      "result": "PASS",
+      "passed": 80,
+      "files": 1,
+      "durationMs": 382,
+      "exitCode": 0,
+      "toolChunks": [
+        "53a0a1"
+      ],
+      "log": "docs/mobile/evidence/S04/logs/host-platform-services.unit.tool-output.txt",
+      "covers": [
+        "No constructor/read native IO; injected native kind/channel and immutable pre-resolved language snapshot.",
+        "Duplicate callback refcounts; late handles/cleanup; pending registration independent initialization; synchronous registration events and stale read/event/lifetime fencing.",
+        "Per-key writes, readback, reads and removal ordering; cross-key independence; exact allowed values; rejection/mismatch/malformed response and missing capability handling.",
+        "Strict HTTPS and exact support mailto; default denial; current injected child-aware policy; observable awaited requested/unavailable/blocked results; rejection/error sink containment."
+      ]
+    },
+    {
+      "id": "language-outcome-unit",
+      "command": "node node_modules/vitest/vitest.mjs run tests/host/host-language-status.test.ts --configLoader runner --maxWorkers 1 --no-file-parallelism",
+      "result": "PASS",
+      "passed": 10,
+      "files": 1,
+      "durationMs": 464,
+      "exitCode": 0,
+      "toolChunks": [
+        "e6a63a"
+      ],
+      "log": "docs/mobile/evidence/S04/logs/host-language-status.unit.tool-output.txt",
+      "covers": [
+        "Old success/failure cannot erase a newer pending or failed outcome.",
+        "No locale mutation from completion; failed initial read distinguished from failed write.",
+        "Current success clears failure; disposal fences late completion; exception handling and paired draft dictionaries."
+      ],
+      "sourceNote": {
+        "testFileSha256": "8a70f524a39d1fe11570eb6b2a24a39d434f6d93df46b82eabbb54e2c835e713",
+        "statusModuleTestedBeforeTypeOnlyFixSha256": "3586873e10835086a9da1e4370f1755c46880f8e53936878c50eb3ff30f7f1a0",
+        "derivation": "Reconstructed from the frozen final module by reverting only 'let status: HostLanguageStatus = initialStatus;' to 'let status = initialStatus;'. This SHA was not captured during the unit execution.",
+        "limitation": "The ten-case run preceded the annotation-only TypeScript fix. The final annotated module was subsequently exercised by the five Chrome cases and checked by root tsc."
+      }
+    },
+    {
+      "id": "host-component-chrome",
+      "command": "node node_modules/@playwright/test/cli.js test --config playwright.host-lifecycle.config.mjs",
+      "result": "PASS",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "durationSeconds": 19.5,
+      "exitCode": 0,
+      "toolChunks": [
+        "047026",
+        "ac62cf"
+      ],
+      "log": "docs/mobile/evidence/S04/logs/host-component-chrome.tool-output.txt",
+      "rawLastRunReport": "docs/mobile/evidence/S04/logs/host-component-last-run.json",
+      "launch": {
+        "engine": "Chromium",
+        "channel": "chrome",
+        "headless": true,
+        "origin": "https://native-host.test/",
+        "originKind": "routed virtual fixture",
+        "nativeSdk": false,
+        "productionNetworkActions": false
+      },
+      "covers": [
+        "Host mount creates two active owned native listener handles after StrictMode setup.",
+        "RU/EN/RU document lang/title and probe header reflect the one canonical provider/control.",
+        "Native network hints and persistence notices localize; no browser language-preference reads/writes occur.",
+        "Same child DOM canvas element and input selection survive locale/network/write outcomes; this is not a live R3F scene assertion.",
+        "Delayed serialized native writes cannot replace the newest pending choice; latest failure remains localized; current retry clears it.",
+        "Status fits 320px in the inspected failure flow; aria status/live/atomic attributes are asserted.",
+        "Initialization precedence uses native saved preference, then valid native language/fallback; unavailable preference is disclosed.",
+        "Unmount removes owned listeners, ignores stale events/late persistence completion, and keeps the one-mount guard."
+      ]
+    },
+    {
+      "id": "root-source-types",
+      "command": "node node_modules/typescript/bin/tsc --noEmit > .tmp/native-bootstrap/types-before-native-build-fixed.log 2>&1",
+      "result": "PASS",
+      "exitCode": 0,
+      "toolChunks": [
+        "059145"
+      ],
+      "sessionId": 68596,
+      "log": "docs/mobile/evidence/S04/logs/host-runtime-types-fixed.log",
+      "attribution": "Root observed the guarded shell chain: if LASTEXITCODE was nonzero it exited; otherwise it ran build-native android dev. That session completed exit 0. This review inspected/copied the empty type log and received the exact command/chunk/guard confirmation from root.",
+      "limits": [
+        "An empty log alone is not success proof.",
+        "tsconfig.json includes src; tests/host/*.test.ts execute through Vitest but are outside that root static typecheck include.",
+        "Later two-file native backend guards were tested separately and are not retroactively covered here."
+      ]
+    },
+    {
+      "id": "actual-css-audit",
+      "command": "node scripts/audit-typography.mjs",
+      "result": "PASS",
+      "publicCssFiles": 26,
+      "issues": 0,
+      "exitCode": 0,
+      "toolChunks": [
+        "f6e35e"
+      ],
+      "log": "docs/mobile/evidence/S04/logs/host-runtime-typography.tool-output.txt"
+    }
+  ],
+  "priorAttempts": [
+    {
+      "kind": "host-fixture-type-inference",
+      "result": "FAIL",
+      "toolChunks": [
+        "cfddcf",
+        "b386c9"
+      ],
+      "cause": "An initial host test cleanup variable was inferred as () => undefined and could not accept () => void; explicitly annotated before the final 80-case host test/source freeze. That in-flight root typecheck also reported separate adapter test typing issues owned and fixed by their author.",
+      "rawLogAvailable": false
+    },
+    {
+      "kind": "host-status-type-inference",
+      "result": "FAIL",
+      "exitCode": 2,
+      "sessionId": 73429,
+      "toolChunks": [
+        "c63b64"
+      ],
+      "log": "docs/mobile/evidence/S04/logs/host-runtime-types-initial.log",
+      "cause": "let status = initialStatus inferred only idle | read-unavailable; publish also accepts saving/failed.",
+      "fix": "Explicit let status: HostLanguageStatus = initialStatus; runtime behavior unchanged.",
+      "afterSha256": "cf10af412532534e8f317d4082c40deee8fb9c992f4997a83cf97e5c22cfa736"
+    },
+    {
+      "kind": "host-browser-probe-setup",
+      "failedAttempts": 0,
+      "note": "The first and only host Chrome probe run completed all five cases. Earlier S03 PWA probe setup failures belong to separate historical evidence."
+    }
+  ],
+  "logs": [
+    {
+      "path": "docs/mobile/evidence/S04/logs/host-component-last-run.json",
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903",
+      "captureKind": "byte-identical-existing-report-copy",
+      "originalPath": ".tmp/host-lifecycle-results/.last-run.json",
+      "limits": "Playwright last-run summary contains status and failed IDs only; five-case count comes from the observed list reporter output."
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/host-runtime-types-initial.log",
+      "bytes": 212,
+      "sha256": "b3693c309c01e3e322e8eaf83fb7d6c4ab41e48dee1bc861b20620dbaba7379b",
+      "captureKind": "byte-identical-existing-stdout-stderr-copy",
+      "originalPath": ".tmp/native-bootstrap/types-before-native-build.log",
+      "toolChunks": [
+        "c63b64"
+      ],
+      "exitCode": 2
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/host-runtime-types-fixed.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "captureKind": "byte-identical-existing-stdout-stderr-copy",
+      "originalPath": ".tmp/native-bootstrap/types-before-native-build-fixed.log",
+      "toolChunks": [
+        "059145"
+      ],
+      "exitCode": 0,
+      "limits": "Zero bytes. Success is established by the observed guarded command chain, not by log emptiness."
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/host-platform-services.unit.tool-output.txt",
+      "bytes": 532,
+      "sha256": "582cdeb7e4286ad4cf46adf385658a18166f46cc8be53984cf968074974ede99",
+      "captureKind": "persisted-tool-text",
+      "toolChunks": [
+        "53a0a1"
+      ],
+      "exitCode": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/host-language-status.unit.tool-output.txt",
+      "bytes": 535,
+      "sha256": "c55d92c8946968c9ad65f70b6d28e37567e5edd5f62ac844fc9c044a4ef31a6d",
+      "captureKind": "persisted-tool-text",
+      "toolChunks": [
+        "e6a63a"
+      ],
+      "exitCode": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/host-runtime-typography.tool-output.txt",
+      "bytes": 211,
+      "sha256": "3f85e3318f44c3ab9ff44300cf9afb0df99f22df52fa9d619ec2bb70022512bf",
+      "captureKind": "persisted-tool-text",
+      "toolChunks": [
+        "f6e35e"
+      ],
+      "exitCode": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/host-component-chrome.tool-output.txt",
+      "bytes": 1359,
+      "sha256": "29061fbc87535eedfadeb6f197a0880ffac06afdc49deae3ff2e9a43bd67a84c",
+      "captureKind": "transcribed-two-chunk-tool-text",
+      "toolChunks": [
+        "047026",
+        "ac62cf"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "toolchain": {
+    "observedAt": "evidence capture, not an independent test-run lock attestation",
+    "node": "24.20.0",
+    "vitest": "4.1.10",
+    "playwrightTest": "1.62.1",
+    "typescript": "5.9.3",
+    "esbuild": "0.28.2",
+    "react": "18.3.1",
+    "reactDom": "18.3.1"
+  },
+  "handoff": {
+    "sourceFrozen": true,
+    "noFurtherSourceOrTestEditsInEvidenceTask": true,
+    "testsRerunForEvidence": false,
+    "remainingS03": "S03 acceptance remains open; its current browser/account-policy and final acceptance evidence are separate from this host preparation.",
+    "remainingS04": "Root owns native artifact/build verification. This record does not establish installed-device lifecycle, actual native plugin behavior, real LiteraryGlobe instance preservation, deep-link/restart/resource behavior, iOS execution, or S04 acceptance.",
+    "ownership": "The implementation preserves canonical App/provider/scene ownership. Programming, translation and remaining validation stay internal; no owner translation/programming task is transferred.",
+    "git": "No Git mutation was performed. The copied known logs may require root to explicitly add ignored paths."
+  },
+  "limitations": [
+    "No current full regression is claimed: historical full4479 and prior S03 artifact/cross-engine results are not repeated or relabeled by these narrow checks.",
+    "No actual globe, Android/iOS device, native installation, release binary, store SKU, account recovery/deletion, billing, production deploy or release approval is established.",
+    "Native preference success/readback is best-effort acceptance, not fsync/durability or proof of ownership.",
+    "Network state is a device hint, not evidence of endpoint availability, authorization or a live purchase check."
+  ]
+}
+

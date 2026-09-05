@@ -28,5 +28,5 @@ export interface PlatformServices {
   /** Language preferences only, never IP, SIM, nationality or store territory. */
   getSystemLanguages(): readonly string[];
   /** Explicit user action only; does not load remote executable app code. */
-  openExternalLink(url: string): OpenLinkResult;
+  openExternalLink(url: string): OpenLinkResult | Promise<OpenLinkResult>;
 }

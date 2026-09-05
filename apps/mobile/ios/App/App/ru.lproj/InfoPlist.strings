@@ -1,0 +1,3 @@
+/* Canonical application name; shared content uses the global interface language. */
+"CFBundleDisplayName" = "Литературная планета";
+"CFBundleName" = "Литературная планета";

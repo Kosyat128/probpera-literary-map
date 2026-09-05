@@ -1,0 +1,2812 @@
+{
+  "schemaVersion": 1,
+  "stage": "S04",
+  "kind": "official-npm-package-contract-intake",
+  "capturedAt": "2026-09-05T20:30:25.968Z",
+  "packages": [
+    {
+      "name": "@capacitor/core",
+      "shortName": "core",
+      "selectedVersion": "8.5.1",
+      "latestTag": "8.5.1",
+      "latestStable8": "8.5.1",
+      "distTags": {
+        "latest-2": "2.5.0",
+        "latest-3": "3.9.0",
+        "dev-4": "4.7.2-dev-20230330T154908.0",
+        "latest-4": "4.8.2",
+        "latest-5": "5.7.8",
+        "dev": "9.0.0-dev-20260319T162951.0",
+        "next": "9.0.0-alpha.6",
+        "latest": "8.5.1",
+        "latest-8.4": "8.4.3",
+        "latest-7": "7.6.9",
+        "latest-6": "6.2.2",
+        "nightly": "8.5.2-nightly-20260904T151235.0"
+      },
+      "versionPublishedAt": "2026-08-31T21:56:18.931Z",
+      "engines": null,
+      "peerDependencies": {},
+      "dependencies": {
+        "tslib": "^2.1.0"
+      },
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/ionic-team/capacitor.git",
+        "type": "git"
+      },
+      "registry": {
+        "url": "https://registry.npmjs.org/@capacitor%2fcore",
+        "selectedUrl": "https://registry.npmjs.org/@capacitor%2fcore/8.5.1",
+        "accessedAt": "2026-09-05T20:30:21.411Z",
+        "sha256": "9be49c446e8f2674bb6fa3fc69657ce3527f98e58e8d3a5c37ca5131f14e08f0"
+      },
+      "dist": {
+        "shasum": "e7adf1762ff98dbc2b37568ea9a1a10462b273af",
+        "tarball": "https://registry.npmjs.org/@capacitor/core/-/core-8.5.1.tgz",
+        "fileCount": 21,
+        "integrity": "sha512-IOQ7ynG1qgrJ/RLuCO3WgyRGmkmmG/cdStRR4ftU2dWEN1FdtLrnI/XpZmZuUsOEHEnzBRJY/PmRH8eTLiXfhA==",
+        "signatures": [
+          {
+            "sig": "MEYCIQDLq07fTbFzBaUcnzc7umjEDvxLMFmUGW5JjPAh4iJxqgIhAP4Ywx+P3IMnf3gnvQw6JyKYG5nzsBRZ0y3YCZ3jgOkn",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEUCIQDtNL6ik0cUSF1pETzsTGSUKkrOxOU7dBBRCHZ0vEOyXgIgUk5OBX30qtuT7Nrk/tdDQ2bI4fYEkDPGoaAWe2N/F6I=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@capacitor%2fcore@8.5.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 374636,
+        "actualBytes": 70746,
+        "actualSha256": "2a5973db6a572e0a9ddc25ffc78a6fe863142c1cc4e92f5f055c066f15115cec",
+        "integrityVerified": true,
+        "legacySha1Verified": true,
+        "signatureVerified": false
+      },
+      "packageDir": ".tmp/native-bootstrap/capacitor-packages/core-8.5.1",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/core-8.5.1/core-8.5.1.tgz",
+      "extractedRoot": ".tmp/native-bootstrap/capacitor-packages/core-8.5.1/extracted/package",
+      "archiveEntries": 21
+    },
+    {
+      "name": "@capacitor/cli",
+      "shortName": "cli",
+      "selectedVersion": "8.5.1",
+      "latestTag": "8.5.1",
+      "latestStable8": "8.5.1",
+      "distTags": {
+        "latest-2": "2.5.0",
+        "latest-3": "3.9.0",
+        "dev-4": "4.7.2-dev-20230330T154908.0",
+        "latest-4": "4.8.2",
+        "latest-5": "5.7.8",
+        "dev": "9.0.0-dev-20260319T162951.0",
+        "next": "9.0.0-alpha.6",
+        "latest": "8.5.1",
+        "latest-8.4": "8.4.3",
+        "latest-7": "7.6.9",
+        "latest-6": "6.2.2",
+        "nightly": "8.5.2-nightly-20260904T151235.0"
+      },
+      "versionPublishedAt": "2026-08-31T21:56:21.395Z",
+      "engines": {
+        "node": ">=22.0.0"
+      },
+      "peerDependencies": {},
+      "dependencies": {
+        "tar": "^7.5.3",
+        "open": "^8.4.0",
+        "debug": "^4.4.0",
+        "kleur": "^4.1.5",
+        "plist": "^3.1.0",
+        "tslib": "^2.8.1",
+        "xcode": "^3.0.1",
+        "rimraf": "^6.0.1",
+        "semver": "^7.6.3",
+        "xml2js": "^0.6.2",
+        "prompts": "^2.4.2",
+        "fs-extra": "^11.2.0",
+        "commander": "^12.1.0",
+        "env-paths": "^2.2.0",
+        "native-run": "^2.0.3",
+        "@ionic/utils-terminal": "^2.3.5",
+        "@ionic/utils-subprocess": "^3.0.1",
+        "@ionic/cli-framework-output": "^2.2.8"
+      },
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/ionic-team/capacitor.git",
+        "type": "git"
+      },
+      "registry": {
+        "url": "https://registry.npmjs.org/@capacitor%2fcli",
+        "selectedUrl": "https://registry.npmjs.org/@capacitor%2fcli/8.5.1",
+        "accessedAt": "2026-09-05T20:30:21.847Z",
+        "sha256": "14722c093abd6ceda63ae6a21e0356c1aed7d76dad30ac67c247692e0a7a5469"
+      },
+      "dist": {
+        "shasum": "1f8af6db041944078d41fa7c9b6848312e5a67a7",
+        "tarball": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+        "fileCount": 75,
+        "integrity": "sha512-LKQFSyLg1QbTN6CGDoFqeRtAlj8C3c9OymP8OuhwlmkbSQwh9i1HQjwUCaNyVem2XkY9rv0v2UOfVlgoxH5pAw==",
+        "signatures": [
+          {
+            "sig": "MEQCIC70DQEz1qpGoGIoV7EGkyNd2Iu4B1zXwN4ZGUNBLHntAiADr5sjhTaUeIxf6yROqHw5oOsRRs6Ch5sFs6RaZme21A==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEQCIEpzce+Cn6eVYCfL/U+qMFvKSKcY348rjGSWcmc7n5rOAiBB8f0RJ6IqRX2DZUaE8VGafU6mWPQb6StpE0RGKHIyAA==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@capacitor%2fcli@8.5.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 910440,
+        "actualBytes": 612015,
+        "actualSha256": "551f8930a5c00ac6f78930c9c5402bdcdc6c938564c6dbd40a115ec75f719d29",
+        "integrityVerified": true,
+        "legacySha1Verified": true,
+        "signatureVerified": false
+      },
+      "packageDir": ".tmp/native-bootstrap/capacitor-packages/cli-8.5.1",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/cli-8.5.1/cli-8.5.1.tgz",
+      "extractedRoot": ".tmp/native-bootstrap/capacitor-packages/cli-8.5.1/extracted/package",
+      "archiveEntries": 75
+    },
+    {
+      "name": "@capacitor/android",
+      "shortName": "android",
+      "selectedVersion": "8.5.1",
+      "latestTag": "8.5.1",
+      "latestStable8": "8.5.1",
+      "distTags": {
+        "latest-2": "2.5.0",
+        "next-2": "2.5.1-beta.1",
+        "latest-3": "3.9.0",
+        "dev-4": "4.7.2-dev-20230330T154908.0",
+        "latest-4": "4.8.2",
+        "latest-5": "5.7.8",
+        "dev": "9.0.0-dev-20260319T162951.0",
+        "next": "9.0.0-alpha.6",
+        "latest": "8.5.1",
+        "latest-8.4": "8.4.3",
+        "latest-7": "7.6.9",
+        "latest-6": "6.2.2",
+        "nightly": "8.5.2-nightly-20260904T151235.0"
+      },
+      "versionPublishedAt": "2026-08-31T21:56:35.554Z",
+      "engines": null,
+      "peerDependencies": {
+        "@capacitor/core": "^8.5.0"
+      },
+      "dependencies": {},
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/ionic-team/capacitor.git",
+        "type": "git"
+      },
+      "registry": {
+        "url": "https://registry.npmjs.org/@capacitor%2fandroid",
+        "selectedUrl": "https://registry.npmjs.org/@capacitor%2fandroid/8.5.1",
+        "accessedAt": "2026-09-05T20:30:21.219Z",
+        "sha256": "12fd940c68cb4fba585c00781154e4b22aa553748686879514ffec4ab539a88c"
+      },
+      "dist": {
+        "shasum": "577a8cea742341a0494e93366d1059d96ec90025",
+        "tarball": "https://registry.npmjs.org/@capacitor/android/-/android-8.5.1.tgz",
+        "fileCount": 73,
+        "integrity": "sha512-o8fUIPDSEASeXHHrDz26WU7OlyiRb+QqtI9KFdnLS1jUL77o5iGrvegibaZX8rWpiCyDJ6jlUhhhHlfeq3ou9A==",
+        "signatures": [
+          {
+            "sig": "MEYCIQCd++Jj589z38bSAMe6pmLTcINAN13uCRVp7DRwCQ+ELgIhAKx/a9loWE66ch2N3lJwIWwmzab6Amsb0hN9ElM4G2XX",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEYCIQDp1+Oo0wHuxTyRKi39l5sFU3+aBRSjsPDC+7nMlfkDewIhAIAm2RglpliXSQxnaIvsAyPyN6ov+9oEp6V3jbf108rI",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@capacitor%2fandroid@8.5.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 449226,
+        "actualBytes": 92124,
+        "actualSha256": "065b9921fb17701f3e68261a40a549cd70e18d9e2bdafed54589955f11924003",
+        "integrityVerified": true,
+        "legacySha1Verified": true,
+        "signatureVerified": false
+      },
+      "packageDir": ".tmp/native-bootstrap/capacitor-packages/android-8.5.1",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/android-8.5.1/android-8.5.1.tgz",
+      "extractedRoot": ".tmp/native-bootstrap/capacitor-packages/android-8.5.1/extracted/package",
+      "archiveEntries": 73
+    },
+    {
+      "name": "@capacitor/ios",
+      "shortName": "ios",
+      "selectedVersion": "8.5.1",
+      "latestTag": "8.5.1",
+      "latestStable8": "8.5.1",
+      "distTags": {
+        "latest-2": "2.5.0",
+        "latest-3": "3.9.0",
+        "dev-4": "4.7.2-dev-20230330T154908.0",
+        "latest-4": "4.8.2",
+        "latest-5": "5.7.8",
+        "dev": "9.0.0-dev-20260319T162951.0",
+        "next": "9.0.0-alpha.6",
+        "latest": "8.5.1",
+        "latest-8.4": "8.4.3",
+        "latest-7": "7.6.9",
+        "latest-6": "6.2.2",
+        "nightly": "8.5.2-nightly-20260904T151235.0"
+      },
+      "versionPublishedAt": "2026-08-31T21:55:57.662Z",
+      "engines": null,
+      "peerDependencies": {
+        "@capacitor/core": "^8.5.0"
+      },
+      "dependencies": {},
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/ionic-team/capacitor.git",
+        "type": "git"
+      },
+      "registry": {
+        "url": "https://registry.npmjs.org/@capacitor%2fios",
+        "selectedUrl": "https://registry.npmjs.org/@capacitor%2fios/8.5.1",
+        "accessedAt": "2026-09-05T20:30:21.481Z",
+        "sha256": "6eccece60e726a5e0496b6d6f505f6639a25c6f18dc67859ead8e8dc694f8caf"
+      },
+      "dist": {
+        "shasum": "f3c19d81c94d5b629a3e94ff6db9653ad9ea060a",
+        "tarball": "https://registry.npmjs.org/@capacitor/ios/-/ios-8.5.1.tgz",
+        "fileCount": 106,
+        "integrity": "sha512-0EVqwCYf3RUp2JAjUGZ04xmG6dSpIsPmPacI9zKxn6mu9RSiHhmFF230ghe00HrkyB6ig6SfNdoADvVODxYhlQ==",
+        "signatures": [
+          {
+            "sig": "MEUCIQCI84nTLnHjPfuENLh64JpNJ4Nc5/d4TbkGEBi89H8i5gIgSqmKwNkgShUQw7mgSeYCmgz2Jz66kZvvemjgn4guE/w=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEQCIHv8J44ObmbiVLL14P9Uj+otf/3oOntLI6EkJvAKsIVBAiBZi9dBmUhWXV4R4+TTBvIQ6Vzks8l9a8JdNHkIKBPQBg==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@capacitor%2fios@8.5.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 409852,
+        "actualBytes": 87292,
+        "actualSha256": "76f217964d706fd0a3d5ec0c0bdb09abbd4d1fced1d303c6ae7747d462192397",
+        "integrityVerified": true,
+        "legacySha1Verified": true,
+        "signatureVerified": false
+      },
+      "packageDir": ".tmp/native-bootstrap/capacitor-packages/ios-8.5.1",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/ios-8.5.1/ios-8.5.1.tgz",
+      "extractedRoot": ".tmp/native-bootstrap/capacitor-packages/ios-8.5.1/extracted/package",
+      "archiveEntries": 106
+    },
+    {
+      "name": "@capacitor/app",
+      "shortName": "app",
+      "selectedVersion": "8.1.1",
+      "latestTag": "8.1.1",
+      "latestStable8": "8.1.1",
+      "distTags": {
+        "latest-3": "1.1.1",
+        "latest-4": "4.1.1",
+        "dev-5": "5.0.8-dev-20240315T155919.0",
+        "latest-5": "5.0.8",
+        "latest-6": "6.0.3",
+        "latest-7": "7.1.2",
+        "latest": "8.1.1",
+        "next": "9.0.0-alpha.2",
+        "dev": "9.0.1-dev-2580-20260804T205237.0",
+        "nightly": "8.1.2-nightly-20260904T151257.0"
+      },
+      "versionPublishedAt": "2026-07-15T10:23:28.483Z",
+      "engines": null,
+      "peerDependencies": {
+        "@capacitor/core": ">=8.0.0"
+      },
+      "dependencies": {},
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/ionic-team/capacitor-plugins.git",
+        "type": "git"
+      },
+      "registry": {
+        "url": "https://registry.npmjs.org/@capacitor%2fapp",
+        "selectedUrl": "https://registry.npmjs.org/@capacitor%2fapp/8.1.1",
+        "accessedAt": "2026-09-05T20:30:20.942Z",
+        "sha256": "bf5a010cfb75148d1c9d6b5c15184aafb8f7285f67c96ceb8c5180ef9d844e5e"
+      },
+      "dist": {
+        "shasum": "af00649d0c7799ec83469b1c4ada921f9933a77e",
+        "tarball": "https://registry.npmjs.org/@capacitor/app/-/app-8.1.1.tgz",
+        "fileCount": 23,
+        "integrity": "sha512-xM2ZTX5jK60tFtmjsmJv+Cdj1Qsb6NcavkqmdEnCPQBeya9oKhamZJxYOnQNj1ZvcJM7sWfG6BEtSLx42pisbA==",
+        "signatures": [
+          {
+            "sig": "MEYCIQCHrJkBgNeG7yJ9ydrNikLAqDi8fiS3qEfITPw+GRVaVAIhAKFwjDQTITWGORrG1Mhy2LHfFK+brdlIEVdLedaZtCOE",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@capacitor%2fapp@8.1.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v0.2"
+          }
+        },
+        "unpackedSize": 73316,
+        "actualBytes": 15102,
+        "actualSha256": "fbaeef9151671605f691d7ce09d2335d2794677bde149eef9a717e686f2c9e02",
+        "integrityVerified": true,
+        "legacySha1Verified": true,
+        "signatureVerified": false
+      },
+      "packageDir": ".tmp/native-bootstrap/capacitor-packages/app-8.1.1",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/app-8.1.1/app-8.1.1.tgz",
+      "extractedRoot": ".tmp/native-bootstrap/capacitor-packages/app-8.1.1/extracted/package",
+      "archiveEntries": 23
+    },
+    {
+      "name": "@capacitor/network",
+      "shortName": "network",
+      "selectedVersion": "8.0.1",
+      "latestTag": "8.0.1",
+      "latestStable8": "8.0.1",
+      "distTags": {
+        "latest-3": "1.0.7",
+        "latest-4": "4.1.0",
+        "dev-5": "5.0.8-dev-20240315T155919.0",
+        "latest-5": "5.0.8",
+        "latest-6": "6.0.4",
+        "latest": "8.0.1",
+        "latest-7": "7.0.4",
+        "next": "9.0.0-alpha.2",
+        "dev": "9.0.1-dev-2580-20260804T205238.0",
+        "nightly": "8.0.2-nightly-20260904T151257.0"
+      },
+      "versionPublishedAt": "2026-02-12T18:04:12.029Z",
+      "engines": null,
+      "peerDependencies": {
+        "@capacitor/core": ">=8.0.0"
+      },
+      "dependencies": {},
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/ionic-team/capacitor-plugins.git",
+        "type": "git"
+      },
+      "registry": {
+        "url": "https://registry.npmjs.org/@capacitor%2fnetwork",
+        "selectedUrl": "https://registry.npmjs.org/@capacitor%2fnetwork/8.0.1",
+        "accessedAt": "2026-09-05T20:30:20.929Z",
+        "sha256": "2d716c8590e52e9f9f5fd324f2d27180363c50af5a38ef92b2c1bda48e90622d"
+      },
+      "dist": {
+        "shasum": "463b2639db2a5a0837f3ae0c0e2ed3f46ce1bb0e",
+        "tarball": "https://registry.npmjs.org/@capacitor/network/-/network-8.0.1.tgz",
+        "fileCount": 28,
+        "integrity": "sha512-9xK/FHFmzKGanB6BdoSZOzXk8vF0OFVQSQ4PAsIrzAzLuXHryO317qy8dcHVpgxYeuZq2noI0My9z1DvVDi/9w==",
+        "signatures": [
+          {
+            "sig": "MEQCIGAKhb2g76IuQug8JbFKadctqD61tlWffKNrDr0yQpwgAiB/ED2cO3RZH4cUYyCkt2GtOmzXu2adibV+QzeozwUpjw==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@capacitor%2fnetwork@8.0.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v0.2"
+          }
+        },
+        "unpackedSize": 72408,
+        "actualBytes": 16385,
+        "actualSha256": "47e547c74d20e7e19392747d41e7d84c2a23484b0012cf0dd6bd1d7b58b2ca1a",
+        "integrityVerified": true,
+        "legacySha1Verified": true,
+        "signatureVerified": false
+      },
+      "packageDir": ".tmp/native-bootstrap/capacitor-packages/network-8.0.1",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/network-8.0.1/network-8.0.1.tgz",
+      "extractedRoot": ".tmp/native-bootstrap/capacitor-packages/network-8.0.1/extracted/package",
+      "archiveEntries": 28
+    },
+    {
+      "name": "@capacitor/preferences",
+      "shortName": "preferences",
+      "selectedVersion": "8.0.1",
+      "latestTag": "8.0.1",
+      "latestStable8": "8.0.1",
+      "distTags": {
+        "latest-4": "4.0.2",
+        "dev-5": "5.0.8-dev-20240315T155919.0",
+        "latest-5": "5.0.8",
+        "latest-6": "6.0.4",
+        "latest": "8.0.1",
+        "latest-7": "7.0.4",
+        "next": "9.0.0-alpha.2",
+        "dev": "9.0.1-dev-2580-20260804T205240.0",
+        "nightly": "8.0.2-nightly-20260904T151257.0"
+      },
+      "versionPublishedAt": "2026-02-12T18:04:12.324Z",
+      "engines": null,
+      "peerDependencies": {
+        "@capacitor/core": ">=8.0.0"
+      },
+      "dependencies": {},
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/ionic-team/capacitor-plugins.git",
+        "type": "git"
+      },
+      "registry": {
+        "url": "https://registry.npmjs.org/@capacitor%2fpreferences",
+        "selectedUrl": "https://registry.npmjs.org/@capacitor%2fpreferences/8.0.1",
+        "accessedAt": "2026-09-05T20:30:21.162Z",
+        "sha256": "6c83b4bb1572fe9c01fc4fc51fa6ee03ba37a5ba79c151d6b4ba927d60ef106c"
+      },
+      "dist": {
+        "shasum": "9924997d694242a5f378e9ddba9711ad1ca611dc",
+        "tarball": "https://registry.npmjs.org/@capacitor/preferences/-/preferences-8.0.1.tgz",
+        "fileCount": 27,
+        "integrity": "sha512-T6no3ebi79XJCk91U3Jp/liJUwgBdvHR+s6vhvPkPxSuch7z3zx5Rv1bdWM6sWruNx+pViuEGqZvbfCdyBvcHQ==",
+        "signatures": [
+          {
+            "sig": "MEQCIGhSGMniY4Qc+VSaPGb6melD3BHSxr/zwv7+51ecGD/GAiAjWPGxABozY43+zVuQKwRyUnOZzRkPnPSxWSNIkYdZPQ==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@capacitor%2fpreferences@8.0.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v0.2"
+          }
+        },
+        "unpackedSize": 71048,
+        "actualBytes": 13960,
+        "actualSha256": "fa2a5e11f931d6990bb5e9b4600f8684f8a4a3938975e8a9c87ee87facec7d4e",
+        "integrityVerified": true,
+        "legacySha1Verified": true,
+        "signatureVerified": false
+      },
+      "packageDir": ".tmp/native-bootstrap/capacitor-packages/preferences-8.0.1",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/preferences-8.0.1/preferences-8.0.1.tgz",
+      "extractedRoot": ".tmp/native-bootstrap/capacitor-packages/preferences-8.0.1/extracted/package",
+      "archiveEntries": 27
+    },
+    {
+      "name": "@capacitor/browser",
+      "shortName": "browser",
+      "selectedVersion": "8.0.4",
+      "latestTag": "8.0.4",
+      "latestStable8": "8.0.4",
+      "distTags": {
+        "latest-3": "1.0.7",
+        "latest-4": "4.1.1",
+        "dev-5": "5.2.1-dev-20240315T155919.0",
+        "latest-5": "5.2.1",
+        "latest-6": "6.0.6",
+        "latest-7": "7.0.5",
+        "latest": "8.0.4",
+        "next": "9.0.0-alpha.2",
+        "dev": "9.0.1-dev-2580-20260804T205237.0",
+        "nightly": "8.0.5-nightly-20260904T151257.0"
+      },
+      "versionPublishedAt": "2026-07-15T10:23:28.245Z",
+      "engines": null,
+      "peerDependencies": {
+        "@capacitor/core": ">=8.0.0"
+      },
+      "dependencies": {},
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/ionic-team/capacitor-plugins.git",
+        "type": "git"
+      },
+      "registry": {
+        "url": "https://registry.npmjs.org/@capacitor%2fbrowser",
+        "selectedUrl": "https://registry.npmjs.org/@capacitor%2fbrowser/8.0.4",
+        "accessedAt": "2026-09-05T20:30:20.946Z",
+        "sha256": "1a4ce68fc00ab6a2020350864a4645dcc631995eadd6fefc784ec61761675353"
+      },
+      "dist": {
+        "shasum": "6a51e03a3f6690fad1bc638e6da0c302418088a2",
+        "tarball": "https://registry.npmjs.org/@capacitor/browser/-/browser-8.0.4.tgz",
+        "fileCount": 29,
+        "integrity": "sha512-ORZ4u/y+7aMuu6yVuk6SP529fUZyqcbnuHB1q5McpA3o2SYfVoi28iB8rsQjI2ad1qlKJd29ZUuGtspXLBDlWg==",
+        "signatures": [
+          {
+            "sig": "MEQCIEKNGF5j+g7pDRidx6a0FLtnnoOiqjOV068ssMwgvUf2AiASPOJbG14yYflVu2oyPK73oX346puD18KAPCDazmdL7g==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@capacitor%2fbrowser@8.0.4",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v0.2"
+          }
+        },
+        "unpackedSize": 52165,
+        "actualBytes": 12646,
+        "actualSha256": "38fbe1fa30ff70ee8a808c295fe702f6c8b67b851a31424d1e5ee6d0698246a1",
+        "integrityVerified": true,
+        "legacySha1Verified": true,
+        "signatureVerified": false
+      },
+      "packageDir": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4/browser-8.0.4.tgz",
+      "extractedRoot": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4/extracted/package",
+      "archiveEntries": 29
+    },
+    {
+      "name": "@capacitor/app-launcher",
+      "shortName": "app-launcher",
+      "selectedVersion": "8.0.1",
+      "latestTag": "8.0.1",
+      "latestStable8": "8.0.1",
+      "distTags": {
+        "latest-3": "1.0.9",
+        "latest-4": "4.1.0",
+        "dev-5": "5.0.8-dev-20240315T155919.0",
+        "latest-5": "5.0.8",
+        "latest-6": "6.0.4",
+        "latest": "8.0.1",
+        "latest-7": "7.0.4",
+        "next": "9.0.0-alpha.2",
+        "dev": "9.0.1-dev-2580-20260804T205235.0",
+        "nightly": "8.0.2-nightly-20260904T151257.0"
+      },
+      "versionPublishedAt": "2026-02-12T18:04:04.199Z",
+      "engines": null,
+      "peerDependencies": {
+        "@capacitor/core": ">=8.0.0"
+      },
+      "dependencies": {},
+      "license": "MIT",
+      "repository": {
+        "url": "git+https://github.com/ionic-team/capacitor-plugins.git",
+        "type": "git"
+      },
+      "registry": {
+        "url": "https://registry.npmjs.org/@capacitor%2fapp-launcher",
+        "selectedUrl": "https://registry.npmjs.org/@capacitor%2fapp-launcher/8.0.1",
+        "accessedAt": "2026-09-05T20:37:23.336Z",
+        "sha256": "298804f983574ed1cf86eae4a95518390539ee31d9495957fcd96697f06c2b27"
+      },
+      "dist": {
+        "shasum": "63f5ed3c0c8745c936d5af4698f40119ae5a0618",
+        "tarball": "https://registry.npmjs.org/@capacitor/app-launcher/-/app-launcher-8.0.1.tgz",
+        "fileCount": 24,
+        "integrity": "sha512-23D8zi74sn7kxvISix8qYwgqdxGJN+4NImcNGvHen98LB1zb4eZfkJvFvp7pwntxGw4OjIE7yuf4wbzZxQHpog==",
+        "signatures": [
+          {
+            "sig": "MEUCIBDrtZAorGSIkyrWYA3/pJFFpAG6zpVHVtcfJP3SUGkhAiEAid+KjACTrb+bcsaIq2qRzK0+QPwoVWNjyR9Q5o/LE1s=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@capacitor%2fapp-launcher@8.0.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v0.2"
+          }
+        },
+        "unpackedSize": 31300,
+        "actualBytes": 8300,
+        "actualSha256": "0eff81c3c8ef9004e31d55a7301a059211993a54a070001083ffb49febaa583e",
+        "integrityVerified": true,
+        "legacySha1Verified": true,
+        "signatureVerified": false
+      },
+      "packageDir": ".tmp/native-bootstrap/capacitor-packages/app-launcher-8.0.1",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/app-launcher-8.0.1/app-launcher-8.0.1.tgz",
+      "extractedRoot": ".tmp/native-bootstrap/capacitor-packages/app-launcher-8.0.1/extracted/package",
+      "archiveEntries": 24
+    }
+  ],
+  "limits": [
+    "No npm install/ci, lifecycle scripts, Capacitor generation/sync, root dependency changes or SDK licenses accepted.",
+    "Tarball SRI binds downloaded bytes to the HTTPS npm registry metadata; registry ECDSA signatures and supply-chain provenance attestations were not independently verified.",
+    "Latest registry tags are observed metadata. Selected plugins use highest stable 8.x; compatibility still requires peer contracts and actual native build validation."
+  ],
+  "inspectedSources": [
+    {
+      "id": "app.types",
+      "package": "@capacitor/app",
+      "version": "8.1.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/app/-/app-8.1.1.tgz",
+      "archiveMember": "package/dist/esm/definitions.d.ts",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/app-8.1.1/extracted/package/dist/esm/definitions.d.ts",
+      "sha256": "88f241fc9bfecab4df0d3aa9f7f0a7dbd054c2f0eb10591b01d641b8f4c0d11e",
+      "bytes": 9572,
+      "anchors": [
+        {
+          "term": "getAppLanguage",
+          "lines": [
+            194
+          ]
+        },
+        {
+          "term": "getState",
+          "lines": [
+            174
+          ]
+        },
+        {
+          "term": "getStatus",
+          "lines": []
+        },
+        {
+          "term": "addListener",
+          "lines": [
+            213,
+            223,
+            234,
+            241,
+            267,
+            275
+          ]
+        },
+        {
+          "term": "set(options",
+          "lines": []
+        },
+        {
+          "term": "open(options",
+          "lines": []
+        },
+        {
+          "term": "value: string",
+          "lines": [
+            151
+          ]
+        },
+        {
+          "term": "connectionType:",
+          "lines": []
+        },
+        {
+          "term": "removeAllListeners",
+          "lines": [
+            281
+          ]
+        }
+      ]
+    },
+    {
+      "id": "network.types",
+      "package": "@capacitor/network",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/network/-/network-8.0.1.tgz",
+      "archiveMember": "package/dist/esm/definitions.d.ts",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/network-8.0.1/extracted/package/dist/esm/definitions.d.ts",
+      "sha256": "ae312b7ab2620787ca2ceda2e09e345b84815d380a1e2d2ff1b0343f35c8e01e",
+      "bytes": 1687,
+      "anchors": [
+        {
+          "term": "getAppLanguage",
+          "lines": []
+        },
+        {
+          "term": "getState",
+          "lines": []
+        },
+        {
+          "term": "getStatus",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "term": "addListener",
+          "lines": [
+            14
+          ]
+        },
+        {
+          "term": "set(options",
+          "lines": []
+        },
+        {
+          "term": "open(options",
+          "lines": []
+        },
+        {
+          "term": "value: string",
+          "lines": []
+        },
+        {
+          "term": "connectionType:",
+          "lines": [
+            41
+          ]
+        },
+        {
+          "term": "removeAllListeners",
+          "lines": [
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preferences.types",
+      "package": "@capacitor/preferences",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/preferences/-/preferences-8.0.1.tgz",
+      "archiveMember": "package/dist/esm/definitions.d.ts",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/preferences-8.0.1/extracted/package/dist/esm/definitions.d.ts",
+      "sha256": "72290d66913c97a495e4a88a1c4270091ab84b4394f851ed6765da062019352f",
+      "bytes": 3321,
+      "anchors": [
+        {
+          "term": "getAppLanguage",
+          "lines": []
+        },
+        {
+          "term": "getState",
+          "lines": []
+        },
+        {
+          "term": "getStatus",
+          "lines": []
+        },
+        {
+          "term": "addListener",
+          "lines": []
+        },
+        {
+          "term": "set(options",
+          "lines": [
+            100
+          ]
+        },
+        {
+          "term": "open(options",
+          "lines": []
+        },
+        {
+          "term": "value: string",
+          "lines": [
+            33,
+            47
+          ]
+        },
+        {
+          "term": "connectionType:",
+          "lines": []
+        },
+        {
+          "term": "removeAllListeners",
+          "lines": []
+        }
+      ]
+    },
+    {
+      "id": "browser.types",
+      "package": "@capacitor/browser",
+      "version": "8.0.4",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/browser/-/browser-8.0.4.tgz",
+      "archiveMember": "package/dist/esm/definitions.d.ts",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4/extracted/package/dist/esm/definitions.d.ts",
+      "sha256": "8458573d860dc9e1089fa2ceefbc21220d9464955eabb812c928a1d7facd69ea",
+      "bytes": 2370,
+      "anchors": [
+        {
+          "term": "getAppLanguage",
+          "lines": []
+        },
+        {
+          "term": "getState",
+          "lines": []
+        },
+        {
+          "term": "getStatus",
+          "lines": []
+        },
+        {
+          "term": "addListener",
+          "lines": [
+            21,
+            29
+          ]
+        },
+        {
+          "term": "set(options",
+          "lines": []
+        },
+        {
+          "term": "open(options",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "term": "value: string",
+          "lines": []
+        },
+        {
+          "term": "connectionType:",
+          "lines": []
+        },
+        {
+          "term": "removeAllListeners",
+          "lines": [
+            35
+          ]
+        }
+      ]
+    },
+    {
+      "id": "app-launcher.types",
+      "package": "@capacitor/app-launcher",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/app-launcher/-/app-launcher-8.0.1.tgz",
+      "archiveMember": "package/dist/esm/definitions.d.ts",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/app-launcher-8.0.1/extracted/package/dist/esm/definitions.d.ts",
+      "sha256": "412510c3ec942c1018aa75f2e49ed09cf157c31841d52e76bfb8dff36a37e2e4",
+      "bytes": 1723,
+      "anchors": [
+        {
+          "term": "getAppLanguage",
+          "lines": []
+        },
+        {
+          "term": "getState",
+          "lines": []
+        },
+        {
+          "term": "getStatus",
+          "lines": []
+        },
+        {
+          "term": "addListener",
+          "lines": []
+        },
+        {
+          "term": "set(options",
+          "lines": []
+        },
+        {
+          "term": "open(options",
+          "lines": []
+        },
+        {
+          "term": "value: string",
+          "lines": []
+        },
+        {
+          "term": "connectionType:",
+          "lines": []
+        },
+        {
+          "term": "removeAllListeners",
+          "lines": []
+        }
+      ]
+    },
+    {
+      "id": "core.types",
+      "package": "@capacitor/core",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/core/-/core-8.5.1.tgz",
+      "archiveMember": "package/types/definitions.d.ts",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/core-8.5.1/extracted/package/types/definitions.d.ts",
+      "sha256": "c1bf515bb8571ae22aed9f95484eda20dafe3e976a18e75fc202e109ddb90c79",
+      "bytes": 2790,
+      "anchors": [
+        {
+          "term": "PluginListenerHandle",
+          "lines": [
+            30,
+            63,
+            67
+          ]
+        },
+        {
+          "term": "getPlatform",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "term": "isNativePlatform",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "term": "isPluginAvailable",
+          "lines": [
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cli.config-types",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/dist/declarations.d.ts",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/cli-8.5.1/extracted/package/dist/declarations.d.ts",
+      "sha256": "84f8e43fa931d7732d38a5c99becccafdc30324692752f3574e1f003dd685ba9",
+      "bytes": 25186,
+      "anchors": [
+        {
+          "term": "webDir?",
+          "lines": [
+            28
+          ]
+        },
+        {
+          "term": "flavor?",
+          "lines": [
+            178
+          ]
+        },
+        {
+          "term": "server?:",
+          "lines": [
+            526
+          ]
+        },
+        {
+          "term": "url?:",
+          "lines": [
+            575
+          ]
+        },
+        {
+          "term": "allowNavigation?:",
+          "lines": [
+            601
+          ]
+        },
+        {
+          "term": "hostname?:",
+          "lines": [
+            541
+          ]
+        },
+        {
+          "term": "iosScheme?:",
+          "lines": [
+            553
+          ]
+        },
+        {
+          "term": "androidScheme?:",
+          "lines": [
+            565
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cli.ios-update",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/dist/ios/update.js",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/cli-8.5.1/extracted/package/dist/ios/update.js",
+      "sha256": "8165877362d8116c02ffd364bf2afbaebb55c6ca4e0a1aac46d71c98dc1f5b64",
+      "bytes": 31317,
+      "anchors": [
+        {
+          "term": "iosPlatformVersion",
+          "lines": [
+            50,
+            55,
+            57,
+            58,
+            81,
+            87,
+            91,
+            206,
+            247
+          ]
+        },
+        {
+          "term": "capacitor-swift-pm",
+          "lines": [
+            53,
+            59,
+            86,
+            87,
+            247,
+            253
+          ]
+        },
+        {
+          "term": "from:",
+          "lines": [
+            53,
+            59,
+            87,
+            247
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cli.platform-minima",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/dist/config.js",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/cli-8.5.1/extracted/package/dist/config.js",
+      "sha256": "cc9a66d337b427fabf50af4c20c01ee9e3db7f7ca2c54ba8112f16a686aa29c2",
+      "bytes": 19558,
+      "anchors": [
+        {
+          "term": "minVersion: '24'",
+          "lines": [
+            197
+          ]
+        },
+        {
+          "term": "minVersion: '15.0'",
+          "lines": [
+            247
+          ]
+        }
+      ]
+    },
+    {
+      "id": "android.gradle",
+      "package": "@capacitor/android",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/android/-/android-8.5.1.tgz",
+      "archiveMember": "package/capacitor/build.gradle",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/android-8.5.1/extracted/package/capacitor/build.gradle",
+      "sha256": "2b03df6b575178a8de490b4db114cc84647c06a580342046a2e5f9f797920717",
+      "bytes": 4039,
+      "anchors": [
+        {
+          "term": "gradle:8.13.0",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "term": "compileSdk =",
+          "lines": [
+            44
+          ]
+        },
+        {
+          "term": "minSdkVersion",
+          "lines": [
+            46
+          ]
+        },
+        {
+          "term": "targetSdkVersion",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "term": "VERSION_21",
+          "lines": [
+            66,
+            67
+          ]
+        }
+      ]
+    },
+    {
+      "id": "android.configuration",
+      "package": "@capacitor/android",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/android/-/android-8.5.1.tgz",
+      "archiveMember": "package/capacitor/src/main/java/com/getcapacitor/BridgeActivity.java",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/android-8.5.1/extracted/package/capacitor/src/main/java/com/getcapacitor/BridgeActivity.java",
+      "sha256": "344dda9fcee959138cbd70fbe2f66f73938727048455d1082188527266297c67",
+      "bytes": 6664,
+      "anchors": [
+        {
+          "term": "onConfigurationChanged",
+          "lines": [
+            209,
+            210,
+            216
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ios.privacy",
+      "package": "@capacitor/ios",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/ios/-/ios-8.5.1.tgz",
+      "archiveMember": "package/Capacitor/Capacitor/PrivacyInfo.xcprivacy",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/ios-8.5.1/extracted/package/Capacitor/Capacitor/PrivacyInfo.xcprivacy",
+      "sha256": "1bac827f49b2b8a5358491b9698203bf191791a6f1ba3a3ace3b1285d52d2d17",
+      "bytes": 373,
+      "anchors": [
+        {
+          "term": "NSPrivacyAccessedAPITypes",
+          "lines": [
+            5
+          ]
+        },
+        {
+          "term": "NSPrivacyTracking",
+          "lines": [
+            9,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "id": "app.android",
+      "package": "@capacitor/app",
+      "version": "8.1.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/app/-/app-8.1.1.tgz",
+      "archiveMember": "package/android/src/main/java/com/capacitorjs/plugins/app/AppPlugin.java",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/app-8.1.1/extracted/package/android/src/main/java/com/capacitorjs/plugins/app/AppPlugin.java",
+      "sha256": "3f1d493268d8334e8f086c5ff05fa37ab87eb2bab651bde88117974981fdcaac",
+      "bytes": 6290,
+      "anchors": [
+        {
+          "term": "getState",
+          "lines": [
+            103
+          ]
+        },
+        {
+          "term": "getAppLanguage",
+          "lines": [
+            129
+          ]
+        },
+        {
+          "term": "getApplicationLocales",
+          "lines": [
+            131
+          ]
+        },
+        {
+          "term": "Locale.getDefault",
+          "lines": [
+            133
+          ]
+        },
+        {
+          "term": "handleOnPause",
+          "lines": [
+            158,
+            159
+          ]
+        },
+        {
+          "term": "handleOnResume",
+          "lines": [
+            165,
+            166
+          ]
+        },
+        {
+          "term": "unsetAppListeners",
+          "lines": [
+            67,
+            174,
+            177
+          ]
+        }
+      ]
+    },
+    {
+      "id": "app.ios",
+      "package": "@capacitor/app",
+      "version": "8.1.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/app/-/app-8.1.1.tgz",
+      "archiveMember": "package/ios/Sources/AppPlugin/AppPlugin.swift",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/app-8.1.1/extracted/package/ios/Sources/AppPlugin/AppPlugin.swift",
+      "sha256": "f61a227bb449221d2ede214fdb2885e70d4f89fd12eac1b60730158d8b9bd080",
+      "bytes": 5072,
+      "anchors": [
+        {
+          "term": "getState",
+          "lines": [
+            13,
+            107
+          ]
+        },
+        {
+          "term": "getAppLanguage",
+          "lines": [
+            11,
+            119
+          ]
+        },
+        {
+          "term": "preferredLocalizations",
+          "lines": [
+            121
+          ]
+        },
+        {
+          "term": "applicationState",
+          "lines": [
+            110
+          ]
+        },
+        {
+          "term": "NotificationCenter",
+          "lines": [
+            20,
+            21,
+            22,
+            27,
+            33,
+            37,
+            44,
+            46
+          ]
+        },
+        {
+          "term": "deinit",
+          "lines": [
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "id": "app.web",
+      "package": "@capacitor/app",
+      "version": "8.1.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/app/-/app-8.1.1.tgz",
+      "archiveMember": "package/dist/esm/web.js",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/app-8.1.1/extracted/package/dist/esm/web.js",
+      "sha256": "d6b2ccfe0c4b80f87594ad98fcc10aa740e5a303a33a2217fc970e085a8000ee",
+      "bytes": 1295,
+      "anchors": [
+        {
+          "term": "constructor",
+          "lines": [
+            3
+          ]
+        },
+        {
+          "term": "visibilitychange",
+          "lines": [
+            17
+          ]
+        },
+        {
+          "term": "getAppLanguage",
+          "lines": [
+            37
+          ]
+        }
+      ]
+    },
+    {
+      "id": "network.android",
+      "package": "@capacitor/network",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/network/-/network-8.0.1.tgz",
+      "archiveMember": "package/android/src/main/java/com/capacitorjs/plugins/network/Network.java",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/network-8.0.1/extracted/package/android/src/main/java/com/capacitorjs/plugins/network/Network.java",
+      "sha256": "1985cb66f09ca1003bfd6bfc072b0586bb0e91e78ec575796e0613528c331da4",
+      "bytes": 4527,
+      "anchors": [
+        {
+          "term": "NET_CAPABILITY_VALIDATED",
+          "lines": [
+            81
+          ]
+        },
+        {
+          "term": "NET_CAPABILITY_INTERNET",
+          "lines": [
+            82
+          ]
+        },
+        {
+          "term": "startMonitoring",
+          "lines": [
+            114
+          ]
+        },
+        {
+          "term": "stopMonitoring",
+          "lines": [
+            121
+          ]
+        }
+      ]
+    },
+    {
+      "id": "network.android-plugin",
+      "package": "@capacitor/network",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/network/-/network-8.0.1.tgz",
+      "archiveMember": "package/android/src/main/java/com/capacitorjs/plugins/network/NetworkPlugin.java",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/network-8.0.1/extracted/package/android/src/main/java/com/capacitorjs/plugins/network/NetworkPlugin.java",
+      "sha256": "3a96e66b5567d4ec7c9bf315faa43971a0a56eec9bb00d95c28ed4f89fd416cf",
+      "bytes": 3077,
+      "anchors": [
+        {
+          "term": "handleOnResume",
+          "lines": [
+            58
+          ]
+        },
+        {
+          "term": "handleOnPause",
+          "lines": [
+            79
+          ]
+        },
+        {
+          "term": "getStatus",
+          "lines": [
+            50
+          ]
+        }
+      ]
+    },
+    {
+      "id": "network.android-manifest",
+      "package": "@capacitor/network",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/network/-/network-8.0.1.tgz",
+      "archiveMember": "package/android/src/main/AndroidManifest.xml",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/network-8.0.1/extracted/package/android/src/main/AndroidManifest.xml",
+      "sha256": "6e8ecbf0c9627d153cb17263b951579e7b86e53d0ef6eb70eb615bceac90d2de",
+      "bytes": 161,
+      "anchors": [
+        {
+          "term": "ACCESS_NETWORK_STATE",
+          "lines": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "network.ios",
+      "package": "@capacitor/network",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/network/-/network-8.0.1.tgz",
+      "archiveMember": "package/ios/Sources/NetworkPlugin/Network.swift",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/network-8.0.1/extracted/package/ios/Sources/NetworkPlugin/Network.swift",
+      "sha256": "78650c34c7f41fd076f6d78f5359d356870cd8efb014fd3fad48c5b9b7f00d83",
+      "bytes": 1361,
+      "anchors": [
+        {
+          "term": "startNotifier",
+          "lines": [
+            28
+          ]
+        },
+        {
+          "term": "currentStatus",
+          "lines": [
+            31
+          ]
+        }
+      ]
+    },
+    {
+      "id": "network.ios-plugin",
+      "package": "@capacitor/network",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/network/-/network-8.0.1.tgz",
+      "archiveMember": "package/ios/Sources/NetworkPlugin/NetworkPlugin.swift",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/network-8.0.1/extracted/package/ios/Sources/NetworkPlugin/NetworkPlugin.swift",
+      "sha256": "afab925b91daf99d688a01bdc0a8704a39a19cd488f469c0a180e38c043a1dfe",
+      "bytes": 1916,
+      "anchors": [
+        {
+          "term": "getStatus",
+          "lines": [
+            9,
+            29
+          ]
+        },
+        {
+          "term": "unavailable",
+          "lines": [
+            30,
+            42,
+            50,
+            60
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preferences.android",
+      "package": "@capacitor/preferences",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/preferences/-/preferences-8.0.1.tgz",
+      "archiveMember": "package/android/src/main/java/com/capacitorjs/plugins/preferences/Preferences.java",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/preferences-8.0.1/extracted/package/android/src/main/java/com/capacitorjs/plugins/preferences/Preferences.java",
+      "sha256": "437022ee05df94c09c42879afab8f50d8ec560acc6a3ec01a42f7289053d56d8",
+      "bytes": 1211,
+      "anchors": [
+        {
+          "term": "getString",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "term": "putString",
+          "lines": [
+            25
+          ]
+        },
+        {
+          "term": "apply()",
+          "lines": [
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preferences.android-plugin",
+      "package": "@capacitor/preferences",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/preferences/-/preferences-8.0.1.tgz",
+      "archiveMember": "package/android/src/main/java/com/capacitorjs/plugins/preferences/PreferencesPlugin.java",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/preferences-8.0.1/extracted/package/android/src/main/java/com/capacitorjs/plugins/preferences/PreferencesPlugin.java",
+      "sha256": "3eb821a1c13c0aebe2dc02f206c7f5ad5bf02f8d61c57d45774d22da68e4d737",
+      "bytes": 3574,
+      "anchors": [
+        {
+          "term": "call.reject",
+          "lines": [
+            32,
+            42,
+            57,
+            71,
+            89
+          ]
+        },
+        {
+          "term": "preferences.set",
+          "lines": [
+            62,
+            112
+          ]
+        },
+        {
+          "term": "call.resolve",
+          "lines": [
+            35,
+            50,
+            64,
+            77,
+            92,
+            98,
+            122,
+            127
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preferences.ios",
+      "package": "@capacitor/preferences",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/preferences/-/preferences-8.0.1.tgz",
+      "archiveMember": "package/ios/Sources/PreferencesPlugin/Preferences.swift",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/preferences-8.0.1/extracted/package/ios/Sources/PreferencesPlugin/Preferences.swift",
+      "sha256": "633356fde3f920ac72470c8401ceabc06849f2993325b4b6f9b22e8a5795f61a",
+      "bytes": 1557,
+      "anchors": [
+        {
+          "term": "UserDefaults.standard",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "term": "case .cordovaNativeStorage",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "term": "defaults.set",
+          "lines": [
+            44
+          ]
+        },
+        {
+          "term": "defaults.removeObject",
+          "lines": [
+            48,
+            53
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preferences.ios-plugin",
+      "package": "@capacitor/preferences",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/preferences/-/preferences-8.0.1.tgz",
+      "archiveMember": "package/ios/Sources/PreferencesPlugin/PreferencesPlugin.swift",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/preferences-8.0.1/extracted/package/ios/Sources/PreferencesPlugin/PreferencesPlugin.swift",
+      "sha256": "255937ed0abaf737ec99fd5e73332712c4ba6f6b3458485333bee636b3c9f609",
+      "bytes": 3763,
+      "anchors": [
+        {
+          "term": "call.reject",
+          "lines": [
+            40,
+            53,
+            64
+          ]
+        },
+        {
+          "term": "call.getString(\"value\"",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "term": "call.resolve",
+          "lines": [
+            35,
+            46,
+            59,
+            69,
+            75,
+            82,
+            104,
+            116
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preferences.readme",
+      "package": "@capacitor/preferences",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/preferences/-/preferences-8.0.1.tgz",
+      "archiveMember": "package/README.md",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/preferences-8.0.1/extracted/package/README.md",
+      "sha256": "ecd71fa96bc74e300c0ecb47f0cc98eeaf7afbd02ee447342e75d2922ae69fd3",
+      "bytes": 10498,
+      "anchors": [
+        {
+          "term": "PrivacyInfo.xcprivacy",
+          "lines": [
+            30,
+            36
+          ]
+        },
+        {
+          "term": "NSPrivacyAccessedAPICategoryUserDefaults",
+          "lines": [
+            34,
+            48
+          ]
+        },
+        {
+          "term": "CA92.1",
+          "lines": [
+            34,
+            51
+          ]
+        }
+      ]
+    },
+    {
+      "id": "browser.android",
+      "package": "@capacitor/browser",
+      "version": "8.0.4",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/browser/-/browser-8.0.4.tgz",
+      "archiveMember": "package/android/src/main/java/com/capacitorjs/plugins/browser/Browser.java",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4/extracted/package/android/src/main/java/com/capacitorjs/plugins/browser/Browser.java",
+      "sha256": "c70eec8165f81259a87e44777560bab162293f88cc5e9da9b9e3ba6e9f30985b",
+      "bytes": 5801,
+      "anchors": [
+        {
+          "term": "launchUrl",
+          "lines": [
+            112
+          ]
+        },
+        {
+          "term": "CustomTabs",
+          "lines": [
+            3,
+            43,
+            44,
+            47,
+            49,
+            98,
+            107,
+            119,
+            123,
+            138,
+            146,
+            149,
+            165,
+            172
+          ]
+        },
+        {
+          "term": "EXTRA_REFERRER",
+          "lines": [
+            108
+          ]
+        }
+      ]
+    },
+    {
+      "id": "browser.android-plugin",
+      "package": "@capacitor/browser",
+      "version": "8.0.4",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/browser/-/browser-8.0.4.tgz",
+      "archiveMember": "package/android/src/main/java/com/capacitorjs/plugins/browser/BrowserPlugin.java",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4/extracted/package/android/src/main/java/com/capacitorjs/plugins/browser/BrowserPlugin.java",
+      "sha256": "a0c09984d9605fafec341aa30addcba12b1de2c349670941d2bb0cf4d1da95cd",
+      "bytes": 3792,
+      "anchors": [
+        {
+          "term": "Uri.parse",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "term": "call.resolve",
+          "lines": [
+            74,
+            90
+          ]
+        },
+        {
+          "term": "ActivityNotFoundException",
+          "lines": [
+            3,
+            75
+          ]
+        }
+      ]
+    },
+    {
+      "id": "browser.android-manifest",
+      "package": "@capacitor/browser",
+      "version": "8.0.4",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/browser/-/browser-8.0.4.tgz",
+      "archiveMember": "package/android/src/main/AndroidManifest.xml",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4/extracted/package/android/src/main/AndroidManifest.xml",
+      "sha256": "fbe3fa8db1d0c4ba384cf1ce0461b4afc5891924d5ad5f4b28c0e6d1aaa1edcf",
+      "bytes": 477,
+      "anchors": [
+        {
+          "term": "android:exported",
+          "lines": [
+            5
+          ]
+        },
+        {
+          "term": "queries",
+          "lines": [
+            9,
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "id": "browser.ios",
+      "package": "@capacitor/browser",
+      "version": "8.0.4",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/browser/-/browser-8.0.4.tgz",
+      "archiveMember": "package/ios/Sources/BrowserPlugin/Browser.swift",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4/extracted/package/ios/Sources/BrowserPlugin/Browser.swift",
+      "sha256": "b94d1fe18439c54abdd46e2c94abfdb4ae5bdf58c2a9f50be2d07395274b2b82",
+      "bytes": 2145,
+      "anchors": [
+        {
+          "term": "[\"http\", \"https\"]",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "term": "SFSafariViewController",
+          "lines": [
+            9,
+            10,
+            20,
+            41,
+            46
+          ]
+        },
+        {
+          "term": "didLoadSuccessfully",
+          "lines": [
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "id": "browser.ios-plugin",
+      "package": "@capacitor/browser",
+      "version": "8.0.4",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/browser/-/browser-8.0.4.tgz",
+      "archiveMember": "package/ios/Sources/BrowserPlugin/BrowserPlugin.swift",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4/extracted/package/ios/Sources/BrowserPlugin/BrowserPlugin.swift",
+      "sha256": "f8bc3345ff19a05c4a6e89e58e4c58a9c55053e928fe123824ba3950f806f3be",
+      "bytes": 3122,
+      "anchors": [
+        {
+          "term": "call.reject",
+          "lines": [
+            17,
+            28,
+            63
+          ]
+        },
+        {
+          "term": "present(viewController",
+          "lines": [
+            49
+          ]
+        },
+        {
+          "term": "call.resolve",
+          "lines": [
+            50,
+            59
+          ]
+        }
+      ]
+    },
+    {
+      "id": "browser.web",
+      "package": "@capacitor/browser",
+      "version": "8.0.4",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/browser/-/browser-8.0.4.tgz",
+      "archiveMember": "package/dist/esm/web.js",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/browser-8.0.4/extracted/package/dist/esm/web.js",
+      "sha256": "89d26446ac3dc7d438604a8063768d53a4547b5148d33d5e2abccc5241e77a69",
+      "bytes": 712,
+      "anchors": [
+        {
+          "term": "window.open",
+          "lines": [
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "id": "app-launcher.android",
+      "package": "@capacitor/app-launcher",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/app-launcher/-/app-launcher-8.0.1.tgz",
+      "archiveMember": "package/android/src/main/java/com/capacitorjs/plugins/applauncher/AppLauncherPlugin.java",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/app-launcher-8.0.1/extracted/package/android/src/main/java/com/capacitorjs/plugins/applauncher/AppLauncherPlugin.java",
+      "sha256": "e555cc9fe2ca6432300503dd6e453a96c9a22cd06173993f0a5c7e55732e8cd4",
+      "bytes": 2753,
+      "anchors": [
+        {
+          "term": "canOpenUrl",
+          "lines": [
+            20
+          ]
+        },
+        {
+          "term": "openUrl",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "term": "ACTION_VIEW",
+          "lines": [
+            39,
+            61
+          ]
+        },
+        {
+          "term": "startActivity",
+          "lines": [
+            77
+          ]
+        },
+        {
+          "term": "completed",
+          "lines": [
+            65,
+            67,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "id": "app-launcher.ios",
+      "package": "@capacitor/app-launcher",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/app-launcher/-/app-launcher-8.0.1.tgz",
+      "archiveMember": "package/ios/Sources/AppLauncherPlugin/AppLauncherPlugin.swift",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/app-launcher-8.0.1/extracted/package/ios/Sources/AppLauncherPlugin/AppLauncherPlugin.swift",
+      "sha256": "5b400b72d09936d0c947a2865ea32818e8fbc3d41c141dfeb7962048b209e4b9",
+      "bytes": 1474,
+      "anchors": [
+        {
+          "term": "canOpenUrl",
+          "lines": [
+            9,
+            13
+          ]
+        },
+        {
+          "term": "openUrl",
+          "lines": [
+            10,
+            33
+          ]
+        },
+        {
+          "term": "canOpenURL",
+          "lines": [
+            25
+          ]
+        },
+        {
+          "term": "UIApplication.shared.open",
+          "lines": [
+            45
+          ]
+        },
+        {
+          "term": "completed",
+          "lines": [
+            45,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "id": "app-launcher.readme",
+      "package": "@capacitor/app-launcher",
+      "version": "8.0.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/app-launcher/-/app-launcher-8.0.1.tgz",
+      "archiveMember": "package/README.md",
+      "localPath": ".tmp/native-bootstrap/capacitor-packages/app-launcher-8.0.1/extracted/package/README.md",
+      "sha256": "55f0f6aa160ad960ffbfe4895a35dbd3933527e4fa7bc1470c01318ae877fd02",
+      "bytes": 4561,
+      "anchors": [
+        {
+          "term": "LSApplicationQueriesSchemes",
+          "lines": [
+            81,
+            87
+          ]
+        },
+        {
+          "term": "queries",
+          "lines": [
+            9,
+            13,
+            21,
+            93
+          ]
+        },
+        {
+          "term": "completed",
+          "lines": [
+            42,
+            43,
+            54,
+            55,
+            148
+          ]
+        }
+      ]
+    },
+    {
+      "id": "template.android.variables.gradle",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/android-template.tar.gz",
+      "nestedArchiveMember": "variables.gradle",
+      "localPath": ".tmp/native-bootstrap/template-inspection/android/variables.gradle",
+      "sha256": "83d502c9ed8fcf1dd4791482067abeedbebae49fafe9cd14a8a1f5891deb0d88",
+      "bytes": 498,
+      "anchors": [
+        {
+          "line": 2,
+          "text": "minSdkVersion = 24"
+        },
+        {
+          "line": 3,
+          "text": "compileSdkVersion = 36"
+        },
+        {
+          "line": 4,
+          "text": "targetSdkVersion = 36"
+        }
+      ]
+    },
+    {
+      "id": "template.android.build.gradle",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/android-template.tar.gz",
+      "nestedArchiveMember": "build.gradle",
+      "localPath": ".tmp/native-bootstrap/template-inspection/android/build.gradle",
+      "sha256": "46ade7db7afeb8049ccea59fce83095dca736ceb8c9acd79cc944e988c3357d9",
+      "bytes": 637,
+      "anchors": [
+        {
+          "line": 10,
+          "text": "classpath 'com.android.tools.build:gradle:8.13.0'"
+        }
+      ]
+    },
+    {
+      "id": "template.android.app/build.gradle",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/android-template.tar.gz",
+      "nestedArchiveMember": "app/build.gradle",
+      "localPath": ".tmp/native-bootstrap/template-inspection/android/app/build.gradle",
+      "sha256": "b3a3835e3c6bf4b146ff224daa41b1de758aeba73ab52b030169f287f8d7953c",
+      "bytes": 2140,
+      "anchors": [
+        {
+          "line": 5,
+          "text": "compileSdk = rootProject.ext.compileSdkVersion"
+        },
+        {
+          "line": 8,
+          "text": "minSdkVersion rootProject.ext.minSdkVersion"
+        },
+        {
+          "line": 9,
+          "text": "targetSdkVersion rootProject.ext.targetSdkVersion"
+        }
+      ]
+    },
+    {
+      "id": "template.android.gradle/wrapper/gradle-wrapper.properties",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/android-template.tar.gz",
+      "nestedArchiveMember": "gradle/wrapper/gradle-wrapper.properties",
+      "localPath": ".tmp/native-bootstrap/template-inspection/android/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "9a479a85aa879bb55284fc16d0de5b81a745c3854f4e2d88c42e7debaf007435",
+      "bytes": 253,
+      "anchors": [
+        {
+          "line": 3,
+          "text": "distributionUrl=https\\://services.gradle.org/distributions/gradle-8.14.3-all.zip"
+        }
+      ]
+    },
+    {
+      "id": "template.android.app/src/main/AndroidManifest.xml",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/android-template.tar.gz",
+      "nestedArchiveMember": "app/src/main/AndroidManifest.xml",
+      "localPath": ".tmp/native-bootstrap/template-inspection/android/app/src/main/AndroidManifest.xml",
+      "sha256": "b642d0f51d088301d0107c9b94c85994fbc612e0a7b6a9cb1754113ae1be90cd",
+      "bytes": 1537,
+      "anchors": [
+        {
+          "line": 5,
+          "text": "android:allowBackup=\"true\""
+        },
+        {
+          "line": 7,
+          "text": "android:label=\"@string/app_name\""
+        },
+        {
+          "line": 13,
+          "text": "android:configChanges=\"orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density\""
+        }
+      ]
+    },
+    {
+      "id": "template.android.app/src/main/res/values/strings.xml",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/android-template.tar.gz",
+      "nestedArchiveMember": "app/src/main/res/values/strings.xml",
+      "localPath": ".tmp/native-bootstrap/template-inspection/android/app/src/main/res/values/strings.xml",
+      "sha256": "33185f05c1143c869b23f3c6ef95f6422de43bb3b4ba9a02c919f8e600d9e2bb",
+      "bytes": 296,
+      "anchors": [
+        {
+          "line": 3,
+          "text": "<string name=\"app_name\">My App</string>"
+        }
+      ]
+    },
+    {
+      "id": "template.ios-spm.App/App/Info.plist",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/ios-spm-template.tar.gz",
+      "nestedArchiveMember": "App/App/Info.plist",
+      "localPath": ".tmp/native-bootstrap/template-inspection/ios-spm/App/App/Info.plist",
+      "sha256": "027e2fade1c3d08ad523362b6f4447ce1bcc787c67dcf2f19ca6e1b1e19ceffa",
+      "bytes": 2252,
+      "anchors": [
+        {
+          "line": 7,
+          "text": "<key>CFBundleDevelopmentRegion</key>"
+        },
+        {
+          "line": 9,
+          "text": "<key>CFBundleDisplayName</key>"
+        },
+        {
+          "line": 27,
+          "text": "<key>UIApplicationSceneManifest</key>"
+        },
+        {
+          "line": 29,
+          "text": "<key>UIApplicationSupportsMultipleScenes</key>"
+        },
+        {
+          "line": 38,
+          "text": "<key>UISceneDelegateClassName</key>"
+        },
+        {
+          "line": 39,
+          "text": "<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>"
+        }
+      ]
+    },
+    {
+      "id": "template.ios-spm.App/App/SceneDelegate.swift",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/ios-spm-template.tar.gz",
+      "nestedArchiveMember": "App/App/SceneDelegate.swift",
+      "localPath": ".tmp/native-bootstrap/template-inspection/ios-spm/App/App/SceneDelegate.swift",
+      "sha256": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd",
+      "bytes": 899,
+      "anchors": [
+        {
+          "line": 4,
+          "text": "class SceneDelegate: UIResponder, UIWindowSceneDelegate {"
+        },
+        {
+          "line": 14,
+          "text": "SceneDelegateProxy.shared.scene(scene, willConnectTo: session, options: connectionOptions)"
+        },
+        {
+          "line": 18,
+          "text": "SceneDelegateProxy.shared.scene(scene, openURLContexts: URLContexts)"
+        },
+        {
+          "line": 22,
+          "text": "SceneDelegateProxy.shared.scene(scene, continue: userActivity)"
+        }
+      ]
+    },
+    {
+      "id": "template.ios-spm.App/App/AppDelegate.swift",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/ios-spm-template.tar.gz",
+      "nestedArchiveMember": "App/App/AppDelegate.swift",
+      "localPath": ".tmp/native-bootstrap/template-inspection/ios-spm/App/App/AppDelegate.swift",
+      "sha256": "481e2ad8672b14acbd3e3df65acdc6d046526ae542b7bec903cf842fc68d9e49",
+      "bytes": 2504,
+      "anchors": [
+        {
+          "line": 41,
+          "text": "config.delegateClass = SceneDelegate.self"
+        }
+      ]
+    },
+    {
+      "id": "template.ios-spm.App/App.xcodeproj/project.pbxproj",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/ios-spm-template.tar.gz",
+      "nestedArchiveMember": "App/App.xcodeproj/project.pbxproj",
+      "localPath": ".tmp/native-bootstrap/template-inspection/ios-spm/App/App.xcodeproj/project.pbxproj",
+      "sha256": "83639ade6df17207b6a28abbaf84fb5da545c27ba9ef9c47a2c8fda745abf397",
+      "bytes": 14939,
+      "anchors": [
+        {
+          "line": 18,
+          "text": "9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582B6822FE993A50072D4E8 /* SceneDelegate.swift */; };"
+        },
+        {
+          "line": 31,
+          "text": "9582B6822FE993A50072D4E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = \"<group>\"; };"
+        },
+        {
+          "line": 67,
+          "text": "9582B6822FE993A50072D4E8 /* SceneDelegate.swift */,"
+        },
+        {
+          "line": 123,
+          "text": "knownRegions = ("
+        },
+        {
+          "line": 162,
+          "text": "9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */,"
+        },
+        {
+          "line": 237,
+          "text": "IPHONEOS_DEPLOYMENT_TARGET = 15.0;"
+        },
+        {
+          "line": 288,
+          "text": "IPHONEOS_DEPLOYMENT_TARGET = 15.0;"
+        },
+        {
+          "line": 305,
+          "text": "IPHONEOS_DEPLOYMENT_TARGET = 15.0;"
+        },
+        {
+          "line": 316,
+          "text": "TARGETED_DEVICE_FAMILY = \"1,2\";"
+        },
+        {
+          "line": 327,
+          "text": "IPHONEOS_DEPLOYMENT_TARGET = 15.0;"
+        },
+        {
+          "line": 337,
+          "text": "TARGETED_DEVICE_FAMILY = \"1,2\";"
+        }
+      ]
+    },
+    {
+      "id": "template.ios-spm.App/CapApp-SPM/Package.swift",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/ios-spm-template.tar.gz",
+      "nestedArchiveMember": "App/CapApp-SPM/Package.swift",
+      "localPath": ".tmp/native-bootstrap/template-inspection/ios-spm/App/CapApp-SPM/Package.swift",
+      "sha256": "fb95ad3815b0f0535ea6da0fd5ab99c15512ee9a598f9a03ae25f990dd757d56",
+      "bytes": 697,
+      "anchors": [
+        {
+          "line": 7,
+          "text": "platforms: [.iOS(.v15)],"
+        },
+        {
+          "line": 14,
+          "text": ".package(url: \"https://github.com/ionic-team/capacitor-swift-pm.git\", from: \"8.0.0\")"
+        },
+        {
+          "line": 20,
+          "text": ".product(name: \"Capacitor\", package: \"capacitor-swift-pm\"),"
+        },
+        {
+          "line": 21,
+          "text": ".product(name: \"Cordova\", package: \"capacitor-swift-pm\")"
+        }
+      ]
+    },
+    {
+      "id": "template.ios-pods.App/Podfile",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/ios-pods-template.tar.gz",
+      "nestedArchiveMember": "App/Podfile",
+      "localPath": ".tmp/native-bootstrap/template-inspection/ios-pods/App/Podfile",
+      "sha256": "011a7a81d65a36ee29e091f04c64a6aa8c97ee02fe25c58ed15990417eedb5f7",
+      "bytes": 621,
+      "anchors": []
+    },
+    {
+      "id": "template.ios-pods.App/App/Info.plist",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/ios-pods-template.tar.gz",
+      "nestedArchiveMember": "App/App/Info.plist",
+      "localPath": ".tmp/native-bootstrap/template-inspection/ios-pods/App/App/Info.plist",
+      "sha256": "20578af47f35b21188e2f0fd09616ecfcb309eaebe4e799fda177dc5ef113780",
+      "bytes": 2186,
+      "anchors": [
+        {
+          "line": 5,
+          "text": "<key>CFBundleDevelopmentRegion</key>"
+        },
+        {
+          "line": 7,
+          "text": "<key>CFBundleDisplayName</key>"
+        },
+        {
+          "line": 25,
+          "text": "<key>UIApplicationSceneManifest</key>"
+        },
+        {
+          "line": 27,
+          "text": "<key>UIApplicationSupportsMultipleScenes</key>"
+        },
+        {
+          "line": 36,
+          "text": "<key>UISceneDelegateClassName</key>"
+        },
+        {
+          "line": 37,
+          "text": "<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>"
+        }
+      ]
+    },
+    {
+      "id": "template.ios-pods.App/App/SceneDelegate.swift",
+      "package": "@capacitor/cli",
+      "version": "8.5.1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "archiveMember": "package/assets/ios-pods-template.tar.gz",
+      "nestedArchiveMember": "App/App/SceneDelegate.swift",
+      "localPath": ".tmp/native-bootstrap/template-inspection/ios-pods/App/App/SceneDelegate.swift",
+      "sha256": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd",
+      "bytes": 899,
+      "anchors": [
+        {
+          "line": 4,
+          "text": "class SceneDelegate: UIResponder, UIWindowSceneDelegate {"
+        },
+        {
+          "line": 14,
+          "text": "SceneDelegateProxy.shared.scene(scene, willConnectTo: session, options: connectionOptions)"
+        },
+        {
+          "line": 18,
+          "text": "SceneDelegateProxy.shared.scene(scene, openURLContexts: URLContexts)"
+        },
+        {
+          "line": 22,
+          "text": "SceneDelegateProxy.shared.scene(scene, continue: userActivity)"
+        }
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "name": "android",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/cli-8.5.1/extracted/package/assets/android-template.tar.gz",
+      "archiveSha256": "31b24059b85cc6ec74efe7bf3b45f07485b71427f333dade43bde4e19a4a7e7a",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "packageArchiveMember": "package/assets/android-template.tar.gz",
+      "entries": [
+        ".gitignore",
+        "app/.gitignore",
+        "app/build.gradle",
+        "app/build/.npmkeep",
+        "app/proguard-rules.pro",
+        "app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
+        "app/src/main/AndroidManifest.xml",
+        "app/src/main/java/com/getcapacitor/myapp/MainActivity.java",
+        "app/src/main/res/drawable-land-hdpi/splash.png",
+        "app/src/main/res/drawable-land-mdpi/splash.png",
+        "app/src/main/res/drawable-land-xhdpi/splash.png",
+        "app/src/main/res/drawable-land-xxhdpi/splash.png",
+        "app/src/main/res/drawable-land-xxxhdpi/splash.png",
+        "app/src/main/res/drawable-port-hdpi/splash.png",
+        "app/src/main/res/drawable-port-mdpi/splash.png",
+        "app/src/main/res/drawable-port-xhdpi/splash.png",
+        "app/src/main/res/drawable-port-xxhdpi/splash.png",
+        "app/src/main/res/drawable-port-xxxhdpi/splash.png",
+        "app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+        "app/src/main/res/drawable/ic_launcher_background.xml",
+        "app/src/main/res/drawable/splash.png",
+        "app/src/main/res/layout/activity_main.xml",
+        "app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+        "app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+        "app/src/main/res/mipmap-hdpi/ic_launcher.png",
+        "app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+        "app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+        "app/src/main/res/mipmap-mdpi/ic_launcher.png",
+        "app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+        "app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+        "app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+        "app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+        "app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+        "app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+        "app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+        "app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+        "app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+        "app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+        "app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+        "app/src/main/res/values/ic_launcher_background.xml",
+        "app/src/main/res/values/strings.xml",
+        "app/src/main/res/values/styles.xml",
+        "app/src/main/res/xml/file_paths.xml",
+        "app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
+        "build.gradle",
+        "gradle.properties",
+        "gradle/wrapper/gradle-wrapper.jar",
+        "gradle/wrapper/gradle-wrapper.properties",
+        "gradlew",
+        "gradlew.bat",
+        "settings.gradle",
+        "variables.gradle"
+      ]
+    },
+    {
+      "name": "ios-spm",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/cli-8.5.1/extracted/package/assets/ios-spm-template.tar.gz",
+      "archiveSha256": "24187638fe233b82991b568d4d8b842824faf1048b122e69e379863a1b2836f1",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "packageArchiveMember": "package/assets/ios-spm-template.tar.gz",
+      "entries": [
+        ".gitignore",
+        "App/App.xcodeproj/project.pbxproj",
+        "App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+        "App/App/AppDelegate.swift",
+        "App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+        "App/App/Assets.xcassets/AppIcon.appiconset/Contents.json",
+        "App/App/Assets.xcassets/Contents.json",
+        "App/App/Assets.xcassets/Splash.imageset/Contents.json",
+        "App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png",
+        "App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png",
+        "App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png",
+        "App/App/Base.lproj/LaunchScreen.storyboard",
+        "App/App/Base.lproj/Main.storyboard",
+        "App/App/Info.plist",
+        "App/App/SceneDelegate.swift",
+        "App/CapApp-SPM/.gitignore",
+        "App/CapApp-SPM/Package.swift",
+        "App/CapApp-SPM/README.md",
+        "App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift",
+        "debug.xcconfig"
+      ]
+    },
+    {
+      "name": "ios-pods",
+      "archivePath": ".tmp/native-bootstrap/capacitor-packages/cli-8.5.1/extracted/package/assets/ios-pods-template.tar.gz",
+      "archiveSha256": "55465a86524b8697ec63fbafbe13148e218594521bdbbd78e32f7a9a987e555f",
+      "tarballUrl": "https://registry.npmjs.org/@capacitor/cli/-/cli-8.5.1.tgz",
+      "packageArchiveMember": "package/assets/ios-pods-template.tar.gz",
+      "entries": [
+        ".gitignore",
+        "App/App.xcodeproj/project.pbxproj",
+        "App/App.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+        "App/App/AppDelegate.swift",
+        "App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+        "App/App/Assets.xcassets/AppIcon.appiconset/Contents.json",
+        "App/App/Assets.xcassets/Contents.json",
+        "App/App/Assets.xcassets/Splash.imageset/Contents.json",
+        "App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png",
+        "App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png",
+        "App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png",
+        "App/App/Base.lproj/LaunchScreen.storyboard",
+        "App/App/Base.lproj/Main.storyboard",
+        "App/App/Info.plist",
+        "App/App/SceneDelegate.swift",
+        "App/Podfile"
+      ]
+    }
+  ],
+  "typescriptInterfaces": {
+    "app": [
+      {
+        "interface": "AppInfo",
+        "members": [
+          "name: string;",
+          "id: string;",
+          "build: string;",
+          "version: string;"
+        ]
+      },
+      {
+        "interface": "AppState",
+        "members": [
+          "isActive: boolean;"
+        ]
+      },
+      {
+        "interface": "URLOpenListenerEvent",
+        "members": [
+          "url: string;",
+          "iosSourceApplication?: any;",
+          "iosOpenInPlace?: boolean;"
+        ]
+      },
+      {
+        "interface": "AppLaunchUrl",
+        "members": [
+          "url: string;"
+        ]
+      },
+      {
+        "interface": "RestoredListenerEvent",
+        "members": [
+          "pluginId: string;",
+          "methodName: string;",
+          "data?: any;",
+          "success: boolean;",
+          "error?: { message: string; };"
+        ]
+      },
+      {
+        "interface": "BackButtonListenerEvent",
+        "members": [
+          "canGoBack: boolean;"
+        ]
+      },
+      {
+        "interface": "ToggleBackButtonHandlerOptions",
+        "members": [
+          "enabled: boolean;"
+        ]
+      },
+      {
+        "interface": "AppLanguageCode",
+        "members": [
+          "value: string;"
+        ]
+      },
+      {
+        "interface": "AppPlugin",
+        "members": [
+          "exitApp(): Promise<void>;",
+          "getInfo(): Promise<AppInfo>;",
+          "getState(): Promise<AppState>;",
+          "getLaunchUrl(): Promise<AppLaunchUrl | undefined>;",
+          "minimizeApp(): Promise<void>;",
+          "getAppLanguage(): Promise<AppLanguageCode>;",
+          "toggleBackButtonHandler(options: ToggleBackButtonHandlerOptions): Promise<void>;",
+          "addListener(eventName: 'appStateChange', listenerFunc: StateChangeListener): Promise<PluginListenerHandle>;",
+          "addListener(eventName: 'pause', listenerFunc: () => void): Promise<PluginListenerHandle>;",
+          "addListener(eventName: 'resume', listenerFunc: () => void): Promise<PluginListenerHandle>;",
+          "addListener(eventName: 'appUrlOpen', listenerFunc: URLOpenListener): Promise<PluginListenerHandle>;",
+          "addListener(eventName: 'appRestoredResult', listenerFunc: RestoredListener): Promise<PluginListenerHandle>;",
+          "addListener(eventName: 'backButton', listenerFunc: BackButtonListener): Promise<PluginListenerHandle>;",
+          "removeAllListeners(): Promise<void>;"
+        ]
+      }
+    ],
+    "network": [
+      {
+        "interface": "NetworkPlugin",
+        "members": [
+          "getStatus(): Promise<ConnectionStatus>;",
+          "addListener(eventName: 'networkStatusChange', listenerFunc: ConnectionStatusChangeListener): Promise<PluginListenerHandle>;",
+          "removeAllListeners(): Promise<void>;"
+        ]
+      },
+      {
+        "interface": "ConnectionStatus",
+        "members": [
+          "connected: boolean;",
+          "connectionType: ConnectionType;"
+        ]
+      }
+    ],
+    "preferences": [
+      {
+        "interface": "ConfigureOptions",
+        "members": [
+          "group?: string;"
+        ]
+      },
+      {
+        "interface": "GetOptions",
+        "members": [
+          "key: string;"
+        ]
+      },
+      {
+        "interface": "GetResult",
+        "members": [
+          "value: string | null;"
+        ]
+      },
+      {
+        "interface": "SetOptions",
+        "members": [
+          "key: string;",
+          "value: string;"
+        ]
+      },
+      {
+        "interface": "RemoveOptions",
+        "members": [
+          "key: string;"
+        ]
+      },
+      {
+        "interface": "KeysResult",
+        "members": [
+          "keys: string[];"
+        ]
+      },
+      {
+        "interface": "MigrateResult",
+        "members": [
+          "migrated: string[];",
+          "existing: string[];"
+        ]
+      },
+      {
+        "interface": "PreferencesPlugin",
+        "members": [
+          "configure(options: ConfigureOptions): Promise<void>;",
+          "get(options: GetOptions): Promise<GetResult>;",
+          "set(options: SetOptions): Promise<void>;",
+          "remove(options: RemoveOptions): Promise<void>;",
+          "clear(): Promise<void>;",
+          "keys(): Promise<KeysResult>;",
+          "migrate(): Promise<MigrateResult>;",
+          "removeOld(): Promise<void>;"
+        ]
+      }
+    ],
+    "browser": [
+      {
+        "interface": "BrowserPlugin",
+        "members": [
+          "open(options: OpenOptions): Promise<void>;",
+          "close(): Promise<void>;",
+          "addListener(eventName: 'browserFinished', listenerFunc: () => void): Promise<PluginListenerHandle>;",
+          "addListener(eventName: 'browserPageLoaded', listenerFunc: () => void): Promise<PluginListenerHandle>;",
+          "removeAllListeners(): Promise<void>;"
+        ]
+      },
+      {
+        "interface": "OpenOptions",
+        "members": [
+          "url: string;",
+          "windowName?: string;",
+          "toolbarColor?: string;",
+          "presentationStyle?: 'fullscreen' | 'popover';",
+          "width?: number;",
+          "height?: number;"
+        ]
+      }
+    ],
+    "app-launcher": [
+      {
+        "interface": "AppLauncherPlugin",
+        "members": [
+          "canOpenUrl(options: CanOpenURLOptions): Promise<CanOpenURLResult>;",
+          "openUrl(options: OpenURLOptions): Promise<OpenURLResult>;"
+        ]
+      },
+      {
+        "interface": "CanOpenURLOptions",
+        "members": [
+          "url: string;"
+        ]
+      },
+      {
+        "interface": "CanOpenURLResult",
+        "members": [
+          "value: boolean;"
+        ]
+      },
+      {
+        "interface": "OpenURLOptions",
+        "members": [
+          "url: string;"
+        ]
+      },
+      {
+        "interface": "OpenURLResult",
+        "members": [
+          "completed: boolean;"
+        ]
+      }
+    ]
+  },
+  "officialDocs": [
+    {
+      "url": "https://capacitorjs.com/docs/updating/8-0",
+      "accessedAt": "2026-09-05T20:38:45.517Z",
+      "note": "Node22+, Xcode26+, iOS15, Android24/36, template tooling minima.",
+      "kind": "primary documentation"
+    },
+    {
+      "url": "https://capacitorjs.com/docs/updating/8-5",
+      "accessedAt": "2026-09-05T20:38:45.519Z",
+      "note": "8.5 UIScene migration; scene forwarding and runtime checks.",
+      "kind": "primary documentation"
+    },
+    {
+      "url": "https://capacitorjs.com/docs/apis/app",
+      "accessedAt": "2026-09-05T20:38:45.519Z",
+      "note": "App lifecycle and read-only app-specific language API.",
+      "kind": "primary documentation"
+    },
+    {
+      "url": "https://capacitorjs.com/docs/apis/network",
+      "accessedAt": "2026-09-05T20:38:45.519Z",
+      "note": "Network status shape and listeners.",
+      "kind": "primary documentation"
+    },
+    {
+      "url": "https://capacitorjs.com/docs/apis/preferences",
+      "accessedAt": "2026-09-05T20:38:45.519Z",
+      "note": "Preferences storage and UserDefaults reason guidance.",
+      "kind": "primary documentation"
+    },
+    {
+      "url": "https://capacitorjs.com/docs/apis/browser",
+      "accessedAt": "2026-09-05T20:38:45.519Z",
+      "note": "Explicit browser presentation; no remote application runtime.",
+      "kind": "primary documentation"
+    },
+    {
+      "url": "https://capacitorjs.com/docs/ios/privacy-manifest",
+      "accessedAt": "2026-09-05T20:38:45.519Z",
+      "note": "Application privacy manifest responsibility.",
+      "kind": "primary documentation"
+    },
+    {
+      "url": "https://capacitorjs.com/docs/config",
+      "accessedAt": "2026-09-05T20:38:45.519Z",
+      "note": "Bundled webDir vs prohibited remote server navigation.",
+      "kind": "primary documentation"
+    },
+    {
+      "url": "https://developer.android.com/tools/sdkmanager",
+      "accessedAt": "2026-09-05T20:38:45.519Z",
+      "note": "Current docs deprecate sdkmanager in favor of Android CLI; SDK selection/license task belongs to environment owner.",
+      "kind": "primary documentation"
+    },
+    {
+      "url": "https://capacitorjs.com/docs/apis/app-launcher",
+      "accessedAt": "2026-09-05T20:38:45.519Z",
+      "note": "Official smallest plugin supporting URL-scheme handoff for canonical mailto; canOpenUrl querying is separate from openUrl and requires declarations.",
+      "kind": "primary documentation"
+    }
+  ],
+  "contractFindings": {
+    "versions": {
+      "core": "8.5.1",
+      "cli": "8.5.1",
+      "android": "8.5.1",
+      "ios": "8.5.1",
+      "app": "8.1.1",
+      "network": "8.0.1",
+      "preferences": "8.0.1",
+      "browser": "8.0.4",
+      "app-launcher": "8.0.1",
+      "allSelectedMatchObservedLatest": true,
+      "cliNode": ">=22.0.0",
+      "nativeCorePeer": "^8.5.0",
+      "pluginCorePeer": ">=8.0.0"
+    },
+    "app": {
+      "state": "getState(): Promise<{isActive:boolean}>",
+      "language": "getAppLanguage(): Promise<{value:string}>",
+      "languageLimit": "Single app-specific language; Android strips region with Locale.getLanguage, iOS uses first Bundle preferredLocalization. No setter or ranked native languages API in these four plugins. Validate returned tag/value at boundary.",
+      "lifecycle": "appStateChange/pause/resume; Promise<PluginListenerHandle>, remove():Promise<void>. Own only your handles; do not call removeAllListeners.",
+      "scope": "App iOS reads UIApplication state; 8.5 template is single scene, no multi-window support claim."
+    },
+    "network": {
+      "status": "getStatus():Promise<{connected:boolean,connectionType:wifi|cellular|none|unknown}>",
+      "events": "networkStatusChange",
+      "limits": "Android checks INTERNET + VALIDATED network capabilities. iOS uses Reachability and resolves unavailable if monitor initialization fails; connected is not proof of authority endpoint success."
+    },
+    "preferences": {
+      "get": "get({key:string}):Promise<{value:string|null}>",
+      "set": "set({key:string,value:string}):Promise<void>",
+      "remove": "remove({key:string}):Promise<void>",
+      "persistence": "best-effort; set resolve and readback are not fsync/durable commit",
+      "implementation": "Android SharedPreferences.Editor.apply(); iOS UserDefaults.standard with group prefix. Do not store credentials, entitlement proof or catalog.",
+      "malformedValues": "Missing key rejects; invalid value differs across native implementations. Adapter must reject malformed/unallowlisted keys and values before plugin call.",
+      "privacy": "Preferences README requires app PrivacyInfo.xcprivacy UserDefaults reason; CA92.1 is recommended for app-only settings, verify actual use. Core empty privacy manifest is insufficient."
+    },
+    "browser": {
+      "open": "open({url:string,...}):Promise<void>",
+      "native": "iOS SFSafariViewController accepts http and https; Android Uri.parse + CustomTabs has no application HTTPS/credential/control-character policy.",
+      "policy": "Apply shared strict HTTPS validation before SDK call; explicit user action only; no BrowserWeb fallback in public web graph, it uses window.open without noopener options.",
+      "status": "Native promise completion means browser presentation/request handling, not successful authenticated navigation. browserPageLoaded is initial-page-only; iOS emits it regardless of didLoadSuccessfully."
+    },
+    "appLauncher": {
+      "canOpen": "canOpenUrl({url:string}):Promise<{value:boolean}>",
+      "open": "openUrl({url:string}):Promise<{completed:boolean}>",
+      "native": "iOS UIApplication.shared.open completion; Android ACTION_VIEW/startActivity with completed:false if no handler succeeds.",
+      "mailto": "Use only exact canonical mailto:probperasite@yandex.ru after explicit user action and host policy, with async false/rejection observed. Browser iOS cannot handle mailto. No arbitrary schemes, package IDs, recipients, cc/bcc or inferred message body.",
+      "probing": "Optional canOpenUrl requires declared scheme queries: LSApplicationQueriesSchemes on iOS, Android11+ queries ACTION_VIEW/data scheme mailto. Direct openUrl does not need a preliminary canOpenUrl query.",
+      "meaning": "completed indicates OS handoff, not message composition, account success or email delivery."
+    },
+    "templates": {
+      "android": {
+        "minSdk": 24,
+        "compileSdk": 36,
+        "targetSdk": 36,
+        "agp": "8.13.0",
+        "gradle": "8.14.3",
+        "javaLanguageLevel": 21,
+        "locales": [
+          "default values only"
+        ],
+        "flavors": [],
+        "backupDefault": true
+      },
+      "ios": {
+        "minimum": "15.0",
+        "xcodeDocumentationMinimum": "26.0",
+        "deviceFamilies": [
+          1,
+          2
+        ],
+        "knownRegions": [
+          "en",
+          "Base"
+        ],
+        "multipleScenes": false,
+        "sceneDelegate": true,
+        "appPrivacyManifestPresent": false,
+        "spmTemplateVersionRange": "from:8.0.0",
+        "cliUpdateVersionRange": "from:<installed @capacitor/ios version>",
+        "note": "Need later exact Package.resolved/CI dependency verification; npm exact pin alone does not lock SPM."
+      }
+    },
+    "guard": "SDK imports only in src/platform/adapters/android and ios; shared lifecycle/preference machinery receives structural injected functions and imports no Capacitor SDK. Native host receives bundled code; server.url/allowNavigation/live reload forbidden.",
+    "sdkBoundary": "No Android CLI/SDK/JDK selection or installation made here; sdkmanager docs deprecated current interface. Apple environment task owns new CLI exact version, host constraints and license gate separately from Capacitor template requirements."
+  },
+  "integrationProposal": {
+    "sharedHostServices": "Pure createHostPlatformServices(host) with structural capabilities, stable immutable snapshot, bounded async initialization, listener epochs, per-key serialized preference writes. Android/iOS adapters own real SDK imports and inject same plugin contracts.",
+    "bootstrap": "Resolve native app language and native non-secret preference before the one provider mount, with timeout/error result handled explicitly. Cache immutable preferred-language snapshot; do not await native reads inside getSnapshot or getSystemLanguages.",
+    "listenerRace": "Attach only on first subscriber. Remove exact handles; if async addListener resolves after last unsubscribe or epoch replacement, remove immediately. Ignore old getState/getStatus results after a newer event or lifetime ends.",
+    "locale": "Reuse existing InterfaceLanguageProvider and resolveInitialInterfaceLanguage; optional injected initial locale/preference port, same provider instance. Explicit route > saved RU/EN > validated native preference > existing controlled English fallback. Language changes update same context and serialize preference writes; no Canvas/renderer/provider remount or OS locale setter that recreates host.",
+    "openLinkPort": "Root-selected contract is OpenLinkResult | Promise<OpenLinkResult>. Native adapters await Browser.open or AppLauncher.openUrl; policy rejection -> blocked, native rejection or completed:false -> unavailable, successful native handoff -> requested. Never claim page success or mail delivery. Public Web may retain its existing synchronous behavior.",
+    "nativeStrings": "Add actual RU/EN resource localization and native usage strings after templates are generated; current templates do not supply bilingual parity. App.getAppLanguage is read-only; native-language switching capability remains explicit later work, not accepted by this package intake.",
+    "nextValidation": "After root-authorized dependency/build preparation: listener late-resolution/unsubscribe/StrictMode and initial-state-vs-event races; native preference rejection/readback/order; real same-Canvas RU/EN lifecycle on Android/iOS; exact compiled local resources and no remote runtime."
+  },
+  "validation": {
+    "packageCount": 9,
+    "allIntegrityVerified": true,
+    "sourceCount": 48,
+    "templateCount": 3,
+    "rootDependencyMutation": false,
+    "rootSourceMutation": false,
+    "nativeGeneration": false,
+    "sdkLicenseAccepted": false,
+    "officialSourcesAreTaskData": true
+  },
+  "scope": "Historical official-package/source intake, before native adapter implementation or native generation. This evidence is not a build/device/SDK-license attestation."
+}

@@ -1,0 +1,32 @@
+{
+  "pass": false,
+  "identity": {
+    "buildId": "c58cae3038a1b4e4212ac8ee486c0f8d184ce850f6b27db1e22d32b636490bf2",
+    "sourceCommit": "e2530cc6b5eb112bf70c1bf5b8aa167fde259db1",
+    "platform": "android",
+    "channel": "dev"
+  },
+  "counts": {
+    "files": 321,
+    "bytes": 38171073,
+    "scripts": 41,
+    "sourceInputs": 929,
+    "publicSources": 266,
+    "ownedChunks": 41
+  },
+  "findings": [
+    {
+      "code": "REMOTE_EXECUTABLE",
+      "path": "assets/supabase-vendor-C0Z0FS3K.js",
+      "message": "Additional executable workers require explicit local provenance."
+    }
+  ],
+  "releaseReady": false,
+  "sourceFreshnessChecked": true,
+  "sourceBinaryProvenance": "self-reported-module-ownership-checked",
+  "limitations": [
+    "Preparation integrity only; not a native APK/AAB/IPA, device test, editorial/rights approval, paid-access authority or release approval.",
+    "Module ownership is self-reported build metadata checked against source and emitted bytes; it is not independent source-to-binary reproducibility or arbitrary executable-equivalence proof.",
+    "Literal executable/resource paths are checked statically; constructed runtime URLs and native OS behavior require separate runtime gates."
+  ]
+}

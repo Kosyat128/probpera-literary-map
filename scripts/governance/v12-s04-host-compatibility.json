@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "stage": "S04",
+  "beforeCommit": "e2530cc6b5eb112bf70c1bf5b8aa167fde259db1",
+  "scope": "Exact additive native package pins and optional persistence injection into the one canonical language provider. No dictionary, scene, main dependency or release approval changes.",
+  "projections": [
+    {
+      "id": "host-provider-ref-import",
+      "before": "  useMemo,\n  useState,",
+      "after": "  useMemo,\n  useRef,\n  useState,",
+      "path": "src/i18n/InterfaceLanguage.tsx"
+    },
+    {
+      "id": "host-provider-optional-persistence",
+      "before": "export function InterfaceLanguageProvider({ children }: { children: ReactNode }) {\n  const [language, setLocalLanguage] =\n    useState<InterfaceLanguage>(initialLanguage);\n",
+      "after": "export interface HostLanguagePersistence {\n  readonly initialLanguage: InterfaceLanguage;\n  readonly persist: (language: InterfaceLanguage) => Promise<boolean>;\n  readonly onFailure?: () => void;\n}\n\nexport function InterfaceLanguageProvider({ children, hostLanguage }: {\n  children: ReactNode;\n  hostLanguage?: HostLanguagePersistence;\n}) {\n  const initialHost = useRef(hostLanguage);\n  if (initialHost.current !== hostLanguage) throw new Error(\"Language persistence cannot change after mount.\");\n  const [language, setLocalLanguage] =\n    useState<InterfaceLanguage>(() => hostLanguage?.initialLanguage ?? initialLanguage());\n",
+      "path": "src/i18n/InterfaceLanguage.tsx"
+    },
+    {
+      "id": "host-ignore-browser-storage-events",
+      "before": "    const syncStorage = (event: StorageEvent) => {\n      if (event.key",
+      "after": "    const syncStorage = (event: StorageEvent) => {\n      if (initialHost.current) return;\n      if (event.key",
+      "path": "src/i18n/InterfaceLanguage.tsx"
+    },
+    {
+      "id": "host-preference-write",
+      "before": "  const setLanguage = useCallback((nextLanguage: InterfaceLanguage) => {\n    setLocalLanguage(nextLanguage);\n    try {\n      window.localStorage.setItem(STORAGE_KEY, nextLanguage);\n    } catch {\n      // Keep the selected language for this page even without persistence.\n    }\n",
+      "after": "  const setLanguage = useCallback((nextLanguage: InterfaceLanguage) => {\n    if (!isInterfaceLanguage(nextLanguage)) return;\n    setLocalLanguage(nextLanguage);\n    const host = initialHost.current;\n    if (host) {\n      const reportFailure = () => { try { host.onFailure?.(); } catch { /* Keep the selected locale. */ } };\n      // Host persistence serializes writes. Late completion never sets locale.\n      void Promise.resolve().then(() => host.persist(nextLanguage)).then(\n        saved => { if (saved !== true) reportFailure(); }, reportFailure\n      );\n    } else {\n      try {\n        window.localStorage.setItem(STORAGE_KEY, nextLanguage);\n      } catch {\n        // Keep the selected language for this page even without persistence.\n      }\n    }\n",
+      "path": "src/i18n/InterfaceLanguage.tsx"
+    }
+  ],
+  "packageProjections": [
+    {
+      "path": [
+        "dependencies",
+        "@capacitor/android"
+      ],
+      "value": "8.5.1"
+    },
+    {
+      "path": [
+        "dependencies",
+        "@capacitor/app"
+      ],
+      "value": "8.1.1"
+    },
+    {
+      "path": [
+        "dependencies",
+        "@capacitor/app-launcher"
+      ],
+      "value": "8.0.1"
+    },
+    {
+      "path": [
+        "dependencies",
+        "@capacitor/browser"
+      ],
+      "value": "8.0.4"
+    },
+    {
+      "path": [
+        "dependencies",
+        "@capacitor/core"
+      ],
+      "value": "8.5.1"
+    },
+    {
+      "path": [
+        "dependencies",
+        "@capacitor/ios"
+      ],
+      "value": "8.5.1"
+    },
+    {
+      "path": [
+        "dependencies",
+        "@capacitor/network"
+      ],
+      "value": "8.0.1"
+    },
+    {
+      "path": [
+        "dependencies",
+        "@capacitor/preferences"
+      ],
+      "value": "8.0.1"
+    },
+    {
+      "path": [
+        "devDependencies",
+        "@capacitor/cli"
+      ],
+      "value": "8.5.1"
+    }
+  ]
+}

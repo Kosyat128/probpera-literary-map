@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S04",
+  "recordType": "working-native-implementation-checkpoint",
+  "recordedAt": "2026-09-05T21:40:43.325Z",
+  "sourceCommit": "e2530cc6b5eb112bf70c1bf5b8aa167fde259db1",
+  "workingSourceBeyondCommit": true,
+  "android": {
+    "artifact": {
+      "buildId": "fa9dd4a0ddaf48dbc9f714df32e94b6c97e51f439e504766465746b8a2bfd207",
+      "sourceCommit": "e2530cc6b5eb112bf70c1bf5b8aa167fde259db1",
+      "platform": "android",
+      "channel": "dev"
+    },
+    "artifactCounts": {
+      "files": 320,
+      "bytes": 37931726,
+      "scripts": 40,
+      "sourceInputs": 929,
+      "publicSources": 266,
+      "ownedChunks": 40
+    },
+    "build": {
+      "result": "PASS",
+      "task": ":app:assembleDevDebug",
+      "durationSeconds": 161,
+      "executedTasks": 167
+    },
+    "apk": {
+      "path": "apps/mobile/android/app/build/outputs/apk/dev/debug/app-dev-debug.apk",
+      "bytes": 33359413,
+      "sha256": "3a4cccecf310a7b2eabef22426d96fe78033e89bdca058249383e30d2b17cf20",
+      "preservedPath": ".tmp/native-builds/android-dev/fa9dd4a0/app-dev-debug.apk"
+    },
+    "binaryVerification": "docs/mobile/evidence/S04/android-dev-apk-verification.json",
+    "deviceTested": false,
+    "storeVariantBuildsVerified": false
+  },
+  "ios": {
+    "artifact": {
+      "buildId": "e7921e30d23f94261f264335aab1ace9e3f9e988fb8f3040558ef731668619d4",
+      "sourceCommit": "e2530cc6b5eb112bf70c1bf5b8aa167fde259db1",
+      "platform": "ios",
+      "channel": "dev"
+    },
+    "artifactCounts": {
+      "files": 320,
+      "bytes": 37931682,
+      "scripts": 40,
+      "sourceInputs": 929,
+      "publicSources": 266,
+      "ownedChunks": 40
+    },
+    "syncResult": "PASS",
+    "nativeBuildVerified": false,
+    "macosXcodeAvailable": false,
+    "packageResolutionVerified": false,
+    "projectSyncReview": "docs/mobile/evidence/S04/ios-project-sync-review.json",
+    "ownerHasMac": false
+  },
+  "regressions": [
+    {
+      "scope": "SDK-free host capabilities",
+      "passed": 80,
+      "evidence": "docs/mobile/evidence/S04/host-runtime-preparation.json"
+    },
+    {
+      "scope": "native binding adapters and bounded initialization",
+      "passed": 68,
+      "sourceEvidence": "observed subagent execution; source hashes captured by artifact manifest"
+    },
+    {
+      "scope": "native artifact auditor",
+      "passed": 64,
+      "sourceEvidence": "observed independent subagent execution"
+    },
+    {
+      "scope": "shared provider/governance/Web adapter",
+      "passed": 129,
+      "log": "docs/mobile/evidence/S04/logs/shared-host-regression-fixed.log"
+    },
+    {
+      "scope": "native/static/lazy backend boundary and existing auth guards",
+      "passed": 11,
+      "log": "docs/mobile/evidence/S04/logs/native-static-account-regression.log"
+    },
+    {
+      "scope": "persistence outcome controller",
+      "passed": 10,
+      "evidence": "docs/mobile/evidence/S04/host-runtime-preparation.json"
+    },
+    {
+      "scope": "actual Chrome host component lifecycle",
+      "passed": 5,
+      "evidence": "docs/mobile/evidence/S04/host-runtime-preparation.json",
+      "actualGlobeOrNativeDevice": false
+    }
+  ],
+  "corrections": [
+    "Native artifact worker-capability failure retained in the first two reports. Direct guards in both canonical backend entry paths remove the account SDK from the native graph; strict auditor unchanged.",
+    "Observed AGP non-ASCII path stop resolved with its documented project-only override. Actual successful APK compilation now establishes this local toolchain/path combination.",
+    "First cap update attempts failed before a real web bundle existed. Successful actual sync followed the audited artifact build.",
+    "Removed two newly generated stock example tests: arithmetic-only and hardcoded foreign package ID. No device or instrumentation test pass is inferred.",
+    "iOS app dependency is generated as exact8.5.1. The earlier intake range claim was incorrect; original evidence and precise correction are retained in ios-project-sync-review.json."
+  ],
+  "artifactFiles": [
+    {
+      "platform": "android",
+      "path": "docs/mobile/evidence/S04/android-working-artifact-manifest.json",
+      "sha256": "6b7488b6a9d2208ef5e9578be379bc045fcda601d9704c958e6fec76d7677ecd",
+      "localArtifactDirectory": ".tmp/native-previous-8e4f8e08-37e6-4965-a2ab-b8c00230a03a",
+      "buildId": "fa9dd4a0ddaf48dbc9f714df32e94b6c97e51f439e504766465746b8a2bfd207"
+    },
+    {
+      "platform": "ios",
+      "path": "docs/mobile/evidence/S04/ios-working-artifact-manifest.json",
+      "sha256": "906baf9944ea11f2c15dae1891e8a24c08feca29120691581d72f63bb24e0d54",
+      "localArtifactDirectory": "dist-native",
+      "buildId": "e7921e30d23f94261f264335aab1ace9e3f9e988fb8f3040558ef731668619d4"
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "docs/mobile/evidence/S04/android-dev-apk-verification.json",
+      "sha256": "28ae8e63cae622f0b6a91e8e73f52bf87c8dfa066cdbd86b73772ed3de229ada",
+      "bytes": 7279,
+      "source": ".tmp/native-bootstrap/android-dev-apk-verification.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/third-android-native-artifact-audit.json",
+      "sha256": "b8de860f45786704fb9660d4d8029cd4c2460bf5cd15026318c6fa7aa3f422a9",
+      "bytes": 1068,
+      "source": ".tmp/native-bootstrap/third-android-native-artifact-audit.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/first-ios-native-artifact-audit.json",
+      "sha256": "7dec01670bb63897bf4c6de3c41027a08ca4167acf59bcfa91bd81bf5d9770c5",
+      "bytes": 1038,
+      "source": ".tmp/native-bootstrap/first-ios-native-artifact-audit.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/first-android-native-artifact-audit.json",
+      "sha256": "f5ef8a256e8d532428a0e72026e1462f8f0ae213ccced8f36ce2fb859be17629",
+      "bytes": 1261,
+      "source": ".tmp/native-bootstrap/first-android-native-artifact-audit.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/second-android-native-artifact-audit.json",
+      "sha256": "96bb7b6c8690173b057e9631e7847bfdf1ac8a293e9411fc4ad975bdca6b3999",
+      "bytes": 1261,
+      "source": ".tmp/native-bootstrap/second-android-native-artifact-audit.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/second-android-sdk-retention.json",
+      "sha256": "73b2291e34f412e4ea487c48096c99d6bc4d81eed64d582a55f95b4502913ab9",
+      "bytes": 1825,
+      "source": ".tmp/native-bootstrap/second-android-sdk-retention.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/android-sync-boundary-review.json",
+      "sha256": "ca6d7e1da599a9d57e07e6f4f28a06153bd8b323834e77cdbc0cc15f26b4ecde",
+      "bytes": 11760,
+      "source": ".tmp/native-bootstrap/android-sync-boundary-review.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/android-sync-boundary-review-after-third.json",
+      "sha256": "c38b4c00242a19661d577632880a6740f29aada5afc204fdad3a127f118808b6",
+      "bytes": 727,
+      "source": ".tmp/native-bootstrap/android-sync-boundary-review-after-third.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/android-wrapper-source-review.json",
+      "sha256": "e43cc9d91d1393e965aee936a300c7381b798a769a1d24a9359f17a5bde7ae63",
+      "bytes": 4673,
+      "source": ".tmp/native-bootstrap/android-wrapper-source-review.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/final-platform-boundaries.json",
+      "sha256": "06a98084160f8755a6b7e093240731faaebf2662d07c4ce7920d29a9f0c7044a",
+      "bytes": 1544,
+      "source": ".tmp/native-bootstrap/final-platform-boundaries.json"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/gradle-version.log",
+      "sha256": "13cb01e3b627211af8db0a1b5cc13213e8c6d4bb2faf091577d05ef049f7c060",
+      "bytes": 1171,
+      "source": ".tmp/native-bootstrap/gradle-version.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/root-install.log",
+      "sha256": "a426082c63bbd0cda33bbfa74d60e9faa95167cebd345392a8c8a8352c971082",
+      "bytes": 245,
+      "source": ".tmp/native-bootstrap/root-install.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/add-android.log",
+      "sha256": "4f5e939c558ad6a43215d902db29c278c6cac8a1240c80766f4da1f2048d08bc",
+      "bytes": 285,
+      "source": ".tmp/native-bootstrap/add-android.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/add-ios.log",
+      "sha256": "8088d6695c178a4709f667daf39f1d7e9b3a2568114e51123b5972dcd8caf5d1",
+      "bytes": 273,
+      "source": ".tmp/native-bootstrap/add-ios.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/update-android.log",
+      "sha256": "8394ee8b80221dd55d486095d6adeeacfef3377b38b089f65b8b7f54ef7e31b5",
+      "bytes": 493,
+      "source": ".tmp/native-bootstrap/update-android.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/update-android-fixed.log",
+      "sha256": "abdc55cbc4d5021d1e0792d551b00c9f49f4ce4b31c5b7790866bf8b1b3d0085",
+      "bytes": 682,
+      "source": ".tmp/native-bootstrap/update-android-fixed.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/sync-android-first.log",
+      "sha256": "29d3319c73e75014c8bd2f87eea5cc2e63f5b3008c6c8cc65532b6b1f9853ab2",
+      "bytes": 542,
+      "source": ".tmp/native-bootstrap/sync-android-first.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/sync-android-accountless.log",
+      "sha256": "202a63656f669b4c0b3d5e4511b644e657842ad9dfdfbc172db94afc500c63eb",
+      "bytes": 542,
+      "source": ".tmp/native-bootstrap/sync-android-accountless.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/sync-ios-first.log",
+      "sha256": "7dfd58ddfed3ba00fede62bec4d329bc9a639465deea34e8bb7820d87207cd73",
+      "bytes": 618,
+      "source": ".tmp/native-bootstrap/sync-ios-first.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/shared-host-regression.log",
+      "sha256": "f7ccf9a846d31b0eb0984ac91d6f85859a62b31f34c536be05e7b894eb905abe",
+      "bytes": 1372,
+      "source": ".tmp/native-bootstrap/shared-host-regression.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/shared-host-regression-fixed.log",
+      "sha256": "7c13e53032afa397073caf376266239b500dddd5d385f49b8ce862edd3d9279e",
+      "bytes": 283,
+      "source": ".tmp/native-bootstrap/shared-host-regression-fixed.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/native-static-account-regression.log",
+      "sha256": "d16ef43c16a9cbf4098ac5a3d41485f057329d6b411d240e965a423ec179796b",
+      "bytes": 279,
+      "source": ".tmp/native-bootstrap/native-static-account-regression.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/build-android-dev-web.log",
+      "sha256": "7cb83bc20f12372bb7d1e584fc69361f44342cb9a3d86a8b696d121c0df11b7e",
+      "bytes": 12524,
+      "source": ".tmp/native-bootstrap/build-android-dev-web.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/build-android-dev-web-accountless.log",
+      "sha256": "cf03fdde992856e277de00da09eb4051e9deb45d384897647f7d93de6af142ee",
+      "bytes": 12673,
+      "source": ".tmp/native-bootstrap/build-android-dev-web-accountless.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/build-android-dev-web-backend-boundary.log",
+      "sha256": "b5b30739fdb3c71c5bdf525b209163df24470552e24f05e6b31d46d3f0e16699",
+      "bytes": 12585,
+      "source": ".tmp/native-bootstrap/build-android-dev-web-backend-boundary.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/build-ios-dev-web.log",
+      "sha256": "61e6070bad6808bb2cdd2696b40c4fde24ce2433804d9b9eba0631116e9f94a9",
+      "bytes": 12582,
+      "source": ".tmp/native-bootstrap/build-ios-dev-web.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/assemble-android-dev-debug-first.log",
+      "sha256": "e253f37bc62fd90c039e607523c0a6ca778fe728c9f51c1979e6cbcbda20bd45",
+      "bytes": 26211,
+      "source": ".tmp/native-bootstrap/assemble-android-dev-debug-first.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/assemble-android-dev-debug-accountless.log",
+      "sha256": "434db7b7c04a1eafacac9a79f128069a66d00781f395d928a3b5dd41adccfd06",
+      "bytes": 13339,
+      "source": ".tmp/native-bootstrap/assemble-android-dev-debug-accountless.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/final-native-source-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "source": ".tmp/native-bootstrap/final-native-source-types.log"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/android-dev-apk-aapt2-badging.txt",
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73",
+      "bytes": 5374,
+      "source": ".tmp/native-bootstrap/android-dev-apk-aapt2-badging.txt"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/android-dev-apk-manifest.txt",
+      "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec",
+      "bytes": 8836,
+      "source": ".tmp/native-bootstrap/android-dev-apk-manifest.txt"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/android-dev-apk-locales.txt",
+      "sha256": "e417b96725691c86cc6103223f08367d7454894043884c0e8d1142e519de5200",
+      "bytes": 323,
+      "source": ".tmp/native-bootstrap/android-dev-apk-locales.txt"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/android-dev-apk-signature.txt",
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1",
+      "bytes": 972,
+      "source": ".tmp/native-bootstrap/android-dev-apk-signature.txt"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/logs/android-dev-apk-zipalign.txt",
+      "sha256": "85091d4d1f8a57bab5c1dd6491130c136bf4bafce682eb1fbe97f814d6377e88",
+      "bytes": 54814,
+      "source": ".tmp/native-bootstrap/android-dev-apk-zipalign.txt"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/ios-project-sync-review.json",
+      "sha256": "1b7260fd8089f5f31f82cc8773d4df6e09d64d16aadad5d4a9abd8e68cd9d291",
+      "bytes": 70456
+    }
+  ],
+  "releaseReady": false,
+  "stageAccepted": false,
+  "productionActionsAuthorized": false,
+  "pending": [
+    "Actual installed Android lifecycle, globe, accessibility and offline device verification",
+    "Actual macOS Xcode/Swift resolution/simulator build and iOS/iPadOS device verification",
+    "Store-specific native commerce, lifecycle/deep-link/child-policy and permission gates",
+    "Complete reviewed RU/EN content, legal/support and exact-RC release evidence",
+    "Earlier S03 internal gaps remain open"
+  ],
+  "postBuildSourceOnlyChanges": [
+    {
+      "path": "apps/mobile/android/build.gradle",
+      "change": "Removed spaces from a generated empty line for Git whitespace validation; no semantic change or repeated native build claimed.",
+      "sha256": "e2aa5075e1fcfd5e77c63eb8d662932b3c8586c927376b88a4986365af3b635f"
+    }
+  ]
+}

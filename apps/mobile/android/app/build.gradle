@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace = "ru.probpera.literaryplanet"
+    compileSdk = rootProject.ext.compileSdkVersion
+    signingConfigs {
+        debug {
+            // Local development identity only; never write keys to the user profile.
+            storeFile rootProject.file('../../../.tmp/native-tools/android-user/literary-planet-debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+    defaultConfig {
+        applicationId "ru.probpera.literaryplanet"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    flavorDimensions "distribution"
+    productFlavors {
+        dev {
+            dimension "distribution"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+        }
+        googlePlay {
+            dimension "distribution"
+        }
+        ruStore {
+            dimension "distribution"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// A bundled artifact is built for one channel at a time. Prevent accidental
+// packaging of an iOS or different-store web bundle in an Android variant.
+android.applicationVariants.all { variant ->
+    variant.preBuildProvider.configure {
+        doFirst {
+            def artifactFile = file('src/main/assets/public/artifact.json')
+            if (!artifactFile.isFile()) throw new GradleException('Build and sync the native web artifact first.')
+            def artifact = new groovy.json.JsonSlurper().parse(artifactFile)
+            if (artifact.kind != 'literary-planet-bundled-native-preparation' ||
+                artifact.platform != 'android' || artifact.channel != variant.flavorName) {
+                throw new GradleException('Native web artifact platform/channel does not match this Android variant.')
+            }
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

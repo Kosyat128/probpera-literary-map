@@ -1,0 +1,45 @@
+{
+  "scope": "Read-only emitted module retention, not proof that a remote Worker was executed",
+  "buildId": "fa9dd4a0ddaf48dbc9f714df32e94b6c97e51f439e504766465746b8a2bfd207",
+  "sourceCommit": "e2530cc6b5eb112bf70c1bf5b8aa167fde259db1",
+  "staticSourceImports": [
+    {
+      "file": "src/hooks/useBookCollections.ts",
+      "line": 30,
+      "import": "import { supabase } from \"../lib/supabase\";",
+      "sha256": "8f05095d43c34293897fbda4a7f51e24c476364749af01fdc9a00bd9ff76396b"
+    },
+    {
+      "file": "src/hooks/useReadingLibrary.ts",
+      "line": 4,
+      "import": "import { supabase } from \"../lib/supabase\";",
+      "sha256": "55e00d146dac1cc043300907ffb0b6cd1691a5c7b9ae5d0d7a0d46d26ca01de4"
+    },
+    {
+      "file": "src/hooks/useReadingProgress.ts",
+      "line": 4,
+      "import": "import { supabase } from \"../lib/supabase\";",
+      "sha256": "13252c5a51457237242356a22a63f0ac6a5e36abf443208b6e40b8d83cd62fff"
+    },
+    {
+      "file": "src/hooks/useSubscriptions.ts",
+      "line": 4,
+      "import": "import { supabase } from \"../lib/supabase\";",
+      "sha256": "f031940dc5b1ee6d0122dafc2a31c3526684ee97e7fb10e5ecf0473ed7a77323"
+    },
+    {
+      "file": "src/community/CommunityHub.tsx",
+      "line": 3,
+      "import": "import { supabase } from \"../lib/supabase\";",
+      "sha256": "5bfa55a1cec6eb25bcbee2d0bcec52bb6b70703c97ed5aa89c73a4d10696097c"
+    },
+    {
+      "file": "src/community/ArticleViewCount.tsx",
+      "line": 4,
+      "import": "import { supabase } from \"../lib/supabase\";",
+      "sha256": "6360e17cf2812138e87328072484efd5ad1446c00bd6e363f67cdf5f7e7e7698"
+    }
+  ],
+  "emittedDependencies": [],
+  "proposedBoundary": "A direct native build-constant guard on exported supabase in src/lib/supabase.ts, preserving all current callers and public/PWA behavior."
+}

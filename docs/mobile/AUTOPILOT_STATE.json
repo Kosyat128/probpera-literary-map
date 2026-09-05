@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-05T20:48:54.602Z",
+  "updatedAt": "2026-09-05T21:53:30.275Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -811,7 +811,14 @@
       "lastGreenCommands": [],
       "artifacts": [
         "docs/mobile/evidence/S04/parallel-safe-entry.json",
-        "docs/mobile/evidence/S04/native-entry-source-review.json"
+        "docs/mobile/evidence/S04/native-entry-source-review.json",
+        "docs/mobile/evidence/S04/android-toolchain-preparation.json",
+        "docs/mobile/evidence/S04/capacitor-package-contracts.json",
+        "docs/mobile/evidence/S04/host-runtime-preparation.json",
+        "docs/mobile/evidence/S04/native-resources-preparation.json",
+        "docs/mobile/evidence/S04/native-brand-resources-preparation.json",
+        "docs/mobile/evidence/S04/working-native-implementation.json",
+        "docs/mobile/evidence/S04/ios-project-sync-review.json"
       ],
       "externalBlockers": []
     },
@@ -10522,7 +10529,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "S03 remains first-open: finish truthful saved-access provenance and its affected tests, retain broader account-lifecycle and browser/device gaps. In parallel S04 begins workspace-local toolchain preparation under the documented exception; coordinate shared source/dependencies and require real native artifacts before acceptance.",
+    "nextAction": "Preserve completed S03 saved-access checkpoint e2530cc6 and open browser/device/account-lifecycle gaps. Checkpoint the verified working S04 Android APK and iOS sync; continue native device/policy work and cloud macOS simulator preparation because the owner has no Mac. No stage acceptance or release claim.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10622,7 +10629,15 @@
     "s03SavedVerification": {
       "evidence": "docs/mobile/evidence/S03/saved-verification-artifact-regression.json",
       "buildId": "b006c2757ee7e5bacc6b946d8c7dcd880c0760da74ff3d39d752095b38b26c6d",
-      "accepted": false
+      "accepted": false,
+      "commit": "e2530cc6b5eb112bf70c1bf5b8aa167fde259db1"
+    },
+    "s04WorkingValidation": {
+      "evidence": "docs/mobile/evidence/S04/working-native-implementation.json",
+      "androidApkSha256": "3a4cccecf310a7b2eabef22426d96fe78033e89bdca058249383e30d2b17cf20",
+      "accepted": false,
+      "iosSyncReview": "docs/mobile/evidence/S04/ios-project-sync-review.json",
+      "ownerHasMac": false
     }
   },
   "externalOwnerInputsStatus": {

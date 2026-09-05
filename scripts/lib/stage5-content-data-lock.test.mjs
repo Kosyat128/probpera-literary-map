@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 
 import { parseCss } from "../audit-stage5-baseline.mjs";
 import { projectV12S03Package, projectV12S03Source } from "../governance/v12-s03-compatibility.mjs";
+import { projectV12S04HostSource } from "../governance/v12-s04-host-compatibility.mjs";
 import {
   adminArticlePublicationPermissionsAttestation,
   bookDatabaseEditorialOwnerAttestation,
@@ -613,8 +614,10 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       "initial-language-storage-read",
       "language-selection-storage-write",
     ]);
-    const source = readFileSync(path.join(root, attestation.path), "utf8")
-      .replace(/\r\n?/gu, "\n");
+    // Check this historical delta after the independently pinned optional native
+    // persistence change is reversed, preserving both duplicate/missing guards.
+    const source = projectV12S04HostSource(attestation.path,
+      readFileSync(path.join(root, attestation.path), "utf8").replace(/\r\n?/gu, "\n"));
     for (const delta of attestation.projections) {
       expect(() => projectApprovedInterfaceStorageDelta(
         source.replace(delta.after, delta.before)

@@ -1,0 +1,11 @@
+√ Updating Android plugins in 6.96ms
+[info] Found 5 Capacitor plugins for android:
+       @capacitor/app@8.1.1
+       @capacitor/app-launcher@8.0.1
+       @capacitor/browser@8.0.4
+       @capacitor/network@8.0.1
+       @capacitor/preferences@8.0.1
+× copy android - failed!
+× update android - failed!
+[error] Could not find the web assets directory: .\dist-native.
+        Please create it and make sure it has an index.html file. You can change the path of this directory in capacitor.config.json (webDir option). You may need to compile the web assets for your app (typically npm run build). More info: https://capacitorjs.com/docs/basics/workflow#sync-your-project

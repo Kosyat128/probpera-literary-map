@@ -1,0 +1,102 @@
+{
+  "scope": "Read-only native wrapper source/configuration review during Gradle build; not APK/device verification",
+  "checkedAt": "2026-09-05T21:30:00.088Z",
+  "buildId": "fa9dd4a0ddaf48dbc9f714df32e94b6c97e51f439e504766465746b8a2bfd207",
+  "fingerprints": [
+    {
+      "path": "capacitor.config.json",
+      "bytes": 372,
+      "sha256": "c28dd50db2c283a03b4859a0cdfe85ce862d08080ab0824cfa6ad7595a9e2863"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/assets/capacitor.config.json",
+      "bytes": 350,
+      "sha256": "04fe811bebdb9e7e2dadc83ec571400d8923658fe4cc9f7091ed80d24a0823ab"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/assets/capacitor.plugins.json",
+      "bytes": 521,
+      "sha256": "cc704617b05f0ba8a4100bf89b7c3b3becba97b4b831cb47c1fce27889ac53e4"
+    },
+    {
+      "path": "apps/mobile/android/app/build.gradle",
+      "bytes": 3694,
+      "sha256": "af7329ea63d251885b74ad9e8e3bb1bc387d6074d270f65bfc9a64a97544c300"
+    },
+    {
+      "path": "apps/mobile/android/app/capacitor.build.gradle",
+      "bytes": 619,
+      "sha256": "00d3eb174206a523420609a3235fd739c6c45b12ebc6f6dda31687b53944c87d"
+    },
+    {
+      "path": "apps/mobile/android/capacitor.settings.gradle",
+      "bytes": 898,
+      "sha256": "e05879a12085274c107a8006b33ada4e73e1592fd0fb79a9b70c24e069eb8ea5"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/AndroidManifest.xml",
+      "bytes": 1634,
+      "sha256": "d45bf5a64a8e771105b5b1a2184b196aee46e0d7c2935d79d6b71bebc6c20caf"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+      "bytes": 130,
+      "sha256": "d7e365ffc40c1c05d63f7dcd794d242be04f44a7563e43cd90730633b63a3e33"
+    },
+    {
+      "path": "apps/mobile/android/gradle.properties",
+      "bytes": 1173,
+      "sha256": "bf36e92164e136e02c13728d219f9af8e8a386d491e61b9b66bf7d19df593488"
+    }
+  ],
+  "plugins": [
+    {
+      "pkg": "@capacitor/app",
+      "classpath": "com.capacitorjs.plugins.app.AppPlugin",
+      "version": "8.1.1",
+      "path": "node_modules/@capacitor/app/android/src/main/java/com/capacitorjs/plugins/app/AppPlugin.java",
+      "sha256": "3f1d493268d8334e8f086c5ff05fa37ab87eb2bab651bde88117974981fdcaac"
+    },
+    {
+      "pkg": "@capacitor/app-launcher",
+      "classpath": "com.capacitorjs.plugins.applauncher.AppLauncherPlugin",
+      "version": "8.0.1",
+      "path": "node_modules/@capacitor/app-launcher/android/src/main/java/com/capacitorjs/plugins/applauncher/AppLauncherPlugin.java",
+      "sha256": "e555cc9fe2ca6432300503dd6e453a96c9a22cd06173993f0a5c7e55732e8cd4"
+    },
+    {
+      "pkg": "@capacitor/browser",
+      "classpath": "com.capacitorjs.plugins.browser.BrowserPlugin",
+      "version": "8.0.4",
+      "path": "node_modules/@capacitor/browser/android/src/main/java/com/capacitorjs/plugins/browser/BrowserPlugin.java",
+      "sha256": "a0c09984d9605fafec341aa30addcba12b1de2c349670941d2bb0cf4d1da95cd"
+    },
+    {
+      "pkg": "@capacitor/network",
+      "classpath": "com.capacitorjs.plugins.network.NetworkPlugin",
+      "version": "8.0.1",
+      "path": "node_modules/@capacitor/network/android/src/main/java/com/capacitorjs/plugins/network/NetworkPlugin.java",
+      "sha256": "3a96e66b5567d4ec7c9bf315faa43971a0a56eec9bb00d95c28ed4f89fd416cf"
+    },
+    {
+      "pkg": "@capacitor/preferences",
+      "classpath": "com.capacitorjs.plugins.preferences.PreferencesPlugin",
+      "version": "8.0.1",
+      "path": "node_modules/@capacitor/preferences/android/src/main/java/com/capacitorjs/plugins/preferences/PreferencesPlugin.java",
+      "sha256": "3eb821a1c13c0aebe2dc02f206c7f5ad5bf02f8d61c57d45774d22da68e4d737"
+    }
+  ],
+  "checks": {
+    "configuredAdditionalPlugins": 5,
+    "pluginNamesExact": true,
+    "configSemanticMatch": true,
+    "debugKeyResolvedPath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-user\\literary-planet-debug.keystore"
+  },
+  "findings": [],
+  "limitations": [
+    "Five configured additional plugins are listed; the Capacitor core includes its own native bridge functionality.",
+    "Gradle preBuild checks artifact kind/platform/channel only; it does not recompute its file inventory. This review compared all synced source bytes separately before packaging.",
+    "AAPT ignoreAssetsPattern excludes dot-prefixed paths, including .vite/manifest.json; final APK comparison must distinguish generated validation metadata from runtime assets.",
+    "Debug signing is confined to the workspace-local debug keystore; no release signing configuration or production operation was executed."
+  ]
+}

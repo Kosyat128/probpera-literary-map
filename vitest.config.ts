@@ -5,9 +5,11 @@ export default defineConfig({
     exclude: [
       "tests/e2e/**",
       "tests/pwa/**/*.spec.mjs",
+      "tests/host/**/*.spec.mjs",
       "**/node_modules/**",
       "dist/**",
       "dist-pwa/**",
+      "dist-native/**",
       ".review/**",
       ".tmp/**",
       "apps/**/.next/**",

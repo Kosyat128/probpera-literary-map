@@ -1,0 +1,6 @@
+√ Adding native Xcode project in apps/mobile/ios in 56.23ms
+√ add in 56.98ms
+[warn] sync could not run--missing dist-native directory.
+[success] ios platform added!
+Follow the Developer Workflow guide to get building:
+https://capacitorjs.com/docs/basics/workflow

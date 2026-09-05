@@ -6,8 +6,13 @@ Internal work:
   child/purchase/offline/rights flows and full bilingual release work remain.
 - English content is incomplete in main; prior release deliberately paused bulk
   English generation. This is internal work, never an owner translation task.
-- No Java/Gradle/adb/Xcode/Swift detected on PATH at intake. Android tooling and
-  a macOS Xcode build environment must be prepared or accessed before native QA.
+- Android tooling is now installed and verified inside the workspace, under the
+  user's explicit SDK license authorization. A real dev APK was compiled and
+  independently verified. Installed-device behavior remains unverified.
+- The user has no macOS computer. Prepare cloud macOS/Xcode validation; do not
+  assign a Mac purchase or programming to the owner. The iOS web bundle and
+  synchronized native project are verified, but Xcode/Swift compilation and
+  simulator/device behavior have not been observed.
 
 External evidence/access limitations (do not block independent implementation):
 

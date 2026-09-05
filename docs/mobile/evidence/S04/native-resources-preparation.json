@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-05T21:14:18.534Z",
+  "status": "RESOURCE_COMPILER_AND_PROJECT_PARSING_PASS",
+  "commands": [
+    {
+      "executable": ".tmp/native-tools/android-sdk/build-tools/36.0.0/aapt2.exe",
+      "args": [
+        "compile",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\app\\src\\main\\res\\values\\strings.xml",
+        "-o",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\native-resource-smoke"
+      ]
+    },
+    {
+      "executable": ".tmp/native-tools/android-sdk/build-tools/36.0.0/aapt2.exe",
+      "args": [
+        "compile",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\app\\src\\main\\res\\values-ru\\strings.xml",
+        "-o",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\native-resource-smoke"
+      ]
+    },
+    {
+      "executable": ".tmp/native-tools/android-sdk/build-tools/36.0.0/aapt2.exe",
+      "args": [
+        "compile",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\app\\src\\main\\res\\xml\\locales_config.xml",
+        "-o",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\native-resource-smoke"
+      ]
+    },
+    {
+      "executable": ".tmp/native-tools/android-sdk/build-tools/36.0.0/aapt2.exe",
+      "args": [
+        "link",
+        "--manifest",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\native-resource-smoke\\AndroidManifest.xml",
+        "-I",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "--min-sdk-version",
+        "24",
+        "--target-sdk-version",
+        "36",
+        "-o",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\native-resource-smoke\\resource-smoke.apk",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\native-resource-smoke\\values-ru_strings.arsc.flat",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\native-resource-smoke\\values_strings.arsc.flat",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\native-resource-smoke\\xml_locales_config.xml.flat"
+      ]
+    },
+    {
+      "executable": ".tmp/native-tools/android-sdk/build-tools/36.0.0/aapt2.exe",
+      "args": [
+        "dump",
+        "resources",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\native-resource-smoke\\resource-smoke.apk"
+      ]
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "apps/mobile/android/app/src/main/AndroidManifest.xml",
+      "sha256": "d45bf5a64a8e771105b5b1a2184b196aee46e0d7c2935d79d6b71bebc6c20caf"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+      "sha256": "43ed1f0d14296b866760427d24dbfe7d3368892e0156bb4e952b1f4f12403195"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "sha256": "64ba7cf671ba7580727746eb9172dae4e5ad05ff3e7ba5f8abc696a58af3b6a6"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/xml/locales_config.xml",
+      "sha256": "80236fcd00f908a5e93f2e395ccd5c23654b8940379a063515dcd2eb638ac75f"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Info.plist",
+      "sha256": "9c791e794d5a4f8849d7ceb4d282f2623fab79c1ccf28165f66ab3f82ffbfa51"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/en.lproj/InfoPlist.strings",
+      "sha256": "0c24ed31dbe052a9198992fb0330d6af98de85d771a0fd831ff57c8c7ca23f60"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/ru.lproj/InfoPlist.strings",
+      "sha256": "8eae58cbbe72a70cb8ba63ea171949d9e4251f9803ecb42b1cc5eeb2a070fe7f"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PrivacyInfo.xcprivacy",
+      "sha256": "a3799663af4d176d8ce1d87b8f061deddd8ebe7083de64ef5406f9e4844d30f2"
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "sha256": "78d4fea0192468e192d0275a523d22fa94cba7ab6895420ce6fbf7e77d719e4d"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/SceneDelegate.swift",
+      "sha256": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/AppDelegate.swift",
+      "sha256": "481e2ad8672b14acbd3e3df65acdc6d046526ae542b7bec903cf842fc68d9e49"
+    }
+  ],
+  "resultFiles": [
+    {
+      "path": ".tmp/native-tools/native-resource-smoke/resource-smoke.apk",
+      "sha256": "b8260605d72c79ae1c54d953f3a9d4e73a9e46e28a90d41b33705ddfdffd6086"
+    },
+    {
+      "path": ".tmp/native-tools/native-resource-smoke/resources.txt",
+      "sha256": "16e3a50a3325ebd3217ed6957a87e20e02dc7c8e0d819cfc944c97f11ecae05e"
+    }
+  ],
+  "checks": [
+    "AAPT2 actual EN/RU resource compile",
+    "AAPT2 API 36 resource-only fixture link and bilingual output dump",
+    "Android explicit manifest attributes and en/ru locale config",
+    "Xcode parser accepts project and unique target resource references",
+    "OpenStep parser accepts en/ru strings",
+    "plist parser accepts locales and narrow UserDefaults reason",
+    "UIScene manifest and unchanged SceneDelegate/AppDelegate hashes"
+  ],
+  "limitations": [
+    "Resource-only fixture is not an Android application build or native runtime test.",
+    "Xcode project and plist parsing on Windows is not xcodebuild, codesign, iOS Simulator, iPhone or iPad evidence.",
+    "App names reuse canonical labels; no full native copy coverage or human translation approval is asserted.",
+    "Privacy manifest entry covers the observed app-only Preferences usage; final linked SDK manifests and complete privacy disclosures require the actual iOS archive audit."
+  ],
+  "androidApplicationBuilt": false,
+  "iosApplicationBuilt": false,
+  "humanLocalizationApproved": false,
+  "releaseReady": false,
+  "stage": "S04",
+  "scope": "Native resource preparation and local compiler/parser verification only",
+  "invocation": "node .tmp/native-tools/verify-native-resources.mjs",
+  "supportingInputs": [
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "558aa11a47cff412db410ae094db48edadf7a9185cbba48c857e1f3ba4643e51"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "04cb3edbfd5b882a2eb49c6eb74fae1f4e7e9b0f6e1164a5bc574098bb1fd940"
+    },
+    {
+      "path": "src/platform/adapters/ios/IosPlatformAdapter.ts",
+      "sha256": "08e2811719c25b26a5afa9ca4e4e33e27328779a894be1253a5f227e9221c70a"
+    },
+    {
+      "path": "node_modules/@capacitor/preferences/ios/Sources/PreferencesPlugin/Preferences.swift",
+      "sha256": "633356fde3f920ac72470c8401ceabc06849f2993325b4b6f9b22e8a5795f61a"
+    },
+    {
+      "path": ".tmp/native-tools/apple-required-reason-type.json",
+      "sha256": "8dbb09d54691c1600cdab483a897e75ad67697356fd217a57dd43eadaba74d04"
+    },
+    {
+      "path": ".tmp/native-tools/verify-native-resources.mjs",
+      "sha256": "9f7620c420c26512775d702a9a0ef53269c925c2340acfe11e1c22de938fd83c"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://developer.android.com/guide/topics/resources/app-languages",
+      "verifiedContent": "Explicit locale-config resource and manifest reference declare supported app languages. These declarations do not translate runtime UI. Locale changes can recreate the Activity unless handled by the app.",
+      "scope": "Manual en/ru localeConfig only; runtime synchronization remains in the shared native bridge.",
+      "accessDate": "2026-09-05"
+    },
+    {
+      "url": "https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html",
+      "verifiedContent": "Localized InfoPlist.strings in language-specific project directories supply user-facing bundle values.",
+      "scope": "CFBundleDisplayName and CFBundleName; archived official reference.",
+      "accessDate": "2026-09-05"
+    },
+    {
+      "url": "https://capacitorjs.com/docs/apis/preferences",
+      "verifiedContent": "Preferences uses iOS UserDefaults and Android SharedPreferences; the documented application privacy-manifest reason is CA92.1.",
+      "scope": "Installed @capacitor/preferences 8.0.1 source inspected.",
+      "accessDate": "2026-09-05"
+    },
+    {
+      "url": "https://developer.apple.com/tutorials/data/documentation/bundleresources/app-privacy-configuration/nsprivacyaccessedapitypes/nsprivacyaccessedapitype.json",
+      "verifiedContent": "CA92.1 permits app-only defaults access; it excludes other-app/system data access and cross-app accessible writes.",
+      "scope": "Current official structured document downloaded over verified HTTPS and inspected. Its Markdown counterpart omitted the reason table; that incomplete rendering was not used to assert the reason.",
+      "localCopy": ".tmp/native-tools/apple-required-reason-type.json",
+      "sha256": "8dbb09d54691c1600cdab483a897e75ad67697356fd217a57dd43eadaba74d04",
+      "accessDate": "2026-09-05"
+    },
+    {
+      "url": "https://developer.android.com/identity/data/autobackup?hl=en",
+      "verifiedContent": "Android backup configuration distinguishes cloud backup from device-to-device transfer rules.",
+      "scope": "allowBackup=false is explicit here; no claim of all-OEM transfer suppression or device testing.",
+      "accessDate": "2026-09-05"
+    }
+  ],
+  "appNameEvidence": {
+    "canonicalSource": "src/i18n/InterfaceLanguage.tsx",
+    "canonicalLineAtReview": 78,
+    "ru": "Литературная планета",
+    "en": "Literary Planet",
+    "action": "Copied the existing canonical RU/EN product-name pair; no new editorial or legal translation produced.",
+    "humanApprovalCreated": false
+  },
+  "privacyReason": {
+    "category": "NSPrivacyAccessedAPICategoryUserDefaults",
+    "reason": "CA92.1",
+    "technicalBasis": "Preferences.swift returns UserDefaults.standard. IosPlatformAdapter passes this plugin to HostPlatformServices; the current host policy permits only probpera-interface-language and probpera-display-mode, with bounded enum values. No App Group, MDM or third-party defaults domain is requested.",
+    "completeAppPrivacyInventory": false,
+    "pending": "Audit the actual linked iOS archive and SDK manifests before release, including new API usage and applicable collected-data/tracking disclosures. This one application reason is not a complete privacy declaration."
+  },
+  "runtimeLimits": [
+    "App-language declarations and app-name resources do not prove preservation of Canvas/camera/navigation on system language changes. Root-owned bridge and actual native tests must verify that contract.",
+    "No request-permission usage descriptions were added: this scope does not add camera, microphone, photos, location, tracking or notification permissions.",
+    "Explicit allowBackup=false does not by itself establish all-OEM device-to-device transfer behavior. No backup/restore/device-transfer test was performed.",
+    "Default generated branding and actual native launch visuals remain separate root work; this report asserts no screenshot, icon review or binary readiness."
+  ],
+  "harnessCorrections": "Before the successful run, the local-only harness removed an unsupported AAPT2 --values option and adapted the existing PBX parser to an OpenStep dictionary wrapper with a trailing newline and quoted key normalization. Those failures were harness invocations; source resource assertions were preserved.",
+  "sourceFrozenAfterVerification": true
+}

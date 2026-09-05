@@ -1,0 +1,59 @@
+[
+  {
+    "packageId": "platforms;android-36",
+    "url": "https://dl.google.com/android/repository/platform-36_r02.zip",
+    "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\platform-36_r02.zip",
+    "bytes": 65878410,
+    "publisherChecksumType": "sha1",
+    "publisherChecksum": "2c1a80dd4d9f7d0e6dd336ec603d9b5c55a6f576",
+    "measuredSha1": "2c1a80dd4d9f7d0e6dd336ec603d9b5c55a6f576",
+    "measuredSha256": "37607369a28c5b640b3a7998868d45898ebcb777565a0e85f9acf36f29631d2e",
+    "publisherSha256Available": false,
+    "entries": 11342,
+    "expandedBytes": 106177284,
+    "topDirectories": [
+      "android-36"
+    ],
+    "traversalAndLinkInspection": "passed",
+    "inspectedBeforeSdkmanagerInstall": true,
+    "inspectedAt": "2026-09-05T20:50:39.7043635+00:00"
+  },
+  {
+    "packageId": "build-tools;36.0.0",
+    "url": "https://dl.google.com/android/repository/build-tools_r36_windows.zip",
+    "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\build-tools_r36_windows.zip",
+    "bytes": 58699878,
+    "publisherChecksumType": "sha1",
+    "publisherChecksum": "f16ccffd34de8790dede813a6c7d8e2c11a27b50",
+    "measuredSha1": "f16ccffd34de8790dede813a6c7d8e2c11a27b50",
+    "measuredSha256": "aa1095cb14d83e483818a748a2c06faaeb8e601561b06a356a119a1b2ca280d3",
+    "publisherSha256Available": false,
+    "entries": 197,
+    "expandedBytes": 143241305,
+    "topDirectories": [
+      "android-16"
+    ],
+    "traversalAndLinkInspection": "passed",
+    "inspectedBeforeSdkmanagerInstall": true,
+    "inspectedAt": "2026-09-05T20:51:20.0915287+00:00"
+  },
+  {
+    "packageId": "platform-tools",
+    "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-win.zip",
+    "archive": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\downloads\\platform-tools_r37.0.1-win.zip",
+    "bytes": 8044989,
+    "publisherChecksumType": "sha1",
+    "publisherChecksum": "e03e78b1d80b396f1c3358e31251cb31740e1110",
+    "measuredSha1": "e03e78b1d80b396f1c3358e31251cb31740e1110",
+    "measuredSha256": "45f4d63113e895ebde0c90f194099a4676b6ac653bd28d54314a9e022bbc1a99",
+    "publisherSha256Available": false,
+    "entries": 15,
+    "expandedBytes": 17529398,
+    "topDirectories": [
+      "platform-tools"
+    ],
+    "traversalAndLinkInspection": "passed",
+    "inspectedBeforeSdkmanagerInstall": true,
+    "inspectedAt": "2026-09-05T20:51:26.4452495+00:00"
+  }
+]

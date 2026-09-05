@@ -1,0 +1,7 @@
+Capture kind: persisted tool text output, not original stdout file bytes.
+Command: node scripts/audit-typography.mjs
+Tool chunk: f6e35e
+Observed exit code: 0
+
+Typography audit: 26 public CSS files, 0 issue(s).
+

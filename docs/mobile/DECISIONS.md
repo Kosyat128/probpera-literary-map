@@ -156,3 +156,26 @@
 - D041: The user explicitly authorized accepting the standard Google Android SDK
   license and installing the SDK in this workspace. Preserve the exact reply and
   actual installer receipt. No broader legal or production authorization follows.
+- D042: Native clients mount the same canonical App through SDK-free host ports.
+  SDK imports stay in platform adapters. The existing global language provider
+  retains ownership; bounded native initialization and ordered preference writes
+  do not create another globe, locale owner, catalog or entitlement authority.
+- D043: Native artifacts contain bundled executable code and selected canonical
+  assets. Independent inventory/module/configuration audits precede sync. Direct
+  native guards remove the unused account SDK; the original strict failures are
+  preserved. No remote runtime, arbitrary navigation or release signing is added.
+- D044: Android Java/SDK/Gradle and the standard development signing key are local
+  to .tmp/native-tools. An observed AGP Unicode-path stop is resolved by its
+  documented project override and then a successful real APK build. Only public
+  certificate inspection is recorded; SDK binaries and private key bytes are not
+  committed. The transient empty adb profile directory was verified and removed.
+- D045: The dev APK is independently verified for actual bundled bytes, DEX,
+  localized resources, signature and alignment. This establishes a development
+  binary, not physical-device behavior or release acceptance. iOS sync checks do
+  not establish Swift resolution or Xcode compilation. The corrected generated
+  app SPM constraint is exact8.5.1; the earlier incorrect range report is retained
+  with an explicit correction in ios-project-sync-review.json.
+- D046: The user has no Mac. Prepare a cloud macOS simulator build that requires
+  no owner programming or local Mac. Keep simulator compilation, device signing
+  and store delivery as separately evidenced steps; no cloud run is inferred from
+  a workflow file. Production publication restrictions remain unchanged.

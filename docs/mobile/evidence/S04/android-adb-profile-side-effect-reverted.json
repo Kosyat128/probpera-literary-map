@@ -1,0 +1,22 @@
+{
+  "kind": "reverted-windows-adb-profile-side-effect",
+  "observedAt": "2026-09-05T20:57:42.8623459Z",
+  "cause": "Windows ADB obtains CSIDL_PROFILE through SHGetFolderPathW; ANDROID_USER_HOME/ANDROID_SDK_HOME do not redirect its base .android directory.",
+  "officialSource": "https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/adb_utils.cpp",
+  "sourceFunction": "adb_get_homedir_path / adb_get_android_dir_path",
+  "path": "C:\\Users\\User\\.android",
+  "observedContents": [],
+  "createdBy": "single escalated adb version check",
+  "deviceEnumerationRun": false,
+  "adbServerStarted": false,
+  "cleanup": {
+    "completedAt": "2026-09-05T21:00:13.1203324+00:00",
+    "exactPathChecked": true,
+    "creationTimeChecked": true,
+    "nonReparseDirectoryChecked": true,
+    "emptyDirectoryChecked": true,
+    "recursiveDelete": false,
+    "existsAfter": false
+  },
+  "futureConstraint": "Do not run Windows adb under a claim that all profile writes stay inside native-tools. A real device workflow needs an explicit permitted profile-cache exception or a separate execution host."
+}
