@@ -6,6 +6,12 @@ ownership and the boundary for subsequent implementation. It does not claim
 that native projects, offline packages or purchase providers already exist.
 Binding stage input: `requirements/v12/07_THREE_PLATFORM_ARCHITECTURE_RU.md`.
 
+S02 implementation is detailed in `SHARED_SITE_EXTRACTION.md`: the shared
+capability ports/provider and Web adapter now run in the canonical product,
+with narrow domain/locale exports. Native, filesystem and purchase adapters
+remain subsequent work; the S01 proposed-location table below records the
+architecture rather than claiming all those implementations exist.
+
 ## Existing shared product / Существующий общий продукт
 
 | Responsibility / Область | Canonical source / Канонический источник |

@@ -89,7 +89,11 @@ describe("Stage 5F demand-owned loading graph", () => {
 
     expect(worldMap).toContain('import("./LiteraryGlobe")');
     expect(worldMap).not.toMatch(/import\s+LiteraryGlobe\s+from/su);
-    expect(runtime).toContain('import("../data/bookArchive")');
+    expect(runtime).toContain('import("../planet/books")');
+    expect(source("src/planet/books.ts")).toContain('from "../data/bookArchive"');
+    expect(source("src/planet/books.ts")).toContain('from "../data/bookArchiveQueue"');
+    expect(app).toContain('import("./planet/catalog")');
+    expect(app).not.toMatch(/import\s*\{[^}]*countries[^}]*\}\s*from\s*"\.\/planet\/catalog"/su);
     expect(archives).toContain('import("../components/BookArchiveSection")');
     expect(archives).not.toContain("loadBookArchiveRuntime");
     expect(app).toContain("loadBookArchiveRuntime()");

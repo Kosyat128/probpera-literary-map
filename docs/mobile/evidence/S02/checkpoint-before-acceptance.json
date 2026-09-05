@@ -1,0 +1,24 @@
+{
+  "pass": true,
+  "errors": [],
+  "releaseReady": false,
+  "internalRequirementsPassed": false,
+  "requirementCount": 342,
+  "bilingualCount": 107,
+  "allInternalComplete": false,
+  "completedStages": [
+    "S00",
+    "S01"
+  ],
+  "firstOpen": {
+    "stageId": "S02",
+    "criterionId": "S02.acceptance"
+  },
+  "historicalStaleInputs": [
+    "src/main.tsx",
+    "src/App.tsx",
+    "docs/mobile/PLATFORM_ARCHITECTURE.md"
+  ],
+  "releaseActionsAuthorized": false,
+  "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732"
+}

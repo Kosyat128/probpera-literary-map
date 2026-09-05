@@ -1,0 +1,26 @@
+[WebServer] (node:37416) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 14 tests using 1 worker
+
+(node:35736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [desktop-chromium] › tests\e2e\cms-direct-edit.spec.mjs:5:1 › редактор выбирает текст внутри фона главной и сохраняет прямое редактирование полей (1.9s)
+  ok  2 [desktop-chromium] › tests\e2e\globe-runtime.spec.mjs:274:1 › globe filters update the collection without rebuilding the 3D atlas (7.6s)
+  ok  3 [desktop-chromium] › tests\e2e\header-hero-polish.spec.mjs:26:1 › RU and EN hero copy, calls to action and proof stay readable across the matrix (15.1s)
+  ok  4 [desktop-chromium] › tests\e2e\header-hero-polish.spec.mjs:122:1 › protected header bands, Hero art direction and reduced motion remain deterministic (11.4s)
+  ok  5 [desktop-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:229:1 › country selection replaces the immersive entry and survives Back/Forward without remounting Canvas (8.5s)
+  ok  6 [desktop-chromium] › tests\e2e\platform-services.spec.mjs:7:1 › live offline status follows RU/EN while country and DOM Canvas survive reconnects (5.1s)
+  ok  7 [desktop-chromium] › tests\e2e\public-smoke.spec.mjs:522:1 › поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу (3.6s)
+(node:5232) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  8 [mobile-chromium] › tests\e2e\cms-direct-edit.spec.mjs:5:1 › редактор выбирает текст внутри фона главной и сохраняет прямое редактирование полей (4.9s)
+  ok  9 [mobile-chromium] › tests\e2e\globe-runtime.spec.mjs:274:1 › globe filters update the collection without rebuilding the 3D atlas (6.1s)
+  ok 10 [mobile-chromium] › tests\e2e\header-hero-polish.spec.mjs:26:1 › RU and EN hero copy, calls to action and proof stay readable across the matrix (20.2s)
+  ok 11 [mobile-chromium] › tests\e2e\header-hero-polish.spec.mjs:122:1 › protected header bands, Hero art direction and reduced motion remain deterministic (11.0s)
+  -  12 [mobile-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:229:1 › country selection replaces the immersive entry and survives Back/Forward without remounting Canvas
+  ok 13 [mobile-chromium] › tests\e2e\platform-services.spec.mjs:7:1 › live offline status follows RU/EN while country and DOM Canvas survive reconnects (5.2s)
+  ok 14 [mobile-chromium] › tests\e2e\public-smoke.spec.mjs:522:1 › поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу (4.3s)
+
+  1 skipped
+  13 passed (1.9m)

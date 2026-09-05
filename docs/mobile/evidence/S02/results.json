@@ -1,0 +1,309 @@
+{
+  "version": "12.0",
+  "stage": "S02",
+  "status": "PASS",
+  "testedAt": "2026-09-05T04:24:47.469Z",
+  "baseMainSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
+  "scope": "Shared canonical product extraction and Web platform integration; global product/locale/native requirements remain incomplete.",
+  "fullRegression": {
+    "testsPassed": 3139,
+    "filesPassed": 517,
+    "testsSkipped": 4,
+    "filesSkipped": 3,
+    "scope": "Before final pure localization facade integration"
+  },
+  "finalBoundaryRegression": {
+    "testsPassed": 259,
+    "filesPassed": 19,
+    "workers": 1
+  },
+  "browserRegression": {
+    "testsPassed": 13,
+    "testsSkipped": 1,
+    "projects": [
+      "desktop-chromium",
+      "mobile-chromium"
+    ],
+    "scope": "real offline/reconnect and RU/EN with same DOM Canvas/country, history, filters, lazy search, CMS iframe and preserved header/hero",
+    "objectRendererCameraIdentityProven": false
+  },
+  "build": {
+    "domainChecks": 12876,
+    "seoChecks": 5513,
+    "pages": 180,
+    "treeSha256": "2a65a612424c387bbbcc557e9fd5c663a124c05f2f0e4c0378636ba2a7efbbef",
+    "releaseCandidate": false
+  },
+  "failuresResolved": [
+    {
+      "log": "logs/s02-final-boundary-regression.log",
+      "finding": "Two Git-fixture checks exceeded 5s while build/typecheck ran concurrently.",
+      "resolution": "Same assertions passed in serial 259-test rerun after build; no test timeout or assertion changed."
+    }
+  ],
+  "review": "Independent provider/adapter review reproduced denied storage operations; no remaining confirmed findings. Shared boundaries and loading reviewed independently.",
+  "sourceWorkingTreeInputs": [
+    {
+      "path": "docs/mobile/PLATFORM_ARCHITECTURE.md",
+      "sha256": "8ec8a59ec9f173c195558e3db590d19a07ecf8a45b34e56e18a5a3c28654992d"
+    },
+    {
+      "path": "docs/mobile/SHARED_SITE_EXTRACTION.md",
+      "sha256": "a399afb8f06342d33b8d1fa70199500e39a2b4d8a278a7deff37060c14085925"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "a78e6a2aaade2136c08e1b82d7100a10eac249469f10db43a722ba3e3342bc71"
+    },
+    {
+      "path": "package.json",
+      "sha256": "e6e19f42070657c0a9d41aa087e37f3f7267aec77321f70611ba1b2bd9c02a8c"
+    },
+    {
+      "path": "playwright.config.mjs",
+      "sha256": "0e4c05cccfa392b99b1fd4c0fde6f02a207a46bd50a8a0a348ab89c79e4caaf9"
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "sha256": "067fe8a8e26d095db4bcc12fe3b63e4ce011b26661e3f5617aa192050f45890d"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "100a8126850050b29f42af50afa6a01d5e7784c657f266f4c2314bf723dffc6f"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "sha256": "fc69f9650d3a78270263901310baa8fd1700e668fdba496246318ca72cf80140"
+    },
+    {
+      "path": "src/components/BookShelfSceneCanvas.tsx",
+      "sha256": "09d7fc7bd4c3f50638717cce33147694f211918141d7155cb5fbf597bbb99fd4"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "5709ce35234066d06469460e8ed98865c2caba5f87dc09a2b3587c20c3acfdb0"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "8630744177ccebaa3ccc1598f5517d0a414c745e0534d7537c4aeeeb897d787d"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "93de3bf1149eade1ce29aa143c499429adc2f9692d95dcd91474232c312a82e9"
+    },
+    {
+      "path": "src/data/bookArchive.ts",
+      "sha256": "4ce49f1e712cd2448fa0d8f798655294972c33622ef2b73fd4ed4f0244822884"
+    },
+    {
+      "path": "src/data/bookArchiveQueue.ts",
+      "sha256": "f626eea9e99beccf7ef63f220606c7566fbbb94a83b55728569618c54b63011d"
+    },
+    {
+      "path": "src/data/bookLocalization.ts",
+      "sha256": "1cbb3221e62310fe76fe328741e3316b8f0623d03ea77c994d25d6ca52545773"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "sha256": "f7222571a71e916dd24af9659948f8c22124377f7eddcc57d713416a6f7081cb"
+    },
+    {
+      "path": "src/data/cms/siteCopy.ts",
+      "sha256": "db26fbe9363d13743e0b5075417fd9f382b4e92678240a7e4ec6350b25a0a00b"
+    },
+    {
+      "path": "src/data/countries.ts",
+      "sha256": "9701375417f014c7424974ca450297141341a08abe1daeab4bbe5b294ab5dcc9"
+    },
+    {
+      "path": "src/data/countries/index.ts",
+      "sha256": "52c164f5db1eedaa55d9a95456ff9903596480a3bad084148384a68d47a0967c"
+    },
+    {
+      "path": "src/data/countries/types.ts",
+      "sha256": "cb2bcbb6a72315e070a40fe7d2fefc63273d02f433c569f62f27b4f1653f2095"
+    },
+    {
+      "path": "src/data/countryLocalization.ts",
+      "sha256": "d9ce4b5e5aaeb6cf4f6c3cc24fdd892de7a109aa32b924d8e9311a0319a6d9d0"
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "sha256": "45424be0be190f0191bec4bb3cf5c934ec627f467dcffd5f4a35123e90adb954"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "7579bd3e229adfb6ac4111c6dc529894451acac54ecdcfece71a1a8de3395593"
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.ts",
+      "sha256": "bcce1a97b7fcac1b7a4a4fa627a3c9cda74944ae7bc215b2c15b7015dcfc0e22"
+    },
+    {
+      "path": "src/loading/stage5LoadingGraph.test.ts",
+      "sha256": "39ea964585f03d808a705becb9747b5f3a30e39063fafb36bb05408a520b4b7e"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "f6c219630b6441a6032d47fc41fa982e0efa840a7a452790066cd15bf38b3758"
+    },
+    {
+      "path": "src/mobile/ConnectivityStatus.tsx",
+      "sha256": "34e33dff409848de5637c8de16eea457f8c1a2d9ef8cdd874f5c5f2552e543c7"
+    },
+    {
+      "path": "src/planet/books.test.ts",
+      "sha256": "61fd9b45b8c5044794344b46d8241de9906e43a34c094afbfeaaedb2d6f1037f"
+    },
+    {
+      "path": "src/planet/books.ts",
+      "sha256": "c694e1991b64a4e626c4e578457d3e3b9f30bfb761558c4c6d8dde4304d08989"
+    },
+    {
+      "path": "src/planet/brand.ts",
+      "sha256": "074c3ad10618ed55204fcd2fb13067d6d6f1977c488b84d13aec460a47c640f4"
+    },
+    {
+      "path": "src/planet/catalog.test.ts",
+      "sha256": "762afd189ad459dc0da40f73da80d38a0077545c46d52ca2c3f53fee05540f99"
+    },
+    {
+      "path": "src/planet/catalog.ts",
+      "sha256": "a03280a4ac68a21be24d9a2dc3b6333ee44e1752e1a2c7c62efecb95d0606e19"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/planet/editorialCatalog.ts",
+      "sha256": "c91696cb5dfa0e3a9324c083b1899fda1429b736adcae55174b557bb7e4ae448"
+    },
+    {
+      "path": "src/planet/loadingBoundary.test.ts",
+      "sha256": "0b76095565a0dc9d3a7dd061a251c2fc6061e91a03dbc1d86195d3a10e3f1847"
+    },
+    {
+      "path": "src/planet/localization.test.ts",
+      "sha256": "4aee2b060ad23dfdc6f1a046a8763985f2cde09afed2e6cadd4877e1395a1454"
+    },
+    {
+      "path": "src/planet/localization.ts",
+      "sha256": "28b0b98bbbc89be8e1a33a13f2332217f8bdeb5d16cd702bc200ade4a83d2bff"
+    },
+    {
+      "path": "src/planet/presentation.test.ts",
+      "sha256": "c0d46a0d57d557aa7fa11b384a64e84cc97dfa0362f64aa262b733b419757bdc"
+    },
+    {
+      "path": "src/planet/selection.ts",
+      "sha256": "0d0ed8c86722e7f4c36885ab572ffb746c16ce69e4ccebf797eb5c3cd0fd99e3"
+    },
+    {
+      "path": "src/planet/types.ts",
+      "sha256": "80ffbec6e93002364fba05b8d303ee7a712f29cbe801a04a4af70a5a587ff25d"
+    },
+    {
+      "path": "src/platform/PlatformServices.test.tsx",
+      "sha256": "f744b8131b386490f63b45986b9b74c9a328c692f6678cf8cc8288dc3a14d302"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "b8e8afd9b852dc1bde308360d1b52430a0a1ab308a26f1be50a24111a19e5ed0"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "3582642d0540c1d02647690e021a673d9d2618f739660ec66b443c814b4519d8"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "47e8e5d2602ec3228db943bc8c2e731811f6b1ab04d74b44ca869ae2db30ad7f"
+    },
+    {
+      "path": "src/platform/productPolicy.test.ts",
+      "sha256": "d41f56238d58a774ac0c004c91c1e4310fc9cfe7431646f25c5ce81785be2a64"
+    },
+    {
+      "path": "src/platform/productPolicy.ts",
+      "sha256": "a43622ca8b7ef85bb0b1df2d9dbb1268d4a5e1ce2ca9d1f00a97387250fca480"
+    },
+    {
+      "path": "src/utils/atlasUrlState.ts",
+      "sha256": "42afa5ae434d26f0cb2ad474ba820784147b04dad0cf2cca2fbf82db64458fe9"
+    },
+    {
+      "path": "src/utils/safeWebStorage.ts",
+      "sha256": "81ea225b4e6c0a1a2d8c3bf4ba2b48523144280429ff3ae2a2bf38df800b9277"
+    },
+    {
+      "path": "tests/e2e/cms-direct-edit.spec.mjs",
+      "sha256": "1570009fed8213e6c9a269a5d56e5a821c2dd653139ad9777680a9f8d6a82a05"
+    },
+    {
+      "path": "tests/e2e/globe-runtime.spec.mjs",
+      "sha256": "da91d790e2a250fa0d44017524a5cc3a7382e472d57f76095b75078ac37d9c1a"
+    },
+    {
+      "path": "tests/e2e/header-hero-polish.spec.mjs",
+      "sha256": "e755f27846a2342c5432331a695b5117b4862f19af7800df741cfa1d1572f258"
+    },
+    {
+      "path": "tests/e2e/literary-planet-immersion.spec.mjs",
+      "sha256": "70db27b28d4882ed1c0bd2929bbc728dd6f58f8d943d1f2dc49dcbbf2d5ba2a2"
+    },
+    {
+      "path": "tests/e2e/platform-services.spec.mjs",
+      "sha256": "1d3cb0818dcaee3d6986c44d2a8defcaca847c76c951737e4add8fedecb1196b"
+    },
+    {
+      "path": "tests/e2e/public-smoke.spec.mjs",
+      "sha256": "0f0be52084550f9a8113f46e0cfa36912b80d72a7624f51dcffa7733cfd74372"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "3c614d01f959fb795f0968dde60e5ab5c19ac682f7552c14bc0bdf47570cd9b4"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node node_modules/vitest/vitest.mjs run --maxWorkers=3",
+      "log": "docs/mobile/evidence/S02/logs/s02-full-regression.log",
+      "exitCode": 0
+    },
+    {
+      "command": "node node_modules/vitest/vitest.mjs run scripts/mobile src/planet src/platform src/loading src/i18n/InterfaceLanguage.test.ts src/components/bootstrapBoundary.source.test.ts src/analytics/activityConsentPolicy.test.ts src/community/authTurnstile.source.test.ts scripts/safe-browser-storage.source.test.mjs scripts/lib/stage5-content-data-lock.test.mjs --maxWorkers=1",
+      "log": "docs/mobile/evidence/S02/logs/s02-final-boundary-serial.log",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint:public",
+      "log": "docs/mobile/evidence/S02/logs/s02-lint-final.log",
+      "exitCode": 0
+    },
+    {
+      "command": "CMS_SNAPSHOT_PREEXPORTED=true npm run build:domain",
+      "log": "docs/mobile/evidence/S02/logs/s02-build-domain-final.log",
+      "exitCode": 0
+    },
+    {
+      "command": "PLAYWRIGHT_PORT=4273 node node_modules/@playwright/test/cli.js test tests/e2e/platform-services.spec.mjs tests/e2e/literary-planet-immersion.spec.mjs tests/e2e/globe-runtime.spec.mjs tests/e2e/public-smoke.spec.mjs tests/e2e/cms-direct-edit.spec.mjs tests/e2e/header-hero-polish.spec.mjs --grep 'live offline status|country selection replaces|globe filters update|поиск глобуса сохраняет|редактор выбирает|RU and EN hero copy|protected header bands' --workers=1",
+      "log": "docs/mobile/evidence/S02/logs/s02-browser-final.log",
+      "exitCode": 0
+    },
+    {
+      "command": "node scripts/mobile/platform-boundaries.mjs",
+      "log": "docs/mobile/evidence/S02/platform-boundaries.json",
+      "exitCode": 0
+    }
+  ],
+  "releaseReady": false,
+  "remaining": "S03-S40, ICU and strict message IDs, complete reviewed RU/EN UI/content, native projects/artifacts, purchases, child/offline/export packages, legal/store/owner approval and exact RC evidence."
+}

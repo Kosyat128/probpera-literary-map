@@ -18,6 +18,8 @@ import { InterfaceLanguageProvider } from './i18n/InterfaceLanguage';
 import ConnectivityStatus from './mobile/ConnectivityStatus';
 import { registerServiceWorker } from './mobile/registerServiceWorker';
 import { installSafeWebStorage } from './utils/safeWebStorage';
+import { PlatformServicesProvider } from './platform/PlatformServices';
+import { createWebPlatformAdapter } from './platform/adapters/web/WebPlatformAdapter';
 import './styles/editorial-fonts.css';
 import './index.css';
 import './community/community-accessibility.css';
@@ -34,6 +36,7 @@ import './styles/atlas-intro-layout.css';
 import './styles/site-typography.css';
 import './styles/header-preserved.css';
 installSafeWebStorage();
+const platformServices = createWebPlatformAdapter();
 
 const cmsPage = currentCmsPage();
 const cmsEditMode = prepareCmsEditDocument();
@@ -52,21 +55,23 @@ function ConsentAwareActivityTracker() {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BootstrapErrorBoundary>
-      <InterfaceLanguageProvider>
-        <AuthProvider>
-          <SiteTypographyRuntime />
-          <SiteDesignRuntime />
-          <CmsDirectEditBridge />
-          {!cmsEditMode && <AuthTurnstileGate />}
-          {!cmsEditMode && <ConsentAwareActivityTracker />}
-          {!cmsEditMode && <AnalyticsConsent />}
-          <ClientDiagnostics />
-          <ConnectivityStatus />
-          <AppErrorBoundary>
-            {cmsPage ? <CmsPageReader page={cmsPage} /> : <App />}
-          </AppErrorBoundary>
-        </AuthProvider>
-      </InterfaceLanguageProvider>
+      <PlatformServicesProvider services={platformServices}>
+        <InterfaceLanguageProvider>
+          <AuthProvider>
+            <SiteTypographyRuntime />
+            <SiteDesignRuntime />
+            <CmsDirectEditBridge />
+            {!cmsEditMode && <AuthTurnstileGate />}
+            {!cmsEditMode && <ConsentAwareActivityTracker />}
+            {!cmsEditMode && <AnalyticsConsent />}
+            <ClientDiagnostics />
+            <ConnectivityStatus />
+            <AppErrorBoundary>
+              {cmsPage ? <CmsPageReader page={cmsPage} /> : <App />}
+            </AppErrorBoundary>
+          </AuthProvider>
+        </InterfaceLanguageProvider>
+      </PlatformServicesProvider>
     </BootstrapErrorBoundary>
   </React.StrictMode>
 );

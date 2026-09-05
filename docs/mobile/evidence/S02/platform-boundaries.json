@@ -1,0 +1,41 @@
+{
+  "pass": true,
+  "sourceFileCount": 789,
+  "webReachableFileCount": 430,
+  "auditedRuntimeFileCount": 430,
+  "importCount": 1563,
+  "webEntries": [
+    "src/main.tsx"
+  ],
+  "adapterRoots": [
+    "src/platform/adapters/android",
+    "src/platform/adapters/ios"
+  ],
+  "canonicalSceneFiles": {
+    "LiteraryWorldMap": "src/components/LiteraryWorldMap.tsx",
+    "LiteraryGlobe": "src/components/LiteraryGlobe.tsx",
+    "GlobeCameraRig": "src/components/GlobeCameraRig.tsx"
+  },
+  "canvasOwnerFiles": [
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/BookShelfSceneCanvas.tsx"
+  ],
+  "canvasSites": [
+    {
+      "file": "src/components/BookShelfSceneCanvas.tsx",
+      "line": 415
+    },
+    {
+      "file": "src/components/LiteraryGlobe.tsx",
+      "line": 2987
+    }
+  ],
+  "nativeConfigs": [],
+  "findings": [],
+  "limitations": [
+    "Static source ownership does not prove a single active globe/Canvas/renderer or preserved runtime identity; browser and native tests must verify those invariants.",
+    "Third-party package contents, bundler plugins, generated artifacts, injected scripts and installed native binaries require separate build/artifact audits.",
+    "Dependency resolution/loader enforcement covers reachable web and native-adapter runtime graphs; inactive source is still scanned for native SDK imports and duplicate scene ownership.",
+    "Computed module loaders and non-static native runtime configuration fail closed; this is not a general JavaScript data-flow proof."
+  ]
+}

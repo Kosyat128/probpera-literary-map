@@ -15,13 +15,15 @@ import type { CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
 import InterfaceLanguageControl from "./components/InterfaceLanguageControl";
-import CountryFlagIcon from "./components/CountryFlagIcon";
 import WriterPortrait, { writerHasApprovedPortrait } from "./components/WriterPortrait";
-import BrandArrowIcon from "./components/BrandArrowIcon";
-import BrandBookIcon from "./components/BrandBookIcon";
-import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
-import BrandSearchIcon from "./components/BrandSearchIcon";
-import BrandWidescreenIcon from "./components/BrandWidescreenIcon";
+import {
+  CountryFlagIcon,
+  BrandArrowIcon,
+  BrandBookIcon,
+  BrandExternalLinkIcon,
+  BrandSearchIcon,
+  BrandWidescreenIcon,
+} from "./planet/brand";
 import AtlasSearchCombobox from "./components/AtlasSearchCombobox";
 import AtlasExperienceChrome from "./components/AtlasExperienceChrome";
 import LiteraryWorldMap from "./components/LiteraryWorldMap";
@@ -34,13 +36,16 @@ import type {
 import {
   chooseRandomLiteraryDestination,
   rememberLiteraryDestination,
-} from "./components/globeDiscovery";
-import {
   createGlobeCoordinates,
   formatGlobeCoordinatesDms,
   resolveCountryGlobeCoordinates,
   resolveGlobeCoordinateContext,
-} from "./components/globeCoordinates";
+  selectWriterBiography,
+  selectBookMetadataLabels,
+  selectBookText,
+  selectBookWriterName,
+  selectWriterDisplayName,
+} from "./planet/selection";
 import {
   CmsHomepageBanners,
   CmsNavigationLinks,
@@ -48,15 +53,8 @@ import {
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
-import { selectWriterBiography } from "./data/writerBiography";
 import type { BookArchiveEntry } from "./data/bookArchive";
 import { isPublicBook } from "./data/bookQuality";
-import {
-  selectBookMetadataLabels,
-  selectBookText,
-  selectBookWriterName,
-  selectWriterDisplayName,
-} from "./data/bookLocalization";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import {
   coreHomepageSectionClass,
@@ -68,7 +66,7 @@ import ShareLinks from "./editorial/ShareLinks";
 import {
   selectInterfacePlural,
   useInterfaceLanguage,
-} from "./i18n/InterfaceLanguage";
+} from "./planet/localization";
 import {
   articlePath,
   isDirectArticlePath,
@@ -782,7 +780,7 @@ export default function App() {
     if (directArticleRoute || !archiveDataRequested) return undefined;
     let active = true;
     setArchiveDataStatus("loading");
-    import("./data/countries").then(
+    import("./planet/catalog").then(
       (module) => {
         if (!active) return;
         setCountryArchive(module.countries);

@@ -1,0 +1,9 @@
+
+> literary-map@0.1.0 lint:public
+> tsc --noEmit && npm run typography:audit
+
+
+> literary-map@0.1.0 typography:audit
+> node scripts/audit-typography.mjs
+
+Typography audit: 18 public CSS files, 0 issue(s).

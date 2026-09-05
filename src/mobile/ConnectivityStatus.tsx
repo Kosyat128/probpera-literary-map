@@ -1,22 +1,18 @@
 import { useEffect, useState } from "react";
 
-import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { useInterfaceLanguage } from "../planet/localization";
+import { usePlatformSnapshot } from "../platform/PlatformServices";
 
 export default function ConnectivityStatus() {
   const { t } = useInterfaceLanguage();
-  const [online, setOnline] = useState(() => navigator.onLine);
+  const { connectivity } = usePlatformSnapshot();
+  const online = connectivity !== "offline";
   const [updateReady, setUpdateReady] = useState(false);
 
   useEffect(() => {
-    const goOnline = () => setOnline(true);
-    const goOffline = () => setOnline(false);
     const showUpdate = () => setUpdateReady(true);
-    window.addEventListener("online", goOnline);
-    window.addEventListener("offline", goOffline);
     window.addEventListener("probpera:pwa-update", showUpdate);
     return () => {
-      window.removeEventListener("online", goOnline);
-      window.removeEventListener("offline", goOffline);
       window.removeEventListener("probpera:pwa-update", showUpdate);
     };
   }, []);

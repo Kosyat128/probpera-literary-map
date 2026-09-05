@@ -1,0 +1,123 @@
+
+> literary-map@0.1.0 build:domain
+> node scripts/build-domain-release.mjs
+
+{
+  "status": "ready",
+  "counterConfigured": false,
+  "consentRequired": true,
+  "webvisorEnabled": false,
+  "loaderOccurrences": 1,
+  "errors": []
+}
+
+> literary-map@0.1.0 build:from-snapshot
+> npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && tsc && vite build && node scripts/build-article-pages.mjs
+
+
+> literary-map@0.1.0 interface:copy:catalog
+> node scripts/export-interface-copy-catalog.mjs
+
+Exported 1425 site-copy fields for the admin.
+
+> literary-map@0.1.0 assets:globe:modern
+> node scripts/build-modern-globe-texture.mjs
+
+Built modern atlas textures from scripts\assets\natural-earth-i-relief-source.webp and src\data\geo\countries.geojson: modern-atlas-2026-ru.webp 4096x2048, 87 country labels (1477124 bytes); modern-atlas-2026-ru-mobile.webp 2048x1024, 70 country labels (395324 bytes); modern-atlas-2026-en.webp 4096x2048, 87 country labels (1461376 bytes); modern-atlas-2026-en-mobile.webp 2048x1024, 69 country labels (390810 bytes).
+
+> literary-map@0.1.0 assets:globe:qa
+> node scripts/qa-globe-alignment.mjs
+
+antique: 4096x2048 (2901792 bytes), mobile 2048x1024 (687972 bytes) -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\scripts\.cache\globe-alignment-qa.png
+earth: 4096x2048 (434610 bytes), mobile 2048x1024 (126246 bytes) -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\scripts\.cache\globe-alignment-qa-earth.png
+modern: 4096x2048 (1477124 bytes), mobile 2048x1024 (395324 bytes) -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\scripts\.cache\globe-alignment-qa-modern-ru.png
+modern: 4096x2048 (1461376 bytes), mobile 2048x1024 (390810 bytes) -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\scripts\.cache\globe-alignment-qa-modern-en.png
+modern: Natural Earth repository v5.1.2 (theme v5.1.1), 177 features; raster surface, procedural fallback, and hit testing share countries.geojson
+
+> literary-map@0.1.0 content:link-books
+> node scripts/build-book-article-mentions.mjs
+
+Связи книг и журнала: 694 связей, 535 книг, 167 статей.
+Рекомендации в статьях: 42 карточек для 30 статей.
+«Морской волк»: 4 связанных материалов.
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1139 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                       4.18 kB │ gzip:   1.46 kB
+dist/assets/editorial-paper-DwbOovh5.webp            37.27 kB
+dist/assets/brush-orange-stage-B2wkl8IX.webp         46.57 kB
+dist/assets/brush-paper-split-zfVJ2vHM.webp          62.35 kB
+dist/assets/brush-violet-stage-WEaHRUQQ.webp         67.86 kB
+dist/assets/brush-paper-east-Dhu-9hco.webp           68.43 kB
+dist/assets/brush-paper-corners-ChpKv6VW.webp        75.40 kB
+dist/assets/countries-B1fL43Dn.geojson              305.05 kB
+dist/assets/section-prizes-DXUciBB7.webp            349.28 kB
+dist/assets/BookArchiveSection-DVI8KyOc.css          13.71 kB │ gzip:   3.05 kB
+dist/assets/index-HSPlR6Jm.css                      533.10 kB │ gzip:  89.49 kB
+dist/assets/nobelArticles-BrDuotNO.js                 0.48 kB │ gzip:   0.35 kB
+dist/assets/supabase-BOrXB6f5.js                      1.05 kB │ gzip:   0.58 kB
+dist/assets/vite-preload-helper-BXl3LOEh.js           1.11 kB │ gzip:   0.65 kB
+dist/assets/useSubscriptions-UHKm3XqW.js              2.15 kB │ gzip:   1.04 kB
+dist/assets/books-BFz9bloD.js                         2.22 kB │ gzip:   1.08 kB
+dist/assets/articleSeries-bfsT0q_2.js                 2.62 kB │ gzip:   1.20 kB
+dist/assets/NobelArchiveStrip-Cvputjej.js             3.85 kB │ gzip:   1.85 kB
+dist/assets/BrandHeartIcon-BP96v6r2.js                4.60 kB │ gzip:   1.81 kB
+dist/assets/SectionsDirectory-CAy37DR3.js             5.04 kB │ gzip:   2.35 kB
+dist/assets/BookShelfSceneCanvas-Dfg6zLm2.js          7.72 kB │ gzip:   2.92 kB
+dist/assets/BookShelfSceneCanvas-CUUgohof.js          7.72 kB │ gzip:   2.92 kB
+dist/assets/CmsHomepageContent-hu-fsqQ_.js            8.10 kB │ gzip:   2.32 kB
+dist/assets/GlobalSearch-Dc4Mo22J.js                  8.19 kB │ gzip:   3.09 kB
+dist/assets/globalSearchRuntime-BU9yIDy8.js           8.28 kB │ gzip:   2.90 kB
+dist/assets/LiteraryCalendar-NrB1BvO2.js              8.94 kB │ gzip:   3.41 kB
+dist/assets/ArticleLibrarySection-B4rGX-Oz.js        10.96 kB │ gzip:   4.41 kB
+dist/assets/bookArchiveLocation-K8UtQQTv.js          24.67 kB │ gzip:   8.92 kB
+dist/assets/WriterPanel-b2zpJL04.js                  27.92 kB │ gzip:   8.49 kB
+dist/assets/ArticleReader-BLVeh64w.js                30.89 kB │ gzip:  10.41 kB
+dist/assets/CommunityHub-CjMhFxcG.js                 44.96 kB │ gzip:  12.82 kB
+dist/assets/completeShelfRenderer-BN9X7G_-.js        50.42 kB │ gzip:  16.50 kB
+dist/assets/editorialOverrides-BOW5SPq2.js           50.56 kB │ gzip:   9.67 kB
+dist/assets/LiteraryGlobe-B_JCeedA.js               127.20 kB │ gzip:  41.42 kB
+dist/assets/react-vendor-DkDe2rh0.js                145.95 kB │ gzip:  47.18 kB
+dist/assets/supabase-vendor-C0Z0FS3K.js             216.82 kB │ gzip:  57.10 kB
+dist/assets/BookArchiveSection-DoeeQZho.js          246.23 kB │ gzip:  72.78 kB
+dist/assets/index-BgodjhBH.js                       400.38 kB │ gzip: 120.94 kB
+dist/assets/writer-portraits-data-ZDd9rYw-.js       500.03 kB │ gzip:  76.33 kB
+dist/assets/country-data-n-z-B6kBB-fK.js            508.63 kB │ gzip: 105.27 kB
+dist/assets/bookArchive-Bv-tCE2k.js                 605.24 kB │ gzip: 134.05 kB
+dist/assets/catalog-CFVlzJVN.js                     607.08 kB │ gzip:  83.98 kB
+dist/assets/catalog-v5nm_Rrh.js                     771.19 kB │ gzip: 225.37 kB
+dist/assets/country-data-a-m-C_afZbhK.js            789.51 kB │ gzip: 159.38 kB
+dist/assets/three-vendor-DaIWb8Mp.js              1,094.81 kB │ gzip: 330.36 kB
+dist/assets/writer-biography-reviews-BMVRO21A.js  1,227.68 kB │ gzip: 393.63 kB
+dist/assets/book-catalog-CUS-317M.js              2,053.99 kB │ gzip: 187.59 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 23.81s
+Built 167 article pages, 0 CMS pages, 2330 redirects (1503 portable section aliases), sitemap and RSS for https://probpera.ru.
+Release code head written: 78ca20a465eb2abb69992f2a42c546d7ec21a90c -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\dist\.well-known\probpera-release-head.json
+{
+  "status": "ready",
+  "checks": 12876,
+  "passed": 12876,
+  "failed": 0,
+  "articles": 167,
+  "sitemapUrls": 180,
+  "redirects": 2330,
+  "serverRedirects": 827,
+  "portableSectionAliases": 1503,
+  "errors": []
+}
+{
+  "status": "ready",
+  "checks": 5513,
+  "pages": 180,
+  "uniqueLastmodDates": 13,
+  "warnings": [],
+  "errors": []
+}
+Доменный пакет готов в dist. DNS и настройки GitHub Pages этим действием не изменены.

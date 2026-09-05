@@ -1,0 +1,73 @@
+{
+  "version": "12.0",
+  "stage": "S02",
+  "scope": "Stage extraction milestones only; no global requirement PASSED.",
+  "milestones": [
+    {
+      "id": "S02.acceptance",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "Stage foundation acceptance; global requirements remain separate.",
+      "evidenceScope": "Shared canonical entry points and platform service integration; see results and SHARED_SITE_EXTRACTION.md."
+    },
+    {
+      "id": "S02.A11Y-006",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "RU complete and reviewed EN architecture. Shared interaction/native accessibility precedes integrated and localized device evidence.",
+      "evidenceScope": "Shared canonical entry points and platform service integration; see results and SHARED_SITE_EXTRACTION.md."
+    },
+    {
+      "id": "S02.BIL-011",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "Shared TypeScript catalogs are type-safe and ICU-compatible. Extract shared typed catalog boundaries before S36 ICU/type compatibility validation; this does not certify complete translations.",
+      "evidenceScope": "Same typed canonical locale/context/translation profiles; strict keys and ICU validation remain S36."
+    },
+    {
+      "id": "S02.CANON-001",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "Existing site Literary Planet is sole globe foundation. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance.",
+      "evidenceScope": "Shared canonical entry points and platform service integration; see results and SHARED_SITE_EXTRACTION.md."
+    },
+    {
+      "id": "S02.CANON-002",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "Shared IDs/coordinates/editions/textures across clients. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance.",
+      "evidenceScope": "Shared canonical entry points and platform service integration; see results and SHARED_SITE_EXTRACTION.md."
+    },
+    {
+      "id": "S02.CANON-003",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "One Canvas/renderer per active experience. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance.",
+      "evidenceScope": "Shared canonical entry points and platform service integration; see results and SHARED_SITE_EXTRACTION.md."
+    },
+    {
+      "id": "S02.CANON-004",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "Canonical CMS is only factual content source. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance.",
+      "evidenceScope": "Shared canonical entry points and platform service integration; see results and SHARED_SITE_EXTRACTION.md."
+    },
+    {
+      "id": "S02.CANON-005",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "Real portraits and canonical flags reused. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance.",
+      "evidenceScope": "Shared canonical entry points and platform service integration; see results and SHARED_SITE_EXTRACTION.md."
+    },
+    {
+      "id": "S02.CANON-007",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "Public site and admin remain regression-safe. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance.",
+      "evidenceScope": "Shared canonical entry points and platform service integration; see results and SHARED_SITE_EXTRACTION.md."
+    },
+    {
+      "id": "S02.CONTENT-004",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "Deterministic web/mobile/child export. Canonical export/display comes before offline integrity and reviewed English equivalence.",
+      "evidenceScope": "Canonical export/display entry and existing deterministic build; offline/child package determinism remains later gates."
+    },
+    {
+      "id": "S02.UX-004",
+      "status": "PASS_EXTRACTION_MILESTONE",
+      "notes": "Canonical violet/orange design system. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation.",
+      "evidenceScope": "Shared canonical entry points and platform service integration; see results and SHARED_SITE_EXTRACTION.md."
+    }
+  ]
+}
