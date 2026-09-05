@@ -223,9 +223,24 @@ try {
   await rejectedTransaction("changed dossier receipt prevents reapplication", `update public.book_dossier_schema_migrations set migration_sha256=repeat('b',64); ${migrationPlan.plan}`);
   await rejectedTransaction("RPC definition drift blocks the transaction", `alter function public.get_published_book_dossier(jsonb) set statement_timeout='1s'; ${migrationPlan.plan}`);
   await rejectedTransaction("accidental anonymous draft access fails health gate", `grant select on public.book_dossiers to anon; ${migrationPlan.plan}`);
-  await db.exec(`begin; grant execute on function public.book_dossier_content(jsonb) to public; revoke select on public.book_dossiers from authenticated; ${migrationPlan.rehearsal} commit; begin; ${migrationPlan.verification} commit;`);
+  const beforeRestoreReceipts = (await db.query("select * from public.book_dossier_schema_migrations order by version")).rows;
+  const restoredLedgerGrants = "grant all on public.book_dossier_schema_migrations to public, anon, authenticated;";
+  // Model inherited container ACLs after a --no-privileges restore. Production
+  // must reject the same drift; only the disposable rehearsal may normalize it.
+  await db.exec("begin");
+  try {
+    await db.exec(restoredLedgerGrants);
+    await assert.rejects(() => db.exec(migrationPlan.plan), /Dossier table permission invariant failed/u);
+  } finally {
+    await db.exec("rollback");
+  }
+  assert.deepEqual((await db.query("select * from public.book_dossier_schema_migrations order by version")).rows, beforeRestoreReceipts);
+  checks.push("production plan rejects exposed ledger ACLs before mutation and rolls back");
+  await db.exec(`begin; ${restoredLedgerGrants} grant execute on function public.book_dossier_content(jsonb) to public; revoke select on public.book_dossiers from authenticated; ${migrationPlan.rehearsal} commit; begin; ${migrationPlan.verification} commit;`);
   assert.deepEqual((await db.query("select record from public.book_dossiers")).rows, beforeRepeat);
-  checks.push("disposable restore rehearsal normalizes stripped ACLs without changing content");
+  assert.deepEqual((await db.query("select * from public.book_dossier_schema_migrations order by version")).rows, beforeRestoreReceipts);
+  assert.deepEqual((await db.query("select has_table_privilege('anon','public.book_dossier_schema_migrations','SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER') as anon, has_table_privilege('authenticated','public.book_dossier_schema_migrations','SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER') as authenticated")).rows, [{ anon: false, authenticated: false }]);
+  checks.push("disposable restore rehearsal normalizes table, ledger and function ACLs without changing content or receipts");
   const report = { runtime: `PGlite ${runtimeVersion}`, migrations: DOSSIER_MIGRATIONS, layoutVersion: migrationPlan.manifest.layoutVersion, scope: "Ephemeral in-memory PostgreSQL; synthetic auth/users/catalogue and prerequisite ledger foundation, synthetic design attestations; actual project is_staff, pgcrypto SHA helper, fixed-hash schema-only planner/migrations, historical v3-to-v4 upgrade and TS workflow/compiler. Browser font measurement and Docker backup/restore are separate. No external database, production writes or real editorial text.", passed: checks.length, checks, generatedAt: new Date().toISOString() };
   const output = path.join(root, "reports/bookshelf-owner-evidence/dossier-local-sql.json");
   await mkdir(path.dirname(output), { recursive: true });

@@ -524,7 +524,7 @@ function paintPublisherMark(context: CanvasRenderingContext2D, width: number) {
   context.fillStyle = OwnerBookTypographyTokens.ivory;
   context.textAlign = "center";
   context.font = "600 21px " + BookDossierTypographyTokens.serif;
-  context.fillText("Пробы пера", width / 2, 798);
+  context.fillText("Проба Пера", width / 2, 798);
 }
 
 function paintFrontBinderRule(context: CanvasRenderingContext2D, width: number, y: number) {
