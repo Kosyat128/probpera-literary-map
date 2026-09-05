@@ -94,8 +94,42 @@ function canonicalContent(absolutePath) {
   }
   return projectApprovedAdminPublicationDelta(
     repositoryPath(absolutePath),
-    projectApprovedSynopsisRefresh(repositoryPath(absolutePath), text)
+    projectApprovedSynopsisRefresh(
+      repositoryPath(absolutePath),
+      projectApprovedNewsDeployment(repositoryPath(absolutePath), text)
+    )
   );
+}
+
+// PUBLIC-LITERARY-NEWS-DEPLOYMENT-2026-09-05: the owner authorized the public API.
+// Preserve the historical pipeline fingerprint by projecting only this exact
+// additive deploy-and-verify step; existing release gates stay fingerprinted.
+const approvedNewsDeploymentGuards = [
+  '          test "$GITHUB_REF" = "refs/heads/main"',
+  '          news_main_head="$(git ls-remote --exit-code origin refs/heads/main | cut -f1)"',
+  '          test "$NEWS_RELEASE_SHA" = "$news_main_head"',
+];
+const approvedNewsDeploymentStep = [
+  "      - name: Deploy and verify the public literary news API",
+  "        if: steps.release_gate.outputs.should_deploy == 'true'",
+  "        env:",
+  "          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}",
+  "          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}",
+  "          NEWS_RELEASE_SHA: ${{ github.sha }}",
+  "        run: |",
+  ...approvedNewsDeploymentGuards,
+  '          node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news.jsonc --var "NEWS_RELEASE_SHA:$NEWS_RELEASE_SHA"',
+  '          node scripts/verify-literary-news-live.mjs --expected-head "$NEWS_RELEASE_SHA"',
+  "",
+  "",
+].join("\n");
+
+function projectApprovedNewsDeployment(relativePath, source) {
+  if (relativePath !== ".github/workflows/deploy-pages.yml") return source;
+  if (source.split(approvedNewsDeploymentStep).length !== 2) {
+    throw new Error("Missing or duplicate reviewed news-deployment step");
+  }
+  return source.replace(approvedNewsDeploymentStep, "");
 }
 
 function projectApprovedSynopsisRefresh(relativePath, source) {
@@ -440,6 +474,27 @@ describe("Stage 5 authorial content and canonical data lock", () => {
 });
 
 describe("Stage 5 owner and production-pipeline governance locks", () => {
+  it("projects only the exact authorized public news deployment and verification", () => {
+    const workflowPath = ".github/workflows/deploy-pages.yml";
+    const source = readFileSync(path.join(root, workflowPath), "utf8").replace(/\r\n?/gu, "\n");
+    const projected = projectApprovedNewsDeployment(workflowPath, source);
+    expect(projected).not.toContain("Deploy and verify the public literary news API");
+    expect(() => projectApprovedNewsDeployment(workflowPath, projected))
+      .toThrow("Missing or duplicate reviewed news-deployment step");
+    expect(() => projectApprovedNewsDeployment(workflowPath, source + approvedNewsDeploymentStep))
+      .toThrow("Missing or duplicate reviewed news-deployment step");
+    for (const guard of approvedNewsDeploymentGuards) {
+      expect(() => projectApprovedNewsDeployment(workflowPath, source.replace(`${guard}\n`, "")))
+        .toThrow("Missing or duplicate reviewed news-deployment step");
+    }
+    expect(projectApprovedNewsDeployment(workflowPath, source + "\n# Unreviewed change\n"))
+      .toBe(projected + "\n# Unreviewed change\n");
+    expect(projectApprovedNewsDeployment(".github/workflows/quality.yml", source)).toBe(source);
+    const stepPosition = source.indexOf(approvedNewsDeploymentStep);
+    expect(stepPosition).toBeGreaterThan(source.indexOf("- name: Enforce production performance budget"));
+    expect(stepPosition).toBeLessThan(source.indexOf("- name: Configure GitHub Pages"));
+  });
+
   it("bounds the owner-requested bookshelf UI and private progress refinement", () => {
     expect(bookshelfRefinement.sourceMainSha).toBe("0a348bd4202e3fa1558d88183549f7576a361c4b");
     expect([...new Set(bookshelfRefinement.projections.map(delta => delta.path))]).toEqual([
