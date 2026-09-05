@@ -55,7 +55,7 @@
   font-family: var(--font-editorial);
   font-size: clamp(1.65rem, 4vw, 2.25rem);
   font-weight: 600;
-  line-height: 1.05;
+  line-height: var(--type-leading-title);
 }
 
 .book-collection-dialog__close {

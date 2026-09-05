@@ -113,6 +113,7 @@
     --type-card-title: 1.5rem;
     --type-card-compact-title: 1.25rem;
     --type-card-related-title: 1.125rem;
+    --type-dialog-title: clamp(1.75rem, 3vw, 2.5rem);
     --type-lead: clamp(1.125rem, 1.4vw, 1.3125rem);
     --type-reading: 1.1875rem;
     --type-reading-section: clamp(1.375rem, 3vw, 2.4375rem);
@@ -127,8 +128,12 @@
     --type-card-secondary-action: var(--type-action);
     --type-card-footer-label: var(--type-card-meta);
     --type-leading-title: 1.16;
+    --type-leading-heading: 1.2;
     --type-leading-copy: 1.45;
-    --type-leading-ui: 1.4;
+    --type-leading-ui: 1.35;
+    --type-leading-reading: 1.55;
+    --type-paragraph-gap: 1.1em;
+    --type-heading-gap: clamp(1.75rem, 3vw, 2.5rem);
     --type-tracking-title: -0.015em;
     --type-tracking-label: 0.025em;
     --type-muted-light: #66536e;
@@ -213,6 +218,7 @@
 
   .journal-engagement h3,
   .calendar-heading h3,
+  .book-of-day h4,
   .book-fact-card h3,
   .trust-center summary,
   .author-showcase strong,
@@ -221,7 +227,7 @@
     font-family: var(--font-editorial);
     font-size: var(--type-card-compact-title);
     font-weight: 500;
-    line-height: 1.2;
+    line-height: var(--type-leading-heading);
     letter-spacing: 0;
     text-wrap: balance;
     overflow-wrap: normal;
@@ -663,6 +669,26 @@
     font-weight: 400;
   }
 
+  .account-view h2 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-dialog-title);
+    font-weight: 500;
+    line-height: var(--type-leading-title);
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+  }
+
+  .topic-list > button > strong,
+  .forum-empty > strong,
+  .reader-profile-editor header h3,
+  .account-library h3 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-compact-title);
+    font-weight: 500;
+    line-height: var(--type-leading-heading);
+    letter-spacing: var(--type-tracking-title);
+  }
+
   #community .community-reading-notes > span,
   #community .community-reading-notes button > i,
   #community .community-visual-stats strong {
@@ -697,7 +723,7 @@
     font-family: var(--font-editorial);
     font-size: calc(var(--type-reading) * var(--reader-scale, 1));
     font-weight: 400;
-    line-height: 1.6;
+    line-height: var(--type-leading-reading);
     text-wrap: pretty;
   }
 
@@ -735,6 +761,10 @@
   .article-reader-content :where(p, li),
   .cms-page-prose :where(p, li) {
     hyphens: auto;
+  }
+
+  .cms-page-prose p {
+    margin-block: 0 var(--type-paragraph-gap);
   }
 
   .article-copy p,
@@ -776,7 +806,12 @@
   .articles-mega-menu {
     --sans: "Onest Local", "Segoe UI", system-ui, sans-serif;
     --serif: var(--sans);
-    --type-menu-label: .8125rem;
+    /* Compact type scale for the original 880px/920px navigation panels. */
+    --type-menu-label: .75rem;
+    --type-menu-title: 1.5rem;
+    --type-menu-item: .9375rem;
+    --type-menu-copy: .8125rem;
+    --type-menu-meta: .75rem;
     --font-ui: var(--sans);
     --font-editorial: var(--serif);
     font-family: var(--font-ui);
@@ -789,7 +824,7 @@
   .sections-mega-menu > header strong,
   .articles-mega-menu > header strong {
     font-family: var(--font-editorial);
-    font-size: var(--type-card-feature-title);
+    font-size: var(--type-menu-title);
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: var(--type-tracking-title);
@@ -799,7 +834,7 @@
   .sections-mega-groups strong,
   .articles-mega-content > section strong {
     font-family: var(--font-editorial);
-    font-size: var(--type-card-related-title);
+    font-size: var(--type-menu-item);
     font-weight: 500;
     line-height: 1.3;
     text-wrap: pretty;
@@ -807,7 +842,7 @@
 
   .articles-mega-lead strong {
     font-family: var(--font-editorial);
-    font-size: var(--type-card-title);
+    font-size: var(--type-menu-title);
     font-weight: 500;
     line-height: 1.2;
     text-wrap: pretty;
@@ -818,7 +853,7 @@
   .articles-mega-lead p {
     color: var(--type-muted-dark);
     font-family: var(--font-ui);
-    font-size: var(--type-action);
+    font-size: var(--type-menu-copy);
     line-height: 1.4;
     text-wrap: pretty;
   }
@@ -826,9 +861,9 @@
   .sections-mega-groups small {
     color: var(--type-muted-light);
     font-family: var(--font-ui);
-    font-size: var(--type-action);
+    font-size: var(--type-menu-meta);
     font-weight: 400;
-    line-height: 1.4;
+    line-height: var(--type-leading-ui);
     text-wrap: pretty;
   }
 
@@ -836,7 +871,7 @@
   .articles-mega-menu > footer > span {
     color: var(--type-muted-light);
     font-family: var(--font-ui);
-    font-size: var(--type-card-meta);
+    font-size: var(--type-menu-meta);
     font-weight: 400;
     line-height: 1.4;
     text-wrap: pretty;
@@ -863,7 +898,7 @@
   .articles-mega-lead em {
     color: var(--type-muted-dark);
     font-family: var(--font-ui);
-    font-size: var(--type-card-meta);
+    font-size: var(--type-menu-meta);
     font-style: normal;
     line-height: 1.4;
   }
@@ -871,7 +906,7 @@
   .sections-mega-menu > footer a,
   .articles-mega-menu > footer a {
     font-family: var(--font-ui);
-    font-size: var(--type-action);
+    font-size: var(--type-menu-copy);
     font-weight: 600;
     line-height: 1.4;
     letter-spacing: 0;
@@ -898,11 +933,8 @@
       --type-card-feature-title: clamp(1.75rem, 1.2rem + 2.2cqi, 2.375rem);
     }
 
-    .journal-engagement h3,
-    .calendar-heading h3,
     .book-fact-card h3,
-    .author-showcase strong,
-    .trust-center summary {
+    .journal-engagement h3 {
       --type-card-compact-title: clamp(1.125rem, 1rem + 1cqi, 1.4375rem);
     }
   }

@@ -5219,7 +5219,6 @@ a.writer-nobel-medal:focus-visible {
   margin: 21px 0 8px;
   color: #ffc18b;
   font-family: var(--serif);
-  font-size: 23px;
   font-weight: 400;
 }
 
@@ -5306,15 +5305,15 @@ a.writer-nobel-medal:focus-visible {
 
 .editorial-standard ul {
   display: grid;
-  gap: 12px;
-  margin: 27px 0 0;
+  gap: 8px;
+  margin: 20px 0 0;
   padding: 0;
   list-style: none;
 }
 
 .editorial-standard li {
   position: relative;
-  padding: 0 0 12px 24px;
+  padding: 0 0 8px 24px;
   color: #4f3e57;
   border-bottom: 1px solid var(--line);
 }
@@ -6831,7 +6830,7 @@ a.writer-nobel-medal:focus-visible {
   color: rgba(255, 255, 255, 0.63);
   font-family: var(--serif);
   font-size: 15px;
-  line-height: 1.65;
+  line-height: var(--type-leading-copy);
 }
 
 .rating-summary {
@@ -8743,11 +8742,11 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-content > div,
 .article-reader-content > p {
-  margin: 0 0 30px;
+  margin: 0 0 var(--type-paragraph-gap);
 }
 
 .article-reader-content :where(div:not([class]), section:not([class])) > p {
-  margin: 0 0 1.58em;
+  margin: 0 0 var(--type-paragraph-gap);
 }
 
 .article-reader-content :where(div:not([class]), section:not([class])) > p:last-child {
@@ -8795,13 +8794,13 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .article-reader-content h2 {
-  margin: clamp(32px, 4vw, 48px) 0 20px;
-  padding-top: 20px;
+  margin: var(--type-heading-gap) 0 0.65em;
+  padding-top: 14px;
   border-top: 1px solid var(--reader-line);
 }
 
 .article-reader-content h3 {
-  margin: clamp(24px, 3vw, 36px) 0 16px;
+  margin: 1.5em 0 0.6em;
 }
 
 .article-reader-content figure {
@@ -9752,8 +9751,8 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-content .article-media-split > div {
   min-width: 0;
-  font-size: calc(16px * var(--reader-scale, 1));
-  line-height: 1.72;
+  font-size: calc(var(--type-body) * var(--reader-scale, 1));
+  line-height: var(--type-leading-reading);
 }
 
 .article-reader-content .article-media-split > div > :first-child {
@@ -9873,7 +9872,8 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-finish > p {
   color: var(--reader-muted);
   font-size: 13px;
-  line-height: 1.7;
+  margin-block: 0.75em 0;
+  line-height: var(--type-leading-copy);
 }
 
 .article-reader-related-books {
@@ -9912,7 +9912,7 @@ a.writer-nobel-medal:focus-visible {
   margin: 0;
   color: var(--reader-muted);
   font-size: 13px;
-  line-height: 1.65;
+  line-height: var(--type-leading-copy);
 }
 
 .article-reader-related-books > div {
@@ -10029,7 +10029,7 @@ a.writer-nobel-medal:focus-visible {
   margin: 0;
   color: var(--reader-muted);
   font-size: 12px;
-  line-height: 1.65;
+  line-height: var(--type-leading-copy);
 }
 
 .article-reader-more > div {
@@ -10869,11 +10869,11 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .cms-page-prose h2 {
-  margin-top: 2.2em;
+  margin-block: var(--type-heading-gap) 0.65em;
 }
 
 .cms-page-prose h3 {
-  margin-top: 1.8em;
+  margin-block: 1.5em 0.6em;
 }
 
 .cms-page-prose a {
@@ -11547,7 +11547,6 @@ a.writer-nobel-medal:focus-visible {
 .reader-profile-editor header h3 {
   margin: 5px 0 3px;
   font-family: var(--serif);
-  font-size: 24px;
   font-weight: 400;
 }
 
@@ -12203,7 +12202,6 @@ a.writer-nobel-medal:focus-visible {
 
   .article-reader-finish > p {
     font-size: 13px;
-    line-height: 1.75;
   }
 
   .article-reader .engagement-card {
@@ -12913,7 +12911,7 @@ a.writer-nobel-medal:focus-visible {
   column-count: 2;
   column-gap: clamp(54px, 7vw, 88px);
   column-rule: 1px solid rgba(77, 55, 32, 0.12);
-  text-align: justify;
+  text-align: start;
 }
 
 .article-reader.is-book .article-reader-content h2,
@@ -13277,11 +13275,15 @@ html[data-theme="book"] .calendar-heading h3 {
   color: #746778;
 }
 
+.trust-center .section-heading {
+  margin-bottom: 28px;
+}
+
 .trust-center > div {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
-  margin-top: 45px;
+  margin-top: 0;
 }
 
 .trust-center details {
@@ -13381,7 +13383,6 @@ html[data-theme="book"] .calendar-heading h3 {
   margin: 5px 0 0;
   color: #351642;
   font-family: var(--serif);
-  font-size: 24px;
   font-weight: 600;
 }
 
@@ -14361,7 +14362,6 @@ html[data-theme="book"] .calendar-heading h3 {
 .account-view h2 {
   margin: 12px 0 17px;
   font-family: var(--serif);
-  font-size: clamp(35px, 5vw, 57px);
   font-weight: 400;
   line-height: 1;
 }

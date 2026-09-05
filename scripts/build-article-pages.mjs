@@ -3,6 +3,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import {
+  articleBoundaryBreakProtectedContext,
+  articleBoundaryBreakSelector,
+  articleBoundaryBreaksToRemove,
+} from "../src/utils/articleBoundaryBreaks.ts";
+import {
   articlePublicPath,
   articleRouteSlug,
   articleSectionArchivePath,
@@ -205,6 +210,16 @@ function safeArticleHtml(contentHtml = "") {
     decodeEntities: false,
   });
   $("script,style,iframe,object,embed,form,input,button,textarea,select,link,meta").remove();
+  $("#article-source").find(articleBoundaryBreakSelector).each((_index, element) => {
+    if ($(element).closest(articleBoundaryBreakProtectedContext).length) return;
+    articleBoundaryBreaksToRemove(element.children, (node) =>
+      node.type === "tag" && node.name === "br"
+        ? "break"
+        : node.type === "text" && /^\s*$/u.test(node.data)
+          ? "whitespace"
+          : "content"
+    ).forEach((node) => $(node).remove());
+  });
   $("#article-source *").each((_index, element) => {
     const attributes = Object.keys(element.attribs || {});
     for (const attribute of attributes) {

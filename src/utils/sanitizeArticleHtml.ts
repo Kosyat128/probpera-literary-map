@@ -1,5 +1,10 @@
 import { normalizeShortHyphens } from "./shortHyphens";
 import {
+  articleBoundaryBreakProtectedContext,
+  articleBoundaryBreakSelector,
+  articleBoundaryBreaksToRemove,
+} from "./articleBoundaryBreaks";
+import {
   canonicalEditorialImageData,
   editorialImageDataAttributes,
   editorialImageElementStyle,
@@ -409,6 +414,18 @@ export function sanitizeArticleHtml(source: string) {
     "text/html"
   );
   document.querySelectorAll(blockedElements).forEach((element) => element.remove());
+
+  // Run before class filtering so authored editorial/verse wrappers stay intact.
+  document.body.querySelectorAll(articleBoundaryBreakSelector).forEach((element) => {
+    if (element.closest(articleBoundaryBreakProtectedContext)) return;
+    articleBoundaryBreaksToRemove([...element.childNodes], (node) =>
+      node.nodeName === "BR"
+        ? "break"
+        : node.nodeType === 3 && /^\s*$/u.test(node.textContent || "")
+          ? "whitespace"
+          : "content"
+    ).forEach((node) => node.remove());
+  });
 
   document.body.querySelectorAll<HTMLElement>("*").forEach((element) => {
     [...element.attributes].forEach((attribute) => {
