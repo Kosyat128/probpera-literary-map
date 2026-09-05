@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourceMainSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "authorization": "Owner requested the attached bookshelf assignment, typography, panels and graphics refinement; authorized merge after validation on 2026-09-05. Owner subsequently requested correction of blank spines, outside-click dismissal, aligned books and clearer controls on 2026-09-05; these two additional UI deltas remove the default manual-order chip and clarify the search placeholder. The same outside-click correction restores focus only after the scene reconnects following detail dismissal. Owner further requested improved buttons: these four exact UI deltas align the new-shelf SVG and connect the advanced-filter trigger to its existing dialog state; no data or filter semantics change.",
+  "authorization": "Owner requested the attached bookshelf assignment, typography, panels and graphics refinement; authorized merge after validation on 2026-09-05. Owner subsequently requested correction of blank spines, outside-click dismissal, aligned books and clearer controls on 2026-09-05; these two additional UI deltas remove the default manual-order chip and clarify the search placeholder. The same outside-click correction restores focus only after the scene reconnects following detail dismissal. Owner further requested improved buttons: these four exact UI deltas align the new-shelf SVG and connect the advanced-filter trigger to its existing dialog state; no data or filter semantics change. Owner requested a complete panel design refinement, orange buttons with white text and fewer visible controls. These exact deltas put the existing quality selector inside an accessible disclosure; quality and catalog semantics remain unchanged. Owner asked for a shorter search field and smarter button grouping. Reuse the canonical search label and expose the same two presets in the existing filter drawer for compact mobile controls; no new filter semantics. Owner explicitly requested the complete visible book extraction. A click on an idle visible spine now opens it from its current slot; pending selection during explicit shelf navigation retains its existing guard.",
   "ownerReferenceSha256": "5330fd14a4c180700a8c7e82db161542aba7c09f3973ccdfe46d0cf17e907ffb",
   "scope": "UI composition and private local reading progress only. All canonical records and every source byte outside these exact deltas retain the historical aggregate fingerprint.",
   "projections": [
@@ -33,7 +33,7 @@
     {
       "path": "src/components/BookArchiveSection.tsx",
       "before": "        pendingBookSwitchRef.current = item.book;\n        closeBookDetail();\n        return;\n      }\n\n      if (\n        shelfStateRef.current.phase === \"SHELF_IDLE\" &&\n        focusedBookKeyRef.current !== key\n      ) {\n        pendingInspectionBookRef.current = item.book;\n        requestFocusBook(key);\n        return;\n      }\n\n      openBookDetail(item.book);\n    },\n",
-      "after": "        pendingBookSwitchRef.current = item.book;\n        closeBookDetail();\n        return;\n      }\n\n      const phase = shelfStateRef.current.phase;\n      if ([\"SHELF_IDLE\", \"SHELF_MOVING\", \"SHELF_SETTLING\"].includes(phase) &&\n          (focusedBookKeyRef.current !== key || phase !== \"SHELF_IDLE\")) {\n        pendingInspectionBookRef.current = item.book;\n        if (focusedBookKeyRef.current !== key) requestFocusBook(key);\n        return;\n      }\n\n      openBookDetail(item.book);\n    },\n"
+      "after": "        pendingBookSwitchRef.current = item.book;\n        closeBookDetail();\n        return;\n      }\n\n      const phase = shelfStateRef.current.phase;\n      if ([\"SHELF_MOVING\", \"SHELF_SETTLING\"].includes(phase)) {\n        pendingInspectionBookRef.current = item.book;\n        if (focusedBookKeyRef.current !== key) requestFocusBook(key);\n        return;\n      }\n\n      openBookDetail(item.book);\n    },\n"
     },
     {
       "path": "src/components/BookArchiveSection.tsx",
@@ -143,7 +143,7 @@
     {
       "path": "src/components/BookArchiveSection.tsx",
       "before": "            searchPlaceholder={t(\"Например, Достоевский или Япония\")}",
-      "after": "            searchPlaceholder={t(\"Книги, авторы, страны\")}"
+      "after": "            searchPlaceholder={t(\"Поиск\")}"
     },
     {
       "path": "src/components/BookArchiveSection.tsx",
@@ -169,6 +169,26 @@
       "path": "src/components/BookArchiveSection.tsx",
       "before": "            className=\"book-shelf-frame__filter-drawer\"\n            role=\"dialog\"",
       "after": "            className=\"book-shelf-frame__filter-drawer\"\n            id=\"book-archive-advanced-filters\"\n            role=\"dialog\""
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "} from \"./BookShelfControls\";",
+      "after": "} from \"./BookShelfControls\";\nimport BookShelfQualityMenu from \"./BookShelfQualityMenu\";"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "            <label className=\"book-shelf-quality-control\">",
+      "after": "            <BookShelfQualityMenu label={t(\"Качество\")}>\n            <label className=\"book-shelf-quality-control\">"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "            </label>\n          </div>\n          {collectionShelfSelection.missingReferences",
+      "after": "            </label>\n            </BookShelfQualityMenu>\n          </div>\n          {collectionShelfSelection.missingReferences"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "              <div className=\"book-shelf-filter-drawer__form\">\n                <label className=\"book-shelf-filter-drawer__select\">",
+      "after": "              <div className=\"book-shelf-filter-drawer__form\">\n                <div className=\"book-shelf-filter-drawer__presets\" role=\"group\" aria-label={t(\"Активные фильтры\")}>\n                  {quickFilterOptions.filter((option) => [\"verified\", \"classic\"].includes(option.id)).map((option) => (\n                    <button key={option.id} type=\"button\"\n                      className={filterState.quickPreset === option.id ? \"is-active\" : \"\"}\n                      aria-pressed={filterState.quickPreset === option.id}\n                      disabled={option.unavailable}\n                      onClick={() => applyQuickFilter(option.id as BookArchiveQuickPreset)}>\n                      {option.label}\n                    </button>\n                  ))}\n                </div>\n                <label className=\"book-shelf-filter-drawer__select\">"
     }
   ]
 }

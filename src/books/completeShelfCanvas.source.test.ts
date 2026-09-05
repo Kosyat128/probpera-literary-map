@@ -104,10 +104,13 @@ describe("Complete Shelf Canvas source contract", () => {
     );
     expect(rendererSource).toContain("transparent");
     expect(rendererSource).toContain("alphaTest={0.015}");
-    const coloredFoilRelief = rendererSource.match(/bumpScale=\{precolored \? ([\d.]+)/u);
+    const coloredFoilRelief = rendererSource.match(/bumpScale=\{front \? \(precolored \? ([\d.]+) : [\d.]+\) : ([\d.]+)/u);
     expect(coloredFoilRelief).not.toBeNull();
-    expect(Number(coloredFoilRelief?.[1])).toBeGreaterThan(0);
-    expect(Number(coloredFoilRelief?.[1])).toBeLessThanOrEqual(0.0003);
+    const [, frontRelief, spineRelief] = coloredFoilRelief || [];
+    expect(Number(frontRelief)).toBeGreaterThan(0);
+    expect(Number(frontRelief)).toBeLessThanOrEqual(0.0003);
+    expect(Number(spineRelief)).toBeGreaterThan(Number(frontRelief));
+    expect(Number(spineRelief)).toBeLessThanOrEqual(0.002);
     expect(rendererSource).toContain("new RoundedBoxGeometry");
     expect(rendererSource).toContain("createCompleteShelfPageBlockGeometry");
     expect(rendererSource).toContain("<meshPhysicalMaterial");

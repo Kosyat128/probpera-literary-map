@@ -600,30 +600,49 @@ export function createCompleteShelfArtworkTextures(
     shade.addColorStop(1, "rgba(0,0,0,.12)");
     context.fillStyle = shade;
     context.fillRect(0, 0, width, height);
-    // Same woven coordinates at every quality; LOD changes sampling only.
-    context.lineWidth = .18;
-    context.strokeStyle = "rgba(255,255,255,.06)";
-    context.beginPath();
-    for (let x = .8; x < width; x += 1.7) {
-      context.moveTo(x, 0);
-      context.lineTo(x, height);
-    }
-    for (let y = .8; y < height; y += 2.1) {
-      context.moveTo(0, y);
-      context.lineTo(width, y);
-    }
-    context.stroke();
-    for (let thread = 0; thread < 1500; thread += 1) {
-      const x = random() * width;
-      const y = random() * height;
-      const vertical = random() > .5;
-      context.strokeStyle = random() > .5 ? "rgba(255,255,255,.055)" : "rgba(0,0,0,.035)";
-      context.lineWidth = .24;
+    // Broken, wandering warp yarns retain the reference's cloth character.
+    // Paired light and dark fibres preserve the dye; LOD changes sampling only.
+    for (let x = .5; x < width; x += .9 + random() * .65) {
+      context.lineWidth = .35 + random() * .35;
+      const light = random() > .5;
+      context.strokeStyle = light
+        ? `rgba(255,255,255,${.045 + random() * .05})`
+        : `rgba(0,0,0,${.07 + random() * .07})`;
       context.beginPath();
-      context.moveTo(x, y);
-      context.lineTo(x + (vertical ? 0 : 1 + random() * 3), y + (vertical ? 1 + random() * 4 : 0));
+      let drift = 0;
+      context.moveTo(x, 0);
+      for (let y = 5; y < height + 5; y += 5) {
+        drift = Math.max(-.35, Math.min(.35, drift + (random() - .5) * .24));
+        context.lineTo(x + drift, y);
+      }
       context.stroke();
     }
+    for (let y = .8; y < height; y += 1.45 + random() * .7) {
+      context.lineWidth = .2 + random() * .2;
+      context.strokeStyle = random() > .5 ? "rgba(255,255,255,.04)" : "rgba(0,0,0,.045)";
+      context.beginPath();
+      context.moveTo(0, y);
+      for (let x = 4; x < width + 4; x += 4) {
+        context.lineTo(x, y + (random() - .5) * .3);
+      }
+      context.stroke();
+    }
+    for (let thread = 0; thread < 1800; thread += 1) {
+      const x = random() * width;
+      const y = random() * height;
+      const vertical = random() > .2;
+      context.strokeStyle = random() > .5 ? "rgba(255,255,255,.08)" : "rgba(0,0,0,.1)";
+      context.lineWidth = .25 + random() * .2;
+      context.beginPath();
+      context.moveTo(x, y);
+      context.lineTo(x + (vertical ? (random() - .5) * .35 : 1 + random() * 4), y + (vertical ? 2 + random() * 9 : 0));
+      context.stroke();
+    }
+    const footShade = context.createLinearGradient(0, height * .72, 0, height);
+    footShade.addColorStop(0, "rgba(0,0,0,0)");
+    footShade.addColorStop(1, "rgba(0,0,0,.045)");
+    context.fillStyle = footShade;
+    context.fillRect(0, height * .72, width, height * .28);
   }, false, textureAnisotropy);
   return Object.freeze({
     frontFoil,

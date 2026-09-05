@@ -42,6 +42,7 @@ import {
   type BookInspectionTextureQuality,
 } from "./bookInspectionTextures";
 import { sampleBookInspectionTransition } from "./bookInspectionCamera";
+import { bookShelfExtractionStages, canRetainBookShelfRow, sampleBookShelfExtractionPose, type BookShelfExtractionClock } from "./bookShelfExtractionMotion";
 import { warmBookInspectionShaders } from "./bookInspectionShaderWarmup";
 import { createBookEndpaperTexture } from "./bookEndpaperTexture";
 import {
@@ -76,6 +77,8 @@ import {
 } from "./completeShelfTextures";
 
 const HIGH_CLOTH_NORMAL_SCALE = new Vector2(0.12, 0.12);
+// Spine relief is independent of the broad, softly woven cover boards.
+const SPINE_CLOTH_NORMAL_SCALE = new Vector2(0.26, 0.26);
 const ECONOMICAL_CLOTH_NORMAL_SCALE = new Vector2(0.12, 0.12);
 const EMPTY_PAGE_EDGE_TEXTURES = Object.freeze({
   fore: null,
@@ -107,6 +110,7 @@ export type CompleteShelfRendererProps = CompleteShelfTransitionCallbacks &
     selectedBookKey: string | null;
     phase: BookShelfPhase;
     requestId: number;
+    extractionClock: { current: BookShelfExtractionClock };
     qualitySettings: BookShelfQualitySettings;
     editorialDocument: BookEditorialDocument | null;
     inspectionSession: BookInspectionSession | null;
@@ -531,31 +535,27 @@ function SpineMaterial({
   bindingMap,
   bindingNormalMap,
   bindingRoughnessMap,
-  economical,
 }: {
   map: CanvasTexture | null;
   surfaceColor: string;
   bindingMap: CanvasTexture | null;
   bindingNormalMap: CanvasTexture | null;
   bindingRoughnessMap: CanvasTexture | null;
-  economical: boolean;
 }) {
   return (
     <meshPhysicalMaterial
       color={map ? "#ffffff" : surfaceColor}
       map={map || undefined}
       normalMap={bindingNormalMap || undefined}
-      normalScale={
-        economical ? ECONOMICAL_CLOTH_NORMAL_SCALE : HIGH_CLOTH_NORMAL_SCALE
-      }
+      normalScale={SPINE_CLOTH_NORMAL_SCALE}
       roughnessMap={bindingRoughnessMap || undefined}
       bumpMap={bindingMap || undefined}
-      bumpScale={0.0006}
-      roughness={0.94}
+      bumpScale={0.002}
+      roughness={0.88}
       metalness={0}
       clearcoat={0}
       clearcoatRoughness={0.72}
-      sheen={0.06}
+      sheen={0.1}
       sheenColor={surfaceColor}
       sheenRoughness={0.74}
       side={DoubleSide}
@@ -585,7 +585,7 @@ function FoilMaterial({
       alphaTest={0.015}
       depthWrite={false}
       bumpMap={embossMap || undefined}
-      bumpScale={precolored ? 0.00015 : front ? 0.0024 : 0.0016}
+      bumpScale={front ? (precolored ? 0.00015 : 0.0024) : 0.0016}
       metalness={precolored ? 0.16 : 0.7}
       roughness={precolored ? 0.62 : 0.4}
       clearcoat={0}
@@ -603,6 +603,7 @@ function CompleteShelfBook({
   inspectionOriginX,
   phase,
   requestId,
+  extractionClock,
   focusedBookKey,
   selectedBookKey,
   reporterKey,
@@ -634,6 +635,7 @@ function CompleteShelfBook({
   inspectionOriginX: number;
   phase: BookShelfPhase;
   requestId: number;
+  extractionClock: { current: BookShelfExtractionClock };
   focusedBookKey: string | null;
   selectedBookKey: string | null;
   reporterKey: string | null;
@@ -661,6 +663,7 @@ function CompleteShelfBook({
   callbacks: CompleteShelfTransitionCallbacks;
 }) {
   const groupRef = useRef<Group>(null);
+  const initializedGroupRef = useRef<Group | null>(null);
   const spineHitRef = useRef<Mesh>(null);
   const coverRef = useRef<Group>(null);
   const firstLeafRef = useRef<Group>(null);
@@ -672,6 +675,7 @@ function CompleteShelfBook({
     signature: string;
     elapsedMs: number;
     from: CompleteShelfPoseSnapshot;
+    to: CompleteShelfBookPose;
   } | null>(null);
   const pageGestureStartedRef = useRef<{
     pointerId: number;
@@ -1264,31 +1268,39 @@ function CompleteShelfBook({
     const secondLeaf = secondLeafRef.current;
     if (!group || !cover || !firstLeaf || !secondLeaf) return;
     if (
-      group.userData.completeShelfReady &&
+      initializedGroupRef.current === group &&
       targetSignatureRef.current === targetSignature
     ) {
       invalidate();
       return;
     }
     targetSignatureRef.current = targetSignature;
-    if (!group.userData.completeShelfReady) {
+    if (initializedGroupRef.current !== group) {
       applyPoseImmediately(group, cover, firstLeaf, secondLeaf, pose);
-      group.userData.completeShelfReady = true;
+      initializedGroupRef.current = group;
     } else if (
       phase === "INSPECTION_ENTERING" ||
-      phase === "INSPECTION_CLOSING"
+      phase === "INSPECTION_CLOSING" ||
+      phase === "SHELF_RESTORING"
     ) {
+      const from = captureCurrentPose(group, cover, firstLeaf, secondLeaf);
       exactTransitionRef.current = {
         signature: targetSignature,
         elapsedMs: 0,
-        from: captureCurrentPose(group, cover, firstLeaf, secondLeaf),
+        from,
+        to: selected && phase === "INSPECTION_CLOSING"
+          ? { ...pose, position: from.position, rotation: from.rotation, scale: from.scale }
+          : pose,
       };
+      if (selected && (phase === "INSPECTION_ENTERING" || phase === "SHELF_RESTORING")) {
+        extractionClock.current = { bookKey: spec.key, requestId, phase, progress: 0, ready: false };
+      }
     } else {
       exactTransitionRef.current = null;
     }
     settledSignatureRef.current = "";
     invalidate();
-  }, [invalidate, pose, targetSignature]);
+  }, [extractionClock, invalidate, phase, pose, requestId, selected, spec.key, targetSignature]);
 
   useFrame((_state, delta) => {
     const group = groupRef.current;
@@ -1304,28 +1316,35 @@ function CompleteShelfBook({
       spineHitRef.current.scale.z = Math.max(pageDepth + boardThickness * 2, minimumWidth);
     }
     const exactTransition = exactTransitionRef.current;
+    const finalPose = exactTransition?.signature === targetSignature ? exactTransition.to : pose;
     let moving = false;
     if (
       exactTransition?.signature === targetSignature &&
-      (phase === "INSPECTION_ENTERING" || phase === "INSPECTION_CLOSING")
+      (phase === "INSPECTION_ENTERING" || phase === "INSPECTION_CLOSING" || phase === "SHELF_RESTORING")
     ) {
       exactTransition.elapsedMs += Math.min(delta, 0.08) * 1_000;
       const sample = sampleBookInspectionTransition({
-        kind: phase === "INSPECTION_ENTERING" ? "enter" : "close",
+        kind: phase === "INSPECTION_CLOSING" ? "close" : "enter",
         elapsedMs: exactTransition.elapsedMs,
         reducedMotion,
       });
-      applyTimedPose(
-        group,
-        cover,
-        firstLeaf,
-        secondLeaf,
-        exactTransition.from,
-        pose,
-        sample.easedProgress
-      );
-      moving = !sample.complete;
-      if (sample.complete) exactTransitionRef.current = null;
+      const extractionPhase = phase === "INSPECTION_ENTERING" || phase === "SHELF_RESTORING";
+      if (selected && extractionPhase) {
+        extractionClock.current = { bookKey: spec.key, requestId, phase, progress: sample.linearProgress, ready: true };
+        applyPoseImmediately(group, cover, firstLeaf, secondLeaf, sampleBookShelfExtractionPose({
+          from: exactTransition.from, to: finalPose, coverWidth, progress: sample.linearProgress,
+          returning: phase === "SHELF_RESTORING",
+        }));
+        moving = !sample.complete;
+      } else {
+        const clock = extractionClock.current;
+        const synchronized = extractionPhase && clock.phase === phase && clock.requestId === requestId;
+        const progress = synchronized
+          ? bookShelfExtractionStages(clock.ready ? clock.progress : 0, phase === "SHELF_RESTORING").presentation
+          : extractionPhase ? 0 : sample.easedProgress;
+        applyTimedPose(group, cover, firstLeaf, secondLeaf, exactTransition.from, finalPose, progress);
+        moving = synchronized ? clock.progress < 1 : extractionPhase || !sample.complete;
+      }
     } else {
       moving = animatePose(
         group,
@@ -1350,7 +1369,7 @@ function CompleteShelfBook({
       invalidate();
       return;
     }
-    applyPoseImmediately(group, cover, firstLeaf, secondLeaf, pose);
+    applyPoseImmediately(group, cover, firstLeaf, secondLeaf, finalPose);
     const settlement = completeShelfSettlementForPhase(phase);
     if (
       reporterKey === spec.key &&
@@ -1537,7 +1556,6 @@ function CompleteShelfBook({
           bindingMap={bindingMap}
           bindingNormalMap={bindingNormalMap}
           bindingRoughnessMap={bindingRoughnessMap}
-          economical={economical}
         />
       </mesh>
       <mesh
@@ -2070,7 +2088,7 @@ export default function CompleteShelfRenderer(
   const pageTextureQuality: BookInspectionTextureQuality =
     props.qualitySettings.profile;
   const anchorKey = props.selectedBookKey || props.focusedBookKey;
-  const workingSet = useMemo(
+  const requestedWorkingSet = useMemo(
     () =>
       selectCompleteShelfWorkingSet(
         props.items,
@@ -2083,6 +2101,28 @@ export default function CompleteShelfRenderer(
       props.qualitySettings.liveBookLimit,
     ]
   );
+  const [rowKeys, setRowKeys] = useState(() => requestedWorkingSet.entries.map(entry => entry.item.key));
+  const sourceKeys = useMemo(() => props.items.map(item => item.key), [props.items]);
+  const [rowSourceKeys, setRowSourceKeys] = useState(sourceKeys);
+  // Inspection and its return keep the visible row. Explicit shelf navigation
+  // may choose a new window; closing a right-edge book must not do so.
+  const retainRow = canRetainBookShelfRow({ anchorKey, phase: props.phase, rowKeys, sourceKeys,
+    previousSourceKeys: rowSourceKeys, requestedCount: requestedWorkingSet.entries.length });
+  const workingSet = useMemo(() => {
+    if (!retainRow) return requestedWorkingSet;
+    const entries = rowKeys.map((key, slotIndex) => {
+      const sourceIndex = props.items.findIndex(item => item.key === key);
+      return { item: props.items[sourceIndex], sourceIndex, slotIndex };
+    });
+    const anchorSlot = entries.findIndex(entry => entry.item.key === anchorKey);
+    return { entries, anchorSlot, anchorSourceIndex: entries[anchorSlot].sourceIndex };
+  }, [anchorKey, props.items, requestedWorkingSet, retainRow, rowKeys]);
+  useLayoutEffect(() => {
+    if (retainRow) return;
+    const next = requestedWorkingSet.entries.map(entry => entry.item.key);
+    if (next.length !== rowKeys.length || next.some((key, index) => key !== rowKeys[index])) setRowKeys(next);
+    if (sourceKeys.length !== rowSourceKeys.length || sourceKeys.some((key, index) => key !== rowSourceKeys[index])) setRowSourceKeys(sourceKeys);
+  }, [requestedWorkingSet, retainRow, rowKeys, rowSourceKeys, sourceKeys]);
   const specs = useMemo(
     () =>
       workingSet.entries.map(({ item, sourceIndex }) => {
@@ -2216,6 +2256,7 @@ export default function CompleteShelfRenderer(
             inspectionOriginX={layout[workingSet.anchorSlot]?.x || 0}
             phase={props.phase}
             requestId={props.requestId}
+            extractionClock={props.extractionClock}
             focusedBookKey={props.focusedBookKey}
             selectedBookKey={props.selectedBookKey}
             reporterKey={reporterKey}

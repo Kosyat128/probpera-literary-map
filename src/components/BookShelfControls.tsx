@@ -15,7 +15,6 @@ import {
 
 import BrandBookIcon from "./BrandBookIcon";
 import BrandFilterIcon from "./BrandFilterIcon";
-import BrandQuillIcon from "./BrandQuillIcon";
 import BrandSearchIcon from "./BrandSearchIcon";
 import BrandSparkleIcon from "./BrandSparkleIcon";
 
@@ -280,7 +279,7 @@ export default function BookShelfControls({
     suggestionCount > 0 ? 0 : -1
   );
   const suggestionsOpen = suggestionsAvailable && !suggestionsDismissed;
-  const compactOrder = ["verified", "classic", "children"];
+  const compactOrder = ["verified", "classic"];
   const compactFilters = compactOrder.flatMap((id) =>
     filters.filter((filter) => filter.id === id)
   );
@@ -368,10 +367,7 @@ export default function BookShelfControls({
   return (
     <div className="book-archive-toolbar book-shelf-controls">
       <div className="book-shelf-controls__topline">
-        <span className="book-shelf-controls__mark" aria-hidden="true">
-          <BrandQuillIcon />
-        </span>
-
+        <div className="book-shelf-controls__search-group">
         <label className="book-shelf-controls__search" htmlFor={controlId}>
           <span id={searchLabelId}>{searchLabel}</span>
           <span className="book-shelf-controls__input">
@@ -427,6 +423,22 @@ export default function BookShelfControls({
           </span>
         </label>
 
+        <label className="book-shelf-controls__scope">
+          <span className="book-shelf-controls__visually-hidden">{searchLabel}</span>
+          <select
+            value={searchScope}
+            onChange={(event) =>
+              onSearchScopeChange(event.target.value as BookShelfSearchScope)
+            }
+            aria-label={searchLabel}
+          >
+            <option value="library">{libraryScopeLabel}</option>
+            <option value="archive">{archiveScopeLabel}</option>
+            <option value="global">{globalScopeLabel}</option>
+          </select>
+        </label>
+        </div>
+
         <div className="book-shelf-controls__views" role="group" aria-label={catalogLabel}>
           <button
             type="button"
@@ -451,6 +463,7 @@ export default function BookShelfControls({
             </svg>
             {catalogLabel}
           </button>
+        </div>
           <button
             type="button"
             className="book-shelf-controls__random"
@@ -462,22 +475,6 @@ export default function BookShelfControls({
             <BrandSparkleIcon />
             {randomLabel}
           </button>
-        </div>
-
-        <label className="book-shelf-controls__scope">
-          <span className="book-shelf-controls__visually-hidden">{searchLabel}</span>
-          <select
-            value={searchScope}
-            onChange={(event) =>
-              onSearchScopeChange(event.target.value as BookShelfSearchScope)
-            }
-            aria-label={searchLabel}
-          >
-            <option value="library">{libraryScopeLabel}</option>
-            <option value="archive">{archiveScopeLabel}</option>
-            <option value="global">{globalScopeLabel}</option>
-          </select>
-        </label>
 
         <div className="book-filter-panel">
           <span className="book-shelf-controls__visually-hidden">

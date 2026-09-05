@@ -218,6 +218,7 @@ import BookShelfControls, {
   type BookShelfSearchScope,
   type BookShelfViewMode,
 } from "./BookShelfControls";
+import BookShelfQualityMenu from "./BookShelfQualityMenu";
 import BookShelfFrame from "./BookShelfFrame";
 import BookShelfProgressRail from "./BookShelfProgressRail";
 import BookShelfScene, {
@@ -2214,8 +2215,7 @@ export default function BookArchiveSection({
       }
 
       const phase = shelfStateRef.current.phase;
-      if (["SHELF_IDLE", "SHELF_MOVING", "SHELF_SETTLING"].includes(phase) &&
-          (focusedBookKeyRef.current !== key || phase !== "SHELF_IDLE")) {
+      if (["SHELF_MOVING", "SHELF_SETTLING"].includes(phase)) {
         pendingInspectionBookRef.current = item.book;
         if (focusedBookKeyRef.current !== key) requestFocusBook(key);
         return;
@@ -3919,7 +3919,7 @@ export default function BookArchiveSection({
               setQuery(value);
             }}
             searchLabel={t("Поиск по книге, автору или стране")}
-            searchPlaceholder={t("Книги, авторы, страны")}
+            searchPlaceholder={t("Поиск")}
             searchScope={searchScope}
             onSearchScopeChange={setSearchScope}
             libraryScopeLabel={t("Текущая полка")}
@@ -4045,6 +4045,7 @@ export default function BookArchiveSection({
                 {t("Настроить полку")}
               </button>
             ) : null}
+            <BookShelfQualityMenu label={t("Качество")}>
             <label className="book-shelf-quality-control">
               <span>{t("Качество")}</span>
               <select
@@ -4081,6 +4082,7 @@ export default function BookArchiveSection({
                 </option>
               </select>
             </label>
+            </BookShelfQualityMenu>
           </div>
           {collectionShelfSelection.missingReferences.length > 0 ? (
             <div className="book-shelf-frame__missing-references" role="status">
@@ -5097,6 +5099,17 @@ export default function BookArchiveSection({
             </p>
             {advancedFiltersOpen && (
               <div className="book-shelf-filter-drawer__form">
+                <div className="book-shelf-filter-drawer__presets" role="group" aria-label={t("Активные фильтры")}>
+                  {quickFilterOptions.filter((option) => ["verified", "classic"].includes(option.id)).map((option) => (
+                    <button key={option.id} type="button"
+                      className={filterState.quickPreset === option.id ? "is-active" : ""}
+                      aria-pressed={filterState.quickPreset === option.id}
+                      disabled={option.unavailable}
+                      onClick={() => applyQuickFilter(option.id as BookArchiveQuickPreset)}>
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
                 <label className="book-shelf-filter-drawer__select">
                   <span>{t("Автор")}</span>
                   <select

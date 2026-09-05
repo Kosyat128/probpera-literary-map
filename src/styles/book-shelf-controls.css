@@ -1,0 +1,252 @@
+/* Discovery actions, view switches and occasional settings have distinct weight. */
+.book-shelf-frame,
+.book-shelf-frame__filter-drawer,
+.book-dossier-reader {
+  --book-control-height: 44px;
+  --book-control-radius: 8px;
+  --book-control-ink: #fff;
+  --book-control-surface: var(--violet-800);
+  --book-control-hover: var(--violet-700);
+  --book-control-pressed: var(--violet-900);
+  --book-control-border: color-mix(in srgb, var(--cream) 28%, var(--violet-700));
+  --book-control-focus: var(--orange-soft);
+  --book-action: color-mix(in srgb, var(--orange-deep) 88%, var(--ink));
+  --book-action-hover: color-mix(in srgb, var(--orange-deep) 80%, var(--ink));
+  --book-action-pressed: color-mix(in srgb, var(--orange-deep) 70%, var(--ink));
+}
+.book-shelf-frame__filter-drawer { --book-control-focus: var(--violet-700); }
+.book-shelf-controls :is(button, select),
+.book-shelf-navigation button,
+.book-shelf-frame__collection-actions button,
+.book-shelf-frame__active-rail button,
+.book-shelf-frame__detail .book-detail-actions :is(button, a),
+.book-shelf-frame__detail .book-detail-close,
+.book-shelf-scene__accessible-actions button,
+.book-shelf-frame :is(.archive-book-detail, .archive-book-save),
+.book-shelf-frame__filter-drawer button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  padding: 9px 14px;
+  color: var(--book-control-ink);
+  background: var(--book-control-surface);
+  border: 1px solid var(--book-control-border);
+  border-radius: 8px;
+  box-shadow: none;
+  text-decoration: none;
+  text-shadow: none;
+  transform: none;
+  white-space: normal;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+.book-shelf-controls button:not(:disabled):hover,
+.book-shelf-navigation button:not(:disabled):hover,
+.book-shelf-frame__collection-actions button:not(:disabled):hover,
+.book-shelf-frame__active-rail button:not(:disabled):hover,
+.book-shelf-frame__detail .book-detail-actions :is(button, a):not(:disabled):hover,
+.book-shelf-frame__detail .book-detail-close:hover,
+.book-shelf-scene__accessible-actions button:not(:disabled):hover,
+.book-shelf-frame :is(.archive-book-detail, .archive-book-save):hover,
+.book-shelf-frame__filter-drawer button:not(:disabled):hover {
+  color: #fff;
+  background: var(--book-control-hover);
+  border-color: color-mix(in srgb, var(--cream) 50%, var(--violet-700));
+  box-shadow: none;
+  transform: none;
+}
+.book-shelf-controls button:not(:disabled):active,
+.book-shelf-frame__collection-actions button:not(:disabled):active,
+.book-shelf-frame__active-rail button:not(:disabled):active,
+.book-shelf-frame__detail .book-detail-actions :is(button, a):not(:disabled):active,
+.book-shelf-frame__filter-drawer button:not(:disabled):active {
+  color: #fff;
+  background: var(--book-control-pressed);
+  box-shadow: inset 0 1px 3px color-mix(in srgb, var(--violet-950) 40%, transparent);
+  transition-duration: 80ms;
+}
+.book-shelf-controls button.book-shelf-controls__random,
+.book-shelf-frame__collection-actions > button:first-child,
+.book-shelf-frame__active-rail .is-primary,
+.book-shelf-frame__detail .book-detail-actions :is(.book-detail-read-dossier, .book-detail-open-cover),
+.book-shelf-scene__accessible-actions .book-shelf-scene__open,
+.book-shelf-frame .archive-book-detail {
+  color: #fff;
+  background: var(--book-action);
+  border-color: var(--orange);
+  box-shadow: inset 0 1px color-mix(in srgb, var(--orange-soft) 25%, transparent), 0 2px 5px color-mix(in srgb, var(--violet-950) 14%, transparent);
+}
+.book-shelf-controls button.book-shelf-controls__random:not(:disabled):hover,
+.book-shelf-frame__collection-actions > button:first-child:not(:disabled):hover,
+.book-shelf-frame__active-rail .is-primary:not(:disabled):hover,
+.book-shelf-frame__detail .book-detail-actions :is(.book-detail-read-dossier, .book-detail-open-cover):not(:disabled):hover,
+.book-shelf-scene__accessible-actions .book-shelf-scene__open:not(:disabled):hover,
+.book-shelf-frame .archive-book-detail:hover {
+  color: #fff;
+  background: var(--book-action-hover);
+  border-color: var(--orange-soft);
+  box-shadow: inset 0 1px color-mix(in srgb, var(--orange-soft) 25%, transparent), 0 3px 8px color-mix(in srgb, var(--violet-950) 22%, transparent);
+}
+.book-shelf-controls button.book-shelf-controls__random:not(:disabled):active,
+.book-shelf-frame__collection-actions > button:first-child:not(:disabled):active,
+.book-shelf-frame__active-rail .is-primary:not(:disabled):active,
+.book-shelf-frame__detail .book-detail-actions :is(.book-detail-read-dossier, .book-detail-open-cover):not(:disabled):active,
+.book-shelf-scene__accessible-actions .book-shelf-scene__open:not(:disabled):active,
+.book-shelf-frame .archive-book-detail:active {
+  background: var(--book-action-pressed);
+  box-shadow: inset 0 2px 3px color-mix(in srgb, var(--ink) 33%, transparent);
+}
+.book-shelf-frame__detail .book-detail-actions > :is(a, [data-book-navigation-origin]) {
+  color: color-mix(in srgb, var(--cream) 80%, var(--violet-600));
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.book-shelf-frame__detail .book-detail-close,
+.book-shelf-frame .archive-book-save,
+.book-detail-page-navigation .book-detail-page-turn { inline-size: 44px; block-size: 44px; padding: 0; display: inline-grid; place-items: center; }
+.book-detail-page-navigation { grid-template-columns: 44px minmax(0, 1fr) 44px; }
+.book-shelf-frame__detail,
+.book-shelf-frame__detail .book-detail-toolbar { color: var(--cream); background: var(--violet-900); }
+.book-shelf-frame__detail .book-detail-toolbar__label { color: #fff; }
+.book-dossier-reader { color: var(--ink); background: var(--cream-deep); }
+.book-dossier-reader button { color: var(--violet-700); border-color: color-mix(in srgb, var(--violet-700) 25%, transparent); }
+.book-dossier-reader__header button,
+.book-dossier-reader__pager button { color: #fff; background: var(--violet-700); border-color: var(--violet-700); }
+.book-dossier-reader__header button:not(:disabled):hover,
+.book-dossier-reader__pager button:not(:disabled):hover { color: #fff; background: var(--violet-800); border-color: var(--violet-800); }
+.book-dossier-reader button:is([aria-pressed="true"], [aria-current]) { color: #fff; background: var(--book-action); border-color: var(--orange); }
+.book-dossier-reader :is(button, input, summary, a):focus-visible { outline: 2px solid var(--violet-700); outline-offset: 0; box-shadow: none; }
+
+.book-shelf-frame__search-rail,
+.book-shelf-frame__active-rail,
+.book-shelf-frame__collection { color: #fff; background: linear-gradient(110deg, var(--violet-800), var(--violet-700)); backdrop-filter: none; }
+.book-shelf-frame__search-rail { padding-block: 14px 10px; }
+.book-shelf-controls__topline { grid-template-areas: "search views random filters"; grid-template-columns: minmax(320px, 380px) max-content max-content minmax(0, 1fr); gap: 12px; }
+.book-shelf-controls__search-group { grid-area: search; display: grid; grid-template-columns: minmax(170px, 1fr) 172px; align-items: center; min-width: 0; border: 1px solid var(--book-control-border); border-radius: 8px; background: var(--violet-850); }
+.book-shelf-controls__search { grid-area: auto; order: initial; width: 100%; }
+.book-shelf-controls.book-archive-toolbar .book-shelf-controls__input { height: 44px; min-height: 44px; padding-inline: 12px; background: transparent; border: 0; border-radius: 8px 0 0 8px; box-shadow: none; }
+.book-shelf-controls.book-archive-toolbar .book-shelf-controls__input:focus-within { background: transparent; border: 0; outline: none; box-shadow: none; }
+.book-shelf-controls.book-archive-toolbar .book-shelf-controls__input input { height: 42px; min-height: 0; color: #fff; border: 0; outline: none; background: transparent; box-shadow: none; }
+.book-shelf-controls__input input::placeholder { color: color-mix(in srgb, var(--cream) 76%, var(--violet-700)); opacity: 1; }
+.book-shelf-controls__scope { grid-area: auto; order: initial; width: 100%; min-width: 0; }
+.book-shelf-controls .book-shelf-controls__scope select { width: 100%; height: 44px; min-height: 44px; padding: 0 28px 0 12px; color: color-mix(in srgb, var(--cream) 85%, var(--violet-700)); background-color: transparent; border: 0; border-inline-start: 1px solid color-mix(in srgb, var(--cream) 18%, transparent); border-radius: 0 8px 8px 0; box-shadow: none; }
+.book-shelf-controls__views { grid-area: views; display: flex; flex-wrap: nowrap; justify-self: stretch; min-height: 44px; padding: 3px; gap: 2px; background: var(--violet-900); border: 0; border-radius: 9px; }
+.book-shelf-controls .book-shelf-controls__views button { flex: 1; min-inline-size: 90px; padding: 8px 10px; color: color-mix(in srgb, var(--cream) 80%, var(--violet-700)); background: transparent; border: 0; border-radius: 6px; box-shadow: none; }
+.book-shelf-controls .book-shelf-controls__views button.is-active { color: #fff; background: color-mix(in srgb, var(--violet-700) 75%, var(--cream)); box-shadow: 0 1px 3px color-mix(in srgb, var(--violet-950) 33%, transparent); }
+.book-shelf-controls .book-shelf-controls__views button.is-active:hover { background: color-mix(in srgb, var(--violet-700) 65%, var(--cream)); }
+.book-shelf-controls .book-shelf-controls__views button.is-active:active { background: var(--violet-700); }
+.book-shelf-controls__random { grid-area: random; white-space: nowrap; }
+.book-shelf-controls__views svg,
+.book-shelf-controls__random svg,
+.book-shelf-controls__advanced svg,
+.book-shelf-frame__collection-actions button svg { display: block; inline-size: 18px; block-size: 18px; flex: 0 0 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.book-shelf-controls__random .brand-sparkle-icon { fill: currentColor; stroke: none; }
+.book-shelf-controls .book-filter-panel { grid-area: filters; justify-self: end; align-items: center; gap: 10px; }
+.book-shelf-controls .book-archive-filters { display: flex; gap: 2px; }
+.book-shelf-controls .book-archive-filters > button { width: auto; min-width: 0; min-height: 44px; height: auto; padding: 8px 10px; color: color-mix(in srgb, var(--cream) 82%, var(--violet-700)); background: transparent; border-color: transparent; border-radius: 6px; box-shadow: none; }
+.book-shelf-controls .book-archive-filters > button.is-active { color: var(--orange-soft); background: var(--violet-800); border-color: var(--orange-soft); }
+.book-shelf-controls__advanced { width: 44px; height: 44px; padding: 10px; }
+.book-shelf-controls__advanced[aria-expanded="true"] { color: #fff; background: color-mix(in srgb, var(--violet-700) 75%, var(--cream)); border-color: color-mix(in srgb, var(--cream) 60%, var(--violet-700)); }
+.book-shelf-frame__active-rail { flex-wrap: wrap; padding-block: 6px 10px; gap: 8px; overflow: visible; }
+.book-shelf-frame__active-rail button { padding: 8px 12px; }
+.book-shelf-frame__collection { position: relative; z-index: 3; display: grid; grid-template-columns: minmax(280px, 1fr) max-content; gap: 10px 24px; padding-block: 10px 14px; }
+.book-collection-switcher { grid-template-columns: max-content minmax(0, 1fr); gap: 12px; width: 100%; max-width: 700px; }
+.book-collection-switcher__label { color: color-mix(in srgb, var(--cream) 74%, var(--violet-700)); text-transform: none; letter-spacing: normal; font-weight: 400; }
+.book-collection-switcher select { min-height: 44px; color: #fff; background-color: var(--violet-800); border: 1px solid color-mix(in srgb, var(--cream) 28%, var(--violet-700)); border-radius: 8px; box-shadow: none; }
+.book-shelf-frame__collection-actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
+.book-shelf-quality-menu { position: relative; margin-inline-start: auto; }
+.book-shelf-frame__collection-actions .book-shelf-quality-menu > button { color: var(--cream); background: transparent; border-color: transparent; }
+.book-shelf-frame__collection-actions .book-shelf-quality-menu > button:hover { color: #fff; background: var(--violet-700); border-color: color-mix(in srgb, var(--cream) 28%, var(--violet-700)); }
+.book-shelf-frame__collection-actions .book-shelf-quality-menu__chevron { width: 14px; height: 14px; flex-basis: 14px; transition: transform 160ms ease; }
+.book-shelf-quality-menu > button[aria-expanded="true"] .book-shelf-quality-menu__chevron { transform: rotate(180deg); }
+.book-shelf-quality-menu__panel { position: absolute; top: calc(100% + 8px); right: 0; z-index: 15; width: 280px; max-width: calc(100vw - 40px); padding: 14px; border: 1px solid var(--book-control-border); border-radius: 10px; background: var(--violet-800); box-shadow: 0 12px 30px color-mix(in srgb, var(--violet-950) 40%, transparent); animation: book-shelf-panel-enter 140ms ease; }
+.book-shelf-quality-menu__panel[hidden] { display: none; }
+.book-shelf-frame .book-shelf-quality-control,
+.book-shelf-frame .book-shelf-quality-control:focus-within { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; min-height: 0; padding: 0; color: color-mix(in srgb, var(--cream) 82%, var(--violet-700)); border: 0; outline: none; border-radius: 0; background: transparent; box-shadow: none; }
+.book-shelf-quality-control select { width: 100%; min-height: 44px; padding: 8px 32px 8px 12px; color: #fff; border: 1px solid var(--book-control-border); border-radius: 7px; background-color: var(--violet-850); box-shadow: none; color-scheme: dark; }
+.book-shelf-controls__scope select,
+.book-collection-switcher select,
+.book-shelf-quality-control select { appearance: none; padding-inline-end: 32px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='m4 6 4 4 4-4' stroke='%23ffffff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; background-size: 14px 14px; }
+.book-collection-switcher__chevron { display: none; }
+.book-shelf-controls__scope select option { color: #fff; background: var(--violet-800); }
+.book-shelf-quality-control select:hover,
+.book-collection-switcher select:hover { border-color: color-mix(in srgb, var(--cream) 60%, var(--violet-700)); background-color: var(--violet-800); }
+.book-shelf-controls__search-group:focus-within { outline: 2px solid var(--book-control-focus); outline-offset: 0; }
+.book-shelf-controls :is(button, select):focus-visible,
+.book-shelf-frame__collection :is(button, select):focus-visible,
+.book-shelf-frame__active-rail button:focus-visible,
+.book-shelf-navigation button:focus-visible,
+.book-shelf-frame__detail :is(button, a, input, summary):focus-visible,
+.book-shelf-frame__filter-drawer :is(button, input, select):focus-visible,
+.book-shelf-frame :is(.archive-book-detail, .archive-book-save):focus-visible { outline: 2px solid var(--book-control-focus); outline-offset: 0; border-color: var(--book-control-focus); box-shadow: none; }
+.book-shelf-controls .book-shelf-controls__scope select:focus-visible,
+.book-shelf-controls.book-archive-toolbar .book-shelf-controls__input input:focus-visible { outline: none; box-shadow: none; }
+.book-shelf-controls :is(button, select):disabled,
+.book-shelf-navigation button:disabled,
+.book-shelf-frame__collection-actions button:disabled,
+.book-shelf-frame__detail button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+.book-shelf-frame__filter-drawer:not([hidden]) { animation: book-shelf-panel-enter 160ms ease; }
+.book-shelf-filter-drawer__presets { display: flex; flex-wrap: wrap; gap: 8px; }
+.book-shelf-frame__filter-drawer .book-shelf-filter-drawer__presets button.is-active { background: var(--book-action); border-color: var(--orange); color: #fff; }
+@keyframes book-shelf-panel-enter { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 1239px) {
+  .book-shelf-controls__topline { grid-template-areas: "search search filters" "views random random"; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: 10px 12px; }
+  .book-shelf-controls__random { justify-self: start; }
+}
+@media (max-width: 767px) {
+  .book-shelf-controls__topline { grid-template-areas: "search search" "views random" "filters filters"; grid-template-columns: minmax(0, 1fr) max-content; gap: 8px; }
+  .book-shelf-controls__search-group { grid-template-columns: minmax(0, 1fr) 152px; }
+  .book-shelf-controls .book-shelf-controls__views button { min-inline-size: 0; padding-inline: 8px; }
+  .book-shelf-controls__views svg { display: none; }
+  .book-shelf-controls__random { justify-self: stretch; padding-inline: 10px; }
+  .book-shelf-controls .book-filter-panel { justify-self: stretch; justify-content: space-between; }
+  .book-shelf-controls .book-archive-filters { display: flex; flex-wrap: wrap; }
+  .book-shelf-frame__collection { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .book-collection-switcher { grid-template-columns: minmax(0, 1fr); gap: 5px; max-width: none; }
+  .book-shelf-frame__collection-actions { justify-content: space-between; }
+  .book-shelf-frame__collection-actions > button { flex: 0 1 auto; }
+  .book-shelf-scene__accessible-actions { display: none; }
+}
+@media (max-width: 479px) {
+  .book-shelf-controls__topline { grid-template-areas: "search search" "scope filters" "views views" "random random"; grid-template-columns: minmax(0, 1fr) 44px; }
+  .book-shelf-controls__search-group { display: contents; }
+  .book-shelf-controls__search { grid-area: search; }
+  .book-shelf-controls__scope { grid-area: scope; }
+  .book-shelf-controls.book-archive-toolbar .book-shelf-controls__input,
+  .book-shelf-controls .book-shelf-controls__scope select { border: 1px solid var(--book-control-border); border-radius: 8px; background-color: var(--violet-850); }
+  .book-shelf-controls.book-archive-toolbar .book-shelf-controls__input:focus-within,
+  .book-shelf-controls .book-shelf-controls__scope select:focus-visible { outline: 2px solid var(--book-control-focus); outline-offset: 0; }
+  .book-shelf-controls .book-filter-panel { display: contents; }
+  .book-shelf-controls__advanced { grid-area: filters; }
+  .book-shelf-controls .book-archive-filters { display: none; }
+  .book-shelf-controls__views svg { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .book-shelf-controls :is(button, input, select),
+  .book-shelf-frame__collection :is(button, select, svg),
+  .book-shelf-frame__active-rail button,
+  .book-shelf-navigation button,
+  .book-shelf-frame__detail :is(button, a),
+  .book-shelf-scene__accessible-actions button,
+  .book-shelf-frame :is(.archive-book-detail, .archive-book-save),
+  .book-shelf-quality-menu__panel,
+  .book-shelf-frame__filter-drawer,
+  .book-shelf-frame__filter-drawer :is(button, input, select) { animation: none !important; transition: none !important; transform: none !important; }
+}
+@media (forced-colors: active) {
+  .book-shelf-frame, .book-shelf-frame__filter-drawer { --book-control-ink: ButtonText; --book-control-surface: ButtonFace; --book-control-hover: ButtonFace; --book-control-pressed: ButtonFace; --book-control-border: ButtonText; --book-control-focus: Highlight; --book-action: Highlight; --book-action-hover: Highlight; --book-action-pressed: Highlight; }
+  .book-shelf-controls__scope select,
+  .book-collection-switcher select,
+  .book-shelf-quality-control select { appearance: auto; background-image: none; }
+  .book-shelf-controls .book-shelf-controls__views button.is-active,
+  .book-shelf-controls .book-archive-filters > button.is-active { color: HighlightText; background: Highlight; border-color: Highlight; }
+  .book-shelf-controls :is(button, input, select),
+  .book-shelf-frame__collection :is(button, select),
+  .book-shelf-frame__detail :is(button, a) { box-shadow: none; forced-color-adjust: auto; }
+}

@@ -38,6 +38,33 @@ describe("book inspection semantic pagination", () => {
     expect(result.issues.join(" ")).toContain("4-page design limit");
   });
 
+  it("balances a short final paragraph fragment without emptying its neighbour or losing its anchor", () => {
+    const paragraph = Array.from({ length: 21 }, (_, index) => `word${index}`).join(" ");
+    const anchor = { sectionId: "context", blockId: "context-essay", dossierVersion: "review-1", locale: "ru" as const, readingMode: "BEFORE_READING" as const };
+    const source = sourceWith([paragraph]);
+    const result = layoutBookInspectionDocument({ ...source, pages: [{ ...source.pages[0], anchor }] },
+      (text, role) => role === "body" ? text.split(/\s/u).length * 1000 : measure(text, role));
+    expect(result.status).toBe("ready");
+    const fragments = result.document!.pages.map(page => getBookInspectionPageLayout(page)!.commands.filter(command => command.sourceId === "essay:paragraph:0"));
+    expect(fragments).toHaveLength(3);
+    expect(fragments[fragments.length - 1]).toHaveLength(4);
+    expect(fragments.slice(0, -1).every(lines => lines.length >= 4)).toBe(true);
+    expect(fragments.flat().map(command => command.text).join(" ")).toBe(paragraph);
+    expect(result.document!.pages.every(page => page.anchor === anchor)).toBe(true);
+  });
+
+  it("does not drain a short preceding page just to fill the final fragment", () => {
+    const paragraph = "one two three four five six seven";
+    const source = sourceWith([paragraph]);
+    const result = layoutBookInspectionDocument({ ...source, pages: [{ ...source.pages[0], title: "one two three four five" }] },
+      (text, role) => ["body", "heading"].includes(role) ? text.split(/\s/u).length * 1000 : measure(text, role));
+    expect(result.status).toBe("ready");
+    const fragments = result.document!.pages.map(page => getBookInspectionPageLayout(page)!.commands.filter(command => command.sourceId === "essay:paragraph:0"));
+    expect(fragments).toHaveLength(2);
+    expect(fragments[0].length).toBeGreaterThanOrEqual(4);
+    expect(fragments.flat().map(command => command.text).join(" ")).toBe(paragraph);
+  });
+
   it("preserves a complete long source URL and refuses arbitrary word slicing", () => {
     const url = `https://example.org/${"verified".repeat(32)}`;
     expect(wrapBookInspectionText(url, 100, "metadata", measure, true)!.join("")).toBe(url);
@@ -106,7 +133,7 @@ describe("book inspection semantic pagination", () => {
     expect(value.text).toBe(row.value);
     const names = layoutBookInspectionDocument({ ...base, pages: [{ ...base.pages[0], template: "characters", rows: [row] }] }, measure);
     const namedCommands = getBookInspectionPageLayout(names.document!.pages[0])!.commands;
-    expect(namedCommands.find(command => command.sourceId === "event-1:label")!.role).toBe("heading");
+    expect(namedCommands.find(command => command.sourceId === "event-1:label")!.role).toBe("subheading");
     expect(namedCommands.find(command => command.sourceId === "event-1")!.role).toBe("body");
   });
 });

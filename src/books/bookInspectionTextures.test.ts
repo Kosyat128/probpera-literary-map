@@ -45,7 +45,7 @@ describe("book inspection textures", () => {
     });
 
     expect(key).toBe(
-      `${document.cacheKey}|page=0:identity|quality=HIGH|owner-book-typography-v2|book-inspection-layout-v3|{}`
+      `${document.cacheKey}|page=0:identity|quality=HIGH|owner-book-typography-v2|book-inspection-layout-v4|{}`
     );
   });
 

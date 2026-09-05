@@ -4,12 +4,13 @@ export const BookDossierTypographyTokens = Object.freeze({
   version: BOOK_TYPOGRAPHY_VERSION,
   serif: '"Source Serif 4 Local", Georgia, serif',
   sans: '"Source Sans 3 Local", "Segoe UI", sans-serif',
-  title: Object.freeze({ size: 120, weight: 600, leading: 1.16 }),
-  heading: Object.freeze({ size: 120, weight: 600, leading: 1.2 }),
-  body: Object.freeze({ size: 92, weight: 400, leading: 1.5 }),
-  metadata: Object.freeze({ size: 88, weight: 400, leading: 1.4 }),
-  caption: Object.freeze({ size: 84, weight: 600, leading: 1.4 }),
-  folio: Object.freeze({ size: 76, weight: 400, leading: 1.4 }),
+  title: Object.freeze({ size: 112, weight: 400, leading: 1.16 }),
+  heading: Object.freeze({ size: 104, weight: 400, leading: 1.2 }),
+  subheading: Object.freeze({ size: 88, weight: 600, leading: 1.24 }),
+  body: Object.freeze({ size: 92, weight: 400, leading: 1.45 }),
+  metadata: Object.freeze({ size: 84, weight: 400, leading: 1.38 }),
+  caption: Object.freeze({ size: 72, weight: 600, leading: 1.3 }),
+  folio: Object.freeze({ size: 68, weight: 400, leading: 1.3 }),
 });
 
 export const BookDossierPaperTokens = Object.freeze({
@@ -28,8 +29,8 @@ export const BookDossierSpacingTokens = Object.freeze({
   top: 150,
   bottom: 150,
   baseline: 14,
-  paragraph: 42,
-  section: 70,
+  paragraph: 32,
+  section: 56,
 });
 
 export const OwnerBookTypographyTokens = Object.freeze({

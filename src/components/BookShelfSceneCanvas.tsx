@@ -18,6 +18,7 @@ import type {
 import type { BookShelfPhase } from "../books/bookShelfState";
 import { completeShelfPhaseHasInspection, completeShelfVisibleBookLimit, completeShelfRowWidth, COMPLETE_SHELF_BOOK_FORMAT, COMPLETE_SHELF_TOP, COMPLETE_SHELF_INSPECTION_LIFT, resolveCompleteShelfVerticalBounds } from "../books/completeShelfModel";
 import { resolveBookPhysicalBounds } from "../books/bookShelfPhysicalLayout";
+import { bookShelfExtractionClearance, bookShelfExtractionStages, createBookShelfExtractionClock, type BookShelfExtractionClock } from "../books/bookShelfExtractionMotion";
 import { advanceBookShelfPointer, bookShelfPointerIsClick, type BookShelfPointerStart } from "../books/bookShelfPointer";
 import {
   applyBookInspectionOrbitDelta,
@@ -83,6 +84,8 @@ function InspectionCameraController({
   phase,
   viewportInsets,
   liveBookLimit,
+  extractionClock,
+  requestId,
 }: {
   detailOpen: boolean;
   itemIndex: number;
@@ -91,8 +94,25 @@ function InspectionCameraController({
   phase: BookShelfPhase;
   viewportInsets?: BookShelfViewportInsets;
   liveBookLimit: number;
+  extractionClock: { current: BookShelfExtractionClock };
+  requestId: number;
 }) {
   const { camera, gl, invalidate, size } = useThree();
+  const extractionPhase = phase === "INSPECTION_ENTERING" || phase === "SHELF_RESTORING";
+  const overviewFraming = useMemo(() => {
+    const vertical = resolveCompleteShelfVerticalBounds();
+    const rowWidth = completeShelfRowWidth(Math.min(itemCount, completeShelfVisibleBookLimit(liveBookLimit)));
+    const clearance = bookShelfExtractionClearance(COMPLETE_SHELF_BOOK_FORMAT.coverWidth, 1.42);
+    return resolveBookInspectionCameraFraming({
+      viewportWidth: size.width, viewportHeight: size.height, detailOpen: false,
+      viewportInsets, itemIndex, itemCount, bookPosition: [0, 0, 0],
+      bounds: { min: [-rowWidth / 2 - .12, vertical.minY - vertical.opticalCenterY, -.58],
+        max: [rowWidth / 2 + .12,
+          COMPLETE_SHELF_TOP + COMPLETE_SHELF_BOOK_FORMAT.height * 1.42 + COMPLETE_SHELF_INSPECTION_LIFT - vertical.opticalCenterY,
+          clearance + .58] },
+      fov: 38, marginPx: 20, orbitAllowance: 1,
+    });
+  }, [itemCount, itemIndex, liveBookLimit, size.height, size.width, viewportInsets]);
   const desiredFraming = useMemo(() => {
     const vertical = resolveCompleteShelfVerticalBounds();
     const bookPosition = [0,
@@ -213,10 +233,24 @@ function InspectionCameraController({
 
   useFrame((_state, delta) => {
     if (!bookInspectionViewportCanFrame(desiredFraming)) return;
-    const desired = resolveBookInspectionOrbitCamera(
+    let desired = resolveBookInspectionOrbitCamera(
       desiredFraming,
       orbitRef.current
     );
+    if (extractionPhase && !reducedMotion) {
+      const clock = extractionClock.current;
+      const progress = clock.phase === phase && clock.requestId === requestId && clock.ready ? clock.progress : 0;
+      const presentation = bookShelfExtractionStages(progress, phase === "SHELF_RESTORING").presentation;
+      const wide = resolveBookInspectionOrbitCamera(overviewFraming, BOOK_INSPECTION_DEFAULT_ORBIT);
+      if (phase === "INSPECTION_ENTERING") {
+        const mix = (from: readonly number[], to: readonly number[]) => from.map((value, index) => value + (to[index] - value) * presentation) as [number, number, number];
+        desired = { ...desired, position: mix(wide.position, desired.position), lookAt: mix(wide.lookAt, desired.lookAt),
+          fov: wide.fov + (desired.fov - wide.fov) * presentation };
+      } else {
+        // Zoom out before the book re-enters its unchanged row slot.
+        desired = wide;
+      }
+    }
     const next = smoothBookInspectionCameraTarget(
       targetRef.current,
       desired,
@@ -416,6 +450,7 @@ export default function BookShelfSceneCanvas({
   onContextRestored,
   onTextureFailure,
 }: BookShelfSceneCanvasProps) {
+  const extractionClock = useRef(createBookShelfExtractionClock());
   const dependency = [
     phase,
     requestId,
@@ -518,6 +553,8 @@ export default function BookShelfSceneCanvas({
       />
       <InspectionCameraController
         detailOpen={Boolean(selectedBookKey && inspectionActive)}
+        extractionClock={extractionClock}
+        requestId={requestId}
         itemIndex={Math.max(
           0,
           items.findIndex(
@@ -596,6 +633,7 @@ export default function BookShelfSceneCanvas({
         target={[0.65, 0.1, 0]}
       />
       <CompleteShelfRenderer
+        extractionClock={extractionClock}
         items={items}
         appearance={appearance}
         focusedBookKey={focusedBookKey}

@@ -231,7 +231,6 @@
   border: 0;
   box-shadow: none;
   font-family: var(--sans);
-  font-size: 0.84rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.25;
@@ -394,7 +393,6 @@
   overflow: visible;
   padding: 0;
   font-family: var(--font-ui);
-  font-size: var(--type-action);
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1.4;
@@ -724,7 +722,6 @@
   white-space: normal;
   color: rgba(255, 245, 232, 0.72);
   font-family: var(--font-ui);
-  font-size: var(--type-card-meta);
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -2473,7 +2470,6 @@
   .book-shelf-controls .book-filter-copy strong {
     width: 100%;
     overflow: visible;
-    font-size: var(--type-action);
     line-height: 1.4;
     text-align: center;
     text-overflow: clip;

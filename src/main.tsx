@@ -27,6 +27,8 @@ import './styles/stage5-home-layout.css';
 import './styles/stage5-book-shelf.css';
 import './styles/stage5f-responsive-accessibility.css';
 import './styles/book-dossier.css';
+import './styles/book-shelf-controls.css';
+import './styles/book-reader-refinement.css';
 import './styles/editorial-card-layout.css';
 import './styles/community-editorial-layout.css';
 import './styles/calendar-layout.css';

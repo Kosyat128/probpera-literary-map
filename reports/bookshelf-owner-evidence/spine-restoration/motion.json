@@ -1,0 +1,2388 @@
+{
+  "baseURL": "http://127.0.0.1:4185/",
+  "capturedAt": "2026-09-05T18:00:09.271Z",
+  "renderedFrom": "Actual compiled WebGL; no source injection",
+  "stages": {
+    "idle": {
+      "phase": "SHELF_IDLE",
+      "selectedKey": null,
+      "selectedTitle": null,
+      "pageIndex": null,
+      "pageCount": null,
+      "canvas": {
+        "x": 69,
+        "y": 226.046875,
+        "width": 1582,
+        "height": 774
+      },
+      "camera": {
+        "position": [
+          0,
+          0,
+          5.23006
+        ],
+        "fov": 38
+      },
+      "qualityProfile": "HIGH",
+      "lightExposure": 0.38,
+      "insets": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "books": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "sourceIndex": 0,
+          "x": 175.31327334553396,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "451° по Фаренгейту",
+          "sourceIndex": 1,
+          "x": 260.89911417734226,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "title": "Анна-Вероника",
+          "sourceIndex": 2,
+          "x": 346.48495500915044,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "title": "Будденброки",
+          "sourceIndex": 3,
+          "x": 432.07079584095874,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "title": "Война и мир",
+          "sourceIndex": 4,
+          "x": 517.6566366727669,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Гамлет",
+          "sourceIndex": 5,
+          "x": 603.2424775045753,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Голодный дом",
+          "sourceIndex": 6,
+          "x": 688.8283183363834,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "title": "Госпожа Бовари",
+          "sourceIndex": 7,
+          "x": 774.4141591681918,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "title": "Дама с собачкой",
+          "sourceIndex": 8,
+          "x": 860,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "title": "Дуэль",
+          "sourceIndex": 9,
+          "x": 945.5858408318082,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "title": "Дядя Ваня",
+          "sourceIndex": 10,
+          "x": 1031.1716816636163,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "title": "История мистера Полли",
+          "sourceIndex": 11,
+          "x": 1116.7575224954248,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "title": "Когда спящий проснется",
+          "sourceIndex": 12,
+          "x": 1202.343363327233,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "title": "Костяные часы",
+          "sourceIndex": 13,
+          "x": 1287.929204159041,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "title": "Литературный призрак",
+          "sourceIndex": 14,
+          "x": 1373.5150449908494,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "title": "Лолита",
+          "sourceIndex": 15,
+          "x": 1459.1008858226578,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "title": "Люди как боги",
+          "sourceIndex": 16,
+          "x": 1544.686726654466,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        }
+      ],
+      "resources": {
+        "Texture": {
+          "created": 65,
+          "deleted": 0,
+          "live": 65
+        },
+        "Framebuffer": {
+          "created": 6,
+          "deleted": 0,
+          "live": 6
+        },
+        "Renderbuffer": {
+          "created": 2,
+          "deleted": 0,
+          "live": 2
+        },
+        "Buffer": {
+          "created": 375,
+          "deleted": 4,
+          "live": 371
+        },
+        "Program": {
+          "created": 14,
+          "deleted": 1,
+          "live": 13
+        },
+        "Shader": {
+          "created": 28,
+          "deleted": 28,
+          "live": 0
+        },
+        "VertexArray": {
+          "created": 157,
+          "deleted": 1,
+          "live": 156
+        }
+      },
+      "draws": 335,
+      "pendingFrames": 0,
+      "renderer": {
+        "geometries": 101,
+        "textures": 61,
+        "calls": 106,
+        "triangles": 6398
+      },
+      "patches": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "slot": 0,
+          "baseColor": "#406872",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 322.42123441474445,
+          "width": 80.38279799973049,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "slot": 5,
+          "baseColor": "#BB5441",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "slot": 6,
+          "baseColor": "#508B8A",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "slot": 8,
+          "baseColor": "#A3494E",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "slot": 10,
+          "baseColor": "#45739C",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "slot": 11,
+          "baseColor": "#B34E3E",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "physicalBooks": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "z": 0,
+          "titlePixels": 1622,
+          "authorPixels": 3498,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "z": 0,
+          "titlePixels": 952,
+          "authorPixels": 1165,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "z": 0,
+          "titlePixels": 1202,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "z": 0,
+          "titlePixels": 670,
+          "authorPixels": 1232,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "z": 0,
+          "titlePixels": 2239,
+          "authorPixels": 1219,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "z": 0,
+          "titlePixels": 906,
+          "authorPixels": 1449,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "z": 0,
+          "titlePixels": 1020,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "z": 0,
+          "titlePixels": 1620,
+          "authorPixels": 1560,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "z": 0,
+          "titlePixels": 1354,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "z": 0,
+          "titlePixels": 1068,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "z": 0,
+          "titlePixels": 1882,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "z": 0,
+          "titlePixels": 2302,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "z": 0,
+          "titlePixels": 1558,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "z": 0,
+          "titlePixels": 1081,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "z": 0,
+          "titlePixels": 914,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "z": 0,
+          "titlePixels": 918,
+          "authorPixels": 1396,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "z": 0,
+          "titlePixels": 2482,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.294675317347128,
+      "maxGap": 5.29467531734781
+    },
+    "hover": {
+      "phase": "SHELF_IDLE",
+      "selectedKey": null,
+      "selectedTitle": null,
+      "pageIndex": null,
+      "pageCount": null,
+      "canvas": {
+        "x": 69,
+        "y": 226.046875,
+        "width": 1582,
+        "height": 774
+      },
+      "camera": {
+        "position": [
+          0,
+          0,
+          5.23006
+        ],
+        "fov": 38
+      },
+      "qualityProfile": "HIGH",
+      "lightExposure": 0.38,
+      "insets": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "books": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "sourceIndex": 0,
+          "x": 175.31327334553396,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "451° по Фаренгейту",
+          "sourceIndex": 1,
+          "x": 260.89911417734226,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "title": "Анна-Вероника",
+          "sourceIndex": 2,
+          "x": 346.48495500915044,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "title": "Будденброки",
+          "sourceIndex": 3,
+          "x": 423.670986814618,
+          "y": 588.5340090907089,
+          "z": 0.957358748555488
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "title": "Война и мир",
+          "sourceIndex": 4,
+          "x": 517.6566366727669,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Гамлет",
+          "sourceIndex": 5,
+          "x": 603.2424775045753,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Голодный дом",
+          "sourceIndex": 6,
+          "x": 688.8283183363834,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "title": "Госпожа Бовари",
+          "sourceIndex": 7,
+          "x": 774.4141591681918,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "title": "Дама с собачкой",
+          "sourceIndex": 8,
+          "x": 860,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "title": "Дуэль",
+          "sourceIndex": 9,
+          "x": 945.5858408318082,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "title": "Дядя Ваня",
+          "sourceIndex": 10,
+          "x": 1031.1716816636163,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "title": "История мистера Полли",
+          "sourceIndex": 11,
+          "x": 1116.7575224954248,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "title": "Когда спящий проснется",
+          "sourceIndex": 12,
+          "x": 1202.343363327233,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "title": "Костяные часы",
+          "sourceIndex": 13,
+          "x": 1287.929204159041,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "title": "Литературный призрак",
+          "sourceIndex": 14,
+          "x": 1373.5150449908494,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "title": "Лолита",
+          "sourceIndex": 15,
+          "x": 1459.1008858226578,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "title": "Люди как боги",
+          "sourceIndex": 16,
+          "x": 1544.686726654466,
+          "y": 589.0059084742111,
+          "z": 0.9581988998375073
+        }
+      ],
+      "resources": {
+        "Texture": {
+          "created": 65,
+          "deleted": 0,
+          "live": 65
+        },
+        "Framebuffer": {
+          "created": 6,
+          "deleted": 0,
+          "live": 6
+        },
+        "Renderbuffer": {
+          "created": 2,
+          "deleted": 0,
+          "live": 2
+        },
+        "Buffer": {
+          "created": 376,
+          "deleted": 4,
+          "live": 372
+        },
+        "Program": {
+          "created": 14,
+          "deleted": 1,
+          "live": 13
+        },
+        "Shader": {
+          "created": 28,
+          "deleted": 28,
+          "live": 0
+        },
+        "VertexArray": {
+          "created": 158,
+          "deleted": 1,
+          "live": 157
+        }
+      },
+      "draws": 5340,
+      "pendingFrames": 0,
+      "renderer": {
+        "geometries": 102,
+        "textures": 61,
+        "calls": 107,
+        "triangles": 6398
+      },
+      "patches": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "slot": 0,
+          "baseColor": "#406872",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 313.2134753673362,
+          "width": 81.96235194006653,
+          "y": 175.95921356749312,
+          "height": 373.00232020629124
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "slot": 5,
+          "baseColor": "#BB5441",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "slot": 6,
+          "baseColor": "#508B8A",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "slot": 8,
+          "baseColor": "#A3494E",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "slot": 10,
+          "baseColor": "#45739C",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "slot": 11,
+          "baseColor": "#B34E3E",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "physicalBooks": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "z": 0,
+          "titlePixels": 1622,
+          "authorPixels": 3498,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "z": 0,
+          "titlePixels": 952,
+          "authorPixels": 1165,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "z": 0,
+          "titlePixels": 1202,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "z": 0.09,
+          "titlePixels": 670,
+          "authorPixels": 1232,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "z": 0,
+          "titlePixels": 2239,
+          "authorPixels": 1219,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "z": 0,
+          "titlePixels": 906,
+          "authorPixels": 1449,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "z": 0,
+          "titlePixels": 1020,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "z": 0,
+          "titlePixels": 1620,
+          "authorPixels": 1560,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "z": 0,
+          "titlePixels": 1354,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "z": 0,
+          "titlePixels": 1068,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "z": 0,
+          "titlePixels": 1882,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "z": 0,
+          "titlePixels": 2302,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "z": 0,
+          "titlePixels": 1558,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "z": 0,
+          "titlePixels": 1081,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "z": 0,
+          "titlePixels": 914,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "z": 0,
+          "titlePixels": 918,
+          "authorPixels": 1396,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "z": 0,
+          "titlePixels": 2482,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        }
+      ],
+      "topSpread": 4.067114936194741,
+      "bottomSpread": 3.12127425335882,
+      "minGap": -3.9130837300606345,
+      "maxGap": 12.922880424419873
+    },
+    "pressed": {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "z": 0.035
+    },
+    "selected": {
+      "phase": "INSPECTION_CLOSED",
+      "selectedKey": "germany:thomas_mann:buddenbrooks-editorial",
+      "selectedTitle": "Будденброки",
+      "pageIndex": 0,
+      "pageCount": 9,
+      "canvas": {
+        "x": 69,
+        "y": 113.046875,
+        "width": 1582,
+        "height": 774
+      },
+      "camera": {
+        "position": [
+          0.94631,
+          0.34895,
+          6.92678
+        ],
+        "fov": 35.70077
+      },
+      "qualityProfile": "HIGH",
+      "lightExposure": 0.38,
+      "insets": {
+        "top": 0,
+        "right": 421.39,
+        "bottom": 72,
+        "left": 0
+      },
+      "books": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "sourceIndex": 0,
+          "x": 353.7615089193992,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "451° по Фаренгейту",
+          "sourceIndex": 1,
+          "x": 420.9039100895325,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "title": "Анна-Вероника",
+          "sourceIndex": 2,
+          "x": 488.0463112596657,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "title": "Будденброки",
+          "sourceIndex": 3,
+          "x": 502.01257348317966,
+          "y": 458.6545198437951,
+          "z": 0.9665823784471939
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "title": "Война и мир",
+          "sourceIndex": 4,
+          "x": 874.8788315402015,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Гамлет",
+          "sourceIndex": 5,
+          "x": 942.0212327103349,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Голодный дом",
+          "sourceIndex": 6,
+          "x": 1009.1636338804681,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "title": "Госпожа Бовари",
+          "sourceIndex": 7,
+          "x": 1076.3060350506012,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "title": "Дама с собачкой",
+          "sourceIndex": 8,
+          "x": 1143.4484362207343,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "title": "Дуэль",
+          "sourceIndex": 9,
+          "x": 1210.5908373908676,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "title": "Дядя Ваня",
+          "sourceIndex": 10,
+          "x": 1277.7332385610007,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "title": "История мистера Полли",
+          "sourceIndex": 11,
+          "x": 1344.8756397311338,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "title": "Когда спящий проснется",
+          "sourceIndex": 12,
+          "x": 1412.018040901267,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "title": "Костяные часы",
+          "sourceIndex": 13,
+          "x": 1479.1604420714002,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "title": "Литературный призрак",
+          "sourceIndex": 14,
+          "x": 1546.3028432415333,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "title": "Лолита",
+          "sourceIndex": 15,
+          "x": 1613.4452444116666,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "title": "Люди как боги",
+          "sourceIndex": 16,
+          "x": 1680.5876455817995,
+          "y": 546.9994052564738,
+          "z": 0.9695963949569396
+        }
+      ],
+      "resources": {
+        "Texture": {
+          "created": 84,
+          "deleted": 9,
+          "live": 75
+        },
+        "Framebuffer": {
+          "created": 6,
+          "deleted": 0,
+          "live": 6
+        },
+        "Renderbuffer": {
+          "created": 2,
+          "deleted": 0,
+          "live": 2
+        },
+        "Buffer": {
+          "created": 471,
+          "deleted": 4,
+          "live": 467
+        },
+        "Program": {
+          "created": 28,
+          "deleted": 3,
+          "live": 25
+        },
+        "Shader": {
+          "created": 56,
+          "deleted": 56,
+          "live": 0
+        },
+        "VertexArray": {
+          "created": 187,
+          "deleted": 1,
+          "live": 186
+        }
+      },
+      "draws": 20555,
+      "pendingFrames": 1,
+      "renderer": {
+        "geometries": 126,
+        "textures": 71,
+        "calls": 133,
+        "triangles": 9046
+      },
+      "patches": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "slot": 0,
+          "baseColor": "#406872",
+          "x": 252.84263558055812,
+          "width": 63.042621840511,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 320.037765446492,
+          "width": 63.04262184051106,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 387.23289531242614,
+          "width": 63.04262184051112,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 420.36102973135775,
+          "width": 21.435494774320546,
+          "y": 122.50752631494248,
+          "height": 446.192156943865
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 774.3692053581814,
+          "width": 63.04262184051106,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "slot": 5,
+          "baseColor": "#BB5441",
+          "x": 841.5643352241153,
+          "width": 63.042621840511174,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "slot": 6,
+          "baseColor": "#508B8A",
+          "x": 908.7594650900493,
+          "width": 63.04262184051106,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 975.9545949559833,
+          "width": 63.04262184051095,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "slot": 8,
+          "baseColor": "#A3494E",
+          "x": 1043.1497248219173,
+          "width": 63.04262184051095,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 1110.3448546878512,
+          "width": 63.04262184051095,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "slot": 10,
+          "baseColor": "#45739C",
+          "x": 1177.5399845537852,
+          "width": 63.042621840511174,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "slot": 11,
+          "baseColor": "#B34E3E",
+          "x": 1244.735114419719,
+          "width": 63.0426218405114,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 1311.930244285653,
+          "width": 63.0426218405114,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1379.125374151587,
+          "width": 63.04262184051095,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 1446.3205040175212,
+          "width": 63.042621840511174,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 1513.5156338834552,
+          "width": 63.04262184051095,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1580.7107637493891,
+          "width": 63.04262184051072,
+          "y": 290.53912607307427,
+          "height": 286.900554483763
+        }
+      ],
+      "physicalBooks": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "z": 0,
+          "titlePixels": 765,
+          "authorPixels": 1699,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "z": 0,
+          "titlePixels": 952,
+          "authorPixels": 1165,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "z": 0,
+          "titlePixels": 1202,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "z": 1.05,
+          "titlePixels": 8097,
+          "authorPixels": 17165,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "z": 0,
+          "titlePixels": 2239,
+          "authorPixels": 1219,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "z": 0,
+          "titlePixels": 906,
+          "authorPixels": 1449,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "z": 0,
+          "titlePixels": 1020,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "z": 0,
+          "titlePixels": 1620,
+          "authorPixels": 1560,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "z": 0,
+          "titlePixels": 1354,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "z": 0,
+          "titlePixels": 1068,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "z": 0,
+          "titlePixels": 1882,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "z": 0,
+          "titlePixels": 2302,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "z": 0,
+          "titlePixels": 1558,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "z": 0,
+          "titlePixels": 1081,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "z": 0,
+          "titlePixels": 914,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "z": 0,
+          "titlePixels": 918,
+          "authorPixels": 1396,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "z": 0,
+          "titlePixels": 2482,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        }
+      ],
+      "topSpread": 168.0315997581318,
+      "bottomSpread": 8.739997298029834,
+      "minGap": -29.91448742157951,
+      "maxGap": 332.5726808525031
+    },
+    "returned": {
+      "phase": "SHELF_IDLE",
+      "selectedKey": null,
+      "selectedTitle": null,
+      "pageIndex": null,
+      "pageCount": null,
+      "canvas": {
+        "x": 69,
+        "y": 226.046875,
+        "width": 1582,
+        "height": 774
+      },
+      "camera": {
+        "position": [
+          0.00007,
+          0.00004,
+          5.23026
+        ],
+        "fov": 37.99998
+      },
+      "qualityProfile": "HIGH",
+      "lightExposure": 0.38,
+      "insets": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "books": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "sourceIndex": 0,
+          "x": 175.3253469759784,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "451° по Фаренгейту",
+          "sourceIndex": 1,
+          "x": 260.9075751082054,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "title": "Анна-Вероника",
+          "sourceIndex": 2,
+          "x": 346.4898032404323,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "title": "Будденброки",
+          "sourceIndex": 3,
+          "x": 432.0720313726593,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "title": "Война и мир",
+          "sourceIndex": 4,
+          "x": 517.6542595048863,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Гамлет",
+          "sourceIndex": 5,
+          "x": 603.2364876371132,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Голодный дом",
+          "sourceIndex": 6,
+          "x": 688.8187157693403,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "title": "Госпожа Бовари",
+          "sourceIndex": 7,
+          "x": 774.4009439015672,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "title": "Дама с собачкой",
+          "sourceIndex": 8,
+          "x": 859.9831720337942,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "title": "Дуэль",
+          "sourceIndex": 9,
+          "x": 945.5654001660213,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "title": "Дядя Ваня",
+          "sourceIndex": 10,
+          "x": 1031.1476282982483,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "title": "История мистера Полли",
+          "sourceIndex": 11,
+          "x": 1116.7298564304751,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "title": "Когда спящий проснется",
+          "sourceIndex": 12,
+          "x": 1202.3120845627022,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "title": "Костяные часы",
+          "sourceIndex": 13,
+          "x": 1287.894312694929,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "title": "Литературный призрак",
+          "sourceIndex": 14,
+          "x": 1373.476540827156,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "title": "Лолита",
+          "sourceIndex": 15,
+          "x": 1459.058768959383,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "title": "Люди как боги",
+          "sourceIndex": 16,
+          "x": 1544.64099709161,
+          "y": 589.0165392581533,
+          "z": 0.958200730820187
+        }
+      ],
+      "resources": {
+        "Texture": {
+          "created": 96,
+          "deleted": 30,
+          "live": 66
+        },
+        "Framebuffer": {
+          "created": 6,
+          "deleted": 0,
+          "live": 6
+        },
+        "Renderbuffer": {
+          "created": 2,
+          "deleted": 0,
+          "live": 2
+        },
+        "Buffer": {
+          "created": 471,
+          "deleted": 99,
+          "live": 372
+        },
+        "Program": {
+          "created": 28,
+          "deleted": 15,
+          "live": 13
+        },
+        "Shader": {
+          "created": 56,
+          "deleted": 56,
+          "live": 0
+        },
+        "VertexArray": {
+          "created": 187,
+          "deleted": 30,
+          "live": 157
+        }
+      },
+      "draws": 42645,
+      "pendingFrames": 0,
+      "renderer": {
+        "geometries": 102,
+        "textures": 62,
+        "calls": 106,
+        "triangles": 6398
+      },
+      "patches": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "slot": 0,
+          "baseColor": "#406872",
+          "x": 65.40263078931542,
+          "width": 80.37940124652792,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 151.0764836149559,
+          "width": 80.37940124652792,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 236.75033644059636,
+          "width": 80.37940124652778,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 322.4241892662368,
+          "width": 80.37940124652772,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 408.09804209187723,
+          "width": 80.37940124652778,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "slot": 5,
+          "baseColor": "#BB5441",
+          "x": 493.77189491751756,
+          "width": 80.37940124652789,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "slot": 6,
+          "baseColor": "#508B8A",
+          "x": 579.4457477431581,
+          "width": 80.37940124652778,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 665.1196005687985,
+          "width": 80.37940124652778,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "slot": 8,
+          "baseColor": "#A3494E",
+          "x": 750.7934533944389,
+          "width": 80.37940124652789,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 836.4673062200792,
+          "width": 80.37940124652789,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "slot": 10,
+          "baseColor": "#45739C",
+          "x": 922.1411590457197,
+          "width": 80.37940124652766,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "slot": 11,
+          "baseColor": "#B34E3E",
+          "x": 1007.8150118713602,
+          "width": 80.37940124652778,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 1093.4888646970007,
+          "width": 80.37940124652755,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1179.162717522641,
+          "width": 80.37940124652778,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 1264.8365703482814,
+          "width": 80.37940124652778,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 1350.5104231739217,
+          "width": 80.379401246528,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1436.184275999562,
+          "width": 80.379401246528,
+          "y": 180.0447009102873,
+          "height": 365.79847273868944
+        }
+      ],
+      "physicalBooks": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "z": 0,
+          "titlePixels": 1622,
+          "authorPixels": 3498,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "z": 0,
+          "titlePixels": 952,
+          "authorPixels": 1165,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "z": 0,
+          "titlePixels": 1202,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "z": 0,
+          "titlePixels": 670,
+          "authorPixels": 1232,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "z": 0,
+          "titlePixels": 2239,
+          "authorPixels": 1219,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "z": 0,
+          "titlePixels": 906,
+          "authorPixels": 1449,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "z": 0,
+          "titlePixels": 1020,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "z": 0,
+          "titlePixels": 1620,
+          "authorPixels": 1560,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "z": 0,
+          "titlePixels": 1354,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "z": 0,
+          "titlePixels": 1068,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "z": 0,
+          "titlePixels": 1882,
+          "authorPixels": 1599,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "z": 0,
+          "titlePixels": 2302,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "z": 0,
+          "titlePixels": 1558,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "z": 0,
+          "titlePixels": 1081,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "z": 0,
+          "titlePixels": 914,
+          "authorPixels": 1992,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "z": 0,
+          "titlePixels": 918,
+          "authorPixels": 1396,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "z": 0,
+          "titlePixels": 2482,
+          "authorPixels": 2347,
+          "normalScale": [
+            0.26,
+            0.26
+          ],
+          "bumpScale": 0.002,
+          "roughness": 0.88,
+          "foilRelief": 0.0016
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.2944515791123195,
+      "maxGap": 5.294451579112774
+    }
+  },
+  "issues": []
+}

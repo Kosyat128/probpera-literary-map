@@ -38,6 +38,31 @@ const input = (key: string, offset = 0): CompleteShelfItemInput => ({
 });
 
 describe("Complete Shelf procedural model", () => {
+  it("pulls only the active spine forward and restores the common idle row", () => {
+    const specs = ["left", "focus", "right"].map((key, index) => buildCompleteShelfBookSpec(input(key, index), index));
+    const layout = layoutCompleteShelfBooks(specs, 1);
+    const common = { layout: layout[1], anchorSlot: 1, focusedBookKey: "focus", selectedBookKey: null };
+    const idle = buildCompleteShelfBookPose({ ...common, phase: "SHELF_IDLE" });
+    const hovered = buildCompleteShelfBookPose({ ...common, phase: "SHELF_IDLE", hovered: true });
+    const moving = buildCompleteShelfBookPose({ ...common, phase: "SHELF_MOVING" });
+    const settling = buildCompleteShelfBookPose({ ...common, phase: "SHELF_SETTLING" });
+    const pressed = buildCompleteShelfBookPose({ ...common, phase: "SHELF_IDLE", hovered: true, pressed: true });
+    expect(hovered.position[2]).toBeGreaterThan(moving.position[2]);
+    expect(moving.position[2]).toBeGreaterThan(settling.position[2]);
+    expect(settling.position[2]).toBeGreaterThan(idle.position[2]);
+    expect(pressed.position[2]).toBeGreaterThan(idle.position[2]);
+    expect(pressed.position[2]).toBeLessThan(hovered.position[2]);
+    for (const phase of ["SHELF_IDLE", "SHELF_MOVING", "SHELF_SETTLING"] as const) {
+      for (const neighbor of [layout[0], layout[2]]) {
+        const pose = buildCompleteShelfBookPose({ ...common, layout: neighbor, phase });
+        expect(pose.position[2]).toBe(0);
+        expect(pose.position[1]).toBe(idle.position[1]);
+      }
+    }
+    expect(buildCompleteShelfBookPose({ ...common, phase: "SHELF_IDLE" })).toEqual(idle);
+    expect(specs.map((spec) => spec.baseColor)).toEqual(layout.map((entry) => entry.spec.baseColor));
+  });
+
   it("keeps physical identity stable when the same book moves in the source", () => {
     const first = buildCompleteShelfBookSpec(input("stable-book", 1), 2);
     const moved = buildCompleteShelfBookSpec(input("stable-book", 1), 47);
