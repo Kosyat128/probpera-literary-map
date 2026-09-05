@@ -87,6 +87,7 @@ describe("finite dossier publication", () => {
     const record = await approved();
     for (const change of [
       (proof: ReturnType<typeof bookDossierFixtureDesignProof>) => ({ ...proof, fontVersion: "outdated-fonts" }),
+      (proof: ReturnType<typeof bookDossierFixtureDesignProof>) => ({ ...proof, layoutVersion: "book-inspection-layout-v3" }),
       (proof: ReturnType<typeof bookDossierFixtureDesignProof>) => ({ ...proof, variantPages: proof.variantPages.slice(1) }),
       (proof: ReturnType<typeof bookDossierFixtureDesignProof>) => ({ ...proof, variantPages: proof.variantPages.map(entry => ({ ...entry, pageCount: 99 })) }),
     ]) {

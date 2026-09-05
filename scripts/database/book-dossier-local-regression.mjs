@@ -3,7 +3,7 @@ import { readFile, mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { build } from "esbuild";
-import { buildBookDossierMigrationPlan } from "./build-book-dossier-migration-plan.mjs";
+import { buildBookDossierMigrationPlan, DOSSIER_MIGRATION, DOSSIER_MIGRATIONS } from "./build-book-dossier-migration-plan.mjs";
 
 const root = process.cwd();
 const runtime = process.env.BOOK_DOSSIER_SQL_RUNTIME;
@@ -57,8 +57,59 @@ try {
   await rejectedTransaction("schema migration and private ledger roll back together on failed health gate", `${migrationPlan.plan} do $$begin raise exception 'synthetic rollback proof'; end;$$;`);
   assert.equal((await db.query("select to_regclass('public.book_dossiers') as object")).rows[0].object, null);
   assert.equal((await db.query("select to_regclass('public.book_dossier_schema_migrations') as object")).rows[0].object, null);
+  await db.exec(`begin; ${migrationPlan.plan}`);
+  assert.equal((await db.query("select count(*)::int as count from public.book_dossier_schema_migrations")).rows[0].count, 2);
+  await db.exec("rollback");
+  checks.push("fresh fixed-hash install executes both migrations and health gates atomically");
+
+  // Model the already applied, immutable v3 schema using the actual historical SQL.
+  // This foundation is synthetic and local; it never grants a real editorial approval.
+  const historicalSql = await readFile(path.join(root, "supabase/migrations", DOSSIER_MIGRATION.filename), "utf8");
+  await db.exec(historicalSql);
+  const trackedNames = [...historicalSql.matchAll(/create or replace function public\.(\w+)/gu)].map(match => match[1]);
+  await db.exec(`create table public.book_dossier_schema_migrations (
+    version text primary key, migration_sha256 text not null check(migration_sha256 ~ '^[0-9a-f]{64}$'),
+    repository_sha text not null check(repository_sha ~ '^[0-9a-f]{40}$'),
+    functions_sha256 text not null check(functions_sha256 ~ '^[0-9a-f]{64}$'), applied_at timestamptz not null default now()
+  ); alter table public.book_dossier_schema_migrations enable row level security;
+  revoke all on public.book_dossier_schema_migrations from public, anon, authenticated;`);
+  await db.query(`insert into public.book_dossier_schema_migrations(version,migration_sha256,repository_sha,functions_sha256)
+    select $1,$2,$3,public.literary_work_evidence_v2_sha256(string_agg(pg_get_functiondef(oid), E'\\n' order by proname))
+    from pg_proc where pronamespace='public'::regnamespace and proname=any($4::text[])`, [DOSSIER_MIGRATION.filename.replace(/\.sql$/u, ""), DOSSIER_MIGRATION.sha256, "b".repeat(40), trackedNames]);
+  let historicalRecord = (await fixture.saveBookDossierDraft(fixture.bookDossierFixture(), null, context(null))).record;
+  for (const stage of ["facts", "rights", "editorial", "design", "accessibility", "final"]) {
+    const reviewed = await fixture.reviewBookDossier(historicalRecord, stage, "APPROVED", true, { ...context(historicalRecord), ...(stage === "design" ? { designProof: fixture.bookDossierFixtureDesignProof(historicalRecord, now) } : {}) });
+    assert.deepEqual(reviewed.issues, []);
+    historicalRecord = reviewed.record;
+  }
+  historicalRecord = (await fixture.publishBookDossier(historicalRecord, context(historicalRecord))).record;
+  const historicalBank = await fixture.compileBookDossierVariantBank(historicalRecord, { now });
+  assert.deepEqual(historicalBank.issues, []);
+  const currentProof = structuredClone(historicalRecord.reviews[3].designProof);
+  historicalRecord.reviews[3].designProof.layoutVersion = "book-inspection-layout-v3";
+  const designValid = async proof => (await db.query("select public.book_dossier_design_proof_valid($1::jsonb,$2::jsonb,$3::text) as valid", [JSON.stringify(proof), JSON.stringify(historicalRecord.draft), historicalRecord.contentChecksum])).rows[0].valid;
+  assert.equal(await designValid(historicalRecord.reviews[3].designProof), true);
+  assert.equal(await designValid(currentProof), false);
+  await db.query("insert into public.book_dossiers(book_key,locale,revision,record,variant_bank,updated_by) values($1,$2,$3,$4::jsonb,$5::jsonb,$6::uuid)", [historicalRecord.draft.bookKey, historicalRecord.draft.locale, historicalRecord.revision, JSON.stringify(historicalRecord), JSON.stringify(historicalBank.bank), owner]);
+  const readHistorical = async () => (await db.query("select public.get_published_book_dossier($1::jsonb) as document", [JSON.stringify({ bookKey: historicalRecord.draft.bookKey, locale: historicalRecord.draft.locale })])).rows[0].document;
+  assert.ok(await readHistorical());
+  const historicalRows = (await db.query("select * from public.book_dossiers")).rows;
+  const originalReceipt = (await db.query("select * from public.book_dossier_schema_migrations")).rows[0];
+  await db.exec(`begin; ${migrationPlan.preflight} commit;`);
+  await rejectedTransaction("pre-upgrade function drift cannot be overwritten or receipted", `alter function public.get_published_book_dossier(jsonb) set statement_timeout='1s'; ${migrationPlan.plan}`);
+  await rejectedTransaction("verification cannot accept only the historical layout receipt", migrationPlan.verification);
   await db.exec(`begin; ${migrationPlan.plan} commit; begin; ${migrationPlan.verification} commit;`);
-  checks.push("actual fixed-hash schema-only transaction, private receipt and health checks execute");
+  assert.deepEqual((await db.query("select * from public.book_dossiers")).rows, historicalRows);
+  assert.deepEqual((await db.query("select * from public.book_dossier_schema_migrations where version=$1", [originalReceipt.version])).rows[0], originalReceipt);
+  assert.equal((await db.query("select count(*)::int as count from public.book_dossier_schema_migrations")).rows[0].count, 2);
+  assert.equal(await designValid(historicalRecord.reviews[3].designProof), false);
+  assert.equal(await designValid(currentProof), true);
+  await db.exec("set role anon");
+  assert.equal(await readHistorical(), null);
+  await db.exec("reset role");
+  checks.push("actual v3-to-v4 additive upgrade appends a receipt without rewriting records or historical approval");
+  checks.push("old v3 approval fails public read after upgrade; only current v4 with unchanged font v2 validates");
+  await db.exec("delete from public.book_dossiers");
   const progress = await db.query("select public.book_dossier_public_progress_steps($1::jsonb) as steps", [JSON.stringify(fixture.bookDossierHiddenProgressFixture())]);
   assert.deepEqual(progress.rows[0].steps, [{ id: "identity-item", label: "Fixture identity" }]);
   checks.push("SQL public progress prefix stops at hidden checkpoint without leaking or skipping IDs");
@@ -91,6 +142,9 @@ try {
       const invalidDesign = structuredClone(result.record);
       delete invalidDesign.reviews[invalidDesign.reviews.length - 1].designProof;
       await rejected("design approval requires content-bound measured variant proof", () => save(invalidDesign, record.revision));
+      const staleDesign = structuredClone(result.record);
+      staleDesign.reviews[staleDesign.reviews.length - 1].designProof.layoutVersion = "book-inspection-layout-v3";
+      await rejected("new human design review cannot submit old v3 measured approval", () => save(staleDesign, record.revision));
     }
     await save(result.record, record.revision);
     record = result.record;
@@ -172,7 +226,7 @@ try {
   await db.exec(`begin; grant execute on function public.book_dossier_content(jsonb) to public; revoke select on public.book_dossiers from authenticated; ${migrationPlan.rehearsal} commit; begin; ${migrationPlan.verification} commit;`);
   assert.deepEqual((await db.query("select record from public.book_dossiers")).rows, beforeRepeat);
   checks.push("disposable restore rehearsal normalizes stripped ACLs without changing content");
-  const report = { runtime: `PGlite ${runtimeVersion}`, scope: "Ephemeral in-memory PostgreSQL; synthetic auth/users/catalogue and prerequisite ledger foundation, synthetic design attestations; actual project is_staff, pgcrypto SHA helper, fixed-hash schema-only planner/migration and TS workflow/compiler. Browser font measurement and Docker backup/restore are separate. No external database, production writes or real editorial text.", passed: checks.length, checks, generatedAt: new Date().toISOString() };
+  const report = { runtime: `PGlite ${runtimeVersion}`, migrations: DOSSIER_MIGRATIONS, layoutVersion: migrationPlan.manifest.layoutVersion, scope: "Ephemeral in-memory PostgreSQL; synthetic auth/users/catalogue and prerequisite ledger foundation, synthetic design attestations; actual project is_staff, pgcrypto SHA helper, fixed-hash schema-only planner/migrations, historical v3-to-v4 upgrade and TS workflow/compiler. Browser font measurement and Docker backup/restore are separate. No external database, production writes or real editorial text.", passed: checks.length, checks, generatedAt: new Date().toISOString() };
   const output = path.join(root, "reports/bookshelf-owner-evidence/dossier-local-sql.json");
   await mkdir(path.dirname(output), { recursive: true });
   await writeFile(output, `${JSON.stringify(report, null, 2)}\n`);

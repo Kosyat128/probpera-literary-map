@@ -24,7 +24,8 @@ describe("private CMS dossier integration", () => {
     expect(measure).toContain("document.fonts.load");
     expect(measure).toContain("canvas.measureText(text).width");
     expect(measure).toContain("layoutBookInspectionDocument(toBookEditorialDocument");
-    const migration = read("supabase/migrations/20260905_book_dossiers_v2.sql");
+    const migration = read("supabase/migrations/20260905_book_dossiers_layout_v4.sql");
+    expect(read("supabase/migrations/20260905_book_dossiers_v2.sql")).toContain("is distinct from 'book-inspection-layout-v3'");
     for (const [file, constant] of [["bookTypography.ts", "BOOK_TYPOGRAPHY_VERSION"], ["bookInspectionPageLayout.ts", "BOOK_INSPECTION_LAYOUT_VERSION"]]) {
       const version = read(`src/books/${file}`).match(new RegExp(`${constant} = "([^"]+)"`, "u"))?.[1];
       expect(version).toBeTruthy();

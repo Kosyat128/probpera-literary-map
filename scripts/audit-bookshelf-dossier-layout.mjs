@@ -75,7 +75,13 @@ try {
         } : null,
         sections: dossier.pages.map(page => ({ id: page.id, title: page.title, paragraphCharacters: page.paragraphs.reduce((sum, paragraph) => sum + paragraph.length, 0),
           rows: page.rows.length, items: page.blocks.reduce((sum, block) => sum + block.items.length, 0), sources: page.sources.length })),
-        anchorsRetained: result.document?.pages.every(page => Boolean(page.anchor?.sectionId)) ?? null });
+        anchorsRetained: result.document?.pages.every(page => Boolean(page.anchor?.sectionId)) ?? null,
+        paragraphFragments: result.document?.pages.flatMap(page => {
+          const layout = api.getBookInspectionPageLayout(page);
+          const counts = new Map();
+          for (const command of layout.commands) if (command.sourceId.includes(":paragraph:")) counts.set(command.sourceId, (counts.get(command.sourceId) || 0) + 1);
+          return [...counts].map(([sourceId, lines]) => ({ pageId: page.id, sourceId, lines }));
+        }) || [] });
     }
     return { scope: "Real canonical first 17 catalogue dossiers in RU/EN, including released article relations and the public legacy adapter. This is a font-ready offscreen pagination probe, not a screenshot or reviewed V2 tier certification. Country names use Intl.DisplayNames; English genre labels use the public selector without the UI translation callback.",
       typography: api.BookDossierTypographyTokens, spacing: api.BookDossierSpacingTokens, fontReady: true, cases };

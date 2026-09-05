@@ -17,6 +17,12 @@ font-size: 10px;
 font-weight: 700;
 letter-spacing: 0.11em;
 }
+.site-header {
+  background:
+    radial-gradient(ellipse at 12% 100%, color-mix(in srgb, var(--orange) 16%, transparent), transparent 25rem),
+    linear-gradient(to top, color-mix(in srgb, var(--orange) 6%, transparent), transparent 72%),
+    rgba(77, 8, 124, 0.97);
+}
 .magazine-hero .section-kicker {
 font-family: var(--sans);
 font-size: 10px;

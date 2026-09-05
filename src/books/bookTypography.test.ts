@@ -21,6 +21,42 @@ describe("owner book typography", () => {
     expect(JSON.stringify(layout)).not.toContain("…");
   });
 
+  it.each(["Освобожденный мир", "Убить пересмешника…", "Гордость и предубеждение"])("keeps the complete long title on a narrow spine: %s", (text) => {
+    const options = { text, width: 79, height: 103, minimumFontSize: 10.25, maximumFontSize: 25, leading: 1.16, maximumLines: 8, measure: (line: string, size: number) => line.length * size * .62 };
+    expect(fitBookText(options).fits).toBe(false);
+    const layout = fitBookText({ ...options, discretionaryHyphens: true });
+    expect(layout.fits).toBe(true);
+    expect(layout.text).toBe(text);
+    expect(layout.lines.join("").replace(/[-\s]/gu, "")).toBe(text.replace(/\s/gu, ""));
+    expect(layout.lines.some((line) => line.endsWith("-"))).toBe(true);
+    expect(layout.width).toBeLessThanOrEqual(options.width);
+    expect(layout.height).toBeLessThanOrEqual(options.height);
+    expect(layout.fontSize).toBeGreaterThanOrEqual(options.minimumFontSize);
+  });
+
+  it("keeps signs with their syllable and does not invent a break in Latin words", () => {
+    const text = "Объявление майский";
+    const lines = balanceBookTextLines(text, 5, 8, (line) => line.length, true);
+    expect(lines).not.toBeNull();
+    expect(lines?.some((line) => /^[ьъй]/iu.test(line))).toBe(false);
+    expect(lines?.some((line) => /^[а-яё]-$/iu.test(line))).toBe(false);
+    expect(lines?.join("").replace(/[-\s]/gu, "")).toBe(text.replace(/\s/gu, ""));
+    expect(balanceBookTextLines("Unbreakable", 5, 8, (line) => line.length, true)).toBeNull();
+  });
+
+  it("wraps a written CamelCase boundary without adding a Latin hyphen", () => {
+    const text = "Number9Dream";
+    const options = { text, width: 79, height: 103, minimumFontSize: 10.25, maximumFontSize: 25, leading: 1.16, maximumLines: 8, measure: (line: string, size: number) => line.length * size * .65 };
+    expect(fitBookText(options).fits).toBe(false);
+    const layout = fitBookText({ ...options, discretionaryHyphens: true });
+    expect(layout.fits).toBe(true);
+    expect(layout.text).toBe(text);
+    expect(layout.lines).toEqual(["Number9", "Dream"]);
+    expect(layout.lines.join("")).toBe(text);
+    expect(layout.width).toBeLessThanOrEqual(options.width);
+    expect(layout.height).toBeLessThanOrEqual(options.height);
+  });
+
   it("balances words without leaving a short preposition at a line end", () => {
     const lines = balanceBookTextLines("Война и мир", 9, 3, (line) => line.length);
     expect(lines).toEqual(["Война", "и мир"]);

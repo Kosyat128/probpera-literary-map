@@ -1,0 +1,221 @@
+{
+  "state": {
+    "phase": "INSPECTION_CLOSED",
+    "selectedKey": "england:h_g_wells:when-the-sleeper-wakes",
+    "selectedTitle": "Когда спящий проснется",
+    "pageIndex": 0,
+    "pageCount": 9,
+    "canvas": {
+      "x": 69,
+      "y": 113.046875,
+      "width": 1582,
+      "height": 774
+    },
+    "camera": {
+      "position": [
+        0.87072,
+        0.40031,
+        6.42042
+      ],
+      "fov": 35.00058
+    },
+    "qualityProfile": "HIGH",
+    "lightExposure": 0.38,
+    "insets": {
+      "top": 0,
+      "right": 421.39,
+      "bottom": 72,
+      "left": 0
+    },
+    "books": [
+      {
+        "key": "russia:tolstoy:war-and-peace",
+        "title": "Война и мир",
+        "sourceIndex": 4,
+        "x": -58.206965591003325,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "england:william_shakespeare:hamlet",
+        "title": "Гамлет",
+        "sourceIndex": 5,
+        "x": 16.288850137268305,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "england:david_mitchell:slade-house",
+        "title": "Голодный дом",
+        "sourceIndex": 6,
+        "x": 90.78466586553975,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "france:flaubert:madame-bovary",
+        "title": "Госпожа Бовари",
+        "sourceIndex": 7,
+        "x": 165.28048159381132,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "russia:chekhov:the-lady-with-the-dog",
+        "title": "Дама с собачкой",
+        "sourceIndex": 8,
+        "x": 239.77629732208283,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "russia:chekhov:the-duel",
+        "title": "Дуэль",
+        "sourceIndex": 9,
+        "x": 314.27211305035416,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "russia:chekhov:uncle-vanya",
+        "title": "Дядя Ваня",
+        "sourceIndex": 10,
+        "x": 388.76792877862584,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "england:h_g_wells:the-history-of-mr-polly",
+        "title": "История мистера Полли",
+        "sourceIndex": 11,
+        "x": 463.2637445068973,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "england:h_g_wells:when-the-sleeper-wakes",
+        "title": "Когда спящий проснется",
+        "sourceIndex": 12,
+        "x": 476.96821126870327,
+        "y": 465.6149346319382,
+        "z": 0.9632986931515314
+      },
+      {
+        "key": "england:david_mitchell:the-bone-clocks",
+        "title": "Костяные часы",
+        "sourceIndex": 13,
+        "x": 892.3261618362453,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "england:david_mitchell:ghostwritten",
+        "title": "Литературный призрак",
+        "sourceIndex": 14,
+        "x": 966.8219775645169,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "usa:vladimir_nabokov:lolita-editorial",
+        "title": "Лолита",
+        "sourceIndex": 15,
+        "x": 1041.3177932927886,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "england:h_g_wells:men-like-gods",
+        "title": "Люди как боги",
+        "sourceIndex": 16,
+        "x": 1115.81360902106,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+        "title": "Над пропастью во ржи",
+        "sourceIndex": 17,
+        "x": 1190.3094247493314,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "england:aldous_huxley:brave-new-world-editorial",
+        "title": "О дивный новый мир",
+        "sourceIndex": 18,
+        "x": 1264.805240477603,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "england:h_g_wells:the-world-set-free",
+        "title": "Освобожденный мир",
+        "sourceIndex": 19,
+        "x": 1339.3010562058746,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      },
+      {
+        "key": "france:victor_hugo:les-miserables",
+        "title": "Отверженные",
+        "sourceIndex": 20,
+        "x": 1413.7968719341459,
+        "y": 562.8891177566213,
+        "z": 0.9668852876950117
+      }
+    ],
+    "resources": {
+      "Texture": {
+        "created": 92,
+        "deleted": 21,
+        "live": 71
+      },
+      "Framebuffer": {
+        "created": 6,
+        "deleted": 0,
+        "live": 6
+      },
+      "Renderbuffer": {
+        "created": 2,
+        "deleted": 0,
+        "live": 2
+      },
+      "Buffer": {
+        "created": 543,
+        "deleted": 81,
+        "live": 462
+      },
+      "Program": {
+        "created": 29,
+        "deleted": 3,
+        "live": 26
+      },
+      "Shader": {
+        "created": 58,
+        "deleted": 58,
+        "live": 0
+      },
+      "VertexArray": {
+        "created": 218,
+        "deleted": 34,
+        "live": 184
+      }
+    },
+    "draws": 12025,
+    "pendingFrames": 1,
+    "renderer": {
+      "geometries": 124,
+      "textures": 67,
+      "calls": 132,
+      "triangles": 8998
+    }
+  },
+  "footprint": {
+    "x": 416.27038470137006,
+    "y": 203.3612042635886,
+    "right": 881.3784435782923,
+    "bottom": 742.4241443006539,
+    "points": 248
+  }
+}

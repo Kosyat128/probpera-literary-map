@@ -1,0 +1,4100 @@
+{
+  "base": "http://127.0.0.1:4185/",
+  "startedAt": "2026-09-05T18:50:37.693Z",
+  "cases": [
+    {
+      "width": 1440,
+      "locale": "ru",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 82.59375,
+          "y": 244.171875,
+          "width": 1274.8125,
+          "height": 52,
+          "top": 244.171875,
+          "right": 1357.40625,
+          "bottom": 296.171875,
+          "left": 82.59375
+        },
+        "width": 1440,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection search views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Текущая полкаВесь архив46Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок⌄Весь архив46 произведений",
+            "rect": {
+              "x": 82.59375,
+              "y": 244.171875,
+              "width": 541.421875,
+              "height": 52,
+              "top": 244.171875,
+              "right": 624.015625,
+              "bottom": 296.171875,
+              "left": 82.59375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Поиск по книге, автору или странеОбласть поискаНа полкеВ архивеВ журнале",
+            "rect": {
+              "x": 636.015625,
+              "y": 247.171875,
+              "width": 280,
+              "height": 46,
+              "top": 247.171875,
+              "right": 916.015625,
+              "bottom": 293.171875,
+              "left": 636.015625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ПолкаКаталог",
+            "rect": {
+              "x": 928.015625,
+              "y": 245.171875,
+              "width": 193.390625,
+              "height": 50,
+              "top": 245.171875,
+              "right": 1121.40625,
+              "bottom": 295.171875,
+              "left": 928.015625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 результатов",
+            "rect": {
+              "x": 1133.40625,
+              "y": 248.171875,
+              "width": 44,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1177.40625,
+              "bottom": 292.171875,
+              "left": 1133.40625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 1189.40625,
+              "y": 248.171875,
+              "width": 112,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1301.40625,
+              "bottom": 292.171875,
+              "left": 1189.40625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "Новая полкаКачествоАвто · ВысокоеВысокоеСбалансированноеЭкономичное",
+            "rect": {
+              "x": 1313.40625,
+              "y": 248.171875,
+              "width": 44,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1357.40625,
+              "bottom": 292.171875,
+              "left": 1313.40625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+            "rect": {
+              "x": 82.59375,
+              "y": 244.171875,
+              "width": 300,
+              "height": 44,
+              "top": 244.171875,
+              "right": 382.59375,
+              "bottom": 288.171875,
+              "left": 82.59375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "На полкеВ архивеВ журнале",
+            "rect": {
+              "x": 803.015625,
+              "y": 248.171875,
+              "width": 112,
+              "height": 44,
+              "top": 248.171875,
+              "right": 915.015625,
+              "bottom": 292.171875,
+              "left": 803.015625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Полка",
+            "rect": {
+              "x": 931.015625,
+              "y": 248.171875,
+              "width": 92.6875,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1023.703125,
+              "bottom": 292.171875,
+              "left": 931.015625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Каталог",
+            "rect": {
+              "x": 1025.703125,
+              "y": 248.171875,
+              "width": 92.703125,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1118.40625,
+              "bottom": 292.171875,
+              "left": 1025.703125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 1133.40625,
+              "y": 248.171875,
+              "width": 44,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1177.40625,
+              "bottom": 292.171875,
+              "left": 1133.40625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 1189.40625,
+              "y": 248.171875,
+              "width": 112,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1301.40625,
+              "bottom": 292.171875,
+              "left": 1189.40625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 1313.40625,
+              "y": 248.171875,
+              "width": 44,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1357.40625,
+              "bottom": 292.171875,
+              "left": 1313.40625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Весь архив",
+            "rect": {
+              "x": 90.59375,
+              "y": 254.578125,
+              "width": 86.953125,
+              "height": 23.1875,
+              "top": 254.578125,
+              "right": 177.546875,
+              "bottom": 277.765625,
+              "left": 90.59375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 87,
+            "clientWidth": 87
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 186.546875,
+              "y": 255.765625,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 255.765625,
+              "right": 215.640625,
+              "bottom": 276.5625,
+              "left": 186.546875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          },
+          {
+            "text": "Полка",
+            "rect": {
+              "x": 969.03125,
+              "y": 261.078125,
+              "width": 41.640625,
+              "height": 18.1875,
+              "top": 261.078125,
+              "right": 1010.671875,
+              "bottom": 279.265625,
+              "left": 969.03125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 42,
+            "clientWidth": 42
+          },
+          {
+            "text": "Каталог",
+            "rect": {
+              "x": 1057.6875,
+              "y": 261.078125,
+              "width": 53.75,
+              "height": 18.1875,
+              "top": 261.078125,
+              "right": 1111.4375,
+              "bottom": 279.265625,
+              "left": 1057.6875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1",
+            "scrollWidth": 54,
+            "clientWidth": 54
+          },
+          {
+            "text": "Наугад",
+            "rect": {
+              "x": 1233.78125,
+              "y": 261.078125,
+              "width": 48.25,
+              "height": 18.1875,
+              "top": 261.078125,
+              "right": 1282.03125,
+              "bottom": 279.265625,
+              "left": 1233.78125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 48,
+            "clientWidth": 48
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 637.015625,
+            "y": 248.171875,
+            "width": 166,
+            "height": 44,
+            "top": 248.171875,
+            "right": 803.015625,
+            "bottom": 292.171875,
+            "left": 637.015625
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 1077.40625,
+        "y": 301.171875,
+        "width": 280,
+        "height": 166.546875,
+        "top": 301.171875,
+        "right": 1357.40625,
+        "bottom": 467.71875,
+        "left": 1077.40625
+      },
+      "qualityLabel": {
+        "text": "Качество",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 82.59375,
+          "y": 244.171875,
+          "width": 1274.8125,
+          "height": 52,
+          "top": 244.171875,
+          "right": 1357.40625,
+          "bottom": 296.171875,
+          "left": 82.59375
+        },
+        "width": 1440,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection search views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Current shelfComplete archive46Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet⌄Complete archive46 works",
+            "rect": {
+              "x": 82.59375,
+              "y": 244.171875,
+              "width": 513.984375,
+              "height": 52,
+              "top": 244.171875,
+              "right": 596.578125,
+              "bottom": 296.171875,
+              "left": 82.59375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Search by book, writer or countrySearch scopeThis shelfArchiveJournal",
+            "rect": {
+              "x": 608.578125,
+              "y": 247.171875,
+              "width": 280,
+              "height": 46,
+              "top": 247.171875,
+              "right": 888.578125,
+              "bottom": 293.171875,
+              "left": 608.578125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ShelfCatalogue",
+            "rect": {
+              "x": 900.578125,
+              "y": 245.171875,
+              "width": 199.46875,
+              "height": 50,
+              "top": 245.171875,
+              "right": 1100.046875,
+              "bottom": 295.171875,
+              "left": 900.578125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 results",
+            "rect": {
+              "x": 1112.046875,
+              "y": 248.171875,
+              "width": 44,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1156.046875,
+              "bottom": 292.171875,
+              "left": 1112.046875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 1168.046875,
+              "y": 248.171875,
+              "width": 133.359375,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1301.40625,
+              "bottom": 292.171875,
+              "left": 1168.046875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "New shelfQualityAuto · HighHighBalancedEconomy",
+            "rect": {
+              "x": 1313.40625,
+              "y": 248.171875,
+              "width": 44,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1357.40625,
+              "bottom": 292.171875,
+              "left": 1313.40625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+            "rect": {
+              "x": 82.59375,
+              "y": 244.171875,
+              "width": 300,
+              "height": 44,
+              "top": 244.171875,
+              "right": 382.59375,
+              "bottom": 288.171875,
+              "left": 82.59375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "This shelfArchiveJournal",
+            "rect": {
+              "x": 775.578125,
+              "y": 248.171875,
+              "width": 112,
+              "height": 44,
+              "top": 248.171875,
+              "right": 887.578125,
+              "bottom": 292.171875,
+              "left": 775.578125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Shelf",
+            "rect": {
+              "x": 903.578125,
+              "y": 248.171875,
+              "width": 95.734375,
+              "height": 44,
+              "top": 248.171875,
+              "right": 999.3125,
+              "bottom": 292.171875,
+              "left": 903.578125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Catalogue",
+            "rect": {
+              "x": 1001.3125,
+              "y": 248.171875,
+              "width": 95.734375,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1097.046875,
+              "bottom": 292.171875,
+              "left": 1001.3125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 1112.046875,
+              "y": 248.171875,
+              "width": 44,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1156.046875,
+              "bottom": 292.171875,
+              "left": 1112.046875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 1168.046875,
+              "y": 248.171875,
+              "width": 133.359375,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1301.40625,
+              "bottom": 292.171875,
+              "left": 1168.046875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 1313.40625,
+              "y": 248.171875,
+              "width": 44,
+              "height": 44,
+              "top": 248.171875,
+              "right": 1357.40625,
+              "bottom": 292.171875,
+              "left": 1313.40625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Complete archive",
+            "rect": {
+              "x": 90.59375,
+              "y": 254.578125,
+              "width": 131.671875,
+              "height": 23.1875,
+              "top": 254.578125,
+              "right": 222.265625,
+              "bottom": 277.765625,
+              "left": 90.59375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 132,
+            "clientWidth": 132
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 231.265625,
+              "y": 255.765625,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 255.765625,
+              "right": 260.359375,
+              "bottom": 276.5625,
+              "left": 231.265625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          },
+          {
+            "text": "Shelf",
+            "rect": {
+              "x": 946.953125,
+              "y": 261.078125,
+              "width": 33.984375,
+              "height": 18.1875,
+              "top": 261.078125,
+              "right": 980.9375,
+              "bottom": 279.265625,
+              "left": 946.953125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 34,
+            "clientWidth": 34
+          },
+          {
+            "text": "Catalogue",
+            "rect": {
+              "x": 1027.9375,
+              "y": 261.078125,
+              "width": 67.484375,
+              "height": 18.1875,
+              "top": 261.078125,
+              "right": 1095.421875,
+              "bottom": 279.265625,
+              "left": 1027.9375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1",
+            "scrollWidth": 67,
+            "clientWidth": 67
+          },
+          {
+            "text": "Surprise me",
+            "rect": {
+              "x": 1208.046875,
+              "y": 261.078125,
+              "width": 78.359375,
+              "height": 18.1875,
+              "top": 261.078125,
+              "right": 1286.40625,
+              "bottom": 279.265625,
+              "left": 1208.046875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 78,
+            "clientWidth": 78
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 609.578125,
+            "y": 248.171875,
+            "width": 166,
+            "height": 44,
+            "top": 248.171875,
+            "right": 775.578125,
+            "bottom": 292.171875,
+            "left": 609.578125
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 1077.40625,
+        "y": 301.171875,
+        "width": 280,
+        "height": 166.546875,
+        "top": 301.171875,
+        "right": 1357.40625,
+        "bottom": 467.71875,
+        "left": 1077.40625
+      },
+      "qualityLabel": {
+        "text": "Quality",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    },
+    {
+      "width": 1100,
+      "locale": "ru",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 69,
+          "y": 244.0625,
+          "width": 962,
+          "height": 111,
+          "top": 244.0625,
+          "right": 1031,
+          "bottom": 355.0625,
+          "left": 69
+        },
+        "width": 1100,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection collection search search\" \"views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Текущая полкаВесь архив46Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок⌄Весь архив46 произведений",
+            "rect": {
+              "x": 69,
+              "y": 244.0625,
+              "width": 476,
+              "height": 52,
+              "top": 244.0625,
+              "right": 545,
+              "bottom": 296.0625,
+              "left": 69
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Поиск по книге, автору или странеОбласть поискаНа полкеВ архивеВ журнале",
+            "rect": {
+              "x": 555,
+              "y": 247.0625,
+              "width": 476,
+              "height": 46,
+              "top": 247.0625,
+              "right": 1031,
+              "bottom": 293.0625,
+              "left": 555
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ПолкаКаталог",
+            "rect": {
+              "x": 69,
+              "y": 305.0625,
+              "width": 193.390625,
+              "height": 50,
+              "top": 305.0625,
+              "right": 262.390625,
+              "bottom": 355.0625,
+              "left": 69
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 результатов",
+            "rect": {
+              "x": 501,
+              "y": 308.0625,
+              "width": 44,
+              "height": 44,
+              "top": 308.0625,
+              "right": 545,
+              "bottom": 352.0625,
+              "left": 501
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 865,
+              "y": 308.0625,
+              "width": 112,
+              "height": 44,
+              "top": 308.0625,
+              "right": 977,
+              "bottom": 352.0625,
+              "left": 865
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "Новая полкаКачествоАвто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+            "rect": {
+              "x": 987,
+              "y": 308.0625,
+              "width": 44,
+              "height": 44,
+              "top": 308.0625,
+              "right": 1031,
+              "bottom": 352.0625,
+              "left": 987
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+            "rect": {
+              "x": 69,
+              "y": 244.0625,
+              "width": 476,
+              "height": 44,
+              "top": 244.0625,
+              "right": 545,
+              "bottom": 288.0625,
+              "left": 69
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "На полкеВ архивеВ журнале",
+            "rect": {
+              "x": 918,
+              "y": 248.0625,
+              "width": 112,
+              "height": 44,
+              "top": 248.0625,
+              "right": 1030,
+              "bottom": 292.0625,
+              "left": 918
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Полка",
+            "rect": {
+              "x": 72,
+              "y": 308.0625,
+              "width": 92.6875,
+              "height": 44,
+              "top": 308.0625,
+              "right": 164.6875,
+              "bottom": 352.0625,
+              "left": 72
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Каталог",
+            "rect": {
+              "x": 166.6875,
+              "y": 308.0625,
+              "width": 92.703125,
+              "height": 44,
+              "top": 308.0625,
+              "right": 259.390625,
+              "bottom": 352.0625,
+              "left": 166.6875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 501,
+              "y": 308.0625,
+              "width": 44,
+              "height": 44,
+              "top": 308.0625,
+              "right": 545,
+              "bottom": 352.0625,
+              "left": 501
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 865,
+              "y": 308.0625,
+              "width": 112,
+              "height": 44,
+              "top": 308.0625,
+              "right": 977,
+              "bottom": 352.0625,
+              "left": 865
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 987,
+              "y": 308.0625,
+              "width": 44,
+              "height": 44,
+              "top": 308.0625,
+              "right": 1031,
+              "bottom": 352.0625,
+              "left": 987
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Весь архив",
+            "rect": {
+              "x": 77,
+              "y": 254.46875,
+              "width": 86.953125,
+              "height": 23.1875,
+              "top": 254.46875,
+              "right": 163.953125,
+              "bottom": 277.65625,
+              "left": 77
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 87,
+            "clientWidth": 87
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 172.953125,
+              "y": 255.65625,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 255.65625,
+              "right": 202.046875,
+              "bottom": 276.453125,
+              "left": 172.953125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          },
+          {
+            "text": "Полка",
+            "rect": {
+              "x": 110.015625,
+              "y": 320.96875,
+              "width": 41.640625,
+              "height": 18.1875,
+              "top": 320.96875,
+              "right": 151.65625,
+              "bottom": 339.15625,
+              "left": 110.015625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 42,
+            "clientWidth": 42
+          },
+          {
+            "text": "Каталог",
+            "rect": {
+              "x": 198.671875,
+              "y": 320.96875,
+              "width": 53.75,
+              "height": 18.1875,
+              "top": 320.96875,
+              "right": 252.421875,
+              "bottom": 339.15625,
+              "left": 198.671875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1",
+            "scrollWidth": 54,
+            "clientWidth": 54
+          },
+          {
+            "text": "Наугад",
+            "rect": {
+              "x": 909.375,
+              "y": 320.96875,
+              "width": 48.25,
+              "height": 18.1875,
+              "top": 320.96875,
+              "right": 957.625,
+              "bottom": 339.15625,
+              "left": 909.375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 48,
+            "clientWidth": 48
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 556,
+            "y": 248.0625,
+            "width": 362,
+            "height": 44,
+            "top": 248.0625,
+            "right": 918,
+            "bottom": 292.0625,
+            "left": 556
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 751,
+        "y": 361.0625,
+        "width": 280,
+        "height": 166.546875,
+        "top": 361.0625,
+        "right": 1031,
+        "bottom": 527.609375,
+        "left": 751
+      },
+      "qualityLabel": {
+        "text": "Качество",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    },
+    {
+      "width": 1100,
+      "locale": "en",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 69,
+          "y": 244.0625,
+          "width": 962,
+          "height": 111,
+          "top": 244.0625,
+          "right": 1031,
+          "bottom": 355.0625,
+          "left": 69
+        },
+        "width": 1100,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection collection search search\" \"views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Current shelfComplete archive46Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet⌄Complete archive46 works",
+            "rect": {
+              "x": 69,
+              "y": 244.0625,
+              "width": 476,
+              "height": 52,
+              "top": 244.0625,
+              "right": 545,
+              "bottom": 296.0625,
+              "left": 69
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Search by book, writer or countrySearch scopeThis shelfArchiveJournal",
+            "rect": {
+              "x": 555,
+              "y": 247.0625,
+              "width": 476,
+              "height": 46,
+              "top": 247.0625,
+              "right": 1031,
+              "bottom": 293.0625,
+              "left": 555
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ShelfCatalogue",
+            "rect": {
+              "x": 69,
+              "y": 305.0625,
+              "width": 199.46875,
+              "height": 50,
+              "top": 305.0625,
+              "right": 268.46875,
+              "bottom": 355.0625,
+              "left": 69
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 results",
+            "rect": {
+              "x": 501,
+              "y": 308.0625,
+              "width": 44,
+              "height": 44,
+              "top": 308.0625,
+              "right": 545,
+              "bottom": 352.0625,
+              "left": 501
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 843.640625,
+              "y": 308.0625,
+              "width": 133.359375,
+              "height": 44,
+              "top": 308.0625,
+              "right": 977,
+              "bottom": 352.0625,
+              "left": 843.640625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "New shelfQualityAuto · BalancedHighBalancedEconomy",
+            "rect": {
+              "x": 987,
+              "y": 308.0625,
+              "width": 44,
+              "height": 44,
+              "top": 308.0625,
+              "right": 1031,
+              "bottom": 352.0625,
+              "left": 987
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+            "rect": {
+              "x": 69,
+              "y": 244.0625,
+              "width": 476,
+              "height": 44,
+              "top": 244.0625,
+              "right": 545,
+              "bottom": 288.0625,
+              "left": 69
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "This shelfArchiveJournal",
+            "rect": {
+              "x": 918,
+              "y": 248.0625,
+              "width": 112,
+              "height": 44,
+              "top": 248.0625,
+              "right": 1030,
+              "bottom": 292.0625,
+              "left": 918
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Shelf",
+            "rect": {
+              "x": 72,
+              "y": 308.0625,
+              "width": 95.734375,
+              "height": 44,
+              "top": 308.0625,
+              "right": 167.734375,
+              "bottom": 352.0625,
+              "left": 72
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Catalogue",
+            "rect": {
+              "x": 169.734375,
+              "y": 308.0625,
+              "width": 95.734375,
+              "height": 44,
+              "top": 308.0625,
+              "right": 265.46875,
+              "bottom": 352.0625,
+              "left": 169.734375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 501,
+              "y": 308.0625,
+              "width": 44,
+              "height": 44,
+              "top": 308.0625,
+              "right": 545,
+              "bottom": 352.0625,
+              "left": 501
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 843.640625,
+              "y": 308.0625,
+              "width": 133.359375,
+              "height": 44,
+              "top": 308.0625,
+              "right": 977,
+              "bottom": 352.0625,
+              "left": 843.640625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 987,
+              "y": 308.0625,
+              "width": 44,
+              "height": 44,
+              "top": 308.0625,
+              "right": 1031,
+              "bottom": 352.0625,
+              "left": 987
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Complete archive",
+            "rect": {
+              "x": 77,
+              "y": 254.46875,
+              "width": 131.671875,
+              "height": 23.1875,
+              "top": 254.46875,
+              "right": 208.671875,
+              "bottom": 277.65625,
+              "left": 77
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 132,
+            "clientWidth": 132
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 217.671875,
+              "y": 255.65625,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 255.65625,
+              "right": 246.765625,
+              "bottom": 276.453125,
+              "left": 217.671875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          },
+          {
+            "text": "Shelf",
+            "rect": {
+              "x": 115.375,
+              "y": 320.96875,
+              "width": 33.984375,
+              "height": 18.1875,
+              "top": 320.96875,
+              "right": 149.359375,
+              "bottom": 339.15625,
+              "left": 115.375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 34,
+            "clientWidth": 34
+          },
+          {
+            "text": "Catalogue",
+            "rect": {
+              "x": 196.359375,
+              "y": 320.96875,
+              "width": 67.484375,
+              "height": 18.1875,
+              "top": 320.96875,
+              "right": 263.84375,
+              "bottom": 339.15625,
+              "left": 196.359375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1",
+            "scrollWidth": 67,
+            "clientWidth": 67
+          },
+          {
+            "text": "Surprise me",
+            "rect": {
+              "x": 883.640625,
+              "y": 320.96875,
+              "width": 78.359375,
+              "height": 18.1875,
+              "top": 320.96875,
+              "right": 962,
+              "bottom": 339.15625,
+              "left": 883.640625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 78,
+            "clientWidth": 78
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 556,
+            "y": 248.0625,
+            "width": 362,
+            "height": 44,
+            "top": 248.0625,
+            "right": 918,
+            "bottom": 292.0625,
+            "left": 556
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 751,
+        "y": 361.0625,
+        "width": 280,
+        "height": 166.546875,
+        "top": 361.0625,
+        "right": 1031,
+        "bottom": 527.609375,
+        "left": 751
+      },
+      "qualityLabel": {
+        "text": "Quality",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 55.71875,
+          "y": 243.625,
+          "width": 656.5625,
+          "height": 111,
+          "top": 243.625,
+          "right": 712.28125,
+          "bottom": 354.625,
+          "left": 55.71875
+        },
+        "width": 768,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection collection search search\" \"views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Текущая полкаВесь архив46Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок⌄Весь архив46 произведений",
+            "rect": {
+              "x": 55.71875,
+              "y": 243.625,
+              "width": 323.28125,
+              "height": 52,
+              "top": 243.625,
+              "right": 379,
+              "bottom": 295.625,
+              "left": 55.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Поиск по книге, автору или странеОбласть поискаНа полкеВ архивеВ журнале",
+            "rect": {
+              "x": 389,
+              "y": 246.625,
+              "width": 323.28125,
+              "height": 46,
+              "top": 246.625,
+              "right": 712.28125,
+              "bottom": 292.625,
+              "left": 389
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ПолкаКаталог",
+            "rect": {
+              "x": 55.71875,
+              "y": 304.625,
+              "width": 193.390625,
+              "height": 50,
+              "top": 304.625,
+              "right": 249.109375,
+              "bottom": 354.625,
+              "left": 55.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 результатов",
+            "rect": {
+              "x": 335,
+              "y": 307.625,
+              "width": 44,
+              "height": 44,
+              "top": 307.625,
+              "right": 379,
+              "bottom": 351.625,
+              "left": 335
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 546.28125,
+              "y": 307.625,
+              "width": 112,
+              "height": 44,
+              "top": 307.625,
+              "right": 658.28125,
+              "bottom": 351.625,
+              "left": 546.28125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "Новая полкаКачествоАвто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+            "rect": {
+              "x": 668.28125,
+              "y": 307.625,
+              "width": 44,
+              "height": 44,
+              "top": 307.625,
+              "right": 712.28125,
+              "bottom": 351.625,
+              "left": 668.28125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+            "rect": {
+              "x": 55.71875,
+              "y": 243.625,
+              "width": 323.28125,
+              "height": 44,
+              "top": 243.625,
+              "right": 379,
+              "bottom": 287.625,
+              "left": 55.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "На полкеВ архивеВ журнале",
+            "rect": {
+              "x": 599.28125,
+              "y": 247.625,
+              "width": 112,
+              "height": 44,
+              "top": 247.625,
+              "right": 711.28125,
+              "bottom": 291.625,
+              "left": 599.28125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Полка",
+            "rect": {
+              "x": 58.71875,
+              "y": 307.625,
+              "width": 92.6875,
+              "height": 44,
+              "top": 307.625,
+              "right": 151.40625,
+              "bottom": 351.625,
+              "left": 58.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Каталог",
+            "rect": {
+              "x": 153.40625,
+              "y": 307.625,
+              "width": 92.703125,
+              "height": 44,
+              "top": 307.625,
+              "right": 246.109375,
+              "bottom": 351.625,
+              "left": 153.40625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 335,
+              "y": 307.625,
+              "width": 44,
+              "height": 44,
+              "top": 307.625,
+              "right": 379,
+              "bottom": 351.625,
+              "left": 335
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 546.28125,
+              "y": 307.625,
+              "width": 112,
+              "height": 44,
+              "top": 307.625,
+              "right": 658.28125,
+              "bottom": 351.625,
+              "left": 546.28125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 668.28125,
+              "y": 307.625,
+              "width": 44,
+              "height": 44,
+              "top": 307.625,
+              "right": 712.28125,
+              "bottom": 351.625,
+              "left": 668.28125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Весь архив",
+            "rect": {
+              "x": 63.71875,
+              "y": 254.03125,
+              "width": 86.953125,
+              "height": 23.1875,
+              "top": 254.03125,
+              "right": 150.671875,
+              "bottom": 277.21875,
+              "left": 63.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 87,
+            "clientWidth": 87
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 159.671875,
+              "y": 255.21875,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 255.21875,
+              "right": 188.765625,
+              "bottom": 276.015625,
+              "left": 159.671875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          },
+          {
+            "text": "Полка",
+            "rect": {
+              "x": 96.734375,
+              "y": 320.53125,
+              "width": 41.640625,
+              "height": 18.1875,
+              "top": 320.53125,
+              "right": 138.375,
+              "bottom": 338.71875,
+              "left": 96.734375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 42,
+            "clientWidth": 42
+          },
+          {
+            "text": "Каталог",
+            "rect": {
+              "x": 185.390625,
+              "y": 320.53125,
+              "width": 53.75,
+              "height": 18.1875,
+              "top": 320.53125,
+              "right": 239.140625,
+              "bottom": 338.71875,
+              "left": 185.390625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1",
+            "scrollWidth": 54,
+            "clientWidth": 54
+          },
+          {
+            "text": "Наугад",
+            "rect": {
+              "x": 590.65625,
+              "y": 320.53125,
+              "width": 48.25,
+              "height": 18.1875,
+              "top": 320.53125,
+              "right": 638.90625,
+              "bottom": 338.71875,
+              "left": 590.65625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 48,
+            "clientWidth": 48
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 390,
+            "y": 247.625,
+            "width": 209.28125,
+            "height": 44,
+            "top": 247.625,
+            "right": 599.28125,
+            "bottom": 291.625,
+            "left": 390
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 432.28125,
+        "y": 360.625,
+        "width": 280,
+        "height": 166.546875,
+        "top": 360.625,
+        "right": 712.28125,
+        "bottom": 527.171875,
+        "left": 432.28125
+      },
+      "qualityLabel": {
+        "text": "Качество",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    },
+    {
+      "width": 768,
+      "locale": "en",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 55.71875,
+          "y": 244.09375,
+          "width": 656.5625,
+          "height": 111,
+          "top": 244.09375,
+          "right": 712.28125,
+          "bottom": 355.09375,
+          "left": 55.71875
+        },
+        "width": 768,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection collection search search\" \"views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Current shelfComplete archive46Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet⌄Complete archive46 works",
+            "rect": {
+              "x": 55.71875,
+              "y": 244.09375,
+              "width": 323.28125,
+              "height": 52,
+              "top": 244.09375,
+              "right": 379,
+              "bottom": 296.09375,
+              "left": 55.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Search by book, writer or countrySearch scopeThis shelfArchiveJournal",
+            "rect": {
+              "x": 389,
+              "y": 247.09375,
+              "width": 323.28125,
+              "height": 46,
+              "top": 247.09375,
+              "right": 712.28125,
+              "bottom": 293.09375,
+              "left": 389
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ShelfCatalogue",
+            "rect": {
+              "x": 55.71875,
+              "y": 305.09375,
+              "width": 199.46875,
+              "height": 50,
+              "top": 305.09375,
+              "right": 255.1875,
+              "bottom": 355.09375,
+              "left": 55.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 results",
+            "rect": {
+              "x": 335,
+              "y": 308.09375,
+              "width": 44,
+              "height": 44,
+              "top": 308.09375,
+              "right": 379,
+              "bottom": 352.09375,
+              "left": 335
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 524.921875,
+              "y": 308.09375,
+              "width": 133.359375,
+              "height": 44,
+              "top": 308.09375,
+              "right": 658.28125,
+              "bottom": 352.09375,
+              "left": 524.921875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "New shelfQualityAuto · BalancedHighBalancedEconomy",
+            "rect": {
+              "x": 668.28125,
+              "y": 308.09375,
+              "width": 44,
+              "height": 44,
+              "top": 308.09375,
+              "right": 712.28125,
+              "bottom": 352.09375,
+              "left": 668.28125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+            "rect": {
+              "x": 55.71875,
+              "y": 244.09375,
+              "width": 323.28125,
+              "height": 44,
+              "top": 244.09375,
+              "right": 379,
+              "bottom": 288.09375,
+              "left": 55.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "This shelfArchiveJournal",
+            "rect": {
+              "x": 599.28125,
+              "y": 248.09375,
+              "width": 112,
+              "height": 44,
+              "top": 248.09375,
+              "right": 711.28125,
+              "bottom": 292.09375,
+              "left": 599.28125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Shelf",
+            "rect": {
+              "x": 58.71875,
+              "y": 308.09375,
+              "width": 95.734375,
+              "height": 44,
+              "top": 308.09375,
+              "right": 154.453125,
+              "bottom": 352.09375,
+              "left": 58.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Catalogue",
+            "rect": {
+              "x": 156.453125,
+              "y": 308.09375,
+              "width": 95.734375,
+              "height": 44,
+              "top": 308.09375,
+              "right": 252.1875,
+              "bottom": 352.09375,
+              "left": 156.453125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 335,
+              "y": 308.09375,
+              "width": 44,
+              "height": 44,
+              "top": 308.09375,
+              "right": 379,
+              "bottom": 352.09375,
+              "left": 335
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 524.921875,
+              "y": 308.09375,
+              "width": 133.359375,
+              "height": 44,
+              "top": 308.09375,
+              "right": 658.28125,
+              "bottom": 352.09375,
+              "left": 524.921875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 668.28125,
+              "y": 308.09375,
+              "width": 44,
+              "height": 44,
+              "top": 308.09375,
+              "right": 712.28125,
+              "bottom": 352.09375,
+              "left": 668.28125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Complete archive",
+            "rect": {
+              "x": 63.71875,
+              "y": 254.5,
+              "width": 131.671875,
+              "height": 23.1875,
+              "top": 254.5,
+              "right": 195.390625,
+              "bottom": 277.6875,
+              "left": 63.71875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 132,
+            "clientWidth": 132
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 204.390625,
+              "y": 255.6875,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 255.6875,
+              "right": 233.484375,
+              "bottom": 276.484375,
+              "left": 204.390625
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          },
+          {
+            "text": "Shelf",
+            "rect": {
+              "x": 102.09375,
+              "y": 321,
+              "width": 33.984375,
+              "height": 18.1875,
+              "top": 321,
+              "right": 136.078125,
+              "bottom": 339.1875,
+              "left": 102.09375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 34,
+            "clientWidth": 34
+          },
+          {
+            "text": "Catalogue",
+            "rect": {
+              "x": 183.078125,
+              "y": 321,
+              "width": 67.484375,
+              "height": 18.1875,
+              "top": 321,
+              "right": 250.5625,
+              "bottom": 339.1875,
+              "left": 183.078125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1",
+            "scrollWidth": 67,
+            "clientWidth": 67
+          },
+          {
+            "text": "Surprise me",
+            "rect": {
+              "x": 564.921875,
+              "y": 321,
+              "width": 78.359375,
+              "height": 18.1875,
+              "top": 321,
+              "right": 643.28125,
+              "bottom": 339.1875,
+              "left": 564.921875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 78,
+            "clientWidth": 78
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 390,
+            "y": 248.09375,
+            "width": 209.28125,
+            "height": 44,
+            "top": 248.09375,
+            "right": 599.28125,
+            "bottom": 292.09375,
+            "left": 390
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 432.28125,
+        "y": 361.09375,
+        "width": 280,
+        "height": 166.546875,
+        "top": 361.09375,
+        "right": 712.28125,
+        "bottom": 527.640625,
+        "left": 432.28125
+      },
+      "qualityLabel": {
+        "text": "Quality",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 27,
+          "y": 239.828125,
+          "width": 336,
+          "height": 165,
+          "top": 239.828125,
+          "right": 363,
+          "bottom": 404.828125,
+          "left": 27
+        },
+        "width": 390,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection collection collection collection\" \"search search search search\" \"views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Текущая полкаВесь архив46Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок⌄Весь архив46 произведений",
+            "rect": {
+              "x": 27,
+              "y": 239.828125,
+              "width": 336,
+              "height": 53,
+              "top": 239.828125,
+              "right": 363,
+              "bottom": 292.828125,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Поиск по книге, автору или странеОбласть поискаНа полкеВ архивеВ журнале",
+            "rect": {
+              "x": 27,
+              "y": 300.828125,
+              "width": 336,
+              "height": 46,
+              "top": 300.828125,
+              "right": 363,
+              "bottom": 346.828125,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ПолкаКаталог",
+            "rect": {
+              "x": 27,
+              "y": 354.828125,
+              "width": 94,
+              "height": 50,
+              "top": 354.828125,
+              "right": 121,
+              "bottom": 404.828125,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 результатов",
+            "rect": {
+              "x": 129,
+              "y": 357.828125,
+              "width": 44,
+              "height": 44,
+              "top": 357.828125,
+              "right": 173,
+              "bottom": 401.828125,
+              "left": 129
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 181,
+              "y": 357.828125,
+              "width": 130,
+              "height": 44,
+              "top": 357.828125,
+              "right": 311,
+              "bottom": 401.828125,
+              "left": 181
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "Новая полкаКачествоАвто · ЭкономичноеВысокоеСбалансированноеЭкономичное",
+            "rect": {
+              "x": 319,
+              "y": 357.828125,
+              "width": 44,
+              "height": 44,
+              "top": 357.828125,
+              "right": 363,
+              "bottom": 401.828125,
+              "left": 319
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+            "rect": {
+              "x": 27,
+              "y": 239.828125,
+              "width": 336,
+              "height": 44,
+              "top": 239.828125,
+              "right": 363,
+              "bottom": 283.828125,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "На полкеВ архивеВ журнале",
+            "rect": {
+              "x": 242,
+              "y": 301.828125,
+              "width": 120,
+              "height": 44,
+              "top": 301.828125,
+              "right": 362,
+              "bottom": 345.828125,
+              "left": 242
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Полка",
+            "rect": {
+              "x": 30,
+              "y": 357.828125,
+              "width": 44,
+              "height": 44,
+              "top": 357.828125,
+              "right": 74,
+              "bottom": 401.828125,
+              "left": 30
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Каталог",
+            "rect": {
+              "x": 76,
+              "y": 357.828125,
+              "width": 44,
+              "height": 44,
+              "top": 357.828125,
+              "right": 120,
+              "bottom": 401.828125,
+              "left": 76
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 129,
+              "y": 357.828125,
+              "width": 44,
+              "height": 44,
+              "top": 357.828125,
+              "right": 173,
+              "bottom": 401.828125,
+              "left": 129
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 181,
+              "y": 357.828125,
+              "width": 130,
+              "height": 44,
+              "top": 357.828125,
+              "right": 311,
+              "bottom": 401.828125,
+              "left": 181
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 319,
+              "y": 357.828125,
+              "width": 44,
+              "height": 44,
+              "top": 357.828125,
+              "right": 363,
+              "bottom": 401.828125,
+              "left": 319
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Весь архив",
+            "rect": {
+              "x": 35,
+              "y": 250.234375,
+              "width": 86.953125,
+              "height": 23.1875,
+              "top": 250.234375,
+              "right": 121.953125,
+              "bottom": 273.421875,
+              "left": 35
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 87,
+            "clientWidth": 87
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 130.953125,
+              "y": 251.421875,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 251.421875,
+              "right": 160.046875,
+              "bottom": 272.21875,
+              "left": 130.953125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          },
+          {
+            "text": "Наугад",
+            "rect": {
+              "x": 233.375,
+              "y": 370.734375,
+              "width": 48.25,
+              "height": 18.1875,
+              "top": 370.734375,
+              "right": 281.625,
+              "bottom": 388.921875,
+              "left": 233.375
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 48,
+            "clientWidth": 48
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 28,
+            "y": 301.828125,
+            "width": 214,
+            "height": 44,
+            "top": 301.828125,
+            "right": 242,
+            "bottom": 345.828125,
+            "left": 28
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 83,
+        "y": 410.828125,
+        "width": 280,
+        "height": 166.546875,
+        "top": 410.828125,
+        "right": 363,
+        "bottom": 577.375,
+        "left": 83
+      },
+      "qualityLabel": {
+        "text": "Качество",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 27,
+          "y": 239.875,
+          "width": 336,
+          "height": 165,
+          "top": 239.875,
+          "right": 363,
+          "bottom": 404.875,
+          "left": 27
+        },
+        "width": 390,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection collection collection collection\" \"search search search search\" \"views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Current shelfComplete archive46Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet⌄Complete archive46 works",
+            "rect": {
+              "x": 27,
+              "y": 239.875,
+              "width": 336,
+              "height": 53,
+              "top": 239.875,
+              "right": 363,
+              "bottom": 292.875,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Search by book, writer or countrySearch scopeThis shelfArchiveJournal",
+            "rect": {
+              "x": 27,
+              "y": 300.875,
+              "width": 336,
+              "height": 46,
+              "top": 300.875,
+              "right": 363,
+              "bottom": 346.875,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ShelfCatalogue",
+            "rect": {
+              "x": 27,
+              "y": 354.875,
+              "width": 94,
+              "height": 50,
+              "top": 354.875,
+              "right": 121,
+              "bottom": 404.875,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 results",
+            "rect": {
+              "x": 129,
+              "y": 357.875,
+              "width": 44,
+              "height": 44,
+              "top": 357.875,
+              "right": 173,
+              "bottom": 401.875,
+              "left": 129
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 181,
+              "y": 357.875,
+              "width": 130,
+              "height": 44,
+              "top": 357.875,
+              "right": 311,
+              "bottom": 401.875,
+              "left": 181
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "New shelfQualityAuto · EconomyHighBalancedEconomy",
+            "rect": {
+              "x": 319,
+              "y": 357.875,
+              "width": 44,
+              "height": 44,
+              "top": 357.875,
+              "right": 363,
+              "bottom": 401.875,
+              "left": 319
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+            "rect": {
+              "x": 27,
+              "y": 239.875,
+              "width": 336,
+              "height": 44,
+              "top": 239.875,
+              "right": 363,
+              "bottom": 283.875,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "This shelfArchiveJournal",
+            "rect": {
+              "x": 242,
+              "y": 301.875,
+              "width": 120,
+              "height": 44,
+              "top": 301.875,
+              "right": 362,
+              "bottom": 345.875,
+              "left": 242
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Shelf",
+            "rect": {
+              "x": 30,
+              "y": 357.875,
+              "width": 44,
+              "height": 44,
+              "top": 357.875,
+              "right": 74,
+              "bottom": 401.875,
+              "left": 30
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Catalogue",
+            "rect": {
+              "x": 76,
+              "y": 357.875,
+              "width": 44,
+              "height": 44,
+              "top": 357.875,
+              "right": 120,
+              "bottom": 401.875,
+              "left": 76
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 129,
+              "y": 357.875,
+              "width": 44,
+              "height": 44,
+              "top": 357.875,
+              "right": 173,
+              "bottom": 401.875,
+              "left": 129
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 181,
+              "y": 357.875,
+              "width": 130,
+              "height": 44,
+              "top": 357.875,
+              "right": 311,
+              "bottom": 401.875,
+              "left": 181
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 319,
+              "y": 357.875,
+              "width": 44,
+              "height": 44,
+              "top": 357.875,
+              "right": 363,
+              "bottom": 401.875,
+              "left": 319
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Complete archive",
+            "rect": {
+              "x": 35,
+              "y": 250.28125,
+              "width": 131.671875,
+              "height": 23.1875,
+              "top": 250.28125,
+              "right": 166.671875,
+              "bottom": 273.46875,
+              "left": 35
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 132,
+            "clientWidth": 132
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 175.671875,
+              "y": 251.46875,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 251.46875,
+              "right": 204.765625,
+              "bottom": 272.265625,
+              "left": 175.671875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          },
+          {
+            "text": "Surprise me",
+            "rect": {
+              "x": 218.3125,
+              "y": 370.78125,
+              "width": 78.359375,
+              "height": 18.1875,
+              "top": 370.78125,
+              "right": 296.671875,
+              "bottom": 388.96875,
+              "left": 218.3125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 78,
+            "clientWidth": 78
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 28,
+            "y": 301.875,
+            "width": 214,
+            "height": 44,
+            "top": 301.875,
+            "right": 242,
+            "bottom": 345.875,
+            "left": 28
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 83,
+        "y": 410.875,
+        "width": 280,
+        "height": 166.546875,
+        "top": 410.875,
+        "right": 363,
+        "bottom": 577.421875,
+        "left": 83
+      },
+      "qualityLabel": {
+        "text": "Quality",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    },
+    {
+      "width": 320,
+      "locale": "ru",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 27,
+          "y": 240.21875,
+          "width": 266,
+          "height": 165,
+          "top": 240.21875,
+          "right": 293,
+          "bottom": 405.21875,
+          "left": 27
+        },
+        "width": 320,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection collection collection collection\" \"search search search search\" \"views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Текущая полкаВесь архив46Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок⌄Весь архив46 произведений",
+            "rect": {
+              "x": 27,
+              "y": 240.21875,
+              "width": 266,
+              "height": 53,
+              "top": 240.21875,
+              "right": 293,
+              "bottom": 293.21875,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Поиск по книге, автору или странеОбласть поискаНа полкеВ архивеВ журнале",
+            "rect": {
+              "x": 27,
+              "y": 301.21875,
+              "width": 266,
+              "height": 46,
+              "top": 301.21875,
+              "right": 293,
+              "bottom": 347.21875,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ПолкаКаталог",
+            "rect": {
+              "x": 27,
+              "y": 355.21875,
+              "width": 94,
+              "height": 50,
+              "top": 355.21875,
+              "right": 121,
+              "bottom": 405.21875,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 результатов",
+            "rect": {
+              "x": 129,
+              "y": 358.21875,
+              "width": 44,
+              "height": 44,
+              "top": 358.21875,
+              "right": 173,
+              "bottom": 402.21875,
+              "left": 129
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 181,
+              "y": 358.21875,
+              "width": 60,
+              "height": 44,
+              "top": 358.21875,
+              "right": 241,
+              "bottom": 402.21875,
+              "left": 181
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "Новая полкаКачествоАвто · ЭкономичноеВысокоеСбалансированноеЭкономичное",
+            "rect": {
+              "x": 249,
+              "y": 358.21875,
+              "width": 44,
+              "height": 44,
+              "top": 358.21875,
+              "right": 293,
+              "bottom": 402.21875,
+              "left": 249
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+            "rect": {
+              "x": 27,
+              "y": 240.21875,
+              "width": 266,
+              "height": 44,
+              "top": 240.21875,
+              "right": 293,
+              "bottom": 284.21875,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "На полкеВ архивеВ журнале",
+            "rect": {
+              "x": 172,
+              "y": 302.21875,
+              "width": 120,
+              "height": 44,
+              "top": 302.21875,
+              "right": 292,
+              "bottom": 346.21875,
+              "left": 172
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Полка",
+            "rect": {
+              "x": 30,
+              "y": 358.21875,
+              "width": 44,
+              "height": 44,
+              "top": 358.21875,
+              "right": 74,
+              "bottom": 402.21875,
+              "left": 30
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Каталог",
+            "rect": {
+              "x": 76,
+              "y": 358.21875,
+              "width": 44,
+              "height": 44,
+              "top": 358.21875,
+              "right": 120,
+              "bottom": 402.21875,
+              "left": 76
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 129,
+              "y": 358.21875,
+              "width": 44,
+              "height": 44,
+              "top": 358.21875,
+              "right": 173,
+              "bottom": 402.21875,
+              "left": 129
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Наугад",
+            "rect": {
+              "x": 181,
+              "y": 358.21875,
+              "width": 60,
+              "height": 44,
+              "top": 358.21875,
+              "right": 241,
+              "bottom": 402.21875,
+              "left": 181
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 249,
+              "y": 358.21875,
+              "width": 44,
+              "height": 44,
+              "top": 358.21875,
+              "right": 293,
+              "bottom": 402.21875,
+              "left": 249
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Весь архив",
+            "rect": {
+              "x": 35,
+              "y": 250.625,
+              "width": 86.953125,
+              "height": 23.1875,
+              "top": 250.625,
+              "right": 121.953125,
+              "bottom": 273.8125,
+              "left": 35
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 87,
+            "clientWidth": 87
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 130.953125,
+              "y": 251.8125,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 251.8125,
+              "right": 160.046875,
+              "bottom": 272.609375,
+              "left": 130.953125
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 28,
+            "y": 302.21875,
+            "width": 144,
+            "height": 44,
+            "top": 302.21875,
+            "right": 172,
+            "bottom": 346.21875,
+            "left": 28
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 13,
+        "y": 411.21875,
+        "width": 280,
+        "height": 166.546875,
+        "top": 411.21875,
+        "right": 293,
+        "bottom": 577.765625,
+        "left": 13
+      },
+      "qualityLabel": {
+        "text": "Качество",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "phase": "complete",
+      "geometry": {
+        "rect": {
+          "x": 27,
+          "y": 240.4375,
+          "width": 266,
+          "height": 165,
+          "top": 240.4375,
+          "right": 293,
+          "bottom": 405.4375,
+          "left": 27
+        },
+        "width": 320,
+        "height": 1000,
+        "documentOverflow": 0,
+        "rows": "\"collection collection collection collection\" \"search search search search\" \"views filters random settings\"",
+        "groups": [
+          {
+            "selector": ".book-shelf-controls__collection",
+            "text": "Current shelfComplete archive46Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet⌄Complete archive46 works",
+            "rect": {
+              "x": 27,
+              "y": 240.4375,
+              "width": 266,
+              "height": 53,
+              "top": 240.4375,
+              "right": 293,
+              "bottom": 293.4375,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__search-group",
+            "text": "Search by book, writer or countrySearch scopeThis shelfArchiveJournal",
+            "rect": {
+              "x": 27,
+              "y": 301.4375,
+              "width": 266,
+              "height": 46,
+              "top": 301.4375,
+              "right": 293,
+              "bottom": 347.4375,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__views",
+            "text": "ShelfCatalogue",
+            "rect": {
+              "x": 27,
+              "y": 355.4375,
+              "width": 94,
+              "height": 50,
+              "top": 355.4375,
+              "right": 121,
+              "bottom": 405.4375,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-filter-panel",
+            "text": "46 results",
+            "rect": {
+              "x": 129,
+              "y": 358.4375,
+              "width": 44,
+              "height": 44,
+              "top": 358.4375,
+              "right": 173,
+              "bottom": 402.4375,
+              "left": 129
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 181,
+              "y": 358.4375,
+              "width": 60,
+              "height": 44,
+              "top": 358.4375,
+              "right": 241,
+              "bottom": 402.4375,
+              "left": 181
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": ".book-shelf-controls__settings",
+            "text": "New shelfQualityAuto · EconomyHighBalancedEconomy",
+            "rect": {
+              "x": 249,
+              "y": 358.4375,
+              "width": 44,
+              "height": 44,
+              "top": 358.4375,
+              "right": 293,
+              "bottom": 402.4375,
+              "left": 249
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "rgb(255, 250, 242) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "controls": [
+          {
+            "selector": "SELECT",
+            "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+            "rect": {
+              "x": 27,
+              "y": 240.4375,
+              "width": 266,
+              "height": 44,
+              "top": 240.4375,
+              "right": 293,
+              "bottom": 284.4375,
+              "left": 27
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "0"
+          },
+          {
+            "selector": "SELECT",
+            "text": "This shelfArchiveJournal",
+            "rect": {
+              "x": 172,
+              "y": 302.4375,
+              "width": 120,
+              "height": 44,
+              "top": 302.4375,
+              "right": 292,
+              "bottom": 346.4375,
+              "left": 172
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "13px",
+            "fontWeight": "400",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "is-active",
+            "text": "Shelf",
+            "rect": {
+              "x": 30,
+              "y": 358.4375,
+              "width": 44,
+              "height": 44,
+              "top": 358.4375,
+              "right": 74,
+              "bottom": 402.4375,
+              "left": 30
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "Catalogue",
+            "rect": {
+              "x": 76,
+              "y": 358.4375,
+              "width": 44,
+              "height": 44,
+              "top": 358.4375,
+              "right": 120,
+              "bottom": 402.4375,
+              "left": 76
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.774118 0.676706 0.800941) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__advanced",
+            "text": "",
+            "rect": {
+              "x": 129,
+              "y": 358.4375,
+              "width": 44,
+              "height": 44,
+              "top": 358.4375,
+              "right": 173,
+              "bottom": 402.4375,
+              "left": 129
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "book-shelf-controls__random",
+            "text": "Surprise me",
+            "rect": {
+              "x": 181,
+              "y": 358.4375,
+              "width": 60,
+              "height": 44,
+              "top": 358.4375,
+              "right": 241,
+              "bottom": 402.4375,
+              "left": 181
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1"
+          },
+          {
+            "selector": "BUTTON",
+            "text": "",
+            "rect": {
+              "x": 249,
+              "y": 358.4375,
+              "width": 44,
+              "height": 44,
+              "top": 358.4375,
+              "right": 293,
+              "bottom": 402.4375,
+              "left": 249
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "14px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.872941 0.809569 0.865726) none 3px",
+            "opacity": "1"
+          }
+        ],
+        "labels": [
+          {
+            "text": "Complete archive",
+            "rect": {
+              "x": 35,
+              "y": 250.84375,
+              "width": 131.671875,
+              "height": 23.1875,
+              "top": 250.84375,
+              "right": 166.671875,
+              "bottom": 274.03125,
+              "left": 35
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "16px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "rgb(255, 255, 255) none 3px",
+            "opacity": "1",
+            "scrollWidth": 132,
+            "clientWidth": 132
+          },
+          {
+            "text": "46",
+            "rect": {
+              "x": 175.671875,
+              "y": 252.03125,
+              "width": 29.09375,
+              "height": 20.796875,
+              "top": 252.03125,
+              "right": 204.765625,
+              "bottom": 272.828125,
+              "left": 175.671875
+            },
+            "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+            "fontSize": "12px",
+            "fontWeight": "500",
+            "textTransform": "none",
+            "outline": "color(srgb 0.844706 0.771608 0.847216) none 3px",
+            "opacity": "1",
+            "scrollWidth": 29,
+            "clientWidth": 29
+          }
+        ],
+        "searchTarget": {
+          "text": "",
+          "rect": {
+            "x": 28,
+            "y": 302.4375,
+            "width": 144,
+            "height": 44,
+            "top": 302.4375,
+            "right": 172,
+            "bottom": 346.4375,
+            "left": 28
+          },
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "textTransform": "none",
+          "outline": "rgb(255, 250, 242) none 3px",
+          "opacity": "1"
+        }
+      },
+      "menuRect": {
+        "x": 13,
+        "y": 411.4375,
+        "width": 280,
+        "height": 166.546875,
+        "top": 411.4375,
+        "right": 293,
+        "bottom": 577.984375,
+        "left": 13
+      },
+      "qualityLabel": {
+        "text": "Quality",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "textTransform": "none",
+        "color": "color(srgb 0.844706 0.771608 0.847216)",
+        "background": "rgb(48, 10, 79)",
+        "contrast": 10.037083720660466
+      }
+    }
+  ],
+  "errors": [],
+  "issues": [],
+  "fixture": false,
+  "finishedAt": "2026-09-05T18:51:04.220Z"
+}

@@ -1,0 +1,490 @@
+{
+  "capture": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\.review\\spine-restoration-final\\row.png",
+  "reference": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\docs\\stage5-reference\\OWNER_LOCKED_BOOK_SPINES_EXACT_2026-08-30.png",
+  "formulaVersion": "ciede2000-sharma-2005-v1",
+  "expectedSpineCount": 17,
+  "qualityProfile": "HIGH",
+  "lightExposure": 0.38,
+  "method": "Actual WebGL screenshot, matched relative text-free cloth regions; sRGB mean -> D65 Lab -> CIEDE2000",
+  "meanDeltaE00": 2.882629239420372,
+  "maximumDeltaE00": 5.416995058520499,
+  "patchGatePassed": true,
+  "cells": [
+    {
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "slot": 0,
+      "baseColor": "#406872",
+      "currentRect": {
+        "left": 87,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 71,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        69.13015873015873,
+        110.93253968253968,
+        121.28333333333333
+      ],
+      "referenceRGB": [
+        54.090625,
+        96.17875,
+        108.595625
+      ],
+      "deltaE00": 5.416995058520499
+    },
+    {
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "slot": 1,
+      "baseColor": "#BF5441",
+      "currentRect": {
+        "left": 172,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 168,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        193.28015873015872,
+        91.32857142857142,
+        72.6984126984127
+      ],
+      "referenceRGB": [
+        185.479375,
+        75.911875,
+        58.70625
+      ],
+      "deltaE00": 4.565757757744407
+    },
+    {
+      "key": "england:h_g_wells:ann-veronica",
+      "slot": 2,
+      "baseColor": "#889149",
+      "currentRect": {
+        "left": 258,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 265,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        144.45079365079366,
+        152.02619047619046,
+        84.15714285714286
+      ],
+      "referenceRGB": [
+        131.770625,
+        141.44125,
+        68.83
+      ],
+      "deltaE00": 3.9695192760536173
+    },
+    {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "slot": 3,
+      "baseColor": "#C29043",
+      "currentRect": {
+        "left": 344,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 362,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        191.29444444444445,
+        151.60476190476192,
+        80.77857142857142
+      ],
+      "referenceRGB": [
+        191.035,
+        139.526875,
+        61.5525
+      ],
+      "deltaE00": 4.509478310537686
+    },
+    {
+      "key": "russia:tolstoy:war-and-peace",
+      "slot": 4,
+      "baseColor": "#AC4141",
+      "currentRect": {
+        "left": 429,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 459,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        175.7984126984127,
+        68.61825396825397,
+        69.69603174603175
+      ],
+      "referenceRGB": [
+        167.608125,
+        58.483125,
+        60.10125
+      ],
+      "deltaE00": 3.080911315249071
+    },
+    {
+      "key": "england:william_shakespeare:hamlet",
+      "slot": 5,
+      "baseColor": "#BB5441",
+      "currentRect": {
+        "left": 515,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 555,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        186.49761904761905,
+        88.25634920634921,
+        70.39285714285714
+      ],
+      "referenceRGB": [
+        184.67375,
+        79.63875,
+        61.87375
+      ],
+      "deltaE00": 2.3836098693753938
+    },
+    {
+      "key": "england:david_mitchell:slade-house",
+      "slot": 6,
+      "baseColor": "#508B8A",
+      "currentRect": {
+        "left": 601,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 652,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        85.97539682539683,
+        142.6968253968254,
+        141.59126984126985
+      ],
+      "referenceRGB": [
+        71.478125,
+        133.98125,
+        133.503125
+      ],
+      "deltaE00": 3.581602677848416
+    },
+    {
+      "key": "france:flaubert:madame-bovary",
+      "slot": 7,
+      "baseColor": "#808A44",
+      "currentRect": {
+        "left": 686,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 749,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        130.98650793650793,
+        140.17301587301588,
+        73.63571428571429
+      ],
+      "referenceRGB": [
+        123.66,
+        134.66625,
+        64.760625
+      ],
+      "deltaE00": 2.3254730726269086
+    },
+    {
+      "key": "russia:chekhov:the-lady-with-the-dog",
+      "slot": 8,
+      "baseColor": "#A3494E",
+      "currentRect": {
+        "left": 772,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 846,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        160.23253968253968,
+        71.17619047619047,
+        76.65238095238095
+      ],
+      "referenceRGB": [
+        159.419375,
+        66.663125,
+        73.745625
+      ],
+      "deltaE00": 1.148866831329288
+    },
+    {
+      "key": "russia:chekhov:the-duel",
+      "slot": 9,
+      "baseColor": "#CC7545",
+      "currentRect": {
+        "left": 858,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 943,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        195.54444444444445,
+        121.60873015873015,
+        76.03015873015873
+      ],
+      "referenceRGB": [
+        202.266875,
+        113.5675,
+        66.2975
+      ],
+      "deltaE00": 3.158569004098544
+    },
+    {
+      "key": "russia:chekhov:uncle-vanya",
+      "slot": 10,
+      "baseColor": "#45739C",
+      "currentRect": {
+        "left": 943,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 1040,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        65.17857142857143,
+        111.3626984126984,
+        150.48492063492063
+      ],
+      "referenceRGB": [
+        65.248125,
+        113.2025,
+        155.4425
+      ],
+      "deltaE00": 0.9750298172669233
+    },
+    {
+      "key": "england:h_g_wells:the-history-of-mr-polly",
+      "slot": 11,
+      "baseColor": "#B34E3E",
+      "currentRect": {
+        "left": 1029,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 1137,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        171.96190476190475,
+        74.40079365079364,
+        61.09761904761905
+      ],
+      "referenceRGB": [
+        177.984375,
+        75.735,
+        59.84375
+      ],
+      "deltaE00": 1.5780177931859045
+    },
+    {
+      "key": "england:h_g_wells:when-the-sleeper-wakes",
+      "slot": 12,
+      "baseColor": "#B08B56",
+      "currentRect": {
+        "left": 1115,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 1234,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        168.87777777777777,
+        137.11269841269842,
+        87.93174603174603
+      ],
+      "referenceRGB": [
+        174.771875,
+        136.75125,
+        83.42
+      ],
+      "deltaE00": 1.9663716405841831
+    },
+    {
+      "key": "england:david_mitchell:the-bone-clocks",
+      "slot": 13,
+      "baseColor": "#BB8B43",
+      "currentRect": {
+        "left": 1200,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 1330,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        176.87460317460318,
+        136.41190476190476,
+        70.93095238095238
+      ],
+      "referenceRGB": [
+        185.9225,
+        136.911875,
+        63.8675
+      ],
+      "deltaE00": 2.5468864960776805
+    },
+    {
+      "key": "england:david_mitchell:ghostwritten",
+      "slot": 14,
+      "baseColor": "#4C5580",
+      "currentRect": {
+        "left": 1286,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 1427,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        65.7484126984127,
+        74.57222222222222,
+        117.1126984126984
+      ],
+      "referenceRGB": [
+        72.19125,
+        82.300625,
+        125.38375
+      ],
+      "deltaE00": 2.6388773942647483
+    },
+    {
+      "key": "usa:vladimir_nabokov:lolita-editorial",
+      "slot": 15,
+      "baseColor": "#B8873E",
+      "currentRect": {
+        "left": 1372,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 1524,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        173.23968253968255,
+        130.99761904761905,
+        64.88174603174603
+      ],
+      "referenceRGB": [
+        182.09625,
+        132.265,
+        59.325625
+      ],
+      "deltaE00": 2.3554671775445613
+    },
+    {
+      "key": "england:h_g_wells:men-like-gods",
+      "slot": 16,
+      "baseColor": "#B07C35",
+      "currentRect": {
+        "left": 1457,
+        "top": 421,
+        "width": 35,
+        "height": 36
+      },
+      "referenceRect": {
+        "left": 1621,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        164.73095238095237,
+        118.01587301587301,
+        54.573015873015876
+      ],
+      "referenceRGB": [
+        175.15125,
+        122.68375,
+        51.12375
+      ],
+      "deltaE00": 2.8032635778384853
+    }
+  ]
+}

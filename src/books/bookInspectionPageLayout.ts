@@ -7,8 +7,8 @@ import {
   ensureBookTypographyReady,
 } from "./bookTypography";
 
-export const BOOK_INSPECTION_LAYOUT_VERSION = "book-inspection-layout-v3" as const;
-export type BookInspectionTextRole = "title" | "heading" | "body" | "metadata" | "caption";
+export const BOOK_INSPECTION_LAYOUT_VERSION = "book-inspection-layout-v4" as const;
+export type BookInspectionTextRole = "title" | "heading" | "subheading" | "body" | "metadata" | "caption";
 export type BookInspectionTextCommand = Readonly<{
   text: string;
   x: number;
@@ -108,7 +108,8 @@ export function layoutBookInspectionDocument(
     const titleRole = template === "title" ? "title" : "heading";
     const titleLines = wrapBookInspectionText(sourcePage.title, width, titleRole, measure);
     const eyebrowLines = wrapBookInspectionText(sourcePage.eyebrow, width, "caption", measure);
-    if (!titleLines || !eyebrowLines) {
+    const runningTitle = wrapBookInspectionText(sourcePage.title, width, "caption", measure);
+    if (!titleLines || !eyebrowLines || !runningTitle) {
       issues.push(`${sourcePage.id}: heading exceeds its safe measure`);
       continue;
     }
@@ -116,13 +117,14 @@ export function layoutBookInspectionDocument(
     let commands: BookInspectionTextCommand[] = [];
     let diagram: BookInspectionPageLayout["diagram"];
     let y = 0;
+    const continuationHeaderBottom = spacing.top + typography.caption.size + spacing.baseline +
+      runningTitle.length * lineHeight("caption") + spacing.section;
     const startFragment = () => {
       commands = [];
       diagram = undefined;
       y = spacing.top + typography.caption.size + spacing.baseline;
       if (fragmentIndex > 0) {
         // A complete running title leaves continuation pages room for reading.
-        const runningTitle = wrapBookInspectionText(sourcePage.title, width, "caption", measure)!;
         for (const text of runningTitle) {
           commands.push({ text, x: 0, y, width, role: "caption", sourceId: `${sourcePage.id}:title` });
           y += lineHeight("caption");
@@ -184,7 +186,15 @@ export function layoutBookInspectionDocument(
           available = Math.floor((bottom - y) / step) + 1;
         }
         let take = Math.min(available, remaining);
-        if (remaining - take === 1 && take > 2) take -= 1;
+        const tail = remaining - take;
+        const minimumBalancedTail = 4;
+        const movedLines = minimumBalancedTail - tail;
+        const continuationCapacity = Math.floor((bottom - continuationHeaderBottom) / step) + 1;
+        // Rebalance only the final neighbouring fragments. Keep four lines on
+        // the preceding page and never create an extra page to improve a tail.
+        if (tail > 0 && tail < minimumBalancedTail && take - movedLines >= minimumBalancedTail &&
+          continuationCapacity >= minimumBalancedTail) take -= movedLines;
+        else if (tail === 1 && take > 2) take -= 1;
         for (const line of lines.slice(offset, offset + take)) {
           commands.push({ text: line, x: 0, y, width, role, sourceId });
           y += step;
@@ -215,10 +225,10 @@ export function layoutBookInspectionDocument(
       if (sourcePage.diagram && ["characters", "relationships"].includes(row.kind)) continue;
       const sourceId = row.id || `${sourcePage.id}:row:${index}`;
       const namedEntry = ["characters", "relationships", "themes", "related-articles", "legal-reading"].includes(template);
-      const labelRole = namedEntry ? "heading" : "caption";
+      const labelRole = namedEntry ? "subheading" : "caption";
       const valueRole = template === "title" || namedEntry || template === "key-points" ? "body" : "metadata";
       if (["passport", "timeline", "contents"].includes(template)) {
-        const labelWidth = Math.round(width * .28);
+        const labelWidth = Math.round(width * .32);
         const valueX = labelWidth + spacing.paragraph;
         const columnLabel = wrapBookInspectionText(row.label, labelWidth, "caption", measure);
         const columnValue = wrapBookInspectionText(row.value, width - valueX, "metadata", measure);

@@ -1,0 +1,45 @@
+{
+  "algorithm": "SHA-256",
+  "files": {
+    "1720-last-0-row.png": {
+      "bytes": 1604329,
+      "sha256": "28dcc62c3f2dec6998c36a7240b57bb30d52b0db1d52228b81349a0b2859ef42"
+    },
+    "1720-last-1-pull.png": {
+      "bytes": 1454944,
+      "sha256": "a8c58cab8e167b40a1b283ade510de87be2388f0dc72d27400eb99096235182e"
+    },
+    "1720-last-2-pull.png": {
+      "bytes": 1372026,
+      "sha256": "d397fb1400fe72fad3203cffb2bdb71100c80c23a2a8a85b2a763f5e16fc183e"
+    },
+    "1720-last-3-pull.png": {
+      "bytes": 1348621,
+      "sha256": "727ebaa85b408b8595576c634f2678a817d15567ec4d71e65ec288f1c0745284"
+    },
+    "1720-last-4-pull.png": {
+      "bytes": 1348281,
+      "sha256": "443a63f9950b1974d36b63740db8ee9425497437bff8fe8313c6b87c143c96ec"
+    },
+    "1720-last-5-inspection.png": {
+      "bytes": 1348161,
+      "sha256": "5aa31b490e8efa230d952c89f00e02f2751592a03626837d72a653b088e9dc34"
+    },
+    "390-last-0-row.png": {
+      "bytes": 264503,
+      "sha256": "d1b5b6e2c64f5b084b47dd19a49f65189da8abd7680374799be56efdacdb68fe"
+    },
+    "390-last-5-inspection.png": {
+      "bytes": 189340,
+      "sha256": "807c17375b3e242a42ff7fcd4966f0b7e8ccb72802721e2fc5187ee2d099a799"
+    },
+    "README.md": {
+      "bytes": 2084,
+      "sha256": "2918ef57472c797c9e726170669dcf56f6e19698fac6c3887a0da58d5f138ef5"
+    },
+    "result.json": {
+      "bytes": 598656,
+      "sha256": "e0a8404608e2c4876ee215cd2fecb42ffb409af0183462dc08a9cc034f7ebf03"
+    }
+  }
+}

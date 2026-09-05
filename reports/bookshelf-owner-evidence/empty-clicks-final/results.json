@@ -1,0 +1,278 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/stage5-baseline.spec.mjs",
+      "--grep",
+      "bookshelf empty clicks",
+      "--workers=1",
+      "--retries=0",
+      "--reporter=list,json",
+      "--output=reports/bookshelf-owner-evidence/empty-clicks-final/test-results"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-bookshelf-owner/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-bookshelf-owner/reports/bookshelf-owner-evidence/empty-clicks-final/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-bookshelf-owner/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-bookshelf-owner/reports/bookshelf-owner-evidence/empty-clicks-final/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium",
+        "name": "mobile-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-bookshelf-owner/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --host 127.0.0.1 --port 4185",
+      "url": "http://127.0.0.1:4185",
+      "reuseExistingServer": true,
+      "timeout": 60000,
+      "env": {
+        "ALLUSERSPROFILE": "C:\\ProgramData",
+        "APPDATA": "C:\\Users\\User\\AppData\\Roaming",
+        "asl.log": "Destination=file",
+        "BROWSERSLIST_IGNORE_OLD_DATA": "true",
+        "CODEX_APP_TOOLS_PIPE_PATH": "\\\\.\\pipe\\codex-browser-use-5620cf90-4ad0-4a7a-a0fc-3ab968e1b26b",
+        "CODEX_CI": "1",
+        "CODEX_HOME": "D:\\CodexData\\.codex",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE": "Codex Desktop",
+        "CODEX_MCP_NODE_PATH": "C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\c2900163265bdaec\\bin\\node.exe",
+        "CODEX_PERMISSION_PROFILE": ":workspace",
+        "CODEX_SAGE_BACKFILL_TRACKER_TAB_REUSE": "1",
+        "CODEX_SANDBOX_NETWORK_DISABLED": "1",
+        "CODEX_SESSION_ID": "01a06e07-c655-7560-b0e4-a11d364550ea",
+        "CODEX_THREAD_ID": "01a06e09-f013-7cd0-a087-cb07be3b11b7",
+        "COLOR": "0",
+        "COLORTERM": "",
+        "CommonProgramFiles": "C:\\Program Files\\Common Files",
+        "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+        "CommonProgramW6432": "C:\\Program Files\\Common Files",
+        "COMPUTERNAME": "MAGICBOOK",
+        "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+        "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+        "EDITOR": "C:\\WINDOWS\\notepad.exe",
+        "GH_PAGER": "cat",
+        "GIT_CONFIG_COUNT": "2",
+        "GIT_CONFIG_KEY_0": "safe.directory",
+        "GIT_CONFIG_KEY_1": "safe.directory",
+        "GIT_CONFIG_VALUE_0": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner",
+        "GIT_CONFIG_VALUE_1": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner/*",
+        "GIT_PAGER": "cat",
+        "HOME": "C:\\Users\\User",
+        "HOMEDRIVE": "C:",
+        "HOMEPATH": "\\Users\\User",
+        "INIT_CWD": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "LC_CTYPE": "C.UTF-8",
+        "LESS": "",
+        "LOCALAPPDATA": "C:\\Users\\User\\AppData\\Local",
+        "LOGONSERVER": "\\\\MAGICBOOK",
+        "LOG_FORMAT": "json",
+        "NODE": "C:\\Program Files\\nodejs\\node.exe",
+        "NO_COLOR": "1",
+        "npm_command": "exec",
+        "npm_config_allow_scripts": "",
+        "npm_config_cache": "C:\\Users\\User\\AppData\\Local\\npm-cache",
+        "npm_config_globalconfig": "C:\\Users\\User\\AppData\\Roaming\\npm\\etc\\npmrc",
+        "npm_config_global_prefix": "C:\\Users\\User\\AppData\\Roaming\\npm",
+        "npm_config_init_module": "C:\\Users\\User\\.npm-init.js",
+        "npm_config_local_prefix": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner",
+        "npm_config_node_gyp": "C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js",
+        "npm_config_noproxy": "",
+        "npm_config_npm_version": "11.19.0",
+        "npm_config_prefix": "C:\\Users\\User\\AppData\\Roaming\\npm",
+        "npm_config_userconfig": "C:\\Users\\User\\.npmrc",
+        "npm_config_user_agent": "npm/11.19.0 node/v24.20.0 win32 x64 workspaces/false",
+        "npm_execpath": "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "npm_lifecycle_event": "npx",
+        "npm_lifecycle_script": "playwright",
+        "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
+        "npm_package_engines_node": "24.x",
+        "npm_package_engines_npm": "11.x",
+        "npm_package_json": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\package.json",
+        "npm_package_name": "literary-map",
+        "npm_package_version": "0.1.0",
+        "NUMBER_OF_PROCESSORS": "16",
+        "OneDrive": "C:\\Users\\User\\OneDrive",
+        "OS": "Windows_NT",
+        "PAGER": "cat",
+        "PATH": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\node_modules\\.bin;C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\node_modules\\.bin;C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\node_modules\\.bin;C:\\Users\\User\\Documents\\ChatGPT\\node_modules\\.bin;C:\\Users\\User\\Documents\\node_modules\\.bin;C:\\Users\\User\\node_modules\\.bin;C:\\Users\\node_modules\\.bin;C:\\node_modules\\.bin;C:\\Program Files\\nodejs\\node_modules\\npm\\node_modules\\@npmcli\\run-script\\lib\\node-gyp-bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;D:\\CodexData\\.codex\\tmp\\arg0\\codex-arg0YDxXfe;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\libheif\\libheif\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\jxrlib\\jxrlib\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\override;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\GitHub CLI\\;C:\\Program Files\\nodejs\\;C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\User\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;C:\\Users\\User\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\User\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\User\\AppData\\Local\\Programs\\nodejs;C:\\Users\\User\\AppData\\Roaming\\npm;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\fallback;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\git\\cmd;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\b592626b34cbe333;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\1e3e57cdf0634c02",
+        "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+        "PLAYWRIGHT_JSON_OUTPUT_FILE": "reports/bookshelf-owner-evidence/empty-clicks-final/results.json",
+        "PLAYWRIGHT_PORT": "4185",
+        "PLAYWRIGHT_REUSE_SERVER": "true",
+        "PROCESSOR_ARCHITECTURE": "AMD64",
+        "PROCESSOR_IDENTIFIER": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+        "PROCESSOR_LEVEL": "25",
+        "PROCESSOR_REVISION": "5000",
+        "ProgramData": "C:\\ProgramData",
+        "ProgramFiles": "C:\\Program Files",
+        "ProgramFiles(x86)": "C:\\Program Files (x86)",
+        "ProgramW6432": "C:\\Program Files",
+        "PROMPT": "$P$G",
+        "PSModulePath": "C:\\Users\\User\\Documents\\PowerShell\\Modules;C:\\Program Files\\PowerShell\\Modules;c:\\users\\user\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+        "PUBLIC": "C:\\Users\\Public",
+        "RUST_LOG": "warn",
+        "SystemDrive": "C:",
+        "SystemRoot": "C:\\WINDOWS",
+        "TEMP": "D:\\CodexData\\Temp",
+        "TERM": "dumb",
+        "TMP": "D:\\CodexData\\Temp",
+        "USERDOMAIN": "MAGICBOOK",
+        "USERDOMAIN_ROAMINGPROFILE": "MAGICBOOK",
+        "USERNAME": "User",
+        "USERPROFILE": "C:\\Users\\User",
+        "VBOX_HWVIRTEX_IGNORE_SVM_IN_USE": "1",
+        "windir": "C:\\WINDOWS",
+        "XDG_CACHE_HOME": "D:\\CodexData\\.cache",
+        "PUBLIC_SITE_BASE_PATH": "/"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "stage5-baseline.spec.mjs",
+      "file": "stage5-baseline.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "bookshelf empty clicks return closed and open books without treating orbit or drag as dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22626,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T18:04:17.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ec20ced16f0f98046eaf-ebf0dd2aa4e29306d001",
+          "file": "stage5-baseline.spec.mjs",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "bookshelf empty clicks return closed and open books without treating orbit or drag as dismissal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19585,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T18:04:41.867Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ec20ced16f0f98046eaf-739fe2e8aa480e38fefa",
+          "file": "stage5-baseline.spec.mjs",
+          "line": 20,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-05T18:04:16.550Z",
+    "duration": 46000.727999999996,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

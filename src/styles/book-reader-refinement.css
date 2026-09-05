@@ -1,0 +1,54 @@
+/* Interior reading space. Type roles remain in site-typography.css. */
+.book-dossier-reader {
+  container-type: inline-size;
+}
+.book-dossier-reader__header,
+.book-dossier-reader__pager {
+  gap: 8px;
+  padding: 10px 14px;
+}
+.book-dossier-reader__header > span,
+.book-dossier-reader__pager > span {
+  min-width: 0;
+}
+.book-dossier-reader__page {
+  padding: 18px 16px;
+}
+.book-dossier-reader__page h4 {
+  margin-bottom: 14px;
+}
+.book-dossier-reader__page .book-dossier-reader__eyebrow {
+  margin-bottom: 8px;
+}
+.book-dossier-reader__page > p:not(.book-dossier-reader__eyebrow) {
+  margin-bottom: .85em;
+  hyphens: auto;
+}
+.book-dossier-reader__page dl {
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.book-dossier-reader__page dl > div {
+  gap: 3px;
+  padding-bottom: 8px;
+}
+.book-dossier-reader__page :is(h4, h5, h6, dt, dd, summary) {
+  hyphens: manual;
+}
+.book-dossier-reader__sources {
+  margin-top: 16px;
+}
+.book-dossier-reader__sources li > span {
+  margin-top: 6px;
+}
+.book-dossier-reader .book-dossier-concepts {
+  margin-block: 18px;
+}
+.book-dossier-reader .book-dossier-concepts ol {
+  gap: 14px;
+}
+@container (max-width: 280px) {
+  .book-dossier-reader__page {
+    padding-inline: 14px;
+  }
+}

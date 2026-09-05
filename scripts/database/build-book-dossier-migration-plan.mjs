@@ -7,11 +7,22 @@ export const DOSSIER_MIGRATION = Object.freeze({
   filename: "20260905_book_dossiers_v2.sql",
   sha256: "825e562a16bea91318e3e043876d5d5912824180837d038cabe68fdd9b66165e",
 });
+export const DOSSIER_LAYOUT_MIGRATION = Object.freeze({
+  filename: "20260905_book_dossiers_layout_v4.sql",
+  sha256: "0d072fa64df5fddf72bca8441b28f550661d6bda838c89238bd74f912a0ebb02",
+});
+export const DOSSIER_MIGRATIONS = Object.freeze([DOSSIER_MIGRATION, DOSSIER_LAYOUT_MIGRATION]);
 const dependencyVersion = "20260902_literary_work_evidence_v2_attestations";
 const dependencySha256 = "26e1e0cb57368c772a02d397e5df0cb2960725a7ad05ae35fbc299ddf41c4966";
 const ledger = "public.book_dossier_schema_migrations";
-const version = DOSSIER_MIGRATION.filename.replace(/\.sql$/u, "");
 const literal = value => `'${value.replaceAll("'", "''")}'`;
+const receipts = DOSSIER_MIGRATIONS.map(migration => [migration.filename.replace(/\.sql$/u, ""), migration.sha256]);
+const receiptOrder = `case version ${receipts.map(([version], index) => `when ${literal(version)} then ${index}`).join(" ")} else -1 end`;
+const receiptProjection = `(select jsonb_agg(jsonb_build_array(version,migration_sha256) order by ${receiptOrder}) from ${ledger})`;
+const latestReceipt = `select functions_sha256 from ${ledger} order by ${receiptOrder} desc limit 1`;
+const completeGuard = `do $dossier_complete$ begin
+  if ${receiptProjection} is distinct from ${literal(JSON.stringify(receipts))}::jsonb then raise exception 'Dossier layout migration receipt missing'; end if;
+end; $dossier_complete$;`;
 const functions = [
   "book_dossier_public_progress_steps(jsonb)",
   "book_dossier_draft_shape_valid(jsonb)", "book_dossier_design_proof_valid(jsonb,jsonb,text)",
@@ -23,7 +34,7 @@ const functionOids = `array[${functions.map(name => `to_regprocedure(${literal(`
 const functionFingerprint = `(select public.literary_work_evidence_v2_sha256(string_agg(pg_get_functiondef(oid), E'\\n' order by proname)) from pg_proc where oid = any(${functionOids}))`;
 
 const preflightGuard = `do $dossier_preflight$
-declare receipt record;
+declare saved_digest text;
 begin
   if to_regclass('public.probpera_schema_migrations') is null
     or to_regclass('public.literary_works') is null or to_regclass('auth.users') is null
@@ -39,19 +50,19 @@ begin
       raise exception 'Unreceipted dossier schema exists; explicit investigation required';
     end if;
   else
-    execute 'select count(*) as count, min(version) as version, min(migration_sha256) as sha256 from ${ledger}' into receipt;
-    if receipt.count <> 1 or receipt.version is distinct from '${version}' or receipt.sha256 is distinct from '${DOSSIER_MIGRATION.sha256}'
+    if ${receipts.map((_, index) => `${receiptProjection} is distinct from ${literal(JSON.stringify(receipts.slice(0, index + 1)))}::jsonb`).join("\n      and ")}
       or to_regclass('public.book_dossiers') is null then
       raise exception 'Dossier receipt or schema is inconsistent';
     end if;
+    ${latestReceipt.replace("from", "into saved_digest from")};
+    if saved_digest is distinct from ${functionFingerprint} then raise exception 'Dossier function definition drift detected'; end if;
   end if;
 end; $dossier_preflight$;`;
 
 const healthGuard = `do $dossier_health$
 declare f regprocedure; helper text; saved_digest text;
 begin
-  if (select count(*) from ${ledger} where version='${version}' and migration_sha256='${DOSSIER_MIGRATION.sha256}') <> 1
-    or (select count(*) from ${ledger}) <> 1 then raise exception 'Dossier ledger invariant failed'; end if;
+  if to_regclass('${ledger}') is null then return; end if;
   if not exists(select 1 from pg_class where oid='public.book_dossiers'::regclass and relrowsecurity)
     or not exists(select 1 from pg_class where oid='${ledger}'::regclass and relrowsecurity)
     or has_table_privilege('anon','public.book_dossiers','SELECT,INSERT,UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER')
@@ -87,22 +98,26 @@ begin
     or (select count(*) from pg_proc where oid=any(${functionOids}) and prosecdef) <> 2 then
     raise exception 'Dossier RPC permission invariant failed';
   end if;
-  select functions_sha256 into saved_digest from ${ledger};
+  ${latestReceipt.replace("from", "into saved_digest from")};
   if saved_digest is distinct from ${functionFingerprint} then raise exception 'Dossier function definition drift detected'; end if;
 end; $dossier_health$;`;
 
-export function buildBookDossierMigrationPlan({ root = process.cwd(), repositorySha, source } = {}) {
+export function buildBookDossierMigrationPlan({ root = process.cwd(), repositorySha, source, layoutSource } = {}) {
   if (!/^[0-9a-f]{40}$/u.test(repositorySha || "")) throw new Error("Exact lowercase repository SHA required");
-  const migration = (source ?? readFileSync(path.join(root, "supabase/migrations", DOSSIER_MIGRATION.filename), "utf8")).replace(/\r\n?/gu, "\n");
-  if (createHash("sha256").update(migration).digest("hex") !== DOSSIER_MIGRATION.sha256) throw new Error("Reviewed dossier migration SHA-256 mismatch");
+  const migrations = DOSSIER_MIGRATIONS.map((migration, index) => {
+    const sql = ([source, layoutSource][index] ?? readFileSync(path.join(root, "supabase/migrations", migration.filename), "utf8")).replace(/\r\n?/gu, "\n");
+    if (createHash("sha256").update(sql).digest("hex") !== migration.sha256) throw new Error(`Reviewed dossier migration SHA-256 mismatch: ${migration.filename}`);
+    return sql;
+  });
   const controls = "set local lock_timeout='15s';\nset local statement_timeout='5min';";
   const readOnly = `set transaction read only;\n${controls}\n`;
-  const preflight = `${readOnly}${preflightGuard}\nselect 'dossier_preflight=passed';\n`;
-  const verification = `${readOnly}${preflightGuard}\n${healthGuard}\nselect 'dossier_schema=v2;ledger=verified;rls=verified;rpc=verified;function_drift=none';\n`;
+  const preflight = `${readOnly}${preflightGuard}\n${healthGuard}\nselect 'dossier_preflight=passed';\n`;
+  const verification = `${readOnly}${preflightGuard}\n${healthGuard}\n${completeGuard}\nselect 'dossier_schema=v2;ledger=verified;rls=verified;rpc=verified;function_drift=none;layout=book-inspection-layout-v4';\n`;
   const plan = `${controls}
 set local idle_in_transaction_session_timeout='5min';
 select pg_advisory_xact_lock(hashtextextended('probpera-production-database-reconciliation',0));
 ${preflightGuard}
+${healthGuard}
 -- A separate private ledger leaves the reviewed historical 35-migration plan unchanged.
 create table if not exists ${ledger} (
   version text primary key, migration_sha256 text not null check(migration_sha256 ~ '^[0-9a-f]{64}$'),
@@ -113,12 +128,13 @@ alter table ${ledger} enable row level security;
 revoke all on ${ledger} from public, anon, authenticated;
 do $dossier_apply$
 begin
-  if not exists(select 1 from ${ledger}) then
+${migrations.map((migration, index) => `  if not exists(select 1 from ${ledger} where version='${receipts[index][0]}') then
     execute $reviewed_dossier_sql$${migration}$reviewed_dossier_sql$;
     insert into ${ledger}(version,migration_sha256,repository_sha,functions_sha256)
-      values('${version}','${DOSSIER_MIGRATION.sha256}','${repositorySha}',${functionFingerprint});
-  end if;
+      values('${receipts[index][0]}','${receipts[index][1]}','${repositorySha}',${functionFingerprint});
+  end if;`).join("\n")}
 end; $dossier_apply$;
+${completeGuard}
 ${healthGuard}
 notify pgrst, 'reload schema';
 `;
@@ -135,7 +151,7 @@ begin
   end if;
 end; $restore_acl$;
 ${plan}`;
-  return { plan, rehearsal, preflight, verification, manifest: { repositorySha, mode: "schema-only", migration: DOSSIER_MIGRATION, ledger, prerequisite: { version: dependencyVersion, sha256: dependencySha256 }, transaction: "existing safety helper psql --single-transaction", archivePublication: false, rehearsalAclNormalization: "disposable restore only; production plan unchanged" } };
+  return { plan, rehearsal, preflight, verification, manifest: { repositorySha, mode: "schema-only", migration: DOSSIER_MIGRATION, migrations: DOSSIER_MIGRATIONS, layoutVersion: "book-inspection-layout-v4", ledger, prerequisite: { version: dependencyVersion, sha256: dependencySha256 }, transaction: "existing safety helper psql --single-transaction", archivePublication: false, rehearsalAclNormalization: "disposable restore only; production plan unchanged" } };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {

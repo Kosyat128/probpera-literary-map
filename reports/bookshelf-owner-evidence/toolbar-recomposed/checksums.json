@@ -1,0 +1,86 @@
+{
+  "copiedFrom": ".review/bookshelf-toolbar-recomposed",
+  "verifiedAt": "2026-09-05T18:53:55.9178667Z",
+  "files": [
+    {
+      "file": "geometry-results.json",
+      "bytes": 145136,
+      "sha256": "33f6c56049c898aeca72ab400e886e2278163f0358a35cbff03c884fa99fa097"
+    },
+    {
+      "file": "geometry-run.log",
+      "bytes": 546,
+      "sha256": "397a11959cb655217cb6847543c008846b5f860e895889bedab6242d55f4f138"
+    },
+    {
+      "file": "interaction-results.json",
+      "bytes": 1924,
+      "sha256": "70a7e0af3d9d8bcecd962c628a7d6dd23272d806d4bf4f545f84c41ec96b790a"
+    },
+    {
+      "file": "interaction-run.log",
+      "bytes": 1350,
+      "sha256": "0a82e00007b5e9887c770dbbf3f7d5966b269d2f0ea3a7965261b1271b91d005"
+    },
+    {
+      "file": "ru-1440-toolbar.png",
+      "bytes": 13482,
+      "sha256": "2e480d6119437590ae7117de6110e8dcb5ddf1e32f5aec503a078e8d75598a0c"
+    },
+    {
+      "file": "ru-1440-settings.png",
+      "bytes": 6079,
+      "sha256": "00fc77a610d4d298dfad65f6d27331103b06c5692b5e7f773ad60dd7fb0b32fa"
+    },
+    {
+      "file": "ru-390-toolbar.png",
+      "bytes": 9154,
+      "sha256": "8fd425ca60426841f39aef94c9c0386faeebde6133be377a25949e16d5811f93"
+    },
+    {
+      "file": "ru-390-settings.png",
+      "bytes": 6546,
+      "sha256": "64be883edfbe748aa79c744649387951aa05ef507f6373a59a37d10be5f549c1"
+    },
+    {
+      "file": "ru-320-toolbar.png",
+      "bytes": 8565,
+      "sha256": "eeb13d98e05f99310477a97218dad6f82ac9d2e3217331288ab2c10f5ea0a4df"
+    },
+    {
+      "file": "ru-320-settings.png",
+      "bytes": 5987,
+      "sha256": "b984d33412b4a19ed2f5312453f362d7691640deca696218b9dbe072a323aa6b"
+    },
+    {
+      "file": "en-1440-toolbar.png",
+      "bytes": 15823,
+      "sha256": "dec8fae6e18b4e2126a11eb17a2b135854abbbeca8cfd2712d774608dd9c6887"
+    },
+    {
+      "file": "en-1440-settings.png",
+      "bytes": 5380,
+      "sha256": "4f4dca7b714647ca49ac3dddd61699d54f9f8364e65653ef02b814e47868d069"
+    },
+    {
+      "file": "en-390-toolbar.png",
+      "bytes": 10419,
+      "sha256": "31b61297d851e4f17cfb654a6db5f175551f2b85ae93af4d946ae6f4014d06ec"
+    },
+    {
+      "file": "en-390-settings.png",
+      "bytes": 6205,
+      "sha256": "3cff90a7c1f757c7f203f760609a95e7fe6660fd8be7eaf52efa139ac587c2e1"
+    },
+    {
+      "file": "en-320-toolbar.png",
+      "bytes": 9489,
+      "sha256": "77f94213a9544f5810c36114e223072cf7ec4f8440a405aab3fb8c544ea9417a"
+    },
+    {
+      "file": "en-320-settings.png",
+      "bytes": 5635,
+      "sha256": "6a5c460635d75876da3d24bcc6449070cebb5ad72a6dc1715bf46f4fef322c55"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "base": "http://127.0.0.1:4185/",
+  "startedAt": "2026-09-05T18:43:23.288Z",
+  "cases": [
+    {
+      "width": 1440,
+      "locale": "ru",
+      "phase": "complete",
+      "focusReturned": true,
+      "archive": "Подсказки всего книжного архива\n1 совпадений\nКНИГИ\n1984",
+      "global": {
+        "scope": "global",
+        "text": "Подсказки единого каталога\n16 совпадений\nКНИГИ\n1984\nАВТОРЫ\nБеалу Гирма\nБранко Ћопич\nВисенте Алейксандре\nВладимир Короткевич\nГастон Суарес\nДжордж Оруэлл\nЛи Ги Ён\nМихаил Александрович Шолохов\nМуниф ар-Раззаз",
+        "rect": {
+          "x": 637.015625,
+          "y": 300.171875,
+          "width": 340,
+          "height": 380
+        }
+      },
+      "randomOpened": true,
+      "randomClosed": true
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "phase": "complete",
+      "focusReturned": true,
+      "archive": "Complete book archive suggestions\n1 matches\nBOOKS\n1984",
+      "global": {
+        "scope": "global",
+        "text": "Unified catalogue suggestions\n10 matches\nBOOKS\n1984\nWRITERS\nBealu Girma\nBranko Ćopić\nFaiz Ahmed Faiz\nJaroslav Seifert\nMunif al-Razzaz\nNodar Dumbadze\nRi Ki-yong\nSaverio Naigiziki\nUladzimir Karatkievich",
+        "rect": {
+          "x": 609.578125,
+          "y": 300.171875,
+          "width": 340,
+          "height": 380
+        }
+      },
+      "randomOpened": true,
+      "randomClosed": true
+    },
+    {
+      "width": 768,
+      "locale": "ru",
+      "phase": "complete",
+      "focusReturned": true
+    },
+    {
+      "width": 390,
+      "locale": "ru",
+      "phase": "complete",
+      "focusReturned": true
+    }
+  ],
+  "errors": [],
+  "finishedAt": "2026-09-05T18:43:53.859Z"
+}

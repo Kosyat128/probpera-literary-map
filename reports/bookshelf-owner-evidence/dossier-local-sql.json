@@ -1,13 +1,28 @@
 {
   "runtime": "PGlite 0.5.8",
-  "scope": "Ephemeral in-memory PostgreSQL; synthetic auth/users/catalogue and prerequisite ledger foundation, synthetic design attestations; actual project is_staff, pgcrypto SHA helper, fixed-hash schema-only planner/migration and TS workflow/compiler. Browser font measurement and Docker backup/restore are separate. No external database, production writes or real editorial text.",
-  "passed": 33,
+  "migrations": [
+    {
+      "filename": "20260905_book_dossiers_v2.sql",
+      "sha256": "825e562a16bea91318e3e043876d5d5912824180837d038cabe68fdd9b66165e"
+    },
+    {
+      "filename": "20260905_book_dossiers_layout_v4.sql",
+      "sha256": "0d072fa64df5fddf72bca8441b28f550661d6bda838c89238bd74f912a0ebb02"
+    }
+  ],
+  "layoutVersion": "book-inspection-layout-v4",
+  "scope": "Ephemeral in-memory PostgreSQL; synthetic auth/users/catalogue and prerequisite ledger foundation, synthetic design attestations; actual project is_staff, pgcrypto SHA helper, fixed-hash schema-only planner/migrations, historical v3-to-v4 upgrade and TS workflow/compiler. Browser font measurement and Docker backup/restore are separate. No external database, production writes or real editorial text.",
+  "passed": 38,
   "checks": [
     "schema-only preflight refuses absent production prerequisite ledger",
     "read-only schema preflight leaves no dossier objects",
     "unreceipted existing dossier objects are rejected",
     "schema migration and private ledger roll back together on failed health gate",
-    "actual fixed-hash schema-only transaction, private receipt and health checks execute",
+    "fresh fixed-hash install executes both migrations and health gates atomically",
+    "pre-upgrade function drift cannot be overwritten or receipted",
+    "verification cannot accept only the historical layout receipt",
+    "actual v3-to-v4 additive upgrade appends a receipt without rewriting records or historical approval",
+    "old v3 approval fails public read after upgrade; only current v4 with unchanged font v2 validates",
     "SQL public progress prefix stops at hidden checkpoint without leaking or skipping IDs",
     "authenticated CREATE persists actual compiler checksum",
     "direct table UPDATE denied",
@@ -18,6 +33,7 @@
     "forged ready/publication rejected",
     "editor cannot impersonate rights reviewer",
     "design approval requires content-bound measured variant proof",
+    "new human design review cannot submit old v3 measured approval",
     "all six human review transitions preserve SQL checksum and CAS",
     "missing required public document fields rejected",
     "writer RPC rejects BEFORE spoiler escalation",
@@ -37,5 +53,5 @@
     "accidental anonymous draft access fails health gate",
     "disposable restore rehearsal normalizes stripped ACLs without changing content"
   ],
-  "generatedAt": "2026-09-05T04:05:40.602Z"
+  "generatedAt": "2026-09-05T17:11:04.253Z"
 }

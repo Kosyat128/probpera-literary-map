@@ -1,0 +1,123 @@
+{
+  "base": "http://127.0.0.1:4185/",
+  "startedAt": "2026-09-05T19:17:50.597Z",
+  "errors": [],
+  "blockedNetworkWrites": [],
+  "mobileNav": {
+    "viewport": 390,
+    "rect": {
+      "x": 11,
+      "y": 249.828125,
+      "width": 368,
+      "height": 155,
+      "top": 249.828125,
+      "right": 379,
+      "bottom": 404.828125,
+      "left": 11
+    },
+    "overflow": 0,
+    "documentOverflow": 0,
+    "visibleBatches": 2,
+    "visibleEdgesOrSingles": 0,
+    "buttons": [
+      {
+        "label": "Предыдущая книга",
+        "rect": {
+          "x": 27,
+          "y": 275.828125,
+          "width": 48,
+          "height": 46,
+          "top": 275.828125,
+          "right": 75,
+          "bottom": 321.828125,
+          "left": 27
+        }
+      },
+      {
+        "label": "Предыдущие 13 произведений",
+        "rect": {
+          "x": 83,
+          "y": 260.828125,
+          "width": 56,
+          "height": 46,
+          "top": 260.828125,
+          "right": 139,
+          "bottom": 306.828125,
+          "left": 83
+        }
+      },
+      {
+        "label": "Следующие 13 произведений",
+        "rect": {
+          "x": 307,
+          "y": 260.828125,
+          "width": 56,
+          "height": 46,
+          "top": 260.828125,
+          "right": 363,
+          "bottom": 306.828125,
+          "left": 307
+        }
+      },
+      {
+        "label": "Избранное",
+        "rect": {
+          "x": 27,
+          "y": 344.828125,
+          "width": 163,
+          "height": 50,
+          "top": 344.828125,
+          "right": 190,
+          "bottom": 394.828125,
+          "left": 27
+        }
+      },
+      {
+        "label": "＋Добавить на полку",
+        "rect": {
+          "x": 200,
+          "y": 344.828125,
+          "width": 163,
+          "height": 50,
+          "top": 344.828125,
+          "right": 363,
+          "bottom": 394.828125,
+          "left": 200
+        }
+      }
+    ]
+  },
+  "reader": {
+    "position": "expanded",
+    "phase": "idle",
+    "rect": {
+      "x": 11,
+      "y": 319.828125,
+      "width": 368,
+      "height": 472,
+      "top": 319.828125,
+      "right": 379,
+      "bottom": 791.828125,
+      "left": 11
+    },
+    "stickyBottom": 311.828125
+  },
+  "focus": {
+    "isolation": "Fresh unauthenticated browser context, no storageState; network write methods blocked. One empty local shelf is ephemeral and discarded on context close.",
+    "actions": [
+      {
+        "action": "create",
+        "focused": true,
+        "expanded": "false",
+        "menuHidden": true
+      },
+      {
+        "action": "manage",
+        "focused": true,
+        "expanded": "false",
+        "menuHidden": true
+      }
+    ]
+  },
+  "finishedAt": "2026-09-05T19:17:57.998Z"
+}

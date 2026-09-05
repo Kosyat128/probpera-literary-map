@@ -53,7 +53,7 @@ export default function BookDossierReader({ dossier, activeAnchor, onNavigate, o
     if (next) { setFilter(""); onNavigate(next.anchor); }
   };
   return (
-    <section className="book-dossier-reader" tabIndex={-1} aria-label={label} aria-busy={busy}>
+    <section className="book-dossier-reader" lang={dossier.locale} tabIndex={-1} aria-label={label} aria-busy={busy}>
       <header className="book-dossier-reader__header">
         <span>{label}</span>
         <button type="button" aria-expanded={contentsOpen} aria-controls="book-dossier-contents"

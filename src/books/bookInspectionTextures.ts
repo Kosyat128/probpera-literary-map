@@ -238,7 +238,7 @@ function renderEditorialPage(
   }
   for (const command of layout.commands) {
     context.font = bookInspectionFont(command.role);
-    context.fillStyle = command.role === "caption" ? accent : command.role === "metadata" ? muted : ink;
+    context.fillStyle = command.role === "caption" ? muted : ink;
     context.fillText(command.text, command.x, command.y);
   }
   context.fillStyle = muted;

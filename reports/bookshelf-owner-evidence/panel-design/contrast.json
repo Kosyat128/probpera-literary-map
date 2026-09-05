@@ -1,0 +1,258 @@
+[
+  {
+    "locale": "ru",
+    "width": 1708,
+    "text": "Случайное произведение",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 1708,
+    "text": "Новая полка",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 1440,
+    "text": "Случайное произведение",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 1440,
+    "text": "Новая полка",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 1240,
+    "text": "Случайное произведение",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 1240,
+    "text": "Новая полка",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 1100,
+    "text": "Случайное произведение",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 1100,
+    "text": "Новая полка",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 768,
+    "text": "Случайное произведение",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 768,
+    "text": "Новая полка",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 390,
+    "text": "Случайное произведение",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 390,
+    "text": "Новая полка",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 360,
+    "text": "Случайное произведение",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 360,
+    "text": "Новая полка",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 320,
+    "text": "Случайное произведение",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "ru",
+    "width": 320,
+    "text": "Новая полка",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 1708,
+    "text": "Random work",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 1708,
+    "text": "New shelf",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "text": "Random work",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 1440,
+    "text": "New shelf",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 1240,
+    "text": "Random work",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 1240,
+    "text": "New shelf",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 1100,
+    "text": "Random work",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 1100,
+    "text": "New shelf",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 768,
+    "text": "Random work",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 768,
+    "text": "New shelf",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "text": "Random work",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "text": "New shelf",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 360,
+    "text": "Random work",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 360,
+    "text": "New shelf",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 320,
+    "text": "Random work",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  },
+  {
+    "locale": "en",
+    "width": 320,
+    "text": "New shelf",
+    "color": "rgb(255, 255, 255)",
+    "background": "color(srgb 0.767216 0.292863 0.0539608)",
+    "contrast": 4.837044217921802
+  }
+]

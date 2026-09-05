@@ -1,0 +1,433 @@
+{
+  "base": "http://127.0.0.1:4185/",
+  "startedAt": "2026-09-05T17:57:51.789Z",
+  "reader": [
+    {
+      "width": 1440,
+      "scrollWidth": 270,
+      "clientWidth": 270,
+      "title": {
+        "text": "Редакционное описание",
+        "font": "\"Source Serif 4 Local\", Georgia, serif",
+        "size": "21px",
+        "weight": "400",
+        "leading": "26.25px",
+        "color": "rgb(39, 21, 56)",
+        "background": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 1074.84375,
+          "y": 372.53125,
+          "width": 242.328125,
+          "height": 52.5,
+          "top": 372.53125,
+          "right": 1317.171875,
+          "bottom": 425.03125,
+          "left": 1074.84375
+        }
+      },
+      "body": {
+        "text": "Уинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей линией Партии, хотя внутренне отвергает её власть. Его попытка сохранить личную память, чувство и самостоятельное суждение разворачивается в мире тотальной слежки, идеологического языка и систематического насилия.",
+        "font": "\"Source Serif 4 Local\", Georgia, serif",
+        "size": "17px",
+        "weight": "400",
+        "leading": "25.5px",
+        "color": "rgb(39, 21, 56)",
+        "background": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 1074.84375,
+          "y": 439.03125,
+          "width": 242.328125,
+          "height": 331.5,
+          "top": 439.03125,
+          "right": 1317.171875,
+          "bottom": 770.53125,
+          "left": 1074.84375
+        }
+      },
+      "paper": {
+        "text": "ПроизведениеРедакционное описаниеУинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей линией Партии, хотя внутренне отвергает её власть. Его попытка сохранить личную память, чувство и самостоятельное суждение разворачивается в мире тотальной слежки, идеологического языка и систематического насилия.",
+        "font": "\"Source Serif 4 Local\", Georgia, serif",
+        "size": "17px",
+        "weight": "400",
+        "leading": "25.5px",
+        "color": "rgb(39, 21, 56)",
+        "background": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 1060.84375,
+          "y": 328.34375,
+          "width": 270.328125,
+          "height": 474.625,
+          "top": 328.34375,
+          "right": 1331.171875,
+          "bottom": 802.96875,
+          "left": 1060.84375
+        }
+      },
+      "headerButton": {
+        "text": "Оглавление",
+        "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": "15px",
+        "weight": "500",
+        "leading": "21.75px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(75, 8, 124)",
+        "rect": {
+          "x": 1204.421875,
+          "y": 273.34375,
+          "width": 112.75,
+          "height": 44,
+          "top": 273.34375,
+          "right": 1317.171875,
+          "bottom": 317.34375,
+          "left": 1204.421875
+        }
+      },
+      "textOverflow": []
+    },
+    {
+      "width": 320,
+      "scrollWidth": 241,
+      "clientWidth": 241,
+      "title": {
+        "text": "Редакционное описание",
+        "font": "\"Source Serif 4 Local\", Georgia, serif",
+        "size": "21px",
+        "weight": "400",
+        "leading": "26.25px",
+        "color": "rgb(39, 21, 56)",
+        "background": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 44,
+          "y": 473.609375,
+          "width": 213,
+          "height": 52.5,
+          "top": 473.609375,
+          "right": 257,
+          "bottom": 526.109375,
+          "left": 44
+        }
+      },
+      "body": {
+        "text": "Уинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей линией Партии, хотя внутренне отвергает её власть. Его попытка сохранить личную память, чувство и самостоятельное суждение разворачивается в мире тотальной слежки, идеологического языка и систематического насилия.",
+        "font": "\"Source Serif 4 Local\", Georgia, serif",
+        "size": "17px",
+        "weight": "400",
+        "leading": "25.5px",
+        "color": "rgb(39, 21, 56)",
+        "background": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 44,
+          "y": 540.109375,
+          "width": 213,
+          "height": 408,
+          "top": 540.109375,
+          "right": 257,
+          "bottom": 948.109375,
+          "left": 44
+        }
+      },
+      "paper": {
+        "text": "ПроизведениеРедакционное описаниеУинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей линией Партии, хотя внутренне отвергает её власть. Его попытка сохранить личную память, чувство и самостоятельное суждение разворачивается в мире тотальной слежки, идеологического языка и систематического насилия.",
+        "font": "\"Source Serif 4 Local\", Georgia, serif",
+        "size": "17px",
+        "weight": "400",
+        "leading": "25.5px",
+        "color": "rgb(39, 21, 56)",
+        "background": "rgba(0, 0, 0, 0)",
+        "rect": {
+          "x": 30,
+          "y": 429.421875,
+          "width": 241,
+          "height": 551.125,
+          "top": 429.421875,
+          "right": 271,
+          "bottom": 980.546875,
+          "left": 30
+        }
+      },
+      "headerButton": {
+        "text": "Оглавление",
+        "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": "15px",
+        "weight": "500",
+        "leading": "21.75px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(75, 8, 124)",
+        "rect": {
+          "x": 144.25,
+          "y": 374.421875,
+          "width": 112.75,
+          "height": 44,
+          "top": 374.421875,
+          "right": 257,
+          "bottom": 418.421875,
+          "left": 144.25
+        }
+      },
+      "textOverflow": []
+    }
+  ],
+  "errors": [],
+  "phase": "complete",
+  "physical": {
+    "state": {
+      "phase": "BOOK_OPEN",
+      "selectedKey": "england:george_orwell:nineteen-eighty-four",
+      "selectedTitle": "1984",
+      "pageIndex": 3,
+      "pageCount": 8,
+      "canvas": {
+        "x": 58.59375,
+        "y": 176.171875,
+        "width": 1322.8125,
+        "height": 648
+      },
+      "camera": {
+        "position": [
+          0.55697,
+          0.35942,
+          8.34739
+        ],
+        "fov": 35.00001
+      },
+      "qualityProfile": "HIGH",
+      "lightExposure": 0.38,
+      "insets": {
+        "top": 0,
+        "right": 352.8,
+        "bottom": 72,
+        "left": 0
+      },
+      "books": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "sourceIndex": 0,
+          "x": 529.300398099638,
+          "y": 473.21497510356767,
+          "z": 0.9733410129758914
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "451° по Фаренгейту",
+          "sourceIndex": 1,
+          "x": 797.7555624481969,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "title": "Анна-Вероника",
+          "sourceIndex": 2,
+          "x": 844.7019190303894,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "title": "Будденброки",
+          "sourceIndex": 3,
+          "x": 891.648275612582,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "title": "Война и мир",
+          "sourceIndex": 4,
+          "x": 938.5946321947745,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Гамлет",
+          "sourceIndex": 5,
+          "x": 985.540988776967,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Голодный дом",
+          "sourceIndex": 6,
+          "x": 1032.4873453591595,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "title": "Госпожа Бовари",
+          "sourceIndex": 7,
+          "x": 1079.4337019413517,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "title": "Дама с собачкой",
+          "sourceIndex": 8,
+          "x": 1126.3800585235442,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "title": "Дуэль",
+          "sourceIndex": 9,
+          "x": 1173.326415105737,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "title": "Дядя Ваня",
+          "sourceIndex": 10,
+          "x": 1220.2727716879292,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "title": "История мистера Полли",
+          "sourceIndex": 11,
+          "x": 1267.2191282701217,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "title": "Когда спящий проснется",
+          "sourceIndex": 12,
+          "x": 1314.1654848523142,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "title": "Костяные часы",
+          "sourceIndex": 13,
+          "x": 1361.1118414345067,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "title": "Литературный призрак",
+          "sourceIndex": 14,
+          "x": 1408.0581980166992,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "title": "Лолита",
+          "sourceIndex": 15,
+          "x": 1455.0045545988917,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "title": "Люди как боги",
+          "sourceIndex": 16,
+          "x": 1501.9509111810842,
+          "y": 534.3820542824504,
+          "z": 0.9753215942886662
+        }
+      ],
+      "resources": {
+        "Texture": {
+          "created": 120,
+          "deleted": 45,
+          "live": 75
+        },
+        "Framebuffer": {
+          "created": 6,
+          "deleted": 0,
+          "live": 6
+        },
+        "Renderbuffer": {
+          "created": 2,
+          "deleted": 0,
+          "live": 2
+        },
+        "Buffer": {
+          "created": 470,
+          "deleted": 4,
+          "live": 466
+        },
+        "Program": {
+          "created": 37,
+          "deleted": 12,
+          "live": 25
+        },
+        "Shader": {
+          "created": 74,
+          "deleted": 74,
+          "live": 0
+        },
+        "VertexArray": {
+          "created": 195,
+          "deleted": 10,
+          "live": 185
+        }
+      },
+      "draws": 74066,
+      "pendingFrames": 0,
+      "renderer": {
+        "geometries": 125,
+        "textures": 71,
+        "calls": 133,
+        "triangles": 9046
+      }
+    },
+    "pageId": "description:continuation:2",
+    "layoutVersion": "book-inspection-layout-v4",
+    "paragraphCommands": [
+      {
+        "text": "слежки,",
+        "x": 164,
+        "y": 385.6,
+        "width": 1104,
+        "role": "body",
+        "sourceId": "description:paragraph:0"
+      },
+      {
+        "text": "идеологического языка",
+        "x": 164,
+        "y": 519,
+        "width": 1104,
+        "role": "body",
+        "sourceId": "description:paragraph:0"
+      },
+      {
+        "text": "и систематического",
+        "x": 164,
+        "y": 652.4,
+        "width": 1104,
+        "role": "body",
+        "sourceId": "description:paragraph:0"
+      },
+      {
+        "text": "насилия.",
+        "x": 164,
+        "y": 785.8,
+        "width": 1104,
+        "role": "body",
+        "sourceId": "description:paragraph:0"
+      }
+    ]
+  },
+  "focus": {
+    "focused": true,
+    "visible": true,
+    "outline": "rgb(255, 155, 69) solid 2px"
+  },
+  "navigation": {
+    "initial": "Редакционное описание",
+    "next": "Сведения об издании",
+    "previous": "Редакционное описание"
+  },
+  "finishedAt": "2026-09-05T17:58:14.300Z"
+}
