@@ -8,7 +8,10 @@ import {
   type BookCollectionSnapshot,
 } from "../books/bookCollections";
 import { normalizeBookArchiveFilterState } from "../books/bookArchiveFacets";
-import { selectBookCollectionShelf } from "../books/bookCollectionShelfSelector";
+import {
+  selectBookCollectionShelf,
+  type BookCollectionShelfStatus,
+} from "../books/bookCollectionShelfSelector";
 import BookCollectionShelfSwitcher, {
   describeBookCollectionShelfOption,
   formatBookCollectionShelfOptionLabel,
@@ -69,7 +72,63 @@ describe("BookCollectionShelfSwitcher", () => {
     expect(markup).toContain(
       'value="manual:modern" selected="">Современная проза - 1 книга, 1 недоступно'
     );
+    expect(markup).not.toContain("book-collection-switcher--compact");
+    expect(markup).not.toContain("book-collection-switcher__compact-value");
   });
+
+  it("adds a visual-only ready title and count without changing native options", () => {
+    const ready = selectBookCollectionShelf({
+      archiveBookKeys: ["book:available", "book:other"],
+      systemSnapshot: createEmptyBookCollectionSnapshot(),
+      personalSnapshot,
+      activeShelfId: "all",
+    });
+    const render = (compact: boolean) => renderToStaticMarkup(
+      <BookCollectionShelfSwitcher
+        id="compact-shelf"
+        selection={ready}
+        compact={compact}
+        disabled
+        onChange={() => {}}
+      />
+    );
+    const regular = render(false);
+    const compact = render(true);
+
+    expect(compact).toContain("book-collection-switcher--compact");
+    expect(compact).toContain('class="book-collection-switcher__compact-value" aria-hidden="true"');
+    expect(compact).toContain('class="book-collection-switcher__compact-title" title="Весь архив">Весь архив</span>');
+    expect(compact).toContain('class="book-collection-switcher__compact-count">2</span>');
+    expect(compact).not.toContain("book-collection-switcher__compact-status");
+    expect(compact.match(/<select[^>]*>([\s\S]*?)<\/select>/)?.[1]).toBe(
+      regular.match(/<select[^>]*>([\s\S]*?)<\/select>/)?.[1]
+    );
+    expect(compact).toContain('for="compact-shelf"');
+    expect(compact).toContain('class="book-collection-switcher__label">Выбрать полку</span>');
+    expect(compact).toContain('<select id="compact-shelf" title="Весь архив" disabled="" aria-describedby="compact-shelf-status">');
+    expect(compact).toContain('id="compact-shelf-status" aria-live="polite"');
+  });
+
+  it.each<BookCollectionShelfStatus>(["empty", "partial", "missing", "unresolved"])(
+    "keeps the full %s status instead of implying a ready count",
+    (status) => {
+      const activeOption = { ...selection.activeOption, status };
+      const markup = renderToStaticMarkup(
+        <BookCollectionShelfSwitcher
+          selection={{ ...selection, activeOption }}
+          compact
+          onChange={() => {}}
+          labels={{ empty: "Empty shelf", unresolved: "Updating collection" }}
+        />
+      );
+      const expected = status === "empty" ? "Empty shelf"
+        : status === "unresolved" ? "Updating collection"
+          : describeBookCollectionShelfOption(activeOption);
+      expect(markup).not.toContain("book-collection-switcher__compact-count");
+      expect(markup).toContain(`class="book-collection-switcher__compact-status">${expected}</span>`);
+      expect(markup).toContain(`book-collection-switcher__status is-${status}`);
+    }
+  );
 
   it("links the native select to a screen-reader live status", () => {
     const markup = renderToStaticMarkup(

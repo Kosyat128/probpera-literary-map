@@ -5633,7 +5633,6 @@ a.writer-nobel-medal:focus-visible {
 
 .archive-book-copy > small {
   color: var(--orange-deep);
-  font-size: var(--type-caption);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -5646,7 +5645,6 @@ a.writer-nobel-medal:focus-visible {
   margin: 10px 0 7px;
   overflow-wrap: normal;
   font-family: var(--serif);
-  font-size: 21px;
   font-weight: 400;
   line-height: 1.05;
   -webkit-box-orient: vertical;
@@ -5657,7 +5655,6 @@ a.writer-nobel-medal:focus-visible {
   min-height: 1.45em;
   margin: 0;
   color: var(--muted);
-  font-size: var(--type-caption);
   line-height: 1.45;
 }
 
@@ -16368,7 +16365,6 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .archive-book-copy > p {
-  font-size: 12px;
   line-height: 1.5;
 }
 

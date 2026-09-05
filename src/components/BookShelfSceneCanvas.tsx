@@ -19,6 +19,8 @@ import type {
 import type { BookShelfPhase } from "../books/bookShelfState";
 import { completeShelfPhaseHasInspection, completeShelfVisibleBookLimit, completeShelfRowWidth, COMPLETE_SHELF_BOOK_FORMAT, COMPLETE_SHELF_TOP, COMPLETE_SHELF_INSPECTION_LIFT, resolveCompleteShelfVerticalBounds } from "../books/completeShelfModel";
 import { resolveBookPhysicalBounds } from "../books/bookShelfPhysicalLayout";
+import { bookShelfExtractionClearance, bookShelfExtractionStages, createBookShelfExtractionClock, type BookShelfExtractionClock } from "../books/bookShelfExtractionMotion";
+import { advanceBookShelfPointer, bookShelfPointerIsClick, type BookShelfPointerStart } from "../books/bookShelfPointer";
 import {
   applyBookInspectionOrbitDelta,
   bookInspectionViewportCanFrame,
@@ -89,6 +91,8 @@ function InspectionCameraController({
   phase,
   viewportInsets,
   liveBookLimit,
+  extractionClock,
+  requestId,
 }: {
   inspectionOnly?: boolean;
   inspectionViewScale?: number;
@@ -99,8 +103,25 @@ function InspectionCameraController({
   phase: BookShelfPhase;
   viewportInsets?: BookShelfViewportInsets;
   liveBookLimit: number;
+  extractionClock: { current: BookShelfExtractionClock };
+  requestId: number;
 }) {
   const { camera, gl, invalidate, size } = useThree();
+  const extractionPhase = phase === "INSPECTION_ENTERING" || phase === "SHELF_RESTORING";
+  const overviewFraming = useMemo(() => {
+    const vertical = resolveCompleteShelfVerticalBounds();
+    const rowWidth = completeShelfRowWidth(Math.min(itemCount, completeShelfVisibleBookLimit(liveBookLimit)));
+    const clearance = bookShelfExtractionClearance(COMPLETE_SHELF_BOOK_FORMAT.coverWidth, 1.42);
+    return resolveBookInspectionCameraFraming({
+      viewportWidth: size.width, viewportHeight: size.height, detailOpen: false,
+      viewportInsets, itemIndex, itemCount, bookPosition: [0, 0, 0],
+      bounds: { min: [-rowWidth / 2 - .12, vertical.minY - vertical.opticalCenterY, -.58],
+        max: [rowWidth / 2 + .12,
+          COMPLETE_SHELF_TOP + COMPLETE_SHELF_BOOK_FORMAT.height * 1.42 + COMPLETE_SHELF_INSPECTION_LIFT - vertical.opticalCenterY,
+          clearance + .58] },
+      fov: 38, marginPx: 20, orbitAllowance: 1,
+    });
+  }, [itemCount, itemIndex, liveBookLimit, size.height, size.width, viewportInsets]);
   const desiredFraming = useMemo(() => {
     const vertical = resolveCompleteShelfVerticalBounds();
     const bookPosition = [0,
@@ -225,10 +246,24 @@ function InspectionCameraController({
 
   useFrame((_state, delta) => {
     if (!bookInspectionViewportCanFrame(desiredFraming)) return;
-    const desired = resolveBookInspectionOrbitCamera(
+    let desired = resolveBookInspectionOrbitCamera(
       desiredFraming,
       orbitRef.current
     );
+    if (extractionPhase && !reducedMotion) {
+      const clock = extractionClock.current;
+      const progress = clock.phase === phase && clock.requestId === requestId && clock.ready ? clock.progress : 0;
+      const presentation = bookShelfExtractionStages(progress, phase === "SHELF_RESTORING").presentation;
+      const wide = resolveBookInspectionOrbitCamera(overviewFraming, BOOK_INSPECTION_DEFAULT_ORBIT);
+      if (phase === "INSPECTION_ENTERING") {
+        const mix = (from: readonly number[], to: readonly number[]) => from.map((value, index) => value + (to[index] - value) * presentation) as [number, number, number];
+        desired = { ...desired, position: mix(wide.position, desired.position), lookAt: mix(wide.lookAt, desired.lookAt),
+          fov: wide.fov + (desired.fov - wide.fov) * presentation };
+      } else {
+        // Zoom out before the book re-enters its unchanged row slot.
+        desired = wide;
+      }
+    }
     const next = smoothBookInspectionCameraTarget(
       targetRef.current,
       desired,
@@ -432,6 +467,7 @@ export default function BookShelfSceneCanvas({
   onContextRestored,
   onTextureFailure,
 }: BookShelfSceneCanvasProps) {
+  const extractionClock = useRef(createBookShelfExtractionClock());
   const dependency = [
     phase,
     requestId,
@@ -452,6 +488,8 @@ export default function BookShelfSceneCanvas({
         ? 1024
         : 512;
   const textureFailureReportedRef = useRef(false);
+  const canvasPointerRef = useRef<BookShelfPointerStart | null>(null);
+  const missedClickRef = useRef(false);
   const reportTextureFailure = useCallback(
     (reason: string) => {
       if (textureFailureReportedRef.current) return;
@@ -489,8 +527,39 @@ export default function BookShelfSceneCanvas({
         pointerEvents: active ? "auto" : "none",
         touchAction: "pan-y",
       }}
+      onPointerDownCapture={(event) => {
+        missedClickRef.current = false;
+        canvasPointerRef.current = event.isPrimary && event.button === 0 && !event.altKey
+          ? { pointerId: event.pointerId, pointerType: event.pointerType, x: event.clientX, y: event.clientY, at: performance.now(), moved: false }
+          : null;
+      }}
+      onPointerMoveCapture={(event) => {
+        if (canvasPointerRef.current) canvasPointerRef.current = advanceBookShelfPointer(canvasPointerRef.current,
+          { pointerId: event.pointerId, x: event.clientX, y: event.clientY });
+      }}
+      onPointerUpCapture={(event) => {
+        missedClickRef.current = !event.altKey && bookShelfPointerIsClick(canvasPointerRef.current,
+          { pointerId: event.pointerId, x: event.clientX, y: event.clientY, at: performance.now() });
+        canvasPointerRef.current = null;
+      }}
+      onPointerCancelCapture={() => {
+        canvasPointerRef.current = null;
+        missedClickRef.current = false;
+      }}
+      onPointerLeave={() => {
+        // Uncaptured movement outside the canvas is not observable here.
+        // Leaving invalidates the candidate even if the pointer returns.
+        // Touch also leaves after pointerup; preserve that completed tap.
+        if (!canvasPointerRef.current) return;
+        canvasPointerRef.current = null;
+        missedClickRef.current = false;
+      }}
       onPointerMissed={(event) => {
-        if (!selectedBookKey && phase === "SHELF_IDLE" && event.type === "click" && event.button === 0) onRequestSceneCenter();
+        // R3F measures the release distance only. Keep the full gesture so an
+        // out-and-back drag or cancelled touch never becomes an empty click.
+        if (!missedClickRef.current) return;
+        missedClickRef.current = false;
+        if ((selectedBookKey || phase === "SHELF_IDLE") && event.type === "click" && event.button === 0 && !event.altKey) onRequestSceneCenter();
       }}
     >
       <SceneLifecycle
@@ -503,6 +572,8 @@ export default function BookShelfSceneCanvas({
         inspectionOnly={inspectionOnly}
         inspectionViewScale={inspectionViewScale}
         detailOpen={Boolean(selectedBookKey && inspectionActive)}
+        extractionClock={extractionClock}
+        requestId={requestId}
         itemIndex={Math.max(
           0,
           items.findIndex(
@@ -584,6 +655,7 @@ export default function BookShelfSceneCanvas({
         inspectionOnly={inspectionOnly}
         textureRenderer={textureRenderer}
         onInspectionReady={onInspectionReady}
+        extractionClock={extractionClock}
         items={items}
         appearance={appearance}
         focusedBookKey={focusedBookKey}

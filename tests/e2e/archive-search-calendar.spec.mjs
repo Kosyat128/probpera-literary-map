@@ -11,6 +11,38 @@ async function openBookCatalog(page) {
   await expect(catalogButton).toHaveAttribute("aria-pressed", "true");
 }
 
+async function openArchiveFilters(page) {
+  const trigger = page.getByRole("button", {
+    name: "Расширенные фильтры",
+    exact: true,
+  });
+  await trigger.click();
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  const dialog = page.getByRole("dialog", {
+    name: "Расширенные фильтры книжного архива",
+    exact: true,
+  });
+  await expect(dialog).toBeVisible();
+  await expect(trigger).toHaveAttribute("aria-controls", await dialog.getAttribute("id"));
+  return dialog;
+}
+
+async function closeArchiveFilters(page, dialog) {
+  await dialog.getByRole("button", { name: "Закрыть фильтры", exact: true }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByRole("button", { name: "Расширенные фильтры", exact: true }))
+    .toHaveAttribute("aria-expanded", "false");
+}
+
+async function selectVerifiedBooks(page) {
+  const dialog = await openArchiveFilters(page);
+  const verified = dialog.getByRole("group", { name: "Активные фильтры", exact: true })
+    .getByRole("button", { name: "Проверено", exact: true });
+  await verified.click();
+  await expect(verified).toHaveAttribute("aria-pressed", "true");
+  await closeArchiveFilters(page, dialog);
+}
+
 test("календарь открывает и фокусирует карточку выбранного писателя", async ({
   page,
   isMobile,
@@ -103,35 +135,25 @@ test("архив публикует 46 проверенных книг и не �
 }) => {
   test.skip(Boolean(isMobile), "Desktop archive queue contract");
   await openBookCatalog(page);
-  const filters = page.locator(".book-archive-filters");
-  const verified = filters.getByRole("button", {
-    name: /Проверено/u,
-  });
+  const resultCount = page.locator(".book-filter-panel > span");
 
-  await expect(filters).toHaveAttribute("aria-label", /^46\s+результатов$/u, {
+  await expect(resultCount).toHaveText(/^46\s+результатов$/u, {
     timeout: 40_000,
   });
-  await page
-    .getByRole("button", { name: "Расширенные фильтры", exact: true })
-    .click();
-  const filterDialog = page.getByRole("dialog", {
-    name: "Расширенные фильтры книжного архива",
-  });
+  const filterDialog = await openArchiveFilters(page);
   const pending = filterDialog.getByLabel("Не проверено", { exact: true });
   await expect(pending).toBeVisible();
   await pending.check();
   await expect(pending).toBeChecked();
-  await filterDialog
-    .getByRole("button", { name: "Закрыть фильтры", exact: true })
-    .click();
-  await expect(filters).toHaveAttribute("aria-label", /^0\s+результатов$/u);
+  await closeArchiveFilters(page, filterDialog);
+  await expect(resultCount).toHaveText(/^0\s+результатов$/u);
   await expect(page.locator(".archive-book-card")).toHaveCount(0);
   await expect(page.locator(".book-archive-empty")).toContainText(
     "Ничего не найдено"
   );
 
-  await verified.click();
-  await expect(filters).toHaveAttribute("aria-label", /^46\s+результатов$/u);
+  await selectVerifiedBooks(page);
+  await expect(resultCount).toHaveText(/^46\s+результатов$/u);
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
     "проверено"
   );
@@ -145,19 +167,33 @@ test("архив публикует 46 проверенных книг и не �
       const save = element.querySelector(".archive-book-save")?.getBoundingClientRect();
       const detail = element.querySelector(".archive-book-detail")?.getBoundingClientRect();
       if (!status || !save || !detail) return null;
-      const centerX = (box) => box.left + box.width / 2;
       const centerY = (box) => box.top + box.height / 2;
       return {
-        saveFromRowCenter: Math.abs(centerX(save) - centerX(row)),
-        statusFromSaveBaseline: Math.abs(centerY(status) - centerY(save)),
+        saveFromRowStart: Math.abs(save.left - row.left),
+        statusFromRowStart: Math.abs(status.left - row.left),
+        statusFromRowEnd: Math.abs(status.right - row.right),
+        statusBeforeActions: status.bottom < Math.min(save.top, detail.top),
         detailFromSaveBaseline: Math.abs(centerY(detail) - centerY(save)),
+        actionGap: detail.left - save.right,
+        minimumActionWidth: Math.min(save.width, detail.width),
+        minimumActionHeight: Math.min(save.height, detail.height),
+        boundsFit: [status, save, detail].every((box) =>
+          box.left >= row.left && box.right <= row.right &&
+          box.top >= row.top && box.bottom <= row.bottom
+        ),
       };
     });
 
   expect(actionAlignment).not.toBeNull();
-  expect(actionAlignment.saveFromRowCenter).toBeLessThanOrEqual(1);
-  expect(actionAlignment.statusFromSaveBaseline).toBeLessThanOrEqual(1);
+  expect(actionAlignment.saveFromRowStart).toBeLessThanOrEqual(1);
+  expect(actionAlignment.statusFromRowStart).toBeLessThanOrEqual(1);
+  expect(actionAlignment.statusFromRowEnd).toBeLessThanOrEqual(1);
+  expect(actionAlignment.statusBeforeActions).toBe(true);
   expect(actionAlignment.detailFromSaveBaseline).toBeLessThanOrEqual(1);
+  expect(actionAlignment.actionGap).toBeGreaterThanOrEqual(8);
+  expect(actionAlignment.minimumActionWidth).toBeGreaterThanOrEqual(44);
+  expect(actionAlignment.minimumActionHeight).toBeGreaterThanOrEqual(44);
+  expect(actionAlignment.boundsFit).toBe(true);
 });
 
 test("на мобильном архив и изображения не растягиваются", async ({
@@ -175,10 +211,7 @@ test("на мобильном архив и изображения не раст
     )
   ).toBe(1);
 
-  await page
-    .locator(".book-archive-filters")
-    .getByRole("button", { name: /Проверено/u })
-    .click();
+  await selectVerifiedBooks(page);
   const mobileActions = await page
     .locator(".archive-book-actions")
     .first()
@@ -193,7 +226,7 @@ test("на мобильном архив и изображения не раст
       if (!statusElement || !saveElement || !detailElement || !status || !save || !detail) {
         return null;
       }
-      const centerX = (box) => box.left + box.width / 2;
+      const centerY = (box) => box.top + box.height / 2;
       const overlaps = (first, second) =>
         first.left < second.right &&
         first.right > second.left &&
@@ -203,12 +236,20 @@ test("на мобильном архив и изображения не раст
         statusFits: statusElement.scrollWidth <= statusElement.clientWidth,
         detailFits: detailElement.scrollWidth <= detailElement.clientWidth,
         actionsFit: element.scrollWidth <= element.clientWidth,
-        saveFromRowCenter: Math.abs(centerX(save) - centerX(row)),
+        saveFromRowStart: Math.abs(save.left - row.left),
+        statusFromRowStart: Math.abs(status.left - row.left),
+        statusFromRowEnd: Math.abs(status.right - row.right),
         statusWidth: status.width,
         saveWidth: save.width,
         detailWidth: detail.width,
-        statusBeforeSave: status.bottom <= save.top + 0.5,
-        saveBeforeDetail: save.bottom <= detail.top + 0.5,
+        minimumActionHeight: Math.min(save.height, detail.height),
+        statusBeforeActions: status.bottom < Math.min(save.top, detail.top),
+        detailFromSaveBaseline: Math.abs(centerY(detail) - centerY(save)),
+        actionGap: detail.left - save.right,
+        boundsFit: [status, save, detail].every((box) =>
+          box.left >= row.left && box.right <= row.right &&
+          box.top >= row.top && box.bottom <= row.bottom
+        ),
         controlsOverlap:
           overlaps(status, save) ||
           overlaps(status, detail) ||
@@ -219,12 +260,17 @@ test("на мобильном архив и изображения не раст
   expect(mobileActions.statusFits).toBe(true);
   expect(mobileActions.detailFits).toBe(true);
   expect(mobileActions.actionsFit).toBe(true);
-  expect(mobileActions.saveFromRowCenter).toBeLessThanOrEqual(1);
+  expect(mobileActions.saveFromRowStart).toBeLessThanOrEqual(1);
+  expect(mobileActions.statusFromRowStart).toBeLessThanOrEqual(1);
+  expect(mobileActions.statusFromRowEnd).toBeLessThanOrEqual(1);
   expect(mobileActions.statusWidth).toBeGreaterThanOrEqual(44);
   expect(mobileActions.saveWidth).toBeGreaterThanOrEqual(44);
   expect(mobileActions.detailWidth).toBeGreaterThanOrEqual(44);
-  expect(mobileActions.statusBeforeSave).toBe(true);
-  expect(mobileActions.saveBeforeDetail).toBe(true);
+  expect(mobileActions.minimumActionHeight).toBeGreaterThanOrEqual(44);
+  expect(mobileActions.statusBeforeActions).toBe(true);
+  expect(mobileActions.detailFromSaveBaseline).toBeLessThanOrEqual(1);
+  expect(mobileActions.actionGap).toBeGreaterThanOrEqual(8);
+  expect(mobileActions.boundsFit).toBe(true);
   expect(mobileActions.controlsOverlap).toBe(false);
 
   await page.locator("#authors").scrollIntoViewIfNeeded();
@@ -250,10 +296,7 @@ test("статус, сохранение и детали книг не пере�
 }) => {
   test.skip(Boolean(isMobile), "Desktop responsive archive contract");
   await openBookCatalog(page);
-  await page
-    .locator(".book-archive-filters")
-    .getByRole("button", { name: /Проверено/u })
-    .click();
+  await selectVerifiedBooks(page);
   await expect(page.locator(".archive-book-actions").first()).toBeVisible({
     timeout: 20_000,
   });
@@ -277,7 +320,6 @@ test("статус, сохранение и детали книг не пере�
         Math.min(left.bottom, right.bottom) - Math.max(left.top, right.top) > 0.5;
       const grid = document.querySelector(".book-archive-grid");
       const rows = [...document.querySelectorAll(".archive-book-actions")].slice(0, 12);
-      const filterButtons = [...document.querySelectorAll(".book-archive-filters button")];
       return {
         columns: grid
           ? getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean).length
@@ -303,11 +345,6 @@ test("статус, сохранение и детали книг не пере�
             (row) => row.querySelector(".archive-book-detail")?.getBoundingClientRect().width ?? 0
           )
         ),
-        filterCountOverlaps: filterButtons.filter((button) => {
-          const copy = button.querySelector(".book-filter-copy")?.getBoundingClientRect();
-          const count = button.querySelector(".book-filter-count")?.getBoundingClientRect();
-          return Boolean(copy && count && intersects(copy, count));
-        }).length,
       };
     });
 
@@ -320,7 +357,37 @@ test("статус, сохранение и детали книг не пере�
       responsiveCase.minimumActionWidth
     );
     if (responsiveCase.width <= 430) {
-      expect(geometry.filterCountOverlaps).toBe(0);
+      // Presets now live in the drawer; measure the visible controls instead
+      // of accepting an empty query for the removed toolbar count badges.
+      const dialog = await openArchiveFilters(page);
+      const presets = dialog.getByRole("group", { name: "Активные фильтры", exact: true })
+        .getByRole("button");
+      await expect(presets).toHaveText(["Проверено", "Классика"]);
+      const filterGeometry = await presets.evaluateAll((buttons) => {
+        const boxes = buttons.map((button) => button.getBoundingClientRect());
+        return {
+          labelsFit: buttons.every((button, index) => {
+            const range = document.createRange();
+            range.selectNodeContents(button);
+            const text = range.getBoundingClientRect();
+            const box = boxes[index];
+            return text.left >= box.left && text.right <= box.right &&
+              text.top >= box.top && text.bottom <= box.bottom &&
+              button.scrollWidth <= button.clientWidth;
+          }),
+          minimumWidth: Math.min(...boxes.map((box) => box.width)),
+          minimumHeight: Math.min(...boxes.map((box) => box.height)),
+          overlaps: boxes.some((box, index) => boxes.slice(index + 1).some((other) =>
+            Math.min(box.right, other.right) - Math.max(box.left, other.left) > 0.5 &&
+            Math.min(box.bottom, other.bottom) - Math.max(box.top, other.top) > 0.5
+          )),
+        };
+      });
+      expect(filterGeometry.labelsFit).toBe(true);
+      expect(filterGeometry.minimumWidth).toBeGreaterThanOrEqual(44);
+      expect(filterGeometry.minimumHeight).toBeGreaterThanOrEqual(44);
+      expect(filterGeometry.overlaps).toBe(false);
+      await closeArchiveFilters(page, dialog);
     }
   }
 });

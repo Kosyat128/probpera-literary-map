@@ -1,0 +1,257 @@
+{
+  "state": {
+    "phase": "INSPECTION_CLOSED",
+    "selectedKey": "england:h_g_wells:when-the-sleeper-wakes",
+    "selectedTitle": "Когда спящий проснется",
+    "pageIndex": 0,
+    "pageCount": 9,
+    "canvas": {
+      "x": 69,
+      "y": 113.046875,
+      "width": 1582,
+      "height": 774
+    },
+    "camera": {
+      "position": [
+        0.8705,
+        0.40022,
+        6.42015
+      ],
+      "fov": 35.00128
+    },
+    "qualityProfile": "HIGH",
+    "lightExposure": 0.38,
+    "insets": {
+      "top": 0,
+      "right": 421.39,
+      "bottom": 72,
+      "left": 0
+    },
+    "books": [
+      {
+        "key": "russia:tolstoy:war-and-peace",
+        "title": "Война и мир",
+        "sourceIndex": 4,
+        "x": -58.18363877878811,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "england:william_shakespeare:hamlet",
+        "title": "Гамлет",
+        "sourceIndex": 5,
+        "x": 16.3140195399776,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "england:david_mitchell:slade-house",
+        "title": "Голодный дом",
+        "sourceIndex": 6,
+        "x": 90.81167785874331,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "france:flaubert:madame-bovary",
+        "title": "Госпожа Бовари",
+        "sourceIndex": 7,
+        "x": 165.30933617750912,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "russia:chekhov:the-lady-with-the-dog",
+        "title": "Дама с собачкой",
+        "sourceIndex": 8,
+        "x": 239.80699449627483,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "russia:chekhov:the-duel",
+        "title": "Дуэль",
+        "sourceIndex": 9,
+        "x": 314.30465281504064,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "russia:chekhov:uncle-vanya",
+        "title": "Дядя Ваня",
+        "sourceIndex": 10,
+        "x": 388.80231113380637,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "england:h_g_wells:the-history-of-mr-polly",
+        "title": "История мистера Полли",
+        "sourceIndex": 11,
+        "x": 463.2999694525722,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "england:h_g_wells:when-the-sleeper-wakes",
+        "title": "Когда спящий проснется",
+        "sourceIndex": 12,
+        "x": 477.0077616596276,
+        "y": 465.5931025446078,
+        "z": 0.9632967750879695
+      },
+      {
+        "key": "england:david_mitchell:the-bone-clocks",
+        "title": "Костяные часы",
+        "sourceIndex": 13,
+        "x": 892.3729992750366,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "england:david_mitchell:ghostwritten",
+        "title": "Литературный призрак",
+        "sourceIndex": 14,
+        "x": 966.8706575938025,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "usa:vladimir_nabokov:lolita-editorial",
+        "title": "Лолита",
+        "sourceIndex": 15,
+        "x": 1041.368315912568,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "england:h_g_wells:men-like-gods",
+        "title": "Люди как боги",
+        "sourceIndex": 16,
+        "x": 1115.8659742313341,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+        "title": "Над пропастью во ржи",
+        "sourceIndex": 17,
+        "x": 1190.3636325500997,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "england:aldous_huxley:brave-new-world-editorial",
+        "title": "О дивный новый мир",
+        "sourceIndex": 18,
+        "x": 1264.8612908688656,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "england:h_g_wells:the-world-set-free",
+        "title": "Освобожденный мир",
+        "sourceIndex": 19,
+        "x": 1339.3589491876314,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      },
+      {
+        "key": "france:victor_hugo:les-miserables",
+        "title": "Отверженные",
+        "sourceIndex": 20,
+        "x": 1413.856607506397,
+        "y": 562.8718384282581,
+        "z": 0.9668837172138834
+      }
+    ],
+    "resources": {
+      "Texture": {
+        "created": 96,
+        "deleted": 21,
+        "live": 75
+      },
+      "Framebuffer": {
+        "created": 6,
+        "deleted": 0,
+        "live": 6
+      },
+      "Renderbuffer": {
+        "created": 2,
+        "deleted": 0,
+        "live": 2
+      },
+      "Buffer": {
+        "created": 547,
+        "deleted": 81,
+        "live": 466
+      },
+      "Program": {
+        "created": 28,
+        "deleted": 3,
+        "live": 25
+      },
+      "Shader": {
+        "created": 56,
+        "deleted": 56,
+        "live": 0
+      },
+      "VertexArray": {
+        "created": 219,
+        "deleted": 34,
+        "live": 185
+      }
+    },
+    "draws": 12215,
+    "pendingFrames": 1,
+    "renderer": {
+      "geometries": 125,
+      "textures": 71,
+      "calls": 133,
+      "triangles": 9046
+    }
+  },
+  "footprint": {
+    "x": 416.3106873508322,
+    "y": 203.33001140468403,
+    "right": 881.4329584205068,
+    "bottom": 742.4097350876925,
+    "points": 248
+  },
+  "boards": [
+    {
+      "mapId": "f05128b6-bf16-4bf9-97d2-aa37560cba5d",
+      "colorSpace": "srgb",
+      "width": 512,
+      "height": 727,
+      "chroma": 0,
+      "min": 215,
+      "max": 252,
+      "mean": 239.95820527424345,
+      "roughness": 0.94,
+      "metalness": 0,
+      "bumpScale": 0.0006,
+      "normalScale": [
+        0.12,
+        0.12
+      ]
+    },
+    {
+      "mapId": "f05128b6-bf16-4bf9-97d2-aa37560cba5d",
+      "colorSpace": "srgb",
+      "width": 512,
+      "height": 727,
+      "chroma": 0,
+      "min": 215,
+      "max": 252,
+      "mean": 239.95820527424345,
+      "roughness": 0.94,
+      "metalness": 0,
+      "bumpScale": 0.0006,
+      "normalScale": [
+        0.12,
+        0.12
+      ]
+    }
+  ]
+}

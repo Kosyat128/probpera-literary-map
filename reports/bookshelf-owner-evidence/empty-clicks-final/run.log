@@ -1,0 +1,11 @@
+
+Running 2 tests using 1 worker
+
+(node:30920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [desktop-chromium] › tests\e2e\stage5-baseline.spec.mjs:20:1 › bookshelf empty clicks return closed and open books without treating orbit or drag as dismissal (22.6s)
+(node:34160) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [mobile-chromium] › tests\e2e\stage5-baseline.spec.mjs:20:1 › bookshelf empty clicks return closed and open books without treating orbit or drag as dismissal (19.6s)
+
+  2 passed (46.0s)

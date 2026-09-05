@@ -170,8 +170,8 @@
       "id": "apps/admin/catalog-assets/interface-copy-catalog.json:7",
       "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
       "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
-      "before": "    \"defaultEn\": \"About you\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Обложка книги\",\n    \"group\": \"Весь интерфейс\",\n",
-      "after": "    \"defaultEn\": \"About you\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Область просмотра книги\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Область просмотра книги\",\n    \"defaultRu\": \"Область просмотра книги\",\n    \"defaultEn\": \"Book viewing area\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Обложка книги\",\n    \"group\": \"Весь интерфейс\",\n"
+      "before": "    \"defaultEn\": \"Search scope\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Обложка книги\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Search scope\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Область просмотра книги\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Область просмотра книги\",\n    \"defaultRu\": \"Область просмотра книги\",\n    \"defaultEn\": \"Book viewing area\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Обложка книги\",\n    \"group\": \"Весь интерфейс\",\n"
     },
     {
       "id": "apps/admin/catalog-assets/interface-copy-catalog.json:8",
@@ -257,5 +257,9 @@
       "before": "    \"defaultEn\": \"Remove from shelf\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Увеличить масштаб глобуса\",\n    \"group\": \"Весь интерфейс\",\n",
       "after": "    \"defaultEn\": \"Remove from shelf\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Увеличить изображение\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Увеличить изображение\",\n    \"defaultRu\": \"Увеличить изображение\",\n    \"defaultEn\": \"Enlarge image\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Увеличить масштаб глобуса\",\n    \"group\": \"Весь интерфейс\",\n"
     }
-  ]
+  ],
+  "catalogIntegrationContext": {
+    "mainSha": "c052599516af0658c3764d4c69bfcaac485f2e0c",
+    "reason": "PR #180 added five separately attested shelf translations. Refresh only catalog hunk context around those entries; preserve the same seventeen article-book additions and one neutral availability-copy replacement."
+  }
 }

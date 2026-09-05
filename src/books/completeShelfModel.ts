@@ -423,9 +423,11 @@ export function buildCompleteShelfBookPose({
           ? 0.035
           : hovered
             ? 0.09
-            : focused
-              ? 0.025
-          : 0,
+            : focused && phase === "SHELF_MOVING"
+              ? 0.08
+              : focused && phase === "SHELF_SETTLING"
+                ? 0.025
+                : 0,
     ]) as readonly [number, number, number],
     rotation: Object.freeze([
       0,

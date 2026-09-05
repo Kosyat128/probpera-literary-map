@@ -4,13 +4,14 @@
     --type-dossier-body: 1.0625rem;
     --type-dossier-ui: .9375rem;
     --type-dossier-heading: clamp(1.375rem, 1.65vw, 1.875rem);
-    --type-book-detail-title: clamp(1.875rem, 2.15vw, 2.5rem);
+    --type-book-detail-title: clamp(1.5rem, 1.8vw, 1.75rem);
+    --type-book-catalog-title: 1.25rem;
   }
   .book-detail-copy h3 {
     font-family: var(--font-editorial);
     font-size: var(--type-book-detail-title);
     font-weight: 500;
-    line-height: 1.14;
+    line-height: 1.2;
     letter-spacing: var(--type-tracking-title);
     text-wrap: balance;
   }
@@ -26,7 +27,33 @@
     font-size: var(--type-card-meta);
     font-weight: 600;
     line-height: 1.4;
-    letter-spacing: .035em;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  .book-detail-copy > .book-original-title {
+    font-size: var(--type-card-meta);
+    line-height: 1.4;
+  }
+  .archive-book-copy h3 {
+    font-family: var(--font-ui);
+    font-size: var(--type-book-catalog-title);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: normal;
+  }
+  .archive-book-copy > p {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .archive-book-copy > small,
+  .book-shelf-frame .editorial-state {
+    font-family: var(--font-ui);
+    font-size: var(--type-caption);
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: normal;
     text-transform: none;
   }
   .book-detail-actions button,
@@ -59,6 +86,10 @@
   }
   .book-shelf-scene-hint small { font-family: var(--font-ui); font-weight: 400; }
   .book-dossier-reader {
+    --font-editorial: "Source Serif 4 Local", Georgia, serif;
+    --type-dossier-heading: 1.3125rem;
+    --type-dossier-subheading: 1.125rem;
+    --type-dossier-ui: .875rem;
     font-family: var(--font-editorial);
     font-size: var(--type-dossier-body);
     font-weight: 400;
@@ -69,19 +100,44 @@
   .book-dossier-reader__page h4 {
     font-family: var(--font-editorial);
     font-size: var(--type-dossier-heading);
-    font-weight: 500;
-    line-height: 1.22;
-    letter-spacing: -.012em;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: normal;
     text-wrap: balance;
   }
   .book-dossier-reader :is(button, input, dt, summary),
   .book-dossier-reader__header,
-  .book-detail-toolbar__label,
   .book-dossier-reader__spoilers,
   .book-dossier-reader__notice,
-  .book-dossier-reader__eyebrow,
   .book-dossier-reader__pager,
   .book-dossier-reader__sources {
+    font-family: var(--font-ui);
+    font-size: var(--type-dossier-ui);
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  .book-dossier-reader__page dd { font-size: var(--type-dossier-body); }
+  .book-dossier-reader button { font-size: var(--type-action); }
+  .book-dossier-reader :is(button, dt, summary) { font-weight: 500; }
+  .book-dossier-reader__eyebrow {
+    font-family: var(--font-ui);
+    font-size: var(--type-caption);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  .book-dossier-reader .book-dossier-concepts :is(h5, h6) {
+    font-family: var(--font-editorial);
+    font-size: var(--type-dossier-subheading);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: normal;
+  }
+  .book-dossier-reader__page strong { font-weight: 600; }
+  .book-detail-toolbar__label {
     font-family: var(--font-ui);
     font-size: var(--type-dossier-ui);
     font-weight: 600;
@@ -89,8 +145,6 @@
     letter-spacing: normal;
     text-transform: none;
   }
-  .book-dossier-reader__page dd { font-size: var(--type-dossier-body); }
-  .book-dossier-reader input { font-weight: 400; }
   .book-dossier-reader__sources li > span { font-weight: 400; }
   .book-shelf-frame__detail .cover-rights-note { font-family: var(--font-ui); font-weight: 400; line-height: 1.5; }
   .book-dossier-reader__sources p {
@@ -1129,4 +1183,17 @@
       color: CanvasText;
     }
   }
+}
+
+@layer site-typography {
+  .book-shelf-controls :is(button, select),
+  .book-shelf-controls .book-filter-copy strong,
+  .book-shelf-frame__collection :is(button, select),
+  .book-shelf-frame__active-rail button,
+  .book-shelf-frame__navigation button,
+  .book-shelf-frame :is(.archive-book-detail, .archive-book-save) { font-family: var(--font-ui); font-size: var(--type-card-meta); font-weight: 500; line-height: 1.3; letter-spacing: normal; text-transform: none; }
+  .book-shelf-controls.book-archive-toolbar .book-shelf-controls__input input { font-family: var(--font-ui); font-size: var(--type-action); font-weight: 400; }
+  .book-shelf-controls .book-shelf-controls__scope select,
+  .book-shelf-controls .book-shelf-quality-control > span,
+  .book-collection-switcher__label { font-family: var(--font-ui); font-size: var(--type-caption); font-weight: 400; line-height: 1.35; }
 }
