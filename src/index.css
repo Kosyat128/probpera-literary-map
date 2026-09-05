@@ -5956,11 +5956,6 @@ a.writer-nobel-medal:focus-visible {
 
 .book-detail-copy h3 {
   margin: 10px 0 4px;
-  font-family: var(--serif);
-  font-size: clamp(36px, 4vw, 58px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: var(--type-tracking-title);
 }
 
 .book-original-title {
@@ -5983,25 +5978,16 @@ a.writer-nobel-medal:focus-visible {
 
 .book-detail-copy dt {
   color: rgba(255, 255, 255, 0.42);
-  font-size: var(--type-caption);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .book-detail-copy dd {
   margin: 5px 0 0;
-  font-family: var(--serif);
-  font-size: 16px;
 }
 
 .book-detail-copy > p {
   max-width: 680px;
   margin: 0;
   color: rgba(255, 255, 255, 0.68);
-  font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.65;
 }
 
 .book-detail-actions {
@@ -6027,12 +6013,8 @@ a.writer-nobel-medal:focus-visible {
 
 .book-detail-actions button,
 .book-detail-actions a {
-  min-height: 36px;
+  min-height: 44px;
   padding: 0 13px;
-  font-size: var(--type-caption);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 .book-detail-actions button {
@@ -15832,10 +15814,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .book-detail-card > .engagement-card {
     grid-column: auto;
-  }
-
-  .book-detail-copy h3 {
-    font-size: 39px;
   }
 
   .book-detail-actions {

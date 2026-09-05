@@ -1,0 +1,81 @@
+{
+  "capturedAt": "2026-09-05T04:04:40.968Z",
+  "scope": "Actual React hook and public parser with a synthetic local RPC response; no live CMS writes.",
+  "orderedPrefix": true,
+  "afterModeEmptyPrefix": true,
+  "localProgressAcrossModes": true,
+  "expiredPayloadRemoved": true,
+  "expiredSpoilerIndicatorRemoved": true,
+  "invalidProgressReset": true,
+  "errors": [],
+  "requests": [
+    {
+      "bookKey": "test:writer:book",
+      "locale": "ru",
+      "mode": "BEFORE_READING",
+      "revealSpoilers": "NONE",
+      "reachedItemIds": []
+    },
+    {
+      "bookKey": "test:writer:book",
+      "locale": "ru",
+      "mode": "DURING_READING",
+      "revealSpoilers": "NONE",
+      "reachedItemIds": []
+    },
+    {
+      "bookKey": "test:writer:book",
+      "locale": "ru",
+      "mode": "DURING_READING",
+      "revealSpoilers": "NONE",
+      "reachedItemIds": [
+        "identity-item",
+        "passport-item"
+      ]
+    },
+    {
+      "bookKey": "test:writer:book",
+      "locale": "ru",
+      "mode": "AFTER_READING",
+      "revealSpoilers": "NONE",
+      "reachedItemIds": []
+    },
+    {
+      "bookKey": "test:writer:book",
+      "locale": "ru",
+      "mode": "DURING_READING",
+      "revealSpoilers": "NONE",
+      "reachedItemIds": [
+        "identity-item",
+        "passport-item"
+      ]
+    },
+    {
+      "bookKey": "test:writer:book",
+      "locale": "ru",
+      "mode": "DURING_READING",
+      "revealSpoilers": "ENDING",
+      "reachedItemIds": [
+        "identity-item",
+        "passport-item"
+      ]
+    },
+    {
+      "bookKey": "test:writer:book",
+      "locale": "ru",
+      "mode": "DURING_READING",
+      "revealSpoilers": "ENDING",
+      "reachedItemIds": [
+        "identity-item",
+        "passport-item"
+      ]
+    },
+    {
+      "bookKey": "test:writer:book",
+      "locale": "ru",
+      "mode": "DURING_READING",
+      "revealSpoilers": "ENDING",
+      "reachedItemIds": []
+    }
+  ]
+}

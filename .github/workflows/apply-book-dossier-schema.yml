@@ -1,0 +1,209 @@
+name: Apply book dossier schema only
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: Exact 40-character main commit SHA
+        required: true
+        type: string
+      mode:
+        description: Dry-run restores an isolated backup; apply also commits the schema
+        type: choice
+        options: [dry-run, apply]
+        default: dry-run
+        required: true
+      confirmation:
+        description: "Type exactly: REVIEW BOOK DOSSIER SCHEMA or APPLY BOOK DOSSIER SCHEMA"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+# Serialize with the existing full reconciliation, including its archive release.
+concurrency:
+  group: production-database-reconciliation
+  cancel-in-progress: false
+
+jobs:
+  dossier-schema:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    environment:
+      name: production
+    steps:
+      - name: Checkout the approved main commit
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Validate immutable invocation
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          MODE: ${{ inputs.mode }}
+          CONFIRMATION: ${{ inputs.confirmation }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" ]]
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]]
+          case "$MODE" in
+            dry-run) [[ "$CONFIRMATION" == 'REVIEW BOOK DOSSIER SCHEMA' ]] ;;
+            apply) [[ "$CONFIRMATION" == 'APPLY BOOK DOSSIER SCHEMA' ]] ;;
+            *) exit 1 ;;
+          esac
+
+      - name: Set up Node.js without installing dependencies
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Build the fixed dossier-only plan
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+        run: |
+          set -Eeuo pipefail
+          node scripts/database/build-book-dossier-migration-plan.mjs \
+            --repository-sha "$EXPECTED_MAIN_SHA" --output-dir dossier-schema
+
+      - name: Verify production secrets
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
+        run: |
+          set -Eeuo pipefail
+          [[ -n "$SUPABASE_DB_URL" && -n "$SUPABASE_URL" && ${#BACKUP_ENCRYPTION_KEY} -ge 32 ]] || {
+            echo '::error::Required existing database/backup configuration is missing.'
+            exit 1
+          }
+
+      - name: Pre-pull and pin the database image for this runner
+        env:
+          DATABASE_IMAGE: public.ecr.aws/supabase/postgres:17.6.1.136
+        run: |
+          set -Eeuo pipefail
+          pulled=false
+          for retry_delay in 0 15 30 60 120 240; do
+            if (( retry_delay > 0 )); then sleep "$retry_delay"; fi
+            if docker pull "$DATABASE_IMAGE" >/dev/null; then pulled=true; break; fi
+          done
+          [[ "$pulled" == true ]]
+          database_image_id="$(docker image inspect --format '{{.Id}}' "$DATABASE_IMAGE")"
+          database_image_digest="$(docker image inspect --format '{{range .RepoDigests}}{{println .}}{{end}}' "$DATABASE_IMAGE" | awk '/^public\.ecr\.aws\/supabase\/postgres@sha256:[0-9a-f]{64}$/ { print; exit }')"
+          [[ "$database_image_id" =~ ^sha256:[0-9a-f]{64}$ ]]
+          [[ "$database_image_digest" =~ ^public\.ecr\.aws/supabase/postgres@sha256:[0-9a-f]{64}$ ]]
+          {
+            echo "DATABASE_IMAGE_LOCAL_ID=$database_image_id"
+            echo "DATABASE_IMAGE_LOCAL_DIGEST=$database_image_digest"
+          } >> "$GITHUB_ENV"
+
+      - name: Verify target identity and read-only schema preflight
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+        run: |
+          set -Eeuo pipefail
+          bash scripts/database/supabase-database-safety.sh validate-target
+          bash scripts/database/supabase-database-safety.sh verify-production \
+            dossier-schema/preflight.sql dossier-schema/preflight.txt
+
+      - name: Back up production before the isolated rehearsal
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+        run: |
+          bash scripts/database/supabase-database-safety.sh dump \
+            dossier-schema/before.dump dossier-schema/auth-user-ids.seed
+
+      - name: Encrypt and verify the backup and identity sidecar
+        id: archive
+        env:
+          BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
+        run: |
+          set -Eeuo pipefail
+          bash scripts/database/supabase-database-safety.sh encrypt-verify \
+            dossier-schema/before.dump dossier-schema/before.dump.enc dossier-schema/before.verified.dump
+          bash scripts/database/supabase-database-safety.sh encrypt-verify \
+            dossier-schema/auth-user-ids.seed dossier-schema/auth-user-ids.seed.enc dossier-schema/auth-user-ids.verified.seed
+          echo 'ready=true' >> "$GITHUB_OUTPUT"
+
+      - name: Persist encrypted backup before any production mutation
+        uses: actions/upload-artifact@v7
+        with:
+          name: dossier-schema-backup-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            dossier-schema/*.enc
+            dossier-schema/*.enc.sha256
+            dossier-schema/manifest.json
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Rehearse the complete transaction on an isolated restored schema
+        run: |
+          set -Eeuo pipefail
+          bash scripts/database/supabase-database-safety.sh restore-drill \
+            dossier-schema/before.verified.dump dossier-schema/auth-user-ids.verified.seed \
+            dossier-schema/rehearsal.sql dossier-schema/restore-result.env
+          source dossier-schema/restore-result.env
+          [[ "$restore_scope" == 'public-application-schema' ]]
+          [[ "$identity_seed" == 'auth-user-id-sidecar-v1' ]]
+          [[ "$identity_seed_sha256" =~ ^[0-9a-f]{64}$ ]]
+          [[ "$migration_plan" == 'verified' && "$publication_schema" == '20260814-current' ]]
+
+      - name: Reconfirm current main tip and unchanged migration bytes
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -Eeuo pipefail
+          current_main_sha="$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')"
+          [[ "$current_main_sha" == "$EXPECTED_MAIN_SHA" ]]
+          node scripts/database/build-book-dossier-migration-plan.mjs \
+            --repository-sha "$EXPECTED_MAIN_SHA" --output-dir dossier-schema-recheck
+          cmp dossier-schema/plan.sql dossier-schema-recheck/plan.sql
+
+      - name: Apply only the rehearsed dossier schema transaction
+        if: inputs.mode == 'apply'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+        run: |
+          bash scripts/database/supabase-database-safety.sh apply-plan dossier-schema/plan.sql
+
+      - name: Verify committed dossier permissions, functions and private receipt
+        if: inputs.mode == 'apply'
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+        run: |
+          set -Eeuo pipefail
+          bash scripts/database/supabase-database-safety.sh verify-production \
+            dossier-schema/verification.sql dossier-schema/verification.txt
+
+      - name: Record successful mode and scope
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          printf 'Dossier schema %s passed. Catalogue publication and CMS content writes were not performed.\n' "$MODE" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload redacted plan and health evidence
+        if: always() && steps.archive.outputs.ready == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: dossier-schema-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            dossier-schema/manifest.json
+            dossier-schema/preflight.txt
+            dossier-schema/verification.txt
+          retention-days: 90
+          if-no-files-found: error
+
+      - name: Remove plaintext backup and identity material
+        if: always()
+        run: |
+          rm -f -- dossier-schema/before.dump dossier-schema/before.verified.dump \
+            dossier-schema/auth-user-ids.seed dossier-schema/auth-user-ids.verified.seed

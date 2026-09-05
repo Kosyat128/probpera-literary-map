@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   COMPLETE_SHELF_GAP,
+  OWNER_LOCKED_SPINE_PALETTE,
   COMPLETE_SHELF_BOOK_FORMAT,
   COMPLETE_SHELF_CATALOG_BATCH_SIZE,
   COMPLETE_SHELF_ECONOMICAL_WORKING_SET,
@@ -70,7 +71,7 @@ describe("Complete Shelf procedural model", () => {
       expect(spec.lean).toBe(0);
     }
     expect(new Set(specs.map((spec) => spec.binding))).toEqual(
-      new Set(["leather", "cloth"])
+      new Set(["cloth"])
     );
   });
 
@@ -133,17 +134,7 @@ describe("Complete Shelf procedural model", () => {
       repeatedFallbacks.map((spec) => spec.baseColor)
     );
     expect(fallbacks.every((spec) => spec.foilColor !== "#f67518")).toBe(true);
-    expect(
-      fallbacks.every((spec) => {
-        const [red, green, blue] = [1, 3, 5].map((offset) =>
-          Number.parseInt(spec.baseColor.slice(offset, offset + 2), 16)
-        );
-        return (
-          Math.max(red, green, blue) < 168 &&
-          (red <= blue || red >= blue * 1.35)
-        );
-      })
-    ).toBe(true);
+    expect(fallbacks.every((spec) => OWNER_LOCKED_SPINE_PALETTE.includes(spec.baseColor as typeof OWNER_LOCKED_SPINE_PALETTE[number]))).toBe(true);
     expect(normalizeCompleteShelfCoverUrl("javascript:alert(1)")).toBeNull();
     expect(normalizeCompleteShelfCoverUrl("brand/../secret.webp")).toBeNull();
   });
@@ -229,7 +220,7 @@ describe("Complete Shelf procedural model", () => {
     });
     expect(shelf.rotation[1]).toBeCloseTo(Math.PI / 2);
     expect(shelf.rotation[2]).toBe(0);
-    expect(shelf.position[2]).toBe(0);
+    expect(shelf.position[2]).toBe(0.025);
     expect(shelf.scale).toBe(1);
     expect(inspection.position[0]).toBe(0);
     expect(inspection.position[2]).toBeGreaterThan(1);
@@ -240,7 +231,7 @@ describe("Complete Shelf procedural model", () => {
         (COMPLETE_SHELF_TOP + (spec.dimensions.height * inspection.scale) / 2)
     ).toBeCloseTo(COMPLETE_SHELF_INSPECTION_LIFT, 3);
     expect(open.coverAngle).toBeLessThan(-2);
-    expect(open.scale).toBe(1.5);
+    expect(open.scale).toBe(inspection.scale);
     expect(page.firstLeafAngle).toBeLessThan(-0.6);
     expect(page.secondLeafAngle).toBeLessThan(-0.3);
     expect(settling.firstLeafAngle).toBe(open.firstLeafAngle);

@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   beginBookInspectionDrag,
   captureBookInspectionSnapshot,
+  remapBookInspectionSessionPages,
   createBookInspectionSession,
   endBookInspectionDrag,
   getBookInspectionKeyboardTarget,
@@ -205,5 +206,26 @@ describe("Book inspection session", () => {
     expect(restoreBookInspectionSnapshot(restored, 1, snapshot!)).toBe(
       restored
     );
+  });
+});
+
+describe("semantic inspection position", () => {
+  it("preserves an active turn and its semantic target when pagination inserts pages", () => {
+    const anchor = (blockId: string) => ({ sectionId: "dossier", blockId, dossierVersion: "v2", locale: "ru" as const, readingMode: "BEFORE_READING" as const });
+    const pages = ["title", "essay", "sources"].map((id) => ({ id, anchor: anchor(id) }));
+    const session = createBookInspectionSession({ bookKey: "book:semantic", pageCount: pages.length, pageIndex: 1, pages });
+    expect(session.semanticPosition?.anchor.blockId).toBe("essay");
+    const dragging = updateBookInspectionDrag(beginBookInspectionDrag(session, 1, "forward"), 1, 0.7);
+    const settling = endBookInspectionDrag(dragging, { requestId: 1, velocity: 0 });
+    const expanded = [pages[0], { id: "contents", anchor: anchor("contents") }, pages[1], pages[2]];
+    const remapped = remapBookInspectionSessionPages(settling, "book:semantic", expanded);
+    expect(remapped.phase).toBe("settling");
+    expect(remapped.dragProgress).toBe(1);
+    expect(remapped.pageIndex).toBe(2);
+    expect(remapped.settlePageIndex).toBe(3);
+    const committed = settleBookInspectionSession(remapped, 1);
+    expect(committed.semanticPosition?.anchor.blockId).toBe("sources");
+    expect(captureBookInspectionSnapshot(committed)?.semanticPosition?.pageId).toBe("sources");
+    expect(remapBookInspectionSessionPages(committed, "book:stale", pages)).toBe(committed);
   });
 });

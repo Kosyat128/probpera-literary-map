@@ -1,6 +1,107 @@
 /* Public defaults have one owner. Validated, published CMS rules stay unlayered. */
 @layer site-typography {
   :root {
+    --type-dossier-body: 1.0625rem;
+    --type-dossier-ui: .9375rem;
+    --type-dossier-heading: clamp(1.375rem, 1.65vw, 1.875rem);
+    --type-book-detail-title: clamp(1.875rem, 2.15vw, 2.5rem);
+  }
+  .book-detail-copy h3 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-book-detail-title);
+    font-weight: 400;
+    line-height: 1.14;
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+  }
+  .book-detail-copy > p,
+  .book-detail-copy dd {
+    font-family: var(--font-editorial);
+    font-size: var(--type-dossier-body);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .book-detail-copy dt {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: .035em;
+    text-transform: none;
+  }
+  .book-detail-actions button,
+  .book-detail-actions a,
+  .book-shelf-scene__accessible-actions button {
+    font-family: var(--font-ui);
+    font-size: var(--type-dossier-ui);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  .book-spine-tooltip strong,
+  .book-detail-mobile-handle strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-related-title);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .book-spine-tooltip span,
+  .book-detail-mobile-author {
+    font-family: var(--font-ui);
+    font-size: var(--type-dossier-ui);
+    line-height: 1.4;
+  }
+  .book-spine-tooltip small {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    line-height: 1.4;
+  }
+  .book-shelf-scene-hint small { font-family: var(--font-ui); font-weight: 400; }
+  .book-dossier-reader {
+    font-family: var(--font-editorial);
+    font-size: var(--type-dossier-body);
+    font-weight: 400;
+    line-height: 1.65;
+    font-synthesis: none;
+    text-align: start;
+  }
+  .book-dossier-reader__page h4 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-dossier-heading);
+    font-weight: 600;
+    line-height: 1.22;
+    letter-spacing: -.012em;
+    text-wrap: balance;
+  }
+  .book-dossier-reader :is(button, input, dt, summary),
+  .book-dossier-reader__header,
+  .book-detail-toolbar__label,
+  .book-dossier-reader__spoilers,
+  .book-dossier-reader__notice,
+  .book-dossier-reader__eyebrow,
+  .book-dossier-reader__pager,
+  .book-dossier-reader__sources {
+    font-family: var(--font-ui);
+    font-size: var(--type-dossier-ui);
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  .book-dossier-reader__page dd { font-size: var(--type-dossier-body); }
+  .book-dossier-reader input { font-weight: 400; }
+  .book-dossier-reader__sources li > span { font-weight: 400; }
+  .book-shelf-frame__detail .cover-rights-note { font-family: var(--font-ui); font-weight: 400; line-height: 1.5; }
+  .book-dossier-reader__sources p {
+    font-family: var(--font-editorial);
+    font-size: var(--type-dossier-body);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+}
+@layer site-typography {
+  :root {
     --font-ui: "Source Sans 3 Local", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
     --font-editorial: "Source Serif 4 Local", Georgia, "Times New Roman", serif;
     --font-display: var(--font-editorial);

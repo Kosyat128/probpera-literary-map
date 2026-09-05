@@ -1,0 +1,272 @@
+{
+  "synthetic": true,
+  "compiledPublicFixture": true,
+  "appBundleUsed": false,
+  "webGLCreated": false,
+  "started": "2026-09-05T04:05:08.906Z",
+  "cases": [
+    {
+      "width": 1440,
+      "overflow": 0,
+      "controls": [
+        {
+          "text": "Закрыть",
+          "width": 87.640625,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "1Персонаж А",
+          "width": 502.90625,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "2Персонаж Б",
+          "width": 502.90625,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "3Персонаж В",
+          "width": 502.90625,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "СотрудничествоПерсонаж А → Персонаж Б",
+          "width": 502.90625,
+          "height": 70.046875,
+          "font": "15px"
+        },
+        {
+          "text": "ЗнакомствоПерсонаж А → Персонаж В",
+          "width": 502.90625,
+          "height": 70.046875,
+          "font": "15px"
+        },
+        {
+          "text": "Synthetic source",
+          "width": 134.171875,
+          "height": 44,
+          "font": "17px"
+        }
+      ],
+      "hiddenName": false,
+      "focusOutline": "2px",
+      "axeViolations": 0,
+      "focusRestored": true,
+      "anchorPreserved": true,
+      "paper": {
+        "pages": 12,
+        "diagram": {
+          "preview": {
+            "totalNodes": 3,
+            "nodes": [
+              {
+                "id": "character-a",
+                "number": 1,
+                "label": "Персонаж А",
+                "groupIndex": 0
+              },
+              {
+                "id": "character-b",
+                "number": 2,
+                "label": "Персонаж Б",
+                "groupIndex": 0
+              },
+              {
+                "id": "character-c",
+                "number": 3,
+                "label": "Персонаж В",
+                "groupIndex": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": 1,
+                "to": 2,
+                "label": "Сотрудничество"
+              },
+              {
+                "from": 1,
+                "to": 3,
+                "label": "Знакомство"
+              }
+            ],
+            "groups": [
+              {
+                "id": "graph-team",
+                "label": "Учебная группа",
+                "index": 0
+              },
+              {
+                "id": "graph-guests",
+                "label": "Гости",
+                "index": 1
+              }
+            ]
+          },
+          "x": 132,
+          "y": 801.6,
+          "width": 1104,
+          "height": 300
+        },
+        "sourceRows": 8
+      }
+    },
+    {
+      "width": 390,
+      "overflow": 0,
+      "controls": [
+        {
+          "text": "Закрыть",
+          "width": 87.640625,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "",
+          "width": 44,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "1Персонаж А",
+          "width": 340,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "2Персонаж Б",
+          "width": 340,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "3Персонаж В",
+          "width": 340,
+          "height": 44,
+          "font": "15px"
+        },
+        {
+          "text": "СотрудничествоПерсонаж А → Персонаж Б",
+          "width": 340,
+          "height": 70.046875,
+          "font": "15px"
+        },
+        {
+          "text": "ЗнакомствоПерсонаж А → Персонаж В",
+          "width": 340,
+          "height": 70.046875,
+          "font": "15px"
+        },
+        {
+          "text": "Synthetic source",
+          "width": 134.171875,
+          "height": 44,
+          "font": "17px"
+        }
+      ],
+      "hiddenName": false,
+      "focusOutline": "2px",
+      "axeViolations": 0,
+      "focusRestored": true,
+      "anchorPreserved": true,
+      "paper": {
+        "pages": 12,
+        "diagram": {
+          "preview": {
+            "totalNodes": 3,
+            "nodes": [
+              {
+                "id": "character-a",
+                "number": 1,
+                "label": "Персонаж А",
+                "groupIndex": 0
+              },
+              {
+                "id": "character-b",
+                "number": 2,
+                "label": "Персонаж Б",
+                "groupIndex": 0
+              },
+              {
+                "id": "character-c",
+                "number": 3,
+                "label": "Персонаж В",
+                "groupIndex": 1
+              }
+            ],
+            "edges": [
+              {
+                "from": 1,
+                "to": 2,
+                "label": "Сотрудничество"
+              },
+              {
+                "from": 1,
+                "to": 3,
+                "label": "Знакомство"
+              }
+            ],
+            "groups": [
+              {
+                "id": "graph-team",
+                "label": "Учебная группа",
+                "index": 0
+              },
+              {
+                "id": "graph-guests",
+                "label": "Гости",
+                "index": 1
+              }
+            ]
+          },
+          "x": 132,
+          "y": 801.6,
+          "width": 1104,
+          "height": 300
+        },
+        "sourceRows": 8
+      }
+    }
+  ],
+  "progress": {
+    "count": 2,
+    "height": 44,
+    "controlledValue": "2"
+  },
+  "finished": "2026-09-05T04:05:10.958Z",
+  "status": "passed"
+}

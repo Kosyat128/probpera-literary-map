@@ -14,6 +14,11 @@ import {
 } from "../books/bookShelfQualityController";
 import BookShelfBrandLoader from "./BookShelfBrandLoader";
 import type { BookShelfSceneCanvasProps } from "./BookShelfSceneCanvas";
+import type { BookShelfViewportInsets } from "../books/bookInspectionCamera";
+import type { BookShelfSpineHit } from "../books/bookShelfPointer";
+import { ensureBookTypographyReady } from "../books/bookTypography";
+
+export type BookShelfSpineHover = BookShelfSpineHit;
 
 export type BookShelfPresentationItem = {
   key: string;
@@ -25,6 +30,7 @@ export type BookShelfPresentationItem = {
   baseColor: string;
   accentColor: string;
   paperColor: string;
+  ownerPaletteSlot?: number;
 };
 
 export type BookShelfSceneAppearance = {
@@ -46,6 +52,9 @@ export type BookShelfSceneProps = {
   appearance: BookShelfSceneAppearance;
   focusedBookKey: string | null;
   selectedBookKey: string | null;
+  viewportInsets?: BookShelfViewportInsets;
+  onHoveredBookChange?: (hover: BookShelfSpineHover | null) => void;
+  onPressedBookChange?: (key: string | null) => void;
   phase: BookShelfPhase;
   requestId: number;
   active: boolean;
@@ -207,9 +216,19 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
 
   useEffect(() => {
     if (!props.active) return;
+    let current = true;
     const available = supportsWebGl();
-    setSupport(available ? "ready" : "failed");
-    if (!available) onFailureRef.current("unsupported");
+    if (!available) {
+      setSupport("failed");
+      onFailureRef.current("unsupported");
+      return;
+    }
+    void ensureBookTypographyReady().then((ready) => {
+      if (!current) return;
+      setSupport(ready ? "ready" : "failed");
+      if (!ready) onFailureRef.current("texture-error");
+    });
+    return () => { current = false; };
   }, [props.active]);
 
   const failureHandler = useMemo(
@@ -270,6 +289,9 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
               appearance={props.appearance}
               focusedBookKey={props.focusedBookKey}
               selectedBookKey={props.selectedBookKey}
+              viewportInsets={props.viewportInsets}
+              onHoveredBookChange={props.onHoveredBookChange}
+              onPressedBookChange={props.onPressedBookChange}
               phase={props.phase}
               requestId={props.requestId}
               active={props.active}
@@ -302,15 +324,21 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
         </Suspense>
       </SceneErrorBoundary>
       {inspectionActive ? (
-        <div className="book-shelf-scene__accessible-actions">
+        <div className="book-shelf-scene__accessible-actions" style={{
+          left: (props.viewportInsets?.left || 0) + 16,
+          right: (props.viewportInsets?.right || 0) + 16,
+          bottom: (props.viewportInsets?.bottom || 0) + 16,
+          maxWidth: "none", justifyContent: "center",
+        }}>
           {coverCanOpen && props.selectedBookKey && props.openBookLabel ? (
-            <button type="button" onClick={requestCoverOpen}>
+            <button className="book-shelf-scene__open" type="button" onClick={requestCoverOpen}>
               {props.openBookLabel}
             </button>
           ) : null}
           {pageNavigationActive && props.pageTurnLabel ? (
             <div aria-busy={pageNavigationBusy}>
               <button
+                className="book-shelf-scene__page"
                 type="button"
                 onClick={props.onRequestPreviousPage}
                 disabled={
@@ -325,6 +353,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
                   : null}
               </span>
               <button
+                className="book-shelf-scene__page"
                 type="button"
                 onClick={props.onRequestPageTurn}
                 disabled={
@@ -341,7 +370,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
           {props.closeInspectionLabel &&
           props.phase !== "INSPECTION_CLOSING" &&
           props.phase !== "SHELF_RESTORING" ? (
-            <button type="button" onClick={props.onRequestInspectionClose}>
+            <button className="book-shelf-scene__close" type="button" onClick={props.onRequestInspectionClose}>
               {props.closeInspectionLabel}
             </button>
           ) : null}

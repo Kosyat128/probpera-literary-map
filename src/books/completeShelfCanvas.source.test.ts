@@ -62,7 +62,8 @@ describe("Complete Shelf Canvas source contract", () => {
     ]) {
       expect(combinedSource).toContain(callback);
     }
-    expect(rendererSource).toContain("onPointerCancel");
+    expect(rendererSource).toContain('canvas.addEventListener("pointercancel", cancelCapturedPage)');
+    expect(rendererSource).toContain('canvas.removeEventListener("pointercancel", cancelCapturedPage)');
     expect(rendererSource).toContain('phase === "INSPECTION_CLOSED"');
     expect(rendererSource).toContain('phase !== "BOOK_OPEN"');
     expect(rendererSource).toContain("pageGestureStartedRef");
@@ -82,8 +83,7 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(rendererSource).not.toContain("const lipGeometry = useMemo");
     expect(rendererSource).toContain("const backRailGeometry = useMemo");
     expect(rendererSource).not.toContain("undersideGeometry");
-    expect(rendererSource).toContain("const shelfWidth = Math.max(");
-    expect(rendererSource).toContain("    6.5,");
+    expect(rendererSource).toContain("completeShelfRowWidth(layout.length)");
     expect(rendererSource).toContain('color="#fff3e5"');
     expect(rendererSource).toContain("clearcoat={0.08}");
     expect(rendererSource).toContain(
@@ -97,14 +97,14 @@ describe("Complete Shelf Canvas source contract", () => {
   it("separates non-metallic cloth from transparent metallic foil", () => {
     expect(rendererSource).toContain("metalness={0}");
     expect(rendererSource).toContain(
-      "metalness={precolored ? 0.64 : front ? 0.94 : 0.92}"
+      "metalness={precolored ? 0.16 : 0.7}"
     );
     expect(rendererSource).toContain(
-      "roughness={precolored ? 0.27 : front ? 0.18 : 0.16}"
+      "roughness={precolored ? 0.62 : 0.4}"
     );
     expect(rendererSource).toContain("transparent");
     expect(rendererSource).toContain("alphaTest={0.015}");
-    expect(rendererSource).toContain("bumpScale={front ? 0.016 : 0.017}");
+    expect(rendererSource).toContain("bumpScale={front ? 0.0024 : 0.0016}");
     expect(rendererSource).toContain("new RoundedBoxGeometry");
     expect(rendererSource).toContain("createCompleteShelfPageBlockGeometry");
     expect(rendererSource).toContain("<meshPhysicalMaterial");
@@ -112,7 +112,7 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(textureSource).toContain("context.clearRect(0, 0, width, height)");
     expect(textureSource).toContain("const frontHeight = quality");
     expect(textureSource).toContain("Math.trunc(quality.height)");
-    expect(textureSource).toContain("const spinePhysicalWidth");
+    expect(textureSource).toContain("const physicalWidth = spec.dimensions.pageDepth");
     expect(textureSource).toContain(
       "spec.dimensions.coverWidth / spec.dimensions.height"
     );
@@ -138,7 +138,7 @@ describe("Complete Shelf Canvas source contract", () => {
       "visible={Boolean(artwork.frontFoil)}"
     );
     expect(rendererSource).toContain(
-      "const renderFullRig = selected && completeShelfPhaseHasInspection(phase)"
+      "const renderFullRig = selected && (completeShelfPhaseHasInspection(phase) || phase === \"SHELF_RESTORING\")"
     );
     expect(rendererSource).toContain(
       "renderFullRig ? coverWidth * 1.22 : 0.12"
@@ -149,33 +149,38 @@ describe("Complete Shelf Canvas source contract", () => {
     );
     expect(rendererSource).toContain("height: artworkTextureHeight");
     expect(rendererSource).toContain("anisotropy: artworkTextureAnisotropy");
-    expect(rendererSource).toContain("createCompleteShelfLeatherMap");
-    expect(rendererSource).toContain("createCompleteShelfLeatherSurfaceMaps");
+    expect(rendererSource).not.toContain("createCompleteShelfLeatherMap");
+    expect(rendererSource).not.toContain("createCompleteShelfLeatherSurfaceMaps");
     expect(rendererSource).toContain("const needsFullRigMaps = Boolean");
     expect(rendererSource).toContain("? createCompleteShelfPageEdgeTextures");
     expect(textureSource).toContain("frontFoil");
     expect(textureSource).toContain("spineFoil");
-    expect(textureSource).toContain("paintLiteraryMedallion");
+    expect(textureSource).not.toContain("paintLiteraryMedallion");
+    expect(textureSource).toContain("paintPublisherMark");
+    expect(textureSource).toContain("if (!bookTypographyIsReady()) return unavailable");
     expect(textureSource).toContain("frontWriterLines");
-    expect(textureSource).toContain("context.shadowColor = \"transparent\"");
+    expect(textureSource).toContain("context.strokeStyle = OwnerBookTypographyTokens.sepia");
+    expect(textureSource).toContain("context.fillStyle = OwnerBookTypographyTokens.ivory");
     expect(textureSource).toContain("paintSpineBinderOrnament");
     expect(textureSource).not.toContain("paintSpineSeparatorRule");
     expect(textureSource).toContain("context.lineCap = \"butt\"");
     expect(textureSource).toContain("layout.dotRadius");
     expect(textureSource).not.toContain("diamondHalfWidth");
     expect(textureSource).not.toContain("upperY:");
-    expect(textureSource.match(/paintMotif\(/gu)).toHaveLength(2);
+    expect(textureSource).not.toContain("paintMotif(");
     expect(textureSource).not.toContain("for (const bandY of [0.115, 0.885])");
     expect(textureSource).not.toContain(
       "context.fillText(plan.yearLabel, spineWidth"
     );
-    expect(textureSource).toContain('tailShade.addColorStop(1, "rgba(7,5,9,.62)")');
+    expect(textureSource).not.toContain("tailShade");
+    expect(textureSource).not.toContain('spec.binding === "leather"');
     expect(rendererSource).not.toContain("spineBandGeometry");
     expect(textureSource).toContain("resolveCompleteShelfSpineTextColor");
     expect(rendererSource).toContain(
       "alphaMap={precolored ? undefined : map || undefined}"
     );
-    expect(rendererSource).toContain("resolveCompleteShelfViewportFraming");
+    expect(canvasSource).toContain("resolveBookInspectionCameraFraming");
+    expect(canvasSource).toContain("viewportInsets={viewportInsets}");
     expect(rendererSource).toContain("scale={sceneFraming.scale}");
     expect(rendererSource).toContain(
       'const renderingEconomical = props.qualitySettings.profile === "ECONOMY"'
@@ -185,14 +190,13 @@ describe("Complete Shelf Canvas source contract", () => {
     );
     expect(rendererSource).toContain("qualitySettings.pageSegments.width");
     expect(rendererSource).toContain("qualitySettings.pageSegments.height");
-    expect(rendererSource).toContain("key={entry.slotIndex}");
+    expect(rendererSource).toContain("key={entry.item.key}");
     expect(rendererSource).not.toContain("coverAssignmentGenerationRef");
-    expect(rendererSource).toContain("const scheduleStableFrame = () =>");
-    expect(rendererSource).toContain(
-      'window.addEventListener("scroll", scheduleStableFrame, true)'
-    );
-    expect(rendererSource).toContain("secondFrame = window.requestAnimationFrame");
-    expect(rendererSource).toContain("window.cancelAnimationFrame(firstFrame)");
+    expect(rendererSource).not.toMatch(/window\.addEventListener\("scroll"/u);
+    expect(rendererSource).toContain("bookShelfPointerIsClick");
+    expect(rendererSource).toContain("nearestBookShelfSpine");
+    expect(rendererSource).toContain("useOwnedGeometry");
+    expect(sceneSource).toContain("ensureBookTypographyReady()");
     expect(rendererSource).toContain(
       "completeShelfPhaseAllowsSelectionSwitch(phase)"
     );
@@ -201,23 +205,22 @@ describe("Complete Shelf Canvas source contract", () => {
     expect(rendererSource).toContain("artwork.spineFoil");
   });
 
-  it("uses a balanced two-sided key setup and bounded tone exposure", () => {
+  it("uses neutral calibrated lights and the same owner exposure at every quality", () => {
     expect(canvasSource.match(/<directionalLight\b/gu)).toHaveLength(2);
     expect(canvasSource).toContain("gl.toneMappingExposure = exposure");
     expect(canvasSource).toContain('qualitySettings.profile === "HIGH"');
-    expect(canvasSource).toContain("? 0.9");
-    expect(canvasSource).toContain("? 0.93");
+    expect(canvasSource).toContain("exposure={0.38}");
+    expect(canvasSource).toContain('color="#ffffff"');
     expect(canvasSource).toContain("new RoomEnvironment()");
-    expect(canvasSource).toContain(
-      "0.38 + qualitySettings.ambientTintStrength * 0.34"
-    );
+    expect(canvasSource).toContain("scene.environmentIntensity = 0.72;");
+    expect(canvasSource).not.toContain("qualitySettings.ambientTintStrength");
     expect(canvasSource).toContain('"webglcontextrestored"');
     expect(canvasSource).toContain("onTextureFailure={reportTextureFailure}");
     expect(sceneSource).toContain("resolveBookShelfSceneQualitySettings");
     expect(sceneSource).toContain("qualitySettings={qualitySettings}");
     expect(sceneSource).toContain('props.onFailure("texture-error")');
     expect(sceneSource).toContain("props.onContextRestored?.()");
-    expect(canvasSource).toContain('color="#fff8ed"');
+    expect(canvasSource).not.toContain('color="#fff8ed"');
     expect(rendererSource).toContain("roughness={0.98}");
     expect(rendererSource).toContain(
       "normalMap={bindingNormalMap || undefined}"

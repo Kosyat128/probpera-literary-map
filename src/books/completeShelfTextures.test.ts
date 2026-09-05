@@ -1,6 +1,7 @@
 import type { CanvasTexture } from "three";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
+import { OwnerBookTypographyTokens } from "./bookTypography";
 import { buildCompleteShelfBookSpec } from "./completeShelfModel";
 import {
   buildCompleteShelfArtworkPlan,
@@ -48,10 +49,10 @@ describe("Complete Shelf procedural artwork data", () => {
     expect(plan.accentColor).toBe(spec.accentColor);
     expect(plan.foilColor).toMatch(/^#[0-9a-f]{6}$/iu);
     expect(plan.foilColor).not.toBe("#b87333");
-    expect(plan.hasCoverArtwork).toBe(true);
+    expect(plan.hasCoverArtwork).toBe(false);
   });
 
-  it("provides eight deterministic premium text-cover compositions", () => {
+  it("keeps one owner-locked composition across every book", () => {
     const layouts = new Set(
       Array.from({ length: 256 }, (_, index) =>
         buildCompleteShelfArtworkPlan(
@@ -70,7 +71,7 @@ describe("Complete Shelf procedural artwork data", () => {
       )
     );
 
-    expect(layouts).toEqual(new Set([0, 1, 2, 3, 4, 5, 6, 7]));
+    expect(layouts).toEqual(new Set([0]));
   });
 
   it("bounds long artwork text and marks truncation", () => {
@@ -151,7 +152,7 @@ describe("Complete Shelf procedural artwork data", () => {
     );
   });
 
-  it("keeps solid high-contrast antique-gold lettering legible across all palettes", () => {
+  it("keeps owner ivory lettering distinct from its coincident sepia contour across all palettes", () => {
     const luminance = (value: string) => {
       const channels = [1, 3, 5].map((offset) => {
         const channel =
@@ -195,8 +196,8 @@ describe("Complete Shelf procedural artwork data", () => {
         spec.baseColor,
         spec.foilColor
       );
-      expect(textColor).toMatch(/^#[0-9a-f]{6}$/iu);
-      expect(contrast(spec.baseColor, textColor)).toBeGreaterThanOrEqual(4.4);
+      expect(textColor).toBe(OwnerBookTypographyTokens.ivory);
+      expect(contrast(textColor, OwnerBookTypographyTokens.sepia)).toBeGreaterThan(8);
     }
   });
 

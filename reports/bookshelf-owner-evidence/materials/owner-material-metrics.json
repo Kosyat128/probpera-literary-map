@@ -1,0 +1,1618 @@
+{
+  "method": "CIEDE2000 on D65 Lab from mean sRGB colour of matched 40x40 cloth patches; CIE76 retained separately. Flat 2D texture proof only, excluding scene lighting and camera certification",
+  "formulaVersion": "ciede2000-sharma-2005-v1",
+  "reference": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\docs\\stage5-reference\\OWNER_LOCKED_BOOK_SPINES_EXACT_2026-08-30.png",
+  "cells": [
+    {
+      "slot": 0,
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "title": "1984",
+      "writer": "Джордж Оруэлл",
+      "palette": "#406872",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "1984",
+          "lines": [
+            "1984"
+          ],
+          "fontSize": 25,
+          "lineHeight": 28.999999999999996,
+          "width": 54.699951171875,
+          "height": 28.999999999999996,
+          "fits": true
+        },
+        "author": {
+          "text": "Джордж Оруэлл",
+          "lines": [
+            "Джордж",
+            "Оруэлл"
+          ],
+          "fontSize": 18.5,
+          "lineHeight": 21.459999999999997,
+          "width": 78.32896423339844,
+          "height": 42.919999999999995,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "1984",
+          "lines": [
+            "1984"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 126.90399169921875,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Джордж Оруэлл",
+          "lines": [
+            "Джордж Оруэлл"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 277.37188720703125,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 71,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        67.641875,
+        106.766875,
+        116.513125
+      ],
+      "referenceRGB": [
+        54.090625,
+        96.17875,
+        108.595625
+      ],
+      "deltaE76": 4.718685299758118,
+      "deltaE00": 4.053188722465438
+    },
+    {
+      "slot": 1,
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "title": "451° по Фаренгейту",
+      "writer": "Рэй Брэдбери",
+      "palette": "#BF5441",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "451° по Фаренгейту",
+          "lines": [
+            "451° по",
+            "Фаренгейту"
+          ],
+          "fontSize": 13,
+          "lineHeight": 15.079999999999998,
+          "width": 78.62393188476562,
+          "height": 30.159999999999997,
+          "fits": true
+        },
+        "author": {
+          "text": "Рэй Брэдбери",
+          "lines": [
+            "Рэй",
+            "Брэдбери"
+          ],
+          "fontSize": 16.25,
+          "lineHeight": 18.849999999999998,
+          "width": 78.34115600585938,
+          "height": 37.699999999999996,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "451° по Фаренгейту",
+          "lines": [
+            "451°",
+            "по Фаренгейту"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 436.73992919921875,
+          "height": 134.56,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Рэй Брэдбери",
+          "lines": [
+            "Рэй Брэдбери"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 234.25991821289062,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 168,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        191.57375,
+        87.17875,
+        68.55625
+      ],
+      "referenceRGB": [
+        185.479375,
+        75.911875,
+        58.70625
+      ],
+      "deltaE76": 4.435458440191359,
+      "deltaE00": 3.339153843762106
+    },
+    {
+      "slot": 2,
+      "key": "england:h_g_wells:ann-veronica",
+      "title": "Анна-Вероника",
+      "writer": "Герберт Джордж Уэллс",
+      "palette": "#889149",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Анна-Вероника",
+          "lines": [
+            "Анна-",
+            "Вероника"
+          ],
+          "fontSize": 16,
+          "lineHeight": 18.56,
+          "width": 78.991943359375,
+          "height": 37.12,
+          "fits": true
+        },
+        "author": {
+          "text": "Герберт Джордж Уэллс",
+          "lines": [
+            "Герберт",
+            "Джордж",
+            "Уэллс"
+          ],
+          "fontSize": 18.5,
+          "lineHeight": 21.459999999999997,
+          "width": 78.32896423339844,
+          "height": 64.38,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Анна-Вероника",
+          "lines": [
+            "Анна-Вероника"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 457.50390625,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Герберт Джордж Уэллс",
+          "lines": [
+            "Герберт Джордж Уэллс"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 394.0259094238281,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 265,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        137.93625,
+        146.75125,
+        76.485
+      ],
+      "referenceRGB": [
+        131.770625,
+        141.44125,
+        68.83
+      ],
+      "deltaE76": 2.5402170008778255,
+      "deltaE00": 2.003311322141225
+    },
+    {
+      "slot": 3,
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "title": "Будденброки",
+      "writer": "Томас Манн",
+      "palette": "#C29043",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Будденброки",
+          "lines": [
+            "Будденброки"
+          ],
+          "fontSize": 11.75,
+          "lineHeight": 13.629999999999999,
+          "width": 79.03041076660156,
+          "height": 13.629999999999999,
+          "fits": true
+        },
+        "author": {
+          "text": "Томас Манн",
+          "lines": [
+            "Томас",
+            "Манн"
+          ],
+          "fontSize": 19,
+          "lineHeight": 22.04,
+          "width": 58.04493713378906,
+          "height": 44.08,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Будденброки",
+          "lines": [
+            "Будденброки"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 390.1079406738281,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Томас Манн",
+          "lines": [
+            "Томас Манн"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 207.2979736328125,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 362,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        194.4825,
+        145.75,
+        70.570625
+      ],
+      "referenceRGB": [
+        191.035,
+        139.526875,
+        61.5525
+      ],
+      "deltaE76": 3.132117075149231,
+      "deltaE00": 1.9584496546606522
+    },
+    {
+      "slot": 4,
+      "key": "russia:tolstoy:war-and-peace",
+      "title": "Война и мир",
+      "writer": "Лев Николаевич Толстой",
+      "palette": "#AC4141",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Война и мир",
+          "lines": [
+            "Война",
+            "и мир"
+          ],
+          "fontSize": 24.75,
+          "lineHeight": 28.709999999999997,
+          "width": 78.50694274902344,
+          "height": 57.419999999999995,
+          "fits": true
+        },
+        "author": {
+          "text": "Лев Николаевич Толстой",
+          "lines": [
+            "Лев",
+            "Николаевич",
+            "Толстой"
+          ],
+          "fontSize": 12.5,
+          "lineHeight": 14.499999999999998,
+          "width": 77.88743591308594,
+          "height": 43.49999999999999,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Война и мир",
+          "lines": [
+            "Война и мир"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 371.48992919921875,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Лев Николаевич Толстой",
+          "lines": [
+            "Лев Николаевич Толстой"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 429.89593505859375,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 459,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        173.063125,
+        68.534375,
+        68.534375
+      ],
+      "referenceRGB": [
+        167.608125,
+        58.483125,
+        60.10125
+      ],
+      "deltaE76": 3.761335965489992,
+      "deltaE00": 2.672399394932751
+    },
+    {
+      "slot": 5,
+      "key": "england:william_shakespeare:hamlet",
+      "title": "Гамлет",
+      "writer": "Уильям Шекспир",
+      "palette": "#BB5441",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Гамлет",
+          "lines": [
+            "Гамлет"
+          ],
+          "fontSize": 21.75,
+          "lineHeight": 25.229999999999997,
+          "width": 78.47396850585938,
+          "height": 25.229999999999997,
+          "fits": true
+        },
+        "author": {
+          "text": "Уильям Шекспир",
+          "lines": [
+            "Уильям",
+            "Шекспир"
+          ],
+          "fontSize": 16.75,
+          "lineHeight": 19.43,
+          "width": 78.657958984375,
+          "height": 38.86,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Гамлет",
+          "lines": [
+            "Гамлет"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 209.26393127441406,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Уильям Шекспир",
+          "lines": [
+            "Уильям Шекспир"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 299.30194091796875,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 555,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        187.774375,
+        87.1525,
+        68.528125
+      ],
+      "referenceRGB": [
+        184.67375,
+        79.63875,
+        61.87375
+      ],
+      "deltaE76": 3.204712103765597,
+      "deltaE00": 2.1647812098022032
+    },
+    {
+      "slot": 6,
+      "key": "england:david_mitchell:slade-house",
+      "title": "Голодный Дом",
+      "writer": "Дэвид Стивен Митчелл",
+      "palette": "#508B8A",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Голодный Дом",
+          "lines": [
+            "Голодный",
+            "Дом"
+          ],
+          "fontSize": 15.25,
+          "lineHeight": 17.689999999999998,
+          "width": 77.91221618652344,
+          "height": 35.379999999999995,
+          "fits": true
+        },
+        "author": {
+          "text": "Дэвид Стивен Митчелл",
+          "lines": [
+            "Дэвид",
+            "Стивен",
+            "Митчелл"
+          ],
+          "fontSize": 17.25,
+          "lineHeight": 20.009999999999998,
+          "width": 78.48747253417969,
+          "height": 60.029999999999994,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Голодный Дом",
+          "lines": [
+            "Голодный Дом"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 432.2159423828125,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Дэвид Стивен Митчелл",
+          "lines": [
+            "Дэвид Стивен Митчелл"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 401.3359069824219,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 652,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        83.196875,
+        140.749375,
+        139.77375
+      ],
+      "referenceRGB": [
+        71.478125,
+        133.98125,
+        133.503125
+      ],
+      "deltaE76": 3.0996559688435776,
+      "deltaE00": 2.8311569641604297
+    },
+    {
+      "slot": 7,
+      "key": "france:flaubert:madame-bovary",
+      "title": "Госпожа Бовари",
+      "writer": "Гюстав Флобер",
+      "palette": "#808A44",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Госпожа Бовари",
+          "lines": [
+            "Госпожа",
+            "Бовари"
+          ],
+          "fontSize": 18.5,
+          "lineHeight": 21.459999999999997,
+          "width": 79.10597229003906,
+          "height": 42.919999999999995,
+          "fits": true
+        },
+        "author": {
+          "text": "Гюстав Флобер",
+          "lines": [
+            "Гюстав",
+            "Флобер"
+          ],
+          "fontSize": 19,
+          "lineHeight": 22.04,
+          "width": 69.9959716796875,
+          "height": 44.08,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Госпожа Бовари",
+          "lines": [
+            "Госпожа Бовари"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 473.221923828125,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Гюстав Флобер",
+          "lines": [
+            "Гюстав Флобер"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 256.80194091796875,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 749,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        129.990625,
+        139.798125,
+        71.500625
+      ],
+      "referenceRGB": [
+        123.66,
+        134.66625,
+        64.760625
+      ],
+      "deltaE76": 2.3593789743520595,
+      "deltaE00": 2.034905174272316
+    },
+    {
+      "slot": 8,
+      "key": "russia:chekhov:the-lady-with-the-dog",
+      "title": "Дама с собачкой",
+      "writer": "Антон Павлович Чехов",
+      "palette": "#A3494E",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Дама с собачкой",
+          "lines": [
+            "Дама с",
+            "собачкой"
+          ],
+          "fontSize": 16.75,
+          "lineHeight": 19.43,
+          "width": 78.5909423828125,
+          "height": 38.86,
+          "fits": true
+        },
+        "author": {
+          "text": "Антон Павлович Чехов",
+          "lines": [
+            "Антон",
+            "Павлович",
+            "Чехов"
+          ],
+          "fontSize": 15.75,
+          "lineHeight": 18.27,
+          "width": 78.11994934082031,
+          "height": 54.81,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Дама с собачкой",
+          "lines": [
+            "Дама с собачкой"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 481.1679382324219,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Антон Павлович Чехов",
+          "lines": [
+            "Антон Павлович Чехов"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 394.67193603515625,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 846,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        164.21125,
+        76.37875,
+        81.276875
+      ],
+      "referenceRGB": [
+        159.419375,
+        66.663125,
+        73.745625
+      ],
+      "deltaE76": 3.8022637905653633,
+      "deltaE00": 2.7315564870490996
+    },
+    {
+      "slot": 9,
+      "key": "russia:chekhov:the-duel",
+      "title": "Дуэль",
+      "writer": "Антон Павлович Чехов",
+      "palette": "#CC7545",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Дуэль",
+          "lines": [
+            "Дуэль"
+          ],
+          "fontSize": 25,
+          "lineHeight": 28.999999999999996,
+          "width": 74.97496032714844,
+          "height": 28.999999999999996,
+          "fits": true
+        },
+        "author": {
+          "text": "Антон Павлович Чехов",
+          "lines": [
+            "Антон",
+            "Павлович",
+            "Чехов"
+          ],
+          "fontSize": 15.75,
+          "lineHeight": 18.27,
+          "width": 78.11994934082031,
+          "height": 54.81,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Дуэль",
+          "lines": [
+            "Дуэль"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 173.94195556640625,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Антон Павлович Чехов",
+          "lines": [
+            "Антон Павлович Чехов"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 394.67193603515625,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 943,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        204.35625,
+        119.373125,
+        72.469375
+      ],
+      "referenceRGB": [
+        202.266875,
+        113.5675,
+        66.2975
+      ],
+      "deltaE76": 2.7920877320232975,
+      "deltaE00": 1.7008693809784685
+    },
+    {
+      "slot": 10,
+      "key": "russia:chekhov:uncle-vanya",
+      "title": "Дядя Ваня",
+      "writer": "Антон Павлович Чехов",
+      "palette": "#45739C",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Дядя Ваня",
+          "lines": [
+            "Дядя",
+            "Ваня"
+          ],
+          "fontSize": 25,
+          "lineHeight": 28.999999999999996,
+          "width": 63.44999694824219,
+          "height": 57.99999999999999,
+          "fits": true
+        },
+        "author": {
+          "text": "Антон Павлович Чехов",
+          "lines": [
+            "Антон",
+            "Павлович",
+            "Чехов"
+          ],
+          "fontSize": 15.75,
+          "lineHeight": 18.27,
+          "width": 78.11994934082031,
+          "height": 54.81,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Дядя Ваня",
+          "lines": [
+            "Дядя Ваня"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 304.84796142578125,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Антон Павлович Чехов",
+          "lines": [
+            "Антон Павлович Чехов"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 394.67193603515625,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 1040,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        72.5425,
+        117.45,
+        157.498125
+      ],
+      "referenceRGB": [
+        65.248125,
+        113.2025,
+        155.4425
+      ],
+      "deltaE76": 2.2793917338598835,
+      "deltaE00": 1.75535363596417
+    },
+    {
+      "slot": 11,
+      "key": "england:h_g_wells:the-history-of-mr-polly",
+      "title": "История мистера Полли",
+      "writer": "Герберт Джордж Уэллс",
+      "palette": "#B34E3E",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "История мистера Полли",
+          "lines": [
+            "История",
+            "мистера",
+            "Полли"
+          ],
+          "fontSize": 18,
+          "lineHeight": 20.88,
+          "width": 78.69595336914062,
+          "height": 62.64,
+          "fits": true
+        },
+        "author": {
+          "text": "Герберт Джордж Уэллс",
+          "lines": [
+            "Герберт",
+            "Джордж",
+            "Уэллс"
+          ],
+          "fontSize": 18.5,
+          "lineHeight": 21.459999999999997,
+          "width": 78.32896423339844,
+          "height": 64.38,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "История мистера Полли",
+          "lines": [
+            "История",
+            "мистера Полли"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 450.48590087890625,
+          "height": 134.56,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Герберт Джордж Уэллс",
+          "lines": [
+            "Герберт Джордж Уэллс"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 394.0259094238281,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 1137,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        179.88875,
+        81.319375,
+        65.70125
+      ],
+      "referenceRGB": [
+        177.984375,
+        75.735,
+        59.84375
+      ],
+      "deltaE76": 2.712031168798057,
+      "deltaE00": 1.588275272968136
+    },
+    {
+      "slot": 12,
+      "key": "england:h_g_wells:when-the-sleeper-wakes",
+      "title": "Когда спящий проснётся",
+      "writer": "Герберт Джордж Уэллс",
+      "palette": "#B08B56",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Когда спящий проснётся",
+          "lines": [
+            "Когда",
+            "спящий",
+            "проснётся"
+          ],
+          "fontSize": 14.75,
+          "lineHeight": 17.11,
+          "width": 78.46994018554688,
+          "height": 51.33,
+          "fits": true
+        },
+        "author": {
+          "text": "Герберт Джордж Уэллс",
+          "lines": [
+            "Герберт",
+            "Джордж",
+            "Уэллс"
+          ],
+          "fontSize": 18.5,
+          "lineHeight": 21.459999999999997,
+          "width": 78.32896423339844,
+          "height": 64.38,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Когда спящий проснётся",
+          "lines": [
+            "Когда спящий",
+            "проснётся"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 418.64398193359375,
+          "height": 134.56,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Герберт Джордж Уэллс",
+          "lines": [
+            "Герберт Джордж Уэллс"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 394.0259094238281,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 1234,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        176.92375,
+        140.753125,
+        89.099375
+      ],
+      "referenceRGB": [
+        174.771875,
+        136.75125,
+        83.42
+      ],
+      "deltaE76": 2.030806919844361,
+      "deltaE00": 1.3617575974765996
+    },
+    {
+      "slot": 13,
+      "key": "england:david_mitchell:the-bone-clocks",
+      "title": "Костяные часы",
+      "writer": "Дэвид Стивен Митчелл",
+      "palette": "#BB8B43",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Костяные часы",
+          "lines": [
+            "Костяные",
+            "часы"
+          ],
+          "fontSize": 15.75,
+          "lineHeight": 18.27,
+          "width": 78.84446716308594,
+          "height": 36.54,
+          "fits": true
+        },
+        "author": {
+          "text": "Дэвид Стивен Митчелл",
+          "lines": [
+            "Дэвид",
+            "Стивен",
+            "Митчелл"
+          ],
+          "fontSize": 17.25,
+          "lineHeight": 20.009999999999998,
+          "width": 78.48747253417969,
+          "height": 60.029999999999994,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Костяные часы",
+          "lines": [
+            "Костяные часы"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 451.0079345703125,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Дэвид Стивен Митчелл",
+          "lines": [
+            "Дэвид Стивен Митчелл"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 401.3359069824219,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 1330,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        187.7825,
+        140.835625,
+        70.60875
+      ],
+      "referenceRGB": [
+        185.9225,
+        136.911875,
+        63.8675
+      ],
+      "deltaE76": 2.3985458107218114,
+      "deltaE00": 1.3174703015541378
+    },
+    {
+      "slot": 14,
+      "key": "england:david_mitchell:ghostwritten",
+      "title": "Литературный призрак",
+      "writer": "Дэвид Митчелл",
+      "palette": "#4C5580",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Литературный призрак",
+          "lines": [
+            "Литературный",
+            "призрак"
+          ],
+          "fontSize": 10.25,
+          "lineHeight": 11.889999999999999,
+          "width": 78.77120971679688,
+          "height": 23.779999999999998,
+          "fits": true
+        },
+        "author": {
+          "text": "Дэвид Митчелл",
+          "lines": [
+            "Дэвид",
+            "Митчелл"
+          ],
+          "fontSize": 17.25,
+          "lineHeight": 20.009999999999998,
+          "width": 78.48747253417969,
+          "height": 40.019999999999996,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Литературный призрак",
+          "lines": [
+            "Литературный",
+            "призрак"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 445.72991943359375,
+          "height": 134.56,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Дэвид Митчелл",
+          "lines": [
+            "Дэвид Митчелл"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 268.59991455078125,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 1427,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        79.388125,
+        88.168125,
+        130.023125
+      ],
+      "referenceRGB": [
+        72.19125,
+        82.300625,
+        125.38375
+      ],
+      "deltaE76": 2.6986509453512664,
+      "deltaE00": 2.1652684995830342
+    },
+    {
+      "slot": 15,
+      "key": "usa:vladimir_nabokov:lolita-editorial",
+      "title": "Лолита",
+      "writer": "Владимир Набоков",
+      "palette": "#B8873E",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Лолита",
+          "lines": [
+            "Лолита"
+          ],
+          "fontSize": 21.25,
+          "lineHeight": 24.65,
+          "width": 78.43370056152344,
+          "height": 24.65,
+          "fits": true
+        },
+        "author": {
+          "text": "Владимир Набоков",
+          "lines": [
+            "Владимир",
+            "Набоков"
+          ],
+          "fontSize": 15,
+          "lineHeight": 17.4,
+          "width": 78.47994995117188,
+          "height": 34.8,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Лолита",
+          "lines": [
+            "Лолита"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 214.07794189453125,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Владимир Набоков",
+          "lines": [
+            "Владимир Набоков"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 330.3779296875,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 1524,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        184.819375,
+        136.825,
+        65.680625
+      ],
+      "referenceRGB": [
+        182.09625,
+        132.265,
+        59.325625
+      ],
+      "deltaE76": 2.214663953230445,
+      "deltaE00": 1.4918142563194912
+    },
+    {
+      "slot": 16,
+      "key": "england:h_g_wells:men-like-gods",
+      "title": "Люди как боги",
+      "writer": "Герберт Джордж Уэллс",
+      "palette": "#B07C35",
+      "layout": {
+        "width": 89.98392572944297,
+        "height": 411,
+        "title": {
+          "text": "Люди как боги",
+          "lines": [
+            "Люди",
+            "как",
+            "боги"
+          ],
+          "fontSize": 25,
+          "lineHeight": 28.999999999999996,
+          "width": 71.74998474121094,
+          "height": 86.99999999999999,
+          "fits": true
+        },
+        "author": {
+          "text": "Герберт Джордж Уэллс",
+          "lines": [
+            "Герберт",
+            "Джордж",
+            "Уэллс"
+          ],
+          "fontSize": 18.5,
+          "lineHeight": 21.459999999999997,
+          "width": 78.32896423339844,
+          "height": 64.38,
+          "fits": true
+        },
+        "frontTitle": {
+          "text": "Люди как боги",
+          "lines": [
+            "Люди как боги"
+          ],
+          "fontSize": 58,
+          "lineHeight": 67.28,
+          "width": 430.59197998046875,
+          "height": 67.28,
+          "fits": true
+        },
+        "frontAuthor": {
+          "text": "Герберт Джордж Уэллс",
+          "lines": [
+            "Герберт Джордж Уэллс"
+          ],
+          "fontSize": 34,
+          "lineHeight": 39.44,
+          "width": 394.0259094238281,
+          "height": 39.44,
+          "fits": true
+        }
+      },
+      "patch": {
+        "x": 1621,
+        "y": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        176.971875,
+        126.24375,
+        56.960625
+      ],
+      "referenceRGB": [
+        175.15125,
+        122.68375,
+        51.12375
+      ],
+      "deltaE76": 2.0581177288766273,
+      "deltaE00": 1.240469292330701
+    }
+  ],
+  "meanDeltaE76": 2.9551835653940506,
+  "maximumDeltaE76": 4.718685299758118,
+  "innerPages": [
+    {
+      "id": "identity",
+      "index": 0,
+      "glyphBounds": [
+        {
+          "sourceId": "identity:eyebrow",
+          "left": 138,
+          "right": 679.6959228515625,
+          "top": 193,
+          "bottom": 265
+        },
+        {
+          "sourceId": "identity:title",
+          "left": 135,
+          "right": 896.760009765625,
+          "top": 437.6,
+          "bottom": 555.6
+        },
+        {
+          "sourceId": "identity:row:0:label",
+          "left": 131,
+          "right": 349.9559783935547,
+          "top": 681.8,
+          "bottom": 753.8
+        },
+        {
+          "sourceId": "identity:row:0",
+          "left": 132,
+          "right": 875.1039428710938,
+          "top": 834.4,
+          "bottom": 898.4
+        },
+        {
+          "sourceId": "identity:row:0",
+          "left": 133,
+          "right": 502.06396484375,
+          "top": 966.4000000000001,
+          "bottom": 1036.4
+        }
+      ]
+    },
+    {
+      "id": "description",
+      "index": 1,
+      "glyphBounds": [
+        {
+          "sourceId": "description:eyebrow",
+          "left": 170,
+          "right": 711.6959228515625,
+          "top": 193,
+          "bottom": 265
+        },
+        {
+          "sourceId": "description:title",
+          "left": 167,
+          "right": 1041.1199951171875,
+          "top": 447.6,
+          "bottom": 546.6
+        },
+        {
+          "sourceId": "description:title",
+          "left": 168,
+          "right": 748.7999877929688,
+          "top": 610.6,
+          "bottom": 673.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 165,
+          "right": 1008.9678955078125,
+          "top": 817.6,
+          "bottom": 907.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 168,
+          "right": 1256.911865234375,
+          "top": 953.6,
+          "bottom": 1045.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 166,
+          "right": 680.89990234375,
+          "top": 1097.6,
+          "bottom": 1175.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 166,
+          "right": 1040.3439331054688,
+          "top": 1231.6,
+          "bottom": 1301.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 167,
+          "right": 1244.287841796875,
+          "top": 1367.6,
+          "bottom": 1460.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 167,
+          "right": 772.251953125,
+          "top": 1528.6,
+          "bottom": 1597.6
+        }
+      ]
+    },
+    {
+      "id": "description:continuation:1",
+      "index": 2,
+      "glyphBounds": [
+        {
+          "sourceId": "description:title",
+          "left": 138,
+          "right": 1059.9638061523438,
+          "top": 193,
+          "bottom": 263
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 136,
+          "right": 1199.475830078125,
+          "top": 365.6,
+          "bottom": 457.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 136,
+          "right": 963.4039306640625,
+          "top": 509.6,
+          "bottom": 595.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 133,
+          "right": 1176.423828125,
+          "top": 641.6,
+          "bottom": 734.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 135,
+          "right": 843.4359130859375,
+          "top": 802.6,
+          "bottom": 851.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 135,
+          "right": 805.2799072265625,
+          "top": 940.6,
+          "bottom": 1009.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 133,
+          "right": 1214.419921875,
+          "top": 1055.6,
+          "bottom": 1143.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 136,
+          "right": 1227.751953125,
+          "top": 1216.6,
+          "bottom": 1285.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 135,
+          "right": 827.9879760742188,
+          "top": 1354.6,
+          "bottom": 1423.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 136,
+          "right": 1144.2998657226562,
+          "top": 1471.6,
+          "bottom": 1562.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 132,
+          "right": 721.9039306640625,
+          "top": 1615.6,
+          "bottom": 1682.6
+        }
+      ]
+    },
+    {
+      "id": "description:continuation:2",
+      "index": 3,
+      "glyphBounds": [
+        {
+          "sourceId": "description:title",
+          "left": 170,
+          "right": 1091.9638061523438,
+          "top": 193,
+          "bottom": 263
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 167,
+          "right": 1185.35986328125,
+          "top": 388.6,
+          "bottom": 458.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 167,
+          "right": 786.699951171875,
+          "top": 526.6,
+          "bottom": 575.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 167,
+          "right": 1069.69189453125,
+          "top": 643.6,
+          "bottom": 733.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 168,
+          "right": 830.3959350585938,
+          "top": 802.6,
+          "bottom": 871.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 167,
+          "right": 1077.971923828125,
+          "top": 940.6,
+          "bottom": 1001.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 168,
+          "right": 1017.23193359375,
+          "top": 1055.6,
+          "bottom": 1127.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 165,
+          "right": 1218.9158935546875,
+          "top": 1201.6,
+          "bottom": 1286.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 165,
+          "right": 1209.00390625,
+          "top": 1333.6,
+          "bottom": 1423.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 166,
+          "right": 1152.119873046875,
+          "top": 1471.6,
+          "bottom": 1562.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 167,
+          "right": 946.8279418945312,
+          "top": 1615.6,
+          "bottom": 1699.6
+        }
+      ]
+    },
+    {
+      "id": "description:continuation:3",
+      "index": 4,
+      "glyphBounds": [
+        {
+          "sourceId": "description:title",
+          "left": 138,
+          "right": 1059.9638061523438,
+          "top": 193,
+          "bottom": 263
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 136,
+          "right": 1093.9518432617188,
+          "top": 367.6,
+          "bottom": 437.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 135,
+          "right": 1120.1239013671875,
+          "top": 526.6,
+          "bottom": 595.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 134,
+          "right": 1197.2158203125,
+          "top": 643.6,
+          "bottom": 713.6
+        },
+        {
+          "sourceId": "description:paragraph:0",
+          "left": 135,
+          "right": 928.1919555664062,
+          "top": 802.6,
+          "bottom": 871.6
+        }
+      ]
+    }
+  ],
+  "meanDeltaE00": 2.1417753535541744,
+  "maximumDeltaE00": 4.053188722465438,
+  "patchGatePassed": true
+}

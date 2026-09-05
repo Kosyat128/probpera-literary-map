@@ -1010,12 +1010,12 @@
 }
 
 .book-shelf-scene-hint small {
-  overflow: hidden;
+  overflow: visible;
   color: rgba(255, 245, 232, 0.62);
   font-size: var(--type-caption);
   line-height: 1.35;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .book-shelf-scene__loading,
@@ -1156,15 +1156,13 @@
 .book-shelf-frame__detail .book-detail-copy h3 {
   margin-top: 8px;
   color: var(--book-shelf-paper);
-  font-size: clamp(1.72rem, 2.15vw, 2.42rem);
-  line-height: 1.04;
   text-wrap: balance;
 }
 
 .book-shelf-frame__detail .book-original-title,
 .book-shelf-frame__detail .book-detail-copy > p,
 .book-shelf-frame__detail .cover-rights-note {
-  color: rgba(255, 245, 232, 0.64) !important;
+  color: #d9ccbc !important;
 }
 
 .book-shelf-frame__detail .book-detail-copy dl {
@@ -1190,7 +1188,7 @@
 }
 
 .book-shelf-frame__detail .book-detail-copy dt {
-  color: rgba(255, 245, 232, 0.48);
+  color: #cdbda8;
 }
 
 .book-shelf-frame__detail .book-detail-copy dd {
@@ -1286,11 +1284,9 @@
 }
 
 .book-shelf-scene__accessible-actions button {
-  min-height: 42px;
+  min-height: 44px;
   padding: 9px 14px;
   color: var(--book-shelf-paper);
-  font-size: 0.76rem;
-  font-weight: 700;
   border: 1px solid rgba(255, 238, 220, 0.24);
   border-radius: 9px;
   background: rgba(8, 5, 12, 0.8);
@@ -1350,7 +1346,7 @@
 .book-shelf-frame__detail .book-detail-actions button,
 .book-shelf-frame__detail .book-detail-actions a {
   width: 100%;
-  min-height: 40px;
+  min-height: 44px;
   justify-content: center;
 }
 
@@ -1789,7 +1785,6 @@
   .book-detail-mobile-handle strong {
     color: var(--book-shelf-paper);
     font-family: var(--serif);
-    font-size: 1rem;
   }
 
   .book-shelf-frame__detail > .book-detail-card {
@@ -1835,7 +1830,6 @@
   }
 
   .book-shelf-frame__detail .book-detail-copy h3 {
-    font-size: clamp(1.5rem, 8vw, 2rem);
   }
 
   .book-shelf-scene-hint {

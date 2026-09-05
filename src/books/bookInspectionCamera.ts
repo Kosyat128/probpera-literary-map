@@ -1,3 +1,7 @@
+import type { BookPhysicalBounds } from "./bookShelfPhysicalLayout";
+import type { BookShelfViewportInsets } from "./bookShelfViewportInsets";
+export type { BookShelfViewportInsets } from "./bookShelfViewportInsets";
+
 export const BOOK_INSPECTION_ENTER_DURATION_MS = 920;
 export const BOOK_INSPECTION_CLOSE_DURATION_MS = 620;
 
@@ -7,6 +11,14 @@ export type BookInspectionCameraTarget = Readonly<{
   position: BookInspectionVector3;
   lookAt: BookInspectionVector3;
   fov: number;
+  framing?: Readonly<{
+    bounds: BookPhysicalBounds;
+    position: BookInspectionVector3;
+    width: number;
+    height: number;
+    insets: BookShelfViewportInsets;
+    marginPx: number;
+  }>;
 }>;
 
 export type BookInspectionEdgeClass =
@@ -23,7 +35,33 @@ export type BookInspectionCameraFraming = BookInspectionCameraTarget &
     edgeCompensationX: number;
     edgeClass: BookInspectionEdgeClass;
     distance: number;
+    viewportInsets: BookShelfViewportInsets;
   }>;
+
+export function resolveBookShelfUnobscuredViewport(
+  width: number,
+  height: number,
+  requested: Partial<BookShelfViewportInsets> = {},
+) {
+  const safeWidth = clamp(finiteOr(width, 1), 1, 8192);
+  const safeHeight = clamp(finiteOr(height, 1), 1, 8192);
+  const left = clamp(finiteOr(requested.left ?? 0, 0), 0, safeWidth - 1);
+  const right = clamp(finiteOr(requested.right ?? 0, 0), 0, safeWidth - left - 1);
+  const top = clamp(finiteOr(requested.top ?? 0, 0), 0, safeHeight - 1);
+  const bottom = clamp(finiteOr(requested.bottom ?? 0, 0), 0, safeHeight - top - 1);
+  return Object.freeze({
+    x: left, y: top, width: safeWidth - left - right, height: safeHeight - top - bottom,
+    insets: Object.freeze({ top, right, bottom, left }),
+  });
+}
+
+/** An offscreen or covered canvas must not send the physical camera to infinity. */
+export function bookInspectionViewportCanFrame(target: BookInspectionCameraTarget) {
+  const framing = target.framing;
+  if (!framing) return true;
+  const free = resolveBookShelfUnobscuredViewport(framing.width, framing.height, framing.insets);
+  return free.width >= Math.min(64, framing.width) && free.height >= Math.min(64, framing.height);
+}
 
 export type BookInspectionExtractionSnapshot = Readonly<{
   bookKey: string;
@@ -132,6 +170,12 @@ export function resolveBookInspectionCameraFraming({
   detailRightInsetPx,
   itemIndex,
   itemCount,
+  viewportInsets,
+  bounds,
+  bookPosition = [0, 0.55, 1.05],
+  marginPx = 20,
+  fov: requestedFov,
+  orbitAllowance = 1.24,
 }: {
   viewportWidth: number;
   viewportHeight: number;
@@ -139,13 +183,19 @@ export function resolveBookInspectionCameraFraming({
   detailRightInsetPx?: number;
   itemIndex: number;
   itemCount: number;
+  viewportInsets?: BookShelfViewportInsets;
+  bounds?: BookPhysicalBounds;
+  bookPosition?: BookInspectionVector3;
+  marginPx?: number;
+  fov?: number;
+  orbitAllowance?: number;
 }): BookInspectionCameraFraming {
-  const width = clamp(finiteOr(viewportWidth, 1280), 240, 8192);
-  const height = clamp(finiteOr(viewportHeight, 720), 240, 8192);
-  const aspect = clamp(width / height, 0.5, 3.2);
+  const width = clamp(finiteOr(viewportWidth, 1280), 1, 8192);
+  const height = clamp(finiteOr(viewportHeight, 720), 1, 8192);
+  const aspect = width / height;
   const sideDetailVisible = detailOpen && width >= 760;
   const defaultInset = clamp(width * 0.285, 260, width * 0.42);
-  const rightInsetPx = sideDetailVisible
+  const fallbackRightInset = sideDetailVisible
     ? round(
         clamp(
           finiteOr(detailRightInsetPx ?? defaultInset, defaultInset),
@@ -154,19 +204,37 @@ export function resolveBookInspectionCameraFraming({
         )
       )
     : 0;
-  const fov = width < 680 ? 43 : width < 1024 ? 39 : 35;
-  const distance = round(3.9 + Math.max(0, 1.15 - aspect) * 0.55);
-  const visibleWorldWidth =
-    2 * distance * Math.tan((fov * Math.PI) / 360) * aspect;
+  const free = resolveBookShelfUnobscuredViewport(width, height,
+    viewportInsets ?? { right: fallbackRightInset });
+  const rightInsetPx = free.insets.right;
+  const fov = clamp(finiteOr(requestedFov ?? (width < 680 ? 43 : 35), 35), 30, 48);
+  const physical = bounds ?? { min: [-0.82, -1.08, -0.25], max: [0.82, 1.08, 0.25] };
+  const center = physical.min.map((value, index) =>
+    (finiteOr(value, 0) + finiteOr(physical.max[index], 0)) / 2 + finiteOr(bookPosition[index], 0));
+  const extent = physical.min.map((value, index) =>
+    Math.max(0.001, Math.abs(finiteOr(physical.max[index], 0) - finiteOr(value, 0))));
+  const margin = clamp(finiteOr(marginPx, 20), 0, Math.min(free.width, free.height) * 0.15);
+  const usableWidth = Math.max(1, free.width - margin * 2);
+  const usableHeight = Math.max(1, free.height - margin * 2);
+  const tangent = Math.tan((fov * Math.PI) / 360);
+  const fitDistance = Math.max(
+    extent[0] / (2 * tangent * aspect * usableWidth / width),
+    extent[1] / (2 * tangent * usableHeight / height),
+  );
+  // Depth and the off-axis free rectangle are included before orbit zoom.
+  const distance = round((fitDistance + extent[2] / 2 + 0.08) *
+    clamp(finiteOr(orbitAllowance, 1.24), 1, 1.5));
+  const visibleWorldWidth = 2 * distance * tangent * aspect;
   const opticalOffsetX = round(
-    visibleWorldWidth * (rightInsetPx / (2 * width))
+    visibleWorldWidth * ((rightInsetPx - free.insets.left) / (2 * width))
   );
   const edge = resolveBookInspectionEdgeCompensation(itemIndex, itemCount);
-  const edgeScale = width < 680 ? 0.52 : width < 1024 ? 0.78 : 1;
-  const edgeCompensationX = round(edge.offsetX * edgeScale);
-  const rigX = round(opticalOffsetX + edgeCompensationX);
-  const lookAt = freezeVector([rigX, 0.035, 0.98]);
-  const position = freezeVector([rigX, 0.115, 0.98 + distance]);
+  // The physical bounds, not the finite row's visual weight, own safe framing.
+  const edgeCompensationX = 0;
+  const rigX = center[0] + opticalOffsetX;
+  const rigY = center[1] + distance * tangent * (free.insets.top - free.insets.bottom) / height;
+  const lookAt = freezeVector([rigX, rigY, center[2]]);
+  const position = freezeVector([rigX, rigY, center[2] + distance]);
 
   return Object.freeze({
     position,
@@ -177,6 +245,9 @@ export function resolveBookInspectionCameraFraming({
     edgeCompensationX,
     edgeClass: edge.edgeClass,
     distance,
+    viewportInsets: free.insets,
+    framing: { bounds: physical as BookPhysicalBounds, position: bookPosition,
+      width, height, insets: free.insets, marginPx: margin },
   });
 }
 
@@ -376,6 +447,51 @@ export function resolveBookInspectionOrbitCamera(
   requestedOrbit: BookInspectionOrbit
 ): BookInspectionCameraTarget {
   const orbit = normalizeBookInspectionOrbit(requestedOrbit);
+  if (target.framing) {
+    const { bounds, position, width, height, insets, marginPx } = target.framing;
+    const center = bounds.min.map((value, index) => (value + bounds.max[index]) / 2 + position[index]);
+    const sy = Math.sin(orbit.yaw), cy = Math.cos(orbit.yaw);
+    const sp = Math.sin(orbit.pitch), cp = Math.cos(orbit.pitch);
+    const right = [cy, 0, -sy], up = [-sy * sp, cp, -cy * sp], normal = [sy * cp, sp, cy * cp];
+    const dot = (a: readonly number[], b: readonly number[]) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+    const corners: number[][] = [];
+    for (const x of [bounds.min[0], bounds.max[0]]) for (const y of [bounds.min[1], bounds.max[1]]) for (const z of [bounds.min[2], bounds.max[2]]) {
+      const point = [x + position[0] - center[0], y + position[1] - center[1], z + position[2] - center[2]];
+      corners.push([dot(point, right), dot(point, up), dot(point, normal)]);
+    }
+    const tangent = Math.tan(target.fov * Math.PI / 360);
+    const xMin = (2 * (insets.left + marginPx) / width - 1) * tangent * width / height;
+    const xMax = (1 - 2 * (insets.right + marginPx) / width) * tangent * width / height;
+    const yMin = (2 * (insets.bottom + marginPx) / height - 1) * tangent;
+    const yMax = (1 - 2 * (insets.top + marginPx) / height) * tangent;
+    const offsetsAt = (distance: number) => {
+      let minX = -Infinity, maxX = Infinity, minY = -Infinity, maxY = Infinity;
+      for (const [x, y, z] of corners) {
+        minX = Math.max(minX, x - xMax * (distance - z));
+        maxX = Math.min(maxX, x - xMin * (distance - z));
+        minY = Math.max(minY, y - yMax * (distance - z));
+        maxY = Math.min(maxY, y - yMin * (distance - z));
+      }
+      return { minX, maxX, minY, maxY };
+    };
+    let low = Math.max(...corners.map((point) => point[2])) + 0.12;
+    let high = Math.max(low + 1, 256);
+    for (let iteration = 0; iteration < 32; iteration += 1) {
+      const mid = (low + high) / 2;
+      const offsets = offsetsAt(mid);
+      if (offsets.minX <= offsets.maxX && offsets.minY <= offsets.maxY) high = mid;
+      else low = mid;
+    }
+    const baseDistance = Math.hypot(...target.position.map((value, index) => value - target.lookAt[index]));
+    const distance = Math.max(high + 0.001, baseDistance / orbit.zoom);
+    const offsets = offsetsAt(distance);
+    const panX = (offsets.minX + offsets.maxX) / 2, panY = (offsets.minY + offsets.maxY) / 2;
+    const lookAt = freezeVector(center.map((value, index) => value + right[index] * panX + up[index] * panY) as [number, number, number]);
+    return Object.freeze({
+      position: freezeVector(lookAt.map((value, index) => value + normal[index] * distance) as [number, number, number]),
+      lookAt, fov: target.fov,
+    });
+  }
   const dx = target.position[0] - target.lookAt[0];
   const dy = target.position[1] - target.lookAt[1];
   const dz = target.position[2] - target.lookAt[2];
