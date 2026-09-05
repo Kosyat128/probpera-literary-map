@@ -38,9 +38,14 @@ async function openHomepage(page, { width, height, locale }) {
     timeout: 20_000,
   });
   await page.locator("#book-day").scrollIntoViewIfNeeded();
-  const bookCover = page.locator("#book-day .book-of-day .book-cover img");
+  const bookCoverSelector = "#book-day .book-of-day .book-cover img";
+  const bookCover = page.locator(bookCoverSelector);
   await expect(bookCover).toBeVisible();
-  await expect.poll(() => bookCover.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+  // One browser-side wait avoids a traced element lookup on every poll.
+  await page.waitForFunction((selector) => {
+    const image = document.querySelector(selector);
+    return image instanceof HTMLImageElement && image.complete && image.naturalWidth > 0;
+  }, bookCoverSelector, { timeout: 10_000 });
   await page.evaluate(async () => {
     window.scrollTo(0, document.documentElement.scrollHeight);
     await document.fonts.ready;
