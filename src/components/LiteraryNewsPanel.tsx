@@ -7,7 +7,6 @@ import { applyPendingNews, initialNewsUpdatesState, receiveNewsFeed } from "../n
 import { calendarDay, eventDateHint, formatNewsDate, getVisitorTimeZone, timeZoneLabel } from "../news/dates";
 import BrandExternalLinkIcon from "./BrandExternalLinkIcon";
 import "../styles/literary-news.css";
-import "../styles/book-month-news-composition.css";
 
 type NewsFilter = "all" | "today" | "upcoming";
 type NewsTopic = "all" | NewsItem["category"];
@@ -234,7 +233,7 @@ function ReadIcon() {
   );
 }
 
-export default function LiteraryNewsPanel({ endpoint = "/__literary-news/feed", variant = "wide" }: Props) {
+export default function LiteraryNewsPanel({ endpoint = "/api/literary-news/feed", variant = "wide" }: Props) {
   const { language } = useInterfaceLanguage();
   const text = copy[language];
   const sidebar = variant === "sidebar";
@@ -455,7 +454,7 @@ export default function LiteraryNewsPanel({ endpoint = "/__literary-news/feed", 
   ) : null;
 
   return (
-    <section id="literary-news" className={`literary-news${sidebar ? " literary-news--sidebar" : ""}${expanded ? " is-expanded" : ""}`} aria-labelledby={titleId} data-news-mode="local-prototype" data-time-zone={timeZone}>
+    <section id="literary-news" className={`literary-news${sidebar ? " literary-news--sidebar" : ""}${expanded ? " is-expanded" : ""}`} aria-labelledby={titleId} data-news-mode={feed?.mode} data-time-zone={timeZone}>
       <header className="literary-news__header">
         <div>
           <p className="literary-news__eyebrow"><span aria-hidden="true" />{text.eyebrow}</p>
@@ -463,7 +462,7 @@ export default function LiteraryNewsPanel({ endpoint = "/__literary-news/feed", 
           <p className="literary-news__description">{text.description}</p>
         </div>
         <div className="literary-news__header-meta">
-          <span className="literary-news__prototype">{text.prototype}</span>
+          {feed?.mode === "local-prototype" && <span className="literary-news__prototype">{text.prototype}</span>}
           {!sidebar && <span className="literary-news__today">{displayDate(today, language)}</span>}
         </div>
       </header>

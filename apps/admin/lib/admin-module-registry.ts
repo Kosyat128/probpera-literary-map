@@ -15,6 +15,7 @@ export type AdminModule = {
 export const adminModuleRegistry = [
   { entry: ["⌂", "Обзор", "/dashboard"], sidebar: true },
   { entry: ["✎", "Статьи", "/articles"], sidebar: true },
+  { entry: ["◷", "Литературная сводка", "/literary-news"], sidebar: true },
   { entry: ["＋", "Новая статья", "/articles/new"], sidebar: false },
   { entry: ["◉", "Студия данных", "/data-studio"], sidebar: true },
   { entry: ["▥", "Произведения и издания", "/library"], sidebar: true },

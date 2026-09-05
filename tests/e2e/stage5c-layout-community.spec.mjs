@@ -191,8 +191,8 @@ async function collectLayout(page, viewport) {
         ".book-of-day"
       );
       const bookProof = box(
-        document.querySelector("#book-day .editorial-standard"),
-        ".editorial-standard"
+        document.querySelector("#book-day .literary-news-slot"),
+        ".literary-news-slot"
       );
       const bookFact = box(
         document.querySelector("#book-day .book-fact-card"),
@@ -311,6 +311,11 @@ test("Stage 5C keeps the final homepage structure and card geometry", async ({
   page,
 }) => {
   await openHomepage(page);
+
+  const editorialContext = page.locator("#book-day .news-editorial-context");
+  await expect(editorialContext.locator("summary")).toBeVisible();
+  await expect(editorialContext.locator(".editorial-standard#about")).toHaveCount(1);
+  await expect(editorialContext).not.toHaveAttribute("open", "");
 
   for (const viewport of VIEWPORTS) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });

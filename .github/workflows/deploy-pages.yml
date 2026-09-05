@@ -187,6 +187,19 @@ jobs:
         if: steps.release_gate.outputs.should_deploy == 'true'
         run: npm run performance:audit
 
+      - name: Deploy and verify the public literary news API
+        if: steps.release_gate.outputs.should_deploy == 'true'
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          NEWS_RELEASE_SHA: ${{ github.sha }}
+        run: |
+          test "$GITHUB_REF" = "refs/heads/main"
+          news_main_head="$(git ls-remote --exit-code origin refs/heads/main | cut -f1)"
+          test "$NEWS_RELEASE_SHA" = "$news_main_head"
+          node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news.jsonc --var "NEWS_RELEASE_SHA:$NEWS_RELEASE_SHA"
+          node scripts/verify-literary-news-live.mjs --expected-head "$NEWS_RELEASE_SHA"
+
       - name: Configure GitHub Pages
         if: steps.release_gate.outputs.should_deploy == 'true'
         uses: actions/configure-pages@v6

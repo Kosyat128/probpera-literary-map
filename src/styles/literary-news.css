@@ -673,6 +673,10 @@
   letter-spacing: 0.1em;
 }
 
+.literary-news--sidebar:not([data-news-mode="local-prototype"]) .literary-news__eyebrow {
+  padding-right: 0;
+}
+
 .literary-news--sidebar .literary-news__header h2 {
   font-size: 27px;
   line-height: 1.13;

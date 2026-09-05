@@ -115,10 +115,9 @@ import {
   type DeferredLoadStatus,
 } from "./loading/nearViewportActivation";
 import "./styles/stage5-loading-shells.css";
+import DeferredLiteraryNewsPanel from "./news/DeferredLiteraryNewsPanel";
+import "./styles/book-month-news-composition.css";
 
-const LocalLiteraryNewsPanel = import.meta.env.DEV
-  ? lazy(() => import("./components/LiteraryNewsPanel"))
-  : null;
 const GlobalSearch = lazy(() => import("./components/GlobalSearch"));
 const CommunityHub = lazy(() => import("./community/CommunityHub"));
 const NobelArchiveStrip = lazy(() => import("./components/NobelArchiveStrip"));
@@ -170,7 +169,7 @@ const ARCHIVE_DATA_HASH_TARGETS = [
 
 const BOOK_DATA_HASH_TARGETS = ["books", "book-day"] as const;
 const BOOK_SHELF_HASH_TARGETS = ["books"] as const;
-const BOOK_DAY_HASH_TARGETS = ["book-day"] as const;
+const BOOK_DAY_HASH_TARGETS = ["book-day", "literary-news"] as const;
 
 function initialHashIntent(targets: readonly string[]) {
   return (
@@ -759,7 +758,7 @@ export default function App() {
     });
   }, []);
 
-  const { setActivationNode: setBookDayActivationNode } =
+  const { active: bookDayActive, setActivationNode: setBookDayActivationNode } =
     useNearViewportActivation({
       hashTargets: BOOK_DAY_HASH_TARGETS,
       rootMargin: "420px 0px",
@@ -1798,11 +1797,11 @@ export default function App() {
   const globalSearchArchiveError =
     archiveDataStatus === "error" || bookRuntimeStatus === "error";
 
-  const showLocalNews = import.meta.env.DEV && new URLSearchParams(window.location.search).get("literary-news") === "1";
+  const localNewsPreview = import.meta.env.DEV && new URLSearchParams(window.location.search).get("literary-news") === "1";
   const editorialStandardCard = (
   <article
     className={`editorial-standard${coreHomepageSectionClass(coreEditorialStandard)}`}
-    id={showLocalNews ? undefined : "about"}
+    id="about"
     style={coreHomepageSectionStyle(coreEditorialStandard)}
     {...cmsCoreFieldMarker(
       "editorial-standard",
@@ -2842,7 +2841,7 @@ export default function App() {
 
         <section
           ref={setBookDayActivationNode}
-          className={`daily-grid painted-paper-section${showLocalNews ? " has-literary-news" : ""}${coreHomepageSectionClass(coreBookMonth)}`}
+          className={`daily-grid painted-paper-section has-literary-news${coreHomepageSectionClass(coreBookMonth)}`}
           id="book-day"
           style={coreHomepageSectionStyle(coreBookMonth)}
           {...cmsCoreFieldMarker(
@@ -3022,12 +3021,11 @@ export default function App() {
             </div>
           </article>
 
-          <div className={`book-month-supporting${showLocalNews ? " has-news" : ""}`}>
-          {showLocalNews && LocalLiteraryNewsPanel ? (
-            <Suspense fallback={null}>
-              <LocalLiteraryNewsPanel variant="sidebar" />
-            </Suspense>
-          ) : editorialStandardCard}
+          <div className="book-month-supporting has-news">
+            <DeferredLiteraryNewsPanel
+              active={bookDayActive}
+              endpoint={localNewsPreview ? "/__literary-news/feed" : "/api/literary-news/feed"}
+            />
 
           <article className="book-fact-card">
             <div className="book-fact-orbit" aria-hidden="true">
@@ -3048,12 +3046,10 @@ export default function App() {
             </div>
           </article>
           </div>
-          {showLocalNews && (
-            <details className="news-editorial-context" id="about">
+            <details className="news-editorial-context">
               <summary>{t("Редакционный стандарт")}</summary>
               {editorialStandardCard}
             </details>
-          )}
         </section>
 
         <RecentHistoryPanel

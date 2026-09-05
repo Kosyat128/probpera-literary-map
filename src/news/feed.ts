@@ -43,7 +43,7 @@ export function isNewsTimeZone(value: unknown): value is string {
 
 /** Reject malformed or untranslated responses instead of rendering source HTML. */
 export function parseNewsFeed(value: unknown): NewsFeed {
-  if (!record(value) || value.mode !== "local-prototype"
+  if (!record(value) || (value.mode !== "local-prototype" && value.mode !== "reviewed")
     || !timestamp(value.generatedAt)
     || !(value.lastCheckedAt === null || timestamp(value.lastCheckedAt))
     || !count(value.refreshIntervalSeconds) || Number(value.refreshIntervalSeconds) < 60
