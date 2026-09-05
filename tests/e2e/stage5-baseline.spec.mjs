@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { installObservers } from "../../scripts/lib/bookshelf-physics-observer.mjs";
 
 const PHASE_5C_LANDMARKS = [
   "#atlas",
@@ -15,6 +16,65 @@ const PHASE_5C_LANDMARKS = [
 ];
 
 test.setTimeout(150_000);
+
+test("bookshelf empty clicks return closed and open books without treating orbit or drag as dismissal", async ({ page, isMobile }) => {
+  await page.addInitScript(installObservers);
+  await page.goto("/#books");
+  const workspace = page.locator(".book-shelf-frame__workspace");
+  await workspace.scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => window.__shelfAudit.read()?.books.length);
+  await page.evaluate(() => document.fonts.ready);
+  const activate = async (point) => isMobile
+    ? page.touchscreen.tap(point.x, point.y)
+    : page.mouse.click(point.x, point.y);
+
+  for (const openCover of [false, true]) {
+    await workspace.scrollIntoViewIfNeeded();
+    await page.waitForFunction(() => window.__shelfAudit.read()?.pendingFrames === 0);
+    await activate(await page.evaluate(() => window.__shelfAudit.read().books[0]));
+    await page.waitForFunction(() => window.__shelfAudit.read()?.phase === "INSPECTION_CLOSED");
+    if (openCover) {
+      await page.locator(".book-detail-open-cover").click();
+      await page.waitForFunction(() => window.__shelfAudit.read()?.phase === "BOOK_OPEN");
+    }
+    await page.waitForFunction(() => window.__shelfAudit.read()?.pendingFrames === 0);
+    const empty = await page.evaluate(() => {
+      const { canvas, insets } = window.__shelfAudit.read();
+      const point = { x: canvas.x + insets.left + 5, y: canvas.y + insets.top + 5 };
+      const outside = { x: Math.max(0, canvas.x - 8), y: point.y };
+      return { ...point, element: document.elementFromPoint(point.x, point.y)?.tagName,
+        outside: { ...outside, element: document.elementFromPoint(outside.x, outside.y)?.tagName } };
+    });
+    expect(empty.element).toBe("CANVAS");
+    if (!isMobile) {
+      await page.keyboard.down("Alt");
+      await page.mouse.click(empty.x, empty.y);
+      await page.keyboard.up("Alt");
+      await page.mouse.move(empty.x, empty.y);
+      await page.mouse.down();
+      await page.mouse.move(empty.x + 60, empty.y + 16, { steps: 8 });
+      await page.mouse.up();
+      await page.mouse.move(empty.x, empty.y);
+      await page.mouse.down();
+      await page.mouse.move(empty.x + 60, empty.y + 16, { steps: 8 });
+      await page.mouse.move(empty.x, empty.y, { steps: 8 });
+      await page.mouse.up();
+      expect(empty.outside.element).not.toBe("CANVAS");
+      await page.mouse.down();
+      await page.mouse.move(empty.outside.x, empty.outside.y, { steps: 8 });
+      await page.mouse.move(empty.x, empty.y, { steps: 8 });
+      await page.mouse.up();
+      expect(await page.evaluate(() => window.__shelfAudit.read()?.selectedKey)).toBeTruthy();
+    }
+    await activate(empty);
+    await page.waitForFunction(() => window.__shelfAudit.read()?.phase === "SHELF_IDLE");
+    await expect(page.locator(".book-shelf-frame__detail")).toHaveCount(0);
+    await expect.poll(() => page.evaluate(() => ({
+      selected: window.__shelfAudit.read()?.selectedKey,
+      focusInShelf: document.querySelector("#books")?.contains(document.activeElement),
+    }))).toEqual({ selected: null, focusInShelf: true });
+  }
+});
 
 async function openHomepage(page, locale = "ru") {
   await page.goto("/");

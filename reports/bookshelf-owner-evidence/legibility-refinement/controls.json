@@ -1,0 +1,1894 @@
+{
+  "cases": [
+    {
+      "locale": "ru",
+      "width": 1708,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 138,
+            "y": 103.046875,
+            "width": 489.515625,
+            "height": 42,
+            "top": 103.046875,
+            "right": 627.515625,
+            "bottom": 145.046875,
+            "left": 138
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 838.515625,
+            "y": 102.046875,
+            "width": 70.625,
+            "height": 44,
+            "top": 102.046875,
+            "right": 909.140625,
+            "bottom": 146.046875,
+            "left": 838.515625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Каталог",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 913.140625,
+            "y": 102.046875,
+            "width": 83.59375,
+            "height": 44,
+            "top": 102.046875,
+            "right": 996.734375,
+            "bottom": 146.046875,
+            "left": 913.140625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Случайное произведение",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1008.734375,
+            "y": 102.046875,
+            "width": 232.125,
+            "height": 44,
+            "top": 102.046875,
+            "right": 1240.859375,
+            "bottom": 146.046875,
+            "left": 1008.734375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Текущая полкаВесь книжный архивВо всём журнале",
+          "tag": "SELECT",
+          "rect": {
+            "x": 652.515625,
+            "y": 102.046875,
+            "width": 174,
+            "height": 44,
+            "top": 102.046875,
+            "right": 826.515625,
+            "bottom": 146.046875,
+            "left": 652.515625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ПровереноКарточки с подтверждёнными данными",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1252.859375,
+            "y": 102.046875,
+            "width": 103.234375,
+            "height": 44,
+            "top": 102.046875,
+            "right": 1356.09375,
+            "bottom": 146.046875,
+            "left": 1252.859375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "КлассикаПервое издание - не позднее 1945 года",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1360.09375,
+            "y": 102.046875,
+            "width": 90.609375,
+            "height": 44,
+            "top": 102.046875,
+            "right": 1450.703125,
+            "bottom": 146.046875,
+            "left": 1360.09375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Для детейТолько подтверждённая аудитория",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1454.703125,
+            "y": 102.046875,
+            "width": 96.296875,
+            "height": 44,
+            "top": 102.046875,
+            "right": 1551,
+            "bottom": 146.046875,
+            "left": 1454.703125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Расширенные фильтры",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1559,
+            "y": 102.046875,
+            "width": 44,
+            "height": 44,
+            "top": 102.046875,
+            "right": 1603,
+            "bottom": 146.046875,
+            "left": 1559
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+          "tag": "SELECT",
+          "rect": {
+            "x": 218.0625,
+            "y": 174.046875,
+            "width": 965.015625,
+            "height": 44,
+            "top": 174.046875,
+            "right": 1183.078125,
+            "bottom": 218.046875,
+            "left": 218.0625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋Новая полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1207.078125,
+            "y": 174.046875,
+            "width": 138.1875,
+            "height": 44,
+            "top": 174.046875,
+            "right": 1345.265625,
+            "bottom": 218.046875,
+            "left": 1207.078125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Авто · ВысокоеВысокоеСбалансированноеЭкономичное",
+          "tag": "SELECT",
+          "rect": {
+            "x": 1427,
+            "y": 174.046875,
+            "width": 176,
+            "height": 44,
+            "top": 174.046875,
+            "right": 1603,
+            "bottom": 218.046875,
+            "left": 1427
+          },
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "locale": "ru",
+      "width": 1366,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 121.40625,
+            "y": 37.796875,
+            "width": 781.046875,
+            "height": 42,
+            "top": 37.796875,
+            "right": 902.453125,
+            "bottom": 79.796875,
+            "left": 121.40625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 88.40625,
+            "y": 92.796875,
+            "width": 70.625,
+            "height": 44,
+            "top": 92.796875,
+            "right": 159.03125,
+            "bottom": 136.796875,
+            "left": 88.40625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Каталог",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 163.03125,
+            "y": 92.796875,
+            "width": 83.59375,
+            "height": 44,
+            "top": 92.796875,
+            "right": 246.625,
+            "bottom": 136.796875,
+            "left": 163.03125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Случайное произведение",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 258.625,
+            "y": 92.796875,
+            "width": 232.125,
+            "height": 44,
+            "top": 92.796875,
+            "right": 490.75,
+            "bottom": 136.796875,
+            "left": 258.625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Текущая полкаВесь книжный архивВо всём журнале",
+          "tag": "SELECT",
+          "rect": {
+            "x": 927.453125,
+            "y": 36.796875,
+            "width": 350.140625,
+            "height": 44,
+            "top": 36.796875,
+            "right": 1277.59375,
+            "bottom": 80.796875,
+            "left": 927.453125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ПровереноКарточки с подтверждёнными данными",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 927.453125,
+            "y": 92.796875,
+            "width": 103.234375,
+            "height": 44,
+            "top": 92.796875,
+            "right": 1030.6875,
+            "bottom": 136.796875,
+            "left": 927.453125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "КлассикаПервое издание - не позднее 1945 года",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1034.6875,
+            "y": 92.796875,
+            "width": 90.609375,
+            "height": 44,
+            "top": 92.796875,
+            "right": 1125.296875,
+            "bottom": 136.796875,
+            "left": 1034.6875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Для детейТолько подтверждённая аудитория",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1129.296875,
+            "y": 92.796875,
+            "width": 96.296875,
+            "height": 44,
+            "top": 92.796875,
+            "right": 1225.59375,
+            "bottom": 136.796875,
+            "left": 1129.296875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Расширенные фильтры",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1233.59375,
+            "y": 92.796875,
+            "width": 44,
+            "height": 44,
+            "top": 92.796875,
+            "right": 1277.59375,
+            "bottom": 136.796875,
+            "left": 1233.59375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+          "tag": "SELECT",
+          "rect": {
+            "x": 201.46875,
+            "y": 164.796875,
+            "width": 681.953125,
+            "height": 44,
+            "top": 164.796875,
+            "right": 883.421875,
+            "bottom": 208.796875,
+            "left": 201.46875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋Новая полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 907.421875,
+            "y": 164.796875,
+            "width": 138.1875,
+            "height": 44,
+            "top": 164.796875,
+            "right": 1045.609375,
+            "bottom": 208.796875,
+            "left": 907.421875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Авто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+          "tag": "SELECT",
+          "rect": {
+            "x": 1127.34375,
+            "y": 164.796875,
+            "width": 150.25,
+            "height": 44,
+            "top": 164.796875,
+            "right": 1277.59375,
+            "bottom": 208.796875,
+            "left": 1127.34375
+          },
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "locale": "ru",
+      "width": 768,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 83.140625,
+            "y": 733.59375,
+            "width": 259.578125,
+            "height": 42,
+            "top": 733.59375,
+            "right": 342.71875,
+            "bottom": 775.59375,
+            "left": 83.140625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 50.140625,
+            "y": 788.59375,
+            "width": 70.625,
+            "height": 44,
+            "top": 788.59375,
+            "right": 120.765625,
+            "bottom": 832.59375,
+            "left": 50.140625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Каталог",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 124.765625,
+            "y": 788.59375,
+            "width": 83.59375,
+            "height": 44,
+            "top": 788.59375,
+            "right": 208.359375,
+            "bottom": 832.59375,
+            "left": 124.765625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Случайное произведение",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 58.140625,
+            "y": 836.59375,
+            "width": 232.125,
+            "height": 44,
+            "top": 836.59375,
+            "right": 290.265625,
+            "bottom": 880.59375,
+            "left": 58.140625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Текущая полкаВесь книжный архивВо всём журнале",
+          "tag": "SELECT",
+          "rect": {
+            "x": 367.71875,
+            "y": 732.59375,
+            "width": 350.140625,
+            "height": 44,
+            "top": 732.59375,
+            "right": 717.859375,
+            "bottom": 776.59375,
+            "left": 367.71875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ПровереноКарточки с подтверждёнными данными",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 367.71875,
+            "y": 812.59375,
+            "width": 103.234375,
+            "height": 44,
+            "top": 812.59375,
+            "right": 470.953125,
+            "bottom": 856.59375,
+            "left": 367.71875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "КлассикаПервое издание - не позднее 1945 года",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 474.953125,
+            "y": 812.59375,
+            "width": 90.609375,
+            "height": 44,
+            "top": 812.59375,
+            "right": 565.5625,
+            "bottom": 856.59375,
+            "left": 474.953125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Для детейТолько подтверждённая аудитория",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 569.5625,
+            "y": 812.59375,
+            "width": 96.296875,
+            "height": 44,
+            "top": 812.59375,
+            "right": 665.859375,
+            "bottom": 856.59375,
+            "left": 569.5625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Расширенные фильтры",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 673.859375,
+            "y": 812.59375,
+            "width": 44,
+            "height": 44,
+            "top": 812.59375,
+            "right": 717.859375,
+            "bottom": 856.59375,
+            "left": 673.859375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+          "tag": "SELECT",
+          "rect": {
+            "x": 163.203125,
+            "y": 908.59375,
+            "width": 554.65625,
+            "height": 44,
+            "top": 908.59375,
+            "right": 717.859375,
+            "bottom": 952.59375,
+            "left": 163.203125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋Новая полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 50.140625,
+            "y": 964.59375,
+            "width": 138.1875,
+            "height": 44,
+            "top": 964.59375,
+            "right": 188.328125,
+            "bottom": 1008.59375,
+            "left": 50.140625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Авто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+          "tag": "SELECT",
+          "rect": {
+            "x": 583.859375,
+            "y": 964.59375,
+            "width": 134,
+            "height": 44,
+            "top": 964.59375,
+            "right": 717.859375,
+            "bottom": 1008.59375,
+            "left": 583.859375
+          },
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "locale": "ru",
+      "width": 390,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 58,
+            "y": 376.359375,
+            "width": 294,
+            "height": 42,
+            "top": 376.359375,
+            "right": 352,
+            "bottom": 418.359375,
+            "left": 58
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 479.359375,
+            "width": 168,
+            "height": 44,
+            "top": 479.359375,
+            "right": 193,
+            "bottom": 523.359375,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Каталог",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 197,
+            "y": 479.359375,
+            "width": 168,
+            "height": 44,
+            "top": 479.359375,
+            "right": 365,
+            "bottom": 523.359375,
+            "left": 197
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Случайное произведение",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 527.359375,
+            "width": 340,
+            "height": 44,
+            "top": 527.359375,
+            "right": 365,
+            "bottom": 571.359375,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Текущая полкаВесь книжный архивВо всём журнале",
+          "tag": "SELECT",
+          "rect": {
+            "x": 25,
+            "y": 427.359375,
+            "width": 340,
+            "height": 44,
+            "top": 427.359375,
+            "right": 365,
+            "bottom": 471.359375,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ПровереноКарточки с подтверждёнными данными",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 579.359375,
+            "width": 93.328125,
+            "height": 44,
+            "top": 579.359375,
+            "right": 118.328125,
+            "bottom": 623.359375,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "КлассикаПервое издание - не позднее 1945 года",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 122.328125,
+            "y": 579.359375,
+            "width": 93.328125,
+            "height": 44,
+            "top": 579.359375,
+            "right": 215.65625,
+            "bottom": 623.359375,
+            "left": 122.328125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Для детейТолько подтверждённая аудитория",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 219.65625,
+            "y": 579.359375,
+            "width": 93.34375,
+            "height": 44,
+            "top": 579.359375,
+            "right": 313,
+            "bottom": 623.359375,
+            "left": 219.65625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Расширенные фильтры",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 321,
+            "y": 579.359375,
+            "width": 44,
+            "height": 44,
+            "top": 579.359375,
+            "right": 365,
+            "bottom": 623.359375,
+            "left": 321
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+          "tag": "SELECT",
+          "rect": {
+            "x": 25,
+            "y": 677.65625,
+            "width": 340,
+            "height": 44,
+            "top": 677.65625,
+            "right": 365,
+            "bottom": 721.65625,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋Новая полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 733.65625,
+            "width": 340,
+            "height": 44,
+            "top": 733.65625,
+            "right": 365,
+            "bottom": 777.65625,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Авто · ЭкономичноеВысокоеСбалансированноеЭкономичное",
+          "tag": "SELECT",
+          "rect": {
+            "x": 99.734375,
+            "y": 785.65625,
+            "width": 265.265625,
+            "height": 44,
+            "top": 785.65625,
+            "right": 365,
+            "bottom": 829.65625,
+            "left": 99.734375
+          },
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "locale": "ru",
+      "width": 320,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 58,
+            "y": 402.203125,
+            "width": 224,
+            "height": 42,
+            "top": 402.203125,
+            "right": 282,
+            "bottom": 444.203125,
+            "left": 58
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 505.203125,
+            "width": 133,
+            "height": 44,
+            "top": 505.203125,
+            "right": 158,
+            "bottom": 549.203125,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Каталог",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 162,
+            "y": 505.203125,
+            "width": 133,
+            "height": 44,
+            "top": 505.203125,
+            "right": 295,
+            "bottom": 549.203125,
+            "left": 162
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Случайное произведение",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 553.203125,
+            "width": 270,
+            "height": 44,
+            "top": 553.203125,
+            "right": 295,
+            "bottom": 597.203125,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Текущая полкаВесь книжный архивВо всём журнале",
+          "tag": "SELECT",
+          "rect": {
+            "x": 25,
+            "y": 453.203125,
+            "width": 270,
+            "height": 44,
+            "top": 453.203125,
+            "right": 295,
+            "bottom": 497.203125,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ПровереноКарточки с подтверждёнными данными",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 605.203125,
+            "width": 107,
+            "height": 44,
+            "top": 605.203125,
+            "right": 132,
+            "bottom": 649.203125,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "КлассикаПервое издание - не позднее 1945 года",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 136,
+            "y": 605.203125,
+            "width": 107,
+            "height": 44,
+            "top": 605.203125,
+            "right": 243,
+            "bottom": 649.203125,
+            "left": 136
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Для детейТолько подтверждённая аудитория",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 653.203125,
+            "width": 218,
+            "height": 44,
+            "top": 653.203125,
+            "right": 243,
+            "bottom": 697.203125,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Расширенные фильтры",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 251,
+            "y": 629.203125,
+            "width": 44,
+            "height": 44,
+            "top": 629.203125,
+            "right": 295,
+            "bottom": 673.203125,
+            "left": 251
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Весь архив - 46 произведенийВыбор редакции - 46 произведенийКлассика архива - 31 произведенийМоя библиотека - Пока пустоИзбранное - Пока пустоХочу прочитать - Пока пустоЧитаю сейчас - Пока пустоПрочитано - Пока пустоПока нет полок",
+          "tag": "SELECT",
+          "rect": {
+            "x": 25,
+            "y": 751.5,
+            "width": 270,
+            "height": 44,
+            "top": 751.5,
+            "right": 295,
+            "bottom": 795.5,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋Новая полка",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 807.5,
+            "width": 270,
+            "height": 44,
+            "top": 807.5,
+            "right": 295,
+            "bottom": 851.5,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Авто · ЭкономичноеВысокоеСбалансированноеЭкономичное",
+          "tag": "SELECT",
+          "rect": {
+            "x": 99.734375,
+            "y": 859.5,
+            "width": 195.265625,
+            "height": 44,
+            "top": 859.5,
+            "right": 295,
+            "bottom": 903.5,
+            "left": 99.734375
+          },
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 1708,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 138,
+            "y": 478.875,
+            "width": 587,
+            "height": 42,
+            "top": 478.875,
+            "right": 725,
+            "bottom": 520.875,
+            "left": 138
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 936,
+            "y": 477.875,
+            "width": 62.40625,
+            "height": 44,
+            "top": 477.875,
+            "right": 998.40625,
+            "bottom": 521.875,
+            "left": 936
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Catalogue",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1002.40625,
+            "y": 477.875,
+            "width": 98.3125,
+            "height": 44,
+            "top": 477.875,
+            "right": 1100.71875,
+            "bottom": 521.875,
+            "left": 1002.40625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Random work",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1112.71875,
+            "y": 477.875,
+            "width": 142.015625,
+            "height": 44,
+            "top": 477.875,
+            "right": 1254.734375,
+            "bottom": 521.875,
+            "left": 1112.71875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Current shelfComplete book archiveAcross the journal",
+          "tag": "SELECT",
+          "rect": {
+            "x": 750,
+            "y": 477.875,
+            "width": 174,
+            "height": 44,
+            "top": 477.875,
+            "right": 924,
+            "bottom": 521.875,
+            "left": 750
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ReviewedRecords with verified metadata",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1266.734375,
+            "y": 477.875,
+            "width": 91.234375,
+            "height": 44,
+            "top": 477.875,
+            "right": 1357.96875,
+            "bottom": 521.875,
+            "left": 1266.734375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ClassicsFirst published no later than 1945",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1361.96875,
+            "y": 477.875,
+            "width": 79.1875,
+            "height": 44,
+            "top": 477.875,
+            "right": 1441.15625,
+            "bottom": 521.875,
+            "left": 1361.96875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "For childrenVerified audience only",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1445.15625,
+            "y": 477.875,
+            "width": 105.84375,
+            "height": 44,
+            "top": 477.875,
+            "right": 1551,
+            "bottom": 521.875,
+            "left": 1445.15625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Advanced filters",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1559,
+            "y": 477.875,
+            "width": 44,
+            "height": 44,
+            "top": 477.875,
+            "right": 1603,
+            "bottom": 521.875,
+            "left": 1559
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+          "tag": "SELECT",
+          "rect": {
+            "x": 203.34375,
+            "y": 549.875,
+            "width": 1015.5,
+            "height": 44,
+            "top": 549.875,
+            "right": 1218.84375,
+            "bottom": 593.875,
+            "left": 203.34375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋New shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1242.84375,
+            "y": 549.875,
+            "width": 117.953125,
+            "height": 44,
+            "top": 549.875,
+            "right": 1360.796875,
+            "bottom": 593.875,
+            "left": 1242.84375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Auto · EconomyHighBalancedEconomy",
+          "tag": "SELECT",
+          "rect": {
+            "x": 1427,
+            "y": 549.875,
+            "width": 176,
+            "height": 44,
+            "top": 549.875,
+            "right": 1603,
+            "bottom": 593.875,
+            "left": 1427
+          },
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 1366,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 121.40625,
+            "y": 320.109375,
+            "width": 794.921875,
+            "height": 42,
+            "top": 320.109375,
+            "right": 916.328125,
+            "bottom": 362.109375,
+            "left": 121.40625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 88.40625,
+            "y": 375.109375,
+            "width": 62.40625,
+            "height": 44,
+            "top": 375.109375,
+            "right": 150.8125,
+            "bottom": 419.109375,
+            "left": 88.40625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Catalogue",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 154.8125,
+            "y": 375.109375,
+            "width": 98.3125,
+            "height": 44,
+            "top": 375.109375,
+            "right": 253.125,
+            "bottom": 419.109375,
+            "left": 154.8125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Random work",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 265.125,
+            "y": 375.109375,
+            "width": 142.015625,
+            "height": 44,
+            "top": 375.109375,
+            "right": 407.140625,
+            "bottom": 419.109375,
+            "left": 265.125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Current shelfComplete book archiveAcross the journal",
+          "tag": "SELECT",
+          "rect": {
+            "x": 941.328125,
+            "y": 319.109375,
+            "width": 336.265625,
+            "height": 44,
+            "top": 319.109375,
+            "right": 1277.59375,
+            "bottom": 363.109375,
+            "left": 941.328125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ReviewedRecords with verified metadata",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 941.328125,
+            "y": 375.109375,
+            "width": 91.234375,
+            "height": 44,
+            "top": 375.109375,
+            "right": 1032.5625,
+            "bottom": 419.109375,
+            "left": 941.328125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ClassicsFirst published no later than 1945",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1036.5625,
+            "y": 375.109375,
+            "width": 79.1875,
+            "height": 44,
+            "top": 375.109375,
+            "right": 1115.75,
+            "bottom": 419.109375,
+            "left": 1036.5625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "For childrenVerified audience only",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1119.75,
+            "y": 375.109375,
+            "width": 105.84375,
+            "height": 44,
+            "top": 375.109375,
+            "right": 1225.59375,
+            "bottom": 419.109375,
+            "left": 1119.75
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Advanced filters",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 1233.59375,
+            "y": 375.109375,
+            "width": 44,
+            "height": 44,
+            "top": 375.109375,
+            "right": 1277.59375,
+            "bottom": 419.109375,
+            "left": 1233.59375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+          "tag": "SELECT",
+          "rect": {
+            "x": 186.75,
+            "y": 447.109375,
+            "width": 732.4375,
+            "height": 44,
+            "top": 447.109375,
+            "right": 919.1875,
+            "bottom": 491.109375,
+            "left": 186.75
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋New shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 943.1875,
+            "y": 447.109375,
+            "width": 117.953125,
+            "height": 44,
+            "top": 447.109375,
+            "right": 1061.140625,
+            "bottom": 491.109375,
+            "left": 943.1875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Auto · EconomyHighBalancedEconomy",
+          "tag": "SELECT",
+          "rect": {
+            "x": 1127.34375,
+            "y": 447.109375,
+            "width": 150.25,
+            "height": 44,
+            "top": 447.109375,
+            "right": 1277.59375,
+            "bottom": 491.109375,
+            "left": 1127.34375
+          },
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 768,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 83.140625,
+            "y": 885.765625,
+            "width": 273.453125,
+            "height": 42,
+            "top": 885.765625,
+            "right": 356.59375,
+            "bottom": 927.765625,
+            "left": 83.140625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 50.140625,
+            "y": 940.765625,
+            "width": 62.40625,
+            "height": 44,
+            "top": 940.765625,
+            "right": 112.546875,
+            "bottom": 984.765625,
+            "left": 50.140625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Catalogue",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 116.546875,
+            "y": 940.765625,
+            "width": 98.3125,
+            "height": 44,
+            "top": 940.765625,
+            "right": 214.859375,
+            "bottom": 984.765625,
+            "left": 116.546875
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Random work",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 226.859375,
+            "y": 940.765625,
+            "width": 142.015625,
+            "height": 44,
+            "top": 940.765625,
+            "right": 368.875,
+            "bottom": 984.765625,
+            "left": 226.859375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Current shelfComplete book archiveAcross the journal",
+          "tag": "SELECT",
+          "rect": {
+            "x": 381.59375,
+            "y": 884.765625,
+            "width": 336.265625,
+            "height": 44,
+            "top": 884.765625,
+            "right": 717.859375,
+            "bottom": 928.765625,
+            "left": 381.59375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ReviewedRecords with verified metadata",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 381.59375,
+            "y": 940.765625,
+            "width": 91.234375,
+            "height": 44,
+            "top": 940.765625,
+            "right": 472.828125,
+            "bottom": 984.765625,
+            "left": 381.59375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ClassicsFirst published no later than 1945",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 476.828125,
+            "y": 940.765625,
+            "width": 79.1875,
+            "height": 44,
+            "top": 940.765625,
+            "right": 556.015625,
+            "bottom": 984.765625,
+            "left": 476.828125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "For childrenVerified audience only",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 560.015625,
+            "y": 940.765625,
+            "width": 105.84375,
+            "height": 44,
+            "top": 940.765625,
+            "right": 665.859375,
+            "bottom": 984.765625,
+            "left": 560.015625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Advanced filters",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 673.859375,
+            "y": 940.765625,
+            "width": 44,
+            "height": 44,
+            "top": 940.765625,
+            "right": 717.859375,
+            "bottom": 984.765625,
+            "left": 673.859375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+          "tag": "SELECT",
+          "rect": {
+            "x": 148.484375,
+            "y": 1012.765625,
+            "width": 569.375,
+            "height": 44,
+            "top": 1012.765625,
+            "right": 717.859375,
+            "bottom": 1056.765625,
+            "left": 148.484375
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋New shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 50.140625,
+            "y": 1068.765625,
+            "width": 117.953125,
+            "height": 44,
+            "top": 1068.765625,
+            "right": 168.09375,
+            "bottom": 1112.765625,
+            "left": 50.140625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Auto · EconomyHighBalancedEconomy",
+          "tag": "SELECT",
+          "rect": {
+            "x": 583.859375,
+            "y": 1068.765625,
+            "width": 134,
+            "height": 44,
+            "top": 1068.765625,
+            "right": 717.859375,
+            "bottom": 1112.765625,
+            "left": 583.859375
+          },
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 58,
+            "y": 376.734375,
+            "width": 294,
+            "height": 42,
+            "top": 376.734375,
+            "right": 352,
+            "bottom": 418.734375,
+            "left": 58
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 479.734375,
+            "width": 168,
+            "height": 44,
+            "top": 479.734375,
+            "right": 193,
+            "bottom": 523.734375,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Catalogue",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 197,
+            "y": 479.734375,
+            "width": 168,
+            "height": 44,
+            "top": 479.734375,
+            "right": 365,
+            "bottom": 523.734375,
+            "left": 197
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Random work",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 527.734375,
+            "width": 340,
+            "height": 44,
+            "top": 527.734375,
+            "right": 365,
+            "bottom": 571.734375,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Current shelfComplete book archiveAcross the journal",
+          "tag": "SELECT",
+          "rect": {
+            "x": 25,
+            "y": 427.734375,
+            "width": 340,
+            "height": 44,
+            "top": 427.734375,
+            "right": 365,
+            "bottom": 471.734375,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ReviewedRecords with verified metadata",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 579.734375,
+            "width": 93.328125,
+            "height": 44,
+            "top": 579.734375,
+            "right": 118.328125,
+            "bottom": 623.734375,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ClassicsFirst published no later than 1945",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 122.328125,
+            "y": 579.734375,
+            "width": 93.328125,
+            "height": 44,
+            "top": 579.734375,
+            "right": 215.65625,
+            "bottom": 623.734375,
+            "left": 122.328125
+          },
+          "overflow": 0
+        },
+        {
+          "text": "For childrenVerified audience only",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 219.65625,
+            "y": 579.734375,
+            "width": 93.34375,
+            "height": 44,
+            "top": 579.734375,
+            "right": 313,
+            "bottom": 623.734375,
+            "left": 219.65625
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Advanced filters",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 321,
+            "y": 579.734375,
+            "width": 44,
+            "height": 44,
+            "top": 579.734375,
+            "right": 365,
+            "bottom": 623.734375,
+            "left": 321
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+          "tag": "SELECT",
+          "rect": {
+            "x": 25,
+            "y": 678.03125,
+            "width": 340,
+            "height": 44,
+            "top": 678.03125,
+            "right": 365,
+            "bottom": 722.03125,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋New shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 734.03125,
+            "width": 340,
+            "height": 44,
+            "top": 734.03125,
+            "right": 365,
+            "bottom": 778.03125,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Auto · EconomyHighBalancedEconomy",
+          "tag": "SELECT",
+          "rect": {
+            "x": 84.203125,
+            "y": 786.03125,
+            "width": 280.796875,
+            "height": 44,
+            "top": 786.03125,
+            "right": 365,
+            "bottom": 830.03125,
+            "left": 84.203125
+          },
+          "overflow": 0
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "width": 320,
+      "overflow": 0,
+      "activeRail": 0,
+      "controls": [
+        {
+          "text": null,
+          "tag": "INPUT",
+          "rect": {
+            "x": 58,
+            "y": 402.65625,
+            "width": 224,
+            "height": 42,
+            "top": 402.65625,
+            "right": 282,
+            "bottom": 444.65625,
+            "left": 58
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 505.65625,
+            "width": 133,
+            "height": 44,
+            "top": 505.65625,
+            "right": 158,
+            "bottom": 549.65625,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Catalogue",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 162,
+            "y": 505.65625,
+            "width": 133,
+            "height": 44,
+            "top": 505.65625,
+            "right": 295,
+            "bottom": 549.65625,
+            "left": 162
+          },
+          "overflow": 0
+        },
+        {
+          "text": "✦Random work",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 553.65625,
+            "width": 270,
+            "height": 44,
+            "top": 553.65625,
+            "right": 295,
+            "bottom": 597.65625,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Current shelfComplete book archiveAcross the journal",
+          "tag": "SELECT",
+          "rect": {
+            "x": 25,
+            "y": 453.65625,
+            "width": 270,
+            "height": 44,
+            "top": 453.65625,
+            "right": 295,
+            "bottom": 497.65625,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ReviewedRecords with verified metadata",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 605.65625,
+            "width": 107,
+            "height": 44,
+            "top": 605.65625,
+            "right": 132,
+            "bottom": 649.65625,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "ClassicsFirst published no later than 1945",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 136,
+            "y": 605.65625,
+            "width": 107,
+            "height": 44,
+            "top": 605.65625,
+            "right": 243,
+            "bottom": 649.65625,
+            "left": 136
+          },
+          "overflow": 0
+        },
+        {
+          "text": "For childrenVerified audience only",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 653.65625,
+            "width": 218,
+            "height": 44,
+            "top": 653.65625,
+            "right": 243,
+            "bottom": 697.65625,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Advanced filters",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 251,
+            "y": 629.65625,
+            "width": 44,
+            "height": 44,
+            "top": 629.65625,
+            "right": 295,
+            "bottom": 673.65625,
+            "left": 251
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Complete archive - 46 worksArchive classics - 31 worksEditors’ picks - 46 worksMy library - Empty for nowFavourites - Empty for nowWant to read - Empty for nowReading now - Empty for nowFinished - Empty for nowNo shelves yet",
+          "tag": "SELECT",
+          "rect": {
+            "x": 25,
+            "y": 751.953125,
+            "width": 270,
+            "height": 44,
+            "top": 751.953125,
+            "right": 295,
+            "bottom": 795.953125,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "＋New shelf",
+          "tag": "BUTTON",
+          "rect": {
+            "x": 25,
+            "y": 807.953125,
+            "width": 270,
+            "height": 44,
+            "top": 807.953125,
+            "right": 295,
+            "bottom": 851.953125,
+            "left": 25
+          },
+          "overflow": 0
+        },
+        {
+          "text": "Auto · EconomyHighBalancedEconomy",
+          "tag": "SELECT",
+          "rect": {
+            "x": 84.203125,
+            "y": 859.953125,
+            "width": 210.796875,
+            "height": 44,
+            "top": 859.953125,
+            "right": 295,
+            "bottom": 903.953125,
+            "left": 84.203125
+          },
+          "overflow": 0
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "issues": [],
+  "emptyClick": {
+    "x": 63.59375,
+    "y": 181
+  },
+  "closedFromEmpty": {
+    "selected": null,
+    "detail": false
+  }
+}

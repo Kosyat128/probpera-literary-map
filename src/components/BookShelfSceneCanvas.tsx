@@ -18,6 +18,7 @@ import type {
 import type { BookShelfPhase } from "../books/bookShelfState";
 import { completeShelfPhaseHasInspection, completeShelfVisibleBookLimit, completeShelfRowWidth, COMPLETE_SHELF_BOOK_FORMAT, COMPLETE_SHELF_TOP, COMPLETE_SHELF_INSPECTION_LIFT, resolveCompleteShelfVerticalBounds } from "../books/completeShelfModel";
 import { resolveBookPhysicalBounds } from "../books/bookShelfPhysicalLayout";
+import { advanceBookShelfPointer, bookShelfPointerIsClick, type BookShelfPointerStart } from "../books/bookShelfPointer";
 import {
   applyBookInspectionOrbitDelta,
   bookInspectionViewportCanFrame,
@@ -435,6 +436,8 @@ export default function BookShelfSceneCanvas({
         ? 1024
         : 512;
   const textureFailureReportedRef = useRef(false);
+  const canvasPointerRef = useRef<BookShelfPointerStart | null>(null);
+  const missedClickRef = useRef(false);
   const reportTextureFailure = useCallback(
     (reason: string) => {
       if (textureFailureReportedRef.current) return;
@@ -472,8 +475,39 @@ export default function BookShelfSceneCanvas({
         pointerEvents: active ? "auto" : "none",
         touchAction: "pan-y",
       }}
+      onPointerDownCapture={(event) => {
+        missedClickRef.current = false;
+        canvasPointerRef.current = event.isPrimary && event.button === 0 && !event.altKey
+          ? { pointerId: event.pointerId, pointerType: event.pointerType, x: event.clientX, y: event.clientY, at: performance.now(), moved: false }
+          : null;
+      }}
+      onPointerMoveCapture={(event) => {
+        if (canvasPointerRef.current) canvasPointerRef.current = advanceBookShelfPointer(canvasPointerRef.current,
+          { pointerId: event.pointerId, x: event.clientX, y: event.clientY });
+      }}
+      onPointerUpCapture={(event) => {
+        missedClickRef.current = !event.altKey && bookShelfPointerIsClick(canvasPointerRef.current,
+          { pointerId: event.pointerId, x: event.clientX, y: event.clientY, at: performance.now() });
+        canvasPointerRef.current = null;
+      }}
+      onPointerCancelCapture={() => {
+        canvasPointerRef.current = null;
+        missedClickRef.current = false;
+      }}
+      onPointerLeave={() => {
+        // Uncaptured movement outside the canvas is not observable here.
+        // Leaving invalidates the candidate even if the pointer returns.
+        // Touch also leaves after pointerup; preserve that completed tap.
+        if (!canvasPointerRef.current) return;
+        canvasPointerRef.current = null;
+        missedClickRef.current = false;
+      }}
       onPointerMissed={(event) => {
-        if (!selectedBookKey && phase === "SHELF_IDLE" && event.type === "click" && event.button === 0) onRequestSceneCenter();
+        // R3F measures the release distance only. Keep the full gesture so an
+        // out-and-back drag or cancelled touch never becomes an empty click.
+        if (!missedClickRef.current) return;
+        missedClickRef.current = false;
+        if ((selectedBookKey || phase === "SHELF_IDLE") && event.type === "click" && event.button === 0 && !event.altKey) onRequestSceneCenter();
       }}
     >
       <SceneLifecycle

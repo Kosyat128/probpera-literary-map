@@ -919,7 +919,11 @@ export default function BookArchiveSection({
       );
       const restoreCloseDestination = () => {
         if (centerAfterClose) {
-          centerShelfScene();
+          // Removing the detail column reconnects the scene. Focus the current
+          // node after that commit, just like the catalogue trigger restoration.
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(centerShelfScene);
+          });
           return;
         }
         restoreBookTriggerFocus(returnFocus);
@@ -3671,7 +3675,7 @@ export default function BookArchiveSection({
       updateFilterState({ savedOnly: false })
     );
   }
-  if (filterState.sort !== "editorial-relevance") {
+  if (filterState.sort !== "editorial-relevance" && filterState.sort !== "manual") {
     pushChip("sort", t(sortLabels[filterState.sort]), () =>
       updateFilterState({ sort: "editorial-relevance" })
     );
@@ -3914,7 +3918,7 @@ export default function BookArchiveSection({
               setQuery(value);
             }}
             searchLabel={t("Поиск по книге, автору или стране")}
-            searchPlaceholder={t("Например, Достоевский или Япония")}
+            searchPlaceholder={language === "en" ? "Title, author, country" : "Название, автор, страна"}
             searchScope={searchScope}
             onSearchScopeChange={setSearchScope}
             libraryScopeLabel={t("Текущая полка")}

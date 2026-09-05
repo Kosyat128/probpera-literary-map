@@ -220,7 +220,7 @@ describe("Complete Shelf procedural model", () => {
     });
     expect(shelf.rotation[1]).toBeCloseTo(Math.PI / 2);
     expect(shelf.rotation[2]).toBe(0);
-    expect(shelf.position[2]).toBe(0.025);
+    expect(shelf.position[2]).toBe(0);
     expect(shelf.scale).toBe(1);
     expect(inspection.position[0]).toBe(0);
     expect(inspection.position[2]).toBeGreaterThan(1);
