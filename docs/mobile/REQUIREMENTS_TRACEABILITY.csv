@@ -7,7 +7,7 @@ A11Y-005,A11Y,P1,all,44x44 controls and focus semantics,V12 modular specs/full s
 A11Y-006,A11Y,P1,all,RU complete and reviewed EN architecture,V12 modular specs/full spec,OPEN,,,,
 A11Y-007,A11Y,P1,all,Rights-aware captions/narration/audio,V12 modular specs/full spec,OPEN,,,,
 A11Y-008,A11Y,P1,all,No colour/motion/audio-only meaning,V12 modular specs/full spec,OPEN,,,,
-BIL-001,LOCALE,P0,all,Russian and English are mandatory production locales,03C;119;142,OPEN,,,,
+BIL-001,LOCALE,P0,all,Russian and English are mandatory production locales,03C;119;142,IN_PROGRESS,src/platform/productPolicy.ts;src/platform/productPolicy.test.ts,,,25b5347970fef19be280d29475953e98dbea69c2
 BIL-002,LOCALE,P0,all,Unsupported system locales fall back to English,119;142,OPEN,,,,
 BIL-003,LOCALE,P0,all,Russian device preference starts Russian; other unsupported preferences start English,119;142,OPEN,,,,
 BIL-004,LOCALE,P0,all,Visible onboarding and Settings language selector exists,119,OPEN,,,,
@@ -16,7 +16,7 @@ BIL-006,LOCALE,P0,all,Language switch preserves country writer work route and en
 BIL-007,LOCALE,P0,all,Language choice is resolved before first content frame,119,OPEN,,,,
 BIL-008,LOCALE,P0,all,Child mode and exact-age policy survive language changes,119;123,OPEN,,,,
 BIL-009,LOCALE,P1,all,Parent may lock child profile language without blocking safety,123,OPEN,,,,
-BIL-010,LOCALE,P0,all,Language is never inferred from IP nationality SIM or store country,119,OPEN,,,,
+BIL-010,LOCALE,P0,all,Language is never inferred from IP nationality SIM or store country,119,IN_PROGRESS,src/platform/productPolicy.ts;src/platform/productPolicy.test.ts,,,25b5347970fef19be280d29475953e98dbea69c2
 BIL-011,I18N,P0,web,Shared TypeScript catalogs are type-safe and ICU-compatible,120,OPEN,,,,
 BIL-012,I18N,P0,all,User-facing hardcoded string scanner fails release,120;126,OPEN,,,,
 BIL-013,I18N,P0,all,Placeholder names types and counts match across locales,120;126,OPEN,,,,
@@ -113,15 +113,15 @@ BIL-103,AUTOMATION,P0,all,Bilingual commands and CI emit artifact-bound evidence
 BIL-104,AUTOMATION,P0,all,Bilingual all-gate covers static content child native web store legal support exact-RC and handoff,166,OPEN,,,,
 BIL-105,NO_RETURN,P0,all,Base Edition English critical surfaces cannot be deferred as later localization,168,OPEN,,,,
 BIL-106,NO_RETURN,P0,all,Final handoff contains all English architecture content store legal support offline search correction and operations systems,168,OPEN,,,,
-BIL-107,NO_RETURN,P0,all,Future third locales cannot weaken or delay complete Russian and English release,168,OPEN,,,,
-CANON-001,CANON,P0,all,Existing site Literary Planet is sole globe foundation,V12 modular specs/full spec,OPEN,,,,
-CANON-002,CANON,P0,all,Shared IDs/coordinates/editions/textures across clients,V12 modular specs/full spec,OPEN,,,,
+BIL-107,NO_RETURN,P0,all,Future third locales cannot weaken or delay complete Russian and English release,168,IN_PROGRESS,src/platform/productPolicy.ts;src/platform/productPolicy.test.ts,,,25b5347970fef19be280d29475953e98dbea69c2
+CANON-001,CANON,P0,all,Existing site Literary Planet is sole globe foundation,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;scripts/mobile/platform-boundaries.mjs,,,25b5347970fef19be280d29475953e98dbea69c2
+CANON-002,CANON,P0,all,Shared IDs/coordinates/editions/textures across clients,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;docs/mobile/evidence/S00/current-main-canonical-delta.json,,,25b5347970fef19be280d29475953e98dbea69c2
 CANON-003,CANON,P0,all,One Canvas/renderer per active experience,V12 modular specs/full spec,OPEN,,,,
-CANON-004,CANON,P0,all,Canonical CMS is only factual content source,V12 modular specs/full spec,OPEN,,,,
+CANON-004,CANON,P0,all,Canonical CMS is only factual content source,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;docs/mobile/evidence/S00/current-main-canonical-delta.json,,,25b5347970fef19be280d29475953e98dbea69c2
 CANON-005,CANON,P0,all,Real portraits and canonical flags reused,V12 modular specs/full spec,OPEN,,,,
-CANON-006,CANON,P0,all,Site/Web/PWA/Android/iOS parity gates,V12 modular specs/full spec,OPEN,,,,
-CANON-007,CANON,P0,all,Public site and admin remain regression-safe,V12 modular specs/full spec,OPEN,,,,
-CANON-008,CANON,P0,all,No remote website as native core runtime,V12 modular specs/full spec,OPEN,,,,
+CANON-006,CANON,P0,all,Site/Web/PWA/Android/iOS parity gates,V12 modular specs/full spec,IN_PROGRESS,docs/mobile/PLATFORM_ARCHITECTURE.md;docs/mobile/STAGE_REQUIREMENT_MAP.json,,,25b5347970fef19be280d29475953e98dbea69c2
+CANON-007,CANON,P0,all,Public site and admin remain regression-safe,V12 modular specs/full spec,IN_PROGRESS,scripts/lib/stage5-content-data-lock.test.mjs;docs/mobile/evidence/S00/current-main-baseline-results.json,,,25b5347970fef19be280d29475953e98dbea69c2
+CANON-008,CANON,P0,all,No remote website as native core runtime,V12 modular specs/full spec,IN_PROGRESS,scripts/mobile/platform-boundaries.mjs;scripts/mobile/platform-boundaries.test.mjs,,,25b5347970fef19be280d29475953e98dbea69c2
 CHAR-001,CHAR,P0,all,Russian and foreign literary character catalog,V12 modular specs/full spec,OPEN,,,,
 CHAR-002,CHAR,P0,all,Rights-cleared StoryWorld minimum,V12 modular specs/full spec,OPEN,,,,
 CHAR-003,CHAR,P0,all,Character-to-work-author-country learning path,V12 modular specs/full spec,OPEN,,,,
@@ -238,12 +238,12 @@ MOD-051,AUTOPILOT,P0,all,Moderation precheck commands and CI gates fail closed,2
 MOD-052,HANDOFF,P0,all,Owner receives exact submission and rejection instructions,27A;27L;27O,OPEN,,,,
 OMIN-001,OWNER_INPUT,P0,all,All nonsecret owner decisions live in one owner-release-inputs.json,03B;90,OPEN,,,,
 OMIN-002,OWNER_INPUT,P0,all,Owner input validates against JSON Schema,90,OPEN,,,,
-OMIN-003,OWNER_INPUT,P0,all,Safe defaults are applied without repeated clarification,03B;85,OPEN,,,,
+OMIN-003,OWNER_INPUT,P0,all,Safe defaults are applied without repeated clarification,03B;85,IN_PROGRESS,src/platform/productPolicy.ts;docs/mobile/EXECUTION_STATE.md,,,25b5347970fef19be280d29475953e98dbea69c2
 OMIN-004,OWNER_INPUT,P0,all,One Russian missing-input report groups all owner blockers,03B;102,OPEN,,,,
 OMIN-005,OWNER_INPUT,P1,all,Same owner value is never manually entered in multiple generated files,03B,OPEN,,,,
 OMIN-006,SECRETS,P0,all,Secrets are referenced by name only and never logged or committed,03B;92,OPEN,,,,
 OMIN-007,SECRETS,P0,all,"Every signing/API/payment secret has owner, scope, backup, rotation and revocation",92,OPEN,,,,
-OMIN-008,RELEASE_PROFILE,P0,all,SAFE_PAID_BILINGUAL_V1 is the default first public release profile,03B;85,OPEN,,,,
+OMIN-008,RELEASE_PROFILE,P0,all,SAFE_PAID_BILINGUAL_V1 is the default first public release profile,03B;85,IN_PROGRESS,src/platform/productPolicy.ts;docs/mobile/AUTOPILOT_STATE.json,,,25b5347970fef19be280d29475953e98dbea69c2
 OMIN-009,RELEASE_PROFILE,P0,native,Native first release is accountless-first,03B;85,OPEN,,,,
 OMIN-010,RELEASE_PROFILE,P0,all,Account feature cannot enable without deletion/privacy/reviewer-access gates,03B;85,OPEN,,,,
 OMIN-011,RELEASE_PROFILE,P0,all,Push and behavioural analytics are disabled in V1,03B;85,OPEN,,,,
@@ -254,7 +254,7 @@ OMIN-015,RIGHTS,P0,all,Disney/Pixar and all unlicensed packs remain absent from 
 OMIN-016,AUTOMATION,P0,all,release:prepare:all generates all release packages without production submission,97,OPEN,,,,
 OMIN-017,AUTOMATION,P0,all,All store upload commands default to dry-run,03B;88,OPEN,,,,
 OMIN-018,AUTOMATION,P0,all,Draft upload requires explicit owner confirmation and exact artifact hash,88;105,OPEN,,,,
-OMIN-019,AUTOMATION,P0,all,"No automation accepts legal agreements, releases production or merges main",03B;88,OPEN,,,,
+OMIN-019,AUTOMATION,P0,all,"No automation accepts legal agreements, releases production or merges main",03B;88,IN_PROGRESS,src/platform/productPolicy.ts;src/platform/productPolicy.test.ts,,,25b5347970fef19be280d29475953e98dbea69c2
 OMIN-020,AUTOMATION,P1,apple,Apple metadata/build upload automation uses official supported paths,88;98,OPEN,,,,
 OMIN-021,AUTOMATION,P1,google-play,Google Play draft/listing/track automation uses transactional Publishing API edits,88;98,OPEN,,,,
 OMIN-022,AUTOMATION,P1,rustore,RuStore draft/version automation uses current Public API where supported,88;98,OPEN,,,,
@@ -277,10 +277,10 @@ OMIN-038,HANDOFF,P0,all,Owner handoff folder contains every artifact needed for 
 OMIN-039,HANDOFF,P0,all,Final owner actions contain no source-code or manual JSON work,96;101,OPEN,,,,
 OMIN-040,OPERATIONS,P1,all,First 72-hour launch monitoring and incident runbook are prepared,99;106,OPEN,,,,
 OMIN-041,OPERATIONS,P1,all,Release is manual or staged and can pause on P0/P1,99;106,OPEN,,,,
-OMIN-042,CONTEXT,P0,codex,Codex reads stage-routed documents instead of full package every session,89;95,OPEN,,,,
-OMIN-043,CONTEXT,P0,codex,Standalone prompt is recovery fallback and is not read twice,89,OPEN,,,,
-OMIN-044,CONTEXT,P0,codex,Every session leaves a self-contained checkpoint with next routed docs,89,OPEN,,,,
-OMIN-045,STATUS,P0,all,"Ready-internal, draft-ready, submitted, approved and released statuses remain distinct",103,OPEN,,,,
+OMIN-042,CONTEXT,P0,codex,Codex reads stage-routed documents instead of full package every session,89;95,IN_PROGRESS,scripts/mobile/stage-context.mjs;scripts/mobile/requirements.test.mjs;scripts/mobile/verify-state.mjs,,,25b5347970fef19be280d29475953e98dbea69c2
+OMIN-043,CONTEXT,P0,codex,Standalone prompt is recovery fallback and is not read twice,89,IN_PROGRESS,scripts/mobile/stage-context.mjs;scripts/mobile/verify-state.mjs,,,25b5347970fef19be280d29475953e98dbea69c2
+OMIN-044,CONTEXT,P0,codex,Every session leaves a self-contained checkpoint with next routed docs,89,IN_PROGRESS,scripts/mobile/verify-state.mjs;docs/mobile/NEXT_CODEX_PROMPT.txt,,,25b5347970fef19be280d29475953e98dbea69c2
+OMIN-045,STATUS,P0,all,"Ready-internal, draft-ready, submitted, approved and released statuses remain distinct",103,IN_PROGRESS,scripts/mobile/state.mjs;scripts/mobile/state.test.mjs;docs/mobile/EXECUTION_STATE.md,,,25b5347970fef19be280d29475953e98dbea69c2
 OMIN-046,HANDOFF,P0,all,Owner receives one self-contained handoff folder with every submission artifact,110,OPEN,,,,
 OMIN-047,HANDOFF,P0,all,"Owner handoff contains exact field values, file paths and step-by-step store instructions",110,OPEN,,,,
 OMIN-048,HANDOFF,P0,all,Owner handoff usability is tested with a fresh-reader review,110,OPEN,,,,
@@ -289,10 +289,10 @@ OMIN-050,HANDOFF,P0,all,Owner action minimization matrix proves zero programming
 OMIN-051,OWNER_APPROVAL,P0,all,"Owner approval state is machine-readable, hashable and artifact-bound",113,OPEN,,,,
 OMIN-052,HANDOFF,P0,all,Owner handoff index is machine-readable and requires zero owner programming tasks,114,OPEN,,,,
 OMIN-053,AUTOMATION,P0,all,Release automation starts from a validated machine-readable state,103;115,OPEN,,,,
-OMIN-054,STATUS,P0,all,Codex stop conditions distinguish internal failures from objective external blockers,116,OPEN,,,,
+OMIN-054,STATUS,P0,all,Codex stop conditions distinguish internal failures from objective external blockers,116,IN_PROGRESS,scripts/mobile/state.mjs;scripts/mobile/state.test.mjs;docs/mobile/EXECUTION_STATE.md,,,25b5347970fef19be280d29475953e98dbea69c2
 OMIN-055,OWNER_APPROVAL,P1,all,Offline owner approval HTML template exports a schema-valid hashable approval record,113;117,OPEN,,,,
 OPS-001,OPS,P1,all,Owner self-service CMS/commerce/rights,V12 modular specs/full spec,OPEN,,,,
-OPS-002,OPS,P1,all,Feature flags cannot weaken safety,V12 modular specs/full spec,OPEN,,,,
+OPS-002,OPS,P1,all,Feature flags cannot weaken safety,V12 modular specs/full spec,IN_PROGRESS,src/platform/productPolicy.ts;src/platform/productPolicy.test.ts,,,25b5347970fef19be280d29475953e98dbea69c2
 OPS-003,OPS,P1,all,Health dashboard and redacted diagnostics,V12 modular specs/full spec,OPEN,,,,
 OPS-004,OPS,P1,all,Support/runbooks and severity matrix,V12 modular specs/full spec,OPEN,,,,
 OPS-005,OPS,P1,all,Database/media/metadata backups,V12 modular specs/full spec,OPEN,,,,
@@ -325,8 +325,8 @@ PLATFORM-005,PLATFORM,P0,all,iOS/iPadOS native project and simulator build,V12 m
 PLATFORM-006,PLATFORM,P0,all,iOS archive configuration/archive when signing exists,V12 modular specs/full spec,OPEN,,,,
 PLATFORM-007,PLATFORM,P0,all,Safe-area/orientation/lifecycle/deep links,V12 modular specs/full spec,OPEN,,,,
 PLATFORM-008,PLATFORM,P0,all,Current official SDK/API requirements rechecked,V12 modular specs/full spec,OPEN,,,,
-SEC-001,SEC,P0,all,Threat model and security tests,V12 modular specs/full spec,OPEN,,,,
-SEC-002,SEC,P0,all,No client secrets/self-grant,V12 modular specs/full spec,OPEN,,,,
+SEC-001,SEC,P0,all,Threat model and security tests,V12 modular specs/full spec,IN_PROGRESS,scripts/mobile/platform-boundaries.test.mjs;scripts/mobile/evidence.test.mjs;docs/mobile/PLATFORM_ARCHITECTURE.md,,,25b5347970fef19be280d29475953e98dbea69c2
+SEC-002,SEC,P0,all,No client secrets/self-grant,V12 modular specs/full spec,IN_PROGRESS,src/platform/productPolicy.test.ts;docs/mobile/PLATFORM_ARCHITECTURE.md;docs/mobile/evidence/S00/current-main-baseline-results.json,,,25b5347970fef19be280d29475953e98dbea69c2
 SEC-003,SEC,P0,all,Deep-link/content/package validation,V12 modular specs/full spec,OPEN,,,,
 SEC-004,SEC,P0,all,Admin RBAC/audit/dry-run,V12 modular specs/full spec,OPEN,,,,
 SEC-005,SEC,P0,all,Secret scan/dependency audit/SBOM,V12 modular specs/full spec,OPEN,,,,

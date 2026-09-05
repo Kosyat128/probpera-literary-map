@@ -1,11 +1,15 @@
 Continue V12 in this checkout on codex/literary-planet-v12-bilingual-final-autopilot.
-Read AGENTS.md and docs/mobile state/status/decisions/blockers.
-Run node scripts/mobile/verify-requirements.mjs, then stage-context.mjs S01.
-S00 accepted in ef16246f, main0a348bd4; evidence/S00/current-main-baseline-results.json.
-Current S01: read only routed shared/architecture/state-schema documents, implement
-complete traceability and shared platform boundaries with behavioral gates.
-Keep 342 global requirements/107 BIL open until implementation/evidence passes.
-Advance with tests/fixes/regression/evidence/commit/checkpoint. Do not stop at docs.
-Preserve canonical one-Canvas globe, facts/assets and accepted current-main UI.
-No raw AI production translation, invented approvals, guessed titles, fake screenshots,
-production writes, deploy, Submit, Release or merge. External owner steps are separate.
+Read AGENTS.md and state/status/decisions/blockers. Run pinned input verification,
+node scripts/mobile/stage-context.mjs S02 and node scripts/mobile/verify-state.mjs.
+S00 accepted ef16246f; S01 accepted25b53479; canonical base main0a348bd4.
+Current S02.acceptance: implement shared canonical exports and platform service
+interfaces/adapters, integrate existing product without duplicate scene/data/state.
+S01/S02 route is the same07/43/57 plus shared invariants already fully read.
+Use PLATFORM_ARCHITECTURE.md; root owns main/provider integration, delegate bounded
+shared-data and web-adapter work. Preserve original Canvas/renderer/camera/locale
+provider lifetimes, canonical facts/portraits/flags, approved main UI and owner locks.
+Native SDK dependencies belong only in native adapters; no remote runtime.
+Tests/fixes/regression/evidence/atomic commit then checkpoint and continue.
+No raw AI production translations, fabricated approvals, guessed titles, fake RC
+screenshots, deploy, production writes, Submit, Release or merge.
+All remaining global milestones and full RU/EN three-platform product work remain.

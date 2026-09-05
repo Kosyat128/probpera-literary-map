@@ -1,0 +1,197 @@
+{
+  "version": "12.0",
+  "scope": "stage-architecture-and-traceability",
+  "sourceCommit": "25b5347970fef19be280d29475953e98dbea69c2",
+  "criterionIds": [
+    "S01.architecture",
+    "S01.traceability",
+    "S01.BIL-001",
+    "S01.BIL-010",
+    "S01.BIL-107",
+    "S01.CANON-001",
+    "S01.CANON-002",
+    "S01.CANON-004",
+    "S01.CANON-006",
+    "S01.CANON-007",
+    "S01.CANON-008",
+    "S01.OMIN-003",
+    "S01.OMIN-008",
+    "S01.OMIN-019",
+    "S01.OMIN-042",
+    "S01.OMIN-043",
+    "S01.OMIN-044",
+    "S01.OMIN-045",
+    "S01.OMIN-054",
+    "S01.OPS-002",
+    "S01.SEC-001",
+    "S01.SEC-002"
+  ],
+  "requirementIds": [],
+  "sourceFiles": [
+    {
+      "path": "scripts/mobile/csv.mjs",
+      "gitBlob": "3c4d66d2725b94cb5788f54817cdd80accd29bcb",
+      "sha256": "899341f64a0481d9482108e1d346d9bbc07035d5c7999c4b413b9da985dc8097"
+    },
+    {
+      "path": "scripts/mobile/evidence.mjs",
+      "gitBlob": "3eedb2c62af54558338ada357ad1dcdb4cc0c9ea",
+      "sha256": "9a7287662a99df66829b6e6dbc5df90b45e05cc9cebe6420d9fa2eb899e672a6"
+    },
+    {
+      "path": "scripts/mobile/evidence.test.mjs",
+      "gitBlob": "7013ec0d8d445d53525fb38596a0e50d993548f7",
+      "sha256": "5283ee398860d08e842b88c1c89b8e199a37d4a1f45825f2753aaee19a2281a5"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "gitBlob": "6940b48e5152e5918ea1606c81d5a4053178e22e",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.test.mjs",
+      "gitBlob": "ddc75a4a797e257b09c009c846f80798816fad2e",
+      "sha256": "3180d1af33fcb040253a1bcdd8bf1e4e4127b2105ce2530379533c334aff73c3"
+    },
+    {
+      "path": "scripts/mobile/requirements.mjs",
+      "gitBlob": "dd1546b74370fdcd9eff672bfed4179241546dc2",
+      "sha256": "07e3f579154339fc58276bc82eca6531ed56cfe255f303a17a9144898b0ae49a"
+    },
+    {
+      "path": "scripts/mobile/requirements.test.mjs",
+      "gitBlob": "dcf82c8046704f7c3f96fc7adafb2763090800ea",
+      "sha256": "aadd7e73ad75337e72ecd4982e524461cbc7552575e7c26615e53dd8dbd2ced3"
+    },
+    {
+      "path": "scripts/mobile/schema.mjs",
+      "gitBlob": "a903f3f3b76abe8c51b757c6f1c9c571c4a261d9",
+      "sha256": "8bb8eee8cfb9446d516d27c353f69c14af75ac2fce679253c9b5dbd859fb1890"
+    },
+    {
+      "path": "scripts/mobile/stage-context.mjs",
+      "gitBlob": "ff99cf6382f7defa063ba6a05b8a3e1b114dfaec",
+      "sha256": "9d5c79513b828aabedc4cc2f90b98cd43e9342a5218fd8be852350c82bde32c2"
+    },
+    {
+      "path": "scripts/mobile/state.mjs",
+      "gitBlob": "6687c718f546d9430e3bc58140c482decbe5709e",
+      "sha256": "b141e7b193ffd0da8f4aa3e34bb51b6c36f901ed389946b84b85400bcddf988d"
+    },
+    {
+      "path": "scripts/mobile/state.test.mjs",
+      "gitBlob": "1a2f82842e338f36db153bf4527bbf0d05b95c76",
+      "sha256": "e27e80c005712b41af412d05bc645b36894dda63fa48c635d3982cabfa510586"
+    },
+    {
+      "path": "scripts/mobile/verify-requirements.mjs",
+      "gitBlob": "a19514de2ece2756f02b104bbc2a82859826febe",
+      "sha256": "2fb502f693305b753c15d3d647b76b103f8087f3c5f8d04c6bd19326a43b7193"
+    },
+    {
+      "path": "scripts/mobile/verify-state.mjs",
+      "gitBlob": "4ff5acdfa1f8fd61f18f0653a694f07bae50d56b",
+      "sha256": "f31e2b86d3e415a541a9186cac35ec1765ce4ae235eeecb310038cee46260ebf"
+    },
+    {
+      "path": "src/platform/productPolicy.test.ts",
+      "gitBlob": "add83fcec01befa8f7e5c23a8f74e41ab6ae98ad",
+      "sha256": "d41f56238d58a774ac0c004c91c1e4310fc9cfe7431646f25c5ce81785be2a64"
+    },
+    {
+      "path": "src/platform/productPolicy.ts",
+      "gitBlob": "feb57b5c1e6f92628bd91842eef5bcdf1db9ebc7",
+      "sha256": "a43622ca8b7ef85bb0b1df2d9dbb1268d4a5e1ce2ca9d1f00a97387250fca480"
+    },
+    {
+      "path": "docs/mobile/STAGE_REQUIREMENT_MAP.json",
+      "gitBlob": "fa7d47bb7bfa4222c6031d155b608e6eef857f02",
+      "sha256": "be4f8f2a1dfa92ff77de938d3c6e1c3188941e8bdc7c573c882d48b0955946ee"
+    },
+    {
+      "path": "docs/mobile/PLATFORM_ARCHITECTURE.md",
+      "gitBlob": "cade7201d9be1036f0027e44ad889962d2f8a3bc",
+      "sha256": "0a72400a93dacff405d70c0c6f2523ebcf7f67cac6d87551acd364faac844f86"
+    },
+    {
+      "path": "docs/mobile/EXECUTION_STATE.md",
+      "gitBlob": "cc50b2f4854dc453c685a412a136989f7b581581",
+      "sha256": "7cdbdf2c26793d0db357787e3ae1cd22eeacbba99aefcbb2e5dcbc5645ada226"
+    },
+    {
+      "path": "package.json",
+      "gitBlob": "116adefcb35957765a5c9f3fe3b4cd5fc27913c2",
+      "sha256": "577b2960ecead415fddfb6b532646d0a5ff8584a39dc6008b8f7778637d93413"
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlob": "da716ab123927b95f8ab9fdb59290e52c821545d",
+      "sha256": "ecc7523f2b30e8568256c4ebdc75a2acf44b082787c8d50bcc56c3ca7e45b224"
+    },
+    {
+      "path": "tsconfig.json",
+      "gitBlob": "0fa4725cb9adf210b121bef5f64cb2df2e996358",
+      "sha256": "a89c689a43f21d1e0373598e265f4d62850bd92f7e624dfe2de8373f14126b22"
+    },
+    {
+      "path": "vitest.config.ts",
+      "gitBlob": "4d985a74d746cb732786e9bf6ed42881fdf18714",
+      "sha256": "dd421af617fb68c2b75deb000810ee0d941d64323f4d0ccc6fa34b056901c9d6"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/mobile/evidence/S01/results.json",
+      "gitBlob": "62e748ca4e0bdc7b78eaff92d29e53c45235f710",
+      "sha256": "3c9e8efcde4f907cbea5765f1b36bba106a8eb47c482c4d32964e72b9a8029e2"
+    },
+    {
+      "path": "docs/mobile/evidence/S01/milestone-scope.json",
+      "gitBlob": "a7d3cbbbc6189fdf3ded4eedf365c0028794624a",
+      "sha256": "416d180adf5b43c36a43c3fc09c2e3af2cab891428a0953d12dc2b5e3b1680f8"
+    },
+    {
+      "path": "docs/mobile/evidence/S01/logs/S01-accepted-regression.log",
+      "gitBlob": "684aec394383292676b34fe3378147cb3b6b48dd",
+      "sha256": "15698555d9b7247ab8560f0ec35878a19d21a2e192410771472621347a367466"
+    },
+    {
+      "path": "docs/mobile/evidence/S01/logs/S01-lint.log",
+      "gitBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+      "sha256": "5b1a38b22395816c9c1cc76968ad073f523092b9fa6604d803fe26dd8db7911a"
+    },
+    {
+      "path": "docs/mobile/evidence/S01/platform-boundaries.json",
+      "gitBlob": "1cc98d4b604d3cf923b890a01cf713dae9510f63",
+      "sha256": "674d4f1173bbd3db85254d803e6c7d7a18156eb39aa7e024018a615dde9d4d5e"
+    },
+    {
+      "path": "docs/mobile/evidence/S01/checkpoint-validation.json",
+      "gitBlob": "dd01a55ef7478c4dabc78868a5a599d33746bd16",
+      "sha256": "dcc1a11cfc441df2c322eeeda923adf242f87b3966b60aab68d475eb40898532"
+    }
+  ],
+  "checks": [
+    {
+      "command": "V12 narrow + existing boundary Vitest regression",
+      "exitCode": 0,
+      "log": "docs/mobile/evidence/S01/logs/S01-accepted-regression.log"
+    },
+    {
+      "command": "npm run lint:public",
+      "exitCode": 0,
+      "log": "docs/mobile/evidence/S01/logs/S01-lint.log"
+    },
+    {
+      "command": "node scripts/mobile/platform-boundaries.mjs",
+      "exitCode": 0,
+      "log": "docs/mobile/evidence/S01/platform-boundaries.json"
+    },
+    {
+      "command": "node scripts/mobile/verify-state.mjs",
+      "exitCode": 0,
+      "log": "docs/mobile/evidence/S01/checkpoint-validation.json"
+    }
+  ],
+  "notes": "S01 milestones only. Global requirements stay IN_PROGRESS/OPEN until all later implementation and validation milestones are accepted."
+}

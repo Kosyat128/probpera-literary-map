@@ -1,6 +1,6 @@
 {
   "version": "12.0",
-  "generatedAt": "2026-09-05T03:29:21.141Z",
+  "generatedAt": "2026-09-05T03:55:27.098Z",
   "requirements": [
     {
       "id": "A11Y-001",
@@ -130,12 +130,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "BIL-002",
@@ -265,12 +268,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "BIL-011",
@@ -1720,12 +1726,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "CANON-001",
@@ -1735,12 +1744,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "scripts/mobile/platform-boundaries.mjs"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "CANON-002",
@@ -1750,12 +1762,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "docs/mobile/evidence/S00/current-main-canonical-delta.json"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "CANON-003",
@@ -1780,12 +1795,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "docs/mobile/evidence/S00/current-main-canonical-delta.json"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "CANON-005",
@@ -1810,12 +1828,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "docs/mobile/STAGE_REQUIREMENT_MAP.json"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "CANON-007",
@@ -1825,12 +1846,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "scripts/lib/stage5-content-data-lock.test.mjs",
+        "docs/mobile/evidence/S00/current-main-baseline-results.json"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "CANON-008",
@@ -1840,12 +1864,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "scripts/mobile/platform-boundaries.mjs",
+        "scripts/mobile/platform-boundaries.test.mjs"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "CHAR-001",
@@ -3596,12 +3623,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "docs/mobile/EXECUTION_STATE.md"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "OMIN-004",
@@ -3671,12 +3701,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "docs/mobile/AUTOPILOT_STATE.json"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "OMIN-009",
@@ -3836,12 +3869,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "OMIN-020",
@@ -4181,12 +4217,16 @@
       "platforms": [
         "codex"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "scripts/mobile/stage-context.mjs",
+        "scripts/mobile/requirements.test.mjs",
+        "scripts/mobile/verify-state.mjs"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "OMIN-043",
@@ -4196,12 +4236,15 @@
       "platforms": [
         "codex"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "scripts/mobile/stage-context.mjs",
+        "scripts/mobile/verify-state.mjs"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "OMIN-044",
@@ -4211,12 +4254,15 @@
       "platforms": [
         "codex"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "scripts/mobile/verify-state.mjs",
+        "docs/mobile/NEXT_CODEX_PROMPT.txt"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "OMIN-045",
@@ -4226,12 +4272,16 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "scripts/mobile/state.mjs",
+        "scripts/mobile/state.test.mjs",
+        "docs/mobile/EXECUTION_STATE.md"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "OMIN-046",
@@ -4361,12 +4411,16 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "scripts/mobile/state.mjs",
+        "scripts/mobile/state.test.mjs",
+        "docs/mobile/EXECUTION_STATE.md"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "OMIN-055",
@@ -4406,12 +4460,15 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "OPS-003",
@@ -4901,12 +4958,16 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "scripts/mobile/platform-boundaries.test.mjs",
+        "scripts/mobile/evidence.test.mjs",
+        "docs/mobile/PLATFORM_ARCHITECTURE.md"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "SEC-002",
@@ -4916,12 +4977,16 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/platform/productPolicy.test.ts",
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "docs/mobile/evidence/S00/current-main-baseline-results.json"
+      ],
       "tests": [],
       "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+      "notes": "S01 architectural milestone accepted. All later implementation/validation milestones remain mandatory; this is not global acceptance."
     },
     {
       "id": "SEC-003",

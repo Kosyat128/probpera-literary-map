@@ -3,11 +3,11 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "ef16246fe43a89eaad014485da7799138b4e634f",
+  "headSha": "25b5347970fef19be280d29475953e98dbea69c2",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-05T03:38:12.475Z",
-  "currentStageId": "S01",
-  "currentCriterionId": "S01.architecture",
+  "updatedAt": "2026-09-05T03:55:27.098Z",
+  "currentStageId": "S02",
+  "currentCriterionId": "S02.acceptance",
   "stages": [
     {
       "id": "S00",
@@ -43,197 +43,249 @@
     {
       "id": "S01",
       "name": "Product architecture and traceability",
-      "status": "IN_PROGRESS",
+      "status": "COMPLETE",
       "criteria": [
         {
           "id": "S01.architecture",
-          "status": "IN_PROGRESS",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Stage foundation acceptance; global requirements remain separate."
         },
         {
           "id": "S01.traceability",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Stage foundation acceptance; global requirements remain separate."
         },
         {
           "id": "S01.BIL-001",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Russian and English are mandatory production locales. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
         },
         {
           "id": "S01.BIL-010",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Language is never inferred from IP nationality SIM or store country. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
         },
         {
           "id": "S01.BIL-107",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Future third locales cannot weaken or delay complete Russian and English release. Architectural extensibility cannot advertise a third locale or weaken either required RU/EN release."
         },
         {
           "id": "S01.CANON-001",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Existing site Literary Planet is sole globe foundation. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S01.CANON-002",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Shared IDs/coordinates/editions/textures across clients. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S01.CANON-004",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Canonical CMS is only factual content source. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S01.CANON-006",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Site/Web/PWA/Android/iOS parity gates. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S01.CANON-007",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Public site and admin remain regression-safe. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S01.CANON-008",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "No remote website as native core runtime. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
         },
         {
           "id": "S01.OMIN-003",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Safe defaults are applied without repeated clarification. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
         },
         {
           "id": "S01.OMIN-008",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "SAFE_PAID_BILINGUAL_V1 is the default first public release profile. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
         },
         {
           "id": "S01.OMIN-019",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "No automation accepts legal agreements, releases production or merges main. Encode the user's prohibition on automatic agreements, Submit, Release, deploy and merge; no external action is performed."
         },
         {
           "id": "S01.OMIN-042",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Codex reads stage-routed documents instead of full package every session. S01 installs routing controls; later checkpoint audits verify bounded document loading throughout execution."
         },
         {
           "id": "S01.OMIN-043",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Standalone prompt is recovery fallback and is not read twice. Recovery controls prevent repeated standalone loading; later checkpoint audits verify the rule."
         },
         {
           "id": "S01.OMIN-044",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Every session leaves a self-contained checkpoint with next routed docs. S01 defines persistent checkpoint semantics; later handoff checkpoints audit their continued usability."
         },
         {
           "id": "S01.OMIN-045",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Ready-internal, draft-ready, submitted, approved and released statuses remain distinct. Schema/state transitions must distinguish internal readiness, drafts and actual external release events."
         },
         {
           "id": "S01.OMIN-054",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Codex stop conditions distinguish internal failures from objective external blockers. S01 defines separate internal/external blocker semantics; checkpoints must not reclassify unfinished code or translation as owner work."
         },
         {
           "id": "S01.OPS-002",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Feature flags cannot weaken safety. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
         },
         {
           "id": "S01.SEC-001",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "Threat model and security tests. Boundary design and implementation precede executable security and artifact inspection gates."
         },
         {
           "id": "S01.SEC-002",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
+          "status": "PASSED",
+          "evidence": [
+            "docs/mobile/evidence/S01/acceptance.json"
+          ],
+          "commit": "25b5347970fef19be280d29475953e98dbea69c2",
+          "lastValidatedAt": "2026-09-05T03:53:14.464Z",
           "notes": "No client secrets/self-grant. Boundary design and implementation precede executable security and artifact inspection gates."
         }
       ],
-      "lastGreenCommands": [],
-      "artifacts": [],
+      "lastGreenCommands": [
+        "V12 narrow + existing boundary Vitest regression",
+        "npm run lint:public",
+        "node scripts/mobile/platform-boundaries.mjs",
+        "node scripts/mobile/verify-state.mjs"
+      ],
+      "artifacts": [
+        "docs/mobile/evidence/S01/results.json",
+        "docs/mobile/evidence/S01/acceptance.json"
+      ],
       "externalBlockers": []
     },
     {
       "id": "S02",
       "name": "Shared site-first extraction",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S02.acceptance",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -10418,14 +10470,15 @@
     }
   ],
   "resume": {
-    "firstOpenCriterion": "S01.architecture",
-    "nextAction": "Finish architecture boundary guard and schema/evidence-backed traceability; validate S01 milestones before progressing to S02.",
+    "firstOpenCriterion": "S02.acceptance",
+    "nextAction": "Implement shared canonical exports and platform service interfaces; integrate into existing client without recreating scene, locale or factual state.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
       "docs/mobile/STATUS.md",
       "docs/mobile/DECISIONS.md",
       "docs/mobile/BLOCKERS.md",
+      "docs/mobile/PLATFORM_ARCHITECTURE.md",
       "docs/mobile/STAGE_REQUIREMENT_MAP.json",
       "docs/mobile/requirements/v12/03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
       "docs/mobile/requirements/v12/03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md",
@@ -10442,14 +10495,14 @@
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
-      "node scripts/mobile/stage-context.mjs S01",
+      "node scripts/mobile/stage-context.mjs S02",
       "node scripts/mobile/verify-state.mjs",
       "node scripts/mobile/platform-boundaries.mjs"
     ],
     "doNotRepeat": [
-      "Do not reread standalone recovery prompt.",
-      "Do not rerun accepted S00 suites unless source changes justify it.",
-      "Do not reinterpret historical baseline as bilingual release readiness."
+      "Do not reread the standalone fallback or unchanged S01/S02 documents.",
+      "S00 and S01 are accepted historical baselines; rerun only checks justified by S02 changes.",
+      "Do not mark a global requirement PASSED from a single stage milestone."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
