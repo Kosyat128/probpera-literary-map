@@ -23,6 +23,9 @@ const webglRegressionSpecs = [
   "**/public-doc-refinements.spec.mjs",
   "**/public-smoke.spec.mjs",
   "**/responsive-reader-globe.spec.mjs",
+  // The ten-width homepage matrix enters the shelf preload range while resizing.
+  // Its real Canvas must share the serial GPU lane with the other WebGL checks.
+  "**/typography-and-card-geometry.spec.mjs",
   "**/ui-foundation.spec.mjs",
 ];
 

@@ -124,6 +124,21 @@ describe("release workflow hardening", () => {
     );
   });
 
+  it("refreshes CMS synopsis provenance after historical fixtures and before strict book checks", () => {
+    const workflow = read(".github/workflows/deploy-pages.yml");
+    const verificationStart = workflow.indexOf("- name: Verify public site and editorial archive");
+    const verification = workflow.slice(verificationStart, workflow.indexOf("- name: Verify fast CMS publication"));
+    const refresh = "node scripts/extract-article-book-synopsis-manifest.mjs";
+    expect(verificationStart).toBeGreaterThan(workflow.indexOf("- name: Export current CMS snapshot for release verification"));
+    expect(verification).toContain(`${refresh} && npm run books:audit`);
+    const historicalTests = verification.indexOf("npm test -- --exclude scripts/lib/stage5-content-data-lock.test.mjs");
+    expect(historicalTests).toBeGreaterThanOrEqual(0);
+    expect(verification.indexOf(refresh)).toBeGreaterThan(historicalTests);
+    const booksAudit = JSON.parse(read("package.json")).scripts["books:audit"];
+    expect(booksAudit).toContain(`${refresh} --check`);
+    expect(booksAudit).toContain("audit-book-evidence-v2.mjs --strict");
+  });
+
   it("grants Actions write only to single-purpose post-deploy jobs", () => {
     const source = read(".github/workflows/deploy-pages.yml");
     const deployStart = source.indexOf("\n  deploy:");
