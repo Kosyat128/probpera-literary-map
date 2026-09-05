@@ -1,0 +1,786 @@
+[
+  {
+    "id": "tolstoy-birthday-2026",
+    "category": "anniversaries",
+    "kind": "calendar",
+    "eventDate": "2026-09-09",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-04T23:30:00Z",
+    "title": {
+      "ru": "198 лет со дня рождения Льва Толстого",
+      "en": "198 years since Leo Tolstoy’s birth"
+    },
+    "summary": {
+      "ru": "9 сентября - день рождения писателя. Толстой родился в Ясной Поляне в 1828 году; в источнике приведены обе даты: 28 августа по старому стилю и 9 сентября по новому.",
+      "en": "September 9 marks the writer’s birthday. Tolstoy was born at Yasnaya Polyana in 1828; the chronology gives both August 28 in the old calendar and September 9 in the new calendar."
+    },
+    "source": {
+      "name": "Толстой / Tolstoy.ru",
+      "url": "https://old.tolstoy.ru/way/html/kanva.html",
+      "language": "ru"
+    },
+    "verification": "confirmed",
+    "region": "europe"
+  },
+  {
+    "id": "booker-shortlist-2026-announcement",
+    "category": "awards",
+    "kind": "announcement",
+    "eventDate": "2026-09-22",
+    "publishedAt": "2026-07-28T13:00:00Z",
+    "verifiedAt": "2026-09-04T23:30:00Z",
+    "title": {
+      "ru": "Шорт-лист Букеровской премии объявят 22 сентября",
+      "en": "Booker shortlist announcement scheduled for September 22"
+    },
+    "summary": {
+      "ru": "Организаторы запланировали объявление шести финалистов на 22 сентября в лондонском Саутбэнк-центре. Это анонс церемонии; имена финалистов пока не объявлены.",
+      "en": "The organisers have scheduled the announcement of six finalists for September 22 at London’s Southbank Centre. This is a scheduled event; the finalists have not yet been announced."
+    },
+    "source": {
+      "name": "The Booker Prizes",
+      "url": "https://thebookerprizes.com/media-centre/press-releases/longlist-for-booker-prize-2026-rewards-risk",
+      "language": "en"
+    },
+    "verification": "confirmed",
+    "region": "europe"
+  },
+  {
+    "id": "love-hypothesis-2026-release-announcement",
+    "category": "adaptations",
+    "kind": "announcement",
+    "eventDate": "2026-09-23",
+    "publishedAt": "2026-06-11",
+    "verifiedAt": "2026-09-04T23:35:00Z",
+    "title": {
+      "ru": "Экранизация «Гипотезы любви» запланирована на 23 сентября",
+      "en": "The Love Hypothesis adaptation is scheduled for September 23"
+    },
+    "summary": {
+      "ru": "Prime Video объявил дату выхода фильма по роману Али Хейзелвуд. Главные роли исполняют Лили Рейнхарт и Том Бейтман; речь идёт о предстоящей премьере.",
+      "en": "Prime Video has announced the release date for its film based on Ali Hazelwood’s novel. Lili Reinhart and Tom Bateman star in the upcoming adaptation."
+    },
+    "source": {
+      "name": "About Amazon / Prime Video",
+      "url": "https://www.aboutamazon.com/news/entertainment/love-hypothesis-prime-video",
+      "language": "en"
+    },
+    "verification": "confirmed",
+    "region": "global"
+  },
+  {
+    "id": "kiki-third-english-edition-announcement",
+    "category": "releases",
+    "kind": "announcement",
+    "eventDate": "2027-02-23",
+    "publishedAt": "2026-08-21",
+    "verifiedAt": "2026-09-04T23:35:00Z",
+    "title": {
+      "ru": "Третью книгу Эйко Кадоно о Кики впервые издадут на английском",
+      "en": "Eiko Kadono’s third Kiki book will receive its first English edition"
+    },
+    "summary": {
+      "ru": "Delacorte Press анонсировало Kiki and the Other Witch на 23 февраля 2027 года. В издании будут новый английский перевод и иллюстрации Юты Оноды.",
+      "en": "Delacorte Press has scheduled Kiki and the Other Witch for February 23, 2027. The edition will feature a new English translation and illustrations by Yuta Onoda."
+    },
+    "source": {
+      "name": "Penguin Random House",
+      "url": "https://global.penguinrandomhouse.com/announcements/delacorte-press-to-publish-first-ever-english-translation-of-the-third-book-in-eiko-kadonos-internationally-acclaimed-kikis-delivery-service-series/",
+      "language": "en"
+    },
+    "verification": "confirmed",
+    "region": "north-america"
+  },
+  {
+    "id": "booker-longlist-2026",
+    "category": "awards",
+    "kind": "news",
+    "eventDate": "2026-07-28",
+    "publishedAt": "2026-07-28T13:00:00Z",
+    "verifiedAt": "2026-09-04T23:30:00Z",
+    "title": {
+      "ru": "В лонг-лист Букеровской премии вошли 13 романов",
+      "en": "Thirteen novels were selected for the Booker longlist"
+    },
+    "summary": {
+      "ru": "28 июля организаторы опубликовали лонг-лист 2026 года. В него вошли книги авторов семи национальностей, в том числе прежних лауреатов Марлона Джеймса и Дугласа Стюарта.",
+      "en": "The organisers published the 2026 longlist on July 28. It includes writers of seven nationalities, among them previous winners Marlon James and Douglas Stuart."
+    },
+    "source": {
+      "name": "The Booker Prizes",
+      "url": "https://thebookerprizes.com/media-centre/press-releases/longlist-for-booker-prize-2026-rewards-risk",
+      "language": "en"
+    },
+    "verification": "confirmed",
+    "region": "europe"
+  },
+  {
+    "id": "german-book-prize-longlist-2026",
+    "category": "awards",
+    "kind": "news",
+    "region": "europe",
+    "eventDate": "2026-08-11",
+    "publishedAt": "2026-08-11",
+    "verifiedAt": "2026-09-05T00:41:20Z",
+    "title": {
+      "ru": "Опубликован лонг-лист Немецкой книжной премии: 20 романов",
+      "en": "German Book Prize publishes a 20-novel longlist"
+    },
+    "summary": {
+      "ru": "11 августа жюри объявило двадцать номинантов, отобранных из 205 рассмотренных книг.",
+      "en": "On August 11, the jury named twenty nominees from 205 books considered."
+    },
+    "source": {
+      "name": "Deutscher Buchpreis",
+      "url": "https://www.deutscher-buchpreis.de/news/eintrag/das-sind-die-20-nominierten-romane/",
+      "language": "de"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "german-book-prize-shortlist-2026-announcement",
+    "category": "awards",
+    "kind": "announcement",
+    "region": "europe",
+    "eventDate": "2026-09-08",
+    "publishedAt": "2026-08-11",
+    "verifiedAt": "2026-09-05T00:41:20Z",
+    "title": {
+      "ru": "Шорт-лист Немецкой книжной премии запланирован на 8 сентября",
+      "en": "German Book Prize shortlist scheduled for September 8"
+    },
+    "summary": {
+      "ru": "Организаторы планируют объявить шесть финалистов 8 сентября. Вручение премии намечено на 5 октября во Франкфурте.",
+      "en": "The organisers plan to name six finalists on September 8. The award ceremony is scheduled for October 5 in Frankfurt."
+    },
+    "source": {
+      "name": "Deutscher Buchpreis",
+      "url": "https://www.deutscher-buchpreis.de/news/eintrag/das-sind-die-20-nominierten-romane/",
+      "language": "de"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "frankfurt-book-fair-2026-announcement",
+    "category": "festivals",
+    "kind": "announcement",
+    "region": "europe",
+    "eventDate": "2026-10-07",
+    "publishedAt": "2026-06-24",
+    "verifiedAt": "2026-09-05T00:41:20Z",
+    "title": {
+      "ru": "Франкфуртская книжная ярмарка пройдёт 7-11 октября",
+      "en": "Frankfurt Book Fair scheduled for October 7-11"
+    },
+    "summary": {
+      "ru": "Почётным гостем станет Чехия. Организаторы готовят встречи с авторами и профессиональную программу по издательскому делу и продаже прав.",
+      "en": "Czechia will be the Guest of Honour. The organisers are preparing author events and a professional programme covering publishing and rights trading."
+    },
+    "source": {
+      "name": "Frankfurter Buchmesse",
+      "url": "https://www.buchmesse.de/en/press/press-releases/2026-06-24-frankfurter-buchmesse-tickets-are-sale",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "gothenburg-book-fair-2026-announcement",
+    "category": "festivals",
+    "kind": "announcement",
+    "region": "europe",
+    "eventDate": "2026-09-24",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:41:20Z",
+    "title": {
+      "ru": "Квебек станет почётным гостем книжной ярмарки в Гётеборге",
+      "en": "Québec will be Guest of Honour at Gothenburg Book Fair"
+    },
+    "summary": {
+      "ru": "Ярмарка запланирована на 24-27 сентября. В числе тем организаторы называют просвещение и игры; почётным гостем выбран Квебек.",
+      "en": "The fair is scheduled for September 24-27. Its themes include popular education and games, with Québec selected as Guest of Honour."
+    },
+    "source": {
+      "name": "Bokmässan",
+      "url": "https://bokmassan.se/hem/om-bokmassan/vanliga-fragor/",
+      "language": "sv"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "british-library-agatha-christie-exhibition-2026",
+    "category": "heritage",
+    "kind": "announcement",
+    "region": "europe",
+    "eventDate": "2026-10-30",
+    "publishedAt": "2026-05-20",
+    "verifiedAt": "2026-09-05T00:41:20Z",
+    "title": {
+      "ru": "Британская библиотека готовит выставку об Агате Кристи",
+      "en": "British Library prepares an Agatha Christie exhibition"
+    },
+    "summary": {
+      "ru": "Открытие Agatha Christie: A World of Mystery намечено на 30 октября. В экспозицию войдут записные книжки, переписка и личные вещи писательницы.",
+      "en": "Agatha Christie: A World of Mystery is scheduled to open on October 30. The exhibition will include the writer’s notebooks, correspondence and personal belongings."
+    },
+    "source": {
+      "name": "British Library",
+      "url": "https://www.bl.uk/about/press/releases/british-library-to-open-major-exhibition-on-agatha-christie",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "bnf-richelieu-heritage-days-2026",
+    "category": "heritage",
+    "kind": "announcement",
+    "region": "europe",
+    "eventDate": "2026-09-19",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:41:20Z",
+    "title": {
+      "ru": "Исторический комплекс Ришельё откроют для Дней наследия",
+      "en": "BnF’s Richelieu site prepares for Heritage Days"
+    },
+    "summary": {
+      "ru": "19-20 сентября Национальная библиотека Франции приглашает посетителей в комплекс Ришельё. Вход бесплатный в пределах вместимости; читальные залы в эти дни доступны только для осмотра.",
+      "en": "On September 19-20, the Bibliothèque nationale de France will welcome visitors to Richelieu. Entry is free, subject to capacity; reading rooms will be open for visits only."
+    },
+    "source": {
+      "name": "Bibliothèque nationale de France",
+      "url": "https://www.bnf.fr/fr/agenda/journees-europeennes-du-patrimoine-2026-richelieu",
+      "language": "fr"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "yasnaya-polyana-tolstoy-library-20260912",
+    "category": "heritage",
+    "kind": "announcement",
+    "region": "europe",
+    "eventDate": "2026-09-12",
+    "publishedAt": "2026-09-03",
+    "verifiedAt": "2026-09-05T00:41:20Z",
+    "title": {
+      "ru": "В Ясной Поляне покажут книги из личной библиотеки Толстого",
+      "en": "Yasnaya Polyana will display books from Tolstoy’s library"
+    },
+    "summary": {
+      "ru": "На празднике «Яблочная история» 12 сентября посетителям Дома Толстого покажут принадлежавшие писателю книги по сельскому хозяйству. Музей также подготовил тематические экскурсии.",
+      "en": "During the Apple Story event on September 12, visitors to Tolstoy’s house will see agricultural books from his personal library. The museum has also planned themed tours."
+    },
+    "source": {
+      "name": "Ясная Поляна / Yasnaya Polyana",
+      "url": "https://ypmuseum.ru/event/1987",
+      "language": "ru"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "goslitmuz-people-of-december-publication-2026",
+    "category": "releases",
+    "kind": "news",
+    "region": "europe",
+    "eventDate": "2026-08-25",
+    "publishedAt": "2026-08-25",
+    "verifiedAt": "2026-09-05T00:41:20Z",
+    "title": {
+      "ru": "Гослитмузей сообщил о выходе альбома-каталога «Люди декабря»",
+      "en": "State Literary Museum announces People of December album-catalogue"
+    },
+    "summary": {
+      "ru": "25 августа музей сообщил, что издание о его декабристской коллекции поступило в продажу. В книгу включены исследования музейных собраний, архивов и книг декабристов.",
+      "en": "On August 25, the museum announced that its album-catalogue about the Decembrist collection was on sale. It includes studies of museum holdings, archives and the Decembrists’ books."
+    },
+    "source": {
+      "name": "Гослитмузей / State Literary Museum",
+      "url": "https://goslitmuz.ru/news/gmirli/22322/",
+      "language": "ru"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "mandelstam-days-2026-announcement",
+    "category": "festivals",
+    "kind": "announcement",
+    "region": "europe",
+    "eventDate": "2026-09-05",
+    "publishedAt": "2026-09-02",
+    "verifiedAt": "2026-09-05T00:41:20Z",
+    "title": {
+      "ru": "Мандельштамовские дни: переводчики и исследователи встретятся 5-8 сентября",
+      "en": "Mandelstam Days scheduled for September 5-8"
+    },
+    "summary": {
+      "ru": "В программу Москвы и Саматихи включены конгресс переводчиков и международный симпозиум. Встречи посвящены творчеству Мандельштама и приурочены к 135-летию со дня его рождения.",
+      "en": "The programme in Moscow and Samatikha includes a translators’ congress and an international symposium. The meetings explore Mandelstam’s work and mark the 135th anniversary of his birth."
+    },
+    "source": {
+      "name": "Гослитмузей / State Literary Museum",
+      "url": "https://goslitmuz.ru/news/gmirli/22364/",
+      "language": "ru"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "giller-longlist-2026-schedule",
+    "category": "awards",
+    "region": "north-america",
+    "eventKey": "giller-longlist-2026-schedule",
+    "kind": "announcement",
+    "eventDate": "2026-09-08",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:40:58Z",
+    "title": {
+      "ru": "Лонг-лист премии Гиллера объявят 8 сентября",
+      "en": "Giller Prize longlist is scheduled for September 8"
+    },
+    "summary": {
+      "ru": "Канадская премия опубликовала календарь 2026 года: лонг-лист - 8 сентября, шорт-лист - 5 октября, имя победителя - 16 ноября.",
+      "en": "The Canadian prize lists September 8 for its longlist, October 5 for its shortlist and November 16 for the winner announcement."
+    },
+    "source": {
+      "name": "Giller Prize",
+      "url": "https://gillerprize.ca/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "national-book-awards-longlists-2026",
+    "category": "awards",
+    "region": "north-america",
+    "eventKey": "national-book-awards-longlists-2026",
+    "kind": "announcement",
+    "eventDate": "2026-09-15",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:40:58Z",
+    "title": {
+      "ru": "Лонг-листы National Book Awards представят 15-17 сентября",
+      "en": "National Book Awards longlists to be announced September 15-17"
+    },
+    "summary": {
+      "ru": "National Book Foundation указал даты объявления лонг-листов пяти номинаций. Финалистов планируют назвать 6 октября; объявление победителей назначено на 18 ноября.",
+      "en": "The National Book Foundation has scheduled the five category longlists for September 15-17, finalists for October 6 and winners for November 18."
+    },
+    "source": {
+      "name": "National Book Foundation",
+      "url": "https://www.nationalbook.org/2026-national-book-awards-judges/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "nbf-presents-fall-2026-announced",
+    "category": "festivals",
+    "region": "north-america",
+    "eventKey": "nbf-presents-fall-2026-announced",
+    "kind": "news",
+    "eventDate": "2026-08-26",
+    "publishedAt": "2026-08-26",
+    "verifiedAt": "2026-09-05T00:40:58Z",
+    "title": {
+      "ru": "National Book Foundation объявил осеннюю программу из 15 встреч",
+      "en": "National Book Foundation announces 15 fall literary events"
+    },
+    "summary": {
+      "ru": "Программа NBF Presents охватит пять штатов США и онлайн-площадки с сентября по ноябрь. В ней запланированы встречи с писателями и переводчиками, отмеченными фондом.",
+      "en": "The September-November NBF Presents season includes events in five US states and online, bringing readers together with Foundation-honored writers and translators."
+    },
+    "source": {
+      "name": "National Book Foundation",
+      "url": "https://www.nationalbook.org/national-book-foundation-announces-2026-fall-season-of-nbf-presents/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "brooklyn-book-festival-2026-main-day",
+    "category": "festivals",
+    "region": "north-america",
+    "eventKey": "brooklyn-book-festival-2026-main-day",
+    "kind": "announcement",
+    "eventDate": "2026-09-27",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:40:58Z",
+    "title": {
+      "ru": "Главный день Бруклинского книжного фестиваля - 27 сентября",
+      "en": "Brooklyn Book Festival’s main day is set for September 27"
+    },
+    "summary": {
+      "ru": "Фестиваль запланировал литературную программу и книжную ярмарку у Brooklyn Borough Hall. Детский день состоится 26 сентября, виртуальная программа - 20 сентября.",
+      "en": "The festival has scheduled its main literary program and marketplace around Brooklyn Borough Hall for September 27. Children’s Day is September 26 and the virtual program is September 20."
+    },
+    "source": {
+      "name": "Brooklyn Book Festival",
+      "url": "https://brooklynbookfestival.org/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "mandel-exit-party-us-2026",
+    "category": "releases",
+    "region": "north-america",
+    "eventKey": "mandel-exit-party-us-2026",
+    "kind": "announcement",
+    "eventDate": "2026-09-15",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:40:58Z",
+    "title": {
+      "ru": "Новый роман Эмили Сент-Джон Мандел выйдет в США 15 сентября",
+      "en": "Emily St. John Mandel’s Exit Party is due in the US on September 15"
+    },
+    "summary": {
+      "ru": "Knopf назначил выход англоязычного романа Exit Party на 15 сентября. Книга автора «Станции Одиннадцать» начинается с загадочного исчезновения на вечеринке в Лос-Анджелесе.",
+      "en": "Knopf lists September 15 for the US English-language edition of Exit Party. The Station Eleven author’s new novel opens with a mysterious disappearance at a Los Angeles party."
+    },
+    "source": {
+      "name": "Knopf / Penguin Random House",
+      "url": "https://www.penguinrandomhouse.com/books/692736/exit-party-by-emily-st-john-mandel/9780593321461/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "john-green-hollywood-ending-us-2026",
+    "category": "releases",
+    "region": "north-america",
+    "eventKey": "john-green-hollywood-ending-us-2026",
+    "kind": "announcement",
+    "eventDate": "2026-09-22",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:40:58Z",
+    "title": {
+      "ru": "Джон Грин возвращается к прозе с романом Hollywood, Ending",
+      "en": "John Green returns to fiction with Hollywood, Ending"
+    },
+    "summary": {
+      "ru": "Dutton Books запланировал американское англоязычное издание на 22 сентября. Роман рассказывает о двух молодых актёрах и о том, как публичная жизнь влияет на их отношения.",
+      "en": "Dutton Books has scheduled the US English-language edition for September 22. The novel follows two young actors as public attention affects their lives and relationship."
+    },
+    "source": {
+      "name": "Dutton Books / Penguin Random House",
+      "url": "https://www.penguinrandomhouse.com/books/312473/hollywood-ending-by-john-green/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "marlon-james-disappearers-us-catalog-2026",
+    "category": "releases",
+    "region": "north-america",
+    "eventKey": "marlon-james-disappearers-us-catalog-2026",
+    "kind": "news",
+    "eventDate": "2026-09-01",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:40:58Z",
+    "title": {
+      "ru": "В каталоге Riverhead - новый роман Марлона Джеймса The Disappearers",
+      "en": "Riverhead lists Marlon James’s new novel The Disappearers"
+    },
+    "summary": {
+      "ru": "Издатель датирует американское англоязычное издание 1 сентября 2026 года. Роман лауреата Букеровской премии посвящён группе мужчин на Ямайке 1980-х годов и последствиям жестокого нападения.",
+      "en": "The publisher dates the US English-language edition to September 1, 2026. The Booker-winning author’s novel follows a group of men in 1980s Jamaica and the aftermath of a violent attack."
+    },
+    "source": {
+      "name": "Riverhead Books / Penguin Random House",
+      "url": "https://www.penguinrandomhouse.com/books/742603/the-disappearers-by-marlon-james/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "guernsey-medieval-fragments-research-2026",
+    "category": "discoveries",
+    "kind": "news",
+    "region": "europe",
+    "eventDate": "2026-08-25",
+    "publishedAt": "2026-08-25",
+    "verifiedAt": "2026-09-05T00:51:03Z",
+    "title": {
+      "ru": "На Гернси исследовали 17 фрагментов средневековых рукописей",
+      "en": "Researchers study 17 medieval manuscript fragments from Guernsey"
+    },
+    "summary": {
+      "ru": "Кентский университет сообщил о фрагментах, сохранившихся в переплётах старых административных записей. Часть выявлена впервые, другие уже были известны архивистам; исследование уточняет книжную историю острова.",
+      "en": "The University of Kent reported fragments preserved in bindings of old administrative records. Some were newly identified, while archivists already knew others; the study illuminates the island’s book history."
+    },
+    "source": {
+      "name": "University of Kent",
+      "url": "https://www.kent.ac.uk/news/creativity-culture-and-heritage/38343/rare-medieval-manuscript-fragments-reveal-guernseys-lost-literary-history",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "whisper-man-netflix-release-20260828",
+    "category": "adaptations",
+    "kind": "news",
+    "region": "global",
+    "eventDate": "2026-08-28",
+    "publishedAt": "2026-08-28",
+    "verifiedAt": "2026-09-05T00:51:03Z",
+    "title": {
+      "ru": "Вышла экранизация романа Алекса Норта The Whisper Man",
+      "en": "Alex North’s The Whisper Man reaches the screen"
+    },
+    "summary": {
+      "ru": "28 августа на Netflix вышел фильм Джеймса Эшкрофта по одноимённому роману. Главные роли исполнили Роберт Де Ниро, Мишель Монаган и Адам Скотт.",
+      "en": "James Ashcroft’s adaptation of the novel began streaming on Netflix on August 28. Robert De Niro, Michelle Monaghan and Adam Scott star."
+    },
+    "source": {
+      "name": "Netflix Tudum",
+      "url": "https://www.netflix.com/tudum/articles/the-whisper-man-release-date-cast-news",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "international-booker-funding-20260702",
+    "category": "publishing",
+    "kind": "news",
+    "region": "global",
+    "eventDate": "2026-07-02",
+    "publishedAt": "2026-07-02T07:00:00Z",
+    "verifiedAt": "2026-09-05T00:51:03Z",
+    "title": {
+      "ru": "Международный Букер объявил десятилетнее соглашение о финансировании",
+      "en": "International Booker announces a ten-year funding agreement"
+    },
+    "summary": {
+      "ru": "Фонд Букеровской премии сообщил о поддержке Bukhman Philanthropies на следующие десять лет. Приз за победившую книгу увеличится до 100 тысяч фунтов и будет делиться поровну между автором и переводчиком или переводчиками.",
+      "en": "The Booker Prize Foundation announced ten years of support from Bukhman Philanthropies. The winning-book prize will rise to £100,000, shared equally between the author and translator or translators."
+    },
+    "source": {
+      "name": "The Booker Prizes",
+      "url": "https://thebookerprizes.com/media-centre/press-releases/bukhman-philanthropies-fund-next-decade-of-the-international-booker-prize",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "ubud-writers-readers-festival-2026",
+    "eventKey": "ubud-writers-readers-festival:2026:opening",
+    "region": "asia",
+    "category": "festivals",
+    "kind": "announcement",
+    "eventDate": "2026-10-21",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "title": {
+      "ru": "Киран Десаи и Таш Оу заявлены на литературный фестиваль в Убуде",
+      "en": "Kiran Desai and Tash Aw announced for Ubud Writers & Readers Festival"
+    },
+    "summary": {
+      "ru": "Фестиваль в индонезийском Убуде запланирован на 21-25 октября. В объявленной программе Киран Десаи представит The Loneliness of Sonia and Sunny, а Таш Оу - The South.",
+      "en": "The festival in Ubud, Indonesia, is scheduled for October 21-25. The announced programme includes Kiran Desai discussing The Loneliness of Sonia and Sunny and Tash Aw presenting The South."
+    },
+    "source": {
+      "name": "Ubud Writers & Readers Festival",
+      "title": "Extraordinary Voices and Bold Thinkers Announced for Festival 2026",
+      "url": "https://ubudwritersfestival.com/news/extraordinary-voices-and-bold-thinkers-announced-for-festival-2026",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "shanghai-childrens-book-fair-2026",
+    "eventKey": "ccbf:2026:opening",
+    "region": "asia",
+    "category": "festivals",
+    "kind": "announcement",
+    "eventDate": "2026-11-13",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "title": {
+      "ru": "Шанхайская ярмарка детской книги назначена на 13-15 ноября",
+      "en": "Shanghai International Children’s Book Fair scheduled for November 13-15"
+    },
+    "summary": {
+      "ru": "Организаторы CCBF подтвердили даты ярмарки 2026 года. Она пройдёт в первом павильоне Shanghai World Expo Exhibition and Convention Centre в Шанхае.",
+      "en": "CCBF’s organisers have confirmed the dates of the 2026 fair. It will take place in Hall 1 of the Shanghai World Expo Exhibition and Convention Centre."
+    },
+    "source": {
+      "name": "Shanghai International Children’s Book Fair",
+      "title": "Dates & Venue",
+      "url": "https://ccbookfair.com/en/index/ccbf/dates-and-venue",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "ake-arts-book-festival-2026",
+    "eventKey": "ake-arts-book-festival:2026:opening",
+    "region": "africa",
+    "category": "festivals",
+    "kind": "announcement",
+    "eventDate": "2026-11-19",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "title": {
+      "ru": "Литературный фестиваль Aké в Лагосе запланирован на 19-21 ноября",
+      "en": "Aké Arts & Book Festival scheduled for November 19-21 in Lagos"
+    },
+    "summary": {
+      "ru": "Четырнадцатый фестиваль в Нигерии объявил тему Native Intelligence. Организаторы готовят книжные беседы, дискуссии, поэтические и музыкальные выступления.",
+      "en": "The fourteenth edition of the Nigerian festival has announced Native Intelligence as its theme. The programme will include book conversations, panel discussions, poetry and music."
+    },
+    "source": {
+      "name": "Aké Arts & Book Festival",
+      "title": "Ake Arts & Book Festival - 2026",
+      "url": "https://akefestival.org/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "nairobi-international-book-fair-2026",
+    "eventKey": "nairobi-international-book-fair:2026:opening",
+    "region": "africa",
+    "category": "festivals",
+    "kind": "announcement",
+    "eventDate": "2026-09-23",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "title": {
+      "ru": "Книжная ярмарка в Найроби запланирована на 23-27 сентября",
+      "en": "Nairobi International Book Fair scheduled for September 23-27"
+    },
+    "summary": {
+      "ru": "В календаре Международной ассоциации издателей подтверждена 27-я Международная книжная ярмарка в Найроби. Её площадкой указан выставочный зал Sarit Centre в районе Уэстлендс.",
+      "en": "The International Publishers Association’s calendar confirms the 27th Nairobi International Book Fair. The listed venue is the Sarit Centre Expo Hall in Westlands, Nairobi."
+    },
+    "source": {
+      "name": "International Publishers Association",
+      "title": "27th Nairobi International Book Fair 2026",
+      "url": "https://internationalpublishers.org/book-fairs-events/27th-nairobi-international-book-fair/",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "gioconda-belli-fil-prize-2026",
+    "eventKey": "fil-literature-prize:2026:winner-announcement",
+    "region": "latin-america",
+    "category": "awards",
+    "kind": "news",
+    "eventDate": "2026-08-31",
+    "publishedAt": "2026-08-31",
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "title": {
+      "ru": "Джоконда Белли стала лауреатом литературной премии FIL - 2026",
+      "en": "Gioconda Belli named winner of the 2026 FIL Literary Award"
+    },
+    "summary": {
+      "ru": "31 августа жюри единогласно присудило никарагуанской писательнице премию FIL за литературу на романских языках. Вручение запланировано на 28 ноября, на открытии книжной ярмарки в Гвадалахаре.",
+      "en": "On August 31, the jury unanimously awarded the Nicaraguan writer the FIL Literary Award in Romance Languages. The presentation is scheduled for November 28 at the opening of the Guadalajara International Book Fair."
+    },
+    "source": {
+      "name": "FIL Guadalajara",
+      "title": "Conceden a la nicaragüense Gioconda Belli, por unanimidad, el Premio FIL de Literatura en Lenguas Romances 2026",
+      "url": "https://fil.com.mx/prensa/boletin.asp?id=3344&ids=",
+      "language": "es"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "guadalajara-international-book-fair-2026",
+    "eventKey": "fil-guadalajara:2026:opening",
+    "region": "latin-america",
+    "category": "festivals",
+    "kind": "announcement",
+    "eventDate": "2026-11-28",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "title": {
+      "ru": "Сороковая книжная ярмарка в Гвадалахаре откроется 28 ноября",
+      "en": "The 40th Guadalajara International Book Fair will open on November 28"
+    },
+    "summary": {
+      "ru": "Организаторы назначили ярмарку на 28 ноября - 6 декабря в Expo Guadalajara. Почётной страной-гостем станет Италия.",
+      "en": "The organisers have scheduled the fair for November 28-December 6 at Expo Guadalajara. Italy will be the Guest of Honour."
+    },
+    "source": {
+      "name": "FIL Guadalajara",
+      "title": "Preguntas frecuentes",
+      "url": "https://www.fil.com.mx/info/faq.asp",
+      "language": "es"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "hay-queretaro-emiliano-monge-2026",
+    "eventKey": "hay-queretaro:2026:event-4",
+    "region": "latin-america",
+    "category": "festivals",
+    "kind": "announcement",
+    "eventDate": "2026-09-05",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "title": {
+      "ru": "Эмилиано Монхе обсудит сборник En lengua privada на Hay Festival",
+      "en": "Emiliano Monge to discuss En lengua privada at Hay Festival Querétaro"
+    },
+    "summary": {
+      "ru": "Встреча с писателем и Энрике Диасом Альваресом назначена на 5 сентября, 10:30 по времени Керетаро, в Cineteca Rosalío Solano. Разговор посвящён сборнику рассказов, соединяющему художественную прозу с приёмами эссе, хроники и биографии.",
+      "en": "Monge’s conversation with Enrique Díaz Álvarez is scheduled for September 5 at 10:30 a.m. in Querétaro’s Cineteca Rosalío Solano. They will discuss his story collection, which combines fiction with techniques from essays, chronicles and biography."
+    },
+    "source": {
+      "name": "Hay Festival Querétaro",
+      "title": "Emiliano Monge in conversation with Enrique Díaz Álvarez - Event 4",
+      "url": "https://www.hayfestival.com/p-25826-emiliano-monge-in-conversation-with-enrique-diaz-alvarez.aspx",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "brisbane-writers-festival-2026",
+    "eventKey": "brisbane-writers-festival:2026:opening",
+    "region": "oceania",
+    "category": "festivals",
+    "kind": "announcement",
+    "eventDate": "2026-10-08",
+    "publishedAt": null,
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "title": {
+      "ru": "Писательский фестиваль в Брисбене пройдёт 8-11 октября",
+      "en": "Brisbane Writers Festival scheduled for October 8-11"
+    },
+    "summary": {
+      "ru": "Brisbane Powerhouse примет четыре дня встреч с австралийскими и зарубежными авторами. Открывающую речь 8 октября произнесёт писательница Дебра Данк.",
+      "en": "Brisbane Powerhouse will host four days of events with Australian and international authors. Writer Debra Dank is scheduled to deliver the opening address on October 8."
+    },
+    "source": {
+      "name": "Brisbane Writers Festival",
+      "title": "Brisbane Writers Festival 2026",
+      "url": "https://bwf.org.au/2026-festival",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  },
+  {
+    "id": "new-zealand-childrens-book-awards-2026",
+    "eventKey": "nz-childrens-book-awards:2026:winners-announcement",
+    "region": "oceania",
+    "category": "awards",
+    "kind": "news",
+    "eventDate": "2026-08-19",
+    "publishedAt": "2026-08-19",
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "title": {
+      "ru": "A Guide to Rocks получила главную детскую книжную премию Новой Зеландии",
+      "en": "A Guide to Rocks wins New Zealand’s Margaret Mahy Book of the Year Award"
+    },
+    "summary": {
+      "ru": "19 августа организаторы объявили победу книги Саши Коттер с иллюстрациями Джоша Моргана. Это вторая главная награда дуэта: в 2019 году они получили её за The Bomb.",
+      "en": "On August 19, the organisers announced the win for Sacha Cotter’s book, illustrated by Josh Morgan. It is the duo’s second top award, following The Bomb in 2019."
+    },
+    "source": {
+      "name": "New Zealand Book Awards Trust",
+      "title": "Picture Book Duo Claim Top Prize at Children’s Book Awards for Second Time",
+      "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/picture-book-duo-claim-top-prize-at-childrens-book-awards-for-second-time/53690?pageNum=1",
+      "language": "en"
+    },
+    "verification": "confirmed"
+  }
+]
