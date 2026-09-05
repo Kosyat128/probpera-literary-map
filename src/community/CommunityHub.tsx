@@ -6,6 +6,7 @@ import { selectWriterDisplayName } from "../data/bookLocalization";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useSubscriptions } from "../hooks/useSubscriptions";
 import { articlePath } from "../utils/articleRoutes";
+import { imageUploadErrorMessage, optimizeUploadImage } from "../utils/imageUploadOptimization";
 import BrandHeartIcon from "../components/BrandHeartIcon";
 import BrandCloseIcon from "../components/BrandCloseIcon";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
@@ -830,22 +831,31 @@ export default function CommunityHub({
       setMessage(t("Используйте изображение JPG, PNG или WebP."));
       return;
     }
-    if (file.size > 2 * 1024 * 1024) {
-      setMessage(t("Размер аватара не должен превышать 2 МБ."));
-      return;
-    }
     setBusy(true);
     setMessage("");
+    let prepared;
+    try {
+      prepared = await optimizeUploadImage(file, {
+        maxOutputBytes: 2 * 1024 * 1024,
+        maxDimension: 1024,
+        allowedOriginalTypes: ["image/jpeg", "image/png", "image/webp"],
+      });
+    } catch (error) {
+      setBusy(false);
+      setMessage(imageUploadErrorMessage(error, language));
+      return;
+    }
+    const uploadFile = prepared.file;
     const extension =
-      file.type === "image/png"
+      uploadFile.type === "image/png"
         ? "png"
-        : file.type === "image/webp"
+        : uploadFile.type === "image/webp"
           ? "webp"
           : "jpg";
     const path = `${user.id}/avatar.${extension}`;
-    const uploaded = await supabase.storage.from("avatars").upload(path, file, {
+    const uploaded = await supabase.storage.from("avatars").upload(path, uploadFile, {
       cacheControl: "3600",
-      contentType: file.type,
+      contentType: uploadFile.type,
       upsert: true,
     });
     if (uploaded.error) {
@@ -865,7 +875,10 @@ export default function CommunityHub({
       return;
     }
     setProfileAvatarUrl(`${publicUrl}?v=${Date.now()}`);
-    setMessage(t("Аватар обновлён."));
+    const sizeChange = prepared.outputBytes < prepared.originalBytes
+      ? ` ${number(Math.round(prepared.originalBytes / 1024))} → ${number(Math.round(prepared.outputBytes / 1024))} ${language === "en" ? "KB" : "КБ"}.`
+      : "";
+    setMessage(`${t("Аватар обновлён.")}${sizeChange}`);
   };
 
   const saveReaderProfile = async () => {
@@ -1914,7 +1927,7 @@ export default function CommunityHub({
                       onChange={(event) => setTopicCategory(event.target.value)}
                     >
                       {categories.map((category) => (
-                        <option key={category}>{t(category)}</option>
+                        <option key={category} value={category}>{t(category)}</option>
                       ))}
                     </select>
                     <input

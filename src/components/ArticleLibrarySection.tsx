@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { publicImageAttributes } from "../utils/imageDelivery";
 
 import {
   articleCatalog,
@@ -142,6 +143,7 @@ function applyBrandImageFallback(
 ) {
   if (image.dataset.fallbackApplied === "true") return;
   image.dataset.fallbackApplied = "true";
+  image.removeAttribute("srcset");
   image.classList.add("is-fallback");
   image.alt = `${altPrefix} “${title}”`;
   image.src = `${import.meta.env.BASE_URL}brand/probpera-logo.png`;
@@ -543,7 +545,7 @@ export default function ArticleLibrarySection({
                   <div className="library-card-image">
                     {article.imageUrl ? (
                       <img
-                        src={article.imageUrl}
+                        {...publicImageAttributes(article.imageUrl, 640, "(max-width: 700px) calc(100vw - 40px), (max-width: 1200px) 50vw, 360px")}
                         style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
                         alt={
                           article.imageAlt ||

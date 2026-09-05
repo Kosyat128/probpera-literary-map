@@ -12,6 +12,7 @@ import {
 } from "../cms/siteChromeRuntime";
 import { safePublicHref } from "../utils/publicHref";
 import { mediaFocusPosition } from "../utils/mediaFocus";
+import { publicImageAttributes, publicImageUrl } from "../utils/imageDelivery";
 import { useEffect, useState, type CSSProperties } from "react";
 
 const MAX_BROWSER_TIMEOUT_MS = 2_147_483_647;
@@ -132,18 +133,18 @@ export function CmsPageBanners({ pathname }: { pathname?: string } = {}) {
       <picture className={!hasImage ? "cms-edit-empty-field" : undefined}>
           <source
             media="(max-width: 640px)"
-            srcSet={banner.mobileImageUrl || undefined}
+            srcSet={banner.mobileImageUrl ? publicImageUrl(banner.mobileImageUrl, 640) : undefined}
           />
           <source
             media="(max-width: 1024px)"
-            srcSet={banner.tabletImageUrl || undefined}
+            srcSet={banner.tabletImageUrl ? publicImageUrl(banner.tabletImageUrl, 1280) : undefined}
           />
           <img
-            src={
+            {...publicImageAttributes(
               banner.desktopImageUrl ||
               banner.tabletImageUrl ||
-              banner.mobileImageUrl
-            }
+              banner.mobileImageUrl || "", 1920
+            )}
             alt=""
             loading="lazy"
             decoding="async"

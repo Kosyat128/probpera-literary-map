@@ -23,6 +23,7 @@ import {
   positionDzenLeadIllustration,
 } from "./lib/article-publication-images.mjs";
 import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
+import { createPublicImageHtmlRenderer } from "./lib/public-image-delivery.mjs";
 
 const projectRoot = process.env.ARTICLE_BUILD_PROJECT_ROOT
   ? path.resolve(process.env.ARTICLE_BUILD_PROJECT_ROOT)
@@ -36,6 +37,9 @@ const siteBasePath =
   configuredBase === "/" ? "" : `/${configuredBase.replace(/^\/+|\/+$/g, "")}`;
 const siteUrl = `${siteOrigin}${siteBasePath}`;
 const siteRootPath = `${siteBasePath || ""}/`;
+const imageDeliveryManifest = await fs.readFile(path.join(projectRoot, "src/data/imageDelivery.generated.json"), "utf8")
+  .then(JSON.parse).catch(error => { if (error.code === "ENOENT") return {}; throw error; });
+const publicArticleImages = createPublicImageHtmlRenderer(imageDeliveryManifest, siteRootPath);
 const buildDate = new Date().toISOString().slice(0, 10);
 const legacyLandingRedirects = [
   ["/read", "/stati/"],
@@ -833,7 +837,7 @@ for (const rawArticle of catalog) {
         <span>${xmlEscape(article.sectionLabel)}</span>
         <h1>${xmlEscape(article.title)}</h1>
         <p>${xmlEscape(description)}</p>
-        ${safePublicBody}
+        ${publicArticleImages(safePublicBody)}
       </article>
       <nav aria-label="Читайте также">
         <h2>Читайте также</h2>
@@ -1142,7 +1146,7 @@ for (const rawArticle of catalog) {
             <span>${xmlEscape(englishTranslation.sectionLabel || "Article")}</span>
             <h1>${xmlEscape(englishTranslation.title)}</h1>
             <p>${xmlEscape(englishDescription)}</p>
-            ${safeArticleHtml(englishDocument.contentHtml)}
+            ${publicArticleImages(safeArticleHtml(englishDocument.contentHtml))}
           </article>
           <nav aria-label="Read also">
             <h2>Read also</h2>
@@ -1328,7 +1332,7 @@ for (const page of cmsSnapshot.pages || []) {
         <span>Проба Пера</span>
         <h1>${xmlEscape(page.title)}</h1>
         ${page.excerpt ? `<p>${xmlEscape(page.excerpt)}</p>` : ""}
-        ${safeArticleHtml(page.contentHtml)}
+        ${publicArticleImages(safeArticleHtml(page.contentHtml))}
       </article>
     </main>
   `);

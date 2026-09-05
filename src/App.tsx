@@ -12,6 +12,7 @@ import {
 } from "react";
 
 import ArticleEngagement from "./community/ArticleEngagement";
+import { publicImageAttributes } from "./utils/imageDelivery";
 import type { CommunityView } from "./community/CommunityHub";
 import { useAuth } from "./community/AuthContext";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
@@ -237,7 +238,7 @@ const editorialFeatures = [
     description:
       "Первая большая работа основателя гонзо-журналистики: история создания, контекст и честное мнение после прочтения.",
     image:
-      "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+      "brand/article-previews/hunter-thompson-hells-angels-article.webp",
     articleUrl: articlePath(
       "page--article--page--books--22",
       "Мнение о книге Хантера Томпсона «Ангелы ада»",
@@ -252,7 +253,7 @@ const editorialFeatures = [
     description:
       "От классической традиции до современной прозы - маршрут по авторам, прославившим японскую литературу.",
     image:
-      "https://static.tildacdn.com/tild3564-6330-4630-b434-383662326664/213421.jpg",
+      "brand/article-previews/japanese-writers-literary-map-article.webp",
     articleUrl: articlePath(
       "page--article--page--writers--world--4",
       "«Литературная карта мира. 7 знаковых писателей, прославивших свою родину». Япония",
@@ -267,7 +268,7 @@ const editorialFeatures = [
     description:
       "Не словарь ради словаря, а живые значения, происхождение и примеры употребления в понятной редакционной подаче.",
     image:
-      "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
+      "brand/article-previews/rare-russian-words-vocabulary-article.webp",
     articleUrl: journalPath("language"),
     sectionUrl: journalPath("language"),
     readTime: "9 минут",
@@ -278,7 +279,7 @@ const editorialFeatures = [
     description:
       "Неожиданные профессии зарубежных авторов и то, как жизненный опыт становился частью их будущих книг.",
     image:
-      "https://static.tildacdn.com/tild6361-3732-4033-b231-316331353336/a15183d3-d8f6-48ad-b.png",
+      "brand/article-previews/classic-writers-professions-article.webp",
     articleUrl: articlePath(
       "page--article--first--profession--writers--2",
       "Зарубежные классики литературы и их профессии",
@@ -505,10 +506,6 @@ function writerName(
 
 function assetUrl(path: string) {
   return `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
-}
-
-function mediaUrl(path: string) {
-  return /^https?:\/\//i.test(path) ? path : assetUrl(path);
 }
 
 function safeHomepageHref(value: string, fallback: string) {
@@ -1936,7 +1933,9 @@ export default function App() {
               const details = event.currentTarget;
               cancelSectionsMenuClose();
               sectionsMenuCloseTimer.current = window.setTimeout(() => {
-                if (!details.matches(":hover")) details.removeAttribute("open");
+                const keyboardFocused = details.contains(document.activeElement) &&
+                  document.activeElement?.matches(":focus-visible");
+                if (!details.matches(":hover") && !keyboardFocused) details.removeAttribute("open");
                 sectionsMenuCloseTimer.current = null;
               }, 240);
             }}
@@ -2221,13 +2220,10 @@ export default function App() {
                 </>
               )}
               <img
-                src={
-                  coreHero?.backgroundImageUrl ||
-                  assetUrl("brand/magazine-hero-wide.webp?v=20260813-literary-nature-final")
-                }
                 alt=""
-                width={coreHero?.backgroundImageUrl ? undefined : 1774}
-                height={coreHero?.backgroundImageUrl ? undefined : 887}
+                {...(coreHero?.backgroundImageUrl
+                  ? publicImageAttributes(coreHero.backgroundImageUrl, 1920)
+                  : { src: assetUrl("brand/magazine-hero-wide.webp?v=20260813-literary-nature-final"), width: 1774, height: 887 })}
                 aria-hidden="true"
                 loading="eager"
                 decoding="async"
@@ -3124,13 +3120,14 @@ export default function App() {
                 <a className="article-card-link" href={feature.articleUrl}>
                   <div className="article-image">
                     <img
-                      src={mediaUrl(feature.image)}
+                      {...publicImageAttributes(feature.image, 640, "(max-width: 700px) calc(100vw - 40px), (max-width: 1200px) 50vw, 360px")}
                       alt={`${t("Иллюстрация к материалу")} “${t(feature.title)}”`}
                       loading="lazy"
                       decoding="async"
                       onError={(event) => {
                         if (event.currentTarget.dataset.fallbackApplied === "true") return;
                         event.currentTarget.dataset.fallbackApplied = "true";
+                        event.currentTarget.removeAttribute("srcset");
                         event.currentTarget.classList.add("is-fallback");
                         event.currentTarget.alt = `${t(
                           "Фирменная обложка материала"

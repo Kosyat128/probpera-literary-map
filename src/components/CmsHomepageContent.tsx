@@ -10,6 +10,7 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
 import { safePublicHref } from "../utils/publicHref";
 import { mediaFocusStyle } from "../utils/mediaFocus";
+import { publicImageAttributes, publicImageUrl } from "../utils/imageDelivery";
 import {
   cmsEntityMarker,
   cmsHomepageBlockFieldMarker,
@@ -67,7 +68,7 @@ function blockAdminHref(block: HomepageBlock) {
 function blockStyle(block: HomepageBlock) {
   return cmsHomepageBlockStyle(
     block.settings,
-    block.backgroundImageUrl,
+    block.backgroundImageUrl ? publicImageUrl(block.backgroundImageUrl, 1920) : undefined,
     block.backgroundFocusX,
     block.backgroundFocusY
   );
@@ -225,7 +226,7 @@ function ArticleBlock({ block }: { block: HomepageBlock }) {
             <a href={articleLink(article)}>
               {article.imageUrl && (
                 <img
-                  src={article.imageUrl}
+                  {...publicImageAttributes(article.imageUrl, 640, "(max-width: 700px) 100vw, 360px")}
                   style={mediaFocusStyle(article.imageFocusX, article.imageFocusY)}
                   alt={article.imageAlt || ""}
                   loading="lazy"

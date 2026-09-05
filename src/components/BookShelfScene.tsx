@@ -18,6 +18,9 @@ import type { BookShelfViewportInsets } from "../books/bookInspectionCamera";
 import { EMPTY_BOOK_SHELF_INSETS, measureBookShelfViewportInsets } from "../books/bookShelfViewportInsets";
 import type { BookShelfSpineHit } from "../books/bookShelfPointer";
 import { ensureBookTypographyReady } from "../books/bookTypography";
+import type { BookInspectionTextureStore } from "../books/bookInspectionTextures";
+
+export type BookShelfPageTextureRenderer = NonNullable<NonNullable<ConstructorParameters<typeof BookInspectionTextureStore>[0]>["renderer"]>;
 
 export type BookShelfSpineHover = BookShelfSpineHit;
 
@@ -49,6 +52,9 @@ export type BookShelfSceneFailure =
   | "render-error";
 
 export type BookShelfSceneProps = {
+  inspectionOnly?: boolean;
+  textureRenderer?: BookShelfPageTextureRenderer;
+  onInspectionReady?: () => void;
   items: readonly BookShelfPresentationItem[];
   appearance: BookShelfSceneAppearance;
   focusedBookKey: string | null;
@@ -322,6 +328,9 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
         <Suspense fallback={<BookShelfBrandLoader label={props.loadingLabel} />}>
           {props.active && support === "ready" ? (
             <LazyBookShelfSceneCanvas
+              inspectionOnly={props.inspectionOnly}
+              textureRenderer={props.textureRenderer}
+              onInspectionReady={props.onInspectionReady}
               items={props.items}
               appearance={props.appearance}
               focusedBookKey={props.focusedBookKey}
@@ -360,7 +369,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
           )}
         </Suspense>
       </SceneErrorBoundary>
-      {inspectionActive ? (
+      {inspectionActive && !props.inspectionOnly ? (
         <div ref={actionsRef} className="book-shelf-scene__accessible-actions" style={{
           left: (props.viewportInsets?.left || 0) + 16,
           right: (props.viewportInsets?.right || 0) + 16,
