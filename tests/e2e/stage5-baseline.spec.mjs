@@ -17,18 +17,18 @@ const PHASE_5C_LANDMARKS = [
 
 test.setTimeout(150_000);
 
-test("bookshelf empty clicks return closed and open books without treating orbit or drag as dismissal", async ({ page, isMobile }) => {
-  await page.addInitScript(installObservers);
-  await page.goto("/#books");
-  const workspace = page.locator(".book-shelf-frame__workspace");
-  await workspace.scrollIntoViewIfNeeded();
-  await page.waitForFunction(() => window.__shelfAudit.read()?.books.length);
-  await page.evaluate(() => document.fonts.ready);
-  const activate = async (point) => isMobile
-    ? page.touchscreen.tap(point.x, point.y)
-    : page.mouse.click(point.x, point.y);
+for (const openCover of [false, true]) {
+  test(`bookshelf empty clicks return ${openCover ? "open" : "closed"} books without treating orbit or drag as dismissal`, async ({ page, isMobile }) => {
+    await page.addInitScript(installObservers);
+    await page.goto("/#books");
+    const workspace = page.locator(".book-shelf-frame__workspace");
+    await workspace.scrollIntoViewIfNeeded();
+    await page.waitForFunction(() => window.__shelfAudit.read()?.books.length);
+    await page.evaluate(() => document.fonts.ready);
+    const activate = async (point) => isMobile
+      ? page.touchscreen.tap(point.x, point.y)
+      : page.mouse.click(point.x, point.y);
 
-  for (const openCover of [false, true]) {
     await workspace.scrollIntoViewIfNeeded();
     await page.waitForFunction(() => window.__shelfAudit.read()?.pendingFrames === 0);
     await activate(await page.evaluate(() => window.__shelfAudit.read().books[0]));
@@ -73,8 +73,8 @@ test("bookshelf empty clicks return closed and open books without treating orbit
       selected: window.__shelfAudit.read()?.selectedKey,
       focusInShelf: document.querySelector("#books")?.contains(document.activeElement),
     }))).toEqual({ selected: null, focusInShelf: true });
-  }
-});
+  });
+}
 
 async function openHomepage(page, locale = "ru") {
   await page.goto("/");
