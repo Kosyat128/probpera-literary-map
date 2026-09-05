@@ -18,7 +18,7 @@ function loadNewsPanel() {
 /** Keep news code and requests behind the existing monthly-book activation gate. */
 export default function DeferredLiteraryNewsPanel({ active, endpoint }: {
   active: boolean;
-  endpoint: string;
+  endpoint?: string;
 }) {
   const { language } = useInterfaceLanguage();
   const [Panel, setPanel] = useState<NewsPanel | null>(null);

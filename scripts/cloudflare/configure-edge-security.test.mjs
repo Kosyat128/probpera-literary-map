@@ -218,6 +218,19 @@ function makeFetch(options = {}) {
 }
 
 describe("Cloudflare public edge security configurator", () => {
+  it("permits the dedicated news API only in the connection policy", () => {
+    const origin = "https://news.probpera.ru";
+    const directives = PUBLIC_CONTENT_SECURITY_POLICY.split(";").map((directive) => directive.trim().split(/\s+/u));
+    const connections = directives.find(([name]) => name === "connect-src").slice(1);
+    expect(connections.filter((source) => source === origin)).toHaveLength(1);
+    expect(connections).not.toContain("https://*.probpera.ru");
+    expect(connections).not.toContain("https:");
+    expect(connections).not.toContain("*");
+    for (const [name, ...sources] of directives) {
+      if (name !== "connect-src") expect(sources, name).not.toContain(origin);
+    }
+  });
+
   it("uses the exact public policy and never broadens the rule beyond the apex host", () => {
     const rule = desiredPublicHeaderRule();
     expect(rule.ref).toBe(MANAGED_RULE_REF);

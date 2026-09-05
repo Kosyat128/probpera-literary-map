@@ -1,10 +1,11 @@
 import { expect, test } from "@playwright/test";
+import { PUBLIC_CONTENT_SECURITY_POLICY } from "../../scripts/cloudflare/configure-edge-security.mjs";
 
 test.setTimeout(150_000);
 // Failure fixtures must reach route handlers instead of the offline asset cache.
 test.use({ timezoneId: "America/Los_Angeles", serviceWorkers: "block" });
 
-const endpoint = "**/api/literary-news/feed*";
+const endpoint = "https://news.probpera.ru/api/literary-news/feed*";
 const instant = "2026-09-05T00:30:00Z";
 const story = (id) => ({
   id, category: "festivals", region: "asia", kind: "announcement",
@@ -19,11 +20,26 @@ const feed = (timeZone, items = [story("first")]) => ({
   refreshIntervalSeconds: 600, timeZone, sources: [], pendingCount: 0, items,
 });
 
-test.beforeEach(async ({ page }) => {
+function respondFeed(route, json, status = 200) {
+  // The browser still enforces CORS on this intercepted cross-origin response.
+  return route.fulfill({
+    status, json,
+    headers: { "access-control-allow-origin": route.request().headers().origin },
+  });
+}
+
+test.beforeEach(async ({ page, baseURL }) => {
   await page.addInitScript((now) => {
     Date.now = () => Date.parse(now);
     window.localStorage.setItem("probpera-interface-language", "ru");
   }, instant);
+  await page.route(new URL("/", baseURL).href, async (route) => {
+    const response = await route.fetch();
+    await route.fulfill({
+      response,
+      headers: { ...response.headers(), "content-security-policy": PUBLIC_CONTENT_SECURITY_POLICY },
+    });
+  });
 });
 
 test("public news loads near the book feature and follows language and visitor dates", async ({ page }) => {
@@ -33,9 +49,11 @@ test("public news loads near the book feature and follows language and visitor d
     if (/\/LiteraryNewsPanel-[^/]+\.js/u.test(request.url())) chunks.push(request.url());
   });
   await page.route(endpoint, (route) => {
-    const timeZone = new URL(route.request().url()).searchParams.get("timeZone");
+    const url = new URL(route.request().url());
+    expect(url.origin).toBe("https://news.probpera.ru");
+    const timeZone = url.searchParams.get("timeZone");
     requests.push(timeZone);
-    return route.fulfill({ json: feed(timeZone) });
+    return respondFeed(route, feed(timeZone));
   });
   await page.goto("/", { waitUntil: "domcontentloaded" });
   await expect(page.locator(".magazine-hero")).toBeVisible();
@@ -67,8 +85,8 @@ test("a failed refresh preserves reviewed stories and new arrivals wait for the 
   let unavailable = false;
   let items = [story("first")];
   await page.route(endpoint, (route) => unavailable
-    ? route.fulfill({ status: 503, json: { error: "unavailable" } })
-    : route.fulfill({ json: feed("America/Los_Angeles", items) }));
+    ? respondFeed(route, { error: "unavailable" }, 503)
+    : respondFeed(route, feed("America/Los_Angeles", items)));
   await page.goto("/#book-day", { waitUntil: "domcontentloaded" });
   const panel = page.locator("#literary-news");
   await expect(panel.locator("article")).toHaveCount(1, { timeout: 30_000 });
@@ -92,7 +110,7 @@ test("a failed refresh preserves reviewed stories and new arrivals wait for the 
 test("an unavailable news chunk leaves the homepage usable and offers recovery", async ({ page }) => {
   let blocked = true;
   await page.route(/\/assets\/LiteraryNewsPanel-[^/]+\.js(?:\?.*)?$/u, (route) => blocked ? route.abort() : route.continue());
-  await page.route(endpoint, (route) => route.fulfill({ json: feed("America/Los_Angeles") }));
+  await page.route(endpoint, (route) => respondFeed(route, feed("America/Los_Angeles")));
   await page.goto("/#book-day", { waitUntil: "domcontentloaded" });
   await expect(page.locator(".literary-news-slot")).toHaveAttribute("data-loading-status", "error", { timeout: 30_000 });
   await expect(page.locator(".book-of-day")).toBeVisible();

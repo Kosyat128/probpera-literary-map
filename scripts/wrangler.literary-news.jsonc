@@ -6,7 +6,7 @@
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": false,
   "preview_urls": false,
-  "routes": [{ "pattern": "https://probpera.ru/api/literary-news/*", "zone_name": "probpera.ru" }],
+  "routes": [{ "pattern": "news.probpera.ru", "custom_domain": true }],
   "kv_namespaces": [{ "binding": "NEWS_STATE", "id": "f3ae59fd55ee4c0cac8ff1613db81680" }],
   "vars": { "NEWS_RELEASE_SHA": "local" },
   "observability": { "enabled": true, "head_sampling_rate": 1 }
