@@ -233,7 +233,7 @@ function ReadIcon() {
   );
 }
 
-export default function LiteraryNewsPanel({ endpoint = "/api/literary-news/feed", variant = "wide" }: Props) {
+export default function LiteraryNewsPanel({ endpoint = "https://news.probpera.ru/api/literary-news/feed", variant = "wide" }: Props) {
   const { language } = useInterfaceLanguage();
   const text = copy[language];
   const sidebar = variant === "sidebar";

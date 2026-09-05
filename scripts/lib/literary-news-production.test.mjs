@@ -10,7 +10,7 @@ import { NEWS_HELD_QUEUE_KEY, NEWS_SOURCE_STATE_KEY, NEWS_STATE_MAX_BYTES, parse
 const CURRENT = new Date("2026-09-05T12:00:00Z");
 const EARLIER = "2026-09-05T10:00:00.000Z";
 const SHA = "a".repeat(40);
-const request = (suffix = "", method = "GET") => new Request(`https://probpera.ru/api/literary-news/feed${suffix}`, { method });
+const request = (suffix = "", method = "GET") => new Request(`https://news.probpera.ru/api/literary-news/feed${suffix}`, { method });
 const stateStream = (value) => new Response(JSON.stringify(value)).body;
 function environment(value = null) {
   return { NEWS_RELEASE_SHA: SHA, NEWS_STATE: { get: vi.fn(async () => value === null ? null : stateStream(value)) } };
@@ -34,6 +34,34 @@ function attempt() {
 afterEach(() => vi.restoreAllMocks());
 
 describe("public literary news Worker", () => {
+  it.each([undefined, "https://probpera.ru", "https://www.probpera.ru", "https://untrusted.example", "https://probpera.ru.untrusted.example", "null"])("keeps public cross-origin reading restricted to the canonical site (%s)", async (origin) => {
+    const headers = { Accept: "application/json", ...(origin ? { Origin: origin } : {}) };
+    const response = await handleNewsRequest(new Request("https://news.probpera.ru/api/literary-news/feed?timeZone=UTC", {
+      headers, mode: "cors", credentials: "omit", cache: "no-store",
+    }), environment(), CURRENT);
+    expect(response.status).toBe(200);
+    expect(response.headers.get("access-control-allow-origin")).toBe("https://probpera.ru");
+    expect(response.headers.get("access-control-allow-credentials")).toBeNull();
+    expect(response.headers.get("access-control-expose-headers")).toBe("X-Probpera-News-Release");
+    expect(response.headers.get("x-probpera-news-release")).toBe(SHA);
+    expect(response.headers.get("cache-control")).toBe("no-store");
+    expect(parseNewsFeed(await response.json()).mode).toBe("reviewed");
+  });
+
+  it("does not grant preflight access to extra methods or caller-supplied headers", async () => {
+    const env = environment();
+    const response = await handleNewsRequest(new Request("https://news.probpera.ru/api/literary-news/feed", {
+      method: "OPTIONS",
+      headers: { Origin: "https://probpera.ru", "Access-Control-Request-Method": "POST", "Access-Control-Request-Headers": "Authorization" },
+    }), env, CURRENT);
+    expect(response.status).toBe(405);
+    expect(response.headers.get("allow")).toBe("GET");
+    expect(response.headers.get("access-control-allow-methods")).toBeNull();
+    expect(response.headers.get("access-control-allow-headers")).toBeNull();
+    expect(response.headers.get("access-control-allow-credentials")).toBeNull();
+    expect(env.NEWS_STATE.get).not.toHaveBeenCalled();
+  });
+
   it("all checked-in reviewed stories and every public response satisfy the complete frontend schema", async () => {
     for (const zone of ["UTC", "America/Los_Angeles", "Asia/Tokyo"]) {
       const feed = await (await handleNewsRequest(request(`?timeZone=${encodeURIComponent(zone)}`), environment(), CURRENT)).json();
@@ -114,8 +142,18 @@ describe("public literary news Worker", () => {
 
   it("rejects writes and all queue paths before accessing KV", async () => {
     const env = environment();
-    expect((await handleNewsRequest(request("", "POST"), env, CURRENT)).status).toBe(405);
-    expect((await handleNewsRequest(new Request("https://probpera.ru/api/literary-news/held-queue"), env, CURRENT)).status).toBe(404);
+    const write = await handleNewsRequest(request("", "POST"), env, CURRENT);
+    expect(write.status).toBe(405);
+    expect(write.headers.get("allow")).toBe("GET");
+    const hidden = await handleNewsRequest(new Request("https://news.probpera.ru/api/literary-news/held-queue", { headers: { Origin: "https://probpera.ru" } }), env, CURRENT);
+    expect(hidden.status).toBe(404);
+    expect(await hidden.json()).toEqual({ error: "not_found" });
+    for (const response of [write, hidden]) {
+      expect(response.headers.get("access-control-allow-origin")).toBe("https://probpera.ru");
+      expect(response.headers.get("access-control-allow-credentials")).toBeNull();
+      expect(response.headers.get("cache-control")).toBe("no-store");
+      expect(response.headers.get("x-probpera-news-release")).toBe(SHA);
+    }
     expect(env.NEWS_STATE.get).not.toHaveBeenCalled();
   });
 

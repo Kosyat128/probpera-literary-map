@@ -8,16 +8,18 @@ const expectedHead = headArgument < 0 ? null : process.argv[headArgument + 1];
 if (headArgument >= 0 && !/^[a-f0-9]{40}$/.test(expectedHead || "")) {
   throw new Error("Expected news release head must be a full commit SHA");
 }
-const endpoint = "https://probpera.ru/api/literary-news/feed";
+const endpoint = "https://news.probpera.ru/api/literary-news/feed";
 const zones = ["UTC", "Pacific/Kiritimati", "America/Los_Angeles"];
 const reviewed = JSON.parse(await readFile(new URL("../data/news/reviewed.json", import.meta.url), "utf8"));
 
 async function check(timeZone) {
   const response = await fetch(`${endpoint}?${new URLSearchParams({ timeZone })}`, {
     redirect: "error", cache: "no-store", signal: AbortSignal.timeout(20_000),
+    headers: { Origin: "https://probpera.ru" },
   });
   assert.equal(response.status, 200, "The public news API must respond successfully");
   assert.match(response.headers.get("content-type") || "", /application\/json/);
+  assert.equal(response.headers.get("access-control-allow-origin"), "https://probpera.ru", "The public site must be allowed to read the feed");
   if (expectedHead) assert.equal(response.headers.get("x-probpera-news-release"), expectedHead);
   const feed = await response.json();
   assert.equal(feed.mode, "reviewed");
