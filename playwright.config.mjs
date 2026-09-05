@@ -23,6 +23,8 @@ const webglRegressionSpecs = [
   "**/public-doc-refinements.spec.mjs",
   "**/public-smoke.spec.mjs",
   "**/responsive-reader-globe.spec.mjs",
+  // Full-page typography checks activate the globe while scrolling and resizing.
+  "**/typography-and-card-geometry.spec.mjs",
   "**/ui-foundation.spec.mjs",
 ];
 
