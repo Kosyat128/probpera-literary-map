@@ -1,0 +1,2237 @@
+{
+  "base": "http://127.0.0.1:4185/",
+  "startedAt": "2026-09-05T16:17:36.771Z",
+  "cases": [
+    {
+      "locale": "ru",
+      "width": 1100,
+      "qualityNormal": {
+        "text": "Авто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+        "rect": {
+          "x": 796.609375,
+          "y": 3918.0625,
+          "width": 232,
+          "height": 44,
+          "top": 3918.0625,
+          "right": 1028.609375,
+          "bottom": 3962.0625,
+          "left": 796.609375
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "rgb(193, 74, 8)",
+          "backgroundColor": "rgb(255, 250, 242)",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='m4 6 4 4 4-4' stroke='%23c14a08' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(239, 213, 190)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(193, 74, 8)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "12px",
+          "paddingRight": "36px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "parentNormal": {
+        "text": "КачествоАвто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+        "rect": {
+          "x": 726.875,
+          "y": 3918.0625,
+          "width": 301.734375,
+          "height": 44,
+          "top": 3918.0625,
+          "right": 1028.609375,
+          "bottom": 3962.0625,
+          "left": 726.875
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "rgb(238, 224, 245)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "borderTopWidth": "0px",
+          "borderRightWidth": "0px",
+          "borderBottomWidth": "0px",
+          "borderLeftWidth": "0px",
+          "borderColor": "rgb(238, 224, 245)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(238, 224, 245)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "0px",
+          "paddingRight": "0px",
+          "transitionProperty": "all",
+          "transitionDuration": "0s",
+          "transitionDelay": "0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "optionWidths": {
+        "font": "500 14px \"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "available": 182,
+        "clientWidth": 230,
+        "paddingLeft": "12px",
+        "paddingRight": "36px",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Авто · Сбалансированное",
+            "selected": true,
+            "width": 174.69180297851562
+          },
+          {
+            "value": "HIGH",
+            "label": "Высокое",
+            "selected": false,
+            "width": 58.95396423339844
+          },
+          {
+            "value": "BALANCED",
+            "label": "Сбалансированное",
+            "selected": false,
+            "width": 131.02584838867188
+          },
+          {
+            "value": "ECONOMY",
+            "label": "Экономичное",
+            "selected": false,
+            "width": 92.31591796875
+          }
+        ],
+        "autoVariants": [
+          {
+            "profile": "HIGH",
+            "label": "Авто · Высокое",
+            "width": 102.61991882324219
+          },
+          {
+            "profile": "BALANCED",
+            "label": "Авто · Сбалансированное",
+            "width": 174.69180297851562
+          },
+          {
+            "profile": "ECONOMY",
+            "label": "Авто · Экономичное",
+            "width": 135.98187255859375
+          }
+        ]
+      },
+      "qualityFocus": {
+        "text": "Авто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+        "rect": {
+          "x": 796.609375,
+          "y": 478.0625,
+          "width": 232,
+          "height": 44,
+          "top": 478.0625,
+          "right": 1028.609375,
+          "bottom": 522.0625,
+          "left": 796.609375
+        },
+        "focusVisible": true,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "rgb(193, 74, 8)",
+          "backgroundColor": "rgb(255, 250, 242)",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='m4 6 4 4 4-4' stroke='%23c14a08' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "2px",
+          "outlineStyle": "solid",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 155, 69)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "12px",
+          "paddingRight": "36px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "parentFocus": {
+        "text": "КачествоАвто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+        "rect": {
+          "x": 726.875,
+          "y": 478.0625,
+          "width": 301.734375,
+          "height": 44,
+          "top": 478.0625,
+          "right": 1028.609375,
+          "bottom": 522.0625,
+          "left": 726.875
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "rgb(238, 224, 245)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "borderTopWidth": "0px",
+          "borderRightWidth": "0px",
+          "borderBottomWidth": "0px",
+          "borderLeftWidth": "0px",
+          "borderColor": "rgb(238, 224, 245)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(238, 224, 245)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "0px",
+          "paddingRight": "0px",
+          "transitionProperty": "all",
+          "transitionDuration": "0s",
+          "transitionDelay": "0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "searchInput": {
+        "text": "",
+        "rect": {
+          "x": 104.390625,
+          "y": 256.0625,
+          "width": 549.078125,
+          "height": 42,
+          "top": 256.0625,
+          "right": 653.46875,
+          "bottom": 298.0625,
+          "left": 104.390625
+        },
+        "focusVisible": true,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "400",
+          "color": "rgb(255, 250, 242)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "borderTopWidth": "0px",
+          "borderRightWidth": "0px",
+          "borderBottomWidth": "0px",
+          "borderLeftWidth": "0px",
+          "borderColor": "rgb(255, 250, 242)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 250, 242)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "9px",
+          "paddingRight": "0px",
+          "transitionProperty": "all",
+          "transitionDuration": "0s",
+          "transitionDelay": "0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "text"
+        }
+      },
+      "searchFrame": {
+        "text": "",
+        "rect": {
+          "x": 71.390625,
+          "y": 255.0625,
+          "width": 595.078125,
+          "height": 44,
+          "top": 255.0625,
+          "right": 666.46875,
+          "bottom": 299.0625,
+          "left": 71.390625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(255, 250, 242)",
+          "backgroundColor": "rgb(38, 7, 61)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "2px",
+          "outlineStyle": "solid",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 155, 69)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "buttonNormal": {
+        "text": "Каталог",
+        "rect": {
+          "x": 175.390625,
+          "y": 311.0625,
+          "width": 109.59375,
+          "height": 44,
+          "top": 311.0625,
+          "right": 284.984375,
+          "bottom": 355.0625,
+          "left": 175.390625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(193, 74, 8)",
+          "backgroundColor": "rgb(255, 250, 242)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(239, 213, 190)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(193, 74, 8)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "activeButton": {
+        "text": "Полка",
+        "rect": {
+          "x": 71.390625,
+          "y": 311.0625,
+          "width": 100,
+          "height": 44,
+          "top": 311.0625,
+          "right": 171.390625,
+          "bottom": 355.0625,
+          "left": 71.390625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgb(193, 74, 8)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(193, 74, 8)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 255, 255)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "buttonHover": {
+        "text": "Каталог",
+        "rect": {
+          "x": 175.390625,
+          "y": 311.0625,
+          "width": 109.59375,
+          "height": 44,
+          "top": 311.0625,
+          "right": 284.984375,
+          "bottom": 355.0625,
+          "left": 175.390625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(166, 59, 5)",
+          "backgroundColor": "rgb(255, 240, 222)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(166, 59, 5)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "buttonFocus": {
+        "text": "Каталог",
+        "rect": {
+          "x": 175.390625,
+          "y": 311.0625,
+          "width": 109.59375,
+          "height": 44,
+          "top": 311.0625,
+          "right": 284.984375,
+          "bottom": 355.0625,
+          "left": 175.390625
+        },
+        "focusVisible": true,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(193, 74, 8)",
+          "backgroundColor": "rgb(255, 250, 242)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "2px",
+          "outlineStyle": "solid",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 155, 69)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "contrasts": {
+        "buttonNormal": 4.754348747222053,
+        "buttonHover": 5.777102666045015,
+        "activeButton": 4.940584350248213
+      },
+      "buttonPressed": {
+        "text": "Каталог",
+        "rect": {
+          "x": 175.390625,
+          "y": 311.0625,
+          "width": 109.59375,
+          "height": 44,
+          "top": 311.0625,
+          "right": 284.984375,
+          "bottom": 355.0625,
+          "left": 175.390625
+        },
+        "focusVisible": true,
+        "active": true,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(146, 51, 4)",
+          "backgroundColor": "rgb(255, 226, 191)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(193, 74, 8)",
+          "outlineWidth": "2px",
+          "outlineStyle": "solid",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 155, 69)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.08s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        },
+        "isHitTarget": true
+      },
+      "activePressed": {
+        "text": "Полка",
+        "rect": {
+          "x": 71.390625,
+          "y": 311.0625,
+          "width": 100,
+          "height": 44,
+          "top": 311.0625,
+          "right": 171.390625,
+          "bottom": 355.0625,
+          "left": 71.390625
+        },
+        "focusVisible": false,
+        "active": true,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgb(146, 51, 4)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(146, 51, 4)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 255, 255)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.08s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        },
+        "isHitTarget": true
+      },
+      "randomHover": {
+        "text": "Случайное произведение",
+        "rect": {
+          "x": 296.984375,
+          "y": 311.0625,
+          "width": 239.375,
+          "height": 44,
+          "top": 311.0625,
+          "right": 536.359375,
+          "bottom": 355.0625,
+          "left": 296.984375
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(166, 59, 5)",
+          "backgroundColor": "rgb(255, 240, 222)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(166, 59, 5)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "disabledNormal": {
+        "text": "Для детейТолько подтверждённая аудитория",
+        "rect": {
+          "x": 880.3125,
+          "y": 311.0625,
+          "width": 96.296875,
+          "height": 44,
+          "top": 311.0625,
+          "right": 976.609375,
+          "bottom": 355.0625,
+          "left": 880.3125
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": true,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(218, 199, 230)",
+          "backgroundColor": "rgb(89, 43, 116)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(128, 81, 153)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(218, 199, 230)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "10px",
+          "paddingRight": "10px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "not-allowed"
+        }
+      },
+      "disabledDescription": {
+        "descriptions": [
+          {
+            "id": "book-shelf-search-r1-filter-children",
+            "text": "Только подтверждённая аудитория"
+          }
+        ],
+        "inlineDescription": "Только подтверждённая аудитория"
+      },
+      "disabledHover": {
+        "text": "Для детейТолько подтверждённая аудитория",
+        "rect": {
+          "x": 880.3125,
+          "y": 311.0625,
+          "width": 96.296875,
+          "height": 44,
+          "top": 311.0625,
+          "right": 976.609375,
+          "bottom": 355.0625,
+          "left": 880.3125
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": true,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(218, 199, 230)",
+          "backgroundColor": "rgb(89, 43, 116)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(128, 81, 153)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(218, 199, 230)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "10px",
+          "paddingRight": "10px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "not-allowed"
+        }
+      },
+      "motion": [
+        {
+          "selector": "",
+          "text": "",
+          "durationMs": [
+            0
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "all",
+          "transform": "none"
+        },
+        {
+          "selector": "is-active",
+          "text": "Полка",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Каталог",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "book-shelf-controls__random",
+          "text": "Случайное произведение",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Текущая полкаВесь книжный архивВо всём журнале",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "ПровереноКарточки с подтверждёнными данными",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "КлассикаПервое издание - не позднее 1945 года",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Для детейТолько подтверждённая аудитория",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "book-shelf-controls__advanced",
+          "text": "",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Новая полка",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Авто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        }
+      ],
+      "reducedMotion": [
+        {
+          "selector": "",
+          "text": "",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "is-active",
+          "text": "Полка",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Каталог",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "book-shelf-controls__random",
+          "text": "Случайное произведение",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Текущая полкаВесь книжный архивВо всём журнале",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "ПровереноКарточки с подтверждёнными данными",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "КлассикаПервое издание - не позднее 1945 года",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Для детейТолько подтверждённая аудитория",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "book-shelf-controls__advanced",
+          "text": "",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Новая полка",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Авто · СбалансированноеВысокоеСбалансированноеЭкономичное",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        }
+      ],
+      "panel": {
+        "text": "Поиск по книге, автору или странеПолкаКаталогСлучайное произведениеПоиск по книге, автору или странеТекущая полкаВесь книжный архивВо всём журнале46 результатовПровереноКарточки с подтверждёнными даннымиКлассикаПервое издание - не позднее 1945 годаДля детейТолько подтверждённая аудитория",
+        "rect": {
+          "x": 45,
+          "y": 241.0625,
+          "width": 1010,
+          "height": 129,
+          "top": 241.0625,
+          "right": 1055,
+          "bottom": 370.0625,
+          "left": 45
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(255, 250, 242)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(110deg, rgb(48, 10, 79), rgb(75, 8, 124))",
+          "borderTopWidth": "0px",
+          "borderRightWidth": "0px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "0px",
+          "borderColor": "rgb(255, 250, 242) rgb(255, 250, 242) rgba(255, 239, 224, 0.14)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 250, 242)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "26.4px",
+          "paddingRight": "26.4px",
+          "transitionProperty": "all",
+          "transitionDuration": "0s",
+          "transitionDelay": "0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "auto"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "width": 1100,
+      "qualityNormal": {
+        "text": "Auto · BalancedHighBalancedEconomy",
+        "rect": {
+          "x": 796.609375,
+          "y": 3918.0625,
+          "width": 232,
+          "height": 44,
+          "top": 3918.0625,
+          "right": 1028.609375,
+          "bottom": 3962.0625,
+          "left": 796.609375
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "rgb(193, 74, 8)",
+          "backgroundColor": "rgb(255, 250, 242)",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='m4 6 4 4 4-4' stroke='%23c14a08' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(239, 213, 190)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(193, 74, 8)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "12px",
+          "paddingRight": "36px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "parentNormal": {
+        "text": "QualityAuto · BalancedHighBalancedEconomy",
+        "rect": {
+          "x": 742.40625,
+          "y": 3918.0625,
+          "width": 286.203125,
+          "height": 44,
+          "top": 3918.0625,
+          "right": 1028.609375,
+          "bottom": 3962.0625,
+          "left": 742.40625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "rgb(238, 224, 245)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "borderTopWidth": "0px",
+          "borderRightWidth": "0px",
+          "borderBottomWidth": "0px",
+          "borderLeftWidth": "0px",
+          "borderColor": "rgb(238, 224, 245)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(238, 224, 245)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "0px",
+          "paddingRight": "0px",
+          "transitionProperty": "all",
+          "transitionDuration": "0s",
+          "transitionDelay": "0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "optionWidths": {
+        "font": "500 14px \"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "available": 182,
+        "clientWidth": 230,
+        "paddingLeft": "12px",
+        "paddingRight": "36px",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Auto · Balanced",
+            "selected": true,
+            "width": 103.8798828125
+          },
+          {
+            "value": "HIGH",
+            "label": "High",
+            "selected": false,
+            "width": 30.365951538085938
+          },
+          {
+            "value": "BALANCED",
+            "label": "Balanced",
+            "selected": false,
+            "width": 60.85792541503906
+          },
+          {
+            "value": "ECONOMY",
+            "label": "Economy",
+            "selected": false,
+            "width": 61.47395324707031
+          }
+        ],
+        "autoVariants": [
+          {
+            "profile": "HIGH",
+            "label": "Auto · High",
+            "width": 73.38790893554688
+          },
+          {
+            "profile": "BALANCED",
+            "label": "Auto · Balanced",
+            "width": 103.8798828125
+          },
+          {
+            "profile": "ECONOMY",
+            "label": "Auto · Economy",
+            "width": 104.49591064453125
+          }
+        ]
+      },
+      "qualityFocus": {
+        "text": "Auto · BalancedHighBalancedEconomy",
+        "rect": {
+          "x": 796.609375,
+          "y": 478.0625,
+          "width": 232,
+          "height": 44,
+          "top": 478.0625,
+          "right": 1028.609375,
+          "bottom": 522.0625,
+          "left": 796.609375
+        },
+        "focusVisible": true,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "rgb(193, 74, 8)",
+          "backgroundColor": "rgb(255, 250, 242)",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='m4 6 4 4 4-4' stroke='%23c14a08' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "2px",
+          "outlineStyle": "solid",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 155, 69)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "12px",
+          "paddingRight": "36px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "parentFocus": {
+        "text": "QualityAuto · BalancedHighBalancedEconomy",
+        "rect": {
+          "x": 742.40625,
+          "y": 478.0625,
+          "width": 286.203125,
+          "height": 44,
+          "top": 478.0625,
+          "right": 1028.609375,
+          "bottom": 522.0625,
+          "left": 742.40625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "color": "rgb(238, 224, 245)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "borderTopWidth": "0px",
+          "borderRightWidth": "0px",
+          "borderBottomWidth": "0px",
+          "borderLeftWidth": "0px",
+          "borderColor": "rgb(238, 224, 245)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(238, 224, 245)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "0px",
+          "paddingRight": "0px",
+          "transitionProperty": "all",
+          "transitionDuration": "0s",
+          "transitionDelay": "0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "searchInput": {
+        "text": "",
+        "rect": {
+          "x": 104.390625,
+          "y": 256.0625,
+          "width": 562.953125,
+          "height": 42,
+          "top": 256.0625,
+          "right": 667.34375,
+          "bottom": 298.0625,
+          "left": 104.390625
+        },
+        "focusVisible": true,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "400",
+          "color": "rgb(255, 250, 242)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "borderTopWidth": "0px",
+          "borderRightWidth": "0px",
+          "borderBottomWidth": "0px",
+          "borderLeftWidth": "0px",
+          "borderColor": "rgb(255, 250, 242)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 250, 242)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "9px",
+          "paddingRight": "0px",
+          "transitionProperty": "all",
+          "transitionDuration": "0s",
+          "transitionDelay": "0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "text"
+        }
+      },
+      "searchFrame": {
+        "text": "",
+        "rect": {
+          "x": 71.390625,
+          "y": 255.0625,
+          "width": 608.953125,
+          "height": 44,
+          "top": 255.0625,
+          "right": 680.34375,
+          "bottom": 299.0625,
+          "left": 71.390625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(255, 250, 242)",
+          "backgroundColor": "rgb(38, 7, 61)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "2px",
+          "outlineStyle": "solid",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 155, 69)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "default"
+        }
+      },
+      "buttonNormal": {
+        "text": "Catalogue",
+        "rect": {
+          "x": 175.390625,
+          "y": 311.0625,
+          "width": 124.3125,
+          "height": 44,
+          "top": 311.0625,
+          "right": 299.703125,
+          "bottom": 355.0625,
+          "left": 175.390625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(193, 74, 8)",
+          "backgroundColor": "rgb(255, 250, 242)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(239, 213, 190)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(193, 74, 8)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "activeButton": {
+        "text": "Shelf",
+        "rect": {
+          "x": 71.390625,
+          "y": 311.0625,
+          "width": 100,
+          "height": 44,
+          "top": 311.0625,
+          "right": 171.390625,
+          "bottom": 355.0625,
+          "left": 71.390625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgb(193, 74, 8)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(193, 74, 8)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 255, 255)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "buttonHover": {
+        "text": "Catalogue",
+        "rect": {
+          "x": 175.390625,
+          "y": 311.0625,
+          "width": 124.3125,
+          "height": 44,
+          "top": 311.0625,
+          "right": 299.703125,
+          "bottom": 355.0625,
+          "left": 175.390625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(166, 59, 5)",
+          "backgroundColor": "rgb(255, 240, 222)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(166, 59, 5)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "buttonFocus": {
+        "text": "Catalogue",
+        "rect": {
+          "x": 175.390625,
+          "y": 311.0625,
+          "width": 124.3125,
+          "height": 44,
+          "top": 311.0625,
+          "right": 299.703125,
+          "bottom": 355.0625,
+          "left": 175.390625
+        },
+        "focusVisible": true,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(193, 74, 8)",
+          "backgroundColor": "rgb(255, 250, 242)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "2px",
+          "outlineStyle": "solid",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 155, 69)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "contrasts": {
+        "buttonNormal": 4.754348747222053,
+        "buttonHover": 5.777102666045015,
+        "activeButton": 4.940584350248213
+      },
+      "buttonPressed": {
+        "text": "Catalogue",
+        "rect": {
+          "x": 175.390625,
+          "y": 311.0625,
+          "width": 124.3125,
+          "height": 44,
+          "top": 311.0625,
+          "right": 299.703125,
+          "bottom": 355.0625,
+          "left": 175.390625
+        },
+        "focusVisible": true,
+        "active": true,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(146, 51, 4)",
+          "backgroundColor": "rgb(255, 226, 191)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(193, 74, 8)",
+          "outlineWidth": "2px",
+          "outlineStyle": "solid",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 155, 69)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.08s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        },
+        "isHitTarget": true
+      },
+      "activePressed": {
+        "text": "Shelf",
+        "rect": {
+          "x": 71.390625,
+          "y": 311.0625,
+          "width": 100,
+          "height": 44,
+          "top": 311.0625,
+          "right": 171.390625,
+          "bottom": 355.0625,
+          "left": 71.390625
+        },
+        "focusVisible": false,
+        "active": true,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgb(146, 51, 4)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(146, 51, 4)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 255, 255)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.08s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        },
+        "isHitTarget": true
+      },
+      "randomHover": {
+        "text": "Random work",
+        "rect": {
+          "x": 311.703125,
+          "y": 311.0625,
+          "width": 149.265625,
+          "height": 44,
+          "top": 311.0625,
+          "right": 460.96875,
+          "bottom": 355.0625,
+          "left": 311.703125
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(166, 59, 5)",
+          "backgroundColor": "rgb(255, 240, 222)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(255, 155, 69)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(166, 59, 5)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "pointer"
+        }
+      },
+      "disabledNormal": {
+        "text": "For childrenVerified audience only",
+        "rect": {
+          "x": 870.765625,
+          "y": 311.0625,
+          "width": 105.84375,
+          "height": 44,
+          "top": 311.0625,
+          "right": 976.609375,
+          "bottom": 355.0625,
+          "left": 870.765625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": true,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(218, 199, 230)",
+          "backgroundColor": "rgb(89, 43, 116)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(128, 81, 153)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(218, 199, 230)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "10px",
+          "paddingRight": "10px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "not-allowed"
+        }
+      },
+      "disabledDescription": {
+        "descriptions": [
+          {
+            "id": "book-shelf-search-r1-filter-children",
+            "text": "Verified audience only"
+          }
+        ],
+        "inlineDescription": "Verified audience only"
+      },
+      "disabledHover": {
+        "text": "For childrenVerified audience only",
+        "rect": {
+          "x": 870.765625,
+          "y": 311.0625,
+          "width": 105.84375,
+          "height": 44,
+          "top": 311.0625,
+          "right": 976.609375,
+          "bottom": 355.0625,
+          "left": 870.765625
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": true,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "15px",
+          "fontWeight": "500",
+          "color": "rgb(218, 199, 230)",
+          "backgroundColor": "rgb(89, 43, 116)",
+          "backgroundImage": "none",
+          "borderTopWidth": "1px",
+          "borderRightWidth": "1px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "1px",
+          "borderColor": "rgb(128, 81, 153)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(218, 199, 230)",
+          "boxShadow": "none",
+          "appearance": "auto",
+          "paddingLeft": "10px",
+          "paddingRight": "10px",
+          "transitionProperty": "color, background-color, border-color",
+          "transitionDuration": "0.14s, 0.14s, 0.14s",
+          "transitionDelay": "0s, 0s, 0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "not-allowed"
+        }
+      },
+      "motion": [
+        {
+          "selector": "",
+          "text": "",
+          "durationMs": [
+            0
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "all",
+          "transform": "none"
+        },
+        {
+          "selector": "is-active",
+          "text": "Shelf",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Catalogue",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "book-shelf-controls__random",
+          "text": "Random work",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Current shelfComplete book archiveAcross the journal",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "ReviewedRecords with verified metadata",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "ClassicsFirst published no later than 1945",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "For childrenVerified audience only",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "book-shelf-controls__advanced",
+          "text": "",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "New shelf",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Auto · BalancedHighBalancedEconomy",
+          "durationMs": [
+            140,
+            140,
+            140
+          ],
+          "delayMs": [
+            0,
+            0,
+            0
+          ],
+          "property": "color, background-color, border-color",
+          "transform": "none"
+        }
+      ],
+      "reducedMotion": [
+        {
+          "selector": "",
+          "text": "",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "is-active",
+          "text": "Shelf",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Catalogue",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "book-shelf-controls__random",
+          "text": "Random work",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Current shelfComplete book archiveAcross the journal",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "ReviewedRecords with verified metadata",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "ClassicsFirst published no later than 1945",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "For childrenVerified audience only",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "book-shelf-controls__advanced",
+          "text": "",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "New shelf",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        },
+        {
+          "selector": "",
+          "text": "Auto · BalancedHighBalancedEconomy",
+          "durationMs": [
+            0.01
+          ],
+          "delayMs": [
+            0
+          ],
+          "property": "none",
+          "transform": "none"
+        }
+      ],
+      "panel": {
+        "text": "Search by book, writer or countryShelfCatalogueRandom workSearch by book, writer or countryCurrent shelfComplete book archiveAcross the journal46 resultsReviewedRecords with verified metadataClassicsFirst published no later than 1945For childrenVerified audience only",
+        "rect": {
+          "x": 45,
+          "y": 241.0625,
+          "width": 1010,
+          "height": 129,
+          "top": 241.0625,
+          "right": 1055,
+          "bottom": 370.0625,
+          "left": 45
+        },
+        "focusVisible": false,
+        "active": false,
+        "disabled": false,
+        "style": {
+          "font": "",
+          "fontFamily": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "color": "rgb(255, 250, 242)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(110deg, rgb(48, 10, 79), rgb(75, 8, 124))",
+          "borderTopWidth": "0px",
+          "borderRightWidth": "0px",
+          "borderBottomWidth": "1px",
+          "borderLeftWidth": "0px",
+          "borderColor": "rgb(255, 250, 242) rgb(255, 250, 242) rgba(255, 239, 224, 0.14)",
+          "outlineWidth": "3px",
+          "outlineStyle": "none",
+          "outlineOffset": "0px",
+          "outlineColor": "rgb(255, 250, 242)",
+          "boxShadow": "none",
+          "appearance": "none",
+          "paddingLeft": "26.4px",
+          "paddingRight": "26.4px",
+          "transitionProperty": "all",
+          "transitionDuration": "0s",
+          "transitionDelay": "0s",
+          "animationName": "none",
+          "animationDuration": "0s",
+          "transform": "none",
+          "opacity": "1",
+          "cursor": "auto"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "issues": [],
+  "finishedAt": "2026-09-05T16:17:47.795Z"
+}

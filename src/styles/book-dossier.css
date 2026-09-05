@@ -396,7 +396,7 @@
 .book-shelf-frame .book-shelf-quality-control,
 .book-shelf-frame .book-shelf-quality-control:focus-within { min-height: 44px; padding: 0; color: #eee0f5; border: 0; outline: none; border-radius: 0; background: transparent; box-shadow: none; }
 .book-shelf-quality-control select {
-  width: clamp(224px, 17vw, 244px);
+  width: clamp(232px, 17vw, 244px);
   min-height: 44px;
   padding: 8px 32px 8px 12px;
   color: #c14a08;
@@ -528,9 +528,12 @@
   .book-shelf-quality-control { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 12px; }
   .book-shelf-quality-control select { width: 100%; max-width: none; }
 }
-@media (max-width: 359px) {
+@media (max-width: 374px) {
   .book-shelf-controls .book-archive-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .book-shelf-controls .book-archive-filters > button:last-child { grid-column: 1 / -1; }
+  .book-shelf-controls__advanced { align-self: start; }
+}
+@media (max-width: 359px) {
   .book-shelf-quality-control { grid-template-columns: minmax(0, 1fr); gap: 6px; }
 }
 
