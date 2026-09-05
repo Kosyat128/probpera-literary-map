@@ -19896,7 +19896,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .literary-globe .globe-controls {
   bottom: 50px;
-  grid-template-columns: 48px 48px repeat(3, 86px);
+  grid-template-columns: repeat(2, var(--globe-control-zoom-width, 48px)) repeat(3, 86px);
   gap: 4px;
   width: auto;
   max-width: calc(100% - 24px);
@@ -20027,8 +20027,8 @@ html[data-theme="book"] .calendar-heading h3 {
   button[data-globe-control="zoom-in"],
   button[data-globe-control="zoom-out"]
 ) {
-  width: 48px;
-  min-width: 48px;
+  width: var(--globe-control-zoom-width, 48px);
+  min-width: var(--globe-control-zoom-width, 48px);
 }
 
 .literary-globe .globe-controls button small {
@@ -20193,7 +20193,7 @@ html[data-theme="book"] .calendar-heading h3 {
 @media (max-width: 680px) {
   .literary-globe .globe-controls {
     bottom: 52px;
-    grid-template-columns: 48px 48px repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, var(--globe-control-zoom-width, 48px)) repeat(3, minmax(0, 1fr));
     width: min(358px, calc(100% - 24px));
   }
 
@@ -20243,10 +20243,22 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .literary-globe .globe-controls {
+    --globe-control-zoom-width: 44px;
+
+    gap: 2px;
     width: calc(100% - 28px);
   }
 
-  .literary-globe .globe-controls .ui-action__icon {
+  .literary-globe .globe-controls button {
+    padding-inline: 1px;
+  }
+
+  .literary-globe .globe-controls .ui-action {
+    gap: 2px;
+  }
+
+  .literary-globe .globe-controls .ui-action__icon,
+  .literary-globe .globe-controls .ui-action__icon > svg {
     width: 16px;
     height: 16px;
   }
@@ -20300,7 +20312,8 @@ html[data-theme="book"] .calendar-heading h3 {
     gap: 2px;
   }
 
-  .literary-globe .globe-controls .ui-action__icon {
+  .literary-globe .globe-controls .ui-action__icon,
+  .literary-globe .globe-controls .ui-action__icon > svg {
     width: 14px;
     height: 14px;
   }
@@ -20374,7 +20387,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls {
     bottom: 52px;
-    grid-template-columns: 48px 48px repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, var(--globe-control-zoom-width, 48px)) repeat(3, minmax(0, 1fr));
   }
 
   .literary-globe .globe-instruction {
@@ -20869,7 +20882,7 @@ html[data-theme="book"] .calendar-heading h3 {
   top: max(14px, env(safe-area-inset-top));
   right: max(16px, env(safe-area-inset-right));
   left: max(16px, env(safe-area-inset-left));
-  grid-template-columns: clamp(232px, 18vw, 286px) minmax(0, 1fr);
+  grid-template-columns: clamp(330px, 24vw, 360px) minmax(0, 1fr);
   gap: 0;
   box-sizing: border-box;
   width: auto;
@@ -20996,7 +21009,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-family: var(--sans);
   font-size: var(--type-caption);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.35;
   letter-spacing: 0.065em;
   text-overflow: ellipsis;
   text-transform: uppercase;
@@ -21009,7 +21022,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-family: var(--sans);
   font-size: 14px;
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.35;
   letter-spacing: 0.012em;
   text-overflow: ellipsis;
   white-space: nowrap;

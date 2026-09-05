@@ -1,4 +1,9 @@
 @layer site-defaults {
+  /* Decorative overhang must clip without creating a focus-scroll container. */
+  #atlas:not([data-atlas-immersive="true"]) {
+    overflow: clip;
+  }
+
   /* Keep the existing search/filter panel owners intact in immersive mode. */
   .atlas-intro {
     display: contents;
@@ -9,7 +14,7 @@
     position: relative;
     z-index: 3;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(220px, calc(25vw - 140px), 320px);
+    grid-template-columns: minmax(0, 1fr) clamp(220px, calc(25vw - 140px), 240px);
     gap: 48px 16px;
     max-width: 1530px;
     margin: 0 auto 24px;
@@ -72,9 +77,29 @@
     padding-block: var(--ui-space-2);
   }
 
-  @media (min-width: 961px) and (max-width: 1499px) {
+  @media (min-width: 961px) {
     #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters button {
       padding-inline: var(--ui-space-2);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters {
+      flex-wrap: nowrap;
+      align-items: stretch;
+    }
+
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters button:is(
+      [data-atlas-filter="nobel"],
+      [data-atlas-filter="portrait"],
+      [data-atlas-filter="verified"]
+    ) {
+      flex-shrink: 1;
+      min-width: min-content;
+    }
+
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search {
+      align-self: center;
     }
   }
 
@@ -95,6 +120,20 @@
     #atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search > label {
       position: static;
       margin-bottom: 8px;
+    }
+  }
+
+  @media (max-width: 680px) {
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters button {
+      width: 100%;
+      min-width: 0;
+      padding-inline: var(--ui-space-2);
     }
   }
 }

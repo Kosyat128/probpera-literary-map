@@ -49,10 +49,11 @@ async function waitForStableAtlas(page) {
   return experience;
 }
 
-async function normalizeQuietChrome(experience) {
-  await experience.evaluate((element) => {
-    element.setAttribute("data-atlas-quiet", "false");
-  });
+async function normalizeQuietChrome(page, experience) {
+  // Wake the real activity owner; a DOM attribute alone is overwritten by React.
+  await page.mouse.move(2, 2);
+  await page.clock.runFor(100);
+  await expect(experience).toHaveAttribute("data-atlas-quiet", "false");
 }
 
 async function setVisualContract(experience, contract) {
@@ -124,6 +125,7 @@ test.describe("globe visual regression", () => {
       isMobile ? { width: 390, height: 844 } : { width: 1440, height: 900 }
     );
     await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.clock.install();
     await page.goto(
       "/?atlas=verified&atlasView=immersive&country=maldives#atlas",
       { waitUntil: "domcontentloaded" }
@@ -134,7 +136,10 @@ test.describe("globe visual regression", () => {
     const sheet = experience.locator(".atlas-country-presentation");
     const sheetContent = sheet.locator("#atlas-country-sheet-content");
 
-    await normalizeQuietChrome(experience);
+    // Freeze inactivity only after the real scene is ready. Resume immediately
+    // after the chrome capture so subsequent writer interactions run normally.
+    await page.clock.pauseAt(new Date(Date.now() + 1_000));
+    await normalizeQuietChrome(page, experience);
     const editionRail = await revealEditionRail(globe);
     await page.evaluate(() => {
       if (document.activeElement instanceof HTMLElement) {
@@ -148,12 +153,17 @@ test.describe("globe visual regression", () => {
       immersiveChrome,
       editionRail,
     ]);
-    await expect(page).toHaveScreenshot(
-      isMobile
-        ? "globe-mobile-top-chrome-edition-rail.png"
-        : "globe-desktop-top-chrome-edition-rail.png",
-      { ...screenshotOptions, clip: topChromeClip }
-    );
+    try {
+      await expect(page).toHaveScreenshot(
+        isMobile
+          ? "globe-mobile-top-chrome-edition-rail.png"
+          : "globe-desktop-top-chrome-edition-rail.png",
+        { ...screenshotOptions, clip: topChromeClip }
+      );
+      await expect(experience).toHaveAttribute("data-atlas-quiet", "false");
+    } finally {
+      await page.clock.resume();
+    }
     await setVisualContract(experience, null);
 
     if (isMobile) {

@@ -110,7 +110,7 @@ try {
         await page.locator('[data-atlas-archives-toggle]').click();
         await page.locator("#atlas-largest-archives").waitFor({ state: "visible" });
         const archives = await page.locator("#atlas-largest-archives").boundingBox();
-        assert.ok(archives.x >= 0 && archives.x + archives.width <= width + 1, "archive dropdown leaves viewport");
+        assert.ok(archives.x >= 0 && archives.x + archives.width <= width + 1, `archive dropdown leaves viewport (${locale}/${width}): ${JSON.stringify(archives)}`);
         await page.keyboard.press("Escape");
         await page.locator('[data-atlas-filter="rich"]').click();
         assert.equal(await page.locator('[data-atlas-filter="rich"]').getAttribute("aria-pressed"), "true");

@@ -521,6 +521,12 @@ test("premium globe controls stay balanced and inside every viewport", async ({
               label.scrollHeight <= label.clientHeight + 1)
           );
         }),
+        identityLabelsFit: Array.from(
+          element.querySelectorAll(".atlas-immersive-identity small, .atlas-immersive-identity strong")
+        ).every((label) => !label.getClientRects().length || (
+          label.scrollWidth <= label.clientWidth + 1 &&
+          label.scrollHeight <= label.clientHeight + 1
+        )),
         identityDisplay: getComputedStyle(
           element.querySelector(".atlas-immersive-identity")
         ).display,
@@ -600,6 +606,7 @@ test("premium globe controls stay balanced and inside every viewport", async ({
       expect(Math.abs(geometry.identity.width - geometry.identity.height)).toBeLessThanOrEqual(1);
       expect(geometry.identity.width).toBeGreaterThanOrEqual(48);
     } else if (viewport.width > 1220) {
+      expect(geometry.identityLabelsFit, "complete encyclopedia label and title").toBe(true);
       expect(geometry.identity.width).toBeGreaterThanOrEqual(232);
       expect(geometry.identity.width).toBeGreaterThan(geometry.identity.height);
       expect(geometry.identity.height).toBeGreaterThanOrEqual(48);
