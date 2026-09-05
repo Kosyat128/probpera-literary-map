@@ -15,8 +15,8 @@ import {
 
 import BrandBookIcon from "./BrandBookIcon";
 import BrandFilterIcon from "./BrandFilterIcon";
-import BrandQuillIcon from "./BrandQuillIcon";
 import BrandSearchIcon from "./BrandSearchIcon";
+import BrandSparkleIcon from "./BrandSparkleIcon";
 
 export type BookShelfViewMode = "shelf" | "catalog";
 export type BookShelfSearchScope = "library" | "archive" | "global";
@@ -209,6 +209,9 @@ type Props = {
   onQueryChange: (value: string) => void;
   searchLabel: string;
   searchPlaceholder: string;
+  scopeLabel?: string;
+  collectionControl?: ReactNode;
+  settingsControl?: ReactNode;
   searchScope: BookShelfSearchScope;
   onSearchScopeChange: (scope: BookShelfSearchScope) => void;
   libraryScopeLabel: string;
@@ -229,6 +232,8 @@ type Props = {
   formatCount: (value: number) => string;
   onOpenAdvancedFilters: () => void;
   advancedFiltersLabel: string;
+  advancedFiltersOpen?: boolean;
+  advancedFiltersId?: string;
   suggestions?: ReactNode;
   suggestionsLabel?: string;
   onSuggestionsDismiss?: () => void;
@@ -239,6 +244,9 @@ export default function BookShelfControls({
   onQueryChange,
   searchLabel,
   searchPlaceholder,
+  scopeLabel = searchLabel,
+  collectionControl,
+  settingsControl,
   searchScope,
   onSearchScopeChange,
   libraryScopeLabel,
@@ -252,12 +260,12 @@ export default function BookShelfControls({
   randomDescription,
   randomDisabled,
   onRandomWork,
-  filters,
   activeFilterId,
-  onFilterChange,
   resultCountLabel,
   onOpenAdvancedFilters,
   advancedFiltersLabel,
+  advancedFiltersOpen = false,
+  advancedFiltersId,
   suggestions,
   suggestionsLabel,
   onSuggestionsDismiss,
@@ -275,10 +283,6 @@ export default function BookShelfControls({
     suggestionCount > 0 ? 0 : -1
   );
   const suggestionsOpen = suggestionsAvailable && !suggestionsDismissed;
-  const compactOrder = ["verified", "classic", "children"];
-  const compactFilters = compactOrder.flatMap((id) =>
-    filters.filter((filter) => filter.id === id)
-  );
 
   useEffect(() => {
     setSuggestionsDismissed(false);
@@ -363,10 +367,8 @@ export default function BookShelfControls({
   return (
     <div className="book-archive-toolbar book-shelf-controls">
       <div className="book-shelf-controls__topline">
-        <span className="book-shelf-controls__mark" aria-hidden="true">
-          <BrandQuillIcon />
-        </span>
-
+        {collectionControl ? <div className="book-shelf-controls__collection">{collectionControl}</div> : null}
+        <div className="book-shelf-controls__search-group">
         <label className="book-shelf-controls__search" htmlFor={controlId}>
           <span id={searchLabelId}>{searchLabel}</span>
           <span className="book-shelf-controls__input">
@@ -422,85 +424,20 @@ export default function BookShelfControls({
           </span>
         </label>
 
-        <div className="book-shelf-controls__views" role="group" aria-label={catalogLabel}>
-          <button
-            type="button"
-            className={viewMode === "shelf" ? "is-active" : ""}
-            aria-pressed={viewMode === "shelf"}
-            onClick={() => onViewModeChange("shelf")}
-          >
-            <BrandBookIcon />
-            {shelfLabel}
-          </button>
-          <button
-            type="button"
-            className={viewMode === "catalog" ? "is-active" : ""}
-            aria-pressed={viewMode === "catalog"}
-            onClick={() => onViewModeChange("catalog")}
-          >
-            {catalogLabel}
-          </button>
-          <button
-            type="button"
-            className="book-shelf-controls__random"
-            onClick={(event) => onRandomWork(event.currentTarget)}
-            disabled={randomDisabled}
-            aria-label={randomDescription}
-            title={randomDescription}
-          >
-            <span aria-hidden="true">✦</span>
-            {randomLabel}
-          </button>
-        </div>
-
         <label className="book-shelf-controls__scope">
-          <span className="book-shelf-controls__visually-hidden">{searchLabel}</span>
+          <span className="book-shelf-controls__visually-hidden">{scopeLabel}</span>
           <select
             value={searchScope}
             onChange={(event) =>
               onSearchScopeChange(event.target.value as BookShelfSearchScope)
             }
-            aria-label={searchLabel}
+            aria-label={scopeLabel}
           >
             <option value="library">{libraryScopeLabel}</option>
             <option value="archive">{archiveScopeLabel}</option>
             <option value="global">{globalScopeLabel}</option>
           </select>
         </label>
-
-        <div className="book-filter-panel">
-          <span className="book-shelf-controls__visually-hidden">
-            {resultCountLabel}
-          </span>
-          <div className="book-archive-filters" role="group" aria-label={resultCountLabel}>
-            {compactFilters.map((filter) => (
-              <button
-                className={activeFilterId === filter.id ? "is-active" : ""}
-                type="button"
-                key={filter.id}
-                onClick={() => onFilterChange(filter.id)}
-                aria-pressed={activeFilterId === filter.id}
-                disabled={filter.unavailable}
-              >
-                <span className="book-filter-copy">
-                  <strong>{filter.label}</strong>
-                  <small>{filter.description}</small>
-                </span>
-              </button>
-            ))}
-          </div>
-          <button
-            className="book-shelf-controls__advanced"
-            type="button"
-            onClick={onOpenAdvancedFilters}
-            aria-label={advancedFiltersLabel}
-            title={advancedFiltersLabel}
-          >
-            <BrandFilterIcon />
-          </button>
-        </div>
-      </div>
-
       {suggestionsOpen ? (
         <div
           ref={suggestionsRef}
@@ -521,6 +458,65 @@ export default function BookShelfControls({
           {decoratedSuggestions}
         </div>
       ) : null}
+        </div>
+
+        <div className="book-shelf-controls__views" role="group" aria-label={catalogLabel}>
+          <button
+            type="button"
+            className={viewMode === "shelf" ? "is-active" : ""}
+            aria-pressed={viewMode === "shelf"}
+            onClick={() => onViewModeChange("shelf")}
+          >
+            <BrandBookIcon />
+            <span>{shelfLabel}</span>
+          </button>
+          <button
+            type="button"
+            className={viewMode === "catalog" ? "is-active" : ""}
+            aria-pressed={viewMode === "catalog"}
+            onClick={() => onViewModeChange("catalog")}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="4" y="4" width="6" height="6" rx="1" />
+              <rect x="14" y="4" width="6" height="6" rx="1" />
+              <rect x="4" y="14" width="6" height="6" rx="1" />
+              <rect x="14" y="14" width="6" height="6" rx="1" />
+            </svg>
+            <span>{catalogLabel}</span>
+          </button>
+        </div>
+        <div className="book-filter-panel">
+          <span className="book-shelf-controls__visually-hidden">
+            {resultCountLabel}
+          </span>
+          <button
+            className={`book-shelf-controls__advanced${activeFilterId !== "all" ? " has-filters" : ""}`}
+            type="button"
+            onClick={onOpenAdvancedFilters}
+            aria-label={advancedFiltersLabel}
+            title={advancedFiltersLabel}
+            aria-haspopup="dialog"
+            aria-expanded={advancedFiltersOpen}
+            aria-controls={advancedFiltersOpen ? advancedFiltersId : undefined}
+          >
+            <BrandFilterIcon />
+          </button>
+        </div>
+        <button
+          type="button"
+          className="book-shelf-controls__random"
+          onClick={(event) => onRandomWork(event.currentTarget)}
+          disabled={randomDisabled}
+          aria-label={randomDescription}
+          title={randomDescription}
+        >
+          <BrandSparkleIcon />
+          <span>{randomLabel}</span>
+        </button>
+        {settingsControl ? <div className="book-shelf-controls__settings">{settingsControl}</div> : null}
+      </div>
+
+
     </div>
   );
 }

@@ -203,6 +203,7 @@ import BrandHeartIcon from "./BrandHeartIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
 import BrandArrowIcon from "./BrandArrowIcon";
 import BrandBookIcon from "./BrandBookIcon";
+import BrandPlusIcon from "./BrandPlusIcon";
 import BookCollectionMembershipDialog from "./BookCollectionMembershipDialog";
 import BookCollectionManagerSheet, {
   type ManagedBookCollection,
@@ -217,6 +218,7 @@ import BookShelfControls, {
   type BookShelfSearchScope,
   type BookShelfViewMode,
 } from "./BookShelfControls";
+import BookShelfQualityMenu from "./BookShelfQualityMenu";
 import BookShelfFrame from "./BookShelfFrame";
 import BookShelfProgressRail from "./BookShelfProgressRail";
 import BookShelfScene, {
@@ -919,7 +921,11 @@ export default function BookArchiveSection({
       );
       const restoreCloseDestination = () => {
         if (centerAfterClose) {
-          centerShelfScene();
+          // Removing the detail column reconnects the scene. Focus the current
+          // node after that commit, just like the catalogue trigger restoration.
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(centerShelfScene);
+          });
           return;
         }
         restoreBookTriggerFocus(returnFocus);
@@ -2209,8 +2215,7 @@ export default function BookArchiveSection({
       }
 
       const phase = shelfStateRef.current.phase;
-      if (["SHELF_IDLE", "SHELF_MOVING", "SHELF_SETTLING"].includes(phase) &&
-          (focusedBookKeyRef.current !== key || phase !== "SHELF_IDLE")) {
+      if (["SHELF_MOVING", "SHELF_SETTLING"].includes(phase)) {
         pendingInspectionBookRef.current = item.book;
         if (focusedBookKeyRef.current !== key) requestFocusBook(key);
         return;
@@ -3671,7 +3676,7 @@ export default function BookArchiveSection({
       updateFilterState({ savedOnly: false })
     );
   }
-  if (filterState.sort !== "editorial-relevance") {
+  if (filterState.sort !== "editorial-relevance" && filterState.sort !== "manual") {
     pushChip("sort", t(sortLabels[filterState.sort]), () =>
       updateFilterState({ sort: "editorial-relevance" })
     );
@@ -3908,18 +3913,102 @@ export default function BookArchiveSection({
       >
         <div className="book-shelf-frame__search-rail">
           <BookShelfControls
+            collectionControl={
+              <BookCollectionShelfSwitcher compact
+                selection={collectionShelfSelection}
+                onChange={changeActiveShelf}
+                labels={{
+                  control: t("Текущая полка"),
+                  emptyGroup: t("Пока нет полок"),
+                  ready: (count) =>
+                    language === "en"
+                      ? `${number(count)} works`
+                      : `${number(count)} произведений`,
+                  unresolved: t("Подборка обновляется"),
+                  empty: t("Пока пусто"),
+                  missing: (count) =>
+                    language === "en"
+                      ? `${number(count)} unavailable`
+                      : `${number(count)} недоступно`,
+                  partial: (available, missing) =>
+                    language === "en"
+                      ? `${number(available)} works, ${number(missing)} unavailable`
+                      : `${number(available)} произведений, ${number(missing)} недоступно`,
+                }}
+              />
+            }
+            settingsControl={
+              <BookShelfQualityMenu label={t("Настроить полку")}>
+                <button className="book-shelf-options__create"
+                  type="button"
+                  onClick={() => void createEmptyManualShelf()}
+                >
+                  <BrandPlusIcon />
+                  {t("Новая полка")}
+                </button>
+                {collectionShelfSelection.activeOption.manageable ? (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setManagerCollectionId(
+                        collectionShelfSelection.activeOption.id
+                      )
+                    }
+                  >
+                    {t("Настроить полку")}
+                  </button>
+                ) : null}
+                <label className="book-shelf-quality-control">
+                  <span>{t("Качество")}</span>
+                  <select
+                    value={qualityPreference}
+                    onChange={(event) =>
+                      changeQualityPreference(
+                        event.currentTarget.value as BookShelfQualityPreference
+                      )
+                    }
+                    aria-label={t("Качество трёхмерной полки")}
+                  >
+                    <option value="auto">
+                      {t("Авто")} ·{" "}
+                      {qualitySettings.profile === "HIGH"
+                        ? language === "en"
+                          ? "High"
+                          : "Высокое"
+                        : qualitySettings.profile === "BALANCED"
+                          ? language === "en"
+                            ? "Balanced"
+                            : "Сбалансированное"
+                          : language === "en"
+                            ? "Economy"
+                            : "Экономичное"}
+                    </option>
+                    <option value="HIGH">
+                      {language === "en" ? "High" : "Высокое"}
+                    </option>
+                    <option value="BALANCED">
+                      {language === "en" ? "Balanced" : "Сбалансированное"}
+                    </option>
+                    <option value="ECONOMY">
+                      {language === "en" ? "Economy" : "Экономичное"}
+                    </option>
+                  </select>
+                </label>
+              </BookShelfQualityMenu>
+            }
+            scopeLabel={t("Область поиска")}
             query={query}
             onQueryChange={(value) => {
               setRandomAnnouncement("");
               setQuery(value);
             }}
             searchLabel={t("Поиск по книге, автору или стране")}
-            searchPlaceholder={t("Например, Достоевский или Япония")}
+            searchPlaceholder={t("Поиск")}
             searchScope={searchScope}
             onSearchScopeChange={setSearchScope}
-            libraryScopeLabel={t("Текущая полка")}
-            archiveScopeLabel={t("Весь книжный архив")}
-            globalScopeLabel={t("Во всём журнале")}
+            libraryScopeLabel={t("На полке")}
+            archiveScopeLabel={t("В архиве")}
+            globalScopeLabel={t("В журнале")}
             viewMode={viewMode}
             onViewModeChange={(mode) => {
               setRandomAnnouncement("");
@@ -3928,7 +4017,7 @@ export default function BookArchiveSection({
             }}
             shelfLabel={shelfTabLabel}
             catalogLabel={catalogTabLabel}
-            randomLabel={t("Случайное произведение")}
+            randomLabel={t("Наугад")}
             randomDescription={t(
               "Выбрать случайное произведение из всего архива"
             )}
@@ -3944,6 +4033,8 @@ export default function BookArchiveSection({
             formatCount={number}
             onOpenAdvancedFilters={openAdvancedFilters}
             advancedFiltersLabel={t("Расширенные фильтры")}
+            advancedFiltersOpen={advancedFiltersOpen}
+            advancedFiltersId="book-archive-advanced-filters"
             suggestions={searchSuggestions}
           />
         </div>
@@ -3995,86 +4086,6 @@ export default function BookArchiveSection({
           ) : null}
         </div>
 
-        <div className="book-shelf-frame__collection">
-          <BookCollectionShelfSwitcher
-            selection={collectionShelfSelection}
-            onChange={changeActiveShelf}
-            labels={{
-              control: t("Текущая полка"),
-              emptyGroup: t("Пока нет полок"),
-              ready: (count) =>
-                language === "en"
-                  ? `${number(count)} works`
-                  : `${number(count)} произведений`,
-              unresolved: t("Подборка обновляется"),
-              empty: t("Пока пусто"),
-              missing: (count) =>
-                language === "en"
-                  ? `${number(count)} unavailable`
-                  : `${number(count)} недоступно`,
-              partial: (available, missing) =>
-                language === "en"
-                  ? `${number(available)} works, ${number(missing)} unavailable`
-                  : `${number(available)} произведений, ${number(missing)} недоступно`,
-            }}
-          />
-          <div className="book-shelf-frame__collection-actions">
-            <button
-              type="button"
-              onClick={() => void createEmptyManualShelf()}
-            >
-              <span aria-hidden="true">＋</span>
-              {t("Новая полка")}
-            </button>
-            {collectionShelfSelection.activeOption.manageable ? (
-              <button
-                type="button"
-                onClick={() =>
-                  setManagerCollectionId(
-                    collectionShelfSelection.activeOption.id
-                  )
-                }
-              >
-                {t("Настроить полку")}
-              </button>
-            ) : null}
-            <label className="book-shelf-quality-control">
-              <span>{t("Качество")}</span>
-              <select
-                value={qualityPreference}
-                onChange={(event) =>
-                  changeQualityPreference(
-                    event.currentTarget.value as BookShelfQualityPreference
-                  )
-                }
-                aria-label={t("Качество трёхмерной полки")}
-              >
-                <option value="auto">
-                  {t("Авто")} ·{" "}
-                  {qualitySettings.profile === "HIGH"
-                    ? language === "en"
-                      ? "High"
-                      : "Высокое"
-                    : qualitySettings.profile === "BALANCED"
-                      ? language === "en"
-                        ? "Balanced"
-                        : "Сбалансированное"
-                      : language === "en"
-                        ? "Economy"
-                        : "Экономичное"}
-                </option>
-                <option value="HIGH">
-                  {language === "en" ? "High" : "Высокое"}
-                </option>
-                <option value="BALANCED">
-                  {language === "en" ? "Balanced" : "Сбалансированное"}
-                </option>
-                <option value="ECONOMY">
-                  {language === "en" ? "Economy" : "Экономичное"}
-                </option>
-              </select>
-            </label>
-          </div>
           {collectionShelfSelection.missingReferences.length > 0 ? (
             <div className="book-shelf-frame__missing-references" role="status">
               <strong>{t("Некоторые книги больше недоступны в архиве")}</strong>
@@ -4103,7 +4114,6 @@ export default function BookArchiveSection({
               </ul>
             </div>
           ) : null}
-        </div>
 
         <div className="book-shelf-frame__workspace">
 
@@ -5066,6 +5076,7 @@ export default function BookArchiveSection({
           <aside
             ref={filterDrawerRef}
             className="book-shelf-frame__filter-drawer"
+            id="book-archive-advanced-filters"
             role="dialog"
             aria-modal={advancedFiltersOpen ? "true" : undefined}
             aria-label={t("Расширенные фильтры книжного архива")}
@@ -5089,6 +5100,17 @@ export default function BookArchiveSection({
             </p>
             {advancedFiltersOpen && (
               <div className="book-shelf-filter-drawer__form">
+                <div className="book-shelf-filter-drawer__presets" role="group" aria-label={t("Активные фильтры")}>
+                  {quickFilterOptions.filter((option) => ["verified", "classic"].includes(option.id)).map((option) => (
+                    <button key={option.id} type="button"
+                      className={filterState.quickPreset === option.id ? "is-active" : ""}
+                      aria-pressed={filterState.quickPreset === option.id}
+                      disabled={option.unavailable}
+                      onClick={() => applyQuickFilter(option.id as BookArchiveQuickPreset)}>
+                      {option.label}
+                    </button>
+                  ))}
+                </div>
                 <label className="book-shelf-filter-drawer__select">
                   <span>{t("Автор")}</span>
                   <select

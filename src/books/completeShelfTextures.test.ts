@@ -1,11 +1,12 @@
-import type { CanvasTexture } from "three";
+import { SRGBColorSpace, type CanvasTexture } from "three";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { OwnerBookTypographyTokens } from "./bookTypography";
+import { OwnerBookTypographyTokens, ensureBookTypographyReady } from "./bookTypography";
 import { buildCompleteShelfBookSpec } from "./completeShelfModel";
 import {
   buildCompleteShelfArtworkPlan,
   createCompleteShelfArtworkTextures,
+  createCompleteShelfClothAlbedoMap,
   disposeCompleteShelfTextures,
   isCompleteShelfCoverTextureUrlAllowed,
   loadCompleteShelfCoverTexture,
@@ -21,6 +22,74 @@ import {
 afterEach(() => vi.unstubAllGlobals());
 
 describe("Complete Shelf procedural artwork data", () => {
+  it("keeps woven albedo neutral, faint and identical in design space across quality", () => {
+    const traces: unknown[][] = [];
+    vi.stubGlobal("document", {
+      createElement: () => {
+        const trace: unknown[] = [];
+        traces.push(trace);
+        const context = {
+          scale() {},
+          fillRect() {}, beginPath() {}, stroke() {},
+          set fillStyle(value: string) { trace.push(value); },
+          set strokeStyle(value: string) { trace.push(value); },
+          moveTo: (x: number, y: number) => trace.push([x, y]),
+          lineTo: (x: number, y: number) => trace.push([x, y]),
+        };
+        return { width: 0, height: 0, getContext: () => context };
+      },
+    });
+    const high = createCompleteShelfClothAlbedoMap(false);
+    const economy = createCompleteShelfClothAlbedoMap(true);
+    expect(high?.colorSpace).toBe(SRGBColorSpace);
+    expect(economy?.colorSpace).toBe(SRGBColorSpace);
+    expect(high?.image.width).toBe(512);
+    expect(economy?.image.width).toBe(256);
+    expect(high?.image.width / high?.image.height).toBeCloseTo(economy?.image.width / economy?.image.height, 2);
+    expect(traces[0]).toEqual(traces[1]);
+    const inks = traces[0].filter((entry): entry is string => typeof entry === "string");
+    expect(inks[0]).toBe("#fafafa");
+    for (const ink of inks.slice(1)) {
+      const channels = ink.match(/[\d.]+/gu)?.map(Number) || [];
+      expect(channels[0]).toBe(channels[1]);
+      expect(channels[1]).toBe(channels[2]);
+      expect(channels[0]).toBeGreaterThanOrEqual(210);
+      expect(channels[3]).toBeLessThanOrEqual(.65);
+    }
+    disposeCompleteShelfTextures([high, economy]);
+  });
+
+  it("keeps the front artwork and cloth when a spine word cannot fit", async () => {
+    const paintedText: string[] = [];
+    const context = {
+      font: "",
+      measureText(text: string) {
+        const size = Number(this.font.match(/([\d.]+)px/u)?.[1] || 16);
+        return { width: text.length * size * .8 };
+      },
+      fillText: (text: string) => paintedText.push(text),
+      strokeText() {}, save() {}, restore() {}, scale() {}, translate() {},
+      clearRect() {}, fillRect() {}, beginPath() {}, moveTo() {}, lineTo() {},
+      stroke() {}, arc() {}, fill() {},
+      createLinearGradient: () => ({ addColorStop() {} }),
+    };
+    vi.stubGlobal("document", {
+      fonts: { load: async () => [{ status: "loaded" }], check: () => true, ready: Promise.resolve() },
+      createElement: () => ({ width: 0, height: 0, getContext: () => context }),
+    });
+    vi.stubGlobal("Path2D", class {});
+    await expect(ensureBookTypographyReady()).resolves.toBe(true);
+    const title = "WWWWWWWWWWWWWWWW";
+    const spec = buildCompleteShelfBookSpec({ key: "independent-surfaces", title, writer: "Author", baseColor: "#406872", accentColor: "#d9c58c", paperColor: "#f3ead8" });
+    const maps = createCompleteShelfArtworkTextures(spec, false, true);
+    expect(maps.spineFoil).toBeNull();
+    expect(maps.spineSurface).not.toBeNull();
+    expect(maps.frontFoil).not.toBeNull();
+    expect(paintedText).toContain(title);
+    expect(paintedText).toContain("Author");
+    disposeCompleteShelfTextures(Object.values(maps));
+  });
+
   it("sanitizes and carries local archive metadata into the cover plan", () => {
     const spec = buildCompleteShelfBookSpec(
       {

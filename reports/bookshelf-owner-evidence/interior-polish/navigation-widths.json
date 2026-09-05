@@ -1,0 +1,94 @@
+[
+  {
+    "width": 320,
+    "documentOverflow": 0,
+    "navOverflow": 0,
+    "buttons": [
+      {
+        "label": "Назад",
+        "width": 48,
+        "height": 46,
+        "outside": false
+      },
+      {
+        "label": "13",
+        "width": 56,
+        "height": 46,
+        "outside": false
+      },
+      {
+        "label": "13",
+        "width": 56,
+        "height": 46,
+        "outside": false
+      },
+      {
+        "label": "Избранное",
+        "width": 128,
+        "height": 50,
+        "outside": false
+      },
+      {
+        "label": "＋Добавить на полку",
+        "width": 128,
+        "height": 50,
+        "outside": false
+      }
+    ]
+  },
+  {
+    "width": 768,
+    "documentOverflow": 0,
+    "navOverflow": 0,
+    "buttons": [
+      {
+        "label": "|",
+        "width": 44,
+        "height": 44,
+        "outside": false
+      },
+      {
+        "label": "13",
+        "width": 56,
+        "height": 44,
+        "outside": false
+      },
+      {
+        "label": "",
+        "width": 44,
+        "height": 44,
+        "outside": false
+      },
+      {
+        "label": "",
+        "width": 44,
+        "height": 44,
+        "outside": false
+      },
+      {
+        "label": "13",
+        "width": 56,
+        "height": 44,
+        "outside": false
+      },
+      {
+        "label": "|",
+        "width": 44,
+        "height": 44,
+        "outside": false
+      },
+      {
+        "label": "Избранное",
+        "width": 131.78125,
+        "height": 44,
+        "outside": false
+      },
+      {
+        "label": "＋Добавить на полку",
+        "width": 179.890625,
+        "height": 44,
+        "outside": false
+      }
+    ]
+  }
+]

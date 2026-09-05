@@ -36,10 +36,18 @@ const css = readFileSync(
   new URL("../styles/stage5-book-shelf.css", import.meta.url),
   "utf8"
 );
+const controlsCss = readFileSync(
+  new URL("../styles/book-shelf-controls.css", import.meta.url),
+  "utf8"
+);
+const typographyCss = readFileSync(
+  new URL("../styles/site-typography.css", import.meta.url),
+  "utf8"
+);
 
-function cssRule(selector: string) {
+function cssRule(selector: string, source = css) {
   const escaped = selector.replace(/[.*+?^$()|[\]{}]/gu, "\\$&");
-  const match = css.match(
+  const match = source.match(
     new RegExp(escaped + "\\s*\\{([\\s\\S]*?)\\}", "u")
   );
   if (!match) throw new Error("Missing CSS rule: " + selector);
@@ -138,33 +146,49 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(scene).toContain('props.active && support === "ready"');
   });
 
-  it("keeps only the compact quill mark in the archive header and gives spine selection a quiet interactive hint", () => {
-    expect(controls).toContain("BrandQuillIcon");
-    expect(controls).toContain('className="book-shelf-controls__mark"');
+  it("groups compact search without a decorative toolbar mark and keeps the quiet spine-selection hint", () => {
+    expect(controls).not.toContain("BrandQuillIcon");
+    expect(controls).not.toContain('className="book-shelf-controls__mark"');
+    expect(controls).toContain('className="book-shelf-controls__search-group"');
+    expect(controls).toContain('className="book-shelf-controls__collection">{collectionControl}');
+    expect(controls).toContain('className="book-shelf-controls__settings">{settingsControl}');
+    expect(controller).toMatch(/collectionControl=\{\s*<BookCollectionShelfSwitcher compact\b/u);
+    expect(controller).toContain('settingsControl={');
+    expect(controller).toContain('scopeLabel={t("Область поиска")}');
+    expect(controls).toContain('aria-label={scopeLabel}');
     expect(controls).not.toContain("book-shelf-controls__brand");
     expect(controls).not.toContain("brandName");
     expect(css).not.toContain(".book-shelf-controls__brand");
-    expect(cssRule(".book-shelf-controls__mark")).toContain("width: 40px");
-    expect(cssRule(".book-shelf-controls__topline")).toContain(
-      "minmax(180px, 240px)"
+    expect(cssRule(".book-shelf-controls__topline", controlsCss)).toContain(
+      'grid-template-areas: "collection search views filters random settings"'
     );
-    expect(cssRule(".book-shelf-controls__topline")).toContain(
-      "max-content"
+    expect(cssRule(".book-shelf-controls__topline", controlsCss)).toContain(
+      "minmax(240px, 1fr) minmax(240px, 280px) max-content 44px max-content 44px"
+    );
+    expect(cssRule(".book-shelf-controls__search-group", controlsCss)).toContain(
+      "grid-template-columns: minmax(100px, 1fr) 112px"
     );
     expect(
       cssRule(
         ".book-shelf-controls.book-archive-toolbar .book-shelf-controls__input input"
       )
     ).toContain("min-width: 0");
-    expect(cssRule(".book-shelf-controls .book-filter-copy")).toContain(
-      "text-align: center"
+    expect(cssRule(".book-shelf-controls__topline", controlsCss)).toContain(
+      "align-items: center"
     );
-    expect(css).toMatch(
-      /@media \(max-width: 767px\)[\s\S]*?\.book-shelf-controls__search\s*\{[\s\S]*?grid-column:\s*2/iu
+    expect(controlsCss).toMatch(
+      /@media \(max-width: 767px\)[\s\S]*?\.book-shelf-controls__topline\s*\{[^}]*grid-template-areas:\s*"collection collection collection collection" "search search search search" "views filters random settings"[^}]*grid-template-columns:\s*94px 44px minmax\(0,\s*1fr\) 44px/iu
     );
-    expect(css).toMatch(
-      /@media \(min-width: 1101px\) and \(max-width: 1560px\)[\s\S]*?\.book-shelf-controls__scope\s*\{[^}]*grid-column:\s*3[^}]*grid-row:\s*1[\s\S]*?\.book-shelf-controls__views\s*\{[^}]*grid-column:\s*4[^}]*grid-row:\s*1[\s\S]*?\.book-shelf-controls \.book-filter-panel\s*\{[^}]*grid-column:\s*5[^}]*grid-row:\s*1/iu
+    expect(controlsCss).toMatch(
+      /@media \(max-width: 1239px\)[\s\S]*?\.book-shelf-controls__topline\s*\{[^}]*grid-template-areas:\s*"collection collection search search" "views filters random settings"/iu
     );
+    const collectionText = cssRule(
+      ".book-shelf-controls .book-collection-switcher__compact-value > span",
+      controlsCss
+    );
+    expect(collectionText).toContain("text-transform: none");
+    expect(collectionText).toContain("letter-spacing: normal");
+    expect(collectionText).toContain("font-weight: 500");
     expect(controller).toContain('className="book-shelf-scene-hint"');
     expect(controller).toContain('t("Выберите книгу")');
     expect(controller).toContain("Нажмите на корешок - книга выйдет вперёд");
@@ -186,7 +210,9 @@ describe("approved Complete Shelf outer presentation", () => {
   it("discovers across the full archive while quality settings bound the live shelf", () => {
     expect(controller).toContain("candidates: queue.all");
     expect(controller).toContain("rememberRandomBookArchiveItem");
-    expect(controller).toContain('t("Случайное произведение")');
+    expect(controller).toContain('randomLabel={t("Наугад")}');
+    expect(controller).toContain('"Выбрать случайное произведение из всего архива"');
+    expect(controls).toContain('aria-label={randomDescription}');
     expect(controls).toContain('className="book-shelf-controls__random"');
     expect(controls).not.toMatch(
       /book-shelf-controls__random[\s\S]{0,300}aria-pressed/iu
@@ -241,7 +267,7 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(controller).toContain(
       "onRequestSceneCenter={resetShelfFromEmptyArea}"
     );
-    expect(sceneCanvas).toContain('!selectedBookKey && phase === "SHELF_IDLE" && event.type === "click" && event.button === 0');
+    expect(sceneCanvas).toContain('(selectedBookKey || phase === "SHELF_IDLE") && event.type === "click" && event.button === 0 && !event.altKey');
     expect(renderer).toContain(
       "completeShelfPhaseAllowsSelectionSwitch(phase)"
     );
@@ -262,9 +288,9 @@ describe("approved Complete Shelf outer presentation", () => {
     );
     expect(controller).toContain("const centerAfterClose =");
     expect(controller).toMatch(
-      /if \(centerAfterClose\) \{\s*centerShelfScene\(\);/u
+      /if \(centerAfterClose\) \{[\s\S]*?window\.requestAnimationFrame\(\(\) => \{\s*window\.requestAnimationFrame\(centerShelfScene\);/u
     );
-    expect(sceneCanvas).toMatch(/onPointerMissed=\{\(event\) => \{\s*if \(!selectedBookKey && phase === "SHELF_IDLE" && event\.type === "click" && event\.button === 0\) onRequestSceneCenter\(\);/u);
+    expect(sceneCanvas).toContain('if ((selectedBookKey || phase === "SHELF_IDLE") && event.type === "click" && event.button === 0 && !event.altKey) onRequestSceneCenter();');
     expect(sceneCanvas).toContain("BOOK_SHELF_IDLE_CAMERA_TARGET");
     expect(sceneCanvas).toContain("lookAt: [0, 0, 0] as const");
     expect(sceneCanvas).toContain("useLayoutEffect(() => {");
@@ -402,25 +428,40 @@ describe("approved Complete Shelf outer presentation", () => {
 
   it("centres mobile control copy without clipping or horizontal overflow", () => {
     const mobileCss = css.slice(css.lastIndexOf("@media (max-width: 767px)"));
-
-    expect(mobileCss).toMatch(
-      /\.book-shelf-controls\.book-archive-toolbar\s+\.book-shelf-controls__input\s*\{[^}]*height:\s*44px[^}]*border-color:\s*rgba\(246,\s*117,\s*24,\s*0\.82\)/iu
+    const mobileControlsCss = controlsCss.slice(
+      controlsCss.indexOf("@media (max-width: 767px)"),
+      controlsCss.indexOf("@media (prefers-reduced-motion: reduce)")
     );
+
+    expect(cssRule(".book-shelf-controls.book-archive-toolbar .book-shelf-controls__input", controlsCss)).toContain("height: 44px");
+    expect(cssRule(".book-shelf-controls__search-group", controlsCss)).toContain("background: var(--violet-900)");
+    expect(cssRule(".book-shelf-controls__search-group:focus-within", controlsCss)).toContain("outline: 2px solid var(--book-control-focus)");
     expect(mobileCss).toMatch(
       /\.book-shelf-controls\.book-archive-toolbar\s+\.book-shelf-controls__input input\s*\{[^}]*height:\s*42px[^}]*line-height:\s*42px/iu
     );
-    expect(mobileCss).toMatch(
-      /\.book-shelf-controls \.book-archive-filters\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)[^}]*overflow:\s*visible/iu
+    expect(cssRule(".book-shelf-controls__topline", mobileControlsCss)).toContain(
+      'grid-template-areas: "collection collection collection collection" "search search search search" "views filters random settings"'
     );
-    expect(mobileCss).toMatch(
-      /@media \(max-width: 480px\)[\s\S]*?\.book-shelf-controls__views \.book-shelf-controls__random\s*\{[^}]*grid-column:\s*1 \/ -1/iu
+    expect(cssRule(".book-shelf-controls__topline", mobileControlsCss)).toContain(
+      "grid-template-columns: 94px 44px minmax(0, 1fr) 44px"
     );
-    expect(mobileCss).toMatch(
-      /\.book-shelf-controls \.book-filter-copy strong\s*\{[^}]*font-size:\s*var\(--type-action\)[^}]*white-space:\s*normal/iu
+    expect(cssRule(".book-shelf-controls__search-group", mobileControlsCss)).toContain("grid-template-columns: minmax(0, 1fr) 120px");
+    expect(controls).not.toContain('className="book-archive-filters"');
+    expect(controller).toContain('className="book-shelf-filter-drawer__presets"');
+    expect(controller).toContain('["verified", "classic"].includes(option.id)');
+    expect(cssRule(".book-shelf-filter-drawer__presets", controlsCss)).toContain("flex-wrap: wrap");
+    expect(cssRule(".book-shelf-controls .book-shelf-quality-menu > button", controlsCss)).toContain("width: 44px; height: 44px");
+    expect(controlsCss).toMatch(/\.book-shelf-controls \.book-shelf-controls__advanced,\s*\.book-shelf-controls \.book-shelf-quality-menu > button\s*\{/u);
+    expect(typographyCss).toMatch(
+      /\.book-shelf-controls :is\(button, select\),\s*[^{}]+\{[^}]*font-family:\s*var\(--font-ui\)[^}]*font-size:\s*var\(--type-card-meta\)[^}]*font-weight:\s*500[^}]*line-height:\s*1\.3/iu
     );
-    expect(mobileCss).toMatch(
-      /\.book-shelf-controls \.book-archive-filters > button\s*\{[^}]*align-items:\s*center[^}]*justify-content:\s*center[^}]*min-width:\s*0/iu
-    );
+    const drawerButton = cssRule(".book-shelf-frame__filter-drawer button", controlsCss);
+    for (const alignment of ["align-items: center", "justify-content: center", "min-block-size: 44px", "white-space: normal"]) expect(drawerButton).toContain(alignment);
+    expect(cssRule(".book-shelf-controls .book-shelf-controls__views button", mobileControlsCss)).toContain("width: 44px; min-inline-size: 44px");
+    expect(controls).toContain("<span>{shelfLabel}</span>");
+    expect(controls).toContain("<span>{catalogLabel}</span>");
+    expect(controls).toContain("<span>{randomLabel}</span>");
+    expect(controls).toContain('aria-label={randomDescription}');
     expect(mobileCss).toMatch(
       /\.book-shelf-navigation__position\s*\{[^}]*grid-template-columns:\s*56px minmax\(82px,\s*1fr\) 56px[^}]*align-items:\s*center/iu
     );

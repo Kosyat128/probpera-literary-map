@@ -22,6 +22,7 @@ type Props = Readonly<{
   selection: BookCollectionShelfSelection;
   onChange: (shelfId: string) => void;
   disabled?: boolean;
+  compact?: boolean;
   className?: string;
   id?: string;
   labels?: Partial<BookCollectionShelfSwitcherLabels>;
@@ -81,13 +82,18 @@ export default function BookCollectionShelfSwitcher({
   selection,
   onChange,
   disabled = false,
+  compact = false,
   className = "",
   id = "book-collection-shelf",
   labels: labelOverrides,
 }: Props) {
   const labels = Object.freeze({ ...defaultLabels, ...labelOverrides });
   const statusId = `${id}-status`;
-  const rootClassName = ["book-collection-switcher", className]
+  const rootClassName = [
+    "book-collection-switcher",
+    compact && "book-collection-switcher--compact",
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -100,8 +106,28 @@ export default function BookCollectionShelfSwitcher({
     <label className={rootClassName} htmlFor={id}>
       <span className="book-collection-switcher__label">{labels.control}</span>
       <span className="book-collection-switcher__field">
+        {compact ? (
+          <span className="book-collection-switcher__compact-value" aria-hidden="true">
+            <span
+              className="book-collection-switcher__compact-title"
+              title={selection.activeOption.title}
+            >
+              {selection.activeOption.title}
+            </span>
+            {selection.activeOption.status === "ready" ? (
+              <span className="book-collection-switcher__compact-count">
+                {formatNumber(selection.activeOption.count)}
+              </span>
+            ) : (
+              <span className="book-collection-switcher__compact-status">
+                {describeBookCollectionShelfOption(selection.activeOption, labels)}
+              </span>
+            )}
+          </span>
+        ) : null}
         <select
           id={id}
+          title={compact ? selection.activeOption.title : undefined}
           value={selection.activeShelfId}
           onChange={handleChange}
           disabled={disabled}

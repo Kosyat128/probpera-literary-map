@@ -1,0 +1,321 @@
+{
+  "base": "http://127.0.0.1:4185/",
+  "startedAt": "2026-09-05T19:12:00.47Z",
+  "finishedAt": "2026-09-05T19:12:36.959Z",
+  "scope": "Three typography/catalogue/detail/Reader cases. Historical mobile navbar corrected separately in mobile-focus-results.json.",
+  "errors": [],
+  "cases": [
+    {
+      "locale": "ru",
+      "width": 1440,
+      "phase": "complete",
+      "catalogueTitle": [
+        {
+          "selector": "H3",
+          "text": "1984",
+          "size": "20px",
+          "weight": "500",
+          "leading": "25px",
+          "transform": "none"
+        }
+      ],
+      "catalogueAuthor": [
+        {
+          "selector": "P",
+          "text": "Джордж Оруэлл",
+          "size": "14px",
+          "weight": "400",
+          "leading": "19.6px"
+        }
+      ],
+      "catalogueCountry": [
+        {
+          "selector": "SMALL",
+          "text": "Англия · 1949",
+          "size": "13px",
+          "weight": "500",
+          "leading": "17.55px",
+          "transform": "none"
+        }
+      ],
+      "catalogueActions": [
+        {
+          "text": "",
+          "rect": {
+            "x": 237.59375,
+            "y": 325.015625,
+            "width": 44,
+            "height": 44,
+            "top": 325.015625,
+            "right": 281.59375,
+            "bottom": 369.015625,
+            "left": 237.59375
+          }
+        },
+        {
+          "text": "О книге",
+          "rect": {
+            "x": 289.59375,
+            "y": 325.015625,
+            "width": 187.9375,
+            "height": 44,
+            "top": 325.015625,
+            "right": 477.53125,
+            "bottom": 369.015625,
+            "left": 289.59375
+          }
+        }
+      ],
+      "detailTitle": [
+        {
+          "selector": "H3",
+          "text": "1984",
+          "size": "25.92px",
+          "weight": "500",
+          "leading": "31.104px"
+        }
+      ],
+      "originalTitle": [
+        {
+          "selector": "book-original-title",
+          "text": "Nineteen Eighty-Four",
+          "size": "14px",
+          "weight": "400",
+          "leading": "19.6px"
+        }
+      ],
+      "readerBody": [
+        {
+          "selector": "P",
+          "size": "17px",
+          "weight": "400",
+          "leading": "25.5px"
+        }
+      ],
+      "catalogueContrast": [],
+      "navigationContrast": [],
+      "detailContrast": [],
+      "mobileMotion": null
+    },
+    {
+      "locale": "ru",
+      "width": 390,
+      "phase": "complete",
+      "catalogueTitle": [
+        {
+          "selector": "H3",
+          "text": "1984",
+          "size": "20px",
+          "weight": "500",
+          "leading": "25px",
+          "transform": "none"
+        }
+      ],
+      "catalogueAuthor": [
+        {
+          "selector": "P",
+          "text": "Джордж Оруэлл",
+          "size": "14px",
+          "weight": "400",
+          "leading": "19.6px"
+        }
+      ],
+      "catalogueCountry": [
+        {
+          "selector": "SMALL",
+          "text": "Англия · 1949",
+          "size": "13px",
+          "weight": "500",
+          "leading": "17.55px",
+          "transform": "none"
+        }
+      ],
+      "catalogueActions": [
+        {
+          "text": "",
+          "rect": {
+            "x": 128,
+            "y": 324.671875,
+            "width": 44,
+            "height": 44,
+            "top": 324.671875,
+            "right": 172,
+            "bottom": 368.671875,
+            "left": 128
+          }
+        },
+        {
+          "text": "О книге",
+          "rect": {
+            "x": 180,
+            "y": 324.671875,
+            "width": 164,
+            "height": 44,
+            "top": 324.671875,
+            "right": 344,
+            "bottom": 368.671875,
+            "left": 180
+          }
+        }
+      ],
+      "detailTitle": [
+        {
+          "selector": "H3",
+          "text": "1984",
+          "size": "24px",
+          "weight": "500",
+          "leading": "28.8px"
+        }
+      ],
+      "originalTitle": [
+        {
+          "selector": "book-original-title",
+          "text": "Nineteen Eighty-Four",
+          "size": "14px",
+          "weight": "400",
+          "leading": "19.6px"
+        }
+      ],
+      "readerBody": [
+        {
+          "selector": "P",
+          "size": "17px",
+          "weight": "400",
+          "leading": "25.5px"
+        }
+      ],
+      "catalogueContrast": [],
+      "navigationContrast": [],
+      "detailContrast": [],
+      "mobileMotion": {
+        "half": {
+          "position": "half",
+          "phase": "settling",
+          "height": 278.390625,
+          "transition": "height 0.26s cubic-bezier(0.2, 0.72, 0.24, 1), transform 0.09s linear",
+          "duration": "260ms"
+        },
+        "expanded": {
+          "position": "expanded",
+          "phase": "idle",
+          "height": 472,
+          "transition": "height 0.26s cubic-bezier(0.2, 0.72, 0.24, 1), transform 0.09s linear",
+          "duration": "260ms"
+        },
+        "returned": {
+          "position": "half",
+          "phase": "idle",
+          "height": 278.390625,
+          "transition": "height 0.26s cubic-bezier(0.2, 0.72, 0.24, 1), transform 0.09s linear",
+          "duration": "260ms"
+        },
+        "reducedExpanded": {
+          "position": "expanded",
+          "phase": "idle",
+          "height": 472,
+          "transition": "height 1e-05s linear, transform 1e-05s linear",
+          "duration": "0ms"
+        },
+        "reducedHalf": {
+          "position": "half",
+          "phase": "idle",
+          "height": 278.390625,
+          "transition": "height 1e-05s linear, transform 1e-05s linear",
+          "duration": "0ms"
+        }
+      }
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "phase": "complete",
+      "catalogueTitle": [
+        {
+          "selector": "H3",
+          "text": "1984",
+          "size": "20px",
+          "weight": "500",
+          "leading": "25px",
+          "transform": "none"
+        }
+      ],
+      "catalogueAuthor": [
+        {
+          "selector": "P",
+          "text": "George Orwell",
+          "size": "14px",
+          "weight": "400",
+          "leading": "19.6px"
+        }
+      ],
+      "catalogueCountry": [
+        {
+          "selector": "SMALL",
+          "text": "United Kingdom · 1949",
+          "size": "13px",
+          "weight": "500",
+          "leading": "17.55px",
+          "transform": "none"
+        }
+      ],
+      "catalogueActions": [
+        {
+          "text": "",
+          "rect": {
+            "x": 237.59375,
+            "y": 325.015625,
+            "width": 44,
+            "height": 44,
+            "top": 325.015625,
+            "right": 281.59375,
+            "bottom": 369.015625,
+            "left": 237.59375
+          }
+        },
+        {
+          "text": "About the book",
+          "rect": {
+            "x": 289.59375,
+            "y": 325.015625,
+            "width": 187.9375,
+            "height": 44,
+            "top": 325.015625,
+            "right": 477.53125,
+            "bottom": 369.015625,
+            "left": 289.59375
+          }
+        }
+      ],
+      "detailTitle": [
+        {
+          "selector": "H3",
+          "text": "1984",
+          "size": "25.92px",
+          "weight": "500",
+          "leading": "31.104px"
+        }
+      ],
+      "originalTitle": [
+        {
+          "selector": "book-original-title",
+          "text": "Nineteen Eighty-Four",
+          "size": "14px",
+          "weight": "400",
+          "leading": "19.6px"
+        }
+      ],
+      "readerBody": [
+        {
+          "selector": "P",
+          "size": "17px",
+          "weight": "400",
+          "leading": "25.5px"
+        }
+      ],
+      "catalogueContrast": [],
+      "navigationContrast": [],
+      "detailContrast": [],
+      "mobileMotion": null
+    }
+  ]
+}
