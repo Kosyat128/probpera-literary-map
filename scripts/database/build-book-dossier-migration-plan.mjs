@@ -143,6 +143,7 @@ notify pgrst, 'reload schema';
   const rehearsal = `do $restore_acl$
 begin
   if to_regclass('${ledger}') is not null and to_regclass('public.book_dossiers') is not null then
+    revoke all on ${ledger} from public, anon, authenticated;
     revoke all on public.book_dossiers from public, anon, authenticated;
     grant select on public.book_dossiers to authenticated;
     revoke all on function ${functions.map(name => `public.${name}`).join(",")} from public, anon, authenticated;
