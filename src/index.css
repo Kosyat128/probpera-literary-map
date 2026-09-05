@@ -9616,7 +9616,7 @@ a.writer-nobel-medal:focus-visible {
   display: inline;
   max-width: 100%;
   color: inherit;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   white-space: normal;
   word-break: normal;
   text-decoration-thickness: 1px;

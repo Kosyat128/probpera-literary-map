@@ -173,7 +173,12 @@ export function auditTypography(sources) {
         fail("Font weight has no bundled local face");
       }
       if ((prop === "overflow-wrap" && value === "anywhere") || (prop === "word-break" && value === "break-all")) {
-        if (!(file === "src/index.css" && selectors.length === 1 && normalizeSelector(selectors[0]) === ".hero-editorial>p" && prop === "overflow-wrap")) {
+        // Source URLs can contain arbitrary unbroken identifiers. Keep this
+        // exception on their anchors, without changing prose or list items.
+        const boundedAnywhere = file === "src/index.css" && selectors.length === 1 &&
+          [".hero-editorial>p", ".article-reader-sources a"].includes(normalizeSelector(selectors[0])) &&
+          prop === "overflow-wrap";
+        if (!boundedAnywhere) {
           fail("Unsafe public text wrapping");
         }
       }

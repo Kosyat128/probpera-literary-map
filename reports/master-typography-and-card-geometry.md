@@ -108,6 +108,16 @@ The integrated homepage regression also caught unequal mobile discussion-card he
 
 The owner then exposed a directory regression missed by the original cross-card alignment checks: `container-type: inline-size` disabled `subgrid` on the card itself, causing all six child slots to overlap. Removing containment from this carrier restores real shared rows; labels retain their natural height. The source audit now rejects size/layout containment on subgrid carriers, and a permanent browser regression checks visible semantic blocks for non-overlap before/after loading and expansion at the affected wide viewports. Earlier 0px rail measurements alone were insufficient; current directory proof explicitly checks the missing conditions. Diagnosed broken screenshots are labeled separately, and stale full-home screenshots were removed from final evidence.
 
+## Merge validation follow-up
+
+The branch was synchronized with main at `62f0d328` without conflicts. CI run `33932221339` passed lint, unit tests, content/media audits, production builds, SEO, performance and premium-globe checks, then exposed two remaining regressions: bibliography URL wrapping and stale desktop/mobile writer-card snapshots.
+
+Bibliography links now retain `overflow-wrap: anywhere` with `word-break: normal`, while the sources block shares the article column's `68ch` inline limit. The typography audit permits this exact URL selector only; prose and list-item exceptions remain rejected. The source-injection measurements in [source-url-wrap.json](typography-evidence/final-review/source-url-wrap.json) show zero overflow and zero column offset at 1720px, 1920px and Pixel 7 width. The original source-link and CMS direct-edit browser tests subsequently passed all four desktop/mobile cases against the rebuilt site.
+
+Both writer-card actual images from Linux CI were visually compared with their expected images and diffs. The stable changes reflect the approved bundled fonts and caption scale: desktop height 416 to 419px, mobile 396 to 402px. Only these two PNG baselines were refreshed; the screenshot tolerances and chrome baselines are unchanged. Both visual tests then passed locally against the rebuilt site.
+
+The local remaining browser suite reported 59 passed, nine skipped and six failures involving outdated Stage 5B role expectations and a stale pre-main local CMS bundle. Rebuilding resolved the CMS cases. Stage 5B now opens the built root URL and checks the approved section, community, book and compact roles, local font families and line heights; its existing surface, spacing and overflow assertions remain. All four Stage 5B cases passed against the rebuilt site. Final lint and 23 typography/source-lock unit tests also passed. GitHub's complete required CI remains the merge gate.
+
 ## Release boundary
 
-Local browser results are not a claim of deployment or production readiness. This task does not merge a PR, publish CMS changes, alter DNS or deploy the site. Historical Header/Hero accessibility findings are retained because their original appearance was explicitly requested.
+Local browser results are not a claim of deployment or production readiness. The required GitHub checks govern merging; CMS publication and deployed-site verification are separate operations. Historical Header/Hero accessibility findings are retained because their original appearance was explicitly requested.

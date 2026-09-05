@@ -559,7 +559,8 @@
     text-wrap: pretty;
   }
 
-  .article-reader-content {
+  .article-reader-content,
+  .article-reader-sources {
     max-inline-size: 68ch;
   }
 

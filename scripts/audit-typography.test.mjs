@@ -61,6 +61,16 @@ describe("canonical typography audit", () => {
       .toHaveLength(5);
   });
 
+  it("allows emergency URL wrapping only on bibliography anchors", () => {
+    expect(scan('.article-reader-sources a { overflow-wrap: anywhere; word-break: normal; }')).toEqual([]);
+    expect(scan(`
+      .article-reader-sources li { overflow-wrap: anywhere; }
+      .article-reader-sources a, .article-reader-sources li { overflow-wrap: anywhere; }
+      .article-reader-content a { overflow-wrap: anywhere; }
+      .article-reader-sources a { word-break: break-all; }
+    `)).toEqual(Array(4).fill(expect.stringContaining("Unsafe public text wrapping")));
+  });
+
   it("rejects tight non-display leading including token aliases and shorthand", () => {
     expect(scan('.article-copy h3 { line-height: 0.9; } .library-card-copy p { line-height: 90%; } .share-links > span { font: 400 1rem/0.8 var(--sans); }')
       .filter((message) => message.includes("line-height is smaller"))).toHaveLength(3);
