@@ -1,0 +1,241 @@
+{
+  "baseURL": "http://127.0.0.1:4185/",
+  "capturedAt": "2026-09-05T02:59:49.102Z",
+  "mode": "latest-intent",
+  "cases": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "initial": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 58.59375,
+          "y": 351.53125,
+          "width": 1322.8125,
+          "height": 648
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.25915
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 147.27495468255546,
+            "y": 655.4215222852021,
+            "z": 0.9582363123046621
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "451° по Фаренгейту",
+            "sourceIndex": 1,
+            "x": 221.52884233655797,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Анна-Вероника",
+            "sourceIndex": 2,
+            "x": 292.7390077170497,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Будденброки",
+            "sourceIndex": 3,
+            "x": 363.9491730975414,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "Война и мир",
+            "sourceIndex": 4,
+            "x": 435.1593384780332,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 506.3695038585248,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 577.5796692390165,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "france:flaubert:madame-bovary",
+            "title": "Госпожа Бовари",
+            "sourceIndex": 7,
+            "x": 648.7898346195083,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "russia:chekhov:the-lady-with-the-dog",
+            "title": "Дама с собачкой",
+            "sourceIndex": 8,
+            "x": 720,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "russia:chekhov:the-duel",
+            "title": "Дуэль",
+            "sourceIndex": 9,
+            "x": 791.2101653804916,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "russia:chekhov:uncle-vanya",
+            "title": "Дядя Ваня",
+            "sourceIndex": 10,
+            "x": 862.4203307609835,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:h_g_wells:the-history-of-mr-polly",
+            "title": "История мистера Полли",
+            "sourceIndex": 11,
+            "x": 933.6304961414751,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:h_g_wells:when-the-sleeper-wakes",
+            "title": "Когда спящий проснется",
+            "sourceIndex": 12,
+            "x": 1004.8406615219668,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:david_mitchell:the-bone-clocks",
+            "title": "Костяные часы",
+            "sourceIndex": 13,
+            "x": 1076.0508269024585,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:david_mitchell:ghostwritten",
+            "title": "Литературный призрак",
+            "sourceIndex": 14,
+            "x": 1147.2609922829504,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "usa:vladimir_nabokov:lolita-editorial",
+            "title": "Лолита",
+            "sourceIndex": 15,
+            "x": 1218.471157663442,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:h_g_wells:men-like-gods",
+            "title": "Люди как боги",
+            "sourceIndex": 16,
+            "x": 1289.6813230439336,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 65,
+            "deleted": 0,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 375,
+            "deleted": 4,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 157,
+            "deleted": 1,
+            "live": 156
+          }
+        },
+        "draws": 335,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "interactions": [],
+      "errors": [],
+      "latestIntent": {
+        "intentions": [
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "phase": "SHELF_IDLE"
+          },
+          {
+            "key": "usa:vladimir_nabokov:lolita-editorial",
+            "phase": "SHELF_MOVING"
+          }
+        ],
+        "selectedKey": "usa:vladimir_nabokov:lolita-editorial"
+      }
+    }
+  ],
+  "issues": []
+}

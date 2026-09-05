@@ -103,7 +103,10 @@ describe("globe filter stability wiring", () => {
     expect(premiumCss).toContain("--atlas-left-ornament-edge:");
     expect(premiumCss).toContain("--atlas-coordinate-bottom:");
     expect(premiumCss).toContain(
-      "grid-template-columns: 48px 48px repeat(3, minmax(0, 1fr))"
+      "grid-template-columns: repeat(2, var(--globe-control-zoom-width, 48px)) repeat(3, minmax(0, 1fr))"
+    );
+    expect(premiumCss).toMatch(
+      /@media \(max-width: 430px\)\s*\{[\s\S]*?\.literary-globe \.globe-controls\s*\{\s*--globe-control-zoom-width:\s*44px;\s*gap:\s*2px;/u
     );
     expect(premiumCss).toContain("@media (prefers-reduced-motion: reduce)");
   });

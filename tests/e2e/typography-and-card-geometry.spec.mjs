@@ -8,7 +8,10 @@ import {
   typographyViewports,
 } from "../../scripts/capture-typography-evidence.mjs";
 
-// This spec sets every viewport explicitly. Run once with --project=desktop-chromium.
+// Measure CSS geometry at a consistent raster scale while retaining desktop and
+// mobile input/media conditions. Native high-DPI rendering has separate visual
+// and WebGL coverage; stretching a phone to 1920px must not multiply that workload.
+test.use({ deviceScaleFactor: 1 });
 test.setTimeout(150_000);
 
 function assertReadableCard(card, label) {
@@ -46,34 +49,44 @@ function assertReadableCard(card, label) {
 
 for (const locale of ["ru", "en"]) {
   test(`${locale}: complete card text, footer geometry and local fonts at ten widths`, async ({ page }) => {
+    // Real Canvas activation during resizing is much slower on software WebGL.
+    // Budget each layout while retaining every content, font and geometry check.
+    test.setTimeout(typographyViewports.length * 30_000);
     await page.goto("/");
     await expect(page.locator(".editorial-grid")).toBeVisible();
     await chooseTypographyLocale(page, locale);
     for (const viewport of typographyViewports) {
-      await page.setViewportSize(viewport);
-      await japaneseCard(page).scrollIntoViewIfNeeded();
-      await settleTypography(page);
-      const geometry = await measureTypography(page);
-      const label = `${locale}/${viewport.width}`;
-      expect(geometry.documentOverflow, label).toBeLessThanOrEqual(1);
-      expect(geometry.cards.length, label).toBeGreaterThan(2);
-      for (const [index, card] of geometry.cards.entries()) assertReadableCard(card, `${label}/card${index}`);
-      for (const item of geometry.footer) {
-        expect(item.overflowX, `${label}/footer ${item.text}`).toBeLessThanOrEqual(1);
-        expect(item.rect.left).toBeGreaterThanOrEqual(-1);
-        expect(item.rect.right).toBeLessThanOrEqual(viewport.width + 1);
-      }
-      const reference = japaneseCard(page);
-      await expect(reference.locator(".section-link")).toHaveText(
-        locale === "ru" ? "Все материалы рубрики" : "All articles in this section"
-      );
+      const startedAt = Date.now();
+      await test.step(`${locale}: ${viewport.width}px card layout`, async () => {
+        await page.setViewportSize(viewport);
+        await japaneseCard(page).scrollIntoViewIfNeeded();
+        await settleTypography(page);
+        const geometry = await measureTypography(page);
+        const label = `${locale}/${viewport.width}`;
+        expect(geometry.documentOverflow, label).toBeLessThanOrEqual(1);
+        expect(geometry.cards.length, label).toBeGreaterThan(2);
+        for (const [index, card] of geometry.cards.entries()) assertReadableCard(card, `${label}/card${index}`);
+        for (const item of geometry.footer) {
+          expect(item.overflowX, `${label}/footer ${item.text}`).toBeLessThanOrEqual(1);
+          expect(item.rect.left).toBeGreaterThanOrEqual(-1);
+          expect(item.rect.right).toBeLessThanOrEqual(viewport.width + 1);
+        }
+        const reference = japaneseCard(page);
+        await expect(reference.locator(".section-link")).toHaveText(
+          locale === "ru" ? "Все материалы рубрики" : "All articles in this section"
+        );
+      });
+      if (process.env.CI) console.info(`[typography] ${locale}/${viewport.width}: ${Date.now() - startedAt}ms`);
     }
-    const loadedSources = await page.evaluate(() =>
-      performance.getEntriesByType("resource").filter((entry) => /\.(?:woff2?|ttf)(?:\?|$)/u.test(entry.name)).map((entry) => entry.name)
-    );
-    expect(loadedSources.length).toBeGreaterThan(0);
-    for (const source of loadedSources) expect(new URL(source).origin).toBe(new URL(page.url()).origin);
-    expect(await japaneseCard(page).locator("h3").evaluate((element) => getComputedStyle(element).fontFamily)).toContain("Source Serif");
+    await test.step("Local font resources and actual Cyrillic face", async () => {
+      const loadedSources = await page.evaluate(() =>
+        performance.getEntriesByType("resource").filter((entry) => /\.(?:woff2?|ttf)(?:\?|$)/u.test(entry.name)).map((entry) => entry.name)
+      );
+      expect(loadedSources.length).toBeGreaterThan(0);
+      for (const source of loadedSources) expect(new URL(source).origin).toBe(new URL(page.url()).origin);
+      expect(await japaneseCard(page).locator("h3").evaluate((element) => getComputedStyle(element).fontFamily)).toContain("Onest Local");
+      expect(await page.evaluate(async () => (await document.fonts.load('500 24px "Onest Local"', 'Прочитать')).length)).toBeGreaterThan(0);
+    });
   });
 
   test(`${locale}: archive and reader reflow, body scale and heading isolation`, async ({ page }) => {
@@ -218,8 +231,8 @@ test("project directory keeps complete copy and a consistent action label", asyn
         expect(element.clamp, `${locale}/${width}/${element.tag} complete`).toBe("none");
         expect(element.overflow, `${locale}/${width}/${element.tag} horizontal bounds`).toBeLessThanOrEqual(1);
         if (["STRONG", "SPAN"].includes(element.tag)) {
-          expect(element.font).toContain("Source Sans");
-          expect(element.size).toBe("14px");
+          expect(element.font).toContain("Onest Local");
+          expect(element.size).toBe("15px");
           expect(element.weight).toBe("600");
           expect(["normal", "0px"]).toContain(element.tracking);
           expect(element.transform).toBe("none");

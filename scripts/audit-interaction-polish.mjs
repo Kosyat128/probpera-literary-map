@@ -75,8 +75,8 @@ async function seriesMetrics(locator, coarse) {
     return { text: element.textContent, font: style.fontFamily, size: parseFloat(style.fontSize), width: rect.width, height: rect.height };
   }));
   for (const item of items) {
-    expect(item.size).toBe(14);
-    expect(item.font).toContain("Source Sans");
+    expect(item.size).toBe(15);
+    expect(item.font).toContain("Onest Local");
     if (coarse) { expect(item.width).toBeGreaterThanOrEqual(44); expect(item.height).toBeGreaterThanOrEqual(44); }
   }
   return items;

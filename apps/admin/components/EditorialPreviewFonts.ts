@@ -41,3 +41,9 @@ const serifLatin = localFont({
 export const editorialPreviewFonts = [
   sansCyrillic.variable, sansLatin.variable, serifCyrillic.variable, serifLatin.variable,
 ].join(" ");
+
+// Canvas measurement uses the same exact local bytes under Next's bundled names.
+export const editorialPreviewFontFamilies = {
+  sans: `${sansCyrillic.style.fontFamily}, ${sansLatin.style.fontFamily}`,
+  serif: `${serifCyrillic.style.fontFamily}, ${serifLatin.style.fontFamily}`,
+} as const;

@@ -284,7 +284,7 @@
     }
 
     #community .community-visual-stats > span {
-      grid-template-columns: 5ch minmax(0, 1fr);
+      grid-template-columns: minmax(max-content, 4.5rem) minmax(0, 1fr);
       gap: 16px;
       align-items: baseline;
       padding: 12px 0;

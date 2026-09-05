@@ -36,6 +36,7 @@ export type BookInspectionPageTurnGeometryInput = Readonly<{
   progress: number;
   pageWidth?: number;
   pageHeight?: number;
+  grabV?: number;
 }>;
 
 export type BookInspectionPageTurnOutcome = Readonly<{
@@ -90,6 +91,7 @@ export function sampleBookInspectionPageTurn(options: {
   v: number;
   pageWidth?: number;
   pageHeight?: number;
+  grabV?: number;
 }): BookInspectionPagePoint {
   const progress = normalizeBookInspectionPageTurnProgress(options.progress);
   const u = clamp(finite(options.u, 0), 0, 1);
@@ -100,6 +102,7 @@ export function sampleBookInspectionPageTurn(options: {
   const distanceFromBinding = u * width;
   const endpointEnvelope = Math.sin(Math.PI * progress);
   const turnAngle = Math.PI * progress;
+  const grabV = clamp(finite(options.grabV ?? 0.5, 0.5), 0, 1);
 
   // Curl vanishes at the binding and at both committed endpoints. The small
   // vertical envelope gives the free edge a sheet-like bow without exceeding
@@ -109,7 +112,7 @@ export function sampleBookInspectionPageTurn(options: {
     0.08 *
     endpointEnvelope *
     Math.sin(Math.PI * u) *
-    (0.88 + 0.12 * Math.cos((v - 0.5) * Math.PI));
+    (0.88 + 0.12 * Math.cos((v - grabV) * Math.PI));
   const edgeBow =
     width * 0.012 * endpointEnvelope * Math.sin(Math.PI * u) * (v - 0.5);
 

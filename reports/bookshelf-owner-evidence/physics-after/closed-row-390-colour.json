@@ -1,0 +1,210 @@
+{
+  "capture": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\reports\\bookshelf-owner-evidence\\physics-after\\closed-row-390.png",
+  "reference": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-bookshelf-owner\\docs\\stage5-reference\\OWNER_LOCKED_BOOK_SPINES_EXACT_2026-08-30.png",
+  "formulaVersion": "ciede2000-sharma-2005-v1",
+  "expectedSpineCount": 7,
+  "qualityProfile": "ECONOMY",
+  "lightExposure": 0.38,
+  "method": "Actual WebGL screenshot, matched relative text-free cloth regions; sRGB mean -> D65 Lab -> CIEDE2000",
+  "meanDeltaE00": 2.9490217040608875,
+  "maximumDeltaE00": 4.299048359952014,
+  "patchGatePassed": true,
+  "cells": [
+    {
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "slot": 0,
+      "baseColor": "#406872",
+      "currentRect": {
+        "left": 47,
+        "top": 257,
+        "width": 18,
+        "height": 18
+      },
+      "referenceRect": {
+        "left": 71,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        65.20061728395062,
+        107.92901234567901,
+        118.44444444444444
+      ],
+      "referenceRGB": [
+        54.090625,
+        96.17875,
+        108.595625
+      ],
+      "deltaE00": 4.299048359952014
+    },
+    {
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "slot": 1,
+      "baseColor": "#BF5441",
+      "currentRect": {
+        "left": 90,
+        "top": 257,
+        "width": 17,
+        "height": 18
+      },
+      "referenceRect": {
+        "left": 168,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        192.6437908496732,
+        89.30718954248366,
+        70.66666666666667
+      ],
+      "referenceRGB": [
+        185.479375,
+        75.911875,
+        58.70625
+      ],
+      "deltaE00": 3.9861166296034862
+    },
+    {
+      "key": "england:h_g_wells:ann-veronica",
+      "slot": 2,
+      "baseColor": "#889149",
+      "currentRect": {
+        "left": 132,
+        "top": 257,
+        "width": 17,
+        "height": 18
+      },
+      "referenceRect": {
+        "left": 265,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        143.54901960784315,
+        151.16993464052288,
+        81.68300653594771
+      ],
+      "referenceRGB": [
+        131.770625,
+        141.44125,
+        68.83
+      ],
+      "deltaE00": 3.606591500579317
+    },
+    {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "slot": 3,
+      "baseColor": "#C29043",
+      "currentRect": {
+        "left": 175,
+        "top": 257,
+        "width": 17,
+        "height": 18
+      },
+      "referenceRect": {
+        "left": 362,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        190.80718954248366,
+        150.66013071895424,
+        78.33006535947712
+      ],
+      "referenceRGB": [
+        191.035,
+        139.526875,
+        61.5525
+      ],
+      "deltaE00": 4.238649690296868
+    },
+    {
+      "key": "russia:tolstoy:war-and-peace",
+      "slot": 4,
+      "baseColor": "#AC4141",
+      "currentRect": {
+        "left": 217,
+        "top": 257,
+        "width": 17,
+        "height": 18
+      },
+      "referenceRect": {
+        "left": 459,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        171.77124183006535,
+        62.57516339869281,
+        64.23202614379085
+      ],
+      "referenceRGB": [
+        167.608125,
+        58.483125,
+        60.10125
+      ],
+      "deltaE00": 1.3561106010456683
+    },
+    {
+      "key": "england:william_shakespeare:hamlet",
+      "slot": 5,
+      "baseColor": "#BB5441",
+      "currentRect": {
+        "left": 259,
+        "top": 257,
+        "width": 17,
+        "height": 18
+      },
+      "referenceRect": {
+        "left": 555,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        184.281045751634,
+        83.36601307189542,
+        65.55555555555556
+      ],
+      "referenceRGB": [
+        184.67375,
+        79.63875,
+        61.87375
+      ],
+      "deltaE00": 0.9618152964807136
+    },
+    {
+      "key": "england:david_mitchell:slade-house",
+      "slot": 6,
+      "baseColor": "#508B8A",
+      "currentRect": {
+        "left": 302,
+        "top": 257,
+        "width": 17,
+        "height": 18
+      },
+      "referenceRect": {
+        "left": 652,
+        "top": 365,
+        "width": 40,
+        "height": 40
+      },
+      "currentRGB": [
+        80.2843137254902,
+        139.30065359477123,
+        138.218954248366
+      ],
+      "referenceRGB": [
+        71.478125,
+        133.98125,
+        133.503125
+      ],
+      "deltaE00": 2.1948198504681478
+    }
+  ]
+}

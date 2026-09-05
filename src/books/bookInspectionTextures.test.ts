@@ -37,7 +37,7 @@ describe("book inspection textures", () => {
     expect(resolveBookInspectionTexturePlan("HIGH", 0).width).toBe(1_240);
   });
 
-  it("extends the pinned document key only with page and quality", () => {
+  it("pins document, page, quality, typography, layout and theme in the resource key", () => {
     const key = createBookInspectionTextureCacheKey({
       documentCacheKey: document.cacheKey,
       page: document.pages[0],
@@ -45,7 +45,7 @@ describe("book inspection textures", () => {
     });
 
     expect(key).toBe(
-      `${document.cacheKey}|page=0:identity|quality=HIGH`
+      `${document.cacheKey}|page=0:identity|quality=HIGH|owner-book-typography-v2|book-inspection-layout-v3|{}`
     );
   });
 

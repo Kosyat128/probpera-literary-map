@@ -1,4 +1,7 @@
 import type { BookEditorialPage } from "./bookEditorialPages";
+import { bookDossierDiagramPoint } from "./bookDossierDiagram";
+import { BOOK_TYPOGRAPHY_VERSION, BookDossierPaperTokens, BookDossierSpacingTokens, BookDossierTypographyTokens, ensureBookTypographyReady } from "./bookTypography";
+import { BOOK_INSPECTION_LAYOUT_VERSION, bookInspectionFont, getBookInspectionPageLayout } from "./bookInspectionPageLayout";
 
 export const bookInspectionTextureQualities = [
   "HIGH",
@@ -108,13 +111,16 @@ function normalizedKeyPart(value: unknown, maximumLength = 320) {
 export function createBookInspectionTextureCacheKey(
   request: Pick<
     BookInspectionTextureRequest,
-    "documentCacheKey" | "page" | "quality"
+    "documentCacheKey" | "page" | "quality" | "theme"
   >
 ) {
   return [
     normalizedKeyPart(request.documentCacheKey),
     `page=${request.page.index}:${request.page.id}`,
     `quality=${request.quality}`,
+    BOOK_TYPOGRAPHY_VERSION,
+    BOOK_INSPECTION_LAYOUT_VERSION,
+    JSON.stringify(request.theme || {}),
   ].join("|");
 }
 
@@ -142,213 +148,103 @@ function getCanvasContext(surface: BookInspectionCanvas) {
   return surface.getContext("2d") as InspectionCanvasContext | null;
 }
 
-function truncateLine(
-  context: InspectionCanvasContext,
-  text: string,
-  maximumWidth: number
-) {
-  if (context.measureText(text).width <= maximumWidth) return text;
-  let left = 0;
-  let right = text.length;
-  while (left < right) {
-    const middle = Math.ceil((left + right) / 2);
-    if (context.measureText(`${text.slice(0, middle).trim()}…`).width <= maximumWidth) {
-      left = middle;
-    } else {
-      right = middle - 1;
-    }
-  }
-  return `${text.slice(0, Math.max(1, left)).trim()}…`;
-}
-
-function wrapLines(
-  context: InspectionCanvasContext,
-  text: string,
-  maximumWidth: number,
-  maximumLines: number
-) {
-  const words = text.split(/\s+/u).filter(Boolean);
-  const lines: string[] = [];
-  let current = "";
-  for (const word of words) {
-    const candidate = current ? `${current} ${word}` : word;
-    if (context.measureText(candidate).width <= maximumWidth) {
-      current = candidate;
-      continue;
-    }
-    if (current) lines.push(current);
-    current = truncateLine(context, word, maximumWidth);
-    if (lines.length >= maximumLines) break;
-  }
-  if (current && lines.length < maximumLines) lines.push(current);
-  if (lines.length === maximumLines && words.join(" ") !== lines.join(" ")) {
-    lines[lines.length - 1] = truncateLine(
-      context,
-      `${lines[lines.length - 1]}…`,
-      maximumWidth
-    );
-  }
-  return lines;
-}
-
-function drawWrappedText(options: {
-  context: InspectionCanvasContext;
-  text: string;
-  x: number;
-  y: number;
-  maximumWidth: number;
-  lineHeight: number;
-  maximumLines: number;
-}) {
-  const lines = wrapLines(
-    options.context,
-    options.text,
-    options.maximumWidth,
-    options.maximumLines
-  );
-  lines.forEach((line, index) => {
-    options.context.fillText(
-      line,
-      options.x,
-      options.y + options.lineHeight * index,
-      options.maximumWidth
-    );
-  });
-  return options.y + lines.length * options.lineHeight;
-}
-
 function renderEditorialPage(
   surface: BookInspectionCanvas,
   request: BookInspectionTextureRequest,
   plan: BookInspectionTexturePlan
 ) {
   const context = getCanvasContext(surface);
-  if (!context) return false;
-
-  const paper = safeColor(request.theme?.paperColor, "#f3ead8");
-  const ink = safeColor(request.theme?.inkColor, "#261c24");
-  const muted = safeColor(request.theme?.mutedColor, "#6f6266");
-  const accent = safeColor(request.theme?.accentColor, "#b85b27");
-  const scale = plan.width / 1_400;
-  const inset = Math.round(132 * scale);
-  const contentWidth = plan.width - inset * 2;
-  const page = request.page;
-
+  const layout = getBookInspectionPageLayout(request.page);
+  // Unpaginated input remains available in the semantic DOM reader.
+  if (!context || !layout) return false;
+  const paper = safeColor(request.theme?.paperColor, BookDossierPaperTokens.paper);
+  const ink = safeColor(request.theme?.inkColor, BookDossierPaperTokens.ink);
+  const muted = safeColor(request.theme?.mutedColor, BookDossierPaperTokens.muted);
+  const accent = safeColor(request.theme?.accentColor, BookDossierPaperTokens.accent);
   context.save();
+  context.scale(plan.width / BookDossierSpacingTokens.designWidth, plan.height / BookDossierSpacingTokens.designHeight);
   context.fillStyle = paper;
-  context.fillRect(0, 0, plan.width, plan.height);
-  context.fillStyle = "rgba(32, 18, 25, 0.035)";
-  for (let y = 0; y < plan.height; y += Math.max(8, Math.round(14 * scale))) {
-    context.fillRect(0, y, plan.width, Math.max(1, Math.round(scale)));
+  context.fillRect(0, 0, 1400, 2000);
+  // Low-contrast fixed-coordinate paper fibres survive quality changes quietly.
+  context.fillStyle = "rgba(70,50,28,.025)";
+  for (let y = 7; y < 2000; y += 19) {
+    const x = (y * 71) % 1400;
+    context.fillRect(x, y, 18, .6);
   }
+  const outer = BookDossierSpacingTokens.outer;
+  const gutter = BookDossierSpacingTokens.gutter;
+  const inset = request.page.index % 2 === 0 ? outer : gutter;
+  const right = request.page.index % 2 === 0 ? 1400 - gutter : 1400 - outer;
   context.strokeStyle = accent;
-  context.lineWidth = Math.max(2, Math.round(3 * scale));
+  context.lineWidth = 2;
   context.beginPath();
-  context.moveTo(inset, Math.round(150 * scale));
-  context.lineTo(plan.width - inset, Math.round(150 * scale));
+  context.moveTo(inset, BookDossierSpacingTokens.top);
+  context.lineTo(right, BookDossierSpacingTokens.top);
   context.stroke();
-
-  let y = Math.round(220 * scale);
+  context.textAlign = "left";
   context.textBaseline = "alphabetic";
-  context.fillStyle = accent;
-  context.font = `600 ${Math.round(25 * scale)}px Arial, sans-serif`;
-  context.letterSpacing = `${Math.max(1, Math.round(2 * scale))}px`;
-  context.fillText(page.eyebrow.toLocaleUpperCase(), inset, y, contentWidth);
-
-  y += Math.round(102 * scale);
   context.letterSpacing = "0px";
-  context.fillStyle = ink;
-  context.font = `600 ${Math.round((page.id === "identity" ? 82 : 58) * scale)}px Georgia, "Times New Roman", serif`;
-  y = drawWrappedText({
-    context,
-    text: page.title,
-    x: inset,
-    y,
-    maximumWidth: contentWidth,
-    lineHeight: Math.round((page.id === "identity" ? 98 : 72) * scale),
-    maximumLines: page.id === "identity" ? 4 : 3,
-  });
-
-  if (page.rows.length > 0) {
-    y += Math.round(74 * scale);
-    const labelWidth = Math.round(contentWidth * 0.36);
-    for (const row of page.rows.slice(0, 9)) {
-      context.fillStyle = muted;
-      context.font = `600 ${Math.round(24 * scale)}px Arial, sans-serif`;
-      context.fillText(row.label.toLocaleUpperCase(), inset, y, labelWidth);
-      context.fillStyle = ink;
-      context.font = `500 ${Math.round(31 * scale)}px Georgia, "Times New Roman", serif`;
-      const rowEnd = drawWrappedText({
-        context,
-        text: row.value,
-        x: inset + labelWidth,
-        y,
-        maximumWidth: contentWidth - labelWidth,
-        lineHeight: Math.round(39 * scale),
-        maximumLines: 2,
-      });
-      y = Math.max(y + Math.round(62 * scale), rowEnd + Math.round(22 * scale));
-      if (y > plan.height - Math.round(180 * scale)) break;
+  if (layout.template === "timeline") {
+    const entries = new Map<string, { x: number; y: number }>();
+    for (const command of layout.commands) {
+      if (command.x > inset && !entries.has(command.sourceId)) entries.set(command.sourceId, { x: command.x - BookDossierSpacingTokens.paragraph / 2, y: command.y });
+    }
+    const points = [...entries.values()];
+    if (points.length) {
+      context.strokeStyle = accent;
+      context.fillStyle = accent;
+      context.lineWidth = 1.5;
+      context.beginPath();
+      context.moveTo(points[0].x, points[0].y);
+      context.lineTo(points[points.length - 1].x, points[points.length - 1].y);
+      context.stroke();
+      for (const point of points) {
+        context.beginPath();
+        context.arc(point.x, point.y, 3, 0, Math.PI * 2);
+        context.fill();
+      }
     }
   }
-
-  if (page.paragraphs.length > 0) {
-    y += Math.round(70 * scale);
-    context.fillStyle = ink;
-    context.font = `400 ${Math.round(36 * scale)}px Georgia, "Times New Roman", serif`;
-    for (const paragraph of page.paragraphs.slice(0, 2)) {
-      y = drawWrappedText({
-        context,
-        text: paragraph,
-        x: inset,
-        y,
-        maximumWidth: contentWidth,
-        lineHeight: Math.round(54 * scale),
-        maximumLines: 16,
-      });
-      y += Math.round(42 * scale);
+  if (layout.diagram) {
+    const { preview, x, y, width, height } = layout.diagram;
+    const points = new Map(preview.nodes.map((node, index) => {
+      const point = bookDossierDiagramPoint(index, preview.nodes.length);
+      return [node.number, { x: x + point.x / 400 * width, y: y + point.y / 300 * height }];
+    }));
+    context.strokeStyle = accent;
+    context.lineWidth = 5;
+    for (const edge of preview.edges) {
+      const from = points.get(edge.from)!, to = points.get(edge.to)!;
+      const length = Math.hypot(to.x - from.x, to.y - from.y);
+      if (!length) continue;
+      const dx = (to.x - from.x) / length, dy = (to.y - from.y) / length;
+      const end = { x: to.x - dx * 66, y: to.y - dy * 66 };
+      context.beginPath(); context.moveTo(from.x + dx * 62, from.y + dy * 62); context.lineTo(end.x, end.y);
+      context.moveTo(end.x - dx * 22 - dy * 12, end.y - dy * 22 + dx * 12); context.lineTo(end.x, end.y);
+      context.lineTo(end.x - dx * 22 + dy * 12, end.y - dy * 22 - dx * 12); context.stroke();
     }
-  }
-
-  if (page.sources.length > 0) {
-    y += Math.round(68 * scale);
-    for (const source of page.sources.slice(0, 6)) {
-      context.fillStyle = ink;
-      context.font = `600 ${Math.round(29 * scale)}px Georgia, "Times New Roman", serif`;
-      context.fillText(
-        truncateLine(context, source.provider, contentWidth),
-        inset,
-        y,
-        contentWidth
-      );
-      y += Math.round(39 * scale);
-      context.fillStyle = muted;
-      context.font = `400 ${Math.round(22 * scale)}px Arial, sans-serif`;
-      const rights = [source.usageLabel, source.license, source.rightsHolder]
-        .filter(Boolean)
-        .join(" · ");
-      context.fillText(
-        truncateLine(context, rights, contentWidth),
-        inset,
-        y,
-        contentWidth
-      );
-      y += Math.round(32 * scale);
-      context.fillText(
-        truncateLine(context, source.sourceUrl, contentWidth),
-        inset,
-        y,
-        contentWidth
-      );
-      y += Math.round(72 * scale);
-      if (y > plan.height - Math.round(180 * scale)) break;
+    context.font = bookInspectionFont("caption");
+    context.textAlign = "center"; context.textBaseline = "middle";
+    for (const node of preview.nodes) {
+      const point = points.get(node.number)!;
+      context.fillStyle = paper; context.beginPath();
+      if (node.groupIndex % 3 === 1) context.rect(point.x - 58, point.y - 58, 116, 116);
+      else if (node.groupIndex % 3 === 2) {
+        context.moveTo(point.x, point.y - 70); context.lineTo(point.x + 70, point.y); context.lineTo(point.x, point.y + 70); context.lineTo(point.x - 70, point.y); context.closePath();
+      } else context.arc(point.x, point.y, 62, 0, Math.PI * 2);
+      context.fill(); context.stroke(); context.fillStyle = ink; context.fillText(String(node.number), point.x, point.y);
     }
+    context.textAlign = "left"; context.textBaseline = "alphabetic";
   }
-
+  for (const command of layout.commands) {
+    context.font = bookInspectionFont(command.role);
+    context.fillStyle = command.role === "caption" ? accent : command.role === "metadata" ? muted : ink;
+    context.fillText(command.text, command.x, command.y);
+  }
   context.fillStyle = muted;
-  context.font = `500 ${Math.round(21 * scale)}px Arial, sans-serif`;
-  context.textAlign = "right";
-  context.fillText(String(page.index + 1), plan.width - inset, plan.height - inset);
+  context.font = "400 " + BookDossierTypographyTokens.folio.size + "px " + BookDossierTypographyTokens.sans;
+  context.textAlign = request.page.index % 2 === 0 ? "left" : "right";
+  context.fillText(String(request.page.index + 1), request.page.index % 2 === 0 ? inset : right, 2000 - outer);
   context.restore();
   return true;
 }
@@ -379,7 +275,12 @@ function createTextureResource(
 
 const defaultRenderer: TextureRenderer = (request, plan, key) => {
   const surface = createBrowserCanvas(plan.width, plan.height);
-  if (!surface || !renderEditorialPage(surface, request, plan)) return null;
+  if (!surface) return null;
+  if (!renderEditorialPage(surface, request, plan)) {
+    surface.width = 1;
+    surface.height = 1;
+    return null;
+  }
   return createTextureResource(key, surface, plan);
 };
 
@@ -481,6 +382,7 @@ export class BookInspectionTextureStore {
     // The microtask boundary keeps generation lazy and gives a newer selection
     // a chance to cancel work before allocating a large page surface.
     await Promise.resolve();
+    if (this.renderer === defaultRenderer && !await ensureBookTypographyReady()) return null;
     if (
       this.storeDisposed ||
       this.activeGeneration !== generation ||

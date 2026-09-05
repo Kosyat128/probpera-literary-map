@@ -1,4 +1,4 @@
-import { Component, lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { Component, lazy, Suspense, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { ComponentType, ErrorInfo, ReactNode } from "react";
 
 import type { BookShelfPhase } from "../books/bookShelfState";
@@ -14,6 +14,12 @@ import {
 } from "../books/bookShelfQualityController";
 import BookShelfBrandLoader from "./BookShelfBrandLoader";
 import type { BookShelfSceneCanvasProps } from "./BookShelfSceneCanvas";
+import type { BookShelfViewportInsets } from "../books/bookInspectionCamera";
+import { EMPTY_BOOK_SHELF_INSETS, measureBookShelfViewportInsets } from "../books/bookShelfViewportInsets";
+import type { BookShelfSpineHit } from "../books/bookShelfPointer";
+import { ensureBookTypographyReady } from "../books/bookTypography";
+
+export type BookShelfSpineHover = BookShelfSpineHit;
 
 export type BookShelfPresentationItem = {
   key: string;
@@ -25,6 +31,7 @@ export type BookShelfPresentationItem = {
   baseColor: string;
   accentColor: string;
   paperColor: string;
+  ownerPaletteSlot?: number;
 };
 
 export type BookShelfSceneAppearance = {
@@ -46,6 +53,9 @@ export type BookShelfSceneProps = {
   appearance: BookShelfSceneAppearance;
   focusedBookKey: string | null;
   selectedBookKey: string | null;
+  viewportInsets?: BookShelfViewportInsets;
+  onHoveredBookChange?: (hover: BookShelfSpineHover | null) => void;
+  onPressedBookChange?: (key: string | null) => void;
   phase: BookShelfPhase;
   requestId: number;
   active: boolean;
@@ -176,6 +186,9 @@ function supportsWebGl() {
 }
 
 export default function BookShelfScene(props: BookShelfSceneProps) {
+  const sceneElementRef = useRef<HTMLDivElement>(null);
+  const actionsRef = useRef<HTMLDivElement>(null);
+  const [actionsInset, setActionsInset] = useState(0);
   const [support, setSupport] = useState<"checking" | "ready" | "failed">(
     "checking"
   );
@@ -207,21 +220,25 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
 
   useEffect(() => {
     if (!props.active) return;
+    let current = true;
     const available = supportsWebGl();
-    setSupport(available ? "ready" : "failed");
-    if (!available) onFailureRef.current("unsupported");
+    if (!available) {
+      setSupport("failed");
+      onFailureRef.current("unsupported");
+      return;
+    }
+    void ensureBookTypographyReady().then((ready) => {
+      if (!current) return;
+      setSupport(ready ? "ready" : "failed");
+      if (!ready) onFailureRef.current("texture-error");
+    });
+    return () => { current = false; };
   }, [props.active]);
 
   const failureHandler = useMemo(
     () => () => onFailureRef.current("render-error"),
     []
   );
-
-  if (!props.items.length) {
-    return <div className="book-shelf-scene__empty">{props.emptyLabel}</div>;
-  }
-
-  if (support === "failed") return null;
 
   const inspectionActive =
     props.phase === "INSPECTION_ENTERING" ||
@@ -239,14 +256,53 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
     props.phase === "PAGE_DRAGGING" ||
     props.phase === "PAGE_SETTLING";
   const pageNavigationBusy = props.phase !== "BOOK_OPEN";
+  useLayoutEffect(() => {
+    const scene = sceneElementRef.current;
+    const actions = actionsRef.current;
+    if (!inspectionActive || !scene || !actions) {
+      setActionsInset(previous => previous === 0 ? previous : 0);
+      return;
+    }
+    const measure = () => {
+      const rect = actions.getBoundingClientRect();
+      const next = rect.height > 0 && getComputedStyle(actions).visibility !== "hidden"
+        ? measureBookShelfViewportInsets({
+            scene: scene.getBoundingClientRect(),
+            overlays: [{ edge: "bottom", rect: { left: rect.left, right: rect.right, top: rect.top - 12, bottom: rect.bottom } }],
+          }).bottom
+        : 0;
+      setActionsInset(previous => previous === next ? previous : next);
+    };
+    measure();
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
+    if (scene) observer?.observe(scene);
+    if (actions) observer?.observe(actions);
+    window.addEventListener("resize", measure, { passive: true });
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [inspectionActive, coverCanOpen, pageNavigationActive, props.viewportInsets, support]);
+  // Controls keep the base viewport/panel placement. Their measured footprint
+  // reserves camera space only, so measuring them cannot push them upward again.
+  const cameraViewportInsets = useMemo(() => ({
+    ...(props.viewportInsets || EMPTY_BOOK_SHELF_INSETS),
+    bottom: Math.max(props.viewportInsets?.bottom || 0, actionsInset),
+  }), [props.viewportInsets, actionsInset]);
   const requestCoverOpen = () => {
     if (props.selectedBookKey) {
       props.onRequestCoverOpen(props.selectedBookKey);
     }
   };
 
+  if (!props.items.length) {
+    return <div className="book-shelf-scene__empty">{props.emptyLabel}</div>;
+  }
+  if (support === "failed") return null;
+
   return (
     <div
+      ref={sceneElementRef}
       className="book-shelf-scene"
       role="region"
       aria-label={props.sceneLabel}
@@ -270,6 +326,9 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
               appearance={props.appearance}
               focusedBookKey={props.focusedBookKey}
               selectedBookKey={props.selectedBookKey}
+              viewportInsets={cameraViewportInsets}
+              onHoveredBookChange={props.onHoveredBookChange}
+              onPressedBookChange={props.onPressedBookChange}
               phase={props.phase}
               requestId={props.requestId}
               active={props.active}
@@ -302,15 +361,21 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
         </Suspense>
       </SceneErrorBoundary>
       {inspectionActive ? (
-        <div className="book-shelf-scene__accessible-actions">
+        <div ref={actionsRef} className="book-shelf-scene__accessible-actions" style={{
+          left: (props.viewportInsets?.left || 0) + 16,
+          right: (props.viewportInsets?.right || 0) + 16,
+          bottom: (props.viewportInsets?.bottom || 0) + 16,
+          maxWidth: "none", justifyContent: "center",
+        }}>
           {coverCanOpen && props.selectedBookKey && props.openBookLabel ? (
-            <button type="button" onClick={requestCoverOpen}>
+            <button className="book-shelf-scene__open" type="button" onClick={requestCoverOpen}>
               {props.openBookLabel}
             </button>
           ) : null}
           {pageNavigationActive && props.pageTurnLabel ? (
             <div aria-busy={pageNavigationBusy}>
               <button
+                className="book-shelf-scene__page"
                 type="button"
                 onClick={props.onRequestPreviousPage}
                 disabled={
@@ -325,6 +390,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
                   : null}
               </span>
               <button
+                className="book-shelf-scene__page"
                 type="button"
                 onClick={props.onRequestPageTurn}
                 disabled={
@@ -341,7 +407,7 @@ export default function BookShelfScene(props: BookShelfSceneProps) {
           {props.closeInspectionLabel &&
           props.phase !== "INSPECTION_CLOSING" &&
           props.phase !== "SHELF_RESTORING" ? (
-            <button type="button" onClick={props.onRequestInspectionClose}>
+            <button className="book-shelf-scene__close" type="button" onClick={props.onRequestInspectionClose}>
               {props.closeInspectionLabel}
             </button>
           ) : null}

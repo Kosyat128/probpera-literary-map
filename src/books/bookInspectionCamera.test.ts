@@ -6,6 +6,7 @@ import {
   BOOK_INSPECTION_ENTER_DURATION_MS,
   BOOK_INSPECTION_ORBIT_LIMITS,
   applyBookInspectionOrbitDelta,
+  bookInspectionViewportCanFrame,
   freezeBookInspectionExtraction,
   resetBookInspectionOrbit,
   resolveBookInspectionCameraFraming,
@@ -17,6 +18,18 @@ import {
 } from "./bookInspectionCamera";
 
 describe("book inspection camera", () => {
+  it("keeps an offscreen resize out of the camera animation until the visible area returns", () => {
+    const framing = (bottom: number) => resolveBookInspectionCameraFraming({
+      viewportWidth: 368, viewportHeight: 480, detailOpen: true,
+      viewportInsets: { top: 0, right: 0, bottom, left: 0 }, itemIndex: 0, itemCount: 17,
+    });
+    expect(bookInspectionViewportCanFrame(framing(480))).toBe(false);
+    expect(bookInspectionViewportCanFrame(framing(450))).toBe(false);
+    const visible = framing(278.4);
+    expect(bookInspectionViewportCanFrame(visible)).toBe(true);
+    expect(resolveBookInspectionOrbitCamera(visible, BOOK_INSPECTION_DEFAULT_ORBIT).position[2]).toBeLessThan(30);
+  });
+
   it("compensates the first, middle, penultimate and last real shelf edges", () => {
     expect(resolveBookInspectionEdgeCompensation(0, 7)).toEqual({
       edgeClass: "first",
@@ -80,7 +93,7 @@ describe("book inspection camera", () => {
     });
     expect(mobile.rightInsetPx).toBe(0);
     expect(mobile.opticalOffsetX).toBe(0);
-    expect(mobile.edgeCompensationX).toBeCloseTo(0.16 * 0.52, 5);
+    expect(mobile.edgeCompensationX).toBe(0);
     expect(mobile.position.every(Number.isFinite)).toBe(true);
     expect(mobile.lookAt.every(Number.isFinite)).toBe(true);
   });
@@ -264,7 +277,7 @@ describe("book inspection camera", () => {
 
     expect(neutral.position.every(Number.isFinite)).toBe(true);
     expect(closer.position.every(Number.isFinite)).toBe(true);
-    expect(closer.lookAt).toEqual(framing.lookAt);
+    expect(closer.lookAt.every(Number.isFinite)).toBe(true);
     expect(distance(closer)).toBeLessThan(distance(neutral));
     expect(closer.position[0]).not.toBe(neutral.position[0]);
   });

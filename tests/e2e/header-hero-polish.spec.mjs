@@ -119,6 +119,56 @@ test("desktop menus stay viewport-safe and return keyboard focus on Escape", asy
   }
 });
 
+test("section mega-menu shares title and description rows without clipping text", async ({ page }) => {
+  await openHomepage(page, 1440, 900);
+  await page.locator(".sections-menu > summary").click();
+  const facesLoaded = await page.evaluate(async () => {
+    const faces = await document.fonts.load('500 18px "Onest Local"', "Навигация по разделам");
+    return faces.length > 0 && faces.every(face => face.status === "loaded");
+  });
+  expect(facesLoaded).toBe(true);
+  const groups = await page.locator(".sections-mega-groups > section").evaluateAll(sections => {
+    const textRects = element => {
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      return [...range.getClientRects()].filter(rect => rect.width > 0).map(rect => ({
+        left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom,
+      }));
+    };
+    return sections.map(section => [...section.querySelectorAll("a")].map(anchor => {
+      const title = anchor.querySelector("strong");
+      const description = anchor.querySelector("small");
+      const bounds = anchor.getBoundingClientRect();
+      return { bounds: { left: bounds.left, right: bounds.right, top: bounds.top, bottom: bounds.bottom },
+        title: textRects(title), description: textRects(description),
+        titleFont: getComputedStyle(title).fontFamily, titleWeight: getComputedStyle(title).fontWeight,
+        descriptionFont: getComputedStyle(description).fontFamily, descriptionSize: parseFloat(getComputedStyle(description).fontSize),
+      };
+    }));
+  });
+  expect(groups).toHaveLength(4);
+  for (let index = 0; index < Math.max(...groups.map(group => group.length)); index += 1) {
+    const row = groups.flatMap(group => group[index] ? [group[index]] : []);
+    for (const role of ["title", "description"]) {
+      const baselines = row.map(item => item[role][0].top);
+      expect(Math.max(...baselines) - Math.min(...baselines), `${role}/${index}`).toBeLessThanOrEqual(1);
+    }
+  }
+  for (const item of groups.flat()) {
+    expect(item.titleFont).toContain("Onest Local");
+    expect(item.titleWeight).toBe("500");
+    expect(item.descriptionFont).toContain("Onest Local");
+    expect(item.descriptionSize).toBeGreaterThanOrEqual(15);
+    for (const box of [...item.title, ...item.description]) {
+      expect(box.left).toBeGreaterThanOrEqual(item.bounds.left - 1);
+      expect(box.right).toBeLessThanOrEqual(item.bounds.right + 1);
+      expect(box.top).toBeGreaterThanOrEqual(item.bounds.top - 1);
+      expect(box.bottom).toBeLessThanOrEqual(item.bounds.bottom + 1);
+    }
+    expect(Math.max(...item.title.map(box => box.bottom))).toBeLessThanOrEqual(item.description[0].top + 1);
+  }
+});
+
 test("protected header bands, Hero art direction and reduced motion remain deterministic", async ({ page }) => {
   await openHomepage(page, 768, 1024);
   await expect.poll(() => page.locator(".hero-cover img").evaluate((image) => image.currentSrc)).toContain(

@@ -1,0 +1,20 @@
+{
+  "scope": "Actual CMS measureBookDossierDesign function in Chrome with synthetic private dossier/review fixture. Local Source WOFF2 faces use their public aliases; Next bundles the same bytes under its own aliases. This verifies measurement/layout, not deployed CMS authentication or a real editorial approval.",
+  "variantCount": 9,
+  "pages": [
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6,
+    6
+  ],
+  "fontVersion": "owner-book-typography-v2",
+  "layoutVersion": "book-inspection-layout-v2",
+  "overflowRejected": true,
+  "proofBoundToContent": true,
+  "generatedAt": "2026-09-05T03:01:28.899Z"
+}

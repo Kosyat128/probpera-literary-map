@@ -18,6 +18,7 @@ export const adminModuleRegistry = [
   { entry: ["＋", "Новая статья", "/articles/new"], sidebar: false },
   { entry: ["◉", "Студия данных", "/data-studio"], sidebar: true },
   { entry: ["▥", "Произведения и издания", "/library"], sidebar: true },
+  { entry: ["▥", "Редакционные досье книг", "/library/dossiers"], sidebar: false },
   { entry: ["◎", "Страны и авторы", "/editorial-database"], sidebar: true },
   { entry: ["EN", "Premium English", "/translations"], sidebar: true },
   { entry: ["▤", "Рубрики и теги", "/categories"], sidebar: true },

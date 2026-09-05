@@ -1,0 +1,43 @@
+# Onest homepage typography
+
+The owner explicitly rejected the previous Source UI typography and requested a modern, more compact Cyrillic face. Onest is bundled locally as four variable WOFF2 subsets, with its SIL OFL license. The UI uses 400 for copy, 500 for editorial headings and 600 for action emphasis. Paragraphs use 1.45 leading; long article reading uses 1.6 (1.55 on mobile). Actions are 15px, metadata 14px and captions at least 13px in the canonical system. Physical reference-bound book pages retain their existing Source fonts. Header and Hero retain their preserved local families and composition.
+
+Official font source: https://github.com/simpals/onest. The individual downloaded subset hashes are in `font-assets.json`. No external font request is needed at runtime.
+
+## Final local validation
+
+- Full unit suite: 521 files passed, 3004 tests passed; three files/four pre-existing tests skipped. Public/admin lint and type checks passed. Typography audit: 19 CSS files, zero issues.
+- Domain build passed, including 5513 SEO checks for 180 pages. Performance budgets passed for 4569 production files.
+- `typography-and-card-geometry.spec.mjs`: all nine tests passed. RU/EN cards and article reading were measured at ten widths, including complete text, Share alignment, control states, published CMS priority and 200/400-percent equivalent reflow.
+- All six Header/Hero browser checks passed. Both RU desktop and EN mobile art-direction checks passed with the new exact scale and leading values.
+- `globe-visual-regression.spec.mjs`: both desktop/mobile cases passed after review of the two changed writer-card baselines. The two upper-chrome baseline hashes are unchanged. All three mobile writer tabs are tested in the real UI before screenshot-only stabilization.
+- `shelf-controls.json`: eight visible controls measured at each of 1440, 768, 390 and 320px. Full labels fit their controls, minimum control dimensions are 44px and document overflow is zero. Long mobile actions receive sufficient grid width; labels are not shrunk or truncated to force a fit.
+- The separate navigation-alignment evidence has six responsive cases with zero row spread. Its 1024/390px cases are isolated panel fixtures because the preserved Header hides desktop dropdowns at those widths.
+
+`homepage-metrics.json` records eleven actual homepage sections at 1440/390px after the final production build, without CSS injection. It is an exploratory geometry capture, not a claim that every raw overflow entry is a defect: the two shelf live regions are deliberately visually hidden accessibility text, while journal category tabs and the globe edition rail have intentional scrollports. No visible editorial card title, excerpt, calendar copy, community counter or footer text was clipped. The mobile counters' earlier overflow is resolved. Sections larger than a viewport can show the existing sticky Header inside a full-element screenshot; this capture behavior does not imply duplicate headers in the document.
+
+The first control-only capture encountered replacement of the lazy archive placeholder during scrolling. The final capture waits for the actual controls and passed all four widths. Two old font-baseline failures were reviewed and updated for the intentional Onest change; screenshot tolerances were not relaxed. An earlier full unit run found two outdated presentation expectations and slow repeated Playwright subprocess imports; the exact expectations and isolated-process check were corrected before the successful final full run.
+
+These results describe the final local source/build before commit. Main merge, hosted release verification and database schema deployment are separate release steps and must be recorded from their actual outcomes.
+
+## Integration with the reviewed news preview
+
+Main commit `9e230976` added a development-only literary-news preview while this PR was being checked. Its two unlayered stylesheets overrode canonical text roles and failed the typography audit in GitHub's combined merge. Both stylesheets now belong to `site-defaults`; news text uses the existing Onest tokens, and mobile/coarse-pointer controls have 44px targets. News content and its development-only gate are unchanged.
+
+After integration, public/admin lint and type checks passed, the typography audit covered 22 CSS files with zero issues, and the full unit suite passed 3023 tests in 525 files (the same four legacy skips). The production domain build passed all 5513 SEO checks for 180 pages and the performance audit passed for 4569 files. The RU/EN ten-width card matrices and both art-direction tests were rerun successfully against that build. The final mobile-only news CSS was separately checked at 390px in both languages; the desktop panel geometry at 1440px remained unchanged, complete text fit, and the last story and footer were reachable through the existing scrollport. These news checks used the 33 existing reviewed entries in a browser-only fixture, not a new publication or live-source audit. Two transient development errors during an earlier resize pass could not be reproduced with full-stack capture and remain recorded in the local diagnostic report.
+
+The previous hosted ten-width matrix exhausted its 150-second budget after completing all widths on a shared software-rendered runner. Local software-WebGL probes passed in 36-72 seconds with the original budget; the instrumented probe observed one Canvas mount, no remount, and no final font-evaluation stall. No speculative renderer changes were made. The two matrix tests now budget 30 seconds per width and emit named steps and CI durations; every content, font-loading, alignment and clipping assertion remains in place. Other tests retain their existing budgets.
+
+## Final atlas fit checks
+
+The final compiled Atlas audit passed all eight RU/EN cases at 320, 390, 1440 and 1848px, plus the RU1440 immersive interaction check (`.review/atlas-final-compiled.log`). Mobile filters form two columns with complete labels; wide filters, largest archives and search share one row. The dropdown focus-scroll defect is fixed. Full production build validation passed 5513 SEO checks for 180 pages; performance passed for 4569 files. Lint and the 22-file CSS audit passed with zero issues, and three contract suites passed 21 checks.
+
+The preceding broader local WebGL run recorded 105 passed, 16 skipped and three failed tests. Subsequent unchanged preload tests passed in both projects, and both unchanged Atlas row tests passed. The new `identityLabelsFit` assertion caught vertical clipping of Onest glyphs in a 13px line box; the identity labels now use 1.35 leading inside the same 50px panel. After the final production rebuild, the responsive geometry test and both desktop/mobile visual cases passed (three passed, one existing mobile skip). Screenshot tolerances and baselines were unchanged. The visual fixture now wakes the actual activity owner and pauses the inactivity clock only during its chrome capture, then resumes real interactions. All identified local failures have passing targeted reruns; the complete hosted suite remains a separate release gate.
+
+## CSS geometry and mobile raster scale
+
+Quality run `33951193208` on `60084f15` passed the premium globe phase but exhausted its one-hour job limit during the later mobile typography matrices. The RU mobile wide cases repeatedly took 61-95 seconds each and exhausted the 300-second test budget. The trace identified the mounted bookshelf canvas, mostly above the viewport, with CSS size 1782x820 and a 2673x1230 drawing buffer at the 1920px case. Network requests were under 475ms; the trace contained GPU readback stalls. This evidence does not establish a font-loading hang or a browser-process leak.
+
+This CSS-geometry spec now uses deviceScaleFactor 1 in both projects. All ten widths, both languages, sequential reflow, mobile user agent, touch/media conditions, font-loading, full-text and Share assertions remain. Native mobile pixel density is retained in the other visual and WebGL suites. No application code or timeout changed for this correction.
+
+A local software-ANGLE comparison with tracing enabled passed the original RU mobile matrix in 2.9 minutes and the normalized RU matrix in 1.0 minute. Both normalized RU/EN matrices passed in 4.0 minutes total; EN had no paired baseline, so an EN speedup is not claimed. Offline traces confirm that CSS canvas sizes are unchanged while the 1920px drawing buffer becomes 1782x820, and isMobile/hasTouch remain true. The existing suite-classification contract also passed. These bounded checks support the correction; a new successful hosted run is still required for merge.

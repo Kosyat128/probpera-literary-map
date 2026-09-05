@@ -1,4 +1,6 @@
 import type { WorkLocale } from "../data/countries/types";
+import type { BookDossierSemanticAnchor, BookDossierTemplate } from "./bookDossierDocument";
+import type { BookDossierDiagramPreview } from "./bookDossierDiagram";
 
 export const BOOK_EDITORIAL_PAGE_DATA_VERSION = "book-editorial-pages-v1" as const;
 export const BOOK_EDITORIAL_MAX_PAGES = 4 as const;
@@ -56,17 +58,15 @@ export type BookEditorialPageInput = Readonly<{
 }>;
 
 export type BookEditorialRow = Readonly<{
-  kind:
-    | "writer"
-    | "year"
-    | "language"
-    | "country"
-    | BookEditorialMetadataKind;
+  id?: string;
+  href?: string;
+  kind: string;
   label: string;
   value: string;
 }>;
 
 export type BookEditorialSourceLine = Readonly<{
+  id?: string;
   provider: string;
   sourceUrl: string;
   usageLabel: string;
@@ -75,8 +75,12 @@ export type BookEditorialSourceLine = Readonly<{
 }>;
 
 export type BookEditorialPage = Readonly<{
-  id: "identity" | "details" | "description" | "provenance";
+  id: string;
   index: number;
+  template?: BookDossierTemplate;
+  sectionId?: string;
+  anchor?: BookDossierSemanticAnchor;
+  diagram?: BookDossierDiagramPreview;
   eyebrow: string;
   title: string;
   rows: readonly BookEditorialRow[];

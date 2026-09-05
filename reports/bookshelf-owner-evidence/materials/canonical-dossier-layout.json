@@ -1,0 +1,2900 @@
+{
+  "scope": "Real canonical first 17 catalogue dossiers in RU/EN, including released article relations and the public legacy adapter. This is a font-ready offscreen pagination probe, not a screenshot or reviewed V2 tier certification. Country names use Intl.DisplayNames; English genre labels use the public selector without the UI translation callback.",
+  "typography": {
+    "version": "owner-book-typography-v2",
+    "serif": "\"Source Serif 4 Local\", Georgia, serif",
+    "sans": "\"Source Sans 3 Local\", \"Segoe UI\", sans-serif",
+    "title": {
+      "size": 120,
+      "weight": 600,
+      "leading": 1.16
+    },
+    "heading": {
+      "size": 120,
+      "weight": 600,
+      "leading": 1.2
+    },
+    "body": {
+      "size": 92,
+      "weight": 400,
+      "leading": 1.5
+    },
+    "metadata": {
+      "size": 88,
+      "weight": 400,
+      "leading": 1.4
+    },
+    "caption": {
+      "size": 84,
+      "weight": 600,
+      "leading": 1.4
+    },
+    "folio": {
+      "size": 76,
+      "weight": 400,
+      "leading": 1.4
+    }
+  },
+  "spacing": {
+    "designWidth": 1400,
+    "designHeight": 2000,
+    "outer": 132,
+    "gutter": 164,
+    "top": 150,
+    "bottom": 150,
+    "baseline": 14,
+    "paragraph": 42,
+    "section": 70
+  },
+  "fontReady": true,
+  "cases": [
+    {
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "locale": "ru",
+      "title": "1984",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 10,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL1168083W",
+        "https://www.orwellfoundation.com/the-orwell-foundation/orwell/books-by-orwell/nineteen-eighty-four/",
+        "https://catalogue.bnf.fr/ark:/12148/cb119437788",
+        "https://search.rsl.ru/ru/record/01006717528",
+        "https://ast.ru/book/1984-130417/",
+        "https://lccn.loc.gov/2002282045",
+        "https://www.penguinrandomhouse.com/books/326569/1984-by-george-orwell-with-a-foreword-by-thomas-pynchon/",
+        "https://www.penguin.co.uk/discover/articles/george-orwell-reading-guide-books-order"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.orwellfoundation.com",
+          "www.penguin.co.uk"
+        ],
+        "originalCharacters": 306,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "1984",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 306,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "locale": "ru",
+      "title": "451° по Фаренгейту",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 6,
+      "pages": 13,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [
+        {
+          "id": "cms-2c74fe14-83b3-4e0f-b785-91f388253141",
+          "title": "15 экранизаций классических романов, которые действительно удались (Часть 2)",
+          "href": "/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis-chast-2/"
+        },
+        {
+          "id": "cms-6e8f5f8d-bb53-4c6e-b2e8-9bb8e0a7e2d1",
+          "title": "Десять романов, которые читаются на одном дыхании (Часть 2)",
+          "href": "/stati/knizhnyy-gid/desyat-romanov-kotorye-chitayutsya-na-odnom-dyhanii-chast-2/"
+        },
+        {
+          "id": "cms-c4f0f1be-b108-4d78-8fa2-324bebbc7f06",
+          "title": "Зарубежные классики литературы и их профессии (Часть 2)",
+          "href": "/stati/pisateli-mira/zarubezhnye-klassiki-literatury-i-ih-professii-chast-2/"
+        },
+        {
+          "id": "cms-0849a66d-a407-4175-9b99-ed53667516b0",
+          "title": "Премия «Хьюго»",
+          "href": "/stati/literaturnye-premii/premiya-hyugo/"
+        },
+        {
+          "id": "cms-77f11506-9e49-4ed4-b199-8b87b86fc820",
+          "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 4)",
+          "href": "/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-4/"
+        }
+      ],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL103123W",
+        "https://www.loc.gov/item/n79139258/ray-bradbury/",
+        "https://catalogue.bnf.fr/ark:/12148/cb150707007",
+        "https://www.loc.gov/nls/new-materials/braille-book-review/braille-book-review-november-december-2018/",
+        "https://www.simonandschuster.com/books/Fahrenheit-451/Ray-Bradbury/9781451673319",
+        "https://search.rsl.ru/ru/record/01009444458",
+        "https://rusneb.ru/catalog/000200_000018_RU_NLR_BIBL_A_012164760/",
+        "https://lccn.loc.gov/53011280"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.loc.gov",
+          "www.simonandschuster.com"
+        ],
+        "originalCharacters": 286,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "451° по Фаренгейту",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 286,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "journal",
+          "title": "Книга в журнале",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 5,
+          "sources": 0
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:h_g_wells:ann-veronica",
+      "locale": "ru",
+      "title": "Анна-Вероника",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 6,
+      "pages": 11,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [
+        {
+          "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+          "title": "Десять лучших книг Герберта Уэллса",
+          "href": "/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/"
+        }
+      ],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL52258W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+        "https://www.orionbooks.co.uk/contributor/h-g-wells/",
+        "https://www.cambridge.org/core/books/abs/h-g-wells/edwardian-achievement-ii-tonobungay-ann-veronica-the-history-of-mr-polly/D5B6D76B6178CF9940A54BA0E9822D7A",
+        "https://eld.bl.uk/?f%5Ball_names_ssim%5D%5B%5D=Wells%2C+H.+G+%28Herbert+George%29%2C+1866-1946&f%5Bdate_range_year_itsim%5D%5B%5D=2005&f%5Bsetspec_ssi%5D%5B%5D=ldebook&per_page=50&sort=title",
+        "https://www.orionbooks.co.uk/titles/h-g-wells/ann-veronica/9781474602440/",
+        "https://search.rsl.ru/ru/record/01005609943",
+        "https://rugram-shop.ru/publisher/56778-t8-rugram/?%3FPAGEN_1=118&CODE=t8-rugram&ID=56778&PAGEN_1=171",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS008943004&context=L&vid=07NLR_VU1&lang=ru_RU"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.orionbooks.co.uk",
+          "www.cambridge.org"
+        ],
+        "originalCharacters": 315,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Анна-Вероника",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 315,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "journal",
+          "title": "Книга в журнале",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "locale": "ru",
+      "title": "Будденброки",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 6,
+      "pages": 11,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [
+        {
+          "id": "cms-db3ab5d8-4d2f-41a3-8369-8fab1df44d86",
+          "title": "Семь непопулярных шедевров великих писателей, о которых и вы наверняка не слышали (Часть 5)",
+          "href": "/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-5/"
+        }
+      ],
+      "sourceLinks": [
+        "https://www.nobelprize.org/prizes/literature/1929/mann/facts/",
+        "https://www.wikidata.org/wiki/Q326909",
+        "https://search.rsl.ru/ru/record/01004928099",
+        "https://ast.ru/book/buddenbroki-831822/",
+        "https://www.loc.gov/item/93043499/",
+        "https://www.penguinrandomhouse.com/books/107272/buddenbrooks-by-thomas-mann-translated-by-john-edwards-introduction-by-t-j-reed/9780679417378/",
+        "https://buddenbrookhaus.de/der-roman",
+        "https://www.goethe.de/ins/pl/de/kul/lit/tma/sro.html"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "buddenbrookhaus.de",
+          "www.goethe.de"
+        ],
+        "originalCharacters": 323,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Будденброки",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 323,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 4
+        },
+        {
+          "id": "journal",
+          "title": "Книга в журнале",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "russia:tolstoy:war-and-peace",
+      "locale": "ru",
+      "title": "Война и мир",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 6,
+      "pages": 13,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [
+        {
+          "id": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
+          "title": "Семь малоизвестных рассказов именитых писателей, которые следует прочитать каждому! Л.Н. Толстой",
+          "href": "/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/"
+        },
+        {
+          "id": "cms-9c312b6d-b712-45e3-8b7d-5dee9c99466d",
+          "title": "«Пополняем словарный запас вместе!» 25 уникальных и редких слов, которыми вы разнообразите свою речь. «А»",
+          "href": "/stati/russkiy-yazyk/popolnyaem-slovarnyy-zapas-vmeste-25-unikalnyh-i-redkih-slov-kotorymi-vy-raznoobrazite-svoyu-rech-a/"
+        },
+        {
+          "id": "cms-d37e5f07-4733-4e3c-a42e-2c5728484b21",
+          "title": "15 экранизаций классических романов, которые действительно удались",
+          "href": "/stati/kniga-i-ekranizatsiya/15-ekranizatsiy-klassicheskih-romanov-kotorye-deystvitelno-udalis/"
+        }
+      ],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL267171W",
+        "https://tolstoy.ru/online/90/16/",
+        "https://catalogue.bnf.fr/ark:/12148/cb12166053w",
+        "https://tolstoy.ru/creativity/fiction/1071/",
+        "https://azbooka.ru/books/voyna-i-mir-oqzy",
+        "https://search.rsl.ru/ru/record/01004742850",
+        "https://lccn.loc.gov/93038836",
+        "https://www.penguinrandomhouse.com/books/179305/war-and-peace-by-leo-tolstoy/"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "tolstoy.ru",
+          "azbooka.ru"
+        ],
+        "originalCharacters": 293,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Война и мир",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 293,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "journal",
+          "title": "Книга в журнале",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:william_shakespeare:hamlet",
+      "locale": "ru",
+      "title": "Гамлет",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 9,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL9170454W",
+        "https://www.folger.edu/explore/shakespeares-works/hamlet/",
+        "https://catalogue.bnf.fr/ark:/12148/cb11936813g",
+        "https://search.rsl.ru/ru/record/01004801183",
+        "https://azbooka.ru/books/gamlet-0b9u",
+        "https://eld.bl.uk/catalog/018381972",
+        "https://www.penguin.co.uk/books/41764/hamlet-by-shakespeare-william/9780141396507",
+        "https://www.rsc.org.uk/hamlet/the-plot",
+        "https://www.shakespeare.org.uk/explore-shakespeare/shakespedia/shakespeares-plays/hamlet/"
+      ],
+      "descriptionReview": {
+        "status": "reviewed",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.rsc.org.uk",
+          "www.shakespeare.org.uk"
+        ],
+        "originalCharacters": 279,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Гамлет",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 279,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:david_mitchell:slade-house",
+      "locale": "ru",
+      "title": "Голодный дом",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 9,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://davidmitchellbooks.com/books",
+        "https://openlibrary.org/works/OL17801648W",
+        "https://lccn.loc.gov/2015019630",
+        "https://www.penguinrandomhouse.com/books/252856/slade-house-by-david-mitchell/",
+        "https://azbooka.ru/books/golodnyy-dom-yush",
+        "https://www.hodder.co.uk/titles/david-mitchell-6/slade-house/9781473616707/",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS011542908&context=L&vid=07NLR_VU1&lang=ru_RU"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.hodder.co.uk",
+          "davidmitchellbooks.com"
+        ],
+        "originalCharacters": 283,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Голодный дом",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 283,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "france:flaubert:madame-bovary",
+      "locale": "ru",
+      "title": "Госпожа Бовари",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 11,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL893707W",
+        "https://catalogue.bnf.fr/ark:/12148/cb11938746n",
+        "https://catalogue.bnf.fr/ark:/12148/cb35284670v",
+        "https://search.rsl.ru/ru/record/01002963717",
+        "https://ast.ru/book/gospozha-bovari-827028/",
+        "https://www.loc.gov/item/58001892/",
+        "https://www.penguinrandomhouse.com/books/286336/madame-bovary-by-gustave-flaubert/",
+        "https://flaubert.univ-rouen.fr/media/documents/Historique_du_projet_Bovary.pdf",
+        "https://cdn.essentiels.bnf.fr/uploads/media/attachment/20221208202010000000_corpus_textes_theatre.pdf"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "flaubert.univ-rouen.fr",
+          "cdn.essentiels.bnf.fr"
+        ],
+        "originalCharacters": 428,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Госпожа Бовари",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 428,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "russia:chekhov:the-lady-with-the-dog",
+      "locale": "ru",
+      "title": "Дама с собачкой",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 9,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://ar.culture.ru/ru/subject/illyustracii-k-dame-s-sobachkoy",
+        "https://api.chekhovmuseum.com/upload/iblock/d2d/9rstowxr0fgko7arb4mf553lwfjytr3q/Sbornik_statey.pdf",
+        "https://feb-web.ru/feb/chekhov/texts/sp0/spa/spa-128-.htm?cmd=p",
+        "https://chekhovmuseum.com/festivals/melikhovo/other-years/4702/4847",
+        "https://search.rsl.ru/ru/record/01008896511",
+        "https://ast.ru/book/dama-s-sobachkoy-863459/",
+        "https://lccn.loc.gov/84006121",
+        "https://openroadmedia.com/ebook/the-lady-with-the-dog/9781504034616"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "feb-web.ru",
+          "chekhovmuseum.com"
+        ],
+        "originalCharacters": 283,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Дама с собачкой",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 283,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 4
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "russia:chekhov:the-duel",
+      "locale": "ru",
+      "title": "Дуэль",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 10,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://api.chekhovmuseum.com/upload/iblock/d2d/9rstowxr0fgko7arb4mf553lwfjytr3q/Sbornik_statey.pdf",
+        "https://feb-web.ru/feb/chekhov/texts/sp0/sp7/sp7-353-.htm?cmd=p",
+        "https://chekhovmuseum.com/theater/archive/1708",
+        "https://search.rsl.ru/ru/record/01007876412",
+        "https://eksmo.ru/book/duel-ITD589222/",
+        "https://lccn.loc.gov/2003051031",
+        "https://www.penguinrandomhouse.com/books/26691/the-duel-by-anton-chekhov/9780812970081/"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "feb-web.ru",
+          "chekhovmuseum.com"
+        ],
+        "originalCharacters": 302,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Дуэль",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 302,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "russia:chekhov:uncle-vanya",
+      "locale": "ru",
+      "title": "Дядя Ваня",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 10,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://chekhovmuseum.com/en/museum/about/history",
+        "https://chekhovmuseum.com/museum/objects/17/871?type=section",
+        "https://feb-web.ru/feb/chekhov/texts/sp0/spd/spd-061-.htm?cmd=p",
+        "https://chekhovmuseum.com/theater/repertoire/381",
+        "https://search.rsl.ru/ru/record/01004740311",
+        "https://lccn.loc.gov/88021455",
+        "https://groveatlantic.com/book/uncle-vanya/"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "feb-web.ru",
+          "chekhovmuseum.com"
+        ],
+        "originalCharacters": 335,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Дядя Ваня",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 335,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:h_g_wells:the-history-of-mr-polly",
+      "locale": "ru",
+      "title": "История мистера Полли",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 6,
+      "pages": 11,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [
+        {
+          "id": "cms-bd21cead-c0e8-4598-b72b-b5fcf67c4e5d",
+          "title": "Десять лучших книг Герберта Уэллса",
+          "href": "/stati/knizhnyy-gid/desyat-luchshih-knig-gerberta-uellsa/"
+        }
+      ],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL52262W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+        "https://www.penguin.co.uk/books/60364/the-history-of-mr-polly-by-wells-hg/9780141441078",
+        "https://www.cambridge.org/core/books/abs/h-g-wells/edwardian-achievement-ii-tonobungay-ann-veronica-the-history-of-mr-polly/D5B6D76B6178CF9940A54BA0E9822D7A",
+        "https://search.rsl.ru/ru/record/01005609943",
+        "https://urait.ru/book/kipps-the-history-of-mr-polly-kipps-istoriya-mistera-polli-455088",
+        "https://lccn.loc.gov/10000737",
+        "https://standardebooks.org/ebooks/h-g-wells/the-history-of-mr-polly"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.penguin.co.uk",
+          "www.cambridge.org"
+        ],
+        "originalCharacters": 354,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "История мистера Полли",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 354,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "journal",
+          "title": "Книга в журнале",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:h_g_wells:when-the-sleeper-wakes",
+      "locale": "ru",
+      "title": "Когда спящий проснется",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 9,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL52151W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+        "https://rusneb.ru/catalog/000199_000009_003995369/",
+        "https://ast.ru/book/the-sleeper-awakes-kogda-spyashchiy-prosnyetsya-889659/",
+        "https://lccn.loc.gov/99015153",
+        "https://broadviewpress.com/product/when-the-sleeper-wakes/",
+        "https://lccn.loc.gov/00030230",
+        "https://www.nebraskapress.unl.edu/bison-books/9780803298187/the-sleeper-awakes/",
+        "https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS005263873&context=L&vid=07NLR_VU1&lang=ru_RU",
+        "https://lccn.loc.gov/99002363",
+        "https://www.gutenberg.org/ebooks/775"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "broadviewpress.com",
+          "ora.ox.ac.uk"
+        ],
+        "originalCharacters": 305,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Когда спящий проснется",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 305,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 4
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:david_mitchell:the-bone-clocks",
+      "locale": "ru",
+      "title": "Костяные часы",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 10,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://azbooka.ru/books/kostyanye-chasy",
+        "https://davidmitchellbooks.com/books/",
+        "https://openlibrary.org/works/OL17078738W",
+        "https://lccn.loc.gov/2014036965",
+        "https://www.penguinrandomhouse.com/books/208717/the-bone-clocks-by-david-mitchell/",
+        "https://azbooka.ru/books/kostyanye-chasy-tqez",
+        "https://www.hodder.co.uk/titles/david-mitchell-6/the-bone-clocks/9780340921623/",
+        "https://thebookerprizes.com/the-booker-library/books/the-bone-clocks",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS012189625&context=L&vid=07NLR_VU1&lang=ru_RU"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.hodder.co.uk",
+          "thebookerprizes.com"
+        ],
+        "originalCharacters": 311,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Костяные часы",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 311,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:david_mitchell:ghostwritten",
+      "locale": "ru",
+      "title": "Литературный призрак",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 6,
+      "pages": 10,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [
+        {
+          "id": "cms-b3d03db7-ece3-4b41-9d53-68e4e0a7dff8",
+          "title": "Мнение о книге. Дэвид Митчелл «Облачный атлас»",
+          "href": "/stati/mnenie-o-knige/mnenie-o-knige-devid-mitchell-oblachnyy-atlas/"
+        }
+      ],
+      "sourceLinks": [
+        "https://davidmitchellbooks.com/books/",
+        "https://openlibrary.org/works/OL271981W",
+        "https://lccn.loc.gov/99044063",
+        "https://www.penguinrandomhouse.com/books/115431/ghostwritten-by-david-mitchell/",
+        "https://azbooka.ru/books/literaturnyy-prizrak",
+        "https://eksmo.ru/amp/book/literaturnyy-prizrak-ITD814760/",
+        "https://www.hachette.co.uk/titles/david-mitchell-6/ghostwritten/9780340739754/",
+        "https://blogs.kent.ac.uk/english-news/2013/10/14/the-school-of-english-welcomes-alumnus-david-mitchell-back-to-kent/",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS012693539&context=L&vid=07NLR_VU1&lang=ru_RU"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.hachette.co.uk",
+          "blogs.kent.ac.uk"
+        ],
+        "originalCharacters": 429,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Литературный призрак",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 429,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 4
+        },
+        {
+          "id": "journal",
+          "title": "Книга в журнале",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "usa:vladimir_nabokov:lolita-editorial",
+      "locale": "ru",
+      "title": "Лолита",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 9,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL627084W",
+        "https://findingaids.loc.gov/repositories/19/resources/2037",
+        "https://www.loc.gov/loc/lcib/09078/nabokov.html",
+        "https://catalogue.bnf.fr/rechercher.do?index=AUT3&numNotice=11917330&typeNotice=p",
+        "https://www.loc.gov/nls/news-and-updates/overseas-outlook-newsletter/overseas-outlook-june-december-2025/",
+        "https://www.penguinrandomhouse.com/books/119445/lolita-by-vladimir-nabokov/9780679723165/readers-guide/",
+        "https://search.rsl.ru/ru/record/01004135210",
+        "https://azbooka.ru/books/lolita-x1zq",
+        "https://lccn.loc.gov/58010755",
+        "https://www.penguinrandomhouse.com/books/119445/lolita-by-vladimir-nabokov-introduction-by-martin-amis/9780679723165/"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.loc.gov",
+          "www.penguinrandomhouse.com"
+        ],
+        "originalCharacters": 274,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Лолита",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 274,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:h_g_wells:men-like-gods",
+      "locale": "ru",
+      "title": "Люди как боги",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 9,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL52237W",
+        "https://www.orionbooks.co.uk/contributor/h-g-wells/",
+        "https://research.manchester.ac.uk/en/publications/hg-wells-earthly-and-post-terrestrial-futures/",
+        "https://search.rsl.ru/ru/record/01005609943",
+        "https://ast.ru/book/lyudi-kak-bogi-874380/",
+        "https://lccn.loc.gov/2016018746",
+        "https://www.doverpublications.com/retailers/pdfs/2022/DoverThriftFictionBacklist2022.pdf"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "editorial-original",
+        "origin": "official-source-synthesis",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.orionbooks.co.uk",
+          "research.manchester.ac.uk"
+        ],
+        "originalCharacters": 323,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Люди как боги",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Редакционное описание",
+          "paragraphCharacters": 323,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Сведения об издании",
+          "paragraphCharacters": 0,
+          "rows": 4,
+          "items": 4,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Источники и права",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 4
+        },
+        {
+          "id": "legal-reading",
+          "title": "Об этом досье",
+          "paragraphCharacters": 63,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "locale": "en",
+      "title": "1984",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL1168083W",
+        "https://www.orwellfoundation.com/the-orwell-foundation/orwell/books-by-orwell/nineteen-eighty-four/",
+        "https://catalogue.bnf.fr/ark:/12148/cb119437788",
+        "https://search.rsl.ru/ru/record/01006717528",
+        "https://ast.ru/book/1984-130417/",
+        "https://lccn.loc.gov/2002282045",
+        "https://www.penguinrandomhouse.com/books/326569/1984-by-george-orwell-with-a-foreword-by-thomas-pynchon/",
+        "https://www.penguin.co.uk/discover/articles/george-orwell-reading-guide-books-order"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.orwellfoundation.com",
+          "www.penguin.co.uk"
+        ],
+        "originalCharacters": 313,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "1984",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 313,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "locale": "en",
+      "title": "Fahrenheit 451",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL103123W",
+        "https://www.loc.gov/item/n79139258/ray-bradbury/",
+        "https://catalogue.bnf.fr/ark:/12148/cb150707007",
+        "https://www.loc.gov/nls/new-materials/braille-book-review/braille-book-review-november-december-2018/",
+        "https://www.simonandschuster.com/books/Fahrenheit-451/Ray-Bradbury/9781451673319",
+        "https://search.rsl.ru/ru/record/01009444458",
+        "https://rusneb.ru/catalog/000200_000018_RU_NLR_BIBL_A_012164760/",
+        "https://lccn.loc.gov/53011280"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.loc.gov",
+          "www.simonandschuster.com"
+        ],
+        "originalCharacters": 285,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Fahrenheit 451",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 285,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:h_g_wells:ann-veronica",
+      "locale": "en",
+      "title": "Ann Veronica",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL52258W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+        "https://www.orionbooks.co.uk/contributor/h-g-wells/",
+        "https://www.cambridge.org/core/books/abs/h-g-wells/edwardian-achievement-ii-tonobungay-ann-veronica-the-history-of-mr-polly/D5B6D76B6178CF9940A54BA0E9822D7A",
+        "https://eld.bl.uk/?f%5Ball_names_ssim%5D%5B%5D=Wells%2C+H.+G+%28Herbert+George%29%2C+1866-1946&f%5Bdate_range_year_itsim%5D%5B%5D=2005&f%5Bsetspec_ssi%5D%5B%5D=ldebook&per_page=50&sort=title",
+        "https://www.orionbooks.co.uk/titles/h-g-wells/ann-veronica/9781474602440/",
+        "https://search.rsl.ru/ru/record/01005609943",
+        "https://rugram-shop.ru/publisher/56778-t8-rugram/?%3FPAGEN_1=118&CODE=t8-rugram&ID=56778&PAGEN_1=171",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS008943004&context=L&vid=07NLR_VU1&lang=ru_RU"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.orionbooks.co.uk",
+          "www.cambridge.org"
+        ],
+        "originalCharacters": 312,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Ann Veronica",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 312,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "locale": "en",
+      "title": "Buddenbrooks",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://www.nobelprize.org/prizes/literature/1929/mann/facts/",
+        "https://www.wikidata.org/wiki/Q326909",
+        "https://search.rsl.ru/ru/record/01004928099",
+        "https://ast.ru/book/buddenbroki-831822/",
+        "https://www.loc.gov/item/93043499/",
+        "https://www.penguinrandomhouse.com/books/107272/buddenbrooks-by-thomas-mann-translated-by-john-edwards-introduction-by-t-j-reed/9780679417378/",
+        "https://buddenbrookhaus.de/der-roman",
+        "https://www.goethe.de/ins/pl/de/kul/lit/tma/sro.html"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "buddenbrookhaus.de",
+          "www.goethe.de"
+        ],
+        "originalCharacters": 304,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Buddenbrooks",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 304,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "russia:tolstoy:war-and-peace",
+      "locale": "en",
+      "title": "War and Peace",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 9,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL267171W",
+        "https://tolstoy.ru/online/90/16/",
+        "https://catalogue.bnf.fr/ark:/12148/cb12166053w",
+        "https://tolstoy.ru/creativity/fiction/1071/",
+        "https://azbooka.ru/books/voyna-i-mir-oqzy",
+        "https://search.rsl.ru/ru/record/01004742850",
+        "https://lccn.loc.gov/93038836",
+        "https://www.penguinrandomhouse.com/books/179305/war-and-peace-by-leo-tolstoy/"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "tolstoy.ru",
+          "azbooka.ru"
+        ],
+        "originalCharacters": 379,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "War and Peace",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 379,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:william_shakespeare:hamlet",
+      "locale": "en",
+      "title": "Hamlet",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL9170454W",
+        "https://www.folger.edu/explore/shakespeares-works/hamlet/",
+        "https://catalogue.bnf.fr/ark:/12148/cb11936813g",
+        "https://search.rsl.ru/ru/record/01004801183",
+        "https://azbooka.ru/books/gamlet-0b9u",
+        "https://eld.bl.uk/catalog/018381972",
+        "https://www.penguin.co.uk/books/41764/hamlet-by-shakespeare-william/9780141396507",
+        "https://www.rsc.org.uk/hamlet/the-plot",
+        "https://www.shakespeare.org.uk/explore-shakespeare/shakespedia/shakespeares-plays/hamlet/"
+      ],
+      "descriptionReview": {
+        "status": "reviewed",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.rsc.org.uk",
+          "www.shakespeare.org.uk"
+        ],
+        "originalCharacters": 320,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Hamlet",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 320,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:david_mitchell:slade-house",
+      "locale": "en",
+      "title": "Slade House",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://davidmitchellbooks.com/books",
+        "https://openlibrary.org/works/OL17801648W",
+        "https://lccn.loc.gov/2015019630",
+        "https://www.penguinrandomhouse.com/books/252856/slade-house-by-david-mitchell/",
+        "https://azbooka.ru/books/golodnyy-dom-yush",
+        "https://www.hodder.co.uk/titles/david-mitchell-6/slade-house/9781473616707/",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS011542908&context=L&vid=07NLR_VU1&lang=ru_RU"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.hodder.co.uk",
+          "davidmitchellbooks.com"
+        ],
+        "originalCharacters": 264,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Slade House",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 264,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "france:flaubert:madame-bovary",
+      "locale": "en",
+      "title": "Madame Bovary",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 9,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL893707W",
+        "https://catalogue.bnf.fr/ark:/12148/cb11938746n",
+        "https://catalogue.bnf.fr/ark:/12148/cb35284670v",
+        "https://search.rsl.ru/ru/record/01002963717",
+        "https://ast.ru/book/gospozha-bovari-827028/",
+        "https://www.loc.gov/item/58001892/",
+        "https://www.penguinrandomhouse.com/books/286336/madame-bovary-by-gustave-flaubert/",
+        "https://flaubert.univ-rouen.fr/media/documents/Historique_du_projet_Bovary.pdf",
+        "https://cdn.essentiels.bnf.fr/uploads/media/attachment/20221208202010000000_corpus_textes_theatre.pdf"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "flaubert.univ-rouen.fr",
+          "cdn.essentiels.bnf.fr"
+        ],
+        "originalCharacters": 423,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Madame Bovary",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 423,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "russia:chekhov:the-lady-with-the-dog",
+      "locale": "en",
+      "title": "The Lady with the Dog",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 7,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://ar.culture.ru/ru/subject/illyustracii-k-dame-s-sobachkoy",
+        "https://api.chekhovmuseum.com/upload/iblock/d2d/9rstowxr0fgko7arb4mf553lwfjytr3q/Sbornik_statey.pdf",
+        "https://feb-web.ru/feb/chekhov/texts/sp0/spa/spa-128-.htm?cmd=p",
+        "https://chekhovmuseum.com/festivals/melikhovo/other-years/4702/4847",
+        "https://search.rsl.ru/ru/record/01008896511",
+        "https://ast.ru/book/dama-s-sobachkoy-863459/",
+        "https://lccn.loc.gov/84006121",
+        "https://openroadmedia.com/ebook/the-lady-with-the-dog/9781504034616"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "feb-web.ru",
+          "chekhovmuseum.com"
+        ],
+        "originalCharacters": 328,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "The Lady with the Dog",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 328,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 3
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "russia:chekhov:the-duel",
+      "locale": "en",
+      "title": "The Duel",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://api.chekhovmuseum.com/upload/iblock/d2d/9rstowxr0fgko7arb4mf553lwfjytr3q/Sbornik_statey.pdf",
+        "https://feb-web.ru/feb/chekhov/texts/sp0/sp7/sp7-353-.htm?cmd=p",
+        "https://chekhovmuseum.com/theater/archive/1708",
+        "https://search.rsl.ru/ru/record/01007876412",
+        "https://eksmo.ru/book/duel-ITD589222/",
+        "https://lccn.loc.gov/2003051031",
+        "https://www.penguinrandomhouse.com/books/26691/the-duel-by-anton-chekhov/9780812970081/"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "feb-web.ru",
+          "chekhovmuseum.com"
+        ],
+        "originalCharacters": 322,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "The Duel",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 322,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "russia:chekhov:uncle-vanya",
+      "locale": "en",
+      "title": "Uncle Vanya",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://chekhovmuseum.com/en/museum/about/history",
+        "https://chekhovmuseum.com/museum/objects/17/871?type=section",
+        "https://feb-web.ru/feb/chekhov/texts/sp0/spd/spd-061-.htm?cmd=p",
+        "https://chekhovmuseum.com/theater/repertoire/381",
+        "https://search.rsl.ru/ru/record/01004740311",
+        "https://lccn.loc.gov/88021455",
+        "https://groveatlantic.com/book/uncle-vanya/"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "feb-web.ru",
+          "chekhovmuseum.com"
+        ],
+        "originalCharacters": 345,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Uncle Vanya",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 345,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:h_g_wells:the-history-of-mr-polly",
+      "locale": "en",
+      "title": "The History of Mr. Polly",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL52262W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+        "https://www.penguin.co.uk/books/60364/the-history-of-mr-polly-by-wells-hg/9780141441078",
+        "https://www.cambridge.org/core/books/abs/h-g-wells/edwardian-achievement-ii-tonobungay-ann-veronica-the-history-of-mr-polly/D5B6D76B6178CF9940A54BA0E9822D7A",
+        "https://search.rsl.ru/ru/record/01005609943",
+        "https://urait.ru/book/kipps-the-history-of-mr-polly-kipps-istoriya-mistera-polli-455088",
+        "https://lccn.loc.gov/10000737",
+        "https://standardebooks.org/ebooks/h-g-wells/the-history-of-mr-polly"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.penguin.co.uk",
+          "www.cambridge.org"
+        ],
+        "originalCharacters": 360,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "The History of Mr. Polly",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 360,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 5
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:h_g_wells:when-the-sleeper-wakes",
+      "locale": "en",
+      "title": "When the Sleeper Wakes",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL52151W",
+        "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+        "https://rusneb.ru/catalog/000199_000009_003995369/",
+        "https://ast.ru/book/the-sleeper-awakes-kogda-spyashchiy-prosnyetsya-889659/",
+        "https://lccn.loc.gov/99015153",
+        "https://broadviewpress.com/product/when-the-sleeper-wakes/",
+        "https://lccn.loc.gov/00030230",
+        "https://www.nebraskapress.unl.edu/bison-books/9780803298187/the-sleeper-awakes/",
+        "https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS005263873&context=L&vid=07NLR_VU1&lang=ru_RU",
+        "https://lccn.loc.gov/99002363",
+        "https://www.gutenberg.org/ebooks/775"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "broadviewpress.com",
+          "ora.ox.ac.uk"
+        ],
+        "originalCharacters": 321,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "When the Sleeper Wakes",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 321,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:david_mitchell:the-bone-clocks",
+      "locale": "en",
+      "title": "The Bone Clocks",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://azbooka.ru/books/kostyanye-chasy",
+        "https://davidmitchellbooks.com/books/",
+        "https://openlibrary.org/works/OL17078738W",
+        "https://lccn.loc.gov/2014036965",
+        "https://www.penguinrandomhouse.com/books/208717/the-bone-clocks-by-david-mitchell/",
+        "https://azbooka.ru/books/kostyanye-chasy-tqez",
+        "https://www.hodder.co.uk/titles/david-mitchell-6/the-bone-clocks/9780340921623/",
+        "https://thebookerprizes.com/the-booker-library/books/the-bone-clocks",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS012189625&context=L&vid=07NLR_VU1&lang=ru_RU"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.hodder.co.uk",
+          "thebookerprizes.com"
+        ],
+        "originalCharacters": 332,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "The Bone Clocks",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 332,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:david_mitchell:ghostwritten",
+      "locale": "en",
+      "title": "Ghostwritten",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 9,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://davidmitchellbooks.com/books/",
+        "https://openlibrary.org/works/OL271981W",
+        "https://lccn.loc.gov/99044063",
+        "https://www.penguinrandomhouse.com/books/115431/ghostwritten-by-david-mitchell/",
+        "https://azbooka.ru/books/literaturnyy-prizrak",
+        "https://eksmo.ru/amp/book/literaturnyy-prizrak-ITD814760/",
+        "https://www.hachette.co.uk/titles/david-mitchell-6/ghostwritten/9780340739754/",
+        "https://blogs.kent.ac.uk/english-news/2013/10/14/the-school-of-english-welcomes-alumnus-david-mitchell-back-to-kent/",
+        "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS012693539&context=L&vid=07NLR_VU1&lang=ru_RU"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.hachette.co.uk",
+          "blogs.kent.ac.uk"
+        ],
+        "originalCharacters": 471,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Ghostwritten",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 471,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "usa:vladimir_nabokov:lolita-editorial",
+      "locale": "en",
+      "title": "Lolita",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 8,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL627084W",
+        "https://findingaids.loc.gov/repositories/19/resources/2037",
+        "https://www.loc.gov/loc/lcib/09078/nabokov.html",
+        "https://catalogue.bnf.fr/rechercher.do?index=AUT3&numNotice=11917330&typeNotice=p",
+        "https://www.loc.gov/nls/news-and-updates/overseas-outlook-newsletter/overseas-outlook-june-december-2025/",
+        "https://www.penguinrandomhouse.com/books/119445/lolita-by-vladimir-nabokov/9780679723165/readers-guide/",
+        "https://search.rsl.ru/ru/record/01004135210",
+        "https://azbooka.ru/books/lolita-x1zq",
+        "https://lccn.loc.gov/58010755",
+        "https://www.penguinrandomhouse.com/books/119445/lolita-by-vladimir-nabokov-introduction-by-martin-amis/9780679723165/"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.loc.gov",
+          "www.penguinrandomhouse.com"
+        ],
+        "originalCharacters": 321,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Lolita",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 321,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 6
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    },
+    {
+      "key": "england:h_g_wells:men-like-gods",
+      "locale": "en",
+      "title": "Men Like Gods",
+      "archiveStatus": "verified",
+      "tier": null,
+      "sourcePages": 5,
+      "pages": 7,
+      "status": "ready",
+      "issues": [],
+      "relatedArticles": [],
+      "sourceLinks": [
+        "https://openlibrary.org/works/OL52237W",
+        "https://www.orionbooks.co.uk/contributor/h-g-wells/",
+        "https://research.manchester.ac.uk/en/publications/hg-wells-earthly-and-post-terrestrial-futures/",
+        "https://search.rsl.ru/ru/record/01005609943",
+        "https://ast.ru/book/lyudi-kak-bogi-874380/",
+        "https://lccn.loc.gov/2016018746",
+        "https://www.doverpublications.com/retailers/pdfs/2022/DoverThriftFictionBacklist2022.pdf"
+      ],
+      "descriptionReview": {
+        "status": "verified",
+        "method": "human-translation",
+        "origin": "human-translation",
+        "textOrigin": "project-original",
+        "copiedSourceText": false,
+        "hasReviewer": true,
+        "hasAuthor": true,
+        "sourceHosts": [
+          "www.orionbooks.co.uk",
+          "research.manchester.ac.uk"
+        ],
+        "originalCharacters": 339,
+        "retained": true
+      },
+      "sections": [
+        {
+          "id": "identity",
+          "title": "Men Like Gods",
+          "paragraphCharacters": 0,
+          "rows": 1,
+          "items": 1,
+          "sources": 0
+        },
+        {
+          "id": "description",
+          "title": "Editorial description",
+          "paragraphCharacters": 339,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        },
+        {
+          "id": "details",
+          "title": "Edition details",
+          "paragraphCharacters": 0,
+          "rows": 3,
+          "items": 3,
+          "sources": 0
+        },
+        {
+          "id": "provenance",
+          "title": "Sources and rights",
+          "paragraphCharacters": 0,
+          "rows": 0,
+          "items": 0,
+          "sources": 4
+        },
+        {
+          "id": "legal-reading",
+          "title": "About this dossier",
+          "paragraphCharacters": 84,
+          "rows": 0,
+          "items": 0,
+          "sources": 0
+        }
+      ],
+      "anchorsRetained": true
+    }
+  ]
+}

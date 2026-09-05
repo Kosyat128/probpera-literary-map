@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useAuth } from "../community/AuthContext";
 import { supabase } from "../lib/supabase";
 import { readWebStorage, writeWebStorage } from "../utils/safeWebStorage";
+import { parseBookDossierProgress, sameBookDossierLocation, type BookDossierProgress } from "../books/bookDossierProgress";
 
 export type SavedReading = {
   id: string;
@@ -13,6 +14,8 @@ export type SavedReading = {
   href?: string;
   addedAt: string;
   status: ReadingStatus;
+  /** Private device progress; never added to public links or analytics. */
+  dossierProgress?: BookDossierProgress;
 };
 
 export type ReadingStatus = "saved" | "reading" | "finished";
@@ -33,6 +36,7 @@ function readItems(): SavedReading[] {
         ).map((item) => ({
           ...item,
           kind: item.kind === "book" ? "book" : "article",
+          dossierProgress: item.kind === "book" ? parseBookDossierProgress((item as SavedReading).dossierProgress) : undefined,
           status:
             item.status === "reading" || item.status === "finished"
               ? item.status
@@ -129,7 +133,10 @@ export function useReadingLibrary() {
             const key = itemKey(item);
             if (!merged.has(key)) merged.set(key, item);
           });
-        const next = [...merged.values()].slice(0, 200);
+        const localProgress = new Map(readItems().map(item => [itemKey(item), item.dossierProgress]));
+        const next = [...merged.values()].slice(0, 200).map(item => ({
+          ...item, dossierProgress: localProgress.get(itemKey(item)),
+        }));
         publishItems(next);
 
         const remoteKeys = new Set(remoteItems.map(itemKey));
@@ -214,6 +221,7 @@ export function useReadingLibrary() {
     const previous = current.find((saved) => itemKey(saved) === key);
     const saved: SavedReading = {
       ...item,
+      dossierProgress: previous?.dossierProgress,
       addedAt: previous?.addedAt || new Date().toISOString(),
       status,
     };
@@ -309,5 +317,14 @@ export function useReadingLibrary() {
     return false;
   }, [configured, publishItems, user]);
 
-  return { items, toggle, save, remove, setStatus };
+  const setDossierProgress = useCallback((id: string, input: BookDossierProgress) => {
+    const progress = parseBookDossierProgress(input);
+    if (!progress) return;
+    const current = itemsRef.current;
+    const item = current.find(entry => entry.id === id && entry.kind === "book");
+    if (!item || sameBookDossierLocation(item.dossierProgress, progress)) return;
+    publishItems(current.map(entry => entry === item ? { ...entry, dossierProgress: progress } : entry));
+  }, [publishItems]);
+
+  return { items, toggle, save, remove, setStatus, setDossierProgress };
 }

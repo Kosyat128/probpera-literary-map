@@ -1,5 +1,5 @@
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useCallback, useEffect, useLayoutEffect, useRef } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import {
   ACESFilmicToneMapping,
   PCFSoftShadowMap,
@@ -13,17 +13,21 @@ import { RectAreaLightUniformsLib } from "three/examples/jsm/lights/RectAreaLigh
 import type {
   BookShelfPresentationItem,
   BookShelfSceneAppearance,
+  BookShelfSpineHover,
 } from "./BookShelfScene";
 import type { BookShelfPhase } from "../books/bookShelfState";
-import { completeShelfPhaseHasInspection } from "../books/completeShelfModel";
+import { completeShelfPhaseHasInspection, completeShelfVisibleBookLimit, completeShelfRowWidth, COMPLETE_SHELF_BOOK_FORMAT, COMPLETE_SHELF_TOP, COMPLETE_SHELF_INSPECTION_LIFT, resolveCompleteShelfVerticalBounds } from "../books/completeShelfModel";
+import { resolveBookPhysicalBounds } from "../books/bookShelfPhysicalLayout";
 import {
   applyBookInspectionOrbitDelta,
+  bookInspectionViewportCanFrame,
   BOOK_INSPECTION_DEFAULT_ORBIT,
   resolveBookInspectionCameraFraming,
   resolveBookInspectionOrbitCamera,
   smoothBookInspectionCameraTarget,
   type BookInspectionCameraTarget,
   type BookInspectionOrbit,
+  type BookShelfViewportInsets,
 } from "../books/bookInspectionCamera";
 import type { BookEditorialDocument } from "../books/bookEditorialPages";
 import type {
@@ -40,6 +44,9 @@ export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
   appearance: BookShelfSceneAppearance;
   focusedBookKey: string | null;
   selectedBookKey: string | null;
+  viewportInsets?: BookShelfViewportInsets;
+  onHoveredBookChange?: (hover: BookShelfSpineHover | null) => void;
+  onPressedBookChange?: (key: string | null) => void;
   active: boolean;
   editorialDocument: BookEditorialDocument | null;
   inspectionSession: BookInspectionSession | null;
@@ -72,13 +79,39 @@ function InspectionCameraController({
   itemIndex,
   itemCount,
   reducedMotion,
+  phase,
+  viewportInsets,
+  liveBookLimit,
 }: {
   detailOpen: boolean;
   itemIndex: number;
   itemCount: number;
   reducedMotion: boolean;
+  phase: BookShelfPhase;
+  viewportInsets?: BookShelfViewportInsets;
+  liveBookLimit: number;
 }) {
   const { camera, gl, invalidate, size } = useThree();
+  const desiredFraming = useMemo(() => {
+    const vertical = resolveCompleteShelfVerticalBounds();
+    const bookPosition = [0,
+      COMPLETE_SHELF_TOP + COMPLETE_SHELF_BOOK_FORMAT.height * 1.42 / 2 + COMPLETE_SHELF_INSPECTION_LIFT - vertical.opticalCenterY,
+      1.05] as const;
+    const rowWidth = completeShelfRowWidth(Math.min(itemCount, completeShelfVisibleBookLimit(liveBookLimit)));
+    return resolveBookInspectionCameraFraming({
+      viewportWidth: size.width, viewportHeight: size.height,
+      detailOpen, viewportInsets, itemIndex, itemCount,
+      bookPosition: detailOpen ? bookPosition : [0, 0, 0],
+      bounds: detailOpen
+        ? resolveBookPhysicalBounds({ dimensions: COMPLETE_SHELF_BOOK_FORMAT, phase, scale: 1.42 })
+        : { min: [-rowWidth / 2 - 0.12, vertical.minY - vertical.opticalCenterY, -0.08],
+            max: [rowWidth / 2 + 0.12, vertical.maxY - vertical.opticalCenterY, 0.58] },
+      fov: detailOpen ? 35 : 38,
+      marginPx: detailOpen ? 16 : 20,
+      orbitAllowance: detailOpen ? 1.24 : 1,
+    });
+  }, [detailOpen, itemCount, itemIndex, liveBookLimit, phase, size.height, size.width, viewportInsets]);
+  const cameraInitializedRef = useRef(false);
   const targetRef = useRef<BookInspectionCameraTarget>(
     BOOK_SHELF_IDLE_CAMERA_TARGET
   );
@@ -95,27 +128,29 @@ function InspectionCameraController({
       dragRef.current = null;
     }
     invalidate();
-  }, [detailOpen, invalidate, itemIndex, itemCount, size.height, size.width]);
+  }, [detailOpen, invalidate, itemIndex, itemCount, size.height, size.width, desiredFraming]);
 
   useLayoutEffect(() => {
-    if (detailOpen) return;
-    targetRef.current = BOOK_SHELF_IDLE_CAMERA_TARGET;
-    camera.position.set(...BOOK_SHELF_IDLE_CAMERA_TARGET.position);
-    camera.lookAt(...BOOK_SHELF_IDLE_CAMERA_TARGET.lookAt);
+    if (cameraInitializedRef.current || !bookInspectionViewportCanFrame(desiredFraming)) return;
+    cameraInitializedRef.current = true;
+    const initial = resolveBookInspectionOrbitCamera(desiredFraming, BOOK_INSPECTION_DEFAULT_ORBIT);
+    targetRef.current = initial;
+    camera.position.set(...initial.position);
+    camera.lookAt(...initial.lookAt);
     if (
       "fov" in camera &&
-      camera.fov !== BOOK_SHELF_IDLE_CAMERA_TARGET.fov
+      camera.fov !== desiredFraming.fov
     ) {
-      camera.fov = BOOK_SHELF_IDLE_CAMERA_TARGET.fov;
+      camera.fov = desiredFraming.fov;
       camera.updateProjectionMatrix();
     }
     invalidate();
-  }, [camera, detailOpen, invalidate, size.height, size.width]);
+  }, [camera, desiredFraming, invalidate]);
 
   useEffect(() => {
     const canvas = gl.domElement;
     const startOrbit = (event: PointerEvent) => {
-      if (!detailOpen || (event.button !== 1 && !event.altKey)) return;
+      if (!detailOpen || !event.isPrimary || (event.button !== 1 && !event.altKey)) return;
       dragRef.current = {
         pointerId: event.pointerId,
         x: event.clientX,
@@ -139,7 +174,7 @@ function InspectionCameraController({
     const endOrbit = (event: PointerEvent) => {
       if (dragRef.current?.pointerId !== event.pointerId) return;
       dragRef.current = null;
-      canvas.releasePointerCapture?.(event.pointerId);
+      if (canvas.hasPointerCapture?.(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
     };
     const zoomOrbit = (event: WheelEvent) => {
       if (!detailOpen || !event.altKey) return;
@@ -158,6 +193,7 @@ function InspectionCameraController({
     canvas.addEventListener("pointermove", moveOrbit);
     canvas.addEventListener("pointerup", endOrbit);
     canvas.addEventListener("pointercancel", endOrbit);
+    canvas.addEventListener("lostpointercapture", endOrbit);
     canvas.addEventListener("wheel", zoomOrbit, { passive: false });
     canvas.addEventListener("dblclick", resetOrbit);
     return () => {
@@ -165,21 +201,17 @@ function InspectionCameraController({
       canvas.removeEventListener("pointermove", moveOrbit);
       canvas.removeEventListener("pointerup", endOrbit);
       canvas.removeEventListener("pointercancel", endOrbit);
+      canvas.removeEventListener("lostpointercapture", endOrbit);
+      const pointerId = dragRef.current?.pointerId;
+      if (pointerId !== undefined && canvas.hasPointerCapture?.(pointerId)) canvas.releasePointerCapture(pointerId);
+      dragRef.current = null;
       canvas.removeEventListener("wheel", zoomOrbit);
       canvas.removeEventListener("dblclick", resetOrbit);
     };
   }, [detailOpen, gl, invalidate]);
 
   useFrame((_state, delta) => {
-    const desiredFraming = detailOpen
-      ? resolveBookInspectionCameraFraming({
-          viewportWidth: size.width,
-          viewportHeight: size.height,
-          detailOpen,
-          itemIndex,
-          itemCount,
-        })
-      : BOOK_SHELF_IDLE_CAMERA_TARGET;
+    if (!bookInspectionViewportCanFrame(desiredFraming)) return;
     const desired = resolveBookInspectionOrbitCamera(
       desiredFraming,
       orbitRef.current
@@ -214,13 +246,11 @@ function InspectionCameraController({
 function SceneLifecycle({
   dependency,
   exposure,
-  qualitySettings,
   onContextLost,
   onContextRestored,
 }: {
   dependency: string;
   exposure: number;
-  qualitySettings: BookShelfQualitySettings;
   onContextLost: () => void;
   onContextRestored: () => void;
 }) {
@@ -245,8 +275,8 @@ function SceneLifecycle({
     gl.outputColorSpace = SRGBColorSpace;
     gl.shadowMap.type = PCFSoftShadowMap;
     scene.environment = environmentTarget.texture;
-    scene.environmentIntensity =
-      0.38 + qualitySettings.ambientTintStrength * 0.34;
+    // Detail tiers share the calibrated light so cloth identity stays stable.
+    scene.environmentIntensity = 0.72;
     invalidate();
     return () => {
       gl.toneMappingExposure = previousExposure;
@@ -258,7 +288,7 @@ function SceneLifecycle({
       environmentTarget.dispose();
       pmrem.dispose();
     };
-  }, [exposure, gl, invalidate, qualitySettings.ambientTintStrength, scene]);
+  }, [exposure, gl, invalidate, scene]);
 
   useEffect(() => {
     const canvas = gl.domElement;
@@ -356,6 +386,9 @@ export default function BookShelfSceneCanvas({
   appearance,
   focusedBookKey,
   selectedBookKey,
+  viewportInsets,
+  onHoveredBookChange,
+  onPressedBookChange,
   active,
   qualitySettings,
   editorialDocument,
@@ -421,7 +454,7 @@ export default function BookShelfSceneCanvas({
         position: [0, 0.02, 5.15],
         fov: 38,
         near: 0.1,
-        far: 30,
+        far: 200,
       }}
       gl={{
         alpha: true,
@@ -439,18 +472,13 @@ export default function BookShelfSceneCanvas({
         pointerEvents: active ? "auto" : "none",
         touchAction: "pan-y",
       }}
-      onPointerMissed={onRequestSceneCenter}
+      onPointerMissed={(event) => {
+        if (!selectedBookKey && phase === "SHELF_IDLE" && event.type === "click" && event.button === 0) onRequestSceneCenter();
+      }}
     >
       <SceneLifecycle
         dependency={dependency}
-        exposure={
-          qualitySettings.profile === "HIGH"
-            ? 0.9
-            : qualitySettings.profile === "BALANCED"
-              ? 0.93
-              : 0.96
-        }
-        qualitySettings={qualitySettings}
+        exposure={0.38}
         onContextLost={onContextLost}
         onContextRestored={onContextRestored}
       />
@@ -464,26 +492,25 @@ export default function BookShelfSceneCanvas({
         )}
         itemCount={items.length}
         reducedMotion={qualitySettings.motion.reduced}
+        phase={phase}
+        viewportInsets={viewportInsets}
+        liveBookLimit={qualitySettings.liveBookLimit}
       />
       <hemisphereLight
         args={[
-          "#fff8e8",
+          "#ffffff",
           "#5b4030",
           0.56 + appearance.intensity * 0.12,
         ]}
       />
       <ambientLight
-        intensity={
-          qualitySettings.profile === "ECONOMY"
-            ? 0.28
-            : 0.1 + qualitySettings.ambientTintStrength * 0.04
-        }
-        color="#fff8ed"
+        intensity={0.14}
+        color="#ffffff"
       />
       <directionalLight
         position={[-4.6, 7.4, 5.8]}
         intensity={1.42 + appearance.intensity * 0.18}
-        color="#ffe8c2"
+        color="#ffffff"
         castShadow={dynamicShadows}
         shadow-mapSize-width={shadowMapSize}
         shadow-mapSize-height={shadowMapSize}
@@ -500,35 +527,35 @@ export default function BookShelfSceneCanvas({
       <directionalLight
         position={[5.5, 3.6, 4.2]}
         intensity={0.3 + appearance.intensity * 0.08}
-        color="#d8e3e7"
+        color="#ffffff"
       />
       <RakingAreaLight
-        color="#ffe8c2"
-        intensity={2.2 + qualitySettings.ambientTintStrength * 3.2}
+        color="#ffffff"
+        intensity={5.4}
         width={4.8}
         height={5.6}
         position={[-3.2, 4.05, 4.6]}
         target={[0, 0, 0]}
       />
       <RakingAreaLight
-        color="#d5a45e"
-        intensity={1.2 + qualitySettings.ambientTintStrength * 2.25}
+        color="#ffffff"
+        intensity={3.45}
         width={1.6}
         height={4.8}
         position={[3.8, 2.15, -2.1]}
         target={[-0.2, 0, 0]}
       />
       <RakingAreaLight
-        color="#ffe8c2"
-        intensity={0.75 + qualitySettings.ambientTintStrength * 1.15}
+        color="#ffffff"
+        intensity={1.9}
         width={0.9}
         height={4.6}
         position={[-4.6, 1.75, 1.1]}
         target={[-0.55, 0, 0]}
       />
       <RakingAreaLight
-        color="#fff7e7"
-        intensity={0.8 + qualitySettings.ambientTintStrength * 1.35}
+        color="#ffffff"
+        intensity={2.15}
         width={1.15}
         height={3.8}
         position={[4.2, 3.35, 3.1]}
@@ -545,6 +572,8 @@ export default function BookShelfSceneCanvas({
         editorialDocument={editorialDocument}
         inspectionSession={inspectionSession}
         onFocusBook={onFocusBook}
+        onHoveredBookChange={onHoveredBookChange}
+        onPressedBookChange={onPressedBookChange}
         onOpenBook={onOpenBook}
         onRequestCoverOpen={onRequestCoverOpen}
         onRequestInspectionClose={onRequestInspectionClose}

@@ -5956,11 +5956,6 @@ a.writer-nobel-medal:focus-visible {
 
 .book-detail-copy h3 {
   margin: 10px 0 4px;
-  font-family: var(--serif);
-  font-size: clamp(36px, 4vw, 58px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: var(--type-tracking-title);
 }
 
 .book-original-title {
@@ -5983,25 +5978,16 @@ a.writer-nobel-medal:focus-visible {
 
 .book-detail-copy dt {
   color: rgba(255, 255, 255, 0.42);
-  font-size: var(--type-caption);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .book-detail-copy dd {
   margin: 5px 0 0;
-  font-family: var(--serif);
-  font-size: 16px;
 }
 
 .book-detail-copy > p {
   max-width: 680px;
   margin: 0;
   color: rgba(255, 255, 255, 0.68);
-  font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.65;
 }
 
 .book-detail-actions {
@@ -6027,12 +6013,8 @@ a.writer-nobel-medal:focus-visible {
 
 .book-detail-actions button,
 .book-detail-actions a {
-  min-height: 36px;
+  min-height: 44px;
   padding: 0 13px;
-  font-size: var(--type-caption);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 .book-detail-actions button {
@@ -7079,14 +7061,11 @@ a.writer-nobel-medal:focus-visible {
   min-height: 68px;
   padding: 14px 24px;
   color: #fff;
-  font: 700 var(--type-caption)/1.35 var(--font-ui);
-  letter-spacing: var(--type-tracking-label);
   background: rgba(25, 2, 38, 0.64);
   border: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.14);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   cursor: pointer;
-  text-transform: uppercase;
   transition: background 180ms ease, color 180ms ease;
 }
 
@@ -11253,10 +11232,6 @@ a.writer-nobel-medal:focus-visible {
   justify-content: space-between;
   padding: 15px 17px;
   color: rgba(255, 255, 255, 0.68);
-  font-size: var(--type-caption);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   cursor: pointer;
 }
 
@@ -11297,8 +11272,6 @@ a.writer-nobel-medal:focus-visible {
 
 .atlas-country-index button small {
   color: rgba(255, 255, 255, 0.35);
-  font-size: var(--type-caption);
-  text-transform: uppercase;
 }
 
 .sections-all-button {
@@ -13163,14 +13136,12 @@ html[data-theme="book"] .calendar-heading h3 {
 .book-fact-card a {
   position: relative;
   z-index: 1;
-  display: inline-block;
+  display: inline-flex;
   margin-top: 15px;
   color: #f5a467;
-  font-size: var(--type-caption);
-  font-weight: 700;
-  letter-spacing: 0.06em;
   text-decoration: none;
-  text-transform: uppercase;
+  align-items: center;
+  min-height: 44px;
 }
 
 .calendar-navigation .calendar-today {
@@ -13314,7 +13285,6 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .trust-center details {
-  min-height: 220px;
   padding: 25px;
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(66, 24, 86, 0.12);
@@ -14027,9 +13997,6 @@ html[data-theme="book"] .calendar-heading h3 {
 .footer-brand > p {
   max-width: 400px;
   margin: 25px 0 26px;
-  font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.65;
 }
 
 .footer-brand .header-socials {
@@ -14057,9 +14024,6 @@ html[data-theme="book"] .calendar-heading h3 {
 .footer-map h2 {
   margin: 0 0 12px;
   color: var(--orange-soft);
-  font-family: var(--serif);
-  font-size: 22px;
-  font-weight: 400;
 }
 
 .footer-map a,
@@ -14096,11 +14060,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .footer-bottom span {
   margin: 0;
   color: rgba(255, 255, 255, 0.43);
-  font-size: var(--type-caption);
-  font-weight: 700;
-  letter-spacing: 0.05em;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .footer-bottom a {
@@ -14765,12 +14725,11 @@ html[data-theme="book"] .calendar-heading h3 {
 .forum-discovery-controls input,
 .forum-discovery-controls select {
   width: 100%;
-  min-height: 42px;
+  min-height: 44px;
   padding: 0 12px;
   color: #fff;
   background: rgba(18, 3, 28, 0.62);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  outline: none;
 }
 
 .forum-discovery-controls input:focus,
@@ -15834,10 +15793,6 @@ html[data-theme="book"] .calendar-heading h3 {
     grid-column: auto;
   }
 
-  .book-detail-copy h3 {
-    font-size: 39px;
-  }
-
   .book-detail-actions {
     align-items: stretch;
     flex-direction: column;
@@ -16445,9 +16400,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .book-fact-card a {
   display: inline-flex;
   align-items: center;
-  min-height: 40px;
-  font-size: var(--type-caption);
-  line-height: 1.4;
+  min-height: 44px;
 }
 
 .book-archive-toolbar label > span,
@@ -16672,7 +16625,7 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .calendar-agenda > header button {
-  min-height: 36px;
+  min-height: 44px;
 }
 
 .calendar-agenda-day button {
@@ -16744,8 +16697,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .footer-brand > p {
   color: rgba(255, 255, 255, 0.72);
-  font-size: 15px;
-  line-height: 1.7;
 }
 
 .footer-map a,
@@ -16760,8 +16711,6 @@ html[data-theme="book"] .calendar-heading h3 {
 .footer-bottom a,
 .footer-bottom span {
   color: rgba(255, 255, 255, 0.62);
-  font-size: var(--type-caption);
-  line-height: 1.5;
 }
 
 .footer-bottom a {
@@ -17284,9 +17233,6 @@ html[data-theme="book"] .calendar-heading h3 {
   min-height: 44px;
   padding-top: 8px;
   color: rgba(255, 255, 255, 0.66);
-  font-size: var(--type-caption);
-  line-height: 1.35;
-  letter-spacing: 0.08em;
   border-top: 1px solid rgba(255, 255, 255, 0.13);
 }
 
@@ -17316,8 +17262,6 @@ html[data-theme="book"] .calendar-heading h3 {
   margin-left: auto;
   padding: 5px 9px;
   color: #ffc18d;
-  font-size: var(--type-caption);
-  line-height: 1;
   background: rgba(246, 117, 24, 0.12);
   border: 1px solid rgba(246, 155, 79, 0.28);
   border-radius: 999px;
@@ -17786,12 +17730,15 @@ html[data-theme="book"] .calendar-heading h3 {
 .country-search > label,
 .search-caption,
 .globe-copy p,
-.atlas-coordinate small,
-.atlas-country-index summary,
-.atlas-country-index button small {
+.atlas-coordinate small {
   color: rgba(255, 248, 238, 0.78);
   font-size: 12px;
   line-height: 1.35;
+}
+
+.atlas-country-index summary,
+.atlas-country-index button small {
+  color: rgba(255, 248, 238, 0.78);
 }
 
 .search-field input::placeholder,
@@ -19949,7 +19896,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .literary-globe .globe-controls {
   bottom: 50px;
-  grid-template-columns: 48px 48px repeat(3, 86px);
+  grid-template-columns: repeat(2, var(--globe-control-zoom-width, 48px)) repeat(3, 86px);
   gap: 4px;
   width: auto;
   max-width: calc(100% - 24px);
@@ -20080,8 +20027,8 @@ html[data-theme="book"] .calendar-heading h3 {
   button[data-globe-control="zoom-in"],
   button[data-globe-control="zoom-out"]
 ) {
-  width: 48px;
-  min-width: 48px;
+  width: var(--globe-control-zoom-width, 48px);
+  min-width: var(--globe-control-zoom-width, 48px);
 }
 
 .literary-globe .globe-controls button small {
@@ -20246,7 +20193,7 @@ html[data-theme="book"] .calendar-heading h3 {
 @media (max-width: 680px) {
   .literary-globe .globe-controls {
     bottom: 52px;
-    grid-template-columns: 48px 48px repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, var(--globe-control-zoom-width, 48px)) repeat(3, minmax(0, 1fr));
     width: min(358px, calc(100% - 24px));
   }
 
@@ -20296,10 +20243,22 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .literary-globe .globe-controls {
+    --globe-control-zoom-width: 44px;
+
+    gap: 2px;
     width: calc(100% - 28px);
   }
 
-  .literary-globe .globe-controls .ui-action__icon {
+  .literary-globe .globe-controls button {
+    padding-inline: 1px;
+  }
+
+  .literary-globe .globe-controls .ui-action {
+    gap: 2px;
+  }
+
+  .literary-globe .globe-controls .ui-action__icon,
+  .literary-globe .globe-controls .ui-action__icon > svg {
     width: 16px;
     height: 16px;
   }
@@ -20353,7 +20312,8 @@ html[data-theme="book"] .calendar-heading h3 {
     gap: 2px;
   }
 
-  .literary-globe .globe-controls .ui-action__icon {
+  .literary-globe .globe-controls .ui-action__icon,
+  .literary-globe .globe-controls .ui-action__icon > svg {
     width: 14px;
     height: 14px;
   }
@@ -20427,7 +20387,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls {
     bottom: 52px;
-    grid-template-columns: 48px 48px repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, var(--globe-control-zoom-width, 48px)) repeat(3, minmax(0, 1fr));
   }
 
   .literary-globe .globe-instruction {
@@ -20922,7 +20882,7 @@ html[data-theme="book"] .calendar-heading h3 {
   top: max(14px, env(safe-area-inset-top));
   right: max(16px, env(safe-area-inset-right));
   left: max(16px, env(safe-area-inset-left));
-  grid-template-columns: clamp(232px, 18vw, 286px) minmax(0, 1fr);
+  grid-template-columns: clamp(330px, 24vw, 360px) minmax(0, 1fr);
   gap: 0;
   box-sizing: border-box;
   width: auto;
@@ -21049,7 +21009,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-family: var(--sans);
   font-size: var(--type-caption);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.35;
   letter-spacing: 0.065em;
   text-overflow: ellipsis;
   text-transform: uppercase;
@@ -21062,7 +21022,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-family: var(--sans);
   font-size: 14px;
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.35;
   letter-spacing: 0.012em;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -1,5 +1,6 @@
 import type { BookShelfPhase } from "./bookShelfState";
 import type { BookShelfPresentationProfile } from "./bookShelfPresentationProfiles";
+import { bookShelfCoverAngle, resolveBookShelfInspectionGutter } from "./bookShelfPhysicalLayout";
 /** The archive/catalog controller advances by one predictable editorial batch. */
 export const COMPLETE_SHELF_CATALOG_BATCH_SIZE = 13;
 export const COMPLETE_SHELF_MAX_WORKING_SET = 21;
@@ -19,80 +20,22 @@ export const COMPLETE_SHELF_BOOK_FORMAT = Object.freeze({
   pageInset: 0.052,
 });
 
-const PREMIUM_FALLBACK_PALETTES = [
-  {
-    baseColor: "#173f52",
-    accentColor: "#d49a3d",
-    paperColor: "#eadfc9",
-    foilColor: "#f3cf79",
-  },
-  {
-    baseColor: "#641e2b",
-    accentColor: "#c9893f",
-    paperColor: "#efe0cb",
-    foilColor: "#efc66e",
-  },
-  {
-    baseColor: "#806238",
-    accentColor: "#bd8437",
-    paperColor: "#f5ead5",
-    foilColor: "#f3d38b",
-  },
-  {
-    baseColor: "#174b3d",
-    accentColor: "#c89338",
-    paperColor: "#e9dec7",
-    foilColor: "#f0ca72",
-  },
-  {
-    baseColor: "#914420",
-    accentColor: "#ce8739",
-    paperColor: "#f0dfc6",
-    foilColor: "#f2ca75",
-  },
-  {
-    baseColor: "#27335e",
-    accentColor: "#c68d3c",
-    paperColor: "#ece1cd",
-    foilColor: "#efc974",
-  },
-  {
-    baseColor: "#15505a",
-    accentColor: "#c78a38",
-    paperColor: "#eee1ca",
-    foilColor: "#efc66f",
-  },
-  {
-    baseColor: "#741f27",
-    accentColor: "#cf8b41",
-    paperColor: "#efe2d0",
-    foilColor: "#f1ca76",
-  },
-  {
-    baseColor: "#805615",
-    accentColor: "#c88d35",
-    paperColor: "#f1e3cb",
-    foilColor: "#f2d17e",
-  },
-  {
-    baseColor: "#1e4b7a",
-    accentColor: "#ce9139",
-    paperColor: "#e9dfcf",
-    foilColor: "#f0c76e",
-  },
-  {
-    baseColor: "#7a291f",
-    accentColor: "#cd8b43",
-    paperColor: "#f0dfca",
-    foilColor: "#f1cb78",
-  },
-  {
-    baseColor: "#4c5b24",
-    accentColor: "#c9963d",
-    paperColor: "#eee4ce",
-    foilColor: "#efcb75",
-  },
-] as const;
+export function completeShelfVisibleBookLimit(requested: number) {
+  return Math.max(1, Math.min(17, Math.trunc(requested) || 1));
+}
+
+export function completeShelfRowWidth(count: number) {
+  const spine = COMPLETE_SHELF_BOOK_FORMAT.pageDepth + COMPLETE_SHELF_BOOK_FORMAT.boardThickness * 2;
+  return Math.max(spine, count * spine + Math.max(0, count - 1) * COMPLETE_SHELF_GAP);
+}
+
+export const OWNER_LOCKED_SPINE_PALETTE = Object.freeze([
+  "#406872", "#BF5441", "#889149", "#C29043", "#AC4141", "#BB5441",
+  "#508B8A", "#808A44", "#A3494E", "#CC7545", "#45739C", "#B34E3E",
+  "#B08B56", "#BB8B43", "#4C5580", "#B8873E", "#B07C35",
+] as const);
+export const OWNER_LOCKED_WOVEN_CLOTH = "OWNER_LOCKED_WOVEN_CLOTH" as const;
+/** Compatibility export. Actual clearance is resolved from the moving rig. */
 export const COMPLETE_SHELF_INSPECTION_GUTTER = 0.72;
 
 export type CompleteShelfFoilMotif =
@@ -113,6 +56,8 @@ export type CompleteShelfItemInput = Readonly<{
   paperColor: string;
   coverUrl?: string;
   presentationProfile?: BookShelfPresentationProfile;
+  /** Explicit palette identity for the deterministic owner reference fixture. */
+  ownerPaletteSlot?: number;
 }>;
 
 export type CompleteShelfBookSpec = Readonly<{
@@ -122,6 +67,8 @@ export type CompleteShelfBookSpec = Readonly<{
   year: number | null;
   sourceIndex: number;
   seed: number;
+  paletteSlot: number;
+  physicalBindingVisual: typeof OWNER_LOCKED_WOVEN_CLOTH;
   dimensions: Readonly<{
     height: number;
     coverWidth: number;
@@ -173,33 +120,6 @@ export type CompleteShelfSettlement =
 const round = (value: number) => Math.round(value * 10_000) / 10_000;
 const clamp = (value: number, minimum: number, maximum: number) =>
   Math.min(maximum, Math.max(minimum, value));
-const color = (value: string, fallback: string) =>
-  /^#[0-9a-f]{6}$/iu.test(value.trim()) ? value.trim() : fallback;
-
-const mixHexColor = (
-  value: string,
-  target: "#000000" | "#ffffff",
-  ratio: number
-) => {
-  const source = color(value, "#53345f");
-  const targetChannel = target === "#ffffff" ? 255 : 0;
-  const amount = clamp(ratio, 0, 1);
-  const channels = [1, 3, 5].map((offset) => {
-    const channel = Number.parseInt(source.slice(offset, offset + 2), 16);
-    return Math.round(channel + (targetChannel - channel) * amount)
-      .toString(16)
-      .padStart(2, "0");
-  });
-  return `#${channels.join("")}`;
-};
-
-const deterministicPaletteTone = (value: string, seed: number) => {
-  const signedStep = ((seed >>> 24) % 9) - 4;
-  return signedStep >= 0
-    ? mixHexColor(value, "#ffffff", signedStep * 0.014)
-    : mixHexColor(value, "#000000", Math.abs(signedStep) * 0.01);
-};
-
 export function normalizeCompleteShelfText(value: string, maximum = 120) {
   return value
     .replace(/[\u0000-\u001f\u007f-\u009f]/gu, " ")
@@ -245,35 +165,13 @@ export function buildCompleteShelfBookSpec(
   const key = normalizedKey || "book-" + sourceIndex;
   const seed = completeShelfHash(normalizedKey || "book");
   const coverUrl = normalizeCompleteShelfCoverUrl(input.coverUrl);
-  const fallbackPalette =
-    PREMIUM_FALLBACK_PALETTES[
-      (seed >>> 9) % PREMIUM_FALLBACK_PALETTES.length
-    ];
-  const rawYear = Number.isFinite(input.year)
-    ? Math.trunc(input.year as number)
-    : 0;
-  const motifs: readonly CompleteShelfFoilMotif[] = [
-    "arch",
-    "diamond",
-    "orbital",
-    "rules",
-  ];
+  const requestedSlot = input.ownerPaletteSlot ?? -1;
+  const paletteSlot = Number.isInteger(requestedSlot) &&
+    requestedSlot >= 0 && requestedSlot < OWNER_LOCKED_SPINE_PALETTE.length
+    ? requestedSlot
+    : (seed >>> 9) % OWNER_LOCKED_SPINE_PALETTE.length;
+  const rawYear = Number.isFinite(input.year) ? Math.trunc(input.year as number) : 0;
   const presentationProfile = input.presentationProfile || null;
-  const profileMotif: CompleteShelfFoilMotif | null = presentationProfile
-    ? presentationProfile.spinePreset === "ornate"
-      ? "arch"
-      : presentationProfile.spinePreset === "ruled"
-        ? "rules"
-        : presentationProfile.spinePreset === "playful"
-          ? "orbital"
-          : "diamond"
-    : null;
-  const verifiedBinding =
-    presentationProfile?.verifiedEditionMaterial === "leather"
-      ? "leather"
-      : presentationProfile?.verifiedEditionMaterial === "cloth"
-        ? "cloth"
-        : null;
   return Object.freeze({
     key,
     title: normalizeCompleteShelfText(input.title, 180) || "Untitled",
@@ -282,30 +180,16 @@ export function buildCompleteShelfBookSpec(
     sourceIndex,
     seed,
     dimensions: COMPLETE_SHELF_BOOK_FORMAT,
-    // The shelf is a premium archive binding, not a reproduction of a
-    // particular edition.  Every physical binding therefore comes from the
-    // deterministic archive palette even when an authorized cover exists for
-    // the adjacent detail panel.
-    baseColor: deterministicPaletteTone(fallbackPalette.baseColor, seed),
-    accentColor: deterministicPaletteTone(
-      fallbackPalette.accentColor,
-      seed ^ 0x9e3779b9
-    ),
-    paperColor: fallbackPalette.paperColor,
-    foilColor: deterministicPaletteTone(
-      fallbackPalette.foilColor,
-      seed ^ 0x85ebca6b
-    ),
+    paletteSlot,
+    physicalBindingVisual: OWNER_LOCKED_WOVEN_CLOTH,
+    baseColor: OWNER_LOCKED_SPINE_PALETTE[paletteSlot],
+    accentColor: "#d7be83",
+    paperColor: "#efe5d2",
+    foilColor: "#f3ead7",
     coverUrl,
     presentationProfile,
-    motif: profileMotif || motifs[(seed >>> 18) % motifs.length],
-    binding:
-      verifiedBinding ||
-      (presentationProfile?.materialPreset.includes("cloth")
-        ? "cloth"
-        : (seed >>> 20) % 3 === 0
-          ? "cloth"
-          : "leather"),
+    motif: "rules",
+    binding: "cloth",
     lean: 0,
   });
 }
@@ -463,19 +347,6 @@ export function completeShelfPhaseHasInspection(phase: BookShelfPhase) {
   ].includes(phase);
 }
 
-const coverTarget = (phase: BookShelfPhase, selected: boolean) => {
-  if (!selected) return 0;
-  if (phase === "COVER_CRACKED") return -0.12;
-  return [
-    "COVER_OPENING",
-    "BOOK_OPEN",
-    "PAGE_DRAGGING",
-    "PAGE_SETTLING",
-  ].includes(phase)
-    ? -2.18
-    : 0;
-};
-
 export function buildCompleteShelfBookPose({
   layout,
   anchorSlot,
@@ -484,6 +355,10 @@ export function buildCompleteShelfBookPose({
   focusedBookKey,
   pageTurnProgress,
   pageDirection = "forward",
+  hovered = false,
+  pressed = false,
+  inspectionScale = 1.42,
+  inspectionOriginX = 0,
 }: {
   layout: CompleteShelfLayoutEntry;
   anchorSlot: number;
@@ -492,16 +367,26 @@ export function buildCompleteShelfBookPose({
   focusedBookKey: string | null;
   pageTurnProgress?: number;
   pageDirection?: "forward" | "backward";
+  hovered?: boolean;
+  pressed?: boolean;
+  inspectionScale?: number;
+  inspectionOriginX?: number;
 }): CompleteShelfBookPose {
   const { spec, slotIndex } = layout;
   const selected = spec.key === selectedBookKey;
   const focused = spec.key === focusedBookKey;
   const inspecting = selected && completeShelfPhaseHasInspection(phase);
+  const gutter = resolveBookShelfInspectionGutter({
+    dimensions: spec.dimensions,
+    phase,
+    scale: inspectionScale,
+    pageProgress: pageTurnProgress,
+  });
   const spread = completeShelfPhaseHasInspection(phase)
     ? slotIndex < anchorSlot
-      ? -COMPLETE_SHELF_INSPECTION_GUTTER
+      ? -gutter.left
       : slotIndex > anchorSlot
-        ? COMPLETE_SHELF_INSPECTION_GUTTER
+        ? gutter.right
         : 0
     : 0;
   const defaultLeafProgress =
@@ -522,28 +407,24 @@ export function buildCompleteShelfBookPose({
   const pageDirectionSign = pageDirection === "backward" ? 1 : -1;
   const segmentedPageActive = Number.isFinite(pageTurnProgress);
   const pageTurnAngle = segmentedPageActive ? 0 : 0.68;
-  const inspectionScale =
-    inspecting &&
-    (phase === "COVER_OPENING" ||
-      phase === "BOOK_OPEN" ||
-      phase === "PAGE_DRAGGING" ||
-      phase === "PAGE_SETTLING")
-      ? 1.5
-      : inspecting
-        ? 1.42
-        : 1;
+  const scale = inspecting ? inspectionScale : 1;
   return Object.freeze({
     position: Object.freeze([
-      inspecting ? 0 : round(layout.x + spread),
+      inspecting ? 0 : round(layout.x + spread -
+        (completeShelfPhaseHasInspection(phase) ? inspectionOriginX : 0)),
       round(
           COMPLETE_SHELF_TOP +
-          (spec.dimensions.height * inspectionScale) / 2 +
+          (spec.dimensions.height * scale) / 2 +
           (inspecting ? COMPLETE_SHELF_INSPECTION_LIFT : 0)
       ),
       inspecting
         ? 1.05
-        : focused && phase === "SHELF_MOVING"
-          ? 0.08
+        : pressed
+          ? 0.035
+          : hovered
+            ? 0.09
+            : focused
+              ? 0.025
           : 0,
     ]) as readonly [number, number, number],
     rotation: Object.freeze([
@@ -551,8 +432,8 @@ export function buildCompleteShelfBookPose({
       inspecting ? 0.08 : Math.PI / 2,
       0,
     ]) as readonly [number, number, number],
-    scale: inspectionScale,
-    coverAngle: coverTarget(phase, selected),
+    scale,
+    coverAngle: selected ? bookShelfCoverAngle(phase) : 0,
     firstLeafAngle: round(pageDirectionSign * pageTurnAngle * leafProgress),
     secondLeafAngle: segmentedPageActive
       ? 0

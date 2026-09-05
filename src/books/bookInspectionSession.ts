@@ -1,4 +1,28 @@
+import type { BookDossierSemanticAnchor } from "./bookDossierDocument";
+
 export const BOOK_INSPECTION_SESSION_VERSION = 1 as const;
+
+export type BookInspectionSemanticPosition = Readonly<{
+  pageId: string;
+  anchor: BookDossierSemanticAnchor;
+  progress?: number;
+}>;
+
+export type BookInspectionSemanticPage = Readonly<{
+  id: string;
+  anchor?: BookDossierSemanticAnchor;
+}>;
+
+function semanticPositionsForPages(pages: readonly BookInspectionSemanticPage[]) {
+  return pages.map((page, index) => {
+    if (!page.anchor) return null;
+    const inBlock = pages.flatMap((candidate, candidateIndex) =>
+      candidate.anchor?.sectionId === page.anchor?.sectionId &&
+      candidate.anchor?.blockId === page.anchor?.blockId ? [candidateIndex] : []);
+    return { pageId: page.id, anchor: { ...page.anchor },
+      progress: inBlock.length > 1 ? inBlock.indexOf(index) / (inBlock.length - 1) : 0 };
+  });
+}
 
 export const BOOK_PAGE_TURN_COMMIT_THRESHOLD = 0.5;
 export const BOOK_PAGE_TURN_VELOCITY_THRESHOLD = 0.4;
@@ -39,6 +63,8 @@ export type BookInspectionSession = Readonly<{
   pendingPageCount: number;
   pendingPageIndex: number;
   settlement: BookInspectionSettlement;
+  semanticPosition: BookInspectionSemanticPosition | null;
+  pagePositions: readonly (BookInspectionSemanticPosition | null)[];
 }>;
 
 export type BookInspectionRestoreSnapshot = Readonly<{
@@ -47,6 +73,7 @@ export type BookInspectionRestoreSnapshot = Readonly<{
   pageIndex: number;
   pageCount: number;
   orbitSnapshot: BookInspectionOrbitSnapshot | null;
+  semanticPosition?: BookInspectionSemanticPosition | null;
 }>;
 
 export type CreateBookInspectionSessionInput = Readonly<{
@@ -55,6 +82,8 @@ export type CreateBookInspectionSessionInput = Readonly<{
   pageIndex?: number;
   orbitSnapshot?: BookInspectionOrbitSnapshot | null;
   requestId?: number;
+  pages?: readonly BookInspectionSemanticPage[];
+  semanticPosition?: BookInspectionSemanticPosition | null;
 }>;
 
 export type EndBookInspectionDragOptions = Readonly<{
@@ -111,9 +140,12 @@ export function createBookInspectionSession({
   pageIndex: requestedPageIndex = 0,
   orbitSnapshot = null,
   requestId = 0,
+  pages = [],
+  semanticPosition = null,
 }: CreateBookInspectionSessionInput): BookInspectionSession {
   const pageCount = normalizePageCount(requestedPageCount);
   const pageIndex = normalizePageIndex(requestedPageIndex, pageCount);
+  const pagePositions = semanticPositionsForPages(pages);
 
   return {
     version: BOOK_INSPECTION_SESSION_VERSION,
@@ -130,6 +162,8 @@ export function createBookInspectionSession({
     pendingPageCount: 0,
     pendingPageIndex: 0,
     settlement: "none",
+    semanticPosition: pagePositions[pageIndex] ?? semanticPosition,
+    pagePositions,
   };
 }
 
@@ -403,6 +437,8 @@ export function settleBookInspectionSession(
       pendingPageCount: 0,
       pendingPageIndex: 0,
       settlement: "none",
+      semanticPosition: null,
+      pagePositions: [],
     };
   }
 
@@ -420,6 +456,8 @@ export function settleBookInspectionSession(
       pendingPageCount: 0,
       pendingPageIndex: 0,
       settlement: "none",
+      semanticPosition: null,
+      pagePositions: [],
     };
   }
 
@@ -436,6 +474,7 @@ export function settleBookInspectionSession(
       session.pageCount
     ),
     settlement: "none",
+    semanticPosition: session.pagePositions[normalizePageIndex(session.settlePageIndex, session.pageCount)] ?? null,
   };
 }
 
@@ -449,6 +488,7 @@ export function captureBookInspectionSnapshot(
     pageIndex: session.pageIndex,
     pageCount: session.pageCount,
     orbitSnapshot: cloneOrbitSnapshot(session.orbitSnapshot),
+    semanticPosition: session.semanticPosition,
   };
 }
 
@@ -469,6 +509,36 @@ export function restoreBookInspectionSnapshot(
     pageIndex: snapshot.pageIndex,
     orbitSnapshot: snapshot.orbitSnapshot,
     requestId,
+    semanticPosition: snapshot.semanticPosition,
   });
   return restored;
+}
+
+/** Rebinds presentation indices after pagination without resetting an active turn. */
+export function remapBookInspectionSessionPages(
+  session: BookInspectionSession,
+  bookKey: string,
+  pages: readonly BookInspectionSemanticPage[],
+): BookInspectionSession {
+  if (session.bookKey !== bookKey || !pages.length) return session;
+  const pagePositions = semanticPositionsForPages(pages);
+  const mapIndex = (oldIndex: number) => {
+    const old = session.pagePositions[oldIndex] ??
+      (oldIndex === session.pageIndex ? session.semanticPosition : null);
+    if (old) {
+      const exact = pages.findIndex((page) => page.id === old.pageId);
+      if (exact >= 0) return exact;
+      const sameBlock = pagePositions.flatMap((position, index) =>
+        position?.anchor.sectionId === old.anchor.sectionId &&
+        position?.anchor.blockId === old.anchor.blockId && position?.anchor.itemId === old.anchor.itemId ? [index] : []);
+      if (sameBlock.length) return sameBlock[Math.round((old.progress ?? 0) * (sameBlock.length - 1))];
+    }
+    return normalizePageIndex(oldIndex, pages.length);
+  };
+  const pageIndex = mapIndex(session.pageIndex);
+  const settlePageIndex = mapIndex(session.settlePageIndex);
+  return {
+    ...session, pageIndex, settlePageIndex, pageCount: pages.length,
+    pagePositions, semanticPosition: pagePositions[pageIndex],
+  };
 }

@@ -1,0 +1,59 @@
+{
+  "free": {
+    "left": 58.59375,
+    "right": 1028.60625,
+    "top": 175.53125,
+    "bottom": 823.53125
+  },
+  "buttons": [
+    {
+      "text": "← Перелистнуть страницу",
+      "disabled": true,
+      "rect": {
+        "x": 208.953125,
+        "y": 763.53125,
+        "width": 207.078125,
+        "height": 44,
+        "top": 763.53125,
+        "right": 416.03125,
+        "bottom": 807.53125,
+        "left": 208.953125
+      },
+      "hit": true,
+      "inside": true
+    },
+    {
+      "text": "Перелистнуть страницу →",
+      "disabled": false,
+      "rect": {
+        "x": 467.890625,
+        "y": 763.53125,
+        "width": 207.078125,
+        "height": 44,
+        "top": 763.53125,
+        "right": 674.96875,
+        "bottom": 807.53125,
+        "left": 467.890625
+      },
+      "hit": true,
+      "inside": true
+    },
+    {
+      "text": "Закрыть карточку книги",
+      "disabled": false,
+      "rect": {
+        "x": 682.96875,
+        "y": 763.53125,
+        "width": 195.265625,
+        "height": 44,
+        "top": 763.53125,
+        "right": 878.234375,
+        "bottom": 807.53125,
+        "left": 682.96875
+      },
+      "hit": true,
+      "inside": true
+    }
+  ],
+  "forwardBackwardPassed": true
+}

@@ -10,8 +10,47 @@ const scan = (css, canonicalCss = canonical) => auditTypography({
   "src/styles/site-typography.css": canonicalCss,
   "src/index.css": css,
 }).map((issue) => issue.message);
+const onestFace = `@font-face {
+  font-family: "Onest Local"; font-style: normal; font-weight: 100 900;
+  src: url("/fonts/editorial/onest-cyrillic-variable.woff2") format("woff2");
+}`;
+const onestCanonical = canonical.replace("--type-body: 1rem;", `--type-body: 1rem;
+  --font-ui: "Onest Local", sans-serif; --font-editorial: var(--font-ui);
+  --serif: "Source Serif 4 Local", Georgia, serif;`);
+const scanOnest = (css, faces = onestFace) => auditTypography({
+  "src/styles/site-typography.css": onestCanonical,
+  "src/styles/editorial-fonts.css": faces,
+  "src/index.css": css,
+}).map((issue) => issue.message);
 
 describe("canonical typography audit", () => {
+  it("accepts bundled Onest variable descriptors and approved UI weights without changing Source faces", () => {
+    expect(scanOnest(`
+      .body { font-family: var(--font-ui); font-weight: 400; }
+      .title { font-family: var(--font-editorial); font-weight: 500; }
+      .action { font-weight: 600; }
+      .short { font: 500 1rem/1.45 var(--font-ui); }
+      .paper { font-family: var(--serif); font-weight: 700; }
+    `, `${onestFace} @font-face { font-family: "Source Serif 4 Local"; font-weight: 600; }`)).toEqual([]);
+  });
+
+  it("keeps unbundled, wrong-family and arbitrary variable weights rejected", () => {
+    expect(scanOnest('.title { font-weight: 500; }', "").join(" ")).toContain("no bundled local face");
+    expect(scanOnest('.title { font-weight: 500; }', onestFace.replace("/fonts/editorial/onest-cyrillic-variable.woff2", "https://unknown.test/font.woff2")))
+      .toHaveLength(2);
+    expect(scanOnest(`
+      .paper { font-family: var(--serif); font-weight: 500; }
+      .short { font: 500 1rem/1.4 var(--serif); }
+      .heavy { font-weight: 800; }
+      .range { font-weight: 100 900; }
+    `)).toHaveLength(4);
+    expect(scanOnest("", `${onestFace}
+      @font-face { font-family: "Source Serif 4 Local"; font-weight: 100 900; }
+      @font-face { font-family: "Unknown Local"; font-weight: 100 900; }
+      @font-face { font-family: "Onest Local"; font-weight: 200 800; }
+    `)).toHaveLength(4);
+  });
+
   it("accepts aliases, loaded weights, responsive tokens and icon geometry", () => {
     expect(scan(`@layer site-defaults {
       .article-copy h3 { font-family: var(--serif); font-weight: 400; }

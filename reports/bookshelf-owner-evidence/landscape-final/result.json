@@ -1,0 +1,1317 @@
+{
+  "startedAt": "2026-09-05T04:50:47.406Z",
+  "cases": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": {
+        "phase": "BOOK_OPEN",
+        "selectedKey": "england:george_orwell:nineteen-eighty-four",
+        "selectedTitle": "1984",
+        "pageIndex": 1,
+        "pageCount": 10,
+        "canvas": {
+          "x": 11,
+          "y": 182.453125,
+          "width": 368,
+          "height": 480
+        },
+        "camera": {
+          "position": [
+            -0.37314,
+            -1.79093,
+            15.30288
+          ],
+          "fov": 35.00011
+        },
+        "qualityProfile": "ECONOMY",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 278.39,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 172.87576073012417,
+            "y": 296.92294302087146,
+            "z": 0.9868989166668931
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "451° по Фаренгейту",
+            "sourceIndex": 1,
+            "x": 273.438121572974,
+            "y": 324.85682745832594,
+            "z": 0.9874324450432064
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Анна-Вероника",
+            "sourceIndex": 2,
+            "x": 291.8122982610778,
+            "y": 324.85682745832594,
+            "z": 0.9874324450432064
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Будденброки",
+            "sourceIndex": 3,
+            "x": 310.1864749491815,
+            "y": 324.85682745832594,
+            "z": 0.9874324450432064
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "Война и мир",
+            "sourceIndex": 4,
+            "x": 328.5606516372852,
+            "y": 324.85682745832594,
+            "z": 0.9874324450432064
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 346.93482832538893,
+            "y": 324.85682745832594,
+            "z": 0.9874324450432064
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 365.3090050134927,
+            "y": 324.85682745832594,
+            "z": 0.9874324450432064
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 67,
+            "deleted": 24,
+            "live": 43
+          },
+          "Framebuffer": {
+            "created": 5,
+            "deleted": 0,
+            "live": 5
+          },
+          "Renderbuffer": {
+            "created": 1,
+            "deleted": 0,
+            "live": 1
+          },
+          "Buffer": {
+            "created": 268,
+            "deleted": 4,
+            "live": 264
+          },
+          "Program": {
+            "created": 30,
+            "deleted": 6,
+            "live": 24
+          },
+          "Shader": {
+            "created": 60,
+            "deleted": 60,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 88,
+            "deleted": 4,
+            "live": 84
+          }
+        },
+        "draws": 12849,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 72,
+          "textures": 39,
+          "calls": 70,
+          "triangles": 2514
+        }
+      },
+      "bounds": {
+        "x": 125.67615094496652,
+        "y": 216.85154924663792,
+        "right": 267.90178480328655,
+        "bottom": 358.70612213086645,
+        "points": 224
+      },
+      "free": {
+        "left": 11,
+        "top": 182.453125,
+        "right": 379,
+        "bottom": 384.063125
+      },
+      "semantic": {
+        "pageId": "description",
+        "anchor": {
+          "sectionId": "description",
+          "blockId": "description-content",
+          "dossierVersion": "book-dossier-v2-catalogue",
+          "locale": "ru",
+          "readingMode": "BEFORE_READING"
+        },
+        "progress": 0
+      },
+      "panel": {
+        "position": "half",
+        "rect": {
+          "x": 11,
+          "y": 384.0625,
+          "width": 368,
+          "height": 278.390625,
+          "top": 384.0625,
+          "right": 379,
+          "bottom": 662.453125,
+          "left": 11
+        }
+      },
+      "reader": {
+        "present": true,
+        "text": "Досье книгиОглавление1984Редакционное описаниеСведения об изданииИсточники и праваОб этом досьеПроизведениеРедакционное описаниеУинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей",
+        "editable": 0
+      },
+      "controls": [],
+      "bars": [
+        {
+          "className": "site-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 58,
+            "top": 0,
+            "right": 390,
+            "bottom": 58,
+            "left": 0
+          }
+        },
+        {
+          "className": "mobile-nav",
+          "rect": {
+            "x": 0,
+            "y": 58,
+            "width": 390,
+            "height": 53,
+            "top": 58,
+            "right": 390,
+            "bottom": 111,
+            "left": 0
+          }
+        }
+      ],
+      "scrollY": 5329,
+      "label": "portrait-half",
+      "inside": true,
+      "freeInViewport": true,
+      "overlappingControls": [],
+      "overlappingBars": []
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": {
+        "phase": "BOOK_OPEN",
+        "selectedKey": "england:george_orwell:nineteen-eighty-four",
+        "selectedTitle": "1984",
+        "pageIndex": 1,
+        "pageCount": 10,
+        "canvas": {
+          "x": 11,
+          "y": 182.453125,
+          "width": 368,
+          "height": 480
+        },
+        "camera": {
+          "position": [
+            -0.37263,
+            0.03154,
+            10.42866
+          ],
+          "fov": 35.00002
+        },
+        "qualityProfile": "ECONOMY",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 105.23,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 161.25798497905248,
+            "y": 380.15522978713216,
+            "z": 0.9795205796676917
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "451° по Фаренгейту",
+            "sourceIndex": 1,
+            "x": 312.1208011433057,
+            "y": 417.1753921706912,
+            "z": 0.9807344540195465
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Анна-Вероника",
+            "sourceIndex": 2,
+            "x": 339.5656285934066,
+            "y": 417.1753921706912,
+            "z": 0.9807344540195465
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Будденброки",
+            "sourceIndex": 3,
+            "x": 367.01045604350753,
+            "y": 417.1753921706912,
+            "z": 0.9807344540195465
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "Война и мир",
+            "sourceIndex": 4,
+            "x": 394.4552834936084,
+            "y": 417.1753921706912,
+            "z": 0.9807344540195465
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 421.9001109437094,
+            "y": 417.1753921706912,
+            "z": 0.9807344540195465
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 449.34493839381037,
+            "y": 417.1753921706912,
+            "z": 0.9807344540195465
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 115,
+            "deleted": 72,
+            "live": 43
+          },
+          "Framebuffer": {
+            "created": 5,
+            "deleted": 0,
+            "live": 5
+          },
+          "Renderbuffer": {
+            "created": 1,
+            "deleted": 0,
+            "live": 1
+          },
+          "Buffer": {
+            "created": 268,
+            "deleted": 4,
+            "live": 264
+          },
+          "Program": {
+            "created": 30,
+            "deleted": 6,
+            "live": 24
+          },
+          "Shader": {
+            "created": 60,
+            "deleted": 60,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 88,
+            "deleted": 4,
+            "live": 84
+          }
+        },
+        "draws": 22475,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 72,
+          "textures": 39,
+          "calls": 65,
+          "triangles": 2338
+        }
+      },
+      "bounds": {
+        "x": 82.36569684671086,
+        "y": 266.3197879938323,
+        "right": 307.22918634801994,
+        "bottom": 477.3489081241251,
+        "points": 224
+      },
+      "free": {
+        "left": 11,
+        "top": 182.453125,
+        "right": 379,
+        "bottom": 557.223125
+      },
+      "semantic": {
+        "pageId": "description",
+        "anchor": {
+          "sectionId": "description",
+          "blockId": "description-content",
+          "dossierVersion": "book-dossier-v2-catalogue",
+          "locale": "ru",
+          "readingMode": "BEFORE_READING"
+        },
+        "progress": 0
+      },
+      "panel": {
+        "position": "collapsed",
+        "rect": {
+          "x": 11,
+          "y": 557.21875,
+          "width": 368,
+          "height": 105.234375,
+          "top": 557.21875,
+          "right": 379,
+          "bottom": 662.453125,
+          "left": 11
+        }
+      },
+      "reader": {
+        "present": true,
+        "text": "Досье книгиОглавление1984Редакционное описаниеСведения об изданииИсточники и праваОб этом досьеПроизведениеРедакционное описаниеУинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей",
+        "editable": 0
+      },
+      "controls": [],
+      "bars": [
+        {
+          "className": "site-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 58,
+            "top": 0,
+            "right": 390,
+            "bottom": 58,
+            "left": 0
+          }
+        },
+        {
+          "className": "mobile-nav",
+          "rect": {
+            "x": 0,
+            "y": 58,
+            "width": 390,
+            "height": 53,
+            "top": 58,
+            "right": 390,
+            "bottom": 111,
+            "left": 0
+          }
+        }
+      ],
+      "scrollY": 5329,
+      "label": "portrait-collapsed",
+      "inside": true,
+      "freeInViewport": true,
+      "overlappingControls": [],
+      "overlappingBars": []
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "state": {
+        "phase": "BOOK_OPEN",
+        "selectedKey": "england:george_orwell:nineteen-eighty-four",
+        "selectedTitle": "1984",
+        "pageIndex": 1,
+        "pageCount": 10,
+        "canvas": {
+          "x": 34.75,
+          "y": 147.21875,
+          "width": 774.5,
+          "height": 560
+        },
+        "camera": {
+          "position": [
+            1.72359,
+            -1.59429,
+            14.5674
+          ],
+          "fov": 35.00001
+        },
+        "qualityProfile": "ECONOMY",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 320,
+          "bottom": 317.22,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 256.3846344063428,
+            "y": 285.73971056305805,
+            "z": 0.986128059707797
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "451° по Фаренгейту",
+            "sourceIndex": 1,
+            "x": 385.43282950182595,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Анна-Вероника",
+            "sourceIndex": 2,
+            "x": 407.994594345844,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Будденброки",
+            "sourceIndex": 3,
+            "x": 430.55635918986195,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "Война и мир",
+            "sourceIndex": 4,
+            "x": 453.11812403388,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 475.679888877898,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 498.24165372191607,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          },
+          {
+            "key": "france:flaubert:madame-bovary",
+            "title": "Госпожа Бовари",
+            "sourceIndex": 7,
+            "x": 520.803418565934,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          },
+          {
+            "key": "russia:chekhov:the-lady-with-the-dog",
+            "title": "Дама с собачкой",
+            "sourceIndex": 8,
+            "x": 543.365183409952,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          },
+          {
+            "key": "russia:chekhov:the-duel",
+            "title": "Дуэль",
+            "sourceIndex": 9,
+            "x": 565.9269482539701,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          },
+          {
+            "key": "russia:chekhov:uncle-vanya",
+            "title": "Дядя Ваня",
+            "sourceIndex": 10,
+            "x": 588.4887130979881,
+            "y": 319.8418607933391,
+            "z": 0.9867202877222916
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 145,
+            "deleted": 90,
+            "live": 55
+          },
+          "Framebuffer": {
+            "created": 5,
+            "deleted": 0,
+            "live": 5
+          },
+          "Renderbuffer": {
+            "created": 1,
+            "deleted": 0,
+            "live": 1
+          },
+          "Buffer": {
+            "created": 350,
+            "deleted": 10,
+            "live": 340
+          },
+          "Program": {
+            "created": 30,
+            "deleted": 6,
+            "live": 24
+          },
+          "Shader": {
+            "created": 60,
+            "deleted": 60,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 114,
+            "deleted": 6,
+            "live": 108
+          }
+        },
+        "draws": 38055,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 92,
+          "textures": 51,
+          "calls": 94,
+          "triangles": 3266
+        }
+      },
+      "bounds": {
+        "x": 180.32295983857736,
+        "y": 187.1990836339865,
+        "right": 370.3620716206804,
+        "bottom": 361.44525229919634,
+        "points": 224
+      },
+      "free": {
+        "left": 34.75,
+        "top": 147.21875,
+        "right": 489.25,
+        "bottom": 389.99875
+      },
+      "semantic": {
+        "pageId": "description",
+        "anchor": {
+          "sectionId": "description",
+          "blockId": "description-content",
+          "dossierVersion": "book-dossier-v2-catalogue",
+          "locale": "ru",
+          "readingMode": "BEFORE_READING"
+        },
+        "progress": 0
+      },
+      "panel": {
+        "position": "collapsed",
+        "rect": {
+          "x": 489.25,
+          "y": 147.21875,
+          "width": 320,
+          "height": 560,
+          "top": 147.21875,
+          "right": 809.25,
+          "bottom": 707.21875,
+          "left": 489.25
+        }
+      },
+      "reader": {
+        "present": true,
+        "text": "Досье книгиОглавление1984Редакционное описаниеСведения об изданииИсточники и праваОб этом досьеПроизведениеРедакционное описаниеУинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей",
+        "editable": 0
+      },
+      "controls": [],
+      "bars": [
+        {
+          "className": "site-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 844,
+            "height": 80,
+            "top": 0,
+            "right": 844,
+            "bottom": 80,
+            "left": 0
+          }
+        },
+        {
+          "className": "mobile-nav",
+          "rect": {
+            "x": 0,
+            "y": 80,
+            "width": 844,
+            "height": 59,
+            "top": 80,
+            "right": 844,
+            "bottom": 139,
+            "left": 0
+          }
+        }
+      ],
+      "scrollY": 4177,
+      "label": "rotated-collapsed",
+      "inside": true,
+      "freeInViewport": true,
+      "overlappingControls": [],
+      "overlappingBars": []
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "state": {
+        "phase": "BOOK_OPEN",
+        "selectedKey": "england:george_orwell:nineteen-eighty-four",
+        "selectedTitle": "1984",
+        "pageIndex": 1,
+        "pageCount": 10,
+        "canvas": {
+          "x": 34.75,
+          "y": 0.21875,
+          "width": 774.5,
+          "height": 560
+        },
+        "camera": {
+          "position": [
+            1.6478,
+            0.35018,
+            14.14468
+          ],
+          "fov": 35.00001
+        },
+        "qualityProfile": "ECONOMY",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 138.78,
+          "right": 320,
+          "bottom": 170.22,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 256.17714801823973,
+            "y": 266.6565148360467,
+            "z": 0.9856456300602701
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "451° по Фаренгейту",
+            "sourceIndex": 1,
+            "x": 389.2480299205813,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Анна-Вероника",
+            "sourceIndex": 2,
+            "x": 412.5116000488196,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Будденброки",
+            "sourceIndex": 3,
+            "x": 435.775170177058,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "Война и мир",
+            "sourceIndex": 4,
+            "x": 459.0387403052963,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 482.30231043353467,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 505.56588056177304,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          },
+          {
+            "key": "france:flaubert:madame-bovary",
+            "title": "Госпожа Бовари",
+            "sourceIndex": 7,
+            "x": 528.8294506900113,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          },
+          {
+            "key": "russia:chekhov:the-lady-with-the-dog",
+            "title": "Дама с собачкой",
+            "sourceIndex": 8,
+            "x": 552.0930208182497,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          },
+          {
+            "key": "russia:chekhov:the-duel",
+            "title": "Дуэль",
+            "sourceIndex": 9,
+            "x": 575.3565909464879,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          },
+          {
+            "key": "russia:chekhov:uncle-vanya",
+            "title": "Дядя Ваня",
+            "sourceIndex": 10,
+            "x": 598.6201610747264,
+            "y": 296.56728925472663,
+            "z": 0.9862760880472613
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 151,
+            "deleted": 96,
+            "live": 55
+          },
+          "Framebuffer": {
+            "created": 5,
+            "deleted": 0,
+            "live": 5
+          },
+          "Renderbuffer": {
+            "created": 1,
+            "deleted": 0,
+            "live": 1
+          },
+          "Buffer": {
+            "created": 350,
+            "deleted": 10,
+            "live": 340
+          },
+          "Program": {
+            "created": 30,
+            "deleted": 6,
+            "live": 24
+          },
+          "Shader": {
+            "created": 60,
+            "deleted": 60,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 114,
+            "deleted": 6,
+            "live": 108
+          }
+        },
+        "draws": 53659,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 92,
+          "textures": 51,
+          "calls": 94,
+          "triangles": 3266
+        }
+      },
+      "bounds": {
+        "x": 177.29900172129462,
+        "y": 181.5267146021194,
+        "right": 373.93120924870243,
+        "bottom": 348.1745277632089,
+        "points": 224
+      },
+      "free": {
+        "left": 34.75,
+        "top": 138.99875,
+        "right": 489.25,
+        "bottom": 389.99875
+      },
+      "semantic": {
+        "pageId": "description",
+        "anchor": {
+          "sectionId": "description",
+          "blockId": "description-content",
+          "dossierVersion": "book-dossier-v2-catalogue",
+          "locale": "ru",
+          "readingMode": "BEFORE_READING"
+        },
+        "progress": 0
+      },
+      "panel": {
+        "position": "collapsed",
+        "rect": {
+          "x": 489.25,
+          "y": 0.21875,
+          "width": 320,
+          "height": 560,
+          "top": 0.21875,
+          "right": 809.25,
+          "bottom": 560.21875,
+          "left": 489.25
+        }
+      },
+      "reader": {
+        "present": true,
+        "text": "Досье книгиОглавление1984Редакционное описаниеСведения об изданииИсточники и праваОб этом досьеПроизведениеРедакционное описаниеУинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей",
+        "editable": 0
+      },
+      "controls": [],
+      "bars": [
+        {
+          "className": "site-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 844,
+            "height": 80,
+            "top": 0,
+            "right": 844,
+            "bottom": 80,
+            "left": 0
+          }
+        },
+        {
+          "className": "mobile-nav",
+          "rect": {
+            "x": 0,
+            "y": 80,
+            "width": 844,
+            "height": 59,
+            "top": 80,
+            "right": 844,
+            "bottom": 139,
+            "left": 0
+          }
+        }
+      ],
+      "scrollY": 4324,
+      "label": "landscape-centred",
+      "inside": true,
+      "freeInViewport": true,
+      "overlappingControls": [],
+      "overlappingBars": []
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": {
+        "phase": "BOOK_OPEN",
+        "selectedKey": "england:george_orwell:nineteen-eighty-four",
+        "selectedTitle": "1984",
+        "pageIndex": 1,
+        "pageCount": 10,
+        "canvas": {
+          "x": 11,
+          "y": 241.453125,
+          "width": 368,
+          "height": 480
+        },
+        "camera": {
+          "position": [
+            -0.3722,
+            -1.79059,
+            15.30295
+          ],
+          "fov": 35.00001
+        },
+        "qualityProfile": "ECONOMY",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 278.39,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 172.8253787914406,
+            "y": 355.94141867699454,
+            "z": 0.986898986230881
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "451° по Фаренгейту",
+            "sourceIndex": 1,
+            "x": 273.3894719480004,
+            "y": 383.87454205940867,
+            "z": 0.9874325094429273
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Анна-Вероника",
+            "sourceIndex": 2,
+            "x": 291.7636173348111,
+            "y": 383.87454205940867,
+            "z": 0.9874325094429273
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Будденброки",
+            "sourceIndex": 3,
+            "x": 310.13776272162187,
+            "y": 383.87454205940867,
+            "z": 0.9874325094429273
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "Война и мир",
+            "sourceIndex": 4,
+            "x": 328.5119081084326,
+            "y": 383.87454205940867,
+            "z": 0.9874325094429273
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 346.88605349524335,
+            "y": 383.87454205940867,
+            "z": 0.9874325094429273
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 365.2601988820541,
+            "y": 383.87454205940867,
+            "z": 0.9874325094429273
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 193,
+            "deleted": 150,
+            "live": 43
+          },
+          "Framebuffer": {
+            "created": 5,
+            "deleted": 0,
+            "live": 5
+          },
+          "Renderbuffer": {
+            "created": 1,
+            "deleted": 0,
+            "live": 1
+          },
+          "Buffer": {
+            "created": 356,
+            "deleted": 92,
+            "live": 264
+          },
+          "Program": {
+            "created": 39,
+            "deleted": 15,
+            "live": 24
+          },
+          "Shader": {
+            "created": 78,
+            "deleted": 78,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 125,
+            "deleted": 41,
+            "live": 84
+          }
+        },
+        "draws": 72313,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 72,
+          "textures": 39,
+          "calls": 70,
+          "triangles": 2514
+        }
+      },
+      "bounds": {
+        "x": 125.61991693834592,
+        "y": 275.8725052858731,
+        "right": 267.8501634889072,
+        "bottom": 417.7238575924965,
+        "points": 224
+      },
+      "free": {
+        "left": 11,
+        "top": 241.453125,
+        "right": 379,
+        "bottom": 443.063125
+      },
+      "semantic": {
+        "pageId": "description",
+        "anchor": {
+          "sectionId": "description",
+          "blockId": "description-content",
+          "dossierVersion": "book-dossier-v2-catalogue",
+          "locale": "ru",
+          "readingMode": "BEFORE_READING"
+        },
+        "progress": 0
+      },
+      "panel": {
+        "position": "half",
+        "rect": {
+          "x": 11,
+          "y": 443.0625,
+          "width": 368,
+          "height": 278.390625,
+          "top": 443.0625,
+          "right": 379,
+          "bottom": 721.453125,
+          "left": 11
+        }
+      },
+      "reader": {
+        "present": true,
+        "text": "Досье книгиОглавление1984Редакционное описаниеСведения об изданииИсточники и праваОб этом досьеПроизведениеРедакционное описаниеУинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей",
+        "editable": 0
+      },
+      "controls": [],
+      "bars": [
+        {
+          "className": "site-header",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 58,
+            "top": 0,
+            "right": 390,
+            "bottom": 58,
+            "left": 0
+          }
+        },
+        {
+          "className": "mobile-nav",
+          "rect": {
+            "x": 0,
+            "y": 58,
+            "width": 390,
+            "height": 53,
+            "top": 58,
+            "right": 390,
+            "bottom": 111,
+            "left": 0
+          }
+        }
+      ],
+      "scrollY": 5270,
+      "label": "portrait-restored",
+      "inside": true,
+      "freeInViewport": true,
+      "overlappingControls": [],
+      "overlappingBars": []
+    }
+  ],
+  "issues": [],
+  "errors": [],
+  "initial": {
+    "state": {
+      "phase": "SHELF_IDLE",
+      "selectedKey": null,
+      "selectedTitle": null,
+      "pageIndex": null,
+      "pageCount": null,
+      "canvas": {
+        "x": 11,
+        "y": 182.453125,
+        "width": 368,
+        "height": 480
+      },
+      "camera": {
+        "position": [
+          0,
+          0,
+          6.41884
+        ],
+        "fov": 38
+      },
+      "qualityProfile": "ECONOMY",
+      "lightExposure": 0.38,
+      "insets": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "books": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "sourceIndex": 0,
+          "x": 67.5076672479693,
+          "y": 410.5156406599222,
+          "z": 0.9667299858971006
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "451° по Фаренгейту",
+          "sourceIndex": 1,
+          "x": 110.3674802216219,
+          "y": 410.56653514348625,
+          "z": 0.9668760954189883
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "title": "Анна-Вероника",
+          "sourceIndex": 2,
+          "x": 152.68374011081096,
+          "y": 410.56653514348625,
+          "z": 0.9668760954189883
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "title": "Будденброки",
+          "sourceIndex": 3,
+          "x": 194.99999999999997,
+          "y": 410.56653514348625,
+          "z": 0.9668760954189883
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "title": "Война и мир",
+          "sourceIndex": 4,
+          "x": 237.31625988918904,
+          "y": 410.56653514348625,
+          "z": 0.9668760954189883
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Гамлет",
+          "sourceIndex": 5,
+          "x": 279.6325197783781,
+          "y": 410.56653514348625,
+          "z": 0.9668760954189883
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Голодный дом",
+          "sourceIndex": 6,
+          "x": 321.94877966756707,
+          "y": 410.56653514348625,
+          "z": 0.9668760954189883
+        }
+      ],
+      "resources": {
+        "Texture": {
+          "created": 34,
+          "deleted": 0,
+          "live": 34
+        },
+        "Framebuffer": {
+          "created": 5,
+          "deleted": 0,
+          "live": 5
+        },
+        "Renderbuffer": {
+          "created": 1,
+          "deleted": 0,
+          "live": 1
+        },
+        "Buffer": {
+          "created": 185,
+          "deleted": 4,
+          "live": 181
+        },
+        "Program": {
+          "created": 13,
+          "deleted": 1,
+          "live": 12
+        },
+        "Shader": {
+          "created": 26,
+          "deleted": 26,
+          "live": 0
+        },
+        "VertexArray": {
+          "created": 61,
+          "deleted": 1,
+          "live": 60
+        }
+      },
+      "draws": 189,
+      "pendingFrames": 0,
+      "renderer": {
+        "geometries": 51,
+        "textures": 30,
+        "calls": 46,
+        "triangles": 1534
+      }
+    },
+    "hit": "<canvas style=\"display: block; width: 368px; height: 480px;\" data-engine=\"three.js r178\" width=\"368\" height=\"480\"></canvas>"
+  },
+  "panelControls": [
+    {
+      "width": 44,
+      "height": 44
+    },
+    {
+      "width": 44,
+      "height": 44
+    }
+  ],
+  "panelNavigationPassed": true,
+  "domReader": {
+    "text": "Досье книгиОглавление1984Редакционное описаниеСведения об изданииИсточники и праваОб этом досьеПроизведениеРедакционное описаниеУинстон Смит служит в Министерстве правды, где переписывает прошлое в соответствии с текущей линией Партии, хотя внутренне отвергает её власть. Его попы",
+    "focus": true,
+    "rect": {
+      "x": 512.25,
+      "y": 0.0625,
+      "width": 271,
+      "height": 615.90625,
+      "top": 0.0625,
+      "right": 783.25,
+      "bottom": 615.96875,
+      "left": 512.25
+    },
+    "editable": 0
+  },
+  "closed": {
+    "selected": null,
+    "detailPresent": false,
+    "active": {
+      "tag": "INPUT",
+      "className": "",
+      "text": ""
+    },
+    "focusInShelf": true
+  }
+}

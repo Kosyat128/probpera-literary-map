@@ -1,0 +1,62 @@
+{
+  "injectedCSS": true,
+  "viewport": 320,
+  "buttons": [
+    {
+      "text": "Полка",
+      "width": 130.5,
+      "height": 44,
+      "x": 28,
+      "clipped": false,
+      "fontSize": "14px"
+    },
+    {
+      "text": "Каталог",
+      "width": 130.5,
+      "height": 44,
+      "x": 161.5,
+      "clipped": false,
+      "fontSize": "14px"
+    },
+    {
+      "text": "✦Случайное произведение",
+      "width": 264,
+      "height": 44,
+      "x": 28,
+      "clipped": false,
+      "fontSize": "14px"
+    },
+    {
+      "text": "ПровереноКарточки с подтверждёнными данными",
+      "width": 104,
+      "height": 50,
+      "x": 25,
+      "clipped": false,
+      "fontSize": "14px"
+    },
+    {
+      "text": "КлассикаПервое издание - не позднее 1945 года",
+      "width": 104,
+      "height": 50,
+      "x": 135,
+      "clipped": false,
+      "fontSize": "14px"
+    },
+    {
+      "text": "Для детейТолько подтверждённая аудитория",
+      "width": 214,
+      "height": 50,
+      "x": 25,
+      "clipped": false,
+      "fontSize": "14px"
+    },
+    {
+      "text": "",
+      "width": 50,
+      "height": 50,
+      "x": 245,
+      "clipped": false,
+      "fontSize": "14px"
+    }
+  ]
+}

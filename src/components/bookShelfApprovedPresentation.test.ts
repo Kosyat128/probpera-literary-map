@@ -232,7 +232,7 @@ describe("approved Complete Shelf outer presentation", () => {
       /pendingBookCloseRef\.current\s*\|\|\s*pendingBookSwitchRef\.current\s*\|\|\s*pendingInspectionBookRef\.current/u
     );
     expect(controller).toMatch(
-      /window\.requestAnimationFrame\(\(\) => \{\s*pendingInspectionBookRef\.current = null;\s*openBookDetail\(pendingBook\);/u
+      /window\.requestAnimationFrame\(\(\) => \{\s*if \(shelfStateRef\.current\.requestId !== requestId \|\|\s*pendingInspectionBookRef\.current !== pendingBook \|\|\s*focusedBookKeyRef\.current !== bookKey\(pendingBook\)\) return;\s*pendingInspectionBookRef\.current = null;\s*openBookDetail\(pendingBook\);/u
     );
     expect(controller).toContain('querySelector<HTMLElement>(".book-shelf-scene")');
     expect(controller).toContain("scene.scrollIntoView({");
@@ -241,7 +241,7 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(controller).toContain(
       "onRequestSceneCenter={resetShelfFromEmptyArea}"
     );
-    expect(sceneCanvas).toContain("onPointerMissed={onRequestSceneCenter}");
+    expect(sceneCanvas).toContain('!selectedBookKey && phase === "SHELF_IDLE" && event.type === "click" && event.button === 0');
     expect(renderer).toContain(
       "completeShelfPhaseAllowsSelectionSwitch(phase)"
     );
@@ -264,12 +264,12 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(controller).toMatch(
       /if \(centerAfterClose\) \{\s*centerShelfScene\(\);/u
     );
-    expect(sceneCanvas).toContain("onPointerMissed={onRequestSceneCenter}");
+    expect(sceneCanvas).toMatch(/onPointerMissed=\{\(event\) => \{\s*if \(!selectedBookKey && phase === "SHELF_IDLE" && event\.type === "click" && event\.button === 0\) onRequestSceneCenter\(\);/u);
     expect(sceneCanvas).toContain("BOOK_SHELF_IDLE_CAMERA_TARGET");
     expect(sceneCanvas).toContain("lookAt: [0, 0, 0] as const");
     expect(sceneCanvas).toContain("useLayoutEffect(() => {");
     expect(renderer).toContain("resolveCompleteShelfVerticalBounds(specs)");
-    expect(renderer).toContain("verticalBounds: shelfVerticalBounds");
+    expect(renderer).toContain("positionY: -shelfVerticalBounds.opticalCenterY");
   });
 
   it("integrates the deterministic mobile detail sheet without stealing horizontal shelf gestures", () => {
@@ -410,7 +410,13 @@ describe("approved Complete Shelf outer presentation", () => {
       /\.book-shelf-controls\.book-archive-toolbar\s+\.book-shelf-controls__input input\s*\{[^}]*height:\s*42px[^}]*line-height:\s*42px/iu
     );
     expect(mobileCss).toMatch(
-      /\.book-shelf-controls \.book-archive-filters\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)[^}]*overflow:\s*hidden/iu
+      /\.book-shelf-controls \.book-archive-filters\s*\{[^}]*grid-template-columns:\s*repeat\(3,\s*minmax\(0,\s*1fr\)\)[^}]*overflow:\s*visible/iu
+    );
+    expect(mobileCss).toMatch(
+      /@media \(max-width: 480px\)[\s\S]*?\.book-shelf-controls__views \.book-shelf-controls__random\s*\{[^}]*grid-column:\s*1 \/ -1/iu
+    );
+    expect(mobileCss).toMatch(
+      /\.book-shelf-controls \.book-filter-copy strong\s*\{[^}]*font-size:\s*var\(--type-action\)[^}]*white-space:\s*normal/iu
     );
     expect(mobileCss).toMatch(
       /\.book-shelf-controls \.book-archive-filters > button\s*\{[^}]*align-items:\s*center[^}]*justify-content:\s*center[^}]*min-width:\s*0/iu

@@ -8,6 +8,8 @@ import {
   SRGBColorSpace,
 } from "three";
 
+import { BookDossierTypographyTokens, OwnerBookTypographyTokens, bookTypographyIsReady, fitBookText, type BookTextLayout } from "./bookTypography";
+
 import { SharedAsyncLru } from "./sharedAsyncLru";
 
 import {
@@ -19,70 +21,9 @@ import {
 const textureColor = (value: string, fallback: string) =>
   /^#[0-9a-f]{6}$/iu.test(value.trim()) ? value.trim() : fallback;
 
-const mixTextureColor = (
-  value: string,
-  target: "#000000" | "#ffffff",
-  ratio: number
-) => {
-  const source = textureColor(value, "#d6b261");
-  const targetChannel = target === "#ffffff" ? 255 : 0;
-  const amount = Math.max(0, Math.min(1, ratio));
-  return `#${[1, 3, 5]
-    .map((offset) =>
-      Math.round(
-        Number.parseInt(source.slice(offset, offset + 2), 16) * (1 - amount) +
-          targetChannel * amount
-      )
-        .toString(16)
-        .padStart(2, "0")
-    )
-    .join("")}`;
-};
-
-const completeShelfRelativeLuminance = (value: string) => {
-  const normalized = textureColor(value, "#000000");
-  const channels = [1, 3, 5].map((offset) => {
-    const channel =
-      Number.parseInt(normalized.slice(offset, offset + 2), 16) / 255;
-    return channel <= 0.04045
-      ? channel / 12.92
-      : ((channel + 0.055) / 1.055) ** 2.4;
-  });
-  return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
-};
-
-const completeShelfColorContrast = (first: string, second: string) => {
-  const firstLuminance = completeShelfRelativeLuminance(first);
-  const secondLuminance = completeShelfRelativeLuminance(second);
-  return (
-    (Math.max(firstLuminance, secondLuminance) + 0.05) /
-    (Math.min(firstLuminance, secondLuminance) + 0.05)
-  );
-};
-
-export function resolveCompleteShelfSpineTextColor(
-  baseColor: string,
-  foilColor: string
-) {
-  // Use a single solid foil tone, selected for the binding rather than a
-  // shadow/outline. This keeps every glyph crisp while preserving a warm
-  // antique-gold appearance on both light and dark cloth.
-  const candidates = [
-    mixTextureColor(foilColor, "#ffffff", 0.72),
-    mixTextureColor(foilColor, "#ffffff", 0.42),
-    mixTextureColor(foilColor, "#ffffff", 0.26),
-    textureColor(foilColor, "#d6b261"),
-    mixTextureColor(foilColor, "#000000", 0.76),
-  ];
-  return candidates.reduce((best, candidate) =>
-    completeShelfColorContrast(baseColor, candidate) >
-    completeShelfColorContrast(baseColor, best)
-      ? candidate
-      : best
-  );
+export function resolveCompleteShelfSpineTextColor(_baseColor: string, _foilColor: string) {
+  return OwnerBookTypographyTokens.ivory;
 }
-
-
 
 export type CompleteShelfArtworkPlan = Readonly<{
   titleLines: readonly string[];
@@ -276,29 +217,10 @@ export function buildCompleteShelfArtworkPlan(
     paperColor: spec.paperColor,
     foilColor: spec.foilColor,
     motif: spec.motif,
-    hasCoverArtwork: Boolean(spec.coverUrl),
-    textCoverLayout: ((spec.seed >>> 4) & 7) as
-      | 0
-      | 1
-      | 2
-      | 3
-      | 4
-      | 5
-      | 6
-      | 7,
+    hasCoverArtwork: false,
+    textCoverLayout: 0,
   });
 }
-
-const COMPLETE_SHELF_TEXT_COVER_LAYOUTS = Object.freeze([
-  { medallionY: 0.245, firstRuleY: 0.36, titleY: 0.505, secondRuleY: 0.65, writerY: 0.745, motifY: 0.855 },
-  { medallionY: 0.205, firstRuleY: 0.315, titleY: 0.455, secondRuleY: 0.61, writerY: 0.715, motifY: 0.86 },
-  { medallionY: 0.285, firstRuleY: 0.39, titleY: 0.525, secondRuleY: 0.665, writerY: 0.77, motifY: 0.875 },
-  { medallionY: 0.22, firstRuleY: 0.345, titleY: 0.49, secondRuleY: 0.625, writerY: 0.735, motifY: 0.845 },
-  { medallionY: 0.26, firstRuleY: 0.375, titleY: 0.54, secondRuleY: 0.69, writerY: 0.785, motifY: 0.88 },
-  { medallionY: 0.19, firstRuleY: 0.3, titleY: 0.44, secondRuleY: 0.59, writerY: 0.7, motifY: 0.835 },
-  { medallionY: 0.3, firstRuleY: 0.405, titleY: 0.555, secondRuleY: 0.695, writerY: 0.79, motifY: 0.875 },
-  { medallionY: 0.235, firstRuleY: 0.35, titleY: 0.475, secondRuleY: 0.62, writerY: 0.73, motifY: 0.87 },
-] as const);
 
 function createTexture(
   width: number,
@@ -451,197 +373,6 @@ function createEmbossTexture(
   return texture;
 }
 
-function paintMotif(
-  context: CanvasRenderingContext2D,
-  motif: CompleteShelfFoilMotif,
-  centerX: number,
-  centerY: number,
-  radius: number,
-  foilColor: string
-) {
-  context.save();
-  context.strokeStyle = foilColor;
-  context.fillStyle = foilColor;
-  context.lineWidth = Math.max(1.5, radius * 0.045);
-  if (motif === "arch") {
-    context.beginPath();
-    context.arc(centerX, centerY + radius * 0.28, radius, Math.PI, 0);
-    context.moveTo(centerX - radius, centerY + radius * 0.28);
-    context.lineTo(centerX - radius, centerY + radius);
-    context.moveTo(centerX + radius, centerY + radius * 0.28);
-    context.lineTo(centerX + radius, centerY + radius);
-    context.stroke();
-  } else if (motif === "diamond") {
-    context.beginPath();
-    context.moveTo(centerX, centerY - radius);
-    context.lineTo(centerX + radius * 0.72, centerY);
-    context.lineTo(centerX, centerY + radius);
-    context.lineTo(centerX - radius * 0.72, centerY);
-    context.closePath();
-    context.stroke();
-  } else if (motif === "orbital") {
-    context.beginPath();
-    context.arc(centerX, centerY, radius * 0.42, 0, Math.PI * 2);
-    context.stroke();
-    context.beginPath();
-    context.ellipse(centerX, centerY, radius, radius * 0.34, -0.45, 0, Math.PI * 2);
-    context.stroke();
-  } else {
-    for (let offset = -1; offset <= 1; offset += 1) {
-      context.beginPath();
-      context.moveTo(centerX - radius, centerY + offset * radius * 0.32);
-      context.lineTo(centerX + radius, centerY + offset * radius * 0.32);
-      context.stroke();
-    }
-  }
-  context.restore();
-}
-
-function paintLiteraryMedallion(
-  context: CanvasRenderingContext2D,
-  centerX: number,
-  centerY: number,
-  radius: number,
-  foilColor: string
-) {
-  context.save();
-  context.strokeStyle = foilColor;
-  context.fillStyle = foilColor;
-  context.lineCap = "round";
-  context.lineJoin = "round";
-  context.lineWidth = Math.max(1.4, radius * 0.036);
-
-  context.beginPath();
-  context.ellipse(
-    centerX,
-    centerY,
-    radius * 1.12,
-    radius * 0.94,
-    0,
-    0,
-    Math.PI * 2
-  );
-  context.stroke();
-  context.globalAlpha = 0.46;
-  context.beginPath();
-  context.ellipse(
-    centerX,
-    centerY,
-    radius * 0.96,
-    radius * 0.8,
-    0,
-    0,
-    Math.PI * 2
-  );
-  context.stroke();
-  context.globalAlpha = 1;
-
-  // An open book and quill make the archive identity legible at a glance.
-  const bookY = centerY + radius * 0.24;
-  context.beginPath();
-  context.moveTo(centerX, bookY - radius * 0.22);
-  context.bezierCurveTo(
-    centerX - radius * 0.24,
-    bookY - radius * 0.34,
-    centerX - radius * 0.58,
-    bookY - radius * 0.26,
-    centerX - radius * 0.72,
-    bookY - radius * 0.1
-  );
-  context.lineTo(centerX - radius * 0.72, bookY + radius * 0.24);
-  context.bezierCurveTo(
-    centerX - radius * 0.42,
-    bookY + radius * 0.12,
-    centerX - radius * 0.18,
-    bookY + radius * 0.14,
-    centerX,
-    bookY + radius * 0.3
-  );
-  context.bezierCurveTo(
-    centerX + radius * 0.18,
-    bookY + radius * 0.14,
-    centerX + radius * 0.42,
-    bookY + radius * 0.12,
-    centerX + radius * 0.72,
-    bookY + radius * 0.24
-  );
-  context.lineTo(centerX + radius * 0.72, bookY - radius * 0.1);
-  context.bezierCurveTo(
-    centerX + radius * 0.58,
-    bookY - radius * 0.26,
-    centerX + radius * 0.24,
-    bookY - radius * 0.34,
-    centerX,
-    bookY - radius * 0.22
-  );
-  context.closePath();
-  context.stroke();
-  context.beginPath();
-  context.moveTo(centerX, bookY - radius * 0.2);
-  context.lineTo(centerX, bookY + radius * 0.28);
-  context.stroke();
-
-  context.save();
-  context.translate(centerX + radius * 0.06, centerY - radius * 0.12);
-  context.rotate(-0.62);
-  context.beginPath();
-  context.moveTo(0, radius * 0.52);
-  context.bezierCurveTo(
-    -radius * 0.3,
-    radius * 0.16,
-    -radius * 0.22,
-    -radius * 0.48,
-    0,
-    -radius * 0.62
-  );
-  context.bezierCurveTo(
-    radius * 0.34,
-    -radius * 0.34,
-    radius * 0.28,
-    radius * 0.2,
-    0,
-    radius * 0.52
-  );
-  context.stroke();
-  context.beginPath();
-  context.moveTo(0, radius * 0.58);
-  context.lineTo(0, -radius * 0.5);
-  context.stroke();
-  for (const offset of [-0.34, -0.12, 0.1, 0.3]) {
-    context.beginPath();
-    context.moveTo(0, radius * offset);
-    context.lineTo(-radius * 0.2, radius * (offset - 0.12));
-    context.moveTo(0, radius * offset);
-    context.lineTo(radius * 0.2, radius * (offset - 0.12));
-    context.stroke();
-  }
-  context.restore();
-  context.restore();
-}
-
-function paintSplitFoilRule(
-  context: CanvasRenderingContext2D,
-  width: number,
-  y: number,
-  foilColor: string,
-  lineWidth: number
-) {
-  context.save();
-  context.strokeStyle = foilColor;
-  context.lineWidth = lineWidth;
-  context.lineCap = "round";
-  for (const [start, end] of [
-    [0.16, 0.46],
-    [0.54, 0.84],
-  ] as const) {
-    context.beginPath();
-    context.moveTo(width * start, y);
-    context.lineTo(width * end, y);
-    context.stroke();
-  }
-  context.restore();
-}
-
 export function resolveCompleteShelfSpineOrnamentLayout(
   width: number,
   height: number,
@@ -712,62 +443,100 @@ function paintSpineBinderOrnament(
   context.restore();
 }
 
-function withReadableFoilText(
-  context: CanvasRenderingContext2D,
-  paint: () => void
-) {
-  context.save();
-  // Foil is a single clean metal mask. Shadows here produced a dark offset
-  // contour after alpha sampling and made Cyrillic titles look doubled.
-  context.shadowColor = "transparent";
-  context.shadowBlur = 0;
-  context.shadowOffsetX = 0;
-  context.shadowOffsetY = 0;
-  paint();
-  context.restore();
-}
+type ShelfTextContext = Pick<CanvasRenderingContext2D, "font" | "measureText">;
 
-function paintCenteredTextBlock(
-  context: CanvasRenderingContext2D,
-  lines: readonly string[],
-  centerX: number,
-  centerY: number,
-  lineHeight: number
+export function resolveCompleteShelfTypography(
+  context: ShelfTextContext,
+  spec: CompleteShelfBookSpec
 ) {
-  const firstBaseline = centerY - ((lines.length - 1) * lineHeight) / 2;
-  lines.forEach((line, index) => {
-    context.fillText(line, centerX, firstBaseline + index * lineHeight);
+  const height = OwnerBookTypographyTokens.referenceHeight;
+  const physicalWidth = spec.dimensions.pageDepth + spec.dimensions.boardThickness * 1.88;
+  const width = height * physicalWidth / (spec.dimensions.height - 0.012);
+  const fit = (text: string, role: "title" | "author", front = false) => {
+    const token = OwnerBookTypographyTokens[role];
+    const zone = OwnerBookTypographyTokens[role === "title" ? "titleZone" : "authorZone"];
+    return fitBookText({
+      text,
+      width: front ? 1000 * spec.dimensions.coverWidth / spec.dimensions.height * .78 : width * OwnerBookTypographyTokens.safeWidth,
+      height: front ? (role === "title" ? 260 : 180) : height * (zone.bottom - zone.top),
+      maximumFontSize: front ? (role === "title" ? 58 : 34) : token.maximum,
+      minimumFontSize: front ? (role === "title" ? 25 : 23) : token.minimum,
+      maximumLines: front ? 7 : 8,
+      leading: token.leading,
+      measure: (line, size) => {
+        context.font = token.weight + " " + size + "px " + BookDossierTypographyTokens.serif;
+        return context.measureText(line).width;
+      },
+    });
+  };
+  return Object.freeze({
+    width, height,
+    title: fit(spec.title, "title"),
+    author: fit(spec.writer, "author"),
+    frontTitle: fit(spec.title, "title", true),
+    frontAuthor: fit(spec.writer, "author", true),
   });
 }
 
-function fitCompleteShelfTextBlock(
+function paintOwnerText(
   context: CanvasRenderingContext2D,
-  lines: readonly string[],
-  maximumWidth: number,
-  maximumHeight: number,
-  maximumFontSize: number,
-  minimumFontSize: number,
-  fontWeight: number
+  layout: BookTextLayout,
+  centerX: number,
+  centerY: number
 ) {
-  if (!lines.length) {
-    return Object.freeze({
-      fontSize: minimumFontSize,
-      lineHeight: minimumFontSize,
-    });
-  }
-  const upper = Math.max(minimumFontSize, Math.floor(maximumFontSize));
-  const lower = Math.max(1, Math.floor(minimumFontSize));
-  for (let fontSize = upper; fontSize >= lower; fontSize -= 1) {
-    const lineHeight = fontSize * 1.16;
-    context.font = `${fontWeight} ${fontSize}px Georgia, "Times New Roman", serif`;
-    if (
-      lineHeight * lines.length <= maximumHeight &&
-      lines.every((line) => context.measureText(line).width <= maximumWidth)
-    ) {
-      return Object.freeze({ fontSize, lineHeight });
-    }
-  }
-  return Object.freeze({ fontSize: lower, lineHeight: lower * 1.16 });
+  if (!layout.fits) return;
+  context.save();
+  context.textAlign = "center";
+  context.textBaseline = "alphabetic";
+  context.font = "600 " + layout.fontSize + "px " + BookDossierTypographyTokens.serif;
+  context.fillStyle = OwnerBookTypographyTokens.ivory;
+  context.strokeStyle = OwnerBookTypographyTokens.sepia;
+  context.lineWidth = layout.fontSize * .026;
+  context.lineJoin = "round";
+  // The coincident fine outline is optical separation, never an offset shadow.
+  const first = context.measureText(layout.lines[0] || "");
+  const last = context.measureText(layout.lines[layout.lines.length - 1] || "");
+  const ascent = first.actualBoundingBoxAscent || layout.fontSize * .75;
+  const descent = last.actualBoundingBoxDescent || layout.fontSize * .22;
+  const baseline = centerY - ((layout.lines.length - 1) * layout.lineHeight - ascent + descent) / 2;
+  layout.lines.forEach((line, index) => {
+    const y = baseline + index * layout.lineHeight;
+    context.strokeText(line, centerX, y);
+    context.fillText(line, centerX, y);
+  });
+  context.restore();
+}
+
+function paintPublisherMark(context: CanvasRenderingContext2D, width: number) {
+  // Reuses the project's BrandQuillIcon geometry, without a surrounding medallion.
+  const quill = new Path2D("M53.8 7.4c-11.9 1-21.6 5.6-28.9 13.8-7.1 7.9-10.3 17.2-9.6 27.9 4.1-1.6 8-3.8 11.5-6.6 7.2-5.6 12.7-12.7 16.4-21.3-2.5 7.5-6.8 14.1-12.9 19.8-4.6 4.4-9.9 7.7-15.8 10.1l-5.2 5.1 2.7 2.7 5.1-5.2c2.9-.1 5.8-.7 8.7-1.8 3.7-1.4 7-3.4 9.9-5.9l-8.9-.2c4.7-1.4 9-3.7 12.9-6.9 2.7-2.3 5.1-4.9 7-7.8l-10.6 1.2c4.9-2.4 9.1-5.7 12.5-9.8 2.5-3 4.4-6.4 5.7-10.2l-10.9 3.2c4.4-2.8 7.9-6.5 10.4-11.1Z M9.7 55.2 4.9 60l6.6-1.8 1.8-1.8-3.6-1.2Z");
+  context.save();
+  context.translate(width / 2 - 29, 700);
+  context.scale(58 / 64, 58 / 64);
+  context.fillStyle = OwnerBookTypographyTokens.rule;
+  context.fill(quill);
+  context.restore();
+  context.fillStyle = OwnerBookTypographyTokens.ivory;
+  context.textAlign = "center";
+  context.font = "600 21px " + BookDossierTypographyTokens.serif;
+  context.fillText("Пробы пера", width / 2, 798);
+}
+
+function paintFrontBinderRule(context: CanvasRenderingContext2D, width: number, y: number) {
+  context.save();
+  context.strokeStyle = OwnerBookTypographyTokens.rule;
+  context.fillStyle = OwnerBookTypographyTokens.rule;
+  context.lineWidth = 1.6;
+  context.beginPath();
+  context.moveTo(width * .16, y);
+  context.lineTo(width / 2 - 12, y);
+  context.moveTo(width / 2 + 12, y);
+  context.lineTo(width * .84, y);
+  context.stroke();
+  context.beginPath();
+  context.arc(width / 2, y, 2.8, 0, Math.PI * 2);
+  context.fill();
+  context.restore();
 }
 
 export function createCompleteShelfArtworkTextures(
@@ -776,340 +545,80 @@ export function createCompleteShelfArtworkTextures(
   includeFrontFoil = true,
   quality?: Readonly<{ height: number; anisotropy: number }>
 ): CompleteShelfArtworkTextures {
+  const unavailable = Object.freeze({ frontFoil: null, frontFoilEmboss: null, spineFoil: null, spineFoilEmboss: null, spineSurface: null });
+  if (!bookTypographyIsReady()) return unavailable;
   const plan = buildCompleteShelfArtworkPlan(spec);
-  const textCoverLayout =
-    COMPLETE_SHELF_TEXT_COVER_LAYOUTS[plan.textCoverLayout];
-  // Foil canvases are pure masks; the physical material supplies the actual
-  // metal colour.  This keeps alphaMap luminance at one instead of making
-  // darker copper/gold artwork accidentally translucent.
-  const maskColor = "#ffffff";
-  const frontHeight = quality
-    ? Math.min(2048, Math.max(256, Math.trunc(quality.height)))
-    : economical
-      ? 512
-      : 1536;
-  const textureAnisotropy = quality
-    ? Math.min(16, Math.max(1, Math.trunc(quality.anisotropy)))
-    : economical
-      ? 4
-      : 12;
-  const frontWidth = Math.round(
-    frontHeight * (spec.dimensions.coverWidth / spec.dimensions.height)
-  );
-  const spineHeight = frontHeight;
-  const spinePhysicalWidth =
-    spec.dimensions.pageDepth + spec.dimensions.boardThickness * 1.88;
-  const spineWidth = Math.round(
-    spineHeight * (spinePhysicalWidth / (spec.dimensions.height - 0.012))
-  );
-  // The foil is the fail-closed text-cover fallback. When an authorized real
-  // cover loads for the selected inspection book it replaces this front map
-  // without altering the reusable archive binding or shelf spines.
-  const frontFoil = !includeFrontFoil
-    ? null
-    : createFoilTexture(frontWidth, frontHeight, (context) => {
-        const outerInset = frontWidth * 0.064;
-        const innerInset = frontWidth * 0.086;
-        context.strokeStyle = maskColor;
-        context.fillStyle = maskColor;
-        context.lineCap = "round";
-        context.lineJoin = "round";
-        context.lineWidth = Math.max(1.5, frontWidth * 0.0038);
-
-        // A restrained double bookbinder frame gives the selected binding a
-        // collectible-edition hierarchy without a heavy raster cover.
-        context.globalAlpha = 0.86;
-        context.strokeRect(
-          outerInset,
-          outerInset,
-          frontWidth - outerInset * 2,
-          frontHeight - outerInset * 2
-        );
-        context.globalAlpha = 0.42;
-        context.strokeRect(
-          innerInset,
-          innerInset,
-          frontWidth - innerInset * 2,
-          frontHeight - innerInset * 2
-        );
-        context.globalAlpha = 1;
-
-        for (const [x, y, xDirection, yDirection] of [
-          [innerInset, innerInset, 1, 1],
-          [frontWidth - innerInset, innerInset, -1, 1],
-          [innerInset, frontHeight - innerInset, 1, -1],
-          [frontWidth - innerInset, frontHeight - innerInset, -1, -1],
-        ] as const) {
-          const flourish = frontWidth * 0.055;
-          context.beginPath();
-          context.moveTo(x, y + yDirection * flourish);
-          context.quadraticCurveTo(
-            x + xDirection * flourish * 0.08,
-            y + yDirection * flourish * 0.08,
-            x + xDirection * flourish,
-            y
-          );
-          context.stroke();
-          context.beginPath();
-          context.ellipse(
-            x + xDirection * flourish * 0.34,
-            y + yDirection * flourish * 0.34,
-            frontWidth * 0.008,
-            frontWidth * 0.015,
-            xDirection * yDirection * -0.72,
-            0,
-            Math.PI * 2
-          );
-          context.stroke();
-        }
-
-        paintLiteraryMedallion(
-          context,
-          frontWidth / 2,
-          frontHeight * textCoverLayout.medallionY,
-          frontWidth * 0.125,
-          maskColor
-        );
-        paintSplitFoilRule(
-          context,
-          frontWidth,
-          frontHeight * textCoverLayout.firstRuleY,
-          maskColor,
-          Math.max(1.25, frontWidth * 0.003)
-        );
-
-        context.textAlign = "center";
-        context.textBaseline = "middle";
-        withReadableFoilText(context, () => {
-          context.fillStyle = maskColor;
-          const titleFit = fitCompleteShelfTextBlock(
-            context,
-            plan.titleLines,
-            frontWidth * 0.76,
-            frontHeight * 0.205,
-            frontWidth * 0.078,
-            frontWidth * 0.036,
-            700
-          );
-          context.font =
-            `700 ${titleFit.fontSize}px Georgia, "Times New Roman", serif`;
-          paintCenteredTextBlock(
-            context,
-            plan.titleLines,
-            frontWidth / 2,
-            frontHeight * textCoverLayout.titleY,
-            titleFit.lineHeight
-          );
-        });
-
-        paintSplitFoilRule(
-          context,
-          frontWidth,
-          frontHeight * textCoverLayout.secondRuleY,
-          maskColor,
-          Math.max(1.2, frontWidth * 0.0026)
-        );
-        withReadableFoilText(context, () => {
-          context.fillStyle = maskColor;
-          const writerFit = fitCompleteShelfTextBlock(
-            context,
-            plan.frontWriterLines,
-            frontWidth * 0.7,
-            frontHeight * 0.125,
-            frontWidth * 0.044,
-            frontWidth * 0.026,
-            600
-          );
-          context.font =
-            `600 ${writerFit.fontSize}px Georgia, "Times New Roman", serif`;
-          paintCenteredTextBlock(
-            context,
-            plan.frontWriterLines,
-            frontWidth / 2,
-            frontHeight * textCoverLayout.writerY,
-            writerFit.lineHeight
-          );
-        });
-
-        paintMotif(
-          context,
-          plan.motif,
-          frontWidth / 2,
-          frontHeight * textCoverLayout.motifY,
-          frontWidth * 0.032,
-          maskColor
-        );
-        if (plan.yearLabel) {
-          context.fillStyle = maskColor;
-          context.font =
-            "600 " + Math.round(frontWidth * 0.034) + "px Georgia, serif";
-          context.fillText(
-            plan.yearLabel,
-            frontWidth / 2,
-            frontHeight * 0.91
-          );
-        }
-      }, textureAnisotropy);
-  const spineGoldColor = textureColor(plan.foilColor, "#d6b261");
-  const spineTextColor = resolveCompleteShelfSpineTextColor(
-    plan.baseColor,
-    spineGoldColor
-  );
-  const spineFoil = createFoilTexture(
-    spineWidth,
-    spineHeight,
-    (context) => {
-      context.strokeStyle = spineGoldColor;
-      context.fillStyle = spineGoldColor;
-      context.lineCap = "round";
-      context.lineWidth = Math.max(1.5, spineWidth * 0.035);
-      paintSpineBinderOrnament(
-        context,
-        spineWidth,
-        spineHeight,
-        0.09,
-        spineGoldColor
-      );
-      paintSpineBinderOrnament(
-        context,
-        spineWidth,
-        spineHeight,
-        0.91,
-        spineGoldColor
-      );
-      context.textAlign = "left";
-      context.textBaseline = "middle";
-      withReadableFoilText(context, () => {
-        context.textAlign = "center";
-        context.fillStyle = spineTextColor;
-        const titleFit = fitCompleteShelfTextBlock(
-          context,
-          plan.spineTitleLines,
-          spineWidth * 0.9,
-          spineHeight * 0.29,
-          spineWidth * 0.255,
-          spineWidth * 0.075,
-          700
-        );
-        context.font =
-          `700 ${titleFit.fontSize}px Georgia, "Times New Roman", serif`;
-        paintCenteredTextBlock(
-          context,
-          plan.spineTitleLines,
-          spineWidth / 2,
-          spineHeight * 0.27,
-          titleFit.lineHeight
-        );
-        context.fillStyle = spineTextColor;
-        const writerFit = fitCompleteShelfTextBlock(
-          context,
-          plan.spineWriterLines,
-          spineWidth * 0.9,
-          spineHeight * 0.25,
-          spineWidth * 0.185,
-          spineWidth * 0.07,
-          700
-        );
-        context.font =
-          `700 ${writerFit.fontSize}px Georgia, "Times New Roman", serif`;
-        paintCenteredTextBlock(
-          context,
-          plan.spineWriterLines,
-          spineWidth / 2,
-          spineHeight * 0.565,
-          writerFit.lineHeight
-        );
-      });
-    },
-    textureAnisotropy
-  );
-  const spineSurface = createTexture(
-    spineWidth,
-    spineHeight,
-    (context) => {
-      const random = seededRandom(spec.seed ^ 0x5f31c2a9);
-      context.fillStyle = textureColor(plan.baseColor, "#27364a");
-      context.fillRect(0, 0, spineWidth, spineHeight);
-      const shade = context.createLinearGradient(0, 0, spineWidth, 0);
-      shade.addColorStop(0, "rgba(0,0,0,.24)");
-      shade.addColorStop(0.14, "rgba(255,255,255,.075)");
-      shade.addColorStop(0.54, "rgba(255,255,255,.018)");
-      shade.addColorStop(0.84, "rgba(255,255,255,.045)");
-      shade.addColorStop(1, "rgba(0,0,0,.22)");
-      context.fillStyle = shade;
-      context.fillRect(0, 0, spineWidth, spineHeight);
-      if (spec.binding === "leather") {
-        const poreCount = economical ? 420 : 2300;
-        for (let pore = 0; pore < poreCount; pore += 1) {
-          const radius = 0.35 + random() * (economical ? 0.8 : 1.45);
-          context.fillStyle =
-            random() > 0.3
-              ? `rgba(0,0,0,${0.018 + random() * 0.045})`
-              : `rgba(255,255,255,${0.012 + random() * 0.026})`;
-          context.beginPath();
-          context.ellipse(
-            random() * spineWidth,
-            random() * spineHeight,
-            radius * (0.62 + random() * 0.65),
-            radius,
-            random() * Math.PI,
-            0,
-            Math.PI * 2
-          );
-          context.fill();
-        }
-        const creaseCount = economical ? 14 : 46;
-        for (let crease = 0; crease < creaseCount; crease += 1) {
-          const y = random() * spineHeight;
-          context.strokeStyle = `rgba(0,0,0,${0.026 + random() * 0.04})`;
-          context.lineWidth = 0.45 + random() * 0.8;
-          context.beginPath();
-          context.moveTo(-spineWidth * 0.1, y);
-          context.bezierCurveTo(
-            spineWidth * 0.28,
-            y + (random() - 0.5) * spineWidth * 0.18,
-            spineWidth * 0.7,
-            y + (random() - 0.5) * spineWidth * 0.18,
-            spineWidth * 1.1,
-            y + (random() - 0.5) * spineWidth * 0.08
-          );
-          context.stroke();
-        }
-      } else {
-        const threadCount = economical ? 380 : 1900;
-        for (let thread = 0; thread < threadCount; thread += 1) {
-          const x = random() * spineWidth;
-          const y = random() * spineHeight;
-          const vertical = random() > 0.42;
-          context.strokeStyle =
-            random() > 0.5
-              ? `rgba(255,255,255,${0.018 + random() * 0.038})`
-              : `rgba(0,0,0,${0.018 + random() * 0.034})`;
-          context.lineWidth = 0.45 + random() * 0.72;
-          context.beginPath();
-          context.moveTo(x, y);
-          context.lineTo(
-            vertical ? x + (random() - 0.5) * 1.2 : x + 8 + random() * 28,
-            vertical ? y + 8 + random() * 34 : y + (random() - 0.5) * 1.2
-          );
-          context.stroke();
-        }
-      }
-      const tailShade = context.createLinearGradient(
-        0,
-        spineHeight * 0.82,
-        0,
-        spineHeight
-      );
-      tailShade.addColorStop(0, "rgba(0,0,0,0)");
-      tailShade.addColorStop(0.28, "rgba(8,6,10,.22)");
-      tailShade.addColorStop(1, "rgba(7,5,9,.62)");
-      context.fillStyle = tailShade;
-      context.fillRect(0, 0, spineWidth, spineHeight);
-    },
-    false,
-    textureAnisotropy
-  );
+  const frontHeight = quality ? Math.min(2048, Math.max(256, Math.trunc(quality.height))) : economical ? 512 : 1536;
+  const textureAnisotropy = quality ? Math.min(16, Math.max(1, Math.trunc(quality.anisotropy))) : economical ? 4 : 12;
+  const frontDesignWidth = 1000 * spec.dimensions.coverWidth / spec.dimensions.height;
+  const frontWidth = Math.round(frontHeight * frontDesignWidth / 1000);
+  const measurement = document.createElement("canvas").getContext("2d");
+  if (!measurement) return unavailable;
+  const typography = resolveCompleteShelfTypography(measurement, spec);
+  // A title that cannot fit its approved zone requires the accessible DOM view.
+  // Never crop, invent an abbreviation, squeeze glyphs, or silently omit a name.
+  if (![typography.title, typography.author, ...(includeFrontFoil ? [typography.frontTitle, typography.frontAuthor] : [])].every((layout) => layout.fits)) return unavailable;
+  const spineWidth = Math.round(frontHeight * typography.width / typography.height);
+  const frontFoil = !includeFrontFoil ? null : createFoilTexture(frontWidth, frontHeight, (context) => {
+    context.scale(frontHeight / 1000, frontHeight / 1000);
+    paintFrontBinderRule(context, frontDesignWidth, 90);
+    paintFrontBinderRule(context, frontDesignWidth, 910);
+    paintOwnerText(context, typography.frontTitle, frontDesignWidth / 2, 310);
+    paintOwnerText(context, typography.frontAuthor, frontDesignWidth / 2, 550);
+    paintPublisherMark(context, frontDesignWidth);
+    if (plan.yearLabel) {
+      context.fillStyle = OwnerBookTypographyTokens.ivory;
+      context.font = "400 18px " + BookDossierTypographyTokens.sans;
+      context.fillText(plan.yearLabel, frontDesignWidth / 2, 852);
+    }
+  }, textureAnisotropy);
+  const spineFoil = createFoilTexture(spineWidth, frontHeight, (context) => {
+    context.scale(spineWidth / typography.width, frontHeight / typography.height);
+    paintSpineBinderOrnament(context, typography.width, typography.height, OwnerBookTypographyTokens.topRule, OwnerBookTypographyTokens.rule);
+    paintSpineBinderOrnament(context, typography.width, typography.height, OwnerBookTypographyTokens.bottomRule, OwnerBookTypographyTokens.rule);
+    paintOwnerText(context, typography.title, typography.width / 2, typography.height * OwnerBookTypographyTokens.titleCenter);
+    paintOwnerText(context, typography.author, typography.width / 2, typography.height * OwnerBookTypographyTokens.authorCenter);
+  }, textureAnisotropy);
+  const spineSurface = createTexture(spineWidth, frontHeight, (context) => {
+    context.scale(spineWidth / typography.width, frontHeight / typography.height);
+    const width = typography.width;
+    const height = typography.height;
+    const random = seededRandom(spec.seed ^ 0x5f31c2a9);
+    context.fillStyle = textureColor(plan.baseColor, "#406872");
+    context.fillRect(0, 0, width, height);
+    const shade = context.createLinearGradient(0, 0, width, 0);
+    shade.addColorStop(0, "rgba(0,0,0,.14)");
+    shade.addColorStop(.08, "rgba(0,0,0,0)");
+    shade.addColorStop(.48, "rgba(255,255,255,.016)");
+    shade.addColorStop(.92, "rgba(0,0,0,0)");
+    shade.addColorStop(1, "rgba(0,0,0,.12)");
+    context.fillStyle = shade;
+    context.fillRect(0, 0, width, height);
+    // Same woven coordinates at every quality; LOD changes sampling only.
+    context.lineWidth = .18;
+    context.strokeStyle = "rgba(255,255,255,.06)";
+    context.beginPath();
+    for (let x = .8; x < width; x += 1.7) {
+      context.moveTo(x, 0);
+      context.lineTo(x, height);
+    }
+    for (let y = .8; y < height; y += 2.1) {
+      context.moveTo(0, y);
+      context.lineTo(width, y);
+    }
+    context.stroke();
+    for (let thread = 0; thread < 1500; thread += 1) {
+      const x = random() * width;
+      const y = random() * height;
+      const vertical = random() > .5;
+      context.strokeStyle = random() > .5 ? "rgba(255,255,255,.055)" : "rgba(0,0,0,.035)";
+      context.lineWidth = .24;
+      context.beginPath();
+      context.moveTo(x, y);
+      context.lineTo(x + (vertical ? 0 : 1 + random() * 3), y + (vertical ? 1 + random() * 4 : 0));
+      context.stroke();
+    }
+  }, false, textureAnisotropy);
   return Object.freeze({
     frontFoil,
     frontFoilEmboss: createEmbossTexture(frontFoil, economical),
@@ -1232,24 +741,25 @@ export function createCompleteShelfClothMap(economical: boolean) {
     size,
     size,
     (context) => {
+      context.scale(size / 256, size / 256);
       context.fillStyle = "#929292";
-      context.fillRect(0, 0, size, size);
-      const threadStep = economical ? 4 : 3;
-      for (let axis = 0; axis < size; axis += threadStep) {
+      context.fillRect(0, 0, 256, 256);
+      const threadStep = 8;
+      for (let axis = 0; axis < 256; axis += threadStep) {
         context.fillStyle =
           axis % (threadStep * 2) === 0
             ? "rgba(255,255,255,.18)"
             : "rgba(0,0,0,.16)";
-        context.fillRect(axis, 0, 1, size);
-        context.fillRect(0, axis + 1, size, 1);
+        context.fillRect(axis, 0, 1, 256);
+        context.fillRect(0, axis + 1, 256, 1);
       }
       const random = seededRandom(0xc10f4a7);
-      for (let fleck = 0; fleck < size * 3; fleck += 1) {
+      for (let fleck = 0; fleck < 768; fleck += 1) {
         const value = 110 + Math.round(random() * 62);
         context.fillStyle = `rgba(${value},${value},${value},.22)`;
         context.fillRect(
-          Math.floor(random() * size),
-          Math.floor(random() * size),
+          Math.floor(random() * 256),
+          Math.floor(random() * 256),
           1,
           1
         );
@@ -1261,7 +771,7 @@ export function createCompleteShelfClothMap(economical: boolean) {
   if (texture) {
     texture.wrapS = RepeatWrapping;
     texture.wrapT = RepeatWrapping;
-    texture.repeat.set(economical ? 6 : 10, economical ? 8 : 14);
+    texture.repeat.set(6, 8);
   }
   return texture;
 }
@@ -1344,9 +854,9 @@ export function createCompleteShelfClothSurfaceMaps(
   const roughnessImage = roughnessContext.createImageData(size, size);
   for (let y = 0; y < size; y += 1) {
     for (let x = 0; x < size; x += 1) {
-      const warp = Math.sin(x * Math.PI * 0.52);
-      const weft = Math.sin(y * Math.PI * 0.41);
-      const cross = Math.sin((x + y) * Math.PI * 0.19);
+      const warp = Math.sin(x / size * Math.PI * 24);
+      const weft = Math.sin(y / size * Math.PI * 20);
+      const cross = Math.sin((x + y) / size * Math.PI * 16);
       heightField[y * size + x] =
         0.5 + warp * 0.18 + weft * 0.15 + cross * 0.045;
     }
@@ -1357,8 +867,8 @@ export function createCompleteShelfClothSurfaceMaps(
     for (let x = 0; x < size; x += 1) {
       const source = y * size + x;
       const pixel = source * 4;
-      const dx = (sampleHeight(x + 1, y) - sampleHeight(x - 1, y)) * 1.5;
-      const dy = (sampleHeight(x, y + 1) - sampleHeight(x, y - 1)) * 1.5;
+      const dx = (sampleHeight(x + 1, y) - sampleHeight(x - 1, y)) * size / 64;
+      const dy = (sampleHeight(x, y + 1) - sampleHeight(x, y - 1)) * size / 64;
       const length = Math.hypot(dx, dy, 1);
       normalImage.data[pixel] = Math.round(((-dx / length) * 0.5 + 0.5) * 255);
       normalImage.data[pixel + 1] = Math.round(

@@ -1,0 +1,735 @@
+{
+  "baseURL": "http://127.0.0.1:4185/",
+  "capturedAt": "2026-09-05T04:12:54.070Z",
+  "issues": [],
+  "trace": {
+    "longTasks": [
+      {
+        "start": 164.10000000149012,
+        "duration": 60
+      },
+      {
+        "start": 225.5,
+        "duration": 198
+      },
+      {
+        "start": 760.8999999985099,
+        "duration": 92
+      },
+      {
+        "start": 856.7000000029802,
+        "duration": 129
+      },
+      {
+        "start": 994,
+        "duration": 439
+      },
+      {
+        "start": 1434.7999999970198,
+        "duration": 151
+      },
+      {
+        "start": 1659,
+        "duration": 431
+      },
+      {
+        "start": 2116,
+        "duration": 50
+      },
+      {
+        "start": 2303.2000000029802,
+        "duration": 50
+      },
+      {
+        "start": 2355.7000000029802,
+        "duration": 316
+      },
+      {
+        "start": 2672,
+        "duration": 2550
+      },
+      {
+        "start": 5673.29999999702,
+        "duration": 65
+      },
+      {
+        "start": 5742.89999999851,
+        "duration": 61
+      },
+      {
+        "start": 5880.70000000298,
+        "duration": 366
+      },
+      {
+        "start": 6247.60000000149,
+        "duration": 194
+      }
+    ],
+    "gpu": [
+      {
+        "method": "getProgramInfoLog",
+        "start": 2533,
+        "duration": 5.899999998509884
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 2543.7999999970198,
+        "duration": 22.5
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 2568.7999999970198,
+        "duration": 22
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 2592,
+        "duration": 4
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 2599.2999999970198,
+        "duration": 63.80000000447035
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 2708.5,
+        "duration": 116.70000000298023
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 2829.39999999851,
+        "duration": 587.7000000029802
+      },
+      {
+        "method": "getShaderInfoLog",
+        "start": 3417.2000000029802,
+        "duration": 2.0999999940395355
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 3422.2999999970198,
+        "duration": 534.7000000029802
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 3961.39999999851,
+        "duration": 536.8000000044703
+      },
+      {
+        "method": "getShaderInfoLog",
+        "start": 4498.29999999702,
+        "duration": 6.700000002980232
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 4511,
+        "duration": 181.5
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 4693.70000000298,
+        "duration": 13.899999998509884
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 4710.39999999851,
+        "duration": 9.200000002980232
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 4721.5,
+        "duration": 9.299999997019768
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 4732.39999999851,
+        "duration": 483.30000000447035
+      },
+      {
+        "method": "getProgramParameter",
+        "start": 7502.79999999702,
+        "duration": 7.800000004470348
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 7821.39999999851,
+        "duration": 6.5
+      },
+      {
+        "method": "getShaderInfoLog",
+        "start": 7828,
+        "duration": 5
+      },
+      {
+        "method": "getProgramInfoLog",
+        "start": 7833.89999999851,
+        "duration": 9
+      }
+    ],
+    "phases": [
+      {
+        "at": 5711.5,
+        "phase": "INSPECTION_ENTERING"
+      },
+      {
+        "at": 7869.10000000149,
+        "phase": "INSPECTION_CLOSED"
+      }
+    ],
+    "heartbeats": [
+      5836.89999999851,
+      6446,
+      6546.10000000149,
+      6591.39999999851,
+      6626.89999999851,
+      6676.79999999702,
+      6727.29999999702,
+      6777.39999999851,
+      6829.79999999702,
+      6923,
+      6983.10000000149,
+      7034,
+      7084.10000000149,
+      7128.20000000298,
+      7178.5,
+      7229.20000000298,
+      7281.39999999851,
+      7331.89999999851,
+      7385.10000000149,
+      7435.29999999702,
+      7486,
+      7527.79999999702,
+      7577.70000000298,
+      7629.5,
+      7680.29999999702,
+      7731.5,
+      7782.29999999702,
+      7863.10000000149,
+      7899.10000000149
+    ],
+    "renderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001638) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "parallelShaderCompile": true,
+    "shaderChecks": true,
+    "fontStatus": "loaded",
+    "clickedAt": 5674,
+    "finishedAt": 7922.10000000149,
+    "cpuTop": [
+      {
+        "ms": 1202.8020000000006,
+        "functionName": "(idle)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "ms": 343.6449999999999,
+        "functionName": "isShader",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "ms": 333.913,
+        "functionName": "(program)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "ms": 195.883,
+        "functionName": "R9",
+        "scriptId": "35",
+        "url": "http://127.0.0.1:4185/assets/three-vendor-CfY00QhG.js",
+        "lineNumber": 3818,
+        "columnNumber": 36398
+      },
+      {
+        "ms": 27.139,
+        "functionName": "i",
+        "scriptId": "35",
+        "url": "http://127.0.0.1:4185/assets/three-vendor-CfY00QhG.js",
+        "lineNumber": 3818,
+        "columnNumber": 9220
+      },
+      {
+        "ms": 26.305,
+        "functionName": "",
+        "scriptId": "8",
+        "url": "http://127.0.0.1:4185/assets/index-odxjqUZN.js",
+        "lineNumber": 1,
+        "columnNumber": 81125
+      },
+      {
+        "ms": 24.372999999999998,
+        "functionName": "In",
+        "scriptId": "52",
+        "url": "http://127.0.0.1:4185/assets/completeShelfRenderer-CAYnJSFl.js",
+        "lineNumber": 0,
+        "columnNumber": 31121
+      },
+      {
+        "ms": 18.958,
+        "functionName": "getBoundingClientRect",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "ms": 16.238,
+        "functionName": "getProgramInfoLog",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "ms": 15.334,
+        "functionName": "Bn",
+        "scriptId": "35",
+        "url": "http://127.0.0.1:4185/assets/three-vendor-CfY00QhG.js",
+        "lineNumber": 3822,
+        "columnNumber": 21751
+      },
+      {
+        "ms": 13.429,
+        "functionName": "(garbage collector)",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "ms": 10.968000000000002,
+        "functionName": "measureText",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "ms": 9.937,
+        "functionName": "getProgramParameter",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      },
+      {
+        "ms": 9.176,
+        "functionName": "Tt",
+        "scriptId": "35",
+        "url": "http://127.0.0.1:4185/assets/three-vendor-CfY00QhG.js",
+        "lineNumber": 3824,
+        "columnNumber": 3971
+      },
+      {
+        "ms": 7.757,
+        "functionName": "measureText",
+        "scriptId": "0",
+        "url": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    ],
+    "elapsedMs": 2248.10000000149,
+    "postClickLongTasks": [
+      {
+        "start": 5742.89999999851,
+        "duration": 61
+      },
+      {
+        "start": 5880.70000000298,
+        "duration": 366
+      },
+      {
+        "start": 6247.60000000149,
+        "duration": 194
+      }
+    ],
+    "maxLongTaskMs": 366,
+    "maxHeartbeatGapMs": 609.1000000014901
+  },
+  "open": {
+    "phase": "BOOK_OPEN",
+    "selectedKey": "england:george_orwell:nineteen-eighty-four",
+    "selectedTitle": "1984",
+    "pageIndex": 0,
+    "pageCount": 10,
+    "canvas": {
+      "x": 58.59375,
+      "y": 175.53125,
+      "width": 1322.8125,
+      "height": 648
+    },
+    "camera": {
+      "position": [
+        0.2411,
+        0.54919,
+        7.80231
+      ],
+      "fov": 35.00001
+    },
+    "qualityProfile": "HIGH",
+    "lightExposure": 0.38,
+    "insets": {
+      "top": 0,
+      "right": 352.8,
+      "bottom": 0,
+      "left": 0
+    },
+    "books": [
+      {
+        "key": "england:george_orwell:nineteen-eighty-four",
+        "title": "1984",
+        "sourceIndex": 0,
+        "x": 562.28432359115,
+        "y": 499.5297138274362,
+        "z": 0.9710871796234322
+      },
+      {
+        "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+        "title": "451° по Фаренгейту",
+        "sourceIndex": 1,
+        "x": 848.3908847792643,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "england:h_g_wells:ann-veronica",
+        "title": "Анна-Вероника",
+        "sourceIndex": 2,
+        "x": 898.8681404185994,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "germany:thomas_mann:buddenbrooks-editorial",
+        "title": "Будденброки",
+        "sourceIndex": 3,
+        "x": 949.3453960579346,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "russia:tolstoy:war-and-peace",
+        "title": "Война и мир",
+        "sourceIndex": 4,
+        "x": 999.8226516972699,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "england:william_shakespeare:hamlet",
+        "title": "Гамлет",
+        "sourceIndex": 5,
+        "x": 1050.2999073366052,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "england:david_mitchell:slade-house",
+        "title": "Голодный дом",
+        "sourceIndex": 6,
+        "x": 1100.7771629759404,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "france:flaubert:madame-bovary",
+        "title": "Госпожа Бовари",
+        "sourceIndex": 7,
+        "x": 1151.2544186152759,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "russia:chekhov:the-lady-with-the-dog",
+        "title": "Дама с собачкой",
+        "sourceIndex": 8,
+        "x": 1201.7316742546109,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "russia:chekhov:the-duel",
+        "title": "Дуэль",
+        "sourceIndex": 9,
+        "x": 1252.208929893946,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "russia:chekhov:uncle-vanya",
+        "title": "Дядя Ваня",
+        "sourceIndex": 10,
+        "x": 1302.6861855332813,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "england:h_g_wells:the-history-of-mr-polly",
+        "title": "История мистера Полли",
+        "sourceIndex": 11,
+        "x": 1353.1634411726166,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "england:h_g_wells:when-the-sleeper-wakes",
+        "title": "Когда спящий проснется",
+        "sourceIndex": 12,
+        "x": 1403.640696811952,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "england:david_mitchell:the-bone-clocks",
+        "title": "Костяные часы",
+        "sourceIndex": 13,
+        "x": 1454.1179524512872,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "england:david_mitchell:ghostwritten",
+        "title": "Литературный призрак",
+        "sourceIndex": 14,
+        "x": 1504.5952080906225,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "usa:vladimir_nabokov:lolita-editorial",
+        "title": "Лолита",
+        "sourceIndex": 15,
+        "x": 1555.072463729958,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      },
+      {
+        "key": "england:h_g_wells:men-like-gods",
+        "title": "Люди как боги",
+        "sourceIndex": 16,
+        "x": 1605.5497193692927,
+        "y": 563.2219198332388,
+        "z": 0.9733902489948298
+      }
+    ],
+    "resources": {
+      "Texture": {
+        "created": 151,
+        "deleted": 80,
+        "live": 71
+      },
+      "Framebuffer": {
+        "created": 6,
+        "deleted": 0,
+        "live": 6
+      },
+      "Renderbuffer": {
+        "created": 2,
+        "deleted": 0,
+        "live": 2
+      },
+      "Buffer": {
+        "created": 470,
+        "deleted": 4,
+        "live": 466
+      },
+      "Program": {
+        "created": 37,
+        "deleted": 12,
+        "live": 25
+      },
+      "Shader": {
+        "created": 74,
+        "deleted": 74,
+        "live": 0
+      },
+      "VertexArray": {
+        "created": 195,
+        "deleted": 10,
+        "live": 185
+      }
+    },
+    "draws": 15240,
+    "pendingFrames": 1,
+    "renderer": {
+      "geometries": 125,
+      "textures": 67,
+      "calls": 121,
+      "triangles": 8398
+    }
+  },
+  "resourcesBefore": {
+    "Texture": {
+      "created": 161,
+      "deleted": 95,
+      "live": 66
+    },
+    "Framebuffer": {
+      "created": 6,
+      "deleted": 0,
+      "live": 6
+    },
+    "Renderbuffer": {
+      "created": 2,
+      "deleted": 0,
+      "live": 2
+    },
+    "Buffer": {
+      "created": 470,
+      "deleted": 99,
+      "live": 371
+    },
+    "Program": {
+      "created": 40,
+      "deleted": 27,
+      "live": 13
+    },
+    "Shader": {
+      "created": 80,
+      "deleted": 80,
+      "live": 0
+    },
+    "VertexArray": {
+      "created": 198,
+      "deleted": 42,
+      "live": 156
+    }
+  },
+  "resourcesAfter": {
+    "Texture": {
+      "created": 227,
+      "deleted": 161,
+      "live": 66
+    },
+    "Framebuffer": {
+      "created": 6,
+      "deleted": 0,
+      "live": 6
+    },
+    "Renderbuffer": {
+      "created": 2,
+      "deleted": 0,
+      "live": 2
+    },
+    "Buffer": {
+      "created": 755,
+      "deleted": 384,
+      "live": 371
+    },
+    "Program": {
+      "created": 82,
+      "deleted": 69,
+      "live": 13
+    },
+    "Shader": {
+      "created": 164,
+      "deleted": 164,
+      "live": 0
+    },
+    "VertexArray": {
+      "created": 285,
+      "deleted": 129,
+      "live": 156
+    }
+  },
+  "idleDraws": 0,
+  "earlyAbort": {
+    "before": {
+      "Texture": {
+        "created": 65,
+        "deleted": 0,
+        "live": 65
+      },
+      "Framebuffer": {
+        "created": 6,
+        "deleted": 0,
+        "live": 6
+      },
+      "Renderbuffer": {
+        "created": 2,
+        "deleted": 0,
+        "live": 2
+      },
+      "Buffer": {
+        "created": 375,
+        "deleted": 4,
+        "live": 371
+      },
+      "Program": {
+        "created": 14,
+        "deleted": 1,
+        "live": 13
+      },
+      "Shader": {
+        "created": 28,
+        "deleted": 28,
+        "live": 0
+      },
+      "VertexArray": {
+        "created": 157,
+        "deleted": 1,
+        "live": 156
+      }
+    },
+    "events": [
+      {
+        "phase": "INSPECTION_ENTERING",
+        "hiddenSurfaces": 0
+      },
+      {
+        "phase": "INSPECTION_ENTERING",
+        "hiddenSurfaces": 5
+      },
+      {
+        "phase": "INSPECTION_ENTERING",
+        "hiddenSurfaces": 5
+      }
+    ],
+    "after": {
+      "Texture": {
+        "created": 111,
+        "deleted": 45,
+        "live": 66
+      },
+      "Framebuffer": {
+        "created": 6,
+        "deleted": 0,
+        "live": 6
+      },
+      "Renderbuffer": {
+        "created": 2,
+        "deleted": 0,
+        "live": 2
+      },
+      "Buffer": {
+        "created": 660,
+        "deleted": 289,
+        "live": 371
+      },
+      "Program": {
+        "created": 56,
+        "deleted": 43,
+        "live": 13
+      },
+      "Shader": {
+        "created": 112,
+        "deleted": 112,
+        "live": 0
+      },
+      "VertexArray": {
+        "created": 244,
+        "deleted": 88,
+        "live": 156
+      }
+    }
+  },
+  "errors": []
+}

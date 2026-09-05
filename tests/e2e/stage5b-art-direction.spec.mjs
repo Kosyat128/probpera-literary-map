@@ -102,9 +102,7 @@ function expectRole(metrics, role, minSize, maxSize, lineHeightRatio) {
     expect(metric.fontSize, metric.selector).toBeGreaterThanOrEqual(minSize);
     expect(metric.fontSize, metric.selector).toBeLessThanOrEqual(maxSize + 0.1);
     expect(metric.lineHeightRatio, metric.selector).toBeCloseTo(lineHeightRatio, 3);
-    expect(metric.fontFamily, metric.selector).toContain(
-      role === "body" ? "Source Sans 3 Local" : "Source Serif 4 Local"
-    );
+    expect(metric.fontFamily, metric.selector).toContain("Onest Local");
   }
 }
 
@@ -116,13 +114,13 @@ test("Stage 5B desktop RU roles and surfaces stay inside the approved scale", as
 
   // The canonical roles replaced the former three-level Stage 5B scale.
   // Compact titles retain their approved 18-23px container-relative range.
-  expectRole(result.metrics, "section", 46.08, 46.08, 1.12);
-  expectRole(result.metrics, "community", 30, 30, 1.2);
+  expectRole(result.metrics, "section", 46.08, 46.08, 1.16);
+  expectRole(result.metrics, "community", 46.08, 46.08, 1.2);
   expectRole(result.metrics, "book", 35, 35, 1.1);
   expectRole(result.metrics, "compact", 18, 23, 1.2);
-  expectRole(result.metrics, "body", 16, 16, 1.6);
-  expect(result.metadata).toBe(13);
-  expect(result.action).toBe(14);
+  expectRole(result.metrics, "body", 16, 16, 1.45);
+  expect(result.metadata).toBe(14);
+  expect(result.action).toBe(15);
   expect(result.spacing.articleLibrary).toBeLessThanOrEqual(96.1);
   expect(result.spacing.trust).toBeLessThanOrEqual(96.1);
   expect(result.spacing.calendarBottom).toBeLessThanOrEqual(96.1);
@@ -136,13 +134,13 @@ test("Stage 5B mobile EN roles reflow without overflow", async ({ page }) => {
   await openHomepage(page, { width: 390, height: 844, locale: "en" });
   const result = await collectRoleMetrics(page);
 
-  expectRole(result.metrics, "section", 28, 28, 1.12);
-  expectRole(result.metrics, "community", 30, 30, 1.2);
+  expectRole(result.metrics, "section", 28, 28, 1.16);
+  expectRole(result.metrics, "community", 28, 28, 1.2);
   expectRole(result.metrics, "book", 35, 35, 1.1);
   expectRole(result.metrics, "compact", 18, 23, 1.2);
-  expectRole(result.metrics, "body", 16, 16, 1.6);
-  expect(result.metadata).toBe(13);
-  expect(result.action).toBe(14);
+  expectRole(result.metrics, "body", 16, 16, 1.45);
+  expect(result.metadata).toBe(14);
+  expect(result.action).toBe(15);
   expect(result.spacing.articleLibrary).toBeLessThanOrEqual(72.1);
   expect(result.spacing.trust).toBeLessThanOrEqual(72.1);
   expect(result.spacing.calendarBottom).toBeLessThanOrEqual(72.1);

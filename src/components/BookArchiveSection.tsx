@@ -126,9 +126,19 @@ import {
 } from "../books/bookShelfQualityController";
 import { resolveBookShelfPresentationProfile } from "../books/bookShelfPresentationProfiles";
 import { buildBookEditorialDocument } from "../books/bookEditorialPages";
+import { buildBookDossierFromEditorial, toBookEditorialDocument } from "../books/bookDossierLegacyAdapter";
+import { BOOK_DOSSIER_LIMITS, type BookDossierSemanticAnchor } from "../books/bookDossierDocument";
+import { paginateBookInspectionDocument, type BookInspectionPaginationResult } from "../books/bookInspectionPageLayout";
+import BookDossierReader from "./BookDossierReader";
+import { useBookShelfViewportInsets } from "../books/useBookShelfViewportInsets";
+import { ownerPaletteSlotForBookKey } from "../books/bookOwnerSpineIdentity";
+import { usePublishedBookDossier } from "../books/usePublishedBookDossier";
+import type { BookShelfSpineHit } from "../books/bookShelfPointer";
+import BookShelfSpineTooltip from "./BookShelfSpineTooltip";
 import {
   beginBookInspectionDrag,
   createBookInspectionSession,
+  remapBookInspectionSessionPages,
   endBookInspectionDrag,
   getBookInspectionKeyboardTarget,
   getNextBookInspectionPageTarget,
@@ -224,6 +234,11 @@ type Props = {
   requestedBook?: BookArchiveEntry | null;
   requestedBookReturnFocus?: HTMLElement | null;
   onRequestedBookHandled?: () => void;
+};
+
+const shelfKeyboardInstructions = {
+  ru: "Книжная полка. Стрелки выбирают книгу, Enter открывает её.",
+  en: "Bookshelf. Use arrow keys to select a book and Enter to open it.",
 };
 
 const archiveFilters: Array<{
@@ -674,6 +689,10 @@ export default function BookArchiveSection({
   const [globalSearchError, setGlobalSearchError] = useState(false);
   const [globalSearchRetryAttempt, setGlobalSearchRetryAttempt] = useState(0);
   const detailRef = useRef<HTMLElement>(null);
+  const detailOverlayRef = useRef<HTMLElement>(null);
+  const shelfSceneRef = useRef<HTMLDivElement>(null);
+  const [hoveredSpine, setHoveredSpine] = useState<BookShelfSpineHit | null>(null);
+  const [shelfHasKeyboardFocus, setShelfHasKeyboardFocus] = useState(false);
   const returnFocusRef = useRef<HTMLElement | null>(null);
   const shelfStateRef = useRef(shelfState);
   shelfStateRef.current = shelfState;
@@ -745,7 +764,10 @@ export default function BookArchiveSection({
     items: savedReadings,
     save: saveReading,
     remove: removeReading,
+    setDossierProgress,
   } = useReadingLibrary();
+  const savedReadingsRef = useRef(savedReadings);
+  savedReadingsRef.current = savedReadings;
   const {
     snapshot: bookCollectionSnapshot,
     collections: bookCollections,
@@ -2049,6 +2071,7 @@ export default function BookArchiveSection({
         return {
           key: item.key,
           title: displayed.title,
+          ownerPaletteSlot: ownerPaletteSlotForBookKey(item.key),
           writer: selectBookWriterName(
             item.book,
             language,
@@ -2191,12 +2214,11 @@ export default function BookArchiveSection({
         return;
       }
 
-      if (
-        shelfStateRef.current.phase === "SHELF_IDLE" &&
-        focusedBookKeyRef.current !== key
-      ) {
+      const phase = shelfStateRef.current.phase;
+      if (["SHELF_IDLE", "SHELF_MOVING", "SHELF_SETTLING"].includes(phase) &&
+          (focusedBookKeyRef.current !== key || phase !== "SHELF_IDLE")) {
         pendingInspectionBookRef.current = item.book;
-        requestFocusBook(key);
+        if (focusedBookKeyRef.current !== key) requestFocusBook(key);
         return;
       }
 
@@ -2234,6 +2256,9 @@ export default function BookArchiveSection({
         return;
       }
       window.requestAnimationFrame(() => {
+        if (shelfStateRef.current.requestId !== requestId ||
+            pendingInspectionBookRef.current !== pendingBook ||
+            focusedBookKeyRef.current !== bookKey(pendingBook)) return;
         pendingInspectionBookRef.current = null;
         openBookDetail(pendingBook);
       });
@@ -2383,7 +2408,8 @@ export default function BookArchiveSection({
         x: event.clientX,
         y: event.clientY,
       });
-      if (event.cancelable) event.preventDefault();
+      if (event.cancelable && mobileDetailSuppressClickRef.current &&
+          Math.abs(event.clientY - gesture.startY) > Math.abs(event.clientX - gesture.startX)) event.preventDefault();
     },
     []
   );
@@ -2422,6 +2448,8 @@ export default function BookArchiveSection({
     [filteredItems, handleSceneOpenBook, shelfNavigation.focusIndex]
   );
   const cancelMobileDetailPointer = useCallback(() => {
+    if (!mobileDetailGestureRef.current) return;
+    mobileDetailSuppressClickRef.current = true;
     mobileDetailGestureRef.current = null;
     mobileDetailDispatch({ type: "drag-cancel" });
   }, []);
@@ -2709,19 +2737,19 @@ export default function BookArchiveSection({
       shelfState.phase
     );
   const pageNavigationBusy = shelfState.phase !== "BOOK_OPEN";
-  const selectedBookText = selectedItem
+  const selectedBookText = useMemo(() => selectedItem
     ? presentBookArchiveQueueItem(selectedItem, language)
-    : null;
+    : null, [selectedItem, language]);
   const selectedWriterName = selectedBook
     ? selectBookWriterName(selectedBook, language, t("Автор"))
     : "";
   const selectedOriginalLanguage = selectedBook && selectedItem?.status === "verified"
     ? selectBookOriginalLanguage(selectedBook, language)
     : "";
-  const selectedMetadataLabels = selectedBook && selectedItem?.status === "verified"
+  const selectedMetadataLabels = useMemo(() => selectedBook && selectedItem?.status === "verified"
     ? selectBookMetadataLabels(selectedBook, language, t)
-    : [];
-  const selectedEditorialDocument = useMemo(() => {
+    : [], [selectedBook, selectedItem?.status, language, t]);
+  const selectedLegacyDocument = useMemo(() => {
     if (!selectedBook || !selectedBookText) return null;
     const verified = selectedItem?.status === "verified";
     const edition = verified ? selectedBook.edition : undefined;
@@ -2818,35 +2846,95 @@ export default function BookArchiveSection({
     selectedWriterName,
   ]);
 
+  const fallbackDossier = useMemo(() => selectedLegacyDocument ? buildBookDossierFromEditorial(selectedLegacyDocument, {
+    descriptionProfile: selectedBook?.translations?.[language],
+    relatedArticles: relatedArticles.map(article => ({
+      id: article.id, title: article.title,
+      href: articlePath(article.id, article.title, article.sectionId, article.slug),
+    })),
+  }) : null, [selectedLegacyDocument, selectedBook, language, relatedArticles]);
+  const publishedDossier = usePublishedBookDossier(selectedBook ? bookKey(selectedBook) : null, language);
+  const selectedDossier = publishedDossier.document || fallbackDossier;
+  const dossierSourceDocument = useMemo(() => selectedDossier ? toBookEditorialDocument(selectedDossier) : null, [selectedDossier]);
+  const [pagination, setPagination] = useState<{ sourceKey: string; result: BookInspectionPaginationResult } | null>(null);
+  const [dossierAnchor, setDossierAnchor] = useState<BookDossierSemanticAnchor | null>(null);
   useEffect(() => {
-    if (!selectedBook || !selectedEditorialDocument) {
+    if (!dossierSourceDocument) return;
+    let current = true;
+    void paginateBookInspectionDocument(dossierSourceDocument, {
+      maximumPages: selectedDossier?.tier ? BOOK_DOSSIER_LIMITS[selectedDossier.tier].maximum : 18,
+    }).then(result => {
+      if (current) setPagination({ sourceKey: dossierSourceDocument.cacheKey, result });
+    }).catch(() => {
+      if (current) setPagination({ sourceKey: dossierSourceDocument.cacheKey, result: {
+        status: "needs-design-review", document: null, sourceDocument: dossierSourceDocument,
+        issues: ["Page measurement unavailable"],
+      } });
+    });
+    return () => { current = false; };
+  }, [dossierSourceDocument, selectedDossier?.tier]);
+  const selectedEditorialDocument = pagination?.sourceKey === dossierSourceDocument?.cacheKey
+    ? pagination?.result.document || null : null;
+  const activeDossierAnchor = inspectionSession?.bookKey === selectedDossier?.bookKey
+    ? inspectionSession?.semanticPosition?.anchor || dossierAnchor : dossierAnchor;
+  const navigateDossier = useCallback((anchor: BookDossierSemanticAnchor) => {
+    setDossierAnchor(anchor);
+    const current = inspectionSessionRef.current;
+    if (!selectedEditorialDocument || !current || current.phase !== "idle") return;
+    const pageIndex = selectedEditorialDocument.pages.findIndex(page =>
+      page.anchor?.sectionId === anchor.sectionId && page.anchor?.blockId === anchor.blockId &&
+      (!anchor.itemId || page.anchor.itemId === anchor.itemId));
+    if (pageIndex < 0) return;
+    const next = createBookInspectionSession({
+      bookKey: selectedEditorialDocument.bookKey, pageCount: selectedEditorialDocument.pages.length,
+      pages: selectedEditorialDocument.pages, pageIndex,
+      requestId: ++inspectionRequestSequenceRef.current,
+    });
+    inspectionSessionRef.current = next;
+    setInspectionSession(next);
+  }, [selectedEditorialDocument]);
+
+  useEffect(() => {
+    if (!selectedBook) {
       inspectionSessionRef.current = null;
       setInspectionSession(null);
       return;
     }
+    if (!selectedEditorialDocument) return;
     const selectedKey = bookKey(selectedBook);
     const current = inspectionSessionRef.current;
     const restoredContext =
       restoredNavigationContextRef.current?.selectedBookKey === selectedKey
         ? restoredNavigationContextRef.current
         : null;
-    if (
-      current?.bookKey === selectedKey &&
-      current.pageCount === selectedEditorialDocument.pages.length
-    ) {
+    if (current?.bookKey === selectedKey) {
+      const remapped = remapBookInspectionSessionPages(current, selectedKey, selectedEditorialDocument.pages);
+      inspectionSessionRef.current = remapped;
+      setInspectionSession(remapped);
       if (restoredContext) restoredNavigationContextRef.current = null;
       return;
     }
+    const savedProgress = savedReadingsRef.current.find(item => item.kind === "book" && item.id === selectedKey)?.dossierProgress;
+    const savedPageIndex = savedProgress ? selectedEditorialDocument.pages.findIndex(page =>
+      page.id === savedProgress.pageId || (page.anchor?.sectionId === savedProgress.anchor.sectionId &&
+        page.anchor?.blockId === savedProgress.anchor.blockId && page.anchor?.itemId === savedProgress.anchor.itemId)) : -1;
     const next = createBookInspectionSession({
       bookKey: selectedKey,
       pageCount: selectedEditorialDocument.pages.length,
-      pageIndex: restoredContext?.pageIndex ?? 0,
+      pages: selectedEditorialDocument.pages,
+      pageIndex: restoredContext?.pageIndex ?? Math.max(0, savedPageIndex),
       requestId: ++inspectionRequestSequenceRef.current,
     });
     if (restoredContext) restoredNavigationContextRef.current = null;
     inspectionSessionRef.current = next;
     setInspectionSession(next);
   }, [selectedBook, selectedEditorialDocument]);
+  useEffect(() => {
+    const session = inspectionSession;
+    const position = session?.semanticPosition;
+    if (!session?.bookKey || session.phase !== "idle" || !position?.anchor) return;
+    setDossierProgress(session.bookKey, { anchor: position.anchor, pageId: position.pageId, updatedAt: new Date().toISOString() });
+  }, [inspectionSession, setDossierProgress]);
   const createNavigationContext = useCallback((
     focusOrigin: BookArchiveNavigationFocusOrigin | null =
       navigationFocusOriginRef.current
@@ -3711,6 +3799,16 @@ export default function BookArchiveSection({
     "--book-detail-motion-duration": `${mobileDetailMotion.durationMs}ms`,
     "--book-detail-motion-easing": mobileDetailMotion.easing,
   } as CSSProperties;
+  const shelfViewportInsets = useBookShelfViewportInsets({
+    sceneRef: shelfSceneRef,
+    detailRef: detailOverlayRef,
+    active: viewMode === "shelf" && Boolean(selectedBook),
+    layoutKey: `${selectedBook ? bookKey(selectedBook) : ""}:${mobileDetailDisplayPosition}:${shelfState.phase}`,
+  });
+  const tooltipKey = !selectedBook && viewMode === "shelf"
+    ? hoveredSpine?.key || (shelfHasKeyboardFocus ? focusedBookKey : null) : null;
+  const tooltipBook = tooltipKey ? sceneItems.find((item) => item.key === tooltipKey) : null;
+  const tooltipIndex = tooltipKey ? filteredItems.findIndex((item) => item.key === tooltipKey) : -1;
   const focusedAnnouncementItem = focusedBookKey
     ? queueByKey.get(focusedBookKey) || null
     : null;
@@ -4017,6 +4115,7 @@ export default function BookArchiveSection({
 
       {selectedBook && (
         <aside
+          ref={detailOverlayRef}
           className="book-shelf-frame__detail"
           data-mobile-position={mobileDetailDisplayPosition}
           data-mobile-phase={mobileDetailState.phase}
@@ -4034,6 +4133,8 @@ export default function BookArchiveSection({
             });
           }}
         >
+        <div className="book-detail-toolbar">
+        <span className="book-detail-toolbar__label">{language === "en" ? "About the book" : "О книге"}</span>
         <button
           className="book-detail-mobile-handle"
           type="button"
@@ -4061,6 +4162,7 @@ export default function BookArchiveSection({
           onPointerMove={handleMobileDetailPointerMove}
           onPointerUp={handleMobileDetailPointerUp}
           onPointerCancel={cancelMobileDetailPointer}
+          onLostPointerCapture={cancelMobileDetailPointer}
         >
           <span aria-hidden="true" />
           <small>
@@ -4071,7 +4173,12 @@ export default function BookArchiveSection({
                 : t("Свернуть")}
           </small>
           <strong>{selectedBookText?.title || selectedBook.title}</strong>
+          <span className="book-detail-mobile-author">{selectedWriterName}</span>
         </button>
+        <button className="book-detail-close" type="button" onClick={closeBookDetail}
+          disabled={shelfState.phase === "INSPECTION_CLOSING" || shelfState.phase === "SHELF_RESTORING"}
+          aria-label={t("Закрыть карточку книги")}><BrandCloseIcon /></button>
+        </div>
         <article
           ref={detailRef}
           id="book-archive-detail"
@@ -4086,18 +4193,6 @@ export default function BookArchiveSection({
             `/library?country_id=${encodeURIComponent(selectedBook.countryId)}&writer_id=${encodeURIComponent(selectedBook.writerId)}&work_id=${encodeURIComponent(bookKey(selectedBook))}`
           )}
         >
-          <button
-            className="book-detail-close"
-            type="button"
-            onClick={closeBookDetail}
-            disabled={
-              shelfState.phase === "INSPECTION_CLOSING" ||
-              shelfState.phase === "SHELF_RESTORING"
-            }
-            aria-label={t("Закрыть карточку книги")}
-          >
-            <BrandCloseIcon />
-          </button>
           <div
             className={`book-detail-cover${selectedCoverUrl ? " has-image" : ""}`}
           >
@@ -4237,12 +4332,19 @@ export default function BookArchiveSection({
               </div>
             )}
             <div className="book-detail-actions">
+              {selectedDossier ? <button type="button" className="book-detail-read-dossier" onClick={() => {
+                requestMobileDetailPosition("expanded");
+                const reader = detailRef.current?.querySelector<HTMLElement>(".book-dossier-reader");
+                reader?.focus({ preventScroll: true });
+                reader?.scrollIntoView({ block: "nearest", behavior: "instant" });
+              }}>{language === "en" ? "Read dossier" : "Читать досье"}</button> : null}
               {viewMode === "shelf" &&
               (shelfState.phase === "INSPECTION_CLOSED" ||
                 shelfState.phase === "COVER_CRACKED") ? (
                 <button
                   type="button"
                   className="book-detail-open-cover"
+                  disabled={!selectedEditorialDocument}
                   onClick={() =>
                     requestSelectedCoverOpen(bookKey(selectedBook))
                   }
@@ -4344,11 +4446,11 @@ export default function BookArchiveSection({
                     : t("Исходная запись кандидата")}
                 </a>
               )}
-              {isEditorialCover(selectedBook) ? (
+              {isEditorialCover(selectedBook) ? selectedBook.coverRights?.status !== "editorial-original" ? (
                 <span className="book-cover-credit">
                   {t("Редакционная обложка «Пробы Пера»")}
                 </span>
-              ) : selectedBook.coverSourceUrl ? (
+              ) : null : selectedBook.coverSourceUrl ? (
                 <a
                   href={resolveCoverUrl(selectedBook.coverSourceUrl)}
                   target="_blank"
@@ -4451,6 +4553,16 @@ export default function BookArchiveSection({
               </section>
             )}
           </div>
+          {selectedDossier ? <BookDossierReader dossier={selectedDossier}
+            activeAnchor={activeDossierAnchor} onNavigate={navigateDossier}
+            onReadingModeChange={publishedDossier.changeMode}
+            onProgressChange={publishedDossier.changeProgress}
+            reachedCount={publishedDossier.reachedCount}
+            onSpoilersChange={publishedDossier.changeSpoilers}
+            showingSpoilers={publishedDossier.showingSpoilers}
+            unavailable={publishedDossier.unavailable}
+            busy={Boolean(selectedDossier.tier && publishedDossier.busy) ||
+              (inspectionSession?.phase !== "idle" && Boolean(inspectionSession))} /> : null}
           <ArticleEngagement
             articleSlug={`book:${bookKey(selectedBook)}`}
             subjectType="book"
@@ -4461,11 +4573,27 @@ export default function BookArchiveSection({
 
           <div className="book-shelf-frame__primary">
             <div
+              ref={shelfSceneRef}
               className="book-shelf-frame__scene"
               hidden={viewMode !== "shelf"}
               tabIndex={viewMode === "shelf" ? 0 : -1}
               aria-keyshortcuts="ArrowLeft ArrowRight Home End PageUp PageDown Enter Space"
-              onKeyDown={handleShelfKeyDown}
+              role="group"
+              aria-label={shelfKeyboardInstructions[language]}
+              aria-describedby={tooltipBook ? "book-spine-tooltip" : undefined}
+              onFocus={(event) => {
+                if (event.target === event.currentTarget) setShelfHasKeyboardFocus(event.currentTarget.matches(":focus-visible"));
+              }}
+              onBlur={() => setShelfHasKeyboardFocus(false)}
+              onKeyDown={(event) => {
+                if (event.target === event.currentTarget && shelfState.phase === "BOOK_OPEN" &&
+                    !event.altKey && !event.ctrlKey && !event.metaKey &&
+                    requestSelectedKeyboardPage(event.key, event.shiftKey)) {
+                  event.preventDefault();
+                  return;
+                }
+                handleShelfKeyDown(event);
+              }}
               onWheel={handleShelfWheel}
               onPointerDown={handleShelfPointerDown}
               onPointerUp={handleShelfPointerUp}
@@ -4484,6 +4612,8 @@ export default function BookArchiveSection({
                   appearance={sceneAppearance}
                   focusedBookKey={focusedBookKey}
                   selectedBookKey={selectedBook ? bookKey(selectedBook) : null}
+                  viewportInsets={shelfViewportInsets}
+                  onHoveredBookChange={setHoveredSpine}
                   phase={shelfState.phase}
                   requestId={shelfState.requestId}
                   active={
@@ -4535,6 +4665,10 @@ export default function BookArchiveSection({
                   closeInspectionLabel={t("Закрыть карточку книги")}
                 />
               )}
+              {tooltipBook && tooltipIndex >= 0 ? (
+                <BookShelfSpineTooltip book={tooltipBook} hit={hoveredSpine}
+                  index={tooltipIndex} total={filteredItems.length} locale={language} />
+              ) : null}
               {viewMode === "shelf" && sceneItems.length === 0 ? (
                 <div className="book-shelf-empty-state" role="status">
                   <BrandBookIcon />
