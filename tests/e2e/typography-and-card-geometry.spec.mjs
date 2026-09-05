@@ -8,7 +8,10 @@ import {
   typographyViewports,
 } from "../../scripts/capture-typography-evidence.mjs";
 
-// This spec sets every viewport explicitly. Run once with --project=desktop-chromium.
+// Measure CSS geometry at a consistent raster scale while retaining desktop and
+// mobile input/media conditions. Native high-DPI rendering has separate visual
+// and WebGL coverage; stretching a phone to 1920px must not multiply that workload.
+test.use({ deviceScaleFactor: 1 });
 test.setTimeout(150_000);
 
 function assertReadableCard(card, label) {
