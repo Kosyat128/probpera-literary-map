@@ -5228,7 +5228,7 @@ a.writer-nobel-medal:focus-visible {
   color: rgba(255, 255, 255, 0.65);
 }
 
-.book-of-day button {
+.book-of-day button:not(.ui-action) {
   margin-top: 25px;
   padding: 0;
   color: #fff;
@@ -5239,11 +5239,6 @@ a.writer-nobel-medal:focus-visible {
   background: transparent;
   border: 0;
   cursor: pointer;
-}
-
-.book-of-day button span {
-  margin-left: 11px;
-  color: var(--orange-soft);
 }
 
 .book-tags {
@@ -6204,15 +6199,9 @@ a.writer-nobel-medal:focus-visible {
   margin: 0 auto 37px;
 }
 
-.editorial-section .section-heading > a {
-  padding-bottom: 8px;
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.section-heading > a span {
-  margin-left: 8px;
+.editorial-section .section-heading > a > span,
+.sections-all-button > span {
+  flex: 0 0 auto;
   color: var(--orange-soft);
 }
 
@@ -7104,7 +7093,7 @@ a.writer-nobel-medal:focus-visible {
   color: #fff;
   text-decoration: none;
   background-image:
-    linear-gradient(0deg, rgba(28, 2, 46, 0.98) 0, rgba(28, 2, 46, 0.72) 54%, rgba(28, 2, 46, 0.25)),
+    linear-gradient(0deg, rgba(28, 2, 46, 0.98) 0, rgba(28, 2, 46, 0.82) 54%, rgba(28, 2, 46, 0.6)),
     var(--section-art);
   background-position: center;
   background-size: cover;
@@ -11274,25 +11263,45 @@ a.writer-nobel-medal:focus-visible {
   color: rgba(255, 255, 255, 0.35);
 }
 
+.editorial-section .section-heading > a,
 .sections-all-button {
   display: inline-flex;
-  gap: 12px;
+  gap: var(--ui-space-2);
   align-items: center;
-  min-height: 44px;
-  padding: 0 18px;
-  color: #fff;
+  justify-content: center;
+  min-width: 0;
+  min-height: var(--ui-control-md);
+  padding: var(--ui-space-2) var(--ui-space-4);
+  color: var(--cream);
   text-decoration: none;
   text-transform: uppercase;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(19, 2, 32, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: var(--ui-radius-control);
   transition:
     color var(--ui-transition-fast),
     background-color var(--ui-transition-fast),
-    border-color var(--ui-transition-fast);
+    border-color var(--ui-transition-fast),
+    box-shadow var(--ui-transition-fast);
 }
 
-.sections-all-button:hover {
-  background: rgba(246, 117, 24, 0.14);
-  border-color: rgba(246, 117, 24, 0.6);
+.editorial-section .section-heading > a:is(:hover, :focus-visible),
+.sections-all-button:is(:hover, :focus-visible) {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 183, 111, 0.58);
+}
+
+.editorial-section .section-heading > a:focus-visible,
+.sections-all-button:focus-visible {
+  outline: 2px solid var(--ui-focus-color);
+  outline-offset: 3px;
+  box-shadow: var(--ui-focus-ring);
+}
+
+.editorial-section .section-heading > a:active,
+.sections-all-button:active {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.18);
 }
 
 .community-hub.is-account {
@@ -12326,6 +12335,7 @@ a.writer-nobel-medal:focus-visible {
     flex-direction: column;
   }
 
+  .editorial-section .section-heading > a,
   .sections-all-button {
     width: 100%;
     justify-content: space-between;
@@ -13288,8 +13298,9 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .trust-center details {
   padding: 25px;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--cream);
   border: 1px solid rgba(66, 24, 86, 0.12);
+  border-radius: var(--ui-radius-panel);
 }
 
 .trust-center summary {
@@ -16464,12 +16475,6 @@ html[data-theme="book"] .calendar-heading h3 {
   line-height: 1.35;
 }
 
-.editorial-section .section-heading > a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
-
 .editorial-grid article:focus-within,
 .article-library-grid article:focus-within {
   border-color: rgba(255, 155, 69, 0.62);
@@ -17179,50 +17184,21 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .book-of-day .book-actions-primary button {
-  gap: 9px;
+  gap: var(--ui-space-2);
   justify-content: space-between;
-  min-height: 44px;
+  min-height: var(--ui-control-md);
   margin: 0;
-  padding: 0 15px;
-  border: 1px solid transparent;
-  border-radius: var(--ui-radius-control);
-  transition:
-    color 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease,
-    transform 180ms ease;
-}
-
-.book-of-day .book-actions-primary button > span {
-  margin-left: 0;
-  color: inherit;
-}
-
-.book-of-day .book-action-primary {
-  color: #fff9f1;
-  background: linear-gradient(135deg, #a73105, #b94309);
-  border-color: rgba(255, 213, 174, 0.66);
-  box-shadow: 0 12px 28px rgba(11, 1, 19, 0.26);
-}
-
-.book-of-day .book-action-secondary {
-  color: rgba(255, 255, 255, 0.84);
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(255, 255, 255, 0.2);
+  padding: var(--ui-space-2) var(--ui-space-4);
 }
 
 .book-of-day .book-actions-primary button:hover,
-.book-of-day .book-actions-primary button:focus-visible {
-  color: #fff;
-  border-color: rgba(255, 229, 201, 0.86);
-  box-shadow: 0 14px 30px rgba(11, 1, 19, 0.32);
-  transform: translateY(-1px);
+.book-of-day .book-actions-primary button:focus-visible,
+.book-of-day .book-actions-primary button:active {
+  transform: none;
 }
 
-.book-of-day .book-actions-primary button:focus-visible {
-  outline: 2px solid #fff2d6;
-  outline-offset: 3px;
+.book-of-day .book-action-secondary:not(:disabled):active {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.18);
 }
 
 .book-actions > .book-source-link {
@@ -17242,7 +17218,7 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .book-actions > .book-source-link:focus-visible {
-  outline: 2px solid #fff2d6;
+  outline: 2px solid var(--ui-focus-color);
   outline-offset: 3px;
 }
 
@@ -17423,6 +17399,8 @@ html[data-theme="book"] .calendar-heading h3 {
 
 @media (prefers-reduced-motion: reduce) {
   .book-of-day .book-actions-primary button,
+  .editorial-section .section-heading > a,
+  .sections-all-button,
   .section-directory-more,
   .section-directory-more .brand-arrow-icon {
     transition: none;
@@ -20666,6 +20644,17 @@ html[data-theme="book"] .calendar-heading h3 {
 
   :is(.article-reader-content, .cms-page-prose) .article-design-block.is-slider > .article-gallery-item > .article-image-link > img {
     height: clamp(230px, 82vw, 440px);
+  }
+}
+
+/* Split media already has spacing on its container. */
+.article-reader-content .article-media-split > figure.article-inline-image {
+  margin-block: 0;
+}
+
+@media (max-width: 680px) {
+  .article-reader-content h2 + .article-media-split {
+    margin-block-start: 24px;
   }
 }
 

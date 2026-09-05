@@ -90,6 +90,33 @@
     outline-offset: 2px;
   }
 
+  .calendar-navigation button:hover,
+  .calendar-navigation button:focus-visible {
+    transform: none;
+  }
+
+  @media (max-width: 560px) {
+    .calendar-card .calendar-summary > div {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      min-block-size: 52px;
+      padding: 10px 14px;
+    }
+
+    .calendar-card .calendar-summary > div > span {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .calendar-card .calendar-summary > div > strong {
+      grid-column: 2;
+      grid-row: 1;
+      text-align: end;
+    }
+  }
+
   @media (max-width: 480px) {
     .calendar-card .calendar-agenda-day {
       grid-template-columns: minmax(0, 1fr);

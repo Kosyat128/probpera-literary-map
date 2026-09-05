@@ -114,6 +114,7 @@
     --type-card-compact-title: 1.25rem;
     --type-card-related-title: 1.125rem;
     --type-dialog-title: clamp(1.75rem, 3vw, 2.5rem);
+    --type-calendar-title: clamp(1.5rem, 2vw, 2rem);
     --type-lead: clamp(1.125rem, 1.4vw, 1.3125rem);
     --type-reading: 1.1875rem;
     --type-reading-section: clamp(1.375rem, 3vw, 2.4375rem);
@@ -216,8 +217,21 @@
     font-size: calc(var(--type-card-feature-title) * 1.25);
   }
 
+  .editorial-grid:has(> article:nth-child(4):last-child) > .is-featured .article-copy h3 {
+    font-size: var(--type-card-title);
+    line-height: var(--type-leading-title);
+  }
+
+  .calendar-heading h3 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-calendar-title);
+    font-weight: 500;
+    line-height: var(--type-leading-heading);
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+  }
+
   .journal-engagement h3,
-  .calendar-heading h3,
   .book-of-day h4,
   .book-fact-card h3,
   .trust-center summary,

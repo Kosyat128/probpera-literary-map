@@ -156,8 +156,12 @@
   }
 
   .share-links--card {
+    --card-control-size: 32px;
+    --card-control-gap: 6px;
+    --card-icon-size: 16px;
     display: grid;
     grid-template-columns: minmax(0, 1fr) max-content;
+    gap: 8px;
     padding-block: var(--card-footer-gap);
   }
 
@@ -189,9 +193,10 @@
     outline-offset: 3px;
   }
 
-  @container editorial-card (max-width: 24rem) {
-    .share-links--card {
-      grid-template-columns: minmax(0, 1fr);
+  @media (max-width: 680px) {
+    :is(.editorial-section, .sections-directory) > .section-heading {
+      gap: 16px;
+      margin-block-end: 24px;
     }
   }
 
