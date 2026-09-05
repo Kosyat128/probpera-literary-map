@@ -203,6 +203,7 @@ import BrandHeartIcon from "./BrandHeartIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
 import BrandArrowIcon from "./BrandArrowIcon";
 import BrandBookIcon from "./BrandBookIcon";
+import BrandPlusIcon from "./BrandPlusIcon";
 import BookCollectionMembershipDialog from "./BookCollectionMembershipDialog";
 import BookCollectionManagerSheet, {
   type ManagedBookCollection,
@@ -919,7 +920,11 @@ export default function BookArchiveSection({
       );
       const restoreCloseDestination = () => {
         if (centerAfterClose) {
-          centerShelfScene();
+          // Removing the detail column reconnects the scene. Focus the current
+          // node after that commit, just like the catalogue trigger restoration.
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(centerShelfScene);
+          });
           return;
         }
         restoreBookTriggerFocus(returnFocus);
@@ -3671,7 +3676,7 @@ export default function BookArchiveSection({
       updateFilterState({ savedOnly: false })
     );
   }
-  if (filterState.sort !== "editorial-relevance") {
+  if (filterState.sort !== "editorial-relevance" && filterState.sort !== "manual") {
     pushChip("sort", t(sortLabels[filterState.sort]), () =>
       updateFilterState({ sort: "editorial-relevance" })
     );
@@ -3914,7 +3919,7 @@ export default function BookArchiveSection({
               setQuery(value);
             }}
             searchLabel={t("Поиск по книге, автору или стране")}
-            searchPlaceholder={t("Например, Достоевский или Япония")}
+            searchPlaceholder={t("Книги, авторы, страны")}
             searchScope={searchScope}
             onSearchScopeChange={setSearchScope}
             libraryScopeLabel={t("Текущая полка")}
@@ -3944,6 +3949,8 @@ export default function BookArchiveSection({
             formatCount={number}
             onOpenAdvancedFilters={openAdvancedFilters}
             advancedFiltersLabel={t("Расширенные фильтры")}
+            advancedFiltersOpen={advancedFiltersOpen}
+            advancedFiltersId="book-archive-advanced-filters"
             suggestions={searchSuggestions}
           />
         </div>
@@ -4023,7 +4030,7 @@ export default function BookArchiveSection({
               type="button"
               onClick={() => void createEmptyManualShelf()}
             >
-              <span aria-hidden="true">＋</span>
+              <BrandPlusIcon />
               {t("Новая полка")}
             </button>
             {collectionShelfSelection.activeOption.manageable ? (
@@ -5066,6 +5073,7 @@ export default function BookArchiveSection({
           <aside
             ref={filterDrawerRef}
             className="book-shelf-frame__filter-drawer"
+            id="book-archive-advanced-filters"
             role="dialog"
             aria-modal={advancedFiltersOpen ? "true" : undefined}
             aria-label={t("Расширенные фильтры книжного архива")}

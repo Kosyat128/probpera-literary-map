@@ -455,7 +455,7 @@ export function resolveCompleteShelfTypography(
   const fit = (text: string, role: "title" | "author", front = false) => {
     const token = OwnerBookTypographyTokens[role];
     const zone = OwnerBookTypographyTokens[role === "title" ? "titleZone" : "authorZone"];
-    return fitBookText({
+    const options = {
       text,
       width: front ? 1000 * spec.dimensions.coverWidth / spec.dimensions.height * .78 : width * OwnerBookTypographyTokens.safeWidth,
       height: front ? (role === "title" ? 260 : 180) : height * (zone.bottom - zone.top),
@@ -463,11 +463,15 @@ export function resolveCompleteShelfTypography(
       minimumFontSize: front ? (role === "title" ? 25 : 23) : token.minimum,
       maximumLines: front ? 7 : 8,
       leading: token.leading,
-      measure: (line, size) => {
+      measure: (line: string, size: number) => {
         context.font = token.weight + " " + size + "px " + BookDossierTypographyTokens.serif;
         return context.measureText(line).width;
       },
-    });
+    };
+    const unbroken = fitBookText(options);
+    // Keep every approved owner layout unchanged. Long Cyrillic words can use
+    // measured syllable breaks instead of losing the entire book artwork.
+    return unbroken.fits ? unbroken : fitBookText({ ...options, discretionaryHyphens: true });
   };
   return Object.freeze({
     width, height,
@@ -482,7 +486,8 @@ function paintOwnerText(
   context: CanvasRenderingContext2D,
   layout: BookTextLayout,
   centerX: number,
-  centerY: number
+  centerY: number,
+  outlineRatio = 0.026
 ) {
   if (!layout.fits) return;
   context.save();
@@ -491,7 +496,7 @@ function paintOwnerText(
   context.font = "600 " + layout.fontSize + "px " + BookDossierTypographyTokens.serif;
   context.fillStyle = OwnerBookTypographyTokens.ivory;
   context.strokeStyle = OwnerBookTypographyTokens.sepia;
-  context.lineWidth = layout.fontSize * .026;
+  context.lineWidth = layout.fontSize * outlineRatio;
   context.lineJoin = "round";
   // The coincident fine outline is optical separation, never an offset shadow.
   const first = context.measureText(layout.lines[0] || "");
@@ -555,16 +560,17 @@ export function createCompleteShelfArtworkTextures(
   const measurement = document.createElement("canvas").getContext("2d");
   if (!measurement) return unavailable;
   const typography = resolveCompleteShelfTypography(measurement, spec);
-  // A title that cannot fit its approved zone requires the accessible DOM view.
-  // Never crop, invent an abbreviation, squeeze glyphs, or silently omit a name.
-  if (![typography.title, typography.author, ...(includeFrontFoil ? [typography.frontTitle, typography.frontAuthor] : [])].every((layout) => layout.fits)) return unavailable;
+  // Each surface owns its layout: one failed title cannot discard the cloth
+  // and valid artwork on another surface. The renderer reports missing maps.
+  const frontFits = typography.frontTitle.fits && typography.frontAuthor.fits;
+  const spineFits = typography.title.fits && typography.author.fits;
   const spineWidth = Math.round(frontHeight * typography.width / typography.height);
-  const frontFoil = !includeFrontFoil ? null : createFoilTexture(frontWidth, frontHeight, (context) => {
+  const frontFoil = !includeFrontFoil || !frontFits ? null : createFoilTexture(frontWidth, frontHeight, (context) => {
     context.scale(frontHeight / 1000, frontHeight / 1000);
     paintFrontBinderRule(context, frontDesignWidth, 90);
     paintFrontBinderRule(context, frontDesignWidth, 910);
-    paintOwnerText(context, typography.frontTitle, frontDesignWidth / 2, 310);
-    paintOwnerText(context, typography.frontAuthor, frontDesignWidth / 2, 550);
+    paintOwnerText(context, typography.frontTitle, frontDesignWidth / 2, 310, 0.012);
+    paintOwnerText(context, typography.frontAuthor, frontDesignWidth / 2, 550, 0.012);
     paintPublisherMark(context, frontDesignWidth);
     if (plan.yearLabel) {
       context.fillStyle = OwnerBookTypographyTokens.ivory;
@@ -572,7 +578,7 @@ export function createCompleteShelfArtworkTextures(
       context.fillText(plan.yearLabel, frontDesignWidth / 2, 852);
     }
   }, textureAnisotropy);
-  const spineFoil = createFoilTexture(spineWidth, frontHeight, (context) => {
+  const spineFoil = !spineFits ? null : createFoilTexture(spineWidth, frontHeight, (context) => {
     context.scale(spineWidth / typography.width, frontHeight / typography.height);
     paintSpineBinderOrnament(context, typography.width, typography.height, OwnerBookTypographyTokens.topRule, OwnerBookTypographyTokens.rule);
     paintSpineBinderOrnament(context, typography.width, typography.height, OwnerBookTypographyTokens.bottomRule, OwnerBookTypographyTokens.rule);
@@ -735,6 +741,49 @@ export function loadCompleteShelfCoverTexture(
   };
 }
 
+/** Neutral sRGB albedo: visible fine yarn, without changing binding hue. */
+export function createCompleteShelfClothAlbedoMap(economical: boolean) {
+  const width = economical ? 256 : 512;
+  const height = Math.round(width * 1.42);
+  return createTexture(width, height, (context) => {
+    context.scale(width / 512, height / 727.04);
+    context.fillStyle = "#fafafa";
+    context.fillRect(0, 0, 512, 727.04);
+    context.lineCap = "round";
+    const random = seededRandom(0x6c696e65);
+    // Slightly wandering yarns have irregular spacing and thickness. Their
+    // colour contrast remains in albedo, separate from the shallow relief.
+    for (let axis = 0; axis < 2; axis += 1) {
+      const across = axis === 0 ? 512 : 727.04;
+      const along = axis === 0 ? 727.04 : 512;
+      for (let yarn = -2; yarn < across + 2; yarn += 2.7 + random() * 1.4) {
+        context.strokeStyle = `rgba(210,210,210,${0.35 + random() * 0.3})`;
+        context.lineWidth = 0.65 + random() * 0.55;
+        context.beginPath();
+        for (let distance = 0; distance <= along + 20; distance += 12) {
+          const wander = yarn + (random() - 0.5) * 0.7;
+          const x = axis === 0 ? wander : distance;
+          const y = axis === 0 ? distance : wander;
+          if (distance === 0) context.moveTo(x, y);
+          else context.lineTo(x, y);
+        }
+        context.stroke();
+      }
+    }
+    // Loose short fibres soften the weave without isolated white pinpoints.
+    for (let fibre = 0; fibre < 2600; fibre += 1) {
+      const x = random() * 512, y = random() * 727.04;
+      const length = 2 + random() * 6;
+      context.strokeStyle = random() > .5 ? "rgba(255,255,255,.5)" : "rgba(222,222,222,.2)";
+      context.lineWidth = .35 + random() * .25;
+      context.beginPath();
+      context.moveTo(x, y);
+      context.lineTo(x + length, y + (random() - .5) * .7);
+      context.stroke();
+    }
+  }, false, economical ? 4 : 12);
+}
+
 export function createCompleteShelfClothMap(economical: boolean) {
   const size = economical ? 96 : 256;
   const texture = createTexture(
@@ -854,11 +903,10 @@ export function createCompleteShelfClothSurfaceMaps(
   const roughnessImage = roughnessContext.createImageData(size, size);
   for (let y = 0; y < size; y += 1) {
     for (let x = 0; x < size; x += 1) {
-      const warp = Math.sin(x / size * Math.PI * 24);
-      const weft = Math.sin(y / size * Math.PI * 20);
-      const cross = Math.sin((x + y) / size * Math.PI * 16);
+      const warp = Math.sin(x / size * Math.PI * 64);
+      const weft = Math.sin(y / size * Math.PI * 64);
       heightField[y * size + x] =
-        0.5 + warp * 0.18 + weft * 0.15 + cross * 0.045;
+        0.5 + warp * 0.045 + weft * 0.035;
     }
   }
   const sampleHeight = (x: number, y: number) =>
@@ -878,7 +926,7 @@ export function createCompleteShelfClothSurfaceMaps(
         ((1 / length) * 0.5 + 0.5) * 255
       );
       normalImage.data[pixel + 3] = 255;
-      const roughness = Math.round(188 + heightField[source] * 56);
+      const roughness = Math.round(234 + heightField[source] * 12);
       roughnessImage.data[pixel] = roughness;
       roughnessImage.data[pixel + 1] = roughness;
       roughnessImage.data[pixel + 2] = roughness;
@@ -892,7 +940,7 @@ export function createCompleteShelfClothSurfaceMaps(
     texture.colorSpace = NoColorSpace;
     texture.wrapS = RepeatWrapping;
     texture.wrapT = RepeatWrapping;
-    texture.repeat.set(5, 8);
+    texture.repeat.set(6, 8);
     texture.anisotropy = economical ? 2 : 12;
     texture.needsUpdate = true;
     return texture;

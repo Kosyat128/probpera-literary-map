@@ -1,0 +1,4112 @@
+{
+  "baseURL": "http://127.0.0.1:4185/",
+  "capturedAt": "2026-09-05T12:38:49.541Z",
+  "scope": "Actual compiled WebGL, current 46-book shelf in RU/EN; no source injection",
+  "cases": [
+    {
+      "language": "ru",
+      "batch": 0,
+      "state": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 69,
+          "y": 226.046875,
+          "width": 1582,
+          "height": 774
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.23006
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 175.31327334553396,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "451° по Фаренгейту",
+            "sourceIndex": 1,
+            "x": 260.89911417734226,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Анна-Вероника",
+            "sourceIndex": 2,
+            "x": 346.48495500915044,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Будденброки",
+            "sourceIndex": 3,
+            "x": 432.07079584095874,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "Война и мир",
+            "sourceIndex": 4,
+            "x": 517.6566366727669,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 603.2424775045753,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 688.8283183363834,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:flaubert:madame-bovary",
+            "title": "Госпожа Бовари",
+            "sourceIndex": 7,
+            "x": 774.4141591681918,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-lady-with-the-dog",
+            "title": "Дама с собачкой",
+            "sourceIndex": 8,
+            "x": 860,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-duel",
+            "title": "Дуэль",
+            "sourceIndex": 9,
+            "x": 945.5858408318082,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:uncle-vanya",
+            "title": "Дядя Ваня",
+            "sourceIndex": 10,
+            "x": 1031.1716816636163,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-history-of-mr-polly",
+            "title": "История мистера Полли",
+            "sourceIndex": 11,
+            "x": 1116.7575224954248,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:when-the-sleeper-wakes",
+            "title": "Когда спящий проснется",
+            "sourceIndex": 12,
+            "x": 1202.343363327233,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:the-bone-clocks",
+            "title": "Костяные часы",
+            "sourceIndex": 13,
+            "x": 1287.929204159041,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:ghostwritten",
+            "title": "Литературный призрак",
+            "sourceIndex": 14,
+            "x": 1373.5150449908494,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:vladimir_nabokov:lolita-editorial",
+            "title": "Лолита",
+            "sourceIndex": 15,
+            "x": 1459.1008858226578,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:men-like-gods",
+            "title": "Люди как боги",
+            "sourceIndex": 16,
+            "x": 1544.686726654466,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 65,
+            "deleted": 0,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 375,
+            "deleted": 4,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 157,
+            "deleted": 1,
+            "live": 156
+          }
+        },
+        "draws": 335,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "patches": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "slot": 0,
+          "baseColor": "#406872",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 322.42123441474445,
+          "width": 80.38279799973049,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "slot": 5,
+          "baseColor": "#BB5441",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "slot": 6,
+          "baseColor": "#508B8A",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "slot": 8,
+          "baseColor": "#A3494E",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "slot": 10,
+          "baseColor": "#45739C",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "slot": 11,
+          "baseColor": "#B34E3E",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "books": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "writer": "Джордж Оруэлл",
+          "visible": true,
+          "titlePixels": 1622,
+          "authorPixels": 3498
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "451° по Фаренгейту",
+          "writer": "Рэй Брэдбери",
+          "visible": true,
+          "titlePixels": 952,
+          "authorPixels": 1165
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "title": "Анна-Вероника",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 1202,
+          "authorPixels": 2347
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "title": "Будденброки",
+          "writer": "Томас Манн",
+          "visible": true,
+          "titlePixels": 670,
+          "authorPixels": 1232
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "title": "Война и мир",
+          "writer": "Лев Николаевич Толстой",
+          "visible": true,
+          "titlePixels": 2239,
+          "authorPixels": 1219
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Гамлет",
+          "writer": "Уильям Шекспир",
+          "visible": true,
+          "titlePixels": 906,
+          "authorPixels": 1449
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Голодный дом",
+          "writer": "Дэвид Стивен Митчелл",
+          "visible": true,
+          "titlePixels": 1020,
+          "authorPixels": 1992
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "title": "Госпожа Бовари",
+          "writer": "Гюстав Флобер",
+          "visible": true,
+          "titlePixels": 1620,
+          "authorPixels": 1560
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "title": "Дама с собачкой",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1354,
+          "authorPixels": 1599
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "title": "Дуэль",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1068,
+          "authorPixels": 1599
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "title": "Дядя Ваня",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1882,
+          "authorPixels": 1599
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "title": "История мистера Полли",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 2302,
+          "authorPixels": 2347
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "title": "Когда спящий проснется",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 1558,
+          "authorPixels": 2347
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "title": "Костяные часы",
+          "writer": "Дэвид Стивен Митчелл",
+          "visible": true,
+          "titlePixels": 1081,
+          "authorPixels": 1992
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "title": "Литературный призрак",
+          "writer": "Дэвид Стивен Митчелл",
+          "visible": true,
+          "titlePixels": 914,
+          "authorPixels": 1992
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "title": "Лолита",
+          "writer": "Владимир Набоков",
+          "visible": true,
+          "titlePixels": 918,
+          "authorPixels": 1396
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "title": "Люди как боги",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 2482,
+          "authorPixels": 2347
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.294675317347128,
+      "maxGap": 5.29467531734781
+    },
+    {
+      "language": "ru",
+      "batch": 1,
+      "state": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 69,
+          "y": 226.046875,
+          "width": 1582,
+          "height": 774
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.23006
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 175.31327334553396,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 260.89911417734226,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:flaubert:madame-bovary",
+            "title": "Госпожа Бовари",
+            "sourceIndex": 7,
+            "x": 346.48495500915044,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-lady-with-the-dog",
+            "title": "Дама с собачкой",
+            "sourceIndex": 8,
+            "x": 432.07079584095874,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-duel",
+            "title": "Дуэль",
+            "sourceIndex": 9,
+            "x": 517.6566366727669,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:uncle-vanya",
+            "title": "Дядя Ваня",
+            "sourceIndex": 10,
+            "x": 603.2424775045753,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-history-of-mr-polly",
+            "title": "История мистера Полли",
+            "sourceIndex": 11,
+            "x": 688.8283183363834,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:when-the-sleeper-wakes",
+            "title": "Когда спящий проснется",
+            "sourceIndex": 12,
+            "x": 774.4141591681918,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:the-bone-clocks",
+            "title": "Костяные часы",
+            "sourceIndex": 13,
+            "x": 860,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:ghostwritten",
+            "title": "Литературный призрак",
+            "sourceIndex": 14,
+            "x": 945.5858408318082,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:vladimir_nabokov:lolita-editorial",
+            "title": "Лолита",
+            "sourceIndex": 15,
+            "x": 1031.1716816636163,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:men-like-gods",
+            "title": "Люди как боги",
+            "sourceIndex": 16,
+            "x": 1116.7575224954248,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+            "title": "Над пропастью во ржи",
+            "sourceIndex": 17,
+            "x": 1202.343363327233,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:aldous_huxley:brave-new-world-editorial",
+            "title": "О дивный новый мир",
+            "sourceIndex": 18,
+            "x": 1287.929204159041,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-world-set-free",
+            "title": "Освобожденный мир",
+            "sourceIndex": 19,
+            "x": 1373.5150449908494,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:victor_hugo:les-miserables",
+            "title": "Отверженные",
+            "sourceIndex": 20,
+            "x": 1459.1008858226578,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-first-men-in-the-moon",
+            "title": "Первые люди на Луне",
+            "sourceIndex": 21,
+            "x": 1544.686726654466,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 83,
+            "deleted": 18,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 471,
+            "deleted": 100,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 198,
+            "deleted": 42,
+            "live": 156
+          }
+        },
+        "draws": 903,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "patches": [
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "slot": 5,
+          "baseColor": "#BB5441",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "slot": 6,
+          "baseColor": "#508B8A",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "slot": 8,
+          "baseColor": "#A3494E",
+          "x": 322.42123441474445,
+          "width": 80.38279799973049,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "slot": 10,
+          "baseColor": "#45739C",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "slot": 11,
+          "baseColor": "#B34E3E",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:aldous_huxley:brave-new-world-editorial",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-world-set-free",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:victor_hugo:les-miserables",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-first-men-in-the-moon",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "books": [
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Гамлет",
+          "writer": "Уильям Шекспир",
+          "visible": true,
+          "titlePixels": 906,
+          "authorPixels": 1449
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Голодный дом",
+          "writer": "Дэвид Стивен Митчелл",
+          "visible": true,
+          "titlePixels": 1020,
+          "authorPixels": 1992
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "title": "Госпожа Бовари",
+          "writer": "Гюстав Флобер",
+          "visible": true,
+          "titlePixels": 1620,
+          "authorPixels": 1560
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "title": "Дама с собачкой",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1354,
+          "authorPixels": 1599
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "title": "Дуэль",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1068,
+          "authorPixels": 1599
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "title": "Дядя Ваня",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1882,
+          "authorPixels": 1599
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "title": "История мистера Полли",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 2302,
+          "authorPixels": 2347
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "title": "Когда спящий проснется",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 1558,
+          "authorPixels": 2347
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "title": "Костяные часы",
+          "writer": "Дэвид Стивен Митчелл",
+          "visible": true,
+          "titlePixels": 2283,
+          "authorPixels": 4137
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "title": "Литературный призрак",
+          "writer": "Дэвид Стивен Митчелл",
+          "visible": true,
+          "titlePixels": 914,
+          "authorPixels": 1992
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "title": "Лолита",
+          "writer": "Владимир Набоков",
+          "visible": true,
+          "titlePixels": 918,
+          "authorPixels": 1396
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "title": "Люди как боги",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 2482,
+          "authorPixels": 2347
+        },
+        {
+          "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+          "title": "Над пропастью во ржи",
+          "writer": "Джером Дэвид Сэлинджер",
+          "visible": true,
+          "titlePixels": 1322,
+          "authorPixels": 1598
+        },
+        {
+          "key": "england:aldous_huxley:brave-new-world-editorial",
+          "title": "О дивный новый мир",
+          "writer": "Олдос Хаксли",
+          "visible": true,
+          "titlePixels": 2237,
+          "authorPixels": 1352
+        },
+        {
+          "key": "england:h_g_wells:the-world-set-free",
+          "title": "Освобожденный мир",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 2391,
+          "authorPixels": 2347
+        },
+        {
+          "key": "france:victor_hugo:les-miserables",
+          "title": "Отверженные",
+          "writer": "Виктор Гюго",
+          "visible": true,
+          "titlePixels": 563,
+          "authorPixels": 1268
+        },
+        {
+          "key": "england:h_g_wells:the-first-men-in-the-moon",
+          "title": "Первые люди на Луне",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 2433,
+          "authorPixels": 2347
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.294675317347128,
+      "maxGap": 5.29467531734781
+    },
+    {
+      "language": "ru",
+      "batch": 2,
+      "state": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 69,
+          "y": 226.046875,
+          "width": 1582,
+          "height": 774
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.23006
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:aldous_huxley:brave-new-world-editorial",
+            "title": "О дивный новый мир",
+            "sourceIndex": 18,
+            "x": 175.31327334553396,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-world-set-free",
+            "title": "Освобожденный мир",
+            "sourceIndex": 19,
+            "x": 260.89911417734226,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:victor_hugo:les-miserables",
+            "title": "Отверженные",
+            "sourceIndex": 20,
+            "x": 346.48495500915044,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-first-men-in-the-moon",
+            "title": "Первые люди на Луне",
+            "sourceIndex": 21,
+            "x": 432.07079584095874,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-food-of-the-gods",
+            "title": "Пища богов",
+            "sourceIndex": 22,
+            "x": 517.6566366727669,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:charles_dickens:a-tale-of-two-cities",
+            "title": "Повесть о двух городах",
+            "sourceIndex": 23,
+            "x": 603.2424775045753,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:dostoevsky:crime-and-punishment",
+            "title": "Преступление и наказание",
+            "sourceIndex": 24,
+            "x": 688.8283183363834,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:george_orwell:animal-farm-editorial",
+            "title": "Скотный двор",
+            "sourceIndex": 25,
+            "x": 774.4141591681918,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:number9dream",
+            "title": "Сон № 9",
+            "sourceIndex": 26,
+            "x": 860,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:ernest_hemingway:the-old-man-and-the-sea",
+            "title": "Старик и море",
+            "sourceIndex": 27,
+            "x": 945.5858408318082,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+            "title": "Тысяча осеней Якоба де Зута",
+            "sourceIndex": 28,
+            "x": 1031.1716816636163,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+            "title": "Убить пересмешника…",
+            "sourceIndex": 29,
+            "x": 1116.7575224954248,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:j_r_r_tolkien:the-hobbit",
+            "title": "Хоббит, или Туда и обратно",
+            "sourceIndex": 30,
+            "x": 1202.343363327233,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-man-in-a-case",
+            "title": "Человек в футляре",
+            "sourceIndex": 31,
+            "x": 1287.929204159041,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-black-monk",
+            "title": "Черный монах",
+            "sourceIndex": 32,
+            "x": 1373.5150449908494,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+            "title": "Великий Гэтсби",
+            "sourceIndex": 33,
+            "x": 1459.1008858226578,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+            "title": "Властелин колец",
+            "sourceIndex": 34,
+            "x": 1544.686726654466,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 122,
+            "deleted": 57,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 719,
+            "deleted": 348,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 303,
+            "deleted": 147,
+            "live": 156
+          }
+        },
+        "draws": 1329,
+        "pendingFrames": 1,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "patches": [
+        {
+          "key": "england:aldous_huxley:brave-new-world-editorial",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-world-set-free",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:victor_hugo:les-miserables",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-first-men-in-the-moon",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 322.42123441474445,
+          "width": 80.38279799973049,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-food-of-the-gods",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:charles_dickens:a-tale-of-two-cities",
+          "slot": 0,
+          "baseColor": "#406872",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:dostoevsky:crime-and-punishment",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:george_orwell:animal-farm-editorial",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:number9dream",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:ernest_hemingway:the-old-man-and-the-sea",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+          "slot": 11,
+          "baseColor": "#B34E3E",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:j_r_r_tolkien:the-hobbit",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-man-in-a-case",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-black-monk",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "books": [
+        {
+          "key": "england:aldous_huxley:brave-new-world-editorial",
+          "title": "О дивный новый мир",
+          "writer": "Олдос Хаксли",
+          "visible": true,
+          "titlePixels": 2237,
+          "authorPixels": 1352
+        },
+        {
+          "key": "england:h_g_wells:the-world-set-free",
+          "title": "Освобожденный мир",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 2391,
+          "authorPixels": 2347
+        },
+        {
+          "key": "france:victor_hugo:les-miserables",
+          "title": "Отверженные",
+          "writer": "Виктор Гюго",
+          "visible": true,
+          "titlePixels": 563,
+          "authorPixels": 1268
+        },
+        {
+          "key": "england:h_g_wells:the-first-men-in-the-moon",
+          "title": "Первые люди на Луне",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 2433,
+          "authorPixels": 2347
+        },
+        {
+          "key": "england:h_g_wells:the-food-of-the-gods",
+          "title": "Пища богов",
+          "writer": "Герберт Джордж Уэллс",
+          "visible": true,
+          "titlePixels": 2086,
+          "authorPixels": 2347
+        },
+        {
+          "key": "england:charles_dickens:a-tale-of-two-cities",
+          "title": "Повесть о двух городах",
+          "writer": "Чарльз Диккенс",
+          "visible": true,
+          "titlePixels": 2226,
+          "authorPixels": 1553
+        },
+        {
+          "key": "russia:dostoevsky:crime-and-punishment",
+          "title": "Преступление и наказание",
+          "writer": "Фёдор Михайлович Достоевский",
+          "visible": true,
+          "titlePixels": 1025,
+          "authorPixels": 1568
+        },
+        {
+          "key": "england:george_orwell:animal-farm-editorial",
+          "title": "Скотный двор",
+          "writer": "Джордж Оруэлл",
+          "visible": true,
+          "titlePixels": 1216,
+          "authorPixels": 1699
+        },
+        {
+          "key": "england:david_mitchell:number9dream",
+          "title": "Сон № 9",
+          "writer": "Дэвид Стивен Митчелл",
+          "visible": true,
+          "titlePixels": 2541,
+          "authorPixels": 4137
+        },
+        {
+          "key": "usa:ernest_hemingway:the-old-man-and-the-sea",
+          "title": "Старик и море",
+          "writer": "Эрнест Хемингуэй",
+          "visible": true,
+          "titlePixels": 1839,
+          "authorPixels": 1128
+        },
+        {
+          "key": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+          "title": "Тысяча осеней Якоба де Зута",
+          "writer": "Дэвид Стивен Митчелл",
+          "visible": true,
+          "titlePixels": 3387,
+          "authorPixels": 1992
+        },
+        {
+          "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+          "title": "Убить пересмешника…",
+          "writer": "Харпер Ли",
+          "visible": true,
+          "titlePixels": 2985,
+          "authorPixels": 1116
+        },
+        {
+          "key": "england:j_r_r_tolkien:the-hobbit",
+          "title": "Хоббит, или Туда и обратно",
+          "writer": "Джон Рональд Руэл Толкин",
+          "visible": true,
+          "titlePixels": 2702,
+          "authorPixels": 2642
+        },
+        {
+          "key": "russia:chekhov:the-man-in-a-case",
+          "title": "Человек в футляре",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1844,
+          "authorPixels": 1599
+        },
+        {
+          "key": "russia:chekhov:the-black-monk",
+          "title": "Черный монах",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1563,
+          "authorPixels": 1599
+        },
+        {
+          "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+          "title": "Великий Гэтсби",
+          "writer": "Фрэнсис Скотт Фицджеральд",
+          "visible": true,
+          "titlePixels": 1457,
+          "authorPixels": 1159
+        },
+        {
+          "key": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+          "title": "Властелин колец",
+          "writer": "Джон Рональд Руэл Толкин",
+          "visible": true,
+          "titlePixels": 1023,
+          "authorPixels": 2642
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.294675317347128,
+      "maxGap": 5.29467531734781
+    },
+    {
+      "language": "ru",
+      "batch": 3,
+      "state": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 69,
+          "y": 226.046875,
+          "width": 1582,
+          "height": 774
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.23006
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+            "title": "Убить пересмешника…",
+            "sourceIndex": 29,
+            "x": 175.31327334553396,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:j_r_r_tolkien:the-hobbit",
+            "title": "Хоббит, или Туда и обратно",
+            "sourceIndex": 30,
+            "x": 260.89911417734226,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-man-in-a-case",
+            "title": "Человек в футляре",
+            "sourceIndex": 31,
+            "x": 346.48495500915044,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-black-monk",
+            "title": "Черный монах",
+            "sourceIndex": 32,
+            "x": 432.07079584095874,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+            "title": "Великий Гэтсби",
+            "sourceIndex": 33,
+            "x": 517.6566366727669,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+            "title": "Властелин колец",
+            "sourceIndex": 34,
+            "x": 603.2424775045753,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:suzanne_collins:the-hunger-games",
+            "title": "Голодные игры",
+            "sourceIndex": 35,
+            "x": 688.8283183363834,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:jane_austen:pride-and-prejudice",
+            "title": "Гордость и предубеждение",
+            "sourceIndex": 36,
+            "x": 774.4141591681918,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+            "title": "Дон Кихот",
+            "sourceIndex": 37,
+            "x": 860,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "canada:yann_martel:life-of-pi",
+            "title": "Жизнь Пи",
+            "sourceIndex": 38,
+            "x": 945.5858408318082,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:saint_exupery:openlibrary-works-ol10263w",
+            "title": "Маленький принц",
+            "sourceIndex": 39,
+            "x": 1031.1716816636163,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:herman_melville:moby-dick",
+            "title": "Моби Дик, или Белый Кит",
+            "sourceIndex": 40,
+            "x": 1116.7575224954248,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "poland:wladyslaw_reymont:the-peasants",
+            "title": "Мужики",
+            "sourceIndex": 41,
+            "x": 1202.343363327233,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "norway:knut_hamsun:growth-of-the-soil",
+            "title": "Плоды земли",
+            "sourceIndex": 42,
+            "x": 1287.929204159041,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "austria:franz_kafka:openlibrary-works-ol498556w",
+            "title": "Превращение",
+            "sourceIndex": 43,
+            "x": 1373.5150449908494,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "canada:margaret_atwood:openlibrary-works-ol675783w",
+            "title": "Рассказ Служанки",
+            "sourceIndex": 44,
+            "x": 1459.1008858226578,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:john_galsworthy:the-forsyte-saga",
+            "title": "Сага о Форсайтах",
+            "sourceIndex": 45,
+            "x": 1544.686726654466,
+            "y": 589.0059084742111,
+            "z": 0.9581988998375073
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 155,
+            "deleted": 90,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 929,
+            "deleted": 558,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 392,
+            "deleted": 236,
+            "live": 156
+          }
+        },
+        "draws": 1897,
+        "pendingFrames": 1,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "patches": [
+        {
+          "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:j_r_r_tolkien:the-hobbit",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-man-in-a-case",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-black-monk",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 322.42123441474445,
+          "width": 80.38279799973049,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:suzanne_collins:the-hunger-games",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:jane_austen:pride-and-prejudice",
+          "slot": 8,
+          "baseColor": "#A3494E",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "canada:yann_martel:life-of-pi",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:saint_exupery:openlibrary-works-ol10263w",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:herman_melville:moby-dick",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "poland:wladyslaw_reymont:the-peasants",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "norway:knut_hamsun:growth-of-the-soil",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "austria:franz_kafka:openlibrary-works-ol498556w",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "canada:margaret_atwood:openlibrary-works-ol675783w",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:john_galsworthy:the-forsyte-saga",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "books": [
+        {
+          "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+          "title": "Убить пересмешника…",
+          "writer": "Харпер Ли",
+          "visible": true,
+          "titlePixels": 2985,
+          "authorPixels": 1116
+        },
+        {
+          "key": "england:j_r_r_tolkien:the-hobbit",
+          "title": "Хоббит, или Туда и обратно",
+          "writer": "Джон Рональд Руэл Толкин",
+          "visible": true,
+          "titlePixels": 2702,
+          "authorPixels": 2642
+        },
+        {
+          "key": "russia:chekhov:the-man-in-a-case",
+          "title": "Человек в футляре",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1844,
+          "authorPixels": 1599
+        },
+        {
+          "key": "russia:chekhov:the-black-monk",
+          "title": "Черный монах",
+          "writer": "Антон Павлович Чехов",
+          "visible": true,
+          "titlePixels": 1563,
+          "authorPixels": 1599
+        },
+        {
+          "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+          "title": "Великий Гэтсби",
+          "writer": "Фрэнсис Скотт Фицджеральд",
+          "visible": true,
+          "titlePixels": 1457,
+          "authorPixels": 1159
+        },
+        {
+          "key": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+          "title": "Властелин колец",
+          "writer": "Джон Рональд Руэл Толкин",
+          "visible": true,
+          "titlePixels": 1023,
+          "authorPixels": 2642
+        },
+        {
+          "key": "usa:suzanne_collins:the-hunger-games",
+          "title": "Голодные игры",
+          "writer": "Сьюзен Коллинз",
+          "visible": true,
+          "titlePixels": 1108,
+          "authorPixels": 1544
+        },
+        {
+          "key": "england:jane_austen:pride-and-prejudice",
+          "title": "Гордость и предубеждение",
+          "writer": "Джейн Остин",
+          "visible": true,
+          "titlePixels": 2369,
+          "authorPixels": 1389
+        },
+        {
+          "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+          "title": "Дон Кихот",
+          "writer": "Мигель де Сервантес",
+          "visible": true,
+          "titlePixels": 1771,
+          "authorPixels": 1402
+        },
+        {
+          "key": "canada:yann_martel:life-of-pi",
+          "title": "Жизнь Пи",
+          "writer": "Янн Мартел",
+          "visible": true,
+          "titlePixels": 1597,
+          "authorPixels": 1259
+        },
+        {
+          "key": "france:saint_exupery:openlibrary-works-ol10263w",
+          "title": "Маленький принц",
+          "writer": "Антуан де Сент-Экзюпери",
+          "visible": true,
+          "titlePixels": 2187,
+          "authorPixels": 3850
+        },
+        {
+          "key": "usa:herman_melville:moby-dick",
+          "title": "Моби Дик, или Белый Кит",
+          "writer": "Герман Мелвилл",
+          "visible": true,
+          "titlePixels": 2282,
+          "authorPixels": 1490
+        },
+        {
+          "key": "poland:wladyslaw_reymont:the-peasants",
+          "title": "Мужики",
+          "writer": "Владислав Станислав Реймонт",
+          "visible": true,
+          "titlePixels": 910,
+          "authorPixels": 1870
+        },
+        {
+          "key": "norway:knut_hamsun:growth-of-the-soil",
+          "title": "Плоды земли",
+          "writer": "Кнут Гамсун",
+          "visible": true,
+          "titlePixels": 1916,
+          "authorPixels": 1256
+        },
+        {
+          "key": "austria:franz_kafka:openlibrary-works-ol498556w",
+          "title": "Превращение",
+          "writer": "Франц Кафка",
+          "visible": true,
+          "titlePixels": 577,
+          "authorPixels": 1500
+        },
+        {
+          "key": "canada:margaret_atwood:openlibrary-works-ol675783w",
+          "title": "Рассказ Служанки",
+          "writer": "Маргарет Этвуд",
+          "visible": true,
+          "titlePixels": 1241,
+          "authorPixels": 1282
+        },
+        {
+          "key": "england:john_galsworthy:the-forsyte-saga",
+          "title": "Сага о Форсайтах",
+          "writer": "Джон Голсуорси",
+          "visible": true,
+          "titlePixels": 1026,
+          "authorPixels": 1138
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.294675317347128,
+      "maxGap": 5.29467531734781
+    },
+    {
+      "language": "en",
+      "batch": 0,
+      "state": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 69,
+          "y": 225.875,
+          "width": 1582,
+          "height": 774
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.23006
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 175.31327334553396,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:charles_dickens:a-tale-of-two-cities",
+            "title": "A Tale of Two Cities",
+            "sourceIndex": 1,
+            "x": 260.89911417734226,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:george_orwell:animal-farm-editorial",
+            "title": "Animal Farm",
+            "sourceIndex": 2,
+            "x": 346.48495500915044,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Ann Veronica",
+            "sourceIndex": 3,
+            "x": 432.07079584095874,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:aldous_huxley:brave-new-world-editorial",
+            "title": "Brave New World",
+            "sourceIndex": 4,
+            "x": 517.6566366727669,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Buddenbrooks",
+            "sourceIndex": 5,
+            "x": 603.2424775045753,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:dostoevsky:crime-and-punishment",
+            "title": "Crime and Punishment",
+            "sourceIndex": 6,
+            "x": 688.8283183363834,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "Fahrenheit 451",
+            "sourceIndex": 7,
+            "x": 774.4141591681918,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:ghostwritten",
+            "title": "Ghostwritten",
+            "sourceIndex": 8,
+            "x": 860,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Hamlet",
+            "sourceIndex": 9,
+            "x": 945.5858408318082,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:victor_hugo:les-miserables",
+            "title": "Les Misérables",
+            "sourceIndex": 10,
+            "x": 1031.1716816636163,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:vladimir_nabokov:lolita-editorial",
+            "title": "Lolita",
+            "sourceIndex": 11,
+            "x": 1116.7575224954248,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:flaubert:madame-bovary",
+            "title": "Madame Bovary",
+            "sourceIndex": 12,
+            "x": 1202.343363327233,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:men-like-gods",
+            "title": "Men Like Gods",
+            "sourceIndex": 13,
+            "x": 1287.929204159041,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:number9dream",
+            "title": "Number9Dream",
+            "sourceIndex": 14,
+            "x": 1373.5150449908494,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Slade House",
+            "sourceIndex": 15,
+            "x": 1459.1008858226578,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-black-monk",
+            "title": "The Black Monk",
+            "sourceIndex": 16,
+            "x": 1544.686726654466,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 65,
+            "deleted": 0,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 375,
+            "deleted": 4,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 157,
+            "deleted": 1,
+            "live": 156
+          }
+        },
+        "draws": 335,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "patches": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "slot": 0,
+          "baseColor": "#406872",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:charles_dickens:a-tale-of-two-cities",
+          "slot": 0,
+          "baseColor": "#406872",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:george_orwell:animal-farm-editorial",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 322.42123441474445,
+          "width": 80.38279799973049,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:aldous_huxley:brave-new-world-editorial",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:dostoevsky:crime-and-punishment",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "slot": 5,
+          "baseColor": "#BB5441",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:victor_hugo:les-miserables",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:number9dream",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "slot": 6,
+          "baseColor": "#508B8A",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-black-monk",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "books": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "title": "1984",
+          "writer": "George Orwell",
+          "visible": true,
+          "titlePixels": 1622,
+          "authorPixels": 2949
+        },
+        {
+          "key": "england:charles_dickens:a-tale-of-two-cities",
+          "title": "A Tale of Two Cities",
+          "writer": "Charles Dickens",
+          "visible": true,
+          "titlePixels": 2794,
+          "authorPixels": 1573
+        },
+        {
+          "key": "england:george_orwell:animal-farm-editorial",
+          "title": "Animal Farm",
+          "writer": "George Orwell",
+          "visible": true,
+          "titlePixels": 1676,
+          "authorPixels": 1392
+        },
+        {
+          "key": "england:h_g_wells:ann-veronica",
+          "title": "Ann Veronica",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 1148,
+          "authorPixels": 918
+        },
+        {
+          "key": "england:aldous_huxley:brave-new-world-editorial",
+          "title": "Brave New World",
+          "writer": "Aldous Huxley",
+          "visible": true,
+          "titlePixels": 2812,
+          "authorPixels": 1459
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "title": "Buddenbrooks",
+          "writer": "Thomas Mann",
+          "visible": true,
+          "titlePixels": 582,
+          "authorPixels": 1391
+        },
+        {
+          "key": "russia:dostoevsky:crime-and-punishment",
+          "title": "Crime and Punishment",
+          "writer": "Fyodor Dostoevsky",
+          "visible": true,
+          "titlePixels": 1177,
+          "authorPixels": 1106
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "Fahrenheit 451",
+          "writer": "Ray Bradbury",
+          "visible": true,
+          "titlePixels": 974,
+          "authorPixels": 1183
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "title": "Ghostwritten",
+          "writer": "David Stephen Mitchell",
+          "visible": true,
+          "titlePixels": 613,
+          "authorPixels": 2410
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Hamlet",
+          "writer": "William Shakespeare",
+          "visible": true,
+          "titlePixels": 1043,
+          "authorPixels": 1128
+        },
+        {
+          "key": "france:victor_hugo:les-miserables",
+          "title": "Les Misérables",
+          "writer": "Victor Hugo",
+          "visible": true,
+          "titlePixels": 996,
+          "authorPixels": 1173
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "title": "Lolita",
+          "writer": "Vladimir Nabokov",
+          "visible": true,
+          "titlePixels": 972,
+          "authorPixels": 1736
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "title": "Madame Bovary",
+          "writer": "Gustave Flaubert",
+          "visible": true,
+          "titlePixels": 1624,
+          "authorPixels": 1663
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "title": "Men Like Gods",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 2436,
+          "authorPixels": 918
+        },
+        {
+          "key": "england:david_mitchell:number9dream",
+          "title": "Number9Dream",
+          "writer": "David Stephen Mitchell",
+          "visible": true,
+          "titlePixels": 1388,
+          "authorPixels": 2410
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Slade House",
+          "writer": "David Stephen Mitchell",
+          "visible": true,
+          "titlePixels": 2059,
+          "authorPixels": 2410
+        },
+        {
+          "key": "russia:chekhov:the-black-monk",
+          "title": "The Black Monk",
+          "writer": "Chekhov",
+          "visible": true,
+          "titlePixels": 2722,
+          "authorPixels": 860
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.294675317347128,
+      "maxGap": 5.29467531734781
+    },
+    {
+      "language": "en",
+      "batch": 1,
+      "state": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 69,
+          "y": 225.875,
+          "width": 1582,
+          "height": 774
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.23006
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Buddenbrooks",
+            "sourceIndex": 5,
+            "x": 175.31327334553396,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:dostoevsky:crime-and-punishment",
+            "title": "Crime and Punishment",
+            "sourceIndex": 6,
+            "x": 260.89911417734226,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "Fahrenheit 451",
+            "sourceIndex": 7,
+            "x": 346.48495500915044,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:ghostwritten",
+            "title": "Ghostwritten",
+            "sourceIndex": 8,
+            "x": 432.07079584095874,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Hamlet",
+            "sourceIndex": 9,
+            "x": 517.6566366727669,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:victor_hugo:les-miserables",
+            "title": "Les Misérables",
+            "sourceIndex": 10,
+            "x": 603.2424775045753,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:vladimir_nabokov:lolita-editorial",
+            "title": "Lolita",
+            "sourceIndex": 11,
+            "x": 688.8283183363834,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:flaubert:madame-bovary",
+            "title": "Madame Bovary",
+            "sourceIndex": 12,
+            "x": 774.4141591681918,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:men-like-gods",
+            "title": "Men Like Gods",
+            "sourceIndex": 13,
+            "x": 860,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:number9dream",
+            "title": "Number9Dream",
+            "sourceIndex": 14,
+            "x": 945.5858408318082,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Slade House",
+            "sourceIndex": 15,
+            "x": 1031.1716816636163,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-black-monk",
+            "title": "The Black Monk",
+            "sourceIndex": 16,
+            "x": 1116.7575224954248,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:the-bone-clocks",
+            "title": "The Bone Clocks",
+            "sourceIndex": 17,
+            "x": 1202.343363327233,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+            "title": "The Catcher in the Rye",
+            "sourceIndex": 18,
+            "x": 1287.929204159041,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-duel",
+            "title": "The Duel",
+            "sourceIndex": 19,
+            "x": 1373.5150449908494,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-first-men-in-the-moon",
+            "title": "The First Men in the Moon",
+            "sourceIndex": 20,
+            "x": 1459.1008858226578,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-food-of-the-gods",
+            "title": "The Food of the Gods and How It Came to Earth",
+            "sourceIndex": 21,
+            "x": 1544.686726654466,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 83,
+            "deleted": 18,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 471,
+            "deleted": 100,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 198,
+            "deleted": 42,
+            "live": 156
+          }
+        },
+        "draws": 903,
+        "pendingFrames": 1,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "patches": [
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:dostoevsky:crime-and-punishment",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 322.42123441474445,
+          "width": 80.38279799973049,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "slot": 5,
+          "baseColor": "#BB5441",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:victor_hugo:les-miserables",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:number9dream",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "slot": 6,
+          "baseColor": "#508B8A",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-black-monk",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-first-men-in-the-moon",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-food-of-the-gods",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "books": [
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "title": "Buddenbrooks",
+          "writer": "Thomas Mann",
+          "visible": true,
+          "titlePixels": 582,
+          "authorPixels": 1391
+        },
+        {
+          "key": "russia:dostoevsky:crime-and-punishment",
+          "title": "Crime and Punishment",
+          "writer": "Fyodor Dostoevsky",
+          "visible": true,
+          "titlePixels": 1177,
+          "authorPixels": 1106
+        },
+        {
+          "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+          "title": "Fahrenheit 451",
+          "writer": "Ray Bradbury",
+          "visible": true,
+          "titlePixels": 974,
+          "authorPixels": 1183
+        },
+        {
+          "key": "england:david_mitchell:ghostwritten",
+          "title": "Ghostwritten",
+          "writer": "David Stephen Mitchell",
+          "visible": true,
+          "titlePixels": 613,
+          "authorPixels": 2410
+        },
+        {
+          "key": "england:william_shakespeare:hamlet",
+          "title": "Hamlet",
+          "writer": "William Shakespeare",
+          "visible": true,
+          "titlePixels": 1043,
+          "authorPixels": 1128
+        },
+        {
+          "key": "france:victor_hugo:les-miserables",
+          "title": "Les Misérables",
+          "writer": "Victor Hugo",
+          "visible": true,
+          "titlePixels": 996,
+          "authorPixels": 1173
+        },
+        {
+          "key": "usa:vladimir_nabokov:lolita-editorial",
+          "title": "Lolita",
+          "writer": "Vladimir Nabokov",
+          "visible": true,
+          "titlePixels": 972,
+          "authorPixels": 1736
+        },
+        {
+          "key": "france:flaubert:madame-bovary",
+          "title": "Madame Bovary",
+          "writer": "Gustave Flaubert",
+          "visible": true,
+          "titlePixels": 1624,
+          "authorPixels": 1663
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "title": "Men Like Gods",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 5018,
+          "authorPixels": 1995
+        },
+        {
+          "key": "england:david_mitchell:number9dream",
+          "title": "Number9Dream",
+          "writer": "David Stephen Mitchell",
+          "visible": true,
+          "titlePixels": 1388,
+          "authorPixels": 2410
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "title": "Slade House",
+          "writer": "David Stephen Mitchell",
+          "visible": true,
+          "titlePixels": 2059,
+          "authorPixels": 2410
+        },
+        {
+          "key": "russia:chekhov:the-black-monk",
+          "title": "The Black Monk",
+          "writer": "Chekhov",
+          "visible": true,
+          "titlePixels": 2722,
+          "authorPixels": 860
+        },
+        {
+          "key": "england:david_mitchell:the-bone-clocks",
+          "title": "The Bone Clocks",
+          "writer": "David Stephen Mitchell",
+          "visible": true,
+          "titlePixels": 2609,
+          "authorPixels": 2410
+        },
+        {
+          "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+          "title": "The Catcher in the Rye",
+          "writer": "J. D. Salinger",
+          "visible": true,
+          "titlePixels": 2555,
+          "authorPixels": 1198
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "title": "The Duel",
+          "writer": "Chekhov",
+          "visible": true,
+          "titlePixels": 1461,
+          "authorPixels": 860
+        },
+        {
+          "key": "england:h_g_wells:the-first-men-in-the-moon",
+          "title": "The First Men in the Moon",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 2360,
+          "authorPixels": 918
+        },
+        {
+          "key": "england:h_g_wells:the-food-of-the-gods",
+          "title": "The Food of the Gods and How It Came to Earth",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 2814,
+          "authorPixels": 918
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.294675317347128,
+      "maxGap": 5.29467531734781
+    },
+    {
+      "language": "en",
+      "batch": 2,
+      "state": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 69,
+          "y": 225.875,
+          "width": 1582,
+          "height": 774
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.23006
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+            "title": "The Catcher in the Rye",
+            "sourceIndex": 18,
+            "x": 175.31327334553396,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-duel",
+            "title": "The Duel",
+            "sourceIndex": 19,
+            "x": 260.89911417734226,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-first-men-in-the-moon",
+            "title": "The First Men in the Moon",
+            "sourceIndex": 20,
+            "x": 346.48495500915044,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-food-of-the-gods",
+            "title": "The Food of the Gods and How It Came to Earth",
+            "sourceIndex": 21,
+            "x": 432.07079584095874,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-history-of-mr-polly",
+            "title": "The History of Mr. Polly",
+            "sourceIndex": 22,
+            "x": 517.6566366727669,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:j_r_r_tolkien:the-hobbit",
+            "title": "The Hobbit: Or, There and Back Again",
+            "sourceIndex": 23,
+            "x": 603.2424775045753,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-lady-with-the-dog",
+            "title": "The Lady with the Dog",
+            "sourceIndex": 24,
+            "x": 688.8283183363834,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:the-man-in-a-case",
+            "title": "The Man in a Case",
+            "sourceIndex": 25,
+            "x": 774.4141591681918,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:ernest_hemingway:the-old-man-and-the-sea",
+            "title": "The Old Man and the Sea",
+            "sourceIndex": 26,
+            "x": 860,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+            "title": "The Thousand Autumns of Jacob de Zoet",
+            "sourceIndex": 27,
+            "x": 945.5858408318082,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:the-world-set-free",
+            "title": "The World Set Free",
+            "sourceIndex": 28,
+            "x": 1031.1716816636163,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+            "title": "To Kill a Mockingbird",
+            "sourceIndex": 29,
+            "x": 1116.7575224954248,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:uncle-vanya",
+            "title": "Uncle Vanya",
+            "sourceIndex": 30,
+            "x": 1202.343363327233,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "War and Peace",
+            "sourceIndex": 31,
+            "x": 1287.929204159041,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:when-the-sleeper-wakes",
+            "title": "When the Sleeper Wakes",
+            "sourceIndex": 32,
+            "x": 1373.5150449908494,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+            "title": "Don Quixote",
+            "sourceIndex": 33,
+            "x": 1459.1008858226578,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "norway:knut_hamsun:growth-of-the-soil",
+            "title": "Growth of the Soil",
+            "sourceIndex": 34,
+            "x": 1544.686726654466,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 122,
+            "deleted": 57,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 719,
+            "deleted": 348,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 303,
+            "deleted": 147,
+            "live": 156
+          }
+        },
+        "draws": 1471,
+        "pendingFrames": 1,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "patches": [
+        {
+          "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+          "slot": 14,
+          "baseColor": "#4C5580",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-first-men-in-the-moon",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-food-of-the-gods",
+          "slot": 1,
+          "baseColor": "#BF5441",
+          "x": 322.42123441474445,
+          "width": 80.38279799973049,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "slot": 11,
+          "baseColor": "#B34E3E",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:j_r_r_tolkien:the-hobbit",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "slot": 8,
+          "baseColor": "#A3494E",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:the-man-in-a-case",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:ernest_hemingway:the-old-man-and-the-sea",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+          "slot": 11,
+          "baseColor": "#B34E3E",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:the-world-set-free",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "slot": 10,
+          "baseColor": "#45739C",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "norway:knut_hamsun:growth-of-the-soil",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "books": [
+        {
+          "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+          "title": "The Catcher in the Rye",
+          "writer": "J. D. Salinger",
+          "visible": true,
+          "titlePixels": 2555,
+          "authorPixels": 1198
+        },
+        {
+          "key": "russia:chekhov:the-duel",
+          "title": "The Duel",
+          "writer": "Chekhov",
+          "visible": true,
+          "titlePixels": 1461,
+          "authorPixels": 860
+        },
+        {
+          "key": "england:h_g_wells:the-first-men-in-the-moon",
+          "title": "The First Men in the Moon",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 2360,
+          "authorPixels": 918
+        },
+        {
+          "key": "england:h_g_wells:the-food-of-the-gods",
+          "title": "The Food of the Gods and How It Came to Earth",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 2814,
+          "authorPixels": 918
+        },
+        {
+          "key": "england:h_g_wells:the-history-of-mr-polly",
+          "title": "The History of Mr. Polly",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 2760,
+          "authorPixels": 918
+        },
+        {
+          "key": "england:j_r_r_tolkien:the-hobbit",
+          "title": "The Hobbit: Or, There and Back Again",
+          "writer": "J. R. R. Tolkien",
+          "visible": true,
+          "titlePixels": 3066,
+          "authorPixels": 1290
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "title": "The Lady with the Dog",
+          "writer": "Chekhov",
+          "visible": true,
+          "titlePixels": 2660,
+          "authorPixels": 860
+        },
+        {
+          "key": "russia:chekhov:the-man-in-a-case",
+          "title": "The Man in a Case",
+          "writer": "Chekhov",
+          "visible": true,
+          "titlePixels": 2520,
+          "authorPixels": 860
+        },
+        {
+          "key": "usa:ernest_hemingway:the-old-man-and-the-sea",
+          "title": "The Old Man and the Sea",
+          "writer": "Ernest Hemingway",
+          "visible": true,
+          "titlePixels": 6006,
+          "authorPixels": 2173
+        },
+        {
+          "key": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+          "title": "The Thousand Autumns of Jacob de Zoet",
+          "writer": "David Stephen Mitchell",
+          "visible": true,
+          "titlePixels": 2892,
+          "authorPixels": 2410
+        },
+        {
+          "key": "england:h_g_wells:the-world-set-free",
+          "title": "The World Set Free",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 2332,
+          "authorPixels": 918
+        },
+        {
+          "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+          "title": "To Kill a Mockingbird",
+          "writer": "Harper Lee",
+          "visible": true,
+          "titlePixels": 1073,
+          "authorPixels": 1057
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "title": "Uncle Vanya",
+          "writer": "Chekhov",
+          "visible": true,
+          "titlePixels": 1975,
+          "authorPixels": 860
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "title": "War and Peace",
+          "writer": "Leo Tolstoy",
+          "visible": true,
+          "titlePixels": 2307,
+          "authorPixels": 1045
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "title": "When the Sleeper Wakes",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 3092,
+          "authorPixels": 918
+        },
+        {
+          "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+          "title": "Don Quixote",
+          "writer": "Miguel de Cervantes",
+          "visible": true,
+          "titlePixels": 1438,
+          "authorPixels": 1525
+        },
+        {
+          "key": "norway:knut_hamsun:growth-of-the-soil",
+          "title": "Growth of the Soil",
+          "writer": "Knut Hamsun",
+          "visible": true,
+          "titlePixels": 2157,
+          "authorPixels": 1367
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.294675317347128,
+      "maxGap": 5.29467531734781
+    },
+    {
+      "language": "en",
+      "batch": 3,
+      "state": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 69,
+          "y": 225.875,
+          "width": 1582,
+          "height": 774
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.23006
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+            "title": "To Kill a Mockingbird",
+            "sourceIndex": 29,
+            "x": 175.31327334553396,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:chekhov:uncle-vanya",
+            "title": "Uncle Vanya",
+            "sourceIndex": 30,
+            "x": 260.89911417734226,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "War and Peace",
+            "sourceIndex": 31,
+            "x": 346.48495500915044,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:h_g_wells:when-the-sleeper-wakes",
+            "title": "When the Sleeper Wakes",
+            "sourceIndex": 32,
+            "x": 432.07079584095874,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+            "title": "Don Quixote",
+            "sourceIndex": 33,
+            "x": 517.6566366727669,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "norway:knut_hamsun:growth-of-the-soil",
+            "title": "Growth of the Soil",
+            "sourceIndex": 34,
+            "x": 603.2424775045753,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "canada:yann_martel:life-of-pi",
+            "title": "Life of Pi",
+            "sourceIndex": 35,
+            "x": 688.8283183363834,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:herman_melville:moby-dick",
+            "title": "Moby-Dick; or, The Whale",
+            "sourceIndex": 36,
+            "x": 774.4141591681918,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:jane_austen:pride-and-prejudice",
+            "title": "Pride and Prejudice",
+            "sourceIndex": 37,
+            "x": 860,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:john_galsworthy:the-forsyte-saga",
+            "title": "The Forsyte Saga",
+            "sourceIndex": 38,
+            "x": 945.5858408318082,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+            "title": "The Great Gatsby",
+            "sourceIndex": 39,
+            "x": 1031.1716816636163,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "canada:margaret_atwood:openlibrary-works-ol675783w",
+            "title": "The Handmaid's Tale",
+            "sourceIndex": 40,
+            "x": 1116.7575224954248,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "usa:suzanne_collins:the-hunger-games",
+            "title": "The Hunger Games",
+            "sourceIndex": 41,
+            "x": 1202.343363327233,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "france:saint_exupery:openlibrary-works-ol10263w",
+            "title": "The Little Prince",
+            "sourceIndex": 42,
+            "x": 1287.929204159041,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+            "title": "The Lord of the Rings",
+            "sourceIndex": 43,
+            "x": 1373.5150449908494,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "austria:franz_kafka:openlibrary-works-ol498556w",
+            "title": "The Metamorphosis",
+            "sourceIndex": 44,
+            "x": 1459.1008858226578,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          },
+          {
+            "key": "poland:wladyslaw_reymont:the-peasants",
+            "title": "The Peasants",
+            "sourceIndex": 45,
+            "x": 1544.686726654466,
+            "y": 588.8340334742111,
+            "z": 0.9581988998375073
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 155,
+            "deleted": 90,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 929,
+            "deleted": 558,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 392,
+            "deleted": 236,
+            "live": 156
+          }
+        },
+        "draws": 2039,
+        "pendingFrames": 1,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "patches": [
+        {
+          "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 65.38881446351013,
+          "width": 80.38279799973063,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "slot": 10,
+          "baseColor": "#45739C",
+          "x": 151.06628778058823,
+          "width": 80.38279799973057,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 236.74376109766627,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 322.42123441474445,
+          "width": 80.38279799973049,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 408.09870773182257,
+          "width": 80.38279799973037,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "norway:knut_hamsun:growth-of-the-soil",
+          "slot": 9,
+          "baseColor": "#CC7545",
+          "x": 493.7761810489005,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "canada:yann_martel:life-of-pi",
+          "slot": 3,
+          "baseColor": "#C29043",
+          "x": 579.4536543659785,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:herman_melville:moby-dick",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 665.1311276830567,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:jane_austen:pride-and-prejudice",
+          "slot": 8,
+          "baseColor": "#A3494E",
+          "x": 750.8086010001347,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:john_galsworthy:the-forsyte-saga",
+          "slot": 13,
+          "baseColor": "#BB8B43",
+          "x": 836.4860743172128,
+          "width": 80.38279799973054,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 922.1635476342908,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "canada:margaret_atwood:openlibrary-works-ol675783w",
+          "slot": 12,
+          "baseColor": "#B08B56",
+          "x": 1007.841020951369,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "usa:suzanne_collins:the-hunger-games",
+          "slot": 4,
+          "baseColor": "#AC4141",
+          "x": 1093.518494268447,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "france:saint_exupery:openlibrary-works-ol10263w",
+          "slot": 7,
+          "baseColor": "#808A44",
+          "x": 1179.195967585525,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+          "slot": 16,
+          "baseColor": "#B07C35",
+          "x": 1264.873440902603,
+          "width": 80.38279799973043,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "austria:franz_kafka:openlibrary-works-ol498556w",
+          "slot": 15,
+          "baseColor": "#B8873E",
+          "x": 1350.550914219681,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        },
+        {
+          "key": "poland:wladyslaw_reymont:the-peasants",
+          "slot": 2,
+          "baseColor": "#889149",
+          "x": 1436.2283875367589,
+          "width": 80.38279799973066,
+          "y": 180.02632850368786,
+          "height": 365.8139310167377
+        }
+      ],
+      "books": [
+        {
+          "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+          "title": "To Kill a Mockingbird",
+          "writer": "Harper Lee",
+          "visible": true,
+          "titlePixels": 1073,
+          "authorPixels": 1057
+        },
+        {
+          "key": "russia:chekhov:uncle-vanya",
+          "title": "Uncle Vanya",
+          "writer": "Chekhov",
+          "visible": true,
+          "titlePixels": 1975,
+          "authorPixels": 860
+        },
+        {
+          "key": "russia:tolstoy:war-and-peace",
+          "title": "War and Peace",
+          "writer": "Leo Tolstoy",
+          "visible": true,
+          "titlePixels": 2307,
+          "authorPixels": 1045
+        },
+        {
+          "key": "england:h_g_wells:when-the-sleeper-wakes",
+          "title": "When the Sleeper Wakes",
+          "writer": "H G Wells",
+          "visible": true,
+          "titlePixels": 3092,
+          "authorPixels": 918
+        },
+        {
+          "key": "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+          "title": "Don Quixote",
+          "writer": "Miguel de Cervantes",
+          "visible": true,
+          "titlePixels": 1438,
+          "authorPixels": 1525
+        },
+        {
+          "key": "norway:knut_hamsun:growth-of-the-soil",
+          "title": "Growth of the Soil",
+          "writer": "Knut Hamsun",
+          "visible": true,
+          "titlePixels": 2157,
+          "authorPixels": 1367
+        },
+        {
+          "key": "canada:yann_martel:life-of-pi",
+          "title": "Life of Pi",
+          "writer": "Yann Martel",
+          "visible": true,
+          "titlePixels": 1402,
+          "authorPixels": 1190
+        },
+        {
+          "key": "usa:herman_melville:moby-dick",
+          "title": "Moby-Dick; or, The Whale",
+          "writer": "Herman Melville",
+          "visible": true,
+          "titlePixels": 3228,
+          "authorPixels": 1693
+        },
+        {
+          "key": "england:jane_austen:pride-and-prejudice",
+          "title": "Pride and Prejudice",
+          "writer": "Jane Austen",
+          "visible": true,
+          "titlePixels": 1624,
+          "authorPixels": 1138
+        },
+        {
+          "key": "england:john_galsworthy:the-forsyte-saga",
+          "title": "The Forsyte Saga",
+          "writer": "John Galsworthy",
+          "visible": true,
+          "titlePixels": 2133,
+          "authorPixels": 979
+        },
+        {
+          "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+          "title": "The Great Gatsby",
+          "writer": "Francis Scott Fitzgerald",
+          "visible": true,
+          "titlePixels": 5251,
+          "authorPixels": 3764
+        },
+        {
+          "key": "canada:margaret_atwood:openlibrary-works-ol675783w",
+          "title": "The Handmaid's Tale",
+          "writer": "Margaret Eleanor Atwood",
+          "visible": true,
+          "titlePixels": 1187,
+          "authorPixels": 2264
+        },
+        {
+          "key": "usa:suzanne_collins:the-hunger-games",
+          "title": "The Hunger Games",
+          "writer": "Suzanne Collins",
+          "visible": true,
+          "titlePixels": 2308,
+          "authorPixels": 1579
+        },
+        {
+          "key": "france:saint_exupery:openlibrary-works-ol10263w",
+          "title": "The Little Prince",
+          "writer": "Antoine de Saint-Exupéry",
+          "visible": true,
+          "titlePixels": 2637,
+          "authorPixels": 2409
+        },
+        {
+          "key": "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+          "title": "The Lord of the Rings",
+          "writer": "J. R. R. Tolkien",
+          "visible": true,
+          "titlePixels": 2648,
+          "authorPixels": 1290
+        },
+        {
+          "key": "austria:franz_kafka:openlibrary-works-ol498556w",
+          "title": "The Metamorphosis",
+          "writer": "Franz Kafka",
+          "visible": true,
+          "titlePixels": 710,
+          "authorPixels": 1205
+        },
+        {
+          "key": "poland:wladyslaw_reymont:the-peasants",
+          "title": "The Peasants",
+          "writer": "Władysław Stanisław Reymont",
+          "visible": true,
+          "titlePixels": 1232,
+          "authorPixels": 1997
+        }
+      ],
+      "topSpread": 0,
+      "bottomSpread": 0,
+      "minGap": 5.294675317347128,
+      "maxGap": 5.29467531734781
+    }
+  ],
+  "issues": []
+}

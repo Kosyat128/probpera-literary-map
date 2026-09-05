@@ -352,7 +352,6 @@ export function buildCompleteShelfBookPose({
   anchorSlot,
   phase,
   selectedBookKey,
-  focusedBookKey,
   pageTurnProgress,
   pageDirection = "forward",
   hovered = false,
@@ -374,7 +373,6 @@ export function buildCompleteShelfBookPose({
 }): CompleteShelfBookPose {
   const { spec, slotIndex } = layout;
   const selected = spec.key === selectedBookKey;
-  const focused = spec.key === focusedBookKey;
   const inspecting = selected && completeShelfPhaseHasInspection(phase);
   const gutter = resolveBookShelfInspectionGutter({
     dimensions: spec.dimensions,
@@ -423,9 +421,7 @@ export function buildCompleteShelfBookPose({
           ? 0.035
           : hovered
             ? 0.09
-            : focused
-              ? 0.025
-          : 0,
+            : 0,
     ]) as readonly [number, number, number],
     rotation: Object.freeze([
       0,

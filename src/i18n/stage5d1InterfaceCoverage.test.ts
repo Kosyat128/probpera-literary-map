@@ -201,9 +201,11 @@ describe("Stage 5D-1 English interface coverage", () => {
       ...controlledOptionLabels,
     ]);
 
-    expect(componentPhrases.size).toBe(215);
+    // Search now reuses the existing books/writers/countries phrase, so the
+    // unique inventory no longer includes its old example-only placeholder.
+    expect(componentPhrases.size).toBe(214);
     expect(controlledOptionLabels.size).toBe(61);
-    expect(inventory.size).toBe(276);
+    expect(inventory.size).toBe(275);
     expect(
       [...IDENTICAL_SYMBOL_ALLOWLIST].filter((phrase) => !inventory.has(phrase))
     ).toEqual([]);
@@ -218,7 +220,7 @@ describe("Stage 5D-1 English interface coverage", () => {
       .filter((phrase) => hasInterfaceTranslation(phrase))
       .filter((phrase) => translateInterfaceText(phrase, "en") === phrase);
 
-    expect(translatable).toHaveLength(274);
+    expect(translatable).toHaveLength(273);
     expect(missing).toEqual([]);
     expect(untranslated).toEqual([]);
   });

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "sourceMainSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "authorization": "Owner requested the attached bookshelf assignment, typography, panels and graphics refinement; authorized merge after validation on 2026-09-05.",
+  "authorization": "Owner requested the attached bookshelf assignment, typography, panels and graphics refinement; authorized merge after validation on 2026-09-05. Owner subsequently requested correction of blank spines, outside-click dismissal, aligned books and clearer controls on 2026-09-05; these two additional UI deltas remove the default manual-order chip and clarify the search placeholder. The same outside-click correction restores focus only after the scene reconnects following detail dismissal. Owner further requested improved buttons: these four exact UI deltas align the new-shelf SVG and connect the advanced-filter trigger to its existing dialog state; no data or filter semantics change.",
   "ownerReferenceSha256": "5330fd14a4c180700a8c7e82db161542aba7c09f3973ccdfe46d0cf17e907ffb",
   "scope": "UI composition and private local reading progress only. All canonical records and every source byte outside these exact deltas retain the historical aggregate fingerprint.",
   "projections": [
@@ -134,6 +134,41 @@
       "path": "src/hooks/useReadingLibrary.ts",
       "before": "    const latest = itemsRef.current.filter((item) => itemKey(item) !== key);\n    publishItems([previous, ...latest].slice(0, 200));\n    return false;\n  }, [configured, publishItems, user]);\n\n  return { items, toggle, save, remove, setStatus };\n}\n",
       "after": "    const latest = itemsRef.current.filter((item) => itemKey(item) !== key);\n    publishItems([previous, ...latest].slice(0, 200));\n    return false;\n  }, [configured, publishItems, user]);\n\n  const setDossierProgress = useCallback((id: string, input: BookDossierProgress) => {\n    const progress = parseBookDossierProgress(input);\n    if (!progress) return;\n    const current = itemsRef.current;\n    const item = current.find(entry => entry.id === id && entry.kind === \"book\");\n    if (!item || sameBookDossierLocation(item.dossierProgress, progress)) return;\n    publishItems(current.map(entry => entry === item ? { ...entry, dossierProgress: progress } : entry));\n  }, [publishItems]);\n\n  return { items, toggle, save, remove, setStatus, setDossierProgress };\n}\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "  if (filterState.sort !== \"editorial-relevance\") {",
+      "after": "  if (filterState.sort !== \"editorial-relevance\" && filterState.sort !== \"manual\") {"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "            searchPlaceholder={t(\"Например, Достоевский или Япония\")}",
+      "after": "            searchPlaceholder={t(\"Книги, авторы, страны\")}"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "        if (centerAfterClose) {\n          centerShelfScene();\n          return;\n        }",
+      "after": "        if (centerAfterClose) {\n          // Removing the detail column reconnects the scene. Focus the current\n          // node after that commit, just like the catalogue trigger restoration.\n          window.requestAnimationFrame(() => {\n            window.requestAnimationFrame(centerShelfScene);\n          });\n          return;\n        }"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "import BrandBookIcon from \"./BrandBookIcon\";",
+      "after": "import BrandBookIcon from \"./BrandBookIcon\";\nimport BrandPlusIcon from \"./BrandPlusIcon\";"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "            advancedFiltersLabel={t(\"Расширенные фильтры\")}\n            suggestions={searchSuggestions}",
+      "after": "            advancedFiltersLabel={t(\"Расширенные фильтры\")}\n            advancedFiltersOpen={advancedFiltersOpen}\n            advancedFiltersId=\"book-archive-advanced-filters\"\n            suggestions={searchSuggestions}"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "              <span aria-hidden=\"true\">＋</span>\n              {t(\"Новая полка\")}",
+      "after": "              <BrandPlusIcon />\n              {t(\"Новая полка\")}"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "            className=\"book-shelf-frame__filter-drawer\"\n            role=\"dialog\"",
+      "after": "            className=\"book-shelf-frame__filter-drawer\"\n            id=\"book-archive-advanced-filters\"\n            role=\"dialog\""
     }
   ]
 }

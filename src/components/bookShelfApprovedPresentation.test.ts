@@ -241,7 +241,7 @@ describe("approved Complete Shelf outer presentation", () => {
     expect(controller).toContain(
       "onRequestSceneCenter={resetShelfFromEmptyArea}"
     );
-    expect(sceneCanvas).toContain('!selectedBookKey && phase === "SHELF_IDLE" && event.type === "click" && event.button === 0');
+    expect(sceneCanvas).toContain('(selectedBookKey || phase === "SHELF_IDLE") && event.type === "click" && event.button === 0 && !event.altKey');
     expect(renderer).toContain(
       "completeShelfPhaseAllowsSelectionSwitch(phase)"
     );
@@ -262,9 +262,9 @@ describe("approved Complete Shelf outer presentation", () => {
     );
     expect(controller).toContain("const centerAfterClose =");
     expect(controller).toMatch(
-      /if \(centerAfterClose\) \{\s*centerShelfScene\(\);/u
+      /if \(centerAfterClose\) \{[\s\S]*?window\.requestAnimationFrame\(\(\) => \{\s*window\.requestAnimationFrame\(centerShelfScene\);/u
     );
-    expect(sceneCanvas).toMatch(/onPointerMissed=\{\(event\) => \{\s*if \(!selectedBookKey && phase === "SHELF_IDLE" && event\.type === "click" && event\.button === 0\) onRequestSceneCenter\(\);/u);
+    expect(sceneCanvas).toContain('if ((selectedBookKey || phase === "SHELF_IDLE") && event.type === "click" && event.button === 0 && !event.altKey) onRequestSceneCenter();');
     expect(sceneCanvas).toContain("BOOK_SHELF_IDLE_CAMERA_TARGET");
     expect(sceneCanvas).toContain("lookAt: [0, 0, 0] as const");
     expect(sceneCanvas).toContain("useLayoutEffect(() => {");

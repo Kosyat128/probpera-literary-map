@@ -97,23 +97,53 @@ export type BookTextLayout = Readonly<{
 
 export type BookTextMeasure = (text: string, fontSize: number) => number;
 
-type TextPart = Readonly<{ text: string; separator: string }>;
+type TextPart = Readonly<{ text: string; separator: string; discretionaryBreak?: boolean }>;
 
-function textParts(text: string): TextPart[] {
+function cyrillicSyllableParts(word: string): string[] {
+  const match = word.match(/^([А-ЯЁа-яё]+)([^А-ЯЁа-яё]*)$/u);
+  if (!match) return [word];
+  const letters = match[1];
+  const vowels = [...letters.matchAll(/[аеёиоуыэюя]/giu)].map((entry) => entry.index);
+  const breaks: number[] = [];
+  for (let index = 0; index < vowels.length - 1; index += 1) {
+    const left = vowels[index], right = vowels[index + 1];
+    let split = right - left > 2 ? right - 1 : left + 1;
+    // A soft/hard sign or short-i belongs to the preceding syllable.
+    while (/[ьъй]/iu.test(letters[split] || "")) split += 1;
+    if (split >= 2 && letters.length - split >= 2) breaks.push(split);
+  }
+  const result: string[] = [];
+  let start = 0;
+  for (const end of breaks) {
+    result.push(letters.slice(start, end));
+    start = end;
+  }
+  result.push(letters.slice(start) + match[2]);
+  return result;
+}
+
+function textParts(text: string, discretionaryHyphens: boolean | ((word: string) => boolean) = false): TextPart[] {
   const parts: TextPart[] = [];
   for (const word of text.split(/\s+/u).filter(Boolean)) {
     const cjk = /^[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]+$/u.test(word);
-    const segments = cjk ? Array.from(word) : word.match(/[^-]+-?|-/gu) ?? [word];
+    const allowBreaks = (typeof discretionaryHyphens === "function" ? discretionaryHyphens(word) : discretionaryHyphens) && !cjk && !word.includes("-");
+    // A written CamelCase boundary is already a word boundary. It needs no
+    // inserted hyphen, abbreviation, or invented Latin syllable division.
+    const camelCase = allowBreaks && /[a-z0-9][A-Z]/u.test(word);
+    const syllables = allowBreaks && !camelCase;
+    const segments = cjk ? Array.from(word) : camelCase ? word.split(/(?<=[a-z0-9])(?=[A-Z])/u) : syllables ? cyrillicSyllableParts(word) : word.match(/[^-]+-?|-/gu) ?? [word];
     segments.forEach((segment, index) => parts.push({
       text: segment,
       separator: index === 0 && parts.length ? " " : "",
+      discretionaryBreak: syllables && index < segments.length - 1,
     }));
   }
   return parts;
 }
 
 function joinedParts(parts: readonly TextPart[], start: number, end: number) {
-  return parts.slice(start, end).map((part, index) => `${index ? part.separator : ""}${part.text}`).join("");
+  const line = parts.slice(start, end).map((part, index) => `${index ? part.separator : ""}${part.text}`).join("");
+  return line + (parts[end - 1]?.discretionaryBreak ? "-" : "");
 }
 
 /** Balanced, measured lines preserve every glyph and only use legal breaks. */
@@ -121,9 +151,10 @@ export function balanceBookTextLines(
   text: string,
   maximumWidth: number,
   maximumLines: number,
-  measure: (line: string) => number
+  measure: (line: string) => number,
+  discretionaryHyphens: boolean | ((word: string) => boolean) = false
 ): readonly string[] | null {
-  const parts = textParts(text);
+  const parts = textParts(text, discretionaryHyphens);
   if (!parts.length) return Object.freeze([]);
   const count = parts.length;
   const widths = new Map<string, number>();
@@ -175,6 +206,7 @@ export function fitBookText(options: Readonly<{
   leading: number;
   maximumLines: number;
   measure: BookTextMeasure;
+  discretionaryHyphens?: boolean;
 }>): BookTextLayout {
   const text = options.text.replace(/\s+/gu, " ").trim();
   const minimum = Math.max(1, options.minimumFontSize);
@@ -183,7 +215,9 @@ export function fitBookText(options: Readonly<{
   for (let size = maximum; size >= minimum - 0.001; size = Math.max(minimum, size - 0.25)) {
     const lineHeight = size * options.leading;
     const count = Math.min(options.maximumLines, Math.floor(options.height / lineHeight));
-    const lines = balanceBookTextLines(text, options.width, count, (line) => options.measure(line, size));
+    const lines = balanceBookTextLines(text, options.width, count, (line) => options.measure(line, size), options.discretionaryHyphens
+      ? (word) => options.measure(word, minimum) > options.width
+      : false);
     if (lines) return Object.freeze({
       text, lines, fontSize: size, lineHeight,
       width: Math.max(0, ...lines.map((line) => options.measure(line, size))),

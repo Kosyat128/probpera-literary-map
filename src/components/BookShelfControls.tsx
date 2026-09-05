@@ -17,6 +17,7 @@ import BrandBookIcon from "./BrandBookIcon";
 import BrandFilterIcon from "./BrandFilterIcon";
 import BrandQuillIcon from "./BrandQuillIcon";
 import BrandSearchIcon from "./BrandSearchIcon";
+import BrandSparkleIcon from "./BrandSparkleIcon";
 
 export type BookShelfViewMode = "shelf" | "catalog";
 export type BookShelfSearchScope = "library" | "archive" | "global";
@@ -229,6 +230,8 @@ type Props = {
   formatCount: (value: number) => string;
   onOpenAdvancedFilters: () => void;
   advancedFiltersLabel: string;
+  advancedFiltersOpen?: boolean;
+  advancedFiltersId?: string;
   suggestions?: ReactNode;
   suggestionsLabel?: string;
   onSuggestionsDismiss?: () => void;
@@ -258,6 +261,8 @@ export default function BookShelfControls({
   resultCountLabel,
   onOpenAdvancedFilters,
   advancedFiltersLabel,
+  advancedFiltersOpen = false,
+  advancedFiltersId,
   suggestions,
   suggestionsLabel,
   onSuggestionsDismiss,
@@ -438,6 +443,12 @@ export default function BookShelfControls({
             aria-pressed={viewMode === "catalog"}
             onClick={() => onViewModeChange("catalog")}
           >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="4" y="4" width="6" height="6" rx="1" />
+              <rect x="14" y="4" width="6" height="6" rx="1" />
+              <rect x="4" y="14" width="6" height="6" rx="1" />
+              <rect x="14" y="14" width="6" height="6" rx="1" />
+            </svg>
             {catalogLabel}
           </button>
           <button
@@ -448,7 +459,7 @@ export default function BookShelfControls({
             aria-label={randomDescription}
             title={randomDescription}
           >
-            <span aria-hidden="true">✦</span>
+            <BrandSparkleIcon />
             {randomLabel}
           </button>
         </div>
@@ -481,10 +492,11 @@ export default function BookShelfControls({
                 onClick={() => onFilterChange(filter.id)}
                 aria-pressed={activeFilterId === filter.id}
                 disabled={filter.unavailable}
+                aria-describedby={`${controlId}-filter-${filter.id}`}
               >
                 <span className="book-filter-copy">
                   <strong>{filter.label}</strong>
-                  <small>{filter.description}</small>
+                  <small id={`${controlId}-filter-${filter.id}`}>{filter.description}</small>
                 </span>
               </button>
             ))}
@@ -495,6 +507,9 @@ export default function BookShelfControls({
             onClick={onOpenAdvancedFilters}
             aria-label={advancedFiltersLabel}
             title={advancedFiltersLabel}
+            aria-haspopup="dialog"
+            aria-expanded={advancedFiltersOpen}
+            aria-controls={advancedFiltersOpen ? advancedFiltersId : undefined}
           >
             <BrandFilterIcon />
           </button>
