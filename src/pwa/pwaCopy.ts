@@ -4,6 +4,7 @@ export interface PwaAccessCopy {
   readonly heading: string;
   readonly preparing: string;
   readonly checking: string;
+  readonly savedVerification: string;
   readonly denied: string;
   readonly expired: string;
   readonly revoked: string;
@@ -26,6 +27,7 @@ export const pwaCopy = {
       heading: "Доступ к приложению",
       preparing: "Доступ к приложению ещё готовится. Пока можно открыть журнал.",
       checking: "Проверяем доступ…",
+      savedVerification: "Используется сохранённое подтверждение доступа.",
       denied: "Не удалось подтвердить право доступа. Повторите проверку или откройте журнал.",
       expired: "Для продолжения нужна новая проверка доступа. Подключитесь к интернету и повторите попытку.",
       revoked: "Право доступа к этой версии больше не действует.",
@@ -40,6 +42,7 @@ export const pwaCopy = {
       heading: "App access",
       preparing: "App access is being prepared. You can open the journal in the meantime.",
       checking: "Checking access…",
+      savedVerification: "Using saved access verification.",
       denied: "Your access could not be verified. Try checking again or open the journal.",
       expired: "Access needs to be checked again before you can continue. Connect to the internet and try again.",
       revoked: "Your access to this edition is no longer valid.",

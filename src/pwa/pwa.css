@@ -22,6 +22,7 @@
 .pwa-access__actions :is(a, button):focus-visible { outline: 3px solid #4b087c; outline-offset: 3px; }
 .pwa-access__actions button:disabled { opacity: .65; cursor: progress; }
 .pwa-access__refresh {
+  box-sizing: border-box;
   position: fixed;
   z-index: 90;
   right: max(1rem, env(safe-area-inset-right));

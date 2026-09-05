@@ -148,3 +148,11 @@
   acceptance. S04 starts only documented parallel-safe environment preparation
   under matrix69. Current/first-open remainsS03; no native build is claimed.
   Shared App/provider/dependency changes stay coordinated with current S03 work.
+
+- D040: Saved-access verification provenance is shown independently of network
+  hints. Existing signed-grant deadlines and scene identity remain unchanged.
+  The fresh20-case b006c275 artifact run is separate from historical cross-engine
+  failures and is a local QA snapshot, not stage or editorial acceptance.
+- D041: The user explicitly authorized accepting the standard Google Android SDK
+  license and installing the SDK in this workspace. Preserve the exact reply and
+  actual installer receipt. No broader legal or production authorization follows.

@@ -1,9 +1,11 @@
 import { fileURLToPath } from "node:url";
+import { readFile } from "node:fs/promises";
 import { build } from "esbuild";
 import { chromium, expect, test } from "@playwright/test";
 
 let browser;
 let bundle;
+let stylesheet;
 
 test.beforeAll(async () => {
   // Exercise real React effects and DOM identity without installing a second
@@ -25,7 +27,10 @@ test.beforeAll(async () => {
       const counts={bootstrap:0,license:0,mounts:0,unmounts:0,error:null};
       const now=Math.floor(Date.now()/1000);
       const grant=Object.freeze({status:'authorized',validUntil:now+3600,claims:Object.freeze({v:1,iss:'test',aud:'test',sub:'independent-test-identity',product:'test',model:'one-time',status:'active',jti:'verified-test-port',iat:now-60,nbf:now-60,exp:now+3600,offlineUntil:now+1800})});
-      const client={async check(){counts.license++;return grant},getSnapshot:()=>grant};
+      const licenseQueue=[];
+      const client={async check(request){counts.license++;const result=licenseQueue.shift();
+        if(result)return{status:'denied',reason:result};
+        return request.mode==='offline'?{...grant,validUntil:grant.claims.offlineUntil}:grant},getSnapshot:()=>grant};
       const queue=[window.__editionInitial||'ready'];
       const requests=[];
       const outcome=value=>value==='ready'?{client,reason:null}:{client:null,reason:'session-denied'};
@@ -47,6 +52,7 @@ test.beforeAll(async () => {
         return h(PlatformServicesProvider,{services},h(InterfaceLanguageProvider,null,h(CatchBoundary,null,h(PwaEdition,{runtime:current},h(Child)))))}
       window.__editionHarness={
         enqueue(value){queue.push(value)},
+        enqueueLicense(...values){licenseQueue.push(...values)},connectivity(){return snapshot.connectivity},
         environment(next){snapshot=Object.freeze({...snapshot,...next});for(const fn of listeners)fn()},
         settle(index,value){requests[index].resolve(outcome(value))},replaceRuntime(){replace()},metrics(){return{...counts}},
         drain(){return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))}
@@ -58,6 +64,7 @@ test.beforeAll(async () => {
     logLevel: "silent",
   });
   bundle = result.outputFiles[0].text;
+  stylesheet = await readFile(new URL("../../src/pwa/pwa.css", import.meta.url), "utf8");
   browser = await chromium.launch({ channel: "chrome", headless: true });
 });
 test.afterAll(async () => { await browser?.close(); });
@@ -73,6 +80,7 @@ async function open(initial = "ready") {
     ? route.fulfill({ contentType: "text/html", body: '<!doctype html><html lang="ru"><head></head><body><div id="root"></div></body></html>' })
     : route.abort());
   await page.goto("https://pwa-lifecycle.test/planet/ru/");
+  await page.addStyleTag({ content: stylesheet });
   await page.evaluate(value => { window.__editionInitial = value; }, initial);
   await page.addScriptTag({ content: bundle });
   try { await page.waitForFunction(() => window.__editionHarness?.metrics().bootstrap === 1); }
@@ -107,6 +115,46 @@ test.describe("PwaEdition browser lifecycle", () => {
       expect(await page.locator("#selection").inputValue()).toBe("russia:tolstoy:war-and-peace");
       expect(await page.locator(".interface-language-control").count()).toBe(1);
       expect(await page.evaluate(() => window.__editionHarness.metrics())).toMatchObject({ bootstrap: 1, license: 1, mounts: 1, unmounts: 0 });
+    } finally { await page.close(); }
+  });
+  test("shows truthful RU/EN saved verification with an online hint, preserving the child through recovery", async () => {
+    // Controlled license outcomes exercise the product presentation path. This
+    // does not emulate transport offline or replace the separate engine evidence.
+    const page = await open();
+    try {
+      await page.setViewportSize({ width: 320, height: 680 });
+      await page.locator("#scene-probe").waitFor();
+      const original = await page.locator("#scene-probe").elementHandle();
+      const status = page.locator('[data-pwa-access-verification="saved"]');
+      await expect(status).toHaveCount(0);
+      await page.locator("#selection").fill("russia:tolstoy:war-and-peace");
+      await page.evaluate(() => { const h=window.__editionHarness; h.enqueueLicense('network-unavailable'); h.environment({visibility:'background'}); });
+      await page.evaluate(() => window.__editionHarness.drain());
+      await page.evaluate(() => window.__editionHarness.environment({visibility:'active'}));
+      await expect(status).toHaveText("Используется сохранённое подтверждение доступа.");
+      await expect(status).toHaveAttribute("role", "status");
+      await expect(status).toHaveAttribute("aria-live", "polite");
+      await expect(status).toHaveAttribute("aria-atomic", "true");
+      expect(await page.evaluate(() => window.__editionHarness.connectivity())).toBe("online");
+      for (const [label, text] of [["Английский язык", "Using saved access verification."], ["Russian", "Используется сохранённое подтверждение доступа."]]) {
+        await page.getByRole("button", { name: label, exact: true }).click();
+        await expect(status).toHaveText(text);
+        expect(await page.locator("#scene-probe").evaluate((node, first) => node === first, original)).toBe(true);
+        await expect(page.locator("#selection")).toHaveValue("russia:tolstoy:war-and-peace");
+        const box = await status.boundingBox();
+        expect(box).not.toBeNull();
+        expect(box.x).toBeGreaterThanOrEqual(0);
+        expect(box.x + box.width).toBeLessThanOrEqual(320);
+      }
+      expect(await page.evaluate(() => window.__editionHarness.metrics())).toMatchObject({bootstrap:2,license:3,mounts:1,unmounts:0});
+      await page.evaluate(() => window.__editionHarness.environment({visibility:'background'}));
+      await page.evaluate(() => window.__editionHarness.drain());
+      await page.evaluate(() => window.__editionHarness.environment({visibility:'active'}));
+      await expect(status).toHaveCount(0);
+      await expect(page.locator('.pwa-access__refresh')).toHaveCount(0);
+      expect(await page.locator("#scene-probe").evaluate((node, first) => node === first, original)).toBe(true);
+      expect(await page.evaluate(() => window.__editionHarness.metrics())).toMatchObject({bootstrap:3,license:4,mounts:1,unmounts:0});
+      expect(await page.locator(".interface-language-control").count()).toBe(1);
     } finally { await page.close(); }
   });
   test("closes through an error boundary if the runtime identity is replaced", async () => {

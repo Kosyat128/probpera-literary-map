@@ -44,7 +44,7 @@ describe("identity-bound PWA access lifecycle", () => {
     expect(client.getSnapshot).not.toHaveBeenCalled();
     const missing = controller(null);
     await missing.start(online);
-    expect(missing.getSnapshot()).toMatchObject({ grant: null, checking: false, reason: "unconfigured" });
+    expect(missing.getSnapshot()).toMatchObject({ grant: null, verificationSource: null, checking: false, reason: "unconfigured" });
   });
   it("opens only after the supplied client returns an authorized result", async () => {
     const pending = deferred<WebLicenseResult>();
@@ -55,7 +55,7 @@ describe("identity-bound PWA access lifecycle", () => {
     expect(access.getSnapshot()).toMatchObject({ grant: null, checking: true });
     pending.resolve(authorized());
     await start;
-    expect(access.getSnapshot()).toMatchObject({ checking: false, grant: { status: "authorized" } });
+    expect(access.getSnapshot()).toMatchObject({ checking: false, verificationSource: "server", grant: { status: "authorized" } });
     expect(client.check).toHaveBeenCalledWith({ mode: "online", signal: expect.any(AbortSignal) });
   });
   it("retains the existing proof throughout a valid refresh without a closed intermediate state", async () => {
@@ -69,6 +69,7 @@ describe("identity-bound PWA access lifecycle", () => {
     const unsubscribe = access.subscribe(() => snapshots.push(access.getSnapshot().grant));
     const refresh = access.refresh();
     expect(access.getSnapshot().grant).toBe(first);
+    expect(access.getSnapshot().verificationSource).toBe("server");
     expect(access.getSnapshot().checking).toBe(true);
     pending.resolve(authorized(NOW + 900));
     await refresh;
@@ -86,6 +87,7 @@ describe("identity-bound PWA access lifecycle", () => {
     expect(pwaAccessDeadline(access.getSnapshot().grant, "offline", Date.now())).toBe(NOW + 120);
     await vi.advanceTimersByTimeAsync(120_000);
     expect(access.getSnapshot().grant).toBeNull();
+    expect(access.getSnapshot().verificationSource).toBeNull();
   });
   it("cannot retain an expired offline window during the connectivity render transition", async () => {
     const grant = authorized(NOW + 600, NOW - 1);
@@ -110,6 +112,7 @@ describe("identity-bound PWA access lifecycle", () => {
     expect(client.check.mock.calls.map(([request]) => request.mode)).toEqual(["online", "online", "offline"]);
     expect(grants).not.toContain(null);
     expect(access.getSnapshot().grant?.validUntil).toBe(NOW + 120);
+    expect(access.getSnapshot().verificationSource).toBe("saved");
   });
   it("keeps only a signed in-memory offline window when durable cache is unavailable", async () => {
     const client = service();
@@ -119,8 +122,10 @@ describe("identity-bound PWA access lifecycle", () => {
     await access.start(online);
     await access.refresh();
     expect(access.getSnapshot().grant?.validUntil).toBe(NOW + 120);
+    expect(access.getSnapshot().verificationSource).toBe("saved");
     await vi.advanceTimersByTimeAsync(120_000);
     expect(access.getSnapshot().grant).toBeNull();
+    expect(access.getSnapshot().verificationSource).toBeNull();
   });
   it.each(["revoked", "refunded", "session-denied", "invalid-signature", "unknown-key", "context-mismatch", "expired", "malformed"] as const)("immediately closes for %s instead of using prior proof", async (reason) => {
     const client = service();
@@ -128,7 +133,7 @@ describe("identity-bound PWA access lifecycle", () => {
     const access = controller(client);
     await access.start(online);
     await access.refresh();
-    expect(access.getSnapshot()).toMatchObject({ grant: null, checking: false, reason });
+    expect(access.getSnapshot()).toMatchObject({ grant: null, verificationSource: null, checking: false, reason });
     expect(client.check).toHaveBeenCalledTimes(2);
   });
   it("rechecks on visibility regain without requests for an unchanged environment", async () => {
@@ -161,7 +166,7 @@ describe("identity-bound PWA access lifecycle", () => {
     await access.start(online);
     vi.setSystemTime((NOW - 1) * 1000);
     await access.refresh();
-    expect(access.getSnapshot()).toMatchObject({ grant: null, reason: "clock-skew" });
+    expect(access.getSnapshot()).toMatchObject({ grant: null, verificationSource: null, reason: "clock-skew" });
   });
   it("a superseded response cannot reopen after a newer denial", async () => {
     const old = deferred<WebLicenseResult>();
@@ -172,7 +177,7 @@ describe("identity-bound PWA access lifecycle", () => {
     await access.refresh();
     old.resolve(authorized());
     await start;
-    expect(access.getSnapshot()).toMatchObject({ grant: null, reason: "revoked" });
+    expect(access.getSnapshot()).toMatchObject({ grant: null, verificationSource: null, reason: "revoked" });
     expect(client.check.mock.calls[0][0].signal?.aborted).toBe(true);
   });
   it("stop cancels pending work and timers, and a new identity starts closed", async () => {
@@ -193,11 +198,86 @@ describe("identity-bound PWA access lifecycle", () => {
   });
 });
 
+describe("access verification provenance independent of the connectivity hint", () => {
+  it("distinguishes server and saved checks even when both signed deadlines are equal", async () => {
+    const grant = authorized(NOW + 120, NOW + 120);
+    const client = service();
+    client.check.mockResolvedValue(grant);
+    const access = controller(client);
+    await access.start(online);
+    expect(access.getSnapshot()).toMatchObject({ grant, verificationSource: "server" });
+    await access.updateEnvironment(offline);
+    expect(access.getSnapshot()).toMatchObject({ grant, verificationSource: "saved" });
+    expect(access.getSnapshot().grant).toBe(grant);
+  });
+  it.each(["network-unavailable", "timeout"] as const)("records saved proof after cold %s fallback while the hint stays online", async (reason) => {
+    const grant = { ...authorized(), validUntil: NOW + 120 };
+    const client = service();
+    client.check.mockResolvedValueOnce(denied(reason)).mockResolvedValueOnce(grant);
+    const access = controller(client);
+    await access.start(online);
+    expect(client.check.mock.calls.map(([request]) => request.mode)).toEqual(["online", "offline"]);
+    expect(access.getSnapshot()).toMatchObject({ grant, checking: false, reason: null, verificationSource: "saved" });
+    await access.updateEnvironment(online);
+    expect(client.check).toHaveBeenCalledTimes(2);
+    expect(access.getSnapshot().verificationSource).toBe("saved");
+  });
+  it("preserves saved provenance during a pending refresh and changes it only after server success", async () => {
+    const pending = deferred<WebLicenseResult>();
+    const client = service();
+    client.check.mockResolvedValueOnce({ ...authorized(), validUntil: NOW + 120 }).mockReturnValueOnce(pending.promise);
+    const access = controller(client);
+    await access.start(offline);
+    const original = access.getSnapshot().grant;
+    const refresh = access.updateEnvironment(online);
+    expect(access.getSnapshot()).toMatchObject({ grant: original, checking: true, verificationSource: "saved" });
+    expect(access.getSnapshot().grant).toBe(original);
+    pending.resolve(authorized());
+    await refresh;
+    expect(access.getSnapshot()).toMatchObject({ checking: false, verificationSource: "server" });
+  });
+  it("marks only a retained valid proof as saved after an unexpected service rejection", async () => {
+    const client = service();
+    client.check.mockResolvedValueOnce(authorized()).mockRejectedValueOnce(new Error("fixture transport failure"));
+    const access = controller(client);
+    await access.start(online);
+    await access.refresh();
+    expect(access.getSnapshot()).toMatchObject({ grant: { validUntil: NOW + 120 }, verificationSource: "saved", reason: "network-unavailable" });
+    const empty = service();
+    empty.check.mockRejectedValue(new Error("fixture transport failure"));
+    const closed = controller(empty);
+    await closed.start(online);
+    expect(closed.getSnapshot()).toMatchObject({ grant: null, verificationSource: null, reason: "network-unavailable" });
+  });
+  it("does not publish saved provenance when the fallback has no verified grant", async () => {
+    const client = service();
+    client.check.mockResolvedValueOnce(denied("timeout")).mockResolvedValueOnce(denied("no-cached-grant"));
+    const access = controller(client);
+    await access.start(online);
+    expect(access.getSnapshot()).toMatchObject({ grant: null, verificationSource: null, reason: "no-cached-grant" });
+  });
+  it("a late saved response cannot replace a newer server proof or its provenance", async () => {
+    const old = deferred<WebLicenseResult>();
+    const client = service();
+    client.check.mockReturnValueOnce(old.promise).mockResolvedValueOnce(authorized());
+    const access = controller(client);
+    const start = access.start(offline);
+    await access.updateEnvironment(online);
+    const fresh = access.getSnapshot().grant;
+    old.resolve({ ...authorized(), validUntil: NOW + 120 });
+    await start;
+    expect(access.getSnapshot().grant).toBe(fresh);
+    expect(access.getSnapshot().verificationSource).toBe("server");
+  });
+});
+
 describe("accessible preparation copy and SSR", () => {
   it("marks every new RU/EN unit as draft without inventing review or production readiness", () => {
     expect(pwaCopy).toMatchObject({ source: "ai-draft", reviewStatus: "draft", releaseReady: false, productionReady: false });
     expect(Object.keys(pwaCopy.locales.ru).sort()).toEqual(Object.keys(pwaCopy.locales.en).sort());
     expect(Object.values(pwaCopy.locales.en).every((value) => !/[\u0400-\u052f]/u.test(value))).toBe(true);
+    expect(pwaCopy.locales.ru.savedVerification).toBe("Используется сохранённое подтверждение доступа.");
+    expect(pwaCopy.locales.en.savedVerification).toBe("Using saved access verification.");
     for (const copy of Object.values(pwaCopy.locales)) {
       for (const reason of ["unconfigured", "expired", "refunded", "clock-skew", "no-cached-grant", "network-unavailable", "invalid-signature"] as const) {
         expect(pwaAccessMessage(copy, reason)).toBeTruthy();

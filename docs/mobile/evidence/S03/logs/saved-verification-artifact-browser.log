@@ -1,0 +1,86 @@
+[WebServer] (node:5724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:22892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 
+[WebServer] /planet/fonts/editorial/onest-cyrillic-ext-variable.woff2 referenced in /planet/fonts/editorial/onest-cyrillic-ext-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/onest-cyrillic-variable.woff2 referenced in /planet/fonts/editorial/onest-cyrillic-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/onest-latin-ext-variable.woff2 referenced in /planet/fonts/editorial/onest-latin-ext-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/onest-latin-variable.woff2 referenced in /planet/fonts/editorial/onest-latin-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-sans-3-latin-400-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-sans-3-latin-600-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-latin-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-sans-3-latin-700-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-serif-4-latin-400-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2 referenced in /planet/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-serif-4-latin-400-italic.woff2 referenced in /planet/fonts/editorial/source-serif-4-latin-400-italic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-serif-4-latin-600-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-latin-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/fonts/editorial/source-serif-4-latin-700-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/brand/library-archive-background-v1.webp referenced in /planet/brand/library-archive-background-v1.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/brand/library-archive-background-v1.avif referenced in /planet/brand/library-archive-background-v1.avif didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/brand/library-archive-background-mobile-v1.webp referenced in /planet/brand/library-archive-background-mobile-v1.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/brand/library-archive-background-mobile-v1.avif referenced in /planet/brand/library-archive-background-mobile-v1.avif didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/brand/atlas-side-brushes.webp referenced in /planet/brand/atlas-side-brushes.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] /planet/brand/atlas-side-brushes-mobile.webp referenced in /planet/brand/atlas-side-brushes-mobile.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+[WebServer] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+Running 20 tests using 1 worker
+
+(node:17876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [pwa-desktop] › tests\pwa\controlled-pwa.spec.mjs:42:1 › real signed access, locale and connectivity preserve the actual R3F scene (9.4s)
+  ok  2 [pwa-desktop] › tests\pwa\controlled-pwa.spec.mjs:86:1 › cold offline RU and EN launch preserve country and load first-use search (13.5s)
+  ok  3 [pwa-desktop] › tests\pwa\controlled-pwa.spec.mjs:108:1 › known revocation closes access and cannot be resurrected by offline reload (7.5s)
+  ok  4 [pwa-desktop] › tests\pwa\controlled-pwa.spec.mjs:126:1 › unsigned local paid flags and cached foreign identity cannot grant access (1.2s)
+  ok  5 [pwa-desktop] › tests\pwa\controlled-pwa.spec.mjs:141:1 › a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations (23.5s)
+  ok  6 [pwa-desktop] › tests\pwa\controlled-pwa.spec.mjs:214:1 › site worker activation preserves controlled and unrelated caches (7.7s)
+  ok  7 [pwa-desktop] › tests\pwa\offline-catalog.spec.mjs:13:1 › cold offline writer biography and works use the canonical catalog (23.4s)
+  ok  8 [pwa-desktop] › tests\pwa\offline-catalog.spec.mjs:61:1 › cold offline Dostoevsky enrichment preserves writer, works tab and actual scene across RU/EN (14.8s)
+  ok  9 [pwa-desktop] › tests\pwa\offline-catalog.spec.mjs:157:1 › canonical book favorite survives cold offline reload and locale route change (19.3s)
+  ok 10 [pwa-desktop] › tests\pwa\offline-catalog.spec.mjs:222:1 › recent writer opens outside the active country filter without replacing the globe (14.0s)
+(node:32056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 11 [pwa-mobile] › tests\pwa\controlled-pwa.spec.mjs:42:1 › real signed access, locale and connectivity preserve the actual R3F scene (12.2s)
+  ok 12 [pwa-mobile] › tests\pwa\controlled-pwa.spec.mjs:86:1 › cold offline RU and EN launch preserve country and load first-use search (10.6s)
+  ok 13 [pwa-mobile] › tests\pwa\controlled-pwa.spec.mjs:108:1 › known revocation closes access and cannot be resurrected by offline reload (5.2s)
+  ok 14 [pwa-mobile] › tests\pwa\controlled-pwa.spec.mjs:126:1 › unsigned local paid flags and cached foreign identity cannot grant access (953ms)
+  ok 15 [pwa-mobile] › tests\pwa\controlled-pwa.spec.mjs:141:1 › a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations (25.1s)
+  ok 16 [pwa-mobile] › tests\pwa\controlled-pwa.spec.mjs:214:1 › site worker activation preserves controlled and unrelated caches (11.6s)
+  ok 17 [pwa-mobile] › tests\pwa\offline-catalog.spec.mjs:13:1 › cold offline writer biography and works use the canonical catalog (25.8s)
+  ok 18 [pwa-mobile] › tests\pwa\offline-catalog.spec.mjs:61:1 › cold offline Dostoevsky enrichment preserves writer, works tab and actual scene across RU/EN (10.0s)
+  ok 19 [pwa-mobile] › tests\pwa\offline-catalog.spec.mjs:157:1 › canonical book favorite survives cold offline reload and locale route change (20.6s)
+  ok 20 [pwa-mobile] › tests\pwa\offline-catalog.spec.mjs:222:1 › recent writer opens outside the active country filter without replacing the globe (13.1s)
+
+  20 passed (4.9m)

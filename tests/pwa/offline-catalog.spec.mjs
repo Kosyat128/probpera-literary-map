@@ -81,6 +81,9 @@ test("cold offline Dostoevsky enrichment preserves writer, works tab and actual 
     // New offline document: no writer search or warm book-runtime import first.
     await page.goto("/planet/ru/?country=russia&writer=dostoevsky#atlas");
     await expect(page.locator("[data-pwa-authorized]")).toBeVisible();
+    const savedVerification = page.locator('[data-pwa-access-verification="saved"]');
+    await expect(savedVerification).toHaveText("Используется сохранённое подтверждение доступа.");
+    await expect(savedVerification).toHaveAttribute("role", "status");
     await page.locator("#atlas").scrollIntoViewIfNeeded();
     await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 45_000 });
     await expect(page.locator("#atlas canvas")).toHaveCount(1);
@@ -108,6 +111,9 @@ test("cold offline Dostoevsky enrichment preserves writer, works tab and actual 
     for (const locale of ["en", "ru"]) {
       await page.locator(".site-header .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
       await expect(page.locator("html")).toHaveAttribute("lang", locale);
+      await expect(savedVerification).toHaveText(locale === "ru"
+        ? "Используется сохранённое подтверждение доступа."
+        : "Using saved access verification.");
       await expect.poll(() => new URL(page.url()).pathname).toBe("/planet/" + locale + "/");
       expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
       expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");

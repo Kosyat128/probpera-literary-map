@@ -14,11 +14,13 @@ type AuthorizedGrant = Extract<WebLicenseResult, { status: "authorized" }>;
 type AccessMode = "online" | "offline";
 export interface PwaAccessSnapshot {
   readonly grant: AuthorizedGrant | null;
+  /** Source of the current proof, never a claim about network reachability. */
+  readonly verificationSource: "server" | "saved" | null;
   readonly checking: boolean;
   readonly reason: WebLicenseDenial | null;
   readonly observedAt: number;
 }
-const serverSnapshot: PwaAccessSnapshot = Object.freeze({ grant: null, checking: false, reason: "not-checked", observedAt: 0 });
+const serverSnapshot: PwaAccessSnapshot = Object.freeze({ grant: null, verificationSource: null, checking: false, reason: "not-checked", observedAt: 0 });
 const getServerSnapshot = () => serverSnapshot;
 const environmentMode = (environment: PlatformSnapshot): AccessMode => environment.connectivity === "offline" ? "offline" : "online";
 const transportFailure = (reason: WebLicenseDenial) => ["network-unavailable", "timeout"].includes(reason);
@@ -64,14 +66,15 @@ export function createPwaAccessController(client: WebLicenseClient | null) {
       if (environment.visibility === "active") void refresh();
     }, delay);
   }
-  function publish(grant: AuthorizedGrant | null, checking: boolean, reason: WebLicenseDenial | null) {
+  function publish(grant: AuthorizedGrant | null, checking: boolean, reason: WebLicenseDenial | null,
+    verificationSource: PwaAccessSnapshot["verificationSource"] = snapshot.verificationSource) {
     const time = now();
     if (!Number.isFinite(time)) { grant = null; reason = "clock-skew"; }
     if (grant && pwaAccessDeadline(grant, environmentMode(environment), time) === null) {
       grant = null;
       reason = environmentMode(environment) === "offline" ? "offline-expired" : "expired";
     }
-    snapshot = Object.freeze({ grant, checking, reason, observedAt: highWater });
+    snapshot = Object.freeze({ grant, verificationSource: grant ? verificationSource : null, checking, reason, observedAt: highWater });
     schedule();
     for (const listener of [...listeners]) listener();
   }
@@ -88,6 +91,7 @@ export function createPwaAccessController(client: WebLicenseClient | null) {
     const active = () => running && id === generation && !signal.aborted;
     if (!client) { publish(null, false, "unconfigured"); return; }
     const mode = environmentMode(environment);
+    let verificationSource: PwaAccessSnapshot["verificationSource"] = mode === "online" ? "server" : "saved";
     let prior = snapshot.grant;
     publish(prior, true, null);
     prior = snapshot.grant;
@@ -98,15 +102,16 @@ export function createPwaAccessController(client: WebLicenseClient | null) {
         // A failed network check narrows an existing assertion to its signed
         // offline window before a separately verified offline cache attempt.
         prior = retainedOfflineGrant(prior);
-        publish(prior, true, result.reason);
+        publish(prior, true, result.reason, "saved");
+        verificationSource = "saved";
         result = await client.check({ mode: "offline", signal });
         if (!active()) return;
       }
-      if (result.status === "authorized") publish(result, false, null);
-      else if (missingOfflineProof(result.reason)) publish(retainedOfflineGrant(prior), false, result.reason);
+      if (result.status === "authorized") publish(result, false, null, verificationSource);
+      else if (missingOfflineProof(result.reason)) publish(retainedOfflineGrant(prior), false, result.reason, "saved");
       else publish(null, false, result.reason);
     } catch {
-      if (active()) publish(retainedOfflineGrant(prior), false, "network-unavailable");
+      if (active()) publish(retainedOfflineGrant(prior), false, "network-unavailable", "saved");
     } finally {
       if (id === generation) pending = null;
     }
@@ -202,7 +207,12 @@ export default function PwaAccessBoundary({ client, children, bootstrapStatus, o
             <a href={`${canonicalJournalOrigin}/${language}/delete-account/${accountQuery}`}>{accountCopy.deleteLink}</a>
           </div>
         </main>
-      ) : snapshot.checking ? <div key="refresh" className="pwa-access__refresh" role="status" aria-live="polite">{copy.checking}</div> : null}
+      ) : snapshot.checking || snapshot.verificationSource === "saved" ? (
+        <div key="refresh" className="pwa-access__refresh" role="status" aria-live="polite" aria-atomic="true"
+          data-pwa-access-verification={snapshot.verificationSource ?? undefined}>
+          {snapshot.checking ? copy.checking : copy.savedVerification}
+        </div>
+      ) : null}
     </>
   );
 }

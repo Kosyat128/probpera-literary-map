@@ -78,3 +78,17 @@ Next S03 correction exposes server/saved verification provenance without changin
 license deadlines, cryptography or acceptance. S04 environment preparation is
 explicitly parallel-safe per evidence/S04/parallel-safe-entry.json. CurrentStageId,
 firstOpen and resume criterion remainS03; native source-only work is not acceptance.
+
+Saved-verification correction is implemented and measured:117 affected unit,6
+real Chrome component lifecycle and12 typography tests passed; types/CSS passed.
+Fresh b006c275 artifact has20/20 real Chrome scenarios and335-file independent
+audit PASS. Offline Dostoevsky/work navigation asserts RU/EN saved-access status
+while preserving the same scene. SourceInputs2712685a; sourceCommit1ef90cff plus
+recorded working changes; local QA authority, not exact RC or stage acceptance.
+Historical cross-engine4 PASS/2 FAIL remains unchanged. See S03 evidence
+saved-verification-artifact-regression.json and its byte-preserved logs.
+
+The user explicitly authorized the standard Google Android SDK license and local
+installation: "Разрешаю принять лицензию и установить SDK". Java21 is verified;
+SDK preparation proceeds in .tmp/native-tools. This scoped authorization does not
+permit store, release, deploy, merge or other agreements. S04 remains IN_PROGRESS.

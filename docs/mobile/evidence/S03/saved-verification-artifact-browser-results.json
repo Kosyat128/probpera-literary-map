@@ -1,0 +1,821 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.pwa.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\playwright.pwa.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pwa-desktop",
+        "name": "pwa-desktop",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs",
+          "offline-catalog.spec.mjs"
+        ],
+        "timeout": 120000
+      },
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-browser-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pwa-mobile",
+        "name": "pwa-mobile",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs",
+          "offline-catalog.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".tmp/pwa-browser-results/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node tests/pwa/support/local-server.mjs --port 4293 --buildqa",
+      "url": "http://127.0.0.1:4293/__pwa_qa__/ready",
+      "timeout": 120000,
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "controlled-pwa.spec.mjs",
+      "file": "controlled-pwa.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:33:16.068Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "scene-identity-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJidWlsZElkIjoiYjAwNmMyNzU3ZWU3ZTViYWNjNmI5NDZkOGM3ZGNkODgwYzA3NjBkYTc0ZmYzZDM5ZDc1MjA5NWIzOGIyNmM2ZCIsImNhbm9uaWNhbENhbnZhcyI6dHJ1ZSwic2FtZVJlbmRlcmVyIjp0cnVlLCJzYW1lQ2FtZXJhIjp0cnVlLCJzYW1lU2NlbmUiOnRydWUsImxhbmd1YWdlcyI6WyJydSIsImVuIl0sIm9mZmxpbmVSZWNvbm5lY3QiOnRydWUsImxvY2FsUWFPbmx5Ijp0cnVlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-2145bed989b04bf6835d",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "cold offline RU and EN launch preserve country and load first-use search",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13538,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:33:25.980Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-93bbdd71e99dc85e7969",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "known revocation closes access and cannot be resurrected by offline reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7521,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:33:39.546Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-11ff425ebdb079771f6b",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 108,
+          "column": 1
+        },
+        {
+          "title": "unsigned local paid flags and cached foreign identity cannot grant access",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1184,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:33:47.091Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-09f104d57053e97d5a14",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 126,
+          "column": 1
+        },
+        {
+          "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23509,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:33:48.296Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-727fedf9f4b6b32c0da7",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "site worker activation preserves controlled and unrelated caches",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7749,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:34:11.826Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-242f83d8639ad0f5dd47",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 214,
+          "column": 1
+        },
+        {
+          "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12198,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:35:33.812Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "scene-identity-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJidWlsZElkIjoiYjAwNmMyNzU3ZWU3ZTViYWNjNmI5NDZkOGM3ZGNkODgwYzA3NjBkYTc0ZmYzZDM5ZDc1MjA5NWIzOGIyNmM2ZCIsImNhbm9uaWNhbENhbnZhcyI6dHJ1ZSwic2FtZVJlbmRlcmVyIjp0cnVlLCJzYW1lQ2FtZXJhIjp0cnVlLCJzYW1lU2NlbmUiOnRydWUsImxhbmd1YWdlcyI6WyJydSIsImVuIl0sIm9mZmxpbmVSZWNvbm5lY3QiOnRydWUsImxvY2FsUWFPbmx5Ijp0cnVlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-e4e3ee3bc654acd27673",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "cold offline RU and EN launch preserve country and load first-use search",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10584,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:35:46.577Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-8789b13b52c7cfb413bf",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "known revocation closes access and cannot be resurrected by offline reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5243,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:35:57.176Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-14f6aa12640f45e07664",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 108,
+          "column": 1
+        },
+        {
+          "title": "unsigned local paid flags and cached foreign identity cannot grant access",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 953,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:36:02.439Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-ff50d502fdbd6037b710",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 126,
+          "column": 1
+        },
+        {
+          "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25087,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:36:03.410Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-23ace2d3a3e04007a3ec",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "site worker activation preserves controlled and unrelated caches",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11593,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:36:28.518Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-d956fee11c37a2b2a440",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 214,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "offline-catalog.spec.mjs",
+      "file": "offline-catalog.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "cold offline writer biography and works use the canonical catalog",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23354,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:34:19.624Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-49d6d103d37f8a487b7a",
+          "file": "offline-catalog.spec.mjs",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "cold offline Dostoevsky enrichment preserves writer, works tab and actual scene across RU/EN",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14813,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:34:42.998Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "dostoevsky-offline-locale-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJzY29wZSI6ImFjdHVhbCBsb2NhbCBRQSBhcnRpZmFjdCIsImJvb2siOiJydXNzaWE6ZG9zdG9ldnNreTpjcmltZS1hbmQtcHVuaXNobWVudCIsInRpdGxlcyI6eyJydSI6ItCf0YDQtdGB0YLRg9C/0LvQtdC90LjQtSDQuCDQvdCw0LrQsNC30LDQvdC40LUiLCJlbiI6IkNyaW1lIGFuZCBQdW5pc2htZW50In0sImxvY2FsZXMiOlsicnUiLCJlbiIsInJ1Il0sImNvbGRPZmZsaW5lIjp0cnVlLCJzYW1lRG9jdW1lbnQiOnRydWUsInNhbWVXcml0ZXJEZXRhaWwiOnRydWUsInNhbWVXb3Jrc1RhYiI6dHJ1ZSwic2FtZVdvcmtzUGFuZWwiOnRydWUsInNhbWVDYW52YXMiOnRydWUsInNhbWVSZW5kZXJlciI6dHJ1ZSwic2FtZUNhbWVyYSI6dHJ1ZSwic2FtZVNjZW5lIjp0cnVlLCJleHRlcm5hbFJlcXVlc3RzIjpbXSwicmVtb3RlTmV3c09yRG9zc2llclJlcXVlc3RzIjpbXX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-4e4a5818a241bf9a499a",
+          "file": "offline-catalog.spec.mjs",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "canonical book favorite survives cold offline reload and locale route change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19251,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:34:57.834Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-d54a943ed2c4a53f57ff",
+          "file": "offline-catalog.spec.mjs",
+          "line": 157,
+          "column": 1
+        },
+        {
+          "title": "recent writer opens outside the active country filter without replacing the globe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13981,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:35:17.107Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-ae050361c6f5030ba14a",
+          "file": "offline-catalog.spec.mjs",
+          "line": 222,
+          "column": 1
+        },
+        {
+          "title": "cold offline writer biography and works use the canonical catalog",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25825,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:36:40.172Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-adf53a7a302f35591a7a",
+          "file": "offline-catalog.spec.mjs",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "cold offline Dostoevsky enrichment preserves writer, works tab and actual scene across RU/EN",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10039,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:37:06.025Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "dostoevsky-offline-locale-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJzY29wZSI6ImFjdHVhbCBsb2NhbCBRQSBhcnRpZmFjdCIsImJvb2siOiJydXNzaWE6ZG9zdG9ldnNreTpjcmltZS1hbmQtcHVuaXNobWVudCIsInRpdGxlcyI6eyJydSI6ItCf0YDQtdGB0YLRg9C/0LvQtdC90LjQtSDQuCDQvdCw0LrQsNC30LDQvdC40LUiLCJlbiI6IkNyaW1lIGFuZCBQdW5pc2htZW50In0sImxvY2FsZXMiOlsicnUiLCJlbiIsInJ1Il0sImNvbGRPZmZsaW5lIjp0cnVlLCJzYW1lRG9jdW1lbnQiOnRydWUsInNhbWVXcml0ZXJEZXRhaWwiOnRydWUsInNhbWVXb3Jrc1RhYiI6dHJ1ZSwic2FtZVdvcmtzUGFuZWwiOnRydWUsInNhbWVDYW52YXMiOnRydWUsInNhbWVSZW5kZXJlciI6dHJ1ZSwic2FtZUNhbWVyYSI6dHJ1ZSwic2FtZVNjZW5lIjp0cnVlLCJleHRlcm5hbFJlcXVlc3RzIjpbXSwicmVtb3RlTmV3c09yRG9zc2llclJlcXVlc3RzIjpbXX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-efd6c44572da5195192a",
+          "file": "offline-catalog.spec.mjs",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "canonical book favorite survives cold offline reload and locale route change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20595,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:37:16.083Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-5b74660aad19bbae22af",
+          "file": "offline-catalog.spec.mjs",
+          "line": 157,
+          "column": 1
+        },
+        {
+          "title": "recent writer opens outside the active country filter without replacing the globe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13129,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-05T20:37:36.703Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-ae3b29b9bb7304d1fe6a",
+          "file": "offline-catalog.spec.mjs",
+          "line": 222,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-05T20:32:58.828Z",
+    "duration": 294097.542,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

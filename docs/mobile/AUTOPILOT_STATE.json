@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-05T20:24:09.932Z",
+  "updatedAt": "2026-09-05T20:48:54.602Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -523,7 +523,10 @@
         "docs/mobile/evidence/S03/post-regression-copy-normalization.json",
         "docs/mobile/evidence/S03/private-dossier-artifact-independent-review.json",
         "docs/mobile/evidence/S03/cross-engine-browser-first.json",
-        "docs/mobile/evidence/S03/cross-engine-transport-boundaries.json"
+        "docs/mobile/evidence/S03/cross-engine-transport-boundaries.json",
+        "docs/mobile/evidence/S03/saved-access-verification.json",
+        "docs/mobile/evidence/S03/saved-verification-artifact-regression.json",
+        "docs/mobile/evidence/S03/cross-engine-artifact-preservation.json"
       ],
       "externalBlockers": []
     },
@@ -10615,6 +10618,11 @@
           "docs/mobile/evidence/S04/native-entry-source-review.json"
         ]
       }
+    },
+    "s03SavedVerification": {
+      "evidence": "docs/mobile/evidence/S03/saved-verification-artifact-regression.json",
+      "buildId": "b006c2757ee7e5bacc6b946d8c7dcd880c0760da74ff3d39d752095b38b26c6d",
+      "accepted": false
     }
   },
   "externalOwnerInputsStatus": {

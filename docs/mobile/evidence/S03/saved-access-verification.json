@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "kind": "bounded-post-checkpoint-implementation-evidence",
+  "stage": "S03",
+  "checkpointBefore": "0afad0906f266dcac138aba697fc7cc97579fc7e",
+  "capturedDate": "2026-09-05",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "editorialApproval": false,
+  "finding": "A verified saved-grant fallback had no visible explanation when the browser connectivity hint remained online. Successful fallback discarded verification provenance.",
+  "implementation": [
+    "The existing PwaAccessSnapshot now records server/saved/null verificationSource separately from the browser network hint.",
+    "Pending refresh preserves prior provenance. Successful offline verification and retained bounded proof use saved. No grant, expiry, denial and clock failure clear provenance.",
+    "The existing status slot shows synchronized draft RU/EN saved-verification copy with role=status, aria-live=polite and aria-atomic=true. It does not claim the internet or server is offline.",
+    "The existing status box includes its padding and border within max-width. Real browser bounds fit the 320px viewport in both locales.",
+    "Existing child key, locale owner, identity runtime, cryptography, deadline and denial/fallback policy are preserved. No new availability probe is added."
+  ],
+  "copy": {
+    "source": "ai-draft",
+    "reviewStatus": "draft",
+    "ru": "Используется сохранённое подтверждение доступа.",
+    "en": "Using saved access verification."
+  },
+  "sourceHashKind": "raw-file-SHA256-before-Git-newline-normalization",
+  "files": [
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "beforeSha256": "f6b8b9a8e82c4a271e56a50bd097efa68be5103e058d5e147e7708e7a8a63aaf",
+      "afterSha256": "ba4f1f936b36f54e11ce00ab06b33201181e9f0a1dacb54e7239e0d6c68dd322"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.test.tsx",
+      "beforeSha256": "dcba32b90401bdc082de33263174cbf6e1ed25656c612b9c334abbe8c569a1dd",
+      "afterSha256": "49000b0e464c489c6e5e66a663384f3901415ea034144b8ad295fd591ac0f5c7"
+    },
+    {
+      "path": "src/pwa/pwaCopy.ts",
+      "beforeSha256": "450416c508e472ef9f404b11ce244a3258f983c6339076463b5f8c9b2de43dfd",
+      "afterSha256": "577e114719579e69ec68f9aa4ac7ed63033aacd88ddc7a874fcf766a5a51d319"
+    },
+    {
+      "path": "tests/pwa/pwa-edition-lifecycle.spec.mjs",
+      "beforeSha256": "c5515ec0c46758851c226588d59aed2ae41d8e9bd0b6d853167aab3fdf07bf0a",
+      "afterSha256": "c637521cb479b16740ac08e125e945239a440aacb8b95f287ae99156f8a6f56a"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "beforeSha256": "76295cb95a658c43407b30fd907daf7021056b7039379a5e7c9ff1597adc43fe",
+      "afterSha256": "40379eaa321272a5f60580144e4dc8b0311d6ed571c88405569e231321e1ce9a"
+    }
+  ],
+  "checks": [
+    {
+      "kind": "affected-unit-regression",
+      "command": "node node_modules/vitest/vitest.mjs run src/pwa/PwaAccessBoundary.test.tsx src/pwa/PwaLicenseRuntime.test.ts src/platform/adapters/web/WebLicense.test.ts --configLoader runner --maxWorkers 1 --no-file-parallelism",
+      "result": "PASS",
+      "passedTests": 117,
+      "passedFiles": 3,
+      "exitCode": 0,
+      "durationSeconds": 1.60,
+      "observedToolChunk": "cb6c36",
+      "note": "Final boundary/controller/copy bytes tested. The later CSS-only sizing rule and corrected browser selector were validated separately."
+    },
+    {
+      "kind": "typescript",
+      "command": "node node_modules/typescript/bin/tsc --noEmit -p tsconfig.json",
+      "result": "PASS",
+      "exitCode": 0,
+      "observedToolChunks": ["2f5ff7", "5417a0"]
+    },
+    {
+      "kind": "real-Chrome-component-lifecycle",
+      "command": "node node_modules/@playwright/test/cli.js test --config playwright.pwa-lifecycle.config.mjs --output .tmp/pwa-lifecycle-saved-verification-final",
+      "result": "PASS",
+      "passedTests": 6,
+      "failedTests": 0,
+      "skippedTests": 0,
+      "retries": 0,
+      "exitCode": 0,
+      "durationSeconds": 7.5,
+      "log": ".tmp/worker-review/saved-access-verification-browser.log",
+      "scope": "Real React effects, existing PwaEdition/provider/control/status and CSS, unchanged child DOM/input identity, controlled identity/license/network-hint ports on a virtual origin. No actual globe or offline transport claim."
+    },
+    {
+      "kind": "typography-auditor-regression",
+      "command": "node node_modules/vitest/vitest.mjs run scripts/audit-typography.test.mjs --configLoader runner --maxWorkers 1 --no-file-parallelism",
+      "result": "PASS",
+      "passedTests": 12,
+      "exitCode": 0,
+      "observedToolChunk": "4bd427"
+    },
+    {
+      "kind": "actual-source-typography-audit",
+      "command": "node scripts/audit-typography.mjs",
+      "result": "PASS",
+      "publicCssFiles": 25,
+      "issues": 0,
+      "exitCode": 0,
+      "observedToolChunk": "59226c"
+    },
+    {
+      "kind": "scoped-git-diff-check",
+      "result": "PASS",
+      "exitCode": 0,
+      "note": "Only the five changed product/test files were checked; existing LF-to-CRLF checkout warnings were emitted."
+    }
+  ],
+  "priorAttempts": [
+    {
+      "kind": "sandbox-browser-build-denied",
+      "result": "FAIL",
+      "failedTests": 1,
+      "notRun": 5,
+      "cause": "esbuild could not read the directory/dependencies in the sandbox before any browser test executed.",
+      "outputDirectory": ".tmp/pwa-lifecycle-saved-verification"
+    },
+    {
+      "kind": "incorrect-new-test-selector",
+      "result": "FAIL",
+      "passedTests": 5,
+      "failedTests": 1,
+      "cause": "The new test used Russian language; the canonical dictionary label is Russian. Corrected to the actual accessible name without changing product copy or timeout.",
+      "outputDirectory": ".tmp/pwa-lifecycle-saved-verification-rerun"
+    },
+    {
+      "kind": "incorrect-typescript-command",
+      "result": "FAIL",
+      "cause": "tsconfig.app.json does not exist in this repository. The subsequent actual tsconfig.json check passed."
+    }
+  ],
+  "limits": [
+    "The earlier full4479 unit run remains historical and predates this implementation. This evidence is affected regression only.",
+    "The previous 20-case artifact tests and six-case cross-engine assertions were not changed or rerun. The historical cross-engine run remains 4 passed and 2 failed.",
+    "No new PWA distribution artifact or R3F/Canvas runtime artifact acceptance is established here. The lifecycle probe is explicitly a controlled component fixture.",
+    "No production, store, deployment, merge, account, authority or editorial approval action was performed."
+  ]
+}

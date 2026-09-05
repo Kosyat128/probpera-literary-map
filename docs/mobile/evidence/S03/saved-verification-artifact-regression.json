@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "recordType": "bounded-working-artifact-regression",
+  "recordedAt": "2026-09-05T20:48:54.597Z",
+  "sourceCommit": "1ef90cff09da5b05285e476333e049b902a441fc",
+  "buildId": "b006c2757ee7e5bacc6b946d8c7dcd880c0760da74ff3d39d752095b38b26c6d",
+  "sourceInputsSha256": "2712685a1837100b89b9d226875922f0cb06790247589d363000948b2c5770e5",
+  "workingSourceBeyondCommit": true,
+  "sourceHashKind": "raw-file-SHA256-before-Git-newline-normalization",
+  "sourceFiles": [
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "sha256": "ba4f1f936b36f54e11ce00ab06b33201181e9f0a1dacb54e7239e0d6c68dd322"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.test.tsx",
+      "sha256": "49000b0e464c489c6e5e66a663384f3901415ea034144b8ad295fd591ac0f5c7"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "sha256": "40379eaa321272a5f60580144e4dc8b0311d6ed571c88405569e231321e1ce9a"
+    },
+    {
+      "path": "src/pwa/pwaCopy.ts",
+      "sha256": "577e114719579e69ec68f9aa4ac7ed63033aacd88ddc7a874fcf766a5a51d319"
+    },
+    {
+      "path": "tests/pwa/offline-catalog.spec.mjs",
+      "sha256": "eef545919a29b5de60c46dece24fc2d5576c68ce7c348210b9a233af1dc76178"
+    },
+    {
+      "path": "tests/pwa/pwa-edition-lifecycle.spec.mjs",
+      "sha256": "c637521cb479b16740ac08e125e945239a440aacb8b95f287ae99156f8a6f56a"
+    }
+  ],
+  "browser": {
+    "stats": {
+      "startTime": "2026-09-05T20:32:58.828Z",
+      "duration": 294097.542,
+      "expected": 20,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "retries": 0,
+    "result": "PASS",
+    "scope": "20 real Chrome desktop and Pixel7-viewport artifact scenarios. Existing cold offline Dostoevsky/work navigation now also asserts the accessible saved-verification status in RU/EN/RU while preserving actual Canvas, renderer, camera, scene and selection."
+  },
+  "audit": {
+    "pass": true,
+    "identity": {
+      "buildId": "b006c2757ee7e5bacc6b946d8c7dcd880c0760da74ff3d39d752095b38b26c6d",
+      "sourceCommit": "1ef90cff09da5b05285e476333e049b902a441fc",
+      "localQaAuthority": true
+    },
+    "counts": {
+      "files": 335,
+      "bytes": 38355231,
+      "bootstrapFiles": 295,
+      "bootstrapBytes": 18415894,
+      "sourceInputs": 919,
+      "publicSources": 268,
+      "scripts": 39
+    },
+    "findings": [],
+    "releaseReady": false,
+    "limitations": [
+      "Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.",
+      "Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required."
+    ]
+  },
+  "evidenceFiles": [
+    {
+      "path": "docs/mobile/evidence/S03/logs/saved-verification-artifact-browser.log",
+      "sha256": "dc0e560cf1acabcca25d1dc671ad35df473496b7c661074ab94540066bd62d1f",
+      "bytes": 10028
+    },
+    {
+      "path": "docs/mobile/evidence/S03/saved-verification-artifact-audit.json",
+      "sha256": "877aa2044c5703b4aca600a30f7b6888ca3bee63eca555de0556b455785a01fb",
+      "bytes": 815
+    },
+    {
+      "path": "docs/mobile/evidence/S03/saved-verification-artifact-browser-results.json",
+      "sha256": "b4761339acb214f02294f17ce38226db186a3d1dbf42cc30111c5dcde73fa53f",
+      "bytes": 27730
+    },
+    {
+      "path": "docs/mobile/evidence/S03/saved-verification-artifact-manifest.json",
+      "sha256": "6dc25b0b7fcc472efb69b19cbcf274ed79204134f92cc13b742ce2a555699f37",
+      "bytes": 200532
+    },
+    {
+      "path": "docs/mobile/evidence/S03/logs/saved-access-verification-lifecycle.log",
+      "sha256": "383e130f365b4cda463dc3ad368009e2af3fef65845af6f54b8f6aa53a1c8bdc",
+      "bytes": 1278
+    }
+  ],
+  "componentEvidence": {
+    "path": "docs/mobile/evidence/S03/saved-access-verification.json",
+    "sha256": "349e36cc3e13872d82cfb7e9e76fa9a621475b717c59f2fecb4dc14b4df892a0"
+  },
+  "historicalCrossEngine": {
+    "passed": 4,
+    "failed": 2,
+    "changedByThisReport": false
+  },
+  "localQaAuthority": true,
+  "releaseReady": false,
+  "stageAccepted": false,
+  "editorialApproval": false,
+  "limits": [
+    "Working snapshot with local QA authority; not an exact release candidate, native build or real purchase.",
+    "The previous full4479 unit run and cross-engine failures remain historical; this report does not relabel them.",
+    "Later source changes require fresh source-input verification; captured artifact and source hashes retain their historical meaning."
+  ]
+}

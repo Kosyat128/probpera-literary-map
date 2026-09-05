@@ -1,0 +1,13 @@
+
+Running 6 tests using 1 worker
+
+(node:6360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\pwa\pwa-edition-lifecycle.spec.mjs:93:3 › PwaEdition browser lifecycle › does not bootstrap when hidden and rechecks exactly once on visibility regain (1.0s)
+  ok 2 tests\pwa\pwa-edition-lifecycle.spec.mjs:106:3 › PwaEdition browser lifecycle › keeps the same child DOM and semantic input across canonical RU/EN switching (879ms)
+  ok 3 tests\pwa\pwa-edition-lifecycle.spec.mjs:120:3 › PwaEdition browser lifecycle › shows truthful RU/EN saved verification with an online hint, preserving the child through recovery (1.1s)
+  ok 4 tests\pwa\pwa-edition-lifecycle.spec.mjs:160:3 › PwaEdition browser lifecycle › closes through an error boundary if the runtime identity is replaced (765ms)
+  ok 5 tests\pwa\pwa-edition-lifecycle.spec.mjs:172:3 › PwaEdition browser lifecycle › an old pending bootstrap cannot reopen after a newer connectivity denial (748ms)
+  ok 6 tests\pwa\pwa-edition-lifecycle.spec.mjs:184:3 › PwaEdition browser lifecycle › an old pending bootstrap cannot close a newer successful retry (905ms)
+
+  6 passed (7.5s)
