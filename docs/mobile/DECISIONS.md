@@ -23,3 +23,11 @@
   official requirements take precedence; partial or unavailable sources remain
   labelled, never converted to PASS. Recheck at RC and before any authorized upload.
 - D009: On resume current remote main advanced to 0a348bd4 (#173, #175, #176). Preserve the e073 baseline evidence as historical, checkpoint S00, rebase locally and rerun affected baseline checks before S01. This is not a production merge.
+- D010: Rebased intake commit is 14586b08. Upstream independently implemented
+  fixed-point metadata normalization with a 32-pass limit; keep that bounded
+  implementation and our additional entity/control/NFC/CRLF regressions.
+- D011: Another local typography checkout linked its node_modules to V12 and
+  retained a loaded Rollup DLL. Preserve that running process. npm ci could not
+  unlink the DLL; npm install --ignore-scripts restored the exact checked-in
+  dependency graph. Git confirms package.json, package-lock.json and admin
+  package.json have no changes. Installation does not prove tests or builds pass.

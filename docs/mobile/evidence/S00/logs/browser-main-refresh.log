@@ -1,0 +1,19 @@
+[WebServer] (node:41744) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:31596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [desktop-chromium] › tests\e2e\cms-direct-edit.spec.mjs:5:1 › редактор выбирает текст внутри фона главной и сохраняет прямое редактирование полей (4.0s)
+  ok  2 [desktop-chromium] › tests\e2e\header-hero-polish.spec.mjs:26:1 › RU and EN hero copy, calls to action and proof stay readable across the matrix (21.9s)
+  ok  3 [desktop-chromium] › tests\e2e\header-hero-polish.spec.mjs:99:1 › desktop menus stay viewport-safe and return keyboard focus on Escape (7.2s)
+  ok  4 [desktop-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:112:1 › embedded atlas enters one-canvas immersion and Escape restores scroll and focus (9.4s)
+  ok  5 [desktop-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:229:1 › country selection replaces the immersive entry and survives Back/Forward without remounting Canvas (9.8s)
+  ok  6 [desktop-chromium] › tests\e2e\typography-and-card-geometry.spec.mjs:48:3 › ru: complete card text, footer geometry and local fonts at ten widths (15.5s)
+  ok  7 [desktop-chromium] › tests\e2e\typography-and-card-geometry.spec.mjs:79:3 › ru: archive and reader reflow, body scale and heading isolation (17.8s)
+  ok  8 [desktop-chromium] › tests\e2e\typography-and-card-geometry.spec.mjs:48:3 › en: complete card text, footer geometry and local fonts at ten widths (6.9s)
+  ok  9 [desktop-chromium] › tests\e2e\typography-and-card-geometry.spec.mjs:79:3 › en: archive and reader reflow, body scale and heading isolation (7.9s)
+  ok 10 [desktop-chromium] › tests\e2e\typography-and-card-geometry.spec.mjs:173:1 › published CMS typography wins over defaults and the layout supports 200/400 percent reflow (3.5s)
+
+  10 passed (1.9m)

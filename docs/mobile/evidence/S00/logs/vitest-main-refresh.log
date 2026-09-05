@@ -1,0 +1,52 @@
+
+ RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work
+
+ ❯ scripts/normalize-cms-snapshot-metadata.test.mjs (8 tests | 1 failed) 207ms
+     × keeps the CLI check read-only, accepts CRLF and reports real metadata drift 197ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/normalize-cms-snapshot-metadata.test.mjs > CMS metadata normalization stability > keeps the CLI check read-only, accepts CRLF and reports real metadata drift
+AssertionError: expected 'node:internal/modules/esm/resolve:272…' to be '' // Object.is equality
+
+- Expected
++ Received
+
++ node:internal/modules/esm/resolve:272
++     throw new ERR_MODULE_NOT_FOUND(
++           ^
++ 
++ Error [ERR_MODULE_NOT_FOUND]: Cannot find module 'D:\CodexData\Temp\probpera-metadata-test-7356ac\scripts\lib\short-hyphens.mjs' imported from D:\CodexData\Temp\probpera-metadata-test-7356ac\scripts\editorial-publication-fixes.mjs
++     at finalizeResolution (node:internal/modules/esm/resolve:272:11)
++     at moduleResolve (node:internal/modules/esm/resolve:879:10)
++     at defaultResolve (node:internal/modules/esm/resolve:1006:11)
++     at #cachedDefaultResolve (node:internal/modules/esm/loader:705:20)
++     at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)
++     at ModuleLoader.resolveSync (node:internal/modules/esm/loader:763:56)
++     at #resolve (node:internal/modules/esm/loader:687:17)
++     at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:607:35)
++     at ModuleJob.syncLink (node:internal/modules/esm/module_job:276:33)
++     at ModuleJob.link (node:internal/modules/esm/module_job:381:17) {
++   code: 'ERR_MODULE_NOT_FOUND',
++   url: 'file:///D:/CodexData/Temp/probpera-metadata-test-7356ac/scripts/lib/short-hyphens.mjs'
++ }
++ 
++ Node.js v24.20.0
++
+
+ ❯ scripts/normalize-cms-snapshot-metadata.test.mjs:117:29
+    115|       ], { cwd: fixture, encoding: "utf8" });
+    116|
+    117|       const repair = run("--write");
+       |                             ^
+    118|       expect(repair.stderr).toBe("");
+    119|       expect(repair.status).toBe(0);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 506 passed | 3 skipped (510)
+      Tests  1 failed | 2946 passed | 4 skipped (2951)
+   Start at  06:08:08
+   Duration  133.73s (transform 30.08s, setup 0ms, import 211.33s, tests 119.15s, environment 92ms)
+

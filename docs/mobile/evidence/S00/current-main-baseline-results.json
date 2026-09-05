@@ -1,0 +1,133 @@
+{
+  "stage": "S00",
+  "kind": "current-main-baseline-acceptance",
+  "status": "PASS",
+  "capturedAt": "2026-09-05T03:16:17.796Z",
+  "baseMainSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
+  "sourceCommit": "14586b08d9901429050aee2d6f1a77195aebf433",
+  "pendingSourceChange": "CLI fixture now includes upstream short-hyphens dependency",
+  "checks": [
+    {
+      "name": "pinned_v12_integrity",
+      "status": "PASS",
+      "checksumEntries": 194,
+      "manifestFiles": 191,
+      "bindingDocuments": 173
+    },
+    {
+      "name": "full_vitest_after_fix",
+      "status": "PASS",
+      "passedFiles": 507,
+      "passedTests": 2947,
+      "skippedFiles": 3,
+      "skippedTests": 4,
+      "log": "logs/vitest-main-refresh-regression.log",
+      "note": "Existing skips include PostgreSQL permission integration requiring Docker; not waived for final release."
+    },
+    {
+      "name": "metadata_and_requirements_narrow",
+      "status": "PASS",
+      "files": 3,
+      "tests": 27,
+      "log": "logs/vitest-main-refresh-narrow.log"
+    },
+    {
+      "name": "public_types_and_typography",
+      "status": "PASS",
+      "cssFiles": 18,
+      "issues": 0,
+      "log": "logs/lint-main-refresh.log"
+    },
+    {
+      "name": "local_domain_build",
+      "status": "PASS",
+      "domainChecks": 12876,
+      "seoChecks": 5513,
+      "seoPages": 180,
+      "log": "logs/build-domain-main-refresh.log"
+    },
+    {
+      "name": "admin_build_and_client_secret_audit",
+      "status": "PASS_WITH_WARNINGS",
+      "log": "logs/admin-build-main-refresh.log",
+      "note": "Framework Edge runtime/middleware and build-cache warnings retained; no production deployment."
+    },
+    {
+      "name": "browser",
+      "status": "PASS",
+      "tests": 10,
+      "log": "logs/browser-main-refresh.log",
+      "scope": "RU/EN ten-width cards, reader reflow, 200/400 percent reflow, Header/Hero/menu, direct edit, Canvas identity and Back/Forward."
+    },
+    {
+      "name": "canonical_delta",
+      "status": "PASS",
+      "evidence": "current-main-canonical-delta.json",
+      "unchangedHistoricalFiles": 61,
+      "checkedHistoricalFiles": 67
+    },
+    {
+      "name": "dependency_lock_preservation",
+      "status": "PASS",
+      "note": "git diff confirmed package.json/package-lock.json/admin package unchanged after restoring exact dependencies."
+    }
+  ],
+  "logs": [
+    {
+      "path": "logs/npm-ci-main-refresh.log",
+      "bytes": 1266,
+      "sha256": "87c3fc5937daa94077b363ffe73a4913ede51661515fd163b3074df99a8385a0"
+    },
+    {
+      "path": "logs/npm-ci-main-refresh-retry.log",
+      "bytes": 1344,
+      "sha256": "20924575bbb3eb6e4fdae6337082eb1e3ad3712eabaf04fcc3f0d1d6156c6f10"
+    },
+    {
+      "path": "logs/npm-install-lock-refresh.log",
+      "bytes": 1452,
+      "sha256": "ad5c9a5cb0821de20eb240f03ccfcca0bdf4c6d5ec3e8c04134956a4fea5b501"
+    },
+    {
+      "path": "logs/vitest-main-refresh.log",
+      "bytes": 2520,
+      "sha256": "b672a292ebe889ca71f275d87fbfb00e021a705a0a15abba286b4e0904032c05"
+    },
+    {
+      "path": "logs/vitest-main-refresh-narrow.log",
+      "bytes": 281,
+      "sha256": "74d2f0ea6dba9a654b02c2661c78fc134509b6516be0bd399f3cbe5f16b66770"
+    },
+    {
+      "path": "logs/vitest-main-refresh-regression.log",
+      "bytes": 322,
+      "sha256": "0e4da387189b71cc18f79dd5ab9f56ece0cf52aa8c02335a549195e76e9b5f04"
+    },
+    {
+      "path": "logs/lint-main-refresh.log",
+      "bytes": 214,
+      "sha256": "603de491f6013d0bdcb51c1fff3beb201b0ebbb5ed9dbeab8ea5561a2fbd082d"
+    },
+    {
+      "path": "logs/build-domain-main-refresh.log",
+      "bytes": 7581,
+      "sha256": "b7cc5359f2d666af16d0dbeb655b5d719389cce0153038f1f15c3a99e7f0b1f5"
+    },
+    {
+      "path": "logs/admin-build-main-refresh.log",
+      "bytes": 3146,
+      "sha256": "3a3423d00b15a4a1e7c7340c1cfd7bf412eb8b22e9c1909142207dc6357b12c4"
+    },
+    {
+      "path": "logs/browser-main-refresh.log",
+      "bytes": 2184,
+      "sha256": "290e322c3e917e5d87bbb1754d2ea6ac5ca83aa439e05db2fc45b97500c2fc2f"
+    }
+  ],
+  "limitations": [
+    "S00 baseline acceptance is not S01-S40 product completion.",
+    "No native artifact, complete bilingual production content, editorial/legal approval, RC screenshot or store release is asserted.",
+    "Historical Pages failures remain historical; no live deployment fix was claimed."
+  ],
+  "v12ReleaseReady": false
+}

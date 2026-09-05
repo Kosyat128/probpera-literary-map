@@ -74,6 +74,7 @@ describe("CMS metadata normalization stability", () => {
         "scripts/lib/article-route-policy.mjs",
         "scripts/lib/cms-legacy-withdrawals.mjs",
         "scripts/lib/cms-publication-state.mjs",
+        "scripts/lib/short-hyphens.mjs",
         "src/data/articles/sectionRoutes.json",
       ]) {
         const destination = path.join(fixture, relativePath);

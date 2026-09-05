@@ -15,7 +15,10 @@ The active task is the user's V12 bilingual product request, based on canonical
   Canvas/renderer. Locale and presentation changes must preserve scene and
   semantic state. Canonical CMS facts, real portraits and flag assets stay shared.
 - Preserve the approved header, hero, orange/violet brand and antique globe
-  defaults. Native imports belong only in platform adapters.
+  defaults from current main. Its typography scope allows the documented open
+  Sections/Articles panel and embedded control-row refinements; see
+  `reports/master-typography-and-card-geometry.md`. Native imports belong only
+  in platform adapters.
 - Paid base plus optional non-consumables; SAFE_PAID_BILINGUAL_V1. Child mode is
   local and deny-by-default; no child advertising, tracking or open AI chat.
 - No unlicensed protected assets in production builds, manifests, screenshots,

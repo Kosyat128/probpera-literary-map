@@ -1,0 +1,16 @@
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+npm warn deprecated glob@9.3.5: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn cleanup Failed to remove some directories [
+npm warn cleanup   [
+npm warn cleanup     'C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@rollup\\.rollup-win32-x64-msvc-6luaPtyb',
+npm warn cleanup     [Error: EPERM: operation not permitted, unlink 'C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\node_modules\@rollup\.rollup-win32-x64-msvc-6luaPtyb\rollup.win32-x64-msvc.node'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'unlink',
+npm warn cleanup       path: 'C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@rollup\\.rollup-win32-x64-msvc-6luaPtyb\\rollup.win32-x64-msvc.node'
+npm warn cleanup     }
+npm warn cleanup   ]
+npm warn cleanup ]
+
+added 507 packages, removed 27 packages, and changed 89 packages in 41s
