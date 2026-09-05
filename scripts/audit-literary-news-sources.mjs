@@ -1,12 +1,11 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createNewsService } from "./lib/literary-news-feed.mjs";
+import { LITERARY_NEWS_SOURCES } from "./lib/literary-news-sources.mjs";
 
-const sourcesFile = new URL("../data/news/sources.json", import.meta.url);
 const reportDirectory = new URL("../reports/", import.meta.url);
 const evidenceDirectory = new URL("../.tmp/literary-news-evidence/", import.meta.url);
-const sources = JSON.parse(await readFile(sourcesFile, "utf8"));
-const service = createNewsService({ sources, readReviewed: () => [] });
+const service = createNewsService({ sources: LITERARY_NEWS_SOURCES, readReviewed: () => [] });
 
 try {
   await service.refresh();

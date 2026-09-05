@@ -1,4 +1,5 @@
 import { load } from "cheerio";
+import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 
 const DEFAULT_TIME_ZONE = "UTC";
 const CATEGORIES = new Set([
@@ -262,7 +263,7 @@ function discover(document, source, discoveredAt) {
 
 /** Local discovery only: remote headlines never become public news without review. */
 export function createNewsService({
-  sources,
+  sources = LITERARY_NEWS_SOURCES,
   readReviewed,
   fetchImpl = fetch,
   now = () => new Date(),
@@ -282,7 +283,8 @@ export function createNewsService({
     const format = source.format || "html";
     if (!url || !source.id || seenSources.has(source.id) || !source.name
       || !validLanguage(source.language) || !["html", "rss", "atom"].includes(format)
-      || (source.linkPattern !== undefined && typeof source.linkPattern !== "string")
+      || (source.linkPattern !== undefined && (!(source.linkPattern instanceof RegExp) || source.linkPattern.global || source.linkPattern.sticky))
+      || (source.keywordPattern !== undefined && (!(source.keywordPattern instanceof RegExp) || source.keywordPattern.global || source.keywordPattern.sticky))
       || (format === "html" && !source.linkPattern)
       || (source.region !== undefined && !REGIONS.has(source.region))
       || (source.topics !== undefined && (!Array.isArray(source.topics) || source.topics.some((topic) => !CATEGORIES.has(topic))))
@@ -306,10 +308,13 @@ export function createNewsService({
     return {
       ...source, format, url: url.href, origin: url.origin, articleOrigins,
       language: new Intl.Locale(source.language).toString(), region: source.region || "global",
-      topics: [...new Set(source.topics || [])], pattern: new RegExp(source.linkPattern || "^/"),
-      keywordPattern: source.keywordPattern ? new RegExp(source.keywordPattern, "iu") : null,
+      topics: [...new Set(source.topics || [])], pattern: source.linkPattern || /^\//,
+      keywordPattern: source.keywordPattern || null,
     };
   });
+  if (fetchImpl === fetch && sources.some((source) => !LITERARY_NEWS_SOURCES.includes(source))) {
+    throw new TypeError("News source is not in the approved code-owned registry");
+  }
   const metadata = (source) => ({
     id: source.id, name: source.name, url: source.url, format: source.format,
     language: source.language, region: source.region, topics: [...source.topics],

@@ -2,12 +2,12 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { createNewsService } from './lib/literary-news-feed.mjs';
+import { LITERARY_NEWS_SOURCES } from './lib/literary-news-sources.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dataFile = new URL('../data/news/reviewed.json', import.meta.url);
-const sources = JSON.parse(await readFile(new URL('../data/news/sources.json', import.meta.url), 'utf8'));
 const service = createNewsService({
-  sources,
+  sources: LITERARY_NEWS_SOURCES,
   readReviewed: async () => JSON.parse(await readFile(dataFile, 'utf8')),
 });
 const port = Number(process.env.LITERARY_NEWS_PORT || 5188);

@@ -1,11 +1,12 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { createNewsService } from "./literary-news-feed.mjs";
+import { LITERARY_NEWS_SOURCES } from "./literary-news-sources.mjs";
 
 const CURRENT = new Date("2026-09-05T12:00:00.000Z");
 const SOURCE = {
   id: "publisher", name: "Example Publisher", url: "https://publisher.example/news/",
-  language: "en", linkPattern: "^/news/[^/]+/?$",
+  language: "en", linkPattern: /^\/news\/[^/]+\/?$/,
 };
 const HTML = '<a href="/news/new-book?utm_source=news#top">A new book announced by its publisher</a>';
 const RECORD = {
@@ -28,6 +29,34 @@ function service(t, options = {}) {
   t.after(() => instance.close());
   return instance;
 }
+
+test("production sources are immutable approved endpoints with compiled patterns", () => {
+  assert.equal(LITERARY_NEWS_SOURCES.length, 29);
+  assert.equal(new Set(LITERARY_NEWS_SOURCES.map((source) => source.id)).size, 29);
+  assert.ok(Object.isFrozen(LITERARY_NEWS_SOURCES));
+  for (const source of LITERARY_NEWS_SOURCES) {
+    assert.ok(Object.isFrozen(source));
+    assert.equal(new URL(source.url).protocol, "https:");
+    if (source.linkPattern) assert.ok(source.linkPattern instanceof RegExp && Object.isFrozen(source.linkPattern));
+    if (source.keywordPattern) assert.ok(source.keywordPattern instanceof RegExp && Object.isFrozen(source.keywordPattern));
+    if (source.articleOrigins) assert.ok(Object.isFrozen(source.articleOrigins));
+  }
+});
+
+test("serialized patterns and unapproved network destinations are rejected before a request", () => {
+  assert.throws(() => createNewsService({
+    sources: [{ ...SOURCE, linkPattern: "^(a+)+$" }], readReviewed: () => [],
+  }), /Invalid news source configuration/);
+  assert.throws(() => createNewsService({
+    sources: [{ ...SOURCE, keywordPattern: "^(a+)+$" }], readReviewed: () => [],
+  }), /Invalid news source configuration/);
+  assert.throws(() => createNewsService({
+    sources: [{ ...SOURCE, format: "rss", url: "https://127.0.0.1/private" }], readReviewed: () => [],
+  }), /not in the approved code-owned registry/);
+  assert.throws(() => createNewsService({
+    sources: [{ ...LITERARY_NEWS_SOURCES[0], url: "https://elsewhere.example/" }], readReviewed: () => [],
+  }), /not in the approved code-owned registry/);
+});
 
 test("first feed does not wait for discovery, while concurrent refreshes share a request", async (t) => {
   let finish;

@@ -1,4 +1,8 @@
-[
+/**
+ * Approved discovery endpoints and selectors. Changes require code review.
+ * Network destinations and executable patterns must never come from JSON, requests, or source HTML.
+ */
+const approvedSources = [
   {
     "id": "booker",
     "name": "The Booker Prizes",
@@ -10,14 +14,14 @@
       "publishing"
     ],
     "format": "html",
-    "linkPattern": "^/media-centre/press-releases/[^/]+/?$"
+    "linkPattern": /^\/media-centre\/press-releases\/[^/]+\/?$/
   },
   {
     "id": "prh",
     "name": "Penguin Random House",
     "url": "https://global.penguinrandomhouse.com/",
     "language": "en",
-    "linkPattern": "^/announcements/[^/]+/?$",
+    "linkPattern": /^\/announcements\/[^/]+\/?$/,
     "format": "html",
     "region": "north-america",
     "topics": [
@@ -31,7 +35,7 @@
     "name": "NobelPrize.org",
     "url": "https://www.nobelprize.org/press-release/",
     "language": "en",
-    "linkPattern": "^/press-release/[^/]+/?$",
+    "linkPattern": /^\/press-release\/[^/]+\/?$/,
     "format": "html",
     "region": "global",
     "topics": [
@@ -49,7 +53,7 @@
       "releases"
     ],
     "format": "html",
-    "linkPattern": "^/news/eintrag/[^/]+/?$"
+    "linkPattern": /^\/news\/eintrag\/[^/]+\/?$/
   },
   {
     "id": "frankfurt-book-fair",
@@ -64,7 +68,7 @@
       "adaptations"
     ],
     "format": "html",
-    "linkPattern": "^/en/press/press-releases/[^/]+/?$"
+    "linkPattern": /^\/en\/press\/press-releases\/[^/]+\/?$/
   },
   {
     "id": "gothenburg-book-fair",
@@ -79,7 +83,7 @@
       "releases"
     ],
     "format": "html",
-    "linkPattern": "^/\\d{4}/\\d{2}/[^/]+/?$"
+    "linkPattern": /^\/\d{4}\/\d{2}\/[^/]+\/?$/
   },
   {
     "id": "british-library",
@@ -94,7 +98,7 @@
       "anniversaries"
     ],
     "format": "html",
-    "linkPattern": "^/about/press/releases/[^/]+/?$"
+    "linkPattern": /^\/about\/press\/releases\/[^/]+\/?$/
   },
   {
     "id": "bnf",
@@ -109,7 +113,7 @@
       "festivals"
     ],
     "format": "html",
-    "linkPattern": "^/fr/agenda/[^/]+/?$"
+    "linkPattern": /^\/fr\/agenda\/[^/]+\/?$/
   },
   {
     "id": "goslitmuz",
@@ -125,7 +129,7 @@
       "discoveries"
     ],
     "format": "html",
-    "linkPattern": "^/news/[^/]+/\\d+/?$"
+    "linkPattern": /^\/news\/[^/]+\/\d+\/?$/
   },
   {
     "id": "yasnaya-polyana",
@@ -139,15 +143,15 @@
       "festivals"
     ],
     "format": "html",
-    "linkPattern": "^/event/\\d+/?$"
+    "linkPattern": /^\/event\/\d+\/?$/
   },
   {
     "id": "national-book-foundation",
     "name": "National Book Foundation",
     "url": "https://www.nationalbook.org/all-story/",
     "format": "html",
-    "linkPattern": "^/(?!all-story/|national-book-awards/|other-prizes-honors/|lifetime-achievement/|programs/|public-programs/|events-calendar/|adventure/|donor-advised-funds/|leave-a-literary-legacy/|strategic-plan-|bridge-to-|donor-privacy-policy/|mission-history/|foundation-board-of-directors/|make-a-stock-donation/|contact/|about/|privacy-policy/|adventure-)[a-z0-9][a-z0-9-]+/?$",
-    "keywordPattern": "announc|award|honore|literary|championing books",
+    "linkPattern": /^\/(?!all-story\/|national-book-awards\/|other-prizes-honors\/|lifetime-achievement\/|programs\/|public-programs\/|events-calendar\/|adventure\/|donor-advised-funds\/|leave-a-literary-legacy\/|strategic-plan-|bridge-to-|donor-privacy-policy\/|mission-history\/|foundation-board-of-directors\/|make-a-stock-donation\/|contact\/|about\/|privacy-policy\/|adventure-)[a-z0-9][a-z0-9-]+\/?$/,
+    "keywordPattern": /announc|award|honore|literary|championing books/iu,
     "collectionNote": "2026-09-05: /feed/ redirects to the homepage. The official All News Stories index returns HTTP 200 and exposes article links directly.",
     "language": "en",
     "region": "north-america",
@@ -176,7 +180,7 @@
     "name": "Brooklyn Book Festival",
     "url": "https://brooklynbookfestival.org/event_type/festival-day/",
     "format": "html",
-    "linkPattern": "^/event/[^/]+/?$",
+    "linkPattern": /^\/event\/[^/]+\/?$/,
     "collectionNote": "2026-09-05: RSS contains no article items. The official Festival Day programme returns HTTP 200 with individual event links; event dates still require editorial review.",
     "language": "en",
     "region": "north-america",
@@ -263,7 +267,7 @@
       "heritage"
     ],
     "format": "html",
-    "linkPattern": "^/news/creativity-culture-and-heritage/\\d+/[^/]+/?$"
+    "linkPattern": /^\/news\/creativity-culture-and-heritage\/\d+\/[^/]+\/?$/
   },
   {
     "id": "netflix-book-adaptations",
@@ -275,7 +279,7 @@
       "adaptations"
     ],
     "format": "html",
-    "linkPattern": "^/tudum/articles/[^/]+/?$"
+    "linkPattern": /^\/tudum\/articles\/[^/]+\/?$/
   },
   {
     "id": "ubud-writers-readers-festival",
@@ -284,7 +288,7 @@
     "language": "en",
     "region": "asia",
     "format": "html",
-    "linkPattern": "^/news/[^/?#]+/?$",
+    "linkPattern": /^\/news\/[^/?#]+\/?$/,
     "articleOrigins": [
       "https://ubudwritersfestival.com",
       "https://www.ubudwritersfestival.com"
@@ -304,7 +308,7 @@
     "format": "html",
     "articleContainer": ".card-item",
     "titleSelector": "h3.title",
-    "linkPattern": "^/en/index/news-center/news/detail(?:!|%21)[^/?#]+/?$",
+    "linkPattern": /^\/en\/index\/news-center\/news\/detail(?:!|%21)[^/?#]+\/?$/,
     "articleOrigins": [
       "https://ccbookfair.com",
       "https://www.ccbookfair.com"
@@ -328,7 +332,7 @@
     "language": "en",
     "region": "africa",
     "format": "rss",
-    "linkPattern": "^/[a-z0-9-]+/$",
+    "linkPattern": /^\/[a-z0-9-]+\/$/,
     "articleOrigins": [
       "https://akefestival.org"
     ],
@@ -345,7 +349,7 @@
     "language": "en",
     "region": "africa",
     "format": "rss",
-    "linkPattern": "^/[0-9]{4}/[0-9]{2}/[0-9]{2}/[^/?#]+/$",
+    "linkPattern": /^\/[0-9]{4}\/[0-9]{2}\/[0-9]{2}\/[^/?#]+\/$/,
     "articleOrigins": [
       "https://kenyapublishers.org",
       "https://www.kenyapublishers.org"
@@ -363,7 +367,7 @@
     "language": "es",
     "region": "latin-america",
     "format": "html",
-    "linkPattern": "^/prensa/boletin\\.asp$",
+    "linkPattern": /^\/prensa\/boletin\.asp$/,
     "articleOrigins": [
       "https://fil.com.mx",
       "https://www.fil.com.mx"
@@ -381,7 +385,7 @@
     "language": "es",
     "region": "latin-america",
     "format": "html",
-    "linkPattern": "^/p-[0-9]+-[^/?#]+\\.aspx$",
+    "linkPattern": /^\/p-[0-9]+-[^/?#]+\.aspx$/,
     "articleOrigins": [
       "https://www.hayfestival.com"
     ],
@@ -404,7 +408,7 @@
     "language": "en",
     "region": "oceania",
     "format": "html",
-    "linkPattern": "^/news/articles/[^/?#]+/?$",
+    "linkPattern": /^\/news\/articles\/[^/?#]+\/?$/,
     "articleOrigins": [
       "https://bwf.org.au"
     ],
@@ -421,7 +425,7 @@
     "language": "en",
     "region": "oceania",
     "format": "html",
-    "linkPattern": "^/new-zealand-book-awards-for-children-and-young-adults/news/[^/?#]+/[0-9]+/?$",
+    "linkPattern": /^\/new-zealand-book-awards-for-children-and-young-adults\/news\/[^/?#]+\/[0-9]+\/?$/,
     "articleOrigins": [
       "https://www.nzbookawards.nz"
     ],
@@ -438,7 +442,7 @@
     "language": "en",
     "region": "oceania",
     "format": "html",
-    "linkPattern": "^/news/[^/?#]+/?$",
+    "linkPattern": /^\/news\/[^/?#]+\/?$/,
     "articleOrigins": [
       "https://wordchristchurch.co.nz"
     ],
@@ -448,4 +452,14 @@
     "verifiedAt": "2026-09-05T00:46:07Z",
     "notes": "Official festival news index and sample event announcement verified; index HTTP 200 text/html. The same archive includes a 2021 postponement notice, which must not be misread as a 2026 update."
   }
-]
+];
+
+function freezeSource(value) {
+  if (value && typeof value === "object" && !Object.isFrozen(value)) {
+    for (const child of Object.values(value)) freezeSource(child);
+    Object.freeze(value);
+  }
+  return value;
+}
+
+export const LITERARY_NEWS_SOURCES = freezeSource(approvedSources);
