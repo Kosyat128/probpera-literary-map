@@ -87,7 +87,7 @@ export function articleSectionArchivePath(sectionId = "") {
     : "/stati";
 }
 
-export function normalizePublicMetadataText(value = "") {
+function normalizePublicMetadataTextPass(value) {
   return String(value)
     .normalize("NFC")
     .replace(/&(?:nbsp|shy|amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/giu, (entity) =>
@@ -98,6 +98,19 @@ export function normalizePublicMetadataText(value = "") {
     .replace(/\u00a0/gu, " ")
     .replace(/\s+/gu, " ")
     .trim();
+}
+
+export function normalizePublicMetadataText(value = "") {
+  let normalized = String(value);
+  const maximumPasses = 32;
+
+  for (let pass = 0; pass < maximumPasses; pass += 1) {
+    const next = normalizePublicMetadataTextPass(normalized);
+    if (next === normalized) return next;
+    normalized = next;
+  }
+
+  throw new Error("Public metadata normalization did not converge.");
 }
 
 const publicMetadataTextFields = [

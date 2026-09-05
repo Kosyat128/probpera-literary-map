@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 
 import { parseCss } from "../audit-stage5-baseline.mjs";
 import {
+  adminArticlePublicationPermissionsAttestation,
   bookDatabaseEditorialOwnerAttestation,
   currentIntegrationGovernanceFingerprintRegistry,
   governanceFingerprintRegistry,
@@ -73,7 +74,19 @@ function canonicalContent(absolutePath) {
     );
     return printer.printFile(sourceFile);
   }
-  return text;
+  return projectApprovedAdminPublicationDelta(repositoryPath(absolutePath), text);
+}
+
+function projectApprovedAdminPublicationDelta(relativePath, source) {
+  let projected = source;
+  for (const delta of adminArticlePublicationPermissionsAttestation.projections) {
+    if (delta.path !== relativePath) continue;
+    if (projected.split(delta.after).length !== 2) {
+      throw new Error(`Missing or duplicate reviewed publication delta: ${relativePath}`);
+    }
+    projected = projected.replace(delta.after, delta.before);
+  }
+  return projected;
 }
 
 function fingerprint(paths, include) {
@@ -250,7 +263,9 @@ function exactClassTokenPattern(classToken) {
 }
 
 function ownerCssFingerprint() {
-  const classTokens = [...ownerCssClasses].toSorted((first, second) =>
+  // The historical registry omitted the Articles trigger despite protecting
+  // its Sections counterpart; freeze both while excluding popup contents.
+  const classTokens = [...new Set([...ownerCssClasses, "articles-menu"])].toSorted((first, second) =>
     first.localeCompare(second, "en")
   );
   const patterns = classTokens.map(exactClassTokenPattern);
@@ -276,6 +291,10 @@ function ownerCssFingerprint() {
     // These explicitly unrelated surfaces reuse the language-control class.
     // The 2026-09-04 preservation request covers the Header and Hero themselves.
     .filter((rule) => !/\.(?:atlas-|literary-globe|article-reader)/u.test(rule.selector))
+    // The later, explicit menu refinement applies only inside these popups.
+    // Keep .sections-menu/.articles-menu themselves and their summary triggers
+    // in the Header lock, including hover/open states of those triggers.
+    .filter((rule) => !/\.(?:sections-mega-(?:menu|groups)|articles-mega-(?:menu|content|lead|lead-media|loading))(?![\w-])/u.test(rule.selector))
     .map(({ selector, contexts, declarations }) => ({
       selector: selector.replace(/\s+/gu, " ").trim(),
       contexts: contexts.filter((context) => !context.startsWith("@layer ")).map((context) =>
@@ -366,6 +385,39 @@ describe("Stage 5 authorial content and canonical data lock", () => {
 });
 
 describe("Stage 5 owner and production-pipeline governance locks", () => {
+  it("attests only the reviewed additive article-publication repair", () => {
+    const attestation = adminArticlePublicationPermissionsAttestation;
+    expect(attestation).toMatchObject({
+      id: "ADMIN-ARTICLE-PUBLICATION-PERMISSIONS-2026-09-05",
+      authorizedOn: "2026-09-05",
+      sourceMainSha: "a38fa5e554f01de40da27a1aa023216a4d81f12b",
+      migrationPath: "supabase/migrations/20260905_article_publication_permissions.sql",
+      migrationSha256: "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8",
+    });
+    expect(attestation.projections.map(({ path: entry }) => entry)).toEqual([
+      "scripts/database/build-production-migration-plan.mjs",
+      ".github/workflows/reconcile-production-database.yml",
+      ".github/workflows/reconcile-production-database.yml",
+    ]);
+    const migration = readFileSync(path.join(root, attestation.migrationPath), "utf8")
+      .replace(/\r\n/gu, "\n");
+    expect(sha256(migration)).toBe(attestation.migrationSha256);
+    for (const delta of attestation.projections) {
+      const source = readFileSync(path.join(root, delta.path), "utf8")
+        .replace(/\r\n/gu, "\n");
+      expect(() => projectApprovedAdminPublicationDelta(
+        delta.path, source.replace(delta.after, delta.before)
+      )).toThrow("Missing or duplicate reviewed publication delta");
+      expect(() => projectApprovedAdminPublicationDelta(
+        delta.path, source + delta.after
+      )).toThrow("Missing or duplicate reviewed publication delta");
+      // Projection must not discard unrelated bytes: the original full-scope
+      // fingerprint below still detects every change outside the exact delta.
+      expect(projectApprovedAdminPublicationDelta(delta.path, source + "\n"))
+        .toBe(projectApprovedAdminPublicationDelta(delta.path, source) + "\n");
+    }
+  });
+
   it("preserves the Russian-biography authorization and records the book-database authorization", () => {
     expect(russianBiographyEditorialOwnerAttestation).toEqual({
       id: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
@@ -586,11 +638,12 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       sha256: "576898463bc2f981e3ddfdbb283ac82b961d2eaeb5a5fb316d35f89fd528d743",
     });
     // Full declarations, including fonts, paint and geometry. This narrower
-    // selector projection was independently measured from pre-work e073b21a;
+    // selector projection (excluding the later authorized popup refinement)
+    // was independently measured from pre-work e073b21a;
     // no current styling values are accepted merely by replacing its hash.
     expect(ownerCssFingerprint()).toEqual({
-      rules: 197,
-      sha256: "d2ef726d0a30a8c8c34a9a54ef6608a0d859130aa6615dfbfb54c3a45a3a675f",
+      rules: 188,
+      sha256: "66b469445d98e80e7e1210903bba9df6ec348790ed928ac87538e8a668880de2",
     });
   }, 30_000);
 });

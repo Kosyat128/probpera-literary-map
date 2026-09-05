@@ -44,7 +44,7 @@
 
 ## Подтверждающие поверхности
 
-- Маршруты и роли: `apps/admin/app/(dashboard)` и `apps/admin/lib/admin-navigation.ts`.
+- Маршруты и роли: `apps/admin/app/(dashboard)` и `apps/admin/lib/admin-module-registry.ts`.
 - Редактор и восстановление: `apps/admin/app/(dashboard)/articles`, `apps/admin/app/(dashboard)/pages`, `apps/admin/lib/article-recovery.ts`.
 - История и публикация: `apps/admin/app/(dashboard)/history`, `apps/admin/app/(dashboard)/publication`.
 - Data Studio: `apps/admin/app/(dashboard)/data-studio`, `apps/admin/app/(dashboard)/editorial-database` и `apps/admin/app/(dashboard)/library`.

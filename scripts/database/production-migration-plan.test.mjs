@@ -95,7 +95,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(34);
+      expect(manifest.migrations).toHaveLength(35);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -131,10 +131,18 @@ describe("guarded production database reconciliation", () => {
         "20260902_literary_work_authorship.sql",
         "20260902_literary_work_evidence_v2_attestations.sql",
         "20260902_zz_literary_archive_atomic_release.sql",
+        "20260905_article_publication_permissions.sql",
       ]);
       const migrationFilenames = manifest.migrations.map(
         (migration) => migration.filename
       );
+      expect(manifest.migrations.at(-1)).toEqual({
+        filename: "20260905_article_publication_permissions.sql",
+        version: "20260905_article_publication_permissions",
+        sha256: "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8",
+      });
+      expect(plan).toContain("public.lock_article_working_draft_for_publication(");
+      expect(plan).toContain("public.upsert_article_redirect_guarded(");
       expect(
         migrationFilenames.indexOf(
           "20260902_zz_article_working_drafts_health.sql"
@@ -267,6 +275,7 @@ describe("guarded production database reconciliation", () => {
       expect(plan).not.toMatch(/^\s*(?:begin|commit|rollback)\s*;/gimu);
       expect(verification).toContain("public.get_editorial_schema_health()");
       expect(verification).toContain("ledger_entries=");
+      expect(verification).toContain("public.probpera_schema_migrations) >= 35");
       expect(verification).toContain("work_cover_artworks=");
       expect(verification).toContain("literary_work_authorship=");
       expect(verification).toContain("literary_work_evidence_v2=");
@@ -774,10 +783,10 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "Migration range: 20260808_article_translations through 20260902_zz_literary_archive_atomic_release"
+      "Migration range: 20260808_article_translations through 20260905_article_publication_permissions"
     );
     expect(workflowSource).toContain(
-      "schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=34;invalid_indexes=0"
+      "schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=35;invalid_indexes=0"
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260828_zz_editor_autosaves.sql"'

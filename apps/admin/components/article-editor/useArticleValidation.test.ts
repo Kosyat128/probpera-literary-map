@@ -95,6 +95,7 @@ describe("article validation", () => {
 
     expect(result.checks).toHaveLength(23);
     expect(result.ready).toBe(false);
+    expect(result.russianReady).toBe(true);
     expect(
       result.checks.find(
         (item) =>
@@ -102,6 +103,20 @@ describe("article validation", () => {
           "Английская версия: перевод сверен с текущим оригиналом"
       )?.ok
     ).toBe(false);
+  });
+
+  it("keeps a Russian release available with an unfinished English draft", () => {
+    const result = buildArticleValidation(validInput({
+      englishEnabled: true,
+      englishStatus: "draft",
+      englishTitle: "",
+      englishContentHtml: "",
+      englishContentJson: "invalid unfinished draft",
+      russianSourceChanged: true,
+    }));
+
+    expect(result.ready).toBe(false);
+    expect(result.russianReady).toBe(true);
   });
 
   it("requires a date for a scheduled release", () => {

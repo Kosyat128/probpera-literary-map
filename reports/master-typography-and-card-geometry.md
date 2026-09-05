@@ -92,7 +92,7 @@ Integrated validation results:
 | Public-template integration before the last Atlas/action follow-up | 22 browser tests passed, 1 mobile-only case skipped in the desktop project; typography, Header/Hero, reader themes, globe controls, community and homepage geometry |
 | Final card/menu integration | 16/16 browser tests passed; two additional RU/EN card tests passed after image-frame alignment |
 | Final navigation panels | 28/28 cases passed: 12 real desktop dropdowns and 16 explicit narrow fixtures; 98 orange labels at minimum 4.657:1 contrast |
-| Loaded book-month heading and button | 28→35px at 390/1440; white label retained in all eight recorded button states, contrast 4.817–6.319:1, fixed geometry |
+| Loaded book-month heading and button | 28→35px at 390/1440; white label retained in all eight recorded button states, contrast 4.817-6.319:1, fixed geometry |
 | Final four-story grid, policy cards and email controls | 22/22 assertions passed at 390/1440 against built pages, with actual decoded images and content/link comparison |
 | Final Atlas control row | 4/4 built-page cases at 320/390/1440/1848; six buttons and search share one row at 1440/1848 with 0px button-row spread, all controls 48px high, no heading clipping. Updated desktop/mobile control E2E: 2/2 passed. Earlier immersive enter/search/filter/Escape/exit smoke also passed |
 | Admin production build | Passed |

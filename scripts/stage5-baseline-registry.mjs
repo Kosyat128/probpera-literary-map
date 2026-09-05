@@ -261,6 +261,34 @@ export const bookDatabaseEditorialOwnerAttestation = Object.freeze({
   ]),
 });
 
+// The owner requested the existing-article publication repair on 2026-09-05.
+// Attest only the reviewed additive migration and the exact release count/range
+// updates. The original 72-file pipeline fingerprint remains unchanged.
+export const adminArticlePublicationPermissionsAttestation = Object.freeze({
+  id: "ADMIN-ARTICLE-PUBLICATION-PERMISSIONS-2026-09-05",
+  authorizedOn: "2026-09-05",
+  sourceMainSha: "a38fa5e554f01de40da27a1aa023216a4d81f12b",
+  migrationPath: "supabase/migrations/20260905_article_publication_permissions.sql",
+  migrationSha256: "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8",
+  projections: Object.freeze([
+    Object.freeze({
+      path: "scripts/database/build-production-migration-plan.mjs",
+      before: "];\n\nconst reviewedHotfixes = [",
+      after: "  [\n    \"20260905_article_publication_permissions.sql\",\n    \"1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8\",\n  ],\n];\n\nconst reviewedHotfixes = [",
+    }),
+    Object.freeze({
+      path: ".github/workflows/reconcile-production-database.yml",
+      before: "Migration range: 20260808_article_translations through 20260902_zz_literary_archive_atomic_release",
+      after: "Migration range: 20260808_article_translations through 20260905_article_publication_permissions",
+    }),
+    Object.freeze({
+      path: ".github/workflows/reconcile-production-database.yml",
+      before: ";ledger_entries=34;invalid_indexes=0'",
+      after: ";ledger_entries=35;invalid_indexes=0'",
+    }),
+  ]),
+});
+
 const stage5D1Stage4GlobeStablePaths = Object.freeze(
   stage4ProductionPaths.filter(
     (entry) => entry !== "src/i18n/InterfaceLanguage.tsx"

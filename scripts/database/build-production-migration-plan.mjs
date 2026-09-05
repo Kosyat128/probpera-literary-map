@@ -112,6 +112,10 @@ const reviewedMigrations = [
     "20260902_zz_literary_archive_atomic_release.sql",
     "a03f27a42fc6e7607dae6c46cb52292798ffc4eb931c470bfc2e9a481ebb1ef9",
   ],
+  [
+    "20260905_article_publication_permissions.sql",
+    "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8",
+  ],
 ];
 
 const reviewedHotfixes = [

@@ -4,7 +4,7 @@
 
 At 1440px, the four-story grid changes from 1306px to 681px high, and the featured story's empty gap before its action changes from 612px to 16px. All four titles fit. Content/order, image URLs, links, and 44px Share controls are preserved. The mobile article geometry is unchanged. Closed editorial-policy panels shrink from 306px to 107px on desktop, and both email links have 44px hit areas.
 
-Scope: this proves the three source CSS changes against actual page markup. It is not verification of a newly built dist, image downloads, production, authentication, 3D behavior, or a full responsive/test matrix. The 681–1279px two-column branch is source-defined; these two browser cases cover 390px and 1440px only.
+Scope: this proves the three source CSS changes against actual page markup. It is not verification of a newly built dist, image downloads, production, authentication, 3D behavior, or a full responsive/test matrix. The 681-1279px two-column branch is source-defined; these two browser cases cover 390px and 1440px only.
 
 The final-dist check is complete: `home-layout-controls-final-dist.json` records **22/22 passing assertions** on the actual built page, with no CSS injection. Each lazy image is decoded while its card is in view. The final assertions also check matching image and metadata rails; asset URLs and capture time are recorded in the JSON.
 

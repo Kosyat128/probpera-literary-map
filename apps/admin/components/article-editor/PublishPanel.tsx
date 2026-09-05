@@ -122,6 +122,20 @@ export default function PublishPanel({
             <strong>{PUBLICATION_LABELS[currentPublicationStatus]}</strong>
             <span>{PUBLICATION_DESCRIPTIONS[currentPublicationStatus]}</span>
           </p>
+          <p className="publication-permission-note">
+            Публикация на русском доступна без английского перевода.
+            {englishEnabled
+              ? " Кнопка «Опубликовать на русском» сохраняет существующий перевод в базе. Новые правки перевода сначала сохраните как черновик; обе версии можно выпустить отдельной кнопкой после проверки."
+              : " Английскую версию можно подготовить и выпустить позже."}
+          </p>
+          <label className="editor-checkbox-row">
+            <input
+              type="checkbox"
+              checked={englishEnabled}
+              onChange={(event) => onEnglishEnabledChange(event.target.checked)}
+            />{" "}
+            Работать также с английской версией
+          </label>
           <label className="field">
             <span>Состояние статьи</span>
             <select
