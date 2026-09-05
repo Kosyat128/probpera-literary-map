@@ -201,11 +201,30 @@ describe("Stage 5D-1 English interface coverage", () => {
       ...controlledOptionLabels,
     ]);
 
-    // Search now reuses the existing books/writers/countries phrase, so the
-    // unique inventory no longer includes its old example-only placeholder.
-    expect(componentPhrases.size).toBe(214);
+    // The compact panel adds five short labels and retires three longer UI
+    // labels; their translations remain available for historical consumers.
+    const compactLabels = [
+      ["Наугад", "Surprise me"],
+      ["Область поиска", "Search scope"],
+      ["На полке", "This shelf"],
+      ["В архиве", "Archive"],
+      ["В журнале", "Journal"],
+    ] as const;
+    for (const [source, english] of compactLabels) {
+      expect(componentPhrases.has(source)).toBe(true);
+      expect(translateInterfaceText(source, "en")).toBe(english);
+    }
+    for (const source of [
+      "Весь книжный архив",
+      "Во всём журнале",
+      "Случайное произведение",
+    ]) {
+      expect(componentPhrases.has(source)).toBe(false);
+      expect(hasInterfaceTranslation(source)).toBe(true);
+    }
+    expect(componentPhrases.size).toBe(216);
     expect(controlledOptionLabels.size).toBe(61);
-    expect(inventory.size).toBe(275);
+    expect(inventory.size).toBe(277);
     expect(
       [...IDENTICAL_SYMBOL_ALLOWLIST].filter((phrase) => !inventory.has(phrase))
     ).toEqual([]);
@@ -220,7 +239,7 @@ describe("Stage 5D-1 English interface coverage", () => {
       .filter((phrase) => hasInterfaceTranslation(phrase))
       .filter((phrase) => translateInterfaceText(phrase, "en") === phrase);
 
-    expect(translatable).toHaveLength(273);
+    expect(translatable).toHaveLength(275);
     expect(missing).toEqual([]);
     expect(untranslated).toEqual([]);
   });

@@ -936,6 +936,14 @@
     "multiline": false
   },
   {
+    "key": "interface.В архиве",
+    "group": "Весь интерфейс",
+    "label": "В архиве",
+    "defaultRu": "В архиве",
+    "defaultEn": "Archive",
+    "multiline": false
+  },
+  {
     "key": "interface.В архиве нет книг по выбранным условиям",
     "group": "Весь интерфейс",
     "label": "В архиве нет книг по выбранным условиям",
@@ -973,6 +981,14 @@
     "label": "В выбранной коллекции -",
     "defaultRu": "В выбранной коллекции -",
     "defaultEn": "In this collection:",
+    "multiline": false
+  },
+  {
+    "key": "interface.В журнале",
+    "group": "Весь интерфейс",
+    "label": "В журнале",
+    "defaultRu": "В журнале",
+    "defaultEn": "Journal",
     "multiline": false
   },
   {
@@ -4696,6 +4712,14 @@
     "multiline": false
   },
   {
+    "key": "interface.На полке",
+    "group": "Весь интерфейс",
+    "label": "На полке",
+    "defaultRu": "На полке",
+    "defaultEn": "This shelf",
+    "multiline": false
+  },
+  {
     "key": "interface.На этой полке пока нет книг",
     "group": "Весь интерфейс",
     "label": "На этой полке пока нет книг",
@@ -4957,6 +4981,14 @@
     "label": "Настройки чтения",
     "defaultRu": "Настройки чтения",
     "defaultEn": "Reading settings",
+    "multiline": false
+  },
+  {
+    "key": "interface.Наугад",
+    "group": "Весь интерфейс",
+    "label": "Наугад",
+    "defaultRu": "Наугад",
+    "defaultEn": "Surprise me",
     "multiline": false
   },
   {
@@ -5549,6 +5581,14 @@
     "label": "О себе",
     "defaultRu": "О себе",
     "defaultEn": "About you",
+    "multiline": false
+  },
+  {
+    "key": "interface.Область поиска",
+    "group": "Весь интерфейс",
+    "label": "Область поиска",
+    "defaultRu": "Область поиска",
+    "defaultEn": "Search scope",
     "multiline": false
   },
   {

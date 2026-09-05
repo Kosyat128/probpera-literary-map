@@ -1,0 +1,92 @@
+[
+  {
+    "file": "en-1440-catalogue.png",
+    "sha256": "e014c153c4c0fd958cf3f42e81a2af6eaf6f6ab3fb003be1a55a3f0a027ef26e",
+    "bytes": 509912
+  },
+  {
+    "file": "en-1440-detail-top.png",
+    "sha256": "24a9e6723f6d656360d83243dcf203b0318a6d9fa670fd31773e14ab62677ce8",
+    "bytes": 76709
+  },
+  {
+    "file": "en-1440-navigation.png",
+    "sha256": "c25e7d62a0398a68079dc3ab3b81c81eeabc87839492df63cef3171aa59a8a69",
+    "bytes": 7783
+  },
+  {
+    "file": "en-1440-reader-pager.png",
+    "sha256": "25913d4c17dd361525daf671a28ae46a7d8f361a0725e50542bebe8392c53e9d",
+    "bytes": 46494
+  },
+  {
+    "file": "en-1440-reader.png",
+    "sha256": "617267e13a76105d5ffb421261a568413b27ff0754cbe469cb8b3c6533aadd6a",
+    "bytes": 45596
+  },
+  {
+    "file": "mobile-focus-results.json",
+    "sha256": "f09ef2bda80c6d5bc5a3b9de8875de7bf8b0219e793a3e2735115458c2e0c916",
+    "bytes": 2792
+  },
+  {
+    "file": "navigation-widths.json",
+    "sha256": "b89487790d5925086116bf3db91b9438f1b1c4e023f41d823e096f7538f04553",
+    "bytes": 1719
+  },
+  {
+    "file": "README.md",
+    "sha256": "69965feee9d5f28afdd1ca4582603b8f2b04c759f6c5296c53edd803bf7e2ee1",
+    "bytes": 2992
+  },
+  {
+    "file": "ru-1440-catalogue.png",
+    "sha256": "d256d0305f9f5480910124a39210f2e96cb2b570648e1fb7185e003330356a86",
+    "bytes": 479042
+  },
+  {
+    "file": "ru-1440-detail-actions.png",
+    "sha256": "65eced7b212b676751898ecf32a9418fa622aefd4ef3d12e378f709c0546c925",
+    "bytes": 34415
+  },
+  {
+    "file": "ru-1440-detail-top.png",
+    "sha256": "5d04e84e1ac6b4a55476f02f1c6268997f31c3a2367d3b9eaba7af8dadc45c86",
+    "bytes": 71141
+  },
+  {
+    "file": "ru-1440-navigation.png",
+    "sha256": "9c29d79863d44f955e79d29aa238920b98950662966755f3038858882ab632c6",
+    "bytes": 8350
+  },
+  {
+    "file": "ru-1440-reader.png",
+    "sha256": "7ae3195af6515ad6d612b623366b504ffa5b0263e2e975b18b61b9de2eb518da",
+    "bytes": 40030
+  },
+  {
+    "file": "ru-1440-site-header.png",
+    "sha256": "28a5d35d17e16254761a66ff2c49ba423e8ca367ca5cbf663ea4ec347cb7965c",
+    "bytes": 33130
+  },
+  {
+    "file": "ru-390-navigation.png",
+    "sha256": "34b665791916d0ed6a996c76bb8bd7d217b53c64e75a5c9e95a3b614c715a6af",
+    "bytes": 8450
+  },
+  {
+    "file": "ru-390-reader-expanded.png",
+    "sha256": "cf11b48e073db0bfd2e942faa2b6ca6f7f9c1b344fc646536ebb109d0f8aedb4",
+    "bytes": 41482
+  },
+  {
+    "file": "ru-390-site-header.png",
+    "sha256": "bbcd80c24877cf4a8efbf2da29a2a3909297a0d9b7dd708e4f8c84f8f7a214d0",
+    "bytes": 17904
+  },
+  {
+    "file": "typography-summary.json",
+    "sha256": "13f1ab9e1056b378f6aead4a728c3256aa54ed520beb9a0737d004d17d948816",
+    "bytes": 8162
+  }
+]

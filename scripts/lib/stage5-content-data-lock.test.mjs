@@ -24,9 +24,9 @@ const bookshelfRefinement = JSON.parse(readFileSync(
   path.join(root, "scripts/governance/bookshelf-owner-refinement-20260905.json"), "utf8"
 ));
 
-function projectApprovedBookshelfRefinement(relativePath, source) {
+function projectApprovedBookshelfRefinement(relativePath, source, deltas = bookshelfRefinement.projections) {
   let result = source;
-  for (const delta of bookshelfRefinement.projections) {
+  for (const delta of deltas) {
     if (delta.path !== relativePath) continue;
     if (result.split(delta.after).length !== 2) throw new Error(`Missing or duplicate bookshelf delta: ${relativePath}`);
     result = result.replace(delta.after, delta.before);
@@ -212,6 +212,37 @@ function sortedTranslationPairs(entries) {
   return [...entries].sort(([first], [second]) =>
     codeUnitCompare(first, second)
   );
+}
+
+function projectApprovedBookshelfInterfacePairs(entries) {
+  const projected = new Map(entries);
+  for (const { source, english } of bookshelfRefinement.interfaceAdditions) {
+    if (projected.get(source) !== english) throw new Error("Missing or changed bookshelf interface pair");
+    projected.delete(source);
+  }
+  const pairs = sortedTranslationPairs(projected);
+  const historical = stage5FinalInterfaceCopyAttestation.interfaceLanguage;
+  if (pairs.length !== historical.entries || jsonSha256(pairs.map(([source]) => source)) !== historical.keysSha256 ||
+    jsonSha256(pairs) !== historical.pairsSha256) throw new Error("Unreviewed interface change outside bookshelf additions");
+  return pairs;
+}
+
+function projectApprovedBookshelfInterfaceCatalog(catalog) {
+  const allowedKeys = new Set();
+  for (const { source, english } of bookshelfRefinement.interfaceAdditions) {
+    const key = `interface.${source}`;
+    const expected = { key, group: "Весь интерфейс", label: source, defaultRu: source, defaultEn: english, multiline: false };
+    const found = catalog.filter(entry => entry.key === key);
+    if (found.length !== 1 || canonicalJsonSha256(found[0]) !== canonicalJsonSha256(expected)) {
+      throw new Error("Missing, duplicate or changed bookshelf interface catalog entry");
+    }
+    allowedKeys.add(key);
+  }
+  const projected = catalog.filter(entry => !allowedKeys.has(entry.key));
+  const historical = stage5FinalInterfaceCopyAttestation.catalog;
+  if (projected.length !== historical.entries || jsonSha256(projected.map(({ key }) => key)) !== historical.keysSha256 ||
+    canonicalJsonSha256(projected) !== historical.contentSha256) throw new Error("Unreviewed catalog change outside bookshelf additions");
+  return projected;
 }
 
 function syntaxVisit(node, visitor) {
@@ -505,12 +536,51 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       const source = readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n");
       const projected = projectApprovedBookshelfRefinement(relativePath, source);
       expect(projectApprovedBookshelfRefinement(relativePath, source + "\n")).toBe(projected + "\n");
-      for (const delta of bookshelfRefinement.projections.filter(entry => entry.path === relativePath)) {
+      const deltas = bookshelfRefinement.projections.filter(entry => entry.path === relativePath);
+      let intermediate = source;
+      for (const [index, delta] of deltas.entries()) {
         expect(delta.before).not.toBe(delta.after);
-        expect(() => projectApprovedBookshelfRefinement(relativePath, source + delta.after)).toThrow("Missing or duplicate bookshelf delta");
-        expect(() => projectApprovedBookshelfRefinement(relativePath, source.replace(delta.after, ""))).toThrow("Missing or duplicate bookshelf delta");
+        expect(intermediate.split(delta.after)).toHaveLength(2);
+        const remaining = deltas.slice(index);
+        expect(projectApprovedBookshelfRefinement(relativePath, intermediate, remaining)).toBe(projected);
+        expect(() => projectApprovedBookshelfRefinement(relativePath, intermediate + delta.after, remaining)).toThrow("Missing or duplicate bookshelf delta");
+        expect(() => projectApprovedBookshelfRefinement(relativePath, intermediate.replace(delta.after, ""), remaining)).toThrow("Missing or duplicate bookshelf delta");
+        intermediate = intermediate.replace(delta.after, delta.before);
       }
+      expect(intermediate).toBe(projected);
     }
+  });
+
+  it("projects only the five exact bookshelf UI translations and matching generated catalog entries", () => {
+    expect(bookshelfRefinement.interfaceAdditions).toEqual([
+      { source: "Наугад", english: "Surprise me" },
+      { source: "Область поиска", english: "Search scope" },
+      { source: "На полке", english: "This shelf" },
+      { source: "В архиве", english: "Archive" },
+      { source: "В журнале", english: "Journal" },
+    ]);
+    const { entries } = readEnglishInterfaceText();
+    const { catalog } = readInterfaceCopyCatalog();
+    expect(projectApprovedBookshelfInterfacePairs(entries)).toHaveLength(stage5FinalInterfaceCopyAttestation.interfaceLanguage.entries);
+    expect(projectApprovedBookshelfInterfaceCatalog(catalog)).toHaveLength(stage5FinalInterfaceCopyAttestation.catalog.entries);
+    for (const { source } of bookshelfRefinement.interfaceAdditions) {
+      const missing = new Map(entries);
+      missing.delete(source);
+      expect(() => projectApprovedBookshelfInterfacePairs(missing)).toThrow("Missing or changed bookshelf interface pair");
+      const modified = new Map(entries);
+      modified.set(source, `${modified.get(source)} `);
+      expect(() => projectApprovedBookshelfInterfacePairs(modified)).toThrow("Missing or changed bookshelf interface pair");
+      const key = `interface.${source}`;
+      expect(() => projectApprovedBookshelfInterfaceCatalog(catalog.filter(entry => entry.key !== key))).toThrow("Missing, duplicate or changed bookshelf interface catalog entry");
+      expect(() => projectApprovedBookshelfInterfaceCatalog(catalog.map(entry => entry.key === key ? { ...entry, defaultEn: `${entry.defaultEn} ` } : entry))).toThrow("Missing, duplicate or changed bookshelf interface catalog entry");
+      expect(() => projectApprovedBookshelfInterfaceCatalog([...catalog, catalog.find(entry => entry.key === key)])).toThrow("Missing, duplicate or changed bookshelf interface catalog entry");
+    }
+    expect(() => projectApprovedBookshelfInterfacePairs(new Map([...entries, ["Unreviewed key", "Unreviewed value"]]))).toThrow("Unreviewed interface change outside bookshelf additions");
+    expect(() => projectApprovedBookshelfInterfaceCatalog([...catalog, { key: "interface.Unreviewed key" }])).toThrow("Unreviewed catalog change outside bookshelf additions");
+    const historicalPair = [...entries].find(([source]) => !bookshelfRefinement.interfaceAdditions.some(entry => entry.source === source));
+    expect(() => projectApprovedBookshelfInterfacePairs(new Map([...entries, [historicalPair[0], `${historicalPair[1]} `]]))).toThrow("Unreviewed interface change outside bookshelf additions");
+    const historicalEntry = catalog.find(entry => !bookshelfRefinement.interfaceAdditions.some(({ source }) => entry.key === `interface.${source}`));
+    expect(() => projectApprovedBookshelfInterfaceCatalog(catalog.map(entry => entry === historicalEntry ? { ...entry, defaultEn: `${entry.defaultEn} ` } : entry))).toThrow("Unreviewed catalog change outside bookshelf additions");
   });
 
   it("attests only the reviewed additive article-publication repair", () => {
@@ -673,7 +743,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     for (const [source, english] of sortedApprovedPairs) {
       expect(interfaceState.entries.get(source)).toBe(english);
     }
-    const finalPairs = sortedTranslationPairs(interfaceState.entries);
+    const finalPairs = projectApprovedBookshelfInterfacePairs(interfaceState.entries);
     expect(finalPairs).toHaveLength(
       stage5FinalInterfaceCopyAttestation.interfaceLanguage.entries
     );
@@ -684,7 +754,9 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       stage5FinalInterfaceCopyAttestation.interfaceLanguage.pairsSha256
     );
 
-    const { catalog, byKey } = readInterfaceCopyCatalog();
+    const currentCatalog = readInterfaceCopyCatalog();
+    const catalog = projectApprovedBookshelfInterfaceCatalog(currentCatalog.catalog);
+    const byKey = new Map(catalog.map(entry => [entry.key, entry]));
     expect(catalog).toHaveLength(
       stage5FinalInterfaceCopyAttestation.catalog.entries
     );

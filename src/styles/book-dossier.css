@@ -114,6 +114,9 @@
     padding-bottom: max(14px, env(safe-area-inset-bottom));
   }
   .book-shelf-frame__detail[data-mobile-position="collapsed"] { height: auto; }
+  .book-shelf-frame__detail[data-mobile-position="expanded"] {
+    height: calc(var(--book-shelf-stage-height) - 8px);
+  }
   .book-detail-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) 44px; gap: 6px; margin-inline: -18px; padding: 0 12px; background: #0c0812; border-bottom: 1px solid #ffefd01c; }
   .book-detail-toolbar__label { display: none; }
   .book-detail-mobile-handle { position: relative; min-height: 84px; align-self: start; width: auto; margin: 0; padding-inline: 6px; border-bottom: 0; grid-template-columns: 24px minmax(0, 1fr); }

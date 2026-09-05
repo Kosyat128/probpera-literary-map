@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 
-/** Keeps an occasional display preference out of the main discovery controls. */
+/** Collection actions and display preferences share one keyboard-accessible disclosure. */
 export default function BookShelfQualityMenu({ label, children }: {
   label: string;
   children: ReactNode;
@@ -33,14 +33,19 @@ export default function BookShelfQualityMenu({ label, children }: {
       trigger.current?.focus();
     }}
   >
-    <button ref={trigger} type="button" aria-expanded={open} aria-controls={id}
+    <button ref={trigger} type="button" aria-label={label} title={label} aria-expanded={open} aria-controls={id}
       onClick={() => setOpen((value) => !value)}>
-      {label}
-      <svg className="book-shelf-quality-menu__chevron" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-        <path d="m4 6 4 4 4-4" />
+      <svg className="book-shelf-quality-menu__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="5" cy="12" r="1.7" /><circle cx="12" cy="12" r="1.7" /><circle cx="19" cy="12" r="1.7" />
       </svg>
     </button>
-    <div id={id} className="book-shelf-quality-menu__panel" role="group" aria-label={label} hidden={!open}>
+    <div id={id} className="book-shelf-quality-menu__panel" role="group" aria-label={label} hidden={!open}
+      onClick={(event) => {
+        if (event.target instanceof Element && event.target.closest("button")) {
+          trigger.current?.focus({ preventScroll: true });
+          setOpen(false);
+        }
+      }}>
       {children}
     </div>
   </div>;
