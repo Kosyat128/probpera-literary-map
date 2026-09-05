@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-05T21:53:30.275Z",
+  "updatedAt": "2026-09-05T22:02:07.544Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -10529,7 +10529,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Preserve completed S03 saved-access checkpoint e2530cc6 and open browser/device/account-lifecycle gaps. Checkpoint the verified working S04 Android APK and iOS sync; continue native device/policy work and cloud macOS simulator preparation because the owner has no Mac. No stage acceptance or release claim.",
+    "nextAction": "PAUSED BY USER on 2026-09-06 Europe/Moscow. Resume only after an explicit user instruction. Preserve working native checkpoint ca6f805b and the interrupted unreviewed iOS CI drafts; validate/review them before use. S03.acceptance remains first-open; S04 and release acceptance are not claimed.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10637,7 +10637,29 @@
       "androidApkSha256": "3a4cccecf310a7b2eabef22426d96fe78033e89bdca058249383e30d2b17cf20",
       "accepted": false,
       "iosSyncReview": "docs/mobile/evidence/S04/ios-project-sync-review.json",
-      "ownerHasMac": false
+      "ownerHasMac": false,
+      "commit": "ca6f805badc6638fbee5998f0de483b0857ca1c8"
+    },
+    "userPause": {
+      "paused": true,
+      "requestedAt": "2026-09-05T22:02:07.544Z",
+      "request": "Сделай паузу на сегодня",
+      "resumeOnlyOnExplicitUserInstruction": true,
+      "workingCheckpoint": "ca6f805badc6638fbee5998f0de483b0857ca1c8",
+      "uncommittedDrafts": [
+        {
+          "path": ".github/workflows/mobile-ios-simulator.yml",
+          "sha256": "e4e863067f7824a214a2b805e11dea3fa37cd5756472509ee16f2bd6647e9e76",
+          "status": "UNREVIEWED_INTERRUPTED_DRAFT_NOT_COMMITTED"
+        },
+        {
+          "path": "scripts/mobile/ios-simulator-build.mjs",
+          "sha256": "53ab92f97d9d5767fcf139bc1cfc44b0e321bb90bd999758e592a9902cf26957",
+          "status": "UNREVIEWED_INTERRUPTED_DRAFT_NOT_COMMITTED"
+        }
+      ],
+      "remoteIosBuildRun": false,
+      "productionActionsPerformed": false
     }
   },
   "externalOwnerInputsStatus": {

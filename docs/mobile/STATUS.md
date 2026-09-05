@@ -1,3 +1,7 @@
+USER PAUSE - 2026-09-06 Europe/Moscow. Resume only on explicit user instruction.
+Native working checkpoint: ca6f805badc6638fbee5998f0de483b0857ca1c8.
+Two interrupted iOS CI files remain uncommitted and unreviewed; no cloud run occurred.
+
 # V12 status
 
 S00-S02 are accepted. S03 is IN_PROGRESS and remains first-open. S04 is

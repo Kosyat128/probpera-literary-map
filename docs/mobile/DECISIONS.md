@@ -179,3 +179,7 @@
   no owner programming or local Mac. Keep simulator compilation, device signing
   and store delivery as separately evidenced steps; no cloud run is inferred from
   a workflow file. Production publication restrictions remain unchanged.
+- D047: The user explicitly paused work for today on 2026-09-06 Europe/Moscow.
+  Stop parallel implementation; no automatic resumption tomorrow. Native working
+  source/evidence is committed at ca6f805b. Interrupted uncommitted iOS workflow
+  and helper are preserved as unreviewed drafts, not CI or native build evidence.
