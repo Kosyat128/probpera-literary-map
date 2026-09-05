@@ -28,7 +28,7 @@ async function boundedText(response) {
 }
 
 /** CLI-only account API client. The reader Worker uses its native KV binding. */
-export function createNewsStorageClient({ accountId, apiToken, fetchImpl = fetch }) {
+export function createNewsStorageClient({ accountId, apiToken, fetchImpl = fetch, waitImpl = delay }) {
   if (!/^[a-f0-9]{32}$/i.test(accountId || "") || !apiToken?.trim()) {
     throw new Error("News storage credentials are not configured");
   }
@@ -61,6 +61,9 @@ export function createNewsStorageClient({ accountId, apiToken, fetchImpl = fetch
       // KV bulk writes can report partial success. Retry the same immutable
       // snapshot, never a new collection with different timestamps or contents.
       for (let attempt = 0; attempt < 3; attempt += 1) {
+        // KV permits one write per key per second. A partial response must not
+        // turn the retry itself into a rate-limit failure during bootstrap.
+        if (attempt) await waitImpl(1200 * attempt);
         const { response, text } = await request("/bulk", {
           method: "PUT", headers: { "Content-Type": "application/json" }, body,
         });
@@ -110,3 +113,4 @@ export async function syncNewsStorage({ storage, collect }) {
   await storage.write(entries);
   return state;
 }
+import { setTimeout as delay } from "node:timers/promises";

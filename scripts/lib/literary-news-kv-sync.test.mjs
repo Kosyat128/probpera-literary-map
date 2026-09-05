@@ -83,15 +83,21 @@ describe("scheduled literary news storage", () => {
     const fetchImpl = vi.fn()
       .mockResolvedValueOnce(Response.json(partial))
       .mockResolvedValueOnce(Response.json(complete));
-    const client = createNewsStorageClient({ accountId: "a".repeat(32), apiToken: "test-secret", fetchImpl });
+    const waitImpl = vi.fn(async () => {});
+    const client = createNewsStorageClient({ accountId: "a".repeat(32), apiToken: "test-secret", fetchImpl, waitImpl });
     await client.write(bulk());
     expect(fetchImpl).toHaveBeenCalledTimes(2);
     expect(fetchImpl.mock.calls[0][1].body).toBe(fetchImpl.mock.calls[1][1].body);
+    expect(waitImpl).toHaveBeenCalledWith(1200);
+    expect(waitImpl.mock.invocationCallOrder[0]).toBeGreaterThan(fetchImpl.mock.invocationCallOrder[0]);
+    expect(waitImpl.mock.invocationCallOrder[0]).toBeLessThan(fetchImpl.mock.invocationCallOrder[1]);
   });
   it("fails when a bulk response never confirms both keys", async () => {
     const fetchImpl = vi.fn(async () => Response.json({ success: true, result: { successful_key_count: 1 } }));
-    const client = createNewsStorageClient({ accountId: "a".repeat(32), apiToken: "test-secret", fetchImpl });
+    const waitImpl = vi.fn(async () => {});
+    const client = createNewsStorageClient({ accountId: "a".repeat(32), apiToken: "test-secret", fetchImpl, waitImpl });
     await expect(client.write(bulk())).rejects.toThrow("three attempts");
     expect(fetchImpl).toHaveBeenCalledTimes(3);
+    expect(waitImpl.mock.calls).toEqual([[1200], [2400]]);
   });
 });
