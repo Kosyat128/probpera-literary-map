@@ -55,6 +55,28 @@ describe("scheduled literary news storage", () => {
     await expect(client.read("editorial-catalog.json")).rejects.toThrow("Unexpected");
     expect(fetchImpl).toHaveBeenCalledTimes(1);
   });
+  it("rejects account-path injection before any request or credential transmission", () => {
+    for (const accountId of ["https://example.org", "a".repeat(32) + "/../../outside", "a".repeat(32) + "@example.org", "a".repeat(32) + "?redirect=https://example.org"]) {
+      const fetchImpl = vi.fn();
+      expect(() => createNewsStorageClient({ accountId, apiToken: "test-secret", fetchImpl })).toThrow("credentials");
+      expect(fetchImpl).not.toHaveBeenCalled();
+    }
+  });
+  it("keeps requests on the literal API authority and two fixed storage paths", async () => {
+    const fetchImpl = vi.fn(async () => new Response("{}"));
+    const client = createNewsStorageClient({ accountId: "a".repeat(32), apiToken: "test-secret", fetchImpl });
+    await client.read(NEWS_STATE_KEY);
+    await client.read(NEWS_QUEUE_KEY);
+    for (const [target] of fetchImpl.mock.calls) {
+      expect(target).toBeInstanceOf(URL);
+      expect(target.origin).toBe("https://api.cloudflare.com");
+      expect(target.username).toBe("");
+      expect(target.password).toBe("");
+      expect(target.search).toBe("");
+      expect(target.hash).toBe("");
+      expect(target.pathname).toMatch(/^\/client\/v4\/accounts\/a{32}\/storage\/kv\/namespaces\/f3ae59fd55ee4c0cac8ff1613db81680\/values\/literary-news%3Av1%3A(?:source-state|held-queue)$/u);
+    }
+  });
   it("retries a partially successful bulk write with identical values", async () => {
     const partial = { success: true, result: { unsuccessful_keys: [NEWS_QUEUE_KEY], successful_key_count: 1 } };
     const complete = { success: true, result: { unsuccessful_keys: [], successful_key_count: 2 } };

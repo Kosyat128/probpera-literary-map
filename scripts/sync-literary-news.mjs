@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile, appendFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -35,5 +35,4 @@ const state = await syncNewsStorage({
 await writeFile(path.join(output, "source-health.json"), `${JSON.stringify(state, null, 2)}\n`, "utf8");
 const summary = `Checked ${state.sources.length} literary sources; ${state.sources.filter(source => source.status === "ok").length} available. ${state.pendingCount} discoveries remain in the private editorial queue. No discoveries were automatically published.\n`;
 console.log(summary.trim());
-if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, summary, "utf8");
 if (!state.sources.some(source => source.status === "ok")) process.exitCode = 1;

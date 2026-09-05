@@ -32,9 +32,12 @@ export function createNewsStorageClient({ accountId, apiToken, fetchImpl = fetch
   if (!/^[a-f0-9]{32}$/i.test(accountId || "") || !apiToken?.trim()) {
     throw new Error("News storage credentials are not configured");
   }
-  const base = `https://api.cloudflare.com/client/v4/accounts/${accountId}/storage/kv/namespaces/${NAMESPACE_ID}`;
   async function request(path, options = {}) {
-    const response = await fetchImpl(`${base}${path}`, {
+    // Credentials are sent only to the literal Cloudflare host. Account and key
+    // values can change the path, never the destination, scheme or authority.
+    const endpoint = new URL("https://api.cloudflare.com");
+    endpoint.pathname = `/client/v4/accounts/${accountId}/storage/kv/namespaces/${NAMESPACE_ID}${path}`;
+    const response = await fetchImpl(endpoint, {
       ...options, redirect: "manual", signal: AbortSignal.timeout(30_000),
       headers: { Authorization: `Bearer ${apiToken}`, ...options.headers },
     });
