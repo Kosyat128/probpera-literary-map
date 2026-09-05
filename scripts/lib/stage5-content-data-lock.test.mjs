@@ -75,7 +75,23 @@ function canonicalContent(absolutePath) {
     );
     return printer.printFile(sourceFile);
   }
-  return projectApprovedAdminPublicationDelta(repositoryPath(absolutePath), text);
+  return projectApprovedAdminPublicationDelta(
+    repositoryPath(absolutePath),
+    projectApprovedSynopsisRefresh(repositoryPath(absolutePath), text)
+  );
+}
+
+function projectApprovedSynopsisRefresh(relativePath, source) {
+  if (relativePath !== ".github/workflows/deploy-pages.yml") return source;
+  // Project only the reviewed PR #178 generation-order fix back to the pinned
+  // workflow. All existing commands, conditions and release gates stay locked.
+  const comment = "        # Historical fixture tests run before refreshing this read-only provenance\n" +
+    "        # report; books:audit then checks it against the freshly exported CMS head.\n";
+  const before = "&& npm run books:audit";
+  const after = "&& node scripts/extract-article-book-synopsis-manifest.mjs && npm run books:audit";
+  expect(source.split(comment)).toHaveLength(2);
+  expect(source.split(after)).toHaveLength(2);
+  return source.replace(comment, "").replace(after, before);
 }
 
 function projectApprovedAdminPublicationDelta(relativePath, source) {
