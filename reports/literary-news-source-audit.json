@@ -1,0 +1,445 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-05T00:56:36.557Z",
+  "lastCheckedAt": "2026-09-05T00:56:36.532Z",
+  "sourceCount": 29,
+  "availableSourceCount": 24,
+  "failedSourceCount": 5,
+  "heldCandidateCount": 542,
+  "automaticallyPublishedCount": 0,
+  "discoveryQueuePath": ".tmp/literary-news-evidence/discovery-queue.json",
+  "sources": [
+    {
+      "id": "booker",
+      "name": "The Booker Prizes",
+      "url": "https://thebookerprizes.com/information-for/media-centre",
+      "format": "html",
+      "language": "en",
+      "region": "global",
+      "topics": [
+        "awards",
+        "publishing"
+      ],
+      "status": "error",
+      "lastSuccessAt": null,
+      "candidateCount": 0,
+      "error": "http_403"
+    },
+    {
+      "id": "prh",
+      "name": "Penguin Random House",
+      "url": "https://global.penguinrandomhouse.com/",
+      "format": "html",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "releases",
+        "publishing",
+        "adaptations"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:22.670Z",
+      "candidateCount": 99
+    },
+    {
+      "id": "nobel",
+      "name": "NobelPrize.org",
+      "url": "https://www.nobelprize.org/press-release/",
+      "format": "html",
+      "language": "en",
+      "region": "global",
+      "topics": [
+        "awards"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:22.080Z",
+      "candidateCount": 20
+    },
+    {
+      "id": "german-book-prize",
+      "name": "Deutscher Buchpreis",
+      "url": "https://www.deutscher-buchpreis.de/news/",
+      "format": "html",
+      "language": "de",
+      "region": "europe",
+      "topics": [
+        "awards",
+        "releases"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:22.100Z",
+      "candidateCount": 22
+    },
+    {
+      "id": "frankfurt-book-fair",
+      "name": "Frankfurter Buchmesse",
+      "url": "https://www.buchmesse.de/en/press/press-releases",
+      "format": "html",
+      "language": "en",
+      "region": "europe",
+      "topics": [
+        "festivals",
+        "publishing",
+        "releases",
+        "adaptations"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:22.704Z",
+      "candidateCount": 29
+    },
+    {
+      "id": "gothenburg-book-fair",
+      "name": "Bokmässan",
+      "url": "https://bokmassan.se/hem/om-bokmassan/nyheter/",
+      "format": "html",
+      "language": "sv",
+      "region": "europe",
+      "topics": [
+        "festivals",
+        "awards",
+        "publishing",
+        "releases"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:22.532Z",
+      "candidateCount": 33
+    },
+    {
+      "id": "british-library",
+      "name": "British Library",
+      "url": "https://www.bl.uk/about/press/releases",
+      "format": "html",
+      "language": "en",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "releases",
+        "anniversaries"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:23.218Z",
+      "candidateCount": 20
+    },
+    {
+      "id": "bnf",
+      "name": "Bibliothèque nationale de France",
+      "url": "https://www.bnf.fr/fr/agenda",
+      "format": "html",
+      "language": "fr",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "anniversaries",
+        "festivals"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:23.336Z",
+      "candidateCount": 12
+    },
+    {
+      "id": "goslitmuz",
+      "name": "Гослитмузей / State Literary Museum",
+      "url": "https://goslitmuz.ru/news/",
+      "format": "html",
+      "language": "ru",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "releases",
+        "anniversaries",
+        "festivals",
+        "discoveries"
+      ],
+      "status": "error",
+      "lastSuccessAt": null,
+      "candidateCount": 0,
+      "error": "request_timeout"
+    },
+    {
+      "id": "yasnaya-polyana",
+      "name": "Ясная Поляна / Yasnaya Polyana",
+      "url": "https://ypmuseum.ru/events",
+      "format": "html",
+      "language": "ru",
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "anniversaries",
+        "festivals"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:23.502Z",
+      "candidateCount": 5
+    },
+    {
+      "id": "national-book-foundation",
+      "name": "National Book Foundation",
+      "url": "https://www.nationalbook.org/all-story/",
+      "format": "html",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "awards",
+        "festivals",
+        "publishing"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:24.923Z",
+      "candidateCount": 7
+    },
+    {
+      "id": "giller",
+      "name": "Giller Prize",
+      "url": "https://gillerprize.ca/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "awards",
+        "releases",
+        "festivals"
+      ],
+      "status": "error",
+      "lastSuccessAt": null,
+      "candidateCount": 0,
+      "error": "request_timeout"
+    },
+    {
+      "id": "brooklyn-book-festival",
+      "name": "Brooklyn Book Festival",
+      "url": "https://brooklynbookfestival.org/event_type/festival-day/",
+      "format": "html",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "festivals",
+        "publishing"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:24.633Z",
+      "candidateCount": 51
+    },
+    {
+      "id": "prh-library",
+      "name": "Penguin Random House Library",
+      "url": "https://penguinrandomhouselibrary.com/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "releases",
+        "adaptations",
+        "publishing"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:25.509Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "loc-bookmarked",
+      "name": "Library of Congress · Bookmarked",
+      "url": "https://blogs.loc.gov/bookmarked/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "anniversaries"
+      ],
+      "status": "error",
+      "lastSuccessAt": null,
+      "candidateCount": 0,
+      "error": "http_403"
+    },
+    {
+      "id": "pen-america",
+      "name": "PEN America",
+      "url": "https://pen.org/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "awards",
+        "publishing",
+        "festivals"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:25.783Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "literary-arts",
+      "name": "Literary Arts",
+      "url": "https://literary-arts.org/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "festivals",
+        "awards",
+        "releases"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:26.528Z",
+      "candidateCount": 50
+    },
+    {
+      "id": "aaww",
+      "name": "Asian American Writers’ Workshop",
+      "url": "https://aaww.org/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "north-america",
+      "topics": [
+        "releases",
+        "publishing",
+        "festivals"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:27.127Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "kent-literary-research",
+      "name": "University of Kent - literary research",
+      "url": "https://www.kent.ac.uk/news",
+      "format": "html",
+      "language": "en",
+      "region": "europe",
+      "topics": [
+        "discoveries",
+        "heritage"
+      ],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:27.530Z",
+      "candidateCount": 1
+    },
+    {
+      "id": "netflix-book-adaptations",
+      "name": "Netflix Tudum - Book adaptations",
+      "url": "https://www.netflix.com/tudum/articles/new-book-adaptations",
+      "format": "html",
+      "language": "en",
+      "region": "global",
+      "topics": [
+        "adaptations"
+      ],
+      "status": "error",
+      "lastSuccessAt": null,
+      "candidateCount": 0,
+      "error": "response_too_large"
+    },
+    {
+      "id": "ubud-writers-readers-festival",
+      "name": "Ubud Writers & Readers Festival",
+      "url": "https://ubudwritersfestival.com/news",
+      "format": "html",
+      "language": "en",
+      "region": "asia",
+      "topics": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:30.403Z",
+      "candidateCount": 40
+    },
+    {
+      "id": "shanghai-childrens-book-fair",
+      "name": "Shanghai International Children’s Book Fair",
+      "url": "https://ccbookfair.com/en/index/news-center/news",
+      "format": "html",
+      "language": "en",
+      "region": "asia",
+      "topics": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:30.519Z",
+      "candidateCount": 3
+    },
+    {
+      "id": "ake-arts-book-festival",
+      "name": "Aké Arts & Book Festival",
+      "url": "https://akefestival.org/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "africa",
+      "topics": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:32.011Z",
+      "candidateCount": 10
+    },
+    {
+      "id": "kenya-publishers-association",
+      "name": "Kenya Publishers Association",
+      "url": "https://kenyapublishers.org/category/news/feed/",
+      "format": "rss",
+      "language": "en",
+      "region": "africa",
+      "topics": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:32.336Z",
+      "candidateCount": 7
+    },
+    {
+      "id": "fil-guadalajara",
+      "name": "FIL Guadalajara",
+      "url": "https://fil.com.mx/prensa/recientes.asp?ids=1",
+      "format": "html",
+      "language": "es",
+      "region": "latin-america",
+      "topics": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:36.090Z",
+      "candidateCount": 11
+    },
+    {
+      "id": "hay-festival-queretaro",
+      "name": "Hay Festival Querétaro",
+      "url": "https://www.hayfestival.com/m-235-queretaro-2026.aspx?currencysetting=MXN&localesetting=es-ES&resetfilters=true&skinid=19",
+      "format": "html",
+      "language": "es",
+      "region": "latin-america",
+      "topics": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:33.766Z",
+      "candidateCount": 36
+    },
+    {
+      "id": "brisbane-writers-festival",
+      "name": "Brisbane Writers Festival",
+      "url": "https://bwf.org.au/news/articles",
+      "format": "html",
+      "language": "en",
+      "region": "oceania",
+      "topics": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:34.489Z",
+      "candidateCount": 16
+    },
+    {
+      "id": "nz-children-young-adults-book-awards",
+      "name": "New Zealand Book Awards Trust - Children and Young Adults",
+      "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/",
+      "format": "html",
+      "language": "en",
+      "region": "oceania",
+      "topics": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:36.532Z",
+      "candidateCount": 5
+    },
+    {
+      "id": "word-christchurch",
+      "name": "WORD Christchurch",
+      "url": "https://wordchristchurch.co.nz/news",
+      "format": "html",
+      "language": "en",
+      "region": "oceania",
+      "topics": [],
+      "status": "ok",
+      "lastSuccessAt": "2026-09-05T00:56:36.525Z",
+      "candidateCount": 35
+    }
+  ]
+}

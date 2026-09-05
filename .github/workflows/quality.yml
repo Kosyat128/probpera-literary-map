@@ -18,7 +18,9 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # Serial browser coverage can exceed 45 minutes on slower hosted runners.
+    # Keep room for the complete suite and failure diagnostics.
+    timeout-minutes: 60
 
     steps:
       - name: Checkout repository
@@ -85,7 +87,7 @@ jobs:
         run: npm run test:e2e
 
       - name: Upload browser diagnostics on failure
-        if: failure()
+        if: failure() || cancelled()
         uses: actions/upload-artifact@v7
         with:
           name: browser-quality-report

@@ -1527,8 +1527,14 @@ export function resolveInitialInterfaceLanguage(
 
 function initialLanguage(): InterfaceLanguage {
   if (typeof window === "undefined") return "ru";
+  let storedLanguage: string | null = null;
+  try {
+    storedLanguage = window.localStorage.getItem(STORAGE_KEY);
+  } catch {
+    // The language switch remains usable when browser storage is blocked.
+  }
   return resolveInitialInterfaceLanguage(
-    window.localStorage.getItem(STORAGE_KEY),
+    storedLanguage,
     document.documentElement.dataset.routeLanguage,
     isControlledWebEdition ? window.navigator.languages : undefined
   );
@@ -1578,7 +1584,11 @@ export function InterfaceLanguageProvider({ children }: { children: ReactNode })
 
   const setLanguage = useCallback((nextLanguage: InterfaceLanguage) => {
     setLocalLanguage(nextLanguage);
-    window.localStorage.setItem(STORAGE_KEY, nextLanguage);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, nextLanguage);
+    } catch {
+      // Keep the selected language for this page even without persistence.
+    }
     applyLanguage(nextLanguage);
     window.dispatchEvent(
       new CustomEvent<InterfaceLanguage>(EVENT_NAME, {

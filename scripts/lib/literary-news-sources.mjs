@@ -1,0 +1,465 @@
+/**
+ * Approved discovery endpoints and selectors. Changes require code review.
+ * Network destinations and executable patterns must never come from JSON, requests, or source HTML.
+ */
+const approvedSources = [
+  {
+    "id": "booker",
+    "name": "The Booker Prizes",
+    "url": "https://thebookerprizes.com/information-for/media-centre",
+    "language": "en",
+    "region": "global",
+    "topics": [
+      "awards",
+      "publishing"
+    ],
+    "format": "html",
+    "linkPattern": /^\/media-centre\/press-releases\/[^/]+\/?$/
+  },
+  {
+    "id": "prh",
+    "name": "Penguin Random House",
+    "url": "https://global.penguinrandomhouse.com/",
+    "language": "en",
+    "linkPattern": /^\/announcements\/[^/]+\/?$/,
+    "format": "html",
+    "region": "north-america",
+    "topics": [
+      "releases",
+      "publishing",
+      "adaptations"
+    ]
+  },
+  {
+    "id": "nobel",
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/press-release/",
+    "language": "en",
+    "linkPattern": /^\/press-release\/[^/]+\/?$/,
+    "format": "html",
+    "region": "global",
+    "topics": [
+      "awards"
+    ]
+  },
+  {
+    "id": "german-book-prize",
+    "name": "Deutscher Buchpreis",
+    "url": "https://www.deutscher-buchpreis.de/news/",
+    "language": "de",
+    "region": "europe",
+    "topics": [
+      "awards",
+      "releases"
+    ],
+    "format": "html",
+    "linkPattern": /^\/news\/eintrag\/[^/]+\/?$/
+  },
+  {
+    "id": "frankfurt-book-fair",
+    "name": "Frankfurter Buchmesse",
+    "url": "https://www.buchmesse.de/en/press/press-releases",
+    "language": "en",
+    "region": "europe",
+    "topics": [
+      "festivals",
+      "publishing",
+      "releases",
+      "adaptations"
+    ],
+    "format": "html",
+    "linkPattern": /^\/en\/press\/press-releases\/[^/]+\/?$/
+  },
+  {
+    "id": "gothenburg-book-fair",
+    "name": "Bokmässan",
+    "url": "https://bokmassan.se/hem/om-bokmassan/nyheter/",
+    "language": "sv",
+    "region": "europe",
+    "topics": [
+      "festivals",
+      "awards",
+      "publishing",
+      "releases"
+    ],
+    "format": "html",
+    "linkPattern": /^\/\d{4}\/\d{2}\/[^/]+\/?$/
+  },
+  {
+    "id": "british-library",
+    "name": "British Library",
+    "url": "https://www.bl.uk/about/press/releases",
+    "language": "en",
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "releases",
+      "anniversaries"
+    ],
+    "format": "html",
+    "linkPattern": /^\/about\/press\/releases\/[^/]+\/?$/
+  },
+  {
+    "id": "bnf",
+    "name": "Bibliothèque nationale de France",
+    "url": "https://www.bnf.fr/fr/agenda",
+    "language": "fr",
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "anniversaries",
+      "festivals"
+    ],
+    "format": "html",
+    "linkPattern": /^\/fr\/agenda\/[^/]+\/?$/
+  },
+  {
+    "id": "goslitmuz",
+    "name": "Гослитмузей / State Literary Museum",
+    "url": "https://goslitmuz.ru/news/",
+    "language": "ru",
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "releases",
+      "anniversaries",
+      "festivals",
+      "discoveries"
+    ],
+    "format": "html",
+    "linkPattern": /^\/news\/[^/]+\/\d+\/?$/
+  },
+  {
+    "id": "yasnaya-polyana",
+    "name": "Ясная Поляна / Yasnaya Polyana",
+    "url": "https://ypmuseum.ru/events",
+    "language": "ru",
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "anniversaries",
+      "festivals"
+    ],
+    "format": "html",
+    "linkPattern": /^\/event\/\d+\/?$/
+  },
+  {
+    "id": "national-book-foundation",
+    "name": "National Book Foundation",
+    "url": "https://www.nationalbook.org/all-story/",
+    "format": "html",
+    "linkPattern": /^\/(?!all-story\/|national-book-awards\/|other-prizes-honors\/|lifetime-achievement\/|programs\/|public-programs\/|events-calendar\/|adventure\/|donor-advised-funds\/|leave-a-literary-legacy\/|strategic-plan-|bridge-to-|donor-privacy-policy\/|mission-history\/|foundation-board-of-directors\/|make-a-stock-donation\/|contact\/|about\/|privacy-policy\/|adventure-)[a-z0-9][a-z0-9-]+\/?$/,
+    "keywordPattern": /announc|award|honore|literary|championing books/iu,
+    "collectionNote": "2026-09-05: /feed/ redirects to the homepage. The official All News Stories index returns HTTP 200 and exposes article links directly.",
+    "language": "en",
+    "region": "north-america",
+    "topics": [
+      "awards",
+      "festivals",
+      "publishing"
+    ]
+  },
+  {
+    "id": "giller",
+    "name": "Giller Prize",
+    "url": "https://gillerprize.ca/feed/",
+    "format": "rss",
+    "collectionNote": "2026-09-05: direct requests to both the feed and homepage timed out. Collection remains unavailable.",
+    "language": "en",
+    "region": "north-america",
+    "topics": [
+      "awards",
+      "releases",
+      "festivals"
+    ]
+  },
+  {
+    "id": "brooklyn-book-festival",
+    "name": "Brooklyn Book Festival",
+    "url": "https://brooklynbookfestival.org/event_type/festival-day/",
+    "format": "html",
+    "linkPattern": /^\/event\/[^/]+\/?$/,
+    "collectionNote": "2026-09-05: RSS contains no article items. The official Festival Day programme returns HTTP 200 with individual event links; event dates still require editorial review.",
+    "language": "en",
+    "region": "north-america",
+    "topics": [
+      "festivals",
+      "publishing"
+    ]
+  },
+  {
+    "id": "prh-library",
+    "name": "Penguin Random House Library",
+    "url": "https://penguinrandomhouselibrary.com/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "north-america",
+    "topics": [
+      "releases",
+      "adaptations",
+      "publishing"
+    ]
+  },
+  {
+    "id": "loc-bookmarked",
+    "name": "Library of Congress · Bookmarked",
+    "url": "https://blogs.loc.gov/bookmarked/feed/",
+    "format": "rss",
+    "collectionNote": "2026-09-05: direct feed request returns HTTP 403. Collection remains unavailable.",
+    "language": "en",
+    "region": "north-america",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "anniversaries"
+    ]
+  },
+  {
+    "id": "pen-america",
+    "name": "PEN America",
+    "url": "https://pen.org/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "north-america",
+    "topics": [
+      "awards",
+      "publishing",
+      "festivals"
+    ]
+  },
+  {
+    "id": "literary-arts",
+    "name": "Literary Arts",
+    "url": "https://literary-arts.org/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "north-america",
+    "topics": [
+      "festivals",
+      "awards",
+      "releases"
+    ]
+  },
+  {
+    "id": "aaww",
+    "name": "Asian American Writers’ Workshop",
+    "url": "https://aaww.org/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "north-america",
+    "topics": [
+      "releases",
+      "publishing",
+      "festivals"
+    ]
+  },
+  {
+    "id": "kent-literary-research",
+    "name": "University of Kent - literary research",
+    "url": "https://www.kent.ac.uk/news",
+    "language": "en",
+    "region": "europe",
+    "topics": [
+      "discoveries",
+      "heritage"
+    ],
+    "format": "html",
+    "linkPattern": /^\/news\/creativity-culture-and-heritage\/\d+\/[^/]+\/?$/
+  },
+  {
+    "id": "netflix-book-adaptations",
+    "name": "Netflix Tudum - Book adaptations",
+    "url": "https://www.netflix.com/tudum/articles/new-book-adaptations",
+    "language": "en",
+    "region": "global",
+    "topics": [
+      "adaptations"
+    ],
+    "format": "html",
+    "linkPattern": /^\/tudum\/articles\/[^/]+\/?$/
+  },
+  {
+    "id": "ubud-writers-readers-festival",
+    "name": "Ubud Writers & Readers Festival",
+    "url": "https://ubudwritersfestival.com/news",
+    "language": "en",
+    "region": "asia",
+    "format": "html",
+    "linkPattern": /^\/news\/[^/?#]+\/?$/,
+    "articleOrigins": [
+      "https://ubudwritersfestival.com",
+      "https://www.ubudwritersfestival.com"
+    ],
+    "exampleArticleUrls": [
+      "https://ubudwritersfestival.com/news/extraordinary-voices-and-bold-thinkers-announced-for-festival-2026"
+    ],
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "notes": "Official news index; HTTP 200 text/html. English and Indonesian articles share the index: check article language. Conflicting publication dates were observed for the sample release; do not infer dates from index position or adjacent related articles."
+  },
+  {
+    "id": "shanghai-childrens-book-fair",
+    "name": "Shanghai International Children’s Book Fair",
+    "url": "https://ccbookfair.com/en/index/news-center/news",
+    "language": "en",
+    "region": "asia",
+    "format": "html",
+    "articleContainer": ".card-item",
+    "titleSelector": "h3.title",
+    "linkPattern": /^\/en\/index\/news-center\/news\/detail(?:!|%21)[^/?#]+\/?$/,
+    "articleOrigins": [
+      "https://ccbookfair.com",
+      "https://www.ccbookfair.com"
+    ],
+    "exampleArticleUrls": [
+      "https://ccbookfair.com/en/index/news-center/news/detail!ccbf2026-opencall"
+    ],
+    "discoveryHints": {
+      "linkSelector": ".card-item a.read-more[href]",
+      "containerSelector": ".card-item",
+      "titleSelector": "h3.title",
+      "reason": "The link text is only Read More; the article heading is its sibling inside the same card. URL and linkPattern already match."
+    },
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "notes": "Official English news index; HTTP 200 text/html. Both encoded and literal exclamation marks occur in links. Sample article has conflicting March 5 and March 11 publication/dateline text, while November 13-15 event dates agree with the dedicated dates page."
+  },
+  {
+    "id": "ake-arts-book-festival",
+    "name": "Aké Arts & Book Festival",
+    "url": "https://akefestival.org/feed/",
+    "language": "en",
+    "region": "africa",
+    "format": "rss",
+    "linkPattern": /^\/[a-z0-9-]+\/$/,
+    "articleOrigins": [
+      "https://akefestival.org"
+    ],
+    "exampleArticleUrls": [
+      "https://akefestival.org/pre-festival-press-conference-recap/"
+    ],
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "notes": "RSS autodiscovered on official /akefest-blog/. HTTP 200 application/rss+xml with 10 items. Latest feed article is November 19, 2025; 2026 dates come from the homepage, not this archive. RSS candidates need an article-date gate and must not become current news merely because the feed is freshly fetched."
+  },
+  {
+    "id": "kenya-publishers-association",
+    "name": "Kenya Publishers Association",
+    "url": "https://kenyapublishers.org/category/news/feed/",
+    "language": "en",
+    "region": "africa",
+    "format": "rss",
+    "linkPattern": /^\/[0-9]{4}\/[0-9]{2}\/[0-9]{2}\/[^/?#]+\/$/,
+    "articleOrigins": [
+      "https://kenyapublishers.org",
+      "https://www.kenyapublishers.org"
+    ],
+    "exampleArticleUrls": [
+      "https://kenyapublishers.org/2026/05/06/meru-regional-book-fair-2026/"
+    ],
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "notes": "News category RSS autodiscovered on /category/news/. HTTP 200 application/rss+xml with 7 items; most recent May 6, 2026. The visible Nairobi article is for 2025, so the separate 2026 Nairobi card cites the International Publishers Association calendar."
+  },
+  {
+    "id": "fil-guadalajara",
+    "name": "FIL Guadalajara",
+    "url": "https://fil.com.mx/prensa/recientes.asp?ids=1",
+    "language": "es",
+    "region": "latin-america",
+    "format": "html",
+    "linkPattern": /^\/prensa\/boletin\.asp$/,
+    "articleOrigins": [
+      "https://fil.com.mx",
+      "https://www.fil.com.mx"
+    ],
+    "exampleArticleUrls": [
+      "https://fil.com.mx/prensa/boletin.asp?ids=1&id=3344"
+    ],
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "notes": "Official recent press releases; discovered through site navigation and verified HTTP 200 text/html. Match pathname, but retain the id query parameter: all releases use boletin.asp and different id values. ids controls navigation context; the same id reached with different ids values is one article. Legacy page encoding can damage accents in an extractor; use the response encoding."
+  },
+  {
+    "id": "hay-festival-queretaro",
+    "name": "Hay Festival Querétaro",
+    "url": "https://www.hayfestival.com/m-235-queretaro-2026.aspx?skinid=19&localesetting=es-ES&currencysetting=MXN&resetfilters=true",
+    "language": "es",
+    "region": "latin-america",
+    "format": "html",
+    "linkPattern": /^\/p-[0-9]+-[^/?#]+\.aspx$/,
+    "articleOrigins": [
+      "https://www.hayfestival.com"
+    ],
+    "exampleArticleUrls": [
+      "https://www.hayfestival.com/p-25826-emiliano-monge-in-conversation-with-enrique-diaz-alvarez.aspx"
+    ],
+    "discoveryHints": {
+      "linkSelector": ".modal-body h2.event a[href]",
+      "containerSelector": "h2.event",
+      "titleSelector": ":scope",
+      "reason": "The article link contains only an icon; its parent h2 supplies the event title. Its title attribute says Open in new tab and is not an article title. URL and linkPattern already match."
+    },
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "notes": "Official event programme, HTTP 200 text/html, reached via /queretaro/tickets. This is a programme discovery source, not a publication-date news feed. Content must pass a literature-topic gate; there are other subjects too. Event URLs default to English when fetched independently, so detect/record the actual article language. The programme is paginated and edition-specific; rollover requires review."
+  },
+  {
+    "id": "brisbane-writers-festival",
+    "name": "Brisbane Writers Festival",
+    "url": "https://bwf.org.au/news/articles",
+    "language": "en",
+    "region": "oceania",
+    "format": "html",
+    "linkPattern": /^\/news\/articles\/[^/?#]+\/?$/,
+    "articleOrigins": [
+      "https://bwf.org.au"
+    ],
+    "exampleArticleUrls": [
+      "https://bwf.org.au/news/articles/brisbane-writers-festival-to-administer-the-queensland-literary-awards"
+    ],
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "notes": "Official article index and sample article both HTTP 200 text/html. Latest indexed article is dated March 30, 2026; the current October festival programme lives separately at /2026-festival. Keep historic reviews and recommendations distinct from news."
+  },
+  {
+    "id": "nz-children-young-adults-book-awards",
+    "name": "New Zealand Book Awards Trust - Children and Young Adults",
+    "url": "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/",
+    "language": "en",
+    "region": "oceania",
+    "format": "html",
+    "linkPattern": /^\/new-zealand-book-awards-for-children-and-young-adults\/news\/[^/?#]+\/[0-9]+\/?$/,
+    "articleOrigins": [
+      "https://www.nzbookawards.nz"
+    ],
+    "exampleArticleUrls": [
+      "https://www.nzbookawards.nz/new-zealand-book-awards-for-children-and-young-adults/news/picture-book-duo-claim-top-prize-at-childrens-book-awards-for-second-time/53690?pageNum=1"
+    ],
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "notes": "Official awards administrator's news index, HTTP 200 text/html. Latest release dated August 19, 2026. Canonical identity comes from the numeric article ID and path; pageNum is pagination context. Other Trust award series can be added as separately reviewed indices."
+  },
+  {
+    "id": "word-christchurch",
+    "name": "WORD Christchurch",
+    "url": "https://wordchristchurch.co.nz/news",
+    "language": "en",
+    "region": "oceania",
+    "format": "html",
+    "linkPattern": /^\/news\/[^/?#]+\/?$/,
+    "articleOrigins": [
+      "https://wordchristchurch.co.nz"
+    ],
+    "exampleArticleUrls": [
+      "https://wordchristchurch.co.nz/news/2026-festival-dates-announced"
+    ],
+    "verifiedAt": "2026-09-05T00:46:07Z",
+    "notes": "Official festival news index and sample event announcement verified; index HTTP 200 text/html. The same archive includes a 2021 postponement notice, which must not be misread as a 2026 update."
+  }
+];
+
+function freezeSource(value) {
+  if (value && typeof value === "object" && !Object.isFrozen(value)) {
+    for (const child of Object.values(value)) freezeSource(child);
+    Object.freeze(value);
+  }
+  return value;
+}
+
+export const LITERARY_NEWS_SOURCES = freezeSource(approvedSources);

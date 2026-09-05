@@ -240,6 +240,31 @@ export const stage5FinalInterfaceCopyAttestation = Object.freeze({
   }),
 });
 
+// The literary-news integration keeps language selection usable when storage is
+// unavailable. Only these two reviewed guards are projected out; the historical
+// D1 runtime fingerprint and all final translation/catalog hashes stay intact.
+export const interfaceStorageResilienceAttestation = Object.freeze({
+  id: "LITERARY-NEWS-INTERFACE-STORAGE-RESILIENCE-2026-09-05",
+  authorizedOn: "2026-09-05",
+  path: "src/i18n/InterfaceLanguage.tsx",
+  baselineCodeOutsideInitializerSha256:
+    "96a330622dd3b14b98f4215fc8392e7af7160c8ff74b8e33df2d2e99efb55802",
+  codeOutsideInitializerSha256:
+    "8d5c2e021475fc7189947ebddbc1fb7594c44f81dd3abdb1362a75ce19b59a7d",
+  projections: Object.freeze([
+    Object.freeze({
+      id: "initial-language-storage-read",
+      before: "  return resolveInitialInterfaceLanguage(\n    window.localStorage.getItem(STORAGE_KEY),",
+      after: "  let storedLanguage: string | null = null;\n  try {\n    storedLanguage = window.localStorage.getItem(STORAGE_KEY);\n  } catch {\n    // The language switch remains usable when browser storage is blocked.\n  }\n  return resolveInitialInterfaceLanguage(\n    storedLanguage,",
+    }),
+    Object.freeze({
+      id: "language-selection-storage-write",
+      before: "    window.localStorage.setItem(STORAGE_KEY, nextLanguage);",
+      after: "    try {\n      window.localStorage.setItem(STORAGE_KEY, nextLanguage);\n    } catch {\n      // Keep the selected language for this page even without persistence.\n    }",
+    }),
+  ]),
+});
+
 export const russianBiographyEditorialOwnerAttestation = Object.freeze({
   id: "RUSSIAN-BIOGRAPHY-EDITORIAL-2026-09-01",
   authorizedOn: "2026-09-01",

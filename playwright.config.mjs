@@ -16,13 +16,19 @@ const previewPort = Number.parseInt(process.env.PLAYWRIGHT_PORT ?? "4173", 10);
 const previewOrigin = `http://127.0.0.1:${previewPort}`;
 const suite = process.env.PLAYWRIGHT_SUITE;
 const premiumGlobeSpec = "**/premium-globe-exploration.spec.mjs";
+// Homepage navigation and layout checks also activate the real globe while scrolling.
 const webglRegressionSpecs = [
+  "**/archive-search-calendar.spec.mjs",
   "**/globe-runtime.spec.mjs",
   "**/globe-visual-regression.spec.mjs",
   "**/literary-planet-immersion.spec.mjs",
+  "**/navigation-layout.spec.mjs",
   "**/public-doc-refinements.spec.mjs",
   "**/public-smoke.spec.mjs",
   "**/responsive-reader-globe.spec.mjs",
+  "**/stage5-baseline.spec.mjs",
+  "**/stage5b-art-direction.spec.mjs",
+  "**/stage5c-layout-community.spec.mjs",
   // The ten-width homepage matrix enters the shelf preload range while resizing.
   // Its real Canvas must share the serial GPU lane with the other WebGL checks.
   "**/typography-and-card-geometry.spec.mjs",
