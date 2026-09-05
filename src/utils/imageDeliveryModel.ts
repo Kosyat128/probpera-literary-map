@@ -27,7 +27,8 @@ export function expandImageDeliveryManifest(compact: CompactImageDeliveryManifes
 }
 
 /** Presentation renditions keep the editorial source and its credits intact. */
-export function createImageDeliveryResolver(entries: Readonly<Record<string, ImageDeliveryEntry>>, base = "/") {
+export function createImageDeliveryResolver(initialEntries: Readonly<Record<string, ImageDeliveryEntry>>, base = "/") {
+  const entries = { ...initialEntries };
   const prefix = `${base.replace(/\/+$/u, "")}/`;
   const localUrl = (value: string) => !value || value.startsWith(prefix) || /^(?:https?:|data:|blob:|#)/iu.test(value)
     ? value : `${prefix}${value.replace(/^\/+/, "")}`;
@@ -36,7 +37,8 @@ export function createImageDeliveryResolver(entries: Readonly<Record<string, Ima
     if (entries[source]) return source;
     if (!aliases) {
       aliases = new Map();
-      for (const [url, entry] of Object.entries(entries)) {
+      // Stable aliases do not depend on which lazy reader registered first.
+      for (const [url, entry] of Object.entries(entries).sort(([left], [right]) => left.localeCompare(right))) {
         for (const rendition of [entry, ...entry.variants]) {
           aliases.set(rendition.src, url);
           aliases.set(localUrl(rendition.src), url);
@@ -65,5 +67,9 @@ export function createImageDeliveryResolver(entries: Readonly<Record<string, Ima
       } : {}),
     };
   };
-  return { attributes, original, url: (source: string, width = 1280) => attributes(source, width).src };
+  const register = (additionalEntries: Readonly<Record<string, ImageDeliveryEntry>>) => {
+    Object.assign(entries, additionalEntries);
+    aliases = undefined;
+  };
+  return { attributes, original, register, url: (source: string, width = 1280) => attributes(source, width).src };
 }

@@ -31,7 +31,16 @@
     "public/cms/"
   ],
   "generatedEncodings": {
-    "src/data/imageDelivery.compact.generated.json": "src/data/imageDelivery.generated.json"
+    "src/data/imageDelivery.initial.generated.json": {
+      "sourceManifest": "src/data/imageDelivery.generated.json",
+      "provenance": "reports/public-image-delivery.json",
+      "scope": "initial"
+    },
+    "src/data/imageDelivery.articles.generated.json": {
+      "sourceManifest": "src/data/imageDelivery.generated.json",
+      "provenance": "reports/public-image-delivery.json",
+      "scope": "articles"
+    }
   },
   "generatedBudget": {
     "maxOccurrences": 7468,

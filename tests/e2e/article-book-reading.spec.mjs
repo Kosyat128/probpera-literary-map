@@ -1,12 +1,19 @@
 import { expect, test } from "@playwright/test";
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
+import { isDeepStrictEqual } from "node:util";
 import { createImageDeliveryResolver } from "../../src/utils/imageDeliveryModel.ts";
+
+// Production enables a service worker whose own fetches bypass page.route.
+// Block it only for synthetic documents; real-article coverage keeps normal PWA behavior.
+const fixtureTest = test.extend({ serviceWorkers: "block" });
 
 const source = JSON.parse(readFileSync(new URL("../../public/cms/articles/cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8.json", import.meta.url), "utf8"));
 const assetRoot = new URL("../../public/", import.meta.url);
 const portrait = "/book-reading-fixture/shakespeare.jpg";
 const cover = "/book-reading-fixture/hamlet.webp";
 const compactText = value => value.replace(/\s/gu, "");
+const textDigest = value => createHash("sha256").update(compactText(value)).digest("hex");
 const imageManifest = JSON.parse(readFileSync(new URL("../../src/data/imageDelivery.generated.json", import.meta.url), "utf8"));
 
 function deliveredCoverUrl(articleUrl) {
@@ -160,7 +167,7 @@ async function prepare(page, locale) {
   await page.route(`**${portrait}`, route => route.fulfill({ body: readFileSync(new URL("brand/shakespeare.jpg", assetRoot)), contentType: "image/jpeg" }));
   await page.route(`**${cover}`, route => route.fulfill({ body: readFileSync(new URL("brand/book-covers/hamlet-editorial.webp", assetRoot)), contentType: "image/webp" }));
   await page.route(source.imageUrl, route => route.fulfill({ body: readFileSync(new URL("brand/book-covers/hamlet-editorial.webp", assetRoot)), contentType: "image/webp", headers: { "access-control-allow-origin": "*" } }));
-  return illustratedContent(locale);
+  return { ...illustratedContent(locale), document };
 }
 
 async function installEnvironment(page, noWebgl = false) {
@@ -193,11 +200,29 @@ async function installEnvironment(page, noWebgl = false) {
   }, { disableWebgl: noWebgl });
 }
 
-async function enterBook(page, url, locale) {
+async function enterBook(page, url, locale, fixture) {
   const localizedUrl = new URL(url);
   localizedUrl.searchParams.set("bookLocale", locale);
-  await page.goto(localizedUrl.href);
+  if (fixture) {
+    const [response] = await Promise.all([
+      page.waitForResponse(response => new URL(response.url()).pathname.endsWith(`/${source.documentPath}`)
+        && response.request().resourceType() === "fetch"),
+      page.goto(localizedUrl.href),
+    ]);
+    expect(response.ok(), "the reader receives the synthetic article document").toBe(true);
+    const payload = await response.json();
+    expect(payload.id, "the requested fixture article ID").toBe(fixture.document.id);
+    expect(isDeepStrictEqual(payload, fixture.document), "fixture JSON reaches the reader unchanged").toBe(true);
+  } else {
+    await page.goto(localizedUrl.href);
+  }
   await expect(page.locator(".article-reader-content")).toBeVisible({ timeout: 30_000 });
+  if (fixture) {
+    const expectedText = await page.evaluate(html => new DOMParser().parseFromString(html, "text/html").body.textContent, fixture.html);
+    await expect.poll(async () => textDigest(await page.locator(".article-reader-content").textContent()), {
+      message: "the complete localized fixture is displayed before book pagination",
+    }).toBe(textDigest(expectedText));
+  }
   await page.locator(".article-reader-bar").getByRole("button", { name: locale === "en" ? "Printed book mode" : "Режим печатной книги", exact: true }).click();
   const book = page.locator("[data-article-book-reader]");
   await expect(book).toBeVisible({ timeout: 30_000 });
@@ -257,7 +282,7 @@ async function assertGeometry(page, book, widths) {
   }
 }
 
-test("illustrated book preserves every page, renders illustrations and supports accessible navigation", async ({ page, request, baseURL, isMobile }, testInfo) => {
+fixtureTest("illustrated book preserves every page, renders illustrations and supports accessible navigation", async ({ page, request, baseURL, isMobile }, testInfo) => {
   test.setTimeout(180_000);
   await installEnvironment(page);
   const url = await fixtureArticleUrl(request, baseURL);
@@ -266,7 +291,7 @@ test("illustrated book preserves every page, renders illustrations and supports 
     const content = await prepare(page, locale);
     await page.setViewportSize({ width: isMobile ? 390 : 1440, height: 1000 });
     await page.emulateMedia({ reducedMotion: "reduce" });
-    const book = await enterBook(page, url, locale);
+    const book = await enterBook(page, url, locale, content);
     await expect(book.locator(".article-book-reader__stage canvas")).toBeVisible({ timeout: 30_000 });
     await expect(book).toHaveAttribute("data-renderer", "three");
     await expectPage(book, 0);
@@ -346,11 +371,11 @@ test("illustrated book preserves every page, renders illustrations and supports 
   }
 });
 
-test("a delayed illustration fills the existing book without blocking reading or resetting its page", async ({ page, request, baseURL, isMobile }, testInfo) => {
+fixtureTest("a delayed illustration fills the existing book without blocking reading or resetting its page", async ({ page, request, baseURL, isMobile }, testInfo) => {
   test.setTimeout(60_000);
   await installEnvironment(page);
   const url = await fixtureArticleUrl(request, baseURL);
-  await prepare(page, "ru");
+  const content = await prepare(page, "ru");
   const hotUpdates = [];
   page.on("websocket", socket => socket.on("framereceived", ({ payload }) => {
     if (typeof payload !== "string") return;
@@ -385,7 +410,7 @@ test("a delayed illustration fills the existing book without blocking reading or
   });
   await page.setViewportSize({ width: isMobile ? 390 : 1440, height: 1000 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  const book = await enterBook(page, url, "ru");
+  const book = await enterBook(page, url, "ru", content);
   const canvas = book.locator(".article-book-reader__stage canvas");
   await expect.poll(() => book.getAttribute("data-page-count"), { timeout: 3500 }).not.toBe("0");
   await expect(canvas).toBeVisible({ timeout: 30_000 });
@@ -439,7 +464,7 @@ test("a delayed illustration fills the existing book without blocking reading or
   await book.screenshot({ path: testInfo.outputPath("delayed-illustration-arrived.png") });
 });
 
-test("WebGL failure retains the complete illustrated article and responsive reading", async ({ page, request, baseURL, isMobile }) => {
+fixtureTest("WebGL failure retains the complete illustrated article and responsive reading", async ({ page, request, baseURL, isMobile }) => {
   test.setTimeout(90_000);
   await installEnvironment(page, true);
   const url = await fixtureArticleUrl(request, baseURL);
@@ -447,7 +472,7 @@ test("WebGL failure retains the complete illustrated article and responsive read
     await page.unrouteAll({ behavior: "wait" });
     const content = await prepare(page, locale);
     await page.emulateMedia({ reducedMotion: "reduce" });
-    const book = await enterBook(page, url, locale);
+    const book = await enterBook(page, url, locale, content);
     await expect(book).toHaveAttribute("data-renderer", "text", { timeout: 30_000 });
     expect(Number(await book.getAttribute("data-page-count"))).toBeGreaterThan(1);
     await page.evaluate(() => {

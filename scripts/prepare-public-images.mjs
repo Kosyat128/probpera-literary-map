@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import sharp from "sharp";
 import ts from "typescript";
-import { compactImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
+import { compactImageDeliveryManifest, partitionImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
 import { createSerialWriteQueue, writeJsonAtomically } from "./lib/atomic-json-write.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -14,7 +14,8 @@ const absolute = value => path.resolve(root, value);
 const portable = value => value.split(path.sep).join("/");
 const digest = value => createHash("sha256").update(value).digest("hex");
 const runtimePath = "src/data/imageDelivery.generated.json";
-const compactRuntimePath = "src/data/imageDelivery.compact.generated.json";
+const initialRuntimePath = "src/data/imageDelivery.initial.generated.json";
+const articleRuntimePath = "src/data/imageDelivery.articles.generated.json";
 const reportPath = "reports/public-image-delivery.json";
 const outputDirectory = "public/media/optimized";
 const cacheDirectory = ".tmp/public-images";
@@ -227,8 +228,10 @@ function runtimeEntry(record) {
 
 async function publishRuntime(records) {
   const runtime = Object.fromEntries(records.filter(record => record.status === "ready").map(record => [record.sourceUrl, runtimeEntry(record)]));
+  const { initial, articles } = partitionImageDeliveryManifest(runtime, records);
   await atomicJson(runtimePath, runtime);
-  await atomicJson(compactRuntimePath, compactImageDeliveryManifest(runtime));
+  await atomicJson(initialRuntimePath, compactImageDeliveryManifest(initial));
+  await atomicJson(articleRuntimePath, compactImageDeliveryManifest(articles));
 }
 
 function reportSummary(records, sourceCount, started) {
@@ -249,10 +252,13 @@ async function publishReport(records, inventory, started, completed) {
 async function checkInventory(inventory) {
   const report = JSON.parse(await readFile(absolute(reportPath), "utf8"));
   const runtime = JSON.parse(await readFile(absolute(runtimePath), "utf8"));
-  const compactRuntime = JSON.parse(await readFile(absolute(compactRuntimePath), "utf8"));
+  const initialRuntime = JSON.parse(await readFile(absolute(initialRuntimePath), "utf8"));
+  const articleRuntime = JSON.parse(await readFile(absolute(articleRuntimePath), "utf8"));
   const known = new Map(report.images.map(record => [record.sourceUrl, record]));
   const errors = [];
-  if (JSON.stringify(compactRuntime) !== JSON.stringify(compactImageDeliveryManifest(runtime))) errors.push("Compact runtime differs from the complete image delivery manifest");
+  const partition = partitionImageDeliveryManifest(runtime, report.images);
+  if (JSON.stringify(initialRuntime) !== JSON.stringify(compactImageDeliveryManifest(partition.initial))) errors.push("Initial runtime differs from the complete image delivery manifest");
+  if (JSON.stringify(articleRuntime) !== JSON.stringify(compactImageDeliveryManifest(partition.articles))) errors.push("Article runtime differs from the complete image delivery manifest");
   for (const source of inventory) {
     const record = known.get(source.sourceUrl);
     if (!record) { errors.push(`Unaccounted source: ${source.sourceUrl}`); continue; }

@@ -117,7 +117,7 @@ test("Stage 5B desktop RU roles and surfaces retain the approved scale and 13px 
   expectRole(result.metrics, "section", 46.08, 46.08, 1.16);
   expectRole(result.metrics, "community", 46.08, 46.08, 1.2);
   // The book title grows with its copy column: the approved container-relative
-  // clamp is 28–38px, with the title's 1.25 multiplier giving 35–47.5px.
+  // clamp is 28-38px, with the title's 1.25 multiplier giving 35-47.5px.
   expectRole(result.metrics, "book", 35, 47.5, 1.1);
   expectRole(result.metrics, "compact", 18, 23, 1.2);
   expectRole(result.metrics, "body", 16, 16, 1.45);

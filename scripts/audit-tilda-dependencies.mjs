@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { compactImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
+import { compactImageDeliveryManifest, partitionImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultRootDir = path.resolve(scriptDir, "..");
@@ -134,7 +134,8 @@ export async function auditTildaDependencies({
   const errors = [];
   const encodings = [];
   const runtimePaths = new Set(runtimeFiles.map(filename => portablePath(path.relative(rootDir, filename))));
-  for (const [encodedPath, originalPath] of Object.entries(manifest.generatedEncodings || {})) {
+  for (const [encodedPath, encoding] of Object.entries(manifest.generatedEncodings || {})) {
+    const originalPath = typeof encoding === "string" ? encoding : encoding.sourceManifest;
     if (!runtimePaths.has(encodedPath)) errors.push(`${encodedPath}: generated image encoding is missing from scanned runtime files`);
     if (!runtimePaths.has(originalPath)) errors.push(`${encodedPath}: complete source map is missing from scanned runtime files`);
   }
@@ -147,15 +148,24 @@ export async function auditTildaDependencies({
     for (const [index, absolutePath] of batch.entries()) {
       const relativePath = portablePath(path.relative(rootDir, absolutePath));
       const source = sources[index];
-      const originalPath = manifest.generatedEncodings?.[relativePath];
-      if (originalPath) {
+      const encoding = manifest.generatedEncodings?.[relativePath];
+      if (encoding) {
         // Count the complete reviewed source map once. A serialized common prefix
         // is not an additional external URL; validate the entire encoding instead.
         try {
+          const originalPath = typeof encoding === "string" ? encoding : encoding.sourceManifest;
           if (!runtimePaths.has(originalPath) || classifyTildaPath(originalPath, manifest) !== "generated" || Object.hasOwn(manifest.generatedEncodings, originalPath)) throw new Error("source map is not a reviewed complete generated file in the scanned runtime");
           const original = JSON.parse(await fs.readFile(path.join(rootDir, originalPath), "utf8"));
-          if (JSON.stringify(JSON.parse(source)) !== JSON.stringify(compactImageDeliveryManifest(original))) throw new Error("compact data differs from its complete source map");
-          encodings.push({ path: relativePath, sourceManifest: originalPath, sources: Object.keys(original).length });
+          let scoped = original;
+          if (typeof encoding !== "string") {
+            if (!["initial", "articles"].includes(encoding.scope)) throw new Error("unknown generated image partition");
+            const provenancePath = path.resolve(rootDir, encoding.provenance);
+            if (!provenancePath.startsWith(`${path.resolve(rootDir)}${path.sep}`)) throw new Error("image provenance leaves the repository");
+            const provenance = JSON.parse(await fs.readFile(provenancePath, "utf8"));
+            scoped = partitionImageDeliveryManifest(original, provenance.images)[encoding.scope];
+          }
+          if (JSON.stringify(JSON.parse(source)) !== JSON.stringify(compactImageDeliveryManifest(scoped))) throw new Error("compact data differs from its complete source map");
+          encodings.push({ path: relativePath, sourceManifest: originalPath, sources: Object.keys(scoped).length });
         } catch (error) {
           errors.push(`${relativePath}: invalid generated image encoding: ${error.message}`);
         }

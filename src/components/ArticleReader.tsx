@@ -1,3 +1,4 @@
+import "../utils/articleImageDelivery";
 import {
   lazy,
   Suspense,

@@ -1,4 +1,17 @@
 /** Lossless structural compaction; the complete editorial URL map remains available for audits. */
+export function partitionImageDeliveryManifest(manifest, records) {
+  const contexts = new Map(records.map(record => [record.sourceUrl, record.contexts]));
+  const initial = {}, articles = {};
+  for (const [source, entry] of Object.entries(manifest)) {
+    const uses = contexts.get(source);
+    // Only article-body-only images can wait for the article reader. Covers,
+    // cards, CMS pages, homepage HTML, CSS and unknown contexts stay immediate.
+    const articleOnly = uses?.length > 0 && uses.every(context => /^public\/(?:articles|cms\/articles)\/[^:]+\.json$/u.test(context));
+    (articleOnly ? articles : initial)[source] = entry;
+  }
+  return { initial, articles };
+}
+
 export function compactImageDeliveryManifest(manifest) {
   const commonPrefix = values => {
     let prefix = values[0] || "";

@@ -2,7 +2,7 @@ import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { compactImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
+import { compactImageDeliveryManifest, partitionImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
 
 import {
   auditTildaDependencies,
@@ -201,6 +201,31 @@ describe("Tilda dependency audit", () => {
     expect(result.errors.join("\n")).toContain("complete source map is missing from scanned runtime files");
     expect(result.errors.join("\n")).toContain("src/missing.json: generated image encoding is missing from scanned runtime files");
     expect(result.generated.encodings).toEqual([]);
+  });
+
+  it("checks both loading partitions against full provenance and rejects a deferred cover", async () => {
+    const rootDir = await fixtureRoot();
+    const entry = { src: "media/a.webp", width: 300, height: 200, variants: [] };
+    const images = { [firstUrl]: entry, [secondUrl]: entry };
+    const provenance = { images: [
+      { sourceUrl: firstUrl, contexts: ["public/articles/one.json:imageUrl"] },
+      { sourceUrl: secondUrl, contexts: ["public/articles/one.json"] },
+    ] };
+    const partition = partitionImageDeliveryManifest(images, provenance.images);
+    const manifest = { ...fixtureManifest(), handwrittenFiles: {}, generatedPrefixes: ["src/images.json"], generatedEncodings: {} };
+    await fs.writeFile(path.join(rootDir, "src/images.json"), JSON.stringify(images));
+    await fs.writeFile(path.join(rootDir, "provenance.json"), JSON.stringify(provenance));
+    for (const scope of ["initial", "articles"]) {
+      const filename = `src/${scope}.json`;
+      manifest.generatedEncodings[filename] = { sourceManifest: "src/images.json", provenance: "provenance.json", scope };
+      await fs.writeFile(path.join(rootDir, filename), JSON.stringify(compactImageDeliveryManifest(partition[scope])));
+    }
+    expect((await auditTildaDependencies({ rootDir, manifest })).errors).toEqual([]);
+    await fs.writeFile(path.join(rootDir, "src/initial.json"), JSON.stringify(compactImageDeliveryManifest({})));
+    await fs.writeFile(path.join(rootDir, "src/articles.json"), JSON.stringify(compactImageDeliveryManifest(images)));
+    const incorrect = await auditTildaDependencies({ rootDir, manifest });
+    expect(incorrect.status).toBe("failed");
+    expect(incorrect.errors).toHaveLength(2);
   });
 
   it("still inspects SVG and JSON files inside directories of optimized binary images", async () => {
