@@ -30,7 +30,9 @@ The coarse normal-map cells and strong stacked normal/bump relief caused the por
 ## Reproduce the final glyph and alignment check
 
 ~~~powershell
-node scripts/audit-bookshelf-spine-legibility.mjs http://127.0.0.1:4185/ reports/bookshelf-owner-evidence/legibility-refinement
+node scripts/audit-bookshelf-spine-legibility.mjs http://127.0.0.1:4185/
 ~~~
 
 The check reads actual compiled WebGL maps, independently counts title and author ink pixels, measures row rails/gaps and exits unsuccessfully for missing lettering, fallback, misalignment or incomplete 46-book coverage. It uses the existing audit-only React/WebGL observer; no source injection or production test globals are added.
+
+Output is fixed to the repository's `.review/spine-legibility-final/` directory. Only the preview URL is configurable; arbitrary output paths are rejected before any write or browser launch. Copy reviewed evidence into this tracked directory separately.

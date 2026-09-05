@@ -1,10 +1,12 @@
 import { chromium } from "@playwright/test";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { installObservers } from "./lib/bookshelf-physics-observer.mjs";
 
 const baseURL = process.argv[2] || "http://127.0.0.1:4185/";
-const output = path.resolve(process.argv[3] || ".review/spine-legibility-final");
+if (process.argv.length > 3) throw new Error("Only the preview URL is configurable; audit output stays in the project's .review/spine-legibility-final directory.");
+const output = fileURLToPath(new URL("../.review/spine-legibility-final/", import.meta.url));
 await mkdir(output, { recursive: true });
 const report = { baseURL, capturedAt: new Date().toISOString(), scope: "Actual compiled WebGL, current 46-book shelf in RU/EN; no source injection", cases: [], issues: [] };
 const browser = await chromium.launch({ channel: "chrome", headless: true });
