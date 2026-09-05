@@ -1,5 +1,70 @@
 @layer site-defaults {
-/* Local news preview: book and supporting cards share the same bottom edge. */
+/* Public news: reserve the composition before the deferred panel is requested. */
+.literary-news-slot {
+  min-width: 0;
+  min-block-size: 640px;
+  outline: none;
+}
+
+.literary-news-slot > .literary-news {
+  min-block-size: 640px;
+}
+
+.literary-news-placeholder {
+  min-block-size: 640px;
+  padding: 22px;
+  border: 1px solid #ded2c7;
+  border-radius: 14px;
+  color: #281433;
+  background: #fffaf2;
+}
+
+.literary-news-placeholder__eyebrow {
+  margin: 0 0 14px;
+  color: #90502e;
+  font: 600 var(--type-caption)/var(--type-leading-ui) var(--font-ui);
+}
+
+.literary-news-placeholder h2 {
+  margin: 0 0 12px;
+  font: 400 var(--type-card-feature-title)/var(--type-leading-title) var(--font-editorial);
+}
+
+.literary-news-placeholder p:not(.literary-news-placeholder__eyebrow) {
+  color: #756579;
+  font: 400 var(--type-card-meta)/var(--type-leading-copy) var(--font-ui);
+}
+
+.literary-news-placeholder__lines {
+  display: grid;
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.literary-news-placeholder__lines span {
+  display: block;
+  min-height: 78px;
+  border-top: 1px solid #e8ded2;
+}
+
+.literary-news-placeholder button {
+  min-height: 44px;
+  margin-top: 16px;
+  padding: 8px 14px;
+  border: 1px solid #9b758e;
+  border-radius: 8px;
+  color: #54274b;
+  background: transparent;
+  font: 600 var(--type-card-meta)/var(--type-leading-ui) var(--font-ui);
+  cursor: pointer;
+}
+
+.literary-news-placeholder button:focus-visible,
+.literary-news-slot:focus-visible {
+  outline: 2px solid #c34a00;
+  outline-offset: 4px;
+}
+
 #book-day.has-literary-news {
   column-gap: 22px;
   row-gap: 10px;
