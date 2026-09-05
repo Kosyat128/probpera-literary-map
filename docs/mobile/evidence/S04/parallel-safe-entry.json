@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S04",
+  "recordType": "parallel-safe-entry-preparation",
+  "sourceCommit": "0afad0906f266dcac138aba697fc7cc97579fc7e",
+  "previousAcceptedStage": {
+    "id": "S02",
+    "commit": "6305df5fe671718c78b38af1ccc2bafbbdd44346"
+  },
+  "earlierStageStatus": {
+    "id": "S03",
+    "status": "IN_PROGRESS",
+    "firstOpenCriterion": "S03.acceptance"
+  },
+  "authorization": "User requests S00-S40 local implementation; acceptance matrix69 permits documented parallel-safe entry.",
+  "reason": "Preparing local Android/iOS toolchains and isolated bundled native projects does not depend on S03 production hosting, reviewed deletion policy or unavailable browser/device evidence. Accepted canonical core and integrated S03 working source are preserved in the source checkpoint. This does not waive remaining S03 internal work.",
+  "allowedInitialScope": [
+    "Workspace-local toolchain inventory/download/preparation with exact official package identity; no global installation or unrelated process changes.",
+    "Isolated static native-project preparation after compatibility verification; no remote executable runtime or copied product/globe/catalog.",
+    "Native platform adapters and shared host integration only through separately coordinated ownership before any package/App/provider edits."
+  ],
+  "currentImplementationPhase": "environment-preparation",
+  "sharedFileOwnership": "Root owns package/config/App/distribution/locale/provider changes. S03 provenance-status correction is separately owned and must finish its current tests before shared dependency/build changes.",
+  "remainingS03": [
+    "Enabled-account deletion beyond the guarded ordinary-reader category remains internal plus concrete legal disposition decisions.",
+    "Chrome automation online-hint and Windows WebKit offline-navigation limits stay failures/unverified supported-device behavior.",
+    "Saved-grant provenance should be shown truthfully using existing authorized access; correction is in progress."
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "47e8e5d2602ec3228db943bc8c2e731811f6b1ab04d74b44ca869ae2db30ad7f",
+      "gitBlob": "9f4678a2c4ef812f31896108d7b05369c137d2dc"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5",
+      "gitBlob": "ad24ddaebb1c1fb55527f0cb5752a446e0bd8bee"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "sha256": "cc10a7ec626da254494408635a0806f6c014c7aaf073a7eda1d30d64d7590819",
+      "gitBlob": "139e7fc514e1b8d19d79aa24190657961e4e2173"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "d08d858aa6631fb01ce5e5731a45d7f4343761bd12ff37686daa7aa592ab0597",
+      "gitBlob": "cb0f3adc580dab9c20db688f8c6a8426906fef2f"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "sha256": "192a0a46a4888254e44146e4c02f8b7a0b7d9fb76aba2c329da395c15ad649f3",
+      "gitBlob": "4b8241fe29a68fc33f0d460440cf58c4cc9c4d86"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "3d9b9c49a1210f5a267aa8984f58dc2db00e8d123e31b43d486e059f5ce94dcf",
+      "gitBlob": "2c07ef2f262272b495d32586d45aed43ad01bdf5"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "e1473ae1593be759fc4cfb48da3fc8ab4b87e8d0995534b07504f72f381b0624",
+      "gitBlob": "a04cad41866f82a91da00f899821d49a6ce57637"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75",
+      "gitBlob": "6940b48e5152e5918ea1606c81d5a4053178e22e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "7de1861ff996049871643cdb982af1a2d7a1552c6743ba1e8266ec32daea4c3c",
+      "gitBlob": "a7d6c487fddffc45c30698dae58794d4f63a7496"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "9711015dfed2fa0a34f7e991cb5ec206d35cdd282d4617919a5cee5236c3fde8",
+      "gitBlob": "2f05990a16aa7ddbe221a19c7f807bb6061850e9"
+    }
+  ],
+  "previousReadOnlyReview": {
+    "path": "docs/mobile/evidence/S04/native-entry-source-review.json",
+    "sha256": "234146093a0fb3bd91f4769b1e1bc05ea654ccfae3de1f69ecda3d84fafa54b8",
+    "limitations": "Historical read-only observations; no native build/approval claim."
+  },
+  "stageAcceptanceClaimed": false,
+  "releaseReady": false,
+  "productionActionsAuthorized": false
+}

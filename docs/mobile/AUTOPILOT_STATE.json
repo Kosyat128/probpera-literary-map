@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-05T20:20:23.172Z",
+  "updatedAt": "2026-09-05T20:24:09.932Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -530,7 +530,7 @@
     {
       "id": "S04",
       "name": "Mobile shell and native projects",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S04.acceptance",
@@ -806,7 +806,10 @@
         }
       ],
       "lastGreenCommands": [],
-      "artifacts": [],
+      "artifacts": [
+        "docs/mobile/evidence/S04/parallel-safe-entry.json",
+        "docs/mobile/evidence/S04/native-entry-source-review.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10516,7 +10519,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Preserve the S03 atomic working checkpoint, resolve remaining enabled-account lifecycle and genuine browser/device support evidence. S03 stays IN_PROGRESS. Prepare documented parallel-safe S04 entry using the completed read-only native review; do not mark S03 complete or native source-only scaffolding accepted.",
+    "nextAction": "S03 remains first-open: finish truthful saved-access provenance and its affected tests, retain broader account-lifecycle and browser/device gaps. In parallel S04 begins workspace-local toolchain preparation under the documented exception; coordinate shared source/dependencies and require real native artifacts before acceptance.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10598,6 +10601,20 @@
       },
       "releaseReady": false,
       "stageAcceptanceClaimed": false
+    },
+    "s03WorkingCheckpoint": {
+      "commit": "0afad0906f266dcac138aba697fc7cc97579fc7e",
+      "accepted": false,
+      "evidence": "docs/mobile/evidence/S03/canonical-integration-working-validation.json"
+    },
+    "parallelSafeStages": {
+      "S04": {
+        "reason": "Preparing local Android/iOS toolchains and isolated bundled native projects does not depend on S03 production hosting, reviewed deletion policy or unavailable browser/device evidence. Accepted canonical core and integrated S03 working source are preserved in the source checkpoint. This does not waive remaining S03 internal work.",
+        "evidence": [
+          "docs/mobile/evidence/S04/parallel-safe-entry.json",
+          "docs/mobile/evidence/S04/native-entry-source-review.json"
+        ]
+      }
     }
   },
   "externalOwnerInputsStatus": {

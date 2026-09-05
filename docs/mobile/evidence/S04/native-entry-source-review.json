@@ -1,0 +1,966 @@
+{
+  "version": 1,
+  "kind": "read-only-native-entry-review",
+  "createdAt": "2026-09-05T20:08:29.413Z",
+  "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+  "stageActivated": false,
+  "productEdited": false,
+  "dependenciesInstalled": false,
+  "nativeProjectsGenerated": false,
+  "buildsExecuted": false,
+  "productionActions": [],
+  "releaseReady": false,
+  "limits": [
+    "This is S04 preparation while S03 remains active. It is not native runtime/build/device evidence.",
+    "Only shared/current routing and S04 rows from existing state/index/mapping were read. No future specialist requirement document was loaded.",
+    "Tool absence is limited to PATH, named environment variables and the five explicit conventional paths; no personal-drive inventory was performed.",
+    "Source hashes are the worktree snapshot, not a claim that current uncommitted source is accepted. Root may create a later checkpoint."
+  ],
+  "pinnedRequirementsVerification": {
+    "pass": true,
+    "checksumCount": 194,
+    "manifestFileCount": 191,
+    "bindingDocumentCount": 173,
+    "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+    "checksumFileSha256": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732"
+  },
+  "stateSnapshot": {
+    "s04Status": "NOT_STARTED",
+    "criterionCount": 34,
+    "criterionIds": [
+      "S04.acceptance",
+      "S04.A11Y-003",
+      "S04.BIL-016",
+      "S04.BIL-017",
+      "S04.BIL-018",
+      "S04.CANON-008",
+      "S04.CHILD-006",
+      "S04.CHILD-007",
+      "S04.CHILD-009",
+      "S04.COMMERCE-012",
+      "S04.MOD-031",
+      "S04.MOD-032",
+      "S04.MOD-033",
+      "S04.MOD-034",
+      "S04.MOD-035",
+      "S04.MOD-036",
+      "S04.MOD-037",
+      "S04.MOD-043",
+      "S04.OMIN-009",
+      "S04.OMIN-011",
+      "S04.OMIN-029",
+      "S04.OMIN-031",
+      "S04.PERF-008",
+      "S04.PLATFORM-002",
+      "S04.PLATFORM-003",
+      "S04.PLATFORM-004",
+      "S04.PLATFORM-005",
+      "S04.PLATFORM-006",
+      "S04.PLATFORM-007",
+      "S04.PLATFORM-008",
+      "S04.SEC-003",
+      "S04.SEC-006",
+      "S04.UX-001",
+      "S04.UX-002"
+    ],
+    "definition": {
+      "stage_id": "S04",
+      "stage_name": "Mobile shell and native projects",
+      "scope": "Capacitor; navigation; Android/iOS",
+      "status": "NOT_STARTED",
+      "entry_criteria": "previous stage complete or parallel-safe documented",
+      "exit_criteria": "all mapped internal requirements passed; evidence and atomic commit",
+      "mandatory_commands": "stage-specific narrow + boundary tests",
+      "artifacts": "docs/reports/builds",
+      "external_blocker_allowed": "only credentials/signing/store/legal/license/manual review",
+      "next_stage": "automatic"
+    }
+  },
+  "mappedRequirements": [
+    {
+      "id": "A11Y-003",
+      "implementationStages": [
+        "S04",
+        "S07",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Large text/Dynamic Type. Shared interaction/native accessibility precedes integrated and localized device evidence.",
+      "summary": "Large text/Dynamic Type"
+    },
+    {
+      "id": "BIL-016",
+      "implementationStages": [
+        "S04",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "rationale": "Native iOS strings and app language support are localized. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation.",
+      "summary": "Native iOS strings and app language support are localized"
+    },
+    {
+      "id": "BIL-017",
+      "implementationStages": [
+        "S04",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "rationale": "Android default/Russian resources and localeConfig are complete. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation.",
+      "summary": "Android default/Russian resources and localeConfig are complete"
+    },
+    {
+      "id": "BIL-018",
+      "implementationStages": [
+        "S04",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "rationale": "Android per-app language preferences support ru and en. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation.",
+      "summary": "Android per-app language preferences support ru and en"
+    },
+    {
+      "id": "CANON-008",
+      "implementationStages": [
+        "S01",
+        "S04"
+      ],
+      "validationStages": [
+        "S04",
+        "S25",
+        "S28"
+      ],
+      "rationale": "No remote website as native core runtime. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance.",
+      "summary": "No remote website as native core runtime"
+    },
+    {
+      "id": "CHILD-006",
+      "implementationStages": [
+        "S04",
+        "S05",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S36",
+        "S39"
+      ],
+      "rationale": "Policy restored before first content frame. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks.",
+      "summary": "Policy restored before first content frame"
+    },
+    {
+      "id": "CHILD-007",
+      "implementationStages": [
+        "S04",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "rationale": "No adult flash or route bypass. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks.",
+      "summary": "No adult flash or route bypass"
+    },
+    {
+      "id": "CHILD-009",
+      "implementationStages": [
+        "S04",
+        "S16",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Back/restart/deep-link/callback cannot bypass. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks.",
+      "summary": "Back/restart/deep-link/callback cannot bypass"
+    },
+    {
+      "id": "COMMERCE-012",
+      "implementationStages": [
+        "S04",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S26",
+        "S28"
+      ],
+      "rationale": "RuStore current Pay SDK. Paid base, platform providers and server authority are verified separately from store disclosures.",
+      "summary": "RuStore current Pay SDK"
+    },
+    {
+      "id": "MOD-031",
+      "implementationStages": [
+        "S04",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Release manifests contain only allowlisted necessary permissions. Feature readiness is checked again in moderation against the exact candidate and localized dossier.",
+      "summary": "Release manifests contain only allowlisted necessary permissions"
+    },
+    {
+      "id": "MOD-032",
+      "implementationStages": [
+        "S04",
+        "S15",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Narration does not request microphone permission. Feature readiness is checked again in moderation against the exact candidate and localized dossier.",
+      "summary": "Narration does not request microphone permission"
+    },
+    {
+      "id": "MOD-033",
+      "implementationStages": [
+        "S04",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S37"
+      ],
+      "rationale": "Every sensitive permission has rationale, declaration and denial path. Feature readiness is checked again in moderation against the exact candidate and localized dossier.",
+      "summary": "Every sensitive permission has rationale, declaration and denial path"
+    },
+    {
+      "id": "MOD-034",
+      "implementationStages": [
+        "S04",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Current Apple Xcode and iOS SDK requirements pass at RC. Feature readiness is checked again in moderation against the exact candidate and localized dossier.",
+      "summary": "Current Apple Xcode and iOS SDK requirements pass at RC"
+    },
+    {
+      "id": "MOD-035",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Current Google target API and Billing requirements pass at RC. Feature readiness is checked again in moderation against the exact candidate and localized dossier.",
+      "summary": "Current Google target API and Billing requirements pass at RC"
+    },
+    {
+      "id": "MOD-036",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Current RuStore Pay SDK and signing requirements pass at RC. Feature readiness is checked again in moderation against the exact candidate and localized dossier.",
+      "summary": "Current RuStore Pay SDK and signing requirements pass at RC"
+    },
+    {
+      "id": "MOD-037",
+      "implementationStages": [
+        "S04",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Each store variant contains only its billing provider and update links. Feature readiness is checked again in moderation against the exact candidate and localized dossier.",
+      "summary": "Each store variant contains only its billing provider and update links"
+    },
+    {
+      "id": "MOD-043",
+      "implementationStages": [
+        "S04",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Saved child mode exposes no adult frame during startup. Feature readiness is checked again in moderation against the exact candidate and localized dossier.",
+      "summary": "Saved child mode exposes no adult frame during startup"
+    },
+    {
+      "id": "OMIN-009",
+      "implementationStages": [
+        "S04",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S39"
+      ],
+      "rationale": "Native first release is accountless-first. Prepare validated internal artifacts first; owner approval and external actions remain separate gates.",
+      "summary": "Native first release is accountless-first"
+    },
+    {
+      "id": "OMIN-011",
+      "implementationStages": [
+        "S04",
+        "S23",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S39"
+      ],
+      "rationale": "Push and behavioural analytics are disabled in V1. Prepare validated internal artifacts first; owner approval and external actions remain separate gates.",
+      "summary": "Push and behavioural analytics are disabled in V1"
+    },
+    {
+      "id": "OMIN-029",
+      "implementationStages": [
+        "S04",
+        "S23",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Privacy manifests, Required Reason APIs and Xcode privacy report are audited. Prepare validated internal artifacts first; owner approval and external actions remain separate gates.",
+      "summary": "Privacy manifests, Required Reason APIs and Xcode privacy report are audited"
+    },
+    {
+      "id": "OMIN-031",
+      "implementationStages": [
+        "S04",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Android developer verification/package/signing registration is prepared. Prepare validated internal artifacts first; owner approval and external actions remain separate gates.",
+      "summary": "Android developer verification/package/signing registration is prepared"
+    },
+    {
+      "id": "PERF-008",
+      "implementationStages": [
+        "S04",
+        "S06",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Background/resume listener stability. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior.",
+      "summary": "Background/resume listener stability"
+    },
+    {
+      "id": "PLATFORM-002",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Android Google Play variant and AAB. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance.",
+      "summary": "Android Google Play variant and AAB"
+    },
+    {
+      "id": "PLATFORM-003",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Android RuStore variant and artifact. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance.",
+      "summary": "Android RuStore variant and artifact"
+    },
+    {
+      "id": "PLATFORM-004",
+      "implementationStages": [
+        "S04"
+      ],
+      "validationStages": [
+        "S04",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Android QA APK. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance.",
+      "summary": "Android QA APK"
+    },
+    {
+      "id": "PLATFORM-005",
+      "implementationStages": [
+        "S04"
+      ],
+      "validationStages": [
+        "S04",
+        "S25",
+        "S39"
+      ],
+      "rationale": "iOS/iPadOS native project and simulator build. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance.",
+      "summary": "iOS/iPadOS native project and simulator build"
+    },
+    {
+      "id": "PLATFORM-006",
+      "implementationStages": [
+        "S04",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S34"
+      ],
+      "rationale": "iOS archive configuration/archive when signing exists. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance.",
+      "summary": "iOS archive configuration/archive when signing exists"
+    },
+    {
+      "id": "PLATFORM-007",
+      "implementationStages": [
+        "S04",
+        "S07"
+      ],
+      "validationStages": [
+        "S07",
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Safe-area/orientation/lifecycle/deep links. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance.",
+      "summary": "Safe-area/orientation/lifecycle/deep links"
+    },
+    {
+      "id": "PLATFORM-008",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S33",
+        "S40"
+      ],
+      "rationale": "Current official SDK/API requirements rechecked. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance.",
+      "summary": "Current official SDK/API requirements rechecked"
+    },
+    {
+      "id": "SEC-003",
+      "implementationStages": [
+        "S04",
+        "S08",
+        "S11",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Deep-link/content/package validation. Boundary design and implementation precede executable security and artifact inspection gates.",
+      "summary": "Deep-link/content/package validation"
+    },
+    {
+      "id": "SEC-006",
+      "implementationStages": [
+        "S04",
+        "S16",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S33",
+        "S39"
+      ],
+      "rationale": "Minimal permissions and child privacy. Boundary design and implementation precede executable security and artifact inspection gates.",
+      "summary": "Minimal permissions and child privacy"
+    },
+    {
+      "id": "UX-001",
+      "implementationStages": [
+        "S04",
+        "S05"
+      ],
+      "validationStages": [
+        "S05",
+        "S25",
+        "S37",
+        "S39"
+      ],
+      "rationale": "Orange native and branded splash with logo top-left. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation.",
+      "summary": "Orange native and branded splash with logo top-left"
+    },
+    {
+      "id": "UX-002",
+      "implementationStages": [
+        "S04",
+        "S07"
+      ],
+      "validationStages": [
+        "S07",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Adult navigation prioritizes Planet. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation.",
+      "summary": "Adult navigation prioritizes Planet"
+    }
+  ],
+  "machine": {
+    "os": "Microsoft Windows NT 10.0.22631.0",
+    "node": "24.20.0",
+    "npm": "11.19.0",
+    "packageEngines": {
+      "node": "24.x",
+      "npm": "11.x"
+    },
+    "absentCommandsOnPath": [
+      "java",
+      "javac",
+      "adb",
+      "sdkmanager",
+      "gradle",
+      "swift",
+      "xcodebuild",
+      "pod",
+      "ruby"
+    ],
+    "unsetEnvironment": [
+      "JAVA_HOME",
+      "ANDROID_HOME",
+      "ANDROID_SDK_ROOT",
+      "GRADLE_HOME",
+      "DEVELOPER_DIR"
+    ],
+    "checkedPaths": [
+      {
+        "path": "C:\\Program Files\\Android\\Android Studio",
+        "exists": false
+      },
+      {
+        "path": "C:\\Program Files\\Java",
+        "exists": false
+      },
+      {
+        "path": "C:\\Program Files\\Eclipse Adoptium",
+        "exists": false
+      },
+      {
+        "path": "C:\\Users\\User\\AppData\\Local\\Android\\Sdk",
+        "exists": false
+      },
+      {
+        "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Swift",
+        "exists": false
+      }
+    ],
+    "matchingNativeDependencies": [],
+    "nativeFilesQuery": "rg --files -g '*capacitor*' -g '*.gradle*' -g '*gradlew*' -g '*.swift' -g '*AndroidManifest*' -g 'Podfile*' -g '!node_modules/**' -g '!.tmp/**'",
+    "nativeFilesQueryResult": {
+      "matches": 0,
+      "rgExitCode": 1
+    },
+    "limitation": "No tooling outside explicit paths was searched; a remote macOS build host was not probed."
+  },
+  "baseline": {
+    "capacitor": "8.5.1",
+    "nodeMinimum": "22",
+    "androidJava": "21",
+    "androidGradlePlugin": "8.13.0",
+    "gradleWrapper": "8.14.3",
+    "androidMinSdk": 24,
+    "androidCompileSdk": 36,
+    "androidTargetSdk": 36,
+    "iosDeploymentTarget": "15.0",
+    "xcodeMinimum": "26.0",
+    "iosPackageManager": "SPM",
+    "latestPluginVersions": "Not independently pinned; do not assume every plugin shares the core8.5.1 version.",
+    "storePolicyScope": "Framework versions verified here; current Play/Billing/RuStore policy is not inferred from the Capacitor template. Reuse existing official snapshot and recheck when implementing the relevant mapped portion."
+  },
+  "sourceBoundaries": [
+    {
+      "files": [
+        "src/main.tsx",
+        "src/App.tsx",
+        "src/platform/distribution.ts"
+      ],
+      "finding": "Current entry always creates WebPlatformAdapter; controlled boolean recognizes only pwa. Public path mounts canonical auth/CMS/analytics/community; controlled path mounts signed Web session gate. Native entry must select an explicit controlled native target, use the same App, and omit public remote integrations/PWA service worker/Web license bootstrap. Do not copy dist-pwa as a native product."
+    },
+    {
+      "files": [
+        "src/platform/ports.ts",
+        "src/platform/PlatformServices.tsx"
+      ],
+      "finding": "Existing stable PlatformServices supports Android/iOS kinds and channels, preferences, visibility/connectivity, explicit external links. Provider rejects replacement. Add narrow inbound host-event/bootstrap contracts; canonical country/writer/work/camera/child state stays outside adapters."
+    },
+    {
+      "files": [
+        "src/i18n/InterfaceLanguage.tsx"
+      ],
+      "finding": "Initial language uses localStorage, route dataset and only PWA navigator preferences. Native App.getAppLanguage is asynchronous. Await initialization, then pass an explicit validated initial language/persistence port into this same provider; preserve its canonical control and no locale keys. Native preference errors must not silently certify durable persistence."
+    },
+    {
+      "files": [
+        "src/community/AuthContext.tsx",
+        "src/App.tsx"
+      ],
+      "finding": "App reads useAuth. Native accountless context must explicitly remain unconfigured/read-only without starting Supabase transport. The existing default context is loading:true, so merely omitting AuthProvider should not be treated as a fully designed accountless state."
+    },
+    {
+      "files": [
+        "scripts/mobile/platform-boundaries.mjs"
+      ],
+      "finding": "Default source root is src; native SDK imports only under src/platform/adapters/android or ios, never web-reachable. Root capacitor.config.* is audited; nested config is not implicit. Put platform entries in adapter roots and shared host UI in an SDK-free root, or extend explicit audited roots. --entry denotes WEB entry, so do not pass a native entry there. Preserve remote-runtime prohibition and web graph checks."
+    }
+  ],
+  "implementationSplit": [
+    {
+      "owner": "shared-host/root-integration",
+      "proposedNewFiles": [
+        "src/host/HostApplication.tsx",
+        "src/host/hostBootstrap.ts",
+        "src/host/hostEvents.ts",
+        "src/host/hostBootstrap.test.ts",
+        "apps/mobile/index.html",
+        "scripts/mobile/build-native.mjs",
+        "scripts/mobile/verify-native-artifact.mjs",
+        "capacitor.config.json"
+      ],
+      "necessaryExistingEdits": [
+        "src/platform/distribution.ts",
+        "src/platform/ports.ts only where existing capabilities are insufficient",
+        "src/i18n/InterfaceLanguage.tsx optional bootstrap/persistence input",
+        "src/community/AuthContext.tsx explicit accountless provider option",
+        "src/App.tsx narrow controlled-native routing",
+        "package.json/package-lock.json",
+        "scripts/mobile/platform-boundaries.mjs tests/config only if path contract changes"
+      ],
+      "deliverable": "Build canonical App/catalog/scene into local dist-native. One platform adapter and InterfaceLanguageProvider per process. Bootstrap restores saved locale and policy before App/Canvas mounts; unknown/failed policy holds an accessible RU/EN draft preparation state. Validated cold/warm canonical deep links and back events enter the same navigation transition, never raw window.location to remote code. Root static Capacitor config with webDir dist-native and native project paths apps/mobile/android and apps/mobile/ios avoids an unobserved nested config."
+    },
+    {
+      "owner": "android",
+      "proposedNewFiles": [
+        "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+        "src/platform/adapters/android/main.tsx",
+        "src/platform/adapters/android/AndroidPlatformAdapter.test.ts",
+        "apps/mobile/android/**"
+      ],
+      "necessaryExistingEdits": [
+        "No common App/provider edits outside root coordination"
+      ],
+      "deliverable": "Exact Cap8.5.1 local host with Google Play/RuStore/dev variants, Gradle wrapper, bundled assets, RU/en Android resources and app locale config. Allowlisted minimal permissions; no mic/push/analytics. Lifecycle/back/deep-link listener cleanup and safe-area/orientation preserve one live scene. Produce actual QA APK and variant AAB/artifact after toolchain availability; absence of a merchant SDK remains explicit S20 work, not a fake payment adapter."
+    },
+    {
+      "owner": "ios",
+      "proposedNewFiles": [
+        "src/platform/adapters/ios/IOSPlatformAdapter.ts",
+        "src/platform/adapters/ios/main.tsx",
+        "src/platform/adapters/ios/IOSPlatformAdapter.test.ts",
+        "apps/mobile/ios/**"
+      ],
+      "necessaryExistingEdits": [
+        "No shared build/provider edits outside root coordination"
+      ],
+      "deliverable": "Current8.5.1 SPM/UIScene project, single bridge/window scene, iOS15 target, iPhone/iPad, localized native resources, safe-area and DynamicType foundation, lifecycle/cold-warm-link forwarding. Prepare simulator/archive configurations and privacy manifest based only on used APIs. Actual xcodebuild/simulator results require macOS; signing/archive identity must not be fabricated."
+    }
+  ],
+  "guardrails": [
+    "Local compiled webDir only; no server.url, remote allowNavigation, updater, downloaded executable WebView runtime or generated duplicate globe/catalog.",
+    "Only public journal links open through an allowlisted external system action; no SDK import or remote runtime in the canonical web graph.",
+    "Native bootstrap snapshots async OS language before mounting; locale changes within the live process preserve WebView/React/Canvas identity. Process kill or OS-forced restart can restore semantic state, not the same destroyed renderer object.",
+    "Restore mode before the first content frame. Unknown child policy fails closed. Full child catalog, PIN/age assurance and policy engine remain mapped later work, not a fake implemented child mode.",
+    "Preferences are non-secret and cannot prove paid entitlement. Durable secure storage and native purchase/verification ports must not use paid=true or copied Web account tokens.",
+    "Critical RU/EN native/bootstrap copy remains explicitly draft until actual review. No English fallback certification or native screenshots from browser mocks.",
+    "Explicit includePlugins/variant dependencies and final binary audit prevent accidental cross-store SDKs or permission expansion. Global HTTP/cookie monkeypatches stay off unless separately justified.",
+    "Reuse canonical brand tokens/assets and no editable duplicate source database. Changes to protected UI/scene require existing owner-lock test evidence, not invented owner attestations."
+  ],
+  "parallelSafety": {
+    "technicalConclusion": "Isolated shared host/adapters/native projects can be implemented independently after an explicit root entry checkpoint; no dependency on production S03 activation. Root alone coordinates common distribution/locale/App changes.",
+    "currentStatus": "S04 NOT_STARTED; no exception or state mutation made.",
+    "ruleReferences": [
+      "scripts/mobile/state.mjs:76",
+      "scripts/mobile/state.mjs:83",
+      "scripts/mobile/state.mjs:116",
+      "scripts/mobile/verify-state.mjs:62",
+      "docs/mobile/requirements/v12/69_STAGE_ACCEPTANCE_MATRIX.csv:6"
+    ],
+    "protocol": [
+      "If S03 is not COMPLETE, root records a substantive verificationCache.parallelSafeStages.S04 reason and durable evidence naming exact accepted/source input commit and independent scope.",
+      "This .tmp memo must be promoted to durable evidence before serving as an entry receipt; an existence-only state check is not independent technical proof.",
+      "Keep S03 internal criteria OPEN/BLOCKED_INTERNAL where unresolved. firstOpenCriterion/currentStage remain the earliest internal gap; parallel-safe does not waive that rule.",
+      "S04 COMPLETE still requires all its mapped portions and foundation evidence. Missing Java/SDK and macOS are machine limitations, not automatically one of the allowed external legal/credential categories. Do not recategorize missing implementation or simulator build as owner approval."
+    ]
+  },
+  "blockers": [
+    {
+      "kind": "local-machine-preparation",
+      "issue": "No detected Java21/Android SDK/Gradle/adb. Local Android build/device tests unavailable now.",
+      "next": "After entry authorization prepare a scoped toolchain and licenses with explicit paths/versions, then use the committed wrapper. Programming/project work remains internal."
+    },
+    {
+      "kind": "build-environment-access",
+      "issue": "Windows does not provide macOS/Xcode; no iOS simulator/native archive verification here.",
+      "next": "Prepare all source/config/test scripts locally; obtain an authorized macOS runner for actual xcodebuild/simulator evidence. A Windows WebKit run is not Safari/iOS native evidence."
+    },
+    {
+      "kind": "external-identity-signing",
+      "issue": "Registered production package/bundle IDs, signing credentials and store account authority are not verified by this review.",
+      "next": "Use an explicit nonproduction QA identity only if approved in stage design. Keep production identity/signing unset and release blocked until concrete configuration can be reviewed; do not invent registrations."
+    },
+    {
+      "kind": "later-internal-and-review",
+      "issue": "Native merchant SDK/payment verification, full child policy and complete bilingual reviewed release are later mapped implementations, not solved by shell creation.",
+      "next": "S04 implements real seams and fail-closed startup/variant isolation; later routed implementations and human review remain OPEN without manufacturing pass metrics."
+    }
+  ],
+  "proposedValidation": [
+    "Existing platform source boundary and canonical owner-lock checks; assert native SDK absent from unchanged web graph and root Capacitor config local-only.",
+    "Native adapter event tests with actual plugin contracts: pending subscription cleanup, background/resume snapshot identity, cancellation, preference failure, restricted external links, validated deep links queued before startup readiness.",
+    "Real shared React/browser lifecycle harness for no App/Canvas remount on RU/EN and preferences/lifecycle refresh; saved child policy/unknown startup yields no adult first frame. Browser assertions are not native test evidence.",
+    "Native build audit checks copied local asset digests, dependencies, permissions, localized strings and no remote runtime/QA authority/private material. A source map is not proof of arbitrary executable equivalence.",
+    "Once tools exist: committed Android wrapper test/lint + actual QA APK and Google Play/RuStore build artifacts; hash artifacts and record exact Java/SDK/variant. Then device/emulator cold-offline, back/deep link, orientation, font scale, 50 lifecycle cycles without duplicate listeners.",
+    "On authorized macOS: exact xcodebuild simulator invocation, SPM resolution, actual iPhone/iPad cold-offline/language/lifecycle/scene link tests; archive config may exist before production signing. Record device/SDK/commit rather than claim a Windows substitute.",
+    "PLATFORM-002/003/004/005 map implementation to S04; source-only scaffolding is insufficient for their S04 portions. Full later store, performance, child and bilingual RC acceptance remains distinct."
+  ],
+  "sourceHashes": [
+    {
+      "file": "AGENTS.md",
+      "sha256": "87ac62d6a57e6fbd0011c94bb17b2e1835427e8fdfebb8c253245e1285ec174a"
+    },
+    {
+      "file": "package.json",
+      "sha256": "7de1861ff996049871643cdb982af1a2d7a1552c6743ba1e8266ec32daea4c3c"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "9711015dfed2fa0a34f7e991cb5ec206d35cdd282d4617919a5cee5236c3fde8"
+    },
+    {
+      "file": "src/main.tsx",
+      "sha256": "e1473ae1593be759fc4cfb48da3fc8ab4b87e8d0995534b07504f72f381b0624"
+    },
+    {
+      "file": "src/App.tsx",
+      "sha256": "3d9b9c49a1210f5a267aa8984f58dc2db00e8d123e31b43d486e059f5ce94dcf"
+    },
+    {
+      "file": "src/platform/ports.ts",
+      "sha256": "47e8e5d2602ec3228db943bc8c2e731811f6b1ab04d74b44ca869ae2db30ad7f"
+    },
+    {
+      "file": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "file": "src/platform/distribution.ts",
+      "sha256": "cc10a7ec626da254494408635a0806f6c014c7aaf073a7eda1d30d64d7590819"
+    },
+    {
+      "file": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "d08d858aa6631fb01ce5e5731a45d7f4343761bd12ff37686daa7aa592ab0597"
+    },
+    {
+      "file": "src/community/AuthContext.tsx",
+      "sha256": "192a0a46a4888254e44146e4c02f8b7a0b7d9fb76aba2c329da395c15ad649f3"
+    },
+    {
+      "file": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "file": "scripts/mobile/state.mjs",
+      "sha256": "b141e7b193ffd0da8f4aa3e34bb51b6c36f901ed389946b84b85400bcddf988d"
+    },
+    {
+      "file": "scripts/mobile/verify-state.mjs",
+      "sha256": "f31e2b86d3e415a541a9186cac35ec1765ce4ae235eeecb310038cee46260ebf"
+    },
+    {
+      "file": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "8a000f81414caec3d9fdee3a9be31577b612d2fc1b139c21836198a438fd9a66"
+    },
+    {
+      "file": "docs/mobile/STATUS.md",
+      "sha256": "3eda5b3e2638cec2917e3b8d1cb057f161f59cbda32cb4d0c154c383c9845242"
+    },
+    {
+      "file": "docs/mobile/STAGE_REQUIREMENT_MAP.json",
+      "sha256": "be4f8f2a1dfa92ff77de938d3c6e1c3188941e8bdc7c573c882d48b0955946ee"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+      "sha256": "b7922a0c341a6a699c82b02bb513de52035be7a35d5c8aa412124d17811cc615"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md",
+      "sha256": "4e36a2e51dcaa7c91e4afa7db07e68b03c91d958e97db7413e84265e1ad6923a"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md",
+      "sha256": "5071ce0e00ac06eab4045f2634e4bc7bddbdf43a1ec1afb13f662ec102da0779"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md",
+      "sha256": "b14e80b836d4b14c5180e55c3e0a8705ef6bdfffbe2f3fb1e9f307c3a29c9e99"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/119_BILINGUAL_PRODUCT_LANGUAGE_CONTRACT_RU_EN.md",
+      "sha256": "08359b89972023a96be269b7fbfa6d1ddf4eb66650025cd11b72fd4212a700e7"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+      "sha256": "c1610575d2e930d33d67d73522299b8d7d12683adda80d7593529ed87b396234"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/69_STAGE_ACCEPTANCE_MATRIX.csv",
+      "sha256": "a984abc8b06903e3d1b30ba9cad869174c2359054f06110d153bbf3e53afb02a"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/95_STAGE_DOCUMENT_ROUTING.json",
+      "sha256": "4df8f202240081c565e744368dcf4be793580d9fd4109d213c40cd313d00a9ef"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
+      "sha256": "33692fcbbe6b489716d5f7cb87dbc3f6130bb71fca0902e174d7cc7c6abce3b0"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/21_VISUAL_UX_CANON_RU.md",
+      "sha256": "2dd0f8911d1c9fe77835700f208a60df302d2cf4339ecd9b8d4d913f8cca9d19"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/22_ACCESSIBILITY_LOCALIZATION_AUDIO_RU.md",
+      "sha256": "bc94b2926d1c65cd841121f8d981f4259e3676aa9f245213e7e2f63158a4fb2c"
+    },
+    {
+      "file": "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
+      "sha256": "f474001944a8bf621d95ccb19ea77ebe5488d49754c26a5eca5bc0ed0995ed31"
+    }
+  ],
+  "officialSources": [
+    {
+      "id": "cap-release",
+      "url": "https://github.com/ionic-team/capacitor/releases/tag/8.5.1",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "Official Latest stable 8.5.1, released 2026-08-31; tag points to 0c9e35d. Release includes internal HTTP proxy navigation and listener-removal fixes. Peripheral GitHub assets loading errors did not prevent reading release text."
+    },
+    {
+      "id": "cap-environment",
+      "url": "https://capacitorjs.com/docs/getting-started/environment-setup",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "Node >=22; iOS builds require macOS, Xcode >=26 and command line tools. SPM recommended; CocoaPods optional. Android Studio >=2025.2.1 and Android SDK required by documented development setup."
+    },
+    {
+      "id": "cap-android-code",
+      "url": "https://raw.githubusercontent.com/ionic-team/capacitor/8.5.1/android/capacitor/build.gradle",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "Versioned library source sets Java source/target21, AGP8.13.0, default compile/target API36 and minimum API24."
+    },
+    {
+      "id": "cap-gradle-wrapper",
+      "url": "https://raw.githubusercontent.com/ionic-team/capacitor/8.5.1/android-template/gradle/wrapper/gradle-wrapper.properties",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "Versioned Android template uses Gradle8.14.3."
+    },
+    {
+      "id": "cap-cli-code",
+      "url": "https://raw.githubusercontent.com/ionic-team/capacitor/8.5.1/cli/package.json",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "Versioned CLI is 8.5.1 and declares Node>=22."
+    },
+    {
+      "id": "cap-8-migration",
+      "url": "https://capacitorjs.com/docs/updating/8-0",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "Cap8 deployment target iOS15; SPM default. Android density configChanges avoids WebView reload on resize. Edge-to-edge uses SystemBars/CSS insets instead of removed adjustMarginsForEdgeToEdge. Kotlin2.2.20 if used."
+    },
+    {
+      "id": "cap-8-5-scenes",
+      "url": "https://capacitorjs.com/docs/updating/8-5",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "Cap8.5 adopts UIScene on iOS. New SceneDelegate forwards lifecycle/deep links through SceneDelegateProxy; test cold/warm links and pause/resume. Existing custom AppDelegate handlers need the scene path. This is not evidence of a current App Store Xcode27 deadline."
+    },
+    {
+      "id": "cap-config",
+      "url": "https://capacitorjs.com/docs/config",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "webDir contains compiled local assets and index.html. server.url, external allowNavigation and cleartext are documented development settings; project policy forbids remote runtime. Explicit includePlugins limits plugin discovery. Keep global Http/Cookies patches disabled by default; released logs must not expose secrets."
+    },
+    {
+      "id": "cap-app-api",
+      "url": "https://capacitorjs.com/docs/apis/app",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "App exposes cold launch URL, warm URL events, lifecycle and Android back handling. getAppLanguage() is asynchronous, app-specific, since8.1.0. Listener handles require individual cleanup; do not remove other subscribers."
+    },
+    {
+      "id": "cap-spm",
+      "url": "https://capacitorjs.com/docs/ios/spm",
+      "accessedDate": "2026-09-05",
+      "status": "content-verified",
+      "facts": "Capacitor sync manages generated CapApp-SPM dependency configuration. Keep local custom settings outside generated dependency lists where possible."
+    },
+    {
+      "id": "npm-dist-tag",
+      "url": "https://registry.npmjs.org/@capacitor/core/latest",
+      "accessedDate": "2026-09-05",
+      "status": "not-retrieved",
+      "reason": "Web tool refused encoded registry URL as unsafe. No package installed; registry dist-tag/integrity must be independently checked before dependency lock."
+    }
+  ]
+}

@@ -73,4 +73,11 @@ do not weaken assertions or relabel this suite green. Safari/native installation
 and physical-device evidence remain unverified. See PWA_BROWSER_BOUNDARIES.md
 and cross-engine-browser-first/transport-boundaries evidence. No further browser
 process or build is running. The native entry review is prepared in
-.tmp/S04-native-entry-review.md/.json; S04 has not yet been activated.
+.tmp/S04-native-entry-review.md/.json; S04 has now begun documented parallel-safe environment preparation.
+
+Working checkpoint0afad0906f266dcac138aba697fc7cc97579fc7e committed all
+integrated S03 source and evidence. S03 is not accepted; accepted headSha staysS02.
+Next S03 correction exposes server/saved verification provenance without changing
+license deadlines, cryptography or acceptance. S04 environment preparation is
+explicitly parallel-safe per evidence/S04/parallel-safe-entry.json. CurrentStageId,
+firstOpen and resume criterion remainS03; native source-only work is not acceptance.

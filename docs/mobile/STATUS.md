@@ -1,7 +1,7 @@
 # V12 status
 
 S00-S02 are accepted. S03 (controlled Web/PWA) is IN_PROGRESS.
-S04-S40 have not started. No global requirement is PASSED. releaseReady:false.
+S04 has begun documented parallel-safe environment preparation; S05-S40 have not started. No global requirement is PASSED. releaseReady:false.
 
 Canonical main f406a7de9e16e8cf63545cbce6681ed9278761a4 is incorporated by five
 local cherry-picks through8e6cfe1f482ebd261965d774cbf4e14f80f62f1d. Accepted
@@ -70,4 +70,11 @@ do not weaken assertions or relabel this suite green. Safari/native installation
 and physical-device evidence remain unverified. See PWA_BROWSER_BOUNDARIES.md
 and cross-engine-browser-first/transport-boundaries evidence. No further browser
 process or build is running. The native entry review is prepared in
-.tmp/S04-native-entry-review.md/.json; S04 has not yet been activated.
+.tmp/S04-native-entry-review.md/.json; S04 has now begun documented parallel-safe environment preparation.
+
+Working checkpoint0afad0906f266dcac138aba697fc7cc97579fc7e committed all
+integrated S03 source and evidence. S03 is not accepted; accepted headSha staysS02.
+Next S03 correction exposes server/saved verification provenance without changing
+license deadlines, cryptography or acceptance. S04 environment preparation is
+explicitly parallel-safe per evidence/S04/parallel-safe-entry.json. CurrentStageId,
+firstOpen and resume criterion remainS03; native source-only work is not acceptance.

@@ -143,3 +143,8 @@
   SHA identities. New engine checks use a different ephemeral QA authority and
   distinct output paths. A Windows Playwright WebKit pass is not Safari/iOS or
   native installation evidence; missing capabilities remain explicit failures.
+
+- D039: Local source/evidence checkpoint0afad090 preserves integrated S03 without
+  acceptance. S04 starts only documented parallel-safe environment preparation
+  under matrix69. Current/first-open remainsS03; no native build is claimed.
+  Shared App/provider/dependency changes stay coordinated with current S03 work.
