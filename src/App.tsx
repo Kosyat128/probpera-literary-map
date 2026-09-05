@@ -3009,7 +3009,7 @@ export default function App() {
           <div className="book-month-supporting has-news">
             <DeferredLiteraryNewsPanel
               active={bookDayActive}
-              endpoint={localNewsPreview ? "/__literary-news/feed" : "/api/literary-news/feed"}
+              endpoint={localNewsPreview ? "/__literary-news/feed" : undefined}
             />
 
           <article className="book-fact-card">

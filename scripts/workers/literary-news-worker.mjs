@@ -3,10 +3,16 @@ import { resolveNewsTimeZone, selectReviewed } from "../lib/literary-news-review
 import { NEWS_SOURCE_STATE_KEY, NEWS_STATE_MAX_BYTES, parseNewsSourceState, pendingNewsSourceState } from "../lib/literary-news-state.mjs";
 
 const FEED_PATH = "/api/literary-news/feed";
+// The canonical site reads this public feed from news.probpera.ru without
+// credentials. A fixed origin also covers diagnostics with no Origin header;
+// it never reflects an arbitrary caller or requires a Vary: Origin cache key.
+const READER_ORIGIN = "https://probpera.ru";
 const headersFor = (release) => ({
   "Content-Type": "application/json; charset=utf-8",
   "Cache-Control": "no-store",
   "X-Content-Type-Options": "nosniff",
+  "Access-Control-Allow-Origin": READER_ORIGIN,
+  "Access-Control-Expose-Headers": "X-Probpera-News-Release",
   "X-Probpera-News-Release": /^[a-f0-9]{40}$/.test(release || "") ? release : "local",
 });
 
