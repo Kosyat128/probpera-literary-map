@@ -3918,7 +3918,7 @@ export default function BookArchiveSection({
               setQuery(value);
             }}
             searchLabel={t("Поиск по книге, автору или стране")}
-            searchPlaceholder={language === "en" ? "Title, author, country" : "Название, автор, страна"}
+            searchPlaceholder={t("Название, автор, страна")}
             searchScope={searchScope}
             onSearchScopeChange={setSearchScope}
             libraryScopeLabel={t("Текущая полка")}

@@ -249,6 +249,7 @@ const englishInterfaceText: Record<string, string> = {
   "произведений из единой базы стран": "works from the unified country archive",
   "Поиск по книге, автору или стране": "Search by book, writer or country",
   "Например, Достоевский или Япония": "For example, Dostoevsky or Japan",
+  "Название, автор, страна": "Title, author, country",
   "Фильтры книжного архива": "Book archive filters",
   "Отбор архива": "Archive selection",
   "результатов": "results",
