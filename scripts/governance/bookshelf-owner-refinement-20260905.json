@@ -143,7 +143,7 @@
     {
       "path": "src/components/BookArchiveSection.tsx",
       "before": "            searchPlaceholder={t(\"Например, Достоевский или Япония\")}",
-      "after": "            searchPlaceholder={t(\"Название, автор, страна\")}"
+      "after": "            searchPlaceholder={t(\"Книги, авторы, страны\")}"
     },
     {
       "path": "src/components/BookArchiveSection.tsx",

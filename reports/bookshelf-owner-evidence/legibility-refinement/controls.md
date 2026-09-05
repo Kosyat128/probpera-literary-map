@@ -7,6 +7,7 @@ The toolbar uses one search-field focus frame, aligned 44px controls and quieter
 ## Verification
 
 - Public TypeScript and the 22-file typography audit pass.
+- Final local full unit run: 3030 passed, 4 skipped; no failures. Shared-language coverage checks every actual phrase, and the original 1425-field interface-copy catalogue remains unchanged. The shorter search placeholder reuses the existing books/writers/countries phrase, reducing the unique component phrase inventory by one.
 - The focused presentation and canonical-data checks pass after the additional exact UI projections; source bytes outside those projections keep their historical fingerprint.
 - The actual production build was measured at 1708, 1366, 768, 390 and 320px in both languages: all ten cases have zero document overflow, no clipped buttons and at least 44px button/select targets. The default filter rail has zero height. `controls.json` contains the full measurements.
 - The desktop and native mobile browser cases both pass for inspected and open books, including empty-click/tap closure, detail removal and focus restoration. Desktop additionally checks Alt-click, straight drag, and out-and-back drag within and beyond the canvas. The test is in `tests/e2e/stage5-baseline.spec.mjs` and runs in the existing serial WebGL suite.
