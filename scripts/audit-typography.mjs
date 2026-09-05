@@ -5,7 +5,7 @@ import postcss from "postcss";
 
 const canonicalPath = "src/styles/site-typography.css";
 const familyAlias = /var\(--(?:sans|serif|font-ui|font-editorial|font-display)\)/u;
-const localFamily = /^"Source (?:Sans 3|Serif 4) Local"$/u;
+const localFamily = /^"(?:Onest|Source Sans 3|Source Serif 4) Local"$/u;
 const normalizeSelector = (value) => value.trim().replace(/\s+/gu, " ").replace(/\s*([>+~])\s*/gu, "$1");
 const requiredRoles = [".article-copy h3", ".library-card-copy h3", ".share-links>span", ".article-reader-content", ".cms-page-prose"];
 // Explicit 2026-09-04 user exception: preserve the existing Header/Hero. These
@@ -82,6 +82,7 @@ export function auditTypography(sources) {
   if (!canonical) add(canonicalPath, null, "Canonical typography stylesheet is missing or invalid");
   const owned = new Set();
   const tokens = new Map();
+  const rootFontTokens = new Map();
   const canonicalDeclarations = new Map();
   const subgridCarriers = new Set();
   for (const root of parsed.values()) {
@@ -96,6 +97,9 @@ export function auditTypography(sources) {
   canonical?.walkDecls((declaration) => {
     if (declaration.prop.startsWith("--")) {
       tokens.set(declaration.prop, [...(tokens.get(declaration.prop) || []), declaration.value]);
+      if (declaration.parent.type === "rule" && declaration.parent.selector.trim() === ":root") {
+        rootFontTokens.set(declaration.prop, declaration.value);
+      }
     }
     if (declaration.prop === "font-size" && declaration.parent.type === "rule") {
       postcss.list.comma(declaration.parent.selector).forEach((selector) => owned.add(normalizeSelector(selector)));
@@ -104,12 +108,31 @@ export function auditTypography(sources) {
   for (const role of requiredRoles) {
     if (!owned.has(role)) add(canonicalPath, null, `Canonical size owner missing: ${role}`);
   }
+  const onestFaces = new Set();
+  parsed.get("src/styles/editorial-fonts.css")?.walkAtRules("font-face", (face) => {
+    const descriptor = (name) => face.nodes.find((node) => node.prop === name)?.value;
+    if (descriptor("font-family") === '"Onest Local"' && descriptor("font-weight") === "100 900" &&
+      descriptor("font-style") === "normal" &&
+      /^url\(["']\/fonts\/editorial\/onest-(?:cyrillic|latin)(?:-ext)?-variable\.woff2["']\) format\(["']woff2["']\)$/u.test(descriptor("src") || "")) {
+      onestFaces.add(face);
+    }
+  });
+  const resolvesOnest = (value, visited = new Set()) => {
+    if (value?.startsWith('"Onest Local"')) return true;
+    const token = value?.match(/^var\((--[a-z0-9-]+)\)$/u)?.[1];
+    if (!token || visited.has(token)) return false;
+    return resolvesOnest(rootFontTokens.get(token), new Set([...visited, token]));
+  };
 
   for (const [file, root] of parsed) {
     root.walkDecls((declaration) => {
       const { prop, value } = declaration;
       const parent = declaration.parent;
       const isFace = parent.type === "atrule" && parent.name === "font-face";
+      const declaredFamily = parent.nodes?.find((node) => node.prop === "font-family")?.value;
+      const onestWeight = !isFace && onestFaces.size > 0 && resolvesOnest(
+        prop === "font" ? value.match(familyAlias)?.[0] : declaredFamily || "var(--font-ui)"
+      );
       const selectors = parent.type === "rule" ? postcss.list.comma(parent.selector) : [];
       const ownsSize = selectors.some((selector) => ownsRole(selector, owned));
       const isFullText = selectors.some(fullText);
@@ -149,7 +172,7 @@ export function auditTypography(sources) {
       if (["--sans", "--serif", "--font-ui", "--font-editorial", "--font-display"].includes(prop)) {
         const preservedAlias = preservedIsland && preservedAliases[prop] === value;
         if (file !== canonicalPath && !preservedAlias) fail("Font aliases have a second owner outside site-typography.css");
-        if (!preservedAlias && !familyAlias.test(value) && !/^"Source (?:Sans 3|Serif 4) Local",/u.test(value)) {
+        if (!preservedAlias && !familyAlias.test(value) && !/^"(?:Onest|Source Sans 3|Source Serif 4) Local",/u.test(value)) {
           fail("Font alias must start with a bundled local family");
         }
       }
@@ -164,10 +187,12 @@ export function auditTypography(sources) {
       if (prop === "font" && !/^(?:inherit|initial|unset)$/u.test(value)) {
         if (!familyAlias.test(value)) fail("Font shorthand bypasses approved family aliases");
         const weight = value.match(/(?:^|\s)([1-9]\d{2})(?=\s)/u)?.[1];
-        if (weight && !["400", "600", "700"].includes(weight)) fail("Font weight has no bundled local face");
+        if (weight && !["400", "600", "700"].includes(weight) && !(weight === "500" && onestWeight)) fail("Font weight has no bundled local face");
       }
       if (prop === "font-weight" &&
         !/^(?:400|600|700|normal|bold|inherit|initial|unset)$/u.test(value) &&
+        !(value === "500" && onestWeight) &&
+        !(isFace && onestFaces.has(parent) && value === "100 900") &&
         !(preserved && /^(?:500|800|900)$/u.test(value)) &&
         !/^var\(--cms-(?:body|title)-weight(?:,\s*inherit)?\)$/u.test(value)) {
         fail("Font weight has no bundled local face");

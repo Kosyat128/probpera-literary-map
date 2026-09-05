@@ -1,3 +1,4 @@
+@layer site-defaults {
 /* Local news preview: book and supporting cards share the same bottom edge. */
 #book-day.has-literary-news {
   column-gap: 22px;
@@ -50,35 +51,29 @@
   display: block;
   padding-right: 40px;
   color: #edb67b;
-  letter-spacing: 0.12em;
 }
 
 #book-day.has-literary-news .book-fact-card h3 {
   max-width: calc(100% - 38px);
   margin: 10px 0 12px;
   color: #fff6ec;
-  line-height: 1.2;
-  letter-spacing: -0.015em;
 }
 
 #book-day.has-literary-news .book-fact-card p {
   max-width: 52ch;
   margin: 0 0 20px;
   color: #e1d3e4;
-  line-height: 1.65;
 }
 
 #book-day.has-literary-news .book-fact-card a {
   display: block;
   width: fit-content;
   max-width: 100%;
-  min-height: 40px;
+  min-height: 44px;
   margin-top: auto;
   padding: 12px 0 0;
   border-top: 1px solid rgba(240, 205, 167, 0.2);
   color: #f2bd83;
-  font: 600 var(--type-card-meta)/1.65 var(--font-ui);
-  letter-spacing: 0.045em;
   text-decoration: none;
   text-wrap: pretty;
 }
@@ -132,7 +127,7 @@
   width: fit-content;
   max-width: 100%;
   padding: 5px 0;
-  font: 12px/1.6 var(--font-ui);
+  font: 400 var(--type-action)/var(--type-leading-ui) var(--font-ui);
   cursor: pointer;
 }
 
@@ -174,4 +169,5 @@
     right: 18px;
     top: 22px;
   }
+}
 }

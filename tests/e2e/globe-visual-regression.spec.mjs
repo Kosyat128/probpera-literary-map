@@ -49,10 +49,11 @@ async function waitForStableAtlas(page) {
   return experience;
 }
 
-async function normalizeQuietChrome(experience) {
-  await experience.evaluate((element) => {
-    element.setAttribute("data-atlas-quiet", "false");
-  });
+async function normalizeQuietChrome(page, experience) {
+  // Wake the real activity owner; a DOM attribute alone is overwritten by React.
+  await page.mouse.move(2, 2);
+  await page.clock.runFor(100);
+  await expect(experience).toHaveAttribute("data-atlas-quiet", "false");
 }
 
 async function setVisualContract(experience, contract) {
@@ -124,6 +125,7 @@ test.describe("globe visual regression", () => {
       isMobile ? { width: 390, height: 844 } : { width: 1440, height: 900 }
     );
     await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.clock.install();
     await page.goto(
       "/?atlas=verified&atlasView=immersive&country=maldives#atlas",
       { waitUntil: "domcontentloaded" }
@@ -134,7 +136,10 @@ test.describe("globe visual regression", () => {
     const sheet = experience.locator(".atlas-country-presentation");
     const sheetContent = sheet.locator("#atlas-country-sheet-content");
 
-    await normalizeQuietChrome(experience);
+    // Freeze inactivity only after the real scene is ready. Resume immediately
+    // after the chrome capture so subsequent writer interactions run normally.
+    await page.clock.pauseAt(new Date(Date.now() + 1_000));
+    await normalizeQuietChrome(page, experience);
     const editionRail = await revealEditionRail(globe);
     await page.evaluate(() => {
       if (document.activeElement instanceof HTMLElement) {
@@ -148,12 +153,17 @@ test.describe("globe visual regression", () => {
       immersiveChrome,
       editionRail,
     ]);
-    await expect(page).toHaveScreenshot(
-      isMobile
-        ? "globe-mobile-top-chrome-edition-rail.png"
-        : "globe-desktop-top-chrome-edition-rail.png",
-      { ...screenshotOptions, clip: topChromeClip }
-    );
+    try {
+      await expect(page).toHaveScreenshot(
+        isMobile
+          ? "globe-mobile-top-chrome-edition-rail.png"
+          : "globe-desktop-top-chrome-edition-rail.png",
+        { ...screenshotOptions, clip: topChromeClip }
+      );
+      await expect(experience).toHaveAttribute("data-atlas-quiet", "false");
+    } finally {
+      await page.clock.resume();
+    }
     await setVisualContract(experience, null);
 
     if (isMobile) {
@@ -190,13 +200,37 @@ test.describe("globe visual regression", () => {
     const writerDetail = sheet.locator(".writer-detail");
     await expect(writerDetail.locator(".writer-detail-tabs")).toBeVisible();
     await expect(writerDetail).toBeFocused();
+    if (isMobile) {
+      // Check the real, unstabilized UI before the compact screenshot contract.
+      const tabs = writerDetail.getByRole("tab");
+      await expect(tabs).toHaveCount(3);
+      for (let index = 0; index < 3; index += 1) {
+        const tab = tabs.nth(index);
+        await tab.scrollIntoViewIfNeeded();
+        await expect(tab).toBeInViewport({ ratio: 1 });
+        await tab.click();
+        await expect(tab).toHaveAttribute("aria-selected", "true");
+        const panelId = await tab.getAttribute("aria-controls");
+        await expect(writerDetail.locator(`[id="${panelId}"]`)).toBeVisible();
+      }
+      await tabs.first().click();
+    }
     await setVisualContract(experience, "writer");
-    await expect(writerDetail).toHaveScreenshot(
-      isMobile
-        ? "globe-mobile-writer-card.png"
-        : "globe-desktop-writer-card.png",
-      screenshotOptions
-    );
+    // Hide the long tab panel before scrolling: screenshot-time reflow alone
+    // could leave the compact card's last row below the sheet's scrollport.
+    const writerStability = await page.addStyleTag({ path: stabilityStyles });
+    try {
+      await writerDetail.scrollIntoViewIfNeeded();
+      await expect(writerDetail.locator(".writer-detail-tabs")).toBeInViewport({ ratio: 1 });
+      await expect(writerDetail).toHaveScreenshot(
+        isMobile
+          ? "globe-mobile-writer-card.png"
+          : "globe-desktop-writer-card.png",
+        screenshotOptions
+      );
+    } finally {
+      await writerStability.evaluate(style => style.remove());
+    }
     await setVisualContract(experience, null);
   });
 });

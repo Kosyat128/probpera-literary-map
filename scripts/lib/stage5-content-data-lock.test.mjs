@@ -20,6 +20,19 @@ import {
 
 const root = path.resolve(process.cwd());
 const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
+const bookshelfRefinement = JSON.parse(readFileSync(
+  path.join(root, "scripts/governance/bookshelf-owner-refinement-20260905.json"), "utf8"
+));
+
+function projectApprovedBookshelfRefinement(relativePath, source) {
+  let result = source;
+  for (const delta of bookshelfRefinement.projections) {
+    if (delta.path !== relativePath) continue;
+    if (result.split(delta.after).length !== 2) throw new Error(`Missing or duplicate bookshelf delta: ${relativePath}`);
+    result = result.replace(delta.after, delta.before);
+  }
+  return result;
+}
 
 function repositoryPath(absolutePath) {
   return path.relative(root, absolutePath).replaceAll("\\", "/");
@@ -62,13 +75,17 @@ function canonicalContent(absolutePath) {
       expect(value.scripts["lint:public"]).toBe("tsc --noEmit && npm run typography:audit");
       delete value.scripts["typography:audit"];
       value.scripts["lint:public"] = "tsc --noEmit";
+      const deliveryGate = " && node scripts/audit-book-dossier-delivery.mjs";
+      expect(value.scripts["build:from-snapshot"].endsWith(deliveryGate)).toBe(true);
+      expect(value.scripts["build:from-snapshot"].split(deliveryGate)).toHaveLength(2);
+      value.scripts["build:from-snapshot"] = value.scripts["build:from-snapshot"].slice(0, -deliveryGate.length);
     }
     return JSON.stringify(canonicalJson(value));
   }
   if (extension === ".ts" || extension === ".tsx") {
     const sourceFile = ts.createSourceFile(
       repositoryPath(absolutePath),
-      text,
+      projectApprovedBookshelfRefinement(repositoryPath(absolutePath), text),
       ts.ScriptTarget.Latest,
       true,
       extension === ".tsx" ? ts.ScriptKind.TSX : ts.ScriptKind.TS
@@ -423,6 +440,24 @@ describe("Stage 5 authorial content and canonical data lock", () => {
 });
 
 describe("Stage 5 owner and production-pipeline governance locks", () => {
+  it("bounds the owner-requested bookshelf UI and private progress refinement", () => {
+    expect(bookshelfRefinement.sourceMainSha).toBe("0a348bd4202e3fa1558d88183549f7576a361c4b");
+    expect([...new Set(bookshelfRefinement.projections.map(delta => delta.path))]).toEqual([
+      "src/components/BookArchiveSection.tsx", "src/hooks/useReadingLibrary.ts",
+    ]);
+    expect(bookshelfRefinement.ownerReferenceSha256).toBe("5330fd14a4c180700a8c7e82db161542aba7c09f3973ccdfe46d0cf17e907ffb");
+    for (const relativePath of new Set(bookshelfRefinement.projections.map(delta => delta.path))) {
+      const source = readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n");
+      const projected = projectApprovedBookshelfRefinement(relativePath, source);
+      expect(projectApprovedBookshelfRefinement(relativePath, source + "\n")).toBe(projected + "\n");
+      for (const delta of bookshelfRefinement.projections.filter(entry => entry.path === relativePath)) {
+        expect(delta.before).not.toBe(delta.after);
+        expect(() => projectApprovedBookshelfRefinement(relativePath, source + delta.after)).toThrow("Missing or duplicate bookshelf delta");
+        expect(() => projectApprovedBookshelfRefinement(relativePath, source.replace(delta.after, ""))).toThrow("Missing or duplicate bookshelf delta");
+      }
+    }
+  });
+
   it("attests only the reviewed additive article-publication repair", () => {
     const attestation = adminArticlePublicationPermissionsAttestation;
     expect(attestation).toMatchObject({

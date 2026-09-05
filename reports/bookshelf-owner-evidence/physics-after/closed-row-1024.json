@@ -1,0 +1,299 @@
+{
+  "phase": "SHELF_IDLE",
+  "selectedKey": null,
+  "selectedTitle": null,
+  "pageIndex": null,
+  "pageCount": null,
+  "canvas": {
+    "x": 41.953125,
+    "y": 340.296875,
+    "width": 940.09375,
+    "height": 560
+  },
+  "camera": {
+    "position": [
+      0,
+      0,
+      5.03806
+    ],
+    "fov": 38
+  },
+  "qualityProfile": "BALANCED",
+  "lightExposure": 0.38,
+  "insets": {
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "books": [
+    {
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "title": "1984",
+      "sourceIndex": 0,
+      "x": 122.3797522419267,
+      "y": 602.0562266967195,
+      "z": 0.9561154942104996
+    },
+    {
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "title": "451° по Фаренгейту",
+      "sourceIndex": 1,
+      "x": 189.12707359847286,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "england:h_g_wells:ann-veronica",
+      "title": "Анна-Вероника",
+      "sourceIndex": 2,
+      "x": 253.70165887877832,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "title": "Будденброки",
+      "sourceIndex": 3,
+      "x": 318.2762441590837,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "russia:tolstoy:war-and-peace",
+      "title": "Война и мир",
+      "sourceIndex": 4,
+      "x": 382.85082943938914,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "england:william_shakespeare:hamlet",
+      "title": "Гамлет",
+      "sourceIndex": 5,
+      "x": 447.4254147196946,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "england:david_mitchell:slade-house",
+      "title": "Голодный дом",
+      "sourceIndex": 6,
+      "x": 512,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "france:flaubert:madame-bovary",
+      "title": "Госпожа Бовари",
+      "sourceIndex": 7,
+      "x": 576.5745852803053,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "russia:chekhov:the-lady-with-the-dog",
+      "title": "Дама с собачкой",
+      "sourceIndex": 8,
+      "x": 641.1491705606109,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "russia:chekhov:the-duel",
+      "title": "Дуэль",
+      "sourceIndex": 9,
+      "x": 705.7237558409162,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "russia:chekhov:uncle-vanya",
+      "title": "Дядя Ваня",
+      "sourceIndex": 10,
+      "x": 770.2983411212217,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "england:h_g_wells:the-history-of-mr-polly",
+      "title": "История мистера Полли",
+      "sourceIndex": 11,
+      "x": 834.872926401527,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    },
+    {
+      "key": "england:h_g_wells:when-the-sleeper-wakes",
+      "title": "Когда спящий проснется",
+      "sourceIndex": 12,
+      "x": 899.4475116818326,
+      "y": 602.157946550476,
+      "z": 0.9563657976083998
+    }
+  ],
+  "resources": {
+    "Texture": {
+      "created": 53,
+      "deleted": 0,
+      "live": 53
+    },
+    "Framebuffer": {
+      "created": 6,
+      "deleted": 0,
+      "live": 6
+    },
+    "Renderbuffer": {
+      "created": 2,
+      "deleted": 0,
+      "live": 2
+    },
+    "Buffer": {
+      "created": 299,
+      "deleted": 4,
+      "live": 295
+    },
+    "Program": {
+      "created": 14,
+      "deleted": 1,
+      "live": 13
+    },
+    "Shader": {
+      "created": 28,
+      "deleted": 28,
+      "live": 0
+    },
+    "VertexArray": {
+      "created": 125,
+      "deleted": 1,
+      "live": 124
+    }
+  },
+  "draws": 271,
+  "pendingFrames": 0,
+  "renderer": {
+    "geometries": 81,
+    "textures": 49,
+    "calls": 82,
+    "triangles": 5102
+  },
+  "patches": [
+    {
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "slot": 0,
+      "baseColor": "#406872",
+      "x": 49.493066526618094,
+      "width": 60.99217196270499,
+      "y": 122.9542877606998,
+      "height": 277.56916581829796
+    },
+    {
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "slot": 1,
+      "baseColor": "#BF5441",
+      "x": 116.48761003397641,
+      "width": 60.651666409168826,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "england:h_g_wells:ann-veronica",
+      "slot": 2,
+      "baseColor": "#889149",
+      "x": 181.13429638626423,
+      "width": 60.651666409168854,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "slot": 3,
+      "baseColor": "#C29043",
+      "x": 245.7809827385521,
+      "width": 60.651666409168854,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "russia:tolstoy:war-and-peace",
+      "slot": 4,
+      "baseColor": "#AC4141",
+      "x": 310.4276690908399,
+      "width": 60.651666409168854,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "england:william_shakespeare:hamlet",
+      "slot": 5,
+      "baseColor": "#BB5441",
+      "x": 375.07435544312773,
+      "width": 60.65166640916891,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "england:david_mitchell:slade-house",
+      "slot": 6,
+      "baseColor": "#508B8A",
+      "x": 439.7210417954155,
+      "width": 60.65166640916897,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "france:flaubert:madame-bovary",
+      "slot": 7,
+      "baseColor": "#808A44",
+      "x": 504.36772814770336,
+      "width": 60.65166640916891,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "russia:chekhov:the-lady-with-the-dog",
+      "slot": 8,
+      "baseColor": "#A3494E",
+      "x": 569.0144144999911,
+      "width": 60.651666409169025,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "russia:chekhov:the-duel",
+      "slot": 9,
+      "baseColor": "#CC7545",
+      "x": 633.661100852279,
+      "width": 60.65166640916891,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "russia:chekhov:uncle-vanya",
+      "slot": 10,
+      "baseColor": "#45739C",
+      "x": 698.3077872045668,
+      "width": 60.65166640916891,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "england:h_g_wells:the-history-of-mr-polly",
+      "slot": 11,
+      "baseColor": "#B34E3E",
+      "x": 762.9544735568547,
+      "width": 60.65166640916891,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    },
+    {
+      "key": "england:h_g_wells:when-the-sleeper-wakes",
+      "slot": 12,
+      "baseColor": "#B08B56",
+      "x": 827.6011599091424,
+      "width": 60.651666409169025,
+      "y": 123.83103858716981,
+      "height": 276.01955970639756
+    }
+  ]
+}

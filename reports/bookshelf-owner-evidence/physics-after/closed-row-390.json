@@ -1,0 +1,197 @@
+{
+  "phase": "SHELF_IDLE",
+  "selectedKey": null,
+  "selectedTitle": null,
+  "pageIndex": null,
+  "pageCount": null,
+  "canvas": {
+    "x": 11,
+    "y": 181.609375,
+    "width": 368,
+    "height": 480
+  },
+  "camera": {
+    "position": [
+      0,
+      0,
+      6.41884
+    ],
+    "fov": 38
+  },
+  "qualityProfile": "ECONOMY",
+  "lightExposure": 0.38,
+  "insets": {
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "books": [
+    {
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "title": "1984",
+      "sourceIndex": 0,
+      "x": 67.5076672479693,
+      "y": 409.6718906599222,
+      "z": 0.9667299858971006
+    },
+    {
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "title": "451° по Фаренгейту",
+      "sourceIndex": 1,
+      "x": 110.3674802216219,
+      "y": 409.72278514348625,
+      "z": 0.9668760954189883
+    },
+    {
+      "key": "england:h_g_wells:ann-veronica",
+      "title": "Анна-Вероника",
+      "sourceIndex": 2,
+      "x": 152.68374011081096,
+      "y": 409.72278514348625,
+      "z": 0.9668760954189883
+    },
+    {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "title": "Будденброки",
+      "sourceIndex": 3,
+      "x": 194.99999999999997,
+      "y": 409.72278514348625,
+      "z": 0.9668760954189883
+    },
+    {
+      "key": "russia:tolstoy:war-and-peace",
+      "title": "Война и мир",
+      "sourceIndex": 4,
+      "x": 237.31625988918904,
+      "y": 409.72278514348625,
+      "z": 0.9668760954189883
+    },
+    {
+      "key": "england:william_shakespeare:hamlet",
+      "title": "Гамлет",
+      "sourceIndex": 5,
+      "x": 279.6325197783781,
+      "y": 409.72278514348625,
+      "z": 0.9668760954189883
+    },
+    {
+      "key": "england:david_mitchell:slade-house",
+      "title": "Голодный дом",
+      "sourceIndex": 6,
+      "x": 321.94877966756707,
+      "y": 409.72278514348625,
+      "z": 0.9668760954189883
+    }
+  ],
+  "resources": {
+    "Texture": {
+      "created": 34,
+      "deleted": 0,
+      "live": 34
+    },
+    "Framebuffer": {
+      "created": 5,
+      "deleted": 0,
+      "live": 5
+    },
+    "Renderbuffer": {
+      "created": 1,
+      "deleted": 0,
+      "live": 1
+    },
+    "Buffer": {
+      "created": 185,
+      "deleted": 4,
+      "live": 181
+    },
+    "Program": {
+      "created": 13,
+      "deleted": 1,
+      "live": 12
+    },
+    "Shader": {
+      "created": 26,
+      "deleted": 26,
+      "live": 0
+    },
+    "VertexArray": {
+      "created": 61,
+      "deleted": 1,
+      "live": 60
+    }
+  },
+  "draws": 143,
+  "pendingFrames": 0,
+  "renderer": {
+    "geometries": 51,
+    "textures": 30,
+    "calls": 46,
+    "triangles": 1534
+  },
+  "patches": [
+    {
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "slot": 0,
+      "baseColor": "#406872",
+      "x": 36.44571257643099,
+      "width": 39.90537004005833,
+      "y": 137.24964600464017,
+      "height": 181.60527682900806
+    },
+    {
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "slot": 1,
+      "baseColor": "#BF5441",
+      "x": 79.42770808649979,
+      "width": 39.735091580328856,
+      "y": 137.6880875476562,
+      "height": 180.8303568925146
+    },
+    {
+      "key": "england:h_g_wells:ann-veronica",
+      "slot": 2,
+      "baseColor": "#889149",
+      "x": 121.78008114816765,
+      "width": 39.735091580328884,
+      "y": 137.6880875476562,
+      "height": 180.8303568925146
+    },
+    {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "slot": 3,
+      "baseColor": "#C29043",
+      "x": 164.13245420983554,
+      "width": 39.735091580328884,
+      "y": 137.6880875476562,
+      "height": 180.8303568925146
+    },
+    {
+      "key": "russia:tolstoy:war-and-peace",
+      "slot": 4,
+      "baseColor": "#AC4141",
+      "x": 206.48482727150343,
+      "width": 39.735091580328856,
+      "y": 137.6880875476562,
+      "height": 180.8303568925146
+    },
+    {
+      "key": "england:william_shakespeare:hamlet",
+      "slot": 5,
+      "baseColor": "#BB5441",
+      "x": 248.83720033317127,
+      "width": 39.73509158032891,
+      "y": 137.6880875476562,
+      "height": 180.8303568925146
+    },
+    {
+      "key": "england:david_mitchell:slade-house",
+      "slot": 6,
+      "baseColor": "#508B8A",
+      "x": 291.1895733948392,
+      "width": 39.735091580328856,
+      "y": 137.6880875476562,
+      "height": 180.8303568925146
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "baseURL": "http://127.0.0.1:4184/",
+  "baseURL": "http://127.0.0.1:4185/",
   "renderedFrom": "Production build",
   "results": [
     {
@@ -7,125 +7,125 @@
       "width": 320,
       "intro": {
         "x": 18,
-        "y": 292,
+        "y": 401,
         "width": 284,
-        "height": 707.5625,
+        "height": 599.375,
         "right": 302,
-        "bottom": 999.5625
+        "bottom": 1000.375
       },
       "title": {
         "x": 18,
-        "y": 320.1875,
+        "y": 430.59375,
         "width": 284,
         "height": 79.46875,
         "right": 302,
-        "bottom": 399.65625
+        "bottom": 510.0625
       },
       "titleInk": {
         "left": 18,
-        "right": 270.203125,
-        "width": 252.203125
+        "right": 256.140625,
+        "width": 238.140625
       },
       "titleClippedBy": [],
       "typography": {
         "title": "36.1248px",
-        "button": "14px",
-        "count": "13px",
-        "label": "13px",
+        "button": "15px",
+        "count": "14px",
+        "label": "14px",
         "labelTransform": "none",
-        "input": "14px"
+        "input": "15px"
       },
       "description": {
         "x": 18,
-        "y": 417.65625,
+        "y": 528.0625,
         "width": 284,
         "height": 131.71875,
         "right": 302,
-        "bottom": 549.375
+        "bottom": 659.78125
       },
       "search": {
         "x": 18,
-        "y": 925.375,
+        "y": 924.78125,
         "width": 284,
-        "height": 74.1875,
+        "height": 75.59375,
         "right": 302,
-        "bottom": 999.5625
+        "bottom": 1000.375
       },
       "field": {
         "x": 18,
-        "y": 951.5625,
+        "y": 952.375,
         "width": 284,
         "height": 48,
         "right": 302,
-        "bottom": 999.5625
+        "bottom": 1000.375
       },
       "input": {
         "x": 65,
-        "y": 953.5625,
+        "y": 954.375,
         "width": 191,
         "height": 44,
         "right": 256,
-        "bottom": 997.5625
+        "bottom": 998.375
       },
       "buttons": [
         {
           "text": "Все страны 200",
           "x": 18,
-          "y": 573.375,
-          "width": 118.453125,
-          "height": 48,
-          "right": 136.453125,
-          "bottom": 621.375,
+          "y": 683.78125,
+          "width": 138,
+          "height": 60,
+          "right": 156,
+          "bottom": 743.78125,
           "overflow": 0
         },
         {
           "text": "Нобелевские лауреаты 44",
-          "x": 18,
-          "y": 629.375,
-          "width": 187.625,
-          "height": 48,
-          "right": 205.625,
-          "bottom": 677.375,
+          "x": 164,
+          "y": 683.78125,
+          "width": 138,
+          "height": 60,
+          "right": 302,
+          "bottom": 743.78125,
           "overflow": 0
         },
         {
           "text": "10+ авторов 44",
           "x": 18,
-          "y": 685.375,
-          "width": 117.171875,
-          "height": 48,
-          "right": 135.171875,
-          "bottom": 733.375,
+          "y": 751.78125,
+          "width": 138,
+          "height": 60,
+          "right": 156,
+          "bottom": 811.78125,
           "overflow": 0
         },
         {
           "text": "С реальными портретами 153",
-          "x": 18,
-          "y": 741.375,
-          "width": 209.078125,
-          "height": 48,
-          "right": 227.078125,
-          "bottom": 789.375,
+          "x": 164,
+          "y": 751.78125,
+          "width": 138,
+          "height": 60,
+          "right": 302,
+          "bottom": 811.78125,
           "overflow": 0
         },
         {
           "text": "Страны с проверенными карточками 190",
           "x": 18,
-          "y": 797.375,
-          "width": 281.078125,
-          "height": 48,
-          "right": 299.078125,
-          "bottom": 845.375,
+          "y": 819.78125,
+          "width": 138,
+          "height": 81,
+          "right": 156,
+          "bottom": 900.78125,
           "overflow": 0
         },
         {
           "text": "Крупнейшие архивы↓",
-          "x": 18,
-          "y": 853.375,
-          "width": 173.6875,
-          "height": 48,
-          "right": 191.6875,
-          "bottom": 901.375,
+          "x": 164,
+          "y": 819.78125,
+          "width": 138,
+          "height": 81,
+          "right": 302,
+          "bottom": 900.78125,
           "overflow": 0
         }
       ],
@@ -143,125 +143,125 @@
       "width": 390,
       "intro": {
         "x": 18,
-        "y": 411,
+        "y": 407,
         "width": 354,
-        "height": 588.75,
+        "height": 592.5625,
         "right": 372,
-        "bottom": 999.75
+        "bottom": 999.5625
       },
       "title": {
         "x": 18,
-        "y": 439.1875,
+        "y": 436.59375,
         "width": 354,
         "height": 99,
         "right": 372,
-        "bottom": 538.1875
+        "bottom": 535.59375
       },
       "titleInk": {
         "left": 18,
-        "right": 332.203125,
-        "width": 314.203125
+        "right": 314.6875,
+        "width": 296.6875
       },
       "titleClippedBy": [],
       "typography": {
         "title": "45px",
-        "button": "14px",
-        "count": "13px",
-        "label": "13px",
+        "button": "15px",
+        "count": "14px",
+        "label": "14px",
         "labelTransform": "none",
-        "input": "14px"
+        "input": "15px"
       },
       "description": {
         "x": 18,
-        "y": 556.1875,
+        "y": 553.59375,
         "width": 354,
         "height": 105.375,
         "right": 372,
-        "bottom": 661.5625
+        "bottom": 658.96875
       },
       "search": {
         "x": 18,
-        "y": 925.5625,
+        "y": 923.96875,
         "width": 354,
-        "height": 74.1875,
+        "height": 75.59375,
         "right": 372,
-        "bottom": 999.75
+        "bottom": 999.5625
       },
       "field": {
         "x": 18,
-        "y": 951.75,
+        "y": 951.5625,
         "width": 354,
         "height": 48,
         "right": 372,
-        "bottom": 999.75
+        "bottom": 999.5625
       },
       "input": {
         "x": 65,
-        "y": 953.75,
+        "y": 953.5625,
         "width": 261,
         "height": 44,
         "right": 326,
-        "bottom": 997.75
+        "bottom": 997.5625
       },
       "buttons": [
         {
           "text": "Все страны 200",
           "x": 18,
-          "y": 685.5625,
-          "width": 118.453125,
-          "height": 48,
-          "right": 136.453125,
-          "bottom": 733.5625,
+          "y": 682.96875,
+          "width": 173,
+          "height": 60,
+          "right": 191,
+          "bottom": 742.96875,
           "overflow": 0
         },
         {
           "text": "Нобелевские лауреаты 44",
-          "x": 144.453125,
-          "y": 685.5625,
-          "width": 187.625,
-          "height": 48,
-          "right": 332.078125,
-          "bottom": 733.5625,
+          "x": 199,
+          "y": 682.96875,
+          "width": 173,
+          "height": 60,
+          "right": 372,
+          "bottom": 742.96875,
           "overflow": 0
         },
         {
           "text": "10+ авторов 44",
           "x": 18,
-          "y": 741.5625,
-          "width": 117.171875,
-          "height": 48,
-          "right": 135.171875,
-          "bottom": 789.5625,
+          "y": 750.96875,
+          "width": 173,
+          "height": 60,
+          "right": 191,
+          "bottom": 810.96875,
           "overflow": 0
         },
         {
           "text": "С реальными портретами 153",
-          "x": 143.171875,
-          "y": 741.5625,
-          "width": 209.078125,
-          "height": 48,
-          "right": 352.25,
-          "bottom": 789.5625,
+          "x": 199,
+          "y": 750.96875,
+          "width": 173,
+          "height": 60,
+          "right": 372,
+          "bottom": 810.96875,
           "overflow": 0
         },
         {
           "text": "Страны с проверенными карточками 190",
           "x": 18,
-          "y": 797.5625,
-          "width": 281.078125,
-          "height": 48,
-          "right": 299.078125,
-          "bottom": 845.5625,
+          "y": 818.96875,
+          "width": 173,
+          "height": 81,
+          "right": 191,
+          "bottom": 899.96875,
           "overflow": 0
         },
         {
           "text": "Крупнейшие архивы↓",
-          "x": 18,
-          "y": 853.5625,
-          "width": 173.6875,
-          "height": 48,
-          "right": 191.6875,
-          "bottom": 901.5625,
+          "x": 199,
+          "y": 818.96875,
+          "width": 173,
+          "height": 81,
+          "right": 372,
+          "bottom": 899.96875,
           "overflow": 0
         }
       ],
@@ -279,125 +279,261 @@
       "width": 1440,
       "intro": {
         "x": 57.59375,
-        "y": 728,
+        "y": 715,
         "width": 1324.8125,
-        "height": 271.875,
+        "height": 285.28125,
         "right": 1382.40625,
-        "bottom": 999.875
+        "bottom": 1000.28125
       },
       "title": {
         "x": 57.59375,
-        "y": 756.1875,
+        "y": 744.59375,
         "width": 1324.8125,
         "height": 77,
         "right": 1382.40625,
-        "bottom": 833.1875
+        "bottom": 821.59375
       },
       "titleInk": {
         "left": 57.59375,
-        "right": 840.265625,
-        "width": 782.671875
+        "right": 798.90625,
+        "width": 741.3125
       },
       "titleClippedBy": [],
       "typography": {
         "title": "70px",
-        "button": "14px",
-        "count": "13px",
-        "label": "13px",
+        "button": "15px",
+        "count": "14px",
+        "label": "14px",
         "labelTransform": "none",
-        "input": "14px"
+        "input": "15px"
       },
       "description": {
         "x": 57.59375,
-        "y": 851.1875,
+        "y": 839.59375,
         "width": 690,
         "height": 52.6875,
         "right": 747.59375,
-        "bottom": 903.875
+        "bottom": 892.28125
       },
       "search": {
         "x": 1162.40625,
-        "y": 951.875,
+        "y": 946.28125,
         "width": 220,
         "height": 48,
         "right": 1382.40625,
-        "bottom": 999.875
+        "bottom": 994.28125
       },
       "field": {
         "x": 1162.40625,
-        "y": 951.875,
+        "y": 946.28125,
         "width": 220,
         "height": 48,
         "right": 1382.40625,
-        "bottom": 999.875
+        "bottom": 994.28125
       },
       "input": {
         "x": 1209.40625,
-        "y": 953.875,
+        "y": 948.28125,
         "width": 127,
         "height": 44,
         "right": 1336.40625,
-        "bottom": 997.875
+        "bottom": 992.28125
       },
       "buttons": [
         {
           "text": "Все страны 200",
           "x": 57.59375,
-          "y": 951.875,
-          "width": 110.453125,
-          "height": 48,
-          "right": 168.046875,
-          "bottom": 999.875,
+          "y": 940.28125,
+          "width": 132.859375,
+          "height": 60,
+          "right": 190.453125,
+          "bottom": 1000.28125,
           "overflow": 0
         },
         {
           "text": "Нобелевские лауреаты 44",
-          "x": 176.046875,
-          "y": 951.875,
-          "width": 179.625,
-          "height": 48,
-          "right": 355.671875,
-          "bottom": 999.875,
+          "x": 198.453125,
+          "y": 940.28125,
+          "width": 167.40625,
+          "height": 60,
+          "right": 365.859375,
+          "bottom": 1000.28125,
           "overflow": 0
         },
         {
           "text": "10+ авторов 44",
-          "x": 363.671875,
-          "y": 951.875,
-          "width": 109.171875,
-          "height": 48,
-          "right": 472.84375,
-          "bottom": 999.875,
+          "x": 373.859375,
+          "y": 940.28125,
+          "width": 128.328125,
+          "height": 60,
+          "right": 502.1875,
+          "bottom": 1000.28125,
           "overflow": 0
         },
         {
           "text": "С реальными портретами 153",
-          "x": 480.84375,
-          "y": 951.875,
-          "width": 201.078125,
-          "height": 48,
-          "right": 681.921875,
-          "bottom": 999.875,
+          "x": 510.1875,
+          "y": 940.28125,
+          "width": 184.03125,
+          "height": 60,
+          "right": 694.21875,
+          "bottom": 1000.28125,
           "overflow": 0
         },
         {
           "text": "Страны с проверенными карточками 190",
-          "x": 689.921875,
-          "y": 951.875,
-          "width": 273.078125,
-          "height": 48,
-          "right": 963,
-          "bottom": 999.875,
+          "x": 702.21875,
+          "y": 940.28125,
+          "width": 249.375,
+          "height": 60,
+          "right": 951.59375,
+          "bottom": 1000.28125,
           "overflow": 0
         },
         {
           "text": "Крупнейшие архивы↓",
-          "x": 971,
-          "y": 951.875,
-          "width": 165.6875,
+          "x": 959.59375,
+          "y": 940.28125,
+          "width": 186.8125,
+          "height": 60,
+          "right": 1146.40625,
+          "bottom": 1000.28125,
+          "overflow": 0
+        }
+      ],
+      "conflicts": [],
+      "documentOverflow": 0,
+      "filterOverflow": 0,
+      "accessibleSearchLabel": "Найти страну, писателя или книгу",
+      "searchEscapePassed": true,
+      "archiveDropdownPassed": true,
+      "filterSelectionPassed": true,
+      "immersiveSmokePassed": true
+    },
+    {
+      "locale": "ru",
+      "width": 1848,
+      "intro": {
+        "x": 159,
+        "y": 480,
+        "width": 1530,
+        "height": 273.28125,
+        "right": 1689,
+        "bottom": 753.28125
+      },
+      "title": {
+        "x": 159,
+        "y": 509.59375,
+        "width": 1530,
+        "height": 77,
+        "right": 1689,
+        "bottom": 586.59375
+      },
+      "titleInk": {
+        "left": 159,
+        "right": 900.3125,
+        "width": 741.3125
+      },
+      "titleClippedBy": [],
+      "typography": {
+        "title": "70px",
+        "button": "15px",
+        "count": "14px",
+        "label": "14px",
+        "labelTransform": "none",
+        "input": "15px"
+      },
+      "description": {
+        "x": 159,
+        "y": 604.59375,
+        "width": 690,
+        "height": 52.6875,
+        "right": 849,
+        "bottom": 657.28125
+      },
+      "search": {
+        "x": 1449,
+        "y": 705.28125,
+        "width": 240,
+        "height": 48,
+        "right": 1689,
+        "bottom": 753.28125
+      },
+      "field": {
+        "x": 1449,
+        "y": 705.28125,
+        "width": 240,
+        "height": 48,
+        "right": 1689,
+        "bottom": 753.28125
+      },
+      "input": {
+        "x": 1496,
+        "y": 707.28125,
+        "width": 147,
+        "height": 44,
+        "right": 1643,
+        "bottom": 751.28125
+      },
+      "buttons": [
+        {
+          "text": "Все страны 200",
+          "x": 159,
+          "y": 705.28125,
+          "width": 132.859375,
           "height": 48,
-          "right": 1136.6875,
-          "bottom": 999.875,
+          "right": 291.859375,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "Нобелевские лауреаты 44",
+          "x": 299.859375,
+          "y": 705.28125,
+          "width": 211.796875,
+          "height": 48,
+          "right": 511.65625,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "10+ авторов 44",
+          "x": 519.65625,
+          "y": 705.28125,
+          "width": 128.328125,
+          "height": 48,
+          "right": 647.984375,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "С реальными портретами 153",
+          "x": 655.984375,
+          "y": 705.28125,
+          "width": 233.375,
+          "height": 48,
+          "right": 889.359375,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "Страны с проверенными карточками 190",
+          "x": 897.359375,
+          "y": 705.28125,
+          "width": 318.140625,
+          "height": 48,
+          "right": 1215.5,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "Крупнейшие архивы↓",
+          "x": 1223.5,
+          "y": 705.28125,
+          "width": 186.8125,
+          "height": 48,
+          "right": 1410.3125,
+          "bottom": 753.28125,
           "overflow": 0
         }
       ],
@@ -411,136 +547,544 @@
       "immersiveSmokePassed": null
     },
     {
-      "locale": "ru",
-      "width": 1848,
+      "locale": "en",
+      "width": 320,
       "intro": {
-        "x": 159,
-        "y": 481,
-        "width": 1530,
-        "height": 271.875,
-        "right": 1689,
-        "bottom": 752.875
+        "x": 18,
+        "y": 467,
+        "width": 284,
+        "height": 533.296875,
+        "right": 302,
+        "bottom": 1000.296875
       },
       "title": {
-        "x": 159,
-        "y": 509.1875,
-        "width": 1530,
-        "height": 77,
-        "right": 1689,
-        "bottom": 586.1875
+        "x": 18,
+        "y": 496.59375,
+        "width": 284,
+        "height": 39.734375,
+        "right": 302,
+        "bottom": 536.328125
       },
       "titleInk": {
-        "left": 159,
-        "right": 941.671875,
-        "width": 782.671875
+        "left": 18,
+        "right": 257.015625,
+        "width": 239.015625
       },
       "titleClippedBy": [],
       "typography": {
-        "title": "70px",
-        "button": "14px",
-        "count": "13px",
-        "label": "13px",
+        "title": "36.1248px",
+        "button": "15px",
+        "count": "14px",
+        "label": "14px",
         "labelTransform": "none",
-        "input": "14px"
+        "input": "15px"
       },
       "description": {
-        "x": 159,
-        "y": 604.1875,
-        "width": 690,
-        "height": 52.6875,
-        "right": 849,
-        "bottom": 656.875
+        "x": 18,
+        "y": 554.328125,
+        "width": 284,
+        "height": 105.375,
+        "right": 302,
+        "bottom": 659.703125
       },
       "search": {
-        "x": 1369,
-        "y": 704.875,
-        "width": 320,
-        "height": 48,
-        "right": 1689,
-        "bottom": 752.875
+        "x": 18,
+        "y": 924.703125,
+        "width": 284,
+        "height": 75.59375,
+        "right": 302,
+        "bottom": 1000.296875
       },
       "field": {
-        "x": 1369,
-        "y": 704.875,
-        "width": 320,
+        "x": 18,
+        "y": 952.296875,
+        "width": 284,
         "height": 48,
-        "right": 1689,
-        "bottom": 752.875
+        "right": 302,
+        "bottom": 1000.296875
       },
       "input": {
-        "x": 1416,
-        "y": 706.875,
-        "width": 227,
+        "x": 65,
+        "y": 954.296875,
+        "width": 191,
         "height": 44,
-        "right": 1643,
-        "bottom": 750.875
+        "right": 256,
+        "bottom": 998.296875
       },
       "buttons": [
         {
-          "text": "Все страны 200",
-          "x": 159,
-          "y": 704.875,
-          "width": 118.453125,
-          "height": 48,
-          "right": 277.453125,
-          "bottom": 752.875,
+          "text": "All countries 200",
+          "x": 18,
+          "y": 683.703125,
+          "width": 138,
+          "height": 60,
+          "right": 156,
+          "bottom": 743.703125,
           "overflow": 0
         },
         {
-          "text": "Нобелевские лауреаты 44",
-          "x": 285.453125,
-          "y": 704.875,
-          "width": 187.625,
-          "height": 48,
-          "right": 473.078125,
-          "bottom": 752.875,
+          "text": "Nobel laureates 44",
+          "x": 164,
+          "y": 683.703125,
+          "width": 138,
+          "height": 60,
+          "right": 302,
+          "bottom": 743.703125,
           "overflow": 0
         },
         {
-          "text": "10+ авторов 44",
-          "x": 481.078125,
-          "y": 704.875,
-          "width": 117.171875,
-          "height": 48,
-          "right": 598.25,
-          "bottom": 752.875,
+          "text": "10+ writers 44",
+          "x": 18,
+          "y": 751.703125,
+          "width": 138,
+          "height": 60,
+          "right": 156,
+          "bottom": 811.703125,
           "overflow": 0
         },
         {
-          "text": "С реальными портретами 153",
-          "x": 606.25,
-          "y": 704.875,
-          "width": 209.078125,
-          "height": 48,
-          "right": 815.328125,
-          "bottom": 752.875,
+          "text": "With real portraits 153",
+          "x": 164,
+          "y": 751.703125,
+          "width": 138,
+          "height": 60,
+          "right": 302,
+          "bottom": 811.703125,
           "overflow": 0
         },
         {
-          "text": "Страны с проверенными карточками 190",
-          "x": 823.328125,
-          "y": 704.875,
-          "width": 281.078125,
-          "height": 48,
-          "right": 1104.40625,
-          "bottom": 752.875,
+          "text": "Countries with verified records 190",
+          "x": 18,
+          "y": 819.703125,
+          "width": 138,
+          "height": 81,
+          "right": 156,
+          "bottom": 900.703125,
           "overflow": 0
         },
         {
-          "text": "Крупнейшие архивы↓",
-          "x": 1112.40625,
-          "y": 704.875,
-          "width": 173.6875,
-          "height": 48,
-          "right": 1286.09375,
-          "bottom": 752.875,
+          "text": "Largest archives↓",
+          "x": 164,
+          "y": 819.703125,
+          "width": 138,
+          "height": 81,
+          "right": 302,
+          "bottom": 900.703125,
           "overflow": 0
         }
       ],
       "conflicts": [],
       "documentOverflow": 0,
       "filterOverflow": 0,
-      "accessibleSearchLabel": "Найти страну, писателя или книгу",
+      "accessibleSearchLabel": "Find a country, writer or book",
+      "searchEscapePassed": true,
+      "archiveDropdownPassed": true,
+      "filterSelectionPassed": true,
+      "immersiveSmokePassed": null
+    },
+    {
+      "locale": "en",
+      "width": 390,
+      "intro": {
+        "x": 18,
+        "y": 502,
+        "width": 354,
+        "height": 483.71875,
+        "right": 372,
+        "bottom": 985.71875
+      },
+      "title": {
+        "x": 18,
+        "y": 531.59375,
+        "width": 354,
+        "height": 49.5,
+        "right": 372,
+        "bottom": 581.09375
+      },
+      "titleInk": {
+        "left": 18,
+        "right": 315.765625,
+        "width": 297.765625
+      },
+      "titleClippedBy": [],
+      "typography": {
+        "title": "45px",
+        "button": "15px",
+        "count": "14px",
+        "label": "14px",
+        "labelTransform": "none",
+        "input": "15px"
+      },
+      "description": {
+        "x": 18,
+        "y": 599.09375,
+        "width": 354,
+        "height": 79.03125,
+        "right": 372,
+        "bottom": 678.125
+      },
+      "search": {
+        "x": 18,
+        "y": 910.125,
+        "width": 354,
+        "height": 75.59375,
+        "right": 372,
+        "bottom": 985.71875
+      },
+      "field": {
+        "x": 18,
+        "y": 937.71875,
+        "width": 354,
+        "height": 48,
+        "right": 372,
+        "bottom": 985.71875
+      },
+      "input": {
+        "x": 65,
+        "y": 939.71875,
+        "width": 261,
+        "height": 44,
+        "right": 326,
+        "bottom": 983.71875
+      },
+      "buttons": [
+        {
+          "text": "All countries 200",
+          "x": 18,
+          "y": 702.125,
+          "width": 173,
+          "height": 48,
+          "right": 191,
+          "bottom": 750.125,
+          "overflow": 0
+        },
+        {
+          "text": "Nobel laureates 44",
+          "x": 199,
+          "y": 702.125,
+          "width": 173,
+          "height": 48,
+          "right": 372,
+          "bottom": 750.125,
+          "overflow": 0
+        },
+        {
+          "text": "10+ writers 44",
+          "x": 18,
+          "y": 758.125,
+          "width": 173,
+          "height": 60,
+          "right": 191,
+          "bottom": 818.125,
+          "overflow": 0
+        },
+        {
+          "text": "With real portraits 153",
+          "x": 199,
+          "y": 758.125,
+          "width": 173,
+          "height": 60,
+          "right": 372,
+          "bottom": 818.125,
+          "overflow": 0
+        },
+        {
+          "text": "Countries with verified records 190",
+          "x": 18,
+          "y": 826.125,
+          "width": 173,
+          "height": 60,
+          "right": 191,
+          "bottom": 886.125,
+          "overflow": 0
+        },
+        {
+          "text": "Largest archives↓",
+          "x": 199,
+          "y": 826.125,
+          "width": 173,
+          "height": 60,
+          "right": 372,
+          "bottom": 886.125,
+          "overflow": 0
+        }
+      ],
+      "conflicts": [],
+      "documentOverflow": 0,
+      "filterOverflow": 0,
+      "accessibleSearchLabel": "Find a country, writer or book",
+      "searchEscapePassed": true,
+      "archiveDropdownPassed": true,
+      "filterSelectionPassed": true,
+      "immersiveSmokePassed": null
+    },
+    {
+      "locale": "en",
+      "width": 1440,
+      "intro": {
+        "x": 57.59375,
+        "y": 727,
+        "width": 1324.8125,
+        "height": 273.28125,
+        "right": 1382.40625,
+        "bottom": 1000.28125
+      },
+      "title": {
+        "x": 57.59375,
+        "y": 756.59375,
+        "width": 1324.8125,
+        "height": 77,
+        "right": 1382.40625,
+        "bottom": 833.59375
+      },
+      "titleInk": {
+        "left": 57.59375,
+        "right": 520.796875,
+        "width": 463.203125
+      },
+      "titleClippedBy": [],
+      "typography": {
+        "title": "70px",
+        "button": "15px",
+        "count": "14px",
+        "label": "14px",
+        "labelTransform": "none",
+        "input": "15px"
+      },
+      "description": {
+        "x": 57.59375,
+        "y": 851.59375,
+        "width": 690,
+        "height": 52.6875,
+        "right": 747.59375,
+        "bottom": 904.28125
+      },
+      "search": {
+        "x": 1162.40625,
+        "y": 952.28125,
+        "width": 220,
+        "height": 48,
+        "right": 1382.40625,
+        "bottom": 1000.28125
+      },
+      "field": {
+        "x": 1162.40625,
+        "y": 952.28125,
+        "width": 220,
+        "height": 48,
+        "right": 1382.40625,
+        "bottom": 1000.28125
+      },
+      "input": {
+        "x": 1209.40625,
+        "y": 954.28125,
+        "width": 127,
+        "height": 44,
+        "right": 1336.40625,
+        "bottom": 998.28125
+      },
+      "buttons": [
+        {
+          "text": "All countries 200",
+          "x": 57.59375,
+          "y": 952.28125,
+          "width": 136.828125,
+          "height": 48,
+          "right": 194.421875,
+          "bottom": 1000.28125,
+          "overflow": 0
+        },
+        {
+          "text": "Nobel laureates 44",
+          "x": 202.421875,
+          "y": 952.28125,
+          "width": 152.09375,
+          "height": 48,
+          "right": 354.515625,
+          "bottom": 1000.28125,
+          "overflow": 0
+        },
+        {
+          "text": "10+ writers 44",
+          "x": 362.515625,
+          "y": 952.28125,
+          "width": 119.0625,
+          "height": 48,
+          "right": 481.578125,
+          "bottom": 1000.28125,
+          "overflow": 0
+        },
+        {
+          "text": "With real portraits 153",
+          "x": 489.578125,
+          "y": 952.28125,
+          "width": 173.640625,
+          "height": 48,
+          "right": 663.21875,
+          "bottom": 1000.28125,
+          "overflow": 0
+        },
+        {
+          "text": "Countries with verified records 190",
+          "x": 671.21875,
+          "y": 952.28125,
+          "width": 265.015625,
+          "height": 48,
+          "right": 936.234375,
+          "bottom": 1000.28125,
+          "overflow": 0
+        },
+        {
+          "text": "Largest archives↓",
+          "x": 944.234375,
+          "y": 952.28125,
+          "width": 154.546875,
+          "height": 48,
+          "right": 1098.78125,
+          "bottom": 1000.28125,
+          "overflow": 0
+        }
+      ],
+      "conflicts": [],
+      "documentOverflow": 0,
+      "filterOverflow": 0,
+      "accessibleSearchLabel": "Find a country, writer or book",
+      "searchEscapePassed": true,
+      "archiveDropdownPassed": true,
+      "filterSelectionPassed": true,
+      "immersiveSmokePassed": null
+    },
+    {
+      "locale": "en",
+      "width": 1848,
+      "intro": {
+        "x": 159,
+        "y": 480,
+        "width": 1530,
+        "height": 273.28125,
+        "right": 1689,
+        "bottom": 753.28125
+      },
+      "title": {
+        "x": 159,
+        "y": 509.59375,
+        "width": 1530,
+        "height": 77,
+        "right": 1689,
+        "bottom": 586.59375
+      },
+      "titleInk": {
+        "left": 159,
+        "right": 622.203125,
+        "width": 463.203125
+      },
+      "titleClippedBy": [],
+      "typography": {
+        "title": "70px",
+        "button": "15px",
+        "count": "14px",
+        "label": "14px",
+        "labelTransform": "none",
+        "input": "15px"
+      },
+      "description": {
+        "x": 159,
+        "y": 604.59375,
+        "width": 690,
+        "height": 52.6875,
+        "right": 849,
+        "bottom": 657.28125
+      },
+      "search": {
+        "x": 1449,
+        "y": 705.28125,
+        "width": 240,
+        "height": 48,
+        "right": 1689,
+        "bottom": 753.28125
+      },
+      "field": {
+        "x": 1449,
+        "y": 705.28125,
+        "width": 240,
+        "height": 48,
+        "right": 1689,
+        "bottom": 753.28125
+      },
+      "input": {
+        "x": 1496,
+        "y": 707.28125,
+        "width": 147,
+        "height": 44,
+        "right": 1643,
+        "bottom": 751.28125
+      },
+      "buttons": [
+        {
+          "text": "All countries 200",
+          "x": 159,
+          "y": 705.28125,
+          "width": 136.828125,
+          "height": 48,
+          "right": 295.828125,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "Nobel laureates 44",
+          "x": 303.828125,
+          "y": 705.28125,
+          "width": 152.09375,
+          "height": 48,
+          "right": 455.921875,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "10+ writers 44",
+          "x": 463.921875,
+          "y": 705.28125,
+          "width": 119.0625,
+          "height": 48,
+          "right": 582.984375,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "With real portraits 153",
+          "x": 590.984375,
+          "y": 705.28125,
+          "width": 173.640625,
+          "height": 48,
+          "right": 764.625,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "Countries with verified records 190",
+          "x": 772.625,
+          "y": 705.28125,
+          "width": 265.015625,
+          "height": 48,
+          "right": 1037.640625,
+          "bottom": 753.28125,
+          "overflow": 0
+        },
+        {
+          "text": "Largest archives↓",
+          "x": 1045.640625,
+          "y": 705.28125,
+          "width": 154.546875,
+          "height": 48,
+          "right": 1200.1875,
+          "bottom": 753.28125,
+          "overflow": 0
+        }
+      ],
+      "conflicts": [],
+      "documentOverflow": 0,
+      "filterOverflow": 0,
+      "accessibleSearchLabel": "Find a country, writer or book",
       "searchEscapePassed": true,
       "archiveDropdownPassed": true,
       "filterSelectionPassed": true,

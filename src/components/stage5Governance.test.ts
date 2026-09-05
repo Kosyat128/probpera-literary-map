@@ -20,8 +20,12 @@ const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 function parseSource(relativePath: string): ParsedSource {
   const absolutePath = path.join(root, relativePath);
   const text = readFileSync(absolutePath, "utf8").replace(/\r\n/gu, "\n");
+  return parseSourceText(relativePath, text);
+}
+
+function parseSourceText(relativePath: string, text: string): ParsedSource {
   return {
-    absolutePath,
+    absolutePath: path.join(root, relativePath),
     relativePath: relativePath.replace(/\\/gu, "/"),
     sourceFile: ts.createSourceFile(
       relativePath,
@@ -98,6 +102,28 @@ function canonicalFileHash(parsed: ParsedSource) {
   return createHash("sha256")
     .update(printer.printFile(parsed.sourceFile))
     .digest("hex");
+}
+
+// The owner explicitly allowed open-menu layout changes. Validate this one
+// row-count attribute before removing only it from the historical Header tree.
+function projectSectionsMenuRows(parsed: ParsedSource): ParsedSource {
+  const host = singleJsxNodeByClass(parsed, "sections-mega-groups");
+  expect(jsxAttributeText(host, "className", parsed.sourceFile)).toBe('"sections-mega-groups"');
+  const styles = jsxAttributes(host).filter(
+    (attribute): attribute is ts.JsxAttribute =>
+      ts.isJsxAttribute(attribute) && attribute.name.getText(parsed.sourceFile) === "style"
+  );
+  expect(styles, "exactly one approved menu grid style").toHaveLength(1);
+  const expected = parseSourceText("approved-menu.tsx", `<div style={{
+    "--menu-group-rows": 1 + 2 * Math.max(...sectionMenuGroups.map(({ sections }) => sections.length)),
+  } as CSSProperties} />`);
+  const expectedStyle = jsxAttributes(jsxNodes(expected)[0])[0];
+  expect(printer.printNode(ts.EmitHint.Unspecified, styles[0], parsed.sourceFile))
+    .toBe(printer.printNode(ts.EmitHint.Unspecified, expectedStyle, expected.sourceFile));
+  return parseSourceText(
+    parsed.relativePath,
+    parsed.text.slice(0, styles[0].getStart(parsed.sourceFile)) + parsed.text.slice(styles[0].end)
+  );
 }
 
 function descendantTagNames(node: ts.Node, sourceFile: ts.SourceFile) {
@@ -235,18 +261,19 @@ const literaryGlobe = parseSource("src/components/LiteraryGlobe.tsx");
 
 describe("Stage 5A governance baseline", () => {
   it("keeps the owner-approved Header and Hero syntax trees unchanged", () => {
+    const preservedApp = projectSectionsMenuRows(app);
     const ownerNodes = {
-      topline: singleJsxNodeByClass(app, "topline"),
-      desktopHeader: singleJsxNodeByClass(app, "site-header"),
-      mobileHeader: singleJsxNodeByClass(app, "mobile-nav"),
-      hero: singleJsxNodeByClass(app, "magazine-hero"),
+      topline: singleJsxNodeByClass(preservedApp, "topline"),
+      desktopHeader: singleJsxNodeByClass(preservedApp, "site-header"),
+      mobileHeader: singleJsxNodeByClass(preservedApp, "mobile-nav"),
+      hero: singleJsxNodeByClass(preservedApp, "magazine-hero"),
     };
 
     expect(
       Object.fromEntries(
         Object.entries(ownerNodes).map(([name, node]) => [
           name,
-          canonicalNodeHash(node, app.sourceFile),
+          canonicalNodeHash(node, preservedApp.sourceFile),
         ])
       )
     ).toEqual({
@@ -262,6 +289,24 @@ describe("Stage 5A governance baseline", () => {
       headerArticlesMenu: "3dc49bb30962ff80bce8d785eb1cb19a1b0269ef9518799caad74c4db311cbde",
       interfaceLanguageControl: "03819534ee01808676bb1bca4fe13d7f125feab9dabed213d6446fee2098402b",
     });
+  });
+
+  it("does not normalize changed menu formulas, extra styles or other Header changes", () => {
+    const mutate = (text: string) => parseSourceText(app.relativePath, text);
+    expect(() => projectSectionsMenuRows(mutate(app.text.replace(
+      '"--menu-group-rows": 1 + 2 *', '"--menu-group-rows": 1 + 3 *'
+    )))).toThrow();
+    expect(() => projectSectionsMenuRows(mutate(app.text.replace(
+      '"--menu-group-rows":', 'color: "red", "--menu-group-rows":'
+    )))).toThrow();
+    expect(() => projectSectionsMenuRows(mutate(app.text.replace(
+      'className="sections-mega-groups"', 'className="sections-mega-groups" style={{ color: "red" }}'
+    )))).toThrow();
+    const changedHeader = projectSectionsMenuRows(mutate(app.text.replace(
+      'className="site-header"', 'className="site-header" data-unapproved="changed"'
+    )));
+    expect(canonicalNodeHash(singleJsxNodeByClass(changedHeader, "site-header"), changedHeader.sourceFile))
+      .not.toBe("7eaae1b0ffd97a67ab8d6d457077340d95646f839e636a93d0444fd9cd18dbe0");
   });
 
   it("keeps the owner-approved logo and responsive Hero artwork references", () => {

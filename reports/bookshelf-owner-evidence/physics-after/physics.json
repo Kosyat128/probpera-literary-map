@@ -1,0 +1,2143 @@
+{
+  "baseURL": "http://127.0.0.1:4185/",
+  "capturedAt": "2026-09-05T02:51:20.594Z",
+  "mode": "full",
+  "cases": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "initial": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 11,
+          "y": 181.609375,
+          "width": 368,
+          "height": 480
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            6.41884
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "ECONOMY",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 67.5076672479693,
+            "y": 409.6718906599222,
+            "z": 0.9667299858971006
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "451° по Фаренгейту",
+            "sourceIndex": 1,
+            "x": 110.3674802216219,
+            "y": 409.72278514348625,
+            "z": 0.9668760954189883
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Анна-Вероника",
+            "sourceIndex": 2,
+            "x": 152.68374011081096,
+            "y": 409.72278514348625,
+            "z": 0.9668760954189883
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Будденброки",
+            "sourceIndex": 3,
+            "x": 194.99999999999997,
+            "y": 409.72278514348625,
+            "z": 0.9668760954189883
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "Война и мир",
+            "sourceIndex": 4,
+            "x": 237.31625988918904,
+            "y": 409.72278514348625,
+            "z": 0.9668760954189883
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 279.6325197783781,
+            "y": 409.72278514348625,
+            "z": 0.9668760954189883
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 321.94877966756707,
+            "y": 409.72278514348625,
+            "z": 0.9668760954189883
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 34,
+            "deleted": 0,
+            "live": 34
+          },
+          "Framebuffer": {
+            "created": 5,
+            "deleted": 0,
+            "live": 5
+          },
+          "Renderbuffer": {
+            "created": 1,
+            "deleted": 0,
+            "live": 1
+          },
+          "Buffer": {
+            "created": 185,
+            "deleted": 4,
+            "live": 181
+          },
+          "Program": {
+            "created": 13,
+            "deleted": 1,
+            "live": 12
+          },
+          "Shader": {
+            "created": 26,
+            "deleted": 26,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 61,
+            "deleted": 1,
+            "live": 60
+          }
+        },
+        "draws": 143,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 51,
+          "textures": 30,
+          "calls": 46,
+          "triangles": 1534
+        }
+      },
+      "interactions": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "elapsedMs": 7327,
+          "title": "1984",
+          "framing": {
+            "bounds": {
+              "x": 137.06089414518812,
+              "y": 213.90242524324685,
+              "right": 256.41434929686943,
+              "bottom": 357.41959113891846,
+              "points": 224
+            },
+            "free": {
+              "x": 11,
+              "y": 181.609375,
+              "right": 379,
+              "bottom": 383.219375
+            },
+            "inside": true,
+            "height": 143.5171658956716,
+            "heightOccupancy": 0.7118553935601984
+          },
+          "openFraming": {
+            "bounds": {
+              "x": 124.47118902683683,
+              "y": 215.17358866295865,
+              "right": 267.5002849879337,
+              "bottom": 357.8033211129889,
+              "points": 224
+            },
+            "free": {
+              "x": 11,
+              "y": 181.609375,
+              "right": 379,
+              "bottom": 383.219375
+            },
+            "inside": true,
+            "height": 142.62973245003025,
+            "heightOccupancy": 0.7074536602848581
+          },
+          "turns": [
+            {
+              "before": 0,
+              "after": 1,
+              "cancel": false,
+              "direction": "forward"
+            },
+            {
+              "before": 1,
+              "after": 0,
+              "cancel": false,
+              "direction": "backward"
+            },
+            {
+              "before": 0,
+              "after": 0,
+              "cancel": true,
+              "direction": "forward"
+            }
+          ]
+        },
+        {
+          "key": "germany:thomas_mann:buddenbrooks-editorial",
+          "elapsedMs": 808,
+          "title": "Будденброки",
+          "framing": {
+            "bounds": {
+              "x": 137.38388466577092,
+              "y": 213.90758249883748,
+              "right": 256.0497002227918,
+              "bottom": 356.6186455839419,
+              "points": 224
+            },
+            "free": {
+              "x": 11,
+              "y": 181.609375,
+              "right": 379,
+              "bottom": 383.219375
+            },
+            "inside": true,
+            "height": 142.7110630851044,
+            "heightOccupancy": 0.7078570660438688
+          },
+          "openFraming": {
+            "bounds": {
+              "x": 124.5176877925639,
+              "y": 215.20900641863724,
+              "right": 267.51703130585605,
+              "bottom": 357.80938212504225,
+              "points": 224
+            },
+            "free": {
+              "x": 11,
+              "y": 181.609375,
+              "right": 379,
+              "bottom": 383.219375
+            },
+            "inside": true,
+            "height": 142.600375706405,
+            "heightOccupancy": 0.7073080487396706
+          },
+          "turns": [
+            {
+              "before": 0,
+              "after": 1,
+              "cancel": false,
+              "direction": "forward"
+            },
+            {
+              "before": 1,
+              "after": 0,
+              "cancel": false,
+              "direction": "backward"
+            },
+            {
+              "before": 0,
+              "after": 0,
+              "cancel": true,
+              "direction": "forward"
+            }
+          ]
+        },
+        {
+          "key": "england:david_mitchell:slade-house",
+          "elapsedMs": 490,
+          "title": "Голодный дом",
+          "framing": {
+            "bounds": {
+              "x": 137.27294785700994,
+              "y": 213.93481537864514,
+              "right": 256.17421461979086,
+              "bottom": 356.9180408889747,
+              "points": 224
+            },
+            "free": {
+              "x": 11,
+              "y": 181.609375,
+              "right": 379,
+              "bottom": 383.219375
+            },
+            "inside": true,
+            "height": 142.98322551032956,
+            "heightOccupancy": 0.7092070111121946
+          },
+          "openFraming": {
+            "bounds": {
+              "x": 124.4568274027977,
+              "y": 215.1659628605952,
+              "right": 267.49931586498684,
+              "bottom": 357.8080257819611,
+              "points": 224
+            },
+            "free": {
+              "x": 11,
+              "y": 181.609375,
+              "right": 379,
+              "bottom": 383.219375
+            },
+            "inside": true,
+            "height": 142.6420629213659,
+            "heightOccupancy": 0.7075148203033872
+          },
+          "turns": [
+            {
+              "before": 0,
+              "after": 1,
+              "cancel": false,
+              "direction": "forward"
+            },
+            {
+              "before": 1,
+              "after": 0,
+              "cancel": false,
+              "direction": "backward"
+            },
+            {
+              "before": 0,
+              "after": 0,
+              "cancel": true,
+              "direction": "forward"
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "openClose": {
+        "cycles": 2,
+        "before": {
+          "phase": "SHELF_IDLE",
+          "selectedKey": null,
+          "selectedTitle": null,
+          "pageIndex": null,
+          "pageCount": null,
+          "canvas": {
+            "x": 11,
+            "y": 517.609375,
+            "width": 368,
+            "height": 480
+          },
+          "camera": {
+            "position": [
+              -0.00011,
+              -0.00011,
+              6.41933
+            ],
+            "fov": 37.99983
+          },
+          "qualityProfile": "ECONOMY",
+          "lightExposure": 0.38,
+          "insets": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "books": [
+            {
+              "key": "germany:thomas_mann:buddenbrooks-editorial",
+              "title": "Будденброки",
+              "sourceIndex": 3,
+              "x": 68.07429012866194,
+              "y": 745.7106468395906,
+              "z": 0.9668789467180058
+            },
+            {
+              "key": "russia:tolstoy:war-and-peace",
+              "title": "Война и мир",
+              "sourceIndex": 4,
+              "x": 110.38721815888637,
+              "y": 745.7106468395906,
+              "z": 0.9668789467180058
+            },
+            {
+              "key": "england:william_shakespeare:hamlet",
+              "title": "Гамлет",
+              "sourceIndex": 5,
+              "x": 152.70014618911077,
+              "y": 745.7106468395906,
+              "z": 0.9668789467180058
+            },
+            {
+              "key": "england:david_mitchell:slade-house",
+              "title": "Голодный дом",
+              "sourceIndex": 6,
+              "x": 195.01313019416162,
+              "y": 745.6597046588934,
+              "z": 0.966732861664018
+            },
+            {
+              "key": "france:flaubert:madame-bovary",
+              "title": "Госпожа Бовари",
+              "sourceIndex": 7,
+              "x": 237.3260022495596,
+              "y": 745.7106468395906,
+              "z": 0.9668789467180058
+            },
+            {
+              "key": "russia:chekhov:the-lady-with-the-dog",
+              "title": "Дама с собачкой",
+              "sourceIndex": 8,
+              "x": 279.63893027978395,
+              "y": 745.7106468395906,
+              "z": 0.9668789467180058
+            },
+            {
+              "key": "russia:chekhov:the-duel",
+              "title": "Дуэль",
+              "sourceIndex": 9,
+              "x": 321.95185831000833,
+              "y": 745.7106468395906,
+              "z": 0.9668789467180058
+            }
+          ],
+          "resources": {
+            "Texture": {
+              "created": 433,
+              "deleted": 398,
+              "live": 35
+            },
+            "Framebuffer": {
+              "created": 5,
+              "deleted": 0,
+              "live": 5
+            },
+            "Renderbuffer": {
+              "created": 1,
+              "deleted": 0,
+              "live": 1
+            },
+            "Buffer": {
+              "created": 493,
+              "deleted": 311,
+              "live": 182
+            },
+            "Program": {
+              "created": 104,
+              "deleted": 92,
+              "live": 12
+            },
+            "Shader": {
+              "created": 208,
+              "deleted": 208,
+              "live": 0
+            },
+            "VertexArray": {
+              "created": 213,
+              "deleted": 152,
+              "live": 61
+            }
+          },
+          "draws": 75495,
+          "pendingFrames": 0,
+          "renderer": {
+            "geometries": 52,
+            "textures": 31,
+            "calls": 46,
+            "triangles": 1534
+          }
+        },
+        "after": {
+          "phase": "SHELF_IDLE",
+          "selectedKey": null,
+          "selectedTitle": null,
+          "pageIndex": null,
+          "pageCount": null,
+          "canvas": {
+            "x": 11,
+            "y": 517.609375,
+            "width": 368,
+            "height": 480
+          },
+          "camera": {
+            "position": [
+              -0.0001,
+              -0.00013,
+              6.4194
+            ],
+            "fov": 37.99976
+          },
+          "qualityProfile": "ECONOMY",
+          "lightExposure": 0.38,
+          "insets": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "books": [
+            {
+              "key": "germany:thomas_mann:buddenbrooks-editorial",
+              "title": "Будденброки",
+              "sourceIndex": 3,
+              "x": 68.07436474272804,
+              "y": 745.7083881488804,
+              "z": 0.9668793540075405
+            },
+            {
+              "key": "russia:tolstoy:war-and-peace",
+              "title": "Война и мир",
+              "sourceIndex": 4,
+              "x": 110.38687167370364,
+              "y": 745.7083881488804,
+              "z": 0.9668793540075405
+            },
+            {
+              "key": "england:william_shakespeare:hamlet",
+              "title": "Гамлет",
+              "sourceIndex": 5,
+              "x": 152.6993786046792,
+              "y": 745.7083881488804,
+              "z": 0.9668793540075405
+            },
+            {
+              "key": "england:david_mitchell:slade-house",
+              "title": "Голодный дом",
+              "sourceIndex": 6,
+              "x": 195.01193642074423,
+              "y": 745.6574369088081,
+              "z": 0.9667332724484652
+            },
+            {
+              "key": "france:flaubert:madame-bovary",
+              "title": "Госпожа Бовари",
+              "sourceIndex": 7,
+              "x": 237.32439246663031,
+              "y": 745.7083881488804,
+              "z": 0.9668793540075405
+            },
+            {
+              "key": "russia:chekhov:the-lady-with-the-dog",
+              "title": "Дама с собачкой",
+              "sourceIndex": 8,
+              "x": 279.6368993976059,
+              "y": 745.7083881488804,
+              "z": 0.9668793540075405
+            },
+            {
+              "key": "russia:chekhov:the-duel",
+              "title": "Дуэль",
+              "sourceIndex": 9,
+              "x": 321.9494063285814,
+              "y": 745.7083881488804,
+              "z": 0.9668793540075405
+            }
+          ],
+          "resources": {
+            "Texture": {
+              "created": 477,
+              "deleted": 442,
+              "live": 35
+            },
+            "Framebuffer": {
+              "created": 5,
+              "deleted": 0,
+              "live": 5
+            },
+            "Renderbuffer": {
+              "created": 1,
+              "deleted": 0,
+              "live": 1
+            },
+            "Buffer": {
+              "created": 659,
+              "deleted": 477,
+              "live": 182
+            },
+            "Program": {
+              "created": 130,
+              "deleted": 118,
+              "live": 12
+            },
+            "Shader": {
+              "created": 260,
+              "deleted": 260,
+              "live": 0
+            },
+            "VertexArray": {
+              "created": 267,
+              "deleted": 206,
+              "live": 61
+            }
+          },
+          "draws": 95461,
+          "pendingFrames": 0,
+          "renderer": {
+            "geometries": 52,
+            "textures": 31,
+            "calls": 46,
+            "triangles": 1534
+          }
+        }
+      },
+      "pageTurns": {
+        "cycles": 4,
+        "before": {
+          "phase": "BOOK_OPEN",
+          "selectedKey": "england:david_mitchell:slade-house",
+          "selectedTitle": "Голодный дом",
+          "pageIndex": 0,
+          "pageCount": 6,
+          "canvas": {
+            "x": 11,
+            "y": 181.609375,
+            "width": 368,
+            "height": 480
+          },
+          "camera": {
+            "position": [
+              -0.08685,
+              -1.18198,
+              11.80407
+            ],
+            "fov": 35.71309
+          },
+          "qualityProfile": "ECONOMY",
+          "lightExposure": 0.38,
+          "insets": {
+            "top": 0,
+            "right": 0,
+            "bottom": 278.39,
+            "left": 0
+          },
+          "books": [
+            {
+              "key": "germany:thomas_mann:buddenbrooks-editorial",
+              "title": "Будденброки",
+              "sourceIndex": 3,
+              "x": 28.304782434659288,
+              "y": 336.70842547002826,
+              "z": 0.9832123586504184
+            },
+            {
+              "key": "russia:tolstoy:war-and-peace",
+              "title": "Война и мир",
+              "sourceIndex": 4,
+              "x": 51.88138895946462,
+              "y": 336.70842547002826,
+              "z": 0.9832123586504184
+            },
+            {
+              "key": "england:william_shakespeare:hamlet",
+              "title": "Гамлет",
+              "sourceIndex": 5,
+              "x": 75.45799548426996,
+              "y": 336.70842547002826,
+              "z": 0.9832123586504184
+            },
+            {
+              "key": "england:david_mitchell:slade-house",
+              "title": "Голодный дом",
+              "sourceIndex": 6,
+              "x": 146.3105358318481,
+              "y": 300.97580269790836,
+              "z": 0.9822839742043548
+            },
+            {
+              "key": "france:flaubert:madame-bovary",
+              "title": "Госпожа Бовари",
+              "sourceIndex": 7,
+              "x": 276.6869812303965,
+              "y": 336.70842547002826,
+              "z": 0.9832123586504184
+            },
+            {
+              "key": "russia:chekhov:the-lady-with-the-dog",
+              "title": "Дама с собачкой",
+              "sourceIndex": 8,
+              "x": 300.26358775520185,
+              "y": 336.70842547002826,
+              "z": 0.9832123586504184
+            },
+            {
+              "key": "russia:chekhov:the-duel",
+              "title": "Дуэль",
+              "sourceIndex": 9,
+              "x": 323.8401942800072,
+              "y": 336.70842547002826,
+              "z": 0.9832123586504184
+            }
+          ],
+          "resources": {
+            "Texture": {
+              "created": 496,
+              "deleted": 454,
+              "live": 42
+            },
+            "Framebuffer": {
+              "created": 5,
+              "deleted": 0,
+              "live": 5
+            },
+            "Renderbuffer": {
+              "created": 1,
+              "deleted": 0,
+              "live": 1
+            },
+            "Buffer": {
+              "created": 742,
+              "deleted": 477,
+              "live": 265
+            },
+            "Program": {
+              "created": 143,
+              "deleted": 120,
+              "live": 23
+            },
+            "Shader": {
+              "created": 286,
+              "deleted": 286,
+              "live": 0
+            },
+            "VertexArray": {
+              "created": 294,
+              "deleted": 208,
+              "live": 86
+            }
+          },
+          "draws": 96529,
+          "pendingFrames": 1,
+          "renderer": {
+            "geometries": 73,
+            "textures": 38,
+            "calls": 70,
+            "triangles": 2514
+          }
+        },
+        "after": {
+          "phase": "BOOK_OPEN",
+          "selectedKey": "england:david_mitchell:slade-house",
+          "selectedTitle": "Голодный дом",
+          "pageIndex": 0,
+          "pageCount": 6,
+          "canvas": {
+            "x": 11,
+            "y": 181.609375,
+            "width": 368,
+            "height": 480
+          },
+          "camera": {
+            "position": [
+              -0.61969,
+              -1.79375,
+              15.35564
+            ],
+            "fov": 35.00005
+          },
+          "qualityProfile": "ECONOMY",
+          "lightExposure": 0.38,
+          "insets": {
+            "top": 0,
+            "right": 0,
+            "bottom": 278.39,
+            "left": 0
+          },
+          "books": [
+            {
+              "key": "germany:thomas_mann:buddenbrooks-editorial",
+              "title": "Будденброки",
+              "sourceIndex": 3,
+              "x": 92.95413363432588,
+              "y": 324.2157727955986,
+              "z": 0.9874808112349869
+            },
+            {
+              "key": "russia:tolstoy:war-and-peace",
+              "title": "Война и мир",
+              "sourceIndex": 4,
+              "x": 111.26284512463182,
+              "y": 324.2157727955986,
+              "z": 0.9874808112349869
+            },
+            {
+              "key": "england:william_shakespeare:hamlet",
+              "title": "Гамлет",
+              "sourceIndex": 5,
+              "x": 129.57155661493778,
+              "y": 324.2157727955986,
+              "z": 0.9874808112349869
+            },
+            {
+              "key": "england:david_mitchell:slade-house",
+              "title": "Голодный дом",
+              "sourceIndex": 6,
+              "x": 186.13424152112034,
+              "y": 296.393262755286,
+              "z": 0.9869511540712887
+            },
+            {
+              "key": "france:flaubert:madame-bovary",
+              "title": "Госпожа Бовари",
+              "sourceIndex": 7,
+              "x": 285.83846634329353,
+              "y": 324.2157727955986,
+              "z": 0.9874808112349869
+            },
+            {
+              "key": "russia:chekhov:the-lady-with-the-dog",
+              "title": "Дама с собачкой",
+              "sourceIndex": 8,
+              "x": 304.1471778335995,
+              "y": 324.2157727955986,
+              "z": 0.9874808112349869
+            },
+            {
+              "key": "russia:chekhov:the-duel",
+              "title": "Дуэль",
+              "sourceIndex": 9,
+              "x": 322.45588932390547,
+              "y": 324.2157727955986,
+              "z": 0.9874808112349869
+            }
+          ],
+          "resources": {
+            "Texture": {
+              "created": 533,
+              "deleted": 494,
+              "live": 39
+            },
+            "Framebuffer": {
+              "created": 5,
+              "deleted": 0,
+              "live": 5
+            },
+            "Renderbuffer": {
+              "created": 1,
+              "deleted": 0,
+              "live": 1
+            },
+            "Buffer": {
+              "created": 742,
+              "deleted": 477,
+              "live": 265
+            },
+            "Program": {
+              "created": 161,
+              "deleted": 141,
+              "live": 20
+            },
+            "Shader": {
+              "created": 322,
+              "deleted": 322,
+              "live": 0
+            },
+            "VertexArray": {
+              "created": 312,
+              "deleted": 229,
+              "live": 83
+            }
+          },
+          "draws": 111719,
+          "pendingFrames": 1,
+          "renderer": {
+            "geometries": 73,
+            "textures": 35,
+            "calls": 70,
+            "triangles": 2514
+          }
+        }
+      },
+      "idleSettlingMs": 1539,
+      "idleDrawCalls": 0
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "initial": {
+        "phase": "SHELF_IDLE",
+        "selectedKey": null,
+        "selectedTitle": null,
+        "pageIndex": null,
+        "pageCount": null,
+        "canvas": {
+          "x": 58.59375,
+          "y": 351.53125,
+          "width": 1322.8125,
+          "height": 648
+        },
+        "camera": {
+          "position": [
+            0,
+            0,
+            5.25915
+          ],
+          "fov": 38
+        },
+        "qualityProfile": "HIGH",
+        "lightExposure": 0.38,
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "books": [
+          {
+            "key": "england:george_orwell:nineteen-eighty-four",
+            "title": "1984",
+            "sourceIndex": 0,
+            "x": 147.27495468255546,
+            "y": 655.4215222852021,
+            "z": 0.9582363123046621
+          },
+          {
+            "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+            "title": "451° по Фаренгейту",
+            "sourceIndex": 1,
+            "x": 221.52884233655797,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:h_g_wells:ann-veronica",
+            "title": "Анна-Вероника",
+            "sourceIndex": 2,
+            "x": 292.7390077170497,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "germany:thomas_mann:buddenbrooks-editorial",
+            "title": "Будденброки",
+            "sourceIndex": 3,
+            "x": 363.9491730975414,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "russia:tolstoy:war-and-peace",
+            "title": "Война и мир",
+            "sourceIndex": 4,
+            "x": 435.1593384780332,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:william_shakespeare:hamlet",
+            "title": "Гамлет",
+            "sourceIndex": 5,
+            "x": 506.3695038585248,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:david_mitchell:slade-house",
+            "title": "Голодный дом",
+            "sourceIndex": 6,
+            "x": 577.5796692390165,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "france:flaubert:madame-bovary",
+            "title": "Госпожа Бовари",
+            "sourceIndex": 7,
+            "x": 648.7898346195083,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "russia:chekhov:the-lady-with-the-dog",
+            "title": "Дама с собачкой",
+            "sourceIndex": 8,
+            "x": 720,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "russia:chekhov:the-duel",
+            "title": "Дуэль",
+            "sourceIndex": 9,
+            "x": 791.2101653804916,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "russia:chekhov:uncle-vanya",
+            "title": "Дядя Ваня",
+            "sourceIndex": 10,
+            "x": 862.4203307609835,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:h_g_wells:the-history-of-mr-polly",
+            "title": "История мистера Полли",
+            "sourceIndex": 11,
+            "x": 933.6304961414751,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:h_g_wells:when-the-sleeper-wakes",
+            "title": "Когда спящий проснется",
+            "sourceIndex": 12,
+            "x": 1004.8406615219668,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:david_mitchell:the-bone-clocks",
+            "title": "Костяные часы",
+            "sourceIndex": 13,
+            "x": 1076.0508269024585,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:david_mitchell:ghostwritten",
+            "title": "Литературный призрак",
+            "sourceIndex": 14,
+            "x": 1147.2609922829504,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "usa:vladimir_nabokov:lolita-editorial",
+            "title": "Лолита",
+            "sourceIndex": 15,
+            "x": 1218.471157663442,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          },
+          {
+            "key": "england:h_g_wells:men-like-gods",
+            "title": "Люди как боги",
+            "sourceIndex": 16,
+            "x": 1289.6813230439336,
+            "y": 655.5283945560417,
+            "z": 0.9584635807163064
+          }
+        ],
+        "resources": {
+          "Texture": {
+            "created": 65,
+            "deleted": 0,
+            "live": 65
+          },
+          "Framebuffer": {
+            "created": 6,
+            "deleted": 0,
+            "live": 6
+          },
+          "Renderbuffer": {
+            "created": 2,
+            "deleted": 0,
+            "live": 2
+          },
+          "Buffer": {
+            "created": 375,
+            "deleted": 4,
+            "live": 371
+          },
+          "Program": {
+            "created": 14,
+            "deleted": 1,
+            "live": 13
+          },
+          "Shader": {
+            "created": 28,
+            "deleted": 28,
+            "live": 0
+          },
+          "VertexArray": {
+            "created": 157,
+            "deleted": 1,
+            "live": 156
+          }
+        },
+        "draws": 335,
+        "pendingFrames": 0,
+        "renderer": {
+          "geometries": 101,
+          "textures": 61,
+          "calls": 106,
+          "triangles": 6398
+        }
+      },
+      "interactions": [
+        {
+          "key": "england:george_orwell:nineteen-eighty-four",
+          "elapsedMs": 5488,
+          "title": "1984",
+          "framing": {
+            "bounds": {
+              "x": 377.238915584272,
+              "y": 220.7812437099933,
+              "right": 811.9429731398566,
+              "bottom": 725.8016954291766,
+              "points": 248
+            },
+            "free": {
+              "x": 58.59375,
+              "y": 175.53125,
+              "right": 1028.60625,
+              "bottom": 823.53125
+            },
+            "inside": true,
+            "height": 505.02045171918326,
+            "heightOccupancy": 0.7793525489493569
+          },
+          "openFraming": {
+            "bounds": {
+              "x": 233.67355583123026,
+              "y": 237.17480065253363,
+              "right": 795.5949837893243,
+              "bottom": 746.235872060159,
+              "points": 248
+            },
+            "free": {
+              "x": 58.59375,
+              "y": 175.53125,
+              "right": 1028.60625,
+              "bottom": 823.53125
+            },
+            "inside": true,
+            "height": 509.0610714076253,
+            "heightOccupancy": 0.7855880731599156
+          },
+          "turns": [
+            {
+              "before": 0,
+              "after": 1,
+              "cancel": false,
+              "direction": "forward"
+            },
+            {
+              "before": 1,
+              "after": 0,
+              "cancel": false,
+              "direction": "backward"
+            },
+            {
+              "before": 0,
+              "after": 0,
+              "cancel": true,
+              "direction": "forward"
+            }
+          ]
+        },
+        {
+          "key": "russia:chekhov:the-lady-with-the-dog",
+          "elapsedMs": 640,
+          "title": "Дама с собачкой",
+          "framing": {
+            "bounds": {
+              "x": 370.7657441795813,
+              "y": 228.99108973251202,
+              "right": 803.7678930684709,
+              "bottom": 732.1626081316842,
+              "points": 248
+            },
+            "free": {
+              "x": 58.59375,
+              "y": 175.53125,
+              "right": 1028.60625,
+              "bottom": 823.53125
+            },
+            "inside": true,
+            "height": 503.1715183991722,
+            "heightOccupancy": 0.776499256788846
+          },
+          "openFraming": {
+            "bounds": {
+              "x": 274.71613366819236,
+              "y": 257.2932075241672,
+              "right": 798.8022431295414,
+              "bottom": 732.6035402335641,
+              "points": 248
+            },
+            "free": {
+              "x": 58.59375,
+              "y": 175.53125,
+              "right": 1028.60625,
+              "bottom": 823.53125
+            },
+            "inside": true,
+            "height": 475.3103327093969,
+            "heightOccupancy": 0.7335035998601804
+          },
+          "turns": [
+            {
+              "before": 0,
+              "after": 1,
+              "cancel": false,
+              "direction": "forward"
+            },
+            {
+              "before": 1,
+              "after": 0,
+              "cancel": false,
+              "direction": "backward"
+            },
+            {
+              "before": 0,
+              "after": 0,
+              "cancel": true,
+              "direction": "forward"
+            }
+          ]
+        },
+        {
+          "key": "england:h_g_wells:men-like-gods",
+          "elapsedMs": 1616,
+          "title": "Люди как боги",
+          "framing": {
+            "bounds": {
+              "x": 381.17158774753193,
+              "y": 222.79723892502028,
+              "right": 815.2674038352483,
+              "bottom": 727.3592860805675,
+              "points": 248
+            },
+            "free": {
+              "x": 58.59375,
+              "y": 175.53125,
+              "right": 1052.60625,
+              "bottom": 823.53125
+            },
+            "inside": true,
+            "height": 504.5620471555472,
+            "heightOccupancy": 0.7786451344993012
+          },
+          "openFraming": {
+            "bounds": {
+              "x": 205.95248680627995,
+              "y": 196.82983260844307,
+              "right": 795.6260893341466,
+              "bottom": 731.203401639034,
+              "points": 248
+            },
+            "free": {
+              "x": 58.59375,
+              "y": 148.53125,
+              "right": 1028.60625,
+              "bottom": 796.53125
+            },
+            "inside": true,
+            "height": 534.3735690305909,
+            "heightOccupancy": 0.8246505694916527
+          },
+          "turns": [
+            {
+              "before": 0,
+              "after": 1,
+              "cancel": false,
+              "direction": "forward"
+            },
+            {
+              "before": 1,
+              "after": 0,
+              "cancel": false,
+              "direction": "backward"
+            },
+            {
+              "before": 0,
+              "after": 0,
+              "cancel": true,
+              "direction": "forward"
+            }
+          ]
+        }
+      ],
+      "errors": [],
+      "latestIntent": {
+        "intentions": [
+          {
+            "key": "russia:chekhov:uncle-vanya",
+            "phase": "SHELF_IDLE"
+          },
+          {
+            "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+            "phase": "SHELF_SETTLING"
+          }
+        ],
+        "selectedKey": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial"
+      },
+      "openClose": {
+        "cycles": 50,
+        "before": {
+          "phase": "SHELF_IDLE",
+          "selectedKey": null,
+          "selectedTitle": null,
+          "pageIndex": null,
+          "pageCount": null,
+          "canvas": {
+            "x": 58.59375,
+            "y": 259.53125,
+            "width": 1322.8125,
+            "height": 648
+          },
+          "camera": {
+            "position": [
+              0.00016,
+              0.00007,
+              5.25934
+            ],
+            "fov": 37.99956
+          },
+          "qualityProfile": "HIGH",
+          "lightExposure": 0.38,
+          "insets": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "books": [
+            {
+              "key": "russia:chekhov:the-duel",
+              "title": "Дуэль",
+              "sourceIndex": 9,
+              "x": 150.30257599732258,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "russia:chekhov:uncle-vanya",
+              "title": "Дядя Ваня",
+              "sourceIndex": 10,
+              "x": 221.51075353824478,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:h_g_wells:the-history-of-mr-polly",
+              "title": "История мистера Полли",
+              "sourceIndex": 11,
+              "x": 292.71893107916696,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:h_g_wells:when-the-sleeper-wakes",
+              "title": "Когда спящий проснется",
+              "sourceIndex": 12,
+              "x": 363.92710862008926,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:david_mitchell:the-bone-clocks",
+              "title": "Костяные часы",
+              "sourceIndex": 13,
+              "x": 435.13528616101155,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:david_mitchell:ghostwritten",
+              "title": "Литературный призрак",
+              "sourceIndex": 14,
+              "x": 506.34346370193384,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "usa:vladimir_nabokov:lolita-editorial",
+              "title": "Лолита",
+              "sourceIndex": 15,
+              "x": 577.5516412428561,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:h_g_wells:men-like-gods",
+              "title": "Люди как боги",
+              "sourceIndex": 16,
+              "x": 648.7598187837784,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+              "title": "Над пропастью во ржи",
+              "sourceIndex": 17,
+              "x": 719.9678253407836,
+              "y": 563.4361644031842,
+              "z": 0.9582380487024682
+            },
+            {
+              "key": "england:aldous_huxley:brave-new-world-editorial",
+              "title": "О дивный новый мир",
+              "sourceIndex": 18,
+              "x": 791.1761738656229,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:h_g_wells:the-world-set-free",
+              "title": "Освобожденный мир",
+              "sourceIndex": 19,
+              "x": 862.3843514065453,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "france:victor_hugo:les-miserables",
+              "title": "Отверженные",
+              "sourceIndex": 20,
+              "x": 933.5925289474675,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:h_g_wells:the-first-men-in-the-moon",
+              "title": "Первые люди на Луне",
+              "sourceIndex": 21,
+              "x": 1004.8007064883898,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:h_g_wells:the-food-of-the-gods",
+              "title": "Пища богов",
+              "sourceIndex": 22,
+              "x": 1076.008884029312,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:charles_dickens:a-tale-of-two-cities",
+              "title": "Повесть о двух городах",
+              "sourceIndex": 23,
+              "x": 1147.2170615702344,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "russia:dostoevsky:crime-and-punishment",
+              "title": "Преступление и наказание",
+              "sourceIndex": 24,
+              "x": 1218.4252391111565,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            },
+            {
+              "key": "england:george_orwell:animal-farm-editorial",
+              "title": "Скотный двор",
+              "sourceIndex": 25,
+              "x": 1289.633416652079,
+              "y": 563.5429545458867,
+              "z": 0.9584652987075043
+            }
+          ],
+          "resources": {
+            "Texture": {
+              "created": 706,
+              "deleted": 643,
+              "live": 63
+            },
+            "Framebuffer": {
+              "created": 6,
+              "deleted": 0,
+              "live": 6
+            },
+            "Renderbuffer": {
+              "created": 2,
+              "deleted": 0,
+              "live": 2
+            },
+            "Buffer": {
+              "created": 1150,
+              "deleted": 781,
+              "live": 369
+            },
+            "Program": {
+              "created": 122,
+              "deleted": 108,
+              "live": 14
+            },
+            "Shader": {
+              "created": 244,
+              "deleted": 244,
+              "live": 0
+            },
+            "VertexArray": {
+              "created": 509,
+              "deleted": 352,
+              "live": 157
+            }
+          },
+          "draws": 142949,
+          "pendingFrames": 0,
+          "renderer": {
+            "geometries": 102,
+            "textures": 59,
+            "calls": 105,
+            "triangles": 6350
+          }
+        },
+        "after": {
+          "phase": "SHELF_IDLE",
+          "selectedKey": null,
+          "selectedTitle": null,
+          "pageIndex": null,
+          "pageCount": null,
+          "canvas": {
+            "x": 58.59375,
+            "y": 175.53125,
+            "width": 1322.8125,
+            "height": 648
+          },
+          "camera": {
+            "position": [
+              0.00014,
+              0.00009,
+              5.25933
+            ],
+            "fov": 37.99953
+          },
+          "qualityProfile": "HIGH",
+          "lightExposure": 0.38,
+          "insets": {
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "books": [
+            {
+              "key": "russia:chekhov:the-duel",
+              "title": "Дуэль",
+              "sourceIndex": 9,
+              "x": 150.30488094803252,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "russia:chekhov:uncle-vanya",
+              "title": "Дядя Ваня",
+              "sourceIndex": 10,
+              "x": 221.51327041712483,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:h_g_wells:the-history-of-mr-polly",
+              "title": "История мистера Полли",
+              "sourceIndex": 11,
+              "x": 292.721659886217,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:h_g_wells:when-the-sleeper-wakes",
+              "title": "Когда спящий проснется",
+              "sourceIndex": 12,
+              "x": 363.9300493553092,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:david_mitchell:the-bone-clocks",
+              "title": "Костяные часы",
+              "sourceIndex": 13,
+              "x": 435.13843882440153,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:david_mitchell:ghostwritten",
+              "title": "Литературный призрак",
+              "sourceIndex": 14,
+              "x": 506.3468282934938,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "usa:vladimir_nabokov:lolita-editorial",
+              "title": "Лолита",
+              "sourceIndex": 15,
+              "x": 577.555217762586,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:h_g_wells:men-like-gods",
+              "title": "Люди как боги",
+              "sourceIndex": 16,
+              "x": 648.7636072316783,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+              "title": "Над пропастью во ржи",
+              "sourceIndex": 17,
+              "x": 719.9718470890781,
+              "y": 479.4401262128443,
+              "z": 0.9582379573166254
+            },
+            {
+              "key": "england:aldous_huxley:brave-new-world-editorial",
+              "title": "О дивный новый мир",
+              "sourceIndex": 18,
+              "x": 791.1803861698629,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:h_g_wells:the-world-set-free",
+              "title": "Освобожденный мир",
+              "sourceIndex": 19,
+              "x": 862.3887756389552,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "france:victor_hugo:les-miserables",
+              "title": "Отверженные",
+              "sourceIndex": 20,
+              "x": 933.5971651080473,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:h_g_wells:the-first-men-in-the-moon",
+              "title": "Первые люди на Луне",
+              "sourceIndex": 21,
+              "x": 1004.8055545771396,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:h_g_wells:the-food-of-the-gods",
+              "title": "Пища богов",
+              "sourceIndex": 22,
+              "x": 1076.0139440462317,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:charles_dickens:a-tale-of-two-cities",
+              "title": "Повесть о двух городах",
+              "sourceIndex": 23,
+              "x": 1147.2223335153242,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "russia:dostoevsky:crime-and-punishment",
+              "title": "Преступление и наказание",
+              "sourceIndex": 24,
+              "x": 1218.4307229844162,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            },
+            {
+              "key": "england:george_orwell:animal-farm-editorial",
+              "title": "Скотный двор",
+              "sourceIndex": 25,
+              "x": 1289.6391124535085,
+              "y": 479.5468955284916,
+              "z": 0.9584652082903746
+            }
+          ],
+          "resources": {
+            "Texture": {
+              "created": 1880,
+              "deleted": 1817,
+              "live": 63
+            },
+            "Framebuffer": {
+              "created": 6,
+              "deleted": 0,
+              "live": 6
+            },
+            "Renderbuffer": {
+              "created": 2,
+              "deleted": 0,
+              "live": 2
+            },
+            "Buffer": {
+              "created": 6090,
+              "deleted": 5721,
+              "live": 369
+            },
+            "Program": {
+              "created": 794,
+              "deleted": 780,
+              "live": 14
+            },
+            "Shader": {
+              "created": 1588,
+              "deleted": 1588,
+              "live": 0
+            },
+            "VertexArray": {
+              "created": 2167,
+              "deleted": 2010,
+              "live": 157
+            }
+          },
+          "draws": 1225556,
+          "pendingFrames": 0,
+          "renderer": {
+            "geometries": 102,
+            "textures": 59,
+            "calls": 105,
+            "triangles": 6350
+          }
+        }
+      },
+      "pageTurns": {
+        "cycles": 100,
+        "before": {
+          "phase": "BOOK_OPEN",
+          "selectedKey": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+          "selectedTitle": "Над пропастью во ржи",
+          "pageIndex": 0,
+          "pageCount": 7,
+          "canvas": {
+            "x": 58.59375,
+            "y": 175.53125,
+            "width": 1322.8125,
+            "height": 648
+          },
+          "camera": {
+            "position": [
+              0.51989,
+              0.47737,
+              6.71711
+            ],
+            "fov": 35.39236
+          },
+          "qualityProfile": "HIGH",
+          "lightExposure": 0.38,
+          "insets": {
+            "top": 0,
+            "right": 352.8,
+            "bottom": 0,
+            "left": 0
+          },
+          "books": [
+            {
+              "key": "russia:chekhov:the-duel",
+              "title": "Дуэль",
+              "sourceIndex": 9,
+              "x": -88.10017278370287,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "russia:chekhov:uncle-vanya",
+              "title": "Дядя Ваня",
+              "sourceIndex": 10,
+              "x": -29.434597481539086,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:h_g_wells:the-history-of-mr-polly",
+              "title": "История мистера Полли",
+              "sourceIndex": 11,
+              "x": 29.230977820624716,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:h_g_wells:when-the-sleeper-wakes",
+              "title": "Когда спящий проснется",
+              "sourceIndex": 12,
+              "x": 87.89655312278867,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:david_mitchell:the-bone-clocks",
+              "title": "Костяные часы",
+              "sourceIndex": 13,
+              "x": 146.56212842495256,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:david_mitchell:ghostwritten",
+              "title": "Литературный призрак",
+              "sourceIndex": 14,
+              "x": 205.22770372711648,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "usa:vladimir_nabokov:lolita-editorial",
+              "title": "Лолита",
+              "sourceIndex": 15,
+              "x": 263.89327902928045,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:h_g_wells:men-like-gods",
+              "title": "Люди как боги",
+              "sourceIndex": 16,
+              "x": 322.55885433144425,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+              "title": "Над пропастью во ржи",
+              "sourceIndex": 17,
+              "x": 483.4508750257965,
+              "y": 486.5157604565977,
+              "z": 0.9652946765933185
+            },
+            {
+              "key": "england:aldous_huxley:brave-new-world-editorial",
+              "title": "О дивный новый мир",
+              "sourceIndex": 18,
+              "x": 823.2761311730875,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:h_g_wells:the-world-set-free",
+              "title": "Освобожденный мир",
+              "sourceIndex": 19,
+              "x": 881.9417064752513,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "france:victor_hugo:les-miserables",
+              "title": "Отверженные",
+              "sourceIndex": 20,
+              "x": 940.6072817774152,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:h_g_wells:the-first-men-in-the-moon",
+              "title": "Первые люди на Луне",
+              "sourceIndex": 21,
+              "x": 999.2728570795791,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:h_g_wells:the-food-of-the-gods",
+              "title": "Пища богов",
+              "sourceIndex": 22,
+              "x": 1057.938432381743,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:charles_dickens:a-tale-of-two-cities",
+              "title": "Повесть о двух городах",
+              "sourceIndex": 23,
+              "x": 1116.604007683907,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "russia:dostoevsky:crime-and-punishment",
+              "title": "Преступление и наказание",
+              "sourceIndex": 24,
+              "x": 1175.2695829860706,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            },
+            {
+              "key": "england:george_orwell:animal-farm-editorial",
+              "title": "Скотный двор",
+              "sourceIndex": 25,
+              "x": 1233.9351582882346,
+              "y": 561.7184077297123,
+              "z": 0.9685278488328325
+            }
+          ],
+          "resources": {
+            "Texture": {
+              "created": 1902,
+              "deleted": 1832,
+              "live": 70
+            },
+            "Framebuffer": {
+              "created": 6,
+              "deleted": 0,
+              "live": 6
+            },
+            "Renderbuffer": {
+              "created": 2,
+              "deleted": 0,
+              "live": 2
+            },
+            "Buffer": {
+              "created": 6185,
+              "deleted": 5721,
+              "live": 464
+            },
+            "Program": {
+              "created": 807,
+              "deleted": 782,
+              "live": 25
+            },
+            "Shader": {
+              "created": 1614,
+              "deleted": 1614,
+              "live": 0
+            },
+            "VertexArray": {
+              "created": 2199,
+              "deleted": 2012,
+              "live": 187
+            }
+          },
+          "draws": 1227202,
+          "pendingFrames": 1,
+          "renderer": {
+            "geometries": 126,
+            "textures": 66,
+            "calls": 132,
+            "triangles": 8998
+          }
+        },
+        "after": {
+          "phase": "BOOK_OPEN",
+          "selectedKey": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+          "selectedTitle": "Над пропастью во ржи",
+          "pageIndex": 0,
+          "pageCount": 7,
+          "canvas": {
+            "x": 58.59375,
+            "y": 175.53125,
+            "width": 1322.8125,
+            "height": 648
+          },
+          "camera": {
+            "position": [
+              0.19914,
+              0.54919,
+              7.8113
+            ],
+            "fov": 35.00001
+          },
+          "qualityProfile": "HIGH",
+          "lightExposure": 0.38,
+          "insets": {
+            "top": 0,
+            "right": 352.8,
+            "bottom": 0,
+            "left": 0
+          },
+          "books": [
+            {
+              "key": "russia:chekhov:the-duel",
+              "title": "Дуэль",
+              "sourceIndex": 9,
+              "x": 70.97564597850257,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "russia:chekhov:uncle-vanya",
+              "title": "Дядя Ваня",
+              "sourceIndex": 10,
+              "x": 121.39036416373625,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:h_g_wells:the-history-of-mr-polly",
+              "title": "История мистера Полли",
+              "sourceIndex": 11,
+              "x": 171.80508234896985,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:h_g_wells:when-the-sleeper-wakes",
+              "title": "Когда спящий проснется",
+              "sourceIndex": 12,
+              "x": 222.21980053420336,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:david_mitchell:the-bone-clocks",
+              "title": "Костяные часы",
+              "sourceIndex": 13,
+              "x": 272.63451871943704,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:david_mitchell:ghostwritten",
+              "title": "Литературный призрак",
+              "sourceIndex": 14,
+              "x": 323.0492369046707,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "usa:vladimir_nabokov:lolita-editorial",
+              "title": "Лолита",
+              "sourceIndex": 15,
+              "x": 373.4639550899043,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:h_g_wells:men-like-gods",
+              "title": "Люди как боги",
+              "sourceIndex": 16,
+              "x": 423.8786732751379,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+              "title": "Над пропастью во ржи",
+              "sourceIndex": 17,
+              "x": 568.9331271917858,
+              "y": 499.52971588917603,
+              "z": 0.9711273271206196
+            },
+            {
+              "key": "england:aldous_huxley:brave-new-world-editorial",
+              "title": "О дивный новый мир",
+              "sourceIndex": 18,
+              "x": 854.1739575611838,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:h_g_wells:the-world-set-free",
+              "title": "Освобожденный мир",
+              "sourceIndex": 19,
+              "x": 904.5886757464174,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "france:victor_hugo:les-miserables",
+              "title": "Отверженные",
+              "sourceIndex": 20,
+              "x": 955.003393931651,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:h_g_wells:the-first-men-in-the-moon",
+              "title": "Первые люди на Луне",
+              "sourceIndex": 21,
+              "x": 1005.4181121168847,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:h_g_wells:the-food-of-the-gods",
+              "title": "Пища богов",
+              "sourceIndex": 22,
+              "x": 1055.8328303021185,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:charles_dickens:a-tale-of-two-cities",
+              "title": "Повесть о двух городах",
+              "sourceIndex": 23,
+              "x": 1106.2475484873519,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "russia:dostoevsky:crime-and-punishment",
+              "title": "Преступление и наказание",
+              "sourceIndex": 24,
+              "x": 1156.6622666725857,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            },
+            {
+              "key": "england:george_orwell:animal-farm-editorial",
+              "title": "Скотный двор",
+              "sourceIndex": 25,
+              "x": 1207.076984857819,
+              "y": 563.143011970857,
+              "z": 0.9734244559816944
+            }
+          ],
+          "resources": {
+            "Texture": {
+              "created": 3055,
+              "deleted": 2988,
+              "live": 67
+            },
+            "Framebuffer": {
+              "created": 6,
+              "deleted": 0,
+              "live": 6
+            },
+            "Renderbuffer": {
+              "created": 2,
+              "deleted": 0,
+              "live": 2
+            },
+            "Buffer": {
+              "created": 6185,
+              "deleted": 5721,
+              "live": 464
+            },
+            "Program": {
+              "created": 1388,
+              "deleted": 1363,
+              "live": 25
+            },
+            "Shader": {
+              "created": 2776,
+              "deleted": 2776,
+              "live": 0
+            },
+            "VertexArray": {
+              "created": 2780,
+              "deleted": 2593,
+              "live": 187
+            }
+          },
+          "draws": 1873947,
+          "pendingFrames": 1,
+          "renderer": {
+            "geometries": 126,
+            "textures": 63,
+            "calls": 132,
+            "triangles": 8998
+          }
+        }
+      },
+      "idleSettlingMs": 1401,
+      "idleDrawCalls": 0
+    }
+  ],
+  "issues": [
+    "The latest-intent probe did not reach both moving/settling click states"
+  ]
+}

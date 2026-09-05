@@ -270,10 +270,11 @@
   min-height: 44px;
   padding: 8px 10px;
   color: rgba(255, 245, 232, 0.72);
-  font-size: var(--type-caption);
-  font-weight: 700;
-  letter-spacing: 0.055em;
-  line-height: 1.15;
+  font-family: var(--font-ui);
+  font-size: var(--type-action);
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.4;
   text-align: center;
   border: 0;
   border-radius: 8px;
@@ -312,8 +313,8 @@
   padding: 0 34px 0 14px;
   color: rgba(255, 245, 232, 0.9);
   font: inherit;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: var(--type-action);
+  font-weight: 400;
   line-height: 1.2;
   border: 1px solid rgba(255, 238, 220, 0.18);
   border-radius: 10px;
@@ -390,15 +391,16 @@
 .book-shelf-controls .book-filter-copy strong {
   display: block;
   max-width: 100%;
-  overflow: hidden;
+  overflow: visible;
   padding: 0;
-  font-size: var(--type-caption);
-  font-weight: 700;
+  font-family: var(--font-ui);
+  font-size: var(--type-action);
+  font-weight: 600;
   letter-spacing: 0;
-  line-height: 1.1;
+  line-height: 1.4;
   text-transform: none;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .book-shelf-controls .book-filter-copy small {
@@ -619,12 +621,13 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  min-height: 40px;
+  min-height: 44px;
   padding: 5px 6px 5px 10px;
   color: rgba(255, 245, 232, 0.72);
-  font-family: var(--sans);
-  font-size: var(--type-caption);
-  font-weight: 700;
+  font-family: var(--font-ui);
+  font-size: var(--type-card-meta);
+  font-weight: 500;
+  line-height: 1.4;
   border: 1px solid rgba(255, 238, 220, 0.18);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.055);
@@ -632,7 +635,7 @@
 
 .book-shelf-quality-control select {
   width: clamp(134px, 11vw, 176px);
-  min-height: 30px;
+  min-height: 44px;
   padding: 4px 24px 4px 8px;
   color: var(--book-shelf-paper);
   font: inherit;
@@ -652,12 +655,13 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 40px;
+  min-height: 44px;
   padding: 8px 12px;
   color: var(--book-shelf-paper);
-  font-family: var(--sans);
-  font-size: 0.76rem;
-  font-weight: 700;
+  font-family: var(--font-ui);
+  font-size: var(--type-action);
+  font-weight: 600;
+  line-height: 1.4;
   border: 1px solid color-mix(in srgb, var(--book-shelf-accent) 72%, transparent);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.06);
@@ -717,11 +721,12 @@
 }
 
 .book-collection-switcher__label {
-  white-space: nowrap;
+  white-space: normal;
   color: rgba(255, 245, 232, 0.72);
-  font-size: var(--type-caption);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-family: var(--font-ui);
+  font-size: var(--type-card-meta);
+  font-weight: 600;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
@@ -733,10 +738,10 @@
 
 .book-collection-switcher select {
   width: 100%;
-  min-height: 42px;
+  min-height: 44px;
   padding: 8px 36px 8px 12px;
   color: var(--book-shelf-paper);
-  font: 700 0.9rem/1.2 var(--sans);
+  font: 400 var(--type-action)/1.4 var(--font-ui);
   appearance: none;
   background: color-mix(in srgb, var(--book-shelf-base) 80%, transparent);
   border: 1px solid rgba(255, 239, 224, 0.22);
@@ -1010,12 +1015,12 @@
 }
 
 .book-shelf-scene-hint small {
-  overflow: hidden;
+  overflow: visible;
   color: rgba(255, 245, 232, 0.62);
   font-size: var(--type-caption);
   line-height: 1.35;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .book-shelf-scene__loading,
@@ -1156,15 +1161,13 @@
 .book-shelf-frame__detail .book-detail-copy h3 {
   margin-top: 8px;
   color: var(--book-shelf-paper);
-  font-size: clamp(1.72rem, 2.15vw, 2.42rem);
-  line-height: 1.04;
   text-wrap: balance;
 }
 
 .book-shelf-frame__detail .book-original-title,
 .book-shelf-frame__detail .book-detail-copy > p,
 .book-shelf-frame__detail .cover-rights-note {
-  color: rgba(255, 245, 232, 0.64) !important;
+  color: #d9ccbc !important;
 }
 
 .book-shelf-frame__detail .book-detail-copy dl {
@@ -1190,7 +1193,7 @@
 }
 
 .book-shelf-frame__detail .book-detail-copy dt {
-  color: rgba(255, 245, 232, 0.48);
+  color: #cdbda8;
 }
 
 .book-shelf-frame__detail .book-detail-copy dd {
@@ -1285,12 +1288,16 @@
   display: contents;
 }
 
+@media (orientation: landscape) and (max-height: 520px) {
+  .book-shelf-frame__workspace:has(> .book-shelf-frame__detail) .book-shelf-scene__accessible-actions {
+    display: none;
+  }
+}
+
 .book-shelf-scene__accessible-actions button {
-  min-height: 42px;
+  min-height: 44px;
   padding: 9px 14px;
   color: var(--book-shelf-paper);
-  font-size: 0.76rem;
-  font-weight: 700;
   border: 1px solid rgba(255, 238, 220, 0.24);
   border-radius: 9px;
   background: rgba(8, 5, 12, 0.8);
@@ -1350,7 +1357,7 @@
 .book-shelf-frame__detail .book-detail-actions button,
 .book-shelf-frame__detail .book-detail-actions a {
   width: 100%;
-  min-height: 40px;
+  min-height: 44px;
   justify-content: center;
 }
 
@@ -1789,7 +1796,6 @@
   .book-detail-mobile-handle strong {
     color: var(--book-shelf-paper);
     font-family: var(--serif);
-    font-size: 1rem;
   }
 
   .book-shelf-frame__detail > .book-detail-card {
@@ -1835,7 +1841,6 @@
   }
 
   .book-shelf-frame__detail .book-detail-copy h3 {
-    font-size: clamp(1.5rem, 8vw, 2rem);
   }
 
   .book-shelf-scene-hint {
@@ -2394,23 +2399,23 @@
 
   .book-shelf-controls__views {
     align-items: stretch;
-    min-height: 62px;
+    min-height: 44px;
   }
 
   .book-shelf-controls__views button {
-    min-height: 56px;
+    min-height: 44px;
     margin: 0;
-    padding: 6px 7px;
-    overflow: hidden;
-    font-size: var(--type-caption);
-    line-height: 1.15;
+    padding: 8px;
+    overflow: visible;
+    font-size: var(--type-action);
+    line-height: 1.4;
     text-align: center;
     white-space: normal;
   }
 
   .book-shelf-controls__views .book-shelf-controls__random {
     gap: 4px;
-    font-size: var(--type-caption);
+    font-size: var(--type-action);
   }
 
   .book-shelf-controls__views .book-shelf-controls__random > span {
@@ -2439,7 +2444,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 6px;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .book-shelf-controls .book-archive-filters > button {
@@ -2448,11 +2453,11 @@
     justify-content: center;
     width: 100%;
     min-width: 0;
-    height: 50px;
-    min-height: 50px;
+    height: auto;
+    min-height: 44px;
     margin: 0;
     padding: 6px 4px;
-    line-height: 1;
+    line-height: 1.4;
     text-align: center;
   }
 
@@ -2468,11 +2473,11 @@
   .book-shelf-controls .book-filter-copy strong {
     width: 100%;
     overflow: visible;
-    font-size: clamp(0.62rem, 2.85vw, 0.7rem);
-    line-height: 1.15;
+    font-size: var(--type-action);
+    line-height: 1.4;
     text-align: center;
     text-overflow: clip;
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .book-shelf-controls__advanced {
@@ -2583,6 +2588,29 @@
 
   .book-shelf-filter-drawer__author-context button {
     grid-column: 1 / -1;
+  }
+}
+
+/* Keep full action labels within the narrow shelf controls. */
+@media (max-width: 480px) {
+  .book-shelf-controls__views {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .book-shelf-controls__views .book-shelf-controls__random {
+    grid-column: 1 / -1;
+  }
+  .book-shelf-controls .book-archive-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .book-shelf-controls .book-archive-filters > button:last-child {
+    grid-column: 1 / -1;
+  }
+  .book-shelf-controls__advanced {
+    align-self: start;
+    width: 44px;
+    height: 44px;
+    min-height: 44px;
   }
 }
 }

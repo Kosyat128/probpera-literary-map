@@ -1,0 +1,322 @@
+{
+  "sourceHead": "working-tree-integration",
+  "capturedAt": "2026-09-05T02:03:01.582Z",
+  "url": "http://127.0.0.1:4185/#books",
+  "text": "КНИГИ, АВТОРЫ, СТРАНЫ\nКнижный архив\n\nПроизведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.\n\n46\nПРОИЗВЕДЕНИЙ ИЗ ЕДИНОЙ БАЗЫ СТРАН\nПОИСК ПО КНИГЕ, АВТОРУ ИЛИ СТРАНЕ\nПолка\nКаталог\n✦\nСлучайное произведение\nПОИСК ПО КНИГЕ, АВТОРУ ИЛИ СТРАНЕ\nТекущая полка\nВесь книжный архив\nВо всём журнале\n46 результатов\nПроверено\nКлассика\nДля детей\nТЕКУЩАЯ ПОЛКА\nВесь архив - 46 произведений\nВыбор редакции - 46 произведений\nКлассика архива - 31 произведений\nМоя библиотека - Пока пусто\nИзбранное - Пока пусто\nХочу прочитать - Пока пусто\nЧитаю сейчас - Пока пусто\nПрочитано - Пока пусто\nПока нет полок\n⌄\nВесь архив46 произведений\n＋\nНовая полка\nКачество\nАвто · Высокое\nВысокое\nСбалансированное\nЭкономичное\nВыберите книгу\nНажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.\nНазад\n|\n13\n1\nиз 46\n1 / 46\n13\n|\nИзбранное\n＋\nДобавить на полку\n\n1984. Джордж Оруэлл. 1 из 46. Весь архив. 46 результатов.",
+  "attributes": [
+    {
+      "tag": "DIV",
+      "attributes": {
+        "class": "book-shelf-frame is-shelf",
+        "data-book-shelf-mode": "shelf",
+        "style": "--book-scene-base: #322F28; --book-scene-secondary: #655749; --book-scene-accent: #F48C2F; --book-scene-warm: #D7A968; --book-scene-paper: #F0E8D3; --book-scene-ink: #201C17; --book-scene-shelf: #433A2F; --book-scene-light: #F3E2BF; --book-scene-gradient-angle: 241deg; --book-scene-glow-position: 72% 73%; --book-scene-grain-strength: 0.062; --book-scene-darkness: 0.42; --book-scene-theme-intensity: 0.72; --book-scene-ambient-tint: currentColor; --book-scene-material-color: #3B251D; --book-scene-material-roughness: 0.72;"
+      }
+    },
+    {
+      "tag": "DIV",
+      "attributes": {
+        "class": "book-shelf-scene",
+        "role": "region",
+        "aria-label": "Книжный архив",
+        "tabindex": "-1",
+        "data-book-shelf-phase": "SHELF_IDLE"
+      }
+    },
+    {
+      "tag": "CANVAS",
+      "attributes": {
+        "style": "display: block; width: 1582px; height: 774px;",
+        "data-engine": "three.js r178",
+        "width": "1582",
+        "height": "774"
+      }
+    }
+  ],
+  "buttons": [
+    {
+      "text": "Полка",
+      "label": null,
+      "className": "is-active"
+    },
+    {
+      "text": "Каталог",
+      "label": null,
+      "className": ""
+    },
+    {
+      "text": "✦Случайное произведение",
+      "label": "Выбрать случайное произведение из всего архива",
+      "className": "book-shelf-controls__random"
+    },
+    {
+      "text": "ПровереноКарточки с подтверждёнными данными",
+      "label": null,
+      "className": ""
+    },
+    {
+      "text": "КлассикаПервое издание - не позднее 1945 года",
+      "label": null,
+      "className": ""
+    },
+    {
+      "text": "Для детейТолько подтверждённая аудитория",
+      "label": null,
+      "className": ""
+    },
+    {
+      "text": "",
+      "label": "Расширенные фильтры",
+      "className": "book-shelf-controls__advanced"
+    },
+    {
+      "text": "＋Новая полка",
+      "label": null,
+      "className": ""
+    },
+    {
+      "text": "Выберите книгуНажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.",
+      "label": "Выберите книгу. Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.",
+      "className": "book-shelf-scene-hint"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «1984»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «451° по Фаренгейту»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Анна-Вероника»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Будденброки»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Война и мир»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Гамлет»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Голодный дом»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Госпожа Бовари»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Дама с собачкой»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Дуэль»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Дядя Ваня»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «История мистера Полли»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "",
+      "label": "Добавить на полку: «Когда спящий проснется»",
+      "className": "archive-book-save"
+    },
+    {
+      "text": "О книге",
+      "label": null,
+      "className": "archive-book-detail"
+    },
+    {
+      "text": "Показать ещё 1313 из 46",
+      "label": null,
+      "className": "book-archive-more"
+    },
+    {
+      "text": "Назад",
+      "label": "Предыдущая книга",
+      "className": "book-shelf-navigation__previous"
+    },
+    {
+      "text": "|",
+      "label": "Первая книга",
+      "className": "is-edge"
+    },
+    {
+      "text": "13",
+      "label": "Предыдущие 13 произведений",
+      "className": "book-shelf-navigation__batch"
+    },
+    {
+      "text": "",
+      "label": "Предыдущая книга",
+      "className": "book-shelf-navigation__single"
+    },
+    {
+      "text": "",
+      "label": "Следующая книга",
+      "className": "book-shelf-navigation__single"
+    },
+    {
+      "text": "13",
+      "label": "Следующие 13 произведений",
+      "className": "book-shelf-navigation__batch"
+    },
+    {
+      "text": "|",
+      "label": "Последняя книга",
+      "className": "is-edge"
+    },
+    {
+      "text": "Избранное",
+      "label": null,
+      "className": ""
+    },
+    {
+      "text": "＋Добавить на полку",
+      "label": null,
+      "className": "is-primary"
+    }
+  ],
+  "overflow": 0,
+  "longTasks": [
+    {
+      "start": 52.5,
+      "duration": 60
+    },
+    {
+      "start": 127.39999999850988,
+      "duration": 158
+    },
+    {
+      "start": 376.5999999977648,
+      "duration": 90
+    },
+    {
+      "start": 470.5,
+      "duration": 103
+    },
+    {
+      "start": 618.5,
+      "duration": 346
+    },
+    {
+      "start": 966.5,
+      "duration": 120
+    },
+    {
+      "start": 1287,
+      "duration": 114
+    },
+    {
+      "start": 1570.699999999255,
+      "duration": 281
+    },
+    {
+      "start": 1878.300000000745,
+      "duration": 2121
+    }
+  ],
+  "resources": [
+    {
+      "name": "http://127.0.0.1:4185/assets/BookShelfSceneCanvas-CI9rRrkv.js",
+      "duration": 11,
+      "transferSize": 0
+    },
+    {
+      "name": "http://127.0.0.1:4185/assets/completeShelfRenderer-BSBMxAmq.js",
+      "duration": 11.199999999254942,
+      "transferSize": 0
+    }
+  ],
+  "errors": [],
+  "extractionAndPanelMs": 4764,
+  "selectedTitle": "1984",
+  "mobile": {
+    "width": 368,
+    "height": 480,
+    "overflow": 0,
+    "position": "half"
+  }
+}

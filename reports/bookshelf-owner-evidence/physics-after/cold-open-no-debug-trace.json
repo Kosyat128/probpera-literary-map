@@ -1,0 +1,549 @@
+{
+  "calls": [
+    {
+      "method": "getProgramInfoLog",
+      "start": 2433.599999997765,
+      "duration": 5.600000001490116
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 2444,
+      "duration": 26.899999998509884
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 2474.599999997765,
+      "duration": 30.700000002980232
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 2506.699999999255,
+      "duration": 4.899999998509884
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 2516.699999999255,
+      "duration": 69.10000000149012
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 2643.800000000745,
+      "duration": 139.39999999850988
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 2790.800000000745,
+      "duration": 868.3999999985099
+    },
+    {
+      "method": "getShaderInfoLog",
+      "start": 3659.300000000745,
+      "duration": 3.2999999970197678
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 3667.699999999255,
+      "duration": 682
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 4354.699999999255,
+      "duration": 707.8999999985099
+    },
+    {
+      "method": "getShaderInfoLog",
+      "start": 5062.699999999255,
+      "duration": 5.899999998509884
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 5075.39999999851,
+      "duration": 197.90000000223517
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 5274.300000000745,
+      "duration": 15.899999998509884
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 5293.699999999255,
+      "duration": 10.199999999254942
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 5306.39999999851,
+      "duration": 9.699999999254942
+    },
+    {
+      "method": "getProgramInfoLog",
+      "start": 5318,
+      "duration": 599.6999999992549
+    },
+    {
+      "method": "getShaderInfoLog",
+      "start": 5917.699999999255,
+      "duration": 4.300000000745058
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 6420.599999997765,
+      "duration": 643.8000000007451
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 7066.89999999851,
+      "duration": 542.6000000014901
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 7612.5,
+      "duration": 648.3000000007451
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 8263.89999999851,
+      "duration": 549.6000000014901
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 8817.199999999255,
+      "duration": 586.6999999992549
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 9406.199999999255,
+      "duration": 584
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 9993.099999997765,
+      "duration": 1088.4000000022352
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 11083.800000000745,
+      "duration": 470.29999999701977
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 11557.5,
+      "duration": 565.8999999985099
+    },
+    {
+      "method": "getProgramParameter",
+      "start": 12125.89999999851,
+      "duration": 536.3000000007451
+    }
+  ],
+  "longTasks": [
+    {
+      "start": 134,
+      "duration": 79
+    },
+    {
+      "start": 214.39999999850988,
+      "duration": 184
+    },
+    {
+      "start": 504.5,
+      "duration": 148
+    },
+    {
+      "start": 654.3000000007451,
+      "duration": 139
+    },
+    {
+      "start": 845.8999999985099,
+      "duration": 464
+    },
+    {
+      "start": 1313.8999999985099,
+      "duration": 52
+    },
+    {
+      "start": 1395.699999999255,
+      "duration": 88
+    },
+    {
+      "start": 1546.3999999985099,
+      "duration": 343
+    },
+    {
+      "start": 1906.3999999985099,
+      "duration": 69
+    },
+    {
+      "start": 2122.89999999851,
+      "duration": 74
+    },
+    {
+      "start": 2199.89999999851,
+      "duration": 397
+    },
+    {
+      "start": 2633.5,
+      "duration": 3294
+    },
+    {
+      "start": 6241.599999997765,
+      "duration": 70
+    },
+    {
+      "start": 6317.199999999255,
+      "duration": 64
+    },
+    {
+      "start": 6411.39999999851,
+      "duration": 6256
+    }
+  ],
+  "phases": [
+    {
+      "at": 6282.699999999255,
+      "phase": "INSPECTION_ENTERING"
+    },
+    {
+      "at": 12715.599999997765,
+      "phase": "INSPECTION_CLOSED"
+    }
+  ],
+  "previousShaderCheck": true,
+  "fontStatus": "loaded",
+  "clickedAt": 6242.199999999255,
+  "finishedAt": 12774.5,
+  "final": {
+    "phase": "INSPECTION_CLOSED",
+    "selectedKey": "england:george_orwell:nineteen-eighty-four",
+    "selectedTitle": "1984",
+    "pageIndex": 0,
+    "pageCount": 10,
+    "canvas": {
+      "x": 58.59375,
+      "y": 175.53125,
+      "width": 1322.8125,
+      "height": 648
+    },
+    "camera": {
+      "position": [
+        0.34667,
+        0.25674,
+        5.59722
+      ],
+      "fov": 36.59756
+    },
+    "qualityProfile": "HIGH",
+    "lightExposure": 0.38,
+    "insets": {
+      "top": 0,
+      "right": 328.8,
+      "bottom": 0,
+      "left": 0
+    },
+    "books": [
+      {
+        "key": "england:george_orwell:nineteen-eighty-four",
+        "title": "1984",
+        "sourceIndex": 0,
+        "x": 472.6163266250453,
+        "y": 435.63205293744574,
+        "z": 0.9563775352886499
+      },
+      {
+        "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+        "title": "451° по Фаренгейту",
+        "sourceIndex": 1,
+        "x": 851.8453939810883,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "england:h_g_wells:ann-veronica",
+        "title": "Анна-Вероника",
+        "sourceIndex": 2,
+        "x": 921.0198744863975,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "germany:thomas_mann:buddenbrooks-editorial",
+        "title": "Будденброки",
+        "sourceIndex": 3,
+        "x": 990.1943549917066,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "russia:tolstoy:war-and-peace",
+        "title": "Война и мир",
+        "sourceIndex": 4,
+        "x": 1059.3688354970157,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "england:william_shakespeare:hamlet",
+        "title": "Гамлет",
+        "sourceIndex": 5,
+        "x": 1128.543316002325,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "england:david_mitchell:slade-house",
+        "title": "Голодный дом",
+        "sourceIndex": 6,
+        "x": 1197.7177965076341,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "france:flaubert:madame-bovary",
+        "title": "Госпожа Бовари",
+        "sourceIndex": 7,
+        "x": 1266.8922770129434,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "russia:chekhov:the-lady-with-the-dog",
+        "title": "Дама с собачкой",
+        "sourceIndex": 8,
+        "x": 1336.0667575182524,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "russia:chekhov:the-duel",
+        "title": "Дуэль",
+        "sourceIndex": 9,
+        "x": 1405.2412380235614,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "russia:chekhov:uncle-vanya",
+        "title": "Дядя Ваня",
+        "sourceIndex": 10,
+        "x": 1474.4157185288707,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "england:h_g_wells:the-history-of-mr-polly",
+        "title": "История мистера Полли",
+        "sourceIndex": 11,
+        "x": 1543.5901990341802,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "england:h_g_wells:when-the-sleeper-wakes",
+        "title": "Когда спящий проснется",
+        "sourceIndex": 12,
+        "x": 1612.7646795394892,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "england:david_mitchell:the-bone-clocks",
+        "title": "Костяные часы",
+        "sourceIndex": 13,
+        "x": 1681.9391600447982,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "england:david_mitchell:ghostwritten",
+        "title": "Литературный призрак",
+        "sourceIndex": 14,
+        "x": 1751.1136405501074,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "usa:vladimir_nabokov:lolita-editorial",
+        "title": "Лолита",
+        "sourceIndex": 15,
+        "x": 1820.2881210554165,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      },
+      {
+        "key": "england:h_g_wells:men-like-gods",
+        "title": "Люди как боги",
+        "sourceIndex": 16,
+        "x": 1889.462601560726,
+        "y": 529.9874524561858,
+        "z": 0.9613155896303954
+      }
+    ],
+    "resources": {
+      "Texture": {
+        "created": 73,
+        "deleted": 3,
+        "live": 70
+      },
+      "Framebuffer": {
+        "created": 6,
+        "deleted": 0,
+        "live": 6
+      },
+      "Renderbuffer": {
+        "created": 2,
+        "deleted": 0,
+        "live": 2
+      },
+      "Buffer": {
+        "created": 470,
+        "deleted": 4,
+        "live": 466
+      },
+      "Program": {
+        "created": 24,
+        "deleted": 3,
+        "live": 21
+      },
+      "Shader": {
+        "created": 48,
+        "deleted": 48,
+        "live": 0
+      },
+      "VertexArray": {
+        "created": 186,
+        "deleted": 3,
+        "live": 183
+      }
+    },
+    "draws": 618,
+    "pendingFrames": 1,
+    "renderer": {
+      "geometries": 125,
+      "textures": 66,
+      "calls": 105,
+      "triangles": 7430
+    }
+  },
+  "cpuTop": [
+    {
+      "ms": 6217.87799999998,
+      "functionName": "getProgramParameter",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1
+    },
+    {
+      "ms": 339.61100000000005,
+      "functionName": "(program)",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1
+    },
+    {
+      "ms": 23.329000000000004,
+      "functionName": "(garbage collector)",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1
+    },
+    {
+      "ms": 21.930999999999994,
+      "functionName": "(idle)",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1
+    },
+    {
+      "ms": 20.498000000000005,
+      "functionName": "getBoundingClientRect",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1
+    },
+    {
+      "ms": 10.478,
+      "functionName": "measureText",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1
+    },
+    {
+      "ms": 8.737,
+      "functionName": "measureText",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1
+    },
+    {
+      "ms": 5.316,
+      "functionName": "getBoundingClientRect",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1
+    },
+    {
+      "ms": 5.174,
+      "functionName": "xn",
+      "scriptId": "52",
+      "url": "http://127.0.0.1:4185/assets/completeShelfRenderer-gEZtDNom.js",
+      "lineNumber": 0,
+      "columnNumber": 28603
+    },
+    {
+      "ms": 4.601,
+      "functionName": "L6",
+      "scriptId": "39",
+      "url": "http://127.0.0.1:4185/assets/three-vendor-CfY00QhG.js",
+      "lineNumber": 3828,
+      "columnNumber": 9684
+    },
+    {
+      "ms": 4.584,
+      "functionName": "J5",
+      "scriptId": "39",
+      "url": "http://127.0.0.1:4185/assets/three-vendor-CfY00QhG.js",
+      "lineNumber": 3725,
+      "columnNumber": 351
+    },
+    {
+      "ms": 3.634,
+      "functionName": "",
+      "scriptId": "52",
+      "url": "http://127.0.0.1:4185/assets/completeShelfRenderer-gEZtDNom.js",
+      "lineNumber": 0,
+      "columnNumber": 20740
+    },
+    {
+      "ms": 3.469,
+      "functionName": "dc",
+      "scriptId": "6",
+      "url": "http://127.0.0.1:4185/assets/react-vendor-DY4IABGq.js",
+      "lineNumber": 7,
+      "columnNumber": 14720
+    },
+    {
+      "ms": 3.1980000000000004,
+      "functionName": "shaderSource",
+      "scriptId": "0",
+      "url": "",
+      "lineNumber": -1,
+      "columnNumber": -1
+    },
+    {
+      "ms": 2.489,
+      "functionName": "",
+      "scriptId": "52",
+      "url": "http://127.0.0.1:4185/assets/completeShelfRenderer-gEZtDNom.js",
+      "lineNumber": 0,
+      "columnNumber": 11992
+    }
+  ]
+}

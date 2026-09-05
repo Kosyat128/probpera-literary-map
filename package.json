@@ -23,7 +23,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run content:export:cms && npm run build:from-snapshot",
-    "build:from-snapshot": "npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && tsc && vite build && node scripts/build-article-pages.mjs",
+    "build:from-snapshot": "npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && tsc && vite build && node scripts/build-article-pages.mjs && node scripts/audit-book-dossier-delivery.mjs",
     "build:all": "npm run build && npm run admin:build",
     "build:domain": "node scripts/build-domain-release.mjs",
     "domain:audit": "node scripts/audit-domain-release.mjs",
