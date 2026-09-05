@@ -106,7 +106,7 @@ function expectRole(metrics, role, minSize, maxSize, lineHeightRatio) {
   }
 }
 
-test("Stage 5B desktop RU roles and surfaces stay inside the approved scale", async ({
+test("Stage 5B desktop RU roles and surfaces retain the approved scale and 13px editorial labels", async ({
   page,
 }) => {
   await openHomepage(page, { width: 1440, height: 900, locale: "ru" });
@@ -119,7 +119,7 @@ test("Stage 5B desktop RU roles and surfaces stay inside the approved scale", as
   expectRole(result.metrics, "book", 35, 35, 1.1);
   expectRole(result.metrics, "compact", 18, 23, 1.2);
   expectRole(result.metrics, "body", 16, 16, 1.45);
-  expect(result.metadata).toBe(14);
+  expect(result.metadata).toBe(13);
   expect(result.action).toBe(15);
   expect(result.spacing.articleLibrary).toBeLessThanOrEqual(96.1);
   expect(result.spacing.trust).toBeLessThanOrEqual(96.1);
@@ -130,7 +130,7 @@ test("Stage 5B desktop RU roles and surfaces stay inside the approved scale", as
   }
 });
 
-test("Stage 5B mobile EN roles reflow without overflow", async ({ page }) => {
+test("Stage 5B mobile EN roles and 13px editorial labels reflow without overflow", async ({ page }) => {
   await openHomepage(page, { width: 390, height: 844, locale: "en" });
   const result = await collectRoleMetrics(page);
 
@@ -139,7 +139,7 @@ test("Stage 5B mobile EN roles reflow without overflow", async ({ page }) => {
   expectRole(result.metrics, "book", 35, 35, 1.1);
   expectRole(result.metrics, "compact", 18, 23, 1.2);
   expectRole(result.metrics, "body", 16, 16, 1.45);
-  expect(result.metadata).toBe(14);
+  expect(result.metadata).toBe(13);
   expect(result.action).toBe(15);
   expect(result.spacing.articleLibrary).toBeLessThanOrEqual(72.1);
   expect(result.spacing.trust).toBeLessThanOrEqual(72.1);

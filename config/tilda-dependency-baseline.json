@@ -30,6 +30,9 @@
     "public/articles/",
     "public/cms/"
   ],
+  "generatedEncodings": {
+    "src/data/imageDelivery.compact.generated.json": "src/data/imageDelivery.generated.json"
+  },
   "generatedBudget": {
     "maxOccurrences": 7468,
     "maxUniqueUrls": 1577

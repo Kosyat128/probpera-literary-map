@@ -2,6 +2,30 @@ export type ImageDeliveryVariant = Readonly<{ src: string; width: number; height
 export type ImageDeliveryEntry = ImageDeliveryVariant & Readonly<{ variants: readonly ImageDeliveryVariant[] }>;
 export type PublicImageAttributes = { src: string; width?: number; height?: number; srcSet?: string; sizes?: string };
 
+type CompactVariant = readonly [suffix: string, width: number, height: number];
+export type CompactImageDeliveryManifest = Readonly<{
+  version: 1;
+  sourcePrefixes: readonly string[];
+  sources: readonly (readonly [prefix: number, suffix: string, image: number])[];
+  renditionPrefix: string;
+  images: readonly (readonly [prefix: string, variants: readonly CompactVariant[], largest: number | CompactVariant])[];
+}>;
+
+/** Expand exact strings once, without fetching a manifest before the first image can render. */
+export function expandImageDeliveryManifest(compact: CompactImageDeliveryManifest): Record<string, ImageDeliveryEntry> {
+  if (compact.version !== 1) throw new Error("Unsupported image delivery manifest version");
+  const images = compact.images.map(([prefix, packedVariants, largest]) => {
+    const variant = ([suffix, width, height]: CompactVariant): ImageDeliveryVariant => ({
+      src: `${compact.renditionPrefix}${prefix}${suffix}`, width, height,
+    });
+    const variants = packedVariants.map(variant);
+    return { ...(typeof largest === "number" ? variants[largest] : variant(largest)), variants };
+  });
+  return Object.fromEntries(compact.sources.map(([prefix, suffix, image]) => [
+    `${compact.sourcePrefixes[prefix]}${suffix}`, images[image],
+  ]));
+}
+
 /** Presentation renditions keep the editorial source and its credits intact. */
 export function createImageDeliveryResolver(entries: Readonly<Record<string, ImageDeliveryEntry>>, base = "/") {
   const prefix = `${base.replace(/\/+$/u, "")}/`;

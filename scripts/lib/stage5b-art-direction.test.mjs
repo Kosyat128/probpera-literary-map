@@ -4,6 +4,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 import { parseCss } from "../audit-stage5-baseline.mjs";
+import { projectReviewedReadingDesign } from "./reviewed-reading-design.mjs";
 
 const root = path.resolve(process.cwd());
 const artDirectionPath = path.join(
@@ -13,7 +14,8 @@ const artDirectionPath = path.join(
 const artDirectionCss = readFileSync(artDirectionPath, "utf8");
 const indexCss = readFileSync(path.join(root, "src/index.css"), "utf8");
 const mainSource = readFileSync(path.join(root, "src/main.tsx"), "utf8");
-const artRules = parseCss(artDirectionCss, "src/styles/stage5-home-art-direction.css");
+const artRules = parseCss(projectReviewedReadingDesign("src/styles/stage5-home-art-direction.css", artDirectionCss), "src/styles/stage5-home-art-direction.css");
+const currentArtRules = parseCss(artDirectionCss.replace(/\/\*[\s\S]*?\*\//gu, ""), "src/styles/stage5-home-art-direction.css");
 const indexRules = parseCss(indexCss, "src/index.css");
 const typographyRules = parseCss(
   readFileSync(path.join(root, "src/styles/site-typography.css"), "utf8").replace(/\/\*[\s\S]*?\*\//gu, ""),
@@ -139,7 +141,7 @@ describe("Stage 5B homepage art-direction contract", () => {
     ).toMatch(/!important$/u);
   });
 
-  it("uses scoped action orange with white book text and changes Follow Writer colors only", () => {
+  it("preserves the historical scoped action colors through the exact owner-approved contrast delta", () => {
     expect(
       declarationValue(artRules, ".book-of-day .book-action-primary", "background")
     ).toBe("var(--ui-primary)");
@@ -177,6 +179,19 @@ describe("Stage 5B homepage art-direction contract", () => {
         .flatMap((rule) => rule.declarations)
         .every((declaration) => declaration.property === "background")
     ).toBe(true);
+  });
+
+  it("keeps the reviewed book action readable in every interactive state", () => {
+    for (const selector of [
+      ".book-of-day .book-action-primary",
+      ".book-of-day .book-action-primary:not(:disabled):hover",
+      ".book-of-day .book-action-primary:not(:disabled):focus-visible",
+      ".book-of-day .book-action-primary:not(:disabled):active",
+    ]) {
+      expect(declarationValue(currentArtRules, selector, "color")).toBe("var(--ink)");
+    }
+    expect(declarationValue(currentArtRules, ".book-of-day .book-action-primary", "--ui-primary-hover")).toBe("var(--orange-soft)");
+    expect(declarationValue(currentArtRules, ".book-of-day .book-action-primary", "--ui-primary-active")).toBe("var(--orange)");
   });
 
   it("loads the scoped stylesheet after the established public styles", () => {

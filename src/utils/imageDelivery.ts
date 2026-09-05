@@ -1,8 +1,10 @@
-import imageDelivery from "../data/imageDelivery.generated.json";
-import { createImageDeliveryResolver } from "./imageDeliveryModel";
+import imageDelivery from "../data/imageDelivery.compact.generated.json";
+import { createImageDeliveryResolver, expandImageDeliveryManifest, type CompactImageDeliveryManifest } from "./imageDeliveryModel";
 
 export { createImageDeliveryResolver } from "./imageDeliveryModel";
-const delivery = createImageDeliveryResolver(imageDelivery, import.meta.env.BASE_URL);
+const delivery = createImageDeliveryResolver(
+  expandImageDeliveryManifest(imageDelivery as unknown as CompactImageDeliveryManifest), import.meta.env.BASE_URL,
+);
 export const publicImageAttributes = delivery.attributes;
 export const publicImageUrl = delivery.url;
 export const originalImageUrl = delivery.original;

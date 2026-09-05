@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process";
-import { randomBytes } from "node:crypto";
+import { createHash, randomBytes } from "node:crypto";
 import { mkdtemp, mkdir, rm, unlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -25,6 +25,10 @@ async function fixture({
   entryBytes = Buffer.from("export const ready = true;"),
   indexHtml,
   initialAssetGzipBytes = 300 * 1024,
+  publishedImageFiles = [],
+  publishedImageBudget = { totalBytes: 1_000_000, fileCount: 10, sourceCount: 10 },
+  publishedImageReport,
+  publishedSiteTotalBytes = 2_000_000,
   siteBasePath = "/probpera-literary-map/",
 } = {}) {
   const workspace = await mkdtemp(path.join(tmpdir(), "performance-budget-"));
@@ -63,6 +67,34 @@ async function fixture({
     Buffer.alloc(100)
   );
   await writeFile(path.join(workspace, "dist", "assets", "site.png"), Buffer.alloc(200));
+  const publishedOutputs = [];
+  for (const file of publishedImageFiles) {
+    const target = path.join(workspace, "dist", file.src);
+    const content = Buffer.alloc(file.bytes);
+    await mkdir(path.dirname(target), { recursive: true });
+    await writeFile(target, content);
+    publishedOutputs.push({ ...file, sha256: createHash("sha256").update(content).digest("hex") });
+  }
+  await mkdir(path.join(workspace, "reports"), { recursive: true });
+  if (publishedImageReport !== null) await writeFile(
+    path.join(workspace, "reports", "public-image-delivery.json"),
+    JSON.stringify(publishedImageReport ?? {
+      version: 1,
+      completed: true,
+      summary: {
+        inventoriedSources: publishedOutputs.length,
+        processedSources: publishedOutputs.length,
+        ready: publishedOutputs.length,
+        failed: 0,
+        allRenditionBytes: publishedOutputs.reduce((sum, output) => sum + output.bytes, 0),
+      },
+      images: publishedOutputs.map((output, index) => ({
+        sourceUrl: `https://images.example.org/${index}.jpg`,
+        status: "ready",
+        outputs: [output],
+      })),
+    })
+  );
   if (cmsArticleSnapshot !== null) {
     const snapshotTarget = path.join(
       workspace,
@@ -98,6 +130,8 @@ async function fixture({
       },
       distTotalBytes,
       distExcludingBookCoversBytes,
+      publishedImageCorpus: publishedImageBudget,
+      publishedSiteTotalBytes,
       largestJavaScriptBytes: 1_000_000,
       largestJavaScriptGzipBytes: 1_000_000,
       mainJavaScriptBytes: 1_000_000,
@@ -131,6 +165,93 @@ afterEach(async () => {
 });
 
 describe("performance budget audit", () => {
+  const publishedImage = "media/optimized/0123456789abcdef01234567-640w.webp";
+
+  it("accounts for validated published images without increasing the application allowance", async () => {
+    const cwd = await fixture({
+      publishedImageFiles: [{ src: publishedImage, bytes: 200 * 1024 }],
+      distTotalBytes: 16 * 1024,
+      distExcludingBookCoversBytes: 16 * 1024,
+    });
+    const { stdout } = await execFileAsync(process.execPath, [auditScript], { cwd });
+    expect(stdout).toContain("PASS published image corpus total: 204800 / 1000000 bytes");
+    expect(stdout).toContain("PASS published image corpus count: 1 / 10 files");
+    expect(stdout).toContain("PASS published image source count: 1 / 10 sources");
+    expect(stdout).toContain("PASS dist total:");
+    expect(stdout).toContain("PASS dist excluding book covers:");
+  });
+
+  it("does not let published images hide unrelated application growth", async () => {
+    const cwd = await fixture({
+      publishedImageFiles: [{ src: publishedImage, bytes: 200 * 1024 }],
+      aggregatePayloadBytes: 20 * 1024,
+      distTotalBytes: 16 * 1024,
+      distExcludingBookCoversBytes: 16 * 1024,
+    });
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
+      stderr: expect.stringContaining("Performance budget exceeded: dist total, dist excluding book covers"),
+    });
+  });
+
+  it.each([
+    ["total", { totalBytes: 199, fileCount: 10, sourceCount: 10 }],
+    ["count", { totalBytes: 1000, fileCount: 1, sourceCount: 10 }],
+    ["source count", { totalBytes: 1000, fileCount: 10, sourceCount: 1 }],
+  ])("rejects an oversized published image corpus by %s", async (kind, publishedImageBudget) => {
+    const cwd = await fixture({
+      publishedImageFiles: [
+        { src: publishedImage, bytes: 200 },
+        { src: "media/optimized/1123456789abcdef01234567-original.png", bytes: 200 },
+      ],
+      publishedImageBudget,
+    });
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
+      stdout: expect.stringContaining(`FAIL published image ${kind === "source count" ? kind : `corpus ${kind}`}:`),
+    });
+  });
+
+  it("rejects files omitted from the published image provenance", async () => {
+    const cwd = await fixture({ publishedImageFiles: [{ src: publishedImage, bytes: 200 }] });
+    await writeFile(path.join(cwd, "dist", "media", "optimized", "unlisted.js"), "export default {};");
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
+      stderr: expect.stringContaining("unlisted published image file: media/optimized/unlisted.js"),
+    });
+  });
+
+  it("rejects unrelated paths even when listed in the image provenance", async () => {
+    const cwd = await fixture({ publishedImageFiles: [{ src: "assets/arbitrary.bin", bytes: 200 }] });
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
+      stderr: expect.stringContaining("invalid published image output: assets/arbitrary.bin"),
+    });
+  });
+
+  it.each(["missing", "changed"])("rejects %s delivered image files", async (kind) => {
+    const cwd = await fixture({ publishedImageFiles: [{ src: publishedImage, bytes: 200 }] });
+    const target = path.join(cwd, "dist", publishedImage);
+    if (kind === "missing") await unlink(target);
+    else await writeFile(target, Buffer.alloc(201));
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
+      stderr: expect.stringContaining(kind === "missing" ? "missing published image file" : "published image size differs from provenance"),
+    });
+  });
+
+  it("fails closed when published image provenance is missing", async () => {
+    const cwd = await fixture({ publishedImageReport: null });
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
+      stderr: expect.stringContaining("FAIL published image corpus: provenance is missing or unreadable"),
+    });
+  });
+
+  it("keeps an independent ceiling on the complete published site", async () => {
+    const cwd = await fixture({
+      publishedImageFiles: [{ src: publishedImage, bytes: 200 * 1024 }],
+      publishedSiteTotalBytes: 200 * 1024,
+    });
+    await expect(execFileAsync(process.execPath, [auditScript], { cwd })).rejects.toMatchObject({
+      stdout: expect.stringContaining("FAIL published site total:"),
+    });
+  });
+
   it("allows bounded aggregate growth for articles above the pinned CMS baseline", async () => {
     const cwd = await fixture({
       aggregatePayloadBytes: 200 * 1024,

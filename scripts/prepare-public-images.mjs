@@ -1,17 +1,20 @@
 import { createHash } from "node:crypto";
 import { setDefaultResultOrder } from "node:dns";
-import { mkdir, readFile, readdir, rename, stat, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import sharp from "sharp";
 import ts from "typescript";
+import { compactImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
+import { createSerialWriteQueue, writeJsonAtomically } from "./lib/atomic-json-write.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const absolute = value => path.resolve(root, value);
 const portable = value => value.split(path.sep).join("/");
 const digest = value => createHash("sha256").update(value).digest("hex");
 const runtimePath = "src/data/imageDelivery.generated.json";
+const compactRuntimePath = "src/data/imageDelivery.compact.generated.json";
 const reportPath = "reports/public-image-delivery.json";
 const outputDirectory = "public/media/optimized";
 const cacheDirectory = ".tmp/public-images";
@@ -29,10 +32,7 @@ setDefaultResultOrder("ipv4first");
 sharp.concurrency(1);
 
 async function atomicJson(filename, value) {
-  await mkdir(path.dirname(absolute(filename)), { recursive: true });
-  const temporary = `${absolute(filename)}.${process.pid}.tmp`;
-  await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`);
-  await rename(temporary, absolute(filename));
+  await writeJsonAtomically(absolute(filename), value);
 }
 
 function normalizedImageSource(raw) {
@@ -225,6 +225,12 @@ function runtimeEntry(record) {
   return { ...small(record.largest), variants: record.outputs.map(small) };
 }
 
+async function publishRuntime(records) {
+  const runtime = Object.fromEntries(records.filter(record => record.status === "ready").map(record => [record.sourceUrl, runtimeEntry(record)]));
+  await atomicJson(runtimePath, runtime);
+  await atomicJson(compactRuntimePath, compactImageDeliveryManifest(runtime));
+}
+
 function reportSummary(records, sourceCount, started) {
   const ready = records.filter(record => record.status === "ready");
   const unique = [...new Map(ready.map(record => [record.source.sha256, record])).values()];
@@ -236,15 +242,17 @@ async function publishReport(records, inventory, started, completed) {
   const ordered = records.toSorted((a, b) => a.sourceUrl.localeCompare(b.sourceUrl));
   const report = { version: 1, completed, transform: { quality: 90, widths: [640, 1280, 1920], nativeResolution: "preserved", crop: false, autoOrient: true, alpha: "preserved", sourceTimeoutMs: timeoutMs, retryCount: retries, workers: workerCount }, summary: reportSummary(ordered, inventory.length, started), images: ordered };
   await atomicJson(reportPath, report);
-  if (completed && !argv.includes("--defer-runtime")) await atomicJson(runtimePath, Object.fromEntries(ordered.filter(record => record.status === "ready").map(record => [record.sourceUrl, runtimeEntry(record)])));
+  if (completed && !argv.includes("--defer-runtime")) await publishRuntime(ordered);
   return report;
 }
 
 async function checkInventory(inventory) {
   const report = JSON.parse(await readFile(absolute(reportPath), "utf8"));
   const runtime = JSON.parse(await readFile(absolute(runtimePath), "utf8"));
+  const compactRuntime = JSON.parse(await readFile(absolute(compactRuntimePath), "utf8"));
   const known = new Map(report.images.map(record => [record.sourceUrl, record]));
   const errors = [];
+  if (JSON.stringify(compactRuntime) !== JSON.stringify(compactImageDeliveryManifest(runtime))) errors.push("Compact runtime differs from the complete image delivery manifest");
   for (const source of inventory) {
     const record = known.get(source.sourceUrl);
     if (!record) { errors.push(`Unaccounted source: ${source.sourceUrl}`); continue; }
@@ -273,7 +281,7 @@ async function main() {
   const started = Date.now();
   if (argv.includes("--publish-runtime")) {
     const report = JSON.parse(await readFile(absolute(reportPath), "utf8"));
-    await atomicJson(runtimePath, Object.fromEntries(report.images.filter(record => record.status === "ready").map(record => [record.sourceUrl, runtimeEntry(record)])));
+    await publishRuntime(report.images);
     console.log(JSON.stringify({ status: "runtime-published", ready: report.summary.ready }));
     return;
   }
@@ -296,7 +304,7 @@ async function main() {
   const selected = queue.slice(0, limit);
   const records = [];
   let next = 0;
-  let reportWrite = Promise.resolve();
+  const reportWrites = createSerialWriteQueue();
   async function worker() {
     while (next < selected.length) {
       const source = selected[next++];
@@ -315,13 +323,16 @@ async function main() {
       if (records.length % 20 === 0) {
         if (!argv.includes("--quiet")) console.log(JSON.stringify(reportSummary(records, inventory.length, started)));
         const snapshot = [...records];
-        reportWrite = reportWrite.then(() => publishReport(snapshot, inventory, started, false));
+        reportWrites.enqueue(() => publishReport(snapshot, inventory, started, false));
       }
     }
   }
   console.log(JSON.stringify({ status: "started", inventory: inventory.length, selected: selected.length, workers: workerCount }));
-  await Promise.all(Array.from({ length: workerCount }, worker));
-  await reportWrite;
+  // A failed worker must not leave another worker enqueueing writes after drain.
+  const workers = await Promise.allSettled(Array.from({ length: workerCount }, worker));
+  await reportWrites.drain();
+  const failedWorker = workers.find(result => result.status === "rejected");
+  if (failedWorker) throw failedWorker.reason;
   const report = await publishReport(records, inventory, started, true);
   console.log(JSON.stringify(report.summary));
 }
