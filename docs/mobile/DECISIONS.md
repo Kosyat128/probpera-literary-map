@@ -31,3 +31,8 @@
   unlink the DLL; npm install --ignore-scripts restored the exact checked-in
   dependency graph. Git confirms package.json, package-lock.json and admin
   package.json have no changes. Installation does not prove tests or builds pass.
+
+- D012: S01 adopts exact schemas43/57 with semantic gates, 342 requirement IDs and per-stage milestones. Source/evidence checkpoints are historical Git identities; global PASSED claims require current source identity. No self-referential head hash or fabricated readiness.
+- D013: Specialized bilingual/provider/legal/package and owner schemas remain in their routed later stages. S01 maps their obligations without reading or certifying them early.
+- D014: Preserve canonical independent BookShelfSceneCanvas alongside LiteraryGlobe. The guard allows only those exact owners, and runtime one-globe identity remains a separate browser/native gate.
+- D015: Code-based policy freezes the user's two locales, paid profile, safe defaults and local-only preparation grant. Platform SDKs will be injected through exact adapter boundaries into the existing product.

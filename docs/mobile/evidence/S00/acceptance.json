@@ -1,0 +1,151 @@
+{
+  "version": "12.0",
+  "scope": "historical-stage-baseline",
+  "sourceCommit": "ef16246fe43a89eaad014485da7799138b4e634f",
+  "criterionIds": [
+    "S00.baseline"
+  ],
+  "requirementIds": [],
+  "sourceFiles": [
+    {
+      "path": "package.json",
+      "gitBlob": "116adefcb35957765a5c9f3fe3b4cd5fc27913c2",
+      "sha256": "577b2960ecead415fddfb6b532646d0a5ff8584a39dc6008b8f7778637d93413"
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlob": "da716ab123927b95f8ab9fdb59290e52c821545d",
+      "sha256": "ecc7523f2b30e8568256c4ebdc75a2acf44b082787c8d50bcc56c3ca7e45b224"
+    },
+    {
+      "path": "apps/admin/package.json",
+      "gitBlob": "5fceb4d903be30e9a4aa553c34b23b178315c0b1",
+      "sha256": "6b870c95a81b950c9b416b4129e05d9196bdce112c1210f47bbe53986c70ea89"
+    },
+    {
+      "path": "src/main.tsx",
+      "gitBlob": "908a51175cadc5cd5d7ffac80353149a30b5424f",
+      "sha256": "5e7e87cb551cc0516506474907223609f819300643ddd5f1f246e6236c398c69"
+    },
+    {
+      "path": "src/App.tsx",
+      "gitBlob": "693caa395a18ac423bae11da3c23fd0b1cc2d9df",
+      "sha256": "707adb8d298d8fd2a05bde241bf695f25d6ecd54638428ab30f4a6a5ed4fb519"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "gitBlob": "a30721b1aeada5408001a5868bfdfb434a0a803b",
+      "sha256": "c99b82d1a1da222de87d65bb0b3f827028d8ec9679d3055eab022da24bcbe9e8"
+    },
+    {
+      "path": "scripts/lib/article-route-policy.mjs",
+      "gitBlob": "5b4e8a5e6e108b6f7c5e42a73f941361d7214601",
+      "sha256": "e85c2ffd2f24293cd49d4c811894c3446f8e60fcb42ac453f2c528bdb79af486"
+    },
+    {
+      "path": "scripts/normalize-cms-snapshot-metadata.mjs",
+      "gitBlob": "432bd5cad47c2d5e07d40a85b01b1baf82dcaf11",
+      "sha256": "315e4c71ed76355ca51fa7053d7dc57655b3cfb33281c0e44b802bc7e7c67d0d"
+    },
+    {
+      "path": "scripts/normalize-cms-snapshot-metadata.test.mjs",
+      "gitBlob": "a2b7fdcf168f6e43924d511ec7561f83ef4f61b5",
+      "sha256": "71099ac8d1c3a677ee32d5123f7b7c189ae5c2e9f8a1e42d96cd7640b8b63264"
+    },
+    {
+      "path": "scripts/mobile/requirements.mjs",
+      "gitBlob": "dd1546b74370fdcd9eff672bfed4179241546dc2",
+      "sha256": "07e3f579154339fc58276bc82eca6531ed56cfe255f303a17a9144898b0ae49a"
+    },
+    {
+      "path": "scripts/mobile/requirements.test.mjs",
+      "gitBlob": "dcf82c8046704f7c3f96fc7adafb2763090800ea",
+      "sha256": "aadd7e73ad75337e72ecd4982e524461cbc7552575e7c26615e53dd8dbd2ced3"
+    },
+    {
+      "path": "scripts/mobile/verify-requirements.mjs",
+      "gitBlob": "a19514de2ece2756f02b104bbc2a82859826febe",
+      "sha256": "2fb502f693305b753c15d3d647b76b103f8087f3c5f8d04c6bd19326a43b7193"
+    },
+    {
+      "path": "scripts/mobile/stage-context.mjs",
+      "gitBlob": "ff99cf6382f7defa063ba6a05b8a3e1b114dfaec",
+      "sha256": "9d5c79513b828aabedc4cc2f90b98cd43e9342a5218fd8be852350c82bde32c2"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/mobile/evidence/S00/current-main-baseline-results.json",
+      "gitBlob": "86a414b7e8c68e4ccd57463bf374a2260b519ff4",
+      "sha256": "8a1487cfdf4934b68c823412ee22cb1dd73354481cbe9bedfc85c67a6a9db7f4"
+    },
+    {
+      "path": "docs/mobile/evidence/S00/current-main-canonical-delta.json",
+      "gitBlob": "c1baac49852e8ec022471d4252b30c4938cc829d",
+      "sha256": "d5ddf90e793c8c6f20d6ce9a29392b649228d8dcf96e30d860a496210014e777"
+    },
+    {
+      "path": "docs/mobile/evidence/S00/web-build-main-refresh-inventory.json",
+      "gitBlob": "a4c5a0589e04edd56a1f775465a6d0f7efc0ebbf",
+      "sha256": "64834d03d1dc9f990dc94a8776ed599e221e5c634cccea5ebe0e48a35b69ec17"
+    },
+    {
+      "path": "docs/mobile/evidence/S00/requirements-verification.json",
+      "gitBlob": "2b8d6f717ddb0f70ce0577328b4fb7ef9f7beec7",
+      "sha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99"
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/vitest-main-refresh-regression.log",
+      "gitBlob": "8f4094824f5cb45d619834791f80ff03bc779f28",
+      "sha256": "bbb7e47c0abb393464acf87317421e55d67c01bab14d844c860433deadc540e4"
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/lint-main-refresh.log",
+      "gitBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+      "sha256": "5b1a38b22395816c9c1cc76968ad073f523092b9fa6604d803fe26dd8db7911a"
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/build-domain-main-refresh.log",
+      "gitBlob": "9758980e018510eb91fc2346c702946dbab2778a",
+      "sha256": "c3529918817d17d158aa9ff79b8d66934d617177fb00adffe64537a06e79541f"
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/admin-build-main-refresh.log",
+      "gitBlob": "d47627427b2815c2cc7bb036420f1136fc65799f",
+      "sha256": "c386b453344beffb3c99b1afd0b8aabba7bda8de4a3b9e900579121a65f40f96"
+    },
+    {
+      "path": "docs/mobile/evidence/S00/logs/browser-main-refresh.log",
+      "gitBlob": "0a798086e83f170e53f0bf9ed071632ed767d5d4",
+      "sha256": "4bfaf8d8a73fcc94e9d6765ea698bb276a2c376a60afe858c59db3878dac5a2f"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node node_modules/vitest/vitest.mjs run --maxWorkers=4",
+      "exitCode": 0,
+      "log": "docs/mobile/evidence/S00/logs/vitest-main-refresh-regression.log"
+    },
+    {
+      "command": "npm run lint:public",
+      "exitCode": 0,
+      "log": "docs/mobile/evidence/S00/logs/lint-main-refresh.log"
+    },
+    {
+      "command": "CMS_SNAPSHOT_PREEXPORTED=true npm run build:domain",
+      "exitCode": 0,
+      "log": "docs/mobile/evidence/S00/logs/build-domain-main-refresh.log"
+    },
+    {
+      "command": "npm run admin:build",
+      "exitCode": 0,
+      "log": "docs/mobile/evidence/S00/logs/admin-build-main-refresh.log"
+    },
+    {
+      "command": "Playwright selected current-main baseline (10 tests)",
+      "exitCode": 0,
+      "log": "docs/mobile/evidence/S00/logs/browser-main-refresh.log"
+    }
+  ],
+  "notes": "Accepted S00 baseline only. Source input hashes identify the checkpoint; later changes do not turn this historical evidence into current product readiness."
+}

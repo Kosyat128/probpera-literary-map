@@ -1,21 +1,11 @@
 # V12 status
 
-Active stage: S00 - repository safety and current baseline. IN_PROGRESS.
+Active stage: S01 - product architecture and traceability. IN_PROGRESS.
 
-The archive is verified: 194 checksum entries, 191 manifest files, 173 binding
-documents. The original requirements are preserved in requirements/v12.
-The requested branch is based on verified current remote main 0a348bd4.
-Historical e073b21 baseline evidence remains available with its original scope.
+S00 accepted in ef16246f, based on current main 0a348bd4. Archive: 194 checksums, 191 manifest files, 173 binding documents verified and preserved.
 
-Implemented so far: pinned archive-integrity verification, stage-context routing,
-immutable-input Git/punctuation protection and local execution instructions.
+Current baseline: 2,947 unit tests passed; four existing tests skipped. Ten browser tests passed, including RU/EN layout/reflow and Canvas/navigation identity. Public types/typography, Web/PWA/domain/SEO and admin build passed. Framework warnings and skipped PostgreSQL integration remain explicit in evidence/S00/current-main-baseline-results.json.
 
-Current main includes bounded stable CMS metadata normalization. V12 adds
-entity/control/NFC/CRLF regressions and preserves read-only checks. Original
-baseline passed 2,912 unit tests and two Canvas/navigation browser checks.
-Current-main refresh is running; public types and typography passed. The single
-new CLI fixture failure was repaired and 27 targeted regressions passed.
-Official store/platform requirements and canonical source inventory are recorded.
+Next: shared architecture, state/acceptance validation and complete mapping of 342 requirements, including all 107 BIL requirements. Global product requirements stay open until their implementation and evidence exist.
 
-S01-S40 are not complete. No RC, native build, production locale completion,
-release, owner approval or deployment is claimed.
+S01-S40 are incomplete. No native artifact, complete bilingual production content, RC screenshots, owner approval or deployment is claimed.

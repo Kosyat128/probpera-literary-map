@@ -1,0 +1,142 @@
+{
+  "version": "12.0",
+  "stage": "S01",
+  "status": "PASS",
+  "testedAt": "2026-09-05T03:53:14.464Z",
+  "baseMainSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
+  "scope": "Architecture, execution state and traceability only; no global product requirement marked PASSED.",
+  "checks": [
+    {
+      "name": "narrow_and_boundary_regression",
+      "status": "PASS",
+      "files": 9,
+      "tests": 184,
+      "log": "logs/S01-accepted-regression.log"
+    },
+    {
+      "name": "public_types_and_typography",
+      "status": "PASS",
+      "log": "logs/S01-lint.log"
+    },
+    {
+      "name": "real_web_dependency_graph",
+      "status": "PASS",
+      "webModules": 423,
+      "sourceFiles": 778,
+      "importEdges": 1535,
+      "evidence": "platform-boundaries.json"
+    },
+    {
+      "name": "schema_and_evidence_checkpoint",
+      "status": "PASS",
+      "requirements": 342,
+      "bilingual": 107,
+      "stages": 41,
+      "criteria": 1248,
+      "evidence": "checkpoint-validation.json"
+    }
+  ],
+  "review": {
+    "stateEvidence": "Independent re-review confirmed all8 reported failures reject; current checkpoint validates.",
+    "platformBoundaries": "Independent original6 bypasses confirmed fixed; final nested namespace export finding fixed and independently exercised in the accepted root regression.",
+    "productionApproval": "Not requested, generated or inferred."
+  },
+  "sourceWorkingTreeInputs": [
+    {
+      "path": "scripts/mobile/csv.mjs",
+      "sha256": "899341f64a0481d9482108e1d346d9bbc07035d5c7999c4b413b9da985dc8097"
+    },
+    {
+      "path": "scripts/mobile/evidence.mjs",
+      "sha256": "9a7287662a99df66829b6e6dbc5df90b45e05cc9cebe6420d9fa2eb899e672a6"
+    },
+    {
+      "path": "scripts/mobile/evidence.test.mjs",
+      "sha256": "5283ee398860d08e842b88c1c89b8e199a37d4a1f45825f2753aaee19a2281a5"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.test.mjs",
+      "sha256": "3180d1af33fcb040253a1bcdd8bf1e4e4127b2105ce2530379533c334aff73c3"
+    },
+    {
+      "path": "scripts/mobile/requirements.mjs",
+      "sha256": "84e0568473da358f7448b26521e8a3c9d02e780fcf0a5b1b61bb05afca247f4f"
+    },
+    {
+      "path": "scripts/mobile/requirements.test.mjs",
+      "sha256": "a31840c80985843e53f59e8debd5b7d4ac76662382b730c3d1051bf9ffb762d7"
+    },
+    {
+      "path": "scripts/mobile/schema.mjs",
+      "sha256": "8bb8eee8cfb9446d516d27c353f69c14af75ac2fce679253c9b5dbd859fb1890"
+    },
+    {
+      "path": "scripts/mobile/stage-context.mjs",
+      "sha256": "84e02515376e50173895a238a090f33c348b802e661790587ae1c9113465b43f"
+    },
+    {
+      "path": "scripts/mobile/state.mjs",
+      "sha256": "b141e7b193ffd0da8f4aa3e34bb51b6c36f901ed389946b84b85400bcddf988d"
+    },
+    {
+      "path": "scripts/mobile/state.test.mjs",
+      "sha256": "e27e80c005712b41af412d05bc645b36894dda63fa48c635d3982cabfa510586"
+    },
+    {
+      "path": "scripts/mobile/verify-requirements.mjs",
+      "sha256": "c61ea2bd46c356a67da09c4abe5b909796b119be8eb4a25f804323fc66a1be9b"
+    },
+    {
+      "path": "scripts/mobile/verify-state.mjs",
+      "sha256": "f31e2b86d3e415a541a9186cac35ec1765ce4ae235eeecb310038cee46260ebf"
+    },
+    {
+      "path": "src/platform/productPolicy.test.ts",
+      "sha256": "d41f56238d58a774ac0c004c91c1e4310fc9cfe7431646f25c5ce81785be2a64"
+    },
+    {
+      "path": "src/platform/productPolicy.ts",
+      "sha256": "a43622ca8b7ef85bb0b1df2d9dbb1268d4a5e1ce2ca9d1f00a97387250fca480"
+    },
+    {
+      "path": "docs/mobile/STAGE_REQUIREMENT_MAP.json",
+      "sha256": "be4f8f2a1dfa92ff77de938d3c6e1c3188941e8bdc7c573c882d48b0955946ee"
+    },
+    {
+      "path": "docs/mobile/PLATFORM_ARCHITECTURE.md",
+      "sha256": "0a72400a93dacff405d70c0c6f2523ebcf7f67cac6d87551acd364faac844f86"
+    },
+    {
+      "path": "docs/mobile/EXECUTION_STATE.md",
+      "sha256": "7cdbdf2c26793d0db357787e3ae1cd22eeacbba99aefcbb2e5dcbc5645ada226"
+    }
+  ],
+  "logs": [
+    {
+      "path": "logs/S01-state-narrow.log",
+      "sha256": "551077cacdb6bc99d9cd0e1eb56ff9c95664e7d9d774a6135cfd6d3ae90713dc",
+      "bytes": 280
+    },
+    {
+      "path": "logs/S01-state-regression.log",
+      "sha256": "13bb705d71442e41c8aecc76fcee3742c6cab918e253f064c1c2c69768b970ed",
+      "bytes": 283
+    },
+    {
+      "path": "logs/S01-lint.log",
+      "sha256": "603de491f6013d0bdcb51c1fff3beb201b0ebbb5ed9dbeab8ea5561a2fbd082d",
+      "bytes": 214
+    },
+    {
+      "path": "logs/S01-accepted-regression.log",
+      "sha256": "28c81b0be6f17cef6230c3024f3aa5a8997cd58931927ceae96947853e1a0373",
+      "bytes": 285
+    }
+  ],
+  "releaseReady": false,
+  "remaining": "S02-S40 product/platform/content/editorial/rights/RC work remains; source guard does not prove runtime or supply-chain integrity."
+}

@@ -13,3 +13,5 @@ Added pinned integrity verification and exact stage routing; initial 16 tests
 passed. Additional input-pin regression added subsequently. Public typecheck ran.
 CMS metadata repair, source-policy refresh and canonical baseline are ongoing.
 - Baseline completed: 501 test files / 2912 tests passed, 2 browser identity checks passed, web/domain/SEO/admin builds passed. Independent code review: no actionable findings. Remote main advanced during interruption; S00 remains IN_PROGRESS pending local rebase and baseline refresh.
+
+- 2026-09-05 / S00 accepted in ef16246f on main0a348bd4. Fixed new CLI fixture import; complete regression 507 files/2947 tests; 10 browser tests; public types/typography, domain/SEO/admin all passed. Preserved four skips and framework warnings. Current stage S01.

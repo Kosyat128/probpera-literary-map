@@ -2,7 +2,6 @@
 
 Internal work:
 
-- S00: finish refreshed current-main tests/build/browser evidence and acceptance.
 - S01-S40: architecture, shared runtime, paid PWA, native clients, content,
   child/purchase/offline/rights flows and full bilingual release work remain.
 - English content is incomplete in main; prior release deliberately paused bulk

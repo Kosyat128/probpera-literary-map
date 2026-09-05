@@ -1,0 +1,5137 @@
+{
+  "version": "12.0",
+  "generatedAt": "2026-09-05T03:29:21.141Z",
+  "requirements": [
+    {
+      "id": "A11Y-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "VoiceOver/TalkBack core flows",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "A11Y-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Accessible non-3D country/writer path",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "A11Y-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Large text/Dynamic Type",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "A11Y-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Reduced motion and sensory quiet mode",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "A11Y-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "44x44 controls and focus semantics",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "A11Y-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "RU complete and reviewed EN architecture",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "A11Y-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Rights-aware captions/narration/audio",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "A11Y-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "No colour/motion/audio-only meaning",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-001",
+      "source": "03C;119;142",
+      "summary": "Russian and English are mandatory production locales",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-002",
+      "source": "119;142",
+      "summary": "Unsupported system locales fall back to English",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-003",
+      "source": "119;142",
+      "summary": "Russian device preference starts Russian; other unsupported preferences start English",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-004",
+      "source": "119",
+      "summary": "Visible onboarding and Settings language selector exists",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-005",
+      "source": "119;120",
+      "summary": "Language switch preserves the same globe Canvas and camera",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-006",
+      "source": "119",
+      "summary": "Language switch preserves country writer work route and entitlements",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-007",
+      "source": "119",
+      "summary": "Language choice is resolved before first content frame",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-008",
+      "source": "119;123",
+      "summary": "Child mode and exact-age policy survive language changes",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-009",
+      "source": "123",
+      "summary": "Parent may lock child profile language without blocking safety",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-010",
+      "source": "119",
+      "summary": "Language is never inferred from IP nationality SIM or store country",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-011",
+      "source": "120",
+      "summary": "Shared TypeScript catalogs are type-safe and ICU-compatible",
+      "priority": "P0",
+      "platforms": [
+        "web"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-012",
+      "source": "120;126",
+      "summary": "User-facing hardcoded string scanner fails release",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-013",
+      "source": "120;126",
+      "summary": "Placeholder names types and counts match across locales",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-014",
+      "source": "120;126",
+      "summary": "Plural/select messages are locale-correct and not concatenated",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-015",
+      "source": "120",
+      "summary": "Dates numbers currencies and lists use locale-aware APIs",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-016",
+      "source": "120",
+      "summary": "Native iOS strings and app language support are localized",
+      "priority": "P0",
+      "platforms": [
+        "ios"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-017",
+      "source": "120",
+      "summary": "Android default/Russian resources and localeConfig are complete",
+      "priority": "P0",
+      "platforms": [
+        "android"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-018",
+      "source": "120",
+      "summary": "Android per-app language preferences support ru and en",
+      "priority": "P0",
+      "platforms": [
+        "android"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-019",
+      "source": "120;124",
+      "summary": "HTML lang SSR metadata canonical and hreflang are correct",
+      "priority": "P0",
+      "platforms": [
+        "web-pwa"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-020",
+      "source": "120;125",
+      "summary": "Translation packages are signed/checksummed and cannot execute code",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-021",
+      "source": "121;128",
+      "summary": "Every English unit stores immutable Russian source hash",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-022",
+      "source": "121;125",
+      "summary": "Source change marks affected English translations STALE",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-023",
+      "source": "03C;121;141",
+      "summary": "Raw machine translation cannot reach production",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-024",
+      "source": "121;129;143",
+      "summary": "Glossary and translation memory are versioned and enforced",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-025",
+      "source": "121",
+      "summary": "Independent semantic review detects additions omissions and changed negation",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-026",
+      "source": "121;128",
+      "summary": "Citations links markup numbers and protected spans remain intact",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-027",
+      "source": "121;124",
+      "summary": "English legal privacy and commerce statements require owner/legal approval",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-028",
+      "source": "121;148",
+      "summary": "Translation metrics expose missing stale blocked and semantic-delta units",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-029",
+      "source": "122",
+      "summary": "English writer display names use verified established forms when available",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-030",
+      "source": "122;147",
+      "summary": "Native/original names and verified aliases are preserved",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-031",
+      "source": "122",
+      "summary": "English work titles use verified published titles or labelled fallback",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-032",
+      "source": "03C;122",
+      "summary": "Guessed translation is never presented as an official English title",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-033",
+      "source": "122",
+      "summary": "English quotations are rights-cleared or replaced by unquoted summary",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-034",
+      "source": "122",
+      "summary": "Modern country names use ISO identity and locale display data with editorial exceptions",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-035",
+      "source": "120;122;146",
+      "summary": "Historical artifact inscriptions remain original with localized explanation",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-036",
+      "source": "122;147",
+      "summary": "Search indexes Russian English native and verified transliteration aliases",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-037",
+      "source": "122;131",
+      "summary": "Cross-language search resolves the same entity IDs",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-038",
+      "source": "122;131",
+      "summary": "Alias resolution cannot bypass child policy",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-039",
+      "source": "122",
+      "summary": "Sorting and matching use locale-aware collators and conservative fuzzy rules",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-040",
+      "source": "03C;125;127;141",
+      "summary": "Base Edition English content coverage is exactly 100 percent",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-041",
+      "source": "03C;125",
+      "summary": "Untranslated Base Edition content never silently falls back to Russian in English UI",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-042",
+      "source": "125;141",
+      "summary": "Optional packs are enabled independently per locale and hidden until complete",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-043",
+      "source": "121;141",
+      "summary": "English factual claims remain propositionally equivalent to canonical Russian source",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-044",
+      "source": "125",
+      "summary": "CMS provides source-target diff glossary memory preview review and rollback",
+      "priority": "P0",
+      "platforms": [
+        "admin"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-045",
+      "source": "125",
+      "summary": "CMS tracks factual child rights legal and publish approvals separately",
+      "priority": "P0",
+      "platforms": [
+        "admin"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-046",
+      "source": "125",
+      "summary": "Bulk translation publication requires dry-run and audit trail",
+      "priority": "P1",
+      "platforms": [
+        "admin"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-047",
+      "source": "123;127",
+      "summary": "English child content is complete and exact-age reviewed",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-048",
+      "source": "123",
+      "summary": "Planetka has natural verified age-banded English dialogue",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-049",
+      "source": "123",
+      "summary": "Planetka English dialogue contains no purchase pressure or personal-data request",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-050",
+      "source": "123",
+      "summary": "English audio has script hash transcript pronunciation rights and territory data",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-051",
+      "source": "123",
+      "summary": "Celebrity character and real-writer voice cloning is prohibited",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-052",
+      "source": "123",
+      "summary": "Missing English audio falls back to English text not Russian speech",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-053",
+      "source": "125",
+      "summary": "Locale-specific text search and audio packs share deduplicated common assets",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-054",
+      "source": "123;125",
+      "summary": "English included offline child and emergency content is complete",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-055",
+      "source": "124;130",
+      "summary": "App Store English and Russian metadata/localized screenshots are prepared",
+      "priority": "P0",
+      "platforms": [
+        "apple"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-056",
+      "source": "124;130",
+      "summary": "Google English default and Russian translation are manually quality-controlled",
+      "priority": "P0",
+      "platforms": [
+        "google-play"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-057",
+      "source": "124",
+      "summary": "Custom store listings have explicit translations and do not rely on automatic translation",
+      "priority": "P1",
+      "platforms": [
+        "google-play"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-058",
+      "source": "124;130",
+      "summary": "RuStore Russian listing and selectable English app experience pass moderation",
+      "priority": "P0",
+      "platforms": [
+        "rustore"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-059",
+      "source": "124;130",
+      "summary": "Localized screenshots are captured from the exact RC in the target language",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-060",
+      "source": "124;133",
+      "summary": "English review notes match actual English labels and paths",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-061",
+      "source": "124",
+      "summary": "Russian and English Privacy Terms Support and deletion documents are synchronized",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-062",
+      "source": "124",
+      "summary": "Controlling legal language is owner/legal approved and disclosed",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-063",
+      "source": "124",
+      "summary": "Bilingual support intake and realistic response SLA exist for enabled territories",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-064",
+      "source": "126;131",
+      "summary": "Pseudo locale hardcoded placeholder and mixed-language scans pass",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-065",
+      "source": "126;131",
+      "summary": "Russian and English layout/accessibility tests pass at all critical sizes",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-066",
+      "source": "126;141",
+      "summary": "No critical accidental Cyrillic/raw key appears in English UI",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-067",
+      "source": "126;131",
+      "summary": "Every bilingual critical path passes clean install offline purchase and failure injection",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-068",
+      "source": "134;135;136;137;138;139",
+      "summary": "English README start resume post-build and owner approval materials exist",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-069",
+      "source": "141;148;149",
+      "summary": "Bilingual metrics and publishing gate must pass before owner submission",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-070",
+      "source": "03C;139;149",
+      "summary": "Final owner handoff contains Russian and English store/legal/reviewer artifacts with no owner translation task",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-071",
+      "source": "151",
+      "summary": "English editorial base uses controlled international en-US style and owner-approved brand names",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-072",
+      "source": "151",
+      "summary": "Optional en-GB differences are small reviewed overlays, not a forked content database",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-073",
+      "source": "151",
+      "summary": "Adult, child and Planetka English tones follow separate factual and safety rules",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-074",
+      "source": "151",
+      "summary": "Protected facts, names, titles, citations and legal terms cannot be changed by style editing",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-075",
+      "source": "152",
+      "summary": "Russian and English public pages use stable locale routes and reciprocal hreflang",
+      "priority": "P0",
+      "platforms": [
+        "web-pwa"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-076",
+      "source": "152",
+      "summary": "English pages are self-canonical approved translations and are not canonicalized to Russian",
+      "priority": "P0",
+      "platforms": [
+        "web-pwa"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-077",
+      "source": "152",
+      "summary": "Server/prerender language metadata and body match before hydration",
+      "priority": "P0",
+      "platforms": [
+        "web-pwa"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-078",
+      "source": "152",
+      "summary": "Draft stale or rights-blocked English pages are not indexable",
+      "priority": "P0",
+      "platforms": [
+        "web-pwa"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-079",
+      "source": "152",
+      "summary": "Localized sitemaps structured data social metadata 404 and PWA discovery pass",
+      "priority": "P1",
+      "platforms": [
+        "web-pwa"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-080",
+      "source": "153",
+      "summary": "Every legal privacy refund deletion child and support document has synchronized ru/en versions",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-081",
+      "source": "153",
+      "summary": "Controlling legal language and territory applicability are explicitly owner/legal approved",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-082",
+      "source": "153",
+      "summary": "A change to one legal locale marks the paired locale stale and blocks affected rollout",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-083",
+      "source": "154",
+      "summary": "AI or machine translation is draft assistance only and cannot approve or publish content",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-084",
+      "source": "154",
+      "summary": "Child data credentials secrets contracts and unlicensed texts are not sent to translation providers",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-085",
+      "source": "154",
+      "summary": "Every translation provider has data retention training region rights security and disable records",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-086",
+      "source": "154",
+      "summary": "Generated draft provenance records model prompt source glossary and human review",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-087",
+      "source": "155",
+      "summary": "Russian and English support intake and critical response templates exist for every enabled territory",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-088",
+      "source": "155",
+      "summary": "Child support never asks a child for personal data and routes sensitive action to a parent",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-089",
+      "source": "155",
+      "summary": "Security deletion entitlement and incident messages are fully localized and never mixed-language",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-090",
+      "source": "155",
+      "summary": "Push stays disabled in first release and future notifications require ru/en and child-safe deep links",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-091",
+      "source": "156",
+      "summary": "Machine-readable bilingual release evidence binds coverage content child stores legal web and offline to artifact SHA",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-092",
+      "source": "157",
+      "summary": "English name title quotation place character and institution evidence follows the dedicated matrix",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-093",
+      "source": "158",
+      "summary": "Weighted translation quality scorecard reaches every mandatory target before release",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-094",
+      "source": "159",
+      "summary": "Every English and Russian store field is generated and validated separately per platform locale",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-095",
+      "source": "160",
+      "summary": "Final bilingual owner handoff is independently usable by Russian owner and English reviewer",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-096",
+      "source": "156;161",
+      "summary": "A schema-valid bilingual release evidence example is maintained as the initial fail-closed state",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-097",
+      "source": "162",
+      "summary": "Translation provider registry schema records retention training region rights security and child-data prohibition",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-098",
+      "source": "163",
+      "summary": "Localized legal document schema binds ru/en versions controlling language territories hashes and approvals",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-099",
+      "source": "164",
+      "summary": "Locale package schema binds ru/en package compatibility content child policy files checksums signature and rollback",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-100",
+      "source": "165",
+      "summary": "Structured correction reports do not create public UGC and remain adult/Parent-Gate controlled",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-101",
+      "source": "165",
+      "summary": "A factual source correction marks dependent English units indexes and packages stale until reviewed",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-102",
+      "source": "165",
+      "summary": "Critical correction updates both locales child policy search offline screenshots claims and evidence atomically",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-103",
+      "source": "166",
+      "summary": "Bilingual commands and CI emit artifact-bound evidence and fail closed",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-104",
+      "source": "166",
+      "summary": "Bilingual all-gate covers static content child native web store legal support exact-RC and handoff",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-105",
+      "source": "168",
+      "summary": "Base Edition English critical surfaces cannot be deferred as later localization",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-106",
+      "source": "168",
+      "summary": "Final handoff contains all English architecture content store legal support offline search correction and operations systems",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "BIL-107",
+      "source": "168",
+      "summary": "Future third locales cannot weaken or delay complete Russian and English release",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CANON-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Existing site Literary Planet is sole globe foundation",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CANON-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Shared IDs/coordinates/editions/textures across clients",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CANON-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "One Canvas/renderer per active experience",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CANON-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Canonical CMS is only factual content source",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CANON-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Real portraits and canonical flags reused",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CANON-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Site/Web/PWA/Android/iOS parity gates",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CANON-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Public site and admin remain regression-safe",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CANON-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "No remote website as native core runtime",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHAR-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Russian and foreign literary character catalog",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHAR-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Rights-cleared StoryWorld minimum",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHAR-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Character-to-work-author-country learning path",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHAR-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Asset-specific rights/provenance",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHAR-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Protected characters hidden until rights",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHAR-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Disney candidates blocked by default",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHAR-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "No Disney AI imitation/assets/SKU/marketing without license",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHAR-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "Disney territory/term/royalty/post-term workflow",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Up to four local profiles",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Exact age 3-17",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Per-work access decision",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Per-character/scene/media decision",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Separate search/cache/history/offline",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Policy restored before first content frame",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "No adult flash or route bypass",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "Secure Parent Gate",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-009",
+      "source": "V12 modular specs/full spec",
+      "summary": "Back/restart/deep-link/callback cannot bypass",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-010",
+      "source": "V12 modular specs/full spec",
+      "summary": "Child mode included in base purchase",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-011",
+      "source": "V12 modular specs/full spec",
+      "summary": "No price/Buy/ads/tracking/open AI chat",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHILD-012",
+      "source": "V12 modular specs/full spec",
+      "summary": "Parent data export/delete and age reconfirmation",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-001",
+      "source": "108",
+      "summary": "SAFE_PAID_BILINGUAL_V1 keeps child profiles local and disables child cloud/account/ads/analytics/uploads",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-002",
+      "source": "108;109",
+      "summary": "COPPA applicability and parental-consent gate are assessed before US child-data collection",
+      "priority": "P0",
+      "platforms": [
+        "us"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-003",
+      "source": "108;109",
+      "summary": "EU Member-State child-consent thresholds and lawful basis are assessed per territory",
+      "priority": "P0",
+      "platforms": [
+        "eu"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-004",
+      "source": "108;109",
+      "summary": "French age-15 consent and child-contract/privacy questions are reviewed when applicable",
+      "priority": "P0",
+      "platforms": [
+        "france"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-005",
+      "source": "108;109",
+      "summary": "UK Children's Code / age-appropriate design assessment is completed before UK launch",
+      "priority": "P0",
+      "platforms": [
+        "uk"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-006",
+      "source": "108",
+      "summary": "Any child account, sync, upload, notification, profiling or AI-input feature reopens legal/store gates",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-007",
+      "source": "108",
+      "summary": "Child-facing privacy notice is clear, age-appropriate and tied to actual data flow",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-008",
+      "source": "108",
+      "summary": "Parent can access/delete applicable child data and local profile",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-009",
+      "source": "108;109",
+      "summary": "Territory cannot launch while child legal/data-flow assessment is unknown",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CHPRIV-010",
+      "source": "108;109",
+      "summary": "Child jurisdiction evidence and owner/legal approval are generated per enabled territory",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Paid-upfront base distribution",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Complete Starter Set included",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Optional purchases non-consumable only",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "No subscription, ads, currency or loot boxes",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Store prices loaded from platform",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Server-authoritative verification",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Pending/cancel/restore/reinstall/refund/revoke handled",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "Web one-time license",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-009",
+      "source": "V12 modular specs/full spec",
+      "summary": "Platform scope disclosed",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-010",
+      "source": "V12 modular specs/full spec",
+      "summary": "Family sharing only when configured",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-011",
+      "source": "V12 modular specs/full spec",
+      "summary": "Google app not public-free before paid release",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-012",
+      "source": "V12 modular specs/full spec",
+      "summary": "RuStore current Pay SDK",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "COMMERCE-013",
+      "source": "V12 modular specs/full spec",
+      "summary": "Paid app agreements/prices gated",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Country/writer/work production screens",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Verified biographies and works",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "No generated real-person factual assets",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Deterministic web/mobile/child export",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Signed content manifests",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Atomic update/rollback",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Airplane-mode core",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "Interrupted download recovery",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-009",
+      "source": "V12 modular specs/full spec",
+      "summary": "Optional adult sync conflict policy",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CONTENT-010",
+      "source": "V12 modular specs/full spec",
+      "summary": "Content correction/emergency unpublish",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CUSTOM-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Included skins/stands/backgrounds/accessories",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CUSTOM-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Optional catalog scalable without runtime code",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CUSTOM-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Transactional same-runtime preview/apply/revert",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CUSTOM-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Full-3D truthful High/Balanced scenes",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CUSTOM-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Economy/static fallback",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CUSTOM-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Compatibility graph",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CUSTOM-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Bounded cache and explicit GPU disposal",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CUSTOM-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "30-switch stress",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "CUSTOM-009",
+      "source": "V12 modular specs/full spec",
+      "summary": "Owner self-service asset publication",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-001",
+      "source": "03A;27N",
+      "summary": "Store name defaults to «Литературная планета» and passes current limits",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-002",
+      "source": "27N",
+      "summary": "Installed name, listing, icon, splash and legal identity are consistent",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-003",
+      "source": "03A;27G",
+      "summary": "Apple Kids Category is not selected automatically",
+      "priority": "P0",
+      "platforms": [
+        "apple"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-004",
+      "source": "27G",
+      "summary": "Whole-binary sensitive-content inventory drives age ratings",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-005",
+      "source": "27C;27G",
+      "summary": "Google target audience matches actual child-facing experience",
+      "priority": "P0",
+      "platforms": [
+        "google-play"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-006",
+      "source": "27D;27G",
+      "summary": "RuStore age marking matches exact build",
+      "priority": "P0",
+      "platforms": [
+        "rustore"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-007",
+      "source": "27E",
+      "summary": "Stable reviewer account works without SMS OTP owner intervention or physical biometric",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-008",
+      "source": "27E",
+      "summary": "Review Parent PIN and instructions work from clean install",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-009",
+      "source": "27E",
+      "summary": "Review backend and credentials have automated health check",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-010",
+      "source": "27E;27O",
+      "summary": "Reviewer video and exact numbered path are generated",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-011",
+      "source": "27B;27C;27D",
+      "summary": "Sandbox optional product is reviewer-accessible on each configured store",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-012",
+      "source": "27B;27C;27D",
+      "summary": "Restore Purchases path is documented and tested",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-013",
+      "source": "03A;27A",
+      "summary": "Paid base and optional IAP are explained truthfully",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-014",
+      "source": "03A",
+      "summary": "Native digital products do not use prohibited web-checkout bypass",
+      "priority": "P0",
+      "platforms": [
+        "native"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-015",
+      "source": "03A;27I",
+      "summary": "Exact RC binary excludes all blocked and unlicensed assets",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-016",
+      "source": "14;27I",
+      "summary": "Disney/Pixar absent unless exact license, marketing and platform gates pass",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-017",
+      "source": "15;27I",
+      "summary": "Generated real-person portraits are absent",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-018",
+      "source": "27I",
+      "summary": "Every factual visual asset has provenance, checksum and approval",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-019",
+      "source": "27F;27I",
+      "summary": "Store screenshot marketing rights are validated independently",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-020",
+      "source": "27F",
+      "summary": "All store screenshots come from exact RC build",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-021",
+      "source": "27F;48",
+      "summary": "Concept collage is excluded from store submission",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-022",
+      "source": "27F",
+      "summary": "Screenshots contain canonical portraits, flags and verified content",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-023",
+      "source": "27F;27M",
+      "summary": "Every listing claim maps to an implemented RC feature",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-024",
+      "source": "27M",
+      "summary": "Metadata excludes fake prices, future functions and unverifiable claims",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-025",
+      "source": "27M",
+      "summary": "Store-specific listing excludes competing-store badges and links",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-026",
+      "source": "27H",
+      "summary": "Canonical data inventory is generated from exact code, SDK, backend and traffic",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-027",
+      "source": "27H",
+      "summary": "Apple privacy, Google Data Safety and RuStore declarations match inventory",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-028",
+      "source": "27H",
+      "summary": "Privacy policy is public, in-app and consistent",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-029",
+      "source": "27H",
+      "summary": "In-app account deletion works when account creation exists",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-030",
+      "source": "27H",
+      "summary": "Required public deletion path works and retention is disclosed",
+      "priority": "P0",
+      "platforms": [
+        "web",
+        "google-play"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-031",
+      "source": "27H",
+      "summary": "Release manifests contain only allowlisted necessary permissions",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-032",
+      "source": "27H",
+      "summary": "Narration does not request microphone permission",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-033",
+      "source": "27H",
+      "summary": "Every sensitive permission has rationale, declaration and denial path",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-034",
+      "source": "28;27J",
+      "summary": "Current Apple Xcode and iOS SDK requirements pass at RC",
+      "priority": "P0",
+      "platforms": [
+        "apple"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-035",
+      "source": "28;27J",
+      "summary": "Current Google target API and Billing requirements pass at RC",
+      "priority": "P0",
+      "platforms": [
+        "google-play"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-036",
+      "source": "28;27J",
+      "summary": "Current RuStore Pay SDK and signing requirements pass at RC",
+      "priority": "P0",
+      "platforms": [
+        "rustore"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-037",
+      "source": "03A;27J",
+      "summary": "Each store variant contains only its billing provider and update links",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-038",
+      "source": "27P;27O",
+      "summary": "Exact submitted artifact identity, checksum and content versions are frozen",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-039",
+      "source": "27P",
+      "summary": "Review build is reproducible from recorded source and toolchain",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-040",
+      "source": "27J",
+      "summary": "Clean-install and launch moderation smoke passes",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-041",
+      "source": "27J",
+      "summary": "Offline and slow network cannot create endless loader or data corruption",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-042",
+      "source": "27J",
+      "summary": "WebGL context loss, low memory and Economy fallback pass",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-043",
+      "source": "11;27J",
+      "summary": "Saved child mode exposes no adult frame during startup",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-044",
+      "source": "11;27B;27C",
+      "summary": "Parent Gate protects store, purchase, external links and mode exit",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-045",
+      "source": "11;27G",
+      "summary": "Child search, cache, history, offline and deep links are isolated",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-046",
+      "source": "27A;27B;27O",
+      "summary": "App Store review dossier is complete and bound to exact build",
+      "priority": "P0",
+      "platforms": [
+        "apple"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-047",
+      "source": "27A;27C;27O",
+      "summary": "Google Play review dossier is complete and bound to exact build",
+      "priority": "P0",
+      "platforms": [
+        "google-play"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-048",
+      "source": "27A;27D;27O",
+      "summary": "RuStore review dossier is complete and bound to exact build",
+      "priority": "P0",
+      "platforms": [
+        "rustore"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-049",
+      "source": "27K",
+      "summary": "Rejection intake, classification and ledger are implemented",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-050",
+      "source": "27K",
+      "summary": "Resubmission requires root-cause fix, regression and new artifact evidence",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-051",
+      "source": "27Q",
+      "summary": "Moderation precheck commands and CI gates fail closed",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "MOD-052",
+      "source": "27A;27L;27O",
+      "summary": "Owner receives exact submission and rejection instructions",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-001",
+      "source": "03B;90",
+      "summary": "All nonsecret owner decisions live in one owner-release-inputs.json",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-002",
+      "source": "90",
+      "summary": "Owner input validates against JSON Schema",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-003",
+      "source": "03B;85",
+      "summary": "Safe defaults are applied without repeated clarification",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-004",
+      "source": "03B;102",
+      "summary": "One Russian missing-input report groups all owner blockers",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-005",
+      "source": "03B",
+      "summary": "Same owner value is never manually entered in multiple generated files",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-006",
+      "source": "03B;92",
+      "summary": "Secrets are referenced by name only and never logged or committed",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-007",
+      "source": "92",
+      "summary": "Every signing/API/payment secret has owner, scope, backup, rotation and revocation",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-008",
+      "source": "03B;85",
+      "summary": "SAFE_PAID_BILINGUAL_V1 is the default first public release profile",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-009",
+      "source": "03B;85",
+      "summary": "Native first release is accountless-first",
+      "priority": "P0",
+      "platforms": [
+        "native"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-010",
+      "source": "03B;85",
+      "summary": "Account feature cannot enable without deletion/privacy/reviewer-access gates",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-011",
+      "source": "03B;85",
+      "summary": "Push and behavioural analytics are disabled in V1",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-012",
+      "source": "85",
+      "summary": "No unfinished locale is included",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-013",
+      "source": "03B;85",
+      "summary": "First review uses at most one fully ready original optional non-consumable",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-014",
+      "source": "85",
+      "summary": "Optional IAP may be safely disabled per platform without harming paid base app",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-015",
+      "source": "03B;85",
+      "summary": "Disney/Pixar and all unlicensed packs remain absent from first production release",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-016",
+      "source": "97",
+      "summary": "release:prepare:all generates all release packages without production submission",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-017",
+      "source": "03B;88",
+      "summary": "All store upload commands default to dry-run",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-018",
+      "source": "88;105",
+      "summary": "Draft upload requires explicit owner confirmation and exact artifact hash",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-019",
+      "source": "03B;88",
+      "summary": "No automation accepts legal agreements, releases production or merges main",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-020",
+      "source": "88;98",
+      "summary": "Apple metadata/build upload automation uses official supported paths",
+      "priority": "P1",
+      "platforms": [
+        "apple"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-021",
+      "source": "88;98",
+      "summary": "Google Play draft/listing/track automation uses transactional Publishing API edits",
+      "priority": "P1",
+      "platforms": [
+        "google-play"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-022",
+      "source": "88;98",
+      "summary": "RuStore draft/version automation uses current Public API where supported",
+      "priority": "P1",
+      "platforms": [
+        "rustore"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-023",
+      "source": "88;97",
+      "summary": "Web/PWA automation deploys staging and validates entitlement/webhooks",
+      "priority": "P1",
+      "platforms": [
+        "web-pwa"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-024",
+      "source": "93",
+      "summary": "Exact store console field worksheets are generated from owner input and RC",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-025",
+      "source": "96;100;101",
+      "summary": "Owner receives direct file/field/section instructions with no programming task",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-026",
+      "source": "86;104",
+      "summary": "Apple DSA trader status workflow and evidence are prepared",
+      "priority": "P0",
+      "platforms": [
+        "apple-eu"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-027",
+      "source": "86;104",
+      "summary": "Apple export-compliance encryption inventory and questionnaire are prepared",
+      "priority": "P0",
+      "platforms": [
+        "apple"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-028",
+      "source": "86;104",
+      "summary": "French encryption documentation decision is recorded when relevant",
+      "priority": "P0",
+      "platforms": [
+        "apple-france"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-029",
+      "source": "86",
+      "summary": "Privacy manifests, Required Reason APIs and Xcode privacy report are audited",
+      "priority": "P0",
+      "platforms": [
+        "apple"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-030",
+      "source": "86",
+      "summary": "Accessibility product-page declarations are generated from tested features",
+      "priority": "P1",
+      "platforms": [
+        "apple"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-031",
+      "source": "87;104",
+      "summary": "Android developer verification/package/signing registration is prepared",
+      "priority": "P0",
+      "platforms": [
+        "android"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-032",
+      "source": "87;104",
+      "summary": "Affected-country developer-verification rollout is rechecked before release",
+      "priority": "P0",
+      "platforms": [
+        "android"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-033",
+      "source": "03B;94",
+      "summary": "Public release uses SAFE_INITIAL rather than worldwide by default",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-034",
+      "source": "94",
+      "summary": "Every territory passes payment, legal, language, support and rights gates",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-035",
+      "source": "86;104",
+      "summary": "Current Apple EU business terms are rechecked at actual release date",
+      "priority": "P0",
+      "platforms": [
+        "apple-eu"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-036",
+      "source": "03B;100",
+      "summary": "FINAL_OWNER_APPROVAL_RU.html and Markdown are generated",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-037",
+      "source": "03B;100",
+      "summary": "Owner approvals propagate to all platform packages",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-038",
+      "source": "97",
+      "summary": "Owner handoff folder contains every artifact needed for submission",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-039",
+      "source": "96;101",
+      "summary": "Final owner actions contain no source-code or manual JSON work",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-040",
+      "source": "99;106",
+      "summary": "First 72-hour launch monitoring and incident runbook are prepared",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-041",
+      "source": "99;106",
+      "summary": "Release is manual or staged and can pause on P0/P1",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-042",
+      "source": "89;95",
+      "summary": "Codex reads stage-routed documents instead of full package every session",
+      "priority": "P0",
+      "platforms": [
+        "codex"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-043",
+      "source": "89",
+      "summary": "Standalone prompt is recovery fallback and is not read twice",
+      "priority": "P0",
+      "platforms": [
+        "codex"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-044",
+      "source": "89",
+      "summary": "Every session leaves a self-contained checkpoint with next routed docs",
+      "priority": "P0",
+      "platforms": [
+        "codex"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-045",
+      "source": "103",
+      "summary": "Ready-internal, draft-ready, submitted, approved and released statuses remain distinct",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-046",
+      "source": "110",
+      "summary": "Owner receives one self-contained handoff folder with every submission artifact",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-047",
+      "source": "110",
+      "summary": "Owner handoff contains exact field values, file paths and step-by-step store instructions",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-048",
+      "source": "110",
+      "summary": "Owner handoff usability is tested with a fresh-reader review",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-049",
+      "source": "111",
+      "summary": "SAFE_PAID_BILINGUAL_V1 defaults exist as a machine-readable canonical config",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-050",
+      "source": "112",
+      "summary": "Owner action minimization matrix proves zero programming actions for owner",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-051",
+      "source": "113",
+      "summary": "Owner approval state is machine-readable, hashable and artifact-bound",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-052",
+      "source": "114",
+      "summary": "Owner handoff index is machine-readable and requires zero owner programming tasks",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-053",
+      "source": "103;115",
+      "summary": "Release automation starts from a validated machine-readable state",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-054",
+      "source": "116",
+      "summary": "Codex stop conditions distinguish internal failures from objective external blockers",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OMIN-055",
+      "source": "113;117",
+      "summary": "Offline owner approval HTML template exports a schema-valid hashable approval record",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Owner self-service CMS/commerce/rights",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Feature flags cannot weaken safety",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Health dashboard and redacted diagnostics",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Support/runbooks and severity matrix",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Database/media/metadata backups",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Verified restore drills",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Release train/staged rollout/rollback",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "App-review rejection playbooks",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-009",
+      "source": "V12 modular specs/full spec",
+      "summary": "Maintenance calendar/EOL policy",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "OPS-010",
+      "source": "V12 modular specs/full spec",
+      "summary": "Final no-return handoff",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PERF-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Cold/warm startup budgets",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PERF-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "High/Balanced/Economy tiers",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PERF-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Idle rendering bounded",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PERF-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Memory/GPU leak-free soak",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PERF-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Low-memory/context recovery",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PERF-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Device and thermal matrix",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PERF-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Bundle/package budgets",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PERF-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "Background/resume listener stability",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLANETKA-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Original mascot separate from globe surface",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLANETKA-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Mouth below eyes; hands/legs fully visible",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLANETKA-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Scripted reviewed sourced dialogue",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLANETKA-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Age-adaptive journeys",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLANETKA-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Offline/error helper",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLANETKA-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Reduced motion/captions/narration rights",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLANETKA-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "No purchase promotion",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLANETKA-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "Journey checkpoint/resume/migration",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLATFORM-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Installable paid Web/PWA with safe Service Worker",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLATFORM-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Android Google Play variant and AAB",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLATFORM-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Android RuStore variant and artifact",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLATFORM-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Android QA APK",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLATFORM-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "iOS/iPadOS native project and simulator build",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLATFORM-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "iOS archive configuration/archive when signing exists",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLATFORM-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Safe-area/orientation/lifecycle/deep links",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "PLATFORM-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "Current official SDK/API requirements rechecked",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "SEC-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Threat model and security tests",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "SEC-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "No client secrets/self-grant",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "SEC-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Deep-link/content/package validation",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "SEC-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Admin RBAC/audit/dry-run",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "SEC-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "Secret scan/dependency audit/SBOM",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "SEC-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "Minimal permissions and child privacy",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "SEC-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Data export/deletion/retention",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "SEC-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "Signed artifacts/manifests and anti-rollback",
+      "priority": "P0",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "UX-001",
+      "source": "V12 modular specs/full spec",
+      "summary": "Orange native and branded splash with logo top-left",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "UX-002",
+      "source": "V12 modular specs/full spec",
+      "summary": "Adult navigation prioritizes Planet",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "UX-003",
+      "source": "V12 modular specs/full spec",
+      "summary": "Child navigation prioritizes Planetka/learning",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "UX-004",
+      "source": "V12 modular specs/full spec",
+      "summary": "Canonical violet/orange design system",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "UX-005",
+      "source": "V12 modular specs/full spec",
+      "summary": "One dominant CTA per screen",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "UX-006",
+      "source": "V12 modular specs/full spec",
+      "summary": "All loading/empty/error/offline states",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "UX-007",
+      "source": "V12 modular specs/full spec",
+      "summary": "Visual reference used only as composition guide",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    },
+    {
+      "id": "UX-008",
+      "source": "V12 modular specs/full spec",
+      "summary": "Real release screenshots and truthful marketing",
+      "priority": "P1",
+      "platforms": [
+        "all"
+      ],
+      "status": "OPEN",
+      "implementationFiles": [],
+      "tests": [],
+      "evidence": [],
+      "commit": "",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+    }
+  ]
+}

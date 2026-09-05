@@ -1,0 +1,214 @@
+{
+  "version": "12.0",
+  "stage": "S01",
+  "scope": "Architecture/traceability milestones only; global product requirements remain incomplete.",
+  "milestones": [
+    {
+      "id": "S01.architecture",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "scripts/mobile/platform-boundaries.mjs",
+        "src/platform/productPolicy.ts"
+      ],
+      "notes": "Stage foundation acceptance; global requirements remain separate."
+    },
+    {
+      "id": "S01.traceability",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "scripts/mobile/state.mjs",
+        "scripts/mobile/schema.mjs",
+        "scripts/mobile/evidence.mjs",
+        "scripts/mobile/verify-state.mjs",
+        "docs/mobile/STAGE_REQUIREMENT_MAP.json"
+      ],
+      "notes": "Stage foundation acceptance; global requirements remain separate."
+    },
+    {
+      "id": "S01.BIL-001",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
+      "notes": "Russian and English are mandatory production locales. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "S01.BIL-010",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
+      "notes": "Language is never inferred from IP nationality SIM or store country. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "S01.BIL-107",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
+      "notes": "Future third locales cannot weaken or delay complete Russian and English release. Architectural extensibility cannot advertise a third locale or weaken either required RU/EN release."
+    },
+    {
+      "id": "S01.CANON-001",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "scripts/mobile/platform-boundaries.mjs"
+      ],
+      "notes": "Existing site Literary Planet is sole globe foundation. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "S01.CANON-002",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "docs/mobile/evidence/S00/current-main-canonical-delta.json"
+      ],
+      "notes": "Shared IDs/coordinates/editions/textures across clients. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "S01.CANON-004",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "docs/mobile/evidence/S00/current-main-canonical-delta.json"
+      ],
+      "notes": "Canonical CMS is only factual content source. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "S01.CANON-006",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "docs/mobile/STAGE_REQUIREMENT_MAP.json"
+      ],
+      "notes": "Site/Web/PWA/Android/iOS parity gates. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "S01.CANON-007",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "scripts/lib/stage5-content-data-lock.test.mjs",
+        "docs/mobile/evidence/S00/current-main-baseline-results.json"
+      ],
+      "notes": "Public site and admin remain regression-safe. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "S01.CANON-008",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "scripts/mobile/platform-boundaries.mjs",
+        "scripts/mobile/platform-boundaries.test.mjs"
+      ],
+      "notes": "No remote website as native core runtime. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "S01.OMIN-003",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "docs/mobile/EXECUTION_STATE.md"
+      ],
+      "notes": "Safe defaults are applied without repeated clarification. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "S01.OMIN-008",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "docs/mobile/AUTOPILOT_STATE.json"
+      ],
+      "notes": "SAFE_PAID_BILINGUAL_V1 is the default first public release profile. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "S01.OMIN-019",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
+      "notes": "No automation accepts legal agreements, releases production or merges main. Encode the user's prohibition on automatic agreements, Submit, Release, deploy and merge; no external action is performed."
+    },
+    {
+      "id": "S01.OMIN-042",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "scripts/mobile/stage-context.mjs",
+        "scripts/mobile/requirements.test.mjs",
+        "scripts/mobile/verify-state.mjs"
+      ],
+      "notes": "Codex reads stage-routed documents instead of full package every session. S01 installs routing controls; later checkpoint audits verify bounded document loading throughout execution."
+    },
+    {
+      "id": "S01.OMIN-043",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "scripts/mobile/stage-context.mjs",
+        "scripts/mobile/verify-state.mjs"
+      ],
+      "notes": "Standalone prompt is recovery fallback and is not read twice. Recovery controls prevent repeated standalone loading; later checkpoint audits verify the rule."
+    },
+    {
+      "id": "S01.OMIN-044",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "scripts/mobile/verify-state.mjs",
+        "docs/mobile/NEXT_CODEX_PROMPT.txt"
+      ],
+      "notes": "Every session leaves a self-contained checkpoint with next routed docs. S01 defines persistent checkpoint semantics; later handoff checkpoints audit their continued usability."
+    },
+    {
+      "id": "S01.OMIN-045",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "scripts/mobile/state.mjs",
+        "scripts/mobile/state.test.mjs",
+        "docs/mobile/EXECUTION_STATE.md"
+      ],
+      "notes": "Ready-internal, draft-ready, submitted, approved and released statuses remain distinct. Schema/state transitions must distinguish internal readiness, drafts and actual external release events."
+    },
+    {
+      "id": "S01.OMIN-054",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "scripts/mobile/state.mjs",
+        "scripts/mobile/state.test.mjs",
+        "docs/mobile/EXECUTION_STATE.md"
+      ],
+      "notes": "Codex stop conditions distinguish internal failures from objective external blockers. S01 defines separate internal/external blocker semantics; checkpoints must not reclassify unfinished code or translation as owner work."
+    },
+    {
+      "id": "S01.OPS-002",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "src/platform/productPolicy.ts",
+        "src/platform/productPolicy.test.ts"
+      ],
+      "notes": "Feature flags cannot weaken safety. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "S01.SEC-001",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "scripts/mobile/platform-boundaries.test.mjs",
+        "scripts/mobile/evidence.test.mjs",
+        "docs/mobile/PLATFORM_ARCHITECTURE.md"
+      ],
+      "notes": "Threat model and security tests. Boundary design and implementation precede executable security and artifact inspection gates."
+    },
+    {
+      "id": "S01.SEC-002",
+      "status": "PASS_ARCHITECTURE_MILESTONE",
+      "implementationFiles": [
+        "src/platform/productPolicy.test.ts",
+        "docs/mobile/PLATFORM_ARCHITECTURE.md",
+        "docs/mobile/evidence/S00/current-main-baseline-results.json"
+      ],
+      "notes": "No client secrets/self-grant. Boundary design and implementation precede executable security and artifact inspection gates."
+    }
+  ]
+}

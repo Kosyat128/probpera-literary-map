@@ -1,0 +1,4295 @@
+{
+  "version": "12.0",
+  "requirements": [
+    {
+      "id": "A11Y-001",
+      "implementationStages": [
+        "S07",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S39"
+      ],
+      "rationale": "VoiceOver/TalkBack core flows. Shared interaction/native accessibility precedes integrated and localized device evidence."
+    },
+    {
+      "id": "A11Y-002",
+      "implementationStages": [
+        "S07",
+        "S09"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Accessible non-3D country/writer path. Shared interaction/native accessibility precedes integrated and localized device evidence."
+    },
+    {
+      "id": "A11Y-003",
+      "implementationStages": [
+        "S04",
+        "S07",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Large text/Dynamic Type. Shared interaction/native accessibility precedes integrated and localized device evidence."
+    },
+    {
+      "id": "A11Y-004",
+      "implementationStages": [
+        "S07",
+        "S14",
+        "S15",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S24",
+        "S39"
+      ],
+      "rationale": "Reduced motion and sensory quiet mode. Shared interaction/native accessibility precedes integrated and localized device evidence."
+    },
+    {
+      "id": "A11Y-005",
+      "implementationStages": [
+        "S05",
+        "S07",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S39"
+      ],
+      "rationale": "44x44 controls and focus semantics. Shared interaction/native accessibility precedes integrated and localized device evidence."
+    },
+    {
+      "id": "A11Y-006",
+      "implementationStages": [
+        "S02",
+        "S23",
+        "S36",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "rationale": "RU complete and reviewed EN architecture. Shared interaction/native accessibility precedes integrated and localized device evidence."
+    },
+    {
+      "id": "A11Y-007",
+      "implementationStages": [
+        "S15",
+        "S23",
+        "S39"
+      ],
+      "validationStages": [
+        "S23",
+        "S39"
+      ],
+      "rationale": "Rights-aware captions/narration/audio. Shared interaction/native accessibility precedes integrated and localized device evidence."
+    },
+    {
+      "id": "A11Y-008",
+      "implementationStages": [
+        "S07",
+        "S15",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S39"
+      ],
+      "rationale": "No colour/motion/audio-only meaning. Shared interaction/native accessibility precedes integrated and localized device evidence."
+    },
+    {
+      "id": "BIL-001",
+      "implementationStages": [
+        "S01",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "rationale": "Russian and English are mandatory production locales. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-002",
+      "implementationStages": [
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "rationale": "Unsupported system locales fall back to English. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-003",
+      "implementationStages": [
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "rationale": "Russian device preference starts Russian; other unsupported preferences start English. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-004",
+      "implementationStages": [
+        "S05",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S37",
+        "S39"
+      ],
+      "rationale": "Visible onboarding and Settings language selector exists. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-005",
+      "implementationStages": [
+        "S06",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "rationale": "Language switch preserves the same globe Canvas and camera. Shared globe integration precedes locale-only transitions; verify persistent Canvas/renderer/camera identity at S36 and S39."
+    },
+    {
+      "id": "BIL-006",
+      "implementationStages": [
+        "S10",
+        "S21",
+        "S36"
+      ],
+      "validationStages": [
+        "S10",
+        "S21",
+        "S36",
+        "S39"
+      ],
+      "rationale": "Language switch preserves country writer work route and entitlements. S10 checks shared semantic navigation, S21 entitlements and S36 switching; complete bilingual state preservation remains open through S39."
+    },
+    {
+      "id": "BIL-007",
+      "implementationStages": [
+        "S05",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "rationale": "Language choice is resolved before first content frame. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-008",
+      "implementationStages": [
+        "S16",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "rationale": "Child mode and exact-age policy survive language changes. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-009",
+      "implementationStages": [
+        "S16",
+        "S36"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Parent may lock child profile language without blocking safety. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-010",
+      "implementationStages": [
+        "S01",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "rationale": "Language is never inferred from IP nationality SIM or store country. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-011",
+      "implementationStages": [
+        "S02",
+        "S36"
+      ],
+      "validationStages": [
+        "S36"
+      ],
+      "rationale": "Shared TypeScript catalogs are type-safe and ICU-compatible. Extract shared typed catalog boundaries before S36 ICU/type compatibility validation; this does not certify complete translations."
+    },
+    {
+      "id": "BIL-012",
+      "implementationStages": [
+        "S23",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S37",
+        "S39"
+      ],
+      "rationale": "User-facing hardcoded string scanner fails release. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-013",
+      "implementationStages": [
+        "S36",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "rationale": "Placeholder names types and counts match across locales. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-014",
+      "implementationStages": [
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S37",
+        "S39"
+      ],
+      "rationale": "Plural/select messages are locale-correct and not concatenated. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-015",
+      "implementationStages": [
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S37",
+        "S39"
+      ],
+      "rationale": "Dates numbers currencies and lists use locale-aware APIs. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-016",
+      "implementationStages": [
+        "S04",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "rationale": "Native iOS strings and app language support are localized. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-017",
+      "implementationStages": [
+        "S04",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "rationale": "Android default/Russian resources and localeConfig are complete. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-018",
+      "implementationStages": [
+        "S04",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "rationale": "Android per-app language preferences support ru and en. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-019",
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "rationale": "HTML lang SSR metadata canonical and hreflang are correct. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-020",
+      "implementationStages": [
+        "S08",
+        "S36",
+        "S39"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "rationale": "Translation packages are signed/checksummed and cannot execute code. Locale/runtime contracts precede native/web integration and state-preserving bilingual validation."
+    },
+    {
+      "id": "BIL-021",
+      "implementationStages": [
+        "S08",
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Every English unit stores immutable Russian source hash. Canonical source/provenance and editorial approval controls precede complete translated-unit validation."
+    },
+    {
+      "id": "BIL-022",
+      "implementationStages": [
+        "S08",
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Source change marks affected English translations STALE. Canonical source/provenance and editorial approval controls precede complete translated-unit validation."
+    },
+    {
+      "id": "BIL-023",
+      "implementationStages": [
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Raw machine translation cannot reach production. Canonical source/provenance and editorial approval controls precede complete translated-unit validation."
+    },
+    {
+      "id": "BIL-024",
+      "implementationStages": [
+        "S38"
+      ],
+      "validationStages": [
+        "S38"
+      ],
+      "rationale": "Glossary and translation memory are versioned and enforced. Canonical source/provenance and editorial approval controls precede complete translated-unit validation."
+    },
+    {
+      "id": "BIL-025",
+      "implementationStages": [
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Independent semantic review detects additions omissions and changed negation. Canonical source/provenance and editorial approval controls precede complete translated-unit validation."
+    },
+    {
+      "id": "BIL-026",
+      "implementationStages": [
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Citations links markup numbers and protected spans remain intact. Canonical source/provenance and editorial approval controls precede complete translated-unit validation."
+    },
+    {
+      "id": "BIL-027",
+      "implementationStages": [
+        "S26",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "English legal privacy and commerce statements require owner/legal approval. Canonical source/provenance and editorial approval controls precede complete translated-unit validation."
+    },
+    {
+      "id": "BIL-028",
+      "implementationStages": [
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S40"
+      ],
+      "rationale": "Translation metrics expose missing stale blocked and semantic-delta units. Canonical source/provenance and editorial approval controls precede complete translated-unit validation."
+    },
+    {
+      "id": "BIL-029",
+      "implementationStages": [
+        "S09",
+        "S38"
+      ],
+      "validationStages": [
+        "S38"
+      ],
+      "rationale": "English writer display names use verified established forms when available. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-030",
+      "implementationStages": [
+        "S09",
+        "S38"
+      ],
+      "validationStages": [
+        "S38"
+      ],
+      "rationale": "Native/original names and verified aliases are preserved. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-031",
+      "implementationStages": [
+        "S09",
+        "S38"
+      ],
+      "validationStages": [
+        "S38"
+      ],
+      "rationale": "English work titles use verified published titles or labelled fallback. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-032",
+      "implementationStages": [
+        "S09",
+        "S38"
+      ],
+      "validationStages": [
+        "S38"
+      ],
+      "rationale": "Guessed translation is never presented as an official English title. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-033",
+      "implementationStages": [
+        "S08",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S40"
+      ],
+      "rationale": "English quotations are rights-cleared or replaced by unquoted summary. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-034",
+      "implementationStages": [
+        "S09",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S38"
+      ],
+      "rationale": "Modern country names use ISO identity and locale display data with editorial exceptions. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-035",
+      "implementationStages": [
+        "S06",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Historical artifact inscriptions remain original with localized explanation. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-036",
+      "implementationStages": [
+        "S10",
+        "S38"
+      ],
+      "validationStages": [
+        "S10",
+        "S38",
+        "S39"
+      ],
+      "rationale": "Search indexes Russian English native and verified transliteration aliases. S10 establishes canonical alias/index plumbing; S38 completes verified RU/EN/native/transliteration coverage, followed by bilingual QA."
+    },
+    {
+      "id": "BIL-037",
+      "implementationStages": [
+        "S10",
+        "S38"
+      ],
+      "validationStages": [
+        "S10",
+        "S38",
+        "S39"
+      ],
+      "rationale": "Cross-language search resolves the same entity IDs. S10 validates shared result identities; complete cross-language entity resolution is validated after English index implementation."
+    },
+    {
+      "id": "BIL-038",
+      "implementationStages": [
+        "S10",
+        "S16",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Alias resolution cannot bypass child policy. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-039",
+      "implementationStages": [
+        "S10",
+        "S36",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Sorting and matching use locale-aware collators and conservative fuzzy rules. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-040",
+      "implementationStages": [
+        "S12",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Base Edition English content coverage is exactly 100 percent. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-041",
+      "implementationStages": [
+        "S09",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Untranslated Base Edition content never silently falls back to Russian in English UI. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-042",
+      "implementationStages": [
+        "S13",
+        "S19",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Optional packs are enabled independently per locale and hidden until complete. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-043",
+      "implementationStages": [
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "English factual claims remain propositionally equivalent to canonical Russian source. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-044",
+      "implementationStages": [
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "CMS provides source-target diff glossary memory preview review and rollback. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-045",
+      "implementationStages": [
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "CMS tracks factual child rights legal and publish approvals separately. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-046",
+      "implementationStages": [
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Bulk translation publication requires dry-run and audit trail. Canonical names/content/search/CMS ownership precedes reviewed English content and policy parity."
+    },
+    {
+      "id": "BIL-047",
+      "implementationStages": [
+        "S16",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "English child content is complete and exact-age reviewed. Shared guide/child/offline features precede complete English text/audio/package validation."
+    },
+    {
+      "id": "BIL-048",
+      "implementationStages": [
+        "S15",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Planetka has natural verified age-banded English dialogue. Shared guide/child/offline features precede complete English text/audio/package validation."
+    },
+    {
+      "id": "BIL-049",
+      "implementationStages": [
+        "S15",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Planetka English dialogue contains no purchase pressure or personal-data request. Shared guide/child/offline features precede complete English text/audio/package validation."
+    },
+    {
+      "id": "BIL-050",
+      "implementationStages": [
+        "S15",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "English audio has script hash transcript pronunciation rights and territory data. Shared guide/child/offline features precede complete English text/audio/package validation."
+    },
+    {
+      "id": "BIL-051",
+      "implementationStages": [
+        "S15",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Celebrity character and real-writer voice cloning is prohibited. Shared guide/child/offline features precede complete English text/audio/package validation."
+    },
+    {
+      "id": "BIL-052",
+      "implementationStages": [
+        "S15",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Missing English audio falls back to English text not Russian speech. Shared guide/child/offline features precede complete English text/audio/package validation."
+    },
+    {
+      "id": "BIL-053",
+      "implementationStages": [
+        "S11",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Locale-specific text search and audio packs share deduplicated common assets. Shared guide/child/offline features precede complete English text/audio/package validation."
+    },
+    {
+      "id": "BIL-054",
+      "implementationStages": [
+        "S11",
+        "S16",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "English included offline child and emergency content is complete. Shared guide/child/offline features precede complete English text/audio/package validation."
+    },
+    {
+      "id": "BIL-055",
+      "implementationStages": [
+        "S26",
+        "S37",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "App Store English and Russian metadata/localized screenshots are prepared. Prepare localized store/legal/support surfaces before exact-RC and approval-dependent acceptance."
+    },
+    {
+      "id": "BIL-056",
+      "implementationStages": [
+        "S26",
+        "S37",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Google English default and Russian translation are manually quality-controlled. Prepare localized store/legal/support surfaces before exact-RC and approval-dependent acceptance."
+    },
+    {
+      "id": "BIL-057",
+      "implementationStages": [
+        "S37",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Custom store listings have explicit translations and do not rely on automatic translation. Prepare localized store/legal/support surfaces before exact-RC and approval-dependent acceptance."
+    },
+    {
+      "id": "BIL-058",
+      "implementationStages": [
+        "S26",
+        "S37",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "RuStore Russian listing and selectable English app experience pass moderation. Prepare localized store/legal/support surfaces before exact-RC and approval-dependent acceptance."
+    },
+    {
+      "id": "BIL-059",
+      "implementationStages": [
+        "S30",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Localized screenshots are captured from the exact RC in the target language. Prepare localized store/legal/support surfaces before exact-RC and approval-dependent acceptance."
+    },
+    {
+      "id": "BIL-060",
+      "implementationStages": [
+        "S29",
+        "S37",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "English review notes match actual English labels and paths. Prepare localized store/legal/support surfaces before exact-RC and approval-dependent acceptance."
+    },
+    {
+      "id": "BIL-061",
+      "implementationStages": [
+        "S26",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "Russian and English Privacy Terms Support and deletion documents are synchronized. Prepare localized store/legal/support surfaces before exact-RC and approval-dependent acceptance."
+    },
+    {
+      "id": "BIL-062",
+      "implementationStages": [
+        "S33",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "Controlling legal language is owner/legal approved and disclosed. Prepare localized store/legal/support surfaces before exact-RC and approval-dependent acceptance."
+    },
+    {
+      "id": "BIL-063",
+      "implementationStages": [
+        "S27",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "Bilingual support intake and realistic response SLA exist for enabled territories. Prepare localized store/legal/support surfaces before exact-RC and approval-dependent acceptance."
+    },
+    {
+      "id": "BIL-064",
+      "implementationStages": [
+        "S36",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Pseudo locale hardcoded placeholder and mixed-language scans pass. Static contracts precede full bilingual critical-path, device and accessibility testing."
+    },
+    {
+      "id": "BIL-065",
+      "implementationStages": [
+        "S23",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Russian and English layout/accessibility tests pass at all critical sizes. Static contracts precede full bilingual critical-path, device and accessibility testing."
+    },
+    {
+      "id": "BIL-066",
+      "implementationStages": [
+        "S36",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "rationale": "No critical accidental Cyrillic/raw key appears in English UI. Static contracts precede full bilingual critical-path, device and accessibility testing."
+    },
+    {
+      "id": "BIL-067",
+      "implementationStages": [
+        "S25",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Every bilingual critical path passes clean install offline purchase and failure injection. Static contracts precede full bilingual critical-path, device and accessibility testing."
+    },
+    {
+      "id": "BIL-068",
+      "implementationStages": [
+        "S27",
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "English README start resume post-build and owner approval materials exist. Final release gate and handoff require completed artifact-bound bilingual evidence."
+    },
+    {
+      "id": "BIL-069",
+      "implementationStages": [
+        "S34",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Bilingual metrics and publishing gate must pass before owner submission. Final release gate and handoff require completed artifact-bound bilingual evidence."
+    },
+    {
+      "id": "BIL-070",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Final owner handoff contains Russian and English store/legal/reviewer artifacts with no owner translation task. Final release gate and handoff require completed artifact-bound bilingual evidence."
+    },
+    {
+      "id": "BIL-071",
+      "implementationStages": [
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "English editorial base uses controlled international en-US style and owner-approved brand names. Controlled English editorial style must preserve canonical facts and child-safety meaning."
+    },
+    {
+      "id": "BIL-072",
+      "implementationStages": [
+        "S36",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S40"
+      ],
+      "rationale": "Optional en-GB differences are small reviewed overlays, not a forked content database. Optional en-GB differences remain a reviewed overlay; do not create another database or advertise an unfinished locale."
+    },
+    {
+      "id": "BIL-073",
+      "implementationStages": [
+        "S38",
+        "S39"
+      ],
+      "validationStages": [
+        "S39"
+      ],
+      "rationale": "Adult, child and Planetka English tones follow separate factual and safety rules. Controlled English editorial style must preserve canonical facts and child-safety meaning."
+    },
+    {
+      "id": "BIL-074",
+      "implementationStages": [
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Protected facts, names, titles, citations and legal terms cannot be changed by style editing. Controlled English editorial style must preserve canonical facts and child-safety meaning."
+    },
+    {
+      "id": "BIL-075",
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "rationale": "Russian and English public pages use stable locale routes and reciprocal hreflang. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation."
+    },
+    {
+      "id": "BIL-076",
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "rationale": "English pages are self-canonical approved translations and are not canonicalized to Russian. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation."
+    },
+    {
+      "id": "BIL-077",
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "rationale": "Server/prerender language metadata and body match before hydration. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation."
+    },
+    {
+      "id": "BIL-078",
+      "implementationStages": [
+        "S36",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S40"
+      ],
+      "rationale": "Draft stale or rights-blocked English pages are not indexable. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation."
+    },
+    {
+      "id": "BIL-079",
+      "implementationStages": [
+        "S03",
+        "S36",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "Localized sitemaps structured data social metadata 404 and PWA discovery pass. Web locale architecture precedes reviewed indexability and exact-candidate SEO validation."
+    },
+    {
+      "id": "BIL-080",
+      "implementationStages": [
+        "S26",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "Every legal privacy refund deletion child and support document has synchronized ru/en versions. Paired legal documents require stale propagation, explicit controlling-language approval and release checks."
+    },
+    {
+      "id": "BIL-081",
+      "implementationStages": [
+        "S33",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "Controlling legal language and territory applicability are explicitly owner/legal approved. Paired legal documents require stale propagation, explicit controlling-language approval and release checks."
+    },
+    {
+      "id": "BIL-082",
+      "implementationStages": [
+        "S22",
+        "S37",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S40"
+      ],
+      "rationale": "A change to one legal locale marks the paired locale stale and blocks affected rollout. Paired legal documents require stale propagation, explicit controlling-language approval and release checks."
+    },
+    {
+      "id": "BIL-083",
+      "implementationStages": [
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38"
+      ],
+      "rationale": "AI or machine translation is draft assistance only and cannot approve or publish content. Provider governance and traceable draft assistance must be enforced before editorial publication."
+    },
+    {
+      "id": "BIL-084",
+      "implementationStages": [
+        "S23",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Child data credentials secrets contracts and unlicensed texts are not sent to translation providers. Provider governance and traceable draft assistance must be enforced before editorial publication."
+    },
+    {
+      "id": "BIL-085",
+      "implementationStages": [
+        "S23",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Every translation provider has data retention training region rights security and disable records. Provider governance and traceable draft assistance must be enforced before editorial publication."
+    },
+    {
+      "id": "BIL-086",
+      "implementationStages": [
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38"
+      ],
+      "rationale": "Generated draft provenance records model prompt source glossary and human review. Provider governance and traceable draft assistance must be enforced before editorial publication."
+    },
+    {
+      "id": "BIL-087",
+      "implementationStages": [
+        "S27",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "Russian and English support intake and critical response templates exist for every enabled territory. Localized operational/child-support flows must match actual safe first-release behavior."
+    },
+    {
+      "id": "BIL-088",
+      "implementationStages": [
+        "S16",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "rationale": "Child support never asks a child for personal data and routes sensitive action to a parent. Localized operational/child-support flows must match actual safe first-release behavior."
+    },
+    {
+      "id": "BIL-089",
+      "implementationStages": [
+        "S23",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "rationale": "Security deletion entitlement and incident messages are fully localized and never mixed-language. Localized operational/child-support flows must match actual safe first-release behavior."
+    },
+    {
+      "id": "BIL-090",
+      "implementationStages": [
+        "S32",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "Push stays disabled in first release and future notifications require ru/en and child-safe deep links. Localized operational/child-support flows must match actual safe first-release behavior."
+    },
+    {
+      "id": "BIL-091",
+      "implementationStages": [
+        "S34",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Machine-readable bilingual release evidence binds coverage content child stores legal web and offline to artifact SHA. Independent content quality and platform evidence feed the final artifact-bound release/handoff gate."
+    },
+    {
+      "id": "BIL-092",
+      "implementationStages": [
+        "S09",
+        "S38"
+      ],
+      "validationStages": [
+        "S38"
+      ],
+      "rationale": "English name title quotation place character and institution evidence follows the dedicated matrix. Independent content quality and platform evidence feed the final artifact-bound release/handoff gate."
+    },
+    {
+      "id": "BIL-093",
+      "implementationStages": [
+        "S38",
+        "S39"
+      ],
+      "validationStages": [
+        "S39",
+        "S40"
+      ],
+      "rationale": "Weighted translation quality scorecard reaches every mandatory target before release. Independent content quality and platform evidence feed the final artifact-bound release/handoff gate."
+    },
+    {
+      "id": "BIL-094",
+      "implementationStages": [
+        "S26",
+        "S37",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Every English and Russian store field is generated and validated separately per platform locale. Independent content quality and platform evidence feed the final artifact-bound release/handoff gate."
+    },
+    {
+      "id": "BIL-095",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Final bilingual owner handoff is independently usable by Russian owner and English reviewer. Independent content quality and platform evidence feed the final artifact-bound release/handoff gate."
+    },
+    {
+      "id": "BIL-096",
+      "implementationStages": [
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "A schema-valid bilingual release evidence example is maintained as the initial fail-closed state. S40 reads its routed schema and validates the example and exact-artifact release evidence; S01 defines traceability only."
+    },
+    {
+      "id": "BIL-097",
+      "implementationStages": [
+        "S38"
+      ],
+      "validationStages": [
+        "S38"
+      ],
+      "rationale": "Translation provider registry schema records retention training region rights security and child-data prohibition. S38 reads the routed provider schema before creating and validating provider records."
+    },
+    {
+      "id": "BIL-098",
+      "implementationStages": [
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "rationale": "Localized legal document schema binds ru/en versions controlling language territories hashes and approvals. S37 reads the routed legal schema before validating documents; S40 checks synchronized final approvals."
+    },
+    {
+      "id": "BIL-099",
+      "implementationStages": [
+        "S08",
+        "S39"
+      ],
+      "validationStages": [
+        "S08",
+        "S39"
+      ],
+      "rationale": "Locale package schema binds ru/en package compatibility content child policy files checksums signature and rollback. S08 implements and validates the signed-export contract; S39 reads the routed locale-package schema and validates complete compatible bilingual offline activation."
+    },
+    {
+      "id": "BIL-100",
+      "implementationStages": [
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "Structured correction reports do not create public UGC and remain adult/Parent-Gate controlled. Correction controls must propagate staleness and replace all affected locale/package/release evidence."
+    },
+    {
+      "id": "BIL-101",
+      "implementationStages": [
+        "S08",
+        "S22",
+        "S38"
+      ],
+      "validationStages": [
+        "S38",
+        "S39"
+      ],
+      "rationale": "A factual source correction marks dependent English units indexes and packages stale until reviewed. Correction controls must propagate staleness and replace all affected locale/package/release evidence."
+    },
+    {
+      "id": "BIL-102",
+      "implementationStages": [
+        "S38",
+        "S39",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Critical correction updates both locales child policy search offline screenshots claims and evidence atomically. Correction controls must propagate staleness and replace all affected locale/package/release evidence."
+    },
+    {
+      "id": "BIL-103",
+      "implementationStages": [
+        "S36",
+        "S40"
+      ],
+      "validationStages": [
+        "S36",
+        "S39",
+        "S40"
+      ],
+      "rationale": "Bilingual commands and CI emit artifact-bound evidence and fail closed. S36 adds bilingual command contracts; S39 checks feature evidence; S40 binds the aggregate gate to exact candidate artifacts."
+    },
+    {
+      "id": "BIL-104",
+      "implementationStages": [
+        "S39",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Bilingual all-gate covers static content child native web store legal support exact-RC and handoff. Release orchestration and no-return delivery must enforce every bilingual prerequisite without premature completion."
+    },
+    {
+      "id": "BIL-105",
+      "implementationStages": [
+        "S12",
+        "S38",
+        "S39"
+      ],
+      "validationStages": [
+        "S39",
+        "S40"
+      ],
+      "rationale": "Base Edition English critical surfaces cannot be deferred as later localization. Release orchestration and no-return delivery must enforce every bilingual prerequisite without premature completion."
+    },
+    {
+      "id": "BIL-106",
+      "implementationStages": [
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Final handoff contains all English architecture content store legal support offline search correction and operations systems. Release orchestration and no-return delivery must enforce every bilingual prerequisite without premature completion."
+    },
+    {
+      "id": "BIL-107",
+      "implementationStages": [
+        "S01",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "rationale": "Future third locales cannot weaken or delay complete Russian and English release. Architectural extensibility cannot advertise a third locale or weaken either required RU/EN release."
+    },
+    {
+      "id": "CANON-001",
+      "implementationStages": [
+        "S01",
+        "S02",
+        "S06"
+      ],
+      "validationStages": [
+        "S06",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Existing site Literary Planet is sole globe foundation. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "CANON-002",
+      "implementationStages": [
+        "S01",
+        "S02"
+      ],
+      "validationStages": [
+        "S02",
+        "S06",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Shared IDs/coordinates/editions/textures across clients. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "CANON-003",
+      "implementationStages": [
+        "S02",
+        "S06"
+      ],
+      "validationStages": [
+        "S06",
+        "S24",
+        "S25",
+        "S36",
+        "S39"
+      ],
+      "rationale": "One Canvas/renderer per active experience. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "CANON-004",
+      "implementationStages": [
+        "S01",
+        "S02",
+        "S08"
+      ],
+      "validationStages": [
+        "S08",
+        "S25",
+        "S38"
+      ],
+      "rationale": "Canonical CMS is only factual content source. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "CANON-005",
+      "implementationStages": [
+        "S02",
+        "S09"
+      ],
+      "validationStages": [
+        "S09",
+        "S25",
+        "S30",
+        "S38"
+      ],
+      "rationale": "Real portraits and canonical flags reused. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "CANON-006",
+      "implementationStages": [
+        "S01",
+        "S25"
+      ],
+      "validationStages": [
+        "S25",
+        "S39"
+      ],
+      "rationale": "Site/Web/PWA/Android/iOS parity gates. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "CANON-007",
+      "implementationStages": [
+        "S01",
+        "S02"
+      ],
+      "validationStages": [
+        "S02",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Public site and admin remain regression-safe. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "CANON-008",
+      "implementationStages": [
+        "S01",
+        "S04"
+      ],
+      "validationStages": [
+        "S04",
+        "S25",
+        "S28"
+      ],
+      "rationale": "No remote website as native core runtime. Architecture/extraction defines shared ownership; later runtime/platform checks establish acceptance."
+    },
+    {
+      "id": "CHAR-001",
+      "implementationStages": [
+        "S17"
+      ],
+      "validationStages": [
+        "S17",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Russian and foreign literary character catalog. Rights-cleared character implementation precedes package, territory and exact-artifact review."
+    },
+    {
+      "id": "CHAR-002",
+      "implementationStages": [
+        "S17"
+      ],
+      "validationStages": [
+        "S17",
+        "S25",
+        "S28"
+      ],
+      "rationale": "Rights-cleared StoryWorld minimum. Rights-cleared character implementation precedes package, territory and exact-artifact review."
+    },
+    {
+      "id": "CHAR-003",
+      "implementationStages": [
+        "S17"
+      ],
+      "validationStages": [
+        "S17",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Character-to-work-author-country learning path. Rights-cleared character implementation precedes package, territory and exact-artifact review."
+    },
+    {
+      "id": "CHAR-004",
+      "implementationStages": [
+        "S08",
+        "S17"
+      ],
+      "validationStages": [
+        "S17",
+        "S18",
+        "S28",
+        "S30"
+      ],
+      "rationale": "Asset-specific rights/provenance. Rights-cleared character implementation precedes package, territory and exact-artifact review."
+    },
+    {
+      "id": "CHAR-005",
+      "implementationStages": [
+        "S17",
+        "S18"
+      ],
+      "validationStages": [
+        "S18",
+        "S28",
+        "S30"
+      ],
+      "rationale": "Protected characters hidden until rights. Rights-cleared character implementation precedes package, territory and exact-artifact review."
+    },
+    {
+      "id": "CHAR-006",
+      "implementationStages": [
+        "S18"
+      ],
+      "validationStages": [
+        "S18",
+        "S28",
+        "S30",
+        "S40"
+      ],
+      "rationale": "Disney candidates blocked by default. Rights-cleared character implementation precedes package, territory and exact-artifact review."
+    },
+    {
+      "id": "CHAR-007",
+      "implementationStages": [
+        "S18"
+      ],
+      "validationStages": [
+        "S18",
+        "S28",
+        "S30",
+        "S40"
+      ],
+      "rationale": "No Disney AI imitation/assets/SKU/marketing without license. Rights-cleared character implementation precedes package, territory and exact-artifact review."
+    },
+    {
+      "id": "CHAR-008",
+      "implementationStages": [
+        "S18",
+        "S22"
+      ],
+      "validationStages": [
+        "S18",
+        "S22",
+        "S28",
+        "S33"
+      ],
+      "rationale": "Disney territory/term/royalty/post-term workflow. Rights-cleared character implementation precedes package, territory and exact-artifact review."
+    },
+    {
+      "id": "CHILD-001",
+      "implementationStages": [
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Up to four local profiles. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-002",
+      "implementationStages": [
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Exact age 3-17. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-003",
+      "implementationStages": [
+        "S08",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Per-work access decision. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-004",
+      "implementationStages": [
+        "S14",
+        "S16",
+        "S17"
+      ],
+      "validationStages": [
+        "S17",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Per-character/scene/media decision. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-005",
+      "implementationStages": [
+        "S10",
+        "S11",
+        "S16"
+      ],
+      "validationStages": [
+        "S10",
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Separate search/cache/history/offline. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-006",
+      "implementationStages": [
+        "S04",
+        "S05",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S36",
+        "S39"
+      ],
+      "rationale": "Policy restored before first content frame. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-007",
+      "implementationStages": [
+        "S04",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "rationale": "No adult flash or route bypass. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-008",
+      "implementationStages": [
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S29",
+        "S39"
+      ],
+      "rationale": "Secure Parent Gate. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-009",
+      "implementationStages": [
+        "S04",
+        "S16",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Back/restart/deep-link/callback cannot bypass. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-010",
+      "implementationStages": [
+        "S12",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S21",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Child mode included in base purchase. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-011",
+      "implementationStages": [
+        "S16",
+        "S19"
+      ],
+      "validationStages": [
+        "S19",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "rationale": "No price/Buy/ads/tracking/open AI chat. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHILD-012",
+      "implementationStages": [
+        "S16",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Parent data export/delete and age reconfirmation. Feature owners implement shared child-policy boundaries before integrated bypass and bilingual checks."
+    },
+    {
+      "id": "CHPRIV-001",
+      "implementationStages": [
+        "S16",
+        "S23",
+        "S32"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S32",
+        "S39"
+      ],
+      "rationale": "SAFE_PAID_BILINGUAL_V1 keeps child profiles local and disables child cloud/account/ads/analytics/uploads. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "CHPRIV-002",
+      "implementationStages": [
+        "S23",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "COPPA applicability and parental-consent gate are assessed before US child-data collection. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "CHPRIV-003",
+      "implementationStages": [
+        "S23",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "EU Member-State child-consent thresholds and lawful basis are assessed per territory. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "CHPRIV-004",
+      "implementationStages": [
+        "S23",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "French age-15 consent and child-contract/privacy questions are reviewed when applicable. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "CHPRIV-005",
+      "implementationStages": [
+        "S23",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "UK Children's Code / age-appropriate design assessment is completed before UK launch. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "CHPRIV-006",
+      "implementationStages": [
+        "S16",
+        "S22",
+        "S23",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S33",
+        "S40"
+      ],
+      "rationale": "Any child account, sync, upload, notification, profiling or AI-input feature reopens legal/store gates. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "CHPRIV-007",
+      "implementationStages": [
+        "S16",
+        "S23",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39",
+        "S40"
+      ],
+      "rationale": "Child-facing privacy notice is clear, age-appropriate and tied to actual data flow. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "CHPRIV-008",
+      "implementationStages": [
+        "S16",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Parent can access/delete applicable child data and local profile. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "CHPRIV-009",
+      "implementationStages": [
+        "S23",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Territory cannot launch while child legal/data-flow assessment is unknown. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "CHPRIV-010",
+      "implementationStages": [
+        "S23",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Child jurisdiction evidence and owner/legal approval are generated per enabled territory. Technical child-data controls precede territory-specific assessment and explicit legal approval."
+    },
+    {
+      "id": "COMMERCE-001",
+      "implementationStages": [
+        "S03",
+        "S12",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S26",
+        "S28"
+      ],
+      "rationale": "Paid-upfront base distribution. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-002",
+      "implementationStages": [
+        "S12"
+      ],
+      "validationStages": [
+        "S12",
+        "S25",
+        "S38",
+        "S39"
+      ],
+      "rationale": "Complete Starter Set included. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-003",
+      "implementationStages": [
+        "S19",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S28"
+      ],
+      "rationale": "Optional purchases non-consumable only. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-004",
+      "implementationStages": [
+        "S12",
+        "S19",
+        "S32"
+      ],
+      "validationStages": [
+        "S19",
+        "S25",
+        "S28",
+        "S32"
+      ],
+      "rationale": "No subscription, ads, currency or loot boxes. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-005",
+      "implementationStages": [
+        "S19",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Store prices loaded from platform. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-006",
+      "implementationStages": [
+        "S21"
+      ],
+      "validationStages": [
+        "S21",
+        "S25",
+        "S28"
+      ],
+      "rationale": "Server-authoritative verification. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-007",
+      "implementationStages": [
+        "S20",
+        "S21"
+      ],
+      "validationStages": [
+        "S21",
+        "S25",
+        "S29",
+        "S39"
+      ],
+      "rationale": "Pending/cancel/restore/reinstall/refund/revoke handled. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-008",
+      "implementationStages": [
+        "S03",
+        "S20",
+        "S21"
+      ],
+      "validationStages": [
+        "S21",
+        "S25",
+        "S34"
+      ],
+      "rationale": "Web one-time license. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-009",
+      "implementationStages": [
+        "S19",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S37"
+      ],
+      "rationale": "Platform scope disclosed. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-010",
+      "implementationStages": [
+        "S20",
+        "S21",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Family sharing only when configured. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-011",
+      "implementationStages": [
+        "S26",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34",
+        "S40"
+      ],
+      "rationale": "Google app not public-free before paid release. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-012",
+      "implementationStages": [
+        "S04",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S26",
+        "S28"
+      ],
+      "rationale": "RuStore current Pay SDK. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "COMMERCE-013",
+      "implementationStages": [
+        "S26",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34",
+        "S40"
+      ],
+      "rationale": "Paid app agreements/prices gated. Paid base, platform providers and server authority are verified separately from store disclosures."
+    },
+    {
+      "id": "CONTENT-001",
+      "implementationStages": [
+        "S09"
+      ],
+      "validationStages": [
+        "S09",
+        "S25",
+        "S38",
+        "S39"
+      ],
+      "rationale": "Country/writer/work production screens. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CONTENT-002",
+      "implementationStages": [
+        "S08",
+        "S09"
+      ],
+      "validationStages": [
+        "S09",
+        "S25",
+        "S38"
+      ],
+      "rationale": "Verified biographies and works. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CONTENT-003",
+      "implementationStages": [
+        "S08",
+        "S09"
+      ],
+      "validationStages": [
+        "S09",
+        "S28",
+        "S30"
+      ],
+      "rationale": "No generated real-person factual assets. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CONTENT-004",
+      "implementationStages": [
+        "S02",
+        "S08"
+      ],
+      "validationStages": [
+        "S08",
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Deterministic web/mobile/child export. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CONTENT-005",
+      "implementationStages": [
+        "S08"
+      ],
+      "validationStages": [
+        "S08",
+        "S11",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Signed content manifests. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CONTENT-006",
+      "implementationStages": [
+        "S08",
+        "S11"
+      ],
+      "validationStages": [
+        "S11",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CONTENT-007",
+      "implementationStages": [
+        "S03",
+        "S11"
+      ],
+      "validationStages": [
+        "S11",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Airplane-mode core. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CONTENT-008",
+      "implementationStages": [
+        "S11"
+      ],
+      "validationStages": [
+        "S11",
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CONTENT-009",
+      "implementationStages": [
+        "S11"
+      ],
+      "validationStages": [
+        "S11",
+        "S23",
+        "S25"
+      ],
+      "rationale": "Optional adult sync conflict policy. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CONTENT-010",
+      "implementationStages": [
+        "S08",
+        "S22"
+      ],
+      "validationStages": [
+        "S22",
+        "S25",
+        "S38",
+        "S40"
+      ],
+      "rationale": "Content correction/emergency unpublish. Canonical export/display comes before offline integrity and reviewed English equivalence."
+    },
+    {
+      "id": "CUSTOM-001",
+      "implementationStages": [
+        "S12",
+        "S13"
+      ],
+      "validationStages": [
+        "S13",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Included skins/stands/backgrounds/accessories. Data-driven customization must preserve the same scene before measured performance and parity checks."
+    },
+    {
+      "id": "CUSTOM-002",
+      "implementationStages": [
+        "S13",
+        "S22"
+      ],
+      "validationStages": [
+        "S22",
+        "S25",
+        "S38"
+      ],
+      "rationale": "Optional catalog scalable without runtime code. Data-driven customization must preserve the same scene before measured performance and parity checks."
+    },
+    {
+      "id": "CUSTOM-003",
+      "implementationStages": [
+        "S13",
+        "S14"
+      ],
+      "validationStages": [
+        "S14",
+        "S24",
+        "S25",
+        "S36"
+      ],
+      "rationale": "Transactional same-runtime preview/apply/revert. Data-driven customization must preserve the same scene before measured performance and parity checks."
+    },
+    {
+      "id": "CUSTOM-004",
+      "implementationStages": [
+        "S14"
+      ],
+      "validationStages": [
+        "S14",
+        "S24",
+        "S25",
+        "S30"
+      ],
+      "rationale": "Full-3D truthful High/Balanced scenes. Data-driven customization must preserve the same scene before measured performance and parity checks."
+    },
+    {
+      "id": "CUSTOM-005",
+      "implementationStages": [
+        "S14",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Economy/static fallback. Data-driven customization must preserve the same scene before measured performance and parity checks."
+    },
+    {
+      "id": "CUSTOM-006",
+      "implementationStages": [
+        "S13",
+        "S14"
+      ],
+      "validationStages": [
+        "S14",
+        "S25"
+      ],
+      "rationale": "Compatibility graph. Data-driven customization must preserve the same scene before measured performance and parity checks."
+    },
+    {
+      "id": "CUSTOM-007",
+      "implementationStages": [
+        "S13",
+        "S14"
+      ],
+      "validationStages": [
+        "S14",
+        "S24",
+        "S25"
+      ],
+      "rationale": "Bounded cache and explicit GPU disposal. Data-driven customization must preserve the same scene before measured performance and parity checks."
+    },
+    {
+      "id": "CUSTOM-008",
+      "implementationStages": [
+        "S13",
+        "S14",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25"
+      ],
+      "rationale": "30-switch stress. Data-driven customization must preserve the same scene before measured performance and parity checks."
+    },
+    {
+      "id": "CUSTOM-009",
+      "implementationStages": [
+        "S22"
+      ],
+      "validationStages": [
+        "S22",
+        "S25",
+        "S38"
+      ],
+      "rationale": "Owner self-service asset publication. Data-driven customization must preserve the same scene before measured performance and parity checks."
+    },
+    {
+      "id": "MOD-001",
+      "implementationStages": [
+        "S05",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S37",
+        "S40"
+      ],
+      "rationale": "Store name defaults to «Литературная планета» and passes current limits. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-002",
+      "implementationStages": [
+        "S05",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S37",
+        "S40"
+      ],
+      "rationale": "Installed name, listing, icon, splash and legal identity are consistent. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-003",
+      "implementationStages": [
+        "S26",
+        "S32"
+      ],
+      "validationStages": [
+        "S28",
+        "S32",
+        "S40"
+      ],
+      "rationale": "Apple Kids Category is not selected automatically. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-004",
+      "implementationStages": [
+        "S08",
+        "S16",
+        "S26"
+      ],
+      "validationStages": [
+        "S28",
+        "S33",
+        "S40"
+      ],
+      "rationale": "Whole-binary sensitive-content inventory drives age ratings. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-005",
+      "implementationStages": [
+        "S16",
+        "S26"
+      ],
+      "validationStages": [
+        "S28",
+        "S33",
+        "S40"
+      ],
+      "rationale": "Google target audience matches actual child-facing experience. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-006",
+      "implementationStages": [
+        "S26"
+      ],
+      "validationStages": [
+        "S28",
+        "S40"
+      ],
+      "rationale": "RuStore age marking matches exact build. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-007",
+      "implementationStages": [
+        "S29"
+      ],
+      "validationStages": [
+        "S29",
+        "S40"
+      ],
+      "rationale": "Stable reviewer account works without SMS OTP owner intervention or physical biometric. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-008",
+      "implementationStages": [
+        "S16",
+        "S29"
+      ],
+      "validationStages": [
+        "S29",
+        "S39",
+        "S40"
+      ],
+      "rationale": "Review Parent PIN and instructions work from clean install. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-009",
+      "implementationStages": [
+        "S27",
+        "S29"
+      ],
+      "validationStages": [
+        "S29",
+        "S34",
+        "S40"
+      ],
+      "rationale": "Review backend and credentials have automated health check. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-010",
+      "implementationStages": [
+        "S29"
+      ],
+      "validationStages": [
+        "S29",
+        "S30",
+        "S40"
+      ],
+      "rationale": "Reviewer video and exact numbered path are generated. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-011",
+      "implementationStages": [
+        "S20",
+        "S29"
+      ],
+      "validationStages": [
+        "S29",
+        "S40"
+      ],
+      "rationale": "Sandbox optional product is reviewer-accessible on each configured store. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-012",
+      "implementationStages": [
+        "S20",
+        "S21",
+        "S29"
+      ],
+      "validationStages": [
+        "S29",
+        "S39",
+        "S40"
+      ],
+      "rationale": "Restore Purchases path is documented and tested. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-013",
+      "implementationStages": [
+        "S12",
+        "S19",
+        "S26"
+      ],
+      "validationStages": [
+        "S28",
+        "S30",
+        "S40"
+      ],
+      "rationale": "Paid base and optional IAP are explained truthfully. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-014",
+      "implementationStages": [
+        "S19",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S28"
+      ],
+      "rationale": "Native digital products do not use prohibited web-checkout bypass. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-015",
+      "implementationStages": [
+        "S08",
+        "S18",
+        "S28"
+      ],
+      "validationStages": [
+        "S28",
+        "S30",
+        "S40"
+      ],
+      "rationale": "Exact RC binary excludes all blocked and unlicensed assets. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-016",
+      "implementationStages": [
+        "S18",
+        "S28"
+      ],
+      "validationStages": [
+        "S28",
+        "S30",
+        "S40"
+      ],
+      "rationale": "Disney/Pixar absent unless exact license, marketing and platform gates pass. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-017",
+      "implementationStages": [
+        "S08",
+        "S09",
+        "S28"
+      ],
+      "validationStages": [
+        "S28",
+        "S30",
+        "S40"
+      ],
+      "rationale": "Generated real-person portraits are absent. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-018",
+      "implementationStages": [
+        "S08",
+        "S09",
+        "S28"
+      ],
+      "validationStages": [
+        "S28",
+        "S30",
+        "S40"
+      ],
+      "rationale": "Every factual visual asset has provenance, checksum and approval. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-019",
+      "implementationStages": [
+        "S26",
+        "S30"
+      ],
+      "validationStages": [
+        "S30",
+        "S40"
+      ],
+      "rationale": "Store screenshot marketing rights are validated independently. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-020",
+      "implementationStages": [
+        "S30"
+      ],
+      "validationStages": [
+        "S30",
+        "S40"
+      ],
+      "rationale": "All store screenshots come from exact RC build. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-021",
+      "implementationStages": [
+        "S30"
+      ],
+      "validationStages": [
+        "S30",
+        "S40"
+      ],
+      "rationale": "Concept collage is excluded from store submission. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-022",
+      "implementationStages": [
+        "S30"
+      ],
+      "validationStages": [
+        "S30",
+        "S40"
+      ],
+      "rationale": "Screenshots contain canonical portraits, flags and verified content. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-023",
+      "implementationStages": [
+        "S26",
+        "S30"
+      ],
+      "validationStages": [
+        "S30",
+        "S40"
+      ],
+      "rationale": "Every listing claim maps to an implemented RC feature. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-024",
+      "implementationStages": [
+        "S26",
+        "S30"
+      ],
+      "validationStages": [
+        "S30",
+        "S40"
+      ],
+      "rationale": "Metadata excludes fake prices, future functions and unverifiable claims. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-025",
+      "implementationStages": [
+        "S26"
+      ],
+      "validationStages": [
+        "S28",
+        "S30",
+        "S40"
+      ],
+      "rationale": "Store-specific listing excludes competing-store badges and links. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-026",
+      "implementationStages": [
+        "S23",
+        "S28"
+      ],
+      "validationStages": [
+        "S28",
+        "S33",
+        "S40"
+      ],
+      "rationale": "Canonical data inventory is generated from exact code, SDK, backend and traffic. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-027",
+      "implementationStages": [
+        "S23",
+        "S26",
+        "S28"
+      ],
+      "validationStages": [
+        "S28",
+        "S33",
+        "S40"
+      ],
+      "rationale": "Apple privacy, Google Data Safety and RuStore declarations match inventory. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-028",
+      "implementationStages": [
+        "S23",
+        "S26",
+        "S37"
+      ],
+      "validationStages": [
+        "S28",
+        "S37",
+        "S40"
+      ],
+      "rationale": "Privacy policy is public, in-app and consistent. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-029",
+      "implementationStages": [
+        "S11",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S28"
+      ],
+      "rationale": "In-app account deletion works when account creation exists. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-030",
+      "implementationStages": [
+        "S03",
+        "S23",
+        "S26"
+      ],
+      "validationStages": [
+        "S28",
+        "S37",
+        "S40"
+      ],
+      "rationale": "Required public deletion path works and retention is disclosed. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-031",
+      "implementationStages": [
+        "S04",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Release manifests contain only allowlisted necessary permissions. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-032",
+      "implementationStages": [
+        "S04",
+        "S15",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Narration does not request microphone permission. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-033",
+      "implementationStages": [
+        "S04",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S37"
+      ],
+      "rationale": "Every sensitive permission has rationale, declaration and denial path. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-034",
+      "implementationStages": [
+        "S04",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Current Apple Xcode and iOS SDK requirements pass at RC. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-035",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Current Google target API and Billing requirements pass at RC. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-036",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Current RuStore Pay SDK and signing requirements pass at RC. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-037",
+      "implementationStages": [
+        "S04",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S28",
+        "S40"
+      ],
+      "rationale": "Each store variant contains only its billing provider and update links. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-038",
+      "implementationStages": [
+        "S26",
+        "S30"
+      ],
+      "validationStages": [
+        "S30",
+        "S34",
+        "S40"
+      ],
+      "rationale": "Exact submitted artifact identity, checksum and content versions are frozen. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-039",
+      "implementationStages": [
+        "S26",
+        "S30"
+      ],
+      "validationStages": [
+        "S30",
+        "S34",
+        "S40"
+      ],
+      "rationale": "Review build is reproducible from recorded source and toolchain. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-040",
+      "implementationStages": [
+        "S25",
+        "S28"
+      ],
+      "validationStages": [
+        "S28",
+        "S39",
+        "S40"
+      ],
+      "rationale": "Clean-install and launch moderation smoke passes. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-041",
+      "implementationStages": [
+        "S11",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Offline and slow network cannot create endless loader or data corruption. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-042",
+      "implementationStages": [
+        "S06",
+        "S14",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "rationale": "WebGL context loss, low memory and Economy fallback pass. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-043",
+      "implementationStages": [
+        "S04",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Saved child mode exposes no adult frame during startup. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-044",
+      "implementationStages": [
+        "S16",
+        "S19",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S28",
+        "S29",
+        "S39"
+      ],
+      "rationale": "Parent Gate protects store, purchase, external links and mode exit. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-045",
+      "implementationStages": [
+        "S10",
+        "S11",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Child search, cache, history, offline and deep links are isolated. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-046",
+      "implementationStages": [
+        "S29"
+      ],
+      "validationStages": [
+        "S29",
+        "S40"
+      ],
+      "rationale": "App Store review dossier is complete and bound to exact build. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-047",
+      "implementationStages": [
+        "S29"
+      ],
+      "validationStages": [
+        "S29",
+        "S40"
+      ],
+      "rationale": "Google Play review dossier is complete and bound to exact build. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-048",
+      "implementationStages": [
+        "S29"
+      ],
+      "validationStages": [
+        "S29",
+        "S40"
+      ],
+      "rationale": "RuStore review dossier is complete and bound to exact build. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-049",
+      "implementationStages": [
+        "S31"
+      ],
+      "validationStages": [
+        "S31",
+        "S40"
+      ],
+      "rationale": "Rejection intake, classification and ledger are implemented. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-050",
+      "implementationStages": [
+        "S31"
+      ],
+      "validationStages": [
+        "S31",
+        "S40"
+      ],
+      "rationale": "Resubmission requires root-cause fix, regression and new artifact evidence. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-051",
+      "implementationStages": [
+        "S28"
+      ],
+      "validationStages": [
+        "S28",
+        "S31",
+        "S34",
+        "S40"
+      ],
+      "rationale": "Moderation precheck commands and CI gates fail closed. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "MOD-052",
+      "implementationStages": [
+        "S27",
+        "S31"
+      ],
+      "validationStages": [
+        "S31",
+        "S35",
+        "S40"
+      ],
+      "rationale": "Owner receives exact submission and rejection instructions. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+    },
+    {
+      "id": "OMIN-001",
+      "implementationStages": [
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34"
+      ],
+      "rationale": "All nonsecret owner decisions live in one owner-release-inputs.json. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-002",
+      "implementationStages": [
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34"
+      ],
+      "rationale": "Owner input validates against JSON Schema. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-003",
+      "implementationStages": [
+        "S01",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34"
+      ],
+      "rationale": "Safe defaults are applied without repeated clarification. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-004",
+      "implementationStages": [
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S35"
+      ],
+      "rationale": "One Russian missing-input report groups all owner blockers. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-005",
+      "implementationStages": [
+        "S32",
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S35"
+      ],
+      "rationale": "Same owner value is never manually entered in multiple generated files. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-006",
+      "implementationStages": [
+        "S23",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34"
+      ],
+      "rationale": "Secrets are referenced by name only and never logged or committed. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-007",
+      "implementationStages": [
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34"
+      ],
+      "rationale": "Every signing/API/payment secret has owner, scope, backup, rotation and revocation. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-008",
+      "implementationStages": [
+        "S01",
+        "S12",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S40"
+      ],
+      "rationale": "SAFE_PAID_BILINGUAL_V1 is the default first public release profile. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-009",
+      "implementationStages": [
+        "S04",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S39"
+      ],
+      "rationale": "Native first release is accountless-first. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-010",
+      "implementationStages": [
+        "S23",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S39"
+      ],
+      "rationale": "Account feature cannot enable without deletion/privacy/reviewer-access gates. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-011",
+      "implementationStages": [
+        "S04",
+        "S23",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S39"
+      ],
+      "rationale": "Push and behavioural analytics are disabled in V1. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-012",
+      "implementationStages": [
+        "S32",
+        "S36"
+      ],
+      "validationStages": [
+        "S37",
+        "S38",
+        "S39",
+        "S40"
+      ],
+      "rationale": "No unfinished locale is included. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-013",
+      "implementationStages": [
+        "S19",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34",
+        "S40"
+      ],
+      "rationale": "First review uses at most one fully ready original optional non-consumable. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-014",
+      "implementationStages": [
+        "S19",
+        "S20",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34",
+        "S39"
+      ],
+      "rationale": "Optional IAP may be safely disabled per platform without harming paid base app. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-015",
+      "implementationStages": [
+        "S18",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S34",
+        "S40"
+      ],
+      "rationale": "Disney/Pixar and all unlicensed packs remain absent from first production release. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-016",
+      "implementationStages": [
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "rationale": "release:prepare:all generates all release packages without production submission. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-017",
+      "implementationStages": [
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "rationale": "All store upload commands default to dry-run. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-018",
+      "implementationStages": [
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "rationale": "Draft upload requires explicit owner confirmation and exact artifact hash. Prepare dry-run draft payloads and exact-artifact approval checks; actual store mutation is prohibited in this task."
+    },
+    {
+      "id": "OMIN-019",
+      "implementationStages": [
+        "S01",
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S35",
+        "S40"
+      ],
+      "rationale": "No automation accepts legal agreements, releases production or merges main. Encode the user's prohibition on automatic agreements, Submit, Release, deploy and merge; no external action is performed."
+    },
+    {
+      "id": "OMIN-020",
+      "implementationStages": [
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "rationale": "Apple metadata/build upload automation uses official supported paths. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-021",
+      "implementationStages": [
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "rationale": "Google Play draft/listing/track automation uses transactional Publishing API edits. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-022",
+      "implementationStages": [
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "rationale": "RuStore draft/version automation uses current Public API where supported. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-023",
+      "implementationStages": [
+        "S03",
+        "S21",
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "rationale": "Web/PWA automation deploys staging and validates entitlement/webhooks. Prepare and validate the Web/PWA staging package locally; the user's explicit no-deploy boundary overrides staging deployment wording."
+    },
+    {
+      "id": "OMIN-024",
+      "implementationStages": [
+        "S32",
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "rationale": "Exact store console field worksheets are generated from owner input and RC. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-025",
+      "implementationStages": [
+        "S35"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "Owner receives direct file/field/section instructions with no programming task. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-026",
+      "implementationStages": [
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Apple DSA trader status workflow and evidence are prepared. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-027",
+      "implementationStages": [
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Apple export-compliance encryption inventory and questionnaire are prepared. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-028",
+      "implementationStages": [
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "French encryption documentation decision is recorded when relevant. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-029",
+      "implementationStages": [
+        "S04",
+        "S23",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Privacy manifests, Required Reason APIs and Xcode privacy report are audited. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-030",
+      "implementationStages": [
+        "S23",
+        "S26",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S39",
+        "S40"
+      ],
+      "rationale": "Accessibility product-page declarations are generated from tested features. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-031",
+      "implementationStages": [
+        "S04",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Android developer verification/package/signing registration is prepared. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-032",
+      "implementationStages": [
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Affected-country developer-verification rollout is rechecked before release. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-033",
+      "implementationStages": [
+        "S32",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Public release uses SAFE_INITIAL rather than worldwide by default. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-034",
+      "implementationStages": [
+        "S33",
+        "S37",
+        "S38"
+      ],
+      "validationStages": [
+        "S39",
+        "S40"
+      ],
+      "rationale": "Every territory passes payment, legal, language, support and rights gates. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-035",
+      "implementationStages": [
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "rationale": "Current Apple EU business terms are rechecked at actual release date. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-036",
+      "implementationStages": [
+        "S35"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "FINAL_OWNER_APPROVAL_RU.html and Markdown are generated. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-037",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Owner approvals propagate to all platform packages. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-038",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Owner handoff folder contains every artifact needed for submission. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-039",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Final owner actions contain no source-code or manual JSON work. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-040",
+      "implementationStages": [
+        "S27",
+        "S35"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "First 72-hour launch monitoring and incident runbook are prepared. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-041",
+      "implementationStages": [
+        "S27",
+        "S35"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "Release is manual or staged and can pause on P0/P1. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-042",
+      "implementationStages": [
+        "S01"
+      ],
+      "validationStages": [
+        "S01",
+        "S27",
+        "S35",
+        "S40"
+      ],
+      "rationale": "Codex reads stage-routed documents instead of full package every session. S01 installs routing controls; later checkpoint audits verify bounded document loading throughout execution."
+    },
+    {
+      "id": "OMIN-043",
+      "implementationStages": [
+        "S01"
+      ],
+      "validationStages": [
+        "S01",
+        "S27",
+        "S40"
+      ],
+      "rationale": "Standalone prompt is recovery fallback and is not read twice. Recovery controls prevent repeated standalone loading; later checkpoint audits verify the rule."
+    },
+    {
+      "id": "OMIN-044",
+      "implementationStages": [
+        "S01"
+      ],
+      "validationStages": [
+        "S01",
+        "S27",
+        "S35",
+        "S40"
+      ],
+      "rationale": "Every session leaves a self-contained checkpoint with next routed docs. S01 defines persistent checkpoint semantics; later handoff checkpoints audit their continued usability."
+    },
+    {
+      "id": "OMIN-045",
+      "implementationStages": [
+        "S01",
+        "S32",
+        "S34",
+        "S35"
+      ],
+      "validationStages": [
+        "S01",
+        "S34",
+        "S35",
+        "S40"
+      ],
+      "rationale": "Ready-internal, draft-ready, submitted, approved and released statuses remain distinct. Schema/state transitions must distinguish internal readiness, drafts and actual external release events."
+    },
+    {
+      "id": "OMIN-046",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Owner receives one self-contained handoff folder with every submission artifact. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-047",
+      "implementationStages": [
+        "S34",
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Owner handoff contains exact field values, file paths and step-by-step store instructions. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-048",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "Owner handoff usability is tested with a fresh-reader review. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-049",
+      "implementationStages": [
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S40"
+      ],
+      "rationale": "SAFE_PAID_BILINGUAL_V1 defaults exist as a machine-readable canonical config. S32 reads the routed owner-default configuration before validation; S40 checks the final profile and actual owner approval."
+    },
+    {
+      "id": "OMIN-050",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "Owner action minimization matrix proves zero programming actions for owner. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-051",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "Owner approval state is machine-readable, hashable and artifact-bound. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-052",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "Owner handoff index is machine-readable and requires zero owner programming tasks. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OMIN-053",
+      "implementationStages": [
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "rationale": "Release automation starts from a validated machine-readable state. S34 reads the routed release-automation state schema and validates draft-only controls; S40 checks the final state without performing release actions."
+    },
+    {
+      "id": "OMIN-054",
+      "implementationStages": [
+        "S01"
+      ],
+      "validationStages": [
+        "S01",
+        "S27",
+        "S35",
+        "S40"
+      ],
+      "rationale": "Codex stop conditions distinguish internal failures from objective external blockers. S01 defines separate internal/external blocker semantics; checkpoints must not reclassify unfinished code or translation as owner work."
+    },
+    {
+      "id": "OMIN-055",
+      "implementationStages": [
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "Offline owner approval HTML template exports a schema-valid hashable approval record. Prepare validated internal artifacts first; owner approval and external actions remain separate gates."
+    },
+    {
+      "id": "OPS-001",
+      "implementationStages": [
+        "S22"
+      ],
+      "validationStages": [
+        "S22",
+        "S25",
+        "S38"
+      ],
+      "rationale": "Owner self-service CMS/commerce/rights. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "OPS-002",
+      "implementationStages": [
+        "S01",
+        "S16",
+        "S22"
+      ],
+      "validationStages": [
+        "S22",
+        "S25",
+        "S32",
+        "S39"
+      ],
+      "rationale": "Feature flags cannot weaken safety. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "OPS-003",
+      "implementationStages": [
+        "S22",
+        "S27"
+      ],
+      "validationStages": [
+        "S27",
+        "S34",
+        "S40"
+      ],
+      "rationale": "Health dashboard and redacted diagnostics. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "OPS-004",
+      "implementationStages": [
+        "S27"
+      ],
+      "validationStages": [
+        "S27",
+        "S31",
+        "S37",
+        "S40"
+      ],
+      "rationale": "Support/runbooks and severity matrix. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "OPS-005",
+      "implementationStages": [
+        "S27"
+      ],
+      "validationStages": [
+        "S27",
+        "S34"
+      ],
+      "rationale": "Database/media/metadata backups. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "OPS-006",
+      "implementationStages": [
+        "S27"
+      ],
+      "validationStages": [
+        "S27",
+        "S34"
+      ],
+      "rationale": "Verified restore drills. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "OPS-007",
+      "implementationStages": [
+        "S27",
+        "S35"
+      ],
+      "validationStages": [
+        "S35",
+        "S40"
+      ],
+      "rationale": "Release train/staged rollout/rollback. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "OPS-008",
+      "implementationStages": [
+        "S31"
+      ],
+      "validationStages": [
+        "S31",
+        "S40"
+      ],
+      "rationale": "App-review rejection playbooks. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "OPS-009",
+      "implementationStages": [
+        "S27"
+      ],
+      "validationStages": [
+        "S27",
+        "S35",
+        "S40"
+      ],
+      "rationale": "Maintenance calendar/EOL policy. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "OPS-010",
+      "implementationStages": [
+        "S27",
+        "S35",
+        "S40"
+      ],
+      "validationStages": [
+        "S40"
+      ],
+      "rationale": "Final no-return handoff. Implement operational controls, then verify usable runbooks and final handoff against actual artifacts."
+    },
+    {
+      "id": "PERF-001",
+      "implementationStages": [
+        "S05",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Cold/warm startup budgets. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior."
+    },
+    {
+      "id": "PERF-002",
+      "implementationStages": [
+        "S06",
+        "S14",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "High/Balanced/Economy tiers. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior."
+    },
+    {
+      "id": "PERF-003",
+      "implementationStages": [
+        "S06",
+        "S14"
+      ],
+      "validationStages": [
+        "S24",
+        "S25"
+      ],
+      "rationale": "Idle rendering bounded. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior."
+    },
+    {
+      "id": "PERF-004",
+      "implementationStages": [
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Memory/GPU leak-free soak. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior."
+    },
+    {
+      "id": "PERF-005",
+      "implementationStages": [
+        "S06",
+        "S11",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Low-memory/context recovery. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior."
+    },
+    {
+      "id": "PERF-006",
+      "implementationStages": [
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Device and thermal matrix. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior."
+    },
+    {
+      "id": "PERF-007",
+      "implementationStages": [
+        "S08",
+        "S11",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Bundle/package budgets. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior."
+    },
+    {
+      "id": "PERF-008",
+      "implementationStages": [
+        "S04",
+        "S06",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Background/resume listener stability. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior."
+    },
+    {
+      "id": "PLANETKA-001",
+      "implementationStages": [
+        "S15"
+      ],
+      "validationStages": [
+        "S15",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Original mascot separate from globe surface. Implement the original guide and shared policy before complete English dialogue/audio validation."
+    },
+    {
+      "id": "PLANETKA-002",
+      "implementationStages": [
+        "S15"
+      ],
+      "validationStages": [
+        "S15",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Mouth below eyes; hands/legs fully visible. Implement the original guide and shared policy before complete English dialogue/audio validation."
+    },
+    {
+      "id": "PLANETKA-003",
+      "implementationStages": [
+        "S15"
+      ],
+      "validationStages": [
+        "S15",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Scripted reviewed sourced dialogue. Implement the original guide and shared policy before complete English dialogue/audio validation."
+    },
+    {
+      "id": "PLANETKA-004",
+      "implementationStages": [
+        "S15",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Age-adaptive journeys. Implement the original guide and shared policy before complete English dialogue/audio validation."
+    },
+    {
+      "id": "PLANETKA-005",
+      "implementationStages": [
+        "S11",
+        "S15"
+      ],
+      "validationStages": [
+        "S15",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Offline/error helper. Implement the original guide and shared policy before complete English dialogue/audio validation."
+    },
+    {
+      "id": "PLANETKA-006",
+      "implementationStages": [
+        "S15",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Reduced motion/captions/narration rights. Implement the original guide and shared policy before complete English dialogue/audio validation."
+    },
+    {
+      "id": "PLANETKA-007",
+      "implementationStages": [
+        "S15",
+        "S16",
+        "S19"
+      ],
+      "validationStages": [
+        "S19",
+        "S25",
+        "S39"
+      ],
+      "rationale": "No purchase promotion. Implement the original guide and shared policy before complete English dialogue/audio validation."
+    },
+    {
+      "id": "PLANETKA-008",
+      "implementationStages": [
+        "S11",
+        "S15"
+      ],
+      "validationStages": [
+        "S15",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Journey checkpoint/resume/migration. Implement the original guide and shared policy before complete English dialogue/audio validation."
+    },
+    {
+      "id": "PLATFORM-001",
+      "implementationStages": [
+        "S03"
+      ],
+      "validationStages": [
+        "S03",
+        "S11",
+        "S25",
+        "S26",
+        "S39"
+      ],
+      "rationale": "Installable paid Web/PWA with safe Service Worker. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
+    },
+    {
+      "id": "PLATFORM-002",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Android Google Play variant and AAB. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
+    },
+    {
+      "id": "PLATFORM-003",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Android RuStore variant and artifact. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
+    },
+    {
+      "id": "PLATFORM-004",
+      "implementationStages": [
+        "S04"
+      ],
+      "validationStages": [
+        "S04",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Android QA APK. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
+    },
+    {
+      "id": "PLATFORM-005",
+      "implementationStages": [
+        "S04"
+      ],
+      "validationStages": [
+        "S04",
+        "S25",
+        "S39"
+      ],
+      "rationale": "iOS/iPadOS native project and simulator build. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
+    },
+    {
+      "id": "PLATFORM-006",
+      "implementationStages": [
+        "S04",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S34"
+      ],
+      "rationale": "iOS archive configuration/archive when signing exists. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
+    },
+    {
+      "id": "PLATFORM-007",
+      "implementationStages": [
+        "S04",
+        "S07"
+      ],
+      "validationStages": [
+        "S07",
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Safe-area/orientation/lifecycle/deep links. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
+    },
+    {
+      "id": "PLATFORM-008",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S33",
+        "S40"
+      ],
+      "rationale": "Current official SDK/API requirements rechecked. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
+    },
+    {
+      "id": "SEC-001",
+      "implementationStages": [
+        "S01",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S28"
+      ],
+      "rationale": "Threat model and security tests. Boundary design and implementation precede executable security and artifact inspection gates."
+    },
+    {
+      "id": "SEC-002",
+      "implementationStages": [
+        "S01",
+        "S20",
+        "S21",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S28"
+      ],
+      "rationale": "No client secrets/self-grant. Boundary design and implementation precede executable security and artifact inspection gates."
+    },
+    {
+      "id": "SEC-003",
+      "implementationStages": [
+        "S04",
+        "S08",
+        "S11",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "rationale": "Deep-link/content/package validation. Boundary design and implementation precede executable security and artifact inspection gates."
+    },
+    {
+      "id": "SEC-004",
+      "implementationStages": [
+        "S22",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S28"
+      ],
+      "rationale": "Admin RBAC/audit/dry-run. Boundary design and implementation precede executable security and artifact inspection gates."
+    },
+    {
+      "id": "SEC-005",
+      "implementationStages": [
+        "S23",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S34",
+        "S40"
+      ],
+      "rationale": "Secret scan/dependency audit/SBOM. Boundary design and implementation precede executable security and artifact inspection gates."
+    },
+    {
+      "id": "SEC-006",
+      "implementationStages": [
+        "S04",
+        "S16",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S33",
+        "S39"
+      ],
+      "rationale": "Minimal permissions and child privacy. Boundary design and implementation precede executable security and artifact inspection gates."
+    },
+    {
+      "id": "SEC-007",
+      "implementationStages": [
+        "S11",
+        "S16",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S28",
+        "S37"
+      ],
+      "rationale": "Data export/deletion/retention. Boundary design and implementation precede executable security and artifact inspection gates."
+    },
+    {
+      "id": "SEC-008",
+      "implementationStages": [
+        "S08",
+        "S11",
+        "S21",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S34",
+        "S39"
+      ],
+      "rationale": "Signed artifacts/manifests and anti-rollback. Boundary design and implementation precede executable security and artifact inspection gates."
+    },
+    {
+      "id": "UX-001",
+      "implementationStages": [
+        "S04",
+        "S05"
+      ],
+      "validationStages": [
+        "S05",
+        "S25",
+        "S37",
+        "S39"
+      ],
+      "rationale": "Orange native and branded splash with logo top-left. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
+    },
+    {
+      "id": "UX-002",
+      "implementationStages": [
+        "S04",
+        "S07"
+      ],
+      "validationStages": [
+        "S07",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Adult navigation prioritizes Planet. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
+    },
+    {
+      "id": "UX-003",
+      "implementationStages": [
+        "S15",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Child navigation prioritizes Planetka/learning. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
+    },
+    {
+      "id": "UX-004",
+      "implementationStages": [
+        "S02",
+        "S05",
+        "S07"
+      ],
+      "validationStages": [
+        "S07",
+        "S25",
+        "S39"
+      ],
+      "rationale": "Canonical violet/orange design system. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
+    },
+    {
+      "id": "UX-005",
+      "implementationStages": [
+        "S05",
+        "S07",
+        "S09",
+        "S19"
+      ],
+      "validationStages": [
+        "S25",
+        "S39"
+      ],
+      "rationale": "One dominant CTA per screen. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
+    },
+    {
+      "id": "UX-006",
+      "implementationStages": [
+        "S05",
+        "S09",
+        "S11",
+        "S15",
+        "S19"
+      ],
+      "validationStages": [
+        "S25",
+        "S37",
+        "S39"
+      ],
+      "rationale": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
+    },
+    {
+      "id": "UX-007",
+      "implementationStages": [
+        "S05",
+        "S07"
+      ],
+      "validationStages": [
+        "S07",
+        "S25",
+        "S30"
+      ],
+      "rationale": "Visual reference used only as composition guide. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
+    },
+    {
+      "id": "UX-008",
+      "implementationStages": [
+        "S26",
+        "S30"
+      ],
+      "validationStages": [
+        "S30",
+        "S40"
+      ],
+      "rationale": "Real release screenshots and truthful marketing. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
+    }
+  ]
+}

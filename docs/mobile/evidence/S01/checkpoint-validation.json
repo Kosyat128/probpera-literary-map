@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "errors": [],
+  "releaseReady": false,
+  "internalRequirementsPassed": false,
+  "requirementCount": 342,
+  "bilingualCount": 107,
+  "allInternalComplete": false,
+  "completedStages": [
+    "S00"
+  ],
+  "firstOpen": {
+    "stageId": "S01",
+    "criterionId": "S01.architecture"
+  },
+  "historicalStaleInputs": [],
+  "releaseActionsAuthorized": false,
+  "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732"
+}

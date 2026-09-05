@@ -1,12 +1,11 @@
-Continue the user's V12 bilingual three-platform product task in this checkout.
-Read AGENTS.md, docs/mobile/AUTOPILOT_STATE.json, STATUS.md, DECISIONS.md and
-BLOCKERS.md. First command: node scripts/mobile/verify-requirements.mjs.
-Active stage S00. Then node scripts/mobile/stage-context.mjs S00 and load only its
-documents plus changed source. Do not reread standalone full prompt.
-Complete CMS normalization repair, baseline tests/build, canonical inventory and
-official-source evidence; commit tested safe work, update checkpoint, continue S01.
-Preserve original requirements, canonical one-Canvas globe, factual CMS, portraits,
-flags and header/hero locks. Russian and English are both mandatory. No raw AI
-production translation, fabricated approval, guessed titles or fake screenshots.
-No deploy, production writes, Submit, Release, merge or secret disclosure.
-Keep S01-S40 and BIL-001..107 open until implementation/evidence actually pass.
+Continue V12 in this checkout on codex/literary-planet-v12-bilingual-final-autopilot.
+Read AGENTS.md and docs/mobile state/status/decisions/blockers.
+Run node scripts/mobile/verify-requirements.mjs, then stage-context.mjs S01.
+S00 accepted in ef16246f, main0a348bd4; evidence/S00/current-main-baseline-results.json.
+Current S01: read only routed shared/architecture/state-schema documents, implement
+complete traceability and shared platform boundaries with behavioral gates.
+Keep 342 global requirements/107 BIL open until implementation/evidence passes.
+Advance with tests/fixes/regression/evidence/commit/checkpoint. Do not stop at docs.
+Preserve canonical one-Canvas globe, facts/assets and accepted current-main UI.
+No raw AI production translation, invented approvals, guessed titles, fake screenshots,
+production writes, deploy, Submit, Release or merge. External owner steps are separate.
