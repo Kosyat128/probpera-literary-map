@@ -1,18 +1,18 @@
 import { expect, test } from "@playwright/test";
 
-const BASE_PATH = "/probpera-literary-map/";
-
 const roleSelectors = {
-  major: [
+  section: [
     "#featured-journal .section-heading h2",
     ".stage5-deferred-journal[data-loading-status='ready'] .article-library-heading h2",
+  ],
+  community: [
     "#community .community-copy h2",
   ],
-  normal: [
+  book: [
     "#book-day .book-of-day h3",
-    "#featured-journal .journal-engagement h3",
   ],
-  card: [
+  compact: [
+    "#featured-journal .journal-engagement h3",
     "#book-day .book-fact-card h3",
     "#editorial-policy summary",
   ],
@@ -26,7 +26,7 @@ const roleSelectors = {
 
 async function openHomepage(page, { width, height, locale }) {
   await page.setViewportSize({ width, height });
-  await page.goto(BASE_PATH, { waitUntil: "domcontentloaded" });
+  await page.goto("/", { waitUntil: "domcontentloaded" });
   await expect(page.locator(".magazine-hero")).toBeVisible();
   if (locale === "en") {
     await page.locator(".interface-language-control button").nth(1).click();
@@ -37,6 +37,10 @@ async function openHomepage(page, { width, height, locale }) {
   await expect(journalSlot).toHaveAttribute("data-loading-status", "ready", {
     timeout: 20_000,
   });
+  await page.locator("#book-day").scrollIntoViewIfNeeded();
+  const bookCover = page.locator("#book-day .book-of-day .book-cover img");
+  await expect(bookCover).toBeVisible();
+  await expect.poll(() => bookCover.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
   await page.evaluate(async () => {
     window.scrollTo(0, document.documentElement.scrollHeight);
     await document.fonts.ready;
@@ -57,6 +61,7 @@ async function collectRoleMetrics(page) {
         return {
           selector,
           fontSize,
+          fontFamily: style.fontFamily,
           lineHeightRatio: lineHeight / fontSize,
         };
       });
@@ -87,12 +92,14 @@ async function collectRoleMetrics(page) {
   }, roleSelectors);
 }
 
-function expectRole(metrics, role, minSize, maxSize, minRatio, maxRatio) {
+function expectRole(metrics, role, minSize, maxSize, lineHeightRatio) {
   for (const metric of metrics[role]) {
     expect(metric.fontSize, metric.selector).toBeGreaterThanOrEqual(minSize);
     expect(metric.fontSize, metric.selector).toBeLessThanOrEqual(maxSize + 0.1);
-    expect(metric.lineHeightRatio, metric.selector).toBeGreaterThanOrEqual(minRatio);
-    expect(metric.lineHeightRatio, metric.selector).toBeLessThanOrEqual(maxRatio);
+    expect(metric.lineHeightRatio, metric.selector).toBeCloseTo(lineHeightRatio, 3);
+    expect(metric.fontFamily, metric.selector).toContain(
+      role === "body" ? "Source Sans 3 Local" : "Source Serif 4 Local"
+    );
   }
 }
 
@@ -102,12 +109,15 @@ test("Stage 5B desktop RU roles and surfaces stay inside the approved scale", as
   await openHomepage(page, { width: 1440, height: 900, locale: "ru" });
   const result = await collectRoleMetrics(page);
 
-  expectRole(result.metrics, "major", 34, 44, 1.04, 1.15);
-  expectRole(result.metrics, "normal", 30, 38, 1.04, 1.15);
-  expectRole(result.metrics, "card", 23, 32, 1.08, 1.2);
-  expectRole(result.metrics, "body", 16, 18, 1.5, 1.7);
-  expect(result.metadata).toBe(12);
-  expect(result.action).toBe(13);
+  // The canonical roles replaced the former three-level Stage 5B scale.
+  // Compact titles retain their approved 18-23px container-relative range.
+  expectRole(result.metrics, "section", 46.08, 46.08, 1.12);
+  expectRole(result.metrics, "community", 30, 30, 1.2);
+  expectRole(result.metrics, "book", 35, 35, 1.1);
+  expectRole(result.metrics, "compact", 18, 23, 1.2);
+  expectRole(result.metrics, "body", 16, 16, 1.6);
+  expect(result.metadata).toBe(13);
+  expect(result.action).toBe(14);
   expect(result.spacing.articleLibrary).toBeLessThanOrEqual(96.1);
   expect(result.spacing.trust).toBeLessThanOrEqual(96.1);
   expect(result.spacing.calendarBottom).toBeLessThanOrEqual(96.1);
@@ -121,12 +131,13 @@ test("Stage 5B mobile EN roles reflow without overflow", async ({ page }) => {
   await openHomepage(page, { width: 390, height: 844, locale: "en" });
   const result = await collectRoleMetrics(page);
 
-  expectRole(result.metrics, "major", 27, 34, 1.04, 1.15);
-  expectRole(result.metrics, "normal", 25, 32, 1.04, 1.15);
-  expectRole(result.metrics, "card", 21, 28, 1.08, 1.2);
-  expectRole(result.metrics, "body", 15, 17, 1.5, 1.7);
-  expect(result.metadata).toBe(12);
-  expect(result.action).toBe(13);
+  expectRole(result.metrics, "section", 28, 28, 1.12);
+  expectRole(result.metrics, "community", 30, 30, 1.2);
+  expectRole(result.metrics, "book", 35, 35, 1.1);
+  expectRole(result.metrics, "compact", 18, 23, 1.2);
+  expectRole(result.metrics, "body", 16, 16, 1.6);
+  expect(result.metadata).toBe(13);
+  expect(result.action).toBe(14);
   expect(result.spacing.articleLibrary).toBeLessThanOrEqual(72.1);
   expect(result.spacing.trust).toBeLessThanOrEqual(72.1);
   expect(result.spacing.calendarBottom).toBeLessThanOrEqual(72.1);

@@ -1,11 +1,7 @@
+@layer site-defaults {
+
 /* Stage 5B: scoped homepage typography, rhythm, action color, and fallback surfaces. */
 :root {
-  --home-title-major: clamp(34px, 3.1vw, 44px);
-  --home-title-normal: clamp(30px, 2.7vw, 38px);
-  --home-title-card: clamp(23px, 2vw, 32px);
-  --home-copy: clamp(16px, 1.15vw, 18px);
-  --home-metadata: 12px;
-  --home-action-size: 13px;
   --home-section-space: clamp(68px, 6vw, 96px);
   --home-surface-paper:
     radial-gradient(circle at 8% 84%, rgba(246, 117, 24, 0.07), transparent 22rem),
@@ -22,98 +18,6 @@
     radial-gradient(circle at 80% 12%, rgba(246, 117, 24, 0.08), transparent 25rem),
     radial-gradient(circle at 16% 86%, rgba(104, 16, 201, 0.16), transparent 24rem),
     linear-gradient(137deg, #17051f, #09010f 76%);
-}
-
-:where(
-  .daily-grid,
-  .editorial-section,
-  .article-library,
-  .community-section,
-  .authors-section,
-  .sections-directory,
-  .trust-center,
-  .calendar-section
-) .section-kicker {
-  font-size: var(--home-metadata);
-  line-height: 1.35;
-  letter-spacing: 0.14em;
-}
-
-.section-heading h2,
-.article-library-heading h2,
-.community-copy h2,
-.cms-home-block h2 {
-  font-size: var(--home-title-major);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-}
-
-.book-of-day h3,
-.editorial-standard h3,
-.journal-engagement h3,
-.calendar-heading h3,
-.community-illustration blockquote,
-.is-featured .article-copy h3,
-.is-lead .library-card-copy h3 {
-  font-size: var(--home-title-normal);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-}
-
-.article-copy h3,
-.library-card-copy h3,
-.author-showcase strong,
-.sections-directory h3,
-.trust-center summary,
-.book-fact-card h3 {
-  font-size: var(--home-title-card);
-  line-height: 1.12;
-}
-
-.book-of-day p,
-.editorial-standard > p,
-.article-copy p,
-.article-library-heading p,
-.library-card-copy p,
-.journal-engagement > div:first-child > p,
-.community-visual-intro > p,
-.community-copy > p,
-.sections-directory > div:last-child p,
-.calendar-heading p,
-.trust-center .section-heading p,
-.trust-center details p,
-.book-fact-card p {
-  font-size: var(--home-copy);
-  line-height: 1.62;
-}
-
-.article-copy small,
-.author-showcase small,
-.sections-directory .section-card-eyebrow,
-.article-library-heading label span,
-.library-card-image small,
-.library-card-copy > div,
-.calendar-summary > div > span,
-.calendar-featured > span,
-.calendar-agenda > header span,
-.calendar-agenda-day > time small {
-  font-size: var(--home-metadata);
-  line-height: 1.4;
-}
-
-.book-of-day .book-actions-primary button,
-.editorial-section .section-heading > a,
-.article-copy strong,
-.section-link,
-.sections-all-button,
-.section-card-action strong,
-.article-library-tabs button,
-.library-card-copy > strong,
-.article-library-more,
-.community-copy button,
-.community-primary {
-  font-size: var(--home-action-size);
-  line-height: 1.4;
 }
 
 .editorial-section,
@@ -152,7 +56,10 @@
 }
 
 .book-of-day .book-action-primary {
-  color: var(--ink);
+  --ui-primary: color-mix(in srgb, var(--orange-deep) 80%, var(--ink));
+  --ui-primary-hover: color-mix(in srgb, var(--orange-deep) 88%, var(--ink));
+  --ui-primary-active: color-mix(in srgb, var(--orange-deep) 70%, var(--ink));
+  color: #fff;
   background: var(--ui-primary);
   border-color: var(--ui-primary);
 }
@@ -161,10 +68,19 @@
   color: inherit;
 }
 
-.book-of-day .book-action-primary:hover,
-.book-of-day .book-action-primary:focus-visible {
-  color: var(--ink);
+.book-of-day .book-action-primary:not(:disabled):hover,
+.book-of-day .book-action-primary:not(:disabled):focus-visible {
+  color: #fff;
   background: var(--ui-primary-hover);
+}
+
+.book-of-day .book-action-primary:not(:disabled):active {
+  color: #fff;
+  background: var(--ui-primary-active);
+  border-color: var(--ui-primary-active);
+  box-shadow: inset 0 0 0 2px rgba(19, 2, 32, 0.2);
+  transform: none;
+  transition-duration: var(--ui-motion-micro-min);
 }
 
 .article-library-heading .section-kicker,
@@ -190,10 +106,7 @@
 
 @media (max-width: 680px) {
   :root {
-    --home-title-major: clamp(27px, 8vw, 34px);
-    --home-title-normal: clamp(25px, 7vw, 32px);
-    --home-title-card: clamp(21px, 6vw, 28px);
-    --home-copy: clamp(15px, 4.2vw, 17px);
     --home-section-space: clamp(60px, 8vw, 72px);
   }
+}
 }

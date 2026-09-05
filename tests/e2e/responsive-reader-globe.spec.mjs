@@ -325,6 +325,8 @@ test("ArticleReader lower panels stay readable in light and book modes", async (
 
       return {
         contrasts: {
+          readerLead: contrastFor(".article-reader-lead > p"),
+          shareLabel: contrastFor(".share-links > span"),
           ratingStar: contrastFor(
             ".e2e-reader-engagement .rating-summary button:first-child"
           ),

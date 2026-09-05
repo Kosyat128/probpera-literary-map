@@ -1,0 +1,116 @@
+[
+  {
+    "name": "sections-mega-menu",
+    "bounds": {
+      "x": 160,
+      "y": 114,
+      "width": 1120,
+      "height": 742.71875,
+      "top": 114,
+      "right": 1280,
+      "bottom": 856.71875,
+      "left": 160
+    },
+    "children": [
+      {
+        "class": "",
+        "bounds": {
+          "x": 161,
+          "y": 115,
+          "width": 1118,
+          "height": 92.6875,
+          "top": 115,
+          "right": 1279,
+          "bottom": 207.6875,
+          "left": 161
+        },
+        "scrollHeight": 93
+      },
+      {
+        "class": "sections-mega-groups",
+        "bounds": {
+          "x": 161,
+          "y": 207.6875,
+          "width": 1118,
+          "height": 591.03125,
+          "top": 207.6875,
+          "right": 1279,
+          "bottom": 798.71875,
+          "left": 161
+        },
+        "scrollHeight": 591
+      },
+      {
+        "class": "",
+        "bounds": {
+          "x": 161,
+          "y": 798.71875,
+          "width": 1118,
+          "height": 57,
+          "top": 798.71875,
+          "right": 1279,
+          "bottom": 855.71875,
+          "left": 161
+        },
+        "scrollHeight": 56
+      }
+    ]
+  },
+  {
+    "name": "articles-mega-menu",
+    "bounds": {
+      "x": 160,
+      "y": 114,
+      "width": 1120,
+      "height": 654.296875,
+      "top": 114,
+      "right": 1280,
+      "bottom": 768.296875,
+      "left": 160
+    },
+    "children": [
+      {
+        "class": "",
+        "bounds": {
+          "x": 161,
+          "y": 115,
+          "width": 1118,
+          "height": 92.6875,
+          "top": 115,
+          "right": 1279,
+          "bottom": 207.6875,
+          "left": 161
+        },
+        "scrollHeight": 93
+      },
+      {
+        "class": "articles-mega-content",
+        "bounds": {
+          "x": 161,
+          "y": 207.6875,
+          "width": 1118,
+          "height": 502.609375,
+          "top": 207.6875,
+          "right": 1279,
+          "bottom": 710.296875,
+          "left": 161
+        },
+        "scrollHeight": 503
+      },
+      {
+        "class": "",
+        "bounds": {
+          "x": 161,
+          "y": 710.296875,
+          "width": 1118,
+          "height": 57,
+          "top": 710.296875,
+          "right": 1279,
+          "bottom": 767.296875,
+          "left": 161
+        },
+        "scrollHeight": 56
+      }
+    ]
+  }
+]

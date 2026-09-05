@@ -253,9 +253,23 @@ function contextPrefix(layer: CmsTypographyLayer, target: string) {
 function scopedSelector(override: CmsTypographyOverride) {
   const prefix = contextPrefix(override.layer, override.targetKey);
   const scope = selectorByScope[override.semanticScope];
-  if (!prefix) return scope;
-  if (override.semanticScope === "body") return prefix;
-  return `${prefix} ${scope}`;
+  // Public defaults live in cascade layers. Keep every published selector at
+  // zero specificity so layer/breakpoint order also works across semantic scopes.
+  if (!prefix) return `:where(${scope})`;
+  if (override.semanticScope === "body") return `:where(${prefix})`;
+
+  const self = `${prefix}:is(${scope})`;
+  let descendants = `${prefix} ${scope}`;
+  if (
+    (override.layer === "component" || override.layer === "instance") &&
+    /^h[1-6]$/u.test(override.semanticScope)
+  ) {
+    // A magazine heading rule must not reach headings in its nested reader.
+    // Page/template/site rules intentionally span the components on that page.
+    const boundary = ":is([data-typography-component], [data-typography-instance])";
+    descendants += `:not(${prefix} ${boundary}, ${prefix} ${boundary} *)`;
+  }
+  return `:where(${self}, ${descendants})`;
 }
 
 function normalizedBasePath(basePath: string) {

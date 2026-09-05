@@ -1,0 +1,10 @@
+{
+  "phase": "after",
+  "baseURL": "http://127.0.0.1:4183/probpera-literary-map/",
+  "textSha256": "20620a4865d62b0a314d0e661e2a4442b55e2b37c391f3bdd3d454618db9b639",
+  "snapshotCount": 8,
+  "geometryCount": 26,
+  "consoleErrors": [],
+  "textUnchanged": true,
+  "changedTextKeys": []
+}

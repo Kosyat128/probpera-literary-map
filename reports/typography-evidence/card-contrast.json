@@ -1,0 +1,445 @@
+{
+  "method": "Screenshot backgrounds sampled every 2px over actual text line rectangles with foreground hidden without layout changes; alpha foreground composited onto sampled background. Conservative minimum includes whitespace; finite samples cover these views only.",
+  "rows": [
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "hero",
+      "name": "kicker",
+      "minimumRatio": 6.41,
+      "sampleCount": 1260,
+      "worst": {
+        "bg": [
+          76,
+          34,
+          39
+        ],
+        "foreground": "rgb(255, 155, 69)",
+        "size": 13,
+        "weight": 600,
+        "threshold": 4.5,
+        "x": 361,
+        "y": 225
+      },
+      "pass": true
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "hero",
+      "name": "lead",
+      "minimumRatio": 4.57,
+      "sampleCount": 8970,
+      "worst": {
+        "bg": [
+          122,
+          78,
+          51
+        ],
+        "foreground": "rgba(255, 255, 255, 0.72)",
+        "size": 20.16,
+        "weight": 400,
+        "threshold": 4.5,
+        "x": 539,
+        "y": 436
+      },
+      "pass": true
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "hero",
+      "name": "primary-action",
+      "minimumRatio": 2.81,
+      "sampleCount": 486,
+      "worst": {
+        "bg": [
+          246,
+          117,
+          24
+        ],
+        "foreground": "rgb(255, 255, 255)",
+        "size": 12,
+        "weight": 700,
+        "threshold": 4.5,
+        "x": 110,
+        "y": 572
+      },
+      "pass": false
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "hero",
+      "name": "secondary-action",
+      "minimumRatio": 11.8,
+      "sampleCount": 459,
+      "worst": {
+        "bg": [
+          65,
+          33,
+          40
+        ],
+        "foreground": "rgba(255, 255, 255, 0.9)",
+        "size": 12,
+        "weight": 700,
+        "threshold": 4.5,
+        "x": 409,
+        "y": 572
+      },
+      "pass": true
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "article-card",
+      "name": "title",
+      "minimumRatio": 16.53,
+      "sampleCount": 4520,
+      "worst": {
+        "bg": [
+          43,
+          20,
+          61
+        ],
+        "foreground": "rgb(255, 255, 255)",
+        "size": 28.6071,
+        "weight": 400,
+        "threshold": 3,
+        "x": 82,
+        "y": 414
+      },
+      "pass": true
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "article-card",
+      "name": "excerpt",
+      "minimumRatio": 10.4,
+      "sampleCount": 4741,
+      "worst": {
+        "bg": [
+          42,
+          21,
+          60
+        ],
+        "foreground": "rgb(213, 201, 220)",
+        "size": 16,
+        "weight": 400,
+        "threshold": 4.5,
+        "x": 80,
+        "y": 499
+      },
+      "pass": true
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "article-card",
+      "name": "metadata",
+      "minimumRatio": 10.33,
+      "sampleCount": 279,
+      "worst": {
+        "bg": [
+          43,
+          21,
+          62
+        ],
+        "foreground": "rgb(213, 201, 220)",
+        "size": 13,
+        "weight": 600,
+        "threshold": 4.5,
+        "x": 80,
+        "y": 385
+      },
+      "pass": true
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "article-card-footer",
+      "name": "section-link",
+      "minimumRatio": 10.37,
+      "sampleCount": 740,
+      "worst": {
+        "bg": [
+          43,
+          20,
+          63
+        ],
+        "foreground": "rgb(213, 201, 220)",
+        "size": 14,
+        "weight": 400,
+        "threshold": 4.5,
+        "x": 82,
+        "y": 447
+      },
+      "pass": true
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "article-card-footer",
+      "name": "share-label",
+      "minimumRatio": 10.31,
+      "sampleCount": 315,
+      "worst": {
+        "bg": [
+          43,
+          20,
+          66
+        ],
+        "foreground": "rgb(213, 201, 220)",
+        "size": 13,
+        "weight": 600,
+        "threshold": 4.5,
+        "x": 110,
+        "y": 510
+      },
+      "pass": true
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "reader-dark",
+      "name": "share-label",
+      "minimumRatio": 11.66,
+      "sampleCount": 315,
+      "worst": {
+        "bg": [
+          29,
+          10,
+          45
+        ],
+        "foreground": "rgb(213, 201, 220)",
+        "size": 13,
+        "weight": 600,
+        "threshold": 4.5,
+        "x": 404,
+        "y": 475
+      },
+      "pass": true
+    },
+    {
+      "language": "ru",
+      "width": 1440,
+      "group": "reader-light",
+      "name": "share-label",
+      "minimumRatio": 6.68,
+      "sampleCount": 315,
+      "worst": {
+        "bg": [
+          255,
+          250,
+          243
+        ],
+        "foreground": "rgb(102, 83, 110)",
+        "size": 13,
+        "weight": 600,
+        "threshold": 4.5,
+        "x": 404,
+        "y": 475
+      },
+      "pass": true
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "group": "hero",
+      "name": "kicker",
+      "minimumRatio": 1.33,
+      "sampleCount": 1620,
+      "worst": {
+        "bg": [
+          178,
+          152,
+          99
+        ],
+        "foreground": "rgb(255, 155, 69)",
+        "size": 13,
+        "weight": 600,
+        "threshold": 4.5,
+        "x": 154,
+        "y": 409
+      },
+      "pass": false
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "group": "hero",
+      "name": "lead",
+      "minimumRatio": 8.72,
+      "sampleCount": 5213,
+      "worst": {
+        "bg": [
+          57,
+          25,
+          32
+        ],
+        "foreground": "rgba(255, 255, 255, 0.72)",
+        "size": 18,
+        "weight": 400,
+        "threshold": 4.5,
+        "x": 166,
+        "y": 556
+      },
+      "pass": true
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "group": "hero",
+      "name": "primary-action",
+      "minimumRatio": 2.81,
+      "sampleCount": 558,
+      "worst": {
+        "bg": [
+          246,
+          117,
+          24
+        ],
+        "foreground": "rgb(255, 255, 255)",
+        "size": 12,
+        "weight": 700,
+        "threshold": 4.5,
+        "x": 113,
+        "y": 687
+      },
+      "pass": false
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "group": "hero",
+      "name": "secondary-action",
+      "minimumRatio": 15.42,
+      "sampleCount": 531,
+      "worst": {
+        "bg": [
+          31,
+          6,
+          26
+        ],
+        "foreground": "rgba(255, 255, 255, 0.9)",
+        "size": 12,
+        "weight": 700,
+        "threshold": 4.5,
+        "x": 241,
+        "y": 747
+      },
+      "pass": true
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "group": "article-card",
+      "name": "title",
+      "minimumRatio": 14.47,
+      "sampleCount": 4180,
+      "worst": {
+        "bg": [
+          62,
+          30,
+          58
+        ],
+        "foreground": "rgb(255, 255, 255)",
+        "size": 28,
+        "weight": 400,
+        "threshold": 3,
+        "x": 311,
+        "y": 424
+      },
+      "pass": true
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "group": "article-card",
+      "name": "excerpt",
+      "minimumRatio": 9.24,
+      "sampleCount": 4114,
+      "worst": {
+        "bg": [
+          60,
+          29,
+          59
+        ],
+        "foreground": "rgb(213, 201, 220)",
+        "size": 16,
+        "weight": 400,
+        "threshold": 4.5,
+        "x": 295,
+        "y": 500
+      },
+      "pass": true
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "group": "article-card",
+      "name": "metadata",
+      "minimumRatio": 9.62,
+      "sampleCount": 342,
+      "worst": {
+        "bg": [
+          54,
+          26,
+          62
+        ],
+        "foreground": "rgb(213, 201, 220)",
+        "size": 13,
+        "weight": 600,
+        "threshold": 4.5,
+        "x": 111,
+        "y": 391
+      },
+      "pass": true
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "group": "article-card-footer",
+      "name": "section-link",
+      "minimumRatio": 9.84,
+      "sampleCount": 720,
+      "worst": {
+        "bg": [
+          51,
+          25,
+          59
+        ],
+        "foreground": "rgb(213, 201, 220)",
+        "size": 14,
+        "weight": 400,
+        "threshold": 4.5,
+        "x": 155,
+        "y": 650
+      },
+      "pass": true
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "group": "article-card-footer",
+      "name": "share-label",
+      "minimumRatio": 10.21,
+      "sampleCount": 144,
+      "worst": {
+        "bg": [
+          46,
+          22,
+          59
+        ],
+        "foreground": "rgb(213, 201, 220)",
+        "size": 13,
+        "weight": 600,
+        "threshold": 4.5,
+        "x": 61,
+        "y": 695
+      },
+      "pass": true
+    }
+  ]
+}

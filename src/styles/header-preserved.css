@@ -1,0 +1,48 @@
+@layer site-typography {
+/* User-preserved Header and Hero: original system fonts and inherited metrics. */
+.topline, .site-header, .mobile-nav, .magazine-hero {
+--sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+--serif: Georgia, "Times New Roman", serif;
+--font-ui: var(--sans);
+--font-editorial: var(--serif);
+font-family: var(--sans);
+font-size: 16px;
+font-weight: 400;
+line-height: normal;
+letter-spacing: normal;
+font-kerning: auto;
+}
+.topline {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.11em;
+}
+.magazine-hero .section-kicker {
+font-family: var(--sans);
+font-size: 10px;
+font-weight: 900;
+line-height: normal;
+letter-spacing: 0.18em;
+}
+.site-header :is(button, input, select, textarea), .mobile-nav :is(button, input, select, textarea), .magazine-hero :is(button, input, select, textarea) {
+font-family: inherit;
+font-kerning: auto;
+}
+.site-header .interface-language-control button {
+  font-size: 7px;
+  font-weight: 900;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+.site-header .display-mode-control button small {
+  font-size: 8px;
+  font-weight: 900;
+}
+@media (max-width: 680px) {
+.site-header .interface-language-control button {
+    font-size: 10px;
+}
+}
+}

@@ -1,0 +1,167 @@
+{
+  "scope": "Current dist4184 article DOM with bibliography fixture; exact current source anchor and shared measure rules injected into their site-defaults/site-typography layers. This is source validation, not a rebuilt-dist E2E result.",
+  "cases": [
+    {
+      "viewport": {
+        "width": 1720,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4184/stati/knizhnyy-gid/15-best-fiction-books-about-knights/",
+      "before": {
+        "text": "Источники и библиографияhttps://example.org/archive/long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_publicationИсточники иллюстраций 1Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_.jpg",
+        "overflowWrap": [
+          "break-word",
+          "break-word"
+        ],
+        "wordBreak": [
+          "normal",
+          "normal"
+        ],
+        "sourceOverflow": 0,
+        "scrollOverflow": 0,
+        "linksInsideSource": true,
+        "sourceLeftDelta": 15.265625,
+        "insidePaper": true,
+        "beforeRail": true,
+        "prose": {
+          "fontFamily": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "fontSize": "19px",
+          "lineHeight": "34.58px",
+          "overflowWrap": "normal"
+        }
+      },
+      "after": {
+        "text": "Источники и библиографияhttps://example.org/archive/long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_publicationИсточники иллюстраций 1Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_.jpg",
+        "overflowWrap": [
+          "anywhere",
+          "anywhere"
+        ],
+        "wordBreak": [
+          "normal",
+          "normal"
+        ],
+        "sourceOverflow": 0,
+        "scrollOverflow": 0,
+        "linksInsideSource": true,
+        "sourceLeftDelta": 0,
+        "insidePaper": true,
+        "beforeRail": true,
+        "prose": {
+          "fontFamily": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "fontSize": "19px",
+          "lineHeight": "34.58px",
+          "overflowWrap": "normal"
+        }
+      },
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1000
+      },
+      "url": "http://127.0.0.1:4184/stati/knizhnyy-gid/15-best-fiction-books-about-knights/",
+      "before": {
+        "text": "Источники и библиографияhttps://example.org/archive/long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_publicationИсточники иллюстраций 1Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_.jpg",
+        "overflowWrap": [
+          "break-word",
+          "break-word"
+        ],
+        "wordBreak": [
+          "normal",
+          "normal"
+        ],
+        "sourceOverflow": 0,
+        "scrollOverflow": 0,
+        "linksInsideSource": true,
+        "sourceLeftDelta": 15.265625,
+        "insidePaper": true,
+        "beforeRail": true,
+        "prose": {
+          "fontFamily": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "fontSize": "19px",
+          "lineHeight": "34.58px",
+          "overflowWrap": "normal"
+        }
+      },
+      "after": {
+        "text": "Источники и библиографияhttps://example.org/archive/long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_publicationИсточники иллюстраций 1Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_.jpg",
+        "overflowWrap": [
+          "anywhere",
+          "anywhere"
+        ],
+        "wordBreak": [
+          "normal",
+          "normal"
+        ],
+        "sourceOverflow": 0,
+        "scrollOverflow": 0,
+        "linksInsideSource": true,
+        "sourceLeftDelta": 0,
+        "insidePaper": true,
+        "beforeRail": true,
+        "prose": {
+          "fontFamily": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "fontSize": "19px",
+          "lineHeight": "34.58px",
+          "overflowWrap": "normal"
+        }
+      },
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "url": "http://127.0.0.1:4184/stati/knizhnyy-gid/15-best-fiction-books-about-knights/",
+      "before": {
+        "text": "Источники и библиографияhttps://example.org/archive/long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_publicationИсточники иллюстраций 1Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_.jpg",
+        "overflowWrap": [
+          "break-word",
+          "break-word"
+        ],
+        "wordBreak": [
+          "normal",
+          "normal"
+        ],
+        "sourceOverflow": 0,
+        "scrollOverflow": 0,
+        "linksInsideSource": true,
+        "sourceLeftDelta": 0,
+        "insidePaper": true,
+        "beforeRail": true,
+        "prose": {
+          "fontFamily": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "fontSize": "17px",
+          "lineHeight": "29.75px",
+          "overflowWrap": "normal"
+        }
+      },
+      "after": {
+        "text": "Источники и библиографияhttps://example.org/archive/long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_long_unbroken_bibliographic_identifier_publicationИсточники иллюстраций 1Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_Wikimedia_Commons_image_attribution_without_breaks_.jpg",
+        "overflowWrap": [
+          "anywhere",
+          "anywhere"
+        ],
+        "wordBreak": [
+          "normal",
+          "normal"
+        ],
+        "sourceOverflow": 0,
+        "scrollOverflow": 0,
+        "linksInsideSource": true,
+        "sourceLeftDelta": 0,
+        "insidePaper": true,
+        "beforeRail": true,
+        "prose": {
+          "fontFamily": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "fontSize": "17px",
+          "lineHeight": "29.75px",
+          "overflowWrap": "normal"
+        }
+      },
+      "pass": true
+    }
+  ]
+}

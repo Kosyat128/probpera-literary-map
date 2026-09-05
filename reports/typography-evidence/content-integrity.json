@@ -1,0 +1,396 @@
+{
+  "createdAt": "2026-09-04T20:36:23.211Z",
+  "baselineCommit": "e073b21acfea854b3b573aa4613215156957ff38",
+  "scope": "Independent read-only integrity review of tracked content against HEAD; report is the only write.",
+  "protectedContent": {
+    "protectedTrackedPathCount": 2900,
+    "changedProtectedPaths": [],
+    "permittedTypographyCodeUnderData": [
+      "src/data/cms/siteTypography.test.ts",
+      "src/data/cms/siteTypography.ts"
+    ],
+    "generatedFilesWithLineEndingStatusNoise": [
+      {
+        "file": "apps/admin/catalog-assets/interface-copy-catalog.json",
+        "baselineBlob": "af6311822012706ecb6faaf4da3b96f8b99dee3c",
+        "workingBlob": "af6311822012706ecb6faaf4da3b96f8b99dee3c",
+        "normalizedContentUnchanged": true
+      },
+      {
+        "file": "public/articles/book-mentions.json",
+        "baselineBlob": "7f13dbf1ca966905dde6d69927f02f6b3a5fc6a0",
+        "workingBlob": "7f13dbf1ca966905dde6d69927f02f6b3a5fc6a0",
+        "normalizedContentUnchanged": true
+      },
+      {
+        "file": "src/data/geo/countries.provenance.json",
+        "baselineBlob": "dcd08faab2044664ec73292f85f2f5c63766513a",
+        "workingBlob": "dcd08faab2044664ec73292f85f2f5c63766513a",
+        "normalizedContentUnchanged": true
+      }
+    ],
+    "method": "Git normalized blob equality, plus SHA-256 byte equality for binary fonts. License CRLF checkout differences are recorded separately from content changes."
+  },
+  "authoredTsx": [
+    {
+      "file": "apps/admin/app/(dashboard)/articles/[id]/preview/page.tsx",
+      "jsxTextCount": 7,
+      "jsxTextMultisetUnchanged": true,
+      "authoredStringCount": 55,
+      "authoredStringMultisetUnchanged": true,
+      "authoredStringAdded": [],
+      "authoredStringRemoved": [],
+      "technicalStringAdded": [
+        "@/components/EditorialPreview.module.css",
+        "@/components/EditorialPreviewFonts"
+      ],
+      "technicalStringRemoved": []
+    },
+    {
+      "file": "apps/admin/app/(dashboard)/pages/[id]/preview/page.tsx",
+      "jsxTextCount": 6,
+      "jsxTextMultisetUnchanged": true,
+      "authoredStringCount": 5,
+      "authoredStringMultisetUnchanged": true,
+      "authoredStringAdded": [],
+      "authoredStringRemoved": [],
+      "technicalStringAdded": [
+        "@/components/EditorialPreview.module.css",
+        "@/components/EditorialPreviewFonts"
+      ],
+      "technicalStringRemoved": [
+        "admin-article-preview admin-page-preview"
+      ]
+    },
+    {
+      "file": "apps/admin/app/(dashboard)/site-studio/fonts/TypographyWorkspace.tsx",
+      "jsxTextCount": 79,
+      "jsxTextMultisetUnchanged": true,
+      "authoredStringCount": 137,
+      "authoredStringMultisetUnchanged": true,
+      "authoredStringAdded": [],
+      "authoredStringRemoved": [],
+      "technicalStringAdded": [
+        "@/components/EditorialPreview.module.css",
+        "@/components/EditorialPreviewFonts"
+      ],
+      "technicalStringRemoved": []
+    },
+    {
+      "file": "src/App.tsx",
+      "jsxTextCount": 22,
+      "jsxTextMultisetUnchanged": true,
+      "authoredStringCount": 1021,
+      "authoredStringMultisetUnchanged": true,
+      "authoredStringAdded": [],
+      "authoredStringRemoved": [],
+      "technicalStringAdded": [
+        "article-card-footer",
+        "article-card-link",
+        "card"
+      ],
+      "technicalStringRemoved": []
+    },
+    {
+      "file": "src/components/LiteraryCalendar.tsx",
+      "jsxTextCount": 1,
+      "jsxTextMultisetUnchanged": true,
+      "authoredStringCount": 119,
+      "authoredStringMultisetUnchanged": false,
+      "authoredStringAdded": [],
+      "authoredStringRemoved": [
+        "Страна"
+      ],
+      "technicalStringAdded": [
+        "./CountryFlagIcon",
+        "calendar-country-flag country-flag-icon--round"
+      ],
+      "technicalStringRemoved": [],
+      "approvedException": "User explicitly requested calendar country text to become SVG flags. One visible Страна label is removed; localized country aria-label and title remain."
+    },
+    {
+      "file": "src/editorial/ShareLinks.tsx",
+      "jsxTextCount": 0,
+      "jsxTextMultisetUnchanged": true,
+      "authoredStringCount": 28,
+      "authoredStringMultisetUnchanged": true,
+      "authoredStringAdded": [],
+      "authoredStringRemoved": [],
+      "technicalStringAdded": [
+        "card",
+        "group",
+        "reader",
+        "reader",
+        "share-links__controls"
+      ],
+      "technicalStringRemoved": [
+        "share-links"
+      ]
+    },
+    {
+      "file": "src/main.tsx",
+      "jsxTextCount": 0,
+      "jsxTextMultisetUnchanged": true,
+      "authoredStringCount": 2,
+      "authoredStringMultisetUnchanged": true,
+      "authoredStringAdded": [],
+      "authoredStringRemoved": [],
+      "technicalStringAdded": [
+        "./styles/community-editorial-layout.css",
+        "./styles/editorial-card-layout.css",
+        "./styles/editorial-fonts.css",
+        "./styles/header-preserved.css",
+        "./styles/site-typography.css"
+      ],
+      "technicalStringRemoved": [
+        "./styles/globe-editorial-fonts.css"
+      ]
+    }
+  ],
+  "fonts": {
+    "expectedCount": 14,
+    "actualCount": 14,
+    "allByteIdentical": true,
+    "files": [
+      {
+        "file": "public/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2",
+        "bytes": 9604,
+        "sha256": "b0324c3af47c138a2b5457466037637b8279576197024ed6968041836ffc0546",
+        "baselineSha256": "b0324c3af47c138a2b5457466037637b8279576197024ed6968041836ffc0546",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2",
+        "bytes": 9644,
+        "sha256": "31fe183d248fa315a872f0956e0e43bc5d1d6c9c7fea2fa434deb91ab2a686ff",
+        "baselineSha256": "31fe183d248fa315a872f0956e0e43bc5d1d6c9c7fea2fa434deb91ab2a686ff",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+        "bytes": 9604,
+        "sha256": "1c484c7583999a7471c7d2dff4f0d1e001d459afaed4f58b3f6e0d88548d982c",
+        "baselineSha256": "1c484c7583999a7471c7d2dff4f0d1e001d459afaed4f58b3f6e0d88548d982c",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-sans-3-latin-400-normal.woff2",
+        "bytes": 15696,
+        "sha256": "0f73f35e08cde0a2f10c109c6e01d71459d97e4099ecd9a50f1b6c0209e4de2b",
+        "baselineSha256": "0f73f35e08cde0a2f10c109c6e01d71459d97e4099ecd9a50f1b6c0209e4de2b",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-sans-3-latin-600-normal.woff2",
+        "bytes": 15668,
+        "sha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38",
+        "baselineSha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-sans-3-latin-700-normal.woff2",
+        "bytes": 15596,
+        "sha256": "ae35266f2ab0d5314ff9a04127931eb26c793e4f1269bb240046d4d2db4b7bb1",
+        "baselineSha256": "ae35266f2ab0d5314ff9a04127931eb26c793e4f1269bb240046d4d2db4b7bb1",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2",
+        "bytes": 13748,
+        "sha256": "18148c0920aa7272b106614f585dfa46d08d01aca5734e5c990f02e649c33aeb",
+        "baselineSha256": "18148c0920aa7272b106614f585dfa46d08d01aca5734e5c990f02e649c33aeb",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+        "bytes": 14172,
+        "sha256": "4899e71407c11bcafe49dfa3573415740a5b47a87028917eedd39731237369c0",
+        "baselineSha256": "4899e71407c11bcafe49dfa3573415740a5b47a87028917eedd39731237369c0",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2",
+        "bytes": 14776,
+        "sha256": "881a5cd61ba36255b82c4e99ca68a21dab3fc62fd91d780501c597f82cae477a",
+        "baselineSha256": "881a5cd61ba36255b82c4e99ca68a21dab3fc62fd91d780501c597f82cae477a",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+        "bytes": 14864,
+        "sha256": "faf0f5d4125e4f68e024a1d6cf5dad104487692badf3b24a3a8dd38a63542e20",
+        "baselineSha256": "faf0f5d4125e4f68e024a1d6cf5dad104487692badf3b24a3a8dd38a63542e20",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-serif-4-latin-400-italic.woff2",
+        "bytes": 20092,
+        "sha256": "882b7c150c29f29d4f8daae6b8dcae8662aac7f28ca34b34615305154136ecfd",
+        "baselineSha256": "882b7c150c29f29d4f8daae6b8dcae8662aac7f28ca34b34615305154136ecfd",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-serif-4-latin-400-normal.woff2",
+        "bytes": 20088,
+        "sha256": "02194deb92d3975dd30e11a3824a1f1db32b48c93654e60560cb81ce8e7b5f95",
+        "baselineSha256": "02194deb92d3975dd30e11a3824a1f1db32b48c93654e60560cb81ce8e7b5f95",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-serif-4-latin-600-normal.woff2",
+        "bytes": 21532,
+        "sha256": "f2b7e1cf1d277b7608231868135648f8ad8e2b58d8e97ca088bee15dc357bee7",
+        "baselineSha256": "f2b7e1cf1d277b7608231868135648f8ad8e2b58d8e97ca088bee15dc357bee7",
+        "byteIdentical": true
+      },
+      {
+        "file": "public/fonts/editorial/source-serif-4-latin-700-normal.woff2",
+        "bytes": 21716,
+        "sha256": "7691c51bc286a9014db0048277d2c3f2ad0a90b533dc8adfb16cb22a95390d39",
+        "baselineSha256": "7691c51bc286a9014db0048277d2c3f2ad0a90b533dc8adfb16cb22a95390d39",
+        "byteIdentical": true
+      }
+    ],
+    "licensing": [
+      {
+        "file": "public/fonts/editorial/LICENSE.source-sans-3.md",
+        "sha256": "62efaba15836b1ce985d0e3205befc0ce8588d453b07d168915ec2803d219206",
+        "baselineSha256": "f9e57d28452ab6162c7fc0d248b5a5e81bf64676a6950d56b2e137c1253f79e8",
+        "byteIdentical": false,
+        "oflEvidence": true,
+        "normalizedTextUnchanged": true,
+        "normalizedSha256": "f9e57d28452ab6162c7fc0d248b5a5e81bf64676a6950d56b2e137c1253f79e8",
+        "lineEndingOnlyDifference": true
+      },
+      {
+        "file": "public/fonts/editorial/LICENSE.source-serif-4.md",
+        "sha256": "717a22f1bd2e30d49c21a2a6f548819aacd0ade1adf854533f4d42a01bb4f910",
+        "baselineSha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+        "byteIdentical": false,
+        "oflEvidence": true,
+        "normalizedTextUnchanged": true,
+        "normalizedSha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+        "lineEndingOnlyDifference": true
+      }
+    ]
+  },
+  "unchangedStaticSeoAndCachingContracts": [
+    {
+      "file": "index.html",
+      "gitBlob": "84544647cf48177507c26246eb25647ec2621c8e",
+      "workingGitBlob": "84544647cf48177507c26246eb25647ec2621c8e",
+      "unchanged": true
+    },
+    {
+      "file": "vite.config.ts",
+      "gitBlob": "198731b80b65745bed2fc6c808ecea842f184e90",
+      "workingGitBlob": "198731b80b65745bed2fc6c808ecea842f184e90",
+      "unchanged": true
+    },
+    {
+      "file": "public/sw.js",
+      "gitBlob": "79a4e3dd0ad1580c75e4ef3f0c69bf6f9a44ba5b",
+      "workingGitBlob": "79a4e3dd0ad1580c75e4ef3f0c69bf6f9a44ba5b",
+      "unchanged": true
+    },
+    {
+      "file": "src/mobile/registerServiceWorker.ts",
+      "gitBlob": "23a5dcc35d6c5c7831da02760539eb519b1df2fa",
+      "workingGitBlob": "23a5dcc35d6c5c7831da02760539eb519b1df2fa",
+      "unchanged": true
+    },
+    {
+      "file": "scripts/build-article-pages.mjs",
+      "gitBlob": "9171ec0dc52f2dafeece953cd9797b47d890c669",
+      "workingGitBlob": "9171ec0dc52f2dafeece953cd9797b47d890c669",
+      "unchanged": true
+    },
+    {
+      "file": "scripts/lib/article-route-policy.mjs",
+      "gitBlob": "1f83346da092705af4ef5e6235f177c33782d5b0",
+      "workingGitBlob": "1f83346da092705af4ef5e6235f177c33782d5b0",
+      "unchanged": true
+    }
+  ],
+  "builtPageSnapshot": [
+    {
+      "file": "dist/index.html",
+      "modifiedAt": "2026-09-04T20:30:16.084Z",
+      "stylesheets": [
+        "/probpera-literary-map/assets/index-BvCKy4Fi.css"
+      ],
+      "canonicalUrl": "https://kosyat128.github.io/probpera-literary-map/",
+      "moduleScripts": 1,
+      "staticEditorialFallback": true,
+      "structuredDataBlocks": 1
+    },
+    {
+      "file": "dist/stati/index.html",
+      "modifiedAt": "2026-09-04T20:30:16.116Z",
+      "stylesheets": [
+        "/probpera-literary-map/assets/index-BvCKy4Fi.css"
+      ],
+      "canonicalUrl": "https://kosyat128.github.io/probpera-literary-map/stati/",
+      "moduleScripts": 0,
+      "staticEditorialFallback": true,
+      "structuredDataBlocks": 1
+    }
+  ],
+  "builtStylesheets": [
+    {
+      "url": "/probpera-literary-map/assets/index-BvCKy4Fi.css",
+      "file": "dist/assets/index-BvCKy4Fi.css",
+      "contentHashedName": true,
+      "fontUrlCount": 14,
+      "firstFontUrls": [
+        "/probpera-literary-map/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2",
+        "/probpera-literary-map/fonts/editorial/source-sans-3-latin-400-normal.woff2"
+      ],
+      "sha256": "e0c6d426594452b5abba3c70c75e82a6ac696d65937908d4206eb2a9a0a8d931"
+    }
+  ],
+  "cachingAssessment": {
+    "serviceWorker": "Existing same-origin CSS/font/script requests are cache-first by request URL; navigations and JSON remain network-first.",
+    "stylesheetInvalidation": "Vite content-hashed CSS URLs are retained by static pages; changed CSS generates a different cache key.",
+    "fontInvalidation": "The 14 stable local font URLs retain byte-identical payloads, so no font cache version bump is required for this change.",
+    "staticRendering": "Static archive builder keeps stylesheet links from the Vite shell and removes module scripts from archive fallbacks. Source contract remains unchanged.",
+    "limitation": "This review checks source contracts and the current local dist snapshot; it is not a production rollout or old-client service-worker test."
+  },
+  "pass": true,
+  "reviewUpdatedAt": "2026-09-04T20:53:17.283Z",
+  "intentionalCalendarException": {
+    "file": "src/components/LiteraryCalendar.tsx",
+    "visibleChange": "Country label and name replaced by existing decorative CountryFlagIcon SVG at 28px.",
+    "preserved": "Country selection callback, localized accessible label, calendar events/dates and country catalog remain unchanged; localized country title added.",
+    "sourceDiffReviewed": true
+  },
+  "headerHeroPreservationEvidence": {
+    "report": "reports/typography-evidence/header-hero-baseline-computed.json",
+    "samples": [
+      {
+        "language": "ru",
+        "width": 390,
+        "elements": 170,
+        "differences": []
+      },
+      {
+        "language": "ru",
+        "width": 1440,
+        "elements": 170,
+        "differences": []
+      },
+      {
+        "language": "en",
+        "width": 390,
+        "elements": 170,
+        "differences": []
+      },
+      {
+        "language": "en",
+        "width": 1440,
+        "elements": 170,
+        "differences": []
+      }
+    ]
+  }
+}

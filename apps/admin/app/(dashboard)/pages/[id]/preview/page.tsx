@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { editorialPreviewFonts } from "@/components/EditorialPreviewFonts";
+import previewStyles from "@/components/EditorialPreview.module.css";
 import { formatDate } from "@/lib/format";
 import {
   pageCatalogPageNumber,
@@ -51,7 +53,7 @@ export default async function PagePreview({
           ← Вернуться в редактор
         </Link>
       </header>
-      <article className="admin-article-preview admin-page-preview">
+      <article className={`admin-article-preview admin-page-preview ${editorialPreviewFonts} ${previewStyles.fonts} ${previewStyles.reader}`}>
         <header>
           <span>Проба Пера</span>
           <h1>{page.title}</h1>

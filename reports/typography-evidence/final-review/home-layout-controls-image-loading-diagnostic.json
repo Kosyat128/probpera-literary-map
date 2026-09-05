@@ -1,0 +1,436 @@
+{
+  "scope": "Final built dist at localhost:4184, actual RU homepage DOM, 390/1440px. No CSS injection. Two desktop crops. Compared with the recorded source-injection baseline; no full suite or production verification.",
+  "capturedAt": "2026-09-04T23:11:32.941Z",
+  "browser": "152.0.7977.76",
+  "cases": [
+    {
+      "width": 390,
+      "result": {
+        "url": "http://127.0.0.1:4184/",
+        "language": "ru",
+        "stylesheets": [
+          "http://127.0.0.1:4184/assets/index-BB5GbIQT.css",
+          "http://127.0.0.1:4184/assets/BookArchiveSection-DVI8KyOc.css"
+        ],
+        "grid": {
+          "x": 18,
+          "y": 6293,
+          "w": 354,
+          "h": 2615
+        },
+        "cards": [
+          {
+            "x": 18,
+            "y": 6293,
+            "w": 354,
+            "h": 638,
+            "gap": 16,
+            "titleOverflows": false,
+            "share": [
+              {
+                "x": 37,
+                "y": 6874,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 89,
+                "y": 6874,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 141,
+                "y": 6874,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 193,
+                "y": 6874,
+                "w": 44,
+                "h": 44
+              }
+            ]
+          },
+          {
+            "x": 18,
+            "y": 6949,
+            "w": 354,
+            "h": 624,
+            "gap": 16,
+            "titleOverflows": false,
+            "share": [
+              {
+                "x": 37,
+                "y": 7516,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 89,
+                "y": 7516,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 141,
+                "y": 7516,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 193,
+                "y": 7516,
+                "w": 44,
+                "h": 44
+              }
+            ]
+          },
+          {
+            "x": 18,
+            "y": 7591,
+            "w": 354,
+            "h": 674,
+            "gap": 16,
+            "titleOverflows": false,
+            "share": [
+              {
+                "x": 37,
+                "y": 8208,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 89,
+                "y": 8208,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 141,
+                "y": 8208,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 193,
+                "y": 8208,
+                "w": 44,
+                "h": 44
+              }
+            ]
+          },
+          {
+            "x": 18,
+            "y": 8283,
+            "w": 354,
+            "h": 624,
+            "gap": 16,
+            "titleOverflows": false,
+            "share": [
+              {
+                "x": 37,
+                "y": 8851,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 89,
+                "y": 8851,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 141,
+                "y": 8851,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 193,
+                "y": 8851,
+                "w": 44,
+                "h": 44
+              }
+            ]
+          }
+        ],
+        "imagesLoaded": false,
+        "trust": [
+          {
+            "open": true,
+            "x": 20,
+            "y": 18439,
+            "w": 350,
+            "h": 270
+          },
+          {
+            "open": false,
+            "x": 20,
+            "y": 18718,
+            "w": 350,
+            "h": 96
+          },
+          {
+            "open": false,
+            "x": 20,
+            "y": 18824,
+            "w": 350,
+            "h": 96
+          },
+          {
+            "open": false,
+            "x": 20,
+            "y": 18930,
+            "w": 350,
+            "h": 100
+          }
+        ],
+        "mail": [
+          {
+            "x": 20,
+            "y": 18350,
+            "w": 171,
+            "h": 44
+          },
+          {
+            "x": 22,
+            "y": 20436,
+            "w": 166,
+            "h": 44
+          }
+        ],
+        "overflow": false,
+        "contentSha256": "fdad69dccbac6f05eeac92a413a51a364c4b70a41e400e0fafe29e33577f2d3d"
+      },
+      "assertions": {
+        "contentOrderImagesLinksUnchanged": true,
+        "leadGapRemoved": true,
+        "noEmptyGridCell": true,
+        "desktopGridShorter": true,
+        "allTitlesFit": true,
+        "shareControls44": true,
+        "closedAccordionsCompact": true,
+        "mailTargets44": true,
+        "noHorizontalOverflow": true,
+        "imagesLoaded": false
+      }
+    },
+    {
+      "width": 1440,
+      "result": {
+        "url": "http://127.0.0.1:4184/",
+        "language": "ru",
+        "stylesheets": [
+          "http://127.0.0.1:4184/assets/index-BB5GbIQT.css",
+          "http://127.0.0.1:4184/assets/BookArchiveSection-DVI8KyOc.css"
+        ],
+        "grid": {
+          "x": 58,
+          "y": 4578,
+          "w": 1325,
+          "h": 649
+        },
+        "cards": [
+          {
+            "x": 58,
+            "y": 4578,
+            "w": 318,
+            "h": 649,
+            "gap": 24,
+            "titleOverflows": false,
+            "share": [
+              {
+                "x": 75,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 127,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 179,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 231,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              }
+            ]
+          },
+          {
+            "x": 393,
+            "y": 4578,
+            "w": 318,
+            "h": 649,
+            "gap": 39,
+            "titleOverflows": false,
+            "share": [
+              {
+                "x": 410,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 462,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 514,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 566,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              }
+            ]
+          },
+          {
+            "x": 729,
+            "y": 4578,
+            "w": 318,
+            "h": 649,
+            "gap": 16,
+            "titleOverflows": false,
+            "share": [
+              {
+                "x": 746,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 798,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 850,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 902,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              }
+            ]
+          },
+          {
+            "x": 1065,
+            "y": 4578,
+            "w": 318,
+            "h": 649,
+            "gap": 65,
+            "titleOverflows": false,
+            "share": [
+              {
+                "x": 1082,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 1134,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 1186,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              },
+              {
+                "x": 1238,
+                "y": 5170,
+                "w": 44,
+                "h": 44
+              }
+            ]
+          }
+        ],
+        "imagesLoaded": true,
+        "trust": [
+          {
+            "open": true,
+            "x": 72,
+            "y": 14584,
+            "w": 317,
+            "h": 306
+          },
+          {
+            "open": false,
+            "x": 399,
+            "y": 14584,
+            "w": 317,
+            "h": 107
+          },
+          {
+            "open": false,
+            "x": 725,
+            "y": 14584,
+            "w": 317,
+            "h": 107
+          },
+          {
+            "open": false,
+            "x": 1052,
+            "y": 14584,
+            "w": 317,
+            "h": 107
+          }
+        ],
+        "mail": [
+          {
+            "x": 1197,
+            "y": 14495,
+            "w": 171,
+            "h": 44
+          },
+          {
+            "x": 637,
+            "y": 15461,
+            "w": 166,
+            "h": 44
+          }
+        ],
+        "overflow": false,
+        "contentSha256": "fdad69dccbac6f05eeac92a413a51a364c4b70a41e400e0fafe29e33577f2d3d"
+      },
+      "assertions": {
+        "contentOrderImagesLinksUnchanged": true,
+        "leadGapRemoved": true,
+        "noEmptyGridCell": true,
+        "desktopGridShorter": true,
+        "allTitlesFit": true,
+        "shareControls44": true,
+        "closedAccordionsCompact": true,
+        "mailTargets44": true,
+        "noHorizontalOverflow": true,
+        "imagesLoaded": true
+      }
+    }
+  ],
+  "pass": false
+}

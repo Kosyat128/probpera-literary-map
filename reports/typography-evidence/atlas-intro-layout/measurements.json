@@ -1,0 +1,550 @@
+{
+  "baseURL": "http://127.0.0.1:4184/",
+  "renderedFrom": "Production build",
+  "results": [
+    {
+      "locale": "ru",
+      "width": 320,
+      "intro": {
+        "x": 18,
+        "y": 292,
+        "width": 284,
+        "height": 707.5625,
+        "right": 302,
+        "bottom": 999.5625
+      },
+      "title": {
+        "x": 18,
+        "y": 320.1875,
+        "width": 284,
+        "height": 79.46875,
+        "right": 302,
+        "bottom": 399.65625
+      },
+      "titleInk": {
+        "left": 18,
+        "right": 270.203125,
+        "width": 252.203125
+      },
+      "titleClippedBy": [],
+      "typography": {
+        "title": "36.1248px",
+        "button": "14px",
+        "count": "13px",
+        "label": "13px",
+        "labelTransform": "none",
+        "input": "14px"
+      },
+      "description": {
+        "x": 18,
+        "y": 417.65625,
+        "width": 284,
+        "height": 131.71875,
+        "right": 302,
+        "bottom": 549.375
+      },
+      "search": {
+        "x": 18,
+        "y": 925.375,
+        "width": 284,
+        "height": 74.1875,
+        "right": 302,
+        "bottom": 999.5625
+      },
+      "field": {
+        "x": 18,
+        "y": 951.5625,
+        "width": 284,
+        "height": 48,
+        "right": 302,
+        "bottom": 999.5625
+      },
+      "input": {
+        "x": 65,
+        "y": 953.5625,
+        "width": 191,
+        "height": 44,
+        "right": 256,
+        "bottom": 997.5625
+      },
+      "buttons": [
+        {
+          "text": "Все страны 200",
+          "x": 18,
+          "y": 573.375,
+          "width": 118.453125,
+          "height": 48,
+          "right": 136.453125,
+          "bottom": 621.375,
+          "overflow": 0
+        },
+        {
+          "text": "Нобелевские лауреаты 44",
+          "x": 18,
+          "y": 629.375,
+          "width": 187.625,
+          "height": 48,
+          "right": 205.625,
+          "bottom": 677.375,
+          "overflow": 0
+        },
+        {
+          "text": "10+ авторов 44",
+          "x": 18,
+          "y": 685.375,
+          "width": 117.171875,
+          "height": 48,
+          "right": 135.171875,
+          "bottom": 733.375,
+          "overflow": 0
+        },
+        {
+          "text": "С реальными портретами 153",
+          "x": 18,
+          "y": 741.375,
+          "width": 209.078125,
+          "height": 48,
+          "right": 227.078125,
+          "bottom": 789.375,
+          "overflow": 0
+        },
+        {
+          "text": "Страны с проверенными карточками 190",
+          "x": 18,
+          "y": 797.375,
+          "width": 281.078125,
+          "height": 48,
+          "right": 299.078125,
+          "bottom": 845.375,
+          "overflow": 0
+        },
+        {
+          "text": "Крупнейшие архивы↓",
+          "x": 18,
+          "y": 853.375,
+          "width": 173.6875,
+          "height": 48,
+          "right": 191.6875,
+          "bottom": 901.375,
+          "overflow": 0
+        }
+      ],
+      "conflicts": [],
+      "documentOverflow": 0,
+      "filterOverflow": 0,
+      "accessibleSearchLabel": "Найти страну, писателя или книгу",
+      "searchEscapePassed": true,
+      "archiveDropdownPassed": true,
+      "filterSelectionPassed": true,
+      "immersiveSmokePassed": null
+    },
+    {
+      "locale": "ru",
+      "width": 390,
+      "intro": {
+        "x": 18,
+        "y": 411,
+        "width": 354,
+        "height": 588.75,
+        "right": 372,
+        "bottom": 999.75
+      },
+      "title": {
+        "x": 18,
+        "y": 439.1875,
+        "width": 354,
+        "height": 99,
+        "right": 372,
+        "bottom": 538.1875
+      },
+      "titleInk": {
+        "left": 18,
+        "right": 332.203125,
+        "width": 314.203125
+      },
+      "titleClippedBy": [],
+      "typography": {
+        "title": "45px",
+        "button": "14px",
+        "count": "13px",
+        "label": "13px",
+        "labelTransform": "none",
+        "input": "14px"
+      },
+      "description": {
+        "x": 18,
+        "y": 556.1875,
+        "width": 354,
+        "height": 105.375,
+        "right": 372,
+        "bottom": 661.5625
+      },
+      "search": {
+        "x": 18,
+        "y": 925.5625,
+        "width": 354,
+        "height": 74.1875,
+        "right": 372,
+        "bottom": 999.75
+      },
+      "field": {
+        "x": 18,
+        "y": 951.75,
+        "width": 354,
+        "height": 48,
+        "right": 372,
+        "bottom": 999.75
+      },
+      "input": {
+        "x": 65,
+        "y": 953.75,
+        "width": 261,
+        "height": 44,
+        "right": 326,
+        "bottom": 997.75
+      },
+      "buttons": [
+        {
+          "text": "Все страны 200",
+          "x": 18,
+          "y": 685.5625,
+          "width": 118.453125,
+          "height": 48,
+          "right": 136.453125,
+          "bottom": 733.5625,
+          "overflow": 0
+        },
+        {
+          "text": "Нобелевские лауреаты 44",
+          "x": 144.453125,
+          "y": 685.5625,
+          "width": 187.625,
+          "height": 48,
+          "right": 332.078125,
+          "bottom": 733.5625,
+          "overflow": 0
+        },
+        {
+          "text": "10+ авторов 44",
+          "x": 18,
+          "y": 741.5625,
+          "width": 117.171875,
+          "height": 48,
+          "right": 135.171875,
+          "bottom": 789.5625,
+          "overflow": 0
+        },
+        {
+          "text": "С реальными портретами 153",
+          "x": 143.171875,
+          "y": 741.5625,
+          "width": 209.078125,
+          "height": 48,
+          "right": 352.25,
+          "bottom": 789.5625,
+          "overflow": 0
+        },
+        {
+          "text": "Страны с проверенными карточками 190",
+          "x": 18,
+          "y": 797.5625,
+          "width": 281.078125,
+          "height": 48,
+          "right": 299.078125,
+          "bottom": 845.5625,
+          "overflow": 0
+        },
+        {
+          "text": "Крупнейшие архивы↓",
+          "x": 18,
+          "y": 853.5625,
+          "width": 173.6875,
+          "height": 48,
+          "right": 191.6875,
+          "bottom": 901.5625,
+          "overflow": 0
+        }
+      ],
+      "conflicts": [],
+      "documentOverflow": 0,
+      "filterOverflow": 0,
+      "accessibleSearchLabel": "Найти страну, писателя или книгу",
+      "searchEscapePassed": true,
+      "archiveDropdownPassed": true,
+      "filterSelectionPassed": true,
+      "immersiveSmokePassed": null
+    },
+    {
+      "locale": "ru",
+      "width": 1440,
+      "intro": {
+        "x": 57.59375,
+        "y": 728,
+        "width": 1324.8125,
+        "height": 271.875,
+        "right": 1382.40625,
+        "bottom": 999.875
+      },
+      "title": {
+        "x": 57.59375,
+        "y": 756.1875,
+        "width": 1324.8125,
+        "height": 77,
+        "right": 1382.40625,
+        "bottom": 833.1875
+      },
+      "titleInk": {
+        "left": 57.59375,
+        "right": 840.265625,
+        "width": 782.671875
+      },
+      "titleClippedBy": [],
+      "typography": {
+        "title": "70px",
+        "button": "14px",
+        "count": "13px",
+        "label": "13px",
+        "labelTransform": "none",
+        "input": "14px"
+      },
+      "description": {
+        "x": 57.59375,
+        "y": 851.1875,
+        "width": 690,
+        "height": 52.6875,
+        "right": 747.59375,
+        "bottom": 903.875
+      },
+      "search": {
+        "x": 1162.40625,
+        "y": 951.875,
+        "width": 220,
+        "height": 48,
+        "right": 1382.40625,
+        "bottom": 999.875
+      },
+      "field": {
+        "x": 1162.40625,
+        "y": 951.875,
+        "width": 220,
+        "height": 48,
+        "right": 1382.40625,
+        "bottom": 999.875
+      },
+      "input": {
+        "x": 1209.40625,
+        "y": 953.875,
+        "width": 127,
+        "height": 44,
+        "right": 1336.40625,
+        "bottom": 997.875
+      },
+      "buttons": [
+        {
+          "text": "Все страны 200",
+          "x": 57.59375,
+          "y": 951.875,
+          "width": 110.453125,
+          "height": 48,
+          "right": 168.046875,
+          "bottom": 999.875,
+          "overflow": 0
+        },
+        {
+          "text": "Нобелевские лауреаты 44",
+          "x": 176.046875,
+          "y": 951.875,
+          "width": 179.625,
+          "height": 48,
+          "right": 355.671875,
+          "bottom": 999.875,
+          "overflow": 0
+        },
+        {
+          "text": "10+ авторов 44",
+          "x": 363.671875,
+          "y": 951.875,
+          "width": 109.171875,
+          "height": 48,
+          "right": 472.84375,
+          "bottom": 999.875,
+          "overflow": 0
+        },
+        {
+          "text": "С реальными портретами 153",
+          "x": 480.84375,
+          "y": 951.875,
+          "width": 201.078125,
+          "height": 48,
+          "right": 681.921875,
+          "bottom": 999.875,
+          "overflow": 0
+        },
+        {
+          "text": "Страны с проверенными карточками 190",
+          "x": 689.921875,
+          "y": 951.875,
+          "width": 273.078125,
+          "height": 48,
+          "right": 963,
+          "bottom": 999.875,
+          "overflow": 0
+        },
+        {
+          "text": "Крупнейшие архивы↓",
+          "x": 971,
+          "y": 951.875,
+          "width": 165.6875,
+          "height": 48,
+          "right": 1136.6875,
+          "bottom": 999.875,
+          "overflow": 0
+        }
+      ],
+      "conflicts": [],
+      "documentOverflow": 0,
+      "filterOverflow": 0,
+      "accessibleSearchLabel": "Найти страну, писателя или книгу",
+      "searchEscapePassed": true,
+      "archiveDropdownPassed": true,
+      "filterSelectionPassed": true,
+      "immersiveSmokePassed": null
+    },
+    {
+      "locale": "ru",
+      "width": 1848,
+      "intro": {
+        "x": 159,
+        "y": 481,
+        "width": 1530,
+        "height": 271.875,
+        "right": 1689,
+        "bottom": 752.875
+      },
+      "title": {
+        "x": 159,
+        "y": 509.1875,
+        "width": 1530,
+        "height": 77,
+        "right": 1689,
+        "bottom": 586.1875
+      },
+      "titleInk": {
+        "left": 159,
+        "right": 941.671875,
+        "width": 782.671875
+      },
+      "titleClippedBy": [],
+      "typography": {
+        "title": "70px",
+        "button": "14px",
+        "count": "13px",
+        "label": "13px",
+        "labelTransform": "none",
+        "input": "14px"
+      },
+      "description": {
+        "x": 159,
+        "y": 604.1875,
+        "width": 690,
+        "height": 52.6875,
+        "right": 849,
+        "bottom": 656.875
+      },
+      "search": {
+        "x": 1369,
+        "y": 704.875,
+        "width": 320,
+        "height": 48,
+        "right": 1689,
+        "bottom": 752.875
+      },
+      "field": {
+        "x": 1369,
+        "y": 704.875,
+        "width": 320,
+        "height": 48,
+        "right": 1689,
+        "bottom": 752.875
+      },
+      "input": {
+        "x": 1416,
+        "y": 706.875,
+        "width": 227,
+        "height": 44,
+        "right": 1643,
+        "bottom": 750.875
+      },
+      "buttons": [
+        {
+          "text": "Все страны 200",
+          "x": 159,
+          "y": 704.875,
+          "width": 118.453125,
+          "height": 48,
+          "right": 277.453125,
+          "bottom": 752.875,
+          "overflow": 0
+        },
+        {
+          "text": "Нобелевские лауреаты 44",
+          "x": 285.453125,
+          "y": 704.875,
+          "width": 187.625,
+          "height": 48,
+          "right": 473.078125,
+          "bottom": 752.875,
+          "overflow": 0
+        },
+        {
+          "text": "10+ авторов 44",
+          "x": 481.078125,
+          "y": 704.875,
+          "width": 117.171875,
+          "height": 48,
+          "right": 598.25,
+          "bottom": 752.875,
+          "overflow": 0
+        },
+        {
+          "text": "С реальными портретами 153",
+          "x": 606.25,
+          "y": 704.875,
+          "width": 209.078125,
+          "height": 48,
+          "right": 815.328125,
+          "bottom": 752.875,
+          "overflow": 0
+        },
+        {
+          "text": "Страны с проверенными карточками 190",
+          "x": 823.328125,
+          "y": 704.875,
+          "width": 281.078125,
+          "height": 48,
+          "right": 1104.40625,
+          "bottom": 752.875,
+          "overflow": 0
+        },
+        {
+          "text": "Крупнейшие архивы↓",
+          "x": 1112.40625,
+          "y": 704.875,
+          "width": 173.6875,
+          "height": 48,
+          "right": 1286.09375,
+          "bottom": 752.875,
+          "overflow": 0
+        }
+      ],
+      "conflicts": [],
+      "documentOverflow": 0,
+      "filterOverflow": 0,
+      "accessibleSearchLabel": "Найти страну, писателя или книгу",
+      "searchEscapePassed": true,
+      "archiveDropdownPassed": true,
+      "filterSelectionPassed": true,
+      "immersiveSmokePassed": null
+    }
+  ]
+}

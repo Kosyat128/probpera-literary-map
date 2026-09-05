@@ -1,0 +1,398 @@
+[
+  {
+    "language": "ru",
+    "width": 320,
+    "state": "compact",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 320,
+    "state": "full-month",
+    "days": 30,
+    "events": 89,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 320,
+    "state": "dense-selected",
+    "days": 1,
+    "events": 8,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 320,
+    "state": "deselected",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 320,
+    "state": "control-states",
+    "states": {
+      "normal": [
+        206,
+        11.71875,
+        44,
+        44
+      ],
+      "hover": [
+        206,
+        11.71875,
+        44,
+        44
+      ],
+      "focus": [
+        206,
+        11.71875,
+        44,
+        44
+      ]
+    },
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 390,
+    "state": "compact",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 390,
+    "state": "full-month",
+    "days": 30,
+    "events": 89,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 390,
+    "state": "dense-selected",
+    "days": 1,
+    "events": 8,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 390,
+    "state": "deselected",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 390,
+    "state": "control-states",
+    "states": {
+      "normal": [
+        276,
+        11.71875,
+        44,
+        44
+      ],
+      "hover": [
+        276,
+        11.71875,
+        44,
+        44
+      ],
+      "focus": [
+        276,
+        11.71875,
+        44,
+        44
+      ]
+    },
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 1440,
+    "state": "compact",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 1440,
+    "state": "full-month",
+    "days": 30,
+    "events": 89,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 1440,
+    "state": "dense-selected",
+    "days": 1,
+    "events": 8,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 1440,
+    "state": "deselected",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "ru",
+    "width": 1440,
+    "state": "control-states",
+    "states": {
+      "normal": [
+        411.03125,
+        11.71875,
+        44,
+        44
+      ],
+      "hover": [
+        411.03125,
+        11.71875,
+        44,
+        44
+      ],
+      "focus": [
+        411.03125,
+        11.71875,
+        44,
+        44
+      ]
+    },
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 320,
+    "state": "compact",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 320,
+    "state": "full-month",
+    "days": 30,
+    "events": 89,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 320,
+    "state": "dense-selected",
+    "days": 1,
+    "events": 8,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 320,
+    "state": "deselected",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 320,
+    "state": "control-states",
+    "states": {
+      "normal": [
+        206,
+        11.71875,
+        44,
+        44
+      ],
+      "hover": [
+        206,
+        11.71875,
+        44,
+        44
+      ],
+      "focus": [
+        206,
+        11.71875,
+        44,
+        44
+      ]
+    },
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "state": "compact",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "state": "full-month",
+    "days": 30,
+    "events": 89,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "state": "dense-selected",
+    "days": 1,
+    "events": 8,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "state": "deselected",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 390,
+    "state": "control-states",
+    "states": {
+      "normal": [
+        276,
+        11.71875,
+        44,
+        44
+      ],
+      "hover": [
+        276,
+        11.71875,
+        44,
+        44
+      ],
+      "focus": [
+        276,
+        11.71875,
+        44,
+        44
+      ]
+    },
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "state": "compact",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "state": "full-month",
+    "days": 30,
+    "events": 89,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "state": "dense-selected",
+    "days": 1,
+    "events": 8,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "state": "deselected",
+    "days": 6,
+    "events": 18,
+    "maxFlagAlignment": 0,
+    "maxWriterAlignment": 0,
+    "issues": []
+  },
+  {
+    "language": "en",
+    "width": 1440,
+    "state": "control-states",
+    "states": {
+      "normal": [
+        411.03125,
+        11.71875,
+        44,
+        44
+      ],
+      "hover": [
+        411.03125,
+        11.71875,
+        44,
+        44
+      ],
+      "focus": [
+        411.03125,
+        11.71875,
+        44,
+        44
+      ]
+    },
+    "issues": []
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "locale": "ru",
+  "width": 390,
+  "coarse": true,
+  "status": "passed before later RU/1440 interruption; not rerun",
+  "scope": "Content controls only; Header/Hero excluded",
+  "assertionOutcomes": {
+    "footerCenterDifferenceMaxPx": 1,
+    "stateGeometryDifferenceMaxPx": 1,
+    "keyboardFocusVisible": true,
+    "keyboardFocusOutlineMinPx": 2,
+    "primaryPressedBackgroundAndShadowDistinct": true,
+    "seriesFixtureFontPx": 14,
+    "coarseSeriesTargetMinimumPx": 44,
+    "reducedMotionImagesAndLibraryArrow": "none",
+    "directoryArrowRestingAndHover": "matrix(1, 0, 0, 1, 0.25, 0)"
+  },
+  "limitations": "Detailed per-state measurements were not flushed before the subsequent desktop case stopped. This record preserves only the assertions that completed and references the retained screenshots.",
+  "screenshots": [
+    "ru-footer-focus-390.png",
+    "ru-primary-active-390.png"
+  ]
+}

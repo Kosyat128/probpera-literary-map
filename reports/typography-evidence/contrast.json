@@ -1,0 +1,2647 @@
+[
+  {
+    "locale": "ru",
+    "width": 1440,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-image > span"
+            ],
+            "text": "<span>Мнение о книге</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-copy > small"
+            ],
+            "text": "<small>12 минут</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-copy > h3"
+            ],
+            "text": "<h3>Хантер С. Томпсон «Ангелы ада»</h3>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "21.5pt (28.6071px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "3:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-copy > p"
+            ],
+            "text": "<p>Первая большая работа основателя гонзо-журналистики: история создания, контекст и честное мнение после прочтения.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-copy > strong"
+            ],
+            "text": "<strong>Читать статью →</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-footer > .section-link"
+            ],
+            "text": "<a class=\"section-link\" href=\"/probpera-literary-map/stati/mnenie-o-knige/\">Все материалы рубрики</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-footer > .share-links.share-links--card[role=\"group\"] > span"
+            ],
+            "text": "<span>Поделиться</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-image > span"
+            ],
+            "text": "<span>Литературная планета</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-copy > small"
+            ],
+            "text": "<small>15 минут</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-copy > h3"
+            ],
+            "text": "<h3>Семь знаковых писателей Японии</h3>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "16.8pt (22.4141px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-copy > p"
+            ],
+            "text": "<p>От классической традиции до современной прозы - маршрут по авторам, прославившим японскую литературу.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-copy > strong"
+            ],
+            "text": "<strong>Читать статью →</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-footer > .section-link"
+            ],
+            "text": "<a class=\"section-link\" href=\"/probpera-literary-map/stati/pisateli-mira/\">Все материалы рубрики</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-footer > .share-links.share-links--card[role=\"group\"] > span"
+            ],
+            "text": "<span>Поделиться</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-image > span"
+            ],
+            "text": "<span>Пополняем словарный запас</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-copy > small"
+            ],
+            "text": "<small>9 минут</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-copy > h3"
+            ],
+            "text": "<h3>Редкие слова, которые помогут вам расширить словарный запас</h3>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "16.8pt (22.4139px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-copy > p"
+            ],
+            "text": "<p>Не словарь ради словаря, а живые значения, происхождение и примеры употребления в понятной редакционной подаче.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-copy > strong"
+            ],
+            "text": "<strong>Читать статью →</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-footer > .section-link"
+            ],
+            "text": "<a class=\"section-link\" href=\"/probpera-literary-map/stati/russkiy-yazyk/\">Все материалы рубрики</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-footer > .share-links.share-links--card[role=\"group\"] > span"
+            ],
+            "text": "<span>Поделиться</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-image > span"
+            ],
+            "text": "<span>Профессии писателей</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-copy > small"
+            ],
+            "text": "<small>11 минут</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-copy > h3"
+            ],
+            "text": "<h3>Кем работали классики до литературной славы</h3>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "16.8pt (22.4141px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-copy > p"
+            ],
+            "text": "<p>Неожиданные профессии зарубежных авторов и то, как жизненный опыт становился частью их будущих книг.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-copy > strong"
+            ],
+            "text": "<strong>Читать статью →</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-footer > .section-link"
+            ],
+            "text": "<a class=\"section-link\" href=\"/probpera-literary-map/stati/pisateli-mira/\">Все материалы рубрики</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-footer > .share-links.share-links--card[role=\"group\"] > span"
+            ],
+            "text": "<span>Поделиться</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-intro > .section-kicker"
+            ],
+            "text": "<span class=\"section-kicker\">Разговор после чтения</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "blockquote"
+            ],
+            "text": "<blockquote>Чтение становится событием, когда мысль продолжается в разговоре.</blockquote>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "18.0pt (24px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "3:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-intro > p"
+            ],
+            "text": "<p>Выберите тему, продолжите мысль из статьи или предложите собственный маршрут чтения.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-rule > span"
+            ],
+            "text": "<span>Редакционный принцип клуба</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-reading-notes > span"
+            ],
+            "text": "<span>С чего начать разговор</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(2) > i"
+            ],
+            "text": "<i aria-hidden=\"true\">01</i>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(2) > span > small"
+            ],
+            "text": "<small>Читательский дневник</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(2) > span > strong"
+            ],
+            "text": "<strong>Какая книга не отпускает вас сейчас?</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(3) > i"
+            ],
+            "text": "<i aria-hidden=\"true\">02</i>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(3) > span > small"
+            ],
+            "text": "<small>Искусство перевода</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(3) > span > strong"
+            ],
+            "text": "<strong>Когда перевод становится новой книгой</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-reading-notes > button:nth-child(4) > i"
+            ],
+            "text": "<i aria-hidden=\"true\">03</i>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(4) > span > small"
+            ],
+            "text": "<small>Литературная планета</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(4) > span > strong"
+            ],
+            "text": "<strong>Соберите собственный маршрут чтения</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-stats > span:nth-child(1) > strong"
+            ],
+            "text": "<strong>1&nbsp;672</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "15.0pt (20px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-stats > span:nth-child(1) > small"
+            ],
+            "text": "<small>авторов в энциклопедии</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-stats > span:nth-child(2) > small"
+            ],
+            "text": "<small>произведений в архиве</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-stats > span:nth-child(3) > strong"
+            ],
+            "text": "<strong>200</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "15.0pt (20px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "span:nth-child(3) > small"
+            ],
+            "text": "<small>стран на карте</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "span[data-cms-key=\"homepage.community.eyebrow\"]"
+            ],
+            "text": "<span class=\"section-kicker\" data-cms-key=\"homepage.community.e...\" data-cms-entity=\"homepage-core\" data-cms-entity-id=\"community\" data-cms-field=\"eyebrow\" data-cms-kind=\"text\" data-cms-label=\"Надзаголовок сообщес...\" data-cms-value=\"Литературное сообщес...\" data-cms-copy-key=\"\" ...>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "h2[data-cms-key=\"homepage.community.title\"]"
+            ],
+            "text": "<h2 data-cms-key=\"homepage.community.t...\" data-cms-entity=\"homepage-core\" data-cms-entity-id=\"community\" data-cms-field=\"title\" data-cms-kind=\"text\" data-cms-label=\"Заголовок сообщества\" data-cms-value=\"Клуб внимательных чи...\" data-cms-copy-key=\"\" ...>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "22.5pt (30px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "3:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "p[data-cms-key=\"homepage.community.description\"]"
+            ],
+            "text": "<p data-cms-key=\"homepage.community.d...\" data-cms-entity=\"homepage-core\" data-cms-entity-id=\"community\" data-cms-field=\"description\" data-cms-kind=\"textarea\" data-cms-label=\"Описание сообщества\" data-cms-value=\"Место для спокойного...\" data-cms-copy-key=\"\" ...>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-copy-note"
+            ],
+            "text": "<p class=\"community-copy-note\">Читать обсуждения можно сразу. Профиль нужен только для участия в разговоре, оценок и личной библиотеки.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-copy > ul > li:nth-child(1)"
+            ],
+            "text": "<li>Разговоры о книгах, статьях, переводах и экранизациях</li>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-copy > ul > li:nth-child(2)"
+            ],
+            "text": "<li>Оценки, комментарии и тематические подборки читателей</li>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-copy > ul > li:nth-child(3)"
+            ],
+            "text": "<li>Личная библиотека, любимые авторы, страны и история участия</li>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".ui-action--light > .ui-action__label"
+            ],
+            "text": "<span class=\"ui-action__label\">Открыть форум</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-actions > .ui-action--secondary.ui-action--md.ui-action--dark > .ui-action__label"
+            ],
+            "text": "<span class=\"ui-action__label\">Вступить в клуб</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-brand > a[href$=\"probpera-literary-map/\"][aria-label=\"Проба Пера - главная\"] > span > strong"
+            ],
+            "text": "<strong>Проба Пера</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "20.3pt (27px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "3:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-brand > a[href$=\"probpera-literary-map/\"][aria-label=\"Проба Пера - главная\"] > span > small"
+            ],
+            "text": "<small>Литературный журнал</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-brand > p"
+            ],
+            "text": "<p>Авторские статьи и единая интерактивная экосистема о мировой литературе: страны, писатели, книги, эпохи и разговор читателей.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "11.3pt (15px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "section:nth-child(1) > h2"
+            ],
+            "text": "<h2>Журнал</h2>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "16.5pt (22px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(1) > a[href$=\"stati/\"]"
+            ],
+            "text": "<a href=\"/probpera-literary-map/stati/\">Все публикации</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(1) > a:nth-child(3)"
+            ],
+            "text": "<a href=\"/probpera-literary-map/stati/mnenie-o-knige/\">Мнение о книге</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(1) > a:nth-child(4)"
+            ],
+            "text": "<a href=\"/probpera-literary-map/stati/kniga-i-ekranizatsiya/\">Книга и экранизация</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(1) > a:nth-child(5)"
+            ],
+            "text": "<a href=\"/probpera-literary-map/stati/russkiy-yazyk/\">Редкие слова</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(1) > a:nth-child(6)"
+            ],
+            "text": "<a href=\"/probpera-literary-map/stati/literaturnye-premii/\">Литературные премии</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "section:nth-child(2) > h2"
+            ],
+            "text": "<h2>Энциклопедия</h2>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "16.5pt (22px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(2) > a[href$=\"#atlas\"]"
+            ],
+            "text": "<a href=\"#atlas\">Литературная планета</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "section:nth-child(2) > a[href$=\"#authors\"]"
+            ],
+            "text": "<a href=\"#authors\">Писатели</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(2) > a[href$=\"#books\"]"
+            ],
+            "text": "<a href=\"#books\">Книжный архив</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "section:nth-child(2) > a[href$=\"#calendar\"]"
+            ],
+            "text": "<a href=\"#calendar\">Календарь событий</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "section:nth-child(2) > a[href$=\"#about\"]"
+            ],
+            "text": "<a href=\"#about\">Редакционный стандарт</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "a[href$=\"#editorial-policy\"]:nth-child(7)"
+            ],
+            "text": "<a href=\"#editorial-policy\">Источники и фактчекинг</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "a[href$=\"#editorial-policy\"]:nth-child(8)"
+            ],
+            "text": "<a href=\"#editorial-policy\">Исправления и авторские права</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "section:nth-child(3) > h2"
+            ],
+            "text": "<h2>Сообщество</h2>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "16.5pt (22px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "section:nth-child(3) > button:nth-child(2)"
+            ],
+            "text": "<button type=\"button\">Форум читателей</button>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "section:nth-child(3) > button:nth-child(3)"
+            ],
+            "text": "<button type=\"button\">Вход и регистрация</button>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "a[href=\"mailto:probperasite@yandex.ru\"]:nth-child(4)"
+            ],
+            "text": "<a href=\"mailto:probperasite@yandex.ru\">Связаться с редакцией</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "a[href=\"mailto:probperasite@yandex.ru\"]:nth-child(5)"
+            ],
+            "text": "<a href=\"mailto:probperasite@yandex.ru\">Контакты</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-bottom > p"
+            ],
+            "text": "<p>© 2025-2026 «Проба Пера». Авторские публикации защищены законом.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-bottom > a[href=\"mailto:probperasite@yandex.ru\"]"
+            ],
+            "text": "<a href=\"mailto:probperasite@yandex.ru\">probperasite@yandex.ru</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-bottom > span"
+            ],
+            "text": "<span>Независимый литературный журнал</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "smallText": []
+  },
+  {
+    "locale": "en",
+    "width": 390,
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "nodes": [
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-image > span"
+            ],
+            "text": "<span>Book reviews</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-copy > small"
+            ],
+            "text": "<small>12 min read</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-copy > h3"
+            ],
+            "text": "<h3>Hunter S. Thompson, Hell’s Angels</h3>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "21.0pt (28px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "3:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-copy > p"
+            ],
+            "text": "<p>The first major work by the founder of gonzo journalism: its origins, context and an honest response after reading.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-link > .article-copy > strong"
+            ],
+            "text": "<strong>Read article →</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-footer > .section-link"
+            ],
+            "text": "<a class=\"section-link\" href=\"/probpera-literary-map/stati/mnenie-o-knige/\">All articles in this section</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".is-featured > .article-card-footer > .share-links.share-links--card[role=\"group\"] > span"
+            ],
+            "text": "<span>Share</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-image > span"
+            ],
+            "text": "<span>Literary Planet</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-copy > small"
+            ],
+            "text": "<small>15 min read</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-copy > h3"
+            ],
+            "text": "<h3>Seven landmark writers from Japan</h3>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "16.0pt (21.28px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-copy > p"
+            ],
+            "text": "<p>A route from the classical tradition to contemporary fiction through the writers who brought Japanese literature worldwide recognition.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-link > .article-copy > strong"
+            ],
+            "text": "<strong>Read article →</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-footer > .section-link"
+            ],
+            "text": "<a class=\"section-link\" href=\"/probpera-literary-map/stati/pisateli-mira/\">All articles in this section</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(2) > .article-card-footer > .share-links.share-links--card[role=\"group\"] > span"
+            ],
+            "text": "<span>Share</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-image > span"
+            ],
+            "text": "<span>Expanding your vocabulary</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-copy > small"
+            ],
+            "text": "<small>9 min read</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-copy > h3"
+            ],
+            "text": "<h3>Rare words to expand your vocabulary</h3>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "16.0pt (21.28px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-copy > p"
+            ],
+            "text": "<p>Living meanings, origins and examples of usage presented with editorial clarity, rather than a dictionary for its own sake.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-link > .article-copy > strong"
+            ],
+            "text": "<strong>Read article →</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-footer > .section-link"
+            ],
+            "text": "<a class=\"section-link\" href=\"/probpera-literary-map/stati/russkiy-yazyk/\">All articles in this section</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(3) > .article-card-footer > .share-links.share-links--card[role=\"group\"] > span"
+            ],
+            "text": "<span>Share</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-image > span"
+            ],
+            "text": "<span>Writers’ professions</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "bold",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-copy > small"
+            ],
+            "text": "<small>11 min read</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-copy > h3"
+            ],
+            "text": "<h3>What classic writers did before literary fame</h3>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "16.0pt (21.28px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-copy > p"
+            ],
+            "text": "<p>The unexpected professions of international writers and how lived experience entered their future books.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-link > .article-copy > strong"
+            ],
+            "text": "<strong>Read article →</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-footer > .section-link"
+            ],
+            "text": "<a class=\"section-link\" href=\"/probpera-literary-map/stati/pisateli-mira/\">All articles in this section</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "article:nth-child(4) > .article-card-footer > .share-links.share-links--card[role=\"group\"] > span"
+            ],
+            "text": "<span>Share</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-intro > .section-kicker"
+            ],
+            "text": "<span class=\"section-kicker\">The conversation after reading</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "blockquote"
+            ],
+            "text": "<blockquote>Reading becomes an event when an idea continues through conversation.</blockquote>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "18.0pt (24px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "3:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-intro > p"
+            ],
+            "text": "<p>Choose a topic, continue an idea from an article or suggest your own reading route.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-rule > span"
+            ],
+            "text": "<span>The club's editorial principle</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-reading-notes > span"
+            ],
+            "text": "<span>Where to begin</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(2) > i"
+            ],
+            "text": "<i aria-hidden=\"true\">01</i>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(2) > span > small"
+            ],
+            "text": "<small>Reader's journal</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(2) > span > strong"
+            ],
+            "text": "<strong>Which book can’t you put down right now?</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(3) > i"
+            ],
+            "text": "<i aria-hidden=\"true\">02</i>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(3) > span > small"
+            ],
+            "text": "<small>The art of translation</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(3) > span > strong"
+            ],
+            "text": "<strong>When does a translation become a new book?</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(4) > i"
+            ],
+            "text": "<i aria-hidden=\"true\">03</i>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(4) > span > small"
+            ],
+            "text": "<small>Literary Planet</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "button:nth-child(4) > span > strong"
+            ],
+            "text": "<strong>Create your own reading route</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-stats > span:nth-child(1) > small"
+            ],
+            "text": "<small>writers in the encyclopedia</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-visual-stats > span:nth-child(2) > small"
+            ],
+            "text": "<small>works in the archive</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "span:nth-child(3) > small"
+            ],
+            "text": "<small>countries on the map</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "span[data-cms-key=\"homepage.community.eyebrow\"]"
+            ],
+            "text": "<span class=\"section-kicker\" data-cms-key=\"homepage.community.e...\" data-cms-entity=\"homepage-core\" data-cms-entity-id=\"community\" data-cms-field=\"eyebrow\" data-cms-kind=\"text\" data-cms-label=\"Надзаголовок сообщес...\" data-cms-value=\"Литературное сообщес...\" data-cms-copy-key=\"\" ...>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "9.8pt (13px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "h2[data-cms-key=\"homepage.community.title\"]"
+            ],
+            "text": "<h2 data-cms-key=\"homepage.community.t...\" data-cms-entity=\"homepage-core\" data-cms-entity-id=\"community\" data-cms-field=\"title\" data-cms-kind=\"text\" data-cms-label=\"Заголовок сообщества\" data-cms-value=\"Клуб внимательных чи...\" data-cms-copy-key=\"\" ...>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "22.5pt (30px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "3:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "p[data-cms-key=\"homepage.community.description\"]"
+            ],
+            "text": "<p data-cms-key=\"homepage.community.d...\" data-cms-entity=\"homepage-core\" data-cms-entity-id=\"community\" data-cms-field=\"description\" data-cms-kind=\"textarea\" data-cms-label=\"Описание сообщества\" data-cms-value=\"Место для спокойного...\" data-cms-copy-key=\"\" ...>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-copy-note"
+            ],
+            "text": "<p class=\"community-copy-note\">Anyone can read the discussions. A profile is needed only to join the conversation, rate publications and use a personal library.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-copy > ul > li:nth-child(1)"
+            ],
+            "text": "<li>Conversations about books, articles, translations and adaptations</li>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-copy > ul > li:nth-child(2)"
+            ],
+            "text": "<li>Reader ratings, comments and thematic collections</li>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-copy > ul > li:nth-child(3)"
+            ],
+            "text": "<li>A personal library, favourite writers and countries, and participation history</li>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a background gradient",
+                "data": {
+                  "contrastRatio": 0,
+                  "fontSize": "12.0pt (16px)",
+                  "fontWeight": "normal",
+                  "messageKey": "bgGradient",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".ui-action--light > .ui-action__label"
+            ],
+            "text": "<span class=\"ui-action__label\">Open forum</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".community-actions > .ui-action--secondary.ui-action--md.ui-action--dark > .ui-action__label"
+            ],
+            "text": "<span class=\"ui-action__label\">Join the club</span>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-brand > a[href$=\"probpera-literary-map/\"][aria-label=\"Proba Pera - home\"] > span > strong"
+            ],
+            "text": "<strong>Proba Pera</strong>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "20.3pt (27px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "3:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-brand > a[href$=\"probpera-literary-map/\"][aria-label=\"Proba Pera - home\"] > span > small"
+            ],
+            "text": "<small>Literary journal</small>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "9.0pt (12px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-brand > p"
+            ],
+            "text": "<p>Original essays and a unified interactive ecosystem for world literature: countries, writers, books, periods and reader discussion.</p>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "11.3pt (15px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              "section:nth-child(1) > h2"
+            ],
+            "text": "<h2>Journal</h2>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "16.5pt (22px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(1) > a[href$=\"stati/\"]"
+            ],
+            "text": "<a href=\"/probpera-literary-map/stati/\">All publications</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(1) > a:nth-child(3)"
+            ],
+            "text": "<a href=\"/probpera-literary-map/stati/mnenie-o-knige/\">Book reviews</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          },
+          {
+            "target": [
+              ".footer-map > section:nth-child(1) > a:nth-child(4)"
+            ],
+            "text": "<a href=\"/probpera-literary-map/stati/kniga-i-ekranizatsiya/\">Books and screen adaptations</a>",
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element",
+            "checks": [
+              {
+                "message": "Element's background color could not be determined due to a pseudo element",
+                "data": {
+                  "fontSize": "10.5pt (14px)",
+                  "fontWeight": "normal",
+                  "messageKey": "pseudoContent",
+                  "expectedContrastRatio": "4.5:1"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "smallText": []
+  }
+]

@@ -1,0 +1,137 @@
+{
+  "fixtureScope": "Minimal isolated DOM using current repository CSS. Tests source cascade and CSS transitions only; no full-page, real shelf geometry, book interaction logic, Header/Hero, build or production verification.",
+  "before": {
+    "capturedAt": "2026-09-04T22:07:52.114Z",
+    "browser": "152.0.7977.76",
+    "sourceSha256": {
+      "src/styles/editorial-fonts.css": "a00298bc18b2d4f13ee0ddc627c5cf5e99a4228e1982c719176e16a44e8d93f1",
+      "src/index.css": "a7fee2761c0ffc1bbc1d98595f16f8136f14d1855066940b749d1826ac2b25b1",
+      "src/styles/stage5-book-shelf.css": "ee0adf2ce432ab1e141d6199bdac680542c085d200f34864896836eee988d4a5",
+      "src/styles/site-typography.css": "033fb4007a771d641be50a53e53528f240d8809861bf7ce66d0a515a7d6a2080"
+    },
+    "shelfHint": {
+      "base": {
+        "backgroundImage": "linear-gradient(135deg, rgba(39, 22, 55, 0.9), rgba(18, 10, 31, 0.86))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "transitionProperty": "border-color, background, transform",
+        "width": 430,
+        "height": 65.28125,
+        "transform": "matrix(1, 0, 0, 1, -215, 0)"
+      },
+      "mid": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "transitions": [
+          "border-bottom-color",
+          "border-left-color",
+          "border-right-color",
+          "border-top-color",
+          "transform"
+        ]
+      },
+      "hover": {
+        "backgroundImage": "linear-gradient(135deg, rgba(48, 26, 65, 0.95), rgba(23, 12, 37, 0.92))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "transitionProperty": "border-color, background, transform",
+        "width": 430,
+        "height": 65.28125,
+        "transform": "matrix(1, 0, 0, 1, -215, -2)"
+      }
+    },
+    "sequenceForcedColors": {
+      "base": {
+        "focusVisible": false,
+        "outlineStyle": "none",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(0, 0, 159)",
+        "outlineOffset": "0px",
+        "boxShadow": "none",
+        "color": "rgb(0, 0, 159)",
+        "background": "rgb(255, 255, 255)",
+        "border": "rgb(0, 0, 159)"
+      },
+      "focus": {
+        "focusVisible": true,
+        "outlineStyle": "none",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(55, 0, 110)",
+        "outlineOffset": "3px",
+        "boxShadow": "none",
+        "color": "rgb(0, 0, 159)",
+        "background": "rgb(255, 255, 255)",
+        "border": "rgb(0, 0, 159)"
+      }
+    }
+  },
+  "after": {
+    "capturedAt": "2026-09-04T22:09:17.262Z",
+    "browser": "152.0.7977.76",
+    "sourceSha256": {
+      "src/styles/editorial-fonts.css": "a00298bc18b2d4f13ee0ddc627c5cf5e99a4228e1982c719176e16a44e8d93f1",
+      "src/index.css": "c711cddcfa6e37a22ba6e4ff59f9a7325500bb70970b782d700b1d5c817f4183",
+      "src/styles/stage5-book-shelf.css": "8f9d2e320f477a1e01450eb662dc60a534df0b1503b322f5230e8207d0ce14f4",
+      "src/styles/site-typography.css": "033fb4007a771d641be50a53e53528f240d8809861bf7ce66d0a515a7d6a2080"
+    },
+    "shelfHint": {
+      "base": {
+        "backgroundImage": "linear-gradient(135deg, rgba(39, 22, 55, 0.9), rgba(18, 10, 31, 0.86))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "transitionProperty": "border-color, background-color, transform",
+        "width": 430,
+        "height": 65.28125,
+        "transform": "matrix(1, 0, 0, 1, -215, 0)"
+      },
+      "mid": {
+        "backgroundColor": "rgba(48, 26, 65, 0.494)",
+        "transitions": [
+          "background-color",
+          "border-bottom-color",
+          "border-left-color",
+          "border-right-color",
+          "border-top-color",
+          "transform"
+        ]
+      },
+      "hover": {
+        "backgroundImage": "linear-gradient(135deg, rgba(39, 22, 55, 0.9), rgba(18, 10, 31, 0.86))",
+        "backgroundColor": "rgba(48, 26, 65, 0.95)",
+        "transitionProperty": "border-color, background-color, transform",
+        "width": 430,
+        "height": 65.28125,
+        "transform": "matrix(1, 0, 0, 1, -215, -2)"
+      }
+    },
+    "sequenceForcedColors": {
+      "base": {
+        "focusVisible": false,
+        "outlineStyle": "none",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(0, 0, 159)",
+        "outlineOffset": "0px",
+        "boxShadow": "none",
+        "color": "rgb(0, 0, 159)",
+        "background": "rgb(255, 255, 255)",
+        "border": "rgb(0, 0, 159)"
+      },
+      "focus": {
+        "focusVisible": true,
+        "outlineStyle": "solid",
+        "outlineWidth": "3px",
+        "outlineColor": "rgb(55, 0, 110)",
+        "outlineOffset": "3px",
+        "boxShadow": "none",
+        "color": "rgb(0, 0, 159)",
+        "background": "rgb(255, 255, 255)",
+        "border": "rgb(0, 0, 159)"
+      }
+    }
+  },
+  "assertions": {
+    "hoverStateApplied": true,
+    "staticGradientDuringHover": true,
+    "backgroundColorInterpolates": true,
+    "forcedColorsFocusRing": true,
+    "shelfDimensionsUnchanged": true,
+    "existingTransformsUnchanged": true
+  },
+  "pass": true
+}

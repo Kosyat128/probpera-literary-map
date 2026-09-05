@@ -1,3 +1,4 @@
+@layer site-defaults {
 :root {
   color: #271538;
   background: #fffaf2;
@@ -18,9 +19,6 @@
   --ink: #271538;
   --muted: #72667a;
   --line: rgba(54, 22, 76, 0.13);
-  --sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
-    "Helvetica Neue", Arial, sans-serif;
-  --serif: Georgia, "Times New Roman", serif;
   --sticky-navigation-offset: 96px;
   --ui-control-sm: 36px;
   --ui-control-md: 44px;
@@ -331,10 +329,23 @@ main [id] {
   border-left: 1px solid rgba(255, 173, 99, 0.28);
 }
 
-.site-header > nav > a,
 .site-header > nav > button,
 .sections-menu > summary,
 .articles-menu > summary {
+  position: relative;
+  padding: 12px 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.site-header > nav > a {
   position: relative;
   padding: 12px 0;
   color: rgba(255, 255, 255, 0.82);
@@ -396,7 +407,7 @@ main [id] {
 .cms-banner strong {
   display: block;
   margin-top: 8px;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-editorial);
   font-size: clamp(1.45rem, 2.4vw, 2.5rem);
   line-height: 1.06;
 }
@@ -417,7 +428,7 @@ main [id] {
   border-radius: 999px;
   background: #ff7a18;
   color: #fff;
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -521,10 +532,6 @@ main [id] {
 .cms-home-block h2 {
   max-width: 860px;
   margin: 6px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: var(--cms-title-font-size, clamp(2rem, 4vw, 4rem));
-  font-weight: var(--cms-title-weight, 700);
-  line-height: var(--cms-title-line-height, 0.98);
   text-align: var(--cms-title-align, left);
 }
 
@@ -538,7 +545,7 @@ main [id] {
 
 .cms-home-articles > header > a {
   color: inherit;
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -559,7 +566,6 @@ main [id] {
 
 .cms-home-articles article {
   min-width: 0;
-  overflow: hidden;
   border: 1px solid rgba(69, 23, 97, 0.14);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.9);
@@ -594,8 +600,8 @@ main [id] {
 .cms-home-articles article span {
   margin-top: 18px;
   color: #dd6815;
-  font-size: 0.74rem;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -603,19 +609,11 @@ main [id] {
 .cms-home-articles article h3 {
   margin-top: 8px;
   margin-bottom: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.35rem;
-  line-height: 1.12;
 }
 
 .cms-home-articles article p {
-  display: -webkit-box;
-  overflow: hidden;
   margin-top: 10px;
   color: #695d70;
-  line-height: 1.55;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 .cms-home-articles article small {
@@ -666,7 +664,7 @@ main [id] {
   background: #4d136a;
   color: #fff;
   font-size: 0.78rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .cms-home-callout {
@@ -833,25 +831,12 @@ main [id] {
 .sections-mega-menu > header span {
   grid-column: 1 / -1;
   color: var(--orange-soft);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.sections-mega-menu > header strong {
-  font-family: var(--serif);
-  font-size: 23px;
-  font-weight: 500;
 }
 
 .sections-mega-menu > header p {
   max-width: 360px;
   margin: 0 0 2px;
   color: rgba(255, 255, 255, 0.62);
-  font-family: var(--serif);
-  font-size: 12px;
-  line-height: 1.45;
 }
 
 .sections-mega-groups {
@@ -873,10 +858,6 @@ main [id] {
 .sections-mega-groups h3 {
   margin: 0 8px 8px;
   color: var(--orange-deep);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .sections-mega-groups a {
@@ -894,22 +875,8 @@ main [id] {
   background: rgba(246, 117, 24, 0.08);
 }
 
-.sections-mega-groups strong {
-  font-family: var(--serif);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
 .sections-mega-groups small {
-  display: -webkit-box;
-  overflow: hidden;
   color: var(--muted);
-  font-size: 8px;
-  font-weight: 500;
-  line-height: 1.35;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .sections-mega-menu > footer {
@@ -922,11 +889,7 @@ main [id] {
 
 .sections-mega-menu > footer a {
   color: var(--violet-700);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .articles-mega-menu {
@@ -980,25 +943,12 @@ main [id] {
 
 .articles-mega-menu > header span {
   color: var(--orange-soft);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.articles-mega-menu > header strong {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 500;
 }
 
 .articles-mega-menu > header p {
   max-width: 390px;
   margin: 0;
   color: rgba(255, 255, 255, 0.62);
-  font-family: var(--serif);
-  font-size: 12px;
-  line-height: 1.45;
 }
 
 .articles-mega-content {
@@ -1067,36 +1017,19 @@ main [id] {
 .articles-mega-lead small,
 .articles-mega-content section small {
   color: var(--orange-soft);
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .articles-mega-lead strong {
   margin-top: 9px;
-  font-family: var(--serif);
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 1.05;
 }
 
 .articles-mega-lead p {
-  display: -webkit-box;
-  overflow: hidden;
   margin: 12px 0 10px;
   color: rgba(255, 255, 255, 0.64);
-  font-family: var(--serif);
-  font-size: 11px;
-  line-height: 1.45;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .articles-mega-lead em {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 8px;
-  font-style: normal;
 }
 
 .articles-mega-content > section {
@@ -1124,19 +1057,8 @@ main [id] {
   background: rgba(246, 117, 24, 0.07);
 }
 
-.articles-mega-content > section strong {
-  display: -webkit-box;
-  overflow: hidden;
-  font-family: var(--serif);
-  font-size: 12px;
-  line-height: 1.24;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
 .articles-mega-content > section span {
   color: var(--muted);
-  font-size: 7px;
 }
 
 .articles-mega-loading {
@@ -1144,8 +1066,6 @@ main [id] {
   min-height: 300px;
   place-items: center;
   color: var(--muted);
-  font-family: var(--serif);
-  font-size: 15px;
 }
 
 .articles-mega-menu > footer {
@@ -1159,19 +1079,11 @@ main [id] {
 
 .articles-mega-menu > footer > span {
   color: var(--muted);
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
 }
 
 .articles-mega-menu > footer a {
   color: var(--violet-700);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .articles-mega-menu > footer b {
@@ -1254,8 +1166,8 @@ main [id] {
   padding: 0 6px;
   color: rgba(255, 255, 255, 0.58);
   font: inherit;
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   background: transparent;
   border: 0;
@@ -1284,8 +1196,8 @@ main [id] {
   max-width: 100%;
   padding: 6px 9px;
   color: #7a4a22;
-  font-size: 8px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.05em;
   background: rgba(246, 117, 24, 0.09);
   border: 1px solid rgba(201, 92, 15, 0.2);
@@ -1336,9 +1248,7 @@ main [id] {
     transform 180ms ease;
 }
 
-.header-socials a::before,
-.share-links a::before,
-.share-links button::before {
+.header-socials a::before {
   position: absolute;
   top: -40%;
   left: -85%;
@@ -1354,6 +1264,20 @@ main [id] {
   pointer-events: none;
 }
 
+.share-links a::before,
+.share-links button::before {
+  position: absolute;
+  top: -40%;
+  left: -85%;
+  content: "";
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transition:
+    left var(--ui-transition-base),
+    opacity var(--ui-transition-fast);
+  pointer-events: none;
+}
+
 .header-socials a:hover {
   color: #fff;
   background: var(--orange-deep);
@@ -1362,7 +1286,11 @@ main [id] {
   transform: translateY(-1px);
 }
 
-.header-socials a:hover::before,
+.header-socials a:hover::before {
+  left: 130%;
+  opacity: 0.86;
+}
+
 .share-links a:hover::before,
 .share-links button:hover::before {
   left: 130%;
@@ -1383,28 +1311,23 @@ main [id] {
   transform-origin: 50% 50%;
 }
 
-.header-socials .is-vk svg,
-.share-links .is-vk svg {
+.header-socials .is-vk svg {
   transform: scale(0.92);
 }
 
-.header-socials .is-telegram svg,
-.share-links .is-telegram svg {
+.header-socials .is-telegram svg {
   transform: scale(0.94);
 }
 
-.header-socials .is-dzen svg,
-.share-links .is-dzen svg {
+.header-socials .is-dzen svg {
   transform: scale(0.88);
 }
 
-.header-socials .is-ok svg,
-.share-links .is-ok svg {
+.header-socials .is-ok svg {
   transform: scale(0.89);
 }
 
-.header-socials .is-boosty svg,
-.share-links .is-boosty svg {
+.header-socials .is-boosty svg {
   transform: scale(0.89);
 }
 
@@ -1416,9 +1339,6 @@ main [id] {
 .section-kicker {
   display: block;
   color: var(--orange-deep);
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
@@ -1704,14 +1624,17 @@ main [id] {
 }
 
 .atlas-heading h2,
-.section-heading h2,
 .sections-directory h2 {
   margin: 10px 0 0;
   font-family: var(--serif);
   font-size: clamp(42px, 5vw, 70px);
   font-weight: 400;
-  line-height: 0.96;
-  letter-spacing: -0.045em;
+  line-height: 1.1;
+  letter-spacing: var(--type-tracking-title);
+}
+
+.section-heading h2 {
+  margin: 10px 0 0;
 }
 
 .atlas-heading p {
@@ -1736,9 +1659,9 @@ main [id] {
   display: block;
   margin-bottom: 8px;
   color: rgba(255, 255, 255, 0.58);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.13em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -1790,7 +1713,7 @@ main [id] {
 .search-field kbd {
   padding: 3px 6px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
+  font-size: var(--type-caption);
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 3px;
@@ -1816,9 +1739,9 @@ main [id] {
 .search-caption {
   padding: 5px 9px 9px;
   color: rgba(255, 255, 255, 0.46);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -1845,7 +1768,7 @@ main [id] {
 .search-results button small {
   flex: 0 0 auto;
   color: rgba(255, 255, 255, 0.4);
-  font-size: 10px;
+  font-size: var(--type-caption);
   text-align: right;
 }
 
@@ -1903,8 +1826,8 @@ main [id] {
   min-height: 44px;
   padding: 0 12px;
   color: rgba(255, 255, 255, 0.58);
-  font-size: 10px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 999px;
@@ -1918,7 +1841,7 @@ main [id] {
 
 .atlas-filters button .ui-action__label > span {
   color: var(--ui-text-muted-dark);
-  font-size: 10px;
+  font-size: var(--type-caption);
 }
 
 .atlas-filters button:hover,
@@ -1994,16 +1917,16 @@ main [id] {
 
 .atlas-archives-popover .ui-action__label > span {
   overflow: hidden;
-  font-size: 11px;
-  font-weight: 850;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .atlas-archives-popover button small {
   color: var(--orange-soft);
-  font-size: 11px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
 }
 
 @media (max-width: 680px) {
@@ -2065,9 +1988,9 @@ main [id] {
 
 .nobel-archive-strip header small {
   color: #ffad68;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.13em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -2076,13 +1999,13 @@ main [id] {
   color: #fff2de;
   font-family: var(--serif);
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .nobel-archive-strip header p {
   margin: 4px 0 0;
   color: rgba(255, 255, 255, 0.46);
-  font-size: 11px;
+  font-size: var(--type-caption);
   line-height: 1.45;
 }
 
@@ -2092,8 +2015,8 @@ main [id] {
   min-height: 40px;
   padding: 9px 12px;
   color: #fff1e3;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.07em;
   text-decoration: none;
   text-transform: uppercase;
@@ -2128,8 +2051,8 @@ main [id] {
   min-height: 36px;
   padding: 7px 10px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.025);
@@ -2190,7 +2113,7 @@ main [id] {
   color: #ffb36f;
   font-family: var(--serif);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .nobel-year-article {
@@ -2204,8 +2127,8 @@ main [id] {
 
 .nobel-year-article > small {
   color: #ff9b4b;
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -2233,8 +2156,8 @@ main [id] {
 
 .nobel-archive-year button span {
   overflow: hidden;
-  font-size: 10px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.3;
   text-overflow: ellipsis;
   text-transform: uppercase;
@@ -2244,7 +2167,7 @@ main [id] {
 .nobel-archive-year button small {
   overflow: hidden;
   color: rgba(255, 255, 255, 0.31);
-  font-size: 9px;
+  font-size: var(--type-caption);
   line-height: 1.3;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -2255,7 +2178,7 @@ main [id] {
   justify-content: space-between;
   gap: 12px;
   color: rgba(255, 255, 255, 0.32);
-  font-size: 10px;
+  font-size: var(--type-caption);
   letter-spacing: 0.05em;
 }
 
@@ -2342,9 +2265,9 @@ main [id] {
   margin: 0;
   padding-left: 12px;
   color: rgba(255, 255, 255, 0.36);
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
   border-left: 1px solid rgba(255, 255, 255, 0.14);
 }
@@ -2545,7 +2468,7 @@ main [id] {
   min-height: 44px;
   padding: 0 9px;
   color: rgba(255, 244, 226, 0.76);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ui);
   font-size: 17px;
   line-height: 1;
   cursor: pointer;
@@ -2585,8 +2508,8 @@ main [id] {
 
 .literary-globe .globe-controls button small {
   color: inherit;
-  font-size: 9px;
-  font-weight: 850;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.045em;
   text-transform: uppercase;
 }
@@ -2670,9 +2593,9 @@ main [id] {
   padding: 0 10px;
   overflow: hidden;
   color: rgba(255, 244, 226, 0.64);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 10px;
-  font-weight: 800;
+  font-family: var(--font-ui);
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0.055em;
   text-overflow: ellipsis;
@@ -2782,11 +2705,11 @@ main [id] {
   align-items: center;
   padding: 7px 11px;
   color: #eaf8fd;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
-  font-weight: 850;
+  font-family: var(--font-ui);
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
   white-space: nowrap;
   pointer-events: none;
@@ -2833,10 +2756,10 @@ main [id] {
 .globe-loading p,
 .panel-loading {
   margin: 0;
-  font-size: 11px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.45;
-  letter-spacing: 0.09em;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -2846,8 +2769,8 @@ main [id] {
   margin-top: 4px;
   padding: 10px 16px;
   color: #fff8ed;
-  font-size: 10px;
-  font-weight: 850;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.055em;
   text-transform: uppercase;
@@ -2893,7 +2816,7 @@ main [id] {
 
   .literary-globe .globe-style-switch button {
     padding-inline: 4px;
-    font-size: 9px;
+    font-size: var(--type-caption);
     letter-spacing: 0.035em;
   }
 
@@ -2913,7 +2836,7 @@ main [id] {
   .globe-modern-badge {
     top: 116px;
     padding: 6px 9px;
-    font-size: 8px;
+    font-size: var(--type-caption);
   }
 
   .literary-globe[data-globe-style="modern"] .globe-nobel-status {
@@ -2947,7 +2870,7 @@ main [id] {
   .literary-globe .globe-style-switch button,
   .literary-globe .globe-style-switch button[data-globe-style-option="earth"] {
     padding-inline: 1px;
-    font-size: 10px;
+    font-size: var(--type-caption);
     letter-spacing: 0;
     text-transform: none;
   }
@@ -3031,7 +2954,7 @@ main [id] {
 .globe-country-label small {
   margin-top: 4px;
   color: rgba(255, 255, 255, 0.48);
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.3;
   letter-spacing: 0.055em;
   text-transform: uppercase;
@@ -3041,9 +2964,9 @@ main [id] {
   display: block;
   margin-top: 7px;
   color: rgba(255, 190, 119, 0.88);
-  font-size: 9px;
+  font-size: var(--type-caption);
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.35;
   letter-spacing: 0.035em;
   text-transform: uppercase;
@@ -3078,7 +3001,7 @@ main [id] {
 
 .literary-globe[data-globe-style="modern"] .globe-country-label small {
   color: rgba(220, 240, 235, 0.72);
-  font-size: 10px;
+  font-size: var(--type-caption);
   letter-spacing: 0.045em;
 }
 
@@ -3188,15 +3111,15 @@ main [id] {
   color: #ffae64;
   font-family: var(--serif);
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
 }
 
 .globe-nobel-status span {
   margin-top: 3px;
   color: rgba(255, 255, 255, 0.52);
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.045em;
   text-transform: uppercase;
@@ -3250,7 +3173,7 @@ main [id] {
 .globe-nobel-index button small {
   margin-top: 3px;
   color: rgba(255, 244, 223, 0.68);
-  font-size: 10px;
+  font-size: var(--type-caption);
 }
 
 .globe-nobel-article-action {
@@ -3261,8 +3184,8 @@ main [id] {
   min-height: 44px;
   padding: 7px 9px;
   color: #ffd697;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.2;
   text-align: center;
   text-decoration: none;
@@ -3288,9 +3211,9 @@ main [id] {
   gap: 11px;
   align-items: center;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
   pointer-events: none;
   transform: translateX(-50%);
@@ -3384,7 +3307,7 @@ main [id] {
   align-items: center;
   min-width: 0;
   max-width: 100%;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .country-panel-breadcrumbs li + li::before {
@@ -3398,7 +3321,7 @@ main [id] {
   min-width: 0;
   min-height: 44px;
   padding: 0 8px;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .country-panel-breadcrumbs button {
@@ -3406,7 +3329,7 @@ main [id] {
   padding: 0 9px;
   color: #5d2178;
   font: inherit;
-  font-weight: 750;
+  font-weight: 700;
   background: transparent;
   border: 0;
   border-radius: 999px;
@@ -3468,7 +3391,7 @@ main [id] {
   margin-left: 6px;
   color: #ffe1b5;
   font: inherit;
-  font-weight: 800;
+  font-weight: 700;
   background: rgba(255, 139, 46, 0.12);
   border: 1px solid rgba(255, 167, 84, 0.42);
   border-radius: 8px;
@@ -3501,17 +3424,17 @@ main [id] {
 
 .country-panel .eyebrow {
   color: var(--orange-deep);
-  font-size: 11px;
-  font-weight: 850;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.25;
-  letter-spacing: 0.085em;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
 .archive-code {
   padding-left: 9px;
   color: #937e99;
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.3;
   border-left: 1px solid var(--line);
 }
@@ -3572,7 +3495,7 @@ main [id] {
   color: #a8f4d8;
   font-family: var(--sans);
   font-size: 16px;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
@@ -3647,17 +3570,17 @@ main [id] {
   color: #2c103c;
   font-family: var(--serif);
   font-size: clamp(30px, 2.5vw, 36px);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.06;
-  letter-spacing: -0.028em;
-  overflow-wrap: anywhere;
+  letter-spacing: var(--type-tracking-title);
+  overflow-wrap: normal;
   text-wrap: balance;
 }
 
 .country-heading p {
   margin: 7px 0 0;
   color: #806887;
-  font-size: 11.5px;
+  font-size: var(--type-caption);
   font-weight: 700;
   line-height: 1.42;
   letter-spacing: 0.015em;
@@ -3713,7 +3636,7 @@ main [id] {
   color: #42244f;
   font-family: var(--sans);
   font-size: 13px;
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.4;
   text-wrap: pretty;
 }
@@ -3721,8 +3644,8 @@ main [id] {
 .country-verification-summary small {
   margin-top: 4px;
   color: #79647f;
-  font-size: 11.5px;
-  font-weight: 650;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.42;
   letter-spacing: 0;
   text-transform: none;
@@ -3787,7 +3710,7 @@ main [id] {
   font-stretch: normal;
   font-style: normal;
   font-variant: normal;
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.38;
   letter-spacing: 0;
   text-transform: none;
@@ -3969,12 +3892,12 @@ main [id] {
   align-self: start;
   margin-top: 5px;
   color: #6f5876;
-  font-size: 11.5px;
+  font-size: var(--type-caption);
   font-weight: 700;
   line-height: 1.32;
   letter-spacing: 0;
   text-transform: none;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   text-wrap: balance;
 }
 
@@ -3998,8 +3921,8 @@ main [id] {
 
 .section-title > span {
   color: var(--orange-deep);
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
 }
 
 .section-title > span::after {
@@ -4015,7 +3938,7 @@ main [id] {
   margin: 0;
   color: #50305e;
   font-size: 12px;
-  font-weight: 850;
+  font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.055em;
   text-transform: uppercase;
@@ -4031,10 +3954,10 @@ main [id] {
   min-width: 0;
   padding: 7px 10px;
   color: #5b3d65;
-  font-size: 11.5px;
-  font-weight: 650;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.35;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(82, 40, 94, 0.14);
   border-radius: 999px;
@@ -4180,7 +4103,7 @@ main [id] {
 .writer-copy small {
   display: block;
   min-width: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .writer-copy strong {
@@ -4194,7 +4117,7 @@ main [id] {
 .writer-copy small {
   margin-top: 4px;
   color: #89748f;
-  font-size: 11px;
+  font-size: var(--type-caption);
   line-height: 1.4;
 }
 
@@ -4206,8 +4129,8 @@ main [id] {
   max-width: 100%;
   margin-top: 6px;
   color: #89728f;
-  font-size: 9.5px;
-  font-weight: 750;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.35;
   letter-spacing: 0.01em;
   text-transform: none;
@@ -4309,9 +4232,9 @@ main [id] {
   height: 38px;
   place-items: center;
   color: #fff;
-  font-size: 11px;
+  font-size: var(--type-caption);
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   background: #89758e;
   border-radius: 50%;
 }
@@ -4325,20 +4248,20 @@ main [id] {
   color: #59405f;
   font-family: var(--sans);
   font-size: 13px;
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.4;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .writer-verification-status small {
   margin-top: 4px;
   color: #8e7c94;
-  font-size: 11.5px;
-  font-weight: 650;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.42;
   letter-spacing: 0;
   text-transform: none;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .writer-verification-status.is-reviewed,
@@ -4380,8 +4303,8 @@ main [id] {
   min-height: 46px;
   padding: 8px 7px;
   color: #6f5878;
-  font-size: 11px;
-  font-weight: 750;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.35;
   letter-spacing: 0;
   text-transform: none;
@@ -4465,8 +4388,8 @@ main [id] {
   display: inline-block;
   margin: 0 5px 5px 0;
   padding: 6px 9px;
-  font-size: 10px;
-  font-weight: 750;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.01em;
   text-transform: none;
@@ -4475,7 +4398,7 @@ main [id] {
 }
 
 .archive-original-language {
-  font-size: 11.5px;
+  font-size: var(--type-caption);
   line-height: 1.4;
   letter-spacing: 0;
 }
@@ -4507,9 +4430,9 @@ main [id] {
   color: #30103f;
   font-family: var(--serif);
   font-size: clamp(25px, 2vw, 29px);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.12;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .writer-years {
@@ -4546,7 +4469,7 @@ main [id] {
   box-shadow:
     0 0 0 3px rgba(255, 136, 35, 0.1),
     0 8px 24px rgba(0, 0, 0, 0.28);
-  font-size: 11px;
+  font-size: var(--type-caption);
 }
 
 .writer-nobel-feature {
@@ -4610,8 +4533,8 @@ a.writer-nobel-medal:focus-visible {
 
 .writer-nobel-feature small {
   color: #ffac68;
-  font-size: 10.5px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -4621,7 +4544,7 @@ a.writer-nobel-medal:focus-visible {
   color: #fff4e7;
   font-family: var(--serif);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.35;
 }
 
@@ -4629,9 +4552,9 @@ a.writer-nobel-medal:focus-visible {
 .writer-nobel-feature em {
   margin-top: 8px;
   color: #ffbd80;
-  font-size: 10.5px;
+  font-size: var(--type-caption);
   font-style: normal;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0.015em;
   text-decoration: none;
   text-transform: uppercase;
@@ -4657,8 +4580,8 @@ a.writer-nobel-medal:focus-visible {
   display: block;
   margin-bottom: 10px;
   color: #7d6585;
-  font-size: 11.5px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.035em;
   text-transform: none;
 }
@@ -4712,8 +4635,8 @@ a.writer-nobel-medal:focus-visible {
 .writer-detail .writer-record-section-heading span {
   display: block;
   color: #8c6d96;
-  font-size: 11.5px;
-  font-weight: 750;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: none;
 }
@@ -4764,8 +4687,8 @@ a.writer-nobel-medal:focus-visible {
   align-items: center;
   margin: 0 0 7px;
   color: #705a77;
-  font-size: 11px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: none;
 }
@@ -4799,7 +4722,7 @@ a.writer-nobel-medal:focus-visible {
   padding: 0 5px;
   place-items: center;
   color: #806c85;
-  font-size: 10px;
+  font-size: var(--type-caption);
   background: rgba(79, 53, 87, 0.06);
   border-radius: 10px;
 }
@@ -4845,7 +4768,7 @@ a.writer-nobel-medal:focus-visible {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .writer-detail .writer-record-status {
@@ -4853,8 +4776,8 @@ a.writer-nobel-medal:focus-visible {
   max-width: 100%;
   padding: 4px 6px;
   color: #756278;
-  font-size: 10.5px;
-  font-weight: 750;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.01em;
   text-align: center;
@@ -4883,13 +4806,13 @@ a.writer-nobel-medal:focus-visible {
   align-items: baseline;
   margin: 8px 0 0;
   color: #725f78;
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.4;
 }
 
 .writer-detail .writer-record-context > span {
   color: #9b5a2d;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0.01em;
   text-transform: none;
 }
@@ -4900,13 +4823,13 @@ a.writer-nobel-medal:focus-visible {
   font-family: var(--serif);
   font-size: 13px;
   font-style: italic;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .writer-detail .writer-record-context small {
   grid-column: 2;
   color: #66566b;
-  font-size: 10px;
+  font-size: var(--type-caption);
 }
 
 .writer-detail .writer-record-meta {
@@ -4923,8 +4846,8 @@ a.writer-nobel-medal:focus-visible {
 .writer-detail .writer-record-meta > span {
   min-width: 0;
   color: #66546a;
-  font-size: 11px;
-  font-weight: 750;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.35;
 }
 
@@ -4938,8 +4861,8 @@ a.writer-nobel-medal:focus-visible {
   padding: 7px 10px;
   color: #672080;
   font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 750;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.01em;
   text-decoration: none;
   text-transform: none;
@@ -4992,7 +4915,7 @@ a.writer-nobel-medal:focus-visible {
   .writer-detail-tabs button {
     min-height: 44px;
     padding: 6px 3px;
-    font-size: 10.5px;
+    font-size: var(--type-caption);
     letter-spacing: 0;
   }
 
@@ -5086,11 +5009,11 @@ a.writer-nobel-medal:focus-visible {
   min-height: 44px;
   padding: 7px 10px;
   color: var(--violet-700);
-  font-size: 11.5px;
-  font-weight: 750;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.4;
   text-decoration: none;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -5131,8 +5054,8 @@ a.writer-nobel-medal:focus-visible {
 
 .country-timeline time {
   color: var(--orange-deep);
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
 }
 
 .country-timeline span,
@@ -5255,8 +5178,8 @@ a.writer-nobel-medal:focus-visible {
   left: 8px;
   padding: 6px;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-align: center;
   text-transform: uppercase;
@@ -5265,9 +5188,9 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .book-cover span {
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.15em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -5290,11 +5213,6 @@ a.writer-nobel-medal:focus-visible {
 .book-of-day h3,
 .editorial-standard h3 {
   margin: 9px 0;
-  font-family: var(--serif);
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
 }
 
 .book-of-day h4 {
@@ -5309,17 +5227,14 @@ a.writer-nobel-medal:focus-visible {
   max-width: 620px;
   margin: 0;
   color: rgba(255, 255, 255, 0.65);
-  font-family: var(--serif);
-  font-size: 15px;
-  line-height: 1.65;
 }
 
 .book-of-day button {
   margin-top: 25px;
   padding: 0;
   color: #fff;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: transparent;
@@ -5342,8 +5257,8 @@ a.writer-nobel-medal:focus-visible {
 .book-tags span {
   padding: 5px 8px;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 7px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -5365,8 +5280,8 @@ a.writer-nobel-medal:focus-visible {
 
 .book-actions > a {
   color: rgba(255, 255, 255, 0.48);
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-decoration: none;
   text-transform: uppercase;
@@ -5385,15 +5300,8 @@ a.writer-nobel-medal:focus-visible {
   border: 1px solid rgba(76, 28, 99, 0.1);
 }
 
-.editorial-standard h3 {
-  font-size: clamp(33px, 3.2vw, 49px);
-}
-
 .editorial-standard > p {
   color: var(--muted);
-  font-family: var(--serif);
-  font-size: 15px;
-  line-height: 1.65;
 }
 
 .editorial-standard ul {
@@ -5408,8 +5316,6 @@ a.writer-nobel-medal:focus-visible {
   position: relative;
   padding: 0 0 12px 24px;
   color: #4f3e57;
-  font-size: 11px;
-  font-weight: 800;
   border-bottom: 1px solid var(--line);
 }
 
@@ -5451,11 +5357,6 @@ a.writer-nobel-medal:focus-visible {
 
 .book-archive-heading h2 {
   margin: 10px 0 16px;
-  font-family: var(--serif);
-  font-size: clamp(44px, 5.4vw, 76px);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.045em;
 }
 
 .book-archive-heading p {
@@ -5489,8 +5390,8 @@ a.writer-nobel-medal:focus-visible {
   max-width: 180px;
   margin-top: 7px;
   color: var(--muted);
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 1.45;
   text-transform: uppercase;
@@ -5515,10 +5416,10 @@ a.writer-nobel-medal:focus-visible {
   display: block;
   margin-bottom: 8px;
   color: var(--violet-700);
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.35;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -5548,7 +5449,7 @@ a.writer-nobel-medal:focus-visible {
   display: block;
   min-width: 0;
   max-width: none;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   text-wrap: pretty;
 }
 
@@ -5558,8 +5459,8 @@ a.writer-nobel-medal:focus-visible {
   min-height: 32px;
   padding: 0 11px;
   color: var(--muted);
-  font-size: 8px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: 1px solid rgba(67, 21, 89, 0.12);
@@ -5577,8 +5478,8 @@ a.writer-nobel-medal:focus-visible {
   background: rgba(255, 255, 255, 0.62);
   border: 1px solid rgba(67, 21, 89, 0.14);
   border-radius: 4px;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
@@ -5602,8 +5503,8 @@ a.writer-nobel-medal:focus-visible {
 
 .book-filter-copy strong {
   padding-right: 44px;
-  font-size: 11px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.045em;
   text-transform: uppercase;
@@ -5613,7 +5514,7 @@ a.writer-nobel-medal:focus-visible {
 .book-filter-copy small {
   margin-top: 5px;
   color: var(--muted);
-  font-size: 7px;
+  font-size: var(--type-caption);
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: 0;
@@ -5726,14 +5627,14 @@ a.writer-nobel-medal:focus-visible {
 
 .archive-book-cover small {
   color: var(--orange-deep);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
 .archive-book-cover strong {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   font-family: var(--serif);
   font-size: 16px;
   font-weight: 400;
@@ -5754,8 +5655,8 @@ a.writer-nobel-medal:focus-visible {
 
 .archive-book-copy > small {
   color: var(--orange-deep);
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -5765,7 +5666,7 @@ a.writer-nobel-medal:focus-visible {
   min-height: 2.1em;
   overflow: hidden;
   margin: 10px 0 7px;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   font-family: var(--serif);
   font-size: 21px;
   font-weight: 400;
@@ -5778,7 +5679,7 @@ a.writer-nobel-medal:focus-visible {
   min-height: 1.45em;
   margin: 0;
   color: var(--muted);
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.45;
 }
 
@@ -5802,8 +5703,8 @@ a.writer-nobel-medal:focus-visible {
   min-width: 0;
   overflow: hidden;
   color: #78657e;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.3;
   letter-spacing: 0.07em;
   text-overflow: ellipsis;
@@ -5822,8 +5723,8 @@ a.writer-nobel-medal:focus-visible {
   background: transparent;
   border: 0;
   border-bottom: 1px solid rgba(67, 21, 89, 0.25);
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.25;
   text-transform: uppercase;
   white-space: nowrap;
@@ -6026,14 +5927,14 @@ a.writer-nobel-medal:focus-visible {
 
 .book-detail-cover small {
   color: var(--orange-deep);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
 .book-detail-cover strong {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   font-family: var(--serif);
   font-size: 26px;
   font-weight: 400;
@@ -6058,8 +5959,8 @@ a.writer-nobel-medal:focus-visible {
   font-family: var(--serif);
   font-size: clamp(36px, 4vw, 58px);
   font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  line-height: 1.1;
+  letter-spacing: var(--type-tracking-title);
 }
 
 .book-original-title {
@@ -6082,8 +5983,8 @@ a.writer-nobel-medal:focus-visible {
 
 .book-detail-copy dt {
   color: rgba(255, 255, 255, 0.42);
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -6114,7 +6015,7 @@ a.writer-nobel-medal:focus-visible {
 .cover-rights-note {
   flex-basis: 100%;
   color: rgba(255, 255, 255, 0.48);
-  font-size: 8px;
+  font-size: var(--type-caption);
   letter-spacing: 0.04em;
 }
 
@@ -6128,8 +6029,8 @@ a.writer-nobel-medal:focus-visible {
 .book-detail-actions a {
   min-height: 36px;
   padding: 0 13px;
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -6176,9 +6077,9 @@ a.writer-nobel-medal:focus-visible {
 
 .book-journal-mentions > header span {
   color: var(--orange-soft);
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -6232,15 +6133,15 @@ a.writer-nobel-medal:focus-visible {
 
 .book-journal-mentions a > span {
   color: var(--orange-soft);
-  font-size: 6px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .book-journal-mentions a > strong {
   margin-top: 5px;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   font-family: var(--serif);
   font-size: 13px;
   font-weight: 400;
@@ -6250,7 +6151,7 @@ a.writer-nobel-medal:focus-visible {
 .book-journal-mentions a > small {
   margin-top: 7px;
   color: rgba(255, 255, 255, 0.43);
-  font-size: 7px;
+  font-size: var(--type-caption);
 }
 
 .book-detail-card > .engagement-card {
@@ -6288,8 +6189,8 @@ a.writer-nobel-medal:focus-visible {
   background: var(--violet-800);
   border: 1px solid var(--violet-800);
   border-radius: 3px;
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
@@ -6322,16 +6223,9 @@ a.writer-nobel-medal:focus-visible {
   margin: 0 auto 37px;
 }
 
-.section-heading h2 {
-  font-size: clamp(40px, 4.6vw, 65px);
-}
-
 .editorial-section .section-heading > a {
   padding-bottom: 8px;
   color: rgba(255, 255, 255, 0.65);
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -6353,7 +6247,6 @@ a.writer-nobel-medal:focus-visible {
   position: relative;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   background: rgba(255, 255, 255, 0.055);
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 5px;
@@ -6368,13 +6261,9 @@ a.writer-nobel-medal:focus-visible {
 
 .editorial-grid article:hover {
   border-color: rgba(255, 155, 69, 0.55);
-  transform: translateY(-3px);
 }
 
 .editorial-grid article > a:first-child {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  flex: 1;
   color: #fff;
   text-decoration: none;
 }
@@ -6407,9 +6296,11 @@ a.writer-nobel-medal:focus-visible {
 .editorial-grid .article-image img {
   position: relative;
   z-index: 1;
+  min-width: 0;
+  min-height: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   transition: transform var(--ui-transition-base);
 }
 
@@ -6424,8 +6315,10 @@ a.writer-nobel-medal:focus-visible {
   box-shadow: 0 16px 40px rgba(18, 3, 29, 0.34);
 }
 
-.editorial-grid article:hover .article-image > img {
-  transform: scale(1.035);
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .editorial-grid article:hover .article-image > img {
+    transform: scale(1.035);
+  }
 }
 
 .editorial-grid .article-image span {
@@ -6435,150 +6328,59 @@ a.writer-nobel-medal:focus-visible {
   left: 13px;
   padding: 6px 8px;
   color: #fff;
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.09em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
   background: var(--orange-deep);
 }
 
-.article-copy {
-  display: flex;
-  flex-direction: column;
-  min-height: 226px;
-  padding: 22px 22px 18px;
-}
-
 .article-copy small {
   color: rgba(255, 255, 255, 0.4);
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
-.article-copy h3 {
-  display: -webkit-box;
-  min-height: 2.16em;
-  overflow: hidden;
-  margin: 9px 0 10px;
-  font-family: var(--serif);
-  font-size: 25px;
-  font-weight: 400;
-  line-height: 1.08;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.is-featured .article-copy h3 {
-  min-height: 0;
-  font-size: clamp(29px, 3vw, 43px);
-  -webkit-line-clamp: 3;
-}
-
 .article-copy p {
-  display: -webkit-box;
-  min-height: 4.65em;
-  overflow: hidden;
-  margin: 0;
   color: rgba(255, 255, 255, 0.54);
-  font-family: var(--serif);
-  font-size: 13px;
-  line-height: 1.55;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
-.is-featured .article-copy p {
-  min-height: 0;
-  -webkit-line-clamp: 5;
 }
 
 .article-copy strong {
-  display: block;
-  margin-top: auto;
-  padding-top: 18px;
   color: var(--orange-soft);
-  font-size: 9px;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .section-link {
-  padding: 12px 22px;
   color: rgba(255, 255, 255, 0.42);
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .section-link:hover {
   color: #fff;
 }
 
-.share-links {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 13px 18px 17px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-}
-
 .share-links > span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  margin-right: 4px;
   color: rgba(255, 255, 255, 0.48);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 .share-links a,
 .share-links button {
-  position: relative;
-  display: grid;
-  flex: 0 0 auto;
-  place-items: center;
-  box-sizing: border-box;
-  width: 34px;
-  min-width: 34px;
-  height: 34px;
-  min-height: 34px;
-  padding: 0;
-  overflow: hidden;
   color: var(--orange-soft);
-  line-height: 0;
   text-decoration: none;
   background: rgba(246, 117, 24, 0.08);
   border: 1px solid rgba(255, 169, 84, 0.31);
   border-radius: 50%;
   cursor: pointer;
   transition:
-    color 160ms ease,
-    background 160ms ease,
-    border-color 160ms ease,
-    transform 160ms ease,
-    box-shadow 160ms ease;
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    border-color var(--ui-transition-fast),
+    box-shadow var(--ui-transition-base);
 }
 
 .share-links svg {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 16px;
-  height: 16px;
-  margin: auto;
-  overflow: visible;
   fill: currentColor;
-  transform: none;
-  transform-origin: center;
 }
 
 .book-edition-meta {
@@ -6592,8 +6394,8 @@ a.writer-nobel-medal:focus-visible {
 
 .book-edition-meta span {
   color: rgba(255, 255, 255, 0.42);
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -6606,8 +6408,6 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .share-links .is-copy svg {
-  width: 16px;
-  height: 16px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -6628,7 +6428,6 @@ a.writer-nobel-medal:focus-visible {
   background: var(--orange-deep);
   border-color: var(--orange);
   box-shadow: 0 0 20px rgba(246, 117, 24, 0.28);
-  transform: translateY(-1px);
 }
 
 .journal-engagement {
@@ -6647,19 +6446,12 @@ a.writer-nobel-medal:focus-visible {
 
 .journal-engagement h3 {
   margin: 12px 0 14px;
-  font-family: var(--serif);
-  font-size: clamp(29px, 3.6vw, 49px);
-  font-weight: 400;
-  line-height: 1;
 }
 
 .journal-engagement > div:first-child > p {
   max-width: 650px;
   margin: 0;
   color: rgba(255, 255, 255, 0.6);
-  font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.65;
 }
 
 .community-section {
@@ -6767,9 +6559,6 @@ a.writer-nobel-medal:focus-visible {
   max-width: 480px;
   margin: 0 0 25px;
   color: rgba(255, 255, 255, 0.58);
-  font-family: var(--serif);
-  font-size: 14px;
-  line-height: 1.65;
 }
 
 .community-reading-notes {
@@ -6788,11 +6577,6 @@ a.writer-nobel-medal:focus-visible {
 .community-reading-notes > span {
   margin-bottom: 2px;
   color: rgba(255, 202, 151, 0.68);
-  font-size: 10px;
-  font-weight: 900;
-  line-height: 1.4;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
 }
 
 .community-reading-notes button {
@@ -6833,8 +6617,6 @@ a.writer-nobel-medal:focus-visible {
 
 .community-reading-notes button > i {
   color: rgba(255, 190, 126, 0.68);
-  font-family: var(--serif);
-  font-size: 12px;
   font-style: normal;
   text-align: center;
 }
@@ -6846,32 +6628,26 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .community-reading-notes button:hover {
-  background: rgba(73, 11, 91, 0.62);
+  background-color: rgba(73, 11, 91, 0.62);
   border-color: rgba(255, 180, 108, 0.35);
   transform: translateX(-5px);
 }
 
-.community-reading-notes small,
+.community-reading-notes small {
+  display: block;
+}
+
 .community-reading-notes strong {
   display: block;
 }
 
 .community-reading-notes small {
   color: #f99a52;
-  font-size: 9px;
-  font-weight: 900;
-  line-height: 1.4;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
 }
 
 .community-reading-notes strong {
   overflow: hidden;
   color: rgba(255, 248, 240, 0.88);
-  font-family: var(--serif);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.4;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -6881,10 +6657,6 @@ a.writer-nobel-medal:focus-visible {
   max-width: 570px;
   margin: 0 0 23px;
   color: rgba(255, 250, 242, 0.92);
-  font-family: var(--serif);
-  font-size: clamp(27px, 2.45vw, 42px);
-  font-weight: 400;
-  line-height: 1.08;
   text-wrap: balance;
   text-shadow: 0 16px 35px rgba(9, 0, 15, 0.46);
 }
@@ -6907,10 +6679,10 @@ a.writer-nobel-medal:focus-visible {
   align-items: center;
   margin-bottom: 28px;
   color: rgba(255, 215, 170, 0.65);
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.4;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -6944,18 +6716,10 @@ a.writer-nobel-medal:focus-visible {
 
 .community-visual-stats strong {
   color: #fff8ee;
-  font-family: var(--serif);
-  font-size: clamp(20px, 2vw, 29px);
-  font-weight: 400;
 }
 
 .community-visual-stats small {
   color: rgba(255, 255, 255, 0.46);
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 1.4;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .community-copy {
@@ -6970,30 +6734,18 @@ a.writer-nobel-medal:focus-visible {
 .community-copy h2 {
   max-width: 650px;
   margin: 14px 0 22px;
-  font-family: var(--serif);
-  font-size: clamp(48px, 5vw, 78px);
-  font-weight: 400;
-  line-height: 0.98;
 }
 
 .community-copy > p {
   max-width: 630px;
   margin: 0;
   color: rgba(255, 255, 255, 0.65);
-  font-family: var(--serif);
-  font-size: 16px;
-  line-height: 1.65;
 }
 
 .community-copy .community-copy-note {
   margin-top: 18px;
   padding: 12px 15px;
   color: rgba(255, 221, 188, 0.76);
-  font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1.6;
-  letter-spacing: 0.035em;
   background: linear-gradient(90deg, rgba(246, 117, 24, 0.1), transparent);
   border-left: 2px solid rgba(246, 117, 24, 0.7);
 }
@@ -7011,11 +6763,6 @@ a.writer-nobel-medal:focus-visible {
   min-height: 34px;
   padding: 10px 12px 10px 32px;
   color: rgba(255, 255, 255, 0.78);
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1.45;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.045), transparent);
   border-left: 1px solid rgba(255, 167, 84, 0.2);
 }
@@ -7035,20 +6782,38 @@ a.writer-nobel-medal:focus-visible {
   flex-wrap: wrap;
 }
 
-.community-copy button,
-.community-primary,
 .account-actions button,
-.forum-toolbar button,
 .topic-compose button,
 .reply-form button,
 .topic-thread > button {
   min-height: 46px;
   padding: 0 19px;
   color: #fff;
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+  background: var(--orange-deep);
+  border: 1px solid var(--orange-deep);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.forum-toolbar button {
+  min-height: 46px;
+  padding: 0 19px;
+  color: #fff;
+  background: var(--orange-deep);
+  border: 1px solid var(--orange-deep);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.community-copy button,
+.community-primary {
+  min-height: 46px;
+  padding: 0 19px;
+  color: #fff;
   background: var(--orange-deep);
   border: 1px solid var(--orange-deep);
   border-radius: 2px;
@@ -7108,8 +6873,8 @@ a.writer-nobel-medal:focus-visible {
 
 .rating-summary > span small {
   color: rgba(255, 255, 255, 0.42);
-  font-size: 8px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -7260,34 +7025,22 @@ a.writer-nobel-medal:focus-visible {
 
 .author-showcase small {
   color: var(--orange-soft);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.13em;
   text-transform: uppercase;
 }
 
 .author-showcase strong {
   margin-top: 8px;
-  font-family: var(--serif);
-  font-size: clamp(23px, 2.4vw, 35px);
-  font-weight: 400;
-  line-height: 0.98;
 }
 
 .author-showcase em {
   margin-top: 7px;
   color: rgba(255, 255, 255, 0.6);
-  font-family: var(--serif);
-  font-size: 11px;
 }
 
 .author-showcase article > a {
   display: inline-block;
   margin: 9px 0 0 2px;
   color: #8e7d94;
-  font-size: 7px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -7326,8 +7079,8 @@ a.writer-nobel-medal:focus-visible {
   min-height: 68px;
   padding: 14px 24px;
   color: #fff;
-  font: 900 10px/1.35 var(--sans);
-  letter-spacing: 0.1em;
+  font: 700 var(--type-caption)/1.35 var(--font-ui);
+  letter-spacing: var(--type-tracking-label);
   background: rgba(25, 2, 38, 0.64);
   border: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.14);
@@ -7361,16 +7114,14 @@ a.writer-nobel-medal:focus-visible {
   outline-offset: -4px;
 }
 
-.section-directory-more:hover .brand-arrow-icon,
-.section-directory-more:focus-visible .brand-arrow-icon {
-  transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .section-directory-more:hover .brand-arrow-icon {
+    transform: translateX(4px);
+  }
 }
 
 .section-directory-card {
   position: relative;
-  display: grid;
-  align-items: end;
-  min-height: 310px;
   overflow: hidden;
   color: #fff;
   text-decoration: none;
@@ -7382,24 +7133,18 @@ a.writer-nobel-medal:focus-visible {
   border-right: 1px solid rgba(255, 255, 255, 0.14);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   transition:
-    filter 180ms ease,
-    transform 180ms ease,
-    box-shadow 180ms ease;
+    filter var(--ui-transition-base),
+    box-shadow var(--ui-transition-base);
 }
 
 .section-directory-card > div {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-rows: auto minmax(3.12em, auto) minmax(4.74em, auto) 96px 72px auto;
-  align-content: end;
-  min-height: 100%;
   padding: 30px 62px 30px 30px;
 }
 
 .section-directory-card:hover {
   filter: saturate(1.15) brightness(1.08);
-  transform: translateY(-3px);
   box-shadow: 0 22px 48px rgba(10, 0, 18, 0.28);
 }
 
@@ -7413,10 +7158,6 @@ a.writer-nobel-medal:focus-visible {
   width: max-content;
   padding: 5px 9px;
   color: var(--orange-soft);
-  font-size: 10px;
-  font-weight: 900;
-  line-height: 1.35;
-  letter-spacing: 0.1em;
   background: rgba(22, 2, 34, 0.48);
   border: 1px solid rgba(255, 169, 84, 0.28);
   border-radius: 999px;
@@ -7425,30 +7166,13 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .sections-directory h3 {
-  display: -webkit-box;
-  min-height: 3.12em;
-  overflow: hidden;
   align-self: end;
   margin: 18px 0 14px;
-  font-family: var(--serif);
-  font-size: 29px;
-  font-weight: 400;
-  line-height: 1.04;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 .sections-directory > div:last-child p {
-  display: -webkit-box;
-  min-height: 4.74em;
-  overflow: hidden;
   margin: 0;
   color: rgba(255, 255, 255, 0.52);
-  font-family: var(--serif);
-  font-size: 13px;
-  line-height: 1.58;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 .search-results button > span,
@@ -7515,11 +7239,10 @@ a.writer-nobel-medal:focus-visible {
   position: relative;
   z-index: 3;
   display: grid;
-  gap: 4px;
-  min-height: 48px;
+  gap: 8px;
   width: 100%;
   margin-top: 0;
-  padding: 8px 10px 8px 14px;
+  padding: 12px 14px 12px 16px;
   overflow: hidden;
   color: rgba(255, 255, 255, 0.86);
   text-decoration: none;
@@ -7528,9 +7251,9 @@ a.writer-nobel-medal:focus-visible {
   border-left: 0;
   border-radius: 0 6px 6px 0;
   transition:
-    color 180ms ease,
-    background 180ms ease,
-    transform 180ms ease;
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-base),
+    border-color var(--ui-transition-fast);
 }
 
 .section-card-series {
@@ -7539,28 +7262,20 @@ a.writer-nobel-medal:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 14px;
 }
 
 .section-card-series a {
   max-width: 100%;
   padding: 5px 8px;
-  overflow: hidden;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 1.35;
-  letter-spacing: 0.045em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   text-decoration: none;
   background: rgba(24, 3, 38, 0.48);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
   transition:
-    color 160ms ease,
-    border-color 160ms ease,
-    background 160ms ease;
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    border-color var(--ui-transition-fast);
 }
 
 .section-card-series a:hover,
@@ -7568,7 +7283,6 @@ a.writer-nobel-medal:focus-visible {
   color: #fff;
   background: rgba(246, 117, 24, 0.2);
   border-color: rgba(246, 117, 24, 0.58);
-  outline: none;
 }
 
 .section-card-latest::before {
@@ -7582,22 +7296,7 @@ a.writer-nobel-medal:focus-visible {
 
 .section-card-latest span {
   color: var(--orange-soft);
-  font-size: 11px;
-  font-weight: 900;
-  line-height: 1.4;
-  letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-.section-card-latest strong {
-  display: -webkit-box;
-  overflow: hidden;
-  font-family: var(--serif);
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.3;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .sections-directory h3 a {
@@ -7607,15 +7306,13 @@ a.writer-nobel-medal:focus-visible {
 
 .sections-directory h3 a:focus-visible {
   color: var(--orange-soft);
-  outline: none;
 }
 
 .section-card-latest:hover,
 .section-card-latest:focus-visible {
   color: #fff;
-  background: linear-gradient(90deg, rgba(246, 117, 24, 0.25), rgba(25, 2, 39, 0.2));
-  outline: none;
-  transform: translateX(3px);
+  background-color: rgba(246, 117, 24, 0.12);
+  border-color: rgba(255, 169, 84, 0.3);
 }
 
 .section-card-action {
@@ -7639,10 +7336,6 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .section-card-action strong {
-  font-size: 10px;
-  font-weight: 900;
-  line-height: 1.4;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -7665,10 +7358,10 @@ a.writer-nobel-medal:focus-visible {
   border: 1px solid rgba(255, 169, 84, 0.28);
   border-radius: 50%;
   transition:
-    color 180ms ease,
-    background 180ms ease,
-    border-color 180ms ease,
-    transform 180ms ease;
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    border-color var(--ui-transition-fast),
+    box-shadow var(--ui-transition-base);
 }
 
 .section-directory-card:hover .section-card-action i,
@@ -7676,7 +7369,13 @@ a.writer-nobel-medal:focus-visible {
   color: #fff;
   background: var(--orange-deep);
   border-color: var(--orange-soft);
-  transform: translateX(3px);
+  box-shadow: 0 0 0 4px rgba(246, 117, 24, 0.12), 0 6px 18px rgba(246, 117, 24, 0.2);
+}
+
+.section-card-action > a:active i,
+.share-links .share-icon:active {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.34);
+  transition-duration: var(--ui-motion-micro-min);
 }
 
 .calendar-section {
@@ -7729,20 +7428,12 @@ a.writer-nobel-medal:focus-visible {
 
 .calendar-heading h3 {
   margin: 9px 0 0;
-  font-family: var(--serif);
-  font-size: clamp(36px, 4vw, 55px);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.04em;
 }
 
 .calendar-heading p {
   max-width: 620px;
   margin: 13px 0 0;
   color: #826f87;
-  font-family: var(--serif);
-  font-size: 13px;
-  line-height: 1.55;
 }
 
 .calendar-navigation {
@@ -7753,9 +7444,6 @@ a.writer-nobel-medal:focus-visible {
 
 .calendar-navigation strong {
   min-width: 110px;
-  font-family: var(--serif);
-  font-size: 19px;
-  font-weight: 400;
   text-align: center;
 }
 
@@ -7817,10 +7505,6 @@ a.writer-nobel-medal:focus-visible {
 
 .calendar-summary > div > strong {
   color: var(--violet-800);
-  font-family: var(--serif);
-  font-size: 27px;
-  font-weight: 400;
-  line-height: 1;
 }
 
 .calendar-summary > div > span {
@@ -7828,9 +7512,6 @@ a.writer-nobel-medal:focus-visible {
   gap: 7px;
   align-items: center;
   color: #8e7b94;
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -7873,28 +7554,17 @@ a.writer-nobel-medal:focus-visible {
   grid-column: 1 / -1;
   margin-bottom: 5px;
   color: var(--orange-soft);
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .calendar-featured > strong {
   color: #fff8ef;
-  font-family: var(--serif);
-  font-size: 21px;
-  font-weight: 400;
   white-space: nowrap;
 }
 
 .calendar-featured > small {
   align-self: center;
-  overflow: hidden;
   color: rgba(255, 255, 255, 0.72);
-  font-family: var(--serif);
-  font-size: 12px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .calendar-featured > i {
@@ -7954,8 +7624,8 @@ a.writer-nobel-medal:focus-visible {
 .weekday {
   min-height: 30px;
   color: #9e8fa3;
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -8014,8 +7684,8 @@ a.writer-nobel-medal:focus-visible {
   padding: 2px 4px;
   color: var(--orange-deep);
   font-family: var(--sans);
-  font-size: 6px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1;
   background: rgba(246, 117, 24, 0.12);
   border-radius: 999px;
@@ -8048,17 +7718,11 @@ a.writer-nobel-medal:focus-visible {
 
 .calendar-agenda > header span {
   color: #9a899f;
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
 .calendar-agenda > header strong {
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 20px;
-  font-weight: 400;
   text-transform: capitalize;
 }
 
@@ -8067,13 +7731,9 @@ a.writer-nobel-medal:focus-visible {
   min-height: 30px;
   padding: 0 11px;
   color: var(--orange-deep);
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.07em;
   background: rgba(246, 117, 24, 0.07);
   border: 1px solid rgba(213, 96, 15, 0.24);
   border-radius: 999px;
-  text-transform: uppercase;
 }
 
 .calendar-agenda > div {
@@ -8112,7 +7772,7 @@ a.writer-nobel-medal:focus-visible {
 .calendar-agenda small {
   margin-top: 4px;
   color: #948399;
-  font-size: 8px;
+  font-size: var(--type-caption);
 }
 
 .calendar-agenda .calendar-agenda-more {
@@ -8124,21 +7784,14 @@ a.writer-nobel-medal:focus-visible {
   margin-top: 12px;
   padding: 10px 13px;
   color: var(--orange-deep);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
   background: rgba(246, 117, 24, 0.08);
   border: 1px solid rgba(213, 96, 15, 0.24);
   border-radius: 4px;
-  text-transform: uppercase;
 }
 
 .calendar-agenda .calendar-agenda-more strong {
   color: var(--violet-700);
-  font-family: var(--sans);
-  font-size: 11px;
   font-variant-numeric: tabular-nums;
-  font-weight: 900;
 }
 
 .calendar-agenda .calendar-agenda-more:hover,
@@ -8204,19 +7857,12 @@ a.writer-nobel-medal:focus-visible {
 .article-library-heading h2 {
   max-width: 900px;
   margin: 14px 0 18px;
-  font-family: var(--serif);
-  font-size: clamp(42px, 5.2vw, 82px);
-  font-weight: 500;
-  line-height: 0.98;
-  letter-spacing: -0.04em;
 }
 
 .article-library-heading p {
   max-width: 780px;
   margin: 0;
   color: rgba(255, 255, 255, 0.62);
-  font-size: 15px;
-  line-height: 1.75;
 }
 
 .article-library-heading label {
@@ -8226,9 +7872,6 @@ a.writer-nobel-medal:focus-visible {
 
 .article-library-heading label span {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -8240,8 +7883,7 @@ a.writer-nobel-medal:focus-visible {
   background: rgba(255, 255, 255, 0.055);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
-  outline: none;
-  transition: border-color 180ms ease, background 180ms ease;
+  transition: border-color var(--ui-transition-fast), background-color var(--ui-transition-base);
 }
 
 .article-library-heading input:focus {
@@ -8266,14 +7908,14 @@ a.writer-nobel-medal:focus-visible {
   flex: 0 0 auto;
   padding: 11px 14px;
   color: rgba(255, 255, 255, 0.58);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.055em;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 2px;
   cursor: pointer;
-  transition: 180ms ease;
+  transition:
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    border-color var(--ui-transition-fast);
 }
 
 .article-library-tabs button span {
@@ -8295,7 +7937,7 @@ a.writer-nobel-medal:focus-visible {
   margin-top: 25px;
   margin-bottom: 22px;
   color: rgba(255, 255, 255, 0.42);
-  font-size: 10px;
+  font-size: var(--type-caption);
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -8371,14 +8013,18 @@ a.writer-nobel-medal:focus-visible {
 .library-card-image img {
   position: relative;
   z-index: 1;
+  min-width: 0;
+  min-height: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   transition: transform var(--ui-transition-base);
 }
 
-.article-library-grid article:hover .library-card-image > img {
-  transform: scale(1.035);
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .article-library-grid article:hover .library-card-image > img {
+    transform: scale(1.035);
+  }
 }
 
 .library-card-image > span {
@@ -8408,16 +8054,7 @@ a.writer-nobel-medal:focus-visible {
   bottom: 12px;
   left: 13px;
   color: #fff;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.09em;
   text-transform: uppercase;
-}
-
-.library-card-copy {
-  display: flex;
-  flex-direction: column;
-  padding: 21px 20px 22px;
 }
 
 .library-card-copy > div {
@@ -8425,56 +8062,19 @@ a.writer-nobel-medal:focus-visible {
   justify-content: space-between;
   gap: 12px;
   color: rgba(255, 255, 255, 0.38);
-  font-size: 8px;
-  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
-.library-card-copy h3 {
-  display: -webkit-box;
-  min-height: 3.39em;
-  overflow: hidden;
-  margin: 15px 0 11px;
-  font-family: var(--serif);
-  font-size: clamp(20px, 1.75vw, 29px);
-  font-weight: 500;
-  line-height: 1.13;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-}
-
 .is-lead .library-card-copy h3 {
-  min-height: 0;
   max-width: 760px;
-  font-size: clamp(29px, 3.1vw, 50px);
 }
 
 .library-card-copy p {
-  display: -webkit-box;
-  min-height: 6.6em;
-  overflow: hidden;
-  margin: 0 0 20px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 11px;
-  line-height: 1.65;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-}
-
-.is-lead .library-card-copy p {
-  min-height: 0;
 }
 
 .library-card-copy > strong {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-  padding-top: 16px;
   color: #f7a261;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .library-card-copy > strong i {
@@ -8483,8 +8083,10 @@ a.writer-nobel-medal:focus-visible {
   transition: transform 180ms ease;
 }
 
-.article-library-grid article:hover .library-card-copy > strong i {
-  transform: translateX(5px);
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .article-library-grid article:hover .library-card-copy > strong i {
+    transform: translateX(5px);
+  }
 }
 
 .article-library-more {
@@ -8495,9 +8097,6 @@ a.writer-nobel-medal:focus-visible {
   margin-top: 35px;
   padding: 16px 25px;
   color: #fff;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
   background: rgba(255, 255, 255, 0.045);
   border: 1px solid rgba(255, 255, 255, 0.13);
   cursor: pointer;
@@ -8606,9 +8205,9 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-bar > div span {
   color: #ef8b40;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -8634,7 +8233,7 @@ a.writer-nobel-medal:focus-visible {
   align-items: center;
   justify-self: start;
   color: inherit;
-  font-size: 11px;
+  font-size: var(--type-caption);
   text-decoration: none;
 }
 
@@ -8714,9 +8313,9 @@ a.writer-nobel-medal:focus-visible {
   display: block;
   margin-bottom: 18px;
   color: #ef8b40;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -8734,7 +8333,7 @@ a.writer-nobel-medal:focus-visible {
   padding: 7px 0 7px 14px;
   color: var(--reader-muted);
   font: inherit;
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.4;
   text-align: left;
   background: transparent;
@@ -8770,7 +8369,7 @@ a.writer-nobel-medal:focus-visible {
   display: block;
   margin-top: 22px;
   color: var(--reader-muted);
-  font-size: 8px;
+  font-size: var(--type-caption);
   line-height: 1.6;
 }
 
@@ -8810,35 +8409,27 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-lead > div:first-child span {
   color: #ef8b40;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
 .article-reader-lead small,
 .article-byline {
   color: var(--reader-muted);
-  font-size: 9px;
+  font-size: var(--type-caption);
 }
 
 .article-reader-lead h1 {
   margin: 25px 0;
   color: var(--reader-text);
-  font-family: var(--serif);
-  font-size: clamp(44px, 5.5vw, 82px);
-  font-weight: 500;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
 }
 
 .article-reader-lead > p {
   max-width: 760px;
   margin: 0 0 30px;
   color: var(--reader-muted);
-  font-family: var(--serif);
-  font-size: 18px;
-  line-height: 1.55;
 }
 
 .article-byline {
@@ -8861,9 +8452,9 @@ a.writer-nobel-medal:focus-visible {
 .article-library-series > span {
   margin-right: 3px;
   color: var(--orange-soft);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -8871,11 +8462,14 @@ a.writer-nobel-medal:focus-visible {
   min-height: 31px;
   padding: 6px 10px;
   color: rgba(255, 255, 255, 0.58);
-  font-size: 9px;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
   cursor: pointer;
+  transition:
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    border-color var(--ui-transition-fast);
 }
 
 .article-library-series button small {
@@ -8889,7 +8483,6 @@ a.writer-nobel-medal:focus-visible {
   color: #fff;
   background: rgba(246, 117, 24, 0.13);
   border-color: rgba(246, 117, 24, 0.55);
-  outline: none;
 }
 
 .sections-directory h3 a {
@@ -8940,8 +8533,8 @@ a.writer-nobel-medal:focus-visible {
 .article-resume-copy strong {
   overflow: hidden;
   color: var(--reader-ink);
-  font-size: 11px;
-  font-weight: 760;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.25;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -8949,8 +8542,8 @@ a.writer-nobel-medal:focus-visible {
 
 .article-resume-copy small {
   color: var(--reader-muted);
-  font-size: 9px;
-  font-weight: 650;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.35;
   letter-spacing: 0.045em;
 }
@@ -9004,7 +8597,7 @@ a.writer-nobel-medal:focus-visible {
   min-height: 32px;
   padding: 0 11px;
   color: var(--orange-deep);
-  font: 750 9px/1 var(--sans);
+  font: 700 var(--type-caption)/1 var(--font-ui);
   letter-spacing: 0.025em;
   background: color-mix(in srgb, var(--orange) 7%, var(--reader-paper));
   border: 1px solid color-mix(in srgb, var(--orange) 30%, transparent);
@@ -9098,9 +8691,9 @@ a.writer-nobel-medal:focus-visible {
   padding: 8px 12px;
   color: #fff8ef;
   font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   background: rgba(24, 7, 39, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
@@ -9125,10 +8718,10 @@ a.writer-nobel-medal:focus-visible {
 
 .book-filter-heading > span,
 .book-filter-heading > small {
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.35;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -9155,11 +8748,7 @@ a.writer-nobel-medal:focus-visible {
   max-width: 68ch;
   margin-right: auto;
   margin-left: auto;
-  font-family: var(--serif);
-  font-size: calc(19px * var(--reader-scale, 1));
-  line-height: 1.82;
   hanging-punctuation: first last;
-  text-wrap: pretty;
 }
 
 .article-reader-lead h1.is-medium-title {
@@ -9170,7 +8759,7 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-lead h1.is-long-title {
   font-size: clamp(35px, 4vw, 54px);
   line-height: 1.04;
-  letter-spacing: -0.025em;
+  letter-spacing: var(--type-tracking-title);
 }
 
 .article-reader-content > div,
@@ -9205,7 +8794,7 @@ a.writer-nobel-medal:focus-visible {
   color: #ef7e2d;
   font-family: var(--serif);
   font-size: 3.6em;
-  line-height: 0.78;
+  line-height: 1.1;
 }
 
 .article-reader-content .article-leading-label > strong:first-child {
@@ -9224,21 +8813,16 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-content h4 {
   scroll-margin-top: 40px;
   color: var(--reader-text);
-  font-weight: 500;
-  line-height: 1.08;
-  text-wrap: balance;
 }
 
 .article-reader-content h2 {
-  margin: 78px 0 26px;
-  padding-top: 26px;
-  font-size: calc(39px * var(--reader-scale, 1));
+  margin: clamp(32px, 4vw, 48px) 0 20px;
+  padding-top: 20px;
   border-top: 1px solid var(--reader-line);
 }
 
 .article-reader-content h3 {
-  margin: 55px 0 22px;
-  font-size: calc(29px * var(--reader-scale, 1));
+  margin: clamp(24px, 3vw, 36px) 0 16px;
 }
 
 .article-reader-content figure {
@@ -9282,7 +8866,7 @@ a.writer-nobel-medal:focus-visible {
   margin-top: 10px;
   color: var(--reader-muted);
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: var(--type-caption);
   line-height: 1.5;
   text-align: center;
 }
@@ -9368,7 +8952,7 @@ a.writer-nobel-medal:focus-visible {
   border-top: 1px solid var(--reader-line);
 }
 
-.article-reader-content table {
+:is(.article-reader-content, .cms-page-prose) table {
   display: block;
   width: 100%;
   margin: 42px 0;
@@ -9379,25 +8963,25 @@ a.writer-nobel-medal:focus-visible {
   line-height: 1.55;
 }
 
-.article-reader-content th,
-.article-reader-content td {
+:is(.article-reader-content, .cms-page-prose) th,
+:is(.article-reader-content, .cms-page-prose) td {
   min-width: 140px;
   padding: 12px 14px;
   text-align: left;
   border: 1px solid var(--reader-line);
 }
 
-.article-reader-content th {
+:is(.article-reader-content, .cms-page-prose) th {
   color: var(--reader-text);
   background: color-mix(in srgb, var(--orange) 8%, var(--reader-paper));
 }
 
-.article-reader-content pre,
-.article-reader-content code {
+:is(.article-reader-content, .cms-page-prose) pre,
+:is(.article-reader-content, .cms-page-prose) code {
   font-family: ui-monospace, "Cascadia Code", "SFMono-Regular", monospace;
 }
 
-.article-reader-content pre {
+:is(.article-reader-content, .cms-page-prose) pre {
   max-width: 100%;
   margin: 38px 0;
   padding: 18px;
@@ -9441,7 +9025,7 @@ a.writer-nobel-medal:focus-visible {
   padding: 26px var(--article-source-inline-padding) 28px;
   font-family: var(--serif);
   font-size: calc(19px * var(--reader-scale, 1));
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   background: color-mix(in srgb, var(--reader-bg) 18%, var(--reader-paper));
   border: 1px solid var(--reader-line);
   border-radius: 6px;
@@ -9453,10 +9037,10 @@ a.writer-nobel-medal:focus-visible {
   margin: 0;
   color: #ffb576;
   font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.4;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -9480,15 +9064,15 @@ a.writer-nobel-medal:focus-visible {
   font-family: var(--serif);
   font-size: calc(13px * var(--reader-scale, 1));
   line-height: 1.65;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .article-reader-sources li::marker {
   color: var(--orange-deep);
   font-family: var(--sans);
   font-size: 0.78em;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .article-reader.is-light .article-reader-sources > h2,
@@ -9526,11 +9110,11 @@ a.writer-nobel-medal:focus-visible {
   max-width: 100%;
   color: var(--reader-muted);
   font-family: var(--sans);
-  font-size: 9px;
-  font-weight: 850;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.08em;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   cursor: pointer;
   list-style-position: inside;
   text-transform: uppercase;
@@ -9548,7 +9132,7 @@ a.writer-nobel-medal:focus-visible {
   height: 22px;
   padding: 0 6px;
   color: var(--orange-deep);
-  font-size: 9px;
+  font-size: var(--type-caption);
   letter-spacing: 0;
   background: color-mix(in srgb, var(--orange) 10%, transparent);
   border: 1px solid color-mix(in srgb, var(--orange) 32%, transparent);
@@ -9604,7 +9188,7 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-content .article-design-block.is-metrics p {
   padding: 18px 0;
   font-family: var(--sans);
-  font-weight: 800;
+  font-weight: 700;
   border-top: 1px solid rgba(74, 26, 90, 0.18);
 }
 
@@ -10034,7 +9618,7 @@ a.writer-nobel-medal:focus-visible {
   color: inherit;
   overflow-wrap: anywhere;
   white-space: normal;
-  word-break: break-word;
+  word-break: normal;
   text-decoration-thickness: 1px;
   text-decoration-color: color-mix(in srgb, var(--orange) 55%, transparent);
   text-underline-offset: 3px;
@@ -10061,9 +9645,9 @@ a.writer-nobel-medal:focus-visible {
   min-height: 68px;
   padding: 12px 18px;
   color: var(--reader-muted);
-  font-size: 7px;
-  font-weight: 800;
-  letter-spacing: 0.09em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   border-right: 1px solid var(--reader-line);
   text-transform: uppercase;
 }
@@ -10122,9 +9706,9 @@ a.writer-nobel-medal:focus-visible {
 
 .article-media-viewer-frame > header span {
   color: #ff9c53;
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.16em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
 }
 
 .article-media-viewer-frame > header button,
@@ -10293,9 +9877,9 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-finish > span {
   color: #ef8b40;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -10304,17 +9888,13 @@ a.writer-nobel-medal:focus-visible {
   color: var(--reader-text);
   font-family: var(--serif);
   font-size: 38px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .article-reader-finish > p {
   color: var(--reader-muted);
   font-size: 13px;
   line-height: 1.7;
-}
-
-.article-reader-finish .share-links {
-  margin: 28px 0;
 }
 
 .article-reader-related-books {
@@ -10333,10 +9913,10 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-related-books > header span {
   color: #ef7e2d;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.4;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -10345,7 +9925,7 @@ a.writer-nobel-medal:focus-visible {
   color: var(--reader-text);
   font-family: var(--serif);
   font-size: clamp(31px, 4vw, 46px);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -10420,24 +10000,16 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-related-book-copy small {
   color: #ef7e2d;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.article-reader-related-book-copy strong {
-  overflow-wrap: anywhere;
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
 .article-reader-related-book-copy em {
   color: var(--reader-muted);
-  font-size: 11px;
+  font-size: var(--type-caption);
   font-style: normal;
   line-height: 1.5;
 }
@@ -10459,9 +10031,9 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-more > header span {
   color: #ef7e2d;
   font-family: var(--sans);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -10470,7 +10042,7 @@ a.writer-nobel-medal:focus-visible {
   color: var(--reader-text);
   font-family: var(--serif);
   font-size: clamp(31px, 4vw, 46px);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -10585,8 +10157,8 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-more-copy small {
   color: #ef7e2d;
   font-family: var(--sans);
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -10596,7 +10168,7 @@ a.writer-nobel-medal:focus-visible {
   overflow: hidden;
   font-family: var(--serif);
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.28;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -10604,7 +10176,7 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-more-copy em {
   color: var(--reader-muted);
-  font-size: 10px;
+  font-size: var(--type-caption);
   font-style: normal;
 }
 
@@ -10681,8 +10253,8 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-related small {
   color: #ef8b40;
-  font-size: 9px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -10690,13 +10262,13 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-related strong {
   font-family: var(--serif);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.25;
 }
 
 .article-reader-related em {
   color: var(--reader-muted);
-  font-size: 10px;
+  font-size: var(--type-caption);
   font-style: normal;
 }
 
@@ -10729,7 +10301,6 @@ a.writer-nobel-medal:focus-visible {
 .article-reader-sequence a:focus-visible {
   background: color-mix(in srgb, var(--orange) 5%, var(--reader-paper));
   border-color: color-mix(in srgb, var(--orange) 58%, var(--reader-line));
-  outline: none;
 }
 
 .article-reader-sequence a:last-child {
@@ -10738,15 +10309,15 @@ a.writer-nobel-medal:focus-visible {
 
 .article-reader-sequence small {
   color: #ef8b40;
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  font-size: var(--type-caption);
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
 .article-reader-sequence strong {
   font-family: var(--serif);
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 @media (max-width: 1400px) {
@@ -10852,10 +10423,6 @@ a.writer-nobel-medal:focus-visible {
     border: 1px solid var(--reader-line);
   }
 
-  .article-reader-lead h1 {
-    font-size: clamp(38px, 11vw, 64px);
-  }
-
   .article-reader-lead h1.is-medium-title {
     font-size: clamp(34px, 9.5vw, 54px);
   }
@@ -10884,10 +10451,6 @@ a.writer-nobel-medal:focus-visible {
     padding-left: 14px;
   }
 
-  .article-library-heading h2 {
-    font-size: 43px;
-  }
-
   .article-library-summary {
     align-items: flex-start;
     flex-direction: column;
@@ -10905,16 +10468,6 @@ a.writer-nobel-medal:focus-visible {
   .is-lead .library-card-image,
   .library-card-image {
     aspect-ratio: 16 / 9;
-  }
-
-  .is-lead .library-card-copy h3,
-  .library-card-copy h3 {
-    min-height: 0;
-    font-size: 28px;
-  }
-
-  .library-card-copy p {
-    min-height: 0;
   }
 
   .article-library-tabs {
@@ -10949,7 +10502,7 @@ a.writer-nobel-medal:focus-visible {
   .search-results button > span {
     flex: 1 1 auto;
     min-width: 0;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
   }
 
   .search-results button small {
@@ -10958,7 +10511,7 @@ a.writer-nobel-medal:focus-visible {
     max-width: 48%;
     line-height: 1.35;
     white-space: normal;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
   }
 
   .article-reader-lead > div:first-child,
@@ -10986,15 +10539,6 @@ a.writer-nobel-medal:focus-visible {
 
   .article-reader-cover {
     margin-bottom: 38px;
-  }
-
-  .article-reader-content {
-    font-size: calc(17px * var(--reader-scale, 1));
-    line-height: 1.75;
-  }
-
-  .article-reader-content h2 {
-    font-size: calc(32px * var(--reader-scale, 1));
   }
 
   .article-reader-content figure {
@@ -11085,8 +10629,8 @@ a.writer-nobel-medal:focus-visible {
 
 .static-article-fallback > a {
   color: var(--violet-700);
-  font-size: 11px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
@@ -11102,10 +10646,10 @@ a.writer-nobel-medal:focus-visible {
 
 .static-article-fallback > article > span {
   color: var(--orange-deep);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
+  font-family: var(--font-ui);
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -11113,7 +10657,7 @@ a.writer-nobel-medal:focus-visible {
   margin: 18px 0 25px;
   font-size: clamp(44px, 7vw, 82px);
   font-weight: 400;
-  line-height: 0.98;
+  line-height: 1.1;
 }
 
 .static-article-fallback img {
@@ -11165,14 +10709,13 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .cms-page-brand strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-editorial);
   font-size: 23px;
 }
 
 .cms-page-brand small {
   margin-top: 3px;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -11187,8 +10730,6 @@ a.writer-nobel-medal:focus-visible {
 
 .cms-page-header nav a {
   color: #fff;
-  font-size: 13px;
-  font-weight: 700;
   letter-spacing: 0.05em;
   text-decoration: none;
   text-transform: uppercase;
@@ -11203,8 +10744,8 @@ a.writer-nobel-medal:focus-visible {
   margin-top: 18px;
   padding: 0 18px;
   color: #fff;
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: var(--violet-800);
@@ -11229,9 +10770,9 @@ a.writer-nobel-medal:focus-visible {
 
 .article-route-not-found > span {
   color: var(--orange-soft);
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.16em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
 }
 
 .article-route-not-found h1 {
@@ -11248,8 +10789,8 @@ a.writer-nobel-medal:focus-visible {
   min-height: 44px;
   padding: 14px 20px;
   color: #fff;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
@@ -11267,23 +10808,22 @@ a.writer-nobel-medal:focus-visible {
 .cms-page-header .cms-nav-group > summary {
   padding: 5px 0;
   color: #fff;
-  font-size: 13px;
-  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .cms-page-main {
+  --cms-page-gutter: clamp(20px, 4vw, 40px);
+  --cms-page-measure: 760px;
   width: min(100% - 32px, 1020px);
   margin: 0 auto;
-  padding: 58px 0 100px;
+  padding: clamp(28px, 4vw, 44px) 0 clamp(40px, 5vw, 64px);
 }
 
 .cms-page-back {
   display: inline-flex;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   color: #6c287e;
-  font-weight: 700;
   text-decoration: none;
 }
 
@@ -11306,8 +10846,14 @@ a.writer-nobel-medal:focus-visible {
   content: "";
 }
 
+.cms-page-main > article > header,
+.cms-page-prose {
+  width: min(calc(100% - 2 * var(--cms-page-gutter)), var(--cms-page-measure));
+  margin-inline: auto;
+}
+
 .cms-page-main > article > header {
-  padding: clamp(34px, 7vw, 72px) clamp(26px, 8vw, 92px) 36px;
+  padding-block: clamp(28px, 4vw, 44px) 24px;
   text-align: center;
 }
 
@@ -11315,19 +10861,12 @@ a.writer-nobel-medal:focus-visible {
   max-width: 15ch;
   margin: 12px auto 18px;
   color: #351346;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(42px, 7vw, 76px);
-  line-height: 0.98;
-  text-wrap: balance;
 }
 
 .cms-page-main > article > header p {
   max-width: 710px;
   margin: 0 auto;
   color: #665569;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(18px, 2.2vw, 23px);
-  line-height: 1.6;
 }
 
 .cms-page-main > article > header small {
@@ -11337,29 +10876,25 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .cms-page-prose {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 12px clamp(26px, 8vw, 92px) 82px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(18px, 1.8vw, 20px);
-  line-height: 1.82;
+  --reader-bg: var(--cream-deep);
+  --reader-paper: var(--cream);
+  --reader-text: var(--ink);
+  --reader-line: var(--line);
+  padding-block: 12px clamp(32px, 4vw, 48px);
 }
 
 .cms-page-prose h2,
 .cms-page-prose h3 {
   color: #3d1850;
-  line-height: 1.17;
   text-wrap: balance;
 }
 
 .cms-page-prose h2 {
   margin-top: 2.2em;
-  font-size: clamp(30px, 4vw, 42px);
 }
 
 .cms-page-prose h3 {
   margin-top: 1.8em;
-  font-size: clamp(24px, 3vw, 31px);
 }
 
 .cms-page-prose a {
@@ -11410,7 +10945,7 @@ a.writer-nobel-medal:focus-visible {
 .cms-page-footer strong,
 .cms-page-footer h2 {
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-editorial);
 }
 
 .cms-page-footer p {
@@ -11645,9 +11180,9 @@ a.writer-nobel-medal:focus-visible {
 
 .atlas-coordinate small {
   color: rgba(255, 255, 255, 0.28);
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.14em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -11693,7 +11228,7 @@ a.writer-nobel-medal:focus-visible {
 .atlas-compass b {
   position: relative;
   z-index: 2;
-  font-size: 7px;
+  font-size: var(--type-caption);
   font-style: normal;
 }
 
@@ -11718,8 +11253,8 @@ a.writer-nobel-medal:focus-visible {
   justify-content: space-between;
   padding: 15px 17px;
   color: rgba(255, 255, 255, 0.68);
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
@@ -11762,7 +11297,7 @@ a.writer-nobel-medal:focus-visible {
 
 .atlas-country-index button small {
   color: rgba(255, 255, 255, 0.35);
-  font-size: 7px;
+  font-size: var(--type-caption);
   text-transform: uppercase;
 }
 
@@ -11773,25 +11308,18 @@ a.writer-nobel-medal:focus-visible {
   min-height: 44px;
   padding: 0 18px;
   color: #fff;
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.09em;
   text-decoration: none;
   text-transform: uppercase;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  transition:
+    color var(--ui-transition-fast),
+    background-color var(--ui-transition-fast),
+    border-color var(--ui-transition-fast);
 }
 
 .sections-all-button:hover {
   background: rgba(246, 117, 24, 0.14);
   border-color: rgba(246, 117, 24, 0.6);
-}
-
-.section-directory-card {
-  min-height: 370px;
-}
-
-.sections-directory h3 {
-  font-size: 31px;
 }
 
 .community-hub.is-account {
@@ -11867,8 +11395,8 @@ a.writer-nobel-medal:focus-visible {
 .account-story li {
   padding: 13px 0;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -11884,7 +11412,7 @@ a.writer-nobel-medal:focus-visible {
   position: relative;
   z-index: 2;
   color: rgba(255, 255, 255, 0.35);
-  font-size: 8px;
+  font-size: var(--type-caption);
 }
 
 .account-panel {
@@ -11912,7 +11440,7 @@ a.writer-nobel-medal:focus-visible {
   font-family: var(--serif);
   font-size: clamp(38px, 4.6vw, 62px);
   font-weight: 400;
-  line-height: 0.98;
+  line-height: 1.1;
 }
 
 .auth-form > label {
@@ -11920,9 +11448,9 @@ a.writer-nobel-medal:focus-visible {
   gap: 9px;
   margin-top: 18px;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.09em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -11954,7 +11482,7 @@ a.writer-nobel-medal:focus-visible {
   min-height: 56px;
   margin-top: 24px;
   color: #fff;
-  font-size: 10px;
+  font-size: var(--type-caption);
   background: linear-gradient(112deg, #d94f07, #f47b1b 62%, #ff9b3d);
   border-color: rgba(255, 181, 105, 0.75);
   border-radius: 4px;
@@ -11992,7 +11520,7 @@ a.writer-nobel-medal:focus-visible {
   margin-top: 9px;
   padding: 9px 12px;
   color: rgba(255, 255, 255, 0.68);
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.4;
 }
 
@@ -12052,7 +11580,7 @@ a.writer-nobel-medal:focus-visible {
 
 .reader-profile-editor header small {
   color: rgba(255, 255, 255, 0.42);
-  font-size: 8px;
+  font-size: var(--type-caption);
 }
 
 .account-view .reader-avatar-upload {
@@ -12068,8 +11596,8 @@ a.writer-nobel-medal:focus-visible {
   min-height: 38px;
   padding: 0 13px;
   color: #fff;
-  font-size: 9px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0.07em;
   text-align: center;
@@ -12099,7 +11627,7 @@ a.writer-nobel-medal:focus-visible {
   border-radius: 2px;
   outline: 0;
   color-scheme: dark;
-  font: 500 14px/1.35 var(--sans);
+  font: 600 14px/1.35 var(--sans);
 }
 
 .reader-profile-editor textarea {
@@ -12110,7 +11638,7 @@ a.writer-nobel-medal:focus-visible {
 .reader-profile-editor > label > small {
   justify-self: end;
   color: rgba(255, 255, 255, 0.32);
-  font-size: 8px;
+  font-size: var(--type-caption);
 }
 
 .reader-preferences {
@@ -12124,8 +11652,8 @@ a.writer-nobel-medal:focus-visible {
   display: block;
   margin-bottom: 8px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -12166,7 +11694,7 @@ a.writer-nobel-medal:focus-visible {
 .reader-preference-chips button {
   padding: 6px 8px;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 8px;
+  font-size: var(--type-caption);
   background: rgba(255, 255, 255, 0.055);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
@@ -12231,8 +11759,8 @@ a.writer-nobel-medal:focus-visible {
   padding: 0 11px;
   place-items: center;
   color: rgba(255, 255, 255, 0.62);
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -12244,7 +11772,7 @@ a.writer-nobel-medal:focus-visible {
   display: block;
   margin-top: 10px;
   color: rgba(255, 255, 255, 0.38);
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.55;
 }
 
@@ -12266,8 +11794,8 @@ a.writer-nobel-medal:focus-visible {
 
 .account-view .terms-check span {
   color: rgba(255, 255, 255, 0.55);
-  font-size: 10px;
-  font-weight: 500;
+  font-size: var(--type-caption);
+  font-weight: 600;
   letter-spacing: 0;
   line-height: 1.5;
 }
@@ -12276,7 +11804,7 @@ a.writer-nobel-medal:focus-visible {
   margin: 18px 0 0;
   padding: 12px 14px;
   color: rgba(255, 255, 255, 0.65);
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.55;
   background: rgba(246, 117, 24, 0.11);
   border-left: 3px solid var(--orange);
@@ -12300,8 +11828,8 @@ a.writer-nobel-medal:focus-visible {
 
 .engagement-heading > span {
   color: rgba(255, 255, 255, 0.4);
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -12312,8 +11840,8 @@ a.writer-nobel-medal:focus-visible {
 
 .comment-form label > span {
   color: rgba(255, 255, 255, 0.45);
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -12322,14 +11850,14 @@ a.writer-nobel-medal:focus-visible {
   justify-self: end;
   margin-top: -5px;
   color: rgba(255, 255, 255, 0.32);
-  font-size: 8px;
+  font-size: var(--type-caption);
 }
 
 .comment-form > button {
   min-height: 44px;
   color: #fff;
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: var(--orange-deep);
@@ -12345,7 +11873,7 @@ a.writer-nobel-medal:focus-visible {
 .engagement-message {
   padding: 10px 12px;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 9px;
+  font-size: var(--type-caption);
   background: rgba(246, 117, 24, 0.11);
   border-left: 2px solid var(--orange);
 }
@@ -12365,13 +11893,13 @@ a.writer-nobel-medal:focus-visible {
 
 .comment-list article time {
   color: rgba(255, 255, 255, 0.35);
-  font-size: 8px;
+  font-size: var(--type-caption);
 }
 
 .comment-list article > button {
   padding: 0;
   color: rgba(255, 255, 255, 0.34);
-  font-size: 7px;
+  font-size: var(--type-caption);
   text-transform: uppercase;
   background: transparent;
   border: 0;
@@ -12397,7 +11925,7 @@ a.writer-nobel-medal:focus-visible {
 .comment-empty p {
   margin: 8px 0 0;
   color: rgba(255, 255, 255, 0.45);
-  font-size: 9px;
+  font-size: var(--type-caption);
 }
 
 .admin-stats {
@@ -12450,8 +11978,8 @@ a.writer-nobel-medal:focus-visible {
 
 .report-queue article small {
   color: var(--orange-soft);
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -12470,7 +11998,7 @@ a.writer-nobel-medal:focus-visible {
 
 .report-queue article em {
   color: rgba(255, 255, 255, 0.38);
-  font-size: 8px;
+  font-size: var(--type-caption);
   font-style: normal;
 }
 
@@ -12483,8 +12011,8 @@ a.writer-nobel-medal:focus-visible {
   min-height: 36px;
   padding: 0 12px;
   color: rgba(255, 255, 255, 0.75);
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.17);
@@ -12629,11 +12157,6 @@ a.writer-nobel-medal:focus-visible {
   background: color-mix(in srgb, var(--orange) 9%, var(--reader-paper));
 }
 
-.article-reader-finish .share-links {
-  padding: 0;
-  border-top: 0;
-}
-
 .article-reader-finish .share-links > span {
   color: var(--reader-muted);
 }
@@ -12740,23 +12263,6 @@ a.writer-nobel-medal:focus-visible {
     min-width: 36px;
   }
 
-  .article-reader-finish .share-links {
-    gap: 8px;
-  }
-
-  .article-reader-finish .share-links > span {
-    flex: 1 0 100%;
-    min-height: 20px;
-    margin-right: 0;
-  }
-
-  .article-reader-finish .share-links a,
-  .article-reader-finish .share-links button {
-    width: 40px;
-    min-width: 40px;
-    height: 40px;
-    min-height: 40px;
-  }
 }
 
 @media (max-width: 980px) {
@@ -12826,7 +12332,6 @@ a.writer-nobel-medal:focus-visible {
   }
 
   .community-reading-notes strong {
-    font-size: 11px;
     white-space: normal;
   }
 
@@ -12853,10 +12358,6 @@ a.writer-nobel-medal:focus-visible {
   .sections-all-button {
     width: 100%;
     justify-content: space-between;
-  }
-
-  .section-directory-card {
-    min-height: 320px;
   }
 
   .community-overlay {
@@ -12962,8 +12463,8 @@ a.writer-nobel-medal:focus-visible {
 }
 
 .display-mode-control button small {
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -13114,7 +12615,7 @@ a.writer-nobel-medal:focus-visible {
   padding: 5px 7px;
   color: rgba(255, 255, 255, 0.45);
   font: inherit;
-  font-size: 9px;
+  font-size: var(--type-caption);
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 4px;
 }
@@ -13187,8 +12688,8 @@ a.writer-nobel-medal:focus-visible {
 .global-search-results h3 {
   margin: 0 0 9px;
   color: #f49a50;
-  font-size: 9px;
-  letter-spacing: 0.13em;
+  font-size: var(--type-caption);
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -13228,7 +12729,7 @@ a.writer-nobel-medal:focus-visible {
   overflow: hidden;
   font-family: var(--serif);
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.25;
   text-overflow: ellipsis;
 }
@@ -13237,7 +12738,7 @@ a.writer-nobel-medal:focus-visible {
   display: -webkit-box;
   overflow: hidden;
   color: rgba(255, 255, 255, 0.43);
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.35;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -13249,7 +12750,7 @@ a.writer-nobel-medal:focus-visible {
   gap: 20px;
   padding: 13px clamp(20px, 4vw, 42px);
   color: rgba(255, 255, 255, 0.38);
-  font-size: 8px;
+  font-size: var(--type-caption);
   letter-spacing: 0.07em;
   background: rgba(0, 0, 0, 0.15);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -13336,7 +12837,7 @@ a.writer-nobel-medal:focus-visible {
   min-width: 29px;
   height: 26px;
   padding: 0;
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1;
   border: 0;
   border-radius: 999px;
@@ -13409,8 +12910,8 @@ a.writer-nobel-medal:focus-visible {
   padding-bottom: 12px;
   color: #8b6b43;
   font-family: var(--serif);
-  font-size: 9px;
-  letter-spacing: 0.14em;
+  font-size: var(--type-caption);
+  letter-spacing: var(--type-tracking-label);
   border-bottom: 1px solid rgba(77, 55, 32, 0.2);
   text-transform: uppercase;
 }
@@ -13428,7 +12929,6 @@ a.writer-nobel-medal:focus-visible {
   max-width: 860px;
   margin-right: auto;
   margin-left: auto;
-  font-size: clamp(48px, 5vw, 75px);
 }
 
 .article-reader.is-book .article-reader-lead > p {
@@ -13440,10 +12940,7 @@ a.writer-nobel-medal:focus-visible {
   column-count: 2;
   column-gap: clamp(54px, 7vw, 88px);
   column-rule: 1px solid rgba(77, 55, 32, 0.12);
-  font-size: calc(17px * var(--reader-scale, 1));
-  line-height: 1.72;
   text-align: justify;
-  hyphens: auto;
 }
 
 .article-reader.is-book .article-reader-content h2,
@@ -13502,7 +12999,6 @@ a.writer-nobel-medal:focus-visible {
 .article-reader.is-book .article-reader-content h2 {
   margin-top: 38px;
   padding-top: 18px;
-  font-size: calc(30px * var(--reader-scale, 1));
 }
 
 .article-reader.is-book .article-reader-cover {
@@ -13657,17 +13153,11 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .book-fact-card h3 {
   margin: 8px 0 9px;
-  font-family: var(--serif);
-  font-size: clamp(24px, 2.4vw, 34px);
-  font-weight: 400;
 }
 
 .book-fact-card p {
   margin: 0;
   color: rgba(255, 255, 255, 0.66);
-  font-family: var(--serif);
-  font-size: 13px;
-  line-height: 1.62;
 }
 
 .book-fact-card a {
@@ -13676,8 +13166,8 @@ html[data-theme="book"] .calendar-heading h3 {
   display: inline-block;
   margin-top: 15px;
   color: #f5a467;
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-decoration: none;
   text-transform: uppercase;
@@ -13686,17 +13176,11 @@ html[data-theme="book"] .calendar-heading h3 {
 .calendar-navigation .calendar-today {
   width: auto;
   padding: 0 12px;
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.06em;
   border-radius: 999px;
-  text-transform: uppercase;
 }
 
 .calendar-agenda-day {
   display: grid;
-  grid-template-columns: 48px minmax(0, 1fr);
-  gap: 13px;
   padding: 11px 0;
   border-bottom: 1px solid var(--line);
 }
@@ -13708,30 +13192,17 @@ html[data-theme="book"] .calendar-heading h3 {
   text-align: center;
 }
 
-.calendar-agenda-day > time strong {
-  font-family: var(--serif);
-  font-size: 25px;
-  font-weight: 400;
-}
-
 .calendar-agenda-day > time small {
   color: #9b899f;
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .calendar-agenda-day > div {
   display: grid;
-  gap: 3px;
 }
 
 .calendar-agenda-event {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(86px, auto);
-  gap: 6px;
-  align-items: stretch;
 }
 
 .calendar-agenda-day button {
@@ -13797,46 +13268,9 @@ html[data-theme="book"] .calendar-heading h3 {
   line-height: 1.45;
 }
 
-.calendar-agenda-day .calendar-agenda-country {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  max-width: 132px;
-  min-height: 44px;
-  padding: 7px 9px;
-  color: #5c226f;
-  font-size: 9px;
-  font-weight: 800;
-  line-height: 1.25;
-  text-align: center;
-  overflow-wrap: anywhere;
-  background: rgba(104, 16, 201, 0.055);
-  border-color: rgba(76, 8, 124, 0.16);
-}
-
-.calendar-agenda-day .calendar-agenda-country > span {
-  color: #a05725;
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.calendar-agenda-day .calendar-agenda-country:hover,
-.calendar-agenda-day .calendar-agenda-country:focus-visible {
-  color: #421353;
-  background: rgba(104, 16, 201, 0.11);
-  border-color: rgba(76, 8, 124, 0.3);
-  transform: none;
-}
-
 .calendar-agenda-day > div > span {
   padding: 5px 8px;
   color: #927e99;
-  font-size: 8px;
 }
 
 .calendar-empty {
@@ -13870,9 +13304,6 @@ html[data-theme="book"] .calendar-heading h3 {
   max-width: 720px;
   margin: 15px 0 0;
   color: #746778;
-  font-family: var(--serif);
-  font-size: 15px;
-  line-height: 1.65;
 }
 
 .trust-center > div {
@@ -13891,9 +13322,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .trust-center summary {
   color: #3c2149;
-  font-family: var(--serif);
-  font-size: 20px;
-  line-height: 1.2;
   cursor: pointer;
 }
 
@@ -13905,17 +13333,11 @@ html[data-theme="book"] .calendar-heading h3 {
   display: block;
   margin-bottom: 18px;
   color: var(--orange-deep);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 9px;
-  font-weight: 900;
 }
 
 .trust-center details p {
   margin: 20px 0 0;
   color: #726178;
-  font-family: var(--serif);
-  font-size: 13px;
-  line-height: 1.7;
 }
 
 .writer-articles {
@@ -13929,8 +13351,8 @@ html[data-theme="book"] .calendar-heading h3 {
 .writer-articles > span {
   margin-bottom: 4px;
   color: #7d6585;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.075em;
   text-transform: uppercase;
 }
@@ -13961,7 +13383,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .writer-articles a small {
   color: #97849e;
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.35;
 }
 
@@ -13990,7 +13412,7 @@ html[data-theme="book"] .calendar-heading h3 {
   color: #351642;
   font-family: var(--serif);
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .account-library h3 .brand-heart-icon {
@@ -14047,7 +13469,7 @@ html[data-theme="book"] .calendar-heading h3 {
   height: 28px;
   place-items: center;
   color: color-mix(in srgb, var(--orange-deep) 82%, transparent);
-  font: 750 10px/1 var(--sans);
+  font: 700 var(--type-caption)/1 var(--font-ui);
   letter-spacing: 0.08em;
   border: 1px solid rgba(246, 117, 24, 0.18);
   border-radius: 50%;
@@ -14068,8 +13490,8 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .account-library article small {
   color: var(--orange-deep);
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -14077,7 +13499,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-family: var(--serif);
   font-size: clamp(15px, 1.45vw, 18px);
   line-height: 1.28;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .account-library article button {
@@ -14131,14 +13553,14 @@ html[data-theme="book"] .calendar-heading h3 {
   color: #351642;
   font-family: var(--serif);
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .editorial-workbench > header p {
   max-width: 670px;
   margin: 0;
   color: #7c6b80;
-  font-size: 11px;
+  font-size: var(--type-caption);
   line-height: 1.6;
 }
 
@@ -14159,7 +13581,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .editorial-workbench > header > div:last-child span {
   color: #958398;
-  font-size: 8px;
+  font-size: var(--type-caption);
   text-transform: uppercase;
 }
 
@@ -14179,8 +13601,8 @@ html[data-theme="book"] .calendar-heading h3 {
   display: grid;
   gap: 6px;
   color: #725d78;
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -14216,8 +13638,8 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .editorial-workbench-preview > span {
   color: var(--orange-deep);
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -14248,7 +13670,7 @@ html[data-theme="book"] .calendar-heading h3 {
   margin: 8px 0;
   font-family: var(--serif);
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.08;
 }
 
@@ -14264,7 +13686,7 @@ html[data-theme="book"] .calendar-heading h3 {
   overflow: hidden;
   padding: 8px;
   color: #76547f;
-  font-size: 8px;
+  font-size: var(--type-caption);
   background: rgba(76, 15, 111, 0.05);
   text-overflow: ellipsis;
 }
@@ -14279,7 +13701,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .editorial-workbench-preview li {
   color: #9b899e;
-  font-size: 9px;
+  font-size: var(--type-caption);
 }
 
 .editorial-workbench-preview li::before {
@@ -14306,8 +13728,8 @@ html[data-theme="book"] .calendar-heading h3 {
 .editorial-workbench-preview button {
   padding: 9px 11px;
   color: #fff;
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   background: var(--violet-700);
   border: 0;
   cursor: pointer;
@@ -14323,7 +13745,7 @@ html[data-theme="book"] .calendar-heading h3 {
   display: block;
   margin-top: 12px;
   color: #746177;
-  font-size: 9px;
+  font-size: var(--type-caption);
 }
 
 @media (max-width: 1520px) {
@@ -14530,8 +13952,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .article-reader-lead h1 {
     max-width: 100%;
-    overflow-wrap: anywhere;
-    hyphens: auto;
   }
 }
 
@@ -14601,9 +14021,6 @@ html[data-theme="book"] .calendar-heading h3 {
 .footer-brand small {
   margin-top: 4px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -14651,9 +14068,6 @@ html[data-theme="book"] .calendar-heading h3 {
   max-width: 100%;
   padding: 0;
   color: rgba(255, 255, 255, 0.65);
-  font-size: 9px;
-  font-weight: 800;
-  line-height: 1.4;
   text-align: left;
   text-decoration: none;
   text-transform: uppercase;
@@ -14682,8 +14096,8 @@ html[data-theme="book"] .calendar-heading h3 {
 .footer-bottom span {
   margin: 0;
   color: rgba(255, 255, 255, 0.43);
-  font-size: 8px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-decoration: none;
   text-transform: uppercase;
@@ -14757,8 +14171,8 @@ html[data-theme="book"] .calendar-heading h3 {
   font-family: var(--serif);
   font-size: clamp(37px, 5vw, 56px);
   font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  line-height: 1.1;
+  letter-spacing: var(--type-tracking-title);
 }
 
 .reader-panel > p {
@@ -14774,9 +14188,9 @@ html[data-theme="book"] .calendar-heading h3 {
   gap: 8px;
   margin-top: 17px;
   color: rgba(255, 255, 255, 0.66);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -14800,8 +14214,8 @@ html[data-theme="book"] .calendar-heading h3 {
   min-height: 50px;
   margin-top: 29px;
   color: #fff;
-  font-size: 10px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: var(--orange);
@@ -14817,7 +14231,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .reader-panel > small {
   margin-top: 13px;
   color: rgba(255, 255, 255, 0.36);
-  font-size: 8px;
+  font-size: var(--type-caption);
   line-height: 1.5;
   text-align: center;
 }
@@ -14871,25 +14285,25 @@ html[data-theme="book"] .calendar-heading h3 {
   border-radius: 3px;
 }
 
-.community-header span,
-.community-header strong,
+.community-header span {
+  display: block;
+}
+
+.community-header strong {
+  display: block;
+}
+
 .community-header small {
   display: block;
 }
 
 .community-header strong {
   margin-top: 3px;
-  font-family: var(--serif);
-  font-size: 20px;
   font-weight: 400;
 }
 
 .community-header small {
   color: var(--orange-soft);
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .community-header > button {
@@ -14941,10 +14355,6 @@ html[data-theme="book"] .calendar-heading h3 {
 .community-tabs button {
   padding: 15px 18px 12px;
   color: rgba(255, 255, 255, 0.52);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   background: transparent;
   border: 0;
   border-bottom: 2px solid transparent;
@@ -14984,8 +14394,11 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .community-setup h2,
-.account-view h2,
 .forum-toolbar h2 {
+  margin: 12px 0 17px;
+}
+
+.account-view h2 {
   margin: 12px 0 17px;
   font-family: var(--serif);
   font-size: clamp(35px, 5vw, 57px);
@@ -14993,7 +14406,10 @@ html[data-theme="book"] .calendar-heading h3 {
   line-height: 1;
 }
 
-.community-setup p,
+.community-setup p {
+  color: rgba(255, 255, 255, 0.63);
+}
+
 .account-view > p {
   color: rgba(255, 255, 255, 0.63);
   font-family: var(--serif);
@@ -15015,9 +14431,9 @@ html[data-theme="book"] .calendar-heading h3 {
   gap: 7px;
   margin-top: 15px;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.09em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -15040,7 +14456,7 @@ html[data-theme="book"] .calendar-heading h3 {
   margin-top: 13px;
   padding: 7px;
   color: rgba(255, 255, 255, 0.58);
-  font-size: 9px;
+  font-size: var(--type-caption);
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -15061,8 +14477,8 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .account-view dt {
   color: rgba(255, 255, 255, 0.4);
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -15134,18 +14550,6 @@ html[data-theme="book"] .calendar-heading h3 {
   min-width: 0;
 }
 
-.section-card-series-slot {
-  display: flex;
-  align-items: flex-start;
-  padding-top: 14px;
-  overflow: hidden;
-}
-
-.section-card-latest-slot {
-  display: flex;
-  align-items: flex-end;
-}
-
 .subscription-summary button {
   display: inline-flex;
   gap: 5px;
@@ -15155,7 +14559,7 @@ html[data-theme="book"] .calendar-heading h3 {
   min-height: 36px;
   padding: 8px 12px;
   color: #563064;
-  font: 700 10px/1 var(--sans);
+  font: 700 var(--type-caption)/1 var(--font-ui);
   background: rgba(255, 255, 255, 0.68);
   border: 1px solid rgba(76, 15, 111, 0.14);
   border-radius: 16px;
@@ -15163,8 +14567,8 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .subscription-summary button span {
   color: var(--orange-deep);
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -15192,7 +14596,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .library-status-label {
   color: rgba(76, 15, 111, 0.58);
-  font: 750 7px/1 var(--sans);
+  font: 700 var(--type-caption)/1 var(--font-ui);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -15212,7 +14616,7 @@ html[data-theme="book"] .calendar-heading h3 {
   height: 32px;
   padding: 0 30px 0 11px;
   color: #3c1b49;
-  font: 720 10px/1 var(--sans);
+  font: 700 var(--type-caption)/1 var(--font-ui);
   letter-spacing: 0.01em;
   text-transform: none;
   background: #fff9f1;
@@ -15275,7 +14679,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .forum-categories button {
   position: relative;
   display: grid;
-  flex: 0 0 188px;
+  flex: 0 0 240px;
   grid-template-columns: 30px minmax(0, 1fr) auto;
   gap: 4px 8px;
   align-items: center;
@@ -15319,29 +14723,19 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .forum-categories button > strong {
-  overflow: hidden;
-  font-family: var(--serif);
-  font-size: 14px;
-  font-weight: 500;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  min-width: 0;
+  align-self: start;
 }
 
 .forum-categories button > small {
   color: var(--orange-soft);
-  font-size: 9px;
+  align-self: start;
 }
 
 .forum-categories button > em {
-  display: -webkit-box;
+  display: block;
   grid-column: 2 / -1;
-  overflow: hidden;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 8px;
   font-style: normal;
-  line-height: 1.35;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
 }
 
 .forum-discovery-controls {
@@ -15362,9 +14756,9 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .forum-discovery-controls label > span {
   color: rgba(255, 255, 255, 0.46);
-  font-size: 7px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
+  font-size: var(--type-caption);
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
@@ -15393,7 +14787,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .forum-discovery-controls > small {
   padding-bottom: 12px;
   color: var(--orange-soft);
-  font-size: 8px;
+  font-size: var(--type-caption);
   white-space: nowrap;
 }
 
@@ -15422,8 +14816,8 @@ html[data-theme="book"] .calendar-heading h3 {
 .topic-list small,
 .topic-thread small {
   color: var(--orange-soft);
-  font-size: 8px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -15495,8 +14889,8 @@ html[data-theme="book"] .calendar-heading h3 {
   overflow: hidden;
   color: #fff;
   font-family: var(--sans);
-  font-size: 9px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.2;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -15504,7 +14898,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .forum-author > span:last-child > small {
   color: rgba(255, 255, 255, 0.4);
-  font-size: 7px;
+  font-size: var(--type-caption);
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.2;
@@ -15580,7 +14974,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .forum-vote strong {
   color: #fff;
   font-family: var(--sans);
-  font-size: 9px;
+  font-size: var(--type-caption);
   text-align: center;
 }
 
@@ -15601,7 +14995,7 @@ html[data-theme="book"] .calendar-heading h3 {
   color: rgba(255, 255, 255, 0.72);
   font-family: var(--serif);
   line-height: 1.55;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   white-space: pre-wrap;
 }
 
@@ -15609,8 +15003,8 @@ html[data-theme="book"] .calendar-heading h3 {
   margin-top: 14px;
   padding: 0;
   color: rgba(255, 255, 255, 0.42);
-  font-size: 7px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   background: transparent;
   border: 0;
@@ -15659,7 +15053,7 @@ html[data-theme="book"] .calendar-heading h3 {
   margin: 0;
   padding: 12px 22px;
   color: #fff;
-  font-size: 10px;
+  font-size: var(--type-caption);
   text-align: center;
   background: rgba(246, 117, 24, 0.2);
   border-top: 1px solid rgba(255, 169, 84, 0.28);
@@ -15692,8 +15086,8 @@ html[data-theme="book"] .calendar-heading h3 {
   min-height: 40px;
   padding: 0 15px;
   color: #fff;
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -15729,8 +15123,8 @@ html[data-theme="book"] .calendar-heading h3 {
 .admin-stats span {
   margin-top: 5px;
   color: rgba(255, 255, 255, 0.46);
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -15756,8 +15150,8 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .moderation-list > header span {
   color: rgba(255, 255, 255, 0.4);
-  font-size: 8px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -15777,8 +15171,8 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .moderation-list small {
   color: var(--orange-soft);
-  font-size: 7px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -15804,8 +15198,8 @@ html[data-theme="book"] .calendar-heading h3 {
   min-height: 36px;
   padding: 0 13px;
   color: rgba(255, 255, 255, 0.72);
-  font-size: 8px;
-  font-weight: 900;
+  font-size: var(--type-caption);
+  font-weight: 700;
   text-transform: uppercase;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -16059,7 +15453,10 @@ html[data-theme="book"] .calendar-heading h3 {
     height: auto;
   }
 
-  .community-illustration blockquote,
+  .community-illustration blockquote {
+    max-width: 620px;
+  }
+
   .community-visual-stats {
     max-width: 620px;
   }
@@ -16321,7 +15718,7 @@ html[data-theme="book"] .calendar-heading h3 {
     width: max-content;
     max-width: calc(100% - 30px);
     gap: 7px;
-    font-size: 10px;
+    font-size: var(--type-caption);
     letter-spacing: 0.08em;
   }
 
@@ -16370,7 +15767,7 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .country-metrics span {
-    font-size: 10.75px;
+    font-size: var(--type-caption);
   }
 
   .daily-grid,
@@ -16397,10 +15794,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .book-archive-heading {
     gap: 24px;
-  }
-
-  .book-archive-heading h2 {
-    font-size: 49px;
   }
 
   .book-archive-toolbar {
@@ -16472,12 +15865,6 @@ html[data-theme="book"] .calendar-heading h3 {
     grid-row: auto;
   }
 
-  .article-copy,
-  .article-copy h3,
-  .article-copy p {
-    min-height: 0;
-  }
-
   .journal-engagement {
     grid-template-columns: 1fr;
     margin-top: 35px;
@@ -16505,7 +15892,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .community-illustration blockquote {
     margin-bottom: 18px;
-    font-size: 29px;
   }
 
   .community-visual-rule {
@@ -16522,10 +15908,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .community-copy {
     padding: 28px 22px 60px;
-  }
-
-  .community-copy h2 {
-    font-size: 45px;
   }
 
   .editorial-grid .is-featured .article-image {
@@ -16547,18 +15929,8 @@ html[data-theme="book"] .calendar-heading h3 {
     grid-template-columns: 1fr;
   }
 
-  .section-directory-card {
-    min-height: 245px;
-  }
-
   .section-directory-card > div {
-    grid-template-rows: repeat(6, auto);
     padding: 26px 24px;
-  }
-
-  .section-card-series-slot:empty,
-  .section-card-latest-slot:empty {
-    display: none;
   }
 
   .calendar-heading {
@@ -16652,12 +16024,8 @@ html[data-theme="book"] .calendar-heading h3 {
     flex-direction: column;
   }
 
-  .forum-toolbar h2 {
-    font-size: 38px;
-  }
-
   .forum-categories button {
-    flex-basis: 168px;
+    flex-basis: 220px;
   }
 
   .topic-thread > article,
@@ -16743,10 +16111,10 @@ html[data-theme="book"] .calendar-heading h3 {
   background: rgba(28, 3, 39, 0.92);
 }
 
-.fatal-error-screen span { color: #ff7b17; text-transform: uppercase; letter-spacing: .14em; font-weight: 800; }
-.fatal-error-screen h1 { margin: 18px 0; font-family: Georgia, serif; font-size: clamp(2rem, 7vw, 4.5rem); line-height: .98; }
+.fatal-error-screen span { color: #ff7b17; text-transform: uppercase; letter-spacing: var(--type-tracking-label); font-weight: 700; }
+.fatal-error-screen h1 { margin: 18px 0; font-family: var(--font-editorial); font-size: clamp(2rem, 7vw, 4.5rem); line-height: 1.1; }
 .fatal-error-screen p { max-width: 56ch; line-height: 1.7; }
-.fatal-error-screen button { margin-top: 20px; padding: 14px 22px; border: 0; color: white; background: #e95400; font-weight: 800; cursor: pointer; }
+.fatal-error-screen button { margin-top: 20px; padding: 14px 22px; border: 0; color: white; background: #e95400; font-weight: 700; cursor: pointer; }
 .connectivity-status {
   position: fixed;
   z-index: 1200;
@@ -16758,7 +16126,7 @@ html[data-theme="book"] .calendar-heading h3 {
   max-width: min(420px, calc(100vw - 36px));
   padding: 12px 15px;
   color: #fff7ef;
-  font: 800 10px/1.4 var(--sans);
+  font: 700 var(--type-caption)/1.4 var(--font-ui);
   letter-spacing: 0.025em;
   background: rgba(39, 5, 54, 0.96);
   border: 1px solid rgba(246, 117, 24, 0.55);
@@ -16996,7 +16364,7 @@ html[data-theme="book"] .calendar-heading h3 {
   border: 0;
   border-radius: 8px;
   color: #fff;
-  font: 700 0.72rem/1.1 system-ui, sans-serif;
+  font: 700 var(--type-caption)/1.1 var(--font-ui);
   background: rgba(255, 122, 24, 0.92);
   cursor: crosshair;
 }
@@ -17007,7 +16375,7 @@ html[data-theme="book"] .calendar-heading h3 {
   padding: 2px 5px;
   border: 1px solid currentColor;
   border-radius: 999px;
-  font: 700 0.62rem/1 system-ui, sans-serif;
+  font: 700 var(--type-caption)/1 var(--font-ui);
   opacity: 0.76;
 }
 
@@ -17022,37 +16390,14 @@ html[data-theme="book"] .calendar-heading h3 {
 .cms-edit-mode .cms-edit-empty-field:empty::before {
   content: attr(data-cms-label);
   color: currentColor;
-  font: 600 0.72rem/1.2 system-ui, sans-serif;
+  font: 600 var(--type-caption)/1.2 var(--font-ui);
   opacity: 0.62;
 }
 
 /* Public reading surfaces: legibility, touch targets and predictable motion. */
-.book-of-day h3,
-.editorial-standard h3,
-.book-archive-heading h2,
-.section-heading h2,
-.article-copy h3,
-.article-library-heading h2,
-.library-card-copy h3,
-.community-copy h2,
-.author-showcase strong,
-.sections-directory h3,
-.calendar-heading h3,
-.trust-center summary {
-  overflow-wrap: anywhere;
-  text-wrap: balance;
-}
 
-.book-of-day p,
-.editorial-standard > p,
 .book-archive-heading p,
-.article-copy p,
-.article-library-heading p,
-.library-card-copy p,
-.community-copy > p,
-.calendar-heading p,
 .trust-center .section-heading p,
-.trust-center details p,
 .footer-brand > p {
   text-wrap: pretty;
 }
@@ -17062,26 +16407,25 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .book-cover.has-image small {
-  font-size: 9px;
+  font-size: var(--type-caption);
   line-height: 1.35;
 }
 
 .book-of-day p {
   color: rgba(255, 255, 255, 0.74);
-  font-size: 16px;
 }
 
 .book-of-day button {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  font-size: 11px;
+  font-size: var(--type-caption);
   line-height: 1.35;
 }
 
 .book-tags span {
   padding: 6px 9px;
-  font-size: 9px;
+  font-size: var(--type-caption);
   line-height: 1.35;
 }
 
@@ -17090,37 +16434,31 @@ html[data-theme="book"] .calendar-heading h3 {
   align-items: center;
   min-height: 44px;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.4;
-}
-
-.editorial-standard li {
-  font-size: 12px;
-  line-height: 1.5;
 }
 
 .book-fact-card p {
   color: rgba(255, 255, 255, 0.74);
-  font-size: 14px;
 }
 
 .book-fact-card a {
   display: inline-flex;
   align-items: center;
   min-height: 40px;
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.4;
 }
 
 .book-archive-toolbar label > span,
 .book-archive-total span {
-  font-size: 11px;
+  font-size: var(--type-caption);
   line-height: 1.45;
 }
 
 .book-cover-credit {
   min-height: 36px;
-  font-size: 9px;
+  font-size: var(--type-caption);
   line-height: 1.4;
 }
 
@@ -17135,7 +16473,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .book-filter-copy small {
   color: #74667a;
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.45;
 }
 
@@ -17169,7 +16507,7 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .book-archive-more {
-  font-size: 11px;
+  font-size: var(--type-caption);
   line-height: 1.35;
 }
 
@@ -17177,8 +16515,6 @@ html[data-theme="book"] .calendar-heading h3 {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  font-size: 11px;
-  line-height: 1.4;
 }
 
 .editorial-grid article:focus-within,
@@ -17193,11 +16529,14 @@ html[data-theme="book"] .calendar-heading h3 {
   outline-offset: -4px;
 }
 
-.editorial-grid .article-image span,
+.editorial-grid .article-image span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: var(--type-caption);
+  line-height: 1.4;
+}
+
 .article-copy small {
   color: rgba(255, 255, 255, 0.68);
-  font-size: 10px;
-  line-height: 1.4;
 }
 
 .editorial-grid .article-image span {
@@ -17206,20 +16545,9 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .article-copy p {
   color: rgba(255, 255, 255, 0.72);
-  font-size: 14px;
-  line-height: 1.62;
-}
-
-.article-copy strong,
-.section-link {
-  font-size: 10px;
-  line-height: 1.4;
 }
 
 .section-link {
-  display: flex;
-  align-items: center;
-  min-height: 44px;
   color: rgba(255, 255, 255, 0.68);
 }
 
@@ -17229,16 +16557,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .share-links > span {
   color: rgba(255, 255, 255, 0.68);
-  font-size: 10px;
-  line-height: 1.4;
-}
-
-.share-links a,
-.share-links button {
-  width: 40px;
-  min-width: 40px;
-  height: 40px;
-  min-height: 40px;
 }
 
 .share-links a:focus-visible,
@@ -17251,33 +16569,25 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .book-edition-meta span {
   color: rgba(255, 255, 255, 0.62);
-  font-size: 9px;
+  font-size: var(--type-caption);
   line-height: 1.4;
 }
 
-.journal-engagement > div:first-child > p,
-.community-visual-intro > p,
+.journal-engagement > div:first-child > p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.community-visual-intro > p {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .community-copy > p {
   color: rgba(255, 255, 255, 0.72);
 }
 
-.community-reading-notes small {
-  font-size: 10px;
-}
-
 .community-reading-notes button:focus-visible {
-  background: rgba(73, 11, 91, 0.62);
+  background-color: rgba(73, 11, 91, 0.62);
   border-color: rgba(255, 180, 108, 0.48);
-}
-
-.community-copy .community-copy-note {
-  font-size: 12px;
-}
-
-.community-copy button,
-.community-primary {
-  font-size: 10px;
-  line-height: 1.35;
 }
 
 .author-showcase button:focus-visible {
@@ -17289,15 +16599,8 @@ html[data-theme="book"] .calendar-heading h3 {
   filter: sepia(0.12) saturate(0.9) contrast(1.04);
 }
 
-.author-showcase small {
-  font-size: 10px;
-  line-height: 1.4;
-}
-
 .author-showcase em {
   color: rgba(255, 255, 255, 0.72);
-  font-size: 13px;
-  line-height: 1.45;
 }
 
 .author-showcase article > a {
@@ -17305,27 +16608,14 @@ html[data-theme="book"] .calendar-heading h3 {
   align-items: center;
   min-height: 40px;
   color: #705d78;
-  font-size: 10px;
-  line-height: 1.4;
 }
 
 .author-showcase article > a:focus-visible {
   color: var(--orange-deep);
 }
 
-.section-directory-card > div {
-  grid-template-rows: repeat(6, auto);
-}
-
-.sections-directory h3,
-.sections-directory > div:last-child p {
-  min-height: 0;
-}
-
 .sections-directory > div:last-child p {
   color: rgba(255, 255, 255, 0.72);
-  font-size: 14px;
-  line-height: 1.62;
 }
 
 .section-card-series a {
@@ -17334,27 +16624,11 @@ html[data-theme="book"] .calendar-heading h3 {
   min-height: 34px;
   padding: 7px 10px;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 11px;
-  line-height: 1.35;
-}
-
-.section-card-latest {
-  min-height: 56px;
-}
-
-.section-card-latest strong {
-  font-size: 14px;
-  line-height: 1.4;
 }
 
 .section-card-action,
 .section-card-action > a {
   min-height: 44px;
-}
-
-.section-card-action strong {
-  font-size: 11px;
-  line-height: 1.45;
 }
 
 .section-card-action i {
@@ -17364,18 +16638,16 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .calendar-heading p {
   color: #716278;
-  font-size: 14px;
-  line-height: 1.65;
 }
 
-.calendar-navigation button,
-.calendar-navigation .calendar-today {
+.calendar-navigation button {
   min-width: 44px;
   height: 44px;
 }
 
 .calendar-navigation .calendar-today {
-  font-size: 10px;
+  min-width: 44px;
+  height: 44px;
 }
 
 .calendar-navigation button:focus-visible {
@@ -17389,58 +16661,51 @@ html[data-theme="book"] .calendar-heading h3 {
   background: var(--orange-deep);
 }
 
-.calendar-summary > div > span,
-.calendar-featured > span,
-.calendar-agenda > header span,
-.calendar-agenda-day > time small {
-  font-size: 9px;
-  line-height: 1.4;
-}
-
 .weekday {
-  font-size: 9px;
+  font-size: var(--type-caption);
 }
 
 .calendar-day > small {
   min-width: 18px;
   padding: 3px 5px;
-  font-size: 8px;
+  font-size: var(--type-caption);
 }
 
 .calendar-agenda > header button {
   min-height: 36px;
-  font-size: 9px;
 }
 
 .calendar-agenda-day button {
   min-height: 44px;
 }
 
-.calendar-agenda small,
-.calendar-agenda-day > div > span {
+.calendar-agenda small {
   color: #74677a;
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.45;
 }
 
-.article-library-heading label span,
+.calendar-agenda-day > div > span {
+  color: #74677a;
+}
+
 .article-library-summary {
   color: rgba(255, 255, 255, 0.64);
-  font-size: 11px;
+  font-size: var(--type-caption);
   line-height: 1.45;
+}
+
+.article-library-heading label span {
+  color: rgba(255, 255, 255, 0.64);
 }
 
 .article-library-tabs button {
   min-height: 44px;
-  font-size: 11px;
-  line-height: 1.35;
 }
 
 .library-card-image small,
 .library-card-copy > div {
   color: rgba(255, 255, 255, 0.68);
-  font-size: 10px;
-  line-height: 1.4;
 }
 
 .library-card-image small {
@@ -17449,14 +16714,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .library-card-copy p {
   color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
-  line-height: 1.62;
-}
-
-.library-card-copy > strong,
-.article-library-more {
-  font-size: 11px;
-  line-height: 1.4;
 }
 
 .trust-center details {
@@ -17477,21 +16734,12 @@ html[data-theme="book"] .calendar-heading h3 {
   outline-offset: 5px;
 }
 
-.trust-center summary span {
-  font-size: 10px;
-  line-height: 1.4;
-}
-
 .trust-center details p {
   color: #625268;
-  font-size: 14px;
-  line-height: 1.7;
 }
 
 .footer-brand small {
   color: rgba(255, 255, 255, 0.66);
-  font-size: 10px;
-  line-height: 1.4;
 }
 
 .footer-brand > p {
@@ -17506,40 +16754,18 @@ html[data-theme="book"] .calendar-heading h3 {
   align-items: center;
   min-height: 30px;
   color: rgba(255, 255, 255, 0.76);
-  font-size: 11px;
-  line-height: 1.45;
 }
 
 .footer-bottom p,
 .footer-bottom a,
 .footer-bottom span {
   color: rgba(255, 255, 255, 0.62);
-  font-size: 10px;
+  font-size: var(--type-caption);
   line-height: 1.5;
 }
 
 .footer-bottom a {
   color: var(--orange-soft);
-}
-
-@media (max-width: 980px) {
-  .section-directory-card {
-    min-height: 330px;
-  }
-
-  .section-directory-card > div {
-    grid-template-rows: repeat(6, auto);
-  }
-
-  .sections-directory h3,
-  .sections-directory > div:last-child p {
-    min-height: 0;
-  }
-
-  .section-card-series-slot:empty,
-  .section-card-latest-slot:empty {
-    display: none;
-  }
 }
 
 @media (max-width: 680px) {
@@ -17583,23 +16809,11 @@ html[data-theme="book"] .calendar-heading h3 {
     height: 44px;
   }
 
-  .share-links a,
-  .share-links button {
-    width: 44px;
-    min-width: 44px;
-    height: 44px;
-    min-height: 44px;
-  }
-
   .author-showcase article > a,
   .section-card-series a,
   .footer-map a,
   .footer-map button {
     min-height: 40px;
-  }
-
-  .section-directory-card {
-    min-height: 280px;
   }
 
   .weekday,
@@ -17733,7 +16947,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .article-reader-content :where(p, li, h2, h3, h4, a, blockquote, figcaption),
 .article-reader-sources :where(a, li),
 .article-reader-sequence strong {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   word-break: normal;
 }
 
@@ -17743,8 +16957,8 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .article-reader-content :not(pre) > code {
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .article-reader-content table,
@@ -17759,11 +16973,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .footer-map h2 {
   margin-bottom: 6px;
-}
-
-.footer-map a,
-.footer-map button {
-  line-height: 1.25;
 }
 
 .cms-banner img {
@@ -17846,7 +17055,7 @@ html[data-theme="book"] .calendar-heading h3 {
     min-width: 44px;
     height: 44px;
     padding: 0;
-    font-size: 10px;
+    font-size: var(--type-caption);
   }
 
   .reader-button {
@@ -18026,9 +17235,6 @@ html[data-theme="book"] .calendar-heading h3 {
   min-height: 44px;
   margin: 0;
   padding: 0 15px;
-  font-size: 10px;
-  line-height: 1.25;
-  letter-spacing: 0.065em;
   border: 1px solid transparent;
   border-radius: var(--ui-radius-control);
   transition:
@@ -18078,7 +17284,7 @@ html[data-theme="book"] .calendar-heading h3 {
   min-height: 44px;
   padding-top: 8px;
   color: rgba(255, 255, 255, 0.66);
-  font-size: 9px;
+  font-size: var(--type-caption);
   line-height: 1.35;
   letter-spacing: 0.08em;
   border-top: 1px solid rgba(255, 255, 255, 0.13);
@@ -18106,20 +17312,11 @@ html[data-theme="book"] .calendar-heading h3 {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.045);
 }
 
-.section-directory-more > span {
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: 0.005em;
-  text-transform: none;
-}
-
 .section-directory-more > strong {
   margin-left: auto;
   padding: 5px 9px;
   color: #ffc18d;
-  font-size: 9px;
+  font-size: var(--type-caption);
   line-height: 1;
   background: rgba(246, 117, 24, 0.12);
   border: 1px solid rgba(246, 155, 79, 0.28);
@@ -18263,10 +17460,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .book-of-day .book-actions-primary button {
     width: 100%;
-  }
-
-  .section-directory-more > span {
-    font-size: 16px;
   }
 }
 
@@ -18483,8 +17676,8 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .atlas-immersive-identity small {
   color: rgba(255, 244, 228, 0.74);
-  font-size: 11px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -18492,7 +17685,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .atlas-immersive-identity strong {
   font-family: var(--serif);
   font-size: 19px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .atlas-immersive-chrome nav {
@@ -18609,7 +17802,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 .country-metrics span {
   color: #6f5876;
-  font-size: 11.5px;
+  font-size: var(--type-caption);
   letter-spacing: 0;
 }
 
@@ -18980,15 +18173,15 @@ html[data-theme="book"] .calendar-heading h3 {
   .atlas-country-sheet-copy small {
     margin-top: 3px;
     color: rgba(255, 244, 223, 0.76);
-    font-size: 11px;
+    font-size: var(--type-caption);
     line-height: 1.2;
   }
 
   .atlas-country-sheet-action {
     padding: 7px 9px;
     color: #fff1d9;
-    font-size: 10px;
-    font-weight: 900;
+    font-size: var(--type-caption);
+    font-weight: 700;
     line-height: 1.15;
     text-align: center;
     text-transform: uppercase;
@@ -19393,7 +18586,7 @@ html[data-theme="book"] .calendar-heading h3 {
   min-width: 0;
   padding: 0 11px;
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: var(--type-caption);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.015em;
@@ -19603,7 +18796,7 @@ html[data-theme="book"] .calendar-heading h3 {
   padding: 0 12px;
   color: #fff;
   font: inherit;
-  font-weight: 750;
+  font-weight: 700;
   background: rgba(246, 117, 24, 0.22);
   border: 1px solid rgba(255, 183, 111, 0.6);
   border-radius: 8px;
@@ -19736,8 +18929,8 @@ html[data-theme="book"] .calendar-heading h3 {
 .literary-globe .globe-controls button small {
   display: block;
   margin: 0;
-  font-size: 11px;
-  font-weight: 720;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1;
   letter-spacing: 0.015em;
   text-transform: none;
@@ -19759,8 +18952,8 @@ html[data-theme="book"] .calendar-heading h3 {
   gap: 8px;
   justify-content: center;
   font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 650;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.35;
   letter-spacing: 0.01em;
   text-align: center;
@@ -19961,7 +19154,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .globe-edition-info-dialog dt {
   color: rgba(255, 218, 175, 0.74);
   font-size: 12px;
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.35;
   letter-spacing: 0.055em;
   text-transform: uppercase;
@@ -19972,9 +19165,9 @@ html[data-theme="book"] .calendar-heading h3 {
   color: #fff8ed;
   font-family: var(--serif);
   font-size: clamp(22px, 3.4vw, 34px);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.14;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .globe-edition-info-dialog > article > p,
@@ -19982,7 +19175,7 @@ html[data-theme="book"] .calendar-heading h3 {
   color: rgba(255, 248, 237, 0.86);
   font-size: 14px;
   line-height: 1.55;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
 }
 
 .globe-edition-info-dialog dl {
@@ -19994,7 +19187,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .globe-edition-info-dialog a {
   color: #ffc47f;
   font-weight: 700;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   text-underline-offset: 3px;
 }
 
@@ -20035,7 +19228,7 @@ html[data-theme="book"] .calendar-heading h3 {
     height: 44px;
     min-height: 44px;
     padding-inline: 9px;
-    font-size: 11px;
+    font-size: var(--type-caption);
     letter-spacing: 0.01em;
   }
 
@@ -20094,7 +19287,7 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .literary-globe .globe-controls button small {
-    font-size: 10px;
+    font-size: var(--type-caption);
     letter-spacing: 0;
     white-space: nowrap;
   }
@@ -20102,7 +19295,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .literary-globe .globe-instruction {
     max-width: calc(100% - 24px);
     gap: 6px;
-    font-size: 9.5px;
+    font-size: var(--type-caption);
     white-space: nowrap;
   }
 
@@ -20120,7 +19313,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .literary-globe .globe-country-label span,
   .literary-globe .globe-country-label small,
   .literary-globe .globe-country-label em {
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
   }
 
   .literary-globe .globe-touch-activation {
@@ -20128,7 +19321,7 @@ html[data-theme="book"] .calendar-heading h3 {
     bottom: 218px;
     max-width: calc(100% - 28px);
     font-family: var(--sans);
-    font-size: 11px;
+    font-size: var(--type-caption);
     line-height: 1.2;
     white-space: normal;
   }
@@ -20210,7 +19403,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .literary-globe .globe-style-switch button,
   .literary-globe .globe-style-switch button[data-globe-style-option="earth"] {
     padding-inline: 7px;
-    font-size: 11px;
+    font-size: var(--type-caption);
     letter-spacing: 0;
     text-transform: none;
   }
@@ -20400,7 +19593,7 @@ html[data-theme="book"] .calendar-heading h3 {
   overflow: hidden;
   font-family: var(--sans);
   font-size: 12.25px;
-  font-weight: 650;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: 0.005em;
   text-transform: none;
@@ -20613,8 +19806,8 @@ html[data-theme="book"] .calendar-heading h3 {
   height: 44px;
   padding: 0;
   font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 720;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0.025em;
   border-radius: 10px;
   transition:
@@ -20679,8 +19872,8 @@ html[data-theme="book"] .calendar-heading h3 {
   padding-inline: 11px;
   color: rgba(255, 246, 233, 0.66);
   font-family: var(--sans);
-  font-size: 11.5px;
-  font-weight: 620;
+  font-size: var(--type-caption);
+  font-weight: 600;
   letter-spacing: 0.005em;
   border-radius: 12px;
   transition:
@@ -20733,7 +19926,7 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .literary-globe .globe-style-switch button[data-globe-edition-option].is-active {
-  font-weight: 690;
+  font-weight: 700;
   text-decoration: none;
   box-shadow:
     0 7px 22px var(--edition-active-glow),
@@ -20892,8 +20085,8 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .literary-globe .globe-controls button small {
-  font-size: 11px;
-  font-weight: 650;
+  font-size: var(--type-caption);
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -20917,7 +20110,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .literary-globe .globe-style-switch button {
     padding-inline: 9px;
-    font-size: 11px;
+    font-size: var(--type-caption);
   }
 
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-heading,
@@ -21071,11 +20264,11 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .literary-globe .globe-controls button small {
-    font-size: 10px;
+    font-size: var(--type-caption);
   }
 
   .literary-globe .globe-instruction {
-    font-size: 10px;
+    font-size: var(--type-caption);
     font-weight: 600;
     letter-spacing: 0;
   }
@@ -21099,7 +20292,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .literary-globe .globe-style-switch button {
     padding-inline: 8px;
-    font-size: 11px;
+    font-size: var(--type-caption);
   }
 
   .literary-globe .globe-controls {
@@ -21112,7 +20305,7 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .literary-globe .globe-controls button small {
-    font-size: 9.5px;
+    font-size: var(--type-caption);
   }
 
 }
@@ -21166,7 +20359,7 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .literary-globe .globe-controls button small {
-    font-size: 9px;
+    font-size: var(--type-caption);
   }
 
   .literary-globe .globe-instruction {
@@ -21262,7 +20455,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .country-metrics span {
     align-self: center;
     margin-top: 0;
-    font-size: 11.5px;
+    font-size: var(--type-caption);
     text-wrap: pretty;
   }
 }
@@ -21465,7 +20658,7 @@ html[data-theme="book"] .calendar-heading h3 {
   margin-top: 10px;
   color: var(--reader-muted, #6f5a72);
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: var(--type-caption);
   line-height: 1.5;
   text-align: center;
 }
@@ -21480,7 +20673,7 @@ html[data-theme="book"] .calendar-heading h3 {
   justify-content: center;
   gap: 0 0.45em;
   color: color-mix(in srgb, currentColor 78%, transparent);
-  font-size: 10px;
+  font-size: var(--type-caption);
 }
 
 :is(.article-reader-content, .cms-page-prose) .article-image-provenance > * + *::before {
@@ -21854,8 +21047,8 @@ html[data-theme="book"] .calendar-heading h3 {
   overflow: hidden;
   color: rgba(255, 237, 220, 0.68);
   font-family: var(--sans);
-  font-size: 9.5px;
-  font-weight: 720;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1;
   letter-spacing: 0.065em;
   text-overflow: ellipsis;
@@ -21933,7 +21126,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .atlas-immersive-random
 ) .ui-action__label {
   font-size: 12.5px;
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: 0.002em;
 }
 
@@ -22037,8 +21230,8 @@ html[data-theme="book"] .calendar-heading h3 {
   height: 44px;
   min-height: 44px;
   color: rgba(255, 242, 229, 0.58);
-  font-size: 10px;
-  font-weight: 760;
+  font-size: var(--type-caption);
+  font-weight: 700;
   border: 1px solid transparent;
   border-radius: 9px;
   transition:
@@ -22185,8 +21378,8 @@ html[data-theme="book"] .calendar-heading h3 {
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-heading .search-caption {
   padding: 7px 9px 8px;
   color: rgba(255, 239, 224, 0.66);
-  font-size: 10px;
-  letter-spacing: 0.095em;
+  font-size: var(--type-caption);
+  letter-spacing: var(--type-tracking-label);
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-heading .search-results button {
@@ -22244,8 +21437,8 @@ html[data-theme="book"] .calendar-heading h3 {
   min-height: 44px;
   padding: 7px 10px;
   color: rgba(255, 246, 236, 0.68);
-  font-size: 10.5px;
-  font-weight: 680;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.15;
   text-align: center;
   white-space: normal;
@@ -22262,7 +21455,7 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .atlas-experience-surface[data-atlas-view="immersive"] .atlas-toolbar .atlas-filters button .ui-action__label {
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   text-wrap: balance;
 }
 
@@ -22511,7 +21704,7 @@ html[data-theme="book"] .calendar-heading h3 {
     .atlas-immersive-random
   ) .ui-action__label {
     display: inline;
-    font-size: 11.5px;
+    font-size: var(--type-caption);
   }
 }
 
@@ -22541,7 +21734,7 @@ html[data-theme="book"] .calendar-heading h3 {
   .atlas-experience-surface[data-atlas-view="immersive"] .atlas-toolbar .atlas-filters button {
     min-height: 48px;
     padding-inline: 7px;
-    font-size: 10px;
+    font-size: var(--type-caption);
   }
 }
 
@@ -22700,7 +21893,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-family: var(--serif);
   font-size: clamp(12px, 0.82vw, 14px);
   font-style: italic;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.3;
   letter-spacing: 0.005em;
   text-align: left;
@@ -22744,7 +21937,7 @@ html[data-theme="book"] .calendar-heading h3 {
 
 @media (max-width: 680px) {
   .literary-globe .globe-navigation-label {
-    font-size: 11.5px;
+    font-size: var(--type-caption);
   }
 }
 
@@ -22896,7 +22089,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .country-panel .panel-topline .eyebrow {
   min-width: 0;
   overflow: hidden;
-  font-size: 11.25px;
+  font-size: var(--type-caption);
   line-height: 1.2;
   letter-spacing: 0.075em;
   text-overflow: ellipsis;
@@ -22906,7 +22099,7 @@ html[data-theme="book"] .calendar-heading h3 {
 .country-panel .panel-topline .archive-code {
   flex: 0 0 auto;
   padding-left: 8px;
-  font-size: 10.5px;
+  font-size: var(--type-caption);
   line-height: 1.2;
 }
 
@@ -22992,7 +22185,7 @@ html[data-theme="book"] .calendar-heading h3 {
     width: 100%;
     min-height: 44px;
     padding: 7px 9px;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
     white-space: normal;
   }
 
@@ -23427,8 +22620,8 @@ html[data-theme="book"] .calendar-heading h3 {
     overflow: hidden;
     color: #fff5e7;
     font-family: var(--sans);
-    font-size: 11.5px;
-    font-weight: 690;
+    font-size: var(--type-caption);
+    font-weight: 700;
     line-height: 1.2;
     letter-spacing: 0.005em;
     text-overflow: ellipsis;
@@ -23538,8 +22731,8 @@ html[data-theme="book"] .calendar-heading h3 {
   clip: auto;
   color: rgba(255, 244, 230, 0.9);
   font-family: var(--sans);
-  font-size: 10.5px;
-  font-weight: 650;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1.35;
   text-align: left;
   white-space: normal;
@@ -23573,8 +22766,8 @@ html[data-theme="book"] .calendar-heading h3 {
   padding: 3px 8px;
   color: rgba(255, 237, 216, 0.78);
   font-family: var(--sans);
-  font-size: 9.5px;
-  font-weight: 680;
+  font-size: var(--type-caption);
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
   line-height: 1;
   letter-spacing: 0.015em;
@@ -23617,7 +22810,7 @@ html[data-theme="book"] .calendar-heading h3 {
   color: #fffaf2;
   font-family: var(--sans);
   font-size: 12px;
-  font-weight: 720;
+  font-weight: 700;
   cursor: pointer;
   background: linear-gradient(145deg, #f98429, #d6520b);
   border: 1px solid rgba(255, 211, 169, 0.72);
@@ -23677,8 +22870,8 @@ html[data-theme="book"] .calendar-heading h3 {
   content: "↗";
   color: rgba(191, 70, 12, 0.76);
   font-family: var(--sans);
-  font-size: 10px;
-  font-weight: 800;
+  font-size: var(--type-caption);
+  font-weight: 700;
   line-height: 1;
   transition:
     color 180ms ease,
@@ -23704,7 +22897,7 @@ html[data-theme="book"] .calendar-heading h3 {
   min-width: 0;
   max-width: 100%;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
   text-wrap: pretty;
 }
 
@@ -23794,19 +22987,19 @@ html[data-theme="book"] .calendar-heading h3 {
     line-height: 1.18;
     text-overflow: clip;
     white-space: normal;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
     text-wrap: pretty;
   }
 
   .atlas-country-sheet-copy small {
-    font-size: 10.5px;
+    font-size: var(--type-caption);
   }
 
   .atlas-country-sheet-action {
     min-width: 0;
     gap: 4px;
     padding: 7px 8px;
-    font-size: 9.5px;
+    font-size: var(--type-caption);
   }
 
   .atlas-country-sheet-action-full {
@@ -23845,7 +23038,7 @@ html[data-theme="book"] .calendar-heading h3 {
     line-height: 1.3;
     text-overflow: clip;
     white-space: normal;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
     scroll-snap-align: start;
   }
 
@@ -23885,4 +23078,5 @@ html[data-theme="book"] .calendar-heading h3 {
     background: Canvas;
     border-color: ButtonText;
   }
+}
 }

@@ -1,0 +1,191 @@
+[
+  {
+    "class": "",
+    "parent": "footer-brand",
+    "text": "Проба Пера - главная",
+    "width": 346,
+    "height": 63.984375,
+    "minWidth": "0px",
+    "minHeight": "0px"
+  },
+  {
+    "class": "social-link is-vk",
+    "parent": "header-socials",
+    "text": "ВКонтакте",
+    "width": 36,
+    "height": 36,
+    "minWidth": "auto",
+    "minHeight": "auto"
+  },
+  {
+    "class": "social-link is-telegram",
+    "parent": "header-socials",
+    "text": "Telegram",
+    "width": 36,
+    "height": 36,
+    "minWidth": "auto",
+    "minHeight": "auto"
+  },
+  {
+    "class": "social-link is-dzen",
+    "parent": "header-socials",
+    "text": "Дзен",
+    "width": 36,
+    "height": 36,
+    "minWidth": "auto",
+    "minHeight": "auto"
+  },
+  {
+    "class": "social-link is-ok",
+    "parent": "header-socials",
+    "text": "Одноклассники",
+    "width": 36,
+    "height": 36,
+    "minWidth": "auto",
+    "minHeight": "auto"
+  },
+  {
+    "class": "social-link is-boosty",
+    "parent": "header-socials",
+    "text": "Boosty",
+    "width": 36,
+    "height": 36,
+    "minWidth": "auto",
+    "minHeight": "auto"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Все публикации",
+    "width": 101.125,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Мнение о книге",
+    "width": 97.796875,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Книга и экранизация",
+    "width": 132.734375,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Редкие слова",
+    "width": 84.484375,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Литературные премии",
+    "width": 142.640625,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Литературная планета",
+    "width": 143.671875,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Писатели",
+    "width": 59.828125,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Книжный архив",
+    "width": 100.15625,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Календарь событий",
+    "width": 125.5,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Редакционный стандарт",
+    "width": 155.25,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Источники и фактчекинг",
+    "width": 157.40625,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Исправления и авторские права",
+    "width": 203.046875,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Связаться с редакцией",
+    "width": 144.40625,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "",
+    "text": "Контакты",
+    "width": 61.046875,
+    "height": 44,
+    "minWidth": "44px",
+    "minHeight": "44px"
+  },
+  {
+    "class": "",
+    "parent": "footer-bottom",
+    "text": "probperasite@yandex.ru",
+    "width": 166.28125,
+    "height": 18,
+    "minWidth": "auto",
+    "minHeight": "auto"
+  }
+]

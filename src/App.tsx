@@ -2219,6 +2219,7 @@ export default function App() {
                   randomDisabled={filteredCountries.length === 0}
                   onRandomJourney={selectRandomLiteraryDestination}
                 />
+          <div className="atlas-intro">
           <header className="atlas-heading" id="atlas-search-panel">
             <div>
               <span
@@ -2470,6 +2471,8 @@ export default function App() {
                 </div>
               )}
             </div>
+          </div>
+
           </div>
 
           {atlasFilter === "nobel" && (
@@ -3100,7 +3103,7 @@ export default function App() {
           <div className="editorial-grid">
             {editorialFeatures.map((feature, index) => (
               <article className={index === 0 ? "is-featured" : ""} key={feature.title}>
-                <a href={feature.articleUrl}>
+                <a className="article-card-link" href={feature.articleUrl}>
                   <div className="article-image">
                     <img
                       src={mediaUrl(feature.image)}
@@ -3126,13 +3129,22 @@ export default function App() {
                     <strong>{t("Читать статью")} →</strong>
                   </div>
                 </a>
-                <a
-                  className="section-link"
-                  href={feature.sectionUrl}
-                >
-                  {t("Все материалы рубрики")}
-                </a>
-                <ShareLinks url={feature.articleUrl} title={t(feature.title)} />
+                {(feature.sectionUrl || feature.articleUrl) && (
+                  <footer className="article-card-footer">
+                    {feature.sectionUrl && (
+                      <a className="section-link" href={feature.sectionUrl}>
+                        {t("Все материалы рубрики")}
+                      </a>
+                    )}
+                    {feature.articleUrl && (
+                      <ShareLinks
+                        url={feature.articleUrl}
+                        title={t(feature.title)}
+                        variant="card"
+                      />
+                    )}
+                  </footer>
+                )}
               </article>
             ))}
           </div>

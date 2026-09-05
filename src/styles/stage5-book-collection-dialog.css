@@ -1,3 +1,4 @@
+@layer site-defaults {
 .book-collection-dialog__backdrop {
   position: fixed;
   inset: 0;
@@ -43,17 +44,17 @@
 .book-collection-dialog__shelves legend {
   color: #c8b9ce;
   font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: var(--type-tracking-label);
   text-transform: uppercase;
 }
 
 .book-collection-dialog__header h2 {
   margin: 5px 0 0;
   color: #fffaf3;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-editorial);
   font-size: clamp(1.65rem, 4vw, 2.25rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.05;
 }
 
@@ -73,7 +74,7 @@
 .book-collection-dialog__close span {
   color: inherit;
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1;
 }
 
@@ -89,9 +90,9 @@
 .book-collection-dialog__description strong {
   overflow: hidden;
   color: #fffaf3;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-editorial);
   font-size: 1.05rem;
-  font-weight: 500;
+  font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -269,7 +270,7 @@
   color: #fff;
   border: 1px solid var(--collection-dialog-accent);
   background: linear-gradient(135deg, #f67518, #e44d0d);
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .book-collection-dialog__create button:disabled {
@@ -340,4 +341,5 @@
     forced-color-adjust: auto;
     border: 1px solid CanvasText;
   }
+}
 }

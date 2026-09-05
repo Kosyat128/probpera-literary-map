@@ -1,0 +1,392 @@
+[
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes > span",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes > span",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes > span",
+    "property": "line-height",
+    "value": "1.4"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes > span",
+    "property": "letter-spacing",
+    "value": "var(--type-tracking-label)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes > span",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes button > i",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes button > i",
+    "property": "font-size",
+    "value": "12px"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes small",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes small",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes small",
+    "property": "line-height",
+    "value": "1.4"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes small",
+    "property": "letter-spacing",
+    "value": "var(--type-tracking-label)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes small",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes strong",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes strong",
+    "property": "font-size",
+    "value": "14px"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes strong",
+    "property": "font-weight",
+    "value": "600"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes strong",
+    "property": "line-height",
+    "value": "1.4"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-illustration blockquote",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-illustration blockquote",
+    "property": "font-size",
+    "value": "clamp(27px, 2.45vw, 42px)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-illustration blockquote",
+    "property": "font-weight",
+    "value": "400"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-illustration blockquote",
+    "property": "line-height",
+    "value": "1.08"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-visual-stats strong",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-visual-stats strong",
+    "property": "font-size",
+    "value": "clamp(20px, 2vw, 29px)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-visual-stats strong",
+    "property": "font-weight",
+    "value": "400"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-visual-stats small",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy .community-copy-note",
+    "property": "font-family",
+    "value": "var(--sans)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy .community-copy-note",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy .community-copy-note",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy .community-copy-note",
+    "property": "line-height",
+    "value": "1.6"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy .community-copy-note",
+    "property": "letter-spacing",
+    "value": "0.035em"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy li",
+    "property": "font-size",
+    "value": "12px"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy li",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy li",
+    "property": "line-height",
+    "value": "1.45"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy li",
+    "property": "letter-spacing",
+    "value": "0.04em"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy li",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".forum-toolbar button",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".forum-toolbar button",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".forum-toolbar button",
+    "property": "letter-spacing",
+    "value": "0.07em"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".forum-toolbar button",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy button,\n.community-primary",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes strong",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-header strong",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-header strong",
+    "property": "font-size",
+    "value": "20px"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-header small",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-header small",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-header small",
+    "property": "letter-spacing",
+    "value": "var(--type-tracking-label)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-header small",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-tabs button",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-tabs button",
+    "property": "font-weight",
+    "value": "700"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-tabs button",
+    "property": "letter-spacing",
+    "value": "0.08em"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-tabs button",
+    "property": "text-transform",
+    "value": "uppercase"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-setup h2,\n.forum-toolbar h2",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-setup h2,\n.forum-toolbar h2",
+    "property": "font-size",
+    "value": "clamp(35px, 5vw, 57px)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-setup h2,\n.forum-toolbar h2",
+    "property": "font-weight",
+    "value": "400"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-setup h2,\n.forum-toolbar h2",
+    "property": "line-height",
+    "value": "1"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-setup p",
+    "property": "font-family",
+    "value": "var(--serif)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-setup p",
+    "property": "font-size",
+    "value": "15px"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-setup p",
+    "property": "line-height",
+    "value": "1.65"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-illustration blockquote",
+    "property": "font-size",
+    "value": "29px"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".forum-toolbar h2",
+    "property": "font-size",
+    "value": "38px"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-reading-notes small",
+    "property": "font-size",
+    "value": "var(--type-caption)"
+  },
+  {
+    "file": "src/index.css",
+    "selector": ".community-copy .community-copy-note",
+    "property": "font-size",
+    "value": "12px"
+  },
+  {
+    "file": "src/styles/stage5-home-layout.css",
+    "selector": "#community .community-visual-stats strong",
+    "property": "font-size",
+    "value": "clamp(19px, 1.4vw, 24px)"
+  },
+  {
+    "file": "src/styles/stage5-home-art-direction.css",
+    "selector": ".community-illustration blockquote",
+    "property": "font-size",
+    "value": "var(--home-title-normal)"
+  },
+  {
+    "file": "src/styles/stage5-home-art-direction.css",
+    "selector": ".community-illustration blockquote",
+    "property": "line-height",
+    "value": "1.1"
+  },
+  {
+    "file": "src/styles/stage5-home-art-direction.css",
+    "selector": ".community-illustration blockquote",
+    "property": "letter-spacing",
+    "value": "var(--type-tracking-title)"
+  }
+]

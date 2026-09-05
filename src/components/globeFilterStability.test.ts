@@ -174,7 +174,7 @@ describe("globe filter stability wiring", () => {
       /\.archive-subscribe\s*\{[\s\S]*?width:\s*100%;[\s\S]*?max-width:\s*none;[\s\S]*?min-height:\s*48px;/u
     );
     expect(archiveCss).toMatch(
-      /\.country-metrics span\s*\{[\s\S]*?font-size:\s*11\.5px;[\s\S]*?text-transform:\s*none;/u
+      /\.country-metrics span\s*\{[\s\S]*?font-size:\s*12px;[\s\S]*?text-transform:\s*none;/u
     );
     expect(archiveCss).toMatch(
       /\.source-block a\s*\{[\s\S]*?max-width:\s*100%;[\s\S]*?min-height:\s*44px;/u

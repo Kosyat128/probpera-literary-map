@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-09-04T21:00:14.378Z",
+  "method": "Chrome computed styles with current source CSS injected into minimal reader DOM; dist rebuild pending. Contrast compares exact computed text against solid reader paper token, not screenshot imagery.",
+  "beforeFix": {
+    "paperAndBookLead": "rgb(213, 201, 220)"
+  },
+  "afterFix": [
+    {
+      "theme": "is-dark",
+      "runtimeStatus": "actual runtime mode",
+      "muted": "#d5c9dc",
+      "paper": "#1d0a2d",
+      "lead": "rgb(213, 201, 220)",
+      "tokenContrast": 11.66012487801917
+    },
+    {
+      "theme": "is-light",
+      "runtimeStatus": "actual runtime mode",
+      "muted": "#66536e",
+      "paper": "#fffaf3",
+      "lead": "rgb(102, 83, 110)",
+      "tokenContrast": 6.679112576267811
+    },
+    {
+      "theme": "is-paper",
+      "runtimeStatus": "legacy selector",
+      "muted": "#66536e",
+      "paper": "#fffaf3",
+      "lead": "rgb(102, 83, 110)",
+      "tokenContrast": 6.679112576267811
+    },
+    {
+      "theme": "is-book",
+      "runtimeStatus": "actual runtime mode",
+      "muted": "#66536e",
+      "paper": "#f3e3c7",
+      "lead": "rgb(102, 83, 110)",
+      "tokenContrast": 5.490911281217169
+    },
+    {
+      "theme": "is-book is-dark",
+      "runtimeStatus": "synthetic combination; runtime uses exclusive mode",
+      "muted": "#66536e",
+      "paper": "#f3e3c7",
+      "lead": "rgb(102, 83, 110)",
+      "tokenContrast": 5.490911281217169
+    }
+  ],
+  "integratedBuildVerification": {
+    "result": "passed",
+    "suite": "tests/e2e/responsive-reader-globe.spec.mjs",
+    "test": "ArticleReader lower panels stay readable in light and book modes",
+    "themes": [
+      "light",
+      "book"
+    ],
+    "targets": [
+      ".article-reader-lead > p",
+      ".share-links > span"
+    ],
+    "minimumContrast": 4.5
+  }
+}

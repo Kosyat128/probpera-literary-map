@@ -1,0 +1,777 @@
+/* Public defaults have one owner. Validated, published CMS rules stay unlayered. */
+@layer site-typography {
+  :root {
+    --font-ui: "Source Sans 3 Local", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    --font-editorial: "Source Serif 4 Local", Georgia, "Times New Roman", serif;
+    --font-display: var(--font-editorial);
+    --sans: var(--font-ui);
+    --serif: var(--font-editorial);
+    --type-page-title: clamp(2rem, 4.5vw, 4.5rem);
+    --type-section-title: clamp(1.75rem, 3.2vw, 3.25rem);
+    --type-card-feature-title: 1.875rem;
+    --type-card-title: 1.5rem;
+    --type-card-compact-title: 1.25rem;
+    --type-card-related-title: 1.125rem;
+    --type-lead: clamp(1.125rem, 1.4vw, 1.3125rem);
+    --type-reading: 1.1875rem;
+    --type-reading-section: clamp(1.375rem, 3vw, 2.4375rem);
+    --type-reading-subsection: clamp(1.25rem, 2.4vw, 1.8125rem);
+    --type-body: 1rem;
+    --type-card-excerpt: 1rem;
+    --type-card-meta: 0.8125rem;
+    --type-caption: 0.75rem;
+    --type-navigation: 0.875rem;
+    --type-action: 0.875rem;
+    --type-card-primary-action: var(--type-action);
+    --type-card-secondary-action: var(--type-action);
+    --type-card-footer-label: var(--type-card-meta);
+    --type-leading-title: 1.12;
+    --type-leading-copy: 1.6;
+    --type-leading-ui: 1.4;
+    --type-tracking-title: -0.015em;
+    --type-tracking-label: 0.04em;
+    --type-muted-light: #66536e;
+    --type-muted-dark: #d5c9dc;
+    /* Compatibility aliases; there is no second homepage size scale. */
+    --home-title-major: var(--type-section-title);
+    --home-title-normal: var(--type-card-feature-title);
+    --home-title-card: var(--type-card-title);
+    --home-copy: var(--type-card-excerpt);
+    --home-metadata: var(--type-card-meta);
+    --home-action-size: var(--type-action);
+  }
+
+  body {
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 400;
+    line-height: var(--type-leading-copy);
+    font-synthesis: none;
+    font-kerning: normal;
+    font-optical-sizing: auto;
+  }
+
+  button, input, select, textarea {
+    font-family: var(--font-ui);
+    font-kerning: normal;
+  }
+
+  .section-heading h2,
+  .article-library-heading h2,
+  .cms-home-block h2,
+  .book-archive-heading h2 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-section-title);
+    font-weight: 400;
+    line-height: var(--type-leading-title);
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .article-copy h3,
+  .library-card-copy h3,
+  .cms-home-articles article h3,
+  .sections-directory h3 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-title);
+    font-weight: 400;
+    line-height: var(--type-leading-title);
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .is-featured .article-copy h3,
+  .is-lead .library-card-copy h3,
+  .editorial-standard h3,
+  .book-of-day h3 {
+    font-family: var(--font-editorial);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .is-featured .article-copy h3,
+  .is-lead .library-card-copy h3,
+  .editorial-standard h3 {
+    font-size: var(--type-card-feature-title);
+  }
+
+  .book-of-day h3 {
+    font-size: calc(var(--type-card-feature-title) * 1.25);
+  }
+
+  .journal-engagement h3,
+  .calendar-heading h3,
+  .book-fact-card h3,
+  .trust-center summary,
+  .author-showcase strong,
+  .cms-home-links strong,
+  .article-reader-related-book-copy strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-compact-title);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .section-card-latest strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-related-title);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0;
+    text-wrap: pretty;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .section-heading p,
+  .article-library-heading p,
+  .article-reader-lead > p,
+  .cms-page-main > article > header p {
+    font-family: var(--font-ui);
+    font-size: var(--type-lead);
+    font-weight: 400;
+    line-height: var(--type-leading-copy);
+    letter-spacing: 0;
+    text-wrap: pretty;
+    overflow-wrap: normal;
+    word-break: normal;
+    max-inline-size: 60ch;
+  }
+
+  .article-copy p,
+  .library-card-copy p,
+  .book-of-day p,
+  .editorial-standard > p,
+  .book-fact-card p,
+  .calendar-heading p,
+  .sections-directory > div:last-child p,
+  .trust-center details p,
+  .community-visual-intro > p,
+  .journal-engagement > div:first-child > p,
+  .cms-home-articles article p {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-excerpt);
+    font-weight: 400;
+    line-height: var(--type-leading-copy);
+    letter-spacing: 0;
+    text-wrap: pretty;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .section-kicker,
+  .section-card-latest span,
+  .article-copy small,
+  .author-showcase small,
+  .sections-directory .section-card-eyebrow,
+  .article-library-heading label span,
+  .library-card-image small,
+  .library-card-copy > div,
+  .calendar-summary > div > span,
+  .calendar-featured > span,
+  .calendar-agenda > header span,
+  .calendar-agenda-day > time small {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: var(--type-tracking-label);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .article-copy strong,
+  .library-card-copy > strong,
+  .section-card-action strong,
+  .sections-all-button,
+  .section-directory-more > span,
+  .article-library-tabs button,
+  .article-library-more,
+  .book-of-day .book-actions-primary button,
+  .editorial-section .section-heading > a,
+  .community-copy button,
+  .community-primary {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-primary-action);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .section-link,
+  .author-showcase article > a {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-secondary-action);
+    font-weight: 400;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .share-links > span {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-footer-label);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .section-card-series a,
+  .article-library-series button {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    white-space: normal;
+  }
+
+  .article-library-series button small {
+    font-size: var(--type-card-meta);
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters button {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    white-space: normal;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filter-count {
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search > label {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .search-field input {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 400;
+    line-height: var(--type-leading-ui);
+  }
+
+  @media (max-width: 390px) {
+    #atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-heading h2 {
+      --type-atlas-title: clamp(2.25rem, 12.72cqi, 2.8125rem);
+      font-size: var(--type-atlas-title);
+    }
+  }
+
+  .share-links a,
+  .share-links button {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 600;
+  }
+
+  .footer-map a,
+  .footer-map button,
+  .cms-page-header nav a,
+  .cms-page-header .cms-nav-group > summary,
+  .cms-page-back {
+    font-family: var(--font-ui);
+    font-size: var(--type-navigation);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .footer-brand small,
+  .author-showcase em,
+  .cms-page-brand small,
+  .cms-page-main > article > header small,
+  .trust-center summary span {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .calendar-navigation strong,
+  .calendar-agenda > header strong,
+  .calendar-featured > strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-compact-title);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+
+  .calendar-agenda-day > time strong,
+  .calendar-summary > div > strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-title);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0;
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  .calendar-agenda-writer strong {
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0;
+    text-wrap: pretty;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .calendar-agenda-writer small,
+  .calendar-featured > small,
+  .calendar-agenda-day > div > span {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: 0;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .calendar-agenda-writer small,
+  .calendar-agenda-day > div > span {
+    color: var(--type-muted-light);
+  }
+
+  .calendar-featured > small {
+    color: var(--type-muted-dark);
+  }
+
+  .calendar-agenda > header button,
+  .calendar-navigation .calendar-today,
+  .calendar-agenda .calendar-agenda-more,
+  .calendar-agenda .calendar-agenda-more strong {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .editorial-standard li {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  .editorial-standard > p,
+  .editorial-standard li {
+    color: var(--type-muted-light);
+  }
+
+  #community .community-copy h2 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-feature-title);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  #community .community-illustration blockquote,
+  .community-setup h2,
+  .forum-toolbar h2 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-title);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  #community .community-copy > p,
+  #community .community-copy li,
+  .community-setup p {
+    color: var(--type-muted-dark);
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 400;
+    line-height: var(--type-leading-copy);
+    letter-spacing: 0;
+    text-transform: none;
+    text-wrap: pretty;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  #community .community-reading-notes strong {
+    color: var(--cream);
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: 0;
+    white-space: normal;
+    text-wrap: pretty;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  #community .community-copy .community-copy-note,
+  .community-tabs button,
+  .forum-toolbar button {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    line-height: var(--type-leading-copy);
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: normal;
+  }
+
+  #community .community-copy .community-copy-note {
+    font-weight: 400;
+  }
+
+  .community-tabs button,
+  .forum-toolbar button {
+    font-weight: 600;
+  }
+
+  .forum-categories button > strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-action);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .forum-categories button > small {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    line-height: var(--type-leading-ui);
+  }
+
+  .community-tabs button:not(.is-active) {
+    color: var(--type-muted-dark);
+  }
+
+  #community .community-reading-notes small,
+  #community .community-reading-notes > span,
+  #community .community-reading-notes button > i,
+  #community .community-visual-rule > span,
+  #community .community-visual-stats small,
+  .community-setup > small,
+  .community-header small,
+  .forum-categories button > em {
+    color: var(--type-muted-dark);
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  #community .community-reading-notes small,
+  #community .community-visual-rule > span,
+  #community .community-visual-stats small,
+  .community-setup > small,
+  .community-header small,
+  .forum-categories button > em {
+    font-weight: 400;
+  }
+
+  #community .community-reading-notes > span,
+  #community .community-reading-notes button > i,
+  #community .community-visual-stats strong {
+    font-weight: 600;
+  }
+
+  #community .community-visual-stats strong,
+  .community-header strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-compact-title);
+    line-height: 1.2;
+    letter-spacing: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .article-reader-lead h1,
+  .cms-page-main > article > header h1 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-page-title);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .article-reader-content,
+  .cms-page-prose {
+    font-family: var(--font-editorial);
+    font-size: calc(var(--type-reading) * var(--reader-scale, 1));
+    font-weight: 400;
+    line-height: 1.82;
+    text-wrap: pretty;
+  }
+
+  .article-reader-content,
+  .article-reader-sources {
+    max-inline-size: 68ch;
+  }
+
+  .article-reader-content :where(p, li, h2, h3, h4, blockquote, figcaption),
+  .cms-page-prose :where(p, li, h2, h3, h4, blockquote, figcaption) {
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .article-reader-content :where(h2, h3, h4),
+  .cms-page-prose :where(h2, h3, h4) {
+    font-weight: 600;
+    line-height: 1.2;
+    text-wrap: balance;
+    hyphens: manual;
+  }
+
+  .article-reader-content h2,
+  .cms-page-prose h2 {
+    font-size: calc(var(--type-reading-section) * var(--reader-scale, 1));
+  }
+
+  .article-reader-content h3,
+  .article-reader-content h4,
+  .cms-page-prose h3,
+  .cms-page-prose h4 {
+    font-size: calc(var(--type-reading-subsection) * var(--reader-scale, 1));
+  }
+
+  .article-reader-content :where(p, li),
+  .cms-page-prose :where(p, li) {
+    hyphens: auto;
+  }
+
+  .article-copy p,
+  .article-copy small,
+  .section-link,
+  .library-card-copy p,
+  .library-card-copy > div,
+  .book-of-day p,
+  .author-showcase em,
+  .share-links > span,
+  .footer-brand small {
+    color: var(--type-muted-dark);
+  }
+
+  .article-reader {
+    --reader-muted: var(--type-muted-dark);
+  }
+
+  .article-reader.is-light,
+  .article-reader.is-paper,
+  .article-reader.is-book {
+    --reader-muted: var(--type-muted-light);
+  }
+
+  .article-reader .share-links > span {
+    color: var(--reader-muted);
+  }
+
+  .section-link:is(:hover, :focus-visible) {
+    color: var(--cream);
+  }
+
+  .author-showcase article > a {
+    color: var(--type-muted-light);
+  }
+
+  /* The owner separately requested these open panels; the Header itself stays original. */
+  .sections-mega-menu,
+  .articles-mega-menu {
+    --sans: "Source Sans 3 Local", "Segoe UI", system-ui, sans-serif;
+    --serif: "Source Serif 4 Local", Georgia, serif;
+    --font-ui: var(--sans);
+    --font-editorial: var(--serif);
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  .sections-mega-menu > header strong,
+  .articles-mega-menu > header strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-feature-title);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+  }
+
+  .sections-mega-groups strong,
+  .articles-mega-content > section strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-related-title);
+    font-weight: 600;
+    line-height: 1.3;
+    text-wrap: pretty;
+  }
+
+  .articles-mega-lead strong {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-title);
+    font-weight: 400;
+    line-height: 1.2;
+    text-wrap: pretty;
+  }
+
+  .sections-mega-menu > header p,
+  .articles-mega-menu > header p,
+  .articles-mega-lead p {
+    color: var(--type-muted-dark);
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .sections-mega-groups small,
+  .articles-mega-content > section span,
+  .articles-mega-menu > footer > span {
+    color: var(--type-muted-light);
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
+  .sections-mega-menu > header span,
+  .articles-mega-menu > header span,
+  .sections-mega-groups h3,
+  .articles-mega-lead small,
+  .articles-mega-content section small {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: var(--type-tracking-label);
+    text-transform: uppercase;
+  }
+
+  .sections-mega-groups h3,
+  .articles-mega-content section small {
+    color: color-mix(in srgb, var(--orange-deep) 88%, var(--ink));
+  }
+
+  .articles-mega-lead em {
+    color: var(--type-muted-dark);
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-style: normal;
+    line-height: 1.4;
+  }
+
+  .sections-mega-menu > footer a,
+  .articles-mega-menu > footer a {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .articles-mega-loading {
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    line-height: 1.5;
+  }
+
+  @supports (font-size: 1cqi) {
+    .article-copy h3,
+    .library-card-copy h3,
+    .cms-home-articles article h3 {
+      --type-card-title: clamp(1.25rem, 1rem + 1.5cqi, 1.6875rem);
+    }
+
+    .is-featured .article-copy h3,
+    .is-lead .library-card-copy h3,
+    .editorial-standard h3,
+    .book-of-day h3 {
+      --type-card-feature-title: clamp(1.75rem, 1.2rem + 2.2cqi, 2.375rem);
+    }
+
+    .journal-engagement h3,
+    .calendar-heading h3,
+    .book-fact-card h3,
+    .author-showcase strong,
+    .trust-center summary {
+      --type-card-compact-title: clamp(1.125rem, 1rem + 1cqi, 1.4375rem);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .article-reader-content,
+    .cms-page-prose {
+      --type-reading: 1.0625rem;
+      line-height: 1.75;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .article-copy p,
+    .library-card-copy p,
+    .book-of-day p,
+    .author-showcase em,
+    .share-links > span,
+    .footer-brand small {
+      color: CanvasText;
+    }
+  }
+}

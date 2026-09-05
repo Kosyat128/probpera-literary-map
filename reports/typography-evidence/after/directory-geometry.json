@@ -1,0 +1,278 @@
+{
+  "ru/320": [
+    {
+      "text": "О проекте и редакции",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "24px",
+      "weight": "400",
+      "tracking": "-0.36px",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 2
+    },
+    {
+      "text": "Миссия «Пробы Пера», редакционный стандарт, источники, исправления и авторские права.",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "Открыть · Редакция, источники и правила",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "·",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    }
+  ],
+  "ru/390": [
+    {
+      "text": "О проекте и редакции",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "24px",
+      "weight": "400",
+      "tracking": "-0.36px",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 2
+    },
+    {
+      "text": "Миссия «Пробы Пера», редакционный стандарт, источники, исправления и авторские права.",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "Открыть · Редакция, источники и правила",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "·",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    }
+  ],
+  "ru/1440": [
+    {
+      "text": "О проекте и редакции",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "24px",
+      "weight": "400",
+      "tracking": "-0.36px",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 2
+    },
+    {
+      "text": "Миссия «Пробы Пера», редакционный стандарт, источники, исправления и авторские права.",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "Открыть · Редакция, источники и правила",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "·",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    }
+  ],
+  "en/320": [
+    {
+      "text": "About the project and editors",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "24px",
+      "weight": "400",
+      "tracking": "-0.36px",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 2
+    },
+    {
+      "text": "The mission of Proba Pera, editorial standards, sources, corrections and copyright.",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "Open · Editors, sources and standards",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "·",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    }
+  ],
+  "en/390": [
+    {
+      "text": "About the project and editors",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "24px",
+      "weight": "400",
+      "tracking": "-0.36px",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 2
+    },
+    {
+      "text": "The mission of Proba Pera, editorial standards, sources, corrections and copyright.",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "Open · Editors, sources and standards",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "·",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    }
+  ],
+  "en/1440": [
+    {
+      "text": "About the project and editors",
+      "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+      "size": "24px",
+      "weight": "400",
+      "tracking": "-0.36px",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 2
+    },
+    {
+      "text": "The mission of Proba Pera, editorial standards, sources, corrections and copyright.",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "16px",
+      "weight": "400",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "Open · Editors, sources and standards",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    },
+    {
+      "text": "·",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "14px",
+      "weight": "600",
+      "tracking": "normal",
+      "transform": "none",
+      "lineClamp": "none",
+      "overflowX": 0,
+      "overflowY": 0
+    }
+  ]
+}

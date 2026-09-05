@@ -1,0 +1,136 @@
+[
+  {
+    "width": 390,
+    "sourcePreview": true,
+    "states": [
+      {
+        "state": "rest",
+        "text": "О книге",
+        "color": "rgb(255, 255, 255)",
+        "background": "color(srgb 0.711373 0.273726 0.0690196)",
+        "contrast": 5.455183814282787,
+        "width": 298,
+        "height": 44,
+        "fontSize": "14px",
+        "focusVisible": false,
+        "outline": "rgb(255, 255, 255) none 3px",
+        "active": false,
+        "documentOverflow": 0,
+        "labelOverflow": 0
+      },
+      {
+        "state": "hover",
+        "text": "О книге",
+        "color": "rgb(255, 255, 255)",
+        "background": "color(srgb 0.767216 0.292863 0.0539608)",
+        "contrast": 4.816597134582292,
+        "width": 298,
+        "height": 44,
+        "fontSize": "14px",
+        "focusVisible": false,
+        "outline": "rgb(255, 255, 255) none 3px",
+        "active": false,
+        "documentOverflow": 0,
+        "labelOverflow": 0
+      },
+      {
+        "state": "keyboard-focus",
+        "text": "О книге",
+        "color": "rgb(255, 255, 255)",
+        "background": "color(srgb 0.767216 0.292863 0.0539608)",
+        "contrast": 4.816597134582292,
+        "width": 298,
+        "height": 44,
+        "fontSize": "14px",
+        "focusVisible": true,
+        "outline": "rgb(255, 242, 214) solid 2px",
+        "active": false,
+        "documentOverflow": 0,
+        "labelOverflow": 0
+      },
+      {
+        "state": "active",
+        "text": "О книге",
+        "color": "rgb(255, 255, 255)",
+        "background": "color(srgb 0.641569 0.249804 0.0878431)",
+        "contrast": 6.318741816709904,
+        "width": 298,
+        "height": 44,
+        "fontSize": "14px",
+        "focusVisible": true,
+        "outline": "rgb(255, 242, 214) solid 2px",
+        "active": true,
+        "documentOverflow": 0,
+        "labelOverflow": 0
+      }
+    ],
+    "issues": []
+  },
+  {
+    "width": 1440,
+    "sourcePreview": true,
+    "states": [
+      {
+        "state": "rest",
+        "text": "О книге",
+        "color": "rgb(255, 255, 255)",
+        "background": "color(srgb 0.711373 0.273726 0.0690196)",
+        "contrast": 5.455183814282787,
+        "width": 118.0625,
+        "height": 44,
+        "fontSize": "14px",
+        "focusVisible": false,
+        "outline": "rgb(255, 255, 255) none 3px",
+        "active": false,
+        "documentOverflow": 0,
+        "labelOverflow": 0
+      },
+      {
+        "state": "hover",
+        "text": "О книге",
+        "color": "rgb(255, 255, 255)",
+        "background": "color(srgb 0.767216 0.292863 0.0539608)",
+        "contrast": 4.816597134582292,
+        "width": 118.0625,
+        "height": 44,
+        "fontSize": "14px",
+        "focusVisible": false,
+        "outline": "rgb(255, 255, 255) none 3px",
+        "active": false,
+        "documentOverflow": 0,
+        "labelOverflow": 0
+      },
+      {
+        "state": "keyboard-focus",
+        "text": "О книге",
+        "color": "rgb(255, 255, 255)",
+        "background": "color(srgb 0.767216 0.292863 0.0539608)",
+        "contrast": 4.816597134582292,
+        "width": 118.0625,
+        "height": 44,
+        "fontSize": "14px",
+        "focusVisible": true,
+        "outline": "rgb(255, 242, 214) solid 2px",
+        "active": false,
+        "documentOverflow": 0,
+        "labelOverflow": 0
+      },
+      {
+        "state": "active",
+        "text": "О книге",
+        "color": "rgb(255, 255, 255)",
+        "background": "color(srgb 0.641569 0.249804 0.0878431)",
+        "contrast": 6.318741816709904,
+        "width": 118.0625,
+        "height": 44,
+        "fontSize": "14px",
+        "focusVisible": true,
+        "outline": "rgb(255, 242, 214) solid 2px",
+        "active": true,
+        "documentOverflow": 0,
+        "labelOverflow": 0
+      }
+    ],
+    "issues": []
+  }
+]

@@ -167,10 +167,21 @@ async function collectLayout(page, viewport) {
         )
         .map((slot) => {
           const rect = box(slot, `empty .${slot.className}`);
+          const cardIndex = sectionCards.indexOf(slot.closest(".section-directory-card"));
+          const rowStart = Math.floor(cardIndex / expectedSectionColumns) * expectedSectionColumns;
+          const selector = slot.matches(".section-card-series-slot")
+            ? ".section-card-series-slot"
+            : ".section-card-latest-slot";
+          const hasContentInRow = sectionCards.slice(rowStart, rowStart + expectedSectionColumns)
+            .some((card) => {
+              const neighbor = card.querySelector(selector);
+              return neighbor.childElementCount > 0 || Boolean(neighbor.textContent.trim());
+            });
           return {
             className: slot.className,
             display: getComputedStyle(slot).display,
             height: rect.height,
+            hasContentInRow,
           };
         });
 
@@ -339,9 +350,11 @@ test("Stage 5C keeps the final homepage structure and card geometry", async ({
         expect(slot.display, `${label}: ${slot.className} display`).not.toBe(
           "none"
         );
-        expect(slot.height, `${label}: ${slot.className} reserved height`).toBeGreaterThan(
-          0
-        );
+        if (slot.hasContentInRow) {
+          expect(slot.height, `${label}: ${slot.className} shares populated neighbor row`).toBeGreaterThan(0);
+        } else {
+          expect(slot.height, `${label}: ${slot.className} fully empty row adds no blank band`).toBe(0);
+        }
       } else {
         expect(slot.display, `${label}: ${slot.className} compact display`).toBe(
           "none"

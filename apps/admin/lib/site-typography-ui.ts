@@ -143,7 +143,12 @@ export function resolveSiteTypography(
           override.semanticScope === context.semanticScope &&
           override.breakpoint === breakpoint
         ) {
-          Object.assign(resolved, readSiteTypographyProperties(override.settings));
+          const settings = readSiteTypographyProperties(override.settings);
+          // A later family source replaces the earlier source as one property.
+          // Keeping both would make a stale uploaded font beat a system override.
+          if (settings.familyId) delete resolved.systemFamily;
+          if (settings.systemFamily) delete resolved.familyId;
+          Object.assign(resolved, settings);
         }
       }
     }

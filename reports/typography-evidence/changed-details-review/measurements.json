@@ -1,0 +1,772 @@
+[
+  {
+    "width": 390,
+    "book": {
+      "title": "Лолита",
+      "description": "Владимир Набоков · США. Заключённый в ожидании суда Гумберт Гумберт пытается придать литературный блеск рассказу о своей одержимости Долорес Гейз, её похищении и сексуальном насилии над ней. Ненадёжность его исповеди заставляет отделять манипуляцию рассказчика от почти стёртой им личности ребёнка.",
+      "outer": {
+        "left": 18,
+        "right": 372,
+        "top": 171.9375,
+        "bottom": 1214.515625
+      },
+      "content": [
+        {
+          "tag": "H3",
+          "text": "Книга месяца",
+          "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "size": 28,
+          "bounds": {
+            "left": 46,
+            "right": 344,
+            "top": 521.828125,
+            "bottom": 552.625
+          },
+          "ink": {
+            "left": 46,
+            "right": 233.359375,
+            "top": 517.828125,
+            "bottom": 555.828125
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "H4",
+          "text": "Лолита",
+          "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "size": 23,
+          "bounds": {
+            "left": 46,
+            "right": 344,
+            "top": 573.625,
+            "bottom": 610.421875
+          },
+          "ink": {
+            "left": 46,
+            "right": 129.078125,
+            "top": 575.625,
+            "bottom": 607.625
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Владимир Набоков · США. Заключённый в ожидании суда Гумберт Гумберт пытается придать литературный блеск рассказу о своей одержимости Долорес Гейз, её похищении и сексуальном насили",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 16,
+          "bounds": {
+            "left": 46,
+            "right": 344,
+            "top": 618.421875,
+            "bottom": 848.765625
+          },
+          "ink": {
+            "left": 46,
+            "right": 342.578125,
+            "top": 619.421875,
+            "bottom": 846.171875
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "SPAN",
+          "text": "психологический роман",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 46,
+            "right": 233.328125,
+            "top": 866.765625,
+            "bottom": 896.953125
+          },
+          "ink": {
+            "left": 56,
+            "right": 223.328125,
+            "top": 872.765625,
+            "bottom": 889.765625
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "SPAN",
+          "text": "дорожный роман",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 46,
+            "right": 184.578125,
+            "top": 903.953125,
+            "bottom": 934.140625
+          },
+          "ink": {
+            "left": 56,
+            "right": 174.578125,
+            "top": 909.953125,
+            "bottom": 926.953125
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "SPAN",
+          "text": "редакционно проверено",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 46,
+            "right": 232.890625,
+            "top": 941.140625,
+            "bottom": 971.328125
+          },
+          "ink": {
+            "left": 56,
+            "right": 222.890625,
+            "top": 947.140625,
+            "bottom": 964.140625
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "SPAN",
+          "text": "двуязычная карточка",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 46,
+            "right": 213.421875,
+            "top": 978.328125,
+            "bottom": 1008.515625
+          },
+          "ink": {
+            "left": 56,
+            "right": 203.421875,
+            "top": 984.328125,
+            "bottom": 1001.328125
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "BUTTON",
+          "text": "О книге",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 14,
+          "bounds": {
+            "left": 46,
+            "right": 344,
+            "top": 1032.515625,
+            "bottom": 1076.515625
+          },
+          "ink": {
+            "left": 62,
+            "right": 328,
+            "top": 1043.71875,
+            "bottom": 1064.3125
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Открыть автора и страну",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 14,
+          "bounds": {
+            "left": 46,
+            "right": 344,
+            "top": 1086.515625,
+            "bottom": 1130.515625
+          },
+          "ink": {
+            "left": 62,
+            "right": 328,
+            "top": 1097.71875,
+            "bottom": 1118.3125
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "A",
+          "text": "Источник сведений",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 46,
+            "right": 344,
+            "top": 1142.515625,
+            "bottom": 1186.515625
+          },
+          "ink": {
+            "left": 59,
+            "right": 331,
+            "top": 1159.421875,
+            "bottom": 1177.515625
+          },
+          "clamp": "none",
+          "overflow": 0
+        }
+      ],
+      "cover": {
+        "src": "http://127.0.0.1:4184/brand/book-covers/thumbs/lolita-editorial.webp",
+        "natural": [
+          168,
+          251
+        ],
+        "fit": "contain"
+      },
+      "documentOverflow": 0
+    },
+    "attribution": [
+      {
+        "selector": "A",
+        "text": "Источник портрета: Фёдор Михайлович Достоевский",
+        "width": 145.421875,
+        "height": 40,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "400"
+      },
+      {
+        "selector": "A",
+        "text": "Источник портрета: Лев Николаевич Толстой",
+        "width": 145.421875,
+        "height": 40,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "400"
+      },
+      {
+        "selector": "A",
+        "text": "Источник портрета: Антон Павлович Чехов",
+        "width": 145.421875,
+        "height": 40,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "400"
+      },
+      {
+        "selector": "A",
+        "text": "Источник портрета: Уильям Шекспир",
+        "width": 145.421875,
+        "height": 40,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "400"
+      }
+    ],
+    "dates": [
+      {
+        "selector": "EM",
+        "text": "1821-1881",
+        "width": 288,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      },
+      {
+        "selector": "EM",
+        "text": "1828-1910",
+        "width": 288,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      },
+      {
+        "selector": "EM",
+        "text": "1860-1904",
+        "width": 288,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      },
+      {
+        "selector": "EM",
+        "text": "1564-1616",
+        "width": 288,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      }
+    ],
+    "footerControls": [
+      {
+        "selector": "social-link is-vk",
+        "text": "ВКонтакте",
+        "width": 44,
+        "height": 44,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "social-link is-telegram",
+        "text": "Telegram",
+        "width": 44,
+        "height": 44,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "social-link is-dzen",
+        "text": "Дзен",
+        "width": 44,
+        "height": 44,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "social-link is-ok",
+        "text": "Одноклассники",
+        "width": 44,
+        "height": 44,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "social-link is-boosty",
+        "text": "Boosty",
+        "width": 44,
+        "height": 44,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "BUTTON",
+        "text": "Форум читателей",
+        "width": 110,
+        "height": 44,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "600"
+      },
+      {
+        "selector": "BUTTON",
+        "text": "Вход и регистрация",
+        "width": 124.21875,
+        "height": 44,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "600"
+      }
+    ],
+    "footerMeta": [
+      {
+        "selector": "SMALL",
+        "text": "Литературный журнал",
+        "width": 155.28125,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      }
+    ],
+    "searchState": {
+      "focusVisible": true,
+      "outline": "solid",
+      "outlineWidth": 3,
+      "outlineColor": "rgb(255, 155, 69)",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "16px"
+    },
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "book": {
+      "title": "Лолита",
+      "description": "Владимир Набоков · США. Заключённый в ожидании суда Гумберт Гумберт пытается придать литературный блеск рассказу о своей одержимости Долорес Гейз, её похищении и сексуальном насилии над ней. Ненадёжность его исповеди заставляет отделять манипуляцию рассказчика от почти стёртой им личности ребёнка.",
+      "outer": {
+        "left": 57.59375,
+        "right": 852.296875,
+        "top": 172.0625,
+        "bottom": 967.96875
+      },
+      "content": [
+        {
+          "tag": "H3",
+          "text": "Книга месяца",
+          "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "size": 28,
+          "bounds": {
+            "left": 404.609375,
+            "right": 794.703125,
+            "top": 341.046875,
+            "bottom": 371.84375
+          },
+          "ink": {
+            "left": 404.609375,
+            "right": 591.96875,
+            "top": 337.046875,
+            "bottom": 375.046875
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "H4",
+          "text": "Лолита",
+          "font": "\"Source Serif 4 Local\", Georgia, \"Times New Roman\", serif",
+          "size": 23,
+          "bounds": {
+            "left": 404.609375,
+            "right": 794.703125,
+            "top": 392.84375,
+            "bottom": 429.640625
+          },
+          "ink": {
+            "left": 404.609375,
+            "right": 487.6875,
+            "top": 394.84375,
+            "bottom": 426.84375
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "P",
+          "text": "Владимир Набоков · США. Заключённый в ожидании суда Гумберт Гумберт пытается придать литературный блеск рассказу о своей одержимости Долорес Гейз, её похищении и сексуальном насили",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 16,
+          "bounds": {
+            "left": 404.609375,
+            "right": 794.703125,
+            "top": 437.640625,
+            "bottom": 616.796875
+          },
+          "ink": {
+            "left": 404.609375,
+            "right": 792,
+            "top": 438.640625,
+            "bottom": 614.203125
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "SPAN",
+          "text": "психологический роман",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 404.609375,
+            "right": 591.9375,
+            "top": 634.796875,
+            "bottom": 664.984375
+          },
+          "ink": {
+            "left": 414.609375,
+            "right": 581.9375,
+            "top": 640.796875,
+            "bottom": 657.796875
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "SPAN",
+          "text": "дорожный роман",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 598.9375,
+            "right": 737.515625,
+            "top": 634.796875,
+            "bottom": 664.984375
+          },
+          "ink": {
+            "left": 608.9375,
+            "right": 727.515625,
+            "top": 640.796875,
+            "bottom": 657.796875
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "SPAN",
+          "text": "редакционно проверено",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 404.609375,
+            "right": 591.5,
+            "top": 671.984375,
+            "bottom": 702.171875
+          },
+          "ink": {
+            "left": 414.609375,
+            "right": 581.5,
+            "top": 677.984375,
+            "bottom": 694.984375
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "SPAN",
+          "text": "двуязычная карточка",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 598.5,
+            "right": 765.921875,
+            "top": 671.984375,
+            "bottom": 702.171875
+          },
+          "ink": {
+            "left": 608.5,
+            "right": 755.921875,
+            "top": 677.984375,
+            "bottom": 694.984375
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "BUTTON",
+          "text": "О книге",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 14,
+          "bounds": {
+            "left": 404.609375,
+            "right": 522.671875,
+            "top": 726.171875,
+            "bottom": 770.171875
+          },
+          "ink": {
+            "left": 420.609375,
+            "right": 506.671875,
+            "top": 737.375,
+            "bottom": 757.96875
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Открыть автора и страну",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 14,
+          "bounds": {
+            "left": 532.671875,
+            "right": 749.109375,
+            "top": 726.171875,
+            "bottom": 770.171875
+          },
+          "ink": {
+            "left": 548.671875,
+            "right": 733.109375,
+            "top": 737.375,
+            "bottom": 757.96875
+          },
+          "clamp": "none",
+          "overflow": 0
+        },
+        {
+          "tag": "A",
+          "text": "Источник сведений",
+          "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+          "size": 12,
+          "bounds": {
+            "left": 404.609375,
+            "right": 794.703125,
+            "top": 782.171875,
+            "bottom": 826.171875
+          },
+          "ink": {
+            "left": 417.609375,
+            "right": 781.703125,
+            "top": 799.078125,
+            "bottom": 817.171875
+          },
+          "clamp": "none",
+          "overflow": 0
+        }
+      ],
+      "cover": {
+        "src": "http://127.0.0.1:4184/brand/book-covers/thumbs/lolita-editorial.webp",
+        "natural": [
+          168,
+          251
+        ],
+        "fit": "contain"
+      },
+      "documentOverflow": 0
+    },
+    "attribution": [
+      {
+        "selector": "A",
+        "text": "Источник портрета: Фёдор Михайлович Достоевский",
+        "width": 145.421875,
+        "height": 40,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "400"
+      },
+      {
+        "selector": "A",
+        "text": "Источник портрета: Лев Николаевич Толстой",
+        "width": 145.421875,
+        "height": 40,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "400"
+      },
+      {
+        "selector": "A",
+        "text": "Источник портрета: Антон Павлович Чехов",
+        "width": 145.421875,
+        "height": 40,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "400"
+      },
+      {
+        "selector": "A",
+        "text": "Источник портрета: Уильям Шекспир",
+        "width": 145.421875,
+        "height": 40,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "400"
+      }
+    ],
+    "dates": [
+      {
+        "selector": "EM",
+        "text": "1821-1881",
+        "width": 271.203125,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      },
+      {
+        "selector": "EM",
+        "text": "1828-1910",
+        "width": 271.203125,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      },
+      {
+        "selector": "EM",
+        "text": "1860-1904",
+        "width": 271.203125,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      },
+      {
+        "selector": "EM",
+        "text": "1564-1616",
+        "width": 271.203125,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      }
+    ],
+    "footerControls": [
+      {
+        "selector": "social-link is-vk",
+        "text": "ВКонтакте",
+        "width": 36,
+        "height": 36,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "social-link is-telegram",
+        "text": "Telegram",
+        "width": 36,
+        "height": 36,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "social-link is-dzen",
+        "text": "Дзен",
+        "width": 36,
+        "height": 36,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "social-link is-ok",
+        "text": "Одноклассники",
+        "width": 36,
+        "height": 36,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "social-link is-boosty",
+        "text": "Boosty",
+        "width": 36,
+        "height": 36,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 16,
+        "weight": "400"
+      },
+      {
+        "selector": "BUTTON",
+        "text": "Форум читателей",
+        "width": 110,
+        "height": 30,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "600"
+      },
+      {
+        "selector": "BUTTON",
+        "text": "Вход и регистрация",
+        "width": 124.21875,
+        "height": 30,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 14,
+        "weight": "600"
+      }
+    ],
+    "footerMeta": [
+      {
+        "selector": "SMALL",
+        "text": "Литературный журнал",
+        "width": 155.28125,
+        "height": 18.1875,
+        "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+        "size": 13,
+        "weight": "400"
+      }
+    ],
+    "searchState": {
+      "focusVisible": true,
+      "outline": "solid",
+      "outlineWidth": 3,
+      "outlineColor": "rgb(255, 155, 69)",
+      "font": "\"Source Sans 3 Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif",
+      "size": "16px"
+    },
+    "errors": []
+  }
+]

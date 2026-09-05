@@ -1,0 +1,85 @@
+{
+  "scope": "Actual built RU homepage DOM at1440px; inject only current editorial-card-layout.css to prove four-card image ratio correction. Final rebuild verification is separate.",
+  "capturedAt": "2026-09-04T23:07:11.619Z",
+  "before": {
+    "gridHeight": 680.703125,
+    "cards": [
+      {
+        "imageHeight": 236.765625,
+        "imageBottom": 237.765625,
+        "metadataTop": 257.765625,
+        "shareTop": 580.515625,
+        "shareHeight": 99.1875,
+        "imageFit": "cover"
+      },
+      {
+        "imageHeight": 197.3125,
+        "imageBottom": 198.3125,
+        "metadataTop": 218.3125,
+        "shareTop": 580.515625,
+        "shareHeight": 99.1875,
+        "imageFit": "cover"
+      },
+      {
+        "imageHeight": 197.3125,
+        "imageBottom": 198.3125,
+        "metadataTop": 218.3125,
+        "shareTop": 580.515625,
+        "shareHeight": 99.1875,
+        "imageFit": "cover"
+      },
+      {
+        "imageHeight": 197.3125,
+        "imageBottom": 198.3125,
+        "metadataTop": 218.3125,
+        "shareTop": 580.515625,
+        "shareHeight": 99.1875,
+        "imageFit": "cover"
+      }
+    ]
+  },
+  "after": {
+    "gridHeight": 649.3125,
+    "cards": [
+      {
+        "imageHeight": 197.3125,
+        "imageBottom": 198.3125,
+        "metadataTop": 218.3125,
+        "shareTop": 549.125,
+        "shareHeight": 99.1875,
+        "imageFit": "cover"
+      },
+      {
+        "imageHeight": 197.3125,
+        "imageBottom": 198.3125,
+        "metadataTop": 218.3125,
+        "shareTop": 549.125,
+        "shareHeight": 99.1875,
+        "imageFit": "cover"
+      },
+      {
+        "imageHeight": 197.3125,
+        "imageBottom": 198.3125,
+        "metadataTop": 218.3125,
+        "shareTop": 549.125,
+        "shareHeight": 99.1875,
+        "imageFit": "cover"
+      },
+      {
+        "imageHeight": 197.3125,
+        "imageBottom": 198.3125,
+        "metadataTop": 218.3125,
+        "shareTop": 549.125,
+        "shareHeight": 99.1875,
+        "imageFit": "cover"
+      }
+    ]
+  },
+  "assertions": {
+    "imageBottomsAligned": true,
+    "metadataAligned": true,
+    "shareAligned": true,
+    "coverPreserved": true
+  },
+  "pass": true
+}

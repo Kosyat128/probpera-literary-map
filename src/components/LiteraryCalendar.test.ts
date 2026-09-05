@@ -1,8 +1,12 @@
 import { readFileSync } from "node:fs";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { load } from "cheerio";
 import { describe, expect, it } from "vitest";
 
-import type { Writer } from "../data/countries";
-import {
+import type { Country, Writer } from "../data/countries";
+import { InterfaceLanguageProvider } from "../i18n/InterfaceLanguage";
+import LiteraryCalendar, {
   calendarWriterIdentity,
   dateParts,
   visibleCalendarAgendaDays,
@@ -15,6 +19,41 @@ const calendarSource = readFileSync(
 const appSource = readFileSync(new URL("../App.tsx", import.meta.url), "utf8");
 
 describe("литературный календарь", () => {
+  it("показывает SVG-флаг вместо повторяющейся подписи и сохраняет доступное название страны", () => {
+    const month = String(new Date().getMonth() + 1).padStart(2, "0");
+    const country = {
+      id: "france",
+      code: "FR",
+      name: "Франция",
+      writers: [{ id: "calendar-writer", name: "Автор", birthDate: `1880-${month}-15` }],
+    } as Country;
+    const $ = load(renderToStaticMarkup(
+      createElement(InterfaceLanguageProvider, null,
+        createElement(LiteraryCalendar, { countries: [country] })
+      )
+    ));
+    const control = $(".calendar-agenda-country");
+
+    expect(control).toHaveLength(1);
+    expect(control.text()).toBe("");
+    expect(control.attr("aria-label")).toBe("Страна: Франция");
+    expect(control.attr("title")).toBe("Франция");
+    expect(control.find("img").attr("src")).toMatch(/\/assets\/country-flags\/fr\.svg$/u);
+    expect(control.find("img").attr("alt")).toBe("");
+    expect(control.find("img").attr("width")).toBe("28");
+  });
+
+  it("не оставляет флаги или пустые строки событий при отсутствии точных дат", () => {
+    const $ = load(renderToStaticMarkup(
+      createElement(InterfaceLanguageProvider, null,
+        createElement(LiteraryCalendar, { countries: [] })
+      )
+    ));
+
+    expect($(".calendar-empty")).toHaveLength(1);
+    expect($(".calendar-agenda-event, .calendar-agenda-country")).toHaveLength(0);
+  });
+
   it("не превращает год без точной даты в событие 1 января", () => {
     expect(dateParts("1899-01-01")).toBeNull();
     expect(dateParts("1899")).toBeNull();

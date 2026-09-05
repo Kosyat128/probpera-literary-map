@@ -3,6 +3,8 @@
 import Link from "next/link";
 
 import ConfirmSubmitButton from "@/components/ConfirmSubmitButton";
+import { editorialPreviewFonts } from "@/components/EditorialPreviewFonts";
+import previewStyles from "@/components/EditorialPreview.module.css";
 import {
   typographyBreakpoints,
   typographyFontStyles,
@@ -561,7 +563,7 @@ export default function TypographyWorkspace({
                 <p>Показывает только иерархию текста; выбранные значения появятся на сайте после публикации.</p>
               </div>
             </div>
-            <div className={styles.preview}>
+            <div className={`${styles.preview} ${editorialPreviewFonts} ${previewStyles.fonts}`}>
               <strong>Литература сохраняет голос времени</strong>
               <p>Пример абзаца помогает оценить ритм, длину строки и иерархию текста до публикации.</p>
             </div>

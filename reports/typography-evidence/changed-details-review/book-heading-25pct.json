@@ -1,0 +1,64 @@
+[
+  {
+    "width": 390,
+    "before": 28,
+    "after": 35,
+    "ratio": 1.25,
+    "title": "Книга месяца",
+    "size": 35,
+    "lineHeight": "38.5px",
+    "clamp": "none",
+    "overflow": 0,
+    "documentOverflow": 0,
+    "ink": {
+      "left": 46,
+      "right": 280.1875,
+      "bottom": 564.828125
+    },
+    "parent": {
+      "left": 46,
+      "right": 344
+    },
+    "nextInkTop": 583.328125,
+    "height": 38.5,
+    "headingWidth": 298,
+    "lineCount": 1,
+    "visualReview": {
+      "loadedBook": "Лолита",
+      "coverFullyVisible": true,
+      "descriptionFullyVisible": true,
+      "controlsVisible": true
+    }
+  },
+  {
+    "width": 1440,
+    "before": 28,
+    "after": 35,
+    "ratio": 1.25,
+    "title": "Книга месяца",
+    "size": 35,
+    "lineHeight": "38.5px",
+    "clamp": "none",
+    "overflow": 0,
+    "documentOverflow": 0,
+    "ink": {
+      "left": 404.609375,
+      "right": 638.796875,
+      "bottom": 380.1875
+    },
+    "parent": {
+      "left": 404.609375,
+      "right": 794.703125
+    },
+    "nextInkTop": 398.6875,
+    "height": 38.5,
+    "headingWidth": 390.09375,
+    "lineCount": 1,
+    "visualReview": {
+      "loadedBook": "Лолита",
+      "coverFullyVisible": true,
+      "descriptionFullyVisible": true,
+      "controlsVisible": true
+    }
+  }
+]

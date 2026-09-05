@@ -1,0 +1,436 @@
+{
+  "scope": "Source CSS on minimal isolated CMS and forum DOM at 390/1440 CSS px, reader scale1/1.3. Fixture uses representative text; no live CMS/forum content, route traversal, 3D, account, authentication, build or production verification.",
+  "before": {
+    "capturedAt": "2026-09-04T22:34:05.051Z",
+    "browser": "152.0.7977.76",
+    "sourceSha256": {
+      "src/styles/editorial-fonts.css": "a00298bc18b2d4f13ee0ddc627c5cf5e99a4228e1982c719176e16a44e8d93f1",
+      "src/index.css": "2d316478b7d118952849d134ddfcacd4d03182b76049f549640b874ba6f05c14",
+      "src/styles/community-editorial-layout.css": "aca1e2fa5d8ee590827a1023a711645d56a3c9b3502e6af119e562d4ef1dafb3",
+      "src/styles/site-typography.css": "fe6ccdad5bf38f599561a5a1aba1b06f041d2bcb9779c31e170724b3638d7a6b",
+      "src/styles/stage5f-responsive-accessibility.css": "9b92dcd6d7ab544cd4ca35f86c1779ed8ced58e80e775075eec4e0a7b6fbc423"
+    },
+    "cases": [
+      {
+        "width": 390,
+        "scale": 1,
+        "cms": {
+          "bodyFont": "17px",
+          "titleFont": "32px",
+          "navFont": "13px",
+          "updatedFont": "13.3333px",
+          "proseWidth": 356,
+          "proseInner": 293.6,
+          "headerWidth": 356,
+          "headerLeft": 17,
+          "proseLeft": 17,
+          "tailPadding": 182,
+          "pre": {
+            "client": 294,
+            "scroll": 1836,
+            "scrollLeft": 0,
+            "overflow": "visible",
+            "font": "17px"
+          },
+          "table": {
+            "client": 1179,
+            "scroll": 1179,
+            "scrollLeft": 0,
+            "overflow": "visible",
+            "font": "16px"
+          },
+          "pageWidth": 390
+        },
+        "forum": {
+          "titleClient": 81,
+          "titleScroll": 190,
+          "titleHeight": 22,
+          "titleScrollHeight": 22,
+          "titleOverflow": "hidden",
+          "whiteSpace": "nowrap",
+          "descriptionFont": "12px",
+          "descriptionColor": "rgba(255, 255, 255, 0.4)",
+          "descriptionClient": 32,
+          "descriptionScroll": 65
+        },
+        "textSha256": "5a4f6dbce4ff59beae7b7217a5c31fc68812ed08628e4cde31198203301bd347"
+      },
+      {
+        "width": 390,
+        "scale": 1.3,
+        "cms": {
+          "bodyFont": "22.1px",
+          "titleFont": "32px",
+          "navFont": "13px",
+          "updatedFont": "13.3333px",
+          "proseWidth": 356,
+          "proseInner": 293.6,
+          "headerWidth": 356,
+          "headerLeft": 17,
+          "proseLeft": 17,
+          "tailPadding": 182,
+          "pre": {
+            "client": 294,
+            "scroll": 2387,
+            "scrollLeft": 0,
+            "overflow": "visible",
+            "font": "22.1px"
+          },
+          "table": {
+            "client": 1179,
+            "scroll": 1179,
+            "scrollLeft": 0,
+            "overflow": "visible",
+            "font": "16px"
+          },
+          "pageWidth": 390
+        },
+        "forum": {
+          "titleClient": 81,
+          "titleScroll": 190,
+          "titleHeight": 22,
+          "titleScrollHeight": 22,
+          "titleOverflow": "hidden",
+          "whiteSpace": "nowrap",
+          "descriptionFont": "12px",
+          "descriptionColor": "rgba(255, 255, 255, 0.4)",
+          "descriptionClient": 32,
+          "descriptionScroll": 65
+        },
+        "textSha256": "5a4f6dbce4ff59beae7b7217a5c31fc68812ed08628e4cde31198203301bd347"
+      },
+      {
+        "width": 1440,
+        "scale": 1,
+        "cms": {
+          "bodyFont": "19px",
+          "titleFont": "64.8px",
+          "navFont": "13px",
+          "updatedFont": "13.3333px",
+          "proseWidth": 792.984375,
+          "proseInner": 609,
+          "headerWidth": 1018,
+          "headerLeft": 211,
+          "proseLeft": 323.5,
+          "tailPadding": 182,
+          "pre": {
+            "client": 609,
+            "scroll": 2052,
+            "scrollLeft": 0,
+            "overflow": "visible",
+            "font": "19px"
+          },
+          "table": {
+            "client": 1179,
+            "scroll": 1179,
+            "scrollLeft": 0,
+            "overflow": "visible",
+            "font": "16px"
+          },
+          "pageWidth": 1440
+        },
+        "forum": {
+          "titleClient": 101,
+          "titleScroll": 190,
+          "titleHeight": 22,
+          "titleScrollHeight": 22,
+          "titleOverflow": "hidden",
+          "whiteSpace": "nowrap",
+          "descriptionFont": "12px",
+          "descriptionColor": "rgba(255, 255, 255, 0.4)",
+          "descriptionClient": 32,
+          "descriptionScroll": 49
+        },
+        "textSha256": "5a4f6dbce4ff59beae7b7217a5c31fc68812ed08628e4cde31198203301bd347"
+      },
+      {
+        "width": 1440,
+        "scale": 1.3,
+        "cms": {
+          "bodyFont": "24.7px",
+          "titleFont": "64.8px",
+          "navFont": "13px",
+          "updatedFont": "13.3333px",
+          "proseWidth": 1018,
+          "proseInner": 834,
+          "headerWidth": 1018,
+          "headerLeft": 211,
+          "proseLeft": 211,
+          "tailPadding": 182,
+          "pre": {
+            "client": 834,
+            "scroll": 2668,
+            "scrollLeft": 0,
+            "overflow": "visible",
+            "font": "24.7px"
+          },
+          "table": {
+            "client": 1179,
+            "scroll": 1179,
+            "scrollLeft": 0,
+            "overflow": "visible",
+            "font": "16px"
+          },
+          "pageWidth": 1440
+        },
+        "forum": {
+          "titleClient": 101,
+          "titleScroll": 190,
+          "titleHeight": 22,
+          "titleScrollHeight": 22,
+          "titleOverflow": "hidden",
+          "whiteSpace": "nowrap",
+          "descriptionFont": "12px",
+          "descriptionColor": "rgba(255, 255, 255, 0.4)",
+          "descriptionClient": 32,
+          "descriptionScroll": 49
+        },
+        "textSha256": "5a4f6dbce4ff59beae7b7217a5c31fc68812ed08628e4cde31198203301bd347"
+      }
+    ]
+  },
+  "after": {
+    "capturedAt": "2026-09-04T22:35:58.269Z",
+    "browser": "152.0.7977.76",
+    "sourceSha256": {
+      "src/styles/editorial-fonts.css": "a00298bc18b2d4f13ee0ddc627c5cf5e99a4228e1982c719176e16a44e8d93f1",
+      "src/index.css": "6b8e873adda03d57024eee37744fc3318b1feb87260fd7bfbc2edb5fc6eb0b22",
+      "src/styles/community-editorial-layout.css": "aca1e2fa5d8ee590827a1023a711645d56a3c9b3502e6af119e562d4ef1dafb3",
+      "src/styles/site-typography.css": "d815d9b5853d035620525c572e01c89f9ec8f3af3f6eb66abc0d155ed8c0a439",
+      "src/styles/stage5f-responsive-accessibility.css": "9b92dcd6d7ab544cd4ca35f86c1779ed8ced58e80e775075eec4e0a7b6fbc423"
+    },
+    "cases": [
+      {
+        "width": 390,
+        "scale": 1,
+        "cms": {
+          "bodyFont": "17px",
+          "titleFont": "32px",
+          "navFont": "14px",
+          "updatedFont": "13px",
+          "proseWidth": 316,
+          "proseInner": 316,
+          "headerWidth": 316,
+          "headerLeft": 37,
+          "proseLeft": 37,
+          "tailPadding": 72,
+          "pre": {
+            "client": 314,
+            "scroll": 1407,
+            "scrollLeft": 100,
+            "overflow": "auto",
+            "font": "13px"
+          },
+          "table": {
+            "client": 316,
+            "scroll": 1064,
+            "scrollLeft": 100,
+            "overflow": "auto",
+            "font": "13px"
+          },
+          "pageWidth": 390
+        },
+        "forum": {
+          "titleClient": 132,
+          "titleScroll": 132,
+          "titleHeight": 39,
+          "titleScrollHeight": 39,
+          "titleOverflow": "visible",
+          "whiteSpace": "normal",
+          "descriptionFont": "13px",
+          "descriptionColor": "rgb(213, 201, 220)",
+          "descriptionClient": 36,
+          "descriptionScroll": 36
+        },
+        "textSha256": "5a4f6dbce4ff59beae7b7217a5c31fc68812ed08628e4cde31198203301bd347"
+      },
+      {
+        "width": 390,
+        "scale": 1.3,
+        "cms": {
+          "bodyFont": "22.1px",
+          "titleFont": "32px",
+          "navFont": "14px",
+          "updatedFont": "13px",
+          "proseWidth": 316,
+          "proseInner": 316,
+          "headerWidth": 316,
+          "headerLeft": 37,
+          "proseLeft": 37,
+          "tailPadding": 72,
+          "pre": {
+            "client": 314,
+            "scroll": 1818,
+            "scrollLeft": 100,
+            "overflow": "auto",
+            "font": "16.9px"
+          },
+          "table": {
+            "client": 316,
+            "scroll": 1332,
+            "scrollLeft": 100,
+            "overflow": "auto",
+            "font": "16.9px"
+          },
+          "pageWidth": 390
+        },
+        "forum": {
+          "titleClient": 132,
+          "titleScroll": 132,
+          "titleHeight": 39,
+          "titleScrollHeight": 39,
+          "titleOverflow": "visible",
+          "whiteSpace": "normal",
+          "descriptionFont": "13px",
+          "descriptionColor": "rgb(213, 201, 220)",
+          "descriptionClient": 36,
+          "descriptionScroll": 36
+        },
+        "textSha256": "5a4f6dbce4ff59beae7b7217a5c31fc68812ed08628e4cde31198203301bd347"
+      },
+      {
+        "width": 1440,
+        "scale": 1,
+        "cms": {
+          "bodyFont": "19px",
+          "titleFont": "64.8px",
+          "navFont": "14px",
+          "updatedFont": "13px",
+          "proseWidth": 760,
+          "proseInner": 760,
+          "headerWidth": 760,
+          "headerLeft": 340,
+          "proseLeft": 340,
+          "tailPadding": 112,
+          "pre": {
+            "client": 758,
+            "scroll": 1407,
+            "scrollLeft": 100,
+            "overflow": "auto",
+            "font": "13px"
+          },
+          "table": {
+            "client": 760,
+            "scroll": 1064,
+            "scrollLeft": 100,
+            "overflow": "auto",
+            "font": "13px"
+          },
+          "pageWidth": 1440
+        },
+        "forum": {
+          "titleClient": 152,
+          "titleScroll": 152,
+          "titleHeight": 39,
+          "titleScrollHeight": 39,
+          "titleOverflow": "visible",
+          "whiteSpace": "normal",
+          "descriptionFont": "13px",
+          "descriptionColor": "rgb(213, 201, 220)",
+          "descriptionClient": 36,
+          "descriptionScroll": 36
+        },
+        "textSha256": "5a4f6dbce4ff59beae7b7217a5c31fc68812ed08628e4cde31198203301bd347"
+      },
+      {
+        "width": 1440,
+        "scale": 1.3,
+        "cms": {
+          "bodyFont": "24.7px",
+          "titleFont": "64.8px",
+          "navFont": "14px",
+          "updatedFont": "13px",
+          "proseWidth": 760,
+          "proseInner": 760,
+          "headerWidth": 760,
+          "headerLeft": 340,
+          "proseLeft": 340,
+          "tailPadding": 112,
+          "pre": {
+            "client": 758,
+            "scroll": 1818,
+            "scrollLeft": 100,
+            "overflow": "auto",
+            "font": "16.9px"
+          },
+          "table": {
+            "client": 760,
+            "scroll": 1332,
+            "scrollLeft": 100,
+            "overflow": "auto",
+            "font": "16.9px"
+          },
+          "pageWidth": 1440
+        },
+        "forum": {
+          "titleClient": 152,
+          "titleScroll": 152,
+          "titleHeight": 39,
+          "titleScrollHeight": 39,
+          "titleOverflow": "visible",
+          "whiteSpace": "normal",
+          "descriptionFont": "13px",
+          "descriptionColor": "rgb(213, 201, 220)",
+          "descriptionClient": 36,
+          "descriptionScroll": 36
+        },
+        "textSha256": "5a4f6dbce4ff59beae7b7217a5c31fc68812ed08628e4cde31198203301bd347"
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "width": 390,
+      "scale": 1,
+      "contentUnchanged": true,
+      "readingFontsUnchanged": true,
+      "preScrolls": true,
+      "tableScrolls": true,
+      "headerProseAligned": true,
+      "tailReduced": true,
+      "fullCategoryTitle": true,
+      "descriptionReadable": true,
+      "noPageOverflow": true
+    },
+    {
+      "width": 390,
+      "scale": 1.3,
+      "contentUnchanged": true,
+      "readingFontsUnchanged": true,
+      "preScrolls": true,
+      "tableScrolls": true,
+      "headerProseAligned": true,
+      "tailReduced": true,
+      "fullCategoryTitle": true,
+      "descriptionReadable": true,
+      "noPageOverflow": true
+    },
+    {
+      "width": 1440,
+      "scale": 1,
+      "contentUnchanged": true,
+      "readingFontsUnchanged": true,
+      "preScrolls": true,
+      "tableScrolls": true,
+      "headerProseAligned": true,
+      "tailReduced": true,
+      "fullCategoryTitle": true,
+      "descriptionReadable": true,
+      "noPageOverflow": true
+    },
+    {
+      "width": 1440,
+      "scale": 1.3,
+      "contentUnchanged": true,
+      "readingFontsUnchanged": true,
+      "preScrolls": true,
+      "tableScrolls": true,
+      "headerProseAligned": true,
+      "tailReduced": true,
+      "fullCategoryTitle": true,
+      "descriptionReadable": true,
+      "noPageOverflow": true
+    }
+  ],
+  "pass": true
+}
