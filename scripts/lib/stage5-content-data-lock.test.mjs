@@ -11,6 +11,7 @@ import {
   bookDatabaseEditorialOwnerAttestation,
   currentIntegrationGovernanceFingerprintRegistry,
   governanceFingerprintRegistry,
+  interfaceStorageResilienceAttestation,
   ownerCssClasses,
   russianBiographyEditorialOwnerAttestation,
   stage5D1AdditiveI18nAttestation,
@@ -116,6 +117,17 @@ function projectApprovedAdminPublicationDelta(relativePath, source) {
     if (delta.path !== relativePath) continue;
     if (projected.split(delta.after).length !== 2) {
       throw new Error(`Missing or duplicate reviewed publication delta: ${relativePath}`);
+    }
+    projected = projected.replace(delta.after, delta.before);
+  }
+  return projected;
+}
+
+function projectApprovedInterfaceStorageDelta(source) {
+  let projected = source;
+  for (const delta of interfaceStorageResilienceAttestation.projections) {
+    if (projected.split(delta.after).length !== 2) {
+      throw new Error(`Missing or duplicate reviewed interface-storage delta: ${delta.id}`);
     }
     projected = projected.replace(delta.after, delta.before);
   }
@@ -249,10 +261,20 @@ function readEnglishInterfaceText() {
     true,
     ts.ScriptKind.TSX
   );
-  const codeOutsideInitializerSha256 = sha256(
+  const currentCodeOutsideInitializerSha256 = sha256(
     printer.printFile(projectedSource).replace(/\r\n?/gu, "\n")
   );
-  return { entries, codeOutsideInitializerSha256 };
+  const historicalSource = ts.createSourceFile(
+    "src/i18n/InterfaceLanguage.tsx",
+    projectApprovedInterfaceStorageDelta(projectedText),
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TSX
+  );
+  const codeOutsideInitializerSha256 = sha256(
+    printer.printFile(historicalSource).replace(/\r\n?/gu, "\n")
+  );
+  return { entries, codeOutsideInitializerSha256, currentCodeOutsideInitializerSha256 };
 }
 
 function readStage5D1I18nFixture() {
@@ -516,6 +538,37 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       );
     }, 30_000);
   }
+
+  it("attests only the reviewed language-storage guards and preserves the historical runtime", () => {
+    const attestation = interfaceStorageResilienceAttestation;
+    expect(attestation).toMatchObject({
+      id: "LITERARY-NEWS-INTERFACE-STORAGE-RESILIENCE-2026-09-05",
+      authorizedOn: "2026-09-05",
+      path: "src/i18n/InterfaceLanguage.tsx",
+      baselineCodeOutsideInitializerSha256:
+        stage5D1AdditiveI18nAttestation.interfaceLanguage.codeOutsideInitializerSha256,
+    });
+    expect(attestation.projections.map(({ id }) => id)).toEqual([
+      "initial-language-storage-read",
+      "language-selection-storage-write",
+    ]);
+    const source = readFileSync(path.join(root, attestation.path), "utf8")
+      .replace(/\r\n?/gu, "\n");
+    for (const delta of attestation.projections) {
+      expect(() => projectApprovedInterfaceStorageDelta(
+        source.replace(delta.after, delta.before)
+      )).toThrow("Missing or duplicate reviewed interface-storage delta");
+      expect(() => projectApprovedInterfaceStorageDelta(source + delta.after))
+        .toThrow("Missing or duplicate reviewed interface-storage delta");
+    }
+    expect(projectApprovedInterfaceStorageDelta(source + "\nconst unreviewed = true;\n"))
+      .toBe(projectApprovedInterfaceStorageDelta(source) + "\nconst unreviewed = true;\n");
+    const runtime = readEnglishInterfaceText();
+    expect(runtime.currentCodeOutsideInitializerSha256)
+      .toBe(attestation.codeOutsideInitializerSha256);
+    expect(runtime.codeOutsideInitializerSha256)
+      .toBe(attestation.baselineCodeOutsideInitializerSha256);
+  });
 
   it("preserves the approved Stage 5D-1 delta and pins final interface copy", () => {
     const attestation = stage5D1AdditiveI18nAttestation;

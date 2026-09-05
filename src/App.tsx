@@ -115,6 +115,9 @@ import {
 } from "./loading/nearViewportActivation";
 import "./styles/stage5-loading-shells.css";
 
+const LocalLiteraryNewsPanel = import.meta.env.DEV
+  ? lazy(() => import("./components/LiteraryNewsPanel"))
+  : null;
 const GlobalSearch = lazy(() => import("./components/GlobalSearch"));
 const CommunityHub = lazy(() => import("./community/CommunityHub"));
 const NobelArchiveStrip = lazy(() => import("./components/NobelArchiveStrip"));
@@ -1780,6 +1783,95 @@ export default function App() {
   const globalSearchArchiveError =
     archiveDataStatus === "error" || bookRuntimeStatus === "error";
 
+  const showLocalNews = import.meta.env.DEV && new URLSearchParams(window.location.search).get("literary-news") === "1";
+  const editorialStandardCard = (
+  <article
+    className={`editorial-standard${coreHomepageSectionClass(coreEditorialStandard)}`}
+    id={showLocalNews ? undefined : "about"}
+    style={coreHomepageSectionStyle(coreEditorialStandard)}
+    {...cmsCoreFieldMarker(
+      "editorial-standard",
+      "backgroundMediaId",
+      coreEditorialStandard?.backgroundImageUrl || "",
+      { kind: "image", label: "Фон редакционного стандарта" }
+    )}
+  >
+    <span
+      className="section-kicker"
+      {...cmsCoreFieldMarker(
+        "editorial-standard",
+        "eyebrow",
+        coreEditorialStandard?.eyebrow || "Редакционный стандарт",
+        { label: "Надзаголовок редакционного стандарта" }
+      )}
+    >
+      {language === "ru" && coreEditorialStandard?.eyebrow
+        ? coreEditorialStandard.eyebrow
+        : t("Редакционный стандарт")}
+    </span>
+    <h3
+      {...cmsCoreFieldMarker(
+        "editorial-standard",
+        "title",
+        coreEditorialStandard?.title || "Материал, которому можно доверять",
+        { label: "Заголовок редакционного стандарта" }
+      )}
+    >
+      {language === "ru" && coreEditorialStandard?.title
+        ? coreEditorialStandard.title
+        : t("Материал, которому можно доверять")}
+    </h3>
+    <p
+      {...cmsCoreFieldMarker(
+        "editorial-standard",
+        "description",
+        coreEditorialStandard?.description ||
+          "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном.",
+        { kind: "textarea", label: "Описание редакционного стандарта" }
+      )}
+    >
+      {language === "ru" && coreEditorialStandard?.description
+        ? coreEditorialStandard.description
+        : t(
+            "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном."
+          )}
+    </p>
+    <ul>
+      <li>
+        {t(
+          selectInterfacePlural(readyBiographyCount, language, [
+            "{count} карточка уже прошла публикационную проверку по открытым авторитетным источникам",
+            "{count} карточки уже прошли публикационную проверку по открытым авторитетным источникам",
+            "{count} карточек уже прошли публикационную проверку по открытым авторитетным источникам",
+          ])
+        ).replace("{count}", number(readyBiographyCount))}
+      </li>
+      <li>
+        {t(
+          selectInterfacePlural(
+            editorialAudit.portraitedWriters,
+            language,
+            [
+              "{count} документальный портрет подключён без генерации лиц",
+              "{count} документальных портрета подключены без генерации лиц",
+              "{count} документальных портретов подключены без генерации лиц",
+            ]
+          )
+        ).replace("{count}", number(editorialAudit.portraitedWriters))}
+      </li>
+      <li>
+        {t(
+          selectInterfacePlural(editorialQueueCount, language, [
+            "Ещё {count} запись остаётся в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки",
+            "Ещё {count} записи остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки",
+            "Ещё {count} записей остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки",
+          ])
+        ).replace("{count}", number(editorialQueueCount))}
+      </li>
+    </ul>
+  </article>
+  );
+
   if (directArticleRoute) {
     return (
       <div
@@ -2732,9 +2824,10 @@ export default function App() {
           </div>
         </section>
 
+
         <section
           ref={setBookDayActivationNode}
-          className={`daily-grid painted-paper-section${coreHomepageSectionClass(coreBookMonth)}`}
+          className={`daily-grid painted-paper-section${showLocalNews ? " has-literary-news" : ""}${coreHomepageSectionClass(coreBookMonth)}`}
           id="book-day"
           style={coreHomepageSectionStyle(coreBookMonth)}
           {...cmsCoreFieldMarker(
@@ -2914,99 +3007,19 @@ export default function App() {
             </div>
           </article>
 
-          <div className="book-month-supporting">
-          <article
-            className={`editorial-standard${coreHomepageSectionClass(coreEditorialStandard)}`}
-            id="about"
-            style={coreHomepageSectionStyle(coreEditorialStandard)}
-            {...cmsCoreFieldMarker(
-              "editorial-standard",
-              "backgroundMediaId",
-              coreEditorialStandard?.backgroundImageUrl || "",
-              { kind: "image", label: "Фон редакционного стандарта" }
-            )}
-          >
-            <span
-              className="section-kicker"
-              {...cmsCoreFieldMarker(
-                "editorial-standard",
-                "eyebrow",
-                coreEditorialStandard?.eyebrow || "Редакционный стандарт",
-                { label: "Надзаголовок редакционного стандарта" }
-              )}
-            >
-              {language === "ru" && coreEditorialStandard?.eyebrow
-                ? coreEditorialStandard.eyebrow
-                : t("Редакционный стандарт")}
-            </span>
-            <h3
-              {...cmsCoreFieldMarker(
-                "editorial-standard",
-                "title",
-                coreEditorialStandard?.title || "Материал, которому можно доверять",
-                { label: "Заголовок редакционного стандарта" }
-              )}
-            >
-              {language === "ru" && coreEditorialStandard?.title
-                ? coreEditorialStandard.title
-                : t("Материал, которому можно доверять")}
-            </h3>
-            <p
-              {...cmsCoreFieldMarker(
-                "editorial-standard",
-                "description",
-                coreEditorialStandard?.description ||
-                  "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном.",
-                { kind: "textarea", label: "Описание редакционного стандарта" }
-              )}
-            >
-              {language === "ru" && coreEditorialStandard?.description
-                ? coreEditorialStandard.description
-                : t(
-                    "Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном."
-                  )}
-            </p>
-            <ul>
-              <li>
-                {t(
-                  selectInterfacePlural(readyBiographyCount, language, [
-                    "{count} карточка уже прошла публикационную проверку по открытым авторитетным источникам",
-                    "{count} карточки уже прошли публикационную проверку по открытым авторитетным источникам",
-                    "{count} карточек уже прошли публикационную проверку по открытым авторитетным источникам",
-                  ])
-                ).replace("{count}", number(readyBiographyCount))}
-              </li>
-              <li>
-                {t(
-                  selectInterfacePlural(
-                    editorialAudit.portraitedWriters,
-                    language,
-                    [
-                      "{count} документальный портрет подключён без генерации лиц",
-                      "{count} документальных портрета подключены без генерации лиц",
-                      "{count} документальных портретов подключены без генерации лиц",
-                    ]
-                  )
-                ).replace("{count}", number(editorialAudit.portraitedWriters))}
-              </li>
-              <li>
-                {t(
-                  selectInterfacePlural(editorialQueueCount, language, [
-                    "Ещё {count} запись остаётся в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки",
-                    "Ещё {count} записи остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки",
-                    "Ещё {count} записей остаются в редакционной очереди; автоматически собранные черновики не публикуются до ручной проверки",
-                  ])
-                ).replace("{count}", number(editorialQueueCount))}
-              </li>
-            </ul>
-          </article>
+          <div className={`book-month-supporting${showLocalNews ? " has-news" : ""}`}>
+          {showLocalNews && LocalLiteraryNewsPanel ? (
+            <Suspense fallback={null}>
+              <LocalLiteraryNewsPanel variant="sidebar" />
+            </Suspense>
+          ) : editorialStandardCard}
 
           <article className="book-fact-card">
             <div className="book-fact-orbit" aria-hidden="true">
               <span>✦</span>
               <i />
             </div>
-            <div>
+            <div className="book-fact-copy">
               <span className="section-kicker">{t("Интересный факт о книге")}</span>
               <h3>{t(factOfDay.book)}</h3>
               <p>{t(factOfDay.fact)}</p>
@@ -3020,6 +3033,12 @@ export default function App() {
             </div>
           </article>
           </div>
+          {showLocalNews && (
+            <details className="news-editorial-context" id="about">
+              <summary>{t("Редакционный стандарт")}</summary>
+              {editorialStandardCard}
+            </details>
+          )}
         </section>
 
         <DeferredBookArchive

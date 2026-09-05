@@ -46,35 +46,44 @@ function assertReadableCard(card, label) {
 
 for (const locale of ["ru", "en"]) {
   test(`${locale}: complete card text, footer geometry and local fonts at ten widths`, async ({ page }) => {
+    // Real Canvas activation during resizing is much slower on software WebGL.
+    // Budget each layout while retaining every content, font and geometry check.
+    test.setTimeout(typographyViewports.length * 30_000);
     await page.goto("/");
     await expect(page.locator(".editorial-grid")).toBeVisible();
     await chooseTypographyLocale(page, locale);
     for (const viewport of typographyViewports) {
-      await page.setViewportSize(viewport);
-      await japaneseCard(page).scrollIntoViewIfNeeded();
-      await settleTypography(page);
-      const geometry = await measureTypography(page);
-      const label = `${locale}/${viewport.width}`;
-      expect(geometry.documentOverflow, label).toBeLessThanOrEqual(1);
-      expect(geometry.cards.length, label).toBeGreaterThan(2);
-      for (const [index, card] of geometry.cards.entries()) assertReadableCard(card, `${label}/card${index}`);
-      for (const item of geometry.footer) {
-        expect(item.overflowX, `${label}/footer ${item.text}`).toBeLessThanOrEqual(1);
-        expect(item.rect.left).toBeGreaterThanOrEqual(-1);
-        expect(item.rect.right).toBeLessThanOrEqual(viewport.width + 1);
-      }
-      const reference = japaneseCard(page);
-      await expect(reference.locator(".section-link")).toHaveText(
-        locale === "ru" ? "Все материалы рубрики" : "All articles in this section"
-      );
+      const startedAt = Date.now();
+      await test.step(`${locale}: ${viewport.width}px card layout`, async () => {
+        await page.setViewportSize(viewport);
+        await japaneseCard(page).scrollIntoViewIfNeeded();
+        await settleTypography(page);
+        const geometry = await measureTypography(page);
+        const label = `${locale}/${viewport.width}`;
+        expect(geometry.documentOverflow, label).toBeLessThanOrEqual(1);
+        expect(geometry.cards.length, label).toBeGreaterThan(2);
+        for (const [index, card] of geometry.cards.entries()) assertReadableCard(card, `${label}/card${index}`);
+        for (const item of geometry.footer) {
+          expect(item.overflowX, `${label}/footer ${item.text}`).toBeLessThanOrEqual(1);
+          expect(item.rect.left).toBeGreaterThanOrEqual(-1);
+          expect(item.rect.right).toBeLessThanOrEqual(viewport.width + 1);
+        }
+        const reference = japaneseCard(page);
+        await expect(reference.locator(".section-link")).toHaveText(
+          locale === "ru" ? "Все материалы рубрики" : "All articles in this section"
+        );
+      });
+      if (process.env.CI) console.info(`[typography] ${locale}/${viewport.width}: ${Date.now() - startedAt}ms`);
     }
-    const loadedSources = await page.evaluate(() =>
-      performance.getEntriesByType("resource").filter((entry) => /\.(?:woff2?|ttf)(?:\?|$)/u.test(entry.name)).map((entry) => entry.name)
-    );
-    expect(loadedSources.length).toBeGreaterThan(0);
-    for (const source of loadedSources) expect(new URL(source).origin).toBe(new URL(page.url()).origin);
-    expect(await japaneseCard(page).locator("h3").evaluate((element) => getComputedStyle(element).fontFamily)).toContain("Onest Local");
-    expect(await page.evaluate(async () => (await document.fonts.load('500 24px "Onest Local"', 'Прочитать')).length)).toBeGreaterThan(0);
+    await test.step("Local font resources and actual Cyrillic face", async () => {
+      const loadedSources = await page.evaluate(() =>
+        performance.getEntriesByType("resource").filter((entry) => /\.(?:woff2?|ttf)(?:\?|$)/u.test(entry.name)).map((entry) => entry.name)
+      );
+      expect(loadedSources.length).toBeGreaterThan(0);
+      for (const source of loadedSources) expect(new URL(source).origin).toBe(new URL(page.url()).origin);
+      expect(await japaneseCard(page).locator("h3").evaluate((element) => getComputedStyle(element).fontFamily)).toContain("Onest Local");
+      expect(await page.evaluate(async () => (await document.fonts.load('500 24px "Onest Local"', 'Прочитать')).length)).toBeGreaterThan(0);
+    });
   });
 
   test(`${locale}: archive and reader reflow, body scale and heading isolation`, async ({ page }) => {
