@@ -75,19 +75,30 @@ jobs:
           set -euo pipefail
           for shard in 21 {1..20} 22; do
             echo "::group::Premium globe shard ${shard}/22"
-            npm run test:e2e -- --shard="${shard}/22" --workers=1
+            PLAYWRIGHT_HTML_OUTPUT_DIR="playwright-report/premium-${shard}" \
+              npm run test:e2e -- --shard="${shard}/22" --workers=1 --output="test-results/premium-${shard}"
             echo "::endgroup::"
           done
 
       - name: Run WebGL-heavy regression checks serially
         env:
           PLAYWRIGHT_SUITE: webgl-regression
-        run: npm run test:e2e -- --workers=1
+        run: |
+          set -euo pipefail
+          # Recycle Chromium and its software GPU between bounded groups.
+          # A single long-lived browser slows down after many real 3D scenes.
+          for shard in {1..6}; do
+            echo "::group::WebGL regression shard ${shard}/6"
+            PLAYWRIGHT_HTML_OUTPUT_DIR="playwright-report/webgl-${shard}" \
+              npm run test:e2e -- --shard="${shard}/6" --workers=1 --output="test-results/webgl-${shard}"
+            echo "::endgroup::"
+          done
 
       - name: Run remaining browser, mobile and accessibility checks in parallel
         env:
           PLAYWRIGHT_SUITE: regression
-        run: npm run test:e2e
+          PLAYWRIGHT_HTML_OUTPUT_DIR: playwright-report/regression
+        run: npm run test:e2e -- --output=test-results/regression
 
       - name: Upload browser diagnostics on failure
         if: failure() || cancelled()

@@ -31,45 +31,48 @@ async function fixtureArticleUrl(request, baseURL, article = source) {
   throw new Error("The bilingual article fixture must be available from the local preview.");
 }
 
-test("real vocabulary illustrations stay with their own numbered entries at every reader font size", async ({ page, request, baseURL, isMobile }, testInfo) => {
-  test.setTimeout(240_000);
-  const article = JSON.parse(readFileSync(new URL("../../public/cms/articles/cms-0e262528-70b9-43c4-8160-7cfb5c6b101c.json", import.meta.url), "utf8"));
-  const url = await fixtureArticleUrl(request, baseURL, article);
-  const articlePath = new URL(article.url).pathname;
-  const prefix = new URL(url).pathname.slice(0, -articlePath.length) + "/";
-  const delivery = createImageDeliveryResolver(imageManifest, prefix);
-  await installEnvironment(page);
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  // The narrow viewport also exercises the book's additional readability scale.
-  await page.setViewportSize({ width: isMobile ? 320 : 1440, height: 1000 });
-  const book = await enterBook(page, url, "ru");
-  await expect(book).toHaveAttribute("data-renderer", "three", { timeout: 30_000 });
-  await expectPage(book, 0);
-  const original = await page.evaluate(html => {
-    const body = new DOMParser().parseFromString(html, "text/html").body;
-    const entries = [...body.querySelectorAll("h2")].filter(heading => /^\s*\d+\./u.test(heading.textContent)).map(heading => {
-      let text = "";
-      let source = "";
-      for (let node = heading.nextElementSibling; node && node.tagName !== "H2"; node = node.nextElementSibling) {
-        text += ` ${node.textContent}`;
-        source ||= node.querySelector("img")?.getAttribute("src") || "";
-      }
-      return { heading: heading.textContent.replace(/\s+/gu, " ").trim(), text: text.replace(/\s+/gu, " ").trim(), source };
-    });
-    return { entries, text: body.textContent };
-  }, article.contentHtml);
-  expect(original.entries).toHaveLength(25);
-  expect(original.entries[12].heading).toBe("13. Гематология");
-  expect(original.entries[13].heading).toBe("14. Гобелен");
-  await book.locator("summary").click();
-  const reports = [];
-  let currentScale = 1;
-  for (const scale of [1, 0.9, 1.3]) {
-    const change = scale > currentScale ? "Увеличить шрифт" : "Уменьшить шрифт";
-    for (let step = 0; step < Math.round(Math.abs(scale - currentScale) * 10); step++) {
+// Each font size owns a fresh Playwright context and one real WebGL book.
+// This retains the complete matrix without making a single browser page rebuild
+// and traverse three books on hosted software-rendering runners.
+for (const scale of [1, 0.9, 1.3]) {
+  test(`real vocabulary illustrations stay with their own numbered entries at ${Math.round(scale * 100)}% font size`, async ({ page, request, baseURL, isMobile }, testInfo) => {
+    test.setTimeout(240_000);
+    const article = JSON.parse(readFileSync(new URL("../../public/cms/articles/cms-0e262528-70b9-43c4-8160-7cfb5c6b101c.json", import.meta.url), "utf8"));
+    const url = await fixtureArticleUrl(request, baseURL, article);
+    const articlePath = new URL(article.url).pathname;
+    const prefix = new URL(url).pathname.slice(0, -articlePath.length) + "/";
+    const delivery = createImageDeliveryResolver(imageManifest, prefix);
+    await installEnvironment(page);
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    // The narrow viewport also exercises the book's additional readability scale.
+    await page.setViewportSize({ width: isMobile ? 320 : 1440, height: 1000 });
+    const book = await enterBook(page, url, "ru");
+    await expect(book).toHaveAttribute("data-renderer", "three", { timeout: 30_000 });
+    await expectPage(book, 0);
+    const original = await page.evaluate(html => {
+      const body = new DOMParser().parseFromString(html, "text/html").body;
+      const entries = [...body.querySelectorAll("h2")].filter(heading => /^\s*\d+\./u.test(heading.textContent)).map(heading => {
+        let text = "";
+        let source = "";
+        for (let node = heading.nextElementSibling; node && node.tagName !== "H2"; node = node.nextElementSibling) {
+          text += ` ${node.textContent}`;
+          source ||= node.querySelector("img")?.getAttribute("src") || "";
+        }
+        return { heading: heading.textContent.replace(/\s+/gu, " ").trim(), text: text.replace(/\s+/gu, " ").trim(), source };
+      });
+      return { entries, text: body.textContent };
+    }, article.contentHtml);
+    expect(original.entries).toHaveLength(25);
+    expect(original.entries[12].heading).toBe("13. Гематология");
+    expect(original.entries[13].heading).toBe("14. Гобелен");
+    await book.locator("summary").click();
+    const reports = [];
+    // Change the live Three book through its reader controls so repagination
+    // remains covered, with one target font size per browser context.
+    const change = scale > 1 ? "Увеличить шрифт" : "Уменьшить шрифт";
+    for (let step = 0; step < Math.round(Math.abs(scale - 1) * 10); step++) {
       await page.locator(".article-reader-bar").getByRole("button", { name: change, exact: true }).click();
     }
-    currentScale = scale;
     await expect.poll(() => book.evaluate(node => Number(node.style.getPropertyValue("--reader-scale")))).toBeCloseTo(scale, 2);
     await settleResize(page, book);
     await expect(book).toHaveAttribute("data-renderer", "three");
@@ -118,9 +121,9 @@ test("real vocabulary illustrations stay with their own numbered entries at ever
         await book.locator("summary").click();
       }
     }
-  }
-  await testInfo.attach("real-vocabulary-image-associations", { body: JSON.stringify(reports, null, 2), contentType: "application/json" });
-});
+    await testInfo.attach("real-vocabulary-image-associations", { body: JSON.stringify(reports, null, 2), contentType: "application/json" });
+  });
+}
 
 function illustratedContent(locale) {
   const en = locale === "en";
