@@ -24,8 +24,8 @@ test("live offline status follows RU/EN while country and DOM Canvas survive rec
   const canvas = atlas.locator("canvas");
   const country = page.locator('.atlas-country-presentation[data-atlas-country="russia"]');
   const banner = page.locator('.connectivity-status[role="status"]');
-  const russianOffline = /^Нет сети\s*[-–—]\s*доступны уже открытые материалы$/u;
-  const englishOffline = /^Offline\s*[-–—]\s*previously opened publications remain available$/u;
+  const russianOffline = /^Нет сети\s*[-\u2013\u2014]\s*доступны уже открытые материалы$/u;
+  const englishOffline = /^Offline\s*[-\u2013\u2014]\s*previously opened publications remain available$/u;
 
   await expect(globe).toBeVisible({ timeout: 45_000 });
   await expect(globe).toHaveAttribute("data-globe-webgl-context", "ready");

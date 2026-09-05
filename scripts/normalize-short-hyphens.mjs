@@ -15,6 +15,8 @@ const ignoredDirectories = new Set([
   ".wrangler",
   "coverage",
   "dist",
+  "dist-pwa",
+  "dist-public-locales",
   "node_modules",
   "playwright-report",
   "test-results",

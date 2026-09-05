@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work
+
+
+ Test Files  8 passed (8)
+      Tests  137 passed (137)
+   Start at  23:08:32
+   Duration  16.88s (transform 3.02s, setup 0ms, import 8.23s, tests 6.80s, environment 1ms)
+

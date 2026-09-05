@@ -21,6 +21,15 @@ export const v12S03Compatibility: Readonly<{
   packageProjections: readonly V12S03PackageProjection[];
 }>;
 
+export const v12S03CanonicalIntegration: Readonly<{
+  schemaVersion: 1;
+  id: string;
+  canonicalMainSha: string;
+  integrationHeadSha: string;
+  scope: string;
+  projections: readonly V12S03SourceProjection[];
+}>;
+
 export function projectV12S03Source(relativePath: string, source: string): string;
 /** Projects parsed JSON; callers must validate its shape for their own use. */
 export function projectV12S03Package(value: unknown): unknown;

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S03",
+  "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+  "recordedAt": "2026-09-05T19:58:05.154Z",
+  "releaseReady": false,
+  "stageAcceptanceClaimed": false,
+  "recordType": "working-browser-regression-evidence",
+  "identity": {
+    "buildId": "03c7623ea834f0678fd0602bdc618ddfa836c2e9bd94eaa2ba136214516a67ca",
+    "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+    "sourceInputsSha256": "833e4e008aa080b075124b8a419d3211f61d80a44c8e0d7076d370968b59ddc3",
+    "localQaAuthority": true
+  },
+  "command": "node node_modules/@playwright/test/cli.js test --config=playwright.pwa.config.mjs",
+  "stats": {
+    "startTime": "2026-09-05T19:20:35.052Z",
+    "duration": 279562.572,
+    "expected": 20,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "files": [
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "sha256": "ea96400473917fbe1c1a054761b931279c5c3a6530500ae52766a5fe2357d37f",
+      "bytes": 14622
+    },
+    {
+      "path": "tests/pwa/offline-catalog.spec.mjs",
+      "sha256": "6632639c75885e518c909ec1975adb2181cac4d41ee3f5447a91f278f73a5876",
+      "bytes": 17285
+    },
+    {
+      "path": "playwright.pwa.config.mjs",
+      "sha256": "af8689ad47ae071bbd7eff3fd8f13338b9fb69c165d5e99f1736f84f52054f31",
+      "bytes": 1118
+    },
+    {
+      "path": ".tmp/pwa-browser-results/results.json",
+      "sha256": "59d1cc9691e9753baef6cd71033711fceac35dd25a01c54dec0ba3d9eb2d0293",
+      "bytes": 27729
+    },
+    {
+      "path": "dist-pwa/artifact.json",
+      "sha256": "ddd993867cc9582bb0ffe30f0dc7bec708cd6186a0c8dae9bde6f8c6f9129ca1",
+      "bytes": 200532
+    },
+    {
+      "path": "dist-pwa/module-ownership.json",
+      "sha256": "730ae16e322b6b115d7453af29764ca59212fa1d64fa51e7a38bf4b9478a25ae",
+      "bytes": 5620
+    }
+  ],
+  "log": {
+    "path": "docs/mobile/evidence/S03/logs/canonical-integration-pwa-browser.log",
+    "sha256": "1de580d44aca06ef6d43f1d724df7b5575319bf769a6d4aa6b753e9d0f775a67",
+    "bytes": 10028
+  },
+  "observations": [
+    "Real canonical Dostoevsky to Crime and Punishment route works cold offline.",
+    "RU to EN to RU preserves the same writer, works tab, document, panel, R3F Canvas, renderer, camera and scene.",
+    "Controlled artifact does not request live news, dossier or third-party runtime data."
+  ],
+  "limitations": [
+    "Actual Chrome desktop and Pixel7 viewport, not a native Android/iOS device.",
+    "Local ephemeral authority and signed protocol fixtures, not real purchases or production accounts.",
+    "Actual local screenshots are preparation evidence, not exact-RC store materials."
+  ]
+}

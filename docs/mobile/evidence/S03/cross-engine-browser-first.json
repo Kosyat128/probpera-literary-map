@@ -1,0 +1,1271 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "kind": "cross-engine-preparation-browser-evidence",
+  "capturedAt": "2026-09-05T20:15:43.285Z",
+  "verdict": "PARTIAL_WITH_TWO_FAILED_SCENARIOS",
+  "releaseReady": false,
+  "artifact": {
+    "buildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+    "authoritySha256": "ee864321bb26ed691b486847e55ed928695e60b41db317d3dbdac4c51d6d98b6",
+    "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+    "sourceInputsSha256": "799fad9031a0ea5f3bd92ad9c0b35155942f1b5029d8d36e5680444ae07dcb31",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "stats": {
+    "startTime": "2026-09-05T20:09:58.086Z",
+    "duration": 122202.303,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "command": "node node_modules/@playwright/test/cli.js test --config playwright.pwa-cross-engine.config.mjs",
+  "environment": {
+    "platform": "win32",
+    "architecture": "x64",
+    "release": "10.0.22631",
+    "playwright": "1.62.1",
+    "runId": "s03-cross-engine-20260905",
+    "workers": 1,
+    "retries": 0,
+    "origin": "http://127.0.0.1:4296"
+  },
+  "rawReport": {
+    "path": ".tmp/pwa-cross-engine-results/s03-cross-engine-20260905/results.json",
+    "sha256": "15f97439e3713da4b42505e7979d117a184360f1282f9b27abdb0d863532e74a"
+  },
+  "session": {
+    "path": ".tmp/pwa-cross-engine-results/s03-cross-engine-20260905/session.json",
+    "sha256": "9675886c4c613049c599858b6ea6eb10627efeee69e6eabf8df5a4c84632b410"
+  },
+  "audit": {
+    "path": "../.tmp/literary-planet-v12-intake/S03-cross-engine-artifact-audit.log",
+    "sha256": "cc2b08a866ca25d21f99847be51f96e55d71ea9be12c5d558352a2dbd0c4ed2a",
+    "result": {
+      "pass": true,
+      "identity": {
+        "buildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+        "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+        "localQaAuthority": true
+      },
+      "counts": {
+        "files": 335,
+        "bytes": 38354797,
+        "bootstrapFiles": 295,
+        "bootstrapBytes": 18415421,
+        "sourceInputs": 919,
+        "publicSources": 268,
+        "scripts": 39
+      },
+      "findings": [],
+      "releaseReady": false,
+      "limitations": [
+        "Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.",
+        "Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required."
+      ]
+    }
+  },
+  "sourceFiles": [
+    {
+      "path": "playwright.pwa-cross-engine.config.mjs",
+      "sha256": "0bd55cc717e334a8bd86c887b8464764495ae1010a33d291d336fac605e1a9ad"
+    },
+    {
+      "path": "tests/pwa/cross-engine-pwa.spec.mjs",
+      "sha256": "527a9520877aed78d8baeeb642694357b18065f3c31e8003f0dd0546ba1595e0"
+    },
+    {
+      "path": "tests/pwa/support/cross-engine-server.mjs",
+      "sha256": "51d6ba7b0b71e0008dc650812e11d7ded327e5607316af330c0757eef011bbb6"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "908c2de5a6cabdec3388c930ff07c65f7a01f0407f9d9dca06a1ab17dd21eca1"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "3582642d0540c1d02647690e021a673d9d2618f739660ec66b443c814b4519d8"
+    }
+  ],
+  "scenarios": [
+    {
+      "title": "verified SW installation and global RU/EN metadata keep the same actual core scene",
+      "project": "chrome-desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 9214,
+          "errors": [],
+          "observations": [
+            {
+              "schemaVersion": 1,
+              "runId": "s03-cross-engine-20260905",
+              "artifact": {
+                "buildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+                "authoritySha256": "ee864321bb26ed691b486847e55ed928695e60b41db317d3dbdac4c51d6d98b6",
+                "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+                "sourceInputsSha256": "799fad9031a0ea5f3bd92ad9c0b35155942f1b5029d8d36e5680444ae07dcb31",
+                "localQaAuthority": true,
+                "releaseReady": false
+              },
+              "project": "chrome-desktop",
+              "engine": "chromium",
+              "runtimeBrowserVersion": "152.0.7977.76",
+              "host": {
+                "platform": "win32",
+                "architecture": "x64",
+                "release": "10.0.22631"
+              },
+              "physicalMobileDevice": false,
+              "safariVerification": false,
+              "nativeInstallationVerified": false,
+              "measurements": [
+                {
+                  "label": "initial-document",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 3221233156,
+                      "usage": 7684,
+                      "usageDetails": {
+                        "caches": 7684
+                      }
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": true,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": null,
+                  "actualGlobe": null
+                },
+                {
+                  "label": "actual-core-scene",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 3239979366,
+                      "usage": 18753894,
+                      "usageDetails": {
+                        "caches": 18694006,
+                        "serviceWorkerRegistrations": 59888
+                      }
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": true,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                    "renderer": "WebKit WebGL",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                },
+                {
+                  "label": "final",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 3239979366,
+                      "usage": 18753894,
+                      "usageDetails": {
+                        "caches": 18694006,
+                        "serviceWorkerRegistrations": 59888
+                      }
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": true,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                    "renderer": "WebKit WebGL",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                }
+              ],
+              "completedChecks": [
+                "ephemeral QA ES256 grant accepted by actual access boundary",
+                "same-build COMPLETE cache and active scoped Service Worker",
+                "RU→EN→RU locale route/canonical/hreflang/manifest",
+                "same document, country, actual Canvas/renderer/camera/scene"
+              ],
+              "outcome": "PASSED_BEHAVIOR_CHECKS",
+              "externalRequests": [],
+              "limits": [
+                "Service Worker COMPLETE and a manifest are not native OS installation evidence.",
+                "Presence of an API or an install event does not prove its complete browser/OS behavior.",
+                "Recovery/support checks cover offline instructions and exact links, not a live merchant/account transaction."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "cold offline core/search and bilingual support retain truthful recovery boundaries",
+      "project": "chrome-desktop",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "durationMs": 26460,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.connectivity-status')\nExpected substring: \u001b[32m\"offline\"\u001b[39m\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.connectivity-status')\u001b[22m\n\n\n  172 |     await expect(page.locator(\"html\")).toHaveAttribute(\"lang\", \"en\");\n  173 |     await globeReady(page, evidence);\n> 174 |     await expect(page.locator(\".connectivity-status\")).toContainText(\"offline\");\n      |                                                        ^\n  175 |     await page.locator(\".global-search-trigger\").click();\n  176 |     await page.getByRole(\"searchbox\").fill(\"Dostoevsky\");\n  177 |     const writers = page.locator(\".global-search-results section\").filter({ has: page.getByRole(\"heading\", { name: \"Writers\", exact: true }) });\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\cross-engine-pwa.spec.mjs:174:56"
+          ],
+          "observations": [
+            {
+              "schemaVersion": 1,
+              "runId": "s03-cross-engine-20260905",
+              "artifact": {
+                "buildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+                "authoritySha256": "ee864321bb26ed691b486847e55ed928695e60b41db317d3dbdac4c51d6d98b6",
+                "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+                "sourceInputsSha256": "799fad9031a0ea5f3bd92ad9c0b35155942f1b5029d8d36e5680444ae07dcb31",
+                "localQaAuthority": true,
+                "releaseReady": false
+              },
+              "project": "chrome-desktop",
+              "engine": "chromium",
+              "runtimeBrowserVersion": "152.0.7977.76",
+              "host": {
+                "platform": "win32",
+                "architecture": "x64",
+                "release": "10.0.22631"
+              },
+              "physicalMobileDevice": false,
+              "safariVerification": false,
+              "nativeInstallationVerified": false,
+              "measurements": [
+                {
+                  "label": "initial-document",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 3222013206,
+                      "usage": 787734,
+                      "usageDetails": {
+                        "caches": 787734
+                      }
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": true,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": null,
+                  "actualGlobe": null
+                },
+                {
+                  "label": "actual-core-scene",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/en/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 3239979366,
+                      "usage": 18753894,
+                      "usageDetails": {
+                        "caches": 18694006,
+                        "serviceWorkerRegistrations": 59888
+                      }
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": true,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                    "renderer": "WebKit WebGL",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                },
+                {
+                  "label": "final",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/en/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 3239979366,
+                      "usage": 18753894,
+                      "usageDetails": {
+                        "caches": 18694006,
+                        "serviceWorkerRegistrations": 59888
+                      }
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": true,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+                    "renderer": "WebKit WebGL",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                }
+              ],
+              "completedChecks": [
+                "ephemeral QA ES256 grant accepted by actual access boundary",
+                "same-build COMPLETE cache and active scoped Service Worker"
+              ],
+              "outcome": "FAILED_OR_INCOMPLETE",
+              "externalRequests": [],
+              "limits": [
+                "Service Worker COMPLETE and a manifest are not native OS installation evidence.",
+                "Presence of an API or an install event does not prove its complete browser/OS behavior.",
+                "Recovery/support checks cover offline instructions and exact links, not a live merchant/account transaction."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "verified SW installation and global RU/EN metadata keep the same actual core scene",
+      "project": "firefox-playwright-desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 18281,
+          "errors": [],
+          "observations": [
+            {
+              "schemaVersion": 1,
+              "runId": "s03-cross-engine-20260905",
+              "artifact": {
+                "buildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+                "authoritySha256": "ee864321bb26ed691b486847e55ed928695e60b41db317d3dbdac4c51d6d98b6",
+                "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+                "sourceInputsSha256": "799fad9031a0ea5f3bd92ad9c0b35155942f1b5029d8d36e5680444ae07dcb31",
+                "localQaAuthority": true,
+                "releaseReady": false
+              },
+              "project": "firefox-playwright-desktop",
+              "engine": "firefox",
+              "runtimeBrowserVersion": "153.0",
+              "host": {
+                "platform": "win32",
+                "architecture": "x64",
+                "release": "10.0.22631"
+              },
+              "physicalMobileDevice": false,
+              "safariVerification": false,
+              "nativeInstallationVerified": false,
+              "measurements": [
+                {
+                  "label": "initial-document",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 10737418240,
+                      "usage": 872454
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": null,
+                  "actualGlobe": null
+                },
+                {
+                  "label": "actual-core-scene",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 10737418240,
+                      "usage": 11784146
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0",
+                    "renderer": "ANGLE (AMD, Radeon HD 3200 Graphics Direct3D11 vs_5_0 ps_5_0), or similar",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                },
+                {
+                  "label": "final",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 10737418240,
+                      "usage": 11784146
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0",
+                    "renderer": "ANGLE (AMD, Radeon HD 3200 Graphics Direct3D11 vs_5_0 ps_5_0), or similar",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                }
+              ],
+              "completedChecks": [
+                "ephemeral QA ES256 grant accepted by actual access boundary",
+                "same-build COMPLETE cache and active scoped Service Worker",
+                "RU→EN→RU locale route/canonical/hreflang/manifest",
+                "same document, country, actual Canvas/renderer/camera/scene"
+              ],
+              "outcome": "PASSED_BEHAVIOR_CHECKS",
+              "externalRequests": [],
+              "limits": [
+                "Service Worker COMPLETE and a manifest are not native OS installation evidence.",
+                "Presence of an API or an install event does not prove its complete browser/OS behavior.",
+                "Recovery/support checks cover offline instructions and exact links, not a live merchant/account transaction."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "cold offline core/search and bilingual support retain truthful recovery boundaries",
+      "project": "firefox-playwright-desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 16138,
+          "errors": [],
+          "observations": [
+            {
+              "schemaVersion": 1,
+              "runId": "s03-cross-engine-20260905",
+              "artifact": {
+                "buildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+                "authoritySha256": "ee864321bb26ed691b486847e55ed928695e60b41db317d3dbdac4c51d6d98b6",
+                "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+                "sourceInputsSha256": "799fad9031a0ea5f3bd92ad9c0b35155942f1b5029d8d36e5680444ae07dcb31",
+                "localQaAuthority": true,
+                "releaseReady": false
+              },
+              "project": "firefox-playwright-desktop",
+              "engine": "firefox",
+              "runtimeBrowserVersion": "153.0",
+              "host": {
+                "platform": "win32",
+                "architecture": "x64",
+                "release": "10.0.22631"
+              },
+              "physicalMobileDevice": false,
+              "safariVerification": false,
+              "nativeInstallationVerified": false,
+              "measurements": [
+                {
+                  "label": "initial-document",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 10737418240,
+                      "usage": 3105109
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": null,
+                  "actualGlobe": null
+                },
+                {
+                  "label": "actual-core-scene",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": false,
+                  "location": "/planet/en/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 10737418240,
+                      "usage": 11783214
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0",
+                    "renderer": "ANGLE (AMD, Radeon HD 3200 Graphics Direct3D11 vs_5_0 ps_5_0), or similar",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                },
+                {
+                  "label": "final",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": false,
+                  "location": "/planet/ru/?country=russia&writer=dostoevsky#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": true,
+                    "value": {
+                      "quota": 10737418240,
+                      "usage": 11783214
+                    }
+                  },
+                  "storagePersisted": {
+                    "available": true,
+                    "value": false
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0",
+                    "renderer": "ANGLE (AMD, Radeon HD 3200 Graphics Direct3D11 vs_5_0 ps_5_0), or similar",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                }
+              ],
+              "completedChecks": [
+                "ephemeral QA ES256 grant accepted by actual access boundary",
+                "same-build COMPLETE cache and active scoped Service Worker",
+                "new offline EN document authorized by stored signed grant",
+                "first-use offline canonical writer search",
+                "RU/EN offline help and exact canonical recovery/deletion returnTo links",
+                "email/account network requirement disclosed; no external action performed"
+              ],
+              "outcome": "PASSED_BEHAVIOR_CHECKS",
+              "externalRequests": [],
+              "limits": [
+                "Service Worker COMPLETE and a manifest are not native OS installation evidence.",
+                "Presence of an API or an install event does not prove its complete browser/OS behavior.",
+                "Recovery/support checks cover offline instructions and exact links, not a live merchant/account transaction."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "verified SW installation and global RU/EN metadata keep the same actual core scene",
+      "project": "webkit-playwright-desktop",
+      "status": "expected",
+      "results": [
+        {
+          "status": "passed",
+          "durationMs": 20669,
+          "errors": [],
+          "observations": [
+            {
+              "schemaVersion": 1,
+              "runId": "s03-cross-engine-20260905",
+              "artifact": {
+                "buildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+                "authoritySha256": "ee864321bb26ed691b486847e55ed928695e60b41db317d3dbdac4c51d6d98b6",
+                "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+                "sourceInputsSha256": "799fad9031a0ea5f3bd92ad9c0b35155942f1b5029d8d36e5680444ae07dcb31",
+                "localQaAuthority": true,
+                "releaseReady": false
+              },
+              "project": "webkit-playwright-desktop",
+              "engine": "webkit",
+              "runtimeBrowserVersion": "26.5",
+              "host": {
+                "platform": "win32",
+                "architecture": "x64",
+                "release": "10.0.22631"
+              },
+              "physicalMobileDevice": false,
+              "safariVerification": false,
+              "nativeInstallationVerified": false,
+              "measurements": [
+                {
+                  "label": "initial-document",
+                  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": false,
+                    "value": null
+                  },
+                  "storagePersisted": {
+                    "available": false,
+                    "value": null
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": null,
+                  "actualGlobe": null
+                },
+                {
+                  "label": "actual-core-scene",
+                  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": false,
+                    "value": null
+                  },
+                  "storagePersisted": {
+                    "available": false,
+                    "value": null
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0",
+                    "renderer": "WebKit WebGL",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                },
+                {
+                  "label": "final",
+                  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": false,
+                    "value": null
+                  },
+                  "storagePersisted": {
+                    "available": false,
+                    "value": null
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0",
+                    "renderer": "WebKit WebGL",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                }
+              ],
+              "completedChecks": [
+                "ephemeral QA ES256 grant accepted by actual access boundary",
+                "same-build COMPLETE cache and active scoped Service Worker",
+                "RU→EN→RU locale route/canonical/hreflang/manifest",
+                "same document, country, actual Canvas/renderer/camera/scene"
+              ],
+              "outcome": "PASSED_BEHAVIOR_CHECKS",
+              "externalRequests": [],
+              "limits": [
+                "Service Worker COMPLETE and a manifest are not native OS installation evidence.",
+                "Presence of an API or an install event does not prove its complete browser/OS behavior.",
+                "Recovery/support checks cover offline instructions and exact links, not a live merchant/account transaction."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "cold offline core/search and bilingual support retain truthful recovery boundaries",
+      "project": "webkit-playwright-desktop",
+      "status": "unexpected",
+      "results": [
+        {
+          "status": "failed",
+          "durationMs": 9762,
+          "errors": [
+            "Error: page.goto: WebKit encountered an internal error\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4296/planet/en/?country=russia#atlas\", waiting until \"load\"\u001b[22m\n\n\n  168 |     await openAuthorized(page, evidence, testInfo);\n  169 |     await context.setOffline(true);\n> 170 |     await page.goto(\"/planet/en/?country=russia#atlas\");\n      |                ^\n  171 |     await expect(page.locator(\"[data-pwa-authorized]\")).toBeVisible();\n  172 |     await expect(page.locator(\"html\")).toHaveAttribute(\"lang\", \"en\");\n  173 |     await globeReady(page, evidence);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\cross-engine-pwa.spec.mjs:170:16"
+          ],
+          "observations": [
+            {
+              "schemaVersion": 1,
+              "runId": "s03-cross-engine-20260905",
+              "artifact": {
+                "buildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+                "authoritySha256": "ee864321bb26ed691b486847e55ed928695e60b41db317d3dbdac4c51d6d98b6",
+                "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+                "sourceInputsSha256": "799fad9031a0ea5f3bd92ad9c0b35155942f1b5029d8d36e5680444ae07dcb31",
+                "localQaAuthority": true,
+                "releaseReady": false
+              },
+              "project": "webkit-playwright-desktop",
+              "engine": "webkit",
+              "runtimeBrowserVersion": "26.5",
+              "host": {
+                "platform": "win32",
+                "architecture": "x64",
+                "release": "10.0.22631"
+              },
+              "physicalMobileDevice": false,
+              "safariVerification": false,
+              "nativeInstallationVerified": false,
+              "measurements": [
+                {
+                  "label": "initial-document",
+                  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": true,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": false,
+                    "value": null
+                  },
+                  "storagePersisted": {
+                    "available": false,
+                    "value": null
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": null,
+                  "actualGlobe": null
+                },
+                {
+                  "label": "final",
+                  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Safari/605.1.15",
+                  "navigatorPlatform": "Win32",
+                  "languages": [
+                    "en-US"
+                  ],
+                  "secureContext": true,
+                  "online": false,
+                  "location": "/planet/ru/?country=russia#atlas",
+                  "serviceWorker": true,
+                  "cacheStorage": true,
+                  "subtleCrypto": true,
+                  "indexedDB": true,
+                  "localStorage": {
+                    "roundTrip": true,
+                    "error": null
+                  },
+                  "storageEstimate": {
+                    "available": false,
+                    "value": null
+                  },
+                  "storagePersisted": {
+                    "available": false,
+                    "value": null
+                  },
+                  "viewport": {
+                    "width": 1280,
+                    "height": 800,
+                    "pixelRatio": 1
+                  },
+                  "displayMode": [
+                    "browser"
+                  ],
+                  "navigatorStandalone": null,
+                  "beforeInstallPromptInterface": false,
+                  "installEvents": {
+                    "beforeInstallPrompt": 0,
+                    "appInstalled": 0
+                  },
+                  "controllerScript": "http://127.0.0.1:4296/planet/sw.js",
+                  "actualGlobe": {
+                    "contextLost": false,
+                    "version": "WebGL 2.0",
+                    "renderer": "WebKit WebGL",
+                    "canvasWidth": 1175,
+                    "canvasHeight": 720
+                  }
+                }
+              ],
+              "completedChecks": [
+                "ephemeral QA ES256 grant accepted by actual access boundary",
+                "same-build COMPLETE cache and active scoped Service Worker"
+              ],
+              "outcome": "FAILED_OR_INCOMPLETE",
+              "externalRequests": [],
+              "limits": [
+                "Service Worker COMPLETE and a manifest are not native OS installation evidence.",
+                "Presence of an API or an install event does not prove its complete browser/OS behavior.",
+                "Recovery/support checks cover offline instructions and exact links, not a live merchant/account transaction."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Four passed and two failed scenarios; no skips, retries or flaky passes.",
+    "Chrome cold offline document loaded the signed access and actual scene, but exposed navigator.onLine=true and no offline status; search/help assertions after this failure did not execute.",
+    "Windows Playwright WebKit cold offline navigation failed with an internal engine error; the previous RU document stayed active. Root cause is under independent transport reproduction.",
+    "Windows WebKit, even with its default Macintosh/Safari UA, is not branded Safari or physical iOS verification.",
+    "This fresh artifact was not run through the earlier 20-scenario suite; that result remains bound to archived 03c7623e.",
+    "No OS installation, production session/payment, physical device, editorial approval or release claim."
+  ]
+}

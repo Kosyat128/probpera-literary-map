@@ -103,7 +103,7 @@
       "area": "offline-content-and-recovery-scope",
       "status": "OPEN",
       "classification": "remaining-product-implementation",
-      "finding": "The worker verifies a bounded essential bootstrap and now offers explicit whole-app rollback to a verified compatible prior generation. Independent tests cover document/in-flight request generation fences and forbid an incorrect transitive rollback target. The worker engine itself stays current. Offline writer/work/favorite/help browser scenarios and a recent-items implementation still need final artifact regression; optional download/search/audio packages remain incomplete.",
+      "finding": "The integrity-checked essential bootstrap and compatible whole-app rollback are implemented. The integrated03c7623e artifact passed all20 actual Chrome desktop/mobile-viewport scenarios, including cold-offline writer/work/favorite/help and recent navigation. Optional download/search/audio packages, complete content, child/native recovery and their budgets remain later internal work.",
       "sourcePaths": [
         "scripts/mobile/pwa-artifact.mjs",
         "scripts/mobile/build-pwa.mjs",
@@ -118,54 +118,57 @@
       "area": "browser-and-exact-artifact-evidence",
       "status": "OPEN",
       "classification": "validation-evidence",
-      "finding": "The local QA artifact 55d51c715f4f3291f231811752d04c0655a6ba7b95c6cb678dce71890b2bd521 passed 12 actual desktop/mobile browser scenarios and an independent artifact audit. Source-input and canonical public-source hashes bind preparation builds to working bytes beyond HEAD. Subsequent server/account/rollback/SEO changes still require a fresh final artifact and regression; no exact RC or production hosting is claimed.",
+      "finding": "The integrated03c7623e artifact passed20 actual Chrome desktop/Pixel7-viewport scenarios and335-file audit. A separate fresh4a0696ef artifact passed its335-file audit; six cross-engine cases measured Chrome152.0.7977.76, Firefox153.0 and Windows WebKit26.5:4 passed and2 failed, zero skips/retries. Firefox passed both. Chrome online-hint reset and WebKit offline navigation error were reproduced with independent cache-only and actual-runtime workers; these remain documented support boundaries, not passed tests. Safari/native installation/physical devices remain unverified.",
       "sourcePaths": [
         "scripts/mobile/build-pwa.mjs",
         "src/main.tsx",
         "src/pwa/registerPwaWorker.ts",
-        "src/pwa/PwaLocaleMetadata.tsx"
+        "src/pwa/PwaLocaleMetadata.tsx",
+        "docs/mobile/PWA_BROWSER_BOUNDARIES.md",
+        "docs/mobile/evidence/S03/cross-engine-browser-first.json",
+        "docs/mobile/evidence/S03/cross-engine-transport-boundaries.json"
       ],
-      "requiredResolution": "Bind final regression and desktop/mobile browser evidence to the actual built artifact; test offline/reconnect, selected country and same live scene, license denial/deadlines, failed installs, updates and runtime request boundaries. Verify actual hosting headers when deployment is separately authorized.",
+      "requiredResolution": "Record actual additional-engine/version/capability results; retain explicit Safari/device/native-install limits. Bind future final candidate checks to a clean source identity and actual hosting only after separate authorization.",
       "doesNotClaim": "Local QA screenshots are not exact-RC store screenshots or evidence of production deployment. This inventory does not override subsequent actual browser results."
     },
     {
       "id": "S03-GAP-009",
       "area": "deletion-processing",
       "status": "OPEN",
-      "classification": "remaining-internal-implementation-and-policy-evidence",
-      "finding": "A request and its authenticated status are implemented; actual deletion processing is not. Real local PostgreSQL reproductions expose authenticated-comment and guest/auth-rating constraints, collateral deletion of other readers' replies, and Auth CASCADE bypassing the last-owner RPC. Storage cleanup, mutation fences, claim/lease, preflight, resumable cleanup and verification must be implemented before completion can be reported.",
+      "classification": "tested-reader-foundation-with-remaining-lifecycle-scope",
+      "finding": "The concrete canonical Supabase processor, service-only SQL leases/guards, actual Auth deletion proof and dry-run CLI pass70 local tests plus6 independent SQL and6 CLI groups. Owned avatar changes, scoped content_views deletion and rollback are covered. Nine aligned RU/EN disclosure paragraphs are DRAFT. Public contributors, staff/editorial references and unsupported linked data still block execution; a support contact does not establish erasure.",
       "sourcePaths": [
-        "server/planet/api.ts",
-        "server/planet/supabase.ts",
-        "supabase/schema.sql",
-        "supabase/migrations/20260905_literary_planet_web_license.sql",
-        "docs/mobile/evidence/S03/account-deletion-canonical-audit.md",
-        "docs/mobile/evidence/S03/account-deletion-constraint-repro.json"
+        "server/planet/deletionProcessor.ts",
+        "server/planet/deletionProcessorSupabase.ts",
+        "server/planet/deletionProcessorCli.ts",
+        "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+        "docs/mobile/evidence/S03/deletion-processor-independent-review.json",
+        "docs/mobile/ACCOUNT_DELETION_DISCLOSURE_DRAFT_RU_EN.md"
       ],
-      "requiredResolution": "Implement and locally test a guarded canonical processing workflow, then apply an explicit reviewed treatment of contributions, other readers' replies, Storage and retained records. Keep all programming internal; do not guess retention periods or silently erase shared content.",
-      "doesNotClaim": "An accepted request, null status, missing session or 401/403 response does not establish completed deletion."
+      "requiredResolution": "Obtain a concrete lawful disposition/retention decision for the presented categories and implement/test its supported handling internally. Preserve the completed ordinary-reader path and disclose its exact scope. Reviewed disclosure/policy activation and authorized live execution are separate external gates.",
+      "doesNotClaim": "Safe-reader execution is not whole-account lifecycle completion. Provider records unlinked from Auth are not claimed anonymous. No production Auth/Storage or multi-connection lock test was run."
     },
     {
       "id": "S03-GAP-010",
       "area": "updated-canonical-main",
-      "status": "OPEN",
-      "classification": "internal-source-integration-and-regression",
-      "finding": "Read-only remote verification found canonical main f406a7de9e16e8cf63545cbce6681ed9278761a4, with five commits after the accepted 0a348bd4 base. New bookshelf, typography, dossier and news sources have not yet been incorporated into the current V12 worktree. Fetch changed no working source or production state.",
+      "status": "RESOLVED_LOCAL",
+      "classification": "verified-local-source-integration",
+      "finding": "All five canonical main commits through f406a7de are incorporated locally through8e6cfe1f with accepted ancestry preserved. Integrated full4479, focused122, actual PWA20/335-file audit, public6, domain12876/SEO5513, types and boundaries passed. Evidence is recorded in canonical-integration-working-*.json; historical results were not relabelled current.",
       "sourcePaths": [
         "src/App.tsx",
         "src/components/BookArchiveSection.tsx",
         "src/main.tsx",
         "docs/mobile/AUTOPILOT_STATE.json"
       ],
-      "requiredResolution": "Preserve the current working checkpoint and historical S00-S02 evidence, incorporate the current canonical source changes without production merge/deploy, then rerun affected source, artifact and browser gates.",
-      "doesNotClaim": "Historical accepted tests certify their recorded source base, not newly fetched upstream code."
+      "requiredResolution": "Preserve the recorded atomic source/evidence checkpoint; verify any subsequently changed source within its affected scope. No repeat source integration is required.",
+      "doesNotClaim": "The resolved local source-integration defect is not S03 acceptance, global bilingual completion or production deployment."
     },
     {
       "id": "S03-GAP-011",
       "area": "writer-and-book-publication-parity",
-      "status": "OPEN",
-      "classification": "internal-canonical-selector-integration",
-      "finding": "The real cold-offline test exposed a canonical selector mismatch: writerWorksForPanel/getPublicWriterWorkTitles return zero works for russia:dostoevsky because they filter raw writer workDetails, while buildBookArchive applies reviewed overlays and publishes russia:dostoevsky:crime-and-punishment. This also occurs in a local data-only selector query, independently of offline or packaging. It does not mean all Dostoevsky books are held.",
+      "status": "RESOLVED_LOCAL",
+      "classification": "verified-canonical-selector-fix",
+      "finding": "WriterPanel consumes the same verifiedBookArchive as the canonical bookshelf/search. All46 published owner routes are preserved. Real cold-offline Dostoevsky/Crime and Punishment and RU/EN same-state cases pass in the20-scenario03c7623e artifact suite. Four actual StrictMode browser scenarios cover loading, error, retry, locale and empty-state boundaries.",
       "sourcePaths": [
         "src/components/writerPanelPresentation.ts",
         "src/components/WriterPanel.tsx",
@@ -173,8 +176,8 @@
         "src/data/countries/bookEvidenceV2PublicBatch05.ts",
         "src/App.tsx"
       ],
-      "requiredResolution": "Make the writer panel consume the same canonical publication-gated enriched work records as the existing book runtime, with honest loading/failure behavior and lazy-load boundaries. Preserve all publication holds, reviewed sources and locale gates; verify the actual cross-surface link and add a regression for this exact mismatch.",
-      "doesNotClaim": "Choosing a currently published Galsworthy work for the positive offline test fixes its fixture assumption; it does not fix or waive this separate product defect."
+      "requiredResolution": "Preserve publication holds, canonical records and exact runtime ownership in future changes. Retain the actual record regression and honest asynchronous loading states.",
+      "doesNotClaim": "This resolves the specific selector mismatch; it does not certify full English catalog publication or title evidence."
     },
     {
       "id": "S03-GAP-012",
@@ -205,5 +208,6 @@
       "requiredResolution": "Execute the applicable routed stages and collect real implementation, review and device evidence. Keep owner actions limited to concrete authority/access/rights/final approval decisions.",
       "doesNotClaim": "No global bilingual requirement or later-stage criterion is passed by the presence of this architecture document."
     }
-  ]
+  ],
+  "updatedAt": "2026-09-05T20:20:23.176Z"
 }

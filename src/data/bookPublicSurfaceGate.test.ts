@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import * as ts from "typescript";
 import { describe, expect, it } from "vitest";
 
-const approvedConsumers = ["DeferredBookArchive", "GlobalSearch", "RecentHistoryPanel"];
+const approvedConsumers = ["DeferredBookArchive", "GlobalSearch", "RecentHistoryPanel", "WriterPanel"];
 
 function assertPublishedBookConsumers(app: string) {
   const parsed = ts.createSourceFile("App.tsx", app, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -51,7 +51,7 @@ describe("visitor book publication boundary", () => {
     ["prop override", (source: string) => source.replace("books={verifiedBookArchive}", "books={verifiedBookArchive} {...otherProps}")],
     ["duplicate books prop", (source: string) => source.replace("books={verifiedBookArchive}", "books={verifiedBookArchive} books={bookArchive}")],
     ["unlisted consumer", (source: string) => source.replace("<RecentHistoryPanel", "<UnlistedRecentHistory")],
-    ["fourth consumer", (source: string) => source + "\nconst unreviewed = <OtherArchive books={verifiedBookArchive} />;\n"],
+    ["unlisted additional consumer", (source: string) => source + "\nconst unreviewed = <OtherArchive books={verifiedBookArchive} />;\n"],
     ["raw archive value import", (source: string) => source.replace('import type { BookArchiveEntry } from "./data/bookArchive";', 'import { BookArchiveEntry } from "./data/bookArchive";')],
   ])("rejects %s drift", async (_name, mutate) => {
     const app = await readFile(new URL("../App.tsx", import.meta.url), "utf8");

@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-S03-private-dossier-artifact-independent-review",
+  "result": "confirmed-bypasses-fixed-in-bounded-auditor-change",
+  "stageAcceptance": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "revisions": {
+    "scripts/mobile/verify-pwa-artifact.mjs": {
+      "beforeSha256": "f3908bad0fdb5963002c8b2950d546ad165e2396ec0137e5a52acbb56cd2dcc4",
+      "afterSha256": "2a2d1c73275d11945f796bc6c8dc949c77344740c1f1dc555dc563036fab6d07"
+    },
+    "scripts/mobile/verify-pwa-artifact.test.mjs": {
+      "beforeSha256": "f32c6ae60671ac1a309ce68baeb8b9ff5f47f3196c4e973ff2924710810b8f8e",
+      "afterSha256": "934f47e765115311fd680841638de7e62d2ba88b9e8ba34bbafcd11336e1b847"
+    }
+  },
+  "canonicalAuditor": {
+    "path": "scripts/audit-book-dossier-delivery.mjs",
+    "sha256": "8376d57953645e8bf38a2019cfdac8d8a6bd1eb22f70047b5cf598a15e58b029",
+    "unchanged": true
+  },
+  "findings": [
+    {
+      "id": "structured-json-filename-bypass",
+      "status": "fixed-and-reproduced",
+      "before": "Exact canonical nested dossier payload under .JSON or .webmanifest passed every artifact gate while the same bytes under .json failed.",
+      "fix": "Case-insensitive mandatory .json/.webmanifest inspection plus recognized plain JSON object/array inspection for other asset extensions; invoke unchanged canonical bookDossierStaticIssues."
+    },
+    {
+      "id": "duplicate-json-key-hides-private-draft",
+      "status": "fixed-and-reproduced",
+      "before": "A later duplicate draft:null erased an earlier private draft in the JSON.parse result, allowing its original bytes into the artifact.",
+      "fix": "Standard JSON.parse validates grammar; a bounded string/bracket scan rejects repeated decoded object keys before the canonical auditor. Depth256 and token1m bounds fail closed."
+    }
+  ],
+  "unresolvedActionableFindings": [],
+  "beforeExperiments": [
+    {
+      "case": "untouched-fixture",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "case": "assets/reading-data.json",
+      "pass": false,
+      "codes": [
+        "PRIVATE_DOSSIER_OUTPUT"
+      ]
+    },
+    {
+      "case": "assets/reading-data.JSON",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "case": "assets/reading-data.webmanifest",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "case": "assets/duplicate.json",
+      "pass": true,
+      "codes": []
+    }
+  ],
+  "afterExperiments": [
+    {
+      "case": "untouched-fixture",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "case": "assets/reading-data.json",
+      "pass": false,
+      "codes": [
+        "PRIVATE_DOSSIER_OUTPUT"
+      ]
+    },
+    {
+      "case": "assets/reading-data.JSON",
+      "pass": false,
+      "codes": [
+        "PRIVATE_DOSSIER_OUTPUT"
+      ]
+    },
+    {
+      "case": "assets/reading-data.webmanifest",
+      "pass": false,
+      "codes": [
+        "PRIVATE_DOSSIER_OUTPUT"
+      ]
+    },
+    {
+      "case": "assets/duplicate.json",
+      "pass": false,
+      "codes": [
+        "INVALID_JSON"
+      ]
+    }
+  ],
+  "preservation": {
+    "originalThreePrivateDossierFixturesRetained": true,
+    "canonicalAuditorNotReimplemented": true,
+    "sourceAndPublicAssetProvenanceGatesRetained": true,
+    "inventoryBootstrapAndWorkerByteAssertionsRetained": true,
+    "existingParserReview": "deletionProcessorCli and crypto helpers support only flat scalar objects; PwaLicenseRuntime supports one scalar field; worker manifest normalizer receives parsed values. None is a reusable nested duplicate-key parser. The added helper only checks ambiguity/bounds after built-in JSON grammar validation."
+  },
+  "validation": {
+    "fullRegression": {
+      "phase": "before-fix",
+      "rootReportedPassingTests": 4479,
+      "rerunByThisReview": false,
+      "affectedFileHashes": "revisions.*.beforeSha256"
+    },
+    "affectedRegression": {
+      "files": [
+        "scripts/mobile/verify-pwa-artifact.test.mjs",
+        "scripts/lib/book-dossier-delivery.test.mjs"
+      ],
+      "firstRun": {
+        "passed": 87,
+        "failed": 1,
+        "cause": "existing compiler-settings fixture exceeded original5000ms test timeout under load; no assertion failure"
+      },
+      "originalGateRetry": {
+        "test": "checks current compiler settings as source inputs",
+        "passed": 1,
+        "skipped": 81,
+        "timeoutMs": 5000,
+        "measuredTestMs": 697
+      },
+      "separateEarlierDiagnosticRetry": {
+        "sameTest": true,
+        "passed": 1,
+        "invocationTimeoutMs": 15000,
+        "measuredTestMs": 806,
+        "substitutesForOriginalGate": false
+      },
+      "uniqueAffectedTestsObservedPassingAcrossRuns": 88,
+      "newRegressionCases": 14,
+      "fullRepositoryRerun": false,
+      "productBuildRerun": false
+    },
+    "existingArtifact": {
+      "auditCommand": "node scripts/mobile/verify-pwa-artifact.mjs --allow-qa",
+      "pass": true,
+      "identity": {
+        "buildId": "03c7623ea834f0678fd0602bdc618ddfa836c2e9bd94eaa2ba136214516a67ca",
+        "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+        "localQaAuthority": true
+      },
+      "counts": {
+        "files": 335,
+        "bytes": 38354764,
+        "bootstrapFiles": 295,
+        "bootstrapBytes": 18415425,
+        "sourceInputs": 919,
+        "publicSources": 268,
+        "scripts": 39
+      },
+      "findings": [],
+      "archivedArtifactPath": ".tmp/pwa-artifacts/03c7623e/artifact.json",
+      "archivedArtifactSha256": "ddd993867cc9582bb0ffe30f0dc7bec708cd6186a0c8dae9bde6f8c6f9129ca1",
+      "archivedAfterAuditByRoot": true
+    }
+  },
+  "evidenceFiles": [
+    {
+      "path": ".tmp/worker-review/private-dossier-audit-before.json",
+      "sha256": "135465a9ec1b8019f039f5c33c626254a69da9cbbe65fdd42d127dffd9098d0e"
+    },
+    {
+      "path": ".tmp/worker-review/private-dossier-audit-recheck.json",
+      "sha256": "08b216c41b45a83a5b82659b76ad90ba99094439a6a5f9340b97bbce836228c0"
+    },
+    {
+      "path": ".tmp/worker-review/private-dossier-existing-dist-audit.json",
+      "sha256": "7716066e542cd35c706b99346aea09962a4871cc22fdb6f02444ad646ba62fa6"
+    },
+    {
+      "path": ".tmp/worker-review/private-dossier-post-fix-regression.log",
+      "sha256": "6e1380b33e467dc5e9230ca7ef1df9707a2f6d892a914c9425aacf9d21990743"
+    },
+    {
+      "path": ".tmp/worker-review/private-dossier-post-fix-original-gate.log",
+      "sha256": "4f0561ee22e2edb3fe00a8522472fdac03b3ede7cd053a5c3bf9fdccd2ab0364"
+    },
+    {
+      "path": ".tmp/worker-review/private-dossier-post-fix-timeout-recheck.log",
+      "sha256": "7e0b1bf1f43eb008ccc1fd39bbbbb1d8961ab41ebcc68207705cd1c43537178c"
+    }
+  ],
+  "limitations": [
+    "Recognizes the canonical dossier object/collection shapes through the existing auditor; this is not a semantic detector for all private data.",
+    "Inspects mandatory JSON formats and valid plain JSON objects/arrays under other names. Does not decode compressed/binary encodings, nested serialized JSON strings or arbitrary JavaScript payloads.",
+    "Ordinary non-JSON text with a bracket prefix remains allowed; it is not claimed to be JSON-audited.",
+    "All adversarial artifacts and Git repositories were isolated local fixtures; no production data, deploy, merchant call or release approval was involved.",
+    "The preserved artifact is a local QA preparation, not an RC or editorial/rights approval.",
+    "Full4479 evidence remains before the bounded fix; affected tests and actual artifact audit are separate evidence."
+  ]
+}

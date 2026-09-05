@@ -1,70 +1,76 @@
-Continue V12 in this checkout on codex/literary-planet-v12-bilingual-final-autopilot.
-Read AGENTS.md and state/status/decisions/blockers. Run pinned input verification,
-node scripts/mobile/stage-context.mjs S03 and node scripts/mobile/verify-state.mjs.
-S00 accepted ef16246f; S01 accepted25b53479; S02 accepted6305df5f.
-Canonical base remains main0a348bd4. Active S03.acceptance is controlled Web/PWA.
-S03-S10 route18/21/22/23 and unchanged shared invariants have been read in full.
-Do not reread or load future specialized documents merely to fill context.
-S03 source/evidence checkpoint is54bf83005fee01771e5f9e0ac1f0f12e16a85128,
-IN_PROGRESS, not accepted. State headSha deliberately retains accepted S02.
-Inspect current git log before the planned local canonical source integration.
-STATUS, PROGRESS_RU and evidence/S03/known-gaps.json distinguish
-snapshot tests from unfinished user flows and actual release gates.
-Preserve .tmp browser failures and all later successful raw logs.
-Latest independent work: canonical agent exact governance compatibility and S03
-criteria allocation; Android finalized Rollup ownership and a read-only future
-dossier integration proposal; Apple Help/ownership reviews and canonical selector
-reproduction. Verify live ownership before overlapping edits. Server-only files live in server/planet; one existing
-Supabase database remains canonical. PGlite 0.5.8 is exact dev-only test tooling;
-its real SQL tests do not prove multi-connection lock contention.
-Latest full pre-sync unit regression4147 passed,4 existing skips,545 files passed
-and3 files skipped. Log ../.tmp/literary-planet-v12-intake/S03-pre-sync-final-unit.log.
-Earlier full4087/9fail is preserved; exact governance49 and types passed without
-rewriting historical hashes. Platform guard453 modules and typography21 CSS passed.
-Server/SQL/account/recovery regression339 passed. Account component Chrome15
-and recovery Chrome8 passed; each uses a separate Playwright configuration and
-explicit local protocol fixtures. The artifact-device configuration runs only
-controlled-pwa.spec.mjs and offline-catalog.spec.mjs (18 desktop/mobile cases),
-not those component fixtures. Fresh artifactc623683a passed331-file audit and16/18
-browser scenarios. Two failures revealed canonical raw writer/enriched book
-selector mismatch for Dostoevsky (known-gap011), not a missing bundled module.
-The new positive fixture uses verified Galsworthy/the-forsyte-saga in both selectors;
-final freshc2923b31 full18 run passed (5.3min), with the same331-file auditor PASS.
-Evidence: pre-sync-working-unit-regression.json, pre-sync-working-artifact-audit.json,
-and pre-sync-working-browser-regression.json under docs/mobile/evidence/S03.
-Preserve c623 results in .tmp/pwa-browser-c623683a-16passed; final18 are in
-.tmp/pwa-browser-results. These are desktop Chrome/Pixel7 viewport, not native devices.
-Recent quota/clear/filter fixes passed56 and independent rechecks. Help returnTo
-activation fix passed real keyboard/contextmenu Chrome and artifact favorites test.
-Builder now captures finalized Rollup writeBundle ownership (118 focused tests);
-earlier missing-manifest-key and early-byte-hash failed logs remain. Independent
-ownership review records the limitation of internally consistent provenance;
-an external trusted receipt or repeat compilation is required before exact-RC
-source-to-output claims. Do not claim that the static auditor proves arbitrary code.
-The ordinary --authority build input is now separate from --qa-authority and
-binds mode, public source bytes and rollback compatibility into artifact identity.
-Remote main is now f406a7de (five commits after the accepted0a348bd4 base). Fetched
-only; working sources have not incorporated its bookshelf/dossier/typography/news.
-Preserve S00-S02 ancestor evidence with a separate local source-sync checkpoint.
-Control newly introduced remote news/dossier requests in the PWA and preserve
-all existing fonts: Onest plus physical-reader Source Sans/Serif. Inspect new
-book-dossier deletion RESTRICT references and locale-keyed reading-state reset.
-No production merge, deploy or workflow run is authorized by fetched source.
-Actual deletion execution, canonical writer/public-book parity and public localized
-HTTP404 host routing remain current internal gaps. Concrete provider adapter is
-explicit S20/S21 internal work, never an owner programming task. The read-only
-.tmp/S03-criteria-allocation-audit.md/.json records exact current binding references,
-not any acceptance or requirements waiver. Deletion constraint
-reproductions and independent rollback evidence are retained under evidence/S03.
-Use the existing canonical App/domain/globe and S02 WebPlatformAdapter/provider.
-SHARED_SITE_EXTRACTION.md documents source identity and demand-loading boundaries.
-Implement controlled artifact, isolated cache/scope, offline bootstrap and safe
-updates with actual build/browser evidence; do not create a second product/globe.
-S02 full3139/final259/browser13 passed, with four unit skips and one existing
-desktop-only browser skip. Source guard430 Web modules passed. Preserve the failed
-concurrent Git-fixture log and successful serial resolution as recorded evidence.
-Tests/fixes/regression/evidence/atomic commit then checkpoint and continue S04.
-All global milestones, full reviewed RU/EN, strict ICU, native artifacts, child,
-purchases, downloads, legal/store/owner approval and exact RC work remain.
-No raw AI production translations, fabricated approvals, guessed titles, fake RC
-screenshots, deploy, production writes, Submit, Release or merge.
+Continue V12 in literary-planet-v12-work on
+codex/literary-planet-v12-bilingual-final-autopilot.
+Read AGENTS.md and state/status/decisions/blockers. Run pinned requirements
+verification, stage-context S03 and verify-state. Shared invariants and S03-S10
+routing18/21/22/23 have already been read in full; do not reload future documents.
+
+S00 ef16246f, S01 25b53479, S02 6305df5f accepted. State headSha intentionally
+means accepted S02. S03.acceptance remains the first open criterion.
+Canonical main f406a7de is already incorporated by five local cherry-picks
+ending8e6cfe1f, preserving accepted ancestry. Do not repeat integration or reset
+historical source fingerprints. No merge, deployment or production write.
+
+Integrated full unit run4479 passed,4 existing skips;576 files passed,3 skipped;
+553.88s. Initial4473/6failed log and fixed narrow76-pass log are preserved.
+No Git-fixture assertion/timeout relaxed. Later audit fixes need their own narrow
+validation, not a false claim the preceding full run tested future edits.
+
+Fresh PWA03c7623e artifact:335 files/295 bootstrap, sourceInputs833e4e00,
+20 actual Chrome desktop/Pixel7-viewport tests passed, zero skips/failures/flaky.
+Real Dostoevsky to Crime and Punishment works cold offline and acrossRU/EN,
+preserving the same R3F/Canvas/renderer/camera/scene and writer/panel selection.
+WriterPanel consumes the exact verifiedBookArchive runtime with loading/retry;
+46 public owner routes preserved. Historical governance122 passed.
+Dossier38 unit/7 Chrome; WriterPanel real StrictMode4; public existing6;
+domain12876/SEO5513/static dossier659; types/typography25/platform481 passed.
+Read canonical-integration-working-*.json and committed raw logs in evidence/S03.
+PWA snapshots have explicit local QA authority, not real purchases or exact RC.
+Check evidence preservation paths before rebuilding dist-pwa; never overwrite
+historical authority/control/browser results.
+
+Deletion processor/SQL/CLI:70 passed; server types and actual dry-run passed.
+Independent6 SQL+6 CLI groups passed, including exact content_views scope and
+rollback. Real Auth/Storage production execution and multi-connection contention
+are not tested. Retained unlinked provider IDs are not claimed anonymous.
+Public contributors/staff/unsupported linked accounts stay blocked; support alone
+does not prove erasure. Keep actual remaining implementation internal.
+RU/EN account deletion disclosure has9 aligned DRAFT paragraphs and6 concrete
+external decisions, no guessed retention period or legal/human approval.
+
+Public404 handler/build artifact is implemented and106 checks pass including
+real workerd. Canonical public hosting is GitHub Pages; separate dist-public-locales
+is inactive and excluded from Pages output, with no routes/deployed:false.
+
+Pending: cross-engine browser support boundaries (Chrome, Firefox, Windows
+Playwright WebKit, with true Safari/iOS separately unverified), final independent
+artifact review and source/evidence atomic checkpoint. Inspect live agents before
+overlapping edits. Cross-engine QA uses unique authority/control/output identities;
+a fresh build must preserve prior03c artifact and20-test evidence first.
+Any bounded post-full test/auditor change must retain before/after source hashes.
+
+S03 remains IN_PROGRESS while internal gaps remain. The acceptance matrix permits
+documented parallel-safe S04 preparation, but first-open/current/resume stayS03.
+Do not mark a stage COMPLETE or BLOCKED_EXTERNAL with internal work outstanding.
+Concrete Web checkout is S20 and full server verification S21, never an owner
+programming task. Reviewed full RU/EN, native/child/audio/packages/accessibility,
+store/legal/owner approval and exact-RC evidence remain mandatory later work.
+Tests/fixes/regression/evidence/atomic local commit then persistent checkpoint.
+No fake approvals, raw AI production translations, guessed titles/biographies,
+second globe/database, remote WebView runtime or unauthorized protected assets.
+
+Post-full bounded changes: private JSON extension/duplicate-key audit fixed;
+88 affected tests passed across the preserved narrow runs. Copy normalization
+and equivalent test regex escapes passed137 tests/8 files, types and short-hyphen
+policy. Neither bounded rerun is described as a repeat of full4479.
+
+Additional engines are now measured: Chrome152.0.7977.76, Firefox153.0,
+Windows Playwright WebKit26.5. Fresh4a0696ef artifact335-file audit passed;
+6 scenarios:4 passed,2 failed,0 skipped/retries/flaky. Firefox both passed.
+Chrome navigator.onLine reset after cached offline navigation and WebKit internal
+offline navigation error also occur with an independent minimal worker and the
+actual worker on tiny hashed content. Preserve the two failures and raw diagnosis;
+do not weaken assertions or relabel this suite green. Safari/native installation
+and physical-device evidence remain unverified. See PWA_BROWSER_BOUNDARIES.md
+and cross-engine-browser-first/transport-boundaries evidence. No further browser
+process or build is running. The native entry review is prepared in
+.tmp/S04-native-entry-review.md/.json; S04 has not yet been activated.

@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import * as ts from "typescript";
-import { projectV12S03Package, projectV12S03Source, v12S03Compatibility } from "./v12-s03-compatibility.mjs";
+import { projectV12S03Package, projectV12S03Source, v12S03Compatibility, v12S03CanonicalIntegration } from "./v12-s03-compatibility.mjs";
 
 const read = path => readFileSync(path, "utf8").replace(/\r\n/gu, "\n");
 const sha = value => createHash("sha256").update(value).digest("hex");
@@ -22,7 +22,15 @@ describe("exact V12 S03 historical compatibility projection", () => {
     ]);
   });
 
-  for (const delta of v12S03Compatibility.projections) {
+  it("bounds the later canonical-runtime and book-scoped navigation integration", () => {
+    expect(v12S03CanonicalIntegration.canonicalMainSha).toBe("f406a7de9e16e8cf63545cbce6681ed9278761a4");
+    expect(v12S03CanonicalIntegration.projections).toHaveLength(16);
+    expect([...new Set(v12S03CanonicalIntegration.projections.map(delta => delta.path))]).toEqual([
+      "src/components/WriterPanel.tsx", "src/components/BookArchiveSection.tsx",
+    ]);
+  });
+
+  for (const delta of [...v12S03CanonicalIntegration.projections, ...v12S03Compatibility.projections]) {
     it(`${delta.id}: requires the exact delta once and preserves unrelated bytes`, () => {
       const source = read(delta.path);
       expect(source.split(delta.after)).toHaveLength(2);

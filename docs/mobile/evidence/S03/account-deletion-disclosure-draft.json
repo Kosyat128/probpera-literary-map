@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-account-deletion-technical-disclosure-draft",
+  "draftVersion": "s03-deletion-technical-draft-1",
+  "status": "DRAFT",
+  "productionReady": false,
+  "stageAcceptance": false,
+  "humanTranslationApproval": false,
+  "legalApproval": false,
+  "ownerApproval": false,
+  "serverConfigurationChanged": false,
+  "productionPolicyInstanceCreated": false,
+  "document": {
+    "path": "docs/mobile/ACCOUNT_DELETION_DISCLOSURE_DRAFT_RU_EN.md",
+    "sha256": "f6f597cd186d1149cc40604c8650f7728117b0c3bcaa2dec4e27de83ca8412fc"
+  },
+  "sourceHashes": {
+    "supabase/schema.sql": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459",
+    "supabase/migrations/20260802_reader_journey.sql": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+    "supabase/migrations/20260905_literary_planet_web_license.sql": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2",
+    "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+    "server/planet/deletionProcessor.ts": "0cf31f84f958fc54484d594392dde3fa5436346981c4376fddd115d9677c25a4",
+    "server/planet/deletionProcessorSupabase.ts": "8aa5280842f16e02f59e4873d454cdef4dbaca89522870f615537bc90de3c0d9",
+    "server/planet/deletionProcessorCli.ts": "cec4ec5d09b831c2a0e78cce5effb56f4c86d42828fbf05a56ea5fb97a5e6387",
+    "server/planet/api.ts": "2374a4cc2321938a6c1d4217b5b31107e53eb7d2a1532c1b5ab7c8bd5e02f345",
+    "server/planet/worker.ts": "0b95441c50311f0fa9eb8965782674dc2e1cb6af7ba7ee9a0c0b4e56b7acdda5",
+    "src/pwa/PlanetAccountPage.tsx": "0978223606d38d9d50ea31c9afa8d63af7f69a94680fed0b19c71236bbda79d7",
+    "src/pwa/accountCopy.ts": "73eb68802468efec0c65f33e1df2c44c8466603c1da37b93de8ce11a533fe914",
+    "src/pwa/accountAccess.ts": "b38a88bac60ac595bd6282ace0d574ea41692e276fe4fff617cebe66cb8916cf",
+    "src/pwa/PwaLicenseRuntime.ts": "02abe28132731ce592e2f18e6792d8a3240c391eceba88b0dd0049cf1bb16fb4",
+    "src/pwa/PwaHelp.tsx": "b76630fde156942e08fb7662cfa6a025ee3f82dc162895dfdf15b3136b35c3cb"
+  },
+  "locales": {
+    "ru": {
+      "paragraphs": 9,
+      "characters": 2744,
+      "utf8Bytes": 5023,
+      "textSha256": "ab61ae34c54222ecf5470b702d914061129e85d19a816a25a9a641733516070c"
+    },
+    "en": {
+      "paragraphs": 9,
+      "characters": 2741,
+      "utf8Bytes": 2753,
+      "textSha256": "e9f3ed16e6e2300111f82de0589c1b3e257dabed288d8131ee845fd5d259aaf5"
+    }
+  },
+  "structuralChecks": {
+    "exactlyTwoTextBlocks": true,
+    "nineAlignedUnitsPerLocale": true,
+    "fitsExisting8000CharacterPlaintextLimit": true,
+    "noCyrillicInEnglishBlock": true
+  },
+  "semanticReview": {
+    "method": "AI-assisted paragraph-by-paragraph comparison against actual code; not an independent human attestation",
+    "status": "DRAFT_REQUIRES_EXTERNAL_REVIEW",
+    "numericSemanticScore": null,
+    "units": [
+      {
+        "id": "DLD-01",
+        "status": "DRAFT_REQUIRES_HUMAN_RU_EN_REVIEW",
+        "sharedFacts": [
+          "existing canonical account identity",
+          "recent authentication before request"
+        ],
+        "sourceRefs": [
+          "server/planet/api.ts",
+          "src/pwa/PlanetAccountPage.tsx"
+        ],
+        "ru": {
+          "text": "Удаление касается вашего существующего аккаунта «Пробы Пера», с которым вы пользуетесь «Литературной планетой». Перед отправкой запроса нужно снова подтвердить вход в этот аккаунт.",
+          "sha256": "b4e344bec546c77c9d4c83f70a76d51b57b96395092c0c6bee2db0f59aae33c8"
+        },
+        "en": {
+          "text": "Deletion applies to your existing Proba Pera account, which you use with Literary Planet. You need to sign in again to confirm that account before sending a request.",
+          "sha256": "614798c404089f83145139bb7dd54b5bb4c46667d86eeda40fd0c286e3d22458"
+        }
+      },
+      {
+        "id": "DLD-02",
+        "status": "DRAFT_REQUIRES_HUMAN_RU_EN_REVIEW",
+        "sharedFacts": [
+          "acknowledgement is not completion",
+          "server-checked protected access blocked after request",
+          "previous signed offline deadline remains"
+        ],
+        "sourceRefs": [
+          "supabase/migrations/20260905_literary_planet_web_license.sql",
+          "src/pwa/PwaLicenseRuntime.ts"
+        ],
+        "ru": {
+          "text": "Принятый запрос ещё не означает, что аккаунт удалён. После принятия запроса доступ к защищённой Web/PWA-редакции блокируется при проверке на сервере. Ранее подтверждённый доступ без сети может сохраняться до срока, указанного в последнем подтверждении.",
+          "sha256": "5e91e64e98dd4935ae05bf6f05e4325b0c1dc08a6d649aa23cc3e6256b2b8ecd"
+        },
+        "en": {
+          "text": "An accepted request does not mean that the account has been deleted. Once the request is accepted, access to the protected Web/PWA edition is blocked when checked with the server. Previously verified offline access may remain available until the deadline in the latest verification.",
+          "sha256": "3d976f3c0f5918f87e0f54f3d76ee63448c74097041f40a2c61a64e11759b24e"
+        }
+      },
+      {
+        "id": "DLD-03",
+        "status": "DRAFT_REQUIRES_HUMAN_RU_EN_REVIEW",
+        "sharedFacts": [
+          "Auth hard deletion",
+          "profile and named private data removed",
+          "views deleted by exact user_id",
+          "other-user/guest same-session records preserved"
+        ],
+        "sourceRefs": [
+          "supabase/schema.sql",
+          "supabase/migrations/20260802_reader_journey.sql",
+          "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+          "server/planet/deletionProcessorSupabase.ts"
+        ],
+        "ru": {
+          "text": "Когда обработка завершена, удаляются аккаунт для входа, профиль читателя, сохранённые на сервере избранное, книжные подборки и их содержимое, прогресс чтения, подписки на страны, писателей и разделы, уведомления и записи о просмотрах, прямо связанные с этим аккаунтом. Записи другого пользователя и гостевые просмотры не удаляются только из-за совпадения браузерной сессии.",
+          "sha256": "7e7c5ae9c38f33e78d444dee3906e345dd46d1d9f9e5e9cc7f1d0d4b2a5af9b1"
+        },
+        "en": {
+          "text": "Once processing is complete, we remove the account used for sign-in, your reader profile, server-stored favorites, book collections and their contents, reading progress, subscriptions to countries, writers and sections, notifications, and view records directly linked to that account. Another user's records and guest views are not deleted simply because they share a browser session.",
+          "sha256": "57762490274a6e0866bdbc3732014b097a172bc433648ca7ccdbf8a41508fdde"
+        }
+      },
+      {
+        "id": "DLD-04",
+        "status": "DRAFT_REQUIRES_HUMAN_RU_EN_REVIEW",
+        "sharedFacts": [
+          "standard owned avatar scope only",
+          "unsupported ownership/file blocks",
+          "Storage deletion may precede Auth completion"
+        ],
+        "sourceRefs": [
+          "server/planet/deletionProcessor.ts",
+          "server/planet/deletionProcessorSupabase.ts",
+          "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql"
+        ],
+        "ru": {
+          "text": "При обработке также удаляются принадлежащие вам файлы стандартного аватара. Если обнаружен другой связанный файл или его принадлежность не подтверждена, обработка приостанавливается. Часть файлов аватара может быть удалена до завершения удаления самого аккаунта.",
+          "sha256": "846e70e730519cb3d5b724ccdd3eff6f4d5d441c819eb5d5cbca007e62a62aee"
+        },
+        "en": {
+          "text": "Processing also removes the standard avatar files that belong to you. If another linked file is found or ownership cannot be confirmed, processing is put on hold. Some avatar files may be removed before deletion of the account itself is complete.",
+          "sha256": "52421d96111e538d0cae7d4eb1a4b6fbb9dd15b7ded3045214a9abc709c4c234"
+        }
+      },
+      {
+        "id": "DLD-05",
+        "status": "DRAFT_REQUIRES_HUMAN_RU_EN_REVIEW",
+        "sharedFacts": [
+          "public contributions and staff/editorial links require separate handling",
+          "blocked is not completed",
+          "unsupported linked data fails closed"
+        ],
+        "sourceRefs": [
+          "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql"
+        ],
+        "ru": {
+          "text": "Связанные с аккаунтом комментарии, темы, ответы, оценки, жалобы, служебные или редакционные записи требуют отдельного рассмотрения. При наличии таких связей обработка запроса приостанавливается. Эти записи не удаляются автоматически, а удаление аккаунта не считается завершённым. То же относится к данным, для которых ещё не предусмотрена безопасная обработка.",
+          "sha256": "4a37e910cac5d05bcc0a57b9b6290f9991e1f0179ed954d54d13c7d084c9084d"
+        },
+        "en": {
+          "text": "Comments, topics, replies, ratings, reports, staff records or editorial records linked to the account require separate review. Requests with these links are put on hold. Those records are not automatically removed, and account deletion is not considered complete. The same applies to data for which a safe handling process is not yet available.",
+          "sha256": "23d0621ed1c34f74176bf437f366c71a1a1920c39f76964f98343578abe4be56"
+        }
+      },
+      {
+        "id": "DLD-06",
+        "status": "DRAFT_REQUIRES_HUMAN_RU_EN_REVIEW",
+        "sharedFacts": [
+          "payment events and receipts retained with NULL user_id",
+          "provider correlation remains possible",
+          "no refund or provider-record deletion call"
+        ],
+        "sourceRefs": [
+          "supabase/migrations/20260905_literary_planet_web_license.sql",
+          "server/planet/deletionProcessorSupabase.ts"
+        ],
+        "ru": {
+          "text": "Записи платёжных событий и покупок сохраняются, а их прямая связь с удалённым аккаунтом убирается. В них остаются идентификаторы провайдера, события, операции и продукта, статусы, даты и контрольные хеши. Удаление такой связи не означает анонимизацию: провайдер может сопоставить свои идентификаторы с другими записями. Само удаление аккаунта не выполняет возврат оплаты и не удаляет записи у платёжного провайдера.",
+          "sha256": "b820accbe032e0f1353a54623d0e320bb531412f66123d6d85af1869f0c70d0f"
+        },
+        "en": {
+          "text": "Payment event and purchase records are retained, with their direct link to the deleted account removed. They retain provider, event, transaction and product identifiers, statuses, dates and verification hashes. Removing that link does not make the records anonymous: the provider may match its identifiers to other records. Account deletion itself does not issue a refund or remove the payment provider's records.",
+          "sha256": "b8e7d9ce8e1b481e9b603261102949ec8f390ccbc4cea077e6702660daf6accf"
+        }
+      },
+      {
+        "id": "DLD-07",
+        "status": "DRAFT_REQUIRES_HUMAN_RU_EN_REVIEW",
+        "sharedFacts": [
+          "request ledger retained with NULL user_id",
+          "request receipt remains a case reference"
+        ],
+        "sourceRefs": [
+          "supabase/migrations/20260905_literary_planet_web_license.sql",
+          "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql"
+        ],
+        "ru": {
+          "text": "Сохраняется запись о запросе: его номер, статус, даты, служебные сведения о ходе обработки и контрольные хеши. Её прямая связь с удалённым аккаунтом также убирается. Номер запроса остаётся номером обращения, поэтому сохраните его для поддержки.",
+          "sha256": "1766b9940b1c21d83fcac801638eced6f36373c62f3f491b9d84d2c891ffe0a6"
+        },
+        "en": {
+          "text": "The deletion request record is retained, including its number, status, dates, processing details and verification hashes. Its direct link to the deleted account is also removed. The request number remains a reference for your case, so keep it for support.",
+          "sha256": "7ec3d4dc1ba4f6d1d8e54075e84ce0bbe32a2a5697700ed8b49152554439c0e0"
+        }
+      },
+      {
+        "id": "DLD-08",
+        "status": "DRAFT_REQUIRES_HUMAN_RU_EN_REVIEW",
+        "sharedFacts": [
+          "server processor does not clear all device/browser stores",
+          "local/offline data may remain"
+        ],
+        "sourceRefs": [
+          "src/pwa/PwaHelp.tsx",
+          "server/planet/deletionProcessorCli.ts"
+        ],
+        "ru": {
+          "text": "Удаление на сервере не очищает автоматически данные на всех ваших устройствах. Язык, настройки, локальное избранное, недавние материалы и файлы для работы без сети могут оставаться в хранилище браузера. Очистка данных сайта в браузере - отдельное действие.",
+          "sha256": "c23d65d35d2fe67f9781e68b09295f61af02716ea14465248a320d1e4c40b129"
+        },
+        "en": {
+          "text": "Server-side deletion does not automatically clear data from all your devices. Your language, settings, local favorites, recently opened items and offline files may remain in browser storage. Clearing the site's browser data is a separate action.",
+          "sha256": "b351d30ed481898e6208fbc76b578c55fb275a3ef0cc0b886af9f517bd30a6e8"
+        }
+      },
+      {
+        "id": "DLD-09",
+        "status": "DRAFT_REQUIRES_HUMAN_RU_EN_REVIEW",
+        "sharedFacts": [
+          "requested/processing/blocked distinct from completion",
+          "status requires same canonical identity",
+          "support with saved receipt when authentication unavailable",
+          "auth failure is not deletion proof"
+        ],
+        "sourceRefs": [
+          "src/pwa/accountCopy.ts",
+          "src/pwa/PlanetAccountPage.tsx",
+          "src/pwa/accountAccess.ts",
+          "server/planet/api.ts",
+          "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql"
+        ],
+        "ru": {
+          "text": "Статусы «Запрос принят» и «Запрос обрабатывается» означают, что удаление ещё не завершено. Статус «Обработка приостановлена» требует обращения в поддержку. Проверить статус можно после входа в тот же аккаунт. Если войти уже нельзя или статус не удаётся получить, напишите на probperasite@yandex.ru и укажите сохранённый номер запроса. Ошибка входа сама по себе не подтверждает удаление.",
+          "sha256": "d81fec800e3a15dc373afdd57adea4b48a6e61afc7450cf927eedc0c6c00ab1e"
+        },
+        "en": {
+          "text": "The statuses “Request received” and “Request being processed” mean that deletion is not yet complete. A request that is “On hold” requires contacting support. You can check its status after signing in to the same account. If you can no longer sign in or cannot retrieve the status, email probperasite@yandex.ru with your saved request number. A sign-in error alone does not confirm deletion.",
+          "sha256": "9ed4945eedb15793c93fce1c97116069d029008d828ee0876bc36d5ba690962b"
+        }
+      }
+    ]
+  },
+  "pendingDecisions": [
+    "DD-01-payment-disposition-retention",
+    "DD-02-request-ledger-retention-support-receipt",
+    "DD-03-blocked-account-handling",
+    "DD-04-managed-services-backups-and-external-data-boundary",
+    "DD-05-purchase-access-and-partial-processing",
+    "DD-06-human-RU-EN-legal-and-owner-publication-review"
+  ],
+  "limitations": [
+    "No future-stage specialist archive document was loaded.",
+    "No retention period, legal ground, jurisdiction, refund entitlement or approval is inferred.",
+    "This JSON deliberately is not a deployable {version,ru,en} server disclosure or an executable processor policy.",
+    "Record unlinking does not establish anonymization.",
+    "Current processor does not complete staff/public-contribution/unsupported-account deletion.",
+    "Local SQL/CLI verification does not verify production Auth/Storage/backup or provider handling."
+  ]
+}

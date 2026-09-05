@@ -25,6 +25,8 @@ const webglRegressionSpecs = [
   "**/literary-news-production.spec.mjs",
   "**/navigation-layout.spec.mjs",
   "**/public-doc-refinements.spec.mjs",
+  // Locale switching mounts the real globe; its metadata check shares the spec.
+  "**/public-locales.spec.mjs",
   "**/public-smoke.spec.mjs",
   "**/responsive-reader-globe.spec.mjs",
   "**/stage5-baseline.spec.mjs",

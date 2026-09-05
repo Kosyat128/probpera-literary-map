@@ -9,6 +9,7 @@ import ts from "typescript";
 import { build as bundle } from "esbuild";
 import { PWA_BOOTSTRAP_ENTRIES, bootstrapSourcePath, bootstrapManifestKeys, normalizePwaAuthority, pwaAuthoritySha256, loadPwaAuthority } from "./pwa-artifact.mjs";
 import { normalizePwaWorkerConfig } from "../../src/pwa/serviceWorkerRuntime.js";
+import { bookDossierStaticIssues } from "../audit-book-dossier-delivery.mjs";
 
 const SCOPE = "/planet/";
 const ORIGIN = "https://probpera.ru";
@@ -71,6 +72,31 @@ function loopbackGuard(node, target) {
   return sameJson([...values].sort(), ["127.0.0.1", "[::1]", "localhost"].sort()) && ts.isPropertyAccessExpression(access) && access.name.text === "hostname" && ts.isPropertyAccessExpression(access.expression) && access.expression.name.text === "location" && ts.isIdentifier(access.expression.expression) && access.expression.expression.text === target;
 }
 
+function assertUnambiguousStaticJson(source) {
+  // JSON.parse has already validated grammar. Scan strings/brackets once to
+  // retain duplicate keys that its last-value semantics would otherwise hide.
+  const frames = [];
+  let tokens = 0;
+  for (const match of source.matchAll(/"(?:[^"\\]|\\[\s\S])*"|[{}\[\]]/gu)) {
+    if (++tokens > 1_000_000) throw new Error("Static JSON token budget exceeded");
+    const token = match[0];
+    if (token === "{" || token === "[") {
+      frames.push(token === "{" ? new Set() : null);
+      if (frames.length > 256) throw new Error("Static JSON nesting budget exceeded");
+    } else if (token === "}" || token === "]") frames.pop();
+    else {
+      let next = match.index + token.length;
+      while (/[\t\r\n ]/u.test(source[next] ?? "x")) next++;
+      const keys = frames[frames.length - 1];
+      if (keys && source[next] === ":") {
+        const key = JSON.parse(token);
+        if (keys.has(key)) throw new Error("Duplicate static JSON key");
+        keys.add(key);
+      }
+    }
+  }
+}
+
 /** Read-only preparation audit. Success does not approve editorial content or a release. */
 export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir = "dist-pwa", allowQa = false } = {}) {
   const findings = [];
@@ -116,7 +142,30 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
         if ((!permittedHidden && relative.split("/").some(part => part.startsWith("."))) || /(?:^|\/)(?:src|scripts|node_modules|apps|docs|requirements|tests?|private)(?:\/|$)/iu.test(relative)
           || /(?:^|\/)(?:MANIFEST\.json|SHA256SUMS\.txt|AUTOPILOT[^/]*|NEXT_CODEX_PROMPT[^/]*|\d{2,3}[A-Z]?_[^/]+\.(?:md|txt|csv|json))$/u.test(relative)
           || (/\.(?:tsx?|jsx|map|env|pem|key|p12|pfx|zip|7z|rar|sqlite|db|md|docx?)$/iu.test(relative) && !RUNTIME_ATTRIBUTIONS.has(relative))) add("PRIVATE_OUTPUT", relative, "Private source, configuration, archive or requirement material is not a runtime asset.");
-        if (/-----BEGIN (?:EC |RSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----/u.test(bytes.toString("utf8"))) add("PRIVATE_KEY", relative, "Private key material is forbidden in every artifact.");
+        const text = bytes.toString("utf8");
+        if (/-----BEGIN (?:EC |RSA |OPENSSH |ENCRYPTED )?PRIVATE KEY-----/u.test(text)) add("PRIVATE_KEY", relative, "Private key material is forbidden in every artifact.");
+        // Canonical live-only dossier banks must not enter the controlled static
+        // package under an innocent asset name, even with consistent hashes.
+        const jsonFormat = /\.(?:json|webmanifest)$/iu.test(relative);
+        // Public assets have no universal extension allowlist. Inspect valid
+        // plain JSON objects/arrays even when named .txt/.dat; this does not
+        // decode compressed/binary payloads or arbitrary JavaScript expressions.
+        if (jsonFormat || /^[\uFEFF\t\r\n ]*[\[{]/u.test(text)) {
+          let source, value, parsed = false;
+          try {
+            source = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+            value = JSON.parse(source);
+            parsed = true;
+          } catch {
+            if (jsonFormat) add("INVALID_JSON", relative, "Static JSON must be valid UTF-8 JSON.");
+          }
+          if (parsed) try {
+            assertUnambiguousStaticJson(source);
+            for (const issue of bookDossierStaticIssues(value, relative)) {
+              add("PRIVATE_DOSSIER_OUTPUT", relative, issue);
+            }
+          } catch { add("INVALID_JSON", relative, "Static JSON must have unambiguous keys and bounded inspectable structure."); }
+        }
       }
     };
     await walk(directory);

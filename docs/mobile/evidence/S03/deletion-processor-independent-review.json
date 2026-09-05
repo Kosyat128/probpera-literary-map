@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-S03-deletion-processor-independent-review",
+  "generatedAt": "2026-09-05T19:29:55.539Z",
+  "reviewer": "codex/canonical_repo_recon",
+  "result": "no-unresolved-actionable-findings-in-reviewed-scope",
+  "stageAcceptance": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "scope": [
+    "server-only deletion CLI and real launcher composition",
+    "reader deletion processor and canonical Supabase adapter",
+    "guarded reader Auth deletion migration; actual canonical public DDL"
+  ],
+  "sourceHashes": {
+    "supabase/schema.sql": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459",
+    "supabase/migrations/20260802_reader_journey.sql": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+    "supabase/migrations/20260728_cms_foundation.sql": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22",
+    "supabase/migrations/20260905_literary_planet_web_license.sql": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2",
+    "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+    "server/planet/deletionProcessorCli.ts": "cec4ec5d09b831c2a0e78cce5effb56f4c86d42828fbf05a56ea5fb97a5e6387",
+    "scripts/mobile/process-reader-deletion.mjs": "eb52c2bea241d9690ef245876c21ff811ba1a24cf6608062e0942d2e033082a1",
+    "server/planet/deletionProcessor.ts": "0cf31f84f958fc54484d594392dde3fa5436346981c4376fddd115d9677c25a4",
+    "server/planet/deletionProcessorSupabase.ts": "8aa5280842f16e02f59e4873d454cdef4dbaca89522870f615537bc90de3c0d9"
+  },
+  "reviewedTestSourceHashes": {
+    "server/planet/deletionProcessorCli.test.ts": "60f23329b9b426f4044324f2007e63a9e853077f8e871b7e712bdc862711ab13",
+    "server/planet/deletionProcessor.test.ts": "21f3e069e51930b1e81fb79a0078799d406722944c86e6de6bb6ee0380921563",
+    "scripts/database/literary-planet-reader-deletion.integration.test.mjs": "b611fa06f9e56605e854bd6fd3344d08959c3c5ba5da2b2a9a6d3578a987c749"
+  },
+  "executedChecks": {
+    "sql": {
+      "groups": 6,
+      "status": "passed",
+      "checks": [
+        "last-owner retained; auth deletion unarmed",
+        "public topic and another reader reply retained",
+        "OLD avatar ownership transfer and late staff promotion fenced",
+        "lease expiry blocks Auth; reclaimed lease rejects old token; committed deletion reconciles; private shelf and exact subject views removed; shared-session other/guest views retained; direct cleanup rejected; provider ledger preserved unlinked",
+        "a later Auth transaction failure rolls back exact subject view cleanup and completion proof together",
+        "anon/authenticated denied processor; service-role denied old completion bypass"
+      ],
+      "execution": "PGlite with canonical table DDL, actual migration and service-role RPC ACL; each statement independently commits; one connection",
+      "command": "node .tmp/worker-review/deletion-processor-recheck.mjs",
+      "sourceUnchangedAfterExecution": true,
+      "rerunOmitted": "Final migration hash exactly matches the already executed six-group recheck."
+    },
+    "cli": {
+      "groups": 6,
+      "status": "passed",
+      "checks": [
+        "default and fully configured dry-run never access credentials or construct transport",
+        "unknown/duplicate arguments, direct subject option and malformed IDs/timeouts fail before transport",
+        "decoded duplicate keys, prototype key, trailing comma and trailing value policy ambiguity rejected",
+        "policy read failure never reflects path, malformed policy contents or credentials",
+        "UUID is looked up only as deletion request ID; absent request never becomes direct Auth subject deletion",
+        "actual launcher default dry-run exits0 with all Node HTTP/HTTPS/TCP/fetch transports denied and synthetic credentials absent from stdout"
+      ],
+      "execution": "Compiled actual CLI; injected local ledger double for execute composition; actual launcher dry-run under a hook denying Node fetch, HTTP, HTTPS and TCP",
+      "command": "node .tmp/worker-review/deletion-cli-recheck.mjs"
+    }
+  },
+  "resolvedFindings": [
+    {
+      "id": "storage-old-owner-fence",
+      "status": "resolved-and-reproduced",
+      "description": "Storage UPDATE must fence both OLD and NEW owner/path identities; transfer from the deleting subject now fails before metadata changes."
+    }
+  ],
+  "unresolvedActionableFindings": [],
+  "observations": [
+    "A UUID CLI argument is only a deletion request lookup key; canonical subject is obtained by guarded SQL inspection, never by treating the argument as an Auth user ID.",
+    "The viewed history cleanup targets user_id, preserves other-user and guest rows sharing a session_id, and rolls back with later Auth SQL failure.",
+    "Provider identifiers and payload hashes remain correlatable provider records after user_id unlinking; this report does not call them anonymous.",
+    "Accounts with public contributions or staff/editorial references remain blocked by this narrow reader processor; it is not a generic deletion workflow for every account."
+  ],
+  "evidenceArtifacts": [
+    {
+      "path": ".tmp/worker-review/deletion-processor-recheck.json",
+      "sha256": "395d96bbb24812ffad1dfbf97e7883c58f2826168702b10d664d53bc45728815"
+    },
+    {
+      "path": ".tmp/worker-review/deletion-cli-recheck.json",
+      "sha256": "a4454c48842212aa34159516eaaa0e3d239889cd120c7e28e1942977bfcb875b"
+    }
+  ],
+  "limitations": [
+    "No production command, database migration, Auth/Storage service call or network execution was performed.",
+    "PGlite tests use one connection and do not prove multi-connection lock contention or transaction races.",
+    "The live GoTrue/Storage implementation and blob deletion were not independently exercised; SQL state and SDK composition were checked locally.",
+    "No human/legal policy approval, retention policy validity, release approval or global S03 acceptance is asserted.",
+    "Author-reported full focused-suite counts are not counted as independently executed checks in this report."
+  ]
+}

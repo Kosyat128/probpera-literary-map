@@ -123,6 +123,69 @@ afterEach(async () => {
 const codes = result => result.findings.map(finding => finding.code);
 
 describe("independent actual-file preparation audit", () => {
+  it.each([
+    { records: [{ draft: { schemaVersion: 2, bookKey: "private-fixture" } }] },
+    { nested: { schemaVersion: 2, variants: [] } },
+    { nested: { schemaVersion: 2, bookKey: "live-only-fixture", pages: [] } },
+  ])("rejects canonical private/live-only dossier JSON despite consistent inventory and bootstrap hashes: %j", async payload => {
+    const env = await fixture();
+    const filename = "assets/reading-data.json", bytes = json(payload);
+    await env.write(filename, bytes);
+    await env.write("public/" + filename, bytes, env.root);
+    env.provenance.files.push({ output: filename, source: "public/" + filename, sourceSha256: sha(bytes), transformation: "none" });
+    await env.write("asset-provenance.json", json(env.provenance));
+    env.config.files.push({ url: "/planet/" + filename, bytes: Buffer.byteLength(bytes), sha256: sha(bytes), kind: "asset" });
+    await env.refreshIdentities();
+    const result = await env.audit();
+    expect([...new Set(codes(result))]).toEqual(["PRIVATE_DOSSIER_OUTPUT"]);
+    expect(result.pass).toBe(false);
+  });
+
+  it.each(["json", "JSON", "webmanifest", "WEBMANIFEST", "txt", "dat", "bin"])("rejects nested plain dossier JSON under a harmless .%s asset name", async extension => {
+    const env = await fixture();
+    const filename = "assets/reading-data." + extension;
+    const bytes = json({ neutral: [[{ schemaVersion: 2, bookKey: "private-fixture", pages: [] }]] });
+    await env.write(filename, bytes); await env.write("public/" + filename, bytes, env.root);
+    env.provenance.files.push({ output: filename, source: "public/" + filename, sourceSha256: sha(bytes), transformation: "none" });
+    await env.write("asset-provenance.json", json(env.provenance));
+    env.config.files.push({ url: "/planet/" + filename, bytes: Buffer.byteLength(bytes), sha256: sha(bytes), kind: "asset" });
+    await env.refreshIdentities();
+    const result = await env.audit();
+    expect([...new Set(codes(result))]).toEqual(["PRIVATE_DOSSIER_OUTPUT"]);
+    expect(result.pass).toBe(false);
+  });
+
+  it.each([
+    ["json", '{"draft":{"schemaVersion":2,"bookKey":"private-fixture"},"draft":null}'],
+    ["dat", '{"draft":{"schemaVersion":2,"bookKey":"private-fixture"},"dr\\u0061ft":null}'],
+    ["WEBMANIFEST", '{"draft":'],
+    ["JSON", Buffer.from([0x7b, 0x22, 0x78, 0x22, 0x3a, 0x22, 0xff, 0x22, 0x7d])],
+    ["json", "[".repeat(257) + "0" + "]".repeat(257)],
+  ])("rejects ambiguous, malformed or uninspectable structured data without relying on other failures (%s)", async (extension, bytes) => {
+    const env = await fixture(); const filename = "assets/reading-data." + extension;
+    await env.write(filename, bytes); await env.write("public/" + filename, bytes, env.root);
+    env.provenance.files.push({ output: filename, source: "public/" + filename, sourceSha256: sha(bytes), transformation: "none" });
+    await env.write("asset-provenance.json", json(env.provenance));
+    env.config.files.push({ url: "/planet/" + filename, bytes: Buffer.byteLength(bytes), sha256: sha(bytes), kind: "asset" });
+    await env.refreshIdentities();
+    const result = await env.audit();
+    expect([...new Set(codes(result))]).toEqual(["INVALID_JSON"]);
+    expect(result.pass).toBe(false);
+  });
+
+  it.each([
+    ["txt", "[This is ordinary text, not a JSON document]"],
+    ["dat", json({ schemaVersion: 2, books: [{ id: "synthetic", rights: "reference-only", title: "Ordinary catalog" }] })],
+  ])("keeps a harmless traced .%s asset valid", async (extension, bytes) => {
+    const env = await fixture(); const filename = "assets/reading-data." + extension;
+    await env.write(filename, bytes); await env.write("public/" + filename, bytes, env.root);
+    env.provenance.files.push({ output: filename, source: "public/" + filename, sourceSha256: sha(bytes), transformation: "none" });
+    await env.write("asset-provenance.json", json(env.provenance));
+    env.config.files.push({ url: "/planet/" + filename, bytes: Buffer.byteLength(bytes), sha256: sha(bytes), kind: "asset" });
+    await env.refreshIdentities();
+    expect((await env.audit()).findings).toEqual([]);
+  });
+
   it("accepts a complete default artifact with real PNGs and fresh source inputs", async () => {
     const env = await fixture();
     const result = await env.audit();

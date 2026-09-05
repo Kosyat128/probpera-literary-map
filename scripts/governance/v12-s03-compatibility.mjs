@@ -10,6 +10,17 @@ if (createHash("sha256").update(fixtureSource).digest("hex") !==
   throw new Error("Changed V12 S03 compatibility specification");
 }
 const fixture = JSON.parse(fixtureSource);
+const integrationSource = readFileSync(new URL("./v12-s03-canonical-integration.json", import.meta.url), "utf8")
+  .replace(/\r\n/gu, "\n");
+if (createHash("sha256").update(integrationSource).digest("hex") !==
+    "1c021b9c744d75694d7b28cf45bf42a4bd3c341850adf8469d96b54ca3ea7923") {
+  throw new Error("Changed V12 S03 canonical integration specification");
+}
+const integration = JSON.parse(integrationSource);
+export const v12S03CanonicalIntegration = Object.freeze({
+  ...integration,
+  projections: Object.freeze(integration.projections.map(delta => Object.freeze(delta))),
+});
 export const v12S03Compatibility = Object.freeze({
   ...fixture,
   projections: Object.freeze(fixture.projections.map(delta => Object.freeze(delta))),
@@ -22,7 +33,9 @@ export const v12S03Compatibility = Object.freeze({
 /** Match only pinned, complete deltas; every other source byte survives. */
 export function projectV12S03Source(relativePath, source) {
   let result = source;
-  for (const delta of v12S03Compatibility.projections) {
+  // Undo the latest technical integration first, then the original S03 delta.
+  // Upstream bookshelf refinements are still checked separately by their lock.
+  for (const delta of [...v12S03CanonicalIntegration.projections, ...v12S03Compatibility.projections]) {
     if (delta.path !== relativePath) continue;
     if (result.split(delta.after).length !== 2) {
       throw new Error(`Missing or duplicate V12 S03 compatibility delta: ${delta.id}`);

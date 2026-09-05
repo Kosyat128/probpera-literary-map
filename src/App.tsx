@@ -2758,6 +2758,10 @@ export default function App() {
                     <WriterPanel
                       key={selectedCountry.id}
                       country={selectedCountry}
+                      books={verifiedBookArchive}
+                      booksStatus={bookRuntimeStatus}
+                      onLoadBooks={requestBookRuntime}
+                      onRetryBooks={retryBookArchive}
                       selectedWriter={selectedWriter}
                       focusRequestId={
                         writerFocusRequest?.countryId === selectedCountry.id &&
@@ -3021,11 +3025,11 @@ export default function App() {
             </div>
           </article>
 
-          <div className="book-month-supporting has-news">
-            <DeferredLiteraryNewsPanel
+          <div className={isControlledWebEdition ? "book-month-supporting" : "book-month-supporting has-news"}>
+            {!isControlledWebEdition && <DeferredLiteraryNewsPanel
               active={bookDayActive}
               endpoint={localNewsPreview ? "/__literary-news/feed" : undefined}
-            />
+            />}
 
           <article className="book-fact-card">
             <div className="book-fact-orbit" aria-hidden="true">

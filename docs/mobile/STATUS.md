@@ -1,51 +1,73 @@
 # V12 status
 
-Active stage: S03 - controlled Web/PWA implementation. IN_PROGRESS.
+S00-S02 are accepted. S03 (controlled Web/PWA) is IN_PROGRESS.
+S04-S40 have not started. No global requirement is PASSED. releaseReady:false.
 
-Working source/evidence checkpoint:54bf83005fee01771e5f9e0ac1f0f12e16a85128.
-This is not S03 acceptance. State headSha remains the last accepted S02 checkpoint.
+Canonical main f406a7de9e16e8cf63545cbce6681ed9278761a4 is incorporated by five
+local cherry-picks through8e6cfe1f482ebd261965d774cbf4e14f80f62f1d. Accepted
+ancestors remain intact. State headSha deliberately remains the accepted S02
+checkpoint6305df5fe671718c78b38af1ccc2bafbbdd44346; the current working changes
+are not S03 acceptance or an exact RC.
 
-S03 working checkpoint: controlled PWA build, signature-verifying access boundary,
-isolated integrity-checked worker and explicit update flow are implemented.
-The 55d51c715f4f3291f231811752d04c0655a6ba7b95c6cb678dce71890b2bd521
-local QA artifact passed 12 desktop/mobile browser scenarios and an independent
-artifact audit (326 files, 283 bootstrap files). These results bind that snapshot,
-not subsequent source edits or an RC. Its screenshots are real local QA captures.
-Latest combined server HTTP/crypto/canonical Supabase/real PGlite/account/recovery
-regression passed 339 tests, including lost202 deletion-status recovery. Actual
-account component Chrome scenarios passed15; recovery scenarios passed8. These
-use genuine cryptography and local protocol fixtures, not production accounts.
-Public locale metadata/JSON-LD/static404/preparation sitemap checks passed 54 tests.
-Public account restoration/deletion-status/recovery flows, compatible whole-app
-rollback, local server hosting and explicit public authority build inputs exist.
-Recent storage/navigation focused56 and independent reproductions passed. Help
-account links now read the current canonical URL on activation/focus; an actual
-Chrome reproduction verified keyboard/context-menu behavior and locale state.
-The first full pre-sync unit run had4087 passes,9 failures,4 existing skips;
-the Git-environment/time-limit cases passed focused reruns. Six exact canonical
-governance/public-surface failures are now corrected with unchanged historical
-fingerprints:49 tests and TypeScript passed. Fresh full regression passed4147
-tests with4 existing skips (545 files passed,3 skipped).
-The shared BookArchive manifest key and late Vite output rewrite are fixed;
-118 focused tests include an actual Vite reproduction. The new c623683a local QA
-artifact passed its independent331-file integrity audit and16/18 Chrome viewport
-scenarios. Two failures revealed a raw-writer/enriched-book selector mismatch for
-Dostoevsky; that separate product defect remains open. The final c2923b31 local QA
-artifact passed all18 Chrome desktop/mobile-viewport scenarios and its331-file
-audit. The positive writer/work test uses confirmed Galsworthy data; it does not
-waive the Dostoevsky mismatch. No actual native device result is claimed.
-Next work: integrate fetched
-canonical main, fix remaining current-stage gaps and validate fresh outputs.
-Remote main advanced from the accepted0a348bd4 base to f406a7de; its new bookshelf,
-dossier, typography and news changes are fetched and reviewed but not yet applied.
-Newly authored copy remains
-draft; production merchant/signing/disclosure/approval evidence remains absent.
-S03 acceptance is not claimed and S04-S40 have not started.
+Current integrated checks:
 
-S00 accepted in ef16246f on canonical main0a348bd4:2,947 unit tests,10 browser checks, Web/PWA/domain/SEO/admin baseline passed; four existing skips retained.
+- Full unit regression:4479 passed,4 existing skips;576 files passed,3 skipped.
+  Duration553.88s. The initial six failures and the successful76-test narrow
+  rerun are preserved. Existing Git-fixture timeouts/assertions were not relaxed.
+- Actual PWA artifact03c7623e:20 Chrome desktop/Pixel7-viewport scenarios passed,
+  zero skips/failures/flaky cases. Its independent335-file audit passed.
+- The real Dostoevsky/Crime and Punishment route works cold offline. RU/EN changes
+  preserve writer/work selection, the panel and the same live R3F scene.
+- Canonical public browser6 passed; real WriterPanel/StrictMode browser4 passed;
+  dossier38 unit and7 Chrome scenarios passed.
+- Domain build:12876 domain and5513 SEO checks,659 dossier JSON files without
+  issues. TypeScript, typography25 CSS and platform boundaries481 modules passed.
+- Safe-reader deletion:70 processor/CLI/Postgres tests, server types and actual
+  CLI dry-run passed. Independent review passed6 SQL and6 CLI groups.
+- Public localized404:106 checks including actual workerd and loopback origin
+  passed. The bound Worker is an inactive draft outside the GitHub Pages artifact.
 
-S01 accepted in25b53479: strict43/57 schemas,342 requirements/107BIL and1,248 criteria, exact evidence identity, shared product policy and TypeScript import/scene guard. Final narrow + boundary regression:184 tests/9 files passed; types/typography passed;423 Web modules audited. Independent review findings fixed with regression coverage.
+WriterPanel now shares the publication-gated verifiedBookArchive. All46 published
+owner routes are preserved. Dossier choices survive locale changes and reject late
+responses. Controlled news/dossier transport does not run. Historical governance
+fingerprints were preserved; exact compatibility tests passed122.
 
-S02 accepted in6305df5f: shared canonical domain/locale/brand exports, stable platform provider and real Web adapter integrated into App. Full regression3,139 tests passed (four existing skips), final narrow259 passed, browser13 passed (one existing desktop-only scenario skipped on mobile). Types, typography,430-module boundary audit and Web/PWA/domain/SEO build passed. Same DOM Canvas and country survive RU/EN switching and real offline/reconnect. Logs and artifact hashes are retained.
+Evidence: docs/mobile/evidence/S03/canonical-integration-working-*.json and
+logs/canonical-integration-*.log. Those records identify their working bytes and
+specific local outputs. Subsequent narrow fixes have separate validation; they
+must not be retroactively described as part of the full4479 run.
 
-S03-S40, native artifacts, complete bilingual content, strict ICU catalogs, offline/child/purchase packages, legal/editorial approvals, exact RC screenshots and final handoff remain unfinished. No global requirement is PASSED. Production actions remain prohibited.
+Still open within S03: browser support boundaries and their actual narrow checks;
+final source/evidence/checkpoint; supported lifecycle for accounts outside the
+tested safe-reader category. The RU/EN deletion disclosure has9 aligned draft
+paragraphs and concrete external decisions; it is not approved legal text.
+Policy choices may require external authority, while their implementation stays
+internal. A support contact alone does not prove account erasure.
+
+Later stages still owe native artifacts, reviewed RU/EN content and critical copy,
+ICU/translation workflow, child/Planetka, purchase providers, full offline/search/
+audio packages, accessibility, legal/store materials, exact-RC screenshots and
+owner handoff. No native device, production purchase, human translation approval
+or release readiness is claimed. Production deploy/Submit/Release/merge and
+production data writes remain prohibited and unperformed.
+
+Historical accepted checkpoints: S00 ef16246f; S01 25b53479; S02 6305df5f.
+Earlier S03 checkpoint54bf8300 and its4147-unit/18-browser results remain valid
+only for their historical source. Do not repeat completed canonical integration.
+
+Post-full bounded changes: private JSON extension/duplicate-key audit fixed;
+88 affected tests passed across the preserved narrow runs. Copy normalization
+and equivalent test regex escapes passed137 tests/8 files, types and short-hyphen
+policy. Neither bounded rerun is described as a repeat of full4479.
+
+Additional engines are now measured: Chrome152.0.7977.76, Firefox153.0,
+Windows Playwright WebKit26.5. Fresh4a0696ef artifact335-file audit passed;
+6 scenarios:4 passed,2 failed,0 skipped/retries/flaky. Firefox both passed.
+Chrome navigator.onLine reset after cached offline navigation and WebKit internal
+offline navigation error also occur with an independent minimal worker and the
+actual worker on tiny hashed content. Preserve the two failures and raw diagnosis;
+do not weaken assertions or relabel this suite green. Safari/native installation
+and physical-device evidence remain unverified. See PWA_BROWSER_BOUNDARIES.md
+and cross-engine-browser-first/transport-boundaries evidence. No further browser
+process or build is running. The native entry review is prepared in
+.tmp/S04-native-entry-review.md/.json; S04 has not yet been activated.

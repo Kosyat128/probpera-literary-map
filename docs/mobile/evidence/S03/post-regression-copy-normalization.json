@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S03",
+  "recordType": "bounded-post-full-normalization",
+  "fullRunPredatesChanges": true,
+  "sourceChanges": [
+    {
+      "path": "src/components/WriterPanel.tsx",
+      "beforeSha256": "8ba351dd0a7b8296e5dbadb9fda35fece9f555a256b4d4fe68d06d578c1fd097",
+      "afterSha256": "b10bad5e488d18233a60a4f0450b669af93c7c4c9b81b8a3c87ff355a13b93bf"
+    },
+    {
+      "path": "src/pwa/passwordRecoveryCopy.ts",
+      "beforeSha256": "737aa9ab74175d6b1dfbb760338b282c97c55a4e76051d9c26306e6c3be079e1",
+      "afterSha256": "92e7337dea56ba7a882a169932be2a8f9c606830b8edb3c77033614e15e8708c"
+    },
+    {
+      "path": "scripts/governance/v12-s03-canonical-integration.json",
+      "beforeSha256": "9f045a6862de27917697b9f41390258e9da718c276e64dafd2413d31b5f2094e",
+      "afterSha256": "1c021b9c744d75694d7b28cf45bf42a4bd3c341850adf8469d96b54ca3ea7923"
+    },
+    {
+      "path": "docs/mobile/ACCOUNT_DELETION_DISCLOSURE_DRAFT_RU_EN.md",
+      "beforeSha256": "923fa08c535716e3529a6796c9eda662549fd4b3f1132f3734a5b61b201b7616",
+      "afterSha256": "f6f597cd186d1149cc40604c8650f7728117b0c3bcaa2dec4e27de83ca8412fc"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/account-deletion-canonical-audit.md",
+      "beforeSha256": "9f5680fcc1cc886c7b7cb3936404f6ec026b4ada2cf29c3d7148c0dff4b6e160",
+      "afterSha256": "fcf0cbb2939e9725169adc5a90710f296ca3fa0ae359eb66bad693ed461f7540"
+    },
+    {
+      "path": "docs/mobile/PWA_BROWSER_BOUNDARIES.md",
+      "beforeSha256": "8e34d925b433e3f7d2cc05c1062ed57fbdc0e5448098900bfac7671f976394e5",
+      "afterSha256": "b9b0e7d299cdc251c92958cde964bc359582f8f1ee49f6ecbad7a6f73609ae71"
+    },
+    {
+      "path": "server/public-locales/README.md",
+      "beforeSha256": "2784b753bc103745757c67a447e628a2965c1d925bc511c05c18ed3800fe5d5c",
+      "afterSha256": "eed6d1f49eac7541ecca34723e4d9ab78f20053fa37eb84b9a25b3e8411bf833"
+    },
+    {
+      "path": "tests/pwa/support/cross-engine-server.mjs",
+      "beforeSha256": "0ac56534b92c4909e773f5abeb8ffb03848a4a5f409a6085b0dd4e174d3ff988",
+      "afterSha256": "51d6ba7b0b71e0008dc650812e11d7ded327e5607316af330c0757eef011bbb6"
+    },
+    {
+      "path": "tests/e2e/platform-services.spec.mjs",
+      "beforeSha256": "1d3cb0818dcaee3d6986c44d2a8defcaca847c76c951737e4add8fedecb1196b",
+      "afterSha256": "e08bf7b7a268b454bbbede156fc30848c40eba2c7cce9d26c318ec88ade7d17c"
+    },
+    {
+      "path": "scripts/governance/v12-s03-compatibility.mjs",
+      "beforeSha256": "74e9d2b7b96458d259b9d283bf374d8905115c8d50057993a7a50d354b2010d2",
+      "afterSha256": "b927b6aa4ad8ed6a881c0d632c15f0ec3f1f124a0e85374ca5fdca384fd9bb69"
+    },
+    {
+      "path": "scripts/normalize-short-hyphens.mjs",
+      "beforeSha256": "a939a405ceed73ea75297453e7625d86a419bec39a04b4c5c48c649ee97dcc30",
+      "afterSha256": "436c0f156186b327bc00fbc83c1233569a8a68f67c35561c0a4c2dbf1f211b6b"
+    }
+  ],
+  "changes": [
+    "Two unavailable count glyphs and one RU password instruction follow existing short-hyphen copy policy.",
+    "The E2E dash character class uses equivalent Unicode escapes; accepted characters/assertions are unchanged.",
+    "The new unaccepted canonical-integration reverse projection follows only those exact placeholder bytes. Historical source fingerprints and the accepted original compatibility fixture remain unchanged.",
+    "Generated integrity-bound dist-pwa/dist-public-locales directories are excluded from source-copy normalization like existing dist; their dedicated output auditors remain required.",
+    "Documentation punctuation only; regenerated disclosure evidence retains DRAFT and requires external review."
+  ],
+  "integrationProjectionSha256": "1c021b9c744d75694d7b28cf45bf42a4bd3c341850adf8469d96b54ca3ea7923",
+  "releaseReady": false,
+  "stageAcceptanceClaimed": false,
+  "validation": {
+    "counts": {
+      "passedTests": 137,
+      "passedFiles": 8,
+      "failedTests": 0
+    },
+    "durationSeconds": 16.88,
+    "log": {
+      "path": "docs/mobile/evidence/S03/logs/post-full-copy-boundary.log",
+      "sha256": "b924d94e765d3afc6ac10e05392759e913e1b21c92f5c3baf28960f33dbd1605",
+      "bytes": 284
+    },
+    "typescriptPassed": true,
+    "shortHyphenPolicyPassed": true,
+    "disclosureDraft": {
+      "path": "docs/mobile/evidence/S03/account-deletion-disclosure-draft.json",
+      "sha256": "5fd3da92cd499da52bb1ba23f76abcf235c84f8df7d4ba45727c16151a3e375e",
+      "bytes": 18276
+    },
+    "disclosureStructuralUnits": 9,
+    "releaseReady": false
+  }
+}

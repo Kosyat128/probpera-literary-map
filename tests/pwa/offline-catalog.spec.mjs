@@ -58,6 +58,96 @@ test("cold offline writer biography and works use the canonical catalog", async 
   } finally { await context.setOffline(false); }
 });
 
+test("cold offline Dostoevsky enrichment preserves writer, works tab and actual scene across RU/EN", async ({ page, context, request, isMobile }, testInfo) => {
+  const config = JSON.parse(await readFile(".tmp/pwa-qa/server.json", "utf8"));
+  const requests = [], fetchAttempts = [];
+  page.on("request", request => requests.push(request.url()));
+  // Observe real fetch calls, including attempts rejected by CSP/offline mode;
+  // the original transport and response remain unchanged.
+  await page.addInitScript(() => {
+    window.__pwaCatalogObservedFetches = [];
+    const original = window.fetch;
+    window.fetch = function(input, options) {
+      const source = typeof input === "string" || input instanceof URL ? input : input.url;
+      try { window.__pwaCatalogObservedFetches.push(new URL(source, location.href).href); } catch { /* Native fetch still handles malformed input. */ }
+      return Reflect.apply(original, this, [input, options]);
+    };
+  });
+  await prepare(page, request);
+  fetchAttempts.push(...await page.evaluate(() => window.__pwaCatalogObservedFetches));
+  await context.setOffline(true);
+  let original;
+  try {
+    // New offline document: no writer search or warm book-runtime import first.
+    await page.goto("/planet/ru/?country=russia&writer=dostoevsky#atlas");
+    await expect(page.locator("[data-pwa-authorized]")).toBeVisible();
+    await page.locator("#atlas").scrollIntoViewIfNeeded();
+    await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 45_000 });
+    await expect(page.locator("#atlas canvas")).toHaveCount(1);
+    if (isMobile) {
+      const toggle = page.locator(".atlas-country-sheet-toggle");
+      if (await toggle.getAttribute("aria-expanded") === "false") await toggle.click();
+    }
+    const detail = page.locator(".writer-detail");
+    await expect(detail.locator("h4")).toContainText("Достоевский");
+    await detail.getByRole("tab", { name: "Произведения и награды", exact: true }).click();
+    const worksTab = detail.locator('#writer-biography-russia-tab-works');
+    const worksPanel = detail.locator('#writer-biography-russia-panel-works');
+    // Exact publication-gated titles from the same canonical enriched record;
+    // these are asserted independently of whatever text the UI currently emits.
+    const titles = { ru: "Преступление и наказание", en: "Crime and Punishment" };
+    await expect(worksPanel.getByRole("button", { name: "Книжный архив: " + titles.ru, exact: true })).toBeVisible({ timeout: 30_000 });
+    await expect.poll(() => page.evaluate(() => typeof window.__literaryPlanetQaScenes)).toBe("function");
+    original = await page.evaluateHandle(() => ({
+      document, detail: document.querySelector(".writer-detail"),
+      tab: document.getElementById("writer-biography-russia-tab-works"),
+      panel: document.getElementById("writer-biography-russia-panel-works"),
+      scene: window.__literaryPlanetQaScenes().find(item => document.querySelector("#atlas").contains(item.canvas)),
+    }));
+    expect(await original.evaluate(value => Boolean(value.detail && value.tab && value.panel && value.scene?.canvas && value.scene.renderer && value.scene.camera && value.scene.scene))).toBe(true);
+    for (const locale of ["en", "ru"]) {
+      await page.locator(".site-header .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      await expect(page.locator("html")).toHaveAttribute("lang", locale);
+      await expect.poll(() => new URL(page.url()).pathname).toBe("/planet/" + locale + "/");
+      expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+      expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      await expect(detail.locator("h4")).toContainText(locale === "ru" ? "Достоевский" : "Dostoevsky");
+      await expect(worksTab).toHaveAttribute("aria-selected", "true");
+      await expect(worksPanel).toBeVisible();
+      await expect(worksPanel.getByRole("button", { name: (locale === "ru" ? "Книжный архив: " : "Book archive: ") + titles[locale], exact: true })).toBeVisible();
+      await expect(page.locator("#atlas canvas")).toHaveCount(1);
+      expect(await original.evaluate(previous => {
+        const current = window.__literaryPlanetQaScenes().find(item => item.canvas === previous.scene.canvas);
+        return previous.document === document && previous.detail === document.querySelector(".writer-detail")
+          && previous.tab === document.getElementById("writer-biography-russia-tab-works")
+          && previous.panel === document.getElementById("writer-biography-russia-panel-works")
+          && previous.scene.canvas.isConnected && current?.renderer === previous.scene.renderer
+          && current?.camera === previous.scene.camera && current?.scene === previous.scene.scene;
+      })).toBe(true);
+    }
+    await worksPanel.getByRole("button", { name: "Книжный архив: " + titles.ru, exact: true }).click();
+    const book = page.locator("#book-archive-detail");
+    await expect(book).toBeVisible({ timeout: 30_000 });
+    await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBe("russia:dostoevsky:crime-and-punishment");
+    await expect(book.locator(".book-detail-copy h3")).toHaveText(titles.ru);
+    await expect(page.locator("[data-pwa-authorized]")).toBeVisible();
+    await expect(page.locator(".literary-news-slot")).toHaveCount(0);
+    await expect(page.locator(".literary-news")).toHaveCount(0);
+    fetchAttempts.push(...await page.evaluate(() => window.__pwaCatalogObservedFetches));
+    const observed = [...new Set([...requests, ...fetchAttempts])];
+    const external = observed.filter(url => /^https?:/u.test(url) && new URL(url).origin !== config.origin);
+    const remoteDelivery = observed.filter(url => /literary-news|book_dossier|book-dossier/iu.test(url));
+    expect(external).toEqual([]);
+    expect(remoteDelivery).toEqual([]);
+    await testInfo.attach("dostoevsky-offline-locale-evidence", { body: JSON.stringify({
+      scope: "actual local QA artifact", book: "russia:dostoevsky:crime-and-punishment", titles,
+      locales: ["ru", "en", "ru"], coldOffline: true, sameDocument: true, sameWriterDetail: true,
+      sameWorksTab: true, sameWorksPanel: true, sameCanvas: true, sameRenderer: true, sameCamera: true,
+      sameScene: true, externalRequests: external, remoteNewsOrDossierRequests: remoteDelivery,
+    }), contentType: "application/json" });
+  } finally { await original?.dispose(); await context.setOffline(false); }
+});
+
 test("canonical book favorite survives cold offline reload and locale route change", async ({ page, context, request }) => {
   await prepare(page, request);
   await context.setOffline(true);

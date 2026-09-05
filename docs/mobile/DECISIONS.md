@@ -99,3 +99,47 @@
   unit/18 Chrome viewport results before new canonical-main integration. S03
   remains IN_PROGRESS, with known internal gaps; accepted state headSha stays
   at S02. The source checkpoint and this state follow-up do not authorize release.
+- D031: Canonical main through f406a7de is incorporated by five local cherry-picks
+  ending8e6cfe1f, with original commit footers. No merge, deployment or history
+  rewrite was performed; accepted S00-S02 checkpoints remain ancestors. The
+  stored base/sourceMain identity remains historical, with current integration
+  recorded separately. Existing-interface safe storage handling and controlled
+  browser language negotiation compose in the same global language provider.
+- D032: WriterPanel receives the same verifiedBookArchive reference used by the
+  book runtime, with exact canonical owner routes and honest lazy loading/retry.
+  No raw-work fallback or publication-status change is introduced. Sixteen exact
+  technical reverse deltas compose before prior S03 and upstream bookshelf
+  projections; historical governance hashes remain unchanged. This is source
+  compatibility evidence, not an editorial or release attestation.
+- D033: Published dossier transport is disabled in the controlled offline build.
+  On the public site request identity includes locale, while reader choices use
+  the same book identity across RU/EN. Late responses, timers and navigation are
+  fenced; the existing local fallback is not promoted to a reviewed paid dossier.
+- D034: Canonical public hosting remains GitHub Pages. Localized404 edge code
+  substitutes only bound inert HTML after an actual origin404; the separate
+  dist-public-locales artifact is not uploaded in the Pages artifact. Its config
+  has no routes, deployed:false and releaseReady:false. Local workerd verification
+  does not attest that any production hosting or locale routing was activated.
+- D035: The concrete reader-deletion processor is a bounded implementation for
+  canonical private-reader data, owned standard avatars and exact user-linked
+  views. Real local SQL rollback and service guards are tested. Public/staff or
+  unsupported linked data remain blocked; support does not establish erasure.
+  A lawful category treatment needs explicit review and its implementation stays
+  internal. Unlinked provider/request records are not asserted anonymous.
+- D036: Independent review reproduced hidden private JSON under renamed formats
+  and duplicate keys. The PWA auditor now applies the unchanged canonical dossier
+  policy to recognizable plain JSON and fails ambiguous JSON closed. Its scope
+  does not decode arbitrary binary or JavaScript data. The full4479 run preceded
+  this fix;88 affected tests were observed passing across recorded narrow runs,
+  including the unchanged five-second original gate after a transient timeout.
+- D037: Source-copy normalization follows existing short-hyphen policy. Generated
+  dist-pwa and dist-public-locales outputs are excluded like dist because rewriting
+  their bytes after hashing would corrupt integrity. Dedicated artifact auditors
+  remain required. Exact new integration projections follow the two placeholder
+  characters; historical governance source fingerprints are not reset. Equivalent
+  Unicode escapes preserve the existing browser-test character class.
+- D038: The03c7623e artifact and its20-case browser evidence are preserved under
+  .tmp/pwa-artifacts/03c7623e and .tmp/pwa-browser-03c7623e-20passed, with matching
+  SHA identities. New engine checks use a different ephemeral QA authority and
+  distinct output paths. A Windows Playwright WebKit pass is not Safari/iOS or
+  native installation evidence; missing capabilities remain explicit failures.

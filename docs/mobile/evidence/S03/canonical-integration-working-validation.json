@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S03",
+  "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+  "recordedAt": "2026-09-05T19:58:05.154Z",
+  "releaseReady": false,
+  "stageAcceptanceClaimed": false,
+  "recordType": "working-validation-summary",
+  "canonicalMain": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+  "canonicalIntegration": "Five local cherry-picks preserve accepted S00-S02 ancestors; no merge or production change.",
+  "domain": {
+    "domainChecksPassed": 12876,
+    "seoChecksPassed": 5513,
+    "articles": 167,
+    "sitemapUrls": 180,
+    "redirects": 2330,
+    "dossierJsonChecked": 659,
+    "issues": 0,
+    "log": {
+      "path": "docs/mobile/evidence/S03/logs/canonical-integration-domain-build.log",
+      "sha256": "17f5a1755e45420e84df6a70f9c807ffb7bed361f5ab8063260ccdc2d7ee5757",
+      "bytes": 8506
+    },
+    "inactiveLocaleWorker": {
+      "path": "dist-public-locales/worker.mjs",
+      "sha256": "8a00607c70d56f3ac95d1e9d75ddc5d2e01623af5698104e126d57885625871d",
+      "bytes": 13762
+    }
+  },
+  "static": {
+    "typesPassed": true,
+    "typographyCssFiles": 25,
+    "typographyIssues": 0,
+    "platformModulesAudited": 481,
+    "platformFindings": 0,
+    "logs": [
+      {
+        "path": "docs/mobile/evidence/S03/logs/canonical-integration-typography.log",
+        "sha256": "6d7b77d51c6b9ab72e517538464ae7f2105c5932f97aa686404e5f90c9ecc723",
+        "bytes": 52
+      },
+      {
+        "path": "docs/mobile/evidence/S03/logs/canonical-integration-platform-boundaries.log",
+        "sha256": "659149f262b063099963dddf38e1a1cb5eaa848e8318efa5e17bd4da9563c121",
+        "bytes": 1554
+      }
+    ]
+  },
+  "focused": {
+    "integrationGovernancePassed": 122,
+    "files": 8,
+    "durationSeconds": 16.63,
+    "log": {
+      "path": "docs/mobile/evidence/S03/logs/canonical-integration-focused-fixed.log",
+      "sha256": "83443ece4094a739e51a84238c05ea0c8af2ee4e5128f2005ef29a2bcf717ff8",
+      "bytes": 284
+    },
+    "historicalFingerprintsReset": false
+  },
+  "publicBrowser": {
+    "kind": "local-canonical-public-browser-evidence",
+    "pass": true,
+    "testsPassed": 6,
+    "skipped": 0,
+    "failed": 0,
+    "flaky": 0,
+    "projects": [
+      "desktop-chromium",
+      "mobile-chromium"
+    ],
+    "browserChannel": "chrome",
+    "workers": 1,
+    "phases": [
+      {
+        "name": "slim",
+        "stats": {
+          "startTime": "2026-09-05T19:31:47.669Z",
+          "duration": 16658.111,
+          "expected": 4,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "report": "slim/results.json"
+      },
+      {
+        "name": "webgl",
+        "stats": {
+          "startTime": "2026-09-05T19:38:46.026Z",
+          "duration": 15078.748,
+          "expected": 2,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "report": "webgl/results.json"
+      }
+    ],
+    "originalSpecSources": [
+      {
+        "path": "tests/e2e/planet-account-pages.spec.mjs",
+        "bytes": 2619,
+        "sha256": "6dba71b0928327909975d302ec04ce00c771352dbbbbaa52fcc832340117ea66"
+      },
+      {
+        "path": "tests/e2e/public-locales.spec.mjs",
+        "bytes": 2913,
+        "sha256": "894843cc76aa7e5346fadbcc8f37f04f9362391c2f846552b061556d18997d9b"
+      }
+    ],
+    "allCoveredArtifactFilesUnchanged": true,
+    "artifactFiles": 53,
+    "artifactSha256": "6b39d7f97b9bebf40c8d4101d676c20c4d1347050d8922a832d8a0ea497949fb",
+    "configurationChangedBetweenPhases": true,
+    "configurationChange": "configuration-change.json",
+    "sourceCheckpoint": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+    "limits": [
+      "Hashes cover all emitted JS/MJS/CSS and the exact tested HTML, sitemap, web manifest and public release-head marker.",
+      "Optional/binary assets and untested article HTML are not included in this bounded snapshot.",
+      "The recorded Git HEAD does not certify equivalence of uncommitted source to dist. This is local browser evidence on frozen output, not an RC or deployment."
+    ],
+    "releaseReady": false,
+    "rawEvidence": {
+      "path": ".tmp/S03-canonical-public-browser-results/validation.json",
+      "sha256": "05fbd310feae6efed179ca143f893a6034decbae1e9310b0ff06792061c8c8b5",
+      "bytes": 1924
+    }
+  },
+  "writerPanelBrowser": {
+    "kind": "local-react-component-fixture",
+    "command": "node node_modules/@playwright/test/cli.js test --config playwright.writer-panel.config.mjs",
+    "browserChannel": "chrome",
+    "workers": 1,
+    "strictMode": true,
+    "testsPassed": 4,
+    "testsFailed": 0,
+    "elapsedSeconds": 24.8,
+    "webgl": false,
+    "applicationBuildExecuted": false,
+    "actualPwaArtifactEvidence": false,
+    "sourceFiles": [
+      {
+        "path": "tests/pwa/writer-panel-runtime.spec.mjs",
+        "sha256": "9a19b5c56cdad30454444b9d746724db2dceb407f0ec3c95b8a9338210c9f040"
+      },
+      {
+        "path": "playwright.writer-panel.config.mjs",
+        "sha256": "93b06d5cad48ccadb205373e86c60f54db3ac0605c0f56e7d2a51b59bc2d3826"
+      }
+    ],
+    "rawEvidence": {
+      "path": ".tmp/writer-panel-browser-results/validation.json",
+      "sha256": "f652158c5333705914e17212c611c49d6e211f897189f121c0f2b06844aea050",
+      "bytes": 727
+    }
+  },
+  "readerDeletion": {
+    "schemaVersion": 1,
+    "scope": "local-preparation-reader-deletion",
+    "executedProduction": false,
+    "tests": {
+      "pgliteIntegration": 27,
+      "processor": 26,
+      "command": "npx vitest run server/planet/deletionProcessor.test.ts server/planet/deletionProcessorCli.test.ts scripts/database/literary-planet-reader-deletion.integration.test.mjs --maxWorkers=1",
+      "commandLine": 17,
+      "passed": 70
+    },
+    "checks": [
+      "server TypeScript passed",
+      "actual CLI dry-run passed; no transport or mutations"
+    ],
+    "sourceFiles": [
+      {
+        "path": "server/planet/deletionProcessor.ts",
+        "sha256": "0cf31f84f958fc54484d594392dde3fa5436346981c4376fddd115d9677c25a4"
+      },
+      {
+        "path": "server/planet/deletionProcessorSupabase.ts",
+        "sha256": "8aa5280842f16e02f59e4873d454cdef4dbaca89522870f615537bc90de3c0d9"
+      },
+      {
+        "path": "server/planet/deletionProcessorCli.ts",
+        "sha256": "cec4ec5d09b831c2a0e78cce5effb56f4c86d42828fbf05a56ea5fb97a5e6387"
+      },
+      {
+        "path": "server/planet/deletionProcessor.test.ts",
+        "sha256": "21f3e069e51930b1e81fb79a0078799d406722944c86e6de6bb6ee0380921563"
+      },
+      {
+        "path": "server/planet/deletionProcessorCli.test.ts",
+        "sha256": "60f23329b9b426f4044324f2007e63a9e853077f8e871b7e712bdc862711ab13"
+      },
+      {
+        "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+        "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276"
+      },
+      {
+        "path": "scripts/database/literary-planet-reader-deletion.integration.test.mjs",
+        "sha256": "b611fa06f9e56605e854bd6fd3344d08959c3c5ba5da2b2a9a6d3578a987c749"
+      },
+      {
+        "path": "scripts/mobile/process-reader-deletion.mjs",
+        "sha256": "eb52c2bea241d9690ef245876c21ff811ba1a24cf6608062e0942d2e033082a1"
+      }
+    ],
+    "limitations": [
+      "Single-connection PGlite does not prove multi-connection lock contention or live Supabase Auth/Storage integration",
+      "Externally reviewed policy reference, authorized DB migration and real execution remain unperformed",
+      "Provider identifiers are retained unlinked under configured policy; they are not asserted anonymous",
+      "Public/editorial/staff/unsupported linked data remain explicit blocked; no universal erasure assertion"
+    ],
+    "independentReview": {
+      "path": "docs/mobile/evidence/S03/deletion-processor-independent-review.json",
+      "sha256": "871a183b44ec64e5e90fd32503b1b0b3dea3fc1886a9145168df5bbdb5cca319",
+      "bytes": 6203
+    }
+  },
+  "disclosureDraft": {
+    "path": "docs/mobile/evidence/S03/account-deletion-disclosure-draft.json",
+    "sha256": "5fd3da92cd499da52bb1ba23f76abcf235c84f8df7d4ba45727c16151a3e375e",
+    "bytes": 18276
+  },
+  "limitations": [
+    "Each check certifies its stated scope and recorded bytes. Raw output retained under .tmp is local evidence.",
+    "Safe-reader deletion does not erase public contributor, staff or unsupported linked-account data. Full lifecycle scope remains open.",
+    "S03 is still IN_PROGRESS; no global requirement or release gate is passed by this record."
+  ],
+  "postFullValidation": {
+    "copyNormalization": {
+      "path": "docs/mobile/evidence/S03/post-regression-copy-normalization.json",
+      "sha256": "349c17f95c9827d3f98deec56a125def81ef9a9f2bd29e070347da38c568ba71",
+      "bytes": 4515
+    },
+    "privateDossierIndependentReview": {
+      "path": "docs/mobile/evidence/S03/private-dossier-artifact-independent-review.json",
+      "sha256": "9315ffe11e2b1dcaf340523527724cb1594fb51fc32b6032adcdc0456ea18c5c",
+      "bytes": 7545
+    },
+    "full4479PredatesTheseChanges": true
+  }
+}

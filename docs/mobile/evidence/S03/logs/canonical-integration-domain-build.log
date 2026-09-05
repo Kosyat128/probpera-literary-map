@@ -1,0 +1,126 @@
+{
+  "status": "ready",
+  "counterConfigured": false,
+  "consentRequired": true,
+  "webvisorEnabled": false,
+  "loaderOccurrences": 1,
+  "errors": []
+}
+
+> literary-map@0.1.0 build:from-snapshot
+> npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && tsc && vite build && node scripts/build-article-pages.mjs && node scripts/audit-book-dossier-delivery.mjs
+
+
+> literary-map@0.1.0 interface:copy:catalog
+> node scripts/export-interface-copy-catalog.mjs
+
+Exported 1425 site-copy fields for the admin.
+
+> literary-map@0.1.0 assets:globe:modern
+> node scripts/build-modern-globe-texture.mjs
+
+Built modern atlas textures from scripts\assets\natural-earth-i-relief-source.webp and src\data\geo\countries.geojson: modern-atlas-2026-ru.webp 4096x2048, 87 country labels (1477124 bytes); modern-atlas-2026-ru-mobile.webp 2048x1024, 70 country labels (395324 bytes); modern-atlas-2026-en.webp 4096x2048, 87 country labels (1461376 bytes); modern-atlas-2026-en-mobile.webp 2048x1024, 69 country labels (390810 bytes).
+
+> literary-map@0.1.0 assets:globe:qa
+> node scripts/qa-globe-alignment.mjs
+
+antique: 4096x2048 (2901792 bytes), mobile 2048x1024 (687972 bytes) -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\scripts\.cache\globe-alignment-qa.png
+earth: 4096x2048 (434610 bytes), mobile 2048x1024 (126246 bytes) -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\scripts\.cache\globe-alignment-qa-earth.png
+modern: 4096x2048 (1477124 bytes), mobile 2048x1024 (395324 bytes) -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\scripts\.cache\globe-alignment-qa-modern-ru.png
+modern: 4096x2048 (1461376 bytes), mobile 2048x1024 (390810 bytes) -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\scripts\.cache\globe-alignment-qa-modern-en.png
+modern: Natural Earth repository v5.1.2 (theme v5.1.1), 177 features; raster surface, procedural fallback, and hit testing share countries.geojson
+
+> literary-map@0.1.0 content:link-books
+> node scripts/build-book-article-mentions.mjs
+
+Связи книг и журнала: 694 связей, 535 книг, 167 статей.
+Рекомендации в статьях: 42 карточек для 30 статей.
+«Морской волк»: 4 связанных материалов.
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1198 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                       4.18 kB │ gzip:   1.46 kB
+dist/assets/editorial-paper-DwbOovh5.webp            37.27 kB
+dist/assets/brush-orange-stage-B2wkl8IX.webp         46.57 kB
+dist/assets/brush-paper-split-zfVJ2vHM.webp          62.35 kB
+dist/assets/brush-violet-stage-WEaHRUQQ.webp         67.86 kB
+dist/assets/brush-paper-east-Dhu-9hco.webp           68.43 kB
+dist/assets/brush-paper-corners-ChpKv6VW.webp        75.40 kB
+dist/assets/countries-B1fL43Dn.geojson              305.05 kB
+dist/assets/section-prizes-DXUciBB7.webp            349.28 kB
+dist/assets/PlanetAccountPage-C5lEMVM6.css            1.76 kB │ gzip:   0.68 kB
+dist/assets/BookArchiveSection-DVI8KyOc.css          13.71 kB │ gzip:   3.05 kB
+dist/assets/LiteraryNewsPanel-D5C44bus.css           24.93 kB │ gzip:   4.31 kB
+dist/assets/index-DapkbUsO.css                      564.34 kB │ gzip:  94.72 kB
+dist/assets/authTurnstileToken-DJYlWq5M.js            0.16 kB │ gzip:   0.15 kB
+dist/assets/nobelArticles-B7GWB3mX.js                 0.48 kB │ gzip:   0.35 kB
+dist/assets/supabase-BTLbHIyl.js                      0.96 kB │ gzip:   0.52 kB
+dist/assets/vite-preload-helper-BXl3LOEh.js           1.11 kB │ gzip:   0.65 kB
+dist/assets/useSubscriptions-BBvz2nlV.js              2.15 kB │ gzip:   1.05 kB
+dist/assets/articleSeries-bfsT0q_2.js                 2.62 kB │ gzip:   1.20 kB
+dist/assets/NobelArchiveStrip-CL0RJosS.js             3.85 kB │ gzip:   1.86 kB
+dist/assets/SectionsDirectory-BIeP7MNm.js             5.04 kB │ gzip:   2.35 kB
+dist/assets/BrandHeartIcon-DXAPXP-a.js                5.95 kB │ gzip:   2.28 kB
+dist/assets/CmsHomepageContent-Blr7VA2Q.js            8.10 kB │ gzip:   2.32 kB
+dist/assets/GlobalSearch-CBlDzN6z.js                  8.18 kB │ gzip:   3.10 kB
+dist/assets/globalSearchRuntime-CPwUCKO8.js           8.27 kB │ gzip:   2.90 kB
+dist/assets/BookShelfSceneCanvas-D569orHm.js          8.45 kB │ gzip:   3.27 kB
+dist/assets/BookShelfSceneCanvas-Dmxnd9ki.js          8.45 kB │ gzip:   3.27 kB
+dist/assets/LiteraryCalendar-QPSvFFPe.js              8.94 kB │ gzip:   3.41 kB
+dist/assets/ArticleLibrarySection-B4h8vdqQ.js        10.97 kB │ gzip:   4.42 kB
+dist/assets/PlanetAccountPage-CXPOWbWR.js            20.22 kB │ gzip:   7.37 kB
+dist/assets/bookArchiveLocation-6m3zG01t.js          24.70 kB │ gzip:   8.94 kB
+dist/assets/LiteraryNewsPanel-Cf9y34G5.js            28.39 kB │ gzip:   9.21 kB
+dist/assets/WriterPanel-BBrSSODj.js                  29.29 kB │ gzip:   9.05 kB
+dist/assets/ArticleReader-BsfG_UmU.js                30.90 kB │ gzip:  10.42 kB
+dist/assets/CommunityHub-YBiUyKMM.js                 45.03 kB │ gzip:  12.85 kB
+dist/assets/editorialOverrides-CkipcD4J.js           50.56 kB │ gzip:   9.67 kB
+dist/assets/completeShelfRenderer-CF99EgOK.js        53.08 kB │ gzip:  18.29 kB
+dist/assets/LiteraryGlobe-BAT_ncKX.js               127.20 kB │ gzip:  41.42 kB
+dist/assets/react-vendor-D6IN95gq.js                145.95 kB │ gzip:  47.18 kB
+dist/assets/supabase-vendor-C0Z0FS3K.js             216.82 kB │ gzip:  57.10 kB
+dist/assets/BookArchiveSection-BEWL1evs.js          291.41 kB │ gzip:  88.99 kB
+dist/assets/index-RNE2Kwpr.js                       414.04 kB │ gzip: 125.79 kB
+dist/assets/writer-portraits-data-ZDd9rYw-.js       500.03 kB │ gzip:  76.33 kB
+dist/assets/country-data-n-z-B6kBB-fK.js            508.63 kB │ gzip: 105.27 kB
+dist/assets/catalog-CEnBhVrn.js                     607.08 kB │ gzip:  83.99 kB
+dist/assets/books-CRHLZx4t.js                       607.11 kB │ gzip: 134.73 kB
+dist/assets/catalog-gqQVFOC8.js                     771.19 kB │ gzip: 225.37 kB
+dist/assets/country-data-a-m-C_afZbhK.js            789.51 kB │ gzip: 159.38 kB
+dist/assets/three-vendor-Bt1Jbyka.js              1,094.83 kB │ gzip: 330.37 kB
+dist/assets/writer-biography-reviews-BMVRO21A.js  1,227.68 kB │ gzip: 393.63 kB
+dist/assets/book-catalog-CUS-317M.js              2,053.99 kB │ gzip: 187.59 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 14.89s
+Built 167 article pages, 0 CMS pages, 2330 redirects (1503 portable section aliases), sitemap and RSS for https://probpera.ru.
+{"checked":659,"issues":[]}
+{"generatedPublicLocales":["ru","en"],"files":["ru/index.html","ru/404.html","ru/structured-data.json","ru/sitemap.preparation.json","en/index.html","en/404.html","en/structured-data.json","en/sitemap.preparation.json","ru/planet-account/index.html","ru/delete-account/index.html","en/planet-account/index.html","en/delete-account/index.html"],"checkedSitemaps":1,"releaseReady":false}
+{"kind":"probpera-public-locales-edge-preparation","worker":{"path":"worker.mjs","sha256":"8a00607c70d56f3ac95d1e9d75ddc5d2e01623af5698104e126d57885625871d","bytes":13762},"deployed":false,"activeRoutes":[]}
+Release code head written: 8e6cfe1f482ebd261965d774cbf4e14f80f62f1d -> C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\dist\.well-known\probpera-release-head.json
+{
+  "status": "ready",
+  "checks": 12876,
+  "passed": 12876,
+  "failed": 0,
+  "articles": 167,
+  "sitemapUrls": 180,
+  "redirects": 2330,
+  "serverRedirects": 827,
+  "portableSectionAliases": 1503,
+  "errors": []
+}
+{
+  "status": "ready",
+  "checks": 5513,
+  "pages": 180,
+  "uniqueLastmodDates": 13,
+  "warnings": [],
+  "errors": []
+}
+Доменный пакет готов в dist. DNS и настройки GitHub Pages этим действием не изменены.

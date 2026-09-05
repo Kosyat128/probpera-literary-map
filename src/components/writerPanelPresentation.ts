@@ -142,11 +142,12 @@ function presentWorkDistinction(
  */
 export function writerWorksForPanel(
   writer: WriterProfile,
-  locale: WorkLocale
+  locale: WorkLocale,
+  publicWorks: readonly WorkProfile[] = writer.workDetails ?? []
 ): WriterPanelWork[] {
   const byTitle = new Map<string, WriterPanelWork>();
 
-  for (const work of writer.workDetails || []) {
+  for (const work of publicWorks) {
     if (!isPublicBook(work)) continue;
     const title = selectBookText(work, locale).title.trim();
     const normalizedTitle = normalizedRecordLabel(title);
@@ -228,7 +229,8 @@ function isMatchingOfficialNobelAward(value: string, year: number) {
 export function writerAwardsForPanel(
   writer: WriterProfile,
   biography: WriterBiographyDisplay | null,
-  locale: WorkLocale
+  locale: WorkLocale,
+  publicWorks: readonly WorkProfile[] = writer.workDetails ?? []
 ): WriterPanelAward[] {
   const awardSources =
     biography?.kind === "published"
@@ -279,7 +281,7 @@ export function writerAwardsForPanel(
     });
   }
 
-  for (const work of writerWorksForPanel(writer, locale)) {
+  for (const work of writerWorksForPanel(writer, locale, publicWorks)) {
     awards.push(...work.distinctions);
   }
 

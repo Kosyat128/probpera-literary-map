@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "kind": "SUPPORT_BOUNDARY",
+  "capturedAt": "2026-09-05T20:18:40.983Z",
+  "releaseReady": false,
+  "artifactBuildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+  "originalScenarioDisposition": "Four passes and two failures preserved; reproduction does not accept the failed cases.",
+  "source": {
+    "path": ".tmp/worker-review/cross-engine-transport.mjs",
+    "sha256": "a97d07c2505950be13028c7f19f4a562c794b3832303d4ae116a058badfd8e67",
+    "text": "import { createServer } from 'node:http';\nimport { createHash } from 'node:crypto';\nimport { writeFile } from 'node:fs/promises';\nimport { build } from 'esbuild';\nimport { chromium, webkit } from 'playwright';\nconst root = process.cwd();\nconst adapter = (await build({ stdin: { contents: `import {createWebPlatformAdapter} from './src/platform/adapters/web/WebPlatformAdapter.ts';window.probeAdapter=createWebPlatformAdapter();window.probeEvents=[];probeAdapter.subscribe(()=>probeEvents.push({event:'adapter',snapshot:probeAdapter.getSnapshot()}));for(const type of ['online','offline'])window.addEventListener(type,()=>probeEvents.push({event:type,online:navigator.onLine}));navigator.serviceWorker.addEventListener('message',e=>probeEvents.push(e.data));navigator.serviceWorker.register('/planet/sw.js',{scope:'/planet/'});`, resolveDir: root }, bundle: true, format: 'iife', write: false })).outputFiles[0].text;\nconst resources = new Map([['/planet/adapter.js', adapter], ...['ru','en'].map(lang => ['/planet/'+lang+'/',`<!doctype html><html lang=\"${lang}\"><meta charset=\"UTF-8\"><title>Engine transport boundary only</title><h1>${lang}</h1><script src=\"/planet/adapter.js\"></script></html>`])]);\nconst config = {schemaVersion:1,scopePath:'/planet/',buildId:'e'.repeat(64),entrypoints:{ru:'/planet/ru/',en:'/planet/en/'},files:[...resources].map(([url,content])=>({url,bytes:Buffer.byteLength(content),sha256:createHash('sha256').update(content).digest('hex'),kind:url.endsWith('/')?'shell':'asset'}))};\nconst actualWorker = (await build({stdin:{contents:`import {installPwaWorker} from './src/pwa/serviceWorkerRuntime.js';installPwaWorker(self,${JSON.stringify(config)});`,resolveDir:root},bundle:true,format:'iife',write:false})).outputFiles[0].text;\nconst tinyWorker = `self.addEventListener('install',e=>e.waitUntil(caches.open('tiny').then(c=>c.addAll(${JSON.stringify([...resources.keys()])}))));self.addEventListener('activate',e=>e.waitUntil(clients.claim()));self.addEventListener('fetch',e=>{let u=new URL(e.request.url);if(${JSON.stringify([...resources.keys()])}.includes(u.pathname))e.respondWith(caches.open('tiny').then(c=>c.match(u.pathname)));});`;\nconst report={capturedAt:new Date().toISOString(),kind:'isolated-engine-transport-reproduction',productArtifactUnchanged:true,limits:['Tiny HTML, actual source WebPlatformAdapter, minimal or actual worker runtime; no product globe/license or full artifact pass implied.','Source modules bundled only in memory; no product source or dist mutation.'],scenarios:[]};\nfor(const [engineType,launch] of [[chromium,{channel:'chrome'}],[webkit,{}]]) for(const workerKind of ['minimal','actual-runtime']) {\n  const requests=[];\n  const server=createServer((req,res)=>{const pathname=new URL(req.url,'http://127.0.0.1').pathname;requests.push(pathname);const content=pathname==='/planet/sw.js'?(workerKind==='minimal'?tinyWorker:actualWorker):resources.get(pathname)??'network-only';res.writeHead(200,{'Content-Type':pathname.endsWith('.js')?'application/javascript; charset=utf-8':pathname.endsWith('/')?'text/html; charset=utf-8':'text/plain','Cache-Control':pathname==='/planet/sw.js'?'no-cache':'public,max-age=0'});res.end(content);});\n  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));\n  const origin='http://127.0.0.1:'+server.address().port;\n  const browser=await engineType.launch(launch),context=await browser.newContext({serviceWorkers:'allow'}),page=await context.newPage();\n  const scenario={engine:engineType.name(),version:browser.version(),workerKind,measurements:[],requests,failures:[]};report.scenarios.push(scenario);\n  page.on('requestfailed',request=>scenario.failures.push({url:request.url(),failure:request.failure()}));\n  const measure=async label=>scenario.measurements.push({label,...await page.evaluate(()=>({url:location.href,online:navigator.onLine,adapter:window.probeAdapter?.getSnapshot(),events:window.probeEvents,controller:navigator.serviceWorker.controller?.scriptURL,language:document.documentElement.lang}))});\n  try {\n    await page.goto(origin+'/planet/ru/?country=russia#atlas');\n    await page.waitForFunction(()=>navigator.serviceWorker.controller!==null);\n    await measure('online-controlled');\n    await context.setOffline(true);await measure('after-setOffline-before-navigation');\n    try {await page.goto(origin+'/planet/en/?country=russia#atlas',{timeout:8000});}catch(error){scenario.navigationError=error.message;}\n    await measure('after-offline-navigation');\n    scenario.uncachedNetworkFetch=await page.evaluate(async()=>{try{const r=await fetch('/outside-network-probe',{cache:'no-store'});return {status:r.status,body:await r.text()};}catch(error){return {failed:true,error:error.message};}});\n    if(engineType===chromium){\n      const cdp=await context.newCDPSession(page);\n      try{await cdp.send('Network.overrideNetworkState',{offline:true,latency:0,downloadThroughput:-1,uploadThroughput:-1});await page.reload({timeout:8000});await measure('explicit-CDP-override-after-reload');}catch(error){scenario.overrideError=error.message;}\n      await cdp.detach();\n    }\n  }catch(error){scenario.error=error.message;}\n  finally{await browser.close();await new Promise(resolve=>server.close(resolve));}\n}\nawait writeFile('.tmp/worker-review/cross-engine-transport-correct-headers.json',JSON.stringify(report,null,2)+'\\n');\nconsole.log(JSON.stringify(report,null,2));\n"
+  },
+  "raw": {
+    "path": ".tmp/worker-review/cross-engine-transport-correct-headers.json",
+    "sha256": "6b40c1f11adff6500e30013373489762754c80a54b2a87ea1ab2f677d4c2fd05"
+  },
+  "command": "PLAYWRIGHT_BROWSERS_PATH=<checkout>/.tmp/browser-engines node .tmp/worker-review/cross-engine-transport.mjs",
+  "result": {
+    "capturedAt": "2026-09-05T20:16:40.350Z",
+    "kind": "isolated-engine-transport-reproduction",
+    "productArtifactUnchanged": true,
+    "limits": [
+      "Tiny HTML, actual source WebPlatformAdapter, minimal or actual worker runtime; no product globe/license or full artifact pass implied.",
+      "Source modules bundled only in memory; no product source or dist mutation."
+    ],
+    "scenarios": [
+      {
+        "engine": "chromium",
+        "version": "152.0.7977.76",
+        "workerKind": "minimal",
+        "measurements": [
+          {
+            "label": "online-controlled",
+            "url": "http://127.0.0.1:61478/planet/ru/?country=russia#atlas",
+            "online": true,
+            "adapter": {
+              "connectivity": "online",
+              "visibility": "active"
+            },
+            "events": [],
+            "controller": "http://127.0.0.1:61478/planet/sw.js",
+            "language": "ru"
+          },
+          {
+            "label": "after-setOffline-before-navigation",
+            "url": "http://127.0.0.1:61478/planet/ru/?country=russia#atlas",
+            "online": false,
+            "adapter": {
+              "connectivity": "offline",
+              "visibility": "active"
+            },
+            "events": [
+              {
+                "event": "adapter",
+                "snapshot": {
+                  "connectivity": "offline",
+                  "visibility": "active"
+                }
+              },
+              {
+                "event": "offline",
+                "online": false
+              }
+            ],
+            "controller": "http://127.0.0.1:61478/planet/sw.js",
+            "language": "ru"
+          },
+          {
+            "label": "after-offline-navigation",
+            "url": "http://127.0.0.1:61478/planet/en/?country=russia#atlas",
+            "online": true,
+            "adapter": {
+              "connectivity": "online",
+              "visibility": "active"
+            },
+            "events": [],
+            "controller": "http://127.0.0.1:61478/planet/sw.js",
+            "language": "en"
+          },
+          {
+            "label": "explicit-CDP-override-after-reload",
+            "url": "http://127.0.0.1:61478/planet/en/?country=russia#atlas",
+            "online": true,
+            "adapter": {
+              "connectivity": "online",
+              "visibility": "active"
+            },
+            "events": [],
+            "controller": "http://127.0.0.1:61478/planet/sw.js",
+            "language": "en"
+          }
+        ],
+        "requests": [
+          "/planet/ru/",
+          "/planet/adapter.js",
+          "/favicon.ico",
+          "/planet/sw.js",
+          "/planet/ru/",
+          "/planet/adapter.js",
+          "/planet/en/"
+        ],
+        "failures": [
+          {
+            "url": "http://127.0.0.1:61478/outside-network-probe",
+            "failure": {
+              "errorText": "net::ERR_INTERNET_DISCONNECTED"
+            }
+          }
+        ],
+        "uncachedNetworkFetch": {
+          "failed": true,
+          "error": "Failed to fetch"
+        }
+      },
+      {
+        "engine": "chromium",
+        "version": "152.0.7977.76",
+        "workerKind": "actual-runtime",
+        "measurements": [
+          {
+            "label": "online-controlled",
+            "url": "http://127.0.0.1:56122/planet/ru/?country=russia#atlas",
+            "online": true,
+            "adapter": {
+              "connectivity": "online",
+              "visibility": "active"
+            },
+            "events": [],
+            "controller": "http://127.0.0.1:56122/planet/sw.js",
+            "language": "ru"
+          },
+          {
+            "label": "after-setOffline-before-navigation",
+            "url": "http://127.0.0.1:56122/planet/ru/?country=russia#atlas",
+            "online": false,
+            "adapter": {
+              "connectivity": "offline",
+              "visibility": "active"
+            },
+            "events": [
+              {
+                "event": "adapter",
+                "snapshot": {
+                  "connectivity": "offline",
+                  "visibility": "active"
+                }
+              },
+              {
+                "event": "offline",
+                "online": false
+              }
+            ],
+            "controller": "http://127.0.0.1:56122/planet/sw.js",
+            "language": "ru"
+          },
+          {
+            "label": "after-offline-navigation",
+            "url": "http://127.0.0.1:56122/planet/en/?country=russia#atlas",
+            "online": true,
+            "adapter": {
+              "connectivity": "online",
+              "visibility": "active"
+            },
+            "events": [],
+            "controller": "http://127.0.0.1:56122/planet/sw.js",
+            "language": "en"
+          },
+          {
+            "label": "explicit-CDP-override-after-reload",
+            "url": "http://127.0.0.1:56122/planet/en/?country=russia#atlas",
+            "online": true,
+            "adapter": {
+              "connectivity": "online",
+              "visibility": "active"
+            },
+            "events": [],
+            "controller": "http://127.0.0.1:56122/planet/sw.js",
+            "language": "en"
+          }
+        ],
+        "requests": [
+          "/planet/ru/",
+          "/planet/adapter.js",
+          "/favicon.ico",
+          "/planet/sw.js",
+          "/planet/adapter.js",
+          "/planet/en/",
+          "/planet/ru/"
+        ],
+        "failures": [
+          {
+            "url": "http://127.0.0.1:56122/outside-network-probe",
+            "failure": {
+              "errorText": "net::ERR_INTERNET_DISCONNECTED"
+            }
+          }
+        ],
+        "uncachedNetworkFetch": {
+          "failed": true,
+          "error": "Failed to fetch"
+        }
+      },
+      {
+        "engine": "webkit",
+        "version": "26.5",
+        "workerKind": "minimal",
+        "measurements": [
+          {
+            "label": "online-controlled",
+            "url": "http://127.0.0.1:59241/planet/ru/?country=russia#atlas",
+            "online": true,
+            "adapter": {
+              "connectivity": "online",
+              "visibility": "active"
+            },
+            "events": [],
+            "controller": "http://127.0.0.1:59241/planet/sw.js",
+            "language": "ru"
+          },
+          {
+            "label": "after-setOffline-before-navigation",
+            "url": "http://127.0.0.1:59241/planet/ru/?country=russia#atlas",
+            "online": false,
+            "adapter": {
+              "connectivity": "offline",
+              "visibility": "active"
+            },
+            "events": [
+              {
+                "event": "adapter",
+                "snapshot": {
+                  "connectivity": "offline",
+                  "visibility": "active"
+                }
+              },
+              {
+                "event": "offline",
+                "online": false
+              }
+            ],
+            "controller": "http://127.0.0.1:59241/planet/sw.js",
+            "language": "ru"
+          },
+          {
+            "label": "after-offline-navigation",
+            "url": "http://127.0.0.1:59241/planet/ru/?country=russia#atlas",
+            "online": false,
+            "adapter": {
+              "connectivity": "offline",
+              "visibility": "active"
+            },
+            "events": [
+              {
+                "event": "adapter",
+                "snapshot": {
+                  "connectivity": "offline",
+                  "visibility": "active"
+                }
+              },
+              {
+                "event": "offline",
+                "online": false
+              }
+            ],
+            "controller": "http://127.0.0.1:59241/planet/sw.js",
+            "language": "ru"
+          }
+        ],
+        "requests": [
+          "/planet/ru/",
+          "/planet/adapter.js",
+          "/planet/sw.js",
+          "/planet/adapter.js",
+          "/planet/ru/",
+          "/planet/en/"
+        ],
+        "failures": [
+          {
+            "url": "http://127.0.0.1:59241/planet/en/?country=russia",
+            "failure": {
+              "errorText": "WebKit encountered an internal error"
+            }
+          },
+          {
+            "url": "http://127.0.0.1:59241/outside-network-probe",
+            "failure": {
+              "errorText": "WebKit encountered an internal error"
+            }
+          }
+        ],
+        "navigationError": "page.goto: WebKit encountered an internal error\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:59241/planet/en/?country=russia#atlas\", waiting until \"load\"\u001b[22m\n",
+        "uncachedNetworkFetch": {
+          "failed": true,
+          "error": "Load failed"
+        }
+      },
+      {
+        "engine": "webkit",
+        "version": "26.5",
+        "workerKind": "actual-runtime",
+        "measurements": [
+          {
+            "label": "online-controlled",
+            "url": "http://127.0.0.1:59245/planet/ru/?country=russia#atlas",
+            "online": true,
+            "adapter": {
+              "connectivity": "online",
+              "visibility": "active"
+            },
+            "events": [],
+            "controller": "http://127.0.0.1:59245/planet/sw.js",
+            "language": "ru"
+          },
+          {
+            "label": "after-setOffline-before-navigation",
+            "url": "http://127.0.0.1:59245/planet/ru/?country=russia#atlas",
+            "online": false,
+            "adapter": {
+              "connectivity": "offline",
+              "visibility": "active"
+            },
+            "events": [
+              {
+                "event": "adapter",
+                "snapshot": {
+                  "connectivity": "offline",
+                  "visibility": "active"
+                }
+              },
+              {
+                "event": "offline",
+                "online": false
+              }
+            ],
+            "controller": "http://127.0.0.1:59245/planet/sw.js",
+            "language": "ru"
+          },
+          {
+            "label": "after-offline-navigation",
+            "url": "http://127.0.0.1:59245/planet/ru/?country=russia#atlas",
+            "online": false,
+            "adapter": {
+              "connectivity": "offline",
+              "visibility": "active"
+            },
+            "events": [
+              {
+                "event": "adapter",
+                "snapshot": {
+                  "connectivity": "offline",
+                  "visibility": "active"
+                }
+              },
+              {
+                "event": "offline",
+                "online": false
+              }
+            ],
+            "controller": "http://127.0.0.1:59245/planet/sw.js",
+            "language": "ru"
+          }
+        ],
+        "requests": [
+          "/planet/ru/",
+          "/planet/adapter.js",
+          "/planet/sw.js",
+          "/planet/adapter.js",
+          "/planet/en/",
+          "/planet/ru/"
+        ],
+        "failures": [
+          {
+            "url": "http://127.0.0.1:59245/planet/en/?country=russia",
+            "failure": {
+              "errorText": "WebKit encountered an internal error"
+            }
+          },
+          {
+            "url": "http://127.0.0.1:59245/outside-network-probe",
+            "failure": {
+              "errorText": "WebKit encountered an internal error"
+            }
+          }
+        ],
+        "navigationError": "page.goto: WebKit encountered an internal error\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:59245/planet/en/?country=russia#atlas\", waiting until \"load\"\u001b[22m\n",
+        "uncachedNetworkFetch": {
+          "failed": true,
+          "error": "Load failed"
+        }
+      }
+    ]
+  },
+  "diagnosticHistory": {
+    "path": ".tmp/worker-review/cross-engine-transport.json",
+    "note": "First tiny fixture sent Cache-Control:no-store; actual-runtime correctly refused installation. Original diagnostic remains preserved. Corrected public static headers were used for the independent comparison recorded here."
+  },
+  "conclusions": [
+    "Chrome reproduces navigator.onLine false before navigation -> true in new cached document despite uncached fetch failure and no server probe request. Actual adapter accurately exposes the browser value.",
+    "Windows WebKit reproduces its internal offline navigation failure with both minimal and actual workers, leaving the previous RU page.",
+    "These effects do not require product routing/globe/license code. They delimit this automation environment; no product fix, unsupported-to-pass conversion, Safari claim or physical-device claim follows."
+  ]
+}

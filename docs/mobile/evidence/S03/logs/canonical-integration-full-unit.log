@@ -1,0 +1,86 @@
+
+ RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work
+
+ ❯ scripts/mobile/verify-pwa-artifact.test.mjs (68 tests | 3 failed) 58455ms
+     × rejects canonical private/live-only dossier JSON despite consistent inventory and bootstrap hashes: {"records":[{"draft":{"schemaVersion":2,"bookKey":"private-fixture"}}]} 675ms
+     × rejects canonical private/live-only dossier JSON despite consistent inventory and bootstrap hashes: {"nested":{"schemaVersion":2,"variants":[]}} 554ms
+     × rejects canonical private/live-only dossier JSON despite consistent inventory and bootstrap hashes: {"nested":{"schemaVersion":2,"bookKey":"live-only-fixture","pages":[]}} 566ms
+ ❯ scripts/mobile/evidence.test.mjs (8 tests | 3 failed) 37172ms
+     × rejects traversal and directory junctions escaping the repository 9413ms
+     × preserves historical source identity after a later extraction removes the old path 5973ms
+     × rejects substring scope matches and malformed reference collections 5499ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/mobile/evidence.test.mjs > evidence identity and freshness > rejects traversal and directory junctions escaping the repository
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ scripts/mobile/evidence.test.mjs:63:5
+     61|     expect((await verifyEvidenceRecord(root, { version: "12.0", source…
+     62|   });
+     63|   it("rejects traversal and directory junctions escaping the repositor…
+       |     ^
+     64|     const { root } = await fixture();
+     65|     await expect(repositoryFile(root, "../secret")).rejects.toThrow();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  scripts/mobile/evidence.test.mjs > evidence identity and freshness > rejects traversal and directory junctions escaping the repository
+Error: ENOTEMPTY: directory not empty, rmdir 'D:\CodexData\Temp\v12-evidence-5K3iFH'
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  scripts/mobile/evidence.test.mjs > evidence identity and freshness > preserves historical source identity after a later extraction removes the old path
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ scripts/mobile/evidence.test.mjs:73:5
+     71|     expect(await readFile(path.join(outside, "secret.txt"), "utf8")).t…
+     72|   });
+     73|   it("preserves historical source identity after a later extraction re…
+       |     ^
+     74|     const { root, record } = await fixture();
+     75|     await rm(path.join(root, "source.ts"));
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ FAIL  scripts/mobile/evidence.test.mjs > evidence identity and freshness > rejects substring scope matches and malformed reference collections
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ scripts/mobile/evidence.test.mjs:79:5
+     77|     expect((await verifyEvidenceRecord(root, record, { currentInputs: …
+     78|   });
+     79|   it("rejects substring scope matches and malformed reference collecti…
+       |     ^
+     80|     const { root, record } = await fixture();
+     81|     record.criterionIds = "prefix-S01.traceability-suffix";
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/7]⎯
+
+ FAIL  scripts/mobile/verify-pwa-artifact.test.mjs > independent actual-file preparation audit > rejects canonical private/live-only dossier JSON despite consistent inventory and bootstrap hashes: {"records":[{"draft":{"schemaVersion":2,"bookKey":"private-fixture"}}]}
+ FAIL  scripts/mobile/verify-pwa-artifact.test.mjs > independent actual-file preparation audit > rejects canonical private/live-only dossier JSON despite consistent inventory and bootstrap hashes: {"nested":{"schemaVersion":2,"variants":[]}}
+ FAIL  scripts/mobile/verify-pwa-artifact.test.mjs > independent actual-file preparation audit > rejects canonical private/live-only dossier JSON despite consistent inventory and bootstrap hashes: {"nested":{"schemaVersion":2,"bookKey":"live-only-fixture","pages":[]}}
+AssertionError: expected [ 'PRIVATE_DOSSIER_OUTPUT', …(1) ] to deeply equal [ 'PRIVATE_DOSSIER_OUTPUT' ]
+
+- Expected
++ Received
+
+  [
+    "PRIVATE_DOSSIER_OUTPUT",
++   "ASSET_PROVENANCE_COVERAGE",
+  ]
+
+ ❯ scripts/mobile/verify-pwa-artifact.test.mjs:137:41
+    135|     env.provenance.files.push({ output: filename, source: "public/" + …
+    136|     await env.write("asset-provenance.json", json(env.provenance));
+    137|     env.config.files.push({ url: "/planet/" + filename, bytes: Buffer.…
+       |                                         ^
+    138|     await env.refreshIdentities();
+    139|     const result = await env.audit();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/7]⎯
+
+
+ Test Files  2 failed | 574 passed | 3 skipped (579)
+      Tests  6 failed | 4473 passed | 4 skipped (4483)
+   Start at  22:27:07
+   Duration  559.37s (transform 19.83s, setup 0ms, import 167.39s, tests 229.46s, environment 79ms)
+

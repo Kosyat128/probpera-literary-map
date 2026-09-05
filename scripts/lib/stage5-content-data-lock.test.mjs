@@ -507,7 +507,8 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     ]);
     expect(bookshelfRefinement.ownerReferenceSha256).toBe("5330fd14a4c180700a8c7e82db161542aba7c09f3973ccdfe46d0cf17e907ffb");
     for (const relativePath of new Set(bookshelfRefinement.projections.map(delta => delta.path))) {
-      const source = readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n");
+      const source = projectV12S03Source(relativePath,
+        readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n"));
       const projected = projectApprovedBookshelfRefinement(relativePath, source);
       expect(projectApprovedBookshelfRefinement(relativePath, source + "\n")).toBe(projected + "\n");
       for (const delta of bookshelfRefinement.projections.filter(entry => entry.path === relativePath)) {

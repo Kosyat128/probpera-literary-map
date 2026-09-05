@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "V12-S03-CANONICAL-INTEGRATION-2026-09-05",
+  "canonicalMainSha": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+  "integrationHeadSha": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+  "scope": "Exact canonical published-runtime writer selection and book-scoped dossier navigation integration. Test-only reverse projection; no editorial, owner, legal or release approval asserted.",
+  "projections": [
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-1",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "  shouldUseClientNavigation,\n} from \"../utils/articleRoutes\";\nimport CountryFlagIcon from \"./CountryFlagIcon\";\nimport { getPublicWriterWorkTitles } from \"../data/bookArchive\";\nimport { selectWriterBiographyForDisplay } from \"../data/writerBiographyDisplay\";\nimport {\n  selectWriterDisplayName,\n",
+      "after": "  shouldUseClientNavigation,\n} from \"../utils/articleRoutes\";\nimport CountryFlagIcon from \"./CountryFlagIcon\";\nimport type { BookArchiveEntry } from \"../data/bookArchive\";\nimport { groupPublicBooksForCountry, writerBookLoadingCopy } from \"./writerPanelBooks\";\nimport { selectWriterBiographyForDisplay } from \"../data/writerBiographyDisplay\";\nimport {\n  selectWriterDisplayName,\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-2",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "const WRITER_PANEL_MOTION_MS = 280;\nconst WRITER_DETAIL_MOTION_MS = 200;\nconst WRITER_MOTION_EASING = \"cubic-bezier(0.2, 0.72, 0.22, 1)\";\n\nfunction animateWriterSurface(\n  element: HTMLElement,\n",
+      "after": "const WRITER_PANEL_MOTION_MS = 280;\nconst WRITER_DETAIL_MOTION_MS = 200;\nconst WRITER_MOTION_EASING = \"cubic-bezier(0.2, 0.72, 0.22, 1)\";\nconst EMPTY_PUBLIC_BOOKS: readonly BookArchiveEntry[] = [];\n\nfunction animateWriterSurface(\n  element: HTMLElement,\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-3",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "\ntype WriterPanelProps = {\n  country: Country;\n  selectedWriter?: Writer | null;\n  focusRequestId?: number;\n  onWriterSelect?: (writer: Writer) => void;\n",
+      "after": "\ntype WriterPanelProps = {\n  country: Country;\n  books: readonly BookArchiveEntry[];\n  booksStatus: \"idle\" | \"loading\" | \"ready\" | \"error\";\n  onLoadBooks: () => void;\n  onRetryBooks: () => void;\n  selectedWriter?: Writer | null;\n  focusRequestId?: number;\n  onWriterSelect?: (writer: Writer) => void;\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-4",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "\nexport default function WriterPanel({\n  country,\n  selectedWriter,\n  focusRequestId,\n  onWriterSelect,\n",
+      "after": "\nexport default function WriterPanel({\n  country,\n  books,\n  booksStatus,\n  onLoadBooks,\n  onRetryBooks,\n  selectedWriter,\n  focusRequestId,\n  onWriterSelect,\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-5",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "  onClose,\n}: WriterPanelProps) {\n  const { language, t, countryName, number } = useInterfaceLanguage();\n  const { toggle: toggleSubscription, isSubscribed } = useSubscriptions();\n  const panelRef = useRef<HTMLElement>(null);\n  const detailRef = useRef<HTMLElement>(null);\n",
+      "after": "  onClose,\n}: WriterPanelProps) {\n  const { language, t, countryName, number } = useInterfaceLanguage();\n  const booksCopy = writerBookLoadingCopy[language];\n  const { toggle: toggleSubscription, isSubscribed } = useSubscriptions();\n  const panelRef = useRef<HTMLElement>(null);\n  const detailRef = useRef<HTMLElement>(null);\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-6",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "  const writers = country.writers || [];\n  const [localSelected, setLocalSelected] = useState<Writer | null>(writers[0] || null);\n  const [detailView, setDetailView] = useState<WriterDetailView>(\"biography\");\n\n  useEffect(() => {\n    const firstWriter = country.writers?.[0] || null;\n",
+      "after": "  const writers = country.writers || [];\n  const [localSelected, setLocalSelected] = useState<Writer | null>(writers[0] || null);\n  const [detailView, setDetailView] = useState<WriterDetailView>(\"biography\");\n  const publicBooksByWriter = useMemo(\n    () => groupPublicBooksForCountry(country, booksStatus === \"ready\" ? books : []),\n    [country, books, booksStatus]\n  );\n  // Loading is demand-driven by the works tab; locale changes do not request a\n  // new catalog or replace the canonical selected writer and globe.\n  useEffect(() => {\n    if (detailView === \"works\" && booksStatus === \"idle\") onLoadBooks();\n  }, [detailView, booksStatus, onLoadBooks]);\n\n  useEffect(() => {\n    const firstWriter = country.writers?.[0] || null;\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-7",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "    selectedWriter === undefined\n      ? localWriterInCountry ?? writers[0] ?? null\n      : selectedWriterInCountry;\n\n  const scrollToWriterDetail = useCallback(() => {\n    const detail = detailRef.current;\n",
+      "after": "    selectedWriter === undefined\n      ? localWriterInCountry ?? writers[0] ?? null\n      : selectedWriterInCountry;\n  const activeWriterBooks = activeWriter\n    ? publicBooksByWriter.get(activeWriter.id) ?? EMPTY_PUBLIC_BOOKS\n    : EMPTY_PUBLIC_BOOKS;\n\n  const scrollToWriterDetail = useCallback(() => {\n    const detail = detailRef.current;\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-8",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "    [activeWriter, language]\n  );\n  const activeWriterWorks = useMemo(\n    () => (activeWriter ? writerWorksForPanel(activeWriter, language) : []),\n    [activeWriter, language]\n  );\n  const activeWriterAwards = useMemo(\n    () =>\n",
+      "after": "    [activeWriter, language]\n  );\n  const activeWriterWorks = useMemo(\n    () => (activeWriter ? writerWorksForPanel(activeWriter, language, activeWriterBooks) : []),\n    [activeWriter, language, activeWriterBooks]\n  );\n  const activeWriterAwards = useMemo(\n    () =>\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-9",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "        ? writerAwardsForPanel(\n            activeWriter,\n            activeWriterBiography,\n            language\n          )\n        : [],\n    [activeWriter, activeWriterBiography, language]\n  );\n  const activeWriterWorkGroups = useMemo(\n    () => groupWriterRecordsByStatus(activeWriterWorks),\n",
+      "after": "        ? writerAwardsForPanel(\n            activeWriter,\n            activeWriterBiography,\n            language,\n            activeWriterBooks\n          )\n        : [],\n    [activeWriter, activeWriterBiography, language, activeWriterBooks]\n  );\n  const activeWriterWorkGroups = useMemo(\n    () => groupWriterRecordsByStatus(activeWriterWorks),\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-10",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "          {(() => {\n            const worksCount = uniqueValues(\n              writers.flatMap((writer) =>\n                getPublicWriterWorkTitles(writer, language)\n              )\n            ).length;\n            return (\n              <>\n                <strong>{number(worksCount)}</strong>\n                <span>\n                  {language === \"en\"\n                    ? worksCount === 1\n",
+      "after": "          {(() => {\n            const worksCount = uniqueValues(\n              writers.flatMap((writer) =>\n                writerWorksForPanel(writer, language, publicBooksByWriter.get(writer.id) ?? []).map(work => work.title)\n              )\n            ).length;\n            return (\n              <>\n                <strong aria-label={booksStatus === \"ready\" ? undefined : booksCopy.countPending}>{booksStatus === \"ready\" ? number(worksCount) : \"-\"}</strong>\n                <span>\n                  {language === \"en\"\n                    ? worksCount === 1\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-11",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "                      {t(\"Опубликованные произведения\")}\n                    </h5>\n                  </div>\n                  <strong aria-label={`${t(\"Произведения\")}: ${number(activeWriterWorks.length)}`}>\n                    {number(activeWriterWorks.length)}\n                  </strong>\n                </header>\n                <p className=\"writer-record-note\">\n",
+      "after": "                      {t(\"Опубликованные произведения\")}\n                    </h5>\n                  </div>\n                  <strong aria-label={booksStatus === \"ready\" ? `${t(\"Произведения\")}: ${number(activeWriterWorks.length)}` : booksCopy.countPending}>\n                    {booksStatus === \"ready\" ? number(activeWriterWorks.length) : \"-\"}\n                  </strong>\n                </header>\n                <p className=\"writer-record-note\">\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx#canonical-integration-12",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "                  );\n                })}\n\n                {!hasWriterWorks && (\n                  <p className=\"writer-source-empty\" role=\"status\">\n                    {t(\"Проверенные произведения этого автора пока не опубликованы.\")}\n                  </p>\n",
+      "after": "                  );\n                })}\n\n                {booksStatus !== \"ready\" && (\n                  <p className=\"writer-source-empty\" role=\"status\">\n                    {booksStatus === \"error\" ? booksCopy.unavailable : booksCopy.loading}\n                    {booksStatus === \"error\" && <Button onClick={onRetryBooks}>{booksCopy.retry}</Button>}\n                  </p>\n                )}\n                {booksStatus === \"ready\" && !hasWriterWorks && (\n                  <p className=\"writer-source-empty\" role=\"status\">\n                    {t(\"Проверенные произведения этого автора пока не опубликованы.\")}\n                  </p>\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx#canonical-integration-1",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "  const selectedDossier = publishedDossier.document || fallbackDossier;\n  const dossierSourceDocument = useMemo(() => selectedDossier ? toBookEditorialDocument(selectedDossier) : null, [selectedDossier]);\n  const [pagination, setPagination] = useState<{ sourceKey: string; result: BookInspectionPaginationResult } | null>(null);\n  const [dossierAnchor, setDossierAnchor] = useState<BookDossierSemanticAnchor | null>(null);\n  useEffect(() => {\n    if (!dossierSourceDocument) return;\n    let current = true;\n",
+      "after": "  const selectedDossier = publishedDossier.document || fallbackDossier;\n  const dossierSourceDocument = useMemo(() => selectedDossier ? toBookEditorialDocument(selectedDossier) : null, [selectedDossier]);\n  const [pagination, setPagination] = useState<{ sourceKey: string; result: BookInspectionPaginationResult } | null>(null);\n  const [dossierLocation, setDossierLocation] = useState<{ bookKey: string; anchor: BookDossierSemanticAnchor } | null>(null);\n  const dossierAnchor = dossierLocation?.bookKey === selectedDossier?.bookKey ? dossierLocation?.anchor : null;\n  useEffect(() => {\n    if (!dossierSourceDocument) return;\n    let current = true;\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx#canonical-integration-2",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "  const activeDossierAnchor = inspectionSession?.bookKey === selectedDossier?.bookKey\n    ? inspectionSession?.semanticPosition?.anchor || dossierAnchor : dossierAnchor;\n  const navigateDossier = useCallback((anchor: BookDossierSemanticAnchor) => {\n    setDossierAnchor(anchor);\n    const current = inspectionSessionRef.current;\n    if (!selectedEditorialDocument || !current || current.phase !== \"idle\") return;\n    const pageIndex = selectedEditorialDocument.pages.findIndex(page =>\n      page.anchor?.sectionId === anchor.sectionId && page.anchor?.blockId === anchor.blockId &&\n      (!anchor.itemId || page.anchor.itemId === anchor.itemId));\n",
+      "after": "  const activeDossierAnchor = inspectionSession?.bookKey === selectedDossier?.bookKey\n    ? inspectionSession?.semanticPosition?.anchor || dossierAnchor : dossierAnchor;\n  const navigateDossier = useCallback((anchor: BookDossierSemanticAnchor) => {\n    if (!selectedDossier || !selectedDossier.pages.some(page =>\n      page.anchor.sectionId === anchor.sectionId && page.anchor.blockId === anchor.blockId &&\n      page.anchor.itemId === anchor.itemId && page.anchor.dossierVersion === anchor.dossierVersion &&\n      page.anchor.locale === anchor.locale && page.anchor.readingMode === anchor.readingMode)) return;\n    setDossierLocation({ bookKey: selectedDossier.bookKey, anchor });\n    const current = inspectionSessionRef.current;\n    if (!selectedEditorialDocument || !current || current.bookKey !== selectedEditorialDocument.bookKey || current.phase !== \"idle\") return;\n    const pageIndex = selectedEditorialDocument.pages.findIndex(page =>\n      page.anchor?.sectionId === anchor.sectionId && page.anchor?.blockId === anchor.blockId &&\n      (!anchor.itemId || page.anchor.itemId === anchor.itemId));\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx#canonical-integration-3",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "    });\n    inspectionSessionRef.current = next;\n    setInspectionSession(next);\n  }, [selectedEditorialDocument]);\n\n  useEffect(() => {\n    if (!selectedBook) {\n",
+      "after": "    });\n    inspectionSessionRef.current = next;\n    setInspectionSession(next);\n  }, [selectedEditorialDocument, selectedDossier]);\n\n  useEffect(() => {\n    if (!selectedBook) {\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx#canonical-integration-4",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "              </section>\n            )}\n          </div>\n          {selectedDossier ? <BookDossierReader dossier={selectedDossier}\n            activeAnchor={activeDossierAnchor} onNavigate={navigateDossier}\n            onReadingModeChange={publishedDossier.changeMode}\n            onProgressChange={publishedDossier.changeProgress}\n",
+      "after": "              </section>\n            )}\n          </div>\n          {selectedDossier ? <BookDossierReader key={selectedDossier.bookKey} dossier={selectedDossier}\n            activeAnchor={activeDossierAnchor} onNavigate={navigateDossier}\n            onReadingModeChange={publishedDossier.changeMode}\n            onProgressChange={publishedDossier.changeProgress}\n"
+    }
+  ]
+}

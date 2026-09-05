@@ -11,14 +11,15 @@ function configuredSuites() {
 }
 
 describe("browser CI suite ownership", () => {
-  it("runs the real Canvas typography matrix exactly once per platform in the serial GPU suite", () => {
-    const target = "**/typography-and-card-geometry.spec.mjs";
+  it("runs the real Canvas typography and public locale checks exactly once per platform in the serial GPU suite", () => {
     const { "webgl-regression": serial, regression: parallel, "premium-globe": premium } = configuredSuites();
-    expect(serial.testMatch.filter(pattern => pattern === target)).toHaveLength(1);
+    for (const target of ["**/typography-and-card-geometry.spec.mjs", "**/public-locales.spec.mjs"]) {
+      expect(serial.testMatch.filter(pattern => pattern === target)).toHaveLength(1);
+      expect(parallel.testIgnore.filter(pattern => pattern === target)).toHaveLength(1);
+      expect(premium.testMatch).not.toBe(target);
+    }
     expect(serial.workers).toBe(1);
     expect(serial.projects).toEqual(["desktop-chromium", "mobile-chromium"]);
-    expect(parallel.testIgnore.filter(pattern => pattern === target)).toHaveLength(1);
-    expect(premium.testMatch).not.toBe(target);
     expect(parallel.projects).toEqual(serial.projects);
   }, 20_000);
 });

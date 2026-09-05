@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-05T18:45:31.884Z",
+  "updatedAt": "2026-09-05T20:20:23.172Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -512,7 +512,19 @@
         }
       ],
       "lastGreenCommands": [],
-      "artifacts": [],
+      "artifacts": [
+        "docs/mobile/evidence/S03/canonical-integration-working-unit-regression.json",
+        "docs/mobile/evidence/S03/canonical-integration-working-artifact-audit.json",
+        "docs/mobile/evidence/S03/canonical-integration-working-browser-regression.json",
+        "docs/mobile/evidence/S03/canonical-integration-working-validation.json",
+        "docs/mobile/evidence/S03/account-deletion-disclosure-draft.json",
+        "docs/mobile/evidence/S03/deletion-processor-independent-review.json",
+        "docs/mobile/evidence/S03/canonical-integration-artifact-preservation.json",
+        "docs/mobile/evidence/S03/post-regression-copy-normalization.json",
+        "docs/mobile/evidence/S03/private-dossier-artifact-independent-review.json",
+        "docs/mobile/evidence/S03/cross-engine-browser-first.json",
+        "docs/mobile/evidence/S03/cross-engine-transport-boundaries.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10504,7 +10516,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "S03 working source/evidence is preserved in54bf83005fee01771e5f9e0ac1f0f12e16a85128 (full4147 tests; c2923b31 localQA18 browser scenarios). Integrate fetched canonical main f406a7de without rewriting historical accepted commits; then fix canonical writer/enriched-book parity, safe deletion execution and public localized HTTP404 routing, and validate fresh outputs. Concrete merchant providers remain internal S20/S21 work; no stage acceptance or production action.",
+    "nextAction": "Preserve the S03 atomic working checkpoint, resolve remaining enabled-account lifecycle and genuine browser/device support evidence. S03 stays IN_PROGRESS. Prepare documented parallel-safe S04 entry using the completed read-only native review; do not mark S03 complete or native source-only scaffolding accepted.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10546,7 +10558,47 @@
     "requirementCount": 342,
     "bilingualRequirementCount": 107,
     "sourceMain": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-    "releaseActionsAuthorized": false
+    "releaseActionsAuthorized": false,
+    "canonicalMainIntegration": {
+      "sourceMain": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+      "localIntegrationHead": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+      "method": "five local cherry-picks with source commit footers",
+      "historicalAcceptedAncestorsPreserved": true,
+      "postIntegrationRegressionComplete": true,
+      "releaseActionsAuthorized": false,
+      "evidence": "docs/mobile/evidence/S03/canonical-integration-working-validation.json"
+    },
+    "s03WorkingValidation": {
+      "fullUnit": {
+        "passed": 4479,
+        "skipped": 4,
+        "failed": 0,
+        "predatesBoundedFollowup": true
+      },
+      "postFullCopy": {
+        "passed": 137,
+        "files": 8
+      },
+      "postFullPrivateAudit": {
+        "observedPassing": 88,
+        "acrossRuns": true
+      },
+      "chromeArtifact": {
+        "buildId": "03c7623ea834f0678fd0602bdc618ddfa836c2e9bd94eaa2ba136214516a67ca",
+        "passed": 20,
+        "failed": 0
+      },
+      "crossEngine": {
+        "buildId": "4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c",
+        "passed": 4,
+        "failed": 2,
+        "classification": "documented-engine-transport-support-boundaries",
+        "evidence": "docs/mobile/evidence/S03/cross-engine-browser-first.json",
+        "diagnostics": "docs/mobile/evidence/S03/cross-engine-transport-boundaries.json"
+      },
+      "releaseReady": false,
+      "stageAcceptanceClaimed": false
+    }
   },
   "externalOwnerInputsStatus": {
     "status": "NOT_STARTED",

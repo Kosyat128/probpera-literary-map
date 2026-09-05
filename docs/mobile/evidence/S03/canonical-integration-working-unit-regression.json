@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "stageId": "S03",
+  "sourceCommit": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+  "recordedAt": "2026-09-05T19:58:05.154Z",
+  "releaseReady": false,
+  "stageAcceptanceClaimed": false,
+  "recordType": "working-regression-evidence",
+  "command": "node node_modules/vitest/vitest.mjs run --maxWorkers=1",
+  "perProcessGitSafeDirectory": true,
+  "counts": {
+    "passedTests": 4479,
+    "existingSkippedTests": 4,
+    "failedTests": 0,
+    "passedFiles": 576,
+    "skippedFiles": 3
+  },
+  "durationSeconds": 553.88,
+  "sourceFiles": [
+    {
+      "path": "scripts/build-domain-release.mjs",
+      "sha256": "afed100a675cbc20ac75d54794e0223041b14187e1ff35abcee96921ac09aa0f",
+      "bytes": 1974
+    },
+    {
+      "path": "scripts/database/literary-planet-reader-deletion.integration.test.mjs",
+      "sha256": "b611fa06f9e56605e854bd6fd3344d08959c3c5ba5da2b2a9a6d3578a987c749",
+      "bytes": 25457
+    },
+    {
+      "path": "scripts/governance/v12-s03-canonical-integration.json",
+      "sha256": "9f045a6862de27917697b9f41390258e9da718c276e64dafd2413d31b5f2094e",
+      "bytes": 15512
+    },
+    {
+      "path": "scripts/governance/v12-s03-compatibility.d.mts",
+      "sha256": "ed29047e3ecd611d94d5c1dd05e6ecca1bcaa2f2bcdbf859a76b8c03f5772777",
+      "bytes": 1044
+    },
+    {
+      "path": "scripts/governance/v12-s03-compatibility.mjs",
+      "sha256": "74e9d2b7b96458d259b9d283bf374d8905115c8d50057993a7a50d354b2010d2",
+      "bytes": 2810
+    },
+    {
+      "path": "scripts/governance/v12-s03-compatibility.test.mjs",
+      "sha256": "a140c3c8055aa20026830d3533804f6280ade493932df75e8e7068101316bb89",
+      "bytes": 5387
+    },
+    {
+      "path": "scripts/lib/playwright-suite-classification.test.mjs",
+      "sha256": "cde650de1496aa20b09a1aeb4e6e564db49c14d7f22544799101de35b31d4521",
+      "bytes": 1732
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "sha256": "56038e96317b55c7d70d807b6e1df2578e99a0ec900c90b826c46080d908ef60",
+      "bytes": 34214
+    },
+    {
+      "path": "scripts/mobile/build-public-not-found.mjs",
+      "sha256": "91984c03106cf406b3d39f3fbc983555bb1cd0b78465b38b91669108f73a0795",
+      "bytes": 9141
+    },
+    {
+      "path": "scripts/mobile/build-public-not-found.test.mjs",
+      "sha256": "29a7bcb1cdaa8b4a12e34e3d565d7602b1769085dece2f14411f5f34e2dccc29",
+      "bytes": 12610
+    },
+    {
+      "path": "scripts/mobile/process-reader-deletion.mjs",
+      "sha256": "eb52c2bea241d9690ef245876c21ff811ba1a24cf6608062e0942d2e033082a1",
+      "bytes": 1677
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.mjs",
+      "sha256": "f3908bad0fdb5963002c8b2950d546ad165e2396ec0137e5a52acbb56cd2dcc4",
+      "bytes": 40017
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.test.mjs",
+      "sha256": "f32c6ae60671ac1a309ce68baeb8b9ff5f47f3196c4e973ff2924710810b8f8e",
+      "bytes": 30196
+    },
+    {
+      "path": "server/planet/deletionProcessor.test.ts",
+      "sha256": "21f3e069e51930b1e81fb79a0078799d406722944c86e6de6bb6ee0380921563",
+      "bytes": 6806
+    },
+    {
+      "path": "server/planet/deletionProcessor.ts",
+      "sha256": "0cf31f84f958fc54484d594392dde3fa5436346981c4376fddd115d9677c25a4",
+      "bytes": 9240
+    },
+    {
+      "path": "server/planet/deletionProcessorCli.test.ts",
+      "sha256": "60f23329b9b426f4044324f2007e63a9e853077f8e871b7e712bdc862711ab13",
+      "bytes": 3893
+    },
+    {
+      "path": "server/planet/deletionProcessorCli.ts",
+      "sha256": "cec4ec5d09b831c2a0e78cce5effb56f4c86d42828fbf05a56ea5fb97a5e6387",
+      "bytes": 5210
+    },
+    {
+      "path": "server/planet/deletionProcessorSupabase.ts",
+      "sha256": "8aa5280842f16e02f59e4873d454cdef4dbaca89522870f615537bc90de3c0d9",
+      "bytes": 3738
+    },
+    {
+      "path": "server/public-locales/README.md",
+      "sha256": "2784b753bc103745757c67a447e628a2965c1d925bc511c05c18ed3800fe5d5c",
+      "bytes": 5977
+    },
+    {
+      "path": "server/public-locales/handler.mjs",
+      "sha256": "669bf17f393ed10939183447f53acbedf60a65b9635c604043496685500a3b95",
+      "bytes": 4291
+    },
+    {
+      "path": "server/public-locales/handler.test.mjs",
+      "sha256": "7a7d9647c6b5fb6548d4289cb3d10e88c8a5cee4436c827724efd5e42bb9a598",
+      "bytes": 6847
+    },
+    {
+      "path": "server/public-locales/wrangler.draft.jsonc",
+      "sha256": "664b311155e3b29ddbad5c36ba21342aa331b64946eec18c2dd9a5464bae9d5b",
+      "bytes": 309
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "3d9b9c49a1210f5a267aa8984f58dc2db00e8d123e31b43d486e059f5ce94dcf",
+      "bytes": 155266
+    },
+    {
+      "path": "src/books/bookDossierPublicClient.test.ts",
+      "sha256": "a8efac4789a90681ca63e059302f14159bf0dbb70ee626b0d84f0c1ce4d64037",
+      "bytes": 4103
+    },
+    {
+      "path": "src/books/bookDossierPublicClient.ts",
+      "sha256": "d14ec7f2e05340d9bf0530c755a93608bf6cb1013091ddc4669fd9ab9c6eeac9",
+      "bytes": 2002
+    },
+    {
+      "path": "src/books/usePublishedBookDossier.ts",
+      "sha256": "67d2d3dfe387bd42aafa026176c9a66246dc8b01cb7fc04003e58ac719d4aea4",
+      "bytes": 6026
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "85f0f6a605ab3bcc5e401e362a4c47fbb3c74a3f85e4f68726999dd08125ae39",
+      "bytes": 207973
+    },
+    {
+      "path": "src/components/WriterPanel.tsx",
+      "sha256": "8ba351dd0a7b8296e5dbadb9fda35fece9f555a256b4d4fe68d06d578c1fd097",
+      "bytes": 53992
+    },
+    {
+      "path": "src/components/writerPanelBooks.test.ts",
+      "sha256": "6e53c6d19a73b35cb85253fe4bc498829af61cf7142432e0aad18276aa649b3a",
+      "bytes": 2876
+    },
+    {
+      "path": "src/components/writerPanelBooks.ts",
+      "sha256": "e20f70de4a619a6962ec263fef5d26cc815629101130f593ea2122c056611b68",
+      "bytes": 1670
+    },
+    {
+      "path": "src/components/writerPanelPresentation.ts",
+      "sha256": "46cb3309d6907f3c6bc5af702b70b6c26eef743bcb5df38a580ebd5bcc218593",
+      "bytes": 11749
+    },
+    {
+      "path": "src/data/bookPublicSurfaceGate.test.ts",
+      "sha256": "abde16d602e0e3cc96443f85b1fdaac6294cf5c17001e29b563ec525f51ad0b7",
+      "bytes": 3649
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+      "bytes": 25064
+    }
+  ],
+  "log": {
+    "path": "docs/mobile/evidence/S03/logs/canonical-integration-final-unit.log",
+    "sha256": "e84a71ae70921646cd7bdbd9e2c8130d90dbacb6618e258f827c957e27b941ac",
+    "bytes": 321
+  },
+  "precedingFailureAndFix": {
+    "firstRun": {
+      "passedTests": 4473,
+      "failedTests": 6,
+      "existingSkippedTests": 4,
+      "log": {
+        "path": "docs/mobile/evidence/S03/logs/canonical-integration-full-unit.log",
+        "sha256": "95fcaee1657181dc3080a5ee27867676ecd7d97aad6c0d0a7b36df17410503da",
+        "bytes": 5462
+      }
+    },
+    "causes": [
+      "Three artifact fixtures lacked public asset provenance; fixtures now supply genuine traced public sources and require only PRIVATE_DOSSIER_OUTPUT.",
+      "Three unchanged Git-fixture tests timed out at their existing five-second limit during the initial combined run."
+    ],
+    "narrowRerun": {
+      "passedTests": 76,
+      "passedFiles": 2,
+      "durationSeconds": 63.64,
+      "log": {
+        "path": "docs/mobile/evidence/S03/logs/canonical-integration-fixed-narrow.log",
+        "sha256": "105cb89a91fd28c60e55433326a591365fe652fea48fa1bf1e01e375c90fb7e8",
+        "bytes": 283
+      },
+      "timeoutsOrAssertionsRelaxed": false
+    }
+  },
+  "limitations": [
+    "The Git commit is the parent checkpoint. Working source hashes identify the local changes; this is not a clean exact RC.",
+    "Any subsequent independent-audit fix is covered by its own post-fix narrow regression, not retroactively by this full run.",
+    "Four existing skipped tests remain unexecuted. Native devices, live services, editorial/legal approvals and production readiness are not established."
+  ]
+}

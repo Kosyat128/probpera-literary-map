@@ -1,11 +1,13 @@
 import type { BookDossierDocumentV2, BookDossierReadingMode, BookDossierSpoiler } from "./bookDossierDocument";
 import { parseBookDossierPublicRequest, parsePublishedBookDossier } from "./bookDossierDelivery";
 import { supabaseConnection } from "../lib/supabaseConfig";
+import { isControlledWebEdition } from "../platform/distribution";
 
 export async function fetchPublishedBookDossier(options: {
   bookKey: string; locale: "ru" | "en"; mode?: BookDossierReadingMode;
   revealSpoilers?: BookDossierSpoiler; reachedItemIds?: readonly string[]; signal?: AbortSignal;
 }): Promise<BookDossierDocumentV2 | null> {
+  if (isControlledWebEdition) return null;
   const request = parseBookDossierPublicRequest({ bookKey: options.bookKey, locale: options.locale,
     mode: options.mode, revealSpoilers: options.revealSpoilers, reachedItemIds: options.reachedItemIds });
   if (!request) return null;

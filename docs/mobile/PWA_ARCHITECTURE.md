@@ -22,6 +22,20 @@ The narrow [canonical domain facades](SHARED_SITE_EXTRACTION.md) preserve existi
 record references and writer/work identity keys. Their demand-loading boundaries
 remain part of the build graph.
 
+Canonical main through `f406a7de` is incorporated locally with accepted S00-S02
+history preserved. WriterPanel receives the same `verifiedBookArchive` reference
+as the bookshelf and search, including reviewed canonical enrichment. Country,
+writer and work IDs are retained; idle/loading/error/retry never fall back to raw
+work records. Actual offline RU/EN tests exercise the Dostoevsky record that
+previously differed between the writer panel and enriched catalog.
+
+The controlled edition does not mount the remote news feed or start published
+dossier transport. Public dossier transport still includes locale in request
+identity, while reader choices belong to the same book across locale changes.
+Book-scoped navigation and response/timer cleanup prevent cross-book or late
+locale responses from replacing current content. The local dossier fallback is
+not promoted to a reviewed paid dossier or a completed offline content package.
+
 One Web platform adapter is created outside React rendering and injected through
 the existing platform services provider. One
 [InterfaceLanguageProvider](../../src/i18n/InterfaceLanguage.tsx) owns RU/EN.
@@ -117,6 +131,13 @@ records explicitly retain the indexing hold. Four additional public account and
 deletion pages use the same built application assets and remain noindex. Public
 indexing is still an open release gate.
 
+Canonical public hosting remains GitHub Pages. The separate
+[localized404 handler](../../server/public-locales/handler.mjs) replaces only an
+actual HTML404 from that origin with the exact generated RU/EN error body. Its
+bound `dist-public-locales/` artifact stays outside the Pages upload; draft
+configuration has no routes and no deployment. Workerd/HTTP tests verify the
+prepared handler, not a change to production hosting.
+
 [articleRoutes](../../src/utils/articleRoutes.ts) sends controlled journal links
 to canonical `https://probpera.ru` routes. Programmatic journal navigation does
 not push a cross-origin history entry or open a second local reader. User-driven
@@ -186,10 +207,25 @@ checks, not results of local fixtures.
 Deletion requires verified recent authentication and an explicitly configured
 synchronized RU/EN disclosure. Without that disclosure, submission stays disabled.
 A successful request atomically blocks paid access and returns status `requested`;
-it does not claim the account was deleted. Actual account removal must still
-handle comment constraints, editorial foreign keys and the staff last-owner
-invariant. Production retention policy and completed-deletion execution are not
-supplied by accepting a request.
+it does not claim the account was deleted. The server-only
+[reader processor](../../server/planet/deletionProcessor.ts), its existing-project
+[Supabase SDK adapter](../../server/planet/deletionProcessorSupabase.ts) and
+[guarded SQL](../../supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql)
+now implement request leases, ownership/schema checks, avatar cleanup and Auth
+deletion with verifiable completion/retry. Private view cleanup targets the
+exact user ID, preserves guest/other-reader rows sharing a session and rolls
+back with a failed Auth transaction. Provider and request ledgers retain their
+records with nullable subject references; this is not anonymization.
+
+The executable [operator tool](../../scripts/mobile/process-reader-deletion.mjs)
+defaults to dry-run without transport. Real processing requires an explicit
+request ID, reviewed policy input, server credentials and separate authorization.
+No production policy instance, execution or automated scheduler is enabled.
+Accounts with public contributions, editorial/staff references or unsupported
+linked data remain blocked; the safe-reader path does not certify general
+account erasure. The synchronized
+[RU/EN disclosure draft](ACCOUNT_DELETION_DISCLOSURE_DRAFT_RU_EN.md) maps these
+facts and unresolved decisions without inventing retention periods or approval.
 
 The [draft Cloudflare adapter](../../server/planet/worker.ts) assembles the server
 using explicit bindings and serves only the controlled local assets. Private

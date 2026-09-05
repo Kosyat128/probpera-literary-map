@@ -1,0 +1,17 @@
+{
+  "buildId": "03c7623ea834f0678fd0602bdc618ddfa836c2e9bd94eaa2ba136214516a67ca",
+  "artifact": {
+    "preservedPath": ".tmp/pwa-artifacts/03c7623e",
+    "metadataSha256": "ddd993867cc9582bb0ffe30f0dc7bec708cd6186a0c8dae9bde6f8c6f9129ca1",
+    "originalPath": "dist-pwa"
+  },
+  "authorityPath": ".tmp/pwa-qa/authority.json",
+  "authorityChanged": false,
+  "browser": {
+    "resultsSha256": "59d1cc9691e9753baef6cd71033711fceac35dd25a01c54dec0ba3d9eb2d0293",
+    "preservedPath": ".tmp/pwa-browser-03c7623e-20passed",
+    "originalPath": ".tmp/pwa-browser-results"
+  },
+  "releaseReady": false,
+  "recordType": "local-evidence-preservation"
+}
