@@ -1,5 +1,14 @@
-import type { PlatformServices } from "../platform/ports";
-import type { HostAppBridge, HostNetworkBridge, HostPreferenceBridge, HostPlatformServicesOptions } from "./HostPlatformServices";
+import type { PlatformBackEvent, PlatformServices } from "../platform/ports";
+import type { HostAppBridge, HostAppState, HostListenerHandle, HostNetworkBridge, HostPreferenceBridge, HostPlatformServicesOptions } from "./HostPlatformServices";
+import type { NativeNavigationBridgeFailure } from "./NativeNavigationBridge";
+
+export interface NativeHostAppBridge extends HostAppBridge {
+  getAppLanguage(): Promise<unknown>;
+  getLaunchUrl(): Promise<{ url: string } | undefined>;
+  addListener(event: "appStateChange", listener: (state: HostAppState) => void): Promise<HostListenerHandle>;
+  addListener(event: "appUrlOpen", listener: (event: { url: string }) => void): Promise<HostListenerHandle>;
+  addListener(event: "backButton", listener: (event: PlatformBackEvent) => void): Promise<HostListenerHandle>;
+}
 
 export interface NativeHostBindings {
   readonly core: {
@@ -7,7 +16,7 @@ export interface NativeHostBindings {
     isNativePlatform(): boolean;
     isPluginAvailable(name: string): boolean;
   };
-  readonly app: HostAppBridge & { getAppLanguage(): Promise<unknown> };
+  readonly app: NativeHostAppBridge;
   readonly network: HostNetworkBridge;
   readonly preferences: HostPreferenceBridge;
   readonly browser: { open(options: { url: string }): Promise<void> };
@@ -19,6 +28,7 @@ export interface NativeHostAdapterOptions {
   readonly timeoutMs?: number;
   readonly allowExternalLink?: HostPlatformServicesOptions["allowExternalLink"];
   readonly onFailure?: HostPlatformServicesOptions["onFailure"];
+  readonly onNavigationFailure?: (failure: NativeNavigationBridgeFailure) => void | Promise<void>;
 }
 export interface InitializedHostPlatform {
   readonly services: PlatformServices;
@@ -35,7 +45,7 @@ export function assertNativeHostBindings(bindings: NativeHostBindings, kind: "an
       if (bindings.core.isPluginAvailable(plugin) !== true) throw new Error("Missing native plugin");
     }
     const methods = [
-      bindings.app?.getState, bindings.app?.addListener, bindings.app?.getAppLanguage,
+      bindings.app?.getState, bindings.app?.addListener, bindings.app?.getAppLanguage, bindings.app?.getLaunchUrl,
       bindings.network?.getStatus, bindings.network?.addListener,
       bindings.preferences?.get, bindings.preferences?.set, bindings.preferences?.remove,
       bindings.browser?.open, bindings.appLauncher?.openUrl,

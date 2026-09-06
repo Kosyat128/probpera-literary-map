@@ -1,6 +1,6 @@
 USER RESUMED: "Продолжай". The prior pause is lifted.
-Work from ca6f805badc6638fbee5998f0de483b0857ca1c8 and preserved drafts.
-Review iOS CI before execution; preserve source-only publication boundaries.
+Current canonical-main integration checkpoint:72a62b314ecd50ea2c6f128af7134ee4ae3e1944.
+Actual cloud iOS compilation273f400d succeeded; preserve distinct source identities.
 
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
@@ -12,8 +12,10 @@ S00-S02 accepted; headSha intentionally means accepted S02:6305df5f. Current,
 resume and first-open remain S03.acceptance. S04 has documented parallel-safe
 entry. No global requirement passed and releaseReady:false.
 
-Canonical main f406a7de already incorporated through five cherry-picks ending
-8e6cfe1f. S03 working0afad090 and saved-verification e2530cc6 are committed.
+Canonical main5d3f6fb is incorporated through three further cherry-picks and
+adaptation72a62b31.969 selected tests/61 files, types/boundaries/typography and39
+local SQL checks passed. No post-main artifact rebuild or full suite is claimed.
+S03 working0afad090 and saved-verification e2530cc6 are committed.
 Full4479 unit run predates later bounded fixes. Fresh PWA b006c275 passed20
 actual Chrome scenarios and335-file audit with real offline Dostoevsky/work and
 RU/EN state preservation. Historical cross-engine4 PASS/2 FAIL is not green.
@@ -26,8 +28,8 @@ SHA256:3a4cccecf310a7b2eabef22426d96fe78033e89bdca058249383e30d2b17cf20.
 167 executed Gradle tasks; no installed device test. Android bundle fa9dd4a0 is
 preserved in .tmp/native-previous-8e4f8e08-37e6-4965-a2ab-b8c00230a03a.
 Current dist-native is iOS/dev e7921e30 and must not be synced into Android.
-Its320 files and native project sync passed; Xcode/Swift/simulator/IPA remain
-unverified. ios-project-sync-review corrects the original intake: app SPM exact
+Its320 files and native project sync passed. This local artifact is distinct
+from the successful cloud binary. ios-project-sync-review corrects the intake: app SPM exact
 8.5.1, not from-range. Original wrong report is retained in evidence/history.
 
 The user explicitly authorized accepting/installing the standard Google Android
@@ -44,10 +46,32 @@ Shared native App/host adapters and canonical language provider are implemented.
 globe retention. TypeScript/CSS26/platform boundaries passed. Strict auditor
 failures before removal of the unused backend SDK remain preserved.
 
-The user has no Mac. Prepare the cloud macOS simulator path without assigning
-programming or hardware purchase. Inspect live agents before overlapping edits.
-No remote run, native compilation or signing can be inferred from local YAML.
-Continue actual device/navigation/child/commerce and bilingual implementation;
+The user has no Mac and explicitly authorized publishing the reviewed74 source
+files plus simulator CI on codex/literary-planet-v12-ios-ci in the public repo.
+Automatic source-publication review was resolved by that explicit permission;
+do not ask again. No internal V12 history, evidence, receipt or keys were published.
+First run34002773310 failed with Xcode option exit64; the two exact option fixes
+produced successful34003133006 at273f400d. All real Xcode/Swift/build steps passed.
+Independent archive/binary/compiled plist/public inventory verification passed.
+Stable App: .tmp/native-builds/ios-simulator/273f400d/App-simulator.app.tar.gz
+SHA256:5fc2832cd3458c01a3fc85828864fa5ea3fec5b0c9dbec59707db4c89b7e4715.
+Read evidence/S04/cloud-ios-working-validation.json and ios-binary-verification.json
+for exact proof. Simulator launch, installed-device behavior and IPA remain open.
+The cloud source projection predates current-main integration; never relabel it.
+
+Next internal work: connect SDK-free NativeNavigation to actual adapter App URL/
+Back ports and canonical App callbacks with bootstrap/policy fencing; use current
+publication gates and preserve absent selection fields. Audit new main image
+delivery against the controlled asset selection; preserve rights checks and exact
+cross-platform bytes. Build fresh separate candidates after corrections. Preserve
+historical dist-native/dist-pwa and original authorities. An isolated Chrome
+locked-shell preparation passed4 checks after3 recorded setup failures; it did not
+perform OS install. Use a disposable OS for actual PWA installation, and a fresh
+QA candidate with its signer alive for authorized globe tests. The b006 signer
+was memory-only and is gone; never overwrite its authority.
+
+Inspect live agents before overlapping edits. Continue real simulator/native
+navigation and later child/commerce/bilingual implementation;
 prepare reviewable automation before any required access question. Do not treat
 missing macOS as a reason to stop independent work.
 

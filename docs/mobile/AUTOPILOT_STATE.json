@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-06T00:33:24.647Z",
+  "updatedAt": "2026-09-06T01:27:54.491Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -526,7 +526,8 @@
         "docs/mobile/evidence/S03/cross-engine-transport-boundaries.json",
         "docs/mobile/evidence/S03/saved-access-verification.json",
         "docs/mobile/evidence/S03/saved-verification-artifact-regression.json",
-        "docs/mobile/evidence/S03/cross-engine-artifact-preservation.json"
+        "docs/mobile/evidence/S03/cross-engine-artifact-preservation.json",
+        "docs/mobile/evidence/S04/pwa-preparation/result.json"
       ],
       "externalBlockers": []
     },
@@ -818,7 +819,8 @@
         "docs/mobile/evidence/S04/native-resources-preparation.json",
         "docs/mobile/evidence/S04/native-brand-resources-preparation.json",
         "docs/mobile/evidence/S04/working-native-implementation.json",
-        "docs/mobile/evidence/S04/ios-project-sync-review.json"
+        "docs/mobile/evidence/S04/ios-project-sync-review.json",
+        "docs/mobile/evidence/S04/cloud-ios-working-validation.json"
       ],
       "externalBlockers": []
     },
@@ -10529,7 +10531,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Resumed on explicit user instruction. Finish and independently review the interrupted iOS simulator CI drafts, prepare a source-only cloud build without exposing internal V12 history or touching main, and continue native and S03 internal gates. No acceptance or release claim.",
+    "nextAction": "Continue S03 first-open and parallel-safe S04: wire native canonical URL/Back callbacks with policy/bootstrap fencing; audit current-main controlled image coverage and build fresh separate candidates; verify actual installed simulator/PWA behavior. Preserve successful historical cloud compilation and original failures; no release or stage acceptance claim.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10573,13 +10575,14 @@
     "sourceMain": "0a348bd4202e3fa1558d88183549f7576a361c4b",
     "releaseActionsAuthorized": false,
     "canonicalMainIntegration": {
-      "sourceMain": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
-      "localIntegrationHead": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
-      "method": "five local cherry-picks with source commit footers",
+      "sourceMain": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "localIntegrationHead": "72a62b314ecd50ea2c6f128af7134ee4ae3e1944",
+      "method": "Three sequential cherry-pick -x commits retaining original provenance, followed by one isolated adaptation commit.",
       "historicalAcceptedAncestorsPreserved": true,
-      "postIntegrationRegressionComplete": true,
+      "selectedPostIntegrationRegressionComplete": true,
+      "fullPostIntegrationRegressionComplete": false,
       "releaseActionsAuthorized": false,
-      "evidence": "docs/mobile/evidence/S03/canonical-integration-working-validation.json"
+      "evidence": "docs/mobile/evidence/S04/main-integration/result.json"
     },
     "s03WorkingValidation": {
       "fullUnit": {
@@ -10661,7 +10664,38 @@
       "remoteIosBuildRun": false,
       "productionActionsPerformed": false,
       "resumedAt": "2026-09-06T00:33:24.647Z",
-      "resumeRequest": "Продолжай"
+      "resumeRequest": "Продолжай",
+      "snapshotMeaning": "Historical pause receipt. Interrupted drafts and remoteIosBuildRun=false describe the pause time only; current cloud result is s04CloudIosValidation."
+    },
+    "canonicalMainIntegrationHistory": [
+      {
+        "sourceMain": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+        "localIntegrationHead": "8e6cfe1f482ebd261965d774cbf4e14f80f62f1d",
+        "method": "five local cherry-picks with source commit footers",
+        "historicalAcceptedAncestorsPreserved": true,
+        "postIntegrationRegressionComplete": true,
+        "releaseActionsAuthorized": false,
+        "evidence": "docs/mobile/evidence/S03/canonical-integration-working-validation.json"
+      }
+    ],
+    "s04CloudIosValidation": {
+      "commit": "273f400d8f07a57269f391dfc13d7e802c9071f2",
+      "runId": 34003133006,
+      "conclusion": "success",
+      "buildId": "b9254e7bc6c2842a1880e0166c15b3b1ed329da8e6e2672d56a2dac644b45470",
+      "evidence": "docs/mobile/evidence/S04/cloud-ios-working-validation.json",
+      "simulatorCompilation": true,
+      "simulatorLaunch": false,
+      "deviceRun": false,
+      "latestMainCandidate": false,
+      "accepted": false
+    },
+    "s03PwaInstallPreparation": {
+      "evidence": "docs/mobile/evidence/S04/pwa-preparation/result.json",
+      "buildId": "b006c2757ee7e5bacc6b946d8c7dcd880c0760da74ff3d39d752095b38b26c6d",
+      "lockedShellChecks": 4,
+      "osInstall": false,
+      "accepted": false
     }
   },
   "externalOwnerInputsStatus": {

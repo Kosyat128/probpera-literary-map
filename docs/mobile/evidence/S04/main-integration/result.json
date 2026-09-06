@@ -1,0 +1,309 @@
+{
+  "recordedAt": "2026-09-06T01:09:28.270Z",
+  "scope": "Local source integration only; no publication, merge, push, deployment, stage acceptance, or current artifact readiness claim.",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "baseCommit": "db0b25fe9ac82104d478ed0e5461062c909dae3b",
+  "upstreamBase": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+  "upstreamTip": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+  "headCommit": "72a62b314ecd50ea2c6f128af7134ee4ae3e1944",
+  "method": "Three sequential cherry-pick -x commits retaining original provenance, followed by one isolated adaptation commit.",
+  "stages": [
+    {
+      "upstream": "c052599516af0658c3764d4c69bfcaac485f2e0c",
+      "integrated": "af109fb6539fd3796f10fefcd37a6652bad20d9f",
+      "conflicts": []
+    },
+    {
+      "upstream": "834b3126a682c024b5d5fdc0f6a8f7539b92a4e9",
+      "integrated": "ce9ccae94fb75b751a13d37fb65e5558489e4648",
+      "conflicts": []
+    },
+    {
+      "upstream": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "integrated": "57e03da63e4a1e62b71806eced81f4a88493aa4b",
+      "conflicts": [
+        "src/App.tsx",
+        "scripts/lib/stage5-content-data-lock.test.mjs",
+        "src/components/stage5Governance.test.ts"
+      ]
+    }
+  ],
+  "adaptation": {
+    "commit": "72a62b314ecd50ea2c6f128af7134ee4ae3e1944",
+    "files": [
+      {
+        "path": "scripts/governance/v12-s03-compatibility.mjs",
+        "sha256": "53ce4807108f8b486e19a36aa8b19620c7f0d19028889f75cf0f6946c02a619a"
+      },
+      {
+        "path": "scripts/governance/v12-s03-compatibility.test.mjs",
+        "sha256": "61527c109d625369442a700f68a83a9b56103504a7d1cfe7d61c5e9112f1e813"
+      },
+      {
+        "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+        "sha256": "1d312cfe15b730104fce0a2a5a4cd95e10d00895d24b013dd3080eadf5347169"
+      },
+      {
+        "path": "src/host/mountHostApp.tsx",
+        "sha256": "b1f850347216bf434c8b8cc1772252ce7385e7dee0c2dac84d9463f92bad79f1"
+      }
+    ],
+    "changes": [
+      "Five exact canonical reading/shelf/account/community stylesheet imports in native host.",
+      "Historical Header V12 reverse projection retains the new exact canonical image import on both sides; no original attestation fixture or fingerprint is rewritten.",
+      "Apply exact V12 source/package projection before canonical reading-design projection, including negative attestation tests."
+    ]
+  },
+  "conflictResolution": {
+    "runtime": "Site feature cards retain current publicImageAttributes responsive delivery. Controlled PWA/native retains its existing bundled canonical brand fallback until its asset package is deliberately refreshed; no duplicate scene/provider/router added.",
+    "governance": "Both current canonical upstream locks and V12 guards are retained; mismatch/duplication/unrelated-source regressions remain active."
+  },
+  "validation": {
+    "types": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "exitCode": 0,
+      "log": "types.log"
+    },
+    "testRuns": [
+      {
+        "log": "governance-fixed.log",
+        "files": 4,
+        "tests": 71,
+        "targets": "scripts/governance/v12-s03-compatibility.test.mjs scripts/governance/v12-s04-host-compatibility.test.mjs scripts/lib/stage5-content-data-lock.test.mjs src/components/stage5Governance.test.ts",
+        "status": "PASS",
+        "exitCode": 0,
+        "command": "node node_modules/vitest/vitest.mjs run scripts/governance/v12-s03-compatibility.test.mjs scripts/governance/v12-s04-host-compatibility.test.mjs scripts/lib/stage5-content-data-lock.test.mjs src/components/stage5Governance.test.ts --maxWorkers=2"
+      },
+      {
+        "log": "upstream-affected-tests.log",
+        "files": 23,
+        "tests": 208,
+        "targets": "src/articles src/books/bookInspectionPageLayout.test.ts src/books/bookInspectionTextures.test.ts src/books/bookShelfExtractionMotion.test.ts src/books/bookTypography.test.ts src/books/completeShelfModel.test.ts src/books/completeShelfTextures.test.ts src/books/completeShelfCanvas.source.test.ts src/components/BookCollectionShelfSwitcher.test.tsx src/components/bookShelfApprovedPresentation.test.ts src/utils/imageDelivery.test.ts src/utils/articleImageDelivery.test.ts src/utils/imageUploadOptimization.test.ts src/utils/rasterImageMetadata.test.ts scripts/prepare-public-images.test.mjs scripts/audit-performance-budget.test.mjs scripts/audit-tilda-dependencies.test.mjs scripts/audit-typography.test.mjs scripts/lib/article-derived-text.test.mjs scripts/lib/compact-image-delivery.test.mjs scripts/lib/atomic-json-write.test.mjs scripts/lib/public-image-delivery.test.mjs",
+        "status": "PASS",
+        "exitCode": 0,
+        "command": "node node_modules/vitest/vitest.mjs run src/articles src/books/bookInspectionPageLayout.test.ts src/books/bookInspectionTextures.test.ts src/books/bookShelfExtractionMotion.test.ts src/books/bookTypography.test.ts src/books/completeShelfModel.test.ts src/books/completeShelfTextures.test.ts src/books/completeShelfCanvas.source.test.ts src/components/BookCollectionShelfSwitcher.test.tsx src/components/bookShelfApprovedPresentation.test.ts src/utils/imageDelivery.test.ts src/utils/articleImageDelivery.test.ts src/utils/imageUploadOptimization.test.ts src/utils/rasterImageMetadata.test.ts scripts/prepare-public-images.test.mjs scripts/audit-performance-budget.test.mjs scripts/audit-tilda-dependencies.test.mjs scripts/audit-typography.test.mjs scripts/lib/article-derived-text.test.mjs scripts/lib/compact-image-delivery.test.mjs scripts/lib/atomic-json-write.test.mjs scripts/lib/public-image-delivery.test.mjs --maxWorkers=2"
+      },
+      {
+        "log": "v12-affected-tests.log",
+        "files": 29,
+        "tests": 651,
+        "targets": "src/host src/platform src/planet src/books/bookDossierPublicClient.test.ts src/components/writerPanelBooks.test.ts src/components/RecentHistoryPanel.test.tsx src/pwa/PwaAccessBoundary.test.tsx src/pwa/PwaLicenseRuntime.test.ts src/pwa/PlanetAccountPage.test.mjs src/pwa/passwordRecovery.test.ts src/community/authTurnstile.source.test.ts scripts/mobile/platform-boundaries.test.mjs scripts/mobile/verify-native-artifact.test.mjs scripts/database/literary-planet-reader-deletion.integration.test.mjs scripts/database/book-dossier-migration-plan.test.mjs scripts/lib/playwright-suite-classification.test.mjs scripts/historical-source-acquisition-policy.source.test.mjs scripts/export-published-content-article-metadata.source.test.mjs",
+        "status": "PASS",
+        "exitCode": 0,
+        "command": "node node_modules/vitest/vitest.mjs run src/host src/platform src/planet src/books/bookDossierPublicClient.test.ts src/components/writerPanelBooks.test.ts src/components/RecentHistoryPanel.test.tsx src/pwa/PwaAccessBoundary.test.tsx src/pwa/PwaLicenseRuntime.test.ts src/pwa/PlanetAccountPage.test.mjs src/pwa/passwordRecovery.test.ts src/community/authTurnstile.source.test.ts scripts/mobile/platform-boundaries.test.mjs scripts/mobile/verify-native-artifact.test.mjs scripts/database/literary-planet-reader-deletion.integration.test.mjs scripts/database/book-dossier-migration-plan.test.mjs scripts/lib/playwright-suite-classification.test.mjs scripts/historical-source-acquisition-policy.source.test.mjs scripts/export-published-content-article-metadata.source.test.mjs --maxWorkers=2"
+      },
+      {
+        "log": "final-focused-tests.log",
+        "files": 5,
+        "tests": 39,
+        "targets": "scripts/lib/stage5b-art-direction.test.mjs tests/host/host-language-status.test.ts apps/admin/app/api/media/upload/route.test.ts apps/admin/lib/client-image-upload.test.ts apps/admin/lib/book-dossier-integration.source.test.ts",
+        "status": "PASS",
+        "exitCode": 0,
+        "command": "node node_modules/vitest/vitest.mjs run scripts/lib/stage5b-art-direction.test.mjs tests/host/host-language-status.test.ts apps/admin/app/api/media/upload/route.test.ts apps/admin/lib/client-image-upload.test.ts apps/admin/lib/book-dossier-integration.source.test.ts --maxWorkers=2"
+      }
+    ],
+    "totalSelectedFiles": 61,
+    "totalSelectedTests": 969,
+    "fullRepositoryRegression": false,
+    "sql": {
+      "command": "node scripts/database/book-dossier-local-regression.mjs",
+      "environment": "BOOK_DOSSIER_SQL_RUNTIME=<repo>/node_modules/@electric-sql/pglite",
+      "passed": 39,
+      "result": ".tmp/native-bootstrap/main-integration/dossier-rehearsal-result.json",
+      "scope": "Ephemeral in-memory PostgreSQL; synthetic auth/users/catalogue and prerequisite ledger foundation, synthetic design attestations; actual project is_staff, pgcrypto SHA helper, fixed-hash schema-only planner/migrations, historical v3-to-v4 upgrade and TS workflow/compiler. Browser font measurement and Docker backup/restore are separate. No external database, production writes or real editorial text.",
+      "originalTrackedResultRestored": true
+    },
+    "boundaries": {
+      "command": "node scripts/mobile/platform-boundaries.mjs",
+      "exitCode": 0,
+      "scannedSourceFiles": 867,
+      "auditedRuntimeFiles": 500,
+      "findings": 0
+    },
+    "typography": {
+      "command": "node scripts/audit-typography.mjs",
+      "exitCode": 0,
+      "publicCssFiles": 32,
+      "issues": 0
+    },
+    "diffCheck": {
+      "exitCode": 0,
+      "note": "Only existing Git CRLF normalization warnings."
+    }
+  },
+  "historicalFailures": {
+    "logs": [
+      "governance-first.log",
+      "governance-first-runtime.log",
+      "hyphen-install-dry-run.json",
+      "hyphen-install-dry-run.stderr"
+    ],
+    "explanation": "First Vitest start was denied by local sandbox parent-directory access; authorized local test execution resolved it. Real initial governance failures were fixed before final PASS. Initial dry-run npm command could not write default npm cache and made no install; subsequent reviewed fetch used explicit workspace cache."
+  },
+  "dependencyAddition": {
+    "package": "hyphen",
+    "version": "1.14.1",
+    "method": "Reviewed npm pack --ignore-scripts, exact lock SHA512 verification, bounded tar validation, writes only to a newly created absent node_modules/hyphen directory.",
+    "archiveSha256": "7e157ad6a78bf016ad27d29a45750bd77a96bedf2ebec2c505a70a8537924da6",
+    "integrity": "sha512-kvL8xYl5QMTh+LwohVN72ciOxC0OEV79IPdJSTwEXok9y9QHebXGdFgrED4sWfiax/ODx++CAMk3hMy4XPJPOw==",
+    "entries": 178,
+    "addedFiles": 178,
+    "existingFilesWritten": 0,
+    "existingFilesRemoved": 0,
+    "lifecycleScriptsRun": false,
+    "hiddenPackageLockSha256": "a5f0ae706cbb6a26cc196cc1ece0f8254c054fa7c28c9a05be1513afc2ec261c",
+    "receipt": {
+      "path": ".tmp/native-bootstrap/main-integration/hyphen-addition-receipt.json",
+      "sha256": "b8cd4617304d09aebae0a01bab924d4fb4fa5123a4f4a7521491cd6aca046fde"
+    },
+    "existingPackageAuditMethod": "Writes confined to the newly created, previously absent node_modules/hyphen directory; no claim of independently hashing all existing installed packages. Existing hidden package-lock unchanged."
+  },
+  "preservation": {
+    "docsMobileChangedByIntegration": false,
+    "frozen": [
+      {
+        "path": ".github/workflows/mobile-ios-simulator.yml",
+        "sha256": "d63e27c5fd3a38ef69789aae75a9c78c204085f940568651f6ec77cd72014549",
+        "beforeSha256": "d2b69cee36888d78a16bda178979b81ad2fcb1063b43091d44401c247330230f",
+        "unchanged": false,
+        "ownership": "Root/canonical agent owns separate CI changes; this integration neither edited nor staged this file."
+      },
+      {
+        "path": "scripts/mobile/ios-simulator-build.mjs",
+        "sha256": "9085429c12da0a7ff864ae05d012d0b8c4fe71328c53224da3c510642bde6237",
+        "beforeSha256": "9085429c12da0a7ff864ae05d012d0b8c4fe71328c53224da3c510642bde6237",
+        "unchanged": true,
+        "ownership": "Root/canonical agent owns separate CI changes; this integration neither edited nor staged this file."
+      },
+      {
+        "path": "scripts/mobile/ios-simulator-build.test.mjs",
+        "sha256": "71eb36fb2f86775d9f536d4ae2f3d1461258044bc64faf9356e8a2b096496450",
+        "beforeSha256": "71eb36fb2f86775d9f536d4ae2f3d1461258044bc64faf9356e8a2b096496450",
+        "unchanged": true,
+        "ownership": "Root/canonical agent owns separate CI changes; this integration neither edited nor staged this file."
+      },
+      {
+        "path": "dist-native/artifact.json",
+        "sha256": "906baf9944ea11f2c15dae1891e8a24c08feca29120691581d72f63bb24e0d54",
+        "beforeSha256": "906baf9944ea11f2c15dae1891e8a24c08feca29120691581d72f63bb24e0d54",
+        "unchanged": true,
+        "ownership": "Historical artifact; no rebuild permitted or performed by this task."
+      },
+      {
+        "path": "dist-pwa/artifact.json",
+        "sha256": "6dc25b0b7fcc472efb69b19cbcf274ed79204134f92cc13b742ce2a555699f37",
+        "beforeSha256": "6dc25b0b7fcc472efb69b19cbcf274ed79204134f92cc13b742ce2a555699f37",
+        "unchanged": true,
+        "ownership": "Historical artifact; no rebuild permitted or performed by this task."
+      }
+    ],
+    "originalSqlReport": {
+      "path": "reports/bookshelf-owner-evidence/dossier-local-sql.json",
+      "sha256": "4c1217792d26c864e333cdcda61ce5da4787322bd80d2b97630d3394ac2756f6"
+    },
+    "trackedWorkingTreeDiff": "",
+    "indexDiff": "",
+    "untrackedFiles": [
+      ".github/workflows/mobile-ios-simulator.yml",
+      "docs/mobile/evidence/S04/ios-ci-independent-review.delta.json",
+      "docs/mobile/evidence/S04/ios-ci-independent-review.json",
+      "docs/mobile/evidence/S04/ios-simulator-local-validation-upload-gate.json",
+      "docs/mobile/evidence/S04/ios-source-only-review.json",
+      "scripts/mobile/ios-simulator-build.mjs",
+      "scripts/mobile/ios-simulator-build.test.mjs"
+    ]
+  },
+  "limitations": [
+    "No dist-native/dist-pwa rebuild, browser suite, simulator build or APK rebuild was run by this local integration task. Existing bundles remain historical and do not represent this source HEAD.",
+    "Current image-delivery map adds optimized aliases/renditions outside the old native asset descriptor. Unchanged historical source pins do not prove new canonical image request coverage; follow-up controlled-package audit/build is required.",
+    "969 tests are the selected affected suites, not a full repository regression.",
+    "Separate iOS CI files/evidence are root-owned and may change concurrently after this report.",
+    "No new policy approval, owner attestation, legal assertion or release readiness is created."
+  ],
+  "artifacts": [
+    {
+      "path": ".tmp/native-bootstrap/main-integration/cherry-pick-180.log",
+      "sha256": "ccbbdcfe660a15bd98d60a6786ce7f7d3a7bd61b8fdeb070aba21ae8ca259339"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/cherry-pick-183-completed.log",
+      "sha256": "d9425492b7c8180d63afc68d56d5f282b9cf82381cd26807fac8ccd7a7d90a8a"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/cherry-pick-183.log",
+      "sha256": "7c0586dce0999eb1ccb636c80399a6276553fecbcb587d2cf846373a6180b3e1"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/cherry-pick-184.log",
+      "sha256": "667a88dc3a81a6f48f15be5b638ad5bb543215336c0ea57ae0fe453bf3b7b16a"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/dossier-rehearsal-result.json",
+      "sha256": "6aab9b8380644d022bac86516a49bd3cc98edde135d4b498e85d5f69d1bf8131"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/dossier-rehearsal.log",
+      "sha256": "b9e437e208f6de568cb826f72ea38afbb0e8bc9ae4f4478c9e2f635243e8e4b2"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/final-focused-tests.log",
+      "sha256": "03760625595b58523081996d782c1e44901eeabd366fb77486422add0e332a75"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/frozen-before.json",
+      "sha256": "b4c2dad8255ebbb9cc42c3cb2ef8ab2a3a446e5cc587dc9cf818139ad1b9b6b1"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/governance-first-runtime.log",
+      "sha256": "50baf6bf416a985e1bd340b5985218166391d8809dec46e1be17c2294b67ca99"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/governance-first.log",
+      "sha256": "e18dcec22f378721219a9d03941ca4e2cc995c2336125120da36d155447eac81"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/governance-fixed.log",
+      "sha256": "f6d2572bc8e0f7ba04781ef1043a2296656285f6c94c5f079126f9690a6e0fe0"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/hyphen-addition-receipt.json",
+      "sha256": "b8cd4617304d09aebae0a01bab924d4fb4fa5123a4f4a7521491cd6aca046fde"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/hyphen-install-dry-run.json",
+      "sha256": "996685ce0d9a2f1a3855dc67744a1a1e20783f65b78349769a25285135be6bc4"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/hyphen-install-dry-run.stderr",
+      "sha256": "9413d6ecfd27d9406bdf9559b635053a7a2457bf891985fc76785ae03da85fc2"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/hyphen-pack.json",
+      "sha256": "39a65b6b384c1e478a66edbf88c87e539cd34fc7c299b309541e0957b7d5091c"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/hyphen-pack.stderr",
+      "sha256": "26329a1f3e2486da3c648b7d3e6ad9543cb0f231a9a1fc95e792d1f1978070a3"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/platform-boundaries.json",
+      "sha256": "ba68c09f3000c8c28f9468f2a3a4015dfca0bbc2e1277e957309ba47e417f640"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/typography.log",
+      "sha256": "23e0a350b2246a4ccf2f88a6338969938f08a66294adfed739ae3f0019c22e0e"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/upstream-affected-tests.log",
+      "sha256": "84ee582fd8380e761def44b65913af824c884e55dda4f89145c7a5303e1b3105"
+    },
+    {
+      "path": ".tmp/native-bootstrap/main-integration/v12-affected-tests.log",
+      "sha256": "4c656a27773a3fe2e7f040eecba3e36f4793d7ff4316acec81ef4e09241bbac9"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { Preferences } from "@capacitor/preferences";
 import { Browser } from "@capacitor/browser";
 import { AppLauncher } from "@capacitor/app-launcher";
 import { createHostPlatformServices } from "../../../host/HostPlatformServices";
+import { createNativeNavigationBridge } from "../../../host/NativeNavigationBridge";
 import {
   assertNativeHostBindings, initializeHostPlatform,
   type InitializedHostPlatform, type NativeHostAdapterOptions,
@@ -34,5 +35,11 @@ export async function createAndroidPlatformAdapter(options: AndroidPlatformAdapt
     openMail: input => bindings.appLauncher.openUrl(input),
     allowExternalLink: options.allowExternalLink, onFailure: options.onFailure,
   });
-  return Object.freeze({ services, initialization });
+  const navigation = createNativeNavigationBridge({
+    getLaunchUrl: () => bindings.app.getLaunchUrl(),
+    subscribeUrl: listener => bindings.app.addListener("appUrlOpen", listener),
+    subscribeBack: listener => bindings.app.addListener("backButton", listener),
+    timeoutMs: options.timeoutMs, onFailure: options.onNavigationFailure,
+  });
+  return Object.freeze({ services: Object.freeze({ ...services, navigation }), initialization });
 }

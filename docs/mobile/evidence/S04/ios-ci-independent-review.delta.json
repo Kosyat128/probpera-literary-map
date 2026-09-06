@@ -1,0 +1,42 @@
+{
+  "scope": "Independent narrow review of diagnostic allowlist and upload outcome dependency; previous8checks retained separately",
+  "checkedAt": "2026-09-06T00:42:35.184Z",
+  "pass": true,
+  "sourceFiles": [
+    {
+      "path": ".github/workflows/mobile-ios-simulator.yml",
+      "sha256": "d2b69cee36888d78a16bda178979b81ad2fcb1063b43091d44401c247330230f"
+    },
+    {
+      "path": "scripts/mobile/ios-simulator-build.mjs",
+      "sha256": "9085429c12da0a7ff864ae05d012d0b8c4fe71328c53224da3c510642bde6237"
+    },
+    {
+      "path": "scripts/mobile/ios-simulator-build.test.mjs",
+      "sha256": "71eb36fb2f86775d9f536d4ae2f3d1461258044bc64faf9356e8a2b096496450"
+    }
+  ],
+  "sourceUnchangedDuringChecks": true,
+  "results": [
+    {
+      "name": "helper and upload permit the same exact29filenames without globbing",
+      "pass": true
+    },
+    {
+      "name": "unexpected evidence file is rejected",
+      "pass": true
+    },
+    {
+      "name": "allowed-name junction is rejected and failed collection prevents upload",
+      "pass": true
+    },
+    {
+      "name": "valid diagnostics from a failed native build still collect successfully",
+      "pass": true
+    }
+  ],
+  "pinnedUploaderBehaviorSource": "https://raw.githubusercontent.com/actions/upload-artifact/043fb46d1a93c77aae656e7c1c64a875d1fc6a0a/src/shared/search.ts",
+  "nativeBuildExecuted": false,
+  "remoteWorkflowExecuted": false,
+  "releaseReady": false
+}

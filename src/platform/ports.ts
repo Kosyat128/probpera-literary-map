@@ -17,10 +17,22 @@ export interface PreferenceStore {
 }
 export type OpenLinkResult = "opened" | "requested" | "blocked" | "unavailable";
 
+export interface PlatformNavigationListenerHandle { remove(): void | Promise<void>; }
+export interface PlatformBackEvent { readonly canGoBack: boolean; }
+/** Untrusted input only; the canonical application validates/resolves each URL before applying it. */
+export interface PlatformNavigation {
+  subscribeUrl(listener: (url: string) => void): PlatformNavigationListenerHandle | Promise<PlatformNavigationListenerHandle>;
+  getLaunchUrl(): Promise<Readonly<{ url: string }> | undefined>;
+  /** Android only. Receiving Back never implies permission to traverse history or exit. */
+  subscribeBack?(listener: (event: PlatformBackEvent) => void): PlatformNavigationListenerHandle | Promise<PlatformNavigationListenerHandle>;
+}
+
 export interface PlatformServices {
   readonly kind: PlatformKind;
   readonly channel: DistributionChannel;
   readonly preferences: PreferenceStore;
+  /** Optional native input capability; absent in ordinary Web services. No constructor subscriptions. */
+  readonly navigation?: PlatformNavigation;
   /** Snapshot identity must be stable until one of its values changes. */
   getSnapshot(): PlatformSnapshot;
   /** Listener cleanup must be idempotent; subscriptions never own scene state. */

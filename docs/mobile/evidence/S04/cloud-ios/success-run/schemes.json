@@ -1,0 +1,21 @@
+{
+  "project" : {
+    "configurations" : [
+      "Debug",
+      "Release"
+    ],
+    "name" : "App",
+    "schemes" : [
+      "App",
+      "CapacitorApp",
+      "CapacitorAppLauncher",
+      "CapacitorBrowser",
+      "CapacitorNetwork",
+      "CapacitorPreferences",
+      "CapApp-SPM"
+    ],
+    "targets" : [
+      "App"
+    ]
+  }
+}

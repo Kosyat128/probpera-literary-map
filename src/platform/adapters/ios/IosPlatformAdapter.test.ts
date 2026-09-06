@@ -5,7 +5,7 @@ import { createIosPlatformAdapter } from "./IosPlatformAdapter";
 function native() {
   return {
     core: { getPlatform: vi.fn(() => "ios"), isNativePlatform: vi.fn(() => true), isPluginAvailable: vi.fn((_name: string) => true) },
-    app: { getState: vi.fn(async () => ({ isActive: true })), getAppLanguage: vi.fn(async () => ({ value: "en-GB" })), addListener: vi.fn(async () => ({ remove: vi.fn(async () => undefined) })) },
+    app: { getState: vi.fn(async () => ({ isActive: true })), getAppLanguage: vi.fn(async () => ({ value: "en-GB" })), getLaunchUrl: vi.fn(async () => undefined), addListener: vi.fn(async () => ({ remove: vi.fn(async () => undefined) })) },
     network: { getStatus: vi.fn(async () => ({ connected: true })), addListener: vi.fn(async () => ({ remove: vi.fn(async () => undefined) })) },
     preferences: { get: vi.fn(async (_options: { key: string }) => ({ value: null as string | null })), set: vi.fn(async () => undefined), remove: vi.fn(async () => undefined) },
     browser: { open: vi.fn(async (): Promise<void> => undefined) }, appLauncher: { openUrl: vi.fn(async () => ({ completed: true })) },

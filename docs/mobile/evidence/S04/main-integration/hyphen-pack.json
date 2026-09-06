@@ -1,0 +1,906 @@
+[
+  {
+    "id": "hyphen@1.14.1",
+    "name": "hyphen",
+    "version": "1.14.1",
+    "size": 1580807,
+    "unpackedSize": 9217167,
+    "shasum": "c9fbd5e1af750f00d5034aa37f6ec41f95ffed93",
+    "integrity": "sha512-kvL8xYl5QMTh+LwohVN72ciOxC0OEV79IPdJSTwEXok9y9QHebXGdFgrED4sWfiax/ODx++CAMk3hMy4XPJPOw==",
+    "filename": "hyphen-1.14.1.tgz",
+    "files": [
+      {
+        "path": "CHANGELOG",
+        "size": 7514,
+        "mode": 420
+      },
+      {
+        "path": "LICENSE",
+        "size": 776,
+        "mode": 420
+      },
+      {
+        "path": "README.md",
+        "size": 19871,
+        "mode": 420
+      },
+      {
+        "path": "af/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "as/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "be/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "bg/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "bn/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "bower.json",
+        "size": 450,
+        "mode": 420
+      },
+      {
+        "path": "ca/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "cop/index.js",
+        "size": 86,
+        "mode": 420
+      },
+      {
+        "path": "cs/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "cu/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "cy/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "da/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "de-1901/index.js",
+        "size": 90,
+        "mode": 420
+      },
+      {
+        "path": "de-1996/index.js",
+        "size": 90,
+        "mode": 420
+      },
+      {
+        "path": "de-ch-1901/index.js",
+        "size": 93,
+        "mode": 420
+      },
+      {
+        "path": "de/index.js",
+        "size": 49,
+        "mode": 420
+      },
+      {
+        "path": "el-monoton/index.js",
+        "size": 93,
+        "mode": 420
+      },
+      {
+        "path": "el-polyton/index.js",
+        "size": 93,
+        "mode": 420
+      },
+      {
+        "path": "el/index.js",
+        "size": 52,
+        "mode": 420
+      },
+      {
+        "path": "en-gb/index.js",
+        "size": 88,
+        "mode": 420
+      },
+      {
+        "path": "en-us/index.js",
+        "size": 88,
+        "mode": 420
+      },
+      {
+        "path": "en/index.js",
+        "size": 47,
+        "mode": 420
+      },
+      {
+        "path": "es/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "et/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "ethi/index.js",
+        "size": 50,
+        "mode": 420
+      },
+      {
+        "path": "eu/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "export-contract.js",
+        "size": 379,
+        "mode": 420
+      },
+      {
+        "path": "fi-x-school/index.js",
+        "size": 94,
+        "mode": 420
+      },
+      {
+        "path": "fi/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "fr/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "fur/index.js",
+        "size": 86,
+        "mode": 420
+      },
+      {
+        "path": "ga/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "gl/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "grc/index.js",
+        "size": 86,
+        "mode": 420
+      },
+      {
+        "path": "gu/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "hi/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "hr/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "hsb/index.js",
+        "size": 86,
+        "mode": 420
+      },
+      {
+        "path": "hu/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "hy/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "hyphen.js",
+        "size": 12867,
+        "mode": 420
+      },
+      {
+        "path": "ia/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "id/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "index.js",
+        "size": 41,
+        "mode": 420
+      },
+      {
+        "path": "is/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "it/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "ka/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "kmr/index.js",
+        "size": 86,
+        "mode": 420
+      },
+      {
+        "path": "kn/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "la-x-classic/index.js",
+        "size": 95,
+        "mode": 420
+      },
+      {
+        "path": "la-x-liturgic/index.js",
+        "size": 96,
+        "mode": 420
+      },
+      {
+        "path": "la/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "lt/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "lv/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "mk/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "ml/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "mn-cyrl-x-lmc/index.js",
+        "size": 96,
+        "mode": 420
+      },
+      {
+        "path": "mn-cyrl/index.js",
+        "size": 90,
+        "mode": 420
+      },
+      {
+        "path": "mn/index.js",
+        "size": 49,
+        "mode": 420
+      },
+      {
+        "path": "mr/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "mul-ethi/index.js",
+        "size": 91,
+        "mode": 420
+      },
+      {
+        "path": "nb/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "nl/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "nn/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "no/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "oc/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "or/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "pa/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "package.json",
+        "size": 531,
+        "mode": 420
+      },
+      {
+        "path": "patterns/af.js",
+        "size": 271126,
+        "mode": 420
+      },
+      {
+        "path": "patterns/as.js",
+        "size": 1486,
+        "mode": 420
+      },
+      {
+        "path": "patterns/be.js",
+        "size": 61145,
+        "mode": 420
+      },
+      {
+        "path": "patterns/bg.js",
+        "size": 129534,
+        "mode": 420
+      },
+      {
+        "path": "patterns/bn.js",
+        "size": 1486,
+        "mode": 420
+      },
+      {
+        "path": "patterns/ca.js",
+        "size": 14494,
+        "mode": 420
+      },
+      {
+        "path": "patterns/cop.js",
+        "size": 12771,
+        "mode": 420
+      },
+      {
+        "path": "patterns/cs.js",
+        "size": 62506,
+        "mode": 420
+      },
+      {
+        "path": "patterns/cu.js",
+        "size": 276656,
+        "mode": 420
+      },
+      {
+        "path": "patterns/cy.js",
+        "size": 127240,
+        "mode": 420
+      },
+      {
+        "path": "patterns/da.js",
+        "size": 18495,
+        "mode": 420
+      },
+      {
+        "path": "patterns/de-1901.js",
+        "size": 747694,
+        "mode": 420
+      },
+      {
+        "path": "patterns/de-1996.js",
+        "size": 746424,
+        "mode": 420
+      },
+      {
+        "path": "patterns/de-ch-1901.js",
+        "size": 735615,
+        "mode": 420
+      },
+      {
+        "path": "patterns/el-monoton.js",
+        "size": 9125,
+        "mode": 420
+      },
+      {
+        "path": "patterns/el-polyton.js",
+        "size": 29325,
+        "mode": 420
+      },
+      {
+        "path": "patterns/en-gb.js",
+        "size": 164174,
+        "mode": 420
+      },
+      {
+        "path": "patterns/en-us.js",
+        "size": 101230,
+        "mode": 420
+      },
+      {
+        "path": "patterns/es.js",
+        "size": 133524,
+        "mode": 420
+      },
+      {
+        "path": "patterns/et.js",
+        "size": 70515,
+        "mode": 420
+      },
+      {
+        "path": "patterns/eu.js",
+        "size": 2374,
+        "mode": 420
+      },
+      {
+        "path": "patterns/fi-x-school.js",
+        "size": 3807,
+        "mode": 420
+      },
+      {
+        "path": "patterns/fi.js",
+        "size": 5079,
+        "mode": 420
+      },
+      {
+        "path": "patterns/fr.js",
+        "size": 36991,
+        "mode": 420
+      },
+      {
+        "path": "patterns/fur.js",
+        "size": 8179,
+        "mode": 420
+      },
+      {
+        "path": "patterns/ga.js",
+        "size": 122967,
+        "mode": 420
+      },
+      {
+        "path": "patterns/gl.js",
+        "size": 72950,
+        "mode": 420
+      },
+      {
+        "path": "patterns/grc.js",
+        "size": 121815,
+        "mode": 420
+      },
+      {
+        "path": "patterns/gu.js",
+        "size": 1410,
+        "mode": 420
+      },
+      {
+        "path": "patterns/hi.js",
+        "size": 1462,
+        "mode": 420
+      },
+      {
+        "path": "patterns/hr.js",
+        "size": 17175,
+        "mode": 420
+      },
+      {
+        "path": "patterns/hsb.js",
+        "size": 19671,
+        "mode": 420
+      },
+      {
+        "path": "patterns/hu.js",
+        "size": 1228408,
+        "mode": 420
+      },
+      {
+        "path": "patterns/hy.js",
+        "size": 13513,
+        "mode": 420
+      },
+      {
+        "path": "patterns/ia.js",
+        "size": 9936,
+        "mode": 420
+      },
+      {
+        "path": "patterns/id.js",
+        "size": 4143,
+        "mode": 420
+      },
+      {
+        "path": "patterns/is.js",
+        "size": 74238,
+        "mode": 420
+      },
+      {
+        "path": "patterns/it.js",
+        "size": 7433,
+        "mode": 420
+      },
+      {
+        "path": "patterns/ka.js",
+        "size": 38348,
+        "mode": 420
+      },
+      {
+        "path": "patterns/kmr.js",
+        "size": 5259,
+        "mode": 420
+      },
+      {
+        "path": "patterns/kn.js",
+        "size": 1496,
+        "mode": 420
+      },
+      {
+        "path": "patterns/la-x-classic.js",
+        "size": 523487,
+        "mode": 420
+      },
+      {
+        "path": "patterns/la-x-liturgic.js",
+        "size": 53270,
+        "mode": 420
+      },
+      {
+        "path": "patterns/la.js",
+        "size": 5535,
+        "mode": 420
+      },
+      {
+        "path": "patterns/lt.js",
+        "size": 24153,
+        "mode": 420
+      },
+      {
+        "path": "patterns/lv.js",
+        "size": 176554,
+        "mode": 420
+      },
+      {
+        "path": "patterns/mk.js",
+        "size": 11335,
+        "mode": 420
+      },
+      {
+        "path": "patterns/ml.js",
+        "size": 1736,
+        "mode": 420
+      },
+      {
+        "path": "patterns/mn-cyrl-x-lmc.js",
+        "size": 8229,
+        "mode": 420
+      },
+      {
+        "path": "patterns/mn-cyrl.js",
+        "size": 20701,
+        "mode": 420
+      },
+      {
+        "path": "patterns/mr.js",
+        "size": 1462,
+        "mode": 420
+      },
+      {
+        "path": "patterns/mul-ethi.js",
+        "size": 6040,
+        "mode": 420
+      },
+      {
+        "path": "patterns/nb.js",
+        "size": 571064,
+        "mode": 420
+      },
+      {
+        "path": "patterns/nl.js",
+        "size": 232680,
+        "mode": 420
+      },
+      {
+        "path": "patterns/nn.js",
+        "size": 571064,
+        "mode": 420
+      },
+      {
+        "path": "patterns/no.js",
+        "size": 571064,
+        "mode": 420
+      },
+      {
+        "path": "patterns/oc.js",
+        "size": 5300,
+        "mode": 420
+      },
+      {
+        "path": "patterns/or.js",
+        "size": 1394,
+        "mode": 420
+      },
+      {
+        "path": "patterns/pa.js",
+        "size": 1334,
+        "mode": 420
+      },
+      {
+        "path": "patterns/pi.js",
+        "size": 1562,
+        "mode": 420
+      },
+      {
+        "path": "patterns/pl.js",
+        "size": 95633,
+        "mode": 420
+      },
+      {
+        "path": "patterns/pms.js",
+        "size": 7118,
+        "mode": 420
+      },
+      {
+        "path": "patterns/pt.js",
+        "size": 6612,
+        "mode": 420
+      },
+      {
+        "path": "patterns/rm.js",
+        "size": 9563,
+        "mode": 420
+      },
+      {
+        "path": "patterns/ro.js",
+        "size": 12142,
+        "mode": 420
+      },
+      {
+        "path": "patterns/ru.js",
+        "size": 136248,
+        "mode": 420
+      },
+      {
+        "path": "patterns/sa.js",
+        "size": 14448,
+        "mode": 420
+      },
+      {
+        "path": "patterns/sh-cyrl.js",
+        "size": 59121,
+        "mode": 420
+      },
+      {
+        "path": "patterns/sh-latn.js",
+        "size": 56181,
+        "mode": 420
+      },
+      {
+        "path": "patterns/sk.js",
+        "size": 53538,
+        "mode": 420
+      },
+      {
+        "path": "patterns/sl.js",
+        "size": 18656,
+        "mode": 420
+      },
+      {
+        "path": "patterns/sq.js",
+        "size": 5387,
+        "mode": 420
+      },
+      {
+        "path": "patterns/sr-cyrl.js",
+        "size": 55534,
+        "mode": 420
+      },
+      {
+        "path": "patterns/sv.js",
+        "size": 88901,
+        "mode": 420
+      },
+      {
+        "path": "patterns/ta.js",
+        "size": 1566,
+        "mode": 420
+      },
+      {
+        "path": "patterns/te.js",
+        "size": 1486,
+        "mode": 420
+      },
+      {
+        "path": "patterns/th.js",
+        "size": 98983,
+        "mode": 420
+      },
+      {
+        "path": "patterns/tk.js",
+        "size": 28609,
+        "mode": 420
+      },
+      {
+        "path": "patterns/tr.js",
+        "size": 9045,
+        "mode": 420
+      },
+      {
+        "path": "patterns/uk.js",
+        "size": 100030,
+        "mode": 420
+      },
+      {
+        "path": "patterns/zh-latn-pinyin.js",
+        "size": 9343,
+        "mode": 420
+      },
+      {
+        "path": "pi/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "pl/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "pms/index.js",
+        "size": 86,
+        "mode": 420
+      },
+      {
+        "path": "pt/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "rm/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "ro/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "ru/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "sa/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "sh-cyrl/index.js",
+        "size": 90,
+        "mode": 420
+      },
+      {
+        "path": "sh-latn/index.js",
+        "size": 90,
+        "mode": 420
+      },
+      {
+        "path": "sh/index.js",
+        "size": 49,
+        "mode": 420
+      },
+      {
+        "path": "sk/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "sl/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "sq/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "sr-cyrl/index.js",
+        "size": 90,
+        "mode": 420
+      },
+      {
+        "path": "sr/index.js",
+        "size": 49,
+        "mode": 420
+      },
+      {
+        "path": "sv/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "ta/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "te/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "th/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "tk/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "tr/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "uk/index.js",
+        "size": 85,
+        "mode": 420
+      },
+      {
+        "path": "zh-latn-pinyin/index.js",
+        "size": 97,
+        "mode": 420
+      },
+      {
+        "path": "zh/index.js",
+        "size": 56,
+        "mode": 420
+      }
+    ],
+    "entryCount": 178,
+    "bundled": []
+  }
+]

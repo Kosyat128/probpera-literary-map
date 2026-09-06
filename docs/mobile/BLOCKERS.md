@@ -9,10 +9,16 @@ Internal work:
 - Android tooling is now installed and verified inside the workspace, under the
   user's explicit SDK license authorization. A real dev APK was compiled and
   independently verified. Installed-device behavior remains unverified.
-- The user has no macOS computer. Prepare cloud macOS/Xcode validation; do not
-  assign a Mac purchase or programming to the owner. The iOS web bundle and
-  synchronized native project are verified, but Xcode/Swift compilation and
-  simulator/device behavior have not been observed.
+- The user has no macOS computer. Actual cloud Xcode/Swift compilation succeeded
+  on explicitly authorized historical source273f400d, and independent binary
+  verification passed. Simulator launch, installed behavior and physical devices
+  remain unverified; no Mac purchase or programming is assigned to the owner.
+- Current main5d3f6fb is integrated through72a62b31 with969 affected tests passing.
+  Historical native/PWA binaries predate it. New image-delivery coverage and fresh
+  artifact validation are internal work, along with actual native URL/Back wiring.
+- PWA locked-shell preparation passed4 actual Chrome checks; OS installation
+  remains unverified. Full standalone tests need a disposable OS environment and
+  fresh QA candidate with its signer alive; do not overwrite historical authority.
 
 External evidence/access limitations (do not block independent implementation):
 

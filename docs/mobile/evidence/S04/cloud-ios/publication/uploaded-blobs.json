@@ -1,0 +1,450 @@
+{
+  "repository": "Kosyat128/probpera-literary-map",
+  "branch": "codex/literary-planet-v12-ios-ci",
+  "blobs": [
+    {
+      "path": ".github/workflows/mobile-ios-simulator.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8089fb4ddd37ec3c0404fae179593b48bfa7993"
+    },
+    {
+      "path": "apps/mobile/ios/.gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a67f7a292f86cb50477b4ec20f979d65ba0ab6f"
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6b018f2916bc131016049430336d1aca7880fe3a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "18d981003d68d0546c4804ac2ff47dd97c6e7921"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/AppDelegate.swift",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fec95acae17e22de69075aa1be2f76c3d5030e5a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "db77674abbbf529f24107d9f5657d3aaaf5e8972"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b7d382dcecca887eac19d7f1c4c8dc57abe00e4"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Contents.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da4a164c918651cdd1e11dca5cc62c333f097601"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/Contents.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d7d96a67c0d764a2ddfc9545441c627e6d5fa1fc"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d1526cd245d9a914172e1b41b390d7606f3be53"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d1526cd245d9a914172e1b41b390d7606f3be53"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d1526cd245d9a914172e1b41b390d7606f3be53"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Base.lproj/LaunchScreen.storyboard",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7ae5d7802c067edcd71596688fa7b059de8a262"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Base.lproj/Main.storyboard",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b44df7be8f82acfcd747fd8d77fcd7a87b788f6f"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Info.plist",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5be637a9c74cddd928bc3c894e3946a6831cb387"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PrivacyInfo.xcprivacy",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0db0062bb5dae60bb0ad1e3502bc952bd649412"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/SceneDelegate.swift",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f352e1e9592996633ba4ff94d4e879554638862a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/en.lproj/InfoPlist.strings",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "220047f131bbe6d6e30837f78c8d2d00e9a10759"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/ru.lproj/InfoPlist.strings",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6391ddd002ca6ced1cc8273139a2df04c12e868e"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/.gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3b29812086f28a2b21884e57ead495ffd9434178"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/Package.swift",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc87104fa3f5955ec6c05d7a441aa1be04453329"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "945afec8c778e227bfd9892d58cc9b43a3b45ce3"
+    },
+    {
+      "path": "apps/mobile/ios/debug.xcconfig",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "53ce18dead86a04b15c04ccc23da732642cfcc6a"
+    },
+    {
+      "path": "capacitor.config.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "692bcddb225d1c2a5ac6cff9357c411ee80f39f8"
+    },
+    {
+      "path": "native.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "00b8721778ba5ac7fc427b8146f7f5308c60f04c"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8daf64da510fd176243e8911db104fadcd8d5376"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3aa93b26f28a8be8a929be3dc1ee3d3992a653dd"
+    },
+    {
+      "path": "scripts/mobile/build-native.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "948ad00b8407fd9e042537ecfbdd5f1bec7ebc79"
+    },
+    {
+      "path": "scripts/mobile/ios-simulator-build.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a76b4d94888221cd1fe3a1ea1248da0fe5a72034"
+    },
+    {
+      "path": "scripts/mobile/native-base-assets.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "19231b551423623e56bb07de37a7207775554fe0"
+    },
+    {
+      "path": "scripts/mobile/pwa-artifact.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d21781f89fc01ffd6cd3fa72c5b9ec0bfbe3790"
+    },
+    {
+      "path": "scripts/mobile/verify-native-artifact.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3384dcb5fb73338c54066aec2d4920b8b99f9a62"
+    },
+    {
+      "path": "src/App.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d578daf13a568949ee1c9b3fa389e55ddd39264"
+    },
+    {
+      "path": "src/books/bookDossierPublicClient.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "026ee3b802047c3a0b40055c467a310841284e90"
+    },
+    {
+      "path": "src/books/usePublishedBookDossier.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9d26cb25270a10561daff83a67a2b279f7a6b747"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba615872a8c8561f0dbc23c6696fb5d2a24a34ba"
+    },
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2be45e083a308e7bede12a4ecf82a8ade17cb3f6"
+    },
+    {
+      "path": "src/components/ArticleLibrarySection.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b4141e94d2835ba6ef2520857a5e13301de19d5e"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f5d76f00f5f9b9da8d6c9060bc4cb39734734f3"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09a7c54cb2321715f6053c05053bc8df65cb5f30"
+    },
+    {
+      "path": "src/components/BootstrapErrorBoundary.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04d51a4e01858ace52284c597bb6ed61d6e8cc95"
+    },
+    {
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a3ab72f3d6a24986d4efd3cb0f95542aba07a21"
+    },
+    {
+      "path": "src/components/RecentHistoryPanel.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e05cbb916ae8854e1af0888142c1734686800251"
+    },
+    {
+      "path": "src/components/SectionsDirectory.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d6970f171f10d2dd1354a1de2226eb910787d4e"
+    },
+    {
+      "path": "src/components/WriterPanel.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c7d74417eb3ce66118df85d3491d0d4bf3b5a19"
+    },
+    {
+      "path": "src/components/recent-history.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "17ffc5d847b136d71e72211f6e345987ee94976f"
+    },
+    {
+      "path": "src/components/writerPanelBooks.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c4954bdefc1b9f11285c4333cba3e0e1ac34383"
+    },
+    {
+      "path": "src/components/writerPanelPresentation.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6fc58220c58ab797d846af5b39583af96681a9b"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "86924f080ed44d6daa0ebbcf0b074a8cf96dec6c"
+    },
+    {
+      "path": "src/host/HostRuntimeStatus.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "325244460c8c4dbb8dfada48979516ef755819c4"
+    },
+    {
+      "path": "src/host/host.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a8091d8a3e54168d9a7cb215fc850f13f968509"
+    },
+    {
+      "path": "src/host/initializeHostPlatform.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ab678ac9f8baeb2b26eba198ab9fc6d99312ecb"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f584f9233d6ff8f12f4c2ee1ce89016a6c4b35eb"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d3e301d53bd37407251cba0f67a49c1ff4cbf5eb"
+    },
+    {
+      "path": "src/lib/loadSupabaseClient.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3befd109dc213715166a4e3bda9dbeeb38967b74"
+    },
+    {
+      "path": "src/lib/supabase.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "724897e22e094ba797c5e688255fe019e01f3638"
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc4ec07716e757d2945e6a55f599ebb6d4ebeef8"
+    },
+    {
+      "path": "src/planet/RecentHistory.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a214f589da1ab91b5f19db84bafbb0e4d2551983"
+    },
+    {
+      "path": "src/planet/books.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0e89f87c6792dcbcc95a5b53460d0928f7152a22"
+    },
+    {
+      "path": "src/planet/brand.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a7dc416f22c6e41b0335337b731b1f9f79059a60"
+    },
+    {
+      "path": "src/planet/catalog.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0e01766fc4220562155c1c93b12455aaaf409ef"
+    },
+    {
+      "path": "src/planet/localization.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4af8a79219505486cf432b50edc0e4a512248ba2"
+    },
+    {
+      "path": "src/planet/selection.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b7c6ad03036698b3d83a43ed7d1d6806c45826e4"
+    },
+    {
+      "path": "src/planet/types.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71d6d8bf08cff7b4ff6680dfc80231267c2dd71f"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad24ddaebb1c1fb55527f0cb5752a446e0bd8bee"
+    },
+    {
+      "path": "src/platform/adapters/ios/IosPlatformAdapter.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd6fcd1ebc25c09b50280c792dd78facfa757e21"
+    },
+    {
+      "path": "src/platform/adapters/ios/entry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "baaf9d06fef90a88d11223b7c87171f508d5b0ff"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "363bf073b4e32f21ea20d6915473111f1cc5c5f4"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d296cda37dbf88d5153a3c1fa2ad569bb5be0b8c"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c18d37bef33f0a9871ca58f76f305b56dd9b2f2"
+    },
+    {
+      "path": "src/utils/articleRoutes.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "94b06d9043d4bbde964a569ef7339a91df50e036"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c55c0838c5bd431937ffe3715bbfa1252ac213e4"
+    },
+    {
+      "path": "vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aaedd2867199ce138fef662e214a5668e7391881"
+    },
+    {
+      "path": "vite.native.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b1c747511ffd323a25a4925c5fafe956a6cabe2"
+    }
+  ]
+}

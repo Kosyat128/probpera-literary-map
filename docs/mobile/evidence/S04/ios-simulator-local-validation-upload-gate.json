@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "kind": "local-ios-ci-preparation-validation",
+  "yamlUniqueKeysParse": true,
+  "shell": "Git for Windows Bash, syntax only (-n), no commands executed",
+  "checks": [
+    {
+      "name": "Record and verify the actual macOS toolchain",
+      "exitCode": 0,
+      "errorCode": null,
+      "stderr": ""
+    },
+    {
+      "name": "Install locked dependencies without lifecycle scripts",
+      "exitCode": 0,
+      "errorCode": null,
+      "stderr": ""
+    },
+    {
+      "name": "Build and strictly verify the canonical iOS dev web bundle",
+      "exitCode": 0,
+      "errorCode": null,
+      "stderr": ""
+    },
+    {
+      "name": "Sync the existing iOS project and verify the copied payload",
+      "exitCode": 0,
+      "errorCode": null,
+      "stderr": ""
+    },
+    {
+      "name": "Inspect the actual App scheme and resolve packages",
+      "exitCode": 0,
+      "errorCode": null,
+      "stderr": ""
+    },
+    {
+      "name": "Build unsigned for the generic iOS Simulator",
+      "exitCode": 0,
+      "errorCode": null,
+      "stderr": ""
+    },
+    {
+      "name": "Preserve diagnostics and checksums, including failed builds",
+      "exitCode": 0,
+      "errorCode": null,
+      "stderr": ""
+    }
+  ],
+  "nodeSyntax": {
+    "exitCode": 0,
+    "stderr": ""
+  },
+  "unit": {
+    "passed": 62,
+    "command": "node node_modules/vitest/vitest.mjs run scripts/mobile/ios-simulator-build.test.mjs --maxWorkers 1 --configLoader runner",
+    "log": ".tmp/ios-simulator-helper-tests-upload-gate.log"
+  },
+  "initialInvocationFailures": [
+    "Unsupported Vitest --minWorkers, no tests executed",
+    "Sandbox esbuild config access denied, no tests executed; runner config loader avoids this access"
+  ],
+  "priorUnit": {
+    "passed": 61,
+    "report": ".tmp/ios-simulator-local-validation-final.json",
+    "scope": "Before independent-review fix gating artifact upload on successful evidence validation"
+  },
+  "files": [
+    {
+      "path": ".github/workflows/mobile-ios-simulator.yml",
+      "bytes": 8665,
+      "sha256": "d2b69cee36888d78a16bda178979b81ad2fcb1063b43091d44401c247330230f"
+    },
+    {
+      "path": "scripts/mobile/ios-simulator-build.mjs",
+      "bytes": 12716,
+      "sha256": "9085429c12da0a7ff864ae05d012d0b8c4fe71328c53224da3c510642bde6237"
+    },
+    {
+      "path": "scripts/mobile/ios-simulator-build.test.mjs",
+      "bytes": 17911,
+      "sha256": "71eb36fb2f86775d9f536d4ae2f3d1461258044bc64faf9356e8a2b096496450"
+    },
+    {
+      "path": ".tmp/ios-simulator-helper-tests-upload-gate.log",
+      "bytes": 280,
+      "sha256": "06594cf7daa11512ad184c3c02c91f310b6799fbb7ca90b3dd19a7f00d8108f9"
+    }
+  ],
+  "nativeBuildExecuted": false,
+  "remoteActionsExecuted": false,
+  "releaseReady": false,
+  "limitations": [
+    "Fixture audits and Xcode JSON are controlled test inputs, not actual native output.",
+    "No actionlint binary was available; YAML contract tests, Node syntax and all Bash blocks were checked locally.",
+    "Xcode scheme discovery, first SPM resolve, actual Swift compilation and App.app copy semantics remain to be observed on macOS."
+  ],
+  "reviewFix": {
+    "finding": "An always upload could follow an allowed-name symlink despite the collection safety failure",
+    "change": "Exact diagnostics allowlist plus upload condition always() && steps.evidence.outcome == 'success'",
+    "test": "Allowed-name linked directory rejection plus parsed actual workflow condition"
+  }
+}

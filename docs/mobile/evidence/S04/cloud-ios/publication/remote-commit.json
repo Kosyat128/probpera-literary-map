@@ -1,0 +1,14 @@
+{
+  "parents": [
+    "f406a7de9e16e8cf63545cbce6681ed9278761a4"
+  ],
+  "sha": "712bd96949a2908b744555c50106615866986262",
+  "tree": "d09c3111b2aa331bdf034d10a3d4af770b1774dd",
+  "branch": "codex/literary-planet-v12-ios-ci",
+  "repository": "Kosyat128/probpera-literary-map",
+  "expectedFiles": 74,
+  "refAdvanced": true,
+  "force": false,
+  "productionActionsPerformed": false,
+  "historicalNativeProbe": true
+}

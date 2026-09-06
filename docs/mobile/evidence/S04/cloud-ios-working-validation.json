@@ -1,0 +1,650 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-06T01:27:54.491Z",
+  "scope": "Working cloud simulator compilation and canonical-main integration; no stage acceptance.",
+  "localSourceCheckpoint": "72a62b314ecd50ea2c6f128af7134ee4ae3e1944",
+  "canonicalMain": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+  "publicProjection": {
+    "branch": "codex/literary-planet-v12-ios-ci",
+    "parent": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+    "files": 74,
+    "authorization": "docs/mobile/evidence/S04/cloud-ios/publication/authorization.json",
+    "internalHistoryPublished": false,
+    "latestMainCandidate": false,
+    "assetPolicy": "209 selected canonical text files differ only by Git LF versus Windows CRLF; CI-only descriptor pins exact Git bytes. No public assets uploaded; original local descriptor unchanged."
+  },
+  "initialRun": {
+    "id": 34002773310,
+    "commit": "712bd96949a2908b744555c50106615866986262",
+    "conclusion": "failure",
+    "exitCode": 64,
+    "reason": "Unsupported Xcode -clonedSourcePackagesDir option; actual Xcode help requires -clonedSourcePackagesDirPath.",
+    "compilationObserved": false,
+    "artifact": {
+      "bytes": 491020,
+      "sha256": "e84a62446864dd958828f6dc627745554d3e6b951c83ed8922ba700230169291"
+    }
+  },
+  "correctedRun": {
+    "runId": 34003133006,
+    "jobId": 101405451827,
+    "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/34003133006",
+    "status": "completed",
+    "conclusion": "success",
+    "commit": "273f400d8f07a57269f391dfc13d7e802c9071f2",
+    "artifact": {
+      "id": 9980125465,
+      "name": "ios-simulator-preparation-273f400d8f07a57269f391dfc13d7e802c9071f2-1",
+      "size_in_bytes": 61574249,
+      "url": "https://api.github.com/repos/Kosyat128/probpera-literary-map/actions/artifacts/9980125465",
+      "archive_download_url": "https://api.github.com/repos/Kosyat128/probpera-literary-map/actions/artifacts/9980125465/zip",
+      "expired": false,
+      "created_at": "2026-09-06T01:12:05Z",
+      "expires_at": "2026-09-13T01:12:02Z",
+      "updated_at": "2026-09-06T01:12:05Z",
+      "digest": "sha256:696056655385e0fcc31df1e8068439ecc42691a9b24f49723821d10cd3a49416",
+      "workflow_run": {
+        "id": 34003133006,
+        "repository_id": 1307418172,
+        "head_repository_id": 1307418172,
+        "head_branch": "codex/literary-planet-v12-ios-ci",
+        "head_sha": "273f400d8f07a57269f391dfc13d7e802c9071f2"
+      }
+    },
+    "deviceRun": false,
+    "signedRelease": false,
+    "storeUpload": false,
+    "notCurrentMainCandidate": true,
+    "fix": "Only two clonedSourcePackagesDirPath option names",
+    "helperTestsPassed": 62,
+    "buildId": "b9254e7bc6c2842a1880e0166c15b3b1ed329da8e6e2672d56a2dac644b45470",
+    "independentReview": "docs/mobile/evidence/S04/ios-binary-verification.json",
+    "outerSha256": "696056655385e0fcc31df1e8068439ecc42691a9b24f49723821d10cd3a49416",
+    "app": {
+      "bytes": 30224044,
+      "sha256": "5fc2832cd3458c01a3fc85828864fa5ea3fec5b0c9dbec59707db4c89b7e4715",
+      "entries": 370,
+      "paxHeaders": 0,
+      "path": ".tmp/native-builds/ios-simulator/273f400d/App-simulator.app.tar.gz"
+    },
+    "actualMachO": "Five binaries, each arm64 and x86_64, all ten slices Simulator platform 7",
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "deviceFamilies": [
+      1,
+      2
+    ]
+  },
+  "mainIntegration": {
+    "evidence": "docs/mobile/evidence/S04/main-integration/result.json",
+    "selectedTests": 969,
+    "selectedFiles": 61,
+    "types": "PASS",
+    "boundaries": "PASS",
+    "typography": "PASS",
+    "localSqlChecks": 39,
+    "fullRepositoryRegression": false,
+    "artifactsRebuilt": false
+  },
+  "pwaPreparation": {
+    "evidence": "docs/mobile/evidence/S04/pwa-preparation/result.json",
+    "finalChecks": 4,
+    "initialFailedRuns": 3,
+    "actualOsInstall": false,
+    "authorizedGlobe": false,
+    "artifactUnchanged": true
+  },
+  "releaseReady": false,
+  "stageAcceptanceClaimed": false,
+  "productionActionsPerformed": false,
+  "limits": [
+    "No simulator launch, physical device run, signed release, TestFlight/App Store upload or exact-RC screenshots.",
+    "Successful cloud binary is the authorized historical source-only projection, not current main-integrated local source.",
+    "Native navigation wiring and current-main asset package refresh remain internal implementation work.",
+    "Historical 4479 full-suite and cross-engine 4 PASS/2 FAIL results retain their original identities."
+  ],
+  "copies": [
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/App-simulator.app.tar.gz",
+      "path": ".tmp/native-builds/ios-simulator/273f400d/App-simulator.app.tar.gz",
+      "bytes": 30224044,
+      "sha256": "5fc2832cd3458c01a3fc85828864fa5ea3fec5b0c9dbec59707db4c89b7e4715"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-verification.json",
+      "path": "docs/mobile/evidence/S04/ios-binary-verification.json",
+      "bytes": 25579,
+      "sha256": "928516682e9053c4cea32201da79eca94e6f9efe59177a55b1cc3a89276a2900"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-verification.md",
+      "path": "docs/mobile/evidence/S04/ios-binary-verification.md",
+      "bytes": 4092,
+      "sha256": "936c0a3654fc1eb1b3b1c811e54ad108e05ea256a1a303ffbddb4b191123d459"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-verification.mjs",
+      "path": "docs/mobile/evidence/S04/ios-binary-verification.mjs",
+      "bytes": 25259,
+      "sha256": "9ecb49d10a6f795a17d2bd3324c79b83e4c5ae48de421b6da3603a585bd0916a"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-after-pause-review.json",
+      "path": "docs/mobile/evidence/S04/main-after-pause-review.json",
+      "bytes": 39646,
+      "sha256": "b115e93fdee538aba8c57d9b19a96d4036678e6859fe2443ed648e84211915c4"
+    },
+    {
+      "source": ".tmp/native-bootstrap/s03-s04-acceptance-gap-review.md",
+      "path": "docs/mobile/evidence/S04/s03-s04-acceptance-gap-review.md",
+      "bytes": 27121,
+      "sha256": "22a594ebe2e5fb8d69cae3398566f472fb8041749d5f1621967cc02f0102bdc8"
+    },
+    {
+      "source": ".tmp/native-bootstrap/s03-s04-acceptance-gap-review.json",
+      "path": "docs/mobile/evidence/S04/s03-s04-acceptance-gap-review.json",
+      "bytes": 74391,
+      "sha256": "8bbe6c860a7ab701ed59b7820bf5981a0f9d6260d7e62f4f9c5a7b6eb3bc2e99"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/authorization.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/publication/authorization.json",
+      "bytes": 978,
+      "sha256": "684f8f4f5520ed9c94275be98cf48b069df971f948494f4ac810950bcb0dc471"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/review.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/publication/review.json",
+      "bytes": 27232,
+      "sha256": "1ab696a3af2619662a97edc7f1b0bfc88328e07defb7f4183fe68e982e3d6a2b"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/expected-tree.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/publication/expected-tree.json",
+      "bytes": 380,
+      "sha256": "c1e56209364a16cf5440fb45a15e4e2c6c1c507c0165c27a7a3a5de81733cb84"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/uploaded-blobs.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/publication/uploaded-blobs.json",
+      "bytes": 12680,
+      "sha256": "7d33ba9fa8d8b392d3db658e9426f192db85b13d11347900ed4033e654299b1a"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/remote-commit.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/publication/remote-commit.json",
+      "bytes": 412,
+      "sha256": "b3c4b4e6fd3bbed6449603a0c6a9e72e62f04d399003183031a85161afc725a8"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/remote-xcode-option-fix.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/publication/remote-xcode-option-fix.json",
+      "bytes": 332,
+      "sha256": "cdd57e86a9930a86aa6277acf0db5c619ae52eb08e989ff593abfdf00a757c02"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/successful-run.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/publication/successful-run.json",
+      "bytes": 1225,
+      "sha256": "07e758949470178826c76b087b034ee4ce17d7f6735f5731f9329036ac7c99b3"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/architecture.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/architecture.txt",
+      "bytes": 6,
+      "sha256": "c1669e1d8edca98769c37d494b76442a1d6e5ffffd7b4da1fb63aef8ebaf6f01"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/artifact.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/artifact.json",
+      "bytes": 251159,
+      "sha256": "5009b28d6cd8f24aac76e80381ba38b8055a8caffc05428b46b9e9b1c2a2a41d"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/audit-after-sync.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/audit-after-sync.json",
+      "bytes": 1038,
+      "sha256": "3c9412f2905078228dcb4b57be95431118b1270eaf71dbbb2da90423eeba1510"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/audit-before-sync.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/audit-before-sync.json",
+      "bytes": 1038,
+      "sha256": "3c9412f2905078228dcb4b57be95431118b1270eaf71dbbb2da90423eeba1510"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/cap-sync.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/cap-sync.log",
+      "bytes": 607,
+      "sha256": "db0991895bce67553f97e574708bd302b3fe70b74457dd970f61e8bab58149fc"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/checksums.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/checksums.json",
+      "bytes": 2946,
+      "sha256": "1402883a7e3f218d3c66942c4044f6fd9357c2d420d0639be3d2c211a5d827cc"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/installed-xcodes.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/installed-xcodes.txt",
+      "bytes": 444,
+      "sha256": "c63200e4bbd6943e63e5842296a1a51b4b0b6fddcd01514a114f072f23485bcb"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/macos.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/macos.txt",
+      "bytes": 65,
+      "sha256": "cd5d6399b3785b04ceaae75045a9ca9f80f0bbc3526eff9d0c36b170ed1ec348"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/node-version.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/node-version.txt",
+      "bytes": 9,
+      "sha256": "b67d0ced059f9313d861ddbbe734d2d1f9219106a9e036ae6d88407afa0846e6"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/npm-ci.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/npm-ci.log",
+      "bytes": 1048,
+      "sha256": "0b559ec0eec128d31e4eac56a533aa1dfe3d804c1f3f489c5f8b59c6b0505c87"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/npm-version.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/npm-version.txt",
+      "bytes": 8,
+      "sha256": "005206ab803f8881d8227540b7980b37e723b69a8849edb31734a90b7e7964e2"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/package-resolution.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/package-resolution.log",
+      "bytes": 19160,
+      "sha256": "84bb1030124e0f18b997509f6a4d1a4a92b32889e5a96bf37312b5b5f1ebf8b0"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/schemes.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/schemes.json",
+      "bytes": 334,
+      "sha256": "413c335d5aad7b5b5f3860fd3ee24c18478babaee514d5a844f4623e760d9058"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/simulators.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/simulators.json",
+      "bytes": 193933,
+      "sha256": "8963e76c2d8cfff9aa99f5a3a6ee21702e3aee1965c73b518995fe21e2d385ff"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/source-commit.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/source-commit.txt",
+      "bytes": 41,
+      "sha256": "9459382f3c2b5806f0d68f8f6933d8cc2bd7e6c3d1260e3b7fb8766df62b9c86"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/sync-integrity.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/sync-integrity.json",
+      "bytes": 642,
+      "sha256": "1453c52c430a2be9f47bf23b8275a3076ac5ffd424d3cbd670a20ec83f984b96"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/types.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/web-build.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/web-build.log",
+      "bytes": 15291,
+      "sha256": "409a7a79f5347b1b285d56f00cc38f52780d4aadf362d467aeebb7da03cd6c7a"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/xcode-sdks.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/xcode-sdks.txt",
+      "bytes": 745,
+      "sha256": "5c577db8d316a5d6dcb343f01a4357bdfbc45fe7a3f8a2b3487b4765d79ce00a"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-publication/first-run/xcode-version.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/first-run/xcode-version.txt",
+      "bytes": 32,
+      "sha256": "18730ed2ae28a2c9cf0c2d5db549033a4f07089331391a7133b7b32187454fa9"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/app-info.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/app-info.json",
+      "bytes": 1756,
+      "sha256": "44b123372dca58dac43bd14ff8806ebd7180c1263f52b63eca4284d00c214773"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/architecture.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/architecture.txt",
+      "bytes": 6,
+      "sha256": "c1669e1d8edca98769c37d494b76442a1d6e5ffffd7b4da1fb63aef8ebaf6f01"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/artifact.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/artifact.json",
+      "bytes": 251159,
+      "sha256": "d469b5397b80d7ea787b2a65e66119ad527f0f2531544b9b40c5d89c7969dd61"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/audit-after-build.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/audit-after-build.json",
+      "bytes": 1038,
+      "sha256": "27f926d20d3a14e548ec910648ae6ad60f12b579463653b4c899717d07222c9b"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/audit-after-sync.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/audit-after-sync.json",
+      "bytes": 1038,
+      "sha256": "27f926d20d3a14e548ec910648ae6ad60f12b579463653b4c899717d07222c9b"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/audit-before-sync.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/audit-before-sync.json",
+      "bytes": 1038,
+      "sha256": "27f926d20d3a14e548ec910648ae6ad60f12b579463653b4c899717d07222c9b"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/cap-sync.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/cap-sync.log",
+      "bytes": 607,
+      "sha256": "aab31b6f6aebfcf335b909143e60e8bede9e6bb136acf6279719711b6f51dcf3"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/checksums.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/checksums.json",
+      "bytes": 4338,
+      "sha256": "b1c6e62c07ac0221e5c11a1fbae726f8667320ef9b49701d1df5a67881a43a5b"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/installed-xcodes.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/installed-xcodes.txt",
+      "bytes": 444,
+      "sha256": "c63200e4bbd6943e63e5842296a1a51b4b0b6fddcd01514a114f072f23485bcb"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/mach-o-build.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/mach-o-build.txt",
+      "bytes": 519,
+      "sha256": "2e14513d7a2a6fc988e621131e3a31e9b934e7f26471eb6937289bb8412e2080"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/macos.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/macos.txt",
+      "bytes": 65,
+      "sha256": "cd5d6399b3785b04ceaae75045a9ca9f80f0bbc3526eff9d0c36b170ed1ec348"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/node-version.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/node-version.txt",
+      "bytes": 9,
+      "sha256": "b67d0ced059f9313d861ddbbe734d2d1f9219106a9e036ae6d88407afa0846e6"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/npm-ci.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/npm-ci.log",
+      "bytes": 1048,
+      "sha256": "0b559ec0eec128d31e4eac56a533aa1dfe3d804c1f3f489c5f8b59c6b0505c87"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/npm-version.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/npm-version.txt",
+      "bytes": 8,
+      "sha256": "005206ab803f8881d8227540b7980b37e723b69a8849edb31734a90b7e7964e2"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/package-resolution.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/package-resolution.log",
+      "bytes": 1602,
+      "sha256": "226db34d41e68d945ed89431af8479d5f1df8753f879d9450fffb233125f9dc4"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/Package.resolved",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/Package.resolved",
+      "bytes": 408,
+      "sha256": "c9e105d05bfadcf13451dfa007cef7cf26e7dc9a5a9fd19f196ca1df74c6ae95"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/schemes.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/schemes.json",
+      "bytes": 334,
+      "sha256": "413c335d5aad7b5b5f3860fd3ee24c18478babaee514d5a844f4623e760d9058"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/simulator-bundle.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/simulator-bundle.json",
+      "bytes": 641,
+      "sha256": "1f52317ad053a17b8617e6ab9f15378059af9836e2ac075c52a0ebb1332407af"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/simulators.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/simulators.json",
+      "bytes": 193933,
+      "sha256": "8963e76c2d8cfff9aa99f5a3a6ee21702e3aee1965c73b518995fe21e2d385ff"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/source-commit.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/source-commit.txt",
+      "bytes": 41,
+      "sha256": "7973434901db32ff9044d51ab6b83f695dc824b947c447b44bceb6fcc0d5b1b9"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/sync-integrity.json",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/sync-integrity.json",
+      "bytes": 642,
+      "sha256": "c9ee91af42044967050b21bbd42647f47bcbba142b6245d79319f2cc7da55d15"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/types.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/web-build.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/web-build.log",
+      "bytes": 15291,
+      "sha256": "bf46151bbff8742cc6af990d4377698860788eeee00fcf8fe24a69ccbbab73aa"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/xcode-build.log",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/xcode-build.log",
+      "bytes": 497459,
+      "sha256": "54d51969eeb939e00a3bb0987644b06efd562d2a7cf83a5f033c1e141c31b386"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/xcode-sdks.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/xcode-sdks.txt",
+      "bytes": 745,
+      "sha256": "5c577db8d316a5d6dcb343f01a4357bdfbc45fe7a3f8a2b3487b4765d79ce00a"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-binary-review/outer/xcode-version.txt",
+      "path": "docs/mobile/evidence/S04/cloud-ios/success-run/xcode-version.txt",
+      "bytes": 32,
+      "sha256": "18730ed2ae28a2c9cf0c2d5db549033a4f07089331391a7133b7b32187454fa9"
+    },
+    {
+      "source": ".tmp/native-bootstrap/ios-ci-xcode-option-tests.log",
+      "path": "docs/mobile/evidence/S04/logs/ios-ci-xcode-option-tests.log",
+      "bytes": 280,
+      "sha256": "44df3b4bbb3f1d68d7c16dada11e31861bc5e1cfd5d7ad212daa6d14568aac7c"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/result.json",
+      "path": "docs/mobile/evidence/S04/main-integration/result.json",
+      "bytes": 18275,
+      "sha256": "36194897d4e5585ba9a92192b8e2716a8496da0bfc8876432935b386d572265b"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/cherry-pick-180.log",
+      "path": "docs/mobile/evidence/S04/main-integration/cherry-pick-180.log",
+      "bytes": 11536,
+      "sha256": "ccbbdcfe660a15bd98d60a6786ce7f7d3a7bd61b8fdeb070aba21ae8ca259339"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/cherry-pick-183-completed.log",
+      "path": "docs/mobile/evidence/S04/main-integration/cherry-pick-183-completed.log",
+      "bytes": 312992,
+      "sha256": "d9425492b7c8180d63afc68d56d5f282b9cf82381cd26807fac8ccd7a7d90a8a"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/cherry-pick-183.log",
+      "path": "docs/mobile/evidence/S04/main-integration/cherry-pick-183.log",
+      "bytes": 1389,
+      "sha256": "7c0586dce0999eb1ccb636c80399a6276553fecbcb587d2cf846373a6180b3e1"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/cherry-pick-184.log",
+      "path": "docs/mobile/evidence/S04/main-integration/cherry-pick-184.log",
+      "bytes": 234,
+      "sha256": "667a88dc3a81a6f48f15be5b638ad5bb543215336c0ea57ae0fe453bf3b7b16a"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/dossier-rehearsal-result.json",
+      "path": "docs/mobile/evidence/S04/main-integration/dossier-rehearsal-result.json",
+      "bytes": 3458,
+      "sha256": "6aab9b8380644d022bac86516a49bd3cc98edde135d4b498e85d5f69d1bf8131"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/dossier-rehearsal.log",
+      "path": "docs/mobile/evidence/S04/main-integration/dossier-rehearsal.log",
+      "bytes": 3176,
+      "sha256": "b9e437e208f6de568cb826f72ea38afbb0e8bc9ae4f4478c9e2f635243e8e4b2"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/final-focused-tests.log",
+      "path": "docs/mobile/evidence/S04/main-integration/final-focused-tests.log",
+      "bytes": 281,
+      "sha256": "03760625595b58523081996d782c1e44901eeabd366fb77486422add0e332a75"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/frozen-before.json",
+      "path": "docs/mobile/evidence/S04/main-integration/frozen-before.json",
+      "bytes": 725,
+      "sha256": "b4c2dad8255ebbb9cc42c3cb2ef8ab2a3a446e5cc587dc9cf818139ad1b9b6b1"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/governance-first-runtime.log",
+      "path": "docs/mobile/evidence/S04/main-integration/governance-first-runtime.log",
+      "bytes": 5454,
+      "sha256": "50baf6bf416a985e1bd340b5985218166391d8809dec46e1be17c2294b67ca99"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/governance-first.log",
+      "path": "docs/mobile/evidence/S04/main-integration/governance-first.log",
+      "bytes": 2027,
+      "sha256": "e18dcec22f378721219a9d03941ca4e2cc995c2336125120da36d155447eac81"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/governance-fixed.log",
+      "path": "docs/mobile/evidence/S04/main-integration/governance-fixed.log",
+      "bytes": 281,
+      "sha256": "f6d2572bc8e0f7ba04781ef1043a2296656285f6c94c5f079126f9690a6e0fe0"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/hyphen-addition-receipt.json",
+      "path": "docs/mobile/evidence/S04/main-integration/hyphen-addition-receipt.json",
+      "bytes": 27038,
+      "sha256": "b8cd4617304d09aebae0a01bab924d4fb4fa5123a4f4a7521491cd6aca046fde"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/hyphen-install-dry-run.json",
+      "path": "docs/mobile/evidence/S04/main-integration/hyphen-install-dry-run.json",
+      "bytes": 658,
+      "sha256": "996685ce0d9a2f1a3855dc67744a1a1e20783f65b78349769a25285135be6bc4"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/hyphen-install-dry-run.stderr",
+      "path": "docs/mobile/evidence/S04/main-integration/hyphen-install-dry-run.stderr",
+      "bytes": 2539,
+      "sha256": "9413d6ecfd27d9406bdf9559b635053a7a2457bf891985fc76785ae03da85fc2"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/hyphen-pack.json",
+      "path": "docs/mobile/evidence/S04/main-integration/hyphen-pack.json",
+      "bytes": 17714,
+      "sha256": "39a65b6b384c1e478a66edbf88c87e539cd34fc7c299b309541e0957b7d5091c"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/hyphen-pack.stderr",
+      "path": "docs/mobile/evidence/S04/main-integration/hyphen-pack.stderr",
+      "bytes": 214,
+      "sha256": "26329a1f3e2486da3c648b7d3e6ad9543cb0f231a9a1fc95e792d1f1978070a3"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/platform-boundaries.json",
+      "path": "docs/mobile/evidence/S04/main-integration/platform-boundaries.json",
+      "bytes": 1587,
+      "sha256": "ba68c09f3000c8c28f9468f2a3a4015dfca0bbc2e1277e957309ba47e417f640"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/types.log",
+      "path": "docs/mobile/evidence/S04/main-integration/types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/typography.log",
+      "path": "docs/mobile/evidence/S04/main-integration/typography.log",
+      "bytes": 52,
+      "sha256": "23e0a350b2246a4ccf2f88a6338969938f08a66294adfed739ae3f0019c22e0e"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/upstream-affected-tests.log",
+      "path": "docs/mobile/evidence/S04/main-integration/upstream-affected-tests.log",
+      "bytes": 286,
+      "sha256": "84ee582fd8380e761def44b65913af824c884e55dda4f89145c7a5303e1b3105"
+    },
+    {
+      "source": ".tmp/native-bootstrap/main-integration/v12-affected-tests.log",
+      "path": "docs/mobile/evidence/S04/main-integration/v12-affected-tests.log",
+      "bytes": 288,
+      "sha256": "4c656a27773a3fe2e7f040eecba3e36f4793d7ff4316acec81ef4e09241bbac9"
+    },
+    {
+      "source": ".tmp/native-bootstrap/pwa-cdp-preparation-result.json",
+      "path": "docs/mobile/evidence/S04/pwa-preparation/result.json",
+      "bytes": 8561,
+      "sha256": "ffabc620daf0fc468f04d80ff0c5f8b7ee0c91de717fc07a26420b3f26b7af2b"
+    },
+    {
+      "source": ".tmp/native-bootstrap/pwa-cdp-capability-Nml5UA/report.json",
+      "path": "docs/mobile/evidence/S04/pwa-preparation/run-1.json",
+      "bytes": 6502,
+      "sha256": "5aa5ab0123095a8976611d3a148e4e921d1798d7c85486e2ceed2c67acac9da7"
+    },
+    {
+      "source": ".tmp/native-bootstrap/pwa-cdp-capability-JxAInv/report.json",
+      "path": "docs/mobile/evidence/S04/pwa-preparation/run-2.json",
+      "bytes": 7235,
+      "sha256": "21ed9e62fd00c2e0485dd1639b8db1ea222514791179692c4866e905e428b902"
+    },
+    {
+      "source": ".tmp/native-bootstrap/pwa-cdp-capability-lZ4sh8/report.json",
+      "path": "docs/mobile/evidence/S04/pwa-preparation/run-3.json",
+      "bytes": 16222,
+      "sha256": "fa732bbbf7f408d79173290422e2bac0d9899aa8ef05f5127ba68cbbbf11c0fb"
+    },
+    {
+      "source": ".tmp/native-bootstrap/pwa-cdp-capability-0gwzBs/report.json",
+      "path": "docs/mobile/evidence/S04/pwa-preparation/run-4.json",
+      "bytes": 271530,
+      "sha256": "f08df8234c1d9381c8f9a1310186cc7dcfb39340a92cd1bdec7f2f942a81108d"
+    },
+    {
+      "source": ".tmp/native-bootstrap/pwa-cdp-capability.mjs",
+      "path": "docs/mobile/evidence/S04/pwa-preparation/harness.mjs",
+      "bytes": 11544,
+      "sha256": "606e3ed61d95600ce474722882ad0747a3442bed425a232c701a4c7e6ddd7afb"
+    },
+    {
+      "source": ".tmp/native-bootstrap/pwa-cdp-capability-0gwzBs/locked-offline-ru.png",
+      "path": "docs/mobile/evidence/S04/pwa-preparation/locked-offline-ru.png",
+      "bytes": 34864,
+      "sha256": "1613b88860b4dd9a8c0938c0ed0428d2db8bf3e7cd234c20602f81b14985b931"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "EPERM",
+    "summary": "FetchError: Invalid response body while trying to fetch https://registry.npmjs.org/@axe-core%2fplaywright: EPERM: operation not permitted, open 'C:\\Users\\User\\AppData\\Local\\npm-cache\\_cacache\\tmp\\***'",
+    "detail": "The operation was rejected by your operating system.\nIt's possible that the file was already in use (by a text editor or antivirus), or that you lack permissions to access it.\n\nIf you believe this might be a permissions issue, please double-check the permissions of the file and its containing directories, or try running the command again as root/Administrator."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "pass": true,
+  "identity": {
+    "buildId": "b9254e7bc6c2842a1880e0166c15b3b1ed329da8e6e2672d56a2dac644b45470",
+    "sourceCommit": "273f400d8f07a57269f391dfc13d7e802c9071f2",
+    "platform": "ios",
+    "channel": "dev"
+  },
+  "counts": {
+    "files": 320,
+    "bytes": 37918970,
+    "scripts": 40,
+    "sourceInputs": 901,
+    "publicSources": 266,
+    "ownedChunks": 40
+  },
+  "findings": [],
+  "releaseReady": false,
+  "sourceFreshnessChecked": true,
+  "sourceBinaryProvenance": "self-reported-module-ownership-checked",
+  "limitations": [
+    "Preparation integrity only; not a native APK/AAB/IPA, device test, editorial/rights approval, paid-access authority or release approval.",
+    "Module ownership is self-reported build metadata checked against source and emitted bytes; it is not independent source-to-binary reproducibility or arbitrary executable-equivalence proof.",
+    "Literal executable/resource paths are checked statically; constructed runtime URLs and native OS behavior require separate runtime gates."
+  ]
+}

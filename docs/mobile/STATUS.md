@@ -1,6 +1,7 @@
 Resumed on the user's explicit instruction "Продолжай".
 Native working checkpoint: ca6f805badc6638fbee5998f0de483b0857ca1c8.
-The interrupted cloud iOS drafts are under review; no cloud build is yet claimed.
+The authorized cloud iOS Simulator build succeeded at273f400d; independent binary
+verification passed. Actual simulator launch is the next separate runtime gate.
 
 # V12 status
 
@@ -8,8 +9,12 @@ S00-S02 are accepted. S03 is IN_PROGRESS and remains first-open. S04 is
 IN_PROGRESS under its documented parallel-safe entry. S05-S40 have not started.
 No global requirement is PASSED. releaseReady:false.
 
-Canonical main f406a7de9e16e8cf63545cbce6681ed9278761a4 is incorporated by five
-local cherry-picks through8e6cfe1f482ebd261965d774cbf4e14f80f62f1d. Accepted
+Canonical main5d3f6fb61e170bcc8fd64062c6283a7c75b5f144 is incorporated by three
+further provenance-preserving cherry-picks and adaptation through72a62b31.
+Its affected regression passed969 selected tests/61 files, types, boundaries,
+typography and39 local SQL checks. Existing binaries predate this integration;
+controlled image coverage and fresh builds remain work. The earlier f406a7de
+integration and its test identities remain preserved. Accepted
 headSha remains S02:6305df5fe671718c78b38af1ccc2bafbbdd44346. Working checkpoints
 0afad090 and e2530cc6 preserve S03 integration and saved-verification behavior;
 neither accepts S03. Current S04 evidence records working source beyond e2530cc6.
@@ -56,15 +61,34 @@ S04 implemented and measured:
   backend guards11, persistence outcomes10 tests passed. Five actual Chrome host
   component tests use a DOM probe instead of App, not an actual globe or device.
   Final TypeScript,26 CSS files and platform boundaries passed.
-- iOS app SPM constraint is exact8.5.1. The incorrect earlier intake range claim
-  is explicitly corrected with original bytes retained. There is no completed
-  Swift resolution, Xcode build, simulator run or IPA.
+- iOS app SPM constraint is exact8.5.1, now actually resolved in cloud Xcode to
+ 6afa7424fd2fcd8ca1e577478e8a00af284b7e82. The earlier incorrect intake range
+  claim is retained with its correction.
+- The user explicitly authorized public source publication and a test build.
+ 74 reviewed source files were published on codex/literary-planet-v12-ios-ci
+  using only public canonical history; internal V12 history/evidence/keys excluded.
+  First run34002773310 failed on an incorrect Xcode option. Both option names
+  were corrected from actual Xcode help; run34003133006 succeeded at273f400d.
+  Xcode26.6/17F113 compiled the real App. Independent ZIP/TAR, binary plist,
+  RU/EN, iPhone/iPad, five Mach-O binaries/ten simulator slices,319 inventory
+  files and exact Swift pin checks passed. This cloud source projection is
+  historical and distinct from the later main-integrated local source.
 
-The user has no Mac. A cloud macOS simulator workflow is being prepared locally;
-its existence will not be claimed as a successful remote build. Signing and
-store delivery remain separate from unsigned simulator validation.
+The user has no Mac; cloud compilation required none. Stable App archive:
+.tmp/native-builds/ios-simulator/273f400d/App-simulator.app.tar.gz
+SHA256:5fc2832cd3458c01a3fc85828864fa5ea3fec5b0c9dbec59707db4c89b7e4715.
+Simulator launch, installed navigation, device signing and store delivery remain
+separate and unverified. No IPA or release acceptance is claimed.
 
-Primary current evidence: evidence/S04/working-native-implementation.json,
+An isolated Chrome preparation run passed4 checks of the unchanged historical
+b006 locked shell, service worker, RU/EN and cold offline. Three original setup
+failures are preserved. OS PWA installation was not performed; a separate browser
+profile alone does not bound Windows shortcuts/registry writes. The historical
+QA signer is no longer running; no grant or authority replacement was fabricated.
+
+Primary current evidence: evidence/S04/cloud-ios-working-validation.json,
+main-integration/result.json, ios-binary-verification.json, the historical
+evidence/S04/working-native-implementation.json,
 android-dev-apk-verification.json, ios-project-sync-review.json and their
 byte-preserved reports/logs. Initial failures remain alongside corrections.
 

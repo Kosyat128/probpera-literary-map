@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "recordType": "isolated-browser-cdp-preparation",
+  "capturedAt": "2026-09-06T01:21:16.576Z",
+  "buildId": "b006c2757ee7e5bacc6b946d8c7dcd880c0760da74ff3d39d752095b38b26c6d",
+  "artifactSha256": "6dc25b0b7fcc472efb69b19cbcf274ed79204134f92cc13b742ce2a555699f37",
+  "authoritySha256": "8abf46a2ca1495a57da6c777feaadd896a3489ba5d9a48a7cba99f90eb050cbb",
+  "authorityFileSha256": "986b36c4f2aecca50cd89eaafb0297f47b32b408e0e0a68b80a05218962bd46d",
+  "inventoryFilesVerified": 334,
+  "sourceAndArtifactEdited": false,
+  "oldEvidenceEdited": false,
+  "stageAcceptanceClaimed": false,
+  "osInstallInvoked": false,
+  "osIntegrationPerformed": false,
+  "authorizedGlobeVerified": false,
+  "runs": [
+    {
+      "path": ".tmp/native-bootstrap/pwa-cdp-capability-Nml5UA/report.json",
+      "sha256": "5aa5ab0123095a8976611d3a148e4e921d1798d7c85486e2ceed2c67acac9da7",
+      "completed": false,
+      "checks": [
+        {
+          "name": "real-historical-app-remains-closed-without-grant",
+          "pass": true
+        }
+      ],
+      "profile": ".tmp/native-bootstrap/pwa-cdp-capability-Nml5UA/profile",
+      "runHarnessSha256": "ee4374c9202b1be3f9e105a8e7a1d31568d8225b35ab4f3092f793ab7bccae41",
+      "workerErrors": [],
+      "cleanup": {
+        "ownedBrowserContextClosed": true,
+        "loopbackServerClosed": true,
+        "profileRetainedForEvidence": true,
+        "systemCleanupPerformed": false
+      }
+    },
+    {
+      "path": ".tmp/native-bootstrap/pwa-cdp-capability-JxAInv/report.json",
+      "sha256": "21ed9e62fd00c2e0485dd1639b8db1ea222514791179692c4866e905e428b902",
+      "completed": false,
+      "checks": [
+        {
+          "name": "real-historical-app-remains-closed-without-grant",
+          "pass": true
+        }
+      ],
+      "profile": ".tmp/native-bootstrap/pwa-cdp-capability-JxAInv/profile",
+      "runHarnessSha256": "d847286e71d9c5c923fa091d237b029dcdafe7a7eb87b9304e241f9183ad784a",
+      "workerErrors": [],
+      "cleanup": {
+        "ownedBrowserContextClosed": true,
+        "loopbackServerClosed": true,
+        "profileRetainedForEvidence": true,
+        "systemCleanupPerformed": false
+      }
+    },
+    {
+      "path": ".tmp/native-bootstrap/pwa-cdp-capability-lZ4sh8/report.json",
+      "sha256": "fa732bbbf7f408d79173290422e2bac0d9899aa8ef05f5127ba68cbbbf11c0fb",
+      "completed": false,
+      "checks": [
+        {
+          "name": "real-historical-app-remains-closed-without-grant",
+          "pass": true
+        }
+      ],
+      "profile": ".tmp/native-bootstrap/pwa-cdp-capability-lZ4sh8/profile",
+      "runHarnessSha256": "dd08bcfbe9701ec48a431b6ca74fe84469a85189366c630b8237042a3be7e4a0",
+      "workerErrors": [
+        {
+          "errorMessage": {
+            "errorMessage": "Failed to register a ServiceWorker for scope ('http://127.0.0.1:57395/planet/') with script ('http://127.0.0.1:57395/planet/sw.js'): ServiceWorker failed to install: ServiceWorker failed to handle event (event.waitUntil Promise rejected)",
+            "registrationId": "0",
+            "versionId": "0",
+            "sourceURL": "",
+            "lineNumber": -1,
+            "columnNumber": -1
+          }
+        },
+        {
+          "errorMessage": {
+            "errorMessage": "Uncaught (in promise) InvalidAccessError: Failed to execute 'put' on 'Cache': Entry already exists.",
+            "registrationId": "0",
+            "versionId": "0",
+            "sourceURL": "http://127.0.0.1:57395/planet/sw.js",
+            "lineNumber": 0,
+            "columnNumber": -1
+          }
+        }
+      ],
+      "cleanup": {
+        "ownedBrowserContextClosed": true,
+        "loopbackServerClosed": true,
+        "profileRetainedForEvidence": true,
+        "systemCleanupPerformed": false
+      }
+    },
+    {
+      "path": ".tmp/native-bootstrap/pwa-cdp-capability-0gwzBs/report.json",
+      "sha256": "f08df8234c1d9381c8f9a1310186cc7dcfb39340a92cd1bdec7f2f942a81108d",
+      "completed": true,
+      "checks": [
+        {
+          "name": "real-historical-app-remains-closed-without-grant",
+          "pass": true
+        },
+        {
+          "name": "actual-service-worker-core-complete",
+          "pass": true
+        },
+        {
+          "name": "locked-shell-global-language-preserves-url-state",
+          "pass": true
+        },
+        {
+          "name": "cold-offline-real-locked-shell-en-ru",
+          "pass": true
+        }
+      ],
+      "profile": ".tmp/cdp-MciqiW",
+      "runHarnessSha256": "606e3ed61d95600ce474722882ad0747a3442bed425a232c701a4c7e6ddd7afb",
+      "workerErrors": [],
+      "offline": {
+        "language": "en",
+        "status": "Verified offline access is not available right now. Connect to the internet and check again.",
+        "navigatorOnline": true,
+        "contextTransportOffline": true
+      },
+      "cleanup": {
+        "ownedBrowserContextClosed": true,
+        "loopbackServerClosed": true,
+        "profileRetainedForEvidence": true,
+        "systemCleanupPerformed": false
+      }
+    }
+  ],
+  "successfulCommand": "node .tmp/native-bootstrap/pwa-cdp-capability.mjs",
+  "successfulToolChunk": "e16bd1",
+  "actualBrowser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/152.0.7977.76",
+    "revision": "@0d89dfa2dd7c1ec4b8a14b9f303f887bb63b6174",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "jsVersion": "15.2.124.19"
+  },
+  "manifestErrors": [],
+  "installabilityErrors": [],
+  "pwaCapability": {
+    "methodRecognized": true,
+    "outcome": "not-installed-or-unavailable",
+    "message": "cdpSession.send: Protocol error (PWA.getOsAppState): Unknown web-app manifest id http://127.0.0.1:58802/planet/"
+  },
+  "finalHarness": {
+    "path": ".tmp/native-bootstrap/pwa-cdp-capability.mjs",
+    "sha256": "606e3ed61d95600ce474722882ad0747a3442bed425a232c701a4c7e6ddd7afb"
+  },
+  "screenshot": {
+    "path": ".tmp/native-bootstrap/pwa-cdp-capability-0gwzBs/locked-offline-ru.png",
+    "sha256": "1613b88860b4dd9a8c0938c0ed0428d2db8bf3e7cd234c20602f81b14985b931"
+  },
+  "interpretation": {
+    "pathFailure": "Three failed runs used deeply nested profile paths. Third recorded Cache.put InvalidAccessError Entry already exists; changing only profile placement to shorter owned .tmp/cdp-* made same browser/artifact/server assertions pass. Path-length attribution is an inference from this controlled delta, not a Chromium source-level diagnosis.",
+    "installationSafety": "Official PWAHandler InstallFromInstallInfo calls InstallFromInfoWithParams with WebAppInstallParams{} and carries TODO for faking OS integration. A distinct profile does not establish Windows shortcut/registry isolation. This probe deliberately made no PWA.install or PWA.uninstall call.",
+    "authority": "Only original public authority remains. Existing local QA server generates a new in-memory private key; invoking it on historical artifact would break authority binding and overwrite old authority files. No new grant was signed or injected."
+  },
+  "next": {
+    "safeFullInstallation": "Run PWA.install/changeAppUserSettings/launch/uninstall inside a disposable OS VM/runner or an independently verified OS integration sandbox. Capture actual standalone matchMedia, target/page relaunch and cleanup, not only command success.",
+    "authorizedRuntime": "Use a separately preserved fresh QA candidate with its in-memory signer still alive for authorized standalone globe/offline tests. Historical b006 can verify only locked access without old signer."
+  },
+  "officialSources": [
+    {
+      "url": "https://chromedevtools.github.io/devtools-protocol/tot/PWA/",
+      "supports": "Experimental PWA domain install/launch/user settings/uninstall commands."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/chromium/chromium/main/chrome/browser/devtools/protocol/pwa_handler.cc",
+      "lines": "419-439",
+      "supports": "Default installation parameters and TODO about OS integration suppression; 453-483 uninstall is scoped by manifest ID."
+    }
+  ],
+  "limits": [
+    "Historical signer key was memory-only and its server is closed. All license endpoints deliberately respond 503.",
+    "No grant injected and no artifact bytes changed. This can verify cached locked shell, not paid globe access.",
+    "No PWA.install/uninstall call: separate Chrome profile does not itself isolate Windows shortcuts/registry.",
+    "Headless Windows Chrome only; not physical mobile, Safari, user-visible install UI or stage acceptance."
+  ]
+}

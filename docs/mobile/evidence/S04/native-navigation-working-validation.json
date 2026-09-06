@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "s04-native-navigation-working-validation",
+  "scope": "Canonical native URL intake, bootstrap fencing and Android Back integration",
+  "status": "WORKING_VALIDATION",
+  "implementationIntegratedIntoCanonicalApp": true,
+  "singleCanonicalAppAndState": true,
+  "releaseReady": false,
+  "stageAccepted": false,
+  "productionActionsAuthorized": false,
+  "guarantees": [
+    "Only canonical HTTPS probpera.ru entry paths and approved atlas/book parameters are accepted.",
+    "Launch and warm URL events wait for the existing archive/book runtime and fail closed on missing, denied or unavailable records.",
+    "A newer ordinary in-app selection or Back action cancels a late native navigation resolution.",
+    "Android Back closes active layers by explicit priority, then uses existing browser history; no implicit native exit is requested.",
+    "The integration reuses the existing InterfaceLanguageProvider, atlas URL state, archive and publication gate; it creates no second router, catalogue, globe, renderer or entitlement store."
+  ],
+  "validation": {
+    "typecheck": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "status": "passed"
+    },
+    "focusedTests": {
+      "command": "node node_modules/vitest/vitest.mjs run src/host/NativeNavigation.test.ts src/host/NativeNavigationBridge.test.ts src/platform/adapters/android/AndroidPlatformAdapter.test.ts src/platform/adapters/ios/IosPlatformAdapter.test.ts src/host/initializeHostPlatform.test.ts src/platform/PlatformServices.test.ts --maxWorkers=1 --configLoader runner",
+      "status": "passed",
+      "files": 6,
+      "tests": 191
+    },
+    "platformBoundaries": {
+      "command": "node scripts/mobile/platform-boundaries.mjs",
+      "status": "passed",
+      "findings": 0
+    },
+    "publicLint": {
+      "command": "npm run lint:public",
+      "status": "passed",
+      "typographyIssues": 0
+    }
+  },
+  "notProven": [
+    "Actual Android device or emulator runtime, iOS simulator launch, physical iPhone/iPad execution and native accessibility behavior.",
+    "A fresh current-main native artifact: the successful cloud iOS binary is a separately identified source-only historical projection.",
+    "OS-level PWA installation and standalone relaunch.",
+    "Full S04 acceptance, S03 first-open acceptance, later globe lifecycle, offline, child, commerce, localization, store, legal and release-candidate gates."
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/App.tsx",
+      "bytes": 167045,
+      "sha256": "403561f0a52b8cd9e219528c2d096053d0194b94d8384d1b2d2eb48a3ef48907"
+    },
+    {
+      "path": "src/host/NativeNavigation.ts",
+      "bytes": 19052,
+      "sha256": "c23265bfe05c0e97eedb226af1c3cf5e7adb650f5b87b20bf5b4fb899e62a3c7"
+    },
+    {
+      "path": "src/host/NativeNavigation.test.ts",
+      "bytes": 28279,
+      "sha256": "50499c9004162b8eb7ed49ccdebb9adfe763e18d596d78a97df4e3bb615ea197"
+    },
+    {
+      "path": "src/host/NativeNavigationBridge.ts",
+      "bytes": 6803,
+      "sha256": "2e0a86d26843cfdcc6db5ab9d890115a747686a022a1cb7935972c29fb8ad4ab"
+    },
+    {
+      "path": "src/host/NativeNavigationBridge.test.ts",
+      "bytes": 5106,
+      "sha256": "49d9d2f04e93cbd09748838b16f2500f457ed51e66e24d63c084b3f6e6a53994"
+    },
+    {
+      "path": "src/host/initializeHostPlatform.ts",
+      "bytes": 6377,
+      "sha256": "05e0f29f6fde21cc48c03cbc52a329d2f7b16c83b614084ef7d69b88465b729d"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "bytes": 2416,
+      "sha256": "4760dcda27abfbe62cd052a62064437b5f430d33f8b2c43917b9a38f368d18ff"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "bytes": 2508,
+      "sha256": "f01ad9daac2a14e57cf830273b767d509c1df2e344789d9c5e04a5e5bdb673e4"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.test.ts",
+      "bytes": 7844,
+      "sha256": "3860d027e234eea6848c9a5361e8fa599a07ada7fdf51775903872ea2bfa8525"
+    },
+    {
+      "path": "src/platform/adapters/ios/IosPlatformAdapter.ts",
+      "bytes": 2372,
+      "sha256": "dfbc518b7e56aabb03f690b2c47b70a484aab7550913daf3a337cef09814c0b0"
+    },
+    {
+      "path": "src/platform/adapters/ios/IosPlatformAdapter.test.ts",
+      "bytes": 7774,
+      "sha256": "d663bd2dd30f1b30629e33786c5ffa11840ebece2ef2a6105fec882330cbfea4"
+    }
+  ],
+  "capturedAt": "2026-09-06T02:28:14.353Z"
+}

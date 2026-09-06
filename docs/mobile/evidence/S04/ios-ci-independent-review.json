@@ -1,0 +1,63 @@
+{
+  "scope": "Independent local mutation checks and read-only iOS CI review, not an Xcode/native/cloud run",
+  "checkedAt": "2026-09-06T00:38:17.944Z",
+  "pass": true,
+  "sourceFiles": [
+    {
+      "path": ".github/workflows/mobile-ios-simulator.yml",
+      "sha256": "c2ff4a5587d06e3267b3d3e4a21c7b6c11c8c7643d8581724ca3c610e58b77f8"
+    },
+    {
+      "path": "scripts/mobile/ios-simulator-build.mjs",
+      "sha256": "5058c73ecd8897355c0672fac100580a30e918f90db4ed42878c4968e5b51f31"
+    },
+    {
+      "path": "scripts/mobile/ios-simulator-build.test.mjs",
+      "sha256": "7e77165c8896e77c38ea6bf43b2bec27b3769d8f54a6b0a7c27570b60853e6e8"
+    }
+  ],
+  "sourceUnchangedDuringChecks": true,
+  "results": [
+    {
+      "name": "exact official SwiftPM commit required, same-version foreign commit rejected",
+      "pass": true
+    },
+    {
+      "name": "toolchain rejects a valid-looking mismatched checkout SHA",
+      "pass": true
+    },
+    {
+      "name": "same-source Android audit cannot stand in for iOS evidence",
+      "pass": true
+    },
+    {
+      "name": "real copied module corruption rejects despite unchanged artifact metadata",
+      "pass": true
+    },
+    {
+      "name": "copied root junction cannot bypass tree ownership",
+      "pass": true
+    },
+    {
+      "name": "native config copy rejects remote navigation while package metadata stays unchanged",
+      "pass": true
+    },
+    {
+      "name": "after-sync audit failure blocks a copy receipt",
+      "pass": true
+    },
+    {
+      "name": "evidence collection rejects linked diagnostics instead of reading target contents",
+      "pass": true
+    }
+  ],
+  "officialSwiftPmRef": {
+    "url": "https://github.com/ionic-team/capacitor-swift-pm.git",
+    "ref": "refs/tags/8.5.1",
+    "commit": "6afa7424fd2fcd8ca1e577478e8a00af284b7e82",
+    "verification": "Read-only git ls-remote, no annotated dereference entry returned"
+  },
+  "nativeBuildExecuted": false,
+  "remoteWorkflowExecuted": false,
+  "releaseReady": false
+}

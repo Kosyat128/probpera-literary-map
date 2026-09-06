@@ -1,0 +1,27 @@
+{
+  "userReply": "Разрешаю публикацию исходников и тестовую сборку",
+  "scope": {
+    "repository": "Kosyat128/probpera-literary-map",
+    "branch": "codex/literary-planet-v12-ios-ci",
+    "sourceFileCount": 74,
+    "includes": "Application source, App.tsx and embedded content in the reviewed 74-file payload",
+    "execution": "Unsigned iOS Simulator CI",
+    "excluded": [
+      "internal V12 archive and history",
+      "local evidence and SDK authorization receipts",
+      "private keys",
+      "main changes",
+      "production/store publication"
+    ]
+  },
+  "priorAutomaticReview": {
+    "action": "github_create_blob for src/App.tsx",
+    "rejected": true,
+    "reason": "Public application source and embedded content egress lacked explicit authorization",
+    "confirmedDetachedBlobs": 32,
+    "commitCreated": false,
+    "refMoved": false,
+    "workflowRunStarted": false
+  },
+  "recordedAt": "2026-09-06T00:51:04.099Z"
+}

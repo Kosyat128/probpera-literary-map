@@ -1,0 +1,755 @@
+{
+  "repository": "Kosyat128/probpera-literary-map",
+  "branch": "codex/literary-planet-v12-ios-ci",
+  "baseCommit": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+  "baseTree": "62f4597403c2f252fa27c66797543c66caf10c70",
+  "localSourceCommit": "db0b25fe9ac82104d478ed0e5461062c909dae3b",
+  "historicalNativeProbe": true,
+  "notCurrentMainCandidate": true,
+  "blobs": [
+    {
+      "path": ".github/workflows/mobile-ios-simulator.yml",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 8665,
+      "sha256": "d2b69cee36888d78a16bda178979b81ad2fcb1063b43091d44401c247330230f",
+      "blobSha": "f8089fb4ddd37ec3c0404fae179593b48bfa7993",
+      "binary": false,
+      "source": ".github/workflows/mobile-ios-simulator.yml"
+    },
+    {
+      "path": "apps/mobile/ios/.gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 230,
+      "sha256": "04121fd467254b5afd0be9fc62a0b4ae28ac2288769b9d9b218fddca3cd7fd80",
+      "blobSha": "1a67f7a292f86cb50477b4ec20f979d65ba0ab6f",
+      "binary": false,
+      "source": "apps/mobile/ios/.gitignore"
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 16280,
+      "sha256": "78d4fea0192468e192d0275a523d22fa94cba7ab6895420ce6fbf7e77d719e4d",
+      "blobSha": "6b018f2916bc131016049430336d1aca7880fe3a",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj"
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 238,
+      "sha256": "dfa0f9bb85b95ccba9c6811adadf8cb407fb5d52088e89db83ebc308ec448542",
+      "blobSha": "18d981003d68d0546c4804ac2ff47dd97c6e7921",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/AppDelegate.swift",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 2504,
+      "sha256": "481e2ad8672b14acbd3e3df65acdc6d046526ae542b7bec903cf842fc68d9e49",
+      "blobSha": "fec95acae17e22de69075aa1be2f76c3d5030e5a",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/AppDelegate.swift"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 101202,
+      "sha256": "0468ec2c05dcf9ff2b071aafed86381127f6e45a230cadeae9810191ad5997e7",
+      "blobSha": "db77674abbbf529f24107d9f5657d3aaaf5e8972",
+      "binary": true,
+      "source": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 218,
+      "sha256": "5c09bec6eede599b14fa9e4c44b03e7febebc930615a0cd70f02981c09dfe48a",
+      "blobSha": "9b7d382dcecca887eac19d7f1c4c8dc57abe00e4",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/Assets.xcassets/AppIcon.appiconset/Contents.json"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Contents.json",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 62,
+      "sha256": "972ec1fd42325872438eb085ac29e94f51c10788ec18ec5549439950866c541d",
+      "blobSha": "da4a164c918651cdd1e11dca5cc62c333f097601",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/Assets.xcassets/Contents.json"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/Contents.json",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 403,
+      "sha256": "041481917eb249533ac6dd63d283bc6190b2d0642a93deda11b2ed0f6f7b605a",
+      "blobSha": "d7d96a67c0d764a2ddfc9545441c627e6d5fa1fc",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/Contents.json"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 67647,
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a",
+      "blobSha": "7d1526cd245d9a914172e1b41b390d7606f3be53",
+      "binary": true,
+      "source": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-1.png"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 67647,
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a",
+      "blobSha": "7d1526cd245d9a914172e1b41b390d7606f3be53",
+      "binary": true,
+      "source": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732-2.png"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 67647,
+      "sha256": "a5e4de5ce1432dfaea7d5bc57bdffd88919d8f4c002e882c704599ba6b63d73a",
+      "blobSha": "7d1526cd245d9a914172e1b41b390d7606f3be53",
+      "binary": true,
+      "source": "apps/mobile/ios/App/App/Assets.xcassets/Splash.imageset/splash-2732x2732.png"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Base.lproj/LaunchScreen.storyboard",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1994,
+      "sha256": "87a42e842164d75f39cca56a2cf743652f4d8e858f2eba12ae21a8ddcd9a21c6",
+      "blobSha": "e7ae5d7802c067edcd71596688fa7b059de8a262",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/Base.lproj/LaunchScreen.storyboard"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Base.lproj/Main.storyboard",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1019,
+      "sha256": "7b7dc7acc67134bfaa80e5ce9c9068ba53db5369b9b70248aa7439fc2b09daae",
+      "blobSha": "b44df7be8f82acfcd747fd8d77fcd7a87b788f6f",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/Base.lproj/Main.storyboard"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/Info.plist",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 2365,
+      "sha256": "9c791e794d5a4f8849d7ceb4d282f2623fab79c1ccf28165f66ab3f82ffbfa51",
+      "blobSha": "5be637a9c74cddd928bc3c894e3946a6831cb387",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/Info.plist"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PrivacyInfo.xcprivacy",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 539,
+      "sha256": "a3799663af4d176d8ce1d87b8f061deddd8ebe7083de64ef5406f9e4844d30f2",
+      "blobSha": "f0db0062bb5dae60bb0ad1e3502bc952bd649412",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/PrivacyInfo.xcprivacy"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/SceneDelegate.swift",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 899,
+      "sha256": "738b9b96bb71d34d80cd8c1183cf7f8f6f2e789c64e46fb5fe6777a35ae12dfd",
+      "blobSha": "f352e1e9592996633ba4ff94d4e879554638862a",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/SceneDelegate.swift"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/en.lproj/InfoPlist.strings",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 164,
+      "sha256": "0c24ed31dbe052a9198992fb0330d6af98de85d771a0fd831ff57c8c7ca23f60",
+      "blobSha": "220047f131bbe6d6e30837f78c8d2d00e9a10759",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/en.lproj/InfoPlist.strings"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/ru.lproj/InfoPlist.strings",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 212,
+      "sha256": "8eae58cbbe72a70cb8ba63ea171949d9e4251f9803ecb42b1cc5eeb2a070fe7f",
+      "blobSha": "6391ddd002ca6ced1cc8273139a2df04c12e868e",
+      "binary": false,
+      "source": "apps/mobile/ios/App/App/ru.lproj/InfoPlist.strings"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/.gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 165,
+      "sha256": "4b958e2b4dd57319aadef2551153c74b9cb5ffe9f89d6e3e491122a94913f016",
+      "blobSha": "3b29812086f28a2b21884e57ead495ffd9434178",
+      "binary": false,
+      "source": "apps/mobile/ios/App/CapApp-SPM/.gitignore"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/Package.swift",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1620,
+      "sha256": "2770201ccb936e1c7855836a7793c5de73e3b7ec4ac03e53250cb0da8119fe78",
+      "blobSha": "bc87104fa3f5955ec6c05d7a441aa1be04453329",
+      "binary": false,
+      "source": "apps/mobile/ios/App/CapApp-SPM/Package.swift"
+    },
+    {
+      "path": "apps/mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 33,
+      "sha256": "70bf9dafddc35e3877dfb133a996f5be7ccd1e132897a98fdbf4869ff605ece9",
+      "blobSha": "945afec8c778e227bfd9892d58cc9b43a3b45ce3",
+      "binary": false,
+      "source": "apps/mobile/ios/App/CapApp-SPM/Sources/CapApp-SPM/CapApp-SPM.swift"
+    },
+    {
+      "path": "apps/mobile/ios/debug.xcconfig",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 23,
+      "sha256": "4838938a72b913b99cfda54a43bbe73f05893071dc6e3702b0adc44794b64272",
+      "blobSha": "53ce18dead86a04b15c04ccc23da732642cfcc6a",
+      "binary": false,
+      "source": "apps/mobile/ios/debug.xcconfig"
+    },
+    {
+      "path": "capacitor.config.json",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 372,
+      "sha256": "c28dd50db2c283a03b4859a0cdfe85ce862d08080ab0824cfa6ad7595a9e2863",
+      "blobSha": "692bcddb225d1c2a5ac6cff9357c411ee80f39f8",
+      "binary": false,
+      "source": "capacitor.config.json"
+    },
+    {
+      "path": "native.html",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 795,
+      "sha256": "eb9b5c56d28bd5d941786fe67590b507277c358b1d4c8b9384b534bd17279d4e",
+      "blobSha": "00b8721778ba5ac7fc427b8146f7f5308c60f04c",
+      "binary": false,
+      "source": "native.html"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 454023,
+      "sha256": "a59bb5ff8d153f6b21550c3041e04590bb73f92db5af29c402a0377acce3708a",
+      "blobSha": "8daf64da510fd176243e8911db104fadcd8d5376",
+      "binary": false,
+      "source": "package-lock.json"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 16817,
+      "sha256": "48f2912cc4cfda94c0d6fd7a4ecd0880bd1d645efe76adcd2b4a5e67d06588f4",
+      "blobSha": "3aa93b26f28a8be8a929be3dc1ee3d3992a653dd",
+      "binary": false,
+      "source": "package.json"
+    },
+    {
+      "path": "scripts/mobile/build-native.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 7983,
+      "sha256": "9696723c7c5fad173ab1dfe4cfff96973040186347c64f8c02e4b6bb7a9ee23e",
+      "blobSha": "948ad00b8407fd9e042537ecfbdd5f1bec7ebc79",
+      "binary": false,
+      "source": "scripts/mobile/build-native.mjs"
+    },
+    {
+      "path": "scripts/mobile/ios-simulator-build.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 12716,
+      "sha256": "9085429c12da0a7ff864ae05d012d0b8c4fe71328c53224da3c510642bde6237",
+      "blobSha": "a76b4d94888221cd1fe3a1ea1248da0fe5a72034",
+      "binary": false,
+      "source": "scripts/mobile/ios-simulator-build.mjs"
+    },
+    {
+      "path": "scripts/mobile/native-base-assets.json",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 64631,
+      "sha256": "d9eaa05b5dd5cd90ea3880d184353f55195f2b29d68853f07015f6ec51436d27",
+      "blobSha": "19231b551423623e56bb07de37a7207775554fe0",
+      "binary": false,
+      "source": ".tmp/native-bootstrap/ios-native-base-assets-projection.json"
+    },
+    {
+      "path": "scripts/mobile/pwa-artifact.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 14846,
+      "sha256": "32d33ac98f1b60a2f922e531384503850e172062d957aa4beec6270ee0d45193",
+      "blobSha": "0d21781f89fc01ffd6cd3fa72c5b9ec0bfbe3790",
+      "binary": false,
+      "source": "scripts/mobile/pwa-artifact.mjs"
+    },
+    {
+      "path": "scripts/mobile/verify-native-artifact.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 27838,
+      "sha256": "a31f5a1261ff2a62f1dbb91618a477b4e1ff30f23cd049a78457b6a1b74f5f99",
+      "blobSha": "3384dcb5fb73338c54066aec2d4920b8b99f9a62",
+      "binary": false,
+      "source": "scripts/mobile/verify-native-artifact.mjs"
+    },
+    {
+      "path": "src/App.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 155266,
+      "sha256": "3d9b9c49a1210f5a267aa8984f58dc2db00e8d123e31b43d486e059f5ce94dcf",
+      "blobSha": "7d578daf13a568949ee1c9b3fa389e55ddd39264",
+      "binary": false,
+      "source": "src/App.tsx"
+    },
+    {
+      "path": "src/books/bookDossierPublicClient.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 2002,
+      "sha256": "d14ec7f2e05340d9bf0530c755a93608bf6cb1013091ddc4669fd9ab9c6eeac9",
+      "blobSha": "026ee3b802047c3a0b40055c467a310841284e90",
+      "binary": false,
+      "source": "src/books/bookDossierPublicClient.ts"
+    },
+    {
+      "path": "src/books/usePublishedBookDossier.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 6026,
+      "sha256": "67d2d3dfe387bd42aafa026176c9a66246dc8b01cb7fc04003e58ac719d4aea4",
+      "blobSha": "9d26cb25270a10561daff83a67a2b279f7a6b747",
+      "binary": false,
+      "source": "src/books/usePublishedBookDossier.ts"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 3662,
+      "sha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3",
+      "blobSha": "ba615872a8c8561f0dbc23c6696fb5d2a24a34ba",
+      "binary": false,
+      "source": "src/community/AuthContext.tsx"
+    },
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 77717,
+      "sha256": "5bfa55a1cec6eb25bcbee2d0bcec52bb6b70703c97ed5aa89c73a4d10696097c",
+      "blobSha": "2be45e083a308e7bede12a4ecf82a8ade17cb3f6",
+      "binary": false,
+      "source": "src/community/CommunityHub.tsx"
+    },
+    {
+      "path": "src/components/ArticleLibrarySection.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 22143,
+      "sha256": "ce98d9d957e629336fcfc6b03fecca48e9daaa1075c7c94df23568940b52fdb0",
+      "blobSha": "b4141e94d2835ba6ef2520857a5e13301de19d5e",
+      "binary": false,
+      "source": "src/components/ArticleLibrarySection.tsx"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 59867,
+      "sha256": "f926aeedcb222574824d06858ddcf9dabe172ddcc1c900bd021db8ce70fea354",
+      "blobSha": "4f5d76f00f5f9b9da8d6c9060bc4cb39734734f3",
+      "binary": false,
+      "source": "src/components/ArticleReader.tsx"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 207973,
+      "sha256": "85f0f6a605ab3bcc5e401e362a4c47fbb3c74a3f85e4f68726999dd08125ae39",
+      "blobSha": "09a7c54cb2321715f6053c05053bc8df65cb5f30",
+      "binary": false,
+      "source": "src/components/BookArchiveSection.tsx"
+    },
+    {
+      "path": "src/components/BootstrapErrorBoundary.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 2481,
+      "sha256": "048eb2313433844a8ffd8f6219ee670d79eb7bd5ade1eb701706a71a989ab664",
+      "blobSha": "04d51a4e01858ace52284c597bb6ed61d6e8cc95",
+      "binary": false,
+      "source": "src/components/BootstrapErrorBoundary.tsx"
+    },
+    {
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 9768,
+      "sha256": "52fbdf708916e7e605b0909ad83e4e30525e17403fb6dcd14bccd31ccbdccebb",
+      "blobSha": "8a3ab72f3d6a24986d4efd3cb0f95542aba07a21",
+      "binary": false,
+      "source": "src/components/HeaderArticlesMenu.tsx"
+    },
+    {
+      "path": "src/components/RecentHistoryPanel.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 4644,
+      "sha256": "abcf0d41f67235ed33b64cc217b3fdf3c4c40e8d4fd94cb039bdbd4e6926913f",
+      "blobSha": "e05cbb916ae8854e1af0888142c1734686800251",
+      "binary": false,
+      "source": "src/components/RecentHistoryPanel.tsx"
+    },
+    {
+      "path": "src/components/SectionsDirectory.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 12737,
+      "sha256": "15c9716b82e190c8a3b171ad502590b269ca93c8166621dea4248e40e9e6ce9c",
+      "blobSha": "0d6970f171f10d2dd1354a1de2226eb910787d4e",
+      "binary": false,
+      "source": "src/components/SectionsDirectory.tsx"
+    },
+    {
+      "path": "src/components/WriterPanel.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 53988,
+      "sha256": "b10bad5e488d18233a60a4f0450b669af93c7c4c9b81b8a3c87ff355a13b93bf",
+      "blobSha": "1c7d74417eb3ce66118df85d3491d0d4bf3b5a19",
+      "binary": false,
+      "source": "src/components/WriterPanel.tsx"
+    },
+    {
+      "path": "src/components/recent-history.css",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 766,
+      "sha256": "a071f3211b2f839cfd00da3887e5b5664d2c977abddb157e4202964bba8a1158",
+      "blobSha": "17ffc5d847b136d71e72211f6e345987ee94976f",
+      "binary": false,
+      "source": "src/components/recent-history.css"
+    },
+    {
+      "path": "src/components/writerPanelBooks.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1670,
+      "sha256": "e20f70de4a619a6962ec263fef5d26cc815629101130f593ea2122c056611b68",
+      "blobSha": "3c4954bdefc1b9f11285c4333cba3e0e1ac34383",
+      "binary": false,
+      "source": "src/components/writerPanelBooks.ts"
+    },
+    {
+      "path": "src/components/writerPanelPresentation.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 11749,
+      "sha256": "46cb3309d6907f3c6bc5af702b70b6c26eef743bcb5df38a580ebd5bcc218593",
+      "blobSha": "a6fc58220c58ab797d846af5b39583af96681a9b",
+      "binary": false,
+      "source": "src/components/writerPanelPresentation.ts"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 14409,
+      "sha256": "04cb3edbfd5b882a2eb49c6eb74fae1f4e7e9b0f6e1164a5bc574098bb1fd940",
+      "blobSha": "86924f080ed44d6daa0ebbcf0b074a8cf96dec6c",
+      "binary": false,
+      "source": "src/host/HostPlatformServices.ts"
+    },
+    {
+      "path": "src/host/HostRuntimeStatus.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 5008,
+      "sha256": "cf10af412532534e8f317d4082c40deee8fb9c992f4997a83cf97e5c22cfa736",
+      "blobSha": "325244460c8c4dbb8dfada48979516ef755819c4",
+      "binary": false,
+      "source": "src/host/HostRuntimeStatus.tsx"
+    },
+    {
+      "path": "src/host/host.css",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 321,
+      "sha256": "6f46a113b6d2439a8a6e6070a5e6ff3e83ef340bbe4f4e831e8976667e79b101",
+      "blobSha": "5a8091d8a3e54168d9a7cb215fc850f13f968509",
+      "binary": false,
+      "source": "src/host/host.css"
+    },
+    {
+      "path": "src/host/initializeHostPlatform.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 5665,
+      "sha256": "747aabe8e36ea20e8714d509a05c9bb01836b0b688b9eef5f743f6c76423422c",
+      "blobSha": "1ab678ac9f8baeb2b26eba198ab9fc6d99312ecb",
+      "binary": false,
+      "source": "src/host/initializeHostPlatform.ts"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 3815,
+      "sha256": "a77b9d962bceb18eb59b2de9d9a1e5a2e0105bf95a8723d96af8dde598542b2e",
+      "blobSha": "f584f9233d6ff8f12f4c2ee1ce89016a6c4b35eb",
+      "binary": false,
+      "source": "src/host/mountHostApp.tsx"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 119951,
+      "sha256": "558aa11a47cff412db410ae094db48edadf7a9185cbba48c857e1f3ba4643e51",
+      "blobSha": "d3e301d53bd37407251cba0f67a49c1ff4cbf5eb",
+      "binary": false,
+      "source": "src/i18n/InterfaceLanguage.tsx"
+    },
+    {
+      "path": "src/lib/loadSupabaseClient.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 785,
+      "sha256": "406c41fab955a9d7ce1193ec45fbdaabece8c08329363a46a494db2b91a329d3",
+      "blobSha": "3befd109dc213715166a4e3bda9dbeeb38967b74",
+      "binary": false,
+      "source": "src/lib/loadSupabaseClient.ts"
+    },
+    {
+      "path": "src/lib/supabase.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 2703,
+      "sha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd",
+      "blobSha": "724897e22e094ba797c5e688255fe019e01f3638",
+      "binary": false,
+      "source": "src/lib/supabase.ts"
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1422,
+      "sha256": "bcce1a97b7fcac1b7a4a4fa627a3c9cda74944ae7bc215b2c15b7015dcfc0e22",
+      "blobSha": "fc4ec07716e757d2945e6a55f599ebb6d4ebeef8",
+      "binary": false,
+      "source": "src/loading/bookArchiveRuntime.ts"
+    },
+    {
+      "path": "src/planet/RecentHistory.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 2238,
+      "sha256": "7b80d8b9bcfbee832a36bab1991d11f747fb9904122cb689f285792c0972f7ec",
+      "blobSha": "a214f589da1ab91b5f19db84bafbb0e4d2551983",
+      "binary": false,
+      "source": "src/planet/RecentHistory.tsx"
+    },
+    {
+      "path": "src/planet/books.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 896,
+      "sha256": "c694e1991b64a4e626c4e578457d3e3b9f30bfb761558c4c6d8dde4304d08989",
+      "blobSha": "0e89f87c6792dcbcc95a5b53460d0928f7152a22",
+      "binary": false,
+      "source": "src/planet/books.ts"
+    },
+    {
+      "path": "src/planet/brand.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 659,
+      "sha256": "074c3ad10618ed55204fcd2fb13067d6d6f1977c488b84d13aec460a47c640f4",
+      "blobSha": "a7dc416f22c6e41b0335337b731b1f9f79059a60",
+      "binary": false,
+      "source": "src/planet/brand.ts"
+    },
+    {
+      "path": "src/planet/catalog.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 456,
+      "sha256": "a03280a4ac68a21be24d9a2dc3b6333ee44e1752e1a2c7c62efecb95d0606e19",
+      "blobSha": "d0e01766fc4220562155c1c93b12455aaaf409ef",
+      "binary": false,
+      "source": "src/planet/catalog.ts"
+    },
+    {
+      "path": "src/planet/localization.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 623,
+      "sha256": "28b0b98bbbc89be8e1a33a13f2332217f8bdeb5d16cd702bc200ade4a83d2bff",
+      "blobSha": "4af8a79219505486cf432b50edc0e4a512248ba2",
+      "binary": false,
+      "source": "src/planet/localization.ts"
+    },
+    {
+      "path": "src/planet/selection.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1196,
+      "sha256": "0d0ed8c86722e7f4c36885ab572ffb746c16ce69e4ccebf797eb5c3cd0fd99e3",
+      "blobSha": "b7c6ad03036698b3d83a43ed7d1d6806c45826e4",
+      "binary": false,
+      "source": "src/planet/selection.ts"
+    },
+    {
+      "path": "src/planet/types.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 608,
+      "sha256": "80ffbec6e93002364fba05b8d303ee7a712f29cbe801a04a4af70a5a587ff25d",
+      "blobSha": "71d6d8bf08cff7b4ff6680dfc80231267c2dd71f",
+      "binary": false,
+      "source": "src/planet/types.ts"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1374,
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5",
+      "blobSha": "ad24ddaebb1c1fb55527f0cb5752a446e0bd8bee",
+      "binary": false,
+      "source": "src/platform/PlatformServices.tsx"
+    },
+    {
+      "path": "src/platform/adapters/ios/IosPlatformAdapter.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1978,
+      "sha256": "08e2811719c25b26a5afa9ca4e4e33e27328779a894be1253a5f227e9221c70a",
+      "blobSha": "cd6fcd1ebc25c09b50280c792dd78facfa757e21",
+      "binary": false,
+      "source": "src/platform/adapters/ios/IosPlatformAdapter.ts"
+    },
+    {
+      "path": "src/platform/adapters/ios/entry.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 326,
+      "sha256": "d9f7913b71ba139ffddfada6a300ad97a516665fb565f443159c54bee2bb75ba",
+      "blobSha": "baaf9d06fef90a88d11223b7c87171f508d5b0ff",
+      "binary": false,
+      "source": "src/platform/adapters/ios/entry.ts"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 474,
+      "sha256": "c2947a4631d4b72392de12ab35dd8b30254ad3f612396507739067b1a1d6cf0b",
+      "blobSha": "363bf073b4e32f21ea20d6915473111f1cc5c5f4",
+      "binary": false,
+      "source": "src/platform/distribution.ts"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1541,
+      "sha256": "6d660acf26dd709a83c9164be777f2cc04d814e23e3a3db0c2225901c035e4ce",
+      "blobSha": "d296cda37dbf88d5153a3c1fa2ad569bb5be0b8c",
+      "binary": false,
+      "source": "src/platform/ports.ts"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 29266,
+      "sha256": "908c2de5a6cabdec3388c930ff07c65f7a01f0407f9d9dca06a1ab17dd21eca1",
+      "blobSha": "9c18d37bef33f0a9871ca58f76f305b56dd9b2f2",
+      "binary": false,
+      "source": "src/pwa/serviceWorkerRuntime.js"
+    },
+    {
+      "path": "src/utils/articleRoutes.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 9567,
+      "sha256": "fe81114b04a386dc83a36bad95252712583819f618f32480e8e1d6974b9f7d68",
+      "blobSha": "94b06d9043d4bbde964a569ef7339a91df50e036",
+      "binary": false,
+      "source": "src/utils/articleRoutes.ts"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1387,
+      "sha256": "6d0ec696011492e5b1c49348494bf1f4f3da303136e5fa5908d3acc9e4572248",
+      "blobSha": "c55c0838c5bd431937ffe3715bbfa1252ac213e4",
+      "binary": false,
+      "source": "src/vite-env.d.ts"
+    },
+    {
+      "path": "vite.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 3562,
+      "sha256": "940a522685d7d756b068252832a5a6d4497cb2fdeb81377ae70887ce6b3347df",
+      "blobSha": "aaedd2867199ce138fef662e214a5668e7391881",
+      "binary": false,
+      "source": "vite.config.ts"
+    },
+    {
+      "path": "vite.native.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "bytes": 1810,
+      "sha256": "5a7d0beacf177a2fc645bfb9856f121ce5c3c70fd7001be4224c7433b008c001",
+      "blobSha": "9b1c747511ffd323a25a4925c5fafe956a6cabe2",
+      "binary": false,
+      "source": "vite.native.config.ts"
+    }
+  ],
+  "sourceReviewSha256": "c4dde3e069b9796708e2acafe71ad5906a7d0665f8d5637101018cf52006f527",
+  "independentReviewSha256": "785b89276515756f2fa5f080ed5ee7958c4464edaa7fd001fd7138fc0e8e488b",
+  "finalReviewSha256": "97730a9227ee9958efb04d613c3d883bb0249f5a674935556822ebbe7c422083",
+  "remoteWritesPerformed": false
+}

@@ -1,0 +1,836 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+  "localCheckpoint": "ca6f805badc6638fbee5998f0de483b0857ca1c8",
+  "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+  "commitOrder": [
+    {
+      "commit": "c052599516af0658c3764d4c69bfcaac485f2e0c",
+      "parent": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+      "title": "Restore realistic bookshelf motion and refine reading controls (#180)",
+      "totalFiles": 161,
+      "publicFiles": 0,
+      "sourceFiles": [
+        "apps/admin/catalog-assets/interface-copy-catalog.json",
+        "apps/admin/lib/book-dossier-integration.source.test.ts",
+        "scripts/audit-bookshelf-dossier-layout.mjs",
+        "scripts/audit-bookshelf-extraction.mjs",
+        "scripts/audit-bookshelf-spine-legibility.mjs",
+        "scripts/audit-bookshelf-spine-motion.mjs",
+        "scripts/database/book-dossier-local-regression.mjs",
+        "scripts/database/book-dossier-migration-plan.test.mjs",
+        "scripts/database/build-book-dossier-migration-plan.mjs",
+        "scripts/governance/bookshelf-owner-refinement-20260905.json",
+        "scripts/lib/stage5-content-data-lock.test.mjs",
+        "src/books/bookDossier.test.ts",
+        "src/books/bookInspectionPageLayout.test.ts",
+        "src/books/bookInspectionPageLayout.ts",
+        "src/books/bookInspectionTextures.test.ts",
+        "src/books/bookInspectionTextures.ts",
+        "src/books/bookShelfExtractionMotion.test.ts",
+        "src/books/bookShelfExtractionMotion.ts",
+        "src/books/bookTypography.test.ts",
+        "src/books/bookTypography.ts",
+        "src/books/completeShelfCanvas.source.test.ts",
+        "src/books/completeShelfModel.test.ts",
+        "src/books/completeShelfModel.ts",
+        "src/books/completeShelfRenderer.tsx",
+        "src/books/completeShelfTextures.test.ts",
+        "src/books/completeShelfTextures.ts",
+        "src/components/BookArchiveSection.tsx",
+        "src/components/BookCollectionShelfSwitcher.test.tsx",
+        "src/components/BookCollectionShelfSwitcher.tsx",
+        "src/components/BookDossierReader.tsx",
+        "src/components/BookShelfControls.tsx",
+        "src/components/BookShelfQualityMenu.tsx",
+        "src/components/BookShelfSceneCanvas.tsx",
+        "src/components/bookShelfApprovedPresentation.test.ts",
+        "src/i18n/InterfaceLanguage.tsx",
+        "src/i18n/stage5d1InterfaceCoverage.test.ts",
+        "src/index.css",
+        "src/main.tsx",
+        "src/styles/book-dossier.css",
+        "src/styles/book-reader-refinement.css",
+        "src/styles/book-shelf-controls.css",
+        "src/styles/header-preserved.css",
+        "src/styles/site-typography.css",
+        "src/styles/stage5-book-shelf.css",
+        "supabase/migrations/20260905_book_dossiers_layout_v4.sql"
+      ],
+      "overlaps": [
+        "scripts/lib/stage5-content-data-lock.test.mjs",
+        "src/components/BookArchiveSection.tsx",
+        "src/i18n/InterfaceLanguage.tsx",
+        "src/main.tsx"
+      ]
+    },
+    {
+      "commit": "834b3126a682c024b5d5fdc0f6a8f7539b92a4e9",
+      "parent": "c052599516af0658c3764d4c69bfcaac485f2e0c",
+      "title": "Correct book imprint and restore private ledger permissions in rehearsal (#184)",
+      "totalFiles": 4,
+      "publicFiles": 0,
+      "sourceFiles": [
+        "scripts/database/book-dossier-local-regression.mjs",
+        "scripts/database/build-book-dossier-migration-plan.mjs",
+        "src/books/completeShelfTextures.ts"
+      ],
+      "overlaps": []
+    },
+    {
+      "commit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "parent": "834b3126a682c024b5d5fdc0f6a8f7539b92a4e9",
+      "title": "Refine article reading, illustrated books, and image delivery (#183)",
+      "totalFiles": 4007,
+      "publicFiles": 3894,
+      "sourceFiles": [
+        "apps/admin/app/api/media/upload/route.test.ts",
+        "apps/admin/app/api/media/upload/route.ts",
+        "apps/admin/catalog-assets/interface-copy-catalog.json",
+        "apps/admin/components/ArticleEditor.tsx",
+        "apps/admin/components/EditorMediaDialog.tsx",
+        "apps/admin/components/HomepageMediaField.tsx",
+        "apps/admin/components/MediaUploader.tsx",
+        "apps/admin/components/useEditorMediaWorkflow.ts",
+        "apps/admin/lib/client-image-upload.test.ts",
+        "apps/admin/lib/client-image-upload.ts",
+        "apps/admin/lib/editor-image-upload.ts",
+        "scripts/assets/article-previews.sources.json",
+        "scripts/audit-performance-budget.mjs",
+        "scripts/audit-performance-budget.test.mjs",
+        "scripts/audit-tilda-dependencies.mjs",
+        "scripts/audit-tilda-dependencies.test.mjs",
+        "scripts/audit-typography.mjs",
+        "scripts/audit-typography.test.mjs",
+        "scripts/build-article-pages.mjs",
+        "scripts/capture-typography-evidence.mjs",
+        "scripts/export-published-content-article-metadata.source.test.mjs",
+        "scripts/governance/reading-design-owner-refinement-20260906.json",
+        "scripts/historical-source-acquisition-policy.source.test.mjs",
+        "scripts/lib/article-derived-text.test.mjs",
+        "scripts/lib/atomic-json-write.mjs",
+        "scripts/lib/atomic-json-write.test.mjs",
+        "scripts/lib/compact-image-delivery.mjs",
+        "scripts/lib/compact-image-delivery.test.mjs",
+        "scripts/lib/public-image-delivery.mjs",
+        "scripts/lib/public-image-delivery.test.mjs",
+        "scripts/lib/published-image-performance.mjs",
+        "scripts/lib/reviewed-reading-design.d.mts",
+        "scripts/lib/reviewed-reading-design.mjs",
+        "scripts/lib/stage5-content-data-lock.test.mjs",
+        "scripts/lib/stage5b-art-direction.test.mjs",
+        "scripts/prepare-public-images.mjs",
+        "scripts/prepare-public-images.test.mjs",
+        "src/App.tsx",
+        "src/articles/articleBookImages.test.ts",
+        "src/articles/articleBookImages.ts",
+        "src/articles/articleBookPages.test.ts",
+        "src/articles/articleBookPages.ts",
+        "src/articles/articleBookTextures.ts",
+        "src/articles/hyphen.d.ts",
+        "src/books/completeShelfRenderer.tsx",
+        "src/community/ArticleEngagement.tsx",
+        "src/community/CommunityHub.tsx",
+        "src/components/ArticleBookReader.tsx",
+        "src/components/ArticleLibrarySection.tsx",
+        "src/components/ArticleReader.tsx",
+        "src/components/BookArchiveSection.tsx",
+        "src/components/BookShelfScene.tsx",
+        "src/components/BookShelfSceneCanvas.tsx",
+        "src/components/CmsHomepageContent.tsx",
+        "src/components/CmsPageReader.tsx",
+        "src/components/CmsSiteChrome.tsx",
+        "src/components/HeaderArticlesMenu.tsx",
+        "src/components/LiteraryCalendar.tsx",
+        "src/components/SectionsDirectory.tsx",
+        "src/components/stage5Governance.test.ts",
+        "src/i18n/InterfaceLanguage.tsx",
+        "src/index.css",
+        "src/main.tsx",
+        "src/styles/article-book-reader.css",
+        "src/styles/article-reading-layout.css",
+        "src/styles/book-month-news-composition.css",
+        "src/styles/calendar-layout.css",
+        "src/styles/community-editorial-layout.css",
+        "src/styles/community-layout.css",
+        "src/styles/editorial-card-layout.css",
+        "src/styles/header-preserved.css",
+        "src/styles/navigation-panels.css",
+        "src/styles/search-account-layout.css",
+        "src/styles/site-typography.css",
+        "src/styles/stage5-book-collection-dialog.css",
+        "src/styles/stage5-book-collection-manager.css",
+        "src/styles/stage5-home-art-direction.css",
+        "src/styles/stage5-home-layout.css",
+        "src/utils/articleBoundaryBreaks.ts",
+        "src/utils/articleImageDelivery.test.ts",
+        "src/utils/articleImageDelivery.ts",
+        "src/utils/imageDelivery.test.ts",
+        "src/utils/imageDelivery.ts",
+        "src/utils/imageDeliveryModel.ts",
+        "src/utils/imageUploadOptimization.test.ts",
+        "src/utils/imageUploadOptimization.ts",
+        "src/utils/rasterImageMetadata.test.ts",
+        "src/utils/rasterImageMetadata.ts",
+        "src/utils/sanitizeArticleHtml.ts"
+      ],
+      "overlaps": [
+        "package-lock.json",
+        "package.json",
+        "playwright.config.mjs",
+        "scripts/export-published-content-article-metadata.source.test.mjs",
+        "scripts/historical-source-acquisition-policy.source.test.mjs",
+        "scripts/lib/stage5-content-data-lock.test.mjs",
+        "src/App.tsx",
+        "src/community/CommunityHub.tsx",
+        "src/components/ArticleLibrarySection.tsx",
+        "src/components/ArticleReader.tsx",
+        "src/components/BookArchiveSection.tsx",
+        "src/components/HeaderArticlesMenu.tsx",
+        "src/components/SectionsDirectory.tsx",
+        "src/components/stage5Governance.test.ts",
+        "src/i18n/InterfaceLanguage.tsx",
+        "src/main.tsx"
+      ]
+    }
+  ],
+  "counts": {
+    "upstream": 4158,
+    "public": 3894,
+    "nonPublic": 264,
+    "overlaps": 16,
+    "textConflicts": 3
+  },
+  "overlappingFiles": [
+    {
+      "path": "package-lock.json",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "ecc7523f2b30e8568256c4ebdc75a2acf44b082787c8d50bcc56c3ca7e45b224",
+      "localSha256": "9f3606121ee5e9e02af2bed9441b762a8b9356b4cd6b5c30286d30d9d27eead1",
+      "upstreamSha256": "0d48b76e7291c1d3fa2fdd78185b2fa8dbcd0415a38da376ce6b6c37d7294aa4"
+    },
+    {
+      "path": "package.json",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "87c0f4b5c4cfa9b01a8404a7e7975916739e429de23db78253d8a1562b79ceac",
+      "localSha256": "cbe349eb5f79715ffb1d32db330fba2a460b3abd6885e2d43a4c183e5369040d",
+      "upstreamSha256": "64ead64b5c0f4cf4d79554232e7a3730d3a3b8adea7c2b3313e5023dd865bfdb"
+    },
+    {
+      "path": "playwright.config.mjs",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "aa6ae38af28280be9bd912380dd805831224988039ddb3f591f6d91d6ed60b18",
+      "localSha256": "3eb496d0776660dd0f849ef5cae7d04a454dc76f23d08f2847e4694b5f35a6c6",
+      "upstreamSha256": "bf35d0a72c52652cc787d2cc789fd00bc964ab2794d27d86ef37de2c0ff4258f"
+    },
+    {
+      "path": "scripts/export-published-content-article-metadata.source.test.mjs",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "9b695c95cf551b88cb8197c63c935feede751ce00333bd80ccde070b99c82860",
+      "localSha256": "db31ff6dcca04129aef003e674a67d16cde6159945495cc6cc175b6df96c7bb2",
+      "upstreamSha256": "db31ff6dcca04129aef003e674a67d16cde6159945495cc6cc175b6df96c7bb2"
+    },
+    {
+      "path": "scripts/historical-source-acquisition-policy.source.test.mjs",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "6bc9bc5c52d2592b5380101620e6398b8890319aa5d8352b786c535109fe4cd8",
+      "localSha256": "8c9e95ec8caf823a0d04336eca79c1b0d9f0170d5744a73cea64e99c15b39b54",
+      "upstreamSha256": "4954228b5ac032b30d189598418f3bf6582cda5298ba42b2a63c5c9715156df9"
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "status": 2,
+      "conflicts": 2,
+      "conflictLocations": [
+        {
+          "mergedOutputLine": 9
+        },
+        {
+          "mergedOutputLine": 280
+        }
+      ],
+      "baseSha256": "c9e7739f4653f7ca902bcbf792c0208497479486cdd8d1ab12286952eb098de1",
+      "localSha256": "95bd4966ad7093561303c06583c6e5522995f8f05a4952558c13d4ab4f8114a1",
+      "upstreamSha256": "6ad196487326719b5f4e845e80eb70b73cf325d3051f6d62a3e8917244cb1479"
+    },
+    {
+      "path": "src/App.tsx",
+      "status": 2,
+      "conflicts": 2,
+      "conflictLocations": [
+        {
+          "mergedOutputLine": 515
+        },
+        {
+          "mergedOutputLine": 3164
+        }
+      ],
+      "baseSha256": "7f0138092bcb958ecae6c006b88af32d1d6188c47dcd52230da27380ed87de13",
+      "localSha256": "b001194626e44d8a55363a5196ce85e05a797860b322b93982b42b4cd515415e",
+      "upstreamSha256": "bbc764b3168e817212967240bf872de1bf62c58169020dce990484d47ab048ab"
+    },
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "cfc66931d6b51df1b0ba2526e096277a59ce0d7684b4a1157c02ab3f4489e168",
+      "localSha256": "3d976060fa4fdc369b06746617a2809babd13cd20c02f0b40a3c6a2fdfdd7ce0",
+      "upstreamSha256": "243bc2a28c603c6b80c136fbdd53894cb42420aba246d50ef0d70df690ad0c9c"
+    },
+    {
+      "path": "src/components/ArticleLibrarySection.tsx",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "35a7e153812f497aae5d2714602dc3180341d813f4ce886966a5c55b8e7ee4ad",
+      "localSha256": "2a0aa6c49be6348ee504f4339fa47ee63433bacfc72bbb07446e9bc97ca173bb",
+      "upstreamSha256": "0ff3a53fda3a2e038a7febc56a9f736c0e08d074c736afbfc1d632b94a9aed10"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "d455bcfab001589321585cdb0c19b0fa2a7ae045212036117d33944fbecc3b25",
+      "localSha256": "e2d97a4aaa68f56956933ce36847a2ad7495baa7069fc920d752a0c6b0217817",
+      "upstreamSha256": "8acf87a40a2b70f68383a80459112894e4150b6954836b9f98a0946fe370f028"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "91cb8a7e75497976c5c87f8e044fbeaf5428d0211bc9ec09c6c41706fa7cb20a",
+      "localSha256": "261fd5570b79f249a6f154095511b1b0a298c581fad7420140e6e83eb4a17b0a",
+      "upstreamSha256": "5286d641d7fe270fdf323acf7e0cb3cd31e04f7c8f6d0972f3e72a1487ab7f40"
+    },
+    {
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "0264a00ee6e56ad576cc68fb9d75e2f4d5cb5c0862c3109ce748c8eeb0b44fe6",
+      "localSha256": "000b078a53dc4b5fa5717e25e8f102cc414c4cdfdc0f73b52ed9823ba672e3ee",
+      "upstreamSha256": "4007ede3c40cd32921a3029c0b20ca75ec57060a4d556f7e728d8cdc3b2da157"
+    },
+    {
+      "path": "src/components/SectionsDirectory.tsx",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "6b20316c82013999b8a4fa7da83ba34be487e8c0911cec8dc636cb466aa97b8a",
+      "localSha256": "690bad2b2c7ec070428a4400021cb5788add6c1790b0dcc119e725dd4e728594",
+      "upstreamSha256": "ca74e0a4beb81a8d7b043f51694eb1e97206f9bf71e05d9fb356bae4807f7556"
+    },
+    {
+      "path": "src/components/stage5Governance.test.ts",
+      "status": 1,
+      "conflicts": 1,
+      "conflictLocations": [
+        {
+          "mergedOutputLine": 7
+        }
+      ],
+      "baseSha256": "4dca335d1ebca10d32ef0e87766c49651a2caa5bcf5ae51ac0d3fba55867f049",
+      "localSha256": "c835ddbadfdaad37b76830217b7e60d1d7392243f3e91b56f3c1e9fa84401827",
+      "upstreamSha256": "272e48e93dca30c72bc15db122a170f809ed9a46d89f2d993caa85bc249f9fea"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "c49f0dddcf77685fc5e07e9cddbbf54d1aa78a9b3aca7e1f84ec76890789fbe6",
+      "localSha256": "4f81a66447d029b1698a2894d0852f55d87617496bd3bb3dd31e5a9124ba896f",
+      "upstreamSha256": "b736c44d618b10d646e69885d6810a8c227fa2407cc34de2fd237f02a94d35b4"
+    },
+    {
+      "path": "src/main.tsx",
+      "status": 0,
+      "conflicts": 0,
+      "conflictLocations": [],
+      "baseSha256": "bfc0ff4b9a0f6217ad78da285ad9a6386e719aa4d9e72281bf43aec1a2dae192",
+      "localSha256": "d92aa04b159c16422b4dc7cc4db605c55f70f1932974d7f089446569461a06c0",
+      "upstreamSha256": "2b4f7e9538cde8103d6fc6ad3ab7ed5fa67e342260085dc6541794a67248ce7d"
+    }
+  ],
+  "sourceAndConfigPaths": [
+    ".github/workflows/quality.yml",
+    "apps/admin/app/api/media/upload/route.test.ts",
+    "apps/admin/app/api/media/upload/route.ts",
+    "apps/admin/catalog-assets/interface-copy-catalog.json",
+    "apps/admin/components/ArticleEditor.tsx",
+    "apps/admin/components/EditorMediaDialog.tsx",
+    "apps/admin/components/HomepageMediaField.tsx",
+    "apps/admin/components/MediaUploader.tsx",
+    "apps/admin/components/useEditorMediaWorkflow.ts",
+    "apps/admin/lib/book-dossier-integration.source.test.ts",
+    "apps/admin/lib/client-image-upload.test.ts",
+    "apps/admin/lib/client-image-upload.ts",
+    "apps/admin/lib/editor-image-upload.ts",
+    "config/tilda-dependency-baseline.json",
+    "docs/IMAGE_DELIVERY.md",
+    "docs/TYPOGRAPHY_RHYTHM.md",
+    "package-lock.json",
+    "package.json",
+    "performance-budget.json",
+    "playwright.config.mjs",
+    "scripts/assets/article-previews.sources.json",
+    "scripts/audit-bookshelf-dossier-layout.mjs",
+    "scripts/audit-bookshelf-extraction.mjs",
+    "scripts/audit-bookshelf-spine-legibility.mjs",
+    "scripts/audit-bookshelf-spine-motion.mjs",
+    "scripts/audit-performance-budget.mjs",
+    "scripts/audit-performance-budget.test.mjs",
+    "scripts/audit-tilda-dependencies.mjs",
+    "scripts/audit-tilda-dependencies.test.mjs",
+    "scripts/audit-typography.mjs",
+    "scripts/audit-typography.test.mjs",
+    "scripts/build-article-pages.mjs",
+    "scripts/capture-typography-evidence.mjs",
+    "scripts/database/book-dossier-local-regression.mjs",
+    "scripts/database/book-dossier-migration-plan.test.mjs",
+    "scripts/database/build-book-dossier-migration-plan.mjs",
+    "scripts/export-published-content-article-metadata.source.test.mjs",
+    "scripts/governance/bookshelf-owner-refinement-20260905.json",
+    "scripts/governance/reading-design-owner-refinement-20260906.json",
+    "scripts/historical-source-acquisition-policy.source.test.mjs",
+    "scripts/lib/article-derived-text.test.mjs",
+    "scripts/lib/atomic-json-write.mjs",
+    "scripts/lib/atomic-json-write.test.mjs",
+    "scripts/lib/compact-image-delivery.mjs",
+    "scripts/lib/compact-image-delivery.test.mjs",
+    "scripts/lib/public-image-delivery.mjs",
+    "scripts/lib/public-image-delivery.test.mjs",
+    "scripts/lib/published-image-performance.mjs",
+    "scripts/lib/reviewed-reading-design.d.mts",
+    "scripts/lib/reviewed-reading-design.mjs",
+    "scripts/lib/stage5-content-data-lock.test.mjs",
+    "scripts/lib/stage5b-art-direction.test.mjs",
+    "scripts/prepare-public-images.mjs",
+    "scripts/prepare-public-images.test.mjs",
+    "src/App.tsx",
+    "src/articles/articleBookImages.test.ts",
+    "src/articles/articleBookImages.ts",
+    "src/articles/articleBookPages.test.ts",
+    "src/articles/articleBookPages.ts",
+    "src/articles/articleBookTextures.ts",
+    "src/articles/hyphen.d.ts",
+    "src/books/bookDossier.test.ts",
+    "src/books/bookInspectionPageLayout.test.ts",
+    "src/books/bookInspectionPageLayout.ts",
+    "src/books/bookInspectionTextures.test.ts",
+    "src/books/bookInspectionTextures.ts",
+    "src/books/bookShelfExtractionMotion.test.ts",
+    "src/books/bookShelfExtractionMotion.ts",
+    "src/books/bookTypography.test.ts",
+    "src/books/bookTypography.ts",
+    "src/books/completeShelfCanvas.source.test.ts",
+    "src/books/completeShelfModel.test.ts",
+    "src/books/completeShelfModel.ts",
+    "src/books/completeShelfRenderer.tsx",
+    "src/books/completeShelfTextures.test.ts",
+    "src/books/completeShelfTextures.ts",
+    "src/community/ArticleEngagement.tsx",
+    "src/community/CommunityHub.tsx",
+    "src/components/ArticleBookReader.tsx",
+    "src/components/ArticleLibrarySection.tsx",
+    "src/components/ArticleReader.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/BookCollectionShelfSwitcher.test.tsx",
+    "src/components/BookCollectionShelfSwitcher.tsx",
+    "src/components/BookDossierReader.tsx",
+    "src/components/BookShelfControls.tsx",
+    "src/components/BookShelfQualityMenu.tsx",
+    "src/components/BookShelfScene.tsx",
+    "src/components/BookShelfSceneCanvas.tsx",
+    "src/components/CmsHomepageContent.tsx",
+    "src/components/CmsPageReader.tsx",
+    "src/components/CmsSiteChrome.tsx",
+    "src/components/HeaderArticlesMenu.tsx",
+    "src/components/LiteraryCalendar.tsx",
+    "src/components/SectionsDirectory.tsx",
+    "src/components/bookShelfApprovedPresentation.test.ts",
+    "src/components/stage5Governance.test.ts",
+    "src/i18n/InterfaceLanguage.tsx",
+    "src/i18n/stage5d1InterfaceCoverage.test.ts",
+    "src/index.css",
+    "src/main.tsx",
+    "src/styles/article-book-reader.css",
+    "src/styles/article-reading-layout.css",
+    "src/styles/book-dossier.css",
+    "src/styles/book-month-news-composition.css",
+    "src/styles/book-reader-refinement.css",
+    "src/styles/book-shelf-controls.css",
+    "src/styles/calendar-layout.css",
+    "src/styles/community-editorial-layout.css",
+    "src/styles/community-layout.css",
+    "src/styles/editorial-card-layout.css",
+    "src/styles/header-preserved.css",
+    "src/styles/navigation-panels.css",
+    "src/styles/search-account-layout.css",
+    "src/styles/site-typography.css",
+    "src/styles/stage5-book-collection-dialog.css",
+    "src/styles/stage5-book-collection-manager.css",
+    "src/styles/stage5-book-shelf.css",
+    "src/styles/stage5-home-art-direction.css",
+    "src/styles/stage5-home-layout.css",
+    "src/utils/articleBoundaryBreaks.ts",
+    "src/utils/articleImageDelivery.test.ts",
+    "src/utils/articleImageDelivery.ts",
+    "src/utils/imageDelivery.test.ts",
+    "src/utils/imageDelivery.ts",
+    "src/utils/imageDeliveryModel.ts",
+    "src/utils/imageUploadOptimization.test.ts",
+    "src/utils/imageUploadOptimization.ts",
+    "src/utils/rasterImageMetadata.test.ts",
+    "src/utils/rasterImageMetadata.ts",
+    "src/utils/sanitizeArticleHtml.ts",
+    "supabase/migrations/20260905_book_dossiers_layout_v4.sql"
+  ],
+  "selectedNativeAssets": {
+    "selected": 266,
+    "changedInUpstream": []
+  },
+  "upstreamInitialImageDelivery": {
+    "sources": 317,
+    "images": 298,
+    "uniqueRenditions": 693,
+    "newRenditionsInOldNativeSelection": 0,
+    "examples": [
+      {
+        "source": "brand/article-previews/classic-writers-professions-article.webp",
+        "image": 6
+      },
+      {
+        "source": "brand/article-previews/hunter-thompson-hells-angels-article.webp",
+        "image": 7
+      },
+      {
+        "source": "brand/article-previews/japanese-writers-literary-map-article.webp",
+        "image": 8
+      },
+      {
+        "source": "brand/article-previews/rare-russian-words-vocabulary-article.webp",
+        "image": 9
+      }
+    ],
+    "firstNewRenditions": [
+      "public/media/optimized/863c5b7efc2f39421a59d6ae-original.webp",
+      "public/media/optimized/c31429f2306ea9f74b83d01b-640w.webp",
+      "public/media/optimized/c31429f2306ea9f74b83d01b-1280w.webp",
+      "public/media/optimized/c31429f2306ea9f74b83d01b-original.webp"
+    ]
+  },
+  "limits": [
+    "Direct read-only git merge-file simulation of combined upstream delta against local ca6; not an actual sequential cherry-pick result or integrated type/build/browser validation.",
+    "No media filenames were exhaustively emitted; selected native 266 assets checked by membership and exact Git bytes where changed.",
+    "No source files, index, refs or remote resources were mutated; only temporary simulation/report files written."
+  ],
+  "baselineGovernance": {
+    "immutableBase": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+    "workingCompatibility": [
+      {
+        "path": "scripts/governance/v12-s03-compatibility.json",
+        "pinnedSha256": "0ede6b799487764168990a475f1814b20de085a3b13054a27a1b12a17ea9ba1b",
+        "actualLfSha256": "0ede6b799487764168990a475f1814b20de085a3b13054a27a1b12a17ea9ba1b"
+      },
+      {
+        "path": "scripts/governance/v12-s03-canonical-integration.json",
+        "pinnedSha256": "1c021b9c744d75694d7b28cf45bf42a4bd3c341850adf8469d96b54ca3ea7923",
+        "actualLfSha256": "1c021b9c744d75694d7b28cf45bf42a4bd3c341850adf8469d96b54ca3ea7923"
+      },
+      {
+        "path": "scripts/governance/v12-s04-host-compatibility.json",
+        "pinnedSha256": "9911ef918c31595d2b954c74b6d0d703a5885b0b60193252998675a959134027",
+        "actualLfSha256": "9911ef918c31595d2b954c74b6d0d703a5885b0b60193252998675a959134027"
+      }
+    ],
+    "upstreamAttestations": [
+      {
+        "path": "scripts/governance/reading-design-owner-refinement-20260906.json",
+        "gitSourceSha256": "a1758055e0460243995099296944e32e96ae5cbd0d1b1b324b18b9a6fe31c419",
+        "id": "READING-DESIGN-AND-IMAGE-DELIVERY-2026-09-06",
+        "baselineMainSha": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+        "catalogIntegrationContext": {
+          "mainSha": "c052599516af0658c3764d4c69bfcaac485f2e0c",
+          "reason": "PR #180 added five separately attested shelf translations. Refresh only catalog hunk context around those entries; preserve the same seventeen article-book additions and one neutral availability-copy replacement."
+        },
+        "projectionCount": 36,
+        "paths": [
+          "package.json",
+          "src/components/BookArchiveSection.tsx",
+          "src/App.tsx",
+          "src/components/HeaderArticlesMenu.tsx",
+          "src/index.css",
+          "src/styles/header-preserved.css",
+          "src/styles/stage5-home-art-direction.css",
+          "src/i18n/InterfaceLanguage.tsx",
+          "apps/admin/catalog-assets/interface-copy-catalog.json"
+        ]
+      },
+      {
+        "path": "scripts/governance/bookshelf-owner-refinement-20260905.json",
+        "gitSourceSha256": "eaa21c1305e91e8f47401af81dab7ebaac630c907858058eab97556449172e34",
+        "projectionCount": 38,
+        "interfaceAdditions": [
+          {
+            "source": "Наугад",
+            "english": "Surprise me"
+          },
+          {
+            "source": "Область поиска",
+            "english": "Search scope"
+          },
+          {
+            "source": "На полке",
+            "english": "This shelf"
+          },
+          {
+            "source": "В архиве",
+            "english": "Archive"
+          },
+          {
+            "source": "В журнале",
+            "english": "Journal"
+          }
+        ]
+      }
+    ],
+    "constraints": [
+      "Do not replace historical AST/CSS/data hashes with current generated values. Retain the accepted original records and exact missing/duplicate delta rejection.",
+      "Merge both V12 and upstream reviewed-reading projectors. Composition must reverse the exact integrated changes in correct order; overlapping App media changes may require a new narrowly scoped technical integration bridge, never a fabricated owner attestation.",
+      "New bookshelf English pairs and matching generated admin interface catalog additions are jointly checked by upstream governance; carry both artifacts and retain negative tests.",
+      "Recompute only new integration evidence after source/test changes; historical S00-S04 evidence and old native APK identity remain historical."
+    ]
+  },
+  "integrationRisks": [
+    {
+      "id": "MAIN-INT-01",
+      "severity": "required-conflict-resolution",
+      "paths": [
+        "src/App.tsx"
+      ],
+      "confirmed": "Two text conflicts: upstream removes mediaUrl and switches feature images to responsive publicImageAttributes, while V12 mediaUrl/class/alt prohibit remote controlled-edition imagery.",
+      "action": "Retain canonical optimized image delivery for the site and explicit controlled package availability/fallback policy. Do not discard the controlled guard while resolving upstream deletion.",
+      "evidence": "read-only git merge-file --diff3 conflict output"
+    },
+    {
+      "id": "MAIN-INT-02",
+      "severity": "required-conflict-resolution",
+      "paths": [
+        "scripts/lib/stage5-content-data-lock.test.mjs",
+        "src/components/stage5Governance.test.ts"
+      ],
+      "confirmed": "Three conflict blocks total: competing imports and readEnglishInterfaceText wrappers for V12 and upstream exact reverse projections.",
+      "action": "Compose both transformations and add exact integration compatibility only where needed; preserve historical hashes and missing/duplicate/unreviewed-change rejection."
+    },
+    {
+      "id": "MAIN-INT-03",
+      "severity": "required-runtime-integration",
+      "paths": [
+        "src/main.tsx",
+        "src/host/mountHostApp.tsx"
+      ],
+      "confirmed": "Upstream main adds five CSS imports that the separate native host entry does not acquire automatically.",
+      "missingNativeImports": [
+        "src/styles/book-shelf-controls.css",
+        "src/styles/book-reader-refinement.css",
+        "src/styles/article-reading-layout.css",
+        "src/styles/search-account-layout.css",
+        "src/styles/community-layout.css"
+      ],
+      "action": "Carry the applicable canonical CSS into shared native host import composition; check RU/EN bookshelf controls, reader, focus/touch layout on host and public Web. Automatic clean merge of main alone does not establish native parity."
+    },
+    {
+      "id": "MAIN-INT-04",
+      "severity": "required-artifact-integration",
+      "paths": [
+        "src/utils/imageDelivery.ts",
+        "src/utils/imageDeliveryModel.ts",
+        "src/data/imageDelivery.initial.generated.json",
+        "scripts/mobile/native-base-assets.json",
+        "scripts/mobile/build-pwa.mjs"
+      ],
+      "confirmed": "The 266 selected native asset sources are unchanged across upstream. New initial image delivery resolves 317 aliases to 298 images and 693 distinct rendition files; zero renditions are in the previous native selection.",
+      "action": "Derive the reachable controlled asset requirements from the new actual runtime and rebuild explicit package selection/provenance. Verify actual src/srcset/background requests offline; do not treat unchanged old pins as complete coverage or blindly precache all 3894 public file changes."
+    },
+    {
+      "id": "MAIN-INT-05",
+      "severity": "required-dependency-integration",
+      "paths": [
+        "package.json",
+        "package-lock.json"
+      ],
+      "confirmed": "Upstream adds hyphen 1.14.1 and assets:images:prepare/check steps; V12 adds nine exact Capacitor packages and controlled build entrypoints. Direct text merge is clean.",
+      "action": "Retain both dependency sets, keep lockfile integrity and exact Capacitor versions, run locked install and typecheck. ArticleBookPages imports the new hyphen package. Domain builds now generate/check image artifacts before bundling."
+    },
+    {
+      "id": "MAIN-INT-06",
+      "severity": "required-behavior-regression",
+      "paths": [
+        "src/components/BookArchiveSection.tsx",
+        "src/books/completeShelfRenderer.tsx",
+        "src/books/bookShelfExtractionMotion.ts",
+        "src/components/ArticleReader.tsx",
+        "src/components/ArticleBookReader.tsx"
+      ],
+      "confirmed": "Bookshelf control structure, extraction sequencing, focus restoration and motion change; ArticleReader adds illustrated book mode, progress handoff and visible-control focus trapping. BookArchive and ArticleReader merge cleanly at text level.",
+      "action": "Keep V12 book-only dossier identity, controlled no-network guard, cancellation, Recent tracking and navigation filter reset. Recheck real selected book, RU/EN, same Canvas identity, close/focus, progress, offline cold archive; accept upstream layout with current selectors, not old geometry assertions."
+    },
+    {
+      "id": "MAIN-INT-07",
+      "severity": "required-local-db-regression",
+      "paths": [
+        "supabase/migrations/20260905_book_dossiers_layout_v4.sql",
+        "scripts/database/build-book-dossier-migration-plan.mjs",
+        "scripts/database/book-dossier-local-regression.mjs"
+      ],
+      "confirmed": "Upstream introduces layout v4 proof validation; old measured design proof is intentionally withheld by get_published_book_dossier. #184 fixes only disposable rehearsal ACL normalization for private ledger. No new auth.users FK found in this migration.",
+      "action": "Carry the schema-only planner/hash changes and run local PGlite dossier plus reader-deletion regressions. Keep private ledger ACL checks and existing public-contribution deletion blockers. Do not interpret missing old v3 dossier delivery as permission to fabricate design approval or apply production SQL."
+    },
+    {
+      "id": "MAIN-INT-08",
+      "severity": "required-ci-classification",
+      "paths": [
+        ".github/workflows/quality.yml",
+        "playwright.config.mjs",
+        "scripts/lib/playwright-suite-classification.test.mjs"
+      ],
+      "confirmed": "Upstream puts calendar/article-book/zoom/image-delivery cases into WebGL serial group, shards it into six fresh Chromium processes, and gives each shard separate reports. V12 separately added public locale/account/platform cases.",
+      "action": "Preserve both test classifications and per-shard output isolation. Avoid duplicate execution or concurrent extra WebGL load when validating integration."
+    },
+    {
+      "id": "MAIN-INT-09",
+      "severity": "required-public-regression",
+      "paths": [
+        "src/community/CommunityHub.tsx",
+        "apps/admin/app/api/media/upload/route.ts",
+        "apps/admin/lib/client-image-upload.ts"
+      ],
+      "confirmed": "Canonical avatar/admin upload now optimizes images; CommunityHub preserves canonical category values rather than translated option text. Public default profile paths remain the existing avatars subject/avatar.ext pattern.",
+      "action": "Preserve V12 min-password/recovery and accountless host behavior; run new image-upload validation and existing account/deletion fences. No new identity store or production upload is needed."
+    }
+  ],
+  "meaningfulChecks": [
+    {
+      "scope": "dependency and types",
+      "commands": [
+        "npm ci --ignore-scripts",
+        "node node_modules/typescript/bin/tsc --noEmit"
+      ],
+      "purpose": "Verify merged hyphen/Capacitor lock and shared TS contracts."
+    },
+    {
+      "scope": "governance exact reversals",
+      "commands": [
+        "node node_modules/vitest/vitest.mjs run scripts/lib/stage5-content-data-lock.test.mjs src/components/stage5Governance.test.ts scripts/governance/v12-s03-compatibility.test.mjs scripts/governance/v12-s04-host-compatibility.test.mjs scripts/lib/stage5b-art-direction.test.mjs scripts/historical-source-acquisition-policy.source.test.mjs scripts/export-published-content-article-metadata.source.test.mjs --maxWorkers=2"
+      ],
+      "purpose": "Exercise both canonical upstream and V12 reverse-projection negative cases."
+    },
+    {
+      "scope": "local native artifact",
+      "commands": [
+        "node scripts/mobile/build-native.mjs ios dev",
+        "node scripts/mobile/verify-native-artifact.mjs --dir dist-native"
+      ],
+      "purpose": "Require fresh sourceInputs/buildId/module ownership and selected local asset coverage after source and CSS integration; no Xcode/device assertion."
+    },
+    {
+      "scope": "local dossier and deletion SQL",
+      "commands": [
+        "node scripts/database/book-dossier-local-regression.mjs",
+        "node node_modules/vitest/vitest.mjs run scripts/database/literary-planet-reader-deletion.integration.test.mjs scripts/database/book-dossier-migration-plan.test.mjs --maxWorkers=2"
+      ],
+      "purpose": "Real disposable PGlite schema/ACL/layout proofs and reader-account deletion compatibility; no external SQL."
+    },
+    {
+      "scope": "upstream focused runtime/image units",
+      "commands": [
+        "node node_modules/vitest/vitest.mjs run src/articles/articleBookImages.test.ts src/articles/articleBookPages.test.ts src/books/bookShelfExtractionMotion.test.ts src/books/completeShelfTextures.test.ts src/utils/imageDelivery.test.ts src/utils/imageUploadOptimization.test.ts src/utils/rasterImageMetadata.test.ts scripts/prepare-public-images.test.mjs scripts/audit-performance-budget.test.mjs --maxWorkers=2"
+      ],
+      "purpose": "Pagination, actual image metadata/delivery, motion and bounded published-image budget."
+    },
+    {
+      "scope": "actual browser and final regression",
+      "commands": [
+        "Root coordinates fresh public/domain and controlled PWA artifacts, their existing auditors, serial focused Chrome/Firefox/WebKit/host fixtures and one integrated full unit pass."
+      ],
+      "purpose": "Run changed upstream article-book reading/zoom, calendar/image delivery and V12 offline-catalog, writer-open-book, Recent, locale/grant/host lifecycle. Image URLs and CSS behavior need actual browser evidence; text merge or static manifests alone do not prove it."
+    }
+  ],
+  "hashBoundSourceObservations": [
+    {
+      "path": "src/App.tsx",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "bbc764b3168e817212967240bf872de1bf62c58169020dce990484d47ab048ab"
+    },
+    {
+      "path": "src/main.tsx",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "2b4f7e9538cde8103d6fc6ad3ab7ed5fa67e342260085dc6541794a67248ce7d"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "b736c44d618b10d646e69885d6810a8c227fa2407cc34de2fd237f02a94d35b4"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "5286d641d7fe270fdf323acf7e0cb3cd31e04f7c8f6d0972f3e72a1487ab7f40"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "8acf87a40a2b70f68383a80459112894e4150b6954836b9f98a0946fe370f028"
+    },
+    {
+      "path": "src/utils/imageDelivery.ts",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "28559a80f55afa46ee624b6b9c74bddc02c56f2f6d51254e66f82fef2413f0d1"
+    },
+    {
+      "path": "src/utils/imageDeliveryModel.ts",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "3dbd66975a351b2344cdc074ce7a36011b6c1b5d92c0cba4348f7295e42e6ffb"
+    },
+    {
+      "path": "src/data/imageDelivery.initial.generated.json",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "ba178f7860163debd0db2c0092110a7b21e184d2a5fe4a92f042253f3301d837"
+    },
+    {
+      "path": "scripts/lib/reviewed-reading-design.mjs",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "8a55e93ec118c17b814f50f765d8c4a0168b8dbd3d8d9919ca152dc6ef22d021"
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_layout_v4.sql",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "0d072fa64df5fddf72bca8441b28f550661d6bda838c89238bd74f912a0ebb02"
+    },
+    {
+      "path": "package.json",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "64ead64b5c0f4cf4d79554232e7a3730d3a3b8adea7c2b3313e5023dd865bfdb"
+    },
+    {
+      "path": "package-lock.json",
+      "upstreamCommit": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+      "upstreamGitSha256": "0d48b76e7291c1d3fa2fdd78185b2fa8dbcd0415a38da376ce6b6c37d7294aa4"
+    }
+  ],
+  "inheritedEvidencePolicy": "This report records source inspection and direct three-way text simulation only. No integration, native build, PWA build, device run, editorial review, release or owner approval occurred."
+}

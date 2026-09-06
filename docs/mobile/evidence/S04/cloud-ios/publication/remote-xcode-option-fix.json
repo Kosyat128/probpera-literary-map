@@ -1,0 +1,11 @@
+{
+  "parents": [
+    "712bd96949a2908b744555c50106615866986262"
+  ],
+  "sha": "273f400d8f07a57269f391dfc13d7e802c9071f2",
+  "tree": "1b519e6d62ad9de6c544384344886be24efcee97",
+  "branch": "codex/literary-planet-v12-ios-ci",
+  "force": false,
+  "fix": "Two Xcode clonedSourcePackagesDirPath option names",
+  "localTestsPassed": 62
+}

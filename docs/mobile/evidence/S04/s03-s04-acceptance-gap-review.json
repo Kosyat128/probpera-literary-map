@@ -1,0 +1,1762 @@
+{
+  "schemaVersion": 1,
+  "recordType": "read-only-foundation-acceptance-gap-review",
+  "capturedAt": "2026-09-06T01:06:37.652Z",
+  "headSha": "57e03da63e4a1e62b71806eced81f4a88493aa4b",
+  "firstOpenCriterion": "S03.acceptance",
+  "stageAcceptanceClaimed": false,
+  "releaseReady": false,
+  "sourceEdited": false,
+  "stateEdited": false,
+  "productTestsRun": false,
+  "buildsRun": false,
+  "remoteActionsPerformed": false,
+  "futureSpecialistArchiveDocsRead": false,
+  "requirementsIntegrity": {
+    "pass": true,
+    "checksums": 194,
+    "manifestRecords": 191,
+    "command": "node scripts/mobile/verify-requirements.mjs",
+    "observedToolChunk": "0750d5"
+  },
+  "stageCounts": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "criteria": 12,
+      "withoutEvidence": 12
+    },
+    {
+      "id": "S04",
+      "status": "IN_PROGRESS",
+      "criteria": 34,
+      "withoutEvidence": 34
+    }
+  ],
+  "groups": [
+    {
+      "id": "s03-bilingual-preparation",
+      "stage": "S03",
+      "ids": [
+        "BIL-019",
+        "BIL-075",
+        "BIL-076",
+        "BIL-077",
+        "BIL-079"
+      ],
+      "foundation": "Locale routes, prerender/runtime metadata, real404 and nonindexable sitemap preparation; tie affected real HTTP/browser tests to current source. No approved-publication claim.",
+      "later": "S36-S40 reviewed English/indexability/exact RC; human review after complete drafts.",
+      "state": "implemented-preparation-not-global-approval"
+    },
+    {
+      "id": "s03-paid-trust",
+      "stage": "S03",
+      "ids": [
+        "COMMERCE-001",
+        "COMMERCE-008",
+        "OMIN-023"
+      ],
+      "foundation": "Canonical one-time-access identity, signer/ledger/current session/denial/recovery and local staging artifact. No real purchase claim; no forbidden deploy.",
+      "later": "PSP checkout adapter S20 and actual provider verification/refund/reconcile S21 are internal code; official draft automation S34. Credentials alone do not finish them.",
+      "state": "implemented-foundation-provider-internal-later"
+    },
+    {
+      "id": "s03-core-install",
+      "stage": "S03",
+      "ids": [
+        "CONTENT-007",
+        "PLATFORM-001"
+      ],
+      "foundation": "Real OS install/standalone relaunch/offline core evidence still needed; preserve actual support boundaries and historical4PASS/2FAIL. b006Chrome20 is separate later evidence.",
+      "later": "Full downloads/migrations/optional packages S11; child/Planetka S15/S16; physical-device/soak and bilingual packages S24/S25/S39 remain mandatory.",
+      "state": "remaining-install-and-runtime-evidence"
+    },
+    {
+      "id": "s03-deletion",
+      "stage": "S03",
+      "ids": [
+        "MOD-030"
+      ],
+      "foundation": "Request/status/reauth/reload receipt and tested safe-reader processor exist. Generic enabled-account deletion remains partial. Either explicitly scope early safe-reader foundation or finish remaining supported categories before an unqualified milestone.",
+      "later": "S23/S26 broad lifecycle/disposition/managed data boundary. Concrete DD01-DD06 legal/owner choices are external; resulting coding remains internal.",
+      "state": "scope-clarification-plus-real-lifecycle-gap"
+    },
+    {
+      "id": "s04-bundled-android",
+      "stage": "S04",
+      "ids": [
+        "CANON-008",
+        "PLATFORM-004"
+      ],
+      "foundation": "Actual dev APK and bundled canonical runtime verified; installed runtime still unobserved. Rebind changed candidate only after relevant source changes.",
+      "later": "Actual globe/native/device parity S06/S25/S39.",
+      "state": "artifact-foundation-proved-not-device"
+    },
+    {
+      "id": "s04-ios-build",
+      "stage": "S04",
+      "ids": [
+        "PLATFORM-005",
+        "MOD-034"
+      ],
+      "foundation": "Actual Xcode/SPM simulator build and copied .app proof required. Draft workflow is not executed native evidence.",
+      "later": "Current RC toolchain recheck S26/S28/S40 and actual device/simulator launch S06/S25/S39.",
+      "state": "remaining-real-ios-build"
+    },
+    {
+      "id": "s04-variants",
+      "stage": "S04",
+      "ids": [
+        "PLATFORM-002",
+        "PLATFORM-003",
+        "MOD-037"
+      ],
+      "foundation": "Flavors/channel mismatch guard exist; record storeVariantBuildsVerified:false. Test real preparation selection/mismatch; no release artifact claim.",
+      "later": "Exclusive real providers/links S20; release AAB/RuStore packages S26; exact candidate checks S28/S39/S40.",
+      "state": "channel-foundation-not-store-provider"
+    },
+    {
+      "id": "s04-archive",
+      "stage": "S04",
+      "ids": [
+        "PLATFORM-006"
+      ],
+      "foundation": "Archive-capable configuration and precise input/command preparation; actual archive conditional on signing.",
+      "later": "S26/S34 real signed archive; simulator zip is not archive/IPA.",
+      "state": "configuration-now-signing-conditional"
+    },
+    {
+      "id": "s04-navigation",
+      "stage": "S04",
+      "ids": [
+        "PLATFORM-007",
+        "UX-002",
+        "SEC-003"
+      ],
+      "foundation": "Actual native Back/modal-return/launch route proof absent; inspected shared host/adapters do not register backButton/appUrlOpen/getLaunchUrl. Verify native behavior; implement or explicitly deny unsupported input using canonical selectors.",
+      "later": "Responsive navigation S07, package boundaries S08/S11, security S23, full device/locale matrix S24/S25/S39.",
+      "state": "remaining-host-navigation-proof"
+    },
+    {
+      "id": "s04-child-ordering",
+      "stage": "S04",
+      "ids": [
+        "CHILD-006",
+        "CHILD-007",
+        "CHILD-009",
+        "MOD-043"
+      ],
+      "foundation": "Only locale is awaited before direct App mount. Need explicit pre-content policy/route denial contract before child-supported state; no silent adult fallback for unknown/pending/child-required state. DOM child probe is not Child Mode.",
+      "later": "Onboarding S05; actual profiles/PIN/age/data isolation S16; callbacks S20 and full bypass/bilingual S25/S39.",
+      "state": "early-ordering-boundary-missing-full-child-later"
+    },
+    {
+      "id": "s04-a11y",
+      "stage": "S04",
+      "ids": [
+        "A11Y-003"
+      ],
+      "foundation": "Large-text/narrow/landscape shell and accessible status/navigation need real host evidence; current CSS/resource checks are narrower.",
+      "later": "S07/S23/S25/S39 full DynamicType/VoiceOver/TalkBack/device matrix.",
+      "state": "native-scale-evidence-unverified"
+    },
+    {
+      "id": "s04-language",
+      "stage": "S04",
+      "ids": [
+        "BIL-016",
+        "BIL-017",
+        "BIL-018"
+      ],
+      "foundation": "Compiled RU/EN/locales/host bootstrap tested; real OS per-app preference/fallback and installed same-state behavior not measured.",
+      "later": "S36 language arbitration/system-language option; S37 complete reviewed native copy; S39 real bilingual device evidence.",
+      "state": "native-resource-preparation-not-device-review"
+    },
+    {
+      "id": "s04-safe-defaults",
+      "stage": "S04",
+      "ids": [
+        "OMIN-009",
+        "OMIN-011"
+      ],
+      "foundation": "Accountless provider and native backend guards implemented. Bind current inventory and real no-account-prompt launch.",
+      "later": "S23/S32 final profile/privacy, S39 actual device/bilingual validation.",
+      "state": "implemented-safe-native-defaults"
+    },
+    {
+      "id": "s04-commerce-rc",
+      "stage": "S04",
+      "ids": [
+        "COMMERCE-012",
+        "MOD-035",
+        "MOD-036",
+        "PLATFORM-008"
+      ],
+      "foundation": "Current pinned toolchain/channel isolation. Real Play/RuStore providers are absent; do not insert mock/deprecated SDK for early pass.",
+      "later": "S20 real provider code; S26/S28/S33/S40 current RC billing/signing/toolchain. Real store/merchant/signing inputs only external after preparation.",
+      "state": "later-provider-and-rc-not-circular-early-gate"
+    },
+    {
+      "id": "s04-permissions",
+      "stage": "S04",
+      "ids": [
+        "MOD-031",
+        "MOD-032",
+        "MOD-033",
+        "SEC-006"
+      ],
+      "foundation": "Exact minimal manifests/plugins and actual dev APK inventory; any sensitive permission enabled now needs actual rationale/denial handling now.",
+      "later": "Audio S15, child S16, full inventory S23, exact production declarations S28/S33/S37/S39/S40.",
+      "state": "minimal-foundation-future-features-conditional"
+    },
+    {
+      "id": "s04-compliance-inputs",
+      "stage": "S04",
+      "ids": [
+        "OMIN-029",
+        "OMIN-031"
+      ],
+      "foundation": "Prepare technical privacy/package/signing inputs; absent archive report or account registration must not be invented.",
+      "later": "S23/S33 actual archive/privacy/RequiredReasonAPI and developer verification worksheets; S40 final evidence. Legal/developer identity external after technical preparation.",
+      "state": "technical-input-foundation-not-archive-or-account-proof"
+    },
+    {
+      "id": "s04-lifecycle",
+      "stage": "S04",
+      "ids": [
+        "PERF-008"
+      ],
+      "foundation": "Injected host event races/refcounts/cleanup tested; minimum installed host resume still needed. Snapshot is not actual WebGL pause/recovery proof.",
+      "later": "S06 actual globe lifecycle; S24 50cycles/soak/thermal; S25/S39 real devices.",
+      "state": "structural-listener-tested-native-measurement-missing"
+    },
+    {
+      "id": "s04-brand",
+      "stage": "S04",
+      "ids": [
+        "UX-001"
+      ],
+      "foundation": "Canonical resources/geometry compiled; actual launch/safe-area/orientation capture missing, so no no-flash claim.",
+      "later": "S05 full splash/onboarding; S25/S37/S39 exact localized visual/device evidence.",
+      "state": "resource-preparation-not-runtime-visual"
+    }
+  ],
+  "criteria": [
+    {
+      "criterion": "S03.acceptance",
+      "statusObserved": "IN_PROGRESS",
+      "evidenceCount": 0,
+      "group": "stage-evidence-and-atomic-acceptance",
+      "implementationStages": [],
+      "validationStages": [],
+      "bindingIndex": null,
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.BIL-019",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-bilingual-preparation",
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 28,
+        "quote": "BIL-019,I18N,P0,web-pwa,HTML lang SSR metadata canonical and hreflang are correct,120;124,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.BIL-075",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-bilingual-preparation",
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 84,
+        "quote": "BIL-075,WEB_SEO,P0,web-pwa,Russian and English public pages use stable locale routes and reciprocal hreflang,152,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.BIL-076",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-bilingual-preparation",
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 85,
+        "quote": "BIL-076,WEB_SEO,P0,web-pwa,English pages are self-canonical approved translations and are not canonicalized to Russian,152,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.BIL-077",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-bilingual-preparation",
+      "implementationStages": [
+        "S03",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 86,
+        "quote": "BIL-077,WEB_SEO,P0,web-pwa,Server/prerender language metadata and body match before hydration,152,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.BIL-079",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-bilingual-preparation",
+      "implementationStages": [
+        "S03",
+        "S36",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 88,
+        "quote": "BIL-079,WEB_SEO,P1,web-pwa,Localized sitemaps structured data social metadata 404 and PWA discovery pass,152,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.COMMERCE-001",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-paid-trust",
+      "implementationStages": [
+        "S03",
+        "S12",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S26",
+        "S28"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 155,
+        "quote": "COMMERCE-001,COMMERCE,P0,all,Paid-upfront base distribution,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.COMMERCE-008",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-paid-trust",
+      "implementationStages": [
+        "S03",
+        "S20",
+        "S21"
+      ],
+      "validationStages": [
+        "S21",
+        "S25",
+        "S34"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 162,
+        "quote": "COMMERCE-008,COMMERCE,P0,all,Web one-time license,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.CONTENT-007",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-core-install",
+      "implementationStages": [
+        "S03",
+        "S11"
+      ],
+      "validationStages": [
+        "S11",
+        "S25",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 174,
+        "quote": "CONTENT-007,CONTENT,P0,all,Airplane-mode core,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.MOD-030",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-deletion",
+      "implementationStages": [
+        "S03",
+        "S23",
+        "S26"
+      ],
+      "validationStages": [
+        "S28",
+        "S37",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 216,
+        "quote": "MOD-030,ACCOUNT,P0,web;google-play,Required public deletion path works and retention is disclosed,27H,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.OMIN-023",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-paid-trust",
+      "implementationStages": [
+        "S03",
+        "S21",
+        "S34"
+      ],
+      "validationStages": [
+        "S34",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 261,
+        "quote": "OMIN-023,AUTOMATION,P1,web-pwa,Web/PWA automation deploys staging and validates entitlement/webhooks,88;97,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S03.PLATFORM-001",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s03-core-install",
+      "implementationStages": [
+        "S03"
+      ],
+      "validationStages": [
+        "S03",
+        "S11",
+        "S25",
+        "S26",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 320,
+        "quote": "PLATFORM-001,PLATFORM,P0,all,Installable paid Web/PWA with safe Service Worker,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.acceptance",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "stage-evidence-and-atomic-acceptance",
+      "implementationStages": [],
+      "validationStages": [],
+      "bindingIndex": null,
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.A11Y-003",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-a11y",
+      "implementationStages": [
+        "S04",
+        "S07",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 4,
+        "quote": "A11Y-003,A11Y,P1,all,Large text/Dynamic Type,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.BIL-016",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-language",
+      "implementationStages": [
+        "S04",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 25,
+        "quote": "BIL-016,I18N,P0,ios,Native iOS strings and app language support are localized,120,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.BIL-017",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-language",
+      "implementationStages": [
+        "S04",
+        "S37"
+      ],
+      "validationStages": [
+        "S37",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 26,
+        "quote": "BIL-017,I18N,P0,android,Android default/Russian resources and localeConfig are complete,120,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.BIL-018",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-language",
+      "implementationStages": [
+        "S04",
+        "S36"
+      ],
+      "validationStages": [
+        "S36",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 27,
+        "quote": "BIL-018,I18N,P0,android,Android per-app language preferences support ru and en,120,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.CANON-008",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-bundled-android",
+      "implementationStages": [
+        "S01",
+        "S04"
+      ],
+      "validationStages": [
+        "S04",
+        "S25",
+        "S28"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 124,
+        "quote": "CANON-008,CANON,P0,all,No remote website as native core runtime,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.CHILD-006",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-child-ordering",
+      "implementationStages": [
+        "S04",
+        "S05",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S36",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 138,
+        "quote": "CHILD-006,CHILD,P0,all,Policy restored before first content frame,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.CHILD-007",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-child-ordering",
+      "implementationStages": [
+        "S04",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 139,
+        "quote": "CHILD-007,CHILD,P0,all,No adult flash or route bypass,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.CHILD-009",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-child-ordering",
+      "implementationStages": [
+        "S04",
+        "S16",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 141,
+        "quote": "CHILD-009,CHILD,P0,all,Back/restart/deep-link/callback cannot bypass,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.COMMERCE-012",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-commerce-rc",
+      "implementationStages": [
+        "S04",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S26",
+        "S28"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 166,
+        "quote": "COMMERCE-012,COMMERCE,P0,all,RuStore current Pay SDK,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.MOD-031",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-permissions",
+      "implementationStages": [
+        "S04",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 217,
+        "quote": "MOD-031,PERMISSIONS,P0,all,Release manifests contain only allowlisted necessary permissions,27H,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.MOD-032",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-permissions",
+      "implementationStages": [
+        "S04",
+        "S15",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 218,
+        "quote": "MOD-032,PERMISSIONS,P0,all,Narration does not request microphone permission,27H,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.MOD-033",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-permissions",
+      "implementationStages": [
+        "S04",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S37"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 219,
+        "quote": "MOD-033,PERMISSIONS,P0,all,\"Every sensitive permission has rationale, declaration and denial path\",27H,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.MOD-034",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-ios-build",
+      "implementationStages": [
+        "S04",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 220,
+        "quote": "MOD-034,TOOLCHAIN,P0,apple,Current Apple Xcode and iOS SDK requirements pass at RC,28;27J,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.MOD-035",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-commerce-rc",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 221,
+        "quote": "MOD-035,TOOLCHAIN,P0,google-play,Current Google target API and Billing requirements pass at RC,28;27J,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.MOD-036",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-commerce-rc",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 222,
+        "quote": "MOD-036,TOOLCHAIN,P0,rustore,Current RuStore Pay SDK and signing requirements pass at RC,28;27J,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.MOD-037",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-variants",
+      "implementationStages": [
+        "S04",
+        "S20"
+      ],
+      "validationStages": [
+        "S20",
+        "S25",
+        "S28",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 223,
+        "quote": "MOD-037,BUILD,P0,all,Each store variant contains only its billing provider and update links,03A;27J,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.MOD-043",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-child-ordering",
+      "implementationStages": [
+        "S04",
+        "S16"
+      ],
+      "validationStages": [
+        "S16",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 229,
+        "quote": "MOD-043,CHILD,P0,all,Saved child mode exposes no adult frame during startup,11;27J,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.OMIN-009",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-safe-defaults",
+      "implementationStages": [
+        "S04",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 247,
+        "quote": "OMIN-009,RELEASE_PROFILE,P0,native,Native first release is accountless-first,03B;85,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.OMIN-011",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-safe-defaults",
+      "implementationStages": [
+        "S04",
+        "S23",
+        "S32"
+      ],
+      "validationStages": [
+        "S32",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 249,
+        "quote": "OMIN-011,RELEASE_PROFILE,P0,all,Push and behavioural analytics are disabled in V1,03B;85,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.OMIN-029",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-compliance-inputs",
+      "implementationStages": [
+        "S04",
+        "S23",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 267,
+        "quote": "OMIN-029,COMPLIANCE,P0,apple,\"Privacy manifests, Required Reason APIs and Xcode privacy report are audited\",86,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.OMIN-031",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-compliance-inputs",
+      "implementationStages": [
+        "S04",
+        "S33"
+      ],
+      "validationStages": [
+        "S33",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 269,
+        "quote": "OMIN-031,COMPLIANCE,P0,android,Android developer verification/package/signing registration is prepared,87;104,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.PERF-008",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-lifecycle",
+      "implementationStages": [
+        "S04",
+        "S06",
+        "S24"
+      ],
+      "validationStages": [
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 311,
+        "quote": "PERF-008,PERF,P1,all,Background/resume listener stability,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.PLATFORM-002",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-variants",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 321,
+        "quote": "PLATFORM-002,PLATFORM,P0,all,Android Google Play variant and AAB,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.PLATFORM-003",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-variants",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 322,
+        "quote": "PLATFORM-003,PLATFORM,P0,all,Android RuStore variant and artifact,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.PLATFORM-004",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-bundled-android",
+      "implementationStages": [
+        "S04"
+      ],
+      "validationStages": [
+        "S04",
+        "S25",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 323,
+        "quote": "PLATFORM-004,PLATFORM,P0,all,Android QA APK,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.PLATFORM-005",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-ios-build",
+      "implementationStages": [
+        "S04"
+      ],
+      "validationStages": [
+        "S04",
+        "S25",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 324,
+        "quote": "PLATFORM-005,PLATFORM,P0,all,iOS/iPadOS native project and simulator build,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.PLATFORM-006",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-archive",
+      "implementationStages": [
+        "S04",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S34"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 325,
+        "quote": "PLATFORM-006,PLATFORM,P0,all,iOS archive configuration/archive when signing exists,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.PLATFORM-007",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-navigation",
+      "implementationStages": [
+        "S04",
+        "S07"
+      ],
+      "validationStages": [
+        "S07",
+        "S24",
+        "S25",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 326,
+        "quote": "PLATFORM-007,PLATFORM,P0,all,Safe-area/orientation/lifecycle/deep links,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.PLATFORM-008",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-commerce-rc",
+      "implementationStages": [
+        "S04",
+        "S20",
+        "S26"
+      ],
+      "validationStages": [
+        "S26",
+        "S28",
+        "S33",
+        "S40"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 327,
+        "quote": "PLATFORM-008,PLATFORM,P0,all,Current official SDK/API requirements rechecked,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.SEC-003",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-navigation",
+      "implementationStages": [
+        "S04",
+        "S08",
+        "S11",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S25",
+        "S28",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 330,
+        "quote": "SEC-003,SEC,P0,all,Deep-link/content/package validation,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.SEC-006",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-permissions",
+      "implementationStages": [
+        "S04",
+        "S16",
+        "S23"
+      ],
+      "validationStages": [
+        "S23",
+        "S28",
+        "S33",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 333,
+        "quote": "SEC-006,SEC,P0,all,Minimal permissions and child privacy,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.UX-001",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-brand",
+      "implementationStages": [
+        "S04",
+        "S05"
+      ],
+      "validationStages": [
+        "S05",
+        "S25",
+        "S37",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 336,
+        "quote": "UX-001,UX,P1,all,Orange native and branded splash with logo top-left,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    },
+    {
+      "criterion": "S04.UX-002",
+      "statusObserved": "OPEN",
+      "evidenceCount": 0,
+      "group": "s04-navigation",
+      "implementationStages": [
+        "S04",
+        "S07"
+      ],
+      "validationStages": [
+        "S07",
+        "S25",
+        "S39"
+      ],
+      "bindingIndex": {
+        "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+        "line": 337,
+        "quote": "UX-002,UX,P1,all,Adult navigation prioritizes Planet,V12 modular specs/full spec,OPEN,,,,"
+      },
+      "acceptanceClaimed": false
+    }
+  ],
+  "references": [
+    {
+      "id": "stage-scope",
+      "path": "docs/mobile/requirements/v12/69_STAGE_ACCEPTANCE_MATRIX.csv",
+      "line": 5,
+      "endLine": 6,
+      "quote": "S03,Paid Web/PWA edition,Install/license/offline/SW,NOT_STARTED,previous stage complete or parallel-safe documented,all mapped internal requirements passed; evidence and atomic commit,stage-specific narrow + boundary tests,docs/reports/builds,only credentials/signing/store/legal/license/manual review,automatic\nS04,Mobile shell and native projects,Capacitor; navigation; Android/iOS,NOT_STARTED,previous stage complete or parallel-safe documented,all mapped internal requirements passed; evidence and atomic commit,stage-specific narrow + boundary tests,docs/reports/builds,only credentials/signing/store/legal/license/manual review,automatic",
+      "sha256": "a984abc8b06903e3d1b30ba9cad869174c2359054f06110d153bbf3e53afb02a"
+    },
+    {
+      "id": "stage-sequence",
+      "path": "docs/mobile/requirements/v12/03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+      "line": 564,
+      "endLine": 582,
+      "quote": "STAGE 3 — Web/PWA paid edition and isolated service worker.\nSTAGE 4 — mobile shell, navigation, Capacitor, Android/iOS projects.\nSTAGE 5 — brand splash and onboarding.\nSTAGE 6 — canonical globe integration and native lifecycle.\nSTAGE 7 — premium responsive globe UX.\nSTAGE 8 — canonical content/mobile/child export and signed manifests.\nSTAGE 9 — country/writer/work screens with real assets.\nSTAGE 10 — search/favorites/history/collections/literary passport.\nSTAGE 11 — offline storage/download/update/rollback.\nSTAGE 12 — paid Base Edition entitlement and complete Starter Set.\nSTAGE 13 — skin/stand/accessory engine.\nSTAGE 14 — true 3D background engine and stress/performance gates.\nSTAGE 15 — Planetka mascot/guide/narration.\nSTAGE 16 — child profiles, exact-age policy, Parent Gate, age assurance.\nSTAGE 17 — literary characters and rights-cleared StoryWorld.\nSTAGE 18 — Disney blocked catalog/licensing/expiry infrastructure.\nSTAGE 19 — optional store UX and platform product catalog.\nSTAGE 20 — StoreKit/Play Billing/RuStore Pay/Web purchase providers.\nSTAGE 21 — server verification, entitlements, restore/refund/revocation.",
+      "sha256": "b7922a0c341a6a699c82b02bb513de52035be7a35d5c8aa412124d17811cc615"
+    },
+    {
+      "id": "later-matrix",
+      "path": "docs/mobile/requirements/v12/03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+      "line": 584,
+      "endLine": 601,
+      "quote": "STAGE 23 — accessibility/localization/audio/privacy/security.\nSTAGE 24 — performance/reliability/device/thermal/low-memory hardening.\nSTAGE 25 — full QA, platform parity, store review simulation.\nSTAGE 26 — store assets, legal drafts, release candidates and pricing gates.\nSTAGE 27 — final handoff foundation, owner external steps and PR preparation.\nSTAGE 28 — exact release-candidate moderation precheck.\nSTAGE 29 — reviewer access, Parent PIN, sandbox IAP and store dossiers.\nSTAGE 30 — truthful listing/screenshots and exact-artifact freeze.\nSTAGE 31 — rejection/resubmission simulation and final moderation handoff.\nSTAGE 32 — owner input, SAFE_PAID_BILINGUAL_V1 and secret/signing preparation.\nSTAGE 33 — regional compliance, DSA/export and Android verification.\nSTAGE 34 — one-command preparation and official-API draft packages.\nSTAGE 35 — final owner approval, launch runbook and owner-minimal handoff.\nSTAGE 36 — internationalization foundation and state-preserving language switching.\nSTAGE 37 — complete English UI, native, store, legal and support surfaces.\nSTAGE 38 — English literary content, names, titles, search and CMS workflow.\nSTAGE 39 — English child mode, Planetka, audio, offline and bilingual QA.\nSTAGE 40 — bilingual dossiers, screenshots, owner approval and final handoff.",
+      "sha256": "b7922a0c341a6a699c82b02bb513de52035be7a35d5c8aa412124d17811cc615"
+    },
+    {
+      "id": "native-deliverables",
+      "path": "docs/mobile/requirements/v12/03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+      "line": 115,
+      "endLine": 117,
+      "quote": "2. Android QA APK, Google Play paid AAB и RuStore paid release artifact.\n3. iPhone/iPad native project, simulator build и archive configuration;\n   archive — при наличии signing credentials.",
+      "sha256": "b7922a0c341a6a699c82b02bb513de52035be7a35d5c8aa412124d17811cc615"
+    },
+    {
+      "id": "external",
+      "path": "docs/mobile/requirements/v12/03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+      "line": 537,
+      "endLine": 543,
+      "quote": "Owner required only for real secrets, signing, merchant/store agreements,\nproduction deploy/submission, actual paid transactions, final price entry,\nDisney/other licensing and destructive production actions.\n\nIf external blocker appears, finish code/tests/configuration/evidence and\ncontinue independent work. Store one consolidated action in\nEXTERNAL_OWNER_STEPS.md.",
+      "sha256": "b7922a0c341a6a699c82b02bb513de52035be7a35d5c8aa412124d17811cc615"
+    },
+    {
+      "id": "routing",
+      "path": "docs/mobile/requirements/v12/95_STAGE_DOCUMENT_ROUTING.json",
+      "line": 27,
+      "endLine": 31,
+      "quote": "    \"S03-S10\": [\n      \"18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md\",\n      \"21_VISUAL_UX_CANON_RU.md\",\n      \"22_ACCESSIBILITY_LOCALIZATION_AUDIO_RU.md\",\n      \"23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md\"",
+      "sha256": "4df8f202240081c565e744368dcf4be793580d9fd4109d213c40cd313d00a9ef"
+    },
+    {
+      "id": "routing-commerce",
+      "path": "docs/mobile/requirements/v12/95_STAGE_DOCUMENT_ROUTING.json",
+      "line": 39,
+      "endLine": 53,
+      "quote": "    \"S16-S20\": [\n      \"08_PAID_APP_COMMERCIAL_MODEL_RU.md\",\n      \"09_BASE_EDITION_STARTER_SET_RU.md\",\n      \"10_STORE_IAP_ENTITLEMENTS_REFUNDS_RU.md\",\n      \"17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md\",\n      \"16_FULL_3D_BACKGROUND_ENGINE_RU.md\"\n    ],\n    \"S21-S27\": [\n      \"15_RIGHTS_PROVENANCE_NO_AI_RU.md\",\n      \"19_ACCOUNT_DATA_LIFECYCLE_RU.md\",\n      \"20_SECURITY_PRIVACY_COMPLIANCE_RU.md\",\n      \"24_ADMIN_CMS_OPERATIONS_RU.md\",\n      \"25_QA_RELEASE_GATES_RU.md\",\n      \"26_SUPPORT_ANALYTICS_INCIDENTS_RU.md\",\n      \"27_STORE_SUBMISSION_LEGAL_HANDOFF_RU.md\"",
+      "sha256": "4df8f202240081c565e744368dcf4be793580d9fd4109d213c40cd313d00a9ef"
+    },
+    {
+      "id": "milestone-contract",
+      "path": "docs/mobile/TRACEABILITY_MAPPING.md",
+      "line": 10,
+      "endLine": 10,
+      "quote": "- Each stage in the union creates one milestone, `${stageId}.${requirementId}`. Passing an architecture or implementation milestone cannot pass a later integration, device, localization, legal, or exact-release-candidate milestone. Global `PASSED` requires every milestone to pass with applicable evidence.",
+      "sha256": "3167a5931e33d53da542f9459e24f4f54e51e625f403e34ad439c26af9ee8fbe"
+    },
+    {
+      "id": "state-stage-gate",
+      "path": "scripts/mobile/state.mjs",
+      "line": 82,
+      "endLine": 83,
+      "quote": "    if (stage.status === \"COMPLETE\" && stage.criteria.some(item => item.status !== \"PASSED\")) fail(`${stage.id}: incomplete criteria`);\n    if (stage.status === \"BLOCKED_EXTERNAL\" && stage.criteria.some(item => ![\"PASSED\", \"BLOCKED_EXTERNAL\"].includes(item.status))) fail(`${stage.id}: internal work remains`);",
+      "sha256": "b141e7b193ffd0da8f4aa3e34bb51b6c36f901ed389946b84b85400bcddf988d"
+    },
+    {
+      "id": "state-global-gate",
+      "path": "scripts/mobile/state.mjs",
+      "line": 113,
+      "endLine": 113,
+      "quote": "      if (!milestones.length || milestones.some(criterion => !allowed.includes(criterion?.status))) fail(`${item.id}: incomplete implementation or validation milestones`);",
+      "sha256": "b141e7b193ffd0da8f4aa3e34bb51b6c36f901ed389946b84b85400bcddf988d"
+    },
+    {
+      "id": "accountless",
+      "path": "docs/mobile/requirements/v12/03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md",
+      "line": 117,
+      "endLine": 132,
+      "quote": "- native paid app core is guest-first;\n- local favorites, history, child profiles and settings work without an\n  account;\n- store account handles paid app download and native IAP restore;\n- cloud sync is optional and disabled by default in SAFE_PAID_BILINGUAL_V1 unless it\n  is already production-ready;\n- disabling cloud account must not disable base features;\n- account UI must not be visible in production when the feature flag is\n  off;\n- account-related SDKs and data collection must be excluded from the\n  binary/manifest when disabled where feasible;\n- if account creation is enabled, in-app deletion and required public web\n  deletion become mandatory before submission.\n\nWeb/PWA may require an entitlement identity for the paid web license, but\nthis must be the minimum necessary commerce identity and have deletion,",
+      "sha256": "5071ce0e00ac06eab4045f2634e4bc7bddbdf43a1ec1afb13f662ec102da0779"
+    },
+    {
+      "id": "web-identity",
+      "path": "docs/mobile/requirements/v12/03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md",
+      "line": 131,
+      "endLine": 133,
+      "quote": "Web/PWA may require an entitlement identity for the paid web license, but\nthis must be the minimum necessary commerce identity and have deletion,\nrecovery, privacy and support flows.",
+      "sha256": "5071ce0e00ac06eab4045f2634e4bc7bddbdf43a1ec1afb13f662ec102da0779"
+    },
+    {
+      "id": "deletion-contract",
+      "path": "docs/mobile/requirements/v12/03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md",
+      "line": 213,
+      "endLine": 215,
+      "quote": "If an adult account can be created, deletion must be initiable in-app and\nthrough the required public web path. Deletion must remove or anonymize\nserver data within documented timelines and explain lawful retention.",
+      "sha256": "4e36a2e51dcaa7c91e4afa7db07e68b03c91d958e97db7413e84265e1ad6923a"
+    },
+    {
+      "id": "draft-publication",
+      "path": "docs/mobile/requirements/v12/03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md",
+      "line": 93,
+      "endLine": 104,
+      "quote": "Codex may generate a draft, but production publication requires:\n\n1. source hash and immutable factual source;\n2. glossary and translation-memory pass;\n3. named-entity/title verification;\n4. placeholder/markup/citation parity;\n5. independent semantic review pass;\n6. back-translation or structured meaning-diff check;\n7. child reading-level and sensitivity check where applicable;\n8. rights check for translated quotations/titles/audio;\n9. locale preview and layout test;\n10. approved publication state.",
+      "sha256": "b14e80b836d4b14c5180e55c3e0a8705ef6bdfffbe2f3fb1e9f307c3a29c9e99"
+    },
+    {
+      "id": "locale-before-content",
+      "path": "docs/mobile/requirements/v12/119_BILINGUAL_PRODUCT_LANGUAGE_CONTRACT_RU_EN.md",
+      "line": 100,
+      "endLine": 102,
+      "quote": "Read persisted/system locale before rendering user content. The orange\nsplash can be language-neutral. No flash of the wrong language is allowed,\nespecially in saved child mode.",
+      "sha256": "08359b89972023a96be269b7fbfa6d1ddf4eb66650025cd11b72fd4212a700e7"
+    },
+    {
+      "id": "release-english",
+      "path": "docs/mobile/requirements/v12/119_BILINGUAL_PRODUCT_LANGUAGE_CONTRACT_RU_EN.md",
+      "line": 75,
+      "endLine": 75,
+      "quote": "- A missing English Base Edition translation blocks bilingual release.",
+      "sha256": "08359b89972023a96be269b7fbfa6d1ddf4eb66650025cd11b72fd4212a700e7"
+    },
+    {
+      "id": "offline-core",
+      "path": "docs/mobile/requirements/v12/18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
+      "line": 90,
+      "endLine": 102,
+      "quote": "Without network after a legitimate base installation:\n\n- app shell;\n- canonical globe bootstrap;\n- included skins/stands/backgrounds;\n- country index;\n- writer search/index and selected biographies;\n- Favorites/Recent;\n- child bootstrap/index/profile;\n- Planetka core scripts;\n- downloaded journeys;\n- last verified optional entitlements;\n- help/privacy/parent controls.",
+      "sha256": "33692fcbbe6b489716d5f7cb87dbc3f6130bb71fca0902e174d7cc7c6abce3b0"
+    },
+    {
+      "id": "worker",
+      "path": "docs/mobile/requirements/v12/18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
+      "line": 151,
+      "endLine": 158,
+      "quote": "- isolated scope, no conflict with public site SW;\n- precache only essential shell;\n- versioned runtime cache;\n- update prompt/rollback;\n- no stale paid-access bypass;\n- no remote executable code;\n- offline license grace policy;\n- clear distinction public website vs paid PWA.",
+      "sha256": "33692fcbbe6b489716d5f7cb87dbc3f6130bb71fca0902e174d7cc7c6abce3b0"
+    },
+    {
+      "id": "visual",
+      "path": "docs/mobile/requirements/v12/21_VISUAL_UX_CANON_RU.md",
+      "line": 21,
+      "endLine": 28,
+      "quote": "- native orange splash;\n- no white/black flash;\n- branded bridge on same orange;\n- official quill/logo at top-left after safe area;\n- calm transition;\n- real globe runtime after bootstrap;\n- no giant duplicate logo;\n- reduced motion.",
+      "sha256": "2dd0f8911d1c9fe77835700f208a60df302d2cf4339ecd9b8d4d913f8cca9d19"
+    },
+    {
+      "id": "visual-evidence",
+      "path": "docs/mobile/requirements/v12/21_VISUAL_UX_CANON_RU.md",
+      "line": 121,
+      "endLine": 123,
+      "quote": "For each visual stage save reference, implementation screenshot,\nside-by-side/diff, intentional differences, accessibility report,\nsafe-area report, tap-target report and provenance confirmation.",
+      "sha256": "2dd0f8911d1c9fe77835700f208a60df302d2cf4339ecd9b8d4d913f8cca9d19"
+    },
+    {
+      "id": "a11y",
+      "path": "docs/mobile/requirements/v12/22_ACCESSIBILITY_LOCALIZATION_AUDIO_RU.md",
+      "line": 118,
+      "endLine": 131,
+      "quote": "- VoiceOver iPhone/iPad;\n- TalkBack Android;\n- keyboard/switch-style navigation for PWA;\n- 200%/largest text;\n- landscape/tablet;\n- reduced motion;\n- high contrast/forced colours;\n- screen magnification;\n- no-audio;\n- no-haptic;\n- colour blindness checks;\n- child and Parent Gate flows;\n- store/purchase/restore/errors;\n- accessible alternative to globe.",
+      "sha256": "bc94b2926d1c65cd841121f8d981f4259e3676aa9f245213e7e2f63158a4fb2c"
+    },
+    {
+      "id": "device-boundaries",
+      "path": "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
+      "line": 129,
+      "endLine": 132,
+      "quote": "- PWA Chromium/Safari/Firefox support boundaries;\n- reduced motion/large text;\n- 32-bit not supported if platform/toolchain no longer supports it,\n  documented clearly.",
+      "sha256": "f474001944a8bf621d95ccb19ea77ebe5488d49754c26a5eca5bc0ed0995ed31"
+    },
+    {
+      "id": "heavy-later",
+      "path": "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
+      "line": 151,
+      "endLine": 152,
+      "quote": "profiling may run at release checkpoints, not after every tiny change.\nStore evidence with commit/device/version.",
+      "sha256": "f474001944a8bf621d95ccb19ea77ebe5488d49754c26a5eca5bc0ed0995ed31"
+    },
+    {
+      "id": "install-unverified",
+      "path": "tests/pwa/cross-engine-pwa.spec.mjs",
+      "line": 37,
+      "endLine": 39,
+      "quote": "    physicalMobileDevice: false, safariVerification: false, nativeInstallationVerified: false,\n    measurements: [], completedChecks: [], outcome: \"INCOMPLETE\", externalRequests: [],\n    limits: [\"Service Worker COMPLETE and a manifest are not native OS installation evidence.\", \"Presence of an API or an install event does not prove its complete browser/OS behavior.\", \"Recovery/support checks cover offline instructions and exact links, not a live merchant/account transaction.\"],",
+      "sha256": "527a9520877aed78d8baeeb642694357b18065f3c31e8003f0dd0546ba1595e0"
+    },
+    {
+      "id": "cross-failures",
+      "path": "docs/mobile/PWA_BROWSER_BOUNDARIES.md",
+      "line": 9,
+      "endLine": 9,
+      "quote": "The separate cross-engine run used fresh QA artifact `4a0696efeabacc2e0d12ddf8989d315b59d79bdfa7495653fa566a5954de0a1c`, source checkpoint `8e6cfe1f482ebd261965d774cbf4e14f80f62f1d`, with source-input digest `799fad9031a0ea5f3bd92ad9c0b35155942f1b5029d8d36e5680444ae07dcb31`. It finished with **4 passed, 2 failed, 0 skipped, 0 flaky**, one worker and no retries, in 122.202 s. The source checkpoint is an ancestor plus recorded working inputs, not an exact RC commit. [Full observations, raw-report hash and independent artifact audit](evidence/S03/cross-engine-browser-first.json).",
+      "sha256": "427ee3aea848a29e81f1fced345cf83cfc4333bae2c475714119cf91c55602dd"
+    },
+    {
+      "id": "actual-sw-helper",
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "line": 22,
+      "endLine": 31,
+      "quote": "async function installed(page) {\n  await expect.poll(() => page.evaluate(() => navigator.serviceWorker.controller?.scriptURL ?? \"\"), { timeout: 60_000 })\n    .toBe(\"http://127.0.0.1:4293/planet/sw.js\");\n  const result = await page.evaluate(async () => {\n    const names = (await caches.keys()).filter(name => name.startsWith(\"literary-planet-pwa-v1-\"));\n    for (const name of names) {\n      const marker = await (await caches.open(name)).match(\"/planet/__pwa_complete__\");\n      if (marker) { const data = await marker.json(); if (data.activationSequence > 0) return data; }\n    }\n    return null;",
+      "sha256": "ea96400473917fbe1c1a054761b931279c5c3a6530500ae52766a5fe2357d37f"
+    },
+    {
+      "id": "provider-absent",
+      "path": "server/planet/worker.ts",
+      "line": 135,
+      "endLine": 135,
+      "quote": "      // No provider is configured in this draft. Webhooks therefore return 503.",
+      "sha256": "0b95441c50311f0fa9eb8965782674dc2e1cb6af7ba7ee9a0c0b4e56b7acdda5"
+    },
+    {
+      "id": "webhook-denial",
+      "path": "server/planet/api.ts",
+      "line": 201,
+      "endLine": 201,
+      "quote": "        if (!provider || route !== \"payments/webhook/\" + provider.provider) return response(503, { error: \"payment-provider-unconfigured\" });",
+      "sha256": "2374a4cc2321938a6c1d4217b5b31107e53eb7d2a1532c1b5ab7c8bd5e02f345"
+    },
+    {
+      "id": "disclosure-denial",
+      "path": "server/planet/api.ts",
+      "line": 259,
+      "endLine": 259,
+      "quote": "        if (!disclosure) return response(503, { error: \"deletion-disclosure-unavailable\" });",
+      "sha256": "2374a4cc2321938a6c1d4217b5b31107e53eb7d2a1532c1b5ab7c8bd5e02f345"
+    },
+    {
+      "id": "deletion-limited",
+      "path": "server/planet/deletionProcessor.ts",
+      "line": 7,
+      "endLine": 8,
+      "quote": "  publicContributions: \"block\";\n  paymentRecords: \"retain-provider-records-unlinked\";",
+      "sha256": "0cf31f84f958fc54484d594392dde3fa5436346981c4376fddd115d9677c25a4"
+    },
+    {
+      "id": "deletion-proof",
+      "path": "server/planet/deletionProcessor.ts",
+      "line": 117,
+      "endLine": 123,
+      "quote": "          // A lost HTTP response may follow a committed delete; always reconcile SQL.\n          try { await services.deleteAuthUser(prepared.subject!, signal); } catch { /* durable phase decides, never HTTP alone */ }\n          active();\n          const reconciled = inspection(await services.inspect(lease, signal));\n          if (reconciled.phase === \"auth-deleted\") return await finish(\"completed\", []);\n          if (reconciled.blockers.length) return await finish(\"blocked\", reconciled.blockers);\n          return { status: \"retry\", codes: [\"auth-delete-unconfirmed\"] };",
+      "sha256": "0cf31f84f958fc54484d594392dde3fa5436346981c4376fddd115d9677c25a4"
+    },
+    {
+      "id": "deletion-staff",
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "line": 116,
+      "endLine": 116,
+      "quote": "  if profile_role is distinct from 'reader' then codes:=array_append(codes,'staff-or-profile-role'); end if;",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276"
+    },
+    {
+      "id": "deletion-contributors",
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "line": 176,
+      "endLine": 176,
+      "quote": "        when item.relname in ('article_comments','forum_topics','forum_replies','community_votes','ratings','comment_reports','forum_reports') then 'public-contributions'",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276"
+    },
+    {
+      "id": "deletion-decisions",
+      "path": "docs/mobile/ACCOUNT_DELETION_DISCLOSURE_DRAFT_RU_EN.md",
+      "line": 77,
+      "endLine": 82,
+      "quote": "| DD-01: disposition и retention платежей | Точный набор полей выше; реализован вариант retained + NULL user_id; прямо указана возможность correlation | Владелец и юридический reviewer утверждают применимость этого варианта, основания, сроки либо проверяемые условия окончания хранения, работу с записями самого провайдера и доступ к ним. Ни период, ни правовое основание в коде не заданы. Если выбран иной вариант - требуется отдельная реализация агентом и проверка, а не ручная задача владельцу. |\n| DD-02: retention request ledger | Точные поля процесса/хешей, очистка lease при финализации и support receipt описаны | Утвердить срок/критерий удаления ledger и связанных операционных доказательств, доступ поддержки и способ подтверждения результата после удаления identity. Текущий authenticated status API не является публичной проверкой по одному номеру заявки. |\n| DD-03: blocked-account handling | Причины и сохранность public/staff/editorial связей описаны без обещания автоматического удаления | Владелец, редакция/модерация и юридический reviewer выбирают обработку каждой категории: что удалять, что сохранять и как разрешать связи. Для staff нужен существующий безопасный порядок передачи полномочий. Срок обработки, ответственный и процесс сообщения результата ещё должны быть утверждены; narrow processor не реализует эти решения за них. |\n| DD-04: системная граница удаления | Server rows, avatar API, offline/device boundary и отсутствие provider erase названы | Проверить фактически включённые managed Auth/Storage журналы, резервные копии, support correspondence и внешние сервисы/экспорты; установить их обработку и отразить итог в обеих версиях. Эти внешние данные здесь не объявляются ни полностью удалёнными, ни бессрочно сохраняемыми. |\n| DD-05: покупка, доступ и частичная обработка | Online block после запроса; прежний offline proof до своего срока; refund не выполняется; avatar может исчезнуть до Auth removal | Владелец утверждает понятное пользователю поведение покупки/доступа, отдельный маршрут возврата и handling прерванного/blocked запроса. Ни отмена запроса, ни восстановление уже удалённого avatar, ни автоматическое перенесение покупки на новый аккаунт этим кодом не обещаются. |\n| DD-06: RU/EN publication package | Девять синхронных абзацев, общие facts и source hashes; обе версии укладываются в существующий plaintext contract | Нужны human RU/EN semantic/editing review и юридическое рассмотрение окончательного содержания, затем владельческое одобрение конкретной версии и evidence. После любых решений выше агент синхронно обновляет обе версии, повторяет проверки и подготавливает конфигурацию; данный документ её не включает. |",
+      "sha256": "f6f597cd186d1149cc40604c8650f7728117b0c3bcaa2dec4e27de83ca8412fc"
+    },
+    {
+      "id": "host-mount",
+      "path": "src/host/mountHostApp.tsx",
+      "line": 43,
+      "endLine": 63,
+      "quote": "  const language = resolveInitialInterfaceLanguage(\n    initialization.preference.value, undefined, services.getSystemLanguages()\n  );\n  const languageStatus = createHostLanguageStatus(services.preferences, language, initialization.preference.status === \"ready\");\n  installSafeWebStorage();\n  document.documentElement.lang = language;\n  document.title = language === \"ru\" ? \"Литературная планета\" : \"Literary Planet\";\n  mounted = true;\n  const root = createRoot(target);\n  root.render(\n    <React.StrictMode>\n      <BootstrapErrorBoundary>\n        <PlatformServicesProvider services={services}>\n          <InterfaceLanguageProvider hostLanguage={languageStatus.persistence}>\n            <AccountlessReaderProvider>\n              <SiteTypographyRuntime />\n              <SiteDesignRuntime />\n              <HostRuntimeStatus controller={languageStatus} />\n              <AppErrorBoundary><App /></AppErrorBoundary>\n            </AccountlessReaderProvider>\n          </InterfaceLanguageProvider>",
+      "sha256": "b1f850347216bf434c8b8cc1772252ce7385e7dee0c2dac84d9463f92bad79f1"
+    },
+    {
+      "id": "host-init",
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "line": 25,
+      "endLine": 30,
+      "quote": "  const initialization = await initializeHostPlatform({\n    getAppLanguage: () => bindings.app.getAppLanguage(),\n    readLanguagePreference: () => bindings.preferences.get({ key: \"probpera-interface-language\" }),\n    timeoutMs: options.timeoutMs,\n  });\n  const services = createHostPlatformServices({",
+      "sha256": "1152a266268507464fb271ff169445c2df1928d6d3c506a531a06d908b42562c"
+    },
+    {
+      "id": "react-child-fixture",
+      "path": "tests/host/host-lifecycle.spec.mjs",
+      "line": 104,
+      "endLine": 104,
+      "quote": "test(\"mount subscribes actual host state and keeps one language owner, title and child across RU/EN/RU\", async () => {",
+      "sha256": "c65e54e394be9b7c02ce73587890d0caf1e05a7142499baee44bb0bd7617076e"
+    },
+    {
+      "id": "android-device-unverified",
+      "path": "docs/mobile/evidence/S04/working-native-implementation.json",
+      "line": 36,
+      "endLine": 37,
+      "quote": "    \"deviceTested\": false,\n    \"storeVariantBuildsVerified\": false",
+      "sha256": "c9808e804564c94c8768bf091385f0b8e6eb5e5ca78869092809a4ceca196957"
+    },
+    {
+      "id": "ios-unbuilt",
+      "path": "docs/mobile/evidence/S04/working-native-implementation.json",
+      "line": 55,
+      "endLine": 58,
+      "quote": "    \"nativeBuildVerified\": false,\n    \"macosXcodeAvailable\": false,\n    \"packageResolutionVerified\": false,\n    \"projectSyncReview\": \"docs/mobile/evidence/S04/ios-project-sync-review.json\",",
+      "sha256": "c9808e804564c94c8768bf091385f0b8e6eb5e5ca78869092809a4ceca196957"
+    },
+    {
+      "id": "android-variants",
+      "path": "apps/mobile/android/app/build.gradle",
+      "line": 28,
+      "endLine": 42,
+      "quote": "    flavorDimensions \"distribution\"\n    productFlavors {\n        dev {\n            dimension \"distribution\"\n            applicationIdSuffix \".dev\"\n            versionNameSuffix \"-dev\"\n        }\n        googlePlay {\n            dimension \"distribution\"\n        }\n        ruStore {\n            dimension \"distribution\"\n        }\n    }\n    buildTypes {",
+      "sha256": "af7329ea63d251885b74ad9e8e3bb1bc387d6074d270f65bfc9a64a97544c300"
+    },
+    {
+      "id": "variant-gate",
+      "path": "apps/mobile/android/app/build.gradle",
+      "line": 59,
+      "endLine": 59,
+      "quote": "                artifact.platform != 'android' || artifact.channel != variant.flavorName) {",
+      "sha256": "af7329ea63d251885b74ad9e8e3bb1bc387d6074d270f65bfc9a64a97544c300"
+    },
+    {
+      "id": "parallel-entry",
+      "path": "docs/mobile/evidence/S04/parallel-safe-entry.json",
+      "line": 16,
+      "endLine": 16,
+      "quote": "  \"reason\": \"Preparing local Android/iOS toolchains and isolated bundled native projects does not depend on S03 production hosting, reviewed deletion policy or unavailable browser/device evidence. Accepted canonical core and integrated S03 working source are preserved in the source checkpoint. This does not waive remaining S03 internal work.\",",
+      "sha256": "04662ff58cd84abd03fc02286dd07d4c371a184a8ac60b51863720bbaae1fe15"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "docs/mobile/requirements/v12/69_STAGE_ACCEPTANCE_MATRIX.csv",
+      "sha256": "a984abc8b06903e3d1b30ba9cad869174c2359054f06110d153bbf3e53afb02a",
+      "bytes": 15021
+    },
+    {
+      "path": "docs/mobile/requirements/v12/03_MASTER_EXECUTIVE_PROMPT_V12_RU_EN.txt",
+      "sha256": "b7922a0c341a6a699c82b02bb513de52035be7a35d5c8aa412124d17811cc615",
+      "bytes": 29059
+    },
+    {
+      "path": "docs/mobile/requirements/v12/95_STAGE_DOCUMENT_ROUTING.json",
+      "sha256": "4df8f202240081c565e744368dcf4be793580d9fd4109d213c40cd313d00a9ef",
+      "bytes": 7421
+    },
+    {
+      "path": "docs/mobile/TRACEABILITY_MAPPING.md",
+      "sha256": "3167a5931e33d53da542f9459e24f4f54e51e625f403e34ad439c26af9ee8fbe",
+      "bytes": 7778
+    },
+    {
+      "path": "scripts/mobile/state.mjs",
+      "sha256": "b141e7b193ffd0da8f4aa3e34bb51b6c36f901ed389946b84b85400bcddf988d",
+      "bytes": 10824
+    },
+    {
+      "path": "docs/mobile/requirements/v12/03B_OWNER_MINIMAL_FINAL_OVERLAY_RU.md",
+      "sha256": "5071ce0e00ac06eab4045f2634e4bc7bddbdf43a1ec1afb13f662ec102da0779",
+      "bytes": 21563
+    },
+    {
+      "path": "docs/mobile/requirements/v12/03A_MODERATION_READY_EXECUTION_OVERLAY_RU.md",
+      "sha256": "4e36a2e51dcaa7c91e4afa7db07e68b03c91d958e97db7413e84265e1ad6923a",
+      "bytes": 18236
+    },
+    {
+      "path": "docs/mobile/requirements/v12/03C_BILINGUAL_ENGLISH_FINAL_OVERLAY_RU_EN.md",
+      "sha256": "b14e80b836d4b14c5180e55c3e0a8705ef6bdfffbe2f3fb1e9f307c3a29c9e99",
+      "bytes": 10998
+    },
+    {
+      "path": "docs/mobile/requirements/v12/119_BILINGUAL_PRODUCT_LANGUAGE_CONTRACT_RU_EN.md",
+      "sha256": "08359b89972023a96be269b7fbfa6d1ddf4eb66650025cd11b72fd4212a700e7",
+      "bytes": 3490
+    },
+    {
+      "path": "docs/mobile/requirements/v12/18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
+      "sha256": "33692fcbbe6b489716d5f7cb87dbc3f6130bb71fca0902e174d7cc7c6abce3b0",
+      "bytes": 4450
+    },
+    {
+      "path": "docs/mobile/requirements/v12/21_VISUAL_UX_CANON_RU.md",
+      "sha256": "2dd0f8911d1c9fe77835700f208a60df302d2cf4339ecd9b8d4d913f8cca9d19",
+      "bytes": 2590
+    },
+    {
+      "path": "docs/mobile/requirements/v12/22_ACCESSIBILITY_LOCALIZATION_AUDIO_RU.md",
+      "sha256": "bc94b2926d1c65cd841121f8d981f4259e3676aa9f245213e7e2f63158a4fb2c",
+      "bytes": 4604
+    },
+    {
+      "path": "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
+      "sha256": "f474001944a8bf621d95ccb19ea77ebe5488d49754c26a5eca5bc0ed0995ed31",
+      "bytes": 4168
+    },
+    {
+      "path": "tests/pwa/cross-engine-pwa.spec.mjs",
+      "sha256": "527a9520877aed78d8baeeb642694357b18065f3c31e8003f0dd0546ba1595e0",
+      "bytes": 14501
+    },
+    {
+      "path": "docs/mobile/PWA_BROWSER_BOUNDARIES.md",
+      "sha256": "427ee3aea848a29e81f1fced345cf83cfc4333bae2c475714119cf91c55602dd",
+      "bytes": 13097
+    },
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "sha256": "ea96400473917fbe1c1a054761b931279c5c3a6530500ae52766a5fe2357d37f",
+      "bytes": 14622
+    },
+    {
+      "path": "server/planet/worker.ts",
+      "sha256": "0b95441c50311f0fa9eb8965782674dc2e1cb6af7ba7ee9a0c0b4e56b7acdda5",
+      "bytes": 14897
+    },
+    {
+      "path": "server/planet/api.ts",
+      "sha256": "2374a4cc2321938a6c1d4217b5b31107e53eb7d2a1532c1b5ab7c8bd5e02f345",
+      "bytes": 18135
+    },
+    {
+      "path": "server/planet/deletionProcessor.ts",
+      "sha256": "0cf31f84f958fc54484d594392dde3fa5436346981c4376fddd115d9677c25a4",
+      "bytes": 9240
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+      "bytes": 25064
+    },
+    {
+      "path": "docs/mobile/ACCOUNT_DELETION_DISCLOSURE_DRAFT_RU_EN.md",
+      "sha256": "f6f597cd186d1149cc40604c8650f7728117b0c3bcaa2dec4e27de83ca8412fc",
+      "bytes": 23169
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "b1f850347216bf434c8b8cc1772252ce7385e7dee0c2dac84d9463f92bad79f1",
+      "bytes": 4040
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "1152a266268507464fb271ff169445c2df1928d6d3c506a531a06d908b42562c",
+      "bytes": 2033
+    },
+    {
+      "path": "tests/host/host-lifecycle.spec.mjs",
+      "sha256": "c65e54e394be9b7c02ce73587890d0caf1e05a7142499baee44bb0bd7617076e",
+      "bytes": 15449
+    },
+    {
+      "path": "docs/mobile/evidence/S04/working-native-implementation.json",
+      "sha256": "c9808e804564c94c8768bf091385f0b8e6eb5e5ca78869092809a4ceca196957",
+      "bytes": 14857
+    },
+    {
+      "path": "apps/mobile/android/app/build.gradle",
+      "sha256": "af7329ea63d251885b74ad9e8e3bb1bc387d6074d270f65bfc9a64a97544c300",
+      "bytes": 3694
+    },
+    {
+      "path": "docs/mobile/evidence/S04/parallel-safe-entry.json",
+      "sha256": "04662ff58cd84abd03fc02286dd07d4c371a184a8ac60b51863720bbaae1fe15",
+      "bytes": 4409
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "4b025ed1bfa9d2af15c5bc56caacb28396c5a3e656ffab6540ac8195566e308b",
+      "bytes": 454436
+    },
+    {
+      "path": "docs/mobile/STAGE_REQUIREMENT_MAP.json",
+      "sha256": "be4f8f2a1dfa92ff77de938d3c6e1c3188941e8bdc7c573c882d48b0955946ee",
+      "bytes": 124316
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "36b0910e2d1d1a8f41e89ae5bf9c12408bb9fd1549b6505b7e6bc9e0a6ef0409",
+      "bytes": 5029
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "a91ea2c8a22cadff1f0d1ccf0061cf167fcc08dc7e8051b69defec5f5d243bb4",
+      "bytes": 1508
+    },
+    {
+      "path": "docs/mobile/requirements/v12/68_REQUIREMENT_ID_INDEX.csv",
+      "sha256": "c1610575d2e930d33d67d73522299b8d7d12683adda80d7593529ed87b396234",
+      "bytes": 37079
+    },
+    {
+      "path": "docs/mobile/evidence/S03/saved-verification-artifact-regression.json",
+      "sha256": "b82c9f46dc1246b16d66c70aa76d763d6997ac4c5c600fd636d0c7047777c3cc",
+      "bytes": 4541
+    },
+    {
+      "path": "docs/mobile/evidence/S03/known-gaps.json",
+      "sha256": "eb02d30bab478664bfafb47ed020290e51b516c82cd91d742d65b943607d6c10",
+      "bytes": 15452
+    },
+    {
+      "path": "docs/mobile/evidence/S04/android-dev-apk-verification.json",
+      "sha256": "28ae8e63cae622f0b6a91e8e73f52bf87c8dfa066cdbd86b73772ed3de229ada",
+      "bytes": 7279
+    },
+    {
+      "path": "src/host/initializeHostPlatform.ts",
+      "sha256": "747aabe8e36ea20e8714d509a05c9bb01836b0b688b9eef5f743f6c76423422c",
+      "bytes": 5665
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "04cb3edbfd5b882a2eb49c6eb74fae1f4e7e9b0f6e1164a5bc574098bb1fd940",
+      "bytes": 14409
+    },
+    {
+      "path": "src/platform/adapters/ios/IosPlatformAdapter.ts",
+      "sha256": "08e2811719c25b26a5afa9ca4e4e33e27328779a894be1253a5f227e9221c70a",
+      "bytes": 1978
+    },
+    {
+      "path": ".github/workflows/mobile-ios-simulator.yml",
+      "sha256": "d63e27c5fd3a38ef69789aae75a9c78c204085f940568651f6ec77cd72014549",
+      "bytes": 8673
+    },
+    {
+      "path": "scripts/mobile/ios-simulator-build.mjs",
+      "sha256": "9085429c12da0a7ff864ae05d012d0b8c4fe71328c53224da3c510642bde6237",
+      "bytes": 12716
+    }
+  ],
+  "nextActionsReference": {
+    "path": ".tmp/native-bootstrap/s03-s04-acceptance-gap-review.md",
+    "section": "Runnable next actions"
+  },
+  "officialSources": [
+    {
+      "url": "https://chromedevtools.github.io/devtools-protocol/tot/PWA/",
+      "usedFor": "Experimental PWA.install/launch/uninstall command preparation only; actual capability or install not tested.",
+      "accessedDate": "2026-09-06"
+    }
+  ],
+  "limitations": [
+    "Read-only point-in-time source and prior evidence review, not repeated product/native tests. Root may integrate upstream or receive actual cloud output afterwards.",
+    "Historical cross-engine4PASS/2FAIL stays unchanged. Later Chrome20 saved-verification evidence is not OS installation or Safari/device evidence.",
+    "Future internal code remains internal; approvals/retention/legal bases, actual payments, physical device and native execution are not invented.",
+    "PGlite single-session tests do not prove concurrent production semantics; host DOM fixture is not actual App/globe/native device."
+  ]
+}

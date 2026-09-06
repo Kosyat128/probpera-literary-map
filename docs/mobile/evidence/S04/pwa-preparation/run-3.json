@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "kind": "historical-pwa-cdp-capability-and-locked-shell",
+  "startedAt": "2026-09-06T01:18:23.442Z",
+  "output": ".tmp/native-bootstrap/pwa-cdp-capability-lZ4sh8",
+  "profile": ".tmp/native-bootstrap/pwa-cdp-capability-lZ4sh8/profile",
+  "buildId": "b006c2757ee7e5bacc6b946d8c7dcd880c0760da74ff3d39d752095b38b26c6d",
+  "artifactSha256": "6dc25b0b7fcc472efb69b19cbcf274ed79204134f92cc13b742ce2a555699f37",
+  "authoritySha256": "8abf46a2ca1495a57da6c777feaadd896a3489ba5d9a48a7cba99f90eb050cbb",
+  "authorityFileSha256": "986b36c4f2aecca50cd89eaafb0297f47b32b408e0e0a68b80a05218962bd46d",
+  "inventoryFilesVerified": 334,
+  "harnessSha256": "dd08bcfbe9701ec48a431b6ca74fe84469a85189366c630b8237042a3be7e4a0",
+  "nativeInstallationVerified": false,
+  "osIntegrationPerformed": false,
+  "authorizedGlobeVerified": false,
+  "limitations": [
+    "Historical signer key was memory-only and its server is closed. All license endpoints deliberately respond 503.",
+    "No grant injected and no artifact bytes changed. This can verify cached locked shell, not paid globe access.",
+    "No PWA.install/uninstall call: separate Chrome profile does not itself isolate Windows shortcuts/registry.",
+    "Headless Windows Chrome only; not physical mobile, Safari, user-visible install UI or stage acceptance."
+  ],
+  "checks": [
+    {
+      "name": "real-historical-app-remains-closed-without-grant",
+      "pass": true
+    }
+  ],
+  "errors": [
+    "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"http://127.0.0.1:57395/planet/sw.js\"\nReceived: \"\"\n\nCall Log:\n- Timeout 60000ms exceeded while waiting on the predicate\n    at captureRawStack (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\playwright-core\\lib\\coreBundle.js:9681:17)\n    at callMatcherAsStep (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\playwright\\lib\\matchers\\expect.js:13310:57)\n    at Object.toBe (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\playwright\\lib\\matchers\\expect.js:13300:23)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-bootstrap\\pwa-cdp-capability.mjs:110:112"
+  ],
+  "cleanup": {
+    "ownedBrowserContextClosed": true,
+    "loopbackServerClosed": true,
+    "profileRetainedForEvidence": true,
+    "systemCleanupPerformed": false
+  },
+  "origin": "http://127.0.0.1:57395",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/152.0.7977.76",
+    "revision": "@0d89dfa2dd7c1ec4b8a14b9f303f887bb63b6174",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "jsVersion": "15.2.124.19"
+  },
+  "manifest": {
+    "url": "http://127.0.0.1:57395/planet/ru/manifest.webmanifest",
+    "errors": [],
+    "data": "{\n  \"id\": \"/planet/\",\n  \"scope\": \"/planet/\",\n  \"start_url\": \"/planet/ru/\",\n  \"name\": \"Литературная планета\",\n  \"short_name\": \"Литературная планета\",\n  \"lang\": \"ru\",\n  \"dir\": \"ltr\",\n  \"display\": \"standalone\",\n  \"background_color\": \"#ffffff\",\n  \"theme_color\": \"#f67518\",\n  \"icons\": [\n    {\n      \"src\": \"/planet/icons/icon-192.png\",\n      \"sizes\": \"192x192\",\n      \"type\": \"image/png\",\n      \"purpose\": \"any\"\n    },\n    {\n      \"src\": \"/planet/icons/icon-512.png\",\n      \"sizes\": \"512x512\",\n      \"type\": \"image/png\",\n      \"purpose\": \"any\"\n    }\n  ]\n}\n",
+    "parsed": {
+      "scope": "http://127.0.0.1:57395/planet/"
+    },
+    "manifest": {
+      "backgroundColor": "rgba(255,255,255,1)",
+      "display": "kStandalone",
+      "icons": [
+        {
+          "url": "http://127.0.0.1:57395/planet/icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        },
+        {
+          "url": "http://127.0.0.1:57395/planet/icons/icon-512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ],
+      "id": "http://127.0.0.1:57395/planet/",
+      "name": "Литературная планета",
+      "orientation": "DEFAULT",
+      "preferRelatedApplications": false,
+      "scope": "http://127.0.0.1:57395/planet/",
+      "startUrl": "http://127.0.0.1:57395/planet/ru/",
+      "themeColor": "rgba(246,117,24,1)"
+    }
+  },
+  "installability": {
+    "installabilityErrors": []
+  },
+  "pwaCapability": {
+    "methodRecognized": true,
+    "outcome": "not-installed-or-unavailable",
+    "message": "cdpSession.send: Protocol error (PWA.getOsAppState): Unknown web-app manifest id http://127.0.0.1:57395/planet/"
+  },
+  "completed": false,
+  "requests": [
+    {
+      "method": "GET",
+      "pathname": "/planet/ru/",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": 2784
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/assets/index-DFXIrg8o.js",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/javascript",
+        "Content-Length": 407624
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/ru/manifest.webmanifest",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "application/manifest+json",
+        "Content-Length": 589
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/assets/vite-preload-helper-C2MX7TZ4.js",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/javascript",
+        "Content-Length": 1117
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/assets/index-Bu0K2mnD.css",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/css",
+        "Content-Length": 564638
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/pwa-shell.css",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/css",
+        "Content-Length": 1136
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/assets/react-vendor-D6IN95gq.js",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/javascript",
+        "Content-Length": 145954
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/brand/probpera-logo.png",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "image/png",
+        "Content-Length": 20811
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/assets/three-vendor-C5DtDRyw.js",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/javascript",
+        "Content-Length": 1094834
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/assets/qaSceneProbe-nMV7x9rD.js",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/javascript",
+        "Content-Length": 413
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/sw.js",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "no-cache",
+        "Content-Type": "text/javascript",
+        "Content-Length": 59888,
+        "Service-Worker-Allowed": "/planet/"
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/icons/icon-192.png",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "image/png",
+        "Content-Length": 9045
+      },
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "pathname": "/planet/api/license/identity",
+      "status": 503
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/icons/icon-192.png",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "image/png",
+        "Content-Length": 9045
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/fonts/editorial/onest-cyrillic-variable.woff2",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "font/woff2",
+        "Content-Length": 15860
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/fonts/editorial/onest-latin-variable.woff2",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "font/woff2",
+        "Content-Length": 33760
+      },
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "pathname": "/planet/",
+      "responseHeaders": {
+        "Content-Security-Policy": "default-src 'self'; script-src 'self'; worker-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; frame-ancestors 'none'; form-action 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": 3196
+      },
+      "status": 200
+    }
+  ],
+  "deniedExternalRequests": [],
+  "browserConsole": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 503 (Service Unavailable)"
+    }
+  ],
+  "workerDiagnostics": [
+    {
+      "event": "created",
+      "url": "http://127.0.0.1:57395/planet/sw.js"
+    },
+    {
+      "event": "closed",
+      "url": "http://127.0.0.1:57395/planet/sw.js"
+    }
+  ],
+  "workerErrors": [
+    {
+      "errorMessage": {
+        "errorMessage": "Failed to register a ServiceWorker for scope ('http://127.0.0.1:57395/planet/') with script ('http://127.0.0.1:57395/planet/sw.js'): ServiceWorker failed to install: ServiceWorker failed to handle event (event.waitUntil Promise rejected)",
+        "registrationId": "0",
+        "versionId": "0",
+        "sourceURL": "",
+        "lineNumber": -1,
+        "columnNumber": -1
+      }
+    },
+    {
+      "errorMessage": {
+        "errorMessage": "Uncaught (in promise) InvalidAccessError: Failed to execute 'put' on 'Cache': Entry already exists.",
+        "registrationId": "0",
+        "versionId": "0",
+        "sourceURL": "http://127.0.0.1:57395/planet/sw.js",
+        "lineNumber": 0,
+        "columnNumber": -1
+      }
+    }
+  ],
+  "preservedArtifactUnchanged": true,
+  "preservedAuthorityUnchanged": true,
+  "completedAt": "2026-09-06T01:19:23.901Z"
+}

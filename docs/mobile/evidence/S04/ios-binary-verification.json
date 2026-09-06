@@ -1,0 +1,783 @@
+{
+  "recordedAt": "2026-09-06T01:22:03.574Z",
+  "scope": "Independent read-only binary/archive review of actual unsigned iOS Simulator build; no executable launched.",
+  "runId": 34003133006,
+  "jobId": 101405451827,
+  "sourceCommit": "273f400d8f07a57269f391dfc13d7e802c9071f2",
+  "outer": {
+    "path": ".tmp/native-bootstrap/ios-publication/success-run-artifacts.zip",
+    "bytes": 61574249,
+    "sha256": "696056655385e0fcc31df1e8068439ecc42691a9b24f49723821d10cd3a49416",
+    "entries": 29,
+    "checksummedPayloadFiles": 28,
+    "allChecksumsPass": true
+  },
+  "app": {
+    "zip": {
+      "bytes": 30302608,
+      "sha256": "4562f64c6881dd72182d872f58f7a606b89eebb31b809b9da4a9d7b12a1c5491",
+      "entries": 370
+    },
+    "tar": {
+      "bytes": 30224044,
+      "sha256": "5fc2832cd3458c01a3fc85828864fa5ea3fec5b0c9dbec59707db4c89b7e4715",
+      "entries": 370,
+      "paxHeaders": 0
+    },
+    "regularPayloadFiles": 349,
+    "zipTarFileBytesEqual": true,
+    "parityScope": "All regular App payload files; directory entries and AppleDouble/__MACOSX resource metadata are separately identified, not claimed equivalent.",
+    "zipNonPayloadEntries": [
+      "App.app/",
+      "App.app/en.lproj/",
+      "App.app/Base.lproj/",
+      "App.app/Base.lproj/Main.storyboardc/",
+      "App.app/Base.lproj/LaunchScreen.storyboardc/",
+      "App.app/public/",
+      "App.app/public/textures/",
+      "App.app/public/brand/",
+      "App.app/public/brand/sections/",
+      "App.app/public/articles/",
+      "App.app/public/fonts/",
+      "App.app/public/fonts/editorial/",
+      "App.app/public/assets/",
+      "App.app/public/assets/country-flags/",
+      "App.app/public/.vite/",
+      "App.app/ru.lproj/",
+      "App.app/Frameworks/",
+      "App.app/Frameworks/Capacitor.framework/",
+      "App.app/Frameworks/Capacitor.framework/_CodeSignature/",
+      "App.app/Frameworks/Cordova.framework/",
+      "App.app/Frameworks/Cordova.framework/_CodeSignature/"
+    ],
+    "tarNonPayloadEntries": [
+      "App.app/",
+      "App.app/en.lproj/",
+      "App.app/Base.lproj/",
+      "App.app/public/",
+      "App.app/ru.lproj/",
+      "App.app/Frameworks/",
+      "App.app/Frameworks/Capacitor.framework/",
+      "App.app/Frameworks/Cordova.framework/",
+      "App.app/Frameworks/Cordova.framework/_CodeSignature/",
+      "App.app/Frameworks/Capacitor.framework/_CodeSignature/",
+      "App.app/public/textures/",
+      "App.app/public/brand/",
+      "App.app/public/articles/",
+      "App.app/public/fonts/",
+      "App.app/public/assets/",
+      "App.app/public/.vite/",
+      "App.app/public/assets/country-flags/",
+      "App.app/public/fonts/editorial/",
+      "App.app/public/brand/sections/",
+      "App.app/Base.lproj/Main.storyboardc/",
+      "App.app/Base.lproj/LaunchScreen.storyboardc/"
+    ],
+    "binaries": [
+      {
+        "path": "App.app/App",
+        "bytes": 73104,
+        "sha256": "f46eb4d65ee106a3ebe574bfd40da06e7e1ca8b361c825b692237a10682cdb44",
+        "format": "FAT_MAGIC",
+        "architecture": [
+          "x86_64",
+          "arm64"
+        ],
+        "fileType": 2,
+        "builds": [
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.5.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1267.0.0"
+              }
+            ]
+          },
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.5.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1267.0.0"
+              }
+            ]
+          }
+        ],
+        "slices": [
+          {
+            "path": "App.app/App#slice0",
+            "bytes": 25496,
+            "sha256": "e7e5a3bf69c4374562c0e5050df381f4d3bec9a06ddffa2581e38217f4581c77",
+            "architecture": "x86_64",
+            "cpuType": 16777223,
+            "cpuSubtype": 3,
+            "fileType": 2,
+            "loadCommands": 21,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.5.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1267.0.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [],
+            "offset": 4096
+          },
+          {
+            "path": "App.app/App#slice1",
+            "bytes": 40336,
+            "sha256": "bd73c805b7a3e8a82c6784176673bf16afc93fd34322e90fdbbfa849b43bf4a0",
+            "architecture": "arm64",
+            "cpuType": 16777228,
+            "cpuSubtype": 0,
+            "fileType": 2,
+            "loadCommands": 22,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.5.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1267.0.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [
+              {
+                "offset": 39904,
+                "bytes": 432,
+                "note": "Presence is not certificate validation or device signing proof."
+              }
+            ],
+            "offset": 32768
+          }
+        ]
+      },
+      {
+        "path": "App.app/__preview.dylib",
+        "bytes": 33136,
+        "sha256": "8f04caa92ac3054e6b13523afea7159c3f3d5fd50b68bc620744058973cd1fce",
+        "format": "FAT_MAGIC",
+        "architecture": [
+          "x86_64",
+          "arm64"
+        ],
+        "fileType": 6,
+        "builds": [
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.5.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1267.0.0"
+              }
+            ]
+          },
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.5.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1267.0.0"
+              }
+            ]
+          }
+        ],
+        "slices": [
+          {
+            "path": "App.app/__preview.dylib#slice0",
+            "bytes": 4168,
+            "sha256": "966eebf5c052864141cc5bc94e11d709efb55e712534416ea01bc2ae45266135",
+            "architecture": "x86_64",
+            "cpuType": 16777223,
+            "cpuSubtype": 3,
+            "fileType": 6,
+            "loadCommands": 13,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.5.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1267.0.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [],
+            "offset": 4096
+          },
+          {
+            "path": "App.app/__preview.dylib#slice1",
+            "bytes": 16752,
+            "sha256": "87ea107a788ceba5d829ea2dc3c4a7b55539c9e389b3473bca475d0195b09216",
+            "architecture": "arm64",
+            "cpuType": 16777228,
+            "cpuSubtype": 0,
+            "fileType": 6,
+            "loadCommands": 14,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.5.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1267.0.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [
+              {
+                "offset": 16464,
+                "bytes": 288,
+                "note": "Presence is not certificate validation or device signing proof."
+              }
+            ],
+            "offset": 16384
+          }
+        ]
+      },
+      {
+        "path": "App.app/Frameworks/Capacitor.framework/Capacitor",
+        "bytes": 4241616,
+        "sha256": "2bbc3565899e5d1544a3770c6d068e2a5d9f78b81cdf7d99b63bc57ca66c327a",
+        "format": "FAT_MAGIC",
+        "architecture": [
+          "x86_64",
+          "arm64"
+        ],
+        "fileType": 6,
+        "builds": [
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.0.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1221.4.0"
+              }
+            ]
+          },
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.0.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1221.4.0"
+              }
+            ]
+          }
+        ],
+        "slices": [
+          {
+            "path": "App.app/Frameworks/Capacitor.framework/Capacitor#slice0",
+            "bytes": 2091360,
+            "sha256": "7253e81576f96c18e7549a24f9c8d37cb4f00ba848a010d7807ddd1233541960",
+            "architecture": "x86_64",
+            "cpuType": 16777223,
+            "cpuSubtype": 3,
+            "fileType": 6,
+            "loadCommands": 42,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.0.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1221.4.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [
+              {
+                "offset": 2056992,
+                "bytes": 34368,
+                "note": "Presence is not certificate validation or device signing proof."
+              }
+            ],
+            "offset": 16384
+          },
+          {
+            "path": "App.app/Frameworks/Capacitor.framework/Capacitor#slice1",
+            "bytes": 2128080,
+            "sha256": "e841e77ddc67ceac0dfd7d239cbd5cf64d6442cf7d532137228cbbeb91af705f",
+            "architecture": "arm64",
+            "cpuType": 16777228,
+            "cpuSubtype": 0,
+            "fileType": 6,
+            "loadCommands": 42,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.0.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1221.4.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [
+              {
+                "offset": 2093424,
+                "bytes": 34656,
+                "note": "Presence is not certificate validation or device signing proof."
+              }
+            ],
+            "offset": 2113536
+          }
+        ]
+      },
+      {
+        "path": "App.app/Frameworks/Cordova.framework/Cordova",
+        "bytes": 277984,
+        "sha256": "efe6996812e860417f001e243b29095d9c0116ee033958fe8fb27e83d92ac1b2",
+        "format": "FAT_MAGIC",
+        "architecture": [
+          "x86_64",
+          "arm64"
+        ],
+        "fileType": 6,
+        "builds": [
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.0.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1221.4.0"
+              }
+            ]
+          },
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.0.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1221.4.0"
+              }
+            ]
+          }
+        ],
+        "slices": [
+          {
+            "path": "App.app/Frameworks/Cordova.framework/Cordova#slice0",
+            "bytes": 108720,
+            "sha256": "f6644c61757cacb5c4ed86c8e3fc5331d909b107ee491c4952526c69dee66ca3",
+            "architecture": "x86_64",
+            "cpuType": 16777223,
+            "cpuSubtype": 3,
+            "fileType": 6,
+            "loadCommands": 23,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.0.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1221.4.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [
+              {
+                "offset": 89728,
+                "bytes": 18992,
+                "note": "Presence is not certificate validation or device signing proof."
+              }
+            ],
+            "offset": 16384
+          },
+          {
+            "path": "App.app/Frameworks/Cordova.framework/Cordova#slice1",
+            "bytes": 146912,
+            "sha256": "c3490a17fcb1e4e1d224289d322839c835d64cc5b9eb9fc5819cf6ec305f62ae",
+            "architecture": "arm64",
+            "cpuType": 16777228,
+            "cpuSubtype": 0,
+            "fileType": 6,
+            "loadCommands": 23,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.0.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1221.4.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [
+              {
+                "offset": 127600,
+                "bytes": 19312,
+                "note": "Presence is not certificate validation or device signing proof."
+              }
+            ],
+            "offset": 131072
+          }
+        ]
+      },
+      {
+        "path": "App.app/App.debug.dylib",
+        "bytes": 1005680,
+        "sha256": "e70aa8b5fc88c72c53fe008ca33ccca69aa0f042f445d4eecacdb730866395a7",
+        "format": "FAT_MAGIC",
+        "architecture": [
+          "x86_64",
+          "arm64"
+        ],
+        "fileType": 6,
+        "builds": [
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.5.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1267.0.0"
+              }
+            ]
+          },
+          {
+            "platform": 7,
+            "platformName": "IOSSIMULATOR",
+            "minOS": "15.0.0",
+            "sdk": "26.5.0",
+            "tools": [
+              {
+                "tool": 3,
+                "version": "1267.0.0"
+              }
+            ]
+          }
+        ],
+        "slices": [
+          {
+            "path": "App.app/App.debug.dylib#slice0",
+            "bytes": 487208,
+            "sha256": "1c4af41f801bfb9c8363e95f688d9b83bb31c71daa931e82c34b3714a68e1763",
+            "architecture": "x86_64",
+            "cpuType": 16777223,
+            "cpuSubtype": 3,
+            "fileType": 6,
+            "loadCommands": 44,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.5.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1267.0.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [],
+            "offset": 4096
+          },
+          {
+            "path": "App.app/App.debug.dylib#slice1",
+            "bytes": 514160,
+            "sha256": "9b168e3f2755e757dd12bfcc48af4bbf0f1f9d2eb9a9c77da7fd2def61b649f9",
+            "architecture": "arm64",
+            "cpuType": 16777228,
+            "cpuSubtype": 0,
+            "fileType": 6,
+            "loadCommands": 45,
+            "builds": [
+              {
+                "platform": 7,
+                "platformName": "IOSSIMULATOR",
+                "minOS": "15.0.0",
+                "sdk": "26.5.0",
+                "tools": [
+                  {
+                    "tool": 3,
+                    "version": "1267.0.0"
+                  }
+                ]
+              }
+            ],
+            "codeSignatureCommands": [
+              {
+                "offset": 510032,
+                "bytes": 4128,
+                "note": "Presence is not certificate validation or device signing proof."
+              }
+            ],
+            "offset": 491520
+          }
+        ]
+      }
+    ],
+    "info": {
+      "BuildMachineOSBuild": "25G83",
+      "CAPACITOR_DEBUG": "true",
+      "CFBundleDevelopmentRegion": "en",
+      "CFBundleDisplayName": "Literary Planet",
+      "CFBundleExecutable": "App",
+      "CFBundleIcons": {
+        "CFBundlePrimaryIcon": {
+          "CFBundleIconFiles": [
+            "AppIcon60x60"
+          ],
+          "CFBundleIconName": "AppIcon"
+        }
+      },
+      "CFBundleIcons~ipad": {
+        "CFBundlePrimaryIcon": {
+          "CFBundleIconFiles": [
+            "AppIcon60x60",
+            "AppIcon76x76"
+          ],
+          "CFBundleIconName": "AppIcon"
+        }
+      },
+      "CFBundleIdentifier": "ru.probpera.literaryplanet",
+      "CFBundleInfoDictionaryVersion": "6.0",
+      "CFBundleLocalizations": [
+        "en",
+        "ru"
+      ],
+      "CFBundleName": "App",
+      "CFBundlePackageType": "APPL",
+      "CFBundleShortVersionString": "1.0",
+      "CFBundleSupportedPlatforms": [
+        "iPhoneSimulator"
+      ],
+      "CFBundleVersion": "1",
+      "DTCompiler": "com.apple.compilers.llvm.clang.1_0",
+      "DTPlatformBuild": "23F81a",
+      "DTPlatformName": "iphonesimulator",
+      "DTPlatformVersion": "26.5",
+      "DTSDKBuild": "23F81a",
+      "DTSDKName": "iphonesimulator26.5",
+      "DTXcode": "2660",
+      "DTXcodeBuild": "17F113",
+      "LSRequiresIPhoneOS": true,
+      "MinimumOSVersion": "15.0",
+      "UIApplicationSceneManifest": {
+        "UIApplicationSupportsMultipleScenes": false,
+        "UISceneConfigurations": {
+          "UIWindowSceneSessionRoleApplication": [
+            {
+              "UISceneConfigurationName": "Default Configuration",
+              "UISceneDelegateClassName": "App.SceneDelegate",
+              "UISceneStoryboardFile": "Main"
+            }
+          ]
+        }
+      },
+      "UIDeviceFamily": [
+        1,
+        2
+      ],
+      "UILaunchStoryboardName": "LaunchScreen",
+      "UIMainStoryboardFile": "Main",
+      "UIRequiredDeviceCapabilities": [
+        "armv7"
+      ],
+      "UISupportedInterfaceOrientations": [
+        "UIInterfaceOrientationPortrait",
+        "UIInterfaceOrientationLandscapeLeft",
+        "UIInterfaceOrientationLandscapeRight"
+      ],
+      "UISupportedInterfaceOrientations~ipad": [
+        "UIInterfaceOrientationPortrait",
+        "UIInterfaceOrientationPortraitUpsideDown",
+        "UIInterfaceOrientationLandscapeLeft",
+        "UIInterfaceOrientationLandscapeRight"
+      ],
+      "UIViewControllerBasedStatusBarAppearance": true
+    },
+    "localizedNames": {
+      "en": {
+        "CFBundleDisplayName": "Literary Planet",
+        "CFBundleName": "Literary Planet"
+      },
+      "ru": {
+        "CFBundleDisplayName": "Литературная планета",
+        "CFBundleName": "Литературная планета"
+      }
+    },
+    "capacitor": {
+      "appId": "ru.probpera.literaryplanet",
+      "appName": "Literary Planet",
+      "webDir": "dist-native",
+      "loggingBehavior": "debug",
+      "android": {
+        "path": "apps/mobile/android",
+        "allowMixedContent": false
+      },
+      "ios": {
+        "path": "apps/mobile/ios"
+      },
+      "server": {
+        "hostname": "localhost",
+        "androidScheme": "https",
+        "iosScheme": "capacitor"
+      },
+      "packageClassList": [
+        "AppPlugin",
+        "AppLauncherPlugin",
+        "CAPBrowserPlugin",
+        "CAPNetworkPlugin",
+        "PreferencesPlugin"
+      ]
+    },
+    "canonicalConfigComparison": {
+      "sameSemanticFields": true,
+      "localSourceSha256": "c28dd50db2c283a03b4859a0cdfe85ce862d08080ab0824cfa6ad7595a9e2863",
+      "bundledSha256": "ed3670fd9a0b229ba32436b8d453b96fa8493f345f66df600658273eddfe2545",
+      "additionalOnly": "Exact five generated packageClassList entries"
+    },
+    "publicPayload": {
+      "inventoryFiles": 319,
+      "canonicalFilesIncludingArtifact": 320,
+      "actualPublicFiles": 322,
+      "additionalEmptyFiles": [
+        "cordova.js",
+        "cordova_plugins.js"
+      ],
+      "everyInventoryShaMatched": true,
+      "unlistedFiles": [],
+      "inventoryReport": "ios-binary-review/app-inventory.json"
+    },
+    "artifact": {
+      "buildId": "b9254e7bc6c2842a1880e0166c15b3b1ed329da8e6e2672d56a2dac644b45470",
+      "sourceCommit": "273f400d8f07a57269f391dfc13d7e802c9071f2",
+      "platform": "ios",
+      "channel": "dev",
+      "releaseReady": false
+    },
+    "resolvedPackages": {
+      "originHash": "a07710bdd1d89e79ab8c68b2815f4c25a55fd73ed89ed563c80830dc69f29443",
+      "pins": [
+        {
+          "identity": "capacitor-swift-pm",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/ionic-team/capacitor-swift-pm.git",
+          "state": {
+            "revision": "6afa7424fd2fcd8ca1e577478e8a00af284b7e82",
+            "version": "8.5.1"
+          }
+        }
+      ],
+      "version": 3
+    }
+  },
+  "extraction": {
+    "root": ".tmp/native-bootstrap/ios-binary-review",
+    "method": "Outer entries extracted only after exact download size/SHA, central/local ZIP bounds, UTF-8 canonical names, no traversal/links/case collisions, CRC32, size limits and every manifest SHA matched. Nested ZIP/TAR examined in memory; no App binary extracted/executed. Tar regular-file bytes matched ZIP; modes recorded from tar."
+  },
+  "officialSources": [
+    {
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/main/EXTERNAL_HEADERS/mach-o/loader.h",
+      "used": "LC_BUILD_VERSION layout; PLATFORM_IOSSIMULATOR = 7; mach_header_64, load command bounds",
+      "accessDate": "2026-09-06"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/main/EXTERNAL_HEADERS/mach-o/fat.h",
+      "used": "Big-endian FAT_MAGIC architecture/slice table",
+      "accessDate": "2026-09-06"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/main/osfmk/mach/machine.h",
+      "used": "CPU_TYPE_ARM64 and CPU_TYPE_X86_64 constants",
+      "accessDate": "2026-09-06"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/swiftlang/swift-corelibs-foundation/main/Sources/CoreFoundation/CFBinaryPList.c",
+      "used": "Binary plist trailer, object marker and reference structure",
+      "accessDate": "2026-09-06"
+    }
+  ],
+  "limitations": [
+    "This is historical source 273f400d8f07a57269f391dfc13d7e802c9071f2 compiled in the real reported cloud run; it is not the later integrated local source candidate.",
+    "No device execution, Simulator launch, WebKit/Safari behavior, screenshots, App Store/TestFlight distribution, certificate trust or release approval established.",
+    "Exact package resolution and metadata are checked against downloaded evidence; no network dependency is fetched and no native binary is executed.",
+    "The xcresult ZIP is authenticated by outer SHA and checksum inventory; this task does not interpret the opaque Xcode result database.",
+    "The app and app debug libraries were linked with Simulator SDK 26.5; prebuilt Capacitor/Cordova frameworks report SDK 26.0. Xcode metadata reports 26.6 build17F113. These distinct versions are recorded as observed."
+  ],
+  "checks": [
+    "Exact outer ZIP byte size and externally supplied SHA256",
+    "All 28 payload checksums; no unlisted outer evidence",
+    "ZIP local/central names and bounds, CRC32, no traversal, no links, no duplicate/case collision; TAR header/bounds/PAX and no links",
+    "349 regular App payload file SHA256 parity between ZIP and TAR",
+    "Every discovered Mach-O architecture slice has LC_BUILD_VERSION platform7 IOSSIMULATOR; ARM64 slices present",
+    "Compiled Info.plist parsed independently and equals the plutil JSON; canonical ID, RU/EN, iPhone+iPad, minimum15.0",
+    "Compiled RU/EN InfoPlist.strings names parsed independently",
+    "Exact current canonical Capacitor configuration plus five generated plugin class entries; local runtime only",
+    "Every actual public inventory file byte length and SHA256; only artifact manifest and two empty Cordova compatibility files are outside self-excluding inventory",
+    "Synced/built receipts and three strict audit evidence records agree with actual bundled source/build identity",
+    "SwiftPM resolves only Capacitor8.5.1 at exact6afa7424fd2fcd8ca1e577478e8a00af284b7e82",
+    "TAR preserves executable bits for all five Mach-O payload files"
+  ],
+  "pass": true,
+  "reviewerScript": {
+    "path": ".tmp/native-bootstrap/ios-binary-verification.mjs",
+    "sha256": "9ecb49d10a6f795a17d2bd3324c79b83e4c5ae48de421b6da3603a585bd0916a"
+  }
+}

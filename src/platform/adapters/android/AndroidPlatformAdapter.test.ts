@@ -5,7 +5,7 @@ import { createAndroidPlatformAdapter } from "./AndroidPlatformAdapter";
 function native() {
   return {
     core: { getPlatform: vi.fn(() => "android"), isNativePlatform: vi.fn(() => true), isPluginAvailable: vi.fn((_name: string) => true) },
-    app: { getState: vi.fn(async () => ({ isActive: true })), getAppLanguage: vi.fn(async () => ({ value: "ru-RU" })), addListener: vi.fn(async () => ({ remove: vi.fn(async () => undefined) })) },
+    app: { getState: vi.fn(async () => ({ isActive: true })), getAppLanguage: vi.fn(async () => ({ value: "ru-RU" })), getLaunchUrl: vi.fn(async () => undefined), addListener: vi.fn(async () => ({ remove: vi.fn(async () => undefined) })) },
     network: { getStatus: vi.fn(async () => ({ connected: false })), addListener: vi.fn(async () => ({ remove: vi.fn(async () => undefined) })) },
     preferences: { get: vi.fn(async (_options: { key: string }) => ({ value: "en" as string | null })), set: vi.fn(async () => undefined), remove: vi.fn(async () => undefined) },
     browser: { open: vi.fn(async (): Promise<void> => undefined) }, appLauncher: { openUrl: vi.fn(async () => ({ completed: true })) },

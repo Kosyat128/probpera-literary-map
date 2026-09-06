@@ -1,0 +1,14 @@
+{
+  "kind": "ios-simulator-preparation",
+  "phase": "synced",
+  "sourceCommit": "712bd96949a2908b744555c50106615866986262",
+  "buildId": "70bcd11c09941daad0e0d4907be61065f54bfbc8c983825549dc189ba2eea7f7",
+  "canonicalFiles": 320,
+  "additionalEmptyCompatibilityFiles": 2,
+  "artifactSha256": "5009b28d6cd8f24aac76e80381ba38b8055a8caffc05428b46b9e9b1c2a2a41d",
+  "configSha256": "ed3670fd9a0b229ba32436b8d453b96fa8493f345f66df600658273eddfe2545",
+  "releaseReady": false,
+  "limitations": [
+    "Local copy and simulator build metadata checks only; not device execution, arbitrary native binary audit, signed release or store approval."
+  ]
+}

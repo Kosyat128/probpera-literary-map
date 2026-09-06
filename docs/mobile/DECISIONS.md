@@ -187,3 +187,24 @@
   retain all production/publication boundaries and the historical pause receipt.
   A source-only cloud CI tree must not make internal V12 requirements, evidence
   or SDK authorization receipts reachable through its parent history.
+- D049: After automatic approval review rejected public App.tsx publication for
+  missing explicit source/content authorization, the user explicitly approved the
+  reviewed74-file source payload and simulator test build. The retry succeeded.
+  The public CI branch starts only from public f406a7de history. Internal V12
+  input, reports, keys and local staged history remain excluded. No main/store
+  action follows from this authorization. The resolved review is not a blocker.
+- D050: Actual Xcode rejected the first workflow's clonedSourcePackagesDir option.
+  Preserve failed run34002773310 and its logs. Changing only its two occurrences
+  to clonedSourcePackagesDirPath produced successful run34003133006 at273f400d.
+  Archive and binary inspection attest simulator compilation, never simulator
+  execution, physical devices, signed release or current-main candidate readiness.
+- D051: Canonical main5d3f6fb is integrated through three additional cherry-picks
+  and adaptation72a62b31.969 affected tests and39 local SQL checks passed; this
+  is not a fresh full-repository run. New responsive-image mappings require their
+  own controlled-package coverage audit. Preserve older exact artifact identities.
+- D052: A dedicated Chrome profile does not by itself isolate PWA operating-system
+  integration. Actual historical locked-shell checks are retained without an OS
+  install claim. Full standalone installation will use a bounded disposable OS.
+  Never replace the historical public QA authority to compensate for its stopped
+  memory-only signer. Later child/offline/entitlement stages remain open without
+  creating circular acceptance dependencies for early platform foundations.
