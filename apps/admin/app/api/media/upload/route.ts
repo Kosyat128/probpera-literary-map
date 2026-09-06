@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { inspectRasterImage, isGifImage } from "../../../../../../src/utils/rasterImageMetadata";
+import { MAX_IMAGE_DIMENSION, MAX_IMAGE_PIXELS } from "../../../../../../src/utils/imageUploadOptimization";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -8,8 +10,8 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export const runtime = "nodejs";
 
-const maxClientDimension = 4096;
-const maxClientPixelArea = 12_000_000;
+const maxClientDimension = MAX_IMAGE_DIMENSION;
+const maxClientPixelArea = MAX_IMAGE_PIXELS;
 const maxFileSize = Math.floor(3.9 * 1024 * 1024);
 
 const metadataSchema = z
@@ -39,90 +41,6 @@ function optionalUrl(value: FormDataEntryValue | null) {
   return text || null;
 }
 
-function hasWebpMagic(bytes: Uint8Array) {
-  return (
-    bytes.length >= 12 &&
-    bytes[0] === 0x52 &&
-    bytes[1] === 0x49 &&
-    bytes[2] === 0x46 &&
-    bytes[3] === 0x46 &&
-    bytes[8] === 0x57 &&
-    bytes[9] === 0x45 &&
-    bytes[10] === 0x42 &&
-    bytes[11] === 0x50
-  );
-}
-
-function readUint24LE(bytes: Uint8Array, offset: number) {
-  return bytes[offset] | (bytes[offset + 1] << 8) | (bytes[offset + 2] << 16);
-}
-
-function readUint32LE(bytes: Uint8Array, offset: number) {
-  return (
-    bytes[offset] |
-    (bytes[offset + 1] << 8) |
-    (bytes[offset + 2] << 16) |
-    (bytes[offset + 3] << 24)
-  ) >>> 0;
-}
-
-function readWebpDimensions(bytes: Uint8Array) {
-  if (!hasWebpMagic(bytes) || readUint32LE(bytes, 4) + 8 !== bytes.length) {
-    return null;
-  }
-
-  let offset = 12;
-  while (offset + 8 <= bytes.length) {
-    const chunkType = String.fromCharCode(
-      bytes[offset],
-      bytes[offset + 1],
-      bytes[offset + 2],
-      bytes[offset + 3]
-    );
-    const chunkSize = readUint32LE(bytes, offset + 4);
-    const payload = offset + 8;
-
-    if (payload + chunkSize > bytes.length) {
-      return null;
-    }
-
-    if (chunkType === "VP8X" && chunkSize >= 10) {
-      return {
-        width: readUint24LE(bytes, payload + 4) + 1,
-        height: readUint24LE(bytes, payload + 7) + 1,
-      };
-    }
-
-    if (chunkType === "VP8L" && chunkSize >= 5 && bytes[payload] === 0x2f) {
-      const width =
-        1 + bytes[payload + 1] + ((bytes[payload + 2] & 0x3f) << 8);
-      const height =
-        1 +
-        (bytes[payload + 2] >> 6) +
-        (bytes[payload + 3] << 2) +
-        ((bytes[payload + 4] & 0x0f) << 10);
-      return { width, height };
-    }
-
-    if (
-      chunkType === "VP8 " &&
-      chunkSize >= 10 &&
-      bytes[payload + 3] === 0x9d &&
-      bytes[payload + 4] === 0x01 &&
-      bytes[payload + 5] === 0x2a
-    ) {
-      return {
-        width: (bytes[payload + 6] | (bytes[payload + 7] << 8)) & 0x3fff,
-        height: (bytes[payload + 8] | (bytes[payload + 9] << 8)) & 0x3fff,
-      };
-    }
-
-    offset = payload + chunkSize + (chunkSize % 2);
-  }
-
-  return null;
-}
-
 export async function POST(request: Request) {
   const session = await requireStaff();
   if (!session?.user) {
@@ -133,15 +51,6 @@ export async function POST(request: Request) {
   const file = formData.get("file");
   if (!(file instanceof File)) {
     return NextResponse.json({ error: "Выберите файл." }, { status: 400 });
-  }
-  if (file.type !== "image/webp") {
-    return NextResponse.json(
-      {
-        error:
-          "Сервер принимает только WebP, подготовленный редактором. Выберите изображение заново.",
-      },
-      { status: 415 }
-    );
   }
   if (file.size <= 0) {
     return NextResponse.json(
@@ -188,12 +97,14 @@ export async function POST(request: Request) {
   try {
     const bytes = new Uint8Array(await file.arrayBuffer());
     const sha256Hex = createHash("sha256").update(bytes).digest("hex");
-    const imageDimensions = readWebpDimensions(bytes);
-    if (!imageDimensions) {
+    const imageDimensions = inspectRasterImage(bytes);
+    if (!imageDimensions || file.type !== imageDimensions.mime) {
       return NextResponse.json(
         {
           error:
-            "Файл не прошёл проверку структуры WebP. Выберите исходное изображение и повторите загрузку.",
+            isGifImage(bytes)
+              ? "GIF не поддерживается. Используйте анимированный WebP или AVIF, чтобы сохранить все кадры."
+              : "Формат или структура изображения не прошли проверку. Поддерживаются JPEG, PNG, WebP и AVIF; выберите файл заново.",
         },
         { status: 415 }
       );
@@ -215,7 +126,7 @@ export async function POST(request: Request) {
     }
 
     const today = new Date();
-    const objectPath = `${today.getUTCFullYear()}/${String(today.getUTCMonth() + 1).padStart(2, "0")}/${globalThis.crypto.randomUUID()}.webp`;
+    const objectPath = `${today.getUTCFullYear()}/${String(today.getUTCMonth() + 1).padStart(2, "0")}/${globalThis.crypto.randomUUID()}.${imageDimensions.extension}`;
     const supabase = await createServerSupabaseClient();
     if (!supabase) {
       return NextResponse.json({ error: "База данных не подключена." }, { status: 503 });
@@ -224,7 +135,7 @@ export async function POST(request: Request) {
     const { error: uploadError } = await supabase.storage
       .from("editorial-media")
       .upload(objectPath, bytes, {
-        contentType: "image/webp",
+        contentType: imageDimensions.mime,
         cacheControl: "31536000",
         upsert: false,
       });
@@ -238,7 +149,7 @@ export async function POST(request: Request) {
       .insert({
         object_path: objectPath,
         original_name: file.name,
-        mime_type: "image/webp",
+        mime_type: imageDimensions.mime,
         byte_size: bytes.byteLength,
         width: imageDimensions.width,
         height: imageDimensions.height,
@@ -269,8 +180,10 @@ export async function POST(request: Request) {
         object_path: objectPath,
         optimized_size: bytes.byteLength,
         image_usage: parsed.data.imageUsage,
-        client_optimized: true,
-        dimensions_source: "client-prepared-webp",
+        client_prepared: true,
+        format: imageDimensions.mime,
+        animated: imageDimensions.animated,
+        dimensions_source: "validated-image-container",
         source_dimensions: {
           width: imageDimensions.width,
           height: imageDimensions.height,

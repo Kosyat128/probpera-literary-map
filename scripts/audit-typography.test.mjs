@@ -119,6 +119,40 @@ describe("canonical typography audit", () => {
     expect(scan('.hero-editorial h1 { line-height: 0.95; } .share-icon { line-height: 0; }')).toEqual([]);
   });
 
+  it("bounds default readable leading without constraining icons or published CMS overrides", () => {
+    const defaults = `${canonical}
+      .article-copy h3 { line-height: 1.8; }
+      .library-card-copy p { line-height: 175%; }
+      .cms-page-prose p { line-height: 1.7em; }
+      .article-reader-content { line-height: 1.65; }
+      .share-icon { font-size: var(--type-body); line-height: 2; }
+      .hero-editorial h1 { line-height: 2; }
+    `;
+    expect(scan("", defaults).filter((message) => message.includes("line-height is larger")))
+      .toHaveLength(3);
+    expect(scan(".article-reader-content { line-height: 1.9; }")).toEqual([]);
+    expect(scan("", `${canonical}
+      .article-reader-content { line-height: var(--cms-body-line-height); }
+      .share-links > span { line-height: 1.35; }
+    `)).toEqual([]);
+  });
+
+  it("uses the largest resolvable token value, including responsive aliases and font shorthand", () => {
+    const defaults = `${canonical}
+      :root { --leading-copy: 1.45; --leading-reading: var(--leading-copy); }
+      @media (min-width: 1200px) { :root { --leading-copy: 1.8; } }
+      .article-copy h3 { line-height: var(--leading-reading); }
+      .library-card-copy p { font: 400 var(--type-body) / var(--leading-reading) var(--font-ui); }
+      .cms-page-prose p { font: 400 1rem/var(--not-defined, 1.9) var(--font-ui); }
+    `;
+    const messages = scan("", defaults);
+    expect(messages.filter((message) => message.includes("line-height is larger")))
+      .toHaveLength(3);
+    expect(messages.some((message) => message.includes("line-height is smaller"))).toBe(false);
+    expect(scan("", defaults.replace("--leading-copy: 1.8", "--leading-copy: 1.55")
+      .replace("--not-defined, 1.9", "--not-defined, 1.5"))).toEqual([]);
+  });
+
   it("detects repeated canonical properties within matching conditions only", () => {
     const repeated = canonical.replace("\n}", `
       .article-copy h3 { font-size: var(--type-body); }

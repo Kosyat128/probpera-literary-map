@@ -8,6 +8,7 @@ import { describe, expect, it } from "vitest";
 import { parseCss } from "../audit-stage5-baseline.mjs";
 import { projectV12S03Package, projectV12S03Source } from "../governance/v12-s03-compatibility.mjs";
 import { projectV12S04HostSource } from "../governance/v12-s04-host-compatibility.mjs";
+import { projectReviewedReadingDesign, readingDesignAttestation } from "./reviewed-reading-design.mjs";
 import {
   adminArticlePublicationPermissionsAttestation,
   bookDatabaseEditorialOwnerAttestation,
@@ -64,9 +65,9 @@ function canonicalJson(value) {
 
 function canonicalContent(absolutePath) {
   const extension = path.extname(absolutePath).toLocaleLowerCase("en");
-  const text = readFileSync(absolutePath, "utf8")
+  const text = projectReviewedReadingDesign(repositoryPath(absolutePath), readFileSync(absolutePath, "utf8")
     .replace(/^\uFEFF/u, "")
-    .replace(/\r\n/gu, "\n");
+    .replace(/\r\n/gu, "\n"));
   if (extension === ".json" || extension === ".geojson") {
     const value = repositoryPath(absolutePath) === "package.json"
       ? projectV12S03Package(JSON.parse(text)) : JSON.parse(text);
@@ -272,9 +273,9 @@ function staticPropertyName(property, sourceFile) {
 
 function readEnglishInterfaceText() {
   const absolutePath = path.join(root, "src/i18n/InterfaceLanguage.tsx");
-  const text = projectV12S03Source("src/i18n/InterfaceLanguage.tsx", readFileSync(absolutePath, "utf8")
+  const text = projectReviewedReadingDesign("src/i18n/InterfaceLanguage.tsx", projectV12S03Source("src/i18n/InterfaceLanguage.tsx", readFileSync(absolutePath, "utf8")
     .replace(/^\uFEFF/u, "")
-    .replace(/\r\n?/gu, "\n"));
+    .replace(/\r\n?/gu, "\n")));
   const sourceFile = ts.createSourceFile(
     "src/i18n/InterfaceLanguage.tsx",
     text,
@@ -359,13 +360,13 @@ function readStage5D1I18nFixture() {
 
 function readInterfaceCopyCatalog() {
   const catalog = JSON.parse(
-    readFileSync(
+    projectReviewedReadingDesign("apps/admin/catalog-assets/interface-copy-catalog.json", readFileSync(
       path.join(
         root,
         "apps/admin/catalog-assets/interface-copy-catalog.json"
       ),
       "utf8"
-    )
+    ))
   );
   if (!Array.isArray(catalog)) {
     throw new Error("interface-copy catalog must remain an array");
@@ -396,7 +397,7 @@ function ownerCssFingerprint() {
   );
   const patterns = classTokens.map(exactClassTokenPattern);
   const preservedRules = parseCss(
-    readFileSync(path.join(root, "src/styles/header-preserved.css"), "utf8")
+    projectReviewedReadingDesign("src/styles/header-preserved.css", readFileSync(path.join(root, "src/styles/header-preserved.css"), "utf8"))
       .replace(/\/\*[\s\S]*?\*\//gu, ""),
     "src/styles/header-preserved.css"
   );
@@ -410,7 +411,7 @@ function ownerCssFingerprint() {
     )).toBe(true);
   }
   const rules = parseCss(
-    readFileSync(path.join(root, "src/index.css"), "utf8"),
+    projectReviewedReadingDesign("src/index.css", readFileSync(path.join(root, "src/index.css"), "utf8")),
     "src/index.css"
   )
     .filter((rule) => patterns.some((pattern) => pattern.test(rule.selector)))
@@ -511,6 +512,38 @@ describe("Stage 5 authorial content and canonical data lock", () => {
 });
 
 describe("Stage 5 owner and production-pipeline governance locks", () => {
+  it("projects only the exact owner-reviewed reading and image delivery deltas", () => {
+    expect(jsonSha256(readingDesignAttestation)).toBe(
+      "48a8b26d60093d8123a102c4f5affad746981428b408afe86b048e252ce314d2"
+    );
+    expect(readingDesignAttestation).toMatchObject({
+      schemaVersion: 1,
+      id: "READING-DESIGN-AND-IMAGE-DELIVERY-2026-09-06",
+      authorizedOn: "2026-09-06",
+      baselineMainSha: "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+      catalogIntegrationContext: { mainSha: "c052599516af0658c3764d4c69bfcaac485f2e0c" },
+    });
+    expect([...new Set(readingDesignAttestation.projections.map(({ path }) => path))]).toEqual([
+      "package.json",
+      "src/components/BookArchiveSection.tsx",
+      "src/App.tsx",
+      "src/components/HeaderArticlesMenu.tsx",
+      "src/index.css",
+      "src/styles/header-preserved.css",
+      "src/styles/stage5-home-art-direction.css",
+      "src/i18n/InterfaceLanguage.tsx",
+      "apps/admin/catalog-assets/interface-copy-catalog.json",
+    ]);
+    for (const delta of readingDesignAttestation.projections) {
+      const source = readFileSync(path.join(root, delta.path), "utf8").replace(/\r\n?/gu, "\n");
+      expect(() => projectReviewedReadingDesign(delta.path, source.replace(delta.after, delta.before))).toThrow("Missing or duplicate reviewed reading-design delta");
+      expect(() => projectReviewedReadingDesign(delta.path, source + delta.after)).toThrow("Missing or duplicate reviewed reading-design delta");
+      const unreviewed = "\n/* Unreviewed change must remain fingerprinted. */\n";
+      expect(projectReviewedReadingDesign(delta.path, source + unreviewed))
+        .toBe(projectReviewedReadingDesign(delta.path, source) + unreviewed);
+    }
+  });
+
   it("projects only the exact authorized public news deployment and verification", () => {
     const workflowPath = ".github/workflows/deploy-pages.yml";
     const source = readFileSync(path.join(root, workflowPath), "utf8").replace(/\r\n?/gu, "\n");

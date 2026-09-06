@@ -389,21 +389,21 @@ test("Stage 5C keeps the final homepage structure and card geometry", async ({
         `${label}: main/proof top alignment`
       ).toBeLessThanOrEqual(LANDMARK_DELTA);
       expect(
-        Math.abs(result.book.main.bottom - result.book.fact.bottom),
-        `${label}: main/fact bottom alignment`
+        Math.abs(result.book.proof.bottom - result.book.fact.bottom),
+        `${label}: news/fact bottom alignment`
       ).toBeLessThanOrEqual(LANDMARK_DELTA);
       expect(result.book.main.width, `${label}: Book Month remains primary`).toBeGreaterThan(
         result.book.proof.width
       );
       expect(
-        Math.abs(result.book.proof.left - result.book.fact.left),
-        `${label}: proof/fact left alignment`
+        Math.abs(result.book.main.left - result.book.fact.left),
+        `${label}: book/fact left alignment`
       ).toBeLessThanOrEqual(LANDMARK_DELTA);
       expect(
-        Math.abs(result.book.proof.right - result.book.fact.right),
-        `${label}: proof/fact right alignment`
+        Math.abs(result.book.main.right - result.book.fact.right),
+        `${label}: book/fact right alignment`
       ).toBeLessThanOrEqual(LANDMARK_DELTA);
-      expect(result.book.proof.bottom, `${label}: proof before fact`).toBeLessThanOrEqual(
+      expect(result.book.main.bottom, `${label}: book before fact`).toBeLessThanOrEqual(
         result.book.fact.top + 1
       );
     } else if (viewport.bookLayout === "supporting-pair") {

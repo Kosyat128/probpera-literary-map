@@ -1,0 +1,254 @@
+@layer site-defaults {
+  .global-search-backdrop {
+    --search-dialog-gutter: clamp(20px, 7dvh, 72px);
+    padding-block: var(--search-dialog-gutter);
+  }
+
+  .global-search {
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    min-block-size: 0;
+    max-block-size: calc(100dvh - 2 * var(--search-dialog-gutter));
+    border-radius: var(--ui-radius-panel);
+  }
+
+  .global-search.stage5-global-search-shell {
+    grid-template-rows: auto minmax(0, 1fr);
+    min-block-size: min(28rem, calc(100dvh - 2 * var(--search-dialog-gutter)));
+  }
+
+  .global-search .stage5-global-search-shell__status {
+    min-block-size: 0;
+    overflow-y: auto;
+  }
+
+  .global-search > header {
+    gap: 20px;
+    align-items: start;
+    padding-block: 24px 18px;
+  }
+
+  .global-search > header > div {
+    min-inline-size: 0;
+  }
+
+  .global-search-field {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    min-block-size: 56px;
+    padding-block: 10px;
+    border-color: rgba(255, 255, 255, 0.24);
+    box-shadow: none;
+  }
+
+  .global-search-field:focus-within {
+    border-color: var(--orange-soft);
+    box-shadow: 0 0 0 3px rgba(246, 117, 24, 0.12);
+  }
+
+  .global-search-results,
+  .global-search-intro,
+  .global-search-empty {
+    min-block-size: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .global-search-results {
+    gap: 24px 32px;
+    padding-block: 24px;
+  }
+
+  .global-search-results section > :is(a, button) {
+    row-gap: 5px;
+    min-block-size: var(--ui-control-md);
+    padding-block: 12px;
+    border-radius: var(--ui-radius-control);
+  }
+
+  .global-search-intro button {
+    min-block-size: var(--ui-control-md);
+    padding: 10px 14px;
+  }
+
+  .global-search-intro button:focus-visible,
+  .auth-password-field button:focus-visible,
+  .auth-form > .auth-switch:focus-visible {
+    outline: 2px solid var(--orange-soft);
+    outline-offset: 3px;
+  }
+
+  .auth-password-field {
+    --auth-password-control-width: 5.75rem;
+    --auth-password-control-inset: 9px;
+  }
+
+  /* Reserve the same space in both password and visible-text states. */
+  .auth-form .auth-password-field input {
+    padding-inline-end: calc(var(--auth-password-control-width) + var(--auth-password-control-inset) + 12px);
+  }
+
+  .auth-password-field button {
+    inline-size: var(--auth-password-control-width);
+    min-inline-size: var(--auth-password-control-width);
+    min-block-size: var(--ui-control-md);
+    inset-inline-end: var(--auth-password-control-inset);
+    border-radius: var(--ui-radius-control);
+  }
+
+  .auth-form > .community-primary,
+  .reader-profile-save {
+    color: var(--ink);
+    background: var(--orange);
+    border-color: var(--orange);
+    box-shadow: none;
+  }
+
+  .auth-form > .community-primary:not(:disabled):is(:hover, :focus-visible),
+  .reader-profile-save:not(:disabled):is(:hover, :focus-visible) {
+    color: var(--ink);
+    background: var(--orange-soft);
+    border-color: var(--orange-soft);
+    box-shadow: 0 0 0 3px rgba(246, 117, 24, 0.16);
+    transform: none;
+  }
+
+  .auth-form > .community-primary:focus-visible,
+  .reader-profile-save:focus-visible {
+    outline: 2px solid var(--orange-soft);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 800px) {
+    .global-search-backdrop {
+      --search-dialog-gutter: 0px;
+    }
+
+    .global-search,
+    .global-search.stage5-global-search-shell {
+      min-block-size: 100dvh;
+      max-block-size: 100dvh;
+      border-radius: 0;
+    }
+
+    .global-search > header {
+      gap: 12px;
+      padding-block: 20px 16px;
+    }
+
+    .global-search-results {
+      padding-block: 20px 28px;
+    }
+  }
+}
+
+@layer site-typography {
+  .global-search > header h2 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-dialog-title);
+    font-weight: 500;
+    line-height: var(--type-leading-title);
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+  }
+
+  .global-search-field input,
+  .auth-form input:not([type="checkbox"]),
+  .reader-profile-editor textarea,
+  .reader-profile-editor select {
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 400;
+    line-height: var(--type-leading-copy);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .global-search-results strong {
+    overflow: visible;
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 600;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-overflow: clip;
+    text-wrap: pretty;
+  }
+
+  .global-search-results small,
+  .global-search-results h3,
+  .global-search > footer,
+  .auth-form > label,
+  .account-view label,
+  .reader-preferences section > span,
+  .auth-password-field button,
+  .auth-form > .auth-switch,
+  .password-hint,
+  .auth-inline-message,
+  .auth-connection-note,
+  .account-view .terms-check span,
+  .reader-profile-editor > label > small {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .auth-form > label,
+  .account-view label,
+  .reader-preferences section > span,
+  .auth-password-field button {
+    font-weight: 600;
+  }
+
+  .global-search-results small,
+  .global-search > footer,
+  .password-hint,
+  .auth-inline-message,
+  .auth-connection-note,
+  .account-view .terms-check span,
+  .reader-profile-editor > label > small {
+    font-weight: 400;
+  }
+
+  .global-search-intro p,
+  .global-search-empty p,
+  .account-story p {
+    color: var(--type-muted-dark);
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    font-weight: 400;
+    line-height: var(--type-leading-copy);
+    text-wrap: pretty;
+  }
+
+  .global-search-intro button,
+  .account-story li {
+    font-family: var(--font-ui);
+    font-size: var(--type-action);
+    font-weight: 500;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .global-search-results small,
+  .global-search > footer,
+  .global-search-intro button,
+  .auth-form > label,
+  .account-view label,
+  .auth-password-field button,
+  .auth-form > .auth-switch,
+  .password-hint,
+  .auth-connection-note,
+  .account-view .terms-check span,
+  .reader-preferences section > span,
+  .reader-profile-editor > label > small {
+    color: var(--type-muted-dark);
+  }
+
+  .global-search-field input::placeholder,
+  .auth-form input::placeholder {
+    color: var(--type-muted-dark);
+    opacity: 0.8;
+  }
+}

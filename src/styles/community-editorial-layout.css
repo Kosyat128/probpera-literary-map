@@ -155,11 +155,13 @@
   }
 
   #community .community-actions button {
-    min-block-size: 48px;
-    padding: 12px 20px;
+    min-block-size: var(--ui-control-lg);
+    padding: var(--ui-space-3) var(--ui-space-5);
+    border-radius: var(--ui-radius-control);
   }
 
   #community .community-actions .ui-action--primary {
+    --ui-primary-active: var(--orange);
     color: var(--ink);
     background: var(--orange);
     border-color: var(--orange);

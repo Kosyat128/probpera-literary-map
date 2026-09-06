@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { withClientAdminPath } from "@/lib/admin-path";
 import {
   CLIENT_IMAGE_ACCEPT_ATTRIBUTE,
+  formatImagePreparation,
   prepareClientImage,
 } from "@/lib/client-image-upload";
 
@@ -77,7 +78,7 @@ export default function HomepageMediaField({
       const option = { id: result.id, label: altText, publicUrl: result.url };
       setOptions((current) => [option, ...current.filter((item) => item.id !== option.id)]);
       setSelectedId(option.id);
-      setMessage("Изображение загружено и выбрано. Нажмите «Сохранить блок».");
+      setMessage(`Изображение загружено и выбрано. ${formatImagePreparation(prepared)} Нажмите «Сохранить блок».`);
     } catch (uploadError) {
       setMessage("");
       setError(

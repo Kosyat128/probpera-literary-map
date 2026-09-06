@@ -43,6 +43,7 @@ import {
   resolveArticleDraftRecoverySource,
 } from "@/lib/article-recovery";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
+import { formatImagePreparation } from "@/lib/client-image-upload";
 import {
   resolveEditorImageCaption,
   resolveEditorImageAltText,
@@ -1643,7 +1644,7 @@ export default function ArticleEditor({
         else setCoverAlt(altText);
       }
       setImageUploadMessage(
-        "Обложка загружена, оптимизирована в WebP и установлена."
+        `Обложка загружена и установлена.${result.preparation ? ` ${formatImagePreparation(result.preparation)}` : ""}`
       );
       setIsDirty(true);
     } catch (error) {

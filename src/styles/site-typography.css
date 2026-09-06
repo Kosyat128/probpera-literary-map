@@ -167,13 +167,19 @@
     --type-card-title: 1.5rem;
     --type-card-compact-title: 1.25rem;
     --type-card-related-title: 1.125rem;
+    --type-dialog-title: clamp(1.75rem, 3vw, 2.5rem);
+    --type-calendar-title: clamp(1.5rem, 2vw, 2rem);
     --type-lead: clamp(1.125rem, 1.4vw, 1.3125rem);
     --type-reading: 1.1875rem;
     --type-reading-section: clamp(1.375rem, 3vw, 2.4375rem);
     --type-reading-subsection: clamp(1.25rem, 2.4vw, 1.8125rem);
+    --type-reading-minor-heading: 1.25rem;
+    --type-reading-title: clamp(2rem, 5.8cqi + 1rem, 3.5rem);
+    --type-reading-lead: clamp(1.0625rem, 1rem + .6cqi, 1.25rem);
     --type-body: 1rem;
     --type-card-excerpt: 1rem;
     --type-card-meta: 0.875rem;
+    --type-editorial-label: 0.8125rem;
     --type-caption: 0.8125rem;
     --type-navigation: 0.9375rem;
     --type-action: 0.9375rem;
@@ -181,8 +187,12 @@
     --type-card-secondary-action: var(--type-action);
     --type-card-footer-label: var(--type-card-meta);
     --type-leading-title: 1.16;
+    --type-leading-heading: 1.2;
     --type-leading-copy: 1.45;
-    --type-leading-ui: 1.4;
+    --type-leading-ui: 1.35;
+    --type-leading-reading: 1.55;
+    --type-paragraph-gap: 1.1em;
+    --type-heading-gap: clamp(1.75rem, 3vw, 2.5rem);
     --type-tracking-title: -0.015em;
     --type-tracking-label: 0.025em;
     --type-muted-light: #66536e;
@@ -265,8 +275,22 @@
     font-size: calc(var(--type-card-feature-title) * 1.25);
   }
 
+  .editorial-grid:has(> article:nth-child(4):last-child) > .is-featured .article-copy h3 {
+    font-size: var(--type-card-title);
+    line-height: var(--type-leading-title);
+  }
+
+  .calendar-heading h3 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-calendar-title);
+    font-weight: 500;
+    line-height: var(--type-leading-heading);
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+  }
+
   .journal-engagement h3,
-  .calendar-heading h3,
+  .book-of-day h4,
   .book-fact-card h3,
   .trust-center summary,
   .author-showcase strong,
@@ -275,7 +299,7 @@
     font-family: var(--font-editorial);
     font-size: var(--type-card-compact-title);
     font-weight: 500;
-    line-height: 1.2;
+    line-height: var(--type-leading-heading);
     letter-spacing: 0;
     text-wrap: balance;
     overflow-wrap: normal;
@@ -297,7 +321,6 @@
 
   .section-heading p,
   .article-library-heading p,
-  .article-reader-lead > p,
   .cms-page-main > article > header p {
     font-family: var(--font-ui);
     font-size: var(--type-lead);
@@ -333,12 +356,8 @@
 
   .section-kicker,
   .section-card-latest span,
-  .article-copy small,
   .author-showcase small,
-  .sections-directory .section-card-eyebrow,
   .article-library-heading label span,
-  .library-card-image small,
-  .library-card-copy > div,
   .calendar-summary > div > span,
   .calendar-featured > span,
   .calendar-agenda > header span,
@@ -348,6 +367,42 @@
     font-weight: 600;
     line-height: var(--type-leading-ui);
     letter-spacing: var(--type-tracking-label);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .editorial-grid .article-image > span,
+  .library-card-image > small,
+  .sections-directory .section-card-eyebrow {
+    font-family: var(--font-ui);
+    font-size: var(--type-editorial-label);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: .015em;
+    text-transform: none;
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  :is(.section-heading, .article-library-heading, .book-archive-heading, .atlas-heading,
+    .editorial-standard, .book-of-day, .book-fact-card, .calendar-heading,
+    .community-copy, .community-visual-intro, .journal-engagement) .section-kicker {
+    font-size: var(--type-editorial-label);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: .025em;
+    text-transform: none;
+  }
+
+  .article-copy small,
+  .library-card-copy > div {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+    line-height: var(--type-leading-ui);
+    letter-spacing: 0;
+    text-transform: none;
     overflow-wrap: normal;
     word-break: normal;
   }
@@ -717,6 +772,26 @@
     font-weight: 400;
   }
 
+  .account-view h2 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-dialog-title);
+    font-weight: 500;
+    line-height: var(--type-leading-title);
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+  }
+
+  .topic-list > button > strong,
+  .forum-empty > strong,
+  .reader-profile-editor header h3,
+  .account-library h3 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-card-compact-title);
+    font-weight: 500;
+    line-height: var(--type-leading-heading);
+    letter-spacing: var(--type-tracking-title);
+  }
+
   #community .community-reading-notes > span,
   #community .community-reading-notes button > i,
   #community .community-visual-stats strong {
@@ -733,7 +808,6 @@
     word-break: normal;
   }
 
-  .article-reader-lead h1,
   .cms-page-main > article > header h1 {
     font-family: var(--font-editorial);
     font-size: var(--type-page-title);
@@ -746,12 +820,41 @@
     hyphens: manual;
   }
 
+  .writer-bio {
+    font-family: var(--font-ui);
+    font-size: var(--type-body);
+    line-height: var(--type-leading-reading);
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+
+  .writer-source-empty,
+  .writer-detail .writer-record-note,
+  .writer-detail .writer-record-context,
+  .writer-detail .writer-record-context cite,
+  .writer-detail .writer-record-context small,
+  .writer-detail .writer-record-meta > span {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    line-height: 1.5;
+    color: var(--type-muted-light);
+    text-wrap: pretty;
+  }
+
+  .writer-detail .writer-record-meta a,
+  .writer-detail .writer-record-open-book,
+  .writer-show-on-globe,
+  .archive-subscribe {
+    font-size: var(--type-action);
+    line-height: var(--type-leading-ui);
+  }
+
   .article-reader-content,
   .cms-page-prose {
     font-family: var(--font-editorial);
     font-size: calc(var(--type-reading) * var(--reader-scale, 1));
     font-weight: 400;
-    line-height: 1.6;
+    line-height: var(--type-leading-reading);
     text-wrap: pretty;
   }
 
@@ -780,15 +883,114 @@
   }
 
   .article-reader-content h3,
-  .article-reader-content h4,
-  .cms-page-prose h3,
-  .cms-page-prose h4 {
+  .cms-page-prose h3 {
     font-size: calc(var(--type-reading-subsection) * var(--reader-scale, 1));
+  }
+
+  .article-reader-lead h1 {
+    font-family: var(--font-editorial);
+    font-size: var(--type-reading-title);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: var(--type-tracking-title);
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .article-reader-lead > p {
+    font-family: var(--font-ui);
+    font-size: var(--type-reading-lead);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0;
+    text-wrap: pretty;
+    max-inline-size: 60ch;
+  }
+
+  .article-reader-lead h1.is-long-title {
+    --type-reading-title: clamp(2rem, 4.8cqi + 1rem, 3rem);
+  }
+
+  .article-reader-content {
+    --type-reading-section: clamp(1.5rem, 1.2rem + 1.8cqi, 2.125rem);
+    --type-reading-subsection: clamp(1.3125rem, 1.15rem + 1.1cqi, 1.6875rem);
+    --type-reading-minor-heading: clamp(1.125rem, 1.05rem + .6cqi, 1.375rem);
+  }
+
+  .article-reader-content h4,
+  .cms-page-prose h4 {
+    font-size: calc(var(--type-reading-minor-heading) * var(--reader-scale, 1));
+  }
+
+  .article-reader-content .article-media-split > div {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  .article-reader-content blockquote {
+    font-size: calc(var(--type-reading) * var(--reader-scale, 1));
+    line-height: var(--type-leading-reading);
+  }
+
+  .article-reader-content figcaption,
+  .article-reader-content figcaption.article-image-details,
+  .article-reader-lead small,
+  .article-byline,
+  .article-reader-toc li button,
+  .article-reader-toc > small,
+  .article-reader-metrics > span {
+    font-family: var(--font-ui);
+    font-size: var(--type-card-meta);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .article-reader-sources li,
+  .article-reader-image-credits li,
+  .article-reader-content table,
+  .article-reader-content pre,
+  .cms-page-prose table,
+  .cms-page-prose pre {
+    font-size: calc(var(--type-action) * var(--reader-scale, 1));
+    line-height: 1.5;
+  }
+
+  .article-reader-more > header h2 {
+    font-size: var(--type-reading-section);
+    line-height: var(--type-leading-heading);
+  }
+
+  .article-reader-more > header p {
+    font-size: var(--type-card-meta);
+  }
+
+  .article-library-summary {
+    font-size: var(--type-card-meta);
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   .article-reader-content :where(p, li),
   .cms-page-prose :where(p, li) {
     hyphens: auto;
+  }
+
+  .cms-page-prose p {
+    margin-block: 0 var(--type-paragraph-gap);
+  }
+
+  .cms-page-prose :is(table, pre) {
+    margin-block: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .cms-page-prose a,
+  .cms-page-prose :not(pre) > code {
+    overflow-wrap: break-word;
   }
 
   .article-copy p,
@@ -830,7 +1032,12 @@
   .articles-mega-menu {
     --sans: "Onest Local", "Segoe UI", system-ui, sans-serif;
     --serif: var(--sans);
-    --type-menu-label: .8125rem;
+    /* Compact type scale for the original 880px/920px navigation panels. */
+    --type-menu-label: .75rem;
+    --type-menu-title: 1.5rem;
+    --type-menu-item: .9375rem;
+    --type-menu-copy: .8125rem;
+    --type-menu-meta: .75rem;
     --font-ui: var(--sans);
     --font-editorial: var(--serif);
     font-family: var(--font-ui);
@@ -843,7 +1050,7 @@
   .sections-mega-menu > header strong,
   .articles-mega-menu > header strong {
     font-family: var(--font-editorial);
-    font-size: var(--type-card-feature-title);
+    font-size: var(--type-menu-title);
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: var(--type-tracking-title);
@@ -853,7 +1060,7 @@
   .sections-mega-groups strong,
   .articles-mega-content > section strong {
     font-family: var(--font-editorial);
-    font-size: var(--type-card-related-title);
+    font-size: var(--type-menu-item);
     font-weight: 500;
     line-height: 1.3;
     text-wrap: pretty;
@@ -861,7 +1068,7 @@
 
   .articles-mega-lead strong {
     font-family: var(--font-editorial);
-    font-size: var(--type-card-title);
+    font-size: var(--type-menu-title);
     font-weight: 500;
     line-height: 1.2;
     text-wrap: pretty;
@@ -872,7 +1079,7 @@
   .articles-mega-lead p {
     color: var(--type-muted-dark);
     font-family: var(--font-ui);
-    font-size: var(--type-action);
+    font-size: var(--type-menu-copy);
     line-height: 1.4;
     text-wrap: pretty;
   }
@@ -880,9 +1087,9 @@
   .sections-mega-groups small {
     color: var(--type-muted-light);
     font-family: var(--font-ui);
-    font-size: var(--type-action);
+    font-size: var(--type-menu-meta);
     font-weight: 400;
-    line-height: 1.4;
+    line-height: var(--type-leading-ui);
     text-wrap: pretty;
   }
 
@@ -890,7 +1097,7 @@
   .articles-mega-menu > footer > span {
     color: var(--type-muted-light);
     font-family: var(--font-ui);
-    font-size: var(--type-card-meta);
+    font-size: var(--type-menu-meta);
     font-weight: 400;
     line-height: 1.4;
     text-wrap: pretty;
@@ -917,7 +1124,7 @@
   .articles-mega-lead em {
     color: var(--type-muted-dark);
     font-family: var(--font-ui);
-    font-size: var(--type-card-meta);
+    font-size: var(--type-menu-meta);
     font-style: normal;
     line-height: 1.4;
   }
@@ -925,7 +1132,7 @@
   .sections-mega-menu > footer a,
   .articles-mega-menu > footer a {
     font-family: var(--font-ui);
-    font-size: var(--type-action);
+    font-size: var(--type-menu-copy);
     font-weight: 600;
     line-height: 1.4;
     letter-spacing: 0;
@@ -952,11 +1159,8 @@
       --type-card-feature-title: clamp(1.75rem, 1.2rem + 2.2cqi, 2.375rem);
     }
 
-    .journal-engagement h3,
-    .calendar-heading h3,
     .book-fact-card h3,
-    .author-showcase strong,
-    .trust-center summary {
+    .journal-engagement h3 {
       --type-card-compact-title: clamp(1.125rem, 1rem + 1cqi, 1.4375rem);
     }
   }

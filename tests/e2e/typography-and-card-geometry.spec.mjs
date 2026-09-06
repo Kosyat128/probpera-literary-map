@@ -36,9 +36,15 @@ function assertReadableCard(card, label) {
   }
   if (card.share.length) {
     const rowY = card.share[0].rect.y;
+    if (card.shareLabel) {
+      const rowCenter = rowY + card.share[0].rect.height / 2;
+      const labelCenter = card.shareLabel.rect.y + card.shareLabel.rect.height / 2;
+      expect(Math.abs(rowCenter - labelCenter), `${label}/share label stays on the icon row`).toBeLessThanOrEqual(1);
+      expect(card.shareLabel.overflowX, `${label}/share label fits`).toBeLessThanOrEqual(1);
+    }
     for (const [index, control] of card.share.entries()) {
-      expect(control.rect.width, `${label}/share ${index} width`).toBeCloseTo(44, 0);
-      expect(control.rect.height, `${label}/share ${index} height`).toBeCloseTo(44, 0);
+      expect(control.rect.width, `${label}/share ${index} width`).toBeCloseTo(32, 0);
+      expect(control.rect.height, `${label}/share ${index} height`).toBeCloseTo(32, 0);
       expect(Math.abs(control.rect.y - rowY), `${label}/share controls share one row`).toBeLessThanOrEqual(1);
       expect(control.rect.left).toBeGreaterThanOrEqual(card.rect.left - 1);
       expect(control.rect.right).toBeLessThanOrEqual(card.rect.right + 1);

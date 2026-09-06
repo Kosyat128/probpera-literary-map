@@ -35,7 +35,7 @@ font-family: inherit;
 font-kerning: auto;
 }
 .site-header .interface-language-control button {
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 900;
   transition:
     color 160ms ease,
@@ -43,12 +43,7 @@ font-kerning: auto;
     box-shadow 160ms ease;
 }
 .site-header .display-mode-control button small {
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 900;
-}
-@media (max-width: 680px) {
-.site-header .interface-language-control button {
-    font-size: 10px;
-}
 }
 }

@@ -28,7 +28,7 @@ import {
   resolveEditorImageCaption,
 } from "@/lib/editor-image-naming";
 import type { EditorialGalleryItemInput } from "@/lib/editorial-gallery";
-import { isAcceptedClientImageType } from "@/lib/client-image-upload";
+import { formatImagePreparation, isAcceptedClientImageType } from "@/lib/client-image-upload";
 
 type EditorMediaTarget =
   | {
@@ -252,7 +252,7 @@ export function useEditorMediaWorkflow({
       );
       if (supported.length !== files.length) {
         callbacksRef.current.onError?.(
-          "Поддерживаются растровые JPEG, PNG, WebP, AVIF, GIF, BMP, TIFF, HEIC/HEIF и JPEG XL, если браузер умеет прочитать исходник."
+          "Поддерживаются JPEG, PNG, WebP и AVIF. GIF не поддерживается; используйте анимированный WebP или AVIF, чтобы сохранить кадры."
         );
       }
       if (!supported.length) return;
@@ -343,7 +343,11 @@ export function useEditorMediaWorkflow({
           if (controller.signal.aborted) {
             throw new DOMException("Загрузка отменена.", "AbortError");
           }
-          updateQueueItem(id, { status: "attach", progress: 90 });
+          updateQueueItem(id, {
+            status: "attach",
+            progress: 90,
+            preparation: result.preparation ? formatImagePreparation(result.preparation) : undefined,
+          });
           uploaded.push({
             id,
             attributes: {

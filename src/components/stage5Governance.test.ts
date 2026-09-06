@@ -5,6 +5,7 @@ import path from "node:path";
 import * as ts from "typescript";
 import { describe, expect, it } from "vitest";
 import { projectV12S03Source } from "../../scripts/governance/v12-s03-compatibility.mjs";
+import { projectReviewedReadingDesign } from "../../scripts/lib/reviewed-reading-design.mjs";
 
 type ParsedSource = {
   absolutePath: string;
@@ -272,7 +273,8 @@ const literaryGlobe = parseSource("src/components/LiteraryGlobe.tsx");
 
 describe("Stage 5A governance baseline", () => {
   it("keeps the owner-approved Header and Hero syntax trees unchanged", () => {
-    const preservedApp = projectSectionsMenuRows(app);
+    const preservedApp = projectSectionsMenuRows(parseSourceText(app.relativePath,
+      projectReviewedReadingDesign(app.relativePath, app.text)));
     const ownerNodes = {
       topline: singleJsxNodeByClass(preservedApp, "topline"),
       desktopHeader: singleJsxNodeByClass(preservedApp, "site-header"),
@@ -294,7 +296,8 @@ describe("Stage 5A governance baseline", () => {
       hero: "939b3cb12c6e07dd1590e3481da52fb80fa18a753de250795b1ab116f190ad1f",
     });
     expect({
-      headerArticlesMenu: canonicalFileHash(headerArticlesMenu),
+      headerArticlesMenu: canonicalFileHash(parseSourceText(headerArticlesMenu.relativePath,
+        projectReviewedReadingDesign(headerArticlesMenu.relativePath, headerArticlesMenu.text))),
       interfaceLanguageControl: canonicalFileHash(languageControl),
     }).toEqual({
       headerArticlesMenu: "3dc49bb30962ff80bce8d785eb1cb19a1b0269ef9518799caad74c4db311cbde",
@@ -313,7 +316,7 @@ describe("Stage 5A governance baseline", () => {
     expect(() => projectSectionsMenuRows(mutate(app.text.replace(
       'className="sections-mega-groups"', 'className="sections-mega-groups" style={{ color: "red" }}'
     )))).toThrow();
-    const changedHeader = projectSectionsMenuRows(mutate(app.text.replace(
+    const changedHeader = projectSectionsMenuRows(mutate(projectReviewedReadingDesign(app.relativePath, app.text).replace(
       'className="site-header"', 'className="site-header" data-unapproved="changed"'
     )));
     expect(canonicalNodeHash(singleJsxNodeByClass(changedHeader, "site-header"), changedHeader.sourceFile))

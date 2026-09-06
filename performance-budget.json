@@ -9,6 +9,12 @@
   },
   "distTotalBytes": 134479872,
   "distExcludingBookCoversBytes": 94896128,
+  "publishedImageCorpus": {
+    "totalBytes": 671088640,
+    "fileCount": 4200,
+    "sourceCount": 1900
+  },
+  "publishedSiteTotalBytes": 900000000,
   "largestJavaScriptBytes": 2097152,
   "largestJavaScriptGzipBytes": 409600,
   "mainJavaScriptBytes": 716800,

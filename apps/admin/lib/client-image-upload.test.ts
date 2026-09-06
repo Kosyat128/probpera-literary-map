@@ -11,18 +11,12 @@ describe("safe client image source formats", () => {
     "image/png",
     "image/webp",
     "image/avif",
-    "image/gif",
-    "image/bmp",
-    "image/tiff",
-    "image/heic",
-    "image/heif",
-    "image/jxl",
-  ])("accepts raster source %s for browser decoding and WebP conversion", (type) => {
+  ])("accepts storage-supported raster source %s", (type) => {
     expect(isAcceptedClientImageType(type)).toBe(true);
     expect(CLIENT_IMAGE_ACCEPT_ATTRIBUTE).toContain(type);
   });
 
-  it.each(["image/svg+xml", "text/html", "application/pdf", "application/postscript"])(
+  it.each(["image/svg+xml", "text/html", "application/pdf", "application/postscript", "image/gif", "image/tiff", "image/heic", "image/jxl"])(
     "rejects executable or document source %s",
     (type) => expect(isAcceptedClientImageType(type)).toBe(false)
   );

@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { compactImageDeliveryManifest, partitionImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultRootDir = path.resolve(scriptDir, "..");
@@ -80,6 +81,7 @@ export function classifyTildaPath(relativePath, manifest) {
     return "handwritten";
   }
   if (
+    Object.hasOwn(manifest.generatedEncodings || {}, relativePath) ||
     (manifest.generatedPrefixes || []).some(
       (prefix) => relativePath === prefix || relativePath.startsWith(prefix)
     )
@@ -129,21 +131,57 @@ export async function auditTildaDependencies({
   const runtimeRoots = manifest.runtimeRoots || ["src", "public"];
   const runtimeFiles = await collectRuntimeTextFiles(rootDir, runtimeRoots);
   const matches = [];
-
-  for (const absolutePath of runtimeFiles) {
-    const relativePath = portablePath(path.relative(rootDir, absolutePath));
-    const source = await fs.readFile(absolutePath, "utf8");
-    const urls = extractTildaUrls(source);
-    if (!urls.length) continue;
-    matches.push({
-      path: relativePath,
-      category: classifyTildaPath(relativePath, manifest),
-      occurrences: urls.length,
-      urls: sortedUnique(urls),
-    });
+  const errors = [];
+  const encodings = [];
+  const runtimePaths = new Set(runtimeFiles.map(filename => portablePath(path.relative(rootDir, filename))));
+  for (const [encodedPath, encoding] of Object.entries(manifest.generatedEncodings || {})) {
+    const originalPath = typeof encoding === "string" ? encoding : encoding.sourceManifest;
+    if (!runtimePaths.has(encodedPath)) errors.push(`${encodedPath}: generated image encoding is missing from scanned runtime files`);
+    if (!runtimePaths.has(originalPath)) errors.push(`${encodedPath}: complete source map is missing from scanned runtime files`);
   }
 
-  const errors = [];
+  // Bound open files without serializing thousands of filesystem callbacks.
+  // Under the full test suite those callbacks compete with other workers.
+  for (let offset = 0; offset < runtimeFiles.length; offset += 16) {
+    const batch = runtimeFiles.slice(offset, offset + 16);
+    const sources = await Promise.all(batch.map(filename => fs.readFile(filename, "utf8")));
+    for (const [index, absolutePath] of batch.entries()) {
+      const relativePath = portablePath(path.relative(rootDir, absolutePath));
+      const source = sources[index];
+      const encoding = manifest.generatedEncodings?.[relativePath];
+      if (encoding) {
+        // Count the complete reviewed source map once. A serialized common prefix
+        // is not an additional external URL; validate the entire encoding instead.
+        try {
+          const originalPath = typeof encoding === "string" ? encoding : encoding.sourceManifest;
+          if (!runtimePaths.has(originalPath) || classifyTildaPath(originalPath, manifest) !== "generated" || Object.hasOwn(manifest.generatedEncodings, originalPath)) throw new Error("source map is not a reviewed complete generated file in the scanned runtime");
+          const original = JSON.parse(await fs.readFile(path.join(rootDir, originalPath), "utf8"));
+          let scoped = original;
+          if (typeof encoding !== "string") {
+            if (!["initial", "articles"].includes(encoding.scope)) throw new Error("unknown generated image partition");
+            const provenancePath = path.resolve(rootDir, encoding.provenance);
+            if (!provenancePath.startsWith(`${path.resolve(rootDir)}${path.sep}`)) throw new Error("image provenance leaves the repository");
+            const provenance = JSON.parse(await fs.readFile(provenancePath, "utf8"));
+            scoped = partitionImageDeliveryManifest(original, provenance.images)[encoding.scope];
+          }
+          if (JSON.stringify(JSON.parse(source)) !== JSON.stringify(compactImageDeliveryManifest(scoped))) throw new Error("compact data differs from its complete source map");
+          encodings.push({ path: relativePath, sourceManifest: originalPath, sources: Object.keys(scoped).length });
+        } catch (error) {
+          errors.push(`${relativePath}: invalid generated image encoding: ${error.message}`);
+        }
+        continue;
+      }
+      const urls = extractTildaUrls(source);
+      if (!urls.length) continue;
+      matches.push({
+        path: relativePath,
+        category: classifyTildaPath(relativePath, manifest),
+        occurrences: urls.length,
+        urls: sortedUnique(urls),
+      });
+    }
+  }
+
   const handwrittenSummary = [];
 
   for (const [relativePath, baseline] of Object.entries(
@@ -227,6 +265,7 @@ export async function auditTildaDependencies({
     uniqueUrls: sortedUnique(matches.flatMap((match) => match.urls)).length,
     handwritten: handwrittenSummary,
     generated: {
+      encodings,
       files: generated.length,
       occurrences: generatedOccurrences,
       uniqueUrls: generatedUniqueUrls,

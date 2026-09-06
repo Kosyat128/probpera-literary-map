@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { republishMediaAction } from "@/app/(dashboard)/media/actions";
 import { uploadEditorImage } from "@/lib/editor-image-upload";
-import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE } from "@/lib/client-image-upload";
+import { CLIENT_IMAGE_ACCEPT_ATTRIBUTE, formatImagePreparation } from "@/lib/client-image-upload";
 
 type UploadPublicationState = "started" | "queued" | "queue-error";
 
@@ -16,11 +16,13 @@ export default function MediaUploader() {
   const [publication, setPublication] = useState<UploadPublicationState | null>(null);
   const [uploadedMediaIds, setUploadedMediaIds] = useState<string[]>([]);
   const [usage, setUsage] = useState<"cover" | "hero" | "gallery" | "inline">("inline");
+  const [uploadResults, setUploadResults] = useState<string[]>([]);
 
   async function upload(formData: FormData) {
     setPending(true);
     setPublication(null);
     setUploadedMediaIds([]);
+    setUploadResults([]);
     setMessageKind("info");
     setMessage("Проверяем выбранные изображения…");
     let completed = 0;
@@ -63,6 +65,10 @@ export default function MediaUploader() {
           throw new Error("Файл загружен, но сервер вернул неполный статус публикации. Обновите медиатеку.");
         }
         completed += 1;
+        if (result.preparation) {
+          const summary = `${sourceFile.name}: ${formatImagePreparation(result.preparation)}`;
+          setUploadResults((current) => [...current, summary]);
+        }
         if (result.publication === "started") startedCount += 1;
         if (result.publication === "queued") queuedCount += 1;
         if (result.publication === "queue-error") {
@@ -84,7 +90,7 @@ export default function MediaUploader() {
       } else {
         setPublication("started");
         setMessageKind("success");
-        setMessage(`Оптимизировано и загружено ${startedCount} файлов. Публичная сборка запущена.`);
+        setMessage(`Загружено ${startedCount} файлов. Публичная сборка запущена.`);
       }
       router.refresh();
     } catch (error) {
@@ -105,17 +111,17 @@ export default function MediaUploader() {
       <label className="field">
         <span>Назначение и оптимизация</span>
         <select value={usage} onChange={(event) => setUsage(event.target.value as typeof usage)}>
-          <option value="inline">Иллюстрация в тексте · до 2000 × 2000</option>
-          <option value="hero">Большой фон / главная · до 2400 × 1600</option>
-          <option value="cover">Книжная обложка · до 1800 × 2700</option>
-          <option value="gallery">Галерея · до 2000 × 2000</option>
+          <option value="inline">Иллюстрация в тексте</option>
+          <option value="hero">Большой фон / главная</option>
+          <option value="cover">Книжная обложка</option>
+          <option value="gallery">Галерея</option>
         </select>
-        <small>Пропорции сохраняются; кадрирование настраивается позже фокусом и эффектами.</small>
+        <small>Размеры и пропорции исходника сохраняются; кадрирование настраивается позже фокусом и эффектами.</small>
       </label>
       <label className="upload-zone">
         <input name="file" type="file" accept={CLIENT_IMAGE_ACCEPT_ATTRIBUTE} multiple required />
-        <strong>Растровые изображения всех распространённых форматов</strong>
-        <p>JPEG, PNG, WebP, AVIF, GIF, BMP, TIFF, HEIC/HEIF и JPEG XL - если формат декодируется вашим браузером. До 20 файлов за операцию; каждый исходник будет подогнан без обрезки, очищен от метаданных и сохранён отдельным неизменяемым WebP. SVG и другие исполняемые документы запрещены.</p>
+        <strong>Изображения JPEG, PNG, WebP и AVIF</strong>
+        <p>До 20 файлов за операцию, исходник до 20 МБ. Автоматическая обработка сохраняет разрешение и прозрачность: WebP с высоким качеством используется только при уменьшении веса. Анимация WebP, PNG и AVIF сохраняется. GIF не поддерживается. Для загрузки файл должен укладываться в 3,8 МБ; слишком большой файл не уменьшается в разрешении автоматически.</p>
       </label>
       <label className="field">
         <span>Общее описание для выбранных файлов *</span>
@@ -154,6 +160,9 @@ export default function MediaUploader() {
           {message}
         </p>
       )}
+      {uploadResults.length > 0 && <ul className="form-message" aria-label="Результат обработки изображений">
+        {uploadResults.map((result, index) => <li key={index}>{result}</li>)}
+      </ul>}
       <button className="button" type="submit" disabled={pending}>
         {pending ? "Обрабатываем…" : "Оптимизировать и загрузить"}
       </button>

@@ -9,6 +9,7 @@ import {
   editorialLightboxMediaItems,
 } from "../utils/editorialLightbox";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
+import { publicImageUrl } from "../utils/imageDelivery";
 import { CmsNavigationLinks, CmsPageBanners } from "./CmsSiteChrome";
 import { cmsPageFieldMarker } from "../cms/directEditBridge";
 import BrandArrowIcon from "./BrandArrowIcon";
@@ -393,7 +394,7 @@ export default function CmsPageReader({ page }: { page: CmsPage }) {
               </button>
             </header>
             <img
-              src={activeMedia.src}
+              src={publicImageUrl(activeMedia.src, Infinity)}
               alt={
                 activeMedia.alt ||
                 `${t("Иллюстрация")} ${number(activeMediaIndex + 1)} - ${

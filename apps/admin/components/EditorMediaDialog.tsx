@@ -25,6 +25,7 @@ export type EditorMediaQueueItem = {
   status: "prepare" | "upload" | "attach" | "done" | "error" | "cancelled";
   progress: number;
   error?: string;
+  preparation?: string;
 };
 
 const statusLabels: Record<EditorMediaQueueItem["status"], string> = {
@@ -166,6 +167,7 @@ export default function EditorMediaDialog({
                   <span>
                     <strong>{item.name}</strong>
                     <small>{item.error || statusLabels[item.status]}</small>
+                    {item.preparation && <small>{item.preparation}</small>}
                   </span>
                   <span>
                     <progress max={100} value={item.progress}>

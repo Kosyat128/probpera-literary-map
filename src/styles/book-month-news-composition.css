@@ -205,6 +205,44 @@
   margin-bottom: 12px;
 }
 
+@media (min-width: 1361px) {
+  /* Pair the selected book with its fact; the news feed fills the other column. */
+  #book-day.has-literary-news {
+    row-gap: 20px;
+  }
+
+  #book-day.has-literary-news > .book-of-day {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  #book-day.has-literary-news > .book-month-supporting {
+    display: contents;
+  }
+
+  #book-day.has-literary-news .literary-news-slot {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  #book-day.has-literary-news .literary-news-slot > .literary-news {
+    display: flex;
+    flex-direction: column;
+    block-size: 100%;
+  }
+
+  #book-day.has-literary-news .literary-news:not(.is-expanded) .literary-news__content {
+    flex: 1 1 300px;
+    max-height: none;
+  }
+
+  #book-day.has-literary-news .book-fact-card {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 0;
+  }
+}
+
 @media (max-width: 1360px) {
   #book-day.has-literary-news > .book-month-supporting {
     grid-template-rows: auto;

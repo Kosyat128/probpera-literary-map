@@ -3,6 +3,7 @@ import path from "node:path";
 import { gzipSync } from "node:zlib";
 
 import { articleIdSet } from "./lib/cms-publication-state.mjs";
+import { measurePublishedImageCorpus } from "./lib/published-image-performance.mjs";
 
 const root = process.cwd();
 const dist = path.join(root, "dist");
@@ -498,10 +499,32 @@ if (cmsArticleGrowth.error) {
   );
 }
 const cmsArticleAllowanceBytes = cmsArticleGrowth.allowanceBytes || 0;
-enforce("dist total", total, budget.distTotalBytes + cmsArticleAllowanceBytes);
+let publishedImageBytes = 0;
+try {
+  const report = JSON.parse(await readFile(path.join(root, "reports/public-image-delivery.json"), "utf8"));
+  const corpus = measurePublishedImageCorpus({ files: measured, report, budget: budget.publishedImageCorpus });
+  for (const error of corpus.errors) recordFailure("published image corpus", error);
+  if (!corpus.errors.length) {
+    publishedImageBytes = corpus.bytes;
+    enforce("published image corpus total", corpus.bytes, budget.publishedImageCorpus.totalBytes);
+    enforce("published image corpus count", corpus.fileCount, budget.publishedImageCorpus.fileCount, "files");
+    enforce("published image source count", corpus.sourceCount, budget.publishedImageCorpus.sourceCount, "sources");
+  }
+} catch (error) {
+  recordFailure("published image corpus", `provenance is missing or unreadable: ${error.message}`);
+}
+if (!Number.isSafeInteger(budget.publishedSiteTotalBytes) || budget.publishedSiteTotalBytes <= 0) {
+  recordFailure("published site total", "publishedSiteTotalBytes must be a positive safe integer");
+} else {
+  enforce("published site total", total, budget.publishedSiteTotalBytes);
+}
+// Preserve both original application limits. The separately bounded, validated
+// illustration archive is the only new allowance, not arbitrary files in dist.
+if (publishedImageBytes) console.log(`Validated published image corpus measured separately: ${publishedImageBytes} bytes.`);
+enforce("dist total", total - publishedImageBytes, budget.distTotalBytes + cmsArticleAllowanceBytes);
 enforce(
   "dist excluding book covers",
-  distExcludingBookCovers,
+  distExcludingBookCovers - publishedImageBytes,
   budget.distExcludingBookCoversBytes + cmsArticleAllowanceBytes
 );
 if (largestScript) enforce(`largest JS (${largestScript.relative})`, largestScript.bytes, budget.largestJavaScriptBytes);
