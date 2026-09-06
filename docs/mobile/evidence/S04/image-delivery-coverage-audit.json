@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "kind": "s04-current-main-image-delivery-coverage",
+  "scope": "Read-only comparison of current-main generated image maps with public files and the historical native asset selection",
+  "status": "AUDIT_PASSED_WITH_NATIVE_REFRESH_OPEN",
+  "sourceCommit": "83a69a8c",
+  "initialMap": {
+    "manifest": "src/data/imageDelivery.initial.generated.json",
+    "sourceCount": 317,
+    "imageCount": 298,
+    "renditionCount": 693,
+    "publicOptimizedFilesReferenced": 693,
+    "missingPublicOptimizedFiles": 0
+  },
+  "articleMap": {
+    "manifest": "src/data/imageDelivery.articles.generated.json",
+    "sourceCount": 1431,
+    "imageCount": 1431,
+    "renditionCount": 3240,
+    "publicOptimizedFilesReferenced": 3240,
+    "missingPublicOptimizedFiles": 0
+  },
+  "fullMap": {
+    "manifest": "src/data/imageDelivery.generated.json",
+    "entryCount": 1748,
+    "variantReferenceCount": 5732,
+    "distinctPublicOptimizedFilesReferenced": 3890,
+    "missingPublicOptimizedFiles": 0
+  },
+  "nativeSelection": {
+    "manifest": "scripts/mobile/native-base-assets.json",
+    "selectedFiles": 266,
+    "selectedOptimizedImageFiles": 0,
+    "optimizedRenditionsInInitialMapAlsoSelected": 0,
+    "status": "Historical native selection is intentionally unchanged; a controlled refresh is required before a fresh current-main native candidate can claim coverage of generated optimized media."
+  },
+  "publicDirectory": {
+    "directory": "public/media/optimized",
+    "fileCount": 3890,
+    "bytes": 604254471
+  },
+  "conclusion": "All generated current-main optimized references resolve to files in the public tree. The native bundle selection does not include those optimized files, so current-main native asset coverage is an open packaging decision; no missing-file claim or silent selection expansion is made.",
+  "releaseReady": false,
+  "stageAccepted": false,
+  "productionActionsAuthorized": false
+}
