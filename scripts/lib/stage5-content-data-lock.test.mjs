@@ -63,14 +63,19 @@ function canonicalJson(value) {
   return value;
 }
 
+function projectIntegratedSource(relativePath, source) {
+  return relativePath === "package.json"
+    ? JSON.stringify(projectV12S03Package(JSON.parse(source)), null, 2) + "\n"
+    : projectV12S03Source(relativePath, source);
+}
+
 function canonicalContent(absolutePath) {
   const extension = path.extname(absolutePath).toLocaleLowerCase("en");
-  const text = projectReviewedReadingDesign(repositoryPath(absolutePath), readFileSync(absolutePath, "utf8")
+  const text = projectReviewedReadingDesign(repositoryPath(absolutePath), projectIntegratedSource(repositoryPath(absolutePath), readFileSync(absolutePath, "utf8")
     .replace(/^\uFEFF/u, "")
-    .replace(/\r\n/gu, "\n"));
+    .replace(/\r\n/gu, "\n")));
   if (extension === ".json" || extension === ".geojson") {
-    const value = repositoryPath(absolutePath) === "package.json"
-      ? projectV12S03Package(JSON.parse(text)) : JSON.parse(text);
+    const value = JSON.parse(text);
     if (repositoryPath(absolutePath) === "package.json") {
       // Keep the existing release/dependency fingerprint while checking the exact
       // additive typography gate authorized on 2026-09-04. No other script drift
@@ -91,7 +96,7 @@ function canonicalContent(absolutePath) {
       repositoryPath(absolutePath),
       projectApprovedBookshelfRefinement(
         repositoryPath(absolutePath),
-        projectV12S03Source(repositoryPath(absolutePath), text)
+        text
       ),
       ts.ScriptTarget.Latest,
       true,
@@ -535,7 +540,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       "apps/admin/catalog-assets/interface-copy-catalog.json",
     ]);
     for (const delta of readingDesignAttestation.projections) {
-      const source = readFileSync(path.join(root, delta.path), "utf8").replace(/\r\n?/gu, "\n");
+      const source = projectIntegratedSource(delta.path, readFileSync(path.join(root, delta.path), "utf8").replace(/\r\n?/gu, "\n"));
       expect(() => projectReviewedReadingDesign(delta.path, source.replace(delta.after, delta.before))).toThrow("Missing or duplicate reviewed reading-design delta");
       expect(() => projectReviewedReadingDesign(delta.path, source + delta.after)).toThrow("Missing or duplicate reviewed reading-design delta");
       const unreviewed = "\n/* Unreviewed change must remain fingerprinted. */\n";

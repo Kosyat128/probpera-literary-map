@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import * as ts from "typescript";
-import { projectV12S03Package, projectV12S03Source, v12S03Compatibility, v12S03CanonicalIntegration } from "./v12-s03-compatibility.mjs";
+import { effectiveV12S03SourceDelta, projectV12S03Package, projectV12S03Source, v12S03Compatibility, v12S03CanonicalIntegration } from "./v12-s03-compatibility.mjs";
 
 const read = path => readFileSync(path, "utf8").replace(/\r\n/gu, "\n");
 const sha = value => createHash("sha256").update(value).digest("hex");
@@ -30,7 +30,22 @@ describe("exact V12 S03 historical compatibility projection", () => {
     ]);
   });
 
-  for (const delta of [...v12S03CanonicalIntegration.projections, ...v12S03Compatibility.projections]) {
+  it("retains the exact canonical image import while reversing the historical Header gate", () => {
+    const historical = v12S03Compatibility.projections.find(delta => delta.id === "src/components/HeaderArticlesMenu.tsx#1");
+    const snapshot = structuredClone(historical);
+    const effective = effectiveV12S03SourceDelta(historical);
+    const addition = 'import { publicImageAttributes, publicImageUrl } from "../utils/imageDelivery";\n';
+    expect(effective.before.replace(addition, "")).toBe(historical.before);
+    expect(effective.after.replace(addition, "")).toBe(historical.after);
+    expect(historical).toEqual(snapshot);
+    const source = read(historical.path);
+    expect(projectV12S03Source(historical.path, source)).toContain(addition);
+    expect(() => projectV12S03Source(historical.path, source.replace(addition, ""))).toThrow("compatibility delta");
+    expect(() => projectV12S03Source(historical.path, source.replace(addition, addition + addition))).toThrow("compatibility delta");
+  });
+
+  for (const original of [...v12S03CanonicalIntegration.projections, ...v12S03Compatibility.projections]) {
+    const delta = effectiveV12S03SourceDelta(original);
     it(`${delta.id}: requires the exact delta once and preserves unrelated bytes`, () => {
       const source = read(delta.path);
       expect(source.split(delta.after)).toHaveLength(2);

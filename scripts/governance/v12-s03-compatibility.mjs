@@ -31,12 +31,30 @@ export const v12S03Compatibility = Object.freeze({
   }))),
 });
 
+/** The 5d3f6fb canonical image import shares the historical Header import hunk.
+ * Preserve it on BOTH sides of this one technical reverse projection. The
+ * immutable V12 fixture and the upstream reading-design attestation are intact. */
+export function effectiveV12S03SourceDelta(delta) {
+  if (delta.id !== "src/components/HeaderArticlesMenu.tsx#1") return delta;
+  const anchor = 'import { useCallback, useEffect, useMemo, useRef, useState } from "react";\n';
+  const addition = 'import { publicImageAttributes, publicImageUrl } from "../utils/imageDelivery";\n';
+  if (delta.path !== "src/components/HeaderArticlesMenu.tsx" ||
+      delta.before.split(anchor).length !== 2 || delta.after.split(anchor).length !== 2) {
+    throw new Error("Changed historical Header compatibility delta");
+  }
+  return Object.freeze({ ...delta,
+    before: delta.before.replace(anchor, anchor + addition),
+    after: delta.after.replace(anchor, anchor + addition),
+  });
+}
+
 /** Match only pinned, complete deltas; every other source byte survives. */
 export function projectV12S03Source(relativePath, source) {
   let result = projectV12S04HostSource(relativePath, source);
   // Undo the latest technical integration first, then the original S03 delta.
   // Upstream bookshelf refinements are still checked separately by their lock.
-  for (const delta of [...v12S03CanonicalIntegration.projections, ...v12S03Compatibility.projections]) {
+  for (const original of [...v12S03CanonicalIntegration.projections, ...v12S03Compatibility.projections]) {
+    const delta = effectiveV12S03SourceDelta(original);
     if (delta.path !== relativePath) continue;
     if (result.split(delta.after).length !== 2) {
       throw new Error(`Missing or duplicate V12 S03 compatibility delta: ${delta.id}`);
