@@ -59,11 +59,11 @@ Read evidence/S04/cloud-ios-working-validation.json and ios-binary-verification.
 for exact proof. Simulator launch, installed-device behavior and IPA remain open.
 The cloud source projection predates current-main integration; never relabel it.
 
-Next internal work: connect SDK-free NativeNavigation to actual adapter App URL/
-Back ports and canonical App callbacks with bootstrap/policy fencing; use current
-publication gates and preserve absent selection fields. Audit new main image
-delivery against the controlled asset selection; preserve rights checks and exact
-cross-platform bytes. Build fresh separate candidates after corrections. Preserve
+NativeNavigation is now connected to the actual adapter App URL/Back ports and
+canonical App callbacks with bootstrap/policy fencing. Next internal work: audit
+new main image delivery against the controlled asset selection; preserve rights
+checks and exact cross-platform bytes. Build fresh separate candidates after
+corrections. Preserve
 historical dist-native/dist-pwa and original authorities. An isolated Chrome
 locked-shell preparation passed4 checks after3 recorded setup failures; it did not
 perform OS install. Use a disposable OS for actual PWA installation, and a fresh

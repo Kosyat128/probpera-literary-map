@@ -1,5 +1,5 @@
 Resumed on the user's explicit instruction "Продолжай".
-Native working checkpoint: ca6f805badc6638fbee5998f0de483b0857ca1c8.
+Native working checkpoint: 83a69a8c (canonical deep-link and Android Back wiring).
 The authorized cloud iOS Simulator build succeeded at273f400d; independent binary
 verification passed. Actual simulator launch is the next separate runtime gate.
 
@@ -17,7 +17,8 @@ controlled image coverage and fresh builds remain work. The earlier f406a7de
 integration and its test identities remain preserved. Accepted
 headSha remains S02:6305df5fe671718c78b38af1ccc2bafbbdd44346. Working checkpoints
 0afad090 and e2530cc6 preserve S03 integration and saved-verification behavior;
-neither accepts S03. Current S04 evidence records working source beyond e2530cc6.
+neither accepts S03. Current S04 evidence records working source beyond e2530cc6;
+native URL/Back integration is implemented and awaits fresh artifact/runtime evidence.
 
 S03 measured results:
 
@@ -93,7 +94,8 @@ android-dev-apk-verification.json, ios-project-sync-review.json and their
 byte-preserved reports/logs. Initial failures remain alongside corrections.
 
 Open work includes S03 browser/device boundaries and broader account lifecycle;
-native installed behavior, child/deep-link/navigation/commerce policy; complete
+native installed behavior and fresh current-main artifacts; child/navigation/
+commerce policy; complete
 reviewed RU/EN content, search/audio/offline packages, accessibility, bilingual
 legal/store support, exact-RC screenshots and owner approval. These are internal
 implementation tasks except concrete account/signing/legal decisions. No human

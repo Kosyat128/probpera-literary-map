@@ -14,8 +14,9 @@ Internal work:
   verification passed. Simulator launch, installed behavior and physical devices
   remain unverified; no Mac purchase or programming is assigned to the owner.
 - Current main5d3f6fb is integrated through72a62b31 with969 affected tests passing.
-  Historical native/PWA binaries predate it. New image-delivery coverage and fresh
-  artifact validation are internal work, along with actual native URL/Back wiring.
+  Historical native/PWA binaries predate it. Native URL/Back wiring is now in the
+  canonical App and covered by focused tests; new image-delivery coverage and
+  fresh current-main artifact/runtime validation remain internal work.
 - PWA locked-shell preparation passed4 actual Chrome checks; OS installation
   remains unverified. Full standalone tests need a disposable OS environment and
   fresh QA candidate with its signer alive; do not overwrite historical authority.
