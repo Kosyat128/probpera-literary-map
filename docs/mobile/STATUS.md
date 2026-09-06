@@ -1,6 +1,6 @@
-USER PAUSE - 2026-09-06 Europe/Moscow. Resume only on explicit user instruction.
+Resumed on the user's explicit instruction "Продолжай".
 Native working checkpoint: ca6f805badc6638fbee5998f0de483b0857ca1c8.
-Two interrupted iOS CI files remain uncommitted and unreviewed; no cloud run occurred.
+The interrupted cloud iOS drafts are under review; no cloud build is yet claimed.
 
 # V12 status
 

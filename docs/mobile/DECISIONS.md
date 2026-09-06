@@ -183,3 +183,7 @@
   Stop parallel implementation; no automatic resumption tomorrow. Native working
   source/evidence is committed at ca6f805b. Interrupted uncommitted iOS workflow
   and helper are preserved as unreviewed drafts, not CI or native build evidence.
+- D048: The user explicitly resumed with "Продолжай". Lift only the task pause;
+  retain all production/publication boundaries and the historical pause receipt.
+  A source-only cloud CI tree must not make internal V12 requirements, evidence
+  or SDK authorization receipts reachable through its parent history.

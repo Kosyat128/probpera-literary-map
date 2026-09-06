@@ -1,9 +1,6 @@
-PAUSED BY USER: "Сделай паузу на сегодня" (2026-09-06 Europe/Moscow).
-Do not resume automatically, including tomorrow. Wait for explicit continuation.
-On authorized resumption start from ca6f805badc6638fbee5998f0de483b0857ca1c8.
-The two iOS CI drafts recorded in verificationCache.userPause are interrupted,
-uncommitted and not validated. Review them before committing or running anything.
-No remote cloud build or production action was performed.
+USER RESUMED: "Продолжай". The prior pause is lifted.
+Work from ca6f805badc6638fbee5998f0de483b0857ca1c8 and preserved drafts.
+Review iOS CI before execution; preserve source-only publication boundaries.
 
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.

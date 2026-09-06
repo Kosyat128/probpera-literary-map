@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-05T22:02:07.544Z",
+  "updatedAt": "2026-09-06T00:33:24.647Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -10529,7 +10529,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "PAUSED BY USER on 2026-09-06 Europe/Moscow. Resume only after an explicit user instruction. Preserve working native checkpoint ca6f805b and the interrupted unreviewed iOS CI drafts; validate/review them before use. S03.acceptance remains first-open; S04 and release acceptance are not claimed.",
+    "nextAction": "Resumed on explicit user instruction. Finish and independently review the interrupted iOS simulator CI drafts, prepare a source-only cloud build without exposing internal V12 history or touching main, and continue native and S03 internal gates. No acceptance or release claim.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10641,7 +10641,7 @@
       "commit": "ca6f805badc6638fbee5998f0de483b0857ca1c8"
     },
     "userPause": {
-      "paused": true,
+      "paused": false,
       "requestedAt": "2026-09-05T22:02:07.544Z",
       "request": "Сделай паузу на сегодня",
       "resumeOnlyOnExplicitUserInstruction": true,
@@ -10659,7 +10659,9 @@
         }
       ],
       "remoteIosBuildRun": false,
-      "productionActionsPerformed": false
+      "productionActionsPerformed": false,
+      "resumedAt": "2026-09-06T00:33:24.647Z",
+      "resumeRequest": "Продолжай"
     }
   },
   "externalOwnerInputsStatus": {
