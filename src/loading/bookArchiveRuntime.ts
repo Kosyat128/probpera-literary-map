@@ -19,16 +19,13 @@ let runtimePromise: Promise<BookArchiveRuntime> | null = null;
 /** The only production entry point that evaluates the full book graph. */
 export function loadBookArchiveRuntime() {
   if (runtimePromise) return runtimePromise;
-  runtimePromise = Promise.all([
-    import("../data/bookArchive"),
-    import("../data/bookArchiveQueue"),
-  ])
-    .then(([archive, queue]) => ({
+  runtimePromise = import("../planet/books")
+    .then((archive) => ({
       buildBookArchive: archive.buildBookArchive,
       coverArtworkSrcSet: archive.coverArtworkSrcSet,
       isEditorialCover: archive.isEditorialCover,
       isCoverArtworkDisplayAllowed: archive.isCoverArtworkDisplayAllowed,
-      presentBookArchiveEntry: queue.presentBookArchiveEntry,
+      presentBookArchiveEntry: archive.presentBookArchiveEntry,
     }))
     .catch((error) => {
       runtimePromise = null;

@@ -1,6 +1,10 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
 
 import { reportClientError } from "../community/diagnosticsReporter";
+import {
+  canonicalJournalOrigin,
+  isControlledWebEdition,
+} from "../platform/distribution";
 
 type Props = { children: ReactNode };
 type State = { failed: boolean };
@@ -60,7 +64,15 @@ export default class BootstrapErrorBoundary extends Component<Props, State> {
           <button type="button" onClick={() => globalThis.location.reload()}>
             {copy.reload}
           </button>
-          <a href={`${import.meta.env.BASE_URL}stati/`}>{copy.archive}</a>
+          <a
+            href={
+              isControlledWebEdition
+                ? `${canonicalJournalOrigin}/stati/`
+                : `${import.meta.env.BASE_URL}stati/`
+            }
+          >
+            {copy.archive}
+          </a>
         </main>
       );
     }

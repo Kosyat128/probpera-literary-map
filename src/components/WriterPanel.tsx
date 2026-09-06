@@ -22,7 +22,8 @@ import {
   shouldUseClientNavigation,
 } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
-import { getPublicWriterWorkTitles } from "../data/bookArchive";
+import type { BookArchiveEntry } from "../data/bookArchive";
+import { groupPublicBooksForCountry, writerBookLoadingCopy } from "./writerPanelBooks";
 import { selectWriterBiographyForDisplay } from "../data/writerBiographyDisplay";
 import {
   selectWriterDisplayName,
@@ -53,6 +54,7 @@ const nobelPortraitUrl = `${import.meta.env.BASE_URL}brand/alfred-nobel-medallio
 const WRITER_PANEL_MOTION_MS = 280;
 const WRITER_DETAIL_MOTION_MS = 200;
 const WRITER_MOTION_EASING = "cubic-bezier(0.2, 0.72, 0.22, 1)";
+const EMPTY_PUBLIC_BOOKS: readonly BookArchiveEntry[] = [];
 
 function animateWriterSurface(
   element: HTMLElement,
@@ -86,6 +88,10 @@ function FollowBellIcon({ active = false }: { active?: boolean }) {
 
 type WriterPanelProps = {
   country: Country;
+  books: readonly BookArchiveEntry[];
+  booksStatus: "idle" | "loading" | "ready" | "error";
+  onLoadBooks: () => void;
+  onRetryBooks: () => void;
   selectedWriter?: Writer | null;
   focusRequestId?: number;
   onWriterSelect?: (writer: Writer) => void;
@@ -157,6 +163,10 @@ function relatedArticlesFor(writer: Writer, language: "ru" | "en") {
 
 export default function WriterPanel({
   country,
+  books,
+  booksStatus,
+  onLoadBooks,
+  onRetryBooks,
   selectedWriter,
   focusRequestId,
   onWriterSelect,
@@ -169,6 +179,7 @@ export default function WriterPanel({
   onClose,
 }: WriterPanelProps) {
   const { language, t, countryName, number } = useInterfaceLanguage();
+  const booksCopy = writerBookLoadingCopy[language];
   const { toggle: toggleSubscription, isSubscribed } = useSubscriptions();
   const panelRef = useRef<HTMLElement>(null);
   const detailRef = useRef<HTMLElement>(null);
@@ -182,6 +193,15 @@ export default function WriterPanel({
   const writers = country.writers || [];
   const [localSelected, setLocalSelected] = useState<Writer | null>(writers[0] || null);
   const [detailView, setDetailView] = useState<WriterDetailView>("biography");
+  const publicBooksByWriter = useMemo(
+    () => groupPublicBooksForCountry(country, booksStatus === "ready" ? books : []),
+    [country, books, booksStatus]
+  );
+  // Loading is demand-driven by the works tab; locale changes do not request a
+  // new catalog or replace the canonical selected writer and globe.
+  useEffect(() => {
+    if (detailView === "works" && booksStatus === "idle") onLoadBooks();
+  }, [detailView, booksStatus, onLoadBooks]);
 
   useEffect(() => {
     const firstWriter = country.writers?.[0] || null;
@@ -199,6 +219,9 @@ export default function WriterPanel({
     selectedWriter === undefined
       ? localWriterInCountry ?? writers[0] ?? null
       : selectedWriterInCountry;
+  const activeWriterBooks = activeWriter
+    ? publicBooksByWriter.get(activeWriter.id) ?? EMPTY_PUBLIC_BOOKS
+    : EMPTY_PUBLIC_BOOKS;
 
   const scrollToWriterDetail = useCallback(() => {
     const detail = detailRef.current;
@@ -323,8 +346,8 @@ export default function WriterPanel({
     [activeWriter, language]
   );
   const activeWriterWorks = useMemo(
-    () => (activeWriter ? writerWorksForPanel(activeWriter, language) : []),
-    [activeWriter, language]
+    () => (activeWriter ? writerWorksForPanel(activeWriter, language, activeWriterBooks) : []),
+    [activeWriter, language, activeWriterBooks]
   );
   const activeWriterAwards = useMemo(
     () =>
@@ -332,10 +355,11 @@ export default function WriterPanel({
         ? writerAwardsForPanel(
             activeWriter,
             activeWriterBiography,
-            language
+            language,
+            activeWriterBooks
           )
         : [],
-    [activeWriter, activeWriterBiography, language]
+    [activeWriter, activeWriterBiography, language, activeWriterBooks]
   );
   const activeWriterWorkGroups = useMemo(
     () => groupWriterRecordsByStatus(activeWriterWorks),
@@ -625,12 +649,12 @@ export default function WriterPanel({
           {(() => {
             const worksCount = uniqueValues(
               writers.flatMap((writer) =>
-                getPublicWriterWorkTitles(writer, language)
+                writerWorksForPanel(writer, language, publicBooksByWriter.get(writer.id) ?? []).map(work => work.title)
               )
             ).length;
             return (
               <>
-                <strong>{number(worksCount)}</strong>
+                <strong aria-label={booksStatus === "ready" ? undefined : booksCopy.countPending}>{booksStatus === "ready" ? number(worksCount) : "-"}</strong>
                 <span>
                   {language === "en"
                     ? worksCount === 1
@@ -1064,8 +1088,8 @@ export default function WriterPanel({
                       {t("Опубликованные произведения")}
                     </h5>
                   </div>
-                  <strong aria-label={`${t("Произведения")}: ${number(activeWriterWorks.length)}`}>
-                    {number(activeWriterWorks.length)}
+                  <strong aria-label={booksStatus === "ready" ? `${t("Произведения")}: ${number(activeWriterWorks.length)}` : booksCopy.countPending}>
+                    {booksStatus === "ready" ? number(activeWriterWorks.length) : "-"}
                   </strong>
                 </header>
                 <p className="writer-record-note">
@@ -1147,7 +1171,13 @@ export default function WriterPanel({
                   );
                 })}
 
-                {!hasWriterWorks && (
+                {booksStatus !== "ready" && (
+                  <p className="writer-source-empty" role="status">
+                    {booksStatus === "error" ? booksCopy.unavailable : booksCopy.loading}
+                    {booksStatus === "error" && <Button onClick={onRetryBooks}>{booksCopy.retry}</Button>}
+                  </p>
+                )}
+                {booksStatus === "ready" && !hasWriterWorks && (
                   <p className="writer-source-empty" role="status">
                     {t("Проверенные произведения этого автора пока не опубликованы.")}
                   </p>

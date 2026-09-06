@@ -1,0 +1,163 @@
+# Local preparation only; this file does not authorize a push or remote run.
+# The narrow branch push trigger can work before the manual workflow is present
+# on the default branch. Publishing repository contents requires separate review.
+# https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch
+# https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#push
+name: iOS simulator preparation
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - codex/literary-planet-v12-bilingual-final-autopilot
+      - codex/literary-planet-v12-ios-ci
+    paths:
+      - .github/workflows/mobile-ios-simulator.yml
+      - scripts/mobile/ios-simulator-*
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-simulator-preparation-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  simulator:
+    if: >-
+      github.repository == 'Kosyat128/probpera-literary-map' &&
+      (github.ref == 'refs/heads/codex/literary-planet-v12-bilingual-final-autopilot' ||
+       github.ref == 'refs/heads/codex/literary-planet-v12-ios-ci') &&
+      (github.event_name == 'workflow_dispatch' || github.event_name == 'push')
+    # Explicit image family and exact installed Xcode gate; no beta fallback.
+    # https://github.com/actions/runner-images/blob/main/images/macos/macos-26-arm64-Readme.md
+    runs-on: macos-26
+    timeout-minutes: 45
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
+      CI: 'true'
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out the selected source commit
+        # https://github.com/actions/checkout/releases/tag/v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Set up Node
+        # https://github.com/actions/setup-node/releases/tag/v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: '24.20.0'
+          package-manager-cache: false
+
+      - name: Record and verify the actual macOS toolchain
+        run: |
+          set -euo pipefail
+          mkdir -p .tmp/ios-simulator-ci
+          sw_vers > .tmp/ios-simulator-ci/macos.txt
+          uname -m > .tmp/ios-simulator-ci/architecture.txt
+          ls -d /Applications/Xcode*.app > .tmp/ios-simulator-ci/installed-xcodes.txt
+          xcodebuild -version > .tmp/ios-simulator-ci/xcode-version.txt
+          xcodebuild -showsdks > .tmp/ios-simulator-ci/xcode-sdks.txt
+          xcrun simctl list --json > .tmp/ios-simulator-ci/simulators.json
+          node --version > .tmp/ios-simulator-ci/node-version.txt
+          npm --version > .tmp/ios-simulator-ci/npm-version.txt
+          git rev-parse HEAD > .tmp/ios-simulator-ci/source-commit.txt
+          node scripts/mobile/ios-simulator-build.mjs toolchain
+
+      - name: Install locked dependencies without lifecycle scripts
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts 2>&1 | tee .tmp/ios-simulator-ci/npm-ci.log
+
+      - name: Build and strictly verify the canonical iOS dev web bundle
+        run: |
+          set -euo pipefail
+          node node_modules/typescript/bin/tsc --noEmit 2>&1 | tee .tmp/ios-simulator-ci/types.log
+          node scripts/mobile/build-native.mjs ios dev 2>&1 | tee .tmp/ios-simulator-ci/web-build.log
+          node scripts/mobile/verify-native-artifact.mjs --dir dist-native > .tmp/ios-simulator-ci/audit-before-sync.json
+          node scripts/mobile/ios-simulator-build.mjs prepared
+
+      - name: Sync the existing iOS project and verify the copied payload
+        run: |
+          set -euo pipefail
+          node node_modules/@capacitor/cli/bin/capacitor sync ios 2>&1 | tee .tmp/ios-simulator-ci/cap-sync.log
+          node scripts/mobile/verify-native-artifact.mjs --dir dist-native > .tmp/ios-simulator-ci/audit-after-sync.json
+          node scripts/mobile/ios-simulator-build.mjs synced
+
+      - name: Inspect the actual App scheme and resolve packages
+        # https://developer.apple.com/library/archive/technotes/tn2339/_index.html
+        run: |
+          set -euo pipefail
+          xcodebuild -project apps/mobile/ios/App/App.xcodeproj -list -json > .tmp/ios-simulator-ci/schemes.json
+          node scripts/mobile/ios-simulator-build.mjs scheme
+          xcodebuild -resolvePackageDependencies -project apps/mobile/ios/App/App.xcodeproj -scheme App -clonedSourcePackagesDir "$RUNNER_TEMP/ios-spm" 2>&1 | tee .tmp/ios-simulator-ci/package-resolution.log
+          node scripts/mobile/ios-simulator-build.mjs resolved
+
+      - name: Build unsigned for the generic iOS Simulator
+        run: |
+          set -euo pipefail
+          xcodebuild build -project apps/mobile/ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/ios-derived" -clonedSourcePackagesDir "$RUNNER_TEMP/ios-spm" -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile -resultBundlePath "$RUNNER_TEMP/ios-build.xcresult" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' 2>&1 | tee .tmp/ios-simulator-ci/xcode-build.log
+          plutil -convert json -o .tmp/ios-simulator-ci/app-info.json "$RUNNER_TEMP/ios-derived/Build/Products/Debug-iphonesimulator/App.app/Info.plist"
+          xcrun vtool -show-build "$RUNNER_TEMP/ios-derived/Build/Products/Debug-iphonesimulator/App.app/App" > .tmp/ios-simulator-ci/mach-o-build.txt
+          node scripts/mobile/verify-native-artifact.mjs --dir dist-native > .tmp/ios-simulator-ci/audit-after-build.json
+          node scripts/mobile/ios-simulator-build.mjs built
+          ditto -c -k --sequesterRsrc --keepParent "$RUNNER_TEMP/ios-derived/Build/Products/Debug-iphonesimulator/App.app" .tmp/ios-simulator-ci/App-simulator.app.zip
+          # Preserve executable permissions in the portable artifact as well.
+          # https://github.com/actions/upload-artifact#permission-loss
+          tar -czf .tmp/ios-simulator-ci/App-simulator.app.tar.gz -C "$RUNNER_TEMP/ios-derived/Build/Products/Debug-iphonesimulator" App.app
+
+      - name: Preserve diagnostics and checksums, including failed builds
+        id: evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          if [ -d "$RUNNER_TEMP/ios-build.xcresult" ]; then
+            ditto -c -k --sequesterRsrc --keepParent "$RUNNER_TEMP/ios-build.xcresult" .tmp/ios-simulator-ci/ios-build.xcresult.zip
+          fi
+          node scripts/mobile/ios-simulator-build.mjs evidence
+
+      - name: Upload only simulator preparation and diagnostic files
+        if: always() && steps.evidence.outcome == 'success'
+        # https://github.com/actions/upload-artifact/releases/tag/v7.0.1
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: ios-simulator-preparation-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            .tmp/ios-simulator-ci/macos.txt
+            .tmp/ios-simulator-ci/architecture.txt
+            .tmp/ios-simulator-ci/installed-xcodes.txt
+            .tmp/ios-simulator-ci/xcode-version.txt
+            .tmp/ios-simulator-ci/xcode-sdks.txt
+            .tmp/ios-simulator-ci/simulators.json
+            .tmp/ios-simulator-ci/node-version.txt
+            .tmp/ios-simulator-ci/npm-version.txt
+            .tmp/ios-simulator-ci/source-commit.txt
+            .tmp/ios-simulator-ci/npm-ci.log
+            .tmp/ios-simulator-ci/types.log
+            .tmp/ios-simulator-ci/web-build.log
+            .tmp/ios-simulator-ci/audit-before-sync.json
+            .tmp/ios-simulator-ci/artifact.json
+            .tmp/ios-simulator-ci/audit-after-sync.json
+            .tmp/ios-simulator-ci/cap-sync.log
+            .tmp/ios-simulator-ci/sync-integrity.json
+            .tmp/ios-simulator-ci/schemes.json
+            .tmp/ios-simulator-ci/package-resolution.log
+            .tmp/ios-simulator-ci/Package.resolved
+            .tmp/ios-simulator-ci/xcode-build.log
+            .tmp/ios-simulator-ci/app-info.json
+            .tmp/ios-simulator-ci/mach-o-build.txt
+            .tmp/ios-simulator-ci/audit-after-build.json
+            .tmp/ios-simulator-ci/simulator-bundle.json
+            .tmp/ios-simulator-ci/App-simulator.app.zip
+            .tmp/ios-simulator-ci/App-simulator.app.tar.gz
+            .tmp/ios-simulator-ci/ios-build.xcresult.zip
+            .tmp/ios-simulator-ci/checksums.json
+          if-no-files-found: error
+          include-hidden-files: true
+          compression-level: 0
+          retention-days: 7

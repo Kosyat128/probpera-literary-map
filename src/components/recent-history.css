@@ -1,0 +1,8 @@
+.recent-history { margin-block: 1.5rem; }
+.recent-history > summary { cursor: pointer; font-size: 1.2rem; font-weight: 600; padding-block: .75rem; }
+.recent-history__content { padding-block: .5rem 1rem; }
+.recent-history ol { display: grid; gap: .5rem; list-style: none; margin: 0 0 1rem; padding: 0; max-height: 24rem; overflow: auto; }
+.recent-history li button { display: flex; flex-wrap: wrap; gap: .5rem; text-align: start; width: 100%; max-width: 100%; overflow-wrap: break-word; min-height: 44px; }
+.recent-history__kind { opacity: .7; }
+.recent-history__label { flex: 1 1 14rem; min-width: 0; overflow-wrap: break-word; }
+.recent-history button:focus-visible, .recent-history > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }

@@ -1,0 +1,1604 @@
+{
+  "schemaVersion": 1,
+  "scope": "Canonical public asset selection for the isolated historical iOS simulator source projection; selection inherited from the existing working bootstrap, exact source bytes pinned to canonical Git blobs. Not rights, language, release or owner approval.",
+  "sourceSelectionBuildId": "b006c2757ee7e5bacc6b946d8c7dcd880c0760da74ff3d39d752095b38b26c6d",
+  "files": [
+    {
+      "output": "articles/book-mentions.json",
+      "source": "public/articles/book-mentions.json",
+      "sourceSha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ad.svg",
+      "source": "public/assets/country-flags/ad.svg",
+      "sourceSha256": "ca1937c79be8d23baf0a424d66f934b81aeb3da7454c1509cfcbc6d887ef90c5",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ae.svg",
+      "source": "public/assets/country-flags/ae.svg",
+      "sourceSha256": "ad238db320326d07186f28861269250e3195d15f672ec7acee2c36ecb94f7d20",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/af.svg",
+      "source": "public/assets/country-flags/af.svg",
+      "sourceSha256": "0232e3553749f5010e78566dd270ded9e2e00eb7386c137d08738ecfc278dad0",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ag.svg",
+      "source": "public/assets/country-flags/ag.svg",
+      "sourceSha256": "00232b7b5c054d177c30cdab59b4ee11c4bd13e6ffc55e92b4622eb3af2844f9",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/al.svg",
+      "source": "public/assets/country-flags/al.svg",
+      "sourceSha256": "04b5d48a47f5207b19dd7cd0092e34a0d165037fda74345ae1af8513008797e0",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/am.svg",
+      "source": "public/assets/country-flags/am.svg",
+      "sourceSha256": "57edcffabfd3b81c54ec5d9c37044a8dbfeb5f98bf56aaf3c869c755e025061c",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ao.svg",
+      "source": "public/assets/country-flags/ao.svg",
+      "sourceSha256": "b545e4418fe4c47d5b0fd754f768d0b1d119f6ba83b7d28012163eff624f3d56",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ar.svg",
+      "source": "public/assets/country-flags/ar.svg",
+      "sourceSha256": "cb6050f545cff954c635a906a352d4b5a389193728c5686cd4ec63a12a678f08",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/at.svg",
+      "source": "public/assets/country-flags/at.svg",
+      "sourceSha256": "9ad440392b2e6754d95b42b6a1973045dce2b44076e4e1f9a31f94be7ae7170f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ATTRIBUTION.md",
+      "source": "public/assets/country-flags/ATTRIBUTION.md",
+      "sourceSha256": "17340c43cd89076a460f65f0df1407bd732b6b84922fb743a336687b4887b828",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/au.svg",
+      "source": "public/assets/country-flags/au.svg",
+      "sourceSha256": "1e6796ab84bd35e76172ef329a5e9115911cce41b7fabdb6359e8f22aa7a2b7b",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/az.svg",
+      "source": "public/assets/country-flags/az.svg",
+      "sourceSha256": "270a8348e514b6431d3c564261405d429e8ca8014ab81ecf09d9b77fc271ac25",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ba.svg",
+      "source": "public/assets/country-flags/ba.svg",
+      "sourceSha256": "07eced7b6889f979688e47b64837d6766fac076ef9c12e13696fb785c1fbe01d",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bb.svg",
+      "source": "public/assets/country-flags/bb.svg",
+      "sourceSha256": "065d1a0c5a882e5558c1af502195d50737e3fafbb55138e2154405f064ce7630",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bd.svg",
+      "source": "public/assets/country-flags/bd.svg",
+      "sourceSha256": "90f8f20e477885d372d872e296a3b7d352980b8aa921249b5702e9a5b2aa94c6",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/be.svg",
+      "source": "public/assets/country-flags/be.svg",
+      "sourceSha256": "ba60828a8d29d0e0fc10a8187650c9dbe4c5e4b0a14f4f1135b04706723f627d",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bf.svg",
+      "source": "public/assets/country-flags/bf.svg",
+      "sourceSha256": "62cdc2bd45955b8ac14a8ce6697f626eb1837c64168d9a1ffc876478068ce3a7",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bg.svg",
+      "source": "public/assets/country-flags/bg.svg",
+      "sourceSha256": "4943a69eba8a46f542e06c1f12fcae43996316e3d5d39f53cdb43fcacbf15810",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bh.svg",
+      "source": "public/assets/country-flags/bh.svg",
+      "sourceSha256": "102fe27e6c59f5a1ef9a255fac1312af5828e9fbaa17c5b27d197c09eb88d05f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bi.svg",
+      "source": "public/assets/country-flags/bi.svg",
+      "sourceSha256": "9508881d785b4c75ce629481da0d24669da4cc84432ec431aaa159e7e54fb6a4",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bj.svg",
+      "source": "public/assets/country-flags/bj.svg",
+      "sourceSha256": "2cbd64262dc8dc3a9f307e5a8fa9f01c9c22b4cd2532f8c4d65f4251b688f3a0",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bn.svg",
+      "source": "public/assets/country-flags/bn.svg",
+      "sourceSha256": "df47fa9c23b4c19c777eda457d6522cdefc86cfb5d8a5207faf298c273f3ab14",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bo.svg",
+      "source": "public/assets/country-flags/bo.svg",
+      "sourceSha256": "d388615d2cfc11cf34f84dac92a32febd3bfd50d2b01c45130618c0154b4aafe",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/br.svg",
+      "source": "public/assets/country-flags/br.svg",
+      "sourceSha256": "575ab789b4debbcf4ba10561fd9c8a16ca037b3384914e686b4bc597bb0bc5e2",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bs.svg",
+      "source": "public/assets/country-flags/bs.svg",
+      "sourceSha256": "58cdb6c98d292f4193818f403c8f7faa3d505f0fdf9acf10cd21c28f956ca149",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bt.svg",
+      "source": "public/assets/country-flags/bt.svg",
+      "sourceSha256": "b2582c2c800effe156e78f5d3fa39824c58401d8d83f860e6ee00c80b9f71391",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bw.svg",
+      "source": "public/assets/country-flags/bw.svg",
+      "sourceSha256": "6c89aad043d35ea2788e3d78d7ba440d2f23da9542a28aac6c0f6e83c52405f7",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/by.svg",
+      "source": "public/assets/country-flags/by.svg",
+      "sourceSha256": "821cf65558d95da1fee25bc609932dc2a6d29708e2c2a378bb68b641a061114f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/bz.svg",
+      "source": "public/assets/country-flags/bz.svg",
+      "sourceSha256": "ecada95632b615088a5df18eb68ff4f5314383bec32e0844c69d71052bc7fad6",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ca.svg",
+      "source": "public/assets/country-flags/ca.svg",
+      "sourceSha256": "f2b1a3d94b306b82f6202eabbec300f61bd23a240123c61487800700ee3330db",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cd.svg",
+      "source": "public/assets/country-flags/cd.svg",
+      "sourceSha256": "64c360bd7ff5ac608482e056b3d077e3db8f5ac99c9e04cfa89304df35348887",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cf.svg",
+      "source": "public/assets/country-flags/cf.svg",
+      "sourceSha256": "2e16b1cfd08e04f6cabc2634a9589f923fb5687029b537fa9ff9aba8e736366f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cg.svg",
+      "source": "public/assets/country-flags/cg.svg",
+      "sourceSha256": "9accb522e210b64de8977817a0322c8f70bac36b240d6062de843142d7cb3f0a",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ch.svg",
+      "source": "public/assets/country-flags/ch.svg",
+      "sourceSha256": "be4b8257f7ce4ea46d7f97b3ad9b3a9222be4dd10f9d8aa83b9716e2fca9b5ce",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ci.svg",
+      "source": "public/assets/country-flags/ci.svg",
+      "sourceSha256": "c3f20b8ea664ccc683f0e4f7c0cd79342c4773d08e74716df0cad63805bf198b",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ck.svg",
+      "source": "public/assets/country-flags/ck.svg",
+      "sourceSha256": "e54574957f4edc567b2b8ad53492edccb5548b33ba38080665591c0c2e2f7344",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cl.svg",
+      "source": "public/assets/country-flags/cl.svg",
+      "sourceSha256": "b1ef63f141b8fc7d584a4d75a90b122643530ceb8c21294c2522cc71e445c282",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cm.svg",
+      "source": "public/assets/country-flags/cm.svg",
+      "sourceSha256": "0899a6100d2cdf35349f1f56760976b5db04535979e84f5cec8064bb800abd27",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cn.svg",
+      "source": "public/assets/country-flags/cn.svg",
+      "sourceSha256": "b63401f452c90b70b8526d3bbb484f0343887c833a0fe61e755d2995a9d8a8f5",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/co.svg",
+      "source": "public/assets/country-flags/co.svg",
+      "sourceSha256": "596558a2df116d8f25ef8b298d9ebe01f65bde1d699b5d60c7b6df3b8742628d",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cr.svg",
+      "source": "public/assets/country-flags/cr.svg",
+      "sourceSha256": "b70b33c4cce86afd95ebb368443872b06614df803bb37618cb8b7e8e36176571",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cu.svg",
+      "source": "public/assets/country-flags/cu.svg",
+      "sourceSha256": "0234085b86a3b7a6ac3bbd11e1df24c771288d7ca6bf8cbfb2a0c0c0c20ca1f4",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cv.svg",
+      "source": "public/assets/country-flags/cv.svg",
+      "sourceSha256": "1f908f34fd41de47c3d5a73185c1e5ef5af32b4bb282a568ce1e40243077f442",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cy.svg",
+      "source": "public/assets/country-flags/cy.svg",
+      "sourceSha256": "eea7f79ea01aec7aac230598c78ec2ac7bf7c0993d142ea77cfbbfad89eb6860",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/cz.svg",
+      "source": "public/assets/country-flags/cz.svg",
+      "sourceSha256": "5a462b5ff6426e6bd288b1894fe3f77a0272ff70ce08209850edeca476e5c410",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/de.svg",
+      "source": "public/assets/country-flags/de.svg",
+      "sourceSha256": "c02c7eecdb7d56f92354979649cb3ab72a71a66841fa9772e1cf73b4d95e2938",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/dj.svg",
+      "source": "public/assets/country-flags/dj.svg",
+      "sourceSha256": "84b1dd7e88ce9cf5988ba9cd48c08a802308018bcedbf2e2529603e6b40e7014",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/dk.svg",
+      "source": "public/assets/country-flags/dk.svg",
+      "sourceSha256": "4d7c9c448af5fbec2a418496c14249b9f022f11fcd32fa94a391c5fe8651ca28",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/dm.svg",
+      "source": "public/assets/country-flags/dm.svg",
+      "sourceSha256": "c279396dc6f611e08b4b285b6da5845721609ad3dfdcc311e8b92862b5b4aa71",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/do.svg",
+      "source": "public/assets/country-flags/do.svg",
+      "sourceSha256": "0079b41e529c62666428fa3b396a5604d916bbad4e77a915b726c99ff0047e2c",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/dz.svg",
+      "source": "public/assets/country-flags/dz.svg",
+      "sourceSha256": "73f56cc7a1c3fe47704058421b108af79163a71b1ebd63082fd4bb8ec7ac35ca",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ec.svg",
+      "source": "public/assets/country-flags/ec.svg",
+      "sourceSha256": "398a104d634c411cd30d7a19e4eabd9796b79968293aa418dd76a7d00fa590f0",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ee.svg",
+      "source": "public/assets/country-flags/ee.svg",
+      "sourceSha256": "9fbc0f51a32916819ccc55341c9affb819d3a420855f61323e6f89fd06e4c823",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/eg.svg",
+      "source": "public/assets/country-flags/eg.svg",
+      "sourceSha256": "000845fe2eeb1aa0b3a628b1a1be8e5a904ad30478ed13a7cbf4feb90d7c0233",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/eh.svg",
+      "source": "public/assets/country-flags/eh.svg",
+      "sourceSha256": "cc2bf737e7a6d85d5bd3c60716a09760b254e55c2050d6d8100a16b3c2830ea2",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/er.svg",
+      "source": "public/assets/country-flags/er.svg",
+      "sourceSha256": "7afdecc63f5fbee067c092a1b8f5701262a6bc0077e84f10dd3bbd33eb7086ec",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/es.svg",
+      "source": "public/assets/country-flags/es.svg",
+      "sourceSha256": "5b25031dbcd3ea6de9beeebfc1c1b2570278c3eada5f7d90150febe2c3d60199",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/et.svg",
+      "source": "public/assets/country-flags/et.svg",
+      "sourceSha256": "e3751fb445c152efb0f35dd3af476f944bae71f950b9e48571631fa195f9016c",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/fi.svg",
+      "source": "public/assets/country-flags/fi.svg",
+      "sourceSha256": "f40640890ae067e39591f8604c580b5ac07773747df3aa9d88d404ec9a1f576a",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/fj.svg",
+      "source": "public/assets/country-flags/fj.svg",
+      "sourceSha256": "21b1a9fac378f6534ef14652acf13e6a06af4d2d820d9fe40e7d9561c5e80336",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/fm.svg",
+      "source": "public/assets/country-flags/fm.svg",
+      "sourceSha256": "3113102bdf52f955e3d3bd7a9f0da609d247942a69f8d1358c8e915a2d52cc2e",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/fr.svg",
+      "source": "public/assets/country-flags/fr.svg",
+      "sourceSha256": "5cdc5047e8825c0866bc1fb9c69cb3b4505fc32c379fefd05db2d1b483b01f20",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ga.svg",
+      "source": "public/assets/country-flags/ga.svg",
+      "sourceSha256": "cb2951db6c60270e7c138a50e922092f5ea1ad8e9653b9c7c5b08d134ed3fedd",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gb.svg",
+      "source": "public/assets/country-flags/gb.svg",
+      "sourceSha256": "c9024642b4a233b316ddc9a0c395d7b25e71499e53d2ecea0d5b89a8202c7b81",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gd.svg",
+      "source": "public/assets/country-flags/gd.svg",
+      "sourceSha256": "95cb79d0cf77ae5dd84c7908fc97eaf6c4f4215fb17b20555488eda807d29704",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ge.svg",
+      "source": "public/assets/country-flags/ge.svg",
+      "sourceSha256": "05f9a3cb89e49bdebbddfe407cbd3dd63ff5cf4f4c9cec3708a3c35843706f7a",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gf.svg",
+      "source": "public/assets/country-flags/gf.svg",
+      "sourceSha256": "7643aaa71428ad23d8c35979fbb949c037f5bd599e26957ebd561526bb9cba16",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gh.svg",
+      "source": "public/assets/country-flags/gh.svg",
+      "sourceSha256": "5797d82d17e9001179fa49fb1696a9aaba147a1fcde281b334ba6ae956845fa4",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gm.svg",
+      "source": "public/assets/country-flags/gm.svg",
+      "sourceSha256": "726e760b0f9657ba229fdeaf3932eac2ba094abfc22aa5719e8c4c7244118f80",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gn.svg",
+      "source": "public/assets/country-flags/gn.svg",
+      "sourceSha256": "8d20e68688e9f07f91b0b16c8486d8b654a719ad2c9e4c3a017acfabf51b398c",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gq.svg",
+      "source": "public/assets/country-flags/gq.svg",
+      "sourceSha256": "d95545234a8446901cc9bd1523be0d656feb1539bb9dfad849fbd0d69d14f098",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gr.svg",
+      "source": "public/assets/country-flags/gr.svg",
+      "sourceSha256": "a4519d9835e682ac9ccea8c4dd681b139f22f13f61bf2257f88895d858039575",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gt.svg",
+      "source": "public/assets/country-flags/gt.svg",
+      "sourceSha256": "a3c7e6a841ac5d5c18e07d09482b99ebc23e2254fb05e55ffc9dd707ac1f18ad",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gw.svg",
+      "source": "public/assets/country-flags/gw.svg",
+      "sourceSha256": "8838eee689e9d7f50c8a57f1e1eb6db3c9d9e977daf335d97bd26198af33b3bd",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/gy.svg",
+      "source": "public/assets/country-flags/gy.svg",
+      "sourceSha256": "4564fd570c60960fb3e0aaf8f82cf6c047ce485ede590c8a3eeee9249ea0f4d9",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/hk.svg",
+      "source": "public/assets/country-flags/hk.svg",
+      "sourceSha256": "cb99edfd524c8cce7138169048e8d084f5954650ff1216dca1da3244da45840d",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/hn.svg",
+      "source": "public/assets/country-flags/hn.svg",
+      "sourceSha256": "545c93c9f9e361604b5ae8a54028e10e84ee6284bb8d74ef67c50baef8cba63b",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/hr.svg",
+      "source": "public/assets/country-flags/hr.svg",
+      "sourceSha256": "8bdbc317d1dfce6db912cea26309f8e68c4d1f62a9b87e9392f310ae3a090689",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ht.svg",
+      "source": "public/assets/country-flags/ht.svg",
+      "sourceSha256": "648e31fd51e97227fa927d81c344a531685d1a83d3eef71051cc88c0b9d3ec9f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/hu.svg",
+      "source": "public/assets/country-flags/hu.svg",
+      "sourceSha256": "9e6bc6d77a4693c644cd5b76baab3840908e486bbedc37d175be3568ec4497d3",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/id.svg",
+      "source": "public/assets/country-flags/id.svg",
+      "sourceSha256": "b8cd30f235dd704eb6b82db622e8152a927d075c1d32e8cac885c2eb20bdd989",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ie.svg",
+      "source": "public/assets/country-flags/ie.svg",
+      "sourceSha256": "860168f557f3a0d0a878d7a7b2019b2e854a3246c54c7e87dc3c0c13007ff97c",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/il.svg",
+      "source": "public/assets/country-flags/il.svg",
+      "sourceSha256": "8cf0b4af7e8c7534e3d0495f29bdd9a94d0acc8b177ad5d1d7fd5283dea12919",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/in.svg",
+      "source": "public/assets/country-flags/in.svg",
+      "sourceSha256": "455c32f2162d1271bab344c44350e02967b644468d5592632030086b2fb40e1e",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/iq.svg",
+      "source": "public/assets/country-flags/iq.svg",
+      "sourceSha256": "5564cc73eb033a1a3a0e38e3088861c7f6cf673595dd758023ffd992bc20556a",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ir.svg",
+      "source": "public/assets/country-flags/ir.svg",
+      "sourceSha256": "7b4bc7694575a7f191b137222a90e36c016a0103ff8fb1f8ac8836c4279845df",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/is.svg",
+      "source": "public/assets/country-flags/is.svg",
+      "sourceSha256": "e1e1c2007b5e80f304b0e6b9c79af915193d4a1331620628bbd2990db6562eed",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/it.svg",
+      "source": "public/assets/country-flags/it.svg",
+      "sourceSha256": "03086f2e38f798754fee6c078bce35b807b600acb15a7ed1155fdf3a20d55abe",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/jm.svg",
+      "source": "public/assets/country-flags/jm.svg",
+      "sourceSha256": "43b63284607d0a3e09a60af9915bccf31277fad157f789e09621119af8a50fde",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/jo.svg",
+      "source": "public/assets/country-flags/jo.svg",
+      "sourceSha256": "0ec98db357f4d16b33278fe8dcdf70cee08f3d5c94329788f17c959900ab705d",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/jp.svg",
+      "source": "public/assets/country-flags/jp.svg",
+      "sourceSha256": "2bd3a486bf7a5be31a4ed510b78dc404bf1d5b43d36d0708e9437cbc41c44fb3",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ke.svg",
+      "source": "public/assets/country-flags/ke.svg",
+      "sourceSha256": "f572211e8cf5a7b965a4a3352541309686c26dbf1ef8ab9537b21d2e179d3f29",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/kg.svg",
+      "source": "public/assets/country-flags/kg.svg",
+      "sourceSha256": "e2acd961489feab257334e674e32435f9f8fd609c1146de3778cb633aef4d67a",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/kh.svg",
+      "source": "public/assets/country-flags/kh.svg",
+      "sourceSha256": "ca56fe9de036d07e48d4292acbfb2d5de8d2d925a93db77bb6c726ec5ad913c4",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ki.svg",
+      "source": "public/assets/country-flags/ki.svg",
+      "sourceSha256": "7449c0be2c02a7ad3fe3723b476d7fc850a58022ed9e3b38d7b59a8e790812ba",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/km.svg",
+      "source": "public/assets/country-flags/km.svg",
+      "sourceSha256": "6b31a1527b73bb4735be7d8ab6782db27c9b72886145c97139512008553d1e94",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/kn.svg",
+      "source": "public/assets/country-flags/kn.svg",
+      "sourceSha256": "dc5eff370c714efda10632601f6db32d056a86a5953112f01fed0d6c3904cfab",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/kp.svg",
+      "source": "public/assets/country-flags/kp.svg",
+      "sourceSha256": "f5c28e4fb3dc818d8318633e9a06bf93c31fc2ae10dff5e08b57abc9d71c9bc0",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/kr.svg",
+      "source": "public/assets/country-flags/kr.svg",
+      "sourceSha256": "b6296bfd41e2dc402329ff831cd69d8cece37c5f65541af84805ffd3524152b7",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/kw.svg",
+      "source": "public/assets/country-flags/kw.svg",
+      "sourceSha256": "adea2b13cc833d6497da629b8516f588cb09fec64c7401a71aad3fdc2cb62334",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/kz.svg",
+      "source": "public/assets/country-flags/kz.svg",
+      "sourceSha256": "4cfea6754404a97cb519aec737a19204afa133d70e9b7fce2f4df0deea911ef9",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/la.svg",
+      "source": "public/assets/country-flags/la.svg",
+      "sourceSha256": "db27f2de624500f0600c9c4f6e110fc70d90aa8ea36ac4c440da1e99fc99a639",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/lb.svg",
+      "source": "public/assets/country-flags/lb.svg",
+      "sourceSha256": "a6977d894b754dbc412ac0f399fa2d7393a2788ddca6dba7e5dfd511b4c7f18a",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/lc.svg",
+      "source": "public/assets/country-flags/lc.svg",
+      "sourceSha256": "f967e635bb16ba4c03c8987cc5aa7de089a81d6fb8753319762f4c5b8b08021e",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/li.svg",
+      "source": "public/assets/country-flags/li.svg",
+      "sourceSha256": "6d84c94c70b0d6212e377b78a23b0ba24664f91c3ee5accf6984bccad31dbe19",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/LICENSE.flag-icons.txt",
+      "source": "public/assets/country-flags/LICENSE.flag-icons.txt",
+      "sourceSha256": "8f1195d55a2fd315a07d812328470ca9ba2abb78c8d317ff19619d5125e00cea",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/lk.svg",
+      "source": "public/assets/country-flags/lk.svg",
+      "sourceSha256": "e73e2c43987d92d748e7a5fce2f72e5bb681c61902db870b1db4be190db1f150",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/lr.svg",
+      "source": "public/assets/country-flags/lr.svg",
+      "sourceSha256": "144dca7cb1010c793e6f98d45c9e8bde109b43506c16d5207097ff7fb0261c99",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ls.svg",
+      "source": "public/assets/country-flags/ls.svg",
+      "sourceSha256": "a9f631a24f0d0589a8dec188877d2dcd2d4abdcfff668fdc648918522f66e869",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/lt.svg",
+      "source": "public/assets/country-flags/lt.svg",
+      "sourceSha256": "8ef0e9cb11cb2d75200380902f6ef02e253bb8008990163fed1f37088f744a5a",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/lu.svg",
+      "source": "public/assets/country-flags/lu.svg",
+      "sourceSha256": "02b43c1ad21460566b963fe2b718de9d1c66b88fba63ee3fc1846974ca67f296",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/lv.svg",
+      "source": "public/assets/country-flags/lv.svg",
+      "sourceSha256": "f4e0567ee40ff8209dc18b47b4c2bbe5f75a8e3f543cafc8c616e22d94bec356",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ly.svg",
+      "source": "public/assets/country-flags/ly.svg",
+      "sourceSha256": "66bc7151a7ac1476624630325bc6563b5e600bf4269b4b6c7e4273f5ff31ef80",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ma.svg",
+      "source": "public/assets/country-flags/ma.svg",
+      "sourceSha256": "8f1a0be29fef5aa340082603049fd8968ce6fbe43a35519c8686c0c4067a98db",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mc.svg",
+      "source": "public/assets/country-flags/mc.svg",
+      "sourceSha256": "c3aaba7e71561f53771a06cb3d3a00e9506a1efbfa4785a743567d72cc891b97",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/md.svg",
+      "source": "public/assets/country-flags/md.svg",
+      "sourceSha256": "69fa1216c60bb4ce9645f408b8b56651fd2ee9b09cd31c354352540fa2b4dabb",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/me.svg",
+      "source": "public/assets/country-flags/me.svg",
+      "sourceSha256": "9839903796f7ed08b5ba6000cc22b21ddaecf3091c1fa379751e535ea3442c2c",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mg.svg",
+      "source": "public/assets/country-flags/mg.svg",
+      "sourceSha256": "f16ffe668cf80c7529d2cf847934814e3f744336df59e28964e70ae328e79e47",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mh.svg",
+      "source": "public/assets/country-flags/mh.svg",
+      "sourceSha256": "e0445f99816252982590584b23b42a3cc3cf413329efacb78579ee15eb6058d8",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mk.svg",
+      "source": "public/assets/country-flags/mk.svg",
+      "sourceSha256": "8faba0525f8e95d524546aebf20b1dbdcc40e98b02636c502167ec5e57703007",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ml.svg",
+      "source": "public/assets/country-flags/ml.svg",
+      "sourceSha256": "34021383fae18ae716576e1eb986c68fa5a73d90c9ef8cec3773742df06fc7a1",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mm.svg",
+      "source": "public/assets/country-flags/mm.svg",
+      "sourceSha256": "ea2756fc2eebc7bb846220bf3fdd1f1e71b582c343d66681c49060bfe84721c5",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mn.svg",
+      "source": "public/assets/country-flags/mn.svg",
+      "sourceSha256": "f5f4048cbc39a601c5b80c1d42d4896a77c5d6899c3388a651bf9990e90cb820",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mo.svg",
+      "source": "public/assets/country-flags/mo.svg",
+      "sourceSha256": "490b6c6dbf8b97c8e482ba9d0c1befd81985d1db935c476ec2ae2075308bb77f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mr.svg",
+      "source": "public/assets/country-flags/mr.svg",
+      "sourceSha256": "21c0cd8c4061377de9d76db2af09b4257db37c8419d3e3d5e533347997c476bc",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mt.svg",
+      "source": "public/assets/country-flags/mt.svg",
+      "sourceSha256": "9488845c33fe7a5cc08f8056a7583d0b300636f535cc76abda1702ebe89b79e2",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mu.svg",
+      "source": "public/assets/country-flags/mu.svg",
+      "sourceSha256": "3a73b077dcfa0d56a9e1ed2f0e6a09d97838f2d4e9a1a0e79c8bf410e6488a5b",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mv.svg",
+      "source": "public/assets/country-flags/mv.svg",
+      "sourceSha256": "ecc358a3a4b64877e8868f86854a0a278f3435ee7e0c0f55839c8b18e9f68960",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mw.svg",
+      "source": "public/assets/country-flags/mw.svg",
+      "sourceSha256": "ab8e10a906a93cae077e3b34eef878488565b90cb602e0e2b0b106a317101a82",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mx.svg",
+      "source": "public/assets/country-flags/mx.svg",
+      "sourceSha256": "4768f4c45dbfadcd170a789796d022074152227d3c9722d937d277ddc5be35b2",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/my.svg",
+      "source": "public/assets/country-flags/my.svg",
+      "sourceSha256": "855239180133f98046893a144679d56a44d4637766d9e89fc11b0571ee67b2c1",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/mz.svg",
+      "source": "public/assets/country-flags/mz.svg",
+      "sourceSha256": "aa3b3d6203d7a42b690a4a189da79b9d95e1848cdc4c3811869c21dca9d86d80",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/na.svg",
+      "source": "public/assets/country-flags/na.svg",
+      "sourceSha256": "eee4a9b1762478831739cf0fb76b5e73c1891f201af63a6eb7af06648f0de73f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ne.svg",
+      "source": "public/assets/country-flags/ne.svg",
+      "sourceSha256": "c92686fc69fb391e02e11487c51862724764e212bd2d2f75689332d8fe15a239",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ng.svg",
+      "source": "public/assets/country-flags/ng.svg",
+      "sourceSha256": "a41dbb750a93b493414dd0231e7321504dff0761ceebfe77c60d2bc32dee1252",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ni.svg",
+      "source": "public/assets/country-flags/ni.svg",
+      "sourceSha256": "4cd79f2d8e9bbb972c4a4fe9a1e5f5c04c96c473545bb273b70289197b014523",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/nl.svg",
+      "source": "public/assets/country-flags/nl.svg",
+      "sourceSha256": "d99b87e81ac93d1ce0cd5b22df5eab3b219f49f7373ff1bfee2d2629d3b52653",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/no.svg",
+      "source": "public/assets/country-flags/no.svg",
+      "sourceSha256": "55fc156481df6bae1caf426dcc4c754fa8999bfdf6855a345ec6d69ee4cce160",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/np.svg",
+      "source": "public/assets/country-flags/np.svg",
+      "sourceSha256": "ba25a92555ba89507f637ed75c10a5517943c42aad1e9a37821cbd7e6cb223a0",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/nr.svg",
+      "source": "public/assets/country-flags/nr.svg",
+      "sourceSha256": "c0fc69e76052537c5defa0d80de18f1b623cfe8174be90d791116d482e252988",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/nu.svg",
+      "source": "public/assets/country-flags/nu.svg",
+      "sourceSha256": "93e802acf2afdc580698112ecc6db7bf3acc10cdab277b3db7ec943a9ba42a9c",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/nz.svg",
+      "source": "public/assets/country-flags/nz.svg",
+      "sourceSha256": "9e6e1d5e93535fdc029d9cc64c1acab7e08684f77efa5c940117f78693d13923",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/om.svg",
+      "source": "public/assets/country-flags/om.svg",
+      "sourceSha256": "f2a825767dbb62a5d93817b6702b5127861cb98798ae39ba861a8a3618138242",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/pa.svg",
+      "source": "public/assets/country-flags/pa.svg",
+      "sourceSha256": "0a61ba059d9ad2aef39ebef5a81c4df87570678a755ce49ad41e270d107359d5",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/pe.svg",
+      "source": "public/assets/country-flags/pe.svg",
+      "sourceSha256": "c98524841c8a14c96bd54b75c6b94d8d25d15fbd090dff168d4143a4e692149e",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/pg.svg",
+      "source": "public/assets/country-flags/pg.svg",
+      "sourceSha256": "c269210abf63f0a6473d29619ac71eb5662b6e8eff41c174b5e2a4f60fe3dd13",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ph.svg",
+      "source": "public/assets/country-flags/ph.svg",
+      "sourceSha256": "dfbd8f176080dcab71c9f69280f75ea1d4c0ddb4c3ef7ed6815d1f36fea3f7e8",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/pk.svg",
+      "source": "public/assets/country-flags/pk.svg",
+      "sourceSha256": "0e6af6f3df942e03ea73c5a159008b9c35024c0f945a5847bec48e14decee493",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/pl.svg",
+      "source": "public/assets/country-flags/pl.svg",
+      "sourceSha256": "698cda1f47e0e7935be4faca29945494ece4cb78516bd9648fbb8a2d3e4243c3",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/pr.svg",
+      "source": "public/assets/country-flags/pr.svg",
+      "sourceSha256": "044ecbaa3da9c0a34ecb438c8a53ba4b46344cde1f16fe21fd06cba844bb2230",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ps.svg",
+      "source": "public/assets/country-flags/ps.svg",
+      "sourceSha256": "9f13a50153eacb65a40a2bb8486b1d329e3c92c0286debe30cf7d8f2fea8f0d0",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/pt.svg",
+      "source": "public/assets/country-flags/pt.svg",
+      "sourceSha256": "447e9ee995b6601fd28fc9fbba4f9b2b656fd007642dc5bdac0f75d8ce6b5899",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/pw.svg",
+      "source": "public/assets/country-flags/pw.svg",
+      "sourceSha256": "77185a594079f8bbbd8d673401949a7aaea9164b85f4c7609c2932766eda20d4",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/py.svg",
+      "source": "public/assets/country-flags/py.svg",
+      "sourceSha256": "da9d1c90054ff60bfc56a85fb7703085c434d7e016a88c6153572073d59e6490",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/qa.svg",
+      "source": "public/assets/country-flags/qa.svg",
+      "sourceSha256": "d151a4cb633ff56914c58b6a46b54559b2faed6cbf0a3d59262c584edeec7286",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ro.svg",
+      "source": "public/assets/country-flags/ro.svg",
+      "sourceSha256": "b56a867aaac5c463cce1afe988fc0b173f19b91f2f3687b9be0757b2b65bfe6b",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/rs.svg",
+      "source": "public/assets/country-flags/rs.svg",
+      "sourceSha256": "4dbe08eb843aeb7831687ff208c1ef6ce1ee62bd11c8f0a3da1662c11d6b9fd9",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ru.svg",
+      "source": "public/assets/country-flags/ru.svg",
+      "sourceSha256": "b89b2309c2232c5911a2b6404dbad96a163113f9379d94d371aade8b140aa535",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/rw.svg",
+      "source": "public/assets/country-flags/rw.svg",
+      "sourceSha256": "ada409bbc2058de1b556015724836c635f314272087a05185a28e42eee15ae8f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sa.svg",
+      "source": "public/assets/country-flags/sa.svg",
+      "sourceSha256": "fb8db5b730bb694fed28fbd0a8322a2e16e7bb79d36b1871f5954420f8c132ea",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sb.svg",
+      "source": "public/assets/country-flags/sb.svg",
+      "sourceSha256": "d089e4d966ad3d43d25adee7285b4ee80b1c94fc325c24eaf16854f52afca635",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sc.svg",
+      "source": "public/assets/country-flags/sc.svg",
+      "sourceSha256": "4363a8189f07af5db3c461bc860ad0b2263a674dafba949f98f5b199adf0425e",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sd.svg",
+      "source": "public/assets/country-flags/sd.svg",
+      "sourceSha256": "61d673bea4cdf9ed1dac9964d0a7276def36073aba6111fe9b167272ab2532a4",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/se.svg",
+      "source": "public/assets/country-flags/se.svg",
+      "sourceSha256": "73e67d57e9ea2340ea776e67e52cb4aaac8511a3431374aeca75e872d9e0f35f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sg.svg",
+      "source": "public/assets/country-flags/sg.svg",
+      "sourceSha256": "4aa6c197be34ce63c04b4d5d332544645ba2de420d1ac348de32cbddd4932592",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/si.svg",
+      "source": "public/assets/country-flags/si.svg",
+      "sourceSha256": "4eccac5a43946c5ab195db77a8431ae1ec50254da68a10820d9f3fc9ca22bbac",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sk.svg",
+      "source": "public/assets/country-flags/sk.svg",
+      "sourceSha256": "5ad0da475cbeeaad7df1fe219a5fc3eb5b8d7d09cbe79bc5ca9ee10957da628d",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sl.svg",
+      "source": "public/assets/country-flags/sl.svg",
+      "sourceSha256": "feb8b9662a3730648a44ba7f44725ec983853d1df85ba35da413bc5af759552d",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sm.svg",
+      "source": "public/assets/country-flags/sm.svg",
+      "sourceSha256": "fdae467bdd55388e22f3307d2862527b5d2a2ab5ac365655426fd94f913a8d18",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sn.svg",
+      "source": "public/assets/country-flags/sn.svg",
+      "sourceSha256": "2c7a8737ad7bb0004545d69879176a97ef1915eafb6ff7df3345778595817aa9",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/so.svg",
+      "source": "public/assets/country-flags/so.svg",
+      "sourceSha256": "cdd8759b2d2699be45166b2dd753e8f9561e4dc27f4261eb70a75120326c9c65",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sr.svg",
+      "source": "public/assets/country-flags/sr.svg",
+      "sourceSha256": "81b545815b67b7332688f2e484b74a8563070c256fb17a5dc846b4f69ec1fe68",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ss.svg",
+      "source": "public/assets/country-flags/ss.svg",
+      "sourceSha256": "2f87b25917c7ceb66d8172092a627bb9b7f325840c6bf23843de12cadcf30eaf",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/st.svg",
+      "source": "public/assets/country-flags/st.svg",
+      "sourceSha256": "73d3798d204f0cb1985ee8040d373273f5e58b20450f03001ffd58ad61d67740",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sv.svg",
+      "source": "public/assets/country-flags/sv.svg",
+      "sourceSha256": "7f5a14e11cf192fc01f97e99ec37bd51776279a5c828e5a7e3e47c1d4ece41f7",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sy.svg",
+      "source": "public/assets/country-flags/sy.svg",
+      "sourceSha256": "fc5abc60a74b34f284a1ea6bb14d2c882402843dfb0c2e712465f50cfa221921",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/sz.svg",
+      "source": "public/assets/country-flags/sz.svg",
+      "sourceSha256": "4f78b1b7499e751fe07cb3b29f9519b3ddcebcef511bb239ffa780f615993c51",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/td.svg",
+      "source": "public/assets/country-flags/td.svg",
+      "sourceSha256": "f5c38f022b444ee8b24ad877095c33d30639986468a122a7f617e88cf6169326",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tg.svg",
+      "source": "public/assets/country-flags/tg.svg",
+      "sourceSha256": "c5c4b191349f03566cd0838b5813e25c96792a924bc0b00f19f3c4aa293812b5",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/th.svg",
+      "source": "public/assets/country-flags/th.svg",
+      "sourceSha256": "bb8a18d60e72fd5781ff32d8642d7399ee0f3370d24e0c14b97a59e52fcfa4f6",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tj.svg",
+      "source": "public/assets/country-flags/tj.svg",
+      "sourceSha256": "29eb9e2ba92e17434ffc44c99d2ed34f4e920e3f9939d1f64f8da0153dd4eb15",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tl.svg",
+      "source": "public/assets/country-flags/tl.svg",
+      "sourceSha256": "caf45b7306f8d615e17381b7e3e5636f7fecf9d93d814c74875d737e51facdad",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tm.svg",
+      "source": "public/assets/country-flags/tm.svg",
+      "sourceSha256": "73941c36979ccd4ff905b405c07a6c0919258dde797b86d41af1cf905561c76c",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tn.svg",
+      "source": "public/assets/country-flags/tn.svg",
+      "sourceSha256": "bddf1a6c94fbd9ea0d90c06fc127c0baf7fe69c19f505283e9a9600a43090a55",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/to.svg",
+      "source": "public/assets/country-flags/to.svg",
+      "sourceSha256": "8f2f476bf5c6001dfbc2d17605963af30d534b76c87bd1aacb881f928750618d",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tr.svg",
+      "source": "public/assets/country-flags/tr.svg",
+      "sourceSha256": "d83c3693b0629a1274ec11247b47c6dc569ec205f12a6b6b46ab206b9cc2a247",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tt.svg",
+      "source": "public/assets/country-flags/tt.svg",
+      "sourceSha256": "4be02a2ca0d7bc4c4285f082516b17b21b9fdc881cd4f56ce9d2c03be3480395",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tv.svg",
+      "source": "public/assets/country-flags/tv.svg",
+      "sourceSha256": "7415f816aeb8e4bb02461acee4b02debc31b9910fe2436e30896d40e4e041ab1",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tw.svg",
+      "source": "public/assets/country-flags/tw.svg",
+      "sourceSha256": "c04cf00d3059d066c2c35a8ee4aa92422e1eb40524f825a98d92ee5234319d55",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/tz.svg",
+      "source": "public/assets/country-flags/tz.svg",
+      "sourceSha256": "0c1241a5b84a0d01987acffcef02f4d2c05af69a9d567bb1926284b505d31d09",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ua.svg",
+      "source": "public/assets/country-flags/ua.svg",
+      "sourceSha256": "fd9ad29bfc8e063afc8f6b5a89c618a2dcfab43bd87a817e76c7e8a3e93cc2f3",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ug.svg",
+      "source": "public/assets/country-flags/ug.svg",
+      "sourceSha256": "add8dfbb1ab863a0ffcd677de8abb1888c4dcc60f070ad512c8d3c71eee08db3",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/us.svg",
+      "source": "public/assets/country-flags/us.svg",
+      "sourceSha256": "633325cbe879d698584238b9955d850b4a34e7c5dcfb7622bad50cec119214e5",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/uy.svg",
+      "source": "public/assets/country-flags/uy.svg",
+      "sourceSha256": "560c003da350e22cdcaf66ee3d47bc2b0b2e6c6d4d0fa3ebb3dbf734cf6f3d8e",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/uz.svg",
+      "source": "public/assets/country-flags/uz.svg",
+      "sourceSha256": "8f09f1feddfc4831170ff92df0c6423e7453f74dbf786476abcee02113a72edd",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/va.svg",
+      "source": "public/assets/country-flags/va.svg",
+      "sourceSha256": "ef3d65a321288700899dccaa7804c7179a5a64b5dd1bae0996e53c1c28e50734",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/vc.svg",
+      "source": "public/assets/country-flags/vc.svg",
+      "sourceSha256": "31d13bf0573518e29a5bb7928cab08329729a02d8eea4adc2cd6d812f126fd34",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ve.svg",
+      "source": "public/assets/country-flags/ve.svg",
+      "sourceSha256": "9052562f17076048f2e0d4ac79a7ddc3b7ab9de370d252eca078cc5ca3c8e136",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/vn.svg",
+      "source": "public/assets/country-flags/vn.svg",
+      "sourceSha256": "7b590ecf89d2bedcedf3557c28e1d1b859e8149cb18764afa0e9cb7365f3ff1f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/vu.svg",
+      "source": "public/assets/country-flags/vu.svg",
+      "sourceSha256": "a470052109245595c76fd97182736fd6427bfa3d254b7c7404dcfd5e6e0c7015",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ws.svg",
+      "source": "public/assets/country-flags/ws.svg",
+      "sourceSha256": "48d15d76b7b6d084bd82c78f555dd880124d98dfb41f4363e896d30b24a42cbf",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/xk.svg",
+      "source": "public/assets/country-flags/xk.svg",
+      "sourceSha256": "2256cd1d31b751430a8b5b32f4eb12df1d86c17fd48b8965f943e7301f290b24",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/ye.svg",
+      "source": "public/assets/country-flags/ye.svg",
+      "sourceSha256": "8ff200c97cbc31cf8a105a53468f9beae6c3033a25ac9a25ef74625bcfbef11c",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/za.svg",
+      "source": "public/assets/country-flags/za.svg",
+      "sourceSha256": "004caac0d5f795a5bc25b4ecdcc1f95f34157b532fb2afa9edef323ecbfd113f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/zm.svg",
+      "source": "public/assets/country-flags/zm.svg",
+      "sourceSha256": "ac2b6632b9084fc7ebc0af781d5cf04aa3196a8f8cb2e896d84980b63cc7fe39",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/country-flags/zw.svg",
+      "source": "public/assets/country-flags/zw.svg",
+      "sourceSha256": "ad7a5bcd46ebd756ba9a1449b9e064ff92fc4c13da61a59d293958ca3b08c2f4",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/alfred-nobel-medallion.png",
+      "source": "public/brand/alfred-nobel-medallion.png",
+      "sourceSha256": "7c81bf2b388b45e6a2a8a85f126f657719cd3dcd2f7eab4524918b026bca3e85",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/atlas-side-brushes-mobile.webp",
+      "source": "public/brand/atlas-side-brushes-mobile.webp",
+      "sourceSha256": "863c5b7efc2f39421a59d6ae559b5d3fc9080869255a0d47ab6994bf3b847203",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/atlas-side-brushes.webp",
+      "source": "public/brand/atlas-side-brushes.webp",
+      "sourceSha256": "c31429f2306ea9f74b83d01bc0bd4a9a1cae02892765d214de4775cceca5c084",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/chekhov.png",
+      "source": "public/brand/chekhov.png",
+      "sourceSha256": "42b04487a942daf58d1ec1903bdf4b1504d94e7388415ef5f70ee338cd970e57",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/library-archive-background-mobile-v1.avif",
+      "source": "public/brand/library-archive-background-mobile-v1.avif",
+      "sourceSha256": "51b19d485cf67a6bdf4d375aefada5dd4dc4f12d711a632e1e7401a651d220f8",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/library-archive-background-mobile-v1.webp",
+      "source": "public/brand/library-archive-background-mobile-v1.webp",
+      "sourceSha256": "cc1e4f7328d05cb237778572b0cdc862b9d5ca59badfdea89ebdd9c9ee7a10a1",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/library-archive-background-v1.avif",
+      "source": "public/brand/library-archive-background-v1.avif",
+      "sourceSha256": "75754066540434399faafd31256b39009914e7b1870b3e338e70a2698235ca0e",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/library-archive-background-v1.webp",
+      "source": "public/brand/library-archive-background-v1.webp",
+      "sourceSha256": "295d8b3459897df91f3727a6e811e6d6101d3e7d41904c59efb5c7e3a0d4f532",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/magazine-cover.webp",
+      "source": "public/brand/magazine-cover.webp",
+      "sourceSha256": "547dbf71daf35b279b98fc57198b368ce3cd83ec7c521235175722604d419696",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/magazine-hero-mobile.avif",
+      "source": "public/brand/magazine-hero-mobile.avif",
+      "sourceSha256": "304a0cb57ebd0736b26d82fe9a04739b5dc3da9b5a2ca2ac874e1e324caf73d3",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/magazine-hero-mobile.webp",
+      "source": "public/brand/magazine-hero-mobile.webp",
+      "sourceSha256": "4b09de40909a720a94844e538e8efebfe196c451feecbae3b2f833214d47b713",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/magazine-hero-wide.avif",
+      "source": "public/brand/magazine-hero-wide.avif",
+      "sourceSha256": "cf58f94ef29aacc546c412f41459f5afc1d0b1e7f6c8e1e9e87a1880a0ce04ba",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/magazine-hero-wide.webp",
+      "source": "public/brand/magazine-hero-wide.webp",
+      "sourceSha256": "29df2ed78320b87c8d49abc6dc76cee466e4ad75d8d1ee4a373d339c23ee1cd9",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/probpera-logo.png",
+      "source": "public/brand/probpera-logo.png",
+      "sourceSha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/sections/about-editorial.webp",
+      "source": "public/brand/sections/about-editorial.webp",
+      "sourceSha256": "13e0cfcb67af30d058f448ece70a948e6d677e04099a570a2b6ed17bd05fe869",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/sections/literary-calendar.webp",
+      "source": "public/brand/sections/literary-calendar.webp",
+      "sourceSha256": "e0939b1ac6666d9eb4ed7690e6207d38b670b17dd7ba4cdeeac4fb01a6e48467",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/sections/readers-forum.webp",
+      "source": "public/brand/sections/readers-forum.webp",
+      "sourceSha256": "6491f7ecbf11c49b35520b008f50b6661524cbc9ff6e7e9a54c5f94c34a4f537",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/series-2.webp",
+      "source": "public/brand/series-2.webp",
+      "sourceSha256": "cb72cc123fbfe6de6ca75f91735ee66d3ae6088d814ee165b486007b10e4e12d",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/LICENSE.onest.txt",
+      "source": "public/fonts/editorial/LICENSE.onest.txt",
+      "sourceSha256": "7805ccc507e6dc0c0796f1afa4f03ad413a9d302a30a24f8dbeb1aeef07a6c17",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/LICENSE.source-sans-3.md",
+      "source": "public/fonts/editorial/LICENSE.source-sans-3.md",
+      "sourceSha256": "f9e57d28452ab6162c7fc0d248b5a5e81bf64676a6950d56b2e137c1253f79e8",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/LICENSE.source-serif-4.md",
+      "source": "public/fonts/editorial/LICENSE.source-serif-4.md",
+      "sourceSha256": "c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/onest-cyrillic-ext-variable.woff2",
+      "source": "public/fonts/editorial/onest-cyrillic-ext-variable.woff2",
+      "sourceSha256": "268f03691b3d06e57abcf20f9277e314ea8784298983aab5b40c1b91965027e1",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/onest-cyrillic-variable.woff2",
+      "source": "public/fonts/editorial/onest-cyrillic-variable.woff2",
+      "sourceSha256": "68e5e01d6265bd68967746d4f5a9d18d0e6cbb5d15583c7082d6384ab1229b27",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/onest-latin-ext-variable.woff2",
+      "source": "public/fonts/editorial/onest-latin-ext-variable.woff2",
+      "sourceSha256": "14e7d3079b75860e2ab50efc6c318c398fdb46ede9b56e625f12ae70a3c5d9a4",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/onest-latin-variable.woff2",
+      "source": "public/fonts/editorial/onest-latin-variable.woff2",
+      "sourceSha256": "052df74533250c2e0ca0c4bdd32de594e107d99c1648e63820ef9c6142067828",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-sans-3-cyrillic-400-normal.woff2",
+      "source": "public/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2",
+      "sourceSha256": "b0324c3af47c138a2b5457466037637b8279576197024ed6968041836ffc0546",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-sans-3-cyrillic-600-normal.woff2",
+      "source": "public/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2",
+      "sourceSha256": "31fe183d248fa315a872f0956e0e43bc5d1d6c9c7fea2fa434deb91ab2a686ff",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+      "source": "public/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2",
+      "sourceSha256": "1c484c7583999a7471c7d2dff4f0d1e001d459afaed4f58b3f6e0d88548d982c",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-sans-3-latin-400-normal.woff2",
+      "source": "public/fonts/editorial/source-sans-3-latin-400-normal.woff2",
+      "sourceSha256": "0f73f35e08cde0a2f10c109c6e01d71459d97e4099ecd9a50f1b6c0209e4de2b",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-sans-3-latin-600-normal.woff2",
+      "source": "public/fonts/editorial/source-sans-3-latin-600-normal.woff2",
+      "sourceSha256": "14527d193b0e30bc32ef931549a246cdfd286573bb12869b7e052b8101a39d38",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-sans-3-latin-700-normal.woff2",
+      "source": "public/fonts/editorial/source-sans-3-latin-700-normal.woff2",
+      "sourceSha256": "ae35266f2ab0d5314ff9a04127931eb26c793e4f1269bb240046d4d2db4b7bb1",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-serif-4-cyrillic-400-italic.woff2",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2",
+      "sourceSha256": "18148c0920aa7272b106614f585dfa46d08d01aca5734e5c990f02e649c33aeb",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2",
+      "sourceSha256": "4899e71407c11bcafe49dfa3573415740a5b47a87028917eedd39731237369c0",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-serif-4-cyrillic-600-normal.woff2",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2",
+      "sourceSha256": "881a5cd61ba36255b82c4e99ca68a21dab3fc62fd91d780501c597f82cae477a",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+      "source": "public/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2",
+      "sourceSha256": "faf0f5d4125e4f68e024a1d6cf5dad104487692badf3b24a3a8dd38a63542e20",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-serif-4-latin-400-italic.woff2",
+      "source": "public/fonts/editorial/source-serif-4-latin-400-italic.woff2",
+      "sourceSha256": "882b7c150c29f29d4f8daae6b8dcae8662aac7f28ca34b34615305154136ecfd",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-serif-4-latin-400-normal.woff2",
+      "source": "public/fonts/editorial/source-serif-4-latin-400-normal.woff2",
+      "sourceSha256": "02194deb92d3975dd30e11a3824a1f1db32b48c93654e60560cb81ce8e7b5f95",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-serif-4-latin-600-normal.woff2",
+      "source": "public/fonts/editorial/source-serif-4-latin-600-normal.woff2",
+      "sourceSha256": "f2b7e1cf1d277b7608231868135648f8ad8e2b58d8e97ca088bee15dc357bee7",
+      "transformation": "none"
+    },
+    {
+      "output": "fonts/editorial/source-serif-4-latin-700-normal.woff2",
+      "source": "public/fonts/editorial/source-serif-4-latin-700-normal.woff2",
+      "sourceSha256": "7691c51bc286a9014db0048277d2c3f2ad0a90b533dc8adfb16cb22a95390d39",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/antique-world-1887-mobile.webp",
+      "source": "public/textures/antique-world-1887-mobile.webp",
+      "sourceSha256": "65ea5f03a43b6583dd95b456f42b1d184c48dc0449eaba25c5d23269b1e5974d",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/antique-world-1887.webp",
+      "source": "public/textures/antique-world-1887.webp",
+      "sourceSha256": "b498488cba930c48c5c68564ab8f355a50fe620f5aec15353225edcdf592a175",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/behaim-1492-ravenstein-1908-mobile.webp",
+      "source": "public/textures/behaim-1492-ravenstein-1908-mobile.webp",
+      "sourceSha256": "324301cf0724c337d34c1d370dc66fa8ea3f0abaa0afcb34713d2dd2a469d2b5",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/behaim-1492-ravenstein-1908.webp",
+      "source": "public/textures/behaim-1492-ravenstein-1908.webp",
+      "sourceSha256": "a06342cfaf146fdd4d72c0cbc870ab85946199a977d8c6366ef918bdad19c0b8",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/cassini-globo-terrestre-1790-mobile.webp",
+      "source": "public/textures/cassini-globo-terrestre-1790-mobile.webp",
+      "sourceSha256": "2e0efdd36e682d20be5b8db0875a71c47ef33d3d810be45596b6e4e1d99e83f0",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/cassini-globo-terrestre-1790.webp",
+      "source": "public/textures/cassini-globo-terrestre-1790.webp",
+      "sourceSha256": "d62718455ea9a04605ac1694abe20bf551a93bf7b5c2c688df579b6eb4398018",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/coronelli-1697-mobile.webp",
+      "source": "public/textures/coronelli-1697-mobile.webp",
+      "sourceSha256": "b03c5f23f84ddaef6da942a64f6ac5b37ff7481e90681d5e98ab7eeff48aeacf",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/coronelli-1697.webp",
+      "source": "public/textures/coronelli-1697.webp",
+      "sourceSha256": "1654e3e04ee14ccdec7cfbf7a640b212ebde0c96949558bcf0edeece1dd9a012",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/earth-blue-marble-mobile.webp",
+      "source": "public/textures/earth-blue-marble-mobile.webp",
+      "sourceSha256": "7e7dcfff082c0e1efe909e6d64ee815bc1b9d17f782b802a8fd4e4b2e7a65397",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/earth-blue-marble.webp",
+      "source": "public/textures/earth-blue-marble.webp",
+      "sourceSha256": "cc2b9b11fb1ccd4194c612c84320f0ef1ab991f6b247473be7b51a66f3328c41",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/hondius-rossi-1615-mobile.webp",
+      "source": "public/textures/hondius-rossi-1615-mobile.webp",
+      "sourceSha256": "5ce58cb1b6b3cfc102d0f012911e4a590aa6572302e8fa0b52f3beffb0f7687b",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/hondius-rossi-1615.webp",
+      "source": "public/textures/hondius-rossi-1615.webp",
+      "sourceSha256": "4d9b6926768fc6ac91eafa4a1586ab3fc70dfdd2d66d9a35243dc7a897e1b7b1",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/modern-atlas-2026-en-mobile.webp",
+      "source": "public/textures/modern-atlas-2026-en-mobile.webp",
+      "sourceSha256": "b897e3722909ffbefa25013851ad2bdf605711a069e5c552129b6e470bb3c957",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/modern-atlas-2026-en.webp",
+      "source": "public/textures/modern-atlas-2026-en.webp",
+      "sourceSha256": "8df82c055820b44b178efa7321888e9049821859ca0408bbc77b64b2d9219399",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/modern-atlas-2026-ru-mobile.webp",
+      "source": "public/textures/modern-atlas-2026-ru-mobile.webp",
+      "sourceSha256": "8817b45f53a9caa9592a711e52ed83004265f36dd98de777776a2cb6143bd58b",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/modern-atlas-2026-ru.webp",
+      "source": "public/textures/modern-atlas-2026-ru.webp",
+      "sourceSha256": "26a04a83536b6ceb7a3db37c2ff67c083cd1699c4dd4543292e43c8d694fc4fc",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/scherer-1700-mobile.webp",
+      "source": "public/textures/scherer-1700-mobile.webp",
+      "sourceSha256": "573b03cad23a9c626b13be4169b3089f6281a1e75049cb92d081e5ee1a7e6035",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/scherer-1700.webp",
+      "source": "public/textures/scherer-1700.webp",
+      "sourceSha256": "b844cc59c075e03873c137daa761431ddb1f9f97676fac1c33b0ec28679cff64",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/us-army-general-reference-1943-mobile.webp",
+      "source": "public/textures/us-army-general-reference-1943-mobile.webp",
+      "sourceSha256": "020f0808c4c1e0671c05124e836349884d6a204fd635057226106a9b9268d38a",
+      "transformation": "none"
+    },
+    {
+      "output": "textures/us-army-general-reference-1943.webp",
+      "source": "public/textures/us-army-general-reference-1943.webp",
+      "sourceSha256": "09418203d87aa85a465e3694e53d33b9893387796db798966197dd19193e36d6",
+      "transformation": "none"
+    }
+  ],
+  "sourceSelectionBaseCommit": "f406a7de9e16e8cf63545cbce6681ed9278761a4"
+}

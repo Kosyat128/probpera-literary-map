@@ -15,6 +15,16 @@ interface ImportMeta {
 }
 
 declare const __YANDEX_METRIKA_COUNTER_ID__: string;
+declare const __LITERARY_PLANET_EDITION__: "site" | "pwa" | "native";
+declare const __LITERARY_PLANET_LICENSE_AUTHORITY__: {
+  issuer: string;
+  audience: string;
+  product: string;
+  trustedKeys: readonly {kid: string; jwk: JsonWebKey}[];
+} | null;
+declare const __LITERARY_PLANET_LOCAL_QA__: boolean;
+declare const __LITERARY_PLANET_ANDROID_CHANNEL__: "dev" | "googlePlay" | "ruStore";
+declare const __LITERARY_PLANET_IOS_CHANNEL__: "dev" | "appStore";
 
 declare module "*.svg" {
   const src: string;

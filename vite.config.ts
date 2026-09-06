@@ -29,6 +29,9 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       __YANDEX_METRIKA_COUNTER_ID__: JSON.stringify(rawMetrikaCounterId),
+      __LITERARY_PLANET_EDITION__: JSON.stringify("site"),
+      __LITERARY_PLANET_LICENSE_AUTHORITY__: "null",
+      __LITERARY_PLANET_LOCAL_QA__: "false",
     },
     plugins: [react()],
     test: {

@@ -13,16 +13,21 @@ import {
 
 import ArticleEngagement from "./community/ArticleEngagement";
 import type { CommunityView } from "./community/CommunityHub";
+import { isControlledWebEdition } from "./platform/distribution";
+import { useRecentHistory } from "./planet/RecentHistory";
+import RecentHistoryPanel from "./components/RecentHistoryPanel";
 import { useAuth } from "./community/AuthContext";
 import HeaderArticlesMenu from "./components/HeaderArticlesMenu";
 import InterfaceLanguageControl from "./components/InterfaceLanguageControl";
-import CountryFlagIcon from "./components/CountryFlagIcon";
 import WriterPortrait, { writerHasApprovedPortrait } from "./components/WriterPortrait";
-import BrandArrowIcon from "./components/BrandArrowIcon";
-import BrandBookIcon from "./components/BrandBookIcon";
-import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
-import BrandSearchIcon from "./components/BrandSearchIcon";
-import BrandWidescreenIcon from "./components/BrandWidescreenIcon";
+import {
+  CountryFlagIcon,
+  BrandArrowIcon,
+  BrandBookIcon,
+  BrandExternalLinkIcon,
+  BrandSearchIcon,
+  BrandWidescreenIcon,
+} from "./planet/brand";
 import AtlasSearchCombobox from "./components/AtlasSearchCombobox";
 import AtlasExperienceChrome from "./components/AtlasExperienceChrome";
 import LiteraryWorldMap from "./components/LiteraryWorldMap";
@@ -35,13 +40,16 @@ import type {
 import {
   chooseRandomLiteraryDestination,
   rememberLiteraryDestination,
-} from "./components/globeDiscovery";
-import {
   createGlobeCoordinates,
   formatGlobeCoordinatesDms,
   resolveCountryGlobeCoordinates,
   resolveGlobeCoordinateContext,
-} from "./components/globeCoordinates";
+  selectWriterBiography,
+  selectBookMetadataLabels,
+  selectBookText,
+  selectBookWriterName,
+  selectWriterDisplayName,
+} from "./planet/selection";
 import {
   CmsHomepageBanners,
   CmsNavigationLinks,
@@ -49,15 +57,8 @@ import {
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
-import { selectWriterBiography } from "./data/writerBiography";
 import type { BookArchiveEntry } from "./data/bookArchive";
 import { isPublicBook } from "./data/bookQuality";
-import {
-  selectBookMetadataLabels,
-  selectBookText,
-  selectBookWriterName,
-  selectWriterDisplayName,
-} from "./data/bookLocalization";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import {
   coreHomepageSectionClass,
@@ -69,7 +70,7 @@ import ShareLinks from "./editorial/ShareLinks";
 import {
   selectInterfacePlural,
   useInterfaceLanguage,
-} from "./i18n/InterfaceLanguage";
+} from "./planet/localization";
 import {
   articlePath,
   isDirectArticlePath,
@@ -449,6 +450,9 @@ const sectionLinks = [
   },
 ];
 
+const availableSectionLinks = isControlledWebEdition
+  ? sectionLinks.filter(section => !section.action)
+  : sectionLinks;
 const sectionMenuGroups = [
   "Читать",
   "Энциклопедия",
@@ -457,7 +461,7 @@ const sectionMenuGroups = [
 ].map(
   (group) => ({
     group,
-    sections: sectionLinks.filter((section) => section.group === group),
+    sections: availableSectionLinks.filter((section) => section.group === group),
   })
 );
 
@@ -508,6 +512,7 @@ function assetUrl(path: string) {
 }
 
 function mediaUrl(path: string) {
+  if (isControlledWebEdition && /^https?:\/\//iu.test(path)) return assetUrl("brand/probpera-logo.png");
   return /^https?:\/\//i.test(path) ? path : assetUrl(path);
 }
 
@@ -517,6 +522,7 @@ function safeHomepageHref(value: string, fallback: string) {
 
 export default function App() {
   const { user } = useAuth();
+  const { record: recordRecent } = useRecentHistory();
   const { language, t, countryName, number } = useInterfaceLanguage();
   const [currentPathname, setCurrentPathname] = useState(() =>
     typeof window === "undefined" ? "" : window.location.pathname
@@ -534,6 +540,11 @@ export default function App() {
   const [globeFocusRequest, setGlobeFocusRequest] =
     useState<GlobeExplicitFocusRequest | null>(null);
   const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
+  useEffect(() => {
+    if (selectedCountry && selectedWriter && selectedCountry.writers.some(writer => writer.id === selectedWriter.id)) {
+      void recordRecent({ kind: "writer", countryId: selectedCountry.id, writerId: selectedWriter.id });
+    }
+  }, [recordRecent, selectedCountry?.id, selectedWriter?.id]);
   const [writerFocusRequest, setWriterFocusRequest] =
     useState<WriterFocusRequest | null>(null);
   const [countryArchive, setCountryArchive] = useState<Country[]>([]);
@@ -785,7 +796,7 @@ export default function App() {
     if (directArticleRoute || !archiveDataRequested) return undefined;
     let active = true;
     setArchiveDataStatus("loading");
-    import("./data/countries").then(
+    import("./planet/catalog").then(
       (module) => {
         if (!active) return;
         setCountryArchive(module.countries);
@@ -1347,11 +1358,14 @@ export default function App() {
       country: Country,
       focusAtlas = false,
       writer?: Writer,
-      cameraIntentKind?: GlobeCountrySelectionFocusKind
+      cameraIntentKind?: GlobeCountrySelectionFocusKind,
+      selectionFilter?: AtlasFilter
     ) => {
+      const effectiveFilter = selectionFilter ?? atlasFilter;
+      if (selectionFilter) setAtlasFilter(selectionFilter);
       const preferredWriter = preferredWriterForAtlas(
         country,
-        atlasFilter,
+        effectiveFilter,
         writer
       );
       const resolvedCameraIntentKind =
@@ -1378,7 +1392,7 @@ export default function App() {
       setSearch("");
       closeAtlasSearch();
       commitAtlasExperienceUrlSelection({
-        filter: atlasFilter,
+        filter: effectiveFilter,
         countryId: country.id,
         writerId: preferredWriter?.id ?? null,
       });
@@ -1726,6 +1740,7 @@ export default function App() {
   );
 
   const openCommunity = useCallback((view: CommunityView) => {
+    if (isControlledWebEdition) return;
     requestArchiveData();
     setCommunityView(view);
     setCommunityOpen(true);
@@ -2016,9 +2031,9 @@ export default function App() {
             </div>
           </details>
           <a href="#calendar">{t("Календарь")}</a>
-          <button type="button" onClick={() => openCommunity("forum")}>
+          {!isControlledWebEdition && <button type="button" onClick={() => openCommunity("forum")}>
             {t("Форум")}
-          </button>
+          </button>}
           <a href="#about">{t("О проекте")}</a>
           <CmsNavigationLinks location="header" />
         </nav>
@@ -2036,7 +2051,7 @@ export default function App() {
           </button>
           <InterfaceLanguageControl />
           <SocialLinks />
-          <button
+          {!isControlledWebEdition && <button
             className="reader-button"
             aria-label={readerName || t("Войти")}
             type="button"
@@ -2050,7 +2065,7 @@ export default function App() {
               )}
             </span>
             {readerName || t("Войти")}
-          </button>
+          </button>}
         </div>
       </header>
 
@@ -2060,9 +2075,9 @@ export default function App() {
         <a href="#books">{t("Книги")}</a>
         <a href="#sections">{t("Разделы")}</a>
         <a href="#calendar">{t("Календарь")}</a>
-        <button type="button" onClick={() => openCommunity("forum")}>
+        {!isControlledWebEdition && <button type="button" onClick={() => openCommunity("forum")}>
           {t("Форум")}
-        </button>
+        </button>}
         <button type="button" onClick={() => setGlobalSearchOpen(true)}>
           {t("Поиск")}
         </button>
@@ -2743,6 +2758,10 @@ export default function App() {
                     <WriterPanel
                       key={selectedCountry.id}
                       country={selectedCountry}
+                      books={verifiedBookArchive}
+                      booksStatus={bookRuntimeStatus}
+                      onLoadBooks={requestBookRuntime}
+                      onRetryBooks={retryBookArchive}
                       selectedWriter={selectedWriter}
                       focusRequestId={
                         writerFocusRequest?.countryId === selectedCountry.id &&
@@ -3006,11 +3025,11 @@ export default function App() {
             </div>
           </article>
 
-          <div className="book-month-supporting has-news">
-            <DeferredLiteraryNewsPanel
+          <div className={isControlledWebEdition ? "book-month-supporting" : "book-month-supporting has-news"}>
+            {!isControlledWebEdition && <DeferredLiteraryNewsPanel
               active={bookDayActive}
               endpoint={localNewsPreview ? "/__literary-news/feed" : undefined}
-            />
+            />}
 
           <article className="book-fact-card">
             <div className="book-fact-orbit" aria-hidden="true">
@@ -3037,6 +3056,16 @@ export default function App() {
             </details>
         </section>
 
+        <RecentHistoryPanel
+          countries={countryArchive}
+          books={verifiedBookArchive}
+          countryStatus={archiveDataStatus}
+          bookStatus={bookRuntimeStatus}
+          onLoad={() => { requestArchiveData(); requestBookRuntime(); }}
+          onRetry={() => { retryArchiveData(); retryBookArchive(); }}
+          onOpenWriter={(country, writer) => selectCountry(country, true, writer, undefined, "all")}
+          onOpenWork={(book, returnFocus) => openBook(book, returnFocus)}
+        />
         <DeferredBookArchive
           books={verifiedBookArchive}
           countries={countryArchive}
@@ -3125,7 +3154,8 @@ export default function App() {
                   <div className="article-image">
                     <img
                       src={mediaUrl(feature.image)}
-                      alt={`${t("Иллюстрация к материалу")} “${t(feature.title)}”`}
+                      className={isControlledWebEdition && /^https?:\/\//iu.test(feature.image) ? "is-fallback" : undefined}
+                      alt={`${t(isControlledWebEdition && /^https?:\/\//iu.test(feature.image) ? "Фирменная обложка материала" : "Иллюстрация к материалу")} “${t(feature.title)}”`}
                       loading="lazy"
                       decoding="async"
                       onError={(event) => {
@@ -3166,7 +3196,7 @@ export default function App() {
               </article>
             ))}
           </div>
-          <div className="journal-engagement">
+          {!isControlledWebEdition && <div className="journal-engagement">
             <div>
               <span className="section-kicker">{t("Обсуждение номера")}</span>
               <h3>{t("Статья заканчивается, разговор - продолжается")}</h3>
@@ -3180,7 +3210,7 @@ export default function App() {
               articleSlug="opinion-hells-angels"
               compact
             />
-          </div>
+          </div>}
         </section>
 
         <DeferredArticleLibrary onArticleCountReady={setArticleCount} />
@@ -3363,7 +3393,7 @@ export default function App() {
             }
           >
             <SectionsDirectory
-              sections={sectionLinks}
+              sections={availableSectionLinks}
               countryCount={archiveStatistics.countries}
               bookCount={totalWorks}
               writerCount={totalWriters}
@@ -3404,7 +3434,7 @@ export default function App() {
           </Suspense>
         </section>
 
-        <section
+        {!isControlledWebEdition && <section
           className={`community-section${coreHomepageSectionClass(coreCommunity)}`}
           id="community"
           style={coreHomepageSectionStyle(coreCommunity)}
@@ -3560,7 +3590,7 @@ export default function App() {
               )}
             </div>
           </div>
-        </section>
+        </section>}
 
         <section
           className={`trust-center${coreHomepageSectionClass(coreTrust)}`}
@@ -3737,12 +3767,12 @@ export default function App() {
             </section>
             <section>
               <h2>{t("Сообщество")}</h2>
-              <button type="button" onClick={() => openCommunity("forum")}>
+              {!isControlledWebEdition && <button type="button" onClick={() => openCommunity("forum")}>
                 {t("Форум читателей")}
-              </button>
-              <button type="button" onClick={() => openCommunity("account")}>
+              </button>}
+              {!isControlledWebEdition && <button type="button" onClick={() => openCommunity("account")}>
                 {user ? t("Личный кабинет") : t("Вход и регистрация")}
-              </button>
+              </button>}
               <a href="mailto:probperasite@yandex.ru">
                 {t("Связаться с редакцией")}
               </a>
@@ -3761,7 +3791,7 @@ export default function App() {
         </div>
       </footer>
 
-      {communityOpen ? (
+      {!isControlledWebEdition && communityOpen ? (
         <Suspense fallback={null}>
           <CommunityHub
             open

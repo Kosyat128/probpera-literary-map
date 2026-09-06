@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
+import { isControlledWebEdition } from "../platform/distribution";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import { PUBLIC_ARCHIVE_ARTICLE_COUNT } from "../data/articles/publicationStats";
 import {
@@ -193,7 +194,7 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
                 navigateToArticle(featured.lead);
               }}
             >
-              {featured.lead.imageUrl && (
+              {!isControlledWebEdition && featured.lead.imageUrl && (
                 <span className="articles-mega-lead-media" aria-hidden="true">
                   <span
                     style={{

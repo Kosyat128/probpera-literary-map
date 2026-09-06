@@ -1369,12 +1369,15 @@ export default function ArticleReader({
                   )}
                 </p>
                 <ShareLinks
-                  url={`${window.location.origin}${articlePath(
-                    displayArticle.id,
-                    displayArticle.title,
-                    displayArticle.sectionId,
-                    displayArticle.slug
-                  )}`}
+                  url={new URL(
+                    articlePath(
+                      displayArticle.id,
+                      displayArticle.title,
+                      displayArticle.sectionId,
+                      displayArticle.slug
+                    ),
+                    window.location.origin
+                  ).href}
                   title={displayArticle.title}
                 />
                 <ArticleEngagement articleSlug={article.id} />

@@ -1,0 +1,9 @@
+.host-runtime-status {
+  box-sizing: border-box;
+  display: grid;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  max-width: min(30rem, calc(100vw - 2rem - env(safe-area-inset-left) - env(safe-area-inset-right)));
+  overflow-wrap: break-word;
+  pointer-events: none;
+}
