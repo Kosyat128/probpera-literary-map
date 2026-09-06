@@ -74,6 +74,7 @@ export async function measureTypography(page) {
         excerpt: measure(card.querySelector(".article-copy > p, .library-card-copy > p")),
         copy: measure(card.querySelector(".article-copy, .library-card-copy")),
         section: card.querySelector(".section-link") ? measure(card.querySelector(".section-link")) : null,
+        shareLabel: card.querySelector(".share-links--card > span") ? measure(card.querySelector(".share-links--card > span")) : null,
         share: [...card.querySelectorAll(".share-links a, .share-links button")].map(measure),
       }));
     return {

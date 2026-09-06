@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import type { Country, Writer } from "../data/countries";
 import { selectWriterDisplayName } from "../data/bookLocalization";
@@ -104,8 +104,20 @@ export default function LiteraryCalendar({
   );
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [showFullAgenda, setShowFullAgenda] = useState(false);
+  const agendaRef = useRef<HTMLDivElement>(null);
+  const focusAgendaAfterUpdate = useRef(false);
   const month = visibleDate.getMonth();
   const year = visibleDate.getFullYear();
+
+  useEffect(() => {
+    const agenda = agendaRef.current;
+    if (!agenda) return;
+    agenda.scrollTop = 0;
+    if (focusAgendaAfterUpdate.current) {
+      agenda.focus({ preventScroll: true });
+      focusAgendaAfterUpdate.current = false;
+    }
+  }, [month, year, selectedDay, showFullAgenda]);
 
   const events = useMemo(() => {
     const result: CalendarEvent[] = [];
@@ -373,6 +385,8 @@ export default function LiteraryCalendar({
                 key={day}
                 title={dayEvents.map((event) => event.title).join(", ")}
                 aria-pressed={isSelected}
+                aria-current={isToday ? "date" : undefined}
+                aria-controls="calendar-agenda-list"
                 aria-label={
                   dayEvents.length
                     ? `${day} ${monthLabel}: ${number(dayEvents.length)}`
@@ -396,8 +410,8 @@ export default function LiteraryCalendar({
         <div className="calendar-agenda">
           <header>
             <div>
-              <span>{selectedDay ? t("Выбранный день") : t("Хронология месяца")}</span>
-              <strong>
+              <span id="calendar-agenda-label">{selectedDay ? t("Выбранный день") : t("Хронология месяца")}</span>
+              <strong id="calendar-agenda-period">
                 {selectedDay
                   ? `${String(selectedDay).padStart(2, "0")} ${shortMonthLabel}`
                   : `${monthLabel} ${year}`}
@@ -415,7 +429,13 @@ export default function LiteraryCalendar({
               </button>
             )}
           </header>
-          <div id="calendar-agenda-list">
+          <div
+            id="calendar-agenda-list"
+            ref={agendaRef}
+            role="region"
+            aria-labelledby="calendar-agenda-label calendar-agenda-period"
+            tabIndex={0}
+          >
             {displayedAgendaDays.map(([day, dayEvents]) => (
               <article className="calendar-agenda-day" key={day}>
                 <time dateTime={`${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`}>
@@ -423,7 +443,7 @@ export default function LiteraryCalendar({
                   <small>{shortMonthLabel}</small>
                 </time>
                 <div>
-                  {dayEvents.slice(0, selectedDay === day ? 8 : 3).map((event) => (
+                  {(selectedDay === day ? dayEvents : dayEvents.slice(0, 3)).map((event) => (
                     <div
                       key={`${event.country.id}-${event.writer.id}-${event.kind}`}
                       className="calendar-agenda-event"
@@ -460,17 +480,27 @@ export default function LiteraryCalendar({
                       </button>
                     </div>
                   ))}
-                  {dayEvents.length > (selectedDay === day ? 8 : 3) && (
-                    <span>
+                  {selectedDay !== day && dayEvents.length > 3 && (
+                    <button
+                      className="calendar-agenda-day-more"
+                      type="button"
+                      aria-controls="calendar-agenda-list"
+                      onClick={() => {
+                        focusAgendaAfterUpdate.current = true;
+                        setShowFullAgenda(false);
+                        setSelectedDay(day);
+                      }}
+                    >
                       {language === "en"
-                        ? `${number(dayEvents.length - (selectedDay === day ? 8 : 3))} more ${
-                            dayEvents.length - (selectedDay === day ? 8 : 3) === 1 ? "event" : "events"
+                        ? `${number(dayEvents.length - 3)} more ${
+                            dayEvents.length - 3 === 1 ? "event" : "events"
                           }`
-                        : `Ещё ${number(dayEvents.length - (selectedDay === day ? 8 : 3))} ${pluralRu(
-                            dayEvents.length - (selectedDay === day ? 8 : 3),
+                        : `Ещё ${number(dayEvents.length - 3)} ${pluralRu(
+                            dayEvents.length - 3,
                             ["событие", "события", "событий"]
                           )}`}
-                    </span>
+                      <span aria-hidden="true">→</span>
+                    </button>
                   )}
                 </div>
               </article>
@@ -482,27 +512,26 @@ export default function LiteraryCalendar({
                 )}
               </p>
             )}
-            {selectedDay === null &&
-              !showFullAgenda &&
-              allAgendaDays.length > agendaDays.length && (
+          </div>
+          {selectedDay === null &&
+              (showFullAgenda || allAgendaDays.length > agendaDays.length) && (
                 <button
                   className="calendar-agenda-more"
                   type="button"
                   aria-controls="calendar-agenda-list"
-                  aria-expanded="false"
-                  onClick={() => setShowFullAgenda(true)}
+                  aria-expanded={showFullAgenda}
+                  onClick={() => setShowFullAgenda((current) => !current)}
                 >
                   <span>
-                    {language === "en"
-                      ? "Show the full month"
-                      : "Показать весь месяц"}
+                    {showFullAgenda
+                      ? language === "en" ? "Show fewer days" : "Показать меньше дней"
+                      : language === "en" ? "Show the full month" : "Показать весь месяц"}
                   </span>
-                  <strong>
+                  {!showFullAgenda && <strong>
                     +{number(allAgendaDays.length - agendaDays.length)}
-                  </strong>
+                  </strong>}
                 </button>
               )}
-          </div>
         </div>
       </div>
     </section>

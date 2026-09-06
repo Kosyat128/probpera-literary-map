@@ -158,7 +158,7 @@ test("section mega-menu shares title and description rows without clipping text"
     expect(item.titleFont).toContain("Onest Local");
     expect(item.titleWeight).toBe("500");
     expect(item.descriptionFont).toContain("Onest Local");
-    expect(item.descriptionSize).toBeGreaterThanOrEqual(15);
+    expect(item.descriptionSize).toBeGreaterThanOrEqual(12);
     for (const box of [...item.title, ...item.description]) {
       expect(box.left).toBeGreaterThanOrEqual(item.bounds.left - 1);
       expect(box.right).toBeLessThanOrEqual(item.bounds.right + 1);

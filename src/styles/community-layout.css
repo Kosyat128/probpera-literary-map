@@ -1,0 +1,61 @@
+@layer site-defaults {
+  .forum-vote {
+    grid-template-columns: var(--ui-control-md) minmax(2.25rem, auto) var(--ui-control-md);
+    inline-size: max-content;
+    block-size: auto;
+    min-block-size: var(--ui-control-md);
+    overflow: visible;
+  }
+
+  .forum-vote button {
+    inline-size: var(--ui-control-md);
+    min-inline-size: var(--ui-control-md);
+    block-size: var(--ui-control-md);
+    min-block-size: var(--ui-control-md);
+    border-radius: 50%;
+  }
+
+  .forum-vote button:focus-visible {
+    outline: 2px solid var(--orange-soft);
+    outline-offset: 3px;
+  }
+
+  .forum-vote button:disabled {
+    opacity: .5;
+    cursor: default;
+  }
+
+  .forum-vote strong {
+    padding-inline: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .topic-thread > article,
+  .thread-replies article {
+    padding-inline-end: 160px;
+  }
+
+  .topic-thread > article > small {
+    display: block;
+    margin-block: 0 12px;
+  }
+
+  .topic-thread > article p,
+  .thread-replies article p {
+    overflow-wrap: break-word;
+  }
+
+  @media (max-width: 800px) {
+    .topic-thread > article,
+    .thread-replies article {
+      padding: 76px 18px 18px;
+    }
+
+    .forum-vote {
+      top: 14px;
+      right: auto;
+      bottom: auto;
+      left: 18px;
+    }
+  }
+}

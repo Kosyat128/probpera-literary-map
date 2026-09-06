@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "purpose": "Local optimized homepage journal previews. The professions preview uses the canonical cover of its linked article; the other three retain their existing source images. Article content and canonical media metadata are unchanged.",
+  "transform": {
+    "format": "webp",
+    "maxWidth": 1280,
+    "withoutEnlargement": true,
+    "quality": 86,
+    "effort": 6,
+    "smartSubsample": true
+  },
+  "images": [
+    {
+      "sourceUrl": "https://static.tildacdn.com/tild3736-6164-4331-b035-613333656334/33c24c3b-9444-4c08-8.png",
+      "source": {
+        "sha256": "5a1d4ac0883460d5a47d6420d845161f11145770404331bcb366eb466c44adcb",
+        "width": 1667,
+        "height": 943,
+        "bytes": 2453041
+      },
+      "output": {
+        "path": "public/brand/article-previews/hunter-thompson-hells-angels-article.webp",
+        "sha256": "a041488e6aecabb1035a30f7579ef8f457c4ab59f1d770b0f01577bc564715a5",
+        "width": 1280,
+        "height": 724,
+        "bytes": 131870
+      },
+      "validation": {
+        "meanAbsoluteChannelError": 2.022,
+        "framing": "Full source image preserved; proportional resize only."
+      }
+    },
+    {
+      "sourceUrl": "https://static.tildacdn.com/tild3564-6330-4630-b434-383662326664/213421.jpg",
+      "source": {
+        "sha256": "0bc21ceae8097d1f155835d5e4fef6d0f4c9c817a663b9414aa7d52568721007",
+        "width": 1352,
+        "height": 851,
+        "bytes": 392911
+      },
+      "output": {
+        "path": "public/brand/article-previews/japanese-writers-literary-map-article.webp",
+        "sha256": "5f774c0053aad6698f446df0544cd2878bfc09ab0bff9554439d7cbb2bf8b84b",
+        "width": 1280,
+        "height": 806,
+        "bytes": 161442
+      },
+      "validation": {
+        "meanAbsoluteChannelError": 2.28,
+        "framing": "Full source image preserved; proportional resize only."
+      }
+    },
+    {
+      "sourceUrl": "https://static.tildacdn.com/tild3234-6463-4164-b834-393336393839/76122cbe-d6a0-45d5-a.png",
+      "source": {
+        "sha256": "fc3b580c3c217afc64e0cd4fe8e15bb9ad648c500f70f156cb675ca90e25503b",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2573851
+      },
+      "output": {
+        "path": "public/brand/article-previews/rare-russian-words-vocabulary-article.webp",
+        "sha256": "ecfd632d83c95fd90fc693a7025b382a2d0ea4a37ec9c3163383de3751ace5ed",
+        "width": 1280,
+        "height": 853,
+        "bytes": 267426
+      },
+      "validation": {
+        "meanAbsoluteChannelError": 2.894,
+        "framing": "Full source image preserved; proportional resize only."
+      }
+    },
+    {
+      "sourceUrl": "https://static.tildacdn.com/tild3035-6663-4331-b734-666332663634/7e6f5121-7d08-43fa-9.png",
+      "source": {
+        "sha256": "575bc3c8e5d67d3383c677fe4600f424ef9d1767c75acc6a261fe4915b0ba2bd",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 578091
+      },
+      "output": {
+        "path": "public/brand/article-previews/classic-writers-professions-article.webp",
+        "sha256": "1c781cfd50f06a257ded2d50e9318dcc9041b0a0b8b36d119f5426ec0034e92e",
+        "width": 1280,
+        "height": 853,
+        "bytes": 470926
+      },
+      "validation": {
+        "meanAbsoluteChannelError": 5.316,
+        "framing": "Full source image preserved; proportional resize only."
+      },
+      "mappingEvidence": {
+        "articleId": "page--article--first--profession--writers--2",
+        "catalog": "src/data/articles/catalog.generated.ts",
+        "reason": "Use the linked article canonical cover: Foreign classics and their professions. Corrects the former Russian-classics preview mismatch."
+      }
+    }
+  ]
+}

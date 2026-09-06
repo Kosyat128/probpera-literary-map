@@ -14,6 +14,7 @@ import type {
   BookShelfPresentationItem,
   BookShelfSceneAppearance,
   BookShelfSpineHover,
+  BookShelfPageTextureRenderer,
 } from "./BookShelfScene";
 import type { BookShelfPhase } from "../books/bookShelfState";
 import { completeShelfPhaseHasInspection, completeShelfVisibleBookLimit, completeShelfRowWidth, COMPLETE_SHELF_BOOK_FORMAT, COMPLETE_SHELF_TOP, COMPLETE_SHELF_INSPECTION_LIFT, resolveCompleteShelfVerticalBounds } from "../books/completeShelfModel";
@@ -42,6 +43,10 @@ import CompleteShelfRenderer, {
 } from "../books/completeShelfRenderer";
 
 export type BookShelfSceneCanvasProps = CompleteShelfTransitionCallbacks & {
+  inspectionOnly?: boolean;
+  inspectionViewScale?: number;
+  textureRenderer?: BookShelfPageTextureRenderer;
+  onInspectionReady?: () => void;
   items: readonly BookShelfPresentationItem[];
   appearance: BookShelfSceneAppearance;
   focusedBookKey: string | null;
@@ -77,6 +82,8 @@ export const BOOK_SHELF_IDLE_CAMERA_TARGET: BookInspectionCameraTarget =
   });
 
 function InspectionCameraController({
+  inspectionOnly,
+  inspectionViewScale = 1,
   detailOpen,
   itemIndex,
   itemCount,
@@ -87,6 +94,8 @@ function InspectionCameraController({
   extractionClock,
   requestId,
 }: {
+  inspectionOnly?: boolean;
+  inspectionViewScale?: number;
   detailOpen: boolean;
   itemIndex: number;
   itemCount: number;
@@ -119,19 +128,23 @@ function InspectionCameraController({
       COMPLETE_SHELF_TOP + COMPLETE_SHELF_BOOK_FORMAT.height * 1.42 / 2 + COMPLETE_SHELF_INSPECTION_LIFT - vertical.opticalCenterY,
       1.05] as const;
     const rowWidth = completeShelfRowWidth(Math.min(itemCount, completeShelfVisibleBookLimit(liveBookLimit)));
+    // A narrow article reader follows its current sheet; the real cover and
+    // turning leaf remain in the scene. Shelf inspection keeps its full rig.
+    const focusArticlePage = inspectionOnly && size.width / Math.max(1, inspectionViewScale) < 680;
+    const framingPhase = inspectionOnly ? (focusArticlePage ? "INSPECTION_CLOSED" : "BOOK_OPEN") : phase;
     return resolveBookInspectionCameraFraming({
       viewportWidth: size.width, viewportHeight: size.height,
       detailOpen, viewportInsets, itemIndex, itemCount,
       bookPosition: detailOpen ? bookPosition : [0, 0, 0],
       bounds: detailOpen
-        ? resolveBookPhysicalBounds({ dimensions: COMPLETE_SHELF_BOOK_FORMAT, phase, scale: 1.42 })
+        ? resolveBookPhysicalBounds({ dimensions: COMPLETE_SHELF_BOOK_FORMAT, phase: framingPhase, scale: 1.42 })
         : { min: [-rowWidth / 2 - 0.12, vertical.minY - vertical.opticalCenterY, -0.08],
             max: [rowWidth / 2 + 0.12, vertical.maxY - vertical.opticalCenterY, 0.58] },
       fov: detailOpen ? 35 : 38,
-      marginPx: detailOpen ? 16 : 20,
-      orbitAllowance: detailOpen ? 1.24 : 1,
+      marginPx: inspectionOnly ? 12 * inspectionViewScale : detailOpen ? 16 : 20,
+      orbitAllowance: inspectionOnly ? 1 : detailOpen ? 1.24 : 1,
     });
-  }, [detailOpen, itemCount, itemIndex, liveBookLimit, phase, size.height, size.width, viewportInsets]);
+  }, [inspectionOnly, inspectionViewScale, detailOpen, itemCount, itemIndex, liveBookLimit, phase, size.height, size.width, viewportInsets]);
   const cameraInitializedRef = useRef(false);
   const targetRef = useRef<BookInspectionCameraTarget>(
     BOOK_SHELF_IDLE_CAMERA_TARGET
@@ -417,6 +430,10 @@ function RakingAreaLight({
 
 
 export default function BookShelfSceneCanvas({
+  inspectionOnly,
+  inspectionViewScale,
+  textureRenderer,
+  onInspectionReady,
   items,
   appearance,
   focusedBookKey,
@@ -552,6 +569,8 @@ export default function BookShelfSceneCanvas({
         onContextRestored={onContextRestored}
       />
       <InspectionCameraController
+        inspectionOnly={inspectionOnly}
+        inspectionViewScale={inspectionViewScale}
         detailOpen={Boolean(selectedBookKey && inspectionActive)}
         extractionClock={extractionClock}
         requestId={requestId}
@@ -633,6 +652,9 @@ export default function BookShelfSceneCanvas({
         target={[0.65, 0.1, 0]}
       />
       <CompleteShelfRenderer
+        inspectionOnly={inspectionOnly}
+        textureRenderer={textureRenderer}
+        onInspectionReady={onInspectionReady}
         extractionClock={extractionClock}
         items={items}
         appearance={appearance}

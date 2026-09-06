@@ -13,7 +13,12 @@
 
 #book-day > .book-of-day {
   grid-row: auto;
+  align-items: start;
+  align-content: start;
+  gap: clamp(24px, 2.4vw, 40px);
   min-height: 0;
+  padding: clamp(24px, 3vw, 44px);
+  border-radius: var(--ui-radius-panel);
 }
 
 #book-day > .book-month-supporting {
@@ -79,6 +84,7 @@
   grid-template-rows: subgrid;
   align-content: stretch;
   min-height: 0;
+  padding: clamp(24px, 2.2vw, 32px);
 }
 
 #sections .section-card-eyebrow,
@@ -181,13 +187,19 @@
   min-width: min(100%, 180px);
 }
 
+@media (min-width: 681px) {
+  #book-day > .book-of-day {
+    grid-template-columns: minmax(180px, 210px) minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 1360px) {
   #book-day.daily-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
   #book-day > .book-of-day {
-    min-height: clamp(480px, 52vw, 560px);
+    min-height: 0;
   }
 
   #book-day > .book-month-supporting {

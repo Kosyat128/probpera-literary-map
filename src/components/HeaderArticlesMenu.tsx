@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { publicImageAttributes, publicImageUrl } from "../utils/imageDelivery";
 
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
@@ -140,7 +141,9 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
         const details = event.currentTarget;
         cancelScheduledClose();
         closeTimer.current = window.setTimeout(() => {
-          if (!details.matches(":hover")) details.removeAttribute("open");
+          const keyboardFocused = details.contains(document.activeElement) &&
+            document.activeElement?.matches(":focus-visible");
+          if (!details.matches(":hover") && !keyboardFocused) details.removeAttribute("open");
           closeTimer.current = null;
         }, 240);
       }}
@@ -197,11 +200,11 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
                 <span className="articles-mega-lead-media" aria-hidden="true">
                   <span
                     style={{
-                      backgroundImage: `url(${featured.lead.imageUrl})`,
+                      backgroundImage: `url(${publicImageUrl(featured.lead.imageUrl, 640)})`,
                     }}
                   />
                   <img
-                    src={featured.lead.imageUrl}
+                    {...publicImageAttributes(featured.lead.imageUrl, 640, "(max-width: 700px) 100vw, 540px")}
                     alt=""
                     loading="lazy"
                     decoding="async"

@@ -1,4 +1,10 @@
 import { normalizeShortHyphens } from "./shortHyphens";
+import { originalImageUrl, publicImageAttributes } from "./imageDelivery";
+import {
+  articleBoundaryBreakProtectedContext,
+  articleBoundaryBreakSelector,
+  articleBoundaryBreaksToRemove,
+} from "./articleBoundaryBreaks";
 import {
   canonicalEditorialImageData,
   editorialImageDataAttributes,
@@ -410,6 +416,18 @@ export function sanitizeArticleHtml(source: string) {
   );
   document.querySelectorAll(blockedElements).forEach((element) => element.remove());
 
+  // Run before class filtering so authored editorial/verse wrappers stay intact.
+  document.body.querySelectorAll(articleBoundaryBreakSelector).forEach((element) => {
+    if (element.closest(articleBoundaryBreakProtectedContext)) return;
+    articleBoundaryBreaksToRemove([...element.childNodes], (node) =>
+      node.nodeName === "BR"
+        ? "break"
+        : node.nodeType === 3 && /^\s*$/u.test(node.textContent || "")
+          ? "whitespace"
+          : "content"
+    ).forEach((node) => node.remove());
+  });
+
   document.body.querySelectorAll<HTMLElement>("*").forEach((element) => {
     [...element.attributes].forEach((attribute) => {
       const name = attribute.name.toLocaleLowerCase("en");
@@ -618,7 +636,22 @@ export function sanitizeArticleHtml(source: string) {
 
   document.body
     .querySelectorAll<HTMLImageElement>("img")
-    .forEach((image) => normalizeInlineEditorialImage(image, document));
+    .forEach((image) => {
+      normalizeInlineEditorialImage(image, document);
+      const source = image.getAttribute("src") || "";
+      if (!source) return;
+      const delivery = publicImageAttributes(source, 1280, "(max-width: 1000px) calc(100vw - 48px), 880px");
+      image.setAttribute("src", delivery.src);
+      if (delivery.width && delivery.height) {
+        image.width = delivery.width;
+        image.height = delivery.height;
+        image.dataset.originalSrc = originalImageUrl(source);
+      }
+      if (delivery.srcSet) {
+        image.srcset = delivery.srcSet;
+        image.sizes = delivery.sizes || "100vw";
+      }
+    });
 
   // Legacy articles sometimes store a short section label (for example,
   // “Предисловие”) as the first <strong> inside an ordinary paragraph.

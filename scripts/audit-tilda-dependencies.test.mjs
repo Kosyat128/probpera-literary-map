@@ -2,6 +2,7 @@ import { promises as fs } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
+import { compactImageDeliveryManifest, partitionImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
 
 import {
   auditTildaDependencies,
@@ -158,6 +159,88 @@ describe("Tilda dependency audit", () => {
       occurrenceHeadroom: -1,
       uniqueUrlHeadroom: -1,
     });
+  });
+
+  it("validates compact image encodings against the counted complete source map", async () => {
+    const rootDir = await fixtureRoot();
+    const manifest = {
+      ...fixtureManifest(), handwrittenFiles: {},
+      generatedPrefixes: ["src/images.json"],
+      generatedEncodings: { "src/compact.json": "src/images.json" },
+      generatedBudget: { maxOccurrences: 1, maxUniqueUrls: 1 },
+    };
+    const images = { [firstUrl]: { src: "media/a.webp", width: 300, height: 200, variants: [] } };
+    const compact = compactImageDeliveryManifest(images);
+    await fs.writeFile(path.join(rootDir, "src/images.json"), JSON.stringify(images));
+    await fs.writeFile(path.join(rootDir, "src/compact.json"), JSON.stringify(compact));
+    const result = await auditTildaDependencies({ rootDir, manifest });
+    expect(classifyTildaPath("src/compact.json", manifest)).toBe("generated");
+    expect(result.errors).toEqual([]);
+    expect(result.generated).toMatchObject({ occurrences: 1, uniqueUrls: 1, encodings: [
+      { path: "src/compact.json", sourceManifest: "src/images.json", sources: 1 },
+    ] });
+    compact.sourcePrefixes[0] = secondUrl;
+    await fs.writeFile(path.join(rootDir, "src/compact.json"), JSON.stringify(compact));
+    const tampered = await auditTildaDependencies({ rootDir, manifest });
+    expect(tampered.status).toBe("failed");
+    expect(tampered.errors.join("\n")).toContain("compact data differs from its complete source map");
+  });
+
+  it("fails closed when an encoding or its complete source map is outside the scanned files", async () => {
+    const rootDir = await fixtureRoot();
+    const images = { [firstUrl]: { src: "media/a.webp", width: 300, height: 200, variants: [] } };
+    await fs.writeFile(path.join(rootDir, "src/compact.json"), JSON.stringify(compactImageDeliveryManifest(images)));
+    await fs.writeFile(path.join(rootDir, "outside.json"), JSON.stringify(images));
+    const manifest = {
+      ...fixtureManifest(), handwrittenFiles: {},
+      generatedPrefixes: ["outside.json"],
+      generatedEncodings: { "src/compact.json": "outside.json", "src/missing.json": "outside.json" },
+    };
+    const result = await auditTildaDependencies({ rootDir, manifest });
+    expect(result.status).toBe("failed");
+    expect(result.errors.join("\n")).toContain("complete source map is missing from scanned runtime files");
+    expect(result.errors.join("\n")).toContain("src/missing.json: generated image encoding is missing from scanned runtime files");
+    expect(result.generated.encodings).toEqual([]);
+  });
+
+  it("checks both loading partitions against full provenance and rejects a deferred cover", async () => {
+    const rootDir = await fixtureRoot();
+    const entry = { src: "media/a.webp", width: 300, height: 200, variants: [] };
+    const images = { [firstUrl]: entry, [secondUrl]: entry };
+    const provenance = { images: [
+      { sourceUrl: firstUrl, contexts: ["public/articles/one.json:imageUrl"] },
+      { sourceUrl: secondUrl, contexts: ["public/articles/one.json"] },
+    ] };
+    const partition = partitionImageDeliveryManifest(images, provenance.images);
+    const manifest = { ...fixtureManifest(), handwrittenFiles: {}, generatedPrefixes: ["src/images.json"], generatedEncodings: {} };
+    await fs.writeFile(path.join(rootDir, "src/images.json"), JSON.stringify(images));
+    await fs.writeFile(path.join(rootDir, "provenance.json"), JSON.stringify(provenance));
+    for (const scope of ["initial", "articles"]) {
+      const filename = `src/${scope}.json`;
+      manifest.generatedEncodings[filename] = { sourceManifest: "src/images.json", provenance: "provenance.json", scope };
+      await fs.writeFile(path.join(rootDir, filename), JSON.stringify(compactImageDeliveryManifest(partition[scope])));
+    }
+    expect((await auditTildaDependencies({ rootDir, manifest })).errors).toEqual([]);
+    await fs.writeFile(path.join(rootDir, "src/initial.json"), JSON.stringify(compactImageDeliveryManifest({})));
+    await fs.writeFile(path.join(rootDir, "src/articles.json"), JSON.stringify(compactImageDeliveryManifest(images)));
+    const incorrect = await auditTildaDependencies({ rootDir, manifest });
+    expect(incorrect.status).toBe("failed");
+    expect(incorrect.errors).toHaveLength(2);
+  });
+
+  it("still inspects SVG and JSON files inside directories of optimized binary images", async () => {
+    const rootDir = await fixtureRoot();
+    const media = path.join(rootDir, "public/media/optimized");
+    await fs.mkdir(media, { recursive: true });
+    await fs.writeFile(path.join(media, "illustration.svg"), `<svg><image href="${firstUrl}"/></svg>`);
+    await fs.writeFile(path.join(media, "sources.json"), JSON.stringify({ image: secondUrl }));
+    await fs.writeFile(path.join(media, "photo.webp"), Buffer.from([0, 1, 2, 3]));
+    const result = await auditTildaDependencies({ rootDir, manifest: { ...fixtureManifest(), handwrittenFiles: {} } });
+    expect(result.status).toBe("failed");
+    expect(result.scannedFiles).toBe(2);
+    expect(result.unexpected.map(entry => entry.path)).toEqual([
+      "public/media/optimized/illustration.svg", "public/media/optimized/sources.json",
+    ]);
   });
 
   it("keeps the current repository below the reviewed dependency ceilings", async () => {

@@ -1,7 +1,11 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { readFileSync } from "node:fs";
 
+import { createImageDeliveryResolver } from "../../src/utils/imageDeliveryModel.ts";
 import { articleFromSitemap } from "./helpers/article-route.mjs";
+
+const imageManifest = JSON.parse(readFileSync(new URL("../../src/data/imageDelivery.generated.json", import.meta.url), "utf8"));
 
 function watchErrors(page) {
   const errors = [];
@@ -102,14 +106,19 @@ test("календарь, форум и редакция используют р
   page,
 }) => {
   await page.goto("/");
-  const titles = [
-    "Литературный календарь",
-    "Форум читателей",
-    "О проекте и редакции",
+  const basePath = await page.evaluate(() => {
+    const entrypoint = [...document.scripts].find(script => script.type === "module" && script.src.includes("/assets/"));
+    return entrypoint ? `${new URL(entrypoint.src).pathname.split("/assets/")[0]}/` : "/";
+  });
+  const delivery = createImageDeliveryResolver(imageManifest, basePath);
+  const sections = [
+    { title: "Литературный календарь", image: "brand/sections/literary-calendar.webp" },
+    { title: "Форум читателей", image: "brand/sections/readers-forum.webp" },
+    { title: "О проекте и редакции", image: "brand/sections/about-editorial.webp" },
   ];
   const backgrounds = [];
 
-  for (const title of titles) {
+  for (const { title, image } of sections) {
     const card = page
       .locator(".section-directory-card")
       .filter({ has: page.getByRole("heading", { name: title }) });
@@ -117,7 +126,10 @@ test("календарь, форум и редакция используют р
     const background = await card.evaluate(
       (element) => getComputedStyle(element).backgroundImage
     );
-    expect(background).toContain("brand/sections/");
+    expect(imageManifest[image], `the intended section artwork has local renditions: ${title}`).toBeTruthy();
+    const expectedUrl = new URL(delivery.url(image, 640), page.url()).href;
+    const imageUrls = [...background.matchAll(/url\(["']?([^"')]+)["']?\)/gu)].map(match => match[1]);
+    expect(imageUrls, `the correct section artwork is displayed: ${title}`).toEqual([expectedUrl]);
     backgrounds.push(background);
   }
 

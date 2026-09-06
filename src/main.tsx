@@ -35,6 +35,9 @@ import './styles/calendar-layout.css';
 import './styles/navigation-panels.css';
 import './styles/atlas-intro-layout.css';
 import './styles/site-typography.css';
+import './styles/article-reading-layout.css';
+import './styles/search-account-layout.css';
+import './styles/community-layout.css';
 import './styles/header-preserved.css';
 installSafeWebStorage();
 

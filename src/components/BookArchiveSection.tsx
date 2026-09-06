@@ -1937,7 +1937,7 @@ export default function BookArchiveSection({
     onRequestedBookHandled?.();
     window.requestAnimationFrame(() => {
       document.getElementById("books")?.scrollIntoView({
-        behavior: "smooth",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
         block: "start",
       });
     });

@@ -1176,6 +1176,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Вернуть обычный размер",
+    "group": "Весь интерфейс",
+    "label": "Вернуть обычный размер",
+    "defaultRu": "Вернуть обычный размер",
+    "defaultEn": "Reset book size",
+    "multiline": false
+  },
+  {
     "key": "interface.Вернуться к прокрутке",
     "group": "Весь интерфейс",
     "label": "Вернуться к прокрутке",
@@ -1349,6 +1357,14 @@
     "label": "Название страны: Восточный Тимор",
     "defaultRu": "Восточный Тимор",
     "defaultEn": "Timor-Leste",
+    "multiline": false
+  },
+  {
+    "key": "interface.Вперёд",
+    "group": "Весь интерфейс",
+    "label": "Вперёд",
+    "defaultRu": "Вперёд",
+    "defaultEn": "Next",
     "multiline": false
   },
   {
@@ -1773,6 +1789,14 @@
     "label": "Готовим материал к чтению…",
     "defaultRu": "Готовим материал к чтению…",
     "defaultEn": "Preparing the article…",
+    "multiline": false
+  },
+  {
+    "key": "interface.Готовим страницы с иллюстрациями…",
+    "group": "Весь интерфейс",
+    "label": "Готовим страницы с иллюстрациями…",
+    "defaultRu": "Готовим страницы с иллюстрациями…",
+    "defaultEn": "Preparing illustrated pages…",
     "multiline": false
   },
   {
@@ -2645,6 +2669,14 @@
     "label": "Иллюстрация к материалу",
     "defaultRu": "Иллюстрация к материалу",
     "defaultEn": "Illustration for",
+    "multiline": false
+  },
+  {
+    "key": "interface.Иллюстрированная книга",
+    "group": "Весь интерфейс",
+    "label": "Иллюстрированная книга",
+    "defaultRu": "Иллюстрированная книга",
+    "defaultEn": "Illustrated book reader",
     "multiline": false
   },
   {
@@ -3632,6 +3664,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Книжный просмотр недоступен. Полный текст с иллюстрациями доступен ниже.",
+    "group": "Весь интерфейс",
+    "label": "Книжный просмотр недоступен. Полный текст с иллюстрациями доступен ниже.",
+    "defaultRu": "Книжный просмотр недоступен. Полный текст с иллюстрациями доступен ниже.",
+    "defaultEn": "The book view is unavailable. The complete illustrated article remains readable below.",
+    "multiline": false
+  },
+  {
     "key": "interface.Когда перевод становится новой книгой",
     "group": "Весь интерфейс",
     "label": "Когда перевод становится новой книгой",
@@ -4389,6 +4429,14 @@
     "label": "Масштаб",
     "defaultRu": "Масштаб",
     "defaultEn": "Zoom",
+    "multiline": false
+  },
+  {
+    "key": "interface.Масштаб книги",
+    "group": "Весь интерфейс",
+    "label": "Масштаб книги",
+    "defaultRu": "Масштаб книги",
+    "defaultEn": "Book size",
     "multiline": false
   },
   {
@@ -5592,6 +5640,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Область просмотра книги",
+    "group": "Весь интерфейс",
+    "label": "Область просмотра книги",
+    "defaultRu": "Область просмотра книги",
+    "defaultEn": "Book viewing area",
+    "multiline": false
+  },
+  {
     "key": "interface.Обложка книги",
     "group": "Весь интерфейс",
     "label": "Обложка книги",
@@ -5701,6 +5757,14 @@
     "label": "Объявление редакции",
     "defaultRu": "Объявление редакции",
     "defaultEn": "Editorial announcement",
+    "multiline": false
+  },
+  {
+    "key": "interface.Обычный размер книги",
+    "group": "Весь интерфейс",
+    "label": "Обычный размер книги",
+    "defaultRu": "Обычный размер книги",
+    "defaultEn": "Reset book size",
     "multiline": false
   },
   {
@@ -5912,6 +5976,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Отдалить книгу",
+    "group": "Весь интерфейс",
+    "label": "Отдалить книгу",
+    "defaultRu": "Отдалить книгу",
+    "defaultEn": "Zoom out book",
+    "multiline": false
+  },
+  {
     "key": "interface.Отдельные редакционные материалы",
     "group": "Весь интерфейс",
     "label": "Отдельные редакционные материалы",
@@ -5952,6 +6024,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Открываем книгу…",
+    "group": "Весь интерфейс",
+    "label": "Открываем книгу…",
+    "defaultRu": "Открываем книгу…",
+    "defaultEn": "Opening the book…",
+    "multiline": false
+  },
+  {
     "key": "interface.Открываем режим чтения…",
     "group": "Весь интерфейс",
     "label": "Открываем режим чтения…",
@@ -5982,14 +6062,6 @@
     "defaultRu": "Открытые жалобы",
     "defaultEn": "Open reports",
     "multiline": false
-  },
-  {
-    "key": "interface.Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.",
-    "group": "Весь интерфейс",
-    "label": "Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.",
-    "defaultRu": "Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.",
-    "defaultEn": "Open ratings and first-party comments are ready and will become active when the project database is connected.",
-    "multiline": true
   },
   {
     "key": "interface.Открытых жалоб на форум нет.",
@@ -6272,6 +6344,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Оценки и комментарии пока недоступны.",
+    "group": "Весь интерфейс",
+    "label": "Оценки и комментарии пока недоступны.",
+    "defaultRu": "Оценки и комментарии пока недоступны.",
+    "defaultEn": "Ratings and comments are currently unavailable.",
+    "multiline": false
+  },
+  {
     "key": "interface.Оценки и комментарии привязаны к конкретной публикации. Авторский текст остаётся неизменным, а читательская дискуссия живёт отдельно.",
     "group": "Весь интерфейс",
     "label": "Оценки и комментарии привязаны к конкретной публикации. Авторский текст остаётся неизменным, а читательская дискуссия живёт отдельно.",
@@ -6512,11 +6592,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Перелистывайте страницы книги",
+    "group": "Весь интерфейс",
+    "label": "Перелистывайте страницы книги",
+    "defaultRu": "Перелистывайте страницы книги",
+    "defaultEn": "Turn the book pages",
+    "multiline": false
+  },
+  {
     "key": "interface.Переместить",
     "group": "Весь интерфейс",
     "label": "Переместить",
     "defaultRu": "Переместить",
     "defaultEn": "Move",
+    "multiline": false
+  },
+  {
+    "key": "interface.Перемещайте страницу, чтобы рассмотреть детали.",
+    "group": "Весь интерфейс",
+    "label": "Перемещайте страницу, чтобы рассмотреть детали.",
+    "defaultRu": "Перемещайте страницу, чтобы рассмотреть детали.",
+    "defaultEn": "Move around the page to see the details.",
     "multiline": false
   },
   {
@@ -7456,6 +7552,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Приблизить книгу",
+    "group": "Весь интерфейс",
+    "label": "Приблизить книгу",
+    "defaultRu": "Приблизить книгу",
+    "defaultEn": "Zoom in book",
+    "multiline": false
+  },
+  {
     "key": "interface.приключенческая проза",
     "group": "Весь интерфейс",
     "label": "приключенческая проза",
@@ -7797,6 +7901,14 @@
     "label": "Прочитать оригинал на probpera.ru",
     "defaultRu": "Прочитать оригинал на probpera.ru",
     "defaultEn": "Read the original on probpera.ru",
+    "multiline": false
+  },
+  {
+    "key": "interface.Прочитать страницу текстом",
+    "group": "Весь интерфейс",
+    "label": "Прочитать страницу текстом",
+    "defaultRu": "Прочитать страницу текстом",
+    "defaultEn": "Read this page as text",
     "multiline": false
   },
   {
@@ -9816,11 +9928,27 @@
     "multiline": false
   },
   {
+    "key": "interface.Страница",
+    "group": "Весь интерфейс",
+    "label": "Страница",
+    "defaultRu": "Страница",
+    "defaultEn": "Page",
+    "multiline": false
+  },
+  {
     "key": "interface.Страница столкнулась с ошибкой",
     "group": "Весь интерфейс",
     "label": "Страница столкнулась с ошибкой",
     "defaultRu": "Страница столкнулась с ошибкой",
     "defaultEn": "This page encountered an error",
+    "multiline": false
+  },
+  {
+    "key": "interface.Страницы книги",
+    "group": "Весь интерфейс",
+    "label": "Страницы книги",
+    "defaultRu": "Страницы книги",
+    "defaultEn": "Book pages",
     "multiline": false
   },
   {
@@ -10373,6 +10501,14 @@
     "label": "Убрать с полки",
     "defaultRu": "Убрать с полки",
     "defaultEn": "Remove from shelf",
+    "multiline": false
+  },
+  {
+    "key": "interface.Увеличить изображение",
+    "group": "Весь интерфейс",
+    "label": "Увеличить изображение",
+    "defaultRu": "Увеличить изображение",
+    "defaultEn": "Enlarge image",
     "multiline": false
   },
   {

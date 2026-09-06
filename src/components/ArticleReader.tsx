@@ -1,4 +1,7 @@
+import "../utils/articleImageDelivery";
 import {
+  lazy,
+  Suspense,
   useCallback,
   useEffect,
   useMemo,
@@ -42,6 +45,7 @@ import {
   shouldUseClientNavigation,
 } from "../utils/articleRoutes";
 import { sanitizeArticleHtml } from "../utils/sanitizeArticleHtml";
+import { publicImageAttributes, publicImageUrl } from "../utils/imageDelivery";
 import { initializeEditorialSliders } from "../utils/initializeEditorialSliders";
 import BrandHeartIcon from "./BrandHeartIcon";
 import BrandCloseIcon from "./BrandCloseIcon";
@@ -49,6 +53,8 @@ import BrandArrowIcon from "./BrandArrowIcon";
 import { cmsEntityMarker } from "../cms/directEditBridge";
 import { CmsPageBanners } from "./CmsSiteChrome";
 import { cmsTypographyTargetKey } from "../data/cms/siteTypography";
+
+const ArticleBookReader = lazy(() => import("./ArticleBookReader"));
 
 type ArticleMediaItem = {
   src: string;
@@ -272,6 +278,7 @@ function applyBrandImageFallback(
 ) {
   if (image.dataset.fallbackApplied === "true") return;
   image.dataset.fallbackApplied = "true";
+  image.removeAttribute("srcset");
   image.classList.add("is-fallback");
   image.alt =
     language === "en"
@@ -307,12 +314,18 @@ export default function ArticleReader({
     useState(false);
   const [mentionedBooks, setMentionedBooks] = useState<ArticleBookMention[]>([]);
   const [progress, setProgress] = useState(0);
+  const progressRef = useRef(progress);
+  progressRef.current = progress;
+  const bookRestoreSequenceRef = useRef(0);
+  const [bookRestoreRequest, setBookRestoreRequest] = useState<{ id: number; articleId: string; progress: number }>();
   const [fontScale, setFontScale] = useState(1);
   const [activeHeadingId, setActiveHeadingId] = useState("");
   const [activeMediaIndex, setActiveMediaIndex] = useState<number | null>(null);
   const mediaViewerOpen = activeMediaIndex !== null;
   const [resumedFrom, setResumedFrom] = useState<number | null>(null);
+  const [tocOpen, setTocOpen] = useState(false);
   const { mode } = useDisplayMode();
+  const previousModeRef = useRef(mode);
   const { language, t, number } = useInterfaceLanguage();
   const closeMediaViewer = useCallback(() => {
     const trigger = lightboxTriggerRef.current;
@@ -417,9 +430,9 @@ export default function ArticleReader({
 
       const focusable = [
         ...dialogRef.current.querySelectorAll<HTMLElement>(
-          'a[href],button:not([disabled]),input:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+          'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),summary,[tabindex]:not([tabindex="-1"])'
         ),
-      ];
+      ].filter((element) => element.getClientRects().length > 0);
       if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -445,6 +458,7 @@ export default function ArticleReader({
 
   useEffect(() => {
     setProgress(0);
+    setBookRestoreRequest(undefined);
     setActiveHeadingId("");
     setActiveMediaIndex(null);
     setResumedFrom(null);
@@ -494,6 +508,13 @@ export default function ArticleReader({
     ],
     [articleDocument]
   );
+  const bookContentHtml = useMemo(() => {
+    if (!sourceItems.length) return safeContentHtml;
+    const escape = (value: string) => value.replace(/[&<>"']/gu, (character) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character] || character);
+    return safeContentHtml + sanitizeArticleHtml(`<section><h2>${escape(t("Источники и библиография"))}</h2><ol>${sourceItems.map((item) => `<li>${item.url ? `<a href="${escape(item.url)}">${escape(item.fullText)}</a>` : escape(item.fullText)}</li>`).join("")}</ol></section>`);
+  }, [safeContentHtml, sourceItems, t]);
+  const bookModeActive = mode === "book" && Boolean(articleDocument) && !translationUnavailable && !error;
   const bibliographyItems = sourceItems.filter(
     (item) => item.kind === "reference"
   );
@@ -730,10 +751,11 @@ export default function ArticleReader({
       restoredArticleRef.current === restoreMarker ||
       restoredArticleRef.current === `resume:${article.id}`
     ) return;
-    restoredArticleRef.current = restoreMarker;
     const frame = window.requestAnimationFrame(() => {
+      restoredArticleRef.current = restoreMarker;
       const available = element.scrollHeight - element.clientHeight;
-      element.scrollTo({
+      const fallbackVisible = element.querySelector('[data-article-book-reader][data-renderer="text"]');
+      if (mode !== "book" || fallbackVisible) element.scrollTo({
         top:
           resumable && available > 0
             ? available * (progressToRestore / 100)
@@ -741,6 +763,7 @@ export default function ArticleReader({
         behavior: "auto",
       });
       setProgress(progressToRestore);
+      setBookRestoreRequest({ id: ++bookRestoreSequenceRef.current, articleId: article.id, progress: progressToRestore });
       setResumedFrom(resumable ? progressToRestore : null);
       if (resumable && savedArticle?.status === "saved") {
         setReadingStatus(article.id, "article", "reading");
@@ -753,11 +776,45 @@ export default function ArticleReader({
     restoredProgress,
     savedArticle?.status,
     setReadingStatus,
+    mode,
   ]);
+
+  useEffect(() => {
+    const previousMode = previousModeRef.current;
+    previousModeRef.current = mode;
+    if (previousMode === mode) return;
+    const frame = window.requestAnimationFrame(() => {
+      const element = scrollRef.current;
+      if (!element) return;
+      element.scrollTop = mode === "book" ? 0 :
+        Math.max(0, element.scrollHeight - element.clientHeight) * progressRef.current / 100;
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [mode]);
+
+  const handleBookProgress = useCallback((next: number) => {
+    setProgress(next);
+    if (next >= 96) {
+      markCompleted();
+      if (savedArticle && savedArticle.status !== "finished") setReadingStatus(article.id, "article", "finished");
+    } else {
+      saveProgress(next);
+      if (next >= 3 && savedArticle?.status === "saved") setReadingStatus(article.id, "article", "reading");
+    }
+  }, [article.id, markCompleted, saveProgress, savedArticle, setReadingStatus]);
+
+  const handleBookFallback = useCallback(() => {
+    window.requestAnimationFrame(() => {
+      const element = scrollRef.current;
+      if (!element?.querySelector('[data-article-book-reader][data-renderer="text"]')) return;
+      element.scrollTop = Math.max(0, element.scrollHeight - element.clientHeight) * progressRef.current / 100;
+    });
+  }, []);
 
   const handleScroll = () => {
     const element = scrollRef.current;
     if (!element) return;
+    if (bookModeActive && !element.querySelector('[data-article-book-reader][data-renderer="text"]')) return;
     const available = element.scrollHeight - element.clientHeight;
     const next =
       available > 0
@@ -778,10 +835,14 @@ export default function ArticleReader({
   };
 
   const jumpToHeading = (headingId: string) => {
+    setTocOpen(false);
     const root = scrollRef.current;
     const target = root?.querySelector<HTMLElement>(`#${CSS.escape(headingId)}`);
     setActiveHeadingId(headingId);
-    target?.scrollIntoView({ behavior: "smooth", block: "start" });
+    target?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start",
+    });
   };
 
   const openAnother = (target: ArticleCatalogEntry) => {
@@ -987,11 +1048,37 @@ export default function ArticleReader({
 
       <div className="article-reader-scroll" ref={scrollRef} onScroll={handleScroll}>
         <CmsPageBanners />
+        {bookModeActive && <Suspense fallback={<div className="article-reader-loading" role="status"><p>{language === "en" ? "Opening the illustrated book…" : "Открываем книгу с иллюстрациями…"}</p></div>}>
+          <ArticleBookReader
+            articleId={article.id}
+            title={displayArticle.title}
+            sectionLabel={displayArticle.sectionLabel}
+            html={bookContentHtml}
+            coverUrl={displayArticle.imageUrl}
+            locale={language}
+            fontScale={fontScale}
+            initialProgress={progress}
+            restoreRequest={bookRestoreRequest}
+            onProgress={handleBookProgress}
+            onFallback={handleBookFallback}
+            onOpenImage={(src) => {
+              const imageIndex = mediaItems.findIndex((item) => new URL(publicImageUrl(item.src, Infinity), window.location.href).href === new URL(publicImageUrl(src, Infinity), window.location.href).href);
+              if (imageIndex >= 0) {
+                lightboxTriggerRef.current = document.activeElement as HTMLElement | null;
+                setActiveMediaIndex(imageIndex);
+              }
+            }}
+          />
+        </Suspense>}
+        <div hidden={bookModeActive}>
         <main className="article-reader-layout">
-          <aside className="article-reader-toc">
+          <aside className={`article-reader-toc${tocOpen ? " is-open" : ""}`}>
+            {headingItems.length > 0 && <button className="article-reader-toc-toggle" type="button" aria-expanded={tocOpen} aria-controls="article-reader-contents" onClick={() => setTocOpen((value) => !value)}>
+              {t("В этом материале")} <span aria-hidden="true">{tocOpen ? "−" : "+"}</span>
+            </button>}
             <span>{t("В этом материале")}</span>
             {headingItems.length > 0 ? (
-              <ol>
+              <ol id="article-reader-contents">
                 {headingItems.map((heading) => (
                   <li key={heading.id} className={`level-${heading.level}`}>
                     <button
@@ -1110,7 +1197,7 @@ export default function ArticleReader({
                     <button
                       type="button"
                       onClick={() => {
-                        scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+                        scrollRef.current?.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
                         setResumedFrom(null);
                         saveProgress(0);
                       }}
@@ -1130,7 +1217,7 @@ export default function ArticleReader({
               <figure
                 className="article-reader-cover"
                 style={{
-                  backgroundImage: `url("${displayArticle.imageUrl}")`,
+                  backgroundImage: `url("${publicImageUrl(displayArticle.imageUrl)}")`,
                   backgroundPosition: mediaFocusPosition(
                     displayArticle.imageFocusX,
                     displayArticle.imageFocusY
@@ -1147,7 +1234,7 @@ export default function ArticleReader({
                   aria-label={t("Открыть главное изображение")}
                 >
                   <img
-                    src={displayArticle.imageUrl}
+                    {...publicImageAttributes(displayArticle.imageUrl, 1280, "(max-width: 1000px) calc(100vw - 48px), 880px")}
                     style={mediaFocusStyle(
                       displayArticle.imageFocusX,
                       displayArticle.imageFocusY
@@ -1421,7 +1508,7 @@ export default function ArticleReader({
                         style={
                           item.imageUrl
                             ? {
-                                backgroundImage: `url("${item.imageUrl}")`,
+                                backgroundImage: `url("${publicImageUrl(item.imageUrl, 640)}")`,
                                 backgroundPosition: mediaFocusPosition(
                                   item.imageFocusX,
                                   item.imageFocusY
@@ -1432,7 +1519,7 @@ export default function ArticleReader({
                       >
                         {item.imageUrl ? (
                           <img
-                            src={item.imageUrl}
+                            {...publicImageAttributes(item.imageUrl, 640, "(max-width: 700px) 100vw, 280px")}
                             style={mediaFocusStyle(item.imageFocusX, item.imageFocusY)}
                             alt=""
                             loading="lazy"
@@ -1485,7 +1572,7 @@ export default function ArticleReader({
                     className="article-related-image"
                     aria-hidden="true"
                     style={{
-                      backgroundImage: `url("${item.imageUrl}")`,
+                      backgroundImage: `url("${publicImageUrl(item.imageUrl, 640)}")`,
                       backgroundPosition: mediaFocusPosition(
                         item.imageFocusX,
                         item.imageFocusY
@@ -1493,7 +1580,7 @@ export default function ArticleReader({
                     }}
                   >
                     <img
-                      src={item.imageUrl}
+                      {...publicImageAttributes(item.imageUrl, 640, "(max-width: 700px) 100vw, 440px")}
                       style={mediaFocusStyle(item.imageFocusX, item.imageFocusY)}
                       alt=""
                       loading="lazy"
@@ -1563,6 +1650,7 @@ export default function ArticleReader({
             </a>
           )}
         </nav>
+        </div>
       </div>
 
       {activeMedia && activeMediaIndex !== null && (
@@ -1591,7 +1679,7 @@ export default function ArticleReader({
               </button>
             </header>
             <img
-              src={activeMedia.src}
+              src={publicImageUrl(activeMedia.src, Infinity)}
               alt={
                 activeMedia.alt ||
                 articleIllustrationAlt(

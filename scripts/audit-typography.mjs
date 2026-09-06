@@ -48,15 +48,35 @@ function minimumPixels(value, tokens, visited = new Set()) {
   return sizes.length ? Math.min(...sizes) : null;
 }
 
-function minimumLeading(value, tokens, visited = new Set()) {
+function leadingLimits(value, tokens, visited = new Set()) {
   const numeric = value.trim().match(/^(-?\d*\.?\d+)(%|em)?$/u);
-  if (numeric) return Number(numeric[1]) / (numeric[2] === "%" ? 100 : 1);
-  const variable = value.match(/^var\((--[a-z0-9-]+)\)$/u)?.[1];
-  if (!variable || visited.has(variable)) return null;
-  const values = (tokens.get(variable) || []).map((candidate) =>
-    minimumLeading(candidate, tokens, new Set([...visited, variable]))
+  if (numeric) {
+    const ratio = Number(numeric[1]) / (numeric[2] === "%" ? 100 : 1);
+    return { minimum: ratio, maximum: ratio };
+  }
+  const argumentsText = value.trim().match(/^var\(([\s\S]*)\)$/u)?.[1];
+  if (!argumentsText) return null;
+  const [variable, fallback] = postcss.list.comma(argumentsText);
+  if (!/^--[a-z0-9-]+$/u.test(variable) || visited.has(variable)) return null;
+  const candidates = tokens.get(variable) || (fallback ? [fallback] : []);
+  const values = candidates.map((candidate) =>
+    leadingLimits(candidate, tokens, new Set([...visited, variable]))
   ).filter((candidate) => candidate !== null);
-  return values.length ? Math.min(...values) : null;
+  return values.length ? {
+    minimum: Math.min(...values.map((candidate) => candidate.minimum)),
+    maximum: Math.max(...values.map((candidate) => candidate.maximum)),
+  } : null;
+}
+
+function shorthandLeading(value) {
+  // Split only outside parentheses: both the size and leading may use var().
+  const afterSlash = postcss.list.split(value, ["/"])[1];
+  return afterSlash ? postcss.list.space(afterSlash)[0] : null;
+}
+
+function decorativeRole(selector) {
+  return /(?:^|[ >+~])(?:svg|path|use)(?![\w-])|::(?:before|after)\b|\.[\w-]*icon(?![\w-])/u
+    .test(normalizeSelector(selector));
 }
 
 function atRuleCondition(node) {
@@ -164,9 +184,19 @@ export function auditTypography(sources) {
         !normalizeSelector(selector).includes(".hero-editorial h1")
       );
       if (nonDisplayRole && (prop === "line-height" || prop === "font")) {
-        const leading = prop === "line-height" ? value : value.match(/\/\s*(\d*\.?\d+(?:%|em)?)(?=\s|$)/u)?.[1];
-        const minimum = leading ? minimumLeading(leading, tokens) : null;
-        if (minimum !== null && minimum < 1) fail("Non-display editorial line-height is smaller than 1");
+        const leading = prop === "line-height" ? value : shorthandLeading(value);
+        const limits = leading ? leadingLimits(leading, tokens) : null;
+        if (limits !== null && limits.minimum < 1) fail("Non-display editorial line-height is smaller than 1");
+        // Guard authored defaults only. Published CMS rules remain independent,
+        // and icon boxes do not use the readable-text rhythm.
+        const readableRole = selectors.some((selector) =>
+          !decorativeRole(selector) &&
+          (ownsRole(selector, owned) || fullText(selector)) &&
+          !normalizeSelector(selector).includes(".hero-editorial h1")
+        );
+        if (file === canonicalPath && readableRole && limits !== null && limits.maximum > 1.65) {
+          fail("Default canonical text line-height is larger than 1.65");
+        }
       }
 
       if (["--sans", "--serif", "--font-ui", "--font-editorial", "--font-display"].includes(prop)) {

@@ -1,4 +1,5 @@
 import { useMemo, useState, type CSSProperties, type MouseEvent } from "react";
+import { publicImageUrl } from "../utils/imageDelivery";
 
 import { articleCatalog } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
@@ -37,9 +38,7 @@ type Props = {
 };
 
 function mediaUrl(path: string) {
-  return /^https?:\/\//i.test(path)
-    ? path
-    : `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+  return publicImageUrl(path, 640);
 }
 
 function publicationLabel(count: number, formattedCount = String(count)) {

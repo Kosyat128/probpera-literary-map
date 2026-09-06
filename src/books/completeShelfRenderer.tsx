@@ -29,6 +29,7 @@ import type {
   BookShelfPresentationItem,
   BookShelfSceneAppearance,
   BookShelfSpineHover,
+  BookShelfPageTextureRenderer,
 } from "../components/BookShelfScene";
 import { advanceBookShelfPointer, bookShelfPointerIsClick, nearestBookShelfSpine, type BookShelfPointerStart } from "./bookShelfPointer";
 import type { BookShelfPhase } from "./bookShelfState";
@@ -104,6 +105,9 @@ export type CompleteShelfTransitionCallbacks = Readonly<{
 
 export type CompleteShelfRendererProps = CompleteShelfTransitionCallbacks &
   Readonly<{
+    inspectionOnly?: boolean;
+    textureRenderer?: BookShelfPageTextureRenderer;
+    onInspectionReady?: () => void;
     items: readonly BookShelfPresentationItem[];
     appearance: BookShelfSceneAppearance;
     focusedBookKey: string | null;
@@ -617,6 +621,8 @@ function CompleteShelfBook({
   headTailEdgeMap,
   contactShadowMap,
   editorialDocument,
+  textureRenderer,
+  onInspectionReady,
   inspectionSession,
   pageTextureQuality,
   qualitySettings,
@@ -649,6 +655,8 @@ function CompleteShelfBook({
   headTailEdgeMap: CanvasTexture | null;
   contactShadowMap: CanvasTexture | null;
   editorialDocument: BookEditorialDocument | null;
+  textureRenderer?: BookShelfPageTextureRenderer;
+  onInspectionReady?: () => void;
   inspectionSession: BookInspectionSession | null;
   pageTextureQuality: BookInspectionTextureQuality;
   qualitySettings: BookShelfQualitySettings;
@@ -1076,7 +1084,7 @@ function CompleteShelfBook({
       pageTextureStoreRef.current?.dispose();
       pageTextureStoreRef.current = null;
     },
-    []
+    [textureRenderer]
   );
   useEffect(() => {
     const disposeTextures = (textures: typeof editorialPageTextures) => {
@@ -1118,6 +1126,7 @@ function CompleteShelfBook({
       pageTextureStoreRef.current ||
       (pageTextureStoreRef.current = new BookInspectionTextureStore({
         capacity: 4,
+        renderer: textureRenderer,
       }));
     const generation = store.beginGeneration();
     const signature = [
@@ -1156,6 +1165,7 @@ function CompleteShelfBook({
       const backRequired = Boolean(backPage && backPage !== frontPage);
       if (!frontResource || (backRequired && !backResource)) {
         if (groupRef.current) groupRef.current.userData.textureFallback = true;
+        if (textureRenderer) onTextureFailure("article-page-texture");
         return;
       }
       const prepareTexture = (
@@ -1191,11 +1201,13 @@ function CompleteShelfBook({
     }).catch(() => {
       if (generation.isCurrent()) {
         if (groupRef.current) groupRef.current.userData.textureFallback = true;
+        if (textureRenderer) onTextureFailure("article-page-texture");
       }
     });
     return () => generation.cancel();
   }, [
     editorialDocument,
+    textureRenderer,
     inspectionSession?.bookKey,
     inspectionSession?.pageIndex,
     inspectionSession?.phase,
@@ -1236,6 +1248,7 @@ function CompleteShelfBook({
       if (!active) return;
       restore();
       inspectionShadersReadyRef.current = true;
+      if (hasEditorialPageMaps) onInspectionReady?.();
       invalidate();
     };
     const cancel = warmBookInspectionShaders(gl, group, camera, scene, ready, error => {
@@ -1247,7 +1260,7 @@ function CompleteShelfBook({
       cancel();
       restore();
     };
-  }, [renderFullRig, hasEditorialPageMaps, gl, camera, scene, invalidate, economical]);
+  }, [renderFullRig, hasEditorialPageMaps, gl, camera, scene, invalidate, economical, onInspectionReady]);
 
   const targetSignature = [
     phase,
@@ -2237,14 +2250,14 @@ export default function CompleteShelfRenderer(
       scale={sceneFraming.scale}
       position={[0, sceneFraming.positionY, 0]}
     >
-      <WarmWoodShelf
+      {!props.inspectionOnly && <WarmWoodShelf
         width={shelfWidth}
         appearance={props.appearance}
         economical={renderingEconomical}
         woodMap={woodMap}
         woodDetailMap={woodDetailMap}
         contactShadowMap={contactShadowMap}
-      />
+      />}
       {workingSet.entries.map((entry, index) => {
         const bindingMap = clothMap;
         const bindingSurfaceMaps = clothSurfaceMaps;
@@ -2270,6 +2283,8 @@ export default function CompleteShelfRenderer(
             headTailEdgeMap={pageEdgeMaps.headTail}
             contactShadowMap={contactShadowMap}
             editorialDocument={props.editorialDocument}
+            textureRenderer={props.textureRenderer}
+            onInspectionReady={props.onInspectionReady}
             inspectionSession={props.inspectionSession}
             pageTextureQuality={pageTextureQuality}
             qualitySettings={props.qualitySettings}

@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "READING-DESIGN-AND-IMAGE-DELIVERY-2026-09-06",
+  "authorizedOn": "2026-09-06",
+  "baselineMainSha": "f406a7de9e16e8cf63545cbce6681ed9278761a4",
+  "authorization": "The owner requested full typography and brand design refinement, illustrated 3D article reading, image optimization, and explicitly approved merging these reviewed changes into main.",
+  "projections": [
+    {
+      "id": "package.json:1",
+      "path": "package.json",
+      "reason": "Add image preparation and checksum gates; pin the RU/EN book hyphenation dependency.",
+      "before": "  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\": \"npm run content:export:cms && npm run build:from-snapshot\",\n    \"build:from-snapshot\": \"npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && tsc && vite build && node scripts/build-article-pages.mjs && node scripts/audit-book-dossier-delivery.mjs\",\n    \"build:all\": \"npm run build && npm run admin:build\",\n    \"build:domain\": \"node scripts/build-domain-release.mjs\",\n    \"domain:audit\": \"node scripts/audit-domain-release.mjs\",\n",
+      "after": "  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\": \"npm run content:export:cms && npm run build:from-snapshot\",\n    \"build:from-snapshot\": \"npm run interface:copy:catalog && npm run assets:globe:modern && npm run assets:globe:qa && npm run content:link-books && npm run assets:images:prepare && npm run assets:images:check && tsc && vite build && node scripts/build-article-pages.mjs && node scripts/audit-book-dossier-delivery.mjs\",\n    \"build:all\": \"npm run build && npm run admin:build\",\n    \"build:domain\": \"node scripts/build-domain-release.mjs\",\n    \"domain:audit\": \"node scripts/audit-domain-release.mjs\",\n"
+    },
+    {
+      "id": "package.json:2",
+      "path": "package.json",
+      "reason": "Add image preparation and checksum gates; pin the RU/EN book hyphenation dependency.",
+      "before": "    \"lint\": \"npm run text:hyphens:check && npm run lint:public && npm run lint --workspace @probpera/admin\",\n    \"lint:public\": \"tsc --noEmit && npm run typography:audit\",\n    \"typography:audit\": \"node scripts/audit-typography.mjs\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:e2e\": \"playwright test --config=playwright.config.mjs\",\n",
+      "after": "    \"lint\": \"npm run text:hyphens:check && npm run lint:public && npm run lint --workspace @probpera/admin\",\n    \"lint:public\": \"tsc --noEmit && npm run typography:audit\",\n    \"typography:audit\": \"node scripts/audit-typography.mjs\",\n    \"assets:images:prepare\": \"node scripts/prepare-public-images.mjs\",\n    \"assets:images:check\": \"node scripts/prepare-public-images.mjs --check\",\n    \"test\": \"vitest run\",\n    \"test:watch\": \"vitest\",\n    \"test:e2e\": \"playwright test --config=playwright.config.mjs\",\n"
+    },
+    {
+      "id": "package.json:3",
+      "path": "package.json",
+      "reason": "Add image preparation and checksum gates; pin the RU/EN book hyphenation dependency.",
+      "before": "    \"@react-three/fiber\": \"8.18.0\",\n    \"@supabase/supabase-js\": \"2.112.3\",\n    \"gsap\": \"^3.13.0\",\n    \"leaflet\": \"^1.9.4\",\n    \"react\": \"18.3.1\",\n    \"react-dom\": \"18.3.1\",\n",
+      "after": "    \"@react-three/fiber\": \"8.18.0\",\n    \"@supabase/supabase-js\": \"2.112.3\",\n    \"gsap\": \"^3.13.0\",\n    \"hyphen\": \"1.14.1\",\n    \"leaflet\": \"^1.9.4\",\n    \"react\": \"18.3.1\",\n    \"react-dom\": \"18.3.1\",\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx:1",
+      "path": "src/components/BookArchiveSection.tsx",
+      "reason": "Honor reduced-motion preference when navigating to the existing book archive.",
+      "before": "    onRequestedBookHandled?.();\n    window.requestAnimationFrame(() => {\n      document.getElementById(\"books\")?.scrollIntoView({\n        behavior: \"smooth\",\n        block: \"start\",\n      });\n    });\n",
+      "after": "    onRequestedBookHandled?.();\n    window.requestAnimationFrame(() => {\n      document.getElementById(\"books\")?.scrollIntoView({\n        behavior: window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches ? \"auto\" : \"smooth\",\n        block: \"start\",\n      });\n    });\n"
+    },
+    {
+      "id": "src/App.tsx:1",
+      "path": "src/App.tsx",
+      "reason": "Preserve keyboard focus in the Sections menu and deliver responsive CMS Hero images.",
+      "before": "              const details = event.currentTarget;\n              cancelSectionsMenuClose();\n              sectionsMenuCloseTimer.current = window.setTimeout(() => {\n                if (!details.matches(\":hover\")) details.removeAttribute(\"open\");\n                sectionsMenuCloseTimer.current = null;\n              }, 240);\n            }}\n",
+      "after": "              const details = event.currentTarget;\n              cancelSectionsMenuClose();\n              sectionsMenuCloseTimer.current = window.setTimeout(() => {\n                const keyboardFocused = details.contains(document.activeElement) &&\n                  document.activeElement?.matches(\":focus-visible\");\n                if (!details.matches(\":hover\") && !keyboardFocused) details.removeAttribute(\"open\");\n                sectionsMenuCloseTimer.current = null;\n              }, 240);\n            }}\n"
+    },
+    {
+      "id": "src/App.tsx:2",
+      "path": "src/App.tsx",
+      "reason": "Preserve keyboard focus in the Sections menu and deliver responsive CMS Hero images.",
+      "before": "                </>\n              )}\n              <img\n                src={\n                  coreHero?.backgroundImageUrl ||\n                  assetUrl(\"brand/magazine-hero-wide.webp?v=20260813-literary-nature-final\")\n                }\n                alt=\"\"\n                width={coreHero?.backgroundImageUrl ? undefined : 1774}\n                height={coreHero?.backgroundImageUrl ? undefined : 887}\n                aria-hidden=\"true\"\n                loading=\"eager\"\n                decoding=\"async\"\n",
+      "after": "                </>\n              )}\n              <img\n                alt=\"\"\n                {...(coreHero?.backgroundImageUrl\n                  ? publicImageAttributes(coreHero.backgroundImageUrl, 1920)\n                  : { src: assetUrl(\"brand/magazine-hero-wide.webp?v=20260813-literary-nature-final\"), width: 1774, height: 887 })}\n                aria-hidden=\"true\"\n                loading=\"eager\"\n                decoding=\"async\"\n"
+    },
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx:1",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "reason": "Preserve keyboard focus and use responsive local article-preview renditions.",
+      "before": "import { useCallback, useEffect, useMemo, useRef, useState } from \"react\";\n\nimport type { ArticleCatalogEntry } from \"../data/articles/catalog\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\n",
+      "after": "import { useCallback, useEffect, useMemo, useRef, useState } from \"react\";\nimport { publicImageAttributes, publicImageUrl } from \"../utils/imageDelivery\";\n\nimport type { ArticleCatalogEntry } from \"../data/articles/catalog\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\n"
+    },
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx:2",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "reason": "Preserve keyboard focus and use responsive local article-preview renditions.",
+      "before": "        const details = event.currentTarget;\n        cancelScheduledClose();\n        closeTimer.current = window.setTimeout(() => {\n          if (!details.matches(\":hover\")) details.removeAttribute(\"open\");\n          closeTimer.current = null;\n        }, 240);\n      }}\n",
+      "after": "        const details = event.currentTarget;\n        cancelScheduledClose();\n        closeTimer.current = window.setTimeout(() => {\n          const keyboardFocused = details.contains(document.activeElement) &&\n            document.activeElement?.matches(\":focus-visible\");\n          if (!details.matches(\":hover\") && !keyboardFocused) details.removeAttribute(\"open\");\n          closeTimer.current = null;\n        }, 240);\n      }}\n"
+    },
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx:3",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "reason": "Preserve keyboard focus and use responsive local article-preview renditions.",
+      "before": "                <span className=\"articles-mega-lead-media\" aria-hidden=\"true\">\n                  <span\n                    style={{\n                      backgroundImage: `url(${featured.lead.imageUrl})`,\n                    }}\n                  />\n                  <img\n                    src={featured.lead.imageUrl}\n                    alt=\"\"\n                    loading=\"lazy\"\n                    decoding=\"async\"\n",
+      "after": "                <span className=\"articles-mega-lead-media\" aria-hidden=\"true\">\n                  <span\n                    style={{\n                      backgroundImage: `url(${publicImageUrl(featured.lead.imageUrl, 640)})`,\n                    }}\n                  />\n                  <img\n                    {...publicImageAttributes(featured.lead.imageUrl, 640, \"(max-width: 700px) 100vw, 540px\")}\n                    alt=\"\"\n                    loading=\"lazy\"\n                    decoding=\"async\"\n"
+    },
+    {
+      "id": "src/index.css:1",
+      "path": "src/index.css",
+      "reason": "Readable Hero proof labels and accessible ink on orange action states.",
+      "before": "  border-radius: 3px;\n}\n\n.primary-action {\n  color: #fff;\n  background: var(--orange);\n  box-shadow: 0 13px 30px rgba(209, 65, 5, 0.27);\n}\n\n.primary-action:hover {\n  background: #ff8935;\n}\n\n.secondary-action {\n",
+      "after": "  border-radius: 3px;\n}\n\n.hero-actions .primary-action {\n  color: var(--ink);\n  background: var(--orange);\n  box-shadow: 0 13px 30px rgba(209, 65, 5, 0.27);\n}\n\n.hero-actions .primary-action:not(:disabled):is(:hover, :focus-visible, :active) {\n  color: var(--ink);\n  background: var(--ui-primary-hover);\n}\n\n.secondary-action {\n"
+    },
+    {
+      "id": "src/index.css:2",
+      "path": "src/index.css",
+      "reason": "Readable Hero proof labels and accessible ink on orange action states.",
+      "before": "  min-width: 120px;\n  padding: 0 20px;\n  color: rgba(255, 255, 255, 0.58);\n  font-size: 9px;\n  font-weight: 800;\n  letter-spacing: 0.1em;\n  text-transform: uppercase;\n",
+      "after": "  min-width: 120px;\n  padding: 0 20px;\n  color: rgba(255, 255, 255, 0.58);\n  font-size: 10px;\n  font-weight: 800;\n  letter-spacing: 0.1em;\n  text-transform: uppercase;\n"
+    },
+    {
+      "id": "src/index.css:3",
+      "path": "src/index.css",
+      "reason": "Readable Hero proof labels and accessible ink on orange action states.",
+      "before": "  .hero-proof span {\n    min-width: 0;\n    padding: 0 10px;\n    font-size: 7px;\n  }\n\n  .hero-proof strong {\n",
+      "after": "  .hero-proof span {\n    min-width: 0;\n    padding: 0 10px;\n  }\n\n  .hero-proof strong {\n"
+    },
+    {
+      "id": "src/styles/header-preserved.css:1",
+      "path": "src/styles/header-preserved.css",
+      "reason": "Unify small Header labels at a readable 10px without changing layout.",
+      "before": "font-kerning: auto;\n}\n.site-header .interface-language-control button {\n  font-size: 7px;\n  font-weight: 900;\n  transition:\n    color 160ms ease,\n",
+      "after": "font-kerning: auto;\n}\n.site-header .interface-language-control button {\n  font-size: 10px;\n  font-weight: 900;\n  transition:\n    color 160ms ease,\n"
+    },
+    {
+      "id": "src/styles/header-preserved.css:2",
+      "path": "src/styles/header-preserved.css",
+      "reason": "Unify small Header labels at a readable 10px without changing layout.",
+      "before": "    box-shadow 160ms ease;\n}\n.site-header .display-mode-control button small {\n  font-size: 8px;\n  font-weight: 900;\n}\n@media (max-width: 680px) {\n.site-header .interface-language-control button {\n    font-size: 10px;\n}\n}\n}\n",
+      "after": "    box-shadow 160ms ease;\n}\n.site-header .display-mode-control button small {\n  font-size: 10px;\n  font-weight: 900;\n}\n}\n"
+    },
+    {
+      "id": "src/styles/stage5-home-art-direction.css:1",
+      "path": "src/styles/stage5-home-art-direction.css",
+      "reason": "Use the owner brand orange with high-contrast ink through all book action states.",
+      "before": "}\n\n.book-of-day .book-action-primary {\n  --ui-primary: color-mix(in srgb, var(--orange-deep) 80%, var(--ink));\n  --ui-primary-hover: color-mix(in srgb, var(--orange-deep) 88%, var(--ink));\n  --ui-primary-active: color-mix(in srgb, var(--orange-deep) 70%, var(--ink));\n  color: #fff;\n  background: var(--ui-primary);\n  border-color: var(--ui-primary);\n}\n\n.book-of-day .book-action-primary span {\n  color: inherit;\n}\n\n.book-of-day .book-action-primary:not(:disabled):hover,\n.book-of-day .book-action-primary:not(:disabled):focus-visible {\n  color: #fff;\n  background: var(--ui-primary-hover);\n}\n\n.book-of-day .book-action-primary:not(:disabled):active {\n  color: #fff;\n  background: var(--ui-primary-active);\n  border-color: var(--ui-primary-active);\n  box-shadow: inset 0 0 0 2px rgba(19, 2, 32, 0.2);\n",
+      "after": "}\n\n.book-of-day .book-action-primary {\n  --ui-primary-hover: var(--orange-soft);\n  /* Pressed feedback keeps the same readable orange and ink pairing. */\n  --ui-primary-active: var(--orange);\n  color: var(--ink);\n  background: var(--ui-primary);\n  border-color: var(--ui-primary);\n}\n\n.book-of-day .book-action-primary:not(:disabled):hover,\n.book-of-day .book-action-primary:not(:disabled):focus-visible {\n  color: var(--ink);\n  background: var(--ui-primary-hover);\n  border-color: var(--ui-primary-hover);\n}\n\n.book-of-day .book-action-primary:not(:disabled):active {\n  color: var(--ink);\n  background: var(--ui-primary-active);\n  border-color: var(--ui-primary-active);\n  box-shadow: inset 0 0 0 2px rgba(19, 2, 32, 0.2);\n"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx:1",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "reason": "Add the article book interface and replace technical unavailable-comment copy.",
+      "before": "  слов: \"words\",\n  просмотров: \"views\",\n  \"Режим печатной книги\": \"Printed book mode\",\n  \"Авторская публикация журнала «Проба Пера»\":\n    \"An original publication by Proba Pera\",\n  \"Оригинал публикации ↗\": \"Original publication ↗\",\n",
+      "after": "  слов: \"words\",\n  просмотров: \"views\",\n  \"Режим печатной книги\": \"Printed book mode\",\n  \"Иллюстрированная книга\": \"Illustrated book reader\",\n  \"Книжный просмотр недоступен. Полный текст с иллюстрациями доступен ниже.\":\n    \"The book view is unavailable. The complete illustrated article remains readable below.\",\n  \"Масштаб книги\": \"Book size\",\n  \"Отдалить книгу\": \"Zoom out book\",\n  \"Обычный размер книги\": \"Reset book size\",\n  \"Вернуть обычный размер\": \"Reset book size\",\n  \"Приблизить книгу\": \"Zoom in book\",\n  \"Перемещайте страницу, чтобы рассмотреть детали.\":\n    \"Move around the page to see the details.\",\n  \"Область просмотра книги\": \"Book viewing area\",\n  \"Перелистывайте страницы книги\": \"Turn the book pages\",\n  \"Открываем книгу…\": \"Opening the book…\",\n  \"Готовим страницы с иллюстрациями…\": \"Preparing illustrated pages…\",\n  \"Страницы книги\": \"Book pages\",\n  \"Страница\": \"Page\",\n  \"Вперёд\": \"Next\",\n  \"Прочитать страницу текстом\": \"Read this page as text\",\n  \"Увеличить изображение\": \"Enlarge image\",\n  \"Авторская публикация журнала «Проба Пера»\":\n    \"An original publication by Proba Pera\",\n  \"Оригинал публикации ↗\": \"Original publication ↗\",\n"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx:2",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "reason": "Add the article book interface and replace technical unavailable-comment copy.",
+      "before": "  \"Не удалось отправить жалобу.\": \"The report could not be sent.\",\n  \"Спасибо. Комментарий передан редакции на проверку.\":\n    \"Thank you. The comment has been sent to the editors for review.\",\n  \"Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.\":\n    \"Open ratings and first-party comments are ready and will become active when the project database is connected.\",\n  \"Обсуждение публикации\": \"Publication discussion\",\n  \"Обсуждение книги\": \"Book discussion\",\n  \"Мнение читателей\": \"Readers’ views\",\n",
+      "after": "  \"Не удалось отправить жалобу.\": \"The report could not be sent.\",\n  \"Спасибо. Комментарий передан редакции на проверку.\":\n    \"Thank you. The comment has been sent to the editors for review.\",\n  \"Оценки и комментарии пока недоступны.\":\n    \"Ratings and comments are currently unavailable.\",\n  \"Обсуждение публикации\": \"Publication discussion\",\n  \"Обсуждение книги\": \"Book discussion\",\n  \"Мнение читателей\": \"Readers’ views\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:1",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Restore the globe's initial view\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Вернуться к прокрутке\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Restore the globe's initial view\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Вернуть обычный размер\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Вернуть обычный размер\",\n    \"defaultRu\": \"Вернуть обычный размер\",\n    \"defaultEn\": \"Reset book size\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Вернуться к прокрутке\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:2",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Timor-Leste\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Впечатления, вопросы и внимательный разбор текста\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Timor-Leste\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Вперёд\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Вперёд\",\n    \"defaultRu\": \"Вперёд\",\n    \"defaultEn\": \"Next\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Впечатления, вопросы и внимательный разбор текста\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:3",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Preparing the article…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Готовим страны, авторов, книги и публикации.\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Preparing the article…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Готовим страницы с иллюстрациями…\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Готовим страницы с иллюстрациями…\",\n    \"defaultRu\": \"Готовим страницы с иллюстрациями…\",\n    \"defaultEn\": \"Preparing illustrated pages…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Готовим страны, авторов, книги и публикации.\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:4",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Illustration for\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Имя или никнейм\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Illustration for\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Иллюстрированная книга\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Иллюстрированная книга\",\n    \"defaultRu\": \"Иллюстрированная книга\",\n    \"defaultEn\": \"Illustrated book reader\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Имя или никнейм\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:5",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Book club\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Когда перевод становится новой книгой\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Book club\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Книжный просмотр недоступен. Полный текст с иллюстрациями доступен ниже.\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Книжный просмотр недоступен. Полный текст с иллюстрациями доступен ниже.\",\n    \"defaultRu\": \"Книжный просмотр недоступен. Полный текст с иллюстрациями доступен ниже.\",\n    \"defaultEn\": \"The book view is unavailable. The complete illustrated article remains readable below.\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Когда перевод становится новой книгой\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:6",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Zoom\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Масштаб: колесо или кнопки ±\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Zoom\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Масштаб книги\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Масштаб книги\",\n    \"defaultRu\": \"Масштаб книги\",\n    \"defaultEn\": \"Book size\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Масштаб: колесо или кнопки ±\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:7",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Search scope\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Обложка книги\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Search scope\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Область просмотра книги\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Область просмотра книги\",\n    \"defaultRu\": \"Область просмотра книги\",\n    \"defaultEn\": \"Book viewing area\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Обложка книги\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:8",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Editorial announcement\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Один профиль связывает ваши оценки, комментарии, форум и личную библиотеку внутри «Пробы Пера».\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Editorial announcement\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Обычный размер книги\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Обычный размер книги\",\n    \"defaultRu\": \"Обычный размер книги\",\n    \"defaultEn\": \"Reset book size\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Один профиль связывает ваши оценки, комментарии, форум и личную библиотеку внутри «Пробы Пера».\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:9",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Write a substantive reply…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Отдельные редакционные материалы\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Write a substantive reply…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Отдалить книгу\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Отдалить книгу\",\n    \"defaultRu\": \"Отдалить книгу\",\n    \"defaultEn\": \"Zoom out book\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Отдельные редакционные материалы\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:10",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Opening the library…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Открываем режим чтения…\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Opening the library…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Открываем книгу…\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Открываем книгу…\",\n    \"defaultRu\": \"Открываем книгу…\",\n    \"defaultEn\": \"Opening the book…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Открываем режим чтения…\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:11",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Open reports\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.\",\n    \"defaultRu\": \"Открытые рейтинги и встроенные комментарии готовы и включатся после подключения серверной базы проекта.\",\n    \"defaultEn\": \"Open ratings and first-party comments are ready and will become active when the project database is connected.\",\n    \"multiline\": true\n  },\n  {\n    \"key\": \"interface.Открытых жалоб на форум нет.\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Open reports\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Открытых жалоб на форум нет.\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:12",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Ratings\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Оценки и комментарии привязаны к конкретной публикации. Авторский текст остаётся неизменным, а читательская дискуссия живёт отдельно.\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Ratings\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Оценки и комментарии пока недоступны.\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Оценки и комментарии пока недоступны.\",\n    \"defaultRu\": \"Оценки и комментарии пока недоступны.\",\n    \"defaultEn\": \"Ratings and comments are currently unavailable.\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Оценки и комментарии привязаны к конкретной публикации. Авторский текст остаётся неизменным, а читательская дискуссия живёт отдельно.\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:13",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Turn page\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Переместить\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Turn page\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Перелистывайте страницы книги\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Перелистывайте страницы книги\",\n    \"defaultRu\": \"Перелистывайте страницы книги\",\n    \"defaultEn\": \"Turn the book pages\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Переместить\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:14",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Move\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Период\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Move\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Перемещайте страницу, чтобы рассмотреть детали.\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Перемещайте страницу, чтобы рассмотреть детали.\",\n    \"defaultRu\": \"Перемещайте страницу, чтобы рассмотреть детали.\",\n    \"defaultEn\": \"Move around the page to see the details.\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Период\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:15",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"No prize was awarded in: \",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.приключенческая проза\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"No prize was awarded in: \",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Приблизить книгу\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Приблизить книгу\",\n    \"defaultRu\": \"Приблизить книгу\",\n    \"defaultEn\": \"Zoom in book\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.приключенческая проза\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:16",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Read the original on probpera.ru\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.публикации\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Read the original on probpera.ru\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Прочитать страницу текстом\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Прочитать страницу текстом\",\n    \"defaultRu\": \"Прочитать страницу текстом\",\n    \"defaultEn\": \"Read this page as text\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.публикации\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:17",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Country, writer, book, article, period…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Страница столкнулась с ошибкой\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Country, writer, book, article, period…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Страница\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Страница\",\n    \"defaultRu\": \"Страница\",\n    \"defaultEn\": \"Page\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Страница столкнулась с ошибкой\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:18",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"This page encountered an error\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.страны\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"This page encountered an error\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Страницы книги\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Страницы книги\",\n    \"defaultRu\": \"Страницы книги\",\n    \"defaultEn\": \"Book pages\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.страны\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:19",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Export exactly the reviewed interface additions to the canonical editor catalog.",
+      "before": "    \"defaultEn\": \"Remove from shelf\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Увеличить масштаб глобуса\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Remove from shelf\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Увеличить изображение\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Увеличить изображение\",\n    \"defaultRu\": \"Увеличить изображение\",\n    \"defaultEn\": \"Enlarge image\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Увеличить масштаб глобуса\",\n    \"group\": \"Весь интерфейс\",\n"
+    }
+  ],
+  "catalogIntegrationContext": {
+    "mainSha": "c052599516af0658c3764d4c69bfcaac485f2e0c",
+    "reason": "PR #180 added five separately attested shelf translations. Refresh only catalog hunk context around those entries; preserve the same seventeen article-book additions and one neutral availability-copy replacement."
+  }
+}

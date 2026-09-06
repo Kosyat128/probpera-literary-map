@@ -4,6 +4,7 @@ import { withClientAdminPath } from "./admin-path";
 import {
   prepareClientImage,
   type ClientImageUsage,
+  type ClientImagePreparation,
 } from "./client-image-upload";
 
 type EditorImageUploadResponse = {
@@ -18,6 +19,7 @@ type EditorImageUploadResponse = {
 };
 
 export type EditorImageUploadResult = {
+  preparation?: ClientImagePreparation;
   url: string;
   mediaId: string | null;
   width: number;
@@ -99,5 +101,13 @@ export async function uploadEditorImage(
     throw new Error(body.error || "Не удалось загрузить изображение.");
   }
   options.onProgress?.("upload", 100);
-  return result;
+  return {
+    ...result,
+    preparation: {
+      width: prepared.width,
+      height: prepared.height,
+      originalBytes: prepared.originalBytes,
+      outputBytes: prepared.outputBytes,
+    },
+  };
 }
