@@ -95,13 +95,13 @@ jobs:
           set -euo pipefail
           xcodebuild -project apps/mobile/ios/App/App.xcodeproj -list -json > .tmp/ios-simulator-ci/schemes.json
           node scripts/mobile/ios-simulator-build.mjs scheme
-          xcodebuild -resolvePackageDependencies -project apps/mobile/ios/App/App.xcodeproj -scheme App -clonedSourcePackagesDir "$RUNNER_TEMP/ios-spm" 2>&1 | tee .tmp/ios-simulator-ci/package-resolution.log
+          xcodebuild -resolvePackageDependencies -project apps/mobile/ios/App/App.xcodeproj -scheme App -clonedSourcePackagesDirPath "$RUNNER_TEMP/ios-spm" 2>&1 | tee .tmp/ios-simulator-ci/package-resolution.log
           node scripts/mobile/ios-simulator-build.mjs resolved
 
       - name: Build unsigned for the generic iOS Simulator
         run: |
           set -euo pipefail
-          xcodebuild build -project apps/mobile/ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/ios-derived" -clonedSourcePackagesDir "$RUNNER_TEMP/ios-spm" -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile -resultBundlePath "$RUNNER_TEMP/ios-build.xcresult" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' 2>&1 | tee .tmp/ios-simulator-ci/xcode-build.log
+          xcodebuild build -project apps/mobile/ios/App/App.xcodeproj -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/ios-derived" -clonedSourcePackagesDirPath "$RUNNER_TEMP/ios-spm" -disableAutomaticPackageResolution -onlyUsePackageVersionsFromResolvedFile -resultBundlePath "$RUNNER_TEMP/ios-build.xcresult" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' 2>&1 | tee .tmp/ios-simulator-ci/xcode-build.log
           plutil -convert json -o .tmp/ios-simulator-ci/app-info.json "$RUNNER_TEMP/ios-derived/Build/Products/Debug-iphonesimulator/App.app/Info.plist"
           xcrun vtool -show-build "$RUNNER_TEMP/ios-derived/Build/Products/Debug-iphonesimulator/App.app/App" > .tmp/ios-simulator-ci/mach-o-build.txt
           node scripts/mobile/verify-native-artifact.mjs --dir dist-native > .tmp/ios-simulator-ci/audit-after-build.json
