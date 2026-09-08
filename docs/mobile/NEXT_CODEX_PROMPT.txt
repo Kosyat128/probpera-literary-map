@@ -1,3 +1,9 @@
+LATEST CLOUD RETRY:34179803208 at325e9f3c. Do not duplicate. Read
+evidence/S04/ios-runtime-20260908/retry-preparation.json and first-failure.
+Original34178911693 compiled/booted but timed out installing; no runtime pass.
+Retry changes only existing helper deadline/diagnostics, with62+4 focused
+checks passed. Current app content/private history was not newly published.
+
 ACTIVE CLOUD RUN:34178911693, job101913771012, public commit9eacf983.
 Read evidence/S04/ios-runtime-20260908/preparation.json. Do not duplicate the
 run or republish the current private App tree. Only two existing public CI

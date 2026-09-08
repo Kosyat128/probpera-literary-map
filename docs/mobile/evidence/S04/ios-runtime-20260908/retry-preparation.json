@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T02:23:38.212Z",
+  "kind": "s04-ios-runtime-bounded-retry",
+  "status": "REMOTE_RUN_IN_PROGRESS",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "publication": {
+    "repository": "Kosyat128/probpera-literary-map",
+    "branch": "codex/literary-planet-v12-ios-ci",
+    "publicParent": "9eacf9834b9949453fa8d9457ec19ae93cd2c4c1",
+    "files": [
+      {
+        "path": "scripts/mobile/ios-simulator-build.mjs",
+        "bytes": 23724,
+        "sha256": "ca5b3d181a7c91663b066c398928d54e2edb39493290b8783377b7eb5205aa9e",
+        "blobSha": "dc52275f6bec608d63ea813d5adaf38be24f2ba8"
+      }
+    ],
+    "scope": "Only existing public workflow/helper updated to run isolated simulator smoke on the same authorized historical source payload.",
+    "authorization": "Existing explicit approval to publish prepared source and run test iOS build; no new app/content payload, private history, production action or store submission.",
+    "productionActionsPerformed": false,
+    "internalHistoryIncluded": false,
+    "currentMainCandidate": false,
+    "publicCommit": "325e9f3c0daef6600c1a96e5af76c9f9d2f857c4",
+    "publicTree": "0ba8e8d71236a2299607cab27617b517691e1db0",
+    "compareVerified": true,
+    "changedFiles": 1,
+    "onlyOnePublicParent": true,
+    "forceUpdate": false,
+    "appSourcesUnchanged": true
+  },
+  "run": {
+    "id": 34179803208,
+    "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/34179803208",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "reason": "Preserved first run installed for66.774s then SIGKILL under the60s harness limit. Native compilation/boot/cleanup passed, but no application launch was reached.",
+  "firstFailure": "docs/mobile/evidence/S04/ios-runtime-20260908/first-failure/result.json",
+  "changes": [
+    "Installation deadline is240s with unchanged12min overall smoke step.",
+    "Signaled commands record null exitCode, signal/error code and elapsed duration.",
+    "timedOut records an explicitly observed harness deadline firing rather than inferring timeout from SIGKILL."
+  ],
+  "validation": {
+    "helperTests": {
+      "passed": 62,
+      "failed": 0,
+      "seconds": 1.18
+    },
+    "nodeSyntax": "PASS",
+    "actualSubprocessProbes": {
+      "passed": 4,
+      "failed": 0,
+      "cases": [
+        "success",
+        "exit3",
+        "deadline SIGKILL",
+        "ENOENT"
+      ]
+    }
+  },
+  "pending": [
+    "Cloud retry compilation and both simulator runs",
+    "Independent RU/EN screenshot inspection"
+  ],
+  "limitations": [
+    "Same authorized historical app payload, not current local App/main.",
+    "No native runtime success, production action, RC screenshot or stage acceptance at this checkpoint."
+  ]
+}

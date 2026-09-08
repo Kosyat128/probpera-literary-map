@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "kind": "ios-simulator-runtime-smoke",
+  "sourceCommit": "9eacf9834b9949453fa8d9457ec19ae93cd2c4c1",
+  "buildId": "9eb7b9ad965893de8ea5656746fe28af828115d654e471101839ef878616a91a",
+  "executableSha256": "f46eb4d65ee106a3ebe574bfd40da06e7e1ca8b361c825b692237a10682cdb44",
+  "artifactSha256": "55df0c938831187f07cd6571ddbe0d04f8d2179fcfdb7c60c897fd6bfec198db",
+  "startedAt": "2026-09-08T02:10:28.393Z",
+  "locales": [
+    {
+      "locale": "ru",
+      "languageArguments": [
+        "-AppleLanguages",
+        "(ru)",
+        "-AppleLocale",
+        "ru_RU"
+      ],
+      "booted": true,
+      "installed": false,
+      "launched": false,
+      "livenessChecks": [],
+      "screenshotCaptured": false,
+      "cleanup": {
+        "shutdown": true,
+        "deleted": true
+      },
+      "deviceId": "97710660-ED7C-48F2-B0F1-7DC1DB2FB75B"
+    }
+  ],
+  "smokePassed": false,
+  "visibleUiVerified": false,
+  "localeUiVerified": false,
+  "exactRcScreenshots": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "limitations": [
+    "Boot, install, process liveness and screenshot capture only. The captured images require visual review before claiming a visible localized application.",
+    "Historical authorized source projection; no current-main, physical-device, purchase, child-mode or store acceptance."
+  ],
+  "target": {
+    "runtime": {
+      "identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-5",
+      "version": "26.5",
+      "name": "iOS 26.5"
+    },
+    "deviceType": {
+      "identifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17",
+      "name": "iPhone 17"
+    }
+  },
+  "failure": "Simulator command failed: simctl install 97710660-ED7C-48F2-B0F1-7DC1DB2FB75B (SIGKILL)",
+  "finishedAt": "2026-09-08T02:13:55.927Z"
+}

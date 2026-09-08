@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T02:20:33.596Z",
+  "runId": 34178911693,
+  "jobId": 101913771012,
+  "publicCommit": "9eacf9834b9949453fa8d9457ec19ae93cd2c4c1",
+  "conclusion": "failure",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "artifact": {
+    "id": 10038329243,
+    "bytes": 61807130,
+    "sha256": "fb016890071b45031cb348e22bb2f56fa1a611bb21658c9b48f8494fe5e12e81",
+    "path": ".tmp/ios-runtime-34178911693/artifact.zip",
+    "githubDigestMatched": true,
+    "extractedChecksumsMatched": 7
+  },
+  "passed": [
+    "Canonical iOS web build and strict audit",
+    "Native sync/payload identity",
+    "Swift package resolution",
+    "Unsigned simulator compilation",
+    "Fresh iOS26.5/iPhone17 boot",
+    "Owned simulator shutdown and deletion after failure"
+  ],
+  "failed": {
+    "step": "simctl install",
+    "configuredTimeoutMs": 60000,
+    "observedDurationMs": 66774,
+    "signal": "SIGKILL",
+    "stdout": "",
+    "stderr": "",
+    "launched": false,
+    "screenshotCaptured": false
+  },
+  "interpretation": "The harness terminated installation after its deadline. This does not establish an application crash or installer rejection. Retry increases only the finite install deadline; no app source change is indicated by these observations.",
+  "diagnosticCorrection": "Raw first transcript used error?.code ?? 0 and therefore records exitCode0 with SIGKILL. Preserve that raw record; the helper follow-up must record null for a signaled non-exit instead of implying a normal zero exit.",
+  "limits": [
+    "No RU/EN simulator app launch, image or visible UI success from this failed run.",
+    "Downloaded package is historical public source plus CI delta; not current local native App or a release candidate."
+  ]
+}

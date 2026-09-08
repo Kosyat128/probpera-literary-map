@@ -139,3 +139,12 @@ assertions passed. Cloud run34178911693/job101913771012 is IN_PROGRESS.
 It will create separate RU/EN iPhone simulators, check installed bytes, launch,
 observe liveness and capture actual screens. Screenshot visual review remains
 pending; no runtime or current-main iOS success is claimed at this checkpoint.
+
+Latest iOS checkpoint:34178911693 failed during simulator installation after
+66.774s under a60s test deadline. Build, boot and owned-device cleanup passed;
+no app launch or screenshot is claimed. Outer artifactSHA matches GitHub and
+7 extracted diagnostic files match manifest hashes. Original failed transcript
+is retained, including its misleading exitCode0 beside SIGKILL.
+Minimal helper fix:240s install bound and explicit null/signal/deadline reporting;
+62 helper tests plus4 real subprocess probes passed. Only this public helper
+changed over9eacf983. Retry34179803208 at325e9f3c is IN_PROGRESS.
