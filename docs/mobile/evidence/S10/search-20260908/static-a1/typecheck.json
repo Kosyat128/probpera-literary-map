@@ -1,0 +1,23 @@
+{
+  "name": "typecheck",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-08T11:47:58.154Z",
+  "durationMs": 38443,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/data/bookSearchAliases.test.ts(58,24): error TS2345: Argument of type '{ provider: string; url: string; authorityId: string; recordId: string; recordKind: \"national-bibliography\" | \"publisher-catalog\"; market: string; language: string; fields: string[]; usage: \"reference-only\"; retrievedAt: string; }' is not assignable to parameter of type 'WorkSourceProfile'.\r\n  Types of property 'fields' are incompatible.\r\n    Type 'string[]' is not assignable to type '(\"language\" | \"identity\" | \"authorship\" | \"title\" | \"container-title\" | \"contained-title\" | \"original-title\" | \"publication-year\" | \"genre\" | \"description\" | \"award-criterion\" | \"bestseller-evidence\" | \"market\" | \"period\" | \"measurement\")[]'.\r\n      Type 'string' is not assignable to type '\"language\" | \"identity\" | \"authorship\" | \"title\" | \"container-title\" | \"contained-title\" | \"original-title\" | \"publication-year\" | \"genre\" | \"description\" | \"award-criterion\" | \"bestseller-evidence\" | \"market\" | \"period\" | \"measurement\"'.\r\nsrc/search/globalSearchIndex.test.ts(203,22): error TS2345: Argument of type '{ provider: string; url: string; authorityId: string; recordId: string; recordKind: \"national-bibliography\" | \"publisher-catalog\"; language: string; market: string; fields: string[]; usage: \"reference-only\"; retrievedAt: string; }' is not assignable to parameter of type 'WorkSourceProfile'.\r\n  Types of property 'fields' are incompatible.\r\n    Type 'string[]' is not assignable to type '(\"language\" | \"identity\" | \"authorship\" | \"title\" | \"container-title\" | \"contained-title\" | \"original-title\" | \"publication-year\" | \"genre\" | \"description\" | \"award-criterion\" | \"bestseller-evidence\" | \"market\" | \"period\" | \"measurement\")[]'.\r\n      Type 'string' is not assignable to type '\"language\" | \"identity\" | \"authorship\" | \"title\" | \"container-title\" | \"contained-title\" | \"original-title\" | \"publication-year\" | \"genre\" | \"description\" | \"award-criterion\" | \"bestseller-evidence\" | \"market\" | \"period\" | \"measurement\"'.\r\n",
+      "bytes": 1991,
+      "sha256": "9de7da1834a6450a504beb7cd278aa22afd3cbc690b8f96b41004d367196a834"
+    },
+    "stderr": {
+      "text": "",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

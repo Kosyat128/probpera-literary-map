@@ -6,6 +6,7 @@ import { createHash } from "node:crypto";
 import { load } from "cheerio";
 import ts from "typescript";
 import { bookDossierStaticIssues } from "../audit-book-dossier-delivery.mjs";
+import { CANONICAL_BOOK_SOURCE_REGISTRY } from "./pwa-artifact.mjs";
 
 const SHA = /^[a-f0-9]{64}$/u;
 const json = value => JSON.stringify(value, null, 2) + "\n";
@@ -18,7 +19,7 @@ const packages = Object.freeze({
   "@capacitor/core": "8.5.1", "@capacitor/cli": "8.5.1", "@capacitor/android": "8.5.1", "@capacitor/ios": "8.5.1",
   "@capacitor/app": "8.1.1", "@capacitor/network": "8.0.1", "@capacitor/preferences": "8.0.1", "@capacitor/browser": "8.0.4", "@capacitor/app-launcher": "8.0.1",
 });
-const sourceRoots = ["src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs"];
+const sourceRoots = ["src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY];
 const attributionFiles = new Set(["assets/country-flags/ATTRIBUTION.md", "fonts/editorial/LICENSE.source-sans-3.md", "fonts/editorial/LICENSE.source-serif-4.md"]);
 const within = (root, file) => { const relative = path.relative(root, file); return relative && relative !== ".." && !relative.startsWith(".." + path.sep) && !path.isAbsolute(relative); };
 function relativePath(value) {
@@ -138,7 +139,9 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
       if (!same(expected, [...inputMap.keys()])) add("SOURCE_INPUT_SET", "artifact.json", "Snapshot omits or invents a current build input.");
     } catch { add("SOURCE_INPUT_SET", "artifact.json", "Could not independently enumerate source inputs."); }
   }
-  for (const required of sourceRoots.filter(name => name !== "src")) if (!inputMap.has(required)) add("SOURCE_INPUT_SET", required, "Required native build/configuration input is missing.");
+  // Historical artifacts predating this import retain their existing snapshot.
+  // Any artifact that claims the registry module must still bind its exact input.
+  for (const required of sourceRoots.filter(name => name !== "src" && (checkSourceFreshness || name !== CANONICAL_BOOK_SOURCE_REGISTRY))) if (!inputMap.has(required)) add("SOURCE_INPUT_SET", required, "Required native build/configuration input is missing.");
   if (sha(json({ sourceCommit: artifact.sourceCommit, sourceInputsSha256: inputs?.sha256, platform: artifact.platform, channel: artifact.channel, inventory: artifact.inventory })) !== artifact.buildId) add("BUILD_ID", "artifact.json", "Build identity does not bind the exact source, platform/channel and inventory.");
   try {
     const config = await readJson(root, "capacitor.config.json");
@@ -212,8 +215,9 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
         // Rollup/Vite virtual identifiers are metadata, not loadable file paths.
         if (module.startsWith("\0")) continue;
         const filename = relativePath(module.split("?")[0]);
-        if (!filename.startsWith("src/") && !filename.startsWith("node_modules/") && filename !== "native.html") throw new Error();
-        if (filename.startsWith("src/") && !inputMap.has(filename)) throw new Error();
+        if (!filename.startsWith("src/") && !filename.startsWith("node_modules/") && filename !== "native.html" && filename !== CANONICAL_BOOK_SOURCE_REGISTRY) throw new Error();
+        if ((filename.startsWith("src/") || filename === CANONICAL_BOOK_SOURCE_REGISTRY) && !inputMap.has(filename)) throw new Error();
+        if (filename === CANONICAL_BOOK_SOURCE_REGISTRY && module !== filename) throw new Error();
         moduleIds.add(filename);
       }
     }

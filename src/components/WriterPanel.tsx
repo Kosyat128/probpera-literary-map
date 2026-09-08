@@ -94,6 +94,7 @@ type WriterPanelProps = {
   onRetryBooks: () => void;
   selectedWriter?: Writer | null;
   focusRequestId?: number;
+  applicationRoot?: boolean;
   onWriterSelect?: (writer: Writer) => void;
   onWorkSelect?: (
     countryId: string,
@@ -169,6 +170,7 @@ export default function WriterPanel({
   onRetryBooks,
   selectedWriter,
   focusRequestId,
+  applicationRoot = false,
   onWriterSelect,
   onWorkSelect,
   onShowWriterOnGlobe,
@@ -281,11 +283,21 @@ export default function WriterPanel({
       return;
     }
     const frame = window.requestAnimationFrame(() => {
-      handledFocusRequest.current = focusRequestId;
+      if (!applicationRoot) {
+        handledFocusRequest.current = focusRequestId;
+        scrollToWriterDetail();
+        return;
+      }
+      const detail = detailRef.current;
+      if (!detail?.isConnected || detail.closest('[inert], [hidden], [aria-hidden="true"]')) return;
+      const style = window.getComputedStyle(detail);
+      if (style.visibility !== "visible" || style.display === "none" ||
+        !detail.getClientRects().length) return;
       scrollToWriterDetail();
+      if (document.activeElement === detail) handledFocusRequest.current = focusRequestId;
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [activeWriter, focusRequestId, scrollToWriterDetail]);
+  }, [activeWriter, applicationRoot, focusRequestId, scrollToWriterDetail]);
 
   const sortedWriters = useMemo(
     () =>

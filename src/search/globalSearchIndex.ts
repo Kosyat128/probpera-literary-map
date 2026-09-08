@@ -5,6 +5,7 @@ import {
 } from "../data/bookArchive";
 import { presentBookArchiveEntry } from "../data/bookArchiveQueue";
 import { isPublicBook } from "../data/bookQuality";
+import { getEvidenceBackedOppositeLocaleBookTitleAliases } from "../data/bookSearchAliases";
 import {
   selectBookMetadataLabels,
   selectBookOriginalLanguage,
@@ -600,6 +601,8 @@ export function createGlobalSearchIndex({
   for (const book of books) {
     if (!isPublicBook(book)) continue;
     const displayedBook = presentBookArchiveEntry(book, language);
+    const oppositeLocaleTitleAliases =
+      getEvidenceBackedOppositeLocaleBookTitleAliases(book, language);
     const writerName = selectBookWriterName(
       book,
       language,
@@ -645,13 +648,14 @@ export function createGlobalSearchIndex({
       secondaryValues: [
         localizedCountryName,
         ...(book.alternateTitles || []),
+        ...oppositeLocaleTitleAliases,
         ...verifiedMetadata,
       ],
       suggestionFields: {
         title: [displayedBook.title],
         writer: [writerName],
         original: [book.originalTitle],
-        alternate: [...(book.alternateTitles || [])],
+        alternate: [...(book.alternateTitles || []), ...oppositeLocaleTitleAliases],
         country: [
           localizedCountryName,
           book.countryName,

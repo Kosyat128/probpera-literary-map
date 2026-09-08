@@ -7,7 +7,7 @@ import { load } from "cheerio";
 import sharp from "sharp";
 import ts from "typescript";
 import { build as bundle } from "esbuild";
-import { PWA_BOOTSTRAP_ENTRIES, bootstrapSourcePath, bootstrapManifestKeys, normalizePwaAuthority, pwaAuthoritySha256, loadPwaAuthority } from "./pwa-artifact.mjs";
+import { PWA_BOOTSTRAP_ENTRIES, CANONICAL_BOOK_SOURCE_REGISTRY, bootstrapSourcePath, bootstrapManifestKeys, normalizePwaAuthority, pwaAuthoritySha256, loadPwaAuthority } from "./pwa-artifact.mjs";
 import { normalizePwaWorkerConfig } from "../../src/pwa/serviceWorkerRuntime.js";
 import { PWA_BOOTSTRAP_MAX_FILES, PWA_BOOTSTRAP_MAX_FILE_BYTES, PWA_BOOTSTRAP_MAX_TOTAL_BYTES } from "../../src/pwa/pwaBootstrapBudgets.ts";
 import { PWA_PORTRAIT_SELECTION_PATH, PWA_PORTRAIT_PREFIX, selectPwaPortraitAssets } from "./pwa-portrait-selection.mjs";
@@ -229,8 +229,8 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
     }
     if (digest(json(inputs.files)) !== inputs.sha256) add("SOURCE_INPUT_DIGEST", "artifact.json", "Source-input aggregate digest does not match the ordered records.");
     try {
-      const names = execFileSync("git", ["-c", "safe.directory=" + root, "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", "src", "index.html", "vite.config.ts", "vite.pwa.config.ts", "tsconfig.json", "package.json", "package-lock.json", "scripts/mobile/build-pwa.mjs", "scripts/mobile/pwa-artifact.mjs", "scripts/mobile/pwa-shell.mjs", "scripts/mobile/pwa-portrait-selection.mjs", PWA_PORTRAIT_SELECTION_PATH], { cwd: root, encoding: "utf8", maxBuffer: 4 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }).split("\0");
-      const expected = [...new Set(names)].filter(name => name && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(name)).sort();
+      const names = execFileSync("git", ["-c", "safe.directory=" + root, "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", "src", "index.html", "vite.config.ts", "vite.pwa.config.ts", "tsconfig.json", "package.json", "package-lock.json", "scripts/mobile/build-pwa.mjs", "scripts/mobile/pwa-artifact.mjs", "scripts/mobile/pwa-shell.mjs", "scripts/mobile/pwa-portrait-selection.mjs", PWA_PORTRAIT_SELECTION_PATH, CANONICAL_BOOK_SOURCE_REGISTRY], { cwd: root, encoding: "utf8", maxBuffer: 4 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }).split("\0");
+      const expected = [...new Set([...names, CANONICAL_BOOK_SOURCE_REGISTRY])].filter(name => name && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(name)).sort();
       if (!sameJson(expected, [...inputMap.keys()])) add("SOURCE_INPUT_SET", "artifact.json", "Snapshot does not cover the current tracked/untracked build-input set.");
     } catch { add("SOURCE_INPUT_SET", "artifact.json", "Cannot independently enumerate current Git source inputs."); }
   }

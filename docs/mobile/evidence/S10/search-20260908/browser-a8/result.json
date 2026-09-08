@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-search-20260908-a8",
+  "title": "mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work",
+  "head": "3eee7d08e288f7f2d9ed4761c870d6cbac18a2d3",
+  "status": "SOURCE_BROWSER_PASSED",
+  "pass": true,
+  "sourceInputsSha256": "a7746785e4ce147964d4217ef884e24037328d04b2c917a8b9e0b00a38df25ac",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T12:13:17.178Z",
+    "duration": 15840.835000000001,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "exitCode": 0,
+  "cases": [
+    {
+      "title": "mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 11903,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a8/playwright.json",
+      "bytes": 151546,
+      "sha256": "5f5735e5abaf49b69371b31750695ea98424bfc97139d395b1a3d5825751c69f"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a8/native-search-book-ru-open.json",
+      "bytes": 28694,
+      "sha256": "30be891a0a9187ee1ee97df25986626b1adad99b31ec4b6f863a8a68c9f21c77"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a8/native-search-book-ru-open-screenshot.png",
+      "bytes": 111147,
+      "sha256": "6e7308ae20a16fd41ec30f8396425b2cb75ba9f5426361b749dcf7362218c23f"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a8/native-search-book-en-open.json",
+      "bytes": 27562,
+      "sha256": "411194294ca545b62c7d39390aecb3f42fe5e35b4d0d5d485aa6105cf467c1a4"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a8/native-search-book-en-open-screenshot.png",
+      "bytes": 110704,
+      "sha256": "9e865165eeeb7ab6f90d3479e52730dbeb23b6641ee8a1c4110b5851a55a04a4"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a8/native-search-book-bilingual-complete.json",
+      "bytes": 27579,
+      "sha256": "d241568ff070f8de4e072724efc9635c8c0a8c97adff91e1190d1490ae2c1228"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a8/native-search-book-bilingual-complete-screenshot.png",
+      "bytes": 396827,
+      "sha256": "5e7c7ea511a15382824f035253e018d0235efe30ceb079e9408df3cb9ee4b01d"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a8/native-final-passed.json",
+      "bytes": 25010,
+      "sha256": "10536ef3e6c1b423618fdb9d749a46c7e6b7ee0a7ea2651a558e029e46207b7c"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a8/native-final-passed-screenshot.png",
+      "bytes": 396827,
+      "sha256": "5e7c7ea511a15382824f035253e018d0235efe30ceb079e9408df3cb9ee4b01d"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

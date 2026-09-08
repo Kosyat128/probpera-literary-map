@@ -1,0 +1,8 @@
+{
+  "failureEvidence": "static-a1/typecheck.json",
+  "reason": "Array.map widened synthetic source field literals to string[]; literal const assertions restore the WorkSourceProfile field union.",
+  "files": ["src/data/bookSearchAliases.test.ts", "src/search/globalSearchIndex.test.ts"],
+  "productionBehaviorChangedByTypeCorrection": false,
+  "regressionPlan": "Repeat only these two affected test files plus final TypeScript. Keep the initial 259-test result without double-counting repeated tests.",
+  "receiptReconstruction": "A helper attempted to reuse exact prior test bytes, but mixed LF/CRLF input reconstruction could not prove the second file hash. No reuse receipt was produced; the two affected files are tested directly instead."
+}

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work"
+  ],
+  "startedAt": "2026-09-08T12:13:16.302Z",
+  "durationMs": 16848,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  ok 1 tests\\host\\native-planet.spec.mjs:1680:1 › mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work (11.9s)\n\n  1 passed (15.8s)\n",
+      "bytes": 206,
+      "sha256": "7f65d6d2c65e929d9d78e8bd6c34113d9a3ae2fcf8c70a6614962475c1af0e75"
+    },
+    "stderr": {
+      "text": "(node:19260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "084057cd1132fccf8957910cd662233f4e9e3cad749def730401089068af5284"
+    }
+  }
+}

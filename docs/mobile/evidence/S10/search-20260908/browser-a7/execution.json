@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work"
+  ],
+  "startedAt": "2026-09-08T12:12:06.478Z",
+  "durationMs": 12220,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  x  1 tests\\host\\native-planet.spec.mjs:1680:1 › mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work (7.3s)\n\n\n  1) tests\\host\\native-planet.spec.mjs:1680:1 › mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work \n\n    Error: expect(locator).toBeInViewport() failed\n\n    Locator: locator('.native-planet-panel').locator('#book-archive-detail').getByRole('heading', { name: 'Преступление и наказание', exact: true })\n    Expected: in viewport\n    Error: strict mode violation: locator('.native-planet-panel').locator('#book-archive-detail').getByRole('heading', { name: 'Преступление и наказание', exact: true }) resolved to 2 elements:\n        1) <h3 data-cms-kind=\"text\" data-cms-copy-key=\"\" data-cms-entity=\"book\" data-cms-field=\"title\" data-cms-label=\"Название произведения\" data-cms-value=\"Преступление и наказание\" data-cms-source-text=\"Преступление и наказание\" data-cms-entity-id=\"russia:dostoevsky:crime-and-punishment\" data-cms-key=\"book.russia:dostoevsky:crime-and-punishment.title\" data-cms-admin-href=\"/library?country_id=russia&writer_id=dostoevsky&work_id=russia%3Adostoevsky%3Acrime-and-punishment\">Преступление и наказание</h3> aka getByRole('region', { name: 'Преступление и наказание' }).locator('h3')\n        2) <h4>Преступление и наказание</h4> aka getByLabel('Досье книги').getByRole('heading', { name: 'Преступление и наказание' })\n\n    Call log:\n      - Expect \"toBeInViewport\" with timeout 15000ms\n      - waiting for locator('.native-planet-panel').locator('#book-archive-detail').getByRole('heading', { name: 'Преступление и наказание', exact: true })\n\n\n      1738 |       await expect(detail).toBeVisible();\n      1739 |       await expect(detail).toHaveAccessibleName(visibleTitle);\n    > 1740 |       await expect(detail.getByRole(\"heading\", { name: visibleTitle, exact: true })).toBeInViewport();\n           |                                                                                      ^\n      1741 |       await expect.poll(() => new URL(page.url()).searchParams.get(\"book\")).toBe(selectedBook.key);\n      1742 |       expect(new URL(page.url()).searchParams.get(\"country\")).toBe(\"russia\");\n      1743 |       expect(new URL(page.url()).searchParams.get(\"writer\")).toBe(\"dostoevsky\");\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1740:86\n\n    attachment #2: native-final-failed-screenshot (image/png) ──────────────────────────────────────\n    .tmp\\native-planet-browser-results\\s10-search-20260908-a7\\artifacts\\native-planet-mobile-globe-7c3ea--to-the-same-canonical-work\\attachments\\native-final-failed-screenshot-586f5cad91a08e0deb137c99088fb2464c896630.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: .tmp\\native-planet-browser-results\\s10-search-20260908-a7\\artifacts\\native-planet-mobile-globe-7c3ea--to-the-same-canonical-work\\error-context.md\n\n    Error Context: .tmp\\native-planet-browser-results\\s10-search-20260908-a7\\artifacts\\native-planet-mobile-globe-7c3ea--to-the-same-canonical-work\\error-context.md\n\n  1 failed\n    tests\\host\\native-planet.spec.mjs:1680:1 › mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work \n",
+      "bytes": 3890,
+      "sha256": "97a05046b60c97c6e9a34867700572d291e3ab21657904a4394abb3fb8b8a4f0"
+    },
+    "stderr": {
+      "text": "(node:44628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "b0b8bc0da41447604144529fab32e8b35d2cfdf868daa2c234b4a0b9139aced2"
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { afterEach, describe, expect, it } from "vitest";
 import { verifyNativeArtifact } from "./verify-native-artifact.mjs";
+import { CANONICAL_BOOK_SOURCE_REGISTRY } from "./pwa-artifact.mjs";
 
 const roots = [];
 const json = value => JSON.stringify(value, null, 2) + "\n";
@@ -20,7 +21,7 @@ async function fixture({ platform = "android", ownership = true } = {}) {
   const pkg = { dependencies: Object.fromEntries(Object.entries(nativePackages).filter(([name]) => name !== "@capacitor/cli")), devDependencies: { "@capacitor/cli": "8.5.1" } };
   const lock = { packages: Object.fromEntries(Object.entries(nativePackages).map(([name, version]) => ["node_modules/" + name, { version, integrity: "sha512-" + Buffer.alloc(64, 1).toString("base64") }])) };
   const config = { appId: "ru.probpera.literaryplanet", appName: "Literary Planet", webDir: "dist-native", loggingBehavior: "debug", android: { path: "apps/mobile/android", allowMixedContent: false }, ios: { path: "apps/mobile/ios" }, server: { hostname: "localhost", androidScheme: "https", iosScheme: "capacitor" } };
-  const sources = ["src/App.tsx", "src/host/mountHostApp.tsx", `src/platform/adapters/${platform}/entry.ts`, `src/platform/adapters/${platform}/${platform === "android" ? "Android" : "Ios"}PlatformAdapter.ts`, "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs"].sort();
+  const sources = ["src/App.tsx", "src/host/mountHostApp.tsx", `src/platform/adapters/${platform}/entry.ts`, `src/platform/adapters/${platform}/${platform === "android" ? "Android" : "Ios"}PlatformAdapter.ts`, "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY].sort();
   for (const file of sources) await write(file, file.endsWith(".json") ? "{}\n" : "fixture source " + file, root);
   await write("package.json", json(pkg), root); await write("package-lock.json", json(lock), root); await write("capacitor.config.json", json(config), root);
   const sourceInputs = { sha256: "", files: [] };
@@ -41,7 +42,7 @@ async function fixture({ platform = "android", ownership = true } = {}) {
     "src/detail.ts": { file: "assets/detail.js", isDynamicEntry: true },
   };
   await write(".vite/manifest.json", json(vite));
-  const modules = [...sources.filter(file => file.startsWith("src/")), ...["core", "app", "network", "preferences", "browser", "app-launcher"].map(name => `node_modules/@capacitor/${name}/dist/esm/index.js`), "\0vite/modulepreload-polyfill.js"].sort();
+  const modules = [...sources.filter(file => file.startsWith("src/") || file === CANONICAL_BOOK_SOURCE_REGISTRY), ...["core", "app", "network", "preferences", "browser", "app-launcher"].map(name => `node_modules/@capacitor/${name}/dist/esm/index.js`), "\0vite/modulepreload-polyfill.js"].sort();
   const owned = { schemaVersion: 1, platform, chunks: [] };
   if (ownership) {
     for (const file of ["assets/app.js", "assets/child.js", "assets/detail.js"]) owned.chunks.push({ file, sha256: sha(await readFile(path.join(output, file))), modules: file === "assets/app.js" ? modules : ["\0fixture/" + file] });
@@ -77,6 +78,51 @@ afterEach(async () => {
   }
 });
 const codes = result => result.findings.map(finding => finding.code);
+describe("canonical registry artifact binding", () => {
+  it("accepts the exact native registry module and rejects changed or missing registry source bytes", async () => {
+    const f = await fixture();
+    expect((await f.audit()).findings).toEqual([]);
+    await f.write(CANONICAL_BOOK_SOURCE_REGISTRY, json({ registryVersion: "changed-fixture" }), f.root);
+    expect(codes(await f.audit())).toContain("STALE_SOURCE");
+    await rm(path.join(f.root, CANONICAL_BOOK_SOURCE_REGISTRY));
+    expect(codes(await f.audit())).toContain("SOURCE_INPUTS");
+  });
+
+  it("rejects native registry ownership without its input hash even after identities are recomputed", async () => {
+    const f = await fixture();
+    f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(file => file.path !== CANONICAL_BOOK_SOURCE_REGISTRY);
+    f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files));
+    await f.saveIdentity();
+    expect(codes(await f.audit())).toEqual(expect.arrayContaining(["SOURCE_INPUT_SET", "MODULE_OWNERSHIP"]));
+    expect(codes(await f.audit({ checkSourceFreshness: false }))).toContain("MODULE_OWNERSHIP");
+  });
+
+  it("does not widen native ownership to other data files or registry query variants", async () => {
+    const f = await fixture();
+    const chunk = f.owned.chunks[0];
+    const original = [...chunk.modules];
+    for (const module of ["data/other-registry.json", CANONICAL_BOOK_SOURCE_REGISTRY + "?raw"]) {
+      chunk.modules = [...original, module].sort();
+      await f.write("module-ownership.json", json(f.owned));
+      await f.refresh();
+      expect(codes(await f.audit())).toContain("MODULE_OWNERSHIP");
+    }
+  });
+
+  it("keeps pre-registry native snapshots historical only when no registry module is claimed", async () => {
+    const f = await fixture();
+    f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(file => file.path !== CANONICAL_BOOK_SOURCE_REGISTRY);
+    f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files));
+    for (const chunk of f.owned.chunks) chunk.modules = chunk.modules.filter(module => module !== CANONICAL_BOOK_SOURCE_REGISTRY);
+    await f.write("module-ownership.json", json(f.owned));
+    await f.refresh();
+    const historical = await f.audit({ checkSourceFreshness: false });
+    expect(historical.findings).toEqual([]);
+    expect(historical.sourceFreshnessChecked).toBe(false);
+    expect(codes(await f.audit())).toContain("SOURCE_INPUT_SET");
+  });
+});
+
 describe("actual bundled native artifact audit", () => {
   it.each(["android", "ios"])("verifies contained %s bytes while retaining preparation/provenance limitations", async platform => {
     const f = await fixture({ platform }), result = await f.audit();

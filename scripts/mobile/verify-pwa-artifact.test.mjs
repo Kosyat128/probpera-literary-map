@@ -7,7 +7,7 @@ import sharp from "sharp";
 import { build as bundle } from "esbuild";
 import { verifyPwaArtifact } from "./verify-pwa-artifact.mjs";
 import { generatePwaShellFiles } from "./pwa-shell.mjs";
-import { PWA_BOOTSTRAP_ENTRIES, bootstrapSourcePath, pwaAuthoritySha256 } from "./pwa-artifact.mjs";
+import { PWA_BOOTSTRAP_ENTRIES, CANONICAL_BOOK_SOURCE_REGISTRY, bootstrapSourcePath, pwaAuthoritySha256 } from "./pwa-artifact.mjs";
 import { normalizePwaWorkerConfig } from "../../src/pwa/serviceWorkerRuntime.js";
 import { PWA_PORTRAIT_SELECTION_PATH } from "./pwa-portrait-selection.mjs";
 
@@ -130,6 +130,33 @@ afterEach(async () => {
   }
 });
 const codes = result => result.findings.map(finding => finding.code);
+
+describe("canonical registry artifact binding", () => {
+  it("binds PWA registry source bytes and rejects a stale or missing current registry", async () => {
+    const env = await fixture();
+    expect(env.artifact.sourceInputs.files.find(file => file.path === CANONICAL_BOOK_SOURCE_REGISTRY)).toBeDefined();
+    expect(env.ownership.entries.find(entry => entry.source === CANONICAL_BOOK_SOURCE_REGISTRY)).toBeDefined();
+    expect((await env.audit()).findings).toEqual([]);
+    await env.write(CANONICAL_BOOK_SOURCE_REGISTRY, json({ registryVersion: "changed-fixture" }), env.root);
+    expect(codes(await env.audit())).toContain("STALE_SOURCE");
+    await rm(path.join(env.root, CANONICAL_BOOK_SOURCE_REGISTRY));
+    expect(codes(await env.audit())).toContain("SOURCE_INPUTS");
+  });
+
+  it("rejects omitted PWA registry input after recomputing the snapshot and build identity", async () => {
+    const env = await fixture();
+    env.artifact.sourceInputs.files = env.artifact.sourceInputs.files.filter(file => file.path !== CANONICAL_BOOK_SOURCE_REGISTRY);
+    await env.refreshIdentities();
+    expect(codes(await env.audit())).toContain("SOURCE_INPUT_SET");
+  });
+
+  it("requires exact PWA registry module ownership in the verified offline bootstrap", async () => {
+    const env = await fixture();
+    env.ownership.entries = env.ownership.entries.filter(entry => entry.source !== CANONICAL_BOOK_SOURCE_REGISTRY);
+    await env.replaceTracked("module-ownership.json", json(env.ownership));
+    expect(codes(await env.audit())).toContain("MODULE_OWNERSHIP");
+  });
+});
 
 describe("canonical PWA portrait artifact closure", () => {
   it("accepts the same source-pinned portrait in actual output, provenance and offline bootstrap", async () => {

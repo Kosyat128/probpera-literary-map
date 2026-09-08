@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene"
+  ],
+  "startedAt": "2026-09-08T11:48:59.547Z",
+  "durationMs": 24878,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  x  1 tests\\host\\native-planet.spec.mjs:358:1 › mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene (20.6s)\n\n\n  1) tests\\host\\native-planet.spec.mjs:358:1 › mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene \n\n    Error: expect(locator).toBeFocused() failed\n\n    Locator:  locator('.writer-detail')\n    Expected: focused\n    Received: inactive\n    Timeout:  15000ms\n\n    Call log:\n      - Expect \"toBeFocused\" with timeout 15000ms\n      - waiting for locator('.writer-detail')\n        33 × locator resolved to <section tabindex=\"-1\" data-cms-entity=\"writer\" id=\"writer-biography-russia\" class=\"archive-section writer-detail\" data-cms-entity-id=\"russia:dostoevsky\" data-cms-label=\"Фёдор Михайлович Достоевский\" aria-labelledby=\"writer-biography-russia-heading\" data-cms-admin-href=\"/library?country_id=russia&writer_id=dostoevsky\">…</section>\n           - unexpected value \"inactive\"\n\n\n      399 |       await expect(toggle).toHaveAttribute(\"aria-expanded\", \"true\");\n      400 |       const detail = page.locator(\".writer-detail\");\n    > 401 |       await expect(detail).toBeFocused();\n          |                            ^\n      402 |       await expect(detail.locator(\"h4\")).toBeInViewport();\n      403 |       expect(await detail.evaluate(element => Boolean(element.closest('[inert], [hidden], [aria-hidden=\"true\"]')))).toBe(false);\n      404 |       await expect.poll(() => new URL(page.url()).searchParams.get(\"country\")).toBe(\"russia\");\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:401:28\n\n    attachment #2: native-final-failed-screenshot (image/png) ──────────────────────────────────────\n    .tmp\\native-planet-browser-results\\s10-search-20260908-a2\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\attachments\\native-final-failed-screenshot-324e1e2d76caed08f130b529d0f419ec368b6933.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: .tmp\\native-planet-browser-results\\s10-search-20260908-a2\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\error-context.md\n\n    Error Context: .tmp\\native-planet-browser-results\\s10-search-20260908-a2\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\error-context.md\n\n  1 failed\n    tests\\host\\native-planet.spec.mjs:358:1 › mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene \n",
+      "bytes": 2961,
+      "sha256": "2492feedf069bba86e467ef9dbd10fe8be7ce2dfacb1aa199dd852079bb81256"
+    },
+    "stderr": {
+      "text": "(node:10188) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "44e309ae97eacdd33fe56a0ae36a4a1cb0ea61fec071d5d4afa88912ab30d9ef"
+    }
+  }
+}

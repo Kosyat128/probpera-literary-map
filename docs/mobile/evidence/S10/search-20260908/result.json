@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T12:14:18.422Z",
+  "status": "SOURCE_VALIDATION_PASSED",
+  "stage": "S10",
+  "entry": "docs/mobile/evidence/S10/search-20260908/entry.json",
+  "testedWorkingSourceSha256": "e0c5b1c976fa664a4024b830403b17637aed7e41d6f1876e578499a554c85d13",
+  "implementation": [
+    "src/App.tsx",
+    "src/components/WriterPanel.tsx",
+    "src/host/host.css",
+    "src/data/bookSearchAliases.ts",
+    "src/search/globalSearchIndex.ts",
+    "scripts/mobile/build-native.mjs",
+    "scripts/mobile/build-pwa.mjs",
+    "scripts/mobile/pwa-artifact.mjs",
+    "scripts/mobile/verify-native-artifact.mjs",
+    "scripts/mobile/verify-pwa-artifact.mjs"
+  ],
+  "validation": {
+    "uniqueUnitPasses": 259,
+    "unitFiles": 9,
+    "repeatedAffectedUnitPasses": 28,
+    "repeatedTestsNotAddedToUniqueTotal": true,
+    "unitEvidence": [
+      "unit-a1/result.json",
+      "unit-types-a1/result.json"
+    ],
+    "typecheckEvidence": "typecheck-a3/result.json",
+    "boundaryEvidence": "static-a2/platform-boundaries.json",
+    "boundaryReuse": "Subsequent changes only remove a local animation wait and scope existing CSS; no imports, scene ownership or adapter boundary changed.",
+    "actualSourceBrowserPasses": 2,
+    "browserEvidence": [
+      "browser-a6/result.json",
+      "browser-a8/result.json"
+    ],
+    "writerCaseNotRepeatedAfterBookCaseAppend": true,
+    "failedBrowserExecutionsPreserved": [
+      "browser-a2/result.json",
+      "browser-a3/result.json"
+    ],
+    "diagnosticExecutionPreserved": "browser-a4/result.json",
+    "zeroCaseDiscoveryFailure": "browser-discovery-correction.json",
+    "correctedTypeFailure": "test-type-correction.json",
+    "correctedTestSheetCycle": "browser-sheet-cycle-correction.json",
+    "correctedBookHeading": "browser-book-heading-correction.json",
+    "runtime": [
+      "Canonical mobile globe and catalog; direct writer reveal and visible focus in RU/EN.",
+      "Keyboard result activation, Escape focus return, selected country/writer and same Canvas/renderer/camera/scene across locale.",
+      "Country search focuses its visible collapsed-sheet control; no manual expansion used to hide writer-search defects.",
+      "Both reduced-motion and normal-motion writer selection receive visible focus; final browser run has no source observation transform.",
+      "Actual opposite-locale canonical book searches retain localized labels and open the existing reader without replacing the globe."
+    ]
+  },
+  "canonicalBookAliases": {
+    "publicBooks": 4,
+    "ruAliasCount": 4,
+    "enAliasCount": 4,
+    "bothLocales": 4,
+    "samples": [
+      {
+        "key": "russia:dostoevsky:crime-and-punishment",
+        "ru": "Преступление и наказание",
+        "en": "Crime and Punishment",
+        "queryInRu": [
+          "Crime and Punishment"
+        ],
+        "queryInEn": [
+          "Преступление и наказание"
+        ]
+      },
+      {
+        "key": "usa:herman_melville:moby-dick",
+        "ru": "Моби Дик, или Белый Кит",
+        "en": "Moby-Dick; or, The Whale",
+        "queryInRu": [
+          "Moby-Dick; or, The Whale"
+        ],
+        "queryInEn": [
+          "Моби Дик, или Белый Кит"
+        ]
+      },
+      {
+        "key": "usa:francis_scott_fitzgerald:the-great-gatsby",
+        "ru": "Великий Гэтсби",
+        "en": "The Great Gatsby",
+        "queryInRu": [
+          "The Great Gatsby"
+        ],
+        "queryInEn": [
+          "Великий Гэтсби"
+        ]
+      },
+      {
+        "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+        "ru": "Над пропастью во ржи",
+        "en": "The Catcher in the Rye",
+        "queryInRu": [
+          "The Catcher in the Rye"
+        ],
+        "queryInEn": [
+          "Над пропастью во ржи"
+        ]
+      }
+    ]
+  },
+  "evidenceBoundary": "These are existing records admitted by the existing source-registry/title policy; no new bibliographic research, translation or human approval was performed.",
+  "firstOpenCriterion": "S03.acceptance",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "remaining": [
+    "Fresh Android/dev and local-QA PWA artifacts follow the source commit.",
+    "Full verified RU/EN/native/transliteration coverage, child isolation, collection/passport and nearly10k capacity remain open.",
+    "English content/biographies, edition-specific covers, owner visual content correction, Planetka/full3D and release/legal/device/store gates remain open.",
+    "Frozen iOS83 projection remains unchanged and pending approval; there is no new iOS build."
+  ]
+}

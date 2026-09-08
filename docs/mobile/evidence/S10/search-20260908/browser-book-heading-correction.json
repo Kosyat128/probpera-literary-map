@@ -1,0 +1,6 @@
+{
+  "attempt": "browser-a7",
+  "passedBeforeFailure": ["Four real opposite-locale queries in Russian UI resolve the canonical book keys", "The real Crime and Punishment result opens its labelled reader region"],
+  "failure": "The test selected both the existing level-3 reader title and level-4 dossier heading with the same text.",
+  "correction": "Select the unique level-3 reader title for the viewport assertion. No application source change or repeated unit/static execution."
+}

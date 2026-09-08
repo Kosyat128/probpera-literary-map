@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-search-20260908-a6",
+  "title": "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene",
+  "head": "3eee7d08e288f7f2d9ed4761c870d6cbac18a2d3",
+  "status": "SOURCE_BROWSER_PASSED",
+  "pass": true,
+  "sourceInputsSha256": "d101036b61f4397f87b0644440fd8c09fa422fce4e2b1a8631f987d98f12b7b9",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T12:06:05.278Z",
+    "duration": 14866.966,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "exitCode": 0,
+  "cases": [
+    {
+      "title": "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 12118,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a6/playwright.json",
+      "bytes": 165479,
+      "sha256": "261f6a389b21bd9c5b6d14488c4658e4739b16f37532d1c1c09b37b932b3ba5c"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a6/native-search-ru-writer.json",
+      "bytes": 15130,
+      "sha256": "7fd5a951a82490749c5d8fe6ec3a94c44494bd1b9ccb25a6abae92dbe5653a8e"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a6/native-search-ru-writer-screenshot.png",
+      "bytes": 328422,
+      "sha256": "999c92227f90a6d08a5fdd8dc876d8f7f1d08101a2a72f4e02999a143dff9d92"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a6/native-search-en-writer.json",
+      "bytes": 25459,
+      "sha256": "648ff718efd68cd9c16cefd084fcf3af3156cece8ee85116f1d7cf7c388f41e4"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a6/native-search-en-writer-screenshot.png",
+      "bytes": 327111,
+      "sha256": "5a754f37184893e7c70334a7714715c58e7dadfbae4189163ec641a2750ac036"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a6/native-search-bilingual-complete.json",
+      "bytes": 40188,
+      "sha256": "2a02b28aac39e9b6cd4bfbd4a74379c11ad333749d1f3c290afae8c43af1f4ed"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a6/native-search-bilingual-complete-screenshot.png",
+      "bytes": 324683,
+      "sha256": "3f783fb87ae11d0ddc7219798024764fa7a83f961b7242eb8ce44de833c7cf42"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a6/native-final-passed.json",
+      "bytes": 38524,
+      "sha256": "86735ced155d51c65f7cc118648fb16f999afe793b1580f483dee07335b94449"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a6/native-final-passed-screenshot.png",
+      "bytes": 324674,
+      "sha256": "b2ab382aadf2837330f4feda6263f5e8ccdf8c4add8f9ba192e4924fb747035b"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

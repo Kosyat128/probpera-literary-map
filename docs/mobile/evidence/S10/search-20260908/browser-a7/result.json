@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-search-20260908-a7",
+  "title": "mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work",
+  "head": "3eee7d08e288f7f2d9ed4761c870d6cbac18a2d3",
+  "status": "SOURCE_BROWSER_FAILED",
+  "pass": false,
+  "sourceInputsSha256": "02417d451567191722f3c7b7db79e7b29ef46c7d6b56852dbfdb29e4dd85dc95",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T12:12:07.423Z",
+    "duration": 11179.094000000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "exitCode": 1,
+  "cases": [
+    {
+      "title": "mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 7289,
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                "column": 86,
+                "line": 1740
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.native-planet-panel').locator('#book-archive-detail').getByRole('heading', { name: 'Преступление и наказание', exact: true })\nExpected: in viewport\nError: strict mode violation: locator('.native-planet-panel').locator('#book-archive-detail').getByRole('heading', { name: 'Преступление и наказание', exact: true }) resolved to 2 elements:\n    1) <h3 data-cms-kind=\"text\" data-cms-copy-key=\"\" data-cms-entity=\"book\" data-cms-field=\"title\" data-cms-label=\"Название произведения\" data-cms-value=\"Преступление и наказание\" data-cms-source-text=\"Преступление и наказание\" data-cms-entity-id=\"russia:dostoevsky:crime-and-punishment\" data-cms-key=\"book.russia:dostoevsky:crime-and-punishment.title\" data-cms-admin-href=\"/library?country_id=russia&writer_id=dostoevsky&work_id=russia%3Adostoevsky%3Acrime-and-punishment\">Преступление и наказание</h3> aka getByRole('region', { name: 'Преступление и наказание' }).locator('h3')\n    2) <h4>Преступление и наказание</h4> aka getByLabel('Досье книги').getByRole('heading', { name: 'Преступление и наказание' })\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel').locator('#book-archive-detail').getByRole('heading', { name: 'Преступление и наказание', exact: true })\u001b[22m\n\n\n  1738 |       await expect(detail).toBeVisible();\n  1739 |       await expect(detail).toHaveAccessibleName(visibleTitle);\n> 1740 |       await expect(detail.getByRole(\"heading\", { name: visibleTitle, exact: true })).toBeInViewport();\n       |                                                                                      ^\n  1741 |       await expect.poll(() => new URL(page.url()).searchParams.get(\"book\")).toBe(selectedBook.key);\n  1742 |       expect(new URL(page.url()).searchParams.get(\"country\")).toBe(\"russia\");\n  1743 |       expect(new URL(page.url()).searchParams.get(\"writer\")).toBe(\"dostoevsky\");\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1740:86"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a7/playwright.json",
+      "bytes": 50729,
+      "sha256": "149d9a2eb84975cdbdf9f9f7ea013d8b8c5acfedd4cd2a2ad8b2edf838890716"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a7/native-final-failed.json",
+      "bytes": 28345,
+      "sha256": "1b69b572ecc5107dd41acd82e6f6648af6c1f5356ec5a2c9026ff5b40f39bfa8"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a7/native-final-failed-screenshot.png",
+      "bytes": 111147,
+      "sha256": "6e7308ae20a16fd41ec30f8396425b2cb75ba9f5426361b749dcf7362218c23f"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

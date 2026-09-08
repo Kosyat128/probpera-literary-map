@@ -6,7 +6,7 @@ import { execFileSync } from "node:child_process";
 import { build as viteBuild } from "vite";
 import { build as bundle } from "esbuild";
 import sharp from "sharp";
-import { artifactPath, bootstrapClosure, createPwaModuleOwnershipPlugin, containedFile, PWA_SCOPE, PWA_BOOTSTRAP_ENTRIES, scopeCanonicalCssUrls, loadPwaAuthority, pwaAuthoritySha256, previousPwaGeneration } from "./pwa-artifact.mjs";
+import { artifactPath, bootstrapClosure, createPwaModuleOwnershipPlugin, containedFile, PWA_SCOPE, PWA_BOOTSTRAP_ENTRIES, CANONICAL_BOOK_SOURCE_REGISTRY, scopeCanonicalCssUrls, loadPwaAuthority, pwaAuthoritySha256, previousPwaGeneration } from "./pwa-artifact.mjs";
 import { generatePwaShellFiles } from "./pwa-shell.mjs";
 import { PWA_PORTRAIT_SELECTION_PATH, selectPwaPortraitAssets, assertPwaPortraitCopy } from "./pwa-portrait-selection.mjs";
 import { PWA_BOOTSTRAP_MAX_FILES, PWA_BOOTSTRAP_MAX_FILE_BYTES, PWA_BOOTSTRAP_MAX_TOTAL_BYTES } from "../../src/pwa/pwaBootstrapBudgets.ts";
@@ -46,9 +46,10 @@ async function captureSourceInputs() {
     "src", "index.html", "tsconfig.json", "vite.config.ts", "vite.pwa.config.ts", "package.json", "package-lock.json",
     "scripts/mobile/build-pwa.mjs", "scripts/mobile/pwa-artifact.mjs", "scripts/mobile/pwa-shell.mjs",
     "scripts/mobile/pwa-portrait-selection.mjs", PWA_PORTRAIT_SELECTION_PATH,
+    CANONICAL_BOOK_SOURCE_REGISTRY,
   ], { cwd: root, encoding: "utf8", maxBuffer: 4 * 1024 * 1024 }).split("\0");
   const files = [];
-  for (const relative of [...new Set(names)].filter(value => value && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(value)).sort()) {
+  for (const relative of [...new Set([...names, CANONICAL_BOOK_SOURCE_REGISTRY])].filter(value => value && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(value)).sort()) {
     const file = await containedFile(root, relative);
     files.push({ path: relative, sha256: file.sha256 });
   }

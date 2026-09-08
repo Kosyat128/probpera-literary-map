@@ -57,8 +57,11 @@ export async function previousPwaGeneration(directory, authoritySha256, localQaA
 }
 
 export const PWA_SCOPE = "/planet/";
+// The only root data module imported by the production search evidence gate.
+export const CANONICAL_BOOK_SOURCE_REGISTRY = "data/book-canon-source-registry.json";
 export const PWA_BOOTSTRAP_ENTRIES = Object.freeze([
   "index.html",
+  CANONICAL_BOOK_SOURCE_REGISTRY,
   "src/planet/catalog.ts",
   "src/planet/books.ts",
   "src/data/articles/catalog.ts",

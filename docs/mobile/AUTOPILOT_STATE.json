@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T11:25:09.697Z",
+  "updatedAt": "2026-09-08T12:14:18.422Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1527,11 +1527,11 @@
     {
       "id": "S10",
       "name": "Search/collection/passport",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S10.acceptance",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1594,8 +1594,15 @@
           "notes": "Child search, cache, history, offline and deep links are isolated. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
         }
       ],
-      "lastGreenCommands": [],
-      "artifacts": [],
+      "lastGreenCommands": [
+        "Focused search and artifact regression: 259 unique tests; only two corrected test files repeated.",
+        "TypeScript and platform-boundaries: final pass",
+        "Two actual mobile source-browser search/RUEN/focus/scene and book cases: pass"
+      ],
+      "artifacts": [
+        "docs/mobile/evidence/S10/search-20260908/entry.json",
+        "docs/mobile/evidence/S10/search-20260908/result.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10573,7 +10580,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue routed open stages from source632a60c3. Saved High/Balanced/Economy has122 focused tests, final static, native source-browser1PASS and actual built-PWA expanded portrait/offline/quality/RUEN1PASS. Android9af7764d/PWA8521b4e5 include identical1011 existing portraits. Do not replay green suites. S03 remains first-open; English coverage, nearly10k catalog, EN edition covers/owner workflow, Planetka/full3D tiers, physical devices and release gates remain open. Frozen iOS83 unchanged/pending.",
+    "nextAction": "Build fresh Android/dev and controlled local-QA PWA from the committed S10 search source. 259 unique focused tests, final static and two actual mobile RU/EN search/scene and book cases passed; do not replay green suites. Preserve prior Android9af7764d/PWA8521b4e5 and frozen iOS83. First-open remains S03; full S10 alias coverage, child isolation, collection/passport/capacity and all product gates remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10687,6 +10694,13 @@
         "reason": "Manual High/Balanced/Economy live rendering profiles and saved choice in the existing application panel; default High by owner instruction. This rendering/preference slice is independent of paid-web merchant, child policy, reviewed factual content, legal approval and device signing.",
         "evidence": [
           "docs/mobile/evidence/S06/graphics-quality-20260908/entry.json",
+          "docs/mobile/GLOBE_APPLICATION_CONTRACT.md"
+        ]
+      },
+      "S10": {
+        "reason": "Existing adult globe search: reveal selected writer in the mobile country sheet, accessible Escape focus return, and evidence-backed opposite-locale book-title aliases in the two existing search consumers. This adult search slice does not depend on merchant credentials, signed release distribution or editorial translation completion.",
+        "evidence": [
+          "docs/mobile/evidence/S10/search-20260908/entry.json",
           "docs/mobile/GLOBE_APPLICATION_CONTRACT.md"
         ]
       }
@@ -10807,8 +10821,8 @@
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
-        "currentSource": true,
-        "runtimeEquivalentToCurrentSource": true,
+        "currentSource": false,
+        "runtimeEquivalentToCurrentSource": false,
         "validatedAgainstSourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
         "buildCommitEqualsValidatedSourceCommit": true,
         "includesS05FirstJourney": true,
@@ -10823,7 +10837,7 @@
         "stageAccepted": false,
         "releaseReady": false
       },
-      "nativeArtifactCurrentSource": true,
+      "nativeArtifactCurrentSource": false,
       "nativeArtifactHistory": [
         {
           "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
@@ -11576,7 +11590,7 @@
       "stageAccepted": false,
       "releaseReady": false,
       "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
-      "sourceInputsCurrent": true,
+      "sourceInputsCurrent": false,
       "nativeArtifact": {
         "evidence": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/result.json",
         "sha256": "5198961c3bccc87ac00782c12df2ca96ceac9dddd8f00109906b17ea19dbb7f2",
@@ -11591,7 +11605,8 @@
         "strictAudit": true,
         "binaryAudit": true,
         "copiesVerified": true,
-        "installedRuntimeTested": false
+        "installedRuntimeTested": false,
+        "currentSource": false
       },
       "pwaArtifact": {
         "evidence": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/result.json",
@@ -11607,7 +11622,8 @@
         "localQaAuthority": true,
         "browserExecutions": 1,
         "browserPassed": true,
-        "physicalDeviceTested": false
+        "physicalDeviceTested": false,
+        "currentSource": false
       },
       "newNativeArtifactProduced": true,
       "newPwaArtifactProduced": true
@@ -11662,6 +11678,15 @@
         "newArtOrRightsApprovals": 0
       },
       "actualPwaOfflineBrowserPassed": true
+    },
+    "s10Search": {
+      "status": "SOURCE_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S10/search-20260908/result.json",
+      "sha256": "c85c32508d78052e0e8ce2c2d9c2e45c6aeb72eee83b6b1b4a7d6150b62e348f",
+      "uniqueUnitPasses": 259,
+      "sourceBrowserPasses": 2,
+      "stageAccepted": false,
+      "releaseReady": false
     }
   },
   "externalOwnerInputsStatus": {

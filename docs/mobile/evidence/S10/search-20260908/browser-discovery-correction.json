@@ -1,0 +1,8 @@
+{
+  "attempt": "browser-a1",
+  "failure": "Playwright --grep matches the complete qualified test name, including its file; anchoring only the plain title selected zero cases.",
+  "actualBrowserCasesExecuted": 0,
+  "productFailureObserved": false,
+  "correction": "Use the unique plain title and independently require exactly one matching title/result in the report. No product or test fixture change.",
+  "priorReceiptInterpretation": "The prior actualCanonicalAppAndScene field describes the intended fixture, not a runtime observation. Zero cases were executed."
+}

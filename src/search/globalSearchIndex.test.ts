@@ -3,6 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import type { BookArchiveEntry } from "../data/bookArchive";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import type { Country, Writer } from "../data/countries";
+import type { WorkLocale } from "../data/countries/types";
 import {
   BOOKS_GLOBAL_SEARCH_PROFILE,
   BOOKS_LIBRARY_SEARCH_PROFILE,
@@ -166,7 +167,89 @@ function makeIndex(options: {
     countryName,
   });
 }
+
+// Synthetic title records validate the real registry-backed alias path without
+// asserting that these test titles or URLs identify published books.
+function addSyntheticTitleEvidence(book: BookArchiveEntry, locale: WorkLocale, title: string) {
+  const ru = locale === "ru";
+  const market = ru ? "RU" : "US";
+  const language = ru ? "Russian" : "English";
+  const authorityIds = ru ? ["rsl", "eksmo"] : ["loc", "penguin-random-house"];
+  const domains = ru ? ["search.rsl.ru", "eksmo.ru"] : ["catalog.loc.gov", "penguinrandomhouse.com"];
+  const evidence = domains.map((domain, index) => ({
+    entityKind: "manifestation" as const,
+    manifestationId: `synthetic:${locale}:${index}`,
+    sourceUrl: `https://${domain}/codex-synthetic-test/search-${locale}`,
+    provider: "Synthetic test provider", authorityId: authorityIds[index],
+    authorityTier: index === 0 ? "A" as const : "B" as const,
+    recordKind: index === 0 ? "national-bibliography" as const : "publisher-catalog" as const,
+    recordId: `synthetic:${locale}:${index}`, catalogTitleExact: title,
+    locale, market, expressionLanguage: language,
+    retrievedAt: "2026-09-08", checkedAt: "2026-09-08",
+    checkedBy: "Synthetic test reviewer; not an editorial approval",
+  }));
+  book.translations![locale] = {
+    ...book.translations![locale]!, title, sourceLanguage: language,
+    sourceUrls: evidence.map(record => record.sourceUrl),
+  };
+  book.localizedTitles = {
+    ...book.localizedTitles,
+    [locale]: {
+      entityKind: "expression", expressionId: `synthetic:${locale}`, locale,
+      value: title, status: "verified-published", expressionLanguage: language,
+      market, selectionRule: "earliest-authorized-edition", evidence,
+    },
+  };
+  book.sources!.push(...evidence.map(record => ({
+    provider: record.provider, url: record.sourceUrl, authorityId: record.authorityId,
+    recordId: record.recordId, recordKind: record.recordKind,
+      language, market, fields: ["title" as const, "description" as const],
+    usage: "reference-only" as const, retrievedAt: "2026-09-08",
+  })));
+}
+
 describe("shared global search index", () => {
+  it.each<[WorkLocale, WorkLocale, string]>([
+    ["ru", "en", "Synthetic Beacon"],
+    ["en", "ru", "Условный маяк"],
+  ])("finds an evidenced %s book by its %s title with the same identity", (locale, oppositeLocale, query) => {
+    const country = makeCountry("bilingual", 1);
+    const book = makeVerifiedBook("bilingual-work", country, "Visible Localized Anchor");
+    addSyntheticTitleEvidence(book, oppositeLocale, query);
+    const index = makeIndex({ countries: [country], books: [book], language: locale });
+    const result = searchGlobalSearchIndex(index, query);
+    expect(result.groups.books).toHaveLength(1);
+    const found = result.groups.books[0];
+    expect(found.book).toBe(book);
+    expect(found.label).toBe("Visible Localized Anchor");
+    expect(found.bookKey).toBe("bilingual:writer-bilingual-0:bilingual-work");
+    expect(found.activateAction).toEqual({ type: "open-book", bookKey: found.bookKey });
+    expect(found.focusAction).toEqual({ type: "focus-book", bookKey: found.bookKey });
+  });
+
+  it("ranks the visible exact title before an opposite-locale alias and drops a stale alias on rebuild", () => {
+    const country = makeCountry("rank", 1);
+    const aliasBook = makeVerifiedBook("alias", country, "Visible Anchor");
+    addSyntheticTitleEvidence(aliasBook, "en", "Synthetic Beacon");
+    const exactBook = makeVerifiedBook("exact", country, "Synthetic Beacon");
+    const books = [aliasBook, exactBook];
+    const result = searchGlobalSearchIndex(makeIndex({ books }), "Synthetic Beacon");
+    expect(result.groups.books.map(item => item.book.id)).toEqual(["exact", "alias"]);
+    expect(result.suggestions.map(item => item.key)).toEqual([
+      "book:rank:writer-rank-0:exact", "book:rank:writer-rank-0:alias",
+    ]);
+    aliasBook.translations!.en!.title = "Unreviewed Mutation";
+    expect(searchGlobalSearchIndex(makeIndex({ books }), "Synthetic Beacon").groups.books.map(item => item.book.id)).toEqual(["exact"]);
+    expect(searchGlobalSearchIndex(makeIndex({ books }), "Unreviewed Mutation").groups.books).toEqual([]);
+  });
+
+  it("does not infer an opposite title alias from publication status alone", () => {
+    const country = makeCountry("no-title-evidence", 1);
+    const book = makeVerifiedBook("not-an-alias", country, "Visible Anchor");
+    book.translations!.en!.title = "Unsubstantiated Opposite Title";
+    expect(searchGlobalSearchIndex(makeIndex({ books: [book] }), "Unsubstantiated Opposite Title").groups.books).toEqual([]);
+  });
+
   it("preserves Header groups, limits, and deterministic ordering", () => {
     const countries = Array.from(
       { length: 6 },

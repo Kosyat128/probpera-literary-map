@@ -31,11 +31,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* The site's generic 0.01ms transition duration can animate inherited
-     visibility on these descendants after the search heading is already open.
-     Disable that transition so an explicit keyboard action can focus the input. */
+  /* The site's generic 0.01ms transition duration can cascade inherited
+     visibility through descendants after their search or country panel opens.
+     Keep those committed targets immediately focusable with reduced motion. */
   .native-planet-app .atlas-heading .country-search,
-  .native-planet-app .atlas-heading .country-search * {
+  .native-planet-app .atlas-heading .country-search *,
+  .native-planet-app .atlas-country-sheet-content,
+  .native-planet-app .atlas-country-sheet-content * {
     transition: none !important;
   }
 }

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene"
+  ],
+  "startedAt": "2026-09-08T12:06:04.704Z",
+  "durationMs": 15578,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  ok 1 tests\\host\\native-planet.spec.mjs:381:1 › mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene (12.1s)\n\n  1 passed (14.9s)\n",
+      "bytes": 221,
+      "sha256": "a2e8a9fd8172a55edd402d9e0e9fefb0547bd8098f08850955d84e6085f04ae6"
+    },
+    "stderr": {
+      "text": "(node:49820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "e90ec2a225ffb4da8c2d8be2f85f334e6608504e10544352e31a737e53b7b407"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene"
+  ],
+  "startedAt": "2026-09-08T12:03:54.322Z",
+  "durationMs": 34410,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  x  1 tests\\host\\native-planet.spec.mjs:381:1 › mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene (26.5s)\n\n\n  1) tests\\host\\native-planet.spec.mjs:381:1 › mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene \n\n    Error: expect(locator).toHaveAttribute(expected) failed\n\n    Locator:  locator('.atlas-country-presentation')\n    Expected: \"collapsed\"\n    Received: \"expanded\"\n    Timeout:  15000ms\n\n    Call log:\n      - Expect \"toHaveAttribute\" with timeout 15000ms\n      - waiting for locator('.atlas-country-presentation')\n        32 × locator resolved to <aside tabindex=\"-1\" aria-label=\"Russia\" data-atlas-country=\"russia\" data-atlas-sheet-state=\"expanded\" class=\"atlas-country-presentation\">…</aside>\n           - unexpected value \"expanded\"\n\n\n      402 |         for (const key of [\"country\", \"writer\", \"book\"]) expect(new URL(page.url()).searchParams.get(key)).toBe(previousUrl.searchParams.get(key));\n      403 |         await toggle.click();\n    > 404 |         await expect(sheet).toHaveAttribute(\"data-atlas-sheet-state\", \"collapsed\");\n          |                             ^\n      405 |       }\n      406 |       await opener.click();\n      407 |       await expect(input).toBeFocused();\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:404:29\n\n    attachment #2: native-search-ru-writer-screenshot (image/png) ──────────────────────────────────\n    .tmp\\native-planet-browser-results\\s10-search-20260908-a5\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\attachments\\native-search-ru-writer-screenshot-adf910c670fb18546a5f4687aab92e0689c8d4a4.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    attachment #4: native-final-failed-screenshot (image/png) ──────────────────────────────────────\n    .tmp\\native-planet-browser-results\\s10-search-20260908-a5\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\attachments\\native-final-failed-screenshot-465c47912bfefa7f798a92a020ca85eceddab224.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: .tmp\\native-planet-browser-results\\s10-search-20260908-a5\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\error-context.md\n\n    Error Context: .tmp\\native-planet-browser-results\\s10-search-20260908-a5\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\error-context.md\n\n  1 failed\n    tests\\host\\native-planet.spec.mjs:381:1 › mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene \n",
+      "bytes": 3380,
+      "sha256": "9ffbc5fbf55e37a1bdb216670f1846f467e7cafdd58c7ab0eaec51ea987bbf3b"
+    },
+    "stderr": {
+      "text": "(node:30860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "67e82d5457fa165fd8b9bec7edb2d34259a74fb2d704f07529b7c96ff30add24"
+    }
+  }
+}

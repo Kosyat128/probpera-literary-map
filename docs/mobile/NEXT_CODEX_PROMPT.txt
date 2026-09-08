@@ -1,6 +1,20 @@
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
+<!-- s10-search:begin -->
+Existing globe search is source-validated: mobile writer results open their
+card and receive visible focus; Escape returns to search; RU/EN keep one scene.
+Opposite-locale book titles require existing title/source evidence; canonical
+IDs and current-language labels remain shared. No title or approval generated.
+259 unique tests passed; two type-corrected test files alone were repeated.
+Final TypeScript/boundaries and two actual mobile RU/EN browser cases passed.
+Failed focus/type/discovery attempts are retained with their corrections.
+Fresh Android/PWA build follows this source checkpoint.
+Evidence: evidence/S10/search-20260908/result.json.
+First-open S03; S10 in progress. Full alias coverage, child isolation,
+collection/passport/capacity and release gates open; frozen iOS83 unchanged.
+<!-- s10-search:end -->
+
 <!-- s06-graphics-quality:begin -->
 Source 632a60c36ce117e210010da1ab77432280f5fa10: saved High/Balanced/Economy, defaultHigh.
 Same Canvas/renderer/camera/country/writer; RU/EN, reduced motion and

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T11:38:15.263Z",
+  "stage": "S10",
+  "status": "IMPLEMENTATION_IN_PROGRESS",
+  "baselineSourceCommit": "3eee7d08e288f7f2d9ed4761c870d6cbac18a2d3",
+  "entryRule": "Matrix69: previous stage complete or parallel-safe documented",
+  "route": "S03-S10",
+  "packageIntegrity": {
+    "pass": true,
+    "checksumCount": 194,
+    "manifestFileCount": 191,
+    "bindingDocumentCount": 173,
+    "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+    "checksumFileSha256": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732"
+  },
+  "scope": "Existing adult globe search: reveal selected writer in the mobile country sheet, accessible Escape focus return, and evidence-backed opposite-locale book-title aliases in the two existing search consumers.",
+  "mappedRequirements": [
+    "S10.BIL-006",
+    "S10.BIL-036",
+    "S10.BIL-037",
+    "S10.BIL-039"
+  ],
+  "parallelSafety": [
+    "Existing canonical catalog, globe and application hosts provide the complete implementation seam; no preceding-stage acceptance is inferred.",
+    "This adult search slice does not depend on merchant credentials, signed release distribution or editorial translation completion.",
+    "Keep existing country/writer/work IDs, one scene and global language state, publication/display gates and lazy catalog ownership.",
+    "New opposite-locale title aliases require the existing strict localized title evidence contract; no factual data, translation or verification status is generated.",
+    "Child policy/search isolation, complete native and verified transliteration aliases, collection/passport and 10k capacity remain explicit subsequent work.",
+    "No production, store, database, remote runtime, native plugin or frozen iOS83 projection changes."
+  ],
+  "acceptanceForSlice": [
+    "A mobile writer search result immediately reveals its existing card and receives usable visible focus.",
+    "Escape from the application combobox returns focus to its initiating control without changing scene or selection.",
+    "An already evidence-backed second-locale book title resolves the same canonical book key while preserving the active-locale display label.",
+    "Invalid, missing or conflicting second-locale title evidence adds no new alias; existing publication gates remain enforced.",
+    "Focused data/static regression plus real source-browser mobile search navigation and RU/EN scene identity evidence."
+  ],
+  "testsRunAtEntry": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

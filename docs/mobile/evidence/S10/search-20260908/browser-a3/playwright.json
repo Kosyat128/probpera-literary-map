@@ -1,0 +1,167 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.native-planet.config.mjs",
+      "--grep",
+      "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\playwright.native-planet.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/s10-search-20260908-a3/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+        "testIgnore": [],
+        "testMatch": [
+          "native-planet.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".tmp/native-planet-browser-results/s10-search-20260908-a3/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "native-planet.spec.mjs",
+      "file": "native-planet.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21578,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.writer-detail')\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.writer-detail')\u001b[22m\n\u001b[2m    33 × locator resolved to <section tabindex=\"-1\" data-cms-entity=\"writer\" id=\"writer-biography-russia\" class=\"archive-section writer-detail\" data-cms-entity-id=\"russia:dostoevsky\" data-cms-label=\"Фёдор Михайлович Достоевский\" aria-labelledby=\"writer-biography-russia-heading\" data-cms-admin-href=\"/library?country_id=russia&writer_id=dostoevsky\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.writer-detail')\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.writer-detail')\u001b[22m\n\u001b[2m    33 × locator resolved to <section tabindex=\"-1\" data-cms-entity=\"writer\" id=\"writer-biography-russia\" class=\"archive-section writer-detail\" data-cms-entity-id=\"russia:dostoevsky\" data-cms-label=\"Фёдор Михайлович Достоевский\" aria-labelledby=\"writer-biography-russia-heading\" data-cms-admin-href=\"/library?country_id=russia&writer_id=dostoevsky\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:402:28",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                      "column": 28,
+                      "line": 402
+                    },
+                    "snippet": "  400 |       await expect(toggle).toHaveAttribute(\"aria-expanded\", \"true\");\n  401 |       const detail = page.locator(\".writer-detail\");\n> 402 |       await expect(detail).toBeFocused();\n      |                            ^\n  403 |       await expect(detail.locator(\"h4\")).toBeInViewport();\n  404 |       expect(await detail.evaluate(element => Boolean(element.closest('[inert], [hidden], [aria-hidden=\"true\"]')))).toBe(false);\n  405 |       await expect.poll(() => new URL(page.url()).searchParams.get(\"country\")).toBe(\"russia\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                        "column": 28,
+                        "line": 402
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.writer-detail')\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.writer-detail')\u001b[22m\n\u001b[2m    33 × locator resolved to <section tabindex=\"-1\" data-cms-entity=\"writer\" id=\"writer-biography-russia\" class=\"archive-section writer-detail\" data-cms-entity-id=\"russia:dostoevsky\" data-cms-label=\"Фёдор Михайлович Достоевский\" aria-labelledby=\"writer-biography-russia-heading\" data-cms-admin-href=\"/library?country_id=russia&writer_id=dostoevsky\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  400 |       await expect(toggle).toHaveAttribute(\"aria-expanded\", \"true\");\n  401 |       const detail = page.locator(\".writer-detail\");\n> 402 |       await expect(detail).toBeFocused();\n      |                            ^\n  403 |       await expect(detail.locator(\"h4\")).toBeInViewport();\n  404 |       expect(await detail.evaluate(element => Boolean(element.closest('[inert], [hidden], [aria-hidden=\"true\"]')))).toBe(false);\n  405 |       await expect.poll(() => new URL(page.url()).searchParams.get(\"country\")).toBe(\"russia\");\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:402:28"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T11:55:12.109Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "native-final-failed",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiY2Fub25pY2FsLW5hdGl2ZS1hcHAtc291cmNlLWluLUNocm9tZSIsIm5hdGl2ZVBsdWdpbnMiOiJpbmplY3RlZCBBbmRyb2lkIE9TIGJvdW5kYXJ5OyBQcmVmZXJlbmNlcyBNYXAgcGVyc2lzdHMgb3V0c2lkZSBlYWNoIGRvY3VtZW50IHRocm91Z2ggYSBQbGF5d3JpZ2h0IGJpbmRpbmciLCJhY3R1YWxBcHAiOnRydWUsImFjdHVhbENzcyI6dHJ1ZSwicHVibGljQXNzZXRTZWxlY3Rpb25TaGEyNTYiOiI4MGMzNTYxYjNlNDAxMTYyNWFjYjZhMTc2ODExZjFiNzUxMTk0YWJjYjlkZjUyZTQ0MjA5Yjk5MmY1NWMwYTRlIiwic2VsZWN0ZWRQdWJsaWNBc3NldHMiOjEyODksInZpdGVHbG9iVHJhbnNmb3JtIjp7InNvdXJjZSI6InNyYy9jb21wb25lbnRzL0Jvb2tTaGVsZlNjZW5lLnRzeCIsInNvdXJjZVNoYTI1NiI6ImIxZTU3Y2UzNmM3M2RkYTkyNGY4YTgyNDk3YzU5NDc1OTUyNjU4NzRkZjA4NWFiZTExMGU3NGEwMDljNDUxMmEiLCJhdHRlbXB0cyI6WyJwcmltYXJ5IiwicmV0cnkiXSwic2VtYW50aWNzIjoibGF6eSBkZWZhdWx0IGltcG9ydCB3aXRoIGRpc3RpbmN0IHByaW1hcnkvcmV0cnkgcXVlcnkgaWRlbnRpdGllcyJ9LCJidW5kbGVkRmlsZXMiOlt7InBhdGgiOiJhc3NldHMvY291bnRyaWVzLUtGTENVRkYyLmdlb2pzb24iLCJzaGEyNTYiOiI0MDI3MDZiNzMwMDY5ZmI2OTFkMWVjNjA5OGUxM2Q3ZDU5NjcwYTE4MjNkMWZmYjYyNTQ2ZmYwNDVkZjIwMjc5In0seyJwYXRoIjoibmF0aXZlLXBsYW5ldC5qcyIsInNoYTI1NiI6ImM5YzA0MjNkYzdiNzlhMTg0OWRkMzg5ZTYyZWUxZWJhYTdhY2U2ZTUxNDMzMzIzYWNlMTQ0ZWU0OTI2MTM3ZDkifSx7InBhdGgiOiJhc3NldHMvYnJ1c2gtcGFwZXItY29ybmVycy1WUjNKTDNIUy53ZWJwIiwic2hhMjU2IjoiZDZiNWE4NTI4YTBlOTVhZDU1NWU0YTNmOTNhODg2ZTJjNzQzN2Y1NzgwMjNiNmQyYmNkZWExYjBjZDY3NzFkZiJ9LHsicGF0aCI6ImFzc2V0cy9icnVzaC12aW9sZXQtc3RhZ2UtQTZSQlNXQU4ud2VicCIsInNoYTI1NiI6ImU4Zjc3YTVmMWYyYjczYmE4YWJlYzI5MjFkMGIzMzg4YmY4YTgxOTk0YzAzYjgxMGJlMGQ5ZTY2NGU0M2FhYTMifSx7InBhdGgiOiJhc3NldHMvZWRpdG9yaWFsLXBhcGVyLUxTSzRXM1BXLndlYnAiLCJzaGEyNTYiOiJiNDdkMTcwYmVmYWM3MWIwZjI0OTZhOWQ4MGRkNjhlNWRkOTYwZmQ0MWNiNWZjNDVkNDhjZjBhNDQyY2I5YTY4In0seyJwYXRoIjoiYXNzZXRzL3NlY3Rpb24tcHJpemVzLVI3UFlDTllVLndlYnAiLCJzaGEyNTYiOiIzYjRjZDNlMzgxMTk4ZjBhNzEyMjZmYjQ2MjY4YjI5OGQ5ZmQzNzA2MWFiMDM5ZmY5ZjUzN2ZlY2MzN2QwMmFiIn0seyJwYXRoIjoiYXNzZXRzL2JydXNoLXBhcGVyLWVhc3QtWDZVN0hNTTIud2VicCIsInNoYTI1NiI6IjQwNjdiODMyOGNhNjM4OWJmN2Y2ZWIzOGEzNWY2NmU0MjgxODFmMGNkMzcxODAzNzRjMmQ5YzMwNDE1ZmMwMzEifSx7InBhdGgiOiJhc3NldHMvYnJ1c2gtcGFwZXItc3BsaXQtT0taVFhGT0sud2VicCIsInNoYTI1NiI6IjdjYWMzYzA5NjZhYzEzZmUxZDZlNDYxZDA1MTkyMWU4ZDEyYWQ4YjNiYWI1YzhjODNmMTcxMTcwODI0NmVlN2YifSx7InBhdGgiOiJhc3NldHMvYnJ1c2gtb3JhbmdlLXN0YWdlLUpUWUtUNjZKLndlYnAiLCJzaGEyNTYiOiIzZDE2ZTYzYzhkNzRlMmM3Y2I1MjFhMTZhNGU2Y2VkNWZjMzRkMDg1OTAxNDBiMGQyYzk5M2QyOWVlZTBiNDkzIn0seyJwYXRoIjoibmF0aXZlLXBsYW5ldC5jc3MiLCJzaGEyNTYiOiJkMTAxZDYwY2E2MzYzZTg2MDg1NmE5NTU5MTk1ZTg2NGFiMmMzMGU3YTYzZjFhYzkwMTE5YzY4MGU5MzhkYjk2In1dLCJuYXRpdmVEZXZpY2VPYnNlcnZlZCI6ZmFsc2UsInJlbGVhc2VSZWFkeSI6ZmFsc2UsInJ1bnRpbWUiOnsidXJsIjoiaHR0cHM6Ly9uYXRpdmUtcGxhbmV0LnRlc3QvP2NvdW50cnk9cnVzc2lhJndyaXRlcj1kb3N0b2V2c2t5I2F0bGFzIiwibGFuZ3VhZ2UiOiJydSIsImJvb3RzdHJhcEVycm9yIjpudWxsLCJ2aXNpYmxlSGVyb0ZyYW1lcyI6MCwid2VsY29tZUZyYW1lcyI6eyJ2aXNpYmxlIjowLCJiZWZvcmVSZWFsU2NlbmVSZWFkeSI6MCwiZHVyaW5nTGF1bmNoIjowLCJtYXhDYW52YXNDb3VudCI6MX0sInF1aWV0TGFuZ3VhZ2VBY2Nlc3MiOltdLCJmb2N1c1RyYWNlIjpbeyJraW5kIjoiZm9jdXNpbiIsImF0Ijo1NTk5LjM5OTk5OTk5ODUxLCJ0YXJnZXQiOnsidGFnIjoiQlVUVE9OIiwiaWQiOiIiLCJjbGFzc05hbWUiOiJ1aS1hY3Rpb24gdWktYWN0aW9uLS1zZWNvbmRhcnkgdWktYWN0aW9uLS1tZCB1aS1hY3Rpb24tLWRhcmsgYXRsYXMtaW1tZXJzaXZlLXNlYXJjaC10b2dnbGUiLCJjb25uZWN0ZWQiOnRydWUsImFjdGlvbiI6InRvZ2dsZS1zZWFyY2giLCJyZWN0Ijp7IngiOjM1LCJ5IjoxNSwid2lkdGgiOjY3LjY1NjI1LCJoZWlnaHQiOjQ0fSwiaGlkZGVuQW5jZXN0b3JzIjpbXX0sImFjdGl2ZSI6eyJ0YWciOiJCVVRUT04iLCJpZCI6IiIsImNsYXNzTmFtZSI6InVpLWFjdGlvbiB1aS1hY3Rpb24tLXNlY29uZGFyeSB1aS1hY3Rpb24tLW1kIHVpLWFjdGlvbi0tZGFyayBhdGxhcy1pbW1lcnNpdmUtc2VhcmNoLXRvZ2dsZSIsImNvbm5lY3RlZCI6dHJ1ZSwiYWN0aW9uIjoidG9nZ2xlLXNlYXJjaCIsInJlY3QiOnsieCI6MzUsInkiOjE1LCJ3aWR0aCI6NjcuNjU2MjUsImhlaWdodCI6NDR9LCJoaWRkZW5BbmNlc3RvcnMiOltdfSwic2VhcmNoT3BlbiI6ImZhbHNlIn0seyJraW5kIjoiYmVmb3JlLWZvY3VzIiwiYXQiOjU2MzcuNjk5OTk5OTk1NTMsInRhcmdldCI6eyJ0YWciOiJJTlBVVCIsImlkIjoiY291bnRyeS1zZWFyY2giLCJjbGFzc05hbWUiOiIiLCJjb25uZWN0ZWQiOnRydWUsImFjdGlvbiI6bnVsbCwicmVjdCI6eyJ4Ijo1OSwieSI6ODIsIndpZHRoIjoyNzMsImhlaWdodCI6NDR9LCJoaWRkZW5BbmNlc3RvcnMiOltdfSwiYWN0aXZlIjp7InRhZyI6IkJVVFRPTiIsImlkIjoiIiwiY2xhc3NOYW1lIjoidWktYWN0aW9uIHVpLWFjdGlvbi0tc2Vjb25kYXJ5IHVpLWFjdGlvbi0tbWQgdWktYWN0aW9uLS1kYXJrIGF0bGFzLWltbWVyc2l2ZS1zZWFyY2gtdG9nZ2xlIiwiY29ubmVjdGVkIjp0cnVlLCJhY3Rpb24iOiJ0b2dnbGUtc2VhcmNoIiwicmVjdCI6eyJ4IjozNSwieSI6MTUsIndpZHRoIjo2Ny42NTYyNSwiaGVpZ2h0Ijo0NH0sImhpZGRlbkFuY2VzdG9ycyI6W119LCJzZWFyY2hPcGVuIjoidHJ1ZSJ9LHsia2luZCI6ImZvY3Vzb3V0IiwiYXQiOjU2MzcuODk5OTk5OTk4NTEsInRhcmdldCI6eyJ0YWciOiJCVVRUT04iLCJpZCI6IiIsImNsYXNzTmFtZSI6InVpLWFjdGlvbiB1aS1hY3Rpb24tLXNlY29uZGFyeSB1aS1hY3Rpb24tLW1kIHVpLWFjdGlvbi0tZGFyayBhdGxhcy1pbW1lcnNpdmUtc2VhcmNoLXRvZ2dsZSIsImNvbm5lY3RlZCI6dHJ1ZSwiYWN0aW9uIjoidG9nZ2xlLXNlYXJjaCIsInJlY3QiOnsieCI6MzUsInkiOjE1LCJ3aWR0aCI6NjcuNjU2MjUsImhlaWdodCI6NDR9LCJoaWRkZW5BbmNlc3RvcnMiOltdfSwiYWN0aXZlIjp7InRhZyI6IkJPRFkiLCJpZCI6IiIsImNsYXNzTmFtZSI6IiIsImNvbm5lY3RlZCI6dHJ1ZSwiYWN0aW9uIjpudWxsLCJyZWN0Ijp7IngiOjAsInkiOjAsIndpZHRoIjozOTAsImhlaWdodCI6ODQ0fSwiaGlkZGVuQW5jZXN0b3JzIjpbXX0sInNlYXJjaE9wZW4iOiJ0cnVlIn0seyJraW5kIjoiZm9jdXNpbiIsImF0Ijo1NjM4Ljc5OTk5OTk5NzAyLCJ0YXJnZXQiOnsidGFnIjoiSU5QVVQiLCJpZCI6ImNvdW50cnktc2VhcmNoIiwiY2xhc3NOYW1lIjoiIiwiY29ubmVjdGVkIjp0cnVlLCJhY3Rpb24iOm51bGwsInJlY3QiOnsieCI6NTksInkiOjgyLCJ3aWR0aCI6MjczLCJoZWlnaHQiOjQ0fSwiaGlkZGVuQW5jZXN0b3JzIjpbXX0sImFjdGl2ZSI6eyJ0YWciOiJJTlBVVCIsImlkIjoiY291bnRyeS1zZWFyY2giLCJjbGFzc05hbWUiOiIiLCJjb25uZWN0ZWQiOnRydWUsImFjdGlvbiI6bnVsbCwicmVjdCI6eyJ4Ijo1OSwieSI6ODIsIndpZHRoIjoyNzMsImhlaWdodCI6NDR9LCJoaWRkZW5BbmNlc3RvcnMiOltdfSwic2VhcmNoT3BlbiI6InRydWUifSx7ImtpbmQiOiJhZnRlci1mb2N1cyIsImF0Ijo1NjQwLjI5OTk5OTk5NzAyLCJ0YXJnZXQiOnsidGFnIjoiSU5QVVQiLCJpZCI6ImNvdW50cnktc2VhcmNoIiwiY2xhc3NOYW1lIjoiIiwiY29ubmVjdGVkIjp0cnVlLCJhY3Rpb24iOm51bGwsInJlY3QiOnsieCI6NTksInkiOjgyLCJ3aWR0aCI6MjczLCJoZWlnaHQiOjQ0fSwiaGlkZGVuQW5jZXN0b3JzIjpbXX0sImFjdGl2ZSI6eyJ0YWciOiJJTlBVVCIsImlkIjoiY291bnRyeS1zZWFyY2giLCJjbGFzc05hbWUiOiIiLCJjb25uZWN0ZWQiOnRydWUsImFjdGlvbiI6bnVsbCwicmVjdCI6eyJ4Ijo1OSwieSI6ODIsIndpZHRoIjoyNzMsImhlaWdodCI6NDR9LCJoaWRkZW5BbmNlc3RvcnMiOltdfSwic2VhcmNoT3BlbiI6InRydWUifSx7ImtpbmQiOiJmb2N1c291dCIsImF0Ijo2MTMzLjUsInRhcmdldCI6eyJ0YWciOiJJTlBVVCIsImlkIjoiY291bnRyeS1zZWFyY2giLCJjbGFzc05hbWUiOiIiLCJjb25uZWN0ZWQiOnRydWUsImFjdGlvbiI6bnVsbCwicmVjdCI6eyJ4Ijo1OSwieSI6ODIsIndpZHRoIjoyNzMsImhlaWdodCI6NDR9LCJoaWRkZW5BbmNlc3RvcnMiOlt7InRhZyI6IklOUFVUIiwiaWQiOiJjb3VudHJ5LXNlYXJjaCIsImNsYXNzTmFtZSI6IiIsImluZXJ0IjpmYWxzZSwiaGlkZGVuIjpmYWxzZSwiZGlzcGxheSI6ImJsb2NrIiwidmlzaWJpbGl0eSI6ImhpZGRlbiJ9LHsidGFnIjoiRElWIiwiaWQiOiIiLCJjbGFzc05hbWUiOiJzZWFyY2gtZmllbGQiLCJpbmVydCI6ZmFsc2UsImhpZGRlbiI6ZmFsc2UsImRpc3BsYXkiOiJncmlkIiwidmlzaWJpbGl0eSI6ImhpZGRlbiJ9LHsidGFnIjoiRElWIiwiaWQiOiIiLCJjbGFzc05hbWUiOiJjb3VudHJ5LXNlYXJjaCIsImluZXJ0IjpmYWxzZSwiaGlkZGVuIjpmYWxzZSwiZGlzcGxheSI6ImJsb2NrIiwidmlzaWJpbGl0eSI6ImhpZGRlbiJ9LHsidGFnIjoiSEVBREVSIiwiaWQiOiJhdGxhcy1zZWFyY2gtcGFuZWwiLCJjbGFzc05hbWUiOiJhdGxhcy1oZWFkaW5nIiwiaW5lcnQiOmZhbHNlLCJoaWRkZW4iOmZhbHNlLCJkaXNwbGF5IjoiYmxvY2siLCJ2aXNpYmlsaXR5IjoiaGlkZGVuIn1dfSwiYWN0aXZlIjp7InRhZyI6IkJPRFkiLCJpZCI6IiIsImNsYXNzTmFtZSI6IiIsImNvbm5lY3RlZCI6dHJ1ZSwiYWN0aW9uIjpudWxsLCJyZWN0Ijp7IngiOjAsInkiOjAsIndpZHRoIjozOTAsImhlaWdodCI6ODQ0fSwiaGlkZGVuQW5jZXN0b3JzIjpbXX0sInNlYXJjaE9wZW4iOiJmYWxzZSJ9XSwiZmluYWxBY3RpdmVFbGVtZW50Ijp7InRhZyI6IkJPRFkiLCJpZCI6IiIsImFjdGlvbiI6bnVsbH0sImpvdXJuZXlSYW5kb21JbnB1dCI6bnVsbCwibmF0aXZlTGlmZWN5Y2xlRXZlbnRzIjpbXSwiY291bnRyeVNoZWV0RXZlbnRzIjpbXSwiY291bnRyeVNoZWV0TWVhc3VyZW1lbnRzIjpbXSwiZ3JhcGhpY3NPYnNlcnZhdGlvbnMiOltdLCJhcHBlYXJhbmNlT2JzZXJ2YXRpb25zIjpbXSwiY2FudmFzQ291bnQiOjEsImRvY3VtZW50Q2FudmFzQ291bnQiOjEsIm5hdGl2ZSI6W3sidGFnIjoiRElWIiwiaWQiOiIiLCJoaWRkZW4iOmZhbHNlLCJ2aXNpYmxlIjp0cnVlLCJhdHRyaWJ1dGVzIjp7ImRhdGEtdHlwb2dyYXBoeS1jb21wb25lbnQiOiJtYWdhemluZSIsImRhdGEtcGxhbmV0LXJlYWR5IjoidHJ1ZSIsImRhdGEtcGxhbmV0LWVkaXRpb24iOiJyYW5kLW1jbmFsbHktMTg4NyJ9LCJ0ZXh0Ijoi0JjQvdGC0LXRgNCw0LrRgtC40LLQvdCw0Y8g0Y3QvdGG0LjQutC70L7Qv9C10LTQuNGP0JvQuNGC0LXRgNCw0YLRg9GA0L3QsNGPINC/0LvQsNC90LXRgtCw0J/QvtC40YHQutCk0LjQu9GM0YLRgNGLINCz0LvQvtCx0YPRgdCw0KHQu9GD0YfQsNC50L3QvtC1INC/0YPRgtC10YjQtdGB0YLQstC40LVSVUVO0JjQvdGC0LXRgNCw0LrRgtC40LLQvdCw0Y8g0Y3QvdGG0LjQutC70L7Qv9C10LTQuNGP0JvQuNGC0LXRgNCw0YLRg9GA0L3QsNGPINC/0LvQsNC90LXRgtCw0JLRi9Cx0LXRgNC40YLQtSDRgdGC0YDQsNC90YMg0L3QsCDRgdGC0LDRgNC40L3QvdC+0Lwg0LjQvdGC0LXRgNCw0LrRgtC40LLQvdC+0Lwg0LPQu9C+0LHRg9GB0LUgLSDQvtGC0LrRgNC+0Y7RgtGB0Y8g0LrQsNGA0YLQvtGH0LrQuCDQv9C40YHQsNGC0LXQu9C10LksINC/0YDQvtC40LfQstC10LTQtdC90LjRjyDQuCDQv9GA0L7QstC10YDQtdC90L3QsNGPINGA0LXQtNCw0LrRhtC40L7QvdC90LDRjyDRgdC/0YDQsNCy0LrQsC7QndCw0LnRgtC4INGB0YLRgNCw0L3Rgywg0L/QuNGB0LDRgtC10LvRjyDQuNC70Lgg0LrQvdC40LPRg+KGtdCS0YHQtSDRgdGC0YDQsNC90YsgMjAw0J3QvtCx0LXQu9C10LLRgdC60LjQtSDQu9Cw0YPRgNC10LDRgtGLIDQ0MTArINCw0LLRgtC+0YDQvtCyIDQ00KEg0YDQtdCw0LvRjNC90YvQvNC4INC/0L7RgNGC0YDQtdGC0LDQvNC4IDE1M9Ch0YLRgNCw0L3RiyDRgSDQv9GA0L7QstC10YDQtdC90L3Ri9C80Lgg0LrQsNGA0YLQvtGH0LrQsNC80LggMTg10JrRgNGD0L/QvdC10LnRiNC40LUg0LDRgNGF0LjQstGL4oaT0KDQvtGB0YHQuNGPNTPCsDQ14oCyIE4gwrcgMzbCsDU34oCyIEXQoeKcptCu4pym0JjRgdC/0L7Qu9GM0LfRg9C50YLQtSDRgtC10LrRgdGC0L7QstGL0Lkg0YPQutCw0LfQsNGC0LXQu9GMINGB0YLRgNCw0L0g0L3QuNC20LXQn9Cw0YPQt9Cw0KHQsdGA0L7RgdCY0YHRgtC+0YfQvdC40LrQmNC90YLQtdGA0LDQutGC0LjQstC90YvQuSDQs9C70L7QsdGD0YEgwrcg0YDRg9GH0L3QsNGPINC90LDQstC40LPQsNGG0LjRj9Cc0LDRgdGI0YLQsNCxIDExMCXQkdC10YXQsNC50LwgwrcgMTQ5MtCR0LXRhdCw0LnQvCDCtyAxNDky0KXQvtC90LTQuNGD0YEgwrcgMTYxNdCl0L7QvdC00LjRg9GBIMK3IDE2MTXQmtC+0YDQvtC90LXQu9C70LggwrcgMTY5N9Ca0L7RgNC+0L3QtdC70LvQuCDCtyAxNjk30KjQtdGA0LXRgCDCtyAxNzAw0KjQtdGA0LXRgCDCtyAxNzAw0JrQsNGB0YHQuNC90LggwrcgMTc5MNCa0LDRgdGB0LjQvdC4IMK3IDE3OTBSYW5kIMK3IDE4ODdSYW5kIMK3IDE4ODdNLTEwMSDCtyAxOTQzTS0xMDEgwrcgMTk0M05BU0EgwrcgQmx1ZSBNYXJibGVOQVNBIMK3IEJsdWUgTWFyYmxlTmF0dXJhbCBFYXJ0aCDCtyAyMDI2TmF0dXJhbCBFYXJ0aCDCtyAyMDI20KLQtdC60YPRidC10LUg0LjQt9C00LDQvdC40LUg0LPQu9C+0LHRg9GB0LDQkdC10YXQsNC50LwgwrcgMTQ5MtCl0L7QvdC00LjRg9GBIMK3IDE2MTXQmtC+0YDQvtC90LXQu9C70LggwrcgMTY5N9Co0LXRgNC10YAgwrcgMTcwMNCa0LDRgdGB0LjQvdC4IMK3IDE3OTBSYW5kIMK3IDE4ODdNLTEwMSDCtyAxOTQzTkFTQSDCtyBCbHVlIE1hcmJsZU5hdHVyYWwgRWFydGggwrcgMjAyNtCY0YHRgtC+0YfQvdC40Log0LjQt9C00LDQvdC40Y9SYW5kIE1jTmFsbHkgJiBDby46INC00LLQtdC90LDQtNGG0LDRgtC40LTRjtC50LzQvtCy0YvQuSDQt9C10LzQvdC+0Lkg0LPQu9C+0LHRg9GBLCAxODg30JDQstGC0L7RgCAvINGB0L7RgdGC0LDQstC40YLQtdC70YxSYW5kIE1jTmFsbHkgJiBDby7QntGA0LjQs9C40L3QsNC70J3QvtCy0YvQuSDQtNCy0LXQvdCw0LTRhtCw0YLQuNC00Y7QudC80L7QstGL0Lkg0LfQtdC80L3QvtC5INCz0LvQvtCx0YPRgdCl0YDQsNC90LjQu9C40YnQtdCe0YLQtNC10Lsg0LPQtdC+0LPRgNCw0YTQuNC4INC4INC60LDRgNGCINCR0LjQsdC70LjQvtGC0LXQutC4INCa0L7QvdCz0YDQtdGB0YHQsNCa0LDRgtCw0LvQvtC20L3QsNGPINC30LDQv9C40YHRjGczMjAxYi5jdDAwMTQxN9Cf0YDQsNCy0LAg0Lgg0YPQutCw0LfQsNC90LjQtSDQuNGB0YLQvtGH0L3QuNC60LDQkdC40LHQu9C40L7RgtC10LrQsCDQmtC+0L3Qs9GA0LXRgdGB0LAg0L7Qv9C40YHRi9Cy0LDQtdGCINGB0LrQsNC9INC+0LHRidC10YHRgtCy0LXQvdC90L7Qs9C+INC00L7RgdGC0L7Rj9C90LjRjyDQutCw0Log0YHQstC+0LHQvtC00L3Ri9C5INC00LvRjyDQuNGB0L/QvtC70YzQt9C+0LLQsNC90LjRjyDQuCDQv9C+0LLRgtC+0YDQvdC+0LPQviDQuNGB0L/QvtC70YzQt9C+0LLQsNC90LjRjy7QntGC0LrRgNGL0YLRjCDQt9Cw0L/QuNGB0Ywg0LjRgdGC0L7Rh9C90LjQutCw0JfQsNC60YDRi9GC0YzQoNC+0YHRgdC40Y81MyDQsNCy0YLQvtGA0LAg0LIg0LDRgNGF0LjQstC10KHRgtGA0LDQvdCwINCy0YvQsdGA0LDQvdCwIMK3INC60LDRgNGC0L7Rh9C60LAg0LDRgNGF0LjQstCwINC+0YLQutGA0YvRgtCw0KLRj9C90LjRgtC1INC40LvQuCDQuNGB0L/QvtC70YzQt9GD0LnRgtC1INGB0YLRgNC10LvQutC40JzQsNGB0YjRgtCw0LE6INC60L7Qu9C10YHQviDQuNC70Lgg0LrQvdC+0L/QutC4IMKx0KDQvtGB0YHQuNGPNTMg0LDQstGC0L7RgNCw0KDQsNC30LLQtdGA0L3Rg9GC0YzQoNCw0LfQstC10YDQvdGD0YLRjNCb0LjRgtC10YDQsNGC0YPRgNC90YvQuSDQsNGA0YXQuNCyUlXQnNC40YDQoNC+0YHRgdC40Y/QpNGR0LTQvtGAINCc0LjRhdCw0LnQu9C+0LLQuNGHINCU0L7RgdGC0L7QtdCy0YHQutC40LnQoNC+0YHRgdC40Y/Qm9C40YLQtdGA0LDRgtGD0YDQvdC+0LUg0L3QsNGB0LvQtdC00LjQtSDRgdGC0YDQsNC90YvQkNGA0YXQuNCyINC+0LHRitC10LTQuNC90Y/QtdGCIDUzINCw0LLRgtC+0YDQvtCyINC4INC60LvRjtGH0LXQstGL0LUg0L/RgNC+0LjQt9Cy0LXQtNC10L3QuNGPINC70LjRgtC10YDQsNGC0YPRgNC90L7QuSDRgtGA0LDQtNC40YbQuNC4INGB0YLRgNCw0L3Riy7inJM1MCAg0LHQuNC+0LPRgNCw0YTQuNC5INC/0YDQvtGI0LvQuCDRgNC10LTQsNC60YbQuNC+0L3QvdGD0Y4g0L/RgNC+0LLQtdGA0LrRg9CjINC60LDQttC00L7QuSDQsdC40L7Qs9GA0LDRhNC40Lgg0YPQutCw0LfQsNC9INGB0YLQsNGC0YPRgSDQv9GA0L7QstC10YDQutC40KHQu9C10LTQuNGC0Ywg0LfQsCDQvdC+0LLRi9C80Lgg0LzQsNGC0LXRgNC40LDQu9Cw0LzQuCDQvtCxINGN0YLQvtC5INGB0YLRgNCw0L3QtTUz0LDQstGC0L7RgNCwNdC90L7QsdC10LvQtdCy0YHQutC40YUg0LvQsNGD0YDQtdCw0YLQvtCyMdC/0YDQvtC40LfQstC10LTQtdC90LjQtdCt0L/QvtGF0Lgg0Lgg0L3QsNC/0YDQsNCy0LvQtdC90LjRj9CU0YDQtdCy0L3Rj9GPINCg0YPRgdGM0LvQtdGC0L7Qv9C40YHQsNC90LjQtdGG0LXRgNC60L7QstC90LDRjyDQu9C40YLQtdGA0LDRgtGD0YDQsNGB0YLQsNGA0L7QvtCx0YDRj9C00YfQtdGB0YLQstC+0LTRgNC10LLQvdC10YDRg9GB0YHQutCw0Y8g0LvQuNGC0LXRgNCw0YLRg9GA0LBYVklJSSDQstC10LrQutC70LDRgdGB0LjRhtC40LfQvNC70LXRgtC+0L/QuNGB0YzQuNGB0YLQvtGA0LjRh9C10YHQutCw0Y8g0LvQuNGC0LXRgNCw0YLRg9GA0LDQv9GA0L7Qv9C+0LLQtdC00YzQsdC+0LPQvtGB0LvQvtCy0YHQutCw0Y8g0LvQuNGC0LXRgNCw0YLRg9GA0LDQsNCy0YLQvtCx0LjQvtCz0YDQsNGE0LjRj9C20LjRgtC40LXQv9C+0Y3Qt9C40Y/Qn9C40YHQsNGC0LXQu9C40JDQu9C10LrRgdCw0L3QtNGAINCQ0LvQtdC60YHQsNC90LTRgNC+0LLQuNGHINCR0LvQvtC6MTg4MC0xOTIx0J/QvtC00YLQstC10YDQttC00LXQvdC+INC40YHRgtC+0YfQvdC40LrQsNC80LjihpfQkNC70LXQutGB0LDQvdC00YAg0JjQstCw0L3QvtCy0LjRhyDQmtGD0L/RgNC40L0xODcwLTE5MzjQn9C+0LTRgtCy0LXRgNC20LTQtdC90L4g0LjRgdGC0L7Rh9C90LjQutCw0LzQuOKGl9CQ0LvQtdC60YHQsNC90LTRgCDQmNGB0LDQtdCy0LjRhyDQodC+0LvQttC10L3QuNGG0YvQvTE5MTgtMjAwONCf0L7QtNGC0LLQtdGA0LbQtNC10L3QviDQuNGB0YLQvtGH0L3QuNC60LDQvNC44oaX0JDQu9C10LrRgdCw0L3QtNGAINCd0LjQutC+0LvQsNC10LLQuNGHINCe0YHRgtGA0L7QstGB0LrQuNC5MTgyMy0xODg20J/QvtC00YLQstC10YDQttC00LXQvdC+INC40YHRgtC+0YfQvdC40LrQsNC80LjihpfQkNC70LXQutGB0LDQvdC00YAg0KHQtdGA0LPQtdC10LLQuNGHINCT0YDQuNCx0L7QtdC00L7QsjE3OTUtMTgyOdCf0L7QtNGC0LLQtdGA0LbQtNC10L3QviDQuNGB0YLQvtGH0L3QuNC60LDQvNC44oaX0JDQu9C10LrRgdCw0L3QtNGAINCh0LXRgNCz0LXQtdCy0LjRhyDQn9GD0YjQutC40L0xNzk5LTE4MzfQn9C+0LTRgtCy0LXRgNC20LTQtdC90L4g0LjRgdGC0L7Rh9C90LjQutCw0LzQuOKGl9CQ0LvQtdC60YHQsNC90LTRgCDQoiJ9LHsidGFnIjoiU0VDVElPTiIsImlkIjoiIiwiaGlkZGVuIjp0cnVlLCJ2aXNpYmxlIjpmYWxzZSwiYXR0cmlidXRlcyI6eyJoaWRkZW4iOiIiLCJhcmlhLWxhYmVsbGVkYnkiOiJuYXRpdmUtY29sbGVjdGlvbi10aXRsZSJ9LCJ0ZXh0Ijoi0JrQvtC70LvQtdC60YbQuNGP0J3QsNGB0YLRgNC+0LnQutC4INCz0YDQsNGE0LjQutC40JLRi9Cx0LXRgNC40YLQtSDQtNC10YLQsNC70LjQt9Cw0YbQuNGOINC40LfQvtCx0YDQsNC20LXQvdC40Y8g0Lgg0LfQstGR0LfQtNC90L7Qs9C+INC90LXQsdCwLiDQodGC0YDQsNC90YssINC60L3QuNCz0Lgg0Lgg0YHRgtC40LvRjCDQs9C70L7QsdGD0YHQsCDRgdC+0YXRgNCw0L3Rj9GO0YLRgdGPINC/0YDQuCDQu9GO0LHQvtC8INC60LDRh9C10YHRgtCy0LUu0JrQsNGH0LXRgdGC0LLQviDQs9GA0LDRhNC40LrQuNCS0YvRgdC+0LrQvtC10KHQsNC80L7QtSDRh9GR0YLQutC+0LUg0LjQt9C+0LHRgNCw0LbQtdC90LjQtSDQuCDQsdC+0LvRjNGI0LUg0LfQstGR0LfQtC4g0JLRi9Cx0YDQsNC90L4g0L/QviDRg9C80L7Qu9GH0LDQvdC40Y47INGC0YDQtdCx0YPQtdGCINCx0L7Qu9GM0YjQtSDRgNC10YHRg9GA0YHQvtCyLtCh0LHQsNC70LDQvdGB0LjRgNC+0LLQsNC90L3QvtC10KfRg9GC0Ywg0L3QuNC20LUg0YfRkdGC0LrQvtGB0YLRjCDQuNC30L7QsdGA0LDQttC10L3QuNGPINC4INC80LXQvdGM0YjQtSDQt9Cy0ZHQt9C0LCDRh9GC0L7QsdGLINGB0L3QuNC30LjRgtGMINC90LDQs9GA0YPQt9C60YMg0L3QsCDRg9GB0YLRgNC+0LnRgdGC0LLQvi7QrdC60L7QvdC+0LzQvdC+0LXQndC40LbQtSDRh9GR0YLQutC+0YHRgtGMINC40LfQvtCx0YDQsNC20LXQvdC40Y8sINC80LXQvdGM0YjQtSDQt9Cy0ZHQt9C0INC4INGD0L/RgNC+0YnRkdC90L3Ri9C5INGE0L7QvSDQvdC10LHQsC4g0JzQuNC90LjQvNCw0LvRjNC90LDRjyDQtNC10YLQsNC70LjQt9Cw0YbQuNGPINGB0YDQtdC00Lgg0Y3RgtC40YUg0YDQtdC20LjQvNC+0LIu0KHQuNGB0YLQtdC80L3QsNGPINC90LDRgdGC0YDQvtC50LrQsCDRg9C80LXQvdGM0YjQtdC90LjRjyDQtNCy0LjQttC10L3QuNGPINC00LXQudGB0YLQstGD0LXRgiDQv9GA0Lgg0LvRjtCx0L7QvCDQutCw0YfQtdGB0YLQstC1LuKcptCa0L3QuNC20L3Ri9C5INCw0YDRhdC40LIg0LfQsNCz0YDRg9C30LjRgtGB0Y8g0L/RgNC4INC/0YDQuNCx0LvQuNC20LXQvdC40LjQnNC10YHRgtC+INC/0L7Qu9C60Lgg0YPQttC1INC30LDRgNC10LfQtdGA0LLQuNGA0L7QstCw0L3Qviwg0L/QvtGN0YLQvtC80YMg0YHRgtGA0LDQvdC40YbQsCDQvdC1INGB0LTQstC40L3QtdGC0YHRjy4ifV0sIndlbGNvbWUiOltdLCJhcmNoaXZlIjpbeyJ0YWciOiJESVYiLCJpZCI6IiIsImhpZGRlbiI6ZmFsc2UsInZpc2libGUiOmZhbHNlLCJhdHRyaWJ1dGVzIjp7ImRhdGEtbG9hZGluZy1zdGF0dXMiOiJpZGxlIn0sInRleHQiOiLinKbQmtC90LjQttC90YvQuSDQsNGA0YXQuNCyINC30LDQs9GA0YPQt9C40YLRgdGPINC/0YDQuCDQv9GA0LjQsdC70LjQttC10L3QuNC40JzQtdGB0YLQviDQv9C+0LvQutC4INGD0LbQtSDQt9Cw0YDQtdC30LXRgNCy0LjRgNC+0LLQsNC90L4sINC/0L7RjdGC0L7QvNGDINGB0YLRgNCw0L3QuNGG0LAg0L3QtSDRgdC00LLQuNC90LXRgtGB0Y8uIn0seyJ0YWciOiJTRUNUSU9OIiwiaWQiOiJib29rcyIsImhpZGRlbiI6ZmFsc2UsInZpc2libGUiOmZhbHNlLCJhdHRyaWJ1dGVzIjp7ImFyaWEtbGFiZWxsZWRieSI6InN0YWdlNS1ib29rcy1sb2FkaW5nLXRpdGxlIn0sInRleHQiOiLinKbQmtC90LjQttC90YvQuSDQsNGA0YXQuNCyINC30LDQs9GA0YPQt9C40YLRgdGPINC/0YDQuCDQv9GA0LjQsdC70LjQttC10L3QuNC40JzQtdGB0YLQviDQv9C+0LvQutC4INGD0LbQtSDQt9Cw0YDQtdC30LXRgNCy0LjRgNC+0LLQsNC90L4sINC/0L7RjdGC0L7QvNGDINGB0YLRgNCw0L3QuNGG0LAg0L3QtSDRgdC00LLQuNC90LXRgtGB0Y8uIn0seyJ0YWciOiJESVYiLCJpZCI6IiIsImhpZGRlbiI6ZmFsc2UsInZpc2libGUiOmZhbHNlLCJhdHRyaWJ1dGVzIjp7ImFyaWEtbGl2ZSI6InBvbGl0ZSJ9LCJ0ZXh0Ijoi4pym0JrQvdC40LbQvdGL0Lkg0LDRgNGF0LjQsiDQt9Cw0LPRgNGD0LfQuNGC0YHRjyDQv9GA0Lgg0L/RgNC40LHQu9C40LbQtdC90LjQuNCc0LXRgdGC0L4g0L/QvtC70LrQuCDRg9C20LUg0LfQsNGA0LXQt9C10YDQstC40YDQvtCy0LDQvdC+LCDQv9C+0Y3RgtC+0LzRgyDRgdGC0YDQsNC90LjRhtCwINC90LUg0YHQtNCy0LjQvdC10YLRgdGPLiJ9XX0sInNpbXVsYXRlZE5hdGl2ZVByZWZlcmVuY2VzIjp7InByb2JwZXJhLWludGVyZmFjZS1sYW5ndWFnZSI6InJ1In0sInByZWZlcmVuY2VPcGVyYXRpb25zIjpbeyJvcGVyYXRpb24iOiJnZXQiLCJrZXkiOiJwcm9icGVyYS1pbnRlcmZhY2UtbGFuZ3VhZ2UifSx7Im9wZXJhdGlvbiI6ImdldCIsImtleSI6InByb2JwZXJhLXBsYW5ldC13ZWxjb21lLXYxIn0seyJvcGVyYXRpb24iOiJnZXQiLCJrZXkiOiJwcm9icGVyYS1wbGFuZXQtZ3JhcGhpY3MtcXVhbGl0eS12MSJ9XSwiYnJvd3NlckNhcGFiaWxpdGllcyI6eyJoYXNUb3VjaCI6dHJ1ZSwiaXNNb2JpbGUiOnRydWUsInJlZHVjZWRNb3Rpb24iOiJyZWR1Y2UiLCJkZXZpY2VTY2FsZUZhY3RvciI6MX0sImVycm9ycyI6W10sImNvbnNvbGVFcnJvcnMiOltdLCJleHRlcm5hbFJlcXVlc3RzIjpbXSwibWlzc2luZ1Jlc291cmNlcyI6W119"
+                    },
+                    {
+                      "name": "native-final-failed-screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\s10-search-20260908-a3\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\attachments\\native-final-failed-screenshot-3d658edf45458d9ed8ee5c0f3f3ab910d39c9124.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\s10-search-20260908-a3\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\s10-search-20260908-a3\\artifacts\\native-planet-mobile-globe-ed00b-without-replacing-the-scene\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                    "column": 28,
+                    "line": 402
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b868e086da1851f16b13-4864f96ca720c33c2bdb",
+          "file": "native-planet.spec.mjs",
+          "line": 359,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T11:55:10.970Z",
+    "duration": 25468.691,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

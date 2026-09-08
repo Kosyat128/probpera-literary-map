@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { createHash, randomUUID } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { build } from "vite";
-import { containedFile, artifactPath } from "./pwa-artifact.mjs";
+import { containedFile, artifactPath, CANONICAL_BOOK_SOURCE_REGISTRY } from "./pwa-artifact.mjs";
 
 const root = await fs.realpath(fileURLToPath(new URL("../../", import.meta.url)));
 const platform = process.argv[2];
@@ -20,9 +20,10 @@ async function inputs() {
   const paths = execFileSync("git", ["ls-files", "-z", "--cached", "--others", "--exclude-standard", "--",
     "src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json",
     "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs",
+    CANONICAL_BOOK_SOURCE_REGISTRY,
   ], { cwd: root, encoding: "utf8", maxBuffer: 4 * 1024 * 1024 }).split("\0");
   const files = [];
-  for (const relative of [...new Set(paths)].filter(p => p && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(p)).sort()) {
+  for (const relative of [...new Set([...paths, CANONICAL_BOOK_SOURCE_REGISTRY])].filter(p => p && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(p)).sort()) {
     files.push({ path: relative, sha256: (await containedFile(root, relative)).sha256 });
   }
   return { sha256: sha(json(files)), files };

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-search-20260908-a1",
+  "title": "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene",
+  "head": "3eee7d08e288f7f2d9ed4761c870d6cbac18a2d3",
+  "status": "SOURCE_BROWSER_FAILED",
+  "pass": false,
+  "sourceInputsSha256": "62ef14aa3d93d70621a75a25bbc02c353e42c86bd8de494ff5cdc4d4f4e33473",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T11:48:00.888Z",
+    "duration": 462.847,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "exitCode": 1,
+  "cases": [],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a1/playwright.json",
+      "bytes": 2312,
+      "sha256": "ce5e25a58b480c4591408c69a14d854c86625f953440f0181da80ee73f82a1be"
+    }
+  ],
+  "actualCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

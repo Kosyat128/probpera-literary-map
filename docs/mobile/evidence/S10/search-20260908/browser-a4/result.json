@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-search-20260908-a4",
+  "title": "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene",
+  "head": "3eee7d08e288f7f2d9ed4761c870d6cbac18a2d3",
+  "status": "SOURCE_BROWSER_FAILED",
+  "pass": false,
+  "sourceInputsSha256": "06ac473d9557c2a936cbc153406d4dbd58ced50eae5d50ff6956728bdd5ab053",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T12:00:30.546Z",
+    "duration": 30366.795,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "exitCode": 1,
+  "cases": [
+    {
+      "title": "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 25376,
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                "column": 28,
+                "line": 424
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.writer-detail')\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.writer-detail')\u001b[22m\n\u001b[2m    32 × locator resolved to <section tabindex=\"-1\" data-cms-entity=\"writer\" id=\"writer-biography-russia\" class=\"archive-section writer-detail\" data-cms-entity-id=\"russia:dostoevsky\" data-cms-label=\"Фёдор Михайлович Достоевский\" aria-labelledby=\"writer-biography-russia-heading\" data-cms-admin-href=\"/library?country_id=russia&writer_id=dostoevsky\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  422 |       await expect(toggle).toHaveAttribute(\"aria-expanded\", \"true\");\n  423 |       const detail = page.locator(\".writer-detail\");\n> 424 |       await expect(detail).toBeFocused();\n      |                            ^\n  425 |       await expect(detail.locator(\"h4\")).toBeInViewport();\n  426 |       expect(await detail.evaluate(element => Boolean(element.closest('[inert], [hidden], [aria-hidden=\"true\"]')))).toBe(false);\n  427 |       await expect.poll(() => new URL(page.url()).searchParams.get(\"country\")).toBe(\"russia\");\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:424:28"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a4/playwright.json",
+      "bytes": 28709,
+      "sha256": "39d8cb24ecc413ab1b5c9cb8d05d3fd266ae4d8e187cd6c2bb77bac52a67da2e"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a4/native-final-failed.json",
+      "bytes": 13869,
+      "sha256": "88b9105a2d34308c4c8778c41c72df8031dceb92514b81559dc15b15199ce5b8"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a4/native-final-failed-screenshot.png",
+      "bytes": 313320,
+      "sha256": "253c23202a70dd701d88cb6f34c84408defe04da63ca1a3faeb19a94bcc70df3"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -76,6 +76,7 @@ import type { Country, Writer } from "./data/countries";
 import { isNobelLaureate } from "./data/nobel";
 import type { BookArchiveEntry } from "./data/bookArchive";
 import { isPublicBook } from "./data/bookQuality";
+import { getEvidenceBackedOppositeLocaleBookTitleAliases } from "./data/bookSearchAliases";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import {
   coreHomepageSectionClass,
@@ -643,7 +644,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
   const atlasSearchInputRef = useRef<HTMLInputElement>(null);
-  const welcomeFocusRequest = useRef<"search" | "country" | null>(null);
+  const atlasActionFocusRequest = useRef<"search" | "search-toggle" | "country" | null>(null);
   const countryPresentationRef = useRef<HTMLElement>(null);
   const atlasActiveFilterRef = useRef<HTMLButtonElement>(null);
   const atlasFilterClusterRef = useRef<HTMLDivElement>(null);
@@ -713,14 +714,16 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   });
 
   useLayoutEffect(() => {
-    const requested = welcomeFocusRequest.current;
+    const requested = atlasActionFocusRequest.current;
     if (!requested) return;
-    // Consume only this explicit welcome action after its target has committed.
+    // Consume only an explicit application action after its target has committed.
     // Locale changes never create another focus request.
-    welcomeFocusRequest.current = null;
+    atlasActionFocusRequest.current = null;
     if (!isPlanetApplication || nativeCollectionOpen || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
     if (requested === "search" && atlasSearchOpen) {
       atlasSearchInputRef.current?.focus({ preventScroll: true });
+    } else if (requested === "search-toggle" && !atlasSearchOpen) {
+      atlasExperience.searchButtonRef.current?.focus({ preventScroll: true });
     } else if (requested === "country" && selectedCountry && !atlasSearchOpen) {
       // The labelled country container survives its lazy WriterPanel fallback.
       // Focusing the loading placeholder loses focus when the real panel arrives.
@@ -729,7 +732,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         : countryPresentationRef.current;
       target?.focus({ preventScroll: true });
     }
-  }, [atlasSearchOpen, atlasSheetContentCollapsed, isPlanetApplication, nativeCollectionOpen, selectedCountry?.id]);
+  }, [atlasExperience.searchButtonRef, atlasSearchOpen, atlasSheetContentCollapsed, isPlanetApplication, nativeCollectionOpen, selectedCountry?.id]);
 
   useEffect(() => {
     if (atlasImmersive && !atlasExperience.state.filtersOpen) {
@@ -1239,6 +1242,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
               displayedBook.title,
               book.originalTitle,
               ...(book.alternateTitles || []),
+              ...getEvidenceBackedOppositeLocaleBookTitleAliases(book, language),
               selectBookWriterName(book, language, t("Автор")),
               countryName(book.country.code, book.countryName),
               displayedBook.description,
@@ -1295,7 +1299,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       .sort(
         (first, second) =>
           first.score - second.score ||
-          first.result.label.localeCompare(second.result.label, "ru")
+          first.result.label.localeCompare(second.result.label, language)
       )
       .map(({ result }) => result)
       .slice(0, 12);
@@ -1305,6 +1309,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     countryArchive,
     countryName,
     filteredCountries,
+    language,
     search,
   ]);
 
@@ -1605,13 +1610,18 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const selectWriterAndFocus = useCallback(
     (country: Country, writer: Writer) => {
       selectCountry(country, false, writer);
+      if (isPlanetApplication && atlasExperience.compactSheet) {
+        // Reveal the existing country sheet in the same commit as the writer.
+        // A focus token must not be consumed inside its collapsed, inert content.
+        atlasExperienceDispatch({ type: "SET_SHEET_STATE", sheetState: "half" });
+      }
       setWriterFocusRequest((current) => ({
         countryId: country.id,
         writerId: writer.id,
         token: (current?.token || 0) + 1,
       }));
     },
-    [selectCountry]
+    [atlasExperience.compactSheet, atlasExperienceDispatch, isPlanetApplication, selectCountry]
   );
 
   const selectBookWriterAndCountry = useCallback(
@@ -1645,8 +1655,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         selectWriterAndFocus(result.country, result.writer);
         return;
       }
+      if (isPlanetApplication) atlasActionFocusRequest.current = "country";
       selectCountry(result.country);
-      focusCountryPresentation();
+      if (!isPlanetApplication) focusCountryPresentation();
     },
     [
       atlasExperience,
@@ -2227,12 +2238,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                   journeyDisabled={filteredCountries.length === 0}
                   returnFocusRef={atlasExperience.searchButtonRef}
                   onJourney={() => {
-                    welcomeFocusRequest.current = "country";
+                    atlasActionFocusRequest.current = "country";
                     selectRandomLiteraryDestination();
                   }}
                   onSearch={() => {
                     cancelNativeNavigation();
-                    welcomeFocusRequest.current = "search";
+                    atlasActionFocusRequest.current = "search";
                     setAtlasSearchVisibility(true);
                   }}
                 />}
@@ -2318,7 +2329,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
               }
               endAdornment={<kbd>↵</kbd>}
               onValueChange={updateAtlasSearch}
-              onOpenChange={(open) => setAtlasSearchVisibility(open)}
+              onOpenChange={(open, reason) => {
+                if (isPlanetApplication && !open && reason === "escape") {
+                  atlasActionFocusRequest.current = "search-toggle";
+                }
+                setAtlasSearchVisibility(open);
+              }}
               onSelect={(result) => selectAtlasSearchResult(result)}
               renderOption={(result) => (
                 <>
@@ -2676,7 +2692,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                       onLoadBooks={requestBookRuntime}
                       onRetryBooks={retryBookArchive}
                       selectedWriter={selectedWriter}
+                      applicationRoot={isPlanetApplication}
                       focusRequestId={
+                        (!isPlanetApplication || (!atlasSheetContentCollapsed && !nativeCollectionOpen && !atlasSearchOpen)) &&
                         writerFocusRequest?.countryId === selectedCountry.id &&
                         writerFocusRequest.writerId === selectedWriter?.id
                           ? writerFocusRequest.token

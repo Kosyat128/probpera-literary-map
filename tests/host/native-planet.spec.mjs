@@ -18,6 +18,7 @@ const mime = {
   ".woff": "font/woff", ".woff2": "font/woff2",
 };
 let browser, files, sourceEvidence;
+const observeSearchFocus = process.env.NATIVE_PLANET_SEARCH_FOCUS_DIAGNOSTICS === "1";
 const activeFixtures = new Set();
 
 test.beforeAll(async () => {
@@ -50,6 +51,7 @@ test.beforeAll(async () => {
         savedLanguage:()=>window.__nativePlanetPreference('get','probpera-interface-language'),
         savedWelcome:()=>window.__nativePlanetPreference('get','probpera-planet-welcome-v1'),
         canonicalCountry:async(id)=>{const{countries}=await import('./src/data/countries');const country=countries.find(value=>value.id===id);return country?{id:country.id,writerCount:country.writers.length}:null},
+        canonicalBookAliasAudit:async()=>{const[{countries},{buildPublicBookArchive},{getEvidenceBackedOppositeLocaleBookTitleAliases:aliases}]=await Promise.all([import('./src/data/countries'),import('./src/data/bookArchive'),import('./src/data/bookSearchAliases')]);const books=buildPublicBookArchive(countries);let ruAliasCount=0,enAliasCount=0,bothLocales=0;const samples=[];for(const book of books){const ru=aliases(book,'ru'),en=aliases(book,'en');ruAliasCount+=ru.length;enAliasCount+=en.length;if(ru.length&&en.length){bothLocales++;if(samples.length<4)samples.push({key:[book.countryId,book.writerId,book.id].join(':'),ru:book.translations.ru.title,en:book.translations.en.title,queryInRu:ru,queryInEn:en})}}return{publicBooks:books.length,ruAliasCount,enAliasCount,bothLocales,samples}},
         journeySeed:async(id)=>{const[{countries},{chooseRandomLiteraryDestination}]=await Promise.all([import('./src/data/countries'),import('./src/components/globeDiscovery')]);for(let i=0;i<countries.length;i++){const seed=(i+.5)/countries.length;if(chooseRandomLiteraryDestination({candidates:countries,randomValue:seed})?.id===id)return seed}throw Error('Canonical journey destination not found')},
         back:()=>{for(const h of handles)if(!h.removed&&h.event==='backButton')h.listener({canGoBack:false})}
       };
@@ -66,6 +68,25 @@ test.beforeAll(async () => {
     },
     loader: { ".css": "css", ".png": "file", ".webp": "file", ".avif": "file", ".jpg": "file", ".jpeg": "file", ".svg": "file", ".woff": "file", ".woff2": "file" },
     plugins: [{ name: "native-planet-canonical-resource-urls", setup(builder) {
+      if (observeSearchFocus) builder.onLoad({ filter: /[\\/]WriterPanel\.tsx$/ }, async args => {
+        const source = await readFile(args.path, "utf8");
+        const anchor = 'const focusVisibleDetail = () => {';
+        expect(source.split(anchor)).toHaveLength(2);
+        const probe = `
+          const traceFocusRequest = (point, extra = {}) => {
+            const log = window.__nativePlanetWriterFocusDiagnostics ||= [];
+            if (log.length < 100) log.push({ point, at: performance.now(), focusRequestId, handled: handledFocusRequest.current,
+              writer: activeWriter?.id, applicationRoot, cancelled, connected: detail.isConnected,
+              sameDetail: detailRef.current === detail, blockedBy: (() => { const node = detail.closest('[inert], [hidden], [aria-hidden="true"]');
+                return node ? {tag:node.tagName,id:node.id,className:node.className,inert:node.inert,hidden:node.hidden,ariaHidden:node.getAttribute('aria-hidden')} : null })(), ...extra });
+          };
+          traceFocusRequest('frame');
+        `;
+        const contents = source.replace(anchor, probe + anchor + "traceFocusRequest('focus-attempt');")
+          .replace('const style = window.getComputedStyle(detail);', "const style = window.getComputedStyle(detail); traceFocusRequest('computed-style', {visibility:style.visibility,display:style.display,rects:detail.getClientRects().length});")
+          .replace('if (visibilityTransitions.size) {', "traceFocusRequest('transitions', {count:visibilityTransitions.size}); if (visibilityTransitions.size) {");
+        return { contents, loader: "tsx", resolveDir: path.dirname(args.path) };
+      });
       // Faithfully expand only the two known lazy Vite glob imports. Preserve
       // primary/retry module identities; the actual Canvas source stays intact.
       builder.onLoad({ filter: /[\\/]BookShelfScene\.tsx$/ }, async args => {
@@ -107,6 +128,7 @@ test.beforeAll(async () => {
   }
   sourceEvidence = {
     kind: "canonical-native-app-source-in-Chrome",
+    searchFocusDiagnostics: observeSearchFocus ? "Fixture-only WriterPanel observations; no application source mutation, extra pre-guard style read or altered focus control flow" : null,
     nativePlugins: "injected Android OS boundary; Preferences Map persists outside each document through a Playwright binding", actualApp: true, actualCss: true,
     publicAssetSelectionSha256: digest(selectionBytes), selectedPublicAssets: selection.files.length,
     viteGlobTransform,
@@ -207,7 +229,7 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
     };
     const originalFocus = HTMLElement.prototype.focus;
     HTMLElement.prototype.focus = function (...args) {
-      const observed = this.matches('#country-search, [data-atlas-action="toggle-search"], [data-planet-welcome-action], .country-panel, .atlas-country-presentation');
+      const observed = this.matches('#country-search, [data-atlas-action="toggle-search"], [data-planet-welcome-action], .country-panel, .atlas-country-presentation, .writer-detail');
       if (observed) traceFocus("before-focus", this);
       const result = Reflect.apply(originalFocus, this, args);
       if (observed) traceFocus("after-focus", this);
@@ -319,6 +341,7 @@ async function captureEvidence(fixture, testInfo, name, extra = {}) {
         welcomeFrames: window.__nativePlanetWelcomeFrames,
         quietLanguageAccess: window.__nativePlanetQuietLanguageAccess ?? [],
         focusTrace: window.__nativePlanetFocusTrace,
+        writerFocusDiagnostics: window.__nativePlanetWriterFocusDiagnostics ?? [],
         finalActiveElement: { tag: document.activeElement?.tagName, id: document.activeElement?.id,
           action: document.activeElement?.getAttribute("data-atlas-action") },
         journeyRandomInput: window.__nativePlanetJourneyRandom ?? null,
@@ -354,6 +377,99 @@ async function evidence(fixture, testInfo, name, extra = {}) {
   expect(fixture.missingResources).toEqual([]);
   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);
 }
+
+test("mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=france#atlas", viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce", hasTouch: true, isMobile: true });
+  const { page } = fixture;
+  const original = await captureScene(page);
+  const sheet = page.locator(".atlas-country-presentation");
+  const toggle = page.locator(".atlas-country-sheet-toggle");
+  const opener = page.locator('[data-atlas-action="toggle-search"]');
+  const input = page.locator("#country-search");
+  const observations = [];
+  try {
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "collapsed");
+    for (const locale of ["ru", "en"]) {
+      if (locale === "en") {
+        const pose = await settledCameraPose(original);
+        const previousUrl = new URL(page.url());
+        await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
+        await expect(page.locator("html")).toHaveAttribute("lang", "en");
+        await expect(page.locator(".writer-detail h4")).toContainText(/Dostoevsky/iu);
+        await retained(page, original);
+        expect(await cameraPose(original)).toEqual(pose);
+        for (const key of ["country", "writer", "book"]) expect(new URL(page.url()).searchParams.get(key)).toBe(previousUrl.searchParams.get(key));
+        await toggle.click();
+        await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "expanded");
+        await toggle.click();
+        await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "collapsed");
+      }
+      await opener.click();
+      await expect(input).toBeFocused();
+      const query = locale === "ru" ? "Достоевский" : "Dostoevsky";
+      await input.fill(query);
+      const writerOption = page.locator('#country-results [role="option"]').filter({ hasText: locale === "ru" ? /Ф[её]дор.*Достоевск/iu : /Fyodor.*Dostoevsky/iu }).first();
+      await expect(writerOption).toBeVisible();
+      if (locale === "ru") await writerOption.click();
+      else {
+        // Navigate the real combobox instead of calling its selection callback.
+        const optionId = await writerOption.getAttribute("id");
+        await input.press("Home");
+        for (let step = 0; step < 12 && await input.getAttribute("aria-activedescendant") !== optionId; step++) await input.press("ArrowDown");
+        await expect(input).toHaveAttribute("aria-activedescendant", optionId);
+        await input.press("Enter");
+      }
+      await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "half");
+      await expect(toggle).toHaveAttribute("aria-expanded", "true");
+      const detail = page.locator(".writer-detail");
+      await expect(detail).toBeFocused();
+      await expect(detail.locator("h4")).toBeInViewport();
+      expect(await detail.evaluate(element => Boolean(element.closest('[inert], [hidden], [aria-hidden="true"]')))).toBe(false);
+      await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("russia");
+      await expect.poll(() => new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-search-open", "false");
+      await retained(page, original);
+      const selectedPose = await settledCameraPose(original);
+      const selectedUrl = page.url();
+      await evidence(fixture, testInfo, "native-search-" + locale + "-writer", { query, locale,
+        writerFocusedWithoutManualSheetExpansion: true, sameCanvasRendererCameraScene: true, selectedPose });
+      await opener.click();
+      await input.fill(query);
+      await expect(input).toBeFocused();
+      await input.press("Escape");
+      await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-search-open", "false");
+      await expect(opener).toBeFocused();
+      await expect(opener).toBeInViewport({ ratio: 1 });
+      expect(page.url()).toBe(selectedUrl);
+      expect(await cameraPose(original)).toEqual(selectedPose);
+      await retained(page, original);
+      observations.push({ locale, query, resultCountry: "russia", resultWriter: "dostoevsky", selectedPose,
+        directWriterFocus: true, escapeReturnedToOpener: true });
+    }
+    await opener.click();
+    await input.fill("France");
+    await page.locator('#country-results [data-option-key="country:france"]').click();
+    await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("france");
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "collapsed");
+    await expect(toggle).toBeFocused();
+    await expect(toggle).toBeInViewport({ ratio: 1 });
+    await retained(page, original);
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await opener.click();
+    await input.fill("Dostoevsky");
+    await page.locator('#country-results [data-option-key="writer:russia:dostoevsky"]').click();
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "half");
+    await expect(page.locator(".writer-detail")).toBeFocused();
+    await expect(page.locator(".writer-detail h4")).toBeInViewport();
+    await retained(page, original);
+    expect(fixture.consoleErrors).toEqual([]);
+    const canonicalBookAliases = await page.evaluate(() => window.__nativePlanetHarness.canonicalBookAliasAudit());
+    await evidence(fixture, testInfo, "native-search-bilingual-complete", { observations,
+      canonicalBookAliases, normalMotionWriterFocusPassed: true, countrySearchFocusOnVisibleToggle: true,
+      actualCatalog: true, sameCanvasRendererCameraScene: true, nativeDeviceObserved: false });
+  } finally { await original.dispose(); }
+});
 
 test("native first screen is the actual immersive globe and RU/EN retains writer and scene", async ({}, testInfo) => {
   const fixture = await open({ route: "/?country=russia&writer=dostoevsky#atlas" });
@@ -1557,5 +1673,97 @@ test("narrow reduced-motion native launch and search retain the actual globe wit
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
     await retained(page, original);
     await evidence(fixture, testInfo, "native-narrow-collection-safe-area", { safeArea, safeAreaEmulation: "Chrome CDP CSS environment; not an iOS device" });
+  } finally { await original.dispose(); }
+});
+
+
+test("mobile globe book search resolves evidence-backed RU and EN titles to the same canonical work", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=france#atlas", viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce", hasTouch: true, isMobile: true });
+  const { page } = fixture;
+  const original = await captureScene(page);
+  const opener = page.locator('[data-atlas-action="toggle-search"]');
+  const input = page.locator("#country-search");
+  const panel = page.locator(".native-planet-panel");
+  const detail = panel.locator("#book-archive-detail");
+  // Exact current public works and published titles observed in the a6 canonical
+  // audit. The real input/results provide the proof; no search/selection callback
+  // or replacement catalog is injected by this case.
+  const books = [
+    { key: "usa:herman_melville:moby-dick", ru: "Моби Дик, или Белый Кит", en: "Moby-Dick; or, The Whale" },
+    { key: "usa:francis_scott_fitzgerald:the-great-gatsby", ru: "Великий Гэтсби", en: "The Great Gatsby" },
+    { key: "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial", ru: "Над пропастью во ржи", en: "The Catcher in the Rye" },
+    { key: "russia:dostoevsky:crime-and-punishment", ru: "Преступление и наказание", en: "Crime and Punishment" },
+  ];
+  const selectedBook = books[3];
+  const observations = [];
+  try {
+    for (const locale of ["ru", "en"]) {
+      if (locale === "en") {
+        const previousUrl = new URL(page.url());
+        const pose = await settledCameraPose(original);
+        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "EN" }).click();
+        await expect(page.locator("html")).toHaveAttribute("lang", "en");
+        await retained(page, original);
+        expect(await cameraPose(original)).toEqual(pose);
+        for (const key of ["country", "writer", "book"]) expect(new URL(page.url()).searchParams.get(key)).toBe(previousUrl.searchParams.get(key));
+      }
+      const queryOnlyUrl = page.url();
+      await opener.click();
+      await expect(input).toBeFocused();
+      for (const book of books) {
+        const query = locale === "ru" ? book.en : book.ru;
+        const visibleTitle = locale === "ru" ? book.ru : book.en;
+        await input.fill(query);
+        const option = page.locator('#country-results [data-option-key="book:' + book.key + '"]');
+        await expect(option).toHaveCount(1);
+        await expect(option).toBeVisible();
+        await expect(option).toHaveAccessibleName(visibleTitle);
+        expect(page.url()).toBe(queryOnlyUrl);
+        observations.push({ phase: "result", locale, query, visibleTitle, canonicalBookKey: book.key,
+          optionKey: await option.getAttribute("data-option-key") });
+      }
+      await retained(page, original);
+      const selectedOption = page.locator('#country-results [data-option-key="book:' + selectedBook.key + '"]');
+      if (locale === "ru") await selectedOption.click();
+      else {
+        const optionId = await selectedOption.getAttribute("id");
+        await input.press("Home");
+        for (let step = 0; step < 12 && await input.getAttribute("aria-activedescendant") !== optionId; step++) await input.press("ArrowDown");
+        await expect(input).toHaveAttribute("aria-activedescendant", optionId);
+        await input.press("Enter");
+      }
+      const visibleTitle = locale === "ru" ? selectedBook.ru : selectedBook.en;
+      await expect(panel).toBeVisible();
+      await expect(detail).toBeVisible();
+      await expect(detail).toHaveAccessibleName(visibleTitle);
+      await expect(detail.getByRole("heading", { level: 3, name: visibleTitle, exact: true })).toBeInViewport();
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBe(selectedBook.key);
+      expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+      expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-search-open", "false");
+      await retained(page, original);
+      const cover = detail.locator(".book-detail-cover img");
+      await expect(cover).toHaveCount(1);
+      await expect.poll(() => cover.evaluate(image => image.complete && image.naturalWidth > 0 && image.naturalHeight > 0)).toBe(true);
+      const coverProof = await cover.evaluate(image => ({ src: image.currentSrc, width: image.naturalWidth, height: image.naturalHeight }));
+      await evidence(fixture, testInfo, "native-search-book-" + locale + "-open", { locale,
+        query: locale === "ru" ? selectedBook.en : selectedBook.ru, visibleTitle, canonicalBookKey: selectedBook.key,
+        cover: coverProof, actualSearchResultActivated: true, sameCanvasRendererCameraScene: true });
+      await panel.getByRole("button", { name: locale === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true }).click();
+      await expect(detail).toBeHidden();
+      await expect(panel).toBeHidden();
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBeNull();
+      expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+      expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      await expect(page.locator(".atlas-country-presentation")).toHaveAttribute("data-atlas-sheet-state", "collapsed");
+      await retained(page, original);
+      observations.push({ phase: "return", locale, activatedBookKey: selectedBook.key, closedBookUrl: true,
+        selectedCountry: "russia", selectedWriter: "dostoevsky", sameCanvasRendererCameraScene: true });
+    }
+    expect(fixture.consoleErrors).toEqual([]);
+    await evidence(fixture, testInfo, "native-search-book-bilingual-complete", { observations,
+      actualCatalog: true, oppositeLocaleQueries: 8, activatedSameBookInBothLocales: selectedBook.key,
+      sameCanvasRendererCameraScene: true, nativeDeviceObserved: false });
   } finally { await original.dispose(); }
 });

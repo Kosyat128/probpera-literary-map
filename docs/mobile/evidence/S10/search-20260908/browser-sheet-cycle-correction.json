@@ -1,0 +1,6 @@
+{
+  "attempt": "browser-a5",
+  "passedBeforeFailure": ["Russian search immediately reveals and focuses the writer", "Escape restores the search opener", "RU to EN preserves selected entities and the scene/camera pose"],
+  "failure": "The new test expected one click to move half to collapsed; the existing three-position sheet cycles half to expanded to collapsed.",
+  "correction": "Use two real clicks and assert both existing states before testing another search from collapsed. Product source and all successful unit/static results are unchanged."
+}

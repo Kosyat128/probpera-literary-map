@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-search-20260908-a5",
+  "title": "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene",
+  "head": "3eee7d08e288f7f2d9ed4761c870d6cbac18a2d3",
+  "status": "SOURCE_BROWSER_FAILED",
+  "pass": false,
+  "sourceInputsSha256": "f2101f49829a03a287e0080683d153e1494b4840d3cb98c2d96932be74dbc4c0",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T12:03:56.538Z",
+    "duration": 31833.248999999996,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "exitCode": 1,
+  "cases": [
+    {
+      "title": "mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 26462,
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                "column": 29,
+                "line": 404
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.atlas-country-presentation')\nExpected: \u001b[32m\"\u001b[7mcollaps\u001b[27med\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mexpand\u001b[27med\"\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.atlas-country-presentation')\u001b[22m\n\u001b[2m    32 × locator resolved to <aside tabindex=\"-1\" aria-label=\"Russia\" data-atlas-country=\"russia\" data-atlas-sheet-state=\"expanded\" class=\"atlas-country-presentation\">…</aside>\u001b[22m\n\u001b[2m       - unexpected value \"expanded\"\u001b[22m\n\n\n  402 |         for (const key of [\"country\", \"writer\", \"book\"]) expect(new URL(page.url()).searchParams.get(key)).toBe(previousUrl.searchParams.get(key));\n  403 |         await toggle.click();\n> 404 |         await expect(sheet).toHaveAttribute(\"data-atlas-sheet-state\", \"collapsed\");\n      |                             ^\n  405 |       }\n  406 |       await opener.click();\n  407 |       await expect(input).toBeFocused();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:404:29"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a5/playwright.json",
+      "bytes": 57017,
+      "sha256": "e6cc31ca068a5a8edba5e31595957247cf5f5b56e3df6b3f4441ce827f3d2112"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a5/native-search-ru-writer.json",
+      "bytes": 15144,
+      "sha256": "6f58f161ed34c7ef6db95bd28e689a793cfd206b53d564a7f6f0e46473b28ef9"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a5/native-search-ru-writer-screenshot.png",
+      "bytes": 328422,
+      "sha256": "999c92227f90a6d08a5fdd8dc876d8f7f1d08101a2a72f4e02999a143dff9d92"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a5/native-final-failed.json",
+      "bytes": 19733,
+      "sha256": "7b8bb61ee9dba008be295fde24b03cad5677b5cd38d24bc4de04c3cf6ccbb985"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/search-20260908/browser-a5/native-final-failed-screenshot.png",
+      "bytes": 181449,
+      "sha256": "069df2074443b6669ca9b45134a7f2cd811cccae7e4e69d8ee53229e2bbb0958"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -440,3 +440,21 @@
   expanded offline/quality/RUEN browser case; Android has APK byte/signature
   checks plus separate native-source browser evidence. Keep these boundaries
   distinct from installed devices, human review, frozen iOS83 or release.
+
+- D091: Enter S10 using the matrix69 parallel-safe rule for the existing adult
+  globe search. Reveal selected mobile writer content before focus and return
+  Escape focus through the established application search controller. Share
+  only opposite-locale book titles that pass existing published-title evidence;
+  retain canonical IDs, current-language labels and all publication gates.
+  No factual catalog mutation, child-search acceptance, verified transliteration
+  coverage, 10k capacity or full S10 acceptance is implied by this slice.
+
+- D092: Real mobile search exposed premature writer focus during inherited
+  hidden-to-visible CSS transitions. The existing app-only reduced-motion
+  exception now covers country sheet descendants, removing the accidental
+  visibility cascade. One cancellable frame consumes the request only after
+  actual focus succeeds; no animation-wait loop remains. Normal motion and
+  public-site behavior are preserved. Opposite-locale title lookup reuses the
+  canonical source authority registry, now hashed in both artifact inputs and
+  explicitly owned by PWA offline bootstrap; no broader root data import is
+  admitted by the native verifier. Existing approval metadata is not new review.
